@@ -5,21 +5,7 @@ docs/api-and-cli.md, docs/TRUST-BOUNDARIES.md, and the
 verification-program record in
 `../openoj-problems/.localonly/VARIANT-WAVE-II.md`.
 
-## In flight — verification program closing
-
-- [ ] **F1** Corner-case audits — COMPLETE: all 59 bundles audited
-      (additions where gaps were found; several verified no-change)
-- [ ] **F2** Judged sweeps to completion — both trees, ~26/41 shards;
-      every cumulative failure is a fixed class (0478 flake — judge
-      floor now 4σ, 0587 cpp, 1865 segfault)
-- [ ] **F3** Final formatter pass over late corner-case edits (last
-      pass: 0 normalizations on 430 files)
-- [ ] **F4** Final static checks — adapt PASSED; originals clean except
-      the 12 by-design dual-id notes
-- [ ] **F5** Parity audit — OK (208 ↔ 211); re-run at close
-- [ ] **F7** Commit → push → deploy to katze → confirm CI green
-
-## Provided-code protection — deferred remainder
+## Deferred — provided-code protection
 
 - [ ] **D5** Anti-cheat static signal for provided-symbol tampering —
       deferred: detection is cat-and-mouse and the stakes do not
