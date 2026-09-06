@@ -72,7 +72,11 @@ LANGUAGE_BY_EXTENSION = {
 
 
 def _expand_formattable(names: list[str]) -> tuple[list[Path], list[Path]]:
-    """Expand files/directories into (formattable files, skipped paths)."""
+    """Expand files/directories into (formattable files, skipped paths).
+
+    Directory walks skip dependency checkouts (node_modules) and hidden
+    trees (.git, .localonly, ...), so pointing the formatter at a repo
+    root formats the repo's own sources only."""
     files: list[Path] = []
     skipped: list[Path] = []
     for name in names:
@@ -81,7 +85,9 @@ def _expand_formattable(names: list[str]) -> tuple[list[Path], list[Path]]:
             files += sorted(
                 child
                 for child in path.rglob("*")
-                if child.is_file() and child.suffix.lstrip(".") in LANGUAGE_BY_EXTENSION
+                if child.is_file()
+                and child.suffix.lstrip(".") in LANGUAGE_BY_EXTENSION
+                and not any(part.startswith(".") or part == "node_modules" for part in child.relative_to(path).parts[:-1])
             )
         elif path.is_file():
             files.append(path)
@@ -109,8 +115,24 @@ def cmd_format(arguments: argparse.Namespace) -> int:
         for path in files:
             language = LANGUAGE_BY_EXTENSION.get(path.suffix.lstrip("."))
             if language is None:
+                # an unknown extension is a report row like any other, so a
+                # scripted consumer never silently misses a file
+                results.append(
+                    {
+                        "file": str(path),
+                        "status": "error",
+                        "diagnostics": f"no formatter for .{path.suffix.lstrip('.')}",
+                    }
+                )
+                errored = True
                 continue
-            report = format_source_report(language, path.read_text(encoding="utf-8"))
+            try:
+                source = path.read_text(encoding="utf-8")
+            except (OSError, UnicodeDecodeError) as error:
+                results.append({"file": str(path), "status": "error", "diagnostics": str(error)})
+                errored = True
+                continue
+            report = format_source_report(language, source)
             results.append({"file": str(path), **report})
             if report["status"] == "error":
                 errored = True
@@ -126,7 +148,11 @@ def cmd_format(arguments: argparse.Namespace) -> int:
                 print(f"no formatter for .{extension}", file=sys.stderr)
                 return 2
             continue
-        original = path.read_text(encoding="utf-8")
+        try:
+            original = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError) as error:
+            print(f"cannot read {path}: {error}", file=sys.stderr)
+            return 2
         formatted = format_source(language, original)
         if formatted != original:
             if arguments.check:
@@ -144,7 +170,14 @@ def cmd_format(arguments: argparse.Namespace) -> int:
 
 
 def cmd_gen_starters(arguments: argparse.Namespace) -> int:
-    """Emit starter.<ext> for every offered language beside problem.json."""
+    """Emit starter.<ext> for a bundle's offered languages beside problem.json.
+
+    The language set follows the starters already present (regenerating a
+    bundle that deliberately offers a subset never widens it), and the
+    output goes through the pinned formatter so it passes the format gate.
+    Note the Python starter style: pass --style explicitly to override the
+    modern default — the provenance-aware choice lives in the problems
+    repo's scripts/gen_starters.py, which reads MAPPING.json."""
     import importlib.util
 
     tools = _tools()
@@ -155,10 +188,18 @@ def cmd_gen_starters(arguments: argparse.Namespace) -> int:
     problem_path = Path(arguments.problem)
     invocation = json.loads(problem_path.read_text(encoding="utf-8"))["invocation"]
     bundle = problem_path.parent
+    present = {
+        starter.suffix.lstrip(".")
+        for starter in bundle.glob("starter.*")
+    }
     gen.set_python_style(arguments.style)
     expected = gen.starter_files(invocation)
     for language, content in expected.items():
-        target = bundle / f"starter.{gen.EXTENSIONS[language]}"
+        extension = gen.EXTENSIONS[language]
+        if present and extension not in present:
+            continue
+        content = gen.format_content(extension, content, tolerant=True)
+        target = bundle / f"starter.{extension}"
         target.write_text(content, encoding="utf-8")
         print(f"wrote {target}")
     return 0
@@ -253,6 +294,7 @@ def _judge_one(
     _authoring_env()
     from executors import get_executor
     from executors.base import ExecutorError
+    from protocol import parse_protocol
 
     EXTENSION_LANGUAGE = {
         "py": "python3",
@@ -334,9 +376,10 @@ def _judge_one(
                 failures += 1
                 continue
             text = output.decode("utf-8", "replace")
-            marker = "__OPENOJ_RESULT__"
-            line = next((l for l in text.splitlines() if marker in l), "")
-            verdict = json.loads(line[len(marker) :]) if line else {"status": "no_output"}
+            # The shared parser (runner/protocol.py) reads the judge's own
+            # semantics: last marker line wins, malformed lines are skipped
+            # rather than aborting the sweep.
+            verdict = parse_protocol(text)
             if verdict.get("status") == "completed":
                 passed += 1
             else:
@@ -361,6 +404,11 @@ def cmd_judge(arguments: argparse.Namespace) -> int:
     limits = problem.get("limits", {})
     cases = json.loads((bundle / "cases.json").read_text(encoding="utf-8"))
     all_cases = cases.get("public", []) + cases.get("hidden", [])
+    if not all_cases:
+        # a zero-case bundle would otherwise "judge" every solution against
+        # nothing and exit 0 — gate, not rubber stamp
+        print("no cases to judge", file=sys.stderr)
+        return 2
     assembly = _bundle_assembly(bundle)
 
     solutions = sorted(path for path in bundle.iterdir() if path.name.startswith("solution") and path.suffix != ".md")
@@ -371,7 +419,7 @@ def cmd_judge(arguments: argparse.Namespace) -> int:
     failures = 0
     for solution in solutions:
         failures += _judge_one(solution, invocation, limits, assembly, all_cases)
-    print(f"{len(all_cases) and 'judged' or 'no cases'}; {failures} case-level failure(s)")
+    print(f"judged {len(all_cases)} cases; {failures} case-level failure(s)")
     return 1 if failures else 0
 
 
@@ -445,7 +493,7 @@ def main() -> int:
     fmt.add_argument(
         "--report",
         choices=["json"],
-        help="non-mutating tri-state JSON report per file: formatted | unformatted (+formatted text) | error (+diagnostics); exits 1 only on errors",
+        help="non-mutating tri-state JSON report per file, the POST /format contract plus a `file` field: formatted | unformatted (+code) | error (+diagnostics); exits 1 only on errors",
     )
     fmt.set_defaults(fn=cmd_format)
 

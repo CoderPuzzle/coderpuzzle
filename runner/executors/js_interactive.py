@@ -299,7 +299,10 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
                 str(source_path),
             ),
             javascript_path,
-            {"PATH": "/usr/bin:/bin", "HOME": "/nonexistent", "TMPDIR": "/tmp", "LANG": "C.UTF-8"},
+            # /usr/local/bin is required, not cosmetic: tsc is
+            # `#!/usr/bin/env node` and node lives only there (matches
+            # typescript.py).
+            {"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": "/nonexistent", "TMPDIR": "/tmp", "LANG": "C.UTF-8"},
         )
         run_path = javascript_path
     else:

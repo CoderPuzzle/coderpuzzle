@@ -24,6 +24,7 @@ class JavaExecutor:
     reference_benchmark_ms = 75.0
     compiler_uid = 65534
     compiler_gid = 65534
+    compiler_timeout_seconds = 10
 
     _vm_options = (
         "-XX:+UseSerialGC",
@@ -67,7 +68,7 @@ class JavaExecutor:
         default (rlimits plus the uid drop prepare() chowns the job
         directory for). cli.cmd_judge neutralizes this hook so an author
         judging their own reference solutions compiles plainly."""
-        return sandboxed_compiler_command(command, 2048, self.max_processes)
+        return sandboxed_compiler_command(command, 2048, self.max_processes, self.compiler_timeout_seconds)
 
     def prepare(
         self,
@@ -145,7 +146,7 @@ class JavaExecutor:
                 stderr=subprocess.STDOUT,
                 start_new_session=True,
             )
-            compiler_output, _ = process.communicate(timeout=10)
+            compiler_output, _ = process.communicate(timeout=self.compiler_timeout_seconds)
         except subprocess.TimeoutExpired as error:
             if process is not None:
                 try:
@@ -153,7 +154,9 @@ class JavaExecutor:
                 except ProcessLookupError:
                     pass
                 process.wait()
-            raise ExecutorError("Compilation exceeded the 10 second limit") from error
+            raise ExecutorError(
+                f"Compilation exceeded the {self.compiler_timeout_seconds} second limit"
+            ) from error
         except OSError as error:
             raise ExecutorError(f"Java compiler could not start: {error}") from error
         finally:
@@ -175,7 +178,11 @@ class JavaExecutor:
             os.chown(class_file, supervisor_uid, supervisor_gid)
             class_file.chmod(0o444)
 
-        classpath = os.pathsep.join((str(job_root), str(self.harness_classes)))
+        # Harness classes precede the submission's output: a source that
+        # declares a class named like the harness entrypoint must not shadow
+        # it. The harness owns the OpenOJ* names; no legitimate submission
+        # class collides.
+        classpath = os.pathsep.join((str(self.harness_classes), str(job_root)))
         return PreparedProgram(
             command=(
                 self.java_path,

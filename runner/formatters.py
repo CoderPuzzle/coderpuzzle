@@ -154,15 +154,19 @@ def format_source_report(language: str, code: str) -> dict:
     """Non-raising tri-state around format_source.
 
     Returns one of:
-      {"status": "formatted"}                     — already conforming
-      {"status": "unformatted", "formatted": str} — parses; formatted text
-      {"status": "error", "diagnostics": str}     — refused (parse error,
-                                                    missing tool, timeout)
-    """
+      {"status": "formatted"}                 — already conforming
+      {"status": "unformatted", "code": str}  — parses; this is the
+                                                formatted text
+      {"status": "error", "diagnostics": str} — refused (parse error,
+                                                missing tool, timeout)
+
+    The keys deliberately match REST POST /format (api/app/judge.py), so
+    `openoj format --report json` and the editor's Format button speak one
+    contract; the CLI adds its `file` field per row."""
     try:
         formatted = format_source(language, code)
     except FormatError as error:
         return {"status": "error", "diagnostics": str(error)}
     if formatted == code:
         return {"status": "formatted"}
-    return {"status": "unformatted", "formatted": formatted}
+    return {"status": "unformatted", "code": formatted}

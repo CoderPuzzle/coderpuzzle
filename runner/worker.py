@@ -21,6 +21,7 @@ from executors import get_executor, supported_languages
 from executors.base import ExecutorError, LanguageExecutor, PreparedProgram
 from executors.go import WRAPPER_IMPORTS
 from formatters import FormatError, format_source
+from protocol import parse_protocol as _parse_protocol
 
 
 QUEUE_DIR = Path(os.environ.get("OPENOJ_QUEUE_DIR", "/queue"))
@@ -28,7 +29,6 @@ WORK_DIR = Path(os.environ.get("OPENOJ_WORK_DIR", "/work"))
 POLL_INTERVAL = float(os.environ.get("OPENOJ_POLL_INTERVAL", "0.05"))
 NOBODY_UID = 65534
 NOBODY_GID = 65534
-PROTOCOL_PREFIX = "__OPENOJ_RESULT__"
 RUNTIME_SANDBOX = "/runner/runtime_sandbox.py"
 SUPERVISOR_PYTHON = "/usr/local/bin/openoj-supervisor-python"
 CALIBRATION_FACTORS: dict[str, float] = {}
@@ -49,18 +49,6 @@ def _sandboxed_runtime_command(
         str(int(limits.get("processes", 16))),
         *command,
     )
-
-
-def _parse_protocol(output: str) -> dict[str, Any]:
-    for line in reversed(output.splitlines()):
-        if line.startswith(PROTOCOL_PREFIX):
-            try:
-                data = json.loads(line[len(PROTOCOL_PREFIX):])
-                if isinstance(data, dict) and data.get("status") in {"completed", "runtime_error"}:
-                    return data
-            except json.JSONDecodeError:
-                continue
-    return {"status": "runtime_error", "error": "Solution did not produce a valid judge response"}
 
 
 # The judge protocol travels on a dedicated inherited fd so ordinary stdout
@@ -203,6 +191,12 @@ def _run_case(
 
 
 def _write_response(job_dir: Path, response: dict[str, Any]) -> None:
+    # The API tears a job directory down when it stops waiting (its poll
+    # timeout, or an API restart); the answer for an abandoned job has no
+    # reader, so skip quietly instead of crashing the worker.
+    if not job_dir.is_dir():
+        print(f"OpenOJ job {job_dir.name} abandoned before its result", file=sys.stderr, flush=True)
+        return
     temporary = job_dir / "result.tmp"
     temporary.write_text(json.dumps(response, separators=(",", ":")), encoding="utf-8")
     os.replace(temporary, job_dir / "result.json")
@@ -325,12 +319,75 @@ def _process_job(job_dir: Path) -> None:
     _write_response(job_dir, response)
 
 
+def _reap_orphans() -> None:
+    """Reap zombie children this process inherited.
+
+    SIGKILLed submission processes reparent to the worker when it is the
+    container's PID 1, and nothing else reaps them: left alone they would
+    accumulate against the container's pid budget until the worker could no
+    longer spawn compilers. The worker's own children are waited explicitly
+    and are already gone by the time this runs; the one race — the prewarm
+    thread's build exiting between our waitpid and its subprocess.run —
+    only makes that check see a benign status of 0."""
+    while True:
+        try:
+            pid, _ = os.waitpid(-1, os.WNOHANG)
+        except ChildProcessError:
+            return
+        if pid == 0:
+            return
+
+
+# Entries under /tmp the worker manages itself (the shared Go build cache
+# the executors compile against, and the prewarm build directory).
+PREWARM_DIR = Path(os.environ.get("OPENOJ_PREWARM_DIR", "/tmp/openoj-prewarm"))
+_MANAGED_TMP = {"openoj-gocache", PREWARM_DIR.name}
+
+
+def _sweep_tmp() -> None:
+    """Delete what runtime processes dropped directly into /tmp.
+
+    The runtime sandbox runs submissions as `nobody` in a world-writable
+    /tmp outside the per-job work directory, and RLIMIT_FSIZE bounds single
+    files, not the directory: without this sweep, discarded files would
+    accumulate against the container's tmpfs budget until the shared Go
+    build cache and compiler temp files started failing. Runs between jobs
+    (the worker processes one job at a time), so nothing live is deleted."""
+    try:
+        entries = list(os.scandir("/tmp"))
+    except OSError:
+        return
+    for entry in entries:
+        if entry.name in _MANAGED_TMP:
+            continue
+        try:
+            if entry.is_dir(follow_symlinks=False):
+                shutil.rmtree(entry.path, ignore_errors=True)
+            else:
+                os.unlink(entry.path)
+        except OSError:
+            continue
+
+
+_last_tmp_sweep = 0.0
+
+
+def _hygiene() -> None:
+    """Reap inherited zombies every pass; sweep /tmp at most once a second."""
+    global _last_tmp_sweep
+    _reap_orphans()
+    now = time.monotonic()
+    if now - _last_tmp_sweep >= 1.0:
+        _last_tmp_sweep = now
+        _sweep_tmp()
+
+
 def _prewarm_toolchains_once() -> None:
     """Compile throwaway programs so a user's first submission never pays
     the cold toolchain cost (page-cache faults dominate rustc/g++/javac/tsc
     cold starts; the shared compile budget measures wall clock)."""
     global _prewarming
-    warm_dir = Path(os.environ.get("OPENOJ_PREWARM_DIR", "/tmp/openoj-prewarm"))
+    warm_dir = PREWARM_DIR
     _prewarming = True
     try:
         warm_dir.mkdir(parents=True, exist_ok=True)
@@ -384,7 +441,7 @@ def _prewarm_toolchains_once() -> None:
         go_cache.chmod(0o1777)
         os.chown(go_cache, NOBODY_UID, NOBODY_GID)
         jobs.append((
-            (SUPERVISOR_PYTHON, "/runner/compiler_sandbox.py", "2048", "32",
+            (SUPERVISOR_PYTHON, "/runner/compiler_sandbox.py", "2048", "32", "240",
              "/usr/bin/go", "build", "-trimpath", "-o", str(warm_dir / "warm-go-bin"), str(go_dir / "main.go")),
             {**environment, "GOCACHE": str(go_cache), "GOENV": "off", "GOPROXY": "off", "CGO_ENABLED": "0"},
             None,
@@ -445,8 +502,17 @@ def main() -> None:
         found = False
         for ready in QUEUE_DIR.glob("*/ready"):
             found = True
-            _process_job(ready.parent)
+            try:
+                _process_job(ready.parent)
+            except Exception:  # noqa: BLE001 — one bad job must never kill the worker
+                print(
+                    f"Runner job {ready.parent.name} crashed:\n{traceback.format_exc()}",
+                    file=sys.stderr,
+                    flush=True,
+                )
+            _hygiene()
         if not found:
+            _hygiene()
             time.sleep(POLL_INTERVAL)
 
 

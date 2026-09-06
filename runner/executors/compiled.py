@@ -18,12 +18,14 @@ def sandboxed_compiler_command(
     command: tuple[str, ...],
     memory_mb: int,
     max_processes: int,
+    cpu_seconds: int,
 ) -> tuple[str, ...]:
     return (
         SUPERVISOR_PYTHON,
         COMPILER_SANDBOX,
         str(memory_mb),
         str(max_processes),
+        str(cpu_seconds),
         *command,
     )
 
@@ -76,6 +78,7 @@ class CompiledExecutor:
                         command,
                         self.compiler_memory_mb,
                         self.max_processes,
+                        self.compiler_timeout_seconds,
                     ),
                     cwd=job_root,
                     env=environment,

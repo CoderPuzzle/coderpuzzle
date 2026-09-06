@@ -43,9 +43,9 @@ class BoundedText(io.StringIO):
         return len(value)
 
 
-def _json_safe(value: Any, output_limit: int = 65_536) -> Any:
+def _json_safe(value: Any, output_limit: int = 65_536, budget: int | None = None) -> Any:
     encoded = json.dumps(value, allow_nan=False, separators=(",", ":"))
-    if len(encoded) > output_limit:
+    if len(encoded) > (min(output_limit, budget) if budget is not None else output_limit):
         raise ValueError(f"Return value exceeds the {output_limit // 1024} KiB output limit")
     return json.loads(encoded)
 
@@ -553,10 +553,20 @@ def _invoke(module, invocation: dict[str, Any], raw_input: Any) -> Any:
 def main() -> None:
     response: dict[str, Any]
     captured = BoundedText()
+    # Default-limits budgets, used only if the payload itself fails to
+    # parse; recomputed from the real output limit below.
+    stdout_budget = MAX_CAPTURED_OUTPUT
     try:
         payload = json.load(sys.stdin)
         invocation = payload["invocation"]
         output_limit = int(payload.get("limits", {}).get("output_kb", 64)) * 1024
+        # `actual`, the captured output, and the traceback all share ONE
+        # protocol write, and the runtime sandbox caps that file at
+        # output_limit (RLIMIT_FSIZE): budget each part so the line can
+        # never cross the cap — a SIGXFSZ mid-emit would surface as a
+        # misleading "unparseable protocol output".
+        actual_budget = max(1024, output_limit - MAX_CAPTURED_OUTPUT - 4096)
+        stdout_budget = max(0, output_limit - 4096)
         with contextlib.redirect_stdout(captured), contextlib.redirect_stderr(captured):
             argv = sys.argv[1:]
             if "--" in argv:
@@ -568,7 +578,7 @@ def main() -> None:
             actual = _invoke(module, invocation, payload["input"])
         response = {
             "status": "completed",
-            "actual": _json_safe(actual, output_limit),
+            "actual": _json_safe(actual, output_limit, actual_budget),
             "stdout": captured.getvalue(),
         }
     except BaseException as error:
@@ -577,7 +587,7 @@ def main() -> None:
         response = {
             "status": "runtime_error",
             "error": f"{type(error).__name__}: {error}"[:1000],
-            "stdout": captured.getvalue(),
+            "stdout": captured.getvalue()[:stdout_budget],
             "traceback": "".join(traceback.format_exception_only(type(error), error))[
                 -2000:
             ],
