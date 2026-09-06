@@ -2,8 +2,10 @@
 
 The extend corpus is complete: 3,193 crawl-keyed originals (archived in
 the bank's `problems-originals/`, derived by
-`openoj/scripts/verify_corpus.py`) adapted 1:1 into the bank's served `problems/`
-tree with ids unchanged. The end-to-end loop for
+`openoj/scripts/verify_corpus.py`) adapted 1:1 into the bank's
+`problems-adapt/` tree with ids unchanged (the bank's `problems` symlink
+serves `problems-originals`; the adapted tree is addressed by name). The
+end-to-end loop for
 authoring any single problem is `docs/AUTHORING.md`; the six-fleet wave
 machinery (trackers, lane protocol, concurrency carve) retired with the
 wave — its durable law lives in CLAUDE.md's "Fleet discipline" and in
@@ -29,10 +31,11 @@ proved.
   wire needs (ListNode, TreeNode, ...) is copy-pasted into the bundle's
   own `provided/<language>/` from an exemplar bundle using the same
   kind (docs/CODECS.md has the wire→class→shape table) — never a shared
-  library, never hand-invented. `reference_solution` stays "" (one
-  solution; no variants in extend);
-  difficulty "" always (a hardness pass for the extend bundles is still
-  pending).
+  library, never hand-invented. `reference_solution` was "" at wave
+  time; the variant wave later added second solutions to 59
+  extend-derived bundles (their `reference_solution` names the optimal
+  variant). `difficulty` mirrors the curated source difficulty
+  (Easy/Medium/Hard) — never a re-evaluation.
 - Hidden cases >= 12 with named coverage; an independent ORACLE
   structurally different from the solution computes every expected;
   exhaustive small sweeps; measured output sizes when large (compact

@@ -243,6 +243,11 @@ carry no `use` lines; the submission's own `solution.rs` MAY import. The assembl
 `SetInteger` on pointer receivers) — Go solutions walk `*NestedInteger`
 items, mirroring LeetCode's own Go template.
 
+Debugging note (Rust): a panic inside a solution reaches the protocol
+through Rust's `Debug` formatting, which doubles every literal brace
+(`{{`). If a verify run or the judge reports "unparseable protocol
+output" for a Rust solution, suspect the panic first, not the wire.
+
 ## Design problems (`type: "design"`)
 
 Cases carry LeetCode-style sequences instead of positional arguments:
@@ -278,10 +283,11 @@ expected slot carries the distribution:
 
 The judge requires the observed total to equal `repeat`, every observed
 value to be a declared key, and each bucket to land inside the wider of
-`tolerance × expected` and 3.5 binomial standard deviations — a band that
-a correct sampler effectively never leaves while a biased one still
-fails. Buckets whose expected count falls below 10 merge into a single
-tail bucket. Exact and statistical slots mix freely in one case, so
+`tolerance × expected` and 4.0 binomial standard deviations — a band that
+a correct sampler effectively never leaves (a per-cell two-sided miss is
+near 6e-5, invisible even across a 10,000-cell table) while a biased one
+still fails. Buckets whose expected count falls below 10 merge into a
+single tail bucket. Exact and statistical slots mix freely in one case, so
 `insert`/`remove` stay exactly judged alongside a sampled `getRandom`.
 Case authors should size `repeat` so each bucket expects a few hundred
 draws or more.
@@ -477,10 +483,12 @@ judge-side checker instead of one value:
 
     {"mode": "validator", "name": "flip_permutation"}
 
-The registry lives in `api/app/validators.py`; unknown names raise at
-load, so a typo'd bundle fails loudly. Every validator receives the
-submission's output, the case input, and optional `params`, and answers
-one question — is THIS output a correct answer to THIS input:
+The registry lives in `api/app/validators.py`; an unknown name fails the
+case loudly at judge time (the comparison raises, surfacing as a case
+error), so a typo'd bundle is caught the first time it runs. Every
+validator receives the submission's output, the case input, and optional
+`params`, and answers one question — is THIS output a correct answer to
+THIS input:
 
 - `fizzbuzz` — the recorded value-callback stream is exactly the fizzbuzz
   sequence for `params.n` (LC 1195)
@@ -494,8 +502,6 @@ one question — is THIS output a correct answer to THIS input:
   impossibility) accepts an explicitly declared impossible answer
 - `rearrange_pair_order` — output is a permutation of the input string
   in which every `y` precedes every `x` (input `[s, x, y]`, LC 3992)
-- `disc_points` — a point set inside the disc requirements, judged with
-  a reproducible seeded sampler, not randomness
 - `flip_permutation` — the recorded flip stream is a permutation of all
   m·n cells since the last reset (LC 519)
 

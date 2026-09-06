@@ -207,8 +207,8 @@ The bundled Pair Sum demo has three visible and fifteen hidden cases covering
 duplicates, zeros, negative values, non-adjacent answers, minimum input size,
 and integer boundaries. The remaining problem set was imported from a curated
 LeetCode selection: statements and hints were adapted locally, difficulty
-labels (H1–H5) come from the curated source, and every testcase's expected
-value was produced by running a reference solution.
+labels (Easy/Medium/Hard) come from the curated source, and every testcase's
+expected value was produced by running a reference solution.
 
 ## Judging and time limits
 

@@ -87,6 +87,16 @@ Concretely, the existing protections all still apply:
   request is ever executed or included by reference.
 - `runner/compiler_sandbox.py` / `runtime_sandbox.py` — the privilege
   split between compiler, runtime, and supervisor.
+- **Shared Go build cache (accepted risk).** `go` compiles read and
+  write one shared `GOCACHE` (`/tmp/openoj-gocache`, mode 0o1777) so a
+  cold stdlib build is paid once, not per submission. A hostile compiler
+  could in principle poison cached entries for later submissions (Go's
+  read-side integrity check is size+mtime, both writer-controlled);
+  the runner has no network and every verdict is recomputed from the
+  submission's own output, so the exposure is sabotage of other users'
+  compile times/outputs, judged against frozen cases. Accepted as the
+  cost of warm Go compiles; the worker sweeps untrusted leftovers from
+  `/tmp` between jobs, and a full cache reset is a container restart.
 - `runner/leetcode_codecs.py` (Python) and `OpenOJJavaHarness`'s
   reflective codecs (Java) — the two harnesses that are not per-job
   generated source resolve every well-known class from the submission's

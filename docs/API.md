@@ -1,15 +1,16 @@
 # OpenOJ REST API
 
 The judge's full surface — the same API the web UI uses — available to
-scripted callers. Every endpoint except health and `GET /auth/status`
-requires a **guest session**; `GET /auth/status` reports whether the admin
-bootstrap has happened (public, so the first-visit gate can render before
-any session exists). Hidden account endpoints exist for the future UI
-(`POST /auth/register` bootstraps the fixed-name `admin` on a fresh
-install and then closes, `POST /auth/login` binds the session to a user
-whose drafts and submissions then live under the user id,
-`POST /auth/logout` unbinds). Treat any deployment's API as public and
-rate-limit at the edge if you expose it.
+scripted callers. Everything except `/health`, `GET /auth/status`, and
+`POST /auth/register` requires an active **session cookie**; `GET
+/auth/status` reports whether the admin bootstrap has happened (public,
+so the first-visit gate can render before any session exists).
+Account endpoints exist for the gate (`POST /auth/register` bootstraps
+the fixed-name `admin` on a fresh install and then closes — it needs no
+session, necessarily; `POST /auth/login` binds the CALLER'S EXISTING
+session to a user, whose drafts and submissions then live under the user
+id; `POST /auth/logout` unbinds). Treat any deployment's API as public
+and rate-limit at the edge if you expose it.
 
 ## Base URL
 
@@ -52,8 +53,8 @@ curl -b jar.txt 'https://openoj.dongziyu.com/api/problems?page=2&page_size=50'
 ```
 
 Response page shape: `{items, total, page, page_size, pages}`; each item is
-`{id, slug, title, difficulty, tags}` (difficulty is the set's own H1–H5
-scale).
+`{id, slug, title, difficulty, tags, topics, type}` (difficulty is one of
+`Easy`, `Medium`, `Hard`, mirrored from the curated source).
 
 ```sh
 # One problem with statement, hints, invocation, limits, languages,
@@ -97,12 +98,18 @@ curl -b jar.txt -X PUT https://openoj.dongziyu.com/api/drafts/pair-sum/python3 \
 curl -b jar.txt -X POST https://openoj.dongziyu.com/api/format \
   -H 'content-type: application/json' \
   -d '{"language":"python3","code":"…"}'
-# {"code":"…"} — the draft formatted with the same pinned toolchain the
-# problem bundles use
 ```
 
-A draft that does not parse is the author's to fix, so a formatter refusal
-is a `400` carrying the tool's own first line.
+Tri-state — the payload carries the state, so the endpoint is `200`
+whenever the runner is reachable:
+
+- `{"status":"formatted"}` — the draft already conforms;
+- `{"status":"unformatted","code":"…"}` — the draft parses; this is the
+  formatted text, produced by the same pinned toolchain the problem
+  bundles use;
+- `{"status":"error","diagnostics":"…"}` — the draft does not parse (the
+  author's to fix, so a payload state rather than a judge verdict);
+  `503` remains reserved for the runner being unreachable.
 
 ## Run (visible cases only)
 

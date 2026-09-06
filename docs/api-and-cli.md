@@ -6,12 +6,14 @@ web UI, and the `openoj` CLI (installed in the image as `ojcli` from
 `runner/cli.py`) drives authoring and CI. Formatting is the same code in
 both — see the tri-state contract below.
 
-Sessions are cookie-based. Every endpoint except `/health` and
-`/auth/*` requires an `openoj_session` cookie from `POST /session`;
-authenticated callers additionally carry the session of a signed-in
+Sessions are cookie-based. Everything except `/health`, `GET
+/auth/status`, and `POST /auth/register` requires an `openoj_session`
+cookie from `POST /session`; authenticated callers additionally carry
+the session of a signed-in
 user. Errors are FastAPI payloads: `{"detail": "<reason>"}` with the
 appropriate status (400 user error, 401 no/invalid session, 404 unknown
-slug or submission, 503 runner unavailable).
+slug or submission, 429 judge rate limit, 503 runner unavailable or
+busy).
 
 ## REST API
 
@@ -30,11 +32,13 @@ slug or submission, 503 runner unavailable).
 
 - `GET /auth/status` → `{"needs_setup": bool}` — public; true until the
   first account exists.
-- `POST /auth/register` `{username, password}` — the very first account
+- `POST /auth/register` `{username, password}` — public (no session, by
+  necessity on a fresh install): the very first account
   must be username `admin` (bootstrap); afterwards registration is
   closed. Password ≥ 8 chars.
-- `POST /auth/login` `{username, password}` → sets the session cookie
-  to the authenticated session.
+- `POST /auth/login` `{username, password}` — requires an active
+  session; binds that session to the user (the cookie itself is
+  unchanged).
 - `POST /auth/logout` — ends the session.
 
 ### Problems
@@ -44,8 +48,7 @@ slug or submission, 503 runner unavailable).
 - `GET /problems/topics` → `{"topics": [{"name", "count"}…]}` — topic
   taxonomy with per-topic counts, busiest first.
 - `GET /problems/{slug}` — the full public problem: statement pieces,
-  constraints, examples, starter per offered language, `provided`
-  assembly presence, public cases.
+  constraints, examples, starter per offered language, public cases.
 - `GET /problems/{slug}/solutions` — the solution guide: `titles`,
   per-variant `implementations` by language, the `canonical` code, the
   worst-to-best `order`, and which variant is the `reference`.
@@ -91,18 +94,22 @@ The image installs the CLI as `openoj` (`ojcli` historically); locally
 test an edited `cli.py` by bind-mounting it over `/runner/cli.py`.
 
 - `openoj format <files|dirs…>` — format in place to the OpenOJ
-  standard; directories walk for formattable files.
+  standard; directories walk for formattable files, skipping
+  `node_modules` and hidden trees.
   - `--check` — report unformatted files, change nothing, exit 1 if
     any. This is what CI runs over `problems-adapt`.
-  - `--report json` — non-mutating **tri-state JSON** per file (same
-    contract as `POST /format`, with `file` added):
-    `formatted | unformatted (+ "formatted" text) | error
+  - `--report json` — non-mutating **tri-state JSON** per file (the
+    same contract as `POST /format`, with `file` added):
+    `formatted | unformatted (+ "code" text) | error
     (+ "diagnostics")`. Exits 1 only when at least one file errored;
     "unformatted" is information, not a failure.
 - `openoj gen-starters <problem.json> [--style modern|legacy]` — emit
-  every `starter.<ext>` the bundle's invocation offers. Requires the
-  problems repo bind-mounted at `/tools` (the loader shim is the
-  schema contract).
+  `starter.<ext>` for the languages the bundle already offers (the
+  existing starter set is never widened), formatted by the pinned
+  toolchain. `--style` defaults to `modern`; the provenance-aware
+  choice (MAPPING.json-driven) lives in the problems repo's
+  `scripts/gen_starters.py`. Requires the problems repo bind-mounted
+  at `/tools` (the loader shim is the schema contract).
 - `openoj judge <bundle-dir>` — judge **every** `solution*.<ext>` in
   the bundle through the real executors against **all** cases; all
   must pass every case. Assembles the bundle's own `provided/` sources
@@ -135,10 +142,11 @@ docker run --rm --user 0:0 \
     ghcr.io/zydo/openoj:latest openoj format --check problems-adapt
 
 # run one solution file against its bundle's cases
+# (mount the repo root; the file is addressed from the working directory)
 docker run --rm --user 0:0 \
     -v "$PWD/runner/cli.py:/runner/cli.py:ro" \
     -v "$PWD/runner/formatters.py:/runner/formatters.py:ro" \
-    -v "$(dirname /path/to/bundle)/:/problems" -w /problems \
+    -v "$PWD:/work" -w /work \
     ghcr.io/zydo/openoj:latest openoj run problems-adapt/<shard>/<key>/my_draft.py
 ```
 

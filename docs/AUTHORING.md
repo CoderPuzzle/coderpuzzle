@@ -21,7 +21,7 @@ is the standard); `/bundle` is the problem directory you are authoring.
 `### Example N` fenced blocks, `### Constraints` (same numeric domain as
 the source of the task, freshly presented), optional `### Follow-up` and
 `## Hints`. See `FORMAT.md` in the problems repo for the grammar and
-`problems/0001-0100/0001_pair-sum/statement.md` for the register: plain,
+`problems-adapt/0001-0100/0001_pair-sum/statement.md` for the register: plain,
 direct, no invented scenarios.
 
 ## 2. Declare the language-agnostic signature
@@ -34,7 +34,8 @@ The heart is `invocation`:
   "schema_version": 2,
   "reference_solution": "",
   "id": 9999, "slug": "probe-sum", "title": "Probe Sum",
-  "difficulty": "H1", "tags": ["Array"],
+  "difficulty": "Easy", "tags": ["Array"],
+  "topics": ["Prefix Sum"], "type": "Algorithms",
   "invocation": {
     "type": "function",            // function | design | interactive | concurrent
     "class_name": "Solution", "method": "probeSum",

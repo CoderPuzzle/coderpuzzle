@@ -110,7 +110,8 @@ formatter via the image.
   `scripts/format.py` is only a loader shim; there is deliberately no
   local toolchain in openoj-problems.
 - The app fetches the problem set from `zydo/openoj-problems` on start
-  (cache under openoj `/.cache/problems/`), or serves a local path via
+  (host cache `./.cache/problems/<cache-key>/`, populated by the
+  problems-fetcher service), or serves a local path via
   `OPENOJ_PROBLEMS`. Restarting the stack picks up newly pushed problems.
 
 ## Core APIs and CLI
@@ -187,9 +188,10 @@ is in git. Surface new contradictions to the user with evidence.
   drivers (`stub-server.mjs`, `shot.mjs`, `session-e2e.mjs`). The
   gitignored `/.localonly/` holds only regenerable cache (the compiled
   Java harness).
-- openoj-problems `/.localonly/`: empty scratch (see its README.md) —
-  all authoring one-shots and the finished-wave `adapt_archive/`
-  bookkeeping were deleted 2026-09-04 with the corpus complete.
+- openoj-problems `/.localonly/`: gitignored scratch (see its
+  README.md) — currently holds the variant-wave II record
+  (`VARIANT-WAVE-II.md`) plus a few topic/mirror one-shot scripts;
+  never CI input, never referenced by tracked files.
 
 ## Fleet discipline (agent concurrency)
 
