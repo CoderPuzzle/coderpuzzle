@@ -25,6 +25,7 @@ from .database import (
     verify_user,
 )
 from .judge import RunnerUnavailable, execute, format_code_report
+from .tamper_scan import protected_names, scan as tamper_scan
 # the module (not the /problems route function of the same name below)
 from . import problems as problems_module
 from .models import FormatRequest, RunRequest, SubmitRequest
@@ -420,6 +421,18 @@ def format_source(
         raise HTTPException(status_code=503, detail=str(error)) from error
 
 
+def _attach_tamper_warnings(summary: dict[str, Any], slug: str, language: str, code: str) -> None:
+    """Flag (never gate) submissions that inspect or patch provided code."""
+    try:
+        assembly = _assembly_sources(slug, language)
+        protected = tamper_scan.protected_names(assembly.get("provided", {}))
+        warnings = tamper_scan.scan(code, language, protected)
+    except Exception:  # noqa: BLE001 — the scan is advisory and must never fail a judge
+        return
+    if warnings:
+        summary["warnings"] = warnings
+
+
 @app.post("/run")
 def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)]) -> dict[str, Any]:
     try:
@@ -459,7 +472,9 @@ def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)
         if case.get("custom") and result["status"] in {"wrong_answer", "accepted"}:
             result["status"] = "completed"
             result.pop("expected", None)
-    return _summarize(results)
+    summary = _summarize(results)
+    _attach_tamper_warnings(summary, problem_data["slug"], request.language, request.code)
+    return summary
 
 
 def _reference_runtime_ms(
@@ -509,6 +524,7 @@ def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_se
     scope = scope_key(session_id)
     results = _run_judge(problem_data, request.language, request.code, cases, public_count)
     summary = _summarize(results)
+    _attach_tamper_warnings(summary, problem_data["slug"], request.language, request.code)
     summary["reference_runtime_ms"] = _reference_runtime_ms(
         request, problem_data, cases, public_count, summary["status"] == "accepted"
     )

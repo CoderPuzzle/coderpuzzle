@@ -352,6 +352,25 @@ button:disabled { cursor: not-allowed; opacity: .42; }
 .result-summary strong { font-size: 14px; }
 .result-summary > div:nth-child(2) span { color: var(--muted); font-size: 12px; }
 .runtime { margin-left: auto; display: flex; align-items: center; gap: 5px; color: var(--muted); font: 11px "Roboto Mono", monospace; }
+.tamper-warning {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  padding: 9px 11px;
+  border: 1px solid var(--tamper-border, #b8860b33);
+  border-left-width: 3px;
+  border-radius: 6px;
+  background: var(--tamper-bg, #b8860b0f);
+  color: var(--tamper-ink, #8a6d1a);
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+.tamper-warning svg { flex-shrink: 0; margin-top: 1px; }
+.tamper-warning strong { display: block; margin-bottom: 2px; }
+.tamper-warning ul { margin: 0; padding-left: 14px; }
+.tamper-warning li + li { margin-top: 1px; }
+
 .result-layout { display: grid; grid-template-columns: minmax(145px, 31%) minmax(0, 1fr); min-height: 180px; margin-top: 10px; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
 .result-case-list { border-right: 1px solid var(--line); background: #121619; overflow-y: auto; }
 .result-case { width: 100%; min-height: 37px; display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; align-items: center; gap: 7px; padding: 0 9px; border: 0; border-bottom: 1px solid #242a2e; background: transparent; text-align: left; color: #b7c0c5; font-size: 12px; cursor: pointer; }

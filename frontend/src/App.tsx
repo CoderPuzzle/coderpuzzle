@@ -1618,6 +1618,19 @@ function Results({ result, busy, error, comparison, invocationType }: {
           </div>
         )}
       </div>
+      {result.warnings && result.warnings.length > 0 && (
+        <div className="tamper-warning" title="Advisory only — warnings never affect the verdict">
+          <CircleAlert size={13} />
+          <div>
+            <strong>Provided-code tampering patterns flagged</strong>
+            <ul>
+              {result.warnings.map((warning, index) => (
+                <li key={index}>{warning}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
       <div className="result-layout">
         <div className="result-case-list">
           {result.results.map((test, index) => (

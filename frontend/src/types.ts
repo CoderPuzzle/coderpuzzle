@@ -81,6 +81,7 @@ export type JudgeResult = {
     reference_runtime_ms?: number | null;
     results: CaseResult[];
     submission_id?: number;
+    warnings?: string[];
 };
 
 export type Submission = {
