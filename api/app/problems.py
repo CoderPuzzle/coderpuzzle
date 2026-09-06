@@ -2,6 +2,7 @@ import copy
 import json
 import os
 import re
+import time
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Optional
@@ -593,7 +594,13 @@ def safe_problem_path(slug: str) -> Path:
                 continue
         elif PROBLEM_FILE.fullmatch(path.name) is None:
             continue
-        problem, _, _ = _load_path(path)
+        # A stray or half-written bundle shadowing the slug must not mask the
+        # real one — list_problems tolerates broken bundles and so does the
+        # resolver; only candidates that parse get compared.
+        try:
+            problem, _, _ = _load_path(path)
+        except (ProblemError, ValueError):
+            continue
         if problem["slug"] == slug:
             matches.append(path)
     if len(matches) != 1:
@@ -601,8 +608,8 @@ def safe_problem_path(slug: str) -> Path:
     return matches[0]
 
 
-def load_problem(slug: str) -> dict[str, Any]:
-    problem, cases, public_count = _load_path(safe_problem_path(slug))
+def load_problem(slug: str, path: Optional[Path] = None) -> dict[str, Any]:
+    problem, cases, public_count = _load_path(path if path is not None else safe_problem_path(slug))
     problem["public_cases"] = [
         {**case, "name": case.get("name", f"Example {index + 1}")} for index, case in enumerate(cases[:public_count])
     ]
@@ -732,8 +739,8 @@ def _match_sections(
     return resolved
 
 
-def load_all_cases(slug: str) -> tuple[list[dict[str, Any]], int]:
-    _, cases, public_count = _load_path(safe_problem_path(slug))
+def load_all_cases(slug: str, path: Optional[Path] = None) -> tuple[list[dict[str, Any]], int]:
+    _, cases, public_count = _load_path(path if path is not None else safe_problem_path(slug))
     named_cases = [
         {
             **case,
@@ -747,7 +754,7 @@ def load_all_cases(slug: str) -> tuple[list[dict[str, Any]], int]:
     return named_cases, public_count
 
 
-def load_designated_reference(slug: str, language: str) -> Optional[str]:
+def load_designated_reference(slug: str, language: str, path: Optional[Path] = None) -> Optional[str]:
     """The bundle's designated reference solution for a language, if present.
 
     problem.json's 'reference_solution' names the variant whose
@@ -756,18 +763,18 @@ def load_designated_reference(slug: str, language: str) -> Optional[str]:
     ends with, so exactly one reference program runs per accepted
     submission. Best-effort: a bundle without that file for the language
     returns None and the UI omits the comparison."""
-    path = safe_problem_path(slug)
-    if not path.is_dir():
+    bundle = path if path is not None else safe_problem_path(slug)
+    if not bundle.is_dir():
         return None
     extension = LANGUAGE_EXTENSION.get(language)
     if extension is None:
         return None
     try:
-        designated = json.loads((path / "problem.json").read_text(encoding="utf-8")).get("reference_solution", "")
+        designated = json.loads((bundle / "problem.json").read_text(encoding="utf-8")).get("reference_solution", "")
     except (OSError, ValueError):
         return None
     stem = "solution" if not designated else f"solution_{designated}"
-    file_path = path / f"{stem}.{extension}"
+    file_path = bundle / f"{stem}.{extension}"
     if not file_path.is_file():
         return None
     return file_path.read_text(encoding="utf-8")
@@ -781,30 +788,47 @@ def load_reference_solution(slug: str, language: str) -> Optional[str]:
     return load_designated_reference(slug, language)
 
 
+_LIST_TTL_SECONDS = 2.0
+_list_cache: dict[str, tuple[float, list[dict[str, Any]]]] = {}
+
+
 def list_problems() -> list[dict[str, Any]]:
+    """Every problem summary, sorted by id.
+
+    One call stats every bundle's problem.json (thousands on the served
+    tree), and /problems plus /problems/topics call it per request — so the
+    result is memoized briefly per tree root. The summaries themselves stay
+    mtime-keyed in _cached_summary, so a refreshed problem set is picked up
+    within the TTL either way."""
+    key = str(PROBLEMS_DIR)
+    now = time.monotonic()
+    cached = _list_cache.get(key)
+    if cached is not None and now - cached[0] < _LIST_TTL_SECONDS:
+        return [dict(item) for item in cached[1]]
     problems = []
-    if not PROBLEMS_DIR.exists():
-        return problems
-    for candidate in _iter_problem_paths(PROBLEMS_DIR):
-        try:
-            path = candidate.resolve()
-            if not _is_direct_child(path):
-                continue
-            if path.is_dir():
-                if PROBLEM_BUNDLE_DIR.fullmatch(path.name) is None:
+    if PROBLEMS_DIR.exists():
+        for candidate in _iter_problem_paths(PROBLEMS_DIR):
+            try:
+                path = candidate.resolve()
+                if not _is_direct_child(path):
                     continue
-                signature = path / "problem.json"
-            elif PROBLEM_FILE.fullmatch(path.name) is None:
+                if path.is_dir():
+                    if PROBLEM_BUNDLE_DIR.fullmatch(path.name) is None:
+                        continue
+                    signature = path / "problem.json"
+                elif PROBLEM_FILE.fullmatch(path.name) is None:
+                    continue
+                else:
+                    signature = path
+                stat = signature.stat()
+                summary = _cached_summary(str(path), stat.st_mtime_ns, stat.st_size)
+                if summary is not None:
+                    problems.append(summary)
+            except (ProblemError, OSError, ValueError, json.JSONDecodeError):
                 continue
-            else:
-                signature = path
-            stat = signature.stat()
-            summary = _cached_summary(str(path), stat.st_mtime_ns, stat.st_size)
-            if summary is not None:
-                problems.append(summary)
-        except (ProblemError, OSError, ValueError, json.JSONDecodeError):
-            continue
-    return sorted(problems, key=lambda item: item["id"])
+        problems.sort(key=lambda item: item["id"])
+    _list_cache[key] = (now, problems)
+    return [dict(item) for item in problems]
 
 
 def public_problem(problem: dict[str, Any]) -> dict[str, Any]:

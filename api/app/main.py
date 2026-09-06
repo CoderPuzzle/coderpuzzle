@@ -1,6 +1,7 @@
 import re
 import time
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Annotated, Any
 
 from fastapi import Cookie, Depends, FastAPI, HTTPException, Query, Request, Response
@@ -24,7 +25,7 @@ from .database import (
     validate_session,
     verify_user,
 )
-from .judge import RunnerUnavailable, execute, format_code_report
+from .judge import RunnerUnavailable, execute, format_code_report, judge_slot
 from .tamper_scan import protected_names, scan as tamper_scan
 # the module (not the /problems route function of the same name below)
 from . import problems as problems_module
@@ -51,7 +52,17 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title="OpenOJ API", version="0.1.0", lifespan=lifespan)
+# The API surface is small and fully documented in docs/api-and-cli.md;
+# FastAPI's generated /docs and /openapi.json would only enumerate the
+# surface for strangers on a public deployment.
+app = FastAPI(
+    title="OpenOJ API",
+    version="0.1.0",
+    lifespan=lifespan,
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None,
+)
 
 
 @app.get("/health")
@@ -125,6 +136,11 @@ def auth_status() -> dict[str, Any]:
 # afterwards registration is closed until the accounts UI ships.
 
 # Minimal in-memory login throttle: per source, allow 10 failures per minute.
+# The source is the real client IP: uvicorn runs with --proxy-headers and the
+# frontend nginx forwards the edge-supplied X-Forwarded-For (see
+# frontend/nginx.conf), and the API container is reachable only through that
+# nginx, so request.client.host is never the proxy's own address in the
+# compose deployment.
 _LOGIN_WINDOW_SECONDS = 60.0
 _LOGIN_MAX_FAILURES = 10
 _login_failures: dict[str, list[float]] = {}
@@ -151,6 +167,32 @@ def _register_login_failure(source: str) -> None:
     recent = [stamp for stamp in _login_failures.get(source, []) if now - stamp < _LOGIN_WINDOW_SECONDS]
     recent.append(now)
     _login_failures[source] = recent
+
+
+# Judge-call shaping. The runner executes one job at a time and every judge
+# request blocks a worker thread for its full queue wait; the per-session
+# rate limit below stops one viewer from queueing a burst, and the global
+# in-flight slot count (judge.judge_slot) bounds how many requests wait on
+# the single runner at once — excess gets an immediate 503 instead of
+# pinning a thread for the full RUNNER_TIMEOUT.
+_JUDGE_WINDOW_SECONDS = 60.0
+_JUDGE_MAX_REQUESTS = 20
+_judge_requests: dict[str, list[float]] = {}
+
+
+def _judge_throttled(session_id: str) -> bool:
+    """True when this session already sent its share of judge calls in the
+    current window. The attempt is counted before it runs."""
+    now = time.monotonic()
+    recent = [stamp for stamp in _judge_requests.get(session_id, []) if now - stamp < _JUDGE_WINDOW_SECONDS]
+    if len(recent) >= _JUDGE_MAX_REQUESTS:
+        _judge_requests[session_id] = recent
+        return True
+    recent.append(now)
+    _judge_requests[session_id] = recent
+    for stale in [key for key, stamps in _judge_requests.items() if not stamps or now - stamps[-1] >= _JUDGE_WINDOW_SECONDS]:
+        del _judge_requests[stale]
+    return False
 
 
 @app.post("/auth/register")
@@ -352,7 +394,7 @@ PROVIDED_DIRECTORIES = {
 }
 
 
-def _assembly_sources(slug: str, language: str) -> dict[str, dict[str, str]]:
+def _assembly_sources(bundle: Path, language: str) -> dict[str, dict[str, str]]:
     """The bundle-provided sources assembled with one submission.
 
     Reads the problem's own provided/<language>/ files, so the runner
@@ -369,7 +411,6 @@ def _assembly_sources(slug: str, language: str) -> dict[str, dict[str, str]]:
     try:
         # directory candidates ARE the bundle; flat-file candidates are a
         # bundle-format single file whose parent carries no provided/ anyway
-        bundle = problems_module.safe_problem_path(slug)
         if not bundle.is_dir():
             bundle = bundle.parent
         provided_dir = bundle / "provided" / directory
@@ -377,29 +418,39 @@ def _assembly_sources(slug: str, language: str) -> dict[str, dict[str, str]]:
             for path in sorted(provided_dir.iterdir()):
                 if path.is_file():
                     assembly["provided"][path.name] = path.read_text(encoding="utf-8")
-    except (problems_module.ProblemError, OSError):
+    except OSError:
         return {}
     return assembly
 
 
 def _run_judge(
-    problem_data: dict[str, Any], language: str, code: str, cases: list[dict[str, Any]], public_count: int
+    problem_data: dict[str, Any],
+    language: str,
+    code: str,
+    cases: list[dict[str, Any]],
+    public_count: int,
+    bundle: Path,
 ) -> list[dict[str, Any]]:
     _validate_language(problem_data, language)
     try:
-        return execute(
-            code,
-            language,
-            problem_data["invocation"],
-            problem_data["limits"],
-            cases,
-            public_count,
-            assembly=_assembly_sources(problem_data["slug"], language),
-        )
+        with judge_slot():
+            return execute(
+                code,
+                language,
+                problem_data["invocation"],
+                problem_data["limits"],
+                cases,
+                public_count,
+                assembly=_assembly_sources(bundle, language),
+            )
     except RunnerUnavailable as error:
         raise HTTPException(status_code=503, detail=str(error)) from error
-    except (ValueError, OSError) as error:
+    except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error)) from error
+    except OSError as error:
+        # raw OSError text can leak server paths (see the problem route);
+        # queue errors are transient, so 503 rather than a client mistake
+        raise HTTPException(status_code=503, detail="The judge queue is not available") from error
 
 
 @app.post("/format")
@@ -415,8 +466,11 @@ def format_source(
     (the author's to fix, so a payload state rather than a judge verdict).
     503 remains reserved for the runner being unreachable.
     """
+    if _judge_throttled(session_id):
+        raise HTTPException(status_code=429, detail="Too many judge requests; wait a moment")
     try:
-        return format_code_report(request.code, request.language)
+        with judge_slot():
+            return format_code_report(request.code, request.language)
     except RunnerUnavailable as error:
         raise HTTPException(status_code=503, detail=str(error)) from error
 
@@ -435,8 +489,11 @@ def _attach_tamper_warnings(summary: dict[str, Any], slug: str, language: str, c
 
 @app.post("/run")
 def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)]) -> dict[str, Any]:
+    if _judge_throttled(session_id):
+        raise HTTPException(status_code=429, detail="Too many judge requests; wait a moment")
     try:
-        problem_data = load_problem(request.slug)
+        bundle = safe_problem_path(request.slug)
+        problem_data = load_problem(request.slug, path=bundle)
     except ProblemError as error:
         raise HTTPException(status_code=404, detail=str(error)) from error
 
@@ -467,7 +524,7 @@ def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)
             else:
                 cases.append(matched)
 
-    results = _run_judge(problem_data, request.language, request.code, cases, len(cases))
+    results = _run_judge(problem_data, request.language, request.code, cases, len(cases), bundle)
     for case, result in zip(cases, results, strict=True):
         if case.get("custom") and result["status"] in {"wrong_answer", "accepted"}:
             result["status"] = "completed"
@@ -483,6 +540,7 @@ def _reference_runtime_ms(
     cases: list[dict[str, Any]],
     public_count: int,
     accepted: bool,
+    bundle: Path,
 ) -> int | None:
     """Run the bundle's designated reference solution, return its runtime.
 
@@ -497,13 +555,13 @@ def _reference_runtime_ms(
     if not accepted:
         return None
     try:
-        reference = load_designated_reference(request.slug, request.language)
+        reference = load_designated_reference(request.slug, request.language, path=bundle)
     except (ProblemError, OSError):
         return None
     if reference is None:
         return None
     try:
-        results = _run_judge(problem_data, request.language, reference, cases, public_count)
+        results = _run_judge(problem_data, request.language, reference, cases, public_count, bundle)
     except HTTPException:
         return None
     if any(result["status"] not in {"accepted", "completed"} for result in results):
@@ -513,20 +571,25 @@ def _reference_runtime_ms(
 
 @app.post("/submit")
 def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_session)]) -> dict[str, Any]:
+    if _judge_throttled(session_id):
+        raise HTTPException(status_code=429, detail="Too many judge requests; wait a moment")
+    # Resolve the bundle once; every loader below takes the resolved path so
+    # one submission doesn't re-glob and re-statwalk the tree three times.
     try:
-        problem_data = load_problem(request.slug)
-        cases, public_count = load_all_cases(request.slug)
+        bundle = safe_problem_path(request.slug)
+        problem_data = load_problem(request.slug, path=bundle)
+        cases, public_count = load_all_cases(request.slug, path=bundle)
     except ProblemError as error:
         raise HTTPException(status_code=404, detail=str(error)) from error
 
     # Capture the storage scope before judging: a session that idle-expires
     # mid-judge still keeps its submission under the scope it ran under.
     scope = scope_key(session_id)
-    results = _run_judge(problem_data, request.language, request.code, cases, public_count)
+    results = _run_judge(problem_data, request.language, request.code, cases, public_count, bundle)
     summary = _summarize(results)
     _attach_tamper_warnings(summary, problem_data["slug"], request.language, request.code)
     summary["reference_runtime_ms"] = _reference_runtime_ms(
-        request, problem_data, cases, public_count, summary["status"] == "accepted"
+        request, problem_data, cases, public_count, summary["status"] == "accepted", bundle
     )
     submission_id = save_submission(
         request.slug,

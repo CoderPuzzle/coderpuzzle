@@ -1,9 +1,11 @@
 import json
 import math
 import os
+import threading
 import time
 import uuid
 from collections import Counter
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
@@ -20,6 +22,26 @@ class RunnerUnavailable(RuntimeError):
 
 class FormatRejected(ValueError):
     """The runner could format nothing — a parse error, or no such formatter."""
+
+
+# The runner executes one job at a time, so letting every request enqueue
+# just lengthens everyone's wait while pinning a worker thread apiece for
+# the full poll timeout. A small slot count bounds how many jobs wait on
+# the runner at once; saturation raises RunnerUnavailable, which the
+# endpoints translate into an immediate 503.
+JUDGE_CONCURRENCY = max(1, int(os.environ.get("OPENOJ_JUDGE_CONCURRENCY", "2")))
+_judge_slots = threading.BoundedSemaphore(JUDGE_CONCURRENCY)
+
+
+@contextmanager
+def judge_slot():
+    """Hold one of the few in-flight judge jobs (queue wait included)."""
+    if not _judge_slots.acquire(blocking=False):
+        raise RunnerUnavailable("The judge is busy; try again in a moment")
+    try:
+        yield
+    finally:
+        _judge_slots.release()
 
 
 DEFAULT_CLOSE_TOLERANCE = 1e-9
@@ -99,10 +121,17 @@ def _grouped_ok(actual: Any, spec: dict[str, Any]) -> bool:
     total = int(spec.get("total", len(actual)))
     if len(actual) != total or total % size != 0:
         return False
-    for start in range(0, total, size):
-        group = Counter(actual[start : start + size])
-        if group != Counter({token: int(n) for token, n in counts.items()}):
-            return False
+    try:
+        for start in range(0, total, size):
+            group = Counter(actual[start : start + size])
+            if group != Counter({token: int(n) for token, n in counts.items()}):
+                return False
+    except TypeError:
+        # The harness records whatever value the solution passed, so a
+        # wrong-typed element (a list where a hashable was expected) makes
+        # the multiset comparison impossible — that is a wrong answer, not
+        # a judge failure.
+        return False
     return True
 
 

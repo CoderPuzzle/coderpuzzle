@@ -81,6 +81,16 @@ def initialize_database() -> None:
         # Submissions recorded before time-cost scoring carry no reference runtime.
         if "reference_runtime_ms" not in columns:
             connection.execute("ALTER TABLE submissions ADD COLUMN reference_runtime_ms INTEGER")
+        # Every scoped read (per-viewer submissions, progress, purge) filters
+        # on the storage scope; results_json rows are fat, so keep those
+        # scans off the hot paths. Idempotent: IF NOT EXISTS matches the
+        # PRAGMA-migration style above.
+        connection.execute(
+            "CREATE INDEX IF NOT EXISTS idx_submissions_scope ON submissions(session_id, problem_slug)"
+        )
+        connection.execute(
+            "CREATE INDEX IF NOT EXISTS idx_sessions_last_seen ON sessions(last_seen_at)"
+        )
 
 
 @contextmanager
