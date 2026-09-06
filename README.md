@@ -7,6 +7,10 @@ Node 22.23.2, Go 1.24.4, and Rust 1.85.0 submissions, keeps problem packages
 outside the application images, and persists submission history in a Docker
 volume.
 
+The REST API and the image's authoring CLIs are documented in
+[docs/api-and-cli.md](docs/api-and-cli.md) — one toolchain, two interfaces:
+the tri-state `/format` endpoint and the `openoj format|gen-starters|judge|run` CLI.
+
 ## Start it
 
 ```bash

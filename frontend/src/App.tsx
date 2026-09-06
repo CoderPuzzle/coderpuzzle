@@ -688,13 +688,15 @@ function App() {
     setFormatting(true);
     setFormatError("");
     try {
-      const { code: formatted } = await api.format(language, code);
-      // An already-formatted draft must not clear the undo stack or mark the
-      // draft dirty, so an unchanged result is a no-op.
-      if (formatted !== code) {
-        setCode(formatted);
-        saveDraft(problem.slug, language, formatted);
+      const report = await api.format(language, code);
+      if (report.status === "unformatted") {
+        setCode(report.code);
+        saveDraft(problem.slug, language, report.code);
+      } else if (report.status === "error") {
+        setFormatError(report.diagnostics);
       }
+      // "formatted": the draft already conforms — nothing to change, and an
+      // unchanged result must not clear the undo stack or mark the draft dirty.
     } catch (error) {
       setFormatError(error instanceof Error ? error.message : "The formatter could not complete this request.");
     } finally {

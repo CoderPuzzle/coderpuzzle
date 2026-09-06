@@ -96,3 +96,41 @@ Concretely, the existing protections all still apply:
   names only cross the boundary (a case's expected slot carries
   `{"mode": "validator", "name": ...}`), never validator code; the
   implementation always resolves from the app-side registry.
+
+## Provided code: inspection and override are out of scope by construction
+
+`provided/<lang>/` sources compile and run **in the same process as the
+submission** — that is their purpose (self-contained problem content).
+Within that trust domain, dynamic languages make both inspection and
+override unavoidable: Python/JS sources sit on disk and are one
+`inspect`/attribute-write away; Java classes decompile; only the
+compiled languages (cpp, go, rust) hide implementations in-process, for
+free. This is accepted, not an oversight, because of where verdicts are
+decided:
+
+- **The judge never executes in the submission's runtime.** The harness
+  serializes whatever the submission returns and `api/app/judge.py`
+  compares it against the frozen expected values from `cases.json`.
+  Patching a provided class can only change the patcher's own outputs —
+  wrong answers, judged wrong. There is no provided-land handle that
+  flips a verdict.
+
+The rule that follows — and the one review enforces:
+
+- **Provided code is non-secret by construction.** It may carry data
+  structures, utilities, and case carriers the submission is meant to
+  use; it may never carry state whose disclosure would answer the
+  problem. Hidden state belongs to the judge/harness side, exposed —
+  when the genre needs it — only through a mediated interface
+  (interactive-style), never as data inside `provided/`.
+
+The one known state-bearing exception is 0843 (`unmask-the-hidden-
+word`): its oracle necessarily holds the hidden word at runtime — that
+is the genre. In dynamic languages the secret is one attribute read
+away, and even faking the verdict record is a plain attribute set.
+Accepted risk for a learning site: the only person a cheat deceives is
+the cheater, and the alternative (judge-side mediation for every
+language) would turn a 20-line guessing-game oracle into a protocol
+service. Static analysis of submissions for patching/reflection is
+deliberately deferred — detection is cat-and-mouse, and the stakes do
+not justify it.

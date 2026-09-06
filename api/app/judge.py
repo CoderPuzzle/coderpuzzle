@@ -71,11 +71,13 @@ def _distribution_ok(actual: Any, spec: dict[str, Any]) -> bool:
         expected_count = float(probability) * repeat
         actual_count = actual.get(key, 0)
         if expected_count >= min_bucket:
-            # The band is the wider of the relative tolerance and 3.5
+            # The band is the wider of the relative tolerance and 4.0
             # binomial standard deviations, so a correct sampler never
-            # flakes while a genuinely biased one still fails.
+            # flakes while a genuinely biased one still fails (4 sigma
+            # puts a per-cell two-sided miss near 6e-5, invisible even
+            # across a 10_000-cell table).
             sigma = math.sqrt(expected_count * (1.0 - float(probability)))
-            band = max(tolerance * expected_count, 3.5 * sigma)
+            band = max(tolerance * expected_count, 4.0 * sigma)
             if abs(actual_count - expected_count) > band:
                 return False
         else:
@@ -220,6 +222,25 @@ def format_code(code: str, language: str) -> str:
     if "code" not in response:
         raise FormatRejected(response.get("error") or "The source could not be formatted")
     return response["code"]
+
+
+def format_code_report(code: str, language: str) -> dict[str, Any]:
+    """Tri-state format result from the runner's toolchain.
+
+    {"status": "formatted"} — already conforming, nothing to change;
+    {"status": "unformatted", "code": ...} — parses; this is the
+    formatted text; {"status": "error", "diagnostics": ...} — the source
+    does not parse (the author's to fix, not a judge failure).
+    """
+    response = _submit({"version": 2, "kind": "format", "language": language, "code": code})
+    if "code" not in response:
+        return {
+            "status": "error",
+            "diagnostics": response.get("error") or "The source could not be formatted",
+        }
+    if response["code"] == code:
+        return {"status": "formatted"}
+    return {"status": "unformatted", "code": response["code"]}
 
 
 def execute(

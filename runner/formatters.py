@@ -148,3 +148,21 @@ def format_source(language: str, code: str) -> str:
     if not completed.stdout:
         raise FormatError("The formatter returned nothing")
     return _unwrap_go(completed.stdout) if wrapped else completed.stdout
+
+
+def format_source_report(language: str, code: str) -> dict:
+    """Non-raising tri-state around format_source.
+
+    Returns one of:
+      {"status": "formatted"}                     — already conforming
+      {"status": "unformatted", "formatted": str} — parses; formatted text
+      {"status": "error", "diagnostics": str}     — refused (parse error,
+                                                    missing tool, timeout)
+    """
+    try:
+        formatted = format_source(language, code)
+    except FormatError as error:
+        return {"status": "error", "diagnostics": str(error)}
+    if formatted == code:
+        return {"status": "formatted"}
+    return {"status": "unformatted", "formatted": formatted}

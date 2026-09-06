@@ -306,7 +306,7 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
         run_path = source_path
 
     return PreparedProgram(
-        command=(str(executor.node_path), "--stack-size=512", str(run_path)),
+        command=(str(executor.node_path), "--stack-size=2048", str(run_path)),
         # --stack-size cannot travel in NODE_OPTIONS (node rejects the whole
         # variable and aborts), so it rides on the command line instead.
         environment={"PATH": "/usr/bin:/bin", "HOME": "/nonexistent", "NODE_OPTIONS": "--disable-proto=throw --no-addons --max-old-space-size=192", "TMPDIR": str(scratch), "LANG": "C.UTF-8"},

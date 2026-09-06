@@ -24,7 +24,7 @@ from .database import (
     validate_session,
     verify_user,
 )
-from .judge import FormatRejected, RunnerUnavailable, execute, format_code
+from .judge import RunnerUnavailable, execute, format_code_report
 # the module (not the /problems route function of the same name below)
 from . import problems as problems_module
 from .models import FormatRequest, RunRequest, SubmitRequest
@@ -405,17 +405,19 @@ def _run_judge(
 def format_source(
     request: FormatRequest, session_id: Annotated[str, Depends(current_session)]
 ) -> dict[str, Any]:
-    """Format an editor draft with the same toolchain the problem bundles use.
+    """Tri-state format of an editor draft, judged by the bundles' toolchain.
 
-    A draft that does not parse is the author's to fix, so a formatter refusal
-    is a 400 carrying the tool's own first line rather than a judge verdict.
+    Always 200 when the runner is reachable — the payload carries the state:
+    {"status": "formatted"} when the draft already conforms;
+    {"status": "unformatted", "code": ...} with the formatted text;
+    {"status": "error", "diagnostics": ...} when the draft does not parse
+    (the author's to fix, so a payload state rather than a judge verdict).
+    503 remains reserved for the runner being unreachable.
     """
     try:
-        return {"code": format_code(request.code, request.language)}
+        return format_code_report(request.code, request.language)
     except RunnerUnavailable as error:
         raise HTTPException(status_code=503, detail=str(error)) from error
-    except FormatRejected as error:
-        raise HTTPException(status_code=400, detail=str(error)) from error
 
 
 @app.post("/run")

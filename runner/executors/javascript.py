@@ -1012,7 +1012,7 @@ class JavaScriptExecutor(CompiledExecutor):
                 "--disable-proto=throw",
                 "--no-addons",
                 "--max-old-space-size=192",
-                "--stack-size=512",
+                "--stack-size=2048",
                 str(source_path),
             ),
             environment={

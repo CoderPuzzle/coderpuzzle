@@ -126,9 +126,18 @@ session id otherwise (purged with the session). Idle expiry routes the
 UI to a dedicated logged-out page.
 
 CLI (inside the runner image): `openoj format <files>` (formats in place;
-combine with hash-compare for a check), `openoj gen-starters`,
+`--check` gates; `--report json` emits the non-mutating tri-state
+formatted/unformatted(+text)/error(+diagnostics) per file — the same
+contract as REST `POST /format`), `openoj gen-starters`,
 `openoj judge <bundle>` (judges every `solution*.<ext>` through the real
-executors, assembling the bundle's own `provided/` sources).
+executors, assembling the bundle's own `provided/` sources),
+`openoj run <file>` (single-file fast loop: discovers the bundle upward,
+infers the language, `--public` for public cases only; compiles plainly
+like `judge` — authoring tool, not the untrusted-submission sandbox).
+REST + CLI reference: `docs/api-and-cli.md`; the provided-code trust
+stance (non-secret by construction) is documented in
+`docs/TRUST-BOUNDARIES.md`. `scripts/format.sh` wraps the docker-run
+invocation.
 
 ## Authoring and verification loop
 

@@ -1,4 +1,4 @@
-import type { JudgeResult, Problem, ProblemPage, SolutionsContent, Submission, TopicIndex } from "./types";
+import type { FormatReport, JudgeResult, Problem, ProblemPage, SolutionsContent, Submission, TopicIndex } from "./types";
 
 export class ApiError extends Error {
   status: number;
@@ -99,7 +99,7 @@ export const api = {
     }),
   // Formatting depends on the language alone, so no slug is sent.
   format: (language: string, code: string) =>
-    request<{ code: string }>("/format", {
+    request<FormatReport>("/format", {
       method: "POST",
       body: JSON.stringify({ language, code }),
     }),

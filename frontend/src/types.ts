@@ -109,3 +109,8 @@ export type SolutionsContent = {
     // runtime the time-cost percentage is measured against.
     reference: string;
 };
+
+export type FormatReport =
+  | { status: "formatted" }
+  | { status: "unformatted"; code: string }
+  | { status: "error"; diagnostics: string };
