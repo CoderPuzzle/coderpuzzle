@@ -44,8 +44,11 @@ export type Problem = {
         type: "function" | "design" | "interactive" | "concurrent" | "sql" | "shell";
         class_name: string;
         method: string;
-        // Only function-shaped invocations carry parameters; design,
-        // interactive, concurrent, sql, and shell manifests omit it.
+        // Function and sql manifests carry a parameters list (sql's names
+        // its dataset with the sql_setup codec); design, interactive, and
+        // concurrent manifests omit it, and interactive ones may carry an
+        // empty list — the testcase editor derives fields from the case
+        // whenever the manifest list is missing or empty.
         parameters?: Array<{ name: string; codec: string }>;
         return_codec: string;
         // "exact" (default), "sorted", "multiset", "close", or

@@ -128,10 +128,16 @@ function matchesFilter(entry: ProblemSummary, normalizedQuery: string) {
 }
 
 // The topic filter's option list — fetched once per session and shared by
-// the landing filter and the problem drawer.
+// the landing filter and the problem drawer. A rejected fetch is dropped
+// from the cache so a later open retries instead of caching the failure.
 let topicIndexPromise: Promise<TopicSummary[]> | null = null;
 function loadTopicIndex() {
-  topicIndexPromise ??= api.getTopicIndex().then((data) => data.topics);
+  topicIndexPromise ??= api.getTopicIndex()
+    .then((data) => data.topics)
+    .catch((error: unknown) => {
+      topicIndexPromise = null;
+      throw error;
+    });
   return topicIndexPromise;
 }
 
@@ -303,12 +309,23 @@ function App() {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [problemListOpen, setProblemListOpen] = useState(false);
   const [confirmRestore, setConfirmRestore] = useState(false);
+  // Stable identities: the drawer and dialog key their focus/keyboard
+  // effects on onClose, and a fresh inline closure would re-run them (and
+  // steal focus back) on every render of the workspace.
+  const closeProblemList = useCallback(() => setProblemListOpen(false), []);
+  const closeConfirmRestore = useCallback(() => setConfirmRestore(false), []);
   const [formatting, setFormatting] = useState(false);
   const [formatError, setFormatError] = useState("");
   const [splitX, setSplitX] = useState(46);
   const [splitY, setSplitY] = useState(61);
   const workspaceRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
+  // Live editor state for async guards: lets a slow callback (format) tell
+  // whether the editor still shows what it was launched with.
+  const editorCodeRef = useRef(code);
+  editorCodeRef.current = code;
+  const editorLanguageRef = useRef(language);
+  editorLanguageRef.current = language;
   const theme = themeOverride ?? systemTheme;
 
   // Server-side drafts (session-scoped): loaded per problem, cached locally
@@ -317,6 +334,7 @@ function App() {
   const draftCache = useRef(new Map<string, string>());
   const pendingDrafts = useRef(new Map<string, { slug: string; language: string; code: string }>());
   const draftTimer = useRef<number | null>(null);
+  const [draftSaveFailed, setDraftSaveFailed] = useState(false);
   const flushDrafts = useCallback(() => {
     if (draftTimer.current !== null) {
       window.clearTimeout(draftTimer.current);
@@ -325,7 +343,11 @@ function App() {
     const pending = [...pendingDrafts.current.values()];
     pendingDrafts.current.clear();
     for (const draft of pending) {
-      api.putDraft(draft.slug, draft.language, draft.code).catch(() => undefined);
+      api.putDraft(draft.slug, draft.language, draft.code)
+        .then(() => setDraftSaveFailed(false))
+        // a failed flush must not read "Saved": the local cache dies with
+        // the session, so the status line has to admit the loss
+        .catch(() => setDraftSaveFailed(true));
     }
   }, []);
   const saveDraft = useCallback((slug: string, language: string, code: string) => {
@@ -677,6 +699,9 @@ function App() {
         }));
       }
     } catch (error) {
+      // Same guard as the success path: a failure arriving after the user
+      // moved on belongs to the problem they left, not the one on screen.
+      if (activeSlugRef.current !== slug) return;
       setActionError(error instanceof Error ? error.message : "The judge could not complete this request.");
     } finally {
       setBusy(null);
@@ -685,13 +710,22 @@ function App() {
 
   const formatCode = useCallback(async () => {
     if (formatting || !code.trim() || !problem) return;
+    const requestedCode = code;
+    const requestedLanguage = language;
+    const requestedSlug = problem.slug;
     setFormatting(true);
     setFormatError("");
     try {
-      const report = await api.format(language, code);
+      const report = await api.format(requestedLanguage, requestedCode);
+      // The round trip outlives keystrokes: apply the result only when the
+      // editor is exactly where it was when the request launched, so newer
+      // edits (or a language switch) are never clobbered by an older
+      // state's formatted text.
+      if (activeSlugRef.current !== requestedSlug) return;
+      if (editorCodeRef.current !== requestedCode || editorLanguageRef.current !== requestedLanguage) return;
       if (report.status === "unformatted") {
         setCode(report.code);
-        saveDraft(problem.slug, language, report.code);
+        saveDraft(requestedSlug, requestedLanguage, report.code);
       } else if (report.status === "error") {
         setFormatError(report.diagnostics);
       }
@@ -981,7 +1015,9 @@ function App() {
             <div className="editor-status">
               {formatError
                 ? <span className="editor-status-error"><CircleAlert size={12} /> {formatError}</span>
-                : <span><span className="saved-dot" /> Saved</span>}
+                : draftSaveFailed
+                  ? <span className="editor-status-error"><CircleAlert size={12} /> Draft not saved</span>
+                  : <span><span className="saved-dot" /> Saved</span>}
               <span>{problem.limits.time_ms / 1000}s · {problem.limits.memory_mb} MB</span>
             </div>
           </section>
@@ -1031,7 +1067,7 @@ function App() {
             setProblemListOpen(false);
             if (slug !== activeSlug) openProblem(slug);
           }}
-          onClose={() => setProblemListOpen(false)}
+          onClose={closeProblemList}
         />
       )}
 
@@ -1045,7 +1081,7 @@ function App() {
             setCode(languageConfig.starter);
             saveDraft(problem.slug, language, languageConfig.starter);
           }}
-          onClose={() => setConfirmRestore(false)}
+          onClose={closeConfirmRestore}
         />
       )}
     </div>
@@ -1480,6 +1516,13 @@ function Landing({ theme, onToggleTheme, onOpen, onLogout, progress, seed }: {
                   </p>
                 )}
               </div>
+            ) : filtering && !allItems ? (
+              // filters are active but the full list they run against is
+              // still loading — say so instead of showing the unfiltered
+              // page under an active-looking filter
+              <div className="landing-list">
+                <p className="landing-loading"><LoaderCircle className="spin" size={16} /> Applying filters…</p>
+              </div>
             ) : loading && items.length === 0 ? (
               <div className="landing-list">
                 <p className="landing-loading"><LoaderCircle className="spin" size={16} /> Loading the problem set…</p>
@@ -1531,9 +1574,13 @@ function Testcases({ problem, drafts, setDrafts, activeCase, setActiveCase }: {
   const current = drafts[activeCase];
   if (!current) return null;
   // Function-shaped problems list their parameters in the manifest; other
-  // invocation types have no manifest parameter list, so the custom-case
-  // fields follow whatever keys the starter case carries.
-  const parameters = problem.invocation.parameters ?? Object.keys(current).map((name) => ({ name, codec: "" }));
+  // invocation types have none (interactive manifests may carry an empty
+  // list, which is as good as absent), so the custom-case fields follow
+  // whatever keys the starter case carries.
+  const manifest = problem.invocation.parameters;
+  const parameters = manifest && manifest.length > 0
+    ? manifest
+    : Object.keys(current).map((name) => ({ name, codec: "" }));
   return (
     <div className="testcase-view">
       <div className="case-tabs">
@@ -1549,12 +1596,17 @@ function Testcases({ problem, drafts, setDrafts, activeCase, setActiveCase }: {
             )}
           </button>
         ))}
-        <button className="add-case" title="Add testcase" onClick={() => {
-          const blank = Object.fromEntries(parameters.map(({ name }) =>
-            [name, isRawTextParameter(problem, name) ? "" : name === "nums" ? "[]" : "0"]));
-          setDrafts((items) => [...items, blank]);
-          setActiveCase(drafts.length);
-        }}><Plus size={15} /></button>
+        <button
+          className="add-case"
+          title={drafts.length >= 20 ? "A run accepts at most 20 testcases" : "Add testcase"}
+          disabled={drafts.length >= 20}
+          onClick={() => {
+            const blank = Object.fromEntries(parameters.map(({ name }) =>
+              [name, isRawTextParameter(problem, name) ? "" : name === "nums" ? "[]" : "0"]));
+            setDrafts((items) => [...items, blank]);
+            setActiveCase(drafts.length);
+          }}
+        ><Plus size={15} /></button>
       </div>
       <div className="case-fields">
         {parameters.map(({ name: parameter }) => {
