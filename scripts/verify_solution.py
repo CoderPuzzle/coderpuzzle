@@ -9,7 +9,7 @@ Usage: verify_solution.py <shard-qualified-bundle-key> [<ext> ...]
        (default exts: every solution.* present in the bundle)
 
 The key is resolved against the sibling openoj-problems checkout (or
-whatever OPENOJ_PROBLEMS_DIR points at); local toolchain binaries are
+wherever OPENOJ_PROBLEMS_BANK points); local toolchain binaries are
 expected on PATH (g++, go, rustc, node, javac/java) next to the repo's
 npm-installed tsc.
 """
@@ -31,6 +31,7 @@ os.environ.setdefault("OPENOJ_PROBLEMS_DIR", str(REPO / "problems-adapt"))
 
 from api.app.judge import _compare  # noqa: E402
 from api.app import problems as problems_module  # noqa: E402
+from runner.protocol import parse_protocol  # noqa: E402
 from runner.executors import cpp as cpp_exec  # noqa: E402
 from runner.executors import go as go_exec  # noqa: E402
 from runner.executors import rust as rust_exec  # noqa: E402
@@ -232,15 +233,12 @@ def run_cases(bundle: Path, solution: Path) -> tuple[bool, str]:
             except subprocess.TimeoutExpired:
                 return False, f"case {index + 1}: time limit exceeded"
             output = completed.stdout.decode("utf-8", errors="replace")
-            match = re.search(
-                rf"^{PROTOCOL_PREFIX}(.*)$", output, re.M | re.S
-            )
-            if match is None:
+            if PROTOCOL_PREFIX not in output:
                 return False, f"case {index + 1}: no protocol output (exit {completed.returncode}): {output[-800:]}"
-            try:
-                result = json.loads(match.group(1).strip())
-            except json.JSONDecodeError:
-                return False, f"case {index + 1}: unparseable protocol output"
+            # The judge's own parser (runner/protocol.py): last marker line
+            # wins, malformed lines are skipped — a verdict here means the
+            # same thing it does on the live judge.
+            result = parse_protocol(output)
             if result.get("status") != "completed":
                 return False, f"case {index + 1} ({case.get('name', '')}): {result.get('status')}: {str(result.get('error'))[:500]}"
             if not _compare(result.get("actual"), case["expected"], comparison, case.get("input")):
@@ -254,12 +252,16 @@ def run_cases(bundle: Path, solution: Path) -> tuple[bool, str]:
 
 def main() -> None:
     _install_local_paths()
+    if len(sys.argv) < 2:
+        raise SystemExit("usage: verify_solution.py <shard-qualified-bundle-key> [<ext> ...] [--solution <file>]")
     key = sys.argv[1]
     # Shard-qualified key under the adapted tree: either
     # "problems-adapt/<shard>/<id>_<slug>" or "<shard>/<id>_<slug>".
     bundle = (REPO / key).resolve()
     if not bundle.is_dir():
         bundle = (REPO / "problems-adapt" / key).resolve()
+    if not bundle.is_dir():
+        raise SystemExit(f"no bundle directory for {key!r} under {REPO}")
     key = bundle.name
     arguments = sys.argv[2:]
     # --solution judges a file that lives outside the bundle against this
@@ -268,8 +270,12 @@ def main() -> None:
     external: list[Path] = []
     while "--solution" in arguments:
         index = arguments.index("--solution")
+        if index + 1 >= len(arguments):
+            raise SystemExit("--solution requires a file path")
         external.append(Path(arguments[index + 1]).resolve())
         del arguments[index : index + 2]
+    if external and arguments:
+        raise SystemExit("extension filters cannot be combined with --solution")
     solutions = external or sorted(
         path for path in bundle.iterdir()
         if path.name.startswith("solution")
@@ -279,6 +285,13 @@ def main() -> None:
     if wanted and not external:
         suffixes = {f".{w}" for w in wanted}
         solutions = [p for p in solutions if ("." + p.name.rsplit(".", 1)[1]) in suffixes]
+    if not solutions:
+        # A filter that matches nothing must fail loudly: this script is a
+        # gate, and silently judging zero solutions would exit 0.
+        raise SystemExit(
+            f"no solution files to judge in {bundle}"
+            + (f" matching {sorted(wanted)}" if wanted and not external else "")
+        )
     failures = 0
     for solution in solutions:
         label = solution.name[len("solution") : -len(solution.name.rsplit(".", 1)[1]) - 1]

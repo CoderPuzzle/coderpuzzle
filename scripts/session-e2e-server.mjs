@@ -6,7 +6,7 @@
 // ). No external deps.
 import http from "node:http";
 import { readFile } from "node:fs/promises";
-import { extname, join } from "node:path";
+import { extname, join, normalize, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const DIST = fileURLToPath(new URL("../frontend/dist", import.meta.url));
@@ -22,20 +22,34 @@ http.createServer(async (req, res) => {
       proxyRes.pipe(res);
     });
     upstream.on("error", () => {
-      res.writeHead(502);
-      res.end("api unreachable");
+      if (!res.headersSent) {
+        res.writeHead(502);
+        res.end("api unreachable");
+      }
     });
     req.pipe(upstream);
     return;
   }
   const path = req.url === "/" ? "/index.html" : req.url.split("?")[0];
+  // Contain reads inside dist/: resolve the URL path and refuse anything
+  // that escapes (an URL like /../../etc/passwd must not serve files).
+  const resolved = normalize(join(DIST, path));
+  if (resolved !== DIST && !resolved.startsWith(DIST + sep)) {
+    res.writeHead(403);
+    return res.end("forbidden");
+  }
   try {
-    const body = await readFile(join(DIST, path));
+    const body = await readFile(resolved);
     res.writeHead(200, { "content-type": types[extname(path)] ?? "application/octet-stream" });
     res.end(body);
   } catch {
-    const body = await readFile(join(DIST, "index.html"));
-    res.writeHead(200, { "content-type": "text/html" });
-    res.end(body);
+    try {
+      const body = await readFile(join(DIST, "index.html"));
+      res.writeHead(200, { "content-type": "text/html" });
+      res.end(body);
+    } catch {
+      res.writeHead(404);
+      res.end("not found");
+    }
   }
 }).listen(4174, () => console.log("e2e server on http://127.0.0.1:4174"));

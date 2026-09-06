@@ -17,7 +17,8 @@ Checks:
      parseable problem.json/cases.json, present statement/solutions/
      solution files; no extras
   D. crawl ids covered by neither original set == none (corpus complete)
-  E. problems/ has exactly one adapt bundle per original, and exactly one
+  E. problems-adapt/ has exactly one adapt bundle per crawl id (coverage
+     both directions), parses cleanly, and carries exactly one
      bettercode-derived bundle per MAPPING.json row (id == source id,
      dir == `<id>_<slug>`)
 """
@@ -148,12 +149,17 @@ def expected_shard(bundle_id):
 
 def main():
     crawl = crawl_index()
+    if not crawl:
+        fail(f"crawl index is empty — is {CRAWL} the right directory?")
+        return 1
     print(f"A. crawl problems: {len(crawl)} (ids {min(crawl)}-{max(crawl)})")
     if len(crawl) != 4018:
         fail(f"crawl count {len(crawl)} != 4018")
 
     good = {}
     for line in BETTERCODE.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
         row = json.loads(line)
         if row.get("value_tier") == "good":
             good[row["id"]] = row["slug"]
@@ -225,6 +231,9 @@ def main():
         bundle_dir = SERVED / expected_shard(source_id) / name
         if not bundle_dir.is_dir():
             fail(f"MAPPING {source}: adapted bundle missing: {bundle_dir}")
+        if source_id in adapted:
+            fail(f"MAPPING: source id {source_id} appears twice "
+                 f"({adapted[source_id]} and {name})")
         adapted[source_id] = name
     served_ids = {}
     for bundle_dir in sorted(SERVED.glob("*/*")):
@@ -232,12 +241,21 @@ def main():
             continue
         match = re.match(r"^(\d+)_(.+)$", bundle_dir.name)
         if not match:
-            fail(f"problems/ dir not parseable: {bundle_dir}")
+            fail(f"problems-adapt/ dir not parseable: {bundle_dir}")
             continue
-        served_ids.setdefault(int(match.group(1)), []).append(bundle_dir.name)
+        bundle_id, slug = int(match.group(1)), match.group(2)
+        served_ids.setdefault(bundle_id, []).append(bundle_dir.name)
+        check_files("adapt", bundle_id, slug, bundle_dir)
+    # Coverage in the other direction too: the served tree must carry a
+    # bundle for every crawl id — a deleted shard would otherwise pass
+    # unnoticed, since all checks below run over the ids that ARE present.
+    missing_served = set(crawl) - set(served_ids)
+    if missing_served:
+        fail(f"problems-adapt/ missing {len(missing_served)} crawl ids: "
+             f"{sorted(missing_served)[:20]}")
     bettercode_served = sum(1 for i in adapted if i in served_ids)
     print(
-        f"E. problems/ bundles: {sum(len(v) for v in served_ids.values())} "
+        f"E. problems-adapt/ bundles: {sum(len(v) for v in served_ids.values())} "
         f"(bettercode-derived: {bettercode_served}/{len(adapted)})"
     )
     if bettercode_served != len(adapted):

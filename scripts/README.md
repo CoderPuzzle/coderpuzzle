@@ -2,8 +2,7 @@
 
 Tracked tooling that runs on this checkout (not in the runner image).
 Bank paths default to the sibling `../openoj-problems` checkout;
-override with `OPENOJ_PROBLEMS_BANK` (and `OPENOJ_PROBLEMS_DIR` for the
-served tree).
+override with `OPENOJ_PROBLEMS_BANK`.
 
 ## Authoring gates
 

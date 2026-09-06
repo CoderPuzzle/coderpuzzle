@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Crop the verdict seal from the workspace screenshot and render it as a
-fine ASCII map so its shape (ring, fill, monogram) can be inspected. Not
-committed."""
+fine ASCII map so its shape (ring, fill, monogram) can be inspected."""
 import sys
 
 from PIL import Image

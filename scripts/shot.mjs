@@ -1,19 +1,24 @@
 // Local-only screenshot driver. Launches headless Chrome, points it at the
 // stub server, captures the landing page (dark/light/mobile) and the
 // workspace with a real verdict seal, writing PNGs to .localonly/shots/.
-// Not committed (see .gitignore).
+// The stub server and this driver share the repo's gitignored .localonly/
+// directory for the mode file and the screenshots.
 //
 //   node scripts/stub-server.mjs   # in one terminal
 //   node scripts/shot.mjs          # in another
+import { mkdirSync, writeFileSync } from "node:fs";
 import { spawn } from "node:child_process";
-import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const DEBUG_PORT = 9222;
 const BASE = "http://127.0.0.1:4173";
-const OUT_DIR = fileURLToPath(new URL("./shots/", import.meta.url));
-const MODE_FILE = fileURLToPath(new URL("./stub-mode", import.meta.url));
+// Both resolve against the repo root's .localonly/ — the same place
+// stub-server.mjs reads the mode file from.
+const OUT_DIR = fileURLToPath(new URL("../.localonly/shots/", import.meta.url));
+const MODE_FILE = fileURLToPath(new URL("../.localonly/stub-mode", import.meta.url));
+
+mkdirSync(OUT_DIR, { recursive: true });
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 

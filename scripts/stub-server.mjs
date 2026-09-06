@@ -1,6 +1,7 @@
 // Local-only design-preview stub: serves the built frontend (dist/) and mocks
 // the OpenOJ API with realistic data so the design can be screenshotted
-// without Docker or the real backend. Not committed (see .gitignore).
+// without Docker or the real backend. Local-only (its mode file and the
+// screenshots live in the repo-root .localonly/, which is gitignored).
 //
 //   node scripts/stub-server.mjs   →  http://127.0.0.1:4173
 //
@@ -9,7 +10,7 @@
 import http from "node:http";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { dirname, join, extname, normalize } from "node:path";
+import { dirname, join, extname, normalize, sep } from "node:path";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const DIST = join(ROOT, "frontend", "dist");
@@ -295,7 +296,13 @@ function toJSON(data) {
 
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
-  const path = decodeURIComponent(url.pathname);
+  let path;
+  try {
+    path = decodeURIComponent(url.pathname);
+  } catch {
+    res.statusCode = 400;
+    return res.end("bad request");
+  }
 
   // ── API ─────────────────────────────────────────────────────────────────
   if (path.startsWith("/api/")) {
@@ -329,7 +336,7 @@ const server = http.createServer((req, res) => {
       }
       return res.end(toJSON({ status: "active", idle_seconds: 3600 }));
     }
-    const draftMatch = path.match(/^\/api\/drafts\/([a-z0-9-]+)(?:\/([a-z0-93]+))?$/);
+    const draftMatch = path.match(/^\/api\/drafts\/([a-z0-9-]+)(?:\/([a-z0-9]+))?$/);
     if (draftMatch) {
       if (req.method === "PUT") {
         return res.end(toJSON({ status: "saved" }));
@@ -386,7 +393,9 @@ const server = http.createServer((req, res) => {
   // ── Static / SPA ────────────────────────────────────────────────────────
   let filePath = path === "/" ? "/index.html" : path;
   let resolved = normalize(join(DIST, filePath));
-  if (!resolved.startsWith(DIST)) {
+  // the separator check keeps a sibling directory (.../dist-evil) from
+  // passing the prefix test
+  if (resolved !== DIST && !resolved.startsWith(DIST + sep)) {
     res.statusCode = 403;
     return res.end("forbidden");
   }

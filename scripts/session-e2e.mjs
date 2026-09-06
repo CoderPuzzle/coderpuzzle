@@ -1,6 +1,6 @@
 // Local-only E2E: drives the real frontend against the real API through the
 // guest-session gate: gate shows -> Continue as guest -> problems load ->
-// open a problem -> type code -> reload -> draft persists. Not committed.
+// open a problem -> type code -> reload -> draft persists.
 import { spawn } from "node:child_process";
 
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
