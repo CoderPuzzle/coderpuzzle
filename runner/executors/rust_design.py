@@ -24,7 +24,7 @@ from .rust_interactive import NESTED_HELPERS, WRAPPER_HEAD, _convert, _rust_type
 TREE_HELPERS = """\
 // tree_node codec decode: level-order OjValue array (Null for absent
 // children) -> owned tree, same slot-to-node assignment as the harness.
-fn openoj_design_tree(value: &OjValue) -> Result<Option<Box<TreeNode>>, String> {
+fn coderpuzzle_design_tree(value: &OjValue) -> Result<Option<Box<TreeNode>>, String> {
     let items = match value {
         OjValue::Array(items) => items,
         _ => return Err("Expected a level-order tree array".to_string()),
@@ -70,7 +70,7 @@ fn openoj_design_tree(value: &OjValue) -> Result<Option<Box<TreeNode>>, String> 
 
 // tree_node codec encode: tree -> level-order OjValue array, trailing
 // nulls trimmed, so results compare as plain JSON.
-fn openoj_design_tree_value(root: Option<Box<TreeNode>>) -> OjValue {
+fn coderpuzzle_design_tree_value(root: Option<Box<TreeNode>>) -> OjValue {
     let mut items: Vec<OjValue> = Vec::new();
     let mut queue: std::collections::VecDeque<Option<&TreeNode>> = std::collections::VecDeque::new();
     if root.is_some() {
@@ -98,11 +98,11 @@ def _design_convert(spec: dict[str, Any], source: str) -> str:
     """Parameter conversion for the design replay: the interactive
     converter plus the tree_node codec's level-order array -> tree."""
     if spec["kind"] == "binary_tree":
-        return f"openoj_design_tree({source})?"
+        return f"coderpuzzle_design_tree({source})?"
     return _convert(spec, source)
 
 MAIN_TEMPLATE = """\
-fn openoj_run() -> Result<String, String> {
+fn coderpuzzle_run() -> Result<String, String> {
     let mut raw = Vec::new();
     std::io::stdin().read_to_end(&mut raw).map_err(|e| e.to_string())?;
     let mut tagged = OjTaggedReader::new(raw);
@@ -114,7 +114,7 @@ fn openoj_run() -> Result<String, String> {
         return Err("Design input requires equally sized actions and params".to_string());
     }
     let constructor_row = match &params[0] { OjValue::Array(v) => v.clone(), _ => vec![] };
-    let primary = openoj_construct_@CLASS_NAME@(&constructor_row)?;
+    let primary = coderpuzzle_construct_@CLASS_NAME@(&constructor_row)?;
     // Named instances ({"new": handle} actions) live here for the whole
     // replay; $ref arguments and "on" targets resolve through it. Boxes
     // keep the objects alive; handles map to raw pointers, the module's
@@ -157,7 +157,7 @@ fn openoj_run() -> Result<String, String> {
                     return Err(format!("Duplicate or invalid design instance handle: {}", handle));
                 }
                 let row = match &params[step] { OjValue::Array(v) => v.clone(), _ => vec![] };
-                alive.push(Box::new(openoj_construct_@CLASS_NAME@(&row)?));
+                alive.push(Box::new(coderpuzzle_construct_@CLASS_NAME@(&row)?));
                 let pointer: *mut @CLASS_NAME@ = alive.last_mut().unwrap().as_mut() as *mut _;
                 instances.push((handle, pointer));
                 outputs.push(OjValue::Null);
@@ -223,7 +223,7 @@ fn openoj_run() -> Result<String, String> {
             let mut last = OjValue::Null;
             for _trial in 0..repeat {
                 let result = dispatch_@CLASS_NAME@(solution, &name, &call_arguments, &instance_arguments)?;
-                *frequencies.entry(openoj_json(&result)).or_insert(0) += 1;
+                *frequencies.entry(coderpuzzle_json(&result)).or_insert(0) += 1;
                 last = result;
             }
             let table = OjValue::Object(frequencies.into_iter().map(|(key, count)| {
@@ -239,15 +239,15 @@ fn openoj_run() -> Result<String, String> {
             previous = result;
         }
     }
-    Ok(openoj_json(&OjValue::Array(outputs)))
+    Ok(coderpuzzle_json(&OjValue::Array(outputs)))
 }
 
 fn main() {
-    let response = std::panic::catch_unwind(openoj_run);
+    let response = std::panic::catch_unwind(coderpuzzle_run);
     match response {
-        Ok(Ok(actual)) => openojEmit(&format!("__OPENOJ_RESULT__{{\\"status\\":\\"completed\\",\\"actual\\":{}}}", actual)),
-        Ok(Err(error)) => openojEmit(&format!("__OPENOJ_RESULT__{{\\"status\\":\\"runtime_error\\",\\"error\\":{}}}", openoj_json(&OjValue::Str(error)))),
-        Err(_) => openojEmit("__OPENOJ_RESULT__{{\\"status\\":\\"runtime_error\\",\\"error\\":\\"Solution panicked\\"}}"),
+        Ok(Ok(actual)) => coderpuzzleEmit(&format!("__CODERPUZZLE_RESULT__{{\\"status\\":\\"completed\\",\\"actual\\":{}}}", actual)),
+        Ok(Err(error)) => coderpuzzleEmit(&format!("__CODERPUZZLE_RESULT__{{\\"status\\":\\"runtime_error\\",\\"error\\":{}}}", coderpuzzle_json(&OjValue::Str(error)))),
+        Err(_) => coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\"status\\":\\"runtime_error\\",\\"error\\":\\"Solution panicked\\"}}"),
     }
 }
 """
@@ -270,13 +270,13 @@ def prepare_design(executor, job_root: Path, scratch: Path, code: str,
     needs_nested = any(spec["kind"] == "nested" for spec in constructor_specs)
     for index, spec in enumerate(constructor_specs):
         constructor_convert.append(
-            f"    let openoj_ctor_{index}: {_rust_type(spec)} = {_design_convert(spec, f'&row[{index}]')};"
+            f"    let coderpuzzle_ctor_{index}: {_rust_type(spec)} = {_design_convert(spec, f'&row[{index}]')};"
         )
-    constructor_args = ", ".join(f"openoj_ctor_{index}" for index in range(len(constructor_specs)))
+    constructor_args = ", ".join(f"coderpuzzle_ctor_{index}" for index in range(len(constructor_specs)))
     # Construction is one generated helper so params[0] and any {"new":
     # handle} action build instances through the same conversion.
     construct_helper = (
-        f"fn openoj_construct_{class_name}(row: &[OjValue]) -> Result<{class_name}, String> {{\n"
+        f"fn coderpuzzle_construct_{class_name}(row: &[OjValue]) -> Result<{class_name}, String> {{\n"
         + "\n".join(constructor_convert)
         + f"\n    Ok({class_name}::new({constructor_args}))\n}}\n"
     )
@@ -308,7 +308,7 @@ def prepare_design(executor, job_root: Path, scratch: Path, code: str,
         )
         if returns_tree:
             dispatch_arms.append(
-                f'        "{name}" => Ok(openoj_design_tree_value(solution.{rust_name}({args}))),'
+                f'        "{name}" => Ok(coderpuzzle_design_tree_value(solution.{rust_name}({args}))),'
             )
         else:
             dispatch_arms.append(f'        "{name}" => Ok(OjValue::oj_from(solution.{rust_name}({args}))),')

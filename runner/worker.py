@@ -30,7 +30,7 @@ POLL_INTERVAL = float(os.environ.get("OPENOJ_POLL_INTERVAL", "0.05"))
 NOBODY_UID = 65534
 NOBODY_GID = 65534
 RUNTIME_SANDBOX = "/runner/runtime_sandbox.py"
-SUPERVISOR_PYTHON = "/usr/local/bin/openoj-supervisor-python"
+SUPERVISOR_PYTHON = "/usr/local/bin/coderpuzzle-supervisor-python"
 CALIBRATION_FACTORS: dict[str, float] = {}
 
 
@@ -248,7 +248,7 @@ def _process_job(job_dir: Path) -> None:
             raise ValueError("Invalid source code")
 
         job_root = Path(
-            tempfile.mkdtemp(prefix=f"openoj-{request['job_id'][:12]}-", dir=WORK_DIR)
+            tempfile.mkdtemp(prefix=f"coderpuzzle-{request['job_id'][:12]}-", dir=WORK_DIR)
         )
         try:
             program = executor.prepare(
@@ -340,8 +340,8 @@ def _reap_orphans() -> None:
 
 # Entries under /tmp the worker manages itself (the shared Go build cache
 # the executors compile against, and the prewarm build directory).
-PREWARM_DIR = Path(os.environ.get("OPENOJ_PREWARM_DIR", "/tmp/openoj-prewarm"))
-_MANAGED_TMP = {"openoj-gocache", PREWARM_DIR.name}
+PREWARM_DIR = Path(os.environ.get("OPENOJ_PREWARM_DIR", "/tmp/coderpuzzle-prewarm"))
+_MANAGED_TMP = {"coderpuzzle-gocache", PREWARM_DIR.name}
 
 
 def _sweep_tmp() -> None:
@@ -436,7 +436,7 @@ def _prewarm_toolchains_once() -> None:
         # toolchain refuses to reuse a build cache written by another uid, so
         # the warm build drops to the compiler uid (65534) that submissions
         # run under; the directory is chowned to match.
-        go_cache = Path("/tmp/openoj-gocache")
+        go_cache = Path("/tmp/coderpuzzle-gocache")
         go_cache.mkdir(parents=True, exist_ok=True)
         go_cache.chmod(0o1777)
         os.chown(go_cache, NOBODY_UID, NOBODY_GID)
@@ -495,7 +495,7 @@ def main() -> None:
         )
     # Serve immediately; warming runs alongside queue polling so startup is
     # never delayed, and repeats periodically to keep the toolchains warm.
-    threading.Thread(target=_prewarm_loop, name="openoj-prewarm", daemon=True).start()
+    threading.Thread(target=_prewarm_loop, name="coderpuzzle-prewarm", daemon=True).start()
     QUEUE_DIR.mkdir(parents=True, exist_ok=True)
     WORK_DIR.mkdir(parents=True, exist_ok=True)
     while True:

@@ -9,7 +9,7 @@
 #                                              (+formatted text) |
 #                                              error (+diagnostics)
 #
-# Everything after the flags is forwarded to `openoj format` in the
+# Everything after the flags is forwarded to `coderpuzzle format` in the
 # image; paths are relative to the current directory, which is mounted
 # at /work inside the container.
 #
@@ -26,4 +26,4 @@ exec docker run --rm --user 0:0 \
     -v "$ROOT/runner/cli.py:/runner/cli.py:ro" \
     -v "$ROOT/runner/formatters.py:/runner/formatters.py:ro" \
     -v "$PWD:/work" -w /work \
-    "$IMAGE" openoj format "$@"
+    "$IMAGE" coderpuzzle format "$@"

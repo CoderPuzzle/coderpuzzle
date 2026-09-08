@@ -115,13 +115,13 @@ async function main() {
     await cdp.screenshot("landing-dark.png");
 
     // ── Landing, light ────────────────────────────────────────────────────
-    await cdp.evaluate(`localStorage.setItem('openoj:theme','light'); location.reload(); true`);
+    await cdp.evaluate(`localStorage.setItem('coderpuzzle:theme','light'); location.reload(); true`);
     await cdp.waitFor("document.querySelectorAll('.problem-row').length > 0", 30000, "problem rows (light)");
     await sleep(400);
     await cdp.screenshot("landing-light.png");
 
     // ── Landing, mobile (dark) ────────────────────────────────────────────
-    await cdp.evaluate(`localStorage.setItem('openoj:theme','dark'); location.reload(); true`);
+    await cdp.evaluate(`localStorage.setItem('coderpuzzle:theme','dark'); location.reload(); true`);
     await cdp.waitFor("document.querySelectorAll('.problem-row').length > 0", 30000, "problem rows (mobile)");
     await cdp.send("Emulation.setDeviceMetricsOverride", {
       width: 390, height: 844, deviceScaleFactor: 2, mobile: true,

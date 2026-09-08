@@ -131,7 +131,7 @@ Audit before landing: bundle inventory, canonical JSON bytes
 order — canonicality is byte-compared), id/slug/title/dir agreement,
 starter = format(gen_starters(...)) round-trip, no `__pycache__`.
 In-image format pass over changed files (`docker run --rm -v $PWD:/work
--w /work ghcr.io/coderpuzzle/coderpuzzle:latest openoj format <files>` — directories
+-w /work ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle format <files>` — directories
 are walked for formattable files; `xargs -n 200` just bounds the command
 line when piping many). Commit/push only when the user says so that
 turn; scoped `git add` by path list, never blanket adds.

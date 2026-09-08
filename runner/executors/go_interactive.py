@@ -32,7 +32,7 @@ import (
 	"unsafe"
 )
 
-func openojEmit(line string) {
+func coderpuzzleEmit(line string) {
 	if channel := os.NewFile(63, "protocol"); channel != nil {
 		if _, errorValue := channel.WriteString(line + "\\n"); errorValue == nil {
 			return
@@ -128,10 +128,10 @@ func (r *ojReader) value() any {
 	}
 }
 
-// openojInt reads an integer out of an already-decoded case value: an
+// coderpuzzleInt reads an integer out of an already-decoded case value: an
 // out_buffer capacity names another parameter, decoded either as a typed
 // auxiliary (int/int64) or as a generic construct value (any).
-func openojInt(value any) int64 {
+func coderpuzzleInt(value any) int64 {
 	switch number := value.(type) {
 	case int:
 		return int64(number)
@@ -149,7 +149,7 @@ MAIN_TEMPLATE = """\
 func main() {
 	defer func() {
 		if problem := recover(); problem != nil {
-			openojEmit("__OPENOJ_RESULT__" + `{"status":"runtime_error","error":` + openojJSON(fmt.Sprintf("%v", problem)) + "}")
+			coderpuzzleEmit("__CODERPUZZLE_RESULT__" + `{"status":"runtime_error","error":` + coderpuzzleJSON(fmt.Sprintf("%v", problem)) + "}")
 		}
 	}()
 	bytes_ := make([]byte, 0, 4096)
@@ -176,7 +176,7 @@ func main() {
 """
 
 JSON_HELPER = """\
-func openojJSON(value any) string {
+func coderpuzzleJSON(value any) string {
 	encoded, errorValue := json.Marshal(value)
 	if errorValue != nil {
 		panic(errorValue)
@@ -278,26 +278,26 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
             "Interactive parameters (excluding out_buffer ones) must match provided.oracle.auxiliary")
 
     value_reads = "\n".join(
-        f"\topenojValue{index} := reader.value()" for index in range(len(construct_keys) + len(auxiliary_keys))
+        f"\tcoderpuzzleValue{index} := reader.value()" for index in range(len(construct_keys) + len(auxiliary_keys))
     )
     convert_lines = []
     # Case key -> an expression for its already-decoded value; an out_buffer
     # capacity may name any decoded key.
     capacity_sources: dict[str, str] = {}
     for index, key in enumerate(construct_keys):
-        capacity_sources[key] = f"openojInt(openojValue{index})"
+        capacity_sources[key] = f"coderpuzzleInt(coderpuzzleValue{index})"
     auxiliary_variables: dict[str, str] = {}
     for index, key in enumerate(auxiliary_keys):
         spec = specs.get(key)
         if spec is None:
             raise ExecutorError(f"Auxiliary key {key!r} has no invocation parameter type")
         spec = type_spec(spec, key)
-        variable = f"openojAux{index}"
+        variable = f"coderpuzzleAux{index}"
         convert_lines.append(
-            f"\t{variable} := {_convert(spec, f'openojValue{len(construct_keys) + index}')}"
+            f"\t{variable} := {_convert(spec, f'coderpuzzleValue{len(construct_keys) + index}')}"
         )
         auxiliary_variables[key] = variable
-        capacity_sources[key] = f"openojInt({variable})"
+        capacity_sources[key] = f"coderpuzzleInt({variable})"
 
     buffer_variables: dict[int, str] = {}
     for slot, capacity_key in buffer_slots.items():
@@ -305,7 +305,7 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
         if capacity is None:
             raise ExecutorError(f"out_buffer capacity_from {capacity_key!r} is not a case key")
         element = _go_buffer_element(specs.get(parameters[slot].get("name")))
-        variable = f"openojBuffer{slot}"
+        variable = f"coderpuzzleBuffer{slot}"
         convert_lines.append(
             f"\t{variable}Capacity := {capacity}\n"
             f"\tif {variable}Capacity < 0 {{\n\t\t{variable}Capacity = 0\n\t}}\n"
@@ -326,7 +326,7 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
             parameter_arguments.append(auxiliary_variables[parameter.get("name")])
 
     oracle_args = ", ".join(
-        [f"openojValue{index}" for index in range(len(construct_keys))]
+        [f"coderpuzzleValue{index}" for index in range(len(construct_keys))]
     )
     call_arguments = ", ".join(["oracle", *parameter_arguments])
     # A {"kind": "void"} return_type is a declared void, not a value: the
@@ -336,27 +336,27 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
         if buffer_slot is None:
             call_block = (
                 f"\tactual := solution.{method}({call_arguments})\n"
-                '\topenojEmit("__OPENOJ_RESULT__" + fmt.Sprintf(`{"status":"completed","actual":%s}`, openojJSON(actual)))'
+                '\tcoderpuzzleEmit("__CODERPUZZLE_RESULT__" + fmt.Sprintf(`{"status":"completed","actual":%s}`, coderpuzzleJSON(actual)))'
             )
         else:
             buffer, element = buffer_variables[buffer_slot]
-            entry_type, entry_expression = _go_entries(element, f"{buffer}[openojIndex]")
+            entry_type, entry_expression = _go_entries(element, f"{buffer}[coderpuzzleIndex]")
             call_block = (
                 f"\tactual := solution.{method}({call_arguments})\n"
-                f"\topenojCount := openojInt(actual)\n"
-                f"\topenojWritten := openojCount\n"
-                f"\tif openojWritten < 0 {{\n\t\topenojWritten = 0\n\t}}\n"
-                f"\tif openojWritten > int64(len({buffer})) {{\n\t\topenojWritten = int64(len({buffer}))\n\t}}\n"
-                f"\topenojEntries := make([]{entry_type}, 0, openojWritten)\n"
-                f"\tfor openojIndex := int64(0); openojIndex < openojWritten; openojIndex++ {{\n"
-                f"\t\topenojEntries = append(openojEntries, {entry_expression})\n"
+                f"\tcoderpuzzleCount := coderpuzzleInt(actual)\n"
+                f"\tcoderpuzzleWritten := coderpuzzleCount\n"
+                f"\tif coderpuzzleWritten < 0 {{\n\t\tcoderpuzzleWritten = 0\n\t}}\n"
+                f"\tif coderpuzzleWritten > int64(len({buffer})) {{\n\t\tcoderpuzzleWritten = int64(len({buffer}))\n\t}}\n"
+                f"\tcoderpuzzleEntries := make([]{entry_type}, 0, coderpuzzleWritten)\n"
+                f"\tfor coderpuzzleIndex := int64(0); coderpuzzleIndex < coderpuzzleWritten; coderpuzzleIndex++ {{\n"
+                f"\t\tcoderpuzzleEntries = append(coderpuzzleEntries, {entry_expression})\n"
                 f"\t}}\n"
-                '\topenojEmit("__OPENOJ_RESULT__" + fmt.Sprintf(`{"status":"completed","actual":%s}`, openojJSON([]any{openojCount, openojEntries})))'
+                '\tcoderpuzzleEmit("__CODERPUZZLE_RESULT__" + fmt.Sprintf(`{"status":"completed","actual":%s}`, coderpuzzleJSON([]any{coderpuzzleCount, coderpuzzleEntries})))'
             )
     else:
         call_block = (
             f"\tsolution.{method}({call_arguments})\n"
-            '\topenojEmit("__OPENOJ_RESULT__" + fmt.Sprintf(`{"status":"completed","actual":%s}`, openojJSON(oracle.Verdict())))'
+            '\tcoderpuzzleEmit("__CODERPUZZLE_RESULT__" + fmt.Sprintf(`{"status":"completed","actual":%s}`, coderpuzzleJSON(oracle.Verdict())))'
         )
 
     provided_files = []
@@ -392,7 +392,7 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
         (executor.compiler_path, "build", "-trimpath", "-ldflags=-s -w", "-o", str(executable), str(wrapper),
          *[str(job_root / f"assembly_{name}") for name, _ in provided_files]),
         executable,
-        {"PATH": "/usr/bin:/bin", "HOME": "/nonexistent", "TMPDIR": "/tmp", "LANG": "C.UTF-8", "GOCACHE": "/tmp/openoj-gocache", "GOPATH": "/tmp/gopath", "GOMODCACHE": "/tmp/gomodcache", "GOFLAGS": "-mod=mod", "GO111MODULE": "off"},
+        {"PATH": "/usr/bin:/bin", "HOME": "/nonexistent", "TMPDIR": "/tmp", "LANG": "C.UTF-8", "GOCACHE": "/tmp/coderpuzzle-gocache", "GOPATH": "/tmp/gopath", "GOMODCACHE": "/tmp/gomodcache", "GOFLAGS": "-mod=mod", "GO111MODULE": "off"},
     )
     return PreparedProgram(
         command=(str(executable),),

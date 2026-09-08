@@ -9,7 +9,7 @@ override with `OPENOJ_PROBLEMS_BANK`.
 - `verify_solution.py <shard-qualified-bundle-key> [<ext> ...]` — THE
   gate: judges every `solution*.<ext>` in a bundle through the real
   executors, locally, without sandboxing. Compiles the Java harness
-  (`runner/java/OpenOJJavaHarness.java`) into `.localonly/java-classes/`
+  (`runner/java/CoderPuzzleJavaHarness.java`) into `.localonly/java-classes/`
   on demand; local cpp compiles get the `-I scripts/verify_shim` shim.
   Needs `frontend/node_modules` installed (tsc) and the local
   toolchain on PATH.

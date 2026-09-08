@@ -60,7 +60,7 @@ RUN ln -s /usr/local/lib/node_modules/typescript/bin/tsc /usr/local/bin/tsc \
     && ln -s /usr/local/lib/node_modules/prettier/bin/prettier.cjs /usr/local/bin/prettier
 COPY worker.py python_harness.py sql_harness.py shell_harness.py leetcode_codecs.py protocol.py privileges.py formatters.py ./
 COPY cli.py ./
-RUN printf '#!/bin/sh\nexec python3 /runner/cli.py "$@"\n' > /usr/local/bin/openoj && chmod +x /usr/local/bin/openoj
+RUN printf '#!/bin/sh\nexec python3 /runner/cli.py "$@"\n' > /usr/local/bin/coderpuzzle && chmod +x /usr/local/bin/coderpuzzle
 COPY compiler_sandbox.py runtime_sandbox.py ./
 COPY executors ./executors
 COPY java ./java
@@ -71,7 +71,7 @@ RUN mkdir -p /runner/java-classes /runner/benchmarks \
         -encoding UTF-8 \
         -g:none \
         -d /runner/java-classes \
-        /runner/java/OpenOJJavaHarness.java \
+        /runner/java/CoderPuzzleJavaHarness.java \
         && \
     g++ -std=c++20 -O2 \
         -o /runner/benchmarks/cpp /runner/benchmark-sources/benchmark.cpp \
@@ -84,13 +84,13 @@ RUN mkdir -p /runner/java-classes /runner/benchmarks \
     && cp /runner/benchmark-sources/javascript.js \
         /runner/benchmarks/javascript.js \
     && rm -rf /runner/benchmark-sources /root/.cache/go-build
-RUN groupadd --gid 10001 openoj \
-    && useradd --uid 10000 --gid openoj --no-create-home openoj-runner \
-    && cp /usr/local/bin/python3.14 /usr/local/bin/openoj-supervisor-python \
+RUN groupadd --gid 10001 coderpuzzle \
+    && useradd --uid 10000 --gid coderpuzzle --no-create-home coderpuzzle-runner \
+    && cp /usr/local/bin/python3.14 /usr/local/bin/coderpuzzle-supervisor-python \
     && setcap cap_chown,cap_dac_override,cap_kill,cap_setuid,cap_setgid=ep \
-        /usr/local/bin/openoj-supervisor-python \
+        /usr/local/bin/coderpuzzle-supervisor-python \
     && mkdir -p /queue \
-    && chown openoj-runner:openoj /queue \
+    && chown coderpuzzle-runner:coderpuzzle /queue \
     && chmod 0770 /queue \
     && chmod -R 0555 /runner
 
@@ -98,4 +98,4 @@ RUN groupadd --gid 10001 openoj \
 # capabilities so it can manage and remove scratch space, drop children to
 # UID/GID 65534, and terminate processes hostile submissions leave behind.
 USER 10000:10001
-CMD ["openoj-supervisor-python", "-I", "-S", "/runner/worker.py"]
+CMD ["coderpuzzle-supervisor-python", "-I", "-S", "/runner/worker.py"]

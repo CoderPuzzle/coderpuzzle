@@ -21,7 +21,7 @@ from .cpp_interactive import WRAPPER_HEAD, _cpp_type, _convert
 TREE_HELPERS = """\
 // Level-order OjValue array (nulls for absent children) -> TreeNode*,
 // same slot-to-node assignment as the harness's tree_node codec.
-static TreeNode* openoj_tree_from(const OjValue& value) {
+static TreeNode* coderpuzzle_tree_from(const OjValue& value) {
     if (value.kind != OjValue::Array) throw std::runtime_error("Expected a level-order tree array");
     const std::vector<OjValue>& slots = value.items;
     if (slots.empty() || slots[0].kind == OjValue::Null) return nullptr;
@@ -92,7 +92,7 @@ def _design_convert(spec: dict[str, Any], source: str) -> str:
     """Parameter conversion for the design replay: like the interactive
     converter, plus the tree_node codec's level-order array -> TreeNode*."""
     if spec["kind"] == "binary_tree":
-        return f"openoj_tree_from({source})"
+        return f"coderpuzzle_tree_from({source})"
     return _convert(spec, source)
 
 
@@ -113,7 +113,7 @@ int main() {
         const std::vector<OjValue>& actions = actions_value.items;
         const std::vector<OjValue>& params = params_value.items;
         std::vector<OjValue> constructor_row = params[0].kind == OjValue::Array ? params[0].items : std::vector<OjValue>{};
-        @CLASS_NAME@* solution = openoj_construct_@CLASS_NAME@(constructor_row);
+        @CLASS_NAME@* solution = coderpuzzle_construct_@CLASS_NAME@(constructor_row);
         // Named instances ({"new": handle} actions) live here for the whole
         // replay; $ref arguments and "on" targets resolve through it. The
         // primary instance from params[0] is registered when actions[0]
@@ -150,7 +150,7 @@ int main() {
                         throw std::runtime_error("Duplicate or invalid design instance handle: " + new_handle);
                     }
                     std::vector<OjValue> row = params[step].kind == OjValue::Array ? params[step].items : std::vector<OjValue>{};
-                    instances[new_handle] = openoj_construct_@CLASS_NAME@(row);
+                    instances[new_handle] = coderpuzzle_construct_@CLASS_NAME@(row);
                     outputs.push_back(OjValue());
                     previous = OjValue();
                     continue;
@@ -209,7 +209,7 @@ int main() {
                 OjValue last;
                 for (long long trial = 0; trial < repeat; ++trial) {
                     OjValue result = dispatch@CLASS_NAME@(*target, name, call_arguments, instance_arguments);
-                    frequencies[openoj_json(result)] += 1;
+                    frequencies[coderpuzzle_json(result)] += 1;
                     last = result;
                 }
                 OjValue table;
@@ -230,11 +230,11 @@ int main() {
                 previous = result;
             }
         }
-        openojEmit("__OPENOJ_RESULT__{\\"status\\":\\"completed\\",\\"actual\\":" + openoj_json(outputs) + "}");
+        coderpuzzleEmit("__CODERPUZZLE_RESULT__{\\"status\\":\\"completed\\",\\"actual\\":" + coderpuzzle_json(outputs) + "}");
     } catch (const std::exception& error) {
-        openojEmit(std::string("__OPENOJ_RESULT__{\\"status\\":\\"runtime_error\\",\\"error\\":") + openoj_json(std::string(error.what())) + "}");
+        coderpuzzleEmit(std::string("__CODERPUZZLE_RESULT__{\\"status\\":\\"runtime_error\\",\\"error\\":") + coderpuzzle_json(std::string(error.what())) + "}");
     } catch (...) {
-        openojEmit("__OPENOJ_RESULT__{\\"status\\":\\"runtime_error\\",\\"error\\":\\"Unknown C++ exception\\"}");
+        coderpuzzleEmit("__CODERPUZZLE_RESULT__{\\"status\\":\\"runtime_error\\",\\"error\\":\\"Unknown C++ exception\\"}");
     }
     return 0;
 }
@@ -256,18 +256,18 @@ def prepare_design(executor, job_root: Path, scratch: Path, code: str,
     constructor_convert = []
     for index, spec in enumerate(constructor_specs):
         constructor_convert.append(
-            f"        {_design_type(spec)} openoj_ctor_{index} = {_design_convert(spec, f'row[{index}]')};"
+            f"        {_design_type(spec)} coderpuzzle_ctor_{index} = {_design_convert(spec, f'row[{index}]')};"
         )
-    constructor_args = ", ".join(f"openoj_ctor_{index}" for index in range(len(constructor_specs)))
+    constructor_args = ", ".join(f"coderpuzzle_ctor_{index}" for index in range(len(constructor_specs)))
     # Construction is one generated helper so params[0] and any {"new":
     # handle} action build instances through the same conversion.
     constructor_helper = (
-        f"static {class_name}* openoj_construct_{class_name}(const std::vector<OjValue>& row) {{\n"
+        f"static {class_name}* coderpuzzle_construct_{class_name}(const std::vector<OjValue>& row) {{\n"
         + "\n".join(constructor_convert)
         + f"\n    return new {class_name}({constructor_args});\n}}\n"
         # Null-guarded live-instance handover: instance parameters ride the
         # parallel pointer vector main fills from {"$ref": handle} markers.
-        + f"\nstatic {class_name}& openoj_instance_{class_name}({class_name}* pointer) {{\n"
+        + f"\nstatic {class_name}& coderpuzzle_instance_{class_name}({class_name}* pointer) {{\n"
         + '    if (pointer == nullptr) {\n'
         + '        throw std::runtime_error("Parameter must be a {\\"$ref\\": handle} instance reference");\n'
         + "    }\n"
@@ -285,7 +285,7 @@ def prepare_design(executor, job_root: Path, scratch: Path, code: str,
         ]
         needs_tree = needs_tree or any(spec["kind"] == "binary_tree" for spec in specs)
         args = ", ".join(
-            f"openoj_instance_{class_name}(instance_arguments[{index}])"
+            f"coderpuzzle_instance_{class_name}(instance_arguments[{index}])"
             if spec["kind"] == "instance"
             else _design_convert(spec, f"call_arguments[{index}]")
             for index, spec in enumerate(specs)

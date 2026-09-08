@@ -19,7 +19,7 @@ from .base import ExecutorError, PreparedProgram
 from .typed import rust_type, type_spec
 
 WRAPPER_HEAD = """\
-use std::io::Read as OpenOJIoRead;
+use std::io::Read as CoderPuzzleIoRead;
 
 #[derive(Debug, Clone)]
 pub enum OjValue {
@@ -110,7 +110,7 @@ impl OjTaggedReader {
     }
 }
 
-fn openoj_json(value: &OjValue) -> String {
+fn coderpuzzle_json(value: &OjValue) -> String {
     match value {
         OjValue::Null => "null".to_string(),
         OjValue::Bool(v) => v.to_string(),
@@ -136,20 +136,20 @@ fn openoj_json(value: &OjValue) -> String {
             out
         }
         OjValue::Array(items) => {
-            let parts: Vec<String> = items.iter().map(openoj_json).collect();
+            let parts: Vec<String> = items.iter().map(coderpuzzle_json).collect();
             format!("[{}]", parts.join(","))
         }
         OjValue::Object(fields) => {
             let parts: Vec<String> = fields
                 .iter()
-                .map(|(key, item)| format!("\\"{}\\":{}", key, openoj_json(item)))
+                .map(|(key, item)| format!("\\"{}\\":{}", key, coderpuzzle_json(item)))
                 .collect();
             format!("{{{}}}", parts.join(","))
         }
     }
 }
 
-fn openojEmit(line: &str) {
+fn coderpuzzleEmit(line: &str) {
     use std::io::Write;
     use std::os::unix::io::FromRawFd;
     let mut channel = unsafe { std::fs::File::from_raw_fd(63) };
@@ -159,16 +159,16 @@ fn openojEmit(line: &str) {
     println!("{}", line);
 }
 
-fn openoj_json_i32(value: i32) -> String { value.to_string() }
-fn openoj_json_i64(value: i64) -> String { value.to_string() }
-fn openoj_json_f64(value: f64) -> String {
+fn coderpuzzle_json_i32(value: i32) -> String { value.to_string() }
+fn coderpuzzle_json_i64(value: i64) -> String { value.to_string() }
+fn coderpuzzle_json_f64(value: f64) -> String {
     if !value.is_finite() {
         panic!("Non-finite return value");
     }
     format!("{}", value)
 }
-fn openoj_json_str(value: &str) -> String { openoj_json(&OjValue::Str(value.to_string())) }
-fn openoj_json_bool(value: bool) -> String { value.to_string() }
+fn coderpuzzle_json_str(value: &str) -> String { coderpuzzle_json(&OjValue::Str(value.to_string())) }
+fn coderpuzzle_json_bool(value: bool) -> String { value.to_string() }
 """
 
 # Only emitted when the invocation actually uses a "nested" parameter or
@@ -179,13 +179,13 @@ NESTED_HELPERS = """\
 // Builds NestedInteger from a JSON-shaped OjValue: an integer hold, or a
 // list hold whose children recurse. Module-level item, so it resolves
 // NestedInteger from the assembled provided/ source regardless of order.
-fn openoj_nested_build(value: &OjValue) -> Result<NestedInteger, String> {
+fn coderpuzzle_nested_build(value: &OjValue) -> Result<NestedInteger, String> {
     match value {
         OjValue::Int(v) => i32::try_from(*v).map(NestedInteger::with_integer).map_err(|_| "Integer out of range".to_string()),
         OjValue::Array(items) => {
             let mut node = NestedInteger::new();
             for item in items {
-                node.add(openoj_nested_build(item)?);
+                node.add(coderpuzzle_nested_build(item)?);
             }
             Ok(node)
         }
@@ -195,7 +195,7 @@ fn openoj_nested_build(value: &OjValue) -> Result<NestedInteger, String> {
 """
 
 MAIN_TEMPLATE = """\
-fn openoj_run() -> Result<String, String> {
+fn coderpuzzle_run() -> Result<String, String> {
     let mut raw = Vec::new();
     std::io::stdin().read_to_end(&mut raw).map_err(|e| e.to_string())?;
     let mut tagged = OjTaggedReader::new(raw);
@@ -210,11 +210,11 @@ fn openoj_run() -> Result<String, String> {
 }
 
 fn main() {
-    let response = std::panic::catch_unwind(openoj_run);
+    let response = std::panic::catch_unwind(coderpuzzle_run);
     match response {
-        Ok(Ok(actual)) => openojEmit(&format!("__OPENOJ_RESULT__{{\\"status\\":\\"completed\\",\\"actual\\":{}}}", actual)),
-        Ok(Err(error)) => openojEmit(&format!("__OPENOJ_RESULT__{{\\"status\\":\\"runtime_error\\",\\"error\\":{}}}", openoj_json(&OjValue::Str(error)))),
-        Err(_) => openojEmit("__OPENOJ_RESULT__{{\\"status\\":\\"runtime_error\\",\\"error\\":\\"Solution panicked\\"}}"),
+        Ok(Ok(actual)) => coderpuzzleEmit(&format!("__CODERPUZZLE_RESULT__{{\\"status\\":\\"completed\\",\\"actual\\":{}}}", actual)),
+        Ok(Err(error)) => coderpuzzleEmit(&format!("__CODERPUZZLE_RESULT__{{\\"status\\":\\"runtime_error\\",\\"error\\":{}}}", coderpuzzle_json(&OjValue::Str(error)))),
+        Err(_) => coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\"status\\":\\"runtime_error\\",\\"error\\":\\"Solution panicked\\"}}"),
     }
 }
 """
@@ -257,7 +257,7 @@ def _convert(spec: dict[str, Any], source: str) -> str:
             f"_ => return Err(\"Expected an array\".to_string()) }})"
         )
     if kind == "nested":
-        return f"openoj_nested_build({source})?"
+        return f"coderpuzzle_nested_build({source})?"
     raise ExecutorError(f"Interactive auxiliary type {kind} is not supported in Rust")
 
 
@@ -268,19 +268,19 @@ def _serialize(spec: dict[str, Any], source: str) -> str:
     any depth and the scalar leaves deref one level."""
     kind = spec["kind"]
     if kind == "integer":
-        return f"openoj_json_i32(*{source})" if spec.get("bits", 32) == 32 else f"openoj_json_i64(*{source})"
+        return f"coderpuzzle_json_i32(*{source})" if spec.get("bits", 32) == 32 else f"coderpuzzle_json_i64(*{source})"
     if kind == "number":
-        return f"openoj_json_f64(*{source})"
+        return f"coderpuzzle_json_f64(*{source})"
     if kind == "boolean":
-        return f"openoj_json_bool(*{source})"
+        return f"coderpuzzle_json_bool(*{source})"
     if kind == "string":
-        return f"openoj_json_str({source})"
+        return f"coderpuzzle_json_str({source})"
     if kind == "array":
-        inner = _serialize(spec["items"], "openoj_item")
+        inner = _serialize(spec["items"], "coderpuzzle_item")
         return (
-            f'(format!("[{{}}]", {{ let mut openoj_parts: Vec<String> = Vec::with_capacity(({source}).len()); '
-            f"for openoj_item in ({source}).iter() {{ openoj_parts.push({inner}); }} "
-            f'openoj_parts.join(",") }}))'
+            f'(format!("[{{}}]", {{ let mut coderpuzzle_parts: Vec<String> = Vec::with_capacity(({source}).len()); '
+            f"for coderpuzzle_item in ({source}).iter() {{ coderpuzzle_parts.push({inner}); }} "
+            f'coderpuzzle_parts.join(",") }}))'
         )
     raise ExecutorError(f"Interactive return type {kind} is not supported in Rust")
 
@@ -354,7 +354,7 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
     }
 
     value_reads = "\n".join(
-        f"    let openoj_value_{index} = tagged.value()?;" for index in range(len(construct_keys) + len(auxiliary_keys))
+        f"    let coderpuzzle_value_{index} = tagged.value()?;" for index in range(len(construct_keys) + len(auxiliary_keys))
     )
     convert_lines = []
     auxiliary_args = []
@@ -366,9 +366,9 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
         spec = type_spec(spec, key)
         needs_nested = needs_nested or spec["kind"] == "nested"
         convert_lines.append(
-            f"    let openoj_aux_{index}: {_rust_type(spec)} = {_convert(spec, f'&openoj_value_{len(construct_keys) + index}')};"
+            f"    let coderpuzzle_aux_{index}: {_rust_type(spec)} = {_convert(spec, f'&coderpuzzle_value_{len(construct_keys) + index}')};"
         )
-        auxiliary_args.append(f"openoj_aux_{index}")
+        auxiliary_args.append(f"coderpuzzle_aux_{index}")
 
     buffer_variables: dict[int, tuple[str, str]] = {}
     for slot, capacity_key in buffer_slots.items():
@@ -377,11 +377,11 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
             raise ExecutorError(f"out_buffer capacity_from {capacity_key!r} is not a case key")
         element = _rust_buffer_element(specs.get(parameters[slot].get("name")))
         default = {"String": "String::new()", "bool": "false", "f64": "0.0"}.get(element, "0")
-        variable = f"openoj_buffer_{slot}"
+        variable = f"coderpuzzle_buffer_{slot}"
         convert_lines.append(
-            f"    let openoj_capacity_{slot}: i64 = match &openoj_value_{raw_index} {{ OjValue::Int(v) => *v, "
+            f"    let coderpuzzle_capacity_{slot}: i64 = match &coderpuzzle_value_{raw_index} {{ OjValue::Int(v) => *v, "
             f"_ => return Err(\"Buffer capacity must be an integer\".to_string()) }};\n"
-            f"    let mut {variable}: Vec<{element}> = vec![{default}; openoj_capacity_{slot}.max(0) as usize];"
+            f"    let mut {variable}: Vec<{element}> = vec![{default}; coderpuzzle_capacity_{slot}.max(0) as usize];"
         )
         buffer_variables[slot] = (variable, element)
 
@@ -401,7 +401,7 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
         parameter_arguments.append(auxiliary_args.pop(0))
 
     oracle_args = ", ".join(
-        f"openoj_value_{index}.clone()" for index in range(len(construct_keys))
+        f"coderpuzzle_value_{index}.clone()" for index in range(len(construct_keys))
     )
     call_arguments = ", ".join(["&mut oracle", *parameter_arguments])
     # A {"kind": "void"} return_type is a declared void, not a value: the
@@ -421,17 +421,17 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
             buffer, element = buffer_variables[buffer_slot]
             call_block = (
                 f"    let actual = Solution::{method}({call_arguments});\n"
-                "    let openoj_count = i64::from(actual);\n"
-                f"    let openoj_written = openoj_count.clamp(0, {buffer}.len() as i64) as usize;\n"
-                f"    let openoj_entries: Vec<OjValue> = {buffer}.iter().take(openoj_written)\n"
-                f"        .map(|openoj_item| {_buffer_value_expression(element, 'openoj_item')})\n"
+                "    let coderpuzzle_count = i64::from(actual);\n"
+                f"    let coderpuzzle_written = coderpuzzle_count.clamp(0, {buffer}.len() as i64) as usize;\n"
+                f"    let coderpuzzle_entries: Vec<OjValue> = {buffer}.iter().take(coderpuzzle_written)\n"
+                f"        .map(|coderpuzzle_item| {_buffer_value_expression(element, 'coderpuzzle_item')})\n"
                 "        .collect();\n"
-                "    Ok(openoj_json(&OjValue::Array(vec![OjValue::Int(openoj_count), OjValue::Array(openoj_entries)])))"
+                "    Ok(coderpuzzle_json(&OjValue::Array(vec![OjValue::Int(coderpuzzle_count), OjValue::Array(coderpuzzle_entries)])))"
             )
     else:
         call_block = (
             f"    Solution::{method}({call_arguments});\n"
-            '    Ok(openoj_json(&oracle.verdict()))'
+            '    Ok(coderpuzzle_json(&oracle.verdict()))'
         )
 
     provided_source = "".join(

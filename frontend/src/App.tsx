@@ -35,7 +35,7 @@ import type { JudgeResult, Problem, ProblemSummary, SolutionsContent, Submission
 
 type Theme = "light" | "dark";
 
-const THEME_STORAGE_KEY = "openoj:theme";
+const THEME_STORAGE_KEY = "coderpuzzle:theme";
 
 function storedTheme(): Theme | null {
   try {
@@ -993,7 +993,7 @@ function App() {
                   setCode(value ?? "");
                   saveDraft(problem.slug, language, value ?? "");
                 }}
-                theme={theme === "dark" ? "openoj-dark" : "openoj-light"}
+                theme={theme === "dark" ? "coderpuzzle-dark" : "coderpuzzle-light"}
                 loading={<div className="editor-loading"><LoaderCircle className="spin" size={18} /> Loading syntax engine…</div>}
                 options={{
                   automaticLayout: true,
@@ -1869,7 +1869,7 @@ function SolutionBlock({ title, body, code, isReference = false, languages, slug
           height={Math.min(360, Math.max(96, code[shown].split("\n").length * 19 + 21))}
           language={languages[shown]?.monaco_language ?? "plaintext"}
           value={code[shown]}
-          theme={theme === "dark" ? "openoj-dark" : "openoj-light"}
+          theme={theme === "dark" ? "coderpuzzle-dark" : "coderpuzzle-light"}
           loading={<div className="editor-loading"><LoaderCircle className="spin" size={18} /> Loading syntax engine…</div>}
           options={{
             readOnly: true,

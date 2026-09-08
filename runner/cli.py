@@ -15,8 +15,8 @@ toolchain beyond Docker:
                                       bundle through the real judging
                                       path; all must pass every case
 
-In the image these run as `openoj format ...` / `openoj gen-starters
-...` / `openoj judge ...` (see the ojcli entrypoint installed by the
+In the image these run as `coderpuzzle format ...` / `coderpuzzle gen-starters
+...` / `coderpuzzle judge ...` (see the coderpuzzle entrypoint installed by the
 Dockerfile). They operate on a bundle directory bind-mounted at any
 path; nothing here writes outside the paths it is given.
 """
@@ -210,9 +210,9 @@ def _authoring_env() -> None:
     toolchains that insist on caching there (go, tsc) behave."""
     os.environ.setdefault("HOME", "/tmp")
     for variable, value in (
-        ("GOCACHE", "/tmp/openoj-gocache"),
-        ("GOPATH", "/tmp/openoj-gopath"),
-        ("GOMODCACHE", "/tmp/openoj-gomodcache"),
+        ("GOCACHE", "/tmp/coderpuzzle-gocache"),
+        ("GOPATH", "/tmp/coderpuzzle-gopath"),
+        ("GOMODCACHE", "/tmp/coderpuzzle-gomodcache"),
         ("GO111MODULE", "off"),
         ("PATH", "/usr/local/bin:" + os.environ.get("PATH", "/usr/bin:/bin")),
     ):
@@ -324,7 +324,7 @@ def _judge_one(
         return 0
     executor = get_executor(language)
     code = solution.read_text(encoding="utf-8")
-    work = Path(tempfile.mkdtemp(prefix="openoj-cli-"))
+    work = Path(tempfile.mkdtemp(prefix="coderpuzzle-cli-"))
     try:
         work.chmod(0o777)
     except OSError:
@@ -484,7 +484,7 @@ def cmd_run(arguments: argparse.Namespace) -> int:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(prog="openoj", description=__doc__)
+    parser = argparse.ArgumentParser(prog="coderpuzzle", description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
 
     fmt = sub.add_parser("format", help="format files (or --check / --report json) with the pinned toolchain")

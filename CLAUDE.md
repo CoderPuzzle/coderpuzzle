@@ -126,13 +126,13 @@ scope: `user:<id>` when signed in (survives idle expiry), the guest
 session id otherwise (purged with the session). Idle expiry routes the
 UI to a dedicated logged-out page.
 
-CLI (inside the runner image): `openoj format <files>` (formats in place;
+CLI (inside the runner image): `coderpuzzle format <files>` (formats in place;
 `--check` gates; `--report json` emits the non-mutating tri-state
 formatted/unformatted(+text)/error(+diagnostics) per file — the same
-contract as REST `POST /format`), `openoj gen-starters`,
-`openoj judge <bundle>` (judges every `solution*.<ext>` through the real
+contract as REST `POST /format`), `coderpuzzle gen-starters`,
+`coderpuzzle judge <bundle>` (judges every `solution*.<ext>` through the real
 executors, assembling the bundle's own `provided/` sources),
-`openoj run <file>` (single-file fast loop: discovers the bundle upward,
+`coderpuzzle run <file>` (single-file fast loop: discovers the bundle upward,
 infers the language, `--public` for public cases only; compiles plainly
 like `judge` — authoring tool, not the untrusted-submission sandbox).
 REST + CLI reference: `docs/api-and-cli.md`; the provided-code trust
@@ -215,9 +215,9 @@ check the clock against the reset time before waiting on one.
   image. Local check.py starter comparisons and "is it formatted"
   questions must go through the image:
   `docker run --rm -v $PWD:/work -w /work
-  ghcr.io/coderpuzzle/coderpuzzle:latest openoj format <files>`
+  ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle format <files>`
   (hash files before/after for a check).
-- `openoj format` walks directories for their formattable files;
+- `coderpuzzle format` walks directories for their formattable files;
   `xargs -n 200` just bounds the command line when piping many files.
 - macOS `split` has no `-n l/3`; use `-l <lines>`. `timeout` is absent.
 - Tests that patch `problems.PROBLEMS_DIR` must pass a resolved `Path`

@@ -19,12 +19,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public final class OpenOJJavaHarness {
-    private static final String PROTOCOL_PREFIX = "__OPENOJ_RESULT__";
+public final class CoderPuzzleJavaHarness {
+    private static final String PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__";
     private static final int MAX_CAPTURED_OUTPUT = 16_384;
     private static final long SCHEDULE_STACK_BYTES = 512L * 1024L;
 
-    private OpenOJJavaHarness() {}
+    private CoderPuzzleJavaHarness() {}
 
     public static void main(String[] arguments) {
         if (arguments.length == 1 && "--benchmark".equals(arguments[0])) {
@@ -193,7 +193,7 @@ public final class OpenOJJavaHarness {
                 // address-space allowance; the default times a schedule's
                 // worth of threads exceeds it, and a schedule thread runs one
                 // short method, so a small stack is ample.
-            }, "openoj-schedule", SCHEDULE_STACK_BYTES));
+            }, "coderpuzzle-schedule", SCHEDULE_STACK_BYTES));
         }
         for (Thread thread : threads) {
             thread.setDaemon(true);
@@ -304,7 +304,7 @@ public final class OpenOJJavaHarness {
             if (method.getDeclaringClass() == Object.class) {
                 switch (method.getName()) {
                     case "toString":
-                        return "OpenOJ callback (" + callbackType.getName() + ")";
+                        return "CoderPuzzle callback (" + callbackType.getName() + ")";
                     case "hashCode":
                         return System.identityHashCode(proxy);
                     case "equals":

@@ -25,7 +25,7 @@ import (
 	"os"
 )
 
-func openojEmit(line string) {
+func coderpuzzleEmit(line string) {
 	if channel := os.NewFile(63, "protocol"); channel != nil {
 		if _, errorValue := channel.WriteString(line + "\\n"); errorValue == nil {
 			return
@@ -130,7 +130,7 @@ MAIN_TEMPLATE = """\
 func main() {
 	defer func() {
 		if problem := recover(); problem != nil {
-			openojEmit("__OPENOJ_RESULT__" + `{"status":"runtime_error","error":` + openojJSON(fmt.Sprintf("%v", problem)) + "}")
+			coderpuzzleEmit("__CODERPUZZLE_RESULT__" + `{"status":"runtime_error","error":` + coderpuzzleJSON(fmt.Sprintf("%v", problem)) + "}")
 		}
 	}()
 	bytes_ := make([]byte, 0, 4096)
@@ -248,7 +248,7 @@ func main() {
 			for trial := int64(0); trial < repeat; trial++ {
 				result := dispatch@CLASS_NAME@(target, name, callArguments)
 				last = result
-				frequencies[openojJSON(result)]++
+				frequencies[coderpuzzleJSON(result)]++
 			}
 			outputs = append(outputs, frequencies)
 			// $prev carries the last raw result, not the frequency table
@@ -260,12 +260,12 @@ func main() {
 			previous = result
 		}
 	}
-	openojEmit("__OPENOJ_RESULT__" + fmt.Sprintf(`{"status":"completed","actual":%s}`, openojJSON(outputs)))
+	coderpuzzleEmit("__CODERPUZZLE_RESULT__" + fmt.Sprintf(`{"status":"completed","actual":%s}`, coderpuzzleJSON(outputs)))
 }
 """
 
 JSON_HELPER = """\
-func openojJSON(value any) string {
+func coderpuzzleJSON(value any) string {
 	encoded, errorValue := json.Marshal(value)
 	if errorValue != nil {
 		panic(errorValue)
@@ -281,10 +281,10 @@ def strip_package(source: str) -> str:
 
 
 TREE_HELPERS = """\
-// openojDesignTree builds a *TreeNode from the tree_node codec's
+// coderpuzzleDesignTree builds a *TreeNode from the tree_node codec's
 // level-order row (nil for absent children), assigning two slots per
 // queued node exactly like the harness's codec.
-func openojDesignTree(value any) *TreeNode {
+func coderpuzzleDesignTree(value any) *TreeNode {
 	row, ok := value.([]any)
 	if !ok {
 		panic("Expected a level-order tree array")
@@ -319,9 +319,9 @@ func openojDesignTree(value any) *TreeNode {
 	return root
 }
 
-// openojDesignTreeArray serializes a tree back to the codec's level-order
+// coderpuzzleDesignTreeArray serializes a tree back to the codec's level-order
 // row (trailing nils trimmed) so results compare as plain JSON.
-func openojDesignTreeArray(root *TreeNode) []any {
+func coderpuzzleDesignTreeArray(root *TreeNode) []any {
 	if root == nil {
 		return []any{}
 	}
@@ -359,7 +359,7 @@ def _convert(spec: dict[str, Any], source: str, class_name: str = "") -> str:
     if kind == "string":
         return f'(func() string {{ v, ok := {source}.(string); if !ok {{ panic("Expected a string") }}; return v }})()'
     if kind == "binary_tree":
-        return f"openojDesignTree({source})"
+        return f"coderpuzzleDesignTree({source})"
     if kind == "instance":
         # A live design object resolved in main from a {"$ref": handle}
         # marker: the value crossing here is already the *Class itself
@@ -374,10 +374,10 @@ def _convert(spec: dict[str, Any], source: str, class_name: str = "") -> str:
         # is concatenated into the same package, so an integer hold is
         # built directly as NestedInteger{integer: &held}.
         return (
-            f'(func() NestedInteger {{ var openojBuild func(v any) NestedInteger; openojBuild = func(v any) NestedInteger {{ '
+            f'(func() NestedInteger {{ var coderpuzzleBuild func(v any) NestedInteger; coderpuzzleBuild = func(v any) NestedInteger {{ '
             f'switch t := v.(type) {{ case int64: held := int(t); return NestedInteger{{integer: &held}}; case []any: '
-            f'var node NestedInteger; for _, item := range t {{ node.Add(openojBuild(item)) }}; return node; '
-            f'default: panic("Expected a nested list") }} }}; return openojBuild({source}) }})()'
+            f'var node NestedInteger; for _, item := range t {{ node.Add(coderpuzzleBuild(item)) }}; return node; '
+            f'default: panic("Expected a nested list") }} }}; return coderpuzzleBuild({source}) }})()'
         )
     if kind == "array":
         inner = _convert(spec["items"], "item", class_name)
@@ -418,7 +418,7 @@ def prepare_design(executor, job_root: Path, scratch: Path, code: str,
         call = f"solution.{go_name}({args})"
         if method.get("return_type") is not None and method["return_type"].get("kind") == "binary_tree":
             needs_tree = True
-            call = f"openojDesignTreeArray({call})"
+            call = f"coderpuzzleDesignTreeArray({call})"
         dispatch_cases.append(
             f'\tcase "{name}":\n\t\t{"return " + call if returns else call + "; return nil"}'
         )
@@ -481,7 +481,7 @@ def prepare_design(executor, job_root: Path, scratch: Path, code: str,
         job_root,
         (executor.compiler_path, "build", "-trimpath", "-ldflags=-s -w", "-o", str(executable), str(source_path)),
         executable,
-        {"PATH": "/usr/bin:/bin", "HOME": "/nonexistent", "TMPDIR": "/tmp", "LANG": "C.UTF-8", "GOCACHE": "/tmp/openoj-gocache", "GOPATH": "/tmp/gopath", "GOMODCACHE": "/tmp/gomodcache", "GO111MODULE": "off"},
+        {"PATH": "/usr/bin:/bin", "HOME": "/nonexistent", "TMPDIR": "/tmp", "LANG": "C.UTF-8", "GOCACHE": "/tmp/coderpuzzle-gocache", "GOPATH": "/tmp/gopath", "GOMODCACHE": "/tmp/gomodcache", "GO111MODULE": "off"},
     )
     return PreparedProgram(
         command=(str(executable),),

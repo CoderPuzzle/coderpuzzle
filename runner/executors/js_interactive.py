@@ -21,7 +21,7 @@ from typing import Any
 from .base import ExecutorError, PreparedProgram
 
 WRAPPER_HEAD = """\
-function openojEmit(line) {
+function coderpuzzleEmit(line) {
     const fs = require("fs");
     try {
         fs.writeSync(63, line + "\\n");
@@ -101,7 +101,7 @@ function safeInt(value) {
     return Number(value);
 }
 
-function openojJSON(value) {
+function coderpuzzleJSON(value) {
     return JSON.stringify(value, (_key, item) => (typeof item === "bigint" ? Number(item) : item));
 }
 """
@@ -125,7 +125,7 @@ async function main() {
 }
 
 main().catch((problem) => {
-    openojEmit("__OPENOJ_RESULT__" + openojJSON({ status: "runtime_error", error: String(problem && problem.message ? problem.message : problem) }));
+    coderpuzzleEmit("__CODERPUZZLE_RESULT__" + coderpuzzleJSON({ status: "runtime_error", error: String(problem && problem.message ? problem.message : problem) }));
 });
 """
 
@@ -168,12 +168,12 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
             "Interactive parameters (excluding out_buffer ones) must match provided.oracle.auxiliary")
 
     value_reads = "\n".join(
-        f"    const openojValue{index} = reader.value();"
+        f"    const coderpuzzleValue{index} = reader.value();"
         for index in range(len(construct_keys) + len(auxiliary_keys))
     )
-    oracle_args = ", ".join(f"openojValue{index}" for index in range(len(construct_keys)))
+    oracle_args = ", ".join(f"coderpuzzleValue{index}" for index in range(len(construct_keys)))
     def aux(index: int) -> str:
-        name = f"openojValue{len(construct_keys) + index}"
+        name = f"coderpuzzleValue{len(construct_keys) + index}"
         # TypeScript infers the reader's union as {}; the submission's
         # parameter types govern at run time either way
         return f"{name} as any" if is_typescript else name
@@ -184,8 +184,8 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
     # Case key -> an expression for its already-decoded value; an out_buffer
     # capacity may name any decoded key.
     capacity_sources = {
-        **{key: f"openojValue{index}" for index, key in enumerate(construct_keys)},
-        **{key: f"openojValue{len(construct_keys) + index}" for index, key in enumerate(auxiliary_keys)},
+        **{key: f"coderpuzzleValue{index}" for index, key in enumerate(construct_keys)},
+        **{key: f"coderpuzzleValue{len(construct_keys) + index}" for index, key in enumerate(auxiliary_keys)},
     }
     buffer_variables: dict[int, str] = {}
     buffer_lines = []
@@ -193,7 +193,7 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
         capacity = capacity_sources.get(capacity_key)
         if capacity is None:
             raise ExecutorError(f"out_buffer capacity_from {capacity_key!r} is not a case key")
-        variable = f"openojBuffer{slot}"
+        variable = f"coderpuzzleBuffer{slot}"
         buffer_lines.append(
             f"    const {variable} = new Array(Math.max(0, Math.trunc({anycast(capacity)}))).fill(null);"
         )
@@ -225,23 +225,23 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
         if buffer_slot is None:
             call_block = (
                 f"    const actual = solution.{method}(oracle{', ' + ', '.join(parameter_arguments) if parameter_arguments else ''});\n"
-                '    openojEmit("__OPENOJ_RESULT__" + openojJSON({ status: "completed", actual: actual }));'
+                '    coderpuzzleEmit("__CODERPUZZLE_RESULT__" + coderpuzzleJSON({ status: "completed", actual: actual }));'
             )
         else:
             buffer = buffer_variables[buffer_slot]
             call_block = (
                 f"    const actual = solution.{method}(oracle{', ' + ', '.join(parameter_arguments) if parameter_arguments else ''});\n"
-                "    const openojCount = Math.trunc(actual);\n"
-                f"    let openojWritten = openojCount;\n"
-                f"    if (openojWritten < 0) openojWritten = 0;\n"
-                f"    if (openojWritten > {buffer}.length) openojWritten = {buffer}.length;\n"
-                '    openojEmit("__OPENOJ_RESULT__" + openojJSON({ status: "completed", actual: [openojCount, '
-                f"{buffer}.slice(0, openojWritten)] }}));"
+                "    const coderpuzzleCount = Math.trunc(actual);\n"
+                f"    let coderpuzzleWritten = coderpuzzleCount;\n"
+                f"    if (coderpuzzleWritten < 0) coderpuzzleWritten = 0;\n"
+                f"    if (coderpuzzleWritten > {buffer}.length) coderpuzzleWritten = {buffer}.length;\n"
+                '    coderpuzzleEmit("__CODERPUZZLE_RESULT__" + coderpuzzleJSON({ status: "completed", actual: [coderpuzzleCount, '
+                f"{buffer}.slice(0, coderpuzzleWritten)] }}));"
             )
     else:
         call_block = (
             f"    await solution.{method}(oracle{', ' + ', '.join(parameter_arguments) if parameter_arguments else ''});\n"
-            '    openojEmit("__OPENOJ_RESULT__" + openojJSON({ status: "completed", actual: oracle.verdict() }));'
+            '    coderpuzzleEmit("__CODERPUZZLE_RESULT__" + coderpuzzleJSON({ status: "completed", actual: oracle.verdict() }));'
         )
 
     provided_source = "".join(

@@ -9,7 +9,7 @@ import sys
 # is absent (local authoring tooling runs harnesses without it).
 PROTOCOL_FD = 63
 
-PROTOCOL_PREFIX = "__OPENOJ_RESULT__"
+PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 
 # The only statuses a harness can legitimately report.
 _PROTOCOL_STATUSES = {"completed", "runtime_error"}

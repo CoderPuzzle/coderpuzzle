@@ -30,7 +30,7 @@ from leetcode_codecs import (
 from protocol import emit_protocol
 
 
-PROTOCOL_PREFIX = "__OPENOJ_RESULT__"
+PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 MAX_CAPTURED_OUTPUT = 16_384
 SCHEDULE_STACK_BYTES = 512 * 1024
 
@@ -57,11 +57,11 @@ def _load_solution(solution_path: Path, assembly_paths: list[Path] | None = None
     bundle's provided/ sources (and any narrow oracle/helper classes),
     exec'd into the submission's namespace ahead of it, so the submission
     sees exactly one definition of each name it uses."""
-    spec = importlib.util.spec_from_file_location("openoj_solution", solution_path)
+    spec = importlib.util.spec_from_file_location("coderpuzzle_solution", solution_path)
     if spec is None or spec.loader is None:
         raise RuntimeError("Unable to load solution")
     module = importlib.util.module_from_spec(spec)
-    namespace = {"__name__": "openoj_assembly"}
+    namespace = {"__name__": "coderpuzzle_assembly"}
     for assembly_path in assembly_paths or []:
         exec(compile(assembly_path.read_text(encoding="utf-8"), str(assembly_path), "exec"), namespace)
     for name, value in namespace.items():

@@ -9,7 +9,7 @@ volume.
 
 The REST API and the image's authoring CLIs are documented in
 [docs/api-and-cli.md](docs/api-and-cli.md) — one toolchain, two interfaces:
-the tri-state `/format` endpoint and the `openoj format|gen-starters|judge|run` CLI.
+the tri-state `/format` endpoint and the `coderpuzzle format|gen-starters|judge|run` CLI.
 
 ## Start it
 

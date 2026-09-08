@@ -20,7 +20,7 @@ def _snake_case(name: str) -> str:
     return re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
 
 
-def _read_expression(spec: dict[str, Any], reader: str = "openoj_reader") -> str:
+def _read_expression(spec: dict[str, Any], reader: str = "coderpuzzle_reader") -> str:
     kind = spec["kind"]
     if kind == "integer":
         return f"{reader}.i32()?" if spec.get("bits", 32) == 32 else f"{reader}.i64()?"
@@ -139,11 +139,11 @@ class RustExecutor(CompiledExecutor):
             "nary_tree_nodes" in structs or "nary_tree_ref" in structs or nary_ref_aliased
         )
         struct_codecs = ""
-        result_expression = "openoj_actual.openoj_json()"
+        result_expression = "coderpuzzle_actual.coderpuzzle_json()"
         if "list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn linked_list(&mut self) -> Result<Option<Box<ListNode>>, String> {{
                         if self.take(1)?[0] == 0 {{ return Ok(None); }}
                         let length = self.u32()? as usize;
@@ -156,7 +156,7 @@ class RustExecutor(CompiledExecutor):
                         Ok(head)
                     }}
                 }}
-                fn openoj_list_node_json(head: &Option<Box<ListNode>>) -> String {{
+                fn coderpuzzle_list_node_json(head: &Option<Box<ListNode>>) -> String {{
                     let mut output = String::from("[");
                     let mut current = head.as_deref();
                     let mut first = true;
@@ -172,17 +172,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "linked_list":
-                result_expression = "Ok(openoj_list_node_json(&openoj_actual))"
+                result_expression = "Ok(coderpuzzle_list_node_json(&coderpuzzle_actual))"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "linked_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|part| openoj_list_node_json(part))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|part| coderpuzzle_list_node_json(part))"
                     ".collect::<Vec<String>>().join(\",\")))"
                 )
         if "tree" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn binary_tree(&mut self) -> Result<Option<Box<TreeNode>>, String> {{
                         let length = self.u32()? as usize;
                         let mut pool: Vec<Option<Box<TreeNode>>> = Vec::with_capacity(length);
@@ -215,7 +215,7 @@ class RustExecutor(CompiledExecutor):
                         Ok(root)
                     }}
                 }}
-                fn openoj_tree_node_json(root: &Option<Box<TreeNode>>) -> String {{
+                fn coderpuzzle_tree_node_json(root: &Option<Box<TreeNode>>) -> String {{
                     let mut items: Vec<String> = Vec::new();
                     let mut queue: std::collections::VecDeque<Option<&TreeNode>> = std::collections::VecDeque::new();
                     if root.is_some() {{ queue.push_back(root.as_deref()); }}
@@ -235,17 +235,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "binary_tree":
-                result_expression = "Ok(openoj_tree_node_json(&openoj_actual))"
+                result_expression = "Ok(coderpuzzle_tree_node_json(&coderpuzzle_actual))"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "binary_tree":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|tree| openoj_tree_node_json(tree))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|tree| coderpuzzle_tree_node_json(tree))"
                     ".collect::<Vec<String>>().join(\",\")))"
                 )
         if "nary_tree" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn nary_tree(&mut self) -> Result<Option<Box<Node>>, String> {{
                         let length = self.u32()? as usize;
                         let mut pool: Vec<Option<Box<Node>>> = Vec::with_capacity(length);
@@ -280,7 +280,7 @@ class RustExecutor(CompiledExecutor):
                         Ok(root)
                     }}
                 }}
-                fn openoj_nary_json(root: &Option<Box<Node>>) -> String {{
+                fn coderpuzzle_nary_json(root: &Option<Box<Node>>) -> String {{
                     // Display wire: root value, the marker closing the root
                     // group, then each node's children followed by its own
                     // marker; trailing markers are trimmed.
@@ -304,17 +304,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "nary_tree":
-                result_expression = "Ok(openoj_nary_json(&openoj_actual))"
+                result_expression = "Ok(coderpuzzle_nary_json(&coderpuzzle_actual))"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "nary_tree":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|tree| openoj_nary_json(tree))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|tree| coderpuzzle_nary_json(tree))"
                     ".collect::<Vec<String>>().join(\",\")))"
                 )
         if "quad_tree" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn quad_tree(&mut self) -> Result<Option<Box<QuadNode>>, String> {{
                         if self.take(1)?[0] == 0 {{ return Ok(None); }}
                         let is_leaf = self.take(1)?[0] == 1;
@@ -329,7 +329,7 @@ class RustExecutor(CompiledExecutor):
                         Ok(Some(node))
                     }}
                 }}
-                fn openoj_quad_json(node: &Option<Box<QuadNode>>) -> String {{
+                fn coderpuzzle_quad_json(node: &Option<Box<QuadNode>>) -> String {{
                     // LC display wire: one flat preorder list of [isLeaf,
                     // val] pairs; a non-leaf's val normalizes to 0.
                     if node.is_none() {{ return "null".to_string(); }}
@@ -353,17 +353,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "quad_tree":
-                result_expression = "Ok(openoj_quad_json(&openoj_actual))"
+                result_expression = "Ok(coderpuzzle_quad_json(&coderpuzzle_actual))"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "quad_tree":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|tree| openoj_quad_json(tree))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|tree| coderpuzzle_quad_json(tree))"
                     ".collect::<Vec<String>>().join(\",\")))"
                 )
         if "nested" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn nested(&mut self) -> Result<NestedInteger, String> {{
                         let tag = self.take(1)?[0];
                         if tag == 1 {{ return Ok(NestedInteger::with_integer(self.i32()?)); }}
@@ -374,25 +374,25 @@ class RustExecutor(CompiledExecutor):
                         Ok(value)
                     }}
                 }}
-                fn openoj_nested_json(value: &NestedInteger) -> Result<String, String> {{
+                fn coderpuzzle_nested_json(value: &NestedInteger) -> Result<String, String> {{
                     if value.is_integer() {{ return Ok(value.get_integer().to_string()); }}
-                    let items: Result<Vec<String>, String> = value.get_list().iter().map(openoj_nested_json).collect();
+                    let items: Result<Vec<String>, String> = value.get_list().iter().map(coderpuzzle_nested_json).collect();
                     Ok(format!("[{{}}]", items?.join(",")))
                 }}
                 """
             )
             if return_type.get("kind") == "nested":
-                result_expression = "Ok(openoj_nested_json(&openoj_actual)?)"
+                result_expression = "Ok(coderpuzzle_nested_json(&coderpuzzle_actual)?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "nested":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(openoj_nested_json)"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(coderpuzzle_nested_json)"
                     ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
                 )
         if "next_tree" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn next_tree(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<NodeWithNext>>>, String> {{
                         let length = self.u32()? as usize;
                         let mut slots: Vec<Option<std::rc::Rc<std::cell::RefCell<NodeWithNext>>>> = Vec::with_capacity(length);
@@ -424,7 +424,7 @@ class RustExecutor(CompiledExecutor):
                         Ok(Some(root))
                     }}
                 }}
-                fn openoj_next_tree_json(root: &Option<std::rc::Rc<std::cell::RefCell<NodeWithNext>>>) -> String {{
+                fn coderpuzzle_next_tree_json(root: &Option<std::rc::Rc<std::cell::RefCell<NodeWithNext>>>) -> String {{
                     // LC display wire: values with one null marker between
                     // adjacent levels; the walk advances to the first child
                     // found anywhere in the level (left, else right) so
@@ -455,17 +455,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "next_tree":
-                result_expression = "Ok(openoj_next_tree_json(&openoj_actual))"
+                result_expression = "Ok(coderpuzzle_next_tree_json(&coderpuzzle_actual))"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "next_tree":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|tree| openoj_next_tree_json(tree))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|tree| coderpuzzle_next_tree_json(tree))"
                     ".collect::<Vec<String>>().join(\",\")))"
                 )
         if "circular_list" in structs or "alias_list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn shared_list(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<SharedListNode>>>, String> {{
                         if self.take(1)?[0] == 0 {{ return Ok(None); }}
                         let length = self.u32()? as usize;
@@ -484,7 +484,7 @@ class RustExecutor(CompiledExecutor):
         if "circular_list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn circular_list(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<SharedListNode>>>, String> {{
                         // The decoder closes the ring (tail.next = head)
                         // exactly like the harness languages, so solutions
@@ -502,7 +502,7 @@ class RustExecutor(CompiledExecutor):
                         Ok(Some(head))
                     }}
                 }}
-                fn openoj_circular_json(head: &Option<std::rc::Rc<std::cell::RefCell<SharedListNode>>>) -> Result<String, String> {{
+                fn coderpuzzle_circular_json(head: &Option<std::rc::Rc<std::cell::RefCell<SharedListNode>>>) -> Result<String, String> {{
                     let head = match head {{ Some(node) => node.clone(), None => return Ok("[]".to_string()) }};
                     let mut items: Vec<String> = Vec::new();
                     let mut current = Some(head.clone());
@@ -521,17 +521,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "circular_list":
-                result_expression = "Ok(openoj_circular_json(&openoj_actual)?)"
+                result_expression = "Ok(coderpuzzle_circular_json(&coderpuzzle_actual)?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "circular_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|part| openoj_circular_json(part))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|part| coderpuzzle_circular_json(part))"
                     ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
                 )
         if "doubly_circular" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn doubly_circular(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<NodeWithNext>>>, String> {{
                         // LC 426: left is prev, right is next; the ring is
                         // read open (head.left unset) and the serializer
@@ -549,7 +549,7 @@ class RustExecutor(CompiledExecutor):
                         Ok(Some(head))
                     }}
                 }}
-                fn openoj_doubly_json(head: &Option<std::rc::Rc<std::cell::RefCell<NodeWithNext>>>) -> Result<String, String> {{
+                fn coderpuzzle_doubly_json(head: &Option<std::rc::Rc<std::cell::RefCell<NodeWithNext>>>) -> Result<String, String> {{
                     let head = match head {{ Some(node) => node.clone(), None => return Ok("[]".to_string()) }};
                     let mut items: Vec<String> = Vec::new();
                     let mut previous: Option<std::rc::Rc<std::cell::RefCell<NodeWithNext>>> = None;
@@ -578,17 +578,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "doubly_circular":
-                result_expression = "Ok(openoj_doubly_json(&openoj_actual)?)"
+                result_expression = "Ok(coderpuzzle_doubly_json(&coderpuzzle_actual)?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "doubly_circular":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|part| openoj_doubly_json(part))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|part| coderpuzzle_doubly_json(part))"
                     ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
                 )
         if "multi_list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn multi_list(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<MultiListNode>>>, String> {{
                         // One chain: u32 n, then per node the value, a child
                         // flag, and the flagged child's own chain. Every
@@ -610,7 +610,7 @@ class RustExecutor(CompiledExecutor):
                         Ok(head)
                     }}
                 }}
-                fn openoj_multi_json(head: &Option<std::rc::Rc<std::cell::RefCell<MultiListNode>>>) -> Result<String, String> {{
+                fn coderpuzzle_multi_json(head: &Option<std::rc::Rc<std::cell::RefCell<MultiListNode>>>) -> Result<String, String> {{
                     // A flattened result must be a clean doubly chain: every
                     // prev back-link set, no child left (LC 430 order is the
                     // solution's job — this walks the flat chain).
@@ -636,17 +636,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "multi_list":
-                result_expression = "Ok(openoj_multi_json(&openoj_actual)?)"
+                result_expression = "Ok(coderpuzzle_multi_json(&coderpuzzle_actual)?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "multi_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|part| openoj_multi_json(part))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|part| coderpuzzle_multi_json(part))"
                     ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
                 )
         if "alias_list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                fn openoj_alias_json(node: &Option<std::rc::Rc<std::cell::RefCell<SharedListNode>>>, input_nodes: &[*const std::cell::RefCell<SharedListNode>]) -> Result<String, String> {{
+                fn coderpuzzle_alias_json(node: &Option<std::rc::Rc<std::cell::RefCell<SharedListNode>>>, input_nodes: &[*const std::cell::RefCell<SharedListNode>]) -> Result<String, String> {{
                     // LC 160: the intersection is by identity — the result
                     // must be a node taken from the input lists, and the
                     // wire is the shared tail's values.
@@ -665,11 +665,11 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "alias_list":
-                result_expression = "Ok(openoj_alias_json(&openoj_actual, &openoj_input_nodes_alias.borrow())?)"
+                result_expression = "Ok(coderpuzzle_alias_json(&coderpuzzle_actual, &coderpuzzle_input_nodes_alias.borrow())?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "alias_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|part| openoj_alias_json(part, &openoj_input_nodes_alias.borrow()))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|part| coderpuzzle_alias_json(part, &coderpuzzle_input_nodes_alias.borrow()))"
                     ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
                 )
         if "graph" in structs:
@@ -677,7 +677,7 @@ class RustExecutor(CompiledExecutor):
             # the rendered name below is the manifest's class name.
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn graph(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<{graph_class}>>>, String> {{
                         let count = self.u32()? as usize;
                         if count == 0 {{ return Ok(None); }}
@@ -695,7 +695,7 @@ class RustExecutor(CompiledExecutor):
                         Ok(Some(nodes[0].clone()))
                     }}
                 }}
-                fn openoj_graph_json(root: &Option<std::rc::Rc<std::cell::RefCell<{graph_class}>>>, input_nodes: &[*const std::cell::RefCell<{graph_class}>]) -> Result<String, String> {{
+                fn coderpuzzle_graph_json(root: &Option<std::rc::Rc<std::cell::RefCell<{graph_class}>>>, input_nodes: &[*const std::cell::RefCell<{graph_class}>]) -> Result<String, String> {{
                     // Rows ordered by node value; neighbor order is
                     // normalized (sorted) since LC treats adjacency order
                     // as irrelevant.
@@ -726,17 +726,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "graph":
-                result_expression = "Ok(openoj_graph_json(&openoj_actual, &openoj_input_nodes_graph.borrow())?)"
+                result_expression = "Ok(coderpuzzle_graph_json(&coderpuzzle_actual, &coderpuzzle_input_nodes_graph.borrow())?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "graph":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|part| openoj_graph_json(part, &openoj_input_nodes_graph.borrow()))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|part| coderpuzzle_graph_json(part, &coderpuzzle_input_nodes_graph.borrow()))"
                     ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
                 )
         if "random_list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn random_list(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<{random_class}>>>, String> {{
                         let count = self.u32()? as usize;
                         if count == 0 {{ return Ok(None); }}
@@ -758,7 +758,7 @@ class RustExecutor(CompiledExecutor):
                         Ok(Some(nodes[0].clone()))
                     }}
                 }}
-                fn openoj_random_json(head: &Option<std::rc::Rc<std::cell::RefCell<{random_class}>>>, input_nodes: &[*const std::cell::RefCell<{random_class}>]) -> Result<String, String> {{
+                fn coderpuzzle_random_json(head: &Option<std::rc::Rc<std::cell::RefCell<{random_class}>>>, input_nodes: &[*const std::cell::RefCell<{random_class}>]) -> Result<String, String> {{
                     let mut nodes: Vec<std::rc::Rc<std::cell::RefCell<{random_class}>>> = Vec::new();
                     let mut current = head.clone();
                     while let Some(node) = current {{
@@ -792,17 +792,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "random_list":
-                result_expression = "Ok(openoj_random_json(&openoj_actual, &openoj_input_nodes_random.borrow())?)"
+                result_expression = "Ok(coderpuzzle_random_json(&coderpuzzle_actual, &coderpuzzle_input_nodes_random.borrow())?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "random_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|part| openoj_random_json(part, &openoj_input_nodes_random.borrow()))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|part| coderpuzzle_random_json(part, &coderpuzzle_input_nodes_random.borrow()))"
                     ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
                 )
         if "doubly_list" in structs or "doubly_list_node" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn doubly_list(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<{doubly_class}>>>, String> {{
                         // The open chain wires both directions as it reads,
                         // mirroring the multi_list reader's prev/next wiring.
@@ -828,7 +828,7 @@ class RustExecutor(CompiledExecutor):
         if "doubly_list_node" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn doubly_list_node(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<{doubly_class}>>>, String> {{
                         // The chain, then the (unique) value naming the node
                         // the method receives — the handle is the real node.
@@ -847,7 +847,7 @@ class RustExecutor(CompiledExecutor):
         if "doubly_list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                fn openoj_doubly_list_json(head: &Option<std::rc::Rc<std::cell::RefCell<{doubly_class}>>>) -> Result<String, String> {{
+                fn coderpuzzle_doubly_list_json(head: &Option<std::rc::Rc<std::cell::RefCell<{doubly_class}>>>) -> Result<String, String> {{
                     // The forward walk must agree with every back-link,
                     // mirroring the doubly_circular invariant on an open
                     // chain.
@@ -871,17 +871,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "doubly_list":
-                result_expression = "Ok(openoj_doubly_list_json(&openoj_actual)?)"
+                result_expression = "Ok(coderpuzzle_doubly_list_json(&coderpuzzle_actual)?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "doubly_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|part| openoj_doubly_list_json(part))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|part| coderpuzzle_doubly_list_json(part))"
                     ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
                 )
         if "random_tree" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn random_tree(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<{random_tree_class}>>>, String> {{
                         // Binary-tree level order whose present slots carry
                         // [val, random] rows; the random index counts present
@@ -924,7 +924,7 @@ class RustExecutor(CompiledExecutor):
                         Ok(Some(root))
                     }}
                 }}
-                fn openoj_random_tree_json(root: &Option<std::rc::Rc<std::cell::RefCell<{random_tree_class}>>>, input_nodes: &[*const std::cell::RefCell<{random_tree_class}>]) -> Result<String, String> {{
+                fn coderpuzzle_random_tree_json(root: &Option<std::rc::Rc<std::cell::RefCell<{random_tree_class}>>>, input_nodes: &[*const std::cell::RefCell<{random_tree_class}>]) -> Result<String, String> {{
                     // The returned tree's own level order as [val,
                     // randomIndex-or-null] rows, trailing slots trimmed; the
                     // clone check forbids returning (part of) the input tree
@@ -974,17 +974,17 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "random_tree":
-                result_expression = "Ok(openoj_random_tree_json(&openoj_actual, &openoj_input_nodes_random_tree.borrow())?)"
+                result_expression = "Ok(coderpuzzle_random_tree_json(&coderpuzzle_actual, &coderpuzzle_input_nodes_random_tree.borrow())?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "random_tree":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", openoj_actual.iter()"
-                    ".map(|part| openoj_random_tree_json(part, &openoj_input_nodes_random_tree.borrow()))"
+                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    ".map(|part| coderpuzzle_random_tree_json(part, &coderpuzzle_input_nodes_random_tree.borrow()))"
                     ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
                 )
         if "special_tree" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn special_tree(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<{special_class}>>>, String> {{
                         // Binary-tree slots decode into shared nodes (a ring
                         // cannot live in Box children); the leaves — collected
@@ -1046,7 +1046,7 @@ class RustExecutor(CompiledExecutor):
         if "nary_tree_nodes" in structs or "nary_tree_ref" in structs or nary_ref_aliased:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn shared_nary(&mut self) -> Result<Option<std::rc::Rc<std::cell::RefCell<{nary_class}>>>, String> {{
                         // The plain n-ary display decoded into shared nodes —
                         // an nary_tree_ref handover or node-list parameter
@@ -1089,7 +1089,7 @@ class RustExecutor(CompiledExecutor):
         if "nary_tree_nodes" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                impl OpenOJReader {{
+                impl CoderPuzzleReader {{
                     fn nary_tree_nodes(&mut self) -> Result<Vec<std::rc::Rc<std::cell::RefCell<{nary_class}>>>, String> {{
                         // The node-list handover: the tree decoded shared, its
                         // nodes handed over in level order (the statement
@@ -1111,7 +1111,7 @@ class RustExecutor(CompiledExecutor):
         if shared_nary_return:
             struct_codecs += textwrap.dedent(
                 f"""
-                fn openoj_shared_nary_json(root: &Option<std::rc::Rc<std::cell::RefCell<{nary_class}>>>) -> Result<String, String> {{
+                fn coderpuzzle_shared_nary_json(root: &Option<std::rc::Rc<std::cell::RefCell<{nary_class}>>>) -> Result<String, String> {{
                     // The display wire from shared nodes, clone-walking
                     // children — a returned node is frequently an input node
                     // and must not be consumed.
@@ -1135,7 +1135,7 @@ class RustExecutor(CompiledExecutor):
                 }}
                 """
             )
-            result_expression = "Ok(openoj_shared_nary_json(&openoj_actual)?)"
+            result_expression = "Ok(coderpuzzle_shared_nary_json(&coderpuzzle_actual)?)"
         if "struct" in structs:
             def _struct_reader(spec: dict[str, Any]) -> str:
                 fields = spec.get("fields") or []
@@ -1163,7 +1163,7 @@ class RustExecutor(CompiledExecutor):
             for parameter in invocation.get("parameters", []):
                 _collect(parameter.get("value_type") if isinstance(parameter, dict) else None)
             readers = "".join(_struct_reader(spec) for _, spec in sorted(struct_specs.items()))
-            struct_codecs += "impl OpenOJReader {\n" + readers + "}\n"
+            struct_codecs += "impl CoderPuzzleReader {\n" + readers + "}\n"
 
         # Alias splices need the aliased list's nodes; clone checks need
         # every input node registered — read the parameters with that
@@ -1178,22 +1178,22 @@ class RustExecutor(CompiledExecutor):
         input_locals = ""
         if "alias_list" in structs:
             input_locals += (
-                "    let openoj_input_nodes_alias: std::cell::RefCell<Vec<*const std::cell::RefCell<SharedListNode>>> = "
+                "    let coderpuzzle_input_nodes_alias: std::cell::RefCell<Vec<*const std::cell::RefCell<SharedListNode>>> = "
                 "std::cell::RefCell::new(Vec::new());\n"
             )
         if "graph" in structs:
             input_locals += (
-                f"    let openoj_input_nodes_graph: std::cell::RefCell<Vec<*const std::cell::RefCell<{graph_class}>>> = "
+                f"    let coderpuzzle_input_nodes_graph: std::cell::RefCell<Vec<*const std::cell::RefCell<{graph_class}>>> = "
                 "std::cell::RefCell::new(Vec::new());\n"
             )
         if "random_list" in structs:
             input_locals += (
-                f"    let openoj_input_nodes_random: std::cell::RefCell<Vec<*const std::cell::RefCell<{random_class}>>> = "
+                f"    let coderpuzzle_input_nodes_random: std::cell::RefCell<Vec<*const std::cell::RefCell<{random_class}>>> = "
                 "std::cell::RefCell::new(Vec::new());\n"
             )
         if "random_tree" in structs:
             input_locals += (
-                f"    let openoj_input_nodes_random_tree: std::cell::RefCell<Vec<*const std::cell::RefCell<{random_tree_class}>>> = "
+                f"    let coderpuzzle_input_nodes_random_tree: std::cell::RefCell<Vec<*const std::cell::RefCell<{random_tree_class}>>> = "
                 "std::cell::RefCell::new(Vec::new());\n"
             )
 
@@ -1212,14 +1212,14 @@ class RustExecutor(CompiledExecutor):
 
         def declaration(index: int, spec: dict[str, Any]) -> str:
             if spec.get("kind") == "alias_list":
-                aliased = f"openoj_arg_{spec['alias']}_nodes"
-                # This block reads inline in openoj_run, where the reader
-                # local is openoj_reader (not the impl receiver).
-                prefix_item_read = _read_expression(struct_item_spec(invocation), "openoj_reader")
+                aliased = f"coderpuzzle_arg_{spec['alias']}_nodes"
+                # This block reads inline in coderpuzzle_run, where the reader
+                # local is coderpuzzle_reader (not the impl receiver).
+                prefix_item_read = _read_expression(struct_item_spec(invocation), "coderpuzzle_reader")
                 return textwrap.dedent(
                     f"""
-                    let openoj_arg_{index}: Option<std::rc::Rc<std::cell::RefCell<SharedListNode>>> = {{
-                        let count = openoj_reader.u32()? as usize;
+                    let coderpuzzle_arg_{index}: Option<std::rc::Rc<std::cell::RefCell<SharedListNode>>> = {{
+                        let count = coderpuzzle_reader.u32()? as usize;
                         let mut head: Option<std::rc::Rc<std::cell::RefCell<SharedListNode>>> = None;
                         let mut tail: Option<std::rc::Rc<std::cell::RefCell<SharedListNode>>> = None;
                         let mut prefix: Vec<std::rc::Rc<std::cell::RefCell<SharedListNode>>> = Vec::with_capacity(count);
@@ -1233,7 +1233,7 @@ class RustExecutor(CompiledExecutor):
                             tail = Some(node.clone());
                             prefix.push(node);
                         }}
-                        let splice_at = openoj_reader.u32()? as usize;
+                        let splice_at = coderpuzzle_reader.u32()? as usize;
                         if let Some(target) = {aliased}.get(splice_at) {{
                             // Real shared nodes: the prefix's last node (or
                             // the head when the prefix is empty) joins the
@@ -1244,11 +1244,11 @@ class RustExecutor(CompiledExecutor):
                             }}
                         }}
                         for node in &prefix {{
-                            openoj_input_nodes_alias.borrow_mut().push(std::rc::Rc::as_ptr(node));
+                            coderpuzzle_input_nodes_alias.borrow_mut().push(std::rc::Rc::as_ptr(node));
                         }}
                         let mut walk = head.clone();
                         while let Some(node) = walk {{
-                            openoj_input_nodes_alias.borrow_mut().push(std::rc::Rc::as_ptr(&node));
+                            coderpuzzle_input_nodes_alias.borrow_mut().push(std::rc::Rc::as_ptr(&node));
                             walk = node.borrow().next.clone();
                         }}
                         head
@@ -1259,26 +1259,26 @@ class RustExecutor(CompiledExecutor):
                 # A node of the already-decoded aliased tree, named by its
                 # (unique) value: the argument is that exact Rc handle, so
                 # mutations through it land in the aliased tree.
-                aliased_tree = f"openoj_arg_{spec['alias']}"
+                aliased_tree = f"coderpuzzle_arg_{spec['alias']}"
                 ref_item_spec = spec.get("items") or {"kind": "integer", "bits": 32}
                 ref_target_type = "i64" if ref_item_spec.get("bits", 32) == 64 else "i32"
                 return textwrap.dedent(
                     f"""
-                    let openoj_arg_{index}: Option<std::rc::Rc<std::cell::RefCell<{nary_class}>>> = {{
-                        let target = {_read_expression(ref_item_spec, "openoj_reader")};
-                        fn openoj_find_nary_node(
+                    let coderpuzzle_arg_{index}: Option<std::rc::Rc<std::cell::RefCell<{nary_class}>>> = {{
+                        let target = {_read_expression(ref_item_spec, "coderpuzzle_reader")};
+                        fn coderpuzzle_find_nary_node(
                             node: &std::rc::Rc<std::cell::RefCell<{nary_class}>>,
                             target: {ref_target_type},
                         ) -> Option<std::rc::Rc<std::cell::RefCell<{nary_class}>>> {{
                             if node.borrow().val == target {{ return Some(node.clone()); }}
                             let children = node.borrow().children.clone();
                             for child in children.into_iter().flatten() {{
-                                if let Some(found) = openoj_find_nary_node(&child, target) {{ return Some(found); }}
+                                if let Some(found) = coderpuzzle_find_nary_node(&child, target) {{ return Some(found); }}
                             }}
                             None
                         }}
                         match &{aliased_tree} {{
-                            Some(root) => match openoj_find_nary_node(root, target) {{
+                            Some(root) => match coderpuzzle_find_nary_node(root, target) {{
                                 Some(found) => Some(found),
                                 None => return Err("nary_tree_ref target value is not in the aliased tree".into()),
                             }},
@@ -1294,20 +1294,20 @@ class RustExecutor(CompiledExecutor):
             # so it decodes through the shared reader, not the Box one —
             # and a tree aliased by an nary_tree_ref parameter decodes
             # shared for the same reason.
-            read_expression = "openoj_reader.shared_list()?" if aliased else _read_expression(spec)
+            read_expression = "coderpuzzle_reader.shared_list()?" if aliased else _read_expression(spec)
             if nary_aliased:
-                read_expression = "openoj_reader.shared_nary()?"
+                read_expression = "coderpuzzle_reader.shared_nary()?"
             lines = [
-                f"    let openoj_arg_{index}: {parameter_type(index, spec)} = {read_expression};"
+                f"    let coderpuzzle_arg_{index}: {parameter_type(index, spec)} = {read_expression};"
             ]
             if aliased:
                 lines.append(
-                    f"    let openoj_arg_{index}_nodes: Vec<std::rc::Rc<std::cell::RefCell<SharedListNode>>> = {{"
+                    f"    let coderpuzzle_arg_{index}_nodes: Vec<std::rc::Rc<std::cell::RefCell<SharedListNode>>> = {{"
                 )
                 lines.append("        let mut nodes = Vec::new();")
-                lines.append(f"        let mut current = openoj_arg_{index}.clone();")
+                lines.append(f"        let mut current = coderpuzzle_arg_{index}.clone();")
                 lines.append("        while let Some(node) = current {")
-                lines.append("            openoj_input_nodes_alias.borrow_mut().push(std::rc::Rc::as_ptr(&node));")
+                lines.append("            coderpuzzle_input_nodes_alias.borrow_mut().push(std::rc::Rc::as_ptr(&node));")
                 lines.append("            nodes.push(node.clone());")
                 lines.append("            current = node.borrow().next.clone();")
                 lines.append("        }")
@@ -1319,22 +1319,22 @@ class RustExecutor(CompiledExecutor):
                     "        let mut queue: std::collections::VecDeque<std::rc::Rc<std::cell::RefCell<"
                     f"{graph_class}>>> = std::collections::VecDeque::new();"
                 )
-                lines.append(f"        if let Some(start) = openoj_arg_{index}.clone() {{ queue.push_back(start); }}")
+                lines.append(f"        if let Some(start) = coderpuzzle_arg_{index}.clone() {{ queue.push_back(start); }}")
                 lines.append("        while let Some(node) = queue.pop_front() {")
                 lines.append(
-                    "            if openoj_input_nodes_graph.borrow().iter().any(|value| *value == std::rc::Rc::as_ptr(&node)) { continue; }"
+                    "            if coderpuzzle_input_nodes_graph.borrow().iter().any(|value| *value == std::rc::Rc::as_ptr(&node)) { continue; }"
                 )
-                lines.append("            openoj_input_nodes_graph.borrow_mut().push(std::rc::Rc::as_ptr(&node));")
+                lines.append("            coderpuzzle_input_nodes_graph.borrow_mut().push(std::rc::Rc::as_ptr(&node));")
                 lines.append("            let neighbors = node.borrow().neighbors.clone();")
                 lines.append("            for neighbor in neighbors { queue.push_back(neighbor); }")
                 lines.append("        }")
                 lines.append("    }")
             if spec.get("kind") == "random_list":
                 lines.append("    {")
-                lines.append(f"        let mut current = openoj_arg_{index}.clone();")
+                lines.append(f"        let mut current = coderpuzzle_arg_{index}.clone();")
                 lines.append("        while let Some(node) = current {")
                 lines.append(
-                    "            openoj_input_nodes_random.borrow_mut().push(std::rc::Rc::as_ptr(&node));"
+                    "            coderpuzzle_input_nodes_random.borrow_mut().push(std::rc::Rc::as_ptr(&node));"
                 )
                 lines.append("            current = node.borrow().next.clone();")
                 lines.append("        }")
@@ -1347,12 +1347,12 @@ class RustExecutor(CompiledExecutor):
                     "        let mut queue: std::collections::VecDeque<std::rc::Rc<std::cell::RefCell<"
                     f"{random_tree_class}>>> = std::collections::VecDeque::new();"
                 )
-                lines.append(f"        if let Some(root) = openoj_arg_{index}.clone() {{ queue.push_back(root); }}")
+                lines.append(f"        if let Some(root) = coderpuzzle_arg_{index}.clone() {{ queue.push_back(root); }}")
                 lines.append("        while let Some(node) = queue.pop_front() {")
                 lines.append(
-                    "            if openoj_input_nodes_random_tree.borrow().iter().any(|value| *value == std::rc::Rc::as_ptr(&node)) { continue; }"
+                    "            if coderpuzzle_input_nodes_random_tree.borrow().iter().any(|value| *value == std::rc::Rc::as_ptr(&node)) { continue; }"
                 )
-                lines.append("            openoj_input_nodes_random_tree.borrow_mut().push(std::rc::Rc::as_ptr(&node));")
+                lines.append("            coderpuzzle_input_nodes_random_tree.borrow_mut().push(std::rc::Rc::as_ptr(&node));")
                 lines.append("            let left = node.borrow().left.clone();")
                 lines.append("            let right = node.borrow().right.clone();")
                 lines.append("            for child in [left, right].into_iter().flatten() { queue.push_back(child); }")
@@ -1363,18 +1363,18 @@ class RustExecutor(CompiledExecutor):
         declarations = "\n".join(
             declaration(index, spec) for index, spec in enumerate(parameters)
         )
-        arguments = ", ".join(f"openoj_arg_{index}" for index in range(len(parameters)))
+        arguments = ", ".join(f"coderpuzzle_arg_{index}" for index in range(len(parameters)))
         source = assembly_source + textwrap.dedent(
             f"""
-            use std::fmt::Write as OpenOJFmtWrite;
-            use std::io::Read as OpenOJIoRead;
+            use std::fmt::Write as CoderPuzzleFmtWrite;
+            use std::io::Read as CoderPuzzleIoRead;
 
             pub struct Solution;
 
             {code}
 
-            struct OpenOJReader {{ data: Vec<u8>, offset: usize }}
-            impl OpenOJReader {{
+            struct CoderPuzzleReader {{ data: Vec<u8>, offset: usize }}
+            impl CoderPuzzleReader {{
                 fn take(&mut self, count: usize) -> Result<&[u8], String> {{
                     if count > self.data.len().saturating_sub(self.offset) {{ return Err("Truncated judge input".into()); }}
                     let start = self.offset;
@@ -1396,19 +1396,19 @@ class RustExecutor(CompiledExecutor):
                 fn finished(&self) -> Result<(), String> {{ if self.offset == self.data.len() {{ Ok(()) }} else {{ Err("Trailing judge input".into()) }} }}
             }}
 {struct_codecs}
-            trait OpenOJToJson {{ fn openoj_json(&self) -> Result<String, String>; }}
-            impl OpenOJToJson for i32 {{ fn openoj_json(&self) -> Result<String, String> {{ Ok(self.to_string()) }} }}
-            impl OpenOJToJson for i64 {{ fn openoj_json(&self) -> Result<String, String> {{ Ok(self.to_string()) }} }}
-            impl OpenOJToJson for bool {{ fn openoj_json(&self) -> Result<String, String> {{ Ok(self.to_string()) }} }}
-            impl OpenOJToJson for f64 {{ fn openoj_json(&self) -> Result<String, String> {{ if self.is_finite() {{ Ok(self.to_string()) }} else {{ Err("Non-finite return value".into()) }} }} }}
-            impl OpenOJToJson for String {{ fn openoj_json(&self) -> Result<String, String> {{ Ok(openoj_json_string(self)) }} }}
-            impl<T: OpenOJToJson> OpenOJToJson for Vec<T> {{
-                fn openoj_json(&self) -> Result<String, String> {{
-                    let values: Result<Vec<String>, String> = self.iter().map(|value| value.openoj_json()).collect();
+            trait CoderPuzzleToJson {{ fn coderpuzzle_json(&self) -> Result<String, String>; }}
+            impl CoderPuzzleToJson for i32 {{ fn coderpuzzle_json(&self) -> Result<String, String> {{ Ok(self.to_string()) }} }}
+            impl CoderPuzzleToJson for i64 {{ fn coderpuzzle_json(&self) -> Result<String, String> {{ Ok(self.to_string()) }} }}
+            impl CoderPuzzleToJson for bool {{ fn coderpuzzle_json(&self) -> Result<String, String> {{ Ok(self.to_string()) }} }}
+            impl CoderPuzzleToJson for f64 {{ fn coderpuzzle_json(&self) -> Result<String, String> {{ if self.is_finite() {{ Ok(self.to_string()) }} else {{ Err("Non-finite return value".into()) }} }} }}
+            impl CoderPuzzleToJson for String {{ fn coderpuzzle_json(&self) -> Result<String, String> {{ Ok(coderpuzzle_json_string(self)) }} }}
+            impl<T: CoderPuzzleToJson> CoderPuzzleToJson for Vec<T> {{
+                fn coderpuzzle_json(&self) -> Result<String, String> {{
+                    let values: Result<Vec<String>, String> = self.iter().map(|value| value.coderpuzzle_json()).collect();
                     Ok(format!("[{{}}]", values?.join(",")))
                 }}
             }}
-            fn openoj_json_string(value: &str) -> String {{
+            fn coderpuzzle_json_string(value: &str) -> String {{
                 let mut output = String::from("\\\"");
                 for character in value.chars() {{
                     match character {{
@@ -1427,21 +1427,21 @@ class RustExecutor(CompiledExecutor):
                 output
             }}
 
-            fn openoj_run() -> Result<String, String> {{
+            fn coderpuzzle_run() -> Result<String, String> {{
                 let mut bytes = Vec::new();
                 std::io::stdin().read_to_end(&mut bytes).map_err(|error| error.to_string())?;
-                let mut openoj_reader = OpenOJReader {{ data: bytes, offset: 0 }};
+                let mut coderpuzzle_reader = CoderPuzzleReader {{ data: bytes, offset: 0 }};
             {input_locals}
             {declarations}
-                openoj_reader.finished()?;
-                let openoj_actual = Solution::{method}({arguments});
+                coderpuzzle_reader.finished()?;
+                let coderpuzzle_actual = Solution::{method}({arguments});
                 // Bound to a local so any Ref temporary borrowed from the
-                // input-node registries drops before openoj_run's locals.
-                let openoj_output = {result_expression};
-                openoj_output
+                // input-node registries drops before coderpuzzle_run's locals.
+                let coderpuzzle_output = {result_expression};
+                coderpuzzle_output
             }}
 
-            fn openoj_emit(line: &str) {{
+            fn coderpuzzle_emit(line: &str) {{
                 // The judge takes the last valid protocol line; the fd keeps
                 // ordinary stdout noise out of the channel, but the
                 // submission inherits it too — nothing here is
@@ -1457,11 +1457,11 @@ class RustExecutor(CompiledExecutor):
             }}
 
             fn main() {{
-                let response = std::panic::catch_unwind(openoj_run);
+                let response = std::panic::catch_unwind(coderpuzzle_run);
                 match response {{
-                    Ok(Ok(actual)) => openoj_emit(&format!("__OPENOJ_RESULT__{{{{\\\"status\\\":\\\"completed\\\",\\\"actual\\\":{{}}}}}}", actual)),
-                    Ok(Err(error)) => openoj_emit(&format!("__OPENOJ_RESULT__{{{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":{{}}}}}}", openoj_json_string(&error))),
-                    Err(_) => openoj_emit("__OPENOJ_RESULT__{{{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\\\"Solution panicked\\\"}}}}"),
+                    Ok(Ok(actual)) => coderpuzzle_emit(&format!("__CODERPUZZLE_RESULT__{{{{\\\"status\\\":\\\"completed\\\",\\\"actual\\\":{{}}}}}}", actual)),
+                    Ok(Err(error)) => coderpuzzle_emit(&format!("__CODERPUZZLE_RESULT__{{{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":{{}}}}}}", coderpuzzle_json_string(&error))),
+                    Err(_) => coderpuzzle_emit("__CODERPUZZLE_RESULT__{{{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\\\"Solution panicked\\\"}}}}"),
                 }}
             }}
             """

@@ -50,7 +50,7 @@ class JavaExecutor:
                     *self._vm_options,
                     "-cp",
                     str(self.harness_classes),
-                    "OpenOJJavaHarness",
+                    "CoderPuzzleJavaHarness",
                     "--benchmark",
                 ),
                 check=True,
@@ -182,7 +182,7 @@ class JavaExecutor:
 
         # Harness classes precede the submission's output: a source that
         # declares a class named like the harness entrypoint must not shadow
-        # it. The harness owns the OpenOJ* names; no legitimate submission
+        # it. The harness owns the CoderPuzzle* names; no legitimate submission
         # class collides.
         classpath = os.pathsep.join((str(self.harness_classes), str(job_root)))
         return PreparedProgram(
@@ -193,7 +193,7 @@ class JavaExecutor:
                 "-Duser.home=/nonexistent",
                 "-cp",
                 classpath,
-                "OpenOJJavaHarness",
+                "CoderPuzzleJavaHarness",
             ),
             environment={
                 "PATH": "/usr/bin:/bin",

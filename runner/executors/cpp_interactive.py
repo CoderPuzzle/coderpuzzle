@@ -27,7 +27,7 @@ WRAPPER_HEAD = """\
 #include <unistd.h>
 using namespace std;
 
-void openojEmit(const std::string& line) {
+void coderpuzzleEmit(const std::string& line) {
     std::string payload = line + "\\n";
     if (::write(63, payload.data(), payload.size()) < 0) {
         std::cout << payload << std::flush;
@@ -113,7 +113,7 @@ struct OjTaggedReader {
     long long position_() const { return static_cast<long long>(position); }
 };
 
-static std::string openoj_json(const OjValue& value) {
+static std::string coderpuzzle_json(const OjValue& value) {
     std::ostringstream out;
     switch (value.kind) {
         case OjValue::Null: out << "null"; break;
@@ -139,7 +139,7 @@ static std::string openoj_json(const OjValue& value) {
             out << '[';
             for (size_t i = 0; i < value.items.size(); ++i) {
                 if (i) out << ',';
-                out << openoj_json(value.items[i]);
+                out << coderpuzzle_json(value.items[i]);
             }
             out << ']';
             break;
@@ -148,7 +148,7 @@ static std::string openoj_json(const OjValue& value) {
             out << '{';
             for (size_t i = 0; i < value.fields.size(); ++i) {
                 if (i) out << ',';
-                out << '"' << value.fields[i].first << '"' << ':' << openoj_json(value.fields[i].second);
+                out << '"' << value.fields[i].first << '"' << ':' << coderpuzzle_json(value.fields[i].second);
             }
             out << '}';
             break;
@@ -157,26 +157,26 @@ static std::string openoj_json(const OjValue& value) {
     return out.str();
 }
 
-static std::string openoj_json(long long value) { return openoj_json(OjValue{OjValue::Int, false, value, 0, "", {}, {}}); }
-static std::string openoj_json(int value) { return openoj_json(static_cast<long long>(value)); }
-static std::string openoj_json(double value) {
+static std::string coderpuzzle_json(long long value) { return coderpuzzle_json(OjValue{OjValue::Int, false, value, 0, "", {}, {}}); }
+static std::string coderpuzzle_json(int value) { return coderpuzzle_json(static_cast<long long>(value)); }
+static std::string coderpuzzle_json(double value) {
     if (!std::isfinite(value)) throw std::runtime_error("Non-finite return value");
     OjValue v; v.kind = OjValue::Double; v.real = value;
-    return openoj_json(v);
+    return coderpuzzle_json(v);
 }
-static std::string openoj_json(const std::string& value) {
+static std::string coderpuzzle_json(const std::string& value) {
     OjValue v; v.kind = OjValue::String; v.text = value;
-    return openoj_json(v);
+    return coderpuzzle_json(v);
 }
-static std::string openoj_json(bool value) {
+static std::string coderpuzzle_json(bool value) {
     OjValue v; v.kind = OjValue::Bool; v.boolean = value;
-    return openoj_json(v);
+    return coderpuzzle_json(v);
 }
-template <typename T> static std::string openoj_json(const std::vector<T>& values) {
+template <typename T> static std::string coderpuzzle_json(const std::vector<T>& values) {
     std::string output = "[";
     for (size_t index = 0; index < values.size(); ++index) {
         if (index) output += ',';
-        output += openoj_json(values[index]);
+        output += coderpuzzle_json(values[index]);
     }
     return output + "]";
 }
@@ -190,17 +190,17 @@ int main() {
         };
         OjTaggedReader tagged{std::move(bytes)};
 @VALUE_READS@
-        OjValue openoj_budget_value = tagged.value();
-        if (openoj_budget_value.kind != OjValue::Int) throw std::runtime_error("Budget must be an integer");
-        long long openoj_budget = openoj_budget_value.integer;
+        OjValue coderpuzzle_budget_value = tagged.value();
+        if (coderpuzzle_budget_value.kind != OjValue::Int) throw std::runtime_error("Budget must be an integer");
+        long long coderpuzzle_budget = coderpuzzle_budget_value.integer;
 @CONVERT_LINES@
-        @CLASS_NAME@ openoj_solution;
-        @ORACLE_CLASS@ openoj_oracle(@ORACLE_ARGS@);
+        @CLASS_NAME@ coderpuzzle_solution;
+        @ORACLE_CLASS@ coderpuzzle_oracle(@ORACLE_ARGS@);
 @CALL_BLOCK@
     } catch (const std::exception& error) {
-        openojEmit(std::string("__OPENOJ_RESULT__{\\"status\\":\\"runtime_error\\",\\"error\\":") + openoj_json(std::string(error.what())) + "}");
+        coderpuzzleEmit(std::string("__CODERPUZZLE_RESULT__{\\"status\\":\\"runtime_error\\",\\"error\\":") + coderpuzzle_json(std::string(error.what())) + "}");
     } catch (...) {
-        openojEmit("__OPENOJ_RESULT__{\\"status\\":\\"runtime_error\\",\\"error\\":\\"Unknown C++ exception\\"}");
+        coderpuzzleEmit("__CODERPUZZLE_RESULT__{\\"status\\":\\"runtime_error\\",\\"error\\":\\"Unknown C++ exception\\"}");
     }
     return 0;
 }
@@ -248,11 +248,11 @@ def _convert(spec: dict[str, Any], source: str) -> str:
         # JSON without a generation-time recursive _convert call. Emitted
         # in main, after the bundle-provided source declares NestedInteger.
         return (
-            f"[&](const OjValue& v) {{ auto openoj_build = [&](auto&& openoj_build, const OjValue& v) -> NestedInteger {{ "
+            f"[&](const OjValue& v) {{ auto coderpuzzle_build = [&](auto&& coderpuzzle_build, const OjValue& v) -> NestedInteger {{ "
             f"if (v.kind == OjValue::Int) return NestedInteger((long long)v.integer); "
             f"if (v.kind != OjValue::Array) throw std::runtime_error(\"Expected a nested list\"); "
-            f"NestedInteger node; for (const auto& item : v.items) node.add(openoj_build(openoj_build, item)); return node; }}; "
-            f"return openoj_build(openoj_build, v); }}({source})"
+            f"NestedInteger node; for (const auto& item : v.items) node.add(coderpuzzle_build(coderpuzzle_build, item)); return node; }}; "
+            f"return coderpuzzle_build(coderpuzzle_build, v); }}({source})"
         )
     raise ExecutorError(f"Interactive auxiliary type {kind} is not supported in C++")
 
@@ -271,10 +271,10 @@ def _cpp_buffer_element(spec: Any) -> str:
 def _cpp_entry_json(element: str, variable: str) -> str:
     """A JSON expression for one captured buffer entry. Chars serialize as
     1-char strings (java's String.valueOf(char)); the integral overloads of
-    openoj_json would otherwise swallow the char as a number."""
+    coderpuzzle_json would otherwise swallow the char as a number."""
     if element == "char":
-        return f"openoj_json(std::string(1, {variable}))"
-    return f"openoj_json({variable})"
+        return f"coderpuzzle_json(std::string(1, {variable}))"
+    return f"coderpuzzle_json({variable})"
 
 
 def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
@@ -316,7 +316,7 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
 
     value_reads = []
     for index in range(len(construct_keys) + len(auxiliary_keys)):
-        value_reads.append(f"        OjValue openoj_value_{index} = tagged.value();")
+        value_reads.append(f"        OjValue coderpuzzle_value_{index} = tagged.value();")
     convert_lines = []
     # Case key -> a long long expression for its already-decoded value; an
     # out_buffer capacity may name any decoded key.
@@ -325,7 +325,7 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
         capacity_sources[key] = (
             "[&](const OjValue& v) { if (v.kind != OjValue::Int) "
             "throw std::runtime_error(\"Expected an integer\"); return v.integer; }"
-            f"(openoj_value_{index})"
+            f"(coderpuzzle_value_{index})"
         )
     auxiliary_variables: dict[str, str] = {}
     for index, key in enumerate(auxiliary_keys):
@@ -333,9 +333,9 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
         if spec is None:
             raise ExecutorError(f"Auxiliary key {key!r} has no invocation parameter type")
         spec = type_spec(spec, key)
-        variable = f"openoj_aux_{index}"
+        variable = f"coderpuzzle_aux_{index}"
         convert_lines.append(
-            f"        {_cpp_type(spec)} {variable} = {_convert(spec, f'openoj_value_{len(construct_keys) + index}')};"
+            f"        {_cpp_type(spec)} {variable} = {_convert(spec, f'coderpuzzle_value_{len(construct_keys) + index}')};"
         )
         auxiliary_variables[key] = variable
         capacity_sources[key] = f"static_cast<long long>({variable})"
@@ -347,7 +347,7 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
         if capacity is None:
             raise ExecutorError(f"out_buffer capacity_from {capacity_key!r} is not a case key")
         element = _cpp_buffer_element(specs.get(parameters[slot].get("name")))
-        variable = f"openoj_buffer_{slot}"
+        variable = f"coderpuzzle_buffer_{slot}"
         convert_lines.append(
             f"        std::vector<{element}> {variable}(static_cast<size_t>(std::max({capacity}, 0LL)));"
         )
@@ -367,35 +367,35 @@ def prepare_interactive(executor, job_root: Path, scratch: Path, code: str,
             parameter_arguments.append(auxiliary_variables[parameter.get("name")])
 
     oracle_args = ", ".join(
-        [f"openoj_value_{index}" for index in range(len(construct_keys))] + ["openoj_budget"]
+        [f"coderpuzzle_value_{index}" for index in range(len(construct_keys))] + ["coderpuzzle_budget"]
     )
-    call_arguments = ", ".join(["openoj_oracle", *parameter_arguments])
+    call_arguments = ", ".join(["coderpuzzle_oracle", *parameter_arguments])
     # A {"kind": "void"} return_type is a declared void, not a value: the
     # oracle's verdict() judges those (same rule as the python/java sides).
     if invocation.get("return_type") and invocation["return_type"].get("kind") != "void":
         if buffer_slot is None:
             call_block = (
-                f"auto openoj_actual = openoj_solution.{method}({call_arguments});\n"
-                '        openojEmit("__OPENOJ_RESULT__{\\"status\\":\\"completed\\",\\"actual\\":" + openoj_json(openoj_actual) + "}");'
+                f"auto coderpuzzle_actual = coderpuzzle_solution.{method}({call_arguments});\n"
+                '        coderpuzzleEmit("__CODERPUZZLE_RESULT__{\\"status\\":\\"completed\\",\\"actual\\":" + coderpuzzle_json(coderpuzzle_actual) + "}");'
             )
         else:
             buffer = buffer_variables[buffer_slot]
             call_block = (
-                f"auto openoj_actual = openoj_solution.{method}({call_arguments});\n"
-                "        long long openoj_count = static_cast<long long>(openoj_actual);\n"
-                f"        long long openoj_written = std::max(0LL, std::min(openoj_count, static_cast<long long>({buffer}.size())));\n"
-                '        std::string openoj_entries = "[";\n'
-                "        for (long long openoj_index = 0; openoj_index < openoj_written; ++openoj_index) {\n"
-                "            if (openoj_index != 0) openoj_entries += \",\";\n"
-                f"            openoj_entries += {_cpp_entry_json(buffer_elements[buffer_slot], f'{buffer}[openoj_index]')};\n"
+                f"auto coderpuzzle_actual = coderpuzzle_solution.{method}({call_arguments});\n"
+                "        long long coderpuzzle_count = static_cast<long long>(coderpuzzle_actual);\n"
+                f"        long long coderpuzzle_written = std::max(0LL, std::min(coderpuzzle_count, static_cast<long long>({buffer}.size())));\n"
+                '        std::string coderpuzzle_entries = "[";\n'
+                "        for (long long coderpuzzle_index = 0; coderpuzzle_index < coderpuzzle_written; ++coderpuzzle_index) {\n"
+                "            if (coderpuzzle_index != 0) coderpuzzle_entries += \",\";\n"
+                f"            coderpuzzle_entries += {_cpp_entry_json(buffer_elements[buffer_slot], f'{buffer}[coderpuzzle_index]')};\n"
                 "        }\n"
-                '        openoj_entries += "]";\n'
-                '        openojEmit("__OPENOJ_RESULT__{\\"status\\":\\"completed\\",\\"actual\\":[" + openoj_json(openoj_count) + "," + openoj_entries + "]}");'
+                '        coderpuzzle_entries += "]";\n'
+                '        coderpuzzleEmit("__CODERPUZZLE_RESULT__{\\"status\\":\\"completed\\",\\"actual\\":[" + coderpuzzle_json(coderpuzzle_count) + "," + coderpuzzle_entries + "]}");'
             )
     else:
         call_block = (
-            f"openoj_solution.{method}({call_arguments});\n"
-            '        openojEmit("__OPENOJ_RESULT__{\\"status\\":\\"completed\\",\\"actual\\":" + openoj_json(openoj_oracle.verdict()) + "}");'
+            f"coderpuzzle_solution.{method}({call_arguments});\n"
+            '        coderpuzzleEmit("__CODERPUZZLE_RESULT__{\\"status\\":\\"completed\\",\\"actual\\":" + coderpuzzle_json(coderpuzzle_oracle.verdict()) + "}");'
         )
 
     provided_source = "".join(

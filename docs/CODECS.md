@@ -96,7 +96,7 @@ reader (`OpenOJReader`) decodes before calling the submission:
 The reader rejects trailing bytes (`finished()`), truncation, and — for the
 JS/TS family — 64-bit inputs beyond the safe-integer range. Results flow back
 as the JSON wire shapes above; the JS/TS wrappers serialize integer doubles
-beyond 2^53 as exact decimal digits (see `openojSerialize` in the wrapper
+beyond 2^53 as exact decimal digits (see `coderpuzzleSerialize` in the wrapper
 templates).
 
 ## Return-serialization invariants (every language identically)
@@ -363,7 +363,7 @@ per-language (the budget parameter carries `query_limit`):
 | ----------------------- | -------------------------------------------------------------------------- | ----------- |
 | Python 3                | `File(content, budget)` — construct values flattened                       | `int`       |
 | Java                    | `new File(content, budget)` — flattened                                    | `long`      |
-| C++                     | `File(openoj_value_0, …, budget)` — one `OjValue` per construct key        | `long long` |
+| C++                     | `File(coderpuzzle_value_0, …, budget)` — one `OjValue` per construct key        | `long long` |
 | Go                      | `NewFile([]any{content…}, budget)` — construct values wrapped in one slice | `int64`     |
 | TypeScript / JavaScript | `new File([content…], budget)` — wrapped in one array                      | `number`    |
 | Rust                    | `File::new(&[OjValue…], budget)` — wrapped in one slice                    | `i64`       |

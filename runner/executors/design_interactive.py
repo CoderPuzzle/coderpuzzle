@@ -1,7 +1,7 @@
 """Design-kind wrappers for the five compiled/dynamic languages.
 
 The design protocol (see python_harness._invoke_design /
-OpenOJJavaHarness.invokeDesign) is: a case carries `actions` (method
+CoderPuzzleJavaHarness.invokeDesign) is: a case carries `actions` (method
 names, or {"call", "repeat"} for randomized methods) and `params` (an
 argument list per action; params[0] builds the instance). Each action's
 decoded result is recorded; a {"$prev"} argument pipes the previous

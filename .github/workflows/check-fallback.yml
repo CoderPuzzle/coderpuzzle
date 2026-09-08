@@ -3,7 +3,7 @@ name: Check fallback problems
 # The offline fallback set bundled in this repo (coderpuzzle/problems/, used
 # when OPENOJ_PROBLEMS is unset). The pinned image runs the two gates that
 # apply to a one-bundle set — format check and a full judge of every
-# solution against every case (openoj judge refuses a zero-case bundle) —
+# solution against every case (coderpuzzle judge refuses a zero-case bundle) —
 # on every push touching it. The bank repo's schema/static tier is not
 # duplicated here. (problems-originals lives in the problems repo and is
 # frozen; it is not covered by CI.)
@@ -35,13 +35,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Format check
-        run: openoj format --check problems
+        run: coderpuzzle format --check problems
       - name: Judge every bundle
         run: |
           set -e
           failures=0
           for bundle in problems/*/*/; do
-            if ! openoj judge "$bundle"; then failures=$((failures + 1)); fi
+            if ! coderpuzzle judge "$bundle"; then failures=$((failures + 1)); fi
           done
           echo "fallback bundles with failures: $failures"
           exit $((failures > 0))

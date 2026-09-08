@@ -7,7 +7,7 @@ sys.path.insert(0, "/runner")
 
 from protocol import emit_protocol
 
-PROTOCOL_PREFIX = "__OPENOJ_RESULT__"
+PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 MAX_CAPTURED_OUTPUT = 16_384
 # A bare word: the pinned SQL formatter (sqlparse) rewrites `%`-wrapped
 # markers (`%COLUMNS%` becomes `% COLUMNS %`), but leaves name tokens

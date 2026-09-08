@@ -87,35 +87,35 @@ class CppExecutor(CompiledExecutor):
         # checks for graph, random_list, and alias_list returns: the judge
         # compares row data, so only the wrapper can catch a solution that
         # returns the input structure itself.
-        struct_codecs += "static std::vector<const void*> openoj_input_nodes;\n"
+        struct_codecs += "static std::vector<const void*> coderpuzzle_input_nodes;\n"
         if "list" in structs:
             struct_codecs += (
-                "static void openojCollectInput(const ListNode* head) {\n"
-                "    for (const ListNode* node = head; node; node = node->next) openoj_input_nodes.push_back(node);\n"
+                "static void coderpuzzleCollectInput(const ListNode* head) {\n"
+                "    for (const ListNode* node = head; node; node = node->next) coderpuzzle_input_nodes.push_back(node);\n"
                 "}\n"
             )
             struct_codecs += textwrap.dedent(
                 f"""
-                template <> struct OpenOJDecoder<ListNode*> {{
-                    static ListNode* read(OpenOJReader& reader) {{
+                template <> struct CoderPuzzleDecoder<ListNode*> {{
+                    static ListNode* read(CoderPuzzleReader& reader) {{
                         if (reader.byte() == 0) return nullptr;
                         uint32_t length = reader.u32();
                         ListNode* head = nullptr;
                         ListNode** cursor = &head;
                         for (uint32_t index = 0; index < length; ++index) {{
-                            *cursor = new ListNode(OpenOJDecoder<{cpp_type(item_spec)}>::read(reader));
+                            *cursor = new ListNode(CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader));
                             cursor = &((*cursor)->next);
                         }}
                         return head;
                     }}
                 }};
-                static std::string openoj_json(const ListNode* head) {{
+                static std::string coderpuzzle_json(const ListNode* head) {{
                     std::string output = "[";
                     bool first = true;
                     for (const ListNode* node = head; node; node = node->next) {{
                         if (!first) output += ',';
                         first = false;
-                        output += openoj_json(node->val);
+                        output += coderpuzzle_json(node->val);
                     }}
                     return output + "]";
                 }}
@@ -127,13 +127,13 @@ class CppExecutor(CompiledExecutor):
         if structs & {"nary_tree", "nary_tree_nodes", "nary_tree_ref"}:
             struct_codecs += textwrap.dedent(
                 f"""
-                template <> struct OpenOJDecoder<Node*> {{
-                    static Node* read(OpenOJReader& reader) {{
+                template <> struct CoderPuzzleDecoder<Node*> {{
+                    static Node* read(CoderPuzzleReader& reader) {{
                         uint32_t length = reader.u32();
                         std::vector<std::pair<bool, {cpp_type(item_spec)}>> slots;
                         slots.reserve(length);
                         for (uint32_t index = 0; index < length; ++index) {{
-                            if (reader.byte() == 1) slots.emplace_back(true, OpenOJDecoder<{cpp_type(item_spec)}>::read(reader));
+                            if (reader.byte() == 1) slots.emplace_back(true, CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader));
                             else slots.emplace_back(false, {cpp_type(item_spec)}());
                         }}
                         if (length == 0 || !slots[0].first) return nullptr;
@@ -161,15 +161,15 @@ class CppExecutor(CompiledExecutor):
                 // Display wire: root value, the marker closing the root
                 // group, then each node's children followed by its own
                 // marker; trailing markers are trimmed.
-                static std::string openoj_json(const Node* root) {{
+                static std::string coderpuzzle_json(const Node* root) {{
                     if (root == nullptr) return "[]";
-                    std::string output = "[" + openoj_json(root->val) + ",null";
+                    std::string output = "[" + coderpuzzle_json(root->val) + ",null";
                     std::deque<const Node*> queue{{root}};
                     while (!queue.empty()) {{
                         const Node* node = queue.front();
                         queue.pop_front();
                         for (const Node* child : node->children) {{
-                            output += ',' + openoj_json(child->val);
+                            output += ',' + coderpuzzle_json(child->val);
                             queue.push_back(child);
                         }}
                         output += ",null";
@@ -179,7 +179,7 @@ class CppExecutor(CompiledExecutor):
                     }}
                     return output + "]";
                 }}
-                static std::string openoj_result(Node* root) {{ return openoj_json(root); }}
+                static std::string coderpuzzle_result(Node* root) {{ return coderpuzzle_json(root); }}
                 """
             )
             if "nary_tree_ref" in structs:
@@ -189,11 +189,11 @@ class CppExecutor(CompiledExecutor):
                     // already-decoded tree by its (unique) value; the
                     // argument is that exact node, sharing identity with
                     // the aliased tree.
-                    static Node* openojFindNaryNode(Node* root, {cpp_type(item_spec)} target) {{
+                    static Node* coderpuzzleFindNaryNode(Node* root, {cpp_type(item_spec)} target) {{
                         if (root == nullptr) return nullptr;
                         if (root->val == target) return root;
                         for (Node* child : root->children) {{
-                            Node* found = openojFindNaryNode(child, target);
+                            Node* found = coderpuzzleFindNaryNode(child, target);
                             if (found != nullptr) return found;
                         }}
                         return nullptr;
@@ -203,8 +203,8 @@ class CppExecutor(CompiledExecutor):
         if "quad_tree" in structs:
             struct_codecs += textwrap.dedent(
                 """
-                template <> struct OpenOJDecoder<QuadNode*> {
-                    static QuadNode* read(OpenOJReader& reader) {
+                template <> struct CoderPuzzleDecoder<QuadNode*> {
+                    static QuadNode* read(CoderPuzzleReader& reader) {
                         if (reader.byte() == 0) return nullptr;
                         bool isLeaf = reader.byte() == 1;
                         bool val = reader.byte() == 1;
@@ -221,20 +221,20 @@ class CppExecutor(CompiledExecutor):
                 // LC display wire: a flat preorder of [isLeaf, val] pairs
                 // inside one enclosing array; a non-leaf's val normalizes
                 // to 0 on both sides.
-                static void openojAppendQuad(std::string& output, const QuadNode* node) {
+                static void coderpuzzleAppendQuad(std::string& output, const QuadNode* node) {
                     if (node == nullptr) { output += "null"; return; }
                     if (node->isLeaf) { output += node->val ? "[1,1]" : "[1,0]"; return; }
                     output += "[0,0]";
                     const QuadNode* sides[4] = {node->topLeft, node->topRight, node->bottomLeft, node->bottomRight};
                     for (const QuadNode* side : sides) {
                         output += ',';
-                        openojAppendQuad(output, side);
+                        coderpuzzleAppendQuad(output, side);
                     }
                 }
-                static std::string openoj_result(QuadNode* node) {
+                static std::string coderpuzzle_result(QuadNode* node) {
                     if (node == nullptr) return "null";
                     std::string output = "[";
-                    openojAppendQuad(output, node);
+                    coderpuzzleAppendQuad(output, node);
                     return output + "]";
                 }
                 """
@@ -242,8 +242,8 @@ class CppExecutor(CompiledExecutor):
         if "nested" in structs:
             struct_codecs += textwrap.dedent(
                 """
-                template <> struct OpenOJDecoder<NestedInteger> {
-                    static NestedInteger read(OpenOJReader& reader) {
+                template <> struct CoderPuzzleDecoder<NestedInteger> {
+                    static NestedInteger read(CoderPuzzleReader& reader) {
                         unsigned char tag = reader.byte();
                         if (tag == 1) return NestedInteger(static_cast<long long>(static_cast<int32_t>(reader.u32())));
                         if (tag != 2) throw std::runtime_error("Invalid nested tag");
@@ -253,13 +253,13 @@ class CppExecutor(CompiledExecutor):
                         return value;
                     }
                 };
-                static std::string openoj_json(const NestedInteger& value) {
+                static std::string coderpuzzle_json(const NestedInteger& value) {
                     if (value.isInteger()) return std::to_string(value.getInteger());
                     std::string output = "[";
                     const auto& list = value.getList();
                     for (size_t index = 0; index < list.size(); ++index) {
                         if (index) output += ',';
-                        output += openoj_json(list[index]);
+                        output += coderpuzzle_json(list[index]);
                     }
                     return output + "]";
                 }
@@ -268,13 +268,13 @@ class CppExecutor(CompiledExecutor):
         if "next_tree" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                template <> struct OpenOJDecoder<NodeWithNext*> {{
-                    static NodeWithNext* read(OpenOJReader& reader) {{
+                template <> struct CoderPuzzleDecoder<NodeWithNext*> {{
+                    static NodeWithNext* read(CoderPuzzleReader& reader) {{
                         uint32_t length = reader.u32();
                         std::vector<std::pair<bool, {cpp_type(item_spec)}>> slots;
                         slots.reserve(length);
                         for (uint32_t index = 0; index < length; ++index) {{
-                            if (reader.byte() == 1) slots.emplace_back(true, OpenOJDecoder<{cpp_type(item_spec)}>::read(reader));
+                            if (reader.byte() == 1) slots.emplace_back(true, CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader));
                             else slots.emplace_back(false, {cpp_type(item_spec)}());
                         }}
                         if (length == 0 || !slots[0].first) return nullptr;
@@ -314,12 +314,12 @@ class CppExecutor(CompiledExecutor):
                 // level starts at the first child found anywhere in this
                 // level (left or right — the level's first node need not
                 // have a left child).
-                static std::string openoj_result(NodeWithNext* root) {{
+                static std::string coderpuzzle_result(NodeWithNext* root) {{
                     std::vector<std::string> parts;
                     for (const NodeWithNext* level = root; level; ) {{
                         const NodeWithNext* nextLevel = nullptr;
                         for (const NodeWithNext* node = level; node; node = node->next) {{
-                            parts.push_back(openoj_json(node->val));
+                            parts.push_back(coderpuzzle_json(node->val));
                             if (nextLevel == nullptr) {{
                                 if (node->left != nullptr) nextLevel = node->left;
                                 else if (node->right != nullptr) nextLevel = node->right;
@@ -346,27 +346,27 @@ class CppExecutor(CompiledExecutor):
                 // harness languages, so solutions see a genuine ring.
                 // Reuses the ListNode decoder slot — a bundle uses one
                 // list kind.
-                template <> struct OpenOJDecoder<ListNode*> {{
-                    static ListNode* read(OpenOJReader& reader) {{
+                template <> struct CoderPuzzleDecoder<ListNode*> {{
+                    static ListNode* read(CoderPuzzleReader& reader) {{
                         uint32_t length = reader.u32();
                         if (length == 0) return nullptr;
-                        ListNode* head = new ListNode(OpenOJDecoder<{cpp_type(item_spec)}>::read(reader));
+                        ListNode* head = new ListNode(CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader));
                         ListNode* tail = head;
                         for (uint32_t index = 1; index < length; ++index) {{
-                            tail->next = new ListNode(OpenOJDecoder<{cpp_type(item_spec)}>::read(reader));
+                            tail->next = new ListNode(CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader));
                             tail = tail->next;
                         }}
                         tail->next = head;
                         return head;
                     }}
                 }};
-                static std::string openoj_result(ListNode* head) {{
+                static std::string coderpuzzle_result(ListNode* head) {{
                     if (head == nullptr) return "[]";
                     std::string output = "[";
                     const ListNode* node = head;
                     for (size_t bound = 0; bound < (1u << 20); ++bound) {{
                         if (node != head) output += ',';
-                        output += openoj_json(node->val);
+                        output += coderpuzzle_json(node->val);
                         node = node->next;
                         if (node == head) return output + "]";
                         if (node == nullptr) throw std::runtime_error("Circular list is not closed");
@@ -375,12 +375,12 @@ class CppExecutor(CompiledExecutor):
                 }}
                 // Array-of-rings returns (LC 2674): an exact non-template
                 // match, so the vector element serializes through the ring
-                // walk above instead of decaying openoj_json(bool).
-                static std::string openoj_result(const std::vector<ListNode*>& heads) {{
+                // walk above instead of decaying coderpuzzle_json(bool).
+                static std::string coderpuzzle_result(const std::vector<ListNode*>& heads) {{
                     std::string output = "[";
                     for (size_t index = 0; index < heads.size(); ++index) {{
                         if (index) output += ',';
-                        output += openoj_result(heads[index]);
+                        output += coderpuzzle_result(heads[index]);
                     }}
                     return output + "]";
                 }}
@@ -392,21 +392,21 @@ class CppExecutor(CompiledExecutor):
                 // LC 426: left is prev, right is next; read the ring open
                 // and verify every back-link on the way out. Reuses the
                 // NodeWithNext decoder slot — a bundle uses one such kind.
-                template <> struct OpenOJDecoder<NodeWithNext*> {{
-                    static NodeWithNext* read(OpenOJReader& reader) {{
+                template <> struct CoderPuzzleDecoder<NodeWithNext*> {{
+                    static NodeWithNext* read(CoderPuzzleReader& reader) {{
                         uint32_t length = reader.u32();
                         if (length == 0) return nullptr;
-                        NodeWithNext* head = new NodeWithNext(OpenOJDecoder<{cpp_type(item_spec)}>::read(reader));
+                        NodeWithNext* head = new NodeWithNext(CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader));
                         NodeWithNext* tail = head;
                         for (uint32_t index = 1; index < length; ++index) {{
-                            tail->right = new NodeWithNext(OpenOJDecoder<{cpp_type(item_spec)}>::read(reader));
+                            tail->right = new NodeWithNext(CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader));
                             tail->right->left = tail;
                             tail = tail->right;
                         }}
                         return head;
                     }}
                 }};
-                static std::string openoj_result(NodeWithNext* head) {{
+                static std::string coderpuzzle_result(NodeWithNext* head) {{
                     if (head == nullptr) return "[]";
                     std::string output = "[";
                     const NodeWithNext* previous = nullptr;
@@ -417,7 +417,7 @@ class CppExecutor(CompiledExecutor):
                         if (previous != nullptr && node->left != previous) {{
                             throw std::runtime_error("Doubly linked list is not properly linked");
                         }}
-                        output += openoj_json(node->val);
+                        output += coderpuzzle_json(node->val);
                         previous = node;
                         node = node->right;
                         if (node == head) {{
@@ -434,12 +434,12 @@ class CppExecutor(CompiledExecutor):
         if "multi_list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                template <> struct OpenOJDecoder<MultiListNode*> {{
-                    static MultiListNode* read(OpenOJReader& reader) {{ return readChain(reader); }}
+                template <> struct CoderPuzzleDecoder<MultiListNode*> {{
+                    static MultiListNode* read(CoderPuzzleReader& reader) {{ return readChain(reader); }}
                     // One chain: u32 n, then per node the value, a child
                     // flag, and the flagged child's own chain. Every chain
                     // (top and nested) gets its prev links set.
-                    static MultiListNode* readChain(OpenOJReader& reader) {{
+                    static MultiListNode* readChain(CoderPuzzleReader& reader) {{
                         uint32_t length = reader.u32();
                         MultiListNode* head = nullptr;
                         MultiListNode* tail = nullptr;
@@ -457,7 +457,7 @@ class CppExecutor(CompiledExecutor):
                 }};
                 // A flattened result must be a clean doubly chain: every
                 // prev back-link set, no child left.
-                static std::string openoj_result(MultiListNode* head) {{
+                static std::string coderpuzzle_result(MultiListNode* head) {{
                     std::string output = "[";
                     const MultiListNode* node = head;
                     const MultiListNode* previous = nullptr;
@@ -466,7 +466,7 @@ class CppExecutor(CompiledExecutor):
                             throw std::runtime_error("Flattened list is not properly linked");
                         }}
                         if (node != head) output += ',';
-                        output += openoj_json(node->val);
+                        output += coderpuzzle_json(node->val);
                         previous = node;
                         node = node->next;
                     }}
@@ -478,8 +478,8 @@ class CppExecutor(CompiledExecutor):
         if "graph" in structs:
             struct_codecs += textwrap.dedent(
                 """
-                template <> struct OpenOJDecoder<Node*> {
-                    static Node* read(OpenOJReader& reader) {
+                template <> struct CoderPuzzleDecoder<Node*> {
+                    static Node* read(CoderPuzzleReader& reader) {
                         uint32_t count = reader.u32();
                         if (count == 0) return nullptr;
                         std::vector<Node*> nodes;
@@ -500,19 +500,19 @@ class CppExecutor(CompiledExecutor):
                         return nodes[0];
                     }
                 };
-                static void openojCollectInput(const Node* root) {
+                static void coderpuzzleCollectInput(const Node* root) {
                     if (root == nullptr) return;
                     std::vector<const Node*> queue{root};
                     for (size_t index = 0; index < queue.size(); ++index) {
                         const Node* node = queue[index];
                         if (std::find(queue.begin(), queue.begin() + index, node) != queue.begin() + index) continue;
-                        openoj_input_nodes.push_back(node);
+                        coderpuzzle_input_nodes.push_back(node);
                         for (const Node* neighbor : node->neighbors) queue.push_back(neighbor);
                     }
                 }
                 // Rows ordered by node value; neighbor order is normalized
                 // (sorted) since LC treats adjacency order as irrelevant.
-                static std::string openoj_result(Node* root) {
+                static std::string coderpuzzle_result(Node* root) {
                     std::vector<const Node*> visited;
                     if (root != nullptr) {
                         std::vector<const Node*> queue{root};
@@ -524,7 +524,7 @@ class CppExecutor(CompiledExecutor):
                         }
                     }
                     for (const Node* node : visited) {
-                        if (std::find(openoj_input_nodes.begin(), openoj_input_nodes.end(), static_cast<const void*>(node)) != openoj_input_nodes.end()) {
+                        if (std::find(coderpuzzle_input_nodes.begin(), coderpuzzle_input_nodes.end(), static_cast<const void*>(node)) != coderpuzzle_input_nodes.end()) {
                             throw std::runtime_error("Returned graph shares nodes with the input graph");
                         }
                     }
@@ -551,8 +551,8 @@ class CppExecutor(CompiledExecutor):
         if "random_list" in structs:
             struct_codecs += textwrap.dedent(
                 """
-                template <> struct OpenOJDecoder<Node*> {
-                    static Node* read(OpenOJReader& reader) {
+                template <> struct CoderPuzzleDecoder<Node*> {
+                    static Node* read(CoderPuzzleReader& reader) {
                         uint32_t count = reader.u32();
                         if (count == 0) return nullptr;
                         std::vector<Node*> nodes;
@@ -574,10 +574,10 @@ class CppExecutor(CompiledExecutor):
                         return nodes[0];
                     }
                 };
-                static void openojCollectInput(const Node* head) {
-                    for (const Node* node = head; node; node = node->next) openoj_input_nodes.push_back(node);
+                static void coderpuzzleCollectInput(const Node* head) {
+                    for (const Node* node = head; node; node = node->next) coderpuzzle_input_nodes.push_back(node);
                 }
-                static std::string openoj_result(Node* head) {
+                static std::string coderpuzzle_result(Node* head) {
                     std::vector<const Node*> nodes;
                     for (const Node* node = head; node; node = node->next) {
                         if (std::find(nodes.begin(), nodes.end(), node) != nodes.end()) {
@@ -586,7 +586,7 @@ class CppExecutor(CompiledExecutor):
                         nodes.push_back(node);
                     }
                     for (const Node* node : nodes) {
-                        if (std::find(openoj_input_nodes.begin(), openoj_input_nodes.end(), static_cast<const void*>(node)) != openoj_input_nodes.end()) {
+                        if (std::find(coderpuzzle_input_nodes.begin(), coderpuzzle_input_nodes.end(), static_cast<const void*>(node)) != coderpuzzle_input_nodes.end()) {
                             throw std::runtime_error("Returned list shares nodes with the input list");
                         }
                     }
@@ -594,7 +594,7 @@ class CppExecutor(CompiledExecutor):
                     for (size_t index = 0; index < nodes.size(); ++index) {
                         if (index) output += ',';
                         output += '[';
-                        output += openoj_json(nodes[index]->val);
+                        output += coderpuzzle_json(nodes[index]->val);
                         output += ',';
                         if (nodes[index]->random == nullptr) output += "null";
                         else {
@@ -613,15 +613,15 @@ class CppExecutor(CompiledExecutor):
         if "doubly_list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                template <> struct OpenOJDecoder<{doubly_class}*> {{
-                    static {doubly_class}* read(OpenOJReader& reader) {{
+                template <> struct CoderPuzzleDecoder<{doubly_class}*> {{
+                    static {doubly_class}* read(CoderPuzzleReader& reader) {{
                         if (reader.byte() == 0) return nullptr;
                         uint32_t length = reader.u32();
                         if (length == 0) return nullptr;
                         std::vector<{doubly_class}*> nodes;
                         nodes.reserve(length);
                         for (uint32_t index = 0; index < length; ++index) {{
-                            nodes.push_back(new {doubly_class}(OpenOJDecoder<{cpp_type(item_spec)}>::read(reader)));
+                            nodes.push_back(new {doubly_class}(CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader)));
                         }}
                         // The chain is wired in both directions before the
                         // solution sees it.
@@ -634,7 +634,7 @@ class CppExecutor(CompiledExecutor):
                 }};
                 // The forward walk must agree with every back-link — the
                 // open chain's answer to the circular walk's closure check.
-                static std::string openoj_result({doubly_class}* head) {{
+                static std::string coderpuzzle_result({doubly_class}* head) {{
                     std::string output = "[";
                     const {doubly_class}* node = head;
                     const {doubly_class}* previous = nullptr;
@@ -643,7 +643,7 @@ class CppExecutor(CompiledExecutor):
                             throw std::runtime_error("Doubly linked list is not properly linked");
                         }}
                         if (node != head) output += ',';
-                        output += openoj_json(node->val);
+                        output += coderpuzzle_json(node->val);
                         previous = node;
                         node = node->next;
                     }}
@@ -657,8 +657,8 @@ class CppExecutor(CompiledExecutor):
             # chain node the method receives; a bundle uses one list kind.
             struct_codecs += textwrap.dedent(
                 f"""
-                template <> struct OpenOJDecoder<{doubly_node_class}*> {{
-                    static {doubly_node_class}* read(OpenOJReader& reader) {{
+                template <> struct CoderPuzzleDecoder<{doubly_node_class}*> {{
+                    static {doubly_node_class}* read(CoderPuzzleReader& reader) {{
                         if (reader.byte() == 0) return nullptr;
                         uint32_t length = reader.u32();
                         {doubly_node_class}* head = nullptr;
@@ -666,7 +666,7 @@ class CppExecutor(CompiledExecutor):
                             std::vector<{doubly_node_class}*> nodes;
                             nodes.reserve(length);
                             for (uint32_t index = 0; index < length; ++index) {{
-                                nodes.push_back(new {doubly_node_class}(OpenOJDecoder<{cpp_type(item_spec)}>::read(reader)));
+                                nodes.push_back(new {doubly_node_class}(CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader)));
                             }}
                             for (uint32_t index = 0; index + 1 < length; ++index) {{
                                 nodes[index]->next = nodes[index + 1];
@@ -674,14 +674,14 @@ class CppExecutor(CompiledExecutor):
                             }}
                             head = nodes[0];
                         }}
-                        auto target = OpenOJDecoder<{cpp_type(item_spec)}>::read(reader);
+                        auto target = CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader);
                         for ({doubly_node_class}* node = head; node != nullptr; node = node->next) {{
                             if (node->val == target) return node;
                         }}
                         throw std::runtime_error("doubly_list_node target value is not in the chain");
                     }}
                 }};
-                static std::string openoj_result({doubly_node_class}* head) {{
+                static std::string coderpuzzle_result({doubly_node_class}* head) {{
                     std::string output = "[";
                     const {doubly_node_class}* node = head;
                     const {doubly_node_class}* previous = nullptr;
@@ -690,7 +690,7 @@ class CppExecutor(CompiledExecutor):
                             throw std::runtime_error("Doubly linked list is not properly linked");
                         }}
                         if (node != head) output += ',';
-                        output += openoj_json(node->val);
+                        output += coderpuzzle_json(node->val);
                         previous = node;
                         node = node->next;
                     }}
@@ -702,15 +702,15 @@ class CppExecutor(CompiledExecutor):
         if "random_tree" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                template <> struct OpenOJDecoder<{random_tree_class}*> {{
-                    static {random_tree_class}* read(OpenOJReader& reader) {{
+                template <> struct CoderPuzzleDecoder<{random_tree_class}*> {{
+                    static {random_tree_class}* read(CoderPuzzleReader& reader) {{
                         // Binary-tree level order whose present slots carry
                         // [val, randomIndex] rows; the index counts present
                         // nodes in level order, from the root.
                         uint32_t count = reader.u32();
                         if (count == 0) return nullptr;
                         if (reader.byte() == 0) throw std::runtime_error("random_tree root must be a [val, random] row");
-                        {random_tree_class}* root = new {random_tree_class}(OpenOJDecoder<{cpp_type(item_spec)}>::read(reader));
+                        {random_tree_class}* root = new {random_tree_class}(CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader));
                         std::vector<{random_tree_class}*> order{{root}};
                         std::vector<std::pair<{random_tree_class}*, uint32_t>> pending;
                         pending.emplace_back(root, reader.u32());
@@ -723,7 +723,7 @@ class CppExecutor(CompiledExecutor):
                                 if (index >= count) break;
                                 ++index;
                                 if (reader.byte() == 0) continue;
-                                {random_tree_class}* child = new {random_tree_class}(OpenOJDecoder<{cpp_type(item_spec)}>::read(reader));
+                                {random_tree_class}* child = new {random_tree_class}(CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader));
                                 pending.emplace_back(child, reader.u32());
                                 *side = child;
                                 order.push_back(child);
@@ -738,14 +738,14 @@ class CppExecutor(CompiledExecutor):
                         return root;
                     }}
                 }};
-                static void openojCollectInput(const {random_tree_class}* root) {{
+                static void coderpuzzleCollectInput(const {random_tree_class}* root) {{
                     if (root == nullptr) return;
                     std::vector<const {random_tree_class}*> queue{{root}};
                     for (size_t index = 0; index < queue.size(); ++index) {{
                         const {random_tree_class}* node = queue[index];
                         if (node == nullptr) continue;
                         if (std::find(queue.begin(), queue.begin() + index, node) != queue.begin() + index) continue;
-                        openoj_input_nodes.push_back(node);
+                        coderpuzzle_input_nodes.push_back(node);
                         queue.push_back(node->left);
                         queue.push_back(node->right);
                     }}
@@ -757,7 +757,7 @@ class CppExecutor(CompiledExecutor):
                 // slots shift nothing and are never dereferenced. The clone
                 // check forbids returning (part of) the input tree, and
                 // every random pointer must land inside the returned tree.
-                static std::string openoj_result({random_tree_class}* root) {{
+                static std::string coderpuzzle_result({random_tree_class}* root) {{
                     std::vector<const {random_tree_class}*> order;
                     std::vector<std::string> values;
                     if (root != nullptr) {{
@@ -774,7 +774,7 @@ class CppExecutor(CompiledExecutor):
                                 throw std::runtime_error("Random tree repeats a node in level order");
                             }}
                             order.push_back(node);
-                            values.push_back(openoj_json(node->val));
+                            values.push_back(coderpuzzle_json(node->val));
                             queue.push_back(node->left);
                             queue.push_back(node->right);
                         }}
@@ -784,7 +784,7 @@ class CppExecutor(CompiledExecutor):
                         order.pop_back();
                     }}
                     for (const {random_tree_class}* node : order) {{
-                        if (node != nullptr && std::find(openoj_input_nodes.begin(), openoj_input_nodes.end(), static_cast<const void*>(node)) != openoj_input_nodes.end()) {{
+                        if (node != nullptr && std::find(coderpuzzle_input_nodes.begin(), coderpuzzle_input_nodes.end(), static_cast<const void*>(node)) != coderpuzzle_input_nodes.end()) {{
                             throw std::runtime_error("Returned tree shares nodes with the input tree");
                         }}
                     }}
@@ -822,13 +822,13 @@ class CppExecutor(CompiledExecutor):
             # bundle uses one binary-tree kind.
             struct_codecs += textwrap.dedent(
                 f"""
-                template <> struct OpenOJDecoder<TreeNode*> {{
-                    static TreeNode* read(OpenOJReader& reader) {{
+                template <> struct CoderPuzzleDecoder<TreeNode*> {{
+                    static TreeNode* read(CoderPuzzleReader& reader) {{
                         uint32_t length = reader.u32();
                         std::vector<std::pair<bool, {cpp_type(item_spec)}>> slots;
                         slots.reserve(length);
                         for (uint32_t index = 0; index < length; ++index) {{
-                            if (reader.byte() == 1) slots.emplace_back(true, OpenOJDecoder<{cpp_type(item_spec)}>::read(reader));
+                            if (reader.byte() == 1) slots.emplace_back(true, CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader));
                             else slots.emplace_back(false, {cpp_type(item_spec)}());
                         }}
                         if (length == 0 || !slots[0].first) return nullptr;
@@ -885,9 +885,9 @@ class CppExecutor(CompiledExecutor):
             # an arbitrary permutation).
             struct_codecs += textwrap.dedent(
                 """
-                template <> struct OpenOJDecoder<std::vector<Node*>> {
-                    static std::vector<Node*> read(OpenOJReader& reader) {
-                        Node* root = OpenOJDecoder<Node*>::read(reader);
+                template <> struct CoderPuzzleDecoder<std::vector<Node*>> {
+                    static std::vector<Node*> read(CoderPuzzleReader& reader) {
+                        Node* root = CoderPuzzleDecoder<Node*>::read(reader);
                         std::vector<Node*> nodes;
                         if (root == nullptr) return nodes;
                         std::deque<Node*> queue{root};
@@ -908,9 +908,9 @@ class CppExecutor(CompiledExecutor):
                 // LC 160: the intersection is by identity — the result
                 // must be a node taken from the input lists, and the wire
                 // is the shared tail's values.
-                static std::string openoj_result(ListNode* node) {
+                static std::string coderpuzzle_result(ListNode* node) {
                     if (node == nullptr) return "[]";
-                    if (std::find(openoj_input_nodes.begin(), openoj_input_nodes.end(), static_cast<const void*>(node)) == openoj_input_nodes.end()) {
+                    if (std::find(coderpuzzle_input_nodes.begin(), coderpuzzle_input_nodes.end(), static_cast<const void*>(node)) == coderpuzzle_input_nodes.end()) {
                         throw std::runtime_error("Returned node is not part of the input lists");
                     }
                     std::string output = "[";
@@ -918,7 +918,7 @@ class CppExecutor(CompiledExecutor):
                     for (const ListNode* walk = node; walk; walk = walk->next) {
                         if (!first) output += ',';
                         first = false;
-                        output += openoj_json(walk->val);
+                        output += coderpuzzle_json(walk->val);
                     }
                     return output + "]";
                 }
@@ -936,13 +936,13 @@ class CppExecutor(CompiledExecutor):
                 ):
                     continue  # emit referenced structs first
                 reads = ", ".join(
-                    f"OpenOJDecoder<{cpp_type(field['value_type'])}>::read(reader)"
+                    f"CoderPuzzleDecoder<{cpp_type(field['value_type'])}>::read(reader)"
                     for field in fields
                 )
                 struct_codecs += textwrap.dedent(
                     f"""
-                    template <> struct OpenOJDecoder<{name}> {{
-                        static {name} read(OpenOJReader& reader) {{
+                    template <> struct CoderPuzzleDecoder<{name}> {{
+                        static {name} read(CoderPuzzleReader& reader) {{
                             return {name}({reads});
                         }}
                     }};
@@ -954,13 +954,13 @@ class CppExecutor(CompiledExecutor):
         if "tree" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                template <> struct OpenOJDecoder<TreeNode*> {{
-                    static TreeNode* read(OpenOJReader& reader) {{
+                template <> struct CoderPuzzleDecoder<TreeNode*> {{
+                    static TreeNode* read(CoderPuzzleReader& reader) {{
                         uint32_t length = reader.u32();
                         std::vector<std::pair<bool, {cpp_type(item_spec)}>> slots;
                         slots.reserve(length);
                         for (uint32_t index = 0; index < length; ++index) {{
-                            if (reader.byte() == 1) slots.emplace_back(true, OpenOJDecoder<{cpp_type(item_spec)}>::read(reader));
+                            if (reader.byte() == 1) slots.emplace_back(true, CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(reader));
                             else slots.emplace_back(false, {cpp_type(item_spec)}());
                         }}
                         if (length == 0 || !slots[0].first) return nullptr;
@@ -988,7 +988,7 @@ class CppExecutor(CompiledExecutor):
                         return root;
                     }}
                 }};
-                static std::string openoj_json(const TreeNode* root) {{
+                static std::string coderpuzzle_json(const TreeNode* root) {{
                     std::vector<std::string> items;
                     std::deque<const TreeNode*> queue;
                     if (root) queue.push_back(root);
@@ -999,7 +999,7 @@ class CppExecutor(CompiledExecutor):
                             items.push_back("null");
                             continue;
                         }}
-                        items.push_back(openoj_json(node->val));
+                        items.push_back(coderpuzzle_json(node->val));
                         queue.push_back(node->left);
                         queue.push_back(node->right);
                     }}
@@ -1029,21 +1029,21 @@ class CppExecutor(CompiledExecutor):
             kind = spec.get("kind")
             if kind == "alias_list":
                 lines = [
-                    f"auto openoj_arg_{index} = [&]() -> ListNode* {{",
-                    "            uint32_t count = openoj_reader.u32();",
+                    f"auto coderpuzzle_arg_{index} = [&]() -> ListNode* {{",
+                    "            uint32_t count = coderpuzzle_reader.u32();",
                     "            ListNode* head = nullptr;",
                     "            ListNode** cursor = &head;",
                     "            std::vector<ListNode*> prefix;",
                     "            for (uint32_t step = 0; step < count; ++step) {",
-                    f"                *cursor = new ListNode(OpenOJDecoder<{cpp_type(item_spec)}>::read(openoj_reader));",
+                    f"                *cursor = new ListNode(CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(coderpuzzle_reader));",
                     "                prefix.push_back(*cursor);",
                     "                cursor = &((*cursor)->next);",
                     "            }",
-                    "            uint32_t splice_at = openoj_reader.u32();",
-                    f"            if (splice_at < openoj_arg_{spec['alias']}_nodes.size()) {{",
-                    f"                *cursor = openoj_arg_{spec['alias']}_nodes[splice_at];",
+                    "            uint32_t splice_at = coderpuzzle_reader.u32();",
+                    f"            if (splice_at < coderpuzzle_arg_{spec['alias']}_nodes.size()) {{",
+                    f"                *cursor = coderpuzzle_arg_{spec['alias']}_nodes[splice_at];",
                     "            }",
-                    "            for (const ListNode* node : prefix) openoj_input_nodes.push_back(node);",
+                    "            for (const ListNode* node : prefix) coderpuzzle_input_nodes.push_back(node);",
                     "            return head;",
                     "        }();",
                 ]
@@ -1052,36 +1052,36 @@ class CppExecutor(CompiledExecutor):
                 # The value names a node of the already-decoded aliased
                 # tree; the argument is that exact node (shared identity).
                 lines = [
-                    f"auto openoj_arg_{index} = [&]() -> Node* {{",
-                    f"            auto named = OpenOJDecoder<{cpp_type(item_spec)}>::read(openoj_reader);",
-                    f"            Node* found = openojFindNaryNode(openoj_arg_{spec['alias']}, named);",
+                    f"auto coderpuzzle_arg_{index} = [&]() -> Node* {{",
+                    f"            auto named = CoderPuzzleDecoder<{cpp_type(item_spec)}>::read(coderpuzzle_reader);",
+                    f"            Node* found = coderpuzzleFindNaryNode(coderpuzzle_arg_{spec['alias']}, named);",
                     '            if (found == nullptr) throw std::runtime_error("nary_tree_ref target value is not in the aliased tree");',
                     "            return found;",
                     "        }();",
                 ]
                 return "\n".join(" " * 20 + line for line in lines)
-            lines = [f"auto openoj_arg_{index} = OpenOJDecoder<{cpp_type(spec)}>::read(openoj_reader);"]
+            lines = [f"auto coderpuzzle_arg_{index} = CoderPuzzleDecoder<{cpp_type(spec)}>::read(coderpuzzle_reader);"]
             if kind == "linked_list" and index in alias_sources:
                 lines.append(
-                    f"std::vector<ListNode*> openoj_arg_{index}_nodes;"
-                    f" for (ListNode* node = openoj_arg_{index}; node; node = node->next) openoj_arg_{index}_nodes.push_back(node);"
+                    f"std::vector<ListNode*> coderpuzzle_arg_{index}_nodes;"
+                    f" for (ListNode* node = coderpuzzle_arg_{index}; node; node = node->next) coderpuzzle_arg_{index}_nodes.push_back(node);"
                 )
             if kind in {"linked_list", "graph", "random_list", "random_tree"}:
-                lines.append(f"openojCollectInput(openoj_arg_{index});")
+                lines.append(f"coderpuzzleCollectInput(coderpuzzle_arg_{index});")
             return "\n".join(" " * 20 + line for line in lines)
 
         declarations = "\n".join(
             declaration(index, spec) for index, spec in enumerate(parameters)
         )
-        arguments = ", ".join(f"openoj_arg_{index}" for index in range(len(parameters)))
+        arguments = ", ".join(f"coderpuzzle_arg_{index}" for index in range(len(parameters)))
         wrapper = textwrap.dedent(
             f"""
             #undef main
             #undef int
 
-            class OpenOJReader {{
+            class CoderPuzzleReader {{
             public:
-                explicit OpenOJReader(std::vector<unsigned char> bytes) : data(std::move(bytes)) {{}}
+                explicit CoderPuzzleReader(std::vector<unsigned char> bytes) : data(std::move(bytes)) {{}}
                 uint32_t u32() {{
                     require(4);
                     uint32_t value = 0;
@@ -1113,44 +1113,44 @@ class CppExecutor(CompiledExecutor):
                 }}
             }};
 
-            template <typename T> struct OpenOJDecoder;
-            template <> struct OpenOJDecoder<int> {{
-                static int read(OpenOJReader& reader) {{ return static_cast<int32_t>(reader.u32()); }}
+            template <typename T> struct CoderPuzzleDecoder;
+            template <> struct CoderPuzzleDecoder<int> {{
+                static int read(CoderPuzzleReader& reader) {{ return static_cast<int32_t>(reader.u32()); }}
             }};
-            template <> struct OpenOJDecoder<long long> {{
-                static long long read(OpenOJReader& reader) {{ return static_cast<int64_t>(reader.u64()); }}
+            template <> struct CoderPuzzleDecoder<long long> {{
+                static long long read(CoderPuzzleReader& reader) {{ return static_cast<int64_t>(reader.u64()); }}
             }};
-            template <> struct OpenOJDecoder<double> {{
-                static double read(OpenOJReader& reader) {{
+            template <> struct CoderPuzzleDecoder<double> {{
+                static double read(CoderPuzzleReader& reader) {{
                     uint64_t bits = reader.u64();
                     double value;
                     std::memcpy(&value, &bits, sizeof(value));
                     return value;
                 }}
             }};
-            template <> struct OpenOJDecoder<bool> {{
-                static bool read(OpenOJReader& reader) {{
+            template <> struct CoderPuzzleDecoder<bool> {{
+                static bool read(CoderPuzzleReader& reader) {{
                     auto value = reader.byte();
                     if (value > 1) throw std::runtime_error("Invalid boolean input");
                     return value == 1;
                 }}
             }};
-            template <> struct OpenOJDecoder<std::string> {{
-                static std::string read(OpenOJReader& reader) {{ return reader.text(); }}
+            template <> struct CoderPuzzleDecoder<std::string> {{
+                static std::string read(CoderPuzzleReader& reader) {{ return reader.text(); }}
             }};
-            template <typename T> struct OpenOJDecoder<std::vector<T>> {{
-                static std::vector<T> read(OpenOJReader& reader) {{
+            template <typename T> struct CoderPuzzleDecoder<std::vector<T>> {{
+                static std::vector<T> read(CoderPuzzleReader& reader) {{
                     uint32_t length = reader.u32();
                     std::vector<T> values;
                     values.reserve(length);
                     for (uint32_t index = 0; index < length; ++index) {{
-                        values.push_back(OpenOJDecoder<T>::read(reader));
+                        values.push_back(CoderPuzzleDecoder<T>::read(reader));
                     }}
                     return values;
                 }}
             }};
 
-            static std::string openoj_json(const std::string& value) {{
+            static std::string coderpuzzle_json(const std::string& value) {{
                 static const char* hex = "0123456789abcdef";
                 std::string output = "\\\"";
                 for (unsigned char character : value) {{
@@ -1172,26 +1172,26 @@ class CppExecutor(CompiledExecutor):
                 }}
                 return output + "\\\"";
             }}
-            static std::string openoj_json(bool value) {{ return value ? "true" : "false"; }}
-            static std::string openoj_json(int value) {{ return std::to_string(value); }}
-            static std::string openoj_json(long long value) {{ return std::to_string(value); }}
-            static std::string openoj_json(double value) {{
+            static std::string coderpuzzle_json(bool value) {{ return value ? "true" : "false"; }}
+            static std::string coderpuzzle_json(int value) {{ return std::to_string(value); }}
+            static std::string coderpuzzle_json(long long value) {{ return std::to_string(value); }}
+            static std::string coderpuzzle_json(double value) {{
                 if (!std::isfinite(value)) throw std::runtime_error("Non-finite return value");
                 std::ostringstream output;
                 output << std::setprecision(17) << value;
                 return output.str();
             }}
-            template <typename T> static std::string openoj_json(const std::vector<T>& values) {{
+            template <typename T> static std::string coderpuzzle_json(const std::vector<T>& values) {{
                 std::string output = "[";
                 for (size_t index = 0; index < values.size(); ++index) {{
                     if (index) output += ',';
-                    output += openoj_json(values[index]);
+                    output += coderpuzzle_json(values[index]);
                 }}
                 return output + "]";
             }}
 {struct_codecs}
-            template <typename T> static std::string openoj_result(const T& value) {{
-                return openoj_json(value);
+            template <typename T> static std::string coderpuzzle_result(const T& value) {{
+                return coderpuzzle_json(value);
             }}
 
             int main() {{
@@ -1199,16 +1199,16 @@ class CppExecutor(CompiledExecutor):
                     std::vector<unsigned char> bytes{{
                         std::istreambuf_iterator<char>(std::cin), std::istreambuf_iterator<char>()
                     }};
-                    OpenOJReader openoj_reader(std::move(bytes));
+                    CoderPuzzleReader coderpuzzle_reader(std::move(bytes));
 {declarations}
-                    openoj_reader.finished();
-                    {class_name} openoj_solution;
-                    auto openoj_actual = openoj_solution.{method}({arguments});
-                    openojEmit("__OPENOJ_RESULT__{{\\\"status\\\":\\\"completed\\\",\\\"actual\\\":\" + openoj_result(openoj_actual) + \"}}\");
+                    coderpuzzle_reader.finished();
+                    {class_name} coderpuzzle_solution;
+                    auto coderpuzzle_actual = coderpuzzle_solution.{method}({arguments});
+                    coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"completed\\\",\\\"actual\\\":\" + coderpuzzle_result(coderpuzzle_actual) + \"}}\");
                 }} catch (const std::exception& error) {{
-                    openojEmit("__OPENOJ_RESULT__{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\" + openoj_json(std::string(error.what())) + \"}}\");
+                    coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\" + coderpuzzle_json(std::string(error.what())) + \"}}\");
                 }} catch (...) {{
-                    openojEmit("__OPENOJ_RESULT__{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\\\"Unknown C++ exception\\\"}}\");
+                    coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\\\"Unknown C++ exception\\\"}}\");
                 }}
                 return 0;
             }}
@@ -1224,7 +1224,7 @@ class CppExecutor(CompiledExecutor):
             "// The last valid protocol line wins and is JSON-validated; the fd\n"
             "// keeps ordinary stdout noise out of the channel, but the submission\n"
             "// inherits it too — an accepted result must still carry matching output.\n"
-            "void openojEmit(const std::string& line) {\n"
+            "void coderpuzzleEmit(const std::string& line) {\n"
             "    std::string payload = line + \"\\n\";\n"
             "    if (::write(63, payload.data(), payload.size()) < 0) {\n"
             "        std::cout << payload << std::flush;\n"

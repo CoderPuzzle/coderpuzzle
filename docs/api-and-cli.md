@@ -2,7 +2,7 @@
 
 One toolchain, two interfaces. The runner image (`ghcr.io/coderpuzzle/coderpuzzle`)
 carries every pinned language tool and executor; the REST API drives the
-web UI, and the `openoj` CLI (installed in the image as `ojcli` from
+web UI, and the `coderpuzzle` CLI (installed in the image from
 `runner/cli.py`) drives authoring and CI. Formatting is the same code in
 both — see the tri-state contract below.
 
@@ -90,10 +90,10 @@ payload carries the state:
 
 ## Docker image CLI
 
-The image installs the CLI as `openoj` (`ojcli` historically); locally
+The image installs the CLI as `coderpuzzle`; locally
 test an edited `cli.py` by bind-mounting it over `/runner/cli.py`.
 
-- `openoj format <files|dirs…>` — format in place to the CoderPuzzle
+- `coderpuzzle format <files|dirs…>` — format in place to the CoderPuzzle
   standard; directories walk for formattable files, skipping
   `node_modules` and hidden trees.
   - `--check` — report unformatted files, change nothing, exit 1 if
@@ -103,20 +103,20 @@ test an edited `cli.py` by bind-mounting it over `/runner/cli.py`.
     `formatted | unformatted (+ "code" text) | error
     (+ "diagnostics")`. Exits 1 only when at least one file errored;
     "unformatted" is information, not a failure.
-- `openoj gen-starters <problem.json> [--style modern|legacy]` — emit
+- `coderpuzzle gen-starters <problem.json> [--style modern|legacy]` — emit
   `starter.<ext>` for the languages the bundle already offers (the
   existing starter set is never widened), formatted by the pinned
   toolchain. `--style` defaults to `modern`; the provenance-aware
   choice (MAPPING.json-driven) lives in the problems repo's
   `scripts/gen_starters.py`. Requires the problems repo bind-mounted
   at `/tools` (the loader shim is the schema contract).
-- `openoj judge <bundle-dir>` — judge **every** `solution*.<ext>` in
+- `coderpuzzle judge <bundle-dir>` — judge **every** `solution*.<ext>` in
   the bundle through the real executors against **all** cases; all
   must pass every case. Assembles the bundle's own `provided/` sources
   exactly as a live judge job would. Compiles without the untrusted-
   submission sandbox (authoring on the author's own machine).
 
-### `openoj run <file>` — single-file runner with provided-discovery
+### `coderpuzzle run <file>` — single-file runner with provided-discovery
 
 The authoring fast loop: judge **one** solution file without running
 the whole bundle matrix.
@@ -139,7 +139,7 @@ docker run --rm --user 0:0 \
     -v "$PWD/runner/cli.py:/runner/cli.py:ro" \
     -v "$PWD/runner/formatters.py:/runner/formatters.py:ro" \
     -v "$PWD:/work" -w /work \
-    ghcr.io/coderpuzzle/coderpuzzle:latest openoj format --check problems-adapt
+    ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle format --check problems-adapt
 
 # run one solution file against its bundle's cases
 # (mount the repo root; the file is addressed from the working directory)
@@ -147,7 +147,7 @@ docker run --rm --user 0:0 \
     -v "$PWD/runner/cli.py:/runner/cli.py:ro" \
     -v "$PWD/runner/formatters.py:/runner/formatters.py:ro" \
     -v "$PWD:/work" -w /work \
-    ghcr.io/coderpuzzle/coderpuzzle:latest openoj run problems-adapt/<shard>/<key>/my_draft.py
+    ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle run problems-adapt/<shard>/<key>/my_draft.py
 ```
 
 The convenience wrapper `scripts/format.sh` (coderpuzzle repo) does the

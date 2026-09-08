@@ -7,9 +7,9 @@ or generators are needed.
 
 ```bash
 docker pull ghcr.io/coderpuzzle/coderpuzzle:latest   # :latest tracks main
-alias openoj='docker run --rm --user 0:0 \
+alias coderpuzzle='docker run --rm --user 0:0 \
   -v /path/to/coderpuzzle-problems:/tools \
-  -v /path/to/my-bundle:/bundle:rw ghcr.io/coderpuzzle/coderpuzzle:latest openoj'
+  -v /path/to/my-bundle:/bundle:rw ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle'
 ```
 
 `/tools` is a checkout of the problems repo (its `scripts/gen_starters.py`
@@ -77,7 +77,7 @@ by hand. A tiny local script against your own algorithm is the norm.
 ## 4. Generate the scaffolding
 
 ```bash
-openoj gen-starters /bundle/problem.json
+coderpuzzle gen-starters /bundle/problem.json
 ```
 
 writes `starter.<ext>` for every offered language from the schema —
@@ -99,8 +99,8 @@ port lands.
 ## 6. Format, then judge against your own cases
 
 ```bash
-openoj format /bundle/solution.py /bundle/solution.ts ...
-openoj judge /bundle
+coderpuzzle format /bundle/solution.py /bundle/solution.ts ...
+coderpuzzle judge /bundle
 ```
 
 `judge` runs **every** `solution.*` through the real executors — same

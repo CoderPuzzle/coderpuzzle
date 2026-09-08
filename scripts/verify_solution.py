@@ -43,10 +43,10 @@ from runner.executors import sql as sql_exec  # noqa: E402
 from runner.executors import shell as shell_exec  # noqa: E402
 from runner.executors.base import ExecutorError  # noqa: E402
 
-PROTOCOL_PREFIX = "__OPENOJ_RESULT__"
+PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 TSC = str(ROOT / "frontend/node_modules/.bin/tsc")
 JAVA_CLASSES = ROOT / ".localonly" / "java-classes"
-JAVA_HARNESS = ROOT / "runner" / "java" / "OpenOJJavaHarness.java"
+JAVA_HARNESS = ROOT / "runner" / "java" / "CoderPuzzleJavaHarness.java"
 CPP_SHIM = ROOT / "scripts" / "verify_shim"
 RUNNER_DIR = ROOT / "runner"
 PYTHON = sys.executable
@@ -54,7 +54,7 @@ PYTHON = sys.executable
 
 def _ensure_java_cache() -> None:
     """Compile the tracked harness into the local class cache when stale."""
-    cached = JAVA_CLASSES / "OpenOJJavaHarness.class"
+    cached = JAVA_CLASSES / "CoderPuzzleJavaHarness.class"
     if cached.exists() and cached.stat().st_mtime >= JAVA_HARNESS.stat().st_mtime:
         return
     JAVA_CLASSES.mkdir(parents=True, exist_ok=True)
@@ -114,7 +114,7 @@ def _local_java_prepare(self, job_root, scratch, code, invocation, limits, assem
         command=(
             shutil.which("java"),
             "-cp", str(job_root) + os.pathsep + str(JAVA_CLASSES),
-            "OpenOJJavaHarness",
+            "CoderPuzzleJavaHarness",
         ),
         environment={"PATH": "/usr/bin:/bin", "HOME": str(scratch), "TMPDIR": str(scratch), "LANG": "C.UTF-8"},
     )

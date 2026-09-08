@@ -8,7 +8,7 @@ sys.path.insert(0, "/runner")
 
 from protocol import emit_protocol
 
-PROTOCOL_PREFIX = "__OPENOJ_RESULT__"
+PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 MAX_CAPTURED_STDERR = 16_384
 OUTPUT_KB_ENV = "OPENOJ_OUTPUT_KB"
 DEFAULT_OUTPUT_KB = 64

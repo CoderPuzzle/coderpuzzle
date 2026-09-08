@@ -20,7 +20,7 @@ from typing import Any
 from .base import ExecutorError, PreparedProgram
 
 WRAPPER_HEAD = """\
-function openojEmit(line) {
+function coderpuzzleEmit(line) {
     const fs = require("fs");
     try {
         fs.writeSync(63, line + "\\n");
@@ -77,7 +77,7 @@ class OjReader {
     }
 }
 
-function openojJSON(value) {
+function coderpuzzleJSON(value) {
     return JSON.stringify(value, (_key, item) => {
         if (typeof item === "bigint") return Number(item);
         if (item === undefined) return null;
@@ -94,13 +94,13 @@ CODEC_DISPATCH = """\
 // name at compile time regardless of reachability, so a branch calling
 // an omitted helper (for a type the bundle never asked for) would fail
 // to compile even though it can never run.
-function openojDecode(value, codec) {
+function coderpuzzleDecode(value, codec) {
 @TREE_DECODE_BRANCH@
 @NESTED_DECODE_BRANCH@
     return value;
 }
 
-function openojEncode(value, codec) {
+function coderpuzzleEncode(value, codec) {
     if (value === undefined) {
         return null;
     }
@@ -118,14 +118,14 @@ function openojEncode(value, codec) {
 NESTED_CODEC_HELPERS = """\
 // Nested JSON ([1,[4,[6]]], bare integers as integer holds) ->
 // the bundle-provided NestedInteger, mirroring the harness decode.
-function openojNestedFromArray(value) {
+function coderpuzzleNestedFromArray(value) {
     if (typeof value === "number") {
         return new NestedInteger(value);
     }
     const node = new NestedInteger();
     if (Array.isArray(value)) {
         for (const item of value) {
-            node.add(openojNestedFromArray(item));
+            node.add(coderpuzzleNestedFromArray(item));
         }
     } else if (value !== null && value !== undefined) {
         throw new Error("Expected a nested list");
@@ -134,14 +134,14 @@ function openojNestedFromArray(value) {
 }
 
 // NestedInteger -> nested JSON, so results compare as plain JSON.
-function openojNestedToArray(node) {
+function coderpuzzleNestedToArray(node) {
     if (node === null || node === undefined) {
         return null;
     }
     if (node.isInteger()) {
         return node.getInteger();
     }
-    return node.getList().map(openojNestedToArray);
+    return node.getList().map(coderpuzzleNestedToArray);
 }
 """
 
@@ -151,7 +151,7 @@ function openojNestedToArray(node) {
 TREE_CODEC_HELPERS = """\
 // Level-order array (nulls for absent children) -> TreeNode tree, two
 // slots consumed per queued node exactly like the harness's codec.
-function openojTreeFromArray(slots) {
+function coderpuzzleTreeFromArray(slots) {
     if (!Array.isArray(slots) || slots.length === 0 || slots[0] === null) {
         return null;
     }
@@ -180,7 +180,7 @@ function openojTreeFromArray(slots) {
 
 // TreeNode tree -> level-order array, trailing nulls trimmed, so results
 // compare as plain JSON.
-function openojTreeToArray(root) {
+function coderpuzzleTreeToArray(root) {
     if (root === null || root === undefined) {
         return [];
     }
@@ -223,8 +223,8 @@ async function main() {
     const methodCodecs = @METHOD_CODECS@;
     const returnCodecs = @RETURN_CODECS@;
     const methodKinds = @METHOD_KINDS@;
-    const decodeConstructorRow = (row) => row.map((argument, index) => openojDecode(argument, constructorCodecs[index] || "json"));
-    const constructorArguments = params[0].map((argument, index) => openojDecode(argument, constructorCodecs[index] || "json"));
+    const decodeConstructorRow = (row) => row.map((argument, index) => coderpuzzleDecode(argument, constructorCodecs[index] || "json"));
+    const constructorArguments = params[0].map((argument, index) => coderpuzzleDecode(argument, constructorCodecs[index] || "json"));
     const solution = new @CLASS_NAME@(...constructorArguments);
     // Named instances ({"new": handle} actions) live here for the whole
     // replay; $ref arguments and "on" targets resolve through it. The
@@ -291,7 +291,7 @@ async function main() {
                 }
                 return instances.get(argument.$ref);
             }
-            return openojDecode(argument, codecs[index] || "json");
+            return coderpuzzleDecode(argument, codecs[index] || "json");
         });
         const returnCodec = returnCodecs[action] || "json";
         if (repeat > 1) {
@@ -299,7 +299,7 @@ async function main() {
             let last = null;
             for (let trial = 0; trial < repeat; trial++) {
                 last = target[action](...decodedArguments);
-                const key = openojJSON(openojEncode(last, returnCodec));
+                const key = coderpuzzleJSON(coderpuzzleEncode(last, returnCodec));
                 frequencies.set(key, (frequencies.get(key) || 0) + 1);
             }
             const table = {};
@@ -308,15 +308,15 @@ async function main() {
             previous = last;
         } else {
             const rawResult = target[action](...decodedArguments);
-            outputs.push(openojEncode(rawResult, returnCodec));
+            outputs.push(coderpuzzleEncode(rawResult, returnCodec));
             previous = rawResult;
         }
     }
-    openojEmit("__OPENOJ_RESULT__" + openojJSON({ status: "completed", actual: outputs }));
+    coderpuzzleEmit("__CODERPUZZLE_RESULT__" + coderpuzzleJSON({ status: "completed", actual: outputs }));
 }
 
 main().catch((problem) => {
-    openojEmit("__OPENOJ_RESULT__" + openojJSON({ status: "runtime_error", error: String(problem && problem.message ? problem.message : problem) }));
+    coderpuzzleEmit("__CODERPUZZLE_RESULT__" + coderpuzzleJSON({ status: "runtime_error", error: String(problem && problem.message ? problem.message : problem) }));
 });
 """
 
@@ -360,19 +360,19 @@ def prepare_design(executor, job_root: Path, scratch: Path, code: str,
         CODEC_DISPATCH
         .replace(
             "@TREE_DECODE_BRANCH@",
-            '    if (codec === "tree_node") {\n        return openojTreeFromArray(value);\n    }' if needs_tree else "",
+            '    if (codec === "tree_node") {\n        return coderpuzzleTreeFromArray(value);\n    }' if needs_tree else "",
         )
         .replace(
             "@NESTED_DECODE_BRANCH@",
-            '    if (codec === "nested") {\n        return openojNestedFromArray(value);\n    }' if needs_nested else "",
+            '    if (codec === "nested") {\n        return coderpuzzleNestedFromArray(value);\n    }' if needs_nested else "",
         )
         .replace(
             "@TREE_ENCODE_BRANCH@",
-            '    if (codec === "tree_node") {\n        return openojTreeToArray(value);\n    }' if needs_tree else "",
+            '    if (codec === "tree_node") {\n        return coderpuzzleTreeToArray(value);\n    }' if needs_tree else "",
         )
         .replace(
             "@NESTED_ENCODE_BRANCH@",
-            '    if (codec === "nested") {\n        return openojNestedToArray(value);\n    }' if needs_nested else "",
+            '    if (codec === "nested") {\n        return coderpuzzleNestedToArray(value);\n    }' if needs_nested else "",
         )
     )
     codec_helpers = (

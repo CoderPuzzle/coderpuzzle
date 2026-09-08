@@ -34,7 +34,7 @@ loader.config({ monaco });
 // types, tan functions), and the dark theme is the same hues with the dark
 // values lifted for legibility on dark backgrounds (dark tan -> light
 // yellow, dark navy -> sky blue), the way LeetCode's dark editor adapts it.
-monaco.editor.defineTheme("openoj-dark", {
+monaco.editor.defineTheme("coderpuzzle-dark", {
   base: "vs-dark",
   inherit: true,
   rules: [
@@ -86,7 +86,7 @@ monaco.editor.defineTheme("openoj-dark", {
   },
 });
 
-monaco.editor.defineTheme("openoj-light", {
+monaco.editor.defineTheme("coderpuzzle-light", {
   base: "vs",
   inherit: true,
   rules: [
@@ -167,8 +167,8 @@ function enhance(
   );
   const grammar = {
     ...base,
-    openojTypes: options.types,
-    openojSelf: options.selfNames ?? [],
+    coderpuzzleTypes: options.types,
+    coderpuzzleSelf: options.selfNames ?? [],
     tokenizer: {
       ...base.tokenizer,
       root: [
@@ -178,7 +178,7 @@ function enhance(
           /[a-zA-Z_]\w*(?=\s*\()/,
           {
             cases: {
-              "@openojTypes": "keyword.type",
+              "@coderpuzzleTypes": "keyword.type",
               "@keywords": "keyword",
               "@default": "support.function",
             },
@@ -188,8 +188,8 @@ function enhance(
           /[a-zA-Z_]\w*/,
           {
             cases: {
-              "@openojTypes": "keyword.type",
-              "@openojSelf": "variable.language",
+              "@coderpuzzleTypes": "keyword.type",
+              "@coderpuzzleSelf": "variable.language",
               "@keywords": "keyword",
               "@default": "identifier",
             },

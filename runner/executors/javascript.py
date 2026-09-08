@@ -17,53 +17,53 @@ def _read_expression(spec: dict[str, Any]) -> str:
     kind = spec["kind"]
     if kind == "integer":
         return (
-            "openojReader.int32()"
+            "coderpuzzleReader.int32()"
             if spec.get("bits", 32) == 32
-            else "openojReader.int64()"
+            else "coderpuzzleReader.int64()"
         )
     if kind == "number":
-        return "openojReader.number()"
+        return "coderpuzzleReader.number()"
     if kind == "boolean":
-        return "openojReader.boolean()"
+        return "coderpuzzleReader.boolean()"
     if kind == "string":
-        return "openojReader.string()"
+        return "coderpuzzleReader.string()"
     if kind == "linked_list":
-        return "openojReader.linkedList()"
+        return "coderpuzzleReader.linkedList()"
     if kind == "binary_tree":
-        return "openojReader.tree()"
+        return "coderpuzzleReader.tree()"
     if kind == "nary_tree":
-        return "openojReader.naryTree()"
+        return "coderpuzzleReader.naryTree()"
     if kind == "quad_tree":
-        return "openojReader.quadTree()"
+        return "coderpuzzleReader.quadTree()"
     if kind == "nested":
-        return "openojReader.nested()"
+        return "coderpuzzleReader.nested()"
     if kind == "next_tree":
-        return "openojReader.nextTree()"
+        return "coderpuzzleReader.nextTree()"
     if kind == "circular_list":
-        return "openojReader.circularList()"
+        return "coderpuzzleReader.circularList()"
     if kind == "doubly_circular":
-        return "openojReader.doublyCircular()"
+        return "coderpuzzleReader.doublyCircular()"
     if kind == "multi_list":
-        return "openojReader.multiList()"
+        return "coderpuzzleReader.multiList()"
     if kind == "graph":
-        return "openojReader.graph()"
+        return "coderpuzzleReader.graph()"
     if kind == "random_list":
-        return "openojReader.randomList()"
+        return "coderpuzzleReader.randomList()"
     if kind == "doubly_list":
-        return "openojReader.doublyList()"
+        return "coderpuzzleReader.doublyList()"
     if kind == "doubly_list_node":
-        return "openojReader.doublyListNode()"
+        return "coderpuzzleReader.doublyListNode()"
     if kind == "random_tree":
-        return "openojReader.randomTree()"
+        return "coderpuzzleReader.randomTree()"
     if kind == "special_tree":
-        return "openojReader.specialTree()"
+        return "coderpuzzleReader.specialTree()"
     if kind == "nary_tree_nodes":
-        return "openojReader.naryTreeNodes()"
+        return "coderpuzzleReader.naryTreeNodes()"
     if kind == "json":
-        return "openojReader.json()"
+        return "coderpuzzleReader.json()"
     if kind == "struct":
-        return f"openojReader.read{spec['class']}()"
-    return f"openojReader.array(() => {_read_expression(spec['items'])})"
+        return f"coderpuzzleReader.read{spec['class']}()"
+    return f"coderpuzzleReader.array(() => {_read_expression(spec['items'])})"
 
 
 def _uses_json(spec: Any) -> bool:
@@ -126,7 +126,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        return values;\n"
             "    }\n"
             "    static collectList(head) {\n"
-            "        for (let node = head; node; node = node.next) OpenOJReader.inputNodes.add(node);\n"
+            "        for (let node = head; node; node = node.next) CoderPuzzleReader.inputNodes.add(node);\n"
             "    }\n"
         )
     if "circular_list" in structs:
@@ -294,7 +294,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "    }\n"
             "    static nestedJSON(value) {\n"
             "        if (value.isInteger()) return value.getInteger();\n"
-            "        return value.getList().map((item) => OpenOJReader.nestedJSON(item));\n"
+            "        return value.getList().map((item) => CoderPuzzleReader.nestedJSON(item));\n"
             "    }\n"
         )
     if "next_tree" in structs:
@@ -447,7 +447,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        for (let index = 0; index < queue.length; index++) {\n"
             "            const node = queue[index];\n"
             "            if (queue.indexOf(node) !== index) continue;\n"
-            "            OpenOJReader.inputNodes.add(node);\n"
+            "            CoderPuzzleReader.inputNodes.add(node);\n"
             "            for (const neighbor of node.neighbors) queue.push(neighbor);\n"
             "        }\n"
             "    }\n"
@@ -465,7 +465,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "            }\n"
             "        }\n"
             "        for (const node of visited) {\n"
-            "            if (OpenOJReader.inputNodes.has(node)) {\n"
+            "            if (CoderPuzzleReader.inputNodes.has(node)) {\n"
             "                throw new Error(\"Returned graph shares nodes with the input graph\");\n"
             "            }\n"
             "        }\n"
@@ -495,7 +495,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        return nodes[0];\n"
             "    }\n"
             "    static collectRandomList(head) {\n"
-            "        for (let node = head; node; node = node.next) OpenOJReader.inputNodes.add(node);\n"
+            "        for (let node = head; node; node = node.next) CoderPuzzleReader.inputNodes.add(node);\n"
             "    }\n"
             "    static randomListJSON(head) {\n"
             "        const nodes = [];\n"
@@ -504,7 +504,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "            nodes.push(node);\n"
             "        }\n"
             "        for (const node of nodes) {\n"
-            "            if (OpenOJReader.inputNodes.has(node)) {\n"
+            "            if (CoderPuzzleReader.inputNodes.has(node)) {\n"
             "                throw new Error(\"Returned list shares nodes with the input list\");\n"
             "            }\n"
             "        }\n"
@@ -627,7 +627,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        for (let index = 0; index < queue.length; index++) {\n"
             "            const node = queue[index];\n"
             "            if (queue.indexOf(node) !== index) continue;\n"
-            "            OpenOJReader.inputNodes.add(node);\n"
+            "            CoderPuzzleReader.inputNodes.add(node);\n"
             "            if (node.left !== null) queue.push(node.left);\n"
             "            if (node.right !== null) queue.push(node.right);\n"
             "        }\n"
@@ -651,7 +651,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        }\n"
             "        while (order.length > 0 && order[order.length - 1] === null) order.pop();\n"
             "        for (const node of order) {\n"
-            "            if (node !== null && OpenOJReader.inputNodes.has(node)) {\n"
+            "            if (node !== null && CoderPuzzleReader.inputNodes.has(node)) {\n"
             "                throw new Error(\"Returned tree shares nodes with the input tree\");\n"
             "            }\n"
             "        }\n"
@@ -749,7 +749,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        // be a node taken from the input lists, and the wire is the\n"
             "        // shared tail's values.\n"
             "        if (node === null) return [];\n"
-            "        if (!OpenOJReader.inputNodes.has(node)) {\n"
+            "        if (!CoderPuzzleReader.inputNodes.has(node)) {\n"
             "            throw new Error(\"Returned node is not part of the input lists\");\n"
             "        }\n"
             "        const values = [];\n"
@@ -766,7 +766,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
         # provided/ source; the judge contributes only the decoder.
         fields = spec.get("fields") or []
         reads = ", ".join(
-            _read_expression(field["value_type"]).replace("openojReader.", "this.")
+            _read_expression(field["value_type"]).replace("coderpuzzleReader.", "this.")
             for field in fields
         )
         codecs += (
@@ -790,18 +790,18 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
 
 
 _ARRAY_RESULT_HELPERS = {
-    "linked_list": ("openojListNodeArrayJSON", "OpenOJReader.listNodeJSON"),
-    "binary_tree": ("openojTreeNodeArrayJSON", "OpenOJReader.treeNodeJSON"),
-    "nary_tree": ("openojNodeArrayJSON", "OpenOJReader.naryTreeJSON"),
-    "quad_tree": ("openojQuadArrayJSON", "OpenOJReader.quadTreeJSON"),
-    "nested": ("openojNestedArrayJSON", "OpenOJReader.nestedJSON"),
-    "next_tree": ("openojNextTreeArrayJSON", "OpenOJReader.nextTreeJSON"),
-    "circular_list": ("openojCircularArrayJSON", "OpenOJReader.circularListJSON"),
-    "doubly_circular": ("openojDoublyArrayJSON", "OpenOJReader.doublyCircularJSON"),
-    "multi_list": ("openojMultiArrayJSON", "OpenOJReader.multiListJSON"),
-    "alias_list": ("openojAliasArrayJSON", "OpenOJReader.aliasListJSON"),
-    "graph": ("openojGraphArrayJSON", "OpenOJReader.graphJSON"),
-    "random_list": ("openojRandomArrayJSON", "OpenOJReader.randomListJSON"),
+    "linked_list": ("coderpuzzleListNodeArrayJSON", "CoderPuzzleReader.listNodeJSON"),
+    "binary_tree": ("coderpuzzleTreeNodeArrayJSON", "CoderPuzzleReader.treeNodeJSON"),
+    "nary_tree": ("coderpuzzleNodeArrayJSON", "CoderPuzzleReader.naryTreeJSON"),
+    "quad_tree": ("coderpuzzleQuadArrayJSON", "CoderPuzzleReader.quadTreeJSON"),
+    "nested": ("coderpuzzleNestedArrayJSON", "CoderPuzzleReader.nestedJSON"),
+    "next_tree": ("coderpuzzleNextTreeArrayJSON", "CoderPuzzleReader.nextTreeJSON"),
+    "circular_list": ("coderpuzzleCircularArrayJSON", "CoderPuzzleReader.circularListJSON"),
+    "doubly_circular": ("coderpuzzleDoublyArrayJSON", "CoderPuzzleReader.doublyCircularJSON"),
+    "multi_list": ("coderpuzzleMultiArrayJSON", "CoderPuzzleReader.multiListJSON"),
+    "alias_list": ("coderpuzzleAliasArrayJSON", "CoderPuzzleReader.aliasListJSON"),
+    "graph": ("coderpuzzleGraphArrayJSON", "CoderPuzzleReader.graphJSON"),
+    "random_list": ("coderpuzzleRandomArrayJSON", "CoderPuzzleReader.randomListJSON"),
 }
 
 
@@ -809,20 +809,20 @@ def _result_wrapper(invocation: dict[str, Any]) -> str:
     return_type = invocation.get("return_type", {})
     kind = return_type.get("kind")
     direct = {
-        "linked_list": "OpenOJReader.listNodeJSON",
-        "binary_tree": "OpenOJReader.treeNodeJSON",
-        "nary_tree": "OpenOJReader.naryTreeJSON",
-        "quad_tree": "OpenOJReader.quadTreeJSON",
-        "nested": "OpenOJReader.nestedJSON",
-        "next_tree": "OpenOJReader.nextTreeJSON",
-        "circular_list": "OpenOJReader.circularListJSON",
-        "doubly_circular": "OpenOJReader.doublyCircularJSON",
-        "multi_list": "OpenOJReader.multiListJSON",
-        "alias_list": "OpenOJReader.aliasListJSON",
-        "graph": "OpenOJReader.graphJSON",
-        "random_list": "OpenOJReader.randomListJSON",
-        "doubly_list": "OpenOJReader.doublyListJSON",
-        "random_tree": "OpenOJReader.randomTreeJSON",
+        "linked_list": "CoderPuzzleReader.listNodeJSON",
+        "binary_tree": "CoderPuzzleReader.treeNodeJSON",
+        "nary_tree": "CoderPuzzleReader.naryTreeJSON",
+        "quad_tree": "CoderPuzzleReader.quadTreeJSON",
+        "nested": "CoderPuzzleReader.nestedJSON",
+        "next_tree": "CoderPuzzleReader.nextTreeJSON",
+        "circular_list": "CoderPuzzleReader.circularListJSON",
+        "doubly_circular": "CoderPuzzleReader.doublyCircularJSON",
+        "multi_list": "CoderPuzzleReader.multiListJSON",
+        "alias_list": "CoderPuzzleReader.aliasListJSON",
+        "graph": "CoderPuzzleReader.graphJSON",
+        "random_list": "CoderPuzzleReader.randomListJSON",
+        "doubly_list": "CoderPuzzleReader.doublyListJSON",
+        "random_tree": "CoderPuzzleReader.randomTreeJSON",
     }
     if kind in direct:
         return direct[kind]
@@ -830,7 +830,7 @@ def _result_wrapper(invocation: dict[str, Any]) -> str:
         item_kind = (return_type.get("items") or {}).get("kind")
         if item_kind in _ARRAY_RESULT_HELPERS:
             return _ARRAY_RESULT_HELPERS[item_kind][0]
-    return "openojIdentity"
+    return "coderpuzzleIdentity"
 
 
 class JavaScriptExecutor(CompiledExecutor):
@@ -882,9 +882,9 @@ class JavaScriptExecutor(CompiledExecutor):
             }
         )
         reader_item = (
-            "openojReader.int64()"
+            "coderpuzzleReader.int64()"
             if struct_item_spec(invocation).get("bits", 32) == 64
-            else "openojReader.int32()"
+            else "coderpuzzleReader.int32()"
         )
         collectors = {
             "linked_list": "collectList",
@@ -899,14 +899,14 @@ class JavaScriptExecutor(CompiledExecutor):
                 # value: the reader resolves it inside the aliased tree the
                 # way an alias_list splices onto its earlier list.
                 return (
-                    f"    const openojArg{index} = "
-                    f"openojReader.naryTreeRef(openojArg{spec['alias']});"
+                    f"    const coderpuzzleArg{index} = "
+                    f"coderpuzzleReader.naryTreeRef(coderpuzzleArg{spec['alias']});"
                 )
             if spec.get("kind") == "alias_list":
-                aliased = f"openojArg{spec['alias']}Nodes"
+                aliased = f"coderpuzzleArg{spec['alias']}Nodes"
                 lines = [
-                    f"    const openojArg{index} = (() => {{",
-                    "        const count = openojReader.uint32();",
+                    f"    const coderpuzzleArg{index} = (() => {{",
+                    "        const count = coderpuzzleReader.uint32();",
                     "        let head = null, current = null;",
                     "        const prefix = [];",
                     "        for (let step = 0; step < count; step++) {",
@@ -915,7 +915,7 @@ class JavaScriptExecutor(CompiledExecutor):
                     "            current = node;",
                     "            prefix.push(node);",
                     "        }",
-                    "        const spliceAt = openojReader.uint32();",
+                    "        const spliceAt = coderpuzzleReader.uint32();",
                     f"        if (spliceAt < {aliased}.length) {{",
                     "            // Real shared nodes: the prefix's last node (or the",
                     "            // head when the prefix is empty) joins the aliased",
@@ -923,29 +923,29 @@ class JavaScriptExecutor(CompiledExecutor):
                     f"            if (current === null) head = {aliased}[spliceAt];",
                     f"            else current.next = {aliased}[spliceAt];",
                     "        }",
-                    "        for (const node of prefix) OpenOJReader.inputNodes.add(node);",
+                    "        for (const node of prefix) CoderPuzzleReader.inputNodes.add(node);",
                     "        return head;",
                     "    })();",
                 ]
                 return "\n".join(lines)
-            lines = [f"    const openojArg{index} = {_read_expression(spec)};"]
+            lines = [f"    const coderpuzzleArg{index} = {_read_expression(spec)};"]
             if spec.get("kind") == "linked_list" and index in alias_sources:
-                lines.append(f"    const openojArg{index}Nodes = [];")
+                lines.append(f"    const coderpuzzleArg{index}Nodes = [];")
                 lines.append(
-                    f"    for (let node = openojArg{index}; node; node = node.next) openojArg{index}Nodes.push(node);"
+                    f"    for (let node = coderpuzzleArg{index}; node; node = node.next) coderpuzzleArg{index}Nodes.push(node);"
                 )
             collector = collectors.get(spec.get("kind"))
             if collector:
-                lines.append(f"    OpenOJReader.{collector}(openojArg{index});")
+                lines.append(f"    CoderPuzzleReader.{collector}(coderpuzzleArg{index});")
             return "\n".join(lines)
 
         declarations = "\n".join(
             declaration(index, spec) for index, spec in enumerate(parameters)
         )
-        arguments = ", ".join(f"openojArg{index}" for index in range(len(parameters)))
+        arguments = ", ".join(f"coderpuzzleArg{index}" for index in range(len(parameters)))
         wrapper = textwrap.dedent(
             f"""
-            class OpenOJReader {{
+            class CoderPuzzleReader {{
                 constructor(data) {{ this.offset = 0; this.data = data; }}
                 need(count) {{ if (this.offset + count > this.data.length) throw new Error("Truncated judge input"); }}
                 uint32() {{ this.need(4); const value = this.data.readUInt32BE(this.offset); this.offset += 4; return value; }}
@@ -963,42 +963,42 @@ class JavaScriptExecutor(CompiledExecutor):
                 array(read) {{ const length = this.uint32(); const values = []; for (let index = 0; index < length; index++) values.push(read()); return values; }}
 {struct_codecs}                finished() {{ if (this.offset !== this.data.length) throw new Error("Trailing judge input"); }}
             }}
-            function openojIdentity(value) {{ return value; }}
+            function coderpuzzleIdentity(value) {{ return value; }}
             // JSON.stringify renders integer doubles beyond 2^53 in exponent
             // notation ("4.611686018427388e+18"), which loses the exact value
             // when the judge parses it back. Emit such integers as exact
             // decimal digits instead — BigInt(value) is exact whenever the
             // double is an integer (Number.isInteger above guarantees it).
-            function openojSerialize(value) {{
+            function coderpuzzleSerialize(value) {{
                 if (value === undefined) return "null";
                 if (typeof value === "number") {{
                     if (Number.isInteger(value) && !Number.isSafeInteger(value)) return BigInt(value).toString();
                     return JSON.stringify(value);
                 }}
                 if (value !== null && typeof value === "object") {{
-                    if (Array.isArray(value)) return "[" + value.map(openojSerialize).join(",") + "]";
-                    const entries = Object.entries(value).map(([key, item]) => JSON.stringify(key) + ":" + openojSerialize(item));
+                    if (Array.isArray(value)) return "[" + value.map(coderpuzzleSerialize).join(",") + "]";
+                    const entries = Object.entries(value).map(([key, item]) => JSON.stringify(key) + ":" + coderpuzzleSerialize(item));
                     return "{{" + entries.join(",") + "}}";
                 }}
                 return JSON.stringify(value);
             }}
 
-            function openojEmit(line) {{
+            function coderpuzzleEmit(line) {{
                 try {{ require("fs").writeSync(63, line + "\\n"); }}
                 catch (error) {{ process.stdout.write(line + "\\n"); }}
             }}
             (() => {{
                 try {{
-                    const openojReader = new OpenOJReader(require("fs").readFileSync(0));
+                    const coderpuzzleReader = new CoderPuzzleReader(require("fs").readFileSync(0));
             {declarations}
-                    openojReader.finished();
-                    const openojActual = {result_wrapper}({method}({arguments}));
-                    const openojEncoded = openojSerialize(openojActual);
-                    if (typeof openojEncoded !== "string") throw new Error("Return value is not JSON serializable");
-                    openojEmit(`__OPENOJ_RESULT__{{"status":"completed","actual":${{openojEncoded}}}}`);
+                    coderpuzzleReader.finished();
+                    const coderpuzzleActual = {result_wrapper}({method}({arguments}));
+                    const coderpuzzleEncoded = coderpuzzleSerialize(coderpuzzleActual);
+                    if (typeof coderpuzzleEncoded !== "string") throw new Error("Return value is not JSON serializable");
+                    coderpuzzleEmit(`__CODERPUZZLE_RESULT__{{"status":"completed","actual":${{coderpuzzleEncoded}}}}`);
                 }} catch (error) {{
                     const message = error instanceof Error ? `${{error.name}}: ${{error.message}}` : String(error);
-                    openojEmit(`__OPENOJ_RESULT__{{"status":"runtime_error","error":${{JSON.stringify(message.slice(0, 4096))}}}}`);
+                    coderpuzzleEmit(`__CODERPUZZLE_RESULT__{{"status":"runtime_error","error":${{JSON.stringify(message.slice(0, 4096))}}}}`);
                 }}
             }})();
             """

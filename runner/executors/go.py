@@ -42,7 +42,7 @@ READER_METHODS = {
     "random_tree": "randomTree",
     "special_tree": "specialTree",
     "nary_tree_nodes": "naryTreeNodes",
-    # nary_tree_ref reads inline in openojExecute like alias_list: the
+    # nary_tree_ref reads inline in coderpuzzleExecute like alias_list: the
     # value names a node inside an earlier parameter's decoded tree.
 }
 # Kinds that use the same bundle-provided node class: these aliases tie
@@ -70,7 +70,7 @@ def _merge_imports(code: str, extra: tuple[str, ...] = ()) -> tuple[str, str]:
     return remaining.strip("\n"), imports
 
 
-def _read_expression(spec: dict[str, Any], reader: str = "openojReader") -> str:
+def _read_expression(spec: dict[str, Any], reader: str = "coderpuzzleReader") -> str:
     kind = spec["kind"]
     if kind == "json":
         # Same rejection go_type renders for the type: the generic any
@@ -92,7 +92,7 @@ def _read_expression(spec: dict[str, Any], reader: str = "openojReader") -> str:
         return f"{reader}.text()"
     item_type = go_type(spec["items"])
     nested = _read_expression(spec["items"], "reader")
-    return f"openojArray({reader}, func(reader *openojReaderType) {item_type} {{ return {nested} }})"
+    return f"coderpuzzleArray({reader}, func(reader *coderpuzzleReaderType) {item_type} {{ return {nested} }})"
 
 
 class GoExecutor(CompiledExecutor):
@@ -173,11 +173,11 @@ class GoExecutor(CompiledExecutor):
         # these types by name and compile against whatever the assembly
         # provides.
         struct_codecs = ""
-        result_conversion = "openojIdentity"
+        result_conversion = "coderpuzzleIdentity"
         if "list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                func (reader *openojReaderType) linkedList() *ListNode {{
+                func (reader *coderpuzzleReaderType) linkedList() *ListNode {{
                     if reader.take(1)[0] == 0 {{ return nil }}
                     length := int(reader.uint32())
                     var head, current *ListNode
@@ -188,34 +188,34 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return head
                 }}
-                func openojCollectList(head *ListNode) {{
+                func coderpuzzleCollectList(head *ListNode) {{
                     for node := head; node != nil; node = node.Next {{
-                        openojInputNodes = append(openojInputNodes, node)
+                        coderpuzzleInputNodes = append(coderpuzzleInputNodes, node)
                     }}
                 }}
-                func openojListNodeJSON(head *ListNode) []any {{
+                func coderpuzzleListNodeJSON(head *ListNode) []any {{
                     values := []any{{}}
                     for node := head; node != nil; node = node.Next {{
                         values = append(values, node.Val)
                     }}
                     return values
                 }}
-                func openojListNodeArrayJSON(heads []*ListNode) []any {{
-                    return openojArrayOfMapped(heads, openojListNodeJSON)
+                func coderpuzzleListNodeArrayJSON(heads []*ListNode) []any {{
+                    return coderpuzzleArrayOfMapped(heads, coderpuzzleListNodeJSON)
                 }}
                 """
             )
             if return_type.get("kind") == "linked_list":
-                result_conversion = "openojListNodeJSON"
+                result_conversion = "coderpuzzleListNodeJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "linked_list"):
-                result_conversion = "openojListNodeArrayJSON"
+                result_conversion = "coderpuzzleListNodeArrayJSON"
         # special_tree rides the plain binary-tree display; its reader
         # reuses tree() below and adds the leaf-ring wiring.
         if structs & {"tree", "special_tree"}:
             struct_codecs += textwrap.dedent(
                 f"""
-                func (reader *openojReaderType) tree() *TreeNode {{
+                func (reader *coderpuzzleReaderType) tree() *TreeNode {{
                     length := int(reader.uint32())
                     type slot struct {{
                         present bool
@@ -251,7 +251,7 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return root
                 }}
-                func openojTreeNodeJSON(root *TreeNode) []any {{
+                func coderpuzzleTreeNodeJSON(root *TreeNode) []any {{
                     if root == nil {{ return []any{{}} }}
                     values := []any{{}}
                     queue := []*TreeNode{{root}}
@@ -270,23 +270,23 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return values
                 }}
-                func openojTreeNodeArrayJSON(roots []*TreeNode) []any {{
-                    return openojArrayOfMapped(roots, openojTreeNodeJSON)
+                func coderpuzzleTreeNodeArrayJSON(roots []*TreeNode) []any {{
+                    return coderpuzzleArrayOfMapped(roots, coderpuzzleTreeNodeJSON)
                 }}
                 """
             )
             if return_type.get("kind") == "binary_tree":
-                result_conversion = "openojTreeNodeJSON"
+                result_conversion = "coderpuzzleTreeNodeJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "binary_tree"):
-                result_conversion = "openojTreeNodeArrayJSON"
+                result_conversion = "coderpuzzleTreeNodeArrayJSON"
         # nary_tree_nodes and nary_tree_ref ride the n-ary display too:
         # the nodes reader and the inline ref resolver below both decode
         # through naryTree().
         if structs & {"nary_tree", "nary_tree_nodes", "nary_tree_ref"}:
             struct_codecs += textwrap.dedent(
                 f"""
-                func (reader *openojReaderType) naryTree() *Node {{
+                func (reader *coderpuzzleReaderType) naryTree() *Node {{
                     length := int(reader.uint32())
                     type slot struct {{
                         present bool
@@ -323,7 +323,7 @@ class GoExecutor(CompiledExecutor):
                 // Display wire: root value, the marker closing the root
                 // group, then each node's children followed by its own
                 // marker; trailing markers are trimmed.
-                func openojNodeJSON(root *Node) []any {{
+                func coderpuzzleNodeJSON(root *Node) []any {{
                     if root == nil {{ return []any{{}} }}
                     values := []any{{root.Val, nil}}
                     queue := []*Node{{root}}
@@ -341,20 +341,20 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return values
                 }}
-                func openojNodeArrayJSON(roots []*Node) []any {{
-                    return openojArrayOfMapped(roots, openojNodeJSON)
+                func coderpuzzleNodeArrayJSON(roots []*Node) []any {{
+                    return coderpuzzleArrayOfMapped(roots, coderpuzzleNodeJSON)
                 }}
                 """
             )
             if return_type.get("kind") == "nary_tree":
-                result_conversion = "openojNodeJSON"
+                result_conversion = "coderpuzzleNodeJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "nary_tree"):
-                result_conversion = "openojNodeArrayJSON"
+                result_conversion = "coderpuzzleNodeArrayJSON"
         if "quad_tree" in structs:
             struct_codecs += textwrap.dedent(
                 """
-                func (reader *openojReaderType) quadTree() *QuadNode {
+                func (reader *coderpuzzleReaderType) quadTree() *QuadNode {
                     if reader.take(1)[0] == 0 { return nil }
                     isLeaf := reader.take(1)[0] == 1
                     node := &QuadNode{IsLeaf: isLeaf, Val: reader.take(1)[0] == 1}
@@ -368,7 +368,7 @@ class GoExecutor(CompiledExecutor):
                 }
                 // LC display wire: a flat preorder of [isLeaf, val] pairs; a
                 // non-leaf's val normalizes to 0 on both sides.
-                func openojQuadJSON(node *QuadNode) any {
+                func coderpuzzleQuadJSON(node *QuadNode) any {
                     // LC display wire: one flat preorder list of [isLeaf,
                     // val] pairs; a non-leaf's val normalizes to 0.
                     if node == nil { return nil }
@@ -394,20 +394,20 @@ class GoExecutor(CompiledExecutor):
                     walk(node)
                     return rows
                 }
-                func openojQuadArrayJSON(nodes []*QuadNode) []any {
-                    return openojArrayOfMapped(nodes, openojQuadJSON)
+                func coderpuzzleQuadArrayJSON(nodes []*QuadNode) []any {
+                    return coderpuzzleArrayOfMapped(nodes, coderpuzzleQuadJSON)
                 }
                 """
             )
             if return_type.get("kind") == "quad_tree":
-                result_conversion = "openojQuadJSON"
+                result_conversion = "coderpuzzleQuadJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "quad_tree"):
-                result_conversion = "openojQuadArrayJSON"
+                result_conversion = "coderpuzzleQuadArrayJSON"
         if "nested" in structs:
             struct_codecs += textwrap.dedent(
                 """
-                func (reader *openojReaderType) nestedInteger() NestedInteger {
+                func (reader *coderpuzzleReaderType) nestedInteger() NestedInteger {
                     tag := reader.take(1)[0]
                     if tag == 1 {
                         value := NestedInteger{}
@@ -420,28 +420,28 @@ class GoExecutor(CompiledExecutor):
                     for index := 0; index < length; index++ { value.Add(reader.nestedInteger()) }
                     return value
                 }
-                func openojNestedJSON(value NestedInteger) any {
+                func coderpuzzleNestedJSON(value NestedInteger) any {
                     if value.IsInteger() { return value.GetInteger() }
                     values := []any{}
                     for _, item := range value.GetList() {
-                        values = append(values, openojNestedJSON(*item))
+                        values = append(values, coderpuzzleNestedJSON(*item))
                     }
                     return values
                 }
-                func openojNestedArrayJSON(values []NestedInteger) []any {
-                    return openojArrayOfMapped(values, openojNestedJSON)
+                func coderpuzzleNestedArrayJSON(values []NestedInteger) []any {
+                    return coderpuzzleArrayOfMapped(values, coderpuzzleNestedJSON)
                 }
                 """
             )
             if return_type.get("kind") == "nested":
-                result_conversion = "openojNestedJSON"
+                result_conversion = "coderpuzzleNestedJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "nested"):
-                result_conversion = "openojNestedArrayJSON"
+                result_conversion = "coderpuzzleNestedArrayJSON"
         if "next_tree" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                func (reader *openojReaderType) nextTree() *NodeWithNext {{
+                func (reader *coderpuzzleReaderType) nextTree() *NodeWithNext {{
                     length := int(reader.uint32())
                     type slot struct {{
                         present bool
@@ -480,7 +480,7 @@ class GoExecutor(CompiledExecutor):
                 // The next-connected wire result is a list of levels read
                 // purely through next pointers; the next level starts at the
                 // first non-nil child found scanning the current one.
-                func openojNextTreeJSON(root *NodeWithNext) []any {{
+                func coderpuzzleNextTreeJSON(root *NodeWithNext) []any {{
                     // LC display wire: values with one null marker between
                     // adjacent levels; the walk advances to the first child
                     // found anywhere in the level (left, else right) so
@@ -509,23 +509,23 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return values
                 }}
-                func openojNextTreeArrayJSON(roots []*NodeWithNext) []any {{
-                    return openojArrayOfMapped(roots, openojNextTreeJSON)
+                func coderpuzzleNextTreeArrayJSON(roots []*NodeWithNext) []any {{
+                    return coderpuzzleArrayOfMapped(roots, coderpuzzleNextTreeJSON)
                 }}
                 """
             )
             if return_type.get("kind") == "next_tree":
-                result_conversion = "openojNextTreeJSON"
+                result_conversion = "coderpuzzleNextTreeJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "next_tree"):
-                result_conversion = "openojNextTreeArrayJSON"
+                result_conversion = "coderpuzzleNextTreeArrayJSON"
         if "circular_list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
                 // A circular wire carries the ring's values; the decoder
                 // closes the ring (tail.Next = head) exactly like the
                 // harness languages, so solutions always see a real ring.
-                func (reader *openojReaderType) circularList() *ListNode {{
+                func (reader *coderpuzzleReaderType) circularList() *ListNode {{
                     length := int(reader.uint32())
                     if length == 0 {{ return nil }}
                     head := &ListNode{{Val: {item_expression}}}
@@ -537,7 +537,7 @@ class GoExecutor(CompiledExecutor):
                     tail.Next = head
                     return head
                 }}
-                func openojCircularJSON(head *ListNode) []any {{
+                func coderpuzzleCircularJSON(head *ListNode) []any {{
                     if head == nil {{ return []any{{}} }}
                     values := []any{{}}
                     node := head
@@ -549,22 +549,22 @@ class GoExecutor(CompiledExecutor):
                     }}
                     panic("Circular list exceeds the walk bound")
                 }}
-                func openojCircularArrayJSON(heads []*ListNode) []any {{
-                    return openojArrayOfMapped(heads, openojCircularJSON)
+                func coderpuzzleCircularArrayJSON(heads []*ListNode) []any {{
+                    return coderpuzzleArrayOfMapped(heads, coderpuzzleCircularJSON)
                 }}
                 """
             )
             if return_type.get("kind") == "circular_list":
-                result_conversion = "openojCircularJSON"
+                result_conversion = "coderpuzzleCircularJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "circular_list"):
-                result_conversion = "openojCircularArrayJSON"
+                result_conversion = "coderpuzzleCircularArrayJSON"
         if "doubly_circular" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
                 // LC 426: left is prev, right is next; read the ring open
                 // and verify every back-link on the way out.
-                func (reader *openojReaderType) doublyCircular() *NodeWithNext {{
+                func (reader *coderpuzzleReaderType) doublyCircular() *NodeWithNext {{
                     length := int(reader.uint32())
                     if length == 0 {{ return nil }}
                     head := &NodeWithNext{{Val: {item_expression}}}
@@ -575,7 +575,7 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return head
                 }}
-                func openojDoublyJSON(head *NodeWithNext) []any {{
+                func coderpuzzleDoublyJSON(head *NodeWithNext) []any {{
                     if head == nil {{ return []any{{}} }}
                     values := []any{{}}
                     var previous *NodeWithNext
@@ -599,23 +599,23 @@ class GoExecutor(CompiledExecutor):
                     }}
                     panic("Doubly linked list exceeds the walk bound")
                 }}
-                func openojDoublyArrayJSON(heads []*NodeWithNext) []any {{
-                    return openojArrayOfMapped(heads, openojDoublyJSON)
+                func coderpuzzleDoublyArrayJSON(heads []*NodeWithNext) []any {{
+                    return coderpuzzleArrayOfMapped(heads, coderpuzzleDoublyJSON)
                 }}
                 """
             )
             if return_type.get("kind") == "doubly_circular":
-                result_conversion = "openojDoublyJSON"
+                result_conversion = "coderpuzzleDoublyJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "doubly_circular"):
-                result_conversion = "openojDoublyArrayJSON"
+                result_conversion = "coderpuzzleDoublyArrayJSON"
         if "multi_list" in structs:
             struct_codecs += textwrap.dedent(
                 """
                 // One chain: u32 n, then per node the value, a child flag,
                 // and the flagged child's own chain. Every chain (top and
                 // nested) gets its prev links set.
-                func (reader *openojReaderType) multiList() *MultiListNode {
+                func (reader *coderpuzzleReaderType) multiList() *MultiListNode {
                     length := int(reader.uint32())
                     var head, tail *MultiListNode
                     for index := 0; index < length; index++ {
@@ -633,7 +633,7 @@ class GoExecutor(CompiledExecutor):
                 }
                 // A flattened result must be a clean doubly chain: every
                 // prev back-link set, no child left.
-                func openojMultiJSON(head *MultiListNode) []any {
+                func coderpuzzleMultiJSON(head *MultiListNode) []any {
                     values := []any{}
                     var previous *MultiListNode
                     node := head
@@ -648,26 +648,26 @@ class GoExecutor(CompiledExecutor):
                     if node != nil { panic("Flattened list exceeds the walk bound") }
                     return values
                 }
-                func openojMultiArrayJSON(heads []*MultiListNode) []any {
-                    return openojArrayOfMapped(heads, openojMultiJSON)
+                func coderpuzzleMultiArrayJSON(heads []*MultiListNode) []any {
+                    return coderpuzzleArrayOfMapped(heads, coderpuzzleMultiJSON)
                 }
                 """
             )
             if return_type.get("kind") == "multi_list":
-                result_conversion = "openojMultiJSON"
+                result_conversion = "coderpuzzleMultiJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "multi_list"):
-                result_conversion = "openojMultiArrayJSON"
+                result_conversion = "coderpuzzleMultiArrayJSON"
         if "graph" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                func openojSeenBefore[T comparable](queue []T, index int, node T) bool {{
+                func coderpuzzleSeenBefore[T comparable](queue []T, index int, node T) bool {{
                     for _, earlier := range queue[:index] {{
                         if earlier == node {{ return true }}
                     }}
                     return false
                 }}
-                func (reader *openojReaderType) graph() *{graph_class} {{
+                func (reader *coderpuzzleReaderType) graph() *{graph_class} {{
                     count := int(reader.uint32())
                     if count == 0 {{ return nil }}
                     nodes := make([]*{graph_class}, count)
@@ -686,31 +686,31 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return nodes[0]
                 }}
-                func openojCollectGraph(root *{graph_class}) {{
+                func coderpuzzleCollectGraph(root *{graph_class}) {{
                     if root == nil {{ return }}
                     queue := []*{graph_class}{{root}}
                     for index := 0; index < len(queue); index++ {{
                         node := queue[index]
-                        if openojSeenBefore(queue, index, node) {{ continue }}
-                        openojInputNodes = append(openojInputNodes, node)
+                        if coderpuzzleSeenBefore(queue, index, node) {{ continue }}
+                        coderpuzzleInputNodes = append(coderpuzzleInputNodes, node)
                         queue = append(queue, node.Neighbors...)
                     }}
                 }}
                 // Rows ordered by node value; neighbor order is normalized
                 // (sorted) since LC treats adjacency order as irrelevant.
-                func openojGraphJSON(root *{graph_class}) []any {{
+                func coderpuzzleGraphJSON(root *{graph_class}) []any {{
                     var visited []*{graph_class}
                     if root != nil {{
                         queue := []*{graph_class}{{root}}
                         for index := 0; index < len(queue); index++ {{
                             node := queue[index]
-                            if openojSeenBefore(queue, index, node) {{ continue }}
+                            if coderpuzzleSeenBefore(queue, index, node) {{ continue }}
                             visited = append(visited, node)
                             queue = append(queue, node.Neighbors...)
                         }}
                     }}
                     for _, node := range visited {{
-                        if openojRegisteredInput(node) {{
+                        if coderpuzzleRegisteredInput(node) {{
                             panic("Returned graph shares nodes with the input graph")
                         }}
                     }}
@@ -728,20 +728,20 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return rows
                 }}
-                func openojGraphArrayJSON(roots []*{graph_class}) []any {{
-                    return openojArrayOfMapped(roots, openojGraphJSON)
+                func coderpuzzleGraphArrayJSON(roots []*{graph_class}) []any {{
+                    return coderpuzzleArrayOfMapped(roots, coderpuzzleGraphJSON)
                 }}
                 """
             )
             if return_type.get("kind") == "graph":
-                result_conversion = "openojGraphJSON"
+                result_conversion = "coderpuzzleGraphJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "graph"):
-                result_conversion = "openojGraphArrayJSON"
+                result_conversion = "coderpuzzleGraphArrayJSON"
         if "random_list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
-                func (reader *openojReaderType) randomList() *{random_class} {{
+                func (reader *coderpuzzleReaderType) randomList() *{random_class} {{
                     count := int(reader.uint32())
                     if count == 0 {{ return nil }}
                     nodes := make([]*{random_class}, count)
@@ -761,12 +761,12 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return nodes[0]
                 }}
-                func openojCollectRandom(head *{random_class}) {{
+                func coderpuzzleCollectRandom(head *{random_class}) {{
                     for node := head; node != nil; node = node.Next {{
-                        openojInputNodes = append(openojInputNodes, node)
+                        coderpuzzleInputNodes = append(coderpuzzleInputNodes, node)
                     }}
                 }}
-                func openojRandomJSON(head *{random_class}) []any {{
+                func coderpuzzleRandomJSON(head *{random_class}) []any {{
                     var nodes []*{random_class}
                     for node := head; node != nil; node = node.Next {{
                         for _, earlier := range nodes {{
@@ -775,7 +775,7 @@ class GoExecutor(CompiledExecutor):
                         nodes = append(nodes, node)
                     }}
                     for _, node := range nodes {{
-                        if openojRegisteredInput(node) {{
+                        if coderpuzzleRegisteredInput(node) {{
                             panic("Returned list shares nodes with the input list")
                         }}
                     }}
@@ -797,21 +797,21 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return rows
                 }}
-                func openojRandomArrayJSON(heads []*{random_class}) []any {{
-                    return openojArrayOfMapped(heads, openojRandomJSON)
+                func coderpuzzleRandomArrayJSON(heads []*{random_class}) []any {{
+                    return coderpuzzleArrayOfMapped(heads, coderpuzzleRandomJSON)
                 }}
                 """
             )
             if return_type.get("kind") == "random_list":
-                result_conversion = "openojRandomJSON"
+                result_conversion = "coderpuzzleRandomJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "random_list"):
-                result_conversion = "openojRandomArrayJSON"
+                result_conversion = "coderpuzzleRandomArrayJSON"
         if "doubly_list" in structs:
             struct_codecs += textwrap.dedent(
                 f"""
                 // LC 3263: an open chain wired in both directions.
-                func (reader *openojReaderType) doublyList() *{doubly_class} {{
+                func (reader *coderpuzzleReaderType) doublyList() *{doubly_class} {{
                     if reader.take(1)[0] == 0 {{ return nil }}
                     count := int(reader.uint32())
                     var head, tail *{doubly_class}
@@ -824,7 +824,7 @@ class GoExecutor(CompiledExecutor):
                 }}
                 // The forward walk must agree with every back-link,
                 // mirroring the doubly_circular invariant on an open chain.
-                func openojDoublyListJSON(head *{doubly_class}) []any {{
+                func coderpuzzleDoublyListJSON(head *{doubly_class}) []any {{
                     values := []any{{}}
                     var previous *{doubly_class}
                     node := head
@@ -839,16 +839,16 @@ class GoExecutor(CompiledExecutor):
                     if node != nil {{ panic("Doubly linked list exceeds the walk bound") }}
                     return values
                 }}
-                func openojDoublyListArrayJSON(heads []*{doubly_class}) []any {{
-                    return openojArrayOfMapped(heads, openojDoublyListJSON)
+                func coderpuzzleDoublyListArrayJSON(heads []*{doubly_class}) []any {{
+                    return coderpuzzleArrayOfMapped(heads, coderpuzzleDoublyListJSON)
                 }}
                 """
             )
             if return_type.get("kind") == "doubly_list":
-                result_conversion = "openojDoublyListJSON"
+                result_conversion = "coderpuzzleDoublyListJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "doubly_list"):
-                result_conversion = "openojDoublyListArrayJSON"
+                result_conversion = "coderpuzzleDoublyListArrayJSON"
         if "doubly_list_node" in structs:
             doubly_node_spec = next(
                 (spec for spec in parameters if spec.get("kind") == "doubly_list_node"), {}
@@ -860,7 +860,7 @@ class GoExecutor(CompiledExecutor):
                 f"""
                 // LC 3294: the chain plus the value of the received node
                 // (values are unique per the constraints).
-                func (reader *openojReaderType) doublyListNode() *{doubly_node_class} {{
+                func (reader *coderpuzzleReaderType) doublyListNode() *{doubly_node_class} {{
                     var head, tail *{doubly_node_class}
                     if reader.take(1)[0] == 1 {{
                         count := int(reader.uint32())
@@ -885,7 +885,7 @@ class GoExecutor(CompiledExecutor):
                 // [val, random] rows — random_list's index addressing on a
                 // tree topology. The index counts present nodes in level
                 // order, from the root.
-                func (reader *openojReaderType) randomTree() *{random_tree_class} {{
+                func (reader *coderpuzzleReaderType) randomTree() *{random_tree_class} {{
                     length := int(reader.uint32())
                     if length == 0 {{ return nil }}
                     type slot struct {{
@@ -941,7 +941,7 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return root
                 }}
-                func openojCollectRandomTree(root *{random_tree_class}) {{
+                func coderpuzzleCollectRandomTree(root *{random_tree_class}) {{
                     queue := []*{random_tree_class}{{root}}
                     for index := 0; index < len(queue); index++ {{
                         node := queue[index]
@@ -951,14 +951,14 @@ class GoExecutor(CompiledExecutor):
                             if earlier == node {{ seen = true; break }}
                         }}
                         if seen {{ continue }}
-                        openojInputNodes = append(openojInputNodes, node)
+                        coderpuzzleInputNodes = append(coderpuzzleInputNodes, node)
                         queue = append(queue, node.Left, node.Right)
                     }}
                 }}
                 // Level order rows like the input side; the clone check
                 // forbids returning (part of) the input tree, and every
                 // random pointer must land inside the returned tree.
-                func openojRandomTreeJSON(root *{random_tree_class}) []any {{
+                func coderpuzzleRandomTreeJSON(root *{random_tree_class}) []any {{
                     rows := []any{{}}
                     if root == nil {{ return rows }}
                     var order []*{random_tree_class}
@@ -982,7 +982,7 @@ class GoExecutor(CompiledExecutor):
                         order = order[:len(order)-1]
                     }}
                     for _, node := range order {{
-                        if openojRegisteredInput(node) {{
+                        if coderpuzzleRegisteredInput(node) {{
                             panic("Returned tree shares nodes with the input tree")
                         }}
                     }}
@@ -1006,16 +1006,16 @@ class GoExecutor(CompiledExecutor):
                     }}
                     return encoded
                 }}
-                func openojRandomTreeArrayJSON(roots []*{random_tree_class}) []any {{
-                    return openojArrayOfMapped(roots, openojRandomTreeJSON)
+                func coderpuzzleRandomTreeArrayJSON(roots []*{random_tree_class}) []any {{
+                    return coderpuzzleArrayOfMapped(roots, coderpuzzleRandomTreeJSON)
                 }}
                 """
             )
             if return_type.get("kind") == "random_tree":
-                result_conversion = "openojRandomTreeJSON"
+                result_conversion = "coderpuzzleRandomTreeJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "random_tree"):
-                result_conversion = "openojRandomTreeArrayJSON"
+                result_conversion = "coderpuzzleRandomTreeArrayJSON"
         if "special_tree" in structs:
             struct_codecs += textwrap.dedent(
                 """
@@ -1024,7 +1024,7 @@ class GoExecutor(CompiledExecutor):
                 // the previous and right to the next leaf — the special
                 // property the statement grants, which the display cannot
                 // carry.
-                func (reader *openojReaderType) specialTree() *TreeNode {
+                func (reader *coderpuzzleReaderType) specialTree() *TreeNode {
                     root := reader.tree()
                     if root == nil { return nil }
                     leaves := []*TreeNode{}
@@ -1054,7 +1054,7 @@ class GoExecutor(CompiledExecutor):
                 // LC 1506: the n-ary display decoded and handed over as the
                 // list of its nodes (level order — any order is faithful,
                 // the statement grants an arbitrary permutation).
-                func (reader *openojReaderType) naryTreeNodes() []*Node {
+                func (reader *coderpuzzleReaderType) naryTreeNodes() []*Node {
                     root := reader.naryTree()
                     nodes := []*Node{}
                     queue := []*Node{}
@@ -1074,9 +1074,9 @@ class GoExecutor(CompiledExecutor):
                 // LC 160: the intersection is by identity — the result must
                 // be a node taken from the input lists, and the wire is the
                 // shared tail's values.
-                func openojAliasJSON(node *ListNode) []any {
+                func coderpuzzleAliasJSON(node *ListNode) []any {
                     if node == nil { return []any{} }
-                    if !openojRegisteredInput(node) {
+                    if !coderpuzzleRegisteredInput(node) {
                         panic("Returned node is not part of the input lists")
                     }
                     values := []any{}
@@ -1085,16 +1085,16 @@ class GoExecutor(CompiledExecutor):
                     }
                     return values
                 }
-                func openojAliasArrayJSON(nodes []*ListNode) []any {
-                    return openojArrayOfMapped(nodes, openojAliasJSON)
+                func coderpuzzleAliasArrayJSON(nodes []*ListNode) []any {
+                    return coderpuzzleArrayOfMapped(nodes, coderpuzzleAliasJSON)
                 }
                 """
             )
             if return_type.get("kind") == "alias_list":
-                result_conversion = "openojAliasJSON"
+                result_conversion = "coderpuzzleAliasJSON"
             if (return_type.get("kind") == "array"
                     and (return_type.get("items") or {}).get("kind") == "alias_list"):
-                result_conversion = "openojAliasArrayJSON"
+                result_conversion = "coderpuzzleAliasArrayJSON"
         for name, spec in sorted(struct_specs.items()):
             reads = ", ".join(
                 _read_expression(field["value_type"], "reader")
@@ -1102,7 +1102,7 @@ class GoExecutor(CompiledExecutor):
             )
             struct_codecs += textwrap.dedent(
                 f"""
-                func (reader *openojReaderType) {name}() {name} {{
+                func (reader *coderpuzzleReaderType) {name}() {name} {{
                     return {name}{{{reads}}}
                 }}
                 """
@@ -1119,21 +1119,21 @@ class GoExecutor(CompiledExecutor):
             }
         )
         collectors = {
-            "linked_list": "openojCollectList",
-            "graph": "openojCollectGraph",
-            "random_list": "openojCollectRandom",
-            "random_tree": "openojCollectRandomTree",
+            "linked_list": "coderpuzzleCollectList",
+            "graph": "coderpuzzleCollectGraph",
+            "random_list": "coderpuzzleCollectRandom",
+            "random_tree": "coderpuzzleCollectRandomTree",
         }
 
         def declaration(index: int, spec: dict[str, Any]) -> str:
             kind = spec.get("kind")
             if kind == "alias_list":
-                # This block reads inline in openojExecute, where the
-                # reader variable is openojReader (not the receiver name).
-                main_item = _read_expression(struct_item_spec(invocation), "openojReader")
+                # This block reads inline in coderpuzzleExecute, where the
+                # reader variable is coderpuzzleReader (not the receiver name).
+                main_item = _read_expression(struct_item_spec(invocation), "coderpuzzleReader")
                 lines = [
-                    f"openojArg{index} := func() *ListNode {{",
-                    "    count := int(openojReader.uint32())",
+                    f"coderpuzzleArg{index} := func() *ListNode {{",
+                    "    count := int(coderpuzzleReader.uint32())",
                     "    var head, tail *ListNode",
                     "    var prefix []*ListNode",
                     "    for step := 0; step < count; step++ {",
@@ -1142,13 +1142,13 @@ class GoExecutor(CompiledExecutor):
                     "        if head == nil { head = node } else { tail.Next = node }",
                     "        tail = node",
                     "    }",
-                    "    spliceAt := int(openojReader.uint32())",
-                    f"    if spliceAt < len(openojArg{spec['alias']}Nodes) {{",
+                    "    spliceAt := int(coderpuzzleReader.uint32())",
+                    f"    if spliceAt < len(coderpuzzleArg{spec['alias']}Nodes) {{",
                     "        if tail == nil {"
-                    f" head = openojArg{spec['alias']}Nodes[spliceAt]"
-                    f" }} else {{ tail.Next = openojArg{spec['alias']}Nodes[spliceAt] }}",
+                    f" head = coderpuzzleArg{spec['alias']}Nodes[spliceAt]"
+                    f" }} else {{ tail.Next = coderpuzzleArg{spec['alias']}Nodes[spliceAt] }}",
                     "    }",
-                    "    for _, node := range prefix { openojInputNodes = append(openojInputNodes, node) }",
+                    "    for _, node := range prefix { coderpuzzleInputNodes = append(coderpuzzleInputNodes, node) }",
                     "    return head",
                     "}()",
                 ]
@@ -1158,10 +1158,10 @@ class GoExecutor(CompiledExecutor):
                 # aliased tree; the argument is that exact pointer (shared
                 # identity — mutations through it land in the aliased tree).
                 target_item = _read_expression(
-                    spec.get("items") or {"kind": "integer", "bits": 32}, "openojReader"
+                    spec.get("items") or {"kind": "integer", "bits": 32}, "coderpuzzleReader"
                 )
                 lines = [
-                    f"openojArg{index} := func() *Node {{",
+                    f"coderpuzzleArg{index} := func() *Node {{",
                     f"    target := {target_item}",
                     "    var found *Node",
                     "    var walk func(node *Node)",
@@ -1170,27 +1170,27 @@ class GoExecutor(CompiledExecutor):
                     "        if node.Val == target { found = node; return }",
                     "        for _, child := range node.Children { walk(child) }",
                     "    }",
-                    f"    walk(openojArg{spec['alias']})",
+                    f"    walk(coderpuzzleArg{spec['alias']})",
                     '    if found == nil { panic("nary_tree_ref target value is not in the aliased tree") }',
                     "    return found",
                     "}()",
                 ]
                 return _tabs("\n".join(lines))
-            lines = [f"openojArg{index} := {_read_expression(spec)}"]
+            lines = [f"coderpuzzleArg{index} := {_read_expression(spec)}"]
             if kind == "linked_list" and index in alias_sources:
                 lines.extend([
-                    f"var openojArg{index}Nodes []*ListNode",
-                    f"for node := openojArg{index}; node != nil; node = node.Next {{"
-                    f" openojArg{index}Nodes = append(openojArg{index}Nodes, node) }}",
+                    f"var coderpuzzleArg{index}Nodes []*ListNode",
+                    f"for node := coderpuzzleArg{index}; node != nil; node = node.Next {{"
+                    f" coderpuzzleArg{index}Nodes = append(coderpuzzleArg{index}Nodes, node) }}",
                 ])
             if kind in collectors:
-                lines.append(f"{collectors[kind]}(openojArg{index})")
+                lines.append(f"{collectors[kind]}(coderpuzzleArg{index})")
             return _tabs("\n".join(lines))
 
         declarations = "\n".join(
             declaration(index, spec) for index, spec in enumerate(parameters)
         )
-        arguments = ", ".join(f"openojArg{index}" for index in range(len(parameters)))
+        arguments = ", ".join(f"coderpuzzleArg{index}" for index in range(len(parameters)))
         code, merged_imports = _merge_imports(
             code, extra=("sort",) if structs & {"graph", "special_tree"} else ()
         )
@@ -1201,31 +1201,31 @@ class GoExecutor(CompiledExecutor):
                     f"""
                     {code}
 
-                    type openojReaderType struct {{
+                    type coderpuzzleReaderType struct {{
                         data   []byte
                         offset int
                     }}
 
-                    func (reader *openojReaderType) take(count int) []byte {{
+                    func (reader *coderpuzzleReaderType) take(count int) []byte {{
                         if count < 0 || count > len(reader.data)-reader.offset {{ panic("truncated judge input") }}
                         value := reader.data[reader.offset : reader.offset+count]
                         reader.offset += count
                         return value
                     }}
-                    func (reader *openojReaderType) uint32() uint32 {{ return binary.BigEndian.Uint32(reader.take(4)) }}
-                    func (reader *openojReaderType) int32() int {{ return int(int32(reader.uint32())) }}
-                    func (reader *openojReaderType) int64() int64 {{ return int64(binary.BigEndian.Uint64(reader.take(8))) }}
-                    func (reader *openojReaderType) number() float64 {{ return math.Float64frombits(binary.BigEndian.Uint64(reader.take(8))) }}
-                    func (reader *openojReaderType) boolean() bool {{ value := reader.take(1)[0]; if value > 1 {{ panic("invalid boolean input") }}; return value == 1 }}
-                    func (reader *openojReaderType) text() string {{ return string(reader.take(int(reader.uint32()))) }}
-                    func (reader *openojReaderType) finished() {{ if reader.offset != len(reader.data) {{ panic("trailing judge input") }} }}
-                    func openojArray[T any](reader *openojReaderType, read func(*openojReaderType) T) []T {{
+                    func (reader *coderpuzzleReaderType) uint32() uint32 {{ return binary.BigEndian.Uint32(reader.take(4)) }}
+                    func (reader *coderpuzzleReaderType) int32() int {{ return int(int32(reader.uint32())) }}
+                    func (reader *coderpuzzleReaderType) int64() int64 {{ return int64(binary.BigEndian.Uint64(reader.take(8))) }}
+                    func (reader *coderpuzzleReaderType) number() float64 {{ return math.Float64frombits(binary.BigEndian.Uint64(reader.take(8))) }}
+                    func (reader *coderpuzzleReaderType) boolean() bool {{ value := reader.take(1)[0]; if value > 1 {{ panic("invalid boolean input") }}; return value == 1 }}
+                    func (reader *coderpuzzleReaderType) text() string {{ return string(reader.take(int(reader.uint32()))) }}
+                    func (reader *coderpuzzleReaderType) finished() {{ if reader.offset != len(reader.data) {{ panic("trailing judge input") }} }}
+                    func coderpuzzleArray[T any](reader *coderpuzzleReaderType, read func(*coderpuzzleReaderType) T) []T {{
                         length := int(reader.uint32())
                         values := make([]T, length)
                         for index := range values {{ values[index] = read(reader) }}
                         return values
                     }}
-                    func openojArrayOf[T any](values []T, convert func(T) any) []any {{
+                    func coderpuzzleArrayOf[T any](values []T, convert func(T) any) []any {{
                         result := make([]any, len(values))
                         for index, value := range values {{ result[index] = convert(value) }}
                         return result
@@ -1233,27 +1233,27 @@ class GoExecutor(CompiledExecutor):
                     // The per-kind JSON codecs return []any, so array-of-node
                     // results map through this two-parameter variant — Go
                     // inference cannot assign func(T) R to func(T) any.
-                    func openojArrayOfMapped[T any, R any](values []T, convert func(T) R) []any {{
+                    func coderpuzzleArrayOfMapped[T any, R any](values []T, convert func(T) R) []any {{
                         result := make([]any, len(values))
                         for index, value := range values {{ result[index] = convert(value) }}
                         return result
                     }}
-                    func openojIdentity(value any) any {{ return value }}
+                    func coderpuzzleIdentity(value any) any {{ return value }}
                     // The registry of input-side node pointers backs the
                     // clone/identity checks for graph, random_list, and
                     // alias_list returns: the judge compares row data, so
                     // only the wrapper can catch a solution that returns the
                     // input structure itself.
-                    var openojInputNodes []any
+                    var coderpuzzleInputNodes []any
 
-                    func openojRegisteredInput(node any) bool {{
-                        for _, input := range openojInputNodes {{
+                    func coderpuzzleRegisteredInput(node any) bool {{
+                        for _, input := range coderpuzzleInputNodes {{
                             if input == node {{ return true }}
                         }}
                         return false
                     }}
 {struct_codecs}
-                    func openojExecute() (response map[string]any) {{
+                    func coderpuzzleExecute() (response map[string]any) {{
                         defer func() {{
                             if recovered := recover(); recovered != nil {{
                                 response = map[string]any{{"status": "runtime_error", "error": fmt.Sprint(recovered)}}
@@ -1261,15 +1261,15 @@ class GoExecutor(CompiledExecutor):
                         }}()
                         bytes, errorValue := io.ReadAll(os.Stdin)
                         if errorValue != nil {{ panic(errorValue) }}
-                        openojReader := &openojReaderType{{data: bytes}}
+                        coderpuzzleReader := &coderpuzzleReaderType{{data: bytes}}
                     {declarations}
-                        openojReader.finished()
-                        openojRaw := {method}({arguments})
-                        openojActual := {result_conversion}(openojRaw)
-                        return map[string]any{{"status": "completed", "actual": openojActual}}
+                        coderpuzzleReader.finished()
+                        coderpuzzleRaw := {method}({arguments})
+                        coderpuzzleActual := {result_conversion}(coderpuzzleRaw)
+                        return map[string]any{{"status": "completed", "actual": coderpuzzleActual}}
                     }}
 
-                    func openojEmit(line string) {{
+                    func coderpuzzleEmit(line string) {{
                         // The last valid protocol line wins and is JSON-validated; the
                         // fd keeps ordinary stdout noise out of the channel, but the
                         // submission inherits it too — an accepted result must still
@@ -1283,10 +1283,10 @@ class GoExecutor(CompiledExecutor):
                     }}
 
                     func main() {{
-                        response := openojExecute()
+                        response := coderpuzzleExecute()
                         encoded, errorValue := json.Marshal(response)
                         if errorValue != nil {{ encoded, _ = json.Marshal(map[string]any{{"status": "runtime_error", "error": errorValue.Error()}}) }}
-                        openojEmit("__OPENOJ_RESULT__" + string(encoded))
+                        coderpuzzleEmit("__CODERPUZZLE_RESULT__" + string(encoded))
                     }}
                     """
                 )
@@ -1315,7 +1315,7 @@ class GoExecutor(CompiledExecutor):
                 "TMPDIR": "/tmp",
                 # One shared build cache across submissions: a per-job cache
                 # would force every compile to rebuild the standard library.
-                "GOCACHE": "/tmp/openoj-gocache",
+                "GOCACHE": "/tmp/coderpuzzle-gocache",
                 "GOENV": "off",
                 "GOPROXY": "off",
                 "CGO_ENABLED": "0",

@@ -11,7 +11,7 @@ from .base import ExecutorError
 
 
 COMPILER_SANDBOX = "/runner/compiler_sandbox.py"
-SUPERVISOR_PYTHON = "/usr/local/bin/openoj-supervisor-python"
+SUPERVISOR_PYTHON = "/usr/local/bin/coderpuzzle-supervisor-python"
 
 
 def sandboxed_compiler_command(

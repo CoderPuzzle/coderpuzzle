@@ -75,7 +75,7 @@ class FormatError(RuntimeError):
 
 
 _GO_PACKAGE = re.compile(r"^\s*package\s+\w", re.MULTILINE)
-_GO_PREAMBLE = "package openoj\n"
+_GO_PREAMBLE = "package coderpuzzle\n"
 
 
 def _wrap_go(code: str) -> tuple[str, bool]:
@@ -161,7 +161,7 @@ def format_source_report(language: str, code: str) -> dict:
                                                 missing tool, timeout)
 
     The keys deliberately match REST POST /format (api/app/judge.py), so
-    `openoj format --report json` and the editor's Format button speak one
+    `coderpuzzle format --report json` and the editor's Format button speak one
     contract; the CLI adds its `file` field per row."""
     try:
         formatted = format_source(language, code)

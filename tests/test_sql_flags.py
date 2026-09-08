@@ -115,7 +115,7 @@ SCENARIOS = [
         "name": "attach is denied under dynamic_columns",
         "sql": {"schema": "", "dynamic_columns": {"separator": ","}},
         "setup": "",
-        "submission": "SELECT 1;\n~~\nATTACH DATABASE '/tmp/openoj-escape.db' AS escape;",
+        "submission": "SELECT 1;\n~~\nATTACH DATABASE '/tmp/coderpuzzle-escape.db' AS escape;",
         "expected": "runtime_error",
     },
 ]

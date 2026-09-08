@@ -45,11 +45,11 @@ class ParseSpecTests(unittest.TestCase):
     def test_absolute_home_and_file_urls_are_local(self):
         self.assertEqual(local("/srv/problems").path, Path("/srv/problems"))
         self.assertEqual(local("~/problems").path, Path("~/problems").expanduser())
-        self.assertEqual(local("file:///srv/openoj-problems").path, Path("/srv/openoj-problems"))
+        self.assertEqual(local("file:///srv/coderpuzzle-problems").path, Path("/srv/coderpuzzle-problems"))
 
     def test_https_url_with_and_without_fragment_ref(self):
-        source = remote("https://github.com/myname/openoj-problems-curated")
-        self.assertEqual(source.url, "https://github.com/myname/openoj-problems-curated")
+        source = remote("https://github.com/myname/coderpuzzle-problems-curated")
+        self.assertEqual(source.url, "https://github.com/myname/coderpuzzle-problems-curated")
         self.assertIsNone(source.ref)
         self.assertEqual(
             remote("https://example.com/a/set.git#v3").url,
@@ -88,7 +88,7 @@ class ResolveSpecTests(unittest.TestCase):
 
     def test_missing_local_directory_is_rejected(self):
         with self.assertRaisesRegex(ProblemSourceError, "not a directory"):
-            resolve_spec("/nonexistent/openoj-problems")
+            resolve_spec("/nonexistent/coderpuzzle-problems")
 
     def test_remote_requires_a_cache_directory(self):
         with self.assertRaisesRegex(ProblemSourceError, "cache"):
