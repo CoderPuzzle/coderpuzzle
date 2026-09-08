@@ -59,7 +59,7 @@ function slugFromPath(): string | null {
 
 // The last chosen language carries across problems within the session; each
 // problem still keeps its own per-language server-side draft.
-const LANGUAGE_STORAGE_KEY = "openoj:language";
+const LANGUAGE_STORAGE_KEY = "coderpuzzle:language";
 
 function storedLanguage(): string {
   try {
