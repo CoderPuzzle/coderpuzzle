@@ -14,7 +14,6 @@ import {
   CircleDashed,
   Clock3,
   Code2,
-  Puzzle,
   FileText,
   Github,
   GripVertical,
@@ -819,7 +818,7 @@ function App() {
       <header className="topbar">
         <div className="topbar-left">
           <button className="brand" onClick={goHome} aria-label="Back to all problems">
-            <span className="brand-mark"><Puzzle size={18} strokeWidth={2.4} /></span>
+            <span className="brand-mark"><img src="/coderpuzzle-icon.svg" alt="" /></span>
             <span>CoderPuzzle</span>
           </button>
           <span className="topbar-divider" />
@@ -1425,7 +1424,7 @@ function Landing({ theme, onToggleTheme, onOpen, onLogout, progress, seed }: {
       <header className="topbar">
         <div className="topbar-left">
           <button className="brand" aria-label="CoderPuzzle home">
-            <span className="brand-mark"><Puzzle size={18} strokeWidth={2.4} /></span>
+            <span className="brand-mark"><img src="/coderpuzzle-icon.svg" alt="" /></span>
             <span>CoderPuzzle</span>
           </button>
         </div>
