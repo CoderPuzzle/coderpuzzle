@@ -1,4 +1,4 @@
-# OpenOJ — judge infrastructure and problem bank
+# CoderPuzzle — judge infrastructure and problem bank
 
 Two repos, deliberately decoupled:
 
@@ -242,7 +242,7 @@ check the clock against the reset time before waiting on one.
 Production: GCP VM `katze` (us-east4-a since 2026-08-24 — the old
 us-west1-a `openoj` VM is retired; project `zdong-14850-alefa-ai`,
 account `zdong.14850@gmail.com`), repo at
-`/home/dongziyu/code/openoj`, site https://coderpuzzle.dongziyu.com
+`/home/dongziyu/code/coderpuzzle`, site https://coderpuzzle.dongziyu.com
 (TLS is terminated by a caddy container on the VM itself —
 `/home/dongziyu/code/mycaddy/Caddyfile`, shared with the bedtimenews
 stack; it bind-mounts that single file, so hostname edits need an
@@ -251,7 +251,7 @@ inode-preserving rewrite (`sed … > tmp && cat tmp > Caddyfile`) plus
 
     gcloud compute ssh katze --zone=us-east4-a \
       --project=zdong-14850-alefa-ai --account=zdong.14850@gmail.com \
-      --command="cd /home/dongziyu/code/openoj && git pull -q && \
+      --command="cd /home/dongziyu/code/coderpuzzle && git pull -q && \
                  docker compose up -d --build"
     curl -fsS https://coderpuzzle.dongziyu.com/api/health
 

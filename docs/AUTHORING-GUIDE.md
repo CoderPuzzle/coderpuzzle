@@ -2,7 +2,7 @@
 
 The extend corpus is complete: 3,193 crawl-keyed originals (archived in
 the bank's `problems-originals/`, derived by
-`openoj/scripts/verify_corpus.py`) adapted 1:1 into the bank's
+`coderpuzzle/scripts/verify_corpus.py`) adapted 1:1 into the bank's
 `problems-adapt/` tree with ids unchanged (the bank's `problems` symlink
 serves `problems-originals`; the adapted tree is addressed by name). The
 end-to-end loop for

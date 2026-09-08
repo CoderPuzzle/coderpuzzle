@@ -1,4 +1,4 @@
-# OpenOJ REST API
+# CoderPuzzle REST API
 
 The judge's full surface — the same API the web UI uses — available to
 scripted callers. Everything except `/health`, `GET /auth/status`, and

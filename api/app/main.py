@@ -56,7 +56,7 @@ async def lifespan(_: FastAPI):
 # FastAPI's generated /docs and /openapi.json would only enumerate the
 # surface for strangers on a public deployment.
 app = FastAPI(
-    title="OpenOJ API",
+    title="CoderPuzzle API",
     version="0.1.0",
     lifespan=lifespan,
     docs_url=None,

@@ -8,7 +8,7 @@ executors, and the judge's own harness code — these entry points expose
 that machinery to problem creators, so authoring needs no local
 toolchain beyond Docker:
 
-  cli.py format <files...>            format to the OpenOJ standard
+  cli.py format <files...>            format to the CoderPuzzle standard
   cli.py gen-starters <problem.json>  emit every starter.<ext> for a
                                       bundle's language-agnostic schema
   cli.py judge <bundle-dir>           run every solution.* in the

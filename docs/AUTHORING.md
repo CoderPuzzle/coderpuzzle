@@ -1,6 +1,6 @@
 # Authoring a problem, end to end
 
-This is the whole loop for creating a new problem for OpenOJ. The
+This is the whole loop for creating a new problem for CoderPuzzle. The
 toolchain is the runner image — pull it and every step below runs
 identically on any machine with Docker; no local compilers, formatters,
 or generators are needed.

@@ -1,4 +1,4 @@
-# OpenOJ REST API and docker image CLI
+# CoderPuzzle REST API and docker image CLI
 
 One toolchain, two interfaces. The runner image (`ghcr.io/coderpuzzle/coderpuzzle`)
 carries every pinned language tool and executor; the REST API drives the
@@ -93,7 +93,7 @@ payload carries the state:
 The image installs the CLI as `openoj` (`ojcli` historically); locally
 test an edited `cli.py` by bind-mounting it over `/runner/cli.py`.
 
-- `openoj format <files|dirs…>` — format in place to the OpenOJ
+- `openoj format <files|dirs…>` — format in place to the CoderPuzzle
   standard; directories walk for formattable files, skipping
   `node_modules` and hidden trees.
   - `--check` — report unformatted files, change nothing, exit 1 if

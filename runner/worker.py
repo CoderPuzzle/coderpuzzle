@@ -195,7 +195,7 @@ def _write_response(job_dir: Path, response: dict[str, Any]) -> None:
     # timeout, or an API restart); the answer for an abandoned job has no
     # reader, so skip quietly instead of crashing the worker.
     if not job_dir.is_dir():
-        print(f"OpenOJ job {job_dir.name} abandoned before its result", file=sys.stderr, flush=True)
+        print(f"CoderPuzzle job {job_dir.name} abandoned before its result", file=sys.stderr, flush=True)
         return
     temporary = job_dir / "result.tmp"
     temporary.write_text(json.dumps(response, separators=(",", ":")), encoding="utf-8")
@@ -470,9 +470,9 @@ def _prewarm_toolchains_once() -> None:
                     timeout=240, check=False,
                 )
             except (OSError, subprocess.SubprocessError) as error:
-                print(f"OpenOJ pre-warm skipped {' '.join(command[:2])}: {error}", file=sys.stderr, flush=True)
+                print(f"CoderPuzzle pre-warm skipped {' '.join(command[:2])}: {error}", file=sys.stderr, flush=True)
     except OSError as error:
-        print(f"OpenOJ pre-warm disabled: {error}", file=sys.stderr, flush=True)
+        print(f"CoderPuzzle pre-warm disabled: {error}", file=sys.stderr, flush=True)
     finally:
         _prewarming = False
 
@@ -489,7 +489,7 @@ def main() -> None:
         elapsed_ms, factor = get_executor(language).calibrate()
         CALIBRATION_FACTORS[language] = factor
         print(
-            f"OpenOJ {language} calibration: {elapsed_ms:.1f} ms, deadline factor {factor:.2f}x",
+            f"CoderPuzzle {language} calibration: {elapsed_ms:.1f} ms, deadline factor {factor:.2f}x",
             file=sys.stderr,
             flush=True,
         )

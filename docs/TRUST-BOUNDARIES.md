@@ -27,7 +27,7 @@ validator by name, but it cannot SHIP one — the registry is judge code
 reviewed with this repo, running outside any sandbox on already-produced
 output. If validators were bundle-carried they would be problem-set
 content deciding correctness, which would let case data grade its own
-homework. Extending the registry is therefore an openoj-repo change, and
+homework. Extending the registry is therefore a coderpuzzle-repo change, and
 `judge._compare` refuses unknown names loudly.
 
 Interactive oracles are the deliberate contrast: they must be

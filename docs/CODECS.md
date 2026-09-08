@@ -1,4 +1,4 @@
-# OpenOJ data conventions
+# CoderPuzzle data conventions
 
 How problem data crosses the language boundary: the JSON wire format every
 `cases.json` uses, the binary stream the typed executors read, the wrapper

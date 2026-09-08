@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Render a screenshot as coarse ASCII art, bucketing each cell to the
-OpenOJ palette so the layout can be read without vision. Local-only
+CoderPuzzle palette so the layout can be read without vision. Local-only
 (the shots it reads are gitignored).
 
     python3 scripts/ascii.py .localonly/shots/landing-dark.png [cols]

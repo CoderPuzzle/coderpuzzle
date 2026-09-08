@@ -1,6 +1,6 @@
-# OpenOJ
+# CoderPuzzle
 
-OpenOJ is a containerized coding judge with a LeetCode-style
+CoderPuzzle is a containerized coding judge with a LeetCode-style
 class-and-method workflow. It runs untrusted Python 3.14.7, Java 21.0.12,
 C++20 with G++ 14.2.0, TypeScript 5.7.3 on Node 22.23.2, JavaScript on
 Node 22.23.2, Go 1.24.4, and Rust 1.85.0 submissions, keeps problem packages
@@ -34,7 +34,7 @@ the session (idle-expiring after an hour). Submission records persist in the
 
 ## Problem packages
 
-OpenOJ loads problems from two package formats. The canonical, split format
+CoderPuzzle loads problems from two package formats. The canonical, split format
 is one directory per problem (this is what
 [coderpuzzle-problems](https://github.com/CoderPuzzle/coderpuzzle-problems) uses):
 
