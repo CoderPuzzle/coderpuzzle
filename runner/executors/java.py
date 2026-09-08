@@ -32,7 +32,9 @@ class JavaExecutor:
         "-XX:CICompilerCount=2",
         "-Xms16m",
         "-Xmx192m",
-        "-Xss512k",
+        # 512k overflowed on ~5k-deep recursion (0206's recursive variant);
+        # 16m covers ~100k+ frames while staying noise against -Xmx192m
+        "-Xss16m",
         "-XX:MaxMetaspaceSize=64m",
         "-XX:CompressedClassSpaceSize=32m",
         "-XX:ReservedCodeCacheSize=32m",
