@@ -54,7 +54,7 @@ proved.
 ## Verify gate
 
 `python3 scripts/verify_solution.py problems-adapt/<shard>/<id>_<slug>`
-(openoj repo's `scripts/`, run from bank root) judges every
+(coderpuzzle repo's `scripts/`, run from bank root) judges every
 `solution*.<ext>` through the real executors — green across all offered
 languages before landing. Rust "unparseable protocol output" =>
 suspect a panic, not the wire (see the doubled-braces note in
@@ -131,7 +131,7 @@ Audit before landing: bundle inventory, canonical JSON bytes
 order — canonicality is byte-compared), id/slug/title/dir agreement,
 starter = format(gen_starters(...)) round-trip, no `__pycache__`.
 In-image format pass over changed files (`docker run --rm -v $PWD:/work
--w /work ghcr.io/zydo/openoj:latest openoj format <files>` — directories
+-w /work ghcr.io/coderpuzzle/coderpuzzle:latest openoj format <files>` — directories
 are walked for formattable files; `xargs -n 200` just bounds the command
 line when piping many). Commit/push only when the user says so that
 turn; scoped `git add` by path list, never blanket adds.

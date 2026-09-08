@@ -8,7 +8,7 @@ protocol) but without sandboxing — trusted authoring-time verification.
 Usage: verify_solution.py <shard-qualified-bundle-key> [<ext> ...]
        (default exts: every solution.* present in the bundle)
 
-The key is resolved against the sibling openoj-problems checkout (or
+The key is resolved against the sibling coderpuzzle-problems checkout (or
 wherever OPENOJ_PROBLEMS_BANK points); local toolchain binaries are
 expected on PATH (g++, go, rustc, node, javac/java) next to the repo's
 npm-installed tsc.
@@ -25,7 +25,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = Path(os.environ.get(
-    "OPENOJ_PROBLEMS_BANK", str(ROOT.parent / "openoj-problems")))
+    "OPENOJ_PROBLEMS_BANK", str(ROOT.parent / "coderpuzzle-problems")))
 sys.path.insert(0, str(ROOT))
 os.environ.setdefault("OPENOJ_PROBLEMS_DIR", str(REPO / "problems-adapt"))
 

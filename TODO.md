@@ -3,7 +3,7 @@
 Check off and delete as they land. Full context: CLAUDE.md,
 docs/api-and-cli.md, docs/TRUST-BOUNDARIES.md, and the
 verification-program record in
-`../openoj-problems/.localonly/VARIANT-WAVE-II.md`.
+`../coderpuzzle-problems/.localonly/VARIANT-WAVE-II.md`.
 
 ## Deferred — provided-code protection
 

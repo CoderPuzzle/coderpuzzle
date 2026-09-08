@@ -25,15 +25,15 @@ def local(spec: str) -> LocalSource:
 
 class ParseSpecTests(unittest.TestCase):
     def test_bare_two_segments_always_mean_github(self):
-        source = remote("zydo/openoj-problems")
-        self.assertEqual(source.url, "https://github.com/zydo/openoj-problems.git")
+        source = remote("CoderPuzzle/coderpuzzle-problems")
+        self.assertEqual(source.url, "https://github.com/CoderPuzzle/coderpuzzle-problems.git")
         self.assertIsNone(source.ref)
-        self.assertEqual(source.cache_key, "github__zydo__openoj-problems")
+        self.assertEqual(source.cache_key, "github__CoderPuzzle__coderpuzzle-problems")
 
     def test_shorthand_accepts_a_pinned_ref(self):
-        source = remote("zydo/openoj-problems@v1.2.0")
+        source = remote("CoderPuzzle/coderpuzzle-problems@v1.2.0")
         self.assertEqual(source.ref, "v1.2.0")
-        self.assertEqual(source.url, "https://github.com/zydo/openoj-problems.git")
+        self.assertEqual(source.url, "https://github.com/CoderPuzzle/coderpuzzle-problems.git")
 
     def test_shorthand_accepts_slashed_refs(self):
         self.assertEqual(remote("a/b@release/v2").ref, "release/v2")
@@ -58,9 +58,9 @@ class ParseSpecTests(unittest.TestCase):
         self.assertEqual(remote("https://example.com/a/set.git#v3").ref, "v3")
 
     def test_ssh_url_parses_owner_and_name(self):
-        source = remote("git@github.com:zydo/openoj-problems.git")
-        self.assertEqual(source.url, "git@github.com:zydo/openoj-problems.git")
-        self.assertEqual(source.cache_key, "github__zydo__openoj-problems")
+        source = remote("git@github.com:CoderPuzzle/coderpuzzle-problems.git")
+        self.assertEqual(source.url, "git@github.com:CoderPuzzle/coderpuzzle-problems.git")
+        self.assertEqual(source.cache_key, "github__CoderPuzzle__coderpuzzle-problems")
 
     def test_rejects_single_and_three_segment_bare_specs(self):
         for bad in ("problems", "a/b/c", "", "   ", "-leading/hyphen", "a/b@bad..ref!"):
@@ -92,7 +92,7 @@ class ResolveSpecTests(unittest.TestCase):
 
     def test_remote_requires_a_cache_directory(self):
         with self.assertRaisesRegex(ProblemSourceError, "cache"):
-            resolve_spec("zydo/openoj-problems")
+            resolve_spec("CoderPuzzle/coderpuzzle-problems")
 
     def test_remote_clones_then_updates_on_restart(self):
         from api.app import problem_source
@@ -114,16 +114,16 @@ class ResolveSpecTests(unittest.TestCase):
         try:
             with TemporaryDirectory() as directory:
                 cache = Path(directory)
-                resolve_spec("zydo/openoj-problems@v2", cache)
+                resolve_spec("CoderPuzzle/coderpuzzle-problems@v2", cache)
                 self.assertEqual(
                     calls[-1][:4],
                     ["git", "clone", "--depth", "1"],
                 )
                 # A warm cache converges to the remote instead of re-cloning
                 calls.clear()
-                resolve_spec("zydo/openoj-problems@v2", cache)
+                resolve_spec("CoderPuzzle/coderpuzzle-problems@v2", cache)
                 update = calls[0]
-                self.assertEqual(update[:3], ["git", "-C", str(cache / "github__zydo__openoj-problems")])
+                self.assertEqual(update[:3], ["git", "-C", str(cache / "github__CoderPuzzle__coderpuzzle-problems")])
                 self.assertEqual(update[3:6], ["fetch", "--depth", "1"])
                 self.assertIn("v2", update)
                 self.assertEqual(calls[1][3], "reset")
@@ -132,12 +132,12 @@ class ResolveSpecTests(unittest.TestCase):
                 # An unchanged remote (recorded hash == ls-remote hash): no git runs at all
                 calls.clear()
                 problem_source._recorded_commit = lambda target: "f" * 40
-                resolve_spec("zydo/openoj-problems@v2", cache)
+                resolve_spec("CoderPuzzle/coderpuzzle-problems@v2", cache)
                 self.assertEqual(calls, [])
                 # An unreachable remote (offline start): the cached revision is kept as-is
                 calls.clear()
                 problem_source._remote_commit = lambda source: None
-                resolve_spec("zydo/openoj-problems@v2", cache)
+                resolve_spec("CoderPuzzle/coderpuzzle-problems@v2", cache)
                 self.assertEqual(calls, [])
         finally:
             problem_source._git = original_git
@@ -157,10 +157,10 @@ class ResolveSpecTests(unittest.TestCase):
             with TemporaryDirectory() as directory:
                 cache = Path(directory)
                 with self.assertRaisesRegex(ProblemSourceError, "problems-fetcher"):
-                    resolve_spec("zydo/openoj-problems", cache, update=False)
-                warmed = cache / "github__zydo__openoj-problems"
+                    resolve_spec("CoderPuzzle/coderpuzzle-problems", cache, update=False)
+                warmed = cache / "github__CoderPuzzle__coderpuzzle-problems"
                 (warmed / ".git").mkdir(parents=True)
-                self.assertEqual(resolve_spec("zydo/openoj-problems", cache, update=False), warmed)
+                self.assertEqual(resolve_spec("CoderPuzzle/coderpuzzle-problems", cache, update=False), warmed)
         finally:
             problem_source._git = original_git
 

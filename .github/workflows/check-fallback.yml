@@ -1,6 +1,6 @@
 name: Check fallback problems
 
-# The offline fallback set bundled in this repo (openoj/problems/, used
+# The offline fallback set bundled in this repo (coderpuzzle/problems/, used
 # when OPENOJ_PROBLEMS is unset). The pinned image runs the two gates that
 # apply to a one-bundle set — format check and a full judge of every
 # solution against every case (openoj judge refuses a zero-case bundle) —
@@ -27,7 +27,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/zydo/openoj:latest
+      image: ghcr.io/coderpuzzle/coderpuzzle:latest
       options: --user 0:0
     steps:
       - uses: actions/checkout@v5

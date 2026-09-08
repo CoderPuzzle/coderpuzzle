@@ -5,7 +5,7 @@ ARG TYPESCRIPT_VERSION="5.7.3"
 FROM node:${NODE_VERSION}-bookworm-slim AS typescript-toolchain
 
 ARG TYPESCRIPT_VERSION
-# Pinned to the same versions as openoj-problems/package.json, so a starter
+# Pinned to the same versions as coderpuzzle-problems/package.json, so a starter
 # formatted in the editor is byte-identical to the one the generator writes.
 ARG PRETTIER_VERSION="3.9.6"
 ARG PRETTIER_JAVA_VERSION="2.10.3"

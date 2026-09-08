@@ -17,10 +17,10 @@ well-known directory.
 
 | code | origin | runs | trust class |
 | --- | --- | --- | --- |
-| runner harness, executors, codecs | the openoj repo (`runner/`) | inside the sandbox, beside the submission | **framework** — trusted absolutely, versioned with the repo |
+| runner harness, executors, codecs | the coderpuzzle repo (`runner/`) | inside the sandbox, beside the submission | **framework** — trusted absolutely, versioned with the repo |
 | `provided/<language>/` types, oracles & helpers | each problem bundle (`problems/<key>/provided/`) | inside the sandbox, beside the submission | **problem-set content** — same trust as the bundle's own cases |
 | the submission | a solver | inside the sandbox, unprivileged | **untrusted** |
-| output validators | the openoj repo (`api/app/validators.py`) | in the API process, after the run | **framework** — same tier as the judge itself |
+| output validators | the coderpuzzle repo (`api/app/validators.py`) | in the API process, after the run | **framework** — same tier as the judge itself |
 
 The validator row deserves its own sentence: a bundle can point at a
 validator by name, but it cannot SHIP one — the registry is judge code

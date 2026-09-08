@@ -36,7 +36,7 @@ the session (idle-expiring after an hour). Submission records persist in the
 
 OpenOJ loads problems from two package formats. The canonical, split format
 is one directory per problem (this is what
-[openoj-problems](https://github.com/zydo/openoj-problems) uses):
+[coderpuzzle-problems](https://github.com/CoderPuzzle/coderpuzzle-problems) uses):
 
 ```text
 problems/
@@ -65,7 +65,7 @@ OPENOJ_PROBLEMS_PATH=/absolute/path/to/problems docker compose up --build
 
 ### Selecting a problem set with `OPENOJ_PROBLEMS`
 
-**The default problem set is `zydo/openoj-problems`** — a plain
+**The default problem set is `CoderPuzzle/coderpuzzle-problems`** — a plain
 `docker compose up --build` clones it into `./.cache` on first start (and
 afterwards only refreshes when the remote actually moved). To use something
 else, set `OPENOJ_PROBLEMS`. The specification follows git's disambiguation
@@ -74,8 +74,8 @@ directory with that shape must be referenced explicitly and never shadows
 the shorthand.
 
 ```bash
-docker compose up --build                                          # default: zydo/openoj-problems
-OPENOJ_PROBLEMS=zydo/openoj-problems@v1.2.0       docker compose up --build  # pinned branch/tag
+docker compose up --build                                          # default: CoderPuzzle/coderpuzzle-problems
+OPENOJ_PROBLEMS=CoderPuzzle/coderpuzzle-problems@v1.2.0       docker compose up --build  # pinned branch/tag
 OPENOJ_PROBLEMS=https://github.com/myname/set.git docker compose up --build  # full git URL
 OPENOJ_PROBLEMS=./name/repo                       docker compose up --build  # local, explicit
 OPENOJ_PROBLEMS=/problems                         docker compose up --build  # force the bundled fallback set

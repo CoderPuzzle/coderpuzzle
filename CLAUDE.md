@@ -2,10 +2,10 @@
 
 Two repos, deliberately decoupled:
 
-- **openoj** (this repo) — the judge: FastAPI app, React frontend, runner
-  image (`ghcr.io/zydo/openoj`), toolchain, docs. Knows nothing about any
+- **coderpuzzle** (this repo) — the judge: FastAPI app, React frontend, runner
+  image (`ghcr.io/coderpuzzle/coderpuzzle`), toolchain, docs. Knows nothing about any
   specific problem.
-- **openoj-problems** (sibling `../openoj-problems`) — the problem bank:
+- **coderpuzzle-problems** (sibling `../coderpuzzle-problems`) — the problem bank:
   bundles, shared code, authoring tooling. Knows nothing about the judge
   except its published contract.
 
@@ -43,7 +43,7 @@ descriptive kebab slugs
 the original source difficulty (Easy/Medium/Hard) in both trees — never
 a re-evaluation; tags follow the bank's normalized scheme.
 
-## Bundle format (openoj-problems/FORMAT.md is authoritative)
+## Bundle format (coderpuzzle-problems/FORMAT.md is authoritative)
 
     problems-adapt/<shard>/<id>_<slug>/
       problem.json    schema_version, reference_solution,
@@ -96,7 +96,7 @@ formatter via the image.
   cases.json, confined by the sandbox; assembly reads exactly one
   well-known directory and nothing else.
 
-## Judge infrastructure (openoj/)
+## Judge infrastructure (coderpuzzle/)
 
 - `runner/` — executors for python3, java, cpp, go, rust, typescript,
   javascript (+sql, +shell), compiler/runtime privilege split
@@ -104,12 +104,12 @@ formatter via the image.
 - **The judge protocol travels on fd 63; stdout is only a local-tooling
   fallback.** Anything that spawns harnesses outside the worker (local
   verify scripts) parses stdout instead.
-- Runner image `ghcr.io/zydo/openoj` owns the pinned toolchain and
+- Runner image `ghcr.io/coderpuzzle/coderpuzzle` owns the pinned toolchain and
   **all formatting**: `runner/formatters.py` is the single formatting owner
   (markdown + canonical JSON + per-language code). The bank's
   `scripts/format.py` is only a loader shim; there is deliberately no
-  local toolchain in openoj-problems.
-- The app fetches the problem set from `zydo/openoj-problems` on start
+  local toolchain in coderpuzzle-problems.
+- The app fetches the problem set from `CoderPuzzle/coderpuzzle-problems` on start
   (host cache `./.cache/problems/<cache-key>/`, populated by the
   problems-fetcher service), or serves a local path via
   `OPENOJ_PROBLEMS`. Restarting the stack picks up newly pushed problems.
@@ -147,7 +147,7 @@ invocation.
    cases, canonical solution in all 7 languages).
 2. `scripts/gen_starters.py` regenerates starters from problem.json.
 3. **Verify**: `python3 scripts/verify_solution.py problems-adapt/<shard>/<key>`
-   (openoj repo's scripts/) — judges every solution in the bundle
+   (coderpuzzle repo's scripts/) — judges every solution in the bundle
    through the real executors. The key must be shard-qualified; a bare
    key resolves without the shard and fails.
 4. **Check**: `python3 scripts/check.py` (bank repo) — static tier:
@@ -183,19 +183,19 @@ is in git. Surface new contradictions to the user with evidence.
 
 ## Tooling map
 
-- openoj `/scripts/` (tracked; see its README.md): the authoring gates
+- coderpuzzle `/scripts/` (tracked; see its README.md): the authoring gates
   (`verify_solution.py`, `verify_corpus.py`) and the headless-UI
   drivers (`stub-server.mjs`, `shot.mjs`, `session-e2e.mjs`). The
   gitignored `/.localonly/` holds only regenerable cache (the compiled
   Java harness).
-- openoj-problems `/.localonly/`: gitignored scratch (see its
+- coderpuzzle-problems `/.localonly/`: gitignored scratch (see its
   README.md) — currently holds the variant-wave II record
   (`VARIANT-WAVE-II.md`) plus a few topic/mirror one-shot scripts;
   never CI input, never referenced by tracked files.
 
 ## Fleet discipline (agent concurrency)
 
-The completed adaptation program's state ledger `openoj-problems/.adapt/`
+The completed adaptation program's state ledger `coderpuzzle-problems/.adapt/`
 was deleted 2026-09-04 (corpus complete; history in git). If a future
 fleet runs, recreate the ledger there and record every rate-limit event.
 Two death classes: per-minute 429s (concurrency-driven —
@@ -215,7 +215,7 @@ check the clock against the reset time before waiting on one.
   image. Local check.py starter comparisons and "is it formatted"
   questions must go through the image:
   `docker run --rm -v $PWD:/work -w /work
-  ghcr.io/zydo/openoj:latest openoj format <files>`
+  ghcr.io/coderpuzzle/coderpuzzle:latest openoj format <files>`
   (hash files before/after for a check).
 - `openoj format` walks directories for their formattable files;
   `xargs -n 200` just bounds the command line when piping many files.
@@ -230,7 +230,7 @@ check the clock against the reset time before waiting on one.
   work typically lands as a handful of focused commits when the user says
   so; scoped `git add` by path lists, never blanket `git add problems-adapt/`
   mid-split.
-- `TODO.md` (openoj): design decisions agreed but not started; when work
+- `TODO.md` (coderpuzzle): design decisions agreed but not started; when work
   starts, it moves to the session task list; when done, the entry is
   deleted. Keep entries terse — full context goes in docs.
 - Scratch/planning files: `.localonly/` (gitignored) in either repo.
@@ -242,7 +242,7 @@ check the clock against the reset time before waiting on one.
 Production: GCP VM `katze` (us-east4-a since 2026-08-24 — the old
 us-west1-a `openoj` VM is retired; project `zdong-14850-alefa-ai`,
 account `zdong.14850@gmail.com`), repo at
-`/home/dongziyu/code/openoj`, site https://openoj.dongziyu.com
+`/home/dongziyu/code/openoj`, site https://coderpuzzle.dongziyu.com
 (TLS is terminated by an edge proxy maintained outside this repo, which
 forwards to the web service's published port 8081).
 
@@ -250,10 +250,10 @@ forwards to the web service's published port 8081).
       --project=zdong-14850-alefa-ai --account=zdong.14850@gmail.com \
       --command="cd /home/dongziyu/code/openoj && git pull -q && \
                  docker compose up -d --build"
-    curl -fsS https://openoj.dongziyu.com/api/health
+    curl -fsS https://coderpuzzle.dongziyu.com/api/health
 
 The web UI is served plain HTTP on host port 8081 (no TLS inside this
-repo). The stack fetches the problem set from `zydo/openoj-problems` on
+repo). The stack fetches the problem set from `CoderPuzzle/coderpuzzle-problems` on
 start. gcloud ssh can be flaky; retry. First account registered through
 the gate bootstraps as admin on a fresh DB.
 

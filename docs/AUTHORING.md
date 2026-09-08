@@ -6,10 +6,10 @@ identically on any machine with Docker; no local compilers, formatters,
 or generators are needed.
 
 ```bash
-docker pull ghcr.io/zydo/openoj:latest   # :latest tracks main
+docker pull ghcr.io/coderpuzzle/coderpuzzle:latest   # :latest tracks main
 alias openoj='docker run --rm --user 0:0 \
-  -v /path/to/openoj-problems:/tools \
-  -v /path/to/my-bundle:/bundle:rw ghcr.io/zydo/openoj:latest openoj'
+  -v /path/to/coderpuzzle-problems:/tools \
+  -v /path/to/my-bundle:/bundle:rw ghcr.io/coderpuzzle/coderpuzzle:latest openoj'
 ```
 
 `/tools` is a checkout of the problems repo (its `scripts/gen_starters.py`

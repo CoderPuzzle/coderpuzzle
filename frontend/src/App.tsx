@@ -853,7 +853,7 @@ function App() {
 <div className="topbar-right">
           <a
             className="icon-button github-link"
-            href="https://github.com/zydo/openoj"
+            href="https://github.com/CoderPuzzle/coderpuzzle"
             target="_blank"
             rel="noopener noreferrer"
             title="OpenOJ on GitHub"
@@ -1431,7 +1431,7 @@ function Landing({ theme, onToggleTheme, onOpen, onLogout, progress, seed }: {
         <div className="topbar-right">
           <a
             className="icon-button github-link"
-            href="https://github.com/zydo/openoj"
+            href="https://github.com/CoderPuzzle/coderpuzzle"
             target="_blank"
             rel="noopener noreferrer"
             title="OpenOJ on GitHub"

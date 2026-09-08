@@ -32,7 +32,7 @@ from pathlib import Path
 # are only needed for the crawl-side checks and stay env-overridable.
 BANK = Path(os.environ.get(
     "OPENOJ_PROBLEMS_BANK",
-    str(Path(__file__).resolve().parents[2] / "openoj-problems")))
+    str(Path(__file__).resolve().parents[2] / "coderpuzzle-problems")))
 CRAWL = Path(os.environ.get(
     "OPENOJ_CRAWL", str(Path.home() / "code/lc-crawl/problems")))
 BETTERCODE = Path(os.environ.get(

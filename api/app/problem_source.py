@@ -2,7 +2,7 @@
 
 ``OPENOJ_PROBLEMS`` selects where problem packages come from:
 
-    owner/name[@ref]        a GitHub repository, e.g. zydo/openoj-problems
+    owner/name[@ref]        a GitHub repository, e.g. CoderPuzzle/coderpuzzle-problems
     https://host/…[#ref]    a full https git URL (or http on a trusted network)
     git@host:owner/name     an SSH git URL
     /abs/path               a local directory (absolute)

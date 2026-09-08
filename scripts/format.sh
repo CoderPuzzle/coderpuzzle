@@ -19,7 +19,7 @@
 
 set -euo pipefail
 
-IMAGE="${OPENOJ_IMAGE:-ghcr.io/zydo/openoj:latest}"
+IMAGE="${OPENOJ_IMAGE:-ghcr.io/coderpuzzle/coderpuzzle:latest}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 exec docker run --rm --user 0:0 \

@@ -1,6 +1,6 @@
 # OpenOJ REST API and docker image CLI
 
-One toolchain, two interfaces. The runner image (`ghcr.io/zydo/openoj`)
+One toolchain, two interfaces. The runner image (`ghcr.io/coderpuzzle/coderpuzzle`)
 carries every pinned language tool and executor; the REST API drives the
 web UI, and the `openoj` CLI (installed in the image as `ojcli` from
 `runner/cli.py`) drives authoring and CI. Formatting is the same code in
@@ -139,7 +139,7 @@ docker run --rm --user 0:0 \
     -v "$PWD/runner/cli.py:/runner/cli.py:ro" \
     -v "$PWD/runner/formatters.py:/runner/formatters.py:ro" \
     -v "$PWD:/work" -w /work \
-    ghcr.io/zydo/openoj:latest openoj format --check problems-adapt
+    ghcr.io/coderpuzzle/coderpuzzle:latest openoj format --check problems-adapt
 
 # run one solution file against its bundle's cases
 # (mount the repo root; the file is addressed from the working directory)
@@ -147,8 +147,8 @@ docker run --rm --user 0:0 \
     -v "$PWD/runner/cli.py:/runner/cli.py:ro" \
     -v "$PWD/runner/formatters.py:/runner/formatters.py:ro" \
     -v "$PWD:/work" -w /work \
-    ghcr.io/zydo/openoj:latest openoj run problems-adapt/<shard>/<key>/my_draft.py
+    ghcr.io/coderpuzzle/coderpuzzle:latest openoj run problems-adapt/<shard>/<key>/my_draft.py
 ```
 
-The convenience wrapper `scripts/format.sh` (openoj repo) does the
+The convenience wrapper `scripts/format.sh` (coderpuzzle repo) does the
 mounting for the format case; `OPENOJ_IMAGE` overrides the tag.

@@ -1,6 +1,6 @@
 // Local-only E2E helper: serves frontend/dist and proxies /api/* to a
 // locally-running uvicorn API (start it with:
-//   OPENOJ_PROBLEMS_DIR=../openoj-problems/problems \
+//   OPENOJ_PROBLEMS_DIR=../coderpuzzle-problems/problems \
 //   OPENOJ_DATA_DIR=/tmp/openoj-e2e-data \
 //   uvicorn app.main:app --port 8010    (from api/)
 // ). No external deps.

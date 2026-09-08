@@ -15,7 +15,7 @@ and rate-limit at the edge if you expose it.
 ## Base URL
 
 The API is served at the web UI's same origin, under `/api/`:
-`https://openoj.dongziyu.com/api/…` (the edge terminating TLS lives outside
+`https://coderpuzzle.dongziyu.com/api/…` (the edge terminating TLS lives outside
 this repo; the plain-HTTP origin is the web service's published port, 8081
 by default). Paths below assume this form.
 
@@ -27,15 +27,15 @@ deleted.
 
 ```sh
 # Create a session (keep the cookie jar)
-curl -c jar.txt -X POST https://openoj.dongziyu.com/api/session
+curl -c jar.txt -X POST https://coderpuzzle.dongziyu.com/api/session
 # {"status":"active","idle_seconds":3600}
 
 # Check it
-curl -b jar.txt https://openoj.dongziyu.com/api/session
+curl -b jar.txt https://coderpuzzle.dongziyu.com/api/session
 
 # Validate without extending the idle clock (the frontend's inactivity
 # watcher probes with this — watching must not keep an abandoned session alive)
-curl -b jar.txt 'https://openoj.dongziyu.com/api/session?touch=0'
+curl -b jar.txt 'https://coderpuzzle.dongziyu.com/api/session?touch=0'
 ```
 
 Every request with a valid cookie refreshes the idle clock;
@@ -46,10 +46,10 @@ cookie gets `401 {"detail":"No active session"}`.
 
 ```sh
 # Full list (single page — the editor needs the whole ordering)
-curl -b jar.txt 'https://openoj.dongziyu.com/api/problems'
+curl -b jar.txt 'https://coderpuzzle.dongziyu.com/api/problems'
 
 # Paginated slice for lists
-curl -b jar.txt 'https://openoj.dongziyu.com/api/problems?page=2&page_size=50'
+curl -b jar.txt 'https://coderpuzzle.dongziyu.com/api/problems?page=2&page_size=50'
 ```
 
 Response page shape: `{items, total, page, page_size, pages}`; each item is
@@ -59,7 +59,7 @@ Response page shape: `{items, total, page, page_size, pages}`; each item is
 ```sh
 # One problem with statement, hints, invocation, limits, languages,
 # starters, and public cases (inputs only — expected values are hidden)
-curl -b jar.txt https://openoj.dongziyu.com/api/problems/pair-sum
+curl -b jar.txt https://coderpuzzle.dongziyu.com/api/problems/pair-sum
 ```
 
 `invocation` describes the judge contract: parameter names/types (the full
@@ -74,28 +74,28 @@ argument list.
 
 ```sh
 # A statement figure shipped with the bundle (SVG)
-curl -b jar.txt https://openoj.dongziyu.com/api/problems/pair-sum/figures/sample-1.svg
+curl -b jar.txt https://coderpuzzle.dongziyu.com/api/problems/pair-sum/figures/sample-1.svg
 
 # Solutions tab: per-variant explanations plus each variant's
 # implementation in every offered language (404 when the bundle
 # publishes none)
-curl -b jar.txt https://openoj.dongziyu.com/api/problems/pair-sum/solutions
+curl -b jar.txt https://coderpuzzle.dongziyu.com/api/problems/pair-sum/solutions
 ```
 
 ## Drafts (session-scoped editor state)
 
 ```sh
-curl -b jar.txt https://openoj.dongziyu.com/api/drafts/pair-sum
+curl -b jar.txt https://coderpuzzle.dongziyu.com/api/drafts/pair-sum
 # [{"language":"python3","code":"…","updated_at":1786790973.5}]
 
-curl -b jar.txt -X PUT https://openoj.dongziyu.com/api/drafts/pair-sum/python3 \
+curl -b jar.txt -X PUT https://coderpuzzle.dongziyu.com/api/drafts/pair-sum/python3 \
   -H 'content-type: application/json' -d '{"code":"class Solution:\n    …"}'
 ```
 
 ## Format (editor toolchain)
 
 ```sh
-curl -b jar.txt -X POST https://openoj.dongziyu.com/api/format \
+curl -b jar.txt -X POST https://coderpuzzle.dongziyu.com/api/format \
   -H 'content-type: application/json' \
   -d '{"language":"python3","code":"…"}'
 ```
@@ -114,7 +114,7 @@ whenever the runner is reachable:
 ## Run (visible cases only)
 
 ```sh
-curl -b jar.txt -X POST https://openoj.dongziyu.com/api/run \
+curl -b jar.txt -X POST https://coderpuzzle.dongziyu.com/api/run \
   -H 'content-type: application/json' \
   -d '{"slug":"pair-sum","language":"python3","code":"…"}'
 ```
@@ -136,7 +136,7 @@ without an assertion and return the actual output. Response:
 ## Submit (full judge)
 
 ```sh
-curl -b jar.txt -X POST https://openoj.dongziyu.com/api/submit \
+curl -b jar.txt -X POST https://coderpuzzle.dongziyu.com/api/submit \
   -H 'content-type: application/json' \
   -d '{"slug":"pair-sum","language":"python3","code":"…"}'
 ```
@@ -151,8 +151,8 @@ on the same runner; the ratio is a hardware-independent speed signal).
 # Viewer's submission history for a problem (guest submissions are
 # session-scoped and purged with the session; signed-in submissions are
 # user-scoped and survive idle expiry)
-curl -b jar.txt 'https://openoj.dongziyu.com/api/submissions?slug=pair-sum'
-curl -b jar.txt https://openoj.dongziyu.com/api/submissions/42
+curl -b jar.txt 'https://coderpuzzle.dongziyu.com/api/submissions?slug=pair-sum'
+curl -b jar.txt https://coderpuzzle.dongziyu.com/api/submissions/42
 ```
 
 ## Progress (per-viewer marks)
@@ -160,7 +160,7 @@ curl -b jar.txt https://openoj.dongziyu.com/api/submissions/42
 ```sh
 # 'solved' / 'attempted' per problem for the current viewer (signed-in
 # user or guest); absent slugs were never tried
-curl -b jar.txt https://openoj.dongziyu.com/api/progress
+curl -b jar.txt https://coderpuzzle.dongziyu.com/api/progress
 ```
 
 ## Errors

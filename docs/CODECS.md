@@ -513,7 +513,7 @@ the recorded action outputs, not a single return.
 A bundle carries either a single canonical `solution.<ext>` per language, or
 named variants `solution_<variant>.<ext>` (e.g. `solution_dfs.py`,
 `solution_bfs.py`) for problems with multiple equivalent approaches. Rules
-(enforced by openoj-problems' check.py):
+(enforced by coderpuzzle-problems' check.py):
 
 - every language the problem offers has at least one solution file;
 - the variant set is identical across languages — `dfs` in Python means

@@ -59,7 +59,7 @@ _COMMANDS: dict[str, list[str]] = {
     "javascript": [*_PRETTIER, "babel"],
     "markdown": [*_PRETTIER, "markdown", "--prose-wrap", "preserve"],
     # sql-formatter rather than prettier, matching how the problems repo
-    # formats bundle SQL (`openoj-problems/scripts/format.py`).
+    # formats bundle SQL (`coderpuzzle-problems/scripts/format.py`).
     "sql": [
         "node",
         "-e",

@@ -1,7 +1,7 @@
 # scripts/ — authoring gates and local dev drivers
 
 Tracked tooling that runs on this checkout (not in the runner image).
-Bank paths default to the sibling `../openoj-problems` checkout;
+Bank paths default to the sibling `../coderpuzzle-problems` checkout;
 override with `OPENOJ_PROBLEMS_BANK`.
 
 ## Authoring gates
