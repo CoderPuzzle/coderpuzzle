@@ -243,8 +243,11 @@ Production: GCP VM `katze` (us-east4-a since 2026-08-24 — the old
 us-west1-a `openoj` VM is retired; project `zdong-14850-alefa-ai`,
 account `zdong.14850@gmail.com`), repo at
 `/home/dongziyu/code/openoj`, site https://coderpuzzle.dongziyu.com
-(TLS is terminated by an edge proxy maintained outside this repo, which
-forwards to the web service's published port 8081).
+(TLS is terminated by a caddy container on the VM itself —
+`/home/dongziyu/code/mycaddy/Caddyfile`, shared with the bedtimenews
+stack; it bind-mounts that single file, so hostname edits need an
+inode-preserving rewrite (`sed … > tmp && cat tmp > Caddyfile`) plus
+`docker restart caddy`, then reload).
 
     gcloud compute ssh katze --zone=us-east4-a \
       --project=zdong-14850-alefa-ai --account=zdong.14850@gmail.com \
