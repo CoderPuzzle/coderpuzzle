@@ -14,6 +14,7 @@ import {
   CircleDashed,
   Clock3,
   Code2,
+  Puzzle,
   FileText,
   Github,
   GripVertical,
@@ -524,7 +525,7 @@ function App() {
   }, [theme]);
 
   useEffect(() => {
-    document.title = problem ? `OpenOJ — ${problem.id}. ${problem.title}` : "OpenOJ — Problem List";
+    document.title = problem ? `CoderPuzzle — ${problem.id}. ${problem.title}` : "CoderPuzzle — Problem List";
   }, [problem]);
 
   const toggleTheme = () => {
@@ -799,7 +800,7 @@ function App() {
     }
     return <GuestGate expired={sessionExpired} error={gateError} needsSetup={needsSetup} entryMode={gateEntryMode} onEnter={enterAsGuest} onRegister={registerAccount} onLogin={loginAccount} theme={theme} onToggleTheme={toggleTheme} />;
   }
-  if (loadError) return <FullPageMessage icon={<CircleAlert />} title="OpenOJ could not load" detail={loadError} action={{ label: "Back to problems", onClick: goHome }} />;
+  if (loadError) return <FullPageMessage icon={<CircleAlert />} title="CoderPuzzle could not load" detail={loadError} action={{ label: "Back to problems", onClick: goHome }} />;
   if (activeSlug === null) return <Landing theme={theme} onToggleTheme={toggleTheme} onOpen={openProblem} onLogout={logoutAccount} progress={progress} seed={allProblems} />;
   if (problemsError && allProblems === null) {
     return <FullPageMessage icon={<CircleAlert />} title="The problem set could not load" detail={problemsError} action={{ label: "Try again", onClick: retryProblems }} />;
@@ -818,8 +819,8 @@ function App() {
       <header className="topbar">
         <div className="topbar-left">
           <button className="brand" onClick={goHome} aria-label="Back to all problems">
-            <span className="brand-mark"><Code2 size={18} strokeWidth={2.4} /></span>
-            <span>OpenOJ</span>
+            <span className="brand-mark"><Puzzle size={18} strokeWidth={2.4} /></span>
+            <span>CoderPuzzle</span>
           </button>
           <span className="topbar-divider" />
           <button className="problem-list-trigger" onClick={() => setProblemListOpen(true)}>
@@ -856,8 +857,8 @@ function App() {
             href="https://github.com/CoderPuzzle/coderpuzzle"
             target="_blank"
             rel="noopener noreferrer"
-            title="OpenOJ on GitHub"
-            aria-label="OpenOJ on GitHub"
+            title="CoderPuzzle on GitHub"
+            aria-label="CoderPuzzle on GitHub"
           >
             <Github size={16} />
           </a>
@@ -1423,9 +1424,9 @@ function Landing({ theme, onToggleTheme, onOpen, onLogout, progress, seed }: {
     <div className="app-shell">
       <header className="topbar">
         <div className="topbar-left">
-          <button className="brand" aria-label="OpenOJ home">
-            <span className="brand-mark"><Code2 size={18} strokeWidth={2.4} /></span>
-            <span>OpenOJ</span>
+          <button className="brand" aria-label="CoderPuzzle home">
+            <span className="brand-mark"><Puzzle size={18} strokeWidth={2.4} /></span>
+            <span>CoderPuzzle</span>
           </button>
         </div>
         <div className="topbar-right">
@@ -1434,8 +1435,8 @@ function Landing({ theme, onToggleTheme, onOpen, onLogout, progress, seed }: {
             href="https://github.com/CoderPuzzle/coderpuzzle"
             target="_blank"
             rel="noopener noreferrer"
-            title="OpenOJ on GitHub"
-            aria-label="OpenOJ on GitHub"
+            title="CoderPuzzle on GitHub"
+            aria-label="CoderPuzzle on GitHub"
           >
             <Github size={16} />
           </a>
@@ -2134,7 +2135,7 @@ function GuestGate({ expired, error, needsSetup, entryMode = "welcome", onEnter,
       </button>
       <div className="guest-card">
         <span className="brand-mark gate-mark"><Code2 size={22} strokeWidth={2.4} /></span>
-        <h1>OpenOJ</h1>
+        <h1>CoderPuzzle</h1>
         {expired && <p className="gate-notice">Your session idled out — guest drafts and submissions from it are gone.</p>}
         {error && <p className="gate-notice">{error}</p>}
 
