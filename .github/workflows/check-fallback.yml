@@ -29,6 +29,12 @@ jobs:
     container:
       image: ghcr.io/coderpuzzle/coderpuzzle:latest
       options: --user 0:0
+      # empty credentials skip the GITHUB_TOKEN auto-login: an authenticated
+      # pull with a token that lacks a package grant is DENIED by ghcr even
+      # though the package is public, while an anonymous pull succeeds
+      credentials:
+        username: ""
+        password: ""
     steps:
       - uses: actions/checkout@v5
       - name: Format check
