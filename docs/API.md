@@ -166,8 +166,9 @@ curl -b jar.txt https://coderpuzzle.dongziyu.com/api/progress
 ## Errors
 
 `401` no/expired session · `400` unavailable language, malformed input, or
-oversized draft · `404` unknown problem/submission · `503` judge runner
-unavailable. Error bodies are `{"detail": "…"}`.
+oversized draft · `403` registration closed (it is, after the admin
+bootstrap) · `404` unknown problem/submission · `429` login or judge
+throttle · `503` judge runner unavailable. Error bodies are `{"detail": "…"}`.
 
 ## Limits
 

@@ -5,6 +5,10 @@ name: Publish runner image
 # docs/AUTHORING.md); a tag push publishes that version, and every
 # merge to main refreshes :latest.
 
+# NOTE: GitHub applies `paths` to tag pushes too, so a v* tag whose tip
+# range touches nothing under runner/** produces NO publish (the semver
+# image never appears, with no failure anywhere). When cutting a release
+# from such a commit, trigger the publish with workflow_dispatch instead.
 on:
   workflow_dispatch:
   push:

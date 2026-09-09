@@ -1,12 +1,15 @@
 name: Check fallback problems
 
 # The offline fallback set bundled in this repo (coderpuzzle/problems/, used
-# when CODERPUZZLE_PROBLEMS is unset). The pinned image runs the two gates that
-# apply to a one-bundle set — format check and a full judge of every
-# solution against every case (coderpuzzle judge refuses a zero-case bundle) —
-# on every push touching it. The bank repo's schema/static tier is not
-# duplicated here. (problems-originals lives in the problems repo and is
-# frozen; it is not covered by CI.)
+# when CODERPUZZLE_PROBLEMS is unset). The runner image runs the two gates
+# that apply to a one-bundle set — format check and a full judge of every
+# solution against every case (coderpuzzle judge refuses a zero-case bundle
+# and compares outputs against expected values) — on every push touching it.
+# The image is `:latest`, refreshed by publish-runner on every runner/ merge;
+# for this small, self-contained set that floating reference is the intent
+# (pin by digest if the set ever grows into a real gate). The bank repo's
+# schema/static tier is not duplicated here. (problems-originals lives in
+# the problems repo and is frozen; it is not covered by CI.)
 
 on:
   push:

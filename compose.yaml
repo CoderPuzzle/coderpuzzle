@@ -70,7 +70,8 @@ services:
       CODERPUZZLE_DATA_DIR: /data
       CODERPUZZLE_QUEUE_DIR: /queue
       CODERPUZZLE_RUNNER_TIMEOUT_SECONDS: "20"
-      # Writable home so git (used to fetch remote problem sets) can operate
+      # Writable home; the api itself never runs git (the fetcher service
+      # does), but the image ships git for it and HOME must exist for both.
       HOME: /tmp
     volumes:
       - "${CODERPUZZLE_PROBLEMS_PATH:-./problems}:/problems:ro"

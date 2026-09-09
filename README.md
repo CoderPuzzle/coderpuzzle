@@ -226,9 +226,10 @@ and core dumps are limited independently.
 ### Reference-relative timing
 
 Absolute milliseconds mean nothing across machines, so accepted submissions
-are also compared against the problem's built-in solution. When a submission
-is accepted and the problem bundle ships a `solution.<ext>` for the submitted
-language, the judge immediately runs that reference through the same
+are also compared against the problem's built-in reference. When a submission
+is accepted, the judge runs the bundle's *designated* reference —
+`reference_solution` in problem.json names the one file (`solution.<ext>` or
+a `solution_<variant>.<ext>`), the optimal approach — through the same
 container, the same calibrated executor, and the same cases, and the response
 carries `reference_runtime_ms` alongside the user's `runtime_ms`. The UI
 shows the ratio ("162% of reference"). The comparison is same-language by

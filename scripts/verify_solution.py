@@ -50,6 +50,18 @@ RUNNER_DIR = ROOT / "runner"
 PYTHON = sys.executable
 
 
+def _which(name: str) -> str:
+    """A judged tier needs the local toolchain; fail with a gate error, not
+    a TypeError from subprocess receiving None."""
+    found = shutil.which(name)
+    if found is None:
+        raise RuntimeError(
+            f"{name} is not on PATH — judged tiers need the local toolchain "
+            "(or run under the runner image)"
+        )
+    return found
+
+
 def _ensure_java_cache() -> None:
     """Compile the tracked harness into the local class cache when stale."""
     cached = JAVA_CLASSES / "CoderPuzzleJavaHarness.class"
@@ -57,7 +69,7 @@ def _ensure_java_cache() -> None:
         return
     JAVA_CLASSES.mkdir(parents=True, exist_ok=True)
     completed = subprocess.run(
-        [shutil.which("javac"), "-proc:none", "-encoding", "UTF-8",
+        [_which("javac"), "-proc:none", "-encoding", "UTF-8",
          "-d", str(JAVA_CLASSES), str(JAVA_HARNESS)],
         capture_output=True, text=True, timeout=300,
     )
@@ -73,7 +85,7 @@ def _local_compile(executor, job_root, command, output_path, environment):
         command = command[:position] + ["-I", str(CPP_SHIM)] + command[position:]
     completed = subprocess.run(
         command, cwd=job_root,
-        env={**environment, "PATH": f"/opt/homebrew/bin:{environment['PATH']}"},
+        env={**environment, "PATH": f"/opt/homebrew/bin:{environment.get("PATH", "")}"},
         capture_output=True, text=True, timeout=300,
     )
     if completed.returncode != 0:
@@ -101,7 +113,7 @@ def _local_java_prepare(self, job_root, scratch, code, invocation, limits, assem
         assembly_sources.append(str(part_path))
     completed = subprocess.run(
         [
-            shutil.which("javac"), "-proc:none", "-encoding", "UTF-8",
+            _which("javac"), "-proc:none", "-encoding", "UTF-8",
             "-cp", str(JAVA_CLASSES), "-d", str(job_root), str(source), *assembly_sources,
         ],
         capture_output=True, text=True, timeout=120,
@@ -110,7 +122,7 @@ def _local_java_prepare(self, job_root, scratch, code, invocation, limits, assem
         raise _Error(f"Compilation failed\n{completed.stderr[-4000:]}")
     return PreparedProgram(
         command=(
-            shutil.which("java"),
+            _which("java"),
             "-cp", str(job_root) + os.pathsep + str(JAVA_CLASSES),
             "CoderPuzzleJavaHarness",
         ),

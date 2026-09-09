@@ -87,6 +87,7 @@ async function main() {
       } catch { /* booting */ }
       if (!wsUrl) await sleep(250);
     }
+    if (!wsUrl) throw new Error("Chrome debugging endpoint never came up");
     const cdp = new CDP(wsUrl);
     await cdp.open();
     await cdp.navigate(`${BASE}/`);

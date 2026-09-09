@@ -86,7 +86,12 @@ Concretely, the existing protections all still apply:
   concatenation/compilation of the received sources; no path from the
   request is ever executed or included by reference.
 - `runner/compiler_sandbox.py` / `runtime_sandbox.py` — the privilege
-  split between compiler, runtime, and supervisor.
+  split between compiler, runtime, and supervisor. Network isolation is
+  deploy-level, not sandbox-level: the sandboxes drop privileges and set
+  rlimits but create no network namespace, so submissions are offline
+  only where the deployment says so (`network_mode: none` on the runner
+  service in compose.yaml). Running the worker or `coderpuzzle judge`
+  outside that compose setup gives submissions full container networking.
 - **Shared Go build cache (accepted risk).** `go` compiles read and
   write one shared `GOCACHE` (`/tmp/coderpuzzle-gocache`, mode 0o1777) so a
   cold stdlib build is paid once, not per submission. A hostile compiler

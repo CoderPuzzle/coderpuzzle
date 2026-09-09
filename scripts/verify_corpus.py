@@ -50,6 +50,10 @@ def fail(message):
 
 def crawl_index():
     index = {}
+    if not CRAWL.is_dir():
+        raise SystemExit(
+            f"crawl index not found at {CRAWL} — set CODERPUZZLE_CRAWL to the lc-crawl checkout"
+        )
     for shard_dir in sorted(CRAWL.iterdir()):
         if not shard_dir.is_dir():
             continue
@@ -157,6 +161,9 @@ def main():
         fail(f"crawl count {len(crawl)} != 4018")
 
     good = {}
+    if not BETTERCODE.is_file():
+        fail(f"bettercode problems.jsonl not found at {BETTERCODE} — set CODERPUZZLE_BETTERCODE")
+        return 1
     for line in BETTERCODE.read_text(encoding="utf-8").splitlines():
         if not line.strip():
             continue

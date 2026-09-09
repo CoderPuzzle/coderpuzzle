@@ -195,9 +195,11 @@ is in git. Surface new contradictions to the user with evidence.
 
 ## Fleet discipline (agent concurrency)
 
-The completed adaptation program's state ledger `coderpuzzle-problems/.adapt/`
-was deleted 2026-09-04 (corpus complete; history in git). If a future
-fleet runs, recreate the ledger there and record every rate-limit event.
+The completed adaptation program's state ledger lives at
+`coderpuzzle-problems/.adapt/FLEET-LOG.md` (tracked; recreated 2026-09-05
+for variant wave II after the original ledger was deleted 2026-09-04, and
+ends "PROGRAM COMPLETE — 2026-09-06"). If a future fleet runs, append
+there and record every rate-limit event.
 Two death classes: per-minute 429s (concurrency-driven —
 step the target down, roughly halve, floor 4) vs 5-hour-pool exhaustion
 (consumption-driven — do NOT step down; wait for the reset timestamp in
