@@ -293,6 +293,9 @@ function App() {
   // can detect that the user navigated to another problem mid-judge (state
   // alone is stale inside the awaited closure).
   const activeSlugRef = useRef<string | null>(slugFromPath());
+  // Bumped each time a problem is (re)loaded, so an in-flight run/submit can
+  // also detect an away-and-back navigation: same slug, fresh editor state.
+  const loadSeqRef = useRef(0);
   const sessionPhaseRef = useRef(sessionPhase);
   sessionPhaseRef.current = sessionPhase;
   const [problem, setProblem] = useState<Problem | null>(null);
@@ -594,6 +597,7 @@ function App() {
     setActiveCase(0);
     setSubmissions([]);
     setBottomTab("testcase");
+    loadSeqRef.current += 1;
     let cancelled = false;
     Promise.all([
       api.getProblem(activeSlug),
@@ -649,7 +653,12 @@ function App() {
 
   const refreshSubmissions = useCallback(() => {
     if (!problem) return;
-    api.getSubmissions(problem.slug).then(setSubmissions).catch(() => undefined);
+    const slug = problem.slug;
+    api.getSubmissions(slug).then((rows) => {
+      // A response landing after the user opened another problem belongs to
+      // the problem they left; painting it would show foreign history here.
+      if (activeSlugRef.current === slug) setSubmissions(rows);
+    }).catch(() => undefined);
   }, [problem]);
 
   useEffect(() => {
@@ -678,6 +687,7 @@ function App() {
       return;
     }
     const slug = problem.slug;
+    const loadSeq = loadSeqRef.current;
     setBusy(mode);
     setActionError("");
     setBottomTab("result");
@@ -687,7 +697,6 @@ function App() {
         ? await api.run(slug, language, code, parsedCases!)
         : await api.submit(slug, language, code);
       if (activeSlugRef.current !== slug) return; // user moved on mid-judge
-      setResult(response);
       if (mode === "submit") {
         refreshSubmissions();
         const state = response.status === "accepted" ? "solved" : "attempted";
@@ -698,6 +707,10 @@ function App() {
           [slug]: state === "attempted" && previous[slug] === "solved" ? "solved" : state,
         }));
       }
+      // The verdict describes the editor state it was launched from; an
+      // away-and-back reload rebuilt that state, so only paint when the
+      // problem was not reloaded underneath the request.
+      if (loadSeqRef.current === loadSeq) setResult(response);
     } catch (error) {
       // Same guard as the success path: a failure arriving after the user
       // moved on belongs to the problem they left, not the one on screen.
@@ -732,6 +745,9 @@ function App() {
       // "formatted": the draft already conforms — nothing to change, and an
       // unchanged result must not clear the undo stack or mark the draft dirty.
     } catch (error) {
+      // Same guard as the success path: a failure arriving after the user
+      // opened another problem must not flash here.
+      if (activeSlugRef.current !== requestedSlug) return;
       setFormatError(error instanceof Error ? error.message : "The formatter could not complete this request.");
     } finally {
       setFormatting(false);
@@ -1185,7 +1201,9 @@ function SelectMenu({ value, options, onChange, ariaLabel, idPrefix, className }
           else if (event.key === "Home") { event.preventDefault(); if (enabledIndexes.length) setActiveIndex(enabledIndexes[0]); }
           else if (event.key === "End") { event.preventDefault(); if (enabledIndexes.length) setActiveIndex(enabledIndexes[enabledIndexes.length - 1]); }
           else if (event.key === "Enter" || event.key === " ") { event.preventDefault(); select(activeIndex); }
-          else if (event.key === "Escape") { event.preventDefault(); close(); }
+          // stopPropagation keeps the Escape from also reaching the drawer's
+          // window listener, which would close the whole problem drawer.
+          else if (event.key === "Escape") { event.preventDefault(); event.stopPropagation(); close(); }
           else if (event.key === "Tab") close(false);
         }}>
           {options.map((option, index) => (
@@ -1261,6 +1279,8 @@ function ConfirmDialog({ title, body, confirmLabel, cancelLabel = "Cancel", onCo
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
+    // Deliberately focus the first (Cancel) button — the safe default for a
+    // destructive confirmation — so the confirm button carries no autoFocus.
     dialog.querySelector<HTMLElement>("button")?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -1300,7 +1320,7 @@ function ConfirmDialog({ title, body, confirmLabel, cancelLabel = "Cancel", onCo
         <p id="dialog-body">{body}</p>
         <div className="dialog-actions">
           <button type="button" className="dialog-cancel" onClick={onClose}>{cancelLabel}</button>
-          <button type="button" className="dialog-confirm" onClick={onConfirm} autoFocus>{confirmLabel}</button>
+          <button type="button" className="dialog-confirm" onClick={onConfirm}>{confirmLabel}</button>
         </div>
       </div>
     </div>
@@ -1581,6 +1601,10 @@ function Testcases({ problem, drafts, setDrafts, activeCase, setActiveCase }: {
   const parameters = manifest && manifest.length > 0
     ? manifest
     : Object.keys(current).map((name) => ({ name, codec: "" }));
+  const removeCase = (index: number) => {
+    setDrafts((items) => items.filter((_, itemIndex) => itemIndex !== index));
+    setActiveCase(Math.max(0, index - 1));
+  };
   return (
     <div className="testcase-view">
       <div className="case-tabs">
@@ -1588,11 +1612,24 @@ function Testcases({ problem, drafts, setDrafts, activeCase, setActiveCase }: {
           <button key={index} className={index === activeCase ? "case-tab active" : "case-tab"} onClick={() => setActiveCase(index)}>
             Case {index + 1}
             {drafts.length > 1 && index === activeCase && (
-              <span className="remove-case" role="button" aria-label={`Remove case ${index + 1}`} onClick={(event) => {
-                event.stopPropagation();
-                setDrafts((items) => items.filter((_, itemIndex) => itemIndex !== index));
-                setActiveCase(Math.max(0, index - 1));
-              }}><X size={12} /></span>
+              <span
+                className="remove-case"
+                role="button"
+                tabIndex={0}
+                aria-label={`Remove case ${index + 1}`}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  removeCase(index);
+                }}
+                onKeyDown={(event) => {
+                  if (event.key !== "Enter" && event.key !== " ") return;
+                  // Keep the activation from also switching tabs via the
+                  // wrapping case-tab button.
+                  event.preventDefault();
+                  event.stopPropagation();
+                  removeCase(index);
+                }}
+              ><X size={12} /></span>
             )}
           </button>
         ))}
@@ -1940,11 +1977,31 @@ function ProblemDrawer({ problems, activeSlug, progress, onSelect, onClose }: {
   const [problemType, setProblemType] = useState("");
   const [hardness, setHardness] = useState("");
   const filterRef = useRef<HTMLInputElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     filterRef.current?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab" || !drawerRef.current) return;
+      // Same trap as ConfirmDialog: Tab must cycle inside the drawer, not
+      // escape into the workspace underneath.
+      const focusables = Array.from(drawerRef.current.querySelectorAll<HTMLElement>(
+        "button:not(:disabled), input:not(:disabled), [tabindex]:not([tabindex='-1'])",
+      ));
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
@@ -1962,7 +2019,7 @@ function ProblemDrawer({ problems, activeSlug, progress, onSelect, onClose }: {
 
   return (
     <div className="drawer-backdrop" onMouseDown={onClose}>
-      <aside className="drawer" onMouseDown={(event) => event.stopPropagation()}>
+      <aside ref={drawerRef} className="drawer" onMouseDown={(event) => event.stopPropagation()}>
         <div className="drawer-heading">
           <div><strong>Problem List</strong></div>
           <button className="icon-button" onClick={onClose} aria-label="Close problem list"><X size={18} /></button>

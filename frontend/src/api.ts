@@ -48,6 +48,12 @@ export type SessionStatus = {
 export type AuthResult = { status: string; username: string; is_admin: boolean };
 export type DraftRow = { language: string; code: string; updated_at: number };
 
+// The full problem list (page_size=0) is fixed for the lifetime of a server
+// deployment, and two independent consumers need all of it — the editor's
+// drawer and prev/next ordering, and the landing search index. Serve both
+// from one session cache so a fresh visit downloads the list once.
+let fullListCache: ProblemPage | null = null;
+
 export const api = {
   sessionStatus: (): Promise<SessionStatus> => request<SessionStatus>("/session"),
   // Idle-expiry probe: validates without extending the session's clock, so
@@ -73,8 +79,16 @@ export const api = {
   // pageSize of 0 (default) returns the full list in one page — the editor
   // needs the whole ordering for prev/next and the drawer. The landing page
   // passes an explicit page_size to fetch just the page it renders.
-  getProblems: (page = 1, pageSize = 0) =>
-    request<ProblemPage>(`/problems?page=${page}&page_size=${pageSize}`),
+  getProblems: (page = 1, pageSize = 0) => {
+    if (page === 1 && pageSize === 0) {
+      if (fullListCache) return Promise.resolve(fullListCache);
+      return request<ProblemPage>("/problems?page=1&page_size=0").then((list) => {
+        fullListCache = list;
+        return list;
+      });
+    }
+    return request<ProblemPage>(`/problems?page=${page}&page_size=${pageSize}`);
+  },
   getTopicIndex: () => request<TopicIndex>("/problems/topics"),
   getSolutions: (slug: string): Promise<SolutionsContent> =>
     request<SolutionsContent>(`/problems/${encodeURIComponent(slug)}/solutions`),
