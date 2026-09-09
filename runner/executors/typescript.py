@@ -9,7 +9,6 @@ from .typed import (
     function_signature,
     provided_node_class,
     struct_item_spec,
-    typescript_type,
     uses_struct_kinds,
 )
 

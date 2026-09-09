@@ -11,7 +11,6 @@ context and answer one question: is THIS output a correct answer?
 documents the input shape it expects — these are fixed per problem class.
 """
 import json
-import math
 from typing import Any
 
 

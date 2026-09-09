@@ -15,12 +15,10 @@ npm-installed tsc.
 """
 import json
 import os
-import re
 import shutil
 import subprocess
 import sys
 import tempfile
-import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -223,7 +221,6 @@ def run_cases(bundle: Path, solution: Path) -> tuple[bool, str]:
                 payload = executor.encode_case(invocation, case["input"], problem["limits"])
             else:
                 payload = executor.encode_case(invocation, case["input"])
-            started = time.monotonic()
             try:
                 completed = subprocess.run(
                     program.command, cwd=scratch, input=payload,

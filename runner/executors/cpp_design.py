@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from .base import ExecutorError, PreparedProgram
-from .typed import cpp_type, type_spec
+from .typed import type_spec
 from .cpp_interactive import WRAPPER_HEAD, _cpp_type, _convert
 
 TREE_HELPERS = """\

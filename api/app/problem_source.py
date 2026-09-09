@@ -113,9 +113,9 @@ def _cache_key(host: str, segments: list[str]) -> str:
     return "__".join(CACHE_KEY.sub("-", part) for part in parts if part)
 
 
-def _git(arguments: list[str]) -> None:
+def _git(arguments: list[str], timeout_seconds: int = 300) -> None:
     environment = {**os.environ, "GIT_TERMINAL_PROMPT": "0"}
-    completed = subprocess.run(arguments, capture_output=True, text=True, env=environment, timeout=300)
+    completed = subprocess.run(arguments, capture_output=True, text=True, env=environment, timeout=timeout_seconds)
     if completed.returncode != 0:
         detail = (completed.stderr or completed.stdout).strip().splitlines()[-1:] or ["unknown git error"]
         raise ProblemSourceError(f"git {' '.join(arguments[:2])} failed: {detail[0]}")
@@ -207,7 +207,11 @@ def resolve_spec(spec: str, cache_dir: Path | None = None, update: bool = True) 
         clone = ["git", "clone", "--depth", "1", "--quiet"]
         if source.ref:
             clone += ["--branch", source.ref]
-        _git(clone + [source.url, str(target)])
+        # a cold clone of a large problem bank does not fit the default
+        # 300 s budget on a slow link (this failed once in production);
+        # only the initial clone gets the wider window — fetch/reset of an
+        # existing clone stays tight
+        _git(clone + [source.url, str(target)], timeout_seconds=900)
         head = subprocess.run(
             ["git", "-C", str(target), "rev-parse", "HEAD"],
             capture_output=True, text=True, timeout=30,

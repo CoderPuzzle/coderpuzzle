@@ -99,7 +99,7 @@ class ResolveSpecTests(unittest.TestCase):
 
         calls = []
 
-        def fake_git(arguments):
+        def fake_git(arguments, **kwargs):
             calls.append(list(arguments))
             if arguments[1] == "clone":
                 cache_dir = Path(arguments[-1])

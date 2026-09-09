@@ -10,7 +10,6 @@ from .typed import (
     function_signature,
     provided_node_class,
     rust_parameter_type,
-    rust_type,
     struct_item_spec,
     uses_struct_kinds,
 )

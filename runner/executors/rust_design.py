@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 from .base import ExecutorError, PreparedProgram
-from .typed import rust_type, type_spec
+from .typed import type_spec
 from .rust_interactive import NESTED_HELPERS, WRAPPER_HEAD, _convert, _rust_type
 
 TREE_HELPERS = """\

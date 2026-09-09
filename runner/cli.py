@@ -40,7 +40,7 @@ RUNNER = Path(__file__).resolve().parent
 # carries its own copy, from there.
 TOOLS_CANDIDATES = [
     Path("/tools"),  # image convention
-    RUNNER.parent / "problems-tools",  # beside a checkout
+    RUNNER.parent / "coderpuzzle-problems",  # beside a checkout
 ]
 
 

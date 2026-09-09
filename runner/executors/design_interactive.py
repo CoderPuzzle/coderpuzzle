@@ -24,10 +24,9 @@ pass raw values through, mirroring the python harness.
 """
 from __future__ import annotations
 
-from pathlib import Path
 from typing import Any
 
-from .base import ExecutorError, PreparedProgram
+from .base import ExecutorError
 
 
 def encode_design_case(invocation: dict[str, Any], case_input: Any) -> bytes:

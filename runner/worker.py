@@ -411,7 +411,6 @@ def _prewarm_toolchains_once() -> None:
             environment,
             None,
         ))
-        go_source = warm_dir / "warm-go"
         go_dir = warm_dir / "go"
         go_dir.mkdir(exist_ok=True)
         (go_dir / "go.mod").write_text("module warm\n\ngo 1.24\n", encoding="utf-8")

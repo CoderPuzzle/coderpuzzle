@@ -26,9 +26,7 @@ from .database import (
     verify_user,
 )
 from .judge import RunnerUnavailable, execute, format_code_report, judge_slot
-from .tamper_scan import protected_names, scan as tamper_scan
-# the module (not the /problems route function of the same name below)
-from . import problems as problems_module
+from .tamper_scan import scan as tamper_scan
 from .models import FormatRequest, RunRequest, SubmitRequest
 from .problems import (
     LANGUAGE_REGISTRY,
