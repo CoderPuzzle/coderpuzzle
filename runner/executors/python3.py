@@ -22,8 +22,6 @@ class Python3Executor:
         accumulator = 0x12345678
         for value in range(750_000):
             accumulator = ((accumulator << 5) - accumulator + value) & 0xFFFFFFFF
-        if accumulator == -1:
-            raise RuntimeError("Unreachable benchmark state")
         elapsed_ms = (time.perf_counter() - started) * 1000
         factor = min(3.0, max(0.75, elapsed_ms / self.reference_benchmark_ms))
         return elapsed_ms, factor

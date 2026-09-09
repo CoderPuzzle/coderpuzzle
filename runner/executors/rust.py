@@ -73,8 +73,10 @@ class RustExecutor(CompiledExecutor):
     # rustc's parallel codegen spawns one worker thread per CPU; each thread
     # counts against RLIMIT_NPROC, so larger submissions ICE with "failed to
     # spawn work thread" unless the cap sits well above the thread count.
-    # This bounds the trusted compiler only — user code still runs under the
-    # 16-process runtime sandbox.
+    # This one attribute bounds BOTH sandboxes: the compiler needs 48, and
+    # user code inherits it (still per-uid, memory/CPU/wall-clock bounded,
+    # and killed by process group — the cap itself is containment of last
+    # resort, not the defense).
     max_processes = 48
     compiler_memory_mb = 2048
     # rustc's first link on a cold page cache easily exceeds the shared
@@ -1460,7 +1462,7 @@ class RustExecutor(CompiledExecutor):
                 match response {{
                     Ok(Ok(actual)) => coderpuzzle_emit(&format!("__CODERPUZZLE_RESULT__{{{{\\\"status\\\":\\\"completed\\\",\\\"actual\\\":{{}}}}}}", actual)),
                     Ok(Err(error)) => coderpuzzle_emit(&format!("__CODERPUZZLE_RESULT__{{{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":{{}}}}}}", coderpuzzle_json_string(&error))),
-                    Err(_) => coderpuzzle_emit("__CODERPUZZLE_RESULT__{{{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\\\"Solution panicked\\\"}}}}"),
+                    Err(_) => coderpuzzle_emit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\\\"Solution panicked\\\"}}"),
                 }}
             }}
             """

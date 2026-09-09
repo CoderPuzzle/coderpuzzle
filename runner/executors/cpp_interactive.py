@@ -113,6 +113,20 @@ struct OjTaggedReader {
     long long position_() const { return static_cast<long long>(position); }
 };
 
+static std::string coderpuzzle_json_string(const std::string& text) {
+    std::ostringstream out;
+    out << '"';
+    for (unsigned char c : text) {
+        if (c == '"' || c == '\\\\') out << '\\\\' << c;
+        else if (c < 0x20) {
+            static const char* hex = "0123456789abcdef";
+            out << "\\\\u00" << hex[c >> 4] << hex[c & 15];
+        } else out << c;
+    }
+    out << '"';
+    return out.str();
+}
+
 static std::string coderpuzzle_json(const OjValue& value) {
     std::ostringstream out;
     switch (value.kind) {
@@ -123,18 +137,9 @@ static std::string coderpuzzle_json(const OjValue& value) {
             if (!std::isfinite(value.real)) throw std::runtime_error("Non-finite value");
             out << std::setprecision(17) << value.real;
             break;
-        case OjValue::String: {
-            out << '"';
-            for (unsigned char c : value.text) {
-                if (c == '"' || c == '\\\\') out << '\\\\' << c;
-                else if (c < 0x20) {
-                    static const char* hex = "0123456789abcdef";
-                    out << "\\\\u00" << hex[c >> 4] << hex[c & 15];
-                } else out << c;
-            }
-            out << '"';
+        case OjValue::String:
+            out << coderpuzzle_json_string(value.text);
             break;
-        }
         case OjValue::Array: {
             out << '[';
             for (size_t i = 0; i < value.items.size(); ++i) {
@@ -148,7 +153,7 @@ static std::string coderpuzzle_json(const OjValue& value) {
             out << '{';
             for (size_t i = 0; i < value.fields.size(); ++i) {
                 if (i) out << ',';
-                out << '"' << value.fields[i].first << '"' << ':' << coderpuzzle_json(value.fields[i].second);
+                out << coderpuzzle_json_string(value.fields[i].first) << ':' << coderpuzzle_json(value.fields[i].second);
             }
             out << '}';
             break;
@@ -229,7 +234,7 @@ def _convert(spec: dict[str, Any], source: str) -> str:
     kind = spec["kind"]
     if kind == "integer":
         bits = spec.get("bits", 32)
-        return f"[&](const OjValue& v) {{ if (v.kind != OjValue::Int) throw std::runtime_error(\"Expected an integer\"); return {'(long long)' if bits == 64 else 'static_cast<int>'} (v.integer{'' if bits == 64 else ''}); }}({source})"
+        return f"[&](const OjValue& v) {{ if (v.kind != OjValue::Int) throw std::runtime_error(\"Expected an integer\"); return {'(long long)' if bits == 64 else 'static_cast<int>'} (v.integer); }}({source})"
     if kind == "number":
         return f"[&](const OjValue& v) {{ if (v.kind != OjValue::Double && v.kind != OjValue::Int) throw std::runtime_error(\"Expected a number\"); return v.kind == OjValue::Double ? v.real : (double)v.integer; }}({source})"
     if kind == "boolean":

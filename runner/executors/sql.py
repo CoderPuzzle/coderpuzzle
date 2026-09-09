@@ -1,4 +1,3 @@
-import json
 import sqlite3
 from pathlib import Path
 from typing import Any
@@ -45,10 +44,3 @@ class SqlExecutor(Python3Executor):
             raise ExecutorError("SQL submissions must be a single SELECT statement")
         return super().prepare(job_root, scratch, code, invocation, limits, assembly)
 
-    def encode_case(
-        self, invocation: dict[str, Any], case_input: Any, limits: dict[str, Any] | None = None
-    ) -> bytes:
-        payload: dict[str, Any] = {"invocation": invocation, "input": case_input}
-        if limits is not None:
-            payload["limits"] = {"output_kb": int(limits.get("output_kb", 64))}
-        return json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode()

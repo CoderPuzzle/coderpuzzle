@@ -165,11 +165,7 @@ class JavaExecutor:
             os.chown(job_root, supervisor_uid, supervisor_gid)
             job_root.chmod(0o700)
         if process.returncode != 0:
-            diagnostic = (
-                compiler_output.decode("utf-8", errors="replace")[-16_384:].strip()
-                if "compiler_output" in locals()
-                else ""
-            )
+            diagnostic = compiler_output.decode("utf-8", errors="replace")[-16_384:].strip()
             raise ExecutorError(
                 f"Compilation failed\n{diagnostic}"
                 if diagnostic

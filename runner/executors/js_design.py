@@ -394,10 +394,7 @@ def prepare_design(executor, job_root: Path, scratch: Path, code: str,
         .replace("@RETURN_CODECS@", json.dumps(return_codecs))
         .replace("@METHOD_KINDS@", json.dumps(method_kinds))
     )
-    if not is_typescript:
-        main_source = main_source.replace("...(constructorArguments as any[]))", "...constructorArguments)")
-        main_source = main_source.replace("(solution[action] as any)", "solution[action]")
-    else:
+    if is_typescript:
         main_source = main_source.replace(
             f"new {class_name}(...constructorArguments);",
             f"new ({class_name} as any)(...constructorArguments);",

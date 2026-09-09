@@ -45,8 +45,15 @@ def main() -> int:
     resource.setrlimit(resource.RLIMIT_NPROC, (max_processes, max_processes))
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
     drop_privileges(COMPILER_UID, COMPILER_GID)
-    os.execvpe(command[0], command, os.environ)
-    return 126
+    # exec never returns on success; a failure (missing binary, OOM in the
+    # exec path) must still surface as the designed invalid-command exit
+    # rather than a Python traceback, and _exit skips any cleanup a forked
+    # child must not run.
+    try:
+        os.execvpe(command[0], command, os.environ)
+    except BaseException:
+        os._exit(INVALID_EXIT_CODE)
+    os._exit(INVALID_EXIT_CODE)
 
 
 if __name__ == "__main__":

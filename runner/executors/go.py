@@ -47,8 +47,6 @@ READER_METHODS = {
 }
 # Kinds that use the same bundle-provided node class: these aliases tie
 # ListNode/NodeWithNext codec paths to every wire kind that needs each shape.
-LIST_NODE_KINDS = {"list", "circular_list", "alias_list"}
-NEXT_NODE_KINDS = {"next_tree", "doubly_circular"}
 
 
 def _tabs(text: str) -> str:

@@ -50,6 +50,26 @@ def _json_safe(value: Any, output_limit: int = 65_536, budget: int | None = None
     return json.loads(encoded)
 
 
+def _fit_escaped(text: str, budget: int) -> str:
+    """The longest prefix of `text` whose JSON encoding fits `budget` bytes.
+
+    json.dumps escaping can multiply a raw length (quotes, newlines,
+    control characters), so a raw-character slice cannot guarantee an
+    encoded-size bound; measure the encoding itself."""
+    if budget <= 0:
+        return ""
+    if len(json.dumps(text)) <= budget:
+        return text
+    low, high = 0, len(text)
+    while low < high:
+        middle = (low + high + 1) // 2
+        if len(json.dumps(text[:middle])) <= budget:
+            low = middle
+        else:
+            high = middle - 1
+    return text[:low]
+
+
 def _load_solution(solution_path: Path, assembly_paths: list[Path] | None = None):
     """Load the submission. Every well-known data structure a bundle's wire
     needs (ListNode, TreeNode, ...) is the bundle's OWN provided/python/
@@ -553,9 +573,9 @@ def _invoke(module, invocation: dict[str, Any], raw_input: Any) -> Any:
 def main() -> None:
     response: dict[str, Any]
     captured = BoundedText()
-    # Default-limits budgets, used only if the payload itself fails to
+    # Default-limits budget, used only if the payload itself fails to
     # parse; recomputed from the real output limit below.
-    stdout_budget = MAX_CAPTURED_OUTPUT
+    output_limit = 65_536
     try:
         payload = json.load(sys.stdin)
         invocation = payload["invocation"]
@@ -564,9 +584,11 @@ def main() -> None:
         # protocol write, and the runtime sandbox caps that file at
         # output_limit (RLIMIT_FSIZE): budget each part so the line can
         # never cross the cap — a SIGXFSZ mid-emit would surface as a
-        # misleading "unparseable protocol output".
-        actual_budget = max(1024, output_limit - MAX_CAPTURED_OUTPUT - 4096)
-        stdout_budget = max(0, output_limit - 4096)
+        # misleading "unparseable protocol output". stdout is budgeted by
+        # its JSON-escaped length, so `actual` keeps everything the
+        # captured output does not actually spend; the fixed reserve this
+        # used to subtract silently capped correct returns well below the
+        # wire limit.
         with contextlib.redirect_stdout(captured), contextlib.redirect_stderr(captured):
             argv = sys.argv[1:]
             if "--" in argv:
@@ -576,6 +598,8 @@ def main() -> None:
                 assembly_args, solution_args = [], argv
             module = _load_solution(Path(solution_args[0]), [Path(a) for a in assembly_args])
             actual = _invoke(module, invocation, payload["input"])
+        escaped_stdout = len(json.dumps(captured.getvalue()))
+        actual_budget = max(1024, output_limit - escaped_stdout - 512)
         response = {
             "status": "completed",
             "actual": _json_safe(actual, output_limit, actual_budget),
@@ -587,7 +611,9 @@ def main() -> None:
         response = {
             "status": "runtime_error",
             "error": f"{type(error).__name__}: {error}"[:1000],
-            "stdout": captured.getvalue()[:stdout_budget],
+            # 20 KiB covers the escaped error text, traceback, and framing;
+            # the fit keeps quote-dense stdout from blowing the rest of the cap.
+            "stdout": _fit_escaped(captured.getvalue(), max(0, output_limit - 20_480)),
             "traceback": "".join(traceback.format_exception_only(type(error), error))[
                 -2000:
             ],

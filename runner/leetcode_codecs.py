@@ -630,7 +630,11 @@ def serialize_graph(result: Any, input_nodes: Any = ()) -> list:
     shared = {id(node) for node in input_nodes}
     if shared and any(id(node) in shared for node in visited):
         raise ValueError("Returned graph shares nodes with the input graph")
-    return [[neighbor.val for neighbor in node.neighbors] for node in visited]
+    # LC treats adjacency order as irrelevant; the cpp/go/js/ts wrappers
+    # sort each row before encoding, so python must too — a correct clone
+    # that assembles neighbors in any other valid order would else be a
+    # false wrong-answer against a sorted expected.
+    return [sorted(neighbor.val for neighbor in node.neighbors) for node in visited]
 
 
 def graph_nodes(head: Any) -> list:

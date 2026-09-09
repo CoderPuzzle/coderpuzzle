@@ -17,8 +17,8 @@ from .typed import (
 class CppExecutor(CompiledExecutor):
     language = "cpp"
     address_space_overhead_mb = 0
-    # Room for clang/lld worker threads under parallel linking; the compiler
-    # is trusted toolchain code, unlike the 16-process runtime sandbox.
+    # Room for linker worker threads under parallel linking. The same cap
+    # also bounds user code's runtime sandbox (see RustExecutor's note).
     max_processes = 32
     compiler_path = "/usr/bin/g++"
     benchmark_command = ("/runner/benchmarks/cpp",)
@@ -926,6 +926,10 @@ class CppExecutor(CompiledExecutor):
             )
         pending_specs = dict(struct_specs)
         while pending_specs:
+            # Cyclic struct references (a manifest author's bug) would spin
+            # here forever with no timeout covering prepare — fail loudly
+            # when a full pass emits nothing.
+            emitted = False
             for name, spec in sorted(pending_specs.items()):
                 fields = spec.get("fields") or []
                 if any(
@@ -949,7 +953,11 @@ class CppExecutor(CompiledExecutor):
                     """
                 )
                 del pending_specs[name]
+                emitted = True
                 break
+            if not emitted:
+                cyclic = ", ".join(sorted(pending_specs))
+                raise ExecutorError(f"Struct references form a cycle: {cyclic}")
 
         if "tree" in structs:
             struct_codecs += textwrap.dedent(

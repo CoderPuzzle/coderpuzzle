@@ -142,7 +142,7 @@ fn coderpuzzle_json(value: &OjValue) -> String {
         OjValue::Object(fields) => {
             let parts: Vec<String> = fields
                 .iter()
-                .map(|(key, item)| format!("\\"{}\\":{}", key, coderpuzzle_json(item)))
+                .map(|(key, item)| format!("{}:{}", coderpuzzle_json_str(key), coderpuzzle_json(item)))
                 .collect();
             format!("{{{}}}", parts.join(","))
         }

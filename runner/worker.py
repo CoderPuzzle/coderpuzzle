@@ -61,11 +61,12 @@ def _sandboxed_runtime_command(
 PROTOCOL_FD = 63
 
 
-# True while the prewarm thread is running a toolchain build. The kill sweep
-# below targets the shared submission UID, which the prewarm builds also run
-# under — sweeping mid-prewarm would kill the warm build (and risk a torn
-# shared Go build cache). No submission can be lingering during prewarm
-# anyway; the next sweep after prewarm ends catches anything that does.
+# True only while the prewarm thread's Go build runs. That build drops to
+# the shared submission uid (via the compiler sandbox), which the kill sweep
+# below targets — sweeping mid-build would kill the warm build (and risk a
+# torn shared Go build cache). The other prewarm jobs run as root and never
+# match the sweep, so judging (and its sweeps) proceeds around them; only
+# the Go build's window needs exclusivity.
 _prewarming = False
 
 
@@ -176,7 +177,11 @@ def _run_case(
             output_file.seek(0)
             output = output_file.read(output_limit).decode("utf-8", errors="replace")
             protocol_file.seek(0)
-            protocol = protocol_file.read(1 << 20).decode("utf-8", errors="replace")
+            # The runtime sandbox's RLIMIT_FSIZE caps this file at
+            # output_limit, which the corpus's largest payloads far exceed
+            # (output_kb up to 8192) — a fixed small cap here truncated the
+            # JSON mid-line and misreported correct runs as protocol errors.
+            protocol = protocol_file.read(output_limit + 4096).decode("utf-8", errors="replace")
             # Trust the dedicated protocol channel; stdout parsing remains
             # only as the fallback for harnesses that could not use it.
             parsed = _parse_protocol(protocol) if protocol.strip() else _parse_protocol(output)
@@ -263,6 +268,13 @@ def _process_job(job_dir: Path) -> None:
             results = []
             request_cases = request.get("cases", [])
             for case_index, case in enumerate(request_cases):
+                if not job_dir.is_dir():
+                    # The API tears a job directory down when it stops
+                    # waiting (deadline or restart); a huge case list would
+                    # otherwise keep pinning the runner long after the
+                    # answer lost its reader.
+                    print(f"CoderPuzzle job {job_dir.name} abandoned mid-run", file=sys.stderr, flush=True)
+                    return
                 result = _run_case(
                     job_root,
                     case["input"],
@@ -388,7 +400,6 @@ def _prewarm_toolchains_once() -> None:
     cold starts; the shared compile budget measures wall clock)."""
     global _prewarming
     warm_dir = PREWARM_DIR
-    _prewarming = True
     try:
         warm_dir.mkdir(parents=True, exist_ok=True)
         # The Go job runs as the compiler uid so it can share its build cache;
@@ -461,6 +472,9 @@ def _prewarm_toolchains_once() -> None:
             None,
         ))
         for command, job_environment, preexec in jobs:
+            # Narrow the sweep suppression to the one job the sweep could
+            # catch: the Go build under the compiler-sandbox's submission uid.
+            _prewarming = command[1] == "/runner/compiler_sandbox.py"
             try:
                 subprocess.run(
                     command, env=job_environment, cwd=warm_dir,
