@@ -1,6 +1,6 @@
 """Resolve the problem-set source specification.
 
-``OPENOJ_PROBLEMS`` selects where problem packages come from:
+``CODERPUZZLE_PROBLEMS`` selects where problem packages come from:
 
     owner/name[@ref]        a GitHub repository, e.g. CoderPuzzle/coderpuzzle-problems
     https://host/…[#ref]    a full https git URL (or http on a trusted network)
@@ -18,7 +18,7 @@ after a URL) pins a branch or tag; without it the remote's default branch is
 used.
 
 Remote sources are cloned shallowly into a writable cache directory
-(``OPENOJ_PROBLEMS_CACHE``, default ``/cache/problems``) at startup and
+(``CODERPUZZLE_PROBLEMS_CACHE``, default ``/cache/problems``) at startup and
 updated on every start: fetch the pinned ref (or default ``HEAD``), then
 hard-reset the working tree, so the cache always converges to the remote.
 Local sources are used in place. In both cases, if the resolved repository
@@ -127,7 +127,7 @@ def problem_root(repository: Path) -> Path:
 
 
 def _recorded_commit(target: Path) -> str | None:
-    marker = target / ".openoj-commit"
+    marker = target / ".coderpuzzle-commit"
     if marker.is_file():
         return marker.read_text(encoding="utf-8").strip() or None
     return None
@@ -154,7 +154,7 @@ def _remote_commit(source: RemoteSource) -> str | None:
 
 
 def _record_commit(target: Path, commit: str) -> None:
-    (target / ".openoj-commit").write_text(commit + "\n", encoding="utf-8")
+    (target / ".coderpuzzle-commit").write_text(commit + "\n", encoding="utf-8")
 
 
 def resolve_spec(spec: str, cache_dir: Path | None = None, update: bool = True) -> Path:
@@ -167,7 +167,7 @@ def resolve_spec(spec: str, cache_dir: Path | None = None, update: bool = True) 
         return problem_root(source.path)
 
     if cache_dir is None:
-        raise ProblemSourceError("Remote problem sets require a writable cache directory (OPENOJ_PROBLEMS_CACHE)")
+        raise ProblemSourceError("Remote problem sets require a writable cache directory (CODERPUZZLE_PROBLEMS_CACHE)")
     target = cache_dir / source.cache_key
     if not update:
         # read-only resolution: the problems-fetcher service prepared the

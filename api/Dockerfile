@@ -10,15 +10,15 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY app ./app
 
-# git fetches remote problem sets (OPENOJ_PROBLEMS=owner/name or a git URL)
+# git fetches remote problem sets (CODERPUZZLE_PROBLEMS=owner/name or a git URL)
 RUN apt-get update \
     && apt-get install -y --no-install-recommends git \
     && rm -rf /var/lib/apt/lists/*
 
-RUN groupadd --gid 10001 openoj \
-    && useradd --uid 10001 --gid openoj --no-create-home openoj \
+RUN groupadd --gid 10001 coderpuzzle \
+    && useradd --uid 10001 --gid coderpuzzle --no-create-home coderpuzzle \
     && mkdir -p /data /queue /cache/problems \
-    && chown -R openoj:openoj /data /queue /cache /app \
+    && chown -R coderpuzzle:coderpuzzle /data /queue /cache /app \
     && chmod 0700 /data \
     && chmod 0770 /queue
 

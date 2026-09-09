@@ -54,7 +54,7 @@ suite silently.
 
 Managed-language submissions would pay JSON parsing per case, so the typed
 executors encode each case into a compact big-endian stream that a generated
-reader (`OpenOJReader`) decodes before calling the submission:
+reader (`CoderPuzzleReader`) decodes before calling the submission:
 
 - `integer` 32 → `int32`; `integer` 64 → `int64`; `number` → IEEE `float64`
 - `boolean` → one byte `0`/`1`

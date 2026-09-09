@@ -9,7 +9,7 @@ Usage: verify_solution.py <shard-qualified-bundle-key> [<ext> ...]
        (default exts: every solution.* present in the bundle)
 
 The key is resolved against the sibling coderpuzzle-problems checkout (or
-wherever OPENOJ_PROBLEMS_BANK points); local toolchain binaries are
+wherever CODERPUZZLE_PROBLEMS_BANK points); local toolchain binaries are
 expected on PATH (g++, go, rustc, node, javac/java) next to the repo's
 npm-installed tsc.
 """
@@ -23,9 +23,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = Path(os.environ.get(
-    "OPENOJ_PROBLEMS_BANK", str(ROOT.parent / "coderpuzzle-problems")))
+    "CODERPUZZLE_PROBLEMS_BANK", str(ROOT.parent / "coderpuzzle-problems")))
 sys.path.insert(0, str(ROOT))
-os.environ.setdefault("OPENOJ_PROBLEMS_DIR", str(REPO / "problems-adapt"))
+os.environ.setdefault("CODERPUZZLE_PROBLEMS_DIR", str(REPO / "problems-adapt"))
 
 from api.app.judge import _compare  # noqa: E402
 from api.app import problems as problems_module  # noqa: E402
@@ -208,7 +208,7 @@ def run_cases(bundle: Path, solution: Path) -> tuple[bool, str]:
     time_limit = max(problem["limits"].get("time_ms", 1500) * 3, 5000) / 1000
 
     passed = 0
-    with tempfile.TemporaryDirectory(prefix="openoj-verify-") as directory:
+    with tempfile.TemporaryDirectory(prefix="coderpuzzle-verify-") as directory:
         job_root = Path(directory)
         scratch = job_root / "scratch"
         scratch.mkdir()

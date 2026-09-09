@@ -2,7 +2,7 @@
 
 Tracked tooling that runs on this checkout (not in the runner image).
 Bank paths default to the sibling `../coderpuzzle-problems` checkout;
-override with `OPENOJ_PROBLEMS_BANK`.
+override with `CODERPUZZLE_PROBLEMS_BANK`.
 
 ## Authoring gates
 
@@ -18,7 +18,7 @@ override with `OPENOJ_PROBLEMS_BANK`.
   coverage, slug parity, shard placement, bundle file shape, the 13
   `-crawl` twins. Run after any tree surgery. Upstream scrape sources
   default to `~/code/lc-crawl` and `~/code/bettercode`; override with
-  `OPENOJ_CRAWL` / `OPENOJ_BETTERCODE`.
+  `CODERPUZZLE_CRAWL` / `CODERPUZZLE_BETTERCODE`.
 
 ## Headless-UI drivers (frontend work)
 

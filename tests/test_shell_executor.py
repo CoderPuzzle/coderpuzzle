@@ -12,7 +12,7 @@ from runner.executors.shell import ShellExecutor
 
 ROOT = Path(__file__).resolve().parent.parent
 RUNNER = ROOT / "runner"
-PROTOCOL_PREFIX = "__OPENOJ_RESULT__"
+PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 
 
 def run_shell(script: str, case_input: str, *, output_kb: int = 64) -> dict:
@@ -24,7 +24,7 @@ def run_shell(script: str, case_input: str, *, output_kb: int = 64) -> dict:
             "PATH": "/usr/local/bin:/usr/bin:/bin",
             "PYTHONPATH": str(RUNNER),
             "TMPDIR": job,
-            "OPENOJ_OUTPUT_KB": str(output_kb),
+            "CODERPUZZLE_OUTPUT_KB": str(output_kb),
         }
         process = subprocess.run(
             [sys.executable, str(RUNNER / "shell_harness.py"), "--", str(script_path)],
@@ -87,7 +87,7 @@ class ShellExecutorTests(unittest.TestCase):
                 {"output_kb": 7},
                 {"provided": {}},
             )
-            self.assertEqual("7", program.environment["OPENOJ_OUTPUT_KB"])
+            self.assertEqual("7", program.environment["CODERPUZZLE_OUTPUT_KB"])
             self.assertEqual("solution.sh", Path(program.command[-1]).name)
 
         with tempfile.TemporaryDirectory() as job:

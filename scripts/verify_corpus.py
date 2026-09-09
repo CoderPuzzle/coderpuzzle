@@ -31,12 +31,12 @@ from pathlib import Path
 # Bank defaults to the sibling checkout; the two upstream scrape sources
 # are only needed for the crawl-side checks and stay env-overridable.
 BANK = Path(os.environ.get(
-    "OPENOJ_PROBLEMS_BANK",
+    "CODERPUZZLE_PROBLEMS_BANK",
     str(Path(__file__).resolve().parents[2] / "coderpuzzle-problems")))
 CRAWL = Path(os.environ.get(
-    "OPENOJ_CRAWL", str(Path.home() / "code/lc-crawl/problems")))
+    "CODERPUZZLE_CRAWL", str(Path.home() / "code/lc-crawl/problems")))
 BETTERCODE = Path(os.environ.get(
-    "OPENOJ_BETTERCODE", str(Path.home() / "code/bettercode/data/problems.jsonl")))
+    "CODERPUZZLE_BETTERCODE", str(Path.home() / "code/bettercode/data/problems.jsonl")))
 ORIGINALS = BANK / "problems-originals"
 SERVED = BANK / "problems-adapt"
 

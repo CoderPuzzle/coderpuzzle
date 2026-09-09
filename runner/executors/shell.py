@@ -48,7 +48,7 @@ class ShellExecutor(Python3Executor):
                 "TMPDIR": str(scratch),
                 # The harness caps captured stdout here because the raw
                 # stdin wire carries no limits envelope for it to read.
-                "OPENOJ_OUTPUT_KB": str(int(limits.get("output_kb", 64))),
+                "CODERPUZZLE_OUTPUT_KB": str(int(limits.get("output_kb", 64))),
             },
         )
 

@@ -10,8 +10,8 @@ from pathlib import Path
 from typing import Any, Iterator
 
 
-DATA_DIR = Path(os.environ.get("OPENOJ_DATA_DIR", ".data"))
-DATABASE_PATH = DATA_DIR / "openoj.sqlite3"
+DATA_DIR = Path(os.environ.get("CODERPUZZLE_DATA_DIR", ".data"))
+DATABASE_PATH = DATA_DIR / "coderpuzzle.sqlite3"
 
 # Guest sessions expire after this much inactivity (seconds); everything the
 # session owns — drafts and submissions — is deleted with it.

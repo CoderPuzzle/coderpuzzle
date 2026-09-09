@@ -40,7 +40,7 @@ from .problems import (
     public_problem,
 )
 
-SESSION_COOKIE = "openoj_session"
+SESSION_COOKIE = "coderpuzzle_session"
 
 
 @asynccontextmanager
@@ -68,11 +68,11 @@ def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
-def current_session(openoj_session: Annotated[str | None, Cookie()] = None) -> str:
+def current_session(coderpuzzle_session: Annotated[str | None, Cookie()] = None) -> str:
     """Require an active guest session; 401 otherwise (the frontend then
     shows the Continue-as-guest entrance)."""
-    if openoj_session and validate_session(openoj_session):
-        return openoj_session
+    if coderpuzzle_session and validate_session(coderpuzzle_session):
+        return coderpuzzle_session
     raise HTTPException(status_code=401, detail="No active session")
 
 
@@ -103,14 +103,14 @@ def start_session(response: Response, request: Request) -> dict[str, Any]:
 @app.get("/session")
 def session_status(
     touch: int = Query(default=1, ge=0, le=1),
-    openoj_session: Annotated[str | None, Cookie()] = None,
+    coderpuzzle_session: Annotated[str | None, Cookie()] = None,
 ) -> dict[str, Any]:
     # touch=0 validates without extending the idle clock: the frontend's
     # inactivity watcher probes with it, so watching cannot keep an
     # abandoned session alive.
-    if not (openoj_session and validate_session(openoj_session, touch=bool(touch))):
+    if not (coderpuzzle_session and validate_session(coderpuzzle_session, touch=bool(touch))):
         raise HTTPException(status_code=401, detail="No active session")
-    user = session_user(openoj_session)
+    user = session_user(coderpuzzle_session)
     return {
         "status": "active",
         "idle_seconds": SESSION_IDLE_SECONDS,

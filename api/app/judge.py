@@ -12,8 +12,8 @@ from typing import Any
 from . import validators
 
 
-QUEUE_DIR = Path(os.environ.get("OPENOJ_QUEUE_DIR", ".queue"))
-RUNNER_TIMEOUT = float(os.environ.get("OPENOJ_RUNNER_TIMEOUT_SECONDS", "20"))
+QUEUE_DIR = Path(os.environ.get("CODERPUZZLE_QUEUE_DIR", ".queue"))
+RUNNER_TIMEOUT = float(os.environ.get("CODERPUZZLE_RUNNER_TIMEOUT_SECONDS", "20"))
 
 
 class RunnerUnavailable(RuntimeError):
@@ -29,7 +29,7 @@ class FormatRejected(ValueError):
 # the full poll timeout. A small slot count bounds how many jobs wait on
 # the runner at once; saturation raises RunnerUnavailable, which the
 # endpoints translate into an immediate 503.
-JUDGE_CONCURRENCY = max(1, int(os.environ.get("OPENOJ_JUDGE_CONCURRENCY", "2")))
+JUDGE_CONCURRENCY = max(1, int(os.environ.get("CODERPUZZLE_JUDGE_CONCURRENCY", "2")))
 _judge_slots = threading.BoundedSemaphore(JUDGE_CONCURRENCY)
 
 

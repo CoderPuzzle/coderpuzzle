@@ -82,7 +82,7 @@ function setMode(mode) {
 }
 
 async function main() {
-  const profile = `/tmp/openoj-chrome-${Date.now()}`;
+  const profile = `/tmp/coderpuzzle-chrome-${Date.now()}`;
   const proc = spawn(CHROME, [
     "--headless=new",
     "--disable-gpu",

@@ -12,10 +12,7 @@
       (() => {
         let saved = null;
         try {
-          // the pre-rename key is read only for users who saved a
-          // preference before the rebrand; it is never written anymore
-          saved = localStorage.getItem("coderpuzzle:theme")
-            ?? localStorage.getItem("openoj:theme");
+          saved = localStorage.getItem("coderpuzzle:theme");
         } catch {
           // System preference remains the safe fallback.
         }

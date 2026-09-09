@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Format files (or check them) with openoj's pinned toolchain, without
+# Format files (or check them) with coderpuzzle's pinned toolchain, without
 # installing anything locally — the runner image carries every formatter.
 #
 #   scripts/format.sh path/to/file.go …        format in place
@@ -19,7 +19,7 @@
 
 set -euo pipefail
 
-IMAGE="${OPENOJ_IMAGE:-ghcr.io/coderpuzzle/coderpuzzle:latest}"
+IMAGE="${CODERPUZZLE_IMAGE:-ghcr.io/coderpuzzle/coderpuzzle:latest}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 exec docker run --rm --user 0:0 \

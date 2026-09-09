@@ -1,4 +1,4 @@
-name: openoj
+name: coderpuzzle
 
 services:
   web:
@@ -6,7 +6,7 @@ services:
       context: ./frontend
     ports:
       # Served directly, plain HTTP; TLS is terminated by an external edge.
-      - "${OPENOJ_PORT:-8081}:8080"
+      - "${CODERPUZZLE_PORT:-8081}:8080"
     depends_on:
       api:
         condition: service_healthy
@@ -30,16 +30,16 @@ services:
   problems-fetcher:
     # One-shot: the only component allowed to reach github.com; fills the
     # problems_cache volume before the networkless API starts. No-op when
-    # OPENOJ_PROBLEMS is unset or local.
+    # CODERPUZZLE_PROBLEMS is unset or local.
     build:
       context: ./api
     entrypoint: [ "python", "-m", "app.fetch_problems" ]
     environment:
-      OPENOJ_PROBLEMS: ${OPENOJ_PROBLEMS:-CoderPuzzle/coderpuzzle-problems}
-      OPENOJ_PROBLEMS_CACHE: /cache/problems
+      CODERPUZZLE_PROBLEMS: ${CODERPUZZLE_PROBLEMS:-CoderPuzzle/coderpuzzle-problems}
+      CODERPUZZLE_PROBLEMS_CACHE: /cache/problems
       HOME: /tmp
     volumes:
-      - ${OPENOJ_PROBLEMS_CACHE_DIR:-./.cache}:/cache
+      - ${CODERPUZZLE_PROBLEMS_CACHE_DIR:-./.cache}:/cache
     # The fetcher runs as root because it is the one component that must write
     # to the host-shared ./.cache directory, which Docker creates root-owned.
     # It stays read_only with all capabilities dropped and no-new-privileges;
@@ -64,18 +64,18 @@ services:
       problems-fetcher:
         condition: service_completed_successfully
     environment:
-      OPENOJ_PROBLEMS: ${OPENOJ_PROBLEMS:-CoderPuzzle/coderpuzzle-problems}
-      OPENOJ_PROBLEMS_CACHE: /cache/problems
-      OPENOJ_PROBLEMS_DIR: /problems
-      OPENOJ_DATA_DIR: /data
-      OPENOJ_QUEUE_DIR: /queue
-      OPENOJ_RUNNER_TIMEOUT_SECONDS: "20"
+      CODERPUZZLE_PROBLEMS: ${CODERPUZZLE_PROBLEMS:-CoderPuzzle/coderpuzzle-problems}
+      CODERPUZZLE_PROBLEMS_CACHE: /cache/problems
+      CODERPUZZLE_PROBLEMS_DIR: /problems
+      CODERPUZZLE_DATA_DIR: /data
+      CODERPUZZLE_QUEUE_DIR: /queue
+      CODERPUZZLE_RUNNER_TIMEOUT_SECONDS: "20"
       # Writable home so git (used to fetch remote problem sets) can operate
       HOME: /tmp
     volumes:
-      - "${OPENOJ_PROBLEMS_PATH:-./problems}:/problems:ro"
-      - ${OPENOJ_PROBLEMS_CACHE_DIR:-./.cache}:/cache:ro
-      - openoj_data:/data
+      - "${CODERPUZZLE_PROBLEMS_PATH:-./problems}:/problems:ro"
+      - ${CODERPUZZLE_PROBLEMS_CACHE_DIR:-./.cache}:/cache:ro
+      - coderpuzzle_data:/data
       - judge_queue:/queue
     healthcheck:
       test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')" ]
@@ -97,8 +97,8 @@ services:
     build:
       context: ./runner
     environment:
-      OPENOJ_QUEUE_DIR: /queue
-      OPENOJ_POLL_INTERVAL: "0.05"
+      CODERPUZZLE_QUEUE_DIR: /queue
+      CODERPUZZLE_POLL_INTERVAL: "0.05"
     volumes:
       - judge_queue:/queue
     network_mode: none
@@ -126,7 +126,7 @@ services:
     restart: unless-stopped
 
 volumes:
-  openoj_data:
+  coderpuzzle_data:
   judge_queue:
 
 networks:

@@ -11,16 +11,16 @@ from .problem_source import resolve_spec
 
 
 def _problems_dir() -> Path:
-    # OPENOJ_PROBLEMS selects the source (GitHub shorthand, git URL, or an
+    # CODERPUZZLE_PROBLEMS selects the source (GitHub shorthand, git URL, or an
     # explicit local path — see problem_source); without it problems come
-    # from OPENOJ_PROBLEMS_DIR as before.
-    spec = os.environ.get("OPENOJ_PROBLEMS", "").strip()
+    # from CODERPUZZLE_PROBLEMS_DIR as before.
+    spec = os.environ.get("CODERPUZZLE_PROBLEMS", "").strip()
     if spec:
-        cache = os.environ.get("OPENOJ_PROBLEMS_CACHE", "").strip()
+        cache = os.environ.get("CODERPUZZLE_PROBLEMS_CACHE", "").strip()
         # update=False: the API container has no network — the
         # problems-fetcher service populated the cache before startup
         return resolve_spec(spec, Path(cache) if cache else None, update=False).resolve()
-    return Path(os.environ.get("OPENOJ_PROBLEMS_DIR", "problems")).resolve()
+    return Path(os.environ.get("CODERPUZZLE_PROBLEMS_DIR", "problems")).resolve()
 
 
 PROBLEMS_DIR = _problems_dir()

@@ -69,7 +69,7 @@ const assert = (label, condition) => {
 };
 
 async function main() {
-  const profile = `/tmp/openoj-chrome-e2e-${Date.now()}`;
+  const profile = `/tmp/coderpuzzle-chrome-e2e-${Date.now()}`;
   const proc = spawn(CHROME, [
     "--headless=new", "--disable-gpu", "--no-sandbox",
     "--window-size=1440,900",

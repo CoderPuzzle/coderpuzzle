@@ -1,5 +1,5 @@
 // Local-only design-preview stub: serves the built frontend (dist/) and mocks
-// the OpenOJ API with realistic data so the design can be screenshotted
+// the CoderPuzzle API with realistic data so the design can be screenshotted
 // without Docker or the real backend. Local-only (its mode file and the
 // screenshots live in the repo-root .localonly/, which is gitignored).
 //
@@ -325,13 +325,13 @@ const server = http.createServer((req, res) => {
     }
     const authMatch = path.match(/^\/api\/auth\/(register|login|logout)$/);
     if (authMatch) {
-      res.setHeader("Set-Cookie", "openoj_session=stub0000000000000000000000000002; Path=/; HttpOnly; SameSite=Lax");
+      res.setHeader("Set-Cookie", "coderpuzzle_session=stub0000000000000000000000000002; Path=/; HttpOnly; SameSite=Lax");
       if (authMatch[1] === "logout") return res.end(toJSON({ status: "logged_out" }));
       return res.end(toJSON({ status: "registered", username: "tester", is_admin: false }));
     }
     if (path === "/api/session") {
       if (req.method === "POST") {
-        res.setHeader("Set-Cookie", "openoj_session=stub0000000000000000000000000001; Path=/; HttpOnly; SameSite=Lax");
+        res.setHeader("Set-Cookie", "coderpuzzle_session=stub0000000000000000000000000001; Path=/; HttpOnly; SameSite=Lax");
         return res.end(toJSON({ status: "active", idle_seconds: 3600 }));
       }
       return res.end(toJSON({ status: "active", idle_seconds: 3600 }));
@@ -412,6 +412,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, "127.0.0.1", () => {
-  console.log(`OpenOJ stub server → http://127.0.0.1:${PORT}  (dist: ${DIST})`);
+  console.log(`CoderPuzzle stub server → http://127.0.0.1:${PORT}  (dist: ${DIST})`);
   console.log(`run mode: "${runMode()}" — write ok|wa|tle to .localonly/stub-mode to flip verdicts`);
 });

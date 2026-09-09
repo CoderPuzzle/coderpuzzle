@@ -24,9 +24,9 @@ from formatters import FormatError, format_source
 from protocol import parse_protocol as _parse_protocol
 
 
-QUEUE_DIR = Path(os.environ.get("OPENOJ_QUEUE_DIR", "/queue"))
-WORK_DIR = Path(os.environ.get("OPENOJ_WORK_DIR", "/work"))
-POLL_INTERVAL = float(os.environ.get("OPENOJ_POLL_INTERVAL", "0.05"))
+QUEUE_DIR = Path(os.environ.get("CODERPUZZLE_QUEUE_DIR", "/queue"))
+WORK_DIR = Path(os.environ.get("CODERPUZZLE_WORK_DIR", "/work"))
+POLL_INTERVAL = float(os.environ.get("CODERPUZZLE_POLL_INTERVAL", "0.05"))
 NOBODY_UID = 65534
 NOBODY_GID = 65534
 RUNTIME_SANDBOX = "/runner/runtime_sandbox.py"
@@ -340,7 +340,7 @@ def _reap_orphans() -> None:
 
 # Entries under /tmp the worker manages itself (the shared Go build cache
 # the executors compile against, and the prewarm build directory).
-PREWARM_DIR = Path(os.environ.get("OPENOJ_PREWARM_DIR", "/tmp/coderpuzzle-prewarm"))
+PREWARM_DIR = Path(os.environ.get("CODERPUZZLE_PREWARM_DIR", "/tmp/coderpuzzle-prewarm"))
 _MANAGED_TMP = {"coderpuzzle-gocache", PREWARM_DIR.name}
 
 
@@ -477,7 +477,7 @@ def _prewarm_toolchains_once() -> None:
 
 
 def _prewarm_loop() -> None:
-    interval = float(os.environ.get("OPENOJ_PREWARM_INTERVAL", "600"))
+    interval = float(os.environ.get("CODERPUZZLE_PREWARM_INTERVAL", "600"))
     while True:
         _prewarm_toolchains_once()
         time.sleep(interval)

@@ -134,8 +134,8 @@ def run_scenario(scenario: dict) -> dict:
             timeout=60,
         )
     for line in process.stdout.decode().splitlines():
-        if line.startswith("__OPENOJ_RESULT__"):
-            return json.loads(line[len("__OPENOJ_RESULT__"):])
+        if line.startswith("__CODERPUZZLE_RESULT__"):
+            return json.loads(line[len("__CODERPUZZLE_RESULT__"):])
     raise AssertionError(f"no protocol line; stderr={process.stderr[:800]!r}")
 
 

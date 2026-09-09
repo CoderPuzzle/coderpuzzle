@@ -17,10 +17,10 @@ the tri-state `/format` endpoint and the `coderpuzzle format|gen-starters|judge|
 docker compose up --build
 ```
 
-Open <http://localhost:8081>. Set `OPENOJ_PORT` to publish another port:
+Open <http://localhost:8081>. Set `CODERPUZZLE_PORT` to publish another port:
 
 ```bash
-OPENOJ_PORT=9090 docker compose up --build
+CODERPUZZLE_PORT=9090 docker compose up --build
 ```
 
 The editor uses Monaco's language services and local worker bundles, so grammar
@@ -30,7 +30,7 @@ header toggle saves an explicit browser-local override. Visitors work in
 ephemeral guest sessions: editor drafts are stored server-side per session
 and survive refreshes, and both drafts and submission history are scoped to
 the session (idle-expiring after an hour). Submission records persist in the
-`openoj_data` volume.
+`coderpuzzle_data` volume.
 
 ## Problem packages
 
@@ -60,25 +60,25 @@ Problems are mounted read-only from `./problems` by default. Sideload another
 set without rebuilding images:
 
 ```bash
-OPENOJ_PROBLEMS_PATH=/absolute/path/to/problems docker compose up --build
+CODERPUZZLE_PROBLEMS_PATH=/absolute/path/to/problems docker compose up --build
 ```
 
-### Selecting a problem set with `OPENOJ_PROBLEMS`
+### Selecting a problem set with `CODERPUZZLE_PROBLEMS`
 
 **The default problem set is `CoderPuzzle/coderpuzzle-problems`** — a plain
 `docker compose up --build` clones it into `./.cache` on first start (and
 afterwards only refreshes when the remote actually moved). To use something
-else, set `OPENOJ_PROBLEMS`. The specification follows git's disambiguation
+else, set `CODERPUZZLE_PROBLEMS`. The specification follows git's disambiguation
 convention: a bare two-segment `owner/name` **always means GitHub**; a local
 directory with that shape must be referenced explicitly and never shadows
 the shorthand.
 
 ```bash
 docker compose up --build                                          # default: CoderPuzzle/coderpuzzle-problems
-OPENOJ_PROBLEMS=CoderPuzzle/coderpuzzle-problems@v1.2.0       docker compose up --build  # pinned branch/tag
-OPENOJ_PROBLEMS=https://github.com/myname/set.git docker compose up --build  # full git URL
-OPENOJ_PROBLEMS=./name/repo                       docker compose up --build  # local, explicit
-OPENOJ_PROBLEMS=/problems                         docker compose up --build  # force the bundled fallback set
+CODERPUZZLE_PROBLEMS=CoderPuzzle/coderpuzzle-problems@v1.2.0       docker compose up --build  # pinned branch/tag
+CODERPUZZLE_PROBLEMS=https://github.com/myname/set.git docker compose up --build  # full git URL
+CODERPUZZLE_PROBLEMS=./name/repo                       docker compose up --build  # local, explicit
+CODERPUZZLE_PROBLEMS=/problems                         docker compose up --build  # force the bundled fallback set
 ```
 
 An unreachable remote keeps the cached revision (or fails loudly on a cold
@@ -98,8 +98,8 @@ Accepted forms:
   pair them with a bind mount.
 
 Remote sets are cloned (shallow) into a git-ignored `./.cache` directory
-next to this repo (override with `OPENOJ_PROBLEMS_CACHE_DIR`); the clone's
-commit hash is recorded in `.openoj-commit`. On each start the fetcher asks
+next to this repo (override with `CODERPUZZLE_PROBLEMS_CACHE_DIR`); the clone's
+commit hash is recorded in `.coderpuzzle-commit`. On each start the fetcher asks
 the remote for its current hash for the pinned ref with one `ls-remote`:
 if it matches the record, nothing is re-fetched; if it moved, the ref is
 fetched and the working tree hard-reset to converge; if the remote is
@@ -110,10 +110,10 @@ API starts, and a missing cache fails startup loudly rather than silently
 serving a different set. Local sets are used in place with no caching: bind
 mounts update in realtime. In both cases,
 if the resolved repository contains a `problems/` subdirectory, it is used as
-the package root; otherwise the repository root is. When `OPENOJ_PROBLEMS`
-is unset, problems come from the `OPENOJ_PROBLEMS_DIR` mount as before.
+the package root; otherwise the repository root is. When `CODERPUZZLE_PROBLEMS`
+is unset, problems come from the `CODERPUZZLE_PROBLEMS_DIR` mount as before.
 
-The fallback problem set (used when `OPENOJ_PROBLEMS` is unset) is one
+The fallback problem set (used when `CODERPUZZLE_PROBLEMS` is unset) is one
 sharded bundle:
 
 ```text
@@ -302,7 +302,7 @@ endpoints and the session model.
 
 ## Persistence
 
-SQLite data lives at `/data/openoj.sqlite3` in the `openoj_data` named volume.
+SQLite data lives at `/data/coderpuzzle.sqlite3` in the `coderpuzzle_data` named volume.
 Normal `docker compose down` and image rebuilds preserve it. The judge queue is
 a separate transient volume and contains no expected answers.
 

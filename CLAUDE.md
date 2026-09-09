@@ -112,7 +112,7 @@ formatter via the image.
 - The app fetches the problem set from `CoderPuzzle/coderpuzzle-problems` on start
   (host cache `./.cache/problems/<cache-key>/`, populated by the
   problems-fetcher service), or serves a local path via
-  `OPENOJ_PROBLEMS`. Restarting the stack picks up newly pushed problems.
+  `CODERPUZZLE_PROBLEMS`. Restarting the stack picks up newly pushed problems.
 
 ## Core APIs and CLI
 
@@ -239,8 +239,8 @@ check the clock against the reset time before waiting on one.
 
 ## Deployment
 
-Production: GCP VM `katze` (us-east4-a since 2026-08-24 — the old
-us-west1-a `openoj` VM is retired; project `zdong-14850-alefa-ai`,
+Production: GCP VM `katze` (us-east4-a since 2026-08-24 — it replaced
+the retired us-west1-a VM; project `zdong-14850-alefa-ai`,
 account `zdong.14850@gmail.com`), repo at
 `/home/dongziyu/code/coderpuzzle`, site https://coderpuzzle.dongziyu.com
 (TLS is terminated by a caddy container on the VM itself —

@@ -7,7 +7,7 @@ web UI, and the `coderpuzzle` CLI (installed in the image from
 both — see the tri-state contract below.
 
 Sessions are cookie-based. Everything except `/health`, `GET
-/auth/status`, and `POST /auth/register` requires an `openoj_session`
+/auth/status`, and `POST /auth/register` requires a `coderpuzzle_session`
 cookie from `POST /session`; authenticated callers additionally carry
 the session of a signed-in
 user. Errors are FastAPI payloads: `{"detail": "<reason>"}` with the
@@ -20,7 +20,7 @@ busy).
 ### Health & session
 
 - `GET /health` → `{"status": "ok"}` — liveness; no session needed.
-- `POST /session` — create a guest session; sets the `openoj_session`
+- `POST /session` — create a guest session; sets the `coderpuzzle_session`
   cookie. → `{"status": "active", "idle_seconds": 3600}`.
 - `GET /session?touch=0|1` — validate the session. `touch=0` validates
   **without** extending the idle clock (the frontend's inactivity
@@ -151,4 +151,4 @@ docker run --rm --user 0:0 \
 ```
 
 The convenience wrapper `scripts/format.sh` (coderpuzzle repo) does the
-mounting for the format case; `OPENOJ_IMAGE` overrides the tag.
+mounting for the format case; `CODERPUZZLE_IMAGE` overrides the tag.
