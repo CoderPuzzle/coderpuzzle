@@ -13,7 +13,13 @@ toolchain beyond Docker:
                                       bundle's language-agnostic schema
   cli.py judge <bundle-dir>           run every solution.* in the
                                       bundle through the real judging
-                                      path; all must pass every case
+                                      path and compare each output
+                                      against its expected value; all
+                                      must pass every case (mode-carrying
+                                      design/concurrent expecteds are
+                                      only crash-checked — the full
+                                      comparison gate is
+                                      scripts/verify_solution.py)
 
 In the image these run as `coderpuzzle format ...` / `coderpuzzle gen-starters
 ...` / `coderpuzzle judge ...` (see the coderpuzzle entrypoint installed by the
@@ -25,12 +31,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import os
 import shutil
 import subprocess
 import sys
 import tempfile
+from collections import Counter
 from pathlib import Path
+from typing import Any
 
 RUNNER = Path(__file__).resolve().parent
 
@@ -56,7 +65,8 @@ def _executors_ready() -> None:
     from executors import get_executor  # noqa: F401  (probe)
 
 
-LANGUAGE_BY_EXTENSION = {
+# Solution extension -> language: everything `judge`/`run` can execute.
+EXTENSION_LANGUAGE = {
     "py": "python3",
     "js": "javascript",
     "ts": "typescript",
@@ -66,9 +76,83 @@ LANGUAGE_BY_EXTENSION = {
     "rs": "rust",
     "sql": "sql",
     "sh": "shell",
+}
+
+# Its formatting superset: json/markdown have formatters but no executor.
+LANGUAGE_BY_EXTENSION = {
+    **EXTENSION_LANGUAGE,
     "json": "json",
     "md": "markdown",
 }
+
+
+# Kept byte-identical to api/app/judge.py (annotations included) — the test
+# suite pins the two definitions to identical ASTs; edit them together.
+def _close_enough(actual: Any, expected: Any, tolerance: float) -> bool:
+    """Per-scalar tolerant comparison: numbers may differ by the given
+    relative (and absolute) tolerance; structure must match exactly."""
+    if isinstance(actual, bool) or isinstance(expected, bool):
+        return actual is expected
+    if isinstance(actual, (int, float)) and isinstance(expected, (int, float)):
+        return math.isclose(actual, expected, rel_tol=tolerance, abs_tol=tolerance)
+    if isinstance(actual, list) and isinstance(expected, list):
+        return len(actual) == len(expected) and all(
+            _close_enough(a, e, tolerance) for a, e in zip(actual, expected)
+        )
+    if isinstance(actual, dict) and isinstance(expected, dict):
+        return actual.keys() == expected.keys() and all(
+            _close_enough(actual[key], expected[key], tolerance) for key in actual
+        )
+    return actual == expected
+
+
+# The expected-value modes (see api/app/judge.py) this gate deliberately
+# does not judge: their full semantics live beside the API's comparison and
+# the validators library, which do not ship in the runner image.
+# verify_solution.py — which imports the real comparison — is the
+# full-correctness gate for those bundles; here such a case is reported as
+# NOTE and only its crash-freedom is checked.
+UNJUDGED_EXPECTED_MODES = {"distribution", "any_of", "opaque", "grouped", "validator"}
+
+
+def _compare_expected(actual, expected, comparison):
+    """The CLI gate's comparison verdict: ("pass" | "fail" | "note", detail).
+
+    Mirrors api/app/judge.py's exact/close/sorted/multiset/set semantics;
+    mode-carrying expecteds (design/concurrent bundles) come back as
+    "note" rather than a silent pass."""
+    if isinstance(expected, dict) and expected.get("mode") in UNJUDGED_EXPECTED_MODES:
+        return "note", str(expected.get("mode"))
+    if isinstance(expected, list) and any(
+        isinstance(element, dict) and element.get("mode") in UNJUDGED_EXPECTED_MODES
+        for element in expected
+    ):
+        return "note", "per-element modes"
+    if comparison == "exact":
+        return ("pass", None) if actual == expected else ("fail", None)
+    if comparison == "close" or (
+        isinstance(comparison, dict) and comparison.get("mode") == "close"
+    ):
+        tolerance = (
+            float(comparison.get("tolerance", 1e-9))
+            if isinstance(comparison, dict)
+            else 1e-9
+        )
+        return ("pass", None) if _close_enough(actual, expected, tolerance) else ("fail", None)
+    if comparison in {"sorted", "multiset", "set"}:
+        if not isinstance(actual, list) or not isinstance(expected, list):
+            return "fail", None
+        normalize = lambda value: json.dumps(value, sort_keys=True, separators=(",", ":"))
+        normalized_actual = [normalize(value) for value in actual]
+        normalized_expected = [normalize(value) for value in expected]
+        if comparison == "sorted":
+            matched = sorted(normalized_actual) == sorted(normalized_expected)
+        elif comparison == "multiset":
+            matched = Counter(normalized_actual) == Counter(normalized_expected)
+        else:
+            matched = set(normalized_actual) == set(normalized_expected)
+        return ("pass", None) if matched else ("fail", None)
+    return "fail", f"unsupported comparison {comparison!r}"
 
 
 def _expand_formattable(names: list[str]) -> tuple[list[Path], list[Path]]:
@@ -103,15 +187,15 @@ def cmd_format(arguments: argparse.Namespace) -> int:
     files, skipped = _expand_formattable(arguments.files)
     for path in skipped:
         print(f"not a file: {path}", file=sys.stderr)
-        if arguments.report:
-            results = [{"file": str(path), "status": "error", "diagnostics": "not a file"}]
-            print(json.dumps(results, indent=2))
-            return 1
-        return 2
 
     if arguments.report:
-        results = []
-        errored = False
+        # every path gets its row, so a scripted consumer piped through
+        # `xargs -n 200` never silently loses the rest of its batch
+        results = [
+            {"file": str(path), "status": "error", "diagnostics": "not a file"}
+            for path in skipped
+        ]
+        errored = bool(skipped)
         for path in files:
             language = LANGUAGE_BY_EXTENSION.get(path.suffix.lstrip("."))
             if language is None:
@@ -138,6 +222,9 @@ def cmd_format(arguments: argparse.Namespace) -> int:
                 errored = True
         print(json.dumps(results, indent=2, ensure_ascii=False))
         return 1 if errored else 0
+
+    if skipped:
+        return 2
 
     changed = unformatted = 0
     for path in files:
@@ -229,6 +316,7 @@ def _authoring_compile_patches() -> None:
     Compile plainly instead — same command, same pinned tools.
     """
     _executors_ready()
+    from executors.base import ExecutorError
     from executors.compiled import CompiledExecutor
 
     def _plain_compile(self, job_root, command, output_path, environment):
@@ -244,7 +332,7 @@ def _authoring_compile_patches() -> None:
             timeout=300,
         )
         if completed.returncode != 0:
-            raw = completed.stdout or completed.stderr or b""
+            raw = completed.stdout or b""  # stderr is merged via STDOUT
             raise ExecutorError("Compilation failed:\n" + raw.decode("utf-8", "replace")[-4000:])
 
     CompiledExecutor.compile = _plain_compile
@@ -296,17 +384,6 @@ def _judge_one(
     from executors.base import ExecutorError
     from protocol import parse_protocol
 
-    EXTENSION_LANGUAGE = {
-        "py": "python3",
-        "js": "javascript",
-        "ts": "typescript",
-        "java": "java",
-        "cpp": "cpp",
-        "go": "go",
-        "rs": "rust",
-        "sql": "sql",
-        "sh": "shell",
-    }
     LANGUAGE_EXTENSIONS = {
         "python3": {"py"},
         "java": {"java"},
@@ -318,10 +395,13 @@ def _judge_one(
         "sql": {"sql"},
         "shell": {"sh"},
     }
+    comparison = invocation.get("comparison", "exact")
     language = EXTENSION_LANGUAGE.get(solution.suffix.lstrip("."))
     if language is None:
-        print(f"SKIP  {solution.name}: no executor for {solution.suffix}")
-        return 0
+        # A solution file this gate cannot name is a bundle bug (a stray
+        # editor backup, a misnamed variant), not something to skip quietly.
+        print(f"FAIL  {solution.name}: no executor for {solution.suffix}")
+        return 1
     executor = get_executor(language)
     code = solution.read_text(encoding="utf-8")
     work = Path(tempfile.mkdtemp(prefix="coderpuzzle-cli-"))
@@ -381,7 +461,21 @@ def _judge_one(
             # rather than aborting the sweep.
             verdict = parse_protocol(text)
             if verdict.get("status") == "completed":
-                passed += 1
+                outcome, mode = _compare_expected(verdict.get("actual"), case.get("expected"), comparison)
+                if outcome == "pass":
+                    passed += 1
+                elif outcome == "note":
+                    passed += 1
+                    print(
+                        f"NOTE  {solution.name}: case {index + 1}: '{mode}' expected "
+                        "is not compared by this gate (verify_solution.py judges it)"
+                    )
+                else:
+                    print(
+                        f"FAIL  {solution.name}: case {index + 1}: expected "
+                        f"{json.dumps(case['expected'])[:200]} got {json.dumps(verdict.get('actual'))[:200]}"
+                    )
+                    failures += 1
             else:
                 print(
                     f"FAIL  {solution.name}: case {index + 1}: "
@@ -462,17 +556,6 @@ def cmd_run(arguments: argparse.Namespace) -> int:
 
     language = arguments.lang
     if language is None:
-        EXTENSION_LANGUAGE = {
-            "py": "python3",
-            "js": "javascript",
-            "ts": "typescript",
-            "java": "java",
-            "cpp": "cpp",
-            "go": "go",
-            "rs": "rust",
-            "sql": "sql",
-            "sh": "shell",
-        }
         language = EXTENSION_LANGUAGE.get(solution.suffix.lstrip("."))
         if language is None:
             print(f"cannot infer language from {solution.suffix}; pass --lang", file=sys.stderr)
