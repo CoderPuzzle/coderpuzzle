@@ -26,7 +26,7 @@ from .database import (
     verify_user,
 )
 from .judge import RunnerUnavailable, execute, format_code_report, judge_slot
-from .tamper_scan import scan as tamper_scan
+from . import tamper_scan
 from .models import FormatRequest, RunRequest, SubmitRequest
 from .problems import (
     LANGUAGE_REGISTRY,
@@ -68,11 +68,13 @@ def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
-def current_session(coderpuzzle_session: Annotated[str | None, Cookie()] = None) -> str:
+def current_session(
+    session_cookie: Annotated[str | None, Cookie(alias=SESSION_COOKIE)] = None,
+) -> str:
     """Require an active guest session; 401 otherwise (the frontend then
     shows the Continue-as-guest entrance)."""
-    if coderpuzzle_session and validate_session(coderpuzzle_session):
-        return coderpuzzle_session
+    if session_cookie and validate_session(session_cookie):
+        return session_cookie
     raise HTTPException(status_code=401, detail="No active session")
 
 
@@ -103,14 +105,14 @@ def start_session(response: Response, request: Request) -> dict[str, Any]:
 @app.get("/session")
 def session_status(
     touch: int = Query(default=1, ge=0, le=1),
-    coderpuzzle_session: Annotated[str | None, Cookie()] = None,
+    session_cookie: Annotated[str | None, Cookie(alias=SESSION_COOKIE)] = None,
 ) -> dict[str, Any]:
     # touch=0 validates without extending the idle clock: the frontend's
     # inactivity watcher probes with it, so watching cannot keep an
     # abandoned session alive.
-    if not (coderpuzzle_session and validate_session(coderpuzzle_session, touch=bool(touch))):
+    if not (session_cookie and validate_session(session_cookie, touch=bool(touch))):
         raise HTTPException(status_code=401, detail="No active session")
-    user = session_user(coderpuzzle_session)
+    user = session_user(session_cookie)
     return {
         "status": "active",
         "idle_seconds": SESSION_IDLE_SECONDS,
@@ -266,11 +268,15 @@ def problem_figure(slug: str, figure: str, session_id: Annotated[str, Depends(cu
         raise HTTPException(status_code=404, detail="Figure not found")
     try:
         path = safe_problem_path(slug) / "figures" / figure
+        if not path.is_file():
+            raise HTTPException(status_code=404, detail="Figure not found")
+        content = path.read_bytes()
     except ProblemError:
         raise HTTPException(status_code=404, detail="Problem not found") from None
-    if not path.is_file():
-        raise HTTPException(status_code=404, detail="Figure not found")
-    return Response(content=path.read_bytes(), media_type="image/svg+xml")
+    except OSError:
+        # raw OSError text can leak server paths (see the problem route)
+        raise HTTPException(status_code=404, detail="Figure not found") from None
+    return Response(content=content, media_type="image/svg+xml")
 
 
 @app.get("/problems/{slug}/solutions")
@@ -281,6 +287,9 @@ def problem_solutions(slug: str, session_id: Annotated[str, Depends(current_sess
         loaded = load_solutions(slug)
     except ProblemError as error:
         raise HTTPException(status_code=404, detail=str(error)) from error
+    except (OSError, ValueError) as error:
+        # raw OSError text can leak server paths (see the problem route)
+        raise HTTPException(status_code=404, detail="Solutions could not be loaded") from error
     if loaded is None:
         raise HTTPException(status_code=404, detail="No solutions published for this problem")
     return loaded
@@ -330,7 +339,6 @@ def problems(
             "page_size": total,
             "pages": 1 if total else 0,
         }
-    page_size = min(page_size, 500)
     pages = max(1, (total + page_size - 1) // page_size)
     page = max(1, min(page, pages))
     start = (page - 1) * page_size
@@ -364,7 +372,7 @@ def problem(slug: str, session_id: Annotated[str, Depends(current_session)]) -> 
         return public_problem(load_problem(slug))
     except ProblemError as error:
         raise HTTPException(status_code=404, detail=str(error)) from error
-    except (OSError, ValueError):
+    except (OSError, ValueError) as error:
         # ProblemError carries the user-facing reason; raw OSError text can
         # leak server paths, so keep it generic.
         raise HTTPException(status_code=404, detail="Problem could not be loaded") from error
@@ -473,10 +481,10 @@ def format_source(
         raise HTTPException(status_code=503, detail=str(error)) from error
 
 
-def _attach_tamper_warnings(summary: dict[str, Any], slug: str, language: str, code: str) -> None:
+def _attach_tamper_warnings(summary: dict[str, Any], bundle: Path, language: str, code: str) -> None:
     """Flag (never gate) submissions that inspect or patch provided code."""
     try:
-        assembly = _assembly_sources(slug, language)
+        assembly = _assembly_sources(bundle, language)
         protected = tamper_scan.protected_names(assembly.get("provided", {}))
         warnings = tamper_scan.scan(code, language, protected)
     except Exception:  # noqa: BLE001 — the scan is advisory and must never fail a judge
@@ -494,6 +502,9 @@ def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)
         problem_data = load_problem(request.slug, path=bundle)
     except ProblemError as error:
         raise HTTPException(status_code=404, detail=str(error)) from error
+    except (OSError, ValueError) as error:
+        # raw OSError text can leak server paths (see the problem route)
+        raise HTTPException(status_code=404, detail="Problem could not be loaded") from error
 
     canonical = problem_data["public_cases"]
     if request.cases is None:
@@ -528,7 +539,7 @@ def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)
             result["status"] = "completed"
             result.pop("expected", None)
     summary = _summarize(results)
-    _attach_tamper_warnings(summary, problem_data["slug"], request.language, request.code)
+    _attach_tamper_warnings(summary, bundle, request.language, request.code)
     return summary
 
 
@@ -579,13 +590,16 @@ def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_se
         cases, public_count = load_all_cases(request.slug, path=bundle)
     except ProblemError as error:
         raise HTTPException(status_code=404, detail=str(error)) from error
+    except (OSError, ValueError) as error:
+        # raw OSError text can leak server paths (see the problem route)
+        raise HTTPException(status_code=404, detail="Problem could not be loaded") from error
 
     # Capture the storage scope before judging: a session that idle-expires
     # mid-judge still keeps its submission under the scope it ran under.
     scope = scope_key(session_id)
     results = _run_judge(problem_data, request.language, request.code, cases, public_count, bundle)
     summary = _summarize(results)
-    _attach_tamper_warnings(summary, problem_data["slug"], request.language, request.code)
+    _attach_tamper_warnings(summary, bundle, request.language, request.code)
     summary["reference_runtime_ms"] = _reference_runtime_ms(
         request, problem_data, cases, public_count, summary["status"] == "accepted", bundle
     )

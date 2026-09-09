@@ -4,7 +4,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from api.app.problems import ProblemError, load_reference_solution, parse_problem_bundle
+from api.app.problems import (
+    ProblemError,
+    load_designated_reference,
+    parse_problem_bundle,
+)
 
 BUNDLE = {
     "problem.json": json.dumps(
@@ -139,10 +143,10 @@ class ProblemBundleTests(unittest.TestCase):
         try:
             self.assertEqual(
                 "class Solution:\n    pass\n",
-                load_reference_solution("demo-problem", "python3"),
+                load_designated_reference("demo-problem", "python3"),
             )
-            self.assertIsNone(load_reference_solution("demo-problem", "rust"))
-            self.assertIsNone(load_reference_solution("demo-problem", "nonsense"))
+            self.assertIsNone(load_designated_reference("demo-problem", "rust"))
+            self.assertIsNone(load_designated_reference("demo-problem", "nonsense"))
         finally:
             problems.PROBLEMS_DIR = original
 

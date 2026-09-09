@@ -221,6 +221,28 @@ class ApiSurfaceTests(unittest.TestCase):
         # by JudgeInternalsTests below
         self.assertEqual(1, len(summary["results"]))
 
+    def test_run_flags_tampering_with_provided_code(self):
+        # The scan derives its symbol set from the bundle's own provided/
+        # sources; rebinding one must surface as advisory warnings next to
+        # the (unchanged) verdict. Regression: the call sites used to pass
+        # the slug where _assembly_sources expects the bundle path, so the
+        # scan silently never ran.
+        bundle = Path(self.temporary.name) / "0001-0100" / SLUG
+        provided = bundle / "provided" / "python"
+        provided.mkdir(parents=True)
+        (provided / "ListNode.py").write_text(
+            "class ListNode:\n    def __init__(self, val=0):\n        self.val = val\n",
+            encoding="utf-8",
+        )
+        response = self.client.post(
+            "/run",
+            json={"slug": "pair-sum", "language": "python3", "code": "ListNode = None"},
+        )
+        self.assertEqual(200, response.status_code)
+        summary = response.json()
+        self.assertEqual("accepted", summary["status"])  # advisory, never gating
+        self.assertTrue(summary.get("warnings"), "expected a tamper warning")
+
     def test_runner_unavailable_maps_to_503(self):
         with mock.patch.object(
             judge, "_submit", side_effect=judge.RunnerUnavailable("down")

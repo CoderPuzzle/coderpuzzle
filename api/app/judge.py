@@ -20,10 +20,6 @@ class RunnerUnavailable(RuntimeError):
     pass
 
 
-class FormatRejected(ValueError):
-    """The runner could format nothing — a parse error, or no such formatter."""
-
-
 # The runner executes one job at a time, so letting every request enqueue
 # just lengthens everyone's wait while pinning a worker thread apiece for
 # the full poll timeout. A small slot count bounds how many jobs wait on
@@ -243,14 +239,6 @@ def _submit(request_body: dict[str, Any]) -> dict[str, Any]:
             job_dir.rmdir()
         except OSError:
             pass
-
-
-def format_code(code: str, language: str) -> str:
-    """Return `code` formatted by the runner's toolchain for `language`."""
-    response = _submit({"version": 2, "kind": "format", "language": language, "code": code})
-    if "code" not in response:
-        raise FormatRejected(response.get("error") or "The source could not be formatted")
-    return response["code"]
 
 
 def format_code_report(code: str, language: str) -> dict[str, Any]:

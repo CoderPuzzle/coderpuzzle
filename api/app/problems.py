@@ -444,11 +444,8 @@ def parse_problem_bundle(path: Path) -> tuple[dict[str, Any], list[dict[str, Any
     if top[0][1].strip() != problem_data["title"].strip():
         raise ProblemError("statement.md title must match problem.json")
     section_names = [title for level, title, _ in top[1:] if level == 2]
-    if section_names != ["Description"]:
-        if section_names == ["Description", "Hints"]:
-            pass
-        else:
-            raise ProblemError("statement.md requires '## Description' followed by optional '## Hints'")
+    if section_names not in (["Description"], ["Description", "Hints"]):
+        raise ProblemError("statement.md requires '## Description' followed by optional '## Hints'")
     description_lines = statement.splitlines(keepends=True)
     description_start = top[1][2] + 1
     description_end = top[2][2] if len(top) > 2 else len(description_lines)
@@ -778,14 +775,6 @@ def load_designated_reference(slug: str, language: str, path: Optional[Path] = N
     if not file_path.is_file():
         return None
     return file_path.read_text(encoding="utf-8")
-
-
-def load_reference_solution(slug: str, language: str) -> Optional[str]:
-    """The bundle's recommended solution for a language, if it provides one.
-
-    Only bundle-format problems carry solutions; flat markdown packages have
-    none, and a bundle may legitimately lack a given language."""
-    return load_designated_reference(slug, language)
 
 
 _LIST_TTL_SECONDS = 2.0
