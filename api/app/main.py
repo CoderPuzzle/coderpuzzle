@@ -6,12 +6,11 @@ from typing import Annotated, Any
 
 from fastapi import Cookie, Depends, FastAPI, HTTPException, Query, Request, Response
 
+from .auth import load_defaults
+from .auth.http import router as auth_router
 from .database import (
     SESSION_IDLE_SECONDS,
-    bind_session_user,
-    count_users,
     create_session,
-    create_user,
     get_submission,
     initialize_database,
     list_drafts,
@@ -23,8 +22,8 @@ from .database import (
     scope_key,
     session_user,
     validate_session,
-    verify_user,
 )
+from .web_session import SESSION_COOKIE, current_session, set_session_cookie
 from .judge import RunnerUnavailable, execute, format_code_report, judge_slot
 from . import tamper_scan
 from .models import FormatRequest, RunRequest, SubmitRequest
@@ -40,12 +39,10 @@ from .problems import (
     public_problem,
 )
 
-SESSION_COOKIE = "coderpuzzle_session"
-
-
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     initialize_database()
+    load_defaults()
     purge_expired_sessions()
     yield
 
@@ -61,6 +58,7 @@ app = FastAPI(
     redoc_url=None,
     openapi_url=None,
 )
+app.include_router(auth_router)
 
 
 @app.get("/health")
@@ -68,37 +66,11 @@ def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
-def current_session(
-    session_cookie: Annotated[str | None, Cookie(alias=SESSION_COOKIE)] = None,
-) -> str:
-    """Require an active guest session; 401 otherwise (the frontend then
-    shows the Continue-as-guest entrance)."""
-    if session_cookie and validate_session(session_cookie):
-        return session_cookie
-    raise HTTPException(status_code=401, detail="No active session")
-
-
-def _set_session_cookie(response: Response, session_id: str, request: Request) -> None:
-    # Secure only when the client actually reaches us over https (the edge
-    # terminates TLS and forwards the scheme); localhost/CI stay usable.
-    # Deliberately a browser-session cookie (no max_age): a wall-clock cap
-    # here would log active users out mid-session; expiry is the server's
-    # idle clock, enforced by validate_session on every request.
-    scheme = request.headers.get("x-forwarded-proto") or request.url.scheme
-    response.set_cookie(
-        SESSION_COOKIE,
-        session_id,
-        httponly=True,
-        secure=scheme == "https",
-        samesite="lax",
-    )
-
-
 @app.post("/session")
 def start_session(response: Response, request: Request) -> dict[str, Any]:
     session_id = create_session()
     purge_expired_sessions()
-    _set_session_cookie(response, session_id, request)
+    set_session_cookie(response, session_id, request)
     return {"status": "active", "idle_seconds": SESSION_IDLE_SECONDS}
 
 
@@ -118,55 +90,6 @@ def session_status(
         "idle_seconds": SESSION_IDLE_SECONDS,
         "user": None if user is None else {"username": user["username"], "is_admin": user["is_admin"]},
     }
-
-
-@app.get("/auth/status")
-def auth_status() -> dict[str, Any]:
-    """Public: whether the admin bootstrap has happened. Drives the gate's
-    admin-setup vs login/signup choice. Tables may be missing if the data
-    volume was wiped mid-run; treat that as a fresh install."""
-    try:
-        return {"needs_setup": count_users() == 0}
-    except Exception:  # noqa: BLE001
-        return {"needs_setup": True}
-
-
-# --- user accounts (backend-only; the UI stays guest-only for now) -----------
-# Fresh-start bootstrap: the very first account must be the fixed-name admin;
-# afterwards registration is closed until the accounts UI ships.
-
-# Minimal in-memory login throttle: per source, allow 10 failures per minute.
-# The source is the real client IP: uvicorn runs with --proxy-headers and the
-# frontend nginx forwards the edge-supplied X-Forwarded-For (see
-# frontend/nginx.conf), and the API container is reachable only through that
-# nginx, so request.client.host is never the proxy's own address in the
-# compose deployment.
-_LOGIN_WINDOW_SECONDS = 60.0
-_LOGIN_MAX_FAILURES = 10
-_login_failures: dict[str, list[float]] = {}
-
-
-def _prune_login_failures(now: float) -> None:
-    """Drop sources whose every failure stamp has left the window."""
-    for source in [s for s, stamps in _login_failures.items() if not stamps or now - stamps[-1] >= _LOGIN_WINDOW_SECONDS]:
-        del _login_failures[source]
-
-
-def _login_throttled(source: str) -> bool:
-    """True when the source already burned its failure budget (checked
-    BEFORE the password verify, so throttled callers do no scrypt work)."""
-    now = time.monotonic()
-    _prune_login_failures(now)
-    recent = [stamp for stamp in _login_failures.get(source, []) if now - stamp < _LOGIN_WINDOW_SECONDS]
-    _login_failures[source] = recent
-    return len(recent) >= _LOGIN_MAX_FAILURES
-
-
-def _register_login_failure(source: str) -> None:
-    now = time.monotonic()
-    recent = [stamp for stamp in _login_failures.get(source, []) if now - stamp < _LOGIN_WINDOW_SECONDS]
-    recent.append(now)
-    _login_failures[source] = recent
 
 
 # Judge-call shaping. The runner executes one job at a time and every judge
@@ -193,59 +116,6 @@ def _judge_throttled(session_id: str) -> bool:
     for stale in [key for key, stamps in _judge_requests.items() if not stamps or now - stamps[-1] >= _JUDGE_WINDOW_SECONDS]:
         del _judge_requests[stale]
     return False
-
-
-@app.post("/auth/register")
-def auth_register(
-    body: dict[str, str],
-    response: Response,
-    request: Request,
-) -> dict[str, Any]:
-    username = body.get("username", "").strip()
-    password = body.get("password", "")
-    bootstrap = count_users() == 0
-    if bootstrap:
-        # Fresh start: the first account is the fixed-name admin with the
-        # highest privilege.
-        if username != "admin":
-            raise HTTPException(status_code=400, detail="The first account must be the admin (username 'admin')")
-    else:
-        # After the bootstrap, registration stays closed (as documented in
-        # docs/API.md) — accounts are managed directly in the database.
-        raise HTTPException(status_code=403, detail="Registration is closed")
-    if not username or len(password) < 8:
-        raise HTTPException(status_code=400, detail="Username is required and the password must be at least 8 characters")
-    try:
-        user_id = create_user(username, password, is_admin=bootstrap or username == "admin")
-    except Exception:  # noqa: BLE001 — username uniqueness races
-        raise HTTPException(status_code=400, detail="That username is not available")
-    session_id = create_session()
-    bind_session_user(session_id, user_id)
-    _set_session_cookie(response, session_id, request)
-    return {"status": "registered", "username": username, "is_admin": bootstrap or username == "admin"}
-
-
-@app.post("/auth/login")
-def auth_login(
-    body: dict[str, str],
-    request: Request,
-    session_id: Annotated[str, Depends(current_session)],
-) -> dict[str, Any]:
-    source = request.client.host if request.client else "unknown"
-    if _login_throttled(source):
-        raise HTTPException(status_code=429, detail="Too many failed attempts; wait a minute")
-    user = verify_user(body.get("username", ""), body.get("password", ""))
-    if user is None:
-        _register_login_failure(source)
-        raise HTTPException(status_code=401, detail="Invalid username or password")
-    bind_session_user(session_id, user["id"])
-    return {"status": "logged_in", "username": user["username"], "is_admin": user["is_admin"]}
-
-
-@app.post("/auth/logout")
-def auth_logout(session_id: Annotated[str, Depends(current_session)]) -> dict[str, Any]:
-    bind_session_user(session_id, None)
-    return {"status": "logged_out"}
 
 
 SLUG_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")

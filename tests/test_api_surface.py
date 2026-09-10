@@ -177,7 +177,9 @@ class ApiSurfaceTests(unittest.TestCase):
         bare = TestClient(api_main.app)
         self.addCleanup(bare.close)
         # status is public; register needs no session (fresh bootstrap)
-        self.assertTrue(bare.get("/auth/status").json()["needs_setup"])
+        status = bare.get("/auth/status").json()
+        self.assertTrue(status["needs_setup"])
+        self.assertTrue(any(item["id"] == "password" for item in status["providers"]))
         created = bare.post(
             "/auth/register", json={"username": "admin", "password": "password123"}
         )

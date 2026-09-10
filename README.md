@@ -29,7 +29,10 @@ The first visit follows the operating system's light/dark preference; the
 header toggle saves an explicit browser-local override. Visitors work in
 ephemeral guest sessions: editor drafts are stored server-side per session
 and survive refreshes, and both drafts and submission history are scoped to
-the session (idle-expiring after an hour). Submission records persist in the
+the session (idle-expiring after an hour). Accounts keep that history
+under the user id. Sign-in is a provider catalog (username and password
+today; OAuth, OpenID, and email OTP plug in without new routes — see
+[docs/AUTH.md](docs/AUTH.md)). Submission records persist in the
 `coderpuzzle_data` volume.
 
 ## Problem packages

@@ -27,7 +27,8 @@ EXPOSE 8000
 # --proxy-headers: honor the X-Forwarded-For/Proto headers the frontend
 # nginx sets (real client IP, edge scheme) so login throttling keys on the
 # caller and session cookies get their Secure flag. Trusting them is safe
-# in this topology: the API sits on the compose-internal network whose only
-# other member is that nginx, so nothing can reach it without the headers
-# passing through nginx first.
+# in this topology: the API is not published; callers arrive through nginx
+# on the compose network, so nothing can reach it without the headers
+# passing through nginx first. Outbound HTTPS (OAuth token exchange, email)
+# uses the edge network.
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--no-access-log", "--proxy-headers", "--forwarded-allow-ips", "*"]

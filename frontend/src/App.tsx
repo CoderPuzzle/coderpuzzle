@@ -31,6 +31,7 @@ import {
   X,
 } from "lucide-react";
 import { api, onUnauthorized } from "./api";
+import type { AuthField, AuthProviderInfo, AuthStartResult } from "./api";
 import type { JudgeResult, Problem, ProblemSummary, SolutionsContent, Submission, TopicSummary } from "./types";
 
 type Theme = "light" | "dark";
@@ -279,6 +280,7 @@ function App() {
   const [sessionExpired, setSessionExpired] = useState(false);
   const [gateError, setGateError] = useState("");
   const [needsSetup, setNeedsSetup] = useState(false);
+  const [authProviders, setAuthProviders] = useState<AuthProviderInfo[]>([]);
   const [sessionUser, setSessionUser] = useState<{ username: string; is_admin: boolean } | null>(null);
   // Full problem list, fetched lazily only when the editor opens (prev/next
   // navigation and the drawer need the whole ordering). The landing page
@@ -368,15 +370,34 @@ function App() {
 
   useEffect(() => {
     api.authStatus()
-      .then((status) => setNeedsSetup(status.needs_setup))
+      .then((status) => {
+        setNeedsSetup(status.needs_setup);
+        setAuthProviders(status.providers ?? []);
+      })
       .catch(() => undefined);
+    const authError = new URLSearchParams(window.location.search).get("auth_error");
     api.sessionStatus()
       .then((status) => {
         setSessionUser(status.user);
         idleSecondsRef.current = status.idle_seconds || 3600;
+        if (authError && !status.user) {
+          window.history.replaceState({}, "", "/");
+          setGateError(authError === "denied" ? "Sign-in was cancelled." : "Sign-in failed. Try another method.");
+          setGateEntryMode("login");
+          setSessionPhase("gate");
+          return;
+        }
+        if (authError) window.history.replaceState({}, "", "/");
         setSessionPhase("active");
       })
-      .catch(() => setSessionPhase("gate"));
+      .catch(() => {
+        if (authError) {
+          window.history.replaceState({}, "", "/");
+          setGateError(authError === "denied" ? "Sign-in was cancelled." : "Sign-in failed. Try another method.");
+          setGateEntryMode("login");
+        }
+        setSessionPhase("gate");
+      });
     const onHide = () => {
       if (document.visibilityState === "hidden") flushDrafts();
     };
@@ -465,10 +486,17 @@ function App() {
       .catch(() => setGateError("Could not start a session — check the connection and try again."));
   }, []);
 
-  const registerAccount = useCallback((username: string, password: string) => {
-    api.register(username, password)
-      .then((session) => api.authStatus().then((status) => {
-        setNeedsSetup(status.needs_setup);
+  const refreshAuthCatalog = useCallback(() => {
+    return api.authStatus().then((status) => {
+      setNeedsSetup(status.needs_setup);
+      setAuthProviders(status.providers ?? []);
+      return status;
+    });
+  }, []);
+
+  const registerAccount = useCallback((provider: string, payload: Record<string, string>) => {
+    api.authRegister(provider, payload)
+      .then((session) => refreshAuthCatalog().then(() => {
         setSessionUser({ username: session.username, is_admin: session.is_admin });
       }))
       .then(() => {
@@ -477,11 +505,11 @@ function App() {
         setSessionPhase("active");
       })
       .catch((error: Error) => setGateError(error.message || "Could not create the account."));
-  }, []);
+  }, [refreshAuthCatalog]);
 
-  const loginAccount = useCallback((username: string, password: string) => {
+  const completeAccount = useCallback((provider: string, payload: Record<string, string>) => {
     api.startSession()
-      .then(() => api.login(username, password))
+      .then(() => api.authComplete(provider, payload))
       .then((result) => {
         setSessionUser({ username: result.username, is_admin: result.is_admin });
         setGateError("");
@@ -489,6 +517,21 @@ function App() {
         setSessionPhase("active");
       })
       .catch((error: Error) => setGateError(error.message || "Could not sign in."));
+  }, []);
+
+  const startAccount = useCallback((provider: string, payload: Record<string, string>): Promise<AuthStartResult> => {
+    return api.startSession()
+      .then(() => api.authStart(provider, payload))
+      .then((result) => {
+        if (result.redirect_url) {
+          window.location.assign(result.redirect_url);
+        }
+        return result;
+      })
+      .catch((error: Error) => {
+        setGateError(error.message || "Could not start sign-in.");
+        throw error;
+      });
   }, []);
 
   const logoutAccount = useCallback(() => {
@@ -813,7 +856,7 @@ function App() {
         />
       );
     }
-    return <GuestGate expired={sessionExpired} error={gateError} needsSetup={needsSetup} entryMode={gateEntryMode} onEnter={enterAsGuest} onRegister={registerAccount} onLogin={loginAccount} theme={theme} onToggleTheme={toggleTheme} />;
+    return <GuestGate expired={sessionExpired} error={gateError} needsSetup={needsSetup} providers={authProviders} entryMode={gateEntryMode} onEnter={enterAsGuest} onRegister={registerAccount} onComplete={completeAccount} onStart={startAccount} theme={theme} onToggleTheme={toggleTheme} />;
   }
   if (loadError) return <FullPageMessage icon={<CircleAlert />} title="CoderPuzzle could not load" detail={loadError} action={{ label: "Back to problems", onClick: goHome }} />;
   if (activeSlug === null) return <Landing theme={theme} onToggleTheme={toggleTheme} onOpen={openProblem} onLogout={logoutAccount} progress={progress} seed={allProblems} />;
@@ -2145,39 +2188,211 @@ function LoggedOut({ asUser, onSignIn, onGuest, theme, onToggleTheme }: {
   );
 }
 
+function fieldValues(fields: AuthField[]): Record<string, string> {
+  const values: Record<string, string> = {};
+  for (const field of fields) {
+    if (field.default) values[field.name] = field.default;
+  }
+  return values;
+}
+
+function validateFields(
+  fields: AuthField[],
+  values: Record<string, string>,
+  confirms: Record<string, string>,
+): string {
+  for (const field of fields) {
+    const raw = values[field.name] ?? "";
+    const required = field.required !== false;
+    if (required && !(field.kind === "password" ? raw : raw.trim())) {
+      return `${field.label} is required.`;
+    }
+    if (field.min_length && raw.length < field.min_length) {
+      return `${field.label} must be at least ${field.min_length} characters.`;
+    }
+    if (field.confirm && raw !== (confirms[field.name] ?? "")) {
+      return `${field.label}s do not match.`;
+    }
+  }
+  return "";
+}
+
+function payloadFrom(fields: AuthField[], values: Record<string, string>): Record<string, string> {
+  const payload: Record<string, string> = {};
+  for (const field of fields) {
+    const raw = values[field.name] ?? "";
+    payload[field.name] = field.kind === "password" ? raw : raw.trim();
+  }
+  return payload;
+}
+
+function ProviderFields({
+  fields,
+  values,
+  confirms,
+  onChange,
+  onConfirm,
+  onSubmit,
+}: {
+  fields: AuthField[];
+  values: Record<string, string>;
+  confirms: Record<string, string>;
+  onChange: (name: string, value: string) => void;
+  onConfirm: (name: string, value: string) => void;
+  onSubmit: () => void;
+}) {
+  return (
+    <>
+      {fields.map((field, index) => (
+        <div key={field.name}>
+          <label className="gate-field">
+            <span>{field.label}</span>
+            <input
+              type={field.kind === "password" ? "password" : field.kind === "email" ? "email" : "text"}
+              value={values[field.name] ?? ""}
+              onChange={(event) => onChange(field.name, event.target.value)}
+              onKeyDown={(event) => { if (event.key === "Enter") onSubmit(); }}
+              autoComplete={field.autocomplete || undefined}
+              readOnly={field.readonly}
+              autoFocus={index === 0 && !field.readonly}
+            />
+          </label>
+          {field.confirm && (
+            <label className="gate-field">
+              <span>Confirm {field.label.toLowerCase()}</span>
+              <input
+                type="password"
+                value={confirms[field.name] ?? ""}
+                onChange={(event) => onConfirm(field.name, event.target.value)}
+                onKeyDown={(event) => { if (event.key === "Enter") onSubmit(); }}
+                autoComplete="new-password"
+              />
+            </label>
+          )}
+        </div>
+      ))}
+    </>
+  );
+}
+
 // The entrance: accounts persist their work under the user id; guests get an
 // ephemeral session that idles out after about an hour. A fresh install
-// (no accounts yet) offers the one-time admin setup.
-function GuestGate({ expired, error, needsSetup, entryMode = "welcome", onEnter, onRegister, onLogin, theme, onToggleTheme }: {
+// (no accounts yet) offers the one-time admin setup. The form is driven by
+// GET /auth/status providers — password is one method, not the only shape.
+function GuestGate({ expired, error, needsSetup, providers, entryMode = "welcome", onEnter, onRegister, onComplete, onStart, theme, onToggleTheme }: {
   expired: boolean;
   error: string;
   needsSetup: boolean;
+  providers: AuthProviderInfo[];
   entryMode: "welcome" | "signup" | "login";
   onEnter: () => void;
-  onRegister: (username: string, password: string) => void;
-  onLogin: (username: string, password: string) => void;
+  onRegister: (provider: string, payload: Record<string, string>) => void;
+  onComplete: (provider: string, payload: Record<string, string>) => void;
+  onStart: (provider: string, payload: Record<string, string>) => Promise<AuthStartResult>;
   theme: Theme;
   onToggleTheme: () => void;
 }) {
-  const [mode, setMode] = useState<"welcome" | "signup" | "login">(entryMode);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
+  const loginProviders = providers.filter((item) => item.can_login);
+  const registerProviders = providers.filter((item) => needsSetup ? item.can_bootstrap : item.can_register);
+  const [mode, setMode] = useState<"welcome" | "signup" | "login" | "challenge">(entryMode);
+  const [active, setActive] = useState<AuthProviderInfo | null>(null);
+  const [values, setValues] = useState<Record<string, string>>({});
+  const [confirms, setConfirms] = useState<Record<string, string>>({});
   const [formError, setFormError] = useState("");
+  const [challengeId, setChallengeId] = useState("");
+  const [challengeHint, setChallengeHint] = useState("");
 
-  const submitAccount = () => {
-    if (!username.trim()) { setFormError("Choose a username."); return; }
-    if (password.length < 8) { setFormError("Password must be at least 8 characters."); return; }
-    if (mode === "signup" && password !== confirm) { setFormError("Passwords do not match."); return; }
-    setFormError("");
-    if (mode === "login") onLogin(username.trim(), password);
-    else onRegister(username.trim(), password);
-  };
+  useEffect(() => {
+    if (active) return;
+    if (mode === "login" && loginProviders.length === 1 && loginProviders[0].flow !== "redirect") {
+      const provider = loginProviders[0];
+      setActive(provider);
+      setValues(fieldValues(provider.start_fields.length ? provider.start_fields : provider.fields));
+    }
+    if (mode === "signup" && registerProviders.length === 1 && registerProviders[0].flow !== "redirect") {
+      const provider = registerProviders[0];
+      if (provider.flow === "challenge") {
+        setActive(provider);
+        setValues(fieldValues(provider.start_fields));
+        setMode("login");
+      } else {
+        setActive(provider);
+        setValues(fieldValues(provider.register_fields));
+      }
+    }
+  }, [active, mode, loginProviders, registerProviders]);
 
   const switchMode = (next: "welcome" | "signup" | "login") => {
     setMode(next);
+    setActive(null);
+    setValues({});
+    setConfirms({});
     setFormError("");
+    setChallengeId("");
+    setChallengeHint("");
   };
+
+  const chooseProvider = (provider: AuthProviderInfo, next: "signup" | "login") => {
+    if (provider.flow === "redirect") {
+      onStart(provider.id, {}).catch(() => undefined);
+      return;
+    }
+    // Challenge methods create the user on complete (auto_provision /
+    // bootstrap), not through /auth/register.
+    if (provider.flow === "challenge") {
+      setActive(provider);
+      setValues(fieldValues(provider.start_fields));
+      setConfirms({});
+      setFormError("");
+      setMode("login");
+      return;
+    }
+    const fields = next === "signup" ? provider.register_fields : provider.fields;
+    setActive(provider);
+    setValues(fieldValues(fields));
+    setConfirms({});
+    setFormError("");
+    setMode(next);
+  };
+
+  const activeFields = (() => {
+    if (!active) return [];
+    if (mode === "challenge") return active.fields;
+    if (mode === "signup") return active.register_fields;
+    if (active.start_fields.length && !challengeId) return active.start_fields;
+    return active.fields;
+  })();
+
+  const submitActive = () => {
+    if (!active) return;
+    const problem = validateFields(activeFields, values, confirms);
+    if (problem) { setFormError(problem); return; }
+    setFormError("");
+    const payload = payloadFrom(activeFields, values);
+    if (mode === "signup") {
+      onRegister(active.id, payload);
+      return;
+    }
+    if (active.flow === "challenge" && mode !== "challenge") {
+      onStart(active.id, payload)
+        .then((result) => {
+          setChallengeId(result.challenge_id || "");
+          setChallengeHint(result.message || "Check your email for a sign-in code.");
+          setValues({});
+          setMode("challenge");
+        })
+        .catch(() => undefined);
+      return;
+    }
+    if (mode === "challenge") {
+      onComplete(active.id, { ...payload, challenge_id: challengeId });
+      return;
+    }
+    onComplete(active.id, payload);
+  };
+
+  const setupCopy = registerProviders[0]?.hint
+    || "Fresh install — create the first admin account.";
 
   return (
     <main className="guest-gate">
@@ -2199,8 +2414,22 @@ function GuestGate({ expired, error, needsSetup, entryMode = "welcome", onEnter,
           <>
             {needsSetup ? (
               <>
-                <p className="gate-copy">Fresh install — set the admin password to create the admin account. The admin holds the highest privilege; the username is fixed as <strong>admin</strong>.</p>
-                <button className="gate-enter" onClick={() => { setUsername("admin"); switchMode("signup"); }}>Set up admin</button>
+                <p className="gate-copy">{setupCopy}</p>
+                {registerProviders.length <= 1 ? (
+                  <button className="gate-enter" onClick={() => {
+                    const provider = registerProviders[0];
+                    if (provider) chooseProvider(provider, "signup");
+                    else switchMode("signup");
+                  }}>Set up admin</button>
+                ) : (
+                  <div className="gate-methods">
+                    {registerProviders.map((provider) => (
+                      <button key={provider.id} className="gate-method" onClick={() => chooseProvider(provider, "signup")}>
+                        Continue with {provider.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </>
             ) : (
               <>
@@ -2210,9 +2439,22 @@ function GuestGate({ expired, error, needsSetup, entryMode = "welcome", onEnter,
                   Accounts keep their drafts and submission history under the user id.
                 </p>
                 <button className="gate-enter" onClick={onEnter}>Continue as guest</button>
-                <div className="gate-links">
-                  <button className="gate-link" onClick={() => switchMode("login")}>Log in</button>
-                </div>
+                {loginProviders.length > 0 && (
+                  <div className="gate-links">
+                    <button className="gate-link" onClick={() => {
+                      if (loginProviders.length === 1) chooseProvider(loginProviders[0], "login");
+                      else switchMode("login");
+                    }}>Log in</button>
+                  </div>
+                )}
+                {registerProviders.length > 0 && (
+                  <div className="gate-links">
+                    <button className="gate-link" onClick={() => {
+                      if (registerProviders.length === 1) chooseProvider(registerProviders[0], "signup");
+                      else switchMode("signup");
+                    }}>Create an account</button>
+                  </div>
+                )}
               </>
             )}
           </>
@@ -2220,52 +2462,66 @@ function GuestGate({ expired, error, needsSetup, entryMode = "welcome", onEnter,
 
         {mode !== "welcome" && (
           <div className="gate-form">
-            {mode === "login" ? (
-              <p className="gate-copy">Sign in with your account.</p>
-            ) : (
-              <p className="gate-copy">Set the admin password (typed twice).</p>
+            {mode === "login" && !active && (
+              <>
+                <p className="gate-copy">Sign in.</p>
+                <div className="gate-methods">
+                  {loginProviders.map((provider) => (
+                    <button key={provider.id} className={provider.flow === "credentials" && loginProviders.length === 1 ? "gate-enter" : "gate-method"} onClick={() => chooseProvider(provider, "login")}>
+                      {provider.flow === "redirect" ? `Continue with ${provider.label}` : provider.label}
+                    </button>
+                  ))}
+                </div>
+              </>
             )}
-            {!(needsSetup && mode === "signup") && (
-              <label className="gate-field">
-                <span>Username</span>
-                <input
-                  value={username}
-                  onChange={(event) => setUsername(event.target.value)}
-                  autoComplete="username"
-                  autoFocus
+            {mode === "signup" && !active && (
+              <>
+                <p className="gate-copy">{needsSetup ? setupCopy : "Create an account."}</p>
+                <div className="gate-methods">
+                  {registerProviders.map((provider) => (
+                    <button key={provider.id} className="gate-method" onClick={() => chooseProvider(provider, "signup")}>
+                      Continue with {provider.label}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+            {active && (
+              <>
+                <p className="gate-copy">
+                  {mode === "challenge"
+                    ? (challengeHint || active.hint || "Enter the sign-in code.")
+                    : mode === "signup"
+                      ? (active.hint || "Create an account.")
+                      : (active.hint || `Sign in with ${active.label}.`)}
+                </p>
+                <ProviderFields
+                  fields={activeFields}
+                  values={values}
+                  confirms={confirms}
+                  onChange={(name, value) => setValues((current) => ({ ...current, [name]: value }))}
+                  onConfirm={(name, value) => setConfirms((current) => ({ ...current, [name]: value }))}
+                  onSubmit={submitActive}
                 />
-              </label>
+                {formError && <p className="gate-notice">{formError}</p>}
+                <button className="gate-enter" onClick={submitActive}>
+                  {mode === "signup" ? (needsSetup ? "Create admin" : "Create account") : mode === "challenge" ? "Verify code" : "Log in"}
+                </button>
+              </>
             )}
-            <label className="gate-field">
-              <span>Password</span>
-              <input
-                type="password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                onKeyDown={(event) => { if (event.key === "Enter") submitAccount(); }}
-                autoComplete={mode === "login" ? "current-password" : "new-password"}
-                autoFocus={needsSetup && mode === "signup"}
-              />
-            </label>
-            {mode === "signup" && (
-              <label className="gate-field">
-                <span>Confirm password</span>
-                <input
-                  type="password"
-                  value={confirm}
-                  onChange={(event) => setConfirm(event.target.value)}
-                  onKeyDown={(event) => { if (event.key === "Enter") submitAccount(); }}
-                  autoComplete="new-password"
-                />
-              </label>
-            )}
-            {formError && <p className="gate-notice">{formError}</p>}
-            <button className="gate-enter" onClick={submitAccount}>
-              {mode === "login" ? "Log in" : "Create admin"}
-            </button>
-            {!needsSetup && (
+            {(!needsSetup || mode !== "signup") && (
               <div className="gate-links">
-                <button className="gate-link" onClick={() => switchMode("welcome")}>Back</button>
+                <button className="gate-link" onClick={() => {
+                  if (mode === "challenge" && active) {
+                    setMode("login");
+                    setChallengeId("");
+                    setChallengeHint("");
+                    setValues(fieldValues(active.start_fields));
+                    setFormError("");
+                    return;
+                  }
+                  switchMode("welcome");
+                }}>Back</button>
               </div>
             )}
           </div>

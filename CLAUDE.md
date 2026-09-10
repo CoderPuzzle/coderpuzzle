@@ -120,7 +120,8 @@ App (`api/app/`): `/problems`, `/problems/{slug}`, `/run`, `/submit`,
 `/format`, `/drafts/*`, `/submissions*`, `/progress` (per-viewer solved/
 attempted marks), `/session` (GET accepts `?touch=0` — validate without
 extending the idle clock, used by the frontend's inactivity watcher),
-`/auth/*`. Submit stores the attempt (code, verdicts, runtime, and the
+`/auth/*` (pluggable providers: `GET /auth/status` returns the catalog;
+password is one provider — `docs/AUTH.md`). Submit stores the attempt (code, verdicts, runtime, and the
 reference runtime the time-cost % is measured against) under the viewer's
 scope: `user:<id>` when signed in (survives idle expiry), the guest
 session id otherwise (purged with the session). Idle expiry routes the

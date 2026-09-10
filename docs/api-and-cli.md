@@ -10,7 +10,8 @@ Sessions are cookie-based. Everything except `/health`, `GET
 /auth/status`, and `POST /auth/register` requires a `coderpuzzle_session`
 cookie from `POST /session`; authenticated callers additionally carry
 the session of a signed-in
-user. Errors are FastAPI payloads: `{"detail": "<reason>"}` with the
+user. Auth is a provider catalog (password is one method) — see
+[AUTH.md](AUTH.md). Errors are FastAPI payloads: `{"detail": "<reason>"}` with the
 appropriate status (400 user error, 401 no/invalid session, 404 unknown
 slug or submission, 429 judge rate limit, 503 runner unavailable or
 busy).
@@ -28,18 +29,27 @@ busy).
   alive). → `{"status": "active", "idle_seconds", "user": null |
   {"username", "is_admin"}}`; 401 when expired or absent.
 
-### Auth (backend; the UI is guest-only for now)
+### Auth (pluggable providers; see [AUTH.md](AUTH.md))
 
-- `GET /auth/status` → `{"needs_setup": bool}` — public; true until the
-  first account exists.
-- `POST /auth/register` `{username, password}` — public (no session, by
-  necessity on a fresh install): the very first account
-  must be username `admin` (bootstrap); afterwards registration is
-  closed. Password ≥ 8 chars.
-- `POST /auth/login` `{username, password}` — requires an active
-  session; binds that session to the user (the cookie itself is
-  unchanged).
-- `POST /auth/logout` — ends the session.
+- `GET /auth/status` → `{"needs_setup": bool, "providers": […]}` —
+  public; true until the first account exists. `providers` is the
+  enabled catalog (id, flow, fields, can_login / can_register /
+  can_bootstrap). Password is always present; OAuth/OIDC/email OTP
+  appear when configured.
+- `POST /auth/start` `{provider, …}` — begin a redirect or challenge
+  flow. → `{next: "redirect"|"challenge"|"complete", redirect_url?,
+  challenge_id?}`.
+- `POST /auth/complete` `{provider, …}` — requires an active session;
+  binds that session to the user. Password: `{provider:"password",
+  username, password}`.
+- `POST /auth/register` `{provider, …}` — public (no session, by
+  necessity on a fresh install). The first account is admin; the
+  password provider still requires username `admin`. Afterwards
+  registration is closed unless `CODERPUZZLE_AUTH_REGISTRATION=open`.
+- `GET /auth/callback/{provider}` — OAuth/OIDC return; 303 to `/`.
+- `POST /auth/logout` — unbinds the user from the session.
+- Compatibility: `POST /auth/login {username, password}` and register
+  without `provider` still mean the password provider.
 
 ### Problems
 

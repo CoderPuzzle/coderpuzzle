@@ -23,8 +23,12 @@ any one language passed — the guest session lifecycle (cleared on
 idle-expiry), and the web-UI status marks (landing list, problem drawer,
 problem view; guests included) are done and live. Remaining:
 
+- [x] **Pluggable auth** — login is a provider catalog (`docs/AUTH.md`);
+  password is the built-in credentials provider; OAuth/OIDC/email OTP
+  enable via env. Remaining identity work is below, not a new protocol.
 - [ ] **Better password and user identity management** (subject to
-  design discussion) — the current scrypt-with-salt scheme and
-  fixed-name admin bootstrap are a baseline, not the destination
+  design discussion) — scrypt-with-salt and the fixed-name admin
+  bootstrap are a baseline; account linking across providers is
+  schema-ready and not yet exposed
 - [ ] **Admin management surface** (listing/deleting accounts, resetting
   passwords) once the accounts UI grows beyond the gate

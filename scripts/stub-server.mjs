@@ -321,9 +321,25 @@ const server = http.createServer((req, res) => {
       }));
     }
     if (path === "/api/auth/status") {
-      return res.end(toJSON({ needs_setup: false }));
+      return res.end(toJSON({
+        needs_setup: false,
+        providers: [{
+          id: "password",
+          label: "Username and password",
+          flow: "credentials",
+          can_login: true,
+          can_register: false,
+          can_bootstrap: true,
+          fields: [
+            { name: "username", label: "Username", kind: "text", autocomplete: "username", required: true },
+            { name: "password", label: "Password", kind: "password", autocomplete: "current-password", required: true, min_length: 8 },
+          ],
+          register_fields: [],
+          start_fields: [],
+        }],
+      }));
     }
-    const authMatch = path.match(/^\/api\/auth\/(register|login|logout)$/);
+    const authMatch = path.match(/^\/api\/auth\/(register|login|logout|start|complete)$/);
     if (authMatch) {
       res.setHeader("Set-Cookie", "coderpuzzle_session=stub0000000000000000000000000002; Path=/; HttpOnly; SameSite=Lax");
       if (authMatch[1] === "logout") return res.end(toJSON({ status: "logged_out" }));

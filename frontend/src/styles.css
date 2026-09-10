@@ -322,6 +322,19 @@ button:disabled { cursor: not-allowed; opacity: .42; }
 .gate-field input { height: 36px; padding: 0 11px; color: var(--ink); background: var(--canvas); border: 1px solid var(--line); border-radius: 6px; font-size: 13.5px; }
 .gate-field input:focus { border-color: var(--cyan); outline: none; }
 [data-theme="light"] .gate-field input { background: #ffffff; }
+.gate-methods { display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 8px; }
+.gate-method {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--ink);
+  font: 600 13px "IBM Plex Sans", sans-serif;
+  cursor: pointer;
+}
+.gate-method:hover { border-color: var(--line-bright); }
 .gate-enter { margin-top: 20px; min-width: 200px; padding: 9px 18px; background: linear-gradient(180deg, #f2bd61, #e1a84b); border: none; border-radius: 7px; color: #241a09; font: 600 13px "IBM Plex Sans", sans-serif; cursor: pointer; }
 .gate-enter:hover { filter: brightness(1.05); }
 .gate-enter:active { transform: translateY(1px); }

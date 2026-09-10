@@ -1,7 +1,6 @@
-import hashlib
-import hmac
 import json
 import os
+import re
 import sqlite3
 import time
 import uuid
@@ -52,12 +51,43 @@ def initialize_database() -> None:
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 username TEXT NOT NULL UNIQUE,
-                password_hash TEXT NOT NULL,
                 is_admin INTEGER NOT NULL DEFAULT 0,
                 created_at REAL NOT NULL
             )
             """
         )
+        connection.execute(
+            """
+            CREATE TABLE IF NOT EXISTS auth_identities (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                provider TEXT NOT NULL,
+                subject TEXT NOT NULL,
+                secret TEXT,
+                extra_json TEXT NOT NULL DEFAULT '{}',
+                created_at REAL NOT NULL,
+                UNIQUE(provider, subject)
+            )
+            """
+        )
+        connection.execute(
+            "CREATE INDEX IF NOT EXISTS idx_auth_identities_user ON auth_identities(user_id)"
+        )
+        connection.execute(
+            """
+            CREATE TABLE IF NOT EXISTS auth_challenges (
+                id TEXT PRIMARY KEY,
+                provider TEXT NOT NULL,
+                session_id TEXT,
+                payload_json TEXT NOT NULL,
+                expires_at REAL NOT NULL
+            )
+            """
+        )
+        connection.execute(
+            "CREATE INDEX IF NOT EXISTS idx_auth_challenges_expiry ON auth_challenges(expires_at)"
+        )
+        _migrate_password_identities(connection)
         # Sessions created before user management have no user binding.
         session_columns = {row["name"] for row in connection.execute("PRAGMA table_info(sessions)")}
         if "user_id" not in session_columns:
@@ -208,7 +238,38 @@ def purge_expired_sessions() -> int:
         ]
         for session_id in expired:
             _purge_session(connection, session_id)
+        connection.execute("DELETE FROM auth_challenges WHERE expires_at < ?", (time.time(),))
     return len(expired)
+
+
+def _migrate_password_identities(connection: sqlite3.Connection) -> None:
+    """Copy legacy users.password_hash rows into auth_identities.
+
+    Databases created before pluggable auth stored the scrypt hash on
+    the user row. New installs have no password_hash column. Idempotent.
+    """
+    user_columns = {row["name"] for row in connection.execute("PRAGMA table_info(users)")}
+    if "password_hash" not in user_columns:
+        return
+    for row in connection.execute(
+        "SELECT id, username, password_hash, created_at FROM users"
+    ):
+        if not row["password_hash"]:
+            continue
+        exists = connection.execute(
+            "SELECT 1 FROM auth_identities WHERE provider = 'password' AND user_id = ?",
+            (row["id"],),
+        ).fetchone()
+        if exists is not None:
+            continue
+        connection.execute(
+            """
+            INSERT INTO auth_identities
+                (user_id, provider, subject, secret, extra_json, created_at)
+            VALUES (?, 'password', ?, ?, '{}', ?)
+            """,
+            (row["id"], row["username"], row["password_hash"], row["created_at"]),
+        )
 
 
 def create_session() -> str:
@@ -244,36 +305,12 @@ def validate_session(session_id: str, touch: bool = True) -> str | None:
     return session_id
 
 
-# --- user accounts (backend-only; no UI yet) ----------------------------------
+# --- user accounts ------------------------------------------------------------
 #
-# Password hashing with the stdlib: scrypt with per-user salt.
-# Format: scrypt$N$r$p$salt-hex$hash-hex
+# Identity (users) is separate from credentials (auth_identities). A user
+# can hold one row per provider; password hashes live as identity.secret.
 
-_SCRYPT_N, _SCRYPT_R, _SCRYPT_P = 16384, 8, 1
-
-
-def _hash_password(password: str, salt: bytes | None = None) -> str:
-    if salt is None:
-        salt = os.urandom(16)
-    digest = hashlib.scrypt(
-        password.encode("utf-8"), salt=salt, n=_SCRYPT_N, r=_SCRYPT_R, p=_SCRYPT_P, dklen=32
-    )
-    return f"scrypt${_SCRYPT_N}${_SCRYPT_R}${_SCRYPT_P}${salt.hex()}${digest.hex()}"
-
-
-def _verify_password(password: str, stored: str) -> bool:
-    try:
-        scheme, n, r, p, salt_hex, hash_hex = stored.split("$")
-        if scheme != "scrypt":
-            return False
-        digest = hashlib.scrypt(
-            password.encode("utf-8"),
-            salt=bytes.fromhex(salt_hex),
-            n=int(n), r=int(r), p=int(p), dklen=len(hash_hex) // 2,
-        )
-        return hmac.compare_digest(digest.hex(), hash_hex)
-    except (ValueError, TypeError):
-        return False
+_USERNAME_CLEAN = re.compile(r"[^A-Za-z0-9_-]+")
 
 
 def count_users() -> int:
@@ -282,24 +319,164 @@ def count_users() -> int:
     return int(row["total"])
 
 
-def create_user(username: str, password: str, is_admin: bool = False) -> int:
+def user_by_id(user_id: int) -> dict[str, Any] | None:
+    with connect() as connection:
+        row = connection.execute(
+            "SELECT id, username, is_admin FROM users WHERE id = ?", (user_id,)
+        ).fetchone()
+    if row is None:
+        return None
+    return {"id": row["id"], "username": row["username"], "is_admin": bool(row["is_admin"])}
+
+
+def create_user(username: str, is_admin: bool = False) -> int:
+    with connect() as connection:
+        columns = {row["name"] for row in connection.execute("PRAGMA table_info(users)")}
+        if "password_hash" in columns:
+            cursor = connection.execute(
+                "INSERT INTO users (username, password_hash, is_admin, created_at) VALUES (?, '', ?, ?)",
+                (username, int(is_admin), time.time()),
+            )
+        else:
+            cursor = connection.execute(
+                "INSERT INTO users (username, is_admin, created_at) VALUES (?, ?, ?)",
+                (username, int(is_admin), time.time()),
+            )
+        return int(cursor.lastrowid)
+
+
+def add_identity(
+    user_id: int,
+    provider: str,
+    subject: str,
+    secret: str | None = None,
+    extra: dict[str, Any] | None = None,
+) -> int:
     with connect() as connection:
         cursor = connection.execute(
-            "INSERT INTO users (username, password_hash, is_admin, created_at) VALUES (?, ?, ?, ?)",
-            (username, _hash_password(password), int(is_admin), time.time()),
+            """
+            INSERT INTO auth_identities
+                (user_id, provider, subject, secret, extra_json, created_at)
+            VALUES (?, ?, ?, ?, ?, ?)
+            """,
+            (user_id, provider, subject, secret, json.dumps(extra or {}), time.time()),
         )
         return int(cursor.lastrowid)
 
 
-def verify_user(username: str, password: str) -> dict[str, Any] | None:
+def get_identity(provider: str, subject: str) -> dict[str, Any] | None:
     with connect() as connection:
         row = connection.execute(
-            "SELECT id, username, password_hash, is_admin FROM users WHERE username = ?",
-            (username,),
+            """
+            SELECT id, user_id, provider, subject, secret, extra_json
+            FROM auth_identities
+            WHERE provider = ? AND subject = ?
+            """,
+            (provider, subject),
         ).fetchone()
-    if row is None or not _verify_password(password, row["password_hash"]):
+    if row is None:
+        return None
+    extra = json.loads(row["extra_json"] or "{}")
+    return {
+        "id": row["id"],
+        "user_id": row["user_id"],
+        "provider": row["provider"],
+        "subject": row["subject"],
+        "secret": row["secret"],
+        "extra": extra if isinstance(extra, dict) else {},
+    }
+
+
+def find_user_for_identity(provider: str, subject: str) -> dict[str, Any] | None:
+    with connect() as connection:
+        row = connection.execute(
+            """
+            SELECT users.id, users.username, users.is_admin
+            FROM auth_identities
+            JOIN users ON users.id = auth_identities.user_id
+            WHERE auth_identities.provider = ? AND auth_identities.subject = ?
+            """,
+            (provider, subject),
+        ).fetchone()
+    if row is None:
         return None
     return {"id": row["id"], "username": row["username"], "is_admin": bool(row["is_admin"])}
+
+
+def username_taken(username: str) -> bool:
+    with connect() as connection:
+        row = connection.execute(
+            "SELECT 1 FROM users WHERE username = ?", (username,)
+        ).fetchone()
+    return row is not None
+
+
+def allocate_username(desired: str) -> str:
+    cleaned = _USERNAME_CLEAN.sub("-", desired).strip("-_")[:32] or "user"
+    if not username_taken(cleaned):
+        return cleaned
+    for index in range(2, 1000):
+        suffix = f"-{index}"
+        candidate = f"{cleaned[: 32 - len(suffix)]}{suffix}"
+        if not username_taken(candidate):
+            return candidate
+    raise sqlite3.IntegrityError("could not allocate a unique username")
+
+
+def save_auth_challenge(
+    challenge_id: str,
+    provider: str,
+    session_id: str | None,
+    payload: dict[str, Any],
+    ttl_seconds: int,
+) -> None:
+    with connect() as connection:
+        connection.execute("DELETE FROM auth_challenges WHERE expires_at < ?", (time.time(),))
+        connection.execute(
+            """
+            INSERT INTO auth_challenges (id, provider, session_id, payload_json, expires_at)
+            VALUES (?, ?, ?, ?, ?)
+            """,
+            (challenge_id, provider, session_id, json.dumps(payload), time.time() + ttl_seconds),
+        )
+
+
+def get_auth_challenge(challenge_id: str) -> dict[str, Any] | None:
+    with connect() as connection:
+        row = connection.execute(
+            "SELECT id, provider, session_id, payload_json, expires_at FROM auth_challenges WHERE id = ?",
+            (challenge_id,),
+        ).fetchone()
+        if row is None:
+            return None
+        if row["expires_at"] < time.time():
+            connection.execute("DELETE FROM auth_challenges WHERE id = ?", (challenge_id,))
+            return None
+    payload = json.loads(row["payload_json"] or "{}")
+    return {
+        "id": row["id"],
+        "provider": row["provider"],
+        "session_id": row["session_id"],
+        "payload": payload if isinstance(payload, dict) else {},
+        "expires_at": row["expires_at"],
+    }
+
+
+def update_auth_challenge(challenge_id: str, payload: dict[str, Any]) -> None:
+    with connect() as connection:
+        connection.execute(
+            "UPDATE auth_challenges SET payload_json = ? WHERE id = ?",
+            (json.dumps(payload), challenge_id),
+        )
+
+
+def consume_auth_challenge(challenge_id: str) -> dict[str, Any] | None:
+    row = get_auth_challenge(challenge_id)
+    if row is None:
+        return None
+    with connect() as connection:
+        connection.execute("DELETE FROM auth_challenges WHERE id = ?", (challenge_id,))
+    return row
 
 
 def bind_session_user(session_id: str, user_id: int | None) -> None:

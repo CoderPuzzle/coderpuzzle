@@ -3,14 +3,14 @@
 The judge's full surface — the same API the web UI uses — available to
 scripted callers. Everything except `/health`, `GET /auth/status`, and
 `POST /auth/register` requires an active **session cookie**; `GET
-/auth/status` reports whether the admin bootstrap has happened (public,
-so the first-visit gate can render before any session exists).
-Account endpoints exist for the gate (`POST /auth/register` bootstraps
-the fixed-name `admin` on a fresh install and then closes — it needs no
-session, necessarily; `POST /auth/login` binds the CALLER'S EXISTING
-session to a user, whose drafts and submissions then live under the user
-id; `POST /auth/logout` unbinds). Treat any deployment's API as public
-and rate-limit at the edge if you expose it.
+/auth/status` reports whether the admin bootstrap has happened and the
+catalog of enabled sign-in **providers** (public, so the first-visit
+gate can render before any session exists). Auth is pluggable: password
+is one provider, not the protocol — see [AUTH.md](AUTH.md). Canonical
+calls send `{provider, …fields}` to `/auth/start`, `/auth/complete`,
+and `/auth/register`. `POST /auth/login` (and register without
+`provider`) remain password aliases. Treat any deployment's API as
+public and rate-limit at the edge if you expose it.
 
 ## Base URL
 
@@ -165,9 +165,10 @@ curl -b jar.txt https://coderpuzzle.dongziyu.com/api/progress
 
 ## Errors
 
-`401` no/expired session · `400` unavailable language, malformed input, or
-oversized draft · `403` registration closed (it is, after the admin
-bootstrap) · `404` unknown problem/submission · `429` login or judge
+`401` no/expired session · `400` unavailable language, malformed input,
+unknown auth provider, or oversized draft · `403` registration closed
+(default after the admin bootstrap; `CODERPUZZLE_AUTH_REGISTRATION=open`
+reopens it) · `404` unknown problem/submission · `429` login or judge
 throttle · `503` judge runner unavailable. Error bodies are `{"detail": "…"}`.
 
 ## Limits

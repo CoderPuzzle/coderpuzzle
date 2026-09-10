@@ -43,9 +43,39 @@ export type SessionStatus = {
   idle_seconds: number;
   user: { username: string; is_admin: boolean } | null;
 };
-// POST /auth/register and /auth/login answer with the account, not a
+// POST /auth/register and /auth/complete answer with the account, not a
 // session payload (the idle window lives on SessionStatus alone).
 export type AuthResult = { status: string; username: string; is_admin: boolean };
+export type AuthField = {
+  name: string;
+  label: string;
+  kind: "text" | "password" | "email";
+  autocomplete?: string;
+  required?: boolean;
+  min_length?: number;
+  readonly?: boolean;
+  default?: string;
+  confirm?: boolean;
+};
+export type AuthProviderInfo = {
+  id: string;
+  label: string;
+  flow: "credentials" | "redirect" | "challenge";
+  can_login: boolean;
+  can_register: boolean;
+  can_bootstrap: boolean;
+  hint?: string;
+  fields: AuthField[];
+  register_fields: AuthField[];
+  start_fields: AuthField[];
+};
+export type AuthStatus = { needs_setup: boolean; providers: AuthProviderInfo[] };
+export type AuthStartResult = {
+  next: "complete" | "redirect" | "challenge";
+  redirect_url?: string;
+  challenge_id?: string;
+  message?: string;
+};
 export type DraftRow = { language: string; code: string; updated_at: number };
 
 // The full problem list (page_size=0) is fixed for the lifetime of a server
@@ -61,17 +91,22 @@ export const api = {
   probeSession: (): Promise<SessionStatus> => request<SessionStatus>("/session?touch=0"),
   startSession: (): Promise<SessionStatus> =>
     request<SessionStatus>("/session", { method: "POST" }),
-  authStatus: (): Promise<{ needs_setup: boolean }> =>
-    request<{ needs_setup: boolean }>("/auth/status"),
-  register: (username: string, password: string): Promise<AuthResult> =>
+  authStatus: (): Promise<AuthStatus> =>
+    request<AuthStatus>("/auth/status"),
+  authStart: (provider: string, payload: Record<string, string>): Promise<AuthStartResult> =>
+    request<AuthStartResult>("/auth/start", {
+      method: "POST",
+      body: JSON.stringify({ provider, ...payload }),
+    }),
+  authComplete: (provider: string, payload: Record<string, string>): Promise<AuthResult> =>
+    request<AuthResult>("/auth/complete", {
+      method: "POST",
+      body: JSON.stringify({ provider, ...payload }),
+    }),
+  authRegister: (provider: string, payload: Record<string, string>): Promise<AuthResult> =>
     request<AuthResult>("/auth/register", {
       method: "POST",
-      body: JSON.stringify({ username, password }),
-    }),
-  login: (username: string, password: string): Promise<AuthResult> =>
-    request<AuthResult>("/auth/login", {
-      method: "POST",
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ provider, ...payload }),
     }),
   logout: (): Promise<{ status: string }> =>
     request<{ status: string }>("/auth/logout", { method: "POST" }),
