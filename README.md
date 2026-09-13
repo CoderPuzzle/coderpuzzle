@@ -199,12 +199,12 @@ compared with a string expected value. Nonzero exits and output past the
 problem's limit are runtime errors. A shell bundle lists only `Shell` via its
 `starter.sh`, and the editor uses Monaco's built-in shell grammar.
 
-At startup the runner calibrates every executor, then a background thread
-pre-warms and periodically re-warms the compilers (rustc, g++, go build,
-javac, tsc) by building throwaway programs. First submissions therefore pay
-the same compile cost as later ones — Go additionally shares one persistent
-build cache across submissions so its standard library is compiled once per
-container, not once per job.
+In the default shared profile the runner calibrates every executor at startup.
+A background thread pre-warms and periodically re-warms the compilers
+(rustc, g++, go build, javac, tsc) by building throwaway programs. This reduces
+cold compile costs. Go additionally shares one persistent build cache across
+submissions so its standard library is compiled once per container, not once
+per job.
 
 The bundled Pair Sum demo has three visible and fifteen hidden cases covering
 duplicates, zeros, negative values, non-adjacent answers, minimum input size,
@@ -215,7 +215,7 @@ expected value was produced by running a reference solution.
 
 ## Judging and time limits
 
-The document's `## Limits` `time_ms` is a nominal per-testcase deadline. At runner startup,
+The default shared profile uses `time_ms` as a nominal per-testcase deadline. At runner startup,
 each executor runs a deterministic language-specific benchmark. The runner
 scales that language's deadline by its score and clamps the factor to
 `0.75x–3.0x`, keeping results reasonable across different machines without
@@ -226,6 +226,22 @@ process group, remaining cases are skipped, and any processes left behind by a
 submission UID are terminated. Memory, process count, open files, output size,
 and core dumps are limited independently.
 
+### Isolated resource profile
+
+For comparable execution measurements, use the Linux isolated profile in
+[Judge resources](docs/JUDGE-RESOURCES.md). It adds host-reserved whole CPU
+cores, separate control and execution budgets, a fresh cgroup per testcase,
+aggregate CPU accounting, swap prohibition and whole-group cleanup. Extra
+submissions queue behind fixed execution slots. CPU quotas alone do not
+reserve cores; the default Compose file remains the shared development mode.
+
+The isolated profile reports `runtime_ms` as CPU time, with separate wall,
+queue and compilation times. Ordinary algorithms use a fixed CPU budget and
+an independent wall backstop; threaded problems retain their wall deadline.
+API responses and stored history identify the timing mode and resource
+profile. Old records retain wall-time semantics. Isolation substantially
+reduces interference, but does not guarantee identical elapsed milliseconds.
+
 ### Reference-relative timing
 
 Absolute milliseconds mean nothing across machines, so accepted submissions
@@ -233,12 +249,12 @@ are also compared against the problem's built-in reference. When a submission
 is accepted, the judge runs the bundle's *designated* reference —
 `reference_solution` in problem.json names the one file (`solution.<ext>` or
 a `solution_<variant>.<ext>`), the optimal approach — through the same
-container, the same calibrated executor, and the same cases, and the response
+resource profile, the same executor, and the same cases, and the response
 carries `reference_runtime_ms` alongside the user's `runtime_ms`. The UI
 shows the ratio ("162% of reference"). The comparison is same-language by
 construction, indicative rather than precise for very fast solutions, and
 best-effort: without a bundled reference, or if the reference run cannot be
-completed, the ratio is simply omitted.
+completed, or if the resource profiles differ, the ratio is simply omitted.
 
 Inspect the current calibration with:
 

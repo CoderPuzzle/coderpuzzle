@@ -222,7 +222,7 @@ def _submit(request_body: dict[str, Any]) -> dict[str, Any]:
     request_path = job_dir / "request.json"
     ready_path = job_dir / "ready"
     result_path = job_dir / "result.json"
-    request_path.write_text(json.dumps({**request_body, "job_id": job_id}), encoding="utf-8")
+    request_path.write_text(json.dumps({**request_body, "job_id": job_id, "enqueued_at_ns": time.monotonic_ns()}), encoding="utf-8")
     ready_path.touch(mode=0o600)
 
     deadline = time.monotonic() + RUNNER_TIMEOUT
@@ -280,7 +280,8 @@ def execute(
     }
     if assembly:
         body["assembly"] = assembly
-    raw_results = _submit(body)["results"]
+    response = _submit(body)
+    raw_results = response["results"]
 
     comparison = invocation.get("comparison", "exact")
     results = []
@@ -300,7 +301,18 @@ def execute(
             "name": case.get("name", f"Case {index + 1}") if visible else f"Hidden case {index - public_count + 1}",
             "status": "accepted" if passed else ("wrong_answer" if status == "completed" else status),
         }
+        result["timing_mode"] = raw.get("timing_mode", response.get("timing_mode", "wall"))
+        result["resource_profile"] = raw.get("resource_profile", response.get("resource_profile", "shared-wall-v1"))
+        if index == 0:
+            result["_queue_ms"] = response.get("queue_ms", 0)
+            result["_compile_ms"] = response.get("compile_ms", 0)
+        for metric in ("cpu_time_ms", "wall_time_ms"):
+            if metric in raw:
+                result[metric if visible else "_" + metric] = raw[metric]
         if visible:
+            for metric in ("cpu_limit_ms", "wall_limit_ms", "limit_mode", "timeout_reason", "memory_peak_bytes", "cpu_throttled_ms"):
+                if metric in raw:
+                    result[metric] = raw[metric]
             result.update({
                 "runtime_ms": raw.get("runtime_ms", 0),
                 "timeout_ms": raw.get("timeout_ms"),
@@ -317,7 +329,7 @@ def execute(
             if status not in {"completed"}:
                 hidden_errors = {
                     "runtime_error": "Solution raised an error on a hidden testcase",
-                    "time_limit_exceeded": "Solution exceeded the calibrated deadline on a hidden testcase",
+                    "time_limit_exceeded": "Solution exceeded the execution time budget on a hidden testcase",
                     "memory_limit_exceeded": "Solution exceeded the memory limit on a hidden testcase",
                     "skipped": "Testcase was not run after an earlier execution failure",
                 }

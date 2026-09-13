@@ -149,3 +149,20 @@ language) would turn a 20-line guessing-game oracle into a protocol
 service. Static analysis of submissions for patching/reflection is
 deliberately deferred — detection is cat-and-mouse, and the stakes do
 not justify it.
+
+## Resource control plane
+
+The optional [isolated resource profile](JUDGE-RESOURCES.md) adds a trusted
+host-provisioned cgroup subtree per worker slot. Only this subtree is mounted
+writable. The supervisor can attach processes and create testcase groups;
+submissions cannot write those controls, access the queue, or change their
+UID. Runtime processes intentionally move from the Docker control cgroup to
+a sibling execution subtree, so Docker container CPU/memory limits describe
+control work only in this profile. The slot parent and per-run cgroups enforce
+execution limits. Network and PID namespaces remain the container's namespaces.
+
+The host provisioner requires administrative privileges; the runner does not
+gain SYS_ADMIN, a Docker socket, or a writable host cgroup root. A shared host
+UID still means compiler RLIMIT_NPROC may interact across containers; size
+control process budgets conservatively when adding slots. Runtime pids.max
+is per testcase and does not use that shared-UID limit in isolated mode.

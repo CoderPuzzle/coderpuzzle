@@ -68,6 +68,10 @@ export type CaseResult = {
     name: string;
     status: string;
     runtime_ms?: number;
+    timing_mode?: "cpu" | "wall";
+    limit_mode?: "cpu" | "wall";
+    cpu_time_ms?: number;
+    wall_time_ms?: number;
     timeout_ms?: number | null;
     input?: Record<string, unknown>;
     expected?: unknown;
@@ -81,6 +85,8 @@ export type JudgeResult = {
     passed: number;
     total: number;
     runtime_ms: number;
+    timing_mode?: "cpu" | "wall" | "mixed";
+    resource_profile?: string;
     reference_runtime_ms?: number | null;
     results: CaseResult[];
     submission_id?: number;
@@ -95,6 +101,8 @@ export type Submission = {
     passed: number;
     total: number;
     runtime_ms: number;
+    timing_mode?: "cpu" | "wall" | "mixed";
+    resource_profile?: string;
     created_at: string;
 };
 

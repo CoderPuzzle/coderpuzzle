@@ -177,3 +177,23 @@ Per-problem `limits` (`time_ms`, `memory_mb`, `output_kb`) ship in the
 problem payload and are enforced inside the isolated runner; the API returns
 verdict statuses rather than killing the HTTP request. Bodies over 256 KiB
 are rejected at the web proxy.
+
+## Execution timing profiles
+
+Run/submit responses include `timing_mode` (`wall` or `cpu`) and
+`resource_profile`. `runtime_ms` is the sum of testcase wall times in the
+shared profile and CPU times in the isolated profile. Separate `wall_time_ms`
+and (when available) `cpu_time_ms` aggregates exclude `queue_ms` and
+`compile_ms`. The latter includes language preparation, not just native
+compilation. These fields also apply to failures when measurements exist.
+
+Public testcase results may include `cpu_time_ms`, `wall_time_ms`,
+`memory_peak_bytes`, `cpu_throttled_ms`, `cpu_limit_ms`, `wall_limit_ms`,
+`limit_mode`, and `timeout_reason` (`cpu` or `wall`). `timeout_ms` follows
+`limit_mode`, which may be wall time for threaded problems even when runtime
+is displayed as CPU time. Hidden per-case measurements remain private.
+
+Stored submissions and history include timing mode/profile; migrated records
+are `wall` / `shared-wall-v1`. Reference ratios are omitted across different
+profiles or timing modes. Clients must not combine historical wall timing
+and isolated CPU timing into a single benchmark series.

@@ -420,12 +420,14 @@ def _reference_runtime_ms(
     public_count: int,
     accepted: bool,
     bundle: Path,
+    timing_mode: str = "wall",
+    resource_profile: str = "shared-wall-v1",
 ) -> int | None:
     """Run the bundle's designated reference solution, return its runtime.
 
-    A hardware-independent baseline: both runs share the same container,
-    executor calibration, and cases, so the ratio of the user's total to this
-    total is meaningful even though absolute times vary by host. Exactly one
+    An indicative baseline: both runs must share the same timing/resource
+    profile, language and cases. Queue workers can differ, so mismatched
+    profiles are excluded from the comparison. Exactly one
     reference program runs — problem.json's 'reference_solution' designates
     the optimal approach (the one the worst-to-best guide ends with), so a
     three-solution problem judges two programs per accepted submission, not
@@ -444,6 +446,9 @@ def _reference_runtime_ms(
     except HTTPException:
         return None
     if any(result["status"] not in {"accepted", "completed"} for result in results):
+        return None
+    if any((result.get("timing_mode", "wall"), result.get("resource_profile", "shared-wall-v1"))
+           != (timing_mode, resource_profile) for result in results):
         return None
     return sum(result.get("runtime_ms", result.get("_runtime_ms", 0)) for result in results)
 
@@ -471,7 +476,8 @@ def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_se
     summary = _summarize(results)
     _attach_tamper_warnings(summary, bundle, request.language, request.code)
     summary["reference_runtime_ms"] = _reference_runtime_ms(
-        request, problem_data, cases, public_count, summary["status"] == "accepted", bundle
+        request, problem_data, cases, public_count, summary["status"] == "accepted", bundle,
+        summary["timing_mode"], summary["resource_profile"]
     )
     submission_id = save_submission(
         request.slug,
@@ -484,6 +490,8 @@ def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_se
         results,
         scope,
         summary["reference_runtime_ms"],
+        summary["timing_mode"],
+        summary["resource_profile"],
     )
     summary["submission_id"] = submission_id
     return summary
@@ -492,8 +500,20 @@ def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_se
 def _summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
     passed = sum(result["status"] in {"accepted", "completed"} for result in results)
     runtime_ms = sum(result.get("runtime_ms", result.get("_runtime_ms", 0)) for result in results)
+    modes = {result.get("timing_mode", "wall") for result in results}
+    profiles = {result.get("resource_profile", "shared-wall-v1") for result in results}
+    timing = {
+        "timing_mode": next(iter(modes)) if len(modes) == 1 else "mixed",
+        "resource_profile": next(iter(profiles)) if len(profiles) == 1 else "mixed",
+        "queue_ms": sum(result.get("_queue_ms", 0) for result in results),
+        "compile_ms": sum(result.get("_compile_ms", 0) for result in results),
+    }
+    for metric in ("cpu_time_ms", "wall_time_ms"):
+        if any(metric in result or "_" + metric in result for result in results):
+            timing[metric] = sum(result.get(metric, result.get("_" + metric, 0)) for result in results)
     for result in results:
-        result.pop("_runtime_ms", None)
+        for key in ("_runtime_ms", "_cpu_time_ms", "_wall_time_ms", "_queue_ms", "_compile_ms"):
+            result.pop(key, None)
     status = "accepted" if passed == len(results) else next(
         (result["status"] for result in results if result["status"] not in {"accepted", "completed"}),
         "wrong_answer",
@@ -504,6 +524,7 @@ def _summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
         "total": len(results),
         "runtime_ms": runtime_ms,
         "results": results,
+        **timing,
     }
 
 

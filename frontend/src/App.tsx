@@ -1740,7 +1740,7 @@ function Results({ result, busy, error, comparison, invocationType }: {
           <strong>{statusLabel(result.status)}</strong>
           <span>{result.passed} of {result.total} cases passed</span>
         </div>
-        <div className="runtime"><Clock3 size={14} /> {result.runtime_ms} ms</div>
+        <div className="runtime"><Clock3 size={14} /> {result.runtime_ms} ms{result.timing_mode === "cpu" ? " CPU" : ""}</div>
         {result.reference_runtime_ms != null && result.reference_runtime_ms > 0 && (
           <div
             className="runtime"
@@ -1769,7 +1769,7 @@ function Results({ result, busy, error, comparison, invocationType }: {
             <button key={`${test.name}-${index}`} className={openCase === index ? "result-case active" : "result-case"} onClick={() => setOpenCase(index)}>
               <span className={`case-status ${statusTone(test.status)}`}>{statusTone(test.status) === "success" ? <Check size={12} /> : <X size={12} />}</span>
               <span>{test.name}</span>
-              <small>{test.runtime_ms === undefined ? "Hidden" : `${test.runtime_ms} ms`}</small>
+              <small>{test.runtime_ms === undefined ? "Hidden" : `${test.runtime_ms} ms${test.timing_mode === "cpu" ? " CPU" : ""}`}</small>
             </button>
           ))}
         </div>
@@ -1779,7 +1779,7 @@ function Results({ result, busy, error, comparison, invocationType }: {
               <span className={`status-text ${statusTone(active.status)}`}>{statusLabel(active.status)}</span>
               <span>{active.runtime_ms === undefined
                 ? "Timing hidden"
-                : `${active.runtime_ms} ms${active.timeout_ms ? ` / ${active.timeout_ms} ms limit` : ""}`}</span>
+                : `${active.runtime_ms} ms${active.timing_mode === "cpu" ? " CPU" : ""}${active.timeout_ms ? ` / ${active.timeout_ms} ms ${active.limit_mode === "cpu" ? "CPU" : "elapsed"} limit` : ""}`}</span>
             </div>
             {active.error && <div className="error-box">{active.error}</div>}
             {active.input !== undefined ? (
@@ -2000,7 +2000,7 @@ function Submissions({ submissions, problem }: { submissions: Submission[]; prob
             <span className={`status-text ${statusTone(submission.status)}`}>{statusLabel(submission.status)}</span>
           </span>
           <span>{problem.languages[submission.language]?.display_name ?? submission.language}</span>
-          <span>{submission.runtime_ms} ms</span>
+          <span>{submission.runtime_ms} ms{submission.timing_mode === "cpu" ? " CPU" : ""}</span>
           <time>{new Date(submission.created_at).toLocaleString()}</time>
         </div>
       ))}

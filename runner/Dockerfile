@@ -58,7 +58,7 @@ COPY --from=typescript-toolchain \
     /usr/local/lib/node_modules/sql-formatter
 RUN ln -s /usr/local/lib/node_modules/typescript/bin/tsc /usr/local/bin/tsc \
     && ln -s /usr/local/lib/node_modules/prettier/bin/prettier.cjs /usr/local/bin/prettier
-COPY worker.py python_harness.py sql_harness.py shell_harness.py leetcode_codecs.py protocol.py privileges.py formatters.py ./
+COPY worker.py python_harness.py sql_harness.py shell_harness.py leetcode_codecs.py protocol.py privileges.py formatters.py resources.py ./
 COPY cli.py ./
 RUN printf '#!/bin/sh\nexec python3 /runner/cli.py "$@"\n' > /usr/local/bin/coderpuzzle && chmod +x /usr/local/bin/coderpuzzle
 COPY compiler_sandbox.py runtime_sandbox.py ./

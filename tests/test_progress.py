@@ -34,6 +34,14 @@ class ProgressTests(unittest.TestCase):
         self.assertEqual({}, database.list_progress("session-a"))
         self.assertEqual({"demo-problem": "solved"}, database.list_progress("user:1"))
 
+    def test_history_preserves_timing_profiles_and_legacy_defaults(self):
+        database.save_submission("demo-problem", "cpp", "code", "accepted", 1, 1, 8, [], "session-a")
+        database.save_submission("demo-problem", "cpp", "code", "accepted", 1, 1, 4, [], "session-a",
+                                 timing_mode="cpu", resource_profile="test-cpu-v1")
+        rows = database.list_submissions("demo-problem", session_id="session-a")
+        self.assertEqual(("cpu", "test-cpu-v1"), (rows[0]["timing_mode"], rows[0]["resource_profile"]))
+        self.assertEqual("wall", rows[1]["timing_mode"])
+
     def test_reference_runtime_is_stored_with_the_attempt(self):
         database.save_submission(
             "demo-problem", "python3", "code", "accepted", 5, 5, 8, [], "session-a", 123

@@ -26,7 +26,7 @@ def main() -> int:
     if not 16 <= memory_mb <= 8192:
         print("Runtime memory limit is out of range", file=sys.stderr)
         return 126
-    if not 1 <= cpu_seconds <= 60:
+    if not 1 <= cpu_seconds <= 3600:
         print("Runtime CPU limit is out of range", file=sys.stderr)
         return 126
     if not 1024 <= output_bytes <= 16 * 1024 * 1024:
@@ -36,13 +36,26 @@ def main() -> int:
         print("Runtime process limit is out of range", file=sys.stderr)
         return 126
 
+    # Only the trusted launcher sees this setting. Joining before the UID
+    # drop makes every exec/fork descendant subject to the same resource group.
+    cgroup = os.environ.pop("CODERPUZZLE_RUN_CGROUP", None)
+    if cgroup:
+        try:
+            with open(os.path.join(cgroup, "cgroup.procs"), "w") as control:
+                control.write(str(os.getpid()))
+        except OSError:
+            print("Cannot attach runtime to its resource group", file=sys.stderr)
+            return 126
     command = sys.argv[5:]
     memory_bytes = memory_mb * 1024 * 1024
     resource.setrlimit(resource.RLIMIT_AS, (memory_bytes, memory_bytes))
     resource.setrlimit(resource.RLIMIT_CPU, (cpu_seconds, cpu_seconds + 1))
     resource.setrlimit(resource.RLIMIT_FSIZE, (output_bytes, output_bytes))
     resource.setrlimit(resource.RLIMIT_NOFILE, (32, 32))
-    resource.setrlimit(resource.RLIMIT_NPROC, (max_processes, max_processes))
+    # RLIMIT_NPROC is shared by this UID across containers; isolated runs
+    # use the exact per-cgroup pids.max instead.
+    if not cgroup:
+        resource.setrlimit(resource.RLIMIT_NPROC, (max_processes, max_processes))
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
     drop_privileges(SUBMISSION_UID, SUBMISSION_GID)
     # exec never returns on success; a failure (missing binary, OOM in the

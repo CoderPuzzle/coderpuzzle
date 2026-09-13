@@ -1,3 +1,4 @@
+import fcntl
 import json
 import math
 import os
@@ -9,6 +10,7 @@ import tempfile
 import threading
 import time
 import traceback
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
@@ -22,6 +24,7 @@ from executors.base import ExecutorError, LanguageExecutor, PreparedProgram
 from executors.go import WRAPPER_IMPORTS
 from formatters import FormatError, format_source
 from protocol import parse_protocol as _parse_protocol
+from resources import ResourceManager, execution_budget
 
 
 QUEUE_DIR = Path(os.environ.get("CODERPUZZLE_QUEUE_DIR", "/queue"))
@@ -32,6 +35,7 @@ NOBODY_GID = 65534
 RUNTIME_SANDBOX = "/runner/runtime_sandbox.py"
 SUPERVISOR_PYTHON = "/usr/local/bin/coderpuzzle-supervisor-python"
 CALIBRATION_FACTORS: dict[str, float] = {}
+RESOURCES: ResourceManager | None = None
 
 
 def _sandboxed_runtime_command(
@@ -136,7 +140,12 @@ def _run_case(
             else executor.max_processes
         ),
     }
-    timeout_seconds = calibrated_time_ms / 1000
+    manager = RESOURCES or ResourceManager()
+    if manager.isolated:
+        budget = execution_budget(nominal_time_ms, bool(limits.get("threads")), manager.cpu_count)
+        effective_limits["time_ms"] = budget.cpu_ms
+    else:
+        budget = execution_budget(calibrated_time_ms, True)
     if getattr(executor, "encode_case_with_limits", False):
         payload = executor.encode_case(invocation, case_input, limits)
     else:
@@ -144,54 +153,94 @@ def _run_case(
 
     with tempfile.TemporaryFile(mode="w+b", dir="/tmp") as output_file, \
             tempfile.TemporaryFile(mode="w+b", dir="/tmp") as protocol_file:
-        protocol_fd = protocol_file.fileno()
-        channel = os.dup2(protocol_fd, PROTOCOL_FD)
+        channel = os.dup2(protocol_file.fileno(), PROTOCOL_FD)
+        group = None
+        process = None
+        measurements = {}
+        timeout_reason = None
         started = time.monotonic()
         try:
+            if manager.isolated:
+                group = manager.case(int(limits.get("memory_mb", 256)), effective_limits["processes"])
+            environment = dict(program.environment)
+            environment.pop("CODERPUZZLE_RUN_CGROUP", None)
+            if group:
+                environment["CODERPUZZLE_RUN_CGROUP"] = str(group.path)
+            started = time.monotonic()
             process = subprocess.Popen(
                 _sandboxed_runtime_command(program.command, effective_limits, output_limit),
-                cwd=scratch,
-                stdin=subprocess.PIPE,
-                stdout=output_file,
-                stderr=subprocess.STDOUT,
-                env=program.environment,
-                start_new_session=True,
-                pass_fds=(channel,),
+                cwd=scratch, stdin=subprocess.PIPE, stdout=output_file,
+                stderr=subprocess.STDOUT, env=environment,
+                start_new_session=True, pass_fds=(channel,),
             )
-            try:
-                process.communicate(payload, timeout=timeout_seconds)
-            except subprocess.TimeoutExpired:
+            pending_input = payload
+            while True:
+                remaining = budget.wall_ms / 1000 - (time.monotonic() - started)
+                if group and group.cpu_ms() >= budget.cpu_ms:
+                    timeout_reason = "cpu"
+                    break
+                if remaining <= 0:
+                    timeout_reason = "wall"
+                    break
                 try:
-                    os.killpg(process.pid, signal.SIGKILL)
-                except ProcessLookupError:
-                    pass
-                process.wait()
-                _kill_lingering_children()
-                return {
-                    "status": "time_limit_exceeded",
-                    "runtime_ms": int((time.monotonic() - started) * 1000),
-                    "timeout_ms": calibrated_time_ms,
-                }
-
-            runtime_ms = int((time.monotonic() - started) * 1000)
-            output_file.seek(0)
-            output = output_file.read(output_limit).decode("utf-8", errors="replace")
-            protocol_file.seek(0)
-            # The runtime sandbox's RLIMIT_FSIZE caps this file at
-            # output_limit, which the corpus's largest payloads far exceed
-            # (output_kb up to 8192) — a fixed small cap here truncated the
-            # JSON mid-line and misreported correct runs as protocol errors.
-            protocol = protocol_file.read(output_limit + 4096).decode("utf-8", errors="replace")
-            # Trust the dedicated protocol channel; stdout parsing remains
-            # only as the fallback for harnesses that could not use it.
-            parsed = _parse_protocol(protocol) if protocol.strip() else _parse_protocol(output)
+                    process.communicate(pending_input, timeout=min(remaining, 0.01) if group else remaining)
+                    break
+                except subprocess.TimeoutExpired:
+                    pending_input = None
+            wall_ms = int((time.monotonic() - started) * 1000)
         finally:
-            os.close(channel)
-        parsed["runtime_ms"] = runtime_ms
-        parsed["timeout_ms"] = calibrated_time_ms
+            try:
+                if group:
+                    measurements = group.finish()
+            finally:
+                try:
+                    if process is not None:
+                        # Also covers a launcher failing before cgroup attachment.
+                        if process.poll() is None:
+                            try:
+                                os.killpg(process.pid, signal.SIGKILL)
+                            except ProcessLookupError:
+                                pass
+                        process.wait()
+                    if group:
+                        group.close()
+                    else:
+                        _kill_lingering_children()
+                finally:
+                    os.close(channel)
+        manager.validate()
+        if group and measurements["cpu_time_ms"] >= budget.cpu_ms:
+            timeout_reason = "cpu"
+        output_file.seek(0)
+        output = output_file.read(output_limit).decode("utf-8", errors="replace")
+        protocol_file.seek(0)
+        protocol = protocol_file.read(output_limit + 4096).decode("utf-8", errors="replace")
+        parsed = _parse_protocol(protocol) if protocol.strip() else _parse_protocol(output)
+        if measurements.pop("oom_kill", 0):
+            parsed = {"status": "memory_limit_exceeded", "error": "Solution exceeded its physical memory budget"}
+        elif timeout_reason:
+            parsed = {"status": "time_limit_exceeded", "timeout_reason": timeout_reason}
+        elif process.returncode == 126 and group:
+            parsed = {"status": "system_error", "error": "Runtime launcher failed"}
+        elif process.returncode != 0 and parsed["status"] == "completed":
+            parsed = {"status": "runtime_error", "error": f"{executor.language} exited with status {process.returncode}"}
+        # These values come only from the supervisor, never from harness output.
+        for key in ("cpu_time_ms", "memory_peak_bytes", "cpu_throttled_ms", "timeout_reason"):
+            if key != "timeout_reason" or not timeout_reason:
+                parsed.pop(key, None)
+        parsed.update(measurements)
+        parsed.update({
+            "runtime_ms": measurements["cpu_time_ms"] if group else wall_ms,
+            "wall_time_ms": wall_ms,
+            "timeout_ms": budget.wall_ms if limits.get("threads") or not group else budget.cpu_ms,
+            "limit_mode": "wall" if limits.get("threads") or not group else "cpu",
+            "cpu_limit_ms": budget.cpu_ms,
+            "wall_limit_ms": budget.wall_ms,
+            "timing_mode": "cpu" if group else "wall",
+            "resource_profile": manager.profile,
+        })
         if process.returncode != 0 and parsed["status"] == "runtime_error" and not parsed.get("error"):
             parsed["error"] = f"{executor.language} exited with status {process.returncode}"
-        _kill_lingering_children()
         return parsed
 
 
@@ -202,6 +251,9 @@ def _write_response(job_dir: Path, response: dict[str, Any]) -> None:
     if not job_dir.is_dir():
         print(f"CoderPuzzle job {job_dir.name} abandoned before its result", file=sys.stderr, flush=True)
         return
+    if RESOURCES:
+        response["timing_mode"] = "cpu" if RESOURCES.isolated else "wall"
+        response["resource_profile"] = RESOURCES.profile
     temporary = job_dir / "result.tmp"
     temporary.write_text(json.dumps(response, separators=(",", ":")), encoding="utf-8")
     os.replace(temporary, job_dir / "result.json")
@@ -235,6 +287,8 @@ def _process_format_job(job_dir: Path, request: dict[str, Any]) -> None:
 
 
 def _process_job(job_dir: Path) -> None:
+    claimed_at = time.monotonic_ns()
+    compile_ms = 0
     request_path = job_dir / "request.json"
     request: dict[str, Any] = {}
     try:
@@ -256,14 +310,18 @@ def _process_job(job_dir: Path) -> None:
             tempfile.mkdtemp(prefix=f"coderpuzzle-{request['job_id'][:12]}-", dir=WORK_DIR)
         )
         try:
-            program = executor.prepare(
-                job_root,
-                job_root / "scratch",
-                code,
-                request["invocation"],
-                request.get("limits", {}),
-                request.get("assembly"),
-            )
+            compile_started = time.monotonic()
+            try:
+                program = executor.prepare(
+                    job_root,
+                    job_root / "scratch",
+                    code,
+                    request["invocation"],
+                    request.get("limits", {}),
+                    request.get("assembly"),
+                )
+            finally:
+                compile_ms = int((time.monotonic() - compile_started) * 1000)
             job_root.chmod(0o755)
             results = []
             request_cases = request.get("cases", [])
@@ -328,6 +386,8 @@ def _process_job(job_dir: Path) -> None:
             ],
         }
 
+    response["queue_ms"] = max(0, (claimed_at - request.get("enqueued_at_ns", claimed_at)) // 1_000_000)
+    response["compile_ms"] = compile_ms
     _write_response(job_dir, response)
 
 
@@ -497,9 +557,26 @@ def _prewarm_loop() -> None:
         time.sleep(interval)
 
 
+@contextmanager
+def claim_ready(ready: Path):
+    """Claim a local-filesystem queue inode until response publication."""
+    with ready.open("rb") as claim:
+        try:
+            fcntl.flock(claim, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            yield False
+            return
+        if not ready.exists() or ready.stat().st_ino != os.fstat(claim.fileno()).st_ino:
+            yield False
+            return
+        yield True
+
+
 def main() -> None:
+    global RESOURCES
+    RESOURCES = ResourceManager()
     for language in supported_languages():
-        elapsed_ms, factor = get_executor(language).calibrate()
+        elapsed_ms, factor = (0.0, 1.0) if RESOURCES.isolated else get_executor(language).calibrate()
         CALIBRATION_FACTORS[language] = factor
         print(
             f"CoderPuzzle {language} calibration: {elapsed_ms:.1f} ms, deadline factor {factor:.2f}x",
@@ -516,7 +593,14 @@ def main() -> None:
         for ready in QUEUE_DIR.glob("*/ready"):
             found = True
             try:
-                _process_job(ready.parent)
+                # The ready inode is stable until publication; death releases
+                # the lock, so another slot can retry an abandoned claim.
+                with claim_ready(ready) as claimed:
+                    if not claimed:
+                        continue
+                    _process_job(ready.parent)
+            except FileNotFoundError:
+                continue
             except Exception:  # noqa: BLE001 — one bad job must never kill the worker
                 print(
                     f"Runner job {ready.parent.name} crashed:\n{traceback.format_exc()}",
@@ -526,7 +610,7 @@ def main() -> None:
             _hygiene()
         if not found:
             _hygiene()
-            time.sleep(POLL_INTERVAL)
+        time.sleep(POLL_INTERVAL)
 
 
 if __name__ == "__main__":

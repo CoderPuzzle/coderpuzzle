@@ -111,6 +111,10 @@ def initialize_database() -> None:
         # Submissions recorded before time-cost scoring carry no reference runtime.
         if "reference_runtime_ms" not in columns:
             connection.execute("ALTER TABLE submissions ADD COLUMN reference_runtime_ms INTEGER")
+        if "timing_mode" not in columns:
+            connection.execute("ALTER TABLE submissions ADD COLUMN timing_mode TEXT NOT NULL DEFAULT 'wall'")
+        if "resource_profile" not in columns:
+            connection.execute("ALTER TABLE submissions ADD COLUMN resource_profile TEXT NOT NULL DEFAULT 'shared-wall-v1'")
         # Every scoped read (per-viewer submissions, progress, purge) filters
         # on the storage scope; results_json rows are fat, so keep those
         # scans off the hot paths. Idempotent: IF NOT EXISTS matches the
@@ -147,13 +151,15 @@ def save_submission(
     results: list[dict[str, Any]],
     session_id: str | None = None,
     reference_runtime_ms: int | None = None,
+    timing_mode: str = "wall",
+    resource_profile: str = "shared-wall-v1",
 ) -> int:
     with connect() as connection:
         cursor = connection.execute(
             """
             INSERT INTO submissions
-                (session_id, problem_slug, language, code, status, passed, total, runtime_ms, results_json, reference_runtime_ms)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                (session_id, problem_slug, language, code, status, passed, total, runtime_ms, results_json, reference_runtime_ms, timing_mode, resource_profile)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 session_id,
@@ -166,6 +172,8 @@ def save_submission(
                 runtime_ms,
                 json.dumps(results),
                 reference_runtime_ms,
+                timing_mode,
+                resource_profile,
             ),
         )
         return int(cursor.lastrowid)
@@ -177,7 +185,7 @@ def list_submissions(
     with connect() as connection:
         rows = connection.execute(
             """
-            SELECT id, problem_slug, language, status, passed, total, runtime_ms, reference_runtime_ms, created_at
+            SELECT id, problem_slug, language, status, passed, total, runtime_ms, reference_runtime_ms, timing_mode, resource_profile, created_at
             FROM submissions
             WHERE problem_slug = ? AND session_id = ?
             ORDER BY id DESC LIMIT ?
