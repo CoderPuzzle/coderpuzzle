@@ -85,11 +85,10 @@ def main() -> int:
              int(hardware["memory_total_kib"]) / 1024 / 1024, hardware["fingerprint"][:12])
     rows = list(progress.get("records", [])) if completed_keys else []
     failures = list(progress.get("failures", [])) if completed_keys else []
-    slow = list(progress.get("slow", [])) if completed_keys else []
     def checkpoint() -> None:
         calibration.CALIBRATION_DIR.mkdir(parents=True, exist_ok=True)
         payload = json.dumps({"schema_version": 1, "hardware": hardware,
-            "records": rows, "failures": failures, "slow": slow}, sort_keys=True).encode()
+            "records": rows, "failures": failures}, sort_keys=True).encode()
         fd, temp = tempfile.mkstemp(prefix="calibration-progress-", suffix=".json", dir=calibration.CALIBRATION_DIR)
         try:
             with os.fdopen(fd, "wb") as handle:
@@ -128,7 +127,6 @@ def main() -> int:
                 continue
             completed += 1
             LOG.info("[%d/%d] calibrating %s/%s", completed, total, slug, language)
-            item_started = time.monotonic()
             try:
                 results = _run_judge(problem, language, reference, cases, public_count, bundle)
                 failed_results = [row for row in results if row.get("status") not in {"accepted", "completed"}]
@@ -156,18 +154,11 @@ def main() -> int:
                          "reference_walltime_ms": wall,
                          "timeout_ms": max(1, wall * 10),
                          "case_count": len(results)})
-            elapsed_ms = int((time.monotonic() - item_started) * 1000)
-            nominal_ms = int(problem.get("limits", {}).get("time_ms", 2000))
-            if elapsed_ms > max(10_000, nominal_ms * 5) or wall > max(10_000, nominal_ms * 5):
-                slow.append({"slug": slug, "language": language, "elapsed_ms": elapsed_ms,
-                             "reference_walltime_ms": wall, "nominal_limit_ms": nominal_ms})
-                LOG.warning("[%d/%d] %s/%s unusually slow: elapsed=%dms wall=%dms; recorded for review",
-                            completed, total, slug, language, elapsed_ms, wall)
             checkpoint()
             LOG.info("[%d/%d] %s/%s reference wall=%dms timeout=%dms", completed, total, slug, language, wall, wall * 10)
     payload = {"schema_version": 1, "created_at": time.time(),
                "platform": platform.platform(), "hardware": hardware, "records": rows,
-               "failures": failures, "slow": slow,
+               "failures": failures,
                "duration_seconds": time.time() - started}
     calibration.CALIBRATION_DIR.mkdir(parents=True, exist_ok=True)
     fd, temp = tempfile.mkstemp(prefix="calibration-", suffix=".json", dir=calibration.CALIBRATION_DIR)
@@ -178,7 +169,7 @@ def main() -> int:
         os.replace(temp, calibration.CALIBRATION_FILE)
     finally:
         Path(temp).unlink(missing_ok=True)
-    LOG.info("wrote %s (%d records, %d failures, %d slow references)", calibration.CALIBRATION_FILE, len(rows), len(failures), len(slow))
+    LOG.info("wrote %s (%d records, %d failures)", calibration.CALIBRATION_FILE, len(rows), len(failures))
     return 0
 
 
