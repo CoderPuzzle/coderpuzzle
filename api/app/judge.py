@@ -304,6 +304,7 @@ def execute(
         result["timing_mode"] = raw.get("timing_mode", response.get("timing_mode", "wall"))
         result["resource_profile"] = raw.get("resource_profile", response.get("resource_profile", "shared-wall-v1"))
         if index == 0:
+            result["_judge_job_id"] = response.get("job_id")
             result["_queue_ms"] = response.get("queue_ms", 0)
             result["_compile_ms"] = response.get("compile_ms", 0)
         for metric in ("cpu_time_ms", "wall_time_ms"):

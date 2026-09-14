@@ -1,4 +1,5 @@
 import fcntl
+import hashlib
 import json
 import math
 import os
@@ -36,6 +37,15 @@ RUNTIME_SANDBOX = "/runner/runtime_sandbox.py"
 SUPERVISOR_PYTHON = "/usr/local/bin/coderpuzzle-supervisor-python"
 CALIBRATION_FACTORS: dict[str, float] = {}
 RESOURCES: ResourceManager | None = None
+
+
+def _audit(event: str, **fields: Any) -> None:
+    """Opt-in operator timing log; never include source, inputs or outputs."""
+    if os.environ.get("CODERPUZZLE_RESOURCE_AUDIT") == "1":
+        print("__RESOURCE_AUDIT__" + json.dumps({
+            "event": event, "monotonic_ns": time.monotonic_ns(),
+            "slot": os.environ.get("CODERPUZZLE_SLOT_ID", "default"), **fields,
+        }, separators=(",", ":")), file=sys.stderr, flush=True)
 
 
 def _sandboxed_runtime_command(
@@ -305,6 +315,10 @@ def _process_job(job_dir: Path) -> None:
         code = request.get("code")
         if not isinstance(code, str) or not code or len(code) > 100_000:
             raise ValueError("Invalid source code")
+        _audit("job_start", job_id=job_dir.name, language=executor.language,
+               source_sha256=hashlib.sha256(code.encode()).hexdigest(),
+               enqueued_at_ns=request.get("enqueued_at_ns"),
+               execution_cpus=RESOURCES.cpus if RESOURCES else "")
 
         job_root = Path(
             tempfile.mkdtemp(prefix=f"coderpuzzle-{request['job_id'][:12]}-", dir=WORK_DIR)
@@ -333,6 +347,7 @@ def _process_job(job_dir: Path) -> None:
                     # answer lost its reader.
                     print(f"CoderPuzzle job {job_dir.name} abandoned mid-run", file=sys.stderr, flush=True)
                     return
+                _audit("case_start", job_id=job_dir.name, case=case_index)
                 result = _run_case(
                     job_root,
                     case["input"],
@@ -342,6 +357,10 @@ def _process_job(job_dir: Path) -> None:
                     program,
                 )
                 results.append(result)
+                _audit("case_end", job_id=job_dir.name, case=case_index,
+                       status=result["status"], **{key: result[key] for key in
+                           ("cpu_time_ms", "wall_time_ms", "cpu_throttled_ms", "memory_peak_bytes")
+                           if key in result})
                 scratch = job_root / "scratch"
                 try:
                     os.chown(scratch, os.getuid(), os.getgid())
@@ -388,6 +407,10 @@ def _process_job(job_dir: Path) -> None:
 
     response["queue_ms"] = max(0, (claimed_at - request.get("enqueued_at_ns", claimed_at)) // 1_000_000)
     response["compile_ms"] = compile_ms
+    _audit("job_end", job_id=job_dir.name, queue_ms=response["queue_ms"],
+           compile_ms=compile_ms,
+           wall_time_ms=sum(r.get("wall_time_ms", 0) for r in response["results"]),
+           cpu_time_ms=sum(r.get("cpu_time_ms", 0) for r in response["results"]))
     _write_response(job_dir, response)
 
 
@@ -572,6 +595,17 @@ def claim_ready(ready: Path):
         yield True
 
 
+def queued_jobs():
+    """Oldest ready jobs first; other workers may remove entries at any time."""
+    entries = []
+    for ready in QUEUE_DIR.glob("*/ready"):
+        try:
+            entries.append((ready.stat().st_mtime_ns, str(ready), ready))
+        except FileNotFoundError:
+            continue
+    return [entry[2] for entry in sorted(entries)]
+
+
 def main() -> None:
     global RESOURCES
     RESOURCES = ResourceManager()
@@ -590,7 +624,7 @@ def main() -> None:
     WORK_DIR.mkdir(parents=True, exist_ok=True)
     while True:
         found = False
-        for ready in QUEUE_DIR.glob("*/ready"):
+        for ready in queued_jobs():
             found = True
             try:
                 # The ready inode is stable until publication; death releases

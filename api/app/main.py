@@ -503,6 +503,7 @@ def _summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
     modes = {result.get("timing_mode", "wall") for result in results}
     profiles = {result.get("resource_profile", "shared-wall-v1") for result in results}
     timing = {
+        "judge_job_id": next((result["_judge_job_id"] for result in results if "_judge_job_id" in result), None),
         "timing_mode": next(iter(modes)) if len(modes) == 1 else "mixed",
         "resource_profile": next(iter(profiles)) if len(profiles) == 1 else "mixed",
         "queue_ms": sum(result.get("_queue_ms", 0) for result in results),
@@ -512,7 +513,7 @@ def _summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
         if any(metric in result or "_" + metric in result for result in results):
             timing[metric] = sum(result.get(metric, result.get("_" + metric, 0)) for result in results)
     for result in results:
-        for key in ("_runtime_ms", "_cpu_time_ms", "_wall_time_ms", "_queue_ms", "_compile_ms"):
+        for key in ("_runtime_ms", "_cpu_time_ms", "_wall_time_ms", "_queue_ms", "_compile_ms", "_judge_job_id"):
             result.pop(key, None)
     status = "accepted" if passed == len(results) else next(
         (result["status"] for result in results if result["status"] not in {"accepted", "completed"}),

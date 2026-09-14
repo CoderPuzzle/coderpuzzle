@@ -73,6 +73,8 @@ def provision(args: argparse.Namespace) -> dict[str, str]:
         )
     if not (control | execution) <= online:
         raise ValueError("Requested CPUs are not available")
+    if not args.shared_control and not (control | execution) < online:
+        raise ValueError("A local partition must leave CPUs for the host; use --shared-control")
     whole_cores(control)
     whole_cores(execution)
     for number in (args.control_memory_mb, args.execution_memory_mb, args.headroom_mb):
@@ -119,6 +121,8 @@ def provision(args: argparse.Namespace) -> dict[str, str]:
             path.write_text(
                 "[Unit]\nDescription=CoderPuzzle resource slot\n[Slice]\n"
                 f"AllowedCPUs={cpu_list(cpus)}\nCPUAccounting=yes\nMemoryAccounting=yes\nTasksAccounting=yes\n"
+                f"MemoryMax={(total if unit == slot_name else args.control_memory_mb) * 1024 * 1024}\n"
+                "MemorySwapMax=0\nTasksMax=2048\n"
             )
         subprocess.run(["systemctl", "daemon-reload"], check=True)
         subprocess.run(["systemctl", "start", control_name], check=True)
