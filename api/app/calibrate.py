@@ -87,8 +87,22 @@ def main() -> int:
     failures = list(progress.get("failures", [])) if completed_keys else []
     def checkpoint() -> None:
         calibration.CALIBRATION_DIR.mkdir(parents=True, exist_ok=True)
-        PROGRESS_FILE.write_text(json.dumps({"schema_version": 1, "hardware": hardware,
-            "records": rows, "failures": failures}, sort_keys=True), encoding="utf-8")
+        payload = json.dumps({"schema_version": 1, "hardware": hardware,
+            "records": rows, "failures": failures}, sort_keys=True).encode()
+        fd, temp = tempfile.mkstemp(prefix="calibration-progress-", suffix=".json", dir=calibration.CALIBRATION_DIR)
+        try:
+            with os.fdopen(fd, "wb") as handle:
+                handle.write(payload)
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(temp, PROGRESS_FILE)
+            directory = os.open(calibration.CALIBRATION_DIR, os.O_RDONLY)
+            try:
+                os.fsync(directory)
+            finally:
+                os.close(directory)
+        finally:
+            Path(temp).unlink(missing_ok=True)
     started = time.time()
     problems = list_problems()
     total = sum(1 for item in problems for starter in safe_problem_path(item["slug"]).glob("starter.*") if starter.suffix[1:] in LANGUAGES)
@@ -107,7 +121,10 @@ def main() -> int:
                 continue
             reference = load_designated_reference(slug, language, path=bundle)
             if reference is None:
-                raise SystemExit(f"missing reference for {slug}/{language}")
+                failures.append({"slug": slug, "language": language, "kind": "missing_reference"})
+                LOG.error("[%d/%d] %s/%s has no reference; continuing", completed, total, slug, language)
+                checkpoint()
+                continue
             completed += 1
             LOG.info("[%d/%d] calibrating %s/%s", completed, total, slug, language)
             try:
