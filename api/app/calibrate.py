@@ -74,6 +74,7 @@ def main() -> int:
              hardware["cpu_model"], hardware["platform"], hardware["logical_cpus"],
              int(hardware["memory_total_kib"]) / 1024 / 1024, hardware["fingerprint"][:12])
     rows = []
+    failures = []
     started = time.time()
     problems = list_problems()
     total = sum(1 for item in problems for starter in safe_problem_path(item["slug"]).glob("starter.*") if starter.suffix[1:] in LANGUAGES)
@@ -92,12 +93,26 @@ def main() -> int:
                 raise SystemExit(f"missing reference for {slug}/{language}")
             completed += 1
             LOG.info("[%d/%d] calibrating %s/%s", completed, total, slug, language)
-            results = _run_judge(problem, language, reference, cases, public_count, bundle)
-            if any(row.get("status") not in {"accepted", "completed"} for row in results):
-                raise SystemExit(f"reference failed for {slug}/{language}")
+            try:
+                results = _run_judge(problem, language, reference, cases, public_count, bundle)
+                failed_results = [row for row in results if row.get("status") not in {"accepted", "completed"}]
+                if failed_results:
+                    failures.append({"slug": slug, "language": language, "kind": "reference_verdict",
+                                     "statuses": sorted({row.get("status") for row in failed_results}),
+                                     "failed_cases": [row.get("index") for row in failed_results]})
+                    LOG.error("[%d/%d] %s/%s reference failed (%s); continuing",
+                              completed, total, slug, language, failures[-1]["statuses"])
+                    continue
+            except Exception as error:  # noqa: BLE001 — preserve the full matrix
+                failures.append({"slug": slug, "language": language, "kind": "runner_error",
+                                 "error": f"{type(error).__name__}: {error}"})
+                LOG.exception("[%d/%d] %s/%s calibration error; continuing", completed, total, slug, language)
+                continue
             wall = sum(int(row.get("wall_time_ms", row.get("runtime_ms", 0))) for row in results)
             if wall <= 0:
-                raise SystemExit(f"reference produced no timing for {slug}/{language}")
+                failures.append({"slug": slug, "language": language, "kind": "missing_timing"})
+                LOG.error("[%d/%d] %s/%s produced no timing; continuing", completed, total, slug, language)
+                continue
             rows.append({"slug": slug, "language": language,
                          "reference_walltime_ms": wall,
                          "timeout_ms": max(1, wall * 10),
@@ -105,6 +120,7 @@ def main() -> int:
             LOG.info("[%d/%d] %s/%s reference wall=%dms timeout=%dms", completed, total, slug, language, wall, wall * 10)
     payload = {"schema_version": 1, "created_at": time.time(),
                "platform": platform.platform(), "hardware": hardware, "records": rows,
+               "failures": failures,
                "duration_seconds": time.time() - started}
     calibration.CALIBRATION_DIR.mkdir(parents=True, exist_ok=True)
     fd, temp = tempfile.mkstemp(prefix="calibration-", suffix=".json", dir=calibration.CALIBRATION_DIR)
@@ -115,7 +131,7 @@ def main() -> int:
         os.replace(temp, calibration.CALIBRATION_FILE)
     finally:
         Path(temp).unlink(missing_ok=True)
-    print(f"wrote {calibration.CALIBRATION_FILE} ({len(rows)} records)")
+    LOG.info("wrote %s (%d records, %d failures)", calibration.CALIBRATION_FILE, len(rows), len(failures))
     return 0
 
 
