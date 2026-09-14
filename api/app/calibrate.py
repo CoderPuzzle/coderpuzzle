@@ -24,6 +24,7 @@ from .problems import list_problems, load_all_cases, load_designated_reference, 
 
 
 LOG = logging.getLogger("coderpuzzle.calibrate")
+PROGRESS_FILE = calibration.CALIBRATION_DIR / "calibration-progress.json"
 LANGUAGES = {"py":"python3", "js":"javascript", "ts":"typescript", "java":"java",
              "cpp":"cpp", "go":"go", "rs":"rust", "sql":"sql", "sh":"shell"}
 
@@ -66,6 +67,15 @@ def main() -> int:
     calibration.REQUIRED = False
     judge.RUNNER_TIMEOUT = max(judge.RUNNER_TIMEOUT, 900)
     hardware = hardware_snapshot()
+    progress = calibration.load() if PROGRESS_FILE == calibration.CALIBRATION_FILE else None
+    try:
+        progress = json.loads(PROGRESS_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        progress = None
+    completed_keys = set()
+    if progress and progress.get("hardware", {}).get("fingerprint") == hardware["fingerprint"] and not (args.force or args.recalibrate):
+        completed_keys = {(r["slug"], r["language"]) for r in progress.get("records", [])}
+        LOG.info("resuming checkpoint with %d completed records and %d failures", len(completed_keys), len(progress.get("failures", [])))
     previous = calibration.load()
     if previous and previous.get("hardware", {}).get("fingerprint") == hardware["fingerprint"] and not (args.force or args.recalibrate):
         LOG.info("calibration is current; hardware fingerprint %s unchanged, skipping", hardware["fingerprint"][:12])
@@ -73,8 +83,12 @@ def main() -> int:
     LOG.info("starting calibration on %s (%s), %s logical CPUs, %.1f GiB RAM, fingerprint %s",
              hardware["cpu_model"], hardware["platform"], hardware["logical_cpus"],
              int(hardware["memory_total_kib"]) / 1024 / 1024, hardware["fingerprint"][:12])
-    rows = []
-    failures = []
+    rows = list(progress.get("records", [])) if completed_keys else []
+    failures = list(progress.get("failures", [])) if completed_keys else []
+    def checkpoint() -> None:
+        calibration.CALIBRATION_DIR.mkdir(parents=True, exist_ok=True)
+        PROGRESS_FILE.write_text(json.dumps({"schema_version": 1, "hardware": hardware,
+            "records": rows, "failures": failures}, sort_keys=True), encoding="utf-8")
     started = time.time()
     problems = list_problems()
     total = sum(1 for item in problems for starter in safe_problem_path(item["slug"]).glob("starter.*") if starter.suffix[1:] in LANGUAGES)
@@ -87,6 +101,9 @@ def main() -> int:
         for starter in sorted(bundle.glob("starter.*")):
             language = LANGUAGES.get(starter.suffix[1:])
             if not language:
+                continue
+            if (slug, language) in completed_keys:
+                completed += 1
                 continue
             reference = load_designated_reference(slug, language, path=bundle)
             if reference is None:
@@ -102,21 +119,25 @@ def main() -> int:
                                      "failed_cases": [row.get("index") for row in failed_results]})
                     LOG.error("[%d/%d] %s/%s reference failed (%s); continuing",
                               completed, total, slug, language, failures[-1]["statuses"])
+                    checkpoint()
                     continue
             except Exception as error:  # noqa: BLE001 — preserve the full matrix
                 failures.append({"slug": slug, "language": language, "kind": "runner_error",
                                  "error": f"{type(error).__name__}: {error}"})
                 LOG.exception("[%d/%d] %s/%s calibration error; continuing", completed, total, slug, language)
+                checkpoint()
                 continue
             wall = sum(int(row.get("wall_time_ms", row.get("runtime_ms", 0))) for row in results)
             if wall <= 0:
                 failures.append({"slug": slug, "language": language, "kind": "missing_timing"})
                 LOG.error("[%d/%d] %s/%s produced no timing; continuing", completed, total, slug, language)
+                checkpoint()
                 continue
             rows.append({"slug": slug, "language": language,
                          "reference_walltime_ms": wall,
                          "timeout_ms": max(1, wall * 10),
                          "case_count": len(results)})
+            checkpoint()
             LOG.info("[%d/%d] %s/%s reference wall=%dms timeout=%dms", completed, total, slug, language, wall, wall * 10)
     payload = {"schema_version": 1, "created_at": time.time(),
                "platform": platform.platform(), "hardware": hardware, "records": rows,
