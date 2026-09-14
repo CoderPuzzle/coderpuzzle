@@ -232,11 +232,14 @@ image:
 python -m app.calibrate
 ```
 
-Use `--recalibrate` after changing the VM, runner image, compiler toolchain,
-problem cache, or resource profile. The command runs every designated
+Use `--force` after changing the VM, runner image, compiler toolchain,
+problem cache, or resource profile. `--recalibrate` remains a compatibility
+alias. If the recorded hardware fingerprint is unchanged, a repeat invocation
+logs that calibration is current and exits without rerunning. The command runs every designated
 reference solution sequentially and atomically writes
 `/calibration/calibration.json` (the local `.calibration/` directory is
-ignored by Git). Each record contains the reference wall time and a timeout
+ignored by Git). The file records CPU model, logical CPU count, total RAM,
+cgroup/Docker resource limits and a hardware fingerprint. Each record contains the reference wall time and a timeout
 equal to ten times that value. Production API containers require a complete
 file before registration, login, or judging; missing records return HTTP 503.
 
