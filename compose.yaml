@@ -70,6 +70,8 @@ services:
       CODERPUZZLE_DATA_DIR: /data
       CODERPUZZLE_QUEUE_DIR: /queue
       CODERPUZZLE_RUNNER_TIMEOUT_SECONDS: "20"
+      CODERPUZZLE_REQUIRE_CALIBRATION: ${CODERPUZZLE_REQUIRE_CALIBRATION:-1}
+      CODERPUZZLE_CALIBRATION_DIR: /calibration
       # Browser-facing origin for OAuth redirect_uris (web origin, not the
       # compose-internal API URL). Empty = derive from X-Forwarded-*.
       CODERPUZZLE_PUBLIC_URL: ${CODERPUZZLE_PUBLIC_URL:-}
@@ -98,6 +100,7 @@ services:
       - "${CODERPUZZLE_PROBLEMS_PATH:-./problems}:/problems:ro"
       - ${CODERPUZZLE_PROBLEMS_CACHE_DIR:-./.cache}:/cache:ro
       - coderpuzzle_data:/data
+      - calibration_data:/calibration
       - judge_queue:/queue
     healthcheck:
       test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')" ]
@@ -151,6 +154,7 @@ services:
     restart: unless-stopped
 
 volumes:
+  calibration_data:
   coderpuzzle_data:
   judge_queue:
 

@@ -222,3 +222,25 @@ Host services and compilation share the first physical core; execution owns
 the second core and uses one logical CPU. There is no VM resize requirement.
 Check topology rather than assuming consecutive CPU numbers are siblings.
 The emitted `CODERPUZZLE_SHARED_CONTROL=1` selects the matching startup checks.
+# Deployment calibration
+
+Production judging requires a deployment-local calibration file. Build the
+problem cache and start the runner, then run the following inside the API
+image:
+
+```sh
+python -m app.calibrate
+```
+
+Use `--recalibrate` after changing the VM, runner image, compiler toolchain,
+problem cache, or resource profile. The command runs every designated
+reference solution sequentially and atomically writes
+`/calibration/calibration.json` (the local `.calibration/` directory is
+ignored by Git). Each record contains the reference wall time and a timeout
+equal to ten times that value. Production API containers require a complete
+file before registration, login, or judging; missing records return HTTP 503.
+
+User submissions run only once. Their wall time is compared with the matching
+calibration record and returned as `reference_runtime_ms`, `timeout_ms`, and
+`performance_ratio_percent`. The reference run is never repeated on the
+submission path.

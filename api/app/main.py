@@ -7,6 +7,7 @@ from typing import Annotated, Any
 from fastapi import Cookie, Depends, FastAPI, HTTPException, Query, Request, Response
 
 from .auth import load_defaults
+from . import calibration
 from .auth.http import router as auth_router
 from .database import (
     SESSION_IDLE_SECONDS,
@@ -307,7 +308,15 @@ def _run_judge(
     public_count: int,
     bundle: Path,
 ) -> list[dict[str, Any]]:
+    calibration.enforce()
     _validate_language(problem_data, language)
+    calibrated = calibration.lookup(problem_data["slug"], language)
+    if calibration.REQUIRED and calibrated is None:
+        raise HTTPException(status_code=503, detail="Calibration is missing for this problem and language")
+    if calibrated:
+        case_count = max(1, int(calibrated.get("case_count", len(cases))))
+        per_case_timeout = max(1, int(calibrated["timeout_ms"] / case_count))
+        problem_data = {**problem_data, "limits": {**problem_data["limits"], "time_ms": per_case_timeout}}
     try:
         with judge_slot():
             return execute(
@@ -413,46 +422,6 @@ def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)
     return summary
 
 
-def _reference_runtime_ms(
-    request: SubmitRequest,
-    problem_data: dict[str, Any],
-    cases: list[dict[str, Any]],
-    public_count: int,
-    accepted: bool,
-    bundle: Path,
-    timing_mode: str = "wall",
-    resource_profile: str = "shared-wall-v1",
-) -> int | None:
-    """Run the bundle's designated reference solution, return its runtime.
-
-    An indicative baseline: both runs must share the same timing/resource
-    profile, language and cases. Queue workers can differ, so mismatched
-    profiles are excluded from the comparison. Exactly one
-    reference program runs — problem.json's 'reference_solution' designates
-    the optimal approach (the one the worst-to-best guide ends with), so a
-    three-solution problem judges two programs per accepted submission, not
-    four. Best-effort — an absent reference, unavailable runner, or failing
-    reference simply yields None and the UI omits the comparison."""
-    if not accepted:
-        return None
-    try:
-        reference = load_designated_reference(request.slug, request.language, path=bundle)
-    except (ProblemError, OSError):
-        return None
-    if reference is None:
-        return None
-    try:
-        results = _run_judge(problem_data, request.language, reference, cases, public_count, bundle)
-    except HTTPException:
-        return None
-    if any(result["status"] not in {"accepted", "completed"} for result in results):
-        return None
-    if any((result.get("timing_mode", "wall"), result.get("resource_profile", "shared-wall-v1"))
-           != (timing_mode, resource_profile) for result in results):
-        return None
-    return sum(result.get("runtime_ms", result.get("_runtime_ms", 0)) for result in results)
-
-
 @app.post("/submit")
 def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_session)]) -> dict[str, Any]:
     if _judge_throttled(session_id):
@@ -475,9 +444,12 @@ def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_se
     results = _run_judge(problem_data, request.language, request.code, cases, public_count, bundle)
     summary = _summarize(results)
     _attach_tamper_warnings(summary, bundle, request.language, request.code)
-    summary["reference_runtime_ms"] = _reference_runtime_ms(
-        request, problem_data, cases, public_count, summary["status"] == "accepted", bundle,
-        summary["timing_mode"], summary["resource_profile"]
+    baseline = calibration.lookup(request.slug, request.language)
+    summary["reference_runtime_ms"] = baseline["reference_walltime_ms"] if baseline else None
+    summary["timeout_ms"] = baseline["timeout_ms"] if baseline else None
+    summary["performance_ratio_percent"] = (
+        round(summary["runtime_ms"] * 100 / baseline["reference_walltime_ms"], 2)
+        if baseline and baseline["reference_walltime_ms"] else None
     )
     submission_id = save_submission(
         request.slug,

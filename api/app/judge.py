@@ -10,10 +10,14 @@ from pathlib import Path
 from typing import Any
 
 from . import validators
+from . import calibration
 
 
 QUEUE_DIR = Path(os.environ.get("CODERPUZZLE_QUEUE_DIR", ".queue"))
-RUNNER_TIMEOUT = float(os.environ.get("CODERPUZZLE_RUNNER_TIMEOUT_SECONDS", "20"))
+_configured_runner_timeout = float(os.environ.get("CODERPUZZLE_RUNNER_TIMEOUT_SECONDS", "20"))
+_calibration = calibration.load() or {}
+_calibration_timeout = max((int(row.get("timeout_ms", 0)) for row in _calibration.get("records", [])), default=0) / 1000
+RUNNER_TIMEOUT = max(_configured_runner_timeout, _calibration_timeout + 10)
 
 
 class RunnerUnavailable(RuntimeError):

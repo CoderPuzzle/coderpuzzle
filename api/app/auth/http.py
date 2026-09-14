@@ -22,6 +22,7 @@ from fastapi.responses import RedirectResponse
 
 from ..database import bind_session_user, create_session, validate_session
 from ..web_session import SESSION_COOKIE, current_session, optional_session, set_session_cookie
+from ..calibration import enforce
 from .errors import AuthError
 from .service import catalog, complete_auth, register_auth, start_auth
 
@@ -89,6 +90,7 @@ def auth_register(
     request: Request,
     session_id: Annotated[str | None, Depends(optional_session)] = None,
 ) -> dict[str, Any]:
+    enforce()
     provider, payload = _provider_and_payload(body, default_provider="password")
     try:
         result, bound = register_auth(provider, payload, session_id, request)
@@ -106,6 +108,7 @@ def auth_login_compat(
     session_id: Annotated[str, Depends(current_session)],
 ) -> dict[str, Any]:
     """Compatibility alias: password complete, or any provider if named."""
+    enforce()
     provider, payload = _provider_and_payload(body, default_provider="password")
     try:
         return complete_auth(provider, payload, session_id, request, _source(request))
