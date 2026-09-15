@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1140,
+  "slug": "stone-game-ii",
+  "title": "Stone Game II",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming",
+    "Game Theory",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Minimax",
+    "Prefix Sum",
+    "Game Theory",
+    "Zero-Sum Game"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "stoneGameII",
+    "parameters": [
+      {
+        "name": "piles",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "stoneGameII",
+      "rust": "stone_game_ii",
+      "typescript": "stoneGameII"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

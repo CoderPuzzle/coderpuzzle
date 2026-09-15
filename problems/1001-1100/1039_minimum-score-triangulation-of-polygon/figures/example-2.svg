@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 262" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <!-- values = [3,7,4,5] clockwise from top-left; the two possible diagonals -->
+  <g stroke="#1a2026" stroke-width="1.6" fill="none">
+    <path d="M 40 40 H 170 V 170 H 40 z"/>
+    <path d="M 250 40 H 380 V 170 H 250 z"/>
+  </g>
+  <line x1="170" y1="40" x2="40" y2="170" stroke="#b9c4cd" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <line x1="250" y1="40" x2="380" y2="170" stroke="#4169E1" stroke-width="2.6"/>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="40" cy="40" r="15"/>
+    <circle cx="170" cy="40" r="15"/>
+    <circle cx="170" cy="170" r="15"/>
+    <circle cx="40" cy="170" r="15"/>
+    <circle cx="250" cy="40" r="15"/>
+    <circle cx="380" cy="40" r="15"/>
+    <circle cx="380" cy="170" r="15"/>
+    <circle cx="250" cy="170" r="15"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="40" y="45">3</text>
+    <text x="170" y="45">7</text>
+    <text x="170" y="175">4</text>
+    <text x="40" y="175">5</text>
+    <text x="250" y="45">3</text>
+    <text x="380" y="45">7</text>
+    <text x="380" y="175">4</text>
+    <text x="250" y="175">5</text>
+  </g>
+  <text x="105" y="212" text-anchor="middle" fill="#5c6b76" font-size="12.5">3 x 7 x 5 + 7 x 4 x 5 = 245</text>
+  <text x="315" y="212" text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">3 x 7 x 4 + 3 x 4 x 5 = 144</text>
+  <text x="230" y="248" text-anchor="middle" fill="#5c6b76" font-size="12.5">the diagonal 3-4 leaves the cheaper pair of triangles: 144 is the minimum</text>
+</svg>

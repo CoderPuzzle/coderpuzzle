@@ -1,0 +1,84 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1516,
+  "slug": "move-sub-tree-of-n-ary-tree",
+  "title": "Move Sub-Tree of N-Ary Tree",
+  "difficulty": "Hard",
+  "tags": [
+    "Tree",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "moveSubTree",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "nary_tree",
+        "value_type": {
+          "kind": "nary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          },
+          "class": "SharedNode"
+        }
+      },
+      {
+        "name": "p",
+        "codec": "nary_tree_ref",
+        "value_type": {
+          "kind": "nary_tree_ref",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          },
+          "alias": 0,
+          "class": "SharedNode"
+        },
+        "alias": 0
+      },
+      {
+        "name": "q",
+        "codec": "nary_tree_ref",
+        "value_type": {
+          "kind": "nary_tree_ref",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          },
+          "alias": 0,
+          "class": "SharedNode"
+        },
+        "alias": 0
+      }
+    ],
+    "return_codec": "nary_tree",
+    "return_type": {
+      "kind": "nary_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      },
+      "class": "SharedNode"
+    },
+    "entrypoints": {
+      "go": "moveSubTree",
+      "rust": "move_sub_tree",
+      "typescript": "moveSubTree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 398,
+  "slug": "random-pick-index",
+  "title": "Random Pick Index",
+  "difficulty": "Medium",
+  "tags": [
+    "Reservoir Sampling",
+    "Randomized"
+  ],
+  "topics": [
+    "Hash Table",
+    "Math",
+    "Reservoir Sampling",
+    "Randomized"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Solution",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "nums",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "pick",
+        "parameters": [
+          {
+            "name": "target",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

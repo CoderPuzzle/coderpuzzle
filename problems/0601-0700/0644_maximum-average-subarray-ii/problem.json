@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 644,
+  "slug": "maximum-average-subarray-ii",
+  "title": "Maximum Average Subarray II",
+  "difficulty": "Hard",
+  "tags": [
+    "Binary Search",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findMaxAverage",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "number"
+    },
+    "entrypoints": {
+      "go": "findMaxAverage",
+      "rust": "find_max_average",
+      "typescript": "findMaxAverage"
+    },
+    "comparison": "close"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

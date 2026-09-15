@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3930,
+  "slug": "power-update-after-k-th-largest-insertion-ii",
+  "title": "Power Update After K-th Largest Insertion II",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Segment Tree",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Segment Tree",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "powerUpdate",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "p",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "powerUpdate",
+      "rust": "power_update",
+      "typescript": "powerUpdate"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 2000,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

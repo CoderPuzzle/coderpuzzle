@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 862,
+  "slug": "shortest-subarray-with-sum-at-least-k",
+  "title": "Shortest Subarray with Sum at Least K",
+  "difficulty": "Hard",
+  "tags": [
+    "Prefix Sum",
+    "Monotonic Queue",
+    "Deque"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Queue",
+    "Sliding Window",
+    "Heap (Priority Queue)",
+    "Prefix Sum",
+    "Monotonic Queue"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "shortestSubarray",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "shortestSubarray",
+      "rust": "shortest_subarray",
+      "typescript": "shortestSubarray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

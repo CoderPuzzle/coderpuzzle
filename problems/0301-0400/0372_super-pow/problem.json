@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 372,
+  "slug": "super-pow",
+  "title": "Super Pow",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Divide and Conquer",
+    "Euler's Totient Function",
+    "Euler's Theorem"
+  ],
+  "topics": [
+    "Math",
+    "Divide and Conquer",
+    "Euler's Totient Function",
+    "Euler's Theorem"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "superPow",
+    "parameters": [
+      {
+        "name": "a",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "b",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "superPow",
+      "rust": "super_pow",
+      "typescript": "superPow"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

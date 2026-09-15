@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2792,
+  "slug": "count-nodes-that-are-great-enough",
+  "title": "Count Nodes That Are Great Enough",
+  "difficulty": "Hard",
+  "tags": [
+    "Divide and Conquer",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Divide and Conquer",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countGreatEnoughNodes",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countGreatEnoughNodes",
+      "rust": "count_great_enough_nodes",
+      "typescript": "countGreatEnoughNodes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

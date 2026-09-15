@@ -1,0 +1,153 @@
+{
+  "public": [
+    {
+      "input": [
+        "abc",
+        "pqr"
+      ],
+      "expected": "apbqcr"
+    },
+    {
+      "input": [
+        "ab",
+        "pqrs"
+      ],
+      "expected": "apbqrs"
+    },
+    {
+      "input": [
+        "abcd",
+        "pq"
+      ],
+      "expected": "apbqcd"
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "a",
+        "x"
+      ],
+      "expected": "ax"
+    },
+    {
+      "input": [
+        "a",
+        "xy"
+      ],
+      "expected": "axy"
+    },
+    {
+      "input": [
+        "a",
+        "xyz"
+      ],
+      "expected": "axyz"
+    },
+    {
+      "input": [
+        "ab",
+        "x"
+      ],
+      "expected": "axb"
+    },
+    {
+      "input": [
+        "ab",
+        "xy"
+      ],
+      "expected": "axby"
+    },
+    {
+      "input": [
+        "ab",
+        "xyz"
+      ],
+      "expected": "axbyz"
+    },
+    {
+      "input": [
+        "abc",
+        "x"
+      ],
+      "expected": "axbc"
+    },
+    {
+      "input": [
+        "abc",
+        "xy"
+      ],
+      "expected": "axbyc"
+    },
+    {
+      "input": [
+        "abc",
+        "xyz"
+      ],
+      "expected": "axbycz"
+    },
+    {
+      "input": [
+        "a",
+        "a"
+      ],
+      "expected": "aa"
+    },
+    {
+      "input": [
+        "aa",
+        "b"
+      ],
+      "expected": "aba"
+    },
+    {
+      "input": [
+        "b",
+        "aa"
+      ],
+      "expected": "baa"
+    },
+    {
+      "input": [
+        "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv",
+        "zyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfe"
+      ],
+      "expected": "azbycxdwevfugthsirjqkplomnnmolpkqjrishtgufvewdxcybzaazbycxdwevfugthsirjqkplomnnmolpkqjrishtgufvewdxcybzaazbycxdwevfugthsirjqkplomnnmolpkqjrishtgufvewdxcybzaazbycxdwevfugthsirjqkplomnnmolpkqjrishtgufve"
+    },
+    {
+      "input": [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "z"
+      ],
+      "expected": "azaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "input": [
+        "q",
+        "mnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmn"
+      ],
+      "expected": "qmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmn"
+    },
+    {
+      "input": [
+        "abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde",
+        "vwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxy"
+      ],
+      "expected": "avbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdyezavbwcxdye"
+    },
+    {
+      "input": [
+        "vwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxyzvwxy",
+        "abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde"
+      ],
+      "expected": "vawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcydzevawbxcyde"
+    },
+    {
+      "input": [
+        "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+        "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+      ],
+      "expected": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+    }
+  ]
+}

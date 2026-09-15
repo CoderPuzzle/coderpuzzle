@@ -1,0 +1,18 @@
+class Solution {
+
+    public long minCost(int[] startPos, int[] homePos, int[] rowCosts, int[] colCosts) {
+        long total = 0;
+        int row = startPos[0];
+        while (row != homePos[0]) {
+            row += row < homePos[0] ? 1 : -1;
+            total += rowCosts[row];
+        }
+
+        int col = startPos[1];
+        while (col != homePos[1]) {
+            col += col < homePos[1] ? 1 : -1;
+            total += colCosts[col];
+        }
+        return total;
+    }
+}

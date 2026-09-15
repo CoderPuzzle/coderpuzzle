@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "dfs_color",
+  "id": 886,
+  "slug": "possible-bipartition",
+  "title": "Possible Bipartition",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "BFS",
+    "DFS"
+  ],
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Graph Theory",
+    "Graph Coloring",
+    "Bipartite Graph"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "possibleBipartition",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "dislikes",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "possibleBipartition",
+      "rust": "possible_bipartition",
+      "typescript": "possibleBipartition"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

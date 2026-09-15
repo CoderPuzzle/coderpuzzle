@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2230,
+  "slug": "the-users-that-are-eligible-for-discount",
+  "title": "The Users That Are Eligible for Discount",
+  "difficulty": "Easy",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Purchases (user_id INTEGER, time_stamp DATETIME, amount INTEGER, PRIMARY KEY (user_id, time_stamp));"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

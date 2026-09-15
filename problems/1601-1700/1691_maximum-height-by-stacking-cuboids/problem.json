@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1691,
+  "slug": "maximum-height-by-stacking-cuboids",
+  "title": "Maximum Height by Stacking Cuboids",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Sorting",
+    "Array"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxHeight",
+    "parameters": [
+      {
+        "name": "cuboids",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxHeight",
+      "rust": "max_height",
+      "typescript": "maxHeight"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Winston'),\n(2,'Jonathan'),\n(3,'Annabelle'),\n(4,'Marwan'),\n(5,'Khaled');\nINSERT INTO Orders VALUES\n(1,'2020-07-31',1,1),\n(2,'2020-07-30',2,2),\n(3,'2020-08-29',3,3),\n(4,'2020-07-29',4,1),\n(5,'2020-06-10',1,2),\n(6,'2020-08-01',2,1),\n(7,'2020-08-01',3,1),\n(8,'2020-08-03',1,2),\n(9,'2020-08-07',2,3),\n(10,'2020-07-15',1,2);\nINSERT INTO Products VALUES\n(1,'keyboard',120),\n(2,'mouse',80),\n(3,'screen',600),\n(4,'hard disk',450);"
+      ],
+      "expected": [
+        [
+          "keyboard",
+          1,
+          6,
+          "2020-08-01"
+        ],
+        [
+          "keyboard",
+          1,
+          7,
+          "2020-08-01"
+        ],
+        [
+          "mouse",
+          2,
+          8,
+          "2020-08-03"
+        ],
+        [
+          "screen",
+          3,
+          3,
+          "2020-08-29"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Alice');\nINSERT INTO Products VALUES\n(10,'lamp',20);\nINSERT INTO Orders VALUES\n(101,'2020-01-05',1,10);"
+      ],
+      "expected": [
+        [
+          "lamp",
+          10,
+          101,
+          "2020-01-05"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Bob');\nINSERT INTO Products VALUES\n(20,'chair',50);\nINSERT INTO Orders VALUES\n(201,'2020-02-01',1,20),\n(202,'2020-02-10',1,20),\n(203,'2020-03-15',1,20);"
+      ],
+      "expected": [
+        [
+          "chair",
+          20,
+          203,
+          "2020-03-15"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Cara'),\n(2,'Dan');\nINSERT INTO Products VALUES\n(30,'desk',150);\nINSERT INTO Orders VALUES\n(301,'2020-04-01',1,30),\n(302,'2020-05-20',1,30),\n(303,'2020-05-20',2,30);"
+      ],
+      "expected": [
+        [
+          "desk",
+          30,
+          302,
+          "2020-05-20"
+        ],
+        [
+          "desk",
+          30,
+          303,
+          "2020-05-20"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Products VALUES\n(40,'monitor',300);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Eve'),\n(2,'Frank');\nINSERT INTO Products VALUES\n(50,'pen',2),\n(51,'notebook',5),\n(52,'stapler',9);\nINSERT INTO Orders VALUES\n(401,'2020-06-01',1,50),\n(402,'2020-06-05',2,50),\n(403,'2020-06-10',1,51),\n(404,'2020-06-02',2,52),\n(405,'2020-06-12',1,52);"
+      ],
+      "expected": [
+        [
+          "notebook",
+          51,
+          403,
+          "2020-06-10"
+        ],
+        [
+          "pen",
+          50,
+          402,
+          "2020-06-05"
+        ],
+        [
+          "stapler",
+          52,
+          405,
+          "2020-06-12"
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Gina'),\n(2,'Hank'),\n(3,'Iris');\nINSERT INTO Products VALUES\n(60,'kettle',35),\n(61,'toaster',45),\n(62,'blender',60),\n(63,'iron',25);\nINSERT INTO Orders VALUES\n(501,'2020-07-01',1,60),\n(502,'2020-07-02',2,60),\n(503,'2020-07-02',3,60),\n(504,'2020-08-01',1,61),\n(505,'2020-08-05',2,62),\n(506,'2020-08-06',3,62),\n(507,'2020-08-06',1,62);"
+      ],
+      "expected": [
+        [
+          "blender",
+          62,
+          506,
+          "2020-08-06"
+        ],
+        [
+          "blender",
+          62,
+          507,
+          "2020-08-06"
+        ],
+        [
+          "kettle",
+          60,
+          502,
+          "2020-07-02"
+        ],
+        [
+          "kettle",
+          60,
+          503,
+          "2020-07-02"
+        ],
+        [
+          "toaster",
+          61,
+          504,
+          "2020-08-01"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'O''Malley');\nINSERT INTO Products VALUES\n(70,'candle',8);\nINSERT INTO Orders VALUES\n(601,'2020-09-01',1,70),\n(602,'2020-09-02',1,70);"
+      ],
+      "expected": [
+        [
+          "candle",
+          70,
+          602,
+          "2020-09-02"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(5,'Khaled'),\n(4,'Marwan'),\n(3,'Annabelle'),\n(2,'Jonathan'),\n(1,'Winston');\nINSERT INTO Orders VALUES\n(10,'2020-07-15',1,2),\n(9,'2020-08-07',2,3),\n(8,'2020-08-03',1,2),\n(7,'2020-08-01',3,1),\n(6,'2020-08-01',2,1),\n(5,'2020-06-10',1,2),\n(4,'2020-07-29',4,1),\n(3,'2020-08-29',3,3),\n(2,'2020-07-30',2,2),\n(1,'2020-07-31',1,1);\nINSERT INTO Products VALUES\n(4,'hard disk',450),\n(3,'screen',600),\n(2,'mouse',80),\n(1,'keyboard',120);"
+      ],
+      "expected": [
+        [
+          "keyboard",
+          1,
+          6,
+          "2020-08-01"
+        ],
+        [
+          "keyboard",
+          1,
+          7,
+          "2020-08-01"
+        ],
+        [
+          "mouse",
+          2,
+          8,
+          "2020-08-03"
+        ],
+        [
+          "screen",
+          3,
+          3,
+          "2020-08-29"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Bob');\nINSERT INTO Products VALUES\n(20,'chair',50);\nINSERT INTO Orders VALUES\n(203,'2020-03-15',1,20),\n(202,'2020-02-10',1,20),\n(201,'2020-02-01',1,20);"
+      ],
+      "expected": [
+        [
+          "chair",
+          20,
+          203,
+          "2020-03-15"
+        ]
+      ]
+    }
+  ]
+}

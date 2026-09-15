@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 846,
+  "slug": "hand-of-straights",
+  "title": "Hand of Straights",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Greedy",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Greedy",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "isNStraightHand",
+    "parameters": [
+      {
+        "name": "hand",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "groupSize",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "isNStraightHand",
+      "rust": "is_n_straight_hand",
+      "typescript": "isNStraightHand"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2284,
+  "slug": "sender-with-largest-word-count",
+  "title": "Sender With Largest Word Count",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "largestWordCount",
+    "parameters": [
+      {
+        "name": "messages",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "senders",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "largestWordCount",
+      "rust": "largest_word_count",
+      "typescript": "largestWordCount"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

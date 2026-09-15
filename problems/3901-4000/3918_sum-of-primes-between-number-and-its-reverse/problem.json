@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3918,
+  "slug": "sum-of-primes-between-number-and-its-reverse",
+  "title": "Sum of Primes Between Number and Its Reverse",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Number Theory"
+  ],
+  "topics": [
+    "Math",
+    "Number Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sumOfPrimesInRange",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "sumOfPrimesInRange",
+      "rust": "sum_of_primes_in_range",
+      "typescript": "sumOfPrimesInRange"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

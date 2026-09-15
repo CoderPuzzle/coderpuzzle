@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 190,
+  "slug": "reverse-bits",
+  "title": "Reverse Bits",
+  "difficulty": "Easy",
+  "tags": [
+    "Divide and Conquer",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Divide and Conquer",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "reverseBits",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "reverseBits",
+      "rust": "reverse_bits",
+      "typescript": "reverseBits"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

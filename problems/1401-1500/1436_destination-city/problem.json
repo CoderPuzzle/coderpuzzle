@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1436,
+  "slug": "destination-city",
+  "title": "Destination City",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "destCity",
+    "parameters": [
+      {
+        "name": "paths",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "destCity",
+      "rust": "dest_city",
+      "typescript": "destCity"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

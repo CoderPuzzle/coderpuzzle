@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2895,
+  "slug": "minimum-processing-time",
+  "title": "Minimum Processing Time",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minProcessingTime",
+    "parameters": [
+      {
+        "name": "processorTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "tasks",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minProcessingTime",
+      "rust": "min_processing_time",
+      "typescript": "minProcessingTime"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

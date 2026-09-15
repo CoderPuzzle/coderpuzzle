@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 370,
+  "slug": "range-addition",
+  "title": "Range Addition",
+  "difficulty": "Medium",
+  "tags": [
+    "Difference Array",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getModifiedArray",
+    "parameters": [
+      {
+        "name": "length",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "updates",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "getModifiedArray",
+      "rust": "get_modified_array",
+      "typescript": "getModifiedArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

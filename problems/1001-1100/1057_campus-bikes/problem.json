@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1057,
+  "slug": "campus-bikes",
+  "title": "Campus Bikes",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Heap (Priority Queue)"
+  ],
+  "topics": [
+    "Array",
+    "Sorting",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "assignBikes",
+    "parameters": [
+      {
+        "name": "workers",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "bikes",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "assignBikes",
+      "rust": "assign_bikes",
+      "typescript": "assignBikes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

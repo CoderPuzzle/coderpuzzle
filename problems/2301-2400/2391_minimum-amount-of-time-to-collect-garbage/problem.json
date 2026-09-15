@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2391,
+  "slug": "minimum-amount-of-time-to-collect-garbage",
+  "title": "Minimum Amount of Time to Collect Garbage",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "garbageCollection",
+    "parameters": [
+      {
+        "name": "garbage",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "travel",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "garbageCollection",
+      "rust": "garbage_collection",
+      "typescript": "garbageCollection"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

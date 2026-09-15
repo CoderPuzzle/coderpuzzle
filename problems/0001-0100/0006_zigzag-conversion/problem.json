@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 6,
+  "slug": "zigzag-conversion",
+  "title": "Zigzag Conversion",
+  "difficulty": "Medium",
+  "tags": [
+    "String"
+  ],
+  "topics": [
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "convert",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "numRows",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "convert",
+      "rust": "convert",
+      "typescript": "convert"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

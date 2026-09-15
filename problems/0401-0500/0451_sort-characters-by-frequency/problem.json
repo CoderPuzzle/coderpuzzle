@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 451,
+  "slug": "sort-characters-by-frequency",
+  "title": "Sort Characters By Frequency",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Bucket Sort",
+    "Counting"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Bucket Sort",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "frequencySort",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "frequencySort",
+      "rust": "frequency_sort",
+      "typescript": "frequencySort"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

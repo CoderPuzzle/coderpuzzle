@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2538,
+  "slug": "difference-between-maximum-and-minimum-price-sum",
+  "title": "Difference Between Maximum and Minimum Price Sum",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search",
+    "DP on Trees"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search",
+    "DP on Trees"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxOutput",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "price",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "maxOutput",
+      "rust": "max_output",
+      "typescript": "maxOutput"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

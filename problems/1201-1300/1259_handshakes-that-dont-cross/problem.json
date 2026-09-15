@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1259,
+  "slug": "handshakes-that-dont-cross",
+  "title": "Handshakes That Don't Cross",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberOfWays",
+    "parameters": [
+      {
+        "name": "numPeople",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numberOfWays",
+      "rust": "number_of_ways",
+      "typescript": "numberOfWays"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="ra" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- n = 3, relations = [[1,2],[2,3],[3,1]]: a directed cycle, nothing can start -->
+  <g stroke="#42525e" stroke-width="1.8" fill="none">
+    <line x1="129" y1="50" x2="251" y2="50" marker-end="url(#ra)"/>
+    <line x1="260.1" y1="66.2" x2="202.6" y2="159.6" marker-end="url(#ra)"/>
+    <line x1="180" y1="163.8" x2="122.6" y2="70.4" marker-end="url(#ra)"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="110" cy="50" r="19"/>
+    <circle cx="270" cy="50" r="19"/>
+    <circle cx="190" cy="180" r="19"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="110" y="55">1</text>
+    <text x="270" y="55">2</text>
+    <text x="190" y="185">3</text>
+  </g>
+  <text x="190" y="228" text-anchor="middle" fill="#5c6b76" font-size="12.5">1 needs 3, 3 needs 2, 2 needs 1 — the cycle blocks every course: -1</text>
+</svg>

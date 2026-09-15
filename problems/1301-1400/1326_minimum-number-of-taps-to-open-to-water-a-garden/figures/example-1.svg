@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 252" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12.5">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <path id="drop" d="M 0 -6 C 3 -1.5 4.2 0.6 4.2 2.6 A 4.2 4.2 0 1 1 -4.2 2.6 C -4.2 0.6 -3 -1.5 0 -6 Z"/>
+    <marker id="a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+  </defs>
+  <text x="560" y="28" text-anchor="end" fill="#4169E1" font-weight="600">opening tap 1 alone covers the whole garden</text>
+  <!-- spray ranges above the line -->
+  <g stroke="#9aa5ae" stroke-width="1.6">
+    <line x1="70" y1="118" x2="418" y2="118"/>
+    <circle cx="70" cy="118" r="4" fill="#ffffff"/><circle cx="418" cy="118" r="4" fill="#ffffff"/>
+    <line x1="302" y1="74" x2="418" y2="74"/>
+    <circle cx="302" cy="74" r="4" fill="#ffffff"/><circle cx="418" cy="74" r="4" fill="#ffffff"/>
+    <line x1="360" y1="52" x2="476" y2="52"/>
+    <circle cx="360" cy="52" r="4" fill="#ffffff"/><circle cx="476" cy="52" r="4" fill="#ffffff"/>
+  </g>
+  <g fill="#5c6b76" text-anchor="end">
+    <text x="62" y="122">tap 0: [-3, 3]</text>
+    <text x="294" y="78">tap 2: [1, 3]</text>
+    <text x="352" y="56">tap 3: [2, 4]</text>
+  </g>
+  <g>
+    <line x1="70" y1="96" x2="534" y2="96" stroke="#4169E1" stroke-width="3"/>
+    <circle cx="70" cy="96" r="4.5" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <circle cx="534" cy="96" r="4.5" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <text x="302" y="90" fill="#4169E1" font-weight="700" text-anchor="middle">tap 1: [-3, 5]</text>
+  </g>
+  <!-- number line -->
+  <line x1="58" y1="140" x2="566" y2="140" stroke="#1a2026" stroke-width="1.5" marker-end="url(#a)"/>
+  <g stroke="#1a2026">
+    <line x1="70" y1="140" x2="70" y2="146"/><line x1="128" y1="140" x2="128" y2="146"/>
+    <line x1="186" y1="140" x2="186" y2="146"/><line x1="244" y1="140" x2="244" y2="146"/>
+    <line x1="302" y1="140" x2="302" y2="146"/><line x1="360" y1="140" x2="360" y2="146"/>
+    <line x1="418" y1="140" x2="418" y2="146"/><line x1="476" y1="140" x2="476" y2="146"/>
+    <line x1="534" y1="140" x2="534" y2="146"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="70" y="160">-3</text><text x="128" y="160">-2</text><text x="186" y="160">-1</text>
+    <text x="244" y="160">0</text><text x="302" y="160">1</text><text x="360" y="160">2</text>
+    <text x="418" y="160">3</text><text x="476" y="160">4</text><text x="534" y="160">5</text>
+  </g>
+  <!-- garden bracket -->
+  <path d="M 244 170 L 244 176 L 531 176 L 531 170" fill="none" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="389" y="193" text-anchor="middle" fill="#5c6b76">garden (0 to 5)</text>
+  <!-- taps -->
+  <g>
+    <use href="#drop" transform="translate(244,216)" fill="#9aa5ae"/>
+    <use href="#drop" transform="translate(302,216)" fill="#4169E1"/>
+    <use href="#drop" transform="translate(360,216)" fill="#9aa5ae"/>
+    <use href="#drop" transform="translate(418,216)" fill="#9aa5ae"/>
+    <use href="#drop" transform="translate(476,216)" fill="#9aa5ae"/>
+    <use href="#drop" transform="translate(534,216)" fill="#9aa5ae"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76">
+    <text x="244" y="238">0</text><text x="302" y="238" fill="#4169E1" font-weight="700">1</text>
+    <text x="360" y="238">2</text><text x="418" y="238">3</text>
+    <text x="476" y="238">4</text><text x="534" y="238">5</text>
+  </g>
+</svg>

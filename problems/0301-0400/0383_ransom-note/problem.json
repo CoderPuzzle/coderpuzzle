@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 383,
+  "slug": "ransom-note",
+  "title": "Ransom Note",
+  "difficulty": "Easy",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canConstruct",
+    "parameters": [
+      {
+        "name": "ransomNote",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "magazine",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canConstruct",
+      "rust": "can_construct",
+      "typescript": "canConstruct"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

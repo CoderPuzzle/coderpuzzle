@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 506,
+  "slug": "relative-ranks",
+  "title": "Relative Ranks",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Heap (Priority Queue)"
+  ],
+  "topics": [
+    "Array",
+    "Sorting",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findRelativeRanks",
+    "parameters": [
+      {
+        "name": "score",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "findRelativeRanks",
+      "rust": "find_relative_ranks",
+      "typescript": "findRelativeRanks"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

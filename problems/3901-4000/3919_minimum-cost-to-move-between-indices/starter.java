@@ -1,0 +1,6 @@
+class Solution {
+
+    public int[] minCost(int[] nums, int[][] queries) {
+        throw new UnsupportedOperationException("TODO");
+    }
+}

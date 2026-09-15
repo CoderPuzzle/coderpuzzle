@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1634,
+  "slug": "add-two-polynomials-represented-as-linked-lists",
+  "title": "Add Two Polynomials Represented as Linked Lists",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Math",
+    "Two Pointers"
+  ],
+  "topics": [
+    "Linked List",
+    "Math",
+    "Two Pointers"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "addPoly",
+    "parameters": [
+      {
+        "name": "poly1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "poly2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "addPoly",
+      "rust": "add_poly",
+      "typescript": "addPoly"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 4096
+  }
+}

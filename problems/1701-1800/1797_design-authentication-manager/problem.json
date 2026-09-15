@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1797,
+  "slug": "design-authentication-manager",
+  "title": "Design Authentication Manager",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Linked List",
+    "Design",
+    "Doubly-Linked List"
+  ],
+  "topics": [
+    "Hash Table",
+    "Linked List",
+    "Design",
+    "Doubly-Linked List"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "AuthenticationManager",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "timeToLive",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "generate",
+        "parameters": [
+          {
+            "name": "tokenId",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "currentTime",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "renew",
+        "parameters": [
+          {
+            "name": "tokenId",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "currentTime",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "countUnexpiredTokens",
+        "parameters": [
+          {
+            "name": "currentTime",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2298,
+  "slug": "tasks-count-in-the-weekend",
+  "title": "Tasks Count in the Weekend",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Tasks (task_id INTEGER, assignee_id INTEGER, submit_date DATE);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

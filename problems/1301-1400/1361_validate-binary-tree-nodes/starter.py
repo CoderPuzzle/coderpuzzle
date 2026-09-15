@@ -1,0 +1,6 @@
+from typing import List, Optional
+
+
+class Solution:
+    def validateBinaryTreeNodes(self, n: int, leftChild: List[int], rightChild: List[int]) -> bool:
+        raise NotImplementedError("TODO")

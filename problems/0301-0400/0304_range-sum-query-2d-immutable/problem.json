@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 304,
+  "slug": "range-sum-query-2d-immutable",
+  "title": "Range Sum Query 2D - Immutable",
+  "difficulty": "Medium",
+  "tags": [
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Design",
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "NumMatrix",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "matrix",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "sumRegion",
+        "parameters": [
+          {
+            "name": "row1",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "col1",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "row2",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "col2",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

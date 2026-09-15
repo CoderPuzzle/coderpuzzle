@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2604,
+  "slug": "minimum-time-to-eat-all-grains",
+  "title": "Minimum Time to Eat All Grains",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Binary Search",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Binary Search",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumTime",
+    "parameters": [
+      {
+        "name": "hens",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "grains",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumTime",
+      "rust": "minimum_time",
+      "typescript": "minimumTime"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

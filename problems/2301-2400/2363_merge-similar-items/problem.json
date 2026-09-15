@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2363,
+  "slug": "merge-similar-items",
+  "title": "Merge Similar Items",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Sorting",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "mergeSimilarItems",
+    "parameters": [
+      {
+        "name": "items1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "items2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "mergeSimilarItems",
+      "rust": "merge_similar_items",
+      "typescript": "mergeSimilarItems"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

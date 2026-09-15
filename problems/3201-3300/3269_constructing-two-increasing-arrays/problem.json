@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3269,
+  "slug": "constructing-two-increasing-arrays",
+  "title": "Constructing Two Increasing Arrays",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minLargest",
+    "parameters": [
+      {
+        "name": "nums1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minLargest",
+      "rust": "min_largest",
+      "typescript": "minLargest"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

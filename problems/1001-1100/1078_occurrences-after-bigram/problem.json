@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1078,
+  "slug": "occurrences-after-bigram",
+  "title": "Occurrences After Bigram",
+  "difficulty": "Easy",
+  "tags": [
+    "String"
+  ],
+  "topics": [
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findOcurrences",
+    "parameters": [
+      {
+        "name": "text",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "first",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "second",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "findOcurrences",
+      "rust": "find_ocurrences",
+      "typescript": "findOcurrences"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

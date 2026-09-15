@@ -1,0 +1,89 @@
+{
+  "schema_version": 2,
+  "reference_solution": "weighted_union_find",
+  "id": 399,
+  "slug": "evaluate-division",
+  "title": "Evaluate Division",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Graph"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Graph Theory",
+    "Shortest Path",
+    "Bellman–Ford Algorithm",
+    "Floyd–Warshall Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "calcEquation",
+    "parameters": [
+      {
+        "name": "equations",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "values",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "number"
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "number"
+      }
+    },
+    "entrypoints": {
+      "go": "calcEquation",
+      "rust": "calc_equation",
+      "typescript": "calcEquation"
+    },
+    "comparison": "close"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

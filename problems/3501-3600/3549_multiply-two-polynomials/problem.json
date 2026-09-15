@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3549,
+  "slug": "multiply-two-polynomials",
+  "title": "Multiply Two Polynomials",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "topics": [
+    "Array",
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "multiply",
+    "parameters": [
+      {
+        "name": "poly1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "poly2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 64
+      }
+    },
+    "entrypoints": {
+      "go": "multiply",
+      "rust": "multiply",
+      "typescript": "multiply"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

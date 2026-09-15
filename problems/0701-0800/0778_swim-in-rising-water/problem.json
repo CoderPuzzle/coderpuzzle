@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 778,
+  "slug": "swim-in-rising-water",
+  "title": "Swim in Rising Water",
+  "difficulty": "Hard",
+  "tags": [
+    "Heap",
+    "Shortest Path",
+    "Binary Search"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Minimax",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Dijkstra's Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "swimInWater",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "swimInWater",
+      "rust": "swim_in_water",
+      "typescript": "swimInWater"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

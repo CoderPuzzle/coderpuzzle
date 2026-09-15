@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 948,
+  "slug": "bag-of-tokens",
+  "title": "Bag of Tokens",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Greedy",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Greedy",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "bagOfTokensScore",
+    "parameters": [
+      {
+        "name": "tokens",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "power",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "bagOfTokensScore",
+      "rust": "bag_of_tokens_score",
+      "typescript": "bagOfTokensScore"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

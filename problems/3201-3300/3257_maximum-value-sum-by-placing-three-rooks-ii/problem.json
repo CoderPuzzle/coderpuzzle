@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3257,
+  "slug": "maximum-value-sum-by-placing-three-rooks-ii",
+  "title": "Maximum Value Sum by Placing Three Rooks II",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumValueSum",
+    "parameters": [
+      {
+        "name": "board",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "maximumValueSum",
+      "rust": "maximum_value_sum",
+      "typescript": "maximumValueSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

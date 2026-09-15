@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 262" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="640" height="262" fill="#ffffff"/>
+  <!-- array -->
+  <g stroke="#1a2026" stroke-width="1.6" fill="none">
+    <rect x="60" y="26" width="64" height="44" rx="4"/>
+    <rect x="124" y="26" width="64" height="44" rx="4"/>
+    <rect x="188" y="26" width="64" height="44" rx="4"/>
+    <rect x="252" y="26" width="64" height="44" rx="4"/>
+    <rect x="316" y="26" width="64" height="44" rx="4"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="92" y="54">1</text><text x="156" y="54">5</text><text x="220" y="54">4</text>
+    <text x="284" y="54">3</text><text x="348" y="54">6</text>
+  </g>
+  <g fill="#5c6b76" font-size="12.5" text-anchor="middle">
+    <text x="92" y="18">i=0</text><text x="156" y="18">1</text><text x="220" y="18">2</text>
+    <text x="284" y="18">3</text><text x="348" y="18">4</text>
+  </g>
+  <!-- spans -->
+  <g fill="none" stroke-width="1.7">
+    <path d="M 60 92 L 60 82 L 124 82 L 124 92" stroke="#4169E1"/>
+    <path d="M 60 130 L 60 120 L 252 120 L 252 130" stroke="#4169E1"/>
+    <path d="M 188 168 L 188 158 L 252 158 L 252 168" stroke="#4169E1"/>
+    <path d="M 252 206 L 252 196 L 316 196 L 316 206" stroke="#4169E1"/>
+    <path d="M 60 244 L 60 234 L 380 234 L 380 244" stroke="#4169E1"/>
+  </g>
+  <g fill="#1a2026" font-size="12.5">
+    <circle cx="92" cy="87" r="3" fill="#4169E1"/>
+    <text x="396" y="91">ans[0] = 1 — bounded by array edge and 5</text>
+    <circle cx="156" cy="125" r="3" fill="#4169E1"/>
+    <text x="396" y="129">ans[1] = 4 — nearest greater left/right is 6</text>
+    <circle cx="220" cy="163" r="3" fill="#4169E1"/>
+    <text x="396" y="167">ans[2] = 2 — 5 on the left, 6 on the right</text>
+    <circle cx="284" cy="201" r="3" fill="#4169E1"/>
+    <text x="396" y="205">ans[3] = 1 — 4 and 6 squeeze it</text>
+    <circle cx="348" cy="239" r="3" fill="#4169E1"/>
+    <text x="396" y="243">ans[4] = 5 — 6 is the maximum</text>
+  </g>
+</svg>

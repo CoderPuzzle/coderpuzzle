@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 458,
+  "slug": "poor-pigs",
+  "title": "Poor Pigs",
+  "difficulty": "Hard",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "poorPigs",
+    "parameters": [
+      {
+        "name": "buckets",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "minutesToDie",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "minutesToTest",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "poorPigs",
+      "rust": "poor_pigs",
+      "typescript": "poorPigs"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

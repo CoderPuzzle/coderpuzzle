@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 745,
+  "slug": "prefix-and-suffix-search",
+  "title": "Prefix and Suffix Search",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design",
+    "Trie"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "WordFilter",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "words",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "f",
+        "parameters": [
+          {
+            "name": "pref",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "suff",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

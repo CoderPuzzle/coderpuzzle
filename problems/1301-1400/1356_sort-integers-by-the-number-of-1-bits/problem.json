@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1356,
+  "slug": "sort-integers-by-the-number-of-1-bits",
+  "title": "Sort Integers by The Number of 1 Bits",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Bit Manipulation",
+    "Sorting",
+    "Counting"
+  ],
+  "topics": [
+    "Array",
+    "Bit Manipulation",
+    "Sorting",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sortByBits",
+    "parameters": [
+      {
+        "name": "arr",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "sortByBits",
+      "rust": "sort_by_bits",
+      "typescript": "sortByBits"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

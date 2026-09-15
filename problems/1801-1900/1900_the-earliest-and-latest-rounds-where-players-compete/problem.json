@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1900,
+  "slug": "the-earliest-and-latest-rounds-where-players-compete",
+  "title": "The Earliest and Latest Rounds Where Players Compete",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Memoization"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Memoization"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "earliestAndLatest",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "firstPlayer",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "secondPlayer",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "limitations": [],
+    "entrypoints": {
+      "go": "earliestAndLatest",
+      "rust": "earliest_and_latest",
+      "typescript": "earliestAndLatest"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

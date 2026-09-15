@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "trie_dfs",
+  "id": 720,
+  "slug": "longest-word-in-dictionary",
+  "title": "Longest Word in Dictionary",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Trie",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Trie",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestWord",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "longestWord",
+      "rust": "longest_word",
+      "typescript": "longestWord"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

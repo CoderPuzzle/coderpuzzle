@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 865,
+  "slug": "smallest-subtree-with-all-the-deepest-nodes",
+  "title": "Smallest Subtree with all the Deepest Nodes",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree",
+    "Binary Lifting",
+    "Lowest Common Ancestor",
+    "DP on Trees"
+  ],
+  "topics": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree",
+    "Binary Lifting",
+    "Lowest Common Ancestor",
+    "DP on Trees"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "subtreeWithAllDeepest",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "tree_node",
+    "return_type": {
+      "kind": "binary_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "subtreeWithAllDeepest",
+      "rust": "subtree_with_all_deepest",
+      "typescript": "subtreeWithAllDeepest"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

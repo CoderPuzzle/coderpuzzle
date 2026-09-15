@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1499,
+  "slug": "max-value-of-equation",
+  "title": "Max Value of Equation",
+  "difficulty": "Hard",
+  "tags": [
+    "Monotonic Queue",
+    "Sliding Window",
+    "Heap"
+  ],
+  "topics": [
+    "Array",
+    "Queue",
+    "Sliding Window",
+    "Heap (Priority Queue)",
+    "Monotonic Queue"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findMaxValueOfEquation",
+    "parameters": [
+      {
+        "name": "points",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "findMaxValueOfEquation",
+      "rust": "find_max_value_of_equation",
+      "typescript": "findMaxValueOfEquation"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

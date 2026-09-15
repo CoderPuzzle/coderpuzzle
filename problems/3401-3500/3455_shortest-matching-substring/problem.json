@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3455,
+  "slug": "shortest-matching-substring",
+  "title": "Shortest Matching Substring",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Z Algorithm"
+  ],
+  "topics": [
+    "Two Pointers",
+    "String",
+    "Binary Search",
+    "String Matching"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "shortestMatchingSubstring",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "p",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "shortestMatchingSubstring",
+      "rust": "shortest_matching_substring",
+      "typescript": "shortestMatchingSubstring"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

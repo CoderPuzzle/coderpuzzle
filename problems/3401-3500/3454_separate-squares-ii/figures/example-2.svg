@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- squares = [[0,0,2],[1,1,1]]; the 1x1 square lies inside the 2x2 one, union area 4; y = 1 gives covered 2 below / 2 above (verified by sweep) -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <rect x="70" y="134" width="156" height="156" fill="#f6ecd9" stroke="#b57f30" stroke-width="1.6"/>
+  <rect x="148" y="134" width="78" height="78" fill="none" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <line x1="56" y1="290" x2="390" y2="290" marker-end="url(#arrow)"/>
+    <line x1="70" y1="304" x2="70" y2="112" marker-end="url(#arrow)"/>
+    <line x1="148" y1="290" x2="148" y2="295"/>
+    <line x1="226" y1="290" x2="226" y2="295"/>
+    <line x1="65" y1="212" x2="70" y2="212"/>
+    <line x1="65" y1="134" x2="70" y2="134"/>
+  </g>
+  <g fill="#5c6b76" font-size="11" text-anchor="middle">
+    <text x="148" y="308">1</text>
+    <text x="226" y="308">2</text>
+    <text x="58" y="216">1</text>
+    <text x="58" y="138">2</text>
+    <text x="58" y="308">0</text>
+  </g>
+  <line x1="54" y1="212" x2="392" y2="212" stroke="#42525e" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <text x="398" y="216" fill="#42525e" font-size="12.5" font-weight="600">y = 1</text>
+  <line x1="244" y1="152" x2="230" y2="164" stroke="#7a5a1e" stroke-width="1"/>
+  <text x="250" y="152" fill="#7a5a1e" font-size="12" font-weight="600">small square adds no new covered area</text>
+  <g fill="#5c6b76" font-size="12.5" font-weight="600" text-anchor="middle">
+    <text x="107" y="256">covered below = 2</text>
+    <text x="107" y="178">covered above = 2</text>
+  </g>
+  <text x="320" y="328" text-anchor="middle" fill="#1a2026" font-size="13.5">the union is just the 2 × 2 square of area <tspan fill="#4169E1" font-weight="700">4</tspan>; <tspan fill="#4169E1" font-weight="700">y = 1</tspan> splits it into <tspan fill="#4169E1" font-weight="700">2</tspan> above and <tspan fill="#4169E1" font-weight="700">2</tspan> below</text>
+</svg>

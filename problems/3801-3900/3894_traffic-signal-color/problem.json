@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3894,
+  "slug": "traffic-signal-color",
+  "title": "Traffic Signal Color",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "trafficSignal",
+    "parameters": [
+      {
+        "name": "timer",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "trafficSignal",
+      "rust": "traffic_signal",
+      "typescript": "trafficSignal"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

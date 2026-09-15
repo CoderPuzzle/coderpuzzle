@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2662,
+  "slug": "minimum-cost-of-a-path-with-special-roads",
+  "title": "Minimum Cost of a Path With Special Roads",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Graph Theory",
+    "Heap (Priority Queue)",
+    "Shortest Path"
+  ],
+  "topics": [
+    "Array",
+    "Graph Theory",
+    "Heap (Priority Queue)",
+    "Shortest Path"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumCost",
+    "parameters": [
+      {
+        "name": "start",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "specialRoads",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumCost",
+      "rust": "minimum_cost",
+      "typescript": "minimumCost"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

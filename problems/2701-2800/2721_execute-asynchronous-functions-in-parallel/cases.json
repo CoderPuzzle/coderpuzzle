@@ -1,0 +1,761 @@
+{
+  "public": [
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 200,
+            "value": 5
+          }
+        ]
+      },
+      "expected": {
+        "resolved": [
+          5
+        ]
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 200,
+            "value": 1
+          },
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "Error"
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "Error"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 50,
+            "value": 4
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 150,
+            "value": 10
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 16
+          }
+        ]
+      },
+      "expected": {
+        "resolved": [
+          4,
+          10,
+          16
+        ]
+      }
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 150,
+            "value": 42
+          }
+        ]
+      },
+      "expected": {
+        "resolved": [
+          42
+        ]
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "delay": 120,
+            "reason": "Error"
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "Error"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 50,
+            "value": 1
+          },
+          {
+            "kind": "rejected",
+            "delay": 0,
+            "reason": "boom"
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 80,
+            "value": 3
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "boom"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 400,
+            "value": 10
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 300,
+            "value": -20
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 30
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 240,
+            "value": 20
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 200,
+            "value": -40
+          }
+        ]
+      },
+      "expected": {
+        "resolved": [
+          10,
+          -20,
+          30,
+          20,
+          -40
+        ]
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 50,
+            "value": 7
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 900,
+            "value": 8
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 500,
+            "value": 9
+          }
+        ]
+      },
+      "expected": {
+        "resolved": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "delay": 60,
+            "reason": "first"
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 700,
+            "value": 111
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 800,
+            "value": 222
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "first"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 10,
+            "value": 21
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 20,
+            "value": 22
+          },
+          {
+            "kind": "rejected",
+            "delay": 300,
+            "reason": "late"
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "late"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 1
+          },
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "B"
+          },
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "C"
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 4
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "B"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 11
+          },
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "kill"
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "kill"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "delay": 250,
+            "reason": "slow-rej"
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 5,
+            "value": 77
+          },
+          {
+            "kind": "rejected",
+            "delay": 50,
+            "reason": "fast-rej"
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "fast-rej"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 150,
+            "value": "alpha"
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 90,
+            "value": "beta"
+          }
+        ]
+      },
+      "expected": {
+        "resolved": [
+          "alpha",
+          "beta"
+        ]
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 70,
+            "value": -9
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 70,
+            "value": 0
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 70,
+            "value": 1234567890
+          }
+        ]
+      },
+      "expected": {
+        "resolved": [
+          -9,
+          0,
+          1234567890
+        ]
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 1000,
+            "value": 0
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 910,
+            "value": 1
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 820,
+            "value": 4
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 730,
+            "value": 9
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 640,
+            "value": 16
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 550,
+            "value": 25
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 460,
+            "value": 36
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 370,
+            "value": 49
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 280,
+            "value": 64
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 190,
+            "value": 81
+          }
+        ]
+      },
+      "expected": {
+        "resolved": [
+          0,
+          1,
+          4,
+          9,
+          16,
+          25,
+          36,
+          49,
+          64,
+          81
+        ]
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "delay": 10,
+            "reason": "head-crash"
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 80,
+            "value": 500
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 105,
+            "value": 501
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 130,
+            "value": 502
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 155,
+            "value": 503
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 180,
+            "value": 504
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 205,
+            "value": 505
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 230,
+            "value": 506
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 255,
+            "value": 507
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 280,
+            "value": 508
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "head-crash"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 400,
+            "value": 61
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 300,
+            "value": 62
+          },
+          {
+            "kind": "rejected",
+            "delay": 40,
+            "reason": "mid"
+          },
+          {
+            "kind": "rejected",
+            "delay": 40,
+            "reason": "mid2"
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 200,
+            "value": 65
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "mid"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 50,
+            "value": 101
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 202
+          }
+        ]
+      },
+      "expected": {
+        "resolved": [
+          101,
+          202
+        ]
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 101
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 202
+          }
+        ]
+      },
+      "expected": {
+        "resolved": [
+          101,
+          202
+        ]
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 101
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 50,
+            "value": 202
+          }
+        ]
+      },
+      "expected": {
+        "resolved": [
+          101,
+          202
+        ]
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 50,
+            "value": 101
+          },
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "eB"
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "eB"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 101
+          },
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "eB"
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "eB"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 101
+          },
+          {
+            "kind": "rejected",
+            "delay": 50,
+            "reason": "eB"
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "eB"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "delay": 50,
+            "reason": "eA"
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 202
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "eA"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "eA"
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 100,
+            "value": 202
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "eA"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "eA"
+          },
+          {
+            "kind": "fulfilled",
+            "delay": 50,
+            "value": 202
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "eA"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "delay": 50,
+            "reason": "eA"
+          },
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "eB"
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "eA"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "eA"
+          },
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "eB"
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "eA"
+      }
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "delay": 100,
+            "reason": "eA"
+          },
+          {
+            "kind": "rejected",
+            "delay": 50,
+            "reason": "eB"
+          }
+        ]
+      },
+      "expected": {
+        "rejected": "eB"
+      }
+    }
+  ]
+}

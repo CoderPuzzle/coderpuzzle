@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 943,
+  "slug": "find-the-shortest-superstring",
+  "title": "Find the Shortest Superstring",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Dynamic Programming",
+    "Bitmask"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Bitmask",
+    "Hamiltonian Path"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "shortestSuperstring",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "shortestSuperstring",
+      "rust": "shortest_superstring",
+      "typescript": "shortestSuperstring"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Variables VALUES\n('x',66),\n('y',77);\nINSERT INTO Expressions VALUES\n('x','>','y'),\n('x','<','y'),\n('x','=','y'),\n('y','>','x'),\n('y','<','x'),\n('x','=','x');"
+      ],
+      "expected": [
+        [
+          "x",
+          ">",
+          "y",
+          "false"
+        ],
+        [
+          "x",
+          "<",
+          "y",
+          "true"
+        ],
+        [
+          "x",
+          "=",
+          "y",
+          "false"
+        ],
+        [
+          "y",
+          ">",
+          "x",
+          "true"
+        ],
+        [
+          "y",
+          "<",
+          "x",
+          "false"
+        ],
+        [
+          "x",
+          "=",
+          "x",
+          "true"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Variables VALUES\n('a',1);\nINSERT INTO Expressions VALUES\n('a','=','a');"
+      ],
+      "expected": [
+        [
+          "a",
+          "=",
+          "a",
+          "true"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Variables VALUES\n('a',1),\n('b',2);\nINSERT INTO Expressions VALUES\n('a','<','b'),\n('b','<','a'),\n('a','=','b');"
+      ],
+      "expected": [
+        [
+          "a",
+          "<",
+          "b",
+          "true"
+        ],
+        [
+          "b",
+          "<",
+          "a",
+          "false"
+        ],
+        [
+          "a",
+          "=",
+          "b",
+          "false"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Variables VALUES\n('a',5),\n('b',5);\nINSERT INTO Expressions VALUES\n('a','=','b'),\n('a','>','b'),\n('a','<','b');"
+      ],
+      "expected": [
+        [
+          "a",
+          "=",
+          "b",
+          "true"
+        ],
+        [
+          "a",
+          ">",
+          "b",
+          "false"
+        ],
+        [
+          "a",
+          "<",
+          "b",
+          "false"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Variables VALUES\n('p',-3),\n('q',-9);\nINSERT INTO Expressions VALUES\n('p','>','q'),\n('p','<','q'),\n('p','=','q');"
+      ],
+      "expected": [
+        [
+          "p",
+          ">",
+          "q",
+          "true"
+        ],
+        [
+          "p",
+          "<",
+          "q",
+          "false"
+        ],
+        [
+          "p",
+          "=",
+          "q",
+          "false"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Variables VALUES\n('u',0),\n('v',0);\nINSERT INTO Expressions VALUES\n('u','>','v'),\n('u','<','v'),\n('u','=','v');"
+      ],
+      "expected": [
+        [
+          "u",
+          ">",
+          "v",
+          "false"
+        ],
+        [
+          "u",
+          "<",
+          "v",
+          "false"
+        ],
+        [
+          "u",
+          "=",
+          "v",
+          "true"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Variables VALUES\n('m',1000000),\n('n',999999);\nINSERT INTO Expressions VALUES\n('m','>','n');"
+      ],
+      "expected": [
+        [
+          "m",
+          ">",
+          "n",
+          "true"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Variables VALUES\n('a',0),\n('b',3),\n('c',6),\n('d',9),\n('e',12),\n('f',15);\nINSERT INTO Expressions VALUES\n('a','<','c'),\n('a','<','d'),\n('a','>','c'),\n('a','>','d'),\n('a','=','c'),\n('a','=','d'),\n('b','<','c'),\n('b','<','d');"
+      ],
+      "expected": [
+        [
+          "a",
+          "<",
+          "c",
+          "true"
+        ],
+        [
+          "a",
+          "<",
+          "d",
+          "true"
+        ],
+        [
+          "a",
+          ">",
+          "c",
+          "false"
+        ],
+        [
+          "a",
+          ">",
+          "d",
+          "false"
+        ],
+        [
+          "a",
+          "=",
+          "c",
+          "false"
+        ],
+        [
+          "a",
+          "=",
+          "d",
+          "false"
+        ],
+        [
+          "b",
+          "<",
+          "c",
+          "true"
+        ],
+        [
+          "b",
+          "<",
+          "d",
+          "true"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Variables VALUES\n('x',1),\n('y',2),\n('z',3);\nINSERT INTO Expressions VALUES\n('x','<','y'),\n('y','<','z'),\n('z','<','x'),\n('x','=','z'),\n('y','>','x'),\n('z','>','y');"
+      ],
+      "expected": [
+        [
+          "x",
+          "<",
+          "y",
+          "true"
+        ],
+        [
+          "y",
+          "<",
+          "z",
+          "true"
+        ],
+        [
+          "z",
+          "<",
+          "x",
+          "false"
+        ],
+        [
+          "x",
+          "=",
+          "z",
+          "false"
+        ],
+        [
+          "y",
+          ">",
+          "x",
+          "true"
+        ],
+        [
+          "z",
+          ">",
+          "y",
+          "true"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Variables VALUES\n('solo',42);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Variables VALUES\n('x',7),\n('y',7),\n('w',7);\nINSERT INTO Expressions VALUES\n('x','=','y'),\n('y','=','w'),\n('w','=','x');"
+      ],
+      "expected": [
+        [
+          "x",
+          "=",
+          "y",
+          "true"
+        ],
+        [
+          "y",
+          "=",
+          "w",
+          "true"
+        ],
+        [
+          "w",
+          "=",
+          "x",
+          "true"
+        ]
+      ]
+    }
+  ]
+}

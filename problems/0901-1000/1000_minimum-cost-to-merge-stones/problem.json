@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1000,
+  "slug": "minimum-cost-to-merge-stones",
+  "title": "Minimum Cost to Merge Stones",
+  "difficulty": "Hard",
+  "tags": [
+    "Interval DP",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "mergeStones",
+    "parameters": [
+      {
+        "name": "stones",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "mergeStones",
+      "rust": "merge_stones",
+      "typescript": "mergeStones"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

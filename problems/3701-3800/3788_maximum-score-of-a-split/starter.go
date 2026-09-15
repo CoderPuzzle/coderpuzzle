@@ -1,0 +1,3 @@
+func maximumScore(nums []int) int64 {
+	panic("TODO")
+}

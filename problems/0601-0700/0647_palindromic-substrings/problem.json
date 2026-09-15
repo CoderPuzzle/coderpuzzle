@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 647,
+  "slug": "palindromic-substrings",
+  "title": "Palindromic Substrings",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming",
+    "String",
+    "Manacher"
+  ],
+  "topics": [
+    "Two Pointers",
+    "String",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countSubstrings",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countSubstrings",
+      "rust": "count_substrings",
+      "typescript": "countSubstrings"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

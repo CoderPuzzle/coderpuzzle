@@ -1,0 +1,115 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3391,
+  "slug": "design-a-3d-binary-matrix-with-efficient-layer-tracking",
+  "title": "Design a 3D Binary Matrix with Efficient Layer Tracking",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Design",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Matrix3D",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "n",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "setCell",
+        "parameters": [
+          {
+            "name": "x",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "y",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "z",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "unsetCell",
+        "parameters": [
+          {
+            "name": "x",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "y",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "z",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "largestMatrix",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

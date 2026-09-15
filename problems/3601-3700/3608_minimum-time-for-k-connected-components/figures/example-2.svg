@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 204" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- n = 3, edges = [[0,1,2],[1,2,4]], k = 3; t = 2 leaves {0},{1,2}, t = 4 leaves {0},{1},{2} (verified by simulation) -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="310" y1="50" x2="210" y2="150"/>
+    <line x1="310" y1="50" x2="410" y2="150"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="310" cy="50" r="21"/>
+    <circle cx="210" cy="150" r="21"/>
+    <circle cx="410" cy="150" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="310" y="55">1</text>
+    <text x="210" y="155">0</text>
+    <text x="410" y="155">2</text>
+  </g>
+  <text x="238" y="92" text-anchor="middle" fill="#5c6b76" font-size="12">time 2</text>
+  <text x="382" y="92" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="12">time 4</text>
+  <text x="310" y="200" text-anchor="middle" fill="#1a2026" font-size="13.5">t = 2 drops edge 0-1 (two components), t = 4 drops edge 1-2 too and reaches k = 3: answer <tspan fill="#4169E1" font-weight="700">4</tspan></text>
+</svg>

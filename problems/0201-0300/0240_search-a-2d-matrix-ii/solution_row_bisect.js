@@ -1,0 +1,29 @@
+/**
+ * @param {number[][]} matrix
+ * @param {number} target
+ * @return {boolean}
+ */
+var searchMatrix = function (matrix, target) {
+    if (!matrix || matrix.length === 0 || matrix[0].length === 0) return false;
+    const cols = matrix[0].length;
+    for (const row of matrix) {
+        // Columns are sorted, so once a row's first element already exceeds
+        // the target, every later row starts even larger — the target cannot
+        // exist below, so stop scanning entirely.
+        if (row[0] > target) break;
+        // Each row is sorted, so binary-search it in O(log n).
+        let lo = 0,
+            hi = cols - 1;
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            if (row[mid] < target) lo = mid + 1;
+            else hi = mid;
+        }
+        // lo lands on the leftmost element >= target; equality means the
+        // target is present in this row.
+        if (row[lo] === target) return true;
+    }
+    // m rows each searched in O(log n): O(m log n), versus the staircase's
+    // O(m + n).
+    return false;
+};

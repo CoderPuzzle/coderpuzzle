@@ -1,0 +1,95 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 307,
+  "slug": "range-sum-query-mutable",
+  "title": "Range Sum Query - Mutable",
+  "difficulty": "Medium",
+  "tags": [
+    "Segment Tree",
+    "Fenwick Tree",
+    "Array"
+  ],
+  "topics": [
+    "Array",
+    "Divide and Conquer",
+    "Design",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Sqrt Decomposition"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "NumArray",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "nums",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "update",
+        "parameters": [
+          {
+            "name": "index",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "val",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "sumRange",
+        "parameters": [
+          {
+            "name": "left",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "right",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

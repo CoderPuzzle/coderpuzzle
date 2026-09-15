@@ -1,0 +1,402 @@
+{
+  "public": [
+    {
+      "input": [
+        "0"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "e"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "."
+      ],
+      "expected": false
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "2"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0089"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "-0.1"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "+3.14"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "4."
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "-.9"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "2e10"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "-90E3"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "3e+7"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "+6e-1"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "53.5e93"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "-123.456e789"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abc"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "1a"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "1e"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "e3"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "99e2.5"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "--6"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "-+3"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "95a54e53"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "+"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "-"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "+-"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "++1"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "6+1"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "-1"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "+8"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "4E+5"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "4E-5"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "-e+3"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        ".."
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        ".5"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "+.5"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "+."
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "-."
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        ".e1"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "4.e1"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "4.e"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "1.2.3"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        ".5."
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "E"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "e9"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "9e"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "9E"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "9e+"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "9e-"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "1e2e3"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "1e2."
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0e0"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0e-0"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        ".0e0"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0x1F"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0X10"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0b101"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0o17"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "1f"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "INF"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "Infinity"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "nan"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0000"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "-0"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "1234567890.123456789"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "123456789.123456789e"
+      ],
+      "expected": false
+    }
+  ]
+}

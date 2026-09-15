@@ -1,0 +1,97 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1724,
+  "slug": "checking-existence-of-edge-length-limited-paths-ii",
+  "title": "Checking Existence of Edge Length Limited Paths II",
+  "difficulty": "Hard",
+  "tags": [
+    "Depth-First Search",
+    "Union-Find",
+    "Graph Theory",
+    "Design",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Minimum Spanning Tree"
+  ],
+  "topics": [
+    "Depth-First Search",
+    "Union-Find",
+    "Graph Theory",
+    "Design",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Minimum Spanning Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "DistanceLimitedPathsExist",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "n",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "edgeList",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "query",
+        "parameters": [
+          {
+            "name": "p",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "q",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "limit",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

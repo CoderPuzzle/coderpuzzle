@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2273,
+  "slug": "find-resultant-array-after-removing-anagrams",
+  "title": "Find Resultant Array After Removing Anagrams",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "removeAnagrams",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "removeAnagrams",
+      "rust": "remove_anagrams",
+      "typescript": "removeAnagrams"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,1,'2019-07-20','open_session'),\n(1,1,'2019-07-20','scroll_down'),\n(1,1,'2019-07-20','end_session'),\n(2,4,'2019-07-20','open_session'),\n(2,4,'2019-07-21','send_message'),\n(2,4,'2019-07-21','end_session'),\n(3,2,'2019-07-21','open_session'),\n(3,2,'2019-07-21','send_message'),\n(3,2,'2019-07-21','end_session'),\n(4,3,'2019-06-25','open_session'),\n(4,3,'2019-06-25','end_session');"
+      ],
+      "expected": [
+        [
+          "2019-07-20",
+          2
+        ],
+        [
+          "2019-07-21",
+          2
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,1,'2019-06-28','open_session');"
+      ],
+      "expected": [
+        [
+          "2019-06-28",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,1,'2019-06-27','open_session');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,1,'2019-07-27','send_message');"
+      ],
+      "expected": [
+        [
+          "2019-07-27",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,1,'2019-07-28','send_message');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,1,'2019-07-01','open_session'),\n(1,1,'2019-07-01','scroll_down'),\n(1,2,'2019-07-01','send_message');"
+      ],
+      "expected": [
+        [
+          "2019-07-01",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,1,'2019-07-01','open_session'),\n(1,1,'2019-07-02','open_session');"
+      ],
+      "expected": [
+        [
+          "2019-07-01",
+          1
+        ],
+        [
+          "2019-07-02",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,1,'2019-07-01','open_session'),\n(1,1,'2019-07-01','open_session');"
+      ],
+      "expected": [
+        [
+          "2019-07-01",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,1,'2019-07-05','open_session'),\n(2,2,'2019-07-05','end_session'),\n(3,3,'2019-07-05','scroll_down'),\n(4,4,'2019-07-05','send_message');"
+      ],
+      "expected": [
+        [
+          "2019-07-05",
+          4
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,1,'2019-06-28','open_session'),\n(2,2,'2019-06-29','open_session'),\n(3,3,'2019-07-10','send_message'),\n(1,4,'2019-07-26','open_session'),\n(5,5,'2019-07-27','end_session');"
+      ],
+      "expected": [
+        [
+          "2019-06-28",
+          1
+        ],
+        [
+          "2019-06-29",
+          1
+        ],
+        [
+          "2019-07-10",
+          1
+        ],
+        [
+          "2019-07-26",
+          1
+        ],
+        [
+          "2019-07-27",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,1,'2019-07-15','open_session'),\n(2,2,'2019-07-15','open_session'),\n(3,3,'2019-07-15','open_session'),\n(4,4,'2019-07-15','open_session'),\n(5,5,'2019-07-15','open_session'),\n(6,6,'2019-07-15','open_session'),\n(7,7,'2019-07-15','open_session'),\n(8,8,'2019-07-15','open_session'),\n(9,9,'2019-07-15','open_session'),\n(10,10,'2019-07-15','open_session'),\n(11,11,'2019-07-15','open_session'),\n(12,12,'2019-07-15','open_session'),\n(13,13,'2019-07-15','open_session'),\n(14,14,'2019-07-15','open_session'),\n(15,15,'2019-07-15','open_session'),\n(16,16,'2019-07-15','open_session'),\n(17,17,'2019-07-15','open_session'),\n(18,18,'2019-07-15','open_session'),\n(19,19,'2019-07-15','open_session'),\n(20,20,'2019-07-15','open_session'),\n(21,21,'2019-07-15','open_session'),\n(22,22,'2019-07-15','open_session'),\n(23,23,'2019-07-15','open_session'),\n(24,24,'2019-07-15','open_session'),\n(25,25,'2019-07-15','open_session'),\n(26,26,'2019-07-15','open_session'),\n(27,27,'2019-07-15','open_session'),\n(28,28,'2019-07-15','open_session'),\n(29,29,'2019-07-15','open_session'),\n(30,30,'2019-07-15','open_session'),\n(31,31,'2019-07-15','open_session'),\n(32,32,'2019-07-15','open_session'),\n(33,33,'2019-07-15','open_session'),\n(34,34,'2019-07-15','open_session'),\n(35,35,'2019-07-15','open_session'),\n(36,36,'2019-07-15','open_session'),\n(37,37,'2019-07-15','open_session'),\n(38,38,'2019-07-15','open_session'),\n(39,39,'2019-07-15','open_session'),\n(40,40,'2019-07-15','open_session'),\n(41,41,'2019-07-15','open_session'),\n(42,42,'2019-07-15','open_session'),\n(43,43,'2019-07-15','open_session'),\n(44,44,'2019-07-15','open_session'),\n(45,45,'2019-07-15','open_session'),\n(46,46,'2019-07-15','open_session'),\n(47,47,'2019-07-15','open_session'),\n(48,48,'2019-07-15','open_session'),\n(49,49,'2019-07-15','open_session'),\n(50,50,'2019-07-15','open_session');"
+      ],
+      "expected": [
+        [
+          "2019-07-15",
+          50
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activity VALUES\n(1,10,'2019-06-28','scroll_down'),\n(2,20,'2019-06-28','send_message'),\n(3,30,'2019-06-28','end_session'),\n(4,40,'2019-06-28','open_session'),\n(5,50,'2019-06-28','scroll_down'),\n(6,60,'2019-06-28','send_message'),\n(7,70,'2019-06-28','end_session'),\n(1,11,'2019-06-29','send_message'),\n(2,21,'2019-06-29','end_session'),\n(3,31,'2019-06-29','open_session'),\n(4,41,'2019-06-29','scroll_down'),\n(5,51,'2019-06-29','send_message'),\n(6,61,'2019-06-29','end_session'),\n(7,71,'2019-06-29','open_session'),\n(1,12,'2019-06-30','end_session'),\n(2,22,'2019-06-30','open_session'),\n(3,32,'2019-06-30','scroll_down'),\n(4,42,'2019-06-30','send_message'),\n(5,52,'2019-06-30','end_session'),\n(6,62,'2019-06-30','open_session'),\n(7,72,'2019-06-30','scroll_down'),\n(1,13,'2019-07-01','open_session'),\n(2,23,'2019-07-01','scroll_down'),\n(3,33,'2019-07-01','send_message'),\n(4,43,'2019-07-01','end_session'),\n(5,53,'2019-07-01','open_session'),\n(6,63,'2019-07-01','scroll_down'),\n(7,73,'2019-07-01','send_message'),\n(1,14,'2019-07-02','scroll_down'),\n(2,24,'2019-07-02','send_message'),\n(3,34,'2019-07-02','end_session'),\n(4,44,'2019-07-02','open_session'),\n(5,54,'2019-07-02','scroll_down'),\n(6,64,'2019-07-02','send_message'),\n(7,74,'2019-07-02','end_session'),\n(1,15,'2019-07-03','send_message'),\n(2,25,'2019-07-03','end_session'),\n(3,35,'2019-07-03','open_session'),\n(4,45,'2019-07-03','scroll_down'),\n(5,55,'2019-07-03','send_message'),\n(6,65,'2019-07-03','end_session'),\n(7,75,'2019-07-03','open_session'),\n(1,16,'2019-07-04','end_session'),\n(2,26,'2019-07-04','open_session'),\n(3,36,'2019-07-04','scroll_down'),\n(4,46,'2019-07-04','send_message'),\n(5,56,'2019-07-04','end_session'),\n(6,66,'2019-07-04','open_session'),\n(7,76,'2019-07-04','scroll_down'),\n(1,17,'2019-07-05','open_session'),\n(2,27,'2019-07-05','scroll_down'),\n(3,37,'2019-07-05','send_message'),\n(4,47,'2019-07-05','end_session'),\n(5,57,'2019-07-05','open_session'),\n(6,67,'2019-07-05','scroll_down'),\n(7,77,'2019-07-05','send_message'),\n(1,18,'2019-07-06','scroll_down'),\n(2,28,'2019-07-06','send_message'),\n(3,38,'2019-07-06','end_session'),\n(4,48,'2019-07-06','open_session'),\n(5,58,'2019-07-06','scroll_down'),\n(6,68,'2019-07-06','send_message'),\n(7,78,'2019-07-06','end_session'),\n(1,19,'2019-07-07','send_message'),\n(2,29,'2019-07-07','end_session'),\n(3,39,'2019-07-07','open_session'),\n(4,49,'2019-07-07','scroll_down'),\n(5,59,'2019-07-07','send_message'),\n(6,69,'2019-07-07','end_session'),\n(7,79,'2019-07-07','open_session'),\n(1,20,'2019-07-08','end_session'),\n(2,30,'2019-07-08','open_session'),\n(3,40,'2019-07-08','scroll_down'),\n(4,50,'2019-07-08','send_message'),\n(5,60,'2019-07-08','end_session'),\n(6,70,'2019-07-08','open_session'),\n(7,80,'2019-07-08','scroll_down'),\n(1,21,'2019-07-09','open_session'),\n(2,31,'2019-07-09','scroll_down'),\n(3,41,'2019-07-09','send_message'),\n(4,51,'2019-07-09','end_session'),\n(5,61,'2019-07-09','open_session'),\n(6,71,'2019-07-09','scroll_down'),\n(7,81,'2019-07-09','send_message'),\n(1,22,'2019-07-10','scroll_down'),\n(2,32,'2019-07-10','send_message'),\n(3,42,'2019-07-10','end_session'),\n(4,52,'2019-07-10','open_session'),\n(5,62,'2019-07-10','scroll_down'),\n(6,72,'2019-07-10','send_message'),\n(7,82,'2019-07-10','end_session'),\n(1,23,'2019-07-11','send_message'),\n(2,33,'2019-07-11','end_session'),\n(3,43,'2019-07-11','open_session'),\n(4,53,'2019-07-11','scroll_down'),\n(5,63,'2019-07-11','send_message'),\n(6,73,'2019-07-11','end_session'),\n(7,83,'2019-07-11','open_session'),\n(1,24,'2019-07-12','end_session'),\n(2,34,'2019-07-12','open_session'),\n(3,44,'2019-07-12','scroll_down'),\n(4,54,'2019-07-12','send_message'),\n(5,64,'2019-07-12','end_session'),\n(6,74,'2019-07-12','open_session'),\n(7,84,'2019-07-12','scroll_down'),\n(1,25,'2019-07-13','open_session'),\n(2,35,'2019-07-13','scroll_down'),\n(3,45,'2019-07-13','send_message'),\n(4,55,'2019-07-13','end_session'),\n(5,65,'2019-07-13','open_session'),\n(6,75,'2019-07-13','scroll_down'),\n(7,85,'2019-07-13','send_message'),\n(1,26,'2019-07-14','scroll_down'),\n(2,36,'2019-07-14','send_message'),\n(3,46,'2019-07-14','end_session'),\n(4,56,'2019-07-14','open_session'),\n(5,66,'2019-07-14','scroll_down'),\n(6,76,'2019-07-14','send_message'),\n(7,86,'2019-07-14','end_session'),\n(1,27,'2019-07-15','send_message'),\n(2,37,'2019-07-15','end_session'),\n(3,47,'2019-07-15','open_session'),\n(4,57,'2019-07-15','scroll_down'),\n(5,67,'2019-07-15','send_message'),\n(6,77,'2019-07-15','end_session'),\n(7,87,'2019-07-15','open_session'),\n(1,28,'2019-07-16','end_session'),\n(2,38,'2019-07-16','open_session'),\n(3,48,'2019-07-16','scroll_down'),\n(4,58,'2019-07-16','send_message'),\n(5,68,'2019-07-16','end_session'),\n(6,78,'2019-07-16','open_session'),\n(7,88,'2019-07-16','scroll_down'),\n(1,29,'2019-07-17','open_session'),\n(2,39,'2019-07-17','scroll_down'),\n(3,49,'2019-07-17','send_message'),\n(4,59,'2019-07-17','end_session'),\n(5,69,'2019-07-17','open_session'),\n(6,79,'2019-07-17','scroll_down'),\n(7,89,'2019-07-17','send_message'),\n(1,30,'2019-07-18','scroll_down'),\n(2,40,'2019-07-18','send_message'),\n(3,50,'2019-07-18','end_session'),\n(4,60,'2019-07-18','open_session'),\n(5,70,'2019-07-18','scroll_down'),\n(6,80,'2019-07-18','send_message'),\n(7,90,'2019-07-18','end_session'),\n(1,31,'2019-07-19','send_message'),\n(2,41,'2019-07-19','end_session'),\n(3,51,'2019-07-19','open_session'),\n(4,61,'2019-07-19','scroll_down'),\n(5,71,'2019-07-19','send_message'),\n(6,81,'2019-07-19','end_session'),\n(7,91,'2019-07-19','open_session'),\n(1,32,'2019-07-20','end_session'),\n(2,42,'2019-07-20','open_session'),\n(3,52,'2019-07-20','scroll_down'),\n(4,62,'2019-07-20','send_message'),\n(5,72,'2019-07-20','end_session'),\n(6,82,'2019-07-20','open_session'),\n(7,92,'2019-07-20','scroll_down'),\n(1,33,'2019-07-21','open_session'),\n(2,43,'2019-07-21','scroll_down'),\n(3,53,'2019-07-21','send_message'),\n(4,63,'2019-07-21','end_session'),\n(5,73,'2019-07-21','open_session'),\n(6,83,'2019-07-21','scroll_down'),\n(7,93,'2019-07-21','send_message'),\n(1,34,'2019-07-22','scroll_down'),\n(2,44,'2019-07-22','send_message'),\n(3,54,'2019-07-22','end_session'),\n(4,64,'2019-07-22','open_session'),\n(5,74,'2019-07-22','scroll_down'),\n(6,84,'2019-07-22','send_message'),\n(7,94,'2019-07-22','end_session'),\n(1,35,'2019-07-23','send_message'),\n(2,45,'2019-07-23','end_session'),\n(3,55,'2019-07-23','open_session'),\n(4,65,'2019-07-23','scroll_down'),\n(5,75,'2019-07-23','send_message'),\n(6,85,'2019-07-23','end_session'),\n(7,95,'2019-07-23','open_session'),\n(1,36,'2019-07-24','end_session'),\n(2,46,'2019-07-24','open_session'),\n(3,56,'2019-07-24','scroll_down'),\n(4,66,'2019-07-24','send_message'),\n(5,76,'2019-07-24','end_session'),\n(6,86,'2019-07-24','open_session'),\n(7,96,'2019-07-24','scroll_down'),\n(1,37,'2019-07-25','open_session'),\n(2,47,'2019-07-25','scroll_down'),\n(3,57,'2019-07-25','send_message'),\n(4,67,'2019-07-25','end_session'),\n(5,77,'2019-07-25','open_session'),\n(6,87,'2019-07-25','scroll_down'),\n(7,97,'2019-07-25','send_message'),\n(1,38,'2019-07-26','scroll_down'),\n(2,48,'2019-07-26','send_message'),\n(3,58,'2019-07-26','end_session'),\n(4,68,'2019-07-26','open_session'),\n(5,78,'2019-07-26','scroll_down'),\n(6,88,'2019-07-26','send_message'),\n(7,98,'2019-07-26','end_session'),\n(1,39,'2019-07-27','send_message'),\n(2,49,'2019-07-27','end_session'),\n(3,59,'2019-07-27','open_session'),\n(4,69,'2019-07-27','scroll_down'),\n(5,79,'2019-07-27','send_message'),\n(6,89,'2019-07-27','end_session'),\n(7,99,'2019-07-27','open_session');"
+      ],
+      "expected": [
+        [
+          "2019-06-28",
+          7
+        ],
+        [
+          "2019-06-29",
+          7
+        ],
+        [
+          "2019-06-30",
+          7
+        ],
+        [
+          "2019-07-01",
+          7
+        ],
+        [
+          "2019-07-02",
+          7
+        ],
+        [
+          "2019-07-03",
+          7
+        ],
+        [
+          "2019-07-04",
+          7
+        ],
+        [
+          "2019-07-05",
+          7
+        ],
+        [
+          "2019-07-06",
+          7
+        ],
+        [
+          "2019-07-07",
+          7
+        ],
+        [
+          "2019-07-08",
+          7
+        ],
+        [
+          "2019-07-09",
+          7
+        ],
+        [
+          "2019-07-10",
+          7
+        ],
+        [
+          "2019-07-11",
+          7
+        ],
+        [
+          "2019-07-12",
+          7
+        ],
+        [
+          "2019-07-13",
+          7
+        ],
+        [
+          "2019-07-14",
+          7
+        ],
+        [
+          "2019-07-15",
+          7
+        ],
+        [
+          "2019-07-16",
+          7
+        ],
+        [
+          "2019-07-17",
+          7
+        ],
+        [
+          "2019-07-18",
+          7
+        ],
+        [
+          "2019-07-19",
+          7
+        ],
+        [
+          "2019-07-20",
+          7
+        ],
+        [
+          "2019-07-21",
+          7
+        ],
+        [
+          "2019-07-22",
+          7
+        ],
+        [
+          "2019-07-23",
+          7
+        ],
+        [
+          "2019-07-24",
+          7
+        ],
+        [
+          "2019-07-25",
+          7
+        ],
+        [
+          "2019-07-26",
+          7
+        ],
+        [
+          "2019-07-27",
+          7
+        ]
+      ]
+    }
+  ]
+}

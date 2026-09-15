@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 883,
+  "slug": "projection-area-of-3d-shapes",
+  "title": "Projection Area of 3D Shapes",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "projectionArea",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "projectionArea",
+      "rust": "projection_area",
+      "typescript": "projectionArea"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

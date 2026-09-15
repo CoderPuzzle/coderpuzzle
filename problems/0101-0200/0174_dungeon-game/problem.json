@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 174,
+  "slug": "dungeon-game",
+  "title": "Dungeon Game",
+  "difficulty": "Hard",
+  "tags": [
+    "Matrix",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "calculateMinimumHP",
+    "parameters": [
+      {
+        "name": "dungeon",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "calculateMinimumHP",
+      "rust": "calculate_minimum_hp",
+      "typescript": "calculateMinimumHP"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

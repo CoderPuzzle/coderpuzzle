@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2345,
+  "slug": "finding-the-number-of-visible-mountains",
+  "title": "Finding the Number of Visible Mountains",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Stack",
+    "Sorting",
+    "Monotonic Stack"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Sorting",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "visibleMountains",
+    "parameters": [
+      {
+        "name": "peaks",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "visibleMountains",
+      "rust": "visible_mountains",
+      "typescript": "visibleMountains"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

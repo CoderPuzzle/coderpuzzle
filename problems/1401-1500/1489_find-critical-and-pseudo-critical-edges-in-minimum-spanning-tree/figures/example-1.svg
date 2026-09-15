@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="1000" height="450" fill="#ffffff"/>
+  <text x="120" y="34" fill="#5c6b76" font-size="12.5">the graph — edge labels: index · weight</text>
+  <!-- main graph edges -->
+  <g fill="none">
+    <path d="M 160 165 L 280 165" stroke="#4169E1" stroke-width="2.8"/>
+    <line x1="317.3" y1="155" x2="437.7" y2="85" stroke="#4169E1" stroke-width="2.8"/>
+    <line x1="442.7" y1="90.8" x2="312.3" y2="259.2" stroke="#b57f30" stroke-width="2.2"/>
+    <line x1="156.5" y1="176.3" x2="283.5" y2="263.7" stroke="#b57f30" stroke-width="2.2"/>
+    <path d="M 159.9 167.4 Q 300 215 450.1 202.6" stroke="#b57f30" stroke-width="2.2"/>
+    <line x1="318.5" y1="267.4" x2="451.5" y2="212.6" stroke="#b57f30" stroke-width="2.2"/>
+    <line x1="319.5" y1="169.6" x2="450.5" y2="200.4" stroke="#9aa7b0" stroke-width="1.6" stroke-dasharray="5 4"/>
+  </g>
+  <g fill="#5c6b76" font-size="11.5" text-anchor="middle">
+    <text x="220" y="156">0 · 1</text>
+    <text x="368" y="106">1 · 1</text>
+    <text x="350" y="172">2 · 2</text>
+    <text x="234" y="240">3 · 2</text>
+    <text x="300" y="222">4 · 3</text>
+    <text x="392" y="252">5 · 3</text>
+    <text x="388" y="178">6 · 6</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="140" cy="165" r="16"/>
+    <circle cx="300" cy="165" r="16"/>
+    <circle cx="455" cy="75" r="16"/>
+    <circle cx="300" cy="275" r="16"/>
+    <circle cx="470" cy="205" r="16"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="140" y="170">0</text><text x="300" y="170">1</text><text x="455" y="80">2</text><text x="300" y="280">3</text><text x="470" y="210">4</text>
+  </g>
+  <!-- legend -->
+  <g font-size="12" fill="#5c6b76">
+    <line x1="130" y1="345" x2="165" y2="345" stroke="#4169E1" stroke-width="2.8"/>
+    <text x="173" y="349">critical — edges 0, 1 are in every MST</text>
+    <line x1="130" y1="371" x2="165" y2="371" stroke="#b57f30" stroke-width="2.2"/>
+    <text x="173" y="375">pseudo-critical — edges 2, 3, 4, 5 are in only some MSTs</text>
+    <line x1="130" y1="397" x2="165" y2="397" stroke="#9aa7b0" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <text x="173" y="401">edge 6 appears in no MST</text>
+  </g>
+  <!-- four MSTs, each of weight 7 -->
+  <g font-size="11" fill="#5c6b76" text-anchor="middle">
+    <text x="632" y="52">MST — edges 0, 1, 2, 4</text>
+    <text x="872" y="52">MST — edges 0, 1, 2, 5</text>
+    <text x="632" y="252">MST — edges 0, 1, 3, 4</text>
+    <text x="872" y="252">MST — edges 0, 1, 3, 5</text>
+  </g>
+  <!-- mini template used four times -->
+  <defs>
+    <g id="mini">
+      <g fill="none" stroke="#4169E1" stroke-width="1.9">
+        <line x1="63" y1="80" x2="127" y2="80"/>
+        <line x1="149.9" y1="71.5" x2="200.1" y2="28.5"/>
+        <line x1="146.6" y1="128.8" x2="203.4" y2="31.2"/>
+        <line x1="129.2" y1="132.8" x2="60.8" y2="87.2"/>
+        <line x1="62.8" y1="82.3" x2="207.2" y2="107.7"/>
+        <line x1="150.4" y1="136.1" x2="209.6" y2="113.9"/>
+        <line x1="152.2" y1="84.1" x2="207.8" y2="105.9"/>
+      </g>
+      <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+        <circle cx="50" cy="80" r="10"/><circle cx="140" cy="80" r="10"/><circle cx="210" cy="20" r="10"/>
+        <circle cx="140" cy="140" r="10"/><circle cx="220" cy="110" r="10"/>
+      </g>
+      <g text-anchor="middle" fill="#1a2026" font-weight="600" font-size="9.5">
+        <text x="50" y="83.5">0</text><text x="140" y="83.5">1</text><text x="210" y="23.5">2</text><text x="140" y="143.5">3</text><text x="220" y="113.5">4</text>
+      </g>
+    </g>
+  </defs>
+  <!-- MST: 0,1,2,4 (erase edges 3, 5, 6) -->
+  <g transform="translate(515,70)"><use href="#mini"/>
+    <line x1="129.2" y1="132.8" x2="60.8" y2="87.2" stroke="#ffffff" stroke-width="2.4"/>
+    <line x1="150.4" y1="136.1" x2="209.6" y2="113.9" stroke="#ffffff" stroke-width="2.4"/>
+    <line x1="152.2" y1="84.1" x2="207.8" y2="105.9" stroke="#ffffff" stroke-width="2.4"/>
+  </g>
+  <!-- MST: 0,1,2,5 (erase edges 3, 4, 6) -->
+  <g transform="translate(755,70)"><use href="#mini"/>
+    <line x1="129.2" y1="132.8" x2="60.8" y2="87.2" stroke="#ffffff" stroke-width="2.4"/>
+    <line x1="62.8" y1="82.3" x2="207.2" y2="107.7" stroke="#ffffff" stroke-width="2.4"/>
+    <line x1="152.2" y1="84.1" x2="207.8" y2="105.9" stroke="#ffffff" stroke-width="2.4"/>
+  </g>
+  <!-- MST: 0,1,3,4 (erase edges 2, 5, 6) -->
+  <g transform="translate(515,270)"><use href="#mini"/>
+    <line x1="146.6" y1="128.8" x2="203.4" y2="31.2" stroke="#ffffff" stroke-width="2.4"/>
+    <line x1="150.4" y1="136.1" x2="209.6" y2="113.9" stroke="#ffffff" stroke-width="2.4"/>
+    <line x1="152.2" y1="84.1" x2="207.8" y2="105.9" stroke="#ffffff" stroke-width="2.4"/>
+  </g>
+  <!-- MST: 0,1,3,5 (erase edges 2, 4, 6) -->
+  <g transform="translate(755,270)"><use href="#mini"/>
+    <line x1="146.6" y1="128.8" x2="203.4" y2="31.2" stroke="#ffffff" stroke-width="2.4"/>
+    <line x1="62.8" y1="82.3" x2="207.2" y2="107.7" stroke="#ffffff" stroke-width="2.4"/>
+    <line x1="152.2" y1="84.1" x2="207.8" y2="105.9" stroke="#ffffff" stroke-width="2.4"/>
+  </g>
+  <text x="632" y="435" text-anchor="middle" fill="#1a2026" font-weight="600" font-size="12.5">every MST weighs 7 and keeps edges 0 and 1</text>
+</svg>

@@ -1,0 +1,84 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1172,
+  "slug": "dinner-plate-stacks",
+  "title": "Dinner Plate Stacks",
+  "difficulty": "Hard",
+  "tags": [
+    "Hash Table",
+    "Stack",
+    "Design",
+    "Heap (Priority Queue)"
+  ],
+  "topics": [
+    "Hash Table",
+    "Stack",
+    "Design",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "DinnerPlates",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "capacity",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "push",
+        "parameters": [
+          {
+            "name": "val",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": null
+      },
+      {
+        "name": "pop",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "popAtStack",
+        "parameters": [
+          {
+            "name": "index",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 6000,
+    "memory_mb": 256,
+    "output_kb": 4096
+  }
+}

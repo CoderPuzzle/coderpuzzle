@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1477,
+  "slug": "find-two-non-overlapping-sub-arrays-each-with-target-sum",
+  "title": "Find Two Non-overlapping Sub-arrays Each With Target Sum",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Dynamic Programming",
+    "Sliding Window"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Dynamic Programming",
+    "Sliding Window"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minSumOfLengths",
+    "parameters": [
+      {
+        "name": "arr",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minSumOfLengths",
+      "rust": "min_sum_of_lengths",
+      "typescript": "minSumOfLengths"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

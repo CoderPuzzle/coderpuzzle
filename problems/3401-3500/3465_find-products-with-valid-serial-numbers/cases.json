@@ -1,0 +1,334 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(1,'Widget A','This is a sample product with SN1234-5678'),\n(2,'Widget B','A product with serial SN9876-1234 in the description'),\n(3,'Widget C','Product SN1234-56789 is available now'),\n(4,'Widget D','No serial number here'),\n(5,'Widget E','Check out SN4321-8765 in this description');"
+      ],
+      "expected": [
+        [
+          1,
+          "Widget A",
+          "This is a sample product with SN1234-5678"
+        ],
+        [
+          2,
+          "Widget B",
+          "A product with serial SN9876-1234 in the description"
+        ],
+        [
+          5,
+          "Widget E",
+          "Check out SN4321-8765 in this description"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(11,'Edge One','SN0000-1111 leads the list'),\n(12,'Edge Two','the list ends with SN2222-3333'),\n(13,'Edge Three','SN3333-4444');"
+      ],
+      "expected": [
+        [
+          11,
+          "Edge One",
+          "SN0000-1111 leads the list"
+        ],
+        [
+          12,
+          "Edge Two",
+          "the list ends with SN2222-3333"
+        ],
+        [
+          13,
+          "Edge Three",
+          "SN3333-4444"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(21,'Bad One','SN1234-56789 present'),\n(22,'Bad Two','Product SN9876-54321 here'),\n(23,'Bad Three','SN1234-56789');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(31,'Five First','SN12345-6789 not valid'),\n(32,'Eight First','SN12345678-1234 nope'),\n(33,'Long Both','SN123456-789012 no');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(41,'Short A','SN12-3456'),\n(42,'Short B','SN123-4567'),\n(43,'Short C','SN1234-567'),\n(44,'Short D','SN1-2');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(51,'Lower','sn1234-5678 nope'),\n(52,'Mixed Sn','Sn1234-5678 nope'),\n(53,'Mixed sN','sN1234-5678 nope'),\n(54,'Real','SN1234-5678 yes');"
+      ],
+      "expected": [
+        [
+          54,
+          "Real",
+          "SN1234-5678 yes"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(61,'Under','SN1234_5678'),\n(62,'Space','SN1234 5678'),\n(63,'None','SN12345678'),\n(64,'Double','SN1234--5678');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(71,'Hug','XSN1111-2222Y'),\n(72,'Tail Digit','XSN1111-2222Y9'),\n(73,'Both Sides','aSN9999-8888b plus more text');"
+      ],
+      "expected": [
+        [
+          71,
+          "Hug",
+          "XSN1111-2222Y"
+        ],
+        [
+          72,
+          "Tail Digit",
+          "XSN1111-2222Y9"
+        ],
+        [
+          73,
+          "Both Sides",
+          "aSN9999-8888b plus more text"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(81,'Dash Tail','SN1234-5678-'),\n(82,'Dot Tail','SN1234-5678.'),\n(83,'Predash','-SN4321-8765'),\n(84,'Pre Num','5SN4321-8765 ok');"
+      ],
+      "expected": [
+        [
+          81,
+          "Dash Tail",
+          "SN1234-5678-"
+        ],
+        [
+          82,
+          "Dot Tail",
+          "SN1234-5678."
+        ],
+        [
+          83,
+          "Predash",
+          "-SN4321-8765"
+        ],
+        [
+          84,
+          "Pre Num",
+          "5SN4321-8765 ok"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(91,'Second Saves','SN1111-22229 then SN0000-0000'),\n(92,'Two Good','SN1111-2222 SN3333-4444'),\n(93,'Both Bad','SN1111-22229 SN3333-44445');"
+      ],
+      "expected": [
+        [
+          91,
+          "Second Saves",
+          "SN1111-22229 then SN0000-0000"
+        ],
+        [
+          92,
+          "Two Good",
+          "SN1111-2222 SN3333-4444"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(101,'Double SN','SNSN1234-5678'),\n(102,'Double SN Bad','SNSN1234-56789'),\n(103,'S Sandwich','SSN1234-5678S');"
+      ],
+      "expected": [
+        [
+          101,
+          "Double SN",
+          "SNSN1234-5678"
+        ],
+        [
+          103,
+          "S Sandwich",
+          "SSN1234-5678S"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(111,'Only SN','SN stands for serial'),\n(112,'Empty',''),\n(113,'Plain','No serial number here'),\n(114,'SN Dash','SN-1234-5678');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(230,'Late','has SN1010-2020 inside'),\n(7,'Early','SN7070-8080 early'),\n(155,'Mid Bad','SN1555-66666 no'),\n(42,'Nope','nothing here'),\n(98,'Mid Good','x SN9888-7777 y');"
+      ],
+      "expected": [
+        [
+          7,
+          "Early",
+          "SN7070-8080 early"
+        ],
+        [
+          98,
+          "Mid Good",
+          "x SN9888-7777 y"
+        ],
+        [
+          230,
+          "Late",
+          "has SN1010-2020 inside"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(161,'SN Follow','SN1234-5678SN tail'),\n(162,'Space Digit','SN1234-5678 9 more'),\n(163,'Pre Digit Bad','9SN1234-56789'),\n(164,'Later Good','SN1234-56789 SN1234-5678');"
+      ],
+      "expected": [
+        [
+          161,
+          "SN Follow",
+          "SN1234-5678SN tail"
+        ],
+        [
+          162,
+          "Space Digit",
+          "SN1234-5678 9 more"
+        ],
+        [
+          164,
+          "Later Good",
+          "SN1234-56789 SN1234-5678"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(171,'V One','SN1111-1111'),\n(172,'V Two','V SN2222-2222 V'),\n(173,'V Three','SN3333-3333.'),\n(174,'V Four','4SN4444-4444'),\n(175,'V Five','SNSN5555-5555'),\n(176,'V Six','SN6666-6666 SN7777-7777');"
+      ],
+      "expected": [
+        [
+          171,
+          "V One",
+          "SN1111-1111"
+        ],
+        [
+          172,
+          "V Two",
+          "V SN2222-2222 V"
+        ],
+        [
+          173,
+          "V Three",
+          "SN3333-3333."
+        ],
+        [
+          174,
+          "V Four",
+          "4SN4444-4444"
+        ],
+        [
+          175,
+          "V Five",
+          "SNSN5555-5555"
+        ],
+        [
+          176,
+          "V Six",
+          "SN6666-6666 SN7777-7777"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO products VALUES\n(201,'M 01','SN1234-5678 valid'),\n(202,'M 02','SN1234-56789 invalid'),\n(203,'M 03','no serial'),\n(204,'M 04','SN0987-6543.'),\n(205,'M 05','sn0987-6543'),\n(206,'M 06','SN0987-654'),\n(207,'M 07','XSN1111-0000X'),\n(208,'M 08','SN0000-0000SN1111-1111'),\n(209,'M 09','serial: SN5:5'),\n(210,'M 10','SN5-5'),\n(211,'M 11','SN1234-5678 trailing space '),\n(212,'M 12','SN 1234-5678'),\n(213,'M 13','prefix SN8765-4321 suffix'),\n(214,'M 14','SN8765-4321'),\n(215,'M 15','SNSN1234-56789'),\n(216,'M 16','SNSN1234-5678'),\n(217,'M 17',''),\n(218,'M 18','SN12345-6789'),\n(219,'M 19','then SN2468-1357 and SN1357-2468'),\n(220,'M 20','SN2468-13579 then SN1357-2468'),\n(221,'M 21','9SN9999-9999 9'),\n(222,'M 22','SN9999-9999 9'),\n(223,'M 23','Item SNABCD-EFGH test'),\n(224,'M 24','Item SN1234-5678-5678');"
+      ],
+      "expected": [
+        [
+          201,
+          "M 01",
+          "SN1234-5678 valid"
+        ],
+        [
+          204,
+          "M 04",
+          "SN0987-6543."
+        ],
+        [
+          207,
+          "M 07",
+          "XSN1111-0000X"
+        ],
+        [
+          208,
+          "M 08",
+          "SN0000-0000SN1111-1111"
+        ],
+        [
+          211,
+          "M 11",
+          "SN1234-5678 trailing space "
+        ],
+        [
+          213,
+          "M 13",
+          "prefix SN8765-4321 suffix"
+        ],
+        [
+          214,
+          "M 14",
+          "SN8765-4321"
+        ],
+        [
+          216,
+          "M 16",
+          "SNSN1234-5678"
+        ],
+        [
+          219,
+          "M 19",
+          "then SN2468-1357 and SN1357-2468"
+        ],
+        [
+          220,
+          "M 20",
+          "SN2468-13579 then SN1357-2468"
+        ],
+        [
+          221,
+          "M 21",
+          "9SN9999-9999 9"
+        ],
+        [
+          222,
+          "M 22",
+          "SN9999-9999 9"
+        ],
+        [
+          224,
+          "M 24",
+          "Item SN1234-5678-5678"
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    }
+  ]
+}

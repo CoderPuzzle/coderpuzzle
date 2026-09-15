@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1772,
+  "slug": "sort-features-by-popularity",
+  "title": "Sort Features by Popularity",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sortFeatures",
+    "parameters": [
+      {
+        "name": "features",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "responses",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "sortFeatures",
+      "rust": "sort_features",
+      "typescript": "sortFeatures"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1213,
+  "slug": "intersection-of-three-sorted-arrays",
+  "title": "Intersection of Three Sorted Arrays",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Counting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "arraysIntersection",
+    "parameters": [
+      {
+        "name": "arr1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "arr2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "arr3",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "arraysIntersection",
+      "rust": "arrays_intersection",
+      "typescript": "arraysIntersection"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

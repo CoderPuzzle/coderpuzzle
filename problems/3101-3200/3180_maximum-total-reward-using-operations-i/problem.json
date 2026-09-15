@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3180,
+  "slug": "maximum-total-reward-using-operations-i",
+  "title": "Maximum Total Reward Using Operations I",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxTotalReward",
+    "parameters": [
+      {
+        "name": "rewardValues",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxTotalReward",
+      "rust": "max_total_reward",
+      "typescript": "maxTotalReward"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

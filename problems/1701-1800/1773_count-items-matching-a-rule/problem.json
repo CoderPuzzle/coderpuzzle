@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1773,
+  "slug": "count-items-matching-a-rule",
+  "title": "Count Items Matching a Rule",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "topics": [
+    "Array",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countMatches",
+    "parameters": [
+      {
+        "name": "items",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "ruleKey",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "ruleValue",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countMatches",
+      "rust": "count_matches",
+      "typescript": "countMatches"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 360,
+  "slug": "sort-transformed-array",
+  "title": "Sort Transformed Array",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sortTransformedArray",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "a",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "b",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "c",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "sortTransformedArray",
+      "rust": "sort_transformed_array",
+      "typescript": "sortTransformedArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

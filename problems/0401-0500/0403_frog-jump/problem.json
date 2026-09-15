@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 403,
+  "slug": "frog-jump",
+  "title": "Frog Jump",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canCross",
+    "parameters": [
+      {
+        "name": "stones",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 64
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canCross",
+      "rust": "can_cross",
+      "typescript": "canCross"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

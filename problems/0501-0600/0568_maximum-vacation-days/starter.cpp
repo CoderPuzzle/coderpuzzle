@@ -1,0 +1,4 @@
+class Solution {
+  public:
+    int maxVacationDays(vector<vector<int>> &flights, vector<vector<int>> &days) { throw logic_error("TODO"); }
+};

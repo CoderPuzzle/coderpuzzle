@@ -1,0 +1,93 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+
+    private static final long MOD = 1_000_000_007L;
+
+    private long[] multiply(long[] a, long[] b) {
+        return new long[] {
+            (a[0] * b[0] + a[1] * b[2]) % MOD,
+            (a[0] * b[1] + a[1] * b[3]) % MOD,
+            (a[2] * b[0] + a[3] * b[2]) % MOD,
+            (a[2] * b[1] + a[3] * b[3]) % MOD,
+        };
+    }
+
+    public int distinctPaths(int n, int[] parent, int[][] gates, int[][] queries) {
+        int levels = 1;
+        while (1 << levels <= n) levels++;
+        List<Integer>[] children = new ArrayList[n];
+        for (int i = 0; i < n; i++) children[i] = new ArrayList<>();
+        for (int node = 1; node < n; node++) children[parent[node]].add(node);
+        int[] depth = new int[n];
+        int[] order = new int[n];
+        int size = 1;
+        for (int i = 0; i < size; i++) {
+            int node = order[i];
+            for (int child : children[node]) {
+                depth[child] = depth[node] + 1;
+                order[size++] = child;
+            }
+        }
+        int[][] up = new int[levels][n];
+        long[][][] matrices = new long[levels][n][4];
+        for (int level = 0; level < levels; level++) {
+            for (int node = 0; node < n; node++) {
+                matrices[level][node] = new long[] { 1, 0, 0, 1 };
+            }
+        }
+        for (int node = 1; node < n; node++) {
+            up[0][node] = parent[node];
+            matrices[0][node] = new long[] { gates[node][1], gates[node][2], gates[node][2], gates[node][0] };
+        }
+        for (int level = 1; level < levels; level++) {
+            for (int node = 0; node < n; node++) {
+                int middle = up[level - 1][node];
+                up[level][node] = up[level - 1][middle];
+                matrices[level][node] = multiply(matrices[level - 1][node], matrices[level - 1][middle]);
+            }
+        }
+        int answer = 0;
+        for (int[] query : queries) {
+            int stop = lca(query[0], query[2], depth, up, levels);
+            answer ^=
+                (ways(query[0], query[1], stop, depth, up, matrices, levels) *
+                    ways(query[2], query[3], stop, depth, up, matrices, levels)) %
+                MOD;
+        }
+        return answer;
+    }
+
+    private int lca(int a, int b, int[] depth, int[][] up, int levels) {
+        if (depth[a] < depth[b]) {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+        int difference = depth[a] - depth[b];
+        for (int level = 0; level < levels; level++) {
+            if (((difference >> level) & 1) != 0) a = up[level][a];
+        }
+        if (a == b) return a;
+        for (int level = levels - 1; level >= 0; level--) {
+            if (up[level][a] != up[level][b]) {
+                a = up[level][a];
+                b = up[level][b];
+            }
+        }
+        return up[0][a];
+    }
+
+    private long ways(int node, int card, int stop, int[] depth, int[][] up, long[][][] matrices, int levels) {
+        long[] value = { 1, 0, 0, 1 };
+        int difference = depth[node] - depth[stop];
+        for (int level = levels - 1; level >= 0; level--) {
+            if (((difference >> level) & 1) != 0) {
+                value = multiply(value, matrices[level][node]);
+                node = up[level][node];
+            }
+        }
+        return (card == 0 ? value[0] + value[1] : value[2] + value[3]) % MOD;
+    }
+}

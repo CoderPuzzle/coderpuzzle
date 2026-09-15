@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1620,
+  "slug": "coordinate-with-maximum-network-quality",
+  "title": "Coordinate With Maximum Network Quality",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "bestCoordinate",
+    "parameters": [
+      {
+        "name": "towers",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "radius",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "bestCoordinate",
+      "rust": "best_coordinate",
+      "typescript": "bestCoordinate"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

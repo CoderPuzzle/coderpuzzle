@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 247,
+  "slug": "strobogrammatic-number-ii",
+  "title": "Strobogrammatic Number II",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Recursion"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Recursion"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findStrobogrammatic",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "findStrobogrammatic",
+      "rust": "find_strobogrammatic",
+      "typescript": "findStrobogrammatic"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

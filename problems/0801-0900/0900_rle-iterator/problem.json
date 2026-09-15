@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 900,
+  "slug": "rle-iterator",
+  "title": "RLE Iterator",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Design",
+    "Counting",
+    "Iterator"
+  ],
+  "topics": [
+    "Array",
+    "Design",
+    "Counting",
+    "Iterator"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "RLEIterator",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "encoding",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "next",
+        "parameters": [
+          {
+            "name": "n",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

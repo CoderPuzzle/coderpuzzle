@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2202,
+  "slug": "maximize-the-topmost-element-after-k-moves",
+  "title": "Maximize the Topmost Element After K Moves",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumTop",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumTop",
+      "rust": "maximum_top",
+      "typescript": "maximumTop"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

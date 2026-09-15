@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    ListNode *mergeTwoLists(ListNode *list1, ListNode *list2) {
+        // Base case: an empty list is already sorted, so the other list —
+        // whatever remains of it — is the merged continuation as is.
+        if (list1 == nullptr) {
+            return list2;
+        }
+        if (list2 == nullptr) {
+            return list1;
+        }
+        // The smaller head stands in front; the recursion merges what follows
+        // it with the untouched other list. <= keeps list1 first on ties,
+        // matching the iterative merge's stability.
+        if (list1->val <= list2->val) {
+            list1->next = mergeTwoLists(list1->next, list2);
+            return list1;
+        }
+        list2->next = mergeTwoLists(list1, list2->next);
+        return list2;
+    }
+};

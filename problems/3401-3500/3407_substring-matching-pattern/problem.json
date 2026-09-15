@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3407,
+  "slug": "substring-matching-pattern",
+  "title": "Substring Matching Pattern",
+  "difficulty": "Easy",
+  "tags": [
+    "String",
+    "String Matching"
+  ],
+  "topics": [
+    "String",
+    "String Matching"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "hasMatch",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "p",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "hasMatch",
+      "rust": "has_match",
+      "typescript": "hasMatch"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

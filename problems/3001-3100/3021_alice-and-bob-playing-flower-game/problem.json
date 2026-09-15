@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3021,
+  "slug": "alice-and-bob-playing-flower-game",
+  "title": "Alice and Bob Playing Flower Game",
+  "difficulty": "Medium",
+  "tags": [
+    "Math"
+  ],
+  "topics": [
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "flowerGame",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "m",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "flowerGame",
+      "rust": "flower_game",
+      "typescript": "flowerGame"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

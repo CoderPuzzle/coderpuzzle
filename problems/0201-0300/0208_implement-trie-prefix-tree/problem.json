@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "reference_solution": "trie",
+  "id": 208,
+  "slug": "implement-trie-prefix-tree",
+  "title": "Implement Trie (Prefix Tree)",
+  "difficulty": "Medium",
+  "tags": [
+    "Trie",
+    "Hash Table"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Design",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Trie",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "insert",
+        "parameters": [
+          {
+            "name": "word",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "search",
+        "parameters": [
+          {
+            "name": "word",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "startsWith",
+        "parameters": [
+          {
+            "name": "prefix",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

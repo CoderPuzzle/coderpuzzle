@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1015,
+  "slug": "smallest-integer-divisible-by-k",
+  "title": "Smallest Integer Divisible by K",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Math",
+    "Pigeonhole Principle"
+  ],
+  "topics": [
+    "Hash Table",
+    "Math",
+    "Pigeonhole Principle"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "smallestRepunitDivByK",
+    "parameters": [
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "smallestRepunitDivByK",
+      "rust": "smallest_repunit_div_by_k",
+      "typescript": "smallestRepunitDivByK"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

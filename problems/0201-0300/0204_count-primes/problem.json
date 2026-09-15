@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "linear_sieve",
+  "id": 204,
+  "slug": "count-primes",
+  "title": "Count Primes",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Number Theory"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Enumeration",
+    "Number Theory",
+    "Primality Test",
+    "Sieve Theory",
+    "Prime Number Sieve"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countPrimes",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countPrimes",
+      "rust": "count_primes",
+      "typescript": "countPrimes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

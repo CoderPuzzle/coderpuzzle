@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1847,
+  "slug": "closest-room",
+  "title": "Closest Room",
+  "difficulty": "Hard",
+  "tags": [
+    "Sorting",
+    "Binary Search"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Sorting",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "closestRoom",
+    "parameters": [
+      {
+        "name": "rooms",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "closestRoom",
+      "rust": "closest_room",
+      "typescript": "closestRoom"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

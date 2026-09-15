@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1359,
+  "slug": "count-all-valid-pickup-and-delivery-options",
+  "title": "Count All Valid Pickup and Delivery Options",
+  "difficulty": "Hard",
+  "tags": [
+    "Combinatorics",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countOrders",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countOrders",
+      "rust": "count_orders",
+      "typescript": "countOrders"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1,'2019-01-21',2,2000),\n(1,2,2,'2019-02-17',1,800),\n(2,2,3,'2019-06-02',1,800),\n(3,3,4,'2019-05-13',2,2800);\nINSERT INTO Product VALUES\n(1,'S8',1000),\n(2,'G4',800),\n(3,'iPhone',1400);"
+      ],
+      "expected": [
+        [
+          1,
+          "S8"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1,'2019-02-15',1,100);\nINSERT INTO Product VALUES\n(1,'S8',1000),\n(2,'G4',800);"
+      ],
+      "expected": [
+        [
+          1,
+          "S8"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1,'2019-02-15',1,100),\n(1,1,1,'2019-05-01',1,100);\nINSERT INTO Product VALUES\n(1,'S8',1000),\n(2,'G4',800);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1,'2019-05-01',1,100);\nINSERT INTO Product VALUES\n(1,'S8',1000),\n(2,'G4',800);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,2,1,'2019-02-01',1,100);\nINSERT INTO Product VALUES\n(1,'S8',1000),\n(2,'G4',800),\n(3,'iPhone',1400);"
+      ],
+      "expected": [
+        [
+          2,
+          "G4"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1,'2019-03-31',1,100);\nINSERT INTO Product VALUES\n(1,'S8',1000);"
+      ],
+      "expected": [
+        [
+          1,
+          "S8"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1,'2019-01-01',1,100);\nINSERT INTO Product VALUES\n(1,'S8',1000);"
+      ],
+      "expected": [
+        [
+          1,
+          "S8"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1,'2018-12-31',1,100),\n(1,1,1,'2019-02-01',1,100);\nINSERT INTO Product VALUES\n(1,'S8',1000),\n(2,'G4',800);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1,'2019-02-01',1,100),\n(1,1,1,'2019-04-01',1,100);\nINSERT INTO Product VALUES\n(1,'S8',1000),\n(2,'G4',800);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1,'2019-02-01',1,100),\n(2,2,2,'2019-03-01',1,80);\nINSERT INTO Product VALUES\n(1,'S8',1000),\n(2,'G4',800),\n(3,'iPhone',1400);"
+      ],
+      "expected": [
+        [
+          1,
+          "S8"
+        ],
+        [
+          2,
+          "G4"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1,'2019-02-01',1,100),\n(2,1,2,'2019-02-02',1,100);\nINSERT INTO Product VALUES\n(1,'S8',1000);"
+      ],
+      "expected": [
+        [
+          1,
+          "S8"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Product VALUES\n(1,'S8',1000),\n(2,'G4',800),\n(3,'iPhone',1400);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1,'2018-06-01',1,100),\n(2,1,2,'2019-02-01',1,100),\n(3,2,3,'2019-03-01',1,80);\nINSERT INTO Product VALUES\n(1,'S8',1000),\n(2,'G4',800),\n(3,'iPhone',1400);"
+      ],
+      "expected": [
+        [
+          2,
+          "G4"
+        ]
+      ]
+    }
+  ]
+}

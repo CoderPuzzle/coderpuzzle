@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3805,
+  "slug": "count-caesar-cipher-pairs",
+  "title": "Count Caesar Cipher Pairs",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "String",
+    "Counting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "String",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countPairs",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "countPairs",
+      "rust": "count_pairs",
+      "typescript": "countPairs"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

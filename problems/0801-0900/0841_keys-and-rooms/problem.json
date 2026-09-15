@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 841,
+  "slug": "keys-and-rooms",
+  "title": "Keys and Rooms",
+  "difficulty": "Medium",
+  "tags": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory"
+  ],
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canVisitAllRooms",
+    "parameters": [
+      {
+        "name": "rooms",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canVisitAllRooms",
+      "rust": "can_visit_all_rooms",
+      "typescript": "canVisitAllRooms"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

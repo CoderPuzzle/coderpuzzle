@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3279,
+  "slug": "maximum-total-area-occupied-by-pistons",
+  "title": "Maximum Total Area Occupied by Pistons",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Simulation",
+    "Counting",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Simulation",
+    "Counting",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxArea",
+    "parameters": [
+      {
+        "name": "height",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "positions",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "directions",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "maxArea",
+      "rust": "max_area",
+      "typescript": "maxArea"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

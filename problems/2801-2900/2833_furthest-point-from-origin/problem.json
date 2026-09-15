@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2833,
+  "slug": "furthest-point-from-origin",
+  "title": "Furthest Point From Origin",
+  "difficulty": "Easy",
+  "tags": [
+    "String",
+    "Counting"
+  ],
+  "topics": [
+    "String",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "furthestDistanceFromOrigin",
+    "parameters": [
+      {
+        "name": "moves",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "furthestDistanceFromOrigin",
+      "rust": "furthest_distance_from_origin",
+      "typescript": "furthestDistanceFromOrigin"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

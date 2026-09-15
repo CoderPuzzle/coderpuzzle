@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1879,
+  "slug": "minimum-xor-sum-of-two-arrays",
+  "title": "Minimum XOR Sum of Two Arrays",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Bitmask",
+    "Hungarian Algorithm",
+    "Bipartite Graph",
+    "Successive Shortest Path Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumXORSum",
+    "parameters": [
+      {
+        "name": "nums1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumXORSum",
+      "rust": "minimum_xor_sum",
+      "typescript": "minimumXORSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

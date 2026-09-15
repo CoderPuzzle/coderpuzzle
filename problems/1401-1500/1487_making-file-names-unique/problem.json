@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1487,
+  "slug": "making-file-names-unique",
+  "title": "Making File Names Unique",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getFolderNames",
+    "parameters": [
+      {
+        "name": "names",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "getFolderNames",
+      "rust": "get_folder_names",
+      "typescript": "getFolderNames"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

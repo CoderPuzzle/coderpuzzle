@@ -1,0 +1,3 @@
+function triangularSum(nums: number[]): number {
+    throw new Error("TODO");
+}

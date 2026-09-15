@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1764,
+  "slug": "form-array-by-concatenating-subarrays-of-another-array",
+  "title": "Form Array by Concatenating Subarrays of Another Array",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Greedy",
+    "String Matching",
+    "Knuth–Morris–Pratt Algorithm"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Greedy",
+    "String Matching",
+    "Knuth–Morris–Pratt Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canChoose",
+    "parameters": [
+      {
+        "name": "groups",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canChoose",
+      "rust": "can_choose",
+      "typescript": "canChoose"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

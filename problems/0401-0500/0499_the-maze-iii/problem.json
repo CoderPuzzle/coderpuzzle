@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 499,
+  "slug": "the-maze-iii",
+  "title": "The Maze III",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Shortest Path",
+    "Dijkstra's Algorithm",
+    "Heuristic Search",
+    "A* Search"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Shortest Path",
+    "Dijkstra's Algorithm",
+    "Heuristic Search",
+    "A* Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findShortestWay",
+    "parameters": [
+      {
+        "name": "maze",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "ball",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "hole",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "findShortestWay",
+      "rust": "find_shortest_way",
+      "typescript": "findShortestWay"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3869,
+  "slug": "count-fancy-numbers-in-a-range",
+  "title": "Count Fancy Numbers in a Range",
+  "difficulty": "Hard",
+  "tags": [
+    "Math",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countFancy",
+    "parameters": [
+      {
+        "name": "l",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "r",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "countFancy",
+      "rust": "count_fancy",
+      "typescript": "countFancy"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1456,
+  "slug": "maximum-number-of-vowels-in-a-substring-of-given-length",
+  "title": "Maximum Number of Vowels in a Substring of Given Length",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Sliding Window"
+  ],
+  "topics": [
+    "String",
+    "Sliding Window"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxVowels",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxVowels",
+      "rust": "max_vowels",
+      "typescript": "maxVowels"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

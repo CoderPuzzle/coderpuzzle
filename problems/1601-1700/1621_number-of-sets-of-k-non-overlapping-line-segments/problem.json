@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1621,
+  "slug": "number-of-sets-of-k-non-overlapping-line-segments",
+  "title": "Number of Sets of K Non-Overlapping Line Segments",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberOfSets",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numberOfSets",
+      "rust": "number_of_sets",
+      "typescript": "numberOfSets"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

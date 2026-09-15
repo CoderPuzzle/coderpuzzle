@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1101,
+  "slug": "the-earliest-moment-when-everyone-become-friends",
+  "title": "The Earliest Moment When Everyone Become Friends",
+  "difficulty": "Medium",
+  "tags": [
+    "Union Find",
+    "Sorting",
+    "Graph"
+  ],
+  "topics": [
+    "Array",
+    "Union-Find",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "earliestAcq",
+    "parameters": [
+      {
+        "name": "logs",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "earliestAcq",
+      "rust": "earliest_acq",
+      "typescript": "earliestAcq"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

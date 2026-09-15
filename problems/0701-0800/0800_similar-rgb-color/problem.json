@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 800,
+  "slug": "similar-rgb-color",
+  "title": "Similar RGB Color",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "String",
+    "Enumeration"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "similarRGB",
+    "parameters": [
+      {
+        "name": "color",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "similarRGB",
+      "rust": "similar_rgb",
+      "typescript": "similarRGB"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

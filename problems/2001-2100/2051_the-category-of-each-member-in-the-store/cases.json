@@ -1,0 +1,236 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(9,'Alice'),\n(11,'Bob'),\n(3,'Winston'),\n(8,'Hercy'),\n(1,'Narihan');\nINSERT INTO Visits VALUES\n(22,11,'2021-10-28'),\n(16,11,'2021-01-12'),\n(18,9,'2021-12-10'),\n(19,3,'2021-10-19'),\n(12,11,'2021-03-01'),\n(17,8,'2021-05-07'),\n(21,9,'2021-05-12');\nINSERT INTO Purchases VALUES\n(12,2000),\n(18,9000),\n(17,7000);"
+      ],
+      "expected": [
+        [
+          9,
+          "Alice",
+          "Gold"
+        ],
+        [
+          11,
+          "Bob",
+          "Silver"
+        ],
+        [
+          3,
+          "Winston",
+          "Silver"
+        ],
+        [
+          8,
+          "Hercy",
+          "Diamond"
+        ],
+        [
+          1,
+          "Narihan",
+          "Bronze"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(1,'BronzeOnly');\nINSERT INTO Visits SELECT NULL, NULL, NULL WHERE 0;\nINSERT INTO Purchases SELECT NULL, NULL WHERE 0;"
+      ],
+      "expected": [
+        [
+          1,
+          "BronzeOnly",
+          "Bronze"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(2,'WindowShopper');\nINSERT INTO Visits VALUES\n(10,2,'2021-01-01'),\n(11,2,'2021-01-02'),\n(12,2,'2021-01-03'),\n(13,2,'2021-01-04');\nINSERT INTO Purchases SELECT NULL, NULL WHERE 0;"
+      ],
+      "expected": [
+        [
+          2,
+          "WindowShopper",
+          "Silver"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(3,'ExactFifty');\nINSERT INTO Visits VALUES\n(20,3,'2021-01-01'),\n(21,3,'2021-01-02');\nINSERT INTO Purchases VALUES\n(20,25);"
+      ],
+      "expected": [
+        [
+          3,
+          "ExactFifty",
+          "Gold"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(4,'BelowFifty');\nINSERT INTO Visits VALUES\n(30,4,'2021-01-01'),\n(31,4,'2021-01-02'),\n(32,4,'2021-01-03');\nINSERT INTO Purchases VALUES\n(32,50);"
+      ],
+      "expected": [
+        [
+          4,
+          "BelowFifty",
+          "Silver"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(5,'AboveFifty');\nINSERT INTO Visits VALUES\n(40,5,'2021-01-01'),\n(41,5,'2021-01-02'),\n(42,5,'2021-01-03'),\n(43,5,'2021-01-04'),\n(44,5,'2021-01-05');\nINSERT INTO Purchases VALUES\n(40,1),\n(42,2),\n(44,3);"
+      ],
+      "expected": [
+        [
+          5,
+          "AboveFifty",
+          "Gold"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(6,'ExactEighty');\nINSERT INTO Visits VALUES\n(50,6,'2021-01-01'),\n(51,6,'2021-01-02'),\n(52,6,'2021-01-03'),\n(53,6,'2021-01-04'),\n(54,6,'2021-01-05');\nINSERT INTO Purchases VALUES\n(50,1),\n(51,1),\n(52,1),\n(53,1);"
+      ],
+      "expected": [
+        [
+          6,
+          "ExactEighty",
+          "Diamond"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(7,'BelowEighty');\nINSERT INTO Visits VALUES\n(60,7,'2021-01-01'),\n(61,7,'2021-01-02'),\n(62,7,'2021-01-03'),\n(63,7,'2021-01-04'),\n(64,7,'2021-01-05'),\n(65,7,'2021-01-06'),\n(66,7,'2021-01-07'),\n(67,7,'2021-01-08'),\n(68,7,'2021-01-09');\nINSERT INTO Purchases VALUES\n(60,1),\n(61,1),\n(62,1),\n(63,1),\n(64,1),\n(65,1),\n(66,1);"
+      ],
+      "expected": [
+        [
+          7,
+          "BelowEighty",
+          "Gold"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(8,'AboveEighty');\nINSERT INTO Visits VALUES\n(70,8,'2021-01-01'),\n(71,8,'2021-01-02'),\n(72,8,'2021-01-03'),\n(73,8,'2021-01-04'),\n(74,8,'2021-01-05'),\n(75,8,'2021-01-06');\nINSERT INTO Purchases VALUES\n(70,1),\n(71,1),\n(72,1),\n(73,1),\n(74,1);"
+      ],
+      "expected": [
+        [
+          8,
+          "AboveEighty",
+          "Diamond"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(10,'Bronze'),\n(11,'Silver'),\n(12,'Gold'),\n(13,'Diamond');\nINSERT INTO Visits VALUES\n(100,11,'2021-01-01'),\n(101,11,'2021-01-02'),\n(102,11,'2021-01-03'),\n(110,12,'2021-01-01'),\n(111,12,'2021-01-02'),\n(120,13,'2021-01-01'),\n(121,13,'2021-01-02'),\n(122,13,'2021-01-03'),\n(123,13,'2021-01-04');\nINSERT INTO Purchases VALUES\n(100,10),\n(110,10),\n(120,10),\n(121,10),\n(122,10),\n(123,10);"
+      ],
+      "expected": [
+        [
+          10,
+          "Bronze",
+          "Bronze"
+        ],
+        [
+          11,
+          "Silver",
+          "Silver"
+        ],
+        [
+          12,
+          "Gold",
+          "Gold"
+        ],
+        [
+          13,
+          "Diamond",
+          "Diamond"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(20,'ZeroCharge'),\n(21,'HugeCharge');\nINSERT INTO Visits VALUES\n(200,20,'2022-02-01'),\n(201,21,'2022-02-02');\nINSERT INTO Purchases VALUES\n(200,0),\n(201,1000000000000);"
+      ],
+      "expected": [
+        [
+          20,
+          "ZeroCharge",
+          "Diamond"
+        ],
+        [
+          21,
+          "HugeCharge",
+          "Diamond"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(35,'Zelda'),\n(31,'O''Brien'),\n(33,'Ana Maria');\nINSERT INTO Visits VALUES\n(310,31,'2020-05-01'),\n(311,31,'2020-05-02'),\n(330,33,'2020-06-01');\nINSERT INTO Purchases VALUES\n(311,75);"
+      ],
+      "expected": [
+        [
+          35,
+          "Zelda",
+          "Bronze"
+        ],
+        [
+          31,
+          "O'Brien",
+          "Gold"
+        ],
+        [
+          33,
+          "Ana Maria",
+          "Silver"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(40,'Scrambled');\nINSERT INTO Visits VALUES\n(403,40,'2023-03-03'),\n(401,40,'2023-03-01'),\n(402,40,'2023-03-02');\nINSERT INTO Purchases VALUES\n(402,9),\n(401,8);"
+      ],
+      "expected": [
+        [
+          40,
+          "Scrambled",
+          "Gold"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(50,'Frequent');\nINSERT INTO Visits VALUES\n(500,50,'2021-01-01'),\n(501,50,'2021-01-02'),\n(502,50,'2021-01-03'),\n(503,50,'2021-01-04'),\n(504,50,'2021-01-05'),\n(505,50,'2021-01-06'),\n(506,50,'2021-01-07'),\n(507,50,'2021-01-08'),\n(508,50,'2021-01-09'),\n(509,50,'2021-01-10'),\n(510,50,'2021-01-11'),\n(511,50,'2021-01-12'),\n(512,50,'2021-01-13'),\n(513,50,'2021-01-14'),\n(514,50,'2021-01-15'),\n(515,50,'2021-01-16'),\n(516,50,'2021-01-17'),\n(517,50,'2021-01-18'),\n(518,50,'2021-01-19'),\n(519,50,'2021-01-20');\nINSERT INTO Purchases VALUES\n(519,0),\n(517,1),\n(515,2),\n(513,3),\n(511,4),\n(509,5),\n(507,6),\n(505,7),\n(503,8),\n(501,9);"
+      ],
+      "expected": [
+        [
+          50,
+          "Frequent",
+          "Gold"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Members VALUES\n(60,'AlwaysBuys');\nINSERT INTO Visits VALUES\n(600,60,'2021-01-01'),\n(601,60,'2021-01-02'),\n(602,60,'2021-01-03'),\n(603,60,'2021-01-04'),\n(604,60,'2021-01-05'),\n(605,60,'2021-01-06'),\n(606,60,'2021-01-07'),\n(607,60,'2021-01-08'),\n(608,60,'2021-01-09'),\n(609,60,'2021-01-10');\nINSERT INTO Purchases VALUES\n(609,0),\n(608,100),\n(607,200),\n(606,300),\n(605,400),\n(604,500),\n(603,600),\n(602,700),\n(601,800),\n(600,900);"
+      ],
+      "expected": [
+        [
+          60,
+          "AlwaysBuys",
+          "Diamond"
+        ]
+      ]
+    }
+  ]
+}

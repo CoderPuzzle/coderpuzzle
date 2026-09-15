@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3361,
+  "slug": "shift-distance-between-two-strings",
+  "title": "Shift Distance Between Two Strings",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "shiftDistance",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "t",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "nextCost",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "previousCost",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "shiftDistance",
+      "rust": "shift_distance",
+      "typescript": "shiftDistance"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

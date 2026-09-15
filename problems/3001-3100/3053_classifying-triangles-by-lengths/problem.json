@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3053,
+  "slug": "classifying-triangles-by-lengths",
+  "title": "Classifying Triangles by Lengths",
+  "difficulty": "Easy",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database",
+    "Polygons"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Triangles (A INTEGER, B INTEGER, C INTEGER);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

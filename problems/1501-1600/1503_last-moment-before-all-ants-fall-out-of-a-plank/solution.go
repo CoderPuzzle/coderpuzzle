@@ -1,0 +1,19 @@
+func getLastMoment(n int, left []int, right []int) int {
+	// Two ants bouncing off each other is indistinguishable from passing
+	// through while swapping identities; the plank empties at a time that
+	// depends only on positions, so collisions can be ignored.
+	best := 0
+	// A left-mover at position p needs p seconds to reach 0.
+	for _, position := range left {
+		if position > best {
+			best = position
+		}
+	}
+	// A right-mover at p needs n - p seconds to reach n.
+	for _, position := range right {
+		if n-position > best {
+			best = n - position
+		}
+	}
+	return best
+}

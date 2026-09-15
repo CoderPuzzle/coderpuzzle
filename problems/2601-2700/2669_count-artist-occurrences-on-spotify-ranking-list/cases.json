@@ -1,0 +1,423 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(303651,'Heart Won''t Forget','Sia'),\n(1046089,'Shape of you','Ed Sheeran'),\n(33445,'I''m the one','DJ Khalid'),\n(811266,'Young Dumb & Broke','DJ Khalid'),\n(505727,'Happier','Ed Sheeran');"
+      ],
+      "expected": [
+        [
+          "DJ Khalid",
+          2
+        ],
+        [
+          "Ed Sheeran",
+          2
+        ],
+        [
+          "Sia",
+          1
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(1,'Only One','Loner');"
+      ],
+      "expected": [
+        [
+          "Loner",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(11,'t1','Zed'),\n(12,'t2','Max'),\n(13,'t3','Abe'),\n(14,'t4','Nia');"
+      ],
+      "expected": [
+        [
+          "Abe",
+          1
+        ],
+        [
+          "Max",
+          1
+        ],
+        [
+          "Nia",
+          1
+        ],
+        [
+          "Zed",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(21,'a','Band A'),\n(22,'b','Band B'),\n(23,'c','Band C'),\n(24,'d','Band B'),\n(25,'e','Band A'),\n(26,'f','Band C');"
+      ],
+      "expected": [
+        [
+          "Band A",
+          2
+        ],
+        [
+          "Band B",
+          2
+        ],
+        [
+          "Band C",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(31,'hit 0','The Giant'),\n(32,'hit 1','The Giant'),\n(33,'hit 2','The Giant'),\n(34,'hit 3','The Giant'),\n(35,'hit 4','The Giant'),\n(36,'hit 5','The Giant'),\n(37,'hit 6','The Giant'),\n(38,'hit 7','The Giant'),\n(39,'hit 8','The Giant'),\n(40,'other','Small Act'),\n(41,'again','The Giant');"
+      ],
+      "expected": [
+        [
+          "The Giant",
+          10
+        ],
+        [
+          "Small Act",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(51,'x','sia'),\n(52,'y','Sia'),\n(53,'z','SIA'),\n(54,'w','Sia');"
+      ],
+      "expected": [
+        [
+          "Sia",
+          2
+        ],
+        [
+          "SIA",
+          1
+        ],
+        [
+          "sia",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(61,'Encore','Repeaters'),\n(62,'Encore','Repeaters'),\n(63,'Encore','Repeaters'),\n(64,'Once','Oneshot');"
+      ],
+      "expected": [
+        [
+          "Repeaters",
+          3
+        ],
+        [
+          "Oneshot",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(71,'Won''t Stop','O''Brien Crew'),\n(72,'Rock & Roll','Ampers&nd'),\n(73,'It''s Fine','O''Brien Crew'),\n(74,'&','Ampers&nd');"
+      ],
+      "expected": [
+        [
+          "Ampers&nd",
+          2
+        ],
+        [
+          "O'Brien Crew",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(81,'s0','Delta'),\n(82,'s1','Delta'),\n(83,'s2','Delta'),\n(84,'s3','Delta'),\n(91,'r0','Charlie'),\n(92,'r1','Charlie'),\n(93,'r2','Charlie'),\n(101,'q0','Bravo'),\n(102,'q1','Bravo'),\n(111,'p0','Alpha');"
+      ],
+      "expected": [
+        [
+          "Delta",
+          4
+        ],
+        [
+          "Charlie",
+          3
+        ],
+        [
+          "Bravo",
+          2
+        ],
+        [
+          "Alpha",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(121,'a','Khaled'),\n(122,'b','Khaled '),\n(123,'c','Khaled');"
+      ],
+      "expected": [
+        [
+          "Khaled",
+          2
+        ],
+        [
+          "Khaled ",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(3000000000,'big one','Wide Ids'),\n(2147483648,'big two','Wide Ids'),\n(-5,'negative id row','Solo Negative');"
+      ],
+      "expected": [
+        [
+          "Wide Ids",
+          2
+        ],
+        [
+          "Solo Negative",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(200,'alt 0','Evens'),\n(201,'alt 1','Odds'),\n(202,'alt 2','Evens'),\n(203,'alt 3','Odds'),\n(204,'alt 4','Evens'),\n(205,'alt 5','Odds'),\n(206,'alt 6','Evens'),\n(207,'alt 7','Odds'),\n(208,'alt 8','Evens'),\n(209,'alt 9','Odds'),\n(210,'alt 10','Evens'),\n(211,'alt 11','Odds'),\n(212,'alt 12','Evens'),\n(213,'alt 13','Odds'),\n(214,'alt 14','Evens'),\n(215,'alt 15','Odds'),\n(216,'alt 16','Evens'),\n(217,'alt 17','Odds'),\n(218,'alt 18','Evens'),\n(219,'alt 19','Odds'),\n(220,'alt 20','Evens'),\n(221,'alt 21','Odds'),\n(222,'alt 22','Evens'),\n(223,'alt 23','Odds');"
+      ],
+      "expected": [
+        [
+          "Evens",
+          12
+        ],
+        [
+          "Odds",
+          12
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Spotify VALUES\n(1000,'song 1000','Artist_00'),\n(1003,'song 1003','Artist_00'),\n(1006,'song 1006','Artist_00'),\n(1009,'song 1009','Artist_00'),\n(1012,'song 1012','Artist_00'),\n(1015,'song 1015','Artist_00'),\n(1018,'song 1018','Artist_01'),\n(1021,'song 1021','Artist_01'),\n(1024,'song 1024','Artist_01'),\n(1027,'song 1027','Artist_02'),\n(1030,'song 1030','Artist_02'),\n(1033,'song 1033','Artist_02'),\n(1036,'song 1036','Artist_02'),\n(1039,'song 1039','Artist_03'),\n(1042,'song 1042','Artist_04'),\n(1045,'song 1045','Artist_04'),\n(1048,'song 1048','Artist_04'),\n(1051,'song 1051','Artist_04'),\n(1054,'song 1054','Artist_04'),\n(1057,'song 1057','Artist_04'),\n(1060,'song 1060','Artist_05'),\n(1063,'song 1063','Artist_05'),\n(1066,'song 1066','Artist_05'),\n(1069,'song 1069','Artist_05'),\n(1072,'song 1072','Artist_05'),\n(1075,'song 1075','Artist_06'),\n(1078,'song 1078','Artist_06'),\n(1081,'song 1081','Artist_06'),\n(1084,'song 1084','Artist_06'),\n(1087,'song 1087','Artist_06'),\n(1090,'song 1090','Artist_06'),\n(1093,'song 1093','Artist_07'),\n(1096,'song 1096','Artist_07'),\n(1099,'song 1099','Artist_07'),\n(1102,'song 1102','Artist_07'),\n(1105,'song 1105','Artist_07'),\n(1108,'song 1108','Artist_08'),\n(1111,'song 1111','Artist_08'),\n(1114,'song 1114','Artist_08'),\n(1117,'song 1117','Artist_08'),\n(1120,'song 1120','Artist_08'),\n(1123,'song 1123','Artist_08'),\n(1126,'song 1126','Artist_09'),\n(1129,'song 1129','Artist_10'),\n(1132,'song 1132','Artist_10'),\n(1135,'song 1135','Artist_10'),\n(1138,'song 1138','Artist_10'),\n(1141,'song 1141','Artist_11'),\n(1144,'song 1144','Artist_12'),\n(1147,'song 1147','Artist_12'),\n(1150,'song 1150','Artist_12'),\n(1153,'song 1153','Artist_12'),\n(1156,'song 1156','Artist_13'),\n(1159,'song 1159','Artist_14'),\n(1162,'song 1162','Artist_14'),\n(1165,'song 1165','Artist_14'),\n(1168,'song 1168','Artist_14'),\n(1171,'song 1171','Artist_15'),\n(1174,'song 1174','Artist_15'),\n(1177,'song 1177','Artist_15'),\n(1180,'song 1180','Artist_15'),\n(1183,'song 1183','Artist_15'),\n(1186,'song 1186','Artist_16'),\n(1189,'song 1189','Artist_16'),\n(1192,'song 1192','Artist_16'),\n(1195,'song 1195','Artist_16'),\n(1198,'song 1198','Artist_17'),\n(1201,'song 1201','Artist_18'),\n(1204,'song 1204','Artist_18'),\n(1207,'song 1207','Artist_19'),\n(1210,'song 1210','Artist_19'),\n(1213,'song 1213','Artist_19'),\n(1216,'song 1216','Artist_19'),\n(1219,'song 1219','Artist_19'),\n(1222,'song 1222','Artist_20'),\n(1225,'song 1225','Artist_20'),\n(1228,'song 1228','Artist_20'),\n(1231,'song 1231','Artist_20'),\n(1234,'song 1234','Artist_21'),\n(1237,'song 1237','Artist_21'),\n(1240,'song 1240','Artist_21'),\n(1243,'song 1243','Artist_22'),\n(1246,'song 1246','Artist_22'),\n(1249,'song 1249','Artist_22'),\n(1252,'song 1252','Artist_22'),\n(1255,'song 1255','Artist_23'),\n(1258,'song 1258','Artist_23'),\n(1261,'song 1261','Artist_23'),\n(1264,'song 1264','Artist_24'),\n(1267,'song 1267','Artist_24'),\n(1270,'song 1270','Artist_24'),\n(1273,'song 1273','Artist_24'),\n(1276,'song 1276','Artist_24'),\n(1279,'song 1279','Artist_24'),\n(1282,'song 1282','Artist_25'),\n(1285,'song 1285','Artist_26'),\n(1288,'song 1288','Artist_26'),\n(1291,'song 1291','Artist_26'),\n(1294,'song 1294','Artist_26'),\n(1297,'song 1297','Artist_26'),\n(1300,'song 1300','Artist_26'),\n(1303,'song 1303','Artist_27'),\n(1306,'song 1306','Artist_27'),\n(1309,'song 1309','Artist_27'),\n(1312,'song 1312','Artist_27'),\n(1315,'song 1315','Artist_27'),\n(1318,'song 1318','Artist_28'),\n(1321,'song 1321','Artist_28'),\n(1324,'song 1324','Artist_28'),\n(1327,'song 1327','Artist_28'),\n(1330,'song 1330','Artist_29'),\n(1333,'song 1333','Artist_29'),\n(1336,'song 1336','Artist_29'),\n(1339,'song 1339','Artist_29'),\n(1342,'song 1342','Artist_29'),\n(1345,'song 1345','Artist_30'),\n(1348,'song 1348','Artist_30'),\n(1351,'song 1351','Artist_30'),\n(1354,'song 1354','Artist_30'),\n(1357,'song 1357','Artist_30'),\n(1360,'song 1360','Artist_30'),\n(1363,'song 1363','Artist_31'),\n(1366,'song 1366','Artist_32'),\n(1369,'song 1369','Artist_32'),\n(1372,'song 1372','Artist_33'),\n(1375,'song 1375','Artist_34'),\n(1378,'song 1378','Artist_34'),\n(1381,'song 1381','Artist_34'),\n(1384,'song 1384','Artist_34'),\n(1387,'song 1387','Artist_34'),\n(1390,'song 1390','Artist_34'),\n(1393,'song 1393','Artist_35'),\n(1396,'song 1396','Artist_35'),\n(1399,'song 1399','Artist_35'),\n(1402,'song 1402','Artist_35'),\n(1405,'song 1405','Artist_35'),\n(1408,'song 1408','Artist_36'),\n(1411,'song 1411','Artist_36'),\n(1414,'song 1414','Artist_37'),\n(1417,'song 1417','Artist_37'),\n(1420,'song 1420','Artist_37'),\n(1423,'song 1423','Artist_38'),\n(1426,'song 1426','Artist_38'),\n(1429,'song 1429','Artist_38'),\n(1432,'song 1432','Artist_38'),\n(1435,'song 1435','Artist_38'),\n(1438,'song 1438','Artist_38'),\n(1441,'song 1441','Artist_39'),\n(1444,'song 1444','Artist_39'),\n(1447,'song 1447','Artist_39'),\n(1450,'song 1450','Artist_40'),\n(1453,'song 1453','Artist_40'),\n(1456,'song 1456','Artist_40'),\n(1459,'song 1459','Artist_40'),\n(1462,'song 1462','Artist_41'),\n(1465,'song 1465','Artist_41'),\n(1468,'song 1468','Artist_41'),\n(1471,'song 1471','Artist_41'),\n(1474,'song 1474','Artist_41'),\n(1477,'song 1477','Artist_42'),\n(1480,'song 1480','Artist_42'),\n(1483,'song 1483','Artist_42'),\n(1486,'song 1486','Artist_42'),\n(1489,'song 1489','Artist_43'),\n(1492,'song 1492','Artist_44'),\n(1495,'song 1495','Artist_44'),\n(1498,'song 1498','Artist_45'),\n(1501,'song 1501','Artist_45'),\n(1504,'song 1504','Artist_45'),\n(1507,'song 1507','Artist_45'),\n(1510,'song 1510','Artist_45'),\n(1513,'song 1513','Artist_46'),\n(1516,'song 1516','Artist_46'),\n(1519,'song 1519','Artist_46'),\n(1522,'song 1522','Artist_46'),\n(1525,'song 1525','Artist_47'),\n(1528,'song 1528','Artist_47'),\n(1531,'song 1531','Artist_47'),\n(1534,'song 1534','Artist_47'),\n(1537,'song 1537','Artist_47'),\n(1540,'song 1540','Artist_48'),\n(1543,'song 1543','Artist_48'),\n(1546,'song 1546','Artist_48'),\n(1549,'song 1549','Artist_48'),\n(1552,'song 1552','Artist_49'),\n(1555,'song 1555','Artist_49'),\n(1558,'song 1558','Artist_49'),\n(1561,'song 1561','Artist_49'),\n(1564,'song 1564','Artist_49');"
+      ],
+      "expected": [
+        [
+          "Artist_00",
+          6
+        ],
+        [
+          "Artist_04",
+          6
+        ],
+        [
+          "Artist_06",
+          6
+        ],
+        [
+          "Artist_08",
+          6
+        ],
+        [
+          "Artist_24",
+          6
+        ],
+        [
+          "Artist_26",
+          6
+        ],
+        [
+          "Artist_30",
+          6
+        ],
+        [
+          "Artist_34",
+          6
+        ],
+        [
+          "Artist_38",
+          6
+        ],
+        [
+          "Artist_05",
+          5
+        ],
+        [
+          "Artist_07",
+          5
+        ],
+        [
+          "Artist_15",
+          5
+        ],
+        [
+          "Artist_19",
+          5
+        ],
+        [
+          "Artist_27",
+          5
+        ],
+        [
+          "Artist_29",
+          5
+        ],
+        [
+          "Artist_35",
+          5
+        ],
+        [
+          "Artist_41",
+          5
+        ],
+        [
+          "Artist_45",
+          5
+        ],
+        [
+          "Artist_47",
+          5
+        ],
+        [
+          "Artist_49",
+          5
+        ],
+        [
+          "Artist_02",
+          4
+        ],
+        [
+          "Artist_10",
+          4
+        ],
+        [
+          "Artist_12",
+          4
+        ],
+        [
+          "Artist_14",
+          4
+        ],
+        [
+          "Artist_16",
+          4
+        ],
+        [
+          "Artist_20",
+          4
+        ],
+        [
+          "Artist_22",
+          4
+        ],
+        [
+          "Artist_28",
+          4
+        ],
+        [
+          "Artist_40",
+          4
+        ],
+        [
+          "Artist_42",
+          4
+        ],
+        [
+          "Artist_46",
+          4
+        ],
+        [
+          "Artist_48",
+          4
+        ],
+        [
+          "Artist_01",
+          3
+        ],
+        [
+          "Artist_21",
+          3
+        ],
+        [
+          "Artist_23",
+          3
+        ],
+        [
+          "Artist_37",
+          3
+        ],
+        [
+          "Artist_39",
+          3
+        ],
+        [
+          "Artist_18",
+          2
+        ],
+        [
+          "Artist_32",
+          2
+        ],
+        [
+          "Artist_36",
+          2
+        ],
+        [
+          "Artist_44",
+          2
+        ],
+        [
+          "Artist_03",
+          1
+        ],
+        [
+          "Artist_09",
+          1
+        ],
+        [
+          "Artist_11",
+          1
+        ],
+        [
+          "Artist_13",
+          1
+        ],
+        [
+          "Artist_17",
+          1
+        ],
+        [
+          "Artist_25",
+          1
+        ],
+        [
+          "Artist_31",
+          1
+        ],
+        [
+          "Artist_33",
+          1
+        ],
+        [
+          "Artist_43",
+          1
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 520,
+  "slug": "detect-capital",
+  "title": "Detect Capital",
+  "difficulty": "Easy",
+  "tags": [
+    "String"
+  ],
+  "topics": [
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "detectCapitalUse",
+    "parameters": [
+      {
+        "name": "word",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "detectCapitalUse",
+      "rust": "detect_capital_use",
+      "typescript": "detectCapitalUse"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('A','Math'),\n('B','English'),\n('C','Math'),\n('D','Biology'),\n('E','Math'),\n('F','Computer'),\n('G','Math'),\n('H','Math'),\n('I','Math');"
+      ],
+      "expected": [
+        [
+          "Math"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('Alice','Chem'),\n('Bob','Chem'),\n('Cara','Chem'),\n('Dmitri','Chem'),\n('Eve','Chem'),\n('Fay','Art'),\n('Gus','Art');"
+      ],
+      "expected": [
+        [
+          "Chem"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('Hal','Drama'),\n('Ivy','Drama'),\n('Joi','Drama'),\n('Kim','Drama'),\n('Lars','Pottery'),\n('Mona','Pottery'),\n('Ned','Pottery');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('Ann','Art'),\n('Ben','Band'),\n('Bea','Band'),\n('Cal','Chem'),\n('Cyd','Chem'),\n('Cleo','Chem'),\n('Dan','Drama'),\n('Dex','Drama'),\n('Dora','Drama'),\n('Drew','Drama'),\n('Eli','Ethics'),\n('Eva','Ethics'),\n('Erik','Ethics'),\n('Emma','Ethics'),\n('Ethan','Ethics'),\n('Fay','French'),\n('Finn','French'),\n('Fleur','French'),\n('Frank','French'),\n('Freya','French'),\n('Fiona','French');"
+      ],
+      "expected": [
+        [
+          "Ethics"
+        ],
+        [
+          "French"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('Gail','Math'),\n('Hank','Math'),\n('Iris','Math'),\n('Jack','Math'),\n('Kate','Orienteering'),\n('Liam','Orienteering'),\n('Mia','Pottery'),\n('Noah','Pottery'),\n('Omar','Pottery'),\n('Pia','Quiz');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('R2','Robotics'),\n('S3','Sculpture'),\n('T2','Theater'),\n('R5','Robotics'),\n('S2','Sculpture'),\n('R3','Robotics'),\n('T3','Theater'),\n('T5','Theater'),\n('S4','Sculpture'),\n('R4','Robotics'),\n('T6','Theater'),\n('T4','Theater'),\n('T1','Theater'),\n('S1','Sculpture'),\n('R1','Robotics');"
+      ],
+      "expected": [
+        [
+          "Robotics"
+        ],
+        [
+          "Theater"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('Quinn','Algebra'),\n('Rosa','Biology'),\n('Sam','Calculus'),\n('Tess','Debate'),\n('Uma','Ethics');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('A','Math'),\n('B','Math'),\n('C','Math'),\n('D','Math'),\n('E','Math'),\n('F','Math'),\n('A','Physics'),\n('B','Physics'),\n('C','Physics'),\n('D','Physics'),\n('E','Physics'),\n('F','Physics'),\n('A','CS'),\n('B','CS'),\n('C','CS');"
+      ],
+      "expected": [
+        [
+          "Math"
+        ],
+        [
+          "Physics"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('Zed','Math'),\n('m1','math'),\n('m2','math'),\n('m3','math'),\n('m4','math'),\n('m5','math'),\n('Yan','Math'),\n('Xiu','Math');"
+      ],
+      "expected": [
+        [
+          "math"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('a04','C01'),\n('a25','C08'),\n('a28','C08'),\n('a11','C03'),\n('a07','C02'),\n('a14','C03'),\n('a19','C05'),\n('a02','C01'),\n('a12','C03'),\n('a06','C02'),\n('a22','C06'),\n('a27','C08'),\n('a23','C07'),\n('a09','C03'),\n('a17','C05'),\n('a18','C05'),\n('a13','C03'),\n('a16','C05'),\n('a26','C08'),\n('a20','C06'),\n('a24','C07'),\n('a10','C03'),\n('a05','C01'),\n('a01','C01'),\n('a15','C04'),\n('a21','C06'),\n('a03','C01'),\n('a08','C03');"
+      ],
+      "expected": [
+        [
+          "C01"
+        ],
+        [
+          "C03"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('Yuki','Solo');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('s01','K01'),\n('s02','K02'),\n('s03','K02'),\n('s04','K03'),\n('s05','K03'),\n('s06','K03'),\n('s07','K04'),\n('s08','K04'),\n('s09','K04'),\n('s10','K04'),\n('s11','K05'),\n('s12','K05'),\n('s13','K05'),\n('s14','K05'),\n('s15','K05'),\n('s16','K06'),\n('s17','K06'),\n('s18','K06'),\n('s19','K06'),\n('s20','K06'),\n('s21','K06'),\n('s22','K07'),\n('s23','K07'),\n('s24','K07'),\n('s25','K07'),\n('s26','K07'),\n('s27','K07'),\n('s28','K07'),\n('s29','K08'),\n('s30','K08'),\n('s31','K08'),\n('s32','K08'),\n('s33','K08'),\n('s34','K08'),\n('s35','K08'),\n('s36','K08'),\n('s37','K09'),\n('s38','K09'),\n('s39','K09'),\n('s40','K09'),\n('s41','K09'),\n('s42','K09'),\n('s43','K09'),\n('s44','K09'),\n('s45','K09'),\n('s46','K10'),\n('s47','K10'),\n('s48','K10'),\n('s49','K10'),\n('s50','K10'),\n('s51','K10'),\n('s52','K10'),\n('s53','K10'),\n('s54','K10'),\n('s55','K10'),\n('s56','K11'),\n('s57','K11'),\n('s58','K11'),\n('s59','K11'),\n('s60','K11'),\n('s61','K11'),\n('s62','K11'),\n('s63','K11'),\n('s64','K11'),\n('s65','K11'),\n('s66','K11'),\n('s67','K12'),\n('s68','K12'),\n('s69','K12'),\n('s70','K12'),\n('s71','K12'),\n('s72','K12'),\n('s73','K12'),\n('s74','K12'),\n('s75','K12'),\n('s76','K12'),\n('s77','K12'),\n('s78','K12');"
+      ],
+      "expected": [
+        [
+          "K05"
+        ],
+        [
+          "K06"
+        ],
+        [
+          "K07"
+        ],
+        [
+          "K08"
+        ],
+        [
+          "K09"
+        ],
+        [
+          "K10"
+        ],
+        [
+          "K11"
+        ],
+        [
+          "K12"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Courses VALUES\n('stu087','C21'),\n('stu131','C29'),\n('stu012','C03'),\n('stu034','C08'),\n('stu089','C21'),\n('stu009','C02'),\n('stu075','C18'),\n('stu115','C26'),\n('stu120','C27'),\n('stu011','C03'),\n('stu022','C05'),\n('stu091','C22'),\n('stu110','C25'),\n('stu111','C25'),\n('stu046','C10'),\n('stu057','C14'),\n('stu113','C25'),\n('stu006','C02'),\n('stu090','C21'),\n('stu132','C30'),\n('stu010','C03'),\n('stu053','C13'),\n('stu054','C13'),\n('stu047','C11'),\n('stu083','C20'),\n('stu074','C17'),\n('stu105','C24'),\n('stu095','C22'),\n('stu116','C26'),\n('stu040','C09'),\n('stu076','C19'),\n('stu127','C29'),\n('stu099','C23'),\n('stu038','C09'),\n('stu024','C06'),\n('stu070','C16'),\n('stu025','C06'),\n('stu093','C22'),\n('stu042','C09'),\n('stu117','C26'),\n('stu032','C07'),\n('stu005','C01'),\n('stu109','C25'),\n('stu059','C14'),\n('stu050','C12'),\n('stu007','C02'),\n('stu065','C16'),\n('stu128','C29'),\n('stu094','C22'),\n('stu072','C17'),\n('stu043','C09'),\n('stu062','C15'),\n('stu045','C10'),\n('stu020','C05'),\n('stu031','C07'),\n('stu049','C11'),\n('stu067','C16'),\n('stu015','C04'),\n('stu051','C12'),\n('stu080','C20'),\n('stu013','C03'),\n('stu103','C23'),\n('stu130','C29'),\n('stu039','C09'),\n('stu079','C20'),\n('stu068','C16'),\n('stu018','C04'),\n('stu055','C13'),\n('stu026','C06'),\n('stu112','C25'),\n('stu108','C25'),\n('stu001','C01'),\n('stu101','C23'),\n('stu008','C02'),\n('stu064','C16'),\n('stu069','C16'),\n('stu077','C20'),\n('stu124','C29'),\n('stu044','C10'),\n('stu017','C04'),\n('stu104','C23'),\n('stu129','C29'),\n('stu096','C22'),\n('stu071','C17'),\n('stu073','C17'),\n('stu086','C21'),\n('stu048','C11'),\n('stu029','C07'),\n('stu035','C08'),\n('stu106','C25'),\n('stu066','C16'),\n('stu052','C12'),\n('stu060','C15'),\n('stu118','C26'),\n('stu078','C20'),\n('stu123','C28'),\n('stu058','C14'),\n('stu002','C01'),\n('stu016','C04'),\n('stu014','C03'),\n('stu036','C08'),\n('stu088','C21'),\n('stu082','C20'),\n('stu041','C09'),\n('stu100','C23'),\n('stu114','C26'),\n('stu107','C25'),\n('stu136','C30'),\n('stu098','C23'),\n('stu133','C30'),\n('stu097','C23'),\n('stu030','C07'),\n('stu138','C30'),\n('stu125','C29'),\n('stu084','C20'),\n('stu021','C05'),\n('stu135','C30'),\n('stu023','C05'),\n('stu081','C20'),\n('stu121','C27'),\n('stu092','C22'),\n('stu033','C08'),\n('stu126','C29'),\n('stu061','C15'),\n('stu037','C09'),\n('stu056','C14'),\n('stu085','C20'),\n('stu122','C28'),\n('stu139','C30'),\n('stu019','C05'),\n('stu003','C01'),\n('stu004','C01'),\n('stu102','C23'),\n('stu134','C30'),\n('stu063','C15'),\n('stu027','C06'),\n('stu028','C07'),\n('stu137','C30'),\n('stu119','C26');"
+      ],
+      "expected": [
+        [
+          "C01"
+        ],
+        [
+          "C03"
+        ],
+        [
+          "C05"
+        ],
+        [
+          "C07"
+        ],
+        [
+          "C09"
+        ],
+        [
+          "C16"
+        ],
+        [
+          "C20"
+        ],
+        [
+          "C21"
+        ],
+        [
+          "C22"
+        ],
+        [
+          "C23"
+        ],
+        [
+          "C25"
+        ],
+        [
+          "C26"
+        ],
+        [
+          "C29"
+        ],
+        [
+          "C30"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2043,
+  "slug": "simple-bank-system",
+  "title": "Simple Bank System",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Design",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Bank",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "balance",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "transfer",
+        "parameters": [
+          {
+            "name": "account1",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "account2",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "money",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "deposit",
+        "parameters": [
+          {
+            "name": "account",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "money",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "withdraw",
+        "parameters": [
+          {
+            "name": "account",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "money",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

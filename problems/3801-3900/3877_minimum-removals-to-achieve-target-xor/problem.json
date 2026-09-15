@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3877,
+  "slug": "minimum-removals-to-achieve-target-xor",
+  "title": "Minimum Removals to Achieve Target XOR",
+  "difficulty": "Medium",
+  "tags": [
+    "Meet in the Middle",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minRemovals",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minRemovals",
+      "rust": "min_removals",
+      "typescript": "minRemovals"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

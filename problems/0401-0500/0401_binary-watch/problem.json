@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 401,
+  "slug": "binary-watch",
+  "title": "Binary Watch",
+  "difficulty": "Easy",
+  "tags": [
+    "Backtracking",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Backtracking",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "readBinaryWatch",
+    "parameters": [
+      {
+        "name": "turnedOn",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "readBinaryWatch",
+      "rust": "read_binary_watch",
+      "typescript": "readBinaryWatch"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

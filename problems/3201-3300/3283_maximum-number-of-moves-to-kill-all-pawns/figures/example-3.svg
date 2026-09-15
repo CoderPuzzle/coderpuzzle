@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 280" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="470" height="280" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+  </defs>
+  <!-- board window x=0..2, y=0..4 ; cell (x,y) at (60+44x, 30+44(4-y)) -->
+  <g stroke="#98a2ac" stroke-width="1.1">
+    <rect x="60" y="30" width="44" height="44" fill="#ffffff"/><rect x="104" y="30" width="44" height="44" fill="#e9eef4"/><rect x="148" y="30" width="44" height="44" fill="#ffffff"/>
+    <rect x="60" y="74" width="44" height="44" fill="#e9eef4"/><rect x="104" y="74" width="44" height="44" fill="#ffffff"/><rect x="148" y="74" width="44" height="44" fill="#e9eef4"/>
+    <rect x="60" y="118" width="44" height="44" fill="#ffffff"/><rect x="104" y="118" width="44" height="44" fill="#e9eef4"/><rect x="148" y="118" width="44" height="44" fill="#ffffff"/>
+    <rect x="60" y="162" width="44" height="44" fill="#e9eef4"/><rect x="104" y="162" width="44" height="44" fill="#ffffff"/><rect x="148" y="162" width="44" height="44" fill="#e9eef4"/>
+    <rect x="60" y="206" width="44" height="44" fill="#ffffff"/><rect x="104" y="206" width="44" height="44" fill="#e9eef4"/><rect x="148" y="206" width="44" height="44" fill="#ffffff"/>
+  </g>
+  <!-- path cells -->
+  <g fill="#e8edfa" stroke="#4169E1" stroke-width="1.8">
+    <rect x="60" y="206" width="44" height="44"/>
+    <rect x="104" y="118" width="44" height="44"/>
+    <rect x="148" y="30" width="44" height="44"/>
+  </g>
+  <g fill="#5c6b76" font-size="11.5" text-anchor="middle">
+    <text x="82" y="264">0</text><text x="126" y="264">1</text><text x="170" y="264">2</text>
+    <text x="48" y="242">0</text><text x="48" y="198">1</text><text x="48" y="154">2</text><text x="48" y="110">3</text><text x="48" y="66">4</text>
+  </g>
+  <!-- hops -->
+  <g fill="none" stroke-width="1.8">
+    <path d="M 87 227 L 118 163" stroke="#4169E1" marker-end="url(#arrowA)"/>
+    <path d="M 133 138 Q 179 109 201 63" stroke="#4169E1" marker-end="url(#arrowA)"/>
+    <path d="M 207 63 Q 161 93 139 143" stroke="#1a2026" stroke-dasharray="5 3" marker-end="url(#arrowB)"/>
+  </g>
+  <g font-size="11.5" font-weight="600">
+    <text x="94" y="200" fill="#4169E1">1</text><text x="190" y="104" fill="#4169E1">2</text><text x="152" y="90" fill="#1a2026">3</text>
+  </g>
+  <!-- knight start and pawns -->
+  <circle cx="82" cy="238" r="9" fill="#4169E1"/>
+  <text x="82" y="242.5" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">K</text>
+  <g fill="#1a2026">
+    <circle cx="126" cy="150" r="9"/><circle cx="214" cy="52" r="9"/>
+  </g>
+  <g fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle">
+    <text x="126" y="154.5">1</text><text x="214" y="56.5">2</text>
+  </g>
+  <!-- legend -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="240" y="48">Moves 1–2 (Alice, solid blue):</text>
+    <text x="240" y="66">pass over pawn 1 at (1, 2),</text>
+    <text x="240" y="84">capture pawn 2 at (2, 4).</text>
+    <text x="240" y="116">Move 3 (Bob, dashed black):</text>
+    <text x="240" y="134">capture pawn 1 at (1, 2).</text>
+    <text x="240" y="166" fill="#1a2026" font-weight="600">Total: 2 + 1 = 3 moves.</text>
+  </g>
+</svg>

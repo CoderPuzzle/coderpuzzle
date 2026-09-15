@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2204,
+  "slug": "distance-to-a-cycle-in-undirected-graph",
+  "title": "Distance to a Cycle in Undirected Graph",
+  "difficulty": "Hard",
+  "tags": [
+    "Graph",
+    "BFS",
+    "DFS"
+  ],
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Topological Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "distanceToCycle",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "distanceToCycle",
+      "rust": "distance_to_cycle",
+      "typescript": "distanceToCycle"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

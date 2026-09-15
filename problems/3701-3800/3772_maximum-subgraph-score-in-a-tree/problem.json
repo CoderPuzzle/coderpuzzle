@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3772,
+  "slug": "maximum-subgraph-score-in-a-tree",
+  "title": "Maximum Subgraph Score in a Tree",
+  "difficulty": "Hard",
+  "tags": [
+    "Tree",
+    "Tree DP",
+    "DFS"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxSubgraphScore",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "good",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "maxSubgraphScore",
+      "rust": "max_subgraph_score",
+      "typescript": "maxSubgraphScore"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

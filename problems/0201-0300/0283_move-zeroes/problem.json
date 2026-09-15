@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "snowball_swap",
+  "id": 283,
+  "slug": "move-zeroes",
+  "title": "Move Zeroes",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "moveZeroes",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "moveZeroes",
+      "rust": "move_zeroes",
+      "typescript": "moveZeroes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

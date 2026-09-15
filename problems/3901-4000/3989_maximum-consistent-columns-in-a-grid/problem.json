@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3989,
+  "slug": "maximum-consistent-columns-in-a-grid",
+  "title": "Maximum Consistent Columns in a Grid",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Bitmask",
+    "Binary Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxConsistentColumns",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "limit",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxConsistentColumns",
+      "rust": "max_consistent_columns",
+      "typescript": "maxConsistentColumns"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

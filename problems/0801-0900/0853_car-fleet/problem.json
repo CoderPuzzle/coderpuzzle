@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 853,
+  "slug": "car-fleet",
+  "title": "Car Fleet",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Stack",
+    "Sorting",
+    "Monotonic Stack"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Sorting",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "carFleet",
+    "parameters": [
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "position",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "speed",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "carFleet",
+      "rust": "car_fleet",
+      "typescript": "carFleet"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

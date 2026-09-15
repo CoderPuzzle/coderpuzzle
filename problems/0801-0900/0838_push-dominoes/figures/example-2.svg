@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 288" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="aA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+
+  <!-- before: all standing, pushes at 1(L) 3(R) 7(L) 8(R) 11(L) -->
+  <text x="60" y="46" fill="#5c6b76" font-size="12.5">before</text>
+  <g stroke="#4169E1" stroke-width="2">
+    <line x1="112" y1="62" x2="88" y2="62" marker-end="url(#aA)"/>
+    <line x1="168" y1="62" x2="192" y2="62" marker-end="url(#aA)"/>
+    <line x1="352" y1="62" x2="328" y2="62" marker-end="url(#aA)"/>
+    <line x1="368" y1="62" x2="392" y2="62" marker-end="url(#aA)"/>
+    <line x1="512" y1="62" x2="488" y2="62" marker-end="url(#aA)"/>
+  </g>
+  <g stroke="#1a2026" stroke-width="1.4" fill="#ffffff">
+    <rect x="54" y="80" width="12" height="44"/>
+    <rect x="94" y="80" width="12" height="44"/>
+    <rect x="134" y="80" width="12" height="44"/>
+    <rect x="174" y="80" width="12" height="44"/>
+    <rect x="214" y="80" width="12" height="44"/>
+    <rect x="254" y="80" width="12" height="44"/>
+    <rect x="294" y="80" width="12" height="44"/>
+    <rect x="334" y="80" width="12" height="44"/>
+    <rect x="374" y="80" width="12" height="44"/>
+    <rect x="414" y="80" width="12" height="44"/>
+    <rect x="454" y="80" width="12" height="44"/>
+    <rect x="494" y="80" width="12" height="44"/>
+    <rect x="534" y="80" width="12" height="44"/>
+    <rect x="574" y="80" width="12" height="44"/>
+  </g>
+
+  <!-- after: LL.RR.LLRRLL.. -->
+  <text x="60" y="166" fill="#5c6b76" font-size="12.5">after</text>
+  <g stroke="#4169E1" stroke-width="1.6" fill="#dbe4fb">
+    <!-- fallen left: 0 1 6 7 10 11 -->
+    <rect x="54" y="184" width="12" height="44" transform="rotate(-72 60 228)"/>
+    <rect x="94" y="184" width="12" height="44" transform="rotate(-72 100 228)"/>
+    <rect x="294" y="184" width="12" height="44" transform="rotate(-72 300 228)"/>
+    <rect x="334" y="184" width="12" height="44" transform="rotate(-72 340 228)"/>
+    <rect x="454" y="184" width="12" height="44" transform="rotate(-72 460 228)"/>
+    <rect x="494" y="184" width="12" height="44" transform="rotate(-72 500 228)"/>
+    <!-- fallen right: 3 4 8 9 -->
+    <rect x="174" y="184" width="12" height="44" transform="rotate(72 180 228)"/>
+    <rect x="214" y="184" width="12" height="44" transform="rotate(72 220 228)"/>
+    <rect x="374" y="184" width="12" height="44" transform="rotate(72 380 228)"/>
+    <rect x="414" y="184" width="12" height="44" transform="rotate(72 420 228)"/>
+  </g>
+  <g stroke="#b57f30" stroke-width="1.6" fill="#f6e8d3">
+    <!-- still standing: 2 5 12 13 -->
+    <rect x="134" y="184" width="12" height="44"/>
+    <rect x="254" y="184" width="12" height="44"/>
+    <rect x="534" y="184" width="12" height="44"/>
+    <rect x="574" y="184" width="12" height="44"/>
+  </g>
+
+  <text x="320" y="272" text-anchor="middle" fill="#1a2026" font-size="12.5">dominoes 2 and 5 stand — the pushes balance; 12 and 13 are never reached</text>
+</svg>

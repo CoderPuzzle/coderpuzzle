@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3179,
+  "slug": "find-the-n-th-value-after-k-seconds",
+  "title": "Find the N-th Value After K Seconds",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Simulation",
+    "Combinatorics",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Simulation",
+    "Combinatorics",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "valueAfterKSeconds",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "valueAfterKSeconds",
+      "rust": "value_after_k_seconds",
+      "typescript": "valueAfterKSeconds"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1048,
+  "slug": "longest-string-chain",
+  "title": "Longest String Chain",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Dynamic Programming",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Two Pointers",
+    "String",
+    "Dynamic Programming",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestStrChain",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "longestStrChain",
+      "rust": "longest_str_chain",
+      "typescript": "longestStrChain"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

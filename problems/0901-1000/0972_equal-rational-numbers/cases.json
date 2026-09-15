@@ -1,0 +1,251 @@
+{
+  "public": [
+    {
+      "input": [
+        "0.(52)",
+        "0.5(25)"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0.1666(6)",
+        "0.166(66)"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0.9(9)",
+        "1."
+      ],
+      "expected": true
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "0.(9)",
+        "1"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0.(9)",
+        "0.9"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "1.(9)",
+        "2."
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "1.(0)",
+        "1"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "1.(0)",
+        "1.(9)"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0.1(6)",
+        "0.166(66)"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "123.00(1212)",
+        "123.0012(12)"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0.(3)",
+        "0.3333(3)"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "12",
+        "12"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "12",
+        "13"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0",
+        "0.(0)"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0.5",
+        "0.6"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "123.0001",
+        "123.0001"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "123.0001",
+        "123.0002"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "1.",
+        "1.0"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0.",
+        "0"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "2.12",
+        "2.1200"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0.5000(0)",
+        "0.5"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0.1(23)",
+        "0.1(24)"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0.(12)",
+        "0.(21)"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0.1(6)",
+        "0.2(6)"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0.12(34)",
+        "0.13(34)"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "9999.9999(9999)",
+        "9999.999(9)"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "9999.1234(5678)",
+        "9999.1234(5679)"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "999.9999(9)",
+        "1000"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "123.(123)",
+        "0.123(123)"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0.19(9)",
+        "0.2"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0.1999(9)",
+        "0.3"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "9999.9999(9999)",
+        "9999.9998(9999)"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0.(9)",
+        "0.9999(9)"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "0.9999(9998)",
+        "9999.9999(9998)"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "0.9999(9998)",
+        "0.9999(9997)"
+      ],
+      "expected": false
+    }
+  ]
+}

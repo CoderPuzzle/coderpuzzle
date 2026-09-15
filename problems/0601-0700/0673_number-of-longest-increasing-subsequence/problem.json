@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 673,
+  "slug": "number-of-longest-increasing-subsequence",
+  "title": "Number of Longest Increasing Subsequence",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Longest Increasing Subsequence"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Longest Increasing Subsequence"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findNumberOfLIS",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "findNumberOfLIS",
+      "rust": "find_number_of_lis",
+      "typescript": "findNumberOfLIS"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

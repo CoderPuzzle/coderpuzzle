@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3602,
+  "slug": "hexadecimal-and-hexatrigesimal-conversion",
+  "title": "Hexadecimal and Hexatrigesimal Conversion",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "String"
+  ],
+  "topics": [
+    "Math",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "concatHex36",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "concatHex36",
+      "rust": "concat_hex36",
+      "typescript": "concatHex36"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

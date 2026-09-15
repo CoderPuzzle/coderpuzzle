@@ -1,0 +1,69 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2925,
+  "slug": "maximum-score-after-applying-operations-on-a-tree",
+  "title": "Maximum Score After Applying Operations on a Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search",
+    "DP on Trees"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search",
+    "DP on Trees"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumScoreAfterOperations",
+    "parameters": [
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "values",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "maximumScoreAfterOperations",
+      "rust": "maximum_score_after_operations",
+      "typescript": "maximumScoreAfterOperations"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

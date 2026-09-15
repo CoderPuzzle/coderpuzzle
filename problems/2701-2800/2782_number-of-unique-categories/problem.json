@@ -1,0 +1,92 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2782,
+  "slug": "number-of-unique-categories",
+  "title": "Number of Unique Categories",
+  "difficulty": "Medium",
+  "tags": [
+    "Union-Find",
+    "Interactive",
+    "Counting"
+  ],
+  "topics": [
+    "Union-Find",
+    "Interactive",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "numberOfCategories",
+    "oracle": "CategoryHandler",
+    "oracle_methods": [
+      {
+        "name": "haveSameCategory",
+        "parameters": [
+          {
+            "name": "a",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "b",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 10000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "CategoryHandler",
+        "construct": [
+          "category"
+        ],
+        "auxiliary": [
+          "n"
+        ],
+        "parameter": "categoryHandler"
+      }
+    },
+    "entrypoints": {
+      "go": "numberOfCategories",
+      "rust": "number_of_categories",
+      "cpp": "numberOfCategories",
+      "javascript": "numberOfCategories",
+      "typescript": "numberOfCategories"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 464,
+  "slug": "can-i-win",
+  "title": "Can I Win",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Memoization",
+    "Game Theory",
+    "Bitmask"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Memoization",
+    "Game Theory",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canIWin",
+    "parameters": [
+      {
+        "name": "maxChoosableInteger",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "desiredTotal",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canIWin",
+      "rust": "can_i_win",
+      "typescript": "canIWin"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

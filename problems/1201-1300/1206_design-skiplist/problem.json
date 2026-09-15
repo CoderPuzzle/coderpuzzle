@@ -1,0 +1,77 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1206,
+  "slug": "design-skiplist",
+  "title": "Design Skiplist",
+  "difficulty": "Hard",
+  "tags": [
+    "Linked List",
+    "Design"
+  ],
+  "topics": [
+    "Linked List",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Skiplist",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "search",
+        "parameters": [
+          {
+            "name": "target",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "add",
+        "parameters": [
+          {
+            "name": "num",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "erase",
+        "parameters": [
+          {
+            "name": "num",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

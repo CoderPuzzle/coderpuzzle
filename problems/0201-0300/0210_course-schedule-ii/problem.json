@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "kahn",
+  "id": 210,
+  "slug": "course-schedule-ii",
+  "title": "Course Schedule II",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "Topological Sort",
+    "BFS"
+  ],
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Topological Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findOrder",
+    "parameters": [
+      {
+        "name": "numCourses",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "prerequisites",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "findOrder",
+      "rust": "find_order",
+      "typescript": "findOrder"
+    },
+    "comparison": "sorted"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

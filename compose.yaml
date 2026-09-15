@@ -27,46 +27,14 @@ services:
       - app
       - edge
 
-  problems-fetcher:
-    # One-shot: the only component allowed to reach github.com; fills the
-    # problems_cache volume before the networkless API starts. No-op when
-    # CODERPUZZLE_PROBLEMS is unset or local.
-    build:
-      context: ./api
-    entrypoint: [ "python", "-m", "app.fetch_problems" ]
-    environment:
-      CODERPUZZLE_PROBLEMS: ${CODERPUZZLE_PROBLEMS:-CoderPuzzle/coderpuzzle-problems}
-      CODERPUZZLE_PROBLEMS_CACHE: /cache/problems
-      HOME: /tmp
-    volumes:
-      - ${CODERPUZZLE_PROBLEMS_CACHE_DIR:-./.cache}:/cache
-    # The fetcher runs as root because it is the one component that must write
-    # to the host-shared ./.cache directory, which Docker creates root-owned.
-    # It stays read_only with all capabilities dropped and no-new-privileges;
-    # root-created clones (umask 022) remain world-readable so the unprivileged
-    # API container can serve them read-only.
-    user: "0:0"
-    read_only: true
-    tmpfs:
-      - /tmp:size=64m
-    cap_drop:
-      - ALL
-    security_opt:
-      - no-new-privileges:true
-    restart: "no"
-    networks:
-      - edge
-
   api:
     build:
       context: ./api
-    depends_on:
-      problems-fetcher:
-        condition: service_completed_successfully
     environment:
-      CODERPUZZLE_PROBLEMS: ${CODERPUZZLE_PROBLEMS:-CoderPuzzle/coderpuzzle-problems}
-      CODERPUZZLE_PROBLEMS_CACHE: /cache/problems
-      CODERPUZZLE_PROBLEMS_DIR: /problems
+      # The problem set is always a directory. /problems is where the host
+      # tree selected by CODERPUZZLE_PROBLEMS_PATH is bind mounted; the app
+      # fetches nothing and keeps no problem-set cache.
+      CODERPUZZLE_PROBLEMS: /problems
       CODERPUZZLE_DATA_DIR: /data
       CODERPUZZLE_QUEUE_DIR: /queue
       CODERPUZZLE_RUNNER_TIMEOUT_SECONDS: "20"
@@ -93,12 +61,12 @@ services:
       CODERPUZZLE_AUTH_SMTP_USER: ${CODERPUZZLE_AUTH_SMTP_USER:-}
       CODERPUZZLE_AUTH_SMTP_PASSWORD: ${CODERPUZZLE_AUTH_SMTP_PASSWORD:-}
       CODERPUZZLE_AUTH_SMTP_FROM: ${CODERPUZZLE_AUTH_SMTP_FROM:-}
-      # Writable home; the api itself never runs git (the fetcher service
-      # does), but the image ships git for it and HOME must exist for both.
+      # Writable home on the read-only rootfs; libraries expect HOME to exist.
       HOME: /tmp
     volumes:
+      # The one problem-set selector: a path on disk, defaulting to this
+      # repo's own ./problems tree.
       - "${CODERPUZZLE_PROBLEMS_PATH:-./problems}:/problems:ro"
-      - ${CODERPUZZLE_PROBLEMS_CACHE_DIR:-./.cache}:/cache:ro
       - coderpuzzle_data:/data
       - calibration_data:/calibration
       - judge_queue:/queue
@@ -168,6 +136,7 @@ volumes:
 networks:
   app:
     internal: true
-  # Non-internal network so the one-shot problems-fetcher can reach the
-  # remote problem set; everything else lives on the internal app network.
+  # Non-internal network: `web` needs it for its published port to bind, and
+  # `api` for OAuth/OIDC token exchange and email OTP. Nothing fetches
+  # problems any more — the problem set is a bind-mounted directory.
   edge:

@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1872,
+  "slug": "stone-game-viii",
+  "title": "Stone Game VIII",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Minimax",
+    "Prefix Sum",
+    "Game Theory",
+    "Zero-Sum Game"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "stoneGameVIII",
+    "parameters": [
+      {
+        "name": "stones",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "stoneGameVIII",
+      "rust": "stone_game_viii",
+      "typescript": "stoneGameVIII"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

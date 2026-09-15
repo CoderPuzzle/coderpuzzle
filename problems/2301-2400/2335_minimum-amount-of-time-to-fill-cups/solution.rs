@@ -1,0 +1,13 @@
+impl Solution {
+    // Pair the two fullest types every second; a lone type is filled one
+    // cup at a time. With counts sorted a <= b <= c that schedule ends in
+    // max(c, ceil((a + b + c) / 2)) seconds: c because the largest type
+    // can never lose more than one cup per second, ceil(total / 2) because
+    // a second fills at most two cups, and the pairing schedule meets both
+    // bounds at once.
+    pub fn fill_cups(mut amount: Vec<i32>) -> i32 {
+        amount.sort_unstable();
+        let total = amount[0] + amount[1] + amount[2];
+        std::cmp::max(amount[2], (total + 1) / 2)
+    }
+}

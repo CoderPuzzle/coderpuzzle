@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2349,
+  "slug": "design-a-number-container-system",
+  "title": "Design a Number Container System",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Design",
+    "Heap (Priority Queue)",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Hash Table",
+    "Design",
+    "Heap (Priority Queue)",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "NumberContainers",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "change",
+        "parameters": [
+          {
+            "name": "index",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "number",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "find",
+        "parameters": [
+          {
+            "name": "number",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

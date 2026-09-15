@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3530,
+  "slug": "maximum-profit-from-valid-topological-order-in-dag",
+  "title": "Maximum Profit from Valid Topological Order in DAG",
+  "difficulty": "Hard",
+  "tags": [
+    "Bitmask DP",
+    "Topological Sort",
+    "Graph"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Graph Theory",
+    "Topological Sort",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxProfit",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "score",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxProfit",
+      "rust": "max_profit",
+      "typescript": "maxProfit"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

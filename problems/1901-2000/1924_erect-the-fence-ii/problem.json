@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1924,
+  "slug": "erect-the-fence-ii",
+  "title": "Erect the Fence II",
+  "difficulty": "Hard",
+  "tags": [
+    "Geometry"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Minimum Enclosing Circle"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "outerTrees",
+    "parameters": [
+      {
+        "name": "trees",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "number"
+      }
+    },
+    "entrypoints": {
+      "go": "outerTrees",
+      "rust": "outer_trees",
+      "typescript": "outerTrees"
+    },
+    "comparison": "close"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

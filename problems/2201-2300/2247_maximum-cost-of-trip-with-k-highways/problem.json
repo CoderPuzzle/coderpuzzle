@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2247,
+  "slug": "maximum-cost-of-trip-with-k-highways",
+  "title": "Maximum Cost of Trip With K Highways",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Graph",
+    "Bitmask"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Graph Theory",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumCost",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "highways",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumCost",
+      "rust": "maximum_cost",
+      "typescript": "maximumCost"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

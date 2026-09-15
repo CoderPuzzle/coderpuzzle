@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b0"/>
+    </marker>
+    <marker id="red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c0392b"/>
+    </marker>
+    <marker id="blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <rect width="500" height="310" fill="#ffffff"/>
+  <!-- buildings: heights 4 2 7 6 9 14 12, 14px per unit, baseline y=240 -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="40" y="184" width="44" height="56" fill="#e3e8ec"/>
+    <rect x="98" y="212" width="44" height="28" fill="#e3e8ec"/>
+    <rect x="156" y="142" width="44" height="98" fill="#e3e8ec"/>
+    <rect x="214" y="156" width="44" height="84" fill="#e3e8ec"/>
+    <rect x="272" y="114" width="44" height="126" fill="#4169E1" fill-opacity="0.14"/>
+    <rect x="330" y="44" width="44" height="196" fill="#e3e8ec"/>
+    <rect x="388" y="72" width="44" height="168" fill="#e3e8ec"/>
+  </g>
+  <!-- height labels -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="62" y="204">4</text><text x="120" y="232">2</text><text x="178" y="162">7</text>
+    <text x="236" y="176">6</text><text x="294" y="134">9</text><text x="352" y="64">14</text><text x="410" y="92">12</text>
+  </g>
+  <!-- moves -->
+  <path d="M 62 178 Q 89 170 120 206" fill="none" stroke="#9aa7b0" stroke-width="1.6" marker-end="url(#gray)"/>
+  <text x="91" y="168" text-anchor="middle" fill="#9aa7b0" font-size="11">free</text>
+  <path d="M 120 206 Q 147 152 178 136" fill="none" stroke="#c0392b" stroke-width="1.8" marker-end="url(#red)"/>
+  <text x="120" y="146" text-anchor="middle" fill="#c0392b" font-size="11">+5 bricks</text>
+  <path d="M 178 136 Q 205 128 236 150" fill="none" stroke="#9aa7b0" stroke-width="1.6" marker-end="url(#gray)"/>
+  <text x="205" y="126" text-anchor="middle" fill="#9aa7b0" font-size="11">free</text>
+  <path d="M 236 150 Q 263 116 294 108" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#blue)"/>
+  <text x="263" y="112" text-anchor="middle" fill="#274db1" font-size="11">+3 · the ladder</text>
+  <path d="M 294 108 Q 321 60 352 38" fill="none" stroke="#9aa7b0" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#gray)"/>
+  <line x1="325" y1="60" x2="335" y2="70" stroke="#9aa7b0" stroke-width="1.8"/>
+  <line x1="335" y1="60" x2="325" y2="70" stroke="#9aa7b0" stroke-width="1.8"/>
+  <text x="352" y="34" text-anchor="middle" fill="#9aa7b0" font-size="11">+5 · nothing left</text>
+  <!-- baseline and indices -->
+  <line x1="30" y1="240" x2="450" y2="240" stroke="#42525e" stroke-width="1.3"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="62" y="258">0</text><text x="120" y="258">1</text><text x="178" y="258">2</text>
+    <text x="236" y="258">3</text><text x="294" y="258">4</text><text x="352" y="258">5</text><text x="410" y="258">6</text>
+  </g>
+  <text x="280" y="286" text-anchor="middle" fill="#1a2026" font-weight="600">bricks pay the 2→7 climb, the ladder pays 6→9 — index 4 is the furthest</text>
+</svg>

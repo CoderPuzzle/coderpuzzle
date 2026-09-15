@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3932,
+  "slug": "count-k-th-roots-in-a-range",
+  "title": "Count K-th Roots in a Range",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Binary Search"
+  ],
+  "topics": [
+    "Math",
+    "Binary Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countKthRoots",
+    "parameters": [
+      {
+        "name": "l",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "r",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countKthRoots",
+      "rust": "count_kth_roots",
+      "typescript": "countKthRoots"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

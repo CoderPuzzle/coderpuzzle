@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 840,
+  "slug": "magic-squares-in-grid",
+  "title": "Magic Squares In Grid",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numMagicSquaresInside",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numMagicSquaresInside",
+      "rust": "num_magic_squares_inside",
+      "typescript": "numMagicSquaresInside"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

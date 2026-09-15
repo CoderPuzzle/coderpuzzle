@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1470,
+  "slug": "shuffle-the-array",
+  "title": "Shuffle the Array",
+  "difficulty": "Easy",
+  "tags": [
+    "Array"
+  ],
+  "topics": [
+    "Array"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "shuffle",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "shuffle",
+      "rust": "shuffle",
+      "typescript": "shuffle"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

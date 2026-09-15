@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3440,
+  "slug": "reschedule-meetings-for-maximum-free-time-ii",
+  "title": "Reschedule Meetings for Maximum Free Time II",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxFreeTime",
+    "parameters": [
+      {
+        "name": "eventTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "startTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "endTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxFreeTime",
+      "rust": "max_free_time",
+      "typescript": "maxFreeTime"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

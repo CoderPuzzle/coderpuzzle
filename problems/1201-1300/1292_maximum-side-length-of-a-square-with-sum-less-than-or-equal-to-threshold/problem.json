@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1292,
+  "slug": "maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold",
+  "title": "Maximum Side Length of a Square with Sum Less than or Equal to Threshold",
+  "difficulty": "Medium",
+  "tags": [
+    "Prefix Sum",
+    "Binary Search",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxSideLength",
+    "parameters": [
+      {
+        "name": "mat",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "threshold",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxSideLength",
+      "rust": "max_side_length",
+      "typescript": "maxSideLength"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 530,
+  "slug": "minimum-absolute-difference-in-bst",
+  "title": "Minimum Absolute Difference in BST",
+  "difficulty": "Easy",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getMinimumDifference",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "getMinimumDifference",
+      "rust": "get_minimum_difference",
+      "typescript": "getMinimumDifference"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,37 @@
+class Solution {
+  public:
+    long long countDistinct(long long n) {
+        // Count the zero-free integers in [1, n] directly from n's digits,
+        // peeled off arithmetically. Every shorter length contributes a
+        // full block of 9^k values; then a prefix matching n so far
+        // branches to any smaller nonzero digit and completes freely. The
+        // walk stops at n's first zero digit — nothing below can be
+        // zero-free once the prefix carries one. long long holds every
+        // intermediate: each block is below 9^15 < 2^48 and the total
+        // stays below n <= 10^15.
+        int digits[16];
+        int count = 0;
+        for (long long m = n; m > 0; m /= 10)
+            digits[count++] = (int)(m % 10);
+        long long total = 0;
+        long long pow9 = 1;
+        for (int k = 1; k < count; k++) {
+            pow9 *= 9;
+            total += pow9;
+        }
+        bool tight = true;
+        for (int i = count - 1; i >= 0; i--) {
+            long long d = digits[i];
+            if (d > 1)
+                total += (d - 1) * pow9;
+            if (d == 0) {
+                tight = false;
+                break;
+            }
+            pow9 /= 9;
+        }
+        if (tight)
+            total += 1;
+        return total;
+    }
+};

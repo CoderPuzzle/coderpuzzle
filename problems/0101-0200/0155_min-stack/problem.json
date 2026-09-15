@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 155,
+  "slug": "min-stack",
+  "title": "Min Stack",
+  "difficulty": "Medium",
+  "tags": [
+    "Stack"
+  ],
+  "topics": [
+    "Stack",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "MinStack",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "push",
+        "parameters": [
+          {
+            "name": "value",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "pop",
+        "parameters": []
+      },
+      {
+        "name": "top",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "getMin",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

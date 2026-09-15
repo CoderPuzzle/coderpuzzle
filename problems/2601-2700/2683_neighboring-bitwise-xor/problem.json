@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2683,
+  "slug": "neighboring-bitwise-xor",
+  "title": "Neighboring Bitwise XOR",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Array",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "doesValidArrayExist",
+    "parameters": [
+      {
+        "name": "derived",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "doesValidArrayExist",
+      "rust": "does_valid_array_exist",
+      "typescript": "doesValidArrayExist"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

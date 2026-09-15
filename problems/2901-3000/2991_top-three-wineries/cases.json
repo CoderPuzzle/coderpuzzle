@@ -1,0 +1,319 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(103, 'Australia', 84, 'WhisperingPines'),\n(737, 'Australia', 85, 'GrapesGalore'),\n(848, 'Australia', 100, 'HarmonyHill'),\n(222, 'Hungary', 60, 'MoonlitCellars'),\n(116, 'USA', 47, 'RoyalVines'),\n(124, 'USA', 45, 'Eagle''sNest'),\n(648, 'India', 69, 'SunsetVines'),\n(894, 'USA', 39, 'RoyalVines'),\n(677, 'USA', 9, 'PacificCrest');"
+      ],
+      "expected": [
+        [
+          "Australia",
+          "HarmonyHill (100)",
+          "GrapesGalore (85)",
+          "WhisperingPines (84)"
+        ],
+        [
+          "Hungary",
+          "MoonlitCellars (60)",
+          "No second winery",
+          "No third winery"
+        ],
+        [
+          "India",
+          "SunsetVines (69)",
+          "No second winery",
+          "No third winery"
+        ],
+        [
+          "USA",
+          "RoyalVines (86)",
+          "Eagle'sNest (45)",
+          "PacificCrest (9)"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(1, 'Chile', 55, 'SoloCellars');"
+      ],
+      "expected": [
+        [
+          "Chile",
+          "SoloCellars (55)",
+          "No second winery",
+          "No third winery"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(1, 'Chile', 30, 'AlphaVines'),\n(2, 'Chile', 70, 'BetaCellars');"
+      ],
+      "expected": [
+        [
+          "Chile",
+          "BetaCellars (70)",
+          "AlphaVines (30)",
+          "No third winery"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(1, 'Chile', 10, 'AlphaVines'),\n(2, 'Chile', 20, 'BetaCellars'),\n(3, 'Chile', 30, 'GammaGrove');"
+      ],
+      "expected": [
+        [
+          "Chile",
+          "GammaGrove (30)",
+          "BetaCellars (20)",
+          "AlphaVines (10)"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(1, 'Chile', 50, 'EchoRidge'),\n(2, 'Chile', 40, 'AlphaVines'),\n(3, 'Chile', 30, 'DeltaFields'),\n(4, 'Chile', 20, 'BetaCellars'),\n(5, 'Chile', 10, 'GammaGrove');"
+      ],
+      "expected": [
+        [
+          "Chile",
+          "EchoRidge (50)",
+          "AlphaVines (40)",
+          "DeltaFields (30)"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(1, 'Chile', 90, 'ZephyrHills'),\n(2, 'Chile', 90, 'AmberVines'),\n(3, 'Chile', 10, 'MidRow');"
+      ],
+      "expected": [
+        [
+          "Chile",
+          "AmberVines (90)",
+          "ZephyrHills (90)",
+          "MidRow (10)"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(1, 'Chile', 40, 'CaboWines'),\n(2, 'Chile', 20, 'ArborHill'),\n(3, 'Chile', 30, 'BodegaBay');"
+      ],
+      "expected": [
+        [
+          "Chile",
+          "CaboWines (40)",
+          "BodegaBay (30)",
+          "ArborHill (20)"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(1, 'Chile', 100, 'TopMark'),\n(2, 'Chile', 50, 'SecondStory'),\n(3, 'Chile', 40, 'ZincVine'),\n(4, 'Chile', 40, 'AldenFields'),\n(5, 'Chile', 20, 'QuarryRidge');"
+      ],
+      "expected": [
+        [
+          "Chile",
+          "TopMark (100)",
+          "SecondStory (50)",
+          "AldenFields (40)"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(1, 'Chile', 80, 'SharedVines'),\n(2, 'Chile', 10, 'LocalChile'),\n(3, 'Peru', 5, 'SharedVines'),\n(4, 'Peru', 7, 'AndesArc'),\n(5, 'Peru', 6, 'CoastalCruz');"
+      ],
+      "expected": [
+        [
+          "Chile",
+          "SharedVines (80)",
+          "LocalChile (10)",
+          "No third winery"
+        ],
+        [
+          "Peru",
+          "AndesArc (7)",
+          "CoastalCruz (6)",
+          "SharedVines (5)"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(1109, 'Chile', 15, 'SplitVines'),\n(1934, 'Chile', 40, 'BigRow'),\n(9754, 'Chile', 20, 'SplitVines'),\n(8115, 'Chile', 10, 'SplitVines'),\n(9327, 'Chile', 5, 'SmallRow');"
+      ],
+      "expected": [
+        [
+          "Chile",
+          "SplitVines (45)",
+          "BigRow (40)",
+          "SmallRow (5)"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(44, 'Norway', 19, 'W14_5'),\n(60, 'USA', 36, 'W20_1'),\n(57, 'Turkey', 84, 'W19_3'),\n(32, 'Kenya', 67, 'W11_2'),\n(22, 'Hungary', 26, 'W8_2'),\n(1, 'Australia', 93, 'W1_1'),\n(15, 'Egypt', 73, 'W5_1'),\n(56, 'Turkey', 86, 'W19_2'),\n(55, 'Turkey', 62, 'W19_1'),\n(34, 'Lebanon', 86, 'W12_2'),\n(17, 'France', 52, 'W6_2'),\n(45, 'Oman', 99, 'W15_1'),\n(50, 'Qatar', 73, 'W17_3'),\n(6, 'Chile', 53, 'W3_1'),\n(13, 'Denmark', 14, 'W4_4'),\n(38, 'Mexico', 77, 'W13_3'),\n(14, 'Denmark', 64, 'W4_5'),\n(37, 'Mexico', 22, 'W13_2'),\n(39, 'Mexico', 10, 'W13_4'),\n(54, 'Spain', 63, 'W18_4'),\n(42, 'Norway', 21, 'W14_3'),\n(33, 'Lebanon', 90, 'W12_1'),\n(7, 'Chile', 93, 'W3_2'),\n(23, 'Hungary', 97, 'W8_3'),\n(12, 'Denmark', 30, 'W4_3'),\n(11, 'Denmark', 37, 'W4_2'),\n(53, 'Spain', 53, 'W18_3'),\n(16, 'France', 59, 'W6_1'),\n(30, 'Japan', 99, 'W10_1'),\n(25, 'India', 93, 'W9_1'),\n(9, 'Chile', 65, 'W3_4'),\n(20, 'Greece', 96, 'W7_3'),\n(46, 'Peru', 98, 'W16_1'),\n(4, 'Brazil', 45, 'W2_2'),\n(35, 'Lebanon', 29, 'W12_3'),\n(10, 'Denmark', 60, 'W4_1'),\n(49, 'Qatar', 88, 'W17_2'),\n(2, 'Australia', 29, 'W1_2'),\n(40, 'Norway', 22, 'W14_1'),\n(24, 'Hungary', 13, 'W8_4'),\n(8, 'Chile', 39, 'W3_3'),\n(26, 'India', 32, 'W9_2'),\n(43, 'Norway', 8, 'W14_4'),\n(51, 'Spain', 35, 'W18_1'),\n(58, 'Turkey', 79, 'W19_4'),\n(28, 'India', 32, 'W9_4'),\n(3, 'Brazil', 7, 'W2_1'),\n(48, 'Qatar', 4, 'W17_1'),\n(29, 'India', 68, 'W9_5'),\n(5, 'Brazil', 99, 'W2_3'),\n(47, 'Peru', 11, 'W16_2'),\n(18, 'Greece', 69, 'W7_1'),\n(36, 'Mexico', 61, 'W13_1'),\n(52, 'Spain', 84, 'W18_2'),\n(19, 'Greece', 77, 'W7_2'),\n(27, 'India', 39, 'W9_3'),\n(21, 'Hungary', 96, 'W8_1'),\n(41, 'Norway', 42, 'W14_2'),\n(31, 'Kenya', 83, 'W11_1'),\n(59, 'Turkey', 59, 'W19_5');"
+      ],
+      "expected": [
+        [
+          "Australia",
+          "W1_1 (93)",
+          "W1_2 (29)",
+          "No third winery"
+        ],
+        [
+          "Brazil",
+          "W2_3 (99)",
+          "W2_2 (45)",
+          "W2_1 (7)"
+        ],
+        [
+          "Chile",
+          "W3_2 (93)",
+          "W3_4 (65)",
+          "W3_1 (53)"
+        ],
+        [
+          "Denmark",
+          "W4_5 (64)",
+          "W4_1 (60)",
+          "W4_2 (37)"
+        ],
+        [
+          "Egypt",
+          "W5_1 (73)",
+          "No second winery",
+          "No third winery"
+        ],
+        [
+          "France",
+          "W6_1 (59)",
+          "W6_2 (52)",
+          "No third winery"
+        ],
+        [
+          "Greece",
+          "W7_3 (96)",
+          "W7_2 (77)",
+          "W7_1 (69)"
+        ],
+        [
+          "Hungary",
+          "W8_3 (97)",
+          "W8_1 (96)",
+          "W8_2 (26)"
+        ],
+        [
+          "India",
+          "W9_1 (93)",
+          "W9_5 (68)",
+          "W9_3 (39)"
+        ],
+        [
+          "Japan",
+          "W10_1 (99)",
+          "No second winery",
+          "No third winery"
+        ],
+        [
+          "Kenya",
+          "W11_1 (83)",
+          "W11_2 (67)",
+          "No third winery"
+        ],
+        [
+          "Lebanon",
+          "W12_1 (90)",
+          "W12_2 (86)",
+          "W12_3 (29)"
+        ],
+        [
+          "Mexico",
+          "W13_3 (77)",
+          "W13_1 (61)",
+          "W13_2 (22)"
+        ],
+        [
+          "Norway",
+          "W14_2 (42)",
+          "W14_1 (22)",
+          "W14_3 (21)"
+        ],
+        [
+          "Oman",
+          "W15_1 (99)",
+          "No second winery",
+          "No third winery"
+        ],
+        [
+          "Peru",
+          "W16_1 (98)",
+          "W16_2 (11)",
+          "No third winery"
+        ],
+        [
+          "Qatar",
+          "W17_2 (88)",
+          "W17_3 (73)",
+          "W17_1 (4)"
+        ],
+        [
+          "Spain",
+          "W18_2 (84)",
+          "W18_4 (63)",
+          "W18_3 (53)"
+        ],
+        [
+          "Turkey",
+          "W19_2 (86)",
+          "W19_3 (84)",
+          "W19_4 (79)"
+        ],
+        [
+          "USA",
+          "W20_1 (36)",
+          "No second winery",
+          "No third winery"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(1, 'Chile', 0, 'NothingGrown'),\n(2, 'Chile', 25, 'PrimeVines'),\n(3, 'Chile', 0, 'AlsoNothing');"
+      ],
+      "expected": [
+        [
+          "Chile",
+          "PrimeVines (25)",
+          "AlsoNothing (0)",
+          "NothingGrown (0)"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Wineries VALUES\n(1293, 'Chile', 5, 'V29Cellars'),\n(1276, 'Chile', 17, 'V27Cellars'),\n(1253, 'Chile', 3, 'V25Cellars'),\n(1026, 'Chile', 6, 'V02Cellars'),\n(1244, 'Chile', 6, 'V24Cellars'),\n(1200, 'Chile', 4, 'V20Cellars'),\n(1247, 'Chile', 8, 'V24Cellars'),\n(1230, 'Chile', 7, 'V23Cellars'),\n(1049, 'Chile', 3, 'V04Cellars'),\n(1125, 'Chile', 5, 'V12Cellars'),\n(1123, 'Chile', 11, 'V12Cellars'),\n(1398, 'Chile', 13, 'V39Cellars'),\n(1052, 'Chile', 6, 'V05Cellars'),\n(1025, 'Chile', 8, 'V02Cellars'),\n(1402, 'Chile', 19, 'V40Cellars'),\n(1347, 'Chile', 15, 'V34Cellars'),\n(1379, 'Chile', 7, 'V37Cellars'),\n(1384, 'Chile', 20, 'V38Cellars'),\n(1378, 'Chile', 10, 'V37Cellars'),\n(1242, 'Chile', 3, 'V24Cellars'),\n(1352, 'Chile', 16, 'V35Cellars'),\n(1311, 'Chile', 8, 'V31Cellars'),\n(1271, 'Chile', 3, 'V27Cellars'),\n(1227, 'Chile', 15, 'V22Cellars'),\n(1239, 'Chile', 12, 'V23Cellars'),\n(1138, 'Chile', 1, 'V13Cellars'),\n(1305, 'Chile', 9, 'V30Cellars'),\n(1404, 'Chile', 7, 'V40Cellars'),\n(1041, 'Chile', 13, 'V04Cellars'),\n(1260, 'Chile', 1, 'V26Cellars'),\n(1274, 'Chile', 1, 'V27Cellars'),\n(1403, 'Chile', 4, 'V40Cellars'),\n(1226, 'Chile', 2, 'V22Cellars'),\n(1195, 'Chile', 14, 'V19Cellars'),\n(1405, 'Chile', 6, 'V40Cellars'),\n(1291, 'Chile', 8, 'V29Cellars'),\n(1088, 'Chile', 4, 'V08Cellars'),\n(1212, 'Chile', 19, 'V21Cellars'),\n(1288, 'Chile', 1, 'V28Cellars'),\n(1157, 'Chile', 20, 'V15Cellars'),\n(1141, 'Chile', 10, 'V14Cellars'),\n(1181, 'Chile', 15, 'V18Cellars'),\n(1255, 'Chile', 4, 'V25Cellars'),\n(1048, 'Chile', 12, 'V04Cellars'),\n(1137, 'Chile', 5, 'V13Cellars'),\n(1228, 'Chile', 11, 'V22Cellars'),\n(1037, 'Chile', 14, 'V03Cellars'),\n(1335, 'Chile', 7, 'V33Cellars'),\n(1074, 'Chile', 4, 'V07Cellars'),\n(1256, 'Chile', 1, 'V25Cellars'),\n(1145, 'Chile', 5, 'V14Cellars'),\n(1144, 'Chile', 13, 'V14Cellars'),\n(1324, 'Chile', 4, 'V32Cellars'),\n(1354, 'Chile', 5, 'V35Cellars'),\n(1100, 'Chile', 4, 'V10Cellars'),\n(1146, 'Chile', 5, 'V14Cellars'),\n(1158, 'Chile', 11, 'V15Cellars'),\n(1099, 'Chile', 13, 'V09Cellars'),\n(1252, 'Chile', 7, 'V25Cellars'),\n(1142, 'Chile', 17, 'V14Cellars'),\n(1040, 'Chile', 4, 'V04Cellars'),\n(1076, 'Chile', 6, 'V07Cellars'),\n(1143, 'Chile', 8, 'V14Cellars'),\n(1196, 'Chile', 5, 'V19Cellars'),\n(1269, 'Chile', 14, 'V26Cellars'),\n(1211, 'Chile', 2, 'V21Cellars'),\n(1124, 'Chile', 10, 'V12Cellars'),\n(1287, 'Chile', 1, 'V28Cellars'),\n(1243, 'Chile', 12, 'V24Cellars'),\n(1382, 'Chile', 7, 'V38Cellars'),\n(1401, 'Chile', 14, 'V40Cellars'),\n(1309, 'Chile', 6, 'V30Cellars'),\n(1323, 'Chile', 10, 'V32Cellars'),\n(1014, 'Chile', 10, 'V01Cellars'),\n(1355, 'Chile', 14, 'V35Cellars'),\n(1367, 'Chile', 19, 'V36Cellars'),\n(1077, 'Chile', 6, 'V07Cellars'),\n(1340, 'Chile', 4, 'V34Cellars'),\n(1348, 'Chile', 19, 'V34Cellars'),\n(1251, 'Chile', 8, 'V25Cellars'),\n(1268, 'Chile', 11, 'V26Cellars'),\n(1349, 'Chile', 3, 'V34Cellars'),\n(1370, 'Chile', 9, 'V37Cellars'),\n(1259, 'Chile', 14, 'V25Cellars'),\n(1101, 'Chile', 10, 'V10Cellars'),\n(1112, 'Chile', 9, 'V11Cellars'),\n(1126, 'Chile', 19, 'V12Cellars'),\n(1013, 'Chile', 12, 'V01Cellars'),\n(1012, 'Chile', 9, 'V01Cellars'),\n(1010, 'Chile', 7, 'V01Cellars'),\n(1399, 'Chile', 2, 'V39Cellars'),\n(1225, 'Chile', 6, 'V22Cellars'),\n(1290, 'Chile', 9, 'V29Cellars'),\n(1272, 'Chile', 19, 'V27Cellars'),\n(1250, 'Chile', 2, 'V25Cellars'),\n(1308, 'Chile', 3, 'V30Cellars'),\n(1208, 'Chile', 1, 'V20Cellars'),\n(1310, 'Chile', 11, 'V31Cellars'),\n(1248, 'Chile', 1, 'V24Cellars'),\n(1241, 'Chile', 7, 'V24Cellars'),\n(1182, 'Chile', 11, 'V18Cellars'),\n(1170, 'Chile', 7, 'V17Cellars'),\n(1209, 'Chile', 9, 'V20Cellars'),\n(1011, 'Chile', 15, 'V01Cellars'),\n(1183, 'Chile', 6, 'V18Cellars'),\n(1139, 'Chile', 1, 'V13Cellars'),\n(1307, 'Chile', 15, 'V30Cellars'),\n(1397, 'Chile', 10, 'V39Cellars'),\n(1353, 'Chile', 11, 'V35Cellars'),\n(1075, 'Chile', 6, 'V07Cellars'),\n(1257, 'Chile', 1, 'V25Cellars'),\n(1273, 'Chile', 4, 'V27Cellars'),\n(1386, 'Chile', 2, 'V38Cellars'),\n(1130, 'Chile', 10, 'V13Cellars'),\n(1275, 'Chile', 8, 'V27Cellars'),\n(1385, 'Chile', 14, 'V38Cellars'),\n(1390, 'Chile', 7, 'V39Cellars'),\n(1356, 'Chile', 5, 'V35Cellars'),\n(1254, 'Chile', 14, 'V25Cellars'),\n(1322, 'Chile', 9, 'V32Cellars'),\n(1292, 'Chile', 20, 'V29Cellars'),\n(1299, 'Chile', 12, 'V29Cellars'),\n(1213, 'Chile', 4, 'V21Cellars'),\n(1214, 'Chile', 1, 'V21Cellars'),\n(1371, 'Chile', 5, 'V37Cellars'),\n(1304, 'Chile', 14, 'V30Cellars'),\n(1341, 'Chile', 10, 'V34Cellars'),\n(1406, 'Chile', 2, 'V40Cellars'),\n(1184, 'Chile', 8, 'V18Cellars'),\n(1246, 'Chile', 3, 'V24Cellars'),\n(1207, 'Chile', 16, 'V20Cellars'),\n(1063, 'Chile', 5, 'V06Cellars'),\n(1383, 'Chile', 16, 'V38Cellars'),\n(1306, 'Chile', 12, 'V30Cellars'),\n(1169, 'Chile', 17, 'V16Cellars'),\n(1245, 'Chile', 2, 'V24Cellars'),\n(1336, 'Chile', 16, 'V33Cellars');"
+      ],
+      "expected": [
+        [
+          "Chile",
+          "V30Cellars (59)",
+          "V38Cellars (59)",
+          "V14Cellars (58)"
+        ]
+      ]
+    }
+  ]
+}

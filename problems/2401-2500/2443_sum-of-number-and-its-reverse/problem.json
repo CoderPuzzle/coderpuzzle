@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2443,
+  "slug": "sum-of-number-and-its-reverse",
+  "title": "Sum of Number and Its Reverse",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Enumeration"
+  ],
+  "topics": [
+    "Math",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sumOfNumberAndReverse",
+    "parameters": [
+      {
+        "name": "num",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "sumOfNumberAndReverse",
+      "rust": "sum_of_number_and_reverse",
+      "typescript": "sumOfNumberAndReverse"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

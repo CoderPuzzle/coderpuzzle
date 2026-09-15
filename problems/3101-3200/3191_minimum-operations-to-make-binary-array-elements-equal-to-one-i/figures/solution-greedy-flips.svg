@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="640" height="250" fill="#ffffff"/>
+  <!-- row 0: initial -->
+  <g stroke="#1a2026" stroke-width="1.5" fill="none">
+    <rect x="60" y="28" width="56" height="42" rx="4"/><rect x="116" y="28" width="56" height="42" rx="4"/>
+    <rect x="172" y="28" width="56" height="42" rx="4"/><rect x="228" y="28" width="56" height="42" rx="4"/>
+    <rect x="284" y="28" width="56" height="42" rx="4"/><rect x="340" y="28" width="56" height="42" rx="4"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="88" y="55">0</text><text x="144" y="55">1</text><text x="200" y="55">1</text>
+    <text x="256" y="55">1</text><text x="312" y="55">0</text><text x="368" y="55">0</text>
+  </g>
+  <text x="440" y="55" fill="#5c6b76" font-size="12.5">start — nums[0] = 0 forces the window at 0</text>
+  <!-- row 1: flip 0..2 -->
+  <g stroke="#1a2026" stroke-width="1.5">
+    <rect x="60" y="86" width="56" height="42" rx="4" fill="#e8edfa"/>
+    <rect x="116" y="86" width="56" height="42" rx="4" fill="#e8edfa"/>
+    <rect x="172" y="86" width="56" height="42" rx="4" fill="#e8edfa"/>
+    <rect x="228" y="86" width="56" height="42" rx="4" fill="none"/>
+    <rect x="284" y="86" width="56" height="42" rx="4" fill="none"/>
+    <rect x="340" y="86" width="56" height="42" rx="4" fill="none"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="88" y="113">1</text><text x="144" y="113">0</text><text x="200" y="113">0</text>
+    <text x="256" y="113">1</text><text x="312" y="113">0</text><text x="368" y="113">0</text>
+  </g>
+  <text x="440" y="113" fill="#4169E1" font-size="12.5">flip (0,1,2) — now nums[1] = 0 forces 1</text>
+  <!-- row 2: flip 1..3 -->
+  <g stroke="#1a2026" stroke-width="1.5">
+    <rect x="60" y="144" width="56" height="42" rx="4" fill="none"/>
+    <rect x="116" y="144" width="56" height="42" rx="4" fill="#e8edfa"/>
+    <rect x="172" y="144" width="56" height="42" rx="4" fill="#e8edfa"/>
+    <rect x="228" y="144" width="56" height="42" rx="4" fill="#e8edfa"/>
+    <rect x="284" y="144" width="56" height="42" rx="4" fill="none"/>
+    <rect x="340" y="144" width="56" height="42" rx="4" fill="none"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="88" y="171">1</text><text x="144" y="171">1</text><text x="200" y="171">1</text>
+    <text x="256" y="171">0</text><text x="312" y="171">0</text><text x="368" y="171">0</text>
+  </g>
+  <text x="440" y="171" fill="#4169E1" font-size="12.5">flip (1,2,3) — nums[3] = 0 forces 3</text>
+  <!-- row 3: flip 3..5 -->
+  <g stroke="#1a2026" stroke-width="1.5">
+    <rect x="60" y="202" width="56" height="42" rx="4" fill="none"/>
+    <rect x="116" y="202" width="56" height="42" rx="4" fill="none"/>
+    <rect x="172" y="202" width="56" height="42" rx="4" fill="none"/>
+    <rect x="228" y="202" width="56" height="42" rx="4" fill="#e8edfa"/>
+    <rect x="284" y="202" width="56" height="42" rx="4" fill="#e8edfa"/>
+    <rect x="340" y="202" width="56" height="42" rx="4" fill="#e8edfa"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="88" y="229">1</text><text x="144" y="229">1</text><text x="200" y="229">1</text>
+    <text x="256" y="229">1</text><text x="312" y="229">1</text><text x="368" y="229">1</text>
+  </g>
+  <text x="440" y="229" fill="#4169E1" font-size="12.5">flip (3,4,5) — all ones · 3 operations</text>
+</svg>

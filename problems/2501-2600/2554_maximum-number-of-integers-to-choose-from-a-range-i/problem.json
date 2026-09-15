@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2554,
+  "slug": "maximum-number-of-integers-to-choose-from-a-range-i",
+  "title": "Maximum Number of Integers to Choose From a Range I",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Greedy",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Greedy",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxCount",
+    "parameters": [
+      {
+        "name": "banned",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "maxSum",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxCount",
+      "rust": "max_count",
+      "typescript": "maxCount"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

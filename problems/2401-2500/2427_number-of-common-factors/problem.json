@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2427,
+  "slug": "number-of-common-factors",
+  "title": "Number of Common Factors",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "Enumeration",
+    "Number Theory",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor"
+  ],
+  "topics": [
+    "Math",
+    "Enumeration",
+    "Number Theory",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "commonFactors",
+    "parameters": [
+      {
+        "name": "a",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "b",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "commonFactors",
+      "rust": "common_factors",
+      "typescript": "commonFactors"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

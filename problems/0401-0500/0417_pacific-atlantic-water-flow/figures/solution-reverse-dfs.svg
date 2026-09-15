@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 430" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="430" fill="#ffffff"/>
+  <!-- 5x5 grid, cell 56, x=180 y=30 -->
+  <!-- pacific-only: (0,0..3),(1,0..2),(2,0),(2,1) -->
+  <g fill="#d7e0f2">
+    <rect x="180" y="30" width="56" height="56"/>
+    <rect x="236" y="30" width="56" height="56"/>
+    <rect x="292" y="30" width="56" height="56"/>
+    <rect x="348" y="30" width="56" height="56"/>
+    <rect x="180" y="86" width="56" height="56"/>
+    <rect x="236" y="86" width="56" height="56"/>
+    <rect x="292" y="86" width="56" height="56"/>
+    <rect x="180" y="142" width="56" height="56"/>
+    <rect x="236" y="142" width="56" height="56"/>
+  </g>
+  <!-- atlantic-only: (2,3),(2,4),(3,2),(3,3),(3,4),(4,1),(4,2),(4,3),(4,4) -->
+  <g fill="#f0e0c4">
+    <rect x="360" y="142" width="56" height="56"/>
+    <rect x="416" y="142" width="56" height="56"/>
+    <rect x="292" y="198" width="56" height="56"/>
+    <rect x="348" y="198" width="56" height="56"/>
+    <rect x="404" y="198" width="56" height="56"/>
+    <rect x="236" y="254" width="56" height="56"/>
+    <rect x="292" y="254" width="56" height="56"/>
+    <rect x="348" y="254" width="56" height="56"/>
+    <rect x="404" y="254" width="56" height="56"/>
+  </g>
+  <!-- both: (0,4),(1,3),(1,4),(2,2),(3,0),(3,1),(4,0) -->
+  <g fill="#4169E1">
+    <rect x="404" y="30" width="56" height="56"/>
+    <rect x="348" y="86" width="56" height="56"/>
+    <rect x="404" y="86" width="56" height="56"/>
+    <rect x="292" y="142" width="56" height="56"/>
+    <rect x="180" y="198" width="56" height="56"/>
+    <rect x="236" y="198" width="56" height="56"/>
+    <rect x="180" y="254" width="56" height="56"/>
+  </g>
+  <!-- grid lines -->
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 180 30 H 460 V 310 H 180 Z"/>
+    <line x1="236" y1="30" x2="236" y2="310"/>
+    <line x1="292" y1="30" x2="292" y2="310"/>
+    <line x1="348" y1="30" x2="348" y2="310"/>
+    <line x1="404" y1="30" x2="404" y2="310"/>
+    <line x1="180" y1="86" x2="460" y2="86"/>
+    <line x1="180" y1="142" x2="460" y2="142"/>
+    <line x1="180" y1="198" x2="460" y2="198"/>
+    <line x1="180" y1="254" x2="460" y2="254"/>
+  </g>
+  <!-- ocean borders -->
+  <path d="M 180 310 V 30 H 460" stroke="#4169E1" stroke-width="4" fill="none"/>
+  <path d="M 180 310 H 460 V 30" stroke="#b57f30" stroke-width="4" fill="none"/>
+  <!-- heights -->
+  <g text-anchor="middle" font-weight="600">
+    <text x="208" y="64" fill="#1a2026">1</text><text x="264" y="64" fill="#1a2026">2</text><text x="320" y="64" fill="#1a2026">2</text>
+    <text x="376" y="64" fill="#1a2026">3</text><text x="432" y="64" fill="#ffffff">5</text>
+    <text x="208" y="120" fill="#1a2026">3</text><text x="264" y="120" fill="#1a2026">2</text><text x="320" y="120" fill="#1a2026">3</text>
+    <text x="376" y="120" fill="#ffffff">4</text><text x="432" y="120" fill="#ffffff">4</text>
+    <text x="208" y="176" fill="#1a2026">2</text><text x="264" y="176" fill="#1a2026">4</text><text x="320" y="176" fill="#ffffff">5</text>
+    <text x="376" y="176" fill="#1a2026">3</text><text x="432" y="176" fill="#1a2026">1</text>
+    <text x="208" y="232" fill="#ffffff">6</text><text x="264" y="232" fill="#ffffff">7</text><text x="320" y="232" fill="#1a2026">1</text>
+    <text x="376" y="232" fill="#1a2026">4</text><text x="432" y="232" fill="#1a2026">5</text>
+    <text x="208" y="288" fill="#ffffff">5</text><text x="264" y="288" fill="#1a2026">1</text><text x="320" y="288" fill="#1a2026">1</text>
+    <text x="376" y="288" fill="#1a2026">2</text><text x="432" y="288" fill="#1a2026">4</text>
+  </g>
+  <!-- legend -->
+  <g font-size="12.5">
+    <rect x="486" y="52" width="18" height="18" fill="#d7e0f2" stroke="#42525e" stroke-width="1"/>
+    <text x="512" y="66" fill="#5c6b76">reaches Pacific only</text>
+    <rect x="486" y="84" width="18" height="18" fill="#f0e0c4" stroke="#42525e" stroke-width="1"/>
+    <text x="512" y="98" fill="#5c6b76">reaches Atlantic only</text>
+    <rect x="486" y="116" width="18" height="18" fill="#4169E1"/>
+    <text x="512" y="130" fill="#5c6b76">reaches both — the answer</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="344">Two reverse DFS runs walk inland from the blue Pacific edge (top + left) and the amber</text>
+    <text x="40" y="360">Atlantic edge (bottom + right), each moving only to equal-or-higher neighbors. A cell is in</text>
+    <text x="40" y="376">the answer when both walks reach it: (0,4), (1,3), (1,4), (2,2), (3,0), (3,1), (4,0).</text>
+  </g>
+</svg>

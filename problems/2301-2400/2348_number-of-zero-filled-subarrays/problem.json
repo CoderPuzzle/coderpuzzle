@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2348,
+  "slug": "number-of-zero-filled-subarrays",
+  "title": "Number of Zero-Filled Subarrays",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "topics": [
+    "Array",
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "zeroFilledSubarray",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "zeroFilledSubarray",
+      "rust": "zero_filled_subarray",
+      "typescript": "zeroFilledSubarray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

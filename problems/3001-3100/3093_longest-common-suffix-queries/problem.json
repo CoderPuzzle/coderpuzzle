@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3093,
+  "slug": "longest-common-suffix-queries",
+  "title": "Longest Common Suffix Queries",
+  "difficulty": "Hard",
+  "tags": [
+    "Trie",
+    "String"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "stringIndices",
+    "parameters": [
+      {
+        "name": "wordsContainer",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "wordsQuery",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "stringIndices",
+      "rust": "string_indices",
+      "typescript": "stringIndices"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

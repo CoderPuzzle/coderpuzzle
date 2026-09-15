@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 375,
+  "slug": "guess-number-higher-or-lower-ii",
+  "title": "Guess Number Higher or Lower II",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming",
+    "Game Theory",
+    "Interval DP"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Minimax",
+    "Game Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getMoneyAmount",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "getMoneyAmount",
+      "rust": "get_money_amount",
+      "typescript": "getMoneyAmount"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

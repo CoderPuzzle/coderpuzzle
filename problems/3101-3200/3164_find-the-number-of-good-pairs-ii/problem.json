@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3164,
+  "slug": "find-the-number-of-good-pairs-ii",
+  "title": "Find the Number of Good Pairs II",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberOfPairs",
+    "parameters": [
+      {
+        "name": "nums1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "numberOfPairs",
+      "rust": "number_of_pairs",
+      "typescript": "numberOfPairs"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

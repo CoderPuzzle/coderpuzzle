@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1581,
+  "slug": "customer-who-visited-but-did-not-make-any-transactions",
+  "title": "Customer Who Visited but Did Not Make Any Transactions",
+  "difficulty": "Easy",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Visits (visit_id INTEGER, customer_id INTEGER);\nCREATE TABLE Transactions (transaction_id INTEGER, visit_id INTEGER, amount INTEGER);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

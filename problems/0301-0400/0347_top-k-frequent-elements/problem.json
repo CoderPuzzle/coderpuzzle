@@ -1,0 +1,69 @@
+{
+  "schema_version": 2,
+  "reference_solution": "bucket",
+  "id": 347,
+  "slug": "top-k-frequent-elements",
+  "title": "Top K Frequent Elements",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Heap",
+    "Quickselect"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Divide and Conquer",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Bucket Sort",
+    "Counting",
+    "Quickselect"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "topKFrequent",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "topKFrequent",
+      "rust": "top_k_frequent",
+      "typescript": "topKFrequent"
+    },
+    "comparison": "sorted"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

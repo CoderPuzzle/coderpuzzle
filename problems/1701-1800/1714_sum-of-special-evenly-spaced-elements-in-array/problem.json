@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1714,
+  "slug": "sum-of-special-evenly-spaced-elements-in-array",
+  "title": "Sum Of Special Evenly-Spaced Elements In Array",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Sqrt Decomposition"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Sqrt Decomposition"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "solve",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "solve",
+      "rust": "solve",
+      "typescript": "solve"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 4096
+  }
+}

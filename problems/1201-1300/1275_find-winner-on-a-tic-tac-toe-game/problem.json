@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1275,
+  "slug": "find-winner-on-a-tic-tac-toe-game",
+  "title": "Find Winner on a Tic Tac Toe Game",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Matrix",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Matrix",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "tictactoe",
+    "parameters": [
+      {
+        "name": "moves",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "tictactoe",
+      "rust": "tictactoe",
+      "typescript": "tictactoe"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

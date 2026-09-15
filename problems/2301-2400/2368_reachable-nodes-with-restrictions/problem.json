@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2368,
+  "slug": "reachable-nodes-with-restrictions",
+  "title": "Reachable Nodes With Restrictions",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Graph Theory"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Graph Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "reachableNodes",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "restricted",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "reachableNodes",
+      "rust": "reachable_nodes",
+      "typescript": "reachableNodes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

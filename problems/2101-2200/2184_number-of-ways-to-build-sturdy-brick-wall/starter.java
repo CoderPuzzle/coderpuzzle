@@ -1,0 +1,6 @@
+class Solution {
+
+    public int buildWall(int height, int width, int[] bricks) {
+        throw new UnsupportedOperationException("TODO");
+    }
+}

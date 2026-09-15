@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3709,
+  "slug": "design-exam-scores-tracker",
+  "title": "Design Exam Scores Tracker",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Design",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Design",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "ExamTracker",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "record",
+        "parameters": [
+          {
+            "name": "time",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "score",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "totalScore",
+        "parameters": [
+          {
+            "name": "startTime",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "endTime",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

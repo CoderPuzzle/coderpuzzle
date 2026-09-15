@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="280" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b57f30"/>
+    </marker>
+  </defs>
+  <!-- five rows: one per right index of "eceba" -->
+  <g font-size="15" font-weight="600" text-anchor="middle">
+    <!-- row 0: window [0,0] -->
+    <rect x="52" y="34" width="30" height="30" rx="4" fill="#dbe4f6"/>
+    <text x="67" y="55" fill="#1a2026">e</text>
+    <text x="107" y="55" fill="#5c6b76">c</text><text x="147" y="55" fill="#5c6b76">e</text>
+    <text x="187" y="55" fill="#5c6b76">b</text><text x="227" y="55" fill="#5c6b76">a</text>
+    <!-- row 1: window [0,1] -->
+    <rect x="52" y="80" width="30" height="30" rx="4" fill="#dbe4f6"/>
+    <rect x="92" y="80" width="30" height="30" rx="4" fill="#dbe4f6"/>
+    <text x="67" y="101" fill="#1a2026">e</text><text x="107" y="101" fill="#1a2026">c</text>
+    <text x="147" y="101" fill="#5c6b76">e</text><text x="187" y="101" fill="#5c6b76">b</text><text x="227" y="101" fill="#5c6b76">a</text>
+    <!-- row 2: window [0,2] -->
+    <rect x="52" y="126" width="30" height="30" rx="4" fill="#4169E1"/>
+    <rect x="92" y="126" width="30" height="30" rx="4" fill="#dbe4f6"/>
+    <rect x="132" y="126" width="30" height="30" rx="4" fill="#4169E1"/>
+    <text x="67" y="147" fill="#ffffff">e</text><text x="107" y="147" fill="#1a2026">c</text><text x="147" y="147" fill="#ffffff">e</text>
+    <text x="187" y="147" fill="#5c6b76">b</text><text x="227" y="147" fill="#5c6b76">a</text>
+    <!-- row 3: window [2,3] -->
+    <text x="67" y="193" fill="#5c6b76">e</text><text x="107" y="193" fill="#5c6b76">c</text>
+    <rect x="132" y="172" width="30" height="30" rx="4" fill="#dbe4f6"/>
+    <rect x="172" y="172" width="30" height="30" rx="4" fill="#dbe4f6"/>
+    <text x="147" y="193" fill="#1a2026">e</text><text x="187" y="193" fill="#1a2026">b</text>
+    <text x="227" y="193" fill="#5c6b76">a</text>
+    <!-- row 4: window [3,4] -->
+    <text x="67" y="239" fill="#5c6b76">e</text><text x="107" y="239" fill="#5c6b76">c</text><text x="147" y="239" fill="#5c6b76">e</text>
+    <rect x="172" y="218" width="30" height="30" rx="4" fill="#dbe4f6"/>
+    <rect x="212" y="218" width="30" height="30" rx="4" fill="#dbe4f6"/>
+    <text x="187" y="239" fill="#1a2026">b</text><text x="227" y="239" fill="#1a2026">a</text>
+  </g>
+  <!-- right pointer arrows -->
+  <g stroke="#4169E1" stroke-width="1.6" fill="none">
+    <line x1="67" y1="22" x2="67" y2="30" marker-end="url(#arrow)"/>
+    <line x1="107" y1="68" x2="107" y2="76" marker-end="url(#arrow)"/>
+    <line x1="147" y1="114" x2="147" y2="122" marker-end="url(#arrow)"/>
+    <line x1="187" y1="160" x2="187" y2="168" marker-end="url(#arrow)"/>
+    <line x1="227" y1="206" x2="227" y2="214" marker-end="url(#arrow)"/>
+  </g>
+  <!-- shrink annotations rows 3 and 4 -->
+  <g font-size="11.5" fill="#b57f30">
+    <text x="150" y="167">3 distinct → shrink: drop e, c</text>
+    <text x="190" y="213">3 distinct → shrink: drop e</text>
+  </g>
+  <!-- per-row state labels -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="280" y="55">window "e" — distinct {e} — best 1</text>
+    <text x="280" y="101">window "ec" — distinct {c, e} — best 2</text>
+    <text x="280" y="147" fill="#1a2026" font-weight="600">window "ece" — distinct {c, e} — best 3</text>
+    <text x="280" y="193">window "eb" — distinct {b, e} — best 3</text>
+    <text x="280" y="239">window "ba" — distinct {a, b} — best 3</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="52" y="272">Each row is one step of the sweep: extend right; when the window exceeds k = 2 distinct</text>
+    <text x="52" y="288">letters, shrink from the left until valid. Answer: 3 ("ece").</text>
+  </g>
+</svg>

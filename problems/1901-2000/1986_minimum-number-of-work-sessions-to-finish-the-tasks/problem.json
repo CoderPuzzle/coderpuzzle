@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1986,
+  "slug": "minimum-number-of-work-sessions-to-finish-the-tasks",
+  "title": "Minimum Number of Work Sessions to Finish the Tasks",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Backtracking"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Backtracking",
+    "Bit Manipulation",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minSessions",
+    "parameters": [
+      {
+        "name": "tasks",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "sessionTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minSessions",
+      "rust": "min_sessions",
+      "typescript": "minSessions"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

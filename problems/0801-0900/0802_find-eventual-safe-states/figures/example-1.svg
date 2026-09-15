@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 252" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="aI" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <!-- arcs above -->
+  <path d="M 55 92 Q 91 56 127 92" fill="none" stroke="#1a2026" stroke-width="1.5" marker-end="url(#aI)"/>
+  <path d="M 127 92 Q 163 56 199 92" fill="none" stroke="#1a2026" stroke-width="1.5" marker-end="url(#aI)"/>
+  <path d="M 55 92 Q 127 34 199 92" fill="none" stroke="#1a2026" stroke-width="1.5" marker-end="url(#aI)"/>
+  <path d="M 199 92 Q 307 6 415 92" fill="none" stroke="#1a2026" stroke-width="1.5" marker-end="url(#aI)"/>
+  <path d="M 343 92 Q 379 56 415 92" fill="none" stroke="#1a2026" stroke-width="1.5" marker-end="url(#aI)"/>
+  <!-- arcs below -->
+  <path d="M 127 128 Q 199 170 271 128" fill="none" stroke="#1a2026" stroke-width="1.5" marker-end="url(#aI)"/>
+  <path d="M 271 128 Q 163 196 55 128" fill="none" stroke="#1a2026" stroke-width="1.5" marker-end="url(#aI)"/>
+  <!-- nodes: safe = 2,4,5,6 -->
+  <g font-weight="600" text-anchor="middle">
+    <circle cx="55" cy="110" r="18" fill="#f6e8d3" stroke="#b57f30" stroke-width="1.8"/>
+    <text x="55" y="115" fill="#1a2026">0</text>
+    <circle cx="127" cy="110" r="18" fill="#f6e8d3" stroke="#b57f30" stroke-width="1.8"/>
+    <text x="127" y="115" fill="#1a2026">1</text>
+    <circle cx="199" cy="110" r="18" fill="#4169E1" stroke="#1a2026" stroke-width="1.8"/>
+    <text x="199" y="115" fill="#ffffff">2</text>
+    <circle cx="271" cy="110" r="18" fill="#f6e8d3" stroke="#b57f30" stroke-width="1.8"/>
+    <text x="271" y="115" fill="#1a2026">3</text>
+    <circle cx="343" cy="110" r="18" fill="#4169E1" stroke="#1a2026" stroke-width="1.8"/>
+    <text x="343" y="115" fill="#ffffff">4</text>
+    <circle cx="415" cy="110" r="18" fill="#4169E1" stroke="#1a2026" stroke-width="1.8"/>
+    <text x="415" y="115" fill="#ffffff">5</text>
+    <circle cx="487" cy="110" r="18" fill="#4169E1" stroke="#1a2026" stroke-width="1.8"/>
+    <text x="487" y="115" fill="#ffffff">6</text>
+  </g>
+  <circle cx="120" cy="222" r="8" fill="#4169E1"/>
+  <text x="134" y="227" fill="#1a2026" font-size="12.5">safe — every path ends at terminal node 5 or 6</text>
+  <circle cx="120" cy="244" r="8" fill="#f6e8d3" stroke="#b57f30"/>
+  <text x="134" y="249" fill="#1a2026" font-size="12.5">unsafe — 0, 1, 3 lie on or reach the cycle 0 → 1 → 3 → 0</text>
+</svg>

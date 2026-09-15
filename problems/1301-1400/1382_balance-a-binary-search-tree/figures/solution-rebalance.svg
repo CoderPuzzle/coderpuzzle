@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 322" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+<circle cx="90" cy="70" r="16" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/><text x="90" y="75" text-anchor="middle" font-weight="600">1</text>
+  <line x1="90" y1="86" x2="90" y2="108" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="90" cy="124" r="16" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/><text x="90" y="129" text-anchor="middle" font-weight="600">2</text>
+  <line x1="90" y1="140" x2="90" y2="162" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="90" cy="178" r="16" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/><text x="90" y="183" text-anchor="middle" font-weight="600">3</text>
+  <line x1="90" y1="194" x2="90" y2="216" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="90" cy="232" r="16" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/><text x="90" y="237" text-anchor="middle" font-weight="600">4</text>
+  <text x="90" y="300" text-anchor="middle" fill="#5c6b76" font-size="12">in: a right chain</text>
+  <line x1="380" y1="80" x2="300" y2="170" stroke="#42525e" stroke-width="1.5"/>
+  <line x1="380" y1="80" x2="460" y2="170" stroke="#42525e" stroke-width="1.5"/>
+  <line x1="460" y1="170" x2="460" y2="260" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="380" cy="80" r="16" fill="#e8edf8" stroke="#1a2026" stroke-width="1.5"/><text x="380" y="85" text-anchor="middle" font-weight="600">2</text>
+  <circle cx="300" cy="170" r="16" fill="#e8edf8" stroke="#1a2026" stroke-width="1.5"/><text x="300" y="175" text-anchor="middle" font-weight="600">1</text>
+  <circle cx="460" cy="170" r="16" fill="#e8edf8" stroke="#1a2026" stroke-width="1.5"/><text x="460" y="175" text-anchor="middle" font-weight="600">3</text>
+  <circle cx="460" cy="260" r="16" fill="#e8edf8" stroke="#1a2026" stroke-width="1.5"/><text x="460" y="265" text-anchor="middle" font-weight="600">4</text>
+  <text x="380" y="300" text-anchor="middle" fill="#5c6b76" font-size="12">out: midpoint rebuild</text>
+  <text x="40" y="40" fill="#5c6b76" font-size="12">root = [1, null, 2, null, 3, null, 4]: the in-order walk collects 1, 2, 3, 4, and</text>
+  <text x="40" y="58" fill="#5c6b76" font-size="12">build(0, 3) takes values[1] = 2 as the root, recursing on the halves around it.</text>
+  <line x1="150" y1="170" x2="268" y2="100" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowB)"/>
+</svg>

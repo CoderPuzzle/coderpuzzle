@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 813,
+  "slug": "largest-sum-of-averages",
+  "title": "Largest Sum of Averages",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "largestSumOfAverages",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "number"
+    },
+    "entrypoints": {
+      "go": "largestSumOfAverages",
+      "rust": "largest_sum_of_averages",
+      "typescript": "largestSumOfAverages"
+    },
+    "comparison": "close"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

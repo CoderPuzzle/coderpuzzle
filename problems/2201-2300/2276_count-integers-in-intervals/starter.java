@@ -1,0 +1,8 @@
+class CountIntervals {
+
+    public CountIntervals() {}
+
+    public void add(int left, int right) {}
+
+    public int count() {}
+}

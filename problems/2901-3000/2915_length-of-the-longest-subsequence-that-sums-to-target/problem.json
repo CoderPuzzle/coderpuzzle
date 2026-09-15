@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2915,
+  "slug": "length-of-the-longest-subsequence-that-sums-to-target",
+  "title": "Length of the Longest Subsequence That Sums to Target",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Knapsack Problem",
+    "0-1 Knapsack"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Knapsack Problem",
+    "0-1 Knapsack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "lengthOfLongestSubsequence",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "lengthOfLongestSubsequence",
+      "rust": "length_of_longest_subsequence",
+      "typescript": "lengthOfLongestSubsequence"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

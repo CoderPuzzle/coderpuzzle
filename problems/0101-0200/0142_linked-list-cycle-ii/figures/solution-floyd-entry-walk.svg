@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="620" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a94a0"/>
+    </marker>
+  </defs>
+  <text x="20" y="24" fill="#1a2026" font-weight="600">values = [3,2,0,-4], pos = 1 - the tail feeds back into node 1, so the cycle starts at 2</text>
+  <!-- list nodes -->
+  <g stroke="#1a2026" stroke-width="1.5" fill="#ffffff">
+    <rect x="50" y="56" width="64" height="36" rx="6"/>
+    <rect x="184" y="56" width="64" height="36" rx="6" fill="#e9eefb" stroke="#4169E1" stroke-width="2.4"/>
+    <rect x="318" y="56" width="64" height="36" rx="6"/>
+    <rect x="452" y="56" width="64" height="36" rx="6" fill="#e9eefb" stroke="#4169E1" stroke-width="1.8"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="82" y="79">3</text>
+    <text x="216" y="79">2</text>
+    <text x="350" y="79">0</text>
+    <text x="484" y="79">-4</text>
+  </g>
+  <g fill="#8a94a0" font-size="10.5" text-anchor="middle">
+    <text x="82" y="108">index 0</text>
+    <text x="216" y="108">index 1</text>
+    <text x="350" y="108">index 2</text>
+    <text x="484" y="108">index 3</text>
+  </g>
+  <!-- forward arrows -->
+  <g stroke="#8a94a0" stroke-width="1.4" fill="none">
+    <line x1="114" y1="74" x2="176" y2="74" marker-end="url(#arr)"/>
+    <line x1="248" y1="74" x2="310" y2="74" marker-end="url(#arr)"/>
+    <line x1="382" y1="74" x2="444" y2="74" marker-end="url(#arr)"/>
+  </g>
+  <!-- back edge -4 -> 2 -->
+  <path d="M 484 92 C 484 150, 216 130, 216 98" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arr)"/>
+  <!-- segment braces -->
+  <path d="M 82 120 C 82 140, 160 150, 205 140" fill="none" stroke="#8a94a0" stroke-width="1.2"/>
+  <text x="140" y="166" fill="#5b6470" font-size="11.5" text-anchor="middle">a = 1</text>
+  <path d="M 240 124 C 290 158, 420 158, 470 124" fill="none" stroke="#8a94a0" stroke-width="1.2"/>
+  <text x="355" y="182" fill="#5b6470" font-size="11.5" text-anchor="middle">b = 2</text>
+  <text x="340" y="136" fill="#4169E1" font-size="11" text-anchor="middle" font-weight="600">meet at index 3</text>
+  <text x="360" y="230" fill="#5b6470" font-size="11.5" text-anchor="middle">c = 1, and the algebra forces c = a</text>
+  <!-- phase 2 -->
+  <text x="20" y="262" fill="#1a2026" font-weight="600" font-size="12.5">Phase 2 - restart one pointer at the head, both step one node at a time:</text>
+  <g stroke="#8a94a0" stroke-width="1.4" fill="none">
+    <line x1="60" y1="292" x2="112" y2="292" marker-end="url(#arr)"/>
+    <line x1="124" y1="292" x2="176" y2="292" marker-end="url(#arr)"/>
+  </g>
+  <text x="60" y="284" fill="#5b6470" font-size="11">finder: 3</text>
+  <text x="216" y="297" fill="#4169E1" font-size="11.5" font-weight="700">2</text>
+  <g stroke="#8a94a0" stroke-width="1.4" fill="none">
+    <line x1="460" y1="292" x2="408" y2="292" marker-end="url(#arr)"/>
+    <line x1="396" y1="292" x2="270" y2="292" marker-end="url(#arr)"/>
+  </g>
+  <text x="452" y="284" fill="#5b6470" font-size="11">slow: -4</text>
+  <text x="216" y="320" fill="#4169E1" font-size="11.5" text-anchor="middle" font-weight="600">both arrive together at the entry - answer index 1</text>
+</svg>

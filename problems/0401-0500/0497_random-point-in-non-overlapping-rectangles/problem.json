@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 497,
+  "slug": "random-point-in-non-overlapping-rectangles",
+  "title": "Random Point in Non-overlapping Rectangles",
+  "difficulty": "Medium",
+  "tags": [
+    "Randomized",
+    "Prefix Sum",
+    "Binary Search"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Binary Search",
+    "Reservoir Sampling",
+    "Prefix Sum",
+    "Ordered Set",
+    "Randomized"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Solution",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "rects",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "pick",
+        "parameters": [],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

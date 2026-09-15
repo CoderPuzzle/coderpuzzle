@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1909,
+  "slug": "remove-one-element-to-make-the-array-strictly-increasing",
+  "title": "Remove One Element to Make the Array Strictly Increasing",
+  "difficulty": "Easy",
+  "tags": [
+    "Array"
+  ],
+  "topics": [
+    "Array"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canBeIncreasing",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canBeIncreasing",
+      "rust": "can_be_increasing",
+      "typescript": "canBeIncreasing"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

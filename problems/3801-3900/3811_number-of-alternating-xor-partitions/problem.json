@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3811,
+  "slug": "number-of-alternating-xor-partitions",
+  "title": "Number of Alternating XOR Partitions",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Dynamic Programming",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Dynamic Programming",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "alternatingXor",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "target1",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "target2",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "alternatingXor",
+      "rust": "alternating_xor",
+      "typescript": "alternatingXor"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

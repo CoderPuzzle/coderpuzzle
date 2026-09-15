@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1649,
+  "slug": "create-sorted-array-through-instructions",
+  "title": "Create Sorted Array through Instructions",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Divide and Conquer",
+    "Binary Indexed Tree",
+    "Segment Tree"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Divide and Conquer",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Merge Sort",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "createSortedArray",
+    "parameters": [
+      {
+        "name": "instructions",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "createSortedArray",
+      "rust": "create_sorted_array",
+      "typescript": "createSortedArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- the ring and its center button -->
+  <circle cx="190" cy="160" r="97" fill="none" stroke="#42525e" stroke-width="1.8"/>
+  <circle cx="190" cy="160" r="44" fill="#eef0f3" stroke="#42525e" stroke-width="1.4"/>
+  <text x="190" y="165" text-anchor="middle" fill="#5c6b76" font-size="13">button</text>
+  <!-- 12:00 marker -->
+  <path d="M 190 66 L 183 52 L 197 52 Z" fill="#1a2026"/>
+  <text x="216" y="52" fill="#5c6b76" font-size="12">12:00</text>
+  <!-- rotation by two steps from g (at 12:00) to the nearest d -->
+  <path d="M 190 42 A 118 118 0 0 1 305.0 186.3" fill="none" stroke="#4169E1" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowA)"/>
+  <text x="292" y="80" fill="#4169E1" font-size="12.5" font-weight="600">rotate 2 steps</text>
+  <!-- ring characters: g o d d i n g -->
+  <circle cx="190" cy="84" r="14" fill="#4169E1" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="190" y="89" text-anchor="middle" fill="#ffffff" font-weight="600">g</text>
+  <circle cx="249.4" cy="112.6" r="14" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="249.4" y="117.6" text-anchor="middle" fill="#1a2026">o</text>
+  <circle cx="264.1" cy="176.9" r="14" fill="#4169E1" fill-opacity="0.18" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="264.1" y="181.9" text-anchor="middle" fill="#1a2026" font-weight="600">d</text>
+  <circle cx="223.0" cy="228.5" r="14" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="223" y="233.5" text-anchor="middle" fill="#1a2026">d</text>
+  <circle cx="157.0" cy="228.5" r="14" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="157" y="233.5" text-anchor="middle" fill="#1a2026">i</text>
+  <circle cx="115.9" cy="176.9" r="14" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="115.9" y="181.9" text-anchor="middle" fill="#1a2026">n</text>
+  <circle cx="130.6" cy="112.6" r="14" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="130.6" y="117.6" text-anchor="middle" fill="#1a2026">g</text>
+  <g font-size="13">
+    <text x="360" y="96" fill="#1a2026" font-weight="600">ring = "godding", key = "gd"</text>
+    <text x="360" y="132" fill="#5c6b76">g is already at 12:00 → press</text>
+    <text x="360" y="156" fill="#5c6b76">rotate 2 steps to bring a d to 12:00</text>
+    <text x="360" y="180" fill="#5c6b76">press to spell d</text>
+    <text x="360" y="216" fill="#4169E1" font-weight="600">1 + 2 + 1 = 4 steps</text>
+  </g>
+</svg>

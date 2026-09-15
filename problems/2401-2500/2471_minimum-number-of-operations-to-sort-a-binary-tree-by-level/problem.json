@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2471,
+  "slug": "minimum-number-of-operations-to-sort-a-binary-tree-by-level",
+  "title": "Minimum Number of Operations to Sort a Binary Tree by Level",
+  "difficulty": "Medium",
+  "tags": [
+    "Binary Tree",
+    "Breadth-First Search",
+    "Sorting"
+  ],
+  "topics": [
+    "Tree",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumOperations",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumOperations",
+      "rust": "minimum_operations",
+      "typescript": "minimumOperations"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

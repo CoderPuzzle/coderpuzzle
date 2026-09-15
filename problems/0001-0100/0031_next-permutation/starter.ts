@@ -1,0 +1,3 @@
+function nextPermutation(nums: number[]): number[] {
+    throw new Error("TODO");
+}

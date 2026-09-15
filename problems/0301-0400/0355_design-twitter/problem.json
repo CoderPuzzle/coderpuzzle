@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 355,
+  "slug": "design-twitter",
+  "title": "Design Twitter",
+  "difficulty": "Medium",
+  "tags": [
+    "Heap",
+    "Hash Table"
+  ],
+  "topics": [
+    "Hash Table",
+    "Linked List",
+    "Design",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Twitter",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "postTweet",
+        "parameters": [
+          {
+            "name": "userId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "tweetId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "getNewsFeed",
+        "parameters": [
+          {
+            "name": "userId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "follow",
+        "parameters": [
+          {
+            "name": "followerId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "followeeId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "unfollow",
+        "parameters": [
+          {
+            "name": "followerId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "followeeId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

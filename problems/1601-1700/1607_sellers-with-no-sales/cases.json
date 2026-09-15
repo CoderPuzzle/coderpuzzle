@@ -1,0 +1,106 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(101,'Alice'),\n(102,'Bob'),\n(103,'Charlie');\nINSERT INTO Orders VALUES\n(1,'2020-03-01',1500,101,1),\n(2,'2020-05-25',2400,102,2),\n(3,'2019-05-25',800,101,3),\n(4,'2020-09-13',1000,103,2),\n(5,'2019-02-11',700,101,2);\nINSERT INTO Seller VALUES\n(1,'Daniel'),\n(2,'Elizabeth'),\n(3,'Frank');"
+      ],
+      "expected": [
+        [
+          "Frank"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Seller VALUES\n(10,'Gina');"
+      ],
+      "expected": [
+        [
+          "Gina"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(201,'Henry');\nINSERT INTO Orders VALUES\n(11,'2018-01-01',100,201,11),\n(12,'2019-12-31',200,201,11);\nINSERT INTO Seller VALUES\n(11,'Ivan');"
+      ],
+      "expected": [
+        [
+          "Ivan"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(202,'Jack');\nINSERT INTO Orders VALUES\n(13,'2020-06-15',300,202,12);\nINSERT INTO Seller VALUES\n(12,'Karen');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(203,'Liam');\nINSERT INTO Orders VALUES\n(14,'2019-04-01',150,203,13),\n(15,'2020-04-01',250,203,13),\n(16,'2021-04-01',350,203,13);\nINSERT INTO Seller VALUES\n(13,'Maria');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(301,'Nina'),\n(302,'Oscar');\nINSERT INTO Orders VALUES\n(21,'2020-01-05',400,301,20),\n(22,'2019-08-08',500,302,21),\n(23,'2021-02-02',600,301,22),\n(24,'2020-11-11',700,302,22);\nINSERT INTO Seller VALUES\n(20,'Paul'),\n(21,'Quinn'),\n(22,'Rita'),\n(23,'Sam');"
+      ],
+      "expected": [
+        [
+          "Quinn"
+        ],
+        [
+          "Sam"
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(103,'Charlie'),\n(102,'Bob'),\n(101,'Alice');\nINSERT INTO Orders VALUES\n(5,'2019-02-11',700,101,2),\n(4,'2020-09-13',1000,103,2),\n(3,'2019-05-25',800,101,3),\n(2,'2020-05-25',2400,102,2),\n(1,'2020-03-01',1500,101,1);\nINSERT INTO Seller VALUES\n(3,'Frank'),\n(2,'Elizabeth'),\n(1,'Daniel');"
+      ],
+      "expected": [
+        [
+          "Frank"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(201,'Henry');\nINSERT INTO Orders VALUES\n(12,'2019-12-31',200,201,11),\n(11,'2018-01-01',100,201,11);\nINSERT INTO Seller VALUES\n(11,'Ivan');"
+      ],
+      "expected": [
+        [
+          "Ivan"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(203,'Liam');\nINSERT INTO Orders VALUES\n(16,'2021-04-01',350,203,13),\n(15,'2020-04-01',250,203,13),\n(14,'2019-04-01',150,203,13);\nINSERT INTO Seller VALUES\n(13,'Maria');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(302,'Oscar'),\n(301,'Nina');\nINSERT INTO Orders VALUES\n(24,'2020-11-11',700,302,22),\n(23,'2021-02-02',600,301,22),\n(22,'2019-08-08',500,302,21),\n(21,'2020-01-05',400,301,20);\nINSERT INTO Seller VALUES\n(23,'Sam'),\n(22,'Rita'),\n(21,'Quinn'),\n(20,'Paul');"
+      ],
+      "expected": [
+        [
+          "Quinn"
+        ],
+        [
+          "Sam"
+        ]
+      ]
+    }
+  ]
+}

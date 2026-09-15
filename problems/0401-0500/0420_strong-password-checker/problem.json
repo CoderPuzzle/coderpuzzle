@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 420,
+  "slug": "strong-password-checker",
+  "title": "Strong Password Checker",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Greedy",
+    "Heap (Priority Queue)"
+  ],
+  "topics": [
+    "String",
+    "Greedy",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "strongPasswordChecker",
+    "parameters": [
+      {
+        "name": "password",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "strongPasswordChecker",
+      "rust": "strong_password_checker",
+      "typescript": "strongPasswordChecker"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

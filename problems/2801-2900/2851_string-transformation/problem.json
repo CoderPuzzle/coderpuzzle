@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2851,
+  "slug": "string-transformation",
+  "title": "String Transformation",
+  "difficulty": "Hard",
+  "tags": [
+    "KMP",
+    "Matrix Exponentiation",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Dynamic Programming",
+    "String Matching"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberOfWays",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "t",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numberOfWays",
+      "rust": "number_of_ways",
+      "typescript": "numberOfWays"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

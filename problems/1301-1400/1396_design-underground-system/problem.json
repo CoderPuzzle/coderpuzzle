@@ -1,0 +1,110 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1396,
+  "slug": "design-underground-system",
+  "title": "Design Underground System",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "UndergroundSystem",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "checkIn",
+        "parameters": [
+          {
+            "name": "id",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "stationName",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "t",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "checkOut",
+        "parameters": [
+          {
+            "name": "id",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "stationName",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "t",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "getAverageTime",
+        "parameters": [
+          {
+            "name": "startStation",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "endStation",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "number"
+        }
+      }
+    ],
+    "comparison": "close"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

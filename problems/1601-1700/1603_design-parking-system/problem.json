@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1603,
+  "slug": "design-parking-system",
+  "title": "Design Parking System",
+  "difficulty": "Easy",
+  "tags": [
+    "Design",
+    "Simulation",
+    "Counting"
+  ],
+  "topics": [
+    "Design",
+    "Simulation",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "ParkingSystem",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "big",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "medium",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "small",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "addCar",
+        "parameters": [
+          {
+            "name": "carType",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

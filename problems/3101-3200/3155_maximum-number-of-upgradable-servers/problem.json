@@ -1,0 +1,89 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3155,
+  "slug": "maximum-number-of-upgradable-servers",
+  "title": "Maximum Number of Upgradable Servers",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Binary Search"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Binary Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxUpgrades",
+    "parameters": [
+      {
+        "name": "count",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "upgrade",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "sell",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "money",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "maxUpgrades",
+      "rust": "max_upgrades",
+      "typescript": "maxUpgrades"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

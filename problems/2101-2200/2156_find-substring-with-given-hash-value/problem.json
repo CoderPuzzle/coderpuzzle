@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2156,
+  "slug": "find-substring-with-given-hash-value",
+  "title": "Find Substring With Given Hash Value",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Sliding Window",
+    "Rolling Hash",
+    "Hash Function"
+  ],
+  "topics": [
+    "String",
+    "Sliding Window",
+    "Rolling Hash",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "subStrHash",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "power",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "modulo",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "hashValue",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "subStrHash",
+      "rust": "sub_str_hash",
+      "typescript": "subStrHash"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

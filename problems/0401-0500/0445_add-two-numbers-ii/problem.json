@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 445,
+  "slug": "add-two-numbers-ii",
+  "title": "Add Two Numbers II",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Math",
+    "Stack"
+  ],
+  "topics": [
+    "Linked List",
+    "Math",
+    "Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "addTwoNumbers",
+    "parameters": [
+      {
+        "name": "l1",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "l2",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "addTwoNumbers",
+      "rust": "add_two_numbers",
+      "typescript": "addTwoNumbers"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

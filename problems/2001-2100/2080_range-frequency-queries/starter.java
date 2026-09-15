@@ -1,0 +1,6 @@
+class RangeFreqQuery {
+
+    public RangeFreqQuery(int[] arr) {}
+
+    public int query(int left, int right, int value) {}
+}

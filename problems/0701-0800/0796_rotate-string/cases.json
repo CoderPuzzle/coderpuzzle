@@ -1,0 +1,153 @@
+{
+  "public": [
+    {
+      "input": [
+        "abcde",
+        "cdeab"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abcde",
+        "abced"
+      ],
+      "expected": false
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "loop",
+        "loop"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abcdef",
+        "abcdef"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "a",
+        "a"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "a",
+        "b"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "abcde",
+        "bcdea"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "bcdea",
+        "abcde"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "hello",
+        "llohe"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abcdefghij",
+        "ijabcdefgh"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abcdef",
+        "defabc"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abcd",
+        "cdab"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abababab",
+        "babababa"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "zzzzzz",
+        "zzzzzz"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abcde",
+        "bcdeb"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "abcd",
+        "acbd"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "abcde",
+        "edcba"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "abc",
+        "ab"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "ab",
+        "bca"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij",
+        "defghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabc"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij",
+        "abcdefghijabcdefghijabcdefghijabcdefgzijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij"
+      ],
+      "expected": false
+    }
+  ]
+}

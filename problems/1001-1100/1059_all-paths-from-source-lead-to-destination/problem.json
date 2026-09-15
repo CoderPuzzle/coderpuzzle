@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1059,
+  "slug": "all-paths-from-source-lead-to-destination",
+  "title": "All Paths from Source Lead to Destination",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph Theory",
+    "Topological Sort",
+    "Kosaraju's Algorithm",
+    "Tarjan's SCC Algorithm"
+  ],
+  "topics": [
+    "Graph Theory",
+    "Topological Sort",
+    "Kosaraju's Algorithm",
+    "Tarjan's SCC Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "leadsToDestination",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "source",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "destination",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "leadsToDestination",
+      "rust": "leads_to_destination",
+      "typescript": "leadsToDestination"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

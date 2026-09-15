@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3715,
+  "slug": "sum-of-perfect-square-ancestors",
+  "title": "Sum of Perfect Square Ancestors",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Tree",
+    "Depth-First Search",
+    "Counting",
+    "Number Theory"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Tree",
+    "Depth-First Search",
+    "Counting",
+    "Number Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sumOfAncestors",
+    "parameters": [
+      {
+        "name": "parent",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "sumOfAncestors",
+      "rust": "sum_of_ancestors",
+      "typescript": "sumOfAncestors"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2953,
+  "slug": "count-complete-substrings",
+  "title": "Count Complete Substrings",
+  "difficulty": "Hard",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countCompleteSubstrings",
+    "parameters": [
+      {
+        "name": "word",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countCompleteSubstrings",
+      "rust": "count_complete_substrings",
+      "typescript": "countCompleteSubstrings"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

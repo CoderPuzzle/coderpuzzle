@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="480" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- number line -3..3 -->
+  <line x1="42" y1="175" x2="414" y2="175" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.4">
+    <line x1="60" y1="169" x2="60" y2="181"/><line x1="116" y1="169" x2="116" y2="181"/><line x1="172" y1="169" x2="172" y2="181"/><line x1="228" y1="169" x2="228" y2="181"/><line x1="284" y1="169" x2="284" y2="181"/><line x1="340" y1="169" x2="340" y2="181"/><line x1="396" y1="169" x2="396" y2="181"/>
+  </g>
+  <g font-size="12.5" fill="#5c6b76" text-anchor="middle">
+    <text x="60" y="200">-3</text><text x="116" y="200">-2</text><text x="172" y="200">-1</text><text x="228" y="200">0</text><text x="284" y="200">1</text><text x="340" y="200">2</text><text x="396" y="200">3</text>
+  </g>
+  <!-- factories at -2 and 2, limit 1 -->
+  <g fill="#eef1f5" stroke="#42525e" stroke-width="1.5">
+    <path d="M 98 254 L 98 236 L 108 244 L 118 236 L 128 244 L 138 236 L 134 236 L 134 222 L 140 222 L 140 254 Z"/>
+    <path d="M 322 254 L 322 236 L 332 244 L 342 236 L 352 244 L 362 236 L 358 236 L 358 222 L 364 222 L 364 254 Z"/>
+  </g>
+  <g font-size="11.5" fill="#5c6b76" text-anchor="middle">
+    <text x="116" y="272">factory, limit 1</text>
+    <text x="340" y="272">factory, limit 1</text>
+  </g>
+  <!-- robots at -1 and 1 -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="172" cy="82" r="5.5"/>
+    <rect x="164" y="90" width="16" height="13" rx="3"/>
+    <circle cx="284" cy="82" r="5.5"/>
+    <rect x="276" y="90" width="16" height="13" rx="3"/>
+  </g>
+  <line x1="156" y1="112" x2="126" y2="146" stroke="#4169E1" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a2)"/>
+  <line x1="300" y1="112" x2="330" y2="146" stroke="#4169E1" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a2)"/>
+  <text x="160" y="70" font-size="12.5" fill="#5c6b76" text-anchor="middle">robot at -1 moves left</text>
+  <text x="296" y="70" font-size="12.5" fill="#5c6b76" text-anchor="middle">robot at 1 moves right</text>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="42" y="34">Each factory has limit 1, so the robots swap sides:</text>
+    <text x="42" y="52" fill="#4169E1" font-weight="600">|2-1| + |(-2)-(-1)| = 2</text>
+  </g>
+</svg>

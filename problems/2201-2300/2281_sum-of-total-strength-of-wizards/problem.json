@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2281,
+  "slug": "sum-of-total-strength-of-wizards",
+  "title": "Sum of Total Strength of Wizards",
+  "difficulty": "Hard",
+  "tags": [
+    "Monotonic Stack",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Monotonic Stack",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "totalStrength",
+    "parameters": [
+      {
+        "name": "strength",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "totalStrength",
+      "rust": "total_strength",
+      "typescript": "totalStrength"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

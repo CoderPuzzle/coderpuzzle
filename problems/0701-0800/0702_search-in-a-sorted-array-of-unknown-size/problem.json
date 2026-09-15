@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 702,
+  "slug": "search-in-a-sorted-array-of-unknown-size",
+  "title": "Search in a Sorted Array of Unknown Size",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Interactive"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "search",
+    "oracle": "ArrayReader",
+    "oracle_methods": [
+      {
+        "name": "get",
+        "parameters": [
+          {
+            "name": "index",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 10000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "ArrayReader",
+        "construct": [
+          "arr"
+        ],
+        "auxiliary": [
+          "target"
+        ]
+      }
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,791 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Days (day) VALUES\n('2022-04-12'),\n('2021-08-09'),\n('2020-06-26');"
+      ],
+      "expected": [
+        [
+          "Tuesday, April 12, 2022"
+        ],
+        [
+          "Monday, August 9, 2021"
+        ],
+        [
+          "Friday, June 26, 2020"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Days (day) VALUES\n('2023-01-01'),\n('2023-01-02'),\n('2023-01-03'),\n('2023-01-04'),\n('2023-01-05'),\n('2023-01-06'),\n('2023-01-07'),\n('2023-01-08'),\n('2023-01-09'),\n('2023-01-10'),\n('2023-01-11'),\n('2023-01-12'),\n('2023-01-13'),\n('2023-01-14'),\n('2023-01-15'),\n('2023-01-16'),\n('2023-01-17'),\n('2023-01-18'),\n('2023-01-19'),\n('2023-01-20'),\n('2023-01-21'),\n('2023-01-22'),\n('2023-01-23'),\n('2023-01-24'),\n('2023-01-25'),\n('2023-01-26'),\n('2023-01-27'),\n('2023-01-28'),\n('2024-01-15'),\n('2024-02-15'),\n('2024-03-15'),\n('2024-04-15'),\n('2024-05-15'),\n('2024-06-15'),\n('2024-07-15'),\n('2024-08-15'),\n('2024-09-15'),\n('2024-10-15'),\n('2024-11-15'),\n('2024-12-15'),\n('2000-02-29'),\n('1999-12-31'),\n('2100-03-01'),\n('1970-01-01');"
+      ],
+      "expected": [
+        [
+          "Thursday, January 1, 1970"
+        ],
+        [
+          "Friday, December 31, 1999"
+        ],
+        [
+          "Tuesday, February 29, 2000"
+        ],
+        [
+          "Sunday, January 1, 2023"
+        ],
+        [
+          "Monday, January 2, 2023"
+        ],
+        [
+          "Tuesday, January 3, 2023"
+        ],
+        [
+          "Wednesday, January 4, 2023"
+        ],
+        [
+          "Thursday, January 5, 2023"
+        ],
+        [
+          "Friday, January 6, 2023"
+        ],
+        [
+          "Saturday, January 7, 2023"
+        ],
+        [
+          "Sunday, January 8, 2023"
+        ],
+        [
+          "Monday, January 9, 2023"
+        ],
+        [
+          "Tuesday, January 10, 2023"
+        ],
+        [
+          "Wednesday, January 11, 2023"
+        ],
+        [
+          "Thursday, January 12, 2023"
+        ],
+        [
+          "Friday, January 13, 2023"
+        ],
+        [
+          "Saturday, January 14, 2023"
+        ],
+        [
+          "Sunday, January 15, 2023"
+        ],
+        [
+          "Monday, January 16, 2023"
+        ],
+        [
+          "Tuesday, January 17, 2023"
+        ],
+        [
+          "Wednesday, January 18, 2023"
+        ],
+        [
+          "Thursday, January 19, 2023"
+        ],
+        [
+          "Friday, January 20, 2023"
+        ],
+        [
+          "Saturday, January 21, 2023"
+        ],
+        [
+          "Sunday, January 22, 2023"
+        ],
+        [
+          "Monday, January 23, 2023"
+        ],
+        [
+          "Tuesday, January 24, 2023"
+        ],
+        [
+          "Wednesday, January 25, 2023"
+        ],
+        [
+          "Thursday, January 26, 2023"
+        ],
+        [
+          "Friday, January 27, 2023"
+        ],
+        [
+          "Saturday, January 28, 2023"
+        ],
+        [
+          "Monday, January 15, 2024"
+        ],
+        [
+          "Thursday, February 15, 2024"
+        ],
+        [
+          "Friday, March 15, 2024"
+        ],
+        [
+          "Monday, April 15, 2024"
+        ],
+        [
+          "Wednesday, May 15, 2024"
+        ],
+        [
+          "Saturday, June 15, 2024"
+        ],
+        [
+          "Monday, July 15, 2024"
+        ],
+        [
+          "Thursday, August 15, 2024"
+        ],
+        [
+          "Sunday, September 15, 2024"
+        ],
+        [
+          "Tuesday, October 15, 2024"
+        ],
+        [
+          "Friday, November 15, 2024"
+        ],
+        [
+          "Sunday, December 15, 2024"
+        ],
+        [
+          "Monday, March 1, 2100"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Days (day) VALUES\n('2011-11-11');"
+      ],
+      "expected": [
+        [
+          "Friday, November 11, 2011"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Days (day) VALUES\n('2020-06-26'),\n('2021-08-09'),\n('2022-04-12');"
+      ],
+      "expected": [
+        [
+          "Tuesday, April 12, 2022"
+        ],
+        [
+          "Monday, August 9, 2021"
+        ],
+        [
+          "Friday, June 26, 2020"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Days (day) VALUES\n('1970-01-01'),\n('2100-03-01'),\n('1999-12-31'),\n('2000-02-29'),\n('2024-12-15'),\n('2024-11-15'),\n('2024-10-15'),\n('2024-09-15'),\n('2024-08-15'),\n('2024-07-15'),\n('2024-06-15'),\n('2024-05-15'),\n('2024-04-15'),\n('2024-03-15'),\n('2024-02-15'),\n('2024-01-15'),\n('2023-01-28'),\n('2023-01-27'),\n('2023-01-26'),\n('2023-01-25'),\n('2023-01-24'),\n('2023-01-23'),\n('2023-01-22'),\n('2023-01-21'),\n('2023-01-20'),\n('2023-01-19'),\n('2023-01-18'),\n('2023-01-17'),\n('2023-01-16'),\n('2023-01-15'),\n('2023-01-14'),\n('2023-01-13'),\n('2023-01-12'),\n('2023-01-11'),\n('2023-01-10'),\n('2023-01-09'),\n('2023-01-08'),\n('2023-01-07'),\n('2023-01-06'),\n('2023-01-05'),\n('2023-01-04'),\n('2023-01-03'),\n('2023-01-02'),\n('2023-01-01');"
+      ],
+      "expected": [
+        [
+          "Thursday, January 1, 1970"
+        ],
+        [
+          "Friday, December 31, 1999"
+        ],
+        [
+          "Tuesday, February 29, 2000"
+        ],
+        [
+          "Sunday, January 1, 2023"
+        ],
+        [
+          "Monday, January 2, 2023"
+        ],
+        [
+          "Tuesday, January 3, 2023"
+        ],
+        [
+          "Wednesday, January 4, 2023"
+        ],
+        [
+          "Thursday, January 5, 2023"
+        ],
+        [
+          "Friday, January 6, 2023"
+        ],
+        [
+          "Saturday, January 7, 2023"
+        ],
+        [
+          "Sunday, January 8, 2023"
+        ],
+        [
+          "Monday, January 9, 2023"
+        ],
+        [
+          "Tuesday, January 10, 2023"
+        ],
+        [
+          "Wednesday, January 11, 2023"
+        ],
+        [
+          "Thursday, January 12, 2023"
+        ],
+        [
+          "Friday, January 13, 2023"
+        ],
+        [
+          "Saturday, January 14, 2023"
+        ],
+        [
+          "Sunday, January 15, 2023"
+        ],
+        [
+          "Monday, January 16, 2023"
+        ],
+        [
+          "Tuesday, January 17, 2023"
+        ],
+        [
+          "Wednesday, January 18, 2023"
+        ],
+        [
+          "Thursday, January 19, 2023"
+        ],
+        [
+          "Friday, January 20, 2023"
+        ],
+        [
+          "Saturday, January 21, 2023"
+        ],
+        [
+          "Sunday, January 22, 2023"
+        ],
+        [
+          "Monday, January 23, 2023"
+        ],
+        [
+          "Tuesday, January 24, 2023"
+        ],
+        [
+          "Wednesday, January 25, 2023"
+        ],
+        [
+          "Thursday, January 26, 2023"
+        ],
+        [
+          "Friday, January 27, 2023"
+        ],
+        [
+          "Saturday, January 28, 2023"
+        ],
+        [
+          "Monday, January 15, 2024"
+        ],
+        [
+          "Thursday, February 15, 2024"
+        ],
+        [
+          "Friday, March 15, 2024"
+        ],
+        [
+          "Monday, April 15, 2024"
+        ],
+        [
+          "Wednesday, May 15, 2024"
+        ],
+        [
+          "Saturday, June 15, 2024"
+        ],
+        [
+          "Monday, July 15, 2024"
+        ],
+        [
+          "Thursday, August 15, 2024"
+        ],
+        [
+          "Sunday, September 15, 2024"
+        ],
+        [
+          "Tuesday, October 15, 2024"
+        ],
+        [
+          "Friday, November 15, 2024"
+        ],
+        [
+          "Sunday, December 15, 2024"
+        ],
+        [
+          "Monday, March 1, 2100"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Days (day) VALUES\n('2021-08-09'),\n('2020-06-26'),\n('2022-04-12');"
+      ],
+      "expected": [
+        [
+          "Tuesday, April 12, 2022"
+        ],
+        [
+          "Monday, August 9, 2021"
+        ],
+        [
+          "Friday, June 26, 2020"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Days (day) VALUES\n('2023-01-17'),\n('2023-01-18'),\n('2023-01-19'),\n('2023-01-20'),\n('2023-01-21'),\n('2023-01-22'),\n('2023-01-23'),\n('2023-01-24'),\n('2023-01-25'),\n('2023-01-26'),\n('2023-01-27'),\n('2023-01-28'),\n('2024-01-15'),\n('2024-02-15'),\n('2024-03-15'),\n('2024-04-15'),\n('2024-05-15'),\n('2024-06-15'),\n('2024-07-15'),\n('2024-08-15'),\n('2024-09-15'),\n('2024-10-15'),\n('2024-11-15'),\n('2024-12-15'),\n('2000-02-29'),\n('1999-12-31'),\n('2100-03-01'),\n('1970-01-01'),\n('2023-01-01'),\n('2023-01-02'),\n('2023-01-03'),\n('2023-01-04'),\n('2023-01-05'),\n('2023-01-06'),\n('2023-01-07'),\n('2023-01-08'),\n('2023-01-09'),\n('2023-01-10'),\n('2023-01-11'),\n('2023-01-12'),\n('2023-01-13'),\n('2023-01-14'),\n('2023-01-15'),\n('2023-01-16');"
+      ],
+      "expected": [
+        [
+          "Thursday, January 1, 1970"
+        ],
+        [
+          "Friday, December 31, 1999"
+        ],
+        [
+          "Tuesday, February 29, 2000"
+        ],
+        [
+          "Sunday, January 1, 2023"
+        ],
+        [
+          "Monday, January 2, 2023"
+        ],
+        [
+          "Tuesday, January 3, 2023"
+        ],
+        [
+          "Wednesday, January 4, 2023"
+        ],
+        [
+          "Thursday, January 5, 2023"
+        ],
+        [
+          "Friday, January 6, 2023"
+        ],
+        [
+          "Saturday, January 7, 2023"
+        ],
+        [
+          "Sunday, January 8, 2023"
+        ],
+        [
+          "Monday, January 9, 2023"
+        ],
+        [
+          "Tuesday, January 10, 2023"
+        ],
+        [
+          "Wednesday, January 11, 2023"
+        ],
+        [
+          "Thursday, January 12, 2023"
+        ],
+        [
+          "Friday, January 13, 2023"
+        ],
+        [
+          "Saturday, January 14, 2023"
+        ],
+        [
+          "Sunday, January 15, 2023"
+        ],
+        [
+          "Monday, January 16, 2023"
+        ],
+        [
+          "Tuesday, January 17, 2023"
+        ],
+        [
+          "Wednesday, January 18, 2023"
+        ],
+        [
+          "Thursday, January 19, 2023"
+        ],
+        [
+          "Friday, January 20, 2023"
+        ],
+        [
+          "Saturday, January 21, 2023"
+        ],
+        [
+          "Sunday, January 22, 2023"
+        ],
+        [
+          "Monday, January 23, 2023"
+        ],
+        [
+          "Tuesday, January 24, 2023"
+        ],
+        [
+          "Wednesday, January 25, 2023"
+        ],
+        [
+          "Thursday, January 26, 2023"
+        ],
+        [
+          "Friday, January 27, 2023"
+        ],
+        [
+          "Saturday, January 28, 2023"
+        ],
+        [
+          "Monday, January 15, 2024"
+        ],
+        [
+          "Thursday, February 15, 2024"
+        ],
+        [
+          "Friday, March 15, 2024"
+        ],
+        [
+          "Monday, April 15, 2024"
+        ],
+        [
+          "Wednesday, May 15, 2024"
+        ],
+        [
+          "Saturday, June 15, 2024"
+        ],
+        [
+          "Monday, July 15, 2024"
+        ],
+        [
+          "Thursday, August 15, 2024"
+        ],
+        [
+          "Sunday, September 15, 2024"
+        ],
+        [
+          "Tuesday, October 15, 2024"
+        ],
+        [
+          "Friday, November 15, 2024"
+        ],
+        [
+          "Sunday, December 15, 2024"
+        ],
+        [
+          "Monday, March 1, 2100"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Days (day) VALUES\n('2022-04-12'),\n('2020-06-26'),\n('2021-08-09');"
+      ],
+      "expected": [
+        [
+          "Tuesday, April 12, 2022"
+        ],
+        [
+          "Monday, August 9, 2021"
+        ],
+        [
+          "Friday, June 26, 2020"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Days (day) VALUES\n('2023-01-01'),\n('2023-01-03'),\n('2023-01-05'),\n('2023-01-07'),\n('2023-01-09'),\n('2023-01-11'),\n('2023-01-13'),\n('2023-01-15'),\n('2023-01-17'),\n('2023-01-19'),\n('2023-01-21'),\n('2023-01-23'),\n('2023-01-25'),\n('2023-01-27'),\n('2024-01-15'),\n('2024-03-15'),\n('2024-05-15'),\n('2024-07-15'),\n('2024-09-15'),\n('2024-11-15'),\n('2000-02-29'),\n('2100-03-01'),\n('2023-01-02'),\n('2023-01-04'),\n('2023-01-06'),\n('2023-01-08'),\n('2023-01-10'),\n('2023-01-12'),\n('2023-01-14'),\n('2023-01-16'),\n('2023-01-18'),\n('2023-01-20'),\n('2023-01-22'),\n('2023-01-24'),\n('2023-01-26'),\n('2023-01-28'),\n('2024-02-15'),\n('2024-04-15'),\n('2024-06-15'),\n('2024-08-15'),\n('2024-10-15'),\n('2024-12-15'),\n('1999-12-31'),\n('1970-01-01');"
+      ],
+      "expected": [
+        [
+          "Thursday, January 1, 1970"
+        ],
+        [
+          "Friday, December 31, 1999"
+        ],
+        [
+          "Tuesday, February 29, 2000"
+        ],
+        [
+          "Sunday, January 1, 2023"
+        ],
+        [
+          "Monday, January 2, 2023"
+        ],
+        [
+          "Tuesday, January 3, 2023"
+        ],
+        [
+          "Wednesday, January 4, 2023"
+        ],
+        [
+          "Thursday, January 5, 2023"
+        ],
+        [
+          "Friday, January 6, 2023"
+        ],
+        [
+          "Saturday, January 7, 2023"
+        ],
+        [
+          "Sunday, January 8, 2023"
+        ],
+        [
+          "Monday, January 9, 2023"
+        ],
+        [
+          "Tuesday, January 10, 2023"
+        ],
+        [
+          "Wednesday, January 11, 2023"
+        ],
+        [
+          "Thursday, January 12, 2023"
+        ],
+        [
+          "Friday, January 13, 2023"
+        ],
+        [
+          "Saturday, January 14, 2023"
+        ],
+        [
+          "Sunday, January 15, 2023"
+        ],
+        [
+          "Monday, January 16, 2023"
+        ],
+        [
+          "Tuesday, January 17, 2023"
+        ],
+        [
+          "Wednesday, January 18, 2023"
+        ],
+        [
+          "Thursday, January 19, 2023"
+        ],
+        [
+          "Friday, January 20, 2023"
+        ],
+        [
+          "Saturday, January 21, 2023"
+        ],
+        [
+          "Sunday, January 22, 2023"
+        ],
+        [
+          "Monday, January 23, 2023"
+        ],
+        [
+          "Tuesday, January 24, 2023"
+        ],
+        [
+          "Wednesday, January 25, 2023"
+        ],
+        [
+          "Thursday, January 26, 2023"
+        ],
+        [
+          "Friday, January 27, 2023"
+        ],
+        [
+          "Saturday, January 28, 2023"
+        ],
+        [
+          "Monday, January 15, 2024"
+        ],
+        [
+          "Thursday, February 15, 2024"
+        ],
+        [
+          "Friday, March 15, 2024"
+        ],
+        [
+          "Monday, April 15, 2024"
+        ],
+        [
+          "Wednesday, May 15, 2024"
+        ],
+        [
+          "Saturday, June 15, 2024"
+        ],
+        [
+          "Monday, July 15, 2024"
+        ],
+        [
+          "Thursday, August 15, 2024"
+        ],
+        [
+          "Sunday, September 15, 2024"
+        ],
+        [
+          "Tuesday, October 15, 2024"
+        ],
+        [
+          "Friday, November 15, 2024"
+        ],
+        [
+          "Sunday, December 15, 2024"
+        ],
+        [
+          "Monday, March 1, 2100"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Days (day) VALUES\n('2020-06-26'),\n('2022-04-12'),\n('2021-08-09');"
+      ],
+      "expected": [
+        [
+          "Tuesday, April 12, 2022"
+        ],
+        [
+          "Monday, August 9, 2021"
+        ],
+        [
+          "Friday, June 26, 2020"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Days (day) VALUES\n('2023-01-16'),\n('2024-06-15'),\n('2024-12-15'),\n('2023-01-06'),\n('2024-10-15'),\n('1999-12-31'),\n('2023-01-08'),\n('2024-04-15'),\n('2023-01-01'),\n('2023-01-11'),\n('2024-07-15'),\n('2023-01-25'),\n('2024-03-15'),\n('2024-05-15'),\n('2024-09-15'),\n('2023-01-26'),\n('2023-01-21'),\n('2023-01-17'),\n('2023-01-10'),\n('2024-02-15'),\n('2023-01-12'),\n('2023-01-19'),\n('2023-01-07'),\n('2023-01-05'),\n('2023-01-24'),\n('2023-01-09'),\n('1970-01-01'),\n('2023-01-13'),\n('2024-11-15'),\n('2023-01-28'),\n('2023-01-03'),\n('2023-01-27'),\n('2000-02-29'),\n('2023-01-04'),\n('2023-01-15'),\n('2024-01-15'),\n('2023-01-14'),\n('2023-01-23'),\n('2023-01-20'),\n('2023-01-22'),\n('2023-01-02'),\n('2023-01-18'),\n('2100-03-01'),\n('2024-08-15');"
+      ],
+      "expected": [
+        [
+          "Thursday, January 1, 1970"
+        ],
+        [
+          "Friday, December 31, 1999"
+        ],
+        [
+          "Tuesday, February 29, 2000"
+        ],
+        [
+          "Sunday, January 1, 2023"
+        ],
+        [
+          "Monday, January 2, 2023"
+        ],
+        [
+          "Tuesday, January 3, 2023"
+        ],
+        [
+          "Wednesday, January 4, 2023"
+        ],
+        [
+          "Thursday, January 5, 2023"
+        ],
+        [
+          "Friday, January 6, 2023"
+        ],
+        [
+          "Saturday, January 7, 2023"
+        ],
+        [
+          "Sunday, January 8, 2023"
+        ],
+        [
+          "Monday, January 9, 2023"
+        ],
+        [
+          "Tuesday, January 10, 2023"
+        ],
+        [
+          "Wednesday, January 11, 2023"
+        ],
+        [
+          "Thursday, January 12, 2023"
+        ],
+        [
+          "Friday, January 13, 2023"
+        ],
+        [
+          "Saturday, January 14, 2023"
+        ],
+        [
+          "Sunday, January 15, 2023"
+        ],
+        [
+          "Monday, January 16, 2023"
+        ],
+        [
+          "Tuesday, January 17, 2023"
+        ],
+        [
+          "Wednesday, January 18, 2023"
+        ],
+        [
+          "Thursday, January 19, 2023"
+        ],
+        [
+          "Friday, January 20, 2023"
+        ],
+        [
+          "Saturday, January 21, 2023"
+        ],
+        [
+          "Sunday, January 22, 2023"
+        ],
+        [
+          "Monday, January 23, 2023"
+        ],
+        [
+          "Tuesday, January 24, 2023"
+        ],
+        [
+          "Wednesday, January 25, 2023"
+        ],
+        [
+          "Thursday, January 26, 2023"
+        ],
+        [
+          "Friday, January 27, 2023"
+        ],
+        [
+          "Saturday, January 28, 2023"
+        ],
+        [
+          "Monday, January 15, 2024"
+        ],
+        [
+          "Thursday, February 15, 2024"
+        ],
+        [
+          "Friday, March 15, 2024"
+        ],
+        [
+          "Monday, April 15, 2024"
+        ],
+        [
+          "Wednesday, May 15, 2024"
+        ],
+        [
+          "Saturday, June 15, 2024"
+        ],
+        [
+          "Monday, July 15, 2024"
+        ],
+        [
+          "Thursday, August 15, 2024"
+        ],
+        [
+          "Sunday, September 15, 2024"
+        ],
+        [
+          "Tuesday, October 15, 2024"
+        ],
+        [
+          "Friday, November 15, 2024"
+        ],
+        [
+          "Sunday, December 15, 2024"
+        ],
+        [
+          "Monday, March 1, 2100"
+        ]
+      ]
+    }
+  ]
+}

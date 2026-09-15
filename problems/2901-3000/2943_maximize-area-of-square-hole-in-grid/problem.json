@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2943,
+  "slug": "maximize-area-of-square-hole-in-grid",
+  "title": "Maximize Area of Square Hole in Grid",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximizeSquareHoleArea",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "m",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "hBars",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "vBars",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximizeSquareHoleArea",
+      "rust": "maximize_square_hole_area",
+      "typescript": "maximizeSquareHoleArea"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

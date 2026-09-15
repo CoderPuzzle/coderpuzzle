@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1659,
+  "slug": "maximize-grid-happiness",
+  "title": "Maximize Grid Happiness",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Memoization",
+    "Bitmask"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Memoization",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getMaxGridHappiness",
+    "parameters": [
+      {
+        "name": "m",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "introvertsCount",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "extrovertsCount",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "getMaxGridHappiness",
+      "rust": "get_max_grid_happiness",
+      "typescript": "getMaxGridHappiness"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

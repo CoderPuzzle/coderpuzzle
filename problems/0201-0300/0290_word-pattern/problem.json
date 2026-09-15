@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 290,
+  "slug": "word-pattern",
+  "title": "Word Pattern",
+  "difficulty": "Easy",
+  "tags": [
+    "Hash Table",
+    "String"
+  ],
+  "topics": [
+    "Hash Table",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "wordPattern",
+    "parameters": [
+      {
+        "name": "pattern",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "wordPattern",
+      "rust": "word_pattern",
+      "typescript": "wordPattern"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

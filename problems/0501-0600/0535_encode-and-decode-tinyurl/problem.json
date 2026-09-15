@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 535,
+  "slug": "encode-and-decode-tinyurl",
+  "title": "Encode and Decode TinyURL",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Design",
+    "Hash Function"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Design",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Codec",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "encode",
+        "parameters": [
+          {
+            "name": "longUrl",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "decode",
+        "parameters": [
+          {
+            "name": "shortUrl",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

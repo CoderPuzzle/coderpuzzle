@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2543,
+  "slug": "check-if-point-is-reachable",
+  "title": "Check if Point Is Reachable",
+  "difficulty": "Hard",
+  "tags": [
+    "Math",
+    "Number Theory",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor"
+  ],
+  "topics": [
+    "Math",
+    "Number Theory",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "isReachable",
+    "parameters": [
+      {
+        "name": "targetX",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "targetY",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "isReachable",
+      "rust": "is_reachable",
+      "typescript": "isReachable"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

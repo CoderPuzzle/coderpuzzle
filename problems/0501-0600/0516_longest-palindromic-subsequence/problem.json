@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "reference_solution": "lcs_reversed",
+  "id": 516,
+  "slug": "longest-palindromic-subsequence",
+  "title": "Longest Palindromic Subsequence",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestPalindromeSubseq",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "longestPalindromeSubseq",
+      "rust": "longest_palindrome_subseq",
+      "typescript": "longestPalindromeSubseq"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

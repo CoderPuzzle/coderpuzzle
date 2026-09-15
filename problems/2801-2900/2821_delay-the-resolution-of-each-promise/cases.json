@@ -1,0 +1,348 @@
+{
+  "public": [
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(resolve, 30))"
+        ],
+        "ms": 50
+      },
+      "expected": [
+        80
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(resolve, 50))",
+          "() => new Promise((resolve) => setTimeout(resolve, 80))"
+        ],
+        "ms": 70
+      },
+      "expected": [
+        120,
+        150
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve, reject) => setTimeout(reject, 20))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 100))"
+        ],
+        "ms": 30
+      },
+      "expected": [
+        50,
+        130
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(resolve, 12))"
+        ],
+        "ms": 10
+      },
+      "expected": [
+        22
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(resolve, 300))"
+        ],
+        "ms": 500
+      },
+      "expected": [
+        800
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(resolve, 120))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 45))",
+          "() => new Promise((resolve) => setTimeout(resolve, 200))"
+        ],
+        "ms": 35
+      },
+      "expected": [
+        155,
+        80,
+        235
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve, reject) => setTimeout(reject, 15))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 60))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 130))"
+        ],
+        "ms": 25
+      },
+      "expected": [
+        40,
+        85,
+        155
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(resolve, 5))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 10))",
+          "() => new Promise((resolve) => setTimeout(resolve, 15))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 20))",
+          "() => new Promise((resolve) => setTimeout(resolve, 25))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 30))",
+          "() => new Promise((resolve) => setTimeout(resolve, 35))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 40))",
+          "() => new Promise((resolve) => setTimeout(resolve, 45))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 50))"
+        ],
+        "ms": 40
+      },
+      "expected": [
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(resolve, 55))",
+          "() => new Promise((resolve) => setTimeout(resolve, 55))",
+          "() => new Promise((resolve) => setTimeout(resolve, 55))"
+        ],
+        "ms": 40
+      },
+      "expected": [
+        95,
+        95,
+        95
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve, reject) => setTimeout(reject, 70))",
+          "() => new Promise((resolve) => setTimeout(resolve, 70))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 70))"
+        ],
+        "ms": 110
+      },
+      "expected": [
+        180,
+        180,
+        180
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => Promise.resolve()",
+          "() => Promise.reject()",
+          "() => new Promise((resolve) => setTimeout(resolve, 200))"
+        ],
+        "ms": 120
+      },
+      "expected": [
+        120,
+        120,
+        320
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => Promise.reject()",
+          "() => Promise.resolve()",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 40))"
+        ],
+        "ms": 90
+      },
+      "expected": [
+        90,
+        90,
+        130
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(resolve, 499))",
+          "() => new Promise((resolve) => setTimeout(resolve, 488))",
+          "() => new Promise((resolve) => setTimeout(resolve, 477))",
+          "() => new Promise((resolve) => setTimeout(resolve, 466))",
+          "() => new Promise((resolve) => setTimeout(resolve, 455))"
+        ],
+        "ms": 499
+      },
+      "expected": [
+        998,
+        987,
+        976,
+        965,
+        954
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(resolve, 400))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 300))",
+          "() => new Promise((resolve) => setTimeout(resolve, 200))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 100))"
+        ],
+        "ms": 60
+      },
+      "expected": [
+        460,
+        360,
+        260,
+        160
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(resolve, 250))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 90))",
+          "() => new Promise((resolve) => setTimeout(resolve, 310))"
+        ],
+        "ms": 75
+      },
+      "expected": [
+        325,
+        165,
+        385
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve, reject) => setTimeout(reject, 30))",
+          "() => new Promise((resolve) => setTimeout(resolve, 140))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 80))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 260))",
+          "() => new Promise((resolve) => setTimeout(resolve, 200))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 330))"
+        ],
+        "ms": 50
+      },
+      "expected": [
+        80,
+        190,
+        130,
+        310,
+        250,
+        380
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(() => resolve(42), 65))",
+          "() => new Promise((resolve) => setTimeout(() => resolve(7), 33))"
+        ],
+        "ms": 10
+      },
+      "expected": [
+        75,
+        43
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve, reject) => setTimeout(reject, 160))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 160))",
+          "() => new Promise((resolve) => setTimeout(resolve, 160))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 451))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 18))",
+          "() => new Promise((resolve) => setTimeout(resolve, 315))",
+          "() => new Promise((resolve) => setTimeout(resolve, 467))"
+        ],
+        "ms": 221
+      },
+      "expected": [
+        381,
+        381,
+        381,
+        672,
+        239,
+        536,
+        688
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve, reject) => setTimeout(reject, 474))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 151))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 12))",
+          "() => new Promise((resolve) => setTimeout(resolve, 150))",
+          "() => new Promise((resolve) => setTimeout(resolve, 20))",
+          "() => new Promise((resolve) => setTimeout(resolve, 12))",
+          "() => new Promise((resolve) => setTimeout(resolve, 451))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 169))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 311))"
+        ],
+        "ms": 176
+      },
+      "expected": [
+        650,
+        327,
+        188,
+        326,
+        196,
+        188,
+        627,
+        345,
+        487
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          "() => new Promise((resolve) => setTimeout(resolve, 163))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 167))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 320))",
+          "() => new Promise((resolve) => setTimeout(resolve, 156))",
+          "() => new Promise((resolve) => setTimeout(resolve, 467))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 8))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 3))",
+          "() => new Promise((resolve) => setTimeout(resolve, 5))",
+          "() => new Promise((resolve, reject) => setTimeout(reject, 8))",
+          "() => new Promise((resolve) => setTimeout(resolve, 456))"
+        ],
+        "ms": 211
+      },
+      "expected": [
+        374,
+        378,
+        531,
+        367,
+        678,
+        219,
+        214,
+        216,
+        219,
+        667
+      ]
+    }
+  ]
+}

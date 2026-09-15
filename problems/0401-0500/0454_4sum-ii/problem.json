@@ -1,0 +1,84 @@
+{
+  "schema_version": 2,
+  "reference_solution": "meet_in_the_middle",
+  "id": 454,
+  "slug": "4sum-ii",
+  "title": "4Sum II",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "fourSumCount",
+    "parameters": [
+      {
+        "name": "nums1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums3",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums4",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "fourSumCount",
+      "rust": "four_sum_count",
+      "typescript": "fourSumCount"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

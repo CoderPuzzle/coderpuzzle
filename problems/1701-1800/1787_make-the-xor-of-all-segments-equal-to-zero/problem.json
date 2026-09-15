@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1787,
+  "slug": "make-the-xor-of-all-segments-equal-to-zero",
+  "title": "Make the XOR of All Segments Equal to Zero",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Counting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minChanges",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minChanges",
+      "rust": "min_changes",
+      "typescript": "minChanges"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

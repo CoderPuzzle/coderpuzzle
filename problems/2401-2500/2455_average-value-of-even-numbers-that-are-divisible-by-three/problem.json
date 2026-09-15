@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2455,
+  "slug": "average-value-of-even-numbers-that-are-divisible-by-three",
+  "title": "Average Value of Even Numbers That Are Divisible by Three",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "topics": [
+    "Array",
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "averageValue",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "averageValue",
+      "rust": "average_value",
+      "typescript": "averageValue"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

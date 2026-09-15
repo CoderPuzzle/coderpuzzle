@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 854,
+  "slug": "k-similar-strings",
+  "title": "K-Similar Strings",
+  "difficulty": "Hard",
+  "tags": [
+    "BFS",
+    "String"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Breadth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "kSimilarity",
+    "parameters": [
+      {
+        "name": "s1",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "s2",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "kSimilarity",
+      "rust": "k_similarity",
+      "typescript": "kSimilarity"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

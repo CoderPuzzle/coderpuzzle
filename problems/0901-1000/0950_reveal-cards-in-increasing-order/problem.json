@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 950,
+  "slug": "reveal-cards-in-increasing-order",
+  "title": "Reveal Cards In Increasing Order",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Queue",
+    "Sorting",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Queue",
+    "Sorting",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "deckRevealedIncreasing",
+    "parameters": [
+      {
+        "name": "deck",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "deckRevealedIncreasing",
+      "rust": "deck_revealed_increasing",
+      "typescript": "deckRevealedIncreasing"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

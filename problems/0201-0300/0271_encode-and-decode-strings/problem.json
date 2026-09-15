@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 271,
+  "slug": "encode-and-decode-strings",
+  "title": "Encode and Decode Strings",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Design"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Codec",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "encode",
+        "parameters": [
+          {
+            "name": "strs",
+            "codec": "json",
+            "value_type": {
+              "kind": "array",
+              "items": {
+                "kind": "string"
+              }
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "decode",
+        "parameters": [
+          {
+            "name": "s",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2979,
+  "slug": "most-expensive-item-that-can-not-be-bought",
+  "title": "Most Expensive Item That Can Not Be Bought",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Number Theory"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Number Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "mostExpensiveItem",
+    "parameters": [
+      {
+        "name": "primeOne",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "primeTwo",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "mostExpensiveItem",
+      "rust": "most_expensive_item",
+      "typescript": "mostExpensiveItem"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

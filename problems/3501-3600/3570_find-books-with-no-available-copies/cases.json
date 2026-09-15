@@ -1,0 +1,1419 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'The Great Gatsby','F. Scott','Fiction',1925,3),\n(2,'To Kill a Mockingbird','Harper Lee','Fiction',1960,3),\n(3,'1984','George Orwell','Dystopian',1949,1),\n(4,'Pride and Prejudice','Jane Austen','Romance',1813,2),\n(5,'The Catcher in the Rye','J.D. Salinger','Fiction',1951,1),\n(6,'Brave New World','Aldous Huxley','Dystopian',1932,4)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'Alice Smith','2024-01-15',NULL),\n(2,1,'Bob Johnson','2024-01-20',NULL),\n(3,2,'Carol White','2024-01-10','2024-01-25'),\n(4,3,'David Brown','2024-02-01',NULL),\n(5,4,'Emma Wilson','2024-01-05',NULL),\n(6,5,'Frank Davis','2024-01-18','2024-02-10'),\n(7,1,'Grace Miller','2024-02-05',NULL),\n(8,6,'Henry Taylor','2024-01-12',NULL),\n(9,2,'Ivan Clark','2024-02-12',NULL),\n(10,2,'Jane Adams','2024-02-15',NULL)\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "The Great Gatsby",
+          "F. Scott",
+          "Fiction",
+          1925,
+          3
+        ],
+        [
+          3,
+          "1984",
+          "George Orwell",
+          "Dystopian",
+          1949,
+          1
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Dune','Frank Herbert','Sci-Fi',1965,1)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'Paul Atreides','2024-03-01',NULL)\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "Dune",
+          "Frank Herbert",
+          "Sci-Fi",
+          1965,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Ghost Title','Nobody','Phantom',2000,0),\n(2,'Real Book','Some Author','Fiction',1999,2)\n;\nINSERT INTO borrowing_records VALUES\n(1,2,'Reader One','2024-01-02',NULL)\n;"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Short Loan','Quick Read','Essays',2010,1)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'Fast Reader','2024-02-01','2024-02-05')\n;"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Mostly There','A. Author','Fiction',2001,3),\n(2,'All Out','B. Author','Fiction',2002,3)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'R One','2024-01-01','2024-01-09'),\n(2,1,'C One','2024-01-02',NULL),\n(3,1,'C Two','2024-01-03',NULL),\n(4,2,'C Three','2024-01-04',NULL),\n(5,2,'C Four','2024-01-05',NULL),\n(6,2,'C Five','2024-01-06',NULL)\n;"
+      ],
+      "expected": [
+        [
+          2,
+          "All Out",
+          "B. Author",
+          "Fiction",
+          2002,
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Zebra Tales','A. Zebra','Fiction',1990,2),\n(2,'Alpha Tales','B. Alpha','Fiction',1991,2),\n(3,'Mid Tales','C. Mid','Fiction',1992,1)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'T One','2024-01-01',NULL),\n(2,1,'T Two','2024-01-02',NULL),\n(3,2,'T Three','2024-01-03',NULL),\n(4,2,'T Four','2024-01-04',NULL),\n(5,3,'T Five','2024-01-05',NULL)\n;"
+      ],
+      "expected": [
+        [
+          2,
+          "Alpha Tales",
+          "B. Alpha",
+          "Fiction",
+          1991,
+          2
+        ],
+        [
+          1,
+          "Zebra Tales",
+          "A. Zebra",
+          "Fiction",
+          1990,
+          2
+        ],
+        [
+          3,
+          "Mid Tales",
+          "C. Mid",
+          "Fiction",
+          1992,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Plenty Left','A','Fiction',1970,5),\n(2,'Half Shelf','B','Fiction',1971,2),\n(3,'Untouched','C','Fiction',1972,1)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'P One','2024-01-01',NULL),\n(2,2,'P Two','2024-01-02',NULL),\n(3,2,'P Three','2024-01-03','2024-01-11')\n;"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Gone A','A','Fiction',1980,2),\n(2,'Gone B','B','Fiction',1981,1),\n(3,'Gone C','C','Fiction',1982,3)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'Q One','2024-02-01',NULL),\n(2,1,'Q Two','2024-02-02',NULL),\n(3,2,'Q Three','2024-02-03',NULL),\n(4,3,'Q Four','2024-02-04',NULL),\n(5,3,'Q Five','2024-02-05',NULL),\n(6,3,'Q Six','2024-02-06',NULL)\n;"
+      ],
+      "expected": [
+        [
+          3,
+          "Gone C",
+          "C",
+          "Fiction",
+          1982,
+          3
+        ],
+        [
+          1,
+          "Gone A",
+          "A",
+          "Fiction",
+          1980,
+          2
+        ],
+        [
+          2,
+          "Gone B",
+          "B",
+          "Fiction",
+          1981,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Lonely','A','Fiction',1960,1),\n(2,'Also Lonely','B','Fiction',1961,4)\n;"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Harry Potter and the Philosopher''s Stone','J.K. Rowling','Fantasy',1997,1),\n(2,'The O''Brien Chronicles','Edna O''Brien','Memoir',1978,2)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'Conor O''Neil','2024-03-10',NULL),\n(2,2,'Aoife O''Shea','2024-03-11',NULL),\n(3,2,'Sean D''Arcy','2024-03-12',NULL)\n;"
+      ],
+      "expected": [
+        [
+          2,
+          "The O'Brien Chronicles",
+          "Edna O'Brien",
+          "Memoir",
+          1978,
+          2
+        ],
+        [
+          1,
+          "Harry Potter and the Philosopher's Stone",
+          "J.K. Rowling",
+          "Fantasy",
+          1997,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Echoes','First Author','Poetry',1950,1),\n(2,'Echoes','Second Author','Poetry',1951,1)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'Poet One','2024-04-01',NULL),\n(2,2,'Poet Two','2024-04-02',NULL)\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "Echoes",
+          "First Author",
+          "Poetry",
+          1950,
+          1
+        ],
+        [
+          2,
+          "Echoes",
+          "Second Author",
+          "Poetry",
+          1951,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'The Very Long Illustrated History of Extremely Obscure Botanical Illustrations and Their Makers','Longnamey McLongface','Botany',1888,2)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'Botanist One','2024-05-01',NULL),\n(2,1,'Botanist Two','2024-05-02',NULL)\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "The Very Long Illustrated History of Extremely Obscure Botanical Illustrations and Their Makers",
+          "Longnamey McLongface",
+          "Botany",
+          1888,
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Circling Copy','Round Trip','Fiction',1955,1)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'H One','2024-01-01','2024-01-05'),\n(2,1,'H Two','2024-01-06','2024-01-10'),\n(3,1,'H Three','2024-01-11','2024-01-15'),\n(4,1,'H Four','2024-02-01',NULL)\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "Circling Copy",
+          "Round Trip",
+          "Fiction",
+          1955,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Title Number 1','Author 1','Dystopian',1901,2),\n(2,'Title Number 2','Author 2','Romance',1902,3),\n(3,'Title Number 3','Author 3','Sci-Fi',1903,4),\n(4,'Title Number 4','Author 4','History',1904,5),\n(5,'Title Number 5','Author 5','Fiction',1905,1),\n(6,'Title Number 6','Author 6','Dystopian',1906,2),\n(7,'Title Number 7','Author 7','Romance',1907,3),\n(8,'Title Number 8','Author 8','Sci-Fi',1908,4),\n(9,'Title Number 9','Author 9','History',1909,5),\n(10,'Title Number 10','Author 10','Fiction',1910,1),\n(11,'Title Number 11','Author 11','Dystopian',1911,2),\n(12,'Title Number 12','Author 12','Romance',1912,3),\n(13,'Title Number 13','Author 13','Sci-Fi',1913,4),\n(14,'Title Number 14','Author 14','History',1914,5),\n(15,'Title Number 15','Author 15','Fiction',1915,1),\n(16,'Title Number 16','Author 16','Dystopian',1916,2),\n(17,'Title Number 17','Author 17','Romance',1917,3),\n(18,'Title Number 18','Author 18','Sci-Fi',1918,4),\n(19,'Title Number 19','Author 19','History',1919,5),\n(20,'Title Number 20','Author 20','Fiction',1920,1),\n(21,'Title Number 21','Author 21','Dystopian',1921,2),\n(22,'Title Number 22','Author 22','Romance',1922,3),\n(23,'Title Number 23','Author 23','Sci-Fi',1923,4),\n(24,'Title Number 24','Author 24','History',1924,5),\n(25,'Title Number 25','Author 25','Fiction',1925,1),\n(26,'Title Number 26','Author 26','Dystopian',1926,2),\n(27,'Title Number 27','Author 27','Romance',1927,3),\n(28,'Title Number 28','Author 28','Sci-Fi',1928,4),\n(29,'Title Number 29','Author 29','History',1929,5),\n(30,'Title Number 30','Author 0','Fiction',1930,1),\n(31,'Title Number 31','Author 1','Dystopian',1931,2),\n(32,'Title Number 32','Author 2','Romance',1932,3),\n(33,'Title Number 33','Author 3','Sci-Fi',1933,4),\n(34,'Title Number 34','Author 4','History',1934,5),\n(35,'Title Number 35','Author 5','Fiction',1935,1),\n(36,'Title Number 36','Author 6','Dystopian',1936,2),\n(37,'Title Number 37','Author 7','Romance',1937,3),\n(38,'Title Number 38','Author 8','Sci-Fi',1938,4),\n(39,'Title Number 39','Author 9','History',1939,5),\n(40,'Title Number 40','Author 10','Fiction',1940,1),\n(41,'Title Number 41','Author 11','Dystopian',1941,2),\n(42,'Title Number 42','Author 12','Romance',1942,3),\n(43,'Title Number 43','Author 13','Sci-Fi',1943,4),\n(44,'Title Number 44','Author 14','History',1944,5),\n(45,'Title Number 45','Author 15','Fiction',1945,1),\n(46,'Title Number 46','Author 16','Dystopian',1946,2),\n(47,'Title Number 47','Author 17','Romance',1947,3),\n(48,'Title Number 48','Author 18','Sci-Fi',1948,4),\n(49,'Title Number 49','Author 19','History',1949,5),\n(50,'Title Number 50','Author 20','Fiction',1950,1),\n(51,'Title Number 51','Author 21','Dystopian',1951,2),\n(52,'Title Number 52','Author 22','Romance',1952,3),\n(53,'Title Number 53','Author 23','Sci-Fi',1953,4),\n(54,'Title Number 54','Author 24','History',1954,5),\n(55,'Title Number 55','Author 25','Fiction',1955,1),\n(56,'Title Number 56','Author 26','Dystopian',1956,2),\n(57,'Title Number 57','Author 27','Romance',1957,3),\n(58,'Title Number 58','Author 28','Sci-Fi',1958,4),\n(59,'Title Number 59','Author 29','History',1959,5),\n(60,'Title Number 60','Author 0','Fiction',1960,1),\n(61,'Title Number 61','Author 1','Dystopian',1961,2),\n(62,'Title Number 62','Author 2','Romance',1962,3),\n(63,'Title Number 63','Author 3','Sci-Fi',1963,4),\n(64,'Title Number 64','Author 4','History',1964,5),\n(65,'Title Number 65','Author 5','Fiction',1965,1),\n(66,'Title Number 66','Author 6','Dystopian',1966,2),\n(67,'Title Number 67','Author 7','Romance',1967,3),\n(68,'Title Number 68','Author 8','Sci-Fi',1968,4),\n(69,'Title Number 69','Author 9','History',1969,5),\n(70,'Title Number 70','Author 10','Fiction',1970,1),\n(71,'Title Number 71','Author 11','Dystopian',1971,2),\n(72,'Title Number 72','Author 12','Romance',1972,3),\n(73,'Title Number 73','Author 13','Sci-Fi',1973,4),\n(74,'Title Number 74','Author 14','History',1974,5),\n(75,'Title Number 75','Author 15','Fiction',1975,1),\n(76,'Title Number 76','Author 16','Dystopian',1976,2),\n(77,'Title Number 77','Author 17','Romance',1977,3),\n(78,'Title Number 78','Author 18','Sci-Fi',1978,4),\n(79,'Title Number 79','Author 19','History',1979,5),\n(80,'Title Number 80','Author 20','Fiction',1980,1),\n(81,'Title Number 81','Author 21','Dystopian',1981,2),\n(82,'Title Number 82','Author 22','Romance',1982,3),\n(83,'Title Number 83','Author 23','Sci-Fi',1983,4),\n(84,'Title Number 84','Author 24','History',1984,5),\n(85,'Title Number 85','Author 25','Fiction',1985,1),\n(86,'Title Number 86','Author 26','Dystopian',1986,2),\n(87,'Title Number 87','Author 27','Romance',1987,3),\n(88,'Title Number 88','Author 28','Sci-Fi',1988,4),\n(89,'Title Number 89','Author 29','History',1989,5),\n(90,'Title Number 90','Author 0','Fiction',1990,1),\n(91,'Title Number 91','Author 1','Dystopian',1991,2),\n(92,'Title Number 92','Author 2','Romance',1992,3),\n(93,'Title Number 93','Author 3','Sci-Fi',1993,4),\n(94,'Title Number 94','Author 4','History',1994,5),\n(95,'Title Number 95','Author 5','Fiction',1995,1),\n(96,'Title Number 96','Author 6','Dystopian',1996,2),\n(97,'Title Number 97','Author 7','Romance',1997,3),\n(98,'Title Number 98','Author 8','Sci-Fi',1998,4),\n(99,'Title Number 99','Author 9','History',1999,5),\n(100,'Title Number 100','Author 10','Fiction',2000,1),\n(101,'Title Number 101','Author 11','Dystopian',2001,2),\n(102,'Title Number 102','Author 12','Romance',2002,3),\n(103,'Title Number 103','Author 13','Sci-Fi',2003,4),\n(104,'Title Number 104','Author 14','History',2004,5),\n(105,'Title Number 105','Author 15','Fiction',2005,1),\n(106,'Title Number 106','Author 16','Dystopian',2006,2),\n(107,'Title Number 107','Author 17','Romance',2007,3),\n(108,'Title Number 108','Author 18','Sci-Fi',2008,4),\n(109,'Title Number 109','Author 19','History',2009,5),\n(110,'Title Number 110','Author 20','Fiction',2010,1),\n(111,'Title Number 111','Author 21','Dystopian',2011,2),\n(112,'Title Number 112','Author 22','Romance',2012,3),\n(113,'Title Number 113','Author 23','Sci-Fi',2013,4),\n(114,'Title Number 114','Author 24','History',2014,5),\n(115,'Title Number 115','Author 25','Fiction',2015,1),\n(116,'Title Number 116','Author 26','Dystopian',2016,2),\n(117,'Title Number 117','Author 27','Romance',2017,3),\n(118,'Title Number 118','Author 28','Sci-Fi',2018,4),\n(119,'Title Number 119','Author 29','History',2019,5),\n(120,'Title Number 120','Author 0','Fiction',2020,1)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'Borrower 1','2024-04-10','2024-04-12'),\n(2,2,'Borrower 2','2024-06-02',NULL),\n(3,2,'Borrower 3','2024-05-10','2024-05-20'),\n(4,3,'Borrower 4','2024-06-01',NULL),\n(5,3,'Borrower 5','2024-06-02',NULL),\n(6,3,'Borrower 6','2024-06-03',NULL),\n(7,3,'Borrower 7','2024-06-04',NULL),\n(8,4,'Borrower 8','2024-06-02',NULL),\n(9,4,'Borrower 9','2024-05-10','2024-05-20'),\n(10,5,'Borrower 10','2024-04-10','2024-04-12'),\n(11,6,'Borrower 11','2024-06-01',NULL),\n(12,6,'Borrower 12','2024-06-02',NULL),\n(13,7,'Borrower 13','2024-04-10','2024-04-12'),\n(14,8,'Borrower 14','2024-06-02',NULL),\n(15,8,'Borrower 15','2024-05-10','2024-05-20'),\n(16,9,'Borrower 16','2024-06-01',NULL),\n(17,9,'Borrower 17','2024-06-02',NULL),\n(18,9,'Borrower 18','2024-06-03',NULL),\n(19,9,'Borrower 19','2024-06-04',NULL),\n(20,9,'Borrower 20','2024-06-05',NULL),\n(21,10,'Borrower 21','2024-06-02',NULL),\n(22,11,'Borrower 22','2024-04-10','2024-04-12'),\n(23,12,'Borrower 23','2024-06-01',NULL),\n(24,12,'Borrower 24','2024-06-02',NULL),\n(25,12,'Borrower 25','2024-06-03',NULL),\n(26,13,'Borrower 26','2024-04-10','2024-04-12'),\n(27,14,'Borrower 27','2024-06-02',NULL),\n(28,14,'Borrower 28','2024-05-10','2024-05-20'),\n(29,15,'Borrower 29','2024-06-01',NULL),\n(30,16,'Borrower 30','2024-06-02',NULL),\n(31,16,'Borrower 31','2024-05-10','2024-05-20'),\n(32,17,'Borrower 32','2024-04-10','2024-04-12'),\n(33,18,'Borrower 33','2024-06-01',NULL),\n(34,18,'Borrower 34','2024-06-02',NULL),\n(35,18,'Borrower 35','2024-06-03',NULL),\n(36,18,'Borrower 36','2024-06-04',NULL),\n(37,19,'Borrower 37','2024-04-10','2024-04-12'),\n(38,20,'Borrower 38','2024-06-02',NULL),\n(39,21,'Borrower 39','2024-06-01',NULL),\n(40,21,'Borrower 40','2024-06-02',NULL),\n(41,22,'Borrower 41','2024-06-02',NULL),\n(42,22,'Borrower 42','2024-05-10','2024-05-20'),\n(43,23,'Borrower 43','2024-04-10','2024-04-12'),\n(44,24,'Borrower 44','2024-06-01',NULL),\n(45,24,'Borrower 45','2024-06-02',NULL),\n(46,24,'Borrower 46','2024-06-03',NULL),\n(47,24,'Borrower 47','2024-06-04',NULL),\n(48,24,'Borrower 48','2024-06-05',NULL),\n(49,25,'Borrower 49','2024-04-10','2024-04-12'),\n(50,26,'Borrower 50','2024-06-02',NULL),\n(51,26,'Borrower 51','2024-05-10','2024-05-20'),\n(52,27,'Borrower 52','2024-06-01',NULL),\n(53,27,'Borrower 53','2024-06-02',NULL),\n(54,27,'Borrower 54','2024-06-03',NULL),\n(55,28,'Borrower 55','2024-06-02',NULL),\n(56,28,'Borrower 56','2024-05-10','2024-05-20'),\n(57,29,'Borrower 57','2024-04-10','2024-04-12'),\n(58,30,'Borrower 58','2024-06-01',NULL),\n(59,31,'Borrower 59','2024-04-10','2024-04-12'),\n(60,32,'Borrower 60','2024-06-02',NULL),\n(61,32,'Borrower 61','2024-05-10','2024-05-20'),\n(62,33,'Borrower 62','2024-06-01',NULL),\n(63,33,'Borrower 63','2024-06-02',NULL),\n(64,33,'Borrower 64','2024-06-03',NULL),\n(65,33,'Borrower 65','2024-06-04',NULL),\n(66,34,'Borrower 66','2024-06-02',NULL),\n(67,34,'Borrower 67','2024-05-10','2024-05-20'),\n(68,35,'Borrower 68','2024-04-10','2024-04-12'),\n(69,36,'Borrower 69','2024-06-01',NULL),\n(70,36,'Borrower 70','2024-06-02',NULL),\n(71,37,'Borrower 71','2024-04-10','2024-04-12'),\n(72,38,'Borrower 72','2024-06-02',NULL),\n(73,38,'Borrower 73','2024-05-10','2024-05-20'),\n(74,39,'Borrower 74','2024-06-01',NULL),\n(75,39,'Borrower 75','2024-06-02',NULL),\n(76,39,'Borrower 76','2024-06-03',NULL),\n(77,39,'Borrower 77','2024-06-04',NULL),\n(78,39,'Borrower 78','2024-06-05',NULL),\n(79,40,'Borrower 79','2024-06-02',NULL),\n(80,41,'Borrower 80','2024-04-10','2024-04-12'),\n(81,42,'Borrower 81','2024-06-01',NULL),\n(82,42,'Borrower 82','2024-06-02',NULL),\n(83,42,'Borrower 83','2024-06-03',NULL),\n(84,43,'Borrower 84','2024-04-10','2024-04-12'),\n(85,44,'Borrower 85','2024-06-02',NULL),\n(86,44,'Borrower 86','2024-05-10','2024-05-20'),\n(87,45,'Borrower 87','2024-06-01',NULL),\n(88,46,'Borrower 88','2024-06-02',NULL),\n(89,46,'Borrower 89','2024-05-10','2024-05-20'),\n(90,47,'Borrower 90','2024-04-10','2024-04-12'),\n(91,48,'Borrower 91','2024-06-01',NULL),\n(92,48,'Borrower 92','2024-06-02',NULL),\n(93,48,'Borrower 93','2024-06-03',NULL),\n(94,48,'Borrower 94','2024-06-04',NULL),\n(95,49,'Borrower 95','2024-04-10','2024-04-12'),\n(96,50,'Borrower 96','2024-06-02',NULL),\n(97,51,'Borrower 97','2024-06-01',NULL),\n(98,51,'Borrower 98','2024-06-02',NULL),\n(99,52,'Borrower 99','2024-06-02',NULL),\n(100,52,'Borrower 100','2024-05-10','2024-05-20'),\n(101,53,'Borrower 101','2024-04-10','2024-04-12'),\n(102,54,'Borrower 102','2024-06-01',NULL),\n(103,54,'Borrower 103','2024-06-02',NULL),\n(104,54,'Borrower 104','2024-06-03',NULL),\n(105,54,'Borrower 105','2024-06-04',NULL),\n(106,54,'Borrower 106','2024-06-05',NULL),\n(107,55,'Borrower 107','2024-04-10','2024-04-12'),\n(108,56,'Borrower 108','2024-06-02',NULL),\n(109,56,'Borrower 109','2024-05-10','2024-05-20'),\n(110,57,'Borrower 110','2024-06-01',NULL),\n(111,57,'Borrower 111','2024-06-02',NULL),\n(112,57,'Borrower 112','2024-06-03',NULL),\n(113,58,'Borrower 113','2024-06-02',NULL),\n(114,58,'Borrower 114','2024-05-10','2024-05-20'),\n(115,59,'Borrower 115','2024-04-10','2024-04-12'),\n(116,60,'Borrower 116','2024-06-01',NULL),\n(117,61,'Borrower 117','2024-04-10','2024-04-12'),\n(118,62,'Borrower 118','2024-06-02',NULL),\n(119,62,'Borrower 119','2024-05-10','2024-05-20'),\n(120,63,'Borrower 120','2024-06-01',NULL),\n(121,63,'Borrower 121','2024-06-02',NULL),\n(122,63,'Borrower 122','2024-06-03',NULL),\n(123,63,'Borrower 123','2024-06-04',NULL),\n(124,64,'Borrower 124','2024-06-02',NULL),\n(125,64,'Borrower 125','2024-05-10','2024-05-20'),\n(126,65,'Borrower 126','2024-04-10','2024-04-12'),\n(127,66,'Borrower 127','2024-06-01',NULL),\n(128,66,'Borrower 128','2024-06-02',NULL),\n(129,67,'Borrower 129','2024-04-10','2024-04-12'),\n(130,68,'Borrower 130','2024-06-02',NULL),\n(131,68,'Borrower 131','2024-05-10','2024-05-20'),\n(132,69,'Borrower 132','2024-06-01',NULL),\n(133,69,'Borrower 133','2024-06-02',NULL),\n(134,69,'Borrower 134','2024-06-03',NULL),\n(135,69,'Borrower 135','2024-06-04',NULL),\n(136,69,'Borrower 136','2024-06-05',NULL),\n(137,70,'Borrower 137','2024-06-02',NULL),\n(138,71,'Borrower 138','2024-04-10','2024-04-12'),\n(139,72,'Borrower 139','2024-06-01',NULL),\n(140,72,'Borrower 140','2024-06-02',NULL),\n(141,72,'Borrower 141','2024-06-03',NULL),\n(142,73,'Borrower 142','2024-04-10','2024-04-12'),\n(143,74,'Borrower 143','2024-06-02',NULL),\n(144,74,'Borrower 144','2024-05-10','2024-05-20'),\n(145,75,'Borrower 145','2024-06-01',NULL),\n(146,76,'Borrower 146','2024-06-02',NULL),\n(147,76,'Borrower 147','2024-05-10','2024-05-20'),\n(148,77,'Borrower 148','2024-04-10','2024-04-12'),\n(149,78,'Borrower 149','2024-06-01',NULL),\n(150,78,'Borrower 150','2024-06-02',NULL),\n(151,78,'Borrower 151','2024-06-03',NULL),\n(152,78,'Borrower 152','2024-06-04',NULL),\n(153,79,'Borrower 153','2024-04-10','2024-04-12'),\n(154,80,'Borrower 154','2024-06-02',NULL),\n(155,81,'Borrower 155','2024-06-01',NULL),\n(156,81,'Borrower 156','2024-06-02',NULL),\n(157,82,'Borrower 157','2024-06-02',NULL),\n(158,82,'Borrower 158','2024-05-10','2024-05-20'),\n(159,83,'Borrower 159','2024-04-10','2024-04-12'),\n(160,84,'Borrower 160','2024-06-01',NULL),\n(161,84,'Borrower 161','2024-06-02',NULL),\n(162,84,'Borrower 162','2024-06-03',NULL),\n(163,84,'Borrower 163','2024-06-04',NULL),\n(164,84,'Borrower 164','2024-06-05',NULL),\n(165,85,'Borrower 165','2024-04-10','2024-04-12'),\n(166,86,'Borrower 166','2024-06-02',NULL),\n(167,86,'Borrower 167','2024-05-10','2024-05-20'),\n(168,87,'Borrower 168','2024-06-01',NULL),\n(169,87,'Borrower 169','2024-06-02',NULL),\n(170,87,'Borrower 170','2024-06-03',NULL),\n(171,88,'Borrower 171','2024-06-02',NULL),\n(172,88,'Borrower 172','2024-05-10','2024-05-20'),\n(173,89,'Borrower 173','2024-04-10','2024-04-12'),\n(174,90,'Borrower 174','2024-06-01',NULL),\n(175,91,'Borrower 175','2024-04-10','2024-04-12'),\n(176,92,'Borrower 176','2024-06-02',NULL),\n(177,92,'Borrower 177','2024-05-10','2024-05-20'),\n(178,93,'Borrower 178','2024-06-01',NULL),\n(179,93,'Borrower 179','2024-06-02',NULL),\n(180,93,'Borrower 180','2024-06-03',NULL),\n(181,93,'Borrower 181','2024-06-04',NULL),\n(182,94,'Borrower 182','2024-06-02',NULL),\n(183,94,'Borrower 183','2024-05-10','2024-05-20'),\n(184,95,'Borrower 184','2024-04-10','2024-04-12'),\n(185,96,'Borrower 185','2024-06-01',NULL),\n(186,96,'Borrower 186','2024-06-02',NULL),\n(187,97,'Borrower 187','2024-04-10','2024-04-12'),\n(188,98,'Borrower 188','2024-06-02',NULL),\n(189,98,'Borrower 189','2024-05-10','2024-05-20'),\n(190,99,'Borrower 190','2024-06-01',NULL),\n(191,99,'Borrower 191','2024-06-02',NULL),\n(192,99,'Borrower 192','2024-06-03',NULL),\n(193,99,'Borrower 193','2024-06-04',NULL),\n(194,99,'Borrower 194','2024-06-05',NULL),\n(195,100,'Borrower 195','2024-06-02',NULL),\n(196,101,'Borrower 196','2024-04-10','2024-04-12'),\n(197,102,'Borrower 197','2024-06-01',NULL),\n(198,102,'Borrower 198','2024-06-02',NULL),\n(199,102,'Borrower 199','2024-06-03',NULL),\n(200,103,'Borrower 200','2024-04-10','2024-04-12'),\n(201,104,'Borrower 201','2024-06-02',NULL),\n(202,104,'Borrower 202','2024-05-10','2024-05-20'),\n(203,105,'Borrower 203','2024-06-01',NULL),\n(204,106,'Borrower 204','2024-06-02',NULL),\n(205,106,'Borrower 205','2024-05-10','2024-05-20'),\n(206,107,'Borrower 206','2024-04-10','2024-04-12'),\n(207,108,'Borrower 207','2024-06-01',NULL),\n(208,108,'Borrower 208','2024-06-02',NULL),\n(209,108,'Borrower 209','2024-06-03',NULL),\n(210,108,'Borrower 210','2024-06-04',NULL),\n(211,109,'Borrower 211','2024-04-10','2024-04-12'),\n(212,110,'Borrower 212','2024-06-02',NULL),\n(213,111,'Borrower 213','2024-06-01',NULL),\n(214,111,'Borrower 214','2024-06-02',NULL),\n(215,112,'Borrower 215','2024-06-02',NULL),\n(216,112,'Borrower 216','2024-05-10','2024-05-20'),\n(217,113,'Borrower 217','2024-04-10','2024-04-12'),\n(218,114,'Borrower 218','2024-06-01',NULL),\n(219,114,'Borrower 219','2024-06-02',NULL),\n(220,114,'Borrower 220','2024-06-03',NULL),\n(221,114,'Borrower 221','2024-06-04',NULL),\n(222,114,'Borrower 222','2024-06-05',NULL),\n(223,115,'Borrower 223','2024-04-10','2024-04-12'),\n(224,116,'Borrower 224','2024-06-02',NULL),\n(225,116,'Borrower 225','2024-05-10','2024-05-20'),\n(226,117,'Borrower 226','2024-06-01',NULL),\n(227,117,'Borrower 227','2024-06-02',NULL),\n(228,117,'Borrower 228','2024-06-03',NULL),\n(229,118,'Borrower 229','2024-06-02',NULL),\n(230,118,'Borrower 230','2024-05-10','2024-05-20'),\n(231,119,'Borrower 231','2024-04-10','2024-04-12'),\n(232,120,'Borrower 232','2024-06-01',NULL)\n;"
+      ],
+      "expected": [
+        [
+          114,
+          "Title Number 114",
+          "Author 24",
+          "History",
+          2014,
+          5
+        ],
+        [
+          24,
+          "Title Number 24",
+          "Author 24",
+          "History",
+          1924,
+          5
+        ],
+        [
+          39,
+          "Title Number 39",
+          "Author 9",
+          "History",
+          1939,
+          5
+        ],
+        [
+          54,
+          "Title Number 54",
+          "Author 24",
+          "History",
+          1954,
+          5
+        ],
+        [
+          69,
+          "Title Number 69",
+          "Author 9",
+          "History",
+          1969,
+          5
+        ],
+        [
+          84,
+          "Title Number 84",
+          "Author 24",
+          "History",
+          1984,
+          5
+        ],
+        [
+          9,
+          "Title Number 9",
+          "Author 9",
+          "History",
+          1909,
+          5
+        ],
+        [
+          99,
+          "Title Number 99",
+          "Author 9",
+          "History",
+          1999,
+          5
+        ],
+        [
+          108,
+          "Title Number 108",
+          "Author 18",
+          "Sci-Fi",
+          2008,
+          4
+        ],
+        [
+          18,
+          "Title Number 18",
+          "Author 18",
+          "Sci-Fi",
+          1918,
+          4
+        ],
+        [
+          3,
+          "Title Number 3",
+          "Author 3",
+          "Sci-Fi",
+          1903,
+          4
+        ],
+        [
+          33,
+          "Title Number 33",
+          "Author 3",
+          "Sci-Fi",
+          1933,
+          4
+        ],
+        [
+          48,
+          "Title Number 48",
+          "Author 18",
+          "Sci-Fi",
+          1948,
+          4
+        ],
+        [
+          63,
+          "Title Number 63",
+          "Author 3",
+          "Sci-Fi",
+          1963,
+          4
+        ],
+        [
+          78,
+          "Title Number 78",
+          "Author 18",
+          "Sci-Fi",
+          1978,
+          4
+        ],
+        [
+          93,
+          "Title Number 93",
+          "Author 3",
+          "Sci-Fi",
+          1993,
+          4
+        ],
+        [
+          102,
+          "Title Number 102",
+          "Author 12",
+          "Romance",
+          2002,
+          3
+        ],
+        [
+          117,
+          "Title Number 117",
+          "Author 27",
+          "Romance",
+          2017,
+          3
+        ],
+        [
+          12,
+          "Title Number 12",
+          "Author 12",
+          "Romance",
+          1912,
+          3
+        ],
+        [
+          27,
+          "Title Number 27",
+          "Author 27",
+          "Romance",
+          1927,
+          3
+        ],
+        [
+          42,
+          "Title Number 42",
+          "Author 12",
+          "Romance",
+          1942,
+          3
+        ],
+        [
+          57,
+          "Title Number 57",
+          "Author 27",
+          "Romance",
+          1957,
+          3
+        ],
+        [
+          72,
+          "Title Number 72",
+          "Author 12",
+          "Romance",
+          1972,
+          3
+        ],
+        [
+          87,
+          "Title Number 87",
+          "Author 27",
+          "Romance",
+          1987,
+          3
+        ],
+        [
+          111,
+          "Title Number 111",
+          "Author 21",
+          "Dystopian",
+          2011,
+          2
+        ],
+        [
+          21,
+          "Title Number 21",
+          "Author 21",
+          "Dystopian",
+          1921,
+          2
+        ],
+        [
+          36,
+          "Title Number 36",
+          "Author 6",
+          "Dystopian",
+          1936,
+          2
+        ],
+        [
+          51,
+          "Title Number 51",
+          "Author 21",
+          "Dystopian",
+          1951,
+          2
+        ],
+        [
+          6,
+          "Title Number 6",
+          "Author 6",
+          "Dystopian",
+          1906,
+          2
+        ],
+        [
+          66,
+          "Title Number 66",
+          "Author 6",
+          "Dystopian",
+          1966,
+          2
+        ],
+        [
+          81,
+          "Title Number 81",
+          "Author 21",
+          "Dystopian",
+          1981,
+          2
+        ],
+        [
+          96,
+          "Title Number 96",
+          "Author 6",
+          "Dystopian",
+          1996,
+          2
+        ],
+        [
+          10,
+          "Title Number 10",
+          "Author 10",
+          "Fiction",
+          1910,
+          1
+        ],
+        [
+          100,
+          "Title Number 100",
+          "Author 10",
+          "Fiction",
+          2000,
+          1
+        ],
+        [
+          105,
+          "Title Number 105",
+          "Author 15",
+          "Fiction",
+          2005,
+          1
+        ],
+        [
+          110,
+          "Title Number 110",
+          "Author 20",
+          "Fiction",
+          2010,
+          1
+        ],
+        [
+          120,
+          "Title Number 120",
+          "Author 0",
+          "Fiction",
+          2020,
+          1
+        ],
+        [
+          15,
+          "Title Number 15",
+          "Author 15",
+          "Fiction",
+          1915,
+          1
+        ],
+        [
+          20,
+          "Title Number 20",
+          "Author 20",
+          "Fiction",
+          1920,
+          1
+        ],
+        [
+          30,
+          "Title Number 30",
+          "Author 0",
+          "Fiction",
+          1930,
+          1
+        ],
+        [
+          40,
+          "Title Number 40",
+          "Author 10",
+          "Fiction",
+          1940,
+          1
+        ],
+        [
+          45,
+          "Title Number 45",
+          "Author 15",
+          "Fiction",
+          1945,
+          1
+        ],
+        [
+          50,
+          "Title Number 50",
+          "Author 20",
+          "Fiction",
+          1950,
+          1
+        ],
+        [
+          60,
+          "Title Number 60",
+          "Author 0",
+          "Fiction",
+          1960,
+          1
+        ],
+        [
+          70,
+          "Title Number 70",
+          "Author 10",
+          "Fiction",
+          1970,
+          1
+        ],
+        [
+          75,
+          "Title Number 75",
+          "Author 15",
+          "Fiction",
+          1975,
+          1
+        ],
+        [
+          80,
+          "Title Number 80",
+          "Author 20",
+          "Fiction",
+          1980,
+          1
+        ],
+        [
+          90,
+          "Title Number 90",
+          "Author 0",
+          "Fiction",
+          1990,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO library_books VALUES\n(1,'Exhausted Volume 1','Author 1','Fiction',1921,2),\n(2,'Exhausted Volume 2','Author 2','Fiction',1922,3),\n(3,'Exhausted Volume 3','Author 3','Fiction',1923,4),\n(4,'Exhausted Volume 4','Author 4','Fiction',1924,1),\n(5,'Exhausted Volume 5','Author 5','Fiction',1925,2),\n(6,'Exhausted Volume 6','Author 6','Fiction',1926,3),\n(7,'Exhausted Volume 7','Author 7','Fiction',1927,4),\n(8,'Exhausted Volume 8','Author 8','Fiction',1928,1),\n(9,'Exhausted Volume 9','Author 0','Fiction',1929,2),\n(10,'Exhausted Volume 10','Author 1','Fiction',1930,3),\n(11,'Exhausted Volume 11','Author 2','Fiction',1931,4),\n(12,'Exhausted Volume 12','Author 3','Fiction',1932,1),\n(13,'Exhausted Volume 13','Author 4','Fiction',1933,2),\n(14,'Exhausted Volume 14','Author 5','Fiction',1934,3),\n(15,'Exhausted Volume 15','Author 6','Fiction',1935,4),\n(16,'Exhausted Volume 16','Author 7','Fiction',1936,1),\n(17,'Exhausted Volume 17','Author 8','Fiction',1937,2),\n(18,'Exhausted Volume 18','Author 0','Fiction',1938,3),\n(19,'Exhausted Volume 19','Author 1','Fiction',1939,4),\n(20,'Exhausted Volume 20','Author 2','Fiction',1940,1),\n(21,'Exhausted Volume 21','Author 3','Fiction',1941,2),\n(22,'Exhausted Volume 22','Author 4','Fiction',1942,3),\n(23,'Exhausted Volume 23','Author 5','Fiction',1943,4),\n(24,'Exhausted Volume 24','Author 6','Fiction',1944,1),\n(25,'Exhausted Volume 25','Author 7','Fiction',1945,2),\n(26,'Exhausted Volume 26','Author 8','Fiction',1946,3),\n(27,'Exhausted Volume 27','Author 0','Fiction',1947,4),\n(28,'Exhausted Volume 28','Author 1','Fiction',1948,1),\n(29,'Exhausted Volume 29','Author 2','Fiction',1949,2),\n(30,'Exhausted Volume 30','Author 3','Fiction',1950,3),\n(31,'Exhausted Volume 31','Author 4','Fiction',1951,4),\n(32,'Exhausted Volume 32','Author 5','Fiction',1952,1),\n(33,'Exhausted Volume 33','Author 6','Fiction',1953,2),\n(34,'Exhausted Volume 34','Author 7','Fiction',1954,3),\n(35,'Exhausted Volume 35','Author 8','Fiction',1955,4),\n(36,'Exhausted Volume 36','Author 0','Fiction',1956,1),\n(37,'Exhausted Volume 37','Author 1','Fiction',1957,2),\n(38,'Exhausted Volume 38','Author 2','Fiction',1958,3),\n(39,'Exhausted Volume 39','Author 3','Fiction',1959,4),\n(40,'Exhausted Volume 40','Author 4','Fiction',1960,1),\n(41,'Exhausted Volume 41','Author 5','Fiction',1961,2),\n(42,'Exhausted Volume 42','Author 6','Fiction',1962,3),\n(43,'Exhausted Volume 43','Author 7','Fiction',1963,4),\n(44,'Exhausted Volume 44','Author 8','Fiction',1964,1),\n(45,'Exhausted Volume 45','Author 0','Fiction',1965,2),\n(46,'Exhausted Volume 46','Author 1','Fiction',1966,3),\n(47,'Exhausted Volume 47','Author 2','Fiction',1967,4),\n(48,'Exhausted Volume 48','Author 3','Fiction',1968,1),\n(49,'Exhausted Volume 49','Author 4','Fiction',1969,2),\n(50,'Exhausted Volume 50','Author 5','Fiction',1970,3),\n(51,'Exhausted Volume 51','Author 6','Fiction',1971,4),\n(52,'Exhausted Volume 52','Author 7','Fiction',1972,1),\n(53,'Exhausted Volume 53','Author 8','Fiction',1973,2),\n(54,'Exhausted Volume 54','Author 0','Fiction',1974,3),\n(55,'Exhausted Volume 55','Author 1','Fiction',1975,4),\n(56,'Exhausted Volume 56','Author 2','Fiction',1976,1),\n(57,'Exhausted Volume 57','Author 3','Fiction',1977,2),\n(58,'Exhausted Volume 58','Author 4','Fiction',1978,3),\n(59,'Exhausted Volume 59','Author 5','Fiction',1979,4),\n(60,'Exhausted Volume 60','Author 6','Fiction',1980,1),\n(61,'Exhausted Volume 61','Author 7','Fiction',1981,2),\n(62,'Exhausted Volume 62','Author 8','Fiction',1982,3),\n(63,'Exhausted Volume 63','Author 0','Fiction',1983,4),\n(64,'Exhausted Volume 64','Author 1','Fiction',1984,1),\n(65,'Exhausted Volume 65','Author 2','Fiction',1985,2),\n(66,'Exhausted Volume 66','Author 3','Fiction',1986,3),\n(67,'Exhausted Volume 67','Author 4','Fiction',1987,4),\n(68,'Exhausted Volume 68','Author 5','Fiction',1988,1),\n(69,'Exhausted Volume 69','Author 6','Fiction',1989,2),\n(70,'Exhausted Volume 70','Author 7','Fiction',1990,3),\n(71,'Exhausted Volume 71','Author 8','Fiction',1991,4),\n(72,'Exhausted Volume 72','Author 0','Fiction',1992,1),\n(73,'Exhausted Volume 73','Author 1','Fiction',1993,2),\n(74,'Exhausted Volume 74','Author 2','Fiction',1994,3),\n(75,'Exhausted Volume 75','Author 3','Fiction',1995,4),\n(76,'Exhausted Volume 76','Author 4','Fiction',1996,1),\n(77,'Exhausted Volume 77','Author 5','Fiction',1997,2),\n(78,'Exhausted Volume 78','Author 6','Fiction',1998,3),\n(79,'Exhausted Volume 79','Author 7','Fiction',1999,4),\n(80,'Exhausted Volume 80','Author 8','Fiction',2000,1),\n(81,'Exhausted Volume 81','Author 0','Fiction',2001,2),\n(82,'Exhausted Volume 82','Author 1','Fiction',2002,3),\n(83,'Exhausted Volume 83','Author 2','Fiction',2003,4),\n(84,'Exhausted Volume 84','Author 3','Fiction',2004,1),\n(85,'Exhausted Volume 85','Author 4','Fiction',2005,2),\n(86,'Exhausted Volume 86','Author 5','Fiction',2006,3),\n(87,'Exhausted Volume 87','Author 6','Fiction',2007,4),\n(88,'Exhausted Volume 88','Author 7','Fiction',2008,1),\n(89,'Exhausted Volume 89','Author 8','Fiction',2009,2),\n(90,'Exhausted Volume 90','Author 0','Fiction',2010,3),\n(91,'Exhausted Volume 91','Author 1','Fiction',2011,4),\n(92,'Exhausted Volume 92','Author 2','Fiction',2012,1),\n(93,'Exhausted Volume 93','Author 3','Fiction',2013,2),\n(94,'Exhausted Volume 94','Author 4','Fiction',2014,3),\n(95,'Exhausted Volume 95','Author 5','Fiction',2015,4),\n(96,'Exhausted Volume 96','Author 6','Fiction',2016,1),\n(97,'Exhausted Volume 97','Author 7','Fiction',2017,2),\n(98,'Exhausted Volume 98','Author 8','Fiction',2018,3),\n(99,'Exhausted Volume 99','Author 0','Fiction',2019,4),\n(100,'Exhausted Volume 100','Author 1','Fiction',2020,1)\n;\nINSERT INTO borrowing_records VALUES\n(1,1,'Borrower 1','2024-07-02',NULL),\n(2,1,'Borrower 2','2024-07-03',NULL),\n(3,2,'Borrower 3','2024-07-04',NULL),\n(4,2,'Borrower 4','2024-07-05',NULL),\n(5,2,'Borrower 5','2024-07-06',NULL),\n(6,3,'Borrower 6','2024-07-07',NULL),\n(7,3,'Borrower 7','2024-07-08',NULL),\n(8,3,'Borrower 8','2024-07-09',NULL),\n(9,3,'Borrower 9','2024-07-10',NULL),\n(10,4,'Borrower 10','2024-07-11',NULL),\n(11,5,'Borrower 11','2024-07-12',NULL),\n(12,5,'Borrower 12','2024-07-13',NULL),\n(13,6,'Borrower 13','2024-07-14',NULL),\n(14,6,'Borrower 14','2024-07-15',NULL),\n(15,6,'Borrower 15','2024-07-16',NULL),\n(16,7,'Borrower 16','2024-07-17',NULL),\n(17,7,'Borrower 17','2024-07-18',NULL),\n(18,7,'Borrower 18','2024-07-19',NULL),\n(19,7,'Borrower 19','2024-07-20',NULL),\n(20,8,'Borrower 20','2024-07-21',NULL),\n(21,9,'Borrower 21','2024-07-22',NULL),\n(22,9,'Borrower 22','2024-07-23',NULL),\n(23,10,'Borrower 23','2024-07-24',NULL),\n(24,10,'Borrower 24','2024-07-25',NULL),\n(25,10,'Borrower 25','2024-07-26',NULL),\n(26,11,'Borrower 26','2024-07-27',NULL),\n(27,11,'Borrower 27','2024-07-28',NULL),\n(28,11,'Borrower 28','2024-07-01',NULL),\n(29,11,'Borrower 29','2024-07-02',NULL),\n(30,12,'Borrower 30','2024-07-03',NULL),\n(31,13,'Borrower 31','2024-07-04',NULL),\n(32,13,'Borrower 32','2024-07-05',NULL),\n(33,14,'Borrower 33','2024-07-06',NULL),\n(34,14,'Borrower 34','2024-07-07',NULL),\n(35,14,'Borrower 35','2024-07-08',NULL),\n(36,15,'Borrower 36','2024-07-09',NULL),\n(37,15,'Borrower 37','2024-07-10',NULL),\n(38,15,'Borrower 38','2024-07-11',NULL),\n(39,15,'Borrower 39','2024-07-12',NULL),\n(40,16,'Borrower 40','2024-07-13',NULL),\n(41,17,'Borrower 41','2024-07-14',NULL),\n(42,17,'Borrower 42','2024-07-15',NULL),\n(43,18,'Borrower 43','2024-07-16',NULL),\n(44,18,'Borrower 44','2024-07-17',NULL),\n(45,18,'Borrower 45','2024-07-18',NULL),\n(46,19,'Borrower 46','2024-07-19',NULL),\n(47,19,'Borrower 47','2024-07-20',NULL),\n(48,19,'Borrower 48','2024-07-21',NULL),\n(49,19,'Borrower 49','2024-07-22',NULL),\n(50,20,'Borrower 50','2024-07-23',NULL),\n(51,21,'Borrower 51','2024-07-24',NULL),\n(52,21,'Borrower 52','2024-07-25',NULL),\n(53,22,'Borrower 53','2024-07-26',NULL),\n(54,22,'Borrower 54','2024-07-27',NULL),\n(55,22,'Borrower 55','2024-07-28',NULL),\n(56,23,'Borrower 56','2024-07-01',NULL),\n(57,23,'Borrower 57','2024-07-02',NULL),\n(58,23,'Borrower 58','2024-07-03',NULL),\n(59,23,'Borrower 59','2024-07-04',NULL),\n(60,24,'Borrower 60','2024-07-05',NULL),\n(61,25,'Borrower 61','2024-07-06',NULL),\n(62,25,'Borrower 62','2024-07-07',NULL),\n(63,26,'Borrower 63','2024-07-08',NULL),\n(64,26,'Borrower 64','2024-07-09',NULL),\n(65,26,'Borrower 65','2024-07-10',NULL),\n(66,27,'Borrower 66','2024-07-11',NULL),\n(67,27,'Borrower 67','2024-07-12',NULL),\n(68,27,'Borrower 68','2024-07-13',NULL),\n(69,27,'Borrower 69','2024-07-14',NULL),\n(70,28,'Borrower 70','2024-07-15',NULL),\n(71,29,'Borrower 71','2024-07-16',NULL),\n(72,29,'Borrower 72','2024-07-17',NULL),\n(73,30,'Borrower 73','2024-07-18',NULL),\n(74,30,'Borrower 74','2024-07-19',NULL),\n(75,30,'Borrower 75','2024-07-20',NULL),\n(76,31,'Borrower 76','2024-07-21',NULL),\n(77,31,'Borrower 77','2024-07-22',NULL),\n(78,31,'Borrower 78','2024-07-23',NULL),\n(79,31,'Borrower 79','2024-07-24',NULL),\n(80,32,'Borrower 80','2024-07-25',NULL),\n(81,33,'Borrower 81','2024-07-26',NULL),\n(82,33,'Borrower 82','2024-07-27',NULL),\n(83,34,'Borrower 83','2024-07-28',NULL),\n(84,34,'Borrower 84','2024-07-01',NULL),\n(85,34,'Borrower 85','2024-07-02',NULL),\n(86,35,'Borrower 86','2024-07-03',NULL),\n(87,35,'Borrower 87','2024-07-04',NULL),\n(88,35,'Borrower 88','2024-07-05',NULL),\n(89,35,'Borrower 89','2024-07-06',NULL),\n(90,36,'Borrower 90','2024-07-07',NULL),\n(91,37,'Borrower 91','2024-07-08',NULL),\n(92,37,'Borrower 92','2024-07-09',NULL),\n(93,38,'Borrower 93','2024-07-10',NULL),\n(94,38,'Borrower 94','2024-07-11',NULL),\n(95,38,'Borrower 95','2024-07-12',NULL),\n(96,39,'Borrower 96','2024-07-13',NULL),\n(97,39,'Borrower 97','2024-07-14',NULL),\n(98,39,'Borrower 98','2024-07-15',NULL),\n(99,39,'Borrower 99','2024-07-16',NULL),\n(100,40,'Borrower 100','2024-07-17',NULL),\n(101,41,'Borrower 101','2024-07-18',NULL),\n(102,41,'Borrower 102','2024-07-19',NULL),\n(103,42,'Borrower 103','2024-07-20',NULL),\n(104,42,'Borrower 104','2024-07-21',NULL),\n(105,42,'Borrower 105','2024-07-22',NULL),\n(106,43,'Borrower 106','2024-07-23',NULL),\n(107,43,'Borrower 107','2024-07-24',NULL),\n(108,43,'Borrower 108','2024-07-25',NULL),\n(109,43,'Borrower 109','2024-07-26',NULL),\n(110,44,'Borrower 110','2024-07-27',NULL),\n(111,45,'Borrower 111','2024-07-28',NULL),\n(112,45,'Borrower 112','2024-07-01',NULL),\n(113,46,'Borrower 113','2024-07-02',NULL),\n(114,46,'Borrower 114','2024-07-03',NULL),\n(115,46,'Borrower 115','2024-07-04',NULL),\n(116,47,'Borrower 116','2024-07-05',NULL),\n(117,47,'Borrower 117','2024-07-06',NULL),\n(118,47,'Borrower 118','2024-07-07',NULL),\n(119,47,'Borrower 119','2024-07-08',NULL),\n(120,48,'Borrower 120','2024-07-09',NULL),\n(121,49,'Borrower 121','2024-07-10',NULL),\n(122,49,'Borrower 122','2024-07-11',NULL),\n(123,50,'Borrower 123','2024-07-12',NULL),\n(124,50,'Borrower 124','2024-07-13',NULL),\n(125,50,'Borrower 125','2024-07-14',NULL),\n(126,51,'Borrower 126','2024-07-15',NULL),\n(127,51,'Borrower 127','2024-07-16',NULL),\n(128,51,'Borrower 128','2024-07-17',NULL),\n(129,51,'Borrower 129','2024-07-18',NULL),\n(130,52,'Borrower 130','2024-07-19',NULL),\n(131,53,'Borrower 131','2024-07-20',NULL),\n(132,53,'Borrower 132','2024-07-21',NULL),\n(133,54,'Borrower 133','2024-07-22',NULL),\n(134,54,'Borrower 134','2024-07-23',NULL),\n(135,54,'Borrower 135','2024-07-24',NULL),\n(136,55,'Borrower 136','2024-07-25',NULL),\n(137,55,'Borrower 137','2024-07-26',NULL),\n(138,55,'Borrower 138','2024-07-27',NULL),\n(139,55,'Borrower 139','2024-07-28',NULL),\n(140,56,'Borrower 140','2024-07-01',NULL),\n(141,57,'Borrower 141','2024-07-02',NULL),\n(142,57,'Borrower 142','2024-07-03',NULL),\n(143,58,'Borrower 143','2024-07-04',NULL),\n(144,58,'Borrower 144','2024-07-05',NULL),\n(145,58,'Borrower 145','2024-07-06',NULL),\n(146,59,'Borrower 146','2024-07-07',NULL),\n(147,59,'Borrower 147','2024-07-08',NULL),\n(148,59,'Borrower 148','2024-07-09',NULL),\n(149,59,'Borrower 149','2024-07-10',NULL),\n(150,60,'Borrower 150','2024-07-11',NULL),\n(151,61,'Borrower 151','2024-07-12',NULL),\n(152,61,'Borrower 152','2024-07-13',NULL),\n(153,62,'Borrower 153','2024-07-14',NULL),\n(154,62,'Borrower 154','2024-07-15',NULL),\n(155,62,'Borrower 155','2024-07-16',NULL),\n(156,63,'Borrower 156','2024-07-17',NULL),\n(157,63,'Borrower 157','2024-07-18',NULL),\n(158,63,'Borrower 158','2024-07-19',NULL),\n(159,63,'Borrower 159','2024-07-20',NULL),\n(160,64,'Borrower 160','2024-07-21',NULL),\n(161,65,'Borrower 161','2024-07-22',NULL),\n(162,65,'Borrower 162','2024-07-23',NULL),\n(163,66,'Borrower 163','2024-07-24',NULL),\n(164,66,'Borrower 164','2024-07-25',NULL),\n(165,66,'Borrower 165','2024-07-26',NULL),\n(166,67,'Borrower 166','2024-07-27',NULL),\n(167,67,'Borrower 167','2024-07-28',NULL),\n(168,67,'Borrower 168','2024-07-01',NULL),\n(169,67,'Borrower 169','2024-07-02',NULL),\n(170,68,'Borrower 170','2024-07-03',NULL),\n(171,69,'Borrower 171','2024-07-04',NULL),\n(172,69,'Borrower 172','2024-07-05',NULL),\n(173,70,'Borrower 173','2024-07-06',NULL),\n(174,70,'Borrower 174','2024-07-07',NULL),\n(175,70,'Borrower 175','2024-07-08',NULL),\n(176,71,'Borrower 176','2024-07-09',NULL),\n(177,71,'Borrower 177','2024-07-10',NULL),\n(178,71,'Borrower 178','2024-07-11',NULL),\n(179,71,'Borrower 179','2024-07-12',NULL),\n(180,72,'Borrower 180','2024-07-13',NULL),\n(181,73,'Borrower 181','2024-07-14',NULL),\n(182,73,'Borrower 182','2024-07-15',NULL),\n(183,74,'Borrower 183','2024-07-16',NULL),\n(184,74,'Borrower 184','2024-07-17',NULL),\n(185,74,'Borrower 185','2024-07-18',NULL),\n(186,75,'Borrower 186','2024-07-19',NULL),\n(187,75,'Borrower 187','2024-07-20',NULL),\n(188,75,'Borrower 188','2024-07-21',NULL),\n(189,75,'Borrower 189','2024-07-22',NULL),\n(190,76,'Borrower 190','2024-07-23',NULL),\n(191,77,'Borrower 191','2024-07-24',NULL),\n(192,77,'Borrower 192','2024-07-25',NULL),\n(193,78,'Borrower 193','2024-07-26',NULL),\n(194,78,'Borrower 194','2024-07-27',NULL),\n(195,78,'Borrower 195','2024-07-28',NULL),\n(196,79,'Borrower 196','2024-07-01',NULL),\n(197,79,'Borrower 197','2024-07-02',NULL),\n(198,79,'Borrower 198','2024-07-03',NULL),\n(199,79,'Borrower 199','2024-07-04',NULL),\n(200,80,'Borrower 200','2024-07-05',NULL),\n(201,81,'Borrower 201','2024-07-06',NULL),\n(202,81,'Borrower 202','2024-07-07',NULL),\n(203,82,'Borrower 203','2024-07-08',NULL),\n(204,82,'Borrower 204','2024-07-09',NULL),\n(205,82,'Borrower 205','2024-07-10',NULL),\n(206,83,'Borrower 206','2024-07-11',NULL),\n(207,83,'Borrower 207','2024-07-12',NULL),\n(208,83,'Borrower 208','2024-07-13',NULL),\n(209,83,'Borrower 209','2024-07-14',NULL),\n(210,84,'Borrower 210','2024-07-15',NULL),\n(211,85,'Borrower 211','2024-07-16',NULL),\n(212,85,'Borrower 212','2024-07-17',NULL),\n(213,86,'Borrower 213','2024-07-18',NULL),\n(214,86,'Borrower 214','2024-07-19',NULL),\n(215,86,'Borrower 215','2024-07-20',NULL),\n(216,87,'Borrower 216','2024-07-21',NULL),\n(217,87,'Borrower 217','2024-07-22',NULL),\n(218,87,'Borrower 218','2024-07-23',NULL),\n(219,87,'Borrower 219','2024-07-24',NULL),\n(220,88,'Borrower 220','2024-07-25',NULL),\n(221,89,'Borrower 221','2024-07-26',NULL),\n(222,89,'Borrower 222','2024-07-27',NULL),\n(223,90,'Borrower 223','2024-07-28',NULL),\n(224,90,'Borrower 224','2024-07-01',NULL),\n(225,90,'Borrower 225','2024-07-02',NULL),\n(226,91,'Borrower 226','2024-07-03',NULL),\n(227,91,'Borrower 227','2024-07-04',NULL),\n(228,91,'Borrower 228','2024-07-05',NULL),\n(229,91,'Borrower 229','2024-07-06',NULL),\n(230,92,'Borrower 230','2024-07-07',NULL),\n(231,93,'Borrower 231','2024-07-08',NULL),\n(232,93,'Borrower 232','2024-07-09',NULL),\n(233,94,'Borrower 233','2024-07-10',NULL),\n(234,94,'Borrower 234','2024-07-11',NULL),\n(235,94,'Borrower 235','2024-07-12',NULL),\n(236,95,'Borrower 236','2024-07-13',NULL),\n(237,95,'Borrower 237','2024-07-14',NULL),\n(238,95,'Borrower 238','2024-07-15',NULL),\n(239,95,'Borrower 239','2024-07-16',NULL),\n(240,96,'Borrower 240','2024-07-17',NULL),\n(241,97,'Borrower 241','2024-07-18',NULL),\n(242,97,'Borrower 242','2024-07-19',NULL),\n(243,98,'Borrower 243','2024-07-20',NULL),\n(244,98,'Borrower 244','2024-07-21',NULL),\n(245,98,'Borrower 245','2024-07-22',NULL),\n(246,99,'Borrower 246','2024-07-23',NULL),\n(247,99,'Borrower 247','2024-07-24',NULL),\n(248,99,'Borrower 248','2024-07-25',NULL),\n(249,99,'Borrower 249','2024-07-26',NULL),\n(250,100,'Borrower 250','2024-07-27',NULL)\n;"
+      ],
+      "expected": [
+        [
+          11,
+          "Exhausted Volume 11",
+          "Author 2",
+          "Fiction",
+          1931,
+          4
+        ],
+        [
+          15,
+          "Exhausted Volume 15",
+          "Author 6",
+          "Fiction",
+          1935,
+          4
+        ],
+        [
+          19,
+          "Exhausted Volume 19",
+          "Author 1",
+          "Fiction",
+          1939,
+          4
+        ],
+        [
+          23,
+          "Exhausted Volume 23",
+          "Author 5",
+          "Fiction",
+          1943,
+          4
+        ],
+        [
+          27,
+          "Exhausted Volume 27",
+          "Author 0",
+          "Fiction",
+          1947,
+          4
+        ],
+        [
+          3,
+          "Exhausted Volume 3",
+          "Author 3",
+          "Fiction",
+          1923,
+          4
+        ],
+        [
+          31,
+          "Exhausted Volume 31",
+          "Author 4",
+          "Fiction",
+          1951,
+          4
+        ],
+        [
+          35,
+          "Exhausted Volume 35",
+          "Author 8",
+          "Fiction",
+          1955,
+          4
+        ],
+        [
+          39,
+          "Exhausted Volume 39",
+          "Author 3",
+          "Fiction",
+          1959,
+          4
+        ],
+        [
+          43,
+          "Exhausted Volume 43",
+          "Author 7",
+          "Fiction",
+          1963,
+          4
+        ],
+        [
+          47,
+          "Exhausted Volume 47",
+          "Author 2",
+          "Fiction",
+          1967,
+          4
+        ],
+        [
+          51,
+          "Exhausted Volume 51",
+          "Author 6",
+          "Fiction",
+          1971,
+          4
+        ],
+        [
+          55,
+          "Exhausted Volume 55",
+          "Author 1",
+          "Fiction",
+          1975,
+          4
+        ],
+        [
+          59,
+          "Exhausted Volume 59",
+          "Author 5",
+          "Fiction",
+          1979,
+          4
+        ],
+        [
+          63,
+          "Exhausted Volume 63",
+          "Author 0",
+          "Fiction",
+          1983,
+          4
+        ],
+        [
+          67,
+          "Exhausted Volume 67",
+          "Author 4",
+          "Fiction",
+          1987,
+          4
+        ],
+        [
+          7,
+          "Exhausted Volume 7",
+          "Author 7",
+          "Fiction",
+          1927,
+          4
+        ],
+        [
+          71,
+          "Exhausted Volume 71",
+          "Author 8",
+          "Fiction",
+          1991,
+          4
+        ],
+        [
+          75,
+          "Exhausted Volume 75",
+          "Author 3",
+          "Fiction",
+          1995,
+          4
+        ],
+        [
+          79,
+          "Exhausted Volume 79",
+          "Author 7",
+          "Fiction",
+          1999,
+          4
+        ],
+        [
+          83,
+          "Exhausted Volume 83",
+          "Author 2",
+          "Fiction",
+          2003,
+          4
+        ],
+        [
+          87,
+          "Exhausted Volume 87",
+          "Author 6",
+          "Fiction",
+          2007,
+          4
+        ],
+        [
+          91,
+          "Exhausted Volume 91",
+          "Author 1",
+          "Fiction",
+          2011,
+          4
+        ],
+        [
+          95,
+          "Exhausted Volume 95",
+          "Author 5",
+          "Fiction",
+          2015,
+          4
+        ],
+        [
+          99,
+          "Exhausted Volume 99",
+          "Author 0",
+          "Fiction",
+          2019,
+          4
+        ],
+        [
+          10,
+          "Exhausted Volume 10",
+          "Author 1",
+          "Fiction",
+          1930,
+          3
+        ],
+        [
+          14,
+          "Exhausted Volume 14",
+          "Author 5",
+          "Fiction",
+          1934,
+          3
+        ],
+        [
+          18,
+          "Exhausted Volume 18",
+          "Author 0",
+          "Fiction",
+          1938,
+          3
+        ],
+        [
+          2,
+          "Exhausted Volume 2",
+          "Author 2",
+          "Fiction",
+          1922,
+          3
+        ],
+        [
+          22,
+          "Exhausted Volume 22",
+          "Author 4",
+          "Fiction",
+          1942,
+          3
+        ],
+        [
+          26,
+          "Exhausted Volume 26",
+          "Author 8",
+          "Fiction",
+          1946,
+          3
+        ],
+        [
+          30,
+          "Exhausted Volume 30",
+          "Author 3",
+          "Fiction",
+          1950,
+          3
+        ],
+        [
+          34,
+          "Exhausted Volume 34",
+          "Author 7",
+          "Fiction",
+          1954,
+          3
+        ],
+        [
+          38,
+          "Exhausted Volume 38",
+          "Author 2",
+          "Fiction",
+          1958,
+          3
+        ],
+        [
+          42,
+          "Exhausted Volume 42",
+          "Author 6",
+          "Fiction",
+          1962,
+          3
+        ],
+        [
+          46,
+          "Exhausted Volume 46",
+          "Author 1",
+          "Fiction",
+          1966,
+          3
+        ],
+        [
+          50,
+          "Exhausted Volume 50",
+          "Author 5",
+          "Fiction",
+          1970,
+          3
+        ],
+        [
+          54,
+          "Exhausted Volume 54",
+          "Author 0",
+          "Fiction",
+          1974,
+          3
+        ],
+        [
+          58,
+          "Exhausted Volume 58",
+          "Author 4",
+          "Fiction",
+          1978,
+          3
+        ],
+        [
+          6,
+          "Exhausted Volume 6",
+          "Author 6",
+          "Fiction",
+          1926,
+          3
+        ],
+        [
+          62,
+          "Exhausted Volume 62",
+          "Author 8",
+          "Fiction",
+          1982,
+          3
+        ],
+        [
+          66,
+          "Exhausted Volume 66",
+          "Author 3",
+          "Fiction",
+          1986,
+          3
+        ],
+        [
+          70,
+          "Exhausted Volume 70",
+          "Author 7",
+          "Fiction",
+          1990,
+          3
+        ],
+        [
+          74,
+          "Exhausted Volume 74",
+          "Author 2",
+          "Fiction",
+          1994,
+          3
+        ],
+        [
+          78,
+          "Exhausted Volume 78",
+          "Author 6",
+          "Fiction",
+          1998,
+          3
+        ],
+        [
+          82,
+          "Exhausted Volume 82",
+          "Author 1",
+          "Fiction",
+          2002,
+          3
+        ],
+        [
+          86,
+          "Exhausted Volume 86",
+          "Author 5",
+          "Fiction",
+          2006,
+          3
+        ],
+        [
+          90,
+          "Exhausted Volume 90",
+          "Author 0",
+          "Fiction",
+          2010,
+          3
+        ],
+        [
+          94,
+          "Exhausted Volume 94",
+          "Author 4",
+          "Fiction",
+          2014,
+          3
+        ],
+        [
+          98,
+          "Exhausted Volume 98",
+          "Author 8",
+          "Fiction",
+          2018,
+          3
+        ],
+        [
+          1,
+          "Exhausted Volume 1",
+          "Author 1",
+          "Fiction",
+          1921,
+          2
+        ],
+        [
+          13,
+          "Exhausted Volume 13",
+          "Author 4",
+          "Fiction",
+          1933,
+          2
+        ],
+        [
+          17,
+          "Exhausted Volume 17",
+          "Author 8",
+          "Fiction",
+          1937,
+          2
+        ],
+        [
+          21,
+          "Exhausted Volume 21",
+          "Author 3",
+          "Fiction",
+          1941,
+          2
+        ],
+        [
+          25,
+          "Exhausted Volume 25",
+          "Author 7",
+          "Fiction",
+          1945,
+          2
+        ],
+        [
+          29,
+          "Exhausted Volume 29",
+          "Author 2",
+          "Fiction",
+          1949,
+          2
+        ],
+        [
+          33,
+          "Exhausted Volume 33",
+          "Author 6",
+          "Fiction",
+          1953,
+          2
+        ],
+        [
+          37,
+          "Exhausted Volume 37",
+          "Author 1",
+          "Fiction",
+          1957,
+          2
+        ],
+        [
+          41,
+          "Exhausted Volume 41",
+          "Author 5",
+          "Fiction",
+          1961,
+          2
+        ],
+        [
+          45,
+          "Exhausted Volume 45",
+          "Author 0",
+          "Fiction",
+          1965,
+          2
+        ],
+        [
+          49,
+          "Exhausted Volume 49",
+          "Author 4",
+          "Fiction",
+          1969,
+          2
+        ],
+        [
+          5,
+          "Exhausted Volume 5",
+          "Author 5",
+          "Fiction",
+          1925,
+          2
+        ],
+        [
+          53,
+          "Exhausted Volume 53",
+          "Author 8",
+          "Fiction",
+          1973,
+          2
+        ],
+        [
+          57,
+          "Exhausted Volume 57",
+          "Author 3",
+          "Fiction",
+          1977,
+          2
+        ],
+        [
+          61,
+          "Exhausted Volume 61",
+          "Author 7",
+          "Fiction",
+          1981,
+          2
+        ],
+        [
+          65,
+          "Exhausted Volume 65",
+          "Author 2",
+          "Fiction",
+          1985,
+          2
+        ],
+        [
+          69,
+          "Exhausted Volume 69",
+          "Author 6",
+          "Fiction",
+          1989,
+          2
+        ],
+        [
+          73,
+          "Exhausted Volume 73",
+          "Author 1",
+          "Fiction",
+          1993,
+          2
+        ],
+        [
+          77,
+          "Exhausted Volume 77",
+          "Author 5",
+          "Fiction",
+          1997,
+          2
+        ],
+        [
+          81,
+          "Exhausted Volume 81",
+          "Author 0",
+          "Fiction",
+          2001,
+          2
+        ],
+        [
+          85,
+          "Exhausted Volume 85",
+          "Author 4",
+          "Fiction",
+          2005,
+          2
+        ],
+        [
+          89,
+          "Exhausted Volume 89",
+          "Author 8",
+          "Fiction",
+          2009,
+          2
+        ],
+        [
+          9,
+          "Exhausted Volume 9",
+          "Author 0",
+          "Fiction",
+          1929,
+          2
+        ],
+        [
+          93,
+          "Exhausted Volume 93",
+          "Author 3",
+          "Fiction",
+          2013,
+          2
+        ],
+        [
+          97,
+          "Exhausted Volume 97",
+          "Author 7",
+          "Fiction",
+          2017,
+          2
+        ],
+        [
+          100,
+          "Exhausted Volume 100",
+          "Author 1",
+          "Fiction",
+          2020,
+          1
+        ],
+        [
+          12,
+          "Exhausted Volume 12",
+          "Author 3",
+          "Fiction",
+          1932,
+          1
+        ],
+        [
+          16,
+          "Exhausted Volume 16",
+          "Author 7",
+          "Fiction",
+          1936,
+          1
+        ],
+        [
+          20,
+          "Exhausted Volume 20",
+          "Author 2",
+          "Fiction",
+          1940,
+          1
+        ],
+        [
+          24,
+          "Exhausted Volume 24",
+          "Author 6",
+          "Fiction",
+          1944,
+          1
+        ],
+        [
+          28,
+          "Exhausted Volume 28",
+          "Author 1",
+          "Fiction",
+          1948,
+          1
+        ],
+        [
+          32,
+          "Exhausted Volume 32",
+          "Author 5",
+          "Fiction",
+          1952,
+          1
+        ],
+        [
+          36,
+          "Exhausted Volume 36",
+          "Author 0",
+          "Fiction",
+          1956,
+          1
+        ],
+        [
+          4,
+          "Exhausted Volume 4",
+          "Author 4",
+          "Fiction",
+          1924,
+          1
+        ],
+        [
+          40,
+          "Exhausted Volume 40",
+          "Author 4",
+          "Fiction",
+          1960,
+          1
+        ],
+        [
+          44,
+          "Exhausted Volume 44",
+          "Author 8",
+          "Fiction",
+          1964,
+          1
+        ],
+        [
+          48,
+          "Exhausted Volume 48",
+          "Author 3",
+          "Fiction",
+          1968,
+          1
+        ],
+        [
+          52,
+          "Exhausted Volume 52",
+          "Author 7",
+          "Fiction",
+          1972,
+          1
+        ],
+        [
+          56,
+          "Exhausted Volume 56",
+          "Author 2",
+          "Fiction",
+          1976,
+          1
+        ],
+        [
+          60,
+          "Exhausted Volume 60",
+          "Author 6",
+          "Fiction",
+          1980,
+          1
+        ],
+        [
+          64,
+          "Exhausted Volume 64",
+          "Author 1",
+          "Fiction",
+          1984,
+          1
+        ],
+        [
+          68,
+          "Exhausted Volume 68",
+          "Author 5",
+          "Fiction",
+          1988,
+          1
+        ],
+        [
+          72,
+          "Exhausted Volume 72",
+          "Author 0",
+          "Fiction",
+          1992,
+          1
+        ],
+        [
+          76,
+          "Exhausted Volume 76",
+          "Author 4",
+          "Fiction",
+          1996,
+          1
+        ],
+        [
+          8,
+          "Exhausted Volume 8",
+          "Author 8",
+          "Fiction",
+          1928,
+          1
+        ],
+        [
+          80,
+          "Exhausted Volume 80",
+          "Author 8",
+          "Fiction",
+          2000,
+          1
+        ],
+        [
+          84,
+          "Exhausted Volume 84",
+          "Author 3",
+          "Fiction",
+          2004,
+          1
+        ],
+        [
+          88,
+          "Exhausted Volume 88",
+          "Author 7",
+          "Fiction",
+          2008,
+          1
+        ],
+        [
+          92,
+          "Exhausted Volume 92",
+          "Author 2",
+          "Fiction",
+          2012,
+          1
+        ],
+        [
+          96,
+          "Exhausted Volume 96",
+          "Author 6",
+          "Fiction",
+          2016,
+          1
+        ]
+      ]
+    }
+  ]
+}

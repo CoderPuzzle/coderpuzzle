@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2214,
+  "slug": "minimum-health-to-beat-game",
+  "title": "Minimum Health to Beat Game",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumHealth",
+    "parameters": [
+      {
+        "name": "damage",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "armor",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "minimumHealth",
+      "rust": "minimum_health",
+      "typescript": "minimumHealth"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

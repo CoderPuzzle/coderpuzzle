@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1131,
+  "slug": "maximum-of-absolute-value-expression",
+  "title": "Maximum of Absolute Value Expression",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "topics": [
+    "Array",
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxAbsValExpr",
+    "parameters": [
+      {
+        "name": "arr1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "arr2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxAbsValExpr",
+      "rust": "max_abs_val_expr",
+      "typescript": "maxAbsValExpr"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

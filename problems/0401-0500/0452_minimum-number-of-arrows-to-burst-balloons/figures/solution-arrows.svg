@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="280" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- x axis: unit 36px, x(v) = 40 + 36*(v-1); range 1..17 -->
+  <line x1="30" y1="250" x2="660" y2="250" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="40" y1="250" x2="40" y2="256"/><line x1="112" y1="250" x2="112" y2="256"/>
+    <line x1="184" y1="250" x2="184" y2="256"/><line x1="256" y1="250" x2="256" y2="256"/>
+    <line x1="328" y1="250" x2="328" y2="256"/><line x1="400" y1="250" x2="400" y2="256"/>
+    <line x1="472" y1="250" x2="472" y2="256"/><line x1="544" y1="250" x2="544" y2="256"/>
+    <line x1="616" y1="250" x2="616" y2="256"/>
+  </g>
+  <g fill="#5c6b76" font-size="12" text-anchor="middle">
+    <text x="40" y="272">1</text><text x="112" y="272">3</text><text x="184" y="272">5</text>
+    <text x="256" y="272">7</text><text x="328" y="272">9</text><text x="400" y="272">11</text>
+    <text x="472" y="272">13</text><text x="544" y="272">15</text><text x="616" y="272">17</text>
+  </g>
+  <!-- balloons sorted by right endpoint: [1,6],[2,8],[7,12],[10,16] -->
+  <rect x="40" y="66" width="180" height="20" rx="9" fill="#4169E1"/>
+  <text x="148" y="56" text-anchor="middle" fill="#1a2026" font-size="12.5">[1,6]</text>
+  <rect x="76" y="118" width="216" height="20" rx="9" fill="#4169E1"/>
+  <text x="202" y="108" text-anchor="middle" fill="#1a2026" font-size="12.5">[2,8]</text>
+  <rect x="256" y="170" width="180" height="20" rx="9" fill="#4169E1"/>
+  <text x="346" y="160" text-anchor="middle" fill="#1a2026" font-size="12.5">[7,12]</text>
+  <rect x="364" y="222" width="216" height="20" rx="9" fill="#4169E1"/>
+  <text x="472" y="212" text-anchor="middle" fill="#1a2026" font-size="12.5">[10,16]</text>
+  <!-- arrows at x=6 and x=12 -->
+  <line x1="220" y1="40" x2="220" y2="244" stroke="#4169E1" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <line x1="436" y1="140" x2="436" y2="244" stroke="#4169E1" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <g fill="#4169E1" font-size="12.5">
+    <text x="228" y="48">arrow 1 at x = 6 (right end of [1,6])</text>
+    <text x="444" y="152">arrow 2 at x = 12 (right end of [7,12])</text>
+  </g>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="30" y="30">[2,8] starts at 2 ≤ 6, so arrow 1 bursts it too; [10,16] starts at 10 ≤ 12,</text>
+    <text x="30" y="46" fill="#4169E1">so it falls to arrow 2 — two arrows burst all four balloons.</text>
+  </g>
+</svg>

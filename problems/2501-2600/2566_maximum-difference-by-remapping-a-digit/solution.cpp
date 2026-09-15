@@ -1,0 +1,28 @@
+class Solution {
+  public:
+    int minMaxDifference(int num) {
+        // A remap rewrites every copy of one chosen digit, and the
+        // notes allow leading zeroes plus mapping a digit to itself.
+        // That forces the two greedy plays: promote every copy of the
+        // first digit that is not already 9 up to 9 (a no-op when
+        // there is none), and demote every copy of the leading digit
+        // down to 0. Both rewrites only ever touch leftmost-first
+        // repeats, so any other choice keeps some earlier position
+        // lower or higher than necessary.
+        string big = to_string(num);
+        for (char ch : big) {
+            if (ch != '9') {
+                for (char &c : big)
+                    if (c == ch)
+                        c = '9';
+                break;
+            }
+        }
+        string small = to_string(num);
+        char lead = small[0];
+        for (char &c : small)
+            if (c == lead)
+                c = '0';
+        return stoi(big) - stoi(small);
+    }
+};

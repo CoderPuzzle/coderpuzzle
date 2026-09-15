@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3444,
+  "slug": "minimum-increments-for-target-multiples-in-an-array",
+  "title": "Minimum Increments for Target Multiples in an Array",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Number Theory",
+    "Bitmask"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Number Theory",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumIncrements",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumIncrements",
+      "rust": "minimum_increments",
+      "typescript": "minimumIncrements"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

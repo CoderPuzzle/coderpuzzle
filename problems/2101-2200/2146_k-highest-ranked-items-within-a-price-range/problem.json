@@ -1,0 +1,96 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2146,
+  "slug": "k-highest-ranked-items-within-a-price-range",
+  "title": "K Highest Ranked Items Within a Price Range",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Breadth-First Search",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Breadth-First Search",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "highestRankedKItems",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "pricing",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "start",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "highestRankedKItems",
+      "rust": "highest_ranked_k_items",
+      "typescript": "highestRankedKItems"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

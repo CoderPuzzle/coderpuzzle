@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 298,
+  "slug": "binary-tree-longest-consecutive-sequence",
+  "title": "Binary Tree Longest Consecutive Sequence",
+  "difficulty": "Medium",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree",
+    "DP on Trees"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree",
+    "DP on Trees"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestConsecutive",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "longestConsecutive",
+      "rust": "longest_consecutive",
+      "typescript": "longestConsecutive"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

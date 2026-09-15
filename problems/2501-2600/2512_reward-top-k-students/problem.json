@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2512,
+  "slug": "reward-top-k-students",
+  "title": "Reward Top K Students",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting",
+    "Heap (Priority Queue)"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "topStudents",
+    "parameters": [
+      {
+        "name": "positive_feedback",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "negative_feedback",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "report",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "student_id",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "topStudents",
+      "rust": "top_students",
+      "typescript": "topStudents"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

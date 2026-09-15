@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 959,
+  "slug": "regions-cut-by-slashes",
+  "title": "Regions Cut By Slashes",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Matrix",
+    "Planar Graph"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Matrix",
+    "Planar Graph"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "regionsBySlashes",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "regionsBySlashes",
+      "rust": "regions_by_slashes",
+      "typescript": "regionsBySlashes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

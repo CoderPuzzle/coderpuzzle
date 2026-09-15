@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 527,
+  "slug": "word-abbreviation",
+  "title": "Word Abbreviation",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Greedy",
+    "Trie",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Greedy",
+    "Trie",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "wordsAbbreviation",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "wordsAbbreviation",
+      "rust": "words_abbreviation",
+      "typescript": "wordsAbbreviation"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

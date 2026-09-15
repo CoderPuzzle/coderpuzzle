@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2335,
+  "slug": "minimum-amount-of-time-to-fill-cups",
+  "title": "Minimum Amount of Time to Fill Cups",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Heap (Priority Queue)"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "fillCups",
+    "parameters": [
+      {
+        "name": "amount",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "fillCups",
+      "rust": "fill_cups",
+      "typescript": "fillCups"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

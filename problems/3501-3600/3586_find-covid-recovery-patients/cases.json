@@ -1,0 +1,311 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Alice Smith',28),\n(2,'Bob Johnson',35),\n(3,'Carol Davis',42),\n(4,'David Wilson',31),\n(5,'Emma Brown',29)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2023-01-15','Positive'),\n(2,1,'2023-01-25','Negative'),\n(3,2,'2023-02-01','Positive'),\n(4,2,'2023-02-05','Inconclusive'),\n(5,2,'2023-02-12','Negative'),\n(6,3,'2023-01-20','Negative'),\n(7,3,'2023-02-10','Positive'),\n(8,3,'2023-02-20','Negative'),\n(9,4,'2023-01-10','Positive'),\n(10,4,'2023-01-18','Positive'),\n(11,5,'2023-02-15','Negative'),\n(12,5,'2023-02-20','Negative')\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "Alice Smith",
+          28,
+          10
+        ],
+        [
+          3,
+          "Carol Davis",
+          42,
+          10
+        ],
+        [
+          2,
+          "Bob Johnson",
+          35,
+          11
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Ava Diaz',40)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-03-01','Positive'),\n(2,1,'2024-03-02','Negative')\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "Ava Diaz",
+          40,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Ben Kim',33)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-01-05','Negative'),\n(2,1,'2024-01-08','Negative')\n;"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Cara Baker',51)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-02-10','Positive'),\n(2,1,'2024-02-20','Positive')\n;"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Dan Ibrahim',27)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-01-02','Negative'),\n(2,1,'2024-01-09','Negative'),\n(3,1,'2024-02-01','Positive')\n;"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Eli Price',36)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-04-01','Positive'),\n(2,1,'2024-04-01','Negative'),\n(3,1,'2024-04-06','Negative')\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "Eli Price",
+          36,
+          5
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Fay Grant',44)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-04-01','Positive'),\n(2,1,'2024-04-01','Negative')\n;"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Gus Novak',22)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-05-01','Inconclusive'),\n(2,1,'2024-05-02','Positive'),\n(3,1,'2024-05-04','Inconclusive'),\n(4,1,'2024-05-09','Inconclusive'),\n(5,1,'2024-05-11','Negative'),\n(6,1,'2024-05-12','Inconclusive')\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "Gus Novak",
+          22,
+          9
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Hana Evans',58)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-01-01','Positive'),\n(2,1,'2024-06-01','Positive'),\n(3,1,'2024-06-02','Negative'),\n(4,1,'2024-06-10','Negative')\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "Hana Evans",
+          58,
+          153
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Ike Lopez',30)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-02-01','Positive'),\n(2,1,'2024-02-09','Negative'),\n(3,1,'2024-03-01','Positive'),\n(4,1,'2024-03-14','Negative')\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "Ike Lopez",
+          30,
+          8
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Jo Chen',25),\n(2,'Kai Jensen',39)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-06-01','Positive'),\n(2,1,'2024-06-06','Negative'),\n(3,2,'2024-07-10','Positive'),\n(4,2,'2024-07-15','Negative')\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "Jo Chen",
+          25,
+          5
+        ],
+        [
+          2,
+          "Kai Jensen",
+          39,
+          5
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Lena Alvarez',47),\n(2,'Milo Huang',19),\n(3,'Nia Ortega',62)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-01-10','Positive'),\n(2,2,'2024-01-11','Negative'),\n(3,3,'2024-01-12','Inconclusive')\n;"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Omar Fischer',35),\n(2,'Pia Meyer',28)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2023-12-28','Positive'),\n(2,1,'2024-01-03','Negative'),\n(3,2,'2024-02-27','Positive'),\n(4,2,'2024-03-01','Negative')\n;"
+      ],
+      "expected": [
+        [
+          2,
+          "Pia Meyer",
+          28,
+          3
+        ],
+        [
+          1,
+          "Omar Fischer",
+          35,
+          6
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Ava Diaz',20),\n(2,'Ben Kim',21),\n(3,'Cara Baker',22),\n(4,'Dan Ibrahim',23),\n(5,'Eli Price',24),\n(6,'Fay Grant',25)\n;\nINSERT INTO covid_tests VALUES\n(1,1,'2024-01-01','Positive'),\n(2,1,'2024-01-05','Negative'),\n(3,2,'2024-01-02','Negative'),\n(4,2,'2024-01-20','Positive'),\n(5,3,'2024-01-03','Positive'),\n(6,3,'2024-01-04','Inconclusive'),\n(7,4,'2024-01-05','Positive'),\n(8,4,'2024-01-06','Negative'),\n(9,4,'2024-01-07','Positive'),\n(10,4,'2024-01-30','Negative'),\n(11,5,'2024-02-01','Negative'),\n(12,5,'2024-02-02','Negative'),\n(13,6,'2024-02-10','Positive'),\n(14,6,'2024-02-20','Negative')\n;"
+      ],
+      "expected": [
+        [
+          4,
+          "Dan Ibrahim",
+          23,
+          1
+        ],
+        [
+          1,
+          "Ava Diaz",
+          20,
+          4
+        ],
+        [
+          6,
+          "Fay Grant",
+          25,
+          10
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Ava Diaz',56),\n(2,'Ben Kim',54),\n(3,'Cara Baker',65),\n(4,'Dan Ibrahim',37),\n(5,'Eli Price',24),\n(6,'Fay Grant',62),\n(7,'Gus Novak',74),\n(8,'Hana Evans',50),\n(9,'Ike Lopez',47)\n;\nINSERT INTO covid_tests VALUES\n(1,9,'2024-01-06','Positive'),\n(2,3,'2024-01-15','Negative'),\n(3,7,'2024-02-07','Negative'),\n(4,2,'2024-02-06','Inconclusive'),\n(5,1,'2024-01-21','Negative'),\n(6,4,'2024-02-04','Inconclusive'),\n(7,3,'2024-01-16','Positive'),\n(8,4,'2024-02-03','Inconclusive'),\n(9,7,'2024-02-03','Positive'),\n(10,3,'2024-01-10','Negative'),\n(11,6,'2024-05-22','Negative'),\n(12,5,'2024-05-22','Negative'),\n(13,8,'2024-03-03','Inconclusive'),\n(14,6,'2024-05-26','Positive'),\n(15,5,'2024-05-26','Negative'),\n(16,6,'2024-05-21','Negative'),\n(17,4,'2024-01-29','Positive'),\n(18,9,'2024-01-10','Negative'),\n(19,1,'2024-01-21','Negative'),\n(20,7,'2024-02-12','Negative'),\n(21,8,'2024-02-27','Negative'),\n(22,8,'2024-02-23','Inconclusive'),\n(23,9,'2024-01-07','Negative'),\n(24,5,'2024-05-31','Positive'),\n(25,2,'2024-01-31','Inconclusive'),\n(26,1,'2024-01-20','Positive'),\n(27,2,'2024-02-05','Inconclusive')\n;"
+      ],
+      "expected": [
+        [
+          1,
+          "Ava Diaz",
+          56,
+          1
+        ],
+        [
+          9,
+          "Ike Lopez",
+          47,
+          1
+        ],
+        [
+          7,
+          "Gus Novak",
+          74,
+          4
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO patients VALUES\n(1,'Ava Diaz',72),\n(2,'Ben Kim',74),\n(3,'Cara Baker',47),\n(4,'Dan Ibrahim',26),\n(5,'Eli Price',35),\n(6,'Fay Grant',56),\n(7,'Gus Novak',45),\n(8,'Hana Evans',73),\n(9,'Ike Lopez',77),\n(10,'Jo Chen',40),\n(11,'Kai Jensen',53),\n(12,'Lena Alvarez',41),\n(13,'Milo Huang',49),\n(14,'Nia Ortega',71),\n(15,'Omar Fischer',54),\n(16,'Pia Meyer',58),\n(17,'Quinn Diaz',73),\n(18,'Rosa Kim',75),\n(19,'Sven Baker',45),\n(20,'Tara Ibrahim',22),\n(21,'Ava Price',65),\n(22,'Ben Grant',40),\n(23,'Cara Novak',33),\n(24,'Dan Evans',51),\n(25,'Eli Lopez',68),\n(26,'Fay Chen',34),\n(27,'Gus Jensen',52),\n(28,'Hana Alvarez',19),\n(29,'Ike Huang',41),\n(30,'Jo Ortega',38),\n(31,'Kai Fischer',71),\n(32,'Lena Meyer',44),\n(33,'Milo Diaz',40),\n(34,'Nia Kim',41),\n(35,'Omar Baker',46),\n(36,'Pia Ibrahim',55),\n(37,'Quinn Price',39),\n(38,'Rosa Grant',28),\n(39,'Sven Novak',35),\n(40,'Tara Evans',24),\n(41,'Ava Lopez',57),\n(42,'Ben Chen',28),\n(43,'Cara Jensen',38),\n(44,'Dan Alvarez',56),\n(45,'Eli Huang',31)\n;\nINSERT INTO covid_tests VALUES\n(1,40,'2024-02-12','Inconclusive'),\n(2,25,'2024-03-19','Positive'),\n(3,11,'2024-01-16','Inconclusive'),\n(4,38,'2024-01-26','Negative'),\n(5,33,'2024-05-24','Inconclusive'),\n(6,24,'2024-07-16','Negative'),\n(7,20,'2024-03-19','Negative'),\n(8,4,'2024-03-15','Negative'),\n(9,5,'2024-04-04','Negative'),\n(10,31,'2024-01-30','Positive'),\n(11,1,'2024-01-13','Negative'),\n(12,16,'2024-06-25','Inconclusive'),\n(13,9,'2024-01-10','Negative'),\n(14,13,'2024-02-08','Inconclusive'),\n(15,19,'2024-01-21','Positive'),\n(16,43,'2024-04-30','Positive'),\n(17,40,'2024-02-14','Positive'),\n(18,20,'2024-03-21','Positive'),\n(19,5,'2024-03-27','Negative'),\n(20,9,'2024-01-11','Inconclusive'),\n(21,5,'2024-03-27','Negative'),\n(22,26,'2024-03-04','Negative'),\n(23,11,'2024-01-13','Positive'),\n(24,33,'2024-05-26','Inconclusive'),\n(25,34,'2024-05-21','Inconclusive'),\n(26,21,'2024-04-23','Inconclusive'),\n(27,10,'2024-04-12','Positive'),\n(28,6,'2024-05-14','Inconclusive'),\n(29,20,'2024-03-16','Negative'),\n(30,6,'2024-05-17','Positive'),\n(31,18,'2024-06-27','Inconclusive'),\n(32,34,'2024-05-18','Positive'),\n(33,24,'2024-07-20','Negative'),\n(34,11,'2024-01-09','Negative'),\n(35,26,'2024-03-10','Negative'),\n(36,28,'2024-07-01','Positive'),\n(37,3,'2024-06-29','Negative'),\n(38,34,'2024-05-21','Positive'),\n(39,22,'2024-07-01','Negative'),\n(40,29,'2024-02-03','Positive'),\n(41,43,'2024-04-30','Inconclusive'),\n(42,36,'2024-01-23','Negative'),\n(43,2,'2024-05-04','Inconclusive'),\n(44,19,'2024-01-14','Negative'),\n(45,10,'2024-04-17','Negative'),\n(46,2,'2024-05-13','Positive'),\n(47,39,'2024-03-05','Negative'),\n(48,15,'2024-07-01','Inconclusive'),\n(49,10,'2024-04-12','Inconclusive'),\n(50,38,'2024-01-29','Negative'),\n(51,28,'2024-06-26','Negative'),\n(52,30,'2024-03-03','Inconclusive'),\n(53,32,'2024-07-05','Positive'),\n(54,4,'2024-03-11','Negative'),\n(55,24,'2024-07-19','Negative'),\n(56,40,'2024-02-20','Positive'),\n(57,41,'2024-01-04','Positive'),\n(58,22,'2024-07-05','Negative'),\n(59,34,'2024-05-20','Positive'),\n(60,28,'2024-06-27','Positive'),\n(61,6,'2024-05-14','Negative'),\n(62,17,'2024-04-15','Inconclusive'),\n(63,41,'2024-01-05','Negative'),\n(64,14,'2024-03-02','Inconclusive'),\n(65,10,'2024-04-22','Positive'),\n(66,37,'2024-02-10','Positive'),\n(67,17,'2024-04-19','Positive'),\n(68,2,'2024-05-08','Negative'),\n(69,44,'2024-03-01','Negative'),\n(70,44,'2024-03-10','Inconclusive'),\n(71,33,'2024-06-02','Negative'),\n(72,37,'2024-02-20','Inconclusive'),\n(73,29,'2024-01-31','Inconclusive'),\n(74,25,'2024-03-16','Negative'),\n(75,19,'2024-01-17','Positive'),\n(76,7,'2024-01-27','Positive'),\n(77,24,'2024-07-24','Negative'),\n(78,28,'2024-06-24','Inconclusive'),\n(79,31,'2024-02-03','Inconclusive'),\n(80,23,'2024-06-23','Positive'),\n(81,27,'2024-05-10','Negative'),\n(82,18,'2024-07-02','Inconclusive'),\n(83,21,'2024-04-17','Negative'),\n(84,45,'2024-05-06','Negative'),\n(85,41,'2024-01-04','Positive'),\n(86,25,'2024-03-13','Negative'),\n(87,18,'2024-07-02','Negative'),\n(88,8,'2024-02-06','Positive'),\n(89,33,'2024-05-28','Positive'),\n(90,16,'2024-06-27','Inconclusive'),\n(91,12,'2024-02-07','Negative'),\n(92,31,'2024-02-08','Negative'),\n(93,30,'2024-02-26','Inconclusive'),\n(94,35,'2024-06-25','Inconclusive'),\n(95,17,'2024-04-14','Negative'),\n(96,15,'2024-07-01','Inconclusive'),\n(97,9,'2024-01-13','Inconclusive'),\n(98,42,'2024-04-06','Negative'),\n(99,21,'2024-04-25','Inconclusive'),\n(100,12,'2024-01-31','Positive'),\n(101,35,'2024-07-05','Negative'),\n(102,30,'2024-02-24','Inconclusive'),\n(103,15,'2024-06-27','Negative'),\n(104,41,'2024-01-10','Negative'),\n(105,25,'2024-03-24','Negative'),\n(106,32,'2024-07-05','Negative'),\n(107,45,'2024-05-07','Inconclusive'),\n(108,26,'2024-03-13','Positive'),\n(109,44,'2024-03-02','Negative'),\n(110,39,'2024-03-03','Inconclusive'),\n(111,12,'2024-02-09','Negative'),\n(112,14,'2024-02-26','Positive'),\n(113,23,'2024-06-23','Negative'),\n(114,36,'2024-01-24','Positive'),\n(115,1,'2024-01-06','Positive'),\n(116,36,'2024-02-02','Inconclusive'),\n(117,39,'2024-02-29','Positive'),\n(118,35,'2024-06-25','Inconclusive'),\n(119,1,'2024-01-09','Positive'),\n(120,38,'2024-01-21','Negative'),\n(121,40,'2024-02-17','Inconclusive'),\n(122,17,'2024-04-19','Positive'),\n(123,42,'2024-04-12','Inconclusive'),\n(124,12,'2024-02-02','Negative'),\n(125,3,'2024-06-30','Negative'),\n(126,38,'2024-01-16','Positive'),\n(127,18,'2024-07-06','Negative'),\n(128,19,'2024-01-22','Positive'),\n(129,43,'2024-05-07','Positive'),\n(130,31,'2024-01-31','Negative'),\n(131,8,'2024-02-20','Inconclusive'),\n(132,4,'2024-03-15','Positive'),\n(133,42,'2024-04-15','Negative'),\n(134,26,'2024-03-06','Negative'),\n(135,37,'2024-02-25','Positive'),\n(136,2,'2024-05-17','Positive'),\n(137,16,'2024-06-23','Negative'),\n(138,8,'2024-02-15','Inconclusive'),\n(139,32,'2024-07-02','Inconclusive'),\n(140,3,'2024-07-02','Positive'),\n(141,36,'2024-01-29','Positive'),\n(142,11,'2024-01-16','Positive'),\n(143,27,'2024-05-17','Inconclusive'),\n(144,7,'2024-01-20','Positive'),\n(145,5,'2024-03-30','Negative'),\n(146,44,'2024-03-06','Positive'),\n(147,22,'2024-06-27','Inconclusive'),\n(148,4,'2024-03-09','Positive'),\n(149,13,'2024-01-31','Negative'),\n(150,21,'2024-04-19','Inconclusive'),\n(151,43,'2024-05-04','Positive'),\n(152,27,'2024-05-18','Inconclusive'),\n(153,35,'2024-06-30','Inconclusive'),\n(154,42,'2024-04-09','Negative'),\n(155,29,'2024-01-31','Inconclusive'),\n(156,3,'2024-06-24','Positive'),\n(157,14,'2024-02-18','Positive'),\n(158,20,'2024-03-21','Inconclusive'),\n(159,8,'2024-02-10','Negative'),\n(160,32,'2024-07-05','Inconclusive'),\n(161,30,'2024-02-29','Inconclusive'),\n(162,27,'2024-05-15','Inconclusive'),\n(163,23,'2024-06-26','Positive'),\n(164,13,'2024-02-04','Positive'),\n(165,13,'2024-01-29','Positive'),\n(166,45,'2024-05-07','Negative'),\n(167,39,'2024-03-06','Inconclusive'),\n(168,23,'2024-06-22','Inconclusive'),\n(169,22,'2024-06-27','Negative'),\n(170,14,'2024-02-23','Negative'),\n(171,1,'2024-01-16','Negative'),\n(172,7,'2024-01-18','Positive'),\n(173,15,'2024-06-28','Negative'),\n(174,45,'2024-05-09','Positive'),\n(175,7,'2024-01-25','Positive'),\n(176,37,'2024-02-15','Negative'),\n(177,16,'2024-06-25','Negative'),\n(178,9,'2024-01-11','Inconclusive'),\n(179,6,'2024-05-17','Negative'),\n(180,29,'2024-01-29','Negative')\n;"
+      ],
+      "expected": [
+        [
+          41,
+          "Ava Lopez",
+          57,
+          1
+        ],
+        [
+          31,
+          "Kai Fischer",
+          71,
+          1
+        ],
+        [
+          4,
+          "Dan Ibrahim",
+          26,
+          2
+        ],
+        [
+          12,
+          "Lena Alvarez",
+          41,
+          2
+        ],
+        [
+          13,
+          "Milo Huang",
+          49,
+          2
+        ],
+        [
+          8,
+          "Hana Evans",
+          73,
+          4
+        ],
+        [
+          3,
+          "Cara Baker",
+          47,
+          5
+        ],
+        [
+          25,
+          "Eli Lopez",
+          68,
+          5
+        ],
+        [
+          10,
+          "Jo Chen",
+          40,
+          5
+        ],
+        [
+          33,
+          "Milo Diaz",
+          40,
+          5
+        ],
+        [
+          14,
+          "Nia Ortega",
+          71,
+          5
+        ],
+        [
+          37,
+          "Quinn Price",
+          39,
+          5
+        ],
+        [
+          38,
+          "Rosa Grant",
+          28,
+          5
+        ],
+        [
+          39,
+          "Sven Novak",
+          35,
+          5
+        ],
+        [
+          1,
+          "Ava Diaz",
+          72,
+          7
+        ]
+      ]
+    }
+  ]
+}

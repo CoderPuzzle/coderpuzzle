@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1490,
+  "slug": "clone-n-ary-tree",
+  "title": "Clone N-ary Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "topics": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "cloneTree",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "nary_tree",
+        "value_type": {
+          "kind": "nary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "nary_tree",
+    "return_type": {
+      "kind": "nary_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "cloneTree",
+      "rust": "clone_tree",
+      "typescript": "cloneTree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

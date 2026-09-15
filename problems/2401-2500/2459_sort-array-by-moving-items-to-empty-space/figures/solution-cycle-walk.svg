@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- states of [4,2,0,3,1]; cells x = 60 + 96i, w 88 -->
+  <g font-size="12.5" fill="#5c6b76"><text x="30" y="66">start</text></g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="46" width="88" height="40"/><rect x="156" y="46" width="88" height="40" fill="#9db4ea"/>
+    <rect x="252" y="46" width="88" height="40"/><rect x="348" y="46" width="88" height="40"/><rect x="444" y="46" width="88" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600"><text x="104" y="71">4</text><text x="200" y="71">2</text><text x="296" y="71">0</text><text x="392" y="71">3</text><text x="488" y="71">1</text></g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5"><text x="104" y="102">0</text><text x="200" y="102">1</text><text x="296" y="102">2</text><text x="392" y="102">3</text><text x="488" y="102">4</text></g>
+  <text x="556" y="71" fill="#5c6b76" font-size="12.5">blank in slot 2; item 2 belongs there</text>
+  <path d="M 200 92 Q 248 132 292 92" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- move 1 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="136" width="88" height="40"/><rect x="156" y="136" width="88" height="40"/>
+    <rect x="252" y="136" width="88" height="40"/><rect x="348" y="136" width="88" height="40"/><rect x="444" y="136" width="88" height="40" fill="#9db4ea"/>
+  </g>
+  <g text-anchor="middle" font-weight="600"><text x="104" y="161">4</text><text x="200" y="161">0</text><text x="296" y="161">2</text><text x="392" y="161">3</text><text x="488" y="161">1</text></g>
+  <text x="556" y="161" fill="#5c6b76" font-size="12.5">item 1 belongs in slot 1</text>
+  <path d="M 488 182 Q 380 226 206 186" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- move 2 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="226" width="88" height="40" fill="#9db4ea"/><rect x="156" y="226" width="88" height="40"/>
+    <rect x="252" y="226" width="88" height="40"/><rect x="348" y="226" width="88" height="40"/><rect x="444" y="226" width="88" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600"><text x="104" y="251">4</text><text x="200" y="251">1</text><text x="296" y="251">2</text><text x="392" y="251">3</text><text x="488" y="251">0</text></g>
+  <text x="556" y="251" fill="#5c6b76" font-size="12.5">item 4 belongs in slot 4</text>
+  <path d="M 104 272 Q 280 316 482 274" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- move 3 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="312" width="88" height="40" fill="#dbe4f6"/><rect x="156" y="312" width="88" height="40" fill="#dbe4f6"/>
+    <rect x="252" y="312" width="88" height="40" fill="#dbe4f6"/><rect x="348" y="312" width="88" height="40" fill="#dbe4f6"/><rect x="444" y="312" width="88" height="40" fill="#dbe4f6"/>
+  </g>
+  <g text-anchor="middle" font-weight="600"><text x="104" y="337">0</text><text x="200" y="337">1</text><text x="296" y="337">2</text><text x="392" y="337">3</text><text x="488" y="337">4</text></g>
+  <text x="556" y="337" fill="#4169E1" font-weight="600" font-size="12.5">sorted in 3 moves</text>
+</svg>

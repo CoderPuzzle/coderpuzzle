@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="620" height="310" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a94a0"/>
+    </marker>
+  </defs>
+  <text x="20" y="26" fill="#1a2026" font-weight="600">Round 1 - merge adjacent pairs, odd list gets a bye</text>
+  <!-- round 1 lists -->
+  <g stroke="#1a2026" stroke-width="1.4" fill="#ffffff">
+    <rect x="60" y="44" width="34" height="28"/><rect x="94" y="44" width="34" height="28"/><rect x="128" y="44" width="34" height="28"/>
+    <rect x="220" y="44" width="34" height="28"/><rect x="254" y="44" width="34" height="28"/><rect x="288" y="44" width="34" height="28"/>
+    <rect x="380" y="44" width="34" height="28"/><rect x="414" y="44" width="34" height="28"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="77" y="63">1</text><text x="111" y="63">4</text><text x="145" y="63">5</text>
+    <text x="237" y="63">1</text><text x="271" y="63">3</text><text x="305" y="63">4</text>
+    <text x="397" y="63">2</text><text x="431" y="63">6</text>
+  </g>
+  <!-- arrows down -->
+  <path d="M 145 80 L 145 118 L 210 118" fill="none" stroke="#8a94a0" stroke-width="1.3" marker-end="url(#arr)"/>
+  <path d="M 237 80 L 237 118 L 210 118" fill="none" stroke="#8a94a0" stroke-width="1.3" marker-end="url(#arr)"/>
+  <text x="150" y="106" fill="#4169E1" font-size="11.5">merge</text>
+  <path d="M 465 80 C 505 100, 505 112, 470 126" fill="none" stroke="#8a94a0" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+  <text x="482" y="106" fill="#5b6470" font-size="11.5">bye</text>
+  <!-- round 2 lists -->
+  <g stroke="#1a2026" stroke-width="1.4" fill="#ffffff">
+    <rect x="90" y="130" width="34" height="28"/><rect x="124" y="130" width="34" height="28"/><rect x="158" y="130" width="34" height="28"/><rect x="192" y="130" width="34" height="28"/><rect x="226" y="130" width="34" height="28"/><rect x="260" y="130" width="34" height="28"/>
+    <rect x="430" y="130" width="34" height="28"/><rect x="464" y="130" width="34" height="28"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="107" y="149">1</text><text x="141" y="149">1</text><text x="175" y="149">3</text><text x="209" y="149">4</text><text x="243" y="149">4</text><text x="277" y="149">5</text>
+    <text x="447" y="149">2</text><text x="481" y="149">6</text>
+  </g>
+  <text x="20" y="186" fill="#1a2026" font-weight="600">Round 2 - the two survivors merge into one</text>
+  <path d="M 177 166 L 177 198 L 240 198" fill="none" stroke="#8a94a0" stroke-width="1.3" marker-end="url(#arr)"/>
+  <path d="M 447 166 L 447 198 L 310 198" fill="none" stroke="#8a94a0" stroke-width="1.3" marker-end="url(#arr)"/>
+  <text x="330" y="192" fill="#4169E1" font-size="11.5">merge</text>
+  <!-- final -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="#e9eefb">
+    <rect x="130" y="222" width="34" height="28"/><rect x="164" y="222" width="34" height="28"/><rect x="198" y="222" width="34" height="28"/><rect x="232" y="222" width="34" height="28"/><rect x="266" y="222" width="34" height="28"/><rect x="300" y="222" width="34" height="28"/><rect x="334" y="222" width="34" height="28"/><rect x="368" y="222" width="34" height="28"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="147" y="241">1</text><text x="181" y="241">1</text><text x="215" y="241">2</text><text x="249" y="241">3</text><text x="283" y="241">4</text><text x="317" y="241">4</text><text x="351" y="241">5</text><text x="385" y="241">6</text>
+  </g>
+  <text x="20" y="284" fill="#5b6470" font-size="11.5">3 lists become 1 after ceil(log2 3) = 2 rounds; each round walks every surviving node once - O(N log k).</text>
+</svg>

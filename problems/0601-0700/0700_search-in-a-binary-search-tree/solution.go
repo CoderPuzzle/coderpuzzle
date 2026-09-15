@@ -1,0 +1,19 @@
+func searchBST(root *TreeNode, val int) *TreeNode {
+	// A BST orders the search path itself: every value in a node's left
+	// subtree is below the node's value, every value in its right subtree
+	// above it, so one comparison per node settles which side — if either —
+	// can still hold val. Walk that one path: left while val is smaller,
+	// right while it is larger, stop at equality — the node and everything
+	// under it are exactly the subtree to return — or at a nil child, which
+	// proves val is absent (the empty tree on the wire). The walk is a loop,
+	// not recursion: a 5000-node tree may be a single chain, whose 5000
+	// nested calls would sit needlessly on the goroutine call stack.
+	for root != nil && root.Val != val {
+		if root.Val > val {
+			root = root.Left
+		} else {
+			root = root.Right
+		}
+	}
+	return root
+}

@@ -1,0 +1,234 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO SchoolA VALUES\n(1,'Alice'),\n(2,'Bob');\nINSERT INTO SchoolB VALUES\n(3,'Tom');\nINSERT INTO SchoolC VALUES\n(3,'Tom'),\n(2,'Jerry'),\n(10,'Alice');"
+      ],
+      "expected": [
+        [
+          "Alice",
+          "Tom",
+          "Jerry"
+        ],
+        [
+          "Bob",
+          "Tom",
+          "Alice"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO SchoolA VALUES\n(1,'Amy');\nINSERT INTO SchoolB VALUES\n(2,'Ben');\nINSERT INTO SchoolC VALUES\n(3,'Cara');"
+      ],
+      "expected": [
+        [
+          "Amy",
+          "Ben",
+          "Cara"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SchoolA VALUES\n(1,'A1'),\n(2,'A2');\nINSERT INTO SchoolB VALUES\n(3,'B1'),\n(4,'B2');\nINSERT INTO SchoolC VALUES\n(5,'C1'),\n(6,'C2');"
+      ],
+      "expected": [
+        [
+          "A1",
+          "B1",
+          "C1"
+        ],
+        [
+          "A1",
+          "B1",
+          "C2"
+        ],
+        [
+          "A1",
+          "B2",
+          "C1"
+        ],
+        [
+          "A1",
+          "B2",
+          "C2"
+        ],
+        [
+          "A2",
+          "B1",
+          "C1"
+        ],
+        [
+          "A2",
+          "B1",
+          "C2"
+        ],
+        [
+          "A2",
+          "B2",
+          "C1"
+        ],
+        [
+          "A2",
+          "B2",
+          "C2"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SchoolA VALUES\n(1,'X'),\n(2,'Y');\nINSERT INTO SchoolB VALUES\n(3,'Z');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO SchoolA VALUES\n(1,'Alpha'),\n(2,'Beta'),\n(3,'Gamma');\nINSERT INTO SchoolB VALUES\n(4,'Delta');\nINSERT INTO SchoolC VALUES\n(5,'Epsilon'),\n(2,'Beta');"
+      ],
+      "expected": [
+        [
+          "Alpha",
+          "Delta",
+          "Epsilon"
+        ],
+        [
+          "Alpha",
+          "Delta",
+          "Beta"
+        ],
+        [
+          "Beta",
+          "Delta",
+          "Epsilon"
+        ],
+        [
+          "Gamma",
+          "Delta",
+          "Epsilon"
+        ],
+        [
+          "Gamma",
+          "Delta",
+          "Beta"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SchoolA VALUES\n(1,'Sam');\nINSERT INTO SchoolB VALUES\n(2,'Sam');\nINSERT INTO SchoolC VALUES\n(3,'Pat');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO SchoolA VALUES\n(2,'Bob'),\n(1,'Alice');\nINSERT INTO SchoolB VALUES\n(3,'Tom');\nINSERT INTO SchoolC VALUES\n(10,'Alice'),\n(2,'Jerry'),\n(3,'Tom');"
+      ],
+      "expected": [
+        [
+          "Alice",
+          "Tom",
+          "Jerry"
+        ],
+        [
+          "Bob",
+          "Tom",
+          "Alice"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SchoolA VALUES\n(2,'A2'),\n(1,'A1');\nINSERT INTO SchoolB VALUES\n(4,'B2'),\n(3,'B1');\nINSERT INTO SchoolC VALUES\n(6,'C2'),\n(5,'C1');"
+      ],
+      "expected": [
+        [
+          "A1",
+          "B1",
+          "C1"
+        ],
+        [
+          "A1",
+          "B1",
+          "C2"
+        ],
+        [
+          "A1",
+          "B2",
+          "C1"
+        ],
+        [
+          "A1",
+          "B2",
+          "C2"
+        ],
+        [
+          "A2",
+          "B1",
+          "C1"
+        ],
+        [
+          "A2",
+          "B1",
+          "C2"
+        ],
+        [
+          "A2",
+          "B2",
+          "C1"
+        ],
+        [
+          "A2",
+          "B2",
+          "C2"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SchoolA VALUES\n(2,'Y'),\n(1,'X');\nINSERT INTO SchoolB VALUES\n(3,'Z');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO SchoolA VALUES\n(3,'Gamma'),\n(2,'Beta'),\n(1,'Alpha');\nINSERT INTO SchoolB VALUES\n(4,'Delta');\nINSERT INTO SchoolC VALUES\n(2,'Beta'),\n(5,'Epsilon');"
+      ],
+      "expected": [
+        [
+          "Alpha",
+          "Delta",
+          "Epsilon"
+        ],
+        [
+          "Alpha",
+          "Delta",
+          "Beta"
+        ],
+        [
+          "Beta",
+          "Delta",
+          "Epsilon"
+        ],
+        [
+          "Gamma",
+          "Delta",
+          "Epsilon"
+        ],
+        [
+          "Gamma",
+          "Delta",
+          "Beta"
+        ]
+      ]
+    }
+  ]
+}

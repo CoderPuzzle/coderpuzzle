@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2418,
+  "slug": "sort-the-people",
+  "title": "Sort the People",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sortPeople",
+    "parameters": [
+      {
+        "name": "names",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "heights",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "sortPeople",
+      "rust": "sort_people",
+      "typescript": "sortPeople"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

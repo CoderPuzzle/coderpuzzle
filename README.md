@@ -37,14 +37,14 @@ today; OAuth, OpenID, and email OTP plug in without new routes — see
 
 ## Problem packages
 
-CoderPuzzle loads problems from two package formats. The canonical, split format
-is one directory per problem (this is what
-[coderpuzzle-problems](https://github.com/CoderPuzzle/coderpuzzle-problems) uses):
+CoderPuzzle loads problems from two package formats. The canonical split
+format is one directory per problem. This repository tracks the complete
+4,031-bundle original-source set directly under `problems/`:
 
 ```text
 problems/
-└── 0001-0100/           id-range shards of 100 (problems repo; the
-    └── 0001_pair-sum/   bundled fallback set is a single bundle)
+└── 0001-0100/           id-range shards of 100
+    └── 0001_two-sum/
         ├── problem.json     metadata, invocation schema, limits
         ├── cases.json       testcase corpus ({public, hidden} display grouping)
         ├── statement.md     pure-prose statement with a fixed heading grammar
@@ -52,82 +52,49 @@ problems/
         └── solution.*       recommended solutions (served by the solutions endpoint)
 ```
 
-The flat single-file format (`0001_pair-sum.md` with `## Metadata`,
-`## Description`, … `## Test Cases` sections) is still supported; the
-bundled `./problems` fallback set now uses the split format. Both formats can coexist in one directory;
+The flat single-file format (`0001_two-sum.md` with `## Metadata`,
+`## Description`, … `## Test Cases` sections) is still supported, although
+this checked-in corpus uses split bundles. Both formats can coexist in one directory;
 the split format's statement grammar is `# <Title>`, required `## Description`
 with `### Example N` and `### Constraints` (optional for SQL problems), and
 optional `## Hints` with `### Hint N` headings.
 
-Problems are mounted read-only from `./problems` by default. Sideload another
-set without rebuilding images:
+### Selecting a problem set
+
+**A problem set is always a directory on disk.** The app fetches nothing:
+there is no remote problem set, no clone, no cache. `./problems` in this
+repo is the problem set, bind mounted read-only into the `api` container at
+`/problems`.
+
+To serve a different tree, point the bind mount at it — no image rebuild:
 
 ```bash
-CODERPUZZLE_PROBLEMS_PATH=/absolute/path/to/problems docker compose up --build
+docker compose up --build                                            # default: ./problems
+CODERPUZZLE_PROBLEMS_PATH=/absolute/path/to/other-set docker compose up --build
 ```
 
-### Selecting a problem set with `CODERPUZZLE_PROBLEMS`
-
-**The default problem set is `CoderPuzzle/coderpuzzle-problems`** — a plain
-`docker compose up --build` clones it into `./.cache` on first start (and
-afterwards only refreshes when the remote actually moved). To use something
-else, set `CODERPUZZLE_PROBLEMS`. The specification follows git's disambiguation
-convention: a bare two-segment `owner/name` **always means GitHub**; a local
-directory with that shape must be referenced explicitly and never shadows
-the shorthand.
+`CODERPUZZLE_PROBLEMS_PATH` is the host path to bind; `CODERPUZZLE_PROBLEMS`
+is the path the app reads *inside* the container and is already set to
+`/problems` by compose. Running the API outside compose, set
+`CODERPUZZLE_PROBLEMS` to the directory directly:
 
 ```bash
-docker compose up --build                                          # default: CoderPuzzle/coderpuzzle-problems
-CODERPUZZLE_PROBLEMS=CoderPuzzle/coderpuzzle-problems@v1.2.0       docker compose up --build  # pinned branch/tag
-CODERPUZZLE_PROBLEMS=https://github.com/myname/set.git docker compose up --build  # full git URL
-CODERPUZZLE_PROBLEMS=./name/repo                       docker compose up --build  # local, explicit
-CODERPUZZLE_PROBLEMS=/problems                         docker compose up --build  # force the bundled fallback set
+CODERPUZZLE_PROBLEMS=/srv/problem-sets/lc uvicorn app.main:app
 ```
 
-An unreachable remote keeps the cached revision (or fails loudly on a cold
-cache), and `/problems` forces the bundled offline fallback without touching
-the network.
+The path must name an existing directory and it is the package root — the
+directory whose children are the id-range shards. Anything else (a GitHub
+`owner/name`, a git URL, a missing path) is a startup error rather than
+something the app goes and fetches.
 
-Accepted forms:
-
-- `owner/name[@ref]` — a GitHub repository, optionally pinned to a branch or
-  tag (`release/v2`-style refs work).
-- `https://host/owner/name.git[#ref]` (or `http://`) — a full git URL, pinned
-  via a `#ref` fragment.
-- `git@host:owner/name.git` — an SSH git URL (read access to the
-  fetcher container's deploy key required).
-- `/abs/path`, `./rel`, `../rel`, `~/rel`, `file:///abs/path` — a local
-  directory. Relative and home paths resolve inside the `api` container, so
-  pair them with a bind mount.
-
-Remote sets are cloned (shallow) into a git-ignored `./.cache` directory
-next to this repo (override with `CODERPUZZLE_PROBLEMS_CACHE_DIR`); the clone's
-commit hash is recorded in `.coderpuzzle-commit`. On each start the fetcher asks
-the remote for its current hash for the pinned ref with one `ls-remote`:
-if it matches the record, nothing is re-fetched; if it moved, the ref is
-fetched and the working tree hard-reset to converge; if the remote is
-unreachable (offline start) the cached revision is kept. The API container
-itself has no external network — a one-shot `problems-fetcher` service (the
-only component allowed to reach github.com) maintains the cache before the
-API starts, and a missing cache fails startup loudly rather than silently
-serving a different set. Local sets are used in place with no caching: bind
-mounts update in realtime. In both cases,
-if the resolved repository contains a `problems/` subdirectory, it is used as
-the package root; otherwise the repository root is. When `CODERPUZZLE_PROBLEMS`
-is unset, problems come from the `CODERPUZZLE_PROBLEMS_DIR` mount as before.
-
-The fallback problem set (used when `CODERPUZZLE_PROBLEMS` is unset) is one
-sharded bundle:
-
-```text
-problems/
-└── 0001-0100/
-    └── 0001_pair-sum/
-```
+The adapted problem set lives in the private `CoderPuzzle/lc-adapt`
+repository as its `problems/` directory. Clone it wherever you like and
+point `CODERPUZZLE_PROBLEMS_PATH` at that directory; getting a problem set
+onto a host is an explicit operator step, not something the service does at
+startup.
 
 The flat single-file format (`<zero-padded id>_<slug>.md` with the
-level-two headings below) is also supported; it is what the fallback
-directory name schema historically referenced. Every document must contain
+level-two headings below) is also supported. Every document must contain
 these level-two headings exactly once and in this order:
 
 ```text
@@ -206,12 +173,11 @@ cold compile costs. Go additionally shares one persistent build cache across
 submissions so its standard library is compiled once per container, not once
 per job.
 
-The bundled Pair Sum demo has three visible and fifteen hidden cases covering
-duplicates, zeros, negative values, non-adjacent answers, minimum input size,
-and integer boundaries. The remaining problem set was imported from a curated
-LeetCode selection: statements and hints were adapted locally, difficulty
-labels (Easy/Medium/Hard) come from the curated source, and every testcase's
-expected value was produced by running a reference solution.
+The checked-in tree is the complete 4,031-bundle original-source corpus. The
+copyright-free adaptation is maintained separately in the private `lc-adapt`
+repository and can be selected by its local directory path. Difficulty labels
+(Easy/Medium/Hard) mirror the source, and every testcase's expected value was
+produced by running a reference solution.
 
 ## Judging and time limits
 

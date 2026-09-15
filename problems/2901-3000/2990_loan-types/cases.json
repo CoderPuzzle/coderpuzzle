@@ -1,0 +1,233 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(683, 101, 'Mortgage'),\n(218, 101, 'AutoLoan'),\n(802, 101, 'Inschool'),\n(593, 102, 'Mortgage'),\n(138, 102, 'Refinance'),\n(294, 102, 'Inschool'),\n(308, 103, 'Refinance'),\n(389, 104, 'Mortgage');"
+      ],
+      "expected": [
+        [
+          102
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(1, 11, 'AutoLoan'),\n(2, 12, 'Inschool'),\n(3, 11, 'Inschool');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(1, 7, 'Refinance'),\n(2, 9, 'Refinance'),\n(3, 7, 'AutoLoan');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(1, 7, 'Mortgage'),\n(2, 9, 'Mortgage'),\n(3, 9, 'Inschool');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(10, 55, 'Refinance'),\n(11, 55, 'Mortgage');"
+      ],
+      "expected": [
+        [
+          55
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(1, 21, 'Refinance'),\n(2, 21, 'Refinance'),\n(3, 21, 'Refinance'),\n(4, 21, 'Mortgage'),\n(5, 21, 'Mortgage'),\n(6, 22, 'Refinance');"
+      ],
+      "expected": [
+        [
+          21
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(26, 129, 'AutoLoan'),\n(19, 109, 'Mortgage'),\n(12, 116, 'Mortgage'),\n(16, 100, 'Refinance'),\n(57, 104, 'Refinance'),\n(66, 123, 'Mortgage'),\n(64, 121, 'Mortgage'),\n(25, 129, 'Mortgage'),\n(9, 114, 'Mortgage'),\n(46, 126, 'Mortgage'),\n(3, 120, 'Refinance'),\n(15, 117, 'Inschool'),\n(47, 126, 'AutoLoan'),\n(55, 124, 'Refinance'),\n(10, 114, 'AutoLoan'),\n(39, 119, 'Refinance'),\n(54, 128, 'Mortgage'),\n(28, 118, 'Mortgage'),\n(48, 106, 'Refinance'),\n(14, 117, 'Mortgage'),\n(27, 118, 'Refinance'),\n(61, 125, 'Refinance'),\n(58, 104, 'Mortgage'),\n(29, 113, 'Refinance'),\n(37, 108, 'Mortgage'),\n(2, 103, 'Mortgage'),\n(42, 122, 'Mortgage'),\n(7, 107, 'Mortgage'),\n(6, 107, 'Refinance'),\n(53, 128, 'Refinance'),\n(17, 100, 'Mortgage'),\n(11, 116, 'Refinance'),\n(70, 102, 'Inschool'),\n(41, 122, 'Refinance'),\n(36, 108, 'Refinance'),\n(1, 103, 'Refinance'),\n(38, 108, 'Inschool'),\n(68, 102, 'Refinance'),\n(40, 119, 'Mortgage'),\n(67, 123, 'Inschool'),\n(4, 120, 'Mortgage'),\n(51, 111, 'Mortgage'),\n(50, 111, 'Refinance'),\n(22, 127, 'Refinance'),\n(13, 117, 'Refinance'),\n(21, 110, 'Mortgage'),\n(60, 115, 'Mortgage'),\n(56, 124, 'Mortgage'),\n(24, 129, 'Refinance'),\n(30, 113, 'Mortgage'),\n(69, 102, 'Mortgage'),\n(62, 125, 'Mortgage'),\n(59, 115, 'Refinance'),\n(33, 105, 'AutoLoan'),\n(20, 110, 'Refinance'),\n(43, 112, 'Refinance'),\n(63, 121, 'Refinance'),\n(35, 101, 'Mortgage'),\n(31, 105, 'Refinance'),\n(32, 105, 'Mortgage'),\n(49, 106, 'Mortgage'),\n(8, 114, 'Refinance'),\n(52, 111, 'AutoLoan'),\n(44, 112, 'Mortgage'),\n(23, 127, 'Mortgage'),\n(5, 120, 'AutoLoan'),\n(34, 101, 'Refinance'),\n(65, 123, 'Refinance'),\n(45, 126, 'Refinance'),\n(18, 109, 'Refinance');"
+      ],
+      "expected": [
+        [
+          100
+        ],
+        [
+          101
+        ],
+        [
+          102
+        ],
+        [
+          103
+        ],
+        [
+          104
+        ],
+        [
+          105
+        ],
+        [
+          106
+        ],
+        [
+          107
+        ],
+        [
+          108
+        ],
+        [
+          109
+        ],
+        [
+          110
+        ],
+        [
+          111
+        ],
+        [
+          112
+        ],
+        [
+          113
+        ],
+        [
+          114
+        ],
+        [
+          115
+        ],
+        [
+          116
+        ],
+        [
+          117
+        ],
+        [
+          118
+        ],
+        [
+          119
+        ],
+        [
+          120
+        ],
+        [
+          121
+        ],
+        [
+          122
+        ],
+        [
+          123
+        ],
+        [
+          124
+        ],
+        [
+          125
+        ],
+        [
+          126
+        ],
+        [
+          127
+        ],
+        [
+          128
+        ],
+        [
+          129
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(24, 10, 'Inschool'),\n(121, 52, 'Mortgage'),\n(49, 22, 'AutoLoan'),\n(43, 19, 'Mortgage'),\n(38, 17, 'AutoLoan'),\n(94, 39, 'Inschool'),\n(140, 59, 'Inschool'),\n(51, 22, 'Refinance'),\n(142, 60, 'Mortgage'),\n(23, 10, 'Inschool'),\n(5, 3, 'Mortgage'),\n(44, 19, 'AutoLoan'),\n(63, 27, 'Refinance'),\n(35, 16, 'Inschool'),\n(9, 4, 'AutoLoan'),\n(128, 54, 'Inschool'),\n(3, 2, 'Mortgage'),\n(75, 32, 'AutoLoan'),\n(2, 1, 'Inschool'),\n(130, 56, 'Inschool'),\n(36, 16, 'Inschool'),\n(37, 16, 'AutoLoan'),\n(40, 18, 'Refinance'),\n(76, 32, 'Refinance'),\n(62, 26, 'Refinance'),\n(50, 22, 'Refinance'),\n(134, 57, 'Refinance'),\n(138, 59, 'Mortgage'),\n(14, 6, 'AutoLoan'),\n(102, 43, 'Mortgage'),\n(26, 11, 'Inschool'),\n(131, 56, 'AutoLoan'),\n(107, 45, 'Inschool'),\n(133, 56, 'AutoLoan'),\n(53, 24, 'Inschool'),\n(21, 9, 'Mortgage'),\n(124, 53, 'Mortgage'),\n(95, 40, 'Inschool'),\n(97, 40, 'Inschool'),\n(104, 44, 'Mortgage'),\n(31, 14, 'Mortgage'),\n(101, 42, 'Mortgage'),\n(83, 35, 'AutoLoan'),\n(116, 49, 'Mortgage'),\n(73, 31, 'Refinance'),\n(143, 60, 'AutoLoan'),\n(137, 58, 'Mortgage'),\n(59, 25, 'Inschool'),\n(69, 29, 'AutoLoan'),\n(125, 53, 'Mortgage'),\n(20, 8, 'Refinance'),\n(12, 5, 'AutoLoan'),\n(92, 38, 'Refinance'),\n(136, 57, 'Mortgage'),\n(87, 37, 'AutoLoan'),\n(33, 15, 'Refinance'),\n(84, 36, 'Mortgage'),\n(67, 29, 'Mortgage'),\n(117, 50, 'Mortgage'),\n(56, 24, 'Mortgage'),\n(13, 5, 'Mortgage'),\n(74, 32, 'Mortgage'),\n(115, 49, 'Mortgage'),\n(78, 33, 'Mortgage'),\n(48, 21, 'Refinance'),\n(1, 1, 'Refinance'),\n(114, 49, 'Mortgage'),\n(86, 36, 'Inschool'),\n(4, 3, 'Refinance'),\n(99, 41, 'Refinance'),\n(110, 47, 'Mortgage'),\n(57, 25, 'Refinance'),\n(119, 51, 'AutoLoan'),\n(68, 29, 'AutoLoan'),\n(17, 7, 'Inschool'),\n(144, 60, 'Inschool'),\n(19, 7, 'AutoLoan'),\n(135, 57, 'Inschool'),\n(39, 17, 'AutoLoan'),\n(11, 5, 'Mortgage'),\n(25, 10, 'AutoLoan'),\n(98, 41, 'Mortgage'),\n(46, 20, 'Inschool'),\n(96, 40, 'Mortgage'),\n(80, 35, 'Refinance'),\n(7, 4, 'Refinance'),\n(100, 41, 'Inschool'),\n(109, 46, 'Refinance'),\n(8, 4, 'Inschool'),\n(88, 37, 'Refinance'),\n(61, 26, 'Refinance'),\n(64, 28, 'AutoLoan'),\n(32, 14, 'Refinance'),\n(42, 19, 'AutoLoan'),\n(27, 12, 'Refinance'),\n(139, 59, 'Mortgage'),\n(79, 34, 'Inschool'),\n(85, 36, 'Refinance'),\n(91, 38, 'AutoLoan'),\n(90, 38, 'Refinance'),\n(126, 54, 'Mortgage'),\n(82, 35, 'Inschool'),\n(127, 54, 'Mortgage'),\n(118, 50, 'Inschool'),\n(47, 21, 'Refinance'),\n(81, 35, 'Refinance'),\n(29, 13, 'Refinance'),\n(52, 23, 'Mortgage'),\n(103, 43, 'AutoLoan'),\n(70, 30, 'AutoLoan'),\n(30, 14, 'Refinance'),\n(122, 53, 'Mortgage'),\n(108, 46, 'Inschool'),\n(66, 28, 'Refinance'),\n(77, 33, 'Mortgage'),\n(123, 53, 'AutoLoan'),\n(141, 60, 'AutoLoan'),\n(132, 56, 'Inschool'),\n(22, 9, 'Mortgage'),\n(65, 28, 'Refinance'),\n(120, 52, 'Inschool'),\n(93, 38, 'Refinance'),\n(111, 48, 'Mortgage'),\n(54, 24, 'Inschool'),\n(34, 16, 'AutoLoan'),\n(89, 37, 'AutoLoan'),\n(113, 49, 'Refinance'),\n(45, 20, 'Mortgage'),\n(60, 26, 'Mortgage'),\n(112, 48, 'Inschool'),\n(72, 31, 'Mortgage'),\n(28, 12, 'AutoLoan'),\n(16, 7, 'Inschool'),\n(15, 6, 'Mortgage'),\n(55, 24, 'Mortgage'),\n(71, 31, 'Mortgage'),\n(18, 7, 'AutoLoan'),\n(106, 45, 'Mortgage'),\n(41, 18, 'Inschool'),\n(10, 4, 'Inschool'),\n(58, 25, 'AutoLoan'),\n(6, 3, 'AutoLoan'),\n(105, 45, 'Inschool'),\n(129, 55, 'Inschool');"
+      ],
+      "expected": [
+        [
+          3
+        ],
+        [
+          14
+        ],
+        [
+          26
+        ],
+        [
+          31
+        ],
+        [
+          32
+        ],
+        [
+          36
+        ],
+        [
+          41
+        ],
+        [
+          49
+        ],
+        [
+          57
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(1, 5, 'refinance'),\n(2, 5, 'mortgage'),\n(3, 6, 'Refinance'),\n(4, 6, 'Mortgage');"
+      ],
+      "expected": [
+        [
+          6
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(1, 10, 'Mortgage'),\n(2, 11, 'Refinance'),\n(3, 12, 'Mortgage'),\n(4, 13, 'Refinance'),\n(5, 14, 'Mortgage'),\n(6, 15, 'Refinance'),\n(7, 16, 'Mortgage'),\n(8, 17, 'Refinance'),\n(9, 18, 'Mortgage'),\n(10, 19, 'Refinance');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(1, 42, 'Refinance');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(1, 77, 'Inschool'),\n(2, 77, 'AutoLoan'),\n(3, 77, 'Refinance'),\n(4, 77, 'Inschool'),\n(5, 77, 'Mortgage');"
+      ],
+      "expected": [
+        [
+          77
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Loans VALUES\n(999999999, 1000000000, 'Refinance'),\n(999999998, 1000000000, 'Mortgage'),\n(999999997, 999999999, 'Refinance');"
+      ],
+      "expected": [
+        [
+          1000000000
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3029,
+  "slug": "minimum-time-to-revert-word-to-initial-state-i",
+  "title": "Minimum Time to Revert Word to Initial State I",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Rolling Hash",
+    "String Matching",
+    "Hash Function"
+  ],
+  "topics": [
+    "String",
+    "Rolling Hash",
+    "String Matching",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumTimeToInitialState",
+    "parameters": [
+      {
+        "name": "word",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumTimeToInitialState",
+      "rust": "minimum_time_to_initial_state",
+      "typescript": "minimumTimeToInitialState"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

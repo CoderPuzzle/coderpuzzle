@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2046,
+  "slug": "sort-linked-list-already-sorted-using-absolute-values",
+  "title": "Sort Linked List Already Sorted Using Absolute Values",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "topics": [
+    "Linked List",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sortLinkedList",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "sortLinkedList",
+      "rust": "sort_linked_list",
+      "typescript": "sortLinkedList"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

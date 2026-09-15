@@ -1,0 +1,16 @@
+from typing import List, Optional
+
+
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        # While both ends carry the same character, consume its full
+        # run on each side in one sweep. The process is forced: shorter
+        # strips only delay the same end state.
+        l, r = 0, len(s) - 1
+        while l < r and s[l] == s[r]:
+            c = s[l]
+            while l <= r and s[l] == c:
+                l += 1
+            while r >= l and s[r] == c:
+                r -= 1
+        return r - l + 1

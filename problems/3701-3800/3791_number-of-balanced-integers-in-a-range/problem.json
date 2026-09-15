@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3791,
+  "slug": "number-of-balanced-integers-in-a-range",
+  "title": "Number of Balanced Integers in a Range",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countBalanced",
+    "parameters": [
+      {
+        "name": "low",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "high",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "countBalanced",
+      "rust": "count_balanced",
+      "typescript": "countBalanced"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1164,
+  "slug": "product-price-at-a-given-date",
+  "title": "Product Price at a Given Date",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "set",
+    "sql": {
+      "schema": "CREATE TABLE Products (product_id INTEGER, new_price INTEGER, change_date DATE, PRIMARY KEY (product_id, change_date));"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

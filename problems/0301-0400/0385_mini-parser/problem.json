@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 385,
+  "slug": "mini-parser",
+  "title": "Mini Parser",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Stack",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "String",
+    "Stack",
+    "Depth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "deserialize",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "nested",
+    "return_type": {
+      "kind": "nested",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "deserialize",
+      "rust": "deserialize",
+      "typescript": "deserialize"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2397,
+  "slug": "maximum-rows-covered-by-columns",
+  "title": "Maximum Rows Covered by Columns",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Bit Manipulation",
+    "Matrix",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Backtracking",
+    "Bit Manipulation",
+    "Matrix",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumRows",
+    "parameters": [
+      {
+        "name": "matrix",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "numSelect",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumRows",
+      "rust": "maximum_rows",
+      "typescript": "maximumRows"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

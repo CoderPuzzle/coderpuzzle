@@ -1,0 +1,152 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2408,
+  "slug": "design-sql",
+  "title": "Design SQL",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "SQL",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "names",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        },
+        {
+          "name": "columns",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "ins",
+        "parameters": [
+          {
+            "name": "name",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "row",
+            "codec": "json",
+            "value_type": {
+              "kind": "array",
+              "items": {
+                "kind": "string"
+              }
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "rmv",
+        "parameters": [
+          {
+            "name": "name",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "rowId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "sel",
+        "parameters": [
+          {
+            "name": "name",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "rowId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "columnId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "exp",
+        "parameters": [
+          {
+            "name": "name",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

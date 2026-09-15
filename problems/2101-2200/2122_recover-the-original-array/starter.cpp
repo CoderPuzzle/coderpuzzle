@@ -1,0 +1,4 @@
+class Solution {
+  public:
+    vector<int> recoverArray(vector<int> &nums) { throw logic_error("TODO"); }
+};

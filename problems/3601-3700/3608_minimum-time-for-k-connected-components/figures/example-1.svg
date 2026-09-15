@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 168" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- n = 2, edges = [[0,1,3]], k = 2; removing the only edge at t = 3 gives components {0}, {1} (verified by simulation) -->
+  <line x1="201" y1="70" x2="379" y2="70" stroke="#42525e" stroke-width="1.6"/>
+  <text x="290" y="58" text-anchor="middle" fill="#5c6b76" font-size="12">time 3</text>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="180" cy="70" r="21"/>
+    <circle cx="400" cy="70" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="180" y="75">0</text>
+    <text x="400" y="75">1</text>
+  </g>
+  <g font-size="12" fill="#5c6b76" text-anchor="middle">
+    <text x="180" y="116">component {0}</text>
+    <text x="400" y="116">component {1}</text>
+  </g>
+  <text x="290" y="154" text-anchor="middle" fill="#1a2026" font-size="13.5">nothing changes until t = 3, when the only edge drops and k = 2 components remain: answer <tspan fill="#4169E1" font-weight="700">3</tspan></text>
+</svg>

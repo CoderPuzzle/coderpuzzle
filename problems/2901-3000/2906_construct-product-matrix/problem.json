@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2906,
+  "slug": "construct-product-matrix",
+  "title": "Construct Product Matrix",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "constructProductMatrix",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "constructProductMatrix",
+      "rust": "construct_product_matrix",
+      "typescript": "constructProductMatrix"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

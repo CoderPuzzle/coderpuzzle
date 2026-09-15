@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3898,
+  "slug": "find-the-degree-of-each-vertex",
+  "title": "Find the Degree of Each Vertex",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Graph Theory",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Graph Theory",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findDegrees",
+    "parameters": [
+      {
+        "name": "matrix",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "findDegrees",
+      "rust": "find_degrees",
+      "typescript": "findDegrees"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

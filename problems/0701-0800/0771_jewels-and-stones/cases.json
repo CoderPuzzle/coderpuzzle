@@ -1,0 +1,118 @@
+{
+  "public": [
+    {
+      "input": [
+        "aA",
+        "aAAbbbb"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        "z",
+        "ZZ"
+      ],
+      "expected": 0
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "abc",
+        "XYZ"
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "abc",
+        "xyz"
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "aA",
+        "aAaA"
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        "a",
+        "a"
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        "a",
+        "b"
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "a",
+        "A"
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "ab",
+        "AB"
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "a",
+        "AaAa"
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        "m",
+        "mmmmmmmmmm"
+      ],
+      "expected": 10
+    },
+    {
+      "input": [
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWX",
+        "abcdefghijklmnopqrstuvwxyXWVUTSRQPONMLKJIHGFEDCBAz"
+      ],
+      "expected": 50
+    },
+    {
+      "input": [
+        "abcdefghijklmnopqrstuvwxyz",
+        "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyY"
+      ],
+      "expected": 25
+    },
+    {
+      "input": [
+        "e",
+        "abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde"
+      ],
+      "expected": 10
+    },
+    {
+      "input": [
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWX",
+        "xX"
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        "abcdefghijklmnopqrstuvwxyz",
+        "TheQuickBrownFoxJumpsOverLazyDog"
+      ],
+      "expected": 24
+    }
+  ]
+}

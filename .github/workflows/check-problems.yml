@@ -1,0 +1,119 @@
+name: Check problems
+
+# The complete checked-in problem set. Every push/PR gets the pinned formatter
+# and static schema/generator gates; the much heavier all-solution judge sweep
+# is sharded by id range and runs only on demand or weekly.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "problems/**"
+      - "docs/FORMAT.md"
+      - "scripts/check.py"
+      - "scripts/format.py"
+      - "scripts/gen_starters.py"
+      - ".github/workflows/check-problems.yml"
+  pull_request:
+    paths:
+      - "problems/**"
+      - "docs/FORMAT.md"
+      - "scripts/check.py"
+      - "scripts/format.py"
+      - "scripts/gen_starters.py"
+      - ".github/workflows/check-problems.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * 1"
+
+permissions:
+  contents: read
+  packages: read
+
+concurrency:
+  group: check-problems-${{ github.event_name == 'schedule' && 'schedule' || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    container:
+      image: ghcr.io/coderpuzzle/coderpuzzle:latest
+      options: --user 0:0
+    steps:
+      - uses: actions/checkout@v5
+      - name: Format check
+        run: coderpuzzle format --check problems docs/FORMAT.md
+      - name: Bundle static checks
+        run: python3 scripts/check.py --tree problems --skip-runtime
+
+  judge:
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    container:
+      image: ghcr.io/coderpuzzle/coderpuzzle:latest
+      options: --user 0:0
+    strategy:
+      fail-fast: false
+      matrix:
+        shard:
+          [
+            "0001-0100",
+            "0101-0200",
+            "0201-0300",
+            "0301-0400",
+            "0401-0500",
+            "0501-0600",
+            "0601-0700",
+            "0701-0800",
+            "0801-0900",
+            "0901-1000",
+            "1001-1100",
+            "1101-1200",
+            "1201-1300",
+            "1301-1400",
+            "1401-1500",
+            "1501-1600",
+            "1601-1700",
+            "1701-1800",
+            "1801-1900",
+            "1901-2000",
+            "2001-2100",
+            "2101-2200",
+            "2201-2300",
+            "2301-2400",
+            "2401-2500",
+            "2501-2600",
+            "2601-2700",
+            "2701-2800",
+            "2801-2900",
+            "2901-3000",
+            "3001-3100",
+            "3101-3200",
+            "3201-3300",
+            "3301-3400",
+            "3401-3500",
+            "3501-3600",
+            "3601-3700",
+            "3701-3800",
+            "3801-3900",
+            "3901-4000",
+            "4001-4100",
+          ]
+    steps:
+      - uses: actions/checkout@v5
+      - name: Judge ${{ matrix.shard }}
+        run: |
+          set -e
+          failures=0
+          count=0
+          for bundle in problems/${{ matrix.shard }}/*/; do
+            count=$((count + 1))
+            if ! coderpuzzle judge "$bundle"; then
+              failures=$((failures + 1))
+            fi
+          done
+          echo "judged $count bundles; failures: $failures"
+          exit $((failures > 0))

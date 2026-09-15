@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2489,
+  "slug": "number-of-substrings-with-fixed-ratio",
+  "title": "Number of Substrings With Fixed Ratio",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Math",
+    "String",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Hash Table",
+    "Math",
+    "String",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "fixedRatio",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "num1",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "num2",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "fixedRatio",
+      "rust": "fixed_ratio",
+      "typescript": "fixedRatio"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

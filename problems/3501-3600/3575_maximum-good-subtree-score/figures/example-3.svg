@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 172" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- vals = [34,1,2], par = [-1,0,1]; maxScore = [37,3,2], sum 42 (verified by tree DP over digit masks) -->
+  <line x1="101" y1="62" x2="439" y2="62" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="80" cy="62" r="21"/>
+    <circle cx="270" cy="62" r="21"/>
+    <circle cx="460" cy="62" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="80" y="67">34</text>
+    <text x="270" y="67">1</text>
+    <text x="460" y="67">2</text>
+  </g>
+  <g font-size="11.5" fill="#5c6b76" text-anchor="middle">
+    <text x="80" y="34">node 0</text>
+    <text x="270" y="34">node 1</text>
+    <text x="460" y="34">node 2</text>
+  </g>
+  <g font-size="12" fill="#4169E1" font-weight="600" text-anchor="middle">
+    <text x="80" y="108">maxScore = 37</text>
+    <text x="270" y="108">maxScore = 3</text>
+    <text x="460" y="108">maxScore = 2</text>
+  </g>
+  <text x="270" y="152" text-anchor="middle" fill="#1a2026" font-size="13.5">digits of 34, 1 and 2 never repeat, so node 0 keeps all: 34 + 1 + 2 = 37; sum <tspan fill="#4169E1" font-weight="700">42</tspan></text>
+</svg>

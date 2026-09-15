@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 292,
+  "slug": "nim-game",
+  "title": "Nim Game",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "Brainteaser",
+    "Minimax",
+    "Game Theory",
+    "Nim Game",
+    "Impartial Game"
+  ],
+  "topics": [
+    "Math",
+    "Brainteaser",
+    "Minimax",
+    "Game Theory",
+    "Nim Game",
+    "Impartial Game"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canWinNim",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canWinNim",
+      "rust": "can_win_nim",
+      "typescript": "canWinNim"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

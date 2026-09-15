@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2126,
+  "slug": "destroying-asteroids",
+  "title": "Destroying Asteroids",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "asteroidsDestroyed",
+    "parameters": [
+      {
+        "name": "mass",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "asteroids",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "asteroidsDestroyed",
+      "rust": "asteroids_destroyed",
+      "typescript": "asteroidsDestroyed"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

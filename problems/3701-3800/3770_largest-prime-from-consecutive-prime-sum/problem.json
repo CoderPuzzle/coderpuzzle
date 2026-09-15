@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3770,
+  "slug": "largest-prime-from-consecutive-prime-sum",
+  "title": "Largest Prime from Consecutive Prime Sum",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Number Theory"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Number Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "largestPrime",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "largestPrime",
+      "rust": "largest_prime",
+      "typescript": "largestPrime"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

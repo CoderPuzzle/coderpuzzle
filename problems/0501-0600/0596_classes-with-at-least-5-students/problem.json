@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 596,
+  "slug": "classes-with-at-least-5-students",
+  "title": "Classes With at Least 5 Students",
+  "difficulty": "Easy",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Courses (student TEXT, class TEXT);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

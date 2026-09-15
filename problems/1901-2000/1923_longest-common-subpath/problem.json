@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1923,
+  "slug": "longest-common-subpath",
+  "title": "Longest Common Subpath",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Rolling Hash"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Rolling Hash",
+    "Suffix Array",
+    "Hash Function",
+    "Suffix Automaton",
+    "Suffix Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestCommonSubpath",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "paths",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "longestCommonSubpath",
+      "rust": "longest_common_subpath",
+      "typescript": "longestCommonSubpath"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

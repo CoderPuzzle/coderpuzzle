@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2575,
+  "slug": "find-the-divisibility-array-of-a-string",
+  "title": "Find the Divisibility Array of a String",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "String"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "divisibilityArray",
+    "parameters": [
+      {
+        "name": "word",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "m",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "divisibilityArray",
+      "rust": "divisibility_array",
+      "typescript": "divisibilityArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

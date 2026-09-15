@@ -1,0 +1,34 @@
+// One walk over the sorted array with two counter maps: left[v] is the
+// copies of v not yet placed, need[v] the subsequences whose next wanted
+// value is v. Placing x always prefers extending an existing subsequence
+// over starting a new one.
+func isPossible(nums []int) bool {
+	left := map[int]int{}
+	for _, x := range nums {
+		left[x]++
+	}
+	need := map[int]int{}
+	for _, x := range nums {
+		if left[x] == 0 {
+			// consumed by a run started earlier as its x+1/x+2
+			continue
+		}
+		if need[x] > 0 {
+			// extend: the run that wanted x now wants x + 1
+			left[x]--
+			need[x]--
+			need[x+1]++
+		} else if left[x+1] > 0 && left[x+2] > 0 {
+			// start a run of three: it eats the next two values ahead of
+			// the walk and then wants x + 3
+			left[x]--
+			left[x+1]--
+			left[x+2]--
+			need[x+3]++
+		} else {
+			// x can neither extend a run nor seed a legal new one
+			return false
+		}
+	}
+	return true
+}

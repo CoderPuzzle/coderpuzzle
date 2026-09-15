@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "two_pointers",
+  "id": 167,
+  "slug": "two-sum-ii-input-array-is-sorted-crawl",
+  "title": "Two Sum II - Input Array Is Sorted",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Binary Search"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Binary Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "twoSum",
+    "parameters": [
+      {
+        "name": "numbers",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "twoSum",
+      "rust": "two_sum",
+      "typescript": "twoSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

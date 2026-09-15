@@ -1,0 +1,69 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3481,
+  "slug": "apply-substitutions",
+  "title": "Apply Substitutions",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Topological Sort"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Topological Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "applySubstitutions",
+    "parameters": [
+      {
+        "name": "replacements",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "text",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "applySubstitutions",
+      "rust": "apply_substitutions",
+      "typescript": "applySubstitutions"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

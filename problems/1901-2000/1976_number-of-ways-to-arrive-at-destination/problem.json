@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1976,
+  "slug": "number-of-ways-to-arrive-at-destination",
+  "title": "Number of Ways to Arrive at Destination",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "Shortest Path",
+    "Heap",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Graph Theory",
+    "Topological Sort",
+    "Shortest Path",
+    "Dijkstra's Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countPaths",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "roads",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countPaths",
+      "rust": "count_paths",
+      "typescript": "countPaths"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

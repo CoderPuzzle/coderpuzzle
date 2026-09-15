@@ -1,0 +1,103 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1274,
+  "slug": "number-of-ships-in-a-rectangle",
+  "title": "Number of Ships in a Rectangle",
+  "difficulty": "Hard",
+  "tags": [
+    "Divide and Conquer"
+  ],
+  "topics": [
+    "Array",
+    "Divide and Conquer",
+    "Interactive"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "countShips",
+    "oracle": "Sea",
+    "oracle_methods": [
+      {
+        "name": "hasShips",
+        "parameters": [
+          {
+            "name": "topRight",
+            "codec": "json",
+            "value_type": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          },
+          {
+            "name": "bottomLeft",
+            "codec": "json",
+            "value_type": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "topRight",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "bottomLeft",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 400,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "Sea",
+        "construct": [
+          "ships"
+        ],
+        "auxiliary": [
+          "topRight",
+          "bottomLeft"
+        ]
+      }
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

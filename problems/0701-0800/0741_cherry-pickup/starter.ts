@@ -1,0 +1,3 @@
+function cherryPickup(grid: number[][]): number {
+    throw new Error("TODO");
+}

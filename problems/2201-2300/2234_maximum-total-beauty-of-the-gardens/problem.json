@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2234,
+  "slug": "maximum-total-beauty-of-the-gardens",
+  "title": "Maximum Total Beauty of the Gardens",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Binary Search",
+    "Greedy",
+    "Sorting",
+    "Enumeration",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Binary Search",
+    "Greedy",
+    "Sorting",
+    "Enumeration",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumBeauty",
+    "parameters": [
+      {
+        "name": "flowers",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "newFlowers",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "full",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "partial",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "maximumBeauty",
+      "rust": "maximum_beauty",
+      "typescript": "maximumBeauty"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

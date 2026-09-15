@@ -1,0 +1,119 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(3,'Jonathan','051-1234567'),\n(12,'Elvis','051-7654321'),\n(1,'Moncef','212-1234567'),\n(2,'Maroua','212-6523651'),\n(7,'Meir','972-1234567'),\n(9,'Rachel','972-0011100');\nINSERT INTO Country VALUES\n('Peru','051'),\n('Israel','972'),\n('Morocco','212'),\n('Germany','049'),\n('Ethiopia','251');\nINSERT INTO Calls VALUES\n(1,9,33),\n(2,9,4),\n(1,2,59),\n(3,12,102),\n(3,12,330),\n(12,3,5),\n(7,9,13),\n(7,1,3),\n(9,7,1),\n(1,7,7);"
+      ],
+      "expected": [
+        [
+          "Peru"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'A','100-1111111'),\n(2,'B','100-2222222'),\n(3,'C','100-3333333');\nINSERT INTO Country VALUES\n('Onlyland','100');\nINSERT INTO Calls VALUES\n(1,2,10),\n(2,3,20),\n(3,1,30);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'A','101-1111111'),\n(2,'B','101-2222222'),\n(3,'C','102-3333333'),\n(4,'D','102-4444444');\nINSERT INTO Country VALUES\n('Alpha','101'),\n('Beta','102');\nINSERT INTO Calls VALUES\n(1,2,10),\n(3,4,10);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'A','200-1111111'),\n(2,'B','200-2222222'),\n(3,'C','300-3333333'),\n(4,'D','300-4444444');\nINSERT INTO Country VALUES\n('High','200'),\n('Low','300');\nINSERT INTO Calls VALUES\n(1,2,500),\n(3,4,1);"
+      ],
+      "expected": [
+        [
+          "High"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'A','010-1000000'),\n(2,'B','020-2000000'),\n(3,'C','030-3000000'),\n(4,'D','040-4000000');\nINSERT INTO Country VALUES\n('Ten','010'),\n('Twenty','020'),\n('Thirty','030'),\n('Forty','040');\nINSERT INTO Calls VALUES\n(1,2,100),\n(1,2,90),\n(3,4,1),\n(3,4,2);"
+      ],
+      "expected": [
+        [
+          "Ten"
+        ],
+        [
+          "Twenty"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'A','007-1234567'),\n(2,'B','007-7654321'),\n(3,'C','099-1234567'),\n(4,'D','099-7654321');\nINSERT INTO Country VALUES\n('ZeroLand','007'),\n('NineLand','099');\nINSERT INTO Calls VALUES\n(1,2,900),\n(3,4,1);"
+      ],
+      "expected": [
+        [
+          "ZeroLand"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'A','111-1111111'),\n(2,'B','111-2222222'),\n(3,'C','222-3333333'),\n(4,'D','222-4444444'),\n(5,'E','111-5555555');\nINSERT INTO Country VALUES\n('Red','111'),\n('Blue','222');\nINSERT INTO Calls VALUES\n(1,2,80),\n(3,4,1);"
+      ],
+      "expected": [
+        [
+          "Red"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'A','300-1111111'),\n(2,'B','300-2222222'),\n(3,'C','400-3333333'),\n(4,'D','400-4444444');\nINSERT INTO Country VALUES\n('Zeroville','300'),\n('Steady','400');\nINSERT INTO Calls VALUES\n(1,2,0),\n(1,2,0),\n(3,4,5),\n(3,4,5);"
+      ],
+      "expected": [
+        [
+          "Steady"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'A','500-1111111'),\n(2,'B','500-2222222');\nINSERT INTO Country VALUES\n('Populated','500'),\n('Empty','600');\nINSERT INTO Calls VALUES\n(1,2,50);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'A','111-1000000'),\n(2,'B','111-2000000'),\n(3,'C','111-3000000'),\n(4,'D','222-4000000'),\n(5,'E','222-5000000'),\n(6,'F','333-6000000'),\n(7,'G','333-7000000'),\n(8,'H','333-8000000');\nINSERT INTO Country VALUES\n('Nation1','111'),\n('Nation2','222'),\n('Nation3','333');\nINSERT INTO Calls VALUES\n(1,2,15),\n(2,3,25),\n(1,3,5),\n(4,5,200),\n(4,5,180),\n(6,7,3),\n(7,8,4),\n(6,8,2);"
+      ],
+      "expected": [
+        [
+          "Nation2"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'A','777-1111111'),\n(2,'B','888-2222222');\nINSERT INTO Country VALUES\n('Lucky','777'),\n('Unlucky','888');\nINSERT INTO Calls VALUES\n(1,2,42);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'A','012-1111111'),\n(2,'B','012-2222222'),\n(3,'C','034-3333333'),\n(4,'D','034-4444444'),\n(5,'E','056-5555555'),\n(6,'F','056-6666666');\nINSERT INTO Country VALUES\n('Low','012'),\n('Mid','034'),\n('High','056');\nINSERT INTO Calls VALUES\n(1,2,10),\n(3,4,20),\n(5,6,30);"
+      ],
+      "expected": [
+        [
+          "High"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3203,
+  "slug": "find-minimum-diameter-after-merging-two-trees",
+  "title": "Find Minimum Diameter After Merging Two Trees",
+  "difficulty": "Hard",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumDiameterAfterMerge",
+    "parameters": [
+      {
+        "name": "edges1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "edges2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumDiameterAfterMerge",
+      "rust": "minimum_diameter_after_merge",
+      "typescript": "minimumDiameterAfterMerge"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

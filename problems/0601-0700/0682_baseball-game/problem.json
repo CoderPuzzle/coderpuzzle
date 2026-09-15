@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 682,
+  "slug": "baseball-game",
+  "title": "Baseball Game",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Stack",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "calPoints",
+    "parameters": [
+      {
+        "name": "operations",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "calPoints",
+      "rust": "cal_points",
+      "typescript": "calPoints"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

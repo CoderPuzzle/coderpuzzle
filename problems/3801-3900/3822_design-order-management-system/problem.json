@@ -1,0 +1,121 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3822,
+  "slug": "design-order-management-system",
+  "title": "Design Order Management System",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Design"
+  ],
+  "topics": [
+    "Hash Table",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "OrderManagementSystem",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "addOrder",
+        "parameters": [
+          {
+            "name": "orderId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "orderType",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "price",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "modifyOrder",
+        "parameters": [
+          {
+            "name": "orderId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "newPrice",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "cancelOrder",
+        "parameters": [
+          {
+            "name": "orderId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "getOrdersAtPrice",
+        "parameters": [
+          {
+            "name": "orderType",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "price",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

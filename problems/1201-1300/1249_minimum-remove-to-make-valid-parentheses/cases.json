@@ -1,0 +1,138 @@
+{
+  "public": [
+    {
+      "input": [
+        "lee(t(c)o)de)"
+      ],
+      "expected": "lee(t(c)o)de"
+    },
+    {
+      "input": [
+        "a)b(c)d"
+      ],
+      "expected": "ab(c)d"
+    },
+    {
+      "input": [
+        "))(("
+      ],
+      "expected": ""
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "lee(t(c)o)de)"
+      ],
+      "expected": "lee(t(c)o)de"
+    },
+    {
+      "input": [
+        "a)b(c)d"
+      ],
+      "expected": "ab(c)d"
+    },
+    {
+      "input": [
+        "))(("
+      ],
+      "expected": ""
+    },
+    {
+      "input": [
+        "abcdef"
+      ],
+      "expected": "abcdef"
+    },
+    {
+      "input": [
+        "(a(bc)d)"
+      ],
+      "expected": "(a(bc)d)"
+    },
+    {
+      "input": [
+        "(((("
+      ],
+      "expected": ""
+    },
+    {
+      "input": [
+        "))))"
+      ],
+      "expected": ""
+    },
+    {
+      "input": [
+        "a(b(c"
+      ],
+      "expected": "abc"
+    },
+    {
+      "input": [
+        ")a("
+      ],
+      "expected": "a"
+    },
+    {
+      "input": [
+        ")()("
+      ],
+      "expected": "()"
+    },
+    {
+      "input": [
+        "((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((a))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))"
+      ],
+      "expected": "((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((a))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))"
+    },
+    {
+      "input": [
+        "((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((a"
+      ],
+      "expected": "a"
+    },
+    {
+      "input": [
+        ")))bbaba())aa)aba)a)(b(a)bbabb)a(()(aa))a()aababba())abba))aba(()bb(bb(a))bbaa)a((()b(a()((b)bb)b)))()(((()())b()(babbb()a()a)))))b)a())()a)aababbb(bb(a)baaa(bba(b(((b(a(bb(aa)))a)aa(()a)()b())babbbaa)ba))ba)bb(aab)b)(a()b(b(ab((b)()))babba(bb(a))b)b)a(bba(baaaaa))(b())b(a()b)bbbb())(aa)(b(a(aa(((a)bb)()a)a(bbb(a))b(()()b)(aa(((bb()a)bb()a((ab)((bbaa((((b)baabbabb(b)ab()babb()aa)a)a))b))(ba))))()b(b)b((b)))bb()((((b(bb(a))b(()bb))abbbb)((bbb(aaa)()abb)ab)(((aa)b(ab)a)bb())b)bb((bb)()((b(())baba)()((a)bbabb)b(bbbaa((ab(ab))a(aab)aaaab)()(b))))bbabb)))())b)b)((bb(b(a(a()b)abaa)(ab(b()baabbbb(()ba)(ba))b)a((b)(()b((a)ab()(abbaa(((b((b))(b(ab(bb)a)()a)a((aba)((b)aaabb)b)(a(a()a)(a()))a)b)a)b(bba)b))()))b((ba((ba(a(ba)bbb()b)a())(a(a)a)a((baa(ba()a)b()))(aabbb)b)(a(())bbbaa(aaaaaa(b(b()b()(()))b())))(a)bbaba))baaa)(baa(ab(baa())aa(bb)aaaa((()(bb()))baa))()b)bb)baba((a(bb(a)))(ba)a)aa)b(ab(b)a)()b)b)ab(ba)(bbbabaaa)a)((()(()ab)b)(baa((b(b))(b)(abb)(b))b()())a)((b(ab))ba((a()(b(b)b(b)((a(ba(b"
+      ],
+      "expected": "bbaba()aaabaa(b(a)bbabb)a(()(aa))a()aababba()abbaaba(()bb(bb(a))bbaa)a((()b(a()((b)bb)b)))()(((()())b()(babbb()a()a)))ba()()aaababbb(bb(a)baaa(bba(b(((b(a(bb(aa)))a)aa(()a)()b())babbbaa)ba))ba)bb(aab)b(a()b(b(ab((b)()))babba(bb(a))b)b)a(bba(baaaaa))(b())b(a()b)bbbb()(aa)(b(a(aa(((a)bb)()a)a(bbb(a))b(()()b)(aa(((bb()a)bb()a((ab)((bbaa((((b)baabbabb(b)ab()babb()aa)a)a))b))(ba))))()b(b)b((b)))bb()((((b(bb(a))b(()bb))abbbb)((bbb(aaa)()abb)ab)(((aa)b(ab)a)bb())b)bb((bb)()((b(())baba)()((a)bbabb)b(bbbaa((ab(ab))a(aab)aaaab)()(b))))bbabb)))()bb((bb(b(a(a()b)abaa)(ab(b()baabbbb(()ba)(ba))b)a((b)(()b((a)ab()(abbaa(((b((b))(b(ab(bb)a)()a)a((aba)((b)aaabb)b)(a(a()a)(a()))a)b)a)b(bba)b))()))b((ba((ba(a(ba)bbb()b)a())(a(a)a)a((baa(ba()a)b()))(aabbb)b)(a(())bbbaa(aaaaaa(b(b()b()(()))b())))(a)bbaba))baaa)(baa(ab(baa())aa(bb)aaaa((()(bb()))baa))()b)bb)baba((a(bb(a)))(ba)a)aa)b(ab(b)a)()bbab(ba)(bbbabaaa)a((()(()ab)b)(baa((b(b))(b)(abb)(b))b()())a)(b(ab))baa()b(b)b(b)abab"
+    },
+    {
+      "input": [
+        "(()()(((()((((())(())((((((()()()(()((((()()(()())((((()())())((((((()((()(((()(((())()(((((((())(((()(())))(((((())((()))(())())((())(())((((((((((((()(((()))(((((((((((((())(((()(()()()((()()))(((()(((()(()))((((()(((())(((((()()((((((()((((())()(()(((()(((()()(((()((())()(((()(((()((((()())))()(((((()(((()(((((((((()((())()(()(((()(((((((())()((())((((()((((()())))(((((((())((((((()(((()((((((()())(()()))))((()(((((((((())((((())()(()((()))((((((((()())()()(()))(()((()))(()(()((()))(()(((((()(((())((((((()(((((()()(()()(()((((((((()(()(((((()()()(((()())((((()(((()((())((()(())()(((())((((()((()((()(((()(((()(())()(()((()))()()())())))()())((((((())(((()(()()(())(()()((())((((()()((((((()()()((()))(((((()((()()((()((()))(())()()(()()()((()(((((((((()()()())(()))())()((((()()(((((()(()(()(((())((((())()(()))(((()(()((((((())()(((((()(()(((()())(()(())(())((()))()(((((()())(())(()(()()(((())((((()((()((((()))(())(((()((()((())))()()((((()()((()(()(())(()))))((()))((()((()((())()(()((("
+      ],
+      "expected": "()()()(())(())()()()()()()(()())((()())())()()()(())()(())((()(())))((())((()))(())())(())(())()((()))(())()()()()((()()))()(()(()))()(())()()()(())()()()()()()(())()()()(((()())))()()()()(())()()()(())()(())()(((()())))(())()()((((()())(()()))))()(())(())()()((()))((()())()()(()))()((()))()()((()))()()(())()()()()()()()()()()()(()())()()(())()(())()(())()()()(()(((()(())()(()((()))()()())())))()())(())()()()(())()()(())()()()()()((()))()()()()((()))(())()()()()()()(((()()()())(()))())()()()()()()(())((())()(()))()()(())()()()(()())()(())(())((()))()(()())(())()()()(())()()((()))(())()(()((())))()()()()((()(()(())(()))))((()))()()(())()()"
+    },
+    {
+      "input": [
+        "a)))(a)(bba)bba(((b)b(b(()baa)a(ab)a))a(baaba(bbbb))b)((b)(((a))aa)ab))b(bbba(ab))(a))b)())(((b)bbb("
+      ],
+      "expected": "a(a)(bba)bba(((b)b(b(()baa)a(ab)a))a(baaba(bbbb))b)((b)(((a))aa)ab)b(bbba(ab))(a)b()(b)bbb"
+    },
+    {
+      "input": [
+        ")()()))((())()(()(((()(()(())(()))(())())(((((())))(((()()(()((()(((())(((()()))((((()(()((()()()(()"
+      ],
+      "expected": "()()(())()()(()(()(())(()))(())())(((())))()()()()(())((()()))()()()()()()"
+    },
+    {
+      "input": [
+        "a()(aaa)))"
+      ],
+      "expected": "a()(aaa)"
+    },
+    {
+      "input": [
+        "(()(()(((((()((()(((((()(()((()())))))((()(((((()()((((()(()()(()((((((()))((()(((()(()(()((((((((()(())()(()())(((((()()()(()(((((((((((((((((((())()())()(((()))(()()(()())((()(())(()()((()()((()())(()(()(((((()()(()((())()()()()((((()(((())(((((((()()()()(()(()((((((()((()()))((((()(((((((()()(()))(()(()((((())(()()()))((((((())(((((((())((((((((()((((()()((()(()(((()()()(((((()()())))())()((((()))((()((()())(())(((()()()())))(())())(())())()))((((((((((((((()()(((((()(((()())(((()))()()())((())())(())))(()((()(((()))(()()())()())((()))((()()(()(()((()(()(((()())))))(((()()()())((())(((((())()()()))(()())((()()((()()))(((()(((()(()()(((((((()))()(())()(()()((((((())(((())()))())())()(()(((((()()((((())((()))(()((((((((()())()((((((((()(((())())((())(())((())(())()((((()(()(((((((((())(()())())))((()(()(((())(()())()((((()((())(()(())))))(()))()(()(()())((((()(()(()())((((()(((((((((((()((((()(())(()()()(()(()((()(())(())(())())(()()(()(())((((((()(()(((((()(()())((((((((()()())(((()("
+      ],
+      "expected": "()()()()((()(()((()())))))()()()()()()()((()))()()()()()(())()(()())()()()()((())()())()((()))()()(()())()(())()()()()(()())()()()()()(())()()()()()(())()()()()()()()((()()))()(()()(()))()()((())(()()()))(())(())()()()()()()()()((((()()())))())()(((()))((()((()())(())(((()()()())))(())())(())())()))()()()(((()())(((()))()()())((())())(())))()()(((()))(()()())()())((()))()()()()(()(()(((()())))))(()()()())(())(((())()()()))(()())()()((()()))()()()()((()))()(())()()()(((())(((())()))())())()()()()(())((()))()(()())()()((())())(())(())(())(())()()()((((())(()())())))()()(())(()())()(((()((())(()(())))))(()))()()(()())()()(()())()()()(())()()()()()(()(())(())(())())()()()(())()()()(()())(()()())()"
+    },
+    {
+      "input": [
+        "xaxxxxxxxxxxxxxxxxxxxxxxxaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx(xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)xxxxxxxxxxxxxxxxxxxxxaxxxxxxxxxxxxxxxx(xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)xxx)xxxxxxx(xxxxxxxaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)xxxxxxxxxxxxxxxxxxxxxxxx)xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx(xxxxx)x(xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ],
+      "expected": "xaxxxxxxxxxxxxxxxxxxxxxxxaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx(xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)xxxxxxxxxxxxxxxxxxxxxaxxxxxxxxxxxxxxxx(xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)xxxxxxxxxx(xxxxxxxaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx(xxxxx)xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ]
+}

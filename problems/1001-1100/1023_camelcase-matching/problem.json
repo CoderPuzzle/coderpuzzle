@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1023,
+  "slug": "camelcase-matching",
+  "title": "Camelcase Matching",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "String",
+    "Trie",
+    "String Matching"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "String",
+    "Trie",
+    "String Matching"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "camelMatch",
+    "parameters": [
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "pattern",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "boolean"
+      }
+    },
+    "entrypoints": {
+      "go": "camelMatch",
+      "rust": "camel_match",
+      "typescript": "camelMatch"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

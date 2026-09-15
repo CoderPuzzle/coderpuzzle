@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 860,
+  "slug": "lemonade-change",
+  "title": "Lemonade Change",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "lemonadeChange",
+    "parameters": [
+      {
+        "name": "bills",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "lemonadeChange",
+      "rust": "lemonade_change",
+      "typescript": "lemonadeChange"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

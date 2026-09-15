@@ -1,0 +1,21 @@
+// Flipping a 0 turns it into a 1 for free, so a stretch can be made
+// all-ones exactly when it holds at most one 0: sweep for the longest
+// such window. Grow it one element at a time on the right; when a second
+// 0 slips in, advance the left edge until the earlier 0 drops out and
+// the one-flip budget is restored. The largest window seen is the answer.
+func findMaxConsecutiveOnes(nums []int) int {
+	best, left, zeros := 0, 0, 0
+	for right, value := range nums {
+		if value == 0 {
+			zeros++
+		}
+		for zeros > 1 {
+			if nums[left] == 0 {
+				zeros--
+			}
+			left++
+		}
+		best = max(best, right-left+1)
+	}
+	return best
+}

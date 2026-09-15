@@ -1,0 +1,21 @@
+impl Solution {
+    pub fn single_non_duplicate(nums: Vec<i32>) -> i32 {
+        // Pairs start on even indices before the single element and on odd
+        // indices after it — a monotone parity break, ideal for binary search.
+        let mut lo = 0usize;
+        let mut hi = nums.len() - 1;
+        while lo < hi {
+            let mut mid = (lo + hi) / 2;
+            // Snap to an even index so mid and mid + 1 form a candidate pair.
+            if mid % 2 == 1 {
+                mid -= 1;
+            }
+            if nums[mid] == nums[mid + 1] {
+                lo = mid + 2; // intact pair: the answer lies strictly right
+            } else {
+                hi = mid; // broken pair: the answer is at mid or to the left
+            }
+        }
+        nums[lo]
+    }
+}

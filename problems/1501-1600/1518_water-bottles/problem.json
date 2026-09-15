@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1518,
+  "slug": "water-bottles",
+  "title": "Water Bottles",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "Simulation"
+  ],
+  "topics": [
+    "Math",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numWaterBottles",
+    "parameters": [
+      {
+        "name": "numBottles",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "numExchange",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numWaterBottles",
+      "rust": "num_water_bottles",
+      "typescript": "numWaterBottles"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

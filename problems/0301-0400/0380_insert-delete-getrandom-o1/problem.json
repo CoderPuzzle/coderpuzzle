@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 380,
+  "slug": "insert-delete-getrandom-o1",
+  "title": "Insert Delete GetRandom O(1)",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Array"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Design",
+    "Randomized"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "RandomizedSet",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "insert",
+        "parameters": [
+          {
+            "name": "val",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "remove",
+        "parameters": [
+          {
+            "name": "val",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "getRandom",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

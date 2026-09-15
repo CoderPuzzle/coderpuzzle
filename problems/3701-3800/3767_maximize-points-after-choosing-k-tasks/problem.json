@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "reference_solution": "min_sacrifice",
+  "id": 3767,
+  "slug": "maximize-points-after-choosing-k-tasks",
+  "title": "Maximize Points After Choosing K Tasks",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Heap (Priority Queue)"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxPoints",
+    "parameters": [
+      {
+        "name": "technique1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "technique2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "maxPoints",
+      "rust": "max_points",
+      "typescript": "maxPoints"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

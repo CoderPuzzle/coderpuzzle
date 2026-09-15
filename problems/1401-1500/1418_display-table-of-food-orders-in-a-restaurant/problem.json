@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1418,
+  "slug": "display-table-of-food-orders-in-a-restaurant",
+  "title": "Display Table of Food Orders in a Restaurant",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "displayTable",
+    "parameters": [
+      {
+        "name": "orders",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "string"
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "displayTable",
+      "rust": "display_table",
+      "typescript": "displayTable"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

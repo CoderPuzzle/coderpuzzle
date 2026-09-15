@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 721,
+  "slug": "accounts-merge",
+  "title": "Accounts Merge",
+  "difficulty": "Medium",
+  "tags": [
+    "Union Find",
+    "Hash Table",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "accountsMerge",
+    "parameters": [
+      {
+        "name": "accounts",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "string"
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "accountsMerge",
+      "rust": "accounts_merge",
+      "typescript": "accountsMerge"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

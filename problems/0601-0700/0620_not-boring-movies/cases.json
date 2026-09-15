@@ -1,0 +1,749 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(1,'War','great 3D',8.9),\n(2,'Science','fiction',8.5),\n(3,'irish','boring',6.2),\n(4,'Ice song','Fantacy',8.6),\n(5,'House card','Interesting',9.1);"
+      ],
+      "expected": [
+        [
+          5,
+          "House card",
+          "Interesting",
+          9.1
+        ],
+        [
+          1,
+          "War",
+          "great 3D",
+          8.9
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(1,'Alpha','adventure',7.3),\n(2,'Bravo','comedy',8.1),\n(3,'Charlie','drama',6.4),\n(4,'Delta','thriller',9.2),\n(5,'Echo','romance',5.5),\n(6,'Foxtrot','horror',7.8),\n(7,'Golf','animated',8.7),\n(8,'Hotel','crime',6.9),\n(9,'India','fantasy',9.4),\n(10,'Juliet','mystery',5.2);"
+      ],
+      "expected": [
+        [
+          9,
+          "India",
+          "fantasy",
+          9.4
+        ],
+        [
+          7,
+          "Golf",
+          "animated",
+          8.7
+        ],
+        [
+          1,
+          "Alpha",
+          "adventure",
+          7.3
+        ],
+        [
+          3,
+          "Charlie",
+          "drama",
+          6.4
+        ],
+        [
+          5,
+          "Echo",
+          "romance",
+          5.5
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(1,'Quiet','boring',4.2),\n(3,'Whisper','Boring',7.1),\n(5,'Echo','BORING',5.9),\n(7,'Hum','boring!',6.6),\n(9,'Drone','boring ',8.3),\n(11,'Rumble',' boring',4.8),\n(13,'Hiss','boringly',7.7),\n(15,'Roar','not boring',9.0);"
+      ],
+      "expected": [
+        [
+          15,
+          "Roar",
+          "not boring",
+          9.0
+        ],
+        [
+          9,
+          "Drone",
+          "boring ",
+          8.3
+        ],
+        [
+          13,
+          "Hiss",
+          "boringly",
+          7.7
+        ],
+        [
+          3,
+          "Whisper",
+          "Boring",
+          7.1
+        ],
+        [
+          7,
+          "Hum",
+          "boring!",
+          6.6
+        ],
+        [
+          5,
+          "Echo",
+          "BORING",
+          5.9
+        ],
+        [
+          11,
+          "Rumble",
+          " boring",
+          4.8
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(2,'Dune','scifi',1.1),\n(4,'Alien','scifi',2.2),\n(1,'Blade','scifi',3.3),\n(3,'Moon','scifi',4.4),\n(6,'Arrival','drama',5.5),\n(5,'Her','romance',6.6),\n(8,'Solaris','mystery',7.7),\n(7,'Gravity','drama',8.8),\n(10,'Inter','scifi',9.6),\n(9,'Contact','drama',9.9);"
+      ],
+      "expected": [
+        [
+          9,
+          "Contact",
+          "drama",
+          9.9
+        ],
+        [
+          7,
+          "Gravity",
+          "drama",
+          8.8
+        ],
+        [
+          5,
+          "Her",
+          "romance",
+          6.6
+        ],
+        [
+          3,
+          "Moon",
+          "scifi",
+          4.4
+        ],
+        [
+          1,
+          "Blade",
+          "scifi",
+          3.3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(1,'Needle','short',9.99),\n(3,'Pin','boring',9.95),\n(5,'Nail','short',9.9),\n(7,'Screw','short',9.09),\n(9,'Staple','short',9.0),\n(2,'Bolt','short',8.99),\n(4,'Rivet','short',8.9);"
+      ],
+      "expected": [
+        [
+          1,
+          "Needle",
+          "short",
+          9.99
+        ],
+        [
+          5,
+          "Nail",
+          "short",
+          9.9
+        ],
+        [
+          7,
+          "Screw",
+          "short",
+          9.09
+        ],
+        [
+          9,
+          "Staple",
+          "short",
+          9.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(1,'A','boring',5.5),\n(2,'B','boring',6.6),\n(3,'C','boring',7.7),\n(4,'D','boring',8.8);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(1,'Floor','minimal',0.0),\n(2,'Low','meh',0.05),\n(3,'Ceiling','maximal',10.0),\n(4,'High','solid',9.95),\n(5,'Mid','average',5.0),\n(6,'Dull','boring',9.99),\n(7,'Sub','tiny',0.01);"
+      ],
+      "expected": [
+        [
+          3,
+          "Ceiling",
+          "maximal",
+          10.0
+        ],
+        [
+          5,
+          "Mid",
+          "average",
+          5.0
+        ],
+        [
+          7,
+          "Sub",
+          "tiny",
+          0.01
+        ],
+        [
+          1,
+          "Floor",
+          "minimal",
+          0.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(2,'Pair','even',6.1),\n(4,'Quad','even',7.2),\n(6,'Hex','even',8.3),\n(8,'Oct','even',9.4);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(1,'Lone','unique',7.5),\n(2,'Crowd A','fine',8.0),\n(3,'Trap','boring',9.9),\n(4,'Crowd B','fine',8.1),\n(6,'Crowd C','boring',8.2),\n(8,'Crowd D','fine',8.3);"
+      ],
+      "expected": [
+        [
+          1,
+          "Lone",
+          "unique",
+          7.5
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(1,'Meridian','epic',8.05),\n(2,'Tropic','comedy',6.45),\n(3,'Zenith','boring',9.15),\n(4,'Apex','action',7.2),\n(5,'Basin','noir',5.85),\n(6,'Cavern','boring',8.95),\n(7,'Delta Flats','western',7.75),\n(8,'Hollow','horror',4.95),\n(9,'Ember','animated',9.05),\n(10,'Isle','fantasy',5.45),\n(11,'Fjord','romance',6.95),\n(12,'Jungle','adventure',7.45),\n(13,'Grotto','mystery',8.55),\n(14,'Knoll','history',6.15);"
+      ],
+      "expected": [
+        [
+          9,
+          "Ember",
+          "animated",
+          9.05
+        ],
+        [
+          13,
+          "Grotto",
+          "mystery",
+          8.55
+        ],
+        [
+          1,
+          "Meridian",
+          "epic",
+          8.05
+        ],
+        [
+          7,
+          "Delta Flats",
+          "western",
+          7.75
+        ],
+        [
+          11,
+          "Fjord",
+          "romance",
+          6.95
+        ],
+        [
+          5,
+          "Basin",
+          "noir",
+          5.85
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(1,'One','first',1.11),\n(2147483647,'Max','int-max',9.91),\n(2147483646,'Max Minus','even',9.87),\n(999999999,'Nines','nines',5.55),\n(1000000000,'Ten Powers','even',6.66),\n(3,'Three','third',2.22);"
+      ],
+      "expected": [
+        [
+          2147483647,
+          "Max",
+          "int-max",
+          9.91
+        ],
+        [
+          999999999,
+          "Nines",
+          "nines",
+          5.55
+        ],
+        [
+          3,
+          "Three",
+          "third",
+          2.22
+        ],
+        [
+          1,
+          "One",
+          "first",
+          1.11
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(964,'Glass Peak','boring',9.86),\n(73,'Fog Peak','animated',6.55),\n(462,'Iron Vale','boring',3.72),\n(382,'Salt Vale','fantasy',3.09),\n(965,'Dust Gate','thriller',0.91),\n(782,'Rain Hollow','boring',0.63),\n(603,'Snow Shore','epic',2.62),\n(812,'Stone Wood','history',8.11),\n(739,'Fox Road','mystery',4.6),\n(227,'Iron Wood','epic',9.4),\n(551,'Ember Wood','comedy',6.36),\n(930,'Wold Field','musical',3.32),\n(158,'Ember Fall','mystery',4.99),\n(677,'Ash Vale','musical',2.83),\n(150,'Cliff Vale','action',8.44),\n(749,'Oak Vale','boring',8.99),\n(253,'Vale Fall','history',0.42),\n(651,'Wold Gate','musical',1.98),\n(469,'Cliff Fall','boring',1.63),\n(456,'Flint Run','western',7.97),\n(118,'Wold Shore','crime',8.56),\n(834,'Crow Shore','epic',0.92),\n(229,'Iron Shore','history',9.8),\n(495,'Fox Run','mystery',3.57),\n(496,'Fog Gate','fantasy',5.65),\n(275,'Flint Fall','history',4.82),\n(128,'Stone Hollow','mystery',1.23),\n(982,'Iron Run','short',5.96),\n(124,'Oak Field','thriller',4.19),\n(366,'Crow Road','mystery',8.03),\n(648,'Marsh Run','noir',5.97),\n(223,'Cliff Shore','romance',9.11),\n(212,'Ember Run','fantasy',8.13),\n(369,'Fog Vale','animated',0.57),\n(683,'Glass Shore','boring',0.4),\n(477,'Flint Road','fantasy',4.37),\n(166,'Wold Road','musical',3.56),\n(220,'Rain Wood','crime',3.35),\n(910,'Elm Gate','epic',6.21),\n(279,'Rain Gate','romance',8.88),\n(769,'Thorn Vale','romance',8.92),\n(973,'Thorn Fall','Boring',4.92),\n(116,'Flint Wood','romance',4.9),\n(56,'Dust Shore','fantasy',0.73),\n(993,'Fog Run','comedy',8.01),\n(514,'Iron Hollow','thriller',8.71),\n(944,'Fog Field','drama',1.6),\n(427,'Vale Run','comedy',3.04),\n(9,'Crow Field','fantasy',5.1),\n(823,'Vale Wood','mystery',6.33),\n(208,'Dust Wood','boring',9.13),\n(393,'Dust Field','epic',3.39),\n(75,'Glass Run','adventure',9.31),\n(211,'Wold Vale','western',0.54),\n(201,'Stone Fall','short',8.64),\n(711,'Rain Fall','sketch',2.9),\n(464,'Stone Gate','adventure',7.75),\n(690,'Fox Vale','drama',2.32),\n(189,'Elm Vale','mystery',1.64),\n(745,'Cliff Road','boring!',4.12),\n(995,'Flint Vale','boring',7.83),\n(386,'Cliff Hollow','musical',7.32),\n(17,'Fox Gate','boring',2.7),\n(646,'Dust Vale','short',4.94),\n(831,'Marsh Wood','boring',7.14),\n(627,'Flint Gate','romance',2.8),\n(288,'Oak Hollow','western',2.35),\n(663,'Ember Shore','crime',3.46),\n(388,'Ash Road','drama',8.95),\n(487,'Cliff Peak','sketch',3.7),\n(871,'Oak Fall','comedy',2.89),\n(520,'Oak Shore','action',6.71),\n(790,'Salt Gate','boring',6.06),\n(784,'Stone Run','fantasy',2.28),\n(518,'Marsh Field','horror',3.73),\n(88,'Cliff Gate','crime',5.89),\n(249,'Ember Gate','history',8.1),\n(934,'Elm Fall','mystery',8.17),\n(302,'Elm Hollow','thriller',2.67),\n(488,'Wold Run','boring',1.81),\n(762,'Fox Field','drama',0.26),\n(235,'Vale Shore','drama',7.56),\n(200,'Ember Vale','boring',1.37),\n(111,'Crow Gate','adventure',4.96),\n(619,'Ash Field','horror',9.7),\n(492,'Stone Peak','fantasy',6.73),\n(207,'Wold Wood','mystery',1.45),\n(299,'Marsh Fall','drama',2.43),\n(142,'Thorn Road','boring',6.43),\n(525,'Fog Wood','mystery',2.51),\n(732,'Rain Vale','adventure',3.0),\n(457,'Fog Shore','sketch',9.3),\n(1000,'Elm Run','comedy',0.8),\n(224,'Rain Shore','boringly',6.17),\n(4,'Stone Shore','thriller',2.57),\n(696,'Flint Shore','short',4.55),\n(788,'Fog Hollow','thriller',0.66),\n(935,'Ember Road','epic',8.76),\n(325,'Dust Road','boring',9.99),\n(29,'Stone Field','history',8.96),\n(613,'Stone Road','adventure',3.07),\n(516,'Glass Fall','mystery',6.18),\n(560,'Vale Hollow','noir',1.16),\n(136,'Dust Fall','sketch',4.41),\n(902,'Fox Hollow','boring',4.5),\n(43,'Ember Field','comedy',4.3),\n(281,'Vale Gate','history',2.36),\n(805,'Stone Vale','sketch',7.93),\n(364,'Salt Road','horror',1.39),\n(718,'Glass Wood','action',6.64),\n(446,'Iron Road','boring',0.58),\n(322,'Dust Peak','western',9.1),\n(394,'Marsh Vale','crime',1.34),\n(481,'Marsh Road','fantasy',3.88),\n(878,'Iron Field','crime',5.44),\n(301,'Salt Field','crime',1.06),\n(137,'Snow Wood','history',6.45),\n(832,'Ash Fall','boring',9.12),\n(278,'Cliff Wood','sketch',0.59),\n(392,'Glass Hollow','mystery',2.94),\n(304,'Wold Fall','horror',1.02),\n(807,'Thorn Gate','drama',1.72),\n(766,'Ash Wood','horror',7.02),\n(600,'Glass Vale','horror',5.56),\n(642,'Oak Peak','comedy',8.94),\n(710,'Fox Shore','fantasy',9.36),\n(167,'Crow Hollow','drama',9.97),\n(889,'Wold Peak','drama',6.41),\n(256,'Dust Run','comedy',4.27),\n(396,'Snow Field','animated',4.51),\n(175,'Snow Hollow','horror',1.29),\n(294,'Fox Peak','boring',5.13),\n(897,'Salt Shore','Boring',7.34),\n(980,'Elm Wood','thriller',5.09),\n(984,'Elm Field','adventure',5.15),\n(658,'Salt Wood','sketch',2.44),\n(811,'Ember Hollow','drama',6.61),\n(77,'Salt Run','fantasy',3.37),\n(534,'Thorn Wood','thriller',3.84),\n(50,'Dust Hollow','fantasy',3.42),\n(827,'Iron Gate','boring',2.24),\n(907,'Fog Road','animated',3.43),\n(156,'Rain Road','comedy',4.39),\n(90,'Rain Run','crime',5.78),\n(164,'Flint Field','noir',9.93),\n(306,'Ash Hollow','animated',6.56),\n(641,'Crow Wood','horror',6.96),\n(670,'Oak Run','animated',7.5),\n(114,'Snow Run','drama',5.84),\n(873,'Marsh Gate','horror',6.35),\n(332,'Ash Gate','animated',8.19),\n(36,'Marsh Hollow','romance',6.68),\n(203,'Thorn Hollow','mystery',4.65),\n(604,'Thorn Peak','musical',4.4),\n(918,'Wold Hollow','animated',5.28),\n(800,'Snow Fall','short',5.57),\n(245,'Ember Peak','boring',5.87),\n(625,'Glass Field','horror',9.07),\n(976,'Crow Vale','noir',3.3),\n(78,'Vale Field','boring',2.59),\n(443,'Rain Field','horror',0.52),\n(760,'Ash Shore','epic',0.0),\n(892,'Ash Run','epic',1.57),\n(26,'Iron Fall','action',2.25),\n(623,'Fox Wood','horror',7.48),\n(404,'Fog Fall','action',1.94),\n(992,'Elm Peak','western',2.68),\n(341,'Vale Road','drama',8.48),\n(742,'Ash Peak','animated',0.96),\n(250,'Flint Peak','boring',3.08),\n(432,'Crow Peak','sketch',3.8),\n(252,'Glass Gate','mystery',3.54),\n(498,'Snow Road','adventure',5.51),\n(448,'Oak Gate','romance',7.09),\n(420,'Glass Road','animated',9.03),\n(966,'Thorn Shore','animated',7.39),\n(959,'Cliff Run','adventure',8.41),\n(18,'Marsh Peak','mystery',1.36),\n(25,'Oak Wood','sketch',7.17),\n(265,'Salt Hollow','boring',7.12);"
+      ],
+      "expected": [
+        [
+          167,
+          "Crow Hollow",
+          "drama",
+          9.97
+        ],
+        [
+          229,
+          "Iron Shore",
+          "history",
+          9.8
+        ],
+        [
+          619,
+          "Ash Field",
+          "horror",
+          9.7
+        ],
+        [
+          227,
+          "Iron Wood",
+          "epic",
+          9.4
+        ],
+        [
+          75,
+          "Glass Run",
+          "adventure",
+          9.31
+        ],
+        [
+          457,
+          "Fog Shore",
+          "sketch",
+          9.3
+        ],
+        [
+          223,
+          "Cliff Shore",
+          "romance",
+          9.11
+        ],
+        [
+          625,
+          "Glass Field",
+          "horror",
+          9.07
+        ],
+        [
+          29,
+          "Stone Field",
+          "history",
+          8.96
+        ],
+        [
+          769,
+          "Thorn Vale",
+          "romance",
+          8.92
+        ],
+        [
+          279,
+          "Rain Gate",
+          "romance",
+          8.88
+        ],
+        [
+          935,
+          "Ember Road",
+          "epic",
+          8.76
+        ],
+        [
+          201,
+          "Stone Fall",
+          "short",
+          8.64
+        ],
+        [
+          341,
+          "Vale Road",
+          "drama",
+          8.48
+        ],
+        [
+          959,
+          "Cliff Run",
+          "adventure",
+          8.41
+        ],
+        [
+          249,
+          "Ember Gate",
+          "history",
+          8.1
+        ],
+        [
+          993,
+          "Fog Run",
+          "comedy",
+          8.01
+        ],
+        [
+          805,
+          "Stone Vale",
+          "sketch",
+          7.93
+        ],
+        [
+          235,
+          "Vale Shore",
+          "drama",
+          7.56
+        ],
+        [
+          623,
+          "Fox Wood",
+          "horror",
+          7.48
+        ],
+        [
+          897,
+          "Salt Shore",
+          "Boring",
+          7.34
+        ],
+        [
+          25,
+          "Oak Wood",
+          "sketch",
+          7.17
+        ],
+        [
+          641,
+          "Crow Wood",
+          "horror",
+          6.96
+        ],
+        [
+          811,
+          "Ember Hollow",
+          "drama",
+          6.61
+        ],
+        [
+          73,
+          "Fog Peak",
+          "animated",
+          6.55
+        ],
+        [
+          137,
+          "Snow Wood",
+          "history",
+          6.45
+        ],
+        [
+          889,
+          "Wold Peak",
+          "drama",
+          6.41
+        ],
+        [
+          551,
+          "Ember Wood",
+          "comedy",
+          6.36
+        ],
+        [
+          873,
+          "Marsh Gate",
+          "horror",
+          6.35
+        ],
+        [
+          823,
+          "Vale Wood",
+          "mystery",
+          6.33
+        ],
+        [
+          9,
+          "Crow Field",
+          "fantasy",
+          5.1
+        ],
+        [
+          111,
+          "Crow Gate",
+          "adventure",
+          4.96
+        ],
+        [
+          973,
+          "Thorn Fall",
+          "Boring",
+          4.92
+        ],
+        [
+          275,
+          "Flint Fall",
+          "history",
+          4.82
+        ],
+        [
+          203,
+          "Thorn Hollow",
+          "mystery",
+          4.65
+        ],
+        [
+          739,
+          "Fox Road",
+          "mystery",
+          4.6
+        ],
+        [
+          477,
+          "Flint Road",
+          "fantasy",
+          4.37
+        ],
+        [
+          43,
+          "Ember Field",
+          "comedy",
+          4.3
+        ],
+        [
+          745,
+          "Cliff Road",
+          "boring!",
+          4.12
+        ],
+        [
+          481,
+          "Marsh Road",
+          "fantasy",
+          3.88
+        ],
+        [
+          487,
+          "Cliff Peak",
+          "sketch",
+          3.7
+        ],
+        [
+          495,
+          "Fox Run",
+          "mystery",
+          3.57
+        ],
+        [
+          663,
+          "Ember Shore",
+          "crime",
+          3.46
+        ],
+        [
+          907,
+          "Fog Road",
+          "animated",
+          3.43
+        ],
+        [
+          393,
+          "Dust Field",
+          "epic",
+          3.39
+        ],
+        [
+          77,
+          "Salt Run",
+          "fantasy",
+          3.37
+        ],
+        [
+          613,
+          "Stone Road",
+          "adventure",
+          3.07
+        ],
+        [
+          427,
+          "Vale Run",
+          "comedy",
+          3.04
+        ],
+        [
+          711,
+          "Rain Fall",
+          "sketch",
+          2.9
+        ],
+        [
+          871,
+          "Oak Fall",
+          "comedy",
+          2.89
+        ],
+        [
+          677,
+          "Ash Vale",
+          "musical",
+          2.83
+        ],
+        [
+          627,
+          "Flint Gate",
+          "romance",
+          2.8
+        ],
+        [
+          603,
+          "Snow Shore",
+          "epic",
+          2.62
+        ],
+        [
+          525,
+          "Fog Wood",
+          "mystery",
+          2.51
+        ],
+        [
+          299,
+          "Marsh Fall",
+          "drama",
+          2.43
+        ],
+        [
+          281,
+          "Vale Gate",
+          "history",
+          2.36
+        ],
+        [
+          651,
+          "Wold Gate",
+          "musical",
+          1.98
+        ],
+        [
+          807,
+          "Thorn Gate",
+          "drama",
+          1.72
+        ],
+        [
+          189,
+          "Elm Vale",
+          "mystery",
+          1.64
+        ],
+        [
+          207,
+          "Wold Wood",
+          "mystery",
+          1.45
+        ],
+        [
+          175,
+          "Snow Hollow",
+          "horror",
+          1.29
+        ],
+        [
+          301,
+          "Salt Field",
+          "crime",
+          1.06
+        ],
+        [
+          965,
+          "Dust Gate",
+          "thriller",
+          0.91
+        ],
+        [
+          369,
+          "Fog Vale",
+          "animated",
+          0.57
+        ],
+        [
+          211,
+          "Wold Vale",
+          "western",
+          0.54
+        ],
+        [
+          443,
+          "Rain Field",
+          "horror",
+          0.52
+        ],
+        [
+          253,
+          "Vale Fall",
+          "history",
+          0.42
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Cinema VALUES\n(1,'O''Brien','irish',6.75),\n(2,'Plain','drama',6.85),\n(3,'Étranger','french',8.15),\n(5,'Night Live','sketch',7.05);"
+      ],
+      "expected": [
+        [
+          3,
+          "Étranger",
+          "french",
+          8.15
+        ],
+        [
+          5,
+          "Night Live",
+          "sketch",
+          7.05
+        ],
+        [
+          1,
+          "O'Brien",
+          "irish",
+          6.75
+        ]
+      ]
+    }
+  ]
+}

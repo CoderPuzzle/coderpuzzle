@@ -1,0 +1,288 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(9,'Hercy',NULL,43),\n(6,'Alice',9,41),\n(4,'Bob',9,36),\n(2,'Winston',NULL,37);"
+      ],
+      "expected": [
+        [
+          9,
+          "Hercy",
+          2,
+          39
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(1,'Michael',NULL,45),\n(2,'Alice',1,38),\n(3,'Bob',1,42),\n(4,'Charlie',2,34),\n(5,'David',2,40),\n(6,'Eve',3,37),\n(7,'Frank',NULL,50),\n(8,'Grace',NULL,48);"
+      ],
+      "expected": [
+        [
+          1,
+          "Michael",
+          2,
+          40
+        ],
+        [
+          2,
+          "Alice",
+          2,
+          37
+        ],
+        [
+          3,
+          "Bob",
+          1,
+          37
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(1,'Sol',NULL,29),\n(2,'Mira',NULL,57),\n(3,'Tao',NULL,64);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(10,'Boss',NULL,50),\n(11,'Minion',10,25);"
+      ],
+      "expected": [
+        [
+          10,
+          "Boss",
+          1,
+          25
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(1,'Root',NULL,60),\n(2,'Depth1',1,50),\n(3,'Depth2',2,41),\n(4,'Depth3',3,33),\n(5,'Depth4',4,26);"
+      ],
+      "expected": [
+        [
+          1,
+          "Root",
+          1,
+          50
+        ],
+        [
+          2,
+          "Depth1",
+          1,
+          41
+        ],
+        [
+          3,
+          "Depth2",
+          1,
+          33
+        ],
+        [
+          4,
+          "Depth3",
+          1,
+          26
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(100,'Ada',NULL,55),\n(101,'Bea',100,30),\n(102,'Cleo',100,45),\n(200,'Zed',NULL,66),\n(201,'Yara',200,22),\n(202,'Xan',200,31),\n(203,'Wyn',200,28);"
+      ],
+      "expected": [
+        [
+          100,
+          "Ada",
+          2,
+          38
+        ],
+        [
+          200,
+          "Zed",
+          3,
+          27
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(5,'Even',NULL,44),\n(50,'E1',5,15),\n(51,'E2',5,30),\n(6,'Down',NULL,40),\n(60,'D1',6,20),\n(61,'D2',6,21),\n(62,'D3',6,23),\n(7,'Up',NULL,36),\n(70,'U1',7,20),\n(71,'U2',7,23),\n(72,'U3',7,22);"
+      ],
+      "expected": [
+        [
+          5,
+          "Even",
+          2,
+          23
+        ],
+        [
+          6,
+          "Down",
+          3,
+          21
+        ],
+        [
+          7,
+          "Up",
+          3,
+          22
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(8,'Spread',NULL,50),\n(80,'Young',8,18),\n(81,'Vet',8,79);"
+      ],
+      "expected": [
+        [
+          8,
+          "Spread",
+          2,
+          49
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(9,'Hub',NULL,52),\n(90,'M1',9,20),\n(91,'M2',9,21),\n(92,'M3',9,22),\n(93,'M4',9,23),\n(94,'M5',9,24),\n(95,'M6',9,25),\n(96,'M7',9,26),\n(97,'M8',9,27),\n(98,'M9',9,40);"
+      ],
+      "expected": [
+        [
+          9,
+          "Hub",
+          9,
+          25
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(30,'Quad',NULL,45),\n(300,'Q1',30,20),\n(301,'Q2',30,21),\n(302,'Q3',30,22),\n(303,'Q4',30,23),\n(31,'Hex',NULL,47),\n(310,'H1',31,20),\n(311,'H2',31,20),\n(312,'H3',31,20),\n(313,'H4',31,21),\n(314,'H5',31,24),\n(315,'H6',31,24);"
+      ],
+      "expected": [
+        [
+          30,
+          "Quad",
+          4,
+          22
+        ],
+        [
+          31,
+          "Hex",
+          6,
+          22
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(11,'Chief',NULL,62),\n(12,'Deputy',11,51),\n(13,'Staff',11,40),\n(14,'Junior',12,29),\n(15,'Junior2',12,33),\n(16,'Clerk',13,24),\n(17,'Partner',NULL,58),\n(18,'Assoc',17,35);"
+      ],
+      "expected": [
+        [
+          11,
+          "Chief",
+          2,
+          46
+        ],
+        [
+          12,
+          "Deputy",
+          2,
+          31
+        ],
+        [
+          13,
+          "Staff",
+          1,
+          24
+        ],
+        [
+          17,
+          "Partner",
+          1,
+          35
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(1,'Nova',NULL,65),\n(2,'Director2',1,43),\n(3,'Director3',1,45),\n(4,'Director4',1,47),\n(5,'Director5',1,49),\n(6,'Director6',1,51),\n(100,'Member100',2,60),\n(101,'Member101',2,28),\n(102,'Member102',2,35),\n(103,'Member103',2,42),\n(104,'Member104',2,49),\n(105,'Member105',2,56),\n(106,'Member106',2,24),\n(107,'Member107',2,31),\n(108,'Member108',2,38),\n(109,'Member109',2,45),\n(110,'Member110',2,52),\n(111,'Member111',2,59),\n(112,'Member112',2,27),\n(113,'Member113',2,34),\n(114,'Member114',2,41),\n(115,'Member115',2,48),\n(116,'Member116',2,55),\n(117,'Member117',2,23),\n(118,'Member118',2,30),\n(119,'Member119',3,37),\n(120,'Member120',3,44),\n(121,'Member121',3,51),\n(122,'Member122',3,58),\n(123,'Member123',3,26),\n(124,'Member124',3,33),\n(125,'Member125',3,40),\n(126,'Member126',3,47),\n(127,'Member127',3,54),\n(128,'Member128',3,61),\n(129,'Member129',3,29),\n(130,'Member130',3,36),\n(131,'Member131',3,43),\n(132,'Member132',3,50),\n(133,'Member133',3,57),\n(134,'Member134',3,25),\n(135,'Member135',3,32),\n(136,'Member136',3,39),\n(137,'Member137',3,46),\n(138,'Member138',4,53),\n(139,'Member139',4,60),\n(140,'Member140',4,28),\n(141,'Member141',4,35),\n(142,'Member142',4,42),\n(143,'Member143',4,49),\n(144,'Member144',4,56),\n(145,'Member145',4,24),\n(146,'Member146',4,31),\n(147,'Member147',4,38),\n(148,'Member148',4,45),\n(149,'Member149',4,52),\n(150,'Member150',4,59),\n(151,'Member151',4,27),\n(152,'Member152',4,34),\n(153,'Member153',4,41),\n(154,'Member154',4,48),\n(155,'Member155',4,55),\n(156,'Member156',4,23),\n(157,'Member157',5,30),\n(158,'Member158',5,37),\n(159,'Member159',5,44),\n(160,'Member160',5,51),\n(161,'Member161',5,58),\n(162,'Member162',5,26),\n(163,'Member163',5,33),\n(164,'Member164',5,40),\n(165,'Member165',5,47),\n(166,'Member166',5,54),\n(167,'Member167',5,61),\n(168,'Member168',5,29),\n(169,'Member169',5,36),\n(170,'Member170',5,43),\n(171,'Member171',5,50),\n(172,'Member172',5,57),\n(173,'Member173',5,25),\n(174,'Member174',5,32),\n(175,'Member175',5,39),\n(176,'Member176',6,46),\n(177,'Member177',6,53),\n(178,'Member178',6,60),\n(179,'Member179',6,28),\n(180,'Member180',6,35),\n(181,'Member181',6,42),\n(182,'Member182',6,49),\n(183,'Member183',6,56),\n(184,'Member184',6,24),\n(185,'Member185',6,31),\n(186,'Member186',6,38),\n(187,'Member187',6,45),\n(188,'Member188',6,52),\n(189,'Member189',6,59),\n(190,'Member190',6,27),\n(191,'Member191',6,34),\n(192,'Member192',6,41),\n(193,'Member193',6,48),\n(194,'Member194',6,55),\n(900,'Sage1',100,28),\n(901,'Sage2',100,29),\n(902,'Sage3',100,31),\n(910,'Steward1',138,30),\n(911,'Steward2',138,41);"
+      ],
+      "expected": [
+        [
+          1,
+          "Nova",
+          5,
+          47
+        ],
+        [
+          2,
+          "Director2",
+          19,
+          41
+        ],
+        [
+          3,
+          "Director3",
+          19,
+          43
+        ],
+        [
+          4,
+          "Director4",
+          19,
+          42
+        ],
+        [
+          5,
+          "Director5",
+          19,
+          42
+        ],
+        [
+          6,
+          "Director6",
+          19,
+          43
+        ],
+        [
+          100,
+          "Member100",
+          3,
+          29
+        ],
+        [
+          138,
+          "Member138",
+          2,
+          36
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employees VALUES\n(77,'Omega',NULL,40),\n(3,'Alpha',77,22),\n(15,'Beta',77,34),\n(42,'Gamma',77,28),\n(58,'Delta',77,31),\n(66,'Epsilon',77,25);"
+      ],
+      "expected": [
+        [
+          77,
+          "Omega",
+          5,
+          28
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+class Solution {
+  public:
+    string findSpecialNodes(int n, vector<vector<int>> &edges) { throw logic_error("TODO"); }
+};

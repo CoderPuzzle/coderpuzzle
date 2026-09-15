@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2988,
+  "slug": "manager-of-the-largest-department",
+  "title": "Manager of the Largest Department",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "exact",
+    "sql": {
+      "schema": "CREATE TABLE Employees (emp_id INTEGER PRIMARY KEY, emp_name VARCHAR, dep_id INTEGER, position VARCHAR);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,642 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(1,70000,'Sales'),\n(2,80000,'Sales'),\n(3,80000,'Sales'),\n(4,90000,'Sales'),\n(5,55000,'IT'),\n(6,65000,'IT'),\n(7,65000,'IT'),\n(8,50000,'Marketing'),\n(9,55000,'Marketing'),\n(10,55000,'HR');"
+      ],
+      "expected": [
+        [
+          2,
+          "Sales"
+        ],
+        [
+          3,
+          "Sales"
+        ],
+        [
+          5,
+          "IT"
+        ],
+        [
+          8,
+          "Marketing"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(1,99000,'HR');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(1,50000,'Ops'),\n(2,77000,'Ops');"
+      ],
+      "expected": [
+        [
+          1,
+          "Ops"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(1,60000,'Legal'),\n(2,60000,'Legal'),\n(3,60000,'Legal'),\n(4,60000,'Legal'),\n(5,45000,'Ops'),\n(6,52000,'Ops');"
+      ],
+      "expected": [
+        [
+          5,
+          "Ops"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(1,120000,'Design'),\n(2,120000,'Design'),\n(3,101000,'Design');"
+      ],
+      "expected": [
+        [
+          3,
+          "Design"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(11,80000,'Support'),\n(4,80000,'Support'),\n(17,80000,'Support'),\n(5,90000,'Support');"
+      ],
+      "expected": [
+        [
+          4,
+          "Support"
+        ],
+        [
+          11,
+          "Support"
+        ],
+        [
+          17,
+          "Support"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(1,100000,'Research'),\n(2,70000,'Research'),\n(3,70000,'Research'),\n(4,70000,'Platform'),\n(5,40000,'Platform'),\n(6,70000,'Bench'),\n(7,65000,'Bench');"
+      ],
+      "expected": [
+        [
+          2,
+          "Research"
+        ],
+        [
+          3,
+          "Research"
+        ],
+        [
+          5,
+          "Platform"
+        ],
+        [
+          7,
+          "Bench"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(4,110000,'Finance'),\n(11,72000,'Security'),\n(12,60000,'Security'),\n(6,88000,'Facilities'),\n(10,72000,'Security'),\n(8,140000,'Exec'),\n(3,110000,'Finance'),\n(2,110000,'Finance'),\n(1,125000,'Finance'),\n(7,140000,'Exec'),\n(9,30000,'Interns'),\n(5,95000,'Facilities');"
+      ],
+      "expected": [
+        [
+          2,
+          "Finance"
+        ],
+        [
+          3,
+          "Finance"
+        ],
+        [
+          4,
+          "Finance"
+        ],
+        [
+          6,
+          "Facilities"
+        ],
+        [
+          12,
+          "Security"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(22,91000,'Assembly'),\n(39,105000,'Assembly'),\n(8,102000,'Assembly'),\n(5,95000,'Assembly'),\n(27,99000,'Assembly'),\n(19,105000,'Assembly'),\n(6,95000,'Assembly'),\n(38,102000,'Assembly'),\n(9,105000,'Assembly'),\n(18,102000,'Assembly'),\n(1,88000,'Assembly'),\n(14,95000,'Assembly'),\n(31,88000,'Assembly'),\n(28,102000,'Assembly'),\n(33,91000,'Assembly'),\n(37,99000,'Assembly'),\n(26,95000,'Assembly'),\n(36,95000,'Assembly'),\n(16,95000,'Assembly'),\n(21,88000,'Assembly'),\n(13,91000,'Assembly'),\n(12,91000,'Assembly'),\n(4,95000,'Assembly'),\n(7,99000,'Assembly'),\n(17,99000,'Assembly'),\n(24,95000,'Assembly'),\n(32,91000,'Assembly'),\n(3,91000,'Assembly'),\n(30,105000,'Assembly'),\n(15,95000,'Assembly'),\n(10,105000,'Assembly'),\n(11,88000,'Assembly'),\n(35,95000,'Assembly'),\n(25,95000,'Assembly'),\n(40,105000,'Assembly'),\n(23,91000,'Assembly'),\n(2,91000,'Assembly'),\n(29,105000,'Assembly'),\n(20,105000,'Assembly'),\n(34,95000,'Assembly'),\n(41,999999999,'Founders'),\n(42,999999998,'Founders');"
+      ],
+      "expected": [
+        [
+          8,
+          "Assembly"
+        ],
+        [
+          18,
+          "Assembly"
+        ],
+        [
+          28,
+          "Assembly"
+        ],
+        [
+          38,
+          "Assembly"
+        ],
+        [
+          42,
+          "Founders"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(1,58000,'Alpha'),\n(2,66000,'Alpha'),\n(3,66000,'Alpha'),\n(4,71000,'Bravo'),\n(5,71000,'Bravo'),\n(6,49000,'Charlie'),\n(7,53000,'Charlie'),\n(8,61000,'Delta'),\n(9,55000,'Delta'),\n(10,47000,'Echo'),\n(11,59000,'Echo'),\n(12,80000,'Foxtrot'),\n(13,74000,'Foxtrot'),\n(14,74000,'Foxtrot'),\n(15,62000,'Foxtrot'),\n(16,68000,'Golf'),\n(17,52000,'Hotel'),\n(18,60000,'Hotel'),\n(19,90000,'India'),\n(20,84000,'India'),\n(21,84000,'India'),\n(22,76000,'India');"
+      ],
+      "expected": [
+        [
+          1,
+          "Alpha"
+        ],
+        [
+          6,
+          "Charlie"
+        ],
+        [
+          9,
+          "Delta"
+        ],
+        [
+          10,
+          "Echo"
+        ],
+        [
+          13,
+          "Foxtrot"
+        ],
+        [
+          14,
+          "Foxtrot"
+        ],
+        [
+          17,
+          "Hotel"
+        ],
+        [
+          20,
+          "India"
+        ],
+        [
+          21,
+          "India"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10001,100000,'Probe'),\n(10002,100000,'Probe'),\n(902,380000,'Control'),\n(901,500000,'Control'),\n(10000,100000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(901,500000,'Control'),\n(10012,200000,'Probe'),\n(902,380000,'Control'),\n(10011,100000,'Probe'),\n(10010,100000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10010,
+          "Probe"
+        ],
+        [
+          10011,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10021,100000,'Probe'),\n(901,500000,'Control'),\n(10022,300000,'Probe'),\n(10020,100000,'Probe'),\n(902,380000,'Control');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10020,
+          "Probe"
+        ],
+        [
+          10021,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10032,100000,'Probe'),\n(901,500000,'Control'),\n(902,380000,'Control'),\n(10031,200000,'Probe'),\n(10030,100000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10030,
+          "Probe"
+        ],
+        [
+          10032,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(901,500000,'Control'),\n(10042,200000,'Probe'),\n(10040,100000,'Probe'),\n(902,380000,'Control'),\n(10041,200000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10040,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10051,200000,'Probe'),\n(901,500000,'Control'),\n(902,380000,'Control'),\n(10052,300000,'Probe'),\n(10050,100000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10051,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10061,300000,'Probe'),\n(10060,100000,'Probe'),\n(10062,100000,'Probe'),\n(902,380000,'Control'),\n(901,500000,'Control');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10060,
+          "Probe"
+        ],
+        [
+          10062,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(901,500000,'Control'),\n(10072,200000,'Probe'),\n(10071,300000,'Probe'),\n(902,380000,'Control'),\n(10070,100000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10072,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10081,300000,'Probe'),\n(901,500000,'Control'),\n(10082,300000,'Probe'),\n(10080,100000,'Probe'),\n(902,380000,'Control');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10080,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10091,100000,'Probe'),\n(10090,200000,'Probe'),\n(901,500000,'Control'),\n(902,380000,'Control'),\n(10092,100000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10091,
+          "Probe"
+        ],
+        [
+          10092,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10100,200000,'Probe'),\n(902,380000,'Control'),\n(10101,100000,'Probe'),\n(10102,200000,'Probe'),\n(901,500000,'Control');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10101,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(902,380000,'Control'),\n(10112,300000,'Probe'),\n(901,500000,'Control'),\n(10110,200000,'Probe'),\n(10111,100000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10110,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10121,200000,'Probe'),\n(901,500000,'Control'),\n(902,380000,'Control'),\n(10122,100000,'Probe'),\n(10120,200000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10122,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10131,200000,'Probe'),\n(10132,200000,'Probe'),\n(902,380000,'Control'),\n(901,500000,'Control'),\n(10130,200000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10140,200000,'Probe'),\n(901,500000,'Control'),\n(10141,200000,'Probe'),\n(902,380000,'Control'),\n(10142,300000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10140,
+          "Probe"
+        ],
+        [
+          10141,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(901,500000,'Control'),\n(10151,300000,'Probe'),\n(10150,200000,'Probe'),\n(902,380000,'Control'),\n(10152,100000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10150,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(902,380000,'Control'),\n(10162,200000,'Probe'),\n(10161,300000,'Probe'),\n(10160,200000,'Probe'),\n(901,500000,'Control');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10160,
+          "Probe"
+        ],
+        [
+          10162,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10172,300000,'Probe'),\n(902,380000,'Control'),\n(901,500000,'Control'),\n(10171,300000,'Probe'),\n(10170,200000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10170,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10182,100000,'Probe'),\n(902,380000,'Control'),\n(901,500000,'Control'),\n(10181,100000,'Probe'),\n(10180,300000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10181,
+          "Probe"
+        ],
+        [
+          10182,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(901,500000,'Control'),\n(10191,100000,'Probe'),\n(902,380000,'Control'),\n(10192,200000,'Probe'),\n(10190,300000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10192,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(902,380000,'Control'),\n(10201,100000,'Probe'),\n(10200,300000,'Probe'),\n(901,500000,'Control'),\n(10202,300000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10201,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10211,200000,'Probe'),\n(10212,100000,'Probe'),\n(10210,300000,'Probe'),\n(902,380000,'Control'),\n(901,500000,'Control');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10211,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10222,200000,'Probe'),\n(901,500000,'Control'),\n(10220,300000,'Probe'),\n(902,380000,'Control'),\n(10221,200000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10221,
+          "Probe"
+        ],
+        [
+          10222,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(901,500000,'Control'),\n(10232,300000,'Probe'),\n(902,380000,'Control'),\n(10231,200000,'Probe'),\n(10230,300000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10231,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10242,100000,'Probe'),\n(10241,300000,'Probe'),\n(901,500000,'Control'),\n(10240,300000,'Probe'),\n(902,380000,'Control');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10242,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10252,200000,'Probe'),\n(10251,300000,'Probe'),\n(10250,300000,'Probe'),\n(901,500000,'Control'),\n(902,380000,'Control');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ],
+        [
+          10252,
+          "Probe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO employees VALUES\n(10260,300000,'Probe'),\n(901,500000,'Control'),\n(902,380000,'Control'),\n(10261,300000,'Probe'),\n(10262,300000,'Probe');"
+      ],
+      "expected": [
+        [
+          902,
+          "Control"
+        ]
+      ]
+    }
+  ]
+}

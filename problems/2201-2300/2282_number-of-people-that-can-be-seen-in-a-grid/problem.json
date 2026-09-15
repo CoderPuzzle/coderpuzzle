@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2282,
+  "slug": "number-of-people-that-can-be-seen-in-a-grid",
+  "title": "Number of People That Can Be Seen in a Grid",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Stack",
+    "Matrix",
+    "Monotonic Stack"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Matrix",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "seePeople",
+    "parameters": [
+      {
+        "name": "heights",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "seePeople",
+      "rust": "see_people",
+      "typescript": "seePeople"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

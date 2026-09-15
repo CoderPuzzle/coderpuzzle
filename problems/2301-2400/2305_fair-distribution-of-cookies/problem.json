@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2305,
+  "slug": "fair-distribution-of-cookies",
+  "title": "Fair Distribution of Cookies",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Backtracking",
+    "Bit Manipulation",
+    "Bitmask"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Backtracking",
+    "Bit Manipulation",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "distributeCookies",
+    "parameters": [
+      {
+        "name": "cookies",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "distributeCookies",
+      "rust": "distribute_cookies",
+      "typescript": "distributeCookies"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

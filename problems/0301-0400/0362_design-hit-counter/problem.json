@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 362,
+  "slug": "design-hit-counter",
+  "title": "Design Hit Counter",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Design",
+    "Queue",
+    "Data Stream"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Design",
+    "Queue",
+    "Data Stream"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "HitCounter",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "hit",
+        "parameters": [
+          {
+            "name": "timestamp",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "getHits",
+        "parameters": [
+          {
+            "name": "timestamp",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

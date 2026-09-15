@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <rect width="560" height="200" fill="#ffffff"/>
+  <!-- node 0 -> node 1 -->
+  <line x1="116" y1="56" x2="212" y2="42" stroke="#42525e" stroke-width="1.6" marker-end="url(#arr)"/>
+  <!-- highlighted path 0 -> 2 -> 3 -> 4 -->
+  <g stroke="#4169E1" stroke-width="2.4">
+    <line x1="122" y1="84" x2="206" y2="130" marker-end="url(#arrA)"/>
+    <line x1="240" y1="144" x2="330" y2="144" marker-end="url(#arrA)"/>
+    <line x1="366" y1="144" x2="456" y2="144" marker-end="url(#arrA)"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="100" cy="70" r="18"/>
+    <circle cx="230" cy="38" r="18"/>
+    <circle cx="230" cy="144" r="18"/>
+    <circle cx="348" cy="144" r="18"/>
+    <circle cx="474" cy="144" r="18"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16">
+    <text x="100" y="76" fill="#4169E1">a</text>
+    <text x="230" y="44" fill="#1a2026">b</text>
+    <text x="230" y="150" fill="#4169E1">a</text>
+    <text x="348" y="150" fill="#1a2026">c</text>
+    <text x="474" y="150" fill="#4169E1">a</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="100" y="102">0</text>
+    <text x="230" y="70">1</text>
+    <text x="230" y="176">2</text>
+    <text x="348" y="176">3</text>
+    <text x="474" y="176">4</text>
+  </g>
+  <text x="280" y="196" text-anchor="middle" fill="#5c6b76" font-size="12.5">the path 0 → 2 → 3 → 4 passes through three nodes colored "a"</text>
+</svg>

@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2842,
+  "slug": "count-k-subsequences-of-a-string-with-maximum-beauty",
+  "title": "Count K-Subsequences of a String With Maximum Beauty",
+  "difficulty": "Hard",
+  "tags": [
+    "Hash Table",
+    "Math",
+    "String",
+    "Greedy",
+    "Sorting",
+    "Combinatorics",
+    "Fermat's Little Theorem"
+  ],
+  "topics": [
+    "Hash Table",
+    "Math",
+    "String",
+    "Greedy",
+    "Sorting",
+    "Combinatorics",
+    "Fermat's Little Theorem"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countKSubsequencesWithMaxBeauty",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countKSubsequencesWithMaxBeauty",
+      "rust": "count_k_subsequences_with_max_beauty",
+      "typescript": "countKSubsequencesWithMaxBeauty"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

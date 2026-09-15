@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 364,
+  "slug": "nested-list-weight-sum-ii",
+  "title": "Nested List Weight Sum II",
+  "difficulty": "Medium",
+  "tags": [
+    "Stack",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "topics": [
+    "Stack",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "depthSumInverse",
+    "parameters": [
+      {
+        "name": "nestedList",
+        "codec": "nested",
+        "value_type": {
+          "kind": "nested",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "depthSumInverse",
+      "rust": "depth_sum_inverse",
+      "typescript": "depthSumInverse"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

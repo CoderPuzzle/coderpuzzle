@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 282" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="15">
+  <rect width="470" height="282" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- current board: live cells filled dark -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="62" y="40" width="44" height="44" fill="#ffffff"/><rect x="106" y="40" width="44" height="44" fill="#1a2026"/><rect x="150" y="40" width="44" height="44" fill="#ffffff"/>
+    <rect x="62" y="84" width="44" height="44" fill="#ffffff"/><rect x="106" y="84" width="44" height="44" fill="#ffffff"/><rect x="150" y="84" width="44" height="44" fill="#1a2026"/>
+    <rect x="62" y="128" width="44" height="44" fill="#1a2026"/><rect x="106" y="128" width="44" height="44" fill="#1a2026"/><rect x="150" y="128" width="44" height="44" fill="#1a2026"/>
+    <rect x="62" y="172" width="44" height="44" fill="#ffffff"/><rect x="106" y="172" width="44" height="44" fill="#ffffff"/><rect x="150" y="172" width="44" height="44" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="84" y="67" fill="#5c6b76">0</text><text x="128" y="67" fill="#ffffff">1</text><text x="172" y="67" fill="#5c6b76">0</text>
+    <text x="84" y="111" fill="#5c6b76">0</text><text x="128" y="111" fill="#5c6b76">0</text><text x="172" y="111" fill="#ffffff">1</text>
+    <text x="84" y="155" fill="#ffffff">1</text><text x="128" y="155" fill="#ffffff">1</text><text x="172" y="155" fill="#ffffff">1</text>
+    <text x="84" y="199" fill="#5c6b76">0</text><text x="128" y="199" fill="#5c6b76">0</text><text x="172" y="199" fill="#5c6b76">0</text>
+  </g>
+  <text x="128" y="246" text-anchor="middle" fill="#5c6b76" font-size="12.5">board (dark = live)</text>
+  <line x1="222" y1="128" x2="266" y2="128" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="244" y="116" text-anchor="middle" fill="#5c6b76" font-size="12.5">next state</text>
+  <!-- next state -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="290" y="40" width="44" height="44" fill="#ffffff"/><rect x="334" y="40" width="44" height="44" fill="#ffffff"/><rect x="378" y="40" width="44" height="44" fill="#ffffff"/>
+    <rect x="290" y="84" width="44" height="44" fill="#1a2026"/><rect x="334" y="84" width="44" height="44" fill="#ffffff"/><rect x="378" y="84" width="44" height="44" fill="#1a2026"/>
+    <rect x="290" y="128" width="44" height="44" fill="#ffffff"/><rect x="334" y="128" width="44" height="44" fill="#1a2026"/><rect x="378" y="128" width="44" height="44" fill="#1a2026"/>
+    <rect x="290" y="172" width="44" height="44" fill="#ffffff"/><rect x="334" y="172" width="44" height="44" fill="#1a2026"/><rect x="378" y="172" width="44" height="44" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="312" y="67" fill="#5c6b76">0</text><text x="356" y="67" fill="#5c6b76">0</text><text x="400" y="67" fill="#5c6b76">0</text>
+    <text x="312" y="111" fill="#ffffff">1</text><text x="356" y="111" fill="#5c6b76">0</text><text x="400" y="111" fill="#ffffff">1</text>
+    <text x="312" y="155" fill="#5c6b76">0</text><text x="356" y="155" fill="#ffffff">1</text><text x="400" y="155" fill="#ffffff">1</text>
+    <text x="312" y="199" fill="#5c6b76">0</text><text x="356" y="199" fill="#ffffff">1</text><text x="400" y="199" fill="#5c6b76">0</text>
+  </g>
+  <text x="356" y="246" text-anchor="middle" fill="#5c6b76" font-size="12.5">all births and deaths applied at once</text>
+</svg>

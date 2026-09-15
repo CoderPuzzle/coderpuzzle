@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1632,
+  "slug": "rank-transform-of-a-matrix",
+  "title": "Rank Transform of a Matrix",
+  "difficulty": "Hard",
+  "tags": [
+    "Union Find",
+    "Sorting",
+    "Greedy",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Union-Find",
+    "Graph Theory",
+    "Topological Sort",
+    "Sorting",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "matrixRankTransform",
+    "parameters": [
+      {
+        "name": "matrix",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "matrixRankTransform",
+      "rust": "matrix_rank_transform",
+      "typescript": "matrixRankTransform"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

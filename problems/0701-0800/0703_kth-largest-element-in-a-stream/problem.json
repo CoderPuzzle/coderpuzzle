@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 703,
+  "slug": "kth-largest-element-in-a-stream",
+  "title": "Kth Largest Element in a Stream",
+  "difficulty": "Easy",
+  "tags": [
+    "Heap"
+  ],
+  "topics": [
+    "Tree",
+    "Design",
+    "Binary Search Tree",
+    "Heap (Priority Queue)",
+    "Binary Tree",
+    "Data Stream"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "KthLargest",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "k",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "nums",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "add",
+        "parameters": [
+          {
+            "name": "val",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "bounds_recursion",
+  "id": 255,
+  "slug": "verify-preorder-sequence-in-binary-search-tree",
+  "title": "Verify Preorder Sequence in Binary Search Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Stack",
+    "Tree",
+    "Binary Search Tree",
+    "Recursion",
+    "Monotonic Stack",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Tree",
+    "Binary Search Tree",
+    "Recursion",
+    "Monotonic Stack",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "verifyPreorder",
+    "parameters": [
+      {
+        "name": "preorder",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "verifyPreorder",
+      "rust": "verify_preorder",
+      "typescript": "verifyPreorder"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

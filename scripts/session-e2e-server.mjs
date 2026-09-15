@@ -1,6 +1,6 @@
 // Local-only E2E helper: serves frontend/dist and proxies /api/* to a
 // locally-running uvicorn API (start it with:
-//   CODERPUZZLE_PROBLEMS_DIR=../coderpuzzle-problems/problems \
+//   CODERPUZZLE_PROBLEMS=../problems \
 //   CODERPUZZLE_DATA_DIR=/tmp/coderpuzzle-e2e-data \
 //   uvicorn app.main:app --port 8010    (from api/)
 // ). No external deps.

@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 536,
+  "slug": "construct-binary-tree-from-string",
+  "title": "Construct Binary Tree from String",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Stack",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "topics": [
+    "String",
+    "Stack",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "str2tree",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "tree_node",
+    "return_type": {
+      "kind": "binary_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "str2tree",
+      "rust": "str2tree",
+      "typescript": "str2tree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

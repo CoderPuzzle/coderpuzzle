@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3544,
+  "slug": "subtree-inversion-sum",
+  "title": "Subtree Inversion Sum",
+  "difficulty": "Hard",
+  "tags": [
+    "Tree DP",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "subtreeInversionSum",
+    "parameters": [
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "subtreeInversionSum",
+      "rust": "subtree_inversion_sum",
+      "typescript": "subtreeInversionSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1281,
+  "slug": "subtract-the-product-and-sum-of-digits-of-an-integer",
+  "title": "Subtract the Product and Sum of Digits of an Integer",
+  "difficulty": "Easy",
+  "tags": [
+    "Math"
+  ],
+  "topics": [
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "subtractProductAndSum",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "subtractProductAndSum",
+      "rust": "subtract_product_and_sum",
+      "typescript": "subtractProductAndSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

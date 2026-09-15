@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2037,
+  "slug": "minimum-number-of-moves-to-seat-everyone",
+  "title": "Minimum Number of Moves to Seat Everyone",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Counting Sort"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Counting Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minMovesToSeat",
+    "parameters": [
+      {
+        "name": "seats",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "students",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minMovesToSeat",
+      "rust": "min_moves_to_seat",
+      "typescript": "minMovesToSeat"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

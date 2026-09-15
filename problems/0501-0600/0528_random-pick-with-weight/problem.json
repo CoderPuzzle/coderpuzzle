@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "alias_method",
+  "id": 528,
+  "slug": "random-pick-with-weight",
+  "title": "Random Pick with Weight",
+  "difficulty": "Medium",
+  "tags": [
+    "Binary Search",
+    "Prefix Sum",
+    "Randomized"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Binary Search",
+    "Prefix Sum",
+    "Randomized"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Solution",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "w",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "pickIndex",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

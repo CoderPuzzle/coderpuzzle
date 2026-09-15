@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1997,
+  "slug": "first-day-where-you-have-been-in-all-the-rooms",
+  "title": "First Day Where You Have Been in All the Rooms",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "firstDayBeenInAllRooms",
+    "parameters": [
+      {
+        "name": "nextVisit",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "firstDayBeenInAllRooms",
+      "rust": "first_day_been_in_all_rooms",
+      "typescript": "firstDayBeenInAllRooms"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

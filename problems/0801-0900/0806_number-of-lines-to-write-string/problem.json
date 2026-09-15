@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 806,
+  "slug": "number-of-lines-to-write-string",
+  "title": "Number of Lines To Write String",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "topics": [
+    "Array",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberOfLines",
+    "parameters": [
+      {
+        "name": "widths",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "numberOfLines",
+      "rust": "number_of_lines",
+      "typescript": "numberOfLines"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

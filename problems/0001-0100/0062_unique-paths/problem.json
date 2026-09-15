@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "combinatorics",
+  "id": 62,
+  "slug": "unique-paths",
+  "title": "Unique Paths",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "uniquePaths",
+    "parameters": [
+      {
+        "name": "m",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "uniquePaths",
+      "rust": "unique_paths",
+      "typescript": "uniquePaths"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

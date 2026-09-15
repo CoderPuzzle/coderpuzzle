@@ -1,0 +1,877 @@
+{
+  "public": [
+    {
+      "input": {
+        "fn": "(x) => x * 2",
+        "args": [
+          4
+        ],
+        "t": 35,
+        "cancelTimeMs": 190
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 8
+        },
+        {
+          "time": 35,
+          "returned": 8
+        },
+        {
+          "time": 70,
+          "returned": 8
+        },
+        {
+          "time": 105,
+          "returned": 8
+        },
+        {
+          "time": 140,
+          "returned": 8
+        },
+        {
+          "time": 175,
+          "returned": 8
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x1, x2) => (x1 * x2)",
+        "args": [
+          2,
+          5
+        ],
+        "t": 30,
+        "cancelTimeMs": 165
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 10
+        },
+        {
+          "time": 30,
+          "returned": 10
+        },
+        {
+          "time": 60,
+          "returned": 10
+        },
+        {
+          "time": 90,
+          "returned": 10
+        },
+        {
+          "time": 120,
+          "returned": 10
+        },
+        {
+          "time": 150,
+          "returned": 10
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x1, x2, x3) => (x1 + x2 + x3)",
+        "args": [
+          5,
+          1,
+          3
+        ],
+        "t": 50,
+        "cancelTimeMs": 180
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 9
+        },
+        {
+          "time": 50,
+          "returned": 9
+        },
+        {
+          "time": 100,
+          "returned": 9
+        },
+        {
+          "time": 150,
+          "returned": 9
+        }
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "fn": "(x) => x * -7",
+        "args": [
+          -3
+        ],
+        "t": 80,
+        "cancelTimeMs": 25
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 21
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(s) => s.toUpperCase()",
+        "args": [
+          "ok"
+        ],
+        "t": 30,
+        "cancelTimeMs": 10
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": "OK"
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(a, b) => a - b",
+        "args": [
+          40,
+          13
+        ],
+        "t": 30,
+        "cancelTimeMs": 59
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 27
+        },
+        {
+          "time": 30,
+          "returned": 27
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(a, b) => a - b",
+        "args": [
+          9,
+          9
+        ],
+        "t": 30,
+        "cancelTimeMs": 61
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 0
+        },
+        {
+          "time": 30,
+          "returned": 0
+        },
+        {
+          "time": 60,
+          "returned": 0
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => Math.floor(x / 2)",
+        "args": [
+          97
+        ],
+        "t": 40,
+        "cancelTimeMs": 79
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 48
+        },
+        {
+          "time": 40,
+          "returned": 48
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x > 0",
+        "args": [
+          12
+        ],
+        "t": 40,
+        "cancelTimeMs": 81
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": true
+        },
+        {
+          "time": 40,
+          "returned": true
+        },
+        {
+          "time": 80,
+          "returned": true
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x % 7",
+        "args": [
+          100
+        ],
+        "t": 30,
+        "cancelTimeMs": 500
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 2
+        },
+        {
+          "time": 30,
+          "returned": 2
+        },
+        {
+          "time": 60,
+          "returned": 2
+        },
+        {
+          "time": 90,
+          "returned": 2
+        },
+        {
+          "time": 120,
+          "returned": 2
+        },
+        {
+          "time": 150,
+          "returned": 2
+        },
+        {
+          "time": 180,
+          "returned": 2
+        },
+        {
+          "time": 210,
+          "returned": 2
+        },
+        {
+          "time": 240,
+          "returned": 2
+        },
+        {
+          "time": 270,
+          "returned": 2
+        },
+        {
+          "time": 300,
+          "returned": 2
+        },
+        {
+          "time": 330,
+          "returned": 2
+        },
+        {
+          "time": 360,
+          "returned": 2
+        },
+        {
+          "time": 390,
+          "returned": 2
+        },
+        {
+          "time": 420,
+          "returned": 2
+        },
+        {
+          "time": 450,
+          "returned": 2
+        },
+        {
+          "time": 480,
+          "returned": 2
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(o) => ({ v: o.k * o.k })",
+        "args": [
+          {
+            "k": 6
+          }
+        ],
+        "t": 100,
+        "cancelTimeMs": 499
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": {
+            "v": 36
+          }
+        },
+        {
+          "time": 100,
+          "returned": {
+            "v": 36
+          }
+        },
+        {
+          "time": 200,
+          "returned": {
+            "v": 36
+          }
+        },
+        {
+          "time": 300,
+          "returned": {
+            "v": 36
+          }
+        },
+        {
+          "time": 400,
+          "returned": {
+            "v": 36
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x * 2",
+        "args": [
+          7
+        ],
+        "t": 35,
+        "cancelTimeMs": 224
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 14
+        },
+        {
+          "time": 35,
+          "returned": 14
+        },
+        {
+          "time": 70,
+          "returned": 14
+        },
+        {
+          "time": 105,
+          "returned": 14
+        },
+        {
+          "time": 140,
+          "returned": 14
+        },
+        {
+          "time": 175,
+          "returned": 14
+        },
+        {
+          "time": 210,
+          "returned": 14
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(a, b, c, d, e, f, g, h, i, j) => a + b + c + d + e + f + g + h + i + j",
+        "args": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "t": 45,
+        "cancelTimeMs": 400
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 55
+        },
+        {
+          "time": 45,
+          "returned": 55
+        },
+        {
+          "time": 90,
+          "returned": 55
+        },
+        {
+          "time": 135,
+          "returned": 55
+        },
+        {
+          "time": 180,
+          "returned": 55
+        },
+        {
+          "time": 225,
+          "returned": 55
+        },
+        {
+          "time": 270,
+          "returned": 55
+        },
+        {
+          "time": 315,
+          "returned": 55
+        },
+        {
+          "time": 360,
+          "returned": 55
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(s1, s2) => s1 + s2",
+        "args": [
+          "in",
+          "terval"
+        ],
+        "t": 55,
+        "cancelTimeMs": 167
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": "interval"
+        },
+        {
+          "time": 55,
+          "returned": "interval"
+        },
+        {
+          "time": 110,
+          "returned": "interval"
+        },
+        {
+          "time": 165,
+          "returned": "interval"
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(s) => s.length",
+        "args": [
+          "cancellation"
+        ],
+        "t": 70,
+        "cancelTimeMs": 281
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 12
+        },
+        {
+          "time": 70,
+          "returned": 12
+        },
+        {
+          "time": 140,
+          "returned": 12
+        },
+        {
+          "time": 210,
+          "returned": 12
+        },
+        {
+          "time": 280,
+          "returned": 12
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(arr) => arr.map(v => v * v)",
+        "args": [
+          [
+            1,
+            -2,
+            3
+          ]
+        ],
+        "t": 62,
+        "cancelTimeMs": 383
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": [
+            1,
+            4,
+            9
+          ]
+        },
+        {
+          "time": 62,
+          "returned": [
+            1,
+            4,
+            9
+          ]
+        },
+        {
+          "time": 124,
+          "returned": [
+            1,
+            4,
+            9
+          ]
+        },
+        {
+          "time": 186,
+          "returned": [
+            1,
+            4,
+            9
+          ]
+        },
+        {
+          "time": 248,
+          "returned": [
+            1,
+            4,
+            9
+          ]
+        },
+        {
+          "time": 310,
+          "returned": [
+            1,
+            4,
+            9
+          ]
+        },
+        {
+          "time": 372,
+          "returned": [
+            1,
+            4,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(o) => o.a + o.b",
+        "args": [
+          {
+            "a": 10,
+            "b": -4
+          }
+        ],
+        "t": 95,
+        "cancelTimeMs": 192
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 6
+        },
+        {
+          "time": 95,
+          "returned": 6
+        },
+        {
+          "time": 190,
+          "returned": 6
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(o) => ({ sq: o.n * o.n, tag: \"n\" + o.n })",
+        "args": [
+          {
+            "n": 9
+          }
+        ],
+        "t": 50,
+        "cancelTimeMs": 174
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": {
+            "sq": 81,
+            "tag": "n9"
+          }
+        },
+        {
+          "time": 50,
+          "returned": {
+            "sq": 81,
+            "tag": "n9"
+          }
+        },
+        {
+          "time": 100,
+          "returned": {
+            "sq": 81,
+            "tag": "n9"
+          }
+        },
+        {
+          "time": 150,
+          "returned": {
+            "sq": 81,
+            "tag": "n9"
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => null",
+        "args": [
+          0
+        ],
+        "t": 65,
+        "cancelTimeMs": 133
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": null
+        },
+        {
+          "time": 65,
+          "returned": null
+        },
+        {
+          "time": 130,
+          "returned": null
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(a, b) => a * b",
+        "args": [
+          1234567,
+          7654321
+        ],
+        "t": 88,
+        "cancelTimeMs": 450
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 9449772114007
+        },
+        {
+          "time": 88,
+          "returned": 9449772114007
+        },
+        {
+          "time": 176,
+          "returned": 9449772114007
+        },
+        {
+          "time": 264,
+          "returned": 9449772114007
+        },
+        {
+          "time": 352,
+          "returned": 9449772114007
+        },
+        {
+          "time": 440,
+          "returned": 9449772114007
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(a, b, c) => a - b - c",
+        "args": [
+          -2,
+          -8,
+          3
+        ],
+        "t": 73,
+        "cancelTimeMs": 300
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 3
+        },
+        {
+          "time": 73,
+          "returned": 3
+        },
+        {
+          "time": 146,
+          "returned": 3
+        },
+        {
+          "time": 219,
+          "returned": 3
+        },
+        {
+          "time": 292,
+          "returned": 3
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x",
+        "args": [
+          0
+        ],
+        "t": 99,
+        "cancelTimeMs": 498
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 0
+        },
+        {
+          "time": 99,
+          "returned": 0
+        },
+        {
+          "time": 198,
+          "returned": 0
+        },
+        {
+          "time": 297,
+          "returned": 0
+        },
+        {
+          "time": 396,
+          "returned": 0
+        },
+        {
+          "time": 495,
+          "returned": 0
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(c => (x) => (++c) * x)(0)",
+        "args": [
+          10
+        ],
+        "t": 50,
+        "cancelTimeMs": 196
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 10
+        },
+        {
+          "time": 50,
+          "returned": 20
+        },
+        {
+          "time": 100,
+          "returned": 30
+        },
+        {
+          "time": 150,
+          "returned": 40
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x * 5",
+        "args": [
+          11
+        ],
+        "t": 94,
+        "cancelTimeMs": 280
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 55
+        },
+        {
+          "time": 94,
+          "returned": 55
+        },
+        {
+          "time": 188,
+          "returned": 55
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x * 5",
+        "args": [
+          13
+        ],
+        "t": 46,
+        "cancelTimeMs": 281
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 65
+        },
+        {
+          "time": 46,
+          "returned": 65
+        },
+        {
+          "time": 92,
+          "returned": 65
+        },
+        {
+          "time": 138,
+          "returned": 65
+        },
+        {
+          "time": 184,
+          "returned": 65
+        },
+        {
+          "time": 230,
+          "returned": 65
+        },
+        {
+          "time": 276,
+          "returned": 65
+        }
+      ]
+    }
+  ]
+}

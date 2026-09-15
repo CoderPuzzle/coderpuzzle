@@ -1,0 +1,492 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(1,'hello world of SQL'),\n(2,'the QUICK-brown fox'),\n(3,'modern-day DATA science'),\n(4,'web-based FRONT-end development');"
+      ],
+      "expected": [
+        [
+          1,
+          "hello world of SQL",
+          "Hello World Of Sql"
+        ],
+        [
+          2,
+          "the QUICK-brown fox",
+          "The Quick-Brown Fox"
+        ],
+        [
+          3,
+          "modern-day DATA science",
+          "Modern-Day Data Science"
+        ],
+        [
+          4,
+          "web-based FRONT-end development",
+          "Web-Based Front-End Development"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(9,'sql');"
+      ],
+      "expected": [
+        [
+          9,
+          "sql",
+          "Sql"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(5,'Modern-Day Data Science');"
+      ],
+      "expected": [
+        [
+          5,
+          "Modern-Day Data Science",
+          "Modern-Day Data Science"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(12,'WEB-BASED FRONT-END DEVELOPMENT');"
+      ],
+      "expected": [
+        [
+          12,
+          "WEB-BASED FRONT-END DEVELOPMENT",
+          "Web-Based Front-End Development"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(21,'tHe qUiCk bRoWn-hyPhEnAtEd FoX'),\n(22,'sQl iS a LAnGuage oF dATA-PIPElines'),\n(23,'MiXeD CaSe-and-speCials At oNcE');"
+      ],
+      "expected": [
+        [
+          21,
+          "tHe qUiCk bRoWn-hyPhEnAtEd FoX",
+          "The Quick Brown-Hyphenated Fox"
+        ],
+        [
+          22,
+          "sQl iS a LAnGuage oF dATA-PIPElines",
+          "Sql Is A Language Of Data-Pipelines"
+        ],
+        [
+          23,
+          "MiXeD CaSe-and-speCials At oNcE",
+          "Mixed Case-And-Specials At Once"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(31,'front-end-to-end'),\n(32,'a-b-c-d-e'),\n(33,'state-of-the-art design');"
+      ],
+      "expected": [
+        [
+          31,
+          "front-end-to-end",
+          "Front-End-To-End"
+        ],
+        [
+          32,
+          "a-b-c-d-e",
+          "A-B-C-D-E"
+        ],
+        [
+          33,
+          "state-of-the-art design",
+          "State-Of-The-Art Design"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(41,'x-y-z x'),\n(42,'q-w-e-r-t-y');"
+      ],
+      "expected": [
+        [
+          41,
+          "x-y-z x",
+          "X-Y-Z X"
+        ],
+        [
+          42,
+          "q-w-e-r-t-y",
+          "Q-W-E-R-T-Y"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(51,'mailing foo@bar from desk/team'),\n(52,'counts done^ok, next@step pass\\go'),\n(53,'e-mail,a/b^c\\d list');"
+      ],
+      "expected": [
+        [
+          51,
+          "mailing foo@bar from desk/team",
+          "Mailing Foo@Bar From Desk/Team"
+        ],
+        [
+          52,
+          "counts done^ok, next@step pass\\go",
+          "Counts Done^Ok, Next@Step Pass\\Go"
+        ],
+        [
+          53,
+          "e-mail,a/b^c\\d list",
+          "E-Mail,A/B^C\\D List"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(61,'hello  world-wide web'),\n(62,'one    four   nine-ten'),\n(63,'a b  c   d    e-f');"
+      ],
+      "expected": [
+        [
+          61,
+          "hello  world-wide web",
+          "Hello  World-Wide Web"
+        ],
+        [
+          62,
+          "one    four   nine-ten",
+          "One    Four   Nine-Ten"
+        ],
+        [
+          63,
+          "a b  c   d    e-f",
+          "A B  C   D    E-F"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(71,'  padded both ends-here '),\n(72,' starts with space '),\n(73,'-starts-with-hyphen '),\n(74,' /leading-slash too ');"
+      ],
+      "expected": [
+        [
+          71,
+          "  padded both ends-here ",
+          "  Padded Both Ends-Here "
+        ],
+        [
+          72,
+          " starts with space ",
+          " Starts With Space "
+        ],
+        [
+          73,
+          "-starts-with-hyphen ",
+          "-Starts-With-Hyphen "
+        ],
+        [
+          74,
+          " /leading-slash too ",
+          " /Leading-Slash Too "
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(81,'   '),\n(82,' '),\n(83,'       ');"
+      ],
+      "expected": [
+        [
+          81,
+          "   ",
+          "   "
+        ],
+        [
+          82,
+          " ",
+          " "
+        ],
+        [
+          83,
+          "       ",
+          "       "
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(91,'');"
+      ],
+      "expected": [
+        [
+          91,
+          "",
+          ""
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(101,'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzqw'),\n(102,'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZQW'),\n(103,'abcdefghij-abcdefghij-abcdefghij-abcdefghij'),\n(104,'ABCDEFGHIJ-ABCDEFGHIJ-ABCDEFGHIJ-ABCDEFGHIJ');"
+      ],
+      "expected": [
+        [
+          101,
+          "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzqw",
+          "Abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzqw"
+        ],
+        [
+          102,
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZQW",
+          "Abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzqw"
+        ],
+        [
+          103,
+          "abcdefghij-abcdefghij-abcdefghij-abcdefghij",
+          "Abcdefghij-Abcdefghij-Abcdefghij-Abcdefghij"
+        ],
+        [
+          104,
+          "ABCDEFGHIJ-ABCDEFGHIJ-ABCDEFGHIJ-ABCDEFGHIJ",
+          "Abcdefghij-Abcdefghij-Abcdefghij-Abcdefghij"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(111,'level-Level LEVEL-leveL lEvEl'),\n(112,'rotator ROTATOR-rotoR rotor, ROTATOR-level');"
+      ],
+      "expected": [
+        [
+          111,
+          "level-Level LEVEL-leveL lEvEl",
+          "Level-Level Level-Level Level"
+        ],
+        [
+          112,
+          "rotator ROTATOR-rotoR rotor, ROTATOR-level",
+          "Rotator Rotator-Rotor Rotor, Rotator-Level"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(200,'alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra'),\n(201,'gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA'),\n(202,'DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma'),\n(203,'epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray'),\n(204,'quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU'),\n(205,'alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra'),\n(206,'gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA'),\n(207,'DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma'),\n(208,'epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray'),\n(209,'quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU'),\n(210,'alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra'),\n(211,'gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA'),\n(212,'DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma'),\n(213,'epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray'),\n(214,'quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU'),\n(215,'alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra'),\n(216,'gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA'),\n(217,'DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma'),\n(218,'epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray'),\n(219,'quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU'),\n(220,'alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra'),\n(221,'gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA'),\n(222,'DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma'),\n(223,'epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray'),\n(224,'quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU'),\n(225,'alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra'),\n(226,'gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA'),\n(227,'DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma'),\n(228,'epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray'),\n(229,'quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU'),\n(230,'alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra'),\n(231,'gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA'),\n(232,'DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma'),\n(233,'epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray'),\n(234,'quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU'),\n(235,'alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra'),\n(236,'gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA'),\n(237,'DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma'),\n(238,'epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray'),\n(239,'quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU');"
+      ],
+      "expected": [
+        [
+          200,
+          "alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra",
+          "Alpha-Beta Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra"
+        ],
+        [
+          201,
+          "gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA",
+          "Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta"
+        ],
+        [
+          202,
+          "DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma",
+          "Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma"
+        ],
+        [
+          203,
+          "epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray",
+          "Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma Delta-Xray"
+        ],
+        [
+          204,
+          "quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU",
+          "Quebec, Sierra Alpha-Beta Gamma Delta-Xray Epsilon/Zulu"
+        ],
+        [
+          205,
+          "alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra",
+          "Alpha-Beta Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra"
+        ],
+        [
+          206,
+          "gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA",
+          "Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta"
+        ],
+        [
+          207,
+          "DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma",
+          "Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma"
+        ],
+        [
+          208,
+          "epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray",
+          "Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma Delta-Xray"
+        ],
+        [
+          209,
+          "quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU",
+          "Quebec, Sierra Alpha-Beta Gamma Delta-Xray Epsilon/Zulu"
+        ],
+        [
+          210,
+          "alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra",
+          "Alpha-Beta Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra"
+        ],
+        [
+          211,
+          "gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA",
+          "Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta"
+        ],
+        [
+          212,
+          "DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma",
+          "Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma"
+        ],
+        [
+          213,
+          "epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray",
+          "Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma Delta-Xray"
+        ],
+        [
+          214,
+          "quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU",
+          "Quebec, Sierra Alpha-Beta Gamma Delta-Xray Epsilon/Zulu"
+        ],
+        [
+          215,
+          "alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra",
+          "Alpha-Beta Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra"
+        ],
+        [
+          216,
+          "gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA",
+          "Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta"
+        ],
+        [
+          217,
+          "DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma",
+          "Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma"
+        ],
+        [
+          218,
+          "epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray",
+          "Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma Delta-Xray"
+        ],
+        [
+          219,
+          "quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU",
+          "Quebec, Sierra Alpha-Beta Gamma Delta-Xray Epsilon/Zulu"
+        ],
+        [
+          220,
+          "alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra",
+          "Alpha-Beta Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra"
+        ],
+        [
+          221,
+          "gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA",
+          "Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta"
+        ],
+        [
+          222,
+          "DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma",
+          "Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma"
+        ],
+        [
+          223,
+          "epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray",
+          "Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma Delta-Xray"
+        ],
+        [
+          224,
+          "quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU",
+          "Quebec, Sierra Alpha-Beta Gamma Delta-Xray Epsilon/Zulu"
+        ],
+        [
+          225,
+          "alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra",
+          "Alpha-Beta Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra"
+        ],
+        [
+          226,
+          "gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA",
+          "Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta"
+        ],
+        [
+          227,
+          "DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma",
+          "Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma"
+        ],
+        [
+          228,
+          "epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray",
+          "Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma Delta-Xray"
+        ],
+        [
+          229,
+          "quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU",
+          "Quebec, Sierra Alpha-Beta Gamma Delta-Xray Epsilon/Zulu"
+        ],
+        [
+          230,
+          "alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra",
+          "Alpha-Beta Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra"
+        ],
+        [
+          231,
+          "gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA",
+          "Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta"
+        ],
+        [
+          232,
+          "DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma",
+          "Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma"
+        ],
+        [
+          233,
+          "epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray",
+          "Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma Delta-Xray"
+        ],
+        [
+          234,
+          "quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU",
+          "Quebec, Sierra Alpha-Beta Gamma Delta-Xray Epsilon/Zulu"
+        ],
+        [
+          235,
+          "alpha-BETA gamma DeLtA-xray epsilon/ZULU quebec, sierra",
+          "Alpha-Beta Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra"
+        ],
+        [
+          236,
+          "gamma DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA",
+          "Gamma Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta"
+        ],
+        [
+          237,
+          "DeLtA-xray epsilon/ZULU quebec, sierra alpha-BETA gamma",
+          "Delta-Xray Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma"
+        ],
+        [
+          238,
+          "epsilon/ZULU quebec, sierra alpha-BETA gamma DeLtA-xray",
+          "Epsilon/Zulu Quebec, Sierra Alpha-Beta Gamma Delta-Xray"
+        ],
+        [
+          239,
+          "quebec, sierra alpha-BETA gamma DeLtA-xray epsilon/ZULU",
+          "Quebec, Sierra Alpha-Beta Gamma Delta-Xray Epsilon/Zulu"
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    }
+  ]
+}

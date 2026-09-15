@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1282,
+  "slug": "group-the-people-given-the-group-size-they-belong-to",
+  "title": "Group the People Given the Group Size They Belong To",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "groupThePeople",
+    "parameters": [
+      {
+        "name": "groupSizes",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "groupThePeople",
+      "rust": "group_the_people",
+      "typescript": "groupThePeople"
+    },
+    "comparison": "set"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

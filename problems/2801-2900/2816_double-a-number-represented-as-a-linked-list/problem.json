@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2816,
+  "slug": "double-a-number-represented-as-a-linked-list",
+  "title": "Double a Number Represented as a Linked List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Math",
+    "Stack"
+  ],
+  "topics": [
+    "Linked List",
+    "Math",
+    "Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "doubleIt",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "doubleIt",
+      "rust": "double_it",
+      "typescript": "doubleIt"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

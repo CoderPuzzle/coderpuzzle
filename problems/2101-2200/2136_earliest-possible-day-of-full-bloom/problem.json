@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2136,
+  "slug": "earliest-possible-day-of-full-bloom",
+  "title": "Earliest Possible Day of Full Bloom",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "earliestFullBloom",
+    "parameters": [
+      {
+        "name": "plantTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "growTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "earliestFullBloom",
+      "rust": "earliest_full_bloom",
+      "typescript": "earliestFullBloom"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

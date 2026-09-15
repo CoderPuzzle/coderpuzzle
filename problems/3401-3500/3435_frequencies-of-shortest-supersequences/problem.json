@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3435,
+  "slug": "frequencies-of-shortest-supersequences",
+  "title": "Frequencies of Shortest Supersequences",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Bit Manipulation",
+    "Graph Theory",
+    "Topological Sort"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Bit Manipulation",
+    "Graph Theory",
+    "Topological Sort",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "supersequences",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "supersequences",
+      "rust": "supersequences",
+      "typescript": "supersequences"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

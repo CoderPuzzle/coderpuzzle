@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2132,
+  "slug": "stamping-the-grid",
+  "title": "Stamping the Grid",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "possibleToStamp",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "stampHeight",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "stampWidth",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "possibleToStamp",
+      "rust": "possible_to_stamp",
+      "typescript": "possibleToStamp"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

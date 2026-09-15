@@ -1,0 +1,218 @@
+{
+  "public": [
+    {
+      "input": {
+        "source": "async (n) => {\n  await new Promise(res => setTimeout(res, 100));\n  return n * n;\n}",
+        "inputs": [
+          5
+        ],
+        "t": 50
+      },
+      "expected": {
+        "rejected": "Time Limit Exceeded"
+      }
+    },
+    {
+      "input": {
+        "source": "async (n) => {\n  await new Promise(res => setTimeout(res, 100));\n  return n * n;\n}",
+        "inputs": [
+          5
+        ],
+        "t": 150
+      },
+      "expected": {
+        "resolved": 25
+      }
+    },
+    {
+      "input": {
+        "source": "async (a, b) => {\n  await new Promise(res => setTimeout(res, 120));\n  return a + b;\n}",
+        "inputs": [
+          5,
+          10
+        ],
+        "t": 150
+      },
+      "expected": {
+        "resolved": 15
+      }
+    },
+    {
+      "input": {
+        "source": "async () => {\n  throw \"Error\";\n}",
+        "inputs": [],
+        "t": 1000
+      },
+      "expected": {
+        "rejected": "Error"
+      }
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "source": "async () => {\n  await new Promise(res => setTimeout(res, 70));\n}",
+        "inputs": [],
+        "t": 0
+      },
+      "expected": {
+        "rejected": "Time Limit Exceeded"
+      }
+    },
+    {
+      "input": {
+        "source": "async (n) => {\n  await new Promise(res => setTimeout(res, 80));\n  return n * n;\n}",
+        "inputs": [
+          7
+        ],
+        "t": 79
+      },
+      "expected": {
+        "rejected": "Time Limit Exceeded"
+      }
+    },
+    {
+      "input": {
+        "source": "async (n) => {\n  await new Promise(res => setTimeout(res, 80));\n  return n * 6;\n}",
+        "inputs": [
+          9
+        ],
+        "t": 81
+      },
+      "expected": {
+        "resolved": 54
+      }
+    },
+    {
+      "input": {
+        "source": "async () => {\n  await new Promise(res => setTimeout(res, 30));\n  await new Promise(res => setTimeout(res, 40));\n}",
+        "inputs": [],
+        "t": 69
+      },
+      "expected": {
+        "rejected": "Time Limit Exceeded"
+      }
+    },
+    {
+      "input": {
+        "source": "async () => {\n  await new Promise(res => setTimeout(res, 30));\n  await new Promise(res => setTimeout(res, 40));\n  return \"done\";\n}",
+        "inputs": [],
+        "t": 71
+      },
+      "expected": {
+        "resolved": "done"
+      }
+    },
+    {
+      "input": {
+        "source": "async () => {\n  throw \"Boom\";\n}",
+        "inputs": [],
+        "t": 500
+      },
+      "expected": {
+        "rejected": "Boom"
+      }
+    },
+    {
+      "input": {
+        "source": "(x) => Promise.resolve(x * 3)",
+        "inputs": [
+          7
+        ],
+        "t": 250
+      },
+      "expected": {
+        "resolved": 21
+      }
+    },
+    {
+      "input": {
+        "source": "async () => ({ ok: true, data: [1, 2] })",
+        "inputs": [],
+        "t": 400
+      },
+      "expected": {
+        "resolved": {
+          "ok": true,
+          "data": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "source": "() => Promise.resolve(null)",
+        "inputs": [],
+        "t": 300
+      },
+      "expected": {
+        "resolved": null
+      }
+    },
+    {
+      "input": {
+        "source": "async () => {\n  await new Promise(res => setTimeout(res, 998));\n  return \"timeless\";\n}",
+        "inputs": [],
+        "t": 999
+      },
+      "expected": {
+        "resolved": "timeless"
+      }
+    },
+    {
+      "input": {
+        "source": "(...ns) => Promise.resolve(ns.reduce((a, b) => a + b, 0))",
+        "inputs": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "t": 200
+      },
+      "expected": {
+        "resolved": 55
+      }
+    },
+    {
+      "input": {
+        "source": "async () => new Promise((_, rej) => setTimeout(() => rej({ code: 7 }), 90))",
+        "inputs": [],
+        "t": 95
+      },
+      "expected": {
+        "rejected": {
+          "code": 7
+        }
+      }
+    },
+    {
+      "input": {
+        "source": "() => Promise.reject(\"Cold\")",
+        "inputs": [],
+        "t": 800
+      },
+      "expected": {
+        "rejected": "Cold"
+      }
+    },
+    {
+      "input": {
+        "source": "async () => {\n  await new Promise(res => setTimeout(res, 999));\n  return 12345;\n}",
+        "inputs": [],
+        "t": 1000
+      },
+      "expected": {
+        "resolved": 12345
+      }
+    }
+  ]
+}

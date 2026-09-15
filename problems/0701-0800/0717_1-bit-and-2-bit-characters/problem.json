@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 717,
+  "slug": "1-bit-and-2-bit-characters",
+  "title": "1-bit and 2-bit Characters",
+  "difficulty": "Easy",
+  "tags": [
+    "Array"
+  ],
+  "topics": [
+    "Array"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "isOneBitCharacter",
+    "parameters": [
+      {
+        "name": "bits",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "isOneBitCharacter",
+      "rust": "is_one_bit_character",
+      "typescript": "isOneBitCharacter"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

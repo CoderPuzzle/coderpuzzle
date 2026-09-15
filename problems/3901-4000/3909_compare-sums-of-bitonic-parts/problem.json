@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3909,
+  "slug": "compare-sums-of-bitonic-parts",
+  "title": "Compare Sums of Bitonic Parts",
+  "difficulty": "Medium",
+  "tags": [
+    "Array"
+  ],
+  "topics": [
+    "Array"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "compareBitonicSums",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "compareBitonicSums",
+      "rust": "compare_bitonic_sums",
+      "typescript": "compareBitonicSums"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

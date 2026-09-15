@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1049,
+  "slug": "last-stone-weight-ii",
+  "title": "Last Stone Weight II",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Knapsack Problem",
+    "0-1 Knapsack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "lastStoneWeightII",
+    "parameters": [
+      {
+        "name": "stones",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "lastStoneWeightII",
+      "rust": "last_stone_weight_ii",
+      "typescript": "lastStoneWeightII"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

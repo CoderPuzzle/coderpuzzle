@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3166,
+  "slug": "calculate-parking-fees-and-duration",
+  "title": "Calculate Parking Fees and Duration",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "exact",
+    "sql": {
+      "schema": "CREATE TABLE ParkingTransactions (lot_id INTEGER, car_id INTEGER, entry_time DATETIME, exit_time DATETIME, fee_paid REAL);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

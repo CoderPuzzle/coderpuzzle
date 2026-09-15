@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 894,
+  "slug": "all-possible-full-binary-trees",
+  "title": "All Possible Full Binary Trees",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming",
+    "Tree",
+    "Recursion",
+    "Memoization",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Tree",
+    "Recursion",
+    "Memoization",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "allPossibleFBT",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "tree_node_array",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "binary_tree",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "allPossibleFBT",
+      "rust": "all_possible_fbt",
+      "typescript": "allPossibleFBT"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 754,
+  "slug": "reach-a-number",
+  "title": "Reach a Number",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Binary Search"
+  ],
+  "topics": [
+    "Math",
+    "Binary Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "reachNumber",
+    "parameters": [
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "reachNumber",
+      "rust": "reach_number",
+      "typescript": "reachNumber"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

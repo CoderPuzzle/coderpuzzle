@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 915,
+  "slug": "partition-array-into-disjoint-intervals",
+  "title": "Partition Array into Disjoint Intervals",
+  "difficulty": "Medium",
+  "tags": [
+    "Array"
+  ],
+  "topics": [
+    "Array"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "partitionDisjoint",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "partitionDisjoint",
+      "rust": "partition_disjoint",
+      "typescript": "partitionDisjoint"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

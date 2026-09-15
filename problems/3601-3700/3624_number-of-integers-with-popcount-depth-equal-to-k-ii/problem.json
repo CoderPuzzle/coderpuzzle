@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3624,
+  "slug": "number-of-integers-with-popcount-depth-equal-to-k-ii",
+  "title": "Number of Integers With Popcount-Depth Equal to K II",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Binary Indexed Tree",
+    "Segment Tree"
+  ],
+  "topics": [
+    "Array",
+    "Divide and Conquer",
+    "Binary Indexed Tree",
+    "Segment Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "popcountDepth",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 64
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "popcountDepth",
+      "rust": "popcount_depth",
+      "typescript": "popcountDepth"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

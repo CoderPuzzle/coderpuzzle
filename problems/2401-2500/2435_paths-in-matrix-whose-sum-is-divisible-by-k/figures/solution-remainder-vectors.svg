@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- 3x3 grid; cell 110x92; x=150 y=40 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="150" y="40" width="110" height="92"/><rect x="260" y="40" width="110" height="92"/><rect x="370" y="40" width="110" height="92"/>
+    <rect x="150" y="132" width="110" height="92"/><rect x="260" y="132" width="110" height="92"/><rect x="370" y="132" width="110" height="92"/>
+    <rect x="150" y="224" width="110" height="92"/><rect x="260" y="224" width="110" height="92"/><rect x="370" y="224" width="110" height="92"/>
+  </g>
+  <!-- values -->
+  <g text-anchor="middle" font-weight="600" font-size="17">
+    <text x="205" y="68">5</text><text x="315" y="68">2</text><text x="425" y="68">4</text>
+    <text x="205" y="160">3</text><text x="315" y="160">0</text><text x="425" y="160">5</text>
+    <text x="205" y="252">0</text><text x="315" y="252">7</text><text x="425" y="252">2</text>
+  </g>
+  <!-- remainder vectors [r0 r1 r2] -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="13">
+    <text x="205" y="112">[0 0 1]</text><text x="315" y="112">[0 1 0]</text><text x="425" y="112">[0 0 1]</text>
+    <text x="205" y="204">[0 0 1]</text><text x="315" y="204">[0 1 1]</text><text x="425" y="204">[1 2 0]</text>
+    <text x="205" y="296">[0 0 1]</text><text x="315" y="296">[2 0 1]</text><text x="425" y="296" fill="#4169E1" font-weight="600">[2 1 3]</text>
+  </g>
+  <!-- qualifying paths -->
+  <g stroke="#4169E1" stroke-width="2.4" fill="none">
+    <polyline points="205,86 315,86 425,86 425,178 425,270" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2.4" fill="none" stroke-dasharray="6 4">
+    <polyline points="195,90 195,182 195,274 305,274 415,274" marker-end="url(#arrow)"/>
+  </g>
+  <!-- narration -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="500" y="60">Each cell holds the</text>
+    <text x="500" y="76">counts of arriving</text>
+    <text x="500" y="92">path sums by</text>
+    <text x="500" y="108">remainder 0, 1, 2</text>
+    <text x="500" y="124">mod k = 3.</text>
+    <text x="500" y="160">Vectors add from</text>
+    <text x="500" y="176">above and left,</text>
+    <text x="500" y="192">each shifted by the</text>
+    <text x="500" y="208">cell's own value.</text>
+  </g>
+  <text x="40" y="350" fill="#1a2026" font-size="13">The corner vector [2 1 3] holds <tspan fill="#4169E1" font-weight="600">2</tspan> remainder-0 paths — the solid 5+2+4+5+2 = 18 and dashed 5+3+0+5+2 = 15 routes.</text>
+</svg>

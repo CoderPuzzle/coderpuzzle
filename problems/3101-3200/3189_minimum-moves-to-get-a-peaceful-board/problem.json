@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3189,
+  "slug": "minimum-moves-to-get-a-peaceful-board",
+  "title": "Minimum Moves to Get a Peaceful Board",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Counting Sort"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Counting Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minMoves",
+    "parameters": [
+      {
+        "name": "rooks",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minMoves",
+      "rust": "min_moves",
+      "typescript": "minMoves"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1515,
+  "slug": "best-position-for-a-service-centre",
+  "title": "Best Position for a Service Centre",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Randomized"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Randomized"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getMinDistSum",
+    "parameters": [
+      {
+        "name": "positions",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "number"
+    },
+    "entrypoints": {
+      "go": "getMinDistSum",
+      "rust": "get_min_dist_sum",
+      "typescript": "getMinDistSum"
+    },
+    "comparison": {
+      "mode": "close",
+      "tolerance": 1e-05
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

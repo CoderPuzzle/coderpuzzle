@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3851,
+  "slug": "maximum-requests-without-violating-the-limit",
+  "title": "Maximum Requests Without Violating the Limit",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Greedy",
+    "Sliding Window",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Greedy",
+    "Sliding Window",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxRequests",
+    "parameters": [
+      {
+        "name": "requests",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "window",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxRequests",
+      "rust": "max_requests",
+      "typescript": "maxRequests"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

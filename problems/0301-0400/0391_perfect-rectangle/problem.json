@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 391,
+  "slug": "perfect-rectangle",
+  "title": "Perfect Rectangle",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Geometry",
+    "Sweep Line"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Geometry",
+    "Sweep Line"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "isRectangleCover",
+    "parameters": [
+      {
+        "name": "rectangles",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "isRectangleCover",
+      "rust": "is_rectangle_cover",
+      "typescript": "isRectangleCover"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2296,
+  "slug": "design-a-text-editor",
+  "title": "Design a Text Editor",
+  "difficulty": "Hard",
+  "tags": [
+    "Linked List",
+    "String",
+    "Stack",
+    "Design",
+    "Simulation",
+    "Doubly-Linked List"
+  ],
+  "topics": [
+    "Linked List",
+    "String",
+    "Stack",
+    "Design",
+    "Simulation",
+    "Doubly-Linked List"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "TextEditor",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "addText",
+        "parameters": [
+          {
+            "name": "text",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "deleteText",
+        "parameters": [
+          {
+            "name": "k",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "cursorLeft",
+        "parameters": [
+          {
+            "name": "k",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "cursorRight",
+        "parameters": [
+          {
+            "name": "k",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1943,
+  "slug": "describe-the-painting",
+  "title": "Describe the Painting",
+  "difficulty": "Medium",
+  "tags": [
+    "Difference Array",
+    "Sorting",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Sorting",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "splitPainting",
+    "parameters": [
+      {
+        "name": "segments",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "splitPainting",
+      "rust": "split_painting",
+      "typescript": "splitPainting"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

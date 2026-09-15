@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1387,
+  "slug": "sort-integers-by-the-power-value",
+  "title": "Sort Integers by The Power Value",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming",
+    "Memoization",
+    "Sorting"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Memoization",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getKth",
+    "parameters": [
+      {
+        "name": "lo",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "hi",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "getKth",
+      "rust": "get_kth",
+      "typescript": "getKth"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

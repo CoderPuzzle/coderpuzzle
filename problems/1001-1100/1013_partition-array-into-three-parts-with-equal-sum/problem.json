@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1013,
+  "slug": "partition-array-into-three-parts-with-equal-sum",
+  "title": "Partition Array Into Three Parts With Equal Sum",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canThreePartsEqualSum",
+    "parameters": [
+      {
+        "name": "arr",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canThreePartsEqualSum",
+      "rust": "can_three_parts_equal_sum",
+      "typescript": "canThreePartsEqualSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

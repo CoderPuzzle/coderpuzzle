@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1157,
+  "slug": "online-majority-element-in-subarray",
+  "title": "Online Majority Element In Subarray",
+  "difficulty": "Hard",
+  "tags": [
+    "Segment Tree",
+    "Binary Search"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Design",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Sqrt Decomposition",
+    "Boyer–Moore Majority Vote Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "MajorityChecker",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "arr",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "query",
+        "parameters": [
+          {
+            "name": "left",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "right",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "threshold",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

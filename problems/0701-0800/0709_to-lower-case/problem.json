@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 709,
+  "slug": "to-lower-case",
+  "title": "To Lower Case",
+  "difficulty": "Easy",
+  "tags": [
+    "String"
+  ],
+  "topics": [
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "toLowerCase",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "toLowerCase",
+      "rust": "to_lower_case",
+      "typescript": "toLowerCase"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

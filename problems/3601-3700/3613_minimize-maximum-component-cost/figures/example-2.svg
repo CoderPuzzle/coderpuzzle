@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 172" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- n = 4, edges = [[0,1,5],[1,2,5],[2,3,5]], k = 1; one component must keep everything, cost = 5 (verified by brute force) -->
+  <line x1="111" y1="70" x2="489" y2="70" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="90" cy="70" r="21"/>
+    <circle cx="230" cy="70" r="21"/>
+    <circle cx="370" cy="70" r="21"/>
+    <circle cx="510" cy="70" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="90" y="75">0</text>
+    <text x="230" y="75">1</text>
+    <text x="370" y="75">2</text>
+    <text x="510" y="75">3</text>
+  </g>
+  <g font-size="12" fill="#5c6b76" text-anchor="middle">
+    <text x="160" y="58">5</text>
+    <text x="300" y="58">5</text>
+    <text x="440" y="58">5</text>
+  </g>
+  <text x="300" y="152" text-anchor="middle" fill="#1a2026" font-size="13.5">k = 1 forbids removals, so the single component's cost is its largest edge: <tspan fill="#4169E1" font-weight="700">5</tspan></text>
+</svg>

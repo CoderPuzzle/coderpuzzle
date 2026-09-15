@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3482,
+  "slug": "analyze-organization-hierarchy",
+  "title": "Analyze Organization Hierarchy",
+  "difficulty": "Hard",
+  "tags": [
+    "Database",
+    "SQL",
+    "Recursive CTE"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "exact",
+    "sql": {
+      "schema": "CREATE TABLE Employees (employee_id INTEGER, employee_name TEXT, manager_id INTEGER, salary INTEGER, department TEXT);"
+    }
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

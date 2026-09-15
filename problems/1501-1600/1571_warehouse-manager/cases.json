@@ -1,0 +1,159 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Warehouse VALUES\n('LCHouse1',1,1),\n('LCHouse1',2,10),\n('LCHouse1',3,5),\n('LCHouse2',1,2),\n('LCHouse2',2,2),\n('LCHouse3',4,1);\nINSERT INTO Products VALUES\n(1,'LC-TV',5,50,40),\n(2,'LC-KeyChain',5,5,5),\n(3,'LC-Phone',2,10,10),\n(4,'LC-T-Shirt',4,10,20);"
+      ],
+      "expected": [
+        [
+          "LCHouse1",
+          12250
+        ],
+        [
+          "LCHouse2",
+          20250
+        ],
+        [
+          "LCHouse3",
+          800
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Warehouse VALUES\n('Solo',1,10);\nINSERT INTO Products VALUES\n(1,'Box',2,3,4);"
+      ],
+      "expected": [
+        [
+          "Solo",
+          240
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Warehouse VALUES\n('Multi',1,3),\n('Multi',2,5),\n('Multi',3,2);\nINSERT INTO Products VALUES\n(1,'A',2,2,2),\n(2,'B',3,4,5),\n(3,'C',1,1,100);"
+      ],
+      "expected": [
+        [
+          "Multi",
+          524
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Warehouse VALUES\n('ZeroCase',1,0),\n('ZeroCase',2,7);\nINSERT INTO Products VALUES\n(1,'Z',10,10,10),\n(2,'Y',1,1,1);"
+      ],
+      "expected": [
+        [
+          "ZeroCase",
+          7
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Warehouse VALUES\n('W1',1,2),\n('W1',2,3),\n('W2',1,4),\n('W3',2,1);\nINSERT INTO Products VALUES\n(1,'P1',2,3,4),\n(2,'P2',5,5,5);"
+      ],
+      "expected": [
+        [
+          "W1",
+          423
+        ],
+        [
+          "W2",
+          96
+        ],
+        [
+          "W3",
+          125
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Warehouse VALUES\n('BigHouse',1,100000);\nINSERT INTO Products VALUES\n(1,'Huge',1000,1000,1000);"
+      ],
+      "expected": [
+        [
+          "BigHouse",
+          100000000000000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Warehouse VALUES\n('Varied',1,1),\n('Varied',2,1),\n('Varied',3,1),\n('Varied',4,1);\nINSERT INTO Products VALUES\n(1,'A',1,2,3),\n(2,'B',4,5,6),\n(3,'C',7,8,9),\n(4,'D',10,11,12);"
+      ],
+      "expected": [
+        [
+          "Varied",
+          1950
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Warehouse VALUES\n('LCHouse3',4,1),\n('LCHouse2',2,2),\n('LCHouse2',1,2),\n('LCHouse1',3,5),\n('LCHouse1',2,10),\n('LCHouse1',1,1);\nINSERT INTO Products VALUES\n(4,'LC-T-Shirt',4,10,20),\n(3,'LC-Phone',2,10,10),\n(2,'LC-KeyChain',5,5,5),\n(1,'LC-TV',5,50,40);"
+      ],
+      "expected": [
+        [
+          "LCHouse1",
+          12250
+        ],
+        [
+          "LCHouse2",
+          20250
+        ],
+        [
+          "LCHouse3",
+          800
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Warehouse VALUES\n('Multi',3,2),\n('Multi',2,5),\n('Multi',1,3);\nINSERT INTO Products VALUES\n(3,'C',1,1,100),\n(2,'B',3,4,5),\n(1,'A',2,2,2);"
+      ],
+      "expected": [
+        [
+          "Multi",
+          524
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Warehouse VALUES\n('ZeroCase',2,7),\n('ZeroCase',1,0);\nINSERT INTO Products VALUES\n(2,'Y',1,1,1),\n(1,'Z',10,10,10);"
+      ],
+      "expected": [
+        [
+          "ZeroCase",
+          7
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Warehouse VALUES\n('W3',2,1),\n('W2',1,4),\n('W1',2,3),\n('W1',1,2);\nINSERT INTO Products VALUES\n(2,'P2',5,5,5),\n(1,'P1',2,3,4);"
+      ],
+      "expected": [
+        [
+          "W1",
+          423
+        ],
+        [
+          "W2",
+          96
+        ],
+        [
+          "W3",
+          125
+        ]
+      ]
+    }
+  ]
+}

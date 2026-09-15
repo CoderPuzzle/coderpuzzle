@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="310" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- 3x3 matrix grid, cells 70px at x=170 y=50 -->
+  <g fill="#dbe4f6">
+    <rect x="170" y="190" width="70" height="70"/>
+    <rect x="240" y="190" width="70" height="70"/>
+    <rect x="310" y="120" width="70" height="70"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <rect x="170" y="50" width="70" height="70"/>
+    <rect x="240" y="50" width="70" height="70"/>
+    <rect x="310" y="50" width="70" height="70"/>
+    <rect x="170" y="120" width="70" height="70"/>
+    <rect x="240" y="120" width="70" height="70"/>
+    <rect x="310" y="120" width="70" height="70"/>
+    <rect x="170" y="190" width="70" height="70"/>
+    <rect x="240" y="190" width="70" height="70"/>
+    <rect x="310" y="190" width="70" height="70"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="205" y="92" fill="#1a2026">1</text><text x="275" y="92" fill="#1a2026">5</text><text x="345" y="92" fill="#1a2026">9</text>
+    <text x="205" y="162" fill="#1a2026">10</text><text x="275" y="162" fill="#1a2026">11</text><text x="345" y="162" fill="#1a2026">13</text>
+    <text x="205" y="232" fill="#1a2026">12</text><text x="275" y="232" fill="#1a2026">13</text><text x="345" y="232" fill="#1a2026">15</text>
+  </g>
+  <!-- staircase arrows: enter (2,0) -> (2,1) -> (2,2) -> (1,2) -> exit -->
+  <g stroke="#4169E1" stroke-width="2.4" fill="none">
+    <path d="M 160 250 Q 160 285 195 285 Q 205 285 205 268" marker-end="url(#arrow)"/>
+    <line x1="212" y1="225" x2="262" y2="225" marker-end="url(#arrow)"/>
+    <line x1="282" y1="225" x2="332" y2="225" marker-end="url(#arrow)"/>
+    <path d="M 345 187 L 345 162" marker-end="url(#arrow)"/>
+    <line x1="362" y1="155" x2="430" y2="155" marker-end="url(#arrow)"/>
+  </g>
+  <!-- step annotations -->
+  <g font-size="11.5" fill="#4169E1" text-anchor="middle">
+    <text x="205" y="258">12 ≤ x</text>
+    <text x="205" y="270" font-size="10.5">count += 3</text>
+    <text x="275" y="258">13 ≤ x</text>
+    <text x="275" y="270" font-size="10.5">count += 3</text>
+    <text x="345" y="275">15 &gt; x</text>
+    <text x="345" y="287" font-size="10.5">step up</text>
+    <text x="345" y="112">13 ≤ x</text>
+    <text x="345" y="99" font-size="10.5">count += 2 → 8</text>
+  </g>
+  <text x="440" y="158" fill="#4169E1" font-size="12.5">exit: col = 3</text>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="30" y="60">count_le(x) walks from</text>
+    <text x="30" y="76">the bottom-left corner:</text>
+    <text x="30" y="92">a cell ≤ x adds its</text>
+    <text x="30" y="108">whole column (row + 1</text>
+    <text x="30" y="124">cells) and moves right;</text>
+    <text x="30" y="140">a cell &gt; x moves up.</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="26" y="196">Shown for x = 13,</text>
+    <text x="26" y="212">where the binary</text>
+    <text x="26" y="228">search converges:</text>
+    <text x="26" y="244">exactly 8 elements</text>
+    <text x="26" y="260">are ≤ 13, so the 8th</text>
+    <text x="26" y="276">smallest is 13.</text>
+  </g>
+</svg>

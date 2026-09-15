@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "lehmer_merge",
+  "id": 3109,
+  "slug": "find-the-index-of-permutation",
+  "title": "Find the Index of Permutation",
+  "difficulty": "Medium",
+  "tags": [
+    "Combinatorics",
+    "Divide and Conquer",
+    "Fenwick Tree"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Divide and Conquer",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Merge Sort",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getPermutationIndex",
+    "parameters": [
+      {
+        "name": "perm",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "getPermutationIndex",
+      "rust": "get_permutation_index",
+      "typescript": "getPermutationIndex"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

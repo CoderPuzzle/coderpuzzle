@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 679,
+  "slug": "24-game",
+  "title": "24 Game",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Backtracking"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Backtracking"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "judgePoint24",
+    "parameters": [
+      {
+        "name": "cards",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "judgePoint24",
+      "rust": "judge_point24",
+      "typescript": "judgePoint24"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1374,'prime_eligible','Watches',68.00),\n(4245,'not_prime','Art',26.40),\n(5743,'prime_eligible','Software',325.00),\n(8543,'not_prime','Clothing',64.50),\n(2556,'not_prime','Shoes',15.00),\n(2452,'prime_eligible','Scientific',85.00),\n(3255,'not_prime','Furniture',22.60),\n(1672,'prime_eligible','Beauty',8.50),\n(4256,'prime_eligible','Furniture',55.50),\n(6325,'prime_eligible','Food',13.20);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          5400
+        ],
+        [
+          "not_prime",
+          8
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          0
+        ],
+        [
+          "not_prime",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1,'prime_eligible','Audio',100.00),\n(2,'prime_eligible','Video',250.00),\n(3,'prime_eligible','Gaming',50.00),\n(4,'not_prime','Books',10.00),\n(5,'not_prime','Toys',20.00);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          3750
+        ],
+        [
+          "not_prime",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1,'not_prime','Rugs',100000.00),\n(2,'not_prime','Lamps',100000.00),\n(3,'not_prime','Mirrors',100000.00);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          0
+        ],
+        [
+          "not_prime",
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1,'prime_eligible','Machinery',500000.01),\n(2,'not_prime','Crates',100000.50),\n(3,'not_prime','Pallets',150000.25);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          0
+        ],
+        [
+          "not_prime",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1,'prime_eligible','Panels',125000.00),\n(2,'prime_eligible','Beams',125000.00),\n(3,'not_prime','Nails',1.00),\n(4,'not_prime','Screws',2.00);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          4
+        ],
+        [
+          "not_prime",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1,'prime_eligible','Turbines',83333.50),\n(2,'prime_eligible','Pumps',83333.50),\n(3,'not_prime','Valves',50000.00),\n(4,'not_prime','Fittings',50000.00),\n(5,'not_prime','Hoses',50000.00);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          4
+        ],
+        [
+          "not_prime",
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1,'prime_eligible','Safes',250000.25),\n(2,'not_prime','Lockers',249999.75);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          1
+        ],
+        [
+          "not_prime",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1,'prime_eligible','Vaults',249999.75),\n(2,'not_prime','Cabinets',0.50);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          2
+        ],
+        [
+          "not_prime",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1,'prime_eligible','Servers',200000.00),\n(2,'not_prime','Racks',45000.00),\n(3,'not_prime','Cables',55000.00);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          2
+        ],
+        [
+          "not_prime",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1,'prime_eligible','Generators',124999.75),\n(2,'prime_eligible','Alternators',124999.75),\n(3,'not_prime','Tools',1.50),\n(4,'not_prime','Kits',1.50);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          4
+        ],
+        [
+          "not_prime",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(101,'prime_eligible','Optics',120.50),\n(102,'prime_eligible','Sensors',340.25),\n(103,'prime_eligible','Drives',99.75),\n(104,'prime_eligible','Optics',120.50),\n(105,'prime_eligible','Controllers',500.00),\n(106,'prime_eligible','Wiring',77.77),\n(107,'prime_eligible','Battery',210.10),\n(201,'not_prime','Casings',45.45),\n(202,'not_prime','Fans',60.60),\n(203,'not_prime','Grills',30.30),\n(204,'not_prime','Casings',45.45),\n(205,'not_prime','Clips',88.88),\n(206,'not_prime','Straps',12.34),\n(207,'not_prime','Mounts',67.89);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          2380
+        ],
+        [
+          "not_prime",
+          7
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(11,'prime_eligible','Frames',31125.00),\n(12,'prime_eligible','Frames',31125.00),\n(13,'prime_eligible','Frames',31125.00),\n(14,'prime_eligible','Frames',31125.00),\n(15,'prime_eligible','Rotors',31225.00),\n(16,'prime_eligible','Rotors',31225.00),\n(17,'prime_eligible','Stators',31025.00),\n(18,'prime_eligible','Stators',31025.00),\n(21,'not_prime','Shelves',250.50),\n(22,'not_prime','Bins',300.25),\n(23,'not_prime','Trays',199.25),\n(24,'not_prime','Crates',450.00),\n(25,'not_prime','Dollies',175.50),\n(26,'not_prime','Ladders',274.50),\n(27,'not_prime','Carts',226.00),\n(28,'not_prime','Ramps',124.00);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          16
+        ],
+        [
+          "not_prime",
+          8
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1,'prime_eligible','Monolith',500000.00),\n(2,'not_prime','Pebbles',10.00);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          1
+        ],
+        [
+          "not_prime",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Inventory VALUES\n(1,'prime_eligible','Tiles',33.33),\n(2,'prime_eligible','Tiles',33.33),\n(3,'prime_eligible','Tiles',33.33),\n(4,'not_prime','Grout',24.00),\n(5,'not_prime','Sealer',24.00);"
+      ],
+      "expected": [
+        [
+          "prime_eligible",
+          15000
+        ],
+        [
+          "not_prime",
+          2
+        ]
+      ]
+    }
+  ]
+}

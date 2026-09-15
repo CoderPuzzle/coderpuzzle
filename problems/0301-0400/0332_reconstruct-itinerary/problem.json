@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 332,
+  "slug": "reconstruct-itinerary",
+  "title": "Reconstruct Itinerary",
+  "difficulty": "Hard",
+  "tags": [
+    "Backtracking",
+    "Depth-First Search",
+    "Graph",
+    "Heap (Priority Queue)"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Graph Theory",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Eulerian Circuit",
+    "Eulerian Path",
+    "Semi-Eulerian Graph"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findItinerary",
+    "parameters": [
+      {
+        "name": "tickets",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "findItinerary",
+      "rust": "find_itinerary",
+      "typescript": "findItinerary"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

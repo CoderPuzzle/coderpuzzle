@@ -1,0 +1,37 @@
+class Solution {
+  public:
+    string largestTimeFromDigits(vector<int> &arr) {
+        // Four slots H1 H2 M1 M2 and four digits admit exactly 4! = 24
+        // deals. A deal is a real time when the hour stays below 24 and
+        // the minute below 60, and comparing survivors as minutes past
+        // midnight picks the latest outright. The sentinel -1 means no
+        // deal survived, so nothing beats it and the empty string is
+        // returned.
+        int best = -1;
+        for (int i = 0; i < 4; ++i) {
+            for (int j = 0; j < 4; ++j) {
+                if (j == i)
+                    continue;
+                for (int k = 0; k < 4; ++k) {
+                    if (k == i || k == j)
+                        continue;
+                    int l = 6 - i - j - k;
+                    int hour = arr[i] * 10 + arr[j];
+                    int minute = arr[k] * 10 + arr[l];
+                    if (hour < 24 && minute < 60) {
+                        best = max(best, hour * 60 + minute);
+                    }
+                }
+            }
+        }
+        string out;
+        if (best >= 0) {
+            out += char('0' + best / 60 / 10);
+            out += char('0' + best / 60 % 10);
+            out += ':';
+            out += char('0' + best % 60 / 10);
+            out += char('0' + best % 60 % 10);
+        }
+        return out;
+    }
+};

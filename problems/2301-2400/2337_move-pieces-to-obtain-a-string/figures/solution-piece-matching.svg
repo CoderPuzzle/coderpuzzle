@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- start row: _L__R__R_; cells x = 70 + 52i, w 46 -->
+  <text x="30" y="76" fill="#5c6b76" font-size="12.5">start</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="70" y="56" width="46" height="40" fill="#ffffff"/><rect x="116" y="56" width="46" height="40" fill="#4169E1"/>
+    <rect x="162" y="56" width="46" height="40" fill="#ffffff"/><rect x="208" y="56" width="46" height="40" fill="#ffffff"/>
+    <rect x="254" y="56" width="46" height="40" fill="#9db4ea"/><rect x="300" y="56" width="46" height="40" fill="#ffffff"/>
+    <rect x="346" y="56" width="46" height="40" fill="#ffffff"/><rect x="392" y="56" width="46" height="40" fill="#9db4ea"/>
+    <rect x="438" y="56" width="46" height="40" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#ffffff">
+    <text x="139" y="81">L</text><text x="277" y="81">R</text><text x="415" y="81">R</text>
+  </g>
+  <!-- target row: L______RR -->
+  <text x="30" y="246" fill="#5c6b76" font-size="12.5">target</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="70" y="226" width="46" height="40" fill="#4169E1"/><rect x="116" y="226" width="46" height="40" fill="#ffffff"/>
+    <rect x="162" y="226" width="46" height="40" fill="#ffffff"/><rect x="208" y="226" width="46" height="40" fill="#ffffff"/>
+    <rect x="254" y="226" width="46" height="40" fill="#ffffff"/><rect x="300" y="226" width="46" height="40" fill="#ffffff"/>
+    <rect x="346" y="226" width="46" height="40" fill="#ffffff"/><rect x="392" y="226" width="46" height="40" fill="#9db4ea"/>
+    <rect x="438" y="226" width="46" height="40" fill="#9db4ea"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#ffffff">
+    <text x="93" y="251">L</text><text x="415" y="251">R</text><text x="461" y="251">R</text>
+  </g>
+  <!-- match arrows -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 139 100 Q 110 160 95 222" marker-end="url(#arrow)"/>
+    <path d="M 277 100 Q 330 160 412 222" marker-end="url(#arrow)"/>
+    <path d="M 415 100 Q 445 160 459 222" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12.5" fill="#5c6b76" text-anchor="middle">
+    <text x="105" y="162">L slides left 1 → 0 ✓</text>
+    <text x="330" y="150">R slides right 4 → 7 ✓</text>
+    <text x="480" y="166">R: 7 → 8 ✓</text>
+  </g>
+  <g font-size="12.5" fill="#1a2026">
+    <text x="510" y="76">k-th piece matches k-th</text>
+    <text x="510" y="94">piece — L may only move</text>
+    <text x="510" y="112">left, R only right.</text>
+  </g>
+  <text x="70" y="300" fill="#1a2026" font-size="13">All three matched pieces respect their direction, so the start reaches the target — no move simulation needed.</text>
+</svg>

@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2014,
+  "slug": "longest-subsequence-repeated-k-times",
+  "title": "Longest Subsequence Repeated k Times",
+  "difficulty": "Hard",
+  "tags": [
+    "Hash Table",
+    "Two Pointers",
+    "String",
+    "Backtracking",
+    "Counting",
+    "Enumeration"
+  ],
+  "topics": [
+    "Hash Table",
+    "Two Pointers",
+    "String",
+    "Backtracking",
+    "Counting",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestSubsequenceRepeatedK",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "longestSubsequenceRepeatedK",
+      "rust": "longest_subsequence_repeated_k",
+      "typescript": "longestSubsequenceRepeatedK"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

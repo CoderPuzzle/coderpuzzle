@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3165,
+  "slug": "maximum-sum-of-subsequence-with-non-adjacent-elements",
+  "title": "Maximum Sum of Subsequence With Non-adjacent Elements",
+  "difficulty": "Hard",
+  "tags": [
+    "Segment Tree",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Array",
+    "Divide and Conquer",
+    "Dynamic Programming",
+    "Segment Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumSumSubsequence",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumSumSubsequence",
+      "rust": "maximum_sum_subsequence",
+      "typescript": "maximumSumSubsequence"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

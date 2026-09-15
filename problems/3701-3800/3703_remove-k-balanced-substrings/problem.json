@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3703,
+  "slug": "remove-k-balanced-substrings",
+  "title": "Remove K-Balanced Substrings",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Stack",
+    "Simulation"
+  ],
+  "topics": [
+    "String",
+    "Stack",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "removeSubstring",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "removeSubstring",
+      "rust": "remove_substring",
+      "typescript": "removeSubstring"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

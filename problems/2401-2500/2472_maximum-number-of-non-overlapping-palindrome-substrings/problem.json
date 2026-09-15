@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2472,
+  "slug": "maximum-number-of-non-overlapping-palindrome-substrings",
+  "title": "Maximum Number of Non-overlapping Palindrome Substrings",
+  "difficulty": "Hard",
+  "tags": [
+    "Two Pointers",
+    "String",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "topics": [
+    "Two Pointers",
+    "String",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxPalindromes",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxPalindromes",
+      "rust": "max_palindromes",
+      "typescript": "maxPalindromes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

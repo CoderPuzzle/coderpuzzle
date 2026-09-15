@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3800,
+  "slug": "minimum-cost-to-make-two-binary-strings-equal",
+  "title": "Minimum Cost to Make Two Binary Strings Equal",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Greedy"
+  ],
+  "topics": [
+    "String",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumCost",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "t",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "flipCost",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "swapCost",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "crossCost",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "minimumCost",
+      "rust": "minimum_cost",
+      "typescript": "minimumCost"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

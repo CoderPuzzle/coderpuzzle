@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3045,
+  "slug": "count-prefix-and-suffix-pairs-ii",
+  "title": "Count Prefix and Suffix Pairs II",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Trie",
+    "Rolling Hash",
+    "String Matching",
+    "Hash Function",
+    "Z Algorithm"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Trie",
+    "Rolling Hash",
+    "String Matching",
+    "Hash Function",
+    "Z Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countPrefixSuffixPairs",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "countPrefixSuffixPairs",
+      "rust": "count_prefix_suffix_pairs",
+      "typescript": "countPrefixSuffixPairs"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

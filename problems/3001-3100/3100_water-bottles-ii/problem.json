@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3100,
+  "slug": "water-bottles-ii",
+  "title": "Water Bottles II",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Simulation"
+  ],
+  "topics": [
+    "Math",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxBottlesDrunk",
+    "parameters": [
+      {
+        "name": "numBottles",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "numExchange",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxBottlesDrunk",
+      "rust": "max_bottles_drunk",
+      "typescript": "maxBottlesDrunk"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

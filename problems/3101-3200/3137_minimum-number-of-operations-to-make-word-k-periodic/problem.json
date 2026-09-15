@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3137,
+  "slug": "minimum-number-of-operations-to-make-word-k-periodic",
+  "title": "Minimum Number of Operations to Make Word K-Periodic",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumOperationsToMakeKPeriodic",
+    "parameters": [
+      {
+        "name": "word",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumOperationsToMakeKPeriodic",
+      "rust": "minimum_operations_to_make_k_periodic",
+      "typescript": "minimumOperationsToMakeKPeriodic"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

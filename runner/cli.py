@@ -44,12 +44,12 @@ from typing import Any
 RUNNER = Path(__file__).resolve().parent
 
 # The executors and harness live beside this file; the gen_starters and
-# format implementations are imported from a mounted problems repo (the
-# schema is the contract, the tools are the standard) or, when the image
-# carries its own copy, from there.
+# format implementations are imported from a mounted CoderPuzzle checkout
+# (the schema is the contract, the tools are the standard) or from this
+# checkout when running outside the image.
 TOOLS_CANDIDATES = [
     Path("/tools"),  # image convention
-    RUNNER.parent / "coderpuzzle-problems",  # beside a checkout
+    RUNNER.parent,
 ]
 
 
@@ -57,7 +57,9 @@ def _tools() -> Path:
     for candidate in TOOLS_CANDIDATES:
         if (candidate / "scripts" / "gen_starters.py").exists():
             return candidate
-    raise SystemExit("gen_starters.py not found; bind-mount the problems repo at /tools")
+    raise SystemExit(
+        "gen_starters.py not found; bind-mount the CoderPuzzle repo at /tools"
+    )
 
 
 def _executors_ready() -> None:

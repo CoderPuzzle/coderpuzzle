@@ -1,0 +1,41 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var waysToMakeFair = function (nums) {
+    // Removing index i leaves every earlier element on its own index
+    // and slides every later one down a slot, flipping the suffix's
+    // parity: the after-removal even sum is the prefix's even sum
+    // plus the suffix's odd sum, and vice versa for odd. Four running
+    // totals (even/odd sums of the visited prefix and of the untouched
+    // suffix) test each candidate removal in O(1).
+    let leftEven = 0;
+    let leftOdd = 0;
+    let rightEven = 0;
+    let rightOdd = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (i % 2 === 0) {
+            rightEven += nums[i];
+        } else {
+            rightOdd += nums[i];
+        }
+    }
+    let count = 0;
+    for (let i = 0; i < nums.length; i++) {
+        const value = nums[i];
+        if (i % 2 === 0) {
+            rightEven -= value;
+        } else {
+            rightOdd -= value;
+        }
+        if (leftEven + rightOdd === leftOdd + rightEven) {
+            count++;
+        }
+        if (i % 2 === 0) {
+            leftEven += value;
+        } else {
+            leftOdd += value;
+        }
+    }
+    return count;
+};

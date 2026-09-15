@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="640" height="300" fill="#ffffff"/>
+  <!-- edges -->
+  <g stroke="#1a2026" stroke-width="1.7">
+    <line x1="79" y1="110" x2="151" y2="110"/>
+    <line x1="189" y1="110" x2="251" y2="110"/>
+    <line x1="289" y1="110" x2="351" y2="110"/>
+    <line x1="381" y1="96" x2="451" y2="62"/>
+    <line x1="381" y1="124" x2="451" y2="158"/>
+    <line x1="170" y1="129" x2="170" y2="201"/>
+  </g>
+  <!-- special nodes -->
+  <g>
+    <circle cx="60" cy="110" r="19" fill="#e8edfa" stroke="#4169E1" stroke-width="2"/>
+    <circle cx="470" cy="50" r="19" fill="#e8edfa" stroke="#4169E1" stroke-width="2"/>
+    <circle cx="470" cy="170" r="19" fill="#e8edfa" stroke="#4169E1" stroke-width="2"/>
+    <circle cx="170" cy="220" r="19" fill="#e8edfa" stroke="#4169E1" stroke-width="2"/>
+  </g>
+  <!-- plain nodes -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.7">
+    <circle cx="170" cy="110" r="19"/>
+    <circle cx="270" cy="110" r="19"/>
+    <circle cx="370" cy="110" r="19"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="60" y="115">0</text><text x="170" y="115">1</text><text x="270" y="115">2</text>
+    <text x="370" y="115">3</text><text x="470" y="55">4</text><text x="470" y="175">5</text><text x="170" y="225">6</text>
+  </g>
+  <!-- distances -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="60" y="146">d₀=0 · d₄=4</text>
+    <text x="170" y="146">d₀=1 · d₄=3</text>
+    <text x="270" y="146">d₀=2 · d₄=2</text>
+    <text x="370" y="146">d₀=3 · d₄=1</text>
+    <text x="470" y="86">d₀=4 · d₄=0</text>
+    <text x="470" y="206">d₀=4 · d₄=2</text>
+    <text x="170" y="256">d₀=2 · d₄=4</text>
+  </g>
+  <g font-size="12.5">
+    <text x="580" y="46" fill="#4169E1" font-weight="600">BFS 1 (from 0):</text>
+    <text x="580" y="64" fill="#4169E1">farthest = {4, 5}</text>
+    <text x="580" y="90" fill="#4169E1" font-weight="600">BFS 2 (from 4):</text>
+    <text x="580" y="108" fill="#4169E1">farthest = {0, 6}</text>
+    <text x="580" y="140" fill="#5c6b76">union = special</text>
+    <text x="580" y="158" fill="#5c6b76">nodes → answer</text>
+    <text x="580" y="176" fill="#1a2026" font-weight="600">“1000111”</text>
+  </g>
+</svg>

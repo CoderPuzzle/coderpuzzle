@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2807,
+  "slug": "insert-greatest-common-divisors-in-linked-list",
+  "title": "Insert Greatest Common Divisors in Linked List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Math",
+    "Number Theory"
+  ],
+  "topics": [
+    "Linked List",
+    "Math",
+    "Number Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "insertGreatestCommonDivisors",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "insertGreatestCommonDivisors",
+      "rust": "insert_greatest_common_divisors",
+      "typescript": "insertGreatestCommonDivisors"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 430,
+  "slug": "flatten-a-multilevel-doubly-linked-list",
+  "title": "Flatten a Multilevel Doubly Linked List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Depth-First Search",
+    "Doubly-Linked List"
+  ],
+  "topics": [
+    "Linked List",
+    "Depth-First Search",
+    "Doubly-Linked List"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "flatten",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "multi_list",
+        "value_type": {
+          "kind": "multi_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "multi_list",
+    "return_type": {
+      "kind": "multi_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2115,
+  "slug": "find-all-possible-recipes-from-given-supplies",
+  "title": "Find All Possible Recipes from Given Supplies",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "Topological Sort",
+    "Breadth-First Search"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Graph Theory",
+    "Topological Sort",
+    "Directed Acyclic Graph"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findAllRecipes",
+    "parameters": [
+      {
+        "name": "recipes",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "ingredients",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "supplies",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "findAllRecipes",
+      "rust": "find_all_recipes",
+      "typescript": "findAllRecipes"
+    },
+    "comparison": "sorted"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

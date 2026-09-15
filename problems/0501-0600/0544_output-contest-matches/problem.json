@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 544,
+  "slug": "output-contest-matches",
+  "title": "Output Contest Matches",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Recursion",
+    "Simulation"
+  ],
+  "topics": [
+    "String",
+    "Recursion",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findContestMatch",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "findContestMatch",
+      "rust": "find_contest_match",
+      "typescript": "findContestMatch"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

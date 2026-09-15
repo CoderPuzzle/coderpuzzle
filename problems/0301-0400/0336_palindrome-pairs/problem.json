@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 336,
+  "slug": "palindrome-pairs",
+  "title": "Palindrome Pairs",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Hash Table",
+    "Trie"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Trie",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "palindromePairs",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "palindromePairs",
+      "rust": "palindrome_pairs",
+      "typescript": "palindromePairs"
+    },
+    "comparison": "sorted"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

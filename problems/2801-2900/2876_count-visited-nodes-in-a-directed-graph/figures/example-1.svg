@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 244" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- edges = [1,2,0,0]: cycle 0->1->2->0, tail 3->0; answers = [3,3,3,4] (verified by simulation) -->
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <g stroke="#4169E1" stroke-width="3.2" fill="none">
+    <line x1="256" y1="72" x2="167" y2="171" marker-end="url(#arrowA)"/>
+    <line x1="171" y1="190" x2="364" y2="190" marker-end="url(#arrowA)"/>
+    <line x1="376" y1="174" x2="287" y2="75" marker-end="url(#arrowA)"/>
+  </g>
+  <line x1="78" y1="114" x2="245" y2="64" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g stroke="#42525e" stroke-width="1.6" fill="#e6ecfb">
+    <circle cx="270" cy="56" r="21"/>
+    <circle cx="150" cy="190" r="21"/>
+    <circle cx="390" cy="190" r="21"/>
+  </g>
+  <circle cx="58" cy="120" r="21" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="270" y="61">0</text>
+    <text x="150" y="195">1</text>
+    <text x="390" y="195">2</text>
+    <text x="58" y="125">3</text>
+  </g>
+  <g fill="#4169E1" font-size="12" font-weight="600" text-anchor="middle">
+    <text x="270" y="26">answer 3</text>
+    <text x="150" y="224">answer 3</text>
+    <text x="390" y="224">answer 3</text>
+    <text x="58" y="156">answer 4</text>
+  </g>
+  <text x="250" y="238" text-anchor="middle" fill="#1a2026" font-size="13.5">0 → 1 → 2 → 0 is a <tspan fill="#4169E1" font-weight="700">3-cycle</tspan>; node 3 steps onto it, so it visits <tspan fill="#4169E1" font-weight="700">4</tspan> nodes</text>
+</svg>

@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "reference_solution": "kmp_automaton",
+  "id": 3023,
+  "slug": "find-pattern-in-infinite-stream-i",
+  "title": "Find Pattern in Infinite Stream I",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "KMP"
+  ],
+  "topics": [
+    "Array",
+    "Sliding Window",
+    "Rolling Hash",
+    "String Matching",
+    "Interactive",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "findPattern",
+    "oracle": "InfiniteStream",
+    "oracle_methods": [
+      {
+        "name": "next",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "pattern",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 1000000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "InfiniteStream",
+        "construct": [
+          "bits"
+        ],
+        "auxiliary": [
+          "pattern"
+        ]
+      }
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

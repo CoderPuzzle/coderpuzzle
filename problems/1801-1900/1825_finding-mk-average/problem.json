@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1825,
+  "slug": "finding-mk-average",
+  "title": "Finding MK Average",
+  "difficulty": "Hard",
+  "tags": [
+    "Design",
+    "Queue",
+    "Heap (Priority Queue)",
+    "Data Stream",
+    "Ordered Set",
+    "Treap"
+  ],
+  "topics": [
+    "Design",
+    "Queue",
+    "Heap (Priority Queue)",
+    "Data Stream",
+    "Ordered Set",
+    "Treap"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "MKAverage",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "m",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "k",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "addElement",
+        "parameters": [
+          {
+            "name": "num",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "calculateMKAverage",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

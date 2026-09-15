@@ -1,0 +1,108 @@
+{
+  "public": [
+    {
+      "input": [
+        "?zs"
+      ],
+      "expected": "azs"
+    },
+    {
+      "input": [
+        "ubv?w"
+      ],
+      "expected": "ubvaw"
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "abcabc"
+      ],
+      "expected": "abcabc"
+    },
+    {
+      "input": [
+        "?abc"
+      ],
+      "expected": "babc"
+    },
+    {
+      "input": [
+        "abz?"
+      ],
+      "expected": "abza"
+    },
+    {
+      "input": [
+        "a?a"
+      ],
+      "expected": "aba"
+    },
+    {
+      "input": [
+        "za?bz"
+      ],
+      "expected": "zacbz"
+    },
+    {
+      "input": [
+        "a??b"
+      ],
+      "expected": "abab"
+    },
+    {
+      "input": [
+        "c???d"
+      ],
+      "expected": "cabad"
+    },
+    {
+      "input": [
+        "??"
+      ],
+      "expected": "ab"
+    },
+    {
+      "input": [
+        "?????"
+      ],
+      "expected": "ababa"
+    },
+    {
+      "input": [
+        "??ab"
+      ],
+      "expected": "abab"
+    },
+    {
+      "input": [
+        "ab??"
+      ],
+      "expected": "abab"
+    },
+    {
+      "input": [
+        "?"
+      ],
+      "expected": "a"
+    },
+    {
+      "input": [
+        "a"
+      ],
+      "expected": "a"
+    },
+    {
+      "input": [
+        "a?????a"
+      ],
+      "expected": "abababa"
+    },
+    {
+      "input": [
+        "?bc?????cabcabcabcabcabcabcabcabcabcabca?cabcabcabcabcabcabc????????cabcabcabcabcabcabcabcabcabcabc?"
+      ],
+      "expected": "abcababacabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcababababcabcabcabcabcabcabcabcabcabcabca"
+    }
+  ]
+}

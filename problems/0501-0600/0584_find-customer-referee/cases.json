@@ -1,0 +1,251 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(1, 'Will', NULL),\n(2, 'Jane', NULL),\n(3, 'Alex', 2),\n(4, 'Bill', NULL),\n(5, 'Zack', 1),\n(6, 'Mark', 2);"
+      ],
+      "expected": [
+        [
+          "Will"
+        ],
+        [
+          "Jane"
+        ],
+        [
+          "Bill"
+        ],
+        [
+          "Zack"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(1, 'Ann', 1),\n(2, 'Bert', 2),\n(3, 'Cleo', 3);"
+      ],
+      "expected": [
+        [
+          "Ann"
+        ],
+        [
+          "Cleo"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(4, 'Dana', NULL),\n(5, 'Eve', NULL),\n(6, 'Finn', 2);"
+      ],
+      "expected": [
+        [
+          "Dana"
+        ],
+        [
+          "Eve"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(11, 'Gail', 2),\n(12, 'Hugo', 2),\n(13, 'Iris', 2);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(21, 'Jack', NULL),\n(22, 'Kate', NULL),\n(23, 'Liam', NULL);"
+      ],
+      "expected": [
+        [
+          "Jack"
+        ],
+        [
+          "Kate"
+        ],
+        [
+          "Liam"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(31, 'Mary', NULL),\n(32, 'Nate', 2),\n(33, 'Olga', 1),\n(34, 'Pete', 2),\n(35, 'Quinn', 7),\n(36, 'Rosa', NULL),\n(37, 'Saul', 2);"
+      ],
+      "expected": [
+        [
+          "Mary"
+        ],
+        [
+          "Olga"
+        ],
+        [
+          "Quinn"
+        ],
+        [
+          "Rosa"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(41, 'Tina', 41),\n(42, 'Ulf', 2),\n(2, 'Vera', 2),\n(43, 'Wade', 43),\n(44, 'Xena', 2);"
+      ],
+      "expected": [
+        [
+          "Tina"
+        ],
+        [
+          "Wade"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(51, 'Yara', 101),\n(52, 'Zane', 250),\n(53, 'Ada', 999),\n(54, 'Bram', 2),\n(55, 'Cora', -2),\n(56, 'Drew', 1000),\n(57, 'Elle', 7);"
+      ],
+      "expected": [
+        [
+          "Yara"
+        ],
+        [
+          "Zane"
+        ],
+        [
+          "Ada"
+        ],
+        [
+          "Cora"
+        ],
+        [
+          "Drew"
+        ],
+        [
+          "Elle"
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(61, 'Faye', NULL);"
+      ],
+      "expected": [
+        [
+          "Faye"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(71, 'Sam', NULL),\n(72, 'Sam', 1),\n(73, 'Sam', 2),\n(74, 'Tess', 2),\n(75, 'Tess', NULL);"
+      ],
+      "expected": [
+        [
+          "Sam"
+        ],
+        [
+          "Sam"
+        ],
+        [
+          "Tess"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(2, 'Kent', NULL),\n(81, 'Leah', 2),\n(82, 'Mona', 1);"
+      ],
+      "expected": [
+        [
+          "Kent"
+        ],
+        [
+          "Mona"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(91, 'Neil', 2);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customer VALUES\n(300, 'Aaron', NULL),\n(301, 'Bella', 2),\n(302, 'Colin', 1),\n(303, 'Daisy', NULL),\n(304, 'Ethan', 2),\n(305, 'Fiona', 2),\n(306, 'Gavin', 7),\n(307, 'Hazel', NULL),\n(308, 'Ian', NULL),\n(309, 'Jade', 2),\n(310, 'Kurt', 310),\n(311, 'Lena', NULL),\n(312, 'Milo', 2),\n(313, 'Nora', 313),\n(314, 'Oscar', NULL),\n(315, 'Petra', NULL),\n(316, 'Quentin', 2),\n(317, 'Rita', 999),\n(318, 'Stefan', NULL),\n(319, 'Trish', 2),\n(320, 'Umar', 1),\n(321, 'Vera', NULL),\n(322, 'Wade', 2),\n(323, 'Ximena', 324),\n(324, 'Yosef', NULL),\n(325, 'Zora', 7),\n(326, 'Asha', NULL),\n(327, 'Bram', 2),\n(328, 'Cleo', 3),\n(329, 'Dmitri', NULL);"
+      ],
+      "expected": [
+        [
+          "Aaron"
+        ],
+        [
+          "Colin"
+        ],
+        [
+          "Daisy"
+        ],
+        [
+          "Gavin"
+        ],
+        [
+          "Hazel"
+        ],
+        [
+          "Ian"
+        ],
+        [
+          "Kurt"
+        ],
+        [
+          "Lena"
+        ],
+        [
+          "Nora"
+        ],
+        [
+          "Oscar"
+        ],
+        [
+          "Petra"
+        ],
+        [
+          "Rita"
+        ],
+        [
+          "Stefan"
+        ],
+        [
+          "Umar"
+        ],
+        [
+          "Vera"
+        ],
+        [
+          "Ximena"
+        ],
+        [
+          "Yosef"
+        ],
+        [
+          "Zora"
+        ],
+        [
+          "Asha"
+        ],
+        [
+          "Cleo"
+        ],
+        [
+          "Dmitri"
+        ]
+      ]
+    }
+  ]
+}

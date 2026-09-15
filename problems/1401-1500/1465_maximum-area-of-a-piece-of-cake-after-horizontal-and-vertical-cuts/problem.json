@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1465,
+  "slug": "maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts",
+  "title": "Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxArea",
+    "parameters": [
+      {
+        "name": "h",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "w",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "horizontalCuts",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 64
+          }
+        }
+      },
+      {
+        "name": "verticalCuts",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 64
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "maxArea",
+      "rust": "max_area",
+      "typescript": "maxArea"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

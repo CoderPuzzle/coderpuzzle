@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="16">
+  <rect width="480" height="310" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b57f30"/>
+    </marker>
+  </defs>
+  <!-- board 4x4: o a a n / e t a e / i h k r / i f l v -->
+  <g fill="#4169E1" fill-opacity="0.13">
+    <rect x="40" y="40" width="56" height="56" rx="4"/>
+    <rect x="102" y="40" width="56" height="56" rx="4"/>
+    <rect x="102" y="102" width="56" height="56" rx="4"/>
+    <rect x="102" y="164" width="56" height="56" rx="4"/>
+  </g>
+  <g fill="#b57f30" fill-opacity="0.16">
+    <rect x="226" y="102" width="56" height="56" rx="4"/>
+    <rect x="164" y="102" width="56" height="56" rx="4"/>
+  </g>
+  <rect x="102" y="102" width="56" height="56" rx="4" fill="none" stroke="#b57f30" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <rect x="164" y="40" width="56" height="56" rx="4"/>
+    <rect x="226" y="40" width="56" height="56" rx="4"/>
+    <rect x="40" y="102" width="56" height="56" rx="4"/>
+    <rect x="40" y="164" width="56" height="56" rx="4"/>
+    <rect x="164" y="164" width="56" height="56" rx="4"/>
+    <rect x="226" y="164" width="56" height="56" rx="4"/>
+    <rect x="40" y="226" width="56" height="56" rx="4"/>
+    <rect x="102" y="226" width="56" height="56" rx="4"/>
+    <rect x="164" y="226" width="56" height="56" rx="4"/>
+    <rect x="226" y="226" width="56" height="56" rx="4"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="68" y="74">o</text>
+    <text x="130" y="74">a</text>
+    <text x="192" y="74">a</text>
+    <text x="254" y="74">n</text>
+    <text x="68" y="136">e</text>
+    <text x="130" y="136">t</text>
+    <text x="192" y="136">a</text>
+    <text x="254" y="136">e</text>
+    <text x="68" y="198">i</text>
+    <text x="130" y="198">h</text>
+    <text x="192" y="198">k</text>
+    <text x="254" y="198">r</text>
+    <text x="68" y="260">i</text>
+    <text x="130" y="260">f</text>
+    <text x="192" y="260">l</text>
+    <text x="254" y="260">v</text>
+  </g>
+  <!-- path for "oath": (0,0) -> (0,1) -> (1,1) -> (2,1) -->
+  <g stroke="#4169E1" stroke-width="2.2" fill="none">
+    <line x1="84" y1="68" x2="116" y2="68" marker-end="url(#arrowBlue)"/>
+    <line x1="130" y1="84" x2="130" y2="116" marker-end="url(#arrowBlue)"/>
+    <line x1="130" y1="146" x2="130" y2="178" marker-end="url(#arrowBlue)"/>
+  </g>
+  <!-- path for "eat": (1,3) -> (1,2) -> (1,1), reusing the shared t -->
+  <g stroke="#b57f30" stroke-width="2.2" fill="none">
+    <line x1="240" y1="130" x2="208" y2="130" marker-end="url(#arrowGold)"/>
+    <line x1="178" y1="130" x2="146" y2="130" marker-end="url(#arrowGold)"/>
+  </g>
+  <g font-size="12.5">
+    <text x="40" y="306" fill="#4169E1" font-weight="600">oath: o &#8594; a &#8594; t &#8594; h</text>
+    <text x="200" y="306" fill="#b57f30" font-weight="600">eat: e &#8594; a &#8594; t</text>
+    <text x="360" y="306" fill="#5c6b76">both reuse the t cell</text>
+  </g>
+</svg>

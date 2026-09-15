@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 949,
+  "slug": "largest-time-for-given-digits",
+  "title": "Largest Time for Given Digits",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "largestTimeFromDigits",
+    "parameters": [
+      {
+        "name": "arr",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "largestTimeFromDigits",
+      "rust": "largest_time_from_digits",
+      "typescript": "largestTimeFromDigits"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

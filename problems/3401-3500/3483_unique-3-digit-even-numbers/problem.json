@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3483,
+  "slug": "unique-3-digit-even-numbers",
+  "title": "Unique 3-Digit Even Numbers",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Recursion",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Recursion",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "totalNumbers",
+    "parameters": [
+      {
+        "name": "digits",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "totalNumbers",
+      "rust": "total_numbers",
+      "typescript": "totalNumbers"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

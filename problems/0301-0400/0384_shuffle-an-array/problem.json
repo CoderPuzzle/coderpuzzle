@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 384,
+  "slug": "shuffle-an-array",
+  "title": "Shuffle an Array",
+  "difficulty": "Medium",
+  "tags": [
+    "Randomized"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Design",
+    "Randomized"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Solution",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "nums",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "reset",
+        "parameters": [],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "shuffle",
+        "parameters": [],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

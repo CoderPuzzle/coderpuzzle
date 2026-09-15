@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 599,
+  "slug": "minimum-index-sum-of-two-lists",
+  "title": "Minimum Index Sum of Two Lists",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findRestaurant",
+    "parameters": [
+      {
+        "name": "list1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "list2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "findRestaurant",
+      "rust": "find_restaurant",
+      "typescript": "findRestaurant"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

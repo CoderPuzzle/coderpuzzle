@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1414,
+  "slug": "find-the-minimum-number-of-fibonacci-numbers-whose-sum-is-k",
+  "title": "Find the Minimum Number of Fibonacci Numbers Whose Sum Is K",
+  "difficulty": "Medium",
+  "tags": [
+    "Greedy",
+    "Number Theory"
+  ],
+  "topics": [
+    "Math",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findMinFibonacciNumbers",
+    "parameters": [
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "findMinFibonacciNumbers",
+      "rust": "find_min_fibonacci_numbers",
+      "typescript": "findMinFibonacciNumbers"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2007,
+  "slug": "find-original-array-from-doubled-array",
+  "title": "Find Original Array From Doubled Array",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Greedy",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Greedy",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findOriginalArray",
+    "parameters": [
+      {
+        "name": "changed",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "findOriginalArray",
+      "rust": "find_original_array",
+      "typescript": "findOriginalArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

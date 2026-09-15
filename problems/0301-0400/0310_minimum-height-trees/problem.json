@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "double_bfs",
+  "id": 310,
+  "slug": "minimum-height-trees",
+  "title": "Minimum Height Trees",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "Topological Sort",
+    "Breadth-First Search"
+  ],
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Topological Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findMinHeightTrees",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "findMinHeightTrees",
+      "rust": "find_min_height_trees",
+      "typescript": "findMinHeightTrees"
+    },
+    "comparison": "sorted"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

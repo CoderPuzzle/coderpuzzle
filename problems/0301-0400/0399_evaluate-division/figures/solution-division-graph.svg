@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 230" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="230" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- a -> b and b -> a -->
+  <path d="M 132 108 Q 220 58 308 108" stroke="#42525e" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 308 132 Q 220 182 132 132" stroke="#42525e" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <!-- b -> c and c -> b -->
+  <path d="M 382 108 Q 470 58 558 108" stroke="#42525e" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 558 132 Q 470 182 382 132" stroke="#42525e" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <!-- query path a -> b -> c, accent, above -->
+  <path d="M 120 100 Q 345 -14 570 100" stroke="#4169E1" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#arrowA)"/>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="205" y="70">a / b = 2.0</text>
+    <text x="205" y="172">b / a = 0.5</text>
+    <text x="452" y="70">b / c = 3.0</text>
+    <text x="442" y="172">c / b = 1/3</text>
+  </g>
+  <text x="345" y="34" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">a / c = 2.0 × 3.0 = 6.0</text>
+  <!-- nodes -->
+  <g font-weight="600" text-anchor="middle">
+    <circle cx="110" cy="120" r="22" fill="#4169E1"/>
+    <text x="110" y="126" fill="#ffffff">a</text>
+    <circle cx="330" cy="120" r="22" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+    <text x="330" y="126" fill="#1a2026">b</text>
+    <circle cx="550" cy="120" r="22" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+    <text x="550" y="126" fill="#1a2026">c</text>
+  </g>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="40" y="212">Each equation becomes two directed edges (v and 1/v); a query multiplies weights along</text>
+    <text x="40" y="228">any path, and the intermediate variables cancel.</text>
+  </g>
+</svg>

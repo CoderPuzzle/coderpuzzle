@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3559,
+  "slug": "number-of-ways-to-assign-edge-weights-ii",
+  "title": "Number of Ways to Assign Edge Weights II",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "assignEdgeWeights",
+    "parameters": [
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "assignEdgeWeights",
+      "rust": "assign_edge_weights",
+      "typescript": "assignEdgeWeights"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

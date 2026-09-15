@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 676,
+  "slug": "implement-magic-dictionary",
+  "title": "Implement Magic Dictionary",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Depth-First Search",
+    "Design",
+    "Trie"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Depth-First Search",
+    "Design",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "MagicDictionary",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "buildDict",
+        "parameters": [
+          {
+            "name": "dictionary",
+            "codec": "json",
+            "value_type": {
+              "kind": "array",
+              "items": {
+                "kind": "string"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "search",
+        "parameters": [
+          {
+            "name": "searchWord",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,56 @@
+/**
+ * @param {string[][]} completions
+ * @return {string[]}
+ */
+var mostCommonCoursePair = function (completions) {
+    // Group rows per student; every student is judged and sorted
+    // independently of the rest.
+    const byStudent = new Map();
+    for (const [student, course, date, rating] of completions) {
+        if (!byStudent.has(student)) {
+            byStudent.set(student, []);
+        }
+        byStudent.get(student).push({ date, course, rating: Number(rating) });
+    }
+    const counts = new Map();
+    for (const records of byStudent.values()) {
+        // Qualification without floats: sum >= 4 * n is exactly
+        // "average >= 4" over integer ratings.
+        const n = records.length;
+        if (n < 5) {
+            continue;
+        }
+        let total = 0;
+        for (const record of records) {
+            total += record.rating;
+        }
+        if (total < 4 * n) {
+            continue;
+        }
+        // (date, course) sorts chronologically, name-breaking ties. Plain
+        // string comparison is byte order, matching the other languages.
+        records.sort((a, b) =>
+            a.date < b.date ? -1 : a.date > b.date ? 1 : a.course < b.course ? -1 : a.course > b.course ? 1 : 0,
+        );
+        for (let i = 1; i < n; i++) {
+            const key = records[i - 1].course + " " + records[i].course;
+            counts.set(key, (counts.get(key) || 0) + 1);
+        }
+    }
+    // Sorted keys + strict > pin count-descending, then both names ascending —
+    // no dependence on hash-map iteration order.
+    const keys = [...counts.keys()].sort();
+    let bestKey = null;
+    let bestCount = -1;
+    for (const key of keys) {
+        if (counts.get(key) > bestCount) {
+            bestCount = counts.get(key);
+            bestKey = key;
+        }
+    }
+    if (bestKey === null) {
+        return [];
+    }
+    const split = bestKey.indexOf(" ");
+    return [bestKey.slice(0, split), bestKey.slice(split + 1), String(bestCount)];
+};

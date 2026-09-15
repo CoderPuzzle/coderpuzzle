@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2719,
+  "slug": "count-of-integers",
+  "title": "Count of Integers",
+  "difficulty": "Hard",
+  "tags": [
+    "Digit DP",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "count",
+    "parameters": [
+      {
+        "name": "num1",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "num2",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "min_sum",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "max_sum",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "count",
+      "rust": "count",
+      "typescript": "count"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

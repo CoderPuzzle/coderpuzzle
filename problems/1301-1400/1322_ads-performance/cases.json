@@ -1,0 +1,333 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(1,1,'Clicked'),\n(2,2,'Clicked'),\n(3,3,'Viewed'),\n(5,5,'Ignored'),\n(1,7,'Ignored'),\n(2,7,'Viewed'),\n(3,5,'Clicked'),\n(1,4,'Viewed'),\n(2,11,'Viewed'),\n(1,2,'Clicked');"
+      ],
+      "expected": [
+        [
+          1,
+          66.67
+        ],
+        [
+          3,
+          50.0
+        ],
+        [
+          2,
+          33.33
+        ],
+        [
+          5,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(1,596854,'Clicked'),\n(2,123647,'Clicked'),\n(2,495186,'Clicked'),\n(1,98419,'Clicked'),\n(1,936711,'Clicked'),\n(2,636945,'Clicked'),\n(3,467023,'Clicked'),\n(3,840776,'Clicked'),\n(3,991189,'Clicked');"
+      ],
+      "expected": [
+        [
+          1,
+          100.0
+        ],
+        [
+          2,
+          100.0
+        ],
+        [
+          3,
+          100.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(1,96034,'Viewed'),\n(2,876085,'Viewed'),\n(3,848259,'Viewed'),\n(2,635379,'Viewed'),\n(3,37471,'Viewed'),\n(2,669486,'Viewed'),\n(3,902032,'Viewed'),\n(3,981165,'Viewed'),\n(3,281271,'Viewed');"
+      ],
+      "expected": [
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(2,621430,'Ignored'),\n(3,960438,'Ignored'),\n(1,635018,'Ignored'),\n(4,271953,'Ignored'),\n(2,751985,'Ignored'),\n(4,416426,'Ignored'),\n(2,665700,'Ignored'),\n(4,777259,'Ignored');"
+      ],
+      "expected": [
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(1,1,'Clicked');"
+      ],
+      "expected": [
+        [
+          1,
+          100.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(1,1,'Viewed');"
+      ],
+      "expected": [
+        [
+          1,
+          0.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(1,1,'Ignored');"
+      ],
+      "expected": [
+        [
+          1,
+          0.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(1,1,'Clicked'),\n(2,2,'Viewed'),\n(3,3,'Clicked'),\n(4,4,'Viewed');"
+      ],
+      "expected": [
+        [
+          1,
+          100.0
+        ],
+        [
+          3,
+          100.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(1,1,'Clicked'),\n(2,2,'Clicked'),\n(3,3,'Clicked'),\n(1,4,'Ignored'),\n(2,5,'Ignored'),\n(3,6,'Ignored');"
+      ],
+      "expected": [
+        [
+          1,
+          100.0
+        ],
+        [
+          2,
+          100.0
+        ],
+        [
+          3,
+          100.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(1,1,'Viewed'),\n(1,2,'Ignored'),\n(1,3,'Clicked'),\n(1,4,'Viewed'),\n(1,5,'Ignored'),\n(1,6,'Clicked'),\n(1,7,'Viewed'),\n(1,8,'Ignored'),\n(1,9,'Clicked');"
+      ],
+      "expected": [
+        [
+          1,
+          50.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(8,318032,'Clicked'),\n(24,415298,'Viewed'),\n(5,94477,'Clicked'),\n(1,421099,'Ignored'),\n(30,303433,'Clicked'),\n(8,545616,'Ignored'),\n(12,290123,'Clicked'),\n(27,111342,'Viewed'),\n(7,988765,'Clicked'),\n(27,671811,'Viewed'),\n(26,284949,'Clicked'),\n(6,324902,'Viewed'),\n(21,909453,'Ignored'),\n(28,889748,'Viewed'),\n(3,885826,'Ignored'),\n(11,704331,'Viewed'),\n(17,260963,'Clicked'),\n(8,496593,'Viewed'),\n(3,990462,'Ignored'),\n(27,314831,'Clicked'),\n(30,306124,'Ignored'),\n(23,925177,'Viewed'),\n(28,802379,'Ignored'),\n(7,434054,'Viewed'),\n(20,302204,'Viewed'),\n(15,169157,'Clicked'),\n(10,272269,'Clicked'),\n(3,48573,'Viewed'),\n(21,294056,'Ignored'),\n(18,679476,'Viewed'),\n(23,359498,'Clicked'),\n(22,205074,'Clicked'),\n(14,957908,'Clicked'),\n(21,663398,'Viewed'),\n(9,192628,'Viewed'),\n(14,783227,'Ignored'),\n(11,665251,'Ignored'),\n(7,948244,'Viewed'),\n(4,880203,'Clicked'),\n(23,239988,'Viewed'),\n(25,610482,'Ignored'),\n(28,248950,'Clicked'),\n(11,979979,'Clicked'),\n(10,481317,'Clicked'),\n(2,374430,'Ignored'),\n(3,939449,'Viewed'),\n(24,708013,'Viewed'),\n(1,338492,'Viewed'),\n(11,160338,'Ignored'),\n(14,903216,'Ignored'),\n(22,857660,'Clicked'),\n(10,647737,'Clicked'),\n(29,465717,'Viewed'),\n(5,262194,'Viewed'),\n(20,166624,'Viewed'),\n(19,9853,'Viewed'),\n(2,476877,'Clicked'),\n(12,821817,'Viewed'),\n(10,599215,'Clicked'),\n(15,217304,'Viewed'),\n(30,218017,'Clicked'),\n(2,65232,'Clicked'),\n(24,176864,'Ignored'),\n(22,156910,'Ignored'),\n(2,572764,'Viewed'),\n(19,261157,'Viewed'),\n(2,128213,'Ignored'),\n(10,811380,'Viewed'),\n(21,209990,'Viewed'),\n(7,253611,'Viewed'),\n(14,515836,'Clicked'),\n(8,441683,'Viewed'),\n(8,678886,'Viewed'),\n(27,226199,'Viewed'),\n(7,33188,'Clicked'),\n(9,265696,'Clicked'),\n(17,218173,'Clicked'),\n(14,911957,'Viewed'),\n(5,340802,'Clicked'),\n(29,973114,'Viewed'),\n(19,122533,'Ignored'),\n(13,944717,'Ignored'),\n(21,913203,'Ignored'),\n(24,42471,'Viewed'),\n(13,97422,'Viewed'),\n(7,975100,'Ignored'),\n(29,990002,'Clicked'),\n(11,310594,'Ignored'),\n(16,838342,'Ignored'),\n(11,854408,'Viewed'),\n(17,225694,'Ignored'),\n(26,719282,'Viewed'),\n(11,967626,'Viewed'),\n(16,77994,'Viewed'),\n(21,700818,'Clicked'),\n(2,413978,'Ignored'),\n(5,804070,'Viewed'),\n(22,897910,'Clicked'),\n(28,175391,'Ignored'),\n(21,487144,'Ignored'),\n(16,782757,'Viewed'),\n(30,409409,'Clicked'),\n(26,3433,'Clicked'),\n(30,164357,'Clicked'),\n(20,918997,'Viewed'),\n(4,415009,'Viewed'),\n(29,233136,'Ignored'),\n(2,921392,'Clicked'),\n(6,704100,'Ignored'),\n(11,858186,'Ignored'),\n(25,822438,'Viewed'),\n(30,551980,'Viewed'),\n(1,82827,'Clicked'),\n(23,623365,'Clicked'),\n(16,588048,'Viewed'),\n(20,811717,'Clicked'),\n(2,380182,'Clicked'),\n(25,921774,'Ignored'),\n(29,11064,'Viewed'),\n(27,363765,'Clicked'),\n(3,569774,'Viewed'),\n(13,215328,'Viewed'),\n(13,245053,'Viewed'),\n(28,419492,'Clicked'),\n(3,120011,'Ignored'),\n(26,928350,'Viewed'),\n(17,455033,'Viewed'),\n(28,745784,'Viewed'),\n(3,659127,'Clicked'),\n(21,316991,'Viewed'),\n(14,123913,'Ignored'),\n(6,389654,'Clicked'),\n(6,741056,'Clicked'),\n(11,518265,'Viewed'),\n(9,568185,'Clicked'),\n(23,176903,'Clicked'),\n(21,326964,'Clicked'),\n(18,116223,'Viewed'),\n(26,750347,'Ignored'),\n(16,551876,'Clicked'),\n(17,257364,'Viewed'),\n(28,307706,'Viewed'),\n(8,803912,'Clicked'),\n(28,657144,'Clicked'),\n(22,55491,'Ignored'),\n(30,328491,'Ignored'),\n(30,953315,'Viewed'),\n(26,955681,'Ignored'),\n(10,982240,'Ignored'),\n(26,462162,'Ignored'),\n(20,463540,'Viewed'),\n(5,263923,'Ignored'),\n(12,694249,'Viewed'),\n(5,454453,'Clicked'),\n(20,150931,'Ignored'),\n(26,652338,'Clicked'),\n(10,945725,'Viewed'),\n(7,603962,'Viewed'),\n(22,650988,'Clicked'),\n(3,422102,'Ignored'),\n(30,948212,'Clicked'),\n(11,686034,'Viewed'),\n(11,183106,'Viewed'),\n(29,24297,'Ignored'),\n(1,549386,'Clicked'),\n(26,376460,'Clicked'),\n(6,191262,'Ignored'),\n(16,693117,'Ignored'),\n(3,797182,'Clicked'),\n(6,683207,'Viewed'),\n(22,929381,'Ignored'),\n(8,647881,'Ignored'),\n(10,894200,'Ignored'),\n(13,923836,'Ignored'),\n(8,940442,'Viewed'),\n(23,231861,'Viewed'),\n(12,241559,'Ignored'),\n(11,563323,'Ignored'),\n(17,473835,'Viewed'),\n(17,420123,'Viewed'),\n(10,459582,'Viewed'),\n(19,13824,'Viewed'),\n(6,940972,'Ignored'),\n(15,726967,'Ignored'),\n(20,866126,'Viewed'),\n(13,997266,'Viewed'),\n(20,29280,'Clicked'),\n(17,71006,'Viewed'),\n(21,964653,'Viewed'),\n(20,834918,'Viewed'),\n(30,95777,'Viewed'),\n(16,232954,'Ignored'),\n(30,500009,'Ignored'),\n(25,69508,'Clicked'),\n(30,249928,'Clicked'),\n(10,139086,'Clicked'),\n(6,417237,'Ignored'),\n(22,650822,'Ignored'),\n(23,564654,'Viewed'),\n(1,549839,'Clicked');"
+      ],
+      "expected": [
+        [
+          22,
+          100.0
+        ],
+        [
+          2,
+          80.0
+        ],
+        [
+          1,
+          75.0
+        ],
+        [
+          9,
+          66.67
+        ],
+        [
+          14,
+          66.67
+        ],
+        [
+          26,
+          66.67
+        ],
+        [
+          30,
+          66.67
+        ],
+        [
+          10,
+          62.5
+        ],
+        [
+          5,
+          60.0
+        ],
+        [
+          4,
+          50.0
+        ],
+        [
+          6,
+          50.0
+        ],
+        [
+          15,
+          50.0
+        ],
+        [
+          25,
+          50.0
+        ],
+        [
+          28,
+          50.0
+        ],
+        [
+          23,
+          42.86
+        ],
+        [
+          3,
+          40.0
+        ],
+        [
+          27,
+          40.0
+        ],
+        [
+          7,
+          33.33
+        ],
+        [
+          8,
+          33.33
+        ],
+        [
+          12,
+          33.33
+        ],
+        [
+          21,
+          33.33
+        ],
+        [
+          17,
+          28.57
+        ],
+        [
+          16,
+          25.0
+        ],
+        [
+          20,
+          25.0
+        ],
+        [
+          29,
+          25.0
+        ],
+        [
+          11,
+          14.29
+        ],
+        [
+          13,
+          0.0
+        ],
+        [
+          18,
+          0.0
+        ],
+        [
+          19,
+          0.0
+        ],
+        [
+          24,
+          0.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(1,1,'Clicked'),\n(1,2,'Clicked'),\n(1,3,'Clicked'),\n(1,4,'Clicked'),\n(1,5,'Clicked'),\n(1,6,'Clicked'),\n(1,7,'Clicked'),\n(1,8,'Clicked'),\n(1,9,'Clicked'),\n(1,10,'Clicked'),\n(1,11,'Clicked'),\n(1,12,'Clicked'),\n(1,13,'Clicked'),\n(1,14,'Clicked'),\n(1,15,'Clicked'),\n(1,16,'Clicked'),\n(1,17,'Clicked'),\n(1,18,'Clicked'),\n(1,19,'Clicked'),\n(1,20,'Clicked'),\n(1,21,'Clicked'),\n(1,22,'Clicked'),\n(1,23,'Clicked'),\n(1,24,'Clicked'),\n(1,25,'Clicked'),\n(1,26,'Clicked'),\n(1,27,'Clicked'),\n(1,28,'Clicked'),\n(1,29,'Clicked'),\n(1,30,'Clicked'),\n(1,31,'Clicked'),\n(1,32,'Clicked'),\n(1,33,'Clicked'),\n(1,34,'Clicked'),\n(1,35,'Clicked'),\n(1,36,'Clicked'),\n(1,37,'Clicked'),\n(1,38,'Clicked'),\n(1,39,'Clicked'),\n(1,40,'Clicked'),\n(1,41,'Clicked'),\n(1,42,'Clicked'),\n(1,43,'Clicked'),\n(1,44,'Clicked'),\n(1,45,'Clicked'),\n(1,46,'Clicked'),\n(1,47,'Clicked'),\n(1,48,'Clicked'),\n(1,49,'Clicked'),\n(1,50,'Clicked'),\n(1,51,'Clicked'),\n(1,52,'Clicked'),\n(1,53,'Clicked'),\n(1,54,'Clicked'),\n(1,55,'Clicked'),\n(1,56,'Clicked'),\n(1,57,'Clicked'),\n(1,58,'Clicked'),\n(1,59,'Clicked'),\n(1,60,'Clicked'),\n(1,61,'Clicked'),\n(1,62,'Clicked'),\n(1,63,'Clicked'),\n(1,64,'Clicked'),\n(1,65,'Clicked'),\n(1,66,'Clicked'),\n(1,67,'Clicked'),\n(1,68,'Clicked'),\n(1,69,'Clicked'),\n(1,70,'Clicked'),\n(1,71,'Clicked'),\n(1,72,'Clicked'),\n(1,73,'Clicked'),\n(1,74,'Clicked'),\n(1,75,'Clicked'),\n(1,76,'Clicked'),\n(1,77,'Clicked'),\n(1,78,'Clicked'),\n(1,79,'Clicked'),\n(1,80,'Clicked'),\n(1,81,'Clicked'),\n(1,82,'Clicked'),\n(1,83,'Clicked'),\n(1,84,'Clicked'),\n(1,85,'Clicked'),\n(1,86,'Clicked'),\n(1,87,'Clicked'),\n(1,88,'Clicked'),\n(1,89,'Clicked'),\n(1,90,'Clicked'),\n(1,91,'Clicked'),\n(1,92,'Clicked'),\n(1,93,'Clicked'),\n(1,94,'Clicked'),\n(1,95,'Clicked'),\n(1,96,'Clicked'),\n(1,97,'Clicked'),\n(1,98,'Clicked'),\n(1,99,'Clicked'),\n(1,100,'Clicked'),\n(1,101,'Clicked'),\n(1,102,'Clicked'),\n(1,103,'Clicked'),\n(1,104,'Clicked'),\n(1,105,'Clicked'),\n(1,106,'Clicked'),\n(1,107,'Clicked'),\n(1,108,'Clicked'),\n(1,109,'Clicked'),\n(1,110,'Clicked'),\n(1,111,'Clicked'),\n(1,112,'Clicked'),\n(1,113,'Clicked'),\n(1,114,'Clicked'),\n(1,115,'Clicked'),\n(1,116,'Clicked'),\n(1,117,'Clicked'),\n(1,118,'Clicked'),\n(1,119,'Clicked'),\n(1,120,'Clicked'),\n(1,121,'Clicked'),\n(1,122,'Clicked'),\n(1,123,'Clicked'),\n(1,124,'Clicked'),\n(1,125,'Clicked'),\n(1,126,'Clicked'),\n(1,127,'Clicked'),\n(1,128,'Clicked'),\n(1,129,'Clicked'),\n(1,130,'Clicked'),\n(1,131,'Clicked'),\n(1,132,'Clicked'),\n(1,133,'Clicked'),\n(1,134,'Clicked'),\n(1,135,'Clicked'),\n(1,136,'Clicked'),\n(1,137,'Clicked'),\n(1,138,'Clicked'),\n(1,139,'Clicked'),\n(1,140,'Clicked'),\n(1,141,'Clicked'),\n(1,142,'Clicked'),\n(1,143,'Clicked'),\n(1,144,'Clicked'),\n(1,145,'Clicked'),\n(1,146,'Clicked'),\n(1,147,'Clicked'),\n(1,148,'Clicked'),\n(1,149,'Clicked'),\n(1,150,'Clicked'),\n(1,151,'Clicked'),\n(1,152,'Clicked'),\n(1,153,'Clicked'),\n(1,154,'Clicked'),\n(1,155,'Clicked'),\n(1,156,'Clicked'),\n(1,157,'Clicked'),\n(1,158,'Clicked'),\n(1,159,'Clicked'),\n(1,160,'Clicked'),\n(1,161,'Clicked'),\n(1,162,'Clicked'),\n(1,163,'Clicked'),\n(1,164,'Clicked'),\n(1,165,'Clicked'),\n(1,166,'Clicked'),\n(1,167,'Clicked'),\n(1,168,'Clicked'),\n(1,169,'Clicked'),\n(1,170,'Clicked'),\n(1,171,'Clicked'),\n(1,172,'Clicked'),\n(1,173,'Clicked'),\n(1,174,'Clicked'),\n(1,175,'Clicked'),\n(1,176,'Clicked'),\n(1,177,'Clicked'),\n(1,178,'Clicked'),\n(1,179,'Clicked'),\n(1,180,'Clicked'),\n(1,181,'Clicked'),\n(1,182,'Clicked'),\n(1,183,'Clicked'),\n(1,184,'Clicked'),\n(1,185,'Clicked'),\n(1,186,'Clicked'),\n(1,187,'Clicked'),\n(1,188,'Clicked'),\n(1,189,'Clicked'),\n(1,190,'Clicked'),\n(1,191,'Clicked'),\n(1,192,'Clicked'),\n(1,193,'Clicked'),\n(1,194,'Clicked'),\n(1,195,'Clicked'),\n(1,196,'Clicked'),\n(1,197,'Clicked'),\n(1,198,'Clicked'),\n(1,199,'Clicked'),\n(1,200,'Clicked'),\n(1,1001,'Viewed'),\n(1,1002,'Viewed'),\n(1,1003,'Viewed'),\n(1,1004,'Viewed'),\n(1,1005,'Viewed'),\n(1,1006,'Viewed'),\n(1,1007,'Viewed'),\n(1,1008,'Viewed'),\n(1,1009,'Viewed'),\n(1,1010,'Viewed'),\n(1,1011,'Viewed'),\n(1,1012,'Viewed'),\n(1,1013,'Viewed'),\n(1,1014,'Viewed'),\n(1,1015,'Viewed'),\n(1,1016,'Viewed'),\n(1,1017,'Viewed'),\n(1,1018,'Viewed'),\n(1,1019,'Viewed'),\n(1,1020,'Viewed'),\n(1,1021,'Viewed'),\n(1,1022,'Viewed'),\n(1,1023,'Viewed'),\n(1,1024,'Viewed'),\n(1,1025,'Viewed'),\n(1,1026,'Viewed'),\n(1,1027,'Viewed'),\n(1,1028,'Viewed'),\n(1,1029,'Viewed'),\n(1,1030,'Viewed'),\n(1,1031,'Viewed'),\n(1,1032,'Viewed'),\n(1,1033,'Viewed'),\n(1,1034,'Viewed'),\n(1,1035,'Viewed'),\n(1,1036,'Viewed'),\n(1,1037,'Viewed'),\n(1,1038,'Viewed'),\n(1,1039,'Viewed'),\n(1,1040,'Viewed'),\n(1,1041,'Viewed'),\n(1,1042,'Viewed'),\n(1,1043,'Viewed'),\n(1,1044,'Viewed'),\n(1,1045,'Viewed'),\n(1,1046,'Viewed'),\n(1,1047,'Viewed'),\n(1,1048,'Viewed'),\n(1,1049,'Viewed'),\n(1,1050,'Viewed'),\n(1,1051,'Viewed'),\n(1,1052,'Viewed'),\n(1,1053,'Viewed'),\n(1,1054,'Viewed'),\n(1,1055,'Viewed'),\n(1,1056,'Viewed'),\n(1,1057,'Viewed'),\n(1,1058,'Viewed'),\n(1,1059,'Viewed'),\n(1,1060,'Viewed'),\n(1,1061,'Viewed'),\n(1,1062,'Viewed'),\n(1,1063,'Viewed'),\n(1,1064,'Viewed'),\n(1,1065,'Viewed'),\n(1,1066,'Viewed'),\n(1,1067,'Viewed'),\n(1,1068,'Viewed'),\n(1,1069,'Viewed'),\n(1,1070,'Viewed'),\n(1,1071,'Viewed'),\n(1,1072,'Viewed'),\n(1,1073,'Viewed'),\n(1,1074,'Viewed'),\n(1,1075,'Viewed'),\n(1,1076,'Viewed'),\n(1,1077,'Viewed'),\n(1,1078,'Viewed'),\n(1,1079,'Viewed'),\n(1,1080,'Viewed'),\n(1,1081,'Viewed'),\n(1,1082,'Viewed'),\n(1,1083,'Viewed'),\n(1,1084,'Viewed'),\n(1,1085,'Viewed'),\n(1,1086,'Viewed'),\n(1,1087,'Viewed'),\n(1,1088,'Viewed'),\n(1,1089,'Viewed'),\n(1,1090,'Viewed'),\n(1,1091,'Viewed'),\n(1,1092,'Viewed'),\n(1,1093,'Viewed'),\n(1,1094,'Viewed'),\n(1,1095,'Viewed'),\n(1,1096,'Viewed'),\n(1,1097,'Viewed'),\n(1,1098,'Viewed'),\n(1,1099,'Viewed'),\n(1,1100,'Viewed'),\n(2,1,'Ignored'),\n(2,2,'Ignored'),\n(2,3,'Ignored'),\n(2,4,'Ignored'),\n(2,5,'Ignored'),\n(2,6,'Ignored'),\n(2,7,'Ignored'),\n(2,8,'Ignored'),\n(2,9,'Ignored'),\n(2,10,'Ignored'),\n(2,11,'Ignored'),\n(2,12,'Ignored'),\n(2,13,'Ignored'),\n(2,14,'Ignored'),\n(2,15,'Ignored'),\n(2,16,'Ignored'),\n(2,17,'Ignored'),\n(2,18,'Ignored'),\n(2,19,'Ignored'),\n(2,20,'Ignored'),\n(2,21,'Ignored'),\n(2,22,'Ignored'),\n(2,23,'Ignored'),\n(2,24,'Ignored'),\n(2,25,'Ignored'),\n(2,26,'Ignored'),\n(2,27,'Ignored'),\n(2,28,'Ignored'),\n(2,29,'Ignored'),\n(2,30,'Ignored'),\n(2,31,'Ignored'),\n(2,32,'Ignored'),\n(2,33,'Ignored'),\n(2,34,'Ignored'),\n(2,35,'Ignored'),\n(2,36,'Ignored'),\n(2,37,'Ignored'),\n(2,38,'Ignored'),\n(2,39,'Ignored'),\n(2,40,'Ignored'),\n(2,41,'Ignored'),\n(2,42,'Ignored'),\n(2,43,'Ignored'),\n(2,44,'Ignored'),\n(2,45,'Ignored'),\n(2,46,'Ignored'),\n(2,47,'Ignored'),\n(2,48,'Ignored'),\n(2,49,'Ignored'),\n(2,50,'Ignored');"
+      ],
+      "expected": [
+        [
+          1,
+          66.67
+        ],
+        [
+          2,
+          0.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Ads VALUES\n(1,1,'Clicked'),\n(1,2,'Clicked'),\n(1,2,'Viewed'),\n(1,3,'Viewed'),\n(2,1,'Clicked'),\n(2,2,'Viewed');"
+      ],
+      "expected": [
+        [
+          1,
+          50.0
+        ],
+        [
+          2,
+          50.0
+        ]
+      ]
+    }
+  ]
+}

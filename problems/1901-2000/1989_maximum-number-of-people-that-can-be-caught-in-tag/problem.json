@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1989,
+  "slug": "maximum-number-of-people-that-can-be-caught-in-tag",
+  "title": "Maximum Number of People That Can Be Caught in Tag",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "catchMaximumAmountofPeople",
+    "parameters": [
+      {
+        "name": "team",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "dist",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "catchMaximumAmountofPeople",
+      "rust": "catch_maximum_amount_of_people",
+      "typescript": "catchMaximumAmountofPeople"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

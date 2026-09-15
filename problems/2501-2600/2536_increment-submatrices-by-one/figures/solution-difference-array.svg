@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 250" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="560" height="250" fill="#ffffff"/>
+  <text x="46" y="40" fill="#1a2026" font-weight="600">diff (with sentinel column)</text>
+  <text x="356" y="40" fill="#1a2026" font-weight="600">prefix sums → mat</text>
+  <!-- column labels -->
+  <g fill="#5c6b76" font-size="12.5" text-anchor="middle">
+    <text x="70" y="62">c=0</text><text x="110" y="62">c=1</text><text x="150" y="62">c=2</text><text x="190" y="62">c=3</text>
+    <text x="390" y="62">0</text><text x="430" y="62">1</text><text x="470" y="62">2</text>
+  </g>
+  <g fill="#5c6b76" font-size="12.5" text-anchor="end">
+    <text x="56" y="88">r=0</text><text x="56" y="128">r=1</text><text x="56" y="168">r=2</text>
+    <text x="376" y="88">0</text><text x="376" y="128">1</text><text x="376" y="168">2</text>
+  </g>
+  <!-- diff grid -->
+  <g text-anchor="middle" font-weight="600" stroke-width="1.2">
+    <rect x="50" y="70" width="40" height="40" fill="#e8edfa" stroke="#4169E1"/><text x="70" y="95" fill="#4169E1">1</text>
+    <rect x="90" y="70" width="40" height="40" fill="#ffffff" stroke="#98a2ac"/><text x="110" y="95" fill="#5c6b76">0</text>
+    <rect x="130" y="70" width="40" height="40" fill="#f3f5f7" stroke="#98a2ac"/><text x="150" y="95" fill="#1a2026">−1</text>
+    <rect x="170" y="70" width="40" height="40" fill="#ffffff" stroke="#98a2ac" stroke-dasharray="3 3"/><text x="190" y="95" fill="#5c6b76">0</text>
+    <rect x="50" y="110" width="40" height="40" fill="#e8edfa" stroke="#4169E1"/><text x="70" y="135" fill="#4169E1">1</text>
+    <rect x="90" y="110" width="40" height="40" fill="#e8edfa" stroke="#4169E1"/><text x="110" y="135" fill="#4169E1">1</text>
+    <rect x="130" y="110" width="40" height="40" fill="#f3f5f7" stroke="#98a2ac"/><text x="150" y="135" fill="#1a2026">−1</text>
+    <rect x="170" y="110" width="40" height="40" fill="#f3f5f7" stroke="#98a2ac"/><text x="190" y="135" fill="#1a2026">−1</text>
+    <rect x="50" y="150" width="40" height="40" fill="#ffffff" stroke="#98a2ac"/><text x="70" y="175" fill="#5c6b76">0</text>
+    <rect x="90" y="150" width="40" height="40" fill="#e8edfa" stroke="#4169E1"/><text x="110" y="175" fill="#4169E1">1</text>
+    <rect x="130" y="150" width="40" height="40" fill="#ffffff" stroke="#98a2ac"/><text x="150" y="175" fill="#5c6b76">0</text>
+    <rect x="170" y="150" width="40" height="40" fill="#f3f5f7" stroke="#98a2ac"/><text x="190" y="175" fill="#1a2026">−1</text>
+  </g>
+  <line x1="238" y1="130" x2="316" y2="130" marker-end="url(#arrow)"/>
+  <text x="277" y="118" text-anchor="middle" fill="#5c6b76" font-size="12.5">running sum</text>
+  <!-- result grid -->
+  <g text-anchor="middle" font-weight="600" stroke-width="1.2">
+    <rect x="370" y="70" width="40" height="40" fill="#e8edfa" stroke="#4169E1"/><text x="390" y="95" fill="#4169E1">1</text>
+    <rect x="410" y="70" width="40" height="40" fill="#e8edfa" stroke="#4169E1"/><text x="430" y="95" fill="#4169E1">1</text>
+    <rect x="450" y="70" width="40" height="40" fill="#ffffff" stroke="#98a2ac"/><text x="470" y="95" fill="#5c6b76">0</text>
+    <rect x="370" y="110" width="40" height="40" fill="#e8edfa" stroke="#4169E1"/><text x="390" y="135" fill="#4169E1">1</text>
+    <rect x="410" y="110" width="40" height="40" fill="#e8edfa" stroke="#4169E1" stroke-width="2"/><text x="430" y="135" fill="#4169E1">2</text>
+    <rect x="450" y="110" width="40" height="40" fill="#e8edfa" stroke="#4169E1"/><text x="470" y="135" fill="#4169E1">1</text>
+    <rect x="370" y="150" width="40" height="40" fill="#ffffff" stroke="#98a2ac"/><text x="390" y="175" fill="#5c6b76">0</text>
+    <rect x="410" y="150" width="40" height="40" fill="#e8edfa" stroke="#4169E1"/><text x="430" y="175" fill="#4169E1">1</text>
+    <rect x="450" y="150" width="40" height="40" fill="#e8edfa" stroke="#4169E1"/><text x="470" y="175" fill="#4169E1">1</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="230" y="226">query [1,1,2,2] writes +1 at c=1, −1 at c=3 for rows 1–2;</text>
+    <text x="230" y="244">query [0,0,1,1] writes +1 at c=0, −1 at c=2 for rows 0–1.</text>
+  </g>
+</svg>

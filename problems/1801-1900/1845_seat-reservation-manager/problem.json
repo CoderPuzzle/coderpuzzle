@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1845,
+  "slug": "seat-reservation-manager",
+  "title": "Seat Reservation Manager",
+  "difficulty": "Medium",
+  "tags": [
+    "Heap"
+  ],
+  "topics": [
+    "Design",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "SeatManager",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "n",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "reserve",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "unreserve",
+        "parameters": [
+          {
+            "name": "seatNumber",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

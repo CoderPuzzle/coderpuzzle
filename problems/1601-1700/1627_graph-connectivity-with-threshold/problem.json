@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1627,
+  "slug": "graph-connectivity-with-threshold",
+  "title": "Graph Connectivity With Threshold",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Union Find",
+    "Number Theory"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Union-Find",
+    "Number Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "areConnected",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "threshold",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "boolean"
+      }
+    },
+    "entrypoints": {
+      "go": "areConnected",
+      "rust": "are_connected",
+      "typescript": "areConnected"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

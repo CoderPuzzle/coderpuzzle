@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 947,
+  "slug": "most-stones-removed-with-same-row-or-column",
+  "title": "Most Stones Removed with Same Row or Column",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Depth-First Search",
+    "Union-Find",
+    "Graph Theory",
+    "Bipartite Graph"
+  ],
+  "topics": [
+    "Hash Table",
+    "Depth-First Search",
+    "Union-Find",
+    "Graph Theory",
+    "Bipartite Graph"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "removeStones",
+    "parameters": [
+      {
+        "name": "stones",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "removeStones",
+      "rust": "remove_stones",
+      "typescript": "removeStones"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

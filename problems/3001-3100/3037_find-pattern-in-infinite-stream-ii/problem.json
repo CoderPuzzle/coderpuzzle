@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3037,
+  "slug": "find-pattern-in-infinite-stream-ii",
+  "title": "Find Pattern in Infinite Stream II",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Rolling Hash",
+    "String Matching",
+    "Interactive",
+    "Hash Function"
+  ],
+  "topics": [
+    "Array",
+    "Sliding Window",
+    "Rolling Hash",
+    "String Matching",
+    "Interactive",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "findPattern",
+    "oracle": "InfiniteStream",
+    "oracle_methods": [
+      {
+        "name": "next",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "pattern",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 1000000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "InfiniteStream",
+        "construct": [
+          "bits"
+        ],
+        "auxiliary": [
+          "pattern"
+        ],
+        "parameter": "stream"
+      }
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

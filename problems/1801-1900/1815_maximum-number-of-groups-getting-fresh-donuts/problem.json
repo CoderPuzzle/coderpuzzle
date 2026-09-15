@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1815,
+  "slug": "maximum-number-of-groups-getting-fresh-donuts",
+  "title": "Maximum Number of Groups Getting Fresh Donuts",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Memoization",
+    "Bitmask"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Memoization",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxHappyGroups",
+    "parameters": [
+      {
+        "name": "batchSize",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "groups",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxHappyGroups",
+      "rust": "max_happy_groups",
+      "typescript": "maxHappyGroups"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

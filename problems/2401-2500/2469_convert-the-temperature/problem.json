@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2469,
+  "slug": "convert-the-temperature",
+  "title": "Convert the Temperature",
+  "difficulty": "Easy",
+  "tags": [
+    "Math"
+  ],
+  "topics": [
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "convertTemperature",
+    "parameters": [
+      {
+        "name": "celsius",
+        "codec": "json",
+        "value_type": {
+          "kind": "number"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "number"
+      }
+    },
+    "entrypoints": {
+      "go": "convertTemperature",
+      "rust": "convert_temperature",
+      "typescript": "convertTemperature"
+    },
+    "comparison": {
+      "mode": "close",
+      "tolerance": 1e-05
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

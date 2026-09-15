@@ -1,0 +1,4 @@
+class Solution {
+  public:
+    int closestFair(int n) { throw logic_error("TODO"); }
+};

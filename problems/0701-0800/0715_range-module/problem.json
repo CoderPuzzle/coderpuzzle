@@ -1,0 +1,99 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 715,
+  "slug": "range-module",
+  "title": "Range Module",
+  "difficulty": "Hard",
+  "tags": [
+    "Balanced BST",
+    "Segment Tree"
+  ],
+  "topics": [
+    "Design",
+    "Segment Tree",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "RangeModule",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "addRange",
+        "parameters": [
+          {
+            "name": "left",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "right",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "queryRange",
+        "parameters": [
+          {
+            "name": "left",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "right",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "removeRange",
+        "parameters": [
+          {
+            "name": "left",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "right",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 957,
+  "slug": "prison-cells-after-n-days",
+  "title": "Prison Cells After N Days",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Bit Manipulation",
+    "Floyd's Cycle Finding Algorithm"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Bit Manipulation",
+    "Floyd's Cycle Finding Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "prisonAfterNDays",
+    "parameters": [
+      {
+        "name": "cells",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "prisonAfterNDays",
+      "rust": "prison_after_n_days",
+      "typescript": "prisonAfterNDays"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

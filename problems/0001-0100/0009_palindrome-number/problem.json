@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 9,
+  "slug": "palindrome-number",
+  "title": "Palindrome Number",
+  "difficulty": "Easy",
+  "tags": [
+    "Math"
+  ],
+  "topics": [
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "isPalindrome",
+    "parameters": [
+      {
+        "name": "x",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "isPalindrome",
+      "rust": "is_palindrome",
+      "typescript": "isPalindrome"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

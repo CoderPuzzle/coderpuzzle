@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2820,
+  "slug": "election-results",
+  "title": "Election Results",
+  "difficulty": "Medium",
+  "tags": [
+    "Database",
+    "SQL"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "exact",
+    "sql": {
+      "schema": "CREATE TABLE Votes (voter VARCHAR, candidate VARCHAR);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

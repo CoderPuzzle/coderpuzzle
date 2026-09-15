@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1426,
+  "slug": "counting-elements",
+  "title": "Counting Elements",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countElements",
+    "parameters": [
+      {
+        "name": "arr",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countElements",
+      "rust": "count_elements",
+      "typescript": "countElements"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

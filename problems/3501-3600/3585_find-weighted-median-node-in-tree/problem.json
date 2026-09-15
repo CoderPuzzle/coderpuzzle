@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3585,
+  "slug": "find-weighted-median-node-in-tree",
+  "title": "Find Weighted Median Node in Tree",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findMedian",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "findMedian",
+      "rust": "find_median",
+      "typescript": "findMedian"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

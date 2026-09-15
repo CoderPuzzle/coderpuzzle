@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <!-- nums = [1,4,3,7,4,5], k = 3; cells x = 100 + 80i, w 62 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="100" y="40" width="62" height="36"/><rect x="180" y="40" width="62" height="36"/>
+    <rect x="260" y="40" width="62" height="36"/><rect x="340" y="40" width="62" height="34" fill="#dbe4f6"/>
+    <rect x="420" y="40" width="62" height="36"/><rect x="500" y="40" width="62" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="131" y="63">1</text><text x="211" y="63">4</text><text x="291" y="63">3</text>
+    <text x="371" y="63">7</text><text x="451" y="63">4</text><text x="531" y="63">5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="131" y="94">0</text><text x="211" y="94">1</text><text x="291" y="94">2</text>
+    <text x="371" y="94" fill="#4169E1" font-weight="600">3 = k</text><text x="451" y="94">4</text><text x="531" y="94">5</text>
+  </g>
+  <!-- expansion brackets: [3,3] [3,4] [3,5] [2,5] [1,5] -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 340 140 v 6 h 62 v -6"/>
+    <path d="M 340 172 v 6 h 142 v -6"/>
+    <path d="M 340 204 v 6 h 222 v -6"/>
+    <path d="M 260 236 v 6 h 302 v -6"/>
+    <path d="M 180 268 v 6 h 382 v -6" stroke-width="2.6"/>
+  </g>
+  <g font-size="12.5" fill="#1a2026">
+    <text x="40" y="136">width 1</text><text x="40" y="168">width 2</text><text x="40" y="200">width 3</text>
+    <text x="40" y="232">width 4</text><text x="40" y="264">width 5</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="586" y="132">min 7 × 1 = 7</text>
+    <text x="586" y="164">grabs 4 · min 4 × 2 = 8</text>
+    <text x="586" y="196">grabs 5 · min 4 × 3 = 12</text>
+    <text x="586" y="228">grabs 3 · min 3 × 4 = 12</text>
+    <text x="586" y="260" fill="#4169E1" font-weight="600">grabs 4 · min 3 × 5 = 15</text>
+  </g>
+  <text x="40" y="310" fill="#1a2026" font-size="13">Each step absorbs the larger boundary value — 4 beats 3, 5 beats 3 — so the minimum stays as high as possible</text>
+  <text x="40" y="326" fill="#1a2026" font-size="13">at every width; the best score 15 is reached by the full expansion to (1, 5).</text>
+</svg>

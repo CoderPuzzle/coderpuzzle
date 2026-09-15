@@ -1,0 +1,136 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(1,1,'2019-07-01','view',NULL),\n(1,1,'2019-07-01','like',NULL),\n(1,1,'2019-07-01','share',NULL),\n(2,2,'2019-07-04','view',NULL),\n(2,2,'2019-07-04','report','spam'),\n(3,4,'2019-07-04','view',NULL),\n(3,4,'2019-07-04','report','spam'),\n(4,3,'2019-07-02','view',NULL),\n(4,3,'2019-07-02','report','spam'),\n(5,2,'2019-07-03','view',NULL),\n(5,2,'2019-07-03','report','racism'),\n(5,5,'2019-07-03','view',NULL),\n(5,5,'2019-07-03','report','racism');\nINSERT INTO Removals VALUES\n(2,'2019-07-20'),\n(3,'2019-07-18');"
+      ],
+      "expected": [
+        [
+          75.0
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(1,1,'2019-07-01','view',NULL);\nINSERT INTO Removals VALUES\n(1,'2019-07-02');"
+      ],
+      "expected": [
+        [
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(1,1,'2019-07-01','report','spam'),\n(2,2,'2019-07-01','report','spam');\nINSERT INTO Removals VALUES\n(1,'2019-07-05'),\n(2,'2019-07-05');"
+      ],
+      "expected": [
+        [
+          100.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(1,1,'2019-07-01','report','spam'),\n(2,2,'2019-07-01','report','spam');\n"
+      ],
+      "expected": [
+        [
+          0.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(1,1,'2019-07-01','report','spam'),\n(2,2,'2019-07-01','report','racism');\nINSERT INTO Removals VALUES\n(1,'2019-07-02'),\n(2,'2019-07-02');"
+      ],
+      "expected": [
+        [
+          100.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(1,1,'2019-07-01','report','spam'),\n(2,2,'2019-07-01','report','spam'),\n(3,3,'2019-07-01','report','spam');\nINSERT INTO Removals VALUES\n(1,'2019-07-02');"
+      ],
+      "expected": [
+        [
+          33.33
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(1,1,'2019-07-01','report','spam'),\n(2,2,'2019-07-01','report','spam'),\n(3,3,'2019-07-02','report','spam');\nINSERT INTO Removals VALUES\n(1,'2019-07-09'),\n(3,'2019-07-09');"
+      ],
+      "expected": [
+        [
+          75.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(1,7,'2019-07-01','report','spam'),\n(2,7,'2019-07-01','report','spam'),\n(3,7,'2019-07-01','report','spam'),\n(4,8,'2019-07-01','report','spam');\nINSERT INTO Removals VALUES\n(7,'2019-07-05');"
+      ],
+      "expected": [
+        [
+          50.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(1,1,'2019-07-01','report','spam'),\n(1,1,'2019-07-02','report','spam'),\n(2,2,'2019-07-01','report','spam');\nINSERT INTO Removals VALUES\n(1,'2019-07-03');"
+      ],
+      "expected": [
+        [
+          75.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "\n"
+      ],
+      "expected": [
+        [
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(100,1,'2019-07-01','report','spam'),\n(100,1,'2019-07-01','view',NULL),\n(101,2,'2019-07-01','report','spam'),\n(101,2,'2019-07-01','view',NULL),\n(102,3,'2019-07-01','report','spam'),\n(102,3,'2019-07-01','view',NULL),\n(103,4,'2019-07-01','report','spam'),\n(103,4,'2019-07-01','view',NULL),\n(100,5,'2019-07-02','report','spam'),\n(100,5,'2019-07-02','view',NULL),\n(101,6,'2019-07-02','report','spam'),\n(101,6,'2019-07-02','view',NULL),\n(102,7,'2019-07-02','report','spam'),\n(102,7,'2019-07-02','view',NULL),\n(103,8,'2019-07-02','report','spam'),\n(103,8,'2019-07-02','view',NULL),\n(100,9,'2019-07-03','report','spam'),\n(100,9,'2019-07-03','view',NULL),\n(101,10,'2019-07-03','report','spam'),\n(101,10,'2019-07-03','view',NULL),\n(102,11,'2019-07-03','report','spam'),\n(102,11,'2019-07-03','view',NULL),\n(103,12,'2019-07-03','report','spam'),\n(103,12,'2019-07-03','view',NULL),\n(100,13,'2019-07-04','report','spam'),\n(100,13,'2019-07-04','view',NULL),\n(101,14,'2019-07-04','report','spam'),\n(101,14,'2019-07-04','view',NULL),\n(102,15,'2019-07-04','report','spam'),\n(102,15,'2019-07-04','view',NULL),\n(103,16,'2019-07-04','report','spam'),\n(103,16,'2019-07-04','view',NULL),\n(100,17,'2019-07-05','report','spam'),\n(100,17,'2019-07-05','view',NULL),\n(101,18,'2019-07-05','report','spam'),\n(101,18,'2019-07-05','view',NULL),\n(102,19,'2019-07-05','report','spam'),\n(102,19,'2019-07-05','view',NULL),\n(103,20,'2019-07-05','report','spam'),\n(103,20,'2019-07-05','view',NULL),\n(100,21,'2019-07-06','report','spam'),\n(100,21,'2019-07-06','view',NULL),\n(101,22,'2019-07-06','report','spam'),\n(101,22,'2019-07-06','view',NULL),\n(102,23,'2019-07-06','report','spam'),\n(102,23,'2019-07-06','view',NULL),\n(103,24,'2019-07-06','report','spam'),\n(103,24,'2019-07-06','view',NULL),\n(100,25,'2019-07-07','report','spam'),\n(100,25,'2019-07-07','view',NULL),\n(101,26,'2019-07-07','report','spam'),\n(101,26,'2019-07-07','view',NULL),\n(102,27,'2019-07-07','report','spam'),\n(102,27,'2019-07-07','view',NULL),\n(103,28,'2019-07-07','report','spam'),\n(103,28,'2019-07-07','view',NULL),\n(100,29,'2019-07-08','report','spam'),\n(100,29,'2019-07-08','view',NULL),\n(101,30,'2019-07-08','report','spam'),\n(101,30,'2019-07-08','view',NULL),\n(102,31,'2019-07-08','report','spam'),\n(102,31,'2019-07-08','view',NULL),\n(103,32,'2019-07-08','report','spam'),\n(103,32,'2019-07-08','view',NULL);\nINSERT INTO Removals VALUES\n(2,'2019-07-20'),\n(7,'2019-07-20'),\n(9,'2019-07-20'),\n(12,'2019-07-20'),\n(14,'2019-07-20'),\n(19,'2019-07-20'),\n(21,'2019-07-20'),\n(24,'2019-07-20'),\n(26,'2019-07-20'),\n(31,'2019-07-20');"
+      ],
+      "expected": [
+        [
+          31.25
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(1,1,'2019-07-01','report','racism'),\n(2,2,'2019-07-01','report','racism'),\n(3,3,'2019-07-02','report','spam'),\n(4,4,'2019-07-02','report','spam');\nINSERT INTO Removals VALUES\n(1,'2019-07-05'),\n(3,'2019-07-05');"
+      ],
+      "expected": [
+        [
+          50.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Actions VALUES\n(1,10,'2019-07-01','report','spam'),\n(1,11,'2019-07-01','report','spam'),\n(1,20,'2019-07-02','report','spam'),\n(1,21,'2019-07-02','report','spam'),\n(1,30,'2019-07-03','report','spam'),\n(1,31,'2019-07-03','report','spam');\nINSERT INTO Removals VALUES\n(10,'2019-07-10'),\n(11,'2019-07-10'),\n(20,'2019-07-10'),\n(21,'2019-07-10'),\n(30,'2019-07-10'),\n(31,'2019-07-10');"
+      ],
+      "expected": [
+        [
+          100.0
+        ]
+      ]
+    }
+  ]
+}

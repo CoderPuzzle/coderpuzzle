@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3134,
+  "slug": "find-the-median-of-the-uniqueness-array",
+  "title": "Find the Median of the Uniqueness Array",
+  "difficulty": "Hard",
+  "tags": [
+    "Binary Search",
+    "Sliding Window"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Sliding Window"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "medianOfUniquenessArray",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "medianOfUniquenessArray",
+      "rust": "median_of_uniqueness_array",
+      "typescript": "medianOfUniquenessArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

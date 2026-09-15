@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3611,
+  "slug": "find-overbooked-employees",
+  "title": "Find Overbooked Employees",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "exact",
+    "sql": {
+      "schema": "CREATE TABLE employees (employee_id INTEGER, employee_name TEXT, department TEXT, PRIMARY KEY (employee_id));\nCREATE TABLE meetings (meeting_id INTEGER, employee_id INTEGER, meeting_date DATE, meeting_type TEXT, duration_hours DECIMAL, PRIMARY KEY (meeting_id));"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

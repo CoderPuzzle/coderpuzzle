@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 293,
+  "slug": "flip-game",
+  "title": "Flip Game",
+  "difficulty": "Easy",
+  "tags": [
+    "String"
+  ],
+  "topics": [
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "generatePossibleNextMoves",
+    "parameters": [
+      {
+        "name": "currentState",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "generatePossibleNextMoves",
+      "rust": "generate_possible_next_moves",
+      "typescript": "generatePossibleNextMoves"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

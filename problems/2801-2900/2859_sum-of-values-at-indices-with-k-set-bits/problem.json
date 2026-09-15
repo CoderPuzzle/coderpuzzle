@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2859,
+  "slug": "sum-of-values-at-indices-with-k-set-bits",
+  "title": "Sum of Values at Indices With K Set Bits",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Array",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sumIndicesWithKSetBits",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "sumIndicesWithKSetBits",
+      "rust": "sum_indices_with_k_set_bits",
+      "typescript": "sumIndicesWithKSetBits"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

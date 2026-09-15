@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1104,
+  "slug": "path-in-zigzag-labelled-binary-tree",
+  "title": "Path In Zigzag Labelled Binary Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Tree",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Math",
+    "Tree",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "pathInZigZagTree",
+    "parameters": [
+      {
+        "name": "label",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "pathInZigZagTree",
+      "rust": "path_in_zig_zag_tree",
+      "typescript": "pathInZigZagTree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

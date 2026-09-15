@@ -1,0 +1,579 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(1,'The Great Gatsby','F. Scott',1925,4.5),\n(2,'To Kill a Mockingbird','Harper Lee',1960,NULL),\n(3,'Pride and Prejudice','Jane Austen',1813,4.8),\n(4,'The Catcher in the Rye','J.D. Salinger',1951,NULL),\n(5,'Animal Farm','George Orwell',1945,4.2),\n(6,'Lord of the Flies','William Golding',1954,NULL);"
+      ],
+      "expected": [
+        [
+          2,
+          "To Kill a Mockingbird",
+          "Harper Lee",
+          1960
+        ],
+        [
+          4,
+          "The Catcher in the Rye",
+          "J.D. Salinger",
+          1951
+        ],
+        [
+          6,
+          "Lord of the Flies",
+          "William Golding",
+          1954
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(1,'The Hobbit','J.R.R. Tolkien',1937,4.7),\n(2,'Jane Eyre','Charlotte Bronte',1847,4.4),\n(3,'Wuthering Heights','Emily Bronte',1847,0.0);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(10,'Kidnapped','Robert Louis Stevenson',1886,NULL),\n(11,'Treasure Island','Robert Louis Stevenson',1883,NULL),\n(12,'The Black Arrow','Robert Louis Stevenson',1888,NULL);"
+      ],
+      "expected": [
+        [
+          10,
+          "Kidnapped",
+          "Robert Louis Stevenson",
+          1886
+        ],
+        [
+          11,
+          "Treasure Island",
+          "Robert Louis Stevenson",
+          1883
+        ],
+        [
+          12,
+          "The Black Arrow",
+          "Robert Louis Stevenson",
+          1888
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(7,'Persuasion','Jane Austen',1817,NULL);"
+      ],
+      "expected": [
+        [
+          7,
+          "Persuasion",
+          "Jane Austen",
+          1817
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(9,'Middlemarch','George Eliot',1871,4.1);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(12,'A Modest Proposal','Jonathan Swift',1729,3.9),\n(7,'The Rape of the Lock','Alexander Pope',1712,NULL),\n(5,'Robinson Crusoe','Daniel Defoe',1719,4.0),\n(2,'Gulliver''s Travels','Jonathan Swift',1726,NULL),\n(9,'Moll Flanders','Daniel Defoe',1722,NULL);"
+      ],
+      "expected": [
+        [
+          2,
+          "Gulliver's Travels",
+          "Jonathan Swift",
+          1726
+        ],
+        [
+          7,
+          "The Rape of the Lock",
+          "Alexander Pope",
+          1712
+        ],
+        [
+          9,
+          "Moll Flanders",
+          "Daniel Defoe",
+          1722
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(1,'Dubliners','James Joyce',1914,0.0),\n(2,'Ulysses','James Joyce',1922,NULL),\n(3,'Finnegans Wake','James Joyce',1939,0.0),\n(4,'A Portrait of the Artist as a Young Man','James Joyce',1916,NULL);"
+      ],
+      "expected": [
+        [
+          2,
+          "Ulysses",
+          "James Joyce",
+          1922
+        ],
+        [
+          4,
+          "A Portrait of the Artist as a Young Man",
+          "James Joyce",
+          1916
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(1,'Collected Poems','Anonymous',1901,NULL),\n(2,'Collected Poems','Anonymous',1901,3.3),\n(3,'Collected Poems','Anonymous',1901,NULL),\n(4,'Untitled Draft','Unknown',1902,NULL);"
+      ],
+      "expected": [
+        [
+          1,
+          "Collected Poems",
+          "Anonymous",
+          1901
+        ],
+        [
+          3,
+          "Collected Poems",
+          "Anonymous",
+          1901
+        ],
+        [
+          4,
+          "Untitled Draft",
+          "Unknown",
+          1902
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(1,'Alice''s Adventures in Wonderland','Lewis Carroll',1865,4.3),\n(2,'Through the Looking-Glass','Lewis Carroll',1871,NULL),\n(3,'The Rime of the Ancient Mariner','Samuel Taylor Coleridge',1798,NULL),\n(4,'Love''s Labour''s Lost','William Shakespeare',1598,0.0),\n(5,'A Midsummer Night''s Dream','William Shakespeare',1600,NULL),\n(6,'The Winter''s Tale','William Shakespeare',1623,4.6);"
+      ],
+      "expected": [
+        [
+          2,
+          "Through the Looking-Glass",
+          "Lewis Carroll",
+          1871
+        ],
+        [
+          3,
+          "The Rime of the Ancient Mariner",
+          "Samuel Taylor Coleridge",
+          1798
+        ],
+        [
+          5,
+          "A Midsummer Night's Dream",
+          "William Shakespeare",
+          1600
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(515,'Kestrel','V. Dunlin',1995,2.0),\n(563,'Orchard Revisited','V. Dunlin',1917,1.4),\n(541,'Isolde Lineage','H. Fallow',1879,2.8),\n(558,'Juniper of Winter','W. Egret',1852,NULL),\n(574,'Harbor At Noon','T. Corvid',1826,0.7),\n(573,'Orchard County','S. Bramble',1827,NULL),\n(547,'Fable Revisited','H. Fallow',1943,1.6),\n(568,'Juniper Unbound','T. Corvid',1982,1.9),\n(579,'Meridian in Exile','S. Bramble',1891,NULL),\n(520,'Ember County','T. Corvid',1840,2.5),\n(531,'Isolde Unbound','S. Bramble',1969,NULL),\n(552,'Lantern','W. Egret',2008,NULL),\n(589,'Meridian','H. Fallow',1801,2.2),\n(557,'Fable Lineage','V. Dunlin',1853,2.6),\n(510,'Ember Revisited','W. Egret',1930,NULL),\n(537,'Fable At Noon','S. Bramble',1813,NULL),\n(505,'Kestrel of Winter','H. Fallow',1865,1.0),\n(536,'Nocturne County','R. Alder',1814,2.3),\n(500,'Ember At Noon','R. Alder',1800,0.5),\n(521,'Isolde of Winter','V. Dunlin',1839,0.8),\n(542,'Lantern in Exile','R. Alder',1878,1.1),\n(526,'Nocturne in Exile','T. Corvid',1904,1.3),\n(584,'Harbor Unbound','R. Alder',1956,1.7),\n(504,'Harbor Lineage','W. Egret',1866,NULL);"
+      ],
+      "expected": [
+        [
+          504,
+          "Harbor Lineage",
+          "W. Egret",
+          1866
+        ],
+        [
+          510,
+          "Ember Revisited",
+          "W. Egret",
+          1930
+        ],
+        [
+          531,
+          "Isolde Unbound",
+          "S. Bramble",
+          1969
+        ],
+        [
+          537,
+          "Fable At Noon",
+          "S. Bramble",
+          1813
+        ],
+        [
+          552,
+          "Lantern",
+          "W. Egret",
+          2008
+        ],
+        [
+          558,
+          "Juniper of Winter",
+          "W. Egret",
+          1852
+        ],
+        [
+          573,
+          "Orchard County",
+          "S. Bramble",
+          1827
+        ],
+        [
+          579,
+          "Meridian in Exile",
+          "S. Bramble",
+          1891
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(31,'Sweep 0 Bravo','B. Author',1902,NULL),\n(32,'Sweep 0 Charlie','C. Author',1903,NULL),\n(30,'Sweep 0 Alpha','A. Author',1901,NULL);"
+      ],
+      "expected": [
+        [
+          30,
+          "Sweep 0 Alpha",
+          "A. Author",
+          1901
+        ],
+        [
+          31,
+          "Sweep 0 Bravo",
+          "B. Author",
+          1902
+        ],
+        [
+          32,
+          "Sweep 0 Charlie",
+          "C. Author",
+          1903
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(41,'Sweep 1 Bravo','B. Author',1905,NULL),\n(40,'Sweep 1 Alpha','A. Author',1904,NULL),\n(42,'Sweep 1 Charlie','C. Author',1906,0.0);"
+      ],
+      "expected": [
+        [
+          40,
+          "Sweep 1 Alpha",
+          "A. Author",
+          1904
+        ],
+        [
+          41,
+          "Sweep 1 Bravo",
+          "B. Author",
+          1905
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(52,'Sweep 2 Charlie','C. Author',1909,3.75),\n(51,'Sweep 2 Bravo','B. Author',1908,NULL),\n(50,'Sweep 2 Alpha','A. Author',1907,NULL);"
+      ],
+      "expected": [
+        [
+          50,
+          "Sweep 2 Alpha",
+          "A. Author",
+          1907
+        ],
+        [
+          51,
+          "Sweep 2 Bravo",
+          "B. Author",
+          1908
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(61,'Sweep 3 Bravo','B. Author',1911,0.0),\n(60,'Sweep 3 Alpha','A. Author',1910,NULL),\n(62,'Sweep 3 Charlie','C. Author',1912,NULL);"
+      ],
+      "expected": [
+        [
+          60,
+          "Sweep 3 Alpha",
+          "A. Author",
+          1910
+        ],
+        [
+          62,
+          "Sweep 3 Charlie",
+          "C. Author",
+          1912
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(70,'Sweep 4 Alpha','A. Author',1913,NULL),\n(71,'Sweep 4 Bravo','B. Author',1914,0.0),\n(72,'Sweep 4 Charlie','C. Author',1915,0.0);"
+      ],
+      "expected": [
+        [
+          70,
+          "Sweep 4 Alpha",
+          "A. Author",
+          1913
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(82,'Sweep 5 Charlie','C. Author',1918,3.75),\n(80,'Sweep 5 Alpha','A. Author',1916,NULL),\n(81,'Sweep 5 Bravo','B. Author',1917,0.0);"
+      ],
+      "expected": [
+        [
+          80,
+          "Sweep 5 Alpha",
+          "A. Author",
+          1916
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(92,'Sweep 6 Charlie','C. Author',1921,NULL),\n(90,'Sweep 6 Alpha','A. Author',1919,NULL),\n(91,'Sweep 6 Bravo','B. Author',1920,3.75);"
+      ],
+      "expected": [
+        [
+          90,
+          "Sweep 6 Alpha",
+          "A. Author",
+          1919
+        ],
+        [
+          92,
+          "Sweep 6 Charlie",
+          "C. Author",
+          1921
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(102,'Sweep 7 Charlie','C. Author',1924,0.0),\n(101,'Sweep 7 Bravo','B. Author',1923,3.75),\n(100,'Sweep 7 Alpha','A. Author',1922,NULL);"
+      ],
+      "expected": [
+        [
+          100,
+          "Sweep 7 Alpha",
+          "A. Author",
+          1922
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(111,'Sweep 8 Bravo','B. Author',1926,3.75),\n(112,'Sweep 8 Charlie','C. Author',1927,3.75),\n(110,'Sweep 8 Alpha','A. Author',1925,NULL);"
+      ],
+      "expected": [
+        [
+          110,
+          "Sweep 8 Alpha",
+          "A. Author",
+          1925
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(121,'Sweep 9 Bravo','B. Author',1929,NULL),\n(122,'Sweep 9 Charlie','C. Author',1930,NULL),\n(120,'Sweep 9 Alpha','A. Author',1928,0.0);"
+      ],
+      "expected": [
+        [
+          121,
+          "Sweep 9 Bravo",
+          "B. Author",
+          1929
+        ],
+        [
+          122,
+          "Sweep 9 Charlie",
+          "C. Author",
+          1930
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(131,'Sweep 10 Bravo','B. Author',1932,NULL),\n(132,'Sweep 10 Charlie','C. Author',1933,0.0),\n(130,'Sweep 10 Alpha','A. Author',1931,0.0);"
+      ],
+      "expected": [
+        [
+          131,
+          "Sweep 10 Bravo",
+          "B. Author",
+          1932
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(142,'Sweep 11 Charlie','C. Author',1936,3.75),\n(141,'Sweep 11 Bravo','B. Author',1935,NULL),\n(140,'Sweep 11 Alpha','A. Author',1934,0.0);"
+      ],
+      "expected": [
+        [
+          141,
+          "Sweep 11 Bravo",
+          "B. Author",
+          1935
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(152,'Sweep 12 Charlie','C. Author',1939,NULL),\n(150,'Sweep 12 Alpha','A. Author',1937,0.0),\n(151,'Sweep 12 Bravo','B. Author',1938,0.0);"
+      ],
+      "expected": [
+        [
+          152,
+          "Sweep 12 Charlie",
+          "C. Author",
+          1939
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(162,'Sweep 13 Charlie','C. Author',1942,0.0),\n(161,'Sweep 13 Bravo','B. Author',1941,0.0),\n(160,'Sweep 13 Alpha','A. Author',1940,0.0);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(172,'Sweep 14 Charlie','C. Author',1945,3.75),\n(170,'Sweep 14 Alpha','A. Author',1943,0.0),\n(171,'Sweep 14 Bravo','B. Author',1944,0.0);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(181,'Sweep 15 Bravo','B. Author',1947,3.75),\n(182,'Sweep 15 Charlie','C. Author',1948,NULL),\n(180,'Sweep 15 Alpha','A. Author',1946,0.0);"
+      ],
+      "expected": [
+        [
+          182,
+          "Sweep 15 Charlie",
+          "C. Author",
+          1948
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(191,'Sweep 16 Bravo','B. Author',1950,3.75),\n(192,'Sweep 16 Charlie','C. Author',1951,0.0),\n(190,'Sweep 16 Alpha','A. Author',1949,0.0);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(201,'Sweep 17 Bravo','B. Author',1953,3.75),\n(202,'Sweep 17 Charlie','C. Author',1954,3.75),\n(200,'Sweep 17 Alpha','A. Author',1952,0.0);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(210,'Sweep 18 Alpha','A. Author',1955,3.75),\n(212,'Sweep 18 Charlie','C. Author',1957,NULL),\n(211,'Sweep 18 Bravo','B. Author',1956,NULL);"
+      ],
+      "expected": [
+        [
+          211,
+          "Sweep 18 Bravo",
+          "B. Author",
+          1956
+        ],
+        [
+          212,
+          "Sweep 18 Charlie",
+          "C. Author",
+          1957
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(222,'Sweep 19 Charlie','C. Author',1960,0.0),\n(220,'Sweep 19 Alpha','A. Author',1958,3.75),\n(221,'Sweep 19 Bravo','B. Author',1959,NULL);"
+      ],
+      "expected": [
+        [
+          221,
+          "Sweep 19 Bravo",
+          "B. Author",
+          1959
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(231,'Sweep 20 Bravo','B. Author',1962,NULL),\n(232,'Sweep 20 Charlie','C. Author',1963,3.75),\n(230,'Sweep 20 Alpha','A. Author',1961,3.75);"
+      ],
+      "expected": [
+        [
+          231,
+          "Sweep 20 Bravo",
+          "B. Author",
+          1962
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(240,'Sweep 21 Alpha','A. Author',1964,3.75),\n(241,'Sweep 21 Bravo','B. Author',1965,0.0),\n(242,'Sweep 21 Charlie','C. Author',1966,NULL);"
+      ],
+      "expected": [
+        [
+          242,
+          "Sweep 21 Charlie",
+          "C. Author",
+          1966
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(250,'Sweep 22 Alpha','A. Author',1967,3.75),\n(251,'Sweep 22 Bravo','B. Author',1968,0.0),\n(252,'Sweep 22 Charlie','C. Author',1969,0.0);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(262,'Sweep 23 Charlie','C. Author',1972,3.75),\n(261,'Sweep 23 Bravo','B. Author',1971,0.0),\n(260,'Sweep 23 Alpha','A. Author',1970,3.75);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(270,'Sweep 24 Alpha','A. Author',1973,3.75),\n(271,'Sweep 24 Bravo','B. Author',1974,3.75),\n(272,'Sweep 24 Charlie','C. Author',1975,NULL);"
+      ],
+      "expected": [
+        [
+          272,
+          "Sweep 24 Charlie",
+          "C. Author",
+          1975
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(281,'Sweep 25 Bravo','B. Author',1977,3.75),\n(280,'Sweep 25 Alpha','A. Author',1976,3.75),\n(282,'Sweep 25 Charlie','C. Author',1978,0.0);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO books VALUES\n(292,'Sweep 26 Charlie','C. Author',1981,3.75),\n(291,'Sweep 26 Bravo','B. Author',1980,3.75),\n(290,'Sweep 26 Alpha','A. Author',1979,3.75);"
+      ],
+      "expected": []
+    }
+  ]
+}

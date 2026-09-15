@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 587,
+  "slug": "erect-the-fence",
+  "title": "Erect the Fence",
+  "difficulty": "Hard",
+  "tags": [
+    "Geometry",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Convex Hull",
+    "Polygons"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "outerTrees",
+    "parameters": [
+      {
+        "name": "trees",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "outerTrees",
+      "rust": "outer_trees",
+      "typescript": "outerTrees"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

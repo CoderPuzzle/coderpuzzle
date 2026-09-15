@@ -1,0 +1,84 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1030,
+  "slug": "matrix-cells-in-distance-order",
+  "title": "Matrix Cells in Distance Order",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Sorting",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Sorting",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "allCellsDistOrder",
+    "parameters": [
+      {
+        "name": "rows",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "cols",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "rCenter",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "cCenter",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "allCellsDistOrder",
+      "rust": "all_cells_dist_order",
+      "typescript": "allCellsDistOrder"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

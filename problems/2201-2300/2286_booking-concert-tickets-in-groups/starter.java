@@ -1,0 +1,8 @@
+class BookMyShow {
+
+    public BookMyShow(int n, int m) {}
+
+    public int[] gather(int k, int maxRow) {}
+
+    public boolean scatter(int k, int maxRow) {}
+}

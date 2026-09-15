@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3272,
+  "slug": "find-the-count-of-good-integers",
+  "title": "Find the Count of Good Integers",
+  "difficulty": "Hard",
+  "tags": [
+    "Combinatorics",
+    "Number Theory"
+  ],
+  "topics": [
+    "Hash Table",
+    "Math",
+    "Combinatorics",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countGoodIntegers",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "countGoodIntegers",
+      "rust": "count_good_integers",
+      "typescript": "countGoodIntegers"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

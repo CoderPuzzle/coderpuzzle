@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3626,
+  "slug": "find-stores-with-inventory-imbalance",
+  "title": "Find Stores with Inventory Imbalance",
+  "difficulty": "Medium",
+  "tags": [
+    "Database",
+    "SQL"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE stores (store_id INTEGER, store_name TEXT, location TEXT);\nCREATE TABLE inventory (inventory_id INTEGER, store_id INTEGER, product_name TEXT, quantity INTEGER, price REAL);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

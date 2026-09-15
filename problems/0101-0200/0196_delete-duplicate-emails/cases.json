@@ -1,0 +1,239 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'john@example.com'),\n(2,'bob@example.com'),\n(3,'john@example.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "john@example.com"
+        ],
+        [
+          2,
+          "bob@example.com"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'a@example.com'),\n(2,'b@example.com'),\n(3,'c@example.com'),\n(4,'d@example.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "a@example.com"
+        ],
+        [
+          2,
+          "b@example.com"
+        ],
+        [
+          3,
+          "c@example.com"
+        ],
+        [
+          4,
+          "d@example.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(3,'same@example.com'),\n(1,'same@example.com'),\n(2,'same@example.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "same@example.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'a@example.com'),\n(2,'b@example.com'),\n(3,'a@example.com'),\n(4,'c@example.com'),\n(5,'b@example.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "a@example.com"
+        ],
+        [
+          2,
+          "b@example.com"
+        ],
+        [
+          4,
+          "c@example.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(9,'dup@example.com'),\n(4,'dup@example.com'),\n(7,'dup@example.com'),\n(1,'solo@example.com');"
+      ],
+      "expected": [
+        [
+          4,
+          "dup@example.com"
+        ],
+        [
+          1,
+          "solo@example.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(10,'a@example.com'),\n(2,'b@example.com'),\n(5,'b@example.com'),\n(8,'a@example.com');"
+      ],
+      "expected": [
+        [
+          2,
+          "b@example.com"
+        ],
+        [
+          8,
+          "a@example.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'x@example.com'),\n(2,'y@example.com'),\n(3,'x@example.com'),\n(4,'x@example.com'),\n(5,'y@example.com'),\n(6,'z@example.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "x@example.com"
+        ],
+        [
+          2,
+          "y@example.com"
+        ],
+        [
+          6,
+          "z@example.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'John@example.com'),\n(2,'john@example.com'),\n(3,'john@example.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "John@example.com"
+        ],
+        [
+          2,
+          "john@example.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'a@example.com'),\n(2,'a@example.co'),\n(3,'a@example.com.'),\n(4,'a@example.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "a@example.com"
+        ],
+        [
+          2,
+          "a@example.co"
+        ],
+        [
+          3,
+          "a@example.com."
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(4,'b@example.com'),\n(1,'a@example.com'),\n(5,'b@example.com'),\n(2,'a@example.com'),\n(6,'c@example.com'),\n(3,'a@example.com');"
+      ],
+      "expected": [
+        [
+          4,
+          "b@example.com"
+        ],
+        [
+          1,
+          "a@example.com"
+        ],
+        [
+          6,
+          "c@example.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'g1@example.com'),\n(2,'g2@example.com'),\n(3,'g3@example.com'),\n(4,'g4@example.com'),\n(5,'g5@example.com'),\n(6,'g0@example.com'),\n(7,'g1@example.com'),\n(8,'g2@example.com'),\n(9,'g3@example.com'),\n(10,'g4@example.com'),\n(11,'g5@example.com'),\n(12,'g0@example.com'),\n(13,'g1@example.com'),\n(14,'g2@example.com'),\n(15,'g3@example.com'),\n(16,'g4@example.com'),\n(17,'g5@example.com'),\n(18,'g0@example.com'),\n(19,'g1@example.com'),\n(20,'g2@example.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "g1@example.com"
+        ],
+        [
+          2,
+          "g2@example.com"
+        ],
+        [
+          3,
+          "g3@example.com"
+        ],
+        [
+          4,
+          "g4@example.com"
+        ],
+        [
+          5,
+          "g5@example.com"
+        ],
+        [
+          6,
+          "g0@example.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(6,'late@example.com'),\n(8,'late@example.com'),\n(2,'late@example.com'),\n(5,'other@example.com'),\n(3,'other@example.com');"
+      ],
+      "expected": [
+        [
+          2,
+          "late@example.com"
+        ],
+        [
+          3,
+          "other@example.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'solo@example.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "solo@example.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    }
+  ]
+}

@@ -1,0 +1,356 @@
+{
+  "public": [
+    {
+      "input": {
+        "source": "function f(multiplier) {\n  return this.x * multiplier;\n}",
+        "obj": {
+          "x": 10
+        },
+        "inputs": [
+          5
+        ]
+      },
+      "expected": 50
+    },
+    {
+      "input": {
+        "source": "function speak() {\n  return \"My name is \" + this.name;\n}",
+        "obj": {
+          "name": "Kathy"
+        },
+        "inputs": []
+      },
+      "expected": "My name is Kathy"
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "source": "function addAll(a, b, c) {\n  return this.base + a + b + c;\n}",
+        "obj": {
+          "base": 100
+        },
+        "inputs": [
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": 106
+    },
+    {
+      "input": {
+        "source": "function countArgs() {\n  return arguments.length;\n}",
+        "obj": {
+          "name": "counter"
+        },
+        "inputs": []
+      },
+      "expected": 0
+    },
+    {
+      "input": {
+        "source": "function chain(w, x, y, z) {\n  return \"\" + w + x + y + z;\n}",
+        "obj": {},
+        "inputs": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      },
+      "expected": "abcd"
+    },
+    {
+      "input": {
+        "source": "function sum() {\n  let total = this.offset;\n  for (let i = 0; i < arguments.length; i++) {\n    total += arguments[i];\n  }\n  return total;\n}",
+        "obj": {
+          "offset": -9
+        },
+        "inputs": [
+          3,
+          14,
+          1,
+          5,
+          9,
+          26,
+          53,
+          58,
+          97,
+          100
+        ]
+      },
+      "expected": 357
+    },
+    {
+      "input": {
+        "source": "function sum() {\n  let total = this.seed;\n  for (const v of arguments) {\n    total += v;\n  }\n  return total;\n}",
+        "obj": {
+          "seed": 5
+        },
+        "inputs": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100
+        ]
+      },
+      "expected": 5055
+    },
+    {
+      "input": {
+        "source": "function outer() {\n  const view = this;\n  let total = 0;\n  const walk = function (values) {\n    for (const v of values) {\n      total += view.weight * v;\n    }\n  };\n  walk(this.items);\n  return total;\n}",
+        "obj": {
+          "weight": 3,
+          "items": [
+            1,
+            2,
+            3
+          ]
+        },
+        "inputs": []
+      },
+      "expected": 18
+    },
+    {
+      "input": {
+        "source": "function snapshot() {\n  return {\n    active: this.active,\n    tags: this.tags.slice(0),\n    meta: { depth: this.meta.depth },\n  };\n}",
+        "obj": {
+          "active": true,
+          "tags": [
+            "a",
+            "b"
+          ],
+          "meta": {
+            "depth": 3
+          }
+        },
+        "inputs": []
+      },
+      "expected": {
+        "active": true,
+        "tags": [
+          "a",
+          "b"
+        ],
+        "meta": {
+          "depth": 3
+        }
+      }
+    },
+    {
+      "input": {
+        "source": "function touch() {\n  this.visits = (this.visits || 0) + 1;\n}",
+        "obj": {
+          "visits": 41
+        },
+        "inputs": []
+      },
+      "expected": null
+    },
+    {
+      "input": {
+        "source": "function probe() {\n  return [\n    typeof this.hasOwnProperty,\n    typeof this.toString,\n    this.missing,\n  ];\n}",
+        "obj": {
+          "present": 1
+        },
+        "inputs": []
+      },
+      "expected": [
+        "function",
+        "function",
+        null
+      ]
+    },
+    {
+      "input": {
+        "source": "function coordinator(step) {\n  function scale(part) {\n    return this.factor * part;\n  }\n  const boundScale = scale.bindPolyfill({ factor: this.factor });\n  return boundScale(step) + step;\n}",
+        "obj": {
+          "factor": 7
+        },
+        "inputs": [
+          5
+        ]
+      },
+      "expected": 40
+    },
+    {
+      "input": {
+        "source": "function twice(a) {\n  return this.mark + a + this.mark;\n}",
+        "obj": {
+          "mark": "~"
+        },
+        "inputs": [
+          "run"
+        ]
+      },
+      "expected": "~run~"
+    },
+    {
+      "input": {
+        "source": "function identity() {\n  return [\n    this.key,\n    this === globalThis,\n    typeof this,\n  ];\n}",
+        "obj": {
+          "key": "anchor"
+        },
+        "inputs": []
+      },
+      "expected": [
+        "anchor",
+        false,
+        "object"
+      ]
+    },
+    {
+      "input": {
+        "source": "function half() {\n  return this.total * this.ratio;\n}",
+        "obj": {
+          "total": 21,
+          "ratio": 0.5
+        },
+        "inputs": []
+      },
+      "expected": 10.5
+    },
+    {
+      "input": {
+        "source": "function echo() {\n  return [...arguments];\n}",
+        "obj": {
+          "note": "echo"
+        },
+        "inputs": [
+          null,
+          true,
+          "txt",
+          17,
+          [
+            3
+          ],
+          {
+            "k": 1
+          }
+        ]
+      },
+      "expected": [
+        null,
+        true,
+        "txt",
+        17,
+        [
+          3
+        ],
+        {
+          "k": 1
+        }
+      ]
+    },
+    {
+      "input": {
+        "source": "function lookup(prefix) {\n  return this[prefix + this.suffix];\n}",
+        "obj": {
+          "key_a": "hit",
+          "suffix": "_a"
+        },
+        "inputs": [
+          "key"
+        ]
+      },
+      "expected": "hit"
+    }
+  ]
+}

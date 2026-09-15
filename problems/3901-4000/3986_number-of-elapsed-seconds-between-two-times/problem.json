@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3986,
+  "slug": "number-of-elapsed-seconds-between-two-times",
+  "title": "Number of Elapsed Seconds Between Two Times",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "String"
+  ],
+  "topics": [
+    "Math",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "secondsBetweenTimes",
+    "parameters": [
+      {
+        "name": "startTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "endTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "secondsBetweenTimes",
+      "rust": "seconds_between_times",
+      "typescript": "secondsBetweenTimes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

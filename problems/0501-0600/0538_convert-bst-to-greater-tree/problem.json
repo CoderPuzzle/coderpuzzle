@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 538,
+  "slug": "convert-bst-to-greater-tree",
+  "title": "Convert BST to Greater Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "convertBST",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "tree_node",
+    "return_type": {
+      "kind": "binary_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "convertBST",
+      "rust": "convert_bst",
+      "typescript": "convertBST"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

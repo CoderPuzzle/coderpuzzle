@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 241,
+  "slug": "different-ways-to-add-parentheses",
+  "title": "Different Ways to Add Parentheses",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "String",
+    "Dynamic Programming",
+    "Recursion",
+    "Memoization",
+    "Bracket Sequences"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Dynamic Programming",
+    "Recursion",
+    "Memoization",
+    "Bracket Sequences"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "diffWaysToCompute",
+    "parameters": [
+      {
+        "name": "expression",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 64
+      }
+    },
+    "entrypoints": {
+      "go": "diffWaysToCompute",
+      "rust": "diff_ways_to_compute",
+      "typescript": "diffWaysToCompute"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

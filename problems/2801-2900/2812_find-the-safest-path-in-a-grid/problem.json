@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "clearance_flood",
+  "id": 2812,
+  "slug": "find-the-safest-path-in-a-grid",
+  "title": "Find the Safest Path in a Grid",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Heap (Priority Queue)",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumSafenessFactor",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumSafenessFactor",
+      "rust": "maximum_safeness_factor",
+      "typescript": "maximumSafenessFactor"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

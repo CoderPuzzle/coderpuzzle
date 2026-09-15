@@ -1,0 +1,185 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Joe'),\n(2,'Henry'),\n(3,'Sam'),\n(4,'Max');\nINSERT INTO Orders VALUES\n(1,3),\n(2,1);"
+      ],
+      "expected": [
+        [
+          "Henry"
+        ],
+        [
+          "Max"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Joe'),\n(2,'Henry'),\n(3,'Sam'),\n(4,'Max');\nINSERT INTO Orders VALUES\n(1,3),\n(2,1),\n(3,2),\n(4,4);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Joe'),\n(2,'Henry'),\n(3,'Sam');"
+      ],
+      "expected": [
+        [
+          "Henry"
+        ],
+        [
+          "Joe"
+        ],
+        [
+          "Sam"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cleo');\nINSERT INTO Orders VALUES\n(10,2),\n(11,2),\n(12,2);"
+      ],
+      "expected": [
+        [
+          "Ann"
+        ],
+        [
+          "Cleo"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Alice'),\n(2,'Bob'),\n(3,'Carol'),\n(4,'Dave'),\n(5,'Eve');\nINSERT INTO Orders VALUES\n(1,3);"
+      ],
+      "expected": [
+        [
+          "Alice"
+        ],
+        [
+          "Bob"
+        ],
+        [
+          "Dave"
+        ],
+        [
+          "Eve"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal'),\n(4,'Dot'),\n(5,'Eli'),\n(6,'Fay'),\n(7,'Gus');\nINSERT INTO Orders VALUES\n(1,1),\n(2,4),\n(3,7);"
+      ],
+      "expected": [
+        [
+          "Ben"
+        ],
+        [
+          "Cal"
+        ],
+        [
+          "Eli"
+        ],
+        [
+          "Fay"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Solomon');"
+      ],
+      "expected": [
+        [
+          "Solomon"
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Ann'),\n(2,'Ben');\nINSERT INTO Orders VALUES\n(5,99),\n(6,42);"
+      ],
+      "expected": [
+        [
+          "Ann"
+        ],
+        [
+          "Ben"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'John'),\n(2,'John'),\n(3,'Mary');\nINSERT INTO Orders VALUES\n(1,1);"
+      ],
+      "expected": [
+        [
+          "John"
+        ],
+        [
+          "Mary"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Solo');\nINSERT INTO Orders VALUES\n(1,1);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(10,'Ito'),\n(2,'Ali'),\n(33,'Khan'),\n(4,'Chen'),\n(55,'Omar'),\n(6,'Rosa'),\n(7,'Wu');\nINSERT INTO Orders VALUES\n(100,2),\n(101,2),\n(102,33),\n(103,7);"
+      ],
+      "expected": [
+        [
+          "Chen"
+        ],
+        [
+          "Ito"
+        ],
+        [
+          "Omar"
+        ],
+        [
+          "Rosa"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Pia'),\n(2,'Quinn'),\n(3,'Rhea');\nINSERT INTO Orders VALUES\n(1,1),\n(2,3);"
+      ],
+      "expected": [
+        [
+          "Quinn"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(5,'Ada'),\n(6,'Ben'),\n(7,'Cleo'),\n(8,'Dan'),\n(9,'Eve');\nINSERT INTO Orders VALUES\n(1,5),\n(2,5),\n(3,9),\n(4,100);"
+      ],
+      "expected": [
+        [
+          "Ben"
+        ],
+        [
+          "Cleo"
+        ],
+        [
+          "Dan"
+        ]
+      ]
+    }
+  ]
+}

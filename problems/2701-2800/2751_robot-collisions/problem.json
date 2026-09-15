@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2751,
+  "slug": "robot-collisions",
+  "title": "Robot Collisions",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Stack",
+    "Sorting",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Sorting",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "survivedRobotsHealths",
+    "parameters": [
+      {
+        "name": "positions",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "healths",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "directions",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "survivedRobotsHealths",
+      "rust": "survived_robots_healths",
+      "typescript": "survivedRobotsHealths"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

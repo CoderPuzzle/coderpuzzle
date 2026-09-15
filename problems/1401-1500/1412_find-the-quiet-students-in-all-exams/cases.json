@@ -1,0 +1,154 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Daniel'),\n(2,'Jade'),\n(3,'Stella'),\n(4,'Jonathan'),\n(5,'Will');\nINSERT INTO Exam VALUES\n(10,1,70),\n(10,2,80),\n(10,3,90),\n(20,1,80),\n(30,1,70),\n(30,3,80),\n(30,4,90),\n(40,1,60),\n(40,2,70),\n(40,4,80);"
+      ],
+      "expected": [
+        [
+          2,
+          "Jade"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal');\nINSERT INTO Exam VALUES\n(10,1,50);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal');\nINSERT INTO Exam VALUES\n(10,1,50),\n(10,2,50),\n(10,3,70);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal');\nINSERT INTO Exam VALUES\n(10,1,50),\n(10,2,60),\n(10,3,60);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal');\nINSERT INTO Exam VALUES\n(10,1,50),\n(10,2,50),\n(10,3,50);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Solo');\nINSERT INTO Exam VALUES\n(10,1,100);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal'),\n(4,'Dot');\nINSERT INTO Exam VALUES\n(10,1,10),\n(10,2,20),\n(10,3,30),\n(20,2,40),\n(20,4,50);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal');\nINSERT INTO Exam VALUES\n(10,1,10),\n(10,2,20),\n(10,3,30),\n(20,3,10),\n(20,2,20),\n(20,1,30);"
+      ],
+      "expected": [
+        [
+          2,
+          "Ben"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal'),\n(4,'Dot');\nINSERT INTO Exam VALUES\n(10,1,5),\n(10,2,6),\n(20,3,7),\n(20,4,8);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben');\nINSERT INTO Exam VALUES\n(10,1,50),\n(10,2,50);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'S1'),\n(2,'S2'),\n(3,'S3'),\n(4,'S4'),\n(5,'S5'),\n(6,'S6'),\n(7,'S7'),\n(8,'S8');\nINSERT INTO Exam VALUES\n(10,1,10),\n(10,2,20),\n(10,3,30),\n(10,4,40),\n(10,5,50),\n(20,5,10),\n(20,6,20),\n(20,7,30),\n(20,8,40);"
+      ],
+      "expected": [
+        [
+          2,
+          "S2"
+        ],
+        [
+          3,
+          "S3"
+        ],
+        [
+          4,
+          "S4"
+        ],
+        [
+          6,
+          "S6"
+        ],
+        [
+          7,
+          "S7"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(2,'Bea'),\n(1,'Abe'),\n(3,'Cy');\nINSERT INTO Exam VALUES\n(10,3,10),\n(10,1,20),\n(10,2,30);"
+      ],
+      "expected": [
+        [
+          1,
+          "Abe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'A');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal');\nINSERT INTO Exam VALUES\n(10,1,0),\n(10,2,100),\n(10,3,50);"
+      ],
+      "expected": [
+        [
+          3,
+          "Cal"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal'),\n(4,'Dot');\nINSERT INTO Exam VALUES\n(10,1,10),\n(10,2,20),\n(10,3,30),\n(20,4,10);"
+      ],
+      "expected": [
+        [
+          2,
+          "Ben"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ann'),\n(2,'Ben'),\n(3,'Cal'),\n(4,'Dot'),\n(5,'Eve');\nINSERT INTO Exam VALUES\n(10,1,5),\n(10,2,15),\n(10,3,25),\n(20,2,5),\n(20,3,15),\n(20,4,25),\n(30,3,5),\n(30,4,15),\n(30,5,25);"
+      ],
+      "expected": []
+    }
+  ]
+}

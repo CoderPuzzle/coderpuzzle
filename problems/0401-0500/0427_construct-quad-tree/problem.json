@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 427,
+  "slug": "construct-quad-tree",
+  "title": "Construct Quad Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Tree",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Divide and Conquer",
+    "Tree",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "construct",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "quad_tree",
+    "return_type": {
+      "kind": "quad_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "construct",
+      "rust": "construct",
+      "typescript": "construct"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

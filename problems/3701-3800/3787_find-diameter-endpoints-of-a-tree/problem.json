@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "rerooting_dp",
+  "id": 3787,
+  "slug": "find-diameter-endpoints-of-a-tree",
+  "title": "Find Diameter Endpoints of a Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Tree",
+    "Breadth-First Search",
+    "Graph Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findSpecialNodes",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "findSpecialNodes",
+      "rust": "find_special_nodes",
+      "typescript": "findSpecialNodes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- edges = [[1,0,3],[0,2,4],[0,3,5]], nums = [1,1,0,2]; answer [5,2], winning path 0-3 (verified by brute force) -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="280" y1="60" x2="120" y2="170"/>
+    <line x1="280" y1="60" x2="280" y2="170"/>
+    <line x1="280" y1="60" x2="440" y2="170"/>
+  </g>
+  <line x1="280" y1="60" x2="440" y2="170" stroke="#4169E1" stroke-width="3.2"/>
+  <g stroke="#42525e" stroke-width="1.6" fill="#e6ecfb">
+    <circle cx="280" cy="60" r="21"/>
+    <circle cx="440" cy="170" r="21"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="120" cy="170" r="21"/>
+    <circle cx="280" cy="170" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="280" y="65">0</text>
+    <text x="120" y="175">1</text>
+    <text x="280" y="175">2</text>
+    <text x="440" y="175">3</text>
+  </g>
+  <g fill="#4169E1" font-size="12" font-weight="600" text-anchor="middle">
+    <text x="280" y="28">val 1</text>
+    <text x="120" y="146">val 1</text>
+    <text x="280" y="146">val 0</text>
+    <text x="440" y="146">val 2</text>
+  </g>
+  <g fill="#5c6b76" font-size="12" font-weight="600" text-anchor="middle">
+    <text x="192" y="108">3</text>
+    <text x="298" y="120">4</text>
+    <text x="372" y="108">5</text>
+  </g>
+  <text x="280" y="238" text-anchor="middle" fill="#1a2026" font-size="13.5">the special path <tspan fill="#4169E1" font-weight="700">0 → 3</tspan> has length <tspan fill="#4169E1" font-weight="700">5</tspan> with <tspan fill="#4169E1" font-weight="700">2</tspan> nodes — every other downward path is shorter</text>
+</svg>

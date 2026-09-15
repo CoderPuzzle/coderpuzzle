@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2421,
+  "slug": "number-of-good-paths",
+  "title": "Number of Good Paths",
+  "difficulty": "Hard",
+  "tags": [
+    "Union-Find",
+    "Graph",
+    "Tree",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Tree",
+    "Union-Find",
+    "Graph Theory",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberOfGoodPaths",
+    "parameters": [
+      {
+        "name": "vals",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numberOfGoodPaths",
+      "rust": "number_of_good_paths",
+      "typescript": "numberOfGoodPaths"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

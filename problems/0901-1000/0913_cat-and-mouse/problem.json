@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 913,
+  "slug": "cat-and-mouse",
+  "title": "Cat and Mouse",
+  "difficulty": "Hard",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Graph Theory",
+    "Topological Sort",
+    "Memoization",
+    "Minimax",
+    "Game Theory",
+    "Zero-Sum Game"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Graph Theory",
+    "Topological Sort",
+    "Memoization",
+    "Minimax",
+    "Game Theory",
+    "Zero-Sum Game"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "catMouseGame",
+    "parameters": [
+      {
+        "name": "graph",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "catMouseGame",
+      "rust": "cat_mouse_game",
+      "typescript": "catMouseGame"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

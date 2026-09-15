@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="18">
+  <rect width="470" height="250" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- grid; the shaded cells form the path 3 -> 4 -> 5 -> 6 -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="40" y="30" width="62" height="62" fill="#4169E1" fill-opacity="0.15"/><rect x="102" y="30" width="62" height="62" fill="#4169E1" fill-opacity="0.15"/><rect x="164" y="30" width="62" height="62" fill="#4169E1" fill-opacity="0.15"/>
+    <rect x="40" y="92" width="62" height="62" fill="#ffffff"/><rect x="102" y="92" width="62" height="62" fill="#ffffff"/><rect x="164" y="92" width="62" height="62" fill="#4169E1" fill-opacity="0.15"/>
+    <rect x="40" y="154" width="62" height="62" fill="#ffffff"/><rect x="102" y="154" width="62" height="62" fill="#ffffff"/><rect x="164" y="154" width="62" height="62" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="71" y="67">3</text><text x="133" y="67">4</text><text x="195" y="67">5</text>
+    <text x="71" y="129">3</text><text x="133" y="129">2</text><text x="195" y="129">6</text>
+    <text x="71" y="191">2</text><text x="133" y="191">2</text><text x="195" y="191">1</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="2.4">
+    <line x1="93" y1="61" x2="111" y2="61" marker-end="url(#arrow)"/>
+    <line x1="155" y1="61" x2="173" y2="61" marker-end="url(#arrow)"/>
+    <line x1="195" y1="83" x2="195" y2="101" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#1a2026" font-size="14">
+    <text x="270" y="106">longest increasing path:</text>
+    <text x="270" y="130" fill="#4169E1" font-weight="600" font-size="16">3 → 4 → 5 → 6</text>
+    <text x="270" y="156" fill="#5c6b76">moving diagonally is not allowed;</text>
+    <text x="270" y="176" fill="#5c6b76">length 4 → output 4</text>
+  </g>
+</svg>

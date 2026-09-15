@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 127,
+  "slug": "word-ladder",
+  "title": "Word Ladder",
+  "difficulty": "Hard",
+  "tags": [
+    "Graph",
+    "BFS",
+    "Shortest Path"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Breadth-First Search",
+    "Bidirectional Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "ladderLength",
+    "parameters": [
+      {
+        "name": "beginWord",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "endWord",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "wordList",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "ladderLength",
+      "rust": "ladder_length",
+      "typescript": "ladderLength"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

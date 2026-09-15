@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1643,
+  "slug": "kth-smallest-instructions",
+  "title": "Kth Smallest Instructions",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "kthSmallestPath",
+    "parameters": [
+      {
+        "name": "destination",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "kthSmallestPath",
+      "rust": "kth_smallest_path",
+      "typescript": "kthSmallestPath"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

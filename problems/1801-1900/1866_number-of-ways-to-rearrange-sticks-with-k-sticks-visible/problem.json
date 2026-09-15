@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1866,
+  "slug": "number-of-ways-to-rearrange-sticks-with-k-sticks-visible",
+  "title": "Number of Ways to Rearrange Sticks With K Sticks Visible",
+  "difficulty": "Hard",
+  "tags": [
+    "Combinatorics",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "rearrangeSticks",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "rearrangeSticks",
+      "rust": "rearrange_sticks",
+      "typescript": "rearrangeSticks"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

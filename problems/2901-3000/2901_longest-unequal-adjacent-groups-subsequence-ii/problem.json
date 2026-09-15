@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2901,
+  "slug": "longest-unequal-adjacent-groups-subsequence-ii",
+  "title": "Longest Unequal Adjacent Groups Subsequence II",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getWordsInLongestSubsequence",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "groups",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "getWordsInLongestSubsequence",
+      "rust": "get_words_in_longest_subsequence",
+      "typescript": "getWordsInLongestSubsequence"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

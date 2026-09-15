@@ -1,0 +1,100 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 588,
+  "slug": "design-in-memory-file-system",
+  "title": "Design In-Memory File System",
+  "difficulty": "Hard",
+  "tags": [
+    "Trie",
+    "Tree",
+    "Hash Table"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Design",
+    "Trie",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "FileSystem",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "ls",
+        "parameters": [
+          {
+            "name": "path",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "mkdir",
+        "parameters": [
+          {
+            "name": "path",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "addContentToFile",
+        "parameters": [
+          {
+            "name": "filePath",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "content",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "readContentFromFile",
+        "parameters": [
+          {
+            "name": "filePath",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

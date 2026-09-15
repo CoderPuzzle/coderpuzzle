@@ -1,0 +1,358 @@
+{
+  "public": [
+    {
+      "input": [
+        [
+          "test.email+alex@leetcode.com",
+          "test.e.mail+bob.cathy@leetcode.com",
+          "testemail+david@lee.tcode.com"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        [
+          "a@leetcode.com",
+          "b@leetcode.com",
+          "c@leetcode.com"
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        [
+          "same@ml.com",
+          "same@ml.com",
+          "same@ml.com",
+          "same@ml.com",
+          "same@ml.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "aa@ml.com",
+          "bb@ml.com",
+          "cc@ml.com",
+          "dd@ml.com"
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        [
+          "test.email+tag@ml.com",
+          "test.email@ml.com",
+          "testemail+tagb@ml.com",
+          "test.email+alex@ml.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "t.e.s.t@ml.com",
+          "te.st@ml.com",
+          "test@ml.com",
+          "t.est@ml.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "a+b.c.d@ml.com",
+          "a+@ml.com",
+          "a@ml.com",
+          "a+b@ml.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "user@one.com",
+          "user@two.com",
+          "user@o.ne.com"
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        [
+          "aa@ml.com",
+          "bb@ml.com",
+          "cc@ml.com",
+          "dd@ml.com"
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        [
+          "a+b+c@ml.com",
+          "a+b@ml.com",
+          "a+c@ml.com",
+          "a@ml.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "single@ml.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "a.b+c.d@x.com",
+          "ab@x.com",
+          "a.b+z@y.com",
+          "ab+c@x.com",
+          "a.b@c.com"
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        [
+          "useraa@daa.com",
+          "u.seraa@daa.com",
+          "useraa+tagaa@daa.com",
+          "u.seraa+x.y@daa.com",
+          "userab@dab.com",
+          "u.serab@dab.com",
+          "userab+tagab@dab.com",
+          "u.serab+x.y@dab.com",
+          "userac@dac.com",
+          "u.serac@dac.com",
+          "userac+tagac@dac.com",
+          "u.serac+x.y@dac.com",
+          "userad@dad.com",
+          "u.serad@dad.com",
+          "userad+tagad@dad.com",
+          "u.serad+x.y@dad.com",
+          "userae@dae.com",
+          "u.serae@dae.com",
+          "userae+tagae@dae.com",
+          "u.serae+x.y@dae.com",
+          "userba@dba.com",
+          "u.serba@dba.com",
+          "userba+tagba@dba.com",
+          "u.serba+x.y@dba.com",
+          "userbb@dbb.com",
+          "u.serbb@dbb.com",
+          "userbb+tagbb@dbb.com",
+          "u.serbb+x.y@dbb.com",
+          "userbc@dbc.com",
+          "u.serbc@dbc.com",
+          "userbc+tagbc@dbc.com",
+          "u.serbc+x.y@dbc.com",
+          "userbd@dbd.com",
+          "u.serbd@dbd.com",
+          "userbd+tagbd@dbd.com",
+          "u.serbd+x.y@dbd.com",
+          "userbe@dbe.com",
+          "u.serbe@dbe.com",
+          "userbe+tagbe@dbe.com",
+          "u.serbe+x.y@dbe.com",
+          "userca@dca.com",
+          "u.serca@dca.com",
+          "userca+tagca@dca.com",
+          "u.serca+x.y@dca.com",
+          "usercb@dcb.com",
+          "u.sercb@dcb.com",
+          "usercb+tagcb@dcb.com",
+          "u.sercb+x.y@dcb.com",
+          "usercc@dcc.com",
+          "u.sercc@dcc.com",
+          "usercc+tagcc@dcc.com",
+          "u.sercc+x.y@dcc.com",
+          "usercd@dcd.com",
+          "u.sercd@dcd.com",
+          "usercd+tagcd@dcd.com",
+          "u.sercd+x.y@dcd.com",
+          "userce@dce.com",
+          "u.serce@dce.com",
+          "userce+tagce@dce.com",
+          "u.serce+x.y@dce.com",
+          "userda@dda.com",
+          "u.serda@dda.com",
+          "userda+tagda@dda.com",
+          "u.serda+x.y@dda.com",
+          "userdb@ddb.com",
+          "u.serdb@ddb.com",
+          "userdb+tagdb@ddb.com",
+          "u.serdb+x.y@ddb.com",
+          "userdc@ddc.com",
+          "u.serdc@ddc.com",
+          "userdc+tagdc@ddc.com",
+          "u.serdc+x.y@ddc.com",
+          "userdd@ddd.com",
+          "u.serdd@ddd.com",
+          "userdd+tagdd@ddd.com",
+          "u.serdd+x.y@ddd.com",
+          "userde@dde.com",
+          "u.serde@dde.com",
+          "userde+tagde@dde.com",
+          "u.serde+x.y@dde.com",
+          "userea@dea.com",
+          "u.serea@dea.com",
+          "userea+tagea@dea.com",
+          "u.serea+x.y@dea.com",
+          "usereb@deb.com",
+          "u.sereb@deb.com",
+          "usereb+tageb@deb.com",
+          "u.sereb+x.y@deb.com",
+          "userec@dec.com",
+          "u.serec@dec.com",
+          "userec+tagec@dec.com",
+          "u.serec+x.y@dec.com",
+          "usered@ded.com",
+          "u.sered@ded.com",
+          "usered+taged@ded.com",
+          "u.sered+x.y@ded.com",
+          "useree@dee.com",
+          "u.seree@dee.com",
+          "useree+tagee@dee.com",
+          "u.seree+x.y@dee.com"
+        ]
+      ],
+      "expected": 25
+    },
+    {
+      "input": [
+        [
+          "a.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b.b+tttttttttttttttttttttttttttt@ddddd.com",
+          "abbbbbbbbbbbbbbbbbbbbbbbbbbbbbb+.t.t.t.t.t.t.t.t.t.t.t.t.t.t.t.t.t.t.t.t.t.t.t.t.t.ttttttt@ddddd.com",
+          "zyyyyyyyyyyttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt@eeeee.com"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        [
+          "testemail@lee.tcode.com",
+          "testemail@leetcode.com",
+          "test.email+tag@leetcode.com"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        [
+          "a+b@ml.com",
+          "a@ml.com",
+          "a+zzz@ml.com",
+          "a+x.y@ml.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "x.y.z@ml.com",
+          "xyz@ml.com",
+          "x.y.z+q@ml.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "a@a.b.com",
+          "a@ab.com"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        [
+          ".a@ml.com",
+          "a@ml.com",
+          ".a.+z@ml.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "uaa@ml.com",
+          "uab@ml.com",
+          "uac@ml.com",
+          "uad@ml.com",
+          "uae@ml.com",
+          "uaf@ml.com",
+          "uag@ml.com",
+          "uah@ml.com",
+          "uai@ml.com",
+          "uaj@ml.com",
+          "uak@ml.com",
+          "ual@ml.com",
+          "uam@ml.com",
+          "uan@ml.com",
+          "uao@ml.com",
+          "uap@ml.com",
+          "uaq@ml.com",
+          "uar@ml.com",
+          "uas@ml.com",
+          "uat@ml.com",
+          "uau@ml.com",
+          "uav@ml.com",
+          "uaw@ml.com",
+          "uax@ml.com",
+          "uay@ml.com",
+          "uaz@ml.com",
+          "uba@ml.com",
+          "ubb@ml.com",
+          "ubc@ml.com",
+          "ubd@ml.com",
+          "ube@ml.com",
+          "ubf@ml.com",
+          "ubg@ml.com",
+          "ubh@ml.com",
+          "ubi@ml.com",
+          "ubj@ml.com",
+          "ubk@ml.com",
+          "ubl@ml.com",
+          "ubm@ml.com",
+          "ubn@ml.com",
+          "ubo@ml.com",
+          "ubp@ml.com",
+          "ubq@ml.com",
+          "ubr@ml.com",
+          "ubs@ml.com",
+          "ubt@ml.com",
+          "ubu@ml.com",
+          "ubv@ml.com",
+          "ubw@ml.com",
+          "ubx@ml.com"
+        ]
+      ],
+      "expected": 50
+    }
+  ]
+}

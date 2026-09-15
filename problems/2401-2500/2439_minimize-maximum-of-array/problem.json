@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2439,
+  "slug": "minimize-maximum-of-array",
+  "title": "Minimize Maximum of Array",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Dynamic Programming",
+    "Greedy",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimizeArrayValue",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimizeArrayValue",
+      "rust": "minimize_array_value",
+      "typescript": "minimizeArrayValue"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

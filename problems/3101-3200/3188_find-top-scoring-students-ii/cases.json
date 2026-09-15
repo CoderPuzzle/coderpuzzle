@@ -1,0 +1,164 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(1,'Alice','Computer Science'),\n(2,'Bob','Computer Science'),\n(3,'Charlie','Mathematics'),\n(4,'David','Mathematics');\n\nINSERT INTO courses VALUES\n(101,'Algorithms',3,'Computer Science','yes'),\n(102,'Data Structures',3,'Computer Science','yes'),\n(103,'Calculus',4,'Mathematics','yes'),\n(104,'Linear Algebra',4,'Mathematics','yes'),\n(105,'Machine Learning',3,'Computer Science','no'),\n(106,'Probability',3,'Mathematics','no'),\n(107,'Operating Systems',3,'Computer Science','no'),\n(108,'Statistics',3,'Mathematics','no');\n\nINSERT INTO enrollments VALUES\n(1,101,'Fall 2023','A',4.0),\n(1,102,'Spring 2023','A',4.0),\n(1,105,'Spring 2023','A',4.0),\n(1,107,'Fall 2023','B',3.5),\n(2,101,'Fall 2023','A',4.0),\n(2,102,'Spring 2023','B',3.0),\n(3,103,'Fall 2023','A',4.0),\n(3,104,'Spring 2023','A',4.0),\n(3,106,'Spring 2023','A',4.0),\n(3,108,'Fall 2023','B',3.5),\n(4,103,'Fall 2023','B',3.0),\n(4,104,'Spring 2023','B',3.0);\n"
+      ],
+      "expected": [
+        [
+          1
+        ],
+        [
+          3
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(10,'Ivy','Philosophy');\n\nINSERT INTO courses VALUES\n(200,'Ethics',3,'Philosophy','no'),\n(201,'Logic',3,'Philosophy','no'),\n(202,'Rhetoric',3,'Philosophy','no');\n\nINSERT INTO enrollments VALUES\n(10,200,'Fall 2023','B',3.0),\n(10,201,'Fall 2023','B',2.5);\n"
+      ],
+      "expected": [
+        [
+          10
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(11,'Jon','Philosophy');\n\nINSERT INTO courses VALUES\n(210,'Ethics Two',3,'Philosophy','no'),\n(211,'Logic Two',3,'Philosophy','no');\n\nINSERT INTO enrollments VALUES\n(11,210,'Fall 2023','A',4.0);\n"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(20,'Kate','Computer Science');\n\nINSERT INTO courses VALUES\n(220,'Compilers',3,'Computer Science','yes'),\n(221,'Networks',3,'Computer Science','yes'),\n(222,'Graphics',3,'Computer Science','no'),\n(223,'Robotics',3,'Computer Science','no');\n\nINSERT INTO enrollments VALUES\n(20,220,'Fall 2023','A',4.0),\n(20,221,'Fall 2023','A',4.0),\n(20,222,'Fall 2023','C',2.0),\n(20,223,'Fall 2023','B',3.0);\n"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(21,'Liam','Biology');\n\nINSERT INTO courses VALUES\n(230,'Genetics',4,'Biology','yes'),\n(231,'Ecology',3,'Biology','no'),\n(232,'Botany',3,'Biology','no');\n\nINSERT INTO enrollments VALUES\n(21,230,'Fall 2023','A',4.0),\n(21,231,'Fall 2023','B',3.0),\n(21,232,'Fall 2023','B',2.5);\n"
+      ],
+      "expected": [
+        [
+          21
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(22,'Mia','History');\n\nINSERT INTO courses VALUES\n(240,'Ancient History',4,'History','yes'),\n(241,'Modern History',4,'History','yes'),\n(242,'Historiography',3,'History','no'),\n(243,'Archival Methods',3,'History','no');\n\nINSERT INTO enrollments VALUES\n(22,240,'Fall 2023','A',4.0),\n(22,241,'Fall 2023','B',3.5),\n(22,242,'Fall 2023','A',4.0),\n(22,243,'Fall 2023','A',4.0);\n"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(23,'Noah','Chemistry');\n\nINSERT INTO courses VALUES\n(250,'Organic Chemistry',4,'Chemistry','yes'),\n(251,'Physical Chemistry',4,'Chemistry','yes'),\n(252,'Polymer Science',3,'Chemistry','no'),\n(254,'Materials Science',3,'Chemistry','no'),\n(253,'Intro Philosophy',3,'Philosophy','no');\n\nINSERT INTO enrollments VALUES\n(23,250,'Fall 2023','A',4.0),\n(23,251,'Fall 2023','A',4.0),\n(23,252,'Fall 2023','A',4.0),\n(23,254,'Fall 2023','B',3.75),\n(23,253,'Fall 2023','F',0.0);\n"
+      ],
+      "expected": [
+        [
+          23
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(24,'Omar','Chemistry');\n\nINSERT INTO courses VALUES\n(260,'Organic Chemistry Two',4,'Chemistry','yes'),\n(261,'Quantum Chemistry',4,'Chemistry','yes'),\n(262,'Spectroscopy Lab',3,'Chemistry','no'),\n(264,'Colloid Chemistry',3,'Chemistry','no'),\n(263,'Music Appreciation',3,'Arts','no'),\n(265,'Pottery Workshop',2,'Arts','no');\n\nINSERT INTO enrollments VALUES\n(24,260,'Fall 2023','A',4.0),\n(24,261,'Fall 2023','A',4.0),\n(24,262,'Fall 2023','B',3.0),\n(24,264,'Fall 2023','B',2.5),\n(24,263,'Fall 2023','D',1.0),\n(24,265,'Fall 2023','F',0.0);\n"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(25,'Pia','Economics');\n\nINSERT INTO courses VALUES\n(270,'Microeconomics',4,'Economics','yes'),\n(271,'Macroeconomics',4,'Economics','yes'),\n(272,'Econometrics',3,'Economics','no'),\n(273,'Game Theory',3,'Economics','no');\n\nINSERT INTO enrollments VALUES\n(25,270,'Fall 2023','A',3.5),\n(25,271,'Fall 2023','A',3.5),\n(25,272,'Fall 2023','B',1.5),\n(25,273,'Fall 2023','B',1.5);\n"
+      ],
+      "expected": [
+        [
+          25
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(26,'Quinn','Physics');\n\nINSERT INTO courses VALUES\n(280,'Classical Mechanics',4,'Physics','yes'),\n(281,'Electromagnetism',4,'Physics','yes'),\n(282,'Astrophysics',3,'Physics','no'),\n(283,'Thermal Physics',3,'Physics','no');\n\nINSERT INTO enrollments VALUES\n(26,280,'Fall 2023','B',3.0),\n(26,280,'Spring 2024','A',4.0),\n(26,281,'Fall 2023','A',4.0),\n(26,282,'Fall 2023','A',4.0),\n(26,283,'Fall 2023','A',4.0);\n"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(27,'Rosa','Physics');\n\nINSERT INTO courses VALUES\n(290,'Classical Mechanics Two',4,'Physics','yes'),\n(291,'Electromagnetism Two',4,'Physics','yes'),\n(292,'Astrophysics Two',3,'Physics','no'),\n(293,'Thermal Physics Two',3,'Physics','no');\n\nINSERT INTO enrollments VALUES\n(27,290,'Fall 2023','A',4.0),\n(27,290,'Spring 2024','A',4.0),\n(27,291,'Fall 2023','A',4.0),\n(27,292,'Fall 2023','B',2.0),\n(27,293,'Fall 2023','B',2.0);\n"
+      ],
+      "expected": [
+        [
+          27
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(1,'Alice','Computer Science'),\n(2,'Bob','Computer Science'),\n(3,'Charlie','Mathematics'),\n(4,'David','Mathematics'),\n(30,'Zed','Undeclared');\n\nINSERT INTO courses VALUES\n(101,'Algorithms',3,'Computer Science','yes'),\n(102,'Data Structures',3,'Computer Science','yes'),\n(103,'Calculus',4,'Mathematics','yes'),\n(104,'Linear Algebra',4,'Mathematics','yes'),\n(105,'Machine Learning',3,'Computer Science','no'),\n(106,'Probability',3,'Mathematics','no'),\n(107,'Operating Systems',3,'Computer Science','no'),\n(108,'Statistics',3,'Mathematics','no');\n"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(31,'Ann','Geology'),\n(32,'Bea','Geology');\n\nINSERT INTO courses VALUES\n(300,'Mineralogy',4,'Geology','yes'),\n(301,'Stratigraphy',3,'Geology','no');\n"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(90,'Scout','Linguistics'),\n(45,'Remy','Kinesiology'),\n(78,'Ash','Linguistics'),\n(51,'Nell','Kinesiology');\n\nINSERT INTO courses VALUES\n(310,'Phonology',3,'Linguistics','yes'),\n(311,'Syntax',3,'Linguistics','yes'),\n(312,'Semantics',3,'Linguistics','no'),\n(313,'Pragmatics',3,'Linguistics','no'),\n(320,'Anatomy',3,'Kinesiology','yes'),\n(321,'Biomechanics',3,'Kinesiology','yes'),\n(322,'Nutrition',3,'Kinesiology','no'),\n(323,'Exercise Psychology',3,'Kinesiology','no');\n\nINSERT INTO enrollments VALUES\n(90,310,'Fall 2023','A',4.0),\n(90,311,'Spring 2023','A',4.0),\n(90,312,'Fall 2023','B',3.0),\n(90,313,'Spring 2024','B',3.0),\n(78,310,'Fall 2023','A',4.0),\n(78,311,'Fall 2023','A',4.0),\n(78,313,'Fall 2023','B',3.0),\n(45,320,'Fall 2023','A',4.0),\n(45,321,'Fall 2023','A',4.0),\n(45,323,'Fall 2023','B',3.0),\n(51,320,'Fall 2023','C',2.0),\n(51,321,'Fall 2023','A',4.0),\n(51,322,'Fall 2023','B',3.0),\n(51,323,'Fall 2023','A',4.0);\n"
+      ],
+      "expected": [
+        [
+          90
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO students VALUES\n(68,'Student0','Alpha Studies'),\n(79,'Student1','Beta Studies'),\n(77,'Student2','Gamma Studies'),\n(66,'Student3','Delta Studies'),\n(82,'Student4','Alpha Studies'),\n(87,'Student5','Beta Studies'),\n(60,'Student6','Gamma Studies'),\n(74,'Student7','Delta Studies'),\n(67,'Student8','Alpha Studies'),\n(80,'Student9','Beta Studies'),\n(69,'Student10','Gamma Studies'),\n(81,'Student11','Delta Studies'),\n(75,'Student12','Alpha Studies'),\n(84,'Student13','Beta Studies'),\n(70,'Student14','Gamma Studies'),\n(85,'Student15','Delta Studies'),\n(61,'Student16','Alpha Studies'),\n(63,'Student17','Beta Studies'),\n(73,'Student18','Gamma Studies'),\n(62,'Student19','Delta Studies'),\n(78,'Student20','Alpha Studies'),\n(72,'Student21','Beta Studies'),\n(64,'Student22','Gamma Studies'),\n(76,'Student23','Delta Studies'),\n(71,'Student24','Alpha Studies'),\n(83,'Student25','Beta Studies'),\n(65,'Student26','Gamma Studies'),\n(86,'Student27','Delta Studies');\n\nINSERT INTO courses VALUES\n(400,'Alpha Studies Core One',3,'Alpha Studies','yes'),\n(401,'Alpha Studies Core Two',3,'Alpha Studies','yes'),\n(402,'Alpha Studies Elective 2',3,'Alpha Studies','no'),\n(403,'Alpha Studies Elective 3',3,'Alpha Studies','no'),\n(404,'Alpha Studies Elective 4',3,'Alpha Studies','no'),\n(420,'Beta Studies Core One',3,'Beta Studies','yes'),\n(421,'Beta Studies Core Two',3,'Beta Studies','yes'),\n(422,'Beta Studies Elective 2',3,'Beta Studies','no'),\n(423,'Beta Studies Elective 3',3,'Beta Studies','no'),\n(424,'Beta Studies Elective 4',3,'Beta Studies','no'),\n(440,'Gamma Studies Core One',3,'Gamma Studies','yes'),\n(441,'Gamma Studies Core Two',3,'Gamma Studies','yes'),\n(442,'Gamma Studies Elective 2',3,'Gamma Studies','no'),\n(443,'Gamma Studies Elective 3',3,'Gamma Studies','no'),\n(444,'Gamma Studies Elective 4',3,'Gamma Studies','no'),\n(460,'Delta Studies Core One',3,'Delta Studies','yes'),\n(461,'Delta Studies Core Two',3,'Delta Studies','yes'),\n(462,'Delta Studies Elective 2',3,'Delta Studies','no'),\n(463,'Delta Studies Elective 3',3,'Delta Studies','no'),\n(464,'Delta Studies Elective 4',3,'Delta Studies','no');\n\nINSERT INTO enrollments VALUES\n(68,400,'Fall 2023','A',3.75),\n(68,401,'Spring 2024','A',4.0),\n(68,402,'Fall 2024','B',3.0),\n(68,403,'Spring 2025','B',3.0),\n(79,420,'Fall 2023','A',4.0),\n(79,421,'Spring 2024','B',2.75),\n(79,422,'Fall 2024','A',3.75),\n(79,423,'Spring 2025','A',4.0),\n(77,440,'Fall 2023','A',4.0),\n(77,441,'Spring 2024','A',3.75),\n(77,442,'Fall 2024','B',2.75),\n(77,443,'Spring 2025','C',2.0),\n(66,460,'Fall 2023','A',3.75),\n(66,461,'Spring 2024','A',3.75),\n(66,462,'Fall 2024','A',4.0),\n(66,463,'Spring 2025','A',3.75),\n(82,400,'Fall 2023','A',4.0),\n(82,401,'Spring 2024','A',4.0),\n(82,402,'Fall 2024','B',3.0),\n(82,403,'Spring 2025','A',4.0),\n(82,404,'Fall 2023','B',3.0),\n(87,422,'Fall 2023','A',3.75),\n(87,423,'Spring 2024','A',4.0),\n(87,424,'Fall 2024','A',4.0),\n(60,440,'Fall 2023','B',2.75),\n(60,441,'Spring 2024','A',3.75),\n(60,442,'Fall 2024','B',2.75),\n(60,443,'Spring 2025','B',2.75),\n(74,460,'Fall 2023','A',3.75),\n(74,461,'Spring 2024','A',3.75),\n(74,462,'Fall 2024','B',2.75),\n(74,463,'Spring 2025','B',3.0),\n(67,400,'Fall 2023','A',4.0),\n(67,401,'Spring 2024','B',3.0),\n(67,402,'Fall 2024','A',4.0),\n(67,403,'Spring 2025','A',4.0),\n(80,420,'Fall 2023','A',4.0),\n(80,421,'Spring 2024','A',3.75),\n(80,422,'Fall 2024','B',2.75),\n(80,423,'Spring 2025','C',2.0),\n(69,440,'Fall 2023','A',4.0),\n(69,441,'Spring 2024','A',4.0),\n(69,442,'Fall 2024','A',4.0),\n(69,443,'Spring 2025','A',3.75),\n(81,460,'Fall 2023','A',4.0),\n(81,461,'Spring 2024','A',4.0),\n(81,462,'Fall 2024','B',2.75),\n(81,463,'Spring 2025','A',3.75),\n(81,464,'Fall 2023','B',2.75),\n(75,402,'Fall 2023','A',4.0),\n(75,403,'Spring 2024','A',4.0),\n(75,404,'Fall 2024','A',3.75),\n(84,420,'Fall 2023','B',2.75),\n(84,421,'Spring 2024','A',4.0),\n(84,422,'Fall 2024','B',3.0),\n(84,423,'Spring 2025','B',3.0),\n(70,440,'Fall 2023','A',3.75),\n(70,441,'Spring 2024','A',3.75),\n(70,442,'Fall 2024','B',3.0),\n(70,443,'Spring 2025','B',2.75),\n(85,460,'Fall 2023','A',3.75),\n(85,461,'Spring 2024','B',2.75),\n(85,462,'Fall 2024','A',3.75),\n(85,463,'Spring 2025','A',3.75),\n(61,400,'Fall 2023','A',3.75),\n(61,401,'Spring 2024','A',3.75),\n(61,402,'Fall 2024','B',2.75),\n(61,403,'Spring 2025','C',2.0),\n(63,420,'Fall 2023','A',4.0),\n(63,421,'Spring 2024','A',3.75),\n(63,422,'Fall 2024','A',3.75),\n(63,423,'Spring 2025','A',4.0),\n(73,440,'Fall 2023','A',3.75),\n(73,441,'Spring 2024','A',4.0),\n(73,442,'Fall 2024','B',2.75),\n(73,443,'Spring 2025','A',3.75),\n(73,444,'Fall 2023','B',3.0),\n(62,462,'Fall 2023','A',4.0),\n(62,463,'Spring 2024','A',3.75),\n(62,464,'Fall 2024','A',4.0),\n(78,400,'Fall 2023','B',2.75),\n(78,401,'Spring 2024','A',3.75),\n(78,402,'Fall 2024','B',3.0),\n(78,403,'Spring 2025','B',3.0),\n(72,420,'Fall 2023','A',4.0),\n(72,421,'Spring 2024','A',4.0),\n(72,422,'Fall 2024','B',3.0),\n(72,423,'Spring 2025','B',3.0),\n(64,440,'Fall 2023','A',3.75),\n(64,441,'Spring 2024','B',2.75),\n(64,442,'Fall 2024','A',4.0),\n(64,443,'Spring 2025','A',3.75),\n(76,460,'Fall 2023','A',3.75),\n(76,461,'Spring 2024','A',3.75),\n(76,462,'Fall 2024','B',3.0),\n(76,463,'Spring 2025','C',2.0),\n(71,400,'Fall 2023','A',4.0),\n(71,401,'Spring 2024','A',4.0),\n(71,402,'Fall 2024','A',3.75),\n(71,403,'Spring 2025','A',3.75),\n(83,420,'Fall 2023','A',4.0),\n(83,421,'Spring 2024','A',3.75),\n(83,422,'Fall 2024','B',2.75),\n(83,423,'Spring 2025','A',4.0),\n(83,424,'Fall 2023','B',2.75),\n(65,442,'Fall 2023','A',4.0),\n(65,443,'Spring 2024','A',4.0),\n(65,444,'Fall 2024','A',4.0),\n(86,460,'Fall 2023','B',3.0),\n(86,461,'Spring 2024','A',4.0),\n(86,462,'Fall 2024','B',3.0),\n(86,463,'Spring 2025','B',2.75);\n"
+      ],
+      "expected": [
+        [
+          63
+        ],
+        [
+          66
+        ],
+        [
+          68
+        ],
+        [
+          69
+        ],
+        [
+          70
+        ],
+        [
+          71
+        ],
+        [
+          72
+        ],
+        [
+          73
+        ],
+        [
+          74
+        ],
+        [
+          81
+        ],
+        [
+          82
+        ],
+        [
+          83
+        ]
+      ]
+    }
+  ]
+}

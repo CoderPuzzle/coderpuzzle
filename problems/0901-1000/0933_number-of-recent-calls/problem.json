@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 933,
+  "slug": "number-of-recent-calls",
+  "title": "Number of Recent Calls",
+  "difficulty": "Easy",
+  "tags": [
+    "Design",
+    "Queue",
+    "Data Stream"
+  ],
+  "topics": [
+    "Design",
+    "Queue",
+    "Data Stream"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "RecentCounter",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "ping",
+        "parameters": [
+          {
+            "name": "t",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 612,
+  "slug": "shortest-distance-in-a-plane",
+  "title": "Shortest Distance in a Plane",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database",
+    "Nearest Pair of Points"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Point2D (x INTEGER, y INTEGER);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

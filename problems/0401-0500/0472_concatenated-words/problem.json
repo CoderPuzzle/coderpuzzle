@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 472,
+  "slug": "concatenated-words",
+  "title": "Concatenated Words",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Dynamic Programming",
+    "Depth-First Search",
+    "Trie",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Dynamic Programming",
+    "Depth-First Search",
+    "Trie",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findAllConcatenatedWordsInADict",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "findAllConcatenatedWordsInADict",
+      "rust": "find_all_concatenated_words_in_a_dict",
+      "typescript": "findAllConcatenatedWordsInADict"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

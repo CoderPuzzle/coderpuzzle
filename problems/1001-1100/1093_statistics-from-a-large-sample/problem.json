@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1093,
+  "slug": "statistics-from-a-large-sample",
+  "title": "Statistics from a Large Sample",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Probability and Statistics"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Probability and Statistics"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sampleStats",
+    "parameters": [
+      {
+        "name": "count",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "number"
+      }
+    },
+    "entrypoints": {
+      "go": "sampleStats",
+      "rust": "sample_stats",
+      "typescript": "sampleStats"
+    },
+    "comparison": {
+      "mode": "close",
+      "tolerance": 1e-05
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

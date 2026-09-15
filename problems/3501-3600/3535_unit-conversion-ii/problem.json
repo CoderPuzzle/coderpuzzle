@@ -1,0 +1,77 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3535,
+  "slug": "unit-conversion-ii",
+  "title": "Unit Conversion II",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "queryConversions",
+    "parameters": [
+      {
+        "name": "conversions",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "queryConversions",
+      "rust": "query_conversions",
+      "typescript": "queryConversions"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

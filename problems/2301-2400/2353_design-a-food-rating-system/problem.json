@@ -1,0 +1,103 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2353,
+  "slug": "design-a-food-rating-system",
+  "title": "Design a Food Rating System",
+  "difficulty": "Medium",
+  "tags": [
+    "Heap",
+    "Hash Table"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design",
+    "Heap (Priority Queue)",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "FoodRatings",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "foods",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        },
+        {
+          "name": "cuisines",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        },
+        {
+          "name": "ratings",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "changeRating",
+        "parameters": [
+          {
+            "name": "food",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "newRating",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "highestRated",
+        "parameters": [
+          {
+            "name": "cuisine",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

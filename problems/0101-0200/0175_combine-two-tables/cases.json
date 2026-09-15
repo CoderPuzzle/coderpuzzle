@@ -1,0 +1,263 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'Wang','Allen'),\n(2,'Alice','Bob');\nINSERT INTO Address VALUES\n(1,2,'New York City','New York'),\n(2,3,'Leetcode','California');"
+      ],
+      "expected": [
+        [
+          "Allen",
+          "Wang",
+          null,
+          null
+        ],
+        [
+          "Bob",
+          "Alice",
+          "New York City",
+          "New York"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'Wang','Allen'),\n(2,'Alice','Bob'),\n(3,'Garcia','Maria');\nINSERT INTO Address VALUES\n(1,1,'Chicago','Illinois'),\n(2,2,'New York City','New York'),\n(3,3,'Austin','Texas');"
+      ],
+      "expected": [
+        [
+          "Allen",
+          "Wang",
+          "Chicago",
+          "Illinois"
+        ],
+        [
+          "Bob",
+          "Alice",
+          "New York City",
+          "New York"
+        ],
+        [
+          "Maria",
+          "Garcia",
+          "Austin",
+          "Texas"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'Wang','Allen'),\n(2,'Alice','Bob'),\n(3,'Garcia','Maria');\nINSERT INTO Address VALUES\n(5,2,'New York City','New York');"
+      ],
+      "expected": [
+        [
+          "Allen",
+          "Wang",
+          null,
+          null
+        ],
+        [
+          "Bob",
+          "Alice",
+          "New York City",
+          "New York"
+        ],
+        [
+          "Maria",
+          "Garcia",
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'Doe','Jane');\nINSERT INTO Address VALUES\n(7,99,'Rome','Lazio');"
+      ],
+      "expected": [
+        [
+          "Jane",
+          "Doe",
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'Wang','Allen'),\n(2,'Alice','Bob'),\n(3,'Garcia','Maria');"
+      ],
+      "expected": [
+        [
+          "Allen",
+          "Wang",
+          null,
+          null
+        ],
+        [
+          "Bob",
+          "Alice",
+          null,
+          null
+        ],
+        [
+          "Maria",
+          "Garcia",
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Address VALUES\n(1,10,'Paris','Ile-de-France');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'Chen','Wei');\nINSERT INTO Address VALUES\n(1,1,'Shanghai','Shanghai'),\n(2,1,'Beijing','Beijing');"
+      ],
+      "expected": [
+        [
+          "Wei",
+          "Chen",
+          "Beijing",
+          "Beijing"
+        ],
+        [
+          "Wei",
+          "Chen",
+          "Shanghai",
+          "Shanghai"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(8,'Smith','John');\nINSERT INTO Address VALUES\n(3,8,'Denver','Colorado');"
+      ],
+      "expected": [
+        [
+          "John",
+          "Smith",
+          "Denver",
+          "Colorado"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'Novak','Ada'),\n(2,'Curie','Eve');\nINSERT INTO Address VALUES\n(1,1,NULL,NULL),\n(2,2,'Boston',NULL);"
+      ],
+      "expected": [
+        [
+          "Ada",
+          "Novak",
+          null,
+          null
+        ],
+        [
+          "Eve",
+          "Curie",
+          "Boston",
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'Ross','Ada'),\n(2,'Bell','Ben'),\n(3,'Ford','Cleo'),\n(4,'Hale','Dan'),\n(5,'Ives','Eve');\nINSERT INTO Address VALUES\n(1,1,'Portland','Oregon'),\n(2,1,'Eugene','Oregon'),\n(3,2,'Miami','Florida'),\n(4,4,'Atlanta','Georgia'),\n(5,77,'Nowhere','Nevada');"
+      ],
+      "expected": [
+        [
+          "Ada",
+          "Ross",
+          "Eugene",
+          "Oregon"
+        ],
+        [
+          "Ada",
+          "Ross",
+          "Portland",
+          "Oregon"
+        ],
+        [
+          "Ben",
+          "Bell",
+          "Miami",
+          "Florida"
+        ],
+        [
+          "Cleo",
+          "Ford",
+          null,
+          null
+        ],
+        [
+          "Dan",
+          "Hale",
+          "Atlanta",
+          "Georgia"
+        ],
+        [
+          "Eve",
+          "Ives",
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(1,'Smith','John'),\n(2,'Smith','John');\nINSERT INTO Address VALUES\n(1,2,'Seattle','Washington');"
+      ],
+      "expected": [
+        [
+          "John",
+          "Smith",
+          null,
+          null
+        ],
+        [
+          "John",
+          "Smith",
+          "Seattle",
+          "Washington"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Person VALUES\n(57,'Ali','Omar'),\n(5,'Khan','Sara'),\n(100,'Ito','Ken');\nINSERT INTO Address VALUES\n(9,100,'Osaka','Osaka'),\n(4,57,'Tokyo','Tokyo');"
+      ],
+      "expected": [
+        [
+          "Omar",
+          "Ali",
+          "Tokyo",
+          "Tokyo"
+        ],
+        [
+          "Sara",
+          "Khan",
+          null,
+          null
+        ],
+        [
+          "Ken",
+          "Ito",
+          "Osaka",
+          "Osaka"
+        ]
+      ]
+    }
+  ]
+}

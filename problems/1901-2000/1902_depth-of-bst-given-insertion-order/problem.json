@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1902,
+  "slug": "depth-of-bst-given-insertion-order",
+  "title": "Depth of BST Given Insertion Order",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Tree",
+    "Binary Search Tree",
+    "Binary Tree",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Array",
+    "Tree",
+    "Binary Search Tree",
+    "Binary Tree",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxDepthBST",
+    "parameters": [
+      {
+        "name": "order",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxDepthBST",
+      "rust": "max_depth_bst",
+      "typescript": "maxDepthBST"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

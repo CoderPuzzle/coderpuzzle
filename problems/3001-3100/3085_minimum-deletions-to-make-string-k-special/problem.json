@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3085,
+  "slug": "minimum-deletions-to-make-string-k-special",
+  "title": "Minimum Deletions to Make String K-Special",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Greedy",
+    "Sorting",
+    "Counting"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Greedy",
+    "Sorting",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumDeletions",
+    "parameters": [
+      {
+        "name": "word",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumDeletions",
+      "rust": "minimum_deletions",
+      "typescript": "minimumDeletions"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

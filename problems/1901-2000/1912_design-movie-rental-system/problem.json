@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1912,
+  "slug": "design-movie-rental-system",
+  "title": "Design Movie Rental System",
+  "difficulty": "Hard",
+  "tags": [
+    "Heap",
+    "Hash Table",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Design",
+    "Heap (Priority Queue)",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "MovieRentingSystem",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "n",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "entries",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "search",
+        "parameters": [
+          {
+            "name": "movie",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "rent",
+        "parameters": [
+          {
+            "name": "shop",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "movie",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "drop",
+        "parameters": [
+          {
+            "name": "shop",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "movie",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "report",
+        "parameters": [],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

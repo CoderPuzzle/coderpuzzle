@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2483,
+  "slug": "minimum-penalty-for-a-shop",
+  "title": "Minimum Penalty for a Shop",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "String",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "bestClosingTime",
+    "parameters": [
+      {
+        "name": "customers",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "bestClosingTime",
+      "rust": "best_closing_time",
+      "typescript": "bestClosingTime"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

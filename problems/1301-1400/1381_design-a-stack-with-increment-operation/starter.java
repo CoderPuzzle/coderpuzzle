@@ -1,0 +1,10 @@
+class CustomStack {
+
+    public CustomStack(int maxSize) {}
+
+    public void push(int x) {}
+
+    public int pop() {}
+
+    public void increment(int k, int val) {}
+}

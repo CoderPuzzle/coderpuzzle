@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 83,
+  "slug": "remove-duplicates-from-sorted-list",
+  "title": "Remove Duplicates from Sorted List",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List"
+  ],
+  "topics": [
+    "Linked List"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "deleteDuplicates",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "deleteDuplicates",
+      "rust": "delete_duplicates",
+      "typescript": "deleteDuplicates"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

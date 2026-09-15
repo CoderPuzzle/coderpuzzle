@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "reference_solution": "sorted_two_pointer",
+  "id": 350,
+  "slug": "intersection-of-two-arrays-ii",
+  "title": "Intersection of Two Arrays II",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Two Pointers",
+    "Binary Search",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Two Pointers",
+    "Binary Search",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "intersect",
+    "parameters": [
+      {
+        "name": "nums1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "intersect",
+      "rust": "intersect",
+      "typescript": "intersect"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

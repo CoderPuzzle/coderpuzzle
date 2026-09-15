@@ -1,0 +1,88 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1687,
+  "slug": "delivering-boxes-from-storage-to-ports",
+  "title": "Delivering Boxes from Storage to Ports",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Segment Tree",
+    "Queue",
+    "Heap (Priority Queue)",
+    "Prefix Sum",
+    "Monotonic Queue"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Segment Tree",
+    "Queue",
+    "Heap (Priority Queue)",
+    "Prefix Sum",
+    "Monotonic Queue"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "boxDelivering",
+    "parameters": [
+      {
+        "name": "boxes",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "portsCount",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "maxBoxes",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "maxWeight",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "boxDelivering",
+      "rust": "box_delivering",
+      "typescript": "boxDelivering"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

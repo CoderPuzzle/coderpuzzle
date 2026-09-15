@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 510,
+  "slug": "inorder-successor-in-bst-ii",
+  "title": "Inorder Successor in BST II",
+  "difficulty": "Medium",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Tree",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "inorderSuccessor",
+    "parameters": [
+      {
+        "name": "tree",
+        "codec": "next_tree",
+        "value_type": {
+          "kind": "next_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "node",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "next_tree",
+    "return_type": {
+      "kind": "next_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

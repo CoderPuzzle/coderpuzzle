@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2181,
+  "slug": "merge-nodes-in-between-zeros",
+  "title": "Merge Nodes in Between Zeros",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Simulation"
+  ],
+  "topics": [
+    "Linked List",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "mergeNodes",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "mergeNodes",
+      "rust": "merge_nodes",
+      "typescript": "mergeNodes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

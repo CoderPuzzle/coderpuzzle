@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2015,
+  "slug": "average-height-of-buildings-in-each-segment",
+  "title": "Average Height of Buildings in Each Segment",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "averageHeightOfBuildings",
+    "parameters": [
+      {
+        "name": "buildings",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "averageHeightOfBuildings",
+      "rust": "average_height_of_buildings",
+      "typescript": "averageHeightOfBuildings"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

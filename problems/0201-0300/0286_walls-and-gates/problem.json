@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 286,
+  "slug": "walls-and-gates",
+  "title": "Walls and Gates",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "wallsAndGates",
+    "parameters": [
+      {
+        "name": "rooms",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "wallsAndGates",
+      "rust": "walls_and_gates",
+      "typescript": "wallsAndGates"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

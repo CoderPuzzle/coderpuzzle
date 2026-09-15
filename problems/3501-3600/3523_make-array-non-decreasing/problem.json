@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3523,
+  "slug": "make-array-non-decreasing",
+  "title": "Make Array Non-decreasing",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Stack",
+    "Greedy",
+    "Monotonic Stack"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Greedy",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumPossibleSize",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumPossibleSize",
+      "rust": "maximum_possible_size",
+      "typescript": "maximumPossibleSize"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

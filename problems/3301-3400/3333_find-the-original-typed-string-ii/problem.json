@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3333,
+  "slug": "find-the-original-typed-string-ii",
+  "title": "Find the Original Typed String II",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Dynamic Programming",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "String",
+    "Dynamic Programming",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "possibleStringCount",
+    "parameters": [
+      {
+        "name": "word",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "possibleStringCount",
+      "rust": "possible_string_count",
+      "typescript": "possibleStringCount"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

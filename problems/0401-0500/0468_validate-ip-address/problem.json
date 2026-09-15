@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 468,
+  "slug": "validate-ip-address",
+  "title": "Validate IP Address",
+  "difficulty": "Medium",
+  "tags": [
+    "String"
+  ],
+  "topics": [
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "validIPAddress",
+    "parameters": [
+      {
+        "name": "queryIP",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "validIPAddress",
+      "rust": "valid_ip_address",
+      "typescript": "validIPAddress"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 302,
+  "slug": "smallest-rectangle-enclosing-black-pixels",
+  "title": "Smallest Rectangle Enclosing Black Pixels",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minArea",
+    "parameters": [
+      {
+        "name": "image",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "x",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "y",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minArea",
+      "rust": "min_area",
+      "typescript": "minArea"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

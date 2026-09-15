@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1771,
+  "slug": "maximize-palindrome-length-from-subsequences",
+  "title": "Maximize Palindrome Length From Subsequences",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestPalindrome",
+    "parameters": [
+      {
+        "name": "word1",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "word2",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "longestPalindrome",
+      "rust": "longest_palindrome",
+      "typescript": "longestPalindrome"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

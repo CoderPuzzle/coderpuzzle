@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3880,
+  "slug": "minimum-absolute-difference-between-two-values",
+  "title": "Minimum Absolute Difference Between Two Values",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minAbsoluteDifference",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minAbsoluteDifference",
+      "rust": "min_absolute_difference",
+      "typescript": "minAbsoluteDifference"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

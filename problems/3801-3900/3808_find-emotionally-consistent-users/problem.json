@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3808,
+  "slug": "find-emotionally-consistent-users",
+  "title": "Find Emotionally Consistent Users",
+  "difficulty": "Medium",
+  "tags": [
+    "Database",
+    "SQL"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Reactions (user_id INTEGER, content_id INTEGER, reaction VARCHAR);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

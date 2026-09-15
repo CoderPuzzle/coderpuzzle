@@ -1,0 +1,161 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2254,
+  "slug": "design-video-sharing-platform",
+  "title": "Design Video Sharing Platform",
+  "difficulty": "Hard",
+  "tags": [
+    "Hash Table",
+    "Design",
+    "Heap (Priority Queue)"
+  ],
+  "topics": [
+    "Hash Table",
+    "Design",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "VideoSharingPlatform",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "upload",
+        "parameters": [
+          {
+            "name": "video",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "remove",
+        "parameters": [
+          {
+            "name": "videoId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": null
+      },
+      {
+        "name": "watch",
+        "parameters": [
+          {
+            "name": "videoId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "startMinute",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "endMinute",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "like",
+        "parameters": [
+          {
+            "name": "videoId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": null
+      },
+      {
+        "name": "dislike",
+        "parameters": [
+          {
+            "name": "videoId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": null
+      },
+      {
+        "name": "getLikesAndDislikes",
+        "parameters": [
+          {
+            "name": "videoId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "getViews",
+        "parameters": [
+          {
+            "name": "videoId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

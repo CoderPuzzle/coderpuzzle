@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 257,
+  "slug": "binary-tree-paths",
+  "title": "Binary Tree Paths",
+  "difficulty": "Easy",
+  "tags": [
+    "String",
+    "Backtracking",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "topics": [
+    "String",
+    "Backtracking",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "binaryTreePaths",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "binaryTreePaths",
+      "rust": "binary_tree_paths",
+      "typescript": "binaryTreePaths"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

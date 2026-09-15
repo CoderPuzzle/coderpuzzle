@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "min_heap",
+  "id": 23,
+  "slug": "merge-k-sorted-lists",
+  "title": "Merge k Sorted Lists",
+  "difficulty": "Hard",
+  "tags": [
+    "Linked List",
+    "Heap (Priority Queue)",
+    "Divide and Conquer"
+  ],
+  "topics": [
+    "Linked List",
+    "Divide and Conquer",
+    "Heap (Priority Queue)",
+    "Merge Sort",
+    "Tournament Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "mergeKLists",
+    "parameters": [
+      {
+        "name": "lists",
+        "codec": "list_node_array",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "linked_list",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "mergeKLists",
+      "rust": "merge_k_lists",
+      "typescript": "mergeKLists"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3878,
+  "slug": "count-good-subarrays",
+  "title": "Count Good Subarrays",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Stack",
+    "Bit Manipulation",
+    "Monotonic Stack"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Bit Manipulation",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countGoodSubarrays",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "countGoodSubarrays",
+      "rust": "count_good_subarrays",
+      "typescript": "countGoodSubarrays"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

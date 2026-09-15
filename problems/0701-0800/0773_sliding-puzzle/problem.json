@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 773,
+  "slug": "sliding-puzzle",
+  "title": "Sliding Puzzle",
+  "difficulty": "Hard",
+  "tags": [
+    "Breadth-First Search",
+    "Matrix",
+    "Hash Set"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Backtracking",
+    "Breadth-First Search",
+    "Memoization",
+    "Matrix",
+    "Heuristic Search",
+    "Bidirectional Search",
+    "A* Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "slidingPuzzle",
+    "parameters": [
+      {
+        "name": "board",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "slidingPuzzle",
+      "rust": "sliding_puzzle",
+      "typescript": "slidingPuzzle"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

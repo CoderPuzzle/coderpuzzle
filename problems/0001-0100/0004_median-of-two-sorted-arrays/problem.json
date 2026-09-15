@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 4,
+  "slug": "median-of-two-sorted-arrays",
+  "title": "Median of Two Sorted Arrays",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Divide and Conquer"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findMedianSortedArrays",
+    "parameters": [
+      {
+        "name": "nums1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "number"
+    },
+    "entrypoints": {
+      "go": "findMedianSortedArrays",
+      "rust": "find_median_sorted_arrays",
+      "typescript": "findMedianSortedArrays"
+    },
+    "comparison": "close"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

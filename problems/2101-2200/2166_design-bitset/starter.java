@@ -1,0 +1,18 @@
+class Bitset {
+
+    public Bitset(int size) {}
+
+    public void fix(int idx) {}
+
+    public void unfix(int idx) {}
+
+    public void flip() {}
+
+    public boolean all() {}
+
+    public boolean one() {}
+
+    public int count() {}
+
+    public String toString() {}
+}

@@ -1,0 +1,6 @@
+from typing import List, Optional
+
+
+class Solution:
+    def maximumCandies(self, candies: List[int], k: int) -> int:
+        raise NotImplementedError("TODO")

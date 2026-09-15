@@ -1,0 +1,9 @@
+// Bundle-provided types (assembled with this submission):
+//   ListNode:  { field val: i32, next: Option<Box<ListNode>> }
+//   TreeNode:  { field val: i32, left/right: Option<Box<TreeNode>> }
+
+impl Solution {
+    pub fn is_valid_sequence(root: Option<Box<TreeNode>>, arr: Vec<i32>) -> bool {
+        panic!("TODO")
+    }
+}

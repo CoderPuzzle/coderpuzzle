@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3145,
+  "slug": "find-products-of-elements-of-big-array",
+  "title": "Find Products of Elements of Big Array",
+  "difficulty": "Hard",
+  "tags": [
+    "Binary Search",
+    "Bit Manipulation",
+    "Digit DP"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findProductsOfElements",
+    "parameters": [
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "findProductsOfElements",
+      "rust": "find_products_of_elements",
+      "typescript": "findProductsOfElements"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

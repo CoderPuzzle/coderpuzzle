@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2505,
+  "slug": "bitwise-or-of-all-subsequence-sums",
+  "title": "Bitwise OR of All Subsequence Sums",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Bit Manipulation",
+    "Brainteaser",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Bit Manipulation",
+    "Brainteaser",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "subsequenceSumOr",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "subsequenceSumOr",
+      "rust": "subsequence_sum_or",
+      "typescript": "subsequenceSumOr"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

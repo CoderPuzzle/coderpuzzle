@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1742,
+  "slug": "maximum-number-of-balls-in-a-box",
+  "title": "Maximum Number of Balls in a Box",
+  "difficulty": "Easy",
+  "tags": [
+    "Hash Table",
+    "Math",
+    "Counting"
+  ],
+  "topics": [
+    "Hash Table",
+    "Math",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countBalls",
+    "parameters": [
+      {
+        "name": "lowLimit",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "highLimit",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countBalls",
+      "rust": "count_balls",
+      "typescript": "countBalls"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

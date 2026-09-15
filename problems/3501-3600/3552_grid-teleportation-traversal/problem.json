@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3552,
+  "slug": "grid-teleportation-traversal",
+  "title": "Grid Teleportation Traversal",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minMoves",
+    "parameters": [
+      {
+        "name": "matrix",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minMoves",
+      "rust": "min_moves",
+      "typescript": "minMoves"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

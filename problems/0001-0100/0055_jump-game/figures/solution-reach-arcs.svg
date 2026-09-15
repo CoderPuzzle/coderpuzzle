@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 270" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="580" height="270" fill="#ffffff"/>
+  <text x="20" y="24" fill="#1a2026" font-weight="600">nums = [2,3,1,1,4] - each index can reach as far as the arc shows; farthest only grows</text>
+  <!-- arcs -->
+  <path d="M 96 150 C 96 70, 320 70, 320 150" fill="none" stroke="#1a2026" stroke-width="1.5"/>
+  <path d="M 216 150 C 216 40, 440 40, 440 150" fill="none" stroke="#4169E1" stroke-width="2.6"/>
+  <path d="M 328 150 C 328 100, 384 100, 384 150" fill="none" stroke="#1a2026" stroke-width="1.5"/>
+  <path d="M 384 150 C 384 120, 428 120, 428 150" fill="none" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="208" y="88" fill="#1a2026" font-size="11" text-anchor="middle">reach 2</text>
+  <text x="328" y="58" fill="#4169E1" font-size="11.5" text-anchor="middle" font-weight="700">reach 4 - covers the last index</text>
+  <text x="356" y="112" fill="#1a2026" font-size="10.5" text-anchor="middle">1</text>
+  <text x="406" y="132" fill="#1a2026" font-size="10.5" text-anchor="middle">1</text>
+  <!-- index cells -->
+  <g stroke="#1a2026" stroke-width="1.4" fill="#ffffff">
+    <rect x="70" y="156" width="52" height="32"/><rect x="182" y="156" width="52" height="32"/><rect x="294" y="156" width="52" height="32"/><rect x="350" y="156" width="52" height="32"/><rect x="414" y="156" width="52" height="32"/>
+  </g>
+  <rect x="182" y="156" width="52" height="32" fill="#e9eefb"/>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="96" y="177">2</text><text x="208" y="177">3</text><text x="320" y="177">1</text><text x="376" y="177">1</text><text x="440" y="177">4</text>
+  </g>
+  <g fill="#8a94a0" font-size="10.5" text-anchor="middle">
+    <text x="96" y="206">index 0</text><text x="208" y="206">index 1</text><text x="320" y="206">index 2</text><text x="376" y="206">index 3</text><text x="440" y="206">index 4 (last)</text>
+  </g>
+  <!-- farthest progression -->
+  <text x="70" y="240" fill="#1a2026" font-size="12.5">farthest: 0 <tspan fill="#4169E1" font-weight="600">-&gt; 2</tspan> (after index 0) <tspan fill="#4169E1" font-weight="600">-&gt; 4</tspan> (after index 1) &gt;= last -&gt; true at index 1 already</text>
+  <text x="70" y="258" fill="#5b6470" font-size="11.5">An index is standable exactly when index &lt;= farthest; a gap that opens can never be crossed.</text>
+</svg>

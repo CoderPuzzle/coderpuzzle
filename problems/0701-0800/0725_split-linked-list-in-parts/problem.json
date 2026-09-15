@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 725,
+  "slug": "split-linked-list-in-parts",
+  "title": "Split Linked List in Parts",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List"
+  ],
+  "topics": [
+    "Linked List"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "splitListToParts",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "list_node_array",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "linked_list",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "splitListToParts",
+      "rust": "split_list_to_parts",
+      "typescript": "splitListToParts"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

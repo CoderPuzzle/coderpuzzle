@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3539,
+  "slug": "find-sum-of-array-product-of-magical-sequences",
+  "title": "Find Sum of Array Product of Magical Sequences",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Combinatorics",
+    "Bitmask"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Combinatorics",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "magicalSum",
+    "parameters": [
+      {
+        "name": "m",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "magicalSum",
+      "rust": "magical_sum",
+      "typescript": "magicalSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

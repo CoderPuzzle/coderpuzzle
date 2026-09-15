@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 756,
+  "slug": "pyramid-transition-matrix",
+  "title": "Pyramid Transition Matrix",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Backtracking",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Backtracking",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "pyramidTransition",
+    "parameters": [
+      {
+        "name": "bottom",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "allowed",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "pyramidTransition",
+      "rust": "pyramid_transition",
+      "typescript": "pyramidTransition"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

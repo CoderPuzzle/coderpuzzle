@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2178,
+  "slug": "maximum-split-of-positive-even-integers",
+  "title": "Maximum Split of Positive Even Integers",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Backtracking",
+    "Greedy"
+  ],
+  "topics": [
+    "Math",
+    "Backtracking",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumEvenSplit",
+    "parameters": [
+      {
+        "name": "finalSum",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 64
+      }
+    },
+    "entrypoints": {
+      "go": "maximumEvenSplit",
+      "rust": "maximum_even_split",
+      "typescript": "maximumEvenSplit"
+    },
+    "comparison": "sorted"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 4096
+  }
+}

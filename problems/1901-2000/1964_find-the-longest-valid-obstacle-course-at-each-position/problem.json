@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1964,
+  "slug": "find-the-longest-valid-obstacle-course-at-each-position",
+  "title": "Find the Longest Valid Obstacle Course at Each Position",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Binary Indexed Tree",
+    "Longest Increasing Subsequence"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestObstacleCourseAtEachPosition",
+    "parameters": [
+      {
+        "name": "obstacles",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "longestObstacleCourseAtEachPosition",
+      "rust": "longest_obstacle_course_at_each_position",
+      "typescript": "longestObstacleCourseAtEachPosition"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 8192
+  }
+}

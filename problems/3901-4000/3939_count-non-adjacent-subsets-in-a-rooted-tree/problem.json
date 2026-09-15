@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3939,
+  "slug": "count-non-adjacent-subsets-in-a-rooted-tree",
+  "title": "Count Non Adjacent Subsets in a Rooted Tree",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countValidSubsets",
+    "parameters": [
+      {
+        "name": "parent",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countValidSubsets",
+      "rust": "count_valid_subsets",
+      "typescript": "countValidSubsets"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 2000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

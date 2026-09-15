@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 297,
+  "slug": "serialize-and-deserialize-binary-tree",
+  "title": "Serialize and Deserialize Binary Tree",
+  "difficulty": "Hard",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "String",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Design",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Codec",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "serialize",
+        "parameters": [
+          {
+            "name": "root",
+            "codec": "tree_node",
+            "value_type": {
+              "kind": "binary_tree"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "deserialize",
+        "parameters": [
+          {
+            "name": "data",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_codec": "tree_node",
+        "return_type": {
+          "kind": "binary_tree"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

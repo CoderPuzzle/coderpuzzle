@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1032,
+  "slug": "stream-of-characters",
+  "title": "Stream of Characters",
+  "difficulty": "Hard",
+  "tags": [
+    "Trie"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Design",
+    "Trie",
+    "Data Stream",
+    "Aho–Corasick Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "StreamChecker",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "words",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "query",
+        "parameters": [
+          {
+            "name": "letter",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3274,
+  "slug": "check-if-two-chessboard-squares-have-the-same-color",
+  "title": "Check if Two Chessboard Squares Have the Same Color",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "String"
+  ],
+  "topics": [
+    "Math",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "checkTwoChessboards",
+    "parameters": [
+      {
+        "name": "coordinate1",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "coordinate2",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "checkTwoChessboards",
+      "rust": "check_two_chessboards",
+      "typescript": "checkTwoChessboards"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

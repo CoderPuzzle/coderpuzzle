@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1489,
+  "slug": "find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree",
+  "title": "Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree",
+  "difficulty": "Hard",
+  "tags": [
+    "Graph",
+    "Minimum Spanning Tree",
+    "Union Find"
+  ],
+  "topics": [
+    "Union-Find",
+    "Graph Theory",
+    "Sorting",
+    "Minimum Spanning Tree",
+    "Strongly Connected Component",
+    "Prim's Algorithm",
+    "Kruskal's Algorithm",
+    "Borůvka's Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findCriticalAndPseudoCriticalEdges",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "findCriticalAndPseudoCriticalEdges",
+      "rust": "find_critical_and_pseudo_critical_edges",
+      "typescript": "findCriticalAndPseudoCriticalEdges"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

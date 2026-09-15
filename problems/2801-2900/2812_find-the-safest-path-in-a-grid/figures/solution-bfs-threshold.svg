@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 250" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="560" height="250" fill="#ffffff"/>
+  <!-- grid of thief distances -->
+  <g stroke="#98a2ac" stroke-width="1.3" fill="none">
+    <rect x="180" y="30" width="52" height="52"/>
+    <rect x="232" y="30" width="52" height="52"/>
+    <rect x="284" y="30" width="52" height="52"/>
+    <rect x="180" y="82" width="52" height="52"/>
+    <rect x="232" y="82" width="52" height="52"/>
+    <rect x="284" y="82" width="52" height="52"/>
+    <rect x="180" y="134" width="52" height="52"/>
+    <rect x="232" y="134" width="52" height="52"/>
+    <rect x="284" y="134" width="52" height="52"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="206" y="62" fill="#1a2026">2</text>
+    <text x="258" y="62" fill="#5c6b76">1</text>
+    <text x="310" y="62" fill="#1a2026">0</text>
+    <text x="206" y="114" fill="#1a2026">3</text>
+    <text x="258" y="114" fill="#1a2026">2</text>
+    <text x="310" y="114" fill="#5c6b76">1</text>
+    <text x="206" y="166" fill="#1a2026">4</text>
+    <text x="258" y="166" fill="#1a2026">3</text>
+    <text x="310" y="166" fill="#1a2026">2</text>
+  </g>
+  <!-- thief cell -->
+  <rect x="284" y="30" width="52" height="52" fill="#e8edfa" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="310" y="62" text-anchor="middle" fill="#1a2026" font-weight="600">0</text>
+  <text x="310" y="24" text-anchor="middle" fill="#4169E1" font-size="12.5">thief</text>
+  <!-- deleted cells: dist < 2 -->
+  <g stroke="#98a2ac" stroke-width="1.4">
+    <line x1="238" y1="36" x2="278" y2="76"/>
+    <line x1="278" y1="36" x2="238" y2="76"/>
+    <line x1="290" y1="88" x2="330" y2="128"/>
+    <line x1="330" y1="88" x2="290" y2="128"/>
+  </g>
+  <!-- path -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <line x1="206" y1="66" x2="206" y2="98" marker-end="url(#arrow)"/>
+    <line x1="206" y1="118" x2="206" y2="150" marker-end="url(#arrow)"/>
+    <line x1="216" y1="160" x2="248" y2="160" marker-end="url(#arrow)"/>
+    <line x1="268" y1="160" x2="300" y2="160" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="24" y="62">multi-source BFS</text>
+    <text x="24" y="80">from every thief:</text>
+    <text x="24" y="98">dist = safeness of</text>
+    <text x="24" y="116">each cell</text>
+    <text x="24" y="150">cells with dist &lt; 2</text>
+    <text x="24" y="168">are deleted;</text>
+    <text x="24" y="186">corners stay</text>
+    <text x="24" y="210">connected → answer 2</text>
+  </g>
+  <text x="400" y="200" fill="#5c6b76" font-size="12.5">path minimum = 2,</text>
+  <text x="400" y="218" fill="#5c6b76" font-size="12.5">so v = 2 is achievable;</text>
+  <text x="400" y="236" fill="#5c6b76" font-size="12.5">v = 3 disconnects (0,0).</text>
+</svg>

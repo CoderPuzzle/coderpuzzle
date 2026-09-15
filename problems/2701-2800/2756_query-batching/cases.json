@@ -1,0 +1,717 @@
+{
+  "public": [
+    {
+      "input": {
+        "qm": {
+          "mode": "immediate"
+        },
+        "t": 100,
+        "calls": [
+          {
+            "key": "a",
+            "time": 10
+          },
+          {
+            "key": "b",
+            "time": 20
+          },
+          {
+            "key": "c",
+            "time": 30
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 10
+        },
+        {
+          "resolved": "b!",
+          "time": 110
+        },
+        {
+          "resolved": "c!",
+          "time": 110
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "constant",
+          "delay": 100
+        },
+        "t": 100,
+        "calls": [
+          {
+            "key": "a",
+            "time": 10
+          },
+          {
+            "key": "b",
+            "time": 20
+          },
+          {
+            "key": "c",
+            "time": 30
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 110
+        },
+        {
+          "resolved": "b!",
+          "time": 210
+        },
+        {
+          "resolved": "c!",
+          "time": 210
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "per_key",
+          "delay": 100
+        },
+        "t": 100,
+        "calls": [
+          {
+            "key": "a",
+            "time": 10
+          },
+          {
+            "key": "b",
+            "time": 20
+          },
+          {
+            "key": "c",
+            "time": 30
+          },
+          {
+            "key": "d",
+            "time": 40
+          },
+          {
+            "key": "e",
+            "time": 250
+          },
+          {
+            "key": "f",
+            "time": 300
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 110
+        },
+        {
+          "resolved": "e!",
+          "time": 350
+        },
+        {
+          "resolved": "b!",
+          "time": 410
+        },
+        {
+          "resolved": "c!",
+          "time": 410
+        },
+        {
+          "resolved": "d!",
+          "time": 410
+        },
+        {
+          "resolved": "f!",
+          "time": 450
+        }
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "qm": {
+          "mode": "immediate"
+        },
+        "t": 100,
+        "calls": []
+      },
+      "expected": []
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "per_key",
+          "delay": 40
+        },
+        "t": 100,
+        "calls": [
+          {
+            "key": "a",
+            "time": 5
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 45
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "per_key",
+          "delay": 30
+        },
+        "t": 0,
+        "calls": [
+          {
+            "key": "a",
+            "time": 0
+          },
+          {
+            "key": "b",
+            "time": 1
+          },
+          {
+            "key": "c",
+            "time": 15
+          },
+          {
+            "key": "d",
+            "time": 200
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 30
+        },
+        {
+          "resolved": "b!",
+          "time": 31
+        },
+        {
+          "resolved": "c!",
+          "time": 45
+        },
+        {
+          "resolved": "d!",
+          "time": 230
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "constant",
+          "delay": 40
+        },
+        "t": 100,
+        "calls": [
+          {
+            "key": "a",
+            "time": 10
+          },
+          {
+            "key": "b",
+            "time": 109
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 50
+        },
+        {
+          "resolved": "b!",
+          "time": 150
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "per_key",
+          "delay": 25
+        },
+        "t": 100,
+        "calls": [
+          {
+            "key": "a",
+            "time": 10
+          },
+          {
+            "key": "b",
+            "time": 20
+          },
+          {
+            "key": "c",
+            "time": 900
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 35
+        },
+        {
+          "resolved": "b!",
+          "time": 135
+        },
+        {
+          "resolved": "c!",
+          "time": 925
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "constant",
+          "delay": 60
+        },
+        "t": 100,
+        "calls": [
+          {
+            "key": "a",
+            "time": 10
+          },
+          {
+            "key": "b",
+            "time": 12
+          },
+          {
+            "key": "c",
+            "time": 25
+          },
+          {
+            "key": "d",
+            "time": 38
+          },
+          {
+            "key": "e",
+            "time": 41
+          },
+          {
+            "key": "f",
+            "time": 55
+          },
+          {
+            "key": "g",
+            "time": 60
+          },
+          {
+            "key": "h",
+            "time": 72
+          },
+          {
+            "key": "i",
+            "time": 85
+          },
+          {
+            "key": "j",
+            "time": 95
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 70
+        },
+        {
+          "resolved": "b!",
+          "time": 170
+        },
+        {
+          "resolved": "c!",
+          "time": 170
+        },
+        {
+          "resolved": "d!",
+          "time": 170
+        },
+        {
+          "resolved": "e!",
+          "time": 170
+        },
+        {
+          "resolved": "f!",
+          "time": 170
+        },
+        {
+          "resolved": "g!",
+          "time": 170
+        },
+        {
+          "resolved": "h!",
+          "time": 170
+        },
+        {
+          "resolved": "i!",
+          "time": 170
+        },
+        {
+          "resolved": "j!",
+          "time": 170
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "constant",
+          "delay": 10
+        },
+        "t": 50,
+        "calls": [
+          {
+            "key": "a",
+            "time": 0
+          },
+          {
+            "key": "b",
+            "time": 30
+          },
+          {
+            "key": "c",
+            "time": 80
+          },
+          {
+            "key": "d",
+            "time": 120
+          },
+          {
+            "key": "e",
+            "time": 160
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 10
+        },
+        {
+          "resolved": "b!",
+          "time": 60
+        },
+        {
+          "resolved": "c!",
+          "time": 110
+        },
+        {
+          "resolved": "d!",
+          "time": 160
+        },
+        {
+          "resolved": "e!",
+          "time": 210
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "per_key",
+          "delay": 90
+        },
+        "t": 80,
+        "calls": [
+          {
+            "key": "a",
+            "time": 5
+          },
+          {
+            "key": "b",
+            "time": 9
+          },
+          {
+            "key": "c",
+            "time": 70
+          },
+          {
+            "key": "d",
+            "time": 74
+          },
+          {
+            "key": "e",
+            "time": 300
+          },
+          {
+            "key": "f",
+            "time": 340
+          },
+          {
+            "key": "g",
+            "time": 355
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 95
+        },
+        {
+          "resolved": "b!",
+          "time": 355
+        },
+        {
+          "resolved": "c!",
+          "time": 355
+        },
+        {
+          "resolved": "d!",
+          "time": 355
+        },
+        {
+          "resolved": "e!",
+          "time": 390
+        },
+        {
+          "resolved": "f!",
+          "time": 560
+        },
+        {
+          "resolved": "g!",
+          "time": 560
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "constant",
+          "delay": 50
+        },
+        "t": 100,
+        "calls": [
+          {
+            "key": "a",
+            "time": 0
+          },
+          {
+            "key": "b",
+            "time": 100
+          },
+          {
+            "key": "c",
+            "time": 120
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 50
+        },
+        {
+          "resolved": "b!",
+          "time": 150
+        },
+        {
+          "resolved": "c!",
+          "time": 250
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "constant",
+          "delay": 1000
+        },
+        "t": 1000,
+        "calls": [
+          {
+            "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "time": 0
+          },
+          {
+            "key": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "time": 999
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+          "time": 1000
+        },
+        {
+          "resolved": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb!",
+          "time": 2000
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "immediate"
+        },
+        "t": 100,
+        "calls": [
+          {
+            "key": "a",
+            "time": 40
+          },
+          {
+            "key": "b",
+            "time": 40
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 40
+        },
+        {
+          "resolved": "b!",
+          "time": 140
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "per_key",
+          "delay": 20
+        },
+        "t": 60,
+        "calls": [
+          {
+            "key": "a",
+            "time": 0
+          },
+          {
+            "key": "b",
+            "time": 70
+          },
+          {
+            "key": "c",
+            "time": 130
+          },
+          {
+            "key": "d",
+            "time": 131
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 20
+        },
+        {
+          "resolved": "b!",
+          "time": 90
+        },
+        {
+          "resolved": "c!",
+          "time": 150
+        },
+        {
+          "resolved": "d!",
+          "time": 210
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "immediate"
+        },
+        "t": 100,
+        "calls": [
+          {
+            "key": "x",
+            "time": 50
+          },
+          {
+            "key": "y",
+            "time": 20
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "y!",
+          "time": 20
+        },
+        {
+          "resolved": "x!",
+          "time": 120
+        }
+      ]
+    },
+    {
+      "input": {
+        "qm": {
+          "mode": "constant",
+          "delay": 75
+        },
+        "t": 100,
+        "calls": [
+          {
+            "key": "a",
+            "time": 10
+          },
+          {
+            "key": "b",
+            "time": 60
+          },
+          {
+            "key": "c",
+            "time": 115
+          },
+          {
+            "key": "d",
+            "time": 400
+          },
+          {
+            "key": "e",
+            "time": 450
+          }
+        ]
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 85
+        },
+        {
+          "resolved": "b!",
+          "time": 185
+        },
+        {
+          "resolved": "c!",
+          "time": 285
+        },
+        {
+          "resolved": "d!",
+          "time": 475
+        },
+        {
+          "resolved": "e!",
+          "time": 575
+        }
+      ]
+    }
+  ]
+}

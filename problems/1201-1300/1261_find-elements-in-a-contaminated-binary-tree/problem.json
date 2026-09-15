@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1261,
+  "slug": "find-elements-in-a-contaminated-binary-tree",
+  "title": "Find Elements in a Contaminated Binary Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Design",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Design",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "FindElements",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "root",
+          "codec": "tree_node",
+          "value_type": {
+            "kind": "binary_tree",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "find",
+        "parameters": [
+          {
+            "name": "target",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

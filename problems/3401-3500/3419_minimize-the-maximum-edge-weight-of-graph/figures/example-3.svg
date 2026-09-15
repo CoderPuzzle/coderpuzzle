@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="440" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowI" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- kept edges -->
+  <g stroke="#1a2026" stroke-width="1.6" fill="none">
+    <line x1="100" y1="133" x2="140" y2="67" marker-end="url(#arrowI)"/>
+    <line x1="170" y1="50" x2="250" y2="50" marker-end="url(#arrowI)"/>
+    <line x1="280" y1="67" x2="320" y2="133" marker-end="url(#arrowI)"/>
+    <line x1="320" y1="167" x2="280" y2="233" marker-end="url(#arrowI)"/>
+  </g>
+  <!-- removed edges -->
+  <g stroke="#4169E1" stroke-width="1.6" stroke-dasharray="5 3" fill="none">
+    <line x1="107" y1="140" x2="253" y2="60" marker-end="url(#arrowA)"/>
+    <line x1="110" y1="150" x2="310" y2="150" marker-end="url(#arrowA)"/>
+  </g>
+  <!-- nodes -->
+  <g stroke="#1a2026" stroke-width="1.6" fill="#ffffff">
+    <circle cx="90" cy="150" r="17"/>
+    <circle cx="150" cy="50" r="17"/>
+    <circle cx="270" cy="50" r="17"/>
+    <circle cx="330" cy="150" r="17"/>
+  </g>
+  <circle cx="270" cy="250" r="17" fill="#e8edfa" stroke="#4169E1" stroke-width="1.8"/>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="90" y="155">1</text>
+    <text x="150" y="55">2</text>
+    <text x="270" y="55">3</text>
+    <text x="330" y="155">4</text>
+    <text x="270" y="255" fill="#4169E1">0</text>
+  </g>
+  <!-- weights -->
+  <g font-size="13" fill="#1a2026">
+    <text x="108" y="102">1</text>
+    <text x="204" y="42">2</text>
+    <text x="312" y="102">2</text>
+    <text x="296" y="204">1</text>
+  </g>
+  <g font-size="12" fill="#4169E1">
+    <text x="150" y="134">3 (removed)</text>
+    <text x="196" y="170">5 (removed)</text>
+  </g>
+  <text x="220" y="272" text-anchor="middle" font-size="12.5" fill="#5c6b76">Remove 1 → 3 and 1 → 4; node 1 keeps one outgoing</text>
+  <text x="220" y="288" text-anchor="middle" font-size="12.5" fill="#5c6b76">edge and every node reaches 0 with maximum weight 2.</text>
+</svg>

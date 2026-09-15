@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 278,
+  "slug": "first-bad-version",
+  "title": "First Bad Version",
+  "difficulty": "Easy",
+  "tags": [
+    "Binary Search",
+    "Interactive"
+  ],
+  "topics": [
+    "Binary Search",
+    "Interactive"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "firstBadVersion",
+    "oracle": "VersionControl",
+    "oracle_methods": [
+      {
+        "name": "isBadVersion",
+        "parameters": [
+          {
+            "name": "version",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 1000000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "VersionControl",
+        "construct": [
+          "bad"
+        ],
+        "auxiliary": [
+          "n"
+        ]
+      }
+    },
+    "entrypoints": {
+      "go": "firstBadVersion",
+      "rust": "first_bad_version",
+      "cpp": "firstBadVersion",
+      "javascript": "firstBadVersion",
+      "typescript": "firstBadVersion"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

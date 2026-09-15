@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2009,
+  "slug": "minimum-number-of-operations-to-make-array-continuous",
+  "title": "Minimum Number of Operations to Make Array Continuous",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Sliding Window"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Sliding Window"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minOperations",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minOperations",
+      "rust": "min_operations",
+      "typescript": "minOperations"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

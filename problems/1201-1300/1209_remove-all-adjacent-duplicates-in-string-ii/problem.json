@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1209,
+  "slug": "remove-all-adjacent-duplicates-in-string-ii",
+  "title": "Remove All Adjacent Duplicates in String II",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "topics": [
+    "String",
+    "Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "removeDuplicates",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "removeDuplicates",
+      "rust": "remove_duplicates",
+      "typescript": "removeDuplicates"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 8192
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1793,
+  "slug": "maximum-score-of-a-good-subarray",
+  "title": "Maximum Score of a Good Subarray",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Stack",
+    "Monotonic Stack"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Binary Search",
+    "Stack",
+    "Monotonic Stack",
+    "Cartesian Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumScore",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumScore",
+      "rust": "maximum_score",
+      "typescript": "maximumScore"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

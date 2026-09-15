@@ -1,11 +1,9 @@
-# Extend corpus — authoring conventions and wire-class map
+# Corpus authoring conventions and wire-class map
 
-The extend corpus is complete: 3,193 crawl-keyed originals (archived in
-the bank's `problems-originals/`, derived by
-`coderpuzzle/scripts/verify_corpus.py`) adapted 1:1 into the bank's
-`problems-adapt/` tree with ids unchanged (the bank's `problems` symlink
-serves `problems-originals`; the adapted tree is addressed by name). The
-end-to-end loop for
+The extend corpus is complete: 3,193 crawl-keyed originals live in this
+repo's `problems/` tree and are audited by `scripts/verify_corpus.py`; their
+1:1 copyright-free adaptations live under `problems/` in the private
+`lc-adapt` repository with ids unchanged. The end-to-end loop for
 authoring any single problem is `docs/AUTHORING.md`; the six-fleet wave
 machinery (trackers, lane protocol, concurrency carve) retired with the
 wave — its durable law lives in CLAUDE.md's "Fleet discipline" and in
@@ -16,9 +14,9 @@ proved.
 ## Conventions (ORIGINAL form)
 
 - Source: `~/code/lc-crawl/problems/<shard>/<id>-<slug>.md`; target
-  `problems-adapt/<shard>/<id>_<slug>/` (legacy hundreds bucket). Mirror
-  exemplar `problems-originals/0001-0100/0001_two-sum/`,
-  `FORMAT.md`, and one landed extend sibling of the same wire family.
+  `lc-adapt/problems/<shard>/<id>_<slug>/` (legacy hundreds bucket). Mirror
+  exemplar `problems/0001-0100/0001_two-sum/`, `docs/FORMAT.md`, and one
+  landed adapted sibling of the same wire family.
 - ORIGINAL form: crawl prose verbatim into bundle grammar; diagrams and
   LeetCode metadata dropped; mangled superscripts restored (`105` ->
   `10⁵`); HTML entities unescaped; crawler artifacts stripped
@@ -46,15 +44,15 @@ proved.
 - Iterative algorithms whenever depth can exceed ~1000 (Java -Xss512k,
   Node --stack-size=512, CPython 1000 frames).
 - Starters GENERATED: `python3 scripts/gen_starters.py <bundle-dir>`
-  from the bank repo root — never hand-write.
+  from this repo root — never hand-write.
 - solutions.md MINIMAL: exactly one `## <Approach>` section, 2–3
   paragraphs, one closing `**Complexity:** O(...) time, O(...) space.`
   line, honest costs.
 
 ## Verify gate
 
-`python3 scripts/verify_solution.py problems-adapt/<shard>/<id>_<slug>`
-(coderpuzzle repo's `scripts/`, run from bank root) judges every
+`CODERPUZZLE_PROBLEMS=/path/to/lc-adapt/problems python3
+scripts/verify_solution.py <shard>/<id>_<slug>` judges every
 `solution*.<ext>` through the real executors — green across all offered
 languages before landing. Rust "unparseable protocol output" =>
 suspect a panic, not the wire (see the doubled-braces note in

@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2266,
+  "slug": "count-number-of-texts",
+  "title": "Count Number of Texts",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Math",
+    "String",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Hash Table",
+    "Math",
+    "String",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countTexts",
+    "parameters": [
+      {
+        "name": "pressedKeys",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "countTexts",
+      "rust": "count_texts",
+      "typescript": "countTexts"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

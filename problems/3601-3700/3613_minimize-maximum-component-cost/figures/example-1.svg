@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 282" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- n = 5, edges = [[0,1,4],[1,2,3],[1,3,2],[3,4,6]], k = 2; drop edge 3-4: costs max(4,3,2) = 4 and 0 (verified by brute force) -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- before: whole tree rooted at 1 -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="170" y1="44" x2="80" y2="128"/>
+    <line x1="170" y1="44" x2="170" y2="128"/>
+    <line x1="170" y1="44" x2="260" y2="128"/>
+  </g>
+  <line x1="260" y1="128" x2="330" y2="204" stroke="#b57f30" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="170" cy="44" r="21"/>
+    <circle cx="80" cy="128" r="21"/>
+    <circle cx="170" cy="128" r="21"/>
+    <circle cx="260" cy="128" r="21"/>
+    <circle cx="330" cy="204" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="170" y="49">1</text>
+    <text x="80" y="133">0</text>
+    <text x="170" y="133">2</text>
+    <text x="260" y="133">3</text>
+    <text x="330" y="209">4</text>
+  </g>
+  <g font-size="12" fill="#5c6b76" text-anchor="middle">
+    <text x="108" y="78">4</text>
+    <text x="184" y="92">3</text>
+    <text x="234" y="78">2</text>
+  </g>
+  <text x="312" y="170" fill="#7a5a1e" font-size="12" font-weight="600">6</text>
+  <line x1="366" y1="116" x2="406" y2="116" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <!-- after: two components -->
+  <rect x="440" y="24" width="280" height="112" rx="10" fill="none" stroke="#42525e" stroke-width="1.6"/>
+  <rect x="440" y="164" width="280" height="64" rx="10" fill="none" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="580" y1="52" x2="490" y2="104"/>
+    <line x1="580" y1="52" x2="580" y2="104"/>
+    <line x1="580" y1="52" x2="670" y2="104"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="580" cy="52" r="21"/>
+    <circle cx="490" cy="104" r="21"/>
+    <circle cx="580" cy="104" r="21"/>
+    <circle cx="670" cy="104" r="21"/>
+    <circle cx="580" cy="196" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="580" y="57">1</text>
+    <text x="490" y="109">0</text>
+    <text x="580" y="109">2</text>
+    <text x="670" y="109">3</text>
+    <text x="580" y="201">4</text>
+  </g>
+  <g font-size="12" fill="#5c6b76" text-anchor="middle">
+    <text x="524" y="72">4</text>
+    <text x="594" y="84">3</text>
+    <text x="640" y="72">2</text>
+  </g>
+  <g font-size="12.5" fill="#4169E1" font-weight="600">
+    <text x="732" y="84">cost 4</text>
+    <text x="732" y="200">cost 0</text>
+  </g>
+  <text x="405" y="264" text-anchor="middle" fill="#1a2026" font-size="13.5">removing the weight-6 edge splits the graph into components of cost 4 and 0: answer <tspan fill="#4169E1" font-weight="700">4</tspan></text>
+</svg>

@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 346,
+  "slug": "moving-average-from-data-stream",
+  "title": "Moving Average from Data Stream",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Design",
+    "Queue",
+    "Data Stream"
+  ],
+  "topics": [
+    "Array",
+    "Design",
+    "Queue",
+    "Data Stream"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "MovingAverage",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "size",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "next",
+        "parameters": [
+          {
+            "name": "val",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "number"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

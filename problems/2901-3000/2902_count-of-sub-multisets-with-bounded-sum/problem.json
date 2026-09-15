@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2902,
+  "slug": "count-of-sub-multisets-with-bounded-sum",
+  "title": "Count of Sub-Multisets With Bounded Sum",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Dynamic Programming",
+    "Sliding Window",
+    "Knapsack Problem",
+    "Multiple Knapsack"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Dynamic Programming",
+    "Sliding Window",
+    "Knapsack Problem",
+    "Multiple Knapsack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countSubMultisets",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "l",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "r",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countSubMultisets",
+      "rust": "count_sub_multisets",
+      "typescript": "countSubMultisets"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

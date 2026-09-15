@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 252" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="640" height="252" fill="#ffffff"/>
+  <!-- original list -->
+  <text x="14" y="47" fill="#5c6b76">original</text>
+  <g stroke="#1a2026" fill="none" stroke-width="1.6">
+    <rect x="76" y="26" width="46" height="34" rx="4"/>
+    <rect x="162" y="26" width="46" height="34" rx="4"/>
+    <rect x="248" y="26" width="46" height="34" rx="4"/>
+    <rect x="334" y="26" width="46" height="34" rx="4"/>
+    <rect x="420" y="26" width="46" height="34" rx="4"/>
+    <line x1="122" y1="43" x2="158" y2="43" marker-end="url(#arrow)"/>
+    <line x1="208" y1="43" x2="244" y2="43" marker-end="url(#arrow)"/>
+    <line x1="294" y1="43" x2="330" y2="43" marker-end="url(#arrow)"/>
+    <line x1="380" y1="43" x2="416" y2="43" marker-end="url(#arrow)"/>
+    <line x1="466" y1="43" x2="500" y2="43" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="99" y="48">5</text>
+    <text x="185" y="48">2</text>
+    <text x="271" y="48">13</text>
+    <text x="357" y="48">3</text>
+    <text x="443" y="48">8</text>
+  </g>
+  <text x="510" y="48" fill="#5c6b76">None</text>
+  <!-- reversed list with keep/drop decisions -->
+  <text x="14" y="127" fill="#5c6b76">reversed</text>
+  <g stroke-width="1.6">
+    <rect x="76" y="106" width="46" height="34" rx="4" fill="#e8edfa" stroke="#4169E1"/>
+    <rect x="162" y="106" width="46" height="34" rx="4" fill="#f3f5f7" stroke="#98a2ac" stroke-dasharray="4 3"/>
+    <rect x="248" y="106" width="46" height="34" rx="4" fill="#e8edfa" stroke="#4169E1"/>
+    <rect x="334" y="106" width="46" height="34" rx="4" fill="#f3f5f7" stroke="#98a2ac" stroke-dasharray="4 3"/>
+    <rect x="420" y="106" width="46" height="34" rx="4" fill="#f3f5f7" stroke="#98a2ac" stroke-dasharray="4 3"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="99" y="128" fill="#1a2026">8</text>
+    <text x="185" y="128" fill="#5c6b76">3</text>
+    <text x="271" y="128" fill="#1a2026">13</text>
+    <text x="357" y="128" fill="#5c6b76">2</text>
+    <text x="443" y="128" fill="#5c6b76">5</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="99" y="160" fill="#4169E1">keep · max = 8</text>
+    <text x="185" y="160" fill="#98a2ac">drop · 3 &lt; 8</text>
+    <text x="271" y="160" fill="#4169E1">keep · max = 13</text>
+    <text x="357" y="160" fill="#98a2ac">drop · 2 &lt; 13</text>
+    <text x="443" y="160" fill="#98a2ac">drop · 5 &lt; 13</text>
+  </g>
+  <!-- result list -->
+  <text x="14" y="212" fill="#5c6b76">result</text>
+  <g stroke="#4169E1" fill="none" stroke-width="1.6">
+    <rect x="76" y="190" width="46" height="34" rx="4" fill="#e8edfa"/>
+    <rect x="162" y="190" width="46" height="34" rx="4" fill="#e8edfa"/>
+    <line x1="122" y1="207" x2="158" y2="207" marker-end="url(#arrowA)"/>
+    <line x1="208" y1="207" x2="244" y2="207" marker-end="url(#arrowA)"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="99" y="212">13</text>
+    <text x="185" y="212">8</text>
+  </g>
+  <text x="254" y="212" fill="#5c6b76">None</text>
+  <text x="290" y="212" fill="#5c6b76" font-size="12.5">survivors prepended in original order</text>
+</svg>

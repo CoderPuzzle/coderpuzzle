@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "union_find_skip",
+  "id": 1488,
+  "slug": "avoid-flood-in-the-city",
+  "title": "Avoid Flood in The City",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Greedy",
+    "Heap (Priority Queue)"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Greedy",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "avoidFlood",
+    "parameters": [
+      {
+        "name": "rains",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 64
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 64
+      }
+    },
+    "entrypoints": {
+      "go": "avoidFlood",
+      "rust": "avoid_flood",
+      "typescript": "avoidFlood"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

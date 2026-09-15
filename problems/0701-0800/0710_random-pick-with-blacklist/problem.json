@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 710,
+  "slug": "random-pick-with-blacklist",
+  "title": "Random Pick with Blacklist",
+  "difficulty": "Hard",
+  "tags": [
+    "Hash Table",
+    "Randomized"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Binary Search",
+    "Sorting",
+    "Randomized"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Solution",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "n",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "blacklist",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "pick",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

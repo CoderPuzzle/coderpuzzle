@@ -1,0 +1,99 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2642,
+  "slug": "design-graph-with-shortest-path-calculator",
+  "title": "Design Graph With Shortest Path Calculator",
+  "difficulty": "Hard",
+  "tags": [
+    "Graph",
+    "Shortest Path",
+    "Heap"
+  ],
+  "topics": [
+    "Graph Theory",
+    "Design",
+    "Heap (Priority Queue)",
+    "Shortest Path"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Graph",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "n",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "edges",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "addEdge",
+        "parameters": [
+          {
+            "name": "edge",
+            "codec": "json",
+            "value_type": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "shortestPath",
+        "parameters": [
+          {
+            "name": "node1",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "node2",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

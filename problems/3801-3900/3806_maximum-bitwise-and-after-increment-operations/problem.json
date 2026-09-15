@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3806,
+  "slug": "maximum-bitwise-and-after-increment-operations",
+  "title": "Maximum Bitwise AND After Increment Operations",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Bit Manipulation",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Bit Manipulation",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumAND",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "m",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumAND",
+      "rust": "maximum_and",
+      "typescript": "maximumAND"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

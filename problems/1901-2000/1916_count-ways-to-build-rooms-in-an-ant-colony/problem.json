@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1916,
+  "slug": "count-ways-to-build-rooms-in-an-ant-colony",
+  "title": "Count Ways to Build Rooms in an Ant Colony",
+  "difficulty": "Hard",
+  "tags": [
+    "Tree",
+    "Dynamic Programming",
+    "Combinatorics",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search",
+    "Graph Theory",
+    "Topological Sort",
+    "Combinatorics",
+    "DP on Trees",
+    "Fermat's Little Theorem"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "waysToBuildRooms",
+    "parameters": [
+      {
+        "name": "prevRoom",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "waysToBuildRooms",
+      "rust": "ways_to_build_rooms",
+      "typescript": "waysToBuildRooms"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

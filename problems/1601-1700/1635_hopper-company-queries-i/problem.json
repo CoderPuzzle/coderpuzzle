@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1635,
+  "slug": "hopper-company-queries-i",
+  "title": "Hopper Company Queries I",
+  "difficulty": "Hard",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "exact",
+    "sql": {
+      "schema": "CREATE TABLE Drivers (driver_id INTEGER, join_date DATE);\nCREATE TABLE Rides (ride_id INTEGER, user_id INTEGER, requested_at DATE);\nCREATE TABLE AcceptedRides (ride_id INTEGER, driver_id INTEGER, ride_distance INTEGER, ride_duration INTEGER);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

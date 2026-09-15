@@ -1,0 +1,384 @@
+{
+  "public": [
+    {
+      "input": [
+        [
+          [
+            "happy",
+            "joy"
+          ],
+          [
+            "sad",
+            "sorrow"
+          ],
+          [
+            "joy",
+            "cheerful"
+          ]
+        ],
+        "I am happy today but was sad yesterday"
+      ],
+      "expected": [
+        "I am cheerful today but was sad yesterday",
+        "I am cheerful today but was sorrow yesterday",
+        "I am happy today but was sad yesterday",
+        "I am happy today but was sorrow yesterday",
+        "I am joy today but was sad yesterday",
+        "I am joy today but was sorrow yesterday"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "happy",
+            "joy"
+          ],
+          [
+            "cheerful",
+            "glad"
+          ]
+        ],
+        "I am happy today but was sad yesterday"
+      ],
+      "expected": [
+        "I am happy today but was sad yesterday",
+        "I am joy today but was sad yesterday"
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        [
+          [
+            "happy",
+            "joy"
+          ],
+          [
+            "sad",
+            "sorrow"
+          ],
+          [
+            "joy",
+            "cheerful"
+          ]
+        ],
+        "I am happy today but was sad yesterday"
+      ],
+      "expected": [
+        "I am cheerful today but was sad yesterday",
+        "I am cheerful today but was sorrow yesterday",
+        "I am happy today but was sad yesterday",
+        "I am happy today but was sorrow yesterday",
+        "I am joy today but was sad yesterday",
+        "I am joy today but was sorrow yesterday"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "happy",
+            "joy"
+          ],
+          [
+            "cheerful",
+            "glad"
+          ]
+        ],
+        "I am happy today but was sad yesterday"
+      ],
+      "expected": [
+        "I am happy today but was sad yesterday",
+        "I am joy today but was sad yesterday"
+      ]
+    },
+    {
+      "input": [
+        [],
+        "a b c"
+      ],
+      "expected": [
+        "a b c"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "x",
+            "y"
+          ]
+        ],
+        "a b c"
+      ],
+      "expected": [
+        "a b c"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "big",
+            "large"
+          ]
+        ],
+        "big"
+      ],
+      "expected": [
+        "big",
+        "large"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "big",
+            "large"
+          ]
+        ],
+        "small"
+      ],
+      "expected": [
+        "small"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "b",
+            "c"
+          ]
+        ],
+        "c"
+      ],
+      "expected": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "up",
+            "down"
+          ]
+        ],
+        "up up down up"
+      ],
+      "expected": [
+        "down down down down",
+        "down down down up",
+        "down down up down",
+        "down down up up",
+        "down up down down",
+        "down up down up",
+        "down up up down",
+        "down up up up",
+        "up down down down",
+        "up down down up",
+        "up down up down",
+        "up down up up",
+        "up up down down",
+        "up up down up",
+        "up up up down",
+        "up up up up"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "joy",
+            "happy"
+          ],
+          [
+            "sorrow",
+            "sad"
+          ],
+          [
+            "cheerful",
+            "joy"
+          ]
+        ],
+        "I am happy today but was sad yesterday"
+      ],
+      "expected": [
+        "I am cheerful today but was sad yesterday",
+        "I am cheerful today but was sorrow yesterday",
+        "I am happy today but was sad yesterday",
+        "I am happy today but was sorrow yesterday",
+        "I am joy today but was sad yesterday",
+        "I am joy today but was sorrow yesterday"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "p",
+            "q"
+          ],
+          [
+            "r",
+            "s"
+          ]
+        ],
+        "p r q s"
+      ],
+      "expected": [
+        "p r p r",
+        "p r p s",
+        "p r q r",
+        "p r q s",
+        "p s p r",
+        "p s p s",
+        "p s q r",
+        "p s q s",
+        "q r p r",
+        "q r p s",
+        "q r q r",
+        "q r q s",
+        "q s p r",
+        "q s p s",
+        "q s q r",
+        "q s q s"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "a",
+            "c"
+          ],
+          [
+            "a",
+            "d"
+          ],
+          [
+            "a",
+            "e"
+          ]
+        ],
+        "e d"
+      ],
+      "expected": [
+        "a a",
+        "a b",
+        "a c",
+        "a d",
+        "a e",
+        "b a",
+        "b b",
+        "b c",
+        "b d",
+        "b e",
+        "c a",
+        "c b",
+        "c c",
+        "c d",
+        "c e",
+        "d a",
+        "d b",
+        "d c",
+        "d d",
+        "d e",
+        "e a",
+        "e b",
+        "e c",
+        "e d",
+        "e e"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "cat",
+            "dog"
+          ],
+          [
+            "dog",
+            "pig"
+          ]
+        ],
+        "my cat ate"
+      ],
+      "expected": [
+        "my cat ate",
+        "my dog ate",
+        "my pig ate"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "w1",
+            "w2"
+          ],
+          [
+            "w2",
+            "w3"
+          ],
+          [
+            "w3",
+            "w4"
+          ],
+          [
+            "w4",
+            "w5"
+          ],
+          [
+            "w5",
+            "w6"
+          ],
+          [
+            "w6",
+            "w7"
+          ],
+          [
+            "w7",
+            "w8"
+          ],
+          [
+            "w8",
+            "w9"
+          ],
+          [
+            "w9",
+            "w10"
+          ]
+        ],
+        "start w10 end"
+      ],
+      "expected": [
+        "start w1 end",
+        "start w10 end",
+        "start w2 end",
+        "start w3 end",
+        "start w4 end",
+        "start w5 end",
+        "start w6 end",
+        "start w7 end",
+        "start w8 end",
+        "start w9 end"
+      ]
+    }
+  ]
+}

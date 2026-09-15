@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2463,
+  "slug": "minimum-total-distance-traveled",
+  "title": "Minimum Total Distance Traveled",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumTotalDistance",
+    "parameters": [
+      {
+        "name": "robot",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "factory",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "minimumTotalDistance",
+      "rust": "minimum_total_distance",
+      "typescript": "minimumTotalDistance"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1698,
+  "slug": "number-of-distinct-substrings-in-a-string",
+  "title": "Number of Distinct Substrings in a String",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Trie",
+    "Rolling Hash",
+    "Suffix Array",
+    "Hash Function"
+  ],
+  "topics": [
+    "String",
+    "Trie",
+    "Rolling Hash",
+    "Suffix Array",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countDistinct",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countDistinct",
+      "rust": "count_distinct",
+      "typescript": "countDistinct"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

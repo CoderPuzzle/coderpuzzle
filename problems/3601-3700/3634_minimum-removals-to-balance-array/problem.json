@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3634,
+  "slug": "minimum-removals-to-balance-array",
+  "title": "Minimum Removals to Balance Array",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Sliding Window",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Sliding Window",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minRemoval",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minRemoval",
+      "rust": "min_removal",
+      "typescript": "minRemoval"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

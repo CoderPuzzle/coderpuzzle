@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 440" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- 5x5 maze, cell 72, x=160 y=40; walls at (2,3),(3,0),(3,1),(3,3),(3,4) -->
+  <g fill="#1a2026">
+    <rect x="376" y="184" width="72" height="72"/>
+    <rect x="160" y="256" width="72" height="72"/>
+    <rect x="232" y="256" width="72" height="72"/>
+    <rect x="376" y="256" width="72" height="72"/>
+    <rect x="448" y="256" width="72" height="72"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <rect x="160" y="40" width="360" height="360"/>
+    <line x1="232" y1="40" x2="232" y2="400"/>
+    <line x1="304" y1="40" x2="304" y2="400"/>
+    <line x1="376" y1="40" x2="376" y2="400"/>
+    <line x1="448" y1="40" x2="448" y2="400"/>
+    <line x1="160" y1="112" x2="520" y2="112"/>
+    <line x1="160" y1="184" x2="520" y2="184"/>
+    <line x1="160" y1="256" x2="520" y2="256"/>
+    <line x1="160" y1="328" x2="520" y2="328"/>
+  </g>
+  <!-- rolling path: S(0,4) -> (0,3) -> (1,3) -> (1,0) -> (2,0) -> (2,2) -> (4,2) -> D(4,4) -->
+  <g stroke="#4169E1" stroke-width="2.6" fill="none">
+    <line x1="514" y1="76" x2="424" y2="76" marker-end="url(#arrow)"/>
+    <line x1="410" y1="90" x2="410" y2="140" marker-end="url(#arrow)"/>
+    <line x1="396" y1="148" x2="174" y2="148" marker-end="url(#arrow)"/>
+    <line x1="166" y1="162" x2="166" y2="212" marker-end="url(#arrow)"/>
+    <line x1="180" y1="220" x2="318" y2="220" marker-end="url(#arrow)"/>
+    <line x1="332" y1="234" x2="332" y2="352" marker-end="url(#arrow)"/>
+    <line x1="346" y1="364" x2="504" y2="364" marker-end="url(#arrow)"/>
+  </g>
+  <!-- roll labels -->
+  <g font-size="12" fill="#4169E1" text-anchor="middle" font-weight="600">
+    <text x="470" y="66">left 1</text>
+    <text x="430" y="120">down 1</text>
+    <text x="290" y="138">left 3</text>
+    <text x="146" y="192" text-anchor="start">down 1</text>
+    <text x="250" y="210">right 2</text>
+    <text x="312" y="296">down 2</text>
+    <text x="430" y="354">right 2</text>
+  </g>
+  <!-- start / destination -->
+  <circle cx="556" cy="76" r="16" fill="#4169E1"/>
+  <text x="556" y="81" text-anchor="middle" fill="#ffffff" font-size="12">S</text>
+  <circle cx="556" cy="364" r="16" fill="#ffffff" stroke="#1a2026" stroke-width="2"/>
+  <text x="556" y="369" text-anchor="middle" fill="#1a2026" font-size="12">D</text>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="60">Nodes of the search graph</text>
+    <text x="40" y="76">are stopping cells; an</text>
+    <text x="40" y="92">edge rolls until a wall.</text>
+    <text x="40" y="124">1 + 1 + 3 + 1 + 2 + 2 + 2</text>
+    <text x="40" y="140" fill="#1a2026" font-weight="600">= 12</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="412">The ball rolls through (1,1) and (1,2) without stopping there — only cells where it</text>
+    <text x="40" y="428">halts against a wall or the border exist as Dijkstra nodes.</text>
+  </g>
+</svg>

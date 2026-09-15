@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1737,
+  "slug": "change-minimum-characters-to-satisfy-one-of-three-conditions",
+  "title": "Change Minimum Characters to Satisfy One of Three Conditions",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Counting",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Counting",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minCharacters",
+    "parameters": [
+      {
+        "name": "a",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "b",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minCharacters",
+      "rust": "min_characters",
+      "typescript": "minCharacters"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

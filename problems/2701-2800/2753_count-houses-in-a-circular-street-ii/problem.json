@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2753,
+  "slug": "count-houses-in-a-circular-street-ii",
+  "title": "Count Houses in a Circular Street II",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Interactive"
+  ],
+  "topics": [
+    "Interactive",
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "houseCount",
+    "oracle": "Street",
+    "oracle_methods": [
+      {
+        "name": "closeDoor",
+        "parameters": [],
+        "return_type": {
+          "kind": "void"
+        }
+      },
+      {
+        "name": "isDoorOpen",
+        "parameters": [],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "moveRight",
+        "parameters": [],
+        "return_type": {
+          "kind": "void"
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 4000000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "Street",
+        "construct": [
+          "doors"
+        ],
+        "auxiliary": [
+          "k"
+        ],
+        "parameter": "street"
+      }
+    },
+    "entrypoints": {
+      "go": "houseCount",
+      "rust": "house_count",
+      "cpp": "houseCount",
+      "javascript": "houseCount",
+      "typescript": "houseCount"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

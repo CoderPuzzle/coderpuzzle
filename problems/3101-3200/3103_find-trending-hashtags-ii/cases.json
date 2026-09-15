@@ -1,0 +1,254 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-01','Enjoying a great start to the day. #HappyDay #MorningVibes'),\n(2,2,'2024-02-03','Another #HappyDay with good vibes! #FeelGood'),\n(3,3,'2024-02-04','Productivity peaks! #WorkLife #ProductiveDay'),\n(4,4,'2024-02-04','Exploring new tech frontiers. #TechLife #Innovation'),\n(5,5,'2024-02-05','Gratitude for today''s moments. #HappyDay #Thankful'),\n(6,6,'2024-02-07','Innovation drives us. #TechLife #FutureTech'),\n(7,7,'2024-02-09','Connecting with nature''s serenity. #Nature #Peaceful');"
+      ],
+      "expected": [
+        [
+          "#HappyDay",
+          3
+        ],
+        [
+          "#TechLife",
+          2
+        ],
+        [
+          "#WorkLife",
+          1
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-14','Quiet day today #Solo');"
+      ],
+      "expected": [
+        [
+          "#Solo",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-01','Mood number 0 #Alpha'),\n(2,2,'2024-02-02','Mood number 1 #Alpha'),\n(3,3,'2024-02-03','Mood number 2 #Alpha'),\n(4,4,'2024-02-04','Mood number 3 #Alpha'),\n(5,5,'2024-02-05','Mood number 4 #Alpha'),\n(6,6,'2024-02-06','Mood number 5 #Alpha'),\n(7,7,'2024-02-20','Evening notes #beta'),\n(8,8,'2024-02-21','Evening notes again #beta');"
+      ],
+      "expected": [
+        [
+          "#Alpha",
+          6
+        ],
+        [
+          "#beta",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-01','First #Dusk post'),\n(2,2,'2024-02-02','Second #Dusk entry'),\n(3,3,'2024-02-03','Third #Dusk update'),\n(4,4,'2024-02-04','#Aria time'),\n(5,5,'2024-02-05','#Aria again later'),\n(6,6,'2024-02-06','#Zest midweek'),\n(7,7,'2024-02-07','#Zest weekend'),\n(8,8,'2024-02-08','#Mint evening'),\n(9,9,'2024-02-09','#Mint morning');"
+      ],
+      "expected": [
+        [
+          "#Dusk",
+          3
+        ],
+        [
+          "#Zest",
+          2
+        ],
+        [
+          "#Mint",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-01','Gamma talks #Gamma daily'),\n(2,2,'2024-02-05','Gamma talks #Gamma daily'),\n(3,3,'2024-02-09','Gamma talks #Gamma daily'),\n(4,4,'2024-02-02','Delta continues #Delta tonight'),\n(5,5,'2024-02-06','Delta continues #Delta tonight'),\n(6,6,'2024-02-10','Delta continues #Delta tonight'),\n(7,7,'2024-02-03','Beta finishes #Beta early'),\n(8,8,'2024-02-07','Beta finishes #Beta early'),\n(9,9,'2024-02-11','Beta finishes #Beta early'),\n(10,10,'2024-02-12','Omega cameo #Omega once'),\n(11,11,'2024-02-13','Omega cameo #Omega once'),\n(12,12,'2024-02-14','Omega cameo #Omega once'),\n(13,13,'2024-02-15','Omega cameo #Omega once');"
+      ],
+      "expected": [
+        [
+          "#Omega",
+          4
+        ],
+        [
+          "#Gamma",
+          3
+        ],
+        [
+          "#Delta",
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-02','Double the energy #SameTag start to #SameTag finish'),\n(2,2,'2024-02-03','Plain mention #OtherTag here'),\n(3,3,'2024-02-04','One more #SameTag sighting elsewhere');"
+      ],
+      "expected": [
+        [
+          "#SameTag",
+          3
+        ],
+        [
+          "#OtherTag",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-08','#Leading position matters here'),\n(2,2,'2024-02-09','Trailing space then #TailTag'),\n(3,3,'2024-02-10','Ends exactly on #LastWord'),\n(4,4,'2024-02-11','Two at end #Penult #FinalToEnd');"
+      ],
+      "expected": [
+        [
+          "#TailTag",
+          1
+        ],
+        [
+          "#Penult",
+          1
+        ],
+        [
+          "#Leading",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-03','AI winter talk #AI continuing'),\n(2,2,'2024-02-04','ai summer update #ai waiting'),\n(3,3,'2024-02-05','half measure #Ai today'),\n(4,4,'2024-02-06','full uppercase #AI returning'),\n(5,5,'2024-02-07','lowercase close #ai ending');"
+      ],
+      "expected": [
+        [
+          "#ai",
+          2
+        ],
+        [
+          "#AI",
+          2
+        ],
+        [
+          "#Ai",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-01','Season recap #Covid19 still relevant'),\n(2,2,'2024-02-02','Vote watch #Vote2026 begins'),\n(3,3,'2024-02-03','Puzzle night #42isTheAnswer again'),\n(4,4,'2024-02-04','Numbers up #Vote2026 tightening'),\n(5,5,'2024-02-05','Trivia round #42isTheAnswer returns');"
+      ],
+      "expected": [
+        [
+          "#Vote2026",
+          2
+        ],
+        [
+          "#42isTheAnswer",
+          2
+        ],
+        [
+          "#Covid19",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-12','Sweeping everything at once #AOne #ATwo #AThree #AFour #AFive end'),\n(2,2,'2024-02-13','Counter view #AThree #AFour rebuttal');"
+      ],
+      "expected": [
+        [
+          "#AThree",
+          2
+        ],
+        [
+          "#AFour",
+          2
+        ],
+        [
+          "#ATwo",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-02','Go fast #Go now'),\n(2,2,'2024-02-03','Go faster #GoGo tonight'),\n(3,3,'2024-02-04','Go fastest #GoGoGo finally'),\n(4,4,'2024-02-05','Balanced sheet #GoGoGo #GoGo tie break');"
+      ],
+      "expected": [
+        [
+          "#GoGoGo",
+          2
+        ],
+        [
+          "#GoGo",
+          2
+        ],
+        [
+          "#Go",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-01','Echo chamber day 1 #Echo Again #Echo'),\n(2,2,'2024-02-02','Echo chamber day 2 #Echo Again #Echo'),\n(3,3,'2024-02-03','Echo chamber day 3 #Echo Again #Echo'),\n(4,4,'2024-02-04','Echo chamber day 4 #Echo Again #Echo'),\n(5,5,'2024-02-05','Echo chamber day 5 #Echo Again #Echo'),\n(6,6,'2024-02-06','Echo chamber day 6 #Echo Again #Echo'),\n(7,7,'2024-02-07','Echo chamber day 7 #Echo Again #Echo'),\n(8,8,'2024-02-08','Echo chamber day 8 #Echo Again #Echo'),\n(9,9,'2024-02-09','Echo chamber day 9 #Echo Again #Echo'),\n(10,10,'2024-02-10','Echo chamber day 10 #Echo Again #Echo'),\n(11,11,'2024-02-11','Echo chamber day 11 #Echo Again #Echo'),\n(12,12,'2024-02-12','Echo chamber day 12 #Echo Again #Echo'),\n(13,13,'2024-02-13','Echo chamber day 13 #Echo Again #Echo'),\n(14,14,'2024-02-14','Echo chamber day 14 #Echo Again #Echo'),\n(15,15,'2024-02-15','Echo chamber day 15 #Echo Again #Echo'),\n(16,16,'2024-02-16','Echo chamber day 16 #Echo Again #Echo'),\n(17,17,'2024-02-17','Echo chamber day 17 #Echo Again #Echo'),\n(18,18,'2024-02-18','Echo chamber day 18 #Echo Again #Echo'),\n(19,19,'2024-02-19','Echo chamber day 19 #Echo Again #Echo'),\n(20,20,'2024-02-20','Echo chamber day 20 #Echo Again #Echo'),\n(21,21,'2024-02-21','Echo chamber day 21 #Echo Again #Echo'),\n(22,22,'2024-02-22','Echo chamber day 22 #Echo Again #Echo'),\n(23,23,'2024-02-23','Echo chamber day 23 #Echo Again #Echo'),\n(24,24,'2024-02-24','Echo chamber day 24 #Echo Again #Echo'),\n(25,25,'2024-02-25','Echo chamber day 25 #Echo Again #Echo'),\n(26,26,'2024-02-26','Echo chamber day 26 #Echo Again #Echo'),\n(27,27,'2024-02-27','Echo chamber day 27 #Echo Again #Echo'),\n(28,28,'2024-02-28','Echo chamber day 28 #Echo Again #Echo'),\n(29,29,'2024-02-29','Echo chamber day 29 #Echo Again #Echo'),\n(30,30,'2024-02-30','Echo chamber day 30 #Echo Again #Echo');"
+      ],
+      "expected": [
+        [
+          "#Echo",
+          60
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-15','filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler filler and then finally #DeepLateTag appears'),\n(2,2,'2024-02-16','#VeryLongHashtagNameForOrdering meets #LongerHashTagNameYet sort');"
+      ],
+      "expected": [
+        [
+          "#VeryLongHashtagNameForOrdering",
+          1
+        ],
+        [
+          "#LongerHashTagNameYet",
+          1
+        ],
+        [
+          "#DeepLateTag",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-14','Morning report #Trend01 filed'),\n(2,2,'2024-02-12','#Trend01 watched closely today'),\n(3,3,'2024-02-02','Quick take #Trend01 from the desk'),\n(4,4,'2024-02-18','Another angle on #Trend01 late'),\n(5,5,'2024-02-26','Morning report #Trend01 filed'),\n(6,6,'2024-02-03','#Trend01 watched closely today'),\n(7,7,'2024-02-12','Quick take #Trend01 from the desk'),\n(8,8,'2024-02-20','Another angle on #Trend01 late'),\n(9,9,'2024-02-23','Morning report #Trend01 filed'),\n(10,10,'2024-02-16','#Trend01 watched closely today'),\n(11,11,'2024-02-16','Quick take #Trend01 from the desk'),\n(12,12,'2024-02-25','Another angle on #Trend01 late'),\n(13,13,'2024-02-23','Morning report #Trend01 filed'),\n(14,14,'2024-02-11','#Trend01 watched closely today'),\n(15,15,'2024-02-09','Quick take #Trend01 from the desk'),\n(16,16,'2024-02-28','Another angle on #Trend01 late'),\n(17,17,'2024-02-06','Morning report #Trend01 filed'),\n(18,18,'2024-02-04','#Trend01 watched closely today'),\n(19,19,'2024-02-22','Quick take #Trend01 from the desk'),\n(20,20,'2024-02-15','Another angle on #Trend01 late'),\n(21,21,'2024-02-03','Morning report #Trend01 filed'),\n(22,22,'2024-02-12','#Trend01 watched closely today'),\n(23,23,'2024-02-26','Quick take #Trend01 from the desk'),\n(24,24,'2024-02-23','Another angle on #Trend01 late'),\n(25,25,'2024-02-18','Morning report #Trend02 filed'),\n(26,26,'2024-02-15','#Trend02 watched closely today'),\n(27,27,'2024-02-13','Quick take #Trend02 from the desk'),\n(28,28,'2024-02-27','Another angle on #Trend02 late'),\n(29,29,'2024-02-10','Morning report #Trend02 filed'),\n(30,30,'2024-02-17','#Trend02 watched closely today'),\n(31,31,'2024-02-17','Quick take #Trend02 from the desk'),\n(32,32,'2024-02-10','Another angle on #Trend02 late'),\n(33,33,'2024-02-17','Morning report #Trend02 filed'),\n(34,34,'2024-02-22','#Trend02 watched closely today'),\n(35,35,'2024-02-22','Quick take #Trend02 from the desk'),\n(36,36,'2024-02-13','Another angle on #Trend02 late'),\n(37,37,'2024-02-05','Morning report #Trend02 filed'),\n(38,38,'2024-02-28','#Trend02 watched closely today'),\n(39,39,'2024-02-23','Quick take #Trend02 from the desk'),\n(40,40,'2024-02-08','Another angle on #Trend02 late'),\n(41,41,'2024-02-01','Morning report #Trend02 filed'),\n(42,42,'2024-02-09','#Trend02 watched closely today'),\n(43,43,'2024-02-25','Quick take #Trend02 from the desk'),\n(44,44,'2024-02-24','Another angle on #Trend02 late'),\n(45,45,'2024-02-13','Morning report #Trend02 filed'),\n(46,46,'2024-02-10','#Trend02 watched closely today'),\n(47,47,'2024-02-27','Quick take #Trend03 from the desk'),\n(48,48,'2024-02-07','Another angle on #Trend03 late'),\n(49,49,'2024-02-19','Morning report #Trend03 filed'),\n(50,50,'2024-02-07','#Trend03 watched closely today'),\n(51,51,'2024-02-20','Quick take #Trend03 from the desk'),\n(52,52,'2024-02-02','Another angle on #Trend03 late'),\n(53,53,'2024-02-19','Morning report #Trend03 filed'),\n(54,54,'2024-02-06','#Trend03 watched closely today'),\n(55,55,'2024-02-06','Quick take #Trend03 from the desk'),\n(56,56,'2024-02-15','Another angle on #Trend03 late'),\n(57,57,'2024-02-18','Morning report #Trend03 filed'),\n(58,58,'2024-02-07','#Trend03 watched closely today'),\n(59,59,'2024-02-23','Quick take #Trend03 from the desk'),\n(60,60,'2024-02-11','Another angle on #Trend03 late'),\n(61,61,'2024-02-27','Morning report #Trend03 filed'),\n(62,62,'2024-02-18','#Trend03 watched closely today'),\n(63,63,'2024-02-05','Quick take #Trend03 from the desk'),\n(64,64,'2024-02-16','Another angle on #Trend03 late'),\n(65,65,'2024-02-10','Morning report #Trend03 filed'),\n(66,66,'2024-02-07','#Trend03 watched closely today'),\n(67,67,'2024-02-24','Quick take #Trend04 from the desk'),\n(68,68,'2024-02-22','Another angle on #Trend04 late'),\n(69,69,'2024-02-14','Morning report #Trend04 filed'),\n(70,70,'2024-02-26','#Trend04 watched closely today'),\n(71,71,'2024-02-22','Quick take #Trend04 from the desk'),\n(72,72,'2024-02-22','Another angle on #Trend04 late'),\n(73,73,'2024-02-26','Morning report #Trend04 filed'),\n(74,74,'2024-02-24','#Trend04 watched closely today'),\n(75,75,'2024-02-04','Quick take #Trend04 from the desk'),\n(76,76,'2024-02-15','Another angle on #Trend04 late'),\n(77,77,'2024-02-20','Morning report #Trend04 filed'),\n(78,78,'2024-02-16','#Trend04 watched closely today'),\n(79,79,'2024-02-28','Quick take #Trend04 from the desk'),\n(80,80,'2024-02-03','Another angle on #Trend04 late'),\n(81,81,'2024-02-15','Morning report #Trend04 filed'),\n(82,82,'2024-02-13','#Trend04 watched closely today'),\n(83,83,'2024-02-15','Quick take #Trend04 from the desk'),\n(84,84,'2024-02-09','Another angle on #Trend04 late'),\n(85,85,'2024-02-18','Morning report #Trend05 filed'),\n(86,86,'2024-02-15','#Trend05 watched closely today'),\n(87,87,'2024-02-19','Quick take #Trend05 from the desk'),\n(88,88,'2024-02-15','Another angle on #Trend05 late'),\n(89,89,'2024-02-22','Morning report #Trend05 filed'),\n(90,90,'2024-02-19','#Trend05 watched closely today'),\n(91,91,'2024-02-25','Quick take #Trend05 from the desk'),\n(92,92,'2024-02-14','Another angle on #Trend05 late'),\n(93,93,'2024-02-12','Morning report #Trend05 filed'),\n(94,94,'2024-02-23','#Trend05 watched closely today'),\n(95,95,'2024-02-12','Quick take #Trend05 from the desk'),\n(96,96,'2024-02-24','Another angle on #Trend05 late'),\n(97,97,'2024-02-27','Morning report #Trend05 filed'),\n(98,98,'2024-02-20','#Trend05 watched closely today'),\n(99,99,'2024-02-23','Quick take #Trend05 from the desk'),\n(100,100,'2024-02-13','Another angle on #Trend05 late'),\n(101,101,'2024-02-09','Morning report #Trend06 filed'),\n(102,102,'2024-02-28','#Trend06 watched closely today'),\n(103,103,'2024-02-13','Quick take #Trend06 from the desk'),\n(104,104,'2024-02-11','Another angle on #Trend06 late'),\n(105,105,'2024-02-28','Morning report #Trend06 filed'),\n(106,106,'2024-02-11','#Trend06 watched closely today'),\n(107,107,'2024-02-08','Quick take #Trend06 from the desk'),\n(108,108,'2024-02-04','Another angle on #Trend06 late'),\n(109,109,'2024-02-21','Morning report #Trend06 filed'),\n(110,110,'2024-02-20','#Trend06 watched closely today'),\n(111,111,'2024-02-15','Quick take #Trend06 from the desk'),\n(112,112,'2024-02-04','Another angle on #Trend06 late'),\n(113,113,'2024-02-07','Morning report #Trend06 filed'),\n(114,114,'2024-02-23','#Trend06 watched closely today'),\n(115,115,'2024-02-24','Quick take #Trend07 from the desk'),\n(116,116,'2024-02-18','Another angle on #Trend07 late'),\n(117,117,'2024-02-10','Morning report #Trend07 filed'),\n(118,118,'2024-02-12','#Trend07 watched closely today'),\n(119,119,'2024-02-11','Quick take #Trend07 from the desk'),\n(120,120,'2024-02-19','Another angle on #Trend07 late'),\n(121,121,'2024-02-04','Morning report #Trend07 filed'),\n(122,122,'2024-02-24','#Trend07 watched closely today'),\n(123,123,'2024-02-21','Quick take #Trend07 from the desk'),\n(124,124,'2024-02-28','Another angle on #Trend07 late'),\n(125,125,'2024-02-16','Morning report #Trend07 filed'),\n(126,126,'2024-02-08','#Trend07 watched closely today'),\n(127,127,'2024-02-25','Quick take #Trend08 from the desk'),\n(128,128,'2024-02-07','Another angle on #Trend08 late'),\n(129,129,'2024-02-26','Morning report #Trend08 filed'),\n(130,130,'2024-02-26','#Trend08 watched closely today'),\n(131,131,'2024-02-02','Quick take #Trend08 from the desk'),\n(132,132,'2024-02-18','Another angle on #Trend08 late'),\n(133,133,'2024-02-14','Morning report #Trend08 filed'),\n(134,134,'2024-02-10','#Trend08 watched closely today'),\n(135,135,'2024-02-24','Quick take #Trend08 from the desk'),\n(136,136,'2024-02-26','Another angle on #Trend08 late'),\n(137,137,'2024-02-21','Morning report #Trend09 filed'),\n(138,138,'2024-02-21','#Trend09 watched closely today'),\n(139,139,'2024-02-28','Quick take #Trend09 from the desk'),\n(140,140,'2024-02-11','Another angle on #Trend09 late'),\n(141,141,'2024-02-07','Morning report #Trend09 filed'),\n(142,142,'2024-02-18','#Trend09 watched closely today'),\n(143,143,'2024-02-04','Quick take #Trend09 from the desk'),\n(144,144,'2024-02-05','Another angle on #Trend09 late'),\n(145,145,'2024-02-17','Morning report #Trend10 filed'),\n(146,146,'2024-02-13','#Trend10 watched closely today'),\n(147,147,'2024-02-13','Quick take #Trend10 from the desk'),\n(148,148,'2024-02-08','Another angle on #Trend10 late'),\n(149,149,'2024-02-15','Morning report #Trend10 filed'),\n(150,150,'2024-02-03','#Trend10 watched closely today');"
+      ],
+      "expected": [
+        [
+          "#Trend01",
+          24
+        ],
+        [
+          "#Trend02",
+          22
+        ],
+        [
+          "#Trend03",
+          20
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    }
+  ]
+}

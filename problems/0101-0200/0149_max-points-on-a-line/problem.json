@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 149,
+  "slug": "max-points-on-a-line",
+  "title": "Max Points on a Line",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Geometry",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Geometry",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxPoints",
+    "parameters": [
+      {
+        "name": "points",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxPoints",
+      "rust": "max_points",
+      "typescript": "maxPoints"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

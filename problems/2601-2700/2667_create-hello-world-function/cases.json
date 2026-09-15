@@ -1,0 +1,307 @@
+{
+  "public": [
+    {
+      "input": {
+        "calls": [
+          []
+        ]
+      },
+      "expected": [
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [
+            {},
+            null,
+            42
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World"
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "calls": [
+          [],
+          [
+            true
+          ],
+          [
+            null
+          ],
+          [
+            42
+          ],
+          [
+            "x"
+          ],
+          [
+            {}
+          ],
+          [
+            [],
+            1
+          ],
+          [
+            [
+              "a"
+            ],
+            2
+          ],
+          [
+            false,
+            "b"
+          ],
+          [
+            -7
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [
+            [
+              1,
+              [
+                2,
+                "a"
+              ]
+            ],
+            [
+              3
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [
+            "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [
+            true
+          ],
+          [
+            false
+          ],
+          [
+            true,
+            false
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World",
+        "Hello World",
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [
+            2.25,
+            0.125
+          ],
+          [
+            0.5
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World",
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [
+            [
+              {
+                "k": 1
+              },
+              {
+                "k": null
+              }
+            ],
+            {}
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [
+            ""
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [
+            2147483647
+          ],
+          [
+            -2147483648
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World",
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [
+            "[{()}]"
+          ],
+          [
+            "\"q\""
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World",
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [
+            "abc"
+          ],
+          [
+            "abc"
+          ],
+          [
+            "abc"
+          ],
+          [
+            "abc"
+          ],
+          [
+            "abc"
+          ],
+          [
+            "abc"
+          ],
+          [
+            "abc"
+          ],
+          [
+            "abc"
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [],
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World",
+        "Hello World"
+      ]
+    },
+    {
+      "input": {
+        "calls": [
+          [
+            null
+          ],
+          [
+            null
+          ],
+          [
+            null
+          ],
+          [
+            null
+          ],
+          [
+            null
+          ]
+        ]
+      },
+      "expected": [
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World",
+        "Hello World"
+      ]
+    }
+  ]
+}

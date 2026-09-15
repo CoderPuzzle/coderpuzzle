@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 885,
+  "slug": "spiral-matrix-iii",
+  "title": "Spiral Matrix III",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "spiralMatrixIII",
+    "parameters": [
+      {
+        "name": "rows",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "cols",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "rStart",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "cStart",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "spiralMatrixIII",
+      "rust": "spiral_matrix_iii",
+      "typescript": "spiralMatrixIII"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

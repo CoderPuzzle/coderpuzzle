@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1805,
+  "slug": "number-of-different-integers-in-a-string",
+  "title": "Number of Different Integers in a String",
+  "difficulty": "Easy",
+  "tags": [
+    "Hash Table",
+    "String"
+  ],
+  "topics": [
+    "Hash Table",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numDifferentIntegers",
+    "parameters": [
+      {
+        "name": "word",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numDifferentIntegers",
+      "rust": "num_different_integers",
+      "typescript": "numDifferentIntegers"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

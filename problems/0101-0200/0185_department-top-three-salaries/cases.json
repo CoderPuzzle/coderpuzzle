@@ -1,0 +1,417 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Joe',85000,1),\n(2,'Henry',80000,2),\n(3,'Sam',60000,2),\n(4,'Max',90000,1),\n(5,'Janet',69000,1),\n(6,'Randy',85000,1),\n(7,'Will',70000,1);\nINSERT INTO Department VALUES\n(1,'IT'),\n(2,'Sales');"
+      ],
+      "expected": [
+        [
+          "IT",
+          "Max",
+          90000
+        ],
+        [
+          "IT",
+          "Joe",
+          85000
+        ],
+        [
+          "IT",
+          "Randy",
+          85000
+        ],
+        [
+          "IT",
+          "Will",
+          70000
+        ],
+        [
+          "Sales",
+          "Henry",
+          80000
+        ],
+        [
+          "Sales",
+          "Sam",
+          60000
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Joe',85000,1),\n(2,'Martin',60000,1),\n(3,'Henry',80000,2),\n(4,'Sam',60000,2),\n(5,'Scott',60000,2);\nINSERT INTO Department VALUES\n(1,'IT'),\n(2,'Sales');"
+      ],
+      "expected": [
+        [
+          "IT",
+          "Joe",
+          85000
+        ],
+        [
+          "IT",
+          "Martin",
+          60000
+        ],
+        [
+          "Sales",
+          "Henry",
+          80000
+        ],
+        [
+          "Sales",
+          "Sam",
+          60000
+        ],
+        [
+          "Sales",
+          "Scott",
+          60000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Aaron',75000,1),\n(2,'Bella',75000,1),\n(3,'Cyrus',75000,1),\n(4,'Dana',75000,1),\n(5,'Eli',75000,1);\nINSERT INTO Department VALUES\n(1,'IT');"
+      ],
+      "expected": [
+        [
+          "IT",
+          "Aaron",
+          75000
+        ],
+        [
+          "IT",
+          "Bella",
+          75000
+        ],
+        [
+          "IT",
+          "Cyrus",
+          75000
+        ],
+        [
+          "IT",
+          "Dana",
+          75000
+        ],
+        [
+          "IT",
+          "Eli",
+          75000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Max',90000,1),\n(2,'Joe',90000,1),\n(3,'Randy',85000,1),\n(4,'Will',70000,1),\n(5,'Janet',70000,1),\n(6,'Sam',70000,1);\nINSERT INTO Department VALUES\n(1,'IT');"
+      ],
+      "expected": [
+        [
+          "IT",
+          "Janet",
+          70000
+        ],
+        [
+          "IT",
+          "Joe",
+          90000
+        ],
+        [
+          "IT",
+          "Max",
+          90000
+        ],
+        [
+          "IT",
+          "Randy",
+          85000
+        ],
+        [
+          "IT",
+          "Sam",
+          70000
+        ],
+        [
+          "IT",
+          "Will",
+          70000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Uma',100000,1),\n(2,'Tina',90000,1),\n(3,'Sara',80000,1),\n(4,'Rita',70000,1),\n(5,'Paula',70000,1);\nINSERT INTO Department VALUES\n(1,'IT');"
+      ],
+      "expected": [
+        [
+          "IT",
+          "Sara",
+          80000
+        ],
+        [
+          "IT",
+          "Tina",
+          90000
+        ],
+        [
+          "IT",
+          "Uma",
+          100000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Ann',100000,1),\n(2,'Ben',90000,1),\n(3,'Cal',80000,1),\n(4,'Dee',80000,1),\n(5,'Eve',80000,1),\n(6,'Fay',70000,1);\nINSERT INTO Department VALUES\n(1,'Sales');"
+      ],
+      "expected": [
+        [
+          "Sales",
+          "Ann",
+          100000
+        ],
+        [
+          "Sales",
+          "Ben",
+          90000
+        ],
+        [
+          "Sales",
+          "Cal",
+          80000
+        ],
+        [
+          "Sales",
+          "Dee",
+          80000
+        ],
+        [
+          "Sales",
+          "Eve",
+          80000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Zoe',95000,1),\n(2,'Yuri',95000,1),\n(3,'Xena',95000,1),\n(4,'Walt',95000,1),\n(5,'Vera',88000,1),\n(6,'Umar',80000,1),\n(7,'Tara',64000,1);\nINSERT INTO Department VALUES\n(1,'Sales');"
+      ],
+      "expected": [
+        [
+          "Sales",
+          "Umar",
+          80000
+        ],
+        [
+          "Sales",
+          "Vera",
+          88000
+        ],
+        [
+          "Sales",
+          "Walt",
+          95000
+        ],
+        [
+          "Sales",
+          "Xena",
+          95000
+        ],
+        [
+          "Sales",
+          "Yuri",
+          95000
+        ],
+        [
+          "Sales",
+          "Zoe",
+          95000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Grace',100000,1),\n(2,'Heidi',100000,1),\n(3,'Ivan',90000,1),\n(4,'Judy',80000,1),\n(5,'Karl',80000,1),\n(6,'Lena',70000,1),\n(7,'Mona',100000,2),\n(8,'Nils',90000,2),\n(9,'Omar',90000,2),\n(10,'Petra',80000,2),\n(11,'Quinn',70000,2),\n(12,'Rosa',60000,2),\n(13,'Sven',50000,2),\n(14,'Tia',100000,3),\n(15,'Ugo',100000,3),\n(16,'Vic',120000,4);\nINSERT INTO Department VALUES\n(1,'IT'),\n(2,'Sales'),\n(3,'HR'),\n(4,'Legal');"
+      ],
+      "expected": [
+        [
+          "HR",
+          "Tia",
+          100000
+        ],
+        [
+          "HR",
+          "Ugo",
+          100000
+        ],
+        [
+          "IT",
+          "Grace",
+          100000
+        ],
+        [
+          "IT",
+          "Heidi",
+          100000
+        ],
+        [
+          "IT",
+          "Ivan",
+          90000
+        ],
+        [
+          "IT",
+          "Judy",
+          80000
+        ],
+        [
+          "IT",
+          "Karl",
+          80000
+        ],
+        [
+          "Legal",
+          "Vic",
+          120000
+        ],
+        [
+          "Sales",
+          "Mona",
+          100000
+        ],
+        [
+          "Sales",
+          "Nils",
+          90000
+        ],
+        [
+          "Sales",
+          "Omar",
+          90000
+        ],
+        [
+          "Sales",
+          "Petra",
+          80000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Joe',85000,1),\n(2,'Henry',99000,1),\n(3,'Ghost',500000,7);\nINSERT INTO Department VALUES\n(1,'IT'),\n(2,'Sales');"
+      ],
+      "expected": [
+        [
+          "IT",
+          "Henry",
+          99000
+        ],
+        [
+          "IT",
+          "Joe",
+          85000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Solo',100000,1);\nINSERT INTO Department VALUES\n(1,'IT');"
+      ],
+      "expected": [
+        [
+          "IT",
+          "Solo",
+          100000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Department VALUES\n(1,'IT'),\n(2,'Sales');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Sam',85000,1),\n(2,'Sam',85000,2),\n(3,'Joan',60000,2);\nINSERT INTO Department VALUES\n(1,'IT'),\n(2,'Sales');"
+      ],
+      "expected": [
+        [
+          "IT",
+          "Sam",
+          85000
+        ],
+        [
+          "Sales",
+          "Joan",
+          60000
+        ],
+        [
+          "Sales",
+          "Sam",
+          85000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Alicia',120000,1),\n(2,'Boris',115000,1),\n(3,'Carmen',115000,1),\n(4,'Dmitri',110000,1),\n(5,'Elena',105000,1),\n(6,'Farid',105000,1),\n(7,'Greta',100000,1),\n(8,'Hugo',100000,1),\n(9,'Ines',95000,1),\n(10,'Jasper',90000,1),\n(11,'Katya',85000,1),\n(12,'Lars',80000,1),\n(13,'Mei',70000,2),\n(14,'Noah',70000,2),\n(15,'Priya',62000,2),\n(16,'Quinn',62000,2),\n(17,'Rex',55000,2),\n(18,'Sana',48000,2);\nINSERT INTO Department VALUES\n(1,'Engineering'),\n(2,'Support');"
+      ],
+      "expected": [
+        [
+          "Engineering",
+          "Alicia",
+          120000
+        ],
+        [
+          "Engineering",
+          "Boris",
+          115000
+        ],
+        [
+          "Engineering",
+          "Carmen",
+          115000
+        ],
+        [
+          "Engineering",
+          "Dmitri",
+          110000
+        ],
+        [
+          "Support",
+          "Mei",
+          70000
+        ],
+        [
+          "Support",
+          "Noah",
+          70000
+        ],
+        [
+          "Support",
+          "Priya",
+          62000
+        ],
+        [
+          "Support",
+          "Quinn",
+          62000
+        ],
+        [
+          "Support",
+          "Rex",
+          55000
+        ]
+      ]
+    }
+  ]
+}

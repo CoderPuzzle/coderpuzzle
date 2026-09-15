@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 85,
+  "slug": "maximal-rectangle",
+  "title": "Maximal Rectangle",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Stack",
+    "Matrix",
+    "Monotonic Stack"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Stack",
+    "Matrix",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximalRectangle",
+    "parameters": [
+      {
+        "name": "matrix",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximalRectangle",
+      "rust": "maximal_rectangle",
+      "typescript": "maximalRectangle"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

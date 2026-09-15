@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3910,
+  "slug": "count-connected-subgraphs-with-even-node-sum",
+  "title": "Count Connected Subgraphs with Even Node Sum",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Bit Manipulation",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Graph Theory",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Bit Manipulation",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Graph Theory",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "evenSumSubgraphs",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "evenSumSubgraphs",
+      "rust": "even_sum_subgraphs",
+      "typescript": "evenSumSubgraphs"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2137,
+  "slug": "pour-water-between-buckets-to-make-water-levels-equal",
+  "title": "Pour Water Between Buckets to Make Water Levels Equal",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "equalizeWater",
+    "parameters": [
+      {
+        "name": "buckets",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "loss",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "number"
+    },
+    "entrypoints": {
+      "go": "equalizeWater",
+      "rust": "equalize_water",
+      "typescript": "equalizeWater"
+    },
+    "comparison": {
+      "mode": "close",
+      "tolerance": 1e-05
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

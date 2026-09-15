@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2196,
+  "slug": "create-binary-tree-from-descriptions",
+  "title": "Create Binary Tree From Descriptions",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Tree",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Tree",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "createBinaryTree",
+    "parameters": [
+      {
+        "name": "descriptions",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "tree_node",
+    "return_type": {
+      "kind": "binary_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "createBinaryTree",
+      "rust": "create_binary_tree",
+      "typescript": "createBinaryTree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

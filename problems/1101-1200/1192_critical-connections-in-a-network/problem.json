@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1192,
+  "slug": "critical-connections-in-a-network",
+  "title": "Critical Connections in a Network",
+  "difficulty": "Hard",
+  "tags": [
+    "Graph",
+    "Depth-First Search",
+    "Bridge (Graph)"
+  ],
+  "topics": [
+    "Depth-First Search",
+    "Graph Theory",
+    "Biconnected Component",
+    "Bridge (Graph)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "criticalConnections",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "connections",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "criticalConnections",
+      "rust": "critical_connections",
+      "typescript": "criticalConnections"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

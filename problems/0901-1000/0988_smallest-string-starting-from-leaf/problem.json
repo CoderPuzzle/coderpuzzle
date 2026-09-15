@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 988,
+  "slug": "smallest-string-starting-from-leaf",
+  "title": "Smallest String Starting From Leaf",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Backtracking",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "topics": [
+    "String",
+    "Backtracking",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "smallestFromLeaf",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "smallestFromLeaf",
+      "rust": "smallest_from_leaf",
+      "typescript": "smallestFromLeaf"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

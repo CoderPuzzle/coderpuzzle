@@ -1,0 +1,142 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(5,'show',285,NULL,1,123),\n(5,'answer',285,124124,1,124),\n(5,'show',369,NULL,2,125),\n(5,'skip',369,NULL,2,126);"
+      ],
+      "expected": [
+        [
+          285
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(1,'show',28,NULL,1,123),\n(1,'answer',28,9137,1,130),\n(2,'show',28,NULL,1,137),\n(2,'answer',28,9274,1,144),\n(3,'show',28,NULL,1,151),\n(2,'show',35,NULL,2,158),\n(1,'answer',35,9411,2,165),\n(3,'show',35,NULL,2,172),\n(2,'show',35,NULL,2,179),\n(4,'show',35,NULL,1,186),\n(3,'show',42,NULL,3,193),\n(3,'skip',42,NULL,3,200),\n(4,'show',42,NULL,2,207);"
+      ],
+      "expected": [
+        [
+          28
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(1,'show',12,NULL,1,123),\n(2,'show',30,NULL,1,130),\n(1,'answer',12,9137,1,137),\n(3,'show',30,NULL,1,144),\n(4,'show',12,NULL,1,151),\n(2,'answer',30,9274,1,158),\n(5,'show',30,NULL,1,165),\n(6,'show',30,NULL,1,172),\n(7,'answer',30,9411,1,179),\n(9,'show',45,NULL,1,186),\n(10,'answer',45,9548,1,193),\n(11,'show',45,NULL,1,200),\n(12,'show',45,NULL,1,207);"
+      ],
+      "expected": [
+        [
+          12
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(1,'show',18,NULL,1,123),\n(2,'show',40,NULL,1,130),\n(3,'show',55,NULL,1,137),\n(2,'show',18,NULL,2,144),\n(3,'show',18,NULL,2,151),\n(4,'show',40,NULL,1,158),\n(1,'answer',18,9137,1,165),\n(4,'answer',40,9274,1,172),\n(5,'answer',40,9411,1,179),\n(5,'show',40,NULL,1,186),\n(6,'show',40,NULL,1,193),\n(7,'show',66,NULL,1,200),\n(8,'show',55,NULL,1,207),\n(9,'answer',55,9548,1,214),\n(10,'show',40,NULL,1,221),\n(11,'show',40,NULL,1,228),\n(12,'show',55,NULL,1,235),\n(13,'show',55,NULL,1,242);"
+      ],
+      "expected": [
+        [
+          18
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(3,'show',9,NULL,1,123),\n(1,'show',33,NULL,1,130),\n(2,'show',21,NULL,1,137),\n(3,'answer',9,9137,1,144),\n(8,'show',50,NULL,1,151),\n(2,'answer',21,9274,1,158),\n(5,'show',33,NULL,1,165),\n(4,'show',21,NULL,1,172),\n(1,'answer',33,9411,1,179),\n(9,'answer',50,9548,1,186),\n(6,'show',33,NULL,1,193),\n(4,'answer',21,9685,1,200),\n(5,'answer',33,9822,1,207),\n(10,'show',21,NULL,1,214),\n(14,'show',50,NULL,1,221),\n(6,'answer',33,9959,1,228),\n(11,'answer',21,10096,1,235),\n(12,'show',33,NULL,1,242),\n(12,'answer',33,10233,1,249),\n(13,'show',33,NULL,1,256),\n(13,'answer',33,10370,1,263);"
+      ],
+      "expected": [
+        [
+          9
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(1,'show',7,NULL,1,123),\n(2,'show',15,NULL,1,130),\n(1,'skip',7,NULL,1,137),\n(3,'show',7,NULL,1,144),\n(2,'skip',15,NULL,1,151),\n(4,'show',7,NULL,1,158),\n(5,'skip',23,NULL,1,165),\n(6,'skip',23,NULL,1,172);"
+      ],
+      "expected": [
+        [
+          7
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(1,'show',1,NULL,1,123),\n(2,'show',1,NULL,1,130),\n(1,'answer',1,9137,1,137),\n(3,'skip',1,NULL,1,144),\n(4,'skip',1,NULL,1,151),\n(5,'skip',1,NULL,1,158),\n(3,'skip',1,NULL,1,165),\n(2,'skip',1,NULL,1,172),\n(5,'skip',1,NULL,1,179),\n(1,'show',2,NULL,2,186),\n(2,'show',2,NULL,2,193),\n(3,'show',2,NULL,2,200),\n(4,'show',2,NULL,2,207),\n(5,'answer',2,9274,2,214);"
+      ],
+      "expected": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(1,'show',500,NULL,1,123),\n(2,'show',600,NULL,1,130),\n(3,'show',700,NULL,1,137),\n(4,'show',800,NULL,1,144),\n(1,'answer',500,9137,1,151),\n(2,'show',500,NULL,2,158),\n(3,'answer',600,9274,2,165),\n(4,'show',700,NULL,2,172),\n(1,'answer',800,9411,2,179),\n(2,'answer',500,9548,2,186),\n(3,'show',500,NULL,3,193),\n(4,'show',800,NULL,1,200),\n(1,'show',600,NULL,3,207),\n(2,'show',800,NULL,3,214),\n(3,'answer',500,9685,3,221),\n(4,'show',800,NULL,1,228),\n(1,'show',500,NULL,1,235),\n(2,'answer',800,9822,3,242),\n(3,'show',600,NULL,2,249),\n(4,'answer',500,9959,3,256),\n(1,'show',500,NULL,1,263),\n(2,'show',500,NULL,2,270),\n(3,'answer',700,10096,1,277),\n(4,'show',500,NULL,3,284);"
+      ],
+      "expected": [
+        [
+          500
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(1,'show',105,NULL,1,123),\n(2,'show',210,NULL,1,130),\n(3,'show',315,NULL,1,137),\n(1,'answer',105,9137,1,144),\n(2,'show',105,NULL,2,151),\n(3,'show',210,NULL,2,158),\n(1,'show',315,NULL,2,165),\n(2,'answer',210,9274,1,172),\n(3,'answer',315,9411,1,179),\n(1,'show',210,NULL,3,186),\n(2,'show',315,NULL,3,193),\n(3,'answer',105,9548,3,200),\n(1,'show',105,NULL,1,207),\n(2,'answer',315,9685,3,214),\n(3,'show',315,NULL,1,221),\n(1,'answer',210,9822,3,228),\n(2,'show',210,NULL,1,235),\n(3,'show',210,NULL,2,242),\n(1,'show',315,NULL,2,249),\n(2,'show',315,NULL,3,256),\n(3,'answer',315,9959,1,263);"
+      ],
+      "expected": [
+        [
+          105
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(4,'answer',900,9137,1,123),\n(1,'show',800,NULL,1,130),\n(5,'answer',900,9274,1,137),\n(2,'show',850,NULL,1,144),\n(6,'answer',900,9411,1,151),\n(1,'answer',800,9548,1,158),\n(3,'show',800,NULL,1,165),\n(2,'answer',850,9685,1,172),\n(7,'show',850,NULL,1,179),\n(8,'show',870,NULL,1,186),\n(8,'skip',870,NULL,1,193);"
+      ],
+      "expected": [
+        [
+          800
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(9,'show',42,NULL,1,123),\n(9,'answer',42,9137,1,130);"
+      ],
+      "expected": [
+        [
+          42
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(1,'skip',1,NULL,1,123),\n(2,'skip',1,NULL,1,130),\n(3,'answer',2,9137,1,137),\n(4,'answer',2,9274,1,144),\n(5,'answer',2,9411,1,151);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(1,'show',3,NULL,1,123),\n(1,'show',3,NULL,1,123),\n(2,'show',7,NULL,1,137),\n(1,'answer',3,9137,1,144),\n(2,'answer',7,9274,1,151),\n(4,'show',11,NULL,1,158),\n(4,'skip',11,NULL,1,165),\n(3,'show',7,NULL,1,172),\n(3,'answer',7,9411,1,179),\n(5,'show',11,NULL,1,186),\n(5,'answer',11,9548,1,193);"
+      ],
+      "expected": [
+        [
+          7
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO SurveyLog VALUES\n(4,'show',523,NULL,1,123),\n(6,'answer',511,9137,1,130),\n(8,'show',505,NULL,1,137),\n(10,'show',517,NULL,1,144),\n(1,'skip',502,NULL,1,151),\n(7,'skip',517,NULL,1,158),\n(8,'skip',509,NULL,2,165),\n(8,'show',502,NULL,3,172),\n(4,'answer',501,9274,2,179),\n(9,'show',515,NULL,1,186),\n(12,'show',518,NULL,1,193),\n(6,'skip',520,NULL,2,200),\n(7,'show',515,NULL,2,207),\n(10,'show',514,NULL,2,214),\n(12,'show',503,NULL,2,221),\n(4,'skip',508,NULL,3,228),\n(12,'answer',530,9411,3,235),\n(7,'skip',507,NULL,3,242),\n(7,'show',517,NULL,1,249),\n(1,'answer',502,9548,1,256),\n(10,'skip',509,NULL,3,263),\n(3,'skip',522,NULL,1,270),\n(8,'answer',502,9685,3,277),\n(3,'skip',513,NULL,2,284),\n(9,'show',511,NULL,2,291),\n(6,'show',526,NULL,3,298),\n(3,'show',507,NULL,3,305),\n(11,'show',516,NULL,1,312),\n(5,'show',516,NULL,1,319),\n(8,'answer',511,9822,4,326),\n(4,'skip',530,NULL,4,333),\n(11,'show',509,NULL,2,340),\n(2,'show',524,NULL,1,347),\n(5,'show',522,NULL,2,354),\n(6,'show',522,NULL,4,361),\n(3,'answer',510,9959,4,368),\n(11,'show',527,NULL,3,375),\n(5,'skip',529,NULL,3,382),\n(2,'show',516,NULL,2,389),\n(8,'answer',502,10096,3,396),\n(1,'answer',502,10233,1,403),\n(10,'skip',527,NULL,4,410),\n(2,'show',518,NULL,3,417),\n(7,'skip',525,NULL,4,424),\n(8,'show',526,NULL,5,431),\n(4,'answer',525,10370,5,438),\n(8,'show',509,NULL,2,445),\n(9,'show',520,NULL,3,452),\n(2,'answer',517,10507,4,459),\n(6,'show',503,NULL,5,466),\n(6,'show',503,NULL,5,466),\n(10,'show',523,NULL,5,480),\n(1,'show',507,NULL,2,487),\n(10,'answer',526,10644,6,494),\n(5,'show',503,NULL,4,501),\n(11,'answer',526,10781,4,508),\n(3,'skip',529,NULL,5,515),\n(1,'show',526,NULL,3,522),\n(11,'answer',523,10918,5,529),\n(12,'skip',518,NULL,1,536),\n(6,'skip',502,NULL,6,543),\n(11,'answer',501,11055,6,550),\n(6,'skip',520,NULL,2,557),\n(3,'show',525,NULL,6,564),\n(11,'skip',501,NULL,6,571),\n(10,'show',507,NULL,7,578),\n(2,'show',525,NULL,5,585),\n(1,'show',527,NULL,4,592),\n(3,'answer',523,11192,7,599),\n(12,'skip',501,NULL,4,606),\n(4,'answer',516,11329,6,613),\n(7,'show',514,NULL,5,620),\n(7,'skip',510,NULL,6,627),\n(2,'show',516,NULL,2,634),\n(9,'answer',510,11466,4,641),\n(4,'answer',523,11603,1,648),\n(1,'answer',514,11740,5,655),\n(5,'show',511,NULL,5,662),\n(6,'show',511,NULL,1,669),\n(11,'show',505,NULL,7,676),\n(2,'show',514,NULL,6,683),\n(9,'skip',510,NULL,4,690),\n(9,'show',501,NULL,5,697),\n(9,'show',501,NULL,5,697),\n(10,'show',516,NULL,8,711),\n(12,'show',520,NULL,5,718),\n(1,'skip',521,NULL,6,725),\n(9,'show',509,NULL,6,732),\n(1,'show',526,NULL,3,739),\n(10,'skip',529,NULL,9,746),\n(12,'skip',521,NULL,6,753),\n(12,'show',520,NULL,5,760),\n(9,'show',507,NULL,7,767),\n(2,'answer',527,11877,7,774),\n(3,'answer',529,12014,5,781),\n(8,'show',515,NULL,6,788),\n(10,'show',526,NULL,6,795),\n(3,'show',515,NULL,8,802),\n(6,'skip',504,NULL,7,809),\n(7,'show',504,NULL,7,816),\n(11,'show',502,NULL,8,823),\n(12,'skip',511,NULL,7,830),\n(10,'answer',509,12151,3,837),\n(2,'show',505,NULL,8,844),\n(4,'show',502,NULL,7,851),\n(2,'show',515,NULL,9,858),\n(8,'skip',520,NULL,7,865),\n(2,'answer',510,12288,10,872),\n(9,'answer',525,12425,8,879),\n(8,'show',503,NULL,8,886),\n(9,'show',514,NULL,9,893),\n(8,'show',511,NULL,4,900),\n(11,'show',501,NULL,6,907),\n(7,'skip',506,NULL,8,914),\n(12,'answer',517,12562,8,921),\n(1,'answer',518,12699,7,928),\n(12,'show',527,NULL,9,935),\n(10,'skip',501,NULL,10,942),\n(7,'skip',525,NULL,4,949),\n(7,'answer',505,12836,9,956),\n(8,'skip',502,NULL,3,963),\n(4,'skip',518,NULL,8,970),\n(8,'skip',521,NULL,9,977),\n(10,'answer',516,12973,8,984),\n(7,'answer',511,13110,10,991),\n(6,'skip',530,NULL,8,998),\n(2,'show',522,NULL,11,1005),\n(6,'show',519,NULL,9,1012),\n(2,'skip',525,NULL,5,1019),\n(12,'show',518,NULL,1,1026),\n(10,'show',527,NULL,4,1033),\n(6,'show',501,NULL,10,1040),\n(3,'show',517,NULL,9,1047),\n(10,'answer',514,13247,2,1054),\n(4,'show',504,NULL,9,1061),\n(9,'show',507,NULL,7,1068),\n(10,'show',512,NULL,11,1075),\n(9,'skip',509,NULL,6,1082),\n(1,'show',501,NULL,8,1089),\n(7,'show',509,NULL,11,1096),\n(9,'show',501,NULL,5,1103),\n(4,'show',519,NULL,10,1110),\n(3,'skip',514,NULL,10,1117),\n(9,'skip',503,NULL,10,1124),\n(9,'skip',526,NULL,11,1131),\n(8,'show',530,NULL,10,1138),\n(5,'answer',507,13384,6,1145),\n(3,'skip',516,NULL,11,1152),\n(9,'answer',528,13521,12,1159),\n(11,'show',527,NULL,3,1166),\n(2,'skip',516,NULL,2,1173),\n(12,'skip',527,NULL,9,1180),\n(12,'show',530,NULL,3,1187),\n(9,'show',526,NULL,11,1194),\n(8,'show',501,NULL,11,1201),\n(9,'show',505,NULL,13,1208),\n(7,'answer',528,13658,12,1215),\n(5,'answer',506,13795,7,1222),\n(2,'skip',514,NULL,6,1229),\n(6,'show',521,NULL,11,1236),\n(2,'show',517,NULL,4,1243),\n(10,'show',505,NULL,12,1250),\n(2,'show',523,NULL,12,1257),\n(6,'show',508,NULL,12,1264),\n(1,'answer',509,13932,9,1271),\n(6,'show',521,NULL,11,1278),\n(1,'show',522,NULL,10,1285),\n(8,'skip',530,NULL,10,1292),\n(5,'show',505,NULL,8,1299),\n(8,'show',519,NULL,12,1306),\n(9,'skip',516,NULL,14,1313),\n(6,'answer',507,14069,13,1320),\n(1,'show',518,NULL,7,1327),\n(11,'answer',507,14206,9,1334),\n(8,'skip',514,NULL,13,1341),\n(7,'answer',516,14343,13,1348),\n(7,'show',502,NULL,14,1355),\n(3,'show',511,NULL,12,1362),\n(2,'answer',502,14480,13,1369),\n(1,'show',507,NULL,2,1376),\n(8,'answer',529,14617,14,1383),\n(2,'skip',522,NULL,11,1390),\n(12,'show',523,NULL,10,1397),\n(2,'answer',523,14754,12,1404),\n(2,'show',524,NULL,1,1411),\n(12,'show',518,NULL,1,1418),\n(5,'show',530,NULL,9,1425),\n(12,'skip',524,NULL,11,1432),\n(4,'show',525,NULL,5,1439),\n(11,'answer',527,14891,3,1446),\n(6,'show',522,NULL,4,1453),\n(1,'answer',514,15028,5,1460),\n(4,'answer',516,15165,6,1467),\n(2,'skip',518,NULL,3,1474),\n(4,'show',515,NULL,11,1481),\n(12,'answer',509,15302,12,1488),\n(6,'show',522,NULL,4,1495),\n(7,'show',523,NULL,15,1502),\n(12,'answer',518,15439,1,1509),\n(11,'show',509,NULL,2,1516),\n(5,'skip',505,NULL,8,1523),\n(6,'answer',528,15576,14,1530),\n(10,'answer',507,15713,7,1537),\n(9,'show',509,NULL,6,1544),\n(8,'show',524,NULL,15,1551),\n(4,'show',502,NULL,7,1558),\n(4,'show',502,NULL,7,1558),\n(1,'skip',503,NULL,11,1572);"
+      ],
+      "expected": [
+        [
+          502
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3342,
+  "slug": "find-minimum-time-to-reach-last-room-ii",
+  "title": "Find Minimum Time to Reach Last Room II",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Graph Theory",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Shortest Path"
+  ],
+  "topics": [
+    "Array",
+    "Graph Theory",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Shortest Path"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minTimeToReach",
+    "parameters": [
+      {
+        "name": "moveTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minTimeToReach",
+      "rust": "min_time_to_reach",
+      "typescript": "minTimeToReach"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,2238 @@
+{
+  "public": [
+    {
+      "input": [
+        ")ebc#da@f("
+      ],
+      "expected": "(fad@cb#e)"
+    },
+    {
+      "input": [
+        "z"
+      ],
+      "expected": "z"
+    },
+    {
+      "input": [
+        "!@#$%^&*()"
+      ],
+      "expected": ")(*&^%$#@!"
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "a"
+      ],
+      "expected": "a"
+    },
+    {
+      "input": [
+        "!"
+      ],
+      "expected": "!"
+    },
+    {
+      "input": [
+        "ab"
+      ],
+      "expected": "ba"
+    },
+    {
+      "input": [
+        "abc"
+      ],
+      "expected": "cba"
+    },
+    {
+      "input": [
+        "abcdcba"
+      ],
+      "expected": "abcdcba"
+    },
+    {
+      "input": [
+        "abcdefghijklmnopqrstuvwxyz"
+      ],
+      "expected": "zyxwvutsrqponmlkjihgfedcba"
+    },
+    {
+      "input": [
+        "abcdefghijklmnopqrstuvwxy"
+      ],
+      "expected": "yxwvutsrqponmlkjihgfedcba"
+    },
+    {
+      "input": [
+        "zyxwvutsrqponmlkjihgfedcba"
+      ],
+      "expected": "abcdefghijklmnopqrstuvwxyz"
+    },
+    {
+      "input": [
+        "!@"
+      ],
+      "expected": "@!"
+    },
+    {
+      "input": [
+        "!@#"
+      ],
+      "expected": "#@!"
+    },
+    {
+      "input": [
+        "!@#$%^&*("
+      ],
+      "expected": "(*&^%$#@!"
+    },
+    {
+      "input": [
+        "()()()"
+      ],
+      "expected": ")()()("
+    },
+    {
+      "input": [
+        "((((("
+      ],
+      "expected": "((((("
+    },
+    {
+      "input": [
+        ")()("
+      ],
+      "expected": "()()"
+    },
+    {
+      "input": [
+        "a!b@c#d$e%f^g&h*(i)j!"
+      ],
+      "expected": "j!i)h(g*f&e^d%c$#b@a!"
+    },
+    {
+      "input": [
+        "x!x!x"
+      ],
+      "expected": "x!x!x"
+    },
+    {
+      "input": [
+        "!a!a!"
+      ],
+      "expected": "!a!a!"
+    },
+    {
+      "input": [
+        "a!a!a!a"
+      ],
+      "expected": "a!a!a!a"
+    },
+    {
+      "input": [
+        "!a!a!a!a!"
+      ],
+      "expected": "!a!a!a!a!"
+    },
+    {
+      "input": [
+        "aaa!!!bbb"
+      ],
+      "expected": "bbb!!!aaa"
+    },
+    {
+      "input": [
+        "!!aaa!!"
+      ],
+      "expected": "!!aaa!!"
+    },
+    {
+      "input": [
+        "aa!!bb!!cc"
+      ],
+      "expected": "cc!!bb!!aa"
+    },
+    {
+      "input": [
+        "abc!!!def"
+      ],
+      "expected": "fed!!!cba"
+    },
+    {
+      "input": [
+        "((((abc"
+      ],
+      "expected": "((((cba"
+    },
+    {
+      "input": [
+        "a!"
+      ],
+      "expected": "a!"
+    },
+    {
+      "input": [
+        "!a"
+      ],
+      "expected": "!a"
+    },
+    {
+      "input": [
+        "aa!"
+      ],
+      "expected": "aa!"
+    },
+    {
+      "input": [
+        "a!!"
+      ],
+      "expected": "a!!"
+    },
+    {
+      "input": [
+        "!aa"
+      ],
+      "expected": "!aa"
+    },
+    {
+      "input": [
+        "a!a"
+      ],
+      "expected": "a!a"
+    },
+    {
+      "input": [
+        "!a!"
+      ],
+      "expected": "!a!"
+    },
+    {
+      "input": [
+        "ab!@"
+      ],
+      "expected": "ba@!"
+    },
+    {
+      "input": [
+        "!ab@"
+      ],
+      "expected": "@ba!"
+    },
+    {
+      "input": [
+        "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv"
+      ],
+      "expected": "vutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcba"
+    },
+    {
+      "input": [
+        "!@#$%^&*()!@#$%^&*()!@#$%^&*()!@#$%^&*()!@#$%^&*()!@#$%^&*()!@#$%^&*()!@#$%^&*()!@#$%^&*()!@#$%^&*()"
+      ],
+      "expected": ")(*&^%$#@!)(*&^%$#@!)(*&^%$#@!)(*&^%$#@!)(*&^%$#@!)(*&^%$#@!)(*&^%$#@!)(*&^%$#@!)(*&^%$#@!)(*&^%$#@!"
+    },
+    {
+      "input": [
+        "a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@"
+      ],
+      "expected": "b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!b@a!"
+    },
+    {
+      "input": [
+        "!(r*qn&^equ^avnd(n^h*skrhhnp!fa!%)n%$kflbbw)v&pm%s&z#gbgk^&bx))*lx!taa#mzr^)beyvwueo)bv%cihsuzkqruex"
+      ],
+      "expected": "%)x)eu^#rqk!zush*i)c)vboeuwv&ye^#&b%&rzmaat)x$lx%b)k%gbgz!!sm*^(pv^wbb^lfk&*nafpnhhr(ks!hndnvauqenqr"
+    },
+    {
+      "input": [
+        "#x)vc@(wd(aifqtglid*m$oslb#@tv#$&xti#d(m)@tbbjglkhco@qcy@ghl^xq%quxxpdi$ynyexsyg#odm^esz^bgbe$)fosr@"
+      ],
+      "expected": "@r)so$^fe^bgbzsemdo#g$ysxe%^yn@@@yid)p(x#&xuqqxlhgyc$qoc#hkl@gj#bbtmdit$xvtblsom*dil(gtq(fiad@)wcvx#"
+    },
+    {
+      "input": [
+        "!!"
+      ],
+      "expected": "!!"
+    },
+    {
+      "input": [
+        "aa"
+      ],
+      "expected": "aa"
+    },
+    {
+      "input": [
+        "!!!"
+      ],
+      "expected": "!!!"
+    },
+    {
+      "input": [
+        "!!a"
+      ],
+      "expected": "!!a"
+    },
+    {
+      "input": [
+        "aaa"
+      ],
+      "expected": "aaa"
+    },
+    {
+      "input": [
+        "!!!!"
+      ],
+      "expected": "!!!!"
+    },
+    {
+      "input": [
+        "a!!!"
+      ],
+      "expected": "a!!!"
+    },
+    {
+      "input": [
+        "!a!!"
+      ],
+      "expected": "!a!!"
+    },
+    {
+      "input": [
+        "aa!!"
+      ],
+      "expected": "aa!!"
+    },
+    {
+      "input": [
+        "!!a!"
+      ],
+      "expected": "!!a!"
+    },
+    {
+      "input": [
+        "a!a!"
+      ],
+      "expected": "a!a!"
+    },
+    {
+      "input": [
+        "!aa!"
+      ],
+      "expected": "!aa!"
+    },
+    {
+      "input": [
+        "aaa!"
+      ],
+      "expected": "aaa!"
+    },
+    {
+      "input": [
+        "!!!a"
+      ],
+      "expected": "!!!a"
+    },
+    {
+      "input": [
+        "a!!a"
+      ],
+      "expected": "a!!a"
+    },
+    {
+      "input": [
+        "!a!a"
+      ],
+      "expected": "!a!a"
+    },
+    {
+      "input": [
+        "aa!a"
+      ],
+      "expected": "aa!a"
+    },
+    {
+      "input": [
+        "!!aa"
+      ],
+      "expected": "!!aa"
+    },
+    {
+      "input": [
+        "a!aa"
+      ],
+      "expected": "a!aa"
+    },
+    {
+      "input": [
+        "!aaa"
+      ],
+      "expected": "!aaa"
+    },
+    {
+      "input": [
+        "aaaa"
+      ],
+      "expected": "aaaa"
+    },
+    {
+      "input": [
+        "!!!!!"
+      ],
+      "expected": "!!!!!"
+    },
+    {
+      "input": [
+        "a!!!!"
+      ],
+      "expected": "a!!!!"
+    },
+    {
+      "input": [
+        "!a!!!"
+      ],
+      "expected": "!a!!!"
+    },
+    {
+      "input": [
+        "aa!!!"
+      ],
+      "expected": "aa!!!"
+    },
+    {
+      "input": [
+        "!!a!!"
+      ],
+      "expected": "!!a!!"
+    },
+    {
+      "input": [
+        "a!a!!"
+      ],
+      "expected": "a!a!!"
+    },
+    {
+      "input": [
+        "!aa!!"
+      ],
+      "expected": "!aa!!"
+    },
+    {
+      "input": [
+        "aaa!!"
+      ],
+      "expected": "aaa!!"
+    },
+    {
+      "input": [
+        "!!!a!"
+      ],
+      "expected": "!!!a!"
+    },
+    {
+      "input": [
+        "a!!a!"
+      ],
+      "expected": "a!!a!"
+    },
+    {
+      "input": [
+        "aa!a!"
+      ],
+      "expected": "aa!a!"
+    },
+    {
+      "input": [
+        "!!aa!"
+      ],
+      "expected": "!!aa!"
+    },
+    {
+      "input": [
+        "a!aa!"
+      ],
+      "expected": "a!aa!"
+    },
+    {
+      "input": [
+        "!aaa!"
+      ],
+      "expected": "!aaa!"
+    },
+    {
+      "input": [
+        "aaaa!"
+      ],
+      "expected": "aaaa!"
+    },
+    {
+      "input": [
+        "!!!!a"
+      ],
+      "expected": "!!!!a"
+    },
+    {
+      "input": [
+        "a!!!a"
+      ],
+      "expected": "a!!!a"
+    },
+    {
+      "input": [
+        "!a!!a"
+      ],
+      "expected": "!a!!a"
+    },
+    {
+      "input": [
+        "aa!!a"
+      ],
+      "expected": "aa!!a"
+    },
+    {
+      "input": [
+        "!!a!a"
+      ],
+      "expected": "!!a!a"
+    },
+    {
+      "input": [
+        "a!a!a"
+      ],
+      "expected": "a!a!a"
+    },
+    {
+      "input": [
+        "!aa!a"
+      ],
+      "expected": "!aa!a"
+    },
+    {
+      "input": [
+        "aaa!a"
+      ],
+      "expected": "aaa!a"
+    },
+    {
+      "input": [
+        "!!!aa"
+      ],
+      "expected": "!!!aa"
+    },
+    {
+      "input": [
+        "a!!aa"
+      ],
+      "expected": "a!!aa"
+    },
+    {
+      "input": [
+        "!a!aa"
+      ],
+      "expected": "!a!aa"
+    },
+    {
+      "input": [
+        "aa!aa"
+      ],
+      "expected": "aa!aa"
+    },
+    {
+      "input": [
+        "!!aaa"
+      ],
+      "expected": "!!aaa"
+    },
+    {
+      "input": [
+        "a!aaa"
+      ],
+      "expected": "a!aaa"
+    },
+    {
+      "input": [
+        "!aaaa"
+      ],
+      "expected": "!aaaa"
+    },
+    {
+      "input": [
+        "aaaaa"
+      ],
+      "expected": "aaaaa"
+    },
+    {
+      "input": [
+        "!!!!!!"
+      ],
+      "expected": "!!!!!!"
+    },
+    {
+      "input": [
+        "a!!!!!"
+      ],
+      "expected": "a!!!!!"
+    },
+    {
+      "input": [
+        "!a!!!!"
+      ],
+      "expected": "!a!!!!"
+    },
+    {
+      "input": [
+        "aa!!!!"
+      ],
+      "expected": "aa!!!!"
+    },
+    {
+      "input": [
+        "!!a!!!"
+      ],
+      "expected": "!!a!!!"
+    },
+    {
+      "input": [
+        "a!a!!!"
+      ],
+      "expected": "a!a!!!"
+    },
+    {
+      "input": [
+        "!aa!!!"
+      ],
+      "expected": "!aa!!!"
+    },
+    {
+      "input": [
+        "aaa!!!"
+      ],
+      "expected": "aaa!!!"
+    },
+    {
+      "input": [
+        "!!!a!!"
+      ],
+      "expected": "!!!a!!"
+    },
+    {
+      "input": [
+        "a!!a!!"
+      ],
+      "expected": "a!!a!!"
+    },
+    {
+      "input": [
+        "!a!a!!"
+      ],
+      "expected": "!a!a!!"
+    },
+    {
+      "input": [
+        "aa!a!!"
+      ],
+      "expected": "aa!a!!"
+    },
+    {
+      "input": [
+        "!!aa!!"
+      ],
+      "expected": "!!aa!!"
+    },
+    {
+      "input": [
+        "a!aa!!"
+      ],
+      "expected": "a!aa!!"
+    },
+    {
+      "input": [
+        "!aaa!!"
+      ],
+      "expected": "!aaa!!"
+    },
+    {
+      "input": [
+        "aaaa!!"
+      ],
+      "expected": "aaaa!!"
+    },
+    {
+      "input": [
+        "!!!!a!"
+      ],
+      "expected": "!!!!a!"
+    },
+    {
+      "input": [
+        "a!!!a!"
+      ],
+      "expected": "a!!!a!"
+    },
+    {
+      "input": [
+        "!a!!a!"
+      ],
+      "expected": "!a!!a!"
+    },
+    {
+      "input": [
+        "aa!!a!"
+      ],
+      "expected": "aa!!a!"
+    },
+    {
+      "input": [
+        "!!a!a!"
+      ],
+      "expected": "!!a!a!"
+    },
+    {
+      "input": [
+        "a!a!a!"
+      ],
+      "expected": "a!a!a!"
+    },
+    {
+      "input": [
+        "!aa!a!"
+      ],
+      "expected": "!aa!a!"
+    },
+    {
+      "input": [
+        "aaa!a!"
+      ],
+      "expected": "aaa!a!"
+    },
+    {
+      "input": [
+        "!!!aa!"
+      ],
+      "expected": "!!!aa!"
+    },
+    {
+      "input": [
+        "a!!aa!"
+      ],
+      "expected": "a!!aa!"
+    },
+    {
+      "input": [
+        "!a!aa!"
+      ],
+      "expected": "!a!aa!"
+    },
+    {
+      "input": [
+        "aa!aa!"
+      ],
+      "expected": "aa!aa!"
+    },
+    {
+      "input": [
+        "!!aaa!"
+      ],
+      "expected": "!!aaa!"
+    },
+    {
+      "input": [
+        "a!aaa!"
+      ],
+      "expected": "a!aaa!"
+    },
+    {
+      "input": [
+        "!aaaa!"
+      ],
+      "expected": "!aaaa!"
+    },
+    {
+      "input": [
+        "aaaaa!"
+      ],
+      "expected": "aaaaa!"
+    },
+    {
+      "input": [
+        "!!!!!a"
+      ],
+      "expected": "!!!!!a"
+    },
+    {
+      "input": [
+        "a!!!!a"
+      ],
+      "expected": "a!!!!a"
+    },
+    {
+      "input": [
+        "!a!!!a"
+      ],
+      "expected": "!a!!!a"
+    },
+    {
+      "input": [
+        "aa!!!a"
+      ],
+      "expected": "aa!!!a"
+    },
+    {
+      "input": [
+        "!!a!!a"
+      ],
+      "expected": "!!a!!a"
+    },
+    {
+      "input": [
+        "a!a!!a"
+      ],
+      "expected": "a!a!!a"
+    },
+    {
+      "input": [
+        "!aa!!a"
+      ],
+      "expected": "!aa!!a"
+    },
+    {
+      "input": [
+        "aaa!!a"
+      ],
+      "expected": "aaa!!a"
+    },
+    {
+      "input": [
+        "!!!a!a"
+      ],
+      "expected": "!!!a!a"
+    },
+    {
+      "input": [
+        "a!!a!a"
+      ],
+      "expected": "a!!a!a"
+    },
+    {
+      "input": [
+        "!a!a!a"
+      ],
+      "expected": "!a!a!a"
+    },
+    {
+      "input": [
+        "aa!a!a"
+      ],
+      "expected": "aa!a!a"
+    },
+    {
+      "input": [
+        "!!aa!a"
+      ],
+      "expected": "!!aa!a"
+    },
+    {
+      "input": [
+        "a!aa!a"
+      ],
+      "expected": "a!aa!a"
+    },
+    {
+      "input": [
+        "!aaa!a"
+      ],
+      "expected": "!aaa!a"
+    },
+    {
+      "input": [
+        "aaaa!a"
+      ],
+      "expected": "aaaa!a"
+    },
+    {
+      "input": [
+        "!!!!aa"
+      ],
+      "expected": "!!!!aa"
+    },
+    {
+      "input": [
+        "a!!!aa"
+      ],
+      "expected": "a!!!aa"
+    },
+    {
+      "input": [
+        "!a!!aa"
+      ],
+      "expected": "!a!!aa"
+    },
+    {
+      "input": [
+        "aa!!aa"
+      ],
+      "expected": "aa!!aa"
+    },
+    {
+      "input": [
+        "!!a!aa"
+      ],
+      "expected": "!!a!aa"
+    },
+    {
+      "input": [
+        "a!a!aa"
+      ],
+      "expected": "a!a!aa"
+    },
+    {
+      "input": [
+        "!aa!aa"
+      ],
+      "expected": "!aa!aa"
+    },
+    {
+      "input": [
+        "aaa!aa"
+      ],
+      "expected": "aaa!aa"
+    },
+    {
+      "input": [
+        "!!!aaa"
+      ],
+      "expected": "!!!aaa"
+    },
+    {
+      "input": [
+        "a!!aaa"
+      ],
+      "expected": "a!!aaa"
+    },
+    {
+      "input": [
+        "!a!aaa"
+      ],
+      "expected": "!a!aaa"
+    },
+    {
+      "input": [
+        "aa!aaa"
+      ],
+      "expected": "aa!aaa"
+    },
+    {
+      "input": [
+        "!!aaaa"
+      ],
+      "expected": "!!aaaa"
+    },
+    {
+      "input": [
+        "a!aaaa"
+      ],
+      "expected": "a!aaaa"
+    },
+    {
+      "input": [
+        "!aaaaa"
+      ],
+      "expected": "!aaaaa"
+    },
+    {
+      "input": [
+        "aaaaaa"
+      ],
+      "expected": "aaaaaa"
+    },
+    {
+      "input": [
+        "!!!!!!!"
+      ],
+      "expected": "!!!!!!!"
+    },
+    {
+      "input": [
+        "a!!!!!!"
+      ],
+      "expected": "a!!!!!!"
+    },
+    {
+      "input": [
+        "!a!!!!!"
+      ],
+      "expected": "!a!!!!!"
+    },
+    {
+      "input": [
+        "aa!!!!!"
+      ],
+      "expected": "aa!!!!!"
+    },
+    {
+      "input": [
+        "!!a!!!!"
+      ],
+      "expected": "!!a!!!!"
+    },
+    {
+      "input": [
+        "a!a!!!!"
+      ],
+      "expected": "a!a!!!!"
+    },
+    {
+      "input": [
+        "!aa!!!!"
+      ],
+      "expected": "!aa!!!!"
+    },
+    {
+      "input": [
+        "aaa!!!!"
+      ],
+      "expected": "aaa!!!!"
+    },
+    {
+      "input": [
+        "!!!a!!!"
+      ],
+      "expected": "!!!a!!!"
+    },
+    {
+      "input": [
+        "a!!a!!!"
+      ],
+      "expected": "a!!a!!!"
+    },
+    {
+      "input": [
+        "!a!a!!!"
+      ],
+      "expected": "!a!a!!!"
+    },
+    {
+      "input": [
+        "aa!a!!!"
+      ],
+      "expected": "aa!a!!!"
+    },
+    {
+      "input": [
+        "!!aa!!!"
+      ],
+      "expected": "!!aa!!!"
+    },
+    {
+      "input": [
+        "a!aa!!!"
+      ],
+      "expected": "a!aa!!!"
+    },
+    {
+      "input": [
+        "!aaa!!!"
+      ],
+      "expected": "!aaa!!!"
+    },
+    {
+      "input": [
+        "aaaa!!!"
+      ],
+      "expected": "aaaa!!!"
+    },
+    {
+      "input": [
+        "!!!!a!!"
+      ],
+      "expected": "!!!!a!!"
+    },
+    {
+      "input": [
+        "a!!!a!!"
+      ],
+      "expected": "a!!!a!!"
+    },
+    {
+      "input": [
+        "!a!!a!!"
+      ],
+      "expected": "!a!!a!!"
+    },
+    {
+      "input": [
+        "aa!!a!!"
+      ],
+      "expected": "aa!!a!!"
+    },
+    {
+      "input": [
+        "!!a!a!!"
+      ],
+      "expected": "!!a!a!!"
+    },
+    {
+      "input": [
+        "a!a!a!!"
+      ],
+      "expected": "a!a!a!!"
+    },
+    {
+      "input": [
+        "!aa!a!!"
+      ],
+      "expected": "!aa!a!!"
+    },
+    {
+      "input": [
+        "aaa!a!!"
+      ],
+      "expected": "aaa!a!!"
+    },
+    {
+      "input": [
+        "!!!aa!!"
+      ],
+      "expected": "!!!aa!!"
+    },
+    {
+      "input": [
+        "a!!aa!!"
+      ],
+      "expected": "a!!aa!!"
+    },
+    {
+      "input": [
+        "!a!aa!!"
+      ],
+      "expected": "!a!aa!!"
+    },
+    {
+      "input": [
+        "aa!aa!!"
+      ],
+      "expected": "aa!aa!!"
+    },
+    {
+      "input": [
+        "a!aaa!!"
+      ],
+      "expected": "a!aaa!!"
+    },
+    {
+      "input": [
+        "!aaaa!!"
+      ],
+      "expected": "!aaaa!!"
+    },
+    {
+      "input": [
+        "aaaaa!!"
+      ],
+      "expected": "aaaaa!!"
+    },
+    {
+      "input": [
+        "!!!!!a!"
+      ],
+      "expected": "!!!!!a!"
+    },
+    {
+      "input": [
+        "a!!!!a!"
+      ],
+      "expected": "a!!!!a!"
+    },
+    {
+      "input": [
+        "!a!!!a!"
+      ],
+      "expected": "!a!!!a!"
+    },
+    {
+      "input": [
+        "aa!!!a!"
+      ],
+      "expected": "aa!!!a!"
+    },
+    {
+      "input": [
+        "!!a!!a!"
+      ],
+      "expected": "!!a!!a!"
+    },
+    {
+      "input": [
+        "a!a!!a!"
+      ],
+      "expected": "a!a!!a!"
+    },
+    {
+      "input": [
+        "!aa!!a!"
+      ],
+      "expected": "!aa!!a!"
+    },
+    {
+      "input": [
+        "aaa!!a!"
+      ],
+      "expected": "aaa!!a!"
+    },
+    {
+      "input": [
+        "!!!a!a!"
+      ],
+      "expected": "!!!a!a!"
+    },
+    {
+      "input": [
+        "a!!a!a!"
+      ],
+      "expected": "a!!a!a!"
+    },
+    {
+      "input": [
+        "!a!a!a!"
+      ],
+      "expected": "!a!a!a!"
+    },
+    {
+      "input": [
+        "aa!a!a!"
+      ],
+      "expected": "aa!a!a!"
+    },
+    {
+      "input": [
+        "!!aa!a!"
+      ],
+      "expected": "!!aa!a!"
+    },
+    {
+      "input": [
+        "a!aa!a!"
+      ],
+      "expected": "a!aa!a!"
+    },
+    {
+      "input": [
+        "!aaa!a!"
+      ],
+      "expected": "!aaa!a!"
+    },
+    {
+      "input": [
+        "aaaa!a!"
+      ],
+      "expected": "aaaa!a!"
+    },
+    {
+      "input": [
+        "!!!!aa!"
+      ],
+      "expected": "!!!!aa!"
+    },
+    {
+      "input": [
+        "a!!!aa!"
+      ],
+      "expected": "a!!!aa!"
+    },
+    {
+      "input": [
+        "!a!!aa!"
+      ],
+      "expected": "!a!!aa!"
+    },
+    {
+      "input": [
+        "aa!!aa!"
+      ],
+      "expected": "aa!!aa!"
+    },
+    {
+      "input": [
+        "!!a!aa!"
+      ],
+      "expected": "!!a!aa!"
+    },
+    {
+      "input": [
+        "a!a!aa!"
+      ],
+      "expected": "a!a!aa!"
+    },
+    {
+      "input": [
+        "!aa!aa!"
+      ],
+      "expected": "!aa!aa!"
+    },
+    {
+      "input": [
+        "aaa!aa!"
+      ],
+      "expected": "aaa!aa!"
+    },
+    {
+      "input": [
+        "!!!aaa!"
+      ],
+      "expected": "!!!aaa!"
+    },
+    {
+      "input": [
+        "a!!aaa!"
+      ],
+      "expected": "a!!aaa!"
+    },
+    {
+      "input": [
+        "!a!aaa!"
+      ],
+      "expected": "!a!aaa!"
+    },
+    {
+      "input": [
+        "aa!aaa!"
+      ],
+      "expected": "aa!aaa!"
+    },
+    {
+      "input": [
+        "!!aaaa!"
+      ],
+      "expected": "!!aaaa!"
+    },
+    {
+      "input": [
+        "a!aaaa!"
+      ],
+      "expected": "a!aaaa!"
+    },
+    {
+      "input": [
+        "!aaaaa!"
+      ],
+      "expected": "!aaaaa!"
+    },
+    {
+      "input": [
+        "aaaaaa!"
+      ],
+      "expected": "aaaaaa!"
+    },
+    {
+      "input": [
+        "!!!!!!a"
+      ],
+      "expected": "!!!!!!a"
+    },
+    {
+      "input": [
+        "a!!!!!a"
+      ],
+      "expected": "a!!!!!a"
+    },
+    {
+      "input": [
+        "!a!!!!a"
+      ],
+      "expected": "!a!!!!a"
+    },
+    {
+      "input": [
+        "aa!!!!a"
+      ],
+      "expected": "aa!!!!a"
+    },
+    {
+      "input": [
+        "!!a!!!a"
+      ],
+      "expected": "!!a!!!a"
+    },
+    {
+      "input": [
+        "a!a!!!a"
+      ],
+      "expected": "a!a!!!a"
+    },
+    {
+      "input": [
+        "!aa!!!a"
+      ],
+      "expected": "!aa!!!a"
+    },
+    {
+      "input": [
+        "aaa!!!a"
+      ],
+      "expected": "aaa!!!a"
+    },
+    {
+      "input": [
+        "!!!a!!a"
+      ],
+      "expected": "!!!a!!a"
+    },
+    {
+      "input": [
+        "a!!a!!a"
+      ],
+      "expected": "a!!a!!a"
+    },
+    {
+      "input": [
+        "!a!a!!a"
+      ],
+      "expected": "!a!a!!a"
+    },
+    {
+      "input": [
+        "aa!a!!a"
+      ],
+      "expected": "aa!a!!a"
+    },
+    {
+      "input": [
+        "!!aa!!a"
+      ],
+      "expected": "!!aa!!a"
+    },
+    {
+      "input": [
+        "a!aa!!a"
+      ],
+      "expected": "a!aa!!a"
+    },
+    {
+      "input": [
+        "!aaa!!a"
+      ],
+      "expected": "!aaa!!a"
+    },
+    {
+      "input": [
+        "aaaa!!a"
+      ],
+      "expected": "aaaa!!a"
+    },
+    {
+      "input": [
+        "!!!!a!a"
+      ],
+      "expected": "!!!!a!a"
+    },
+    {
+      "input": [
+        "a!!!a!a"
+      ],
+      "expected": "a!!!a!a"
+    },
+    {
+      "input": [
+        "!a!!a!a"
+      ],
+      "expected": "!a!!a!a"
+    },
+    {
+      "input": [
+        "aa!!a!a"
+      ],
+      "expected": "aa!!a!a"
+    },
+    {
+      "input": [
+        "!!a!a!a"
+      ],
+      "expected": "!!a!a!a"
+    },
+    {
+      "input": [
+        "!aa!a!a"
+      ],
+      "expected": "!aa!a!a"
+    },
+    {
+      "input": [
+        "aaa!a!a"
+      ],
+      "expected": "aaa!a!a"
+    },
+    {
+      "input": [
+        "!!!aa!a"
+      ],
+      "expected": "!!!aa!a"
+    },
+    {
+      "input": [
+        "a!!aa!a"
+      ],
+      "expected": "a!!aa!a"
+    },
+    {
+      "input": [
+        "!a!aa!a"
+      ],
+      "expected": "!a!aa!a"
+    },
+    {
+      "input": [
+        "aa!aa!a"
+      ],
+      "expected": "aa!aa!a"
+    },
+    {
+      "input": [
+        "!!aaa!a"
+      ],
+      "expected": "!!aaa!a"
+    },
+    {
+      "input": [
+        "a!aaa!a"
+      ],
+      "expected": "a!aaa!a"
+    },
+    {
+      "input": [
+        "!aaaa!a"
+      ],
+      "expected": "!aaaa!a"
+    },
+    {
+      "input": [
+        "aaaaa!a"
+      ],
+      "expected": "aaaaa!a"
+    },
+    {
+      "input": [
+        "!!!!!aa"
+      ],
+      "expected": "!!!!!aa"
+    },
+    {
+      "input": [
+        "a!!!!aa"
+      ],
+      "expected": "a!!!!aa"
+    },
+    {
+      "input": [
+        "!a!!!aa"
+      ],
+      "expected": "!a!!!aa"
+    },
+    {
+      "input": [
+        "aa!!!aa"
+      ],
+      "expected": "aa!!!aa"
+    },
+    {
+      "input": [
+        "!!a!!aa"
+      ],
+      "expected": "!!a!!aa"
+    },
+    {
+      "input": [
+        "a!a!!aa"
+      ],
+      "expected": "a!a!!aa"
+    },
+    {
+      "input": [
+        "!aa!!aa"
+      ],
+      "expected": "!aa!!aa"
+    },
+    {
+      "input": [
+        "aaa!!aa"
+      ],
+      "expected": "aaa!!aa"
+    },
+    {
+      "input": [
+        "!!!a!aa"
+      ],
+      "expected": "!!!a!aa"
+    },
+    {
+      "input": [
+        "a!!a!aa"
+      ],
+      "expected": "a!!a!aa"
+    },
+    {
+      "input": [
+        "!a!a!aa"
+      ],
+      "expected": "!a!a!aa"
+    },
+    {
+      "input": [
+        "aa!a!aa"
+      ],
+      "expected": "aa!a!aa"
+    },
+    {
+      "input": [
+        "!!aa!aa"
+      ],
+      "expected": "!!aa!aa"
+    },
+    {
+      "input": [
+        "a!aa!aa"
+      ],
+      "expected": "a!aa!aa"
+    },
+    {
+      "input": [
+        "!aaa!aa"
+      ],
+      "expected": "!aaa!aa"
+    },
+    {
+      "input": [
+        "aaaa!aa"
+      ],
+      "expected": "aaaa!aa"
+    },
+    {
+      "input": [
+        "!!!!aaa"
+      ],
+      "expected": "!!!!aaa"
+    },
+    {
+      "input": [
+        "a!!!aaa"
+      ],
+      "expected": "a!!!aaa"
+    },
+    {
+      "input": [
+        "!a!!aaa"
+      ],
+      "expected": "!a!!aaa"
+    },
+    {
+      "input": [
+        "aa!!aaa"
+      ],
+      "expected": "aa!!aaa"
+    },
+    {
+      "input": [
+        "!!a!aaa"
+      ],
+      "expected": "!!a!aaa"
+    },
+    {
+      "input": [
+        "a!a!aaa"
+      ],
+      "expected": "a!a!aaa"
+    },
+    {
+      "input": [
+        "!aa!aaa"
+      ],
+      "expected": "!aa!aaa"
+    },
+    {
+      "input": [
+        "aaa!aaa"
+      ],
+      "expected": "aaa!aaa"
+    },
+    {
+      "input": [
+        "!!!aaaa"
+      ],
+      "expected": "!!!aaaa"
+    },
+    {
+      "input": [
+        "a!!aaaa"
+      ],
+      "expected": "a!!aaaa"
+    },
+    {
+      "input": [
+        "!a!aaaa"
+      ],
+      "expected": "!a!aaaa"
+    },
+    {
+      "input": [
+        "aa!aaaa"
+      ],
+      "expected": "aa!aaaa"
+    },
+    {
+      "input": [
+        "!!aaaaa"
+      ],
+      "expected": "!!aaaaa"
+    },
+    {
+      "input": [
+        "a!aaaaa"
+      ],
+      "expected": "a!aaaaa"
+    },
+    {
+      "input": [
+        "!aaaaaa"
+      ],
+      "expected": "!aaaaaa"
+    },
+    {
+      "input": [
+        "aaaaaaa"
+      ],
+      "expected": "aaaaaaa"
+    },
+    {
+      "input": [
+        "b"
+      ],
+      "expected": "b"
+    },
+    {
+      "input": [
+        "ba"
+      ],
+      "expected": "ab"
+    },
+    {
+      "input": [
+        "bb"
+      ],
+      "expected": "bb"
+    },
+    {
+      "input": [
+        "!b"
+      ],
+      "expected": "!b"
+    },
+    {
+      "input": [
+        "b!"
+      ],
+      "expected": "b!"
+    },
+    {
+      "input": [
+        "baa"
+      ],
+      "expected": "aab"
+    },
+    {
+      "input": [
+        "aba"
+      ],
+      "expected": "aba"
+    },
+    {
+      "input": [
+        "bba"
+      ],
+      "expected": "abb"
+    },
+    {
+      "input": [
+        "!ba"
+      ],
+      "expected": "!ab"
+    },
+    {
+      "input": [
+        "b!a"
+      ],
+      "expected": "a!b"
+    },
+    {
+      "input": [
+        "aab"
+      ],
+      "expected": "baa"
+    },
+    {
+      "input": [
+        "bab"
+      ],
+      "expected": "bab"
+    },
+    {
+      "input": [
+        "!ab"
+      ],
+      "expected": "!ba"
+    },
+    {
+      "input": [
+        "abb"
+      ],
+      "expected": "bba"
+    },
+    {
+      "input": [
+        "bbb"
+      ],
+      "expected": "bbb"
+    },
+    {
+      "input": [
+        "!bb"
+      ],
+      "expected": "!bb"
+    },
+    {
+      "input": [
+        "a!b"
+      ],
+      "expected": "b!a"
+    },
+    {
+      "input": [
+        "b!b"
+      ],
+      "expected": "b!b"
+    },
+    {
+      "input": [
+        "!!b"
+      ],
+      "expected": "!!b"
+    },
+    {
+      "input": [
+        "ba!"
+      ],
+      "expected": "ab!"
+    },
+    {
+      "input": [
+        "ab!"
+      ],
+      "expected": "ba!"
+    },
+    {
+      "input": [
+        "bb!"
+      ],
+      "expected": "bb!"
+    },
+    {
+      "input": [
+        "!b!"
+      ],
+      "expected": "!b!"
+    },
+    {
+      "input": [
+        "b!!"
+      ],
+      "expected": "b!!"
+    },
+    {
+      "input": [
+        "baaa"
+      ],
+      "expected": "aaab"
+    },
+    {
+      "input": [
+        "abaa"
+      ],
+      "expected": "aaba"
+    },
+    {
+      "input": [
+        "bbaa"
+      ],
+      "expected": "aabb"
+    },
+    {
+      "input": [
+        "!baa"
+      ],
+      "expected": "!aab"
+    },
+    {
+      "input": [
+        "b!aa"
+      ],
+      "expected": "a!ab"
+    },
+    {
+      "input": [
+        "aaba"
+      ],
+      "expected": "abaa"
+    },
+    {
+      "input": [
+        "baba"
+      ],
+      "expected": "abab"
+    },
+    {
+      "input": [
+        "!aba"
+      ],
+      "expected": "!aba"
+    },
+    {
+      "input": [
+        "abba"
+      ],
+      "expected": "abba"
+    },
+    {
+      "input": [
+        "bbba"
+      ],
+      "expected": "abbb"
+    },
+    {
+      "input": [
+        "!bba"
+      ],
+      "expected": "!abb"
+    },
+    {
+      "input": [
+        "a!ba"
+      ],
+      "expected": "a!ba"
+    },
+    {
+      "input": [
+        "b!ba"
+      ],
+      "expected": "a!bb"
+    },
+    {
+      "input": [
+        "!!ba"
+      ],
+      "expected": "!!ab"
+    },
+    {
+      "input": [
+        "ba!a"
+      ],
+      "expected": "aa!b"
+    },
+    {
+      "input": [
+        "ab!a"
+      ],
+      "expected": "ab!a"
+    },
+    {
+      "input": [
+        "bb!a"
+      ],
+      "expected": "ab!b"
+    },
+    {
+      "input": [
+        "!b!a"
+      ],
+      "expected": "!a!b"
+    },
+    {
+      "input": [
+        "b!!a"
+      ],
+      "expected": "a!!b"
+    },
+    {
+      "input": [
+        "aaab"
+      ],
+      "expected": "baaa"
+    },
+    {
+      "input": [
+        "baab"
+      ],
+      "expected": "baab"
+    },
+    {
+      "input": [
+        "!aab"
+      ],
+      "expected": "!baa"
+    },
+    {
+      "input": [
+        "abab"
+      ],
+      "expected": "baba"
+    },
+    {
+      "input": [
+        "bbab"
+      ],
+      "expected": "babb"
+    },
+    {
+      "input": [
+        "!bab"
+      ],
+      "expected": "!bab"
+    },
+    {
+      "input": [
+        "a!ab"
+      ],
+      "expected": "b!aa"
+    },
+    {
+      "input": [
+        "b!ab"
+      ],
+      "expected": "b!ab"
+    },
+    {
+      "input": [
+        "!!ab"
+      ],
+      "expected": "!!ba"
+    },
+    {
+      "input": [
+        "aabb"
+      ],
+      "expected": "bbaa"
+    },
+    {
+      "input": [
+        "babb"
+      ],
+      "expected": "bbab"
+    },
+    {
+      "input": [
+        "!abb"
+      ],
+      "expected": "!bba"
+    },
+    {
+      "input": [
+        "abbb"
+      ],
+      "expected": "bbba"
+    },
+    {
+      "input": [
+        "bbbb"
+      ],
+      "expected": "bbbb"
+    },
+    {
+      "input": [
+        "!bbb"
+      ],
+      "expected": "!bbb"
+    },
+    {
+      "input": [
+        "a!bb"
+      ],
+      "expected": "b!ba"
+    },
+    {
+      "input": [
+        "b!bb"
+      ],
+      "expected": "b!bb"
+    },
+    {
+      "input": [
+        "!!bb"
+      ],
+      "expected": "!!bb"
+    },
+    {
+      "input": [
+        "aa!b"
+      ],
+      "expected": "ba!a"
+    },
+    {
+      "input": [
+        "ba!b"
+      ],
+      "expected": "ba!b"
+    },
+    {
+      "input": [
+        "!a!b"
+      ],
+      "expected": "!b!a"
+    },
+    {
+      "input": [
+        "ab!b"
+      ],
+      "expected": "bb!a"
+    },
+    {
+      "input": [
+        "bb!b"
+      ],
+      "expected": "bb!b"
+    },
+    {
+      "input": [
+        "!b!b"
+      ],
+      "expected": "!b!b"
+    },
+    {
+      "input": [
+        "a!!b"
+      ],
+      "expected": "b!!a"
+    },
+    {
+      "input": [
+        "b!!b"
+      ],
+      "expected": "b!!b"
+    },
+    {
+      "input": [
+        "!!!b"
+      ],
+      "expected": "!!!b"
+    },
+    {
+      "input": [
+        "baa!"
+      ],
+      "expected": "aab!"
+    },
+    {
+      "input": [
+        "aba!"
+      ],
+      "expected": "aba!"
+    },
+    {
+      "input": [
+        "bba!"
+      ],
+      "expected": "abb!"
+    },
+    {
+      "input": [
+        "!ba!"
+      ],
+      "expected": "!ab!"
+    },
+    {
+      "input": [
+        "b!a!"
+      ],
+      "expected": "a!b!"
+    },
+    {
+      "input": [
+        "aab!"
+      ],
+      "expected": "baa!"
+    },
+    {
+      "input": [
+        "bab!"
+      ],
+      "expected": "bab!"
+    },
+    {
+      "input": [
+        "!ab!"
+      ],
+      "expected": "!ba!"
+    },
+    {
+      "input": [
+        "abb!"
+      ],
+      "expected": "bba!"
+    },
+    {
+      "input": [
+        "bbb!"
+      ],
+      "expected": "bbb!"
+    },
+    {
+      "input": [
+        "!bb!"
+      ],
+      "expected": "!bb!"
+    },
+    {
+      "input": [
+        "a!b!"
+      ],
+      "expected": "b!a!"
+    },
+    {
+      "input": [
+        "b!b!"
+      ],
+      "expected": "b!b!"
+    },
+    {
+      "input": [
+        "!!b!"
+      ],
+      "expected": "!!b!"
+    },
+    {
+      "input": [
+        "ba!!"
+      ],
+      "expected": "ab!!"
+    },
+    {
+      "input": [
+        "ab!!"
+      ],
+      "expected": "ba!!"
+    },
+    {
+      "input": [
+        "bb!!"
+      ],
+      "expected": "bb!!"
+    },
+    {
+      "input": [
+        "!b!!"
+      ],
+      "expected": "!b!!"
+    },
+    {
+      "input": [
+        "b!!!"
+      ],
+      "expected": "b!!!"
+    }
+  ]
+}

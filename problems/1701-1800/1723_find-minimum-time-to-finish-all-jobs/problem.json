@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "bitmask_dp",
+  "id": 1723,
+  "slug": "find-minimum-time-to-finish-all-jobs",
+  "title": "Find Minimum Time to Finish All Jobs",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Bitmask DP",
+    "Backtracking",
+    "Binary Search"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Backtracking",
+    "Bit Manipulation",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumTimeRequired",
+    "parameters": [
+      {
+        "name": "jobs",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumTimeRequired",
+      "rust": "minimum_time_required",
+      "typescript": "minimumTimeRequired"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

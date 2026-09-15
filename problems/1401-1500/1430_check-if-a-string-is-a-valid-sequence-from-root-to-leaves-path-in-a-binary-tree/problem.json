@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1430,
+  "slug": "check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree",
+  "title": "Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "isValidSequence",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "arr",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "isValidSequence",
+      "rust": "is_valid_sequence",
+      "typescript": "isValidSequence"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "inorder_iterative",
+  "id": 230,
+  "slug": "kth-smallest-element-in-a-bst",
+  "title": "Kth Smallest Element in a BST",
+  "difficulty": "Medium",
+  "tags": [
+    "Binary Search Tree",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "kthSmallest",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "kthSmallest",
+      "rust": "kth_smallest",
+      "typescript": "kthSmallest"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "two_pass_dp",
+  "id": 542,
+  "slug": "01-matrix",
+  "title": "01 Matrix",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "updateMatrix",
+    "parameters": [
+      {
+        "name": "mat",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "updateMatrix",
+      "rust": "update_matrix",
+      "typescript": "updateMatrix"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

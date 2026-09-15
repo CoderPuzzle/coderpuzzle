@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="600" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a94a0"/>
+    </marker>
+  </defs>
+  <text x="20" y="24" fill="#1a2026" font-weight="600">head = [-10,-3,0,5,9] - slow lands on the midpoint 0, prev cuts the list in two</text>
+  <!-- list -->
+  <g stroke="#1a2026" stroke-width="1.4" fill="#ffffff">
+    <rect x="50" y="48" width="70" height="34"/><rect x="160" y="48" width="70" height="34"/><rect x="270" y="48" width="70" height="34"/><rect x="380" y="48" width="70" height="34"/><rect x="490" y="48" width="70" height="34"/>
+  </g>
+  <rect x="270" y="48" width="70" height="34" fill="#e9eefb" stroke="#4169E1" stroke-width="2.2"/>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="85" y="70">-10</text><text x="195" y="70">-3</text><text x="305" y="70">0</text><text x="415" y="70">5</text><text x="525" y="70">9</text>
+  </g>
+  <g stroke="#8a94a0" stroke-width="1.3" fill="none">
+    <line x1="120" y1="65" x2="154" y2="65" marker-end="url(#arr)"/>
+    <line x1="230" y1="65" x2="264" y2="65" marker-end="url(#arr)"/>
+    <line x1="340" y1="65" x2="374" y2="65" marker-end="url(#arr)"/>
+    <line x1="450" y1="65" x2="484" y2="65" marker-end="url(#arr)"/>
+  </g>
+  <text x="570" y="70" fill="#8a94a0" font-size="11">None</text>
+  <!-- cut marker -->
+  <line x1="262" y1="36" x2="262" y2="94" stroke="#4169E1" stroke-width="1.8" stroke-dasharray="5 4"/>
+  <text x="262" y="30" fill="#4169E1" font-size="11" text-anchor="middle" font-weight="600">prev.next = None</text>
+  <!-- slow/fast -->
+  <path d="M 305 106 L 305 88" stroke="#4169E1" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="305" y="122" fill="#4169E1" font-size="11.5" text-anchor="middle" font-weight="700">slow</text>
+  <path d="M 560 106 C 560 96, 545 92, 535 88" stroke="#8a94a0" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+  <text x="560" y="122" fill="#8a94a0" font-size="11.5" text-anchor="middle">fast -&gt; None</text>
+  <text x="50" y="122" fill="#5b6470" font-size="11.5">fast moves two per slow step, so slow stops on the second midpoint of an even run</text>
+  <!-- BST -->
+  <g stroke="#8a94a0" stroke-width="1.3" fill="none">
+    <line x1="300" y1="196" x2="210" y2="246" marker-end="url(#arr)"/>
+    <line x1="300" y1="196" x2="390" y2="246" marker-end="url(#arr)"/>
+    <line x1="210" y1="256" x2="140" y2="300" marker-end="url(#arr)"/>
+    <line x1="390" y1="256" x2="320" y2="300" marker-end="url(#arr)"/>
+  </g>
+  <g stroke="#1a2026" stroke-width="1.6" fill="#ffffff">
+    <circle cx="300" cy="182" r="19" fill="#e9eefb" stroke="#4169E1" stroke-width="2.2"/>
+    <circle cx="210" cy="252" r="18"/>
+    <circle cx="390" cy="252" r="18"/>
+    <circle cx="140" cy="306" r="16"/>
+    <circle cx="320" cy="306" r="16"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600" font-size="13">
+    <text x="300" y="187">0</text>
+    <text x="210" y="257">-3</text>
+    <text x="390" y="257">9</text>
+    <text x="140" y="311">-10</text>
+    <text x="320" y="311">5</text>
+  </g>
+  <!-- mapping arrows list->tree -->
+  <path d="M 305 86 C 330 120, 315 150, 302 160" fill="none" stroke="#8a94a0" stroke-width="1.1" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+  <text x="470" y="196" fill="#5b6470" font-size="11">left half [-10, -3] recurses on the</text>
+  <text x="470" y="212" fill="#5b6470" font-size="11">cut node; right half [5, 9] recurses</text>
+  <text x="470" y="228" fill="#5b6470" font-size="11">on slow.next - giving [0,-3,9,-10,null,5]</text>
+</svg>

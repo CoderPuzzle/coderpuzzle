@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2558,
+  "slug": "take-gifts-from-the-richest-pile",
+  "title": "Take Gifts From the Richest Pile",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Heap (Priority Queue)",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Heap (Priority Queue)",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "pickGifts",
+    "parameters": [
+      {
+        "name": "gifts",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "pickGifts",
+      "rust": "pick_gifts",
+      "typescript": "pickGifts"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

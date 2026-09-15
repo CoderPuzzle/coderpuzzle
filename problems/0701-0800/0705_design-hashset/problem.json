@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 705,
+  "slug": "design-hashset",
+  "title": "Design HashSet",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Linked List",
+    "Design",
+    "Hash Function"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Linked List",
+    "Design",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "MyHashSet",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "add",
+        "parameters": [
+          {
+            "name": "key",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "remove",
+        "parameters": [
+          {
+            "name": "key",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "contains",
+        "parameters": [
+          {
+            "name": "key",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

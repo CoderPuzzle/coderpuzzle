@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2127,
+  "slug": "maximum-employees-to-be-invited-to-a-meeting",
+  "title": "Maximum Employees to Be Invited to a Meeting",
+  "difficulty": "Hard",
+  "tags": [
+    "Graph",
+    "DFS"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Depth-First Search",
+    "Graph Theory",
+    "Topological Sort",
+    "Kosaraju's Algorithm",
+    "Tarjan's SCC Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumInvitations",
+    "parameters": [
+      {
+        "name": "favorite",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumInvitations",
+      "rust": "maximum_invitations",
+      "typescript": "maximumInvitations"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

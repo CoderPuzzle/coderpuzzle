@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 748,
+  "slug": "shortest-completing-word",
+  "title": "Shortest Completing Word",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "shortestCompletingWord",
+    "parameters": [
+      {
+        "name": "licensePlate",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "shortestCompletingWord",
+      "rust": "shortest_completing_word",
+      "typescript": "shortestCompletingWord"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

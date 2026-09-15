@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 675,
+  "slug": "cut-off-trees-for-golf-event",
+  "title": "Cut Off Trees for Golf Event",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Breadth-First Search",
+    "Heap (Priority Queue)",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Breadth-First Search",
+    "Heap (Priority Queue)",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "cutOffTree",
+    "parameters": [
+      {
+        "name": "forest",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "cutOffTree",
+      "rust": "cut_off_tree",
+      "typescript": "cutOffTree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

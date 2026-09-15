@@ -58,8 +58,8 @@ _COMMANDS: dict[str, list[str]] = {
     "typescript": [*_PRETTIER, "typescript"],
     "javascript": [*_PRETTIER, "babel"],
     "markdown": [*_PRETTIER, "markdown", "--prose-wrap", "preserve"],
-    # sql-formatter rather than prettier, matching how the problems repo
-    # formats bundle SQL (`coderpuzzle-problems/scripts/format.py`).
+    # sql-formatter rather than prettier, matching how the authoring loader
+    # in scripts/format.py formats bundle SQL.
     "sql": [
         "node",
         "-e",

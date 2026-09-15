@@ -1,0 +1,680 @@
+{
+  "public": [
+    {
+      "input": [
+        [
+          "9001 discuss.leetcode.com"
+        ]
+      ],
+      "expected": [
+        "9001 com",
+        "9001 discuss.leetcode.com",
+        "9001 leetcode.com"
+      ]
+    },
+    {
+      "input": [
+        [
+          "900 google.mail.com",
+          "50 yahoo.com",
+          "1 intel.mail.com",
+          "5 wiki.org"
+        ]
+      ],
+      "expected": [
+        "951 com",
+        "900 google.mail.com",
+        "1 intel.mail.com",
+        "901 mail.com",
+        "5 org",
+        "5 wiki.org",
+        "50 yahoo.com"
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        [
+          "1 a.b"
+        ]
+      ],
+      "expected": [
+        "1 a.b",
+        "1 b"
+      ]
+    },
+    {
+      "input": [
+        [
+          "10 alpha.beta.org"
+        ]
+      ],
+      "expected": [
+        "10 alpha.beta.org",
+        "10 beta.org",
+        "10 org"
+      ]
+    },
+    {
+      "input": [
+        [
+          "9001 discuss.leetcode.com",
+          "9001 discuss.leetcode.com"
+        ]
+      ],
+      "expected": [
+        "18002 com",
+        "18002 discuss.leetcode.com",
+        "18002 leetcode.com"
+      ]
+    },
+    {
+      "input": [
+        [
+          "5 a.com",
+          "7 a.com"
+        ]
+      ],
+      "expected": [
+        "12 a.com",
+        "12 com"
+      ]
+    },
+    {
+      "input": [
+        [
+          "1 first.mail.com",
+          "2 second.mail.com",
+          "4 third.mail.com"
+        ]
+      ],
+      "expected": [
+        "7 com",
+        "1 first.mail.com",
+        "7 mail.com",
+        "2 second.mail.com",
+        "4 third.mail.com"
+      ]
+    },
+    {
+      "input": [
+        [
+          "5 big.com",
+          "3 sub.big.com"
+        ]
+      ],
+      "expected": [
+        "8 big.com",
+        "8 com",
+        "3 sub.big.com"
+      ]
+    },
+    {
+      "input": [
+        [
+          "2 x.y.z",
+          "30 y.z"
+        ]
+      ],
+      "expected": [
+        "2 x.y.z",
+        "32 y.z",
+        "32 z"
+      ]
+    },
+    {
+      "input": [
+        [
+          "1200 shop.example.com",
+          "60 news.example.com",
+          "3 mail.example.com",
+          "7 docs.example.net"
+        ]
+      ],
+      "expected": [
+        "1263 com",
+        "7 docs.example.net",
+        "1263 example.com",
+        "7 example.net",
+        "3 mail.example.com",
+        "7 net",
+        "60 news.example.com",
+        "1200 shop.example.com"
+      ]
+    },
+    {
+      "input": [
+        [
+          "9 zulu.yankee.com",
+          "8 yankee.tango.com",
+          "7 whiskey.xray.com",
+          "6 victor.tango.com",
+          "5 uniform.sierra.com",
+          "4 tango.xray.com",
+          "3 sierra.xray.com",
+          "2 romeo.tango.com",
+          "1 queens.xray.com"
+        ]
+      ],
+      "expected": [
+        "45 com",
+        "1 queens.xray.com",
+        "2 romeo.tango.com",
+        "5 sierra.com",
+        "3 sierra.xray.com",
+        "16 tango.com",
+        "4 tango.xray.com",
+        "5 uniform.sierra.com",
+        "6 victor.tango.com",
+        "7 whiskey.xray.com",
+        "15 xray.com",
+        "9 yankee.com",
+        "8 yankee.tango.com",
+        "9 zulu.yankee.com"
+      ]
+    },
+    {
+      "input": [
+        [
+          "1492 siblingaa.hub.com",
+          "2886 siblingab.hub.com",
+          "8544 siblingac.hub.com",
+          "8638 siblingad.hub.com",
+          "6993 siblingae.hub.com",
+          "539 siblingaf.hub.com",
+          "4028 siblingag.hub.com",
+          "652 siblingah.hub.com",
+          "1620 siblingai.hub.com",
+          "9141 siblingaj.hub.com",
+          "5426 siblingak.hub.com",
+          "4295 siblingal.hub.com",
+          "7842 siblingam.hub.com",
+          "5149 siblingan.hub.com",
+          "9507 siblingao.hub.com",
+          "4744 siblingap.hub.com",
+          "3943 siblingaq.hub.com",
+          "3991 siblingar.hub.com",
+          "1275 siblingas.hub.com",
+          "6169 siblingat.hub.com",
+          "6756 siblingau.hub.com",
+          "1607 siblingav.hub.com",
+          "1702 siblingaw.hub.com",
+          "544 siblingax.hub.com",
+          "5439 siblingay.hub.com",
+          "4790 siblingaz.hub.com",
+          "3856 siblingba.hub.com",
+          "8405 siblingbb.hub.com",
+          "6378 siblingbc.hub.com",
+          "7946 siblingbd.hub.com"
+        ]
+      ],
+      "expected": [
+        "144297 com",
+        "144297 hub.com",
+        "1492 siblingaa.hub.com",
+        "2886 siblingab.hub.com",
+        "8544 siblingac.hub.com",
+        "8638 siblingad.hub.com",
+        "6993 siblingae.hub.com",
+        "539 siblingaf.hub.com",
+        "4028 siblingag.hub.com",
+        "652 siblingah.hub.com",
+        "1620 siblingai.hub.com",
+        "9141 siblingaj.hub.com",
+        "5426 siblingak.hub.com",
+        "4295 siblingal.hub.com",
+        "7842 siblingam.hub.com",
+        "5149 siblingan.hub.com",
+        "9507 siblingao.hub.com",
+        "4744 siblingap.hub.com",
+        "3943 siblingaq.hub.com",
+        "3991 siblingar.hub.com",
+        "1275 siblingas.hub.com",
+        "6169 siblingat.hub.com",
+        "6756 siblingau.hub.com",
+        "1607 siblingav.hub.com",
+        "1702 siblingaw.hub.com",
+        "544 siblingax.hub.com",
+        "5439 siblingay.hub.com",
+        "4790 siblingaz.hub.com",
+        "3856 siblingba.hub.com",
+        "8405 siblingbb.hub.com",
+        "6378 siblingbc.hub.com",
+        "7946 siblingbd.hub.com"
+      ]
+    },
+    {
+      "input": [
+        [
+          "10000 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccc"
+        ]
+      ],
+      "expected": [
+        "10000 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccc",
+        "10000 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccc",
+        "10000 ccccccccccccccccccccccccccccccc"
+      ]
+    },
+    {
+      "input": [
+        [
+          "1 gamma.com",
+          "10000 omega.omega.com",
+          "100 nodeac.com",
+          "10000 delta.com",
+          "1 omega.gamma.net",
+          "7 nodeaf.org",
+          "9999 delta.com",
+          "100 delta.gamma.com",
+          "9999 nodeai.org",
+          "1 gamma.org",
+          "9999 beta.delta.net",
+          "10000 nodeal.io",
+          "10000 delta.net",
+          "7 delta.gamma.net",
+          "7 nodeao.net",
+          "1 alpha.io",
+          "9999 omega.alpha.org",
+          "10000 nodear.org",
+          "1 delta.net",
+          "100 delta.omega.io",
+          "7 nodeau.io",
+          "100 delta.io",
+          "10000 beta.beta.com",
+          "10000 nodeax.io",
+          "1 gamma.net",
+          "9999 alpha.beta.org",
+          "1 nodeba.org",
+          "100 beta.com",
+          "100 beta.omega.io",
+          "1 nodebd.io",
+          "1 omega.io",
+          "1 gamma.gamma.net",
+          "9999 nodebg.org",
+          "9999 alpha.org",
+          "1 delta.omega.org",
+          "9999 nodebj.io",
+          "9999 beta.io",
+          "10000 alpha.gamma.com",
+          "7 nodebm.io",
+          "9999 beta.net",
+          "9999 alpha.omega.net",
+          "100 nodebp.io",
+          "1 gamma.io",
+          "7 delta.omega.org",
+          "10000 nodebs.com",
+          "1 delta.com",
+          "10000 alpha.alpha.org",
+          "7 nodebv.com",
+          "10000 omega.io",
+          "7 beta.alpha.org",
+          "100 nodeby.org",
+          "7 gamma.io",
+          "1 delta.alpha.com",
+          "9999 nodecb.com",
+          "1 delta.io",
+          "9999 omega.beta.io",
+          "10000 nodece.io",
+          "7 gamma.net",
+          "1 gamma.alpha.net",
+          "9999 nodech.io",
+          "1 gamma.org",
+          "100 omega.omega.io",
+          "9999 nodeck.org",
+          "9999 omega.io",
+          "9999 gamma.alpha.net",
+          "9999 nodecn.com",
+          "10000 omega.net",
+          "10000 alpha.delta.net",
+          "10000 nodecq.net",
+          "9999 delta.com",
+          "10000 alpha.gamma.com",
+          "100 nodect.com",
+          "9999 delta.com",
+          "1 delta.omega.io",
+          "100 nodecw.io",
+          "10000 omega.io",
+          "10000 beta.omega.org",
+          "10000 nodecz.com",
+          "7 omega.com",
+          "7 omega.beta.io",
+          "100 nodedc.io",
+          "10000 alpha.com",
+          "7 delta.delta.com",
+          "7 nodedf.net",
+          "100 omega.io",
+          "7 gamma.gamma.io",
+          "7 nodedi.net",
+          "7 delta.org",
+          "100 gamma.gamma.net",
+          "100 nodedl.com",
+          "100 beta.io",
+          "1 alpha.gamma.com",
+          "1 nodedo.net",
+          "100 alpha.org",
+          "9999 alpha.omega.com",
+          "10000 nodedr.com",
+          "100 beta.com",
+          "100 beta.gamma.io",
+          "100 nodedu.io",
+          "7 alpha.io"
+        ]
+      ],
+      "expected": [
+        "10000 alpha.alpha.org",
+        "9999 alpha.beta.org",
+        "10001 alpha.com",
+        "10000 alpha.delta.net",
+        "20001 alpha.gamma.com",
+        "8 alpha.io",
+        "10000 alpha.net",
+        "9999 alpha.omega.com",
+        "9999 alpha.omega.net",
+        "30105 alpha.org",
+        "7 beta.alpha.org",
+        "10000 beta.beta.com",
+        "10200 beta.com",
+        "9999 beta.delta.net",
+        "100 beta.gamma.io",
+        "20105 beta.io",
+        "9999 beta.net",
+        "100 beta.omega.io",
+        "10000 beta.omega.org",
+        "9999 beta.org",
+        "150619 com",
+        "1 delta.alpha.com",
+        "40005 delta.com",
+        "7 delta.delta.com",
+        "100 delta.gamma.com",
+        "7 delta.gamma.net",
+        "101 delta.io",
+        "30000 delta.net",
+        "101 delta.omega.io",
+        "8 delta.omega.org",
+        "7 delta.org",
+        "10000 gamma.alpha.net",
+        "20102 gamma.com",
+        "7 gamma.gamma.io",
+        "101 gamma.gamma.net",
+        "115 gamma.io",
+        "117 gamma.net",
+        "2 gamma.org",
+        "101143 io",
+        "80137 net",
+        "100 nodeac.com",
+        "7 nodeaf.org",
+        "9999 nodeai.org",
+        "10000 nodeal.io",
+        "7 nodeao.net",
+        "10000 nodear.org",
+        "7 nodeau.io",
+        "10000 nodeax.io",
+        "1 nodeba.org",
+        "1 nodebd.io",
+        "9999 nodebg.org",
+        "9999 nodebj.io",
+        "7 nodebm.io",
+        "100 nodebp.io",
+        "10000 nodebs.com",
+        "7 nodebv.com",
+        "100 nodeby.org",
+        "9999 nodecb.com",
+        "10000 nodece.io",
+        "9999 nodech.io",
+        "9999 nodeck.org",
+        "9999 nodecn.com",
+        "10000 nodecq.net",
+        "100 nodect.com",
+        "100 nodecw.io",
+        "10000 nodecz.com",
+        "100 nodedc.io",
+        "7 nodedf.net",
+        "7 nodedi.net",
+        "100 nodedl.com",
+        "1 nodedo.net",
+        "10000 nodedr.com",
+        "100 nodedu.io",
+        "9999 omega.alpha.org",
+        "10006 omega.beta.io",
+        "20006 omega.com",
+        "1 omega.gamma.net",
+        "30401 omega.io",
+        "19999 omega.net",
+        "10000 omega.omega.com",
+        "100 omega.omega.io",
+        "10008 omega.org",
+        "90226 org"
+      ]
+    },
+    {
+      "input": [
+        [
+          "10000 siteaa.com",
+          "10000 siteab.com",
+          "10000 siteac.com",
+          "10000 sitead.com",
+          "10000 siteae.com",
+          "10000 siteaf.com",
+          "10000 siteag.com",
+          "10000 siteah.com",
+          "10000 siteai.com",
+          "10000 siteaj.com",
+          "10000 siteak.com",
+          "10000 siteal.com",
+          "10000 siteam.com",
+          "10000 sitean.com",
+          "10000 siteao.com",
+          "10000 siteap.com",
+          "10000 siteaq.com",
+          "10000 sitear.com",
+          "10000 siteas.com",
+          "10000 siteat.com",
+          "10000 siteau.com",
+          "10000 siteav.com",
+          "10000 siteaw.com",
+          "10000 siteax.com",
+          "10000 siteay.com",
+          "10000 siteaz.com",
+          "10000 siteba.com",
+          "10000 sitebb.com",
+          "10000 sitebc.com",
+          "10000 sitebd.com",
+          "10000 sitebe.com",
+          "10000 sitebf.com",
+          "10000 sitebg.com",
+          "10000 sitebh.com",
+          "10000 sitebi.com",
+          "10000 sitebj.com",
+          "10000 sitebk.com",
+          "10000 sitebl.com",
+          "10000 sitebm.com",
+          "10000 sitebn.com",
+          "10000 sitebo.com",
+          "10000 sitebp.com",
+          "10000 sitebq.com",
+          "10000 sitebr.com",
+          "10000 sitebs.com",
+          "10000 sitebt.com",
+          "10000 sitebu.com",
+          "10000 sitebv.com",
+          "10000 sitebw.com",
+          "10000 sitebx.com",
+          "10000 siteby.com",
+          "10000 sitebz.com",
+          "10000 siteca.com",
+          "10000 sitecb.com",
+          "10000 sitecc.com",
+          "10000 sitecd.com",
+          "10000 sitece.com",
+          "10000 sitecf.com",
+          "10000 sitecg.com",
+          "10000 sitech.com",
+          "10000 siteci.com",
+          "10000 sitecj.com",
+          "10000 siteck.com",
+          "10000 sitecl.com",
+          "10000 sitecm.com",
+          "10000 sitecn.com",
+          "10000 siteco.com",
+          "10000 sitecp.com",
+          "10000 sitecq.com",
+          "10000 sitecr.com",
+          "10000 sitecs.com",
+          "10000 sitect.com",
+          "10000 sitecu.com",
+          "10000 sitecv.com",
+          "10000 sitecw.com",
+          "10000 sitecx.com",
+          "10000 sitecy.com",
+          "10000 sitecz.com",
+          "10000 siteda.com",
+          "10000 sitedb.com",
+          "10000 sitedc.com",
+          "10000 sitedd.com",
+          "10000 sitede.com",
+          "10000 sitedf.com",
+          "10000 sitedg.com",
+          "10000 sitedh.com",
+          "10000 sitedi.com",
+          "10000 sitedj.com",
+          "10000 sitedk.com",
+          "10000 sitedl.com",
+          "10000 sitedm.com",
+          "10000 sitedn.com",
+          "10000 sitedo.com",
+          "10000 sitedp.com",
+          "10000 sitedq.com",
+          "10000 sitedr.com",
+          "10000 siteds.com",
+          "10000 sitedt.com",
+          "10000 sitedu.com",
+          "10000 sitedv.com"
+        ]
+      ],
+      "expected": [
+        "1000000 com",
+        "10000 siteaa.com",
+        "10000 siteab.com",
+        "10000 siteac.com",
+        "10000 sitead.com",
+        "10000 siteae.com",
+        "10000 siteaf.com",
+        "10000 siteag.com",
+        "10000 siteah.com",
+        "10000 siteai.com",
+        "10000 siteaj.com",
+        "10000 siteak.com",
+        "10000 siteal.com",
+        "10000 siteam.com",
+        "10000 sitean.com",
+        "10000 siteao.com",
+        "10000 siteap.com",
+        "10000 siteaq.com",
+        "10000 sitear.com",
+        "10000 siteas.com",
+        "10000 siteat.com",
+        "10000 siteau.com",
+        "10000 siteav.com",
+        "10000 siteaw.com",
+        "10000 siteax.com",
+        "10000 siteay.com",
+        "10000 siteaz.com",
+        "10000 siteba.com",
+        "10000 sitebb.com",
+        "10000 sitebc.com",
+        "10000 sitebd.com",
+        "10000 sitebe.com",
+        "10000 sitebf.com",
+        "10000 sitebg.com",
+        "10000 sitebh.com",
+        "10000 sitebi.com",
+        "10000 sitebj.com",
+        "10000 sitebk.com",
+        "10000 sitebl.com",
+        "10000 sitebm.com",
+        "10000 sitebn.com",
+        "10000 sitebo.com",
+        "10000 sitebp.com",
+        "10000 sitebq.com",
+        "10000 sitebr.com",
+        "10000 sitebs.com",
+        "10000 sitebt.com",
+        "10000 sitebu.com",
+        "10000 sitebv.com",
+        "10000 sitebw.com",
+        "10000 sitebx.com",
+        "10000 siteby.com",
+        "10000 sitebz.com",
+        "10000 siteca.com",
+        "10000 sitecb.com",
+        "10000 sitecc.com",
+        "10000 sitecd.com",
+        "10000 sitece.com",
+        "10000 sitecf.com",
+        "10000 sitecg.com",
+        "10000 sitech.com",
+        "10000 siteci.com",
+        "10000 sitecj.com",
+        "10000 siteck.com",
+        "10000 sitecl.com",
+        "10000 sitecm.com",
+        "10000 sitecn.com",
+        "10000 siteco.com",
+        "10000 sitecp.com",
+        "10000 sitecq.com",
+        "10000 sitecr.com",
+        "10000 sitecs.com",
+        "10000 sitect.com",
+        "10000 sitecu.com",
+        "10000 sitecv.com",
+        "10000 sitecw.com",
+        "10000 sitecx.com",
+        "10000 sitecy.com",
+        "10000 sitecz.com",
+        "10000 siteda.com",
+        "10000 sitedb.com",
+        "10000 sitedc.com",
+        "10000 sitedd.com",
+        "10000 sitede.com",
+        "10000 sitedf.com",
+        "10000 sitedg.com",
+        "10000 sitedh.com",
+        "10000 sitedi.com",
+        "10000 sitedj.com",
+        "10000 sitedk.com",
+        "10000 sitedl.com",
+        "10000 sitedm.com",
+        "10000 sitedn.com",
+        "10000 sitedo.com",
+        "10000 sitedp.com",
+        "10000 sitedq.com",
+        "10000 sitedr.com",
+        "10000 siteds.com",
+        "10000 sitedt.com",
+        "10000 sitedu.com",
+        "10000 sitedv.com"
+      ]
+    },
+    {
+      "input": [
+        [
+          "50 mail.example.com",
+          "30 example.com",
+          "20 shop.example.com",
+          "10 example.org",
+          "40 mail.example.org"
+        ]
+      ],
+      "expected": [
+        "100 com",
+        "100 example.com",
+        "50 example.org",
+        "50 mail.example.com",
+        "40 mail.example.org",
+        "50 org",
+        "20 shop.example.com"
+      ]
+    }
+  ]
+}

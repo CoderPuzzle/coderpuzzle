@@ -1,0 +1,332 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,100,2008,10,5000),\n(2,100,2009,12,5000),\n(7,200,2011,15,9000);\nINSERT INTO Product VALUES\n(100,'Nokia'),\n(200,'Apple'),\n(300,'Samsung');"
+      ],
+      "expected": [
+        [
+          "Nokia",
+          2008,
+          5000
+        ],
+        [
+          "Nokia",
+          2009,
+          5000
+        ],
+        [
+          "Apple",
+          2011,
+          9000
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,2020,5,100);\nINSERT INTO Product VALUES\n(1,'Widget');"
+      ],
+      "expected": [
+        [
+          "Widget",
+          2020,
+          100
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,10,2015,3,50),\n(2,10,2016,4,55),\n(3,10,2017,2,60);\nINSERT INTO Product VALUES\n(10,'Gadget');"
+      ],
+      "expected": [
+        [
+          "Gadget",
+          2015,
+          50
+        ],
+        [
+          "Gadget",
+          2016,
+          55
+        ],
+        [
+          "Gadget",
+          2017,
+          60
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,20,2001,1,999),\n(2,20,2002,2,888),\n(3,20,2003,3,777),\n(4,20,2004,4,666);\nINSERT INTO Product VALUES\n(20,'Thingamajig');"
+      ],
+      "expected": [
+        [
+          "Thingamajig",
+          2001,
+          999
+        ],
+        [
+          "Thingamajig",
+          2002,
+          888
+        ],
+        [
+          "Thingamajig",
+          2003,
+          777
+        ],
+        [
+          "Thingamajig",
+          2004,
+          666
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,2010,1,10),\n(2,2,2010,2,20),\n(3,3,2010,3,30);\nINSERT INTO Product VALUES\n(1,'A'),\n(2,'B'),\n(3,'C');"
+      ],
+      "expected": [
+        [
+          "A",
+          2010,
+          10
+        ],
+        [
+          "B",
+          2010,
+          20
+        ],
+        [
+          "C",
+          2010,
+          30
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Product VALUES\n(1,'Lonely');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,2018,1,10),\n(2,1,2019,2,20),\n(3,1,2020,3,30),\n(4,1,2021,4,40),\n(5,2,2018,5,50),\n(6,2,2019,6,60),\n(7,2,2020,7,70),\n(8,2,2021,8,80),\n(9,3,2018,9,90),\n(10,3,2019,10,100),\n(11,3,2020,11,110),\n(12,3,2021,12,120),\n(13,4,2018,13,130),\n(14,4,2019,14,140),\n(15,4,2020,15,150),\n(16,4,2021,16,160),\n(17,5,2018,17,170),\n(18,5,2019,18,180),\n(19,5,2020,19,190),\n(20,5,2021,20,200);\nINSERT INTO Product VALUES\n(1,'Product1'),\n(2,'Product2'),\n(3,'Product3'),\n(4,'Product4'),\n(5,'Product5');"
+      ],
+      "expected": [
+        [
+          "Product1",
+          2018,
+          10
+        ],
+        [
+          "Product1",
+          2019,
+          20
+        ],
+        [
+          "Product1",
+          2020,
+          30
+        ],
+        [
+          "Product1",
+          2021,
+          40
+        ],
+        [
+          "Product2",
+          2018,
+          50
+        ],
+        [
+          "Product2",
+          2019,
+          60
+        ],
+        [
+          "Product2",
+          2020,
+          70
+        ],
+        [
+          "Product2",
+          2021,
+          80
+        ],
+        [
+          "Product3",
+          2018,
+          90
+        ],
+        [
+          "Product3",
+          2019,
+          100
+        ],
+        [
+          "Product3",
+          2020,
+          110
+        ],
+        [
+          "Product3",
+          2021,
+          120
+        ],
+        [
+          "Product4",
+          2018,
+          130
+        ],
+        [
+          "Product4",
+          2019,
+          140
+        ],
+        [
+          "Product4",
+          2020,
+          150
+        ],
+        [
+          "Product4",
+          2021,
+          160
+        ],
+        [
+          "Product5",
+          2018,
+          170
+        ],
+        [
+          "Product5",
+          2019,
+          180
+        ],
+        [
+          "Product5",
+          2020,
+          190
+        ],
+        [
+          "Product5",
+          2021,
+          200
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,2020,1,100);\nINSERT INTO Product VALUES\n(1,'Sold'),\n(2,'NeverSold');"
+      ],
+      "expected": [
+        [
+          "Sold",
+          2020,
+          100
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,2020,5,100),\n(2,1,2020,9,100);\nINSERT INTO Product VALUES\n(1,'Dup');"
+      ],
+      "expected": [
+        [
+          "Dup",
+          2020,
+          100
+        ],
+        [
+          "Dup",
+          2020,
+          100
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,5,2022,1,200),\n(2,5,2022,2,250),\n(3,5,2022,3,300);\nINSERT INTO Product VALUES\n(5,'SameYear');"
+      ],
+      "expected": [
+        [
+          "SameYear",
+          2022,
+          200
+        ],
+        [
+          "SameYear",
+          2022,
+          250
+        ],
+        [
+          "SameYear",
+          2022,
+          300
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,2100,100000,1000000);\nINSERT INTO Product VALUES\n(1,'BigNum');"
+      ],
+      "expected": [
+        [
+          "BigNum",
+          2100,
+          1000000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,2020,1,500);\nINSERT INTO Product VALUES\n(1,'Samsung Galaxy');"
+      ],
+      "expected": [
+        [
+          "Samsung Galaxy",
+          2020,
+          500
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,2020,1,10),\n(2,2,2020,2,20),\n(3,3,2020,3,30),\n(4,4,2020,4,40);\nINSERT INTO Product VALUES\n(1,'P1'),\n(2,'P2'),\n(3,'P3'),\n(4,'P4');"
+      ],
+      "expected": [
+        [
+          "P1",
+          2020,
+          10
+        ],
+        [
+          "P2",
+          2020,
+          20
+        ],
+        [
+          "P3",
+          2020,
+          30
+        ],
+        [
+          "P4",
+          2020,
+          40
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    }
+  ]
+}

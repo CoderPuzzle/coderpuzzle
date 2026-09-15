@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1946,
+  "slug": "largest-number-after-mutating-substring",
+  "title": "Largest Number After Mutating Substring",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumNumber",
+    "parameters": [
+      {
+        "name": "num",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "change",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "maximumNumber",
+      "rust": "maximum_number",
+      "typescript": "maximumNumber"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

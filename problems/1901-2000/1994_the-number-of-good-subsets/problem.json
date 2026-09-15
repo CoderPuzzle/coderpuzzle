@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1994,
+  "slug": "the-number-of-good-subsets",
+  "title": "The Number of Good Subsets",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Bitmask",
+    "Number Theory"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Counting",
+    "Number Theory",
+    "Bitmask",
+    "Sieve Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberOfGoodSubsets",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numberOfGoodSubsets",
+      "rust": "number_of_good_subsets",
+      "typescript": "numberOfGoodSubsets"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

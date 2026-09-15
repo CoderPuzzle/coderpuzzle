@@ -1,0 +1,11 @@
+# Solutions — Decode Ways II
+
+## Two rolling suffix counts
+
+A message is decoded from the front, so let `dp[i]` count the ways to decode the suffix `s[i:]`. That suffix begins its first code with one character or two. A single character opens a fixed number of decodings — 9 for `'*'`, 1 for any nonzero digit, 0 for `'0'`, which never stands alone — and each opening continues into every decoding of what follows, so the one-character term is that count times `dp[i+1]`. A two-character prefix `s[i..i+1]` likewise contributes its own count times `dp[i+2]`: 15 for `'**'` (the nine codes 11–19 plus the six codes 21–26), 2 or 1 for `'*d'` as `d` is at most 6 or not, since both 1 and 2 may lead a code ending in `d`; 9, 6 or 0 for `'d*'` as `d` is 1, 2 or anything else; and 1 exactly when two digits form a value in 10..26 — `10` and `20` count, while a leading zero never does.
+
+The recurrence reads only `dp[i+1]` and `dp[i+2]`, so it is evaluated right to left over two rolling variables instead of a table: `next1` and `next2` both start at 1, because the empty suffix is the one decoding that consumes nothing, and each step computes `dp[i]`, reduces it at once, and slides the pair left. Walking from the end is what makes the boundary trivial — at the final character there is no pair, and the loop simply never adds the term. The examples fall straight out of the products: `"*"` opens 9 ways; `"1*"` is 1 × 9 + 9 × 1 = 18; `"2*"` is 1 × 9 + 6 × 1 = 15, because a leading 2 pairs with only six of the nine star digits.
+
+Every step is reduced on arrival, so the stored counts stay below `10⁹ + 7`, but one unreduced step totals up to 9 × next1 + 15 × next2 — nearly 2.4 × 10¹⁰, well past 32-bit range. That is why the fixed-width ports accumulate in 64-bit registers (`long`, `int64_t`, `int64`, `i64`) and the JavaScript ports lean on doubles, which hold every integer below 2⁵³ exactly. The modulus is no corner case here: an all-star message already exceeds it at length 9, since the star-only counts obey `f(n) = 9·f(n-1) + 15·f(n-2)` and climb to 1,291,868,919. Zeros need no special casing either — a `'0'` opens nothing alone and survives only as the tail of `10` or `20`, so strings like `"100"` collapse to 0 through the same products.
+
+**Complexity:** `O(n)` time, `O(1)` space.

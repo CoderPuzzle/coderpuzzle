@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 262,
+  "slug": "trips-and-users",
+  "title": "Trips and Users",
+  "difficulty": "Hard",
+  "tags": [
+    "Database",
+    "SQL"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Trips (id INTEGER, client_id INTEGER, driver_id INTEGER, city_id INTEGER, status TEXT, request_at TEXT);\nCREATE TABLE Users (users_id INTEGER, banned TEXT, role TEXT);"
+    }
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

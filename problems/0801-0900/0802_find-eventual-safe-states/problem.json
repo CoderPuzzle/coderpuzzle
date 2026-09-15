@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 802,
+  "slug": "find-eventual-safe-states",
+  "title": "Find Eventual Safe States",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "Depth-First Search",
+    "Topological Sort"
+  ],
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Topological Sort",
+    "Kosaraju's Algorithm",
+    "Tarjan's SCC Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "eventualSafeNodes",
+    "parameters": [
+      {
+        "name": "graph",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "eventualSafeNodes",
+      "rust": "eventual_safe_nodes",
+      "typescript": "eventualSafeNodes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

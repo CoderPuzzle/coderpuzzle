@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2038,
+  "slug": "remove-colored-pieces-if-both-neighbors-are-the-same-color",
+  "title": "Remove Colored Pieces if Both Neighbors are the Same Color",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "String",
+    "Greedy",
+    "Game Theory"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Greedy",
+    "Game Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "winnerOfGame",
+    "parameters": [
+      {
+        "name": "colors",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "winnerOfGame",
+      "rust": "winner_of_game",
+      "typescript": "winnerOfGame"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

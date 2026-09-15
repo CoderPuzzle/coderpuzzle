@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3658,
+  "slug": "gcd-of-odd-and-even-sums",
+  "title": "GCD of Odd and Even Sums",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "Number Theory"
+  ],
+  "topics": [
+    "Math",
+    "Number Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "gcdOfOddEvenSums",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "gcdOfOddEvenSums",
+      "rust": "gcd_of_odd_even_sums",
+      "typescript": "gcdOfOddEvenSums"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

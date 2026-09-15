@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 572,
+  "slug": "subtree-of-another-tree",
+  "title": "Subtree of Another Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "String Matching",
+    "Binary Tree",
+    "Hash Function"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "String Matching",
+    "Binary Tree",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "isSubtree",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "subRoot",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "isSubtree",
+      "rust": "is_subtree",
+      "typescript": "isSubtree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

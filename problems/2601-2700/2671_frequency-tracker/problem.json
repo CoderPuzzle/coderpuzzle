@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2671,
+  "slug": "frequency-tracker",
+  "title": "Frequency Tracker",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Design"
+  ],
+  "topics": [
+    "Hash Table",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "FrequencyTracker",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "add",
+        "parameters": [
+          {
+            "name": "number",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "deleteOne",
+        "parameters": [
+          {
+            "name": "number",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "hasFrequency",
+        "parameters": [
+          {
+            "name": "frequency",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 232" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- grid = [[0,1,1],[1,1,0],[1,1,0]]; remove the obstacles at (0,1) and (0,2) -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="50" y="44" width="54" height="54" fill="#ffffff"/>
+    <rect x="104" y="44" width="54" height="54" fill="#55616c"/>
+    <rect x="158" y="44" width="54" height="54" fill="#55616c"/>
+    <rect x="50" y="98" width="54" height="54" fill="#55616c"/>
+    <rect x="104" y="98" width="54" height="54" fill="#55616c"/>
+    <rect x="158" y="98" width="54" height="54" fill="#ffffff"/>
+    <rect x="50" y="152" width="54" height="54" fill="#55616c"/>
+    <rect x="104" y="152" width="54" height="54" fill="#55616c"/>
+    <rect x="158" y="152" width="54" height="54" fill="#ffffff"/>
+  </g>
+  <line x1="236" y1="125" x2="316" y2="125" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="276" y="112" text-anchor="middle" fill="#5c6b76" font-size="12.5">remove (0,1) and (0,2)</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="350" y="44" width="54" height="54" fill="#ffffff"/>
+    <rect x="404" y="44" width="54" height="54" fill="#ffffff" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <rect x="458" y="44" width="54" height="54" fill="#ffffff" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <rect x="350" y="98" width="54" height="54" fill="#55616c"/>
+    <rect x="404" y="98" width="54" height="54" fill="#55616c"/>
+    <rect x="458" y="98" width="54" height="54" fill="#ffffff"/>
+    <rect x="350" y="152" width="54" height="54" fill="#55616c"/>
+    <rect x="404" y="152" width="54" height="54" fill="#55616c"/>
+    <rect x="458" y="152" width="54" height="54" fill="#ffffff"/>
+  </g>
+  <text x="280" y="222" text-anchor="middle" fill="#1a2026" font-size="13.5">the cleared top row opens a path (0,0) → (2,2) → <tspan fill="#4169E1" font-weight="700">2</tspan> removals</text>
+</svg>

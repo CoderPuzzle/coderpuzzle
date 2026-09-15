@@ -1,0 +1,126 @@
+{
+  "public": [
+    {
+      "input": [
+        "aabcc",
+        "dbbca",
+        "aadbbcbcac"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "aabcc",
+        "dbbca",
+        "aadbbbaccc"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "",
+        "",
+        ""
+      ],
+      "expected": true
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "abc",
+        "",
+        "abcd"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "abc",
+        "",
+        "abc"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "",
+        "abc",
+        "abc"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abc",
+        "abc",
+        "abcabc"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "aabcc",
+        "dbbca",
+        "aadbbcbccc"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "ab",
+        "ab",
+        "abba"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "aaa",
+        "aa",
+        "aaaaa"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "aa",
+        "ab",
+        "aaba"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabca",
+        "cbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbac",
+        "acbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaac"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabca",
+        "cbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbacbac",
+        "acbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaacbbcaaccbbaac"
+      ],
+      "expected": false
+    }
+  ]
+}

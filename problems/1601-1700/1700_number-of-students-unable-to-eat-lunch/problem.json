@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1700,
+  "slug": "number-of-students-unable-to-eat-lunch",
+  "title": "Number of Students Unable to Eat Lunch",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Stack",
+    "Queue",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Queue",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countStudents",
+    "parameters": [
+      {
+        "name": "students",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "sandwiches",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countStudents",
+      "rust": "count_students",
+      "typescript": "countStudents"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

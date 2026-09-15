@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "component_counting",
+  "id": 765,
+  "slug": "couples-holding-hands",
+  "title": "Couples Holding Hands",
+  "difficulty": "Hard",
+  "tags": [
+    "Greedy",
+    "Union Find"
+  ],
+  "topics": [
+    "Greedy",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Graph Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minSwapsCouples",
+    "parameters": [
+      {
+        "name": "row",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minSwapsCouples",
+      "rust": "min_swaps_couples",
+      "typescript": "minSwapsCouples"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 84,
+  "slug": "largest-rectangle-in-histogram",
+  "title": "Largest Rectangle in Histogram",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Stack",
+    "Monotonic Stack"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Monotonic Stack",
+    "Range Minimum/Maximum Query"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "largestRectangleArea",
+    "parameters": [
+      {
+        "name": "heights",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "largestRectangleArea",
+      "rust": "largest_rectangle_area",
+      "typescript": "largestRectangleArea"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

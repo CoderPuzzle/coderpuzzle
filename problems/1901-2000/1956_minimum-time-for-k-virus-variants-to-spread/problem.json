@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1956,
+  "slug": "minimum-time-for-k-virus-variants-to-spread",
+  "title": "Minimum Time For K Virus Variants to Spread",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Binary Search",
+    "Geometry",
+    "Sliding Window",
+    "Enumeration",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Binary Search",
+    "Geometry",
+    "Sliding Window",
+    "Enumeration",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minDayskVariants",
+    "parameters": [
+      {
+        "name": "points",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minDayskVariants",
+      "rust": "min_daysk_variants",
+      "typescript": "minDayskVariants"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

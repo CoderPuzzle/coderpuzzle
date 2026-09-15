@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 793,
+  "slug": "preimage-size-of-factorial-zeroes-function",
+  "title": "Preimage Size of Factorial Zeroes Function",
+  "difficulty": "Hard",
+  "tags": [
+    "Binary Search",
+    "Number Theory"
+  ],
+  "topics": [
+    "Math",
+    "Binary Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "preimageSizeFZF",
+    "parameters": [
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "preimageSizeFZF",
+      "rust": "preimage_size_f_z_f",
+      "typescript": "preimageSizeFZF"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2051,
+  "slug": "the-category-of-each-member-in-the-store",
+  "title": "The Category of Each Member in the Store",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Members (member_id INTEGER, name VARCHAR);\nCREATE TABLE Visits (visit_id INTEGER, member_id INTEGER, visit_date DATE);\nCREATE TABLE Purchases (visit_id INTEGER, charged_amount INTEGER);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

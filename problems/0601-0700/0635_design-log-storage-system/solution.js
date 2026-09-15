@@ -1,0 +1,44 @@
+// Logs kept as parallel id/timestamp arrays in put order; retrieve truncates
+// every string to the granularity's fixed-width prefix and keeps the logs
+// whose truncated timestamp compares between the truncated bounds —
+// zero-padded fields make that exact.
+
+// Prefix length per granularity: "2017" for Year, one more ":XX" field per
+// step down to the full 19 characters.
+const granularityWidth = {
+    Year: 4,
+    Month: 7,
+    Day: 10,
+    Hour: 13,
+    Minute: 16,
+    Second: 19,
+};
+
+class LogSystem {
+    constructor() {
+        this.ids = [];
+        this.timestamps = [];
+    }
+
+    put(id, timestamp) {
+        this.ids.push(id);
+        this.timestamps.push(timestamp);
+    }
+
+    retrieve(start, end, granularity) {
+        const width = granularityWidth[granularity];
+        const low = start.slice(0, width);
+        const high = end.slice(0, width);
+        // The scan walks the store oldest-first, so the ids come back in
+        // the order their logs were stored.
+        const found = [];
+        for (let index = 0; index < this.timestamps.length; ++index) {
+            // Same-width truncations compare exactly like their fields.
+            const truncated = this.timestamps[index].slice(0, width);
+            if (low <= truncated && truncated <= high) {
+                found.push(this.ids[index]);
+            }
+        }
+        return found;
+    }
+}

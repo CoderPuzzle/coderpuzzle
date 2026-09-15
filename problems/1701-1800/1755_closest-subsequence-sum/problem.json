@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1755,
+  "slug": "closest-subsequence-sum",
+  "title": "Closest Subsequence Sum",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Meet in the Middle",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Meet in the Middle",
+    "Sorting",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minAbsDifference",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "goal",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minAbsDifference",
+      "rust": "min_abs_difference",
+      "typescript": "minAbsDifference"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

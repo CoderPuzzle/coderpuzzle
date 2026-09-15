@@ -1,0 +1,252 @@
+{
+  "public": [
+    {
+      "input": [
+        "172.16.254.1"
+      ],
+      "expected": "IPv4"
+    },
+    {
+      "input": [
+        "2001:0db8:85a3:0:0:8A2E:0370:7334"
+      ],
+      "expected": "IPv6"
+    },
+    {
+      "input": [
+        "256.256.256.256"
+      ],
+      "expected": "Neither"
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "192.168.1.1"
+      ],
+      "expected": "IPv4"
+    },
+    {
+      "input": [
+        "192.168.1.0"
+      ],
+      "expected": "IPv4"
+    },
+    {
+      "input": [
+        "192.168.01.1"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "192.168.1.00"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "192.168@1.1"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "2001:0db8:85a3:0000:0000:8a2e:0370:7334"
+      ],
+      "expected": "IPv6"
+    },
+    {
+      "input": [
+        "2001:db8:85a3:0:0:8A2E:0370:7334"
+      ],
+      "expected": "IPv6"
+    },
+    {
+      "input": [
+        "2001:0db8:85a3::8A2E:037j:7334"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "02001:0db8:85a3:0000:0000:8a2e:0370:7334"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1.2.3.4"
+      ],
+      "expected": "IPv4"
+    },
+    {
+      "input": [
+        "0.0.0.0"
+      ],
+      "expected": "IPv4"
+    },
+    {
+      "input": [
+        "255.255.255.255"
+      ],
+      "expected": "IPv4"
+    },
+    {
+      "input": [
+        "192.168.1.256"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1.2.3"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1.2.3.4.5"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1..2.3"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1.2.3.4."
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1.2.3.abc"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "+1.2.3.4"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1.2.3.1234"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "0000.1.2.3"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1.2.3.4 "
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1.2 .3.4"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1:2:3:4:5:6:7:8"
+      ],
+      "expected": "IPv6"
+    },
+    {
+      "input": [
+        "0:0:0:0:0:0:0:0"
+      ],
+      "expected": "IPv6"
+    },
+    {
+      "input": [
+        "ffff:FFFF:0abc:aBcD:9999:0aaa:0BBB:1234"
+      ],
+      "expected": "IPv6"
+    },
+    {
+      "input": [
+        "2001:db8:85a3:0:0:8A2E:0370:733"
+      ],
+      "expected": "IPv6"
+    },
+    {
+      "input": [
+        "2001:db8:85a3:0:0:8A2E:0370:7334:1"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "2001:db8:85a3:0:0:8A2E:03700:7334"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "2001:0db8:85a3:00000:0:8a2e:370:7334"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "2001:db8:85a3:0:0:8A2E:037g:7334"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "2001:db8:85a3:0:0:8A2E:037z:7334"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1:2:3:4:5:6:7:"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        ":1:2:3:4:5:6:7"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "::"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "192.168.1.1:2001:db8:85a3:0:0:8A2E:0370:7334"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        "1:2:3:4:5:6:7:8.9"
+      ],
+      "expected": "Neither"
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": "Neither"
+    }
+  ]
+}

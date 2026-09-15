@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "iterative",
+  "id": 21,
+  "slug": "merge-two-sorted-lists",
+  "title": "Merge Two Sorted Lists",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List",
+    "Recursion"
+  ],
+  "topics": [
+    "Linked List",
+    "Recursion"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "mergeTwoLists",
+    "parameters": [
+      {
+        "name": "list1",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "list2",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "mergeTwoLists",
+      "rust": "merge_two_lists",
+      "typescript": "mergeTwoLists"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

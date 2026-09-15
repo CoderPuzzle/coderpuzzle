@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1429,
+  "slug": "first-unique-number",
+  "title": "First Unique Number",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design",
+    "Queue",
+    "Data Stream"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Design",
+    "Queue",
+    "Data Stream"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "FirstUnique",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "nums",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "showFirstUnique",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "add",
+        "parameters": [
+          {
+            "name": "value",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact",
+    "entrypoints": {
+      "rust.showFirstUnique": "show_first_unique"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

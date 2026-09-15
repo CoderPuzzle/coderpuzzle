@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 324,
+  "slug": "wiggle-sort-ii",
+  "title": "Wiggle Sort II",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Greedy",
+    "Sorting",
+    "Quickselect"
+  ],
+  "topics": [
+    "Array",
+    "Divide and Conquer",
+    "Greedy",
+    "Sorting",
+    "Quickselect"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "wiggleSort",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "wiggleSort",
+      "rust": "wiggle_sort",
+      "typescript": "wiggleSort"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

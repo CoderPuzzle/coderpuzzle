@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "hash_map",
+  "id": 1,
+  "slug": "two-sum",
+  "title": "Two Sum",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "twoSum",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "twoSum",
+      "rust": "two_sum",
+      "typescript": "twoSum"
+    },
+    "comparison": "sorted"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

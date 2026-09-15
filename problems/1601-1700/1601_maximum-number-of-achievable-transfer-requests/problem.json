@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1601,
+  "slug": "maximum-number-of-achievable-transfer-requests",
+  "title": "Maximum Number of Achievable Transfer Requests",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Bit Manipulation",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Backtracking",
+    "Bit Manipulation",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumRequests",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "requests",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumRequests",
+      "rust": "maximum_requests",
+      "typescript": "maximumRequests"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

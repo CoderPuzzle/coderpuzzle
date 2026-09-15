@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 559,
+  "slug": "maximum-depth-of-n-ary-tree",
+  "title": "Maximum Depth of N-ary Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxDepth",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "nary_tree",
+        "value_type": {
+          "kind": "nary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxDepth",
+      "rust": "max_depth",
+      "typescript": "maxDepth"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

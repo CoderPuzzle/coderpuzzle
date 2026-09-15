@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 810,
+  "slug": "chalkboard-xor-game",
+  "title": "Chalkboard XOR Game",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Bit Manipulation",
+    "Brainteaser",
+    "Game Theory",
+    "Zero-Sum Game",
+    "Impartial Game"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Bit Manipulation",
+    "Brainteaser",
+    "Game Theory",
+    "Zero-Sum Game",
+    "Impartial Game"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "xorGame",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "xorGame",
+      "rust": "xor_game",
+      "typescript": "xorGame"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

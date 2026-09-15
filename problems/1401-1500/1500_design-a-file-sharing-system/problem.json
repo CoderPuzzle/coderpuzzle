@@ -1,0 +1,113 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1500,
+  "slug": "design-a-file-sharing-system",
+  "title": "Design a File Sharing System",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Design",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Data Stream"
+  ],
+  "topics": [
+    "Hash Table",
+    "Design",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Data Stream"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "FileSharing",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "m",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "join",
+        "parameters": [
+          {
+            "name": "ownedChunks",
+            "codec": "json",
+            "value_type": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "leave",
+        "parameters": [
+          {
+            "name": "userID",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "request",
+        "parameters": [
+          {
+            "name": "userID",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "chunkID",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "comparison": "exact",
+    "entrypoints": {
+      "rust.join": "join",
+      "rust.leave": "leave",
+      "rust.request": "request"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

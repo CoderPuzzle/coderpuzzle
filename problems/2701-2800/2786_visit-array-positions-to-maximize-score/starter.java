@@ -1,0 +1,6 @@
+class Solution {
+
+    public long maxScore(int[] nums, int x) {
+        throw new UnsupportedOperationException("TODO");
+    }
+}

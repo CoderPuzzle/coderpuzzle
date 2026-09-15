@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1217,
+  "slug": "minimum-cost-to-move-chips-to-the-same-position",
+  "title": "Minimum Cost to Move Chips to The Same Position",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Math",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minCostToMoveChips",
+    "parameters": [
+      {
+        "name": "position",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minCostToMoveChips",
+      "rust": "min_cost_to_move_chips",
+      "typescript": "minCostToMoveChips"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

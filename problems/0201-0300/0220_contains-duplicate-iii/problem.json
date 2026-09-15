@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 220,
+  "slug": "contains-duplicate-iii",
+  "title": "Contains Duplicate III",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Sorting",
+    "Bucket Sort",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Array",
+    "Sliding Window",
+    "Sorting",
+    "Bucket Sort",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "containsNearbyAlmostDuplicate",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 64
+          }
+        }
+      },
+      {
+        "name": "indexDiff",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "valueDiff",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "containsNearbyAlmostDuplicate",
+      "rust": "contains_nearby_almost_duplicate",
+      "typescript": "containsNearbyAlmostDuplicate"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

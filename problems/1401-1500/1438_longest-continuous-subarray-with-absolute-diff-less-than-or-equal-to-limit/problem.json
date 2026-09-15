@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1438,
+  "slug": "longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit",
+  "title": "Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit",
+  "difficulty": "Medium",
+  "tags": [
+    "Sliding Window",
+    "Monotonic Queue",
+    "Heap"
+  ],
+  "topics": [
+    "Array",
+    "Queue",
+    "Sliding Window",
+    "Heap (Priority Queue)",
+    "Ordered Set",
+    "Monotonic Queue"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestSubarray",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "limit",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "longestSubarray",
+      "rust": "longest_subarray",
+      "typescript": "longestSubarray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1333,
+  "slug": "filter-restaurants-by-vegan-friendly-price-and-distance",
+  "title": "Filter Restaurants by Vegan-Friendly, Price and Distance",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "filterRestaurants",
+    "parameters": [
+      {
+        "name": "restaurants",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "veganFriendly",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "maxPrice",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "maxDistance",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "filterRestaurants",
+      "rust": "filter_restaurants",
+      "typescript": "filterRestaurants"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

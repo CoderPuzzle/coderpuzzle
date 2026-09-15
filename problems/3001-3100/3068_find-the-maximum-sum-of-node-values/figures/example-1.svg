@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 610 250" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="610" height="250" fill="#ffffff"/>
+  <!-- star: 0 - 1, 0 - 2 ; nums = [1,2,1] -->
+  <line x1="152" y1="118" x2="84" y2="72" stroke="#42525e" stroke-width="1.8"/>
+  <line x1="188" y1="118" x2="256" y2="72" stroke="#4169E1" stroke-width="3.2"/>
+  <g text-anchor="middle" font-weight="600">
+    <circle cx="170" cy="140" r="24" fill="#dbe4f6" stroke="#42525e" stroke-width="1.6"/><text x="170" y="146" fill="#1a2026">1</text>
+    <circle cx="70" cy="60" r="24" fill="#dbe4f6" stroke="#42525e" stroke-width="1.6"/><text x="70" y="66" fill="#1a2026">2</text>
+    <circle cx="270" cy="60" r="24" fill="#dbe4f6" stroke="#42525e" stroke-width="1.6"/><text x="270" y="66" fill="#1a2026">1</text>
+  </g>
+  <g font-size="12" fill="#5c6b76" text-anchor="middle">
+    <text x="170" y="186">0</text>
+    <text x="70" y="106">1</text>
+    <text x="270" y="106">2</text>
+  </g>
+  <text x="228" y="100" font-size="12.5" fill="#4169E1" font-weight="600" text-anchor="end">operation on edge [0,2]</text>
+  <!-- before / after arrays, k = 3 -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="360" y="52">One operation: pick edge [0,2], XOR both</text>
+    <text x="360" y="70">endpoints with k = 3.</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="360" y="88" width="44" height="32" rx="4"/><rect x="404" y="88" width="44" height="32" rx="4"/><rect x="448" y="88" width="44" height="32" rx="4"/>
+    <rect x="360" y="160" width="44" height="32" rx="4" stroke="#4169E1" stroke-width="1.8"/><rect x="404" y="160" width="44" height="32" rx="4"/><rect x="448" y="160" width="44" height="32" rx="4" stroke="#4169E1" stroke-width="1.8"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="382" y="109">1</text><text x="426" y="109">2</text><text x="470" y="109">1</text>
+    <text x="382" y="181" fill="#4169E1">2</text><text x="426" y="181">2</text><text x="470" y="181" fill="#4169E1">2</text>
+  </g>
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <line x1="426" y1="126" x2="426" y2="152" stroke="#4169E1" stroke-width="1.8" marker-end="url(#a1)"/>
+  <text x="452" y="145" font-size="12.5" fill="#5c6b76">1 XOR 3 = 2 at both ends</text>
+  <text x="360" y="222" font-size="12.5" fill="#4169E1" font-weight="600">sum 2 + 2 + 2 = 6</text>
+</svg>

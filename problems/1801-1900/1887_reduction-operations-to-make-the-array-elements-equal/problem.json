@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1887,
+  "slug": "reduction-operations-to-make-the-array-elements-equal",
+  "title": "Reduction Operations to Make the Array Elements Equal",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "reductionOperations",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "reductionOperations",
+      "rust": "reduction_operations",
+      "typescript": "reductionOperations"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

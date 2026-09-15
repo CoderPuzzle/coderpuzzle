@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3494,
+  "slug": "find-the-minimum-amount-of-time-to-brew-potions",
+  "title": "Find the Minimum Amount of Time to Brew Potions",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Simulation",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Simulation",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minTime",
+    "parameters": [
+      {
+        "name": "skill",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "mana",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "minTime",
+      "rust": "min_time",
+      "typescript": "minTime"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

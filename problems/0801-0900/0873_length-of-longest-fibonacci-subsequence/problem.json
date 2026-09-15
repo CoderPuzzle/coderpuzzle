@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 873,
+  "slug": "length-of-longest-fibonacci-subsequence",
+  "title": "Length of Longest Fibonacci Subsequence",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming",
+    "Hash Table"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "lenLongestFibSubseq",
+    "parameters": [
+      {
+        "name": "arr",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "lenLongestFibSubseq",
+      "rust": "len_longest_fib_subseq",
+      "typescript": "lenLongestFibSubseq"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

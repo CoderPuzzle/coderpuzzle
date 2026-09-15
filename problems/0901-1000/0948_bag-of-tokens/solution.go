@@ -1,0 +1,27 @@
+import "sort"
+
+// An optimal plan buys points with the cheapest tokens and sells the dearest
+// ones for power, so sort and walk two pointers inward.
+func bagOfTokensScore(tokens []int, power int) int {
+	sort.Ints(tokens)
+	left, right := 0, len(tokens)-1
+	score, best := 0, 0
+	for left <= right {
+		if power >= tokens[left] {
+			// Affordable: buy a point with the cheapest remaining token.
+			power -= tokens[left]
+			score++
+			left++
+			best = max(best, score)
+		} else if score >= 1 && left < right {
+			// Broke: sell a point for the power of the dearest token,
+			// keeping one token in play to spend it on.
+			power += tokens[right]
+			score--
+			right--
+		} else {
+			break
+		}
+	}
+	return best
+}

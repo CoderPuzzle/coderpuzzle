@@ -1,0 +1,138 @@
+{
+  "public": [
+    {
+      "input": [
+        "/home/"
+      ],
+      "expected": "/home"
+    },
+    {
+      "input": [
+        "/home//foo/"
+      ],
+      "expected": "/home/foo"
+    },
+    {
+      "input": [
+        "/home/user/Documents/../Pictures"
+      ],
+      "expected": "/home/user/Pictures"
+    },
+    {
+      "input": [
+        "/../"
+      ],
+      "expected": "/"
+    },
+    {
+      "input": [
+        "/.../a/../b/c/../d/./"
+      ],
+      "expected": "/.../b/d"
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "/"
+      ],
+      "expected": "/"
+    },
+    {
+      "input": [
+        "/../../.."
+      ],
+      "expected": "/"
+    },
+    {
+      "input": [
+        "/a/./b/./c/."
+      ],
+      "expected": "/a/b/c"
+    },
+    {
+      "input": [
+        "/..."
+      ],
+      "expected": "/..."
+    },
+    {
+      "input": [
+        "/...."
+      ],
+      "expected": "/...."
+    },
+    {
+      "input": [
+        "/../..."
+      ],
+      "expected": "/..."
+    },
+    {
+      "input": [
+        "/a/..b/c"
+      ],
+      "expected": "/a/..b/c"
+    },
+    {
+      "input": [
+        "/a/.hidden/b..c/..."
+      ],
+      "expected": "/a/.hidden/b..c/..."
+    },
+    {
+      "input": [
+        "/home/user/./Downloads/../Pictures/././"
+      ],
+      "expected": "/home/user/Pictures"
+    },
+    {
+      "input": [
+        "/a//b////c/d///././/.."
+      ],
+      "expected": "/a/b/c"
+    },
+    {
+      "input": [
+        "/a/b/c/../../.."
+      ],
+      "expected": "/"
+    },
+    {
+      "input": [
+        "/a/b/c/../.."
+      ],
+      "expected": "/a"
+    },
+    {
+      "input": [
+        "/x/y/z/w/v/u/../../../../../../../../"
+      ],
+      "expected": "/"
+    },
+    {
+      "input": [
+        "/../abc/./def/.gh/../ijk//lm/."
+      ],
+      "expected": "/abc/def/ijk/lm"
+    },
+    {
+      "input": [
+        "/a_1/b2/.x/../y_3"
+      ],
+      "expected": "/a_1/b2/y_3"
+    },
+    {
+      "input": [
+        "/a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a//a/"
+      ],
+      "expected": "/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a/a"
+    },
+    {
+      "input": [
+        "/ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd//ab/cd/../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../"
+      ],
+      "expected": "/"
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "public": [
+    {
+      "input": {
+        "obj": {
+          "x": 5
+        },
+        "fn": "(obj) => {\n  obj.x = 5;\n  return obj.x;\n}"
+      },
+      "expected": {
+        "error": "Error Modifying: x"
+      }
+    },
+    {
+      "input": {
+        "obj": [
+          1,
+          2,
+          3
+        ],
+        "fn": "(arr) => {\n  arr[1] = {};\n  return arr[2];\n}"
+      },
+      "expected": {
+        "error": "Error Modifying Index: 1"
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "arr": [
+            1,
+            2,
+            3
+          ]
+        },
+        "fn": "(obj) => {\n  obj.arr.push(4);\n  return 42;\n}"
+      },
+      "expected": {
+        "error": "Error Calling Method: push"
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "x": 2,
+          "y": 2
+        },
+        "fn": "(obj) => {\n  return Object.keys(obj);\n}"
+      },
+      "expected": {
+        "value": [
+          "x",
+          "y"
+        ]
+      }
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "obj": [
+          10,
+          20,
+          30
+        ],
+        "fn": "(obj) => { obj.pop(); return 0; }"
+      },
+      "expected": {
+        "error": "Error Calling Method: pop"
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "logs": [
+            "a",
+            "b"
+          ]
+        },
+        "fn": "(obj) => { obj.logs.shift(); return 1; }"
+      },
+      "expected": {
+        "error": "Error Calling Method: shift"
+      }
+    },
+    {
+      "input": {
+        "obj": [
+          5
+        ],
+        "fn": "(obj) => { obj.unshift(0); return 2; }"
+      },
+      "expected": {
+        "error": "Error Calling Method: unshift"
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "m": [
+            [
+              1
+            ],
+            [
+              2
+            ]
+          ]
+        },
+        "fn": "(obj) => { obj.m.splice(1, 0, []); return 3; }"
+      },
+      "expected": {
+        "error": "Error Calling Method: splice"
+      }
+    },
+    {
+      "input": {
+        "obj": [
+          3,
+          1,
+          2
+        ],
+        "fn": "(obj) => { obj.sort(); return 4; }"
+      },
+      "expected": {
+        "error": "Error Calling Method: sort"
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "pair": [
+            7,
+            8
+          ]
+        },
+        "fn": "(obj) => { obj.pair.reverse(); return 5; }"
+      },
+      "expected": {
+        "error": "Error Calling Method: reverse"
+      }
+    },
+    {
+      "input": {
+        "obj": [
+          true,
+          false
+        ],
+        "fn": "(obj) => { obj.push(true); return 6; }"
+      },
+      "expected": {
+        "error": "Error Calling Method: push"
+      }
+    },
+    {
+      "input": {
+        "obj": [
+          "a",
+          "b",
+          "c"
+        ],
+        "fn": "(obj) => { obj[0] = \"z\"; return obj[0]; }"
+      },
+      "expected": {
+        "error": "Error Modifying Index: 0"
+      }
+    },
+    {
+      "input": {
+        "obj": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "fn": "(obj) => { obj[3] = 0; return 7; }"
+      },
+      "expected": {
+        "error": "Error Modifying Index: 3"
+      }
+    },
+    {
+      "input": {
+        "obj": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "fn": "(obj) => { obj[7] = 9; return 8; }"
+      },
+      "expected": {
+        "error": "Error Modifying Index: 7"
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "grid": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "fn": "(obj) => { obj.grid[1][0] = 1; return 9; }"
+      },
+      "expected": {
+        "error": "Error Modifying Index: 0"
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "a": {
+            "b": {
+              "c": 1
+            }
+          }
+        },
+        "fn": "(obj) => { obj.a.b.c = 2; return 10; }"
+      },
+      "expected": {
+        "error": "Error Modifying: c"
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "n": 3
+        },
+        "fn": "(obj) => { obj.n = 3; return 11; }"
+      },
+      "expected": {
+        "error": "Error Modifying: n"
+      }
+    },
+    {
+      "input": {
+        "obj": [
+          4,
+          5
+        ],
+        "fn": "(obj) => { obj[1] = 5; return 12; }"
+      },
+      "expected": {
+        "error": "Error Modifying Index: 1"
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "a": {
+            "b": 7
+          },
+          "arr": [
+            1,
+            2,
+            3
+          ],
+          "s": "hi",
+          "t": true,
+          "z": null
+        },
+        "fn": "(obj) => { return [obj.a.b, obj.arr[2], obj.s, obj.t, obj.z]; }"
+      },
+      "expected": {
+        "value": [
+          7,
+          3,
+          "hi",
+          true,
+          null
+        ]
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "inner": {
+            "p": 1,
+            "q": 2
+          }
+        },
+        "fn": "(obj) => { return Object.keys(obj.inner); }"
+      },
+      "expected": {
+        "value": [
+          "p",
+          "q"
+        ]
+      }
+    },
+    {
+      "input": {
+        "obj": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "fn": "(obj) => { return [obj.length, ...obj]; }"
+      },
+      "expected": {
+        "value": [
+          4,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "nums": [
+            2,
+            4,
+            6
+          ]
+        },
+        "fn": "(obj) => { let total = 0; for (const v of obj.nums) { total += v; } return total; }"
+      },
+      "expected": {
+        "value": 12
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "w": [
+            "x",
+            "y",
+            "z"
+          ]
+        },
+        "fn": "(obj) => { return obj.w.slice(0, 2).join(\"-\"); }"
+      },
+      "expected": {
+        "value": "x-y"
+      }
+    },
+    {
+      "input": {
+        "obj": [
+          1,
+          2,
+          3
+        ],
+        "fn": "(obj) => { return obj.map(function (n) { return n * 2; }); }"
+      },
+      "expected": {
+        "value": [
+          2,
+          4,
+          6
+        ]
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "o": {
+            "k": 1
+          },
+          "e": [
+            1,
+            2
+          ]
+        },
+        "fn": "(obj) => { return JSON.stringify(obj); }"
+      },
+      "expected": {
+        "value": "{\"o\":{\"k\":1},\"e\":[1,2]}"
+      }
+    },
+    {
+      "input": {
+        "obj": {
+          "user": {
+            "names": [
+              "ann",
+              "ben"
+            ],
+            "active": true
+          }
+        },
+        "fn": "(obj) => { return obj.user.names[1].toUpperCase() + \":\" + obj.user.active; }"
+      },
+      "expected": {
+        "value": "BEN:true"
+      }
+    }
+  ]
+}

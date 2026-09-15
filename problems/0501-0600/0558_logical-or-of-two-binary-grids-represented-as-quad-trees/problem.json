@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 558,
+  "slug": "logical-or-of-two-binary-grids-represented-as-quad-trees",
+  "title": "Logical OR of Two Binary Grids Represented as Quad-Trees",
+  "difficulty": "Medium",
+  "tags": [
+    "Divide and Conquer",
+    "Tree"
+  ],
+  "topics": [
+    "Divide and Conquer",
+    "Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "intersect",
+    "parameters": [
+      {
+        "name": "quadTree1",
+        "codec": "quad_tree",
+        "value_type": {
+          "kind": "quad_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "quadTree2",
+        "codec": "quad_tree",
+        "value_type": {
+          "kind": "quad_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "quad_tree",
+    "return_type": {
+      "kind": "quad_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "intersect",
+      "rust": "intersect",
+      "typescript": "intersect"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

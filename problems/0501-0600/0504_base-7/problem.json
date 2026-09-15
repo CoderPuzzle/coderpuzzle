@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 504,
+  "slug": "base-7",
+  "title": "Base 7",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "String"
+  ],
+  "topics": [
+    "Math",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "convertToBase7",
+    "parameters": [
+      {
+        "name": "num",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "convertToBase7",
+      "rust": "convert_to_base7",
+      "typescript": "convertToBase7"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

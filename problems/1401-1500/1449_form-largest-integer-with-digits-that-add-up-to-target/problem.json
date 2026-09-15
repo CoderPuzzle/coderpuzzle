@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1449,
+  "slug": "form-largest-integer-with-digits-that-add-up-to-target",
+  "title": "Form Largest Integer With Digits That Add up to Target",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Knapsack Problem",
+    "Complete Knapsack"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Knapsack Problem",
+    "Complete Knapsack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "largestNumber",
+    "parameters": [
+      {
+        "name": "cost",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "largestNumber",
+      "rust": "largest_number",
+      "typescript": "largestNumber"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1266,
+  "slug": "minimum-time-visiting-all-points",
+  "title": "Minimum Time Visiting All Points",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Geometry"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minTimeToVisitAllPoints",
+    "parameters": [
+      {
+        "name": "points",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minTimeToVisitAllPoints",
+      "rust": "min_time_to_visit_all_points",
+      "typescript": "minTimeToVisitAllPoints"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

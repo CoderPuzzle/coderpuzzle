@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1744,
+  "slug": "can-you-eat-your-favorite-candy-on-your-favorite-day",
+  "title": "Can You Eat Your Favorite Candy on Your Favorite Day?",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canEat",
+    "parameters": [
+      {
+        "name": "candiesCount",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "boolean"
+      }
+    },
+    "entrypoints": {
+      "go": "canEat",
+      "rust": "can_eat",
+      "typescript": "canEat"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

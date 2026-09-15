@@ -1,0 +1,92 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1804,
+  "slug": "implement-trie-ii-prefix-tree",
+  "title": "Implement Trie II (Prefix Tree)",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Design",
+    "Trie"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Design",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Trie",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "insert",
+        "parameters": [
+          {
+            "name": "word",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "countWordsEqualTo",
+        "parameters": [
+          {
+            "name": "word",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "countWordsStartingWith",
+        "parameters": [
+          {
+            "name": "prefix",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "erase",
+        "parameters": [
+          {
+            "name": "word",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

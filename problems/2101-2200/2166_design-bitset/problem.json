@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2166,
+  "slug": "design-bitset",
+  "title": "Design Bitset",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Bitset",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "size",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "fix",
+        "parameters": [
+          {
+            "name": "idx",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "unfix",
+        "parameters": [
+          {
+            "name": "idx",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "flip",
+        "parameters": []
+      },
+      {
+        "name": "all",
+        "parameters": [],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "one",
+        "parameters": [],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "count",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "toString",
+        "parameters": [],
+        "return_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

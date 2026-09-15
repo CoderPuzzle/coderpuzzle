@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2507,
+  "slug": "smallest-value-after-replacing-with-sum-of-prime-factors",
+  "title": "Smallest Value After Replacing With Sum of Prime Factors",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Simulation",
+    "Number Theory",
+    "Prime Factorization",
+    "Primality Test",
+    "Sieve Theory",
+    "Prime Number Sieve"
+  ],
+  "topics": [
+    "Math",
+    "Simulation",
+    "Number Theory",
+    "Prime Factorization",
+    "Primality Test",
+    "Sieve Theory",
+    "Prime Number Sieve"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "smallestValue",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "smallestValue",
+      "rust": "smallest_value",
+      "typescript": "smallestValue"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

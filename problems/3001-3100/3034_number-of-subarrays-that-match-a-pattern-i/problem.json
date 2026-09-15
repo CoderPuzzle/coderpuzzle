@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3034,
+  "slug": "number-of-subarrays-that-match-a-pattern-i",
+  "title": "Number of Subarrays That Match a Pattern I",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Rolling Hash",
+    "String Matching",
+    "Hash Function"
+  ],
+  "topics": [
+    "Array",
+    "Rolling Hash",
+    "String Matching",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countMatchingSubarrays",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "pattern",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countMatchingSubarrays",
+      "rust": "count_matching_subarrays",
+      "typescript": "countMatchingSubarrays"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

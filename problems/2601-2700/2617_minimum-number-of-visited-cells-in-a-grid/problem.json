@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2617,
+  "slug": "minimum-number-of-visited-cells-in-a-grid",
+  "title": "Minimum Number of Visited Cells in a Grid",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Stack",
+    "Breadth-First Search",
+    "Union-Find",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Monotonic Stack"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Stack",
+    "Breadth-First Search",
+    "Union-Find",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumVisitedCells",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumVisitedCells",
+      "rust": "minimum_visited_cells",
+      "typescript": "minimumVisitedCells"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

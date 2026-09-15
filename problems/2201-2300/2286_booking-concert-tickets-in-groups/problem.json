@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2286,
+  "slug": "booking-concert-tickets-in-groups",
+  "title": "Booking Concert Tickets in Groups",
+  "difficulty": "Hard",
+  "tags": [
+    "Segment Tree"
+  ],
+  "topics": [
+    "Binary Search",
+    "Design",
+    "Binary Indexed Tree",
+    "Segment Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "BookMyShow",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "n",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "m",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "gather",
+        "parameters": [
+          {
+            "name": "k",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "maxRow",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "scatter",
+        "parameters": [
+          {
+            "name": "k",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "maxRow",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

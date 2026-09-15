@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2056,
+  "slug": "number-of-valid-move-combinations-on-chessboard",
+  "title": "Number of Valid Move Combinations On Chessboard",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countCombinations",
+    "parameters": [
+      {
+        "name": "pieces",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "positions",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countCombinations",
+      "rust": "count_combinations",
+      "typescript": "countCombinations"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

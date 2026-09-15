@@ -1,0 +1,77 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1958,
+  "slug": "check-if-move-is-legal",
+  "title": "Check if Move is Legal",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Matrix",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "checkMove",
+    "parameters": [
+      {
+        "name": "board",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "rMove",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "cMove",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "color",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "checkMove",
+      "rust": "check_move",
+      "typescript": "checkMove"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

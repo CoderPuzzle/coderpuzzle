@@ -1,0 +1,451 @@
+{
+  "public": [
+    {
+      "input": {
+        "fn": "(x) => x * 5",
+        "args": [
+          2
+        ],
+        "t": 20,
+        "cancelTimeMs": 50
+      },
+      "expected": [
+        {
+          "time": 20,
+          "returned": 10
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x**2",
+        "args": [
+          2
+        ],
+        "t": 100,
+        "cancelTimeMs": 50
+      },
+      "expected": []
+    },
+    {
+      "input": {
+        "fn": "(x1, x2) => x1 * x2",
+        "args": [
+          2,
+          4
+        ],
+        "t": 30,
+        "cancelTimeMs": 100
+      },
+      "expected": [
+        {
+          "time": 30,
+          "returned": 8
+        }
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "fn": "(x1, x2) => x1 * x2",
+        "args": [
+          6,
+          7
+        ],
+        "t": 20,
+        "cancelTimeMs": 21
+      },
+      "expected": [
+        {
+          "time": 20,
+          "returned": 42
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x * -7",
+        "args": [
+          -3
+        ],
+        "t": 100,
+        "cancelTimeMs": 250
+      },
+      "expected": [
+        {
+          "time": 100,
+          "returned": 21
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x**2",
+        "args": [
+          12
+        ],
+        "t": 25,
+        "cancelTimeMs": 998
+      },
+      "expected": [
+        {
+          "time": 25,
+          "returned": 144
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x1, x2) => Math.abs(x1 - x2)",
+        "args": [
+          9,
+          -13
+        ],
+        "t": 40,
+        "cancelTimeMs": 800
+      },
+      "expected": [
+        {
+          "time": 40,
+          "returned": 22
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x % 2 === 0",
+        "args": [
+          8
+        ],
+        "t": 20,
+        "cancelTimeMs": 30
+      },
+      "expected": [
+        {
+          "time": 20,
+          "returned": true
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x % 2 === 0",
+        "args": [
+          7
+        ],
+        "t": 22,
+        "cancelTimeMs": 23
+      },
+      "expected": [
+        {
+          "time": 22,
+          "returned": false
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(s1, s2) => s1 + s2",
+        "args": [
+          "tim",
+          "eout"
+        ],
+        "t": 75,
+        "cancelTimeMs": 76
+      },
+      "expected": [
+        {
+          "time": 75,
+          "returned": "timeout"
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(s) => s.length",
+        "args": [
+          "cancellable"
+        ],
+        "t": 60,
+        "cancelTimeMs": 61
+      },
+      "expected": [
+        {
+          "time": 60,
+          "returned": 11
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(arr) => arr.length",
+        "args": [
+          [
+            true,
+            false,
+            null
+          ]
+        ],
+        "t": 33,
+        "cancelTimeMs": 34
+      },
+      "expected": [
+        {
+          "time": 33,
+          "returned": 3
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(arr) => arr.map(v => v * v)",
+        "args": [
+          [
+            1,
+            -2,
+            3
+          ]
+        ],
+        "t": 210,
+        "cancelTimeMs": 211
+      },
+      "expected": [
+        {
+          "time": 210,
+          "returned": [
+            1,
+            4,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(o) => o.a + o.b",
+        "args": [
+          {
+            "a": 10,
+            "b": -4
+          }
+        ],
+        "t": 45,
+        "cancelTimeMs": 46
+      },
+      "expected": [
+        {
+          "time": 45,
+          "returned": 6
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(o) => ({ sq: o.n * o.n, tag: \"n\" + o.n })",
+        "args": [
+          {
+            "n": 9
+          }
+        ],
+        "t": 65,
+        "cancelTimeMs": 666
+      },
+      "expected": [
+        {
+          "time": 65,
+          "returned": {
+            "sq": 81,
+            "tag": "n9"
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => null",
+        "args": [
+          0
+        ],
+        "t": 27,
+        "cancelTimeMs": 28
+      },
+      "expected": [
+        {
+          "time": 27,
+          "returned": null
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(a, b, c, d, e, f, g, h, i, j) => a + b + c + d + e + f + g + h + i + j",
+        "args": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "t": 500,
+        "cancelTimeMs": 999
+      },
+      "expected": [
+        {
+          "time": 500,
+          "returned": 55
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(s1, s2) => s1 + s2",
+        "args": [
+          "a b",
+          " c"
+        ],
+        "t": 84,
+        "cancelTimeMs": 850
+      },
+      "expected": [
+        {
+          "time": 84,
+          "returned": "a b c"
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x1, x2) => x1 * x2",
+        "args": [
+          5,
+          6
+        ],
+        "t": 200,
+        "cancelTimeMs": 105
+      },
+      "expected": []
+    },
+    {
+      "input": {
+        "fn": "(x) => x**2",
+        "args": [
+          4
+        ],
+        "t": 1000,
+        "cancelTimeMs": 10
+      },
+      "expected": []
+    },
+    {
+      "input": {
+        "fn": "(o) => ({ sq: o.n * o.n, tag: \"n\" + o.n })",
+        "args": [
+          {
+            "n": 3
+          }
+        ],
+        "t": 150,
+        "cancelTimeMs": 44
+      },
+      "expected": []
+    },
+    {
+      "input": {
+        "fn": "(x) => x - 1",
+        "args": [
+          41
+        ],
+        "t": 50,
+        "cancelTimeMs": 49
+      },
+      "expected": []
+    },
+    {
+      "input": {
+        "fn": "(x) => x - 1",
+        "args": [
+          41
+        ],
+        "t": 50,
+        "cancelTimeMs": 51
+      },
+      "expected": [
+        {
+          "time": 50,
+          "returned": 40
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x % 2 === 0",
+        "args": [
+          10
+        ],
+        "t": 300,
+        "cancelTimeMs": 299
+      },
+      "expected": []
+    },
+    {
+      "input": {
+        "fn": "(x) => x % 2 === 0",
+        "args": [
+          10
+        ],
+        "t": 300,
+        "cancelTimeMs": 301
+      },
+      "expected": [
+        {
+          "time": 300,
+          "returned": true
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(s) => s.length",
+        "args": [
+          "ab"
+        ],
+        "t": 20,
+        "cancelTimeMs": 19
+      },
+      "expected": []
+    },
+    {
+      "input": {
+        "fn": "(s) => s.length",
+        "args": [
+          "ab"
+        ],
+        "t": 20,
+        "cancelTimeMs": 21
+      },
+      "expected": [
+        {
+          "time": 20,
+          "returned": 2
+        }
+      ]
+    },
+    {
+      "input": {
+        "fn": "(x) => x * 5",
+        "args": [
+          100000
+        ],
+        "t": 1000,
+        "cancelTimeMs": 999
+      },
+      "expected": []
+    }
+  ]
+}

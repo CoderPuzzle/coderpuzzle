@@ -1,0 +1,166 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,100),\n(2,200),\n(3,300);"
+      ],
+      "expected": [
+        [
+          200
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,100);"
+      ],
+      "expected": [
+        [
+          null
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,100),\n(2,100),\n(3,100);"
+      ],
+      "expected": [
+        [
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,100),\n(2,100),\n(3,200),\n(4,300);"
+      ],
+      "expected": [
+        [
+          200
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,100),\n(2,200);"
+      ],
+      "expected": [
+        [
+          100
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,100),\n(2,100);"
+      ],
+      "expected": [
+        [
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,400),\n(2,100),\n(3,300),\n(4,200);"
+      ],
+      "expected": [
+        [
+          300
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,-50),\n(2,0),\n(3,50);"
+      ],
+      "expected": [
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,-100),\n(2,-200),\n(3,-300);"
+      ],
+      "expected": [
+        [
+          -200
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,0),\n(2,0),\n(3,0);"
+      ],
+      "expected": [
+        [
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": [
+        [
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,75);"
+      ],
+      "expected": [
+        [
+          null
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,100),\n(2,200),\n(3,300),\n(4,400),\n(5,500),\n(6,600),\n(7,700),\n(8,800),\n(9,900),\n(10,1000),\n(11,1100),\n(12,1200),\n(13,1300),\n(14,1400),\n(15,1500),\n(16,1600),\n(17,1700),\n(18,1800),\n(19,1900),\n(20,2000);"
+      ],
+      "expected": [
+        [
+          1900
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,300),\n(2,300),\n(3,100),\n(4,200);"
+      ],
+      "expected": [
+        [
+          200
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,500),\n(2,400),\n(3,400),\n(4,300);"
+      ],
+      "expected": [
+        [
+          400
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,50),\n(2,100),\n(3,50),\n(4,200),\n(5,100),\n(6,300);"
+      ],
+      "expected": [
+        [
+          200
+        ]
+      ]
+    }
+  ]
+}

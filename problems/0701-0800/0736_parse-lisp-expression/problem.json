@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 736,
+  "slug": "parse-lisp-expression",
+  "title": "Parse Lisp Expression",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Expression Parsing",
+    "Recursion",
+    "Stack"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Stack",
+    "Recursion"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "evaluate",
+    "parameters": [
+      {
+        "name": "expression",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "evaluate",
+      "rust": "evaluate",
+      "typescript": "evaluate"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 797,
+  "slug": "all-paths-from-source-to-target",
+  "title": "All Paths From Source to Target",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Backtracking"
+  ],
+  "topics": [
+    "Backtracking",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Directed Acyclic Graph"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "allPathsSourceTarget",
+    "parameters": [
+      {
+        "name": "graph",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "allPathsSourceTarget",
+      "rust": "all_paths_source_target",
+      "typescript": "allPathsSourceTarget"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

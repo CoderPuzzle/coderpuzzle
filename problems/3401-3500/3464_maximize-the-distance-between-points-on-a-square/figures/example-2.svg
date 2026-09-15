@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- side = 2, points = [(0,0),(1,2),(2,0),(2,2),(2,1)], k = 4; best selection (0,0),(2,0),(2,2),(2,1) has min Manhattan distance 1 (verified by brute force) -->
+  <rect x="140" y="120" width="170" height="170" fill="#e6ecfb" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="225" cy="120" r="6" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <g fill="#4169E1">
+    <circle cx="140" cy="290" r="6"/>
+    <circle cx="310" cy="290" r="6"/>
+    <circle cx="310" cy="120" r="6"/>
+    <circle cx="310" cy="205" r="6"/>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="128" y="314" text-anchor="end">(0, 0)</text>
+    <text x="310" y="314" text-anchor="middle">(2, 0)</text>
+    <text x="322" y="124">(2, 2)</text>
+    <text x="225" y="102" text-anchor="middle">(1, 2)</text>
+    <text x="322" y="209">(2, 1)</text>
+  </g>
+  <g>
+    <circle cx="392" cy="58" r="6" fill="#4169E1"/>
+    <circle cx="392" cy="84" r="6" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+    <text x="404" y="62" fill="#5c6b76" font-size="12">selected</text>
+    <text x="404" y="88" fill="#5c6b76" font-size="12">not selected</text>
+  </g>
+  <text x="225" y="209" text-anchor="middle" fill="#5c6b76" font-size="12" font-weight="600">closest selected pair: 1</text>
+  <text x="280" y="336" text-anchor="middle" fill="#1a2026" font-size="13.5">(2, 1) is distance <tspan fill="#4169E1" font-weight="700">1</tspan> from both right-edge corners — no choice of 4 points beats it</text>
+</svg>

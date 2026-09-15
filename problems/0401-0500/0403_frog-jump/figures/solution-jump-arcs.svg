@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="240" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- river line: stones at 0,1,3,5,6,8,12,17 -> x = 60 + pos*29 -->
+  <line x1="30" y1="200" x2="610" y2="200" stroke="#42525e" stroke-width="1.6"/>
+  <!-- jump arcs: 0->1 (1), 1->3 (2), 3->5 (2), 5->8 (3), 8->12 (4), 12->17 (5) -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 60 190 Q 74.5 160 89 190" marker-end="url(#arrow)"/>
+    <path d="M 89 190 Q 118 140 147 190" marker-end="url(#arrow)"/>
+    <path d="M 147 190 Q 176 140 205 190" marker-end="url(#arrow)"/>
+    <path d="M 205 190 Q 248 125 292 190" marker-end="url(#arrow)"/>
+    <path d="M 292 190 Q 350 110 408 190" marker-end="url(#arrow)"/>
+    <path d="M 408 190 Q 482 95 553 190" marker-end="url(#arrow)"/>
+  </g>
+  <!-- jump size labels -->
+  <g font-size="12" fill="#4169E1" text-anchor="middle" font-weight="600">
+    <text x="74" y="162">1</text>
+    <text x="118" y="142">2</text>
+    <text x="176" y="142">2</text>
+    <text x="248" y="128">3</text>
+    <text x="350" y="112">4</text>
+    <text x="480" y="97">5</text>
+  </g>
+  <!-- stones -->
+  <g>
+    <circle cx="60" cy="200" r="11" fill="#4169E1"/>
+    <circle cx="89" cy="200" r="11" fill="#4169E1"/>
+    <circle cx="147" cy="200" r="11" fill="#4169E1"/>
+    <circle cx="205" cy="200" r="11" fill="#4169E1"/>
+    <circle cx="234" cy="200" r="11" fill="#ffffff" stroke="#42525e" stroke-width="1.4" stroke-dasharray="3 2"/>
+    <circle cx="292" cy="200" r="11" fill="#4169E1"/>
+    <circle cx="408" cy="200" r="11" fill="#4169E1"/>
+    <circle cx="553" cy="200" r="11" fill="#4169E1"/>
+  </g>
+  <!-- position labels -->
+  <g font-size="12" fill="#5c6b76" text-anchor="middle">
+    <text x="60" y="228">0</text><text x="89" y="228">1</text><text x="147" y="228">3</text>
+    <text x="205" y="228">5</text><text x="234" y="228">6</text><text x="292" y="228">8</text>
+    <text x="408" y="228">12</text><text x="553" y="228">17</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="30" y="34">Each arc is one jump: every length stays within ±1 of the previous</text>
+    <text x="30" y="50">length (1, 2, 2, 3, 4, 5). The stone at position 6 is skipped — the</text>
+    <text x="30" y="66">jump of 3 from position 5 lands directly on 8. jumps[i] collects</text>
+    <text x="30" y="82">every last-jump size that can land on stone i; crossing succeeds</text>
+    <text x="30" y="98">because jumps[7] ends up non-empty.</text>
+  </g>
+</svg>

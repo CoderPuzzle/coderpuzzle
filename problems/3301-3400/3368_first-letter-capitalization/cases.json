@@ -1,0 +1,448 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(1,'hello world of SQL'),\n(2,'the QUICK brown fox'),\n(3,'data science AND machine learning'),\n(4,'TOP rated programming BOOKS');"
+      ],
+      "expected": [
+        [
+          1,
+          "hello world of SQL",
+          "Hello World Of Sql"
+        ],
+        [
+          2,
+          "the QUICK brown fox",
+          "The Quick Brown Fox"
+        ],
+        [
+          3,
+          "data science AND machine learning",
+          "Data Science And Machine Learning"
+        ],
+        [
+          4,
+          "TOP rated programming BOOKS",
+          "Top Rated Programming Books"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(9,'sql');"
+      ],
+      "expected": [
+        [
+          9,
+          "sql",
+          "Sql"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(5,'Hello World'),\n(6,'Zulu Alpha Kilo');"
+      ],
+      "expected": [
+        [
+          5,
+          "Hello World",
+          "Hello World"
+        ],
+        [
+          6,
+          "Zulu Alpha Kilo",
+          "Zulu Alpha Kilo"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(11,'BOOKS'),\n(12,'SQL IS FUN'),\n(13,'EVERY SINGLE WORD LOUD');"
+      ],
+      "expected": [
+        [
+          11,
+          "BOOKS",
+          "Books"
+        ],
+        [
+          12,
+          "SQL IS FUN",
+          "Sql Is Fun"
+        ],
+        [
+          13,
+          "EVERY SINGLE WORD LOUD",
+          "Every Single Word Loud"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(21,'tHe qUiCk bRoWn FoX'),\n(22,'sQl iS a LAnGuage oF dATA'),\n(23,'MiXeD CaSe EvErYwHeRe At AlL');"
+      ],
+      "expected": [
+        [
+          21,
+          "tHe qUiCk bRoWn FoX",
+          "The Quick Brown Fox"
+        ],
+        [
+          22,
+          "sQl iS a LAnGuage oF dATA",
+          "Sql Is A Language Of Data"
+        ],
+        [
+          23,
+          "MiXeD CaSe EvErYwHeRe At AlL",
+          "Mixed Case Everywhere At All"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(31,'hello  world'),\n(32,'one    four   nine'),\n(33,'a b  c   d    e');"
+      ],
+      "expected": [
+        [
+          31,
+          "hello  world",
+          "Hello  World"
+        ],
+        [
+          32,
+          "one    four   nine",
+          "One    Four   Nine"
+        ],
+        [
+          33,
+          "a b  c   d    e",
+          "A B  C   D    E"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(41,'  padded both ends'),\n(42,'starts with space '),\n(43,' trailing');"
+      ],
+      "expected": [
+        [
+          41,
+          "  padded both ends",
+          "  Padded Both Ends"
+        ],
+        [
+          42,
+          "starts with space ",
+          "Starts With Space "
+        ],
+        [
+          43,
+          " trailing",
+          " Trailing"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(51,'   '),\n(52,' '),\n(53,'       ');"
+      ],
+      "expected": [
+        [
+          51,
+          "   ",
+          "   "
+        ],
+        [
+          52,
+          " ",
+          " "
+        ],
+        [
+          53,
+          "       ",
+          "       "
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(61,'');"
+      ],
+      "expected": [
+        [
+          61,
+          "",
+          ""
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(71,'a b c d e'),\n(72,'A B C D E');"
+      ],
+      "expected": [
+        [
+          71,
+          "a b c d e",
+          "A B C D E"
+        ],
+        [
+          72,
+          "A B C D E",
+          "A B C D E"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(81,'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzqw'),\n(82,'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZQW');"
+      ],
+      "expected": [
+        [
+          81,
+          "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzqw",
+          "Abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzqw"
+        ],
+        [
+          82,
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZQW",
+          "Abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzqw"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(91,'level Level LEVEL leveL lEvEl'),\n(92,'rotator ROTATOR rotor rotor ROTATOR level');"
+      ],
+      "expected": [
+        [
+          91,
+          "level Level LEVEL leveL lEvEl",
+          "Level Level Level Level Level"
+        ],
+        [
+          92,
+          "rotator ROTATOR rotor rotor ROTATOR level",
+          "Rotator Rotator Rotor Rotor Rotator Level"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO user_content VALUES\n(100,'alpha BETA gamma DeLtA epsilon ZETA'),\n(101,'BETA gamma DeLtA epsilon ZETA eta'),\n(102,'gamma DeLtA epsilon ZETA eta ThEtA'),\n(103,'DeLtA epsilon ZETA eta ThEtA alpha'),\n(104,'epsilon ZETA eta ThEtA alpha BETA'),\n(105,'ZETA eta ThEtA alpha BETA gamma'),\n(106,'eta ThEtA alpha BETA gamma DeLtA'),\n(107,'ThEtA alpha BETA gamma DeLtA epsilon'),\n(108,'alpha BETA gamma DeLtA epsilon ZETA'),\n(109,'BETA gamma DeLtA epsilon ZETA eta'),\n(110,'gamma DeLtA epsilon ZETA eta ThEtA'),\n(111,'DeLtA epsilon ZETA eta ThEtA alpha'),\n(112,'epsilon ZETA eta ThEtA alpha BETA'),\n(113,'ZETA eta ThEtA alpha BETA gamma'),\n(114,'eta ThEtA alpha BETA gamma DeLtA'),\n(115,'ThEtA alpha BETA gamma DeLtA epsilon'),\n(116,'alpha BETA gamma DeLtA epsilon ZETA'),\n(117,'BETA gamma DeLtA epsilon ZETA eta'),\n(118,'gamma DeLtA epsilon ZETA eta ThEtA'),\n(119,'DeLtA epsilon ZETA eta ThEtA alpha'),\n(120,'epsilon ZETA eta ThEtA alpha BETA'),\n(121,'ZETA eta ThEtA alpha BETA gamma'),\n(122,'eta ThEtA alpha BETA gamma DeLtA'),\n(123,'ThEtA alpha BETA gamma DeLtA epsilon'),\n(124,'alpha BETA gamma DeLtA epsilon ZETA'),\n(125,'BETA gamma DeLtA epsilon ZETA eta'),\n(126,'gamma DeLtA epsilon ZETA eta ThEtA'),\n(127,'DeLtA epsilon ZETA eta ThEtA alpha'),\n(128,'epsilon ZETA eta ThEtA alpha BETA'),\n(129,'ZETA eta ThEtA alpha BETA gamma'),\n(130,'eta ThEtA alpha BETA gamma DeLtA'),\n(131,'ThEtA alpha BETA gamma DeLtA epsilon'),\n(132,'alpha BETA gamma DeLtA epsilon ZETA'),\n(133,'BETA gamma DeLtA epsilon ZETA eta'),\n(134,'gamma DeLtA epsilon ZETA eta ThEtA'),\n(135,'DeLtA epsilon ZETA eta ThEtA alpha'),\n(136,'epsilon ZETA eta ThEtA alpha BETA'),\n(137,'ZETA eta ThEtA alpha BETA gamma'),\n(138,'eta ThEtA alpha BETA gamma DeLtA'),\n(139,'ThEtA alpha BETA gamma DeLtA epsilon');"
+      ],
+      "expected": [
+        [
+          100,
+          "alpha BETA gamma DeLtA epsilon ZETA",
+          "Alpha Beta Gamma Delta Epsilon Zeta"
+        ],
+        [
+          101,
+          "BETA gamma DeLtA epsilon ZETA eta",
+          "Beta Gamma Delta Epsilon Zeta Eta"
+        ],
+        [
+          102,
+          "gamma DeLtA epsilon ZETA eta ThEtA",
+          "Gamma Delta Epsilon Zeta Eta Theta"
+        ],
+        [
+          103,
+          "DeLtA epsilon ZETA eta ThEtA alpha",
+          "Delta Epsilon Zeta Eta Theta Alpha"
+        ],
+        [
+          104,
+          "epsilon ZETA eta ThEtA alpha BETA",
+          "Epsilon Zeta Eta Theta Alpha Beta"
+        ],
+        [
+          105,
+          "ZETA eta ThEtA alpha BETA gamma",
+          "Zeta Eta Theta Alpha Beta Gamma"
+        ],
+        [
+          106,
+          "eta ThEtA alpha BETA gamma DeLtA",
+          "Eta Theta Alpha Beta Gamma Delta"
+        ],
+        [
+          107,
+          "ThEtA alpha BETA gamma DeLtA epsilon",
+          "Theta Alpha Beta Gamma Delta Epsilon"
+        ],
+        [
+          108,
+          "alpha BETA gamma DeLtA epsilon ZETA",
+          "Alpha Beta Gamma Delta Epsilon Zeta"
+        ],
+        [
+          109,
+          "BETA gamma DeLtA epsilon ZETA eta",
+          "Beta Gamma Delta Epsilon Zeta Eta"
+        ],
+        [
+          110,
+          "gamma DeLtA epsilon ZETA eta ThEtA",
+          "Gamma Delta Epsilon Zeta Eta Theta"
+        ],
+        [
+          111,
+          "DeLtA epsilon ZETA eta ThEtA alpha",
+          "Delta Epsilon Zeta Eta Theta Alpha"
+        ],
+        [
+          112,
+          "epsilon ZETA eta ThEtA alpha BETA",
+          "Epsilon Zeta Eta Theta Alpha Beta"
+        ],
+        [
+          113,
+          "ZETA eta ThEtA alpha BETA gamma",
+          "Zeta Eta Theta Alpha Beta Gamma"
+        ],
+        [
+          114,
+          "eta ThEtA alpha BETA gamma DeLtA",
+          "Eta Theta Alpha Beta Gamma Delta"
+        ],
+        [
+          115,
+          "ThEtA alpha BETA gamma DeLtA epsilon",
+          "Theta Alpha Beta Gamma Delta Epsilon"
+        ],
+        [
+          116,
+          "alpha BETA gamma DeLtA epsilon ZETA",
+          "Alpha Beta Gamma Delta Epsilon Zeta"
+        ],
+        [
+          117,
+          "BETA gamma DeLtA epsilon ZETA eta",
+          "Beta Gamma Delta Epsilon Zeta Eta"
+        ],
+        [
+          118,
+          "gamma DeLtA epsilon ZETA eta ThEtA",
+          "Gamma Delta Epsilon Zeta Eta Theta"
+        ],
+        [
+          119,
+          "DeLtA epsilon ZETA eta ThEtA alpha",
+          "Delta Epsilon Zeta Eta Theta Alpha"
+        ],
+        [
+          120,
+          "epsilon ZETA eta ThEtA alpha BETA",
+          "Epsilon Zeta Eta Theta Alpha Beta"
+        ],
+        [
+          121,
+          "ZETA eta ThEtA alpha BETA gamma",
+          "Zeta Eta Theta Alpha Beta Gamma"
+        ],
+        [
+          122,
+          "eta ThEtA alpha BETA gamma DeLtA",
+          "Eta Theta Alpha Beta Gamma Delta"
+        ],
+        [
+          123,
+          "ThEtA alpha BETA gamma DeLtA epsilon",
+          "Theta Alpha Beta Gamma Delta Epsilon"
+        ],
+        [
+          124,
+          "alpha BETA gamma DeLtA epsilon ZETA",
+          "Alpha Beta Gamma Delta Epsilon Zeta"
+        ],
+        [
+          125,
+          "BETA gamma DeLtA epsilon ZETA eta",
+          "Beta Gamma Delta Epsilon Zeta Eta"
+        ],
+        [
+          126,
+          "gamma DeLtA epsilon ZETA eta ThEtA",
+          "Gamma Delta Epsilon Zeta Eta Theta"
+        ],
+        [
+          127,
+          "DeLtA epsilon ZETA eta ThEtA alpha",
+          "Delta Epsilon Zeta Eta Theta Alpha"
+        ],
+        [
+          128,
+          "epsilon ZETA eta ThEtA alpha BETA",
+          "Epsilon Zeta Eta Theta Alpha Beta"
+        ],
+        [
+          129,
+          "ZETA eta ThEtA alpha BETA gamma",
+          "Zeta Eta Theta Alpha Beta Gamma"
+        ],
+        [
+          130,
+          "eta ThEtA alpha BETA gamma DeLtA",
+          "Eta Theta Alpha Beta Gamma Delta"
+        ],
+        [
+          131,
+          "ThEtA alpha BETA gamma DeLtA epsilon",
+          "Theta Alpha Beta Gamma Delta Epsilon"
+        ],
+        [
+          132,
+          "alpha BETA gamma DeLtA epsilon ZETA",
+          "Alpha Beta Gamma Delta Epsilon Zeta"
+        ],
+        [
+          133,
+          "BETA gamma DeLtA epsilon ZETA eta",
+          "Beta Gamma Delta Epsilon Zeta Eta"
+        ],
+        [
+          134,
+          "gamma DeLtA epsilon ZETA eta ThEtA",
+          "Gamma Delta Epsilon Zeta Eta Theta"
+        ],
+        [
+          135,
+          "DeLtA epsilon ZETA eta ThEtA alpha",
+          "Delta Epsilon Zeta Eta Theta Alpha"
+        ],
+        [
+          136,
+          "epsilon ZETA eta ThEtA alpha BETA",
+          "Epsilon Zeta Eta Theta Alpha Beta"
+        ],
+        [
+          137,
+          "ZETA eta ThEtA alpha BETA gamma",
+          "Zeta Eta Theta Alpha Beta Gamma"
+        ],
+        [
+          138,
+          "eta ThEtA alpha BETA gamma DeLtA",
+          "Eta Theta Alpha Beta Gamma Delta"
+        ],
+        [
+          139,
+          "ThEtA alpha BETA gamma DeLtA epsilon",
+          "Theta Alpha Beta Gamma Delta Epsilon"
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="340" fill="#ffffff"/>
+  <!-- 3x3 grid, cell 80, x=170 y=50 -->
+  <!-- distance fills: 0 accent, 1 mid, 2 light -->
+  <g fill="#4169E1">
+    <rect x="170" y="50" width="80" height="80"/>
+    <rect x="250" y="50" width="80" height="80"/>
+    <rect x="330" y="50" width="80" height="80"/>
+    <rect x="170" y="130" width="80" height="80"/>
+    <rect x="330" y="130" width="80" height="80"/>
+  </g>
+  <g fill="#9db4ea">
+    <rect x="250" y="130" width="80" height="80"/>
+    <rect x="170" y="210" width="80" height="80"/>
+    <rect x="330" y="210" width="80" height="80"/>
+  </g>
+  <g fill="#dbe4f6">
+    <rect x="250" y="210" width="80" height="80"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <rect x="170" y="50" width="80" height="80"/>
+    <rect x="250" y="50" width="80" height="80"/>
+    <rect x="330" y="50" width="80" height="80"/>
+    <rect x="170" y="130" width="80" height="80"/>
+    <rect x="250" y="130" width="80" height="80"/>
+    <rect x="330" y="130" width="80" height="80"/>
+    <rect x="170" y="210" width="80" height="80"/>
+    <rect x="250" y="210" width="80" height="80"/>
+    <rect x="330" y="210" width="80" height="80"/>
+  </g>
+  <!-- values: input value + distance -->
+  <g text-anchor="middle">
+    <text x="210" y="98" fill="#ffffff" font-weight="600">0</text>
+    <text x="290" y="98" fill="#ffffff" font-weight="600">0</text>
+    <text x="370" y="98" fill="#ffffff" font-weight="600">0</text>
+    <text x="210" y="178" fill="#ffffff" font-weight="600">0</text>
+    <text x="290" y="178" fill="#1a2026" font-weight="600">1</text>
+    <text x="370" y="178" fill="#ffffff" font-weight="600">0</text>
+    <text x="210" y="258" fill="#1a2026" font-weight="600">1</text>
+    <text x="290" y="258" fill="#1a2026" font-weight="600">2</text>
+    <text x="370" y="258" fill="#1a2026" font-weight="600">1</text>
+  </g>
+  <!-- wavefront arrows from distance-0 cells into distance-1 cells -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="70">Every 0 cell enters the</text>
+    <text x="40" y="86">queue at distance 0 (dark</text>
+    <text x="40" y="102">accent) — one BFS with</text>
+    <text x="40" y="118">many sources instead of a</text>
+    <text x="40" y="134">search per 1 cell.</text>
+    <text x="40" y="166">The wavefront expands</text>
+    <text x="40" y="182">one ring at a time: cells</text>
+    <text x="40" y="198">at distance 1 (mid blue),</text>
+    <text x="40" y="214">then distance 2 (light).</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="316">Numbers show each cell's distance to the nearest 0: the bottom row resolves to 1, 2, 1.</text>
+  </g>
+</svg>

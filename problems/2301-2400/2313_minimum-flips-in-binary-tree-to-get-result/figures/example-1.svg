@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 318" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- root = [3,5,4,2,null,1,1,1,0]: AND(NOT(OR(T,F)), XOR(T,T)) -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="185" y1="57" x2="115" y2="103"/>
+    <line x1="185" y1="57" x2="255" y2="103"/>
+    <line x1="115" y1="133" x2="75" y2="179"/>
+    <line x1="75" y1="209" x2="40" y2="253"/>
+    <line x1="75" y1="209" x2="110" y2="253"/>
+    <line x1="255" y1="133" x2="230" y2="253"/>
+    <line x1="255" y1="133" x2="300" y2="253"/>
+    <line x1="535" y1="57" x2="465" y2="103"/>
+    <line x1="535" y1="57" x2="605" y2="103"/>
+    <line x1="465" y1="133" x2="425" y2="179"/>
+    <line x1="425" y1="209" x2="390" y2="253"/>
+    <line x1="425" y1="209" x2="460" y2="253"/>
+    <line x1="605" y1="133" x2="580" y2="253"/>
+    <line x1="605" y1="133" x2="650" y2="253"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <rect x="155" y="27" width="60" height="30" rx="15"/>
+    <rect x="85" y="103" width="60" height="30" rx="15"/>
+    <rect x="225" y="103" width="60" height="30" rx="15"/>
+    <rect x="45" y="179" width="60" height="30" rx="15"/>
+    <rect x="12" y="255" width="56" height="26" rx="13"/>
+    <rect x="82" y="255" width="56" height="26" rx="13"/>
+    <rect x="202" y="255" width="56" height="26" rx="13"/>
+    <rect x="272" y="255" width="56" height="26" rx="13"/>
+    <rect x="505" y="27" width="60" height="30" rx="15"/>
+    <rect x="435" y="103" width="60" height="30" rx="15"/>
+    <rect x="575" y="103" width="60" height="30" rx="15"/>
+    <rect x="395" y="179" width="60" height="30" rx="15"/>
+    <rect x="432" y="255" width="56" height="26" rx="13"/>
+    <rect x="572" y="255" width="56" height="26" rx="13"/>
+    <rect x="622" y="255" width="56" height="26" rx="13"/>
+  </g>
+  <g fill="#e6ecfb" stroke="#4169E1" stroke-width="1.8">
+    <rect x="362" y="255" width="56" height="26" rx="13"/>
+    <rect x="552" y="255" width="56" height="26" rx="13"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="185" y="46">AND</text>
+    <text x="115" y="122">NOT</text>
+    <text x="255" y="122">XOR</text>
+    <text x="75" y="198">OR</text>
+    <text x="40" y="272">true</text>
+    <text x="110" y="272">false</text>
+    <text x="230" y="272">true</text>
+    <text x="300" y="272">true</text>
+    <text x="535" y="46">AND</text>
+    <text x="465" y="122">NOT</text>
+    <text x="605" y="122">XOR</text>
+    <text x="425" y="198">OR</text>
+    <text x="460" y="272">false</text>
+    <text x="650" y="272">true</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="700" fill="#4169E1">
+    <text x="390" y="272">false</text>
+    <text x="580" y="272">false</text>
+  </g>
+  <line x1="334" y1="155" x2="352" y2="155" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="350" y="306" text-anchor="middle" fill="#1a2026" font-size="13.5">flip the two highlighted leaves → the root evaluates to <tspan fill="#4169E1" font-weight="700">true</tspan></text>
+</svg>

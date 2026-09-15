@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- n = 3, edges = [[0,2,7],[0,1,15],[1,2,6],[1,2,1]], query = [[1,2]]; walk 1-2-1-2 uses weights 1,6,1: 1 &amp; 6 &amp; 1 = 0 (verified) -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="238" y1="77" x2="152" y2="193"/>
+    <line x1="262" y1="77" x2="348" y2="193"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="3.2">
+    <line x1="161" y1="201" x2="339" y2="201"/>
+    <line x1="161" y1="219" x2="339" y2="219"/>
+  </g>
+  <circle cx="250" cy="60" r="21" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.6" fill="#e6ecfb">
+    <circle cx="140" cy="210" r="21"/>
+    <circle cx="360" cy="210" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="250" y="65">0</text>
+    <text x="140" y="215">1</text>
+    <text x="360" y="215">2</text>
+  </g>
+  <g fill="#5c6b76" font-size="12" font-weight="600" text-anchor="middle">
+    <text x="180" y="124">15</text>
+    <text x="322" y="124">7</text>
+    <text x="250" y="194">6</text>
+    <text x="250" y="238">1</text>
+  </g>
+  <g fill="#4169E1" font-size="12" font-weight="600" text-anchor="middle">
+    <text x="250" y="266">query [1,2] → 0</text>
+  </g>
+  <text x="250" y="292" text-anchor="middle" fill="#1a2026" font-size="13.5">walk 1 → 2 → 1 → 2 uses weights 1, 6, 1, so the cost is 1 &amp; 6 &amp; 1 = <tspan fill="#4169E1" font-weight="700">0</tspan></text>
+</svg>

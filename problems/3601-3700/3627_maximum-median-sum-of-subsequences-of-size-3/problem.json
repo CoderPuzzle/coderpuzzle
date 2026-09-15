@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3627,
+  "slug": "maximum-median-sum-of-subsequences-of-size-3",
+  "title": "Maximum Median Sum of Subsequences of Size 3",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Greedy",
+    "Sorting",
+    "Game Theory"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Greedy",
+    "Sorting",
+    "Game Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumMedianSum",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "maximumMedianSum",
+      "rust": "maximum_median_sum",
+      "typescript": "maximumMedianSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

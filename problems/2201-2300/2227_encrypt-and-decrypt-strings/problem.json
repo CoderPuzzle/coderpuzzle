@@ -1,0 +1,100 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2227,
+  "slug": "encrypt-and-decrypt-strings",
+  "title": "Encrypt and Decrypt Strings",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design",
+    "Trie"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Encrypter",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "keys",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        },
+        {
+          "name": "values",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        },
+        {
+          "name": "dictionary",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "encrypt",
+        "parameters": [
+          {
+            "name": "word1",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "decrypt",
+        "parameters": [
+          {
+            "name": "word2",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,8 @@
+class SeatManager {
+
+    public SeatManager(int n) {}
+
+    public int reserve() {}
+
+    public void unreserve(int seatNumber) {}
+}

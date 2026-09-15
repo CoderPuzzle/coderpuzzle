@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 444,
+  "slug": "sequence-reconstruction",
+  "title": "Sequence Reconstruction",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Graph Theory",
+    "Topological Sort",
+    "Directed Acyclic Graph"
+  ],
+  "topics": [
+    "Array",
+    "Graph Theory",
+    "Topological Sort",
+    "Directed Acyclic Graph"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sequenceReconstruction",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "sequences",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "sequenceReconstruction",
+      "rust": "sequence_reconstruction",
+      "typescript": "sequenceReconstruction"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

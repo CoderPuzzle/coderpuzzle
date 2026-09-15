@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "merge_counting",
+  "id": 2179,
+  "slug": "count-good-triplets-in-an-array",
+  "title": "Count Good Triplets in an Array",
+  "difficulty": "Hard",
+  "tags": [
+    "Fenwick Tree",
+    "Divide and Conquer"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Divide and Conquer",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Merge Sort",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "goodTriplets",
+    "parameters": [
+      {
+        "name": "nums1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "goodTriplets",
+      "rust": "good_triplets",
+      "typescript": "goodTriplets"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

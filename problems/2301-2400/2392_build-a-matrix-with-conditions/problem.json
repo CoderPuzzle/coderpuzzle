@@ -1,0 +1,85 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2392,
+  "slug": "build-a-matrix-with-conditions",
+  "title": "Build a Matrix With Conditions",
+  "difficulty": "Hard",
+  "tags": [
+    "Topological Sort",
+    "Graph"
+  ],
+  "topics": [
+    "Array",
+    "Graph Theory",
+    "Topological Sort",
+    "Matrix",
+    "Directed Acyclic Graph"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "buildMatrix",
+    "parameters": [
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "rowConditions",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "colConditions",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "buildMatrix",
+      "rust": "build_matrix",
+      "typescript": "buildMatrix"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

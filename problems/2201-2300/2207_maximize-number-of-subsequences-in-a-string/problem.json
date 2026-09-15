@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2207,
+  "slug": "maximize-number-of-subsequences-in-a-string",
+  "title": "Maximize Number of Subsequences in a String",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Greedy",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "String",
+    "Greedy",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumSubsequenceCount",
+    "parameters": [
+      {
+        "name": "text",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "pattern",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "maximumSubsequenceCount",
+      "rust": "maximum_subsequence_count",
+      "typescript": "maximumSubsequenceCount"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

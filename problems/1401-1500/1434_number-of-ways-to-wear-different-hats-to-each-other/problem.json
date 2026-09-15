@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1434,
+  "slug": "number-of-ways-to-wear-different-hats-to-each-other",
+  "title": "Number of Ways to Wear Different Hats to Each Other",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Bitmask DP",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Bitmask",
+    "Bipartite Graph",
+    "Matching (Graph)",
+    "Perfect Matching"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberWays",
+    "parameters": [
+      {
+        "name": "hats",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numberWays",
+      "rust": "number_ways",
+      "typescript": "numberWays"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

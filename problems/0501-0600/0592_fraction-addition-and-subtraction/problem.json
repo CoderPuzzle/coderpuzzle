@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 592,
+  "slug": "fraction-addition-and-subtraction",
+  "title": "Fraction Addition and Subtraction",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "String",
+    "Simulation",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Simulation",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "fractionAddition",
+    "parameters": [
+      {
+        "name": "expression",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "fractionAddition",
+      "rust": "fraction_addition",
+      "typescript": "fractionAddition"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

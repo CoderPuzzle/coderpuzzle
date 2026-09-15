@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1685,
+  "slug": "sum-of-absolute-differences-in-a-sorted-array",
+  "title": "Sum of Absolute Differences in a Sorted Array",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getSumAbsoluteDifferences",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "getSumAbsoluteDifferences",
+      "rust": "get_sum_absolute_differences",
+      "typescript": "getSumAbsoluteDifferences"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

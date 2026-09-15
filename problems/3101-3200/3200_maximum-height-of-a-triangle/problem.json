@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3200,
+  "slug": "maximum-height-of-a-triangle",
+  "title": "Maximum Height of a Triangle",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxHeightOfTriangle",
+    "parameters": [
+      {
+        "name": "red",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "blue",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxHeightOfTriangle",
+      "rust": "max_height_of_triangle",
+      "typescript": "maxHeightOfTriangle"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

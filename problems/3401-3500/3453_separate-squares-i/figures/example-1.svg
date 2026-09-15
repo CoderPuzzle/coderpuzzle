@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- squares = [[0,0,1],[2,2,1]]; total area 2, half = 1; minimal y with area below >= 1 is exactly 1 (verified by binary search) -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <rect x="110" y="214" width="72" height="72" fill="#f6ecd9" stroke="#b57f30" stroke-width="1.6"/>
+  <rect x="254" y="70" width="72" height="72" fill="#e6ecfb" stroke="#4169E1" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <line x1="96" y1="286" x2="400" y2="286" marker-end="url(#arrow)"/>
+    <line x1="110" y1="300" x2="110" y2="56" marker-end="url(#arrow)"/>
+    <line x1="182" y1="286" x2="182" y2="291"/>
+    <line x1="254" y1="286" x2="254" y2="291"/>
+    <line x1="326" y1="286" x2="326" y2="291"/>
+    <line x1="105" y1="214" x2="110" y2="214"/>
+    <line x1="105" y1="142" x2="110" y2="142"/>
+    <line x1="105" y1="70" x2="110" y2="70"/>
+  </g>
+  <g fill="#5c6b76" font-size="11" text-anchor="middle">
+    <text x="182" y="304">1</text>
+    <text x="254" y="304">2</text>
+    <text x="326" y="304">3</text>
+    <text x="98" y="218">1</text>
+    <text x="98" y="146">2</text>
+    <text x="98" y="74">3</text>
+    <text x="98" y="304">0</text>
+  </g>
+  <line x1="92" y1="214" x2="396" y2="214" stroke="#42525e" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <text x="402" y="218" fill="#42525e" font-size="12.5" font-weight="600">y = 1</text>
+  <text x="300" y="322" text-anchor="middle" fill="#1a2026" font-size="13.5">any line with <tspan fill="#4169E1" font-weight="700">1 ≤ y ≤ 2</tspan> leaves 1 square unit above and below; the minimum is <tspan fill="#4169E1" font-weight="700">y = 1</tspan></text>
+</svg>

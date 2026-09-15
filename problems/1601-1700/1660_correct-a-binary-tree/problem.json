@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1660,
+  "slug": "correct-a-binary-tree",
+  "title": "Correct a Binary Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "correctBinaryTree",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "fromNode",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "toNode",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "tree_node",
+    "return_type": {
+      "kind": "binary_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "correctBinaryTree",
+      "rust": "correct_binary_tree",
+      "typescript": "correctBinaryTree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

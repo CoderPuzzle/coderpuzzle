@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 400" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="460" height="400" fill="#ffffff"/>
+  <text x="20" y="26" fill="#1a2026" font-weight="600">s = "abcabcbb" — the window leaps over each conflict (best = 3)</text>
+  <!-- index ruler -->
+  <g fill="#8a94a0" font-size="10.5" text-anchor="middle">
+    <text x="140" y="48">0</text><text x="172" y="48">1</text><text x="204" y="48">2</text><text x="236" y="48">3</text><text x="268" y="48">4</text><text x="300" y="48">5</text><text x="332" y="48">6</text><text x="364" y="48">7</text>
+  </g>
+  <!-- snapshot 1: i=3 -->
+  <g>
+    <text x="24" y="88" fill="#1a2026" font-weight="600">i = 3</text>
+    <g stroke="#1a2026" stroke-width="1.4">
+      <rect x="124" y="70" width="32" height="30" fill="#ffffff"/>
+      <rect x="156" y="70" width="32" height="30" fill="#e9eefb"/>
+      <rect x="188" y="70" width="32" height="30" fill="#e9eefb"/>
+      <rect x="220" y="70" width="32" height="30" fill="#e9eefb"/>
+      <rect x="220" y="70" width="32" height="30" fill="none" stroke="#4169E1" stroke-width="2.2"/>
+      <rect x="252" y="70" width="32" height="30" fill="#ffffff"/>
+      <rect x="284" y="70" width="32" height="30" fill="#ffffff"/>
+      <rect x="316" y="70" width="32" height="30" fill="#ffffff"/>
+      <rect x="348" y="70" width="32" height="30" fill="#ffffff"/>
+    </g>
+    <g fill="#1a2026" text-anchor="middle" font-weight="600">
+      <text x="140" y="90">a</text><text x="172" y="90">b</text><text x="204" y="90">c</text><text x="236" y="90">a</text><text x="268" y="90">b</text><text x="300" y="90">c</text><text x="332" y="90">b</text><text x="364" y="90">b</text>
+    </g>
+    <text x="124" y="120" fill="#5b6470" font-size="11.5">'a' seen at 0 is inside the window - start leaps to 1. Window "bca", len 3.</text>
+  </g>
+  <!-- snapshot 2: i=5 -->
+  <g>
+    <text x="24" y="168" fill="#1a2026" font-weight="600">i = 5</text>
+    <g stroke="#1a2026" stroke-width="1.4">
+      <rect x="124" y="150" width="32" height="30" fill="#ffffff"/>
+      <rect x="156" y="150" width="32" height="30" fill="#ffffff"/>
+      <rect x="188" y="150" width="32" height="30" fill="#ffffff"/>
+      <rect x="220" y="150" width="32" height="30" fill="#e9eefb"/>
+      <rect x="252" y="150" width="32" height="30" fill="#e9eefb"/>
+      <rect x="284" y="150" width="32" height="30" fill="#e9eefb"/>
+      <rect x="284" y="150" width="32" height="30" fill="none" stroke="#4169E1" stroke-width="2.2"/>
+      <rect x="316" y="150" width="32" height="30" fill="#ffffff"/>
+      <rect x="348" y="150" width="32" height="30" fill="#ffffff"/>
+    </g>
+    <g fill="#1a2026" text-anchor="middle" font-weight="600">
+      <text x="140" y="170">a</text><text x="172" y="170">b</text><text x="204" y="170">c</text><text x="236" y="170">a</text><text x="268" y="170">b</text><text x="300" y="170">c</text><text x="332" y="170">b</text><text x="364" y="170">b</text>
+    </g>
+    <text x="124" y="200" fill="#5b6470" font-size="11.5">'c' seen at 2 is inside the window - start leaps to 3. Window "abc", len 3.</text>
+  </g>
+  <!-- snapshot 3: i=6 -->
+  <g>
+    <text x="24" y="248" fill="#1a2026" font-weight="600">i = 6</text>
+    <g stroke="#1a2026" stroke-width="1.4">
+      <rect x="124" y="230" width="32" height="30" fill="#ffffff"/>
+      <rect x="156" y="230" width="32" height="30" fill="#ffffff"/>
+      <rect x="188" y="230" width="32" height="30" fill="#ffffff"/>
+      <rect x="220" y="230" width="32" height="30" fill="#ffffff"/>
+      <rect x="252" y="230" width="32" height="30" fill="#ffffff"/>
+      <rect x="284" y="230" width="32" height="30" fill="#e9eefb"/>
+      <rect x="316" y="230" width="32" height="30" fill="#e9eefb"/>
+      <rect x="316" y="230" width="32" height="30" fill="none" stroke="#4169E1" stroke-width="2.2"/>
+      <rect x="348" y="230" width="32" height="30" fill="#ffffff"/>
+    </g>
+    <g fill="#1a2026" text-anchor="middle" font-weight="600">
+      <text x="140" y="250">a</text><text x="172" y="250">b</text><text x="204" y="250">c</text><text x="236" y="250">a</text><text x="268" y="250">b</text><text x="300" y="250">c</text><text x="332" y="250">b</text><text x="364" y="250">b</text>
+    </g>
+    <text x="124" y="280" fill="#5b6470" font-size="11.5">'b' seen at 4 is inside the window - start leaps to 5. Window "cb", len 2.</text>
+  </g>
+  <!-- snapshot 4: i=7 -->
+  <g>
+    <text x="24" y="328" fill="#1a2026" font-weight="600">i = 7</text>
+    <g stroke="#1a2026" stroke-width="1.4">
+      <rect x="124" y="310" width="32" height="30" fill="#ffffff"/>
+      <rect x="156" y="310" width="32" height="30" fill="#ffffff"/>
+      <rect x="188" y="310" width="32" height="30" fill="#ffffff"/>
+      <rect x="220" y="310" width="32" height="30" fill="#ffffff"/>
+      <rect x="252" y="310" width="32" height="30" fill="#ffffff"/>
+      <rect x="284" y="310" width="32" height="30" fill="#ffffff"/>
+      <rect x="316" y="310" width="32" height="30" fill="#e9eefb"/>
+      <rect x="316" y="310" width="32" height="30" fill="none" stroke="#4169E1" stroke-width="2.2"/>
+      <rect x="348" y="310" width="32" height="30" fill="#ffffff"/>
+    </g>
+    <g fill="#1a2026" text-anchor="middle" font-weight="600">
+      <text x="140" y="330">a</text><text x="172" y="330">b</text><text x="204" y="330">c</text><text x="236" y="330">a</text><text x="268" y="330">b</text><text x="300" y="330">c</text><text x="332" y="330">b</text><text x="364" y="330">b</text>
+    </g>
+    <text x="124" y="360" fill="#5b6470" font-size="11.5">'b' seen at 6 is inside the window - start leaps to 7. Window "b", len 1.</text>
+  </g>
+  <text x="20" y="390" fill="#5b6470" font-size="11.5">Shaded cells are the current window s[start..i]; the boxed cell is the character being processed.</text>
+</svg>

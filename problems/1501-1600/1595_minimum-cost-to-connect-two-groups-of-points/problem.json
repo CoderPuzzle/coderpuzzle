@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1595,
+  "slug": "minimum-cost-to-connect-two-groups-of-points",
+  "title": "Minimum Cost to Connect Two Groups of Points",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Matrix",
+    "Bitmask",
+    "Bipartite Graph",
+    "Successive Shortest Path Algorithm",
+    "Matching (Graph)",
+    "Minimum-Cost Flow",
+    "Flow Network"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Matrix",
+    "Bitmask",
+    "Bipartite Graph",
+    "Successive Shortest Path Algorithm",
+    "Matching (Graph)",
+    "Minimum-Cost Flow",
+    "Flow Network"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "connectTwoGroups",
+    "parameters": [
+      {
+        "name": "cost",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "connectTwoGroups",
+      "rust": "connect_two_groups",
+      "typescript": "connectTwoGroups"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

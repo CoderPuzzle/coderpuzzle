@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 408" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+<line x1="127.14985851425088" y1="60.28991510855053" x2="189.42016978289894" y2="97.65210186973937" stroke="#4169E1" stroke-width="2.6" marker-end="url(#arrowB)"/>
+  <line x1="110.0" y1="70.0" x2="110.0" y2="146.0" stroke="#4169E1" stroke-width="2.6" marker-end="url(#arrowB)"/>
+  <line x1="192.8501414857491" y1="120.28991510855053" x2="130.57983021710106" y2="157.65210186973937" stroke="#4169E1" stroke-width="2.6" marker-end="url(#arrowB)"/>
+  <line x1="210.0" y1="130.0" x2="210.0" y2="206.0" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrowB)"/>
+  <line x1="110.0" y1="190.0" x2="110.0" y2="306.0" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrowB)"/>
+  <line x1="70.5999788000636" y1="266.95996608010176" x2="97.28002543992368" y2="309.6480407038779" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrowB)"/>
+  <circle cx="110" cy="50" r="19" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="110" y="55" text-anchor="middle" font-weight="600">0</text>
+  <circle cx="210" cy="110" r="19" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="210" y="115" text-anchor="middle" font-weight="600">1</text>
+  <circle cx="110" cy="170" r="19" fill="#e8edf8" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="110" y="175" text-anchor="middle" font-weight="600">2</text>
+  <circle cx="210" cy="230" r="19" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="210" y="235" text-anchor="middle" font-weight="600">3</text>
+  <circle cx="60" cy="250" r="19" fill="#e8edf8" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="60" y="255" text-anchor="middle" font-weight="600">4</text>
+  <circle cx="110" cy="330" r="19" fill="#e8edf8" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="110" y="335" text-anchor="middle" font-weight="600">5</text>
+  <circle cx="220" cy="320" r="19" fill="#e8edf8" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="220" y="325" text-anchor="middle" font-weight="600">6</text>
+  <text x="260" y="60" fill="#4169E1" font-size="12">0 &#8594; 1 &#8594; 2 &#8594; 0 is a cycle:</text>
+  <text x="260" y="78" fill="#4169E1" font-size="12">0, 1, 3 never peel off the</text>
+  <text x="260" y="96" fill="#4169E1" font-size="12">reversed graph and stay unsafe.</text>
+  <text x="40" y="376" fill="#5c6b76" font-size="12">Peeling from the terminal nodes 5 and 6 backwards proves 2 and 4 safe:</text>
+  <text x="40" y="394" fill="#5c6b76" font-size="12">every node whose out-edges all lead to peeled (safe) nodes joins the queue.</text>
+</svg>

@@ -1,0 +1,6 @@
+from typing import List, Optional
+
+
+class Solution:
+    def maxDistance(self, grid: List[List[int]]) -> int:
+        raise NotImplementedError("TODO")

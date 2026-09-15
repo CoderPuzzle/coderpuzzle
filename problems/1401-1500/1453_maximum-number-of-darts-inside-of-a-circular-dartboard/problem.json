@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1453,
+  "slug": "maximum-number-of-darts-inside-of-a-circular-dartboard",
+  "title": "Maximum Number of Darts Inside of a Circular Dartboard",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Geometry"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numPoints",
+    "parameters": [
+      {
+        "name": "darts",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "r",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numPoints",
+      "rust": "num_points",
+      "typescript": "numPoints"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

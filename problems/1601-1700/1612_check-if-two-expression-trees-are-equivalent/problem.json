@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1612,
+  "slug": "check-if-two-expression-trees-are-equivalent",
+  "title": "Check If Two Expression Trees are Equivalent",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree",
+    "Counting"
+  ],
+  "topics": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "checkEquivalence",
+    "parameters": [
+      {
+        "name": "root1",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "root2",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "checkEquivalence",
+      "rust": "check_equivalence",
+      "typescript": "checkEquivalence"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

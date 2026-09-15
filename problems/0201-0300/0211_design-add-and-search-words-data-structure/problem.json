@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 211,
+  "slug": "design-add-and-search-words-data-structure",
+  "title": "Design Add and Search Words Data Structure",
+  "difficulty": "Medium",
+  "tags": [
+    "Trie",
+    "Backtracking"
+  ],
+  "topics": [
+    "String",
+    "Depth-First Search",
+    "Design",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "WordDictionary",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "addWord",
+        "parameters": [
+          {
+            "name": "word",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "search",
+        "parameters": [
+          {
+            "name": "word",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 51,
+  "slug": "n-queens",
+  "title": "N-Queens",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Backtracking"
+  ],
+  "topics": [
+    "Array",
+    "Backtracking",
+    "Algorithm X"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "solveNQueens",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "string"
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "solveNQueens",
+      "rust": "solve_n_queens",
+      "typescript": "solveNQueens"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 8192
+  }
+}

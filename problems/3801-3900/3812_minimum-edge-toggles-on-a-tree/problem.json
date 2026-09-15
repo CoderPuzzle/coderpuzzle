@@ -1,0 +1,85 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3812,
+  "slug": "minimum-edge-toggles-on-a-tree",
+  "title": "Minimum Edge Toggles on a Tree",
+  "difficulty": "Hard",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Graph Theory",
+    "Topological Sort",
+    "Sorting"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "Graph Theory",
+    "Topological Sort",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumFlips",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "start",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "minimumFlips",
+      "rust": "minimum_flips",
+      "typescript": "minimumFlips"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

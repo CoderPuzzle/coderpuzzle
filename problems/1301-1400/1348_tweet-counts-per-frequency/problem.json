@@ -1,0 +1,106 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1348,
+  "slug": "tweet-counts-per-frequency",
+  "title": "Tweet Counts Per Frequency",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Binary Search",
+    "Design",
+    "Sorting",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Binary Search",
+    "Design",
+    "Sorting",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "TweetCounts",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "recordTweet",
+        "parameters": [
+          {
+            "name": "tweetName",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "time",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        ]
+      },
+      {
+        "name": "getTweetCountsPerFrequency",
+        "parameters": [
+          {
+            "name": "freq",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "tweetName",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "startTime",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 64
+            }
+          },
+          {
+            "name": "endTime",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "entrypoints": {
+      "rust.recordTweet": "record_tweet",
+      "rust.getTweetCountsPerFrequency": "get_tweet_counts_per_frequency"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

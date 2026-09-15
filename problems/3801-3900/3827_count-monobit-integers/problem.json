@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3827,
+  "slug": "count-monobit-integers",
+  "title": "Count Monobit Integers",
+  "difficulty": "Easy",
+  "tags": [
+    "Bit Manipulation",
+    "Enumeration"
+  ],
+  "topics": [
+    "Bit Manipulation",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countMonobit",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countMonobit",
+      "rust": "count_monobit",
+      "typescript": "countMonobit"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

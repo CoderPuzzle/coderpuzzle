@@ -323,12 +323,11 @@ class TwoSumPackageTests(unittest.TestCase):
         )
 
     def test_problem_uses_one_language_agnostic_markdown_asset(self) -> None:
-        # one sharded bundle on disk, and inside it a single problem dir —
-        # no per-language problem assets
-        self.assertEqual(
-            [PROBLEMS_ROOT / "0001-0100" / "0001_pair-sum"],
-            [path for path in PROBLEMS_ROOT.glob("0001*/*") if path.is_dir()],
-        )
+        # The checked-in corpus keeps one language-agnostic statement per
+        # bundle rather than separate problem assets for each runtime.
+        bundle = PROBLEMS_ROOT / "0001-0100" / "0001_two-sum"
+        self.assertTrue(bundle.is_dir())
+        self.assertEqual([bundle / "statement.md"], list(bundle.glob("statement*.md")))
         self.assertEqual(3, self.public_count)
         self.assertTrue(all(set(case) == {"input", "expected"} for case in self.cases))
         self.assertNotIn("## Starters", self.manifest["description"])

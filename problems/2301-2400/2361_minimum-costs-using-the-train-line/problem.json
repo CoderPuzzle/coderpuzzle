@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2361,
+  "slug": "minimum-costs-using-the-train-line",
+  "title": "Minimum Costs Using the Train Line",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumCosts",
+    "parameters": [
+      {
+        "name": "regular",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "express",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "expressCost",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 64
+      }
+    },
+    "entrypoints": {
+      "go": "minimumCosts",
+      "rust": "minimum_costs",
+      "typescript": "minimumCosts"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

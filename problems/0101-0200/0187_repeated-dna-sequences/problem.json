@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "rolling_bits",
+  "id": 187,
+  "slug": "repeated-dna-sequences",
+  "title": "Repeated DNA Sequences",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Hash Table",
+    "Bit Manipulation",
+    "Rolling Hash"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Bit Manipulation",
+    "Sliding Window",
+    "Rolling Hash",
+    "Hash Function",
+    "Z Algorithm",
+    "Boyer–Moore String-Search Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findRepeatedDnaSequences",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "findRepeatedDnaSequences",
+      "rust": "find_repeated_dna_sequences",
+      "typescript": "findRepeatedDnaSequences"
+    },
+    "comparison": "sorted"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

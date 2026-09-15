@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 836,
+  "slug": "rectangle-overlap",
+  "title": "Rectangle Overlap",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "Geometry"
+  ],
+  "topics": [
+    "Math",
+    "Geometry"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "isRectangleOverlap",
+    "parameters": [
+      {
+        "name": "rec1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "rec2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "isRectangleOverlap",
+      "rust": "is_rectangle_overlap",
+      "typescript": "isRectangleOverlap"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,391 @@
+{
+  "public": [
+    {
+      "input": [
+        "My name is Haley",
+        "My Haley"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "of",
+        "A lot of words"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "Eating right now",
+        "Eating"
+      ],
+      "expected": true
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "a",
+        "a"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "x y z",
+        "x y z"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "a",
+        "b"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "b c",
+        "a b c"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "Frog cool",
+        "Frogs are cool"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "Hello Jane",
+        "Hello my name is Jane"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "My Haley",
+        "My name is Haley"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "Eating",
+        "Eating right now"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "A lot of words",
+        "of"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "a b c d",
+        "a d"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "a b",
+        "b a"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "a b a",
+        "a"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "a a a a",
+        "a a"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu",
+        "alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "alpha beta gamma delta lambda mu nu",
+        "alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu",
+        "alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu mv"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "x",
+        "x"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "x",
+        "y"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "x",
+        "x x"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "x",
+        "x y"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "x",
+        "y x"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "x",
+        "y y"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "y",
+        "x"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "y",
+        "y"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "y",
+        "x x"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "y",
+        "x y"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "y",
+        "y x"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "y",
+        "y y"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "x x",
+        "x"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "x x",
+        "y"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "x x",
+        "x x"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "x x",
+        "x y"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "x x",
+        "y x"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "x x",
+        "y y"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "x y",
+        "x"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "x y",
+        "y"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "x y",
+        "x x"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "x y",
+        "x y"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "x y",
+        "y x"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "x y",
+        "y y"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "y x",
+        "x"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "y x",
+        "y"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "y x",
+        "x x"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "y x",
+        "x y"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "y x",
+        "y x"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "y x",
+        "y y"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "y y",
+        "x"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "y y",
+        "y"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "y y",
+        "x x"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "y y",
+        "x y"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "y y",
+        "y x"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "y y",
+        "y y"
+      ],
+      "expected": true
+    }
+  ]
+}

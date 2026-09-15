@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "reference_solution": "persistent_segtree",
+  "id": 3762,
+  "slug": "minimum-operations-to-equalize-subarrays",
+  "title": "Minimum Operations to Equalize Subarrays",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Binary Search",
+    "Segment Tree",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Binary Search",
+    "Segment Tree",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minOperations",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 64
+      }
+    },
+    "entrypoints": {
+      "go": "minOperations",
+      "rust": "min_operations",
+      "typescript": "minOperations"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

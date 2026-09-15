@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 752,
+  "slug": "open-the-lock",
+  "title": "Open the Lock",
+  "difficulty": "Medium",
+  "tags": [
+    "Breadth-First Search",
+    "String",
+    "Hash Table"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Breadth-First Search",
+    "Bidirectional Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "openLock",
+    "parameters": [
+      {
+        "name": "deadends",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "openLock",
+      "rust": "open_lock",
+      "typescript": "openLock"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

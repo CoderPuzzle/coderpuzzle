@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 365,
+  "slug": "water-and-jug-problem",
+  "title": "Water and Jug Problem",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Bézout's Lemma",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor",
+    "Extended Euclidean Algorithm"
+  ],
+  "topics": [
+    "Math",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Bézout's Lemma",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor",
+    "Extended Euclidean Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canMeasureWater",
+    "parameters": [
+      {
+        "name": "x",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "y",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canMeasureWater",
+      "rust": "can_measure_water",
+      "typescript": "canMeasureWater"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

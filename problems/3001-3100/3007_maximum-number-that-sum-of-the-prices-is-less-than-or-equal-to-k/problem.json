@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3007,
+  "slug": "maximum-number-that-sum-of-the-prices-is-less-than-or-equal-to-k",
+  "title": "Maximum Number That Sum of the Prices Is Less Than or Equal to K",
+  "difficulty": "Medium",
+  "tags": [
+    "Binary Search",
+    "Digit DP",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Math",
+    "Binary Search",
+    "Dynamic Programming",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findMaximumNumber",
+    "parameters": [
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "x",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "findMaximumNumber",
+      "rust": "find_maximum_number",
+      "typescript": "findMaximumNumber"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

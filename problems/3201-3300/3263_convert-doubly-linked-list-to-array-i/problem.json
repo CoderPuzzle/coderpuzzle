@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3263,
+  "slug": "convert-doubly-linked-list-to-array-i",
+  "title": "Convert Doubly Linked List to Array I",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Linked List",
+    "Doubly-Linked List"
+  ],
+  "topics": [
+    "Array",
+    "Linked List",
+    "Doubly-Linked List"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "toArray",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "doubly_list",
+    "return_type": {
+      "kind": "doubly_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      },
+      "class": "DoublyListNode"
+    },
+    "entrypoints": {
+      "go": "toArray",
+      "rust": "to_array",
+      "typescript": "toArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

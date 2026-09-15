@@ -1,0 +1,4 @@
+class Solution {
+  public:
+    int minimumRecolors(string blocks, int k) { throw logic_error("TODO"); }
+};

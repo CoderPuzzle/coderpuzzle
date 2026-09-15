@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2462,
+  "slug": "total-cost-to-hire-k-workers",
+  "title": "Total Cost to Hire K Workers",
+  "difficulty": "Medium",
+  "tags": [
+    "Heap",
+    "Two Pointers",
+    "Greedy",
+    "Array"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Heap (Priority Queue)",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "totalCost",
+    "parameters": [
+      {
+        "name": "costs",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "candidates",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "totalCost",
+      "rust": "total_cost",
+      "typescript": "totalCost"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

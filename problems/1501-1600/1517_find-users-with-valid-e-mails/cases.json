@@ -1,0 +1,181 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Users VALUES\n(1,'Winston','winston@leetcode.com'),\n(2,'Jonathan','jonathanisgreat'),\n(3,'Annabelle','bella-@leetcode.com'),\n(4,'Sally','sally.come@leetcode.com'),\n(5,'Marwan','quarz#2020@leetcode.com'),\n(6,'David','david69@gmail.com'),\n(7,'Shapiro','.shapo@leetcode.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "Winston",
+          "winston@leetcode.com"
+        ],
+        [
+          3,
+          "Annabelle",
+          "bella-@leetcode.com"
+        ],
+        [
+          4,
+          "Sally",
+          "sally.come@leetcode.com"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Users VALUES\n(1,'Digit1','9alan@leetcode.com'),\n(2,'Digit2','0start@leetcode.com'),\n(3,'Letter','a9start@leetcode.com');"
+      ],
+      "expected": [
+        [
+          3,
+          "Letter",
+          "a9start@leetcode.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Users VALUES\n(1,'Upper','ABC@leetcode.com'),\n(2,'Mixed','AbC123@leetcode.com'),\n(3,'Lower','abc123@leetcode.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "Upper",
+          "ABC@leetcode.com"
+        ],
+        [
+          2,
+          "Mixed",
+          "AbC123@leetcode.com"
+        ],
+        [
+          3,
+          "Lower",
+          "abc123@leetcode.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Users VALUES\n(1,'Hash','a#b@leetcode.com'),\n(2,'Space','a b@leetcode.com'),\n(3,'Plus','a+b@leetcode.com'),\n(4,'At','a@b@leetcode.com'),\n(5,'Slash','a/b@leetcode.com');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Users VALUES\n(1,'Underscore','a_b@leetcode.com'),\n(2,'Period','a.b@leetcode.com'),\n(3,'Dash','a-b@leetcode.com'),\n(4,'Combo','a_b.c-d9@leetcode.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "Underscore",
+          "a_b@leetcode.com"
+        ],
+        [
+          2,
+          "Period",
+          "a.b@leetcode.com"
+        ],
+        [
+          3,
+          "Dash",
+          "a-b@leetcode.com"
+        ],
+        [
+          4,
+          "Combo",
+          "a_b.c-d9@leetcode.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Users VALUES\n(1,'WrongDomain','a@leetcode.org'),\n(2,'UpperDomain','a@LEETCODE.COM'),\n(3,'ExtraChar','a@leetcode.comx'),\n(4,'MissingDomain','a@leetcod.com'),\n(5,'Correct','a@leetcode.com');"
+      ],
+      "expected": [
+        [
+          5,
+          "Correct",
+          "a@leetcode.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Users VALUES\n(1,'BareDomain','@leetcode.com'),\n(2,'NoAt','noatleetcodecom'),\n(3,'JustLetter','a@leetcode.com');"
+      ],
+      "expected": [
+        [
+          3,
+          "JustLetter",
+          "a@leetcode.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Users VALUES\n(1,'One','z@leetcode.com'),\n(2,'Two','9@leetcode.com'),\n(3,'Three','_@leetcode.com'),\n(4,'Four','.@leetcode.com'),\n(5,'Five','-@leetcode.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "One",
+          "z@leetcode.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Users VALUES\n(1,'Alice','alice.smith@leetcode.com'),\n(2,'Bob','bob_jones-99@leetcode.com'),\n(3,'Carl','2carl@leetcode.com'),\n(4,'Dana','dana@leetcode.co'),\n(5,'Eve','eve@LEETCODE.com'),\n(6,'Finn','finn#99@leetcode.com'),\n(7,'Gina','.gina@leetcode.com'),\n(8,'Hank','hank@leetcode.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "Alice",
+          "alice.smith@leetcode.com"
+        ],
+        [
+          2,
+          "Bob",
+          "bob_jones-99@leetcode.com"
+        ],
+        [
+          8,
+          "Hank",
+          "hank@leetcode.com"
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Users VALUES\n(7,'Shapiro','.shapo@leetcode.com'),\n(6,'David','david69@gmail.com'),\n(5,'Marwan','quarz#2020@leetcode.com'),\n(4,'Sally','sally.come@leetcode.com'),\n(3,'Annabelle','bella-@leetcode.com'),\n(2,'Jonathan','jonathanisgreat'),\n(1,'Winston','winston@leetcode.com');"
+      ],
+      "expected": [
+        [
+          1,
+          "Winston",
+          "winston@leetcode.com"
+        ],
+        [
+          3,
+          "Annabelle",
+          "bella-@leetcode.com"
+        ],
+        [
+          4,
+          "Sally",
+          "sally.come@leetcode.com"
+        ]
+      ]
+    }
+  ]
+}

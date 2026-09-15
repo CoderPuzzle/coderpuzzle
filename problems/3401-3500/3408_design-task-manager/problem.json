@@ -1,0 +1,120 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3408,
+  "slug": "design-task-manager",
+  "title": "Design Task Manager",
+  "difficulty": "Medium",
+  "tags": [
+    "Heap",
+    "Hash Table"
+  ],
+  "topics": [
+    "Hash Table",
+    "Design",
+    "Heap (Priority Queue)",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "TaskManager",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "tasks",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "add",
+        "parameters": [
+          {
+            "name": "userId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "taskId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "priority",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "edit",
+        "parameters": [
+          {
+            "name": "taskId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "newPriority",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "rmv",
+        "parameters": [
+          {
+            "name": "taskId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "execTop",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

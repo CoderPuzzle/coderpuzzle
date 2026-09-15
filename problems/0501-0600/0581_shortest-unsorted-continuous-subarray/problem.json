@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 581,
+  "slug": "shortest-unsorted-continuous-subarray",
+  "title": "Shortest Unsorted Continuous Subarray",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Stack",
+    "Greedy",
+    "Sorting",
+    "Monotonic Stack"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Stack",
+    "Greedy",
+    "Sorting",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findUnsortedSubarray",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "findUnsortedSubarray",
+      "rust": "find_unsorted_subarray",
+      "typescript": "findUnsortedSubarray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

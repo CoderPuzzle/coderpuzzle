@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2242,
+  "slug": "maximum-score-of-a-node-sequence",
+  "title": "Maximum Score of a Node Sequence",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Graph",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "Graph Theory",
+    "Sorting",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumScore",
+    "parameters": [
+      {
+        "name": "scores",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumScore",
+      "rust": "maximum_score",
+      "typescript": "maximumScore"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

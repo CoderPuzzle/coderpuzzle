@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1780,
+  "slug": "check-if-number-is-a-sum-of-powers-of-three",
+  "title": "Check if Number is a Sum of Powers of Three",
+  "difficulty": "Medium",
+  "tags": [
+    "Math"
+  ],
+  "topics": [
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "checkPowersOfThree",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "checkPowersOfThree",
+      "rust": "check_powers_of_three",
+      "typescript": "checkPowersOfThree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

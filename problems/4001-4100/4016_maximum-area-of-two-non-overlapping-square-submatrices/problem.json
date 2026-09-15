@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 4016,
+  "slug": "maximum-area-of-two-non-overlapping-square-submatrices",
+  "title": "Maximum Area of Two Non-Overlapping Square Submatrices",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Binary Search",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxArea",
+    "parameters": [
+      {
+        "name": "mat",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxArea",
+      "rust": "max_area",
+      "typescript": "maxArea"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

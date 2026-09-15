@@ -1,0 +1,91 @@
+{
+  "schema_version": 2,
+  "reference_solution": "dijkstra_stops",
+  "id": 787,
+  "slug": "cheapest-flights-within-k-stops",
+  "title": "Cheapest Flights Within K Stops",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "Shortest Path",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Heap (Priority Queue)",
+    "Shortest Path"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findCheapestPrice",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "flights",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "src",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "dst",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "findCheapestPrice",
+      "rust": "find_cheapest_price",
+      "typescript": "findCheapestPrice"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

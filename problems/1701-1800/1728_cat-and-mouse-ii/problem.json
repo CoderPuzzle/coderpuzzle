@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1728,
+  "slug": "cat-and-mouse-ii",
+  "title": "Cat and Mouse II",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Graph Theory",
+    "Topological Sort",
+    "Memoization",
+    "Minimax",
+    "Matrix",
+    "Game Theory",
+    "Zero-Sum Game"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Graph Theory",
+    "Topological Sort",
+    "Memoization",
+    "Minimax",
+    "Matrix",
+    "Game Theory",
+    "Zero-Sum Game"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canMouseWin",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "catJump",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "mouseJump",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canMouseWin",
+      "rust": "can_mouse_win",
+      "typescript": "canMouseWin"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,8 @@
+class LUPrefix {
+
+    public LUPrefix(int n) {}
+
+    public void upload(int video) {}
+
+    public int longest() {}
+}

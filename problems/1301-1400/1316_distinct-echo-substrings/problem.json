@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1316,
+  "slug": "distinct-echo-substrings",
+  "title": "Distinct Echo Substrings",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Rolling Hash",
+    "Hash Set"
+  ],
+  "topics": [
+    "String",
+    "Trie",
+    "Rolling Hash",
+    "Suffix Array",
+    "Hash Function",
+    "Suffix Automaton",
+    "Suffix Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "distinctEchoSubstrings",
+    "parameters": [
+      {
+        "name": "text",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "distinctEchoSubstrings",
+      "rust": "distinct_echo_substrings",
+      "typescript": "distinctEchoSubstrings"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1662,
+  "slug": "check-if-two-string-arrays-are-equivalent",
+  "title": "Check If Two String Arrays are Equivalent",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "topics": [
+    "Array",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "arrayStringsAreEqual",
+    "parameters": [
+      {
+        "name": "word1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "word2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "arrayStringsAreEqual",
+      "rust": "array_strings_are_equal",
+      "typescript": "arrayStringsAreEqual"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

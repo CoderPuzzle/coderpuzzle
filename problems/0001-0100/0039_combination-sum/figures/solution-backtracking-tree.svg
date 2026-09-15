@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="690" height="290" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a94a0"/>
+    </marker>
+  </defs>
+  <text x="20" y="24" fill="#1a2026" font-weight="600">Search tree for candidates = [2,3,6,7], target = 7 (node label: path, remaining)</text>
+  <!-- edges -->
+  <g stroke="#8a94a0" stroke-width="1.3" fill="none">
+    <line x1="330" y1="52" x2="140" y2="86" marker-end="url(#arr)"/>
+    <line x1="330" y1="52" x2="300" y2="86" marker-end="url(#arr)"/>
+    <line x1="330" y1="52" x2="470" y2="86" marker-end="url(#arr)"/>
+    <line x1="330" y1="52" x2="610" y2="86" marker-end="url(#arr)"/>
+    <line x1="140" y1="112" x2="80" y2="146" marker-end="url(#arr)"/>
+    <line x1="140" y1="112" x2="220" y2="146" marker-end="url(#arr)"/>
+    <line x1="300" y1="112" x2="360" y2="146" marker-end="url(#arr)"/>
+    <line x1="80" y1="172" x2="70" y2="204" marker-end="url(#arr)"/>
+    <line x1="80" y1="172" x2="215" y2="204" marker-end="url(#arr)"/>
+  </g>
+  <text x="96" y="106" fill="#4169E1" font-size="11">same index - reuse allowed</text>
+  <!-- level 2 -->
+  <g stroke="#1a2026" stroke-width="1.5" fill="#ffffff">
+    <rect x="70" y="90" width="140" height="24" rx="12"/>
+    <rect x="230" y="90" width="140" height="24" rx="12"/>
+    <rect x="410" y="90" width="120" height="24" rx="12"/>
+    <rect x="540" y="90" width="140" height="24" rx="12"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="140" y="107">[2], remaining 5</text>
+    <text x="300" y="107">[3], remaining 4</text>
+    <text x="470" y="107">[6], rem 1</text>
+    <text x="610" y="107">[7], remaining 0</text>
+  </g>
+  <!-- level 3 -->
+  <g stroke="#1a2026" stroke-width="1.5" fill="#ffffff">
+    <rect x="10" y="150" width="140" height="24" rx="12"/>
+    <rect x="160" y="150" width="120" height="24" rx="12"/>
+    <rect x="300" y="150" width="120" height="24" rx="12"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="80" y="167">[2,2], rem 3</text>
+    <text x="220" y="167">[2,3], rem 2</text>
+    <text x="360" y="167">[3,3], rem 1</text>
+  </g>
+  <text x="220" y="192" fill="#8a94a0" font-size="10.5" text-anchor="middle">dead end</text>
+  <text x="360" y="192" fill="#8a94a0" font-size="10.5" text-anchor="middle">dead end</text>
+  <text x="470" y="126" fill="#8a94a0" font-size="10.5" text-anchor="middle">dead end</text>
+  <text x="610" y="126" fill="#4169E1" font-size="10.5" text-anchor="middle" font-weight="600">solution [7]</text>
+  <!-- level 4 -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="#e9eefb">
+    <rect x="5" y="204" width="130" height="26" rx="13"/>
+    <rect x="145" y="204" width="140" height="26" rx="13"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="700">
+    <text x="70" y="222">[2,2,2], rem 1</text>
+    <text x="215" y="222">[2,2,3], rem 0</text>
+  </g>
+  <text x="70" y="248" fill="#8a94a0" font-size="10.5" text-anchor="middle">dead end</text>
+  <text x="215" y="248" fill="#4169E1" font-size="10.5" text-anchor="middle" font-weight="600">solution [2,2,3]</text>
+  <text x="20" y="278" fill="#5b6470" font-size="11.5">Recursing with the same index i (not i+1) permits unlimited reuse; entries before i stay forbidden, so every path is nondecreasing.</text>
+</svg>

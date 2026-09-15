@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1094,
+  "slug": "car-pooling",
+  "title": "Car Pooling",
+  "difficulty": "Medium",
+  "tags": [
+    "Difference Array",
+    "Prefix Sum",
+    "Sorting",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Simulation",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "carPooling",
+    "parameters": [
+      {
+        "name": "trips",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "capacity",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "carPooling",
+      "rust": "car_pooling",
+      "typescript": "carPooling"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

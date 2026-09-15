@@ -1,0 +1,95 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1865,
+  "slug": "finding-pairs-with-a-certain-sum",
+  "title": "Finding Pairs With a Certain Sum",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "FindSumPairs",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "nums1",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        },
+        {
+          "name": "nums2",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "add",
+        "parameters": [
+          {
+            "name": "index",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "val",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "count",
+        "parameters": [
+          {
+            "name": "tot",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 2000,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

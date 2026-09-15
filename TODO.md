@@ -2,8 +2,7 @@
 
 Check off and delete as they land. Full context: CLAUDE.md,
 docs/api-and-cli.md, docs/TRUST-BOUNDARIES.md, and the
-verification-program record in
-`../coderpuzzle-problems/.localonly/VARIANT-WAVE-II.md`.
+adaptation-program record in `docs/FLEET-LOG.md`.
 
 ## Deferred — provided-code protection
 

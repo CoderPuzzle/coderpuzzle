@@ -1,0 +1,195 @@
+{
+  "public": [
+    {
+      "input": [
+        "AACCGGTT",
+        "AACCGGTA",
+        [
+          "AACCGGTA"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        "AACCGGTT",
+        "AAACGGTA",
+        [
+          "AACCGGTA",
+          "AACCGCTA",
+          "AAACGGTA"
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "AACCGGTT",
+        "AACCGGTT",
+        [
+          "AACCGGTA",
+          "AACCGCTA"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "AACCGGTT",
+        "AACCGGTT",
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "AACCGGTT",
+        "AACCGGTA",
+        []
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "AACCGGTT",
+        "AACCGGTA",
+        [
+          "AACCGCTA",
+          "AAACGGTA"
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "AAAAAAAA",
+        "CCCCAAAA",
+        [
+          "CAAAAAAA",
+          "CCAAAAAA",
+          "CCCAAAAA",
+          "CCCCAAAA"
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        "AACCGGTT",
+        "AACCGGAA",
+        [
+          "AACCGGAA"
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "AAAAAAAA",
+        "CCAAAAAA",
+        [
+          "TAAAAAAA",
+          "TTAAAAAA",
+          "CTAAAAAA",
+          "CAAAAAAA",
+          "CCAAAAAA"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        "AAAAAAAA",
+        "CGAAAAAA",
+        [
+          "CGAAAAAA",
+          "GAAAAAAA",
+          "CAAAAAAA"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        "AAAAAAAA",
+        "CCCCCCCC",
+        [
+          "CCCCCCCC",
+          "CCCCCCCA",
+          "CCCCCCAA",
+          "CCCCCAAA",
+          "CCCCAAAA",
+          "CCCAAAAA",
+          "CCAAAAAA",
+          "CAAAAAAA",
+          "TTTTTTTT",
+          "AAGGGGGG"
+        ]
+      ],
+      "expected": 8
+    },
+    {
+      "input": [
+        "AAAAAAAA",
+        "TAAAAAAA",
+        [
+          "CAAAAAAA",
+          "GAAAAAAA",
+          "TAAAAAAA"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        "AAAAAAAA",
+        "CCAAAAAA",
+        [
+          "AAAAAAAA",
+          "CAAAAAAA",
+          "CCAAAAAA"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        "AAAAAAAA",
+        "GGAAAAAA",
+        [
+          "GGAAAAAA",
+          "TAAAAAAA",
+          "TGAAAAAA"
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        "TTTTTTTT",
+        "TTTTTTTA",
+        [
+          "TTTTTTTA"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        "AAAAAAAA",
+        "CCGAAAAA",
+        [
+          "GAAAAAAA",
+          "GGAAAAAA",
+          "GGGAAAAA",
+          "CAAAAAAA",
+          "CCAAAAAA",
+          "CCGAAAAA"
+        ]
+      ],
+      "expected": 3
+    }
+  ]
+}

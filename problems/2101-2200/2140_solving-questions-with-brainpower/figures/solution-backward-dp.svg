@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- questions = [[3,2],[4,3],[4,4],[2,5]]; cells x = 90 + 120i, w 104 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="90" y="50" width="104" height="44"/><rect x="210" y="50" width="104" height="44"/>
+    <rect x="330" y="50" width="104" height="44"/><rect x="450" y="50" width="104" height="44"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="142" y="70" font-weight="600">3 pts</text><text x="142" y="86" fill="#5c6b76" font-size="12">skip 2</text>
+    <text x="262" y="70" font-weight="600">4 pts</text><text x="262" y="86" fill="#5c6b76" font-size="12">skip 3</text>
+    <text x="382" y="70" font-weight="600">4 pts</text><text x="382" y="86" fill="#5c6b76" font-size="12">skip 4</text>
+    <text x="502" y="70" font-weight="600">2 pts</text><text x="502" y="86" fill="#5c6b76" font-size="12">skip 5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="142" y="112">i = 0</text><text x="262" y="112">i = 1</text><text x="382" y="112">i = 2</text><text x="502" y="112">i = 3</text>
+  </g>
+  <!-- dp row -->
+  <text x="40" y="212" fill="#5c6b76" font-size="12.5">dp</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="142" y="212" fill="#4169E1">5</text><text x="262" y="212">4</text><text x="382" y="212">4</text>
+    <text x="502" y="212">2</text><text x="574" y="212" fill="#5c6b76" font-size="13">0</text>
+  </g>
+  <text x="574" y="112" text-anchor="middle" fill="#5c6b76" font-size="12">sentinel</text>
+  <!-- solve-jump arc from i=0 to i=3 -->
+  <path d="M 142 128 Q 322 168 502 128" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="322" y="166" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">solve 0: 3 + dp[3] = 5</text>
+  <!-- skip arrows dp[i] <- dp[i+1] -->
+  <g stroke="#5c6b76" stroke-width="1.5" fill="none">
+    <path d="M 232 232 Q 212 252 196 236" marker-end="url(#arrow)"/>
+    <path d="M 352 232 Q 332 252 316 236" marker-end="url(#arrow)"/>
+    <path d="M 472 232 Q 452 252 436 236" marker-end="url(#arrow)"/>
+  </g>
+  <text x="40" y="286" fill="#1a2026" font-size="13">Filling right to left, each dp[i] = max(dp[i + 1], points + dp[i + brainpower + 1]);</text>
+  <text x="40" y="304" fill="#1a2026" font-size="13">only question 0's solve-jump beats skipping, so dp[0] = <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

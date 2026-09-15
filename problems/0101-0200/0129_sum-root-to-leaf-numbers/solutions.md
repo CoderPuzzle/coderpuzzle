@@ -1,0 +1,11 @@
+# Solutions — Sum Root to Leaf Numbers
+
+## Iterative depth-first with a path-number stack
+
+A root-to-leaf path is read as a decimal number, so the walk carries one number per open path instead of a list of digits: the stack holds `(node, prefix)` pairs, where `prefix` is the number formed by the digits from the root down to but excluding `node`. Popping a node appends its digit — `prefix * 10 + node.val` — which is exactly how a number grows when one more digit is written after it. When a node with no children comes off the stack its path is finished, so the completed number joins the running total; the leaf is the only place a value is ever summed. An internal node contributes nothing on its own — its digit only matters inside the numbers of the leaves below it.
+
+The statement's own bounds settle the arithmetic. Depth never exceeds `10`, so a path number has at most ten digits, and since every digit is non-negative, every path number — and every prefix carried along the way — is bounded by the final total, which the statement promises fits a 32-bit integer; plain 32-bit accumulation therefore never overflows. The node range `[1, 1000]` also guarantees a root, so the walk starts at the first digit with no empty-tree case, and a single-node tree is simply a leaf whose number is its own digit, zeros included: the path `0 -> 0` is the number `0`.
+
+The traversal is deliberately iterative, in the same `(node, state)` shape as the other tree walks here, though the usual stack-safety argument is muted: the depth cap of `10` would keep even the recursive `sumNumbers(child, number * 10 + child.val)` at most ten calls deep. What the cap does instead is bound the memory — the explicit stack holds at most a couple of pending frames per level, a handful even for the 1000-node ceiling, where the node count rather than the depth is what grows. Each node is pushed exactly once, by its parent, so every shape — chains, complete trees, all-zero values, the near-complete 1000-node tree — costs one visit per node.
+
+**Complexity:** `O(n)` time — each node enters the stack exactly once, with constant-width arithmetic — and `O(h)` space for the stack, where `h` is the tree height: the statement caps depth at `10`, so the stack stays tiny no matter the node count.

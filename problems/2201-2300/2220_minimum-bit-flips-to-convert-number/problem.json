@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2220,
+  "slug": "minimum-bit-flips-to-convert-number",
+  "title": "Minimum Bit Flips to Convert Number",
+  "difficulty": "Easy",
+  "tags": [
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minBitFlips",
+    "parameters": [
+      {
+        "name": "start",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "goal",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minBitFlips",
+      "rust": "min_bit_flips",
+      "typescript": "minBitFlips"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

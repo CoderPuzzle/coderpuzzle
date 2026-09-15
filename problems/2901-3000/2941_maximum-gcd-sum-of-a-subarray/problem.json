@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2941,
+  "slug": "maximum-gcd-sum-of-a-subarray",
+  "title": "Maximum GCD-Sum of a Subarray",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Binary Search",
+    "Number Theory",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Binary Search",
+    "Number Theory",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxGcdSum",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "maxGcdSum",
+      "rust": "max_gcd_sum",
+      "typescript": "maxGcdSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

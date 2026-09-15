@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2223,
+  "slug": "sum-of-scores-of-built-strings",
+  "title": "Sum of Scores of Built Strings",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Z Algorithm"
+  ],
+  "topics": [
+    "String",
+    "Binary Search",
+    "Rolling Hash",
+    "Suffix Array",
+    "String Matching",
+    "Hash Function",
+    "Z Algorithm",
+    "Knuth–Morris–Pratt Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sumScores",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "sumScores",
+      "rust": "sum_scores",
+      "typescript": "sumScores"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

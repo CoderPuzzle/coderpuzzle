@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 366" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="aI" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+    <marker id="aA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+
+  <text x="91" y="18" text-anchor="middle" fill="#5c6b76" font-size="12.5">1 move — 2 ways</text>
+  <g stroke="#1a2026" stroke-width="1.4" fill="none">
+    <rect x="40" y="48" width="102" height="34"/>
+    <line x1="74" y1="48" x2="74" y2="82"/>
+    <line x1="108" y1="48" x2="108" y2="82"/>
+  </g>
+  <circle cx="91" cy="65" r="8" fill="#1a2026"/>
+  <line x1="91" y1="44" x2="91" y2="28" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+  <line x1="91" y1="86" x2="91" y2="102" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+
+  <text x="196" y="140" text-anchor="middle" fill="#5c6b76" font-size="12.5">2 moves — 3 + 3 ways</text>
+  <g stroke="#1a2026" stroke-width="1.4" fill="none">
+    <rect x="40" y="152" width="102" height="34"/>
+    <line x1="74" y1="152" x2="74" y2="186"/>
+    <line x1="108" y1="152" x2="108" y2="186"/>
+    <rect x="250" y="152" width="102" height="34"/>
+    <line x1="284" y1="152" x2="284" y2="186"/>
+    <line x1="318" y1="152" x2="318" y2="186"/>
+  </g>
+  <!-- left, then out top / left / bottom -->
+  <circle cx="91" cy="169" r="8" fill="#c9d2da"/>
+  <line x1="84" y1="169" x2="64" y2="169" stroke="#1a2026" stroke-width="1.4" marker-end="url(#aI)"/>
+  <circle cx="57" cy="169" r="8" fill="#1a2026"/>
+  <line x1="57" y1="148" x2="57" y2="126" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+  <line x1="57" y1="190" x2="57" y2="208" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+  <line x1="36" y1="169" x2="14" y2="169" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+  <!-- right, then out top / right / bottom -->
+  <circle cx="301" cy="169" r="8" fill="#c9d2da"/>
+  <line x1="308" y1="169" x2="328" y2="169" stroke="#1a2026" stroke-width="1.4" marker-end="url(#aI)"/>
+  <circle cx="335" cy="169" r="8" fill="#1a2026"/>
+  <line x1="335" y1="148" x2="335" y2="126" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+  <line x1="335" y1="190" x2="335" y2="208" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+  <line x1="360" y1="169" x2="382" y2="169" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+
+  <text x="196" y="254" text-anchor="middle" fill="#5c6b76" font-size="12.5">3 moves — 2 + 2 ways</text>
+  <g stroke="#1a2026" stroke-width="1.4" fill="none">
+    <rect x="40" y="266" width="102" height="34"/>
+    <line x1="74" y1="266" x2="74" y2="300"/>
+    <line x1="108" y1="266" x2="108" y2="300"/>
+    <rect x="250" y="266" width="102" height="34"/>
+    <line x1="284" y1="266" x2="284" y2="300"/>
+    <line x1="318" y1="266" x2="318" y2="300"/>
+  </g>
+  <!-- step left and back, then out top / bottom -->
+  <circle cx="91" cy="283" r="8" fill="#1a2026"/>
+  <path d="M 84 277 Q 70 265 62 273" fill="none" stroke="#1a2026" stroke-width="1.4" marker-end="url(#aI)"/>
+  <path d="M 62 293 Q 70 301 84 289" fill="none" stroke="#1a2026" stroke-width="1.4" marker-end="url(#aI)"/>
+  <line x1="91" y1="262" x2="91" y2="244" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+  <line x1="91" y1="304" x2="91" y2="322" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+  <!-- step right and back, then out top / bottom -->
+  <circle cx="301" cy="283" r="8" fill="#1a2026"/>
+  <path d="M 294 277 Q 308 265 316 273" fill="none" stroke="#1a2026" stroke-width="1.4" marker-end="url(#aI)"/>
+  <path d="M 316 293 Q 308 301 294 289" fill="none" stroke="#1a2026" stroke-width="1.4" marker-end="url(#aI)"/>
+  <line x1="301" y1="262" x2="301" y2="244" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+  <line x1="301" y1="304" x2="301" y2="322" stroke="#4169E1" stroke-width="2" marker-end="url(#aA)"/>
+
+  <text x="200" y="352" text-anchor="middle" fill="#1a2026" font-size="12.5">2 + 3 + 3 + 2 + 2 = 12 paths leave the grid within 3 moves</text>
+</svg>

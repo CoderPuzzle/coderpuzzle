@@ -1,0 +1,102 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(1,'Winston','USA'),\n(2,'Jonathan','Peru'),\n(3,'Moustafa','Egypt');\nINSERT INTO Product VALUES\n(10,'LC Phone',300),\n(20,'LC T-Shirt',10),\n(30,'LC Book',45),\n(40,'LC Keychain',2);\nINSERT INTO Orders VALUES\n(1,1,10,'2020-06-10',1),\n(2,1,20,'2020-07-01',1),\n(3,1,30,'2020-07-08',2),\n(4,2,10,'2020-06-15',2),\n(5,2,40,'2020-07-01',10),\n(6,3,20,'2020-06-24',2),\n(7,3,30,'2020-06-25',2),\n(9,3,30,'2020-05-08',3);"
+      ],
+      "expected": [
+        [
+          1,
+          "Winston"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(10,'NeverMeets','X');\nINSERT INTO Product VALUES\n(100,'Widget',30);\nINSERT INTO Orders VALUES\n(1001,10,100,'2020-06-05',1),\n(1002,10,100,'2020-07-05',1);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(11,'JuneOnly','X');\nINSERT INTO Product VALUES\n(101,'Gadget',50);\nINSERT INTO Orders VALUES\n(1003,11,101,'2020-06-01',3),\n(1004,11,101,'2020-07-01',1);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(12,'JulyOnly','X');\nINSERT INTO Product VALUES\n(101,'Gadget',50);\nINSERT INTO Orders VALUES\n(1005,12,101,'2020-06-01',1),\n(1006,12,101,'2020-07-01',3);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(13,'BoundaryDates','X');\nINSERT INTO Product VALUES\n(102,'BoundaryItem',50);\nINSERT INTO Orders VALUES\n(1007,13,102,'2020-05-31',10),\n(1008,13,102,'2020-06-01',2),\n(1009,13,102,'2020-07-31',2),\n(1010,13,102,'2020-08-01',10);"
+      ],
+      "expected": [
+        [
+          13,
+          "BoundaryDates"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(14,'MayEdge','X');\nINSERT INTO Product VALUES\n(103,'EdgeItem',200);\nINSERT INTO Orders VALUES\n(1011,14,103,'2020-05-31',1),\n(1012,14,103,'2020-07-15',1);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(15,'AugEdge','X');\nINSERT INTO Product VALUES\n(103,'EdgeItem',200);\nINSERT INTO Orders VALUES\n(1013,15,103,'2020-06-15',1),\n(1014,15,103,'2020-08-01',1);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(16,'MultiLine','X');\nINSERT INTO Product VALUES\n(104,'A',3),\n(105,'B',7),\n(106,'C',11);\nINSERT INTO Orders VALUES\n(1015,16,104,'2020-06-02',10),\n(1016,16,105,'2020-06-10',5),\n(1017,16,106,'2020-06-20',3),\n(1018,16,104,'2020-06-25',1),\n(1019,16,104,'2020-07-01',20),\n(1020,16,105,'2020-07-15',6);"
+      ],
+      "expected": [
+        [
+          16,
+          "MultiLine"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(20,'Alice','A'),\n(21,'Bob','B'),\n(22,'Cara','C');\nINSERT INTO Product VALUES\n(200,'P',100);\nINSERT INTO Orders VALUES\n(2001,20,200,'2020-06-01',1),\n(2002,20,200,'2020-07-01',1),\n(2003,21,200,'2020-06-01',1),\n(2004,22,200,'2020-07-02',2);"
+      ],
+      "expected": [
+        [
+          20,
+          "Alice"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(30,'O''Malley','IE');\nINSERT INTO Product VALUES\n(300,'Q',50);\nINSERT INTO Orders VALUES\n(3001,30,300,'2020-06-05',3),\n(3002,30,300,'2020-07-05',2);"
+      ],
+      "expected": [
+        [
+          30,
+          "O'Malley"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Customers VALUES\n(3,'Moustafa','Egypt'),\n(2,'Jonathan','Peru'),\n(1,'Winston','USA');\nINSERT INTO Product VALUES\n(40,'LC Keychain',2),\n(30,'LC Book',45),\n(20,'LC T-Shirt',10),\n(10,'LC Phone',300);\nINSERT INTO Orders VALUES\n(9,3,30,'2020-05-08',3),\n(7,3,30,'2020-06-25',2),\n(6,3,20,'2020-06-24',2),\n(5,2,40,'2020-07-01',10),\n(4,2,10,'2020-06-15',2),\n(3,1,30,'2020-07-08',2),\n(2,1,20,'2020-07-01',1),\n(1,1,10,'2020-06-10',1);"
+      ],
+      "expected": [
+        [
+          1,
+          "Winston"
+        ]
+      ]
+    }
+  ]
+}

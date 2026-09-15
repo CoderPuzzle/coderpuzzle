@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="330" fill="#ffffff"/>
+  <!-- 3x3 grid, cell 90, x=170 y=40; fills: water 0 dark, ring 1 mid, ring 2 light -->
+  <g fill="#4169E1">
+    <rect x="350" y="40" width="90" height="90"/><rect x="170" y="130" width="90" height="90"/>
+  </g>
+  <g fill="#9db4ea">
+    <rect x="170" y="40" width="90" height="90"/><rect x="260" y="40" width="90" height="90"/>
+    <rect x="260" y="130" width="90" height="90"/><rect x="350" y="130" width="90" height="90"/>
+    <rect x="170" y="220" width="90" height="90"/>
+  </g>
+  <g fill="#dbe4f6">
+    <rect x="260" y="220" width="90" height="90"/><rect x="350" y="220" width="90" height="90"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <rect x="170" y="40" width="90" height="90"/><rect x="260" y="40" width="90" height="90"/><rect x="350" y="40" width="90" height="90"/>
+    <rect x="170" y="130" width="90" height="90"/><rect x="260" y="130" width="90" height="90"/><rect x="350" y="130" width="90" height="90"/>
+    <rect x="170" y="220" width="90" height="90"/><rect x="260" y="220" width="90" height="90"/><rect x="350" y="220" width="90" height="90"/>
+  </g>
+  <!-- heights -->
+  <g text-anchor="middle" font-weight="600" font-size="17">
+    <text x="215" y="92" fill="#1a2026">1</text><text x="305" y="92" fill="#1a2026">1</text><text x="395" y="92" fill="#ffffff">0</text>
+    <text x="215" y="182" fill="#ffffff">0</text><text x="305" y="182" fill="#1a2026">1</text><text x="395" y="182" fill="#1a2026">1</text>
+    <text x="215" y="272" fill="#1a2026">1</text><text x="305" y="272" fill="#1a2026">2</text><text x="395" y="272" fill="#1a2026">2</text>
+  </g>
+  <!-- water markers -->
+  <g font-size="11.5" fill="#dbe4f6">
+    <text x="358" y="58">water</text><text x="178" y="148" fill="#dbe4f6">water</text>
+  </g>
+  <!-- narration -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="30" y="70">Both water cells enter</text>
+    <text x="30" y="86">the queue at height 0</text>
+    <text x="30" y="102">(dark blue). One BFS</text>
+    <text x="30" y="118">with many sources.</text>
+    <text x="30" y="150">The first ring settles</text>
+    <text x="30" y="166">at height 1 (mid blue);</text>
+    <text x="30" y="182">the far corner is still</text>
+    <text x="30" y="198">one step further away</text>
+    <text x="30" y="214">and peaks at 2.</text>
+  </g>
+  <text x="30" y="310" fill="#1a2026" font-size="13">Each cell ends at its distance to the nearest water, so no neighbor differs by more than 1.</text>
+</svg>

@@ -1,0 +1,19 @@
+/**
+ * @param {number[]} encoded
+ * @param {number} first
+ * @return {number[]}
+ */
+var decode = function (encoded, first) {
+    // XOR is its own inverse: canceling arr[i] out of
+    // encoded[i] = arr[i] ^ arr[i + 1] leaves
+    // arr[i + 1] = encoded[i] ^ arr[i]. Seed with first and unroll
+    // the chain left to right — the running element is the only
+    // unknown in the next equation.
+    const arr = [first];
+    let current = first;
+    for (const value of encoded) {
+        current ^= value;
+        arr.push(current);
+    }
+    return arr;
+};

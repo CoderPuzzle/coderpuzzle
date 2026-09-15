@@ -1,0 +1,275 @@
+{
+  "public": [
+    {
+      "input": [
+        [
+          "This",
+          "is",
+          "an",
+          "example",
+          "of",
+          "text",
+          "justification."
+        ],
+        16
+      ],
+      "expected": [
+        "This    is    an",
+        "example  of text",
+        "justification.  "
+      ]
+    },
+    {
+      "input": [
+        [
+          "What",
+          "must",
+          "be",
+          "acknowledgment",
+          "shall",
+          "be"
+        ],
+        16
+      ],
+      "expected": [
+        "What   must   be",
+        "acknowledgment  ",
+        "shall be        "
+      ]
+    },
+    {
+      "input": [
+        [
+          "Science",
+          "is",
+          "what",
+          "we",
+          "understand",
+          "well",
+          "enough",
+          "to",
+          "explain",
+          "to",
+          "a",
+          "computer.",
+          "Art",
+          "is",
+          "everything",
+          "else",
+          "we",
+          "do"
+        ],
+        20
+      ],
+      "expected": [
+        "Science  is  what we",
+        "understand      well",
+        "enough to explain to",
+        "a  computer.  Art is",
+        "everything  else  we",
+        "do                  "
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        [
+          "abcdefghijkl"
+        ],
+        12
+      ],
+      "expected": [
+        "abcdefghijkl"
+      ]
+    },
+    {
+      "input": [
+        [
+          "abcde",
+          "fg",
+          "hij"
+        ],
+        5
+      ],
+      "expected": [
+        "abcde",
+        "fg   ",
+        "hij  "
+      ]
+    },
+    {
+      "input": [
+        [
+          "aa",
+          "bb",
+          "cc",
+          "dd",
+          "ee"
+        ],
+        8
+      ],
+      "expected": [
+        "aa bb cc",
+        "dd ee   "
+      ]
+    },
+    {
+      "input": [
+        [
+          "aaa",
+          "b",
+          "cc"
+        ],
+        3
+      ],
+      "expected": [
+        "aaa",
+        "b  ",
+        "cc "
+      ]
+    },
+    {
+      "input": [
+        [
+          "hi"
+        ],
+        5
+      ],
+      "expected": [
+        "hi   "
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        1
+      ],
+      "expected": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b",
+          "c",
+          "dddddd"
+        ],
+        6
+      ],
+      "expected": [
+        "a  b c",
+        "dddddd"
+      ]
+    },
+    {
+      "input": [
+        [
+          "ab",
+          "cd",
+          "ef",
+          "ghij"
+        ],
+        7
+      ],
+      "expected": [
+        "ab   cd",
+        "ef ghij"
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "bb",
+          "ccc",
+          "dddd",
+          "z"
+        ],
+        14
+      ],
+      "expected": [
+        "a  bb ccc dddd",
+        "z             "
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "bb",
+          "ccc",
+          "dddd",
+          "zzzzzzzzz"
+        ],
+        15
+      ],
+      "expected": [
+        "a  bb  ccc dddd",
+        "zzzzzzzzz      "
+      ]
+    },
+    {
+      "input": [
+        [
+          "short",
+          "extraordinarilylongword",
+          "x"
+        ],
+        23
+      ],
+      "expected": [
+        "short                  ",
+        "extraordinarilylongword",
+        "x                      "
+      ]
+    },
+    {
+      "input": [
+        [
+          "aaaaaaaaaaaaaaaaaaaa",
+          "bbbbbbbbbbbbbbbbbbbb",
+          "cccccccccccccccccccc",
+          "dddddddddddddddddddd",
+          "eeeeeeeeeeeeeeeeeeee",
+          "ffffffffffffffffffff",
+          "gggggggggggggggggggg",
+          "hhhhhhhhhhhhhhhhhhhh",
+          "iiiiiiiiiiiiiiiiiiii",
+          "jjjjjjjjjjjjjjjjjjjj",
+          "kkkkkkkkkkkkkkkkkkkk",
+          "llllllllllllllllllll",
+          "mmmmmmmmmmmmmmmmmmmm"
+        ],
+        100
+      ],
+      "expected": [
+        "aaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbbbbbbbb       cccccccccccccccccccc      dddddddddddddddddddd",
+        "eeeeeeeeeeeeeeeeeeee       ffffffffffffffffffff       gggggggggggggggggggg      hhhhhhhhhhhhhhhhhhhh",
+        "iiiiiiiiiiiiiiiiiiii       jjjjjjjjjjjjjjjjjjjj       kkkkkkkkkkkkkkkkkkkk      llllllllllllllllllll",
+        "mmmmmmmmmmmmmmmmmmmm                                                                                "
+      ]
+    },
+    {
+      "input": [
+        [
+          "ab",
+          "cd"
+        ],
+        2
+      ],
+      "expected": [
+        "ab",
+        "cd"
+      ]
+    }
+  ]
+}

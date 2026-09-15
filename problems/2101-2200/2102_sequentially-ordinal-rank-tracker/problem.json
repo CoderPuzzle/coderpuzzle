@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2102,
+  "slug": "sequentially-ordinal-rank-tracker",
+  "title": "Sequentially Ordinal Rank Tracker",
+  "difficulty": "Hard",
+  "tags": [
+    "Design",
+    "Heap (Priority Queue)",
+    "Data Stream",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Design",
+    "Heap (Priority Queue)",
+    "Data Stream",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "SORTracker",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "add",
+        "parameters": [
+          {
+            "name": "name",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "score",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "get",
+        "parameters": [],
+        "return_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

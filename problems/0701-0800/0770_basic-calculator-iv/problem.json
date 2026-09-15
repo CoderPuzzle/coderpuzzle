@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 770,
+  "slug": "basic-calculator-iv",
+  "title": "Basic Calculator IV",
+  "difficulty": "Hard",
+  "tags": [
+    "Hash Table",
+    "Math",
+    "String",
+    "Stack",
+    "Recursion"
+  ],
+  "topics": [
+    "Hash Table",
+    "Math",
+    "String",
+    "Stack",
+    "Recursion"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "basicCalculatorIV",
+    "parameters": [
+      {
+        "name": "expression",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "evalvars",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "evalints",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "basicCalculatorIV",
+      "rust": "basic_calculator_iv",
+      "typescript": "basicCalculatorIV"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

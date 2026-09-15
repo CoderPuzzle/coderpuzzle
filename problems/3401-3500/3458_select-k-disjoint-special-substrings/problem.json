@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3458,
+  "slug": "select-k-disjoint-special-substrings",
+  "title": "Select K Disjoint Special Substrings",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Dynamic Programming",
+    "Greedy",
+    "Sorting"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Dynamic Programming",
+    "Greedy",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxSubstringLength",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "maxSubstringLength",
+      "rust": "max_substring_length",
+      "typescript": "maxSubstringLength"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

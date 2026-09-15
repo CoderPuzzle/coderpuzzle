@@ -1,0 +1,286 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,'Let us Code'),\n(2,'More than fifteen chars are here!');"
+      ],
+      "expected": [
+        [
+          2
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(301,'Valid tweet ok!'),\n(302,'Fifteen chars!!');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(401,'This tweet is 16'),\n(402,'0123456789ABCDEF');"
+      ],
+      "expected": [
+        [
+          401
+        ],
+        [
+          402
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(501,'Just 14 chars!'),\n(502,'Seventeen chars!!');"
+      ],
+      "expected": [
+        [
+          502
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(601,'x'),\n(602,'!'),\n(603,' ');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(701,'  !!  Code  !! '),\n(702,'Code Code Code  ');"
+      ],
+      "expected": [
+        [
+          702
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(801,'x'),\n(802,'Hello'),\n(803,'Good day'),\n(804,'Let us Code'),\n(805,'Hello world!!'),\n(806,'Fifteen chars!!'),\n(807,'Valid tweet ok!');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(901,'This tweet is 16'),\n(902,'Eighteen chars!!!!'),\n(903,'Twenty characters!!!'),\n(904,'Twenty five chars!!!!!!!!'),\n(905,'More than fifteen chars are here!');"
+      ],
+      "expected": [
+        [
+          901
+        ],
+        [
+          902
+        ],
+        [
+          903
+        ],
+        [
+          904
+        ],
+        [
+          905
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1001,'a'),\n(1002,'be'),\n(1003,'cfi'),\n(1004,'dgj!'),\n(1005,'eha!g'),\n(1006,'fib!h '),\n(1007,'gjc!i e'),\n(1008,'had!j fi'),\n(1009,'ibe!a gj!'),\n(1010,'jcf!b ha!g'),\n(1011,'adg!c ib!ha'),\n(1012,'beh!d jc!ibe'),\n(1013,'cfi!e ad!jcf '),\n(1014,'dgj!f be!adg !'),\n(1015,'eha!g cf!beh !g'),\n(1016,'fib!h dg!cfi !ha'),\n(1017,'gjc!i eh!dgj !ibe'),\n(1018,'had!j fi!eha !jcfi'),\n(1019,'ibe!a gj!fib !adgj!'),\n(1020,'jcf!b ha!gjc !beha! '),\n(1021,'adg!c ib!had !cfib! a'),\n(1022,'beh!d jc!ibe !dgjc! be'),\n(1023,'cfi!e ad!jcf !ehad! cfi'),\n(1024,'dgj!f be!adg !fibe! dgj!'),\n(1025,'eha!g cf!beh !gjcf! eha!g'),\n(1026,'fib!h dg!cfi !hadg! fib!ha'),\n(1027,'gjc!i eh!dgj !ibeh! gjc!ib '),\n(1028,'had!j fi!eha !jcfi! had!jc i'),\n(1029,'ibe!a gj!fib !adgj! ibe!ad j!'),\n(1030,'jcf!b ha!gjc !beha! jcf!be a!g'),\n(1031,'a'),\n(1032,'be'),\n(1033,'cfi'),\n(1034,'dgj!'),\n(1035,'eha!g'),\n(1036,'fib!h '),\n(1037,'gjc!i e'),\n(1038,'had!j fi'),\n(1039,'ibe!a gj!'),\n(1040,'jcf!b ha!g'),\n(1041,'adg!c ib!ha'),\n(1042,'beh!d jc!ibe'),\n(1043,'cfi!e ad!jcf '),\n(1044,'dgj!f be!adg !'),\n(1045,'eha!g cf!beh !g'),\n(1046,'fib!h dg!cfi !ha'),\n(1047,'gjc!i eh!dgj !ibe'),\n(1048,'had!j fi!eha !jcfi'),\n(1049,'ibe!a gj!fib !adgj!'),\n(1050,'jcf!b ha!gjc !beha! '),\n(1051,'adg!c ib!had !cfib! a'),\n(1052,'beh!d jc!ibe !dgjc! be'),\n(1053,'cfi!e ad!jcf !ehad! cfi'),\n(1054,'dgj!f be!adg !fibe! dgj!'),\n(1055,'eha!g cf!beh !gjcf! eha!g'),\n(1056,'fib!h dg!cfi !hadg! fib!ha'),\n(1057,'gjc!i eh!dgj !ibeh! gjc!ib '),\n(1058,'had!j fi!eha !jcfi! had!jc i'),\n(1059,'ibe!a gj!fib !adgj! ibe!ad j!'),\n(1060,'jcf!b ha!gjc !beha! jcf!be a!g'),\n(1061,'a'),\n(1062,'be'),\n(1063,'cfi'),\n(1064,'dgj!'),\n(1065,'eha!g'),\n(1066,'fib!h '),\n(1067,'gjc!i e'),\n(1068,'had!j fi'),\n(1069,'ibe!a gj!'),\n(1070,'jcf!b ha!g'),\n(1071,'adg!c ib!ha'),\n(1072,'beh!d jc!ibe'),\n(1073,'cfi!e ad!jcf '),\n(1074,'dgj!f be!adg !'),\n(1075,'eha!g cf!beh !g'),\n(1076,'fib!h dg!cfi !ha'),\n(1077,'gjc!i eh!dgj !ibe'),\n(1078,'had!j fi!eha !jcfi'),\n(1079,'ibe!a gj!fib !adgj!'),\n(1080,'jcf!b ha!gjc !beha! '),\n(1081,'adg!c ib!had !cfib! a'),\n(1082,'beh!d jc!ibe !dgjc! be'),\n(1083,'cfi!e ad!jcf !ehad! cfi'),\n(1084,'dgj!f be!adg !fibe! dgj!'),\n(1085,'eha!g cf!beh !gjcf! eha!g'),\n(1086,'fib!h dg!cfi !hadg! fib!ha'),\n(1087,'gjc!i eh!dgj !ibeh! gjc!ib '),\n(1088,'had!j fi!eha !jcfi! had!jc i'),\n(1089,'ibe!a gj!fib !adgj! ibe!ad j!'),\n(1090,'jcf!b ha!gjc !beha! jcf!be a!g'),\n(1091,'a'),\n(1092,'be'),\n(1093,'cfi'),\n(1094,'dgj!'),\n(1095,'eha!g'),\n(1096,'fib!h '),\n(1097,'gjc!i e'),\n(1098,'had!j fi'),\n(1099,'ibe!a gj!'),\n(1100,'jcf!b ha!g');"
+      ],
+      "expected": [
+        [
+          1016
+        ],
+        [
+          1017
+        ],
+        [
+          1018
+        ],
+        [
+          1019
+        ],
+        [
+          1020
+        ],
+        [
+          1021
+        ],
+        [
+          1022
+        ],
+        [
+          1023
+        ],
+        [
+          1024
+        ],
+        [
+          1025
+        ],
+        [
+          1026
+        ],
+        [
+          1027
+        ],
+        [
+          1028
+        ],
+        [
+          1029
+        ],
+        [
+          1030
+        ],
+        [
+          1046
+        ],
+        [
+          1047
+        ],
+        [
+          1048
+        ],
+        [
+          1049
+        ],
+        [
+          1050
+        ],
+        [
+          1051
+        ],
+        [
+          1052
+        ],
+        [
+          1053
+        ],
+        [
+          1054
+        ],
+        [
+          1055
+        ],
+        [
+          1056
+        ],
+        [
+          1057
+        ],
+        [
+          1058
+        ],
+        [
+          1059
+        ],
+        [
+          1060
+        ],
+        [
+          1076
+        ],
+        [
+          1077
+        ],
+        [
+          1078
+        ],
+        [
+          1079
+        ],
+        [
+          1080
+        ],
+        [
+          1081
+        ],
+        [
+          1082
+        ],
+        [
+          1083
+        ],
+        [
+          1084
+        ],
+        [
+          1085
+        ],
+        [
+          1086
+        ],
+        [
+          1087
+        ],
+        [
+          1088
+        ],
+        [
+          1089
+        ],
+        [
+          1090
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1208,'More than fifteen chars are here!'),\n(1203,'Let us Code'),\n(1215,'This tweet is 16'),\n(1201,'Hello'),\n(1211,'Valid tweet ok!');"
+      ],
+      "expected": [
+        [
+          1208
+        ],
+        [
+          1215
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(2000,'Hi!'),\n(2017,'had!j fi!eha !jcfi! had!jc i!ehad jcfi!e'),\n(3000,'Fifteen chars!!'),\n(9000,'0123456789ABCDEF'),\n(42,'y');"
+      ],
+      "expected": [
+        [
+          2017
+        ],
+        [
+          9000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(11,'Let us Code'),\n(12,'Let us Code!'),\n(13,'Let us Code!!!!'),\n(14,'Let us Code!!!!!'),\n(15,'Let us Code a Lot');"
+      ],
+      "expected": [
+        [
+          14
+        ],
+        [
+          15
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(5001,'Tiny note');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(5002,'This one runs well past the fifteen limit!');"
+      ],
+      "expected": [
+        [
+          5002
+        ]
+      ]
+    }
+  ]
+}

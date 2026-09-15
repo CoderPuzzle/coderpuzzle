@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3405,
+  "slug": "count-the-number-of-arrays-with-k-matching-adjacent-elements",
+  "title": "Count the Number of Arrays with K Matching Adjacent Elements",
+  "difficulty": "Hard",
+  "tags": [
+    "Combinatorics",
+    "Number Theory"
+  ],
+  "topics": [
+    "Math",
+    "Combinatorics",
+    "Fermat's Little Theorem"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countGoodArrays",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "m",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countGoodArrays",
+      "rust": "count_good_arrays",
+      "typescript": "countGoodArrays"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

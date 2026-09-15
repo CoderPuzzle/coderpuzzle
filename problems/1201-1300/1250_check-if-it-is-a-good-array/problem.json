@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1250,
+  "slug": "check-if-it-is-a-good-array",
+  "title": "Check If It Is a Good Array",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Number Theory",
+    "Bézout's Lemma",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor",
+    "Extended Euclidean Algorithm"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Number Theory",
+    "Bézout's Lemma",
+    "Euclidean Algorithm",
+    "Greatest Common Divisor",
+    "Extended Euclidean Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "isGoodArray",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "isGoodArray",
+      "rust": "is_good_array",
+      "typescript": "isGoodArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

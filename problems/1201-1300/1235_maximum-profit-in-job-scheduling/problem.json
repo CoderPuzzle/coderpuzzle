@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1235,
+  "slug": "maximum-profit-in-job-scheduling",
+  "title": "Maximum Profit in Job Scheduling",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Binary Search",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Dynamic Programming",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "jobScheduling",
+    "parameters": [
+      {
+        "name": "startTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "endTime",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "profit",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "jobScheduling",
+      "rust": "job_scheduling",
+      "typescript": "jobScheduling"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

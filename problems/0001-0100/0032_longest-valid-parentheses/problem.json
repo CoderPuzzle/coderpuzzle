@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "run_length_dp",
+  "id": 32,
+  "slug": "longest-valid-parentheses",
+  "title": "Longest Valid Parentheses",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Stack",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "String",
+    "Dynamic Programming",
+    "Stack",
+    "Bracket Sequences"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestValidParentheses",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "longestValidParentheses",
+      "rust": "longest_valid_parentheses",
+      "typescript": "longestValidParentheses"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

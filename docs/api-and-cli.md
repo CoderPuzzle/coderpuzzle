@@ -107,7 +107,7 @@ test an edited `cli.py` by bind-mounting it over `/runner/cli.py`.
   standard; directories walk for formattable files, skipping
   `node_modules` and hidden trees.
   - `--check` — report unformatted files, change nothing, exit 1 if
-    any. This is what CI runs over `problems-adapt`.
+    any. This is what CI runs over `problems/`.
   - `--report json` — non-mutating **tri-state JSON** per file (the
     same contract as `POST /format`, with `file` added):
     `formatted | unformatted (+ "code" text) | error
@@ -117,9 +117,8 @@ test an edited `cli.py` by bind-mounting it over `/runner/cli.py`.
   `starter.<ext>` for the languages the bundle already offers (the
   existing starter set is never widened), formatted by the pinned
   toolchain. `--style` defaults to `modern`; the provenance-aware
-  choice (MAPPING.json-driven) lives in the problems repo's
-  `scripts/gen_starters.py`. Requires the problems repo bind-mounted
-  at `/tools` (the loader shim is the schema contract).
+  choice (MAPPING.json-driven) lives in this repo's
+  `scripts/gen_starters.py`. Requires this repo bind-mounted at `/tools` (the loader shim is the schema contract).
 - `coderpuzzle judge <bundle-dir>` — judge **every** `solution*.<ext>` in
   the bundle through the real executors against **all** cases; all
   must pass every case. Assembles the bundle's own `provided/` sources
@@ -149,7 +148,7 @@ docker run --rm --user 0:0 \
     -v "$PWD/runner/cli.py:/runner/cli.py:ro" \
     -v "$PWD/runner/formatters.py:/runner/formatters.py:ro" \
     -v "$PWD:/work" -w /work \
-    ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle format --check problems-adapt
+    ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle format --check problems
 
 # run one solution file against its bundle's cases
 # (mount the repo root; the file is addressed from the working directory)
@@ -157,7 +156,7 @@ docker run --rm --user 0:0 \
     -v "$PWD/runner/cli.py:/runner/cli.py:ro" \
     -v "$PWD/runner/formatters.py:/runner/formatters.py:ro" \
     -v "$PWD:/work" -w /work \
-    ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle run problems-adapt/<shard>/<key>/my_draft.py
+    ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle run problems/<shard>/<key>/my_draft.py
 ```
 
 The convenience wrapper `scripts/format.sh` (coderpuzzle repo) does the

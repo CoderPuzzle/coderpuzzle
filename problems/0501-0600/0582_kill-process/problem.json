@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 582,
+  "slug": "kill-process",
+  "title": "Kill Process",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "killProcess",
+    "parameters": [
+      {
+        "name": "pid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "ppid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "kill",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "killProcess",
+      "rust": "kill_process",
+      "typescript": "killProcess"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

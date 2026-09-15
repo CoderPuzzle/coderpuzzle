@@ -8,10 +8,9 @@ protocol) but without sandboxing — trusted authoring-time verification.
 Usage: verify_solution.py <shard-qualified-bundle-key> [<ext> ...]
        (default exts: every solution.* present in the bundle)
 
-The key is resolved against the sibling coderpuzzle-problems checkout (or
-wherever CODERPUZZLE_PROBLEMS_BANK points); local toolchain binaries are
-expected on PATH (g++, go, rustc, node, javac/java) next to the repo's
-npm-installed tsc.
+The key is resolved against this repo's ``problems/`` tree (or the directory
+named by ``CODERPUZZLE_PROBLEMS``); local toolchain binaries are expected on
+PATH (g++, go, rustc, node, javac/java) next to the repo's npm-installed tsc.
 """
 import json
 import os
@@ -22,10 +21,10 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REPO = Path(os.environ.get(
-    "CODERPUZZLE_PROBLEMS_BANK", str(ROOT.parent / "coderpuzzle-problems")))
+PROBLEM_SET = Path(
+    os.environ.get("CODERPUZZLE_PROBLEMS", str(ROOT / "problems"))
+).expanduser().resolve()
 sys.path.insert(0, str(ROOT))
-os.environ.setdefault("CODERPUZZLE_PROBLEMS_DIR", str(REPO / "problems-adapt"))
 
 from api.app.judge import _compare  # noqa: E402
 from api.app import problems as problems_module  # noqa: E402
@@ -264,13 +263,14 @@ def main() -> None:
     if len(sys.argv) < 2:
         raise SystemExit("usage: verify_solution.py <shard-qualified-bundle-key> [<ext> ...] [--solution <file>]")
     key = sys.argv[1]
-    # Shard-qualified key under the adapted tree: either
-    # "problems-adapt/<shard>/<id>_<slug>" or "<shard>/<id>_<slug>".
-    bundle = (REPO / key).resolve()
+    # Accept either a direct bundle path or a shard-qualified key under the
+    # selected on-disk problem set.
+    direct = Path(key).expanduser()
+    bundle = direct.resolve() if direct.is_dir() else (PROBLEM_SET / key).resolve()
     if not bundle.is_dir():
-        bundle = (REPO / "problems-adapt" / key).resolve()
-    if not bundle.is_dir():
-        raise SystemExit(f"no bundle directory for {key!r} under {REPO}")
+        raise SystemExit(
+            f"no bundle directory for {key!r} under {PROBLEM_SET}"
+        )
     key = bundle.name
     arguments = sys.argv[2:]
     # --solution judges a file that lives outside the bundle against this

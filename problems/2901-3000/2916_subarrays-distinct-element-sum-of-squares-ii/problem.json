@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2916,
+  "slug": "subarrays-distinct-element-sum-of-squares-ii",
+  "title": "Subarrays Distinct Element Sum of Squares II",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Binary Indexed Tree",
+    "Segment Tree"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Binary Indexed Tree",
+    "Segment Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sumCounts",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "sumCounts",
+      "rust": "sum_counts",
+      "typescript": "sumCounts"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

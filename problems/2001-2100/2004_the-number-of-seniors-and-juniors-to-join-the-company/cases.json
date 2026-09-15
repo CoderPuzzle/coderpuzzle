@@ -1,0 +1,246 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Junior',10000),\n(9,'Junior',10000),\n(2,'Senior',20000),\n(11,'Senior',20000),\n(13,'Senior',50000),\n(4,'Junior',40000);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          2
+        ],
+        [
+          "Junior",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Junior',10000),\n(9,'Junior',10000),\n(2,'Senior',80000),\n(11,'Senior',80000),\n(13,'Senior',80000),\n(4,'Junior',40000);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          0
+        ],
+        [
+          "Junior",
+          3
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": [
+        [
+          "Senior",
+          0
+        ],
+        [
+          "Junior",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Senior',10000),\n(2,'Senior',20000),\n(3,'Senior',30000);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          3
+        ],
+        [
+          "Junior",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Junior',10000),\n(2,'Junior',20000),\n(3,'Junior',30000);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          0
+        ],
+        [
+          "Junior",
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Senior',70001),\n(2,'Junior',70001);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          0
+        ],
+        [
+          "Junior",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Senior',30000),\n(2,'Senior',40000),\n(3,'Junior',1);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          2
+        ],
+        [
+          "Junior",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Senior',45000),\n(2,'Junior',20000),\n(3,'Junior',10000),\n(4,'Junior',15000);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          1
+        ],
+        [
+          "Junior",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(9,'Senior',20000),\n(3,'Senior',20000),\n(7,'Senior',20000),\n(1,'Senior',20000),\n(20,'Junior',2500),\n(14,'Junior',2500),\n(16,'Junior',2500),\n(12,'Junior',2500);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          3
+        ],
+        [
+          "Junior",
+          4
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Senior',80000),\n(2,'Junior',35000),\n(3,'Junior',35000);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          0
+        ],
+        [
+          "Junior",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Senior',70000),\n(2,'Junior',1);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          1
+        ],
+        [
+          "Junior",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Senior',1000),\n(2,'Senior',1000),\n(3,'Senior',1000),\n(4,'Senior',1000),\n(5,'Senior',1000),\n(6,'Senior',1000),\n(7,'Senior',1000),\n(8,'Senior',1000),\n(9,'Senior',1000),\n(10,'Senior',1000),\n(11,'Senior',1000),\n(12,'Senior',1000),\n(13,'Senior',1000),\n(14,'Senior',1000),\n(15,'Senior',1000),\n(16,'Senior',1000),\n(17,'Senior',1000),\n(18,'Senior',1000),\n(19,'Senior',1000),\n(20,'Senior',1000),\n(21,'Junior',1000),\n(22,'Junior',1000),\n(23,'Junior',1000),\n(24,'Junior',1000),\n(25,'Junior',1000),\n(26,'Junior',1000),\n(27,'Junior',1000),\n(28,'Junior',1000),\n(29,'Junior',1000),\n(30,'Junior',1000),\n(31,'Junior',1000),\n(32,'Junior',1000),\n(33,'Junior',1000),\n(34,'Junior',1000),\n(35,'Junior',1000),\n(36,'Junior',1000),\n(37,'Junior',1000),\n(38,'Junior',1000),\n(39,'Junior',1000),\n(40,'Junior',1000),\n(41,'Junior',1000),\n(42,'Junior',1000),\n(43,'Junior',1000),\n(44,'Junior',1000),\n(45,'Junior',1000),\n(46,'Junior',1000),\n(47,'Junior',1000),\n(48,'Junior',1000),\n(49,'Junior',1000),\n(50,'Junior',1000),\n(51,'Junior',1000),\n(52,'Junior',1000),\n(53,'Junior',1000),\n(54,'Junior',1000),\n(55,'Junior',1000),\n(56,'Junior',1000),\n(57,'Junior',1000),\n(58,'Junior',1000),\n(59,'Junior',1000),\n(60,'Junior',1000),\n(61,'Junior',1000),\n(62,'Junior',1000),\n(63,'Junior',1000),\n(64,'Junior',1000),\n(65,'Junior',1000),\n(66,'Junior',1000),\n(67,'Junior',1000),\n(68,'Junior',1000),\n(69,'Junior',1000),\n(70,'Junior',1000);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          20
+        ],
+        [
+          "Junior",
+          50
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Senior',35000),\n(2,'Senior',35000),\n(3,'Junior',7000),\n(4,'Junior',7000),\n(5,'Junior',7000),\n(6,'Junior',7000),\n(7,'Junior',7000),\n(8,'Junior',7000),\n(9,'Junior',7000),\n(10,'Junior',7000),\n(11,'Junior',7000),\n(12,'Junior',7000);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          2
+        ],
+        [
+          "Junior",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Senior',69999),\n(2,'Senior',70000),\n(3,'Junior',1),\n(4,'Junior',70001);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          1
+        ],
+        [
+          "Junior",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Senior',40000),\n(2,'Senior',10000),\n(3,'Senior',20000),\n(4,'Senior',50000);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          3
+        ],
+        [
+          "Junior",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(1,'Senior',30000),\n(2,'Junior',10001),\n(3,'Senior',30000),\n(4,'Junior',5000),\n(5,'Junior',10000);"
+      ],
+      "expected": [
+        [
+          "Senior",
+          2
+        ],
+        [
+          "Junior",
+          1
+        ]
+      ]
+    }
+  ]
+}

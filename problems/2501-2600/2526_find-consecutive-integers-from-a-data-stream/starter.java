@@ -1,0 +1,6 @@
+class DataStream {
+
+    public DataStream(int value, int k) {}
+
+    public boolean consec(int num) {}
+}

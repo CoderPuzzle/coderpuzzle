@@ -1,0 +1,6 @@
+class Solution {
+
+    public long numberOfPairs(int[] nums1, int[] nums2, int diff) {
+        throw new UnsupportedOperationException("TODO");
+    }
+}

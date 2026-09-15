@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1510,
+  "slug": "stone-game-iv",
+  "title": "Stone Game IV",
+  "difficulty": "Hard",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Minimax",
+    "Game Theory",
+    "Nim Game",
+    "Sprague–Grundy Theorem",
+    "Zero-Sum Game"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Minimax",
+    "Game Theory",
+    "Nim Game",
+    "Sprague–Grundy Theorem",
+    "Zero-Sum Game"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "winnerSquareGame",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "winnerSquareGame",
+      "rust": "winner_square_game",
+      "typescript": "winnerSquareGame"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

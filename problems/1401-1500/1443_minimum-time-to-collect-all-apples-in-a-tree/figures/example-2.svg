@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="walk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e9e5b"/>
+    </marker>
+  </defs>
+  <rect width="520" height="290" fill="#ffffff"/>
+  <!-- unused edges -->
+  <g stroke="#9aa7b0" stroke-width="1.4">
+    <line x1="358" y1="149.2" x2="322" y2="200.8"/>
+    <line x1="382" y1="149.2" x2="418" y2="200.8"/>
+    <line x1="138" y1="149.2" x2="102" y2="200.8"/>
+  </g>
+  <!-- walked edges -->
+  <g stroke="#2e9e5b" stroke-width="2.2">
+    <line x1="243" y1="64.4" x2="167" y2="119.6" marker-start="url(#walk)" marker-end="url(#walk)"/>
+    <line x1="277" y1="64.4" x2="353" y2="119.6" marker-start="url(#walk)" marker-end="url(#walk)"/>
+    <line x1="162" y1="149.2" x2="198" y2="200.8" marker-start="url(#walk)" marker-end="url(#walk)"/>
+  </g>
+  <!-- nodes -->
+  <g stroke-width="1.6">
+    <circle cx="260" cy="52" r="17" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="150" cy="132" r="17" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="370" cy="132" r="17" fill="#e05d54" stroke="#b23c34"/>
+    <circle cx="90" cy="218" r="17" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="210" cy="218" r="17" fill="#e05d54" stroke="#b23c34"/>
+    <circle cx="310" cy="218" r="17" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="430" cy="218" r="17" fill="#ffffff" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="260" y="57">0</text>
+    <text x="150" y="137">1</text>
+    <text x="370" y="137" fill="#ffffff">2</text>
+    <text x="90" y="223">4</text>
+    <text x="210" y="223" fill="#ffffff">5</text>
+    <text x="310" y="223">3</text>
+    <text x="430" y="223">6</text>
+  </g>
+  <text x="470" y="225" fill="#b23c34" font-size="12">apple</text>
+  <text x="260" y="272" text-anchor="middle" fill="#1a2026" font-weight="600">3 edges walked (green), each down and back: 2 × 3 = 6 seconds</text>
+</svg>

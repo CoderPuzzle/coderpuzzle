@@ -1,0 +1,194 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'Eating'),\n(2,'Singing'),\n(3,'Horse Riding');\nINSERT INTO Friends VALUES\n(1,'Jonathan D.','Eating'),\n(2,'Jade W.','Singing'),\n(3,'Victor J.','Singing'),\n(4,'Elvis Q.','Eating'),\n(5,'Daniel A.','Eating'),\n(6,'Bob B.','Horse Riding');"
+      ],
+      "expected": [
+        [
+          "Singing"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'Eating'),\n(2,'Singing'),\n(3,'Horse Riding');\nINSERT INTO Friends VALUES\n(1,'Jonathan D.','Eating'),\n(2,'Jade W.','Singing'),\n(3,'Victor J.','Singing'),\n(4,'Elvis Q.','Eating'),\n(5,'Daniel A.','Eating'),\n(6,'Bob B.','Horse Riding');"
+      ],
+      "expected": [
+        [
+          "Singing"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'X'),\n(2,'Y');\nINSERT INTO Friends VALUES\n(1,'A','X'),\n(2,'B','X'),\n(3,'C','Y'),\n(4,'D','Y');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'X'),\n(2,'Y'),\n(3,'Z');\nINSERT INTO Friends VALUES\n(1,'A','X'),\n(2,'B','Y'),\n(3,'C','Z');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'A'),\n(2,'B'),\n(3,'C'),\n(4,'D');\nINSERT INTO Friends VALUES\n(1,'F0','A'),\n(2,'F1','B'),\n(3,'F2','C'),\n(4,'F3','D'),\n(5,'F4','A'),\n(6,'F5','B'),\n(7,'F6','C'),\n(8,'F7','D'),\n(9,'F8','A'),\n(10,'F9','B'),\n(11,'F10','C'),\n(12,'F11','D'),\n(13,'F12','A'),\n(14,'F13','B'),\n(15,'F14','C'),\n(16,'F15','D');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'Only');\nINSERT INTO Friends VALUES\n(1,'A','Only');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'X'),\n(2,'Y');\nINSERT INTO Friends VALUES\n(1,'A','X'),\n(2,'B','X'),\n(3,'C','X'),\n(4,'D','Y');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'A'),\n(2,'B'),\n(3,'C'),\n(4,'D');\nINSERT INTO Friends VALUES\n(1,'F1','A'),\n(2,'F2','B'),\n(3,'F3','B'),\n(4,'F4','C'),\n(5,'F5','C'),\n(6,'F6','C'),\n(7,'F7','D'),\n(8,'F8','D'),\n(9,'F9','D'),\n(10,'F10','D');"
+      ],
+      "expected": [
+        [
+          "B"
+        ],
+        [
+          "C"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'A'),\n(2,'B'),\n(3,'C'),\n(4,'D');\nINSERT INTO Friends VALUES\n(1,'F1','A'),\n(2,'F2','B'),\n(3,'F3','B'),\n(4,'F4','C'),\n(5,'F5','C'),\n(6,'F6','D'),\n(7,'F7','D'),\n(8,'F8','D');"
+      ],
+      "expected": [
+        [
+          "B"
+        ],
+        [
+          "C"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'A'),\n(2,'B'),\n(3,'C'),\n(4,'D'),\n(5,'E'),\n(6,'F'),\n(7,'G'),\n(8,'H'),\n(9,'I'),\n(10,'J');\nINSERT INTO Friends VALUES\n(1,'F1','A'),\n(2,'F2','B'),\n(3,'F3','B'),\n(4,'F4','C'),\n(5,'F5','C'),\n(6,'F6','C'),\n(7,'F7','D'),\n(8,'F8','D'),\n(9,'F9','D'),\n(10,'F10','D'),\n(11,'F11','E'),\n(12,'F12','E'),\n(13,'F13','E'),\n(14,'F14','E'),\n(15,'F15','E'),\n(16,'F16','F'),\n(17,'F17','F'),\n(18,'F18','F'),\n(19,'F19','F'),\n(20,'F20','F'),\n(21,'F21','F'),\n(22,'F22','G'),\n(23,'F23','G'),\n(24,'F24','G'),\n(25,'F25','G'),\n(26,'F26','G'),\n(27,'F27','G'),\n(28,'F28','G'),\n(29,'F29','H'),\n(30,'F30','H'),\n(31,'F31','H'),\n(32,'F32','H'),\n(33,'F33','H'),\n(34,'F34','H'),\n(35,'F35','H'),\n(36,'F36','H'),\n(37,'F37','I'),\n(38,'F38','I'),\n(39,'F39','I'),\n(40,'F40','I'),\n(41,'F41','I'),\n(42,'F42','I'),\n(43,'F43','I'),\n(44,'F44','I'),\n(45,'F45','I'),\n(46,'F46','J'),\n(47,'F47','J'),\n(48,'F48','J'),\n(49,'F49','J'),\n(50,'F50','J'),\n(51,'F51','J'),\n(52,'F52','J'),\n(53,'F53','J'),\n(54,'F54','J'),\n(55,'F55','J');"
+      ],
+      "expected": [
+        [
+          "B"
+        ],
+        [
+          "C"
+        ],
+        [
+          "D"
+        ],
+        [
+          "E"
+        ],
+        [
+          "F"
+        ],
+        [
+          "G"
+        ],
+        [
+          "H"
+        ],
+        [
+          "I"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'Act0'),\n(2,'Act1'),\n(3,'Act2'),\n(4,'Act3');\nINSERT INTO Friends VALUES\n(1,'Friend1','Act0'),\n(2,'Friend2','Act1'),\n(3,'Friend3','Act2'),\n(4,'Friend4','Act3'),\n(5,'Friend5','Act0'),\n(6,'Friend6','Act2'),\n(7,'Friend7','Act0'),\n(8,'Friend8','Act3');"
+      ],
+      "expected": [
+        [
+          "Act2"
+        ],
+        [
+          "Act3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'Act0'),\n(2,'Act1'),\n(3,'Act2'),\n(4,'Act3'),\n(5,'Act4'),\n(6,'Act5'),\n(7,'Act6'),\n(8,'Act7'),\n(9,'Act8'),\n(10,'Act9');\nINSERT INTO Friends VALUES\n(1,'Friend1','Act0'),\n(2,'Friend2','Act1'),\n(3,'Friend3','Act2'),\n(4,'Friend4','Act3'),\n(5,'Friend5','Act4'),\n(6,'Friend6','Act5'),\n(7,'Friend7','Act6'),\n(8,'Friend8','Act7'),\n(9,'Friend9','Act8'),\n(10,'Friend10','Act9'),\n(11,'Friend11','Act1'),\n(12,'Friend12','Act1'),\n(13,'Friend13','Act5');"
+      ],
+      "expected": [
+        [
+          "Act5"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'Act0'),\n(2,'Act1'),\n(3,'Act2'),\n(4,'Act3'),\n(5,'Act4'),\n(6,'Act5'),\n(7,'Act6'),\n(8,'Act7'),\n(9,'Act8'),\n(10,'Act9'),\n(11,'Act10'),\n(12,'Act11'),\n(13,'Act12'),\n(14,'Act13'),\n(15,'Act14'),\n(16,'Act15'),\n(17,'Act16'),\n(18,'Act17'),\n(19,'Act18'),\n(20,'Act19'),\n(21,'Act20'),\n(22,'Act21'),\n(23,'Act22'),\n(24,'Act23'),\n(25,'Act24'),\n(26,'Act25'),\n(27,'Act26'),\n(28,'Act27'),\n(29,'Act28'),\n(30,'Act29');\nINSERT INTO Friends VALUES\n(1,'Friend1','Act0'),\n(2,'Friend2','Act1'),\n(3,'Friend3','Act2'),\n(4,'Friend4','Act3'),\n(5,'Friend5','Act4'),\n(6,'Friend6','Act5'),\n(7,'Friend7','Act6'),\n(8,'Friend8','Act7'),\n(9,'Friend9','Act8'),\n(10,'Friend10','Act9'),\n(11,'Friend11','Act10'),\n(12,'Friend12','Act11'),\n(13,'Friend13','Act12'),\n(14,'Friend14','Act13'),\n(15,'Friend15','Act14'),\n(16,'Friend16','Act15'),\n(17,'Friend17','Act16'),\n(18,'Friend18','Act17'),\n(19,'Friend19','Act18'),\n(20,'Friend20','Act19'),\n(21,'Friend21','Act20'),\n(22,'Friend22','Act21'),\n(23,'Friend23','Act22'),\n(24,'Friend24','Act23'),\n(25,'Friend25','Act24'),\n(26,'Friend26','Act25'),\n(27,'Friend27','Act26'),\n(28,'Friend28','Act27'),\n(29,'Friend29','Act28'),\n(30,'Friend30','Act29'),\n(31,'Friend31','Act18'),\n(32,'Friend32','Act17'),\n(33,'Friend33','Act4'),\n(34,'Friend34','Act11'),\n(35,'Friend35','Act29'),\n(36,'Friend36','Act19'),\n(37,'Friend37','Act15'),\n(38,'Friend38','Act20'),\n(39,'Friend39','Act18'),\n(40,'Friend40','Act2'),\n(41,'Friend41','Act19'),\n(42,'Friend42','Act0'),\n(43,'Friend43','Act29'),\n(44,'Friend44','Act26'),\n(45,'Friend45','Act15'),\n(46,'Friend46','Act8'),\n(47,'Friend47','Act17'),\n(48,'Friend48','Act7'),\n(49,'Friend49','Act6'),\n(50,'Friend50','Act22'),\n(51,'Friend51','Act15'),\n(52,'Friend52','Act17'),\n(53,'Friend53','Act26'),\n(54,'Friend54','Act17'),\n(55,'Friend55','Act15'),\n(56,'Friend56','Act12'),\n(57,'Friend57','Act20'),\n(58,'Friend58','Act27'),\n(59,'Friend59','Act4'),\n(60,'Friend60','Act7');"
+      ],
+      "expected": [
+        [
+          "Act0"
+        ],
+        [
+          "Act11"
+        ],
+        [
+          "Act12"
+        ],
+        [
+          "Act18"
+        ],
+        [
+          "Act19"
+        ],
+        [
+          "Act2"
+        ],
+        [
+          "Act20"
+        ],
+        [
+          "Act22"
+        ],
+        [
+          "Act26"
+        ],
+        [
+          "Act27"
+        ],
+        [
+          "Act29"
+        ],
+        [
+          "Act4"
+        ],
+        [
+          "Act6"
+        ],
+        [
+          "Act7"
+        ],
+        [
+          "Act8"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Activities VALUES\n(1,'X'),\n(2,'Y'),\n(3,'Z');\nINSERT INTO Friends VALUES\n(1,'A','X'),\n(2,'B','X'),\n(3,'C','Y'),\n(4,'D','Z'),\n(5,'E','Z');"
+      ],
+      "expected": []
+    }
+  ]
+}

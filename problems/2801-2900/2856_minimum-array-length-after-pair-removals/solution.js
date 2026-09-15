@@ -1,0 +1,24 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minLengthAfterRemovals = function (nums) {
+    // Each operation removes two elements of DIFFERENT values, so a
+    // fixed value loses at most one copy per operation and no
+    // schedule beats n - m operations, where m is the multiplicity
+    // of the most frequent value (nor n / 2). The bound is reached
+    // by repeatedly removing one element from the currently largest
+    // value group and one from another group, so the answer is
+    // n - 2 * min(n / 2, n - m), which simplifies to
+    // max(n % 2, 2 * m - n). nums is sorted, so m is just the
+    // longest run of equal elements, found in one scan. Every
+    // quantity here stays far inside Number's exact range.
+    const n = nums.length;
+    let best = 1;
+    let run = 1;
+    for (let i = 1; i < n; i++) {
+        run = nums[i] === nums[i - 1] ? run + 1 : 1;
+        best = Math.max(best, run);
+    }
+    return Math.max(n % 2, 2 * best - n);
+};

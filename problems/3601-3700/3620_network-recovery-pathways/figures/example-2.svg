@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 272" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- edges = [[0,1,7],[1,4,5],[0,2,6],[2,3,6],[3,4,2],[2,4,6]], online = [t,t,t,f,t], k = 12; valid paths score 5 and 6, node 3 offline (verified by path enumeration) -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b57f30"/>
+    </marker>
+  </defs>
+  <line x1="79" y1="101.1" x2="191" y2="48.9" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="230.4" y1="44.9" x2="479.6" y2="105.1" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="230.8" y1="183" x2="329.2" y2="197" stroke="#b57f30" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrowW)"/>
+  <line x1="368" y1="189.2" x2="482" y2="120.8" stroke="#b57f30" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrowW)"/>
+  <g stroke="#4169E1" stroke-width="3.2">
+    <line x1="79" y1="118.9" x2="191" y2="171.1" marker-end="url(#arrowA)"/>
+    <line x1="230.4" y1="175.1" x2="479.6" y2="114.9" marker-end="url(#arrowA)"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="60" cy="110" r="21"/>
+    <circle cx="210" cy="40" r="21"/>
+    <circle cx="210" cy="180" r="21"/>
+    <circle cx="500" cy="110" r="21"/>
+  </g>
+  <circle cx="350" cy="200" r="21" fill="#ffffff" stroke="#42525e" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="60" y="115">0</text>
+    <text x="210" y="45">1</text>
+    <text x="210" y="185">2</text>
+    <text x="350" y="205">3</text>
+    <text x="500" y="115">4</text>
+  </g>
+  <g font-size="12" text-anchor="middle">
+    <text x="118" y="66" fill="#5c6b76">7</text>
+    <text x="262" y="178" fill="#7a5a1e" font-weight="600">6</text>
+    <text x="425" y="147" fill="#7a5a1e" font-weight="600">2</text>
+    <text x="118" y="156" fill="#4169E1" font-weight="600">6</text>
+  </g>
+  <text x="355" y="62" fill="#5c6b76" font-size="12" text-anchor="middle">7 + 5 = 12, score 5</text>
+  <text x="270" y="140" fill="#4169E1" font-weight="600" font-size="12" text-anchor="middle">6 + 6 = 12, score 6</text>
+  <g font-size="11.5" fill="#5c6b76" text-anchor="middle">
+    <text x="60" y="148">src</text>
+    <text x="500" y="78">dest</text>
+  </g>
+  <text x="350" y="242" fill="#7a5a1e" font-size="12" text-anchor="middle" font-weight="600">offline</text>
+  <text x="310" y="266" text-anchor="middle" fill="#1a2026" font-size="13.5">0 → 2 → 4 costs 6 + 6 = 12 ≤ k and scores min(6, 6) = <tspan fill="#4169E1" font-weight="700">6</tspan>; node 3 is offline</text>
+</svg>

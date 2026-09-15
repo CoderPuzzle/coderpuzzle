@@ -1,0 +1,6 @@
+from typing import List, Optional
+
+
+class Solution:
+    def minArea(self, image: List[List[str]], x: int, y: int) -> int:
+        raise NotImplementedError("TODO")

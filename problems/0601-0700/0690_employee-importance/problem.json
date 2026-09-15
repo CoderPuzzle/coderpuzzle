@@ -1,0 +1,86 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 690,
+  "slug": "employee-importance",
+  "title": "Employee Importance",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getImportance",
+    "parameters": [
+      {
+        "name": "employees",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "struct",
+            "class": "Employee",
+            "fields": [
+              {
+                "name": "id",
+                "value_type": {
+                  "kind": "integer",
+                  "bits": 32
+                }
+              },
+              {
+                "name": "importance",
+                "value_type": {
+                  "kind": "integer",
+                  "bits": 32
+                }
+              },
+              {
+                "name": "subordinates",
+                "value_type": {
+                  "kind": "array",
+                  "items": {
+                    "kind": "integer",
+                    "bits": 32
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "id",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

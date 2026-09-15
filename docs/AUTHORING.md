@@ -8,20 +8,20 @@ or generators are needed.
 ```bash
 docker pull ghcr.io/coderpuzzle/coderpuzzle:latest   # :latest tracks main
 alias coderpuzzle='docker run --rm --user 0:0 \
-  -v /path/to/coderpuzzle-problems:/tools \
+  -v /path/to/coderpuzzle:/tools \
   -v /path/to/my-bundle:/bundle:rw ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle'
 ```
 
-`/tools` is a checkout of the problems repo (its `scripts/gen_starters.py`
-is the standard); `/bundle` is the problem directory you are authoring.
+`/tools` is this CoderPuzzle checkout (its `scripts/gen_starters.py` is the
+standard); `/bundle` is the problem directory you are authoring.
 
 ## 1. Write the statement
 
 `statement.md`, in the house voice — `# <Title>`, `## Description` with
 `### Example N` fenced blocks, `### Constraints` (same numeric domain as
 the source of the task, freshly presented), optional `### Follow-up` and
-`## Hints`. See `FORMAT.md` in the problems repo for the grammar and
-`problems-adapt/0001-0100/0001_pair-sum/statement.md` for the register: plain,
+`## Hints`. See `docs/FORMAT.md` for the grammar and
+`problems/0001-0100/0001_two-sum/statement.md` for the structure: plain,
 direct, no invented scenarios.
 
 ## 2. Declare the language-agnostic signature
@@ -112,4 +112,4 @@ case is the problem successfully created.**
 A failing case is a real verdict: read the status (`wrong_answer`,
 `runtime_error`, `time_limit_exceeded`), fix the artifact — solution,
 case, or schema — and judge again. When the sweep is green, the bundle
-is ready for the problems repo's own `check.py` and review.
+is ready for `scripts/check.py` and review.

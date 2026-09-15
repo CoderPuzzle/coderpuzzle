@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- edges = [1,2,3,4,0]: single 5-cycle 0->1->2->3->4->0; answers = [5,5,5,5,5] (verified by simulation) -->
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <g stroke="#4169E1" stroke-width="3.2" fill="none">
+    <line x1="267" y1="72" x2="353" y2="135" marker-end="url(#arrowA)"/>
+    <line x1="367" y1="170" x2="334" y2="270" marker-end="url(#arrowA)"/>
+    <line x1="305" y1="295" x2="195" y2="295" marker-end="url(#arrowA)"/>
+    <line x1="167" y1="275" x2="134" y2="175" marker-end="url(#arrowA)"/>
+    <line x1="143" y1="138" x2="229" y2="75" marker-end="url(#arrowA)"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#e6ecfb">
+    <circle cx="250" cy="60" r="21"/>
+    <circle cx="374" cy="150" r="21"/>
+    <circle cx="326" cy="295" r="21"/>
+    <circle cx="174" cy="295" r="21"/>
+    <circle cx="126" cy="150" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="250" y="65">0</text>
+    <text x="374" y="155">1</text>
+    <text x="326" y="300">2</text>
+    <text x="174" y="300">3</text>
+    <text x="126" y="155">4</text>
+  </g>
+  <g fill="#4169E1" font-size="12" font-weight="600" text-anchor="middle">
+    <text x="250" y="28">answer 5</text>
+    <text x="412" y="146" text-anchor="start">answer 5</text>
+    <text x="340" y="330">answer 5</text>
+    <text x="160" y="330">answer 5</text>
+    <text x="88" y="146" text-anchor="end">answer 5</text>
+  </g>
+  <text x="250" y="350" text-anchor="middle" fill="#1a2026" font-size="13.5">the whole graph is one <tspan fill="#4169E1" font-weight="700">5-cycle</tspan>, so every start visits all <tspan fill="#4169E1" font-weight="700">5</tspan> nodes</text>
+</svg>

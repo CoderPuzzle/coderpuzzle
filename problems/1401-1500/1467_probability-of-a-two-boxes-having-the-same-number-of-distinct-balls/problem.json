@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1467,
+  "slug": "probability-of-a-two-boxes-having-the-same-number-of-distinct-balls",
+  "title": "Probability of a Two Boxes Having The Same Number of Distinct Balls",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Backtracking",
+    "Combinatorics",
+    "Probability and Statistics"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Backtracking",
+    "Combinatorics",
+    "Probability and Statistics"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getProbability",
+    "parameters": [
+      {
+        "name": "balls",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "number"
+    },
+    "entrypoints": {
+      "go": "getProbability",
+      "rust": "get_probability",
+      "typescript": "getProbability"
+    },
+    "comparison": {
+      "mode": "close",
+      "tolerance": 1e-05
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

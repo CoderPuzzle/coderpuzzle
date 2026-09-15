@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1735,
+  "slug": "count-ways-to-make-array-with-product",
+  "title": "Count Ways to Make Array With Product",
+  "difficulty": "Hard",
+  "tags": [
+    "Combinatorics",
+    "Number Theory",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics",
+    "Number Theory",
+    "Prime Factorization",
+    "Fermat's Little Theorem"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "waysToFillArray",
+    "parameters": [
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "waysToFillArray",
+      "rust": "ways_to_fill_array",
+      "typescript": "waysToFillArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

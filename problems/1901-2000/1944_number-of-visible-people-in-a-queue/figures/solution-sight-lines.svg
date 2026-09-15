@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="330" fill="#ffffff"/>
+  <!-- heights [10,6,8,5,11,9]; bars x = 70 + 80i, w 56, baseline 260, scale 9px -->
+  <line x1="40" y1="260" x2="600" y2="260" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="70" y="170" width="56" height="90" fill="#dbe4f6"/>
+    <rect x="150" y="206" width="56" height="54" fill="#dbe4f6"/>
+    <rect x="230" y="188" width="56" height="72" fill="#dbe4f6"/>
+    <rect x="310" y="215" width="56" height="45" fill="#dbe4f6"/>
+    <rect x="390" y="161" width="56" height="99" fill="#dbe4f6"/>
+    <rect x="470" y="179" width="56" height="81" fill="#dbe4f6"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="98" y="252">10</text><text x="178" y="252">6</text><text x="258" y="252">8</text>
+    <text x="338" y="252">5</text><text x="418" y="252">11</text><text x="498" y="252">9</text>
+  </g>
+  <!-- answer counts above bars -->
+  <g text-anchor="middle" fill="#4169E1" font-weight="600" font-size="15">
+    <text x="98" y="150">3</text><text x="178" y="150">1</text><text x="258" y="150">2</text>
+    <text x="338" y="150">1</text><text x="418" y="140">1</text><text x="498" y="150">0</text>
+  </g>
+  <!-- sight lines -->
+  <g stroke="#4169E1" stroke-width="1.6">
+    <line x1="98" y1="166" x2="178" y2="202"/>
+    <line x1="98" y1="166" x2="258" y2="184"/>
+    <line x1="98" y1="166" x2="418" y2="157"/>
+    <line x1="178" y1="202" x2="258" y2="184"/>
+    <line x1="258" y1="184" x2="338" y2="211"/>
+    <line x1="258" y1="184" x2="418" y2="157"/>
+    <line x1="338" y1="211" x2="418" y2="157"/>
+    <line x1="418" y1="157" x2="498" y2="175"/>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="292">Scanning right to left, the stack for person 0 (height 10) holds [11, 8, 6]: the pops 6 and 8 are the two</text>
+    <text x="40" y="310">people seen across, plus the surviving top 11 — three in all. The 11 then blocks everything beyond it.</text>
+  </g>
+</svg>

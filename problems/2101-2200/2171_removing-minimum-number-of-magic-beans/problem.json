@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2171,
+  "slug": "removing-minimum-number-of-magic-beans",
+  "title": "Removing Minimum Number of Magic Beans",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Enumeration",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Enumeration",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumRemoval",
+    "parameters": [
+      {
+        "name": "beans",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "minimumRemoval",
+      "rust": "minimum_removal",
+      "typescript": "minimumRemoval"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

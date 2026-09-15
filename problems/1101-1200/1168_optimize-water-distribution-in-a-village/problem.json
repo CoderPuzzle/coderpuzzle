@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1168,
+  "slug": "optimize-water-distribution-in-a-village",
+  "title": "Optimize Water Distribution in a Village",
+  "difficulty": "Hard",
+  "tags": [
+    "Minimum Spanning Tree",
+    "Union Find",
+    "Graph",
+    "Greedy"
+  ],
+  "topics": [
+    "Union-Find",
+    "Graph Theory",
+    "Heap (Priority Queue)",
+    "Minimum Spanning Tree",
+    "Prim's Algorithm",
+    "Kruskal's Algorithm",
+    "Borůvka's Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minCostToSupplyWater",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "wells",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "pipes",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minCostToSupplyWater",
+      "rust": "min_cost_to_supply_water",
+      "typescript": "minCostToSupplyWater"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,59 @@
+# Print Immutable Linked List in Reverse
+
+## Description
+
+You are given an immutable linked list, print out all values of each node in
+reverse with the help of the following interface:
+
+`ImmutableListNode`: An interface of immutable linked list, you are given the
+head of the list.
+
+You need to use the following functions to access the linked list (you can't
+access the `ImmutableListNode` directly):
+
+- `ImmutableListNode.printValue()`: Print value of the current node.
+- `ImmutableListNode.getNext()`: Return the next node.
+
+The input is only given to initialize the linked list internally. You must
+solve this problem without modifying the linked list. In other words, you
+must operate the linked list using only the mentioned APIs.
+
+**Note (CoderPuzzle):** instead of printing to stdout, call `printValue()` on each
+node in the order the values should be printed — every call is recorded and
+the recorded sequence is what the judge compares. The signature is
+`printLinkedListInReverse(head)`; the API arrives as the head node handed to
+your method, so a call reads `head.printValue()` /
+`head.getNext()` (`getNext()` returns `null`/`nil`/`None` past the end).
+
+### Example 1
+
+```text
+Input: head = [1,2,3,4]
+Output: [4,3,2,1]
+```
+
+### Example 2
+
+```text
+Input: head = [0,-4,-1,3,-5]
+Output: [-5,3,-1,-4,0]
+```
+
+### Example 3
+
+```text
+Input: head = [-2,0,6,4,4,-6]
+Output: [-6,4,4,6,0,-2]
+```
+
+### Constraints
+
+- The length of the linked list is between `[1, 1000]`.
+- The value of each node in the linked list is between `[-1000, 1000]`.
+
+### Follow-up
+
+Could you solve this problem in:
+
+- Constant space complexity?
+- Linear time complexity and less than linear space complexity?

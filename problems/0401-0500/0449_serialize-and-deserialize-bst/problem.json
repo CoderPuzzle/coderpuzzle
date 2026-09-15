@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 449,
+  "slug": "serialize-and-deserialize-bst",
+  "title": "Serialize and Deserialize BST",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Design",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "topics": [
+    "String",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Design",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Codec",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "serialize",
+        "parameters": [
+          {
+            "name": "root",
+            "codec": "tree_node",
+            "value_type": {
+              "kind": "binary_tree",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "deserialize",
+        "parameters": [
+          {
+            "name": "data",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_codec": "tree_node",
+        "return_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

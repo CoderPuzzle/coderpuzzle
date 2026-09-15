@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <pattern id="brick" width="14" height="8" patternUnits="userSpaceOnUse">
+      <rect width="14" height="8" fill="#f3d9d5"/>
+      <path d="M 0 8 L 8 0 M 6 8 L 14 0" stroke="#cf8b80" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <!-- 5x3 grid -->
+  <g stroke="#c8cfd6" stroke-width="1">
+    <rect x="50" y="20" width="56" height="56" fill="#e8edfb"/>
+    <rect x="106" y="20" width="56" height="56" fill="#e8edfb"/>
+    <rect x="162" y="20" width="56" height="56" fill="#e8edfb"/>
+    <rect x="50" y="76" width="56" height="56" fill="url(#brick)"/>
+    <rect x="106" y="76" width="56" height="56" fill="url(#brick)"/>
+    <rect x="162" y="76" width="56" height="56" fill="#e8edfb"/>
+    <rect x="50" y="132" width="56" height="56" fill="#ffffff"/>
+    <rect x="106" y="132" width="56" height="56" fill="#ffffff"/>
+    <rect x="162" y="132" width="56" height="56" fill="#e8edfb"/>
+    <rect x="50" y="188" width="56" height="56" fill="#ffffff"/>
+    <rect x="106" y="188" width="56" height="56" fill="url(#brick)"/>
+    <rect x="162" y="188" width="56" height="56" fill="#e8edfb"/>
+    <rect x="50" y="244" width="56" height="56" fill="#ffffff"/>
+    <rect x="106" y="244" width="56" height="56" fill="#ffffff"/>
+    <rect x="162" y="244" width="56" height="56" fill="#e8edfb"/>
+  </g>
+  <!-- eliminated obstacle marker at (3,2) -->
+  <g stroke="#4169E1" stroke-width="3">
+    <line x1="181" y1="207" x2="199" y2="225"/>
+    <line x1="199" y1="207" x2="181" y2="225"/>
+  </g>
+  <!-- shortest path -->
+  <path d="M 78 48 L 134 48 L 190 48 L 190 216 L 190 260" fill="none" stroke="#4169E1" stroke-width="3" marker-end="url(#a)"/>
+  <circle cx="78" cy="48" r="6" fill="#4169E1"/>
+  <circle cx="190" cy="272" r="8" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <text x="78" y="34" text-anchor="middle" fill="#5c6b76" font-size="12">start</text>
+  <text x="190" y="318" text-anchor="middle" fill="#5c6b76" font-size="12">end</text>
+  <line x1="222" y1="216" x2="250" y2="216" stroke="#5c6b76" stroke-dasharray="3 3"/>
+  <text x="258" y="210" fill="#1a2026" font-weight="600">obstacle eliminated (k = 1)</text>
+  <text x="258" y="228" fill="#5c6b76" font-size="12.5">at cell (3, 2)</text>
+  <text x="258" y="60" fill="#4169E1" font-weight="700">6 moves</text>
+  <text x="258" y="80" fill="#5c6b76" font-size="12.5">without any elimination</text>
+  <text x="258" y="97" fill="#5c6b76" font-size="12.5">the best walk needs 10</text>
+  <g font-size="12.5" fill="#1a2026">
+    <rect x="258" y="120" width="14" height="14" fill="url(#brick)" stroke="#cf8b80"/>
+    <text x="280" y="132">obstacle (1)</text>
+    <rect x="258" y="142" width="14" height="14" fill="#ffffff" stroke="#c8cfd6"/>
+    <text x="280" y="154">free cell (0)</text>
+    <rect x="258" y="164" width="14" height="14" fill="#e8edfb" stroke="#4169E1"/>
+    <text x="280" y="176">path</text>
+  </g>
+</svg>

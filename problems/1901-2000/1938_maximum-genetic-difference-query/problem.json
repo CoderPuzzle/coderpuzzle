@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1938,
+  "slug": "maximum-genetic-difference-query",
+  "title": "Maximum Genetic Difference Query",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Trie",
+    "Depth-First Search",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Bit Manipulation",
+    "Depth-First Search",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxGeneticDifference",
+    "parameters": [
+      {
+        "name": "parents",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "maxGeneticDifference",
+      "rust": "max_genetic_difference",
+      "typescript": "maxGeneticDifference"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

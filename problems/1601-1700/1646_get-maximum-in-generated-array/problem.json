@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1646,
+  "slug": "get-maximum-in-generated-array",
+  "title": "Get Maximum in Generated Array",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getMaximumGenerated",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "getMaximumGenerated",
+      "rust": "get_maximum_generated",
+      "typescript": "getMaximumGenerated"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

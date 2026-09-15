@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "dijkstra",
+  "id": 1631,
+  "slug": "path-with-minimum-effort",
+  "title": "Path With Minimum Effort",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Breadth-First Search",
+    "Union Find",
+    "Heap",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Dijkstra's Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumEffortPath",
+    "parameters": [
+      {
+        "name": "heights",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumEffortPath",
+      "rust": "minimum_effort_path",
+      "typescript": "minimumEffortPath"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3704,
+  "slug": "count-no-zero-pairs-that-sum-to-n",
+  "title": "Count No-Zero Pairs That Sum to N",
+  "difficulty": "Hard",
+  "tags": [
+    "Digit DP",
+    "Combinatorics"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countNoZeroPairs",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countNoZeroPairs",
+      "rust": "count_no_zero_pairs",
+      "typescript": "countNoZeroPairs"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

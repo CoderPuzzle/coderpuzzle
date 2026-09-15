@@ -1,0 +1,84 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 379,
+  "slug": "design-phone-directory",
+  "title": "Design Phone Directory",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Linked List",
+    "Design",
+    "Queue"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Linked List",
+    "Design",
+    "Queue"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "PhoneDirectory",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "maxNumbers",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "get",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "check",
+        "parameters": [
+          {
+            "name": "number",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "release",
+        "parameters": [
+          {
+            "name": "number",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

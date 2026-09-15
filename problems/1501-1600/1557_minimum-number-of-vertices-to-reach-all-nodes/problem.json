@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1557,
+  "slug": "minimum-number-of-vertices-to-reach-all-nodes",
+  "title": "Minimum Number of Vertices to Reach All Nodes",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph Theory",
+    "Directed Acyclic Graph"
+  ],
+  "topics": [
+    "Graph Theory",
+    "Directed Acyclic Graph"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findSmallestSetOfVertices",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "findSmallestSetOfVertices",
+      "rust": "find_smallest_set_of_vertices",
+      "typescript": "findSmallestSetOfVertices"
+    },
+    "comparison": "sorted"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

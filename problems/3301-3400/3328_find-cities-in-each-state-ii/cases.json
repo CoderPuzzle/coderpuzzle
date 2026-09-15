@@ -1,0 +1,235 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('New York','New York City'),\n('New York','Newark'),\n('New York','Buffalo'),\n('New York','Rochester'),\n('California','San Francisco'),\n('California','Sacramento'),\n('California','San Diego'),\n('California','Los Angeles'),\n('Texas','Tyler'),\n('Texas','Temple'),\n('Texas','Taylor'),\n('Texas','Dallas'),\n('Pennsylvania','Philadelphia'),\n('Pennsylvania','Pittsburgh'),\n('Pennsylvania','Pottstown');"
+      ],
+      "expected": [
+        [
+          "Pennsylvania",
+          "Philadelphia, Pittsburgh, Pottstown",
+          3
+        ],
+        [
+          "Texas",
+          "Dallas, Taylor, Temple, Tyler",
+          3
+        ],
+        [
+          "New York",
+          "Buffalo, Newark, New York City, Rochester",
+          2
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Ohio','Cleveland');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Georgia','Greenville'),\n('Georgia','Griffin');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Punjab','Patiala'),\n('Punjab','Phillaur'),\n('Punjab','Pathankot');"
+      ],
+      "expected": [
+        [
+          "Punjab",
+          "Pathankot, Patiala, Phillaur",
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Oregon','Bend'),\n('Oregon','Medford'),\n('Oregon','Ashland'),\n('Oregon','Corvallis');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Michigan','Midland'),\n('Michigan','Monroe'),\n('Michigan','Battle Creek'),\n('Michigan','Ann Arbor'),\n('Michigan','Dearborn');"
+      ],
+      "expected": [
+        [
+          "Michigan",
+          "Ann Arbor, Battle Creek, Dearborn, Midland, Monroe",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Verdant','Vale'),\n('Verdant','Vista'),\n('Verdant','Verdun'),\n('Ardent','Anvil'),\n('Ardent','Arch'),\n('Ardent','Aura'),\n('Zephyr','Zenith'),\n('Zephyr','Zero'),\n('Zephyr','Zone'),\n('Quiet','Quill'),\n('Quiet','Quarry'),\n('Somber','Solace'),\n('Somber','Sonnet'),\n('Somber','Sable'),\n('Umber','Umbra'),\n('Umber','Unity'),\n('Umber','Upsal'),\n('Timber','Tamarack'),\n('Timber','Toft'),\n('Timber','Talus');"
+      ],
+      "expected": [
+        [
+          "Ardent",
+          "Anvil, Arch, Aura",
+          3
+        ],
+        [
+          "Somber",
+          "Sable, Solace, Sonnet",
+          3
+        ],
+        [
+          "Timber",
+          "Talus, Tamarack, Toft",
+          3
+        ],
+        [
+          "Umber",
+          "Umbra, Unity, Upsal",
+          3
+        ],
+        [
+          "Verdant",
+          "Vale, Verdun, Vista",
+          3
+        ],
+        [
+          "Zephyr",
+          "Zenith, Zero, Zone",
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Kestrel','Springfield'),\n('Kestrel','Kingston'),\n('Kestrel','Kepler'),\n('Lancaster','Springfield'),\n('Lancaster','Leeds'),\n('Marblehead','Springfield'),\n('Marblehead','Milton'),\n('Marblehead','Mercer');"
+      ],
+      "expected": [
+        [
+          "Kestrel",
+          "Kepler, Kingston, Springfield",
+          2
+        ],
+        [
+          "Marblehead",
+          "Mercer, Milton, Springfield",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Danton','Danby Mill'),\n('Danton','Danbury'),\n('Danton','Danehill'),\n('Harborview','Harbor Side'),\n('Harborview','Harborbeach'),\n('Harborview','Hartley');"
+      ],
+      "expected": [
+        [
+          "Danton",
+          "Danbury, Danby Mill, Danehill",
+          3
+        ],
+        [
+          "Harborview",
+          "Harborbeach, Harbor Side, Hartley",
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Norwick','Northminster'),\n('Norwick','Northmansion'),\n('Norwick','Northmorland'),\n('Norwick','Normanton'),\n('Bellevue','Bellehaven East'),\n('Bellevue','Bellehaven'),\n('Bellevue','Bellamy Springs');"
+      ],
+      "expected": [
+        [
+          "Norwick",
+          "Normanton, Northmansion, Northminster, Northmorland",
+          4
+        ],
+        [
+          "Bellevue",
+          "Bellamy Springs, Bellehaven, Bellehaven East",
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Milton','Maple Grove'),\n('Milton','Alden'),\n('Milton','Birchwood');"
+      ],
+      "expected": [
+        [
+          "Milton",
+          "Alden, Birchwood, Maple Grove",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Pennsylvania','Pottstown'),\n('Pennsylvania','Pittsburgh'),\n('Pennsylvania','Philadelphia'),\n('Texas','Dallas'),\n('Texas','Taylor'),\n('Texas','Temple'),\n('Texas','Tyler'),\n('California','Los Angeles'),\n('California','San Diego'),\n('California','Sacramento'),\n('California','San Francisco'),\n('New York','Rochester'),\n('New York','Buffalo'),\n('New York','Newark'),\n('New York','New York City');"
+      ],
+      "expected": [
+        [
+          "Pennsylvania",
+          "Philadelphia, Pittsburgh, Pottstown",
+          3
+        ],
+        [
+          "Texas",
+          "Dallas, Taylor, Temple, Tyler",
+          3
+        ],
+        [
+          "New York",
+          "Buffalo, Newark, New York City, Rochester",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Cardinal','DAnlmams'),\n('Cardinal','BRot'),\n('Cardinal','FRre'),\n('Cardinal','CEomrnss'),\n('Cardinal','CUmossea'),\n('Cardinal','GSnii'),\n('Brackenwood','BNsoouo'),\n('Brackenwood','DUne'),\n('Brackenwood','BLnrunr'),\n('Brackenwood','CTlru'),\n('Brackenwood','BIueni'),\n('Brackenwood','BIsuuie'),\n('Brackenwood','FAsan'),\n('Brackenwood','GOlr'),\n('Brackenwood','BTttumt'),\n('Tallowmere','DLrio'),\n('Tallowmere','BRinn'),\n('Tallowmere','TMnli'),\n('Tallowmere','CIlreasr'),\n('Oakshollow','ORoe'),\n('Oakshollow','OOrmiuu'),\n('Oakshollow','OAiouu'),\n('Oakshollow','OLenli'),\n('Oakshollow','ONltltsa'),\n('Oakshollow','ORmanu'),\n('Oakshollow','OUoin'),\n('Oakshollow','OLaoto'),\n('Oakshollow','ONlo'),\n('Oakshollow','OUoruuun'),\n('Oakshollow','OEmeoaoo'),\n('Oakshollow','OSet'),\n('Ravenroost','JIsltaui'),\n('Ravenroost','RIierolu'),\n('Ravenroost','CEuoes'),\n('Ravenroost','HMae'),\n('Ravenroost','RUutnam'),\n('Ravenroost','RRota'),\n('Ravenroost','FUrms'),\n('Ravenroost','BLermo'),\n('Ravenroost','DEiin'),\n('Ravenroost','KErri'),\n('Ravenroost','GSslm'),\n('Windwhistle','BEio'),\n('Windwhistle','KNiotue'),\n('Windwhistle','JList'),\n('Windwhistle','HEuimari'),\n('Windwhistle','GSeeaaas'),\n('Windwhistle','CTaltla'),\n('Windwhistle','MSit'),\n('Windwhistle','FUnnr'),\n('Windwhistle','LOsilrua'),\n('Windwhistle','DIae'),\n('Elmgate','ENsrme'),\n('Elmgate','ENteas'),\n('Sundermoor','SIsti'),\n('Sundermoor','SNsmioo'),\n('Sundermoor','COalnuua'),\n('Sundermoor','BRlurrlu'),\n('Sundermoor','SRaltm'),\n('Sundermoor','SUetns'),\n('Sundermoor','STirooi'),\n('Sundermoor','SRserru');"
+      ],
+      "expected": [
+        [
+          "Oakshollow",
+          "OAiouu, OEmeoaoo, OLaoto, OLenli, ONlo, ONltltsa, OOrmiuu, ORmanu, ORoe, OSet, OUoin, OUoruuun",
+          12
+        ],
+        [
+          "Sundermoor",
+          "BRlurrlu, COalnuua, SIsti, SNsmioo, SRaltm, SRserru, STirooi, SUetns",
+          6
+        ],
+        [
+          "Brackenwood",
+          "BIsuuie, BIueni, BLnrunr, BNsoouo, BTttumt, CTlru, DUne, FAsan, GOlr",
+          5
+        ],
+        [
+          "Ravenroost",
+          "BLermo, CEuoes, DEiin, FUrms, GSslm, HMae, JIsltaui, KErri, RIierolu, RRota, RUutnam",
+          3
+        ],
+        [
+          "Cardinal",
+          "BRot, CEomrnss, CUmossea, DAnlmams, FRre, GSnii",
+          2
+        ],
+        [
+          "Tallowmere",
+          "BRinn, CIlreasr, DLrio, TMnli",
+          1
+        ]
+      ]
+    }
+  ]
+}

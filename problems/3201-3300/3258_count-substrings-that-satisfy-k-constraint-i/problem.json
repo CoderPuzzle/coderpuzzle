@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3258,
+  "slug": "count-substrings-that-satisfy-k-constraint-i",
+  "title": "Count Substrings That Satisfy K-Constraint I",
+  "difficulty": "Easy",
+  "tags": [
+    "String",
+    "Sliding Window"
+  ],
+  "topics": [
+    "String",
+    "Sliding Window"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countKConstraintSubstrings",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countKConstraintSubstrings",
+      "rust": "count_k_constraint_substrings",
+      "typescript": "countKConstraintSubstrings"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

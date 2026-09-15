@@ -1,0 +1,369 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Afghanistan', 'Asia', 652230, 25500100, 20343000000),\n('Albania', 'Europe', 28748, 2831741, 12960000000),\n('Algeria', 'Africa', 2381741, 37100000, 188681000000),\n('Andorra', 'Europe', 468, 78115, 3712000000),\n('Angola', 'Africa', 1246700, 20609294, 100990000000);"
+      ],
+      "expected": [
+        [
+          "Afghanistan",
+          25500100,
+          652230
+        ],
+        [
+          "Algeria",
+          37100000,
+          2381741
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Atlantia', 'Africa', 3000000, 400000, 2100000000),\n('Sealandia', 'Oceania', 2999999, 500000, 1200000000),\n('Microvia', 'Europe', 468, 78000, 3100000000);"
+      ],
+      "expected": [
+        [
+          "Atlantia",
+          400000,
+          3000000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Densia', 'Asia', 500000, 25000000, 520000000000),\n('Crowdia', 'Asia', 600000, 24999999, 480000000000),\n('Sparsea', 'Europe', 400000, 1000000, 5100000000);"
+      ],
+      "expected": [
+        [
+          "Densia",
+          25000000,
+          500000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Gigantia', 'Asia', 17098246, 146000000, 2240000000000),\n('Tinystan', 'Europe', 301, 1100, 900000000);"
+      ],
+      "expected": [
+        [
+          "Gigantia",
+          146000000,
+          17098246
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Metropolia', 'Asia', 77461, 26000000, 1450000000000),\n('Urba', 'Asia', 88360, 30000000, 1110000000000),\n('Ruralia', 'Europe', 100000, 5000000, 500000000000),\n('Farmostan', 'Africa', 200000, 8000000, 670000000000);"
+      ],
+      "expected": [
+        [
+          "Metropolia",
+          26000000,
+          77461
+        ],
+        [
+          "Urba",
+          30000000,
+          88360
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Vastia', 'Africa', 3500000, 900000, 45000000000),\n('Steppestan', 'Asia', 4000000, 12000000, 260000000000),\n('Coastia', 'Europe', 50000, 6000000, 300000000000);"
+      ],
+      "expected": [
+        [
+          "Vastia",
+          900000,
+          3500000
+        ],
+        [
+          "Steppestan",
+          12000000,
+          4000000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Titanica', 'Asia', 9596960, 1400000000, 18000000000000),\n('Megalia', 'Africa', 5000000, 30000000, 900000000000),\n('Huskenland', 'North America', 9984670, 38000000, 1900000000000),\n('Broadia', 'Asia', 6000000, 15000000, 700000000000),\n('Packeda', 'Europe', 800000, 60000000, 4500000000000);"
+      ],
+      "expected": [
+        [
+          "Titanica",
+          1400000000,
+          9596960
+        ],
+        [
+          "Megalia",
+          30000000,
+          5000000
+        ],
+        [
+          "Huskenland",
+          38000000,
+          9984670
+        ],
+        [
+          "Broadia",
+          15000000,
+          6000000
+        ],
+        [
+          "Packeda",
+          60000000,
+          800000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Isla Chica', 'Oceania', 12, 150, 5000000),\n('Hamletia', 'Europe', 9000, 90000, 400000000),\n('Dorpmar', 'Europe', 25000, 300000, 9000000000),\n('Outposta', 'Africa', 100000, 250000, 12000000000);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Dualia', 'Asia', 3000000, 25000000, 750000000000);"
+      ],
+      "expected": [
+        [
+          "Dualia",
+          25000000,
+          3000000
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Crosia', 'Asia', 2999999, 25000000, 300000000000),\n('Vertia', 'Asia', 3000000, 24999999, 320000000000),\n('Neithan', 'Europe', 2999999, 24999999, 280000000000),\n('Bothia', 'Africa', 3000000, 25000000, 350000000000);"
+      ],
+      "expected": [
+        [
+          "Crosia",
+          25000000,
+          2999999
+        ],
+        [
+          "Vertia",
+          24999999,
+          3000000
+        ],
+        [
+          "Bothia",
+          25000000,
+          3000000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Klondia', 'North America', 5000000, 20000000, 900000000000000),\n('Zerodia', 'Africa', 300000, 10000000, 0),\n('Nullstop', 'Europe', 100000, 2000000, 1),\n('Bigdopia', 'Asia', 2000000, 25000001, 720575940000000000);"
+      ],
+      "expected": [
+        [
+          "Klondia",
+          20000000,
+          5000000
+        ],
+        [
+          "Bigdopia",
+          25000001,
+          2000000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Neara', 'Asia', 2999998, 20000000, 100000000000),\n('Nearb', 'Asia', 2999990, 15000000, 120000000000),\n('Nearc', 'Asia', 2500000, 10000000, 90000000000),\n('Neard', 'Asia', 2999999, 25000001, 140000000000);"
+      ],
+      "expected": [
+        [
+          "Neard",
+          25000001,
+          2999999
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Asteria', 'Europe', 3000001, 24999999, 500000000000),\n('Belgonia', 'Europe', 30528, 11555997, 620000000000),\n('Corvinia', 'Africa', 4000000, 5000000, 80000000000),\n('Dravius', 'Asia', 2000000, 25000000, 2000000000000),\n('Eboria', 'Europe', 244820, 12000000, 900000000000),\n('Fjordia', 'Europe', 385207, 5400000, 450000000000),\n('Garahim', 'Africa', 2999999, 24999999, 310000000000),\n('Hyrcania', 'Asia', 3500000, 26000000, 700000000000),\n('Ithaka', 'Europe', 121, 3300, 2000000000),\n('Jutlanda', 'Europe', 2999999, 25000000, 260000000000),\n('Karagia', 'Asia', 3100000, 30000000, 950000000000),\n('Lumeria', 'Oceania', 1500000, 8000000, 150000000000);"
+      ],
+      "expected": [
+        [
+          "Asteria",
+          24999999,
+          3000001
+        ],
+        [
+          "Corvinia",
+          5000000,
+          4000000
+        ],
+        [
+          "Dravius",
+          25000000,
+          2000000
+        ],
+        [
+          "Hyrcania",
+          26000000,
+          3500000
+        ],
+        [
+          "Jutlanda",
+          25000000,
+          2999999
+        ],
+        [
+          "Karagia",
+          30000000,
+          3100000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO World VALUES\n('Aravdia', 'Asia', 3145823, 24824081, 1124747641261),\n('Brenholm', 'Europe', 3271852, 19161010, 494825816626),\n('Cadenia', 'Africa', 3462051, 27105381, 905961775901),\n('Doralus', 'Oceania', 3087963, 21210882, 906382167867),\n('Estvania', 'North America', 3546068, 25992277, 1995680247231),\n('Fennmark', 'South America', 2709605, 20297223, 768301414686),\n('Galador', 'Asia', 3403958, 27096137, 1515802542332),\n('Hespria', 'Europe', 3565775, 22126375, 854526823385),\n('Insulae', 'Africa', 2646774, 22537775, 536431344043),\n('Jorvik', 'Oceania', 3058801, 21990412, 1373784910321),\n('Kaltmark', 'North America', 2808852, 23630923, 1444046825001),\n('Loravia', 'South America', 3442361, 26646376, 591844385117),\n('Meridia', 'Asia', 2846757, 28461015, 990441194702),\n('Norvendis', 'Europe', 2755580, 24361439, 1006564323827),\n('Ostgard', 'Africa', 3013567, 23945367, 1034890560438),\n('Petracona', 'Oceania', 3361913, 23661989, 1802016522211),\n('Quirina', 'North America', 3255106, 25489292, 1822193788627),\n('Rovania', 'South America', 2688490, 20577536, 363030562012),\n('Solheim', 'Asia', 2406373, 30771269, 1345241300270),\n('Tavastia', 'Europe', 2812690, 30667369, 1096937026682),\n('Umbria Nova', 'Africa', 2411042, 29346868, 1301121992631),\n('Valdoria', 'Oceania', 3176291, 29763768, 1457843994051),\n('Westmark', 'North America', 2574395, 29008263, 686499335953),\n('Xanthia', 'South America', 2457428, 29066986, 655117339154),\n('Yerevand', 'Asia', 2609111, 26978041, 861590497256),\n('Zelandia', 'Europe', 3369608, 20538408, 1437593016500),\n('Aurelia', 'Africa', 2554793, 30459104, 1766437201416),\n('Bellamar', 'Oceania', 2723726, 25641139, 1951449573852),\n('Cetiway', 'North America', 3259007, 26304784, 1150230000183),\n('Drakonia', 'South America', 3137789, 19212286, 473083545288);"
+      ],
+      "expected": [
+        [
+          "Aravdia",
+          24824081,
+          3145823
+        ],
+        [
+          "Brenholm",
+          19161010,
+          3271852
+        ],
+        [
+          "Cadenia",
+          27105381,
+          3462051
+        ],
+        [
+          "Doralus",
+          21210882,
+          3087963
+        ],
+        [
+          "Estvania",
+          25992277,
+          3546068
+        ],
+        [
+          "Galador",
+          27096137,
+          3403958
+        ],
+        [
+          "Hespria",
+          22126375,
+          3565775
+        ],
+        [
+          "Jorvik",
+          21990412,
+          3058801
+        ],
+        [
+          "Loravia",
+          26646376,
+          3442361
+        ],
+        [
+          "Meridia",
+          28461015,
+          2846757
+        ],
+        [
+          "Ostgard",
+          23945367,
+          3013567
+        ],
+        [
+          "Petracona",
+          23661989,
+          3361913
+        ],
+        [
+          "Quirina",
+          25489292,
+          3255106
+        ],
+        [
+          "Solheim",
+          30771269,
+          2406373
+        ],
+        [
+          "Tavastia",
+          30667369,
+          2812690
+        ],
+        [
+          "Umbria Nova",
+          29346868,
+          2411042
+        ],
+        [
+          "Valdoria",
+          29763768,
+          3176291
+        ],
+        [
+          "Westmark",
+          29008263,
+          2574395
+        ],
+        [
+          "Xanthia",
+          29066986,
+          2457428
+        ],
+        [
+          "Yerevand",
+          26978041,
+          2609111
+        ],
+        [
+          "Zelandia",
+          20538408,
+          3369608
+        ],
+        [
+          "Aurelia",
+          30459104,
+          2554793
+        ],
+        [
+          "Bellamar",
+          25641139,
+          2723726
+        ],
+        [
+          "Cetiway",
+          26304784,
+          3259007
+        ],
+        [
+          "Drakonia",
+          19212286,
+          3137789
+        ]
+      ]
+    }
+  ]
+}

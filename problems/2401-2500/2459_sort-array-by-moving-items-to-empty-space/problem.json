@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2459,
+  "slug": "sort-array-by-moving-items-to-empty-space",
+  "title": "Sort Array by Moving Items to Empty Space",
+  "difficulty": "Hard",
+  "tags": [
+    "Greedy",
+    "Sorting",
+    "Array"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sortArray",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "sortArray",
+      "rust": "sort_array",
+      "typescript": "sortArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

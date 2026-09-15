@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1794,
+  "slug": "count-pairs-of-equal-substrings-with-minimum-difference",
+  "title": "Count Pairs of Equal Substrings With Minimum Difference",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Greedy"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countQuadruples",
+    "parameters": [
+      {
+        "name": "firstString",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "secondString",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countQuadruples",
+      "rust": "count_quadruples",
+      "typescript": "countQuadruples"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

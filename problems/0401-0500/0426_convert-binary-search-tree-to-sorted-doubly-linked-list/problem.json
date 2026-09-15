@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 426,
+  "slug": "convert-binary-search-tree-to-sorted-doubly-linked-list",
+  "title": "Convert Binary Search Tree to Sorted Doubly Linked List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Stack",
+    "Tree",
+    "Depth-First Search",
+    "Binary Search Tree",
+    "Binary Tree",
+    "Doubly-Linked List"
+  ],
+  "topics": [
+    "Linked List",
+    "Stack",
+    "Tree",
+    "Depth-First Search",
+    "Binary Search Tree",
+    "Binary Tree",
+    "Doubly-Linked List"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "treeToDoublyList",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "doubly_circular",
+    "return_type": {
+      "kind": "doubly_circular",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

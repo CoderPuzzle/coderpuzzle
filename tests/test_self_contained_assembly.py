@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock
 
+from runner.executors.cpp import CppExecutor
 from runner.executors.javascript import JavaScriptExecutor
 from runner.executors.javascript import _struct_codecs as javascript_struct_codecs
 from runner.executors.typescript import TypeScriptExecutor
@@ -109,6 +110,65 @@ class SelfContainedAssemblyTests(unittest.TestCase):
                         generated,
                         rf"\bclass\s+{re.escape(class_name)}\b",
                     )
+
+    def test_cpp_struct_fields_are_decoded_before_constructor_call(self) -> None:
+        invocation = {
+            "type": "function",
+            "class_name": "Solution",
+            "method": "readEmployee",
+            "parameters": [
+                {
+                    "name": "employee",
+                    "value_type": {
+                        "kind": "struct",
+                        "class": "Employee",
+                        "fields": [
+                            {"name": "id", "value_type": I32},
+                            {
+                                "name": "reports",
+                                "value_type": {
+                                    "kind": "array",
+                                    "items": I32,
+                                },
+                            },
+                        ],
+                    },
+                }
+            ],
+            "return_type": I32,
+        }
+        provided = {
+            "provided": {
+                "employee.hpp": (
+                    "struct Employee { int id; std::vector<int> reports; "
+                    "Employee(int i, std::vector<int> r) : id(i), "
+                    "reports(std::move(r)) {} };\n"
+                )
+            }
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            scratch = root / "scratch"
+            scratch.mkdir()
+            executor = CppExecutor()
+            executor.compile = Mock()
+            executor.prepare(
+                root,
+                scratch,
+                "class Solution { public: int readEmployee(Employee e) { return e.id; } };",
+                invocation,
+                {},
+                assembly=provided,
+            )
+            source = (root / "main.cpp").read_text(encoding="utf-8")
+        first = source.index("auto coderpuzzle_field_0 =")
+        second = source.index("auto coderpuzzle_field_1 =")
+        constructor = source.index(
+            "return Employee(std::move(coderpuzzle_field_0), "
+            "std::move(coderpuzzle_field_1));"
+        )
+        self.assertLess(first, second)
+        self.assertLess(second, constructor)
 
     def test_prepare_does_not_synthesize_a_missing_list_node(self) -> None:
         invocation = linked_list_invocation()

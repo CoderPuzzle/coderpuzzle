@@ -1,0 +1,270 @@
+{
+  "public": [
+    {
+      "input": [
+        [
+          "test.email+alex@leetcode.com",
+          "test.e.mail+bob.cathy@leetcode.com",
+          "testemail+david@lee.tcode.com"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        [
+          "A@B.com",
+          "a@b.com",
+          "ab+xy@b.com",
+          "a.b@b.com"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        [
+          "a.b+c.d+e@DoMain.com",
+          "ab+xyz@domain.com",
+          "ab@domain.com"
+        ]
+      ],
+      "expected": 1
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        [
+          "a@b.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "A.B+C@D.Com",
+          "ab@d.com",
+          "a.b@d.com",
+          "ab+x.y@d.com",
+          "AB+@d.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "a.b.c@d.com",
+          "abc@d.com",
+          "a.bc@d.com",
+          "ab.c@d.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "user+tag@d.com",
+          "user+other@d.com",
+          "user@d.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "u+v.w@d.com",
+          "uv@d.com"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        [
+          "USER@DOMAIN.COM",
+          "user@domain.com",
+          "U.S.E.R@Domain.Com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "a@X.com",
+          "a@x.com",
+          "a@x.COM"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "a1b2@c3.com",
+          "a1b2+tag@c3.com",
+          "a.1.b.2@c3.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "a@d.com",
+          "b@d.com",
+          "ab@d.com"
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        [
+          "a@x.com",
+          "a@y.com",
+          "a@z.com"
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        [
+          "user+alpha@d.com",
+          "user+beta@d.com",
+          "user+gamma@d.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "u0@a.com",
+          "u1@b.com",
+          "u2@c.com",
+          "u3@d.com",
+          "u4@e.com",
+          "u5@f.com",
+          "u6@g.com",
+          "u7@h.com",
+          "u8@i.com",
+          "u9@j.com",
+          "u10@k.com",
+          "u11@l.com",
+          "u12@m.com",
+          "u13@n.com",
+          "u14@o.com",
+          "u15@p.com",
+          "u16@q.com",
+          "u17@r.com",
+          "u18@s.com",
+          "u19@t.com",
+          "u20@u.com",
+          "u21@v.com",
+          "u22@w.com",
+          "u23@x.com",
+          "u24@y.com",
+          "u25@z.com",
+          "u26@a.com",
+          "u27@b.com",
+          "u28@c.com",
+          "u29@d.com",
+          "u30@e.com",
+          "u31@f.com",
+          "u32@g.com",
+          "u33@h.com",
+          "u34@i.com",
+          "u35@j.com",
+          "u36@k.com",
+          "u37@l.com",
+          "u38@m.com",
+          "u39@n.com",
+          "u40@o.com",
+          "u41@p.com",
+          "u42@q.com",
+          "u43@r.com",
+          "u44@s.com",
+          "u45@t.com",
+          "u46@u.com",
+          "u47@v.com",
+          "u48@w.com",
+          "u49@x.com"
+        ]
+      ],
+      "expected": 50
+    },
+    {
+      "input": [
+        [
+          "a.b.c+0@d.com",
+          "a.b.c+1@d.com",
+          "a.b.c+2@d.com",
+          "a.b.c+3@d.com",
+          "a.b.c+4@d.com",
+          "a.b.c+5@d.com",
+          "a.b.c+6@d.com",
+          "a.b.c+7@d.com",
+          "a.b.c+8@d.com",
+          "a.b.c+9@d.com",
+          "a.b.c+10@d.com",
+          "a.b.c+11@d.com",
+          "a.b.c+12@d.com",
+          "a.b.c+13@d.com",
+          "a.b.c+14@d.com",
+          "a.b.c+15@d.com",
+          "a.b.c+16@d.com",
+          "a.b.c+17@d.com",
+          "a.b.c+18@d.com",
+          "a.b.c+19@d.com",
+          "a.b.c+20@d.com",
+          "a.b.c+21@d.com",
+          "a.b.c+22@d.com",
+          "a.b.c+23@d.com",
+          "a.b.c+24@d.com",
+          "a.b.c+25@d.com",
+          "a.b.c+26@d.com",
+          "a.b.c+27@d.com",
+          "a.b.c+28@d.com",
+          "a.b.c+29@d.com",
+          "abc@d.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "x+@d.com",
+          "x@d.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "a@b.com",
+          "a@b.com",
+          "a@b.com",
+          "a@b.com"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        [
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb@ccccc.com"
+        ]
+      ],
+      "expected": 1
+    }
+  ]
+}

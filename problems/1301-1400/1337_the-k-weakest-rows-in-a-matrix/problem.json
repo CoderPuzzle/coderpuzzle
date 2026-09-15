@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1337,
+  "slug": "the-k-weakest-rows-in-a-matrix",
+  "title": "The K Weakest Rows in a Matrix",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "kWeakestRows",
+    "parameters": [
+      {
+        "name": "mat",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "kWeakestRows",
+      "rust": "k_weakest_rows",
+      "typescript": "kWeakestRows"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(101,'John','A',NULL),\n(102,'Dan','A',101),\n(103,'James','A',101),\n(104,'Amy','A',101),\n(105,'Anne','A',101),\n(106,'Ron','B',101);"
+      ],
+      "expected": [
+        [
+          "John"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Ada','Eng',NULL),\n(2,'Bo','Eng',1),\n(3,'Cy','Eng',1),\n(4,'Dee','Eng',1),\n(5,'Eli','Eng',1),\n(6,'Fay','Ops',1);"
+      ],
+      "expected": [
+        [
+          "Ada"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(11,'Gus','Sales',NULL),\n(12,'Hal','Sales',11),\n(13,'Ivy','Sales',11),\n(14,'Joi','Sales',11),\n(15,'Kim','Sales',11);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(21,'Nora','Exec',NULL),\n(22,'Omar','Eng',21),\n(23,'Pam','Eng',22),\n(24,'Qasim','Eng',22),\n(25,'Rosa','Eng',22),\n(26,'Seth','Eng',22),\n(27,'Tara','Eng',22),\n(31,'Umar','Ops',21),\n(32,'Vera','Ops',31),\n(33,'Wade','Ops',31),\n(34,'Xena','Ops',31),\n(35,'Yuri','Ops',31),\n(36,'Zara','Ops',31),\n(41,'Anya','Legal',21),\n(42,'Boris','Legal',41),\n(43,'Cara','Legal',41),\n(44,'Dmitri','Legal',41);"
+      ],
+      "expected": [
+        [
+          "Omar"
+        ],
+        [
+          "Umar"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(51,'Rhea','IT',NULL),\n(52,'Silas','IT',51),\n(53,'Tess','IT',51),\n(54,'Ugo','IT',52),\n(55,'Vik','IT',53);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(61,'Wren','Exec',NULL),\n(62,'Xio','Exec',NULL),\n(63,'Yael','A',61),\n(64,'Zeke','A',61),\n(65,'Alba','A',61),\n(66,'Bree','A',61),\n(67,'Cleo','A',61);"
+      ],
+      "expected": [
+        [
+          "Wren"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(71,'Alton','Exec',NULL),\n(72,'Brynn','Ops',71),\n(73,'Cyrus','Ops',72),\n(74,'Dalia','Ops',72),\n(75,'Efram','Ops',72),\n(76,'Greta','Ops',72),\n(77,'Hugo','Ops',73),\n(78,'Ila','Ops',73),\n(79,'Jonas','Ops',73),\n(80,'Katya','Ops',73),\n(81,'Lorne','Ops',74),\n(82,'Mika','Ops',74),\n(83,'Nils','Ops',74),\n(84,'Opal','Ops',74),\n(85,'Perry','Ops',75),\n(86,'Quinn','Ops',75),\n(87,'Rhea','Ops',75),\n(88,'Sten','Ops',75),\n(89,'Talia','Ops',76),\n(90,'Ulric','Ops',76),\n(91,'Vesna','Ops',76),\n(92,'Walt','Ops',76);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(100,'Ravi','Exec',NULL),\n(101,'Sana','Eng',100),\n(102,'Tomas','Eng',101),\n(103,'Uma','Eng',101),\n(104,'Viktor','Eng',101),\n(105,'Willa','Eng',101),\n(106,'Xiu','Eng',101),\n(107,'Yosef','Eng',102),\n(108,'Zinnia','Eng',102),\n(109,'Aarav','Eng',102),\n(110,'Bea','Eng',102),\n(111,'Chen','Eng',102),\n(112,'Dita','Eng',102);"
+      ],
+      "expected": [
+        [
+          "Sana"
+        ],
+        [
+          "Tomas"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(121,'Dara','Exec',NULL),\n(122,'Enzo','Eng',121),\n(131,'Fina','Ops',121),\n(123,'Gil','Eng',122),\n(124,'Hana','Eng',122),\n(125,'Iker','Eng',122),\n(126,'Joelle','Eng',122),\n(127,'Kian','Eng',122),\n(132,'Lena','Ops',131),\n(133,'Milo','Ops',131),\n(134,'Nadia','Ops',131),\n(135,'Otto','Ops',131),\n(136,'Petra','Ops',131);"
+      ],
+      "expected": [
+        [
+          "Enzo"
+        ],
+        [
+          "Fina"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(141,'Goro','Exec',NULL);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(151,'Rami','Exec',NULL),\n(152,'Suri','Exec',NULL),\n(153,'Theo','Exec',NULL),\n(154,'Ursa','Exec',NULL),\n(155,'Vann','Exec',NULL),\n(156,'Wyn','Exec',NULL);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(161,'Ines','A',999),\n(162,'Jarek','A',999),\n(163,'Kaya','A',999),\n(164,'Lyle','A',999),\n(165,'Mira','A',999),\n(170,'Iris','B',NULL),\n(171,'Nell','B',170),\n(172,'Oskar','B',170),\n(173,'Paloma','B',170),\n(174,'Quinton','B',170),\n(175,'Ruel','B',170);"
+      ],
+      "expected": [
+        [
+          "Iris"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(209,'Bexley','Eng',201),\n(214,'Gilda','Eng',202),\n(212,'Emeka','Eng',202),\n(223,'Orla','Eng',210),\n(206,'Yannick','Eng',201),\n(211,'Delphine','Eng',202),\n(210,'Cyrus','Eng',201),\n(207,'Zelda','Eng',201),\n(217,'Jorge','Ops',203),\n(221,'Mireille','Eng',210),\n(218,'Kalinda','Ops',203),\n(200,'Salome','Exec',NULL),\n(224,'Piotr','Eng',211),\n(215,'Hollis','Eng',202),\n(202,'Ulla','Eng',200),\n(216,'Imani','Ops',203),\n(205,'Xiomara','Eng',201),\n(222,'Naveen','Eng',210),\n(225,'Quinta','Eng',211),\n(201,'Tavian','Eng',200),\n(213,'Farid','Eng',202),\n(219,'Lars','Ops',203),\n(203,'Verner','Ops',200),\n(208,'Anwar','Eng',201),\n(204,'Wesley','Ops',200);"
+      ],
+      "expected": [
+        [
+          "Tavian"
+        ],
+        [
+          "Ulla"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(45,'Thaddeus','HR',17),\n(25,'Zane','Ops',5),\n(48,'Winston','Eng',23),\n(3,'Cassidy','Legal',1),\n(43,'Rosalie','Legal',13),\n(20,'Ulysses','IT',4),\n(10,'Jasper','Sales',2),\n(53,'Bianca','HR',31),\n(51,'Zora','Legal',31),\n(39,'Norbert','Exec',8),\n(16,'Percival','Eng',3),\n(44,'Sebastian','IT',17),\n(7,'Gwen','Exec',1),\n(56,'Everett','Eng',31),\n(42,'Quentin','Sales',13),\n(50,'Yannick2','Sales',23),\n(31,'Florian','Exec',7),\n(32,'Giselle','Eng',7),\n(37,'Laszlo','HR',8),\n(9,'Isolde','Ops',2),\n(27,'Bram','Legal',5),\n(11,'Kendra','Legal',2),\n(6,'Frederick','Design',1),\n(8,'Harlan','Eng',2),\n(12,'Leopold','IT',2),\n(46,'Ursula','Design',23),\n(14,'Nestor','Design',3),\n(30,'Eleanora','Design',6),\n(36,'Kirsten','IT',8),\n(19,'Tabitha','Legal',4),\n(23,'Xander','Exec',5),\n(41,'Pruitt','Ops',13),\n(59,'Henrietta','Legal',36),\n(33,'Heathcliff','Ops',7),\n(28,'Celeste','IT',6),\n(40,'Ophelia','Eng',8),\n(34,'Ingrid','Sales',7),\n(54,'Cornelius','Design',31),\n(29,'Desmond','HR',6),\n(55,'Delia','Exec',31),\n(18,'Stefan','Sales',4),\n(21,'Valentina','HR',4),\n(60,'Isidore','IT',46),\n(26,'Anouk','Sales',5),\n(2,'Bailey','Sales',1),\n(47,'Vivienne','Exec',23),\n(24,'Yasmin','Eng',5),\n(49,'Ximena','Ops',23),\n(15,'Octavia','Exec',3),\n(38,'Marcelline','Design',8),\n(35,'Jerome','Legal',7),\n(57,'Fiona','Ops',36),\n(17,'Rosalind','Ops',4),\n(52,'Aldous','IT',31),\n(58,'Godfrey','Sales',36),\n(4,'Dorian','IT',1),\n(22,'Wendell','Design',4),\n(1,'August','Exec',NULL),\n(13,'Magda','HR',3),\n(5,'Elise','HR',1);"
+      ],
+      "expected": [
+        [
+          "August"
+        ],
+        [
+          "Bailey"
+        ],
+        [
+          "Dorian"
+        ],
+        [
+          "Elise"
+        ],
+        [
+          "Gwen"
+        ],
+        [
+          "Harlan"
+        ],
+        [
+          "Xander"
+        ],
+        [
+          "Florian"
+        ]
+      ]
+    }
+  ]
+}

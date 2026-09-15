@@ -1,0 +1,142 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Visits VALUES\n(1,23),\n(2,9),\n(4,30),\n(5,54),\n(6,96),\n(7,54),\n(8,54);\nINSERT INTO Transactions VALUES\n(2,5,310),\n(3,5,300),\n(9,5,200),\n(12,1,910),\n(13,2,970);"
+      ],
+      "expected": [
+        [
+          54,
+          2
+        ],
+        [
+          30,
+          1
+        ],
+        [
+          96,
+          1
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Visits VALUES\n(1,101),\n(2,102);\nINSERT INTO Transactions VALUES\n(1,1,50);"
+      ],
+      "expected": [
+        [
+          102,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Visits VALUES\n(1,201),\n(2,201),\n(3,201);"
+      ],
+      "expected": [
+        [
+          201,
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Visits VALUES\n(1,301),\n(2,301),\n(3,301);\nINSERT INTO Transactions VALUES\n(1,1,20);"
+      ],
+      "expected": [
+        [
+          301,
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Visits VALUES\n(1,401),\n(2,401);\nINSERT INTO Transactions VALUES\n(1,1,10),\n(2,1,20),\n(3,1,30);"
+      ],
+      "expected": [
+        [
+          401,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Visits VALUES\n(1,501),\n(2,502),\n(3,503),\n(4,503),\n(5,503),\n(6,504);\nINSERT INTO Transactions VALUES\n(101,1,10),\n(102,4,20),\n(103,6,30),\n(104,6,40);"
+      ],
+      "expected": [
+        [
+          502,
+          1
+        ],
+        [
+          503,
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Visits VALUES\n(8,54),\n(7,54),\n(6,96),\n(5,54),\n(4,30),\n(2,9),\n(1,23);\nINSERT INTO Transactions VALUES\n(13,2,970),\n(12,1,910),\n(9,5,200),\n(3,5,300),\n(2,5,310);"
+      ],
+      "expected": [
+        [
+          54,
+          2
+        ],
+        [
+          30,
+          1
+        ],
+        [
+          96,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Visits VALUES\n(2,102),\n(1,101);\nINSERT INTO Transactions VALUES\n(1,1,50);"
+      ],
+      "expected": [
+        [
+          102,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Visits VALUES\n(3,201),\n(2,201),\n(1,201);"
+      ],
+      "expected": [
+        [
+          201,
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Visits VALUES\n(3,301),\n(2,301),\n(1,301);\nINSERT INTO Transactions VALUES\n(1,1,20);"
+      ],
+      "expected": [
+        [
+          301,
+          2
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 637,
+  "slug": "average-of-levels-in-binary-tree",
+  "title": "Average of Levels in Binary Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "averageOfLevels",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "number"
+      }
+    },
+    "entrypoints": {
+      "go": "averageOfLevels",
+      "rust": "average_of_levels",
+      "typescript": "averageOfLevels"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

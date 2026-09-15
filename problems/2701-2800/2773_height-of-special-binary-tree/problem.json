@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2773,
+  "slug": "height-of-special-binary-tree",
+  "title": "Height of Special Binary Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Tree",
+    "Binary Tree",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "heightOfTree",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "special_tree",
+        "value_type": {
+          "kind": "special_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          },
+          "class": "RingTreeNode"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "heightOfTree",
+      "rust": "height_of_tree",
+      "typescript": "heightOfTree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

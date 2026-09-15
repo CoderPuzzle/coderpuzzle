@@ -1,0 +1,398 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('Leetcode','Buy',1,1000),\n('Corona Masks','Buy',2,10),\n('Leetcode','Sell',5,9000),\n('Handbags','Buy',17,30000),\n('Corona Masks','Sell',3,1010),\n('Corona Masks','Buy',4,1000),\n('Corona Masks','Sell',5,500),\n('Corona Masks','Buy',6,1000),\n('Handbags','Sell',29,7000),\n('Corona Masks','Sell',10,10000);"
+      ],
+      "expected": [
+        [
+          "Corona Masks",
+          9500
+        ],
+        [
+          "Handbags",
+          -23000
+        ],
+        [
+          "Leetcode",
+          8000
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('ABC','Buy',1,100),\n('ABC','Sell',2,150);"
+      ],
+      "expected": [
+        [
+          "ABC",
+          50
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('ABC','Buy',1,100),\n('ABC','Sell',2,90);"
+      ],
+      "expected": [
+        [
+          "ABC",
+          -10
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('ABC','Buy',1,100),\n('ABC','Sell',2,100);"
+      ],
+      "expected": [
+        [
+          "ABC",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('A','Buy',1,10),\n('B','Buy',2,20),\n('A','Sell',3,15),\n('B','Sell',4,25);"
+      ],
+      "expected": [
+        [
+          "A",
+          5
+        ],
+        [
+          "B",
+          5
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('X','Buy',1,50),\n('X','Sell',2,60),\n('X','Buy',3,70),\n('X','Sell',4,40),\n('X','Buy',5,10),\n('X','Sell',6,30);"
+      ],
+      "expected": [
+        [
+          "X",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('A','Buy',1,5),\n('B','Buy',2,50),\n('A','Sell',3,8),\n('C','Buy',4,500),\n('B','Sell',5,45),\n('A','Buy',6,9),\n('C','Sell',7,600),\n('A','Sell',8,4);"
+      ],
+      "expected": [
+        [
+          "A",
+          -2
+        ],
+        [
+          "B",
+          -5
+        ],
+        [
+          "C",
+          100
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('Z','Sell',9,100),\n('Z','Buy',1,40);"
+      ],
+      "expected": [
+        [
+          "Z",
+          60
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('F','Buy',1,0),\n('F','Sell',2,7);"
+      ],
+      "expected": [
+        [
+          "F",
+          7
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('G','Buy',1,1000000),\n('G','Sell',2,999999);"
+      ],
+      "expected": [
+        [
+          "G",
+          -1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('M','Buy',1,1000),\n('M','Sell',2,500),\n('M','Buy',3,200),\n('M','Sell',4,900),\n('N','Buy',5,100),\n('N','Sell',6,100);"
+      ],
+      "expected": [
+        [
+          "M",
+          200
+        ],
+        [
+          "N",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Stocks VALUES\n('stock58','Sell',19,2052),\n('stock21','Buy',22,424),\n('stock36','Buy',60,4603),\n('stock59','Sell',22,5448),\n('stock23','Sell',33,5287),\n('stock23','Sell',40,5082),\n('stock35','Buy',53,2276),\n('stock43','Sell',23,-829),\n('stock40','Sell',33,550),\n('stock21','Buy',45,1772),\n('stock13','Sell',41,-1515),\n('stock40','Sell',8,3088),\n('stock31','Buy',41,4786),\n('stock53','Buy',2,4860),\n('stock37','Buy',25,4417),\n('stock25','Sell',38,4063),\n('stock17','Sell',23,16),\n('stock40','Sell',20,2504),\n('stock36','Buy',38,4583),\n('stock53','Sell',17,-1525),\n('stock34','Sell',38,2513),\n('stock21','Sell',32,20),\n('stock01','Buy',38,1435),\n('stock41','Sell',8,2905),\n('stock54','Sell',40,4267),\n('stock17','Buy',22,574),\n('stock24','Sell',18,2160),\n('stock18','Sell',5,982),\n('stock50','Sell',12,4180),\n('stock45','Buy',30,2541),\n('stock53','Buy',35,4866),\n('stock12','Sell',33,3684),\n('stock18','Buy',2,1269),\n('stock45','Sell',12,81),\n('stock41','Sell',48,1169),\n('stock35','Buy',29,4957),\n('stock59','Buy',31,1270),\n('stock28','Buy',12,4085),\n('stock22','Buy',16,4068),\n('stock23','Buy',16,3144),\n('stock54','Buy',48,1723),\n('stock22','Buy',1,4442),\n('stock45','Sell',20,1394),\n('stock48','Sell',19,3525),\n('stock08','Sell',18,558),\n('stock34','Sell',54,1183),\n('stock19','Buy',21,4086),\n('stock36','Buy',30,1295),\n('stock05','Buy',18,207),\n('stock39','Buy',16,3357),\n('stock19','Sell',24,2777),\n('stock22','Sell',20,3968),\n('stock00','Buy',13,2549),\n('stock51','Sell',28,2570),\n('stock49','Buy',31,2672),\n('stock41','Sell',26,4077),\n('stock09','Sell',38,3661),\n('stock06','Sell',23,1691),\n('stock40','Sell',30,1975),\n('stock59','Sell',30,1249),\n('stock22','Sell',5,5767),\n('stock58','Buy',29,2873),\n('stock15','Buy',19,211),\n('stock27','Buy',13,1106),\n('stock33','Buy',47,3582),\n('stock24','Sell',10,2279),\n('stock36','Sell',69,3514),\n('stock18','Buy',32,503),\n('stock03','Buy',20,974),\n('stock35','Sell',24,1565),\n('stock54','Buy',30,186),\n('stock31','Sell',22,3613),\n('stock34','Buy',23,2817),\n('stock11','Buy',19,3777),\n('stock40','Buy',42,1929),\n('stock44','Sell',24,5509),\n('stock14','Buy',19,2615),\n('stock53','Buy',13,135),\n('stock34','Buy',50,1077),\n('stock39','Buy',37,3747),\n('stock23','Buy',30,3581),\n('stock41','Buy',1,1727),\n('stock29','Sell',2,1107),\n('stock42','Sell',18,322),\n('stock21','Sell',40,5969),\n('stock35','Sell',35,1816),\n('stock59','Sell',15,1764),\n('stock14','Sell',53,568),\n('stock35','Buy',34,3747),\n('stock32','Sell',14,-1078),\n('stock40','Sell',14,2880),\n('stock31','Sell',38,2326),\n('stock29','Sell',25,2100),\n('stock43','Buy',24,420),\n('stock40','Buy',25,2572),\n('stock14','Sell',30,1638),\n('stock41','Buy',24,4744),\n('stock06','Sell',25,2972),\n('stock31','Sell',64,4225),\n('stock20','Sell',32,5469),\n('stock29','Buy',4,1390),\n('stock35','Sell',42,3607),\n('stock13','Buy',56,3996),\n('stock46','Buy',15,4901),\n('stock02','Buy',1,2),\n('stock09','Buy',39,4061),\n('stock36','Buy',13,4833),\n('stock22','Sell',11,-470),\n('stock53','Sell',6,4479),\n('stock08','Buy',6,1369),\n('stock00','Buy',30,3912),\n('stock29','Sell',34,300),\n('stock57','Sell',15,6174),\n('stock55','Buy',28,4829),\n('stock36','Sell',35,2459),\n('stock13','Buy',23,416),\n('stock40','Sell',43,2066),\n('stock17','Buy',12,2833),\n('stock19','Sell',16,4572),\n('stock07','Buy',13,1789),\n('stock58','Sell',33,1934),\n('stock58','Sell',41,-244),\n('stock46','Sell',25,-315),\n('stock36','Buy',45,517),\n('stock15','Buy',35,4327),\n('stock14','Buy',34,814),\n('stock33','Sell',30,5543),\n('stock17','Buy',27,4547),\n('stock05','Sell',19,-709),\n('stock51','Buy',18,2701),\n('stock27','Sell',16,1991),\n('stock53','Sell',22,-1111),\n('stock55','Buy',15,436),\n('stock40','Sell',23,3076),\n('stock29','Sell',17,2570),\n('stock30','Sell',21,2003),\n('stock51','Sell',22,4361),\n('stock59','Sell',27,2854),\n('stock38','Buy',7,1239),\n('stock07','Buy',7,2290),\n('stock31','Buy',26,3892),\n('stock08','Buy',1,3285),\n('stock43','Buy',1,2184),\n('stock07','Sell',18,1065),\n('stock44','Buy',14,4367),\n('stock40','Buy',38,666),\n('stock43','Sell',3,2292),\n('stock53','Buy',21,775),\n('stock33','Sell',36,4310),\n('stock53','Sell',11,2717),\n('stock45','Buy',9,873),\n('stock36','Sell',64,6060),\n('stock18','Buy',40,3913),\n('stock19','Buy',18,1521),\n('stock20','Buy',19,554),\n('stock39','Buy',30,4484),\n('stock44','Sell',48,601),\n('stock46','Sell',16,4074),\n('stock23','Buy',36,4913),\n('stock36','Buy',65,2264),\n('stock39','Sell',32,4672),\n('stock50','Sell',16,4669),\n('stock24','Sell',14,3858),\n('stock31','Sell',58,1938),\n('stock25','Sell',13,4373),\n('stock26','Buy',13,150),\n('stock34','Buy',41,3711),\n('stock54','Buy',36,3914),\n('stock58','Sell',25,5499),\n('stock53','Buy',10,3812),\n('stock06','Buy',24,4478),\n('stock33','Buy',23,2266),\n('stock33','Sell',13,-282),\n('stock25','Buy',17,4213),\n('stock43','Buy',11,4338),\n('stock10','Sell',25,6295),\n('stock21','Buy',17,1994),\n('stock16','Buy',5,81),\n('stock37','Sell',20,-1503),\n('stock11','Sell',15,4539),\n('stock30','Buy',11,30),\n('stock35','Buy',19,268),\n('stock00','Buy',22,598),\n('stock31','Sell',53,2076),\n('stock53','Sell',36,3075),\n('stock33','Sell',42,4961),\n('stock49','Sell',30,5995),\n('stock52','Buy',26,504),\n('stock17','Sell',7,299),\n('stock06','Buy',20,1801),\n('stock04','Sell',31,2133),\n('stock18','Sell',33,1064),\n('stock54','Sell',43,861),\n('stock35','Sell',49,1542),\n('stock35','Sell',63,3642),\n('stock08','Sell',10,2379),\n('stock14','Sell',24,1203),\n('stock26','Buy',34,4446),\n('stock08','Sell',5,1858),\n('stock39','Buy',22,2669),\n('stock00','Sell',31,4245),\n('stock56','Buy',17,804),\n('stock14','Sell',45,5713),\n('stock44','Buy',44,1525),\n('stock09','Sell',43,5578),\n('stock24','Buy',15,2287),\n('stock21','Sell',25,1122),\n('stock08','Buy',30,1733),\n('stock31','Buy',49,2756),\n('stock39','Sell',39,5566),\n('stock12','Buy',29,4795),\n('stock13','Sell',19,2909),\n('stock00','Sell',15,883),\n('stock16','Sell',13,3987),\n('stock42','Buy',17,1180),\n('stock31','Sell',28,3725),\n('stock31','Buy',33,4148),\n('stock44','Sell',32,6090),\n('stock08','Buy',23,1405),\n('stock32','Buy',16,4616),\n('stock49','Buy',27,4383),\n('stock55','Sell',33,6562),\n('stock55','Sell',18,-131),\n('stock33','Sell',48,2937),\n('stock08','Buy',15,617),\n('stock40','Buy',22,3540),\n('stock01','Buy',30,4474),\n('stock19','Buy',13,3788),\n('stock00','Sell',23,296),\n('stock32','Buy',13,238),\n('stock57','Sell',10,4868),\n('stock41','Sell',34,2072),\n('stock09','Sell',24,2835),\n('stock39','Sell',15,5498),\n('stock44','Sell',39,2698),\n('stock18','Sell',27,-1485),\n('stock50','Buy',18,3270),\n('stock22','Sell',25,2137),\n('stock37','Sell',27,3868),\n('stock35','Buy',40,1702),\n('stock31','Buy',20,4921),\n('stock08','Sell',32,3287),\n('stock57','Buy',7,3656),\n('stock35','Sell',14,2493),\n('stock17','Buy',24,3110),\n('stock58','Buy',24,4215),\n('stock15','Buy',22,2556),\n('stock48','Buy',16,2092),\n('stock18','Sell',39,-530),\n('stock26','Sell',38,3840),\n('stock33','Buy',31,2427),\n('stock04','Buy',41,2284),\n('stock26','Sell',17,1334),\n('stock29','Buy',9,4297),\n('stock22','Buy',21,3879),\n('stock40','Buy',31,1669),\n('stock31','Sell',72,6723),\n('stock43','Sell',8,2988),\n('stock40','Buy',5,3172),\n('stock49','Sell',17,-556),\n('stock38','Buy',1,963),\n('stock31','Buy',68,4907),\n('stock41','Sell',41,445),\n('stock38','Sell',12,2177),\n('stock43','Sell',35,1161),\n('stock52','Sell',35,-702),\n('stock18','Buy',25,383),\n('stock01','Buy',18,1457),\n('stock09','Sell',48,1469),\n('stock41','Buy',31,1254),\n('stock49','Buy',20,4188),\n('stock13','Sell',31,-509),\n('stock33','Sell',18,363),\n('stock12','Buy',25,285),\n('stock58','Buy',37,298),\n('stock41','Buy',44,2653),\n('stock24','Buy',4,1666),\n('stock09','Buy',44,2810),\n('stock17','Buy',5,48),\n('stock28','Sell',16,3885),\n('stock41','Buy',16,1132),\n('stock30','Sell',13,1487),\n('stock04','Buy',18,2883),\n('stock44','Buy',27,4276),\n('stock04','Sell',37,2164),\n('stock15','Sell',40,5155),\n('stock49','Sell',35,1448),\n('stock12','Sell',20,5055),\n('stock03','Sell',29,6407),\n('stock13','Buy',46,2844),\n('stock04','Sell',43,2319),\n('stock12','Sell',28,-607),\n('stock01','Sell',19,600),\n('stock43','Buy',31,2325),\n('stock29','Buy',1,473),\n('stock35','Buy',61,4160),\n('stock13','Sell',35,700),\n('stock34','Sell',42,3629),\n('stock02','Sell',6,-314),\n('stock24','Buy',13,2231),\n('stock57','Buy',14,4930),\n('stock38','Sell',17,461),\n('stock16','Sell',6,-1884),\n('stock47','Buy',2,1687),\n('stock40','Sell',41,2274),\n('stock38','Buy',16,814),\n('stock25','Buy',5,4606),\n('stock15','Buy',29,1251),\n('stock17','Sell',26,3358),\n('stock21','Sell',46,189),\n('stock23','Buy',45,4942),\n('stock45','Buy',23,2070),\n('stock04','Buy',36,1413),\n('stock09','Sell',30,3037),\n('stock57','Buy',18,2023),\n('stock40','Buy',18,2502),\n('stock23','Buy',24,1993),\n('stock16','Sell',3,-1010),\n('stock15','Sell',24,4491),\n('stock53','Buy',26,4619),\n('stock21','Sell',18,1060),\n('stock57','Buy',2,3956),\n('stock11','Buy',10,3365),\n('stock36','Sell',56,3595),\n('stock36','Buy',20,99),\n('stock09','Buy',27,2714),\n('stock30','Buy',7,3210),\n('stock25','Buy',34,3761),\n('stock18','Buy',17,1650),\n('stock18','Buy',7,86),\n('stock20','Sell',22,482),\n('stock25','Buy',12,2431),\n('stock22','Buy',8,787),\n('stock13','Buy',40,183),\n('stock53','Sell',30,6486),\n('stock20','Buy',37,1865),\n('stock59','Buy',20,4531),\n('stock00','Buy',25,3957),\n('stock33','Buy',11,452),\n('stock35','Buy',47,690),\n('stock46','Buy',23,1002),\n('stock39','Buy',25,1013),\n('stock54','Sell',35,-376),\n('stock41','Buy',36,381),\n('stock39','Sell',23,4538),\n('stock34','Sell',45,5594),\n('stock10','Buy',13,4164),\n('stock56','Sell',24,4724),\n('stock00','Sell',18,4708),\n('stock37','Buy',15,138),\n('stock54','Buy',41,1777),\n('stock29','Buy',30,1267),\n('stock12','Buy',15,4388),\n('stock43','Buy',19,991),\n('stock35','Sell',56,3546),\n('stock43','Sell',26,527),\n('stock25','Sell',22,3149),\n('stock34','Buy',35,4031),\n('stock12','Buy',22,3210),\n('stock18','Sell',44,3334),\n('stock26','Buy',25,3181),\n('stock29','Sell',12,4800),\n('stock45','Buy',15,181),\n('stock14','Buy',50,649),\n('stock26','Sell',29,3082),\n('stock47','Sell',3,2011),\n('stock20','Sell',42,2678),\n('stock14','Buy',27,265),\n('stock43','Buy',7,4832),\n('stock39','Sell',17,1997),\n('stock55','Buy',22,460),\n('stock39','Sell',28,2870),\n('stock04','Sell',21,3888),\n('stock51','Buy',27,3542),\n('stock18','Buy',34,1133),\n('stock50','Buy',11,4409),\n('stock59','Buy',8,1293),\n('stock34','Sell',10,2886),\n('stock13','Buy',52,864),\n('stock14','Buy',40,4051),\n('stock27','Buy',21,3256),\n('stock03','Buy',25,4742),\n('stock01','Sell',26,2559),\n('stock44','Sell',17,3520),\n('stock18','Sell',10,-908),\n('stock59','Sell',35,2683),\n('stock03','Sell',21,-818),\n('stock36','Buy',52,2764),\n('stock26','Buy',19,1149),\n('stock49','Buy',38,1552),\n('stock44','Buy',35,4015),\n('stock13','Sell',50,2794),\n('stock14','Sell',59,2397),\n('stock52','Buy',34,464),\n('stock01','Buy',24,1391),\n('stock35','Sell',32,3419),\n('stock46','Buy',17,627),\n('stock00','Buy',17,2766),\n('stock59','Buy',28,1873),\n('stock36','Sell',25,-517),\n('stock11','Buy',26,2673),\n('stock54','Buy',20,4239),\n('stock33','Buy',41,3446),\n('stock20','Buy',27,4300),\n('stock16','Buy',10,3094),\n('stock31','Buy',54,1115),\n('stock56','Sell',20,2125),\n('stock13','Buy',16,1009),\n('stock32','Sell',17,5681),\n('stock34','Buy',9,3271),\n('stock57','Sell',4,4547),\n('stock23','Sell',27,282),\n('stock50','Sell',23,1609),\n('stock50','Buy',15,4400),\n('stock08','Sell',28,1869),\n('stock29','Sell',6,2091),\n('stock55','Sell',24,-1104),\n('stock13','Buy',27,400),\n('stock00','Buy',36,4729),\n('stock41','Sell',19,3107),\n('stock48','Buy',18,4190),\n('stock58','Buy',16,3531),\n('stock21','Buy',27,702),\n('stock26','Sell',21,625),\n('stock52','Sell',30,-458),\n('stock33','Sell',24,2185),\n('stock25','Sell',8,3946),\n('stock40','Buy',12,2380),\n('stock13','Sell',60,2679),\n('stock09','Buy',15,1202),\n('stock14','Buy',58,636),\n('stock41','Buy',7,3187),\n('stock35','Buy',9,910),\n('stock34','Buy',43,4359),\n('stock38','Sell',2,2129),\n('stock19','Sell',19,3196),\n('stock59','Buy',23,3028),\n('stock13','Buy',34,63),\n('stock25','Buy',26,3308),\n('stock17','Sell',32,6428),\n('stock15','Sell',20,1039),\n('stock10','Buy',20,4562),\n('stock54','Sell',53,790),\n('stock45','Sell',32,3859),\n('stock33','Buy',17,308),\n('stock56','Buy',22,4325),\n('stock13','Sell',25,1228),\n('stock03','Sell',38,-448),\n('stock49','Buy',12,645),\n('stock33','Buy',25,4630),\n('stock24','Buy',7,1283),\n('stock21','Buy',41,2366),\n('stock57','Sell',21,1921),\n('stock29','Buy',15,672),\n('stock23','Sell',47,6488),\n('stock18','Sell',15,1725),\n('stock14','Sell',39,-128),\n('stock36','Sell',18,5520),\n('stock29','Buy',20,1938),\n('stock39','Buy',11,4098),\n('stock59','Buy',14,1321),\n('stock54','Sell',25,2818),\n('stock23','Sell',21,4093),\n('stock30','Sell',8,3561),\n('stock41','Sell',2,875),\n('stock17','Sell',17,2844),\n('stock45','Sell',26,2708),\n('stock27','Sell',25,3549),\n('stock25','Sell',29,2545),\n('stock11','Sell',27,4626),\n('stock21','Buy',37,4979),\n('stock34','Sell',31,1735),\n('stock41','Sell',15,1723),\n('stock43','Sell',13,2947),\n('stock43','Buy',15,1088),\n('stock07','Sell',8,2444),\n('stock01','Sell',40,456),\n('stock59','Sell',12,544),\n('stock18','Buy',11,1391),\n('stock04','Buy',26,1629),\n('stock09','Buy',20,3492),\n('stock31','Buy',62,2953),\n('stock43','Sell',16,-625),\n('stock10','Sell',18,2845),\n('stock34','Buy',26,3207),\n('stock03','Buy',34,810),\n('stock52','Sell',21,5900),\n('stock34','Buy',14,1688),\n('stock13','Sell',55,737),\n('stock48','Sell',17,2450),\n('stock00','Sell',26,3322),\n('stock34','Sell',24,3979),\n('stock09','Sell',16,-621),\n('stock34','Sell',19,828),\n('stock31','Sell',45,5315),\n('stock12','Sell',23,4981),\n('stock15','Buy',42,2116),\n('stock46','Sell',20,2078),\n('stock52','Buy',19,4795),\n('stock24','Sell',5,898),\n('stock01','Sell',33,2801),\n('stock09','Buy',35,2831),\n('stock44','Buy',21,3611),\n('stock12','Buy',36,36),\n('stock15','Sell',34,2711),\n('stock21','Sell',44,4155),\n('stock49','Sell',42,530),\n('stock11','Sell',21,4241),\n('stock18','Sell',20,1342),\n('stock36','Sell',48,973),\n('stock49','Sell',25,4530),\n('stock41','Buy',11,3103),\n('stock30','Buy',18,2571),\n('stock12','Sell',39,-1054),\n('stock16','Buy',1,427),\n('stock00','Sell',38,5300),\n('stock36','Sell',43,4314),\n('stock15','Sell',45,957);"
+      ],
+      "expected": [
+        [
+          "stock00",
+          243
+        ],
+        [
+          "stock01",
+          -2341
+        ],
+        [
+          "stock02",
+          -316
+        ],
+        [
+          "stock03",
+          -1385
+        ],
+        [
+          "stock04",
+          2295
+        ],
+        [
+          "stock05",
+          -916
+        ],
+        [
+          "stock06",
+          -1616
+        ],
+        [
+          "stock07",
+          -570
+        ],
+        [
+          "stock08",
+          1542
+        ],
+        [
+          "stock09",
+          -1151
+        ],
+        [
+          "stock10",
+          414
+        ],
+        [
+          "stock11",
+          3591
+        ],
+        [
+          "stock12",
+          -655
+        ],
+        [
+          "stock13",
+          -752
+        ],
+        [
+          "stock14",
+          2361
+        ],
+        [
+          "stock15",
+          3892
+        ],
+        [
+          "stock16",
+          -2509
+        ],
+        [
+          "stock17",
+          1833
+        ],
+        [
+          "stock18",
+          -4804
+        ],
+        [
+          "stock19",
+          1150
+        ],
+        [
+          "stock20",
+          1910
+        ],
+        [
+          "stock21",
+          278
+        ],
+        [
+          "stock22",
+          -1774
+        ],
+        [
+          "stock23",
+          2659
+        ],
+        [
+          "stock24",
+          1728
+        ],
+        [
+          "stock25",
+          -243
+        ],
+        [
+          "stock26",
+          -45
+        ],
+        [
+          "stock27",
+          1178
+        ],
+        [
+          "stock28",
+          -200
+        ],
+        [
+          "stock29",
+          2931
+        ],
+        [
+          "stock30",
+          1240
+        ],
+        [
+          "stock31",
+          463
+        ],
+        [
+          "stock32",
+          -251
+        ],
+        [
+          "stock33",
+          2906
+        ],
+        [
+          "stock34",
+          -1814
+        ],
+        [
+          "stock35",
+          2920
+        ],
+        [
+          "stock36",
+          4960
+        ],
+        [
+          "stock37",
+          -2190
+        ],
+        [
+          "stock38",
+          1751
+        ],
+        [
+          "stock39",
+          5773
+        ],
+        [
+          "stock40",
+          -17
+        ],
+        [
+          "stock41",
+          -1808
+        ],
+        [
+          "stock42",
+          -858
+        ],
+        [
+          "stock43",
+          -7717
+        ],
+        [
+          "stock44",
+          624
+        ],
+        [
+          "stock45",
+          2377
+        ],
+        [
+          "stock46",
+          -693
+        ],
+        [
+          "stock47",
+          324
+        ],
+        [
+          "stock48",
+          -307
+        ],
+        [
+          "stock49",
+          -1493
+        ],
+        [
+          "stock50",
+          -1621
+        ],
+        [
+          "stock51",
+          688
+        ],
+        [
+          "stock52",
+          -1023
+        ],
+        [
+          "stock53",
+          -4946
+        ],
+        [
+          "stock54",
+          -3479
+        ],
+        [
+          "stock55",
+          -398
+        ],
+        [
+          "stock56",
+          1720
+        ],
+        [
+          "stock57",
+          2945
+        ],
+        [
+          "stock58",
+          -1676
+        ],
+        [
+          "stock59",
+          1226
+        ]
+      ]
+    }
+  ]
+}

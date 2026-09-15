@@ -1,0 +1,462 @@
+{
+  "public": [
+    {
+      "input": [
+        "abc",
+        "abb",
+        "ab"
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        "dac",
+        "bac",
+        "cac"
+      ],
+      "expected": -1
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "x",
+        "x",
+        "x"
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "a",
+        "b",
+        "c"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "abcd",
+        "ab",
+        "abc"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        "hello",
+        "hello",
+        "hello"
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "abc",
+        "xbc",
+        "abc"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "abcd",
+        "aq",
+        "az"
+      ],
+      "expected": 5
+    },
+    {
+      "input": [
+        "aaaa",
+        "aa",
+        "aaa"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        "xba",
+        "yba",
+        "zba"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        "abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "accccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "addddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      ],
+      "expected": 297
+    },
+    {
+      "input": [
+        "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+        "z",
+        "z"
+      ],
+      "expected": 99
+    },
+    {
+      "input": [
+        "abc",
+        "abc",
+        "abx"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        "a",
+        "a",
+        "a"
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "a",
+        "ab",
+        "bab"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "a",
+        "bb",
+        "bb"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "a",
+        "abb",
+        "ba"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "b",
+        "ab",
+        "b"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "b",
+        "aa",
+        "abb"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "b",
+        "bab",
+        "aba"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "ab",
+        "b",
+        "aa"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "ab",
+        "aa",
+        "ab"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        "ab",
+        "bab",
+        "a"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "ba",
+        "a",
+        "bab"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "ba",
+        "ba",
+        "bb"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        "ba",
+        "aba",
+        "ba"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "aa",
+        "a",
+        "b"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "aa",
+        "ab",
+        "abb"
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        "aa",
+        "bb",
+        "aba"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "aa",
+        "abb",
+        "aa"
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        "bb",
+        "ab",
+        "ab"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "bb",
+        "bb",
+        "a"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "bb",
+        "bab",
+        "bab"
+      ],
+      "expected": 5
+    },
+    {
+      "input": [
+        "aba",
+        "b",
+        "bb"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "aba",
+        "aa",
+        "ba"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "aba",
+        "bab",
+        "b"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "bab",
+        "a",
+        "abb"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "bab",
+        "ba",
+        "aba"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "bab",
+        "aba",
+        "aa"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "abb",
+        "a",
+        "ab"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        "abb",
+        "ba",
+        "a"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "abb",
+        "bb",
+        "bab"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "abb",
+        "abb",
+        "bb"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "bbbaabbbaaaaaabbbaababababaaabaaaaaaaabbbaaabaaaabbbbbabbbbbbbbbbabbbbabaaababbbabbaaaabb",
+        "bbaaabbbaaabaababaaababbbabbbbaabaaaabbbabbbbaabbabababbaababaaaaababbabba",
+        "babbaabaabbaabababbaaaabbaaabbaabbaabababababaababaabababaaaaaababbbabaab"
+      ],
+      "expected": 233
+    },
+    {
+      "input": [
+        "abbaababbaaaaaababbababbabbbababaabaaaaabaaabaaaaababbbbbbabbaaaabababbbbbabbbbbaabbbaababa",
+        "bbbaabaaaaababaaaaabbbbabbbaaabbababaabbaaaababbbbabbbaabbbaabbabaabbaaababbaa",
+        "aabbbbbaaaaabbabbabaaaaaaabbaaabababaababbabaabaaaaababbaaaabaaababbbaaba"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "abbabababaabbbbaababbababbaaabbbabababaaaaaa",
+        "baabbbabbaaaaaabbabbaabbaaabaabbabaabbaabbababbbbaa",
+        "aabaabbaaaaabbabbbbbaaaab"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "bbabaaaabaabaabbbaabbbaabbabbbbbbaabbbbababaaabbaaabbbaaaabba",
+        "bbbbaabbabbaab",
+        "baabaabbabbababbaabbbaaabaaaababbbaaaaaabababbbabbabababbba"
+      ],
+      "expected": 131
+    },
+    {
+      "input": [
+        "baabbbbaabaababb",
+        "aabbbbbabb",
+        "bbbabababbbaaabbbabaababbababbbbaaaaabbbabbbabaaaaaaaaabbaababbaab"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "bbabaaaaaaaabbaabbaab",
+        "ababbababaabbaaabbaabbabbbbaaabaaababbaababbabbaabbbbbbbabbaababbaabaaabbaa",
+        "aaabaaaaaaabaaaaaaababbbabbbaabaabbabbabaaabaaba"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "abaababbaabaabbaabaaabaababbaabbbaaabbbbbabbbbbabbbbbaabaaabbaaabaababaabab",
+        "abaabbbbbbbaaaabbabbbbaaaaa",
+        "ab"
+      ],
+      "expected": 98
+    },
+    {
+      "input": [
+        "aabaaaabaabaabbaaabbbabaaaabbabbaabaaaabbbaabbabaabababaabaaaabbaabbabbbaaabbaaababbbbbaabbbb",
+        "aaaba",
+        "bbababbbabaabbaabbaaabbaabbbbaaabbaabbbaabbabababababbbbbabbb"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "abaaabbabbabbababaaabbbbbaabababbbbabbaabaababaabaaababababbbaaaababbaaaabbbabbbbbbabbbbaaaabbbababa",
+        "abbbabbbaaaaabababbabbb",
+        "abbaaabaaababaababbbbbbbabbbbbabbbbbbabb"
+      ],
+      "expected": 157
+    },
+    {
+      "input": [
+        "aaabaabbaaabbbaabaabbabbbaaabaabbbabbbabbababaaaabaabbabaaababbabbbabbbbaaabaabbbbba",
+        "aaaabbaaa",
+        "aabababbbbbaabaaabbbabaaabbaaaaaababaaaabaababaaabaabbbbbabbababaaaabbbbbb"
+      ],
+      "expected": 161
+    },
+    {
+      "input": [
+        "abababaabaabababaaabaaaabbbaabaa",
+        "bbbbbabaaabaaaabababbabbbaaaababbb",
+        "baabbbaaaaabaaaabaababbbbaaaabaabbababaaababbaababba"
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        "baabbabbabbbababbabaaabaaaaabaaabaaaababbbaabababbaabbbabbbaabab",
+        "bababaaaabbabbabbababaaabbbbabbaaba",
+        "abbaabba"
+      ],
+      "expected": -1
+    }
+  ]
+}

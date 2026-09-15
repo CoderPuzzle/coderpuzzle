@@ -1,0 +1,77 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3235,
+  "slug": "check-if-the-rectangle-corner-is-reachable",
+  "title": "Check if the Rectangle Corner Is Reachable",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Geometry"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Geometry"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canReachCorner",
+    "parameters": [
+      {
+        "name": "xCorner",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "yCorner",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "circles",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canReachCorner",
+      "rust": "can_reach_corner",
+      "typescript": "canReachCorner"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2030,
+  "slug": "smallest-k-length-subsequence-with-occurrences-of-a-letter",
+  "title": "Smallest K-Length Subsequence With Occurrences of a Letter",
+  "difficulty": "Hard",
+  "tags": [
+    "Monotonic Stack",
+    "String",
+    "Greedy"
+  ],
+  "topics": [
+    "String",
+    "Stack",
+    "Greedy",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "smallestSubsequence",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "letter",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "repetition",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "smallestSubsequence",
+      "rust": "smallest_subsequence",
+      "typescript": "smallestSubsequence"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

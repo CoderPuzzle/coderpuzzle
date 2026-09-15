@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2151,
+  "slug": "maximum-good-people-based-on-statements",
+  "title": "Maximum Good People Based on Statements",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Bit Manipulation",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Backtracking",
+    "Bit Manipulation",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumGood",
+    "parameters": [
+      {
+        "name": "statements",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumGood",
+      "rust": "maximum_good",
+      "typescript": "maximumGood"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

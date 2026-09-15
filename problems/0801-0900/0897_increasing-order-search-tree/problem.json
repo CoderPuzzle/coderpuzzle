@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 897,
+  "slug": "increasing-order-search-tree",
+  "title": "Increasing Order Search Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Stack",
+    "Tree",
+    "Depth-First Search",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Stack",
+    "Tree",
+    "Depth-First Search",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "increasingBST",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "tree_node",
+    "return_type": {
+      "kind": "binary_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "increasingBST",
+      "rust": "increasing_bst",
+      "typescript": "increasingBST"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

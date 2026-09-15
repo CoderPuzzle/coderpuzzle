@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="660" height="310" fill="#ffffff"/>
+  <text x="20" y="24" fill="#1a2026" font-weight="600">heights = [2,1,5,6,2,3] - the bar of height 2 at i = 4 pops 6 and 5, exposing the 10 rectangle</text>
+  <!-- axis -->
+  <line x1="44" y1="240" x2="368" y2="240" stroke="#1a2026" stroke-width="1.4"/>
+  <!-- winning rectangle under bars 2..3, height 5 -->
+  <rect x="154" y="110" width="100" height="130" fill="#4169E1" fill-opacity="0.25" stroke="#4169E1" stroke-width="1.8"/>
+  <!-- bars: unit 26, w 48, gap 4: x = 50 + i*52 -->
+  <g fill="#1a2026">
+    <rect x="50" y="188" width="48" height="52"/>
+    <rect x="102" y="214" width="48" height="26"/>
+    <rect x="154" y="110" width="48" height="130"/>
+    <rect x="206" y="84" width="48" height="156"/>
+    <rect x="258" y="188" width="48" height="52"/>
+    <rect x="310" y="162" width="48" height="78"/>
+  </g>
+  <!-- pop annotations at i=4 -->
+  <path d="M 230 78 C 250 40, 292 52, 290 86" fill="none" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="268" y="44" fill="#4169E1" font-size="11" text-anchor="middle">pop 6: 6 x 1 = 6</text>
+  <path d="M 178 104 C 150 20, 240 24, 234 100" fill="none" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="196" y="100" fill="#4169E1" font-size="11" text-anchor="middle" font-weight="700">pop 5: 5 x (4-1-1) = 10</text>
+  <text x="204" y="130" fill="#1a2026" font-size="11" text-anchor="middle" font-weight="700">10</text>
+  <g fill="#8a94a0" font-size="10.5" text-anchor="middle">
+    <text x="74" y="256">i=0 (2)</text><text x="126" y="256">i=1 (1)</text><text x="178" y="256">i=2 (5)</text><text x="230" y="256">i=3 (6)</text><text x="282" y="256">i=4 (2)</text><text x="334" y="256">i=5 (3)</text>
+  </g>
+  <!-- stack timeline -->
+  <text x="420" y="60" fill="#1a2026" font-weight="600" font-size="12.5">stack of indices (heights strictly increasing)</text>
+  <g font-size="11.5" fill="#1a2026">
+    <text x="420" y="84">i=0  push 0          -&gt; [0]</text>
+    <text x="420" y="104">i=1  h1 pops 0 (2x1) -&gt; [1]</text>
+    <text x="420" y="124">i=2  push 2          -&gt; [1, 2]</text>
+    <text x="420" y="144">i=3  push 3          -&gt; [1, 2, 3]</text>
+    <text x="420" y="164" fill="#4169E1" font-weight="600">i=4  h2 pops 3, 2    -&gt; [1, 4]</text>
+    <text x="420" y="184">i=5  push 5          -&gt; [1, 4, 5]</text>
+    <text x="420" y="204">sentinel 0 pops 5 (3x1), 4 (2x4), 1 (1x6)</text>
+  </g>
+  <text x="420" y="238" fill="#5b6470" font-size="11.5">The element exposed by a pop is the popped</text>
+  <text x="420" y="254" fill="#5b6470" font-size="11.5">bar's left boundary; the popping index i is</text>
+  <text x="420" y="270" fill="#5b6470" font-size="11.5">its right boundary, so width = i - left - 1.</text>
+  <text x="20" y="298" fill="#5b6470" font-size="11.5">Every bar is pushed once and popped once; the best candidate found anywhere is the answer, 10.</text>
+</svg>

@@ -3,7 +3,7 @@
 # installing anything locally — the runner image carries every formatter.
 #
 #   scripts/format.sh path/to/file.go …        format in place
-#   scripts/format.sh --check problems-adapt   report unformatted, exit 1
+#   scripts/format.sh --check problems   report unformatted, exit 1
 #   scripts/format.sh --report json file.py    tri-state JSON per file:
 #                                              formatted | unformatted
 #                                              (+formatted text) |

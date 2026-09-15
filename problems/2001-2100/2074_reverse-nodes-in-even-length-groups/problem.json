@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2074,
+  "slug": "reverse-nodes-in-even-length-groups",
+  "title": "Reverse Nodes in Even Length Groups",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List"
+  ],
+  "topics": [
+    "Linked List"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "reverseEvenLengthGroups",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "reverseEvenLengthGroups",
+      "rust": "reverse_even_length_groups",
+      "typescript": "reverseEvenLengthGroups"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2513,
+  "slug": "minimize-the-maximum-of-two-arrays",
+  "title": "Minimize the Maximum of Two Arrays",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Binary Search",
+    "Number Theory",
+    "Least Common Multiple",
+    "Inclusion-Exclusion Principle"
+  ],
+  "topics": [
+    "Math",
+    "Binary Search",
+    "Number Theory",
+    "Least Common Multiple",
+    "Inclusion-Exclusion Principle"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimizeSet",
+    "parameters": [
+      {
+        "name": "divisor1",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "divisor2",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "uniqueCnt1",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "uniqueCnt2",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimizeSet",
+      "rust": "minimize_set",
+      "typescript": "minimizeSet"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

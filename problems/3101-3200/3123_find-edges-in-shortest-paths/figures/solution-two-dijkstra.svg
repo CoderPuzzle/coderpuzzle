@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="640" height="320" fill="#ffffff"/>
+  <!-- non-shortest-path edges -->
+  <g stroke="#98a2ac" stroke-width="1.4" stroke-dasharray="5 3">
+    <line x1="212" y1="76" x2="328" y2="36"/>
+    <line x1="342" y1="44" x2="498" y2="140"/>
+  </g>
+  <!-- shortest-path edges -->
+  <g stroke="#4169E1" stroke-width="2.2">
+    <line x1="86" y1="148" x2="184" y2="82"/>
+    <line x1="86" y1="178" x2="184" y2="244"/>
+    <line x1="216" y1="92" x2="336" y2="152"/>
+    <line x1="222" y1="76" x2="496" y2="156"/>
+    <line x1="216" y1="256" x2="336" y2="182"/>
+    <line x1="372" y1="172" x2="496" y2="172"/>
+  </g>
+  <!-- nodes -->
+  <g>
+    <circle cx="70" cy="163" r="20" fill="#e8edfa" stroke="#4169E1" stroke-width="1.8"/>
+    <circle cx="200" cy="70" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.7"/>
+    <circle cx="200" cy="260" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.7"/>
+    <circle cx="352" cy="167" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.7"/>
+    <circle cx="344" cy="34" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.7"/>
+    <circle cx="518" cy="167" r="20" fill="#e8edfa" stroke="#4169E1" stroke-width="1.8"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="70" y="169">0</text><text x="200" y="76">1</text><text x="200" y="266">2</text>
+    <text x="352" y="173">3</text><text x="344" y="40">4</text><text x="518" y="173">5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="70" y="197">d0=0 · d5=5</text>
+    <text x="200" y="104">d0=4 · d5=1</text>
+    <text x="200" y="294">d0=1 · d5=4</text>
+    <text x="352" y="201">d0=2 · d5=3</text>
+    <text x="344" y="68">d0=7 · d5=2</text>
+    <text x="518" y="201">d0=5 · d5=0</text>
+  </g>
+  <!-- edge weights -->
+  <g fill="#1a2026" font-size="12.5">
+    <text x="122" y="102">4</text>
+    <text x="122" y="230">1</text>
+    <text x="262" y="102">2</text>
+    <text x="270" y="48">3</text>
+    <text x="352" y="106">1</text>
+    <text x="268" y="234">1</text>
+    <text x="428" y="160">3</text>
+    <text x="416" y="80">2</text>
+  </g>
+  <!-- legend -->
+  <g font-size="12.5" fill="#5c6b76">
+    <line x1="60" y1="306" x2="92" y2="306" stroke="#4169E1" stroke-width="2.2"/>
+    <text x="100" y="310">d0[u] + w + d5[v] = 5 → on a shortest path</text>
+    <line x1="60" y1="286" x2="92" y2="286" stroke="#98a2ac" stroke-width="1.4" stroke-dasharray="5 3"/>
+    <text x="100" y="290">e.g. 1 → 4: 4 + 3 + 2 = 9 ≠ 5 → excluded</text>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="320" fill="#ffffff"/>
+  <!-- maze 3x4, cell 92, x=170 y=40 -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="170" y="40" width="92" height="92" fill="#e3e7eb"/><rect x="262" y="40" width="92" height="92" fill="#e3e7eb"/><rect x="354" y="40" width="92" height="92" fill="#ffffff"/><rect x="446" y="40" width="92" height="92" fill="#e3e7eb"/>
+    <rect x="170" y="132" width="92" height="92" fill="#ffffff"/><rect x="262" y="132" width="92" height="92" fill="#ffffff"/><rect x="354" y="132" width="92" height="92" fill="#4169E1"/><rect x="446" y="132" width="92" height="92" fill="#e3e7eb"/>
+    <rect x="170" y="224" width="92" height="92" fill="#e3e7eb"/><rect x="262" y="224" width="92" height="92" fill="#e3e7eb"/><rect x="354" y="224" width="92" height="92" fill="#e3e7eb"/><rect x="446" y="224" width="92" height="92" fill="#ffffff"/>
+  </g>
+  <!-- wall marks -->
+  <g text-anchor="middle" fill="#8a97a2" font-size="15">
+    <text x="216" y="92">+</text><text x="308" y="92">+</text><text x="492" y="92">+</text>
+    <text x="492" y="184">+</text>
+    <text x="216" y="276">+</text><text x="308" y="276">+</text><text x="400" y="276">+</text>
+  </g>
+  <!-- contents -->
+  <text x="400" y="94" text-anchor="middle" font-weight="600" fill="#1a2026">1</text>
+  <text x="216" y="186" text-anchor="middle" font-weight="600" fill="#1a2026">2</text>
+  <text x="308" y="186" text-anchor="middle" font-weight="600" fill="#1a2026">1</text>
+  <text x="400" y="186" text-anchor="middle" font-weight="600" fill="#ffffff" font-size="16">E</text>
+  <text x="492" y="276" text-anchor="middle" font-weight="600" fill="#5c6b76">exit?</text>
+  <!-- exit rings: (0,2) and (1,0) -->
+  <rect x="357" y="43" width="86" height="86" fill="none" stroke="#1a2026" stroke-width="2.4"/>
+  <rect x="173" y="135" width="86" height="86" fill="none" stroke="#1a2026" stroke-width="2.4" stroke-dasharray="7 5"/>
+  <!-- narration -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="30" y="76">BFS numbers cells by</text>
+    <text x="30" y="92">distance from E at the</text>
+    <text x="30" y="108">entrance (1, 2).</text>
+    <text x="30" y="150">Solid ring: the first</text>
+    <text x="30" y="166">border cell dequeued,</text>
+    <text x="30" y="182">distance 1 → answer.</text>
+    <text x="30" y="214">Dashed ring: another</text>
+    <text x="30" y="230">exit, but reached at</text>
+    <text x="30" y="246">distance 2, too late.</text>
+  </g>
+  <text x="30" y="300" fill="#1a2026" font-size="13">Walls seal off the bottom-right exit, so the upward hop to the border cell at distance 1 wins.</text>
+</svg>

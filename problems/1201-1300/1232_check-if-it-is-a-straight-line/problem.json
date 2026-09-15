@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1232,
+  "slug": "check-if-it-is-a-straight-line",
+  "title": "Check If It Is a Straight Line",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Geometry"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "checkStraightLine",
+    "parameters": [
+      {
+        "name": "coordinates",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "checkStraightLine",
+      "rust": "check_straight_line",
+      "typescript": "checkStraightLine"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

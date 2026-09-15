@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1381,
+  "slug": "design-a-stack-with-increment-operation",
+  "title": "Design a Stack With Increment Operation",
+  "difficulty": "Medium",
+  "tags": [
+    "Stack"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "CustomStack",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "maxSize",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "push",
+        "parameters": [
+          {
+            "name": "x",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "pop",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "increment",
+        "parameters": [
+          {
+            "name": "k",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "val",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

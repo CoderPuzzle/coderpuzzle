@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2058,
+  "slug": "find-the-minimum-and-maximum-number-of-nodes-between-critical-points",
+  "title": "Find the Minimum and Maximum Number of Nodes Between Critical Points",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List"
+  ],
+  "topics": [
+    "Linked List"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "nodesBetweenCriticalPoints",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "nodesBetweenCriticalPoints",
+      "rust": "nodes_between_critical_points",
+      "typescript": "nodesBetweenCriticalPoints"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

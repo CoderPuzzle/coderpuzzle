@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "iterative",
+  "id": 206,
+  "slug": "reverse-linked-list",
+  "title": "Reverse Linked List",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List",
+    "Recursion",
+    "Two Pointers"
+  ],
+  "topics": [
+    "Linked List",
+    "Recursion"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "reverseList",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "reverseList",
+      "rust": "reverse_list",
+      "typescript": "reverseList"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

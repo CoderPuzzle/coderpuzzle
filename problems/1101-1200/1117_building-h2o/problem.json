@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1117,
+  "slug": "building-h2o",
+  "title": "Building H2O",
+  "difficulty": "Medium",
+  "tags": [
+    "Concurrency"
+  ],
+  "topics": [
+    "Concurrency"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "concurrent",
+    "class_name": "H2O",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "hydrogen",
+        "parameters": [
+          {
+            "name": "releaseHydrogen",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback"
+            }
+          }
+        ]
+      },
+      {
+        "name": "oxygen",
+        "parameters": [
+          {
+            "name": "releaseOxygen",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback"
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64,
+    "threads": 60
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3420,
+  "slug": "count-non-decreasing-subarrays-after-k-operations",
+  "title": "Count Non-Decreasing Subarrays After K Operations",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Stack",
+    "Sliding Window",
+    "Monotonic Stack",
+    "Monotonic Queue"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Segment Tree",
+    "Queue",
+    "Sliding Window",
+    "Monotonic Stack",
+    "Monotonic Queue"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countNonDecreasingSubarrays",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "countNonDecreasingSubarrays",
+      "rust": "count_non_decreasing_subarrays",
+      "typescript": "countNonDecreasingSubarrays"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

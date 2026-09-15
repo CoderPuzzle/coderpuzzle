@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3711,
+  "slug": "maximum-transactions-without-negative-balance",
+  "title": "Maximum Transactions Without Negative Balance",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Heap (Priority Queue)"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxTransactions",
+    "parameters": [
+      {
+        "name": "transactions",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxTransactions",
+      "rust": "max_transactions",
+      "typescript": "maxTransactions"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

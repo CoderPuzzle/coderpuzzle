@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "three_way_partition",
+  "id": 75,
+  "slug": "sort-colors",
+  "title": "Sort Colors",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Sorting",
+    "Quicksort",
+    "Bubble Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sortColors",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "sortColors",
+      "rust": "sort_colors",
+      "typescript": "sortColors"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

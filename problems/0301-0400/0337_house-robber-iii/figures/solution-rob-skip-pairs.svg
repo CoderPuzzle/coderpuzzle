@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- edges -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="312" y1="78" x2="212" y2="140"/>
+    <line x1="348" y1="78" x2="468" y2="140"/>
+    <line x1="212" y1="172" x2="282" y2="238"/>
+    <line x1="468" y1="172" x2="538" y2="238"/>
+  </g>
+  <!-- robbed nodes: root, leaf 3 under 2, leaf 1 under right 3 -->
+  <circle cx="330" cy="60" r="22" fill="#4169E1"/>
+  <text x="330" y="66" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
+  <circle cx="300" cy="258" r="22" fill="#4169E1"/>
+  <text x="300" y="264" text-anchor="middle" fill="#ffffff" font-weight="600">3</text>
+  <circle cx="556" cy="258" r="22" fill="#4169E1"/>
+  <text x="556" y="264" text-anchor="middle" fill="#ffffff" font-weight="600">1</text>
+  <!-- skipped nodes -->
+  <circle cx="200" cy="156" r="22" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <text x="200" y="162" text-anchor="middle" fill="#1a2026">2</text>
+  <circle cx="480" cy="156" r="22" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <text x="480" y="162" text-anchor="middle" fill="#1a2026">3</text>
+  <!-- (rob, skip) pair per node -->
+  <g font-size="12.5" text-anchor="middle" fill="#4169E1" font-weight="600">
+    <text x="330" y="30">(rob 7, skip 6)</text>
+    <text x="200" y="126">(2, 3)</text>
+    <text x="480" y="126">(3, 1)</text>
+    <text x="300" y="298">(3, 0)</text>
+    <text x="556" y="298">(1, 0)</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="60">each node returns</text>
+    <text x="40" y="76">its (rob, skip) pair</text>
+    <text x="40" y="92">after its children:</text>
+    <text x="40" y="116" fill="#1a2026">rob = val +</text>
+    <text x="40" y="132" fill="#1a2026">skip(L) + skip(R)</text>
+    <text x="40" y="156" fill="#1a2026">skip = max(L) +</text>
+    <text x="40" y="172" fill="#1a2026">max(R)</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="576" y="60">root: 3 + 3 + 1</text>
+    <text x="576" y="76">= rob 7</text>
+    <text x="576" y="100">skip 6 =</text>
+    <text x="576" y="116">max(2,3)</text>
+    <text x="576" y="132">+ max(3,1)</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="230">Accent nodes are the optimal</text>
+    <text x="40" y="246">plan: 3 + 3 + 1 = 7, no two</text>
+    <text x="40" y="262">of them are adjacent.</text>
+  </g>
+</svg>

@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2416,
+  "slug": "sum-of-prefix-scores-of-strings",
+  "title": "Sum of Prefix Scores of Strings",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Trie",
+    "Counting"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Trie",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sumPrefixScores",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "sumPrefixScores",
+      "rust": "sum_prefix_scores",
+      "typescript": "sumPrefixScores"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

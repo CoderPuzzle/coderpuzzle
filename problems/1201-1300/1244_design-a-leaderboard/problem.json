@@ -1,0 +1,85 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1244,
+  "slug": "design-a-leaderboard",
+  "title": "Design A Leaderboard",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Design",
+    "Sorting"
+  ],
+  "topics": [
+    "Hash Table",
+    "Design",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Leaderboard",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "addScore",
+        "parameters": [
+          {
+            "name": "playerId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "score",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "top",
+        "parameters": [
+          {
+            "name": "K",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "reset",
+        "parameters": [
+          {
+            "name": "playerId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

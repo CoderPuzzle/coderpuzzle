@@ -1,0 +1,208 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(123,'Python'),\n(234,'R'),\n(123,'Tableau'),\n(123,'PostgreSQL'),\n(234,'PowerBI'),\n(234,'SQL Server'),\n(147,'Python'),\n(147,'Tableau'),\n(147,'Java'),\n(147,'PostgreSQL'),\n(256,'Tableau'),\n(102,'DataAnalysis');"
+      ],
+      "expected": [
+        [
+          123
+        ],
+        [
+          147
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(7,'Python'),\n(7,'Tableau'),\n(7,'PostgreSQL');"
+      ],
+      "expected": [
+        [
+          7
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(11,'Python'),\n(11,'Tableau'),\n(12,'Tableau'),\n(12,'PostgreSQL'),\n(13,'Python'),\n(13,'PostgreSQL');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(21,'python'),\n(21,'Tableau'),\n(21,'PostgreSQL'),\n(22,'PYTHON'),\n(22,'Tableau'),\n(22,'PostgreSQL'),\n(23,'Python '),\n(23,'tableau'),\n(23,'PostgreSQL'),\n(24,'Python'),\n(24,'Tableaus'),\n(24,'postgresql'),\n(25,' Python'),\n(25,' Tableau'),\n(25,' PostgreSQL'),\n(26,'Pythons'),\n(26,'Tableau!'),\n(26,'PostgreSQL8');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(31,'Python'),\n(31,'R'),\n(31,'Java'),\n(32,'Tableau'),\n(32,'PowerBI'),\n(33,'PostgreSQL'),\n(33,'SQL Server'),\n(34,'Python'),\n(34,'Tableau'),\n(35,'Tableau'),\n(35,'PostgreSQL'),\n(36,'Python'),\n(36,'Tableau'),\n(36,'PostgreSQL'),\n(36,'Spark'),\n(37,'Python'),\n(37,'PostgreSQL');"
+      ],
+      "expected": [
+        [
+          36
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(41,'R'),\n(41,'Java'),\n(41,'PowerBI'),\n(42,'SQL Server'),\n(42,'DataAnalysis'),\n(42,'Excel'),\n(43,'Spark'),\n(43,'Scala'),\n(43,'MATLAB'),\n(43,'R');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(2147483647,'PostgreSQL'),\n(999999999,'Python'),\n(2,'PostgreSQL'),\n(1,'PostgreSQL'),\n(2,'Tableau'),\n(1,'Python'),\n(2147483647,'Python'),\n(999999999,'Tableau'),\n(2147483647,'Tableau'),\n(1,'Tableau');"
+      ],
+      "expected": [
+        [
+          1
+        ],
+        [
+          2147483647
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(58,'Python'),\n(57,'Python'),\n(56,'Python'),\n(55,'PostgreSQL'),\n(54,'PostgreSQL'),\n(53,'PostgreSQL'),\n(52,'PostgreSQL'),\n(51,'PostgreSQL'),\n(56,'Tableau'),\n(55,'Python'),\n(54,'Python'),\n(53,'Python'),\n(52,'Python'),\n(51,'Python'),\n(58,'Tableau'),\n(57,'Tableau'),\n(54,'Tableau'),\n(53,'Tableau'),\n(52,'Tableau'),\n(51,'Tableau'),\n(55,'Tableau');"
+      ],
+      "expected": [
+        [
+          51
+        ],
+        [
+          52
+        ],
+        [
+          53
+        ],
+        [
+          54
+        ],
+        [
+          55
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(65,'Excel'),\n(64,'PostgreSQL'),\n(63,'Java'),\n(62,'PostgreSQL'),\n(61,'PostgreSQL'),\n(63,'PostgreSQL'),\n(62,'Python'),\n(61,'Python'),\n(65,'MATLAB'),\n(64,'Python'),\n(61,'Tableau'),\n(65,'PostgreSQL'),\n(64,'SQL Server'),\n(63,'Python'),\n(62,'R'),\n(64,'Tableau'),\n(63,'R'),\n(62,'Tableau'),\n(65,'Python'),\n(65,'Scala'),\n(63,'Tableau'),\n(65,'Tableau');"
+      ],
+      "expected": [
+        [
+          61
+        ],
+        [
+          62
+        ],
+        [
+          63
+        ],
+        [
+          64
+        ],
+        [
+          65
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(71,'Python'),\n(72,'Tableau'),\n(73,'PostgreSQL'),\n(74,'Python'),\n(75,'Tableau'),\n(76,'PostgreSQL'),\n(77,'Python'),\n(78,'Tableau'),\n(79,'PostgreSQL'),\n(80,'Python'),\n(81,'Tableau'),\n(82,'PostgreSQL'),\n(71,'Tableau'),\n(72,'PostgreSQL'),\n(73,'Python'),\n(74,'Tableau'),\n(75,'PostgreSQL'),\n(76,'Python'),\n(77,'Tableau'),\n(78,'PostgreSQL'),\n(79,'Python'),\n(80,'Tableau'),\n(81,'PostgreSQL'),\n(82,'Python'),\n(71,'R'),\n(72,'Java'),\n(73,'PowerBI'),\n(74,'SQL Server'),\n(75,'DataAnalysis'),\n(76,'Spark'),\n(77,'Excel'),\n(78,'Scala'),\n(79,'MATLAB'),\n(80,'R'),\n(81,'Java'),\n(82,'PowerBI');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(92,'DataAnalysis'),\n(91,'PostgreSQL'),\n(92,'Java'),\n(91,'Python'),\n(92,'PostgreSQL'),\n(91,'Tableau'),\n(92,'PowerBI'),\n(92,'Python'),\n(92,'R'),\n(92,'SQL Server'),\n(92,'Tableau');"
+      ],
+      "expected": [
+        [
+          91
+        ],
+        [
+          92
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(9465,'PostgreSQL'),\n(9465,'MATLAB'),\n(8508,'Java'),\n(8508,'R'),\n(8508,'Scala'),\n(8508,'Spark'),\n(8508,'MATLAB'),\n(8508,'DataAnalysis'),\n(8508,'SQL Server'),\n(4410,'Scala'),\n(4410,'Java'),\n(4410,'PostgreSQL'),\n(7078,'Tableau'),\n(7078,'Scala'),\n(7078,'PostgreSQL'),\n(7078,'Excel'),\n(7078,'Java'),\n(9142,'PostgreSQL'),\n(9142,'Python'),\n(9142,'DataAnalysis'),\n(9142,'Excel'),\n(9142,'SQL Server'),\n(9142,'Spark'),\n(9142,'R'),\n(4253,'DataAnalysis'),\n(4253,'MATLAB'),\n(5664,'Spark'),\n(5664,'PostgreSQL'),\n(5664,'DataAnalysis'),\n(8473,'PostgreSQL'),\n(7495,'PostgreSQL'),\n(7495,'R'),\n(7495,'Scala'),\n(7495,'Python'),\n(7495,'Tableau'),\n(8923,'Tableau'),\n(8923,'Java'),\n(8923,'PowerBI'),\n(8923,'SQL Server'),\n(8923,'Python'),\n(8923,'R'),\n(8923,'Excel'),\n(2283,'Python'),\n(2283,'Excel'),\n(2283,'MATLAB'),\n(8364,'DataAnalysis'),\n(8364,'PostgreSQL'),\n(8364,'Scala'),\n(8364,'Python'),\n(9767,'MATLAB'),\n(9767,'Spark'),\n(9767,'PowerBI'),\n(9767,'Tableau'),\n(9767,'Excel'),\n(9767,'Python'),\n(9593,'PowerBI'),\n(9593,'Excel'),\n(9593,'Python'),\n(1505,'Python'),\n(6845,'R'),\n(6845,'DataAnalysis'),\n(6845,'SQL Server'),\n(5311,'SQL Server'),\n(5311,'PowerBI'),\n(5311,'R'),\n(5311,'PostgreSQL'),\n(5311,'Scala'),\n(6459,'Excel'),\n(6459,'Scala'),\n(6459,'Python'),\n(6459,'Spark'),\n(6459,'SQL Server'),\n(6459,'Tableau'),\n(3067,'SQL Server'),\n(3067,'Java'),\n(3067,'Excel'),\n(3067,'MATLAB'),\n(3067,'PostgreSQL'),\n(3067,'Scala'),\n(5424,'PowerBI'),\n(5424,'MATLAB'),\n(5424,'PostgreSQL'),\n(8772,'Python'),\n(8772,'Scala'),\n(8772,'Tableau'),\n(8772,'R'),\n(8772,'PowerBI'),\n(8772,'SQL Server'),\n(8772,'Spark'),\n(5288,'Scala'),\n(5288,'PostgreSQL'),\n(5288,'R'),\n(5288,'SQL Server'),\n(5288,'DataAnalysis'),\n(6131,'Excel'),\n(6131,'PowerBI'),\n(6131,'PostgreSQL'),\n(6131,'Java'),\n(6131,'Python'),\n(6131,'R'),\n(5720,'SQL Server'),\n(5720,'PowerBI'),\n(6788,'R'),\n(6788,'Spark'),\n(6788,'PostgreSQL'),\n(6471,'SQL Server'),\n(6471,'Python'),\n(6471,'Scala'),\n(6471,'MATLAB'),\n(6471,'R'),\n(6471,'Spark'),\n(6471,'Java'),\n(6471,'PowerBI'),\n(6430,'Spark'),\n(6430,'Scala'),\n(6430,'Python'),\n(4945,'DataAnalysis'),\n(4945,'MATLAB'),\n(4945,'PostgreSQL'),\n(4945,'Spark'),\n(4945,'PowerBI'),\n(4028,'Excel'),\n(4028,'Python'),\n(4028,'R'),\n(4028,'PostgreSQL'),\n(4028,'DataAnalysis'),\n(4028,'SQL Server'),\n(4028,'Tableau'),\n(1263,'MATLAB'),\n(1263,'R'),\n(1263,'Spark'),\n(1263,'Tableau'),\n(1263,'Python'),\n(1263,'SQL Server'),\n(3033,'MATLAB'),\n(3033,'Java'),\n(3033,'Tableau'),\n(3033,'DataAnalysis'),\n(3033,'Spark'),\n(5016,'SQL Server'),\n(5016,'MATLAB'),\n(1363,'Spark'),\n(1363,'DataAnalysis'),\n(1363,'Scala'),\n(1363,'Excel'),\n(1363,'PowerBI'),\n(8940,'SQL Server'),\n(8940,'Excel'),\n(8940,'Python'),\n(8940,'Tableau'),\n(8940,'Java'),\n(8068,'PostgreSQL'),\n(8068,'SQL Server'),\n(8068,'DataAnalysis'),\n(8068,'Java'),\n(8068,'PowerBI'),\n(8068,'MATLAB'),\n(7306,'MATLAB'),\n(7788,'R'),\n(7788,'Spark'),\n(7788,'PowerBI'),\n(7788,'Scala'),\n(7788,'MATLAB'),\n(8042,'SQL Server'),\n(8206,'SQL Server'),\n(8206,'R'),\n(8206,'Excel'),\n(8206,'Tableau'),\n(8206,'MATLAB'),\n(8206,'Java'),\n(7696,'Python'),\n(7696,'DataAnalysis'),\n(7696,'Scala'),\n(7696,'Spark'),\n(7696,'SQL Server'),\n(7696,'PowerBI'),\n(7696,'Java'),\n(7696,'Tableau'),\n(3845,'SQL Server'),\n(3845,'MATLAB'),\n(3845,'DataAnalysis'),\n(3845,'PostgreSQL'),\n(4805,'SQL Server'),\n(4805,'R'),\n(9501,'MATLAB'),\n(9501,'DataAnalysis'),\n(9501,'Scala'),\n(9501,'PowerBI'),\n(9501,'Java'),\n(1391,'MATLAB'),\n(1391,'Excel'),\n(1391,'Scala'),\n(1391,'PowerBI'),\n(1746,'SQL Server'),\n(1746,'Python'),\n(5628,'Excel'),\n(5628,'SQL Server'),\n(5628,'PowerBI'),\n(5628,'DataAnalysis'),\n(5628,'PostgreSQL'),\n(5628,'Scala'),\n(8899,'DataAnalysis'),\n(8899,'PowerBI'),\n(8899,'Spark'),\n(8899,'SQL Server'),\n(8899,'Excel'),\n(8899,'Python'),\n(8899,'R'),\n(8899,'Java'),\n(6499,'Spark'),\n(8356,'R'),\n(8356,'Spark'),\n(3632,'Scala'),\n(8644,'PostgreSQL'),\n(8644,'Tableau'),\n(8644,'PowerBI'),\n(8644,'R'),\n(5689,'Python'),\n(5689,'SQL Server'),\n(5689,'Scala'),\n(5689,'PostgreSQL'),\n(5689,'Excel'),\n(7108,'DataAnalysis'),\n(7108,'Excel'),\n(2071,'Excel'),\n(2071,'Spark'),\n(4278,'Python'),\n(4278,'Spark'),\n(4278,'SQL Server'),\n(2197,'PostgreSQL'),\n(2197,'MATLAB'),\n(2197,'R'),\n(2197,'Python'),\n(2197,'Java'),\n(2197,'Excel'),\n(2197,'Tableau'),\n(5271,'Scala'),\n(5271,'Spark'),\n(3761,'DataAnalysis'),\n(3761,'PostgreSQL'),\n(3761,'SQL Server'),\n(4119,'Python'),\n(4119,'Tableau'),\n(4119,'MATLAB'),\n(4119,'Excel'),\n(4119,'R'),\n(4119,'PostgreSQL'),\n(4119,'Java'),\n(4119,'PowerBI'),\n(1127,'PostgreSQL'),\n(1127,'PowerBI'),\n(1127,'MATLAB'),\n(1127,'R'),\n(1127,'SQL Server'),\n(1127,'Scala'),\n(1127,'Spark');"
+      ],
+      "expected": [
+        [
+          2197
+        ],
+        [
+          4028
+        ],
+        [
+          4119
+        ],
+        [
+          7495
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(68856,'Spark'),\n(68856,'Excel'),\n(68856,'MATLAB'),\n(68856,'Scala'),\n(68856,'Python'),\n(68856,'R'),\n(68856,'SQL Server'),\n(54543,'SQL Server'),\n(54543,'Excel'),\n(54543,'Python'),\n(54543,'Java'),\n(9649,'R'),\n(9649,'Spark'),\n(9649,'SQL Server'),\n(9649,'PowerBI'),\n(56506,'Spark'),\n(56506,'MATLAB'),\n(56506,'PostgreSQL'),\n(56506,'SQL Server'),\n(56506,'Java'),\n(56506,'DataAnalysis'),\n(61317,'Java'),\n(61317,'Tableau'),\n(61317,'Spark'),\n(61317,'Excel'),\n(61317,'PowerBI'),\n(61317,'MATLAB'),\n(61317,'DataAnalysis'),\n(61317,'Python'),\n(61317,'Scala'),\n(56766,'PostgreSQL'),\n(56766,'Python'),\n(56766,'Java'),\n(56766,'R'),\n(56766,'Tableau'),\n(56766,'MATLAB'),\n(3192,'Python'),\n(3192,'Scala'),\n(3192,'Excel'),\n(3192,'PowerBI'),\n(3192,'SQL Server'),\n(3192,'MATLAB'),\n(3192,'Tableau'),\n(50356,'Spark'),\n(50356,'PostgreSQL'),\n(52663,'PowerBI'),\n(52663,'Scala'),\n(52663,'DataAnalysis'),\n(88164,'DataAnalysis'),\n(88164,'SQL Server'),\n(88164,'Scala'),\n(88164,'Python'),\n(1284,'SQL Server'),\n(1284,'R'),\n(68537,'PostgreSQL'),\n(68537,'Spark'),\n(68537,'SQL Server'),\n(68537,'DataAnalysis'),\n(68537,'Python'),\n(68537,'Java'),\n(68537,'Excel'),\n(68537,'Scala'),\n(68537,'R'),\n(92774,'Java'),\n(92774,'MATLAB'),\n(92774,'PostgreSQL'),\n(92774,'PowerBI'),\n(92774,'R'),\n(92774,'Excel'),\n(92774,'Scala'),\n(92774,'Spark'),\n(92774,'Tableau'),\n(57298,'DataAnalysis'),\n(57298,'MATLAB'),\n(57298,'SQL Server'),\n(57298,'Tableau'),\n(74707,'Tableau'),\n(74707,'R'),\n(74707,'PowerBI'),\n(74707,'Scala'),\n(74707,'MATLAB'),\n(74707,'PostgreSQL'),\n(93859,'Scala'),\n(93859,'PostgreSQL'),\n(93859,'SQL Server'),\n(93859,'Python'),\n(93859,'DataAnalysis'),\n(21397,'SQL Server'),\n(21397,'DataAnalysis'),\n(21397,'Java'),\n(21397,'Python'),\n(21397,'R'),\n(21397,'Tableau'),\n(21397,'Spark'),\n(21397,'MATLAB'),\n(21397,'Excel'),\n(57175,'Scala'),\n(57175,'SQL Server'),\n(57175,'PowerBI'),\n(57175,'Java'),\n(57175,'R'),\n(57175,'Excel'),\n(96761,'PowerBI'),\n(96761,'Python'),\n(96761,'SQL Server'),\n(96761,'Excel'),\n(96761,'Spark'),\n(96761,'R'),\n(77517,'MATLAB'),\n(77517,'PostgreSQL'),\n(77517,'Java'),\n(52720,'Excel'),\n(52720,'PostgreSQL'),\n(52720,'Tableau'),\n(52720,'R'),\n(52720,'MATLAB'),\n(52720,'SQL Server'),\n(52720,'DataAnalysis'),\n(52720,'Spark'),\n(6892,'DataAnalysis'),\n(6892,'Tableau'),\n(6892,'PostgreSQL'),\n(6892,'PowerBI'),\n(92056,'MATLAB'),\n(92056,'DataAnalysis'),\n(92056,'Java'),\n(92056,'Excel'),\n(92056,'SQL Server'),\n(92056,'PostgreSQL'),\n(25181,'Java'),\n(25181,'PostgreSQL'),\n(25181,'PowerBI'),\n(25181,'Python'),\n(22046,'Excel'),\n(22046,'Tableau'),\n(22046,'Python'),\n(83455,'Python'),\n(85638,'DataAnalysis'),\n(85638,'PostgreSQL'),\n(85638,'R'),\n(85638,'Python'),\n(85638,'PowerBI'),\n(85638,'Java'),\n(85638,'Tableau'),\n(85638,'Spark'),\n(85638,'SQL Server'),\n(17272,'MATLAB'),\n(30006,'Python'),\n(30006,'R'),\n(87798,'DataAnalysis'),\n(87798,'PowerBI'),\n(87798,'Java'),\n(87798,'Scala'),\n(87798,'R'),\n(87798,'MATLAB'),\n(87798,'Excel'),\n(87798,'SQL Server'),\n(87798,'Python'),\n(27351,'Python'),\n(27351,'Tableau'),\n(27351,'R'),\n(27351,'MATLAB'),\n(27351,'DataAnalysis'),\n(27351,'Spark'),\n(27351,'PostgreSQL'),\n(60530,'Scala'),\n(60530,'Excel'),\n(60530,'Tableau'),\n(60530,'Python'),\n(60530,'PostgreSQL'),\n(60530,'Spark'),\n(60530,'Java'),\n(60530,'PowerBI'),\n(60530,'SQL Server'),\n(42035,'DataAnalysis'),\n(9744,'MATLAB'),\n(9744,'Excel'),\n(9744,'Scala'),\n(9744,'DataAnalysis'),\n(9744,'R'),\n(9744,'PostgreSQL'),\n(9744,'Python'),\n(9744,'Spark'),\n(9744,'Tableau'),\n(71591,'DataAnalysis'),\n(71591,'Excel'),\n(71591,'Scala'),\n(71591,'R'),\n(71591,'Java'),\n(71591,'Spark'),\n(71591,'Tableau'),\n(71591,'MATLAB'),\n(97464,'DataAnalysis'),\n(97464,'Tableau'),\n(97464,'R'),\n(97464,'MATLAB'),\n(97464,'PowerBI'),\n(44733,'SQL Server'),\n(44733,'Python'),\n(939,'PowerBI'),\n(939,'R'),\n(939,'Spark'),\n(939,'Scala'),\n(939,'Python'),\n(69536,'Spark'),\n(69536,'PostgreSQL'),\n(69536,'Excel'),\n(69536,'Scala'),\n(69536,'Python'),\n(69536,'Tableau'),\n(75231,'Excel'),\n(75231,'PostgreSQL'),\n(75231,'DataAnalysis'),\n(75231,'Python'),\n(75231,'MATLAB'),\n(75231,'SQL Server'),\n(76695,'Scala'),\n(76695,'Spark'),\n(76695,'Java'),\n(76695,'PostgreSQL'),\n(76695,'DataAnalysis'),\n(76695,'Excel'),\n(76695,'R'),\n(76695,'MATLAB'),\n(50697,'Java'),\n(50697,'Excel'),\n(50697,'PostgreSQL'),\n(50697,'PowerBI'),\n(50697,'Tableau'),\n(50697,'MATLAB'),\n(27326,'Java'),\n(64991,'DataAnalysis'),\n(64991,'Tableau'),\n(64991,'MATLAB'),\n(64991,'Scala'),\n(64991,'Java'),\n(64991,'Excel'),\n(64991,'Spark'),\n(64991,'PowerBI'),\n(64991,'R'),\n(46320,'PowerBI'),\n(19421,'R'),\n(19421,'Python'),\n(19421,'Scala'),\n(19421,'Tableau'),\n(19421,'SQL Server'),\n(19421,'PowerBI'),\n(19421,'Excel'),\n(18785,'R'),\n(18785,'Excel'),\n(18785,'PowerBI'),\n(18785,'MATLAB'),\n(18785,'Tableau'),\n(18785,'Java'),\n(18785,'Spark'),\n(18785,'DataAnalysis'),\n(18785,'SQL Server'),\n(41799,'SQL Server'),\n(41799,'Scala'),\n(41799,'DataAnalysis'),\n(41799,'Tableau'),\n(48617,'Tableau'),\n(48617,'PostgreSQL'),\n(48617,'MATLAB'),\n(48617,'Spark'),\n(48617,'Python'),\n(48617,'Java'),\n(42077,'MATLAB'),\n(42077,'Python'),\n(96354,'Java'),\n(25565,'MATLAB'),\n(25565,'Scala'),\n(53499,'Java'),\n(53499,'MATLAB'),\n(53499,'DataAnalysis'),\n(53499,'R'),\n(86262,'Tableau'),\n(79607,'PowerBI'),\n(79607,'Tableau'),\n(79607,'MATLAB'),\n(79607,'Java'),\n(79607,'Scala'),\n(79607,'SQL Server'),\n(96985,'Spark'),\n(96985,'PowerBI'),\n(96985,'R'),\n(96985,'Java'),\n(96985,'Tableau'),\n(96985,'MATLAB'),\n(96985,'Python'),\n(96985,'DataAnalysis'),\n(96985,'SQL Server'),\n(58671,'Scala'),\n(58671,'PowerBI'),\n(58671,'Excel'),\n(58671,'Java'),\n(58671,'MATLAB'),\n(58671,'R'),\n(73928,'MATLAB'),\n(9408,'Tableau'),\n(52444,'Python'),\n(17920,'Java'),\n(17920,'Scala'),\n(29334,'Tableau'),\n(29334,'SQL Server'),\n(29334,'Spark'),\n(29334,'MATLAB'),\n(29334,'Java'),\n(12204,'Tableau'),\n(12204,'PowerBI'),\n(12204,'Spark'),\n(12204,'Java'),\n(12204,'R'),\n(12204,'PostgreSQL'),\n(57984,'MATLAB'),\n(57984,'PowerBI'),\n(57984,'Python'),\n(57984,'Java'),\n(57984,'DataAnalysis'),\n(57984,'SQL Server'),\n(57984,'Tableau'),\n(57984,'Excel'),\n(12590,'SQL Server'),\n(12590,'Python'),\n(12590,'MATLAB'),\n(12590,'PowerBI'),\n(12590,'Tableau'),\n(12590,'Excel'),\n(12590,'Java'),\n(12590,'PostgreSQL'),\n(12590,'Spark'),\n(60499,'Tableau'),\n(60499,'PowerBI'),\n(60499,'Spark'),\n(60499,'Excel'),\n(60499,'Java'),\n(60499,'MATLAB'),\n(60499,'PostgreSQL'),\n(95537,'R'),\n(95537,'Tableau'),\n(95537,'PostgreSQL'),\n(95537,'Scala'),\n(95537,'PowerBI'),\n(95537,'Spark'),\n(95537,'DataAnalysis'),\n(95537,'Java'),\n(95537,'MATLAB'),\n(36506,'SQL Server'),\n(36506,'DataAnalysis'),\n(95735,'Spark'),\n(95735,'SQL Server'),\n(31253,'Scala'),\n(31253,'Python'),\n(31253,'Java'),\n(31253,'Spark'),\n(31253,'R'),\n(31253,'SQL Server'),\n(30375,'Java'),\n(30375,'Excel'),\n(89637,'Scala'),\n(89637,'Java'),\n(89637,'R'),\n(89637,'SQL Server'),\n(89637,'Spark'),\n(89637,'DataAnalysis'),\n(89637,'Tableau'),\n(89637,'Excel'),\n(89637,'Python'),\n(390,'Tableau'),\n(390,'Spark'),\n(390,'MATLAB'),\n(390,'R'),\n(84337,'Python'),\n(84337,'Scala'),\n(84337,'PowerBI'),\n(84337,'PostgreSQL'),\n(84337,'R'),\n(84337,'Java'),\n(61728,'PowerBI'),\n(61728,'MATLAB'),\n(61728,'DataAnalysis'),\n(19852,'MATLAB'),\n(19852,'Spark'),\n(19852,'Scala'),\n(19852,'PowerBI'),\n(59361,'PostgreSQL'),\n(59361,'DataAnalysis'),\n(59361,'R'),\n(59361,'Python'),\n(55669,'Tableau'),\n(55669,'Excel'),\n(55669,'SQL Server'),\n(55669,'Spark'),\n(55669,'Python'),\n(55669,'R'),\n(18270,'R'),\n(24891,'R'),\n(24891,'Spark'),\n(24891,'Java'),\n(24891,'Tableau'),\n(24891,'DataAnalysis'),\n(24891,'PostgreSQL'),\n(24891,'Scala'),\n(24891,'Excel'),\n(51392,'Tableau'),\n(51392,'DataAnalysis'),\n(51392,'Python'),\n(51392,'Spark'),\n(51392,'MATLAB'),\n(51392,'PostgreSQL'),\n(62388,'MATLAB'),\n(62388,'Tableau'),\n(62388,'R'),\n(75599,'Java'),\n(75599,'Python'),\n(75599,'Spark'),\n(62108,'SQL Server'),\n(62108,'Excel'),\n(62108,'R'),\n(62108,'Spark'),\n(62108,'DataAnalysis'),\n(11151,'Tableau'),\n(11151,'Spark'),\n(11151,'Scala'),\n(11151,'R'),\n(11151,'PostgreSQL'),\n(11151,'SQL Server'),\n(11151,'Java'),\n(11151,'MATLAB'),\n(11151,'Excel'),\n(78046,'SQL Server'),\n(78046,'PowerBI'),\n(78046,'MATLAB'),\n(78046,'PostgreSQL'),\n(99372,'Python'),\n(99372,'Scala'),\n(99372,'R'),\n(99372,'Java'),\n(99372,'Spark'),\n(99372,'MATLAB'),\n(98381,'Scala'),\n(98381,'R'),\n(98381,'PostgreSQL'),\n(98381,'DataAnalysis'),\n(13874,'Java'),\n(13874,'SQL Server'),\n(40942,'PostgreSQL'),\n(96569,'PowerBI'),\n(96569,'Tableau'),\n(96569,'Spark'),\n(96569,'Scala'),\n(96569,'Java'),\n(96569,'Python'),\n(96569,'SQL Server'),\n(88731,'DataAnalysis'),\n(88731,'Java'),\n(88731,'Excel'),\n(88731,'Scala'),\n(88731,'Python'),\n(88731,'SQL Server'),\n(88731,'PostgreSQL'),\n(88731,'Tableau'),\n(88731,'R'),\n(69218,'Scala'),\n(6090,'Python'),\n(6090,'Excel'),\n(6090,'DataAnalysis'),\n(6090,'PostgreSQL'),\n(6090,'MATLAB'),\n(6090,'Java'),\n(6090,'Spark'),\n(6090,'Scala'),\n(6090,'R'),\n(44763,'R'),\n(44763,'Excel'),\n(44763,'Scala'),\n(28074,'Java'),\n(28074,'Excel'),\n(28074,'DataAnalysis'),\n(28074,'Tableau'),\n(28074,'Spark'),\n(28074,'PostgreSQL'),\n(28074,'SQL Server'),\n(68481,'Python'),\n(68481,'MATLAB'),\n(68481,'R'),\n(68481,'Java'),\n(68481,'SQL Server'),\n(68481,'PowerBI'),\n(68481,'Excel'),\n(97317,'PowerBI'),\n(97317,'DataAnalysis'),\n(97317,'R'),\n(38024,'R'),\n(38024,'Spark'),\n(31183,'MATLAB'),\n(31183,'SQL Server'),\n(16393,'Tableau'),\n(49849,'R'),\n(49849,'DataAnalysis'),\n(49849,'MATLAB'),\n(49849,'Python'),\n(49849,'PowerBI'),\n(8875,'Excel'),\n(8875,'R'),\n(8875,'Scala'),\n(8875,'Tableau'),\n(76043,'Java'),\n(76043,'R'),\n(76043,'Python'),\n(63521,'SQL Server'),\n(63521,'Spark'),\n(59215,'DataAnalysis'),\n(59215,'MATLAB'),\n(59215,'Excel'),\n(59215,'Tableau'),\n(59215,'R'),\n(59215,'Scala'),\n(59215,'PowerBI'),\n(59215,'Java'),\n(10163,'SQL Server'),\n(10163,'Python'),\n(21594,'DataAnalysis'),\n(21594,'R'),\n(21594,'PostgreSQL'),\n(21594,'Excel'),\n(21594,'Scala'),\n(21594,'Python'),\n(21594,'Java'),\n(21594,'PowerBI'),\n(57189,'PowerBI'),\n(57189,'Python'),\n(57189,'Spark'),\n(57189,'SQL Server'),\n(57189,'R'),\n(57189,'PostgreSQL'),\n(37364,'PostgreSQL'),\n(59425,'Spark'),\n(59425,'Excel'),\n(59425,'PostgreSQL'),\n(59425,'R'),\n(59425,'Scala'),\n(59425,'Java'),\n(53916,'PowerBI'),\n(53916,'SQL Server'),\n(53916,'Tableau'),\n(53916,'Excel'),\n(53916,'Java'),\n(53916,'Spark'),\n(53916,'Python'),\n(53916,'PostgreSQL'),\n(87047,'Tableau'),\n(87047,'Excel'),\n(43796,'Tableau'),\n(43796,'R'),\n(43796,'MATLAB'),\n(43796,'PostgreSQL'),\n(43796,'SQL Server'),\n(43796,'DataAnalysis'),\n(82806,'Spark'),\n(4155,'R'),\n(4155,'Excel'),\n(4155,'PostgreSQL'),\n(39187,'PowerBI'),\n(39187,'Excel'),\n(39187,'SQL Server'),\n(39187,'Python'),\n(39187,'DataAnalysis'),\n(39187,'Java'),\n(39187,'R'),\n(30853,'R'),\n(30853,'SQL Server'),\n(90946,'MATLAB'),\n(90946,'Scala'),\n(90946,'PowerBI'),\n(90946,'R'),\n(90946,'SQL Server'),\n(90946,'Spark'),\n(9847,'Spark'),\n(9847,'Scala'),\n(9847,'Java'),\n(9847,'DataAnalysis'),\n(9847,'PostgreSQL'),\n(9847,'R');"
+      ],
+      "expected": [
+        [
+          9744
+        ],
+        [
+          12590
+        ],
+        [
+          27351
+        ],
+        [
+          48617
+        ],
+        [
+          51392
+        ],
+        [
+          53916
+        ],
+        [
+          56766
+        ],
+        [
+          60530
+        ],
+        [
+          69536
+        ],
+        [
+          85638
+        ],
+        [
+          88731
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Candidates VALUES\n(123,'Python'),\n(234,'R'),\n(123,'Tableau'),\n(123,'PostgreSQL'),\n(234,'PowerBI'),\n(234,'SQL Server'),\n(147,'python'),\n(147,'Tableau'),\n(147,'Java'),\n(147,'PostgreSQL'),\n(256,'Tableau'),\n(102,'DataAnalysis');"
+      ],
+      "expected": [
+        [
+          123
+        ]
+      ]
+    }
+  ]
+}

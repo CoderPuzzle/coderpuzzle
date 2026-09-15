@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1233,
+  "slug": "remove-sub-folders-from-the-filesystem",
+  "title": "Remove Sub-Folders from the Filesystem",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Trie"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "removeSubfolders",
+    "parameters": [
+      {
+        "name": "folder",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "removeSubfolders",
+      "rust": "remove_subfolders",
+      "typescript": "removeSubfolders"
+    },
+    "comparison": "set"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,398 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(1,'John','Doe'),\n(2,'Jane','Smith'),\n(3,'Alice','Johnson'),\n(4,'Michael','Brown'),\n(5,'Emily','Davis');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(1,'incoming',120),\n(1,'outgoing',180),\n(2,'incoming',300),\n(2,'outgoing',240),\n(3,'incoming',150),\n(3,'outgoing',360),\n(4,'incoming',420),\n(4,'outgoing',200),\n(5,'incoming',180),\n(5,'outgoing',280);"
+      ],
+      "expected": [
+        [
+          "Alice",
+          "outgoing",
+          "00:06:00"
+        ],
+        [
+          "Emily",
+          "outgoing",
+          "00:04:40"
+        ],
+        [
+          "Jane",
+          "outgoing",
+          "00:04:00"
+        ],
+        [
+          "Michael",
+          "incoming",
+          "00:07:00"
+        ],
+        [
+          "Jane",
+          "incoming",
+          "00:05:00"
+        ],
+        [
+          "Emily",
+          "incoming",
+          "00:03:00"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(1,'John','Doe'),\n(2,'Jane','Smith'),\n(3,'Alice','Johnson'),\n(4,'Michael','Brown'),\n(5,'Emily','Davis');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(10,'Ada','Lovelace'),\n(11,'Grace','Hopper'),\n(12,'Alan','Turing');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(10,'incoming',95),\n(11,'incoming',61),\n(10,'outgoing',7200),\n(11,'outgoing',3599),\n(12,'outgoing',3600);"
+      ],
+      "expected": [
+        [
+          "Ada",
+          "outgoing",
+          "02:00:00"
+        ],
+        [
+          "Alan",
+          "outgoing",
+          "01:00:00"
+        ],
+        [
+          "Grace",
+          "outgoing",
+          "00:59:59"
+        ],
+        [
+          "Ada",
+          "incoming",
+          "00:01:35"
+        ],
+        [
+          "Grace",
+          "incoming",
+          "00:01:01"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(20,'Zack','Person'),\n(21,'Vera','Person'),\n(22,'Uma','Person'),\n(23,'Tess','Person'),\n(24,'Saul','Person'),\n(30,'Mia','Filler');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(20,'outgoing',500),\n(21,'outgoing',500),\n(22,'outgoing',500),\n(23,'outgoing',500),\n(24,'outgoing',500),\n(30,'incoming',500);"
+      ],
+      "expected": [
+        [
+          "Zack",
+          "outgoing",
+          "00:08:20"
+        ],
+        [
+          "Vera",
+          "outgoing",
+          "00:08:20"
+        ],
+        [
+          "Uma",
+          "outgoing",
+          "00:08:20"
+        ],
+        [
+          "Mia",
+          "incoming",
+          "00:08:20"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(40,'Ava','X'),\n(41,'Ben','X'),\n(42,'Cleo','X'),\n(43,'Dana','X'),\n(44,'Evan','X'),\n(45,'Faye','X'),\n(46,'Gus','X'),\n(47,'Hope','X'),\n(48,'Ivan','X');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(40,'incoming',1),\n(41,'incoming',59),\n(42,'incoming',60),\n(43,'incoming',61),\n(44,'incoming',599),\n(45,'incoming',600),\n(46,'incoming',3599),\n(47,'incoming',3600),\n(48,'incoming',3661),\n(40,'outgoing',7322),\n(41,'outgoing',10800),\n(42,'outgoing',86399);"
+      ],
+      "expected": [
+        [
+          "Cleo",
+          "outgoing",
+          "23:59:59"
+        ],
+        [
+          "Ben",
+          "outgoing",
+          "03:00:00"
+        ],
+        [
+          "Ava",
+          "outgoing",
+          "02:02:02"
+        ],
+        [
+          "Ivan",
+          "incoming",
+          "01:01:01"
+        ],
+        [
+          "Hope",
+          "incoming",
+          "01:00:00"
+        ],
+        [
+          "Gus",
+          "incoming",
+          "00:59:59"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(50,'Omar','Khalid');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(50,'outgoing',45);"
+      ],
+      "expected": [
+        [
+          "Omar",
+          "outgoing",
+          "00:00:45"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(60,'Nina','Petrov'),\n(61,'Leo','Ang');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(60,'incoming',1500),\n(60,'outgoing',1500),\n(61,'incoming',90),\n(61,'outgoing',91);"
+      ],
+      "expected": [
+        [
+          "Nina",
+          "outgoing",
+          "00:25:00"
+        ],
+        [
+          "Leo",
+          "outgoing",
+          "00:01:31"
+        ],
+        [
+          "Nina",
+          "incoming",
+          "00:25:00"
+        ],
+        [
+          "Leo",
+          "incoming",
+          "00:01:30"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(1,'John','Doe'),\n(2,'Jane','Smith'),\n(3,'Alice','Johnson'),\n(4,'Michael','Brown'),\n(5,'Emily','Davis'),\n(6,'Ruth','Turner'),\n(7,'Sam','Watts');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(1,'incoming',120),\n(1,'outgoing',180),\n(2,'incoming',300),\n(2,'outgoing',240),\n(3,'incoming',150),\n(3,'outgoing',360),\n(4,'incoming',420),\n(4,'outgoing',200),\n(5,'incoming',180),\n(5,'outgoing',280);"
+      ],
+      "expected": [
+        [
+          "Alice",
+          "outgoing",
+          "00:06:00"
+        ],
+        [
+          "Emily",
+          "outgoing",
+          "00:04:40"
+        ],
+        [
+          "Jane",
+          "outgoing",
+          "00:04:00"
+        ],
+        [
+          "Michael",
+          "incoming",
+          "00:07:00"
+        ],
+        [
+          "Jane",
+          "incoming",
+          "00:05:00"
+        ],
+        [
+          "Emily",
+          "incoming",
+          "00:03:00"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(70,'Gil','A'),\n(71,'Hal','B'),\n(72,'Ivy','C'),\n(73,'Jade','D');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(70,'incoming',800),\n(71,'incoming',800),\n(72,'incoming',800),\n(73,'incoming',700);"
+      ],
+      "expected": [
+        [
+          "Ivy",
+          "incoming",
+          "00:13:20"
+        ],
+        [
+          "Hal",
+          "incoming",
+          "00:13:20"
+        ],
+        [
+          "Gil",
+          "incoming",
+          "00:13:20"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(100,'Amir','Staff'),\n(101,'Bree','Staff'),\n(102,'Chen','Staff'),\n(103,'Dmitri','Staff'),\n(104,'Elle','Staff'),\n(105,'Farid','Staff'),\n(106,'Gwen','Staff'),\n(107,'Hugo','Staff'),\n(108,'Ines','Staff'),\n(109,'Jomo','Staff'),\n(110,'Kira','Staff'),\n(111,'Lars','Staff'),\n(112,'Moana','Staff'),\n(113,'Nadia','Staff'),\n(114,'Otto','Staff'),\n(115,'Pia','Staff'),\n(116,'Quinn','Staff'),\n(117,'Ravi','Staff'),\n(118,'Stella','Staff'),\n(119,'Tomas','Staff'),\n(120,'Ulla','Staff');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(100,'incoming',0),\n(100,'outgoing',0),\n(101,'incoming',43),\n(101,'outgoing',84),\n(102,'incoming',86),\n(102,'outgoing',168),\n(103,'incoming',129),\n(103,'outgoing',252),\n(104,'incoming',172),\n(104,'outgoing',336),\n(105,'incoming',215),\n(105,'outgoing',420),\n(106,'incoming',258),\n(106,'outgoing',504),\n(107,'incoming',301),\n(107,'outgoing',588),\n(108,'incoming',344),\n(108,'outgoing',672),\n(109,'incoming',387),\n(109,'outgoing',756),\n(110,'incoming',430),\n(110,'outgoing',840),\n(111,'incoming',473),\n(111,'outgoing',924),\n(112,'incoming',516),\n(112,'outgoing',1008),\n(113,'incoming',559),\n(113,'outgoing',1092),\n(114,'incoming',602),\n(114,'outgoing',1176),\n(115,'incoming',645),\n(115,'outgoing',1260),\n(116,'incoming',688),\n(116,'outgoing',1344),\n(117,'incoming',731),\n(117,'outgoing',1428),\n(118,'incoming',774),\n(118,'outgoing',1512),\n(119,'incoming',817),\n(119,'outgoing',1596),\n(120,'incoming',860),\n(120,'outgoing',1680);"
+      ],
+      "expected": [
+        [
+          "Ulla",
+          "outgoing",
+          "00:28:00"
+        ],
+        [
+          "Tomas",
+          "outgoing",
+          "00:26:36"
+        ],
+        [
+          "Stella",
+          "outgoing",
+          "00:25:12"
+        ],
+        [
+          "Ulla",
+          "incoming",
+          "00:14:20"
+        ],
+        [
+          "Tomas",
+          "incoming",
+          "00:13:37"
+        ],
+        [
+          "Stella",
+          "incoming",
+          "00:12:54"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(200,'Quinn','Ops'),\n(201,'Rhea','Ops'),\n(202,'Silas','Ops'),\n(203,'Tova','Ops'),\n(204,'Ulric','Ops'),\n(205,'Vale','Ops');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(200,'incoming',3600),\n(201,'outgoing',7200),\n(202,'incoming',10800),\n(203,'outgoing',14400),\n(204,'incoming',18000),\n(205,'outgoing',21600),\n(200,'outgoing',3540),\n(201,'incoming',7140);"
+      ],
+      "expected": [
+        [
+          "Vale",
+          "outgoing",
+          "06:00:00"
+        ],
+        [
+          "Tova",
+          "outgoing",
+          "04:00:00"
+        ],
+        [
+          "Rhea",
+          "outgoing",
+          "02:00:00"
+        ],
+        [
+          "Ulric",
+          "incoming",
+          "05:00:00"
+        ],
+        [
+          "Silas",
+          "incoming",
+          "03:00:00"
+        ],
+        [
+          "Rhea",
+          "incoming",
+          "01:59:00"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(300,'Wade','One'),\n(301,'Xena','Two'),\n(302,'Yosef','Three'),\n(303,'Zoe','Four');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(300,'incoming',15),\n(300,'outgoing',20),\n(301,'incoming',75),\n(301,'outgoing',80),\n(302,'incoming',400),\n(302,'outgoing',450),\n(303,'incoming',900),\n(303,'outgoing',901);"
+      ],
+      "expected": [
+        [
+          "Zoe",
+          "outgoing",
+          "00:15:01"
+        ],
+        [
+          "Yosef",
+          "outgoing",
+          "00:07:30"
+        ],
+        [
+          "Xena",
+          "outgoing",
+          "00:01:20"
+        ],
+        [
+          "Zoe",
+          "incoming",
+          "00:15:00"
+        ],
+        [
+          "Yosef",
+          "incoming",
+          "00:06:40"
+        ],
+        [
+          "Xena",
+          "incoming",
+          "00:01:15"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(310,'Pa','A'),\n(311,'Pb','B'),\n(312,'Pc','C'),\n(313,'Pd','D');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(310,'incoming',500),\n(311,'incoming',500),\n(312,'incoming',500),\n(313,'incoming',499);"
+      ],
+      "expected": [
+        [
+          "Pc",
+          "incoming",
+          "00:08:20"
+        ],
+        [
+          "Pb",
+          "incoming",
+          "00:08:20"
+        ],
+        [
+          "Pa",
+          "incoming",
+          "00:08:20"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Contacts (id, first_name, last_name) VALUES\n(320,'Name00','Mass'),\n(321,'Name01','Mass'),\n(322,'Name02','Mass'),\n(323,'Name03','Mass'),\n(324,'Name04','Mass'),\n(325,'Name05','Mass'),\n(326,'Name06','Mass'),\n(327,'Name07','Mass'),\n(328,'Name08','Mass'),\n(329,'Name09','Mass');\nINSERT INTO Calls (contact_id, type, duration) VALUES\n(320,'outgoing',333),\n(321,'outgoing',333),\n(322,'outgoing',333),\n(323,'outgoing',333),\n(324,'outgoing',333),\n(325,'outgoing',333),\n(326,'outgoing',333),\n(327,'outgoing',333),\n(328,'outgoing',333),\n(329,'outgoing',333);"
+      ],
+      "expected": [
+        [
+          "Name09",
+          "outgoing",
+          "00:05:33"
+        ],
+        [
+          "Name08",
+          "outgoing",
+          "00:05:33"
+        ],
+        [
+          "Name07",
+          "outgoing",
+          "00:05:33"
+        ]
+      ]
+    }
+  ]
+}

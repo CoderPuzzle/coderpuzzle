@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1237,
+  "slug": "find-positive-integer-solution-for-a-given-equation",
+  "title": "Find Positive Integer Solution for a Given Equation",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Two Pointers",
+    "Binary Search",
+    "Interactive"
+  ],
+  "topics": [
+    "Math",
+    "Two Pointers",
+    "Binary Search",
+    "Interactive"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "findSolution",
+    "oracle": "CustomFunction",
+    "oracle_methods": [
+      {
+        "name": "f",
+        "parameters": [
+          {
+            "name": "x",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "y",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "z",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "findSolution",
+      "rust": "find_solution"
+    },
+    "query_limit": 2000000,
+    "comparison": "sorted",
+    "provided": {
+      "oracle": {
+        "class": "CustomFunction",
+        "parameter": "customfunction",
+        "construct": [
+          "function_id"
+        ],
+        "auxiliary": [
+          "z"
+        ]
+      }
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

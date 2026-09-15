@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1222,
+  "slug": "queens-that-can-attack-the-king",
+  "title": "Queens That Can Attack the King",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "queensAttacktheKing",
+    "parameters": [
+      {
+        "name": "queens",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "king",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "queensAttacktheKing",
+      "rust": "queens_attackthe_king",
+      "typescript": "queensAttacktheKing"
+    },
+    "comparison": "set"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

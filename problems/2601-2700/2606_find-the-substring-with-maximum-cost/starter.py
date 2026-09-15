@@ -1,0 +1,6 @@
+from typing import List, Optional
+
+
+class Solution:
+    def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:
+        raise NotImplementedError("TODO")

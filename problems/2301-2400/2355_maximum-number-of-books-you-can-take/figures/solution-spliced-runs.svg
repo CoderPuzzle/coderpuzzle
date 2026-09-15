@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <!-- books = [8,2,3,7,3,4,0,1,4,3]; bars x = 55 + 58i, w 44, baseline 210, scale 13px -->
+  <line x1="30" y1="210" x2="660" y2="210" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="55" y="106" width="44" height="104" fill="#dbe4f6"/>
+    <rect x="113" y="184" width="44" height="26" fill="#dbe4f6"/>
+    <rect x="171" y="171" width="44" height="39" fill="#dbe4f6"/>
+    <rect x="229" y="119" width="44" height="91" fill="#dbe4f6"/>
+    <rect x="287" y="171" width="44" height="39" fill="#ffffff"/>
+    <rect x="345" y="158" width="44" height="52" fill="#ffffff"/>
+    <rect x="403" y="210" width="44" height="0" fill="#ffffff"/>
+    <rect x="461" y="197" width="44" height="13" fill="#ffffff"/>
+    <rect x="519" y="158" width="44" height="52" fill="#ffffff"/>
+    <rect x="577" y="171" width="44" height="39" fill="#ffffff"/>
+  </g>
+  <!-- taken portions on shelves 0..3: 1,2,3,7 -->
+  <g fill="#4169E1" stroke="#42525e" stroke-width="1.5">
+    <rect x="55" y="106" width="44" height="13"/>
+    <rect x="113" y="184" width="44" height="26"/>
+    <rect x="171" y="171" width="44" height="39"/>
+    <rect x="229" y="119" width="44" height="91"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600" font-size="12">
+    <text x="77" y="100">8</text><text x="135" y="178">2</text><text x="193" y="165">3</text>
+    <text x="251" y="113">7</text><text x="309" y="165">3</text><text x="367" y="152">4</text>
+    <text x="425" y="204">0</text><text x="483" y="191">1</text><text x="541" y="152">4</text><text x="599" y="165">3</text>
+  </g>
+  <!-- take labels -->
+  <g text-anchor="middle" fill="#4169E1" font-weight="600" font-size="12.5">
+    <text x="77" y="70">take 1</text><text x="135" y="70">take 2</text><text x="193" y="70">take 3</text><text x="251" y="70">take 7</text>
+  </g>
+  <!-- dp row -->
+  <text x="30" y="246" fill="#5c6b76" font-size="12.5">dp</text>
+  <g text-anchor="middle" fill="#4169E1" font-weight="600" font-size="13">
+    <text x="77" y="246">8</text><text x="135" y="246">3</text><text x="193" y="246">6</text>
+    <text x="251" y="246">13</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="13">
+    <text x="309" y="246">6</text><text x="367" y="246">10</text><text x="425" y="246">0</text>
+    <text x="483" y="246">1</text><text x="541" y="246">5</text><text x="599" y="246">6</text>
+  </g>
+  <!-- splice note -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="30" y="284">Ending at shelf 3 the chain takes 7; shelf 2 holds only 3 while the chain would demand</text>
+    <text x="30" y="302">6 there, so the monotonic stack keeps shelf 2 as the barrier j and splices dp[3] = 7 + dp[2].</text>
+    <text x="30" y="320">dp[2] itself covers the run 1, 2, 3 — together the takes 1 + 2 + 3 + 7 = <tspan fill="#4169E1" font-weight="600">13</tspan>.</text>
+  </g>
+</svg>

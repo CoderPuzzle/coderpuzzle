@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1988,
+  "slug": "find-cutoff-score-for-each-school",
+  "title": "Find Cutoff Score for Each School",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "set",
+    "sql": {
+      "schema": "CREATE TABLE Schools (school_id INTEGER PRIMARY KEY, capacity INTEGER); CREATE TABLE Exam (score INTEGER PRIMARY KEY, student_count INTEGER);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

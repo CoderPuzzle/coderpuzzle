@@ -1,0 +1,132 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3815,
+  "slug": "design-auction-system",
+  "title": "Design Auction System",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Design",
+    "Heap (Priority Queue)",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Hash Table",
+    "Design",
+    "Heap (Priority Queue)",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "AuctionSystem",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "addBid",
+        "parameters": [
+          {
+            "name": "userId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "itemId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "bidAmount",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "updateBid",
+        "parameters": [
+          {
+            "name": "userId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "itemId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "newAmount",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "removeBid",
+        "parameters": [
+          {
+            "name": "userId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "itemId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "getHighestBidder",
+        "parameters": [
+          {
+            "name": "itemId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

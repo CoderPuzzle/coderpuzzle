@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 260" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="17">
+  <rect width="500" height="260" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- input -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="36" y="40" width="54" height="54" fill="#ffffff"/><rect x="90" y="40" width="54" height="54" fill="#ffffff"/><rect x="144" y="40" width="54" height="54" fill="#ffffff"/>
+    <rect x="36" y="94" width="54" height="54" fill="#ffffff"/><rect x="90" y="94" width="54" height="54" fill="#1a2026"/><rect x="144" y="94" width="54" height="54" fill="#ffffff"/>
+    <rect x="36" y="148" width="54" height="54" fill="#1a2026"/><rect x="90" y="148" width="54" height="54" fill="#1a2026"/><rect x="144" y="148" width="54" height="54" fill="#1a2026"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="63" y="73" fill="#5c6b76">0</text><text x="117" y="73" fill="#5c6b76">0</text><text x="171" y="73" fill="#5c6b76">0</text>
+    <text x="63" y="127" fill="#5c6b76">0</text><text x="117" y="127" fill="#ffffff">1</text><text x="171" y="127" fill="#5c6b76">0</text>
+    <text x="63" y="181" fill="#ffffff">1</text><text x="117" y="181" fill="#ffffff">1</text><text x="171" y="181" fill="#ffffff">1</text>
+  </g>
+  <text x="117" y="232" text-anchor="middle" fill="#5c6b76" font-size="12.5">mat (dark = 1)</text>
+  <line x1="212" y1="121" x2="256" y2="121" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <!-- output: distance of the nearest 0 -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="280" y="40" width="54" height="54" fill="#4169E1" fill-opacity="0.15"/><rect x="334" y="40" width="54" height="54" fill="#4169E1" fill-opacity="0.15"/><rect x="388" y="40" width="54" height="54" fill="#4169E1" fill-opacity="0.15"/>
+    <rect x="280" y="94" width="54" height="54" fill="#4169E1" fill-opacity="0.15"/><rect x="334" y="94" width="54" height="54" fill="#ffffff"/><rect x="388" y="94" width="54" height="54" fill="#4169E1" fill-opacity="0.15"/>
+    <rect x="280" y="148" width="54" height="54" fill="#ffffff"/><rect x="334" y="148" width="54" height="54" fill="#ffffff"/><rect x="388" y="148" width="54" height="54" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="307" y="73">0</text><text x="361" y="73">0</text><text x="415" y="73">0</text>
+    <text x="307" y="127">0</text><text x="361" y="127">1</text><text x="415" y="127">0</text>
+    <text x="307" y="181">1</text><text x="361" y="181">2</text><text x="415" y="181">1</text>
+  </g>
+  <text x="361" y="232" text-anchor="middle" fill="#5c6b76" font-size="12.5">distance of the nearest 0</text>
+</svg>

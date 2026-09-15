@@ -1,0 +1,1641 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(1, 'Chelsea', 22, 13, 2, 7),\n(2, 'Nottingham Forest', 27, 6, 6, 15),\n(3, 'Liverpool', 17, 1, 8, 8),\n(4, 'Aston Villa', 20, 1, 6, 13),\n(5, 'Fulham', 31, 18, 1, 12),\n(6, 'Burnley', 26, 6, 9, 11),\n(7, 'Newcastle United', 33, 11, 10, 12),\n(8, 'Sheffield United', 20, 18, 2, 0),\n(9, 'Luton Town', 5, 4, 0, 1),\n(10, 'Everton', 14, 2, 6, 6);"
+      ],
+      "expected": [
+        [
+          "Sheffield United",
+          56,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Fulham",
+          55,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Newcastle United",
+          43,
+          3,
+          "Tier 1"
+        ],
+        [
+          "Chelsea",
+          41,
+          4,
+          "Tier 1"
+        ],
+        [
+          "Burnley",
+          27,
+          5,
+          "Tier 2"
+        ],
+        [
+          "Nottingham Forest",
+          24,
+          6,
+          "Tier 2"
+        ],
+        [
+          "Everton",
+          12,
+          7,
+          "Tier 2"
+        ],
+        [
+          "Luton Town",
+          12,
+          7,
+          "Tier 2"
+        ],
+        [
+          "Liverpool",
+          11,
+          9,
+          "Tier 3"
+        ],
+        [
+          "Aston Villa",
+          9,
+          10,
+          "Tier 3"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(1, 'Barrow Rovers', 0, 0, 0, 0);"
+      ],
+      "expected": [
+        [
+          "Barrow Rovers",
+          0,
+          1,
+          "Tier 1"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(11, 'Northgate', 10, 4, 2, 4),\n(12, 'Southgate', 10, 4, 2, 4);"
+      ],
+      "expected": [
+        [
+          "Northgate",
+          14,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Southgate",
+          14,
+          1,
+          "Tier 1"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(21, 'Alpha City', 10, 3, 1, 6),\n(22, 'Beta United', 10, 2, 2, 6),\n(23, 'Gamma Town', 10, 1, 1, 8);"
+      ],
+      "expected": [
+        [
+          "Alpha City",
+          10,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Beta United",
+          8,
+          2,
+          "Tier 2"
+        ],
+        [
+          "Gamma Town",
+          4,
+          3,
+          "Tier 3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(31, 'Ironsbridge', 20, 10, 0, 10),\n(32, 'Kettleworth', 20, 6, 2, 12),\n(33, 'Larkspur', 12, 3, 1, 8),\n(34, 'Marlow Vale', 16, 2, 4, 10);"
+      ],
+      "expected": [
+        [
+          "Ironsbridge",
+          30,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Kettleworth",
+          20,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Larkspur",
+          10,
+          3,
+          "Tier 2"
+        ],
+        [
+          "Marlow Vale",
+          10,
+          3,
+          "Tier 2"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(40, 'Ashcombe', 8, 2, 4, 2),\n(41, 'Birchdale', 8, 2, 4, 2),\n(42, 'Cedarton', 8, 2, 4, 2),\n(43, 'Dellington', 8, 2, 4, 2),\n(44, 'Elmford', 8, 2, 4, 2),\n(45, 'Fernbrook', 8, 2, 4, 2);"
+      ],
+      "expected": [
+        [
+          "Ashcombe",
+          10,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Birchdale",
+          10,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Cedarton",
+          10,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Dellington",
+          10,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Elmford",
+          10,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Fernbrook",
+          10,
+          1,
+          "Tier 1"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(51, 'Portwich', 34, 19, 3, 12),\n(52, 'Questover', 34, 16, 4, 14),\n(53, 'Ramsbury', 30, 14, 3, 13),\n(54, 'Selborne', 32, 13, 5, 14),\n(55, 'Tadcaster', 28, 9, 3, 16),\n(56, 'Ulceby', 26, 6, 4, 16),\n(57, 'Vantage', 24, 4, 3, 17),\n(58, 'Wexholm', 30, 3, 6, 21),\n(59, 'Yarlington', 20, 2, 2, 16),\n(60, 'Zealmonk', 18, 1, 0, 17);"
+      ],
+      "expected": [
+        [
+          "Portwich",
+          60,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Questover",
+          52,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Ramsbury",
+          45,
+          3,
+          "Tier 1"
+        ],
+        [
+          "Selborne",
+          44,
+          4,
+          "Tier 1"
+        ],
+        [
+          "Tadcaster",
+          30,
+          5,
+          "Tier 2"
+        ],
+        [
+          "Ulceby",
+          22,
+          6,
+          "Tier 2"
+        ],
+        [
+          "Vantage",
+          15,
+          7,
+          "Tier 2"
+        ],
+        [
+          "Wexholm",
+          15,
+          7,
+          "Tier 2"
+        ],
+        [
+          "Yarlington",
+          8,
+          9,
+          "Tier 3"
+        ],
+        [
+          "Zealmonk",
+          3,
+          10,
+          "Tier 3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(61, 'Amberleigh', 32, 29, 3, 0),\n(62, 'Brackenmoor', 30, 26, 2, 2),\n(63, 'Cotterfield', 33, 22, 4, 7),\n(64, 'Dunsmore Heath', 28, 23, 1, 4),\n(65, 'Easthollow', 35, 21, 7, 7),\n(66, 'Farncombe', 26, 19, 3, 4),\n(67, 'Grindale', 28, 16, 2, 10),\n(68, 'Habton', 30, 12, 4, 14),\n(69, 'Ings Mills', 24, 9, 3, 12),\n(70, 'Jervaux', 22, 6, 2, 14);"
+      ],
+      "expected": [
+        [
+          "Amberleigh",
+          90,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Brackenmoor",
+          80,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Cotterfield",
+          70,
+          3,
+          "Tier 1"
+        ],
+        [
+          "Dunsmore Heath",
+          70,
+          3,
+          "Tier 1"
+        ],
+        [
+          "Easthollow",
+          70,
+          3,
+          "Tier 1"
+        ],
+        [
+          "Farncombe",
+          60,
+          6,
+          "Tier 2"
+        ],
+        [
+          "Grindale",
+          50,
+          7,
+          "Tier 2"
+        ],
+        [
+          "Habton",
+          40,
+          8,
+          "Tier 3"
+        ],
+        [
+          "Ings Mills",
+          30,
+          9,
+          "Tier 3"
+        ],
+        [
+          "Jervaux",
+          20,
+          10,
+          "Tier 3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(71, 'Kirkby Stephen', 26, 8, 3, 15),\n(72, 'Lothersdale', 26, 7, 4, 15),\n(73, 'Masham', 24, 6, 5, 13),\n(74, 'Nosterfield', 24, 6, 2, 16),\n(75, 'Orton Scar', 22, 5, 4, 13),\n(76, 'Pateley', 22, 4, 6, 12),\n(77, 'Ripperley', 20, 4, 3, 13),\n(78, 'Staveley', 18, 3, 3, 12),\n(79, 'Thornhill', 18, 3, 3, 12),\n(80, 'Upsall', 16, 1, 1, 14);"
+      ],
+      "expected": [
+        [
+          "Kirkby Stephen",
+          27,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Lothersdale",
+          25,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Masham",
+          23,
+          3,
+          "Tier 1"
+        ],
+        [
+          "Nosterfield",
+          20,
+          4,
+          "Tier 1"
+        ],
+        [
+          "Orton Scar",
+          19,
+          5,
+          "Tier 2"
+        ],
+        [
+          "Pateley",
+          18,
+          6,
+          "Tier 2"
+        ],
+        [
+          "Ripperley",
+          15,
+          7,
+          "Tier 2"
+        ],
+        [
+          "Staveley",
+          12,
+          8,
+          "Tier 3"
+        ],
+        [
+          "Thornhill",
+          12,
+          8,
+          "Tier 3"
+        ],
+        [
+          "Upsall",
+          4,
+          10,
+          "Tier 3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(81, 'Uppingham', 30, 1, 2, 27),\n(82, 'Verlampton', 30, 13, 1, 16),\n(83, 'Wandsworth Rise', 30, 6, 7, 17),\n(84, 'Xanthurst', 28, 8, 1, 19),\n(85, 'Yoxall Green', 28, 5, 10, 13),\n(86, 'Zelby Crossing', 28, 6, 4, 18),\n(87, 'Appleton Dingle', 28, 4, 9, 15),\n(88, 'Briggswath', 20, 2, 2, 16),\n(89, 'Cawthorne', 26, 3, 1, 22),\n(90, 'Dringhouses', 20, 2, 2, 16),\n(91, 'Eastburn Hollow', 12, 0, 0, 12);"
+      ],
+      "expected": [
+        [
+          "Verlampton",
+          40,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Wandsworth Rise",
+          25,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Xanthurst",
+          25,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Yoxall Green",
+          25,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Zelby Crossing",
+          22,
+          5,
+          "Tier 2"
+        ],
+        [
+          "Appleton Dingle",
+          21,
+          6,
+          "Tier 2"
+        ],
+        [
+          "Cawthorne",
+          10,
+          7,
+          "Tier 2"
+        ],
+        [
+          "Briggswath",
+          8,
+          8,
+          "Tier 2"
+        ],
+        [
+          "Dringhouses",
+          8,
+          8,
+          "Tier 2"
+        ],
+        [
+          "Uppingham",
+          5,
+          10,
+          "Tier 3"
+        ],
+        [
+          "Eastburn Hollow",
+          0,
+          11,
+          "Tier 3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(92, 'Fetlar', 20, 6, 4, 10),\n(93, 'Garrowby', 20, 4, 2, 14),\n(94, 'Hawnby', 20, 3, 2, 15),\n(95, 'Ingleby Wick', 18, 2, 1, 15),\n(96, 'Jolby Manor', 16, 1, 1, 14),\n(97, 'Knapton Wold', 14, 0, 0, 14),\n(98, 'Lund Court', 14, 0, 0, 14);"
+      ],
+      "expected": [
+        [
+          "Fetlar",
+          22,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Garrowby",
+          14,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Hawnby",
+          11,
+          3,
+          "Tier 1"
+        ],
+        [
+          "Ingleby Wick",
+          7,
+          4,
+          "Tier 2"
+        ],
+        [
+          "Jolby Manor",
+          4,
+          5,
+          "Tier 2"
+        ],
+        [
+          "Knapton Wold",
+          0,
+          6,
+          "Tier 3"
+        ],
+        [
+          "Lund Court",
+          0,
+          6,
+          "Tier 3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(101, 'O''Rourke City', 38, 13, 5, 20),\n(102, 'Dunbar Athletic', 38, 11, 6, 21),\n(103, 'dunbar athletic', 38, 11, 6, 21),\n(104, 'Eastcliffe', 38, 9, 9, 20),\n(105, 'eastcliffe', 38, 9, 9, 20),\n(106, 'Fenwick Park', 38, 8, 8, 22);"
+      ],
+      "expected": [
+        [
+          "O'Rourke City",
+          44,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Dunbar Athletic",
+          39,
+          2,
+          "Tier 1"
+        ],
+        [
+          "dunbar athletic",
+          39,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Eastcliffe",
+          36,
+          4,
+          "Tier 2"
+        ],
+        [
+          "eastcliffe",
+          36,
+          4,
+          "Tier 2"
+        ],
+        [
+          "Fenwick Park",
+          32,
+          6,
+          "Tier 3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(900, 'Ashbourne', 46, 20, 2, 24),\n(901, 'Bakewell', 46, 19, 1, 26),\n(902, 'Chelmorton', 46, 18, 0, 28),\n(903, 'Dovedale', 46, 17, 0, 29),\n(904, 'Earl Sterndale', 46, 15, 2, 29),\n(905, 'Fenny Bentley', 46, 15, 2, 29),\n(906, 'Grindleford', 46, 15, 2, 29),\n(907, 'Hartington', 46, 14, 1, 31),\n(908, 'Ilam', 46, 13, 1, 32),\n(909, 'Alsop en le Dale', 46, 12, 1, 33),\n(910, 'Biggin', 46, 12, 1, 33),\n(911, 'Carsington', 46, 11, 0, 35),\n(912, 'Dethick', 46, 10, 0, 36),\n(913, 'Edlaston', 46, 9, 0, 37),\n(914, 'Fritchley', 46, 8, 0, 38),\n(915, 'Grangemill', 46, 8, 0, 38),\n(916, 'Hognaston', 46, 8, 0, 38),\n(917, 'Idridgehay', 46, 7, 0, 39),\n(918, 'Kirk Ireton', 46, 6, 0, 40),\n(919, 'Lea Bridge', 46, 5, 0, 41),\n(920, 'Matlock Cliff', 46, 4, 0, 42),\n(921, 'Nullgreen', 46, 4, 0, 42),\n(922, 'Oaker', 46, 3, 0, 43),\n(923, 'Pikehall', 46, 1, 1, 44);"
+      ],
+      "expected": [
+        [
+          "Ashbourne",
+          62,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Bakewell",
+          58,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Chelmorton",
+          54,
+          3,
+          "Tier 1"
+        ],
+        [
+          "Dovedale",
+          51,
+          4,
+          "Tier 1"
+        ],
+        [
+          "Earl Sterndale",
+          47,
+          5,
+          "Tier 1"
+        ],
+        [
+          "Fenny Bentley",
+          47,
+          5,
+          "Tier 1"
+        ],
+        [
+          "Grindleford",
+          47,
+          5,
+          "Tier 1"
+        ],
+        [
+          "Hartington",
+          43,
+          8,
+          "Tier 1"
+        ],
+        [
+          "Ilam",
+          40,
+          9,
+          "Tier 2"
+        ],
+        [
+          "Alsop en le Dale",
+          37,
+          10,
+          "Tier 2"
+        ],
+        [
+          "Biggin",
+          37,
+          10,
+          "Tier 2"
+        ],
+        [
+          "Carsington",
+          33,
+          12,
+          "Tier 2"
+        ],
+        [
+          "Dethick",
+          30,
+          13,
+          "Tier 2"
+        ],
+        [
+          "Edlaston",
+          27,
+          14,
+          "Tier 2"
+        ],
+        [
+          "Fritchley",
+          24,
+          15,
+          "Tier 2"
+        ],
+        [
+          "Grangemill",
+          24,
+          15,
+          "Tier 2"
+        ],
+        [
+          "Hognaston",
+          24,
+          15,
+          "Tier 2"
+        ],
+        [
+          "Idridgehay",
+          21,
+          18,
+          "Tier 3"
+        ],
+        [
+          "Kirk Ireton",
+          18,
+          19,
+          "Tier 3"
+        ],
+        [
+          "Lea Bridge",
+          15,
+          20,
+          "Tier 3"
+        ],
+        [
+          "Matlock Cliff",
+          12,
+          21,
+          "Tier 3"
+        ],
+        [
+          "Nullgreen",
+          12,
+          21,
+          "Tier 3"
+        ],
+        [
+          "Oaker",
+          9,
+          23,
+          "Tier 3"
+        ],
+        [
+          "Pikehall",
+          4,
+          24,
+          "Tier 3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(701, 'Sidebot Team 001', 42, 1331, 0, 0),\n(702, 'Sidebot Team 002', 42, 1328, 2, 0),\n(703, 'Sidebot Team 003', 42, 1326, 1, 0),\n(704, 'Sidebot Team 004', 42, 1324, 0, 0),\n(705, 'Sidebot Team 005', 42, 1321, 2, 0),\n(706, 'Sidebot Team 006', 42, 1319, 1, 0),\n(707, 'Sidebot Team 007', 42, 1317, 0, 0),\n(708, 'Sidebot Team 008', 42, 1314, 2, 0),\n(709, 'Sidebot Team 009', 42, 1312, 1, 0),\n(710, 'Sidebot Team 010', 42, 1310, 0, 0),\n(711, 'Sidebot Team 011', 42, 1307, 2, 0),\n(712, 'Sidebot Team 012', 42, 1305, 1, 0),\n(713, 'Sidebot Team 013', 42, 1303, 0, 0),\n(714, 'Sidebot Team 014', 42, 1300, 2, 0),\n(715, 'Sidebot Team 015', 42, 1298, 1, 0),\n(716, 'Sidebot Team 016', 42, 1296, 0, 0),\n(717, 'Sidebot Team 017', 42, 1293, 2, 0),\n(718, 'Sidebot Team 018', 42, 1291, 1, 0),\n(719, 'Sidebot Team 019', 42, 1289, 0, 0),\n(720, 'Sidebot Team 020', 42, 1286, 2, 0),\n(721, 'Sidebot Team 021', 42, 1284, 1, 0),\n(722, 'Sidebot Team 022', 42, 1282, 0, 0),\n(723, 'Sidebot Team 023', 42, 1279, 2, 0),\n(724, 'Sidebot Team 024', 42, 1277, 1, 0),\n(725, 'Sidebot Team 025', 42, 1275, 0, 0),\n(726, 'Sidebot Team 026', 42, 1272, 2, 0),\n(727, 'Sidebot Team 027', 42, 1270, 1, 0),\n(728, 'Sidebot Team 028', 42, 1268, 0, 0),\n(729, 'Sidebot Team 029', 42, 1265, 2, 0),\n(730, 'Sidebot Team 030', 42, 1263, 1, 0),\n(731, 'Sidebot Team 031', 42, 1261, 0, 0),\n(732, 'Sidebot Team 032', 42, 1258, 2, 0),\n(733, 'Sidebot Team 033', 42, 1256, 1, 0),\n(734, 'Sidebot Team 034', 42, 1254, 0, 0),\n(735, 'Sidebot Team 035', 42, 1254, 0, 0),\n(736, 'Sidebot Team 036', 42, 1251, 2, 0),\n(737, 'Sidebot Team 037', 42, 1249, 1, 0),\n(738, 'Sidebot Team 038', 42, 1247, 0, 0),\n(739, 'Sidebot Team 039', 42, 1244, 2, 0),\n(740, 'Sidebot Team 040', 42, 1242, 1, 0),\n(741, 'Sidebot Team 041', 42, 1240, 0, 0),\n(742, 'Sidebot Team 042', 42, 1237, 2, 0),\n(743, 'Sidebot Team 043', 42, 1235, 1, 0),\n(744, 'Sidebot Team 044', 42, 1233, 0, 0),\n(745, 'Sidebot Team 045', 42, 1230, 2, 0),\n(746, 'Sidebot Team 046', 42, 1228, 1, 0),\n(747, 'Sidebot Team 047', 42, 1226, 0, 0),\n(748, 'Sidebot Team 048', 42, 1223, 2, 0),\n(749, 'Sidebot Team 049', 42, 1221, 1, 0),\n(750, 'Sidebot Team 050', 42, 1219, 0, 0),\n(751, 'Sidebot Team 051', 42, 1216, 2, 0),\n(752, 'Sidebot Team 052', 42, 1214, 1, 0),\n(753, 'Sidebot Team 053', 42, 1212, 0, 0),\n(754, 'Sidebot Team 054', 42, 1209, 2, 0),\n(755, 'Sidebot Team 055', 42, 1207, 1, 0),\n(756, 'Sidebot Team 056', 42, 1205, 0, 0),\n(757, 'Sidebot Team 057', 42, 1202, 2, 0),\n(758, 'Sidebot Team 058', 42, 1200, 1, 0),\n(759, 'Sidebot Team 059', 42, 1198, 0, 0),\n(760, 'Sidebot Team 060', 42, 1195, 2, 0),\n(761, 'Sidebot Team 061', 42, 1193, 1, 0),\n(762, 'Sidebot Team 062', 42, 1191, 0, 0),\n(763, 'Sidebot Team 063', 42, 1188, 2, 0),\n(764, 'Sidebot Team 064', 42, 1186, 1, 0),\n(765, 'Sidebot Team 065', 42, 1184, 0, 0),\n(766, 'Sidebot Team 066', 42, 1181, 2, 0),\n(767, 'Sidebot Team 067', 42, 1179, 1, 0),\n(768, 'Sidebot Team 068', 42, 1179, 1, 0),\n(769, 'Sidebot Team 069', 42, 1177, 0, 0),\n(770, 'Sidebot Team 070', 42, 1174, 2, 0),\n(771, 'Sidebot Team 071', 42, 1172, 1, 0),\n(772, 'Sidebot Team 072', 42, 1170, 0, 0),\n(773, 'Sidebot Team 073', 42, 1167, 2, 0),\n(774, 'Sidebot Team 074', 42, 1165, 1, 0),\n(775, 'Sidebot Team 075', 42, 1163, 0, 0),\n(776, 'Sidebot Team 076', 42, 1160, 2, 0),\n(777, 'Sidebot Team 077', 42, 1158, 1, 0),\n(778, 'Sidebot Team 078', 42, 1156, 0, 0),\n(779, 'Sidebot Team 079', 42, 1153, 2, 0),\n(780, 'Sidebot Team 080', 42, 1151, 1, 0),\n(781, 'Sidebot Team 081', 42, 1149, 0, 0),\n(782, 'Sidebot Team 082', 42, 1146, 2, 0),\n(783, 'Sidebot Team 083', 42, 1144, 1, 0),\n(784, 'Sidebot Team 084', 42, 1142, 0, 0),\n(785, 'Sidebot Team 085', 42, 1139, 2, 0),\n(786, 'Sidebot Team 086', 42, 1137, 1, 0),\n(787, 'Sidebot Team 087', 42, 1135, 0, 0),\n(788, 'Sidebot Team 088', 42, 1132, 2, 0),\n(789, 'Sidebot Team 089', 42, 1130, 1, 0),\n(790, 'Sidebot Team 090', 42, 1128, 0, 0),\n(791, 'Sidebot Team 091', 42, 1125, 2, 0),\n(792, 'Sidebot Team 092', 42, 1123, 1, 0),\n(793, 'Sidebot Team 093', 42, 1121, 0, 0),\n(794, 'Sidebot Team 094', 42, 1118, 2, 0),\n(795, 'Sidebot Team 095', 42, 1116, 1, 0),\n(796, 'Sidebot Team 096', 42, 1114, 0, 0),\n(797, 'Sidebot Team 097', 42, 1111, 2, 0),\n(798, 'Sidebot Team 098', 42, 1109, 1, 0),\n(799, 'Sidebot Team 099', 42, 1107, 0, 0),\n(800, 'Sidebot Team 100', 42, 1104, 2, 0);"
+      ],
+      "expected": [
+        [
+          "Sidebot Team 001",
+          3993,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 002",
+          3986,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 003",
+          3979,
+          3,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 004",
+          3972,
+          4,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 005",
+          3965,
+          5,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 006",
+          3958,
+          6,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 007",
+          3951,
+          7,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 008",
+          3944,
+          8,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 009",
+          3937,
+          9,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 010",
+          3930,
+          10,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 011",
+          3923,
+          11,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 012",
+          3916,
+          12,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 013",
+          3909,
+          13,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 014",
+          3902,
+          14,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 015",
+          3895,
+          15,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 016",
+          3888,
+          16,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 017",
+          3881,
+          17,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 018",
+          3874,
+          18,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 019",
+          3867,
+          19,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 020",
+          3860,
+          20,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 021",
+          3853,
+          21,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 022",
+          3846,
+          22,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 023",
+          3839,
+          23,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 024",
+          3832,
+          24,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 025",
+          3825,
+          25,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 026",
+          3818,
+          26,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 027",
+          3811,
+          27,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 028",
+          3804,
+          28,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 029",
+          3797,
+          29,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 030",
+          3790,
+          30,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 031",
+          3783,
+          31,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 032",
+          3776,
+          32,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 033",
+          3769,
+          33,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 034",
+          3762,
+          34,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 035",
+          3762,
+          34,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 036",
+          3755,
+          36,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 037",
+          3748,
+          37,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 038",
+          3741,
+          38,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 039",
+          3734,
+          39,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 040",
+          3727,
+          40,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 041",
+          3720,
+          41,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 042",
+          3713,
+          42,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 043",
+          3706,
+          43,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 044",
+          3699,
+          44,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 045",
+          3692,
+          45,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 046",
+          3685,
+          46,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 047",
+          3678,
+          47,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 048",
+          3671,
+          48,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 049",
+          3664,
+          49,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 050",
+          3657,
+          50,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 051",
+          3650,
+          51,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 052",
+          3643,
+          52,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 053",
+          3636,
+          53,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 054",
+          3629,
+          54,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 055",
+          3622,
+          55,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 056",
+          3615,
+          56,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 057",
+          3608,
+          57,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 058",
+          3601,
+          58,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 059",
+          3594,
+          59,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 060",
+          3587,
+          60,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 061",
+          3580,
+          61,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 062",
+          3573,
+          62,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 063",
+          3566,
+          63,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 064",
+          3559,
+          64,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 065",
+          3552,
+          65,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 066",
+          3545,
+          66,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 067",
+          3538,
+          67,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 068",
+          3538,
+          67,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 069",
+          3531,
+          69,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 070",
+          3524,
+          70,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 071",
+          3517,
+          71,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 072",
+          3510,
+          72,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 073",
+          3503,
+          73,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 074",
+          3496,
+          74,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 075",
+          3489,
+          75,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 076",
+          3482,
+          76,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 077",
+          3475,
+          77,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 078",
+          3468,
+          78,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 079",
+          3461,
+          79,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 080",
+          3454,
+          80,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 081",
+          3447,
+          81,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 082",
+          3440,
+          82,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 083",
+          3433,
+          83,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 084",
+          3426,
+          84,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 085",
+          3419,
+          85,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 086",
+          3412,
+          86,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 087",
+          3405,
+          87,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 088",
+          3398,
+          88,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 089",
+          3391,
+          89,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 090",
+          3384,
+          90,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 091",
+          3377,
+          91,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 092",
+          3370,
+          92,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 093",
+          3363,
+          93,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 094",
+          3356,
+          94,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 095",
+          3349,
+          95,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 096",
+          3342,
+          96,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 097",
+          3335,
+          97,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 098",
+          3328,
+          98,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 099",
+          3321,
+          99,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 100",
+          3314,
+          100,
+          "Tier 3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO TeamStats VALUES\n(701, 'Sidebot Team 001', 42, 1331, 0, 0),\n(702, 'Sidebot Team 002', 42, 1328, 2, 0),\n(703, 'Sidebot Team 003', 42, 1326, 1, 0),\n(704, 'Sidebot Team 004', 42, 1324, 0, 0),\n(705, 'Sidebot Team 005', 42, 1321, 2, 0),\n(706, 'Sidebot Team 006', 42, 1319, 1, 0),\n(707, 'Sidebot Team 007', 42, 1317, 0, 0),\n(708, 'Sidebot Team 008', 42, 1314, 2, 0),\n(709, 'Sidebot Team 009', 42, 1312, 1, 0),\n(710, 'Sidebot Team 010', 42, 1310, 0, 0),\n(711, 'Sidebot Team 011', 42, 1307, 2, 0),\n(712, 'Sidebot Team 012', 42, 1305, 1, 0),\n(713, 'Sidebot Team 013', 42, 1303, 0, 0),\n(714, 'Sidebot Team 014', 42, 1300, 2, 0),\n(715, 'Sidebot Team 015', 42, 1298, 1, 0),\n(716, 'Sidebot Team 016', 42, 1296, 0, 0),\n(717, 'Sidebot Team 017', 42, 1293, 2, 0),\n(718, 'Sidebot Team 018', 42, 1293, 2, 0),\n(719, 'Sidebot Team 019', 42, 1291, 1, 0),\n(720, 'Sidebot Team 020', 42, 1289, 0, 0),\n(721, 'Sidebot Team 021', 42, 1286, 2, 0),\n(722, 'Sidebot Team 022', 42, 1284, 1, 0),\n(723, 'Sidebot Team 023', 42, 1282, 0, 0),\n(724, 'Sidebot Team 024', 42, 1279, 2, 0),\n(725, 'Sidebot Team 025', 42, 1277, 1, 0),\n(726, 'Sidebot Team 026', 42, 1275, 0, 0),\n(727, 'Sidebot Team 027', 42, 1272, 2, 0),\n(728, 'Sidebot Team 028', 42, 1270, 1, 0),\n(729, 'Sidebot Team 029', 42, 1268, 0, 0),\n(730, 'Sidebot Team 030', 42, 1265, 2, 0),\n(731, 'Sidebot Team 031', 42, 1263, 1, 0),\n(732, 'Sidebot Team 032', 42, 1261, 0, 0),\n(733, 'Sidebot Team 033', 42, 1258, 2, 0),\n(734, 'Sidebot Team 034', 42, 1256, 1, 0),\n(735, 'Sidebot Team 035', 42, 1256, 1, 0),\n(736, 'Sidebot Team 036', 42, 1254, 0, 0),\n(737, 'Sidebot Team 037', 42, 1251, 2, 0),\n(738, 'Sidebot Team 038', 42, 1249, 1, 0),\n(739, 'Sidebot Team 039', 42, 1247, 0, 0),\n(740, 'Sidebot Team 040', 42, 1244, 2, 0),\n(741, 'Sidebot Team 041', 42, 1242, 1, 0),\n(742, 'Sidebot Team 042', 42, 1240, 0, 0),\n(743, 'Sidebot Team 043', 42, 1237, 2, 0),\n(744, 'Sidebot Team 044', 42, 1235, 1, 0),\n(745, 'Sidebot Team 045', 42, 1233, 0, 0),\n(746, 'Sidebot Team 046', 42, 1230, 2, 0),\n(747, 'Sidebot Team 047', 42, 1228, 1, 0),\n(748, 'Sidebot Team 048', 42, 1226, 0, 0),\n(749, 'Sidebot Team 049', 42, 1223, 2, 0),\n(750, 'Sidebot Team 050', 42, 1221, 1, 0);"
+      ],
+      "expected": [
+        [
+          "Sidebot Team 001",
+          3993,
+          1,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 002",
+          3986,
+          2,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 003",
+          3979,
+          3,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 004",
+          3972,
+          4,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 005",
+          3965,
+          5,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 006",
+          3958,
+          6,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 007",
+          3951,
+          7,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 008",
+          3944,
+          8,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 009",
+          3937,
+          9,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 010",
+          3930,
+          10,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 011",
+          3923,
+          11,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 012",
+          3916,
+          12,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 013",
+          3909,
+          13,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 014",
+          3902,
+          14,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 015",
+          3895,
+          15,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 016",
+          3888,
+          16,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 017",
+          3881,
+          17,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 018",
+          3881,
+          17,
+          "Tier 1"
+        ],
+        [
+          "Sidebot Team 019",
+          3874,
+          19,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 020",
+          3867,
+          20,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 021",
+          3860,
+          21,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 022",
+          3853,
+          22,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 023",
+          3846,
+          23,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 024",
+          3839,
+          24,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 025",
+          3832,
+          25,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 026",
+          3825,
+          26,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 027",
+          3818,
+          27,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 028",
+          3811,
+          28,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 029",
+          3804,
+          29,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 030",
+          3797,
+          30,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 031",
+          3790,
+          31,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 032",
+          3783,
+          32,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 033",
+          3776,
+          33,
+          "Tier 2"
+        ],
+        [
+          "Sidebot Team 034",
+          3769,
+          34,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 035",
+          3769,
+          34,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 036",
+          3762,
+          36,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 037",
+          3755,
+          37,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 038",
+          3748,
+          38,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 039",
+          3741,
+          39,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 040",
+          3734,
+          40,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 041",
+          3727,
+          41,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 042",
+          3720,
+          42,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 043",
+          3713,
+          43,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 044",
+          3706,
+          44,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 045",
+          3699,
+          45,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 046",
+          3692,
+          46,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 047",
+          3685,
+          47,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 048",
+          3678,
+          48,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 049",
+          3671,
+          49,
+          "Tier 3"
+        ],
+        [
+          "Sidebot Team 050",
+          3664,
+          50,
+          "Tier 3"
+        ]
+      ]
+    }
+  ]
+}

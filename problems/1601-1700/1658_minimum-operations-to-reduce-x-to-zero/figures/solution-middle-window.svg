@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,1,4,2,3]; cell 64, x0 = 120 -->
+  <!-- state 1: right=2, left=0, window [1,1,4] = 6 -->
+  <g font-size="12.5" fill="#5c6b76"><text x="40" y="64">right = 2:</text></g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="120" y="50" width="64" height="36" fill="#dbe4f6"/>
+    <rect x="184" y="50" width="64" height="36" fill="#dbe4f6"/>
+    <rect x="248" y="50" width="64" height="36" fill="#dbe4f6"/>
+    <rect x="312" y="50" width="64" height="36" fill="#ffffff"/>
+    <rect x="376" y="50" width="64" height="36" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="152" y="73">1</text><text x="216" y="73">1</text><text x="280" y="73">4</text>
+    <text x="344" y="73" fill="#5c6b76">2</text><text x="408" y="73" fill="#5c6b76">3</text>
+  </g>
+  <g font-size="12" text-anchor="middle" fill="#4169E1" font-weight="600">
+    <text x="152" y="102">L</text><text x="280" y="102">R</text>
+  </g>
+  <text x="470" y="64" fill="#5c6b76" font-size="12.5">sum 6 = target → best = 3</text>
+  <!-- state 2: right=3, shrink left to 2, window [4,2] -->
+  <g font-size="12.5" fill="#5c6b76"><text x="40" y="164">right = 3:</text></g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="120" y="150" width="64" height="36" fill="#ffffff"/>
+    <rect x="184" y="150" width="64" height="36" fill="#ffffff"/>
+    <rect x="248" y="150" width="64" height="36" fill="#dbe4f6"/>
+    <rect x="312" y="150" width="64" height="36" fill="#dbe4f6"/>
+    <rect x="376" y="150" width="64" height="36" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="152" y="173" fill="#5c6b76">1</text><text x="216" y="173" fill="#5c6b76">1</text><text x="280" y="173">4</text>
+    <text x="344" y="173">2</text><text x="408" y="173" fill="#5c6b76">3</text>
+  </g>
+  <g font-size="12" text-anchor="middle" fill="#4169E1" font-weight="600">
+    <text x="280" y="202">L</text><text x="344" y="202">R</text>
+  </g>
+  <text x="470" y="158" fill="#5c6b76" font-size="12.5">[1,1,4,2] sums to 8 → shrink;</text>
+  <text x="470" y="176" fill="#5c6b76" font-size="12.5">[4,2] sums to 6 → length 2</text>
+  <!-- final mapping -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="120" y="250" width="64" height="36" fill="#dbe4f6"/>
+    <rect x="184" y="250" width="64" height="36" fill="#dbe4f6"/>
+    <rect x="248" y="250" width="64" height="36" fill="#dbe4f6"/>
+    <rect x="312" y="250" width="64" height="36" fill="#ffffff" stroke-dasharray="5 4"/>
+    <rect x="376" y="250" width="64" height="36" fill="#ffffff" stroke-dasharray="5 4"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="152" y="273">1</text><text x="216" y="273">1</text><text x="280" y="273">4</text>
+    <text x="344" y="273" fill="#5c6b76">2</text><text x="408" y="273" fill="#5c6b76">3</text>
+  </g>
+  <line x1="330" y1="224" x2="330" y2="246" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="470" y="262" fill="#1a2026" font-size="12.5">longest middle window = 3, so remove</text>
+  <text x="470" y="280" fill="#1a2026" font-size="12.5">the two outside cells: 2 + 3 = 5 = x →</text>
+  <text x="470" y="298" fill="#4169E1" font-size="12.5" font-weight="600">answer 5 − 3 = 2 operations</text>
+  <text x="40" y="276" fill="#5c6b76" font-size="12.5">answer:</text>
+</svg>

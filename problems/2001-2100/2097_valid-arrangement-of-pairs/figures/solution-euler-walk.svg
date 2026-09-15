@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nodes 11 -> 9 -> 4 -> 5 -> 1 -->
+  <g stroke="#4169E1" stroke-width="2.2">
+    <line x1="114" y1="110" x2="176" y2="110" marker-end="url(#arrow)"/>
+    <line x1="234" y1="110" x2="296" y2="110" marker-end="url(#arrow)"/>
+    <line x1="354" y1="110" x2="416" y2="110" marker-end="url(#arrow)"/>
+    <line x1="474" y1="110" x2="536" y2="110" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#1a2026" font-size="11.5" text-anchor="middle">
+    <circle cx="150" cy="72" r="10" fill="#ffffff" stroke="#4169E1" stroke-width="1.4"/>
+    <circle cx="270" cy="72" r="10" fill="#ffffff" stroke="#4169E1" stroke-width="1.4"/>
+    <circle cx="390" cy="72" r="10" fill="#ffffff" stroke="#4169E1" stroke-width="1.4"/>
+    <circle cx="510" cy="72" r="10" fill="#ffffff" stroke="#4169E1" stroke-width="1.4"/>
+    <text x="150" y="76">1</text><text x="270" y="76">2</text><text x="390" y="76">3</text><text x="510" y="76">4</text>
+  </g>
+  <g fill="#dbe4f6" stroke="#42525e" stroke-width="1.6">
+    <circle cx="90" cy="110" r="26"/>
+    <circle cx="210" cy="110" r="26"/>
+    <circle cx="330" cy="110" r="26"/>
+    <circle cx="450" cy="110" r="26"/>
+    <circle cx="570" cy="110" r="26"/>
+  </g>
+  <circle cx="90" cy="110" r="26" fill="none" stroke="#4169E1" stroke-width="2.4"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026" font-size="15">
+    <text x="90" y="115">11</text><text x="210" y="115">9</text><text x="330" y="115">4</text>
+    <text x="450" y="115">5</text><text x="570" y="115">1</text>
+  </g>
+  <!-- degree table -->
+  <g font-size="12.5">
+    <text x="90" y="180" text-anchor="middle" fill="#5c6b76">out 1 · in 0</text>
+    <text x="210" y="180" text-anchor="middle" fill="#5c6b76">out 1 · in 1</text>
+    <text x="330" y="180" text-anchor="middle" fill="#5c6b76">out 1 · in 1</text>
+    <text x="450" y="180" text-anchor="middle" fill="#5c6b76">out 1 · in 1</text>
+    <text x="570" y="180" text-anchor="middle" fill="#5c6b76">out 0 · in 1</text>
+  </g>
+  <text x="90" y="206" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="12.5">start: out − in = 1</text>
+  <text x="570" y="206" text-anchor="middle" fill="#5c6b76" font-size="12.5">dead end sink</text>
+  <!-- stack growth strip -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="250">The explicit stack deepens 11, 9, 4, 5, 1 while edges remain;</text>
+    <text x="40" y="268">reaching the dead end at 1, it unwinds and appends nodes to the</text>
+    <text x="40" y="286">path, which reverses into 11, 9, 4, 5, 1 — the arrangement</text>
+    <text x="40" y="304">[11,9], [9,4], [4,5], [5,1] using every edge exactly once.</text>
+  </g>
+  <g font-size="12.5" text-anchor="middle">
+    <rect x="440" y="238" width="40" height="26" fill="#dbe4f6" stroke="#42525e"/><text x="460" y="256">11</text>
+    <rect x="482" y="238" width="40" height="26" fill="#dbe4f6" stroke="#42525e"/><text x="502" y="256">9</text>
+    <rect x="524" y="238" width="40" height="26" fill="#dbe4f6" stroke="#42525e"/><text x="544" y="256">4</text>
+    <rect x="566" y="238" width="40" height="26" fill="#dbe4f6" stroke="#42525e"/><text x="586" y="256">5</text>
+    <rect x="440" y="270" width="40" height="26" fill="#4169E1"/><text x="460" y="288" fill="#ffffff">1</text>
+    <text x="490" y="288" fill="#5c6b76">← pushed last, first to unwind</text>
+  </g>
+</svg>

@@ -1,0 +1,52 @@
+#include <vector>
+
+struct Entry {
+    const TreeNode *node;
+    bool apply;
+};
+
+class Solution {
+  public:
+    bool evaluateTree(TreeNode *root) {
+        // The tree is a formula: leaves hold the literals (1 is true, 0
+        // is false) and internal nodes apply their operator — 2 ORs the
+        // two child bits, 3 ANDs them — so the answer is a post-order
+        // fold. Spines of this tree can run hundreds of nodes deep, so
+        // the fold runs on explicit stacks instead of the call stack:
+        // entries say either "expand this node" or "apply this
+        // operator". Expanding an internal node parks its operator
+        // beneath its children, left on top; because the tree is full,
+        // each subtree's entries net out to exactly one bit, so an
+        // operator resurfaces only after its two operands sit ready on
+        // the operand shelf.
+        if (root == nullptr) {
+            return false;
+        }
+        vector<bool> operands;
+        vector<Entry> work{{root, false}};
+        while (!work.empty()) {
+            Entry entry = work.back();
+            work.pop_back();
+            if (!entry.apply) {
+                if (entry.node->left == nullptr || entry.node->right == nullptr) {
+                    operands.push_back(entry.node->val == 1);
+                } else {
+                    work.push_back({entry.node, true});
+                    work.push_back({entry.node->right, false});
+                    work.push_back({entry.node->left, false});
+                }
+            } else {
+                bool right = operands.back();
+                operands.pop_back();
+                bool left = operands.back();
+                operands.pop_back();
+                bool value = left && right;
+                if (entry.node->val == 2) {
+                    value = left || right;
+                }
+                operands.push_back(value);
+            }
+        }
+        return operands.back();
+    }
+};

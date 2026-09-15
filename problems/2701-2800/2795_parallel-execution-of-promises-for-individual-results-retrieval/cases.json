@@ -1,0 +1,1938 @@
+{
+  "public": [
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": 15,
+            "delay": 100
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": 15
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": 20,
+            "delay": 100
+          },
+          {
+            "kind": "fulfilled",
+            "value": 15,
+            "delay": 100
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": 20
+        },
+        {
+          "status": "fulfilled",
+          "value": 15
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": 30,
+            "delay": 200
+          },
+          {
+            "kind": "rejected",
+            "reason": "Error",
+            "delay": 100
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": 30
+        },
+        {
+          "status": "rejected",
+          "reason": "Error"
+        }
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "functions": []
+      },
+      "expected": []
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": 42,
+            "delay": 100
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": 42
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "reason": "Timeout",
+            "delay": 100
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "rejected",
+          "reason": "Timeout"
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "reason": "boom",
+            "delay": 40
+          },
+          {
+            "kind": "rejected",
+            "reason": 7,
+            "delay": 5
+          },
+          {
+            "kind": "rejected",
+            "reason": null,
+            "delay": 90
+          },
+          {
+            "kind": "rejected",
+            "reason": false,
+            "delay": 25
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "rejected",
+          "reason": "boom"
+        },
+        {
+          "status": "rejected",
+          "reason": 7
+        },
+        {
+          "status": "rejected",
+          "reason": null
+        },
+        {
+          "status": "rejected",
+          "reason": false
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": "slow-head",
+            "delay": 120
+          },
+          {
+            "kind": "rejected",
+            "reason": false,
+            "delay": 60
+          },
+          {
+            "kind": "fulfilled",
+            "value": 0,
+            "delay": 20
+          },
+          {
+            "kind": "rejected",
+            "reason": "tail",
+            "delay": 5
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": "slow-head"
+        },
+        {
+          "status": "rejected",
+          "reason": false
+        },
+        {
+          "status": "fulfilled",
+          "value": 0
+        },
+        {
+          "status": "rejected",
+          "reason": "tail"
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": 1,
+            "delay": 30
+          },
+          {
+            "kind": "rejected",
+            "reason": "e1",
+            "delay": 45
+          },
+          {
+            "kind": "fulfilled",
+            "value": 2,
+            "delay": 10
+          },
+          {
+            "kind": "rejected",
+            "reason": "e2",
+            "delay": 55
+          },
+          {
+            "kind": "fulfilled",
+            "value": 3,
+            "delay": 70
+          },
+          {
+            "kind": "rejected",
+            "reason": "e3",
+            "delay": 20
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": 1
+        },
+        {
+          "status": "rejected",
+          "reason": "e1"
+        },
+        {
+          "status": "fulfilled",
+          "value": 2
+        },
+        {
+          "status": "rejected",
+          "reason": "e2"
+        },
+        {
+          "status": "fulfilled",
+          "value": 3
+        },
+        {
+          "status": "rejected",
+          "reason": "e3"
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": 9,
+            "delay": 0
+          },
+          {
+            "kind": "rejected",
+            "reason": "zero",
+            "delay": 0
+          },
+          {
+            "kind": "fulfilled",
+            "value": null,
+            "delay": 0
+          },
+          {
+            "kind": "rejected",
+            "reason": "",
+            "delay": 0
+          },
+          {
+            "kind": "fulfilled",
+            "value": [],
+            "delay": 0
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": 9
+        },
+        {
+          "status": "rejected",
+          "reason": "zero"
+        },
+        {
+          "status": "fulfilled",
+          "value": null
+        },
+        {
+          "status": "rejected",
+          "reason": ""
+        },
+        {
+          "status": "fulfilled",
+          "value": []
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": null,
+            "delay": 12
+          },
+          {
+            "kind": "fulfilled",
+            "value": false,
+            "delay": 34
+          },
+          {
+            "kind": "fulfilled",
+            "value": 0,
+            "delay": 56
+          },
+          {
+            "kind": "fulfilled",
+            "value": "",
+            "delay": 78
+          },
+          {
+            "kind": "fulfilled",
+            "value": [
+              1,
+              2,
+              {
+                "k": true
+              }
+            ],
+            "delay": 90
+          },
+          {
+            "kind": "fulfilled",
+            "value": {
+              "nested": {
+                "deep": [
+                  null
+                ]
+              }
+            },
+            "delay": 15
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": null
+        },
+        {
+          "status": "fulfilled",
+          "value": false
+        },
+        {
+          "status": "fulfilled",
+          "value": 0
+        },
+        {
+          "status": "fulfilled",
+          "value": ""
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            1,
+            2,
+            {
+              "k": true
+            }
+          ]
+        },
+        {
+          "status": "fulfilled",
+          "value": {
+            "nested": {
+              "deep": [
+                null
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "rejected",
+            "reason": "plain string",
+            "delay": 8
+          },
+          {
+            "kind": "rejected",
+            "reason": 404,
+            "delay": 16
+          },
+          {
+            "kind": "rejected",
+            "reason": null,
+            "delay": 24
+          },
+          {
+            "kind": "rejected",
+            "reason": false,
+            "delay": 32
+          },
+          {
+            "kind": "rejected",
+            "reason": {
+              "code": 7,
+              "msg": "x"
+            },
+            "delay": 48
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "rejected",
+          "reason": "plain string"
+        },
+        {
+          "status": "rejected",
+          "reason": 404
+        },
+        {
+          "status": "rejected",
+          "reason": null
+        },
+        {
+          "status": "rejected",
+          "reason": false
+        },
+        {
+          "status": "rejected",
+          "reason": {
+            "code": 7,
+            "msg": "x"
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": "a",
+            "delay": 50
+          },
+          {
+            "kind": "rejected",
+            "reason": "b",
+            "delay": 50
+          },
+          {
+            "kind": "fulfilled",
+            "value": "c",
+            "delay": 50
+          },
+          {
+            "kind": "rejected",
+            "reason": "d",
+            "delay": 50
+          },
+          {
+            "kind": "fulfilled",
+            "value": "e",
+            "delay": 50
+          },
+          {
+            "kind": "fulfilled",
+            "value": "f",
+            "delay": 50
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": "a"
+        },
+        {
+          "status": "rejected",
+          "reason": "b"
+        },
+        {
+          "status": "fulfilled",
+          "value": "c"
+        },
+        {
+          "status": "rejected",
+          "reason": "d"
+        },
+        {
+          "status": "fulfilled",
+          "value": "e"
+        },
+        {
+          "status": "fulfilled",
+          "value": "f"
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": "head-slowest",
+            "delay": 99
+          },
+          {
+            "kind": "fulfilled",
+            "value": 2,
+            "delay": 33
+          },
+          {
+            "kind": "rejected",
+            "reason": "mid",
+            "delay": 66
+          },
+          {
+            "kind": "fulfilled",
+            "value": 4,
+            "delay": 11
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": "head-slowest"
+        },
+        {
+          "status": "fulfilled",
+          "value": 2
+        },
+        {
+          "status": "rejected",
+          "reason": "mid"
+        },
+        {
+          "status": "fulfilled",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": 1,
+            "delay": 10
+          },
+          {
+            "kind": "fulfilled",
+            "value": 1,
+            "delay": 30
+          },
+          {
+            "kind": "rejected",
+            "reason": "dup",
+            "delay": 20
+          },
+          {
+            "kind": "fulfilled",
+            "value": "dup",
+            "delay": 40
+          },
+          {
+            "kind": "fulfilled",
+            "value": 1,
+            "delay": 50
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": 1
+        },
+        {
+          "status": "fulfilled",
+          "value": 1
+        },
+        {
+          "status": "rejected",
+          "reason": "dup"
+        },
+        {
+          "status": "fulfilled",
+          "value": "dup"
+        },
+        {
+          "status": "fulfilled",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": 0,
+            "delay": 0
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v1",
+            "delay": 21
+          },
+          {
+            "kind": "rejected",
+            "reason": "e2",
+            "delay": 10
+          },
+          {
+            "kind": "fulfilled",
+            "value": 21,
+            "delay": 15
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v4",
+            "delay": 6
+          },
+          {
+            "kind": "rejected",
+            "reason": "e5",
+            "delay": 8
+          },
+          {
+            "kind": "fulfilled",
+            "value": 42,
+            "delay": 30
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v7",
+            "delay": 30
+          },
+          {
+            "kind": "rejected",
+            "reason": "e8",
+            "delay": 6
+          },
+          {
+            "kind": "fulfilled",
+            "value": 63,
+            "delay": 45
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v10",
+            "delay": 15
+          },
+          {
+            "kind": "rejected",
+            "reason": "e11",
+            "delay": 4
+          },
+          {
+            "kind": "fulfilled",
+            "value": 84,
+            "delay": 10
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v13",
+            "delay": 0
+          },
+          {
+            "kind": "rejected",
+            "reason": "e14",
+            "delay": 2
+          },
+          {
+            "kind": "fulfilled",
+            "value": 105,
+            "delay": 25
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v16",
+            "delay": 24
+          },
+          {
+            "kind": "rejected",
+            "reason": "e17",
+            "delay": 0
+          },
+          {
+            "kind": "fulfilled",
+            "value": 126,
+            "delay": 40
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v19",
+            "delay": 9
+          },
+          {
+            "kind": "rejected",
+            "reason": "e20",
+            "delay": 32
+          },
+          {
+            "kind": "fulfilled",
+            "value": 147,
+            "delay": 5
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v22",
+            "delay": 33
+          },
+          {
+            "kind": "rejected",
+            "reason": "e23",
+            "delay": 30
+          },
+          {
+            "kind": "fulfilled",
+            "value": 168,
+            "delay": 20
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v25",
+            "delay": 18
+          },
+          {
+            "kind": "rejected",
+            "reason": "e26",
+            "delay": 28
+          },
+          {
+            "kind": "fulfilled",
+            "value": 189,
+            "delay": 35
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v28",
+            "delay": 3
+          },
+          {
+            "kind": "rejected",
+            "reason": "e29",
+            "delay": 26
+          },
+          {
+            "kind": "fulfilled",
+            "value": 210,
+            "delay": 0
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v31",
+            "delay": 27
+          },
+          {
+            "kind": "rejected",
+            "reason": "e32",
+            "delay": 24
+          },
+          {
+            "kind": "fulfilled",
+            "value": 231,
+            "delay": 15
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v34",
+            "delay": 12
+          },
+          {
+            "kind": "rejected",
+            "reason": "e35",
+            "delay": 22
+          },
+          {
+            "kind": "fulfilled",
+            "value": 252,
+            "delay": 30
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v37",
+            "delay": 36
+          },
+          {
+            "kind": "rejected",
+            "reason": "e38",
+            "delay": 20
+          },
+          {
+            "kind": "fulfilled",
+            "value": 273,
+            "delay": 45
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v40",
+            "delay": 21
+          },
+          {
+            "kind": "rejected",
+            "reason": "e41",
+            "delay": 18
+          },
+          {
+            "kind": "fulfilled",
+            "value": 294,
+            "delay": 10
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v43",
+            "delay": 6
+          },
+          {
+            "kind": "rejected",
+            "reason": "e44",
+            "delay": 16
+          },
+          {
+            "kind": "fulfilled",
+            "value": 315,
+            "delay": 25
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v46",
+            "delay": 30
+          },
+          {
+            "kind": "rejected",
+            "reason": "e47",
+            "delay": 14
+          },
+          {
+            "kind": "fulfilled",
+            "value": 336,
+            "delay": 40
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v49",
+            "delay": 15
+          },
+          {
+            "kind": "rejected",
+            "reason": "e50",
+            "delay": 12
+          },
+          {
+            "kind": "fulfilled",
+            "value": 357,
+            "delay": 5
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v52",
+            "delay": 0
+          },
+          {
+            "kind": "rejected",
+            "reason": "e53",
+            "delay": 10
+          },
+          {
+            "kind": "fulfilled",
+            "value": 378,
+            "delay": 20
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v55",
+            "delay": 24
+          },
+          {
+            "kind": "rejected",
+            "reason": "e56",
+            "delay": 8
+          },
+          {
+            "kind": "fulfilled",
+            "value": 399,
+            "delay": 35
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v58",
+            "delay": 9
+          },
+          {
+            "kind": "rejected",
+            "reason": "e59",
+            "delay": 6
+          },
+          {
+            "kind": "fulfilled",
+            "value": 420,
+            "delay": 0
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v61",
+            "delay": 33
+          },
+          {
+            "kind": "rejected",
+            "reason": "e62",
+            "delay": 4
+          },
+          {
+            "kind": "fulfilled",
+            "value": 441,
+            "delay": 15
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v64",
+            "delay": 18
+          },
+          {
+            "kind": "rejected",
+            "reason": "e65",
+            "delay": 2
+          },
+          {
+            "kind": "fulfilled",
+            "value": 462,
+            "delay": 30
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v67",
+            "delay": 3
+          },
+          {
+            "kind": "rejected",
+            "reason": "e68",
+            "delay": 0
+          },
+          {
+            "kind": "fulfilled",
+            "value": 483,
+            "delay": 45
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v70",
+            "delay": 27
+          },
+          {
+            "kind": "rejected",
+            "reason": "e71",
+            "delay": 32
+          },
+          {
+            "kind": "fulfilled",
+            "value": 504,
+            "delay": 10
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v73",
+            "delay": 12
+          },
+          {
+            "kind": "rejected",
+            "reason": "e74",
+            "delay": 30
+          },
+          {
+            "kind": "fulfilled",
+            "value": 525,
+            "delay": 25
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v76",
+            "delay": 36
+          },
+          {
+            "kind": "rejected",
+            "reason": "e77",
+            "delay": 28
+          },
+          {
+            "kind": "fulfilled",
+            "value": 546,
+            "delay": 40
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v79",
+            "delay": 21
+          },
+          {
+            "kind": "rejected",
+            "reason": "e80",
+            "delay": 26
+          },
+          {
+            "kind": "fulfilled",
+            "value": 567,
+            "delay": 5
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v82",
+            "delay": 6
+          },
+          {
+            "kind": "rejected",
+            "reason": "e83",
+            "delay": 24
+          },
+          {
+            "kind": "fulfilled",
+            "value": 588,
+            "delay": 20
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v85",
+            "delay": 30
+          },
+          {
+            "kind": "rejected",
+            "reason": "e86",
+            "delay": 22
+          },
+          {
+            "kind": "fulfilled",
+            "value": 609,
+            "delay": 35
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v88",
+            "delay": 15
+          },
+          {
+            "kind": "rejected",
+            "reason": "e89",
+            "delay": 20
+          },
+          {
+            "kind": "fulfilled",
+            "value": 630,
+            "delay": 0
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v91",
+            "delay": 0
+          },
+          {
+            "kind": "rejected",
+            "reason": "e92",
+            "delay": 18
+          },
+          {
+            "kind": "fulfilled",
+            "value": 651,
+            "delay": 15
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v94",
+            "delay": 24
+          },
+          {
+            "kind": "rejected",
+            "reason": "e95",
+            "delay": 16
+          },
+          {
+            "kind": "fulfilled",
+            "value": 672,
+            "delay": 30
+          },
+          {
+            "kind": "fulfilled",
+            "value": "v97",
+            "delay": 9
+          },
+          {
+            "kind": "rejected",
+            "reason": "e98",
+            "delay": 14
+          },
+          {
+            "kind": "fulfilled",
+            "value": 693,
+            "delay": 45
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": 0
+        },
+        {
+          "status": "fulfilled",
+          "value": "v1"
+        },
+        {
+          "status": "rejected",
+          "reason": "e2"
+        },
+        {
+          "status": "fulfilled",
+          "value": 21
+        },
+        {
+          "status": "fulfilled",
+          "value": "v4"
+        },
+        {
+          "status": "rejected",
+          "reason": "e5"
+        },
+        {
+          "status": "fulfilled",
+          "value": 42
+        },
+        {
+          "status": "fulfilled",
+          "value": "v7"
+        },
+        {
+          "status": "rejected",
+          "reason": "e8"
+        },
+        {
+          "status": "fulfilled",
+          "value": 63
+        },
+        {
+          "status": "fulfilled",
+          "value": "v10"
+        },
+        {
+          "status": "rejected",
+          "reason": "e11"
+        },
+        {
+          "status": "fulfilled",
+          "value": 84
+        },
+        {
+          "status": "fulfilled",
+          "value": "v13"
+        },
+        {
+          "status": "rejected",
+          "reason": "e14"
+        },
+        {
+          "status": "fulfilled",
+          "value": 105
+        },
+        {
+          "status": "fulfilled",
+          "value": "v16"
+        },
+        {
+          "status": "rejected",
+          "reason": "e17"
+        },
+        {
+          "status": "fulfilled",
+          "value": 126
+        },
+        {
+          "status": "fulfilled",
+          "value": "v19"
+        },
+        {
+          "status": "rejected",
+          "reason": "e20"
+        },
+        {
+          "status": "fulfilled",
+          "value": 147
+        },
+        {
+          "status": "fulfilled",
+          "value": "v22"
+        },
+        {
+          "status": "rejected",
+          "reason": "e23"
+        },
+        {
+          "status": "fulfilled",
+          "value": 168
+        },
+        {
+          "status": "fulfilled",
+          "value": "v25"
+        },
+        {
+          "status": "rejected",
+          "reason": "e26"
+        },
+        {
+          "status": "fulfilled",
+          "value": 189
+        },
+        {
+          "status": "fulfilled",
+          "value": "v28"
+        },
+        {
+          "status": "rejected",
+          "reason": "e29"
+        },
+        {
+          "status": "fulfilled",
+          "value": 210
+        },
+        {
+          "status": "fulfilled",
+          "value": "v31"
+        },
+        {
+          "status": "rejected",
+          "reason": "e32"
+        },
+        {
+          "status": "fulfilled",
+          "value": 231
+        },
+        {
+          "status": "fulfilled",
+          "value": "v34"
+        },
+        {
+          "status": "rejected",
+          "reason": "e35"
+        },
+        {
+          "status": "fulfilled",
+          "value": 252
+        },
+        {
+          "status": "fulfilled",
+          "value": "v37"
+        },
+        {
+          "status": "rejected",
+          "reason": "e38"
+        },
+        {
+          "status": "fulfilled",
+          "value": 273
+        },
+        {
+          "status": "fulfilled",
+          "value": "v40"
+        },
+        {
+          "status": "rejected",
+          "reason": "e41"
+        },
+        {
+          "status": "fulfilled",
+          "value": 294
+        },
+        {
+          "status": "fulfilled",
+          "value": "v43"
+        },
+        {
+          "status": "rejected",
+          "reason": "e44"
+        },
+        {
+          "status": "fulfilled",
+          "value": 315
+        },
+        {
+          "status": "fulfilled",
+          "value": "v46"
+        },
+        {
+          "status": "rejected",
+          "reason": "e47"
+        },
+        {
+          "status": "fulfilled",
+          "value": 336
+        },
+        {
+          "status": "fulfilled",
+          "value": "v49"
+        },
+        {
+          "status": "rejected",
+          "reason": "e50"
+        },
+        {
+          "status": "fulfilled",
+          "value": 357
+        },
+        {
+          "status": "fulfilled",
+          "value": "v52"
+        },
+        {
+          "status": "rejected",
+          "reason": "e53"
+        },
+        {
+          "status": "fulfilled",
+          "value": 378
+        },
+        {
+          "status": "fulfilled",
+          "value": "v55"
+        },
+        {
+          "status": "rejected",
+          "reason": "e56"
+        },
+        {
+          "status": "fulfilled",
+          "value": 399
+        },
+        {
+          "status": "fulfilled",
+          "value": "v58"
+        },
+        {
+          "status": "rejected",
+          "reason": "e59"
+        },
+        {
+          "status": "fulfilled",
+          "value": 420
+        },
+        {
+          "status": "fulfilled",
+          "value": "v61"
+        },
+        {
+          "status": "rejected",
+          "reason": "e62"
+        },
+        {
+          "status": "fulfilled",
+          "value": 441
+        },
+        {
+          "status": "fulfilled",
+          "value": "v64"
+        },
+        {
+          "status": "rejected",
+          "reason": "e65"
+        },
+        {
+          "status": "fulfilled",
+          "value": 462
+        },
+        {
+          "status": "fulfilled",
+          "value": "v67"
+        },
+        {
+          "status": "rejected",
+          "reason": "e68"
+        },
+        {
+          "status": "fulfilled",
+          "value": 483
+        },
+        {
+          "status": "fulfilled",
+          "value": "v70"
+        },
+        {
+          "status": "rejected",
+          "reason": "e71"
+        },
+        {
+          "status": "fulfilled",
+          "value": 504
+        },
+        {
+          "status": "fulfilled",
+          "value": "v73"
+        },
+        {
+          "status": "rejected",
+          "reason": "e74"
+        },
+        {
+          "status": "fulfilled",
+          "value": 525
+        },
+        {
+          "status": "fulfilled",
+          "value": "v76"
+        },
+        {
+          "status": "rejected",
+          "reason": "e77"
+        },
+        {
+          "status": "fulfilled",
+          "value": 546
+        },
+        {
+          "status": "fulfilled",
+          "value": "v79"
+        },
+        {
+          "status": "rejected",
+          "reason": "e80"
+        },
+        {
+          "status": "fulfilled",
+          "value": 567
+        },
+        {
+          "status": "fulfilled",
+          "value": "v82"
+        },
+        {
+          "status": "rejected",
+          "reason": "e83"
+        },
+        {
+          "status": "fulfilled",
+          "value": 588
+        },
+        {
+          "status": "fulfilled",
+          "value": "v85"
+        },
+        {
+          "status": "rejected",
+          "reason": "e86"
+        },
+        {
+          "status": "fulfilled",
+          "value": 609
+        },
+        {
+          "status": "fulfilled",
+          "value": "v88"
+        },
+        {
+          "status": "rejected",
+          "reason": "e89"
+        },
+        {
+          "status": "fulfilled",
+          "value": 630
+        },
+        {
+          "status": "fulfilled",
+          "value": "v91"
+        },
+        {
+          "status": "rejected",
+          "reason": "e92"
+        },
+        {
+          "status": "fulfilled",
+          "value": 651
+        },
+        {
+          "status": "fulfilled",
+          "value": "v94"
+        },
+        {
+          "status": "rejected",
+          "reason": "e95"
+        },
+        {
+          "status": "fulfilled",
+          "value": 672
+        },
+        {
+          "status": "fulfilled",
+          "value": "v97"
+        },
+        {
+          "status": "rejected",
+          "reason": "e98"
+        },
+        {
+          "status": "fulfilled",
+          "value": 693
+        }
+      ]
+    },
+    {
+      "input": {
+        "functions": [
+          {
+            "kind": "fulfilled",
+            "value": "",
+            "delay": 0
+          },
+          {
+            "kind": "rejected",
+            "reason": 13,
+            "delay": 25
+          },
+          {
+            "kind": "fulfilled",
+            "value": 0,
+            "delay": 12
+          },
+          {
+            "kind": "fulfilled",
+            "value": [
+              1
+            ],
+            "delay": 35
+          },
+          {
+            "kind": "rejected",
+            "reason": {
+              "code": 5
+            },
+            "delay": 22
+          },
+          {
+            "kind": "fulfilled",
+            "value": {
+              "a": true
+            },
+            "delay": 43
+          },
+          {
+            "kind": "fulfilled",
+            "value": false,
+            "delay": 18
+          },
+          {
+            "kind": "fulfilled",
+            "value": "",
+            "delay": 49
+          },
+          {
+            "kind": "fulfilled",
+            "value": 0,
+            "delay": 16
+          },
+          {
+            "kind": "fulfilled",
+            "value": "",
+            "delay": 11
+          },
+          {
+            "kind": "fulfilled",
+            "value": "",
+            "delay": 34
+          },
+          {
+            "kind": "rejected",
+            "reason": false,
+            "delay": 31
+          },
+          {
+            "kind": "fulfilled",
+            "value": 7,
+            "delay": 42
+          },
+          {
+            "kind": "fulfilled",
+            "value": false,
+            "delay": 21
+          },
+          {
+            "kind": "fulfilled",
+            "value": -3,
+            "delay": 8
+          },
+          {
+            "kind": "fulfilled",
+            "value": false,
+            "delay": 27
+          },
+          {
+            "kind": "fulfilled",
+            "value": -3,
+            "delay": 14
+          },
+          {
+            "kind": "fulfilled",
+            "value": 7,
+            "delay": 39
+          },
+          {
+            "kind": "fulfilled",
+            "value": false,
+            "delay": 44
+          },
+          {
+            "kind": "fulfilled",
+            "value": -3,
+            "delay": 11
+          },
+          {
+            "kind": "fulfilled",
+            "value": {
+              "a": true
+            },
+            "delay": 30
+          },
+          {
+            "kind": "fulfilled",
+            "value": null,
+            "delay": 9
+          },
+          {
+            "kind": "rejected",
+            "reason": null,
+            "delay": 24
+          },
+          {
+            "kind": "rejected",
+            "reason": false,
+            "delay": 27
+          },
+          {
+            "kind": "fulfilled",
+            "value": null,
+            "delay": 18
+          },
+          {
+            "kind": "fulfilled",
+            "value": null,
+            "delay": 1
+          },
+          {
+            "kind": "rejected",
+            "reason": "err",
+            "delay": 22
+          },
+          {
+            "kind": "fulfilled",
+            "value": {
+              "a": true
+            },
+            "delay": 21
+          },
+          {
+            "kind": "rejected",
+            "reason": {
+              "code": 5
+            },
+            "delay": 30
+          },
+          {
+            "kind": "fulfilled",
+            "value": {
+              "a": true
+            },
+            "delay": 33
+          },
+          {
+            "kind": "fulfilled",
+            "value": false,
+            "delay": 6
+          },
+          {
+            "kind": "rejected",
+            "reason": false,
+            "delay": 17
+          },
+          {
+            "kind": "fulfilled",
+            "value": 0,
+            "delay": 48
+          },
+          {
+            "kind": "fulfilled",
+            "value": 7,
+            "delay": 35
+          },
+          {
+            "kind": "fulfilled",
+            "value": {
+              "a": true
+            },
+            "delay": 42
+          },
+          {
+            "kind": "fulfilled",
+            "value": {
+              "a": true
+            },
+            "delay": 41
+          },
+          {
+            "kind": "fulfilled",
+            "value": -3,
+            "delay": 0
+          },
+          {
+            "kind": "fulfilled",
+            "value": false,
+            "delay": 39
+          },
+          {
+            "kind": "fulfilled",
+            "value": null,
+            "delay": 22
+          },
+          {
+            "kind": "fulfilled",
+            "value": {
+              "a": true
+            },
+            "delay": 37
+          }
+        ]
+      },
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": ""
+        },
+        {
+          "status": "rejected",
+          "reason": 13
+        },
+        {
+          "status": "fulfilled",
+          "value": 0
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            1
+          ]
+        },
+        {
+          "status": "rejected",
+          "reason": {
+            "code": 5
+          }
+        },
+        {
+          "status": "fulfilled",
+          "value": {
+            "a": true
+          }
+        },
+        {
+          "status": "fulfilled",
+          "value": false
+        },
+        {
+          "status": "fulfilled",
+          "value": ""
+        },
+        {
+          "status": "fulfilled",
+          "value": 0
+        },
+        {
+          "status": "fulfilled",
+          "value": ""
+        },
+        {
+          "status": "fulfilled",
+          "value": ""
+        },
+        {
+          "status": "rejected",
+          "reason": false
+        },
+        {
+          "status": "fulfilled",
+          "value": 7
+        },
+        {
+          "status": "fulfilled",
+          "value": false
+        },
+        {
+          "status": "fulfilled",
+          "value": -3
+        },
+        {
+          "status": "fulfilled",
+          "value": false
+        },
+        {
+          "status": "fulfilled",
+          "value": -3
+        },
+        {
+          "status": "fulfilled",
+          "value": 7
+        },
+        {
+          "status": "fulfilled",
+          "value": false
+        },
+        {
+          "status": "fulfilled",
+          "value": -3
+        },
+        {
+          "status": "fulfilled",
+          "value": {
+            "a": true
+          }
+        },
+        {
+          "status": "fulfilled",
+          "value": null
+        },
+        {
+          "status": "rejected",
+          "reason": null
+        },
+        {
+          "status": "rejected",
+          "reason": false
+        },
+        {
+          "status": "fulfilled",
+          "value": null
+        },
+        {
+          "status": "fulfilled",
+          "value": null
+        },
+        {
+          "status": "rejected",
+          "reason": "err"
+        },
+        {
+          "status": "fulfilled",
+          "value": {
+            "a": true
+          }
+        },
+        {
+          "status": "rejected",
+          "reason": {
+            "code": 5
+          }
+        },
+        {
+          "status": "fulfilled",
+          "value": {
+            "a": true
+          }
+        },
+        {
+          "status": "fulfilled",
+          "value": false
+        },
+        {
+          "status": "rejected",
+          "reason": false
+        },
+        {
+          "status": "fulfilled",
+          "value": 0
+        },
+        {
+          "status": "fulfilled",
+          "value": 7
+        },
+        {
+          "status": "fulfilled",
+          "value": {
+            "a": true
+          }
+        },
+        {
+          "status": "fulfilled",
+          "value": {
+            "a": true
+          }
+        },
+        {
+          "status": "fulfilled",
+          "value": -3
+        },
+        {
+          "status": "fulfilled",
+          "value": false
+        },
+        {
+          "status": "fulfilled",
+          "value": null
+        },
+        {
+          "status": "fulfilled",
+          "value": {
+            "a": true
+          }
+        }
+      ]
+    }
+  ]
+}

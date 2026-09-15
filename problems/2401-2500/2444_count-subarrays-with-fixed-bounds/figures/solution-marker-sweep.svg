@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <!-- nums = [1,3,5,2,7,5]; cells x = 60 + 96i, w 88 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="40" width="88" height="40"/><rect x="156" y="40" width="88" height="40"/>
+    <rect x="252" y="40" width="88" height="40"/><rect x="348" y="40" width="88" height="40"/>
+    <rect x="444" y="40" width="88" height="40" fill="#e3e7eb"/><rect x="540" y="40" width="88" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="104" y="65">1</text><text x="200" y="65">3</text><text x="296" y="65">5</text>
+    <text x="392" y="65">2</text><text x="488" y="65" fill="#5c6b76">7</text><text x="584" y="65">5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="104" y="96">minK</text><text x="296" y="96">maxK</text><text x="488" y="96">out of range</text><text x="584" y="96">maxK</text>
+  </g>
+  <!-- marker rows for i = 2, 3, 4, 5 -->
+  <g font-size="12" fill="#5c6b76">
+    <text x="30" y="142">i = 2</text><text x="30" y="202">i = 3</text>
+    <text x="30" y="262">i = 4</text><text x="30" y="322">i = 5</text>
+  </g>
+  <!-- i=2: min@0, max@2, valid start s=0 -->
+  <line x1="104" y1="132" x2="104" y2="146" stroke="#4169E1" stroke-width="2.4"/>
+  <text x="104" y="158" text-anchor="middle" fill="#4169E1">min</text>
+  <line x1="296" y1="132" x2="296" y2="146" stroke="#4169E1" stroke-width="2.4"/>
+  <text x="296" y="158" text-anchor="middle" fill="#4169E1">max</text>
+  <path d="M 60 172 h 88 v 6 h -88 v -6" fill="none" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="640" y="152" fill="#4169E1" font-weight="600" font-size="12.5">+1</text>
+  <!-- i=3: min@0, max@2, valid start s=0 -->
+  <line x1="104" y1="192" x2="104" y2="206" stroke="#4169E1" stroke-width="2.4"/>
+  <text x="104" y="218" text-anchor="middle" fill="#4169E1">min</text>
+  <line x1="296" y1="192" x2="296" y2="206" stroke="#4169E1" stroke-width="2.4"/>
+  <text x="296" y="218" text-anchor="middle" fill="#4169E1">max</text>
+  <path d="M 60 232 h 88 v 6 h -88 v -6" fill="none" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="640" y="212" fill="#4169E1" font-weight="600" font-size="12.5">+1</text>
+  <!-- i=4: bad@4 -->
+  <line x1="488" y1="252" x2="488" y2="266" stroke="#8a97a2" stroke-width="2.4"/>
+  <text x="488" y="278" text-anchor="middle" fill="#8a97a2">bad</text>
+  <text x="640" y="272" fill="#5c6b76" font-weight="600" font-size="12.5">+0</text>
+  <!-- i=5: min@0, max@5, bad@4 -->
+  <line x1="104" y1="312" x2="104" y2="326" stroke="#4169E1" stroke-width="2.4"/>
+  <text x="104" y="338" text-anchor="middle" fill="#4169E1" font-size="11.5">min</text>
+  <line x1="584" y1="312" x2="584" y2="326" stroke="#4169E1" stroke-width="2.4"/>
+  <text x="584" y="338" text-anchor="middle" fill="#4169E1" font-size="11.5">max</text>
+  <line x1="488" y1="312" x2="488" y2="326" stroke="#8a97a2" stroke-width="2.4"/>
+  <text x="488" y="338" text-anchor="middle" fill="#8a97a2" font-size="11.5">bad</text>
+  <text x="640" y="332" fill="#5c6b76" font-weight="600" font-size="12.5">+0</text>
+  <!-- side note -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="200" y="286">The out-of-range 7 sets last_bad,</text>
+    <text x="200" y="302">so no later start can reach the 1</text>
+    <text x="200" y="318">at index 0 — total stays 1 + 1 = 2.</text>
+  </g>
+</svg>

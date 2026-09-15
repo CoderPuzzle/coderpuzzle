@@ -1,0 +1,434 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(1,'The Glass Harbor','M. Ellison','Fiction',180),\n(2,'A Court of Sparrows','H. Marlowe','Fiction',281),\n(3,'Nineteen Moons','T. Varga','Dystopian',328),\n(4,'Letters to Winterport','J. Calloway','Romance',432),\n(5,'The Lantern House','S. Devlin','Fiction',277);\n\nINSERT INTO ReadingSessions VALUES\n(1,1,'Anya',50,5),(2,1,'Bram',60,1),(3,1,'Cleo',40,4),\n(4,1,'Dario',30,2),(5,1,'Esme',45,5),(6,2,'Farid',80,4),\n(7,2,'Gwen',70,4),(8,2,'Hugo',90,5),(9,2,'Iris',60,4),\n(10,2,'Jonas',75,4),(11,3,'Katya',100,2),(12,3,'Lior',120,1),\n(13,3,'Mira',80,2),(14,3,'Noor',90,1),(15,3,'Odile',110,4),\n(16,3,'Piero',95,5),(17,4,'Quinlan',150,3),(18,4,'Rosa',140,3),\n(19,5,'Stellan',80,1),(20,5,'Tamara',70,2);"
+      ],
+      "expected": [
+        [
+          1,
+          "The Glass Harbor",
+          "M. Ellison",
+          "Fiction",
+          180,
+          4,
+          1.0
+        ],
+        [
+          3,
+          "Nineteen Moons",
+          "T. Varga",
+          "Dystopian",
+          328,
+          4,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(10,'Salt Meadow','A. Brandt','Memoir',210),\n(11,'Iron Veil','P. Castellan','Thriller',356),\n(12,'June Wildfire','R. Ashby','Romance',298);\n\nINSERT INTO ReadingSessions VALUES\n(101,10,'Noa',70,3),(102,10,'Owen',65,3),(103,10,'Petra',80,3),\n(104,10,'Ravi',55,3),(105,10,'Sena',72,3),(106,11,'Tobias',90,5),\n(107,11,'Uma',85,1),(108,11,'Viktor',88,5),(109,11,'Wren',92,1),\n(110,12,'Ximena',60,4),(111,12,'Yusuf',75,5),(112,12,'Zora',68,4),\n(113,12,'Arlo',82,5),(114,12,'Beatrix',77,4),(115,12,'Caspian',71,5);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(20,'Quiet Anchors','N. Okafor','Literary',264),\n(21,'Salt and Cedar','V. Lindqvist','Saga',342),\n(22,'The Paper Bridge','E. Marchetti','Essays',198);\n\nINSERT INTO ReadingSessions VALUES\n(201,20,'Aditi',50,5),(202,20,'Bruno',62,1),(203,20,'Cynthia',44,4),\n(204,20,'Desmond',38,2),(205,20,'Elif',51,5),(206,20,'Falk',47,1),\n(207,21,'Grete',84,4),(208,21,'Hasan',76,2),(209,21,'Imogen',91,3),\n(210,21,'Jasper',69,4),(211,21,'Klara',73,2),(212,22,'Lev',30,1),\n(213,22,'Maren',26,2),(214,22,'Nils',34,3),(215,22,'Ottilie',41,4),\n(216,22,'Pavel',29,5),(217,22,'Queenie',33,2),(218,22,'Ruben',37,3),\n(219,22,'Signe',45,4),(220,22,'Terence',31,5),(221,22,'Ulrika',28,3);"
+      ],
+      "expected": [
+        [
+          20,
+          "Quiet Anchors",
+          "N. Okafor",
+          "Literary",
+          264,
+          4,
+          1.0
+        ],
+        [
+          21,
+          "Salt and Cedar",
+          "V. Lindqvist",
+          "Saga",
+          342,
+          2,
+          0.8
+        ],
+        [
+          22,
+          "The Paper Bridge",
+          "E. Marchetti",
+          "Essays",
+          198,
+          4,
+          0.7
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(30,'Copperkettle Row','D. Whitcombe','Historical',412);\n\nINSERT INTO ReadingSessions VALUES\n(301,30,'Alva',120,2),(302,30,'Boris',105,4),(303,30,'Carys',98,3),\n(304,30,'Dilan',132,2),(305,30,'Enzo',111,5);"
+      ],
+      "expected": [
+        [
+          30,
+          "Copperkettle Row",
+          "D. Whitcombe",
+          "Historical",
+          412,
+          3,
+          0.8
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(40,'Marble Season','G. Petrov','Literary',305),\n(41,'Nickel Tour','H. Quinnell','Travel',244),\n(42,'Oxbow Line','I. Rademacher','History',388);\n\nINSERT INTO ReadingSessions VALUES\n(401,40,'Adele',60,4),(402,40,'Benno',55,2),(403,40,'Corin',70,3),\n(404,40,'Delfina',48,3),(405,40,'Emeric',64,4),(406,40,'Freya',59,2),\n(407,40,'Gideon',66,3),(408,41,'Halina',52,4),(409,41,'Ivo',58,2),\n(410,41,'Junko',61,3),(411,41,'Kwame',49,2),(412,41,'Lorena',71,4),\n(413,41,'Milos',57,3),(414,41,'Nadia',63,2),(415,42,'Orsola',80,4),\n(416,42,'Pieter',74,2),(417,42,'Rania',86,3),(418,42,'Stefan',79,3),\n(419,42,'Thalia',83,4);"
+      ],
+      "expected": [
+        [
+          41,
+          "Nickel Tour",
+          "H. Quinnell",
+          "Travel",
+          244,
+          2,
+          0.71
+        ],
+        [
+          42,
+          "Oxbow Line",
+          "I. Rademacher",
+          "History",
+          388,
+          2,
+          0.6
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(50,'Petit Four','J. Solberg','Cookery',176),\n(51,'Quarterdeck','K. Tanaka','Nautical',320),\n(52,'Riverlight','L. Umberson','Poetry',144);\n\nINSERT INTO ReadingSessions VALUES\n(501,50,'Ulla',40,5),(502,50,'Vance',36,1),(503,50,'Wanda',44,5),\n(504,50,'Xavier',39,1),(505,51,'Yolanda',88,4),(506,51,'Zeke',76,4),\n(507,51,'Anton',81,2),(508,51,'Bettina',93,3),(509,51,'Conrad',87,4),\n(510,52,'Delphine',25,3),(511,52,'Emory',31,3),\n(512,52,'Francine',22,3),(513,52,'Gustav',28,3),(514,52,'Hedy',35,3),\n(515,52,'Ignacio',24,3);"
+      ],
+      "expected": [
+        [
+          51,
+          "Quarterdeck",
+          "K. Tanaka",
+          "Nautical",
+          320,
+          2,
+          0.8
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(60,'Skyward Only','M. Vasquez','Adventure',289),\n(61,'Sunken Choir','N. Walsh','Gothic',331),\n(62,'Silver Fir','O. Zeller','Nature',217);\n\nINSERT INTO ReadingSessions VALUES\n(601,60,'Paloma',90,5),(602,60,'Quentin',78,4),\n(603,60,'Rosalind',84,5),(604,60,'Soren',96,4),(605,60,'Tabitha',82,5),\n(606,61,'Ulric',70,2),(607,61,'Verity',66,1),(608,61,'Wendel',73,2),\n(609,61,'Xenia',69,1),(610,61,'York',75,2),(611,62,'Zelda',54,4),\n(612,62,'Ambrose',48,2),(613,62,'Berit',61,3),(614,62,'Cyrus',57,4),\n(615,62,'Dorothea',52,2);"
+      ],
+      "expected": [
+        [
+          62,
+          "Silver Fir",
+          "O. Zeller",
+          "Nature",
+          217,
+          2,
+          0.8
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(70,'Winter Harbor','Q. Arvidsson','Coastal',274),\n(71,'Amber Signal','R. Blomqvist','Mystery',258),\n(72,'Copper Vale','S. Cronquist','Western',301);\n\nINSERT INTO ReadingSessions VALUES\n(701,70,'Aksel',46,5),(702,70,'Brygida',53,1),(703,70,'Cem',41,4),\n(704,70,'Danuta',58,2),(705,70,'Emrys',49,5),(706,71,'Fabian',37,4),\n(707,71,'Gilda',43,2),(708,71,'Horst',39,4),(709,71,'Ines',45,2),\n(710,71,'Joachim',51,4),(711,72,'Kirsten',67,5),(712,72,'Laszlo',72,1),\n(713,72,'Magda',63,5),(714,72,'Nolan',78,1),(715,72,'Oda',69,5);"
+      ],
+      "expected": [
+        [
+          70,
+          "Winter Harbor",
+          "Q. Arvidsson",
+          "Coastal",
+          274,
+          4,
+          1.0
+        ],
+        [
+          72,
+          "Copper Vale",
+          "S. Cronquist",
+          "Western",
+          301,
+          4,
+          1.0
+        ],
+        [
+          71,
+          "Amber Signal",
+          "R. Blomqvist",
+          "Mystery",
+          258,
+          2,
+          1.0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(80,'Tidewater Atlas','T. Duval','Cartography',196),\n(81,'Umbrella Steps','U. Engelhart','Urbanism',232),\n(82,'Velvet Hour','V. Fontaine','Romance',268);\n\nINSERT INTO ReadingSessions VALUES\n(801,80,'Wanda',44,4),(802,80,'Xander',39,4),(803,80,'Yasmin',47,2),\n(804,80,'Zeno',41,2),(805,80,'Anselm',36,3),(806,80,'Briony',50,3),\n(807,81,'Cato',58,4),(808,81,'Dagmar',62,2),(809,81,'Elmo',55,4),\n(810,81,'Filippa',67,2),(811,81,'Gerhard',71,4),(812,81,'Hanne',60,2),\n(813,81,'Ingmar',64,3),(814,81,'Jolanta',57,3),(815,81,'Kasimir',69,3),\n(816,82,'Lucienne',82,4),(817,82,'Marcel',77,2),(818,82,'Nadja',91,3),\n(819,82,'Octave',85,4),(820,82,'Perpetua',79,2);"
+      ],
+      "expected": [
+        [
+          82,
+          "Velvet Hour",
+          "V. Fontaine",
+          "Romance",
+          268,
+          2,
+          0.8
+        ],
+        [
+          81,
+          "Umbrella Steps",
+          "U. Engelhart",
+          "Urbanism",
+          232,
+          2,
+          0.67
+        ],
+        [
+          80,
+          "Tidewater Atlas",
+          "T. Duval",
+          "Cartography",
+          196,
+          2,
+          0.67
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(90,'Windward Mark','W. Gallacher','Nautical',245),\n(91,'Xebec Route','X. Halloran','Trade',273),\n(92,'Yearling Marsh','Y. Ivansson','Ecology',208),\n(93,'Zephyr Yard','Z. Jankowiak','Craft',187),\n(94,'Applegate Row','A. Kaminski','Domestic',226);\n\nINSERT INTO ReadingSessions VALUES\n(900,90,'Basia',66,5),(901,90,'Cedric',71,1),(902,90,'Damaris',59,4),\n(903,90,'Emil',63,2),(904,90,'Franca',74,5),(905,90,'Goran',68,3),\n(910,91,'Henri',52,5),(911,91,'Ilse',47,1),(912,91,'Jorge',56,4),\n(913,91,'Kerstin',49,2),(914,91,'Ludwig',61,5),(915,91,'Meret',54,3),\n(916,91,'Norbert',58,3),(917,91,'Odalys',50,4),\n(918,91,'Pernille',65,2),(920,92,'Quirin',38,4),(921,92,'Rosa',33,2),\n(922,92,'Silas',42,4),(923,92,'Trude',29,2),(924,92,'Ugo',45,3),\n(925,92,'Valentin',36,4),(926,92,'Waltraud',40,2),\n(927,92,'Ximena',31,3),(930,93,'Yannick',57,4),(931,93,'Zaida',51,3),\n(932,93,'Alvaro',62,2),(933,93,'Bettine',48,3),\n(934,93,'Cornelius',70,4),(940,94,'Dorette',43,4),\n(941,94,'Erwin',38,2),(942,94,'Frieda',47,4),(943,94,'Gunter',41,2),\n(944,94,'Hesper',52,3),(945,94,'Isolde',36,4),(946,94,'Janek',45,2),\n(947,94,'Kolbjorn',50,3);"
+      ],
+      "expected": [
+        [
+          90,
+          "Windward Mark",
+          "W. Gallacher",
+          "Nautical",
+          245,
+          4,
+          0.83
+        ],
+        [
+          91,
+          "Xebec Route",
+          "X. Halloran",
+          "Trade",
+          273,
+          4,
+          0.78
+        ],
+        [
+          92,
+          "Yearling Marsh",
+          "Y. Ivansson",
+          "Ecology",
+          208,
+          2,
+          0.75
+        ],
+        [
+          94,
+          "Applegate Row",
+          "A. Kaminski",
+          "Domestic",
+          226,
+          2,
+          0.75
+        ],
+        [
+          93,
+          "Zephyr Yard",
+          "Z. Jankowiak",
+          "Craft",
+          187,
+          2,
+          0.6
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(100,'Ashgrove','B. Lindeman','Rural',214),\n(101,'Birchwood Gate','C. Mortensen','Village',189),\n(102,'Cloverfield','D. Nyquist','Pastoral',241);\n\nINSERT INTO ReadingSessions VALUES\n(1001,100,'Obadiah',61,4),(1002,100,'Primrose',55,2),\n(1003,100,'Quirina',68,4),(1004,100,'Rurik',49,2),\n(1005,100,'Seraphine',72,4),(1006,100,'Tomasin',58,2),\n(1007,101,'Ulf',44,4),(1008,101,'Veera',39,3),\n(1009,101,'Wilhelmina',51,2),(1010,101,'Xaver',47,3),\n(1011,101,'Yvette',42,3),(1012,102,'Zephaniah',77,4),\n(1013,102,'Alaric',83,4),(1014,102,'Blanca',71,4),\n(1015,102,'Caesar',89,4),(1016,102,'Delia',74,2),\n(1017,102,'Edvard',80,2),(1018,102,'Flora',68,3),\n(1019,102,'Godfrey',92,3);"
+      ],
+      "expected": [
+        [
+          100,
+          "Ashgrove",
+          "B. Lindeman",
+          "Rural",
+          214,
+          2,
+          1.0
+        ],
+        [
+          102,
+          "Cloverfield",
+          "D. Nyquist",
+          "Pastoral",
+          241,
+          2,
+          0.75
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(110,'Dusk Ferry','E. Overgaard','Coastal',233),\n(111,'Ember Court','F. Palmieri','Courtly',297),\n(112,'Foxglove Ward','G. Ricci','Medical',254),\n(113,'Granite Loop','H. Santoro','Industry',316);\n\nINSERT INTO ReadingSessions VALUES\n(1101,110,'Ida',52,5),(1102,110,'Jonatan',46,1),\n(1103,110,'Karolina',58,3),(1104,110,'Leander',41,4),\n(1105,110,'Matilde',49,2),(1106,111,'Nikolai',63,4),\n(1107,111,'Olga',57,2),(1108,111,'Pellegrino',70,3),\n(1109,111,'Roswitha',66,5),(1110,111,'Salvatore',60,2),\n(1111,112,'Teodoro',44,4),(1112,112,'Urszula',38,2),\n(1113,112,'Vinzenz',50,3),(1114,112,'Wilma',47,3),\n(1115,112,'Xiomara',41,4),(1116,113,'Yesfir',76,5),\n(1117,113,'Zacharias',69,1),(1118,113,'Agostino',82,3),\n(1119,113,'Belinda',74,3),(1120,113,'Christoph',88,4);"
+      ],
+      "expected": [
+        [
+          111,
+          "Ember Court",
+          "F. Palmieri",
+          "Courtly",
+          297,
+          3,
+          0.8
+        ],
+        [
+          110,
+          "Dusk Ferry",
+          "E. Overgaard",
+          "Coastal",
+          233,
+          4,
+          0.8
+        ],
+        [
+          113,
+          "Granite Loop",
+          "H. Santoro",
+          "Industry",
+          316,
+          4,
+          0.6
+        ],
+        [
+          112,
+          "Foxglove Ward",
+          "G. Ricci",
+          "Medical",
+          254,
+          2,
+          0.6
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(130,'Harborlight','I. Thorsen','Coastal',228),\n(127,'Inkwell Sons','J. Uberti','Family Saga',354),\n(134,'Juniper Rain','K. Valdma','Lyric',167),\n(125,'Kestrel Rising','L. Wenzel','Falconry',205),\n(131,'Lantern Field','M. Yi','Rural',249),\n(136,'Moss Cottage','N. Zoppi','Cottage',178);\n\nINSERT INTO ReadingSessions VALUES\n(1301,130,'Adalbert',48,1),(1302,127,'Bozena',90,4),\n(1303,131,'Casimir',55,2),(1304,127,'Dragica',84,3),\n(1305,130,'Emerentia',52,5),(1306,136,'Faustino',37,3),\n(1307,127,'Gunhild',78,2),(1308,131,'Heidrun',61,2),\n(1309,130,'Isaias',45,1),(1310,136,'Johanna',41,3),\n(1311,127,'Kalevi',95,4),(1312,131,'Ludovica',58,2),\n(1313,130,'Meinard',50,5),(1314,136,'Norberta',33,4),\n(1315,127,'Otger',87,3),(1316,131,'Philippa',64,4),\n(1317,130,'Reinhild',47,3),(1318,136,'Sigismund',29,4),\n(1319,127,'Tancred',81,2),(1320,131,'Ursula',53,4),\n(1321,136,'Vincenza',39,4),(1322,127,'Waldtraut',76,2),\n(1323,131,'Xaverine',57,4),(1324,136,'Ysolde',35,3),\n(1325,127,'Zdislav',92,4),(1326,131,'Amabilia',62,2),\n(1327,136,'Bertram',43,3),(1328,127,'Christiane',88,2),\n(1329,125,'Dietlinde',71,5),(1330,125,'Ekkehard',66,1),\n(1331,125,'Frideborg',74,5),(1332,125,'Gerlind',69,1),\n(1333,134,'Hartmann',26,3),(1334,134,'Irmgard',31,3),\n(1335,134,'Judith',22,4),(1336,134,'Kaspar',28,3),\n(1337,134,'Lambert',24,3),(1338,136,'Mechthild',32,4),\n(1339,136,'Norfried',27,4),(1340,136,'Odilia',30,3);"
+      ],
+      "expected": [
+        [
+          131,
+          "Lantern Field",
+          "M. Yi",
+          "Rural",
+          249,
+          2,
+          1.0
+        ],
+        [
+          130,
+          "Harborlight",
+          "I. Thorsen",
+          "Coastal",
+          228,
+          4,
+          0.8
+        ],
+        [
+          127,
+          "Inkwell Sons",
+          "J. Uberti",
+          "Family Saga",
+          354,
+          2,
+          0.78
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(140,'The Zebra Manifesto','Ondrejka Pellas','Speculative Fiction',512),\n(141,'Yarrow Code','Bright Wenlock','Spy Thriller',388),\n(142,'Xylophone Road','Marguerite Odell','Musical Memoir',276),\n(143,'Whistlestop South','Harlan Duquesne','Railway History',1024);\n\nINSERT INTO ReadingSessions VALUES\n(1401,140,'Perpetua Sims',240,4),(1402,140,'Roald Kirby',210,2),\n(1403,140,'Senalda Cruz',265,3),(1404,140,'Tobias Wren',225,4),\n(1405,140,'Una Doyle',250,2),(1406,141,'Vidal Marsh',190,4),\n(1407,141,'Wanda Ellery',175,2),(1408,141,'Xanthus Reed',205,4),\n(1409,141,'Ynez Fuentes',160,2),(1410,141,'Zabulon Grey',195,4),\n(1411,142,'Affera Nasri',130,5),(1412,142,'Barnaby Quill',115,1),\n(1413,142,'Clementine Ayer',140,5),(1414,142,'Desmond Pike',125,1),\n(1415,142,'Elspeth Muir',135,5),(1416,142,'Ferruccio Bianchi',120,1),\n(1417,142,'Goldie Zaman',145,3),(1418,143,'Ronan Bosch',310,4),\n(1419,143,'Immacolata Rossi',280,2),(1420,143,'Jaakko Hiltunen',330,3),\n(1421,143,'Khadija Osei',300,4),(1422,143,'Leandro Cabral',290,2);"
+      ],
+      "expected": [
+        [
+          141,
+          "Yarrow Code",
+          "Bright Wenlock",
+          "Spy Thriller",
+          388,
+          2,
+          1.0
+        ],
+        [
+          142,
+          "Xylophone Road",
+          "Marguerite Odell",
+          "Musical Memoir",
+          276,
+          4,
+          0.86
+        ],
+        [
+          143,
+          "Whistlestop South",
+          "Harlan Duquesne",
+          "Railway History",
+          1024,
+          2,
+          0.8
+        ],
+        [
+          140,
+          "The Zebra Manifesto",
+          "Ondrejka Pellas",
+          "Speculative Fiction",
+          512,
+          2,
+          0.8
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Books VALUES\n(150,'Old Millwright','P. Alderman','Craft History',262),\n(151,'Pale Combe','Q. Brightwell','Moorland',198),\n(152,'Quill and Compass','R. Cavendish','Exploration',340),\n(153,'Quince Season','S. Delamere','Orchard',155);\n\nINSERT INTO ReadingSessions VALUES\n(1501,150,'Tamsin Brice',58,2),(1502,150,'Ulric Vance',64,4),\n(1503,150,'Verity Ansel',49,2),(1504,150,'Wilmot Crane',71,4),\n(1505,150,'Xenia Port',55,2),(1506,151,'Yorick Bell',42,4),\n(1507,151,'Zilla Marsh',38,3),(1508,151,'Ambrose Nye',45,4),\n(1509,151,'Bridewell',40,3),(1510,151,'Crowder',37,2),\n(1511,152,'Dunmore',80,4),(1512,152,'Ellery Shaw',74,3),\n(1513,152,'Fairweather',88,3),(1514,152,'Griselda',77,3),\n(1515,152,'Hollis',83,2),(1516,153,'Ivor Gage',31,3),\n(1517,153,'Jessamine',28,3),(1518,153,'Kenelm',35,3),\n(1519,153,'Larkin',26,3),(1520,153,'Merrow',33,3);"
+      ],
+      "expected": [
+        [
+          150,
+          "Old Millwright",
+          "P. Alderman",
+          "Craft History",
+          262,
+          2,
+          1.0
+        ],
+        [
+          151,
+          "Pale Combe",
+          "Q. Brightwell",
+          "Moorland",
+          198,
+          2,
+          0.6
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3305,
+  "slug": "count-of-substrings-containing-every-vowel-and-k-consonants-i",
+  "title": "Count of Substrings Containing Every Vowel and K Consonants I",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countOfSubstrings",
+    "parameters": [
+      {
+        "name": "word",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countOfSubstrings",
+      "rust": "count_of_substrings",
+      "typescript": "countOfSubstrings"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

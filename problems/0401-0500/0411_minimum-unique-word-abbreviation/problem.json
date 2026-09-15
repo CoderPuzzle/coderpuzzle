@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 411,
+  "slug": "minimum-unique-word-abbreviation",
+  "title": "Minimum Unique Word Abbreviation",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minAbbreviation",
+    "parameters": [
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "dictionary",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "minAbbreviation",
+      "rust": "min_abbreviation",
+      "typescript": "minAbbreviation"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

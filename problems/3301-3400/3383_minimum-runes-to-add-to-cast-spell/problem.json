@@ -1,0 +1,86 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3383,
+  "slug": "minimum-runes-to-add-to-cast-spell",
+  "title": "Minimum Runes to Add to Cast Spell",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Graph",
+    "Depth-First Search",
+    "Topological Sort"
+  ],
+  "topics": [
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Topological Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minRunesToAdd",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "crystals",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "flowFrom",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "flowTo",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minRunesToAdd",
+      "rust": "min_runes_to_add",
+      "typescript": "minRunesToAdd"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

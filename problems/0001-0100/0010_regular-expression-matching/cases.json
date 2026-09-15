@@ -1,0 +1,174 @@
+{
+  "public": [
+    {
+      "input": [
+        "aa",
+        "a"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "aa",
+        "a*"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "ab",
+        ".*"
+      ],
+      "expected": true
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "aab",
+        "c*a*b"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "mississippi",
+        "mis*is*p*."
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "a",
+        ".*.*.*."
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "aaaaaaaaaaaaaaaab",
+        "a*a*a*a*a*a*a*a*a*a*c"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "ab",
+        ".*c"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "abc",
+        "a***abc"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "a",
+        "ab*"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "bb",
+        "b*"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abcd",
+        "d*"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "aaa",
+        "ab*a*c*a"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "bbbba",
+        ".*a*a"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "bacaaaa",
+        "c."
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "cccacbabc",
+        "a*bc.bb.b*c"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "cc",
+        "a.c.ac*a.bc"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "abcacbaba",
+        "b.*b"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "caaaaabcb",
+        ".a"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "bca",
+        "cb*.bab"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "bcbabcba",
+        "a*b*"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "aaaabaa",
+        "bb*c.bc"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "ba",
+        "a*ca*acb..c"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "bbbcaaa",
+        "..bcbc"
+      ],
+      "expected": false
+    }
+  ]
+}

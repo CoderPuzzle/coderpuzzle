@@ -1,0 +1,123 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1476,
+  "slug": "subrectangle-queries",
+  "title": "Subrectangle Queries",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Design",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Design",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "SubrectangleQueries",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "rectangle",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 64
+              }
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "updateSubrectangle",
+        "parameters": [
+          {
+            "name": "row1",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "col1",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "row2",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "col2",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "newValue",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        ]
+      },
+      {
+        "name": "getValue",
+        "parameters": [
+          {
+            "name": "row",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "col",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "comparison": "exact",
+    "entrypoints": {
+      "rust.updateSubrectangle": "update_subrectangle",
+      "rust.getValue": "get_value"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

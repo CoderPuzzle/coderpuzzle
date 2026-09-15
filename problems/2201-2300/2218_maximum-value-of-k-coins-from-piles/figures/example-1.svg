@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 192" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- piles = [[1,100,3],[7,8,9]], k = 2: the three ways to take 2 coins -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <!-- panel 1: both coins from pile 0 -->
+    <rect x="52" y="44" width="64" height="26" rx="13" fill="#e6ecfb" stroke="#4169E1"/>
+    <rect x="52" y="78" width="64" height="26" rx="13" fill="#e6ecfb" stroke="#4169E1"/>
+    <rect x="52" y="112" width="64" height="26" rx="13" fill="#ffffff"/>
+    <rect x="140" y="44" width="64" height="26" rx="13" fill="#ffffff"/>
+    <rect x="140" y="78" width="64" height="26" rx="13" fill="#ffffff"/>
+    <rect x="140" y="112" width="64" height="26" rx="13" fill="#ffffff"/>
+    <!-- panel 2: one coin from each pile -->
+    <rect x="252" y="44" width="64" height="26" rx="13" fill="#e6ecfb" stroke="#4169E1"/>
+    <rect x="252" y="78" width="64" height="26" rx="13" fill="#ffffff"/>
+    <rect x="252" y="112" width="64" height="26" rx="13" fill="#ffffff"/>
+    <rect x="340" y="44" width="64" height="26" rx="13" fill="#e6ecfb" stroke="#4169E1"/>
+    <rect x="340" y="78" width="64" height="26" rx="13" fill="#ffffff"/>
+    <rect x="340" y="112" width="64" height="26" rx="13" fill="#ffffff"/>
+    <!-- panel 3: both coins from pile 1 -->
+    <rect x="452" y="44" width="64" height="26" rx="13" fill="#ffffff"/>
+    <rect x="452" y="78" width="64" height="26" rx="13" fill="#ffffff"/>
+    <rect x="452" y="112" width="64" height="26" rx="13" fill="#ffffff"/>
+    <rect x="540" y="44" width="64" height="26" rx="13" fill="#e6ecfb" stroke="#4169E1"/>
+    <rect x="540" y="78" width="64" height="26" rx="13" fill="#e6ecfb" stroke="#4169E1"/>
+    <rect x="540" y="112" width="64" height="26" rx="13" fill="#ffffff"/>
+  </g>
+  <!-- coin values -->
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="84" y="62">1</text>
+    <text x="84" y="96">100</text>
+    <text x="84" y="130">3</text>
+    <text x="172" y="62">7</text>
+    <text x="172" y="96">8</text>
+    <text x="172" y="130">9</text>
+    <text x="284" y="62">1</text>
+    <text x="284" y="96">100</text>
+    <text x="284" y="130">3</text>
+    <text x="372" y="62">7</text>
+    <text x="372" y="96">8</text>
+    <text x="372" y="130">9</text>
+    <text x="484" y="62">1</text>
+    <text x="484" y="96">100</text>
+    <text x="484" y="130">3</text>
+    <text x="572" y="62">7</text>
+    <text x="572" y="96">8</text>
+    <text x="572" y="130">9</text>
+  </g>
+  <g fill="#5c6b76" text-anchor="middle" font-size="12">
+    <text x="84" y="34">pile 0</text>
+    <text x="172" y="34">pile 1</text>
+  </g>
+  <g text-anchor="middle" font-size="13.5">
+    <text x="128" y="168" fill="#1a2026">total = 1 + 100 = <tspan fill="#4169E1" font-weight="700">101</tspan></text>
+    <text x="328" y="168" fill="#1a2026">total = 1 + 7 = <tspan fill="#4169E1" font-weight="700">8</tspan></text>
+    <text x="528" y="168" fill="#1a2026">total = 7 + 8 = <tspan fill="#4169E1" font-weight="700">15</tspan></text>
+    <text x="320" y="188" fill="#5c6b76">the three ways to take k = 2 coins; the best is 101</text>
+  </g>
+</svg>

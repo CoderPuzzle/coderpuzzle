@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 4006,
+  "slug": "count-valid-prefixes",
+  "title": "Count Valid Prefixes",
+  "difficulty": "Easy",
+  "tags": [
+    "String",
+    "Simulation"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countValidPrefixes",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countValidPrefixes",
+      "rust": "count_valid_prefixes",
+      "typescript": "countValidPrefixes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

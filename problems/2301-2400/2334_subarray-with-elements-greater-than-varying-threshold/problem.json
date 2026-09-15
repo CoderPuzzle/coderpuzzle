@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2334,
+  "slug": "subarray-with-elements-greater-than-varying-threshold",
+  "title": "Subarray With Elements Greater Than Varying Threshold",
+  "difficulty": "Hard",
+  "tags": [
+    "Monotonic Stack",
+    "Stack"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Union-Find",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "validSubarraySize",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "threshold",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "validSubarraySize",
+      "rust": "valid_subarray_size",
+      "typescript": "validSubarraySize"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

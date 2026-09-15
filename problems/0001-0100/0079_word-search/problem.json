@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 79,
+  "slug": "word-search",
+  "title": "Word Search",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Depth-First Search",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Depth-First Search",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "exist",
+    "parameters": [
+      {
+        "name": "board",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "word",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "exist",
+      "rust": "exist",
+      "typescript": "exist"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

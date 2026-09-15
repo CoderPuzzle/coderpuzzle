@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1496,
+  "slug": "path-crossing",
+  "title": "Path Crossing",
+  "difficulty": "Easy",
+  "tags": [
+    "Hash Table",
+    "String"
+  ],
+  "topics": [
+    "Hash Table",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "isPathCrossing",
+    "parameters": [
+      {
+        "name": "path",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "isPathCrossing",
+      "rust": "is_path_crossing",
+      "typescript": "isPathCrossing"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

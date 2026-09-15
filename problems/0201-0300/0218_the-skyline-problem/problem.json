@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 218,
+  "slug": "the-skyline-problem",
+  "title": "The Skyline Problem",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Heap (Priority Queue)",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Divide and Conquer",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Sweep Line",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getSkyline",
+    "parameters": [
+      {
+        "name": "buildings",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "getSkyline",
+      "rust": "get_skyline",
+      "typescript": "getSkyline"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

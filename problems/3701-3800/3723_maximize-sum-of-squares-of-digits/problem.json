@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3723,
+  "slug": "maximize-sum-of-squares-of-digits",
+  "title": "Maximize Sum of Squares of Digits",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Greedy"
+  ],
+  "topics": [
+    "Math",
+    "Greedy"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxSumOfSquares",
+    "parameters": [
+      {
+        "name": "num",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "sum",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "maxSumOfSquares",
+      "rust": "max_sum_of_squares",
+      "typescript": "maxSumOfSquares"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

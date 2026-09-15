@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1178,
+  "slug": "number-of-valid-words-for-each-puzzle",
+  "title": "Number of Valid Words for Each Puzzle",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Bit Manipulation",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findNumOfValidWords",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "puzzles",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "findNumOfValidWords",
+      "rust": "find_num_of_valid_words",
+      "typescript": "findNumOfValidWords"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

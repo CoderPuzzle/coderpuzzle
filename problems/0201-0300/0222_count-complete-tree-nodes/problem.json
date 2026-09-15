@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "height_probe_recursion",
+  "id": 222,
+  "slug": "count-complete-tree-nodes",
+  "title": "Count Complete Tree Nodes",
+  "difficulty": "Medium",
+  "tags": [
+    "Binary Search",
+    "Tree",
+    "Divide and Conquer"
+  ],
+  "topics": [
+    "Binary Search",
+    "Bit Manipulation",
+    "Tree",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countNodes",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countNodes",
+      "rust": "count_nodes",
+      "typescript": "countNodes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1008,
+  "slug": "construct-binary-search-tree-from-preorder-traversal",
+  "title": "Construct Binary Search Tree from Preorder Traversal",
+  "difficulty": "Medium",
+  "tags": [
+    "Binary Tree",
+    "Binary Search Tree",
+    "Recursion",
+    "Divide and Conquer"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Tree",
+    "Binary Search Tree",
+    "Monotonic Stack",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "bstFromPreorder",
+    "parameters": [
+      {
+        "name": "preorder",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "tree_node",
+    "return_type": {
+      "kind": "binary_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "bstFromPreorder",
+      "rust": "bst_from_preorder",
+      "typescript": "bstFromPreorder"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

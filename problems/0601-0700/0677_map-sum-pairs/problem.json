@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 677,
+  "slug": "map-sum-pairs",
+  "title": "Map Sum Pairs",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Design",
+    "Trie"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Design",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "MapSum",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "insert",
+        "parameters": [
+          {
+            "name": "key",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "val",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "sum",
+        "parameters": [
+          {
+            "name": "prefix",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

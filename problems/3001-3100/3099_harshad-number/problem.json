@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3099,
+  "slug": "harshad-number",
+  "title": "Harshad Number",
+  "difficulty": "Easy",
+  "tags": [
+    "Math"
+  ],
+  "topics": [
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sumOfTheDigitsOfHarshadNumber",
+    "parameters": [
+      {
+        "name": "x",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "sumOfTheDigitsOfHarshadNumber",
+      "rust": "sum_of_the_digits_of_harshad_number",
+      "typescript": "sumOfTheDigitsOfHarshadNumber"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

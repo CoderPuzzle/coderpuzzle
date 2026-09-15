@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1214,
+  "slug": "two-sum-bsts",
+  "title": "Two Sum BSTs",
+  "difficulty": "Medium",
+  "tags": [
+    "Two Pointers",
+    "Binary Search",
+    "Stack",
+    "Tree",
+    "Depth-First Search",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Two Pointers",
+    "Binary Search",
+    "Stack",
+    "Tree",
+    "Depth-First Search",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "twoSumBSTs",
+    "parameters": [
+      {
+        "name": "root1",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "root2",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "target",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "twoSumBSTs",
+      "rust": "two_sum_bsts",
+      "typescript": "twoSumBSTs"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 218" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <g id="flower">
+      <circle r="2.6" fill="#8a6420"/>
+      <g fill="#b57f30">
+        <circle cx="0" cy="-4.6" r="2.5"/>
+        <circle cx="4.4" cy="-1.4" r="2.5"/>
+        <circle cx="2.7" cy="3.7" r="2.5"/>
+        <circle cx="-2.7" cy="3.7" r="2.5"/>
+        <circle cx="-4.4" cy="-1.4" r="2.5"/>
+      </g>
+    </g>
+    <g id="person">
+      <circle cx="0" cy="-5.2" r="2.6" fill="#1a2026"/>
+      <g stroke="#1a2026" stroke-width="1.5" fill="none">
+        <line x1="0" y1="-2.6" x2="0" y2="3.4"/>
+        <line x1="-3.8" y1="0" x2="3.8" y2="0"/>
+        <line x1="0" y1="3.4" x2="-3" y2="7.6"/>
+        <line x1="0" y1="3.4" x2="3" y2="7.6"/>
+      </g>
+    </g>
+  </defs>
+  <!-- flowers = [[1,6],[3,7],[9,12],[4,13]], people = [2,3,7,11] -->
+  <!-- flowers in bloom at each time t = 1..13 -->
+  <g>
+    <use href="#flower" x="60" y="118"/>
+    <use href="#flower" x="104" y="118"/>
+    <use href="#flower" x="148" y="118"/><use href="#flower" x="148" y="102"/>
+    <use href="#flower" x="192" y="118"/><use href="#flower" x="192" y="102"/><use href="#flower" x="192" y="86"/>
+    <use href="#flower" x="236" y="118"/><use href="#flower" x="236" y="102"/><use href="#flower" x="236" y="86"/>
+    <use href="#flower" x="280" y="118"/><use href="#flower" x="280" y="102"/><use href="#flower" x="280" y="86"/>
+    <use href="#flower" x="324" y="118"/><use href="#flower" x="324" y="102"/>
+    <use href="#flower" x="368" y="118"/>
+    <use href="#flower" x="412" y="118"/><use href="#flower" x="412" y="102"/>
+    <use href="#flower" x="456" y="118"/><use href="#flower" x="456" y="102"/>
+    <use href="#flower" x="500" y="118"/><use href="#flower" x="500" y="102"/>
+    <use href="#flower" x="544" y="118"/><use href="#flower" x="544" y="102"/>
+    <use href="#flower" x="588" y="118"/>
+  </g>
+  <!-- time axis -->
+  <line x1="38" y1="128" x2="610" y2="128" stroke="#42525e" stroke-width="1.4"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="60" y1="124" x2="60" y2="132"/><line x1="104" y1="124" x2="104" y2="132"/>
+    <line x1="148" y1="124" x2="148" y2="132"/><line x1="192" y1="124" x2="192" y2="132"/>
+    <line x1="236" y1="124" x2="236" y2="132"/><line x1="280" y1="124" x2="280" y2="132"/>
+    <line x1="324" y1="124" x2="324" y2="132"/><line x1="368" y1="124" x2="368" y2="132"/>
+    <line x1="412" y1="124" x2="412" y2="132"/><line x1="456" y1="124" x2="456" y2="132"/>
+    <line x1="500" y1="124" x2="500" y2="132"/><line x1="544" y1="124" x2="544" y2="132"/>
+    <line x1="588" y1="124" x2="588" y2="132"/>
+  </g>
+  <g fill="#5c6b76" text-anchor="middle" font-size="12">
+    <text x="60" y="146">1</text><text x="104" y="146">2</text><text x="148" y="146">3</text>
+    <text x="192" y="146">4</text><text x="236" y="146">5</text><text x="280" y="146">6</text>
+    <text x="324" y="146">7</text><text x="368" y="146">8</text><text x="412" y="146">9</text>
+    <text x="456" y="146">10</text><text x="500" y="146">11</text><text x="544" y="146">12</text><text x="588" y="146">13</text>
+  </g>
+  <text x="48" y="122" text-anchor="end" fill="#5c6b76" font-size="12">flowers</text>
+  <text x="48" y="178" text-anchor="end" fill="#5c6b76" font-size="12">people</text>
+  <!-- people arriving at t = 2, 3, 7, 11 -->
+  <use href="#person" x="104" y="172"/>
+  <use href="#person" x="148" y="172"/>
+  <use href="#person" x="324" y="172"/>
+  <use href="#person" x="500" y="172"/>
+  <g fill="#4169E1" font-weight="700" text-anchor="middle" font-size="13">
+    <text x="104" y="204">1</text>
+    <text x="148" y="204">2</text>
+    <text x="324" y="204">2</text>
+    <text x="500" y="204">2</text>
+  </g>
+</svg>

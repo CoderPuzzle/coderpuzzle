@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 790,
+  "slug": "domino-and-tromino-tiling",
+  "title": "Domino and Tromino Tiling",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numTilings",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numTilings",
+      "rust": "num_tilings",
+      "typescript": "numTilings"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

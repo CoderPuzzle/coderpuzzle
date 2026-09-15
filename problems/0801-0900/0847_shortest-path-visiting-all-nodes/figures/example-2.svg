@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 222" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="pa" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- graph = [[1],[0,2,4],[1,3,4],[2],[1,2]]; route 0-1-4-2-3, edge 1-2 unused -->
+  <line x1="218" y1="50" x2="317" y2="50" stroke="#b9c4cd" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <g stroke="#4169E1" stroke-width="3" fill="none">
+    <line x1="78" y1="50" x2="177" y2="50" marker-end="url(#pa)"/>
+    <line x1="200" y1="68" x2="200" y2="147" marker-end="url(#pa)"/>
+    <line x1="326.3" y1="61.7" x2="217.5" y2="155" marker-end="url(#pa)"/>
+    <line x1="340" y1="68" x2="340" y2="147" marker-end="url(#pa)"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="60" cy="50" r="18"/>
+    <circle cx="200" cy="50" r="18"/>
+    <circle cx="340" cy="50" r="18"/>
+    <circle cx="200" cy="168" r="18"/>
+    <circle cx="340" cy="168" r="18"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="60" y="55">0</text>
+    <text x="200" y="55">1</text>
+    <text x="340" y="55">2</text>
+    <text x="200" y="173">4</text>
+    <text x="340" y="173">3</text>
+  </g>
+  <!-- step order along the route -->
+  <g>
+    <circle cx="128" cy="30" r="9.5" fill="#4169E1"/>
+    <circle cx="180" cy="108" r="9.5" fill="#4169E1"/>
+    <circle cx="284" cy="96" r="9.5" fill="#4169E1"/>
+    <circle cx="362" cy="108" r="9.5" fill="#4169E1"/>
+    <g fill="#ffffff" text-anchor="middle" font-size="11">
+      <text x="128" y="34">1</text>
+      <text x="180" y="112">2</text>
+      <text x="284" y="100">3</text>
+      <text x="362" y="112">4</text>
+    </g>
+  </g>
+  <text x="210" y="212" text-anchor="middle" fill="#5c6b76" font-size="12.5">route 0 &#8594; 1 &#8594; 4 &#8594; 2 &#8594; 3 visits every node in 4 moves; edge 1-2 (dashed) stays unused</text>
+</svg>

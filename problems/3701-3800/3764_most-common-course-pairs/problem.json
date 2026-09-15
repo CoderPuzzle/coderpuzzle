@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "bounded_sweep",
+  "id": 3764,
+  "slug": "most-common-course-pairs",
+  "title": "Most Common Course Pairs",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting",
+    "Counting"
+  ],
+  "topics": [
+    "Hash Table",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "mostCommonCoursePair",
+    "parameters": [
+      {
+        "name": "completions",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "mostCommonCoursePair",
+      "rust": "most_common_course_pair",
+      "typescript": "mostCommonCoursePair"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

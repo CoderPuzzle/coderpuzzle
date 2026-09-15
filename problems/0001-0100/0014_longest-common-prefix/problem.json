@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 14,
+  "slug": "longest-common-prefix",
+  "title": "Longest Common Prefix",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "String",
+    "Trie"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Trie"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestCommonPrefix",
+    "parameters": [
+      {
+        "name": "strs",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "longestCommonPrefix",
+      "rust": "longest_common_prefix",
+      "typescript": "longestCommonPrefix"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

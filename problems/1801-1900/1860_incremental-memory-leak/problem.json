@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1860,
+  "slug": "incremental-memory-leak",
+  "title": "Incremental Memory Leak",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Simulation"
+  ],
+  "topics": [
+    "Math",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "memLeak",
+    "parameters": [
+      {
+        "name": "memory1",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "memory2",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 64
+      }
+    },
+    "entrypoints": {
+      "go": "memLeak",
+      "rust": "mem_leak",
+      "typescript": "memLeak"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 2000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

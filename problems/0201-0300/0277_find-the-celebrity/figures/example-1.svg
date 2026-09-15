@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 272" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="340" height="272" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <text x="24" y="28" fill="#5c6b76" font-size="12.5">arrow = “knows”</text>
+  <!-- knows edges: 0 knows 1; 2 knows 0 and 1 -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <line x1="156" y1="77" x2="93" y2="175" marker-end="url(#arrow)"/>
+    <line x1="246" y1="173" x2="183" y2="75" marker-end="url(#arrow)"/>
+    <line x1="234" y1="200" x2="106" y2="200" marker-end="url(#arrow)"/>
+  </g>
+  <!-- person 0 -->
+  <circle cx="170" cy="54" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <text x="170" y="59" text-anchor="middle" fill="#1a2026" font-weight="600">0</text>
+  <!-- person 2 -->
+  <circle cx="260" cy="200" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <text x="260" y="205" text-anchor="middle" fill="#1a2026" font-weight="600">2</text>
+  <!-- person 1: the celebrity -->
+  <circle cx="80" cy="200" r="20" fill="#4169E1" fill-opacity="0.15" stroke="#4169E1" stroke-width="2"/>
+  <text x="80" y="205" text-anchor="middle" fill="#1a2026" font-weight="600">1</text>
+  <text x="80" y="244" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">celebrity</text>
+  <text x="170" y="264" text-anchor="middle" fill="#5c6b76" font-size="12.5">0 and 2 know 1, and 1 knows nobody → output 1</text>
+</svg>

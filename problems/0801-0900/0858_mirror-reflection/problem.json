@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 858,
+  "slug": "mirror-reflection",
+  "title": "Mirror Reflection",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Geometry",
+    "Number Theory",
+    "Least Common Multiple",
+    "Greatest Common Divisor"
+  ],
+  "topics": [
+    "Math",
+    "Geometry",
+    "Number Theory",
+    "Least Common Multiple",
+    "Greatest Common Divisor"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "mirrorReflection",
+    "parameters": [
+      {
+        "name": "p",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "q",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "mirrorReflection",
+      "rust": "mirror_reflection",
+      "typescript": "mirrorReflection"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

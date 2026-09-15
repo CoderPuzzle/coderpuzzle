@@ -1,0 +1,25 @@
+// Each operation moves +k units onto one index and -k units off another,
+// so index i needs exactly |diff_i| / k operations pushing it toward its
+// target: every difference must be divisible by k, and the ups must cancel
+// the downs exactly (sum of diffs === 0). Every operation accounts for 2k
+// units of that movement, hence sum(|diff|) / (2k). k === 0 changes
+// nothing per operation, so only arrays that are already equal work. All
+// intermediates are <= n * 10^9 = 10^14 << 2^53, so plain numbers stay
+// exact.
+function minOperations(nums1: number[], nums2: number[], k: number): number {
+    if (k === 0) {
+        for (let i = 0; i < nums1.length; i++) {
+            if (nums1[i] !== nums2[i]) return -1;
+        }
+        return 0;
+    }
+    let net = 0;
+    let mass = 0;
+    for (let i = 0; i < nums1.length; i++) {
+        const diff = nums2[i] - nums1[i];
+        if (Math.abs(diff) % k !== 0) return -1;
+        net += diff;
+        mass += Math.abs(diff);
+    }
+    return net !== 0 ? -1 : mass / (2 * k);
+}

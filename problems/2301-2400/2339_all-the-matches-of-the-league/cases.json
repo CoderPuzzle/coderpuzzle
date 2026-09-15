@@ -1,0 +1,2287 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('Leetcode FC'),\n('Ahly SC'),\n('Real Madrid');"
+      ],
+      "expected": [
+        [
+          "Real Madrid",
+          "Leetcode FC"
+        ],
+        [
+          "Real Madrid",
+          "Ahly SC"
+        ],
+        [
+          "Leetcode FC",
+          "Real Madrid"
+        ],
+        [
+          "Leetcode FC",
+          "Ahly SC"
+        ],
+        [
+          "Ahly SC",
+          "Real Madrid"
+        ],
+        [
+          "Ahly SC",
+          "Leetcode FC"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('Solo United');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('North FC'),\n('South FC');"
+      ],
+      "expected": [
+        [
+          "North FC",
+          "South FC"
+        ],
+        [
+          "South FC",
+          "North FC"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('Alpha'),\n('Beta'),\n('Gamma');"
+      ],
+      "expected": [
+        [
+          "Alpha",
+          "Beta"
+        ],
+        [
+          "Alpha",
+          "Gamma"
+        ],
+        [
+          "Beta",
+          "Alpha"
+        ],
+        [
+          "Beta",
+          "Gamma"
+        ],
+        [
+          "Gamma",
+          "Alpha"
+        ],
+        [
+          "Gamma",
+          "Beta"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('FC'),\n('FC B'),\n('FC Barcelona'),\n('FC Barcelona B');"
+      ],
+      "expected": [
+        [
+          "FC",
+          "FC B"
+        ],
+        [
+          "FC",
+          "FC Barcelona"
+        ],
+        [
+          "FC",
+          "FC Barcelona B"
+        ],
+        [
+          "FC B",
+          "FC"
+        ],
+        [
+          "FC B",
+          "FC Barcelona"
+        ],
+        [
+          "FC B",
+          "FC Barcelona B"
+        ],
+        [
+          "FC Barcelona",
+          "FC"
+        ],
+        [
+          "FC Barcelona",
+          "FC B"
+        ],
+        [
+          "FC Barcelona",
+          "FC Barcelona B"
+        ],
+        [
+          "FC Barcelona B",
+          "FC"
+        ],
+        [
+          "FC Barcelona B",
+          "FC B"
+        ],
+        [
+          "FC Barcelona B",
+          "FC Barcelona"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('Real Madrid C.F.'),\n('Paris Saint-Germain'),\n('Celtic F.C.'),\n('Bayern München'),\n('Saint-Étienne'),\n('O''Brien Town'),\n('Bright & Hove');"
+      ],
+      "expected": [
+        [
+          "Real Madrid C.F.",
+          "Paris Saint-Germain"
+        ],
+        [
+          "Real Madrid C.F.",
+          "Celtic F.C."
+        ],
+        [
+          "Real Madrid C.F.",
+          "Bayern München"
+        ],
+        [
+          "Real Madrid C.F.",
+          "Saint-Étienne"
+        ],
+        [
+          "Real Madrid C.F.",
+          "O'Brien Town"
+        ],
+        [
+          "Real Madrid C.F.",
+          "Bright & Hove"
+        ],
+        [
+          "Paris Saint-Germain",
+          "Real Madrid C.F."
+        ],
+        [
+          "Paris Saint-Germain",
+          "Celtic F.C."
+        ],
+        [
+          "Paris Saint-Germain",
+          "Bayern München"
+        ],
+        [
+          "Paris Saint-Germain",
+          "Saint-Étienne"
+        ],
+        [
+          "Paris Saint-Germain",
+          "O'Brien Town"
+        ],
+        [
+          "Paris Saint-Germain",
+          "Bright & Hove"
+        ],
+        [
+          "Celtic F.C.",
+          "Real Madrid C.F."
+        ],
+        [
+          "Celtic F.C.",
+          "Paris Saint-Germain"
+        ],
+        [
+          "Celtic F.C.",
+          "Bayern München"
+        ],
+        [
+          "Celtic F.C.",
+          "Saint-Étienne"
+        ],
+        [
+          "Celtic F.C.",
+          "O'Brien Town"
+        ],
+        [
+          "Celtic F.C.",
+          "Bright & Hove"
+        ],
+        [
+          "Bayern München",
+          "Real Madrid C.F."
+        ],
+        [
+          "Bayern München",
+          "Paris Saint-Germain"
+        ],
+        [
+          "Bayern München",
+          "Celtic F.C."
+        ],
+        [
+          "Bayern München",
+          "Saint-Étienne"
+        ],
+        [
+          "Bayern München",
+          "O'Brien Town"
+        ],
+        [
+          "Bayern München",
+          "Bright & Hove"
+        ],
+        [
+          "Saint-Étienne",
+          "Real Madrid C.F."
+        ],
+        [
+          "Saint-Étienne",
+          "Paris Saint-Germain"
+        ],
+        [
+          "Saint-Étienne",
+          "Celtic F.C."
+        ],
+        [
+          "Saint-Étienne",
+          "Bayern München"
+        ],
+        [
+          "Saint-Étienne",
+          "O'Brien Town"
+        ],
+        [
+          "Saint-Étienne",
+          "Bright & Hove"
+        ],
+        [
+          "O'Brien Town",
+          "Real Madrid C.F."
+        ],
+        [
+          "O'Brien Town",
+          "Paris Saint-Germain"
+        ],
+        [
+          "O'Brien Town",
+          "Celtic F.C."
+        ],
+        [
+          "O'Brien Town",
+          "Bayern München"
+        ],
+        [
+          "O'Brien Town",
+          "Saint-Étienne"
+        ],
+        [
+          "O'Brien Town",
+          "Bright & Hove"
+        ],
+        [
+          "Bright & Hove",
+          "Real Madrid C.F."
+        ],
+        [
+          "Bright & Hove",
+          "Paris Saint-Germain"
+        ],
+        [
+          "Bright & Hove",
+          "Celtic F.C."
+        ],
+        [
+          "Bright & Hove",
+          "Bayern München"
+        ],
+        [
+          "Bright & Hove",
+          "Saint-Étienne"
+        ],
+        [
+          "Bright & Hove",
+          "O'Brien Town"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('united'),\n('United'),\n('UNITED'),\n(' united'),\n('united ');"
+      ],
+      "expected": [
+        [
+          "united",
+          "United"
+        ],
+        [
+          "united",
+          "UNITED"
+        ],
+        [
+          "united",
+          " united"
+        ],
+        [
+          "united",
+          "united "
+        ],
+        [
+          "United",
+          "united"
+        ],
+        [
+          "United",
+          "UNITED"
+        ],
+        [
+          "United",
+          " united"
+        ],
+        [
+          "United",
+          "united "
+        ],
+        [
+          "UNITED",
+          "united"
+        ],
+        [
+          "UNITED",
+          "United"
+        ],
+        [
+          "UNITED",
+          " united"
+        ],
+        [
+          "UNITED",
+          "united "
+        ],
+        [
+          " united",
+          "united"
+        ],
+        [
+          " united",
+          "United"
+        ],
+        [
+          " united",
+          "UNITED"
+        ],
+        [
+          " united",
+          "united "
+        ],
+        [
+          "united ",
+          "united"
+        ],
+        [
+          "united ",
+          "United"
+        ],
+        [
+          "united ",
+          "UNITED"
+        ],
+        [
+          "united ",
+          " united"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('Dynamo'),\n('Ajax'),\n('Boavista'),\n('Elche');"
+      ],
+      "expected": [
+        [
+          "Dynamo",
+          "Ajax"
+        ],
+        [
+          "Dynamo",
+          "Boavista"
+        ],
+        [
+          "Dynamo",
+          "Elche"
+        ],
+        [
+          "Ajax",
+          "Dynamo"
+        ],
+        [
+          "Ajax",
+          "Boavista"
+        ],
+        [
+          "Ajax",
+          "Elche"
+        ],
+        [
+          "Boavista",
+          "Dynamo"
+        ],
+        [
+          "Boavista",
+          "Ajax"
+        ],
+        [
+          "Boavista",
+          "Elche"
+        ],
+        [
+          "Elche",
+          "Dynamo"
+        ],
+        [
+          "Elche",
+          "Ajax"
+        ],
+        [
+          "Elche",
+          "Boavista"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('The Very Long Named Football Club of the North'),\n('Short'),\n('Mid-Length Athletic'),\n('Another Extremely Long Club Name Ending In United'),\n('B');"
+      ],
+      "expected": [
+        [
+          "The Very Long Named Football Club of the North",
+          "Short"
+        ],
+        [
+          "The Very Long Named Football Club of the North",
+          "Mid-Length Athletic"
+        ],
+        [
+          "The Very Long Named Football Club of the North",
+          "Another Extremely Long Club Name Ending In United"
+        ],
+        [
+          "The Very Long Named Football Club of the North",
+          "B"
+        ],
+        [
+          "Short",
+          "The Very Long Named Football Club of the North"
+        ],
+        [
+          "Short",
+          "Mid-Length Athletic"
+        ],
+        [
+          "Short",
+          "Another Extremely Long Club Name Ending In United"
+        ],
+        [
+          "Short",
+          "B"
+        ],
+        [
+          "Mid-Length Athletic",
+          "The Very Long Named Football Club of the North"
+        ],
+        [
+          "Mid-Length Athletic",
+          "Short"
+        ],
+        [
+          "Mid-Length Athletic",
+          "Another Extremely Long Club Name Ending In United"
+        ],
+        [
+          "Mid-Length Athletic",
+          "B"
+        ],
+        [
+          "Another Extremely Long Club Name Ending In United",
+          "The Very Long Named Football Club of the North"
+        ],
+        [
+          "Another Extremely Long Club Name Ending In United",
+          "Short"
+        ],
+        [
+          "Another Extremely Long Club Name Ending In United",
+          "Mid-Length Athletic"
+        ],
+        [
+          "Another Extremely Long Club Name Ending In United",
+          "B"
+        ],
+        [
+          "B",
+          "The Very Long Named Football Club of the North"
+        ],
+        [
+          "B",
+          "Short"
+        ],
+        [
+          "B",
+          "Mid-Length Athletic"
+        ],
+        [
+          "B",
+          "Another Extremely Long Club Name Ending In United"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('Arsenal'),\n('Chelsea'),\n('Everton'),\n('Fulham'),\n('Leeds'),\n('Norwich'),\n('Porto'),\n('Roma');"
+      ],
+      "expected": [
+        [
+          "Arsenal",
+          "Chelsea"
+        ],
+        [
+          "Arsenal",
+          "Everton"
+        ],
+        [
+          "Arsenal",
+          "Fulham"
+        ],
+        [
+          "Arsenal",
+          "Leeds"
+        ],
+        [
+          "Arsenal",
+          "Norwich"
+        ],
+        [
+          "Arsenal",
+          "Porto"
+        ],
+        [
+          "Arsenal",
+          "Roma"
+        ],
+        [
+          "Chelsea",
+          "Arsenal"
+        ],
+        [
+          "Chelsea",
+          "Everton"
+        ],
+        [
+          "Chelsea",
+          "Fulham"
+        ],
+        [
+          "Chelsea",
+          "Leeds"
+        ],
+        [
+          "Chelsea",
+          "Norwich"
+        ],
+        [
+          "Chelsea",
+          "Porto"
+        ],
+        [
+          "Chelsea",
+          "Roma"
+        ],
+        [
+          "Everton",
+          "Arsenal"
+        ],
+        [
+          "Everton",
+          "Chelsea"
+        ],
+        [
+          "Everton",
+          "Fulham"
+        ],
+        [
+          "Everton",
+          "Leeds"
+        ],
+        [
+          "Everton",
+          "Norwich"
+        ],
+        [
+          "Everton",
+          "Porto"
+        ],
+        [
+          "Everton",
+          "Roma"
+        ],
+        [
+          "Fulham",
+          "Arsenal"
+        ],
+        [
+          "Fulham",
+          "Chelsea"
+        ],
+        [
+          "Fulham",
+          "Everton"
+        ],
+        [
+          "Fulham",
+          "Leeds"
+        ],
+        [
+          "Fulham",
+          "Norwich"
+        ],
+        [
+          "Fulham",
+          "Porto"
+        ],
+        [
+          "Fulham",
+          "Roma"
+        ],
+        [
+          "Leeds",
+          "Arsenal"
+        ],
+        [
+          "Leeds",
+          "Chelsea"
+        ],
+        [
+          "Leeds",
+          "Everton"
+        ],
+        [
+          "Leeds",
+          "Fulham"
+        ],
+        [
+          "Leeds",
+          "Norwich"
+        ],
+        [
+          "Leeds",
+          "Porto"
+        ],
+        [
+          "Leeds",
+          "Roma"
+        ],
+        [
+          "Norwich",
+          "Arsenal"
+        ],
+        [
+          "Norwich",
+          "Chelsea"
+        ],
+        [
+          "Norwich",
+          "Everton"
+        ],
+        [
+          "Norwich",
+          "Fulham"
+        ],
+        [
+          "Norwich",
+          "Leeds"
+        ],
+        [
+          "Norwich",
+          "Porto"
+        ],
+        [
+          "Norwich",
+          "Roma"
+        ],
+        [
+          "Porto",
+          "Arsenal"
+        ],
+        [
+          "Porto",
+          "Chelsea"
+        ],
+        [
+          "Porto",
+          "Everton"
+        ],
+        [
+          "Porto",
+          "Fulham"
+        ],
+        [
+          "Porto",
+          "Leeds"
+        ],
+        [
+          "Porto",
+          "Norwich"
+        ],
+        [
+          "Porto",
+          "Roma"
+        ],
+        [
+          "Roma",
+          "Arsenal"
+        ],
+        [
+          "Roma",
+          "Chelsea"
+        ],
+        [
+          "Roma",
+          "Everton"
+        ],
+        [
+          "Roma",
+          "Fulham"
+        ],
+        [
+          "Roma",
+          "Leeds"
+        ],
+        [
+          "Roma",
+          "Norwich"
+        ],
+        [
+          "Roma",
+          "Porto"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('Team Aardvark'),\n('Team Bison'),\n('Team Cougar'),\n('Team Dingo'),\n('Team Ermine'),\n('Team Falcon'),\n('Team Gopher'),\n('Team Heron'),\n('Team Ibex'),\n('Team Jaguar'),\n('Team Koala'),\n('Team Lynx');"
+      ],
+      "expected": [
+        [
+          "Team Aardvark",
+          "Team Bison"
+        ],
+        [
+          "Team Aardvark",
+          "Team Cougar"
+        ],
+        [
+          "Team Aardvark",
+          "Team Dingo"
+        ],
+        [
+          "Team Aardvark",
+          "Team Ermine"
+        ],
+        [
+          "Team Aardvark",
+          "Team Falcon"
+        ],
+        [
+          "Team Aardvark",
+          "Team Gopher"
+        ],
+        [
+          "Team Aardvark",
+          "Team Heron"
+        ],
+        [
+          "Team Aardvark",
+          "Team Ibex"
+        ],
+        [
+          "Team Aardvark",
+          "Team Jaguar"
+        ],
+        [
+          "Team Aardvark",
+          "Team Koala"
+        ],
+        [
+          "Team Aardvark",
+          "Team Lynx"
+        ],
+        [
+          "Team Bison",
+          "Team Aardvark"
+        ],
+        [
+          "Team Bison",
+          "Team Cougar"
+        ],
+        [
+          "Team Bison",
+          "Team Dingo"
+        ],
+        [
+          "Team Bison",
+          "Team Ermine"
+        ],
+        [
+          "Team Bison",
+          "Team Falcon"
+        ],
+        [
+          "Team Bison",
+          "Team Gopher"
+        ],
+        [
+          "Team Bison",
+          "Team Heron"
+        ],
+        [
+          "Team Bison",
+          "Team Ibex"
+        ],
+        [
+          "Team Bison",
+          "Team Jaguar"
+        ],
+        [
+          "Team Bison",
+          "Team Koala"
+        ],
+        [
+          "Team Bison",
+          "Team Lynx"
+        ],
+        [
+          "Team Cougar",
+          "Team Aardvark"
+        ],
+        [
+          "Team Cougar",
+          "Team Bison"
+        ],
+        [
+          "Team Cougar",
+          "Team Dingo"
+        ],
+        [
+          "Team Cougar",
+          "Team Ermine"
+        ],
+        [
+          "Team Cougar",
+          "Team Falcon"
+        ],
+        [
+          "Team Cougar",
+          "Team Gopher"
+        ],
+        [
+          "Team Cougar",
+          "Team Heron"
+        ],
+        [
+          "Team Cougar",
+          "Team Ibex"
+        ],
+        [
+          "Team Cougar",
+          "Team Jaguar"
+        ],
+        [
+          "Team Cougar",
+          "Team Koala"
+        ],
+        [
+          "Team Cougar",
+          "Team Lynx"
+        ],
+        [
+          "Team Dingo",
+          "Team Aardvark"
+        ],
+        [
+          "Team Dingo",
+          "Team Bison"
+        ],
+        [
+          "Team Dingo",
+          "Team Cougar"
+        ],
+        [
+          "Team Dingo",
+          "Team Ermine"
+        ],
+        [
+          "Team Dingo",
+          "Team Falcon"
+        ],
+        [
+          "Team Dingo",
+          "Team Gopher"
+        ],
+        [
+          "Team Dingo",
+          "Team Heron"
+        ],
+        [
+          "Team Dingo",
+          "Team Ibex"
+        ],
+        [
+          "Team Dingo",
+          "Team Jaguar"
+        ],
+        [
+          "Team Dingo",
+          "Team Koala"
+        ],
+        [
+          "Team Dingo",
+          "Team Lynx"
+        ],
+        [
+          "Team Ermine",
+          "Team Aardvark"
+        ],
+        [
+          "Team Ermine",
+          "Team Bison"
+        ],
+        [
+          "Team Ermine",
+          "Team Cougar"
+        ],
+        [
+          "Team Ermine",
+          "Team Dingo"
+        ],
+        [
+          "Team Ermine",
+          "Team Falcon"
+        ],
+        [
+          "Team Ermine",
+          "Team Gopher"
+        ],
+        [
+          "Team Ermine",
+          "Team Heron"
+        ],
+        [
+          "Team Ermine",
+          "Team Ibex"
+        ],
+        [
+          "Team Ermine",
+          "Team Jaguar"
+        ],
+        [
+          "Team Ermine",
+          "Team Koala"
+        ],
+        [
+          "Team Ermine",
+          "Team Lynx"
+        ],
+        [
+          "Team Falcon",
+          "Team Aardvark"
+        ],
+        [
+          "Team Falcon",
+          "Team Bison"
+        ],
+        [
+          "Team Falcon",
+          "Team Cougar"
+        ],
+        [
+          "Team Falcon",
+          "Team Dingo"
+        ],
+        [
+          "Team Falcon",
+          "Team Ermine"
+        ],
+        [
+          "Team Falcon",
+          "Team Gopher"
+        ],
+        [
+          "Team Falcon",
+          "Team Heron"
+        ],
+        [
+          "Team Falcon",
+          "Team Ibex"
+        ],
+        [
+          "Team Falcon",
+          "Team Jaguar"
+        ],
+        [
+          "Team Falcon",
+          "Team Koala"
+        ],
+        [
+          "Team Falcon",
+          "Team Lynx"
+        ],
+        [
+          "Team Gopher",
+          "Team Aardvark"
+        ],
+        [
+          "Team Gopher",
+          "Team Bison"
+        ],
+        [
+          "Team Gopher",
+          "Team Cougar"
+        ],
+        [
+          "Team Gopher",
+          "Team Dingo"
+        ],
+        [
+          "Team Gopher",
+          "Team Ermine"
+        ],
+        [
+          "Team Gopher",
+          "Team Falcon"
+        ],
+        [
+          "Team Gopher",
+          "Team Heron"
+        ],
+        [
+          "Team Gopher",
+          "Team Ibex"
+        ],
+        [
+          "Team Gopher",
+          "Team Jaguar"
+        ],
+        [
+          "Team Gopher",
+          "Team Koala"
+        ],
+        [
+          "Team Gopher",
+          "Team Lynx"
+        ],
+        [
+          "Team Heron",
+          "Team Aardvark"
+        ],
+        [
+          "Team Heron",
+          "Team Bison"
+        ],
+        [
+          "Team Heron",
+          "Team Cougar"
+        ],
+        [
+          "Team Heron",
+          "Team Dingo"
+        ],
+        [
+          "Team Heron",
+          "Team Ermine"
+        ],
+        [
+          "Team Heron",
+          "Team Falcon"
+        ],
+        [
+          "Team Heron",
+          "Team Gopher"
+        ],
+        [
+          "Team Heron",
+          "Team Ibex"
+        ],
+        [
+          "Team Heron",
+          "Team Jaguar"
+        ],
+        [
+          "Team Heron",
+          "Team Koala"
+        ],
+        [
+          "Team Heron",
+          "Team Lynx"
+        ],
+        [
+          "Team Ibex",
+          "Team Aardvark"
+        ],
+        [
+          "Team Ibex",
+          "Team Bison"
+        ],
+        [
+          "Team Ibex",
+          "Team Cougar"
+        ],
+        [
+          "Team Ibex",
+          "Team Dingo"
+        ],
+        [
+          "Team Ibex",
+          "Team Ermine"
+        ],
+        [
+          "Team Ibex",
+          "Team Falcon"
+        ],
+        [
+          "Team Ibex",
+          "Team Gopher"
+        ],
+        [
+          "Team Ibex",
+          "Team Heron"
+        ],
+        [
+          "Team Ibex",
+          "Team Jaguar"
+        ],
+        [
+          "Team Ibex",
+          "Team Koala"
+        ],
+        [
+          "Team Ibex",
+          "Team Lynx"
+        ],
+        [
+          "Team Jaguar",
+          "Team Aardvark"
+        ],
+        [
+          "Team Jaguar",
+          "Team Bison"
+        ],
+        [
+          "Team Jaguar",
+          "Team Cougar"
+        ],
+        [
+          "Team Jaguar",
+          "Team Dingo"
+        ],
+        [
+          "Team Jaguar",
+          "Team Ermine"
+        ],
+        [
+          "Team Jaguar",
+          "Team Falcon"
+        ],
+        [
+          "Team Jaguar",
+          "Team Gopher"
+        ],
+        [
+          "Team Jaguar",
+          "Team Heron"
+        ],
+        [
+          "Team Jaguar",
+          "Team Ibex"
+        ],
+        [
+          "Team Jaguar",
+          "Team Koala"
+        ],
+        [
+          "Team Jaguar",
+          "Team Lynx"
+        ],
+        [
+          "Team Koala",
+          "Team Aardvark"
+        ],
+        [
+          "Team Koala",
+          "Team Bison"
+        ],
+        [
+          "Team Koala",
+          "Team Cougar"
+        ],
+        [
+          "Team Koala",
+          "Team Dingo"
+        ],
+        [
+          "Team Koala",
+          "Team Ermine"
+        ],
+        [
+          "Team Koala",
+          "Team Falcon"
+        ],
+        [
+          "Team Koala",
+          "Team Gopher"
+        ],
+        [
+          "Team Koala",
+          "Team Heron"
+        ],
+        [
+          "Team Koala",
+          "Team Ibex"
+        ],
+        [
+          "Team Koala",
+          "Team Jaguar"
+        ],
+        [
+          "Team Koala",
+          "Team Lynx"
+        ],
+        [
+          "Team Lynx",
+          "Team Aardvark"
+        ],
+        [
+          "Team Lynx",
+          "Team Bison"
+        ],
+        [
+          "Team Lynx",
+          "Team Cougar"
+        ],
+        [
+          "Team Lynx",
+          "Team Dingo"
+        ],
+        [
+          "Team Lynx",
+          "Team Ermine"
+        ],
+        [
+          "Team Lynx",
+          "Team Falcon"
+        ],
+        [
+          "Team Lynx",
+          "Team Gopher"
+        ],
+        [
+          "Team Lynx",
+          "Team Heron"
+        ],
+        [
+          "Team Lynx",
+          "Team Ibex"
+        ],
+        [
+          "Team Lynx",
+          "Team Jaguar"
+        ],
+        [
+          "Team Lynx",
+          "Team Koala"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Teams VALUES\n('Club 00'),\n('Club 01'),\n('Club 02'),\n('Club 03'),\n('Club 04'),\n('Club 05'),\n('Club 06'),\n('Club 07'),\n('Club 08'),\n('Club 09'),\n('Club 10'),\n('Club 11'),\n('Club 12'),\n('Club 13'),\n('Club 14'),\n('Club 15');"
+      ],
+      "expected": [
+        [
+          "Club 00",
+          "Club 01"
+        ],
+        [
+          "Club 00",
+          "Club 02"
+        ],
+        [
+          "Club 00",
+          "Club 03"
+        ],
+        [
+          "Club 00",
+          "Club 04"
+        ],
+        [
+          "Club 00",
+          "Club 05"
+        ],
+        [
+          "Club 00",
+          "Club 06"
+        ],
+        [
+          "Club 00",
+          "Club 07"
+        ],
+        [
+          "Club 00",
+          "Club 08"
+        ],
+        [
+          "Club 00",
+          "Club 09"
+        ],
+        [
+          "Club 00",
+          "Club 10"
+        ],
+        [
+          "Club 00",
+          "Club 11"
+        ],
+        [
+          "Club 00",
+          "Club 12"
+        ],
+        [
+          "Club 00",
+          "Club 13"
+        ],
+        [
+          "Club 00",
+          "Club 14"
+        ],
+        [
+          "Club 00",
+          "Club 15"
+        ],
+        [
+          "Club 01",
+          "Club 00"
+        ],
+        [
+          "Club 01",
+          "Club 02"
+        ],
+        [
+          "Club 01",
+          "Club 03"
+        ],
+        [
+          "Club 01",
+          "Club 04"
+        ],
+        [
+          "Club 01",
+          "Club 05"
+        ],
+        [
+          "Club 01",
+          "Club 06"
+        ],
+        [
+          "Club 01",
+          "Club 07"
+        ],
+        [
+          "Club 01",
+          "Club 08"
+        ],
+        [
+          "Club 01",
+          "Club 09"
+        ],
+        [
+          "Club 01",
+          "Club 10"
+        ],
+        [
+          "Club 01",
+          "Club 11"
+        ],
+        [
+          "Club 01",
+          "Club 12"
+        ],
+        [
+          "Club 01",
+          "Club 13"
+        ],
+        [
+          "Club 01",
+          "Club 14"
+        ],
+        [
+          "Club 01",
+          "Club 15"
+        ],
+        [
+          "Club 02",
+          "Club 00"
+        ],
+        [
+          "Club 02",
+          "Club 01"
+        ],
+        [
+          "Club 02",
+          "Club 03"
+        ],
+        [
+          "Club 02",
+          "Club 04"
+        ],
+        [
+          "Club 02",
+          "Club 05"
+        ],
+        [
+          "Club 02",
+          "Club 06"
+        ],
+        [
+          "Club 02",
+          "Club 07"
+        ],
+        [
+          "Club 02",
+          "Club 08"
+        ],
+        [
+          "Club 02",
+          "Club 09"
+        ],
+        [
+          "Club 02",
+          "Club 10"
+        ],
+        [
+          "Club 02",
+          "Club 11"
+        ],
+        [
+          "Club 02",
+          "Club 12"
+        ],
+        [
+          "Club 02",
+          "Club 13"
+        ],
+        [
+          "Club 02",
+          "Club 14"
+        ],
+        [
+          "Club 02",
+          "Club 15"
+        ],
+        [
+          "Club 03",
+          "Club 00"
+        ],
+        [
+          "Club 03",
+          "Club 01"
+        ],
+        [
+          "Club 03",
+          "Club 02"
+        ],
+        [
+          "Club 03",
+          "Club 04"
+        ],
+        [
+          "Club 03",
+          "Club 05"
+        ],
+        [
+          "Club 03",
+          "Club 06"
+        ],
+        [
+          "Club 03",
+          "Club 07"
+        ],
+        [
+          "Club 03",
+          "Club 08"
+        ],
+        [
+          "Club 03",
+          "Club 09"
+        ],
+        [
+          "Club 03",
+          "Club 10"
+        ],
+        [
+          "Club 03",
+          "Club 11"
+        ],
+        [
+          "Club 03",
+          "Club 12"
+        ],
+        [
+          "Club 03",
+          "Club 13"
+        ],
+        [
+          "Club 03",
+          "Club 14"
+        ],
+        [
+          "Club 03",
+          "Club 15"
+        ],
+        [
+          "Club 04",
+          "Club 00"
+        ],
+        [
+          "Club 04",
+          "Club 01"
+        ],
+        [
+          "Club 04",
+          "Club 02"
+        ],
+        [
+          "Club 04",
+          "Club 03"
+        ],
+        [
+          "Club 04",
+          "Club 05"
+        ],
+        [
+          "Club 04",
+          "Club 06"
+        ],
+        [
+          "Club 04",
+          "Club 07"
+        ],
+        [
+          "Club 04",
+          "Club 08"
+        ],
+        [
+          "Club 04",
+          "Club 09"
+        ],
+        [
+          "Club 04",
+          "Club 10"
+        ],
+        [
+          "Club 04",
+          "Club 11"
+        ],
+        [
+          "Club 04",
+          "Club 12"
+        ],
+        [
+          "Club 04",
+          "Club 13"
+        ],
+        [
+          "Club 04",
+          "Club 14"
+        ],
+        [
+          "Club 04",
+          "Club 15"
+        ],
+        [
+          "Club 05",
+          "Club 00"
+        ],
+        [
+          "Club 05",
+          "Club 01"
+        ],
+        [
+          "Club 05",
+          "Club 02"
+        ],
+        [
+          "Club 05",
+          "Club 03"
+        ],
+        [
+          "Club 05",
+          "Club 04"
+        ],
+        [
+          "Club 05",
+          "Club 06"
+        ],
+        [
+          "Club 05",
+          "Club 07"
+        ],
+        [
+          "Club 05",
+          "Club 08"
+        ],
+        [
+          "Club 05",
+          "Club 09"
+        ],
+        [
+          "Club 05",
+          "Club 10"
+        ],
+        [
+          "Club 05",
+          "Club 11"
+        ],
+        [
+          "Club 05",
+          "Club 12"
+        ],
+        [
+          "Club 05",
+          "Club 13"
+        ],
+        [
+          "Club 05",
+          "Club 14"
+        ],
+        [
+          "Club 05",
+          "Club 15"
+        ],
+        [
+          "Club 06",
+          "Club 00"
+        ],
+        [
+          "Club 06",
+          "Club 01"
+        ],
+        [
+          "Club 06",
+          "Club 02"
+        ],
+        [
+          "Club 06",
+          "Club 03"
+        ],
+        [
+          "Club 06",
+          "Club 04"
+        ],
+        [
+          "Club 06",
+          "Club 05"
+        ],
+        [
+          "Club 06",
+          "Club 07"
+        ],
+        [
+          "Club 06",
+          "Club 08"
+        ],
+        [
+          "Club 06",
+          "Club 09"
+        ],
+        [
+          "Club 06",
+          "Club 10"
+        ],
+        [
+          "Club 06",
+          "Club 11"
+        ],
+        [
+          "Club 06",
+          "Club 12"
+        ],
+        [
+          "Club 06",
+          "Club 13"
+        ],
+        [
+          "Club 06",
+          "Club 14"
+        ],
+        [
+          "Club 06",
+          "Club 15"
+        ],
+        [
+          "Club 07",
+          "Club 00"
+        ],
+        [
+          "Club 07",
+          "Club 01"
+        ],
+        [
+          "Club 07",
+          "Club 02"
+        ],
+        [
+          "Club 07",
+          "Club 03"
+        ],
+        [
+          "Club 07",
+          "Club 04"
+        ],
+        [
+          "Club 07",
+          "Club 05"
+        ],
+        [
+          "Club 07",
+          "Club 06"
+        ],
+        [
+          "Club 07",
+          "Club 08"
+        ],
+        [
+          "Club 07",
+          "Club 09"
+        ],
+        [
+          "Club 07",
+          "Club 10"
+        ],
+        [
+          "Club 07",
+          "Club 11"
+        ],
+        [
+          "Club 07",
+          "Club 12"
+        ],
+        [
+          "Club 07",
+          "Club 13"
+        ],
+        [
+          "Club 07",
+          "Club 14"
+        ],
+        [
+          "Club 07",
+          "Club 15"
+        ],
+        [
+          "Club 08",
+          "Club 00"
+        ],
+        [
+          "Club 08",
+          "Club 01"
+        ],
+        [
+          "Club 08",
+          "Club 02"
+        ],
+        [
+          "Club 08",
+          "Club 03"
+        ],
+        [
+          "Club 08",
+          "Club 04"
+        ],
+        [
+          "Club 08",
+          "Club 05"
+        ],
+        [
+          "Club 08",
+          "Club 06"
+        ],
+        [
+          "Club 08",
+          "Club 07"
+        ],
+        [
+          "Club 08",
+          "Club 09"
+        ],
+        [
+          "Club 08",
+          "Club 10"
+        ],
+        [
+          "Club 08",
+          "Club 11"
+        ],
+        [
+          "Club 08",
+          "Club 12"
+        ],
+        [
+          "Club 08",
+          "Club 13"
+        ],
+        [
+          "Club 08",
+          "Club 14"
+        ],
+        [
+          "Club 08",
+          "Club 15"
+        ],
+        [
+          "Club 09",
+          "Club 00"
+        ],
+        [
+          "Club 09",
+          "Club 01"
+        ],
+        [
+          "Club 09",
+          "Club 02"
+        ],
+        [
+          "Club 09",
+          "Club 03"
+        ],
+        [
+          "Club 09",
+          "Club 04"
+        ],
+        [
+          "Club 09",
+          "Club 05"
+        ],
+        [
+          "Club 09",
+          "Club 06"
+        ],
+        [
+          "Club 09",
+          "Club 07"
+        ],
+        [
+          "Club 09",
+          "Club 08"
+        ],
+        [
+          "Club 09",
+          "Club 10"
+        ],
+        [
+          "Club 09",
+          "Club 11"
+        ],
+        [
+          "Club 09",
+          "Club 12"
+        ],
+        [
+          "Club 09",
+          "Club 13"
+        ],
+        [
+          "Club 09",
+          "Club 14"
+        ],
+        [
+          "Club 09",
+          "Club 15"
+        ],
+        [
+          "Club 10",
+          "Club 00"
+        ],
+        [
+          "Club 10",
+          "Club 01"
+        ],
+        [
+          "Club 10",
+          "Club 02"
+        ],
+        [
+          "Club 10",
+          "Club 03"
+        ],
+        [
+          "Club 10",
+          "Club 04"
+        ],
+        [
+          "Club 10",
+          "Club 05"
+        ],
+        [
+          "Club 10",
+          "Club 06"
+        ],
+        [
+          "Club 10",
+          "Club 07"
+        ],
+        [
+          "Club 10",
+          "Club 08"
+        ],
+        [
+          "Club 10",
+          "Club 09"
+        ],
+        [
+          "Club 10",
+          "Club 11"
+        ],
+        [
+          "Club 10",
+          "Club 12"
+        ],
+        [
+          "Club 10",
+          "Club 13"
+        ],
+        [
+          "Club 10",
+          "Club 14"
+        ],
+        [
+          "Club 10",
+          "Club 15"
+        ],
+        [
+          "Club 11",
+          "Club 00"
+        ],
+        [
+          "Club 11",
+          "Club 01"
+        ],
+        [
+          "Club 11",
+          "Club 02"
+        ],
+        [
+          "Club 11",
+          "Club 03"
+        ],
+        [
+          "Club 11",
+          "Club 04"
+        ],
+        [
+          "Club 11",
+          "Club 05"
+        ],
+        [
+          "Club 11",
+          "Club 06"
+        ],
+        [
+          "Club 11",
+          "Club 07"
+        ],
+        [
+          "Club 11",
+          "Club 08"
+        ],
+        [
+          "Club 11",
+          "Club 09"
+        ],
+        [
+          "Club 11",
+          "Club 10"
+        ],
+        [
+          "Club 11",
+          "Club 12"
+        ],
+        [
+          "Club 11",
+          "Club 13"
+        ],
+        [
+          "Club 11",
+          "Club 14"
+        ],
+        [
+          "Club 11",
+          "Club 15"
+        ],
+        [
+          "Club 12",
+          "Club 00"
+        ],
+        [
+          "Club 12",
+          "Club 01"
+        ],
+        [
+          "Club 12",
+          "Club 02"
+        ],
+        [
+          "Club 12",
+          "Club 03"
+        ],
+        [
+          "Club 12",
+          "Club 04"
+        ],
+        [
+          "Club 12",
+          "Club 05"
+        ],
+        [
+          "Club 12",
+          "Club 06"
+        ],
+        [
+          "Club 12",
+          "Club 07"
+        ],
+        [
+          "Club 12",
+          "Club 08"
+        ],
+        [
+          "Club 12",
+          "Club 09"
+        ],
+        [
+          "Club 12",
+          "Club 10"
+        ],
+        [
+          "Club 12",
+          "Club 11"
+        ],
+        [
+          "Club 12",
+          "Club 13"
+        ],
+        [
+          "Club 12",
+          "Club 14"
+        ],
+        [
+          "Club 12",
+          "Club 15"
+        ],
+        [
+          "Club 13",
+          "Club 00"
+        ],
+        [
+          "Club 13",
+          "Club 01"
+        ],
+        [
+          "Club 13",
+          "Club 02"
+        ],
+        [
+          "Club 13",
+          "Club 03"
+        ],
+        [
+          "Club 13",
+          "Club 04"
+        ],
+        [
+          "Club 13",
+          "Club 05"
+        ],
+        [
+          "Club 13",
+          "Club 06"
+        ],
+        [
+          "Club 13",
+          "Club 07"
+        ],
+        [
+          "Club 13",
+          "Club 08"
+        ],
+        [
+          "Club 13",
+          "Club 09"
+        ],
+        [
+          "Club 13",
+          "Club 10"
+        ],
+        [
+          "Club 13",
+          "Club 11"
+        ],
+        [
+          "Club 13",
+          "Club 12"
+        ],
+        [
+          "Club 13",
+          "Club 14"
+        ],
+        [
+          "Club 13",
+          "Club 15"
+        ],
+        [
+          "Club 14",
+          "Club 00"
+        ],
+        [
+          "Club 14",
+          "Club 01"
+        ],
+        [
+          "Club 14",
+          "Club 02"
+        ],
+        [
+          "Club 14",
+          "Club 03"
+        ],
+        [
+          "Club 14",
+          "Club 04"
+        ],
+        [
+          "Club 14",
+          "Club 05"
+        ],
+        [
+          "Club 14",
+          "Club 06"
+        ],
+        [
+          "Club 14",
+          "Club 07"
+        ],
+        [
+          "Club 14",
+          "Club 08"
+        ],
+        [
+          "Club 14",
+          "Club 09"
+        ],
+        [
+          "Club 14",
+          "Club 10"
+        ],
+        [
+          "Club 14",
+          "Club 11"
+        ],
+        [
+          "Club 14",
+          "Club 12"
+        ],
+        [
+          "Club 14",
+          "Club 13"
+        ],
+        [
+          "Club 14",
+          "Club 15"
+        ],
+        [
+          "Club 15",
+          "Club 00"
+        ],
+        [
+          "Club 15",
+          "Club 01"
+        ],
+        [
+          "Club 15",
+          "Club 02"
+        ],
+        [
+          "Club 15",
+          "Club 03"
+        ],
+        [
+          "Club 15",
+          "Club 04"
+        ],
+        [
+          "Club 15",
+          "Club 05"
+        ],
+        [
+          "Club 15",
+          "Club 06"
+        ],
+        [
+          "Club 15",
+          "Club 07"
+        ],
+        [
+          "Club 15",
+          "Club 08"
+        ],
+        [
+          "Club 15",
+          "Club 09"
+        ],
+        [
+          "Club 15",
+          "Club 10"
+        ],
+        [
+          "Club 15",
+          "Club 11"
+        ],
+        [
+          "Club 15",
+          "Club 12"
+        ],
+        [
+          "Club 15",
+          "Club 13"
+        ],
+        [
+          "Club 15",
+          "Club 14"
+        ]
+      ]
+    }
+  ]
+}

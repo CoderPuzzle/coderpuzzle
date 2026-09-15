@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1485,
+  "slug": "clone-binary-tree-with-random-pointer",
+  "title": "Clone Binary Tree With Random Pointer",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "topics": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "copyRandomBinaryTree",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "random_tree",
+        "value_type": {
+          "kind": "random_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          },
+          "class": "RandomTreeNode"
+        }
+      }
+    ],
+    "return_codec": "random_tree",
+    "return_type": {
+      "kind": "random_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      },
+      "class": "RandomTreeNode"
+    },
+    "entrypoints": {
+      "go": "copyRandomBinaryTree",
+      "rust": "copy_random_binary_tree",
+      "typescript": "copyRandomBinaryTree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1934,
+  "slug": "confirmation-rate",
+  "title": "Confirmation Rate",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "set",
+    "sql": {
+      "schema": "CREATE TABLE Signups (user_id INTEGER PRIMARY KEY, time_stamp DATETIME); CREATE TABLE Confirmations (user_id INTEGER, time_stamp DATETIME, action VARCHAR, PRIMARY KEY (user_id, time_stamp));"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

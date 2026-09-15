@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2398,
+  "slug": "maximum-number-of-robots-within-budget",
+  "title": "Maximum Number of Robots Within Budget",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Queue",
+    "Sliding Window",
+    "Heap (Priority Queue)",
+    "Prefix Sum",
+    "Monotonic Queue"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Queue",
+    "Sliding Window",
+    "Heap (Priority Queue)",
+    "Prefix Sum",
+    "Monotonic Queue"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumRobots",
+    "parameters": [
+      {
+        "name": "chargeTimes",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "runningCosts",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "budget",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maximumRobots",
+      "rust": "maximum_robots",
+      "typescript": "maximumRobots"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

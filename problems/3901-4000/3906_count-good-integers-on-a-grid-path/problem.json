@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3906,
+  "slug": "count-good-integers-on-a-grid-path",
+  "title": "Count Good Integers on a Grid Path",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countGoodIntegersOnPath",
+    "parameters": [
+      {
+        "name": "l",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "r",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "directions",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "countGoodIntegersOnPath",
+      "rust": "count_good_integers_on_path",
+      "typescript": "countGoodIntegersOnPath"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

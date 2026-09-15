@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 935,
+  "slug": "knight-dialer",
+  "title": "Knight Dialer",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Dynamic Programming"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "knightDialer",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "knightDialer",
+      "rust": "knight_dialer",
+      "typescript": "knightDialer"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

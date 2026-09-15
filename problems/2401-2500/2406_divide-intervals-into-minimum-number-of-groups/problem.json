@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2406,
+  "slug": "divide-intervals-into-minimum-number-of-groups",
+  "title": "Divide Intervals Into Minimum Number of Groups",
+  "difficulty": "Medium",
+  "tags": [
+    "Sorting",
+    "Greedy",
+    "Heap"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Greedy",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minGroups",
+    "parameters": [
+      {
+        "name": "intervals",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minGroups",
+      "rust": "min_groups",
+      "typescript": "minGroups"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

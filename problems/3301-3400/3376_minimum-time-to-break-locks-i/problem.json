@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3376,
+  "slug": "minimum-time-to-break-locks-i",
+  "title": "Minimum Time to Break Locks I",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Backtracking",
+    "Bit Manipulation",
+    "Breadth-First Search",
+    "Bitmask"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Backtracking",
+    "Bit Manipulation",
+    "Breadth-First Search",
+    "Bitmask"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findMinimumTime",
+    "parameters": [
+      {
+        "name": "strength",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "findMinimumTime",
+      "rust": "find_minimum_time",
+      "typescript": "findMinimumTime"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

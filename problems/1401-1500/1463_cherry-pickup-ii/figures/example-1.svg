@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 385" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="drop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <rect width="420" height="385" fill="#ffffff"/>
+  <text x="87" y="34" text-anchor="middle" fill="#2e7d4f" font-weight="600" font-size="12.5">Robot #1</text>
+  <text x="195" y="34" text-anchor="middle" fill="#274db1" font-weight="600" font-size="12.5">Robot #2</text>
+  <line x1="87" y1="44" x2="87" y2="76" stroke="#42525e" stroke-width="1.4" marker-end="url(#drop)"/>
+  <line x1="195" y1="44" x2="195" y2="76" stroke="#42525e" stroke-width="1.4" marker-end="url(#drop)"/>
+  <!-- grid cells -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="60" y="90" width="54" height="54" fill="#2e9e5b" fill-opacity="0.16"/>
+    <rect x="114" y="90" width="54" height="54" fill="#ffffff"/>
+    <rect x="168" y="90" width="54" height="54" fill="#4169E1" fill-opacity="0.16"/>
+    <rect x="60" y="144" width="54" height="54" fill="#2e9e5b" fill-opacity="0.16"/>
+    <rect x="114" y="144" width="54" height="54" fill="#4169E1" fill-opacity="0.16"/>
+    <rect x="168" y="144" width="54" height="54" fill="#ffffff"/>
+    <rect x="60" y="198" width="54" height="54" fill="#ffffff"/>
+    <rect x="114" y="198" width="54" height="54" fill="#2e9e5b" fill-opacity="0.16"/>
+    <rect x="168" y="198" width="54" height="54" fill="#4169E1" fill-opacity="0.16"/>
+    <rect x="60" y="252" width="54" height="54" fill="#2e9e5b" fill-opacity="0.16"/>
+    <rect x="114" y="252" width="54" height="54" fill="#ffffff"/>
+    <rect x="168" y="252" width="54" height="54" fill="#4169E1" fill-opacity="0.16"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="87" y="120">3</text><text x="141" y="120">1</text><text x="195" y="120">1</text>
+    <text x="87" y="174">2</text><text x="141" y="174">5</text><text x="195" y="174">1</text>
+    <text x="87" y="228">1</text><text x="141" y="228">5</text><text x="195" y="228">5</text>
+    <text x="87" y="282">2</text><text x="141" y="282">1</text><text x="195" y="282">1</text>
+  </g>
+  <!-- robot paths -->
+  <polyline points="87,117 87,171 141,225 87,279" fill="none" stroke="#2e9e5b" stroke-width="2.4"/>
+  <polyline points="195,117 141,171 195,225 195,279" fill="none" stroke="#4169E1" stroke-width="2.4"/>
+  <g fill="#2e9e5b" stroke="#ffffff" stroke-width="1.2">
+    <circle cx="87" cy="117" r="4.5"/><circle cx="87" cy="171" r="4.5"/><circle cx="141" cy="225" r="4.5"/><circle cx="87" cy="279" r="4.5"/>
+  </g>
+  <g fill="#4169E1" stroke="#ffffff" stroke-width="1.2">
+    <circle cx="195" cy="117" r="4.5"/><circle cx="141" cy="171" r="4.5"/><circle cx="195" cy="225" r="4.5"/><circle cx="195" cy="279" r="4.5"/>
+  </g>
+  <text x="210" y="352" text-anchor="middle" fill="#2e7d4f" font-size="12.5">Robot #1: 3 + 2 + 5 + 2 = 12</text>
+  <text x="210" y="372" text-anchor="middle" fill="#274db1" font-size="12.5">Robot #2: 1 + 5 + 5 + 1 = 12 · total 24</text>
+</svg>

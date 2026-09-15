@@ -1,0 +1,6 @@
+from typing import List, Optional
+
+
+class Solution:
+    def checkTwoChessboards(self, coordinate1: str, coordinate2: str) -> bool:
+        raise NotImplementedError("TODO")

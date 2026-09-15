@@ -1,0 +1,4 @@
+class Solution {
+  public:
+    vector<int> asteroidCollision(vector<int> &asteroids) { throw logic_error("TODO"); }
+};

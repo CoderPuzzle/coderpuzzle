@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 486,
+  "slug": "predict-the-winner",
+  "title": "Predict the Winner",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Recursion",
+    "Game Theory"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Recursion",
+    "Minimax",
+    "Game Theory",
+    "Zero-Sum Game"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "predictTheWinner",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "predictTheWinner",
+      "rust": "predict_the_winner",
+      "typescript": "predictTheWinner"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 794,
+  "slug": "valid-tic-tac-toe-state",
+  "title": "Valid Tic-Tac-Toe State",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "validTicTacToe",
+    "parameters": [
+      {
+        "name": "board",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "validTicTacToe",
+      "rust": "valid_tic_tac_toe",
+      "typescript": "validTicTacToe"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

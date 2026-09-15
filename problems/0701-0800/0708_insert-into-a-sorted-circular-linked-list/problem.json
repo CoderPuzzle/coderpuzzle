@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 708,
+  "slug": "insert-into-a-sorted-circular-linked-list",
+  "title": "Insert into a Sorted Circular Linked List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List"
+  ],
+  "topics": [
+    "Linked List"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "insert",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "circular_list",
+        "value_type": {
+          "kind": "circular_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "insertVal",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "circular_list",
+    "return_type": {
+      "kind": "circular_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 306" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- n = 7, edges = [[0,1],[1,2],[2,3],[3,4],[3,5],[1,6]]; diameter = 4 edges, 4 diameter paths, special = {0,4,5,6} -> "1000111" (verified by enumerating all simple paths) -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="190" y1="66" x2="190" y2="150"/>
+    <line x1="190" y1="150" x2="270" y2="150"/>
+    <line x1="270" y1="150" x2="350" y2="150"/>
+    <line x1="350" y1="150" x2="350" y2="66"/>
+    <line x1="350" y1="150" x2="350" y2="234"/>
+    <line x1="190" y1="150" x2="190" y2="234"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="3.2">
+    <line x1="190" y1="66" x2="190" y2="150"/>
+    <line x1="190" y1="150" x2="270" y2="150"/>
+    <line x1="270" y1="150" x2="350" y2="150"/>
+    <line x1="350" y1="150" x2="350" y2="66"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#e6ecfb">
+    <circle cx="190" cy="66" r="21"/>
+    <circle cx="350" cy="66" r="21"/>
+    <circle cx="190" cy="234" r="21"/>
+    <circle cx="350" cy="234" r="21"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="190" cy="150" r="21"/>
+    <circle cx="270" cy="150" r="21"/>
+    <circle cx="350" cy="150" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="190" y="71">0</text>
+    <text x="190" y="155">1</text>
+    <text x="270" y="155">2</text>
+    <text x="350" y="155">3</text>
+    <text x="350" y="71">4</text>
+    <text x="350" y="239">5</text>
+    <text x="190" y="239">6</text>
+  </g>
+  <g font-size="12" font-weight="600" text-anchor="middle" fill="#4169E1">
+    <text x="190" y="30">special</text>
+    <text x="350" y="30">special</text>
+    <text x="190" y="276">special</text>
+    <text x="350" y="276">special</text>
+  </g>
+  <text x="270" y="298" text-anchor="middle" fill="#1a2026" font-size="13.5">diameter = <tspan fill="#4169E1" font-weight="700">4</tspan> edges (thick: 0 → 4); every diameter ends at a shaded node → <tspan fill="#4169E1" font-weight="700">"1000111"</tspan></text>
+</svg>

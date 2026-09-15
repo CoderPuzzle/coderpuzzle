@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1115,
+  "slug": "print-foobar-alternately",
+  "title": "Print FooBar Alternately",
+  "difficulty": "Medium",
+  "tags": [
+    "Concurrency"
+  ],
+  "topics": [
+    "Concurrency"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "concurrent",
+    "class_name": "FooBar",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "n",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "foo",
+        "parameters": [
+          {
+            "name": "printFoo",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback"
+            }
+          }
+        ]
+      },
+      {
+        "name": "bar",
+        "parameters": [
+          {
+            "name": "printBar",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback"
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64,
+    "threads": 4
+  }
+}

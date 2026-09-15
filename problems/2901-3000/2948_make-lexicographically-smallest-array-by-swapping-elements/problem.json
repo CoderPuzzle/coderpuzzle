@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2948,
+  "slug": "make-lexicographically-smallest-array-by-swapping-elements",
+  "title": "Make Lexicographically Smallest Array by Swapping Elements",
+  "difficulty": "Medium",
+  "tags": [
+    "Union-Find",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "Union-Find",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "lexicographicallySmallestArray",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "limit",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "lexicographicallySmallestArray",
+      "rust": "lexicographically_smallest_array",
+      "typescript": "lexicographicallySmallestArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

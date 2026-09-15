@@ -1,0 +1,229 @@
+{
+  "public": [
+    {
+      "input": [
+        [
+          "ab",
+          "bc"
+        ],
+        "aabcd"
+      ],
+      "expected": "a<b>abc</b>d"
+    },
+    {
+      "input": [
+        [
+          "ab",
+          "cb"
+        ],
+        "aabcd"
+      ],
+      "expected": "a<b>ab</b>cd"
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        [
+          "xyz",
+          "q"
+        ],
+        "aabbcc"
+      ],
+      "expected": "aabbcc"
+    },
+    {
+      "input": [
+        [
+          "whole"
+        ],
+        "whole"
+      ],
+      "expected": "<b>whole</b>"
+    },
+    {
+      "input": [
+        [
+          "ab",
+          "cd"
+        ],
+        "abcd"
+      ],
+      "expected": "<b>abcd</b>"
+    },
+    {
+      "input": [
+        [
+          "abc",
+          "cde"
+        ],
+        "zabcdez"
+      ],
+      "expected": "z<b>abcde</b>z"
+    },
+    {
+      "input": [
+        [
+          "abcd",
+          "bc"
+        ],
+        "xabcdx"
+      ],
+      "expected": "x<b>abcd</b>x"
+    },
+    {
+      "input": [
+        [
+          "ab"
+        ],
+        "abzzabab"
+      ],
+      "expected": "<b>ab</b>zz<b>abab</b>"
+    },
+    {
+      "input": [
+        [
+          "aa"
+        ],
+        "baaa"
+      ],
+      "expected": "b<b>aaa</b>"
+    },
+    {
+      "input": [
+        [],
+        "abcdefgh"
+      ],
+      "expected": "abcdefgh"
+    },
+    {
+      "input": [
+        [
+          "o",
+          "l"
+        ],
+        "world"
+      ],
+      "expected": "w<b>o</b>r<b>l</b>d"
+    },
+    {
+      "input": [
+        [
+          "ab",
+          "bc",
+          "cd"
+        ],
+        "zabcdez"
+      ],
+      "expected": "z<b>abcd</b>ez"
+    },
+    {
+      "input": [
+        [
+          "he",
+          "ld"
+        ],
+        "helloworld"
+      ],
+      "expected": "<b>he</b>llowor<b>ld</b>"
+    },
+    {
+      "input": [
+        [
+          "ab",
+          "ba"
+        ],
+        "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab"
+      ],
+      "expected": "<b>abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab</b>"
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "aa",
+          "ab",
+          "ac",
+          "ba",
+          "bb",
+          "bc",
+          "ca",
+          "cb",
+          "cc",
+          "aaa",
+          "aab",
+          "aac",
+          "aba",
+          "abb",
+          "abc",
+          "aca",
+          "acb",
+          "acc",
+          "baa",
+          "bab",
+          "bac",
+          "bba",
+          "bbb",
+          "bbc",
+          "bca",
+          "bcb",
+          "bcc",
+          "caa",
+          "cab",
+          "cac",
+          "cba",
+          "cbb",
+          "cbc",
+          "cca",
+          "ccb",
+          "ccc",
+          "aa",
+          "ab",
+          "ac",
+          "ad",
+          "ba",
+          "bb",
+          "bc",
+          "bd"
+        ],
+        "abcabdabeabfabcabdabeabfabcabdabeabfabcabdabeabfabcabdabeabfabcabdabeabfabcabdabeabfabcabdabeabf"
+      ],
+      "expected": "<b>abcabdabeabfabcabdabeabfabcabdabeabfabcabdabeabfabcabdabeabfabcabdabeabfabcabdabeabfabcabdabeabf</b>"
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b"
+        ],
+        "a"
+      ],
+      "expected": "<b>a</b>"
+    },
+    {
+      "input": [
+        [
+          "abcdefghij"
+        ],
+        "short"
+      ],
+      "expected": "short"
+    },
+    {
+      "input": [
+        [
+          "ab",
+          "ab",
+          "zz"
+        ],
+        "abzzab"
+      ],
+      "expected": "<b>abzzab</b>"
+    }
+  ]
+}

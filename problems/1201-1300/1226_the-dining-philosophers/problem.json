@@ -1,0 +1,103 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1226,
+  "slug": "the-dining-philosophers",
+  "title": "The Dining Philosophers",
+  "difficulty": "Medium",
+  "tags": [
+    "Concurrency"
+  ],
+  "topics": [
+    "Concurrency"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "concurrent",
+    "class_name": "DiningPhilosophers",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "wantsToEat",
+        "parameters": [
+          {
+            "name": "philosopher",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "pickLeftFork",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback",
+              "event": [
+                "#0",
+                "left",
+                "pick"
+              ]
+            }
+          },
+          {
+            "name": "pickRightFork",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback",
+              "event": [
+                "#0",
+                "right",
+                "pick"
+              ]
+            }
+          },
+          {
+            "name": "eat",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback",
+              "event": [
+                "#0",
+                "eat"
+              ]
+            }
+          },
+          {
+            "name": "putLeftFork",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback",
+              "event": [
+                "#0",
+                "left",
+                "put"
+              ]
+            }
+          },
+          {
+            "name": "putRightFork",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback",
+              "event": [
+                "#0",
+                "right",
+                "put"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "multiset"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64,
+    "threads": 100
+  }
+}

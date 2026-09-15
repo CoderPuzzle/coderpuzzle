@@ -1,0 +1,2959 @@
+{
+  "public": [
+    {
+      "input": {
+        "constructor": [
+          2
+        ],
+        "threads": [
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              4
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              1
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          }
+        ]
+      },
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          3
+        ],
+        "threads": [
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              1
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          }
+        ]
+      },
+      "expected": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "constructor": [
+          1
+        ],
+        "threads": [
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          }
+        ]
+      },
+      "expected": [
+        7
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          1
+        ],
+        "threads": [
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              12
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              20
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              1
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              12
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              15
+            ]
+          }
+        ]
+      },
+      "expected": [
+        1,
+        6,
+        6,
+        12,
+        12,
+        13,
+        15,
+        20
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          1
+        ],
+        "threads": [
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              11
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              4
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              12
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              16
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              4
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              12
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              15
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          }
+        ]
+      },
+      "expected": [
+        2,
+        2,
+        2,
+        3,
+        4,
+        4,
+        5,
+        5,
+        6,
+        6,
+        6,
+        6,
+        7,
+        7,
+        9,
+        9,
+        10,
+        10,
+        11,
+        12,
+        12,
+        13,
+        13,
+        14,
+        14,
+        14,
+        15,
+        16,
+        18,
+        18
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          2
+        ],
+        "threads": [
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          }
+        ]
+      },
+      "expected": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          2
+        ],
+        "threads": [
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              11
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              19
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              12
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              16
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              4
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              1
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              15
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              11
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              4
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          }
+        ]
+      },
+      "expected": [
+        0,
+        1,
+        2,
+        2,
+        4,
+        4,
+        5,
+        5,
+        6,
+        7,
+        10,
+        10,
+        11,
+        11,
+        12,
+        14,
+        15,
+        16,
+        18,
+        19
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          3
+        ],
+        "threads": [
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              4
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              20
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              20
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              20
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              11
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              15
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              17
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          }
+        ]
+      },
+      "expected": [
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        4,
+        5,
+        5,
+        5,
+        5,
+        6,
+        7,
+        7,
+        9,
+        9,
+        10,
+        10,
+        10,
+        11,
+        13,
+        13,
+        14,
+        15,
+        17,
+        18,
+        18,
+        20,
+        20,
+        20
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          4
+        ],
+        "threads": [
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              20
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              17
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              20
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              19
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              11
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          }
+        ]
+      },
+      "expected": [
+        0,
+        7,
+        10,
+        10,
+        11,
+        17,
+        18,
+        18,
+        18,
+        19,
+        20,
+        20
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          5
+        ],
+        "threads": [
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              16
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              4
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              17
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              11
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              17
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              19
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              16
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          }
+        ]
+      },
+      "expected": [
+        0,
+        4,
+        5,
+        6,
+        6,
+        6,
+        7,
+        9,
+        9,
+        9,
+        10,
+        11,
+        13,
+        13,
+        13,
+        14,
+        14,
+        16,
+        16,
+        17,
+        17,
+        18,
+        18,
+        18,
+        19
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          6
+        ],
+        "threads": [
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              16
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              1
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              16
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              19
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              18
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              8
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              1
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              17
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              12
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              4
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              20
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              20
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              20
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              19
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          }
+        ]
+      },
+      "expected": [
+        0,
+        1,
+        1,
+        2,
+        3,
+        3,
+        3,
+        4,
+        5,
+        7,
+        7,
+        8,
+        9,
+        9,
+        10,
+        12,
+        13,
+        13,
+        13,
+        14,
+        14,
+        16,
+        16,
+        17,
+        18,
+        19,
+        19,
+        20,
+        20,
+        20
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          8
+        ],
+        "threads": [
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              4
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              8
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          }
+        ]
+      },
+      "expected": [
+        3,
+        4,
+        5,
+        7,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          10
+        ],
+        "threads": [
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          }
+        ]
+      },
+      "expected": [
+        0
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          10
+        ],
+        "threads": [
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              12
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              19
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              20
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              8
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              11
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          }
+        ]
+      },
+      "expected": [
+        3,
+        5,
+        7,
+        8,
+        11,
+        12,
+        13,
+        14,
+        19,
+        20
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          10
+        ],
+        "threads": [
+          {
+            "call": "enqueue",
+            "args": [
+              11
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              15
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              15
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              12
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              1
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              16
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              8
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              16
+            ]
+          }
+        ]
+      },
+      "expected": [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        3,
+        3,
+        6,
+        6,
+        7,
+        7,
+        7,
+        7,
+        8,
+        9,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        14,
+        14,
+        14,
+        14,
+        15,
+        15,
+        16,
+        16
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          9
+        ],
+        "threads": [
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              14
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              2
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              17
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              16
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              4
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              0
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              10
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              8
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              17
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              7
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              4
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              11
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              6
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              13
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              8
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              12
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              12
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              9
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              3
+            ]
+          },
+          {
+            "call": "enqueue",
+            "args": [
+              5
+            ]
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          },
+          {
+            "call": "dequeue",
+            "records": true
+          }
+        ]
+      },
+      "expected": [
+        0,
+        2,
+        2,
+        3,
+        3,
+        3,
+        4,
+        4,
+        5,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        9,
+        10,
+        11,
+        12,
+        12,
+        13,
+        13,
+        13,
+        14,
+        16,
+        17,
+        17
+      ]
+    },
+    {
+      "input": {
+        "constructor": [
+          3
+        ],
+        "threads": [
+          {
+            "call": "size",
+            "records": true
+          }
+        ]
+      },
+      "expected": [
+        0
+      ]
+    }
+  ]
+}

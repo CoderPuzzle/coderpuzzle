@@ -1,0 +1,334 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Jack','M',1),\n(2,'Jane','F',1),\n(3,'Mark','M',2);\nINSERT INTO Department VALUES\n(1,'Engineering'),\n(2,'Science'),\n(3,'Law');"
+      ],
+      "expected": [
+        [
+          "Engineering",
+          2
+        ],
+        [
+          "Science",
+          1
+        ],
+        [
+          "Law",
+          0
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Jack','M',1),\n(2,'Jane','F',1),\n(3,'Mark','M',2),\n(4,'Rosa','F',2),\n(5,'Theo','M',1);\nINSERT INTO Department VALUES\n(1,'Engineering'),\n(2,'Science'),\n(3,'Law'),\n(4,'Arts');"
+      ],
+      "expected": [
+        [
+          "Engineering",
+          3
+        ],
+        [
+          "Science",
+          2
+        ],
+        [
+          "Arts",
+          0
+        ],
+        [
+          "Law",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Department VALUES\n(1,'Chemistry'),\n(2,'Music'),\n(3,'Physics');"
+      ],
+      "expected": [
+        [
+          "Chemistry",
+          0
+        ],
+        [
+          "Music",
+          0
+        ],
+        [
+          "Physics",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ivan','M',1),\n(2,'Jade','F',2),\n(3,'Karl','M',3),\n(4,'Lena','F',4),\n(5,'Musa','M',5);\nINSERT INTO Department VALUES\n(1,'Anatomy'),\n(2,'Botany'),\n(3,'Civics'),\n(4,'Drama'),\n(5,'Ethics');"
+      ],
+      "expected": [
+        [
+          "Anatomy",
+          1
+        ],
+        [
+          "Botany",
+          1
+        ],
+        [
+          "Civics",
+          1
+        ],
+        [
+          "Drama",
+          1
+        ],
+        [
+          "Ethics",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'S1','M',1),\n(2,'S2','F',1),\n(3,'S3','M',1),\n(4,'S4','F',1),\n(5,'S5','M',1),\n(6,'S6','F',1),\n(7,'S7','M',1),\n(8,'S8','F',1),\n(9,'S9','M',1),\n(10,'Nadia','F',2),\n(11,'Omar','M',2),\n(12,'Petra','F',3);\nINSERT INTO Department VALUES\n(1,'Engineering'),\n(2,'Science'),\n(3,'Law'),\n(4,'Medicine');"
+      ],
+      "expected": [
+        [
+          "Engineering",
+          9
+        ],
+        [
+          "Science",
+          2
+        ],
+        [
+          "Law",
+          1
+        ],
+        [
+          "Medicine",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Quinn','M',1),\n(2,'Rhea','F',1),\n(3,'Seth','M',1),\n(4,'Tara','F',2),\n(5,'Ugo','M',2),\n(6,'Vera','F',2),\n(7,'Wade','M',3),\n(8,'Xena','F',3),\n(9,'Yuki','M',4),\n(10,'Zane','F',4),\n(11,'Abel','M',5);\nINSERT INTO Department VALUES\n(1,'Physics'),\n(2,'History'),\n(3,'Art'),\n(4,'Music'),\n(5,'Drama');"
+      ],
+      "expected": [
+        [
+          "History",
+          3
+        ],
+        [
+          "Physics",
+          3
+        ],
+        [
+          "Art",
+          2
+        ],
+        [
+          "Music",
+          2
+        ],
+        [
+          "Drama",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Bao','M',2),\n(2,'Cleo','F',3),\n(3,'Dmitri','M',2),\n(4,'Eshe','F',3),\n(5,'Farid','M',1),\n(6,'Greta','F',1),\n(7,'Hugo','M',1),\n(8,'Iris','F',1),\n(9,'Jorge','M',1),\n(10,'Kanya','F',1);\nINSERT INTO Department VALUES\n(1,'Zoology'),\n(2,'Math'),\n(3,'Geology');"
+      ],
+      "expected": [
+        [
+          "Zoology",
+          6
+        ],
+        [
+          "Geology",
+          2
+        ],
+        [
+          "Math",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Ana','F',9),\n(2,'Ben','M',9),\n(3,'Cai','F',5),\n(4,'Dov','M',14),\n(5,'Ela','F',2),\n(6,'Finn','M',11),\n(7,'Gia','F',11),\n(8,'Hank','M',5),\n(9,'Ines','F',11),\n(10,'Jae','M',3),\n(11,'Kim','F',7),\n(12,'Lucia','M',15),\n(13,'Mose','F',5),\n(14,'Nia','M',5),\n(15,'Oren','F',4),\n(16,'Pia','M',11),\n(17,'Ravi','F',4),\n(18,'Sol','M',5),\n(19,'Tessa','F',15),\n(20,'Umar','M',15),\n(21,'Ana','F',12),\n(22,'Ben','M',5),\n(23,'Cai','F',9),\n(24,'Dov','M',6),\n(25,'Ela','F',7),\n(26,'Finn','M',12),\n(27,'Gia','F',13),\n(28,'Hank','M',9),\n(29,'Ines','F',5),\n(30,'Jae','M',3),\n(31,'Kim','F',14),\n(32,'Lucia','M',9),\n(33,'Mose','F',7),\n(34,'Nia','M',12),\n(35,'Oren','F',6),\n(36,'Pia','M',15),\n(37,'Ravi','F',5),\n(38,'Sol','M',7),\n(39,'Tessa','F',6),\n(40,'Umar','M',15),\n(41,'Ana','F',7),\n(42,'Ben','M',2),\n(43,'Cai','F',10),\n(44,'Dov','M',10),\n(45,'Ela','F',9),\n(46,'Finn','M',15),\n(47,'Gia','F',2),\n(48,'Hank','M',11),\n(49,'Ines','F',3),\n(50,'Jae','M',5),\n(51,'Kim','F',14),\n(52,'Lucia','M',15),\n(53,'Mose','F',6),\n(54,'Nia','M',11),\n(55,'Oren','F',12),\n(56,'Pia','M',8),\n(57,'Ravi','F',5),\n(58,'Sol','M',4),\n(59,'Tessa','F',11),\n(60,'Umar','M',15);\nINSERT INTO Department VALUES\n(1,'Aerospace'),\n(2,'Biochemistry'),\n(3,'Classics'),\n(4,'Dance'),\n(5,'Economics'),\n(6,'Forestry'),\n(7,'Genetics'),\n(8,'Hydrology'),\n(9,'Immunology'),\n(10,'Journalism'),\n(11,'Kinesiology'),\n(12,'Linguistics'),\n(13,'Meteorology'),\n(14,'Neuroscience'),\n(15,'Oceanography');"
+      ],
+      "expected": [
+        [
+          "Economics",
+          10
+        ],
+        [
+          "Oceanography",
+          8
+        ],
+        [
+          "Kinesiology",
+          7
+        ],
+        [
+          "Immunology",
+          6
+        ],
+        [
+          "Genetics",
+          5
+        ],
+        [
+          "Forestry",
+          4
+        ],
+        [
+          "Linguistics",
+          4
+        ],
+        [
+          "Biochemistry",
+          3
+        ],
+        [
+          "Classics",
+          3
+        ],
+        [
+          "Dance",
+          3
+        ],
+        [
+          "Neuroscience",
+          3
+        ],
+        [
+          "Journalism",
+          2
+        ],
+        [
+          "Hydrology",
+          1
+        ],
+        [
+          "Meteorology",
+          1
+        ],
+        [
+          "Aerospace",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Department VALUES\n(1,'Philosophy');"
+      ],
+      "expected": [
+        [
+          "Philosophy",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Wen','M',1),\n(2,'Xiu','F',1),\n(3,'Yang','M',1),\n(4,'Zhou','F',1),\n(5,'Bo','M',1);\nINSERT INTO Department VALUES\n(1,'Physics');"
+      ],
+      "expected": [
+        [
+          "Physics",
+          5
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Alia','F',10),\n(2,'Boris','M',25),\n(3,'Cyrus','M',25),\n(4,'Dalia','F',3),\n(5,'Enzo','M',25),\n(6,'Farah','F',25),\n(7,'Gino','M',25),\n(8,'Hana','F',10);\nINSERT INTO Department VALUES\n(10,'Biology'),\n(25,'Astronomy'),\n(3,'Chemistry');"
+      ],
+      "expected": [
+        [
+          "Astronomy",
+          5
+        ],
+        [
+          "Biology",
+          2
+        ],
+        [
+          "Chemistry",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Department VALUES\n(1,'Classics'),\n(2,'Film');"
+      ],
+      "expected": [
+        [
+          "Classics",
+          0
+        ],
+        [
+          "Film",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(1,'Stu1','M',1),\n(2,'Stu2','F',1),\n(3,'Stu3','M',1),\n(4,'Stu4','F',1),\n(5,'Stu5','M',1),\n(6,'Stu6','F',1),\n(7,'Stu7','M',1),\n(8,'Stu8','F',1),\n(9,'Stu9','M',1),\n(10,'Stu10','F',1),\n(11,'Stu11','M',1),\n(12,'Stu12','F',1),\n(13,'Stu13','F',2),\n(14,'Stu14','M',2),\n(15,'Stu15','F',2),\n(16,'Stu16','M',2),\n(17,'Stu17','F',2),\n(18,'Ada Lovelace','F',3),\n(19,'Grace Hopper','F',3),\n(20,'Alan Turing','M',3);\nINSERT INTO Department VALUES\n(1,'Computer Science'),\n(2,'Electrical Engineering'),\n(3,'Mechanical Engineering'),\n(4,'Linguistics');"
+      ],
+      "expected": [
+        [
+          "Computer Science",
+          12
+        ],
+        [
+          "Electrical Engineering",
+          5
+        ],
+        [
+          "Mechanical Engineering",
+          3
+        ],
+        [
+          "Linguistics",
+          0
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Student VALUES\n(101,'Nils','M',2),\n(17,'Mona','F',2),\n(254,'Kip','M',2),\n(5,'Lyle','M',1),\n(42,'Pearl','F',1),\n(909,'Rhea','F',3),\n(63,'Seth','M',3);\nINSERT INTO Department VALUES\n(1,'Naval'),\n(2,'Cartography'),\n(3,'Statistics');"
+      ],
+      "expected": [
+        [
+          "Cartography",
+          3
+        ],
+        [
+          "Naval",
+          2
+        ],
+        [
+          "Statistics",
+          2
+        ]
+      ]
+    }
+  ]
+}

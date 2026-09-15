@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2307,
+  "slug": "check-for-contradictions-in-equations",
+  "title": "Check for Contradictions in Equations",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Depth First Search",
+    "Union Find",
+    "Graph"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Union-Find",
+    "Graph Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "checkContradictions",
+    "parameters": [
+      {
+        "name": "equations",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "values",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "number"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "checkContradictions",
+      "rust": "check_contradictions",
+      "typescript": "checkContradictions"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

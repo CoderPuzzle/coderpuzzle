@@ -1,0 +1,85 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1242,
+  "slug": "web-crawler-multithreaded",
+  "title": "Web Crawler Multithreaded",
+  "difficulty": "Medium",
+  "tags": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Concurrency"
+  ],
+  "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Concurrency"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "crawl",
+    "oracle": "HtmlParser",
+    "oracle_methods": [
+      {
+        "name": "getUrls",
+        "parameters": [
+          {
+            "name": "url",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "startUrl",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "void"
+    },
+    "query_limit": 1000000,
+    "comparison": "set",
+    "provided": {
+      "oracle": {
+        "class": "HtmlParser",
+        "construct": [
+          "urls",
+          "edges"
+        ],
+        "auxiliary": [
+          "startUrl"
+        ],
+        "parameter": "htmlParser"
+      }
+    },
+    "entrypoints": {
+      "go": "crawl",
+      "rust": "crawl",
+      "cpp": "crawl",
+      "javascript": "crawl",
+      "typescript": "crawl"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

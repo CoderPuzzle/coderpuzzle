@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="360" fill="#ffffff"/>
+  <!-- nums = [1,5,4,2,9,9,9]; cells x = 60 + 80i, w 72; five window states -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="40" width="72" height="38" fill="#dbe4f6"/><rect x="140" y="40" width="72" height="38" fill="#dbe4f6"/><rect x="220" y="40" width="72" height="38" fill="#dbe4f6"/>
+    <rect x="300" y="40" width="72" height="38"/><rect x="380" y="40" width="72" height="38"/><rect x="460" y="40" width="72" height="38"/><rect x="540" y="40" width="72" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600"><text x="96" y="64">1</text><text x="176" y="64">5</text><text x="256" y="64">4</text><text x="336" y="64">2</text><text x="416" y="64">9</text><text x="496" y="64">9</text><text x="576" y="64">9</text></g>
+  <text x="40" y="64" fill="#5c6b76" font-size="12.5">[1,5,4]</text>
+  <text x="60" y="104" fill="#4169E1" font-weight="600" font-size="12.5">3 distinct · sum 10 ✓</text>
+  <!-- state 2 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="120" width="72" height="38"/><rect x="140" y="120" width="72" height="38" fill="#dbe4f6"/><rect x="220" y="120" width="72" height="38" fill="#dbe4f6"/><rect x="300" y="120" width="72" height="38" fill="#dbe4f6"/>
+    <rect x="380" y="120" width="72" height="38"/><rect x="460" y="120" width="72" height="38"/><rect x="540" y="120" width="72" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600"><text x="96" y="144">1</text><text x="176" y="144">5</text><text x="256" y="144">4</text><text x="336" y="144">2</text><text x="416" y="144">9</text><text x="496" y="144">9</text><text x="576" y="144">9</text></g>
+  <text x="40" y="144" fill="#5c6b76" font-size="12.5">[5,4,2]</text>
+  <text x="60" y="184" fill="#4169E1" font-weight="600" font-size="12.5">3 distinct · sum 11 ✓</text>
+  <!-- state 3 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="200" width="72" height="38"/><rect x="140" y="200" width="72" height="38"/><rect x="220" y="200" width="72" height="38" fill="#dbe4f6"/><rect x="300" y="200" width="72" height="38" fill="#dbe4f6"/><rect x="380" y="200" width="72" height="38" fill="#dbe4f6"/>
+    <rect x="460" y="200" width="72" height="38"/><rect x="540" y="200" width="72" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600"><text x="96" y="224">1</text><text x="176" y="224">5</text><text x="256" y="224">4</text><text x="336" y="224">2</text><text x="416" y="224">9</text><text x="496" y="224">9</text><text x="576" y="224">9</text></g>
+  <text x="40" y="224" fill="#5c6b76" font-size="12.5">[4,2,9]</text>
+  <text x="60" y="264" fill="#4169E1" font-weight="600" font-size="12.5">3 distinct · sum 15 ✓ best</text>
+  <!-- state 4 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="280" width="72" height="38"/><rect x="140" y="280" width="72" height="38"/><rect x="220" y="280" width="72" height="38"/><rect x="300" y="280" width="72" height="38" fill="#dbe4f6"/><rect x="380" y="280" width="72" height="38" fill="#9db4ea"/><rect x="460" y="280" width="72" height="38" fill="#9db4ea"/>
+    <rect x="540" y="280" width="72" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600"><text x="96" y="304">1</text><text x="176" y="304">5</text><text x="256" y="304">4</text><text x="336" y="304">2</text><text x="416" y="304">9</text><text x="496" y="304">9</text><text x="576" y="304">9</text></g>
+  <text x="40" y="304" fill="#5c6b76" font-size="12.5">[2,9,9]</text>
+  <text x="60" y="344" fill="#5c6b76" font-size="12.5">map holds {2, 9} — only 2 keys, so the window is rejected; [9,9,9] fails the same way.</text>
+</svg>

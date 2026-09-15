@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2095,
+  "slug": "delete-the-middle-node-of-a-linked-list",
+  "title": "Delete the Middle Node of a Linked List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "topics": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "deleteMiddle",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "deleteMiddle",
+      "rust": "delete_middle",
+      "typescript": "deleteMiddle"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

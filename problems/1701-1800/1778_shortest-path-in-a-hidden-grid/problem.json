@@ -1,0 +1,89 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1778,
+  "slug": "shortest-path-in-a-hidden-grid",
+  "title": "Shortest Path in a Hidden Grid",
+  "difficulty": "Medium",
+  "tags": [
+    "DFS",
+    "BFS"
+  ],
+  "topics": [
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Matrix",
+    "Interactive"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "findShortestPath",
+    "oracle": "GridMaster",
+    "oracle_methods": [
+      {
+        "name": "canMove",
+        "parameters": [
+          {
+            "name": "direction",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "move",
+        "parameters": [
+          {
+            "name": "direction",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "isTarget",
+        "parameters": [],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 4000000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "GridMaster",
+        "construct": [
+          "grid",
+          "start",
+          "target"
+        ],
+        "auxiliary": []
+      }
+    }
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2437,
+  "slug": "number-of-valid-clock-times",
+  "title": "Number of Valid Clock Times",
+  "difficulty": "Easy",
+  "tags": [
+    "String",
+    "Enumeration"
+  ],
+  "topics": [
+    "String",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countTime",
+    "parameters": [
+      {
+        "name": "time",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countTime",
+      "rust": "count_time",
+      "typescript": "countTime"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

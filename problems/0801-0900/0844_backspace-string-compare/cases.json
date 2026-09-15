@@ -1,0 +1,160 @@
+{
+  "public": [
+    {
+      "input": [
+        "ab#c",
+        "ad#c"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "ab##",
+        "c#d#"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "a#c",
+        "b"
+      ],
+      "expected": false
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "ab##",
+        "xy##"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "#",
+        "#"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "#a",
+        "a"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abc###d",
+        "d"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "ab####x",
+        "x"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "a##b",
+        "b"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "####",
+        "ab##"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "####",
+        "ab#"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "abc###",
+        "abc##"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "ab###",
+        "a####"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abc#d#e#f#",
+        "ab"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "ab#c",
+        "ac"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "a#bc",
+        "#bc"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "abc#d",
+        "abc#d"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "ab##",
+        "ab#"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "a#c#b",
+        "b#c#a"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "ab##",
+        "ab"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy",
+        "ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab#ab"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy#xy",
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxy"
+      ],
+      "expected": true
+    }
+  ]
+}

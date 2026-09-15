@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2659,
+  "slug": "make-array-empty",
+  "title": "Make Array Empty",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Fenwick Tree",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Greedy",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Sorting",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countOperationsToEmptyArray",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "countOperationsToEmptyArray",
+      "rust": "count_operations_to_empty_array",
+      "typescript": "countOperationsToEmptyArray"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

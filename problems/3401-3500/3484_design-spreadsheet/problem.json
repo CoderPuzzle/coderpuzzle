@@ -1,0 +1,95 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3484,
+  "slug": "design-spreadsheet",
+  "title": "Design Spreadsheet",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Spreadsheet",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "rows",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "setCell",
+        "parameters": [
+          {
+            "name": "cell",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "value",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "resetCell",
+        "parameters": [
+          {
+            "name": "cell",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "getValue",
+        "parameters": [
+          {
+            "name": "formula",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

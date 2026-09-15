@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1584,
+  "slug": "min-cost-to-connect-all-points",
+  "title": "Min Cost to Connect All Points",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Union Find",
+    "Graph",
+    "Minimum Spanning Tree"
+  ],
+  "topics": [
+    "Array",
+    "Union-Find",
+    "Graph Theory",
+    "Minimum Spanning Tree",
+    "Prim's Algorithm",
+    "Kruskal's Algorithm",
+    "Borůvka's Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minCostConnectPoints",
+    "parameters": [
+      {
+        "name": "points",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "minCostConnectPoints",
+      "rust": "min_cost_connect_points",
+      "typescript": "minCostConnectPoints"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

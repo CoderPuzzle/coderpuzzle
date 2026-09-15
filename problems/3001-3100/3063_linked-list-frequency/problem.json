@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3063,
+  "slug": "linked-list-frequency",
+  "title": "Linked List Frequency",
+  "difficulty": "Easy",
+  "tags": [
+    "Hash Table",
+    "Linked List",
+    "Counting"
+  ],
+  "topics": [
+    "Hash Table",
+    "Linked List",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "frequenciesOfElements",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "frequenciesOfElements",
+      "rust": "frequencies_of_elements",
+      "typescript": "frequenciesOfElements"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

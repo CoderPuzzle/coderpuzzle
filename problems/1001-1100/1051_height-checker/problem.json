@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1051,
+  "slug": "height-checker",
+  "title": "Height Checker",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Counting Sort",
+    "Bubble Sort"
+  ],
+  "topics": [
+    "Array",
+    "Sorting",
+    "Counting Sort",
+    "Bubble Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "heightChecker",
+    "parameters": [
+      {
+        "name": "heights",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "heightChecker",
+      "rust": "height_checker",
+      "typescript": "heightChecker"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

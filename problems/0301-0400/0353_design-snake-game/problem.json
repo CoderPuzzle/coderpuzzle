@@ -1,0 +1,88 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 353,
+  "slug": "design-snake-game",
+  "title": "Design Snake Game",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design",
+    "Queue",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Design",
+    "Queue",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "SnakeGame",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "width",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "height",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "food",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "move",
+        "parameters": [
+          {
+            "name": "direction",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact",
+    "entrypoints": {
+      "rust.move": "move_snake"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

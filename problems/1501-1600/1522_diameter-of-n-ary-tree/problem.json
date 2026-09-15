@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1522,
+  "slug": "diameter-of-n-ary-tree",
+  "title": "Diameter of N-ary Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "DP on Trees"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "DP on Trees"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "diameter",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "nary_tree",
+        "value_type": {
+          "kind": "nary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "diameter",
+      "rust": "diameter",
+      "typescript": "diameter"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

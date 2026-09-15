@@ -10,15 +10,11 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY app ./app
 
-# git fetches remote problem sets (CODERPUZZLE_PROBLEMS=owner/name or a git URL)
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends git \
-    && rm -rf /var/lib/apt/lists/*
-
+# No git: the problem set is a bind-mounted directory, never a repository.
 RUN groupadd --gid 10001 coderpuzzle \
     && useradd --uid 10001 --gid coderpuzzle --no-create-home coderpuzzle \
-    && mkdir -p /data /queue /cache/problems \
-    && chown -R coderpuzzle:coderpuzzle /data /queue /cache /app \
+    && mkdir -p /data /queue \
+    && chown -R coderpuzzle:coderpuzzle /data /queue /app \
     && chmod 0700 /data \
     && chmod 0770 /queue
 

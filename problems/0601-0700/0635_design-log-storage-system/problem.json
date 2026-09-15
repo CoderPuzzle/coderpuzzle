@@ -1,0 +1,89 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 635,
+  "slug": "design-log-storage-system",
+  "title": "Design Log Storage System",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Design",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Design",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "LogSystem",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "put",
+        "parameters": [
+          {
+            "name": "id",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "timestamp",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "retrieve",
+        "parameters": [
+          {
+            "name": "start",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "end",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "granularity",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

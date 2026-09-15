@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1538,
+  "slug": "guess-the-majority-in-a-hidden-array",
+  "title": "Guess the Majority in a Hidden Array",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Interactive",
+    "Boyer–Moore Majority Vote Algorithm"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Interactive",
+    "Boyer–Moore Majority Vote Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "guessMajority",
+    "oracle": "ArrayReader",
+    "oracle_methods": [
+      {
+        "name": "query",
+        "parameters": [
+          {
+            "name": "a",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "b",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "c",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "d",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "length",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "parameters": [],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 200000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "ArrayReader",
+        "construct": [
+          "nums"
+        ],
+        "auxiliary": []
+      }
+    },
+    "entrypoints": {
+      "go": "guessMajority",
+      "rust": "guess_majority",
+      "cpp": "guessMajority",
+      "javascript": "guessMajority",
+      "typescript": "guessMajority"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

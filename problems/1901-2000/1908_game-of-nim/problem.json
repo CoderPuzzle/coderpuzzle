@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1908,
+  "slug": "game-of-nim",
+  "title": "Game of Nim",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Brainteaser",
+    "Game Theory",
+    "Nim Game",
+    "Sprague–Grundy Theorem",
+    "Impartial Game"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Brainteaser",
+    "Game Theory",
+    "Nim Game",
+    "Sprague–Grundy Theorem",
+    "Impartial Game"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "nimGame",
+    "parameters": [
+      {
+        "name": "piles",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "nimGame",
+      "rust": "nim_game",
+      "typescript": "nimGame"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2018,
+  "slug": "check-if-word-can-be-placed-in-crossword",
+  "title": "Check if Word Can Be Placed In Crossword",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Matrix",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "placeWordInCrossword",
+    "parameters": [
+      {
+        "name": "board",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "word",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "placeWordInCrossword",
+      "rust": "place_word_in_crossword",
+      "typescript": "placeWordInCrossword"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

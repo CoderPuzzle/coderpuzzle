@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2762,
+  "slug": "continuous-subarrays",
+  "title": "Continuous Subarrays",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Queue",
+    "Sliding Window",
+    "Heap (Priority Queue)",
+    "Ordered Set",
+    "Monotonic Queue"
+  ],
+  "topics": [
+    "Array",
+    "Queue",
+    "Sliding Window",
+    "Heap (Priority Queue)",
+    "Ordered Set",
+    "Monotonic Queue"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "continuousSubarrays",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "continuousSubarrays",
+      "rust": "continuous_subarrays",
+      "typescript": "continuousSubarrays"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3245,
+  "slug": "alternating-groups-iii",
+  "title": "Alternating Groups III",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Binary Indexed Tree",
+    "Ordered Set"
+  ],
+  "topics": [
+    "Array",
+    "Binary Indexed Tree",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberOfAlternatingGroups",
+    "parameters": [
+      {
+        "name": "colors",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "numberOfAlternatingGroups",
+      "rust": "number_of_alternating_groups",
+      "typescript": "numberOfAlternatingGroups"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

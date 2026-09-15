@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1810,
+  "slug": "minimum-path-cost-in-a-hidden-grid",
+  "title": "Minimum Path Cost in a Hidden Grid",
+  "difficulty": "Medium",
+  "tags": [
+    "DFS",
+    "Shortest Path",
+    "Heap"
+  ],
+  "topics": [
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Interactive",
+    "Shortest Path"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "findMinimumPath",
+    "oracle": "GridMaster",
+    "oracle_methods": [
+      {
+        "name": "canMove",
+        "parameters": [
+          {
+            "name": "direction",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "move",
+        "parameters": [
+          {
+            "name": "direction",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "isTarget",
+        "parameters": [],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 1000000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "GridMaster",
+        "construct": [
+          "grid",
+          "start",
+          "target"
+        ],
+        "auxiliary": []
+      }
+    }
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

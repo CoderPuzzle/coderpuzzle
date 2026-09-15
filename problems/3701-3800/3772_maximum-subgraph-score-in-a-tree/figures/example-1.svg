@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 196" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- n = 3, edges = [[0,1],[1,2]], good = [1,0,1]; best score per node = [1,1,1] (verified by brute force over connected subgraphs) -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="110" y1="72" x2="230" y2="72"/>
+    <line x1="230" y1="72" x2="350" y2="72"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="3.2">
+    <line x1="110" y1="72" x2="230" y2="72"/>
+    <line x1="230" y1="72" x2="350" y2="72"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#e6ecfb">
+    <circle cx="110" cy="72" r="21"/>
+    <circle cx="350" cy="72" r="21"/>
+  </g>
+  <circle cx="230" cy="72" r="21" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="110" y="77">0</text>
+    <text x="230" y="77">1</text>
+    <text x="350" y="77">2</text>
+  </g>
+  <g font-size="12" font-weight="600" text-anchor="middle">
+    <text x="110" y="120" fill="#4169E1">good</text>
+    <text x="230" y="120" fill="#5c6b76">bad</text>
+    <text x="350" y="120" fill="#4169E1">good</text>
+  </g>
+  <text x="230" y="172" text-anchor="middle" fill="#1a2026" font-size="13.5">the whole tree is best for every node: <tspan fill="#4169E1" font-weight="700">2</tspan> good − <tspan fill="#4169E1" font-weight="700">1</tspan> bad = score <tspan fill="#4169E1" font-weight="700">1</tspan></text>
+</svg>

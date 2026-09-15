@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2246,
+  "slug": "longest-path-with-different-adjacent-characters",
+  "title": "Longest Path With Different Adjacent Characters",
+  "difficulty": "Hard",
+  "tags": [
+    "Tree",
+    "Tree DP",
+    "DFS"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Tree",
+    "Depth-First Search",
+    "Graph Theory",
+    "Topological Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestPath",
+    "parameters": [
+      {
+        "name": "parent",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "longestPath",
+      "rust": "longest_path",
+      "typescript": "longestPath"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

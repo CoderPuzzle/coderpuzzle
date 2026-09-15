@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1605,
+  "slug": "find-valid-matrix-given-row-and-column-sums",
+  "title": "Find Valid Matrix Given Row and Column Sums",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Matrix",
+    "Flow Network"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Matrix",
+    "Flow Network"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "restoreMatrix",
+    "parameters": [
+      {
+        "name": "rowSum",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "colSum",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "restoreMatrix",
+      "rust": "restore_matrix",
+      "typescript": "restoreMatrix"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 4096
+  }
+}

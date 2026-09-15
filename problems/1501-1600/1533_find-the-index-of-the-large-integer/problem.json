@@ -1,0 +1,106 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1533,
+  "slug": "find-the-index-of-the-large-integer",
+  "title": "Find the Index of the Large Integer",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Interactive"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Interactive"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "getIndex",
+    "oracle": "ArrayReader",
+    "oracle_methods": [
+      {
+        "name": "compareSub",
+        "parameters": [
+          {
+            "name": "l",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "r",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "x",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "y",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "length",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "parameters": [],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 20,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "ArrayReader",
+        "construct": [
+          "arr"
+        ],
+        "auxiliary": [],
+        "parameter": "reader"
+      }
+    },
+    "entrypoints": {
+      "go": "getIndex",
+      "rust": "get_index",
+      "cpp": "getIndex",
+      "javascript": "getIndex",
+      "typescript": "getIndex"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

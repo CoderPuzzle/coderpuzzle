@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2125,
+  "slug": "number-of-laser-beams-in-a-bank",
+  "title": "Number of Laser Beams in a Bank",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "String",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "String",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberOfBeams",
+    "parameters": [
+      {
+        "name": "bank",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numberOfBeams",
+      "rust": "number_of_beams",
+      "typescript": "numberOfBeams"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

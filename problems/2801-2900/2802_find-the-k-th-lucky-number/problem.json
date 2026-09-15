@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2802,
+  "slug": "find-the-k-th-lucky-number",
+  "title": "Find The K-th Lucky Number",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "String",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "kthLuckyNumber",
+    "parameters": [
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "kthLuckyNumber",
+      "rust": "kth_lucky_number",
+      "typescript": "kthLuckyNumber"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

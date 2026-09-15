@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "two_pass_dp",
+  "id": 1162,
+  "slug": "as-far-from-land-as-possible",
+  "title": "As Far from Land as Possible",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxDistance",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxDistance",
+      "rust": "max_distance",
+      "typescript": "maxDistance"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

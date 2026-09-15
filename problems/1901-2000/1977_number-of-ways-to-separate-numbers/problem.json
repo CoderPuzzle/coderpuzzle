@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1977,
+  "slug": "number-of-ways-to-separate-numbers",
+  "title": "Number of Ways to Separate Numbers",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "topics": [
+    "String",
+    "Dynamic Programming",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberOfCombinations",
+    "parameters": [
+      {
+        "name": "num",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numberOfCombinations",
+      "rust": "number_of_combinations",
+      "typescript": "numberOfCombinations"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

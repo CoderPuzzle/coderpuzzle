@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="700" height="290" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- BEFORE tree -->
+  <text x="150" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5">before</text>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="160" y1="72" x2="90" y2="132"/>
+    <line x1="160" y1="72" x2="240" y2="132"/>
+    <line x1="90" y1="164" x2="52" y2="220"/>
+    <line x1="90" y1="164" x2="128" y2="220"/>
+    <line x1="240" y1="164" x2="300" y2="220"/>
+  </g>
+  <g text-anchor="middle">
+    <circle cx="160" cy="56" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+    <text x="160" y="61" fill="#1a2026">5</text>
+    <circle cx="90" cy="148" r="20" fill="#f7e9d7" stroke="#b57f30" stroke-width="1.8"/>
+    <text x="90" y="153" fill="#1a2026">3</text>
+    <circle cx="240" cy="148" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+    <text x="240" y="153" fill="#1a2026">6</text>
+    <circle cx="52" cy="238" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="52" y="243" fill="#1a2026">2</text>
+    <circle cx="128" cy="238" r="18" fill="#4169E1"/>
+    <text x="128" y="243" fill="#ffffff">4</text>
+    <circle cx="300" cy="238" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="300" y="243" fill="#1a2026">7</text>
+  </g>
+  <g font-size="11.5">
+    <text x="56" y="176" fill="#b57f30">two children</text>
+    <text x="152" y="266" fill="#4169E1">successor</text>
+  </g>
+  <!-- arrow between trees -->
+  <line x1="330" y1="150" x2="386" y2="150" stroke="#42525e" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <!-- AFTER tree -->
+  <text x="545" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5">after</text>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="555" y1="72" x2="480" y2="132"/>
+    <line x1="555" y1="72" x2="635" y2="132"/>
+    <line x1="480" y1="164" x2="480" y2="220"/>
+    <line x1="635" y1="164" x2="690" y2="220"/>
+  </g>
+  <g text-anchor="middle">
+    <circle cx="555" cy="56" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+    <text x="555" y="61" fill="#1a2026">5</text>
+    <circle cx="480" cy="148" r="20" fill="#4169E1"/>
+    <text x="480" y="153" fill="#ffffff">4</text>
+    <circle cx="635" cy="148" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+    <text x="635" y="153" fill="#1a2026">6</text>
+    <circle cx="480" cy="238" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="480" y="243" fill="#1a2026">2</text>
+    <circle cx="690" cy="238" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="690" y="243" fill="#1a2026">7</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="272">Deleting key 3: the node keeps its position while its value becomes the in-order</text>
+    <text x="40" y="288">successor's value, then the successor node is deleted by a simple splice.</text>
+  </g>
+</svg>

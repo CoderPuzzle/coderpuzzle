@@ -1,8 +1,7 @@
 # scripts/ — authoring gates and local dev drivers
 
-Tracked tooling that runs on this checkout (not in the runner image).
-Bank paths default to the sibling `../coderpuzzle-problems` checkout;
-override with `CODERPUZZLE_PROBLEMS_BANK`.
+Tracked tooling for this checkout's `problems/` tree and any other
+on-disk problem set selected with `CODERPUZZLE_PROBLEMS`.
 
 ## Authoring gates
 
@@ -13,12 +12,14 @@ override with `CODERPUZZLE_PROBLEMS_BANK`.
   on demand; local cpp compiles get the `-I scripts/verify_shim` shim.
   Needs `frontend/node_modules` installed (tsc) and the local
   toolchain on PATH.
-- `verify_corpus.py` — whole-bank consistency check (crawl index ↔
-  bettercode ↔ problems-originals ↔ problems-adapt/ keyed by MAPPING.json):
+- `verify_corpus.py` — whole-corpus consistency check (crawl index ↔
+  bettercode ↔ this repo's originals ↔ the private adapted tree keyed by
+  MAPPING.json):
   coverage, slug parity, shard placement, bundle file shape, the 13
   `-crawl` twins. Run after any tree surgery. Upstream scrape sources
   default to `~/code/lc-crawl` and `~/code/bettercode`; override with
-  `CODERPUZZLE_CRAWL` / `CODERPUZZLE_BETTERCODE`.
+  `CODERPUZZLE_CRAWL` / `CODERPUZZLE_BETTERCODE`; set
+  `CODERPUZZLE_ADAPTED_PROBLEMS` to the adapted `problems/` directory.
 
 ## Headless-UI drivers (frontend work)
 

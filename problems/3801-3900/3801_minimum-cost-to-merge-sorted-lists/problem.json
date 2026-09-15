@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3801,
+  "slug": "minimum-cost-to-merge-sorted-lists",
+  "title": "Minimum Cost to Merge Sorted Lists",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Binary Search",
+    "Dynamic Programming",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Array",
+    "Two Pointers",
+    "Binary Search",
+    "Dynamic Programming",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minMergeCost",
+    "parameters": [
+      {
+        "name": "lists",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "minMergeCost",
+      "rust": "min_merge_cost",
+      "typescript": "minMergeCost"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

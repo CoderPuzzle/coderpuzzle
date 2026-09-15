@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3055,
+  "slug": "top-percentile-fraud",
+  "title": "Top Percentile Fraud",
+  "difficulty": "Medium",
+  "tags": [
+    "Database",
+    "SQL",
+    "Window Function"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "exact",
+    "sql": {
+      "schema": "CREATE TABLE Fraud (policy_id INTEGER, state TEXT, fraud_score REAL);"
+    }
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

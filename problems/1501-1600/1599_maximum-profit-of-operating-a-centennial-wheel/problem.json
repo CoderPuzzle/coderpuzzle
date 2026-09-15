@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1599,
+  "slug": "maximum-profit-of-operating-a-centennial-wheel",
+  "title": "Maximum Profit of Operating a Centennial Wheel",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minOperationsMaxProfit",
+    "parameters": [
+      {
+        "name": "customers",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "boardingCost",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "runningCost",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minOperationsMaxProfit",
+      "rust": "min_operations_max_profit",
+      "typescript": "minOperationsMaxProfit"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

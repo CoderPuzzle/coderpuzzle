@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1917,
+  "slug": "leetcodify-friends-recommendations",
+  "title": "Leetcodify Friends Recommendations",
+  "difficulty": "Hard",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Listens (user_id INTEGER, song_id INTEGER, day DATE); CREATE TABLE Friendship (user1_id INTEGER, user2_id INTEGER, PRIMARY KEY (user1_id, user2_id));"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

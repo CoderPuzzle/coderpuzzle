@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2936,
+  "slug": "number-of-equal-numbers-blocks",
+  "title": "Number of Equal Numbers Blocks",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Interactive"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Interactive"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "countBlocks",
+    "oracle": "BigArray",
+    "oracle_methods": [
+      {
+        "name": "at",
+        "parameters": [
+          {
+            "name": "index",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "size",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "parameters": [],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 500000000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "BigArray",
+        "construct": [
+          "blocks"
+        ],
+        "auxiliary": [],
+        "parameter": "nums"
+      }
+    },
+    "entrypoints": {
+      "go": "countBlocks",
+      "rust": "count_blocks",
+      "cpp": "countBlocks",
+      "javascript": "countBlocks",
+      "typescript": "countBlocks"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

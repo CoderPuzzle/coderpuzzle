@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3491,
+  "slug": "phone-number-prefix",
+  "title": "Phone Number Prefix",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "String",
+    "Trie",
+    "Sorting"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Trie",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "phonePrefix",
+    "parameters": [
+      {
+        "name": "numbers",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "phonePrefix",
+      "rust": "phone_prefix",
+      "typescript": "phonePrefix"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

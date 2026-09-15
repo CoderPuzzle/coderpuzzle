@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 280" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="280" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- edges from 1 to its children 10..13; 2 has none within n=13 -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="200" y1="80" x2="110" y2="150"/>
+    <line x1="200" y1="80" x2="173" y2="150"/>
+    <line x1="200" y1="80" x2="237" y2="150"/>
+    <line x1="200" y1="80" x2="300" y2="150"/>
+  </g>
+  <!-- walk arrow: descend from 1 to 10 -->
+  <line x1="192" y1="92" x2="122" y2="144" stroke="#4169E1" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <!-- nodes -->
+  <g text-anchor="middle" font-weight="600">
+    <circle cx="200" cy="62" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+    <text x="200" y="67" fill="#1a2026">1</text>
+    <circle cx="480" cy="62" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+    <text x="480" y="67" fill="#1a2026">2</text>
+    <text x="540" y="67" fill="#5c6b76" font-weight="400">3 … 9</text>
+    <circle cx="100" cy="168" r="20" fill="#4169E1"/>
+    <text x="100" y="173" fill="#ffffff">10</text>
+    <circle cx="165" cy="168" r="20" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="165" y="173" fill="#1a2026">11</text>
+    <circle cx="230" cy="168" r="20" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="230" y="173" fill="#1a2026">12</text>
+    <circle cx="295" cy="168" r="20" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="295" y="173" fill="#1a2026">13</text>
+  </g>
+  <!-- subtree bracket -->
+  <path d="M 76 200 H 70 V 226 H 320 V 200 H 314" fill="none" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="196" y="246" text-anchor="middle" fill="#4169E1" font-size="12.5">subtree of prefix 1: 5 numbers (1, 10, 11, 12, 13)</text>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="380" y="120">prefix 2 has no children</text>
+    <text x="380" y="136">here (20 &gt; 13), so its</text>
+    <text x="380" y="152">subtree holds just {2}.</text>
+    <text x="380" y="184">k = 2 means skipping one</text>
+    <text x="380" y="200">node after the root: the 5-</text>
+    <text x="380" y="216">node subtree does not fit,</text>
+    <text x="380" y="232">so the walk descends and</text>
+    <text x="380" y="248">lands on 10.</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="24">Numbers 1…13 as a denary tree; preorder reads them lexicographically:</text>
+    <text x="40" y="40">1, 10, 11, 12, 13, 2, 3, … — the second smallest is 10.</text>
+  </g>
+</svg>

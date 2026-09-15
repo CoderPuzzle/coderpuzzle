@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="460" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- eliminated cells (shaded): whole columns 2-4 below row 0, plus cell (0,0) -->
+  <g fill="#e9ebee">
+    <rect x="340" y="90" width="64" height="44"/><rect x="340" y="140" width="64" height="44"/><rect x="340" y="190" width="64" height="44"/><rect x="340" y="240" width="64" height="44"/>
+    <rect x="270" y="90" width="64" height="44"/><rect x="270" y="140" width="64" height="44"/><rect x="270" y="190" width="64" height="44"/><rect x="270" y="240" width="64" height="44"/>
+    <rect x="200" y="90" width="64" height="44"/><rect x="200" y="140" width="64" height="44"/><rect x="200" y="190" width="64" height="44"/><rect x="200" y="240" width="64" height="44"/>
+    <rect x="60" y="40" width="64" height="44"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.3" fill="none">
+    <rect x="60" y="40" width="64" height="44"/><rect x="130" y="40" width="64" height="44"/><rect x="200" y="40" width="64" height="44"/><rect x="270" y="40" width="64" height="44"/><rect x="340" y="40" width="64" height="44"/>
+    <rect x="60" y="90" width="64" height="44"/><rect x="130" y="90" width="64" height="44"/><rect x="200" y="90" width="64" height="44"/><rect x="270" y="90" width="64" height="44"/><rect x="340" y="90" width="64" height="44"/>
+    <rect x="60" y="140" width="64" height="44"/><rect x="130" y="140" width="64" height="44"/><rect x="200" y="140" width="64" height="44"/><rect x="270" y="140" width="64" height="44"/><rect x="340" y="140" width="64" height="44"/>
+    <rect x="60" y="190" width="64" height="44"/><rect x="130" y="190" width="64" height="44"/><rect x="200" y="190" width="64" height="44"/><rect x="270" y="190" width="64" height="44"/><rect x="340" y="190" width="64" height="44"/>
+    <rect x="60" y="240" width="64" height="44"/><rect x="130" y="240" width="64" height="44"/><rect x="200" y="240" width="64" height="44"/><rect x="270" y="240" width="64" height="44"/><rect x="340" y="240" width="64" height="44"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="92" y="70">1</text><text x="162" y="70">4</text><text x="232" y="70">7</text><text x="302" y="70">11</text><text x="372" y="70">15</text>
+    <text x="92" y="120">2</text><text x="162" y="120" font-weight="700">5</text><text x="232" y="120">8</text><text x="302" y="120">12</text><text x="372" y="120">19</text>
+    <text x="92" y="170">3</text><text x="162" y="170">6</text><text x="232" y="170">9</text><text x="302" y="170">16</text><text x="372" y="170">22</text>
+    <text x="92" y="220">10</text><text x="162" y="220">13</text><text x="232" y="220">14</text><text x="302" y="220">17</text><text x="372" y="220">24</text>
+    <text x="92" y="270">18</text><text x="162" y="270">21</text><text x="232" y="270">23</text><text x="302" y="270">26</text><text x="372" y="270">30</text>
+  </g>
+  <!-- found cell -->
+  <rect x="130" y="90" width="64" height="44" fill="#4169E1" fill-opacity="0.9"/>
+  <text x="162" y="120" text-anchor="middle" fill="#ffffff" font-weight="700">5</text>
+  <!-- walk arrows -->
+  <g stroke="#4169E1" stroke-width="2.2" fill="none">
+    <line x1="356" y1="56" x2="318" y2="56" marker-end="url(#arrow)"/>
+    <line x1="286" y1="56" x2="248" y2="56" marker-end="url(#arrow)"/>
+    <line x1="216" y1="56" x2="178" y2="56" marker-end="url(#arrow)"/>
+    <line x1="162" y1="76" x2="162" y2="98" marker-end="url(#arrow)"/>
+  </g>
+  <!-- step badges -->
+  <g>
+    <circle cx="346" cy="46" r="8.5" fill="#4169E1"/><text x="346" y="50" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600">1</text>
+    <circle cx="276" cy="46" r="8.5" fill="#4169E1"/><text x="276" y="50" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600">2</text>
+    <circle cx="206" cy="46" r="8.5" fill="#4169E1"/><text x="206" y="50" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600">3</text>
+    <circle cx="136" cy="46" r="8.5" fill="#4169E1"/><text x="136" y="50" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600">4</text>
+    <circle cx="136" cy="96" r="8.5" fill="#4169E1"/><text x="136" y="100" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600">5</text>
+  </g>
+  <text x="60" y="312" fill="#5c6b76" font-size="12.5">start top-right, target 5: 15 &#8594; 11 &#8594; 7 each drop a column, 4 &#60; 5 drops the row</text>
+  <text x="60" y="330" fill="#5c6b76" font-size="12.5">shaded cells are already eliminated &#183; the walk lands on 5 in five steps</text>
+</svg>

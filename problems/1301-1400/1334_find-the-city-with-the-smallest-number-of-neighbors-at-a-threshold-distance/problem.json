@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "reference_solution": "dijkstra_every_node",
+  "id": 1334,
+  "slug": "find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance",
+  "title": "Find the City With the Smallest Number of Neighbors at a Threshold Distance",
+  "difficulty": "Medium",
+  "tags": [
+    "Graph",
+    "Shortest Path",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Graph Theory",
+    "Shortest Path",
+    "Dijkstra's Algorithm",
+    "Bellman–Ford Algorithm",
+    "Floyd–Warshall Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findTheCity",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "distanceThreshold",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "findTheCity",
+      "rust": "find_the_city",
+      "typescript": "findTheCity"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

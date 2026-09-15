@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 158,
+  "slug": "read-n-characters-given-read4-ii-call-multiple-times",
+  "title": "Read N Characters Given read4 II - Call Multiple Times",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Simulation",
+    "Interactive"
+  ],
+  "topics": [
+    "Array",
+    "Simulation",
+    "Interactive"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "read",
+    "oracle": "File",
+    "oracle_methods": [
+      {
+        "name": "read4",
+        "parameters": [
+          {
+            "name": "buf4",
+            "codec": "json"
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "buf",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        },
+        "out_buffer": {
+          "capacity_from": "capacity"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 1000000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "File",
+        "construct": [
+          "content",
+          "capacity"
+        ],
+        "auxiliary": [
+          "queries"
+        ]
+      }
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

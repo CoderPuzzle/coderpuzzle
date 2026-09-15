@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2117,
+  "slug": "abbreviating-the-product-of-a-range",
+  "title": "Abbreviating the Product of a Range",
+  "difficulty": "Hard",
+  "tags": [
+    "Math",
+    "Number Theory"
+  ],
+  "topics": [
+    "Math",
+    "Number Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "abbreviateProduct",
+    "parameters": [
+      {
+        "name": "left",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "right",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "abbreviateProduct",
+      "rust": "abbreviate_product",
+      "typescript": "abbreviateProduct"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

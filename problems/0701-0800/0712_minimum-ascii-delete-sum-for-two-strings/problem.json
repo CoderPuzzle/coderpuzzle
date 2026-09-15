@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 712,
+  "slug": "minimum-ascii-delete-sum-for-two-strings",
+  "title": "Minimum ASCII Delete Sum for Two Strings",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "String",
+    "Dynamic Programming",
+    "Longest Common Subsequence"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumDeleteSum",
+    "parameters": [
+      {
+        "name": "s1",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "s2",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumDeleteSum",
+      "rust": "minimum_delete_sum",
+      "typescript": "minimumDeleteSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

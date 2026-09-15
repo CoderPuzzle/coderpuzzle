@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 590,
+  "slug": "n-ary-tree-postorder-traversal",
+  "title": "N-ary Tree Postorder Traversal",
+  "difficulty": "Easy",
+  "tags": [
+    "Stack",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Stack",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "postorder",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "nary_tree",
+        "value_type": {
+          "kind": "nary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "postorder",
+      "rust": "postorder",
+      "typescript": "postorder"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

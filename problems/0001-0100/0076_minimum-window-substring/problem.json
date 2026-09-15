@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "sliding_window",
+  "id": 76,
+  "slug": "minimum-window-substring",
+  "title": "Minimum Window Substring",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Hash Table",
+    "Sliding Window"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minWindow",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "t",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "minWindow",
+      "rust": "min_window",
+      "typescript": "minWindow"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

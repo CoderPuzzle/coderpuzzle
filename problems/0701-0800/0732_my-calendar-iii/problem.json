@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 732,
+  "slug": "my-calendar-iii",
+  "title": "My Calendar III",
+  "difficulty": "Hard",
+  "tags": [
+    "Segment Tree",
+    "Balanced BST",
+    "Difference Array"
+  ],
+  "topics": [
+    "Binary Search",
+    "Design",
+    "Segment Tree",
+    "Prefix Sum",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "MyCalendarThree",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "book",
+        "parameters": [
+          {
+            "name": "startTime",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "endTime",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

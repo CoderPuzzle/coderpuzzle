@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 256" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+<line x1="240" y1="50" x2="100" y2="150" stroke="#42525e" stroke-width="1.5"/>
+  <line x1="240" y1="50" x2="380" y2="150" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="240" cy="50" r="17" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/><text x="240" y="55" text-anchor="middle" font-weight="600">3</text>
+  <circle cx="100" cy="150" r="17" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/><text x="100" y="155" text-anchor="middle" font-weight="600">0</text>
+  <circle cx="380" cy="150" r="17" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/><text x="380" y="155" text-anchor="middle" font-weight="600">0</text>
+  <line x1="228" y1="62" x2="108" y2="138" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowB)"/>
+  <line x1="252" y1="62" x2="372" y2="138" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowB)"/>
+  <text x="150" y="112" fill="#4169E1" font-size="12">flow +1</text>
+  <text x="300" y="112" fill="#4169E1" font-size="12">flow +1</text>
+  <text x="40" y="220" fill="#5c6b76" font-size="12">root = [3, 0, 0]: each child subtree holds 0 coins over 1 node, so its excess is</text>
+  <text x="40" y="238" fill="#5c6b76" font-size="12">&#8722;1 and exactly one coin must cross each edge; moves = |&#8722;1| + |&#8722;1| = 2.</text>
+</svg>

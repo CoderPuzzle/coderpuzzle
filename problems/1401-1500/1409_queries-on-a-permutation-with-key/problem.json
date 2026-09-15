@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1409,
+  "slug": "queries-on-a-permutation-with-key",
+  "title": "Queries on a Permutation With Key",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Indexed Tree",
+    "Simulation",
+    "Sqrt Decomposition"
+  ],
+  "topics": [
+    "Array",
+    "Binary Indexed Tree",
+    "Simulation",
+    "Sqrt Decomposition"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "processQueries",
+    "parameters": [
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "m",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "processQueries",
+      "rust": "process_queries",
+      "typescript": "processQueries"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

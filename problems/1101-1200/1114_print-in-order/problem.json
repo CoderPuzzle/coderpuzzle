@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1114,
+  "slug": "print-in-order",
+  "title": "Print in Order",
+  "difficulty": "Easy",
+  "tags": [
+    "Concurrency"
+  ],
+  "topics": [
+    "Concurrency"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "concurrent",
+    "class_name": "Foo",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "first",
+        "parameters": [
+          {
+            "name": "printFirst",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback"
+            }
+          }
+        ]
+      },
+      {
+        "name": "second",
+        "parameters": [
+          {
+            "name": "printSecond",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback"
+            }
+          }
+        ]
+      },
+      {
+        "name": "third",
+        "parameters": [
+          {
+            "name": "printThird",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback"
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64,
+    "threads": 8
+  }
+}

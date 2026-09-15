@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1738,
+  "slug": "find-kth-largest-xor-coordinate-value",
+  "title": "Find Kth Largest XOR Coordinate Value",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Bit Manipulation",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Prefix Sum",
+    "Quickselect"
+  ],
+  "topics": [
+    "Array",
+    "Divide and Conquer",
+    "Bit Manipulation",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Prefix Sum",
+    "Quickselect"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "kthLargestValue",
+    "parameters": [
+      {
+        "name": "matrix",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "kthLargestValue",
+      "rust": "kth_largest_value",
+      "typescript": "kthLargestValue"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

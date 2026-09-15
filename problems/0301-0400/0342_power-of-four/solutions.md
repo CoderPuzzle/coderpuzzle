@@ -1,0 +1,11 @@
+# Solutions — Power of Four
+
+## Lone even bit
+
+A power of four is a power of two whose single set bit sits at an even index: `4ˣ = 2²ˣ`, so among the values the low-bit clear test `n & (n - 1) == 0` already isolates — the lone-bit patterns `100…0` — exactly those with their bit at index 0, 2, 4, … qualify. The mask `0x55555555`, which is `0101…0101`, holds precisely those even index positions, so the whole method is the one expression `n > 0 && (n & (n - 1)) == 0 && (n & 0x55555555) != 0`: no loop, no recursion, answering the follow-up as stated. The equally branchless arithmetic alternative — `4 ≡ 1 (mod 3)`, so a lone-bit value is a power of four exactly when `n % 3 == 1` — is correct too, but the mask form stays inside the bit picture the first test already opened, adding one more AND on the value in hand instead of appealing to a congruence from outside it; it is also the one form that carries over unchanged to every language here.
+
+The contract carries the width guarantee. `n` is a signed 32-bit integer, so the wire domain is `-2³¹` through `2³¹ - 1`: the positive half carries `1` through `2³¹ - 1`, and the powers of four that fit are `4⁰` through `4¹⁵` — `4¹⁵ = 2³⁰ = 1073741824` is the largest, with `4¹⁶ = 2³²` far past the cap and never arriving. The mask's coverage ends exactly at bit 30, the top even index, so no in-domain power of four slips past it and no higher bit could carry one anyway: `2³¹` itself, a lone bit at odd index 31, sits one past the signed cap and never arrives either. Negative inputs arrive signed, and the `n > 0` guard is what rejects them — zero, every negative, and the `-2³¹` trap — before the subtraction runs; because `&&` short-circuits, `n - 1` only ever evaluates for `n >= 1`, so it can never leave the signed range in any language.
+
+Concretely, for `n = 16` the pattern `10000` is a lone bit at index 4, an even index the mask covers, so the answer is true. For `n = 8` the pattern `1000` is a lone bit at index 3; the mask covers only even indexes, the AND is zero, and the answer is false — every power of two with an odd exponent dies at the mask. For `n = 5` the pattern `101` fails earlier: `101 & 100` leaves `100`, a second survivor, so it is not a lone-bit value at all. Zero and the negatives never reach the bit tests.
+
+**Complexity:** `O(1)` time and `O(1)` space.

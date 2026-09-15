@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 4009,
+  "slug": "minimum-possible-maximum-waiting-time",
+  "title": "Minimum Possible Maximum Waiting Time",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Greedy",
+    "Simulation"
+  ],
+  "topics": [
+    "Greedy",
+    "Math",
+    "Binary Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minMaxWaitingTime",
+    "parameters": [
+      {
+        "name": "demand",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "fuel",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minMaxWaitingTime",
+      "rust": "min_max_waiting_time",
+      "typescript": "minMaxWaitingTime"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

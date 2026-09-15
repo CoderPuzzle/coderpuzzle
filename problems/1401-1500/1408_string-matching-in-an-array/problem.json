@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1408,
+  "slug": "string-matching-in-an-array",
+  "title": "String Matching in an Array",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "String",
+    "String Matching"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "String Matching"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "stringMatching",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "stringMatching",
+      "rust": "string_matching",
+      "typescript": "stringMatching"
+    },
+    "comparison": "multiset"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

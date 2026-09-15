@@ -1,0 +1,6 @@
+class Solution {
+
+    public ListNode partition(ListNode head, int x) {
+        throw new UnsupportedOperationException("TODO");
+    }
+}

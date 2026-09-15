@@ -1,0 +1,58 @@
+{
+  "public": [
+    {
+      "input": "the day is sunny the the\nthe sunny is is\n",
+      "expected": "the 4\nis 3\nsunny 2\nday 1"
+    }
+  ],
+  "hidden": [
+    {
+      "input": "one\n",
+      "expected": "one 1"
+    },
+    {
+      "input": "go go go go go\n",
+      "expected": "go 5"
+    },
+    {
+      "input": "a b a a\n",
+      "expected": "a 3\nb 1"
+    },
+    {
+      "input": "z z z y y x\n",
+      "expected": "z 3\ny 2\nx 1"
+    },
+    {
+      "input": "alpha    beta   alpha\n",
+      "expected": "alpha 2\nbeta 1"
+    },
+    {
+      "input": "alpha \n beta beta\n",
+      "expected": "beta 2\nalpha 1"
+    },
+    {
+      "input": "one two three\none two\none\n",
+      "expected": "one 3\ntwo 2\nthree 1"
+    },
+    {
+      "input": "end start end\nstart end\n",
+      "expected": "end 3\nstart 2"
+    },
+    {
+      "input": "a b a a b c\n",
+      "expected": "a 3\nb 2\nc 1"
+    },
+    {
+      "input": "mmmmmmmmmmmmmmmmmmmm aaa mmmmmmmmmmmmmmmmmmmm\n",
+      "expected": "mmmmmmmmmmmmmmmmmmmm 2\naaa 1"
+    },
+    {
+      "input": "w12\nw12\nw12\nw12\nw12\nw12\nw12\nw12\nw12\nw12\nw12\nw12\nw11\nw11\nw11\nw11\nw11\nw11\nw11\nw11\nw11\nw11\nw11\nw10\nw10\nw10\nw10\nw10\nw10\nw10\nw10\nw10\nw10\nw9\nw9\nw9\nw9\nw9\nw9\nw9\nw9\nw9\nw8\nw8\nw8\nw8\nw8\nw8\nw8\nw8\nw7\nw7\nw7\nw7\nw7\nw7\nw7\nw6\nw6\nw6\nw6\nw6\nw6\nw5\nw5\nw5\nw5\nw5\nw4\nw4\nw4\nw4\nw3\nw3\nw3\nw2\nw2\nw1\n",
+      "expected": "w12 12\nw11 11\nw10 10\nw9 9\nw8 8\nw7 7\nw6 6\nw5 5\nw4 4\nw3 3\nw2 2\nw1 1"
+    },
+    {
+      "input": "k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k40 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k39 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k38 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k37 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k36 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k35 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k34 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k33 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k32 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k31 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k30 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k29 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k28 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k27 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k26 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k25 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k24 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k23 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k22 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k21 k20 k20 k20 k20 k20 k20 k20 k20 k20 k20 k20 k20 k20 k20 k20 k20 k20 k20 k20 k20 k19 k19 k19 k19 k19 k19 k19 k19 k19 k19 k19 k19 k19 k19 k19 k19 k19 k19 k19 k18 k18 k18 k18 k18 k18 k18 k18 k18 k18 k18 k18 k18 k18 k18 k18 k18 k18 k17 k17 k17 k17 k17 k17 k17 k17 k17 k17 k17 k17 k17 k17 k17 k17 k17 k16 k16 k16 k16 k16 k16 k16 k16 k16 k16 k16 k16 k16 k16 k16 k16 k15 k15 k15 k15 k15 k15 k15 k15 k15 k15 k15 k15 k15 k15 k15 k14 k14 k14 k14 k14 k14 k14 k14 k14 k14 k14 k14 k14 k14 k13 k13 k13 k13 k13 k13 k13 k13 k13 k13 k13 k13 k13 k12 k12 k12 k12 k12 k12 k12 k12 k12 k12 k12 k12 k11 k11 k11 k11 k11 k11 k11 k11 k11 k11 k11 k10 k10 k10 k10 k10 k10 k10 k10 k10 k10 k9 k9 k9 k9 k9 k9 k9 k9 k9 k8 k8 k8 k8 k8 k8 k8 k8 k7 k7 k7 k7 k7 k7 k7 k6 k6 k6 k6 k6 k6 k5 k5 k5 k5 k5 k4 k4 k4 k4 k3 k3 k3 k2 k2 k1\n",
+      "expected": "k40 40\nk39 39\nk38 38\nk37 37\nk36 36\nk35 35\nk34 34\nk33 33\nk32 32\nk31 31\nk30 30\nk29 29\nk28 28\nk27 27\nk26 26\nk25 25\nk24 24\nk23 23\nk22 22\nk21 21\nk20 20\nk19 19\nk18 18\nk17 17\nk16 16\nk15 15\nk14 14\nk13 13\nk12 12\nk11 11\nk10 10\nk9 9\nk8 8\nk7 7\nk6 6\nk5 5\nk4 4\nk3 3\nk2 2\nk1 1"
+    }
+  ]
+}

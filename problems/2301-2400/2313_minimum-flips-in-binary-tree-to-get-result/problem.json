@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2313,
+  "slug": "minimum-flips-in-binary-tree-to-get-result",
+  "title": "Minimum Flips in Binary Tree to Get Result",
+  "difficulty": "Hard",
+  "tags": [
+    "Tree",
+    "Binary Tree",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumFlips",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "result",
+        "codec": "json",
+        "value_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumFlips",
+      "rust": "minimum_flips",
+      "typescript": "minimumFlips"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

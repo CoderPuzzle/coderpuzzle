@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 842,
+  "slug": "split-array-into-fibonacci-sequence",
+  "title": "Split Array into Fibonacci Sequence",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Backtracking"
+  ],
+  "topics": [
+    "String",
+    "Backtracking"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "splitIntoFibonacci",
+    "parameters": [
+      {
+        "name": "num",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "splitIntoFibonacci",
+      "rust": "split_into_fibonacci",
+      "typescript": "splitIntoFibonacci"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

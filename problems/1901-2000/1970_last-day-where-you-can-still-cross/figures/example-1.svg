@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 170" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12">
+  <rect width="560" height="170" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- days 0..3; water floods (1,1), (2,1), (1,2) in turn -->
+  <g font-size="11" fill="#5c6b76" text-anchor="middle">
+    <text x="66" y="34">start</text><text x="154" y="34">start</text>
+    <text x="242" y="34">start</text><text x="330" y="34">start</text>
+    <text x="66" y="140">end</text><text x="154" y="140">end</text>
+    <text x="242" y="140">end</text><text x="330" y="140">end</text>
+  </g>
+  <!-- day 0: all land -->
+  <g stroke="#1a2026" stroke-width="1">
+    <rect x="40" y="46" width="26" height="26" fill="#f2dfae"/><rect x="66" y="46" width="26" height="26" fill="#f2dfae"/>
+    <rect x="40" y="72" width="26" height="26" fill="#f2dfae"/><rect x="66" y="72" width="26" height="26" fill="#f2dfae"/>
+  </g>
+  <!-- day 1: water at (1,1) -->
+  <g stroke="#1a2026" stroke-width="1">
+    <rect x="128" y="46" width="26" height="26" fill="#4169E1"/><rect x="154" y="46" width="26" height="26" fill="#f2dfae"/>
+    <rect x="128" y="72" width="26" height="26" fill="#f2dfae"/><rect x="154" y="72" width="26" height="26" fill="#f2dfae"/>
+  </g>
+  <!-- day 2: water at (1,1) and (2,1); last day it is possible to cross -->
+  <g stroke="#1a2026" stroke-width="1">
+    <rect x="216" y="46" width="26" height="26" fill="#4169E1"/><rect x="242" y="46" width="26" height="26" fill="#f2dfae"/>
+    <rect x="216" y="72" width="26" height="26" fill="#4169E1"/><rect x="242" y="72" width="26" height="26" fill="#f2dfae"/>
+  </g>
+  <!-- day 3: water also at (1,2); no crossing remains -->
+  <g stroke="#1a2026" stroke-width="1">
+    <rect x="304" y="46" width="26" height="26" fill="#4169E1"/><rect x="330" y="46" width="26" height="26" fill="#4169E1"/>
+    <rect x="304" y="72" width="26" height="26" fill="#4169E1"/><rect x="330" y="72" width="26" height="26" fill="#f2dfae"/>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="600">
+    <text x="53" y="63" fill="#1a2026">0</text><text x="79" y="63" fill="#1a2026">0</text>
+    <text x="53" y="89" fill="#1a2026">0</text><text x="79" y="89" fill="#1a2026">0</text>
+    <text x="141" y="63" fill="#ffffff">1</text><text x="167" y="63" fill="#1a2026">0</text>
+    <text x="141" y="89" fill="#1a2026">0</text><text x="167" y="89" fill="#1a2026">0</text>
+    <text x="229" y="63" fill="#ffffff">1</text><text x="255" y="63" fill="#1a2026">0</text>
+    <text x="229" y="89" fill="#ffffff">1</text><text x="255" y="89" fill="#1a2026">0</text>
+    <text x="317" y="63" fill="#ffffff">1</text><text x="343" y="63" fill="#ffffff">1</text>
+    <text x="317" y="89" fill="#ffffff">1</text><text x="343" y="89" fill="#1a2026">0</text>
+  </g>
+  <!-- crossing route on day 2 -->
+  <line x1="255" y1="46" x2="255" y2="98" stroke="#c05046" stroke-width="2" stroke-dasharray="5 4"/>
+  <g stroke="#4169E1" stroke-width="2">
+    <line x1="100" y1="72" x2="122" y2="72"/>
+    <line x1="188" y1="72" x2="210" y2="72"/>
+    <line x1="276" y1="72" x2="298" y2="72"/>
+  </g>
+</svg>

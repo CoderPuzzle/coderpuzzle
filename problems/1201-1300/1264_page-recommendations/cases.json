@@ -1,0 +1,166 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(1,2),\n(1,3),\n(1,4),\n(2,3),\n(2,4),\n(2,5),\n(6,1);\nINSERT INTO Likes (user_id,page_id) VALUES\n(1,88),\n(2,23),\n(3,24),\n(4,56),\n(5,11),\n(6,33),\n(2,77),\n(3,77),\n(6,88);"
+      ],
+      "expected": [
+        [
+          23
+        ],
+        [
+          24
+        ],
+        [
+          33
+        ],
+        [
+          56
+        ],
+        [
+          77
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(1,2),\n(1,3),\n(1,4),\n(2,3),\n(2,4),\n(2,5),\n(6,1);\nINSERT INTO Likes (user_id,page_id) VALUES\n(1,88),\n(2,23),\n(3,24),\n(4,56),\n(5,11),\n(6,33),\n(2,77),\n(3,77),\n(6,88);"
+      ],
+      "expected": [
+        [
+          23
+        ],
+        [
+          24
+        ],
+        [
+          33
+        ],
+        [
+          56
+        ],
+        [
+          77
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Likes (user_id,page_id) VALUES\n(1,10),\n(2,20);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(1,2);\nINSERT INTO Likes (user_id,page_id) VALUES\n(1,7);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(1,2),\n(2,3);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(1,2),\n(1,3);\nINSERT INTO Likes (user_id,page_id) VALUES\n(1,5),\n(1,6),\n(2,5),\n(3,6),\n(2,7);"
+      ],
+      "expected": [
+        [
+          7
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(1,2);\nINSERT INTO Likes (user_id,page_id) VALUES\n(2,42);"
+      ],
+      "expected": [
+        [
+          42
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(9,1);\nINSERT INTO Likes (user_id,page_id) VALUES\n(9,100),\n(9,101),\n(1,100);"
+      ],
+      "expected": [
+        [
+          101
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(2,3),\n(1,4);\nINSERT INTO Likes (user_id,page_id) VALUES\n(5,500),\n(2,200),\n(3,300),\n(4,400);"
+      ],
+      "expected": [
+        [
+          400
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(1,2),\n(2,3);\nINSERT INTO Likes (user_id,page_id) VALUES\n(2,21),\n(3,31);"
+      ],
+      "expected": [
+        [
+          21
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(9,22),\n(2,18),\n(2,15),\n(19,21),\n(12,20),\n(6,23),\n(7,16),\n(2,11),\n(11,17),\n(1,3),\n(2,7),\n(15,22),\n(6,21),\n(1,20),\n(7,15),\n(2,22),\n(4,11),\n(5,24),\n(7,19),\n(1,15),\n(3,10),\n(1,19),\n(7,20),\n(1,23),\n(10,19),\n(11,15),\n(14,19),\n(3,13),\n(16,19),\n(6,15),\n(5,16),\n(8,20),\n(2,19),\n(3,11),\n(19,24),\n(1,24);\nINSERT INTO Likes (user_id,page_id) VALUES\n(16,9),\n(16,6),\n(13,14),\n(11,29),\n(2,29),\n(7,3);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(8,9),\n(10,32),\n(6,18),\n(1,32),\n(18,25),\n(14,32),\n(23,28),\n(21,25),\n(15,19),\n(12,21),\n(11,20),\n(9,23),\n(23,25),\n(1,16),\n(16,17),\n(6,15),\n(19,26),\n(17,19),\n(7,16),\n(12,30),\n(13,16);\nINSERT INTO Likes (user_id,page_id) VALUES\n(20,1),\n(4,7),\n(8,3),\n(28,15),\n(24,3),\n(30,16),\n(15,12),\n(16,11),\n(7,16),\n(29,7);"
+      ],
+      "expected": [
+        [
+          11
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(8,16),\n(18,25),\n(14,18),\n(3,15),\n(4,23),\n(19,28),\n(14,23),\n(10,19),\n(9,10),\n(3,16),\n(23,26),\n(11,24),\n(4,25),\n(12,27),\n(8,23),\n(11,16),\n(7,27),\n(5,24),\n(7,13),\n(15,16),\n(13,17),\n(3,12),\n(4,12),\n(9,28),\n(9,24),\n(3,14),\n(5,28),\n(2,16),\n(8,28),\n(21,25),\n(13,18),\n(9,11),\n(9,19),\n(14,28),\n(2,20),\n(4,21),\n(11,20),\n(14,27),\n(20,27),\n(6,22),\n(9,13);\nINSERT INTO Likes (user_id,page_id) VALUES\n(13,11),\n(28,1),\n(27,2),\n(1,4),\n(19,7),\n(23,15),\n(17,12),\n(12,17),\n(4,6),\n(17,4),\n(24,14);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(5,7),\n(1,11),\n(1,4),\n(7,11),\n(5,6),\n(1,7),\n(10,11),\n(2,4),\n(4,8),\n(7,8),\n(2,7),\n(2,6),\n(8,12),\n(8,10),\n(3,4),\n(3,9),\n(4,9),\n(7,12),\n(9,10),\n(3,10),\n(4,12),\n(5,12),\n(5,9),\n(2,9),\n(8,11),\n(6,8),\n(5,10),\n(11,12),\n(1,12),\n(8,9),\n(4,6),\n(3,7),\n(4,11);\nINSERT INTO Likes (user_id,page_id) VALUES\n(11,8),\n(10,25),\n(10,13),\n(4,25),\n(12,12),\n(9,22),\n(8,3),\n(10,22);"
+      ],
+      "expected": [
+        [
+          8
+        ],
+        [
+          12
+        ],
+        [
+          25
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Friendship (user1_id,user2_id) VALUES\n(2,3),\n(5,6),\n(3,7),\n(3,6),\n(1,6),\n(2,4),\n(3,5),\n(1,3),\n(1,5),\n(1,4),\n(4,5),\n(4,7),\n(3,4),\n(6,7),\n(1,2),\n(2,5),\n(4,6),\n(5,7),\n(2,6);\nINSERT INTO Likes (user_id,page_id) VALUES\n(4,18),\n(7,39),\n(7,22);"
+      ],
+      "expected": [
+        [
+          18
+        ]
+      ]
+    }
+  ]
+}

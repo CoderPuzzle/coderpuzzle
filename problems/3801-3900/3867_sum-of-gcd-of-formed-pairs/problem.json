@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3867,
+  "slug": "sum-of-gcd-of-formed-pairs",
+  "title": "Sum of GCD of Formed Pairs",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Two Pointers",
+    "Sorting",
+    "Simulation",
+    "Number Theory"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Two Pointers",
+    "Sorting",
+    "Simulation",
+    "Number Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "gcdSum",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "gcdSum",
+      "rust": "gcd_sum",
+      "typescript": "gcdSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

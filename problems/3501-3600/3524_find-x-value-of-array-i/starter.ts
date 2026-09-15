@@ -1,0 +1,3 @@
+function resultArray(nums: number[], k: number): number[] {
+    throw new Error("TODO");
+}

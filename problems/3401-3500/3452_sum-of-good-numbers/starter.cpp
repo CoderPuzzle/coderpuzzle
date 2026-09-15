@@ -1,0 +1,4 @@
+class Solution {
+  public:
+    int sumOfGoodNumbers(vector<int> &nums, int k) { throw logic_error("TODO"); }
+};

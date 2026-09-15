@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1586,
+  "slug": "binary-search-tree-iterator-ii",
+  "title": "Binary Search Tree Iterator II",
+  "difficulty": "Medium",
+  "tags": [
+    "Stack",
+    "Tree",
+    "Design",
+    "Binary Search Tree",
+    "Binary Tree",
+    "Iterator"
+  ],
+  "topics": [
+    "Stack",
+    "Tree",
+    "Design",
+    "Binary Search Tree",
+    "Binary Tree",
+    "Iterator"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "BSTIterator",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "root",
+          "codec": "tree_node",
+          "value_type": {
+            "kind": "binary_tree",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "hasNext",
+        "parameters": [],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "next",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "hasPrev",
+        "parameters": [],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "prev",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

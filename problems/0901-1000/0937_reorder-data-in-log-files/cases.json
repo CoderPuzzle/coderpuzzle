@@ -1,0 +1,466 @@
+{
+  "public": [
+    {
+      "input": [
+        [
+          "dig1 8 1 5 1",
+          "let1 art can",
+          "dig2 3 6",
+          "let2 own kit dig",
+          "let3 art zero"
+        ]
+      ],
+      "expected": [
+        "let1 art can",
+        "let3 art zero",
+        "let2 own kit dig",
+        "dig1 8 1 5 1",
+        "dig2 3 6"
+      ]
+    },
+    {
+      "input": [
+        [
+          "a1 9 2 3 1",
+          "g1 act car",
+          "zo4 4 7",
+          "ab1 off key dog",
+          "a8 act zoo"
+        ]
+      ],
+      "expected": [
+        "g1 act car",
+        "a8 act zoo",
+        "ab1 off key dog",
+        "a1 9 2 3 1",
+        "zo4 4 7"
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        [
+          "b2 x y",
+          "a1 x z",
+          "c3 a b",
+          "a2 x y"
+        ]
+      ],
+      "expected": [
+        "c3 a b",
+        "a2 x y",
+        "b2 x y",
+        "a1 x z"
+      ]
+    },
+    {
+      "input": [
+        [
+          "d2 9",
+          "d1 8 7",
+          "d3 1",
+          "d4 0 0"
+        ]
+      ],
+      "expected": [
+        "d2 9",
+        "d1 8 7",
+        "d3 1",
+        "d4 0 0"
+      ]
+    },
+    {
+      "input": [
+        [
+          "z9 alpha",
+          "a1 alpha",
+          "m5 alpha",
+          "b7 beta"
+        ]
+      ],
+      "expected": [
+        "a1 alpha",
+        "m5 alpha",
+        "z9 alpha",
+        "b7 beta"
+      ]
+    },
+    {
+      "input": [
+        [
+          "a1 echo x",
+          "a10 echo x",
+          "a2 echo x",
+          "a02 echo x"
+        ]
+      ],
+      "expected": [
+        "a02 echo x",
+        "a1 echo x",
+        "a10 echo x",
+        "a2 echo x"
+      ]
+    },
+    {
+      "input": [
+        [
+          "d1 1",
+          "l1 aa",
+          "d2 2",
+          "l2 aa",
+          "d3 3",
+          "l3 ab"
+        ]
+      ],
+      "expected": [
+        "l1 aa",
+        "l2 aa",
+        "l3 ab",
+        "d1 1",
+        "d2 2",
+        "d3 3"
+      ]
+    },
+    {
+      "input": [
+        [
+          "n1 007 5",
+          "let1 art b",
+          "n2 7 5",
+          "z9 00",
+          "a1 0"
+        ]
+      ],
+      "expected": [
+        "let1 art b",
+        "n1 007 5",
+        "n2 7 5",
+        "z9 00",
+        "a1 0"
+      ]
+    },
+    {
+      "input": [
+        [
+          "let1 art can"
+        ]
+      ],
+      "expected": [
+        "let1 art can"
+      ]
+    },
+    {
+      "input": [
+        [
+          "dig1 8 1"
+        ]
+      ],
+      "expected": [
+        "dig1 8 1"
+      ]
+    },
+    {
+      "input": [
+        [
+          "k4 act car",
+          "m9 7 2",
+          "x2 1 8",
+          "b3 act zoo",
+          "q1 off key dog"
+        ]
+      ],
+      "expected": [
+        "k4 act car",
+        "b3 act zoo",
+        "q1 off key dog",
+        "m9 7 2",
+        "x2 1 8"
+      ]
+    },
+    {
+      "input": [
+        [
+          "i000 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+          "i001 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+          "i002 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+          "i003 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+          "i004 ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv",
+          "i005 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+          "i006 qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj",
+          "i007 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+          "i008 eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx",
+          "i009 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+          "i010 hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa",
+          "i011 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+          "i012 ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz",
+          "i013 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+          "i014 uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn",
+          "i015 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+          "i016 iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb",
+          "i017 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+          "i018 wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp",
+          "i019 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+          "i020 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+          "i021 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+          "i022 yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr",
+          "i023 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+          "i024 mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff",
+          "i025 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+          "i026 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+          "i027 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+          "i028 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+          "i029 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+          "i030 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+          "i031 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+          "i032 qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj",
+          "i033 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+          "i034 eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx",
+          "i035 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+          "i036 sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll",
+          "i037 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+          "i038 ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz",
+          "i039 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+          "i040 hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa",
+          "i041 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+          "i042 iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb",
+          "i043 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+          "i044 wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp",
+          "i045 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+          "i046 kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd",
+          "i047 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+          "i048 yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr",
+          "i049 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+          "i050 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+          "i051 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+          "i052 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+          "i053 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+          "i054 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+          "i055 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+          "i056 ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv",
+          "i057 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+          "i058 qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj",
+          "i059 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+          "i060 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+          "i061 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+          "i062 sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll",
+          "i063 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+          "i064 ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz",
+          "i065 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+          "i066 uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn",
+          "i067 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+          "i068 iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb",
+          "i069 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+          "i070 hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa",
+          "i071 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+          "i072 kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd",
+          "i073 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+          "i074 yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr",
+          "i075 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+          "i076 mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff",
+          "i077 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+          "i078 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+          "i079 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+          "i080 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+          "i081 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+          "i082 ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv",
+          "i083 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+          "i084 qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj",
+          "i085 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+          "i086 eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx",
+          "i087 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+          "i088 sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll",
+          "i089 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+          "i090 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+          "i091 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+          "i092 uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn",
+          "i093 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+          "i094 iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb",
+          "i095 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+          "i096 wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp",
+          "i097 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+          "i098 kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd",
+          "i099 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222"
+        ]
+      ],
+      "expected": [
+        "i000 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+        "i026 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+        "i030 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+        "i052 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+        "i060 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+        "i078 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+        "i090 aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt",
+        "i004 ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv",
+        "i056 ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv",
+        "i082 ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv",
+        "i008 eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx",
+        "i034 eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx",
+        "i086 eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx",
+        "i012 ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz",
+        "i038 ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz",
+        "i064 ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz",
+        "i010 hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa",
+        "i040 hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa",
+        "i070 hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa",
+        "i016 iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb",
+        "i042 iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb",
+        "i068 iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb",
+        "i094 iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb",
+        "i046 kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd",
+        "i072 kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd",
+        "i098 kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd",
+        "i024 mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff",
+        "i076 mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff",
+        "i002 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+        "i020 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+        "i028 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+        "i050 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+        "i054 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+        "i080 ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh",
+        "i006 qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj",
+        "i032 qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj",
+        "i058 qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj",
+        "i084 qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj",
+        "i036 sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll",
+        "i062 sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll",
+        "i088 sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll",
+        "i014 uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn",
+        "i066 uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn",
+        "i092 uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp sssss vvvvv yyyyy bbbbb eeeee hhhhh kkkkk nnnnn",
+        "i018 wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp",
+        "i044 wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp",
+        "i096 wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr uuuuu xxxxx aaaaa ddddd ggggg jjjjj mmmmm ppppp",
+        "i022 yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr",
+        "i048 yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr",
+        "i074 yyyyy bbbbb eeeee hhhhh kkkkk nnnnn qqqqq ttttt wwwww zzzzz ccccc fffff iiiii lllll ooooo rrrrr",
+        "i001 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+        "i003 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+        "i005 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+        "i007 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+        "i009 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+        "i011 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+        "i013 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+        "i015 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+        "i017 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+        "i019 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+        "i021 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+        "i023 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+        "i025 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+        "i027 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+        "i029 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+        "i031 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+        "i033 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+        "i035 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+        "i037 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+        "i039 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+        "i041 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+        "i043 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+        "i045 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+        "i047 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+        "i049 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+        "i051 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+        "i053 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+        "i055 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+        "i057 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+        "i059 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+        "i061 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+        "i063 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+        "i065 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+        "i067 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+        "i069 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+        "i071 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+        "i073 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+        "i075 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+        "i077 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+        "i079 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+        "i081 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+        "i083 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+        "i085 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+        "i087 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+        "i089 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222",
+        "i091 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888",
+        "i093 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444",
+        "i095 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000",
+        "i097 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666",
+        "i099 77777 88888 99999 00000 11111 22222 33333 44444 55555 66666 77777 88888 99999 00000 11111 22222"
+      ]
+    },
+    {
+      "input": [
+        [
+          "l1 same t",
+          "d5 1",
+          "l2 same t",
+          "d6 2",
+          "l0 other z",
+          "l3 same t"
+        ]
+      ],
+      "expected": [
+        "l0 other z",
+        "l1 same t",
+        "l2 same t",
+        "l3 same t",
+        "d5 1",
+        "d6 2"
+      ]
+    },
+    {
+      "input": [
+        [
+          "q1 0",
+          "let2 zero q",
+          "q2 00",
+          "q3 9",
+          "q4 123 45",
+          "q5 0009",
+          "q6 42"
+        ]
+      ],
+      "expected": [
+        "let2 zero q",
+        "q1 0",
+        "q2 00",
+        "q3 9",
+        "q4 123 45",
+        "q5 0009",
+        "q6 42"
+      ]
+    },
+    {
+      "input": [
+        [
+          "dup1 go x",
+          "dup1 go x",
+          "dd 5",
+          "dd 5",
+          "dd 5"
+        ]
+      ],
+      "expected": [
+        "dup1 go x",
+        "dup1 go x",
+        "dd 5",
+        "dd 5",
+        "dd 5"
+      ]
+    },
+    {
+      "input": [
+        [
+          "a b",
+          "c 1",
+          "a 1",
+          "z y"
+        ]
+      ],
+      "expected": [
+        "a b",
+        "z y",
+        "c 1",
+        "a 1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,'Traveling, exploring, and living my best life @JaneSmith @SaraJohnson @LisaTaylor @MikeBrown #Foodie #Fitness #Learning'),\n(2,'Just had the best dinner with friends! #Foodie #Friends #Fun'),\n(4,'Working hard on my new project #Work #Goals #Productivity #Fun');"
+      ],
+      "expected": [
+        [
+          1
+        ],
+        [
+          4
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(10,'hello world this is a plain short tweet                                                                                     #one #two #three');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(11,'hello world this is a plain short tweet                                                                                      #one #two #three');"
+      ],
+      "expected": [
+        [
+          11
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(20,'@aa @bb @cc plain text here');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(21,'@a1 @b2 @c3 @d4 sample sentence');"
+      ],
+      "expected": [
+        [
+          21
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(30,'#one #two #three see the tag drop');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(31,'#one #two #three #four tags galore');"
+      ],
+      "expected": [
+        [
+          31
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(32,'#v #w #x #y #z tiny ones');"
+      ],
+      "expected": [
+        [
+          32
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(40,'#q1 #q2 #q3 #q4 @m1 @m2 @m3 @m4 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz');"
+      ],
+      "expected": [
+        [
+          40
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(50,'hello world this is a plain short tweet'),\n(51,'#one #two #three ok'),\n(52,'@aa @bb @cc ok'),\n(53,'hello world this is a plain short tweet                                                                                                     ');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(100,'#one #two #three #over limit'),\n(7,'@p @q @r @s four folks'),\n(42,'hello world this is a plain short tweet'),\n(300,'plain'),\n(288,'@k1 @k2 @k3 @k4 tail padded for good measure');"
+      ],
+      "expected": [
+        [
+          7
+        ],
+        [
+          100
+        ],
+        [
+          288
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(60,'#Fun. #Work! #Life? keep going strong'),\n(61,'@bob, @ann. @cy> hi there friends'),\n(62,'reply to @dev_ #bug report pronto');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(70,'fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff @u @v @w #t');"
+      ],
+      "expected": [
+        [
+          70
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(829,'filler 47                                                                                                                       #s1 #s2 #s3 #s4'),\n(822,'@a46 @b46 @c46 @d46 plus #f1 #f2 mixed reasons 46'),\n(815,'@me45 single mention plain tweet number 45 done'),\n(808,'#t2u #u44 two tags fine 44'),\n(801,'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),\n(794,'@user42 @pal42 @mate42 three mentions only right now'),\n(787,'#alpha41 #beta41 #gamma41 #delta overflow 41'),\n(780,'plain short line 40 nothing special today at all'),\n(773,'filler 39                                                                                                                       #s1 #s2 #s3 #s4'),\n(766,'@a38 @b38 @c38 @d38 plus #f1 #f2 mixed reasons 38'),\n(759,'@me37 single mention plain tweet number 37 done'),\n(752,'#t0u #u36 two tags fine 36'),\n(745,'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),\n(738,'@user34 @pal34 @mate34 three mentions only right now'),\n(731,'#alpha33 #beta33 #gamma33 #delta overflow 33'),\n(724,'plain short line 32 nothing special today at all'),\n(717,'filler 31                                                                                                                       #s1 #s2 #s3 #s4'),\n(710,'@a30 @b30 @c30 @d30 plus #f1 #f2 mixed reasons 30'),\n(703,'@me29 single mention plain tweet number 29 done'),\n(696,'#t1u #u28 two tags fine 28'),\n(689,'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),\n(682,'@user26 @pal26 @mate26 three mentions only right now'),\n(675,'#alpha25 #beta25 #gamma25 #delta overflow 25'),\n(668,'plain short line 24 nothing special today at all'),\n(661,'filler 23                                                                                                                       #s1 #s2 #s3 #s4'),\n(654,'@a22 @b22 @c22 @d22 plus #f1 #f2 mixed reasons 22'),\n(647,'@me21 single mention plain tweet number 21 done'),\n(640,'#t2u #u20 two tags fine 20'),\n(633,'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),\n(626,'@user18 @pal18 @mate18 three mentions only right now'),\n(619,'#alpha17 #beta17 #gamma17 #delta overflow 17'),\n(612,'plain short line 16 nothing special today at all'),\n(605,'filler 15                                                                                                                       #s1 #s2 #s3 #s4'),\n(598,'@a14 @b14 @c14 @d14 plus #f1 #f2 mixed reasons 14'),\n(591,'@me13 single mention plain tweet number 13 done'),\n(584,'#t0u #u12 two tags fine 12'),\n(577,'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),\n(570,'@user10 @pal10 @mate10 three mentions only right now'),\n(563,'#alpha9 #beta9 #gamma9 #delta overflow 9'),\n(556,'plain short line 8 nothing special today at all'),\n(549,'filler 7                                                                                                                        #s1 #s2 #s3 #s4'),\n(542,'@a6 @b6 @c6 @d6 plus #f1 #f2 mixed reasons 6'),\n(535,'@me5 single mention plain tweet number 5 done'),\n(528,'#t1u #u4 two tags fine 4'),\n(521,'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),\n(514,'@user2 @pal2 @mate2 three mentions only right now'),\n(507,'#alpha1 #beta1 #gamma1 #delta overflow 1'),\n(500,'plain short line 0 nothing special today at all');"
+      ],
+      "expected": [
+        [
+          507
+        ],
+        [
+          521
+        ],
+        [
+          542
+        ],
+        [
+          549
+        ],
+        [
+          563
+        ],
+        [
+          577
+        ],
+        [
+          598
+        ],
+        [
+          605
+        ],
+        [
+          619
+        ],
+        [
+          633
+        ],
+        [
+          654
+        ],
+        [
+          661
+        ],
+        [
+          675
+        ],
+        [
+          689
+        ],
+        [
+          710
+        ],
+        [
+          717
+        ],
+        [
+          731
+        ],
+        [
+          745
+        ],
+        [
+          766
+        ],
+        [
+          773
+        ],
+        [
+          787
+        ],
+        [
+          801
+        ],
+        [
+          822
+        ],
+        [
+          829
+        ]
+      ]
+    }
+  ]
+}

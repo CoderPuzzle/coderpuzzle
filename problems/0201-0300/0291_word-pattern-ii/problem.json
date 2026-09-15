@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 291,
+  "slug": "word-pattern-ii",
+  "title": "Word Pattern II",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Backtracking"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Backtracking"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "wordPatternMatch",
+    "parameters": [
+      {
+        "name": "pattern",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "wordPatternMatch",
+      "rust": "word_pattern_match",
+      "typescript": "wordPatternMatch"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

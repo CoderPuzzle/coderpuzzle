@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3387,
+  "slug": "maximize-amount-after-two-days-of-conversions",
+  "title": "Maximize Amount After Two Days of Conversions",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxAmount",
+    "parameters": [
+      {
+        "name": "initialCurrency",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "pairs1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "rates1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "number"
+          }
+        }
+      },
+      {
+        "name": "pairs2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "rates2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "number"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "number"
+    },
+    "entrypoints": {
+      "go": "maxAmount",
+      "rust": "max_amount",
+      "typescript": "maxAmount"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="240" fill="#ffffff"/>
+  <!-- path 0-1 (dis 2) and 1-2 (dis 4), both < 5 (query [0,2,5]) -->
+  <g stroke="#4169E1" stroke-width="2.4" fill="none">
+    <line x1="196" y1="64" x2="118" y2="166"/>
+    <line x1="152" y1="192" x2="396" y2="192"/>
+  </g>
+  <!-- other edges -->
+  <g stroke="#1a2026" stroke-width="1.6" fill="none">
+    <line x1="394" y1="166" x2="318" y2="64"/>
+    <path d="M 336 82 Q 268 118 202 84" stroke-dasharray="5 4"/>
+  </g>
+  <!-- edge labels -->
+  <g font-size="13" font-weight="600">
+    <text x="138" y="108" fill="#4169E1" transform="rotate(56 138 108)">2</text>
+    <text x="274" y="208" fill="#4169E1">4</text>
+    <text x="378" y="108" fill="#1a2026" transform="rotate(-56 378 108)">8</text>
+    <text x="268" y="118" fill="#1a2026">16</text>
+  </g>
+  <!-- nodes -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="312" cy="46" r="18"/>
+    <circle cx="134" cy="184" r="18"/>
+    <circle cx="414" cy="184" r="18"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="312" y="51">0</text>
+    <text x="134" y="189">1</text>
+    <text x="414" y="189">2</text>
+  </g>
+  <text x="280" y="232" text-anchor="middle" fill="#5c6b76" font-size="12.5">query [0, 2, 5]: path 0 → 1 → 2 uses edges 2 and 4, both &lt; 5</text>
+</svg>

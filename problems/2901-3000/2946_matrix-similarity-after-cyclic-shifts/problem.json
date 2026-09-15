@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2946,
+  "slug": "matrix-similarity-after-cyclic-shifts",
+  "title": "Matrix Similarity After Cyclic Shifts",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Math",
+    "Matrix",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Matrix",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "areSimilar",
+    "parameters": [
+      {
+        "name": "mat",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "areSimilar",
+      "rust": "are_similar",
+      "typescript": "areSimilar"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "memoized_dfs",
+  "id": 329,
+  "slug": "longest-increasing-path-in-a-matrix",
+  "title": "Longest Increasing Path in a Matrix",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Depth-First Search",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Topological Sort",
+    "Memoization",
+    "Matrix",
+    "Directed Acyclic Graph"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "longestIncreasingPath",
+    "parameters": [
+      {
+        "name": "matrix",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "longestIncreasingPath",
+      "rust": "longest_increasing_path",
+      "typescript": "longestIncreasingPath"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

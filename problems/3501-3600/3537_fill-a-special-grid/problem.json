@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3537,
+  "slug": "fill-a-special-grid",
+  "title": "Fill a Special Grid",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Divide and Conquer",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "specialGrid",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "specialGrid",
+      "rust": "special_grid",
+      "typescript": "specialGrid"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 4096
+  }
+}

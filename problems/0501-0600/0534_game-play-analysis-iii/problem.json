@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 534,
+  "slug": "game-play-analysis-iii",
+  "title": "Game Play Analysis III",
+  "difficulty": "Medium",
+  "tags": [
+    "Database",
+    "SQL",
+    "Window Function"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Activity (player_id INTEGER, device_id INTEGER, event_date TEXT, games_played INTEGER);"
+    }
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

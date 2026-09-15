@@ -1,0 +1,12 @@
+class Fancy {
+
+    public Fancy() {}
+
+    public void append(int val) {}
+
+    public void addAll(int inc) {}
+
+    public void multAll(int m) {}
+
+    public int getIndex(int idx) {}
+}

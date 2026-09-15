@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 299,
+  "slug": "bulls-and-cows",
+  "title": "Bulls and Cows",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getHint",
+    "parameters": [
+      {
+        "name": "secret",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "guess",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "getHint",
+      "rust": "get_hint",
+      "typescript": "getHint"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

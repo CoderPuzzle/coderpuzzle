@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2129,
+  "slug": "capitalize-the-title",
+  "title": "Capitalize the Title",
+  "difficulty": "Easy",
+  "tags": [
+    "String"
+  ],
+  "topics": [
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "capitalizeTitle",
+    "parameters": [
+      {
+        "name": "title",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "capitalizeTitle",
+      "rust": "capitalize_title",
+      "typescript": "capitalizeTitle"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

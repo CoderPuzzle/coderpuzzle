@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 315,
+  "slug": "count-of-smaller-numbers-after-self",
+  "title": "Count of Smaller Numbers After Self",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Divide and Conquer",
+    "Fenwick Tree"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Divide and Conquer",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Merge Sort",
+    "Ordered Set",
+    "Treap"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countSmaller",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "countSmaller",
+      "rust": "count_smaller",
+      "typescript": "countSmaller"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

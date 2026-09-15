@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2209,
+  "slug": "minimum-white-tiles-after-covering-with-carpets",
+  "title": "Minimum White Tiles After Covering With Carpets",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Dynamic Programming",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "String",
+    "Dynamic Programming",
+    "Prefix Sum"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumWhiteTiles",
+    "parameters": [
+      {
+        "name": "floor",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "numCarpets",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "carpetLen",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumWhiteTiles",
+      "rust": "minimum_white_tiles",
+      "typescript": "minimumWhiteTiles"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

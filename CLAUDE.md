@@ -1,51 +1,42 @@
-# CoderPuzzle — judge infrastructure and problem bank
+# CoderPuzzle — judge infrastructure and problem set
 
-Two repos, deliberately decoupled:
+One repo. This tree is the judge (FastAPI app, React frontend, runner image
+`ghcr.io/coderpuzzle/coderpuzzle`, toolchain, authoring tooling, docs) AND the
+problem set it serves.
 
-- **coderpuzzle** (this repo) — the judge: FastAPI app, React frontend, runner
-  image (`ghcr.io/coderpuzzle/coderpuzzle`), toolchain, docs. Knows nothing about any
-  specific problem.
-- **coderpuzzle-problems** (sibling `../coderpuzzle-problems`) — the problem bank:
-  bundles, shared code, authoring tooling. Knows nothing about the judge
-  except its published contract.
-
-The bank's adapted tree is `problems-adapt/` — the merge of both adapted
-corpora: 838 bettercode-derived bundles plus 3,193 extend-derived ones,
-all carrying their **original source ids** (the bettercode set's 1–838
-renumbering was reverted via `problems-adapt/MAPPING.json`). 13 ids have
-one bundle from each provenance (distinct slugs);
-`BETTERCODE-SUBSET.md` (bank root) lists the bettercode-derived ids and
-`problems-adapt/MAPPING.md` is that subset's adaptation ledger.
-`problems-originals/` merges the two originals trees — the bettercode
-curated originals plus the verbatim lc-crawl extend originals (the 13
-shared extend originals carry a `-crawl` slug suffix); it is not
-CI-checked. Scrape origin: `~/code/lc-crawl` (raw) →
-`~/code/bettercode` (curated) → `problems-originals/`.
-
-**`problems` is a symlink** naming whichever tree the judge serves (the
-app takes the repo's `problems/` subdirectory as its package root). It
-points at `problems-originals` as of 2026-09-05. Everything else — CI,
-the bank's `scripts/`, this repo's `scripts/verify_*.py` — addresses
-`problems-adapt` by name and never goes through the symlink. The
-originals became fully schema-2 serveable when the 838 bettercode-era
-manifests were backfilled 2026-09-05 (`reference_solution` taken from
-each bundle's problems-adapt twin, canonical `solution.*` meaning `""`);
-flipping the symlink is the one-line switch between the two trees.
+- **`problems/`** (tracked, ~7.8 GB, 4,031 bundles) — the curated
+  original-source corpus, served by default. Bettercode originals keep
+  their canonical names; the 13 extend-side twins carry a `-crawl` slug
+  suffix. `docs/BETTERCODE-SUBSET.md` lists the bettercode-derived ids.
+- **`CoderPuzzle/lc-adapt`** (private, sibling `../lc-adapt`) — the
+  copyright-free adaptation: 838 bettercode-derived bundles plus 3,193
+  extend-derived ones, all carrying their **original source ids**, as
+  `problems/`. Renamed and privatized from `coderpuzzle-problems` on
+  2026-09-15, when this repo took over the original corpus, the tooling,
+  and the docs. Its `problems/MAPPING.json` is copied here as
+  `scripts/problems-tooling/adapt-mapping.json` (the provenance ledger);
+  `docs/ADAPTATION-MAPPING.md` is the human-readable form.
+- **A problem set is always a directory on disk.** The app fetches
+  nothing: no remote set, no clone, no cache service. One selector,
+  `CODERPUZZLE_PROBLEMS`, always a filesystem path, defaulting to this
+  repo's `./problems`. Compose bind-mounts the host directory named by
+  `CODERPUZZLE_PROBLEMS_PATH` (default `./problems`) read-only at
+  `/problems`. Anything else — a GitHub `owner/name`, a git URL, a
+  missing path — is a startup error.
 
 ## Adaptation philosophy
 
-Every problem is a **copyright-free, algorithm-identical adaptation** of a
-curated LeetCode original: rewritten statements in the bank's own voice,
-the source's own id kept (shard = `problems-adapt/0001-0100/`-style hundreds
-buckets; the bettercode set's temporary 1–838 renumbering was reverted),
-descriptive kebab slugs
-(`0001_pair-sum`), restated examples/constraints. `difficulty` mirrors
-the original source difficulty (Easy/Medium/Hard) in both trees — never
-a re-evaluation; tags follow the bank's normalized scheme.
+The adapted tree holds **copyright-free, algorithm-identical adaptations**
+of the `problems/` originals: rewritten statements in the bank's own voice,
+the source's own id kept (shard = `0001-0100`-style hundreds buckets),
+descriptive kebab slugs, restated examples/constraints. `difficulty` mirrors
+the source difficulty (Easy/Medium/Hard) in both trees — never a
+re-evaluation; tags follow the normalized scheme. The served originals tree
+carries the crawl/curation provenance instead of an adaptation voice.
 
-## Bundle format (coderpuzzle-problems/FORMAT.md is authoritative)
+## Bundle format (docs/FORMAT.md is authoritative)
 
-    problems-adapt/<shard>/<id>_<slug>/
+    problems/<shard>/<id>_<slug>/
       problem.json    schema_version, reference_solution,
                       id, slug, title, difficulty, tags, topics, type,
                       invocation, limits
@@ -106,13 +97,13 @@ formatter via the image.
   verify scripts) parses stdout instead.
 - Runner image `ghcr.io/coderpuzzle/coderpuzzle` owns the pinned toolchain and
   **all formatting**: `runner/formatters.py` is the single formatting owner
-  (markdown + canonical JSON + per-language code). The bank's
-  `scripts/format.py` is only a loader shim; there is deliberately no
-  local toolchain in coderpuzzle-problems.
-- The app fetches the problem set from `CoderPuzzle/coderpuzzle-problems` on start
-  (host cache `./.cache/problems/<cache-key>/`, populated by the
-  problems-fetcher service), or serves a local path via
-  `CODERPUZZLE_PROBLEMS`. Restarting the stack picks up newly pushed problems.
+  (markdown + canonical JSON + per-language code). `scripts/format.py` is
+  only a loader shim; there is deliberately no local toolchain here.
+- Problem-set selection is one environment variable, `CODERPUZZLE_PROBLEMS`
+  (a directory path, default `./problems`), resolved once at import in
+  `api/app/problems.py`. Compose maps the host path
+  `CODERPUZZLE_PROBLEMS_PATH` (default `./problems`) onto `/problems:ro`.
+  There is no fetcher service and no problem cache.
 
 ## Core APIs and CLI
 
@@ -184,23 +175,21 @@ is in git. Surface new contradictions to the user with evidence.
 
 ## Tooling map
 
-- coderpuzzle `/scripts/` (tracked; see its README.md): the authoring gates
-  (`verify_solution.py`, `verify_corpus.py`) and the headless-UI
+- `/scripts/` (tracked; see its README.md): the corpus gates
+  (`verify_solution.py`, `verify_corpus.py`), the moved authoring tooling
+  (`check.py`, `format.py`, `gen_starters.py`), and the headless-UI
   drivers (`stub-server.mjs`, `shot.mjs`, `session-e2e.mjs`). The
   gitignored `/.localonly/` holds only regenerable cache (the compiled
   Java harness).
-- coderpuzzle-problems `/.localonly/`: gitignored scratch (see its
-  README.md) — currently holds the variant-wave II record
-  (`VARIANT-WAVE-II.md`) plus a few topic/mirror one-shot scripts;
-  never CI input, never referenced by tracked files.
+- `docs/`: the moved bank documentation (`FORMAT.md`, `BETTERCODE-SUBSET.md`,
+  `ADAPTATION-MAPPING.md`, `FLEET-LOG.md`) beside the judge docs.
 
 ## Fleet discipline (agent concurrency)
 
 The completed adaptation program's state ledger lives at
-`coderpuzzle-problems/.adapt/FLEET-LOG.md` (tracked; recreated 2026-09-05
-for variant wave II after the original ledger was deleted 2026-09-04, and
-ends "PROGRAM COMPLETE — 2026-09-06"). If a future fleet runs, append
-there and record every rate-limit event.
+`docs/FLEET-LOG.md` (tracked; recreated 2026-09-05 for variant wave II after
+the original ledger was deleted 2026-09-04, and ends "PROGRAM COMPLETE —
+2026-09-06"). If a future fleet runs, append there and record every rate-limit event.
 Two death classes: per-minute 429s (concurrency-driven —
 step the target down, roughly halve, floor 4) vs 5-hour-pool exhaustion
 (consumption-driven — do NOT step down; wait for the reset timestamp in
@@ -237,8 +226,9 @@ check the clock against the reset time before waiting on one.
   starts, it moves to the session task list; when done, the entry is
   deleted. Keep entries terse — full context goes in docs.
 - Scratch/planning files: `.localonly/` (gitignored) in either repo.
-- Problems CI (in the runner image): format + static checks on push,
-  full judge sweep on dispatch/weekly. Push only format-normalized trees.
+- Problems CI (`.github/workflows/check-problems.yml`, runner image):
+  format + static checks on relevant pushes; a sharded all-bundle judge
+  sweep on dispatch and weekly. Push only format-normalized trees.
 
 ## Deployment
 
@@ -259,110 +249,69 @@ inode-preserving rewrite (`sed … > tmp && cat tmp > Caddyfile`) plus
     curl -fsS https://coderpuzzle.dongziyu.com/api/health
 
 The web UI is served plain HTTP on host port 8081 (no TLS inside this
-repo). The stack fetches the problem set from `CoderPuzzle/coderpuzzle-problems` on
-start. gcloud ssh can be flaky; retry. First account registered through
+repo). The stack serves the checked-in `problems/` tree through a read-only
+bind mount — a deploy pulls the corpus with the code. gcloud ssh can be
+flaky; retry. First account registered through
 the gate bootstraps as admin on a fresh DB.
 
-## Current calibration and local-validation checkpoint (2026-09-15)
+## Calibration checkpoint (2026-09-15)
 
-- Production VM `katze` completed the full 25,505-combination calibration.
-  `/calibration/calibration.json` exists with 16,931 successful records and
-  8,574 failures. The calibration process exited after writing the final
-  artifact; the API health endpoint returns 200.
-- Production hardware fingerprint is `509a0d3113d7`; hardware reported by
-  the artifact is AMD EPYC 9B45, 4 logical CPUs and 7,090,944 KiB RAM.
-- Production login/judging calibration enforcement is still blocked because
-  the matrix is incomplete. Do not change VM configuration or request a
-  static IP while investigating this checkpoint.
-- Failure inventory copied locally to `/tmp/coderpuzzle-calibration/calibration.json`.
-  Of 8,574 failures, 8,557 are reference verdict failures and 17 are runner
-  timeouts. Reference verdict failures include 3,590 compile errors, 4,965
-  runtime errors (mostly with skipped cases), and 2 wrong answers. Compile
-  failures are concentrated in Go/C++/Rust; runtime failures are concentrated
-  in TypeScript/JavaScript/Java/Python/SQL. The 17 runner errors are isolated
-  runner 503 timeouts and must be separated from corpus/reference defects.
-- A local-only opt-in legacy timing path was added and committed as
-  `f3e2685` (`CODERPUZZLE_LEGACY_REFERENCE_TIMING=1`). It runs the designated
-  reference after an accepted submission and reports the reference wall-time
-  ratio without requiring calibration. Production does not enable this flag.
-- The local service was first run against `CoderPuzzle/coderpuzzle-problems`,
-  then corrected to use the intended remote `zydo/openoj-problems` set and its
-  `problems-originals` tree. The corrected local stack was still fetching when
-  this checkpoint was written and has been stopped.
+Production `katze` ran the full 25,505-combination sweep and produced
+16,931 successful records — but the tail of it (8,574 failures) was ONE
+runner-host fault, not corpus defects: the runner's 384 MiB `/tmp` tmpfs
+filled completely (unbounded Go build cache + a `_sweep_tmp` that could
+not unlink `nobody`-owned litter without `CAP_FOWNER`), after which
+compiled languages could not write objects and interpreted ones could not
+stage source. Calibration runs in id order, so the damage is a clean
+block: successes stop at id 2709, failures run 2640 → 4018 unbroken,
+1,173 slugs failing in all seven languages. Only six failures predate the
+ramp (ids 366, 690, 1226, 1242, 1265, 2237) and each of those is a real,
+reproducible defect.
 
-### Root cause found (2026-09-15) — the corpus is clean
+Runner fixes landed with this checkpoint (all verified in a rebuilt
+image, then re-verified against the live sandbox):
 
-The 8,574 failures are ONE host fault, not corpus defects. Evidence:
+1. `runner/Dockerfile` + `compose.yaml` — `cap_fowner` on the supervisor
+   binary (file capabilities are authoritative; `cap_add` only widens the
+   bounding set), so `_sweep_tmp` can actually reclaim the litter.
+2. `runner/worker.py` — the Go build cache is size-capped
+   (`CODERPUZZLE_GOCACHE_MAX_BYTES`, default 128 MiB) and trimmed between
+   jobs; prewarm setup is idempotent and one toolchain failing no longer
+   cancels the rest.
+3. `runner/worker.py` — **prewarming and judging no longer overlap**. A
+   queued job cancels the warm-up's process group and takes an execution
+   lock, so a compiler warm-up can never compete with (or kill) the
+   testcase beside it. This was the cause of the remaining 6-minute
+   `runtime_error`s in the resumed sweep.
+4. `runner/executors/cpp.py` — struct record fields are decoded into
+   locals before the constructor call. `Decoder<A>::read(r), Decoder<B>::read(r)`
+   as call arguments had unspecified evaluation order, so a field could
+   read the other field's bytes (LC 690: "Truncated judge input").
+5. `runner/executors/go.py` (+ `compiled.py`) — `go build` gets its own
+   helper-process budget (`compiler_max_processes = 64`) instead of the
+   runtime's 32. RLIMIT_NPROC is uid-global, so the runtime-sized limit
+   could be spent by unrelated uid-65534 processes and kill a compile.
+6. `runner/executors/java.py` — a flat `schedule_address_space_mb = 1024`
+   for concurrency problems; the JVM reserves another region as soon as a
+   schedule spawns threads, so 1226 died with "unable to create native
+   thread" even at 768 MiB of allowance.
+7. `api/app/calibrate.py` — a consecutive-failure circuit breaker that
+   aborts without publishing; hardware identity without the container
+   hostname; `--force` resumes; `--restart` is the explicit discard; and
+   the published failures list no longer carries stale entries.
 
-- Calibration runs in id order. Successes stop at id 2709; failures run
-  2640 → 4018 (the last id) unbroken. 1,173 slugs fail in ALL 7 languages
-  and succeed in none — 8,211 of the 8,557 reference-verdict failures.
-- The 17 runner 503s sit at ids 2364–2683 and the 113 partial-language
-  failures cluster in the same window: the degradation ramp.
-- Only 6 failures predate it (ids 366, 690, 1226, 1242, 1265, 2237). All
-  six judge 7/7 green locally, as do 12 bundles sampled across
-  2640–4018. Nothing in the corpus is broken.
-- Production runner `/tmp` is a 384 MiB tmpfs and was **100% full, 0
-  bytes free**, with `/tmp/coderpuzzle-gocache` at 383 MiB plus 231
-  leaked `nobody`-owned `cc*.o` files. A full `/tmp` fails every
-  language exactly as observed: compiled ones cannot write objects
-  (`compile_error`), interpreted ones cannot stage source
-  (`runtime_error`, all cases skipped).
+Corpus fixes (both trees):
 
-Three defects, all fixed in this repo (verified in a rebuilt image):
+8. LC 1265 `print-immutable-linked-list-in-reverse` — the C++ provided
+   oracle passed `nullptr` as the chain owner, so every node believed it
+   owned the tail: recursive double free, 0/16 in the sandbox, 16/16
+   after. Fixed in `problems/` and in the adapted twin.
+9. LC 0366 `find-leaves-of-binary-tree` — `max(height(left), height(right))`
+   has unspecified argument evaluation order, so group order was
+   compiler-dependent. Sequenced into locals in both trees.
 
-1. `runner/Dockerfile` — the supervisor's file capabilities lacked
-   `cap_fowner`, so `_sweep_tmp` could never unlink the `nobody`-owned
-   litter it exists to remove (sticky-directory deletion is an ownership
-   check `cap_dac_override` does not cover). `compose.yaml` gained the
-   matching `cap_add`. The file caps are authoritative — `cap_add` alone
-   only widens the bounding set.
-2. `runner/worker.py` — the Go build cache was exempt from the sweep and
-   unbounded, so it grew until `/tmp` filled. Now size-capped
-   (`CODERPUZZLE_GOCACHE_MAX_BYTES`, default 128 MiB) and trimmed
-   between jobs. Also: the prewarm blindly re-chmod'ed a directory it
-   had already chowned to the compiler uid, so it died with EPERM from
-   its second pass on and left every toolchain cold for the container's
-   whole life — 294 log lines. Setup is idempotent now and one
-   toolchain's failure no longer cancels the other four.
-3. `api/app/calibrate.py` — no circuit breaker, so a broken host became
-   a matrix that looked complete. `CONSECUTIVE_FAILURE_LIMIT` (default
-   40) aborts the sweep and deliberately does NOT publish
-   `calibration.json`; the checkpoint survives for a resume.
-   `tests/test_calibration_breaker.py` covers it.
-
-Separately: the VM root disk is at 91% (3.7 G free of 38 G) with 2.5 G
-reclaimable in docker. Worth headroom, but it is NOT the cause — the
-exhausted filesystem was the container's RAM-backed tmpfs.
-
-Two more defects in the resume path, found while preparing the re-run:
-
-4. `hardware_snapshot()` hashed `platform.node()` — inside a container
-   that is the container id, so ANY deploy recreated the container and
-   changed the fingerprint, silently discarding the checkpoint and
-   restarting from zero. The hash now covers hardware identity only
-   (`IDENTITY_KEYS`); `same_hardware()` compares those fields directly so
-   checkpoints written by older builds still resume. `--force` now
-   resumes (it only overrides the "already current" skip); the new
-   `--restart` is the explicit way to discard a checkpoint.
-5. The resume carried the previous run's `failures` into the new
-   artifact even though every one is retried, so combinations that had
-   since passed stayed published as failures. It starts empty now.
-   `tests/test_calibration_resume.py` covers 4 and 5.
-
-### Pending work after this checkpoint
-
-1. Deploy the fixes to `katze` — needs a runner image REBUILD, the
-   capability is baked into the image — then resume calibration. Only the
-   8,574 previously failed combinations are re-measured; the 16,931
-   successful records are kept (user's decision 2026-09-15). Note the
-   1,927 of those records with id >= 2364 were measured while /tmp was
-   filling, so their timings may run slightly high; kept deliberately.
-2. Keep failed combinations blocked until the replacement matrix is
-   complete and validated.
-3. Problem-set restructure (below) deploys AFTER calibration finishes —
-   it recreates containers, and the corpus content is identical either
-   way, so it does not affect calibration validity.
+Production still must re-run the 8,574 previously failed combinations
+with `--force` (valid records are kept; only missing ones are measured).
 
 ## Extending the problem set — checklist
 

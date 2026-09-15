@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 995,
+  "slug": "minimum-number-of-k-consecutive-bit-flips",
+  "title": "Minimum Number of K Consecutive Bit Flips",
+  "difficulty": "Hard",
+  "tags": [
+    "Greedy",
+    "Difference Array",
+    "Queue",
+    "Sliding Window"
+  ],
+  "topics": [
+    "Array",
+    "Bit Manipulation",
+    "Queue",
+    "Sliding Window",
+    "Prefix Sum",
+    "Brute-Force Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minKBitFlips",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minKBitFlips",
+      "rust": "min_k_bit_flips",
+      "typescript": "minKBitFlips"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

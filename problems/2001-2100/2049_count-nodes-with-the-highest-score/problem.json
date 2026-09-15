@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2049,
+  "slug": "count-nodes-with-the-highest-score",
+  "title": "Count Nodes With the Highest Score",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree",
+    "DP on Trees"
+  ],
+  "topics": [
+    "Array",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree",
+    "DP on Trees"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countHighestScoreNodes",
+    "parameters": [
+      {
+        "name": "parents",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countHighestScoreNodes",
+      "rust": "count_highest_score_nodes",
+      "typescript": "countHighestScoreNodes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

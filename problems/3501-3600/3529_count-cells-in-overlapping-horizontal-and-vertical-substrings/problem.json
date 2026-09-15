@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3529,
+  "slug": "count-cells-in-overlapping-horizontal-and-vertical-substrings",
+  "title": "Count Cells in Overlapping Horizontal and Vertical Substrings",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "String",
+    "Rolling Hash",
+    "String Matching",
+    "Matrix",
+    "Hash Function"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Rolling Hash",
+    "String Matching",
+    "Matrix",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countCells",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "pattern",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "countCells",
+      "rust": "count_cells",
+      "typescript": "countCells"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

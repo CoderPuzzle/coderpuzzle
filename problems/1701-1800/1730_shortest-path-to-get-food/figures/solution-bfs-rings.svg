@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <!-- grid 6x4, cell 70, x=150 y=30 -->
+  <!-- obstacle fill -->
+  <g fill="#e3e7eb">
+    <rect x="150" y="30" width="420" height="70"/>
+    <rect x="150" y="240" width="420" height="70"/>
+    <rect x="150" y="100" width="70" height="70"/><rect x="500" y="100" width="70" height="70"/>
+    <rect x="150" y="170" width="70" height="70"/><rect x="500" y="170" width="70" height="70"/>
+  </g>
+  <!-- distance fills: 0 dark, 1 mid, 2 light, 3 lightest -->
+  <g fill="#4169E1"><rect x="220" y="100" width="70" height="70"/></g>
+  <g fill="#9db4ea">
+    <rect x="290" y="100" width="70" height="70"/><rect x="220" y="170" width="70" height="70"/>
+  </g>
+  <g fill="#dbe4f6">
+    <rect x="360" y="100" width="70" height="70"/><rect x="290" y="170" width="70" height="70"/>
+  </g>
+  <g fill="#eef3fc">
+    <rect x="430" y="100" width="70" height="70"/><rect x="360" y="170" width="70" height="70"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <rect x="150" y="30" width="70" height="70"/><rect x="220" y="30" width="70" height="70"/><rect x="290" y="30" width="70" height="70"/><rect x="360" y="30" width="70" height="70"/><rect x="430" y="30" width="70" height="70"/><rect x="500" y="30" width="70" height="70"/>
+    <rect x="150" y="100" width="70" height="70"/><rect x="220" y="100" width="70" height="70"/><rect x="290" y="100" width="70" height="70"/><rect x="360" y="100" width="70" height="70"/><rect x="430" y="100" width="70" height="70"/><rect x="500" y="100" width="70" height="70"/>
+    <rect x="150" y="170" width="70" height="70"/><rect x="220" y="170" width="70" height="70"/><rect x="290" y="170" width="70" height="70"/><rect x="360" y="170" width="70" height="70"/><rect x="430" y="170" width="70" height="70"/><rect x="500" y="170" width="70" height="70"/>
+    <rect x="150" y="240" width="70" height="70"/><rect x="220" y="240" width="70" height="70"/><rect x="290" y="240" width="70" height="70"/><rect x="360" y="240" width="70" height="70"/><rect x="430" y="240" width="70" height="70"/><rect x="500" y="240" width="70" height="70"/>
+  </g>
+  <!-- cell contents -->
+  <g text-anchor="middle" fill="#8a97a2" font-size="13">
+    <text x="185" y="70">X</text><text x="255" y="70">X</text><text x="325" y="70">X</text><text x="395" y="70">X</text><text x="465" y="70">X</text><text x="535" y="70">X</text>
+    <text x="185" y="280">X</text><text x="255" y="280">X</text><text x="325" y="280">X</text><text x="395" y="280">X</text><text x="465" y="280">X</text><text x="535" y="280">X</text>
+    <text x="185" y="140">X</text><text x="535" y="140">X</text><text x="185" y="210">X</text><text x="535" y="210">X</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="255" y="145" fill="#ffffff">*</text>
+    <text x="325" y="145" fill="#1a2026">1</text><text x="395" y="145" fill="#1a2026">2</text><text x="465" y="145" fill="#1a2026">3</text>
+    <text x="255" y="215" fill="#1a2026">1</text><text x="325" y="215" fill="#1a2026">2</text>
+    <text x="395" y="215" font-size="19" fill="#1a2026">#</text>
+  </g>
+  <!-- narration -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="110">BFS floods outward</text>
+    <text x="40" y="126">from the * cell one</text>
+    <text x="40" y="142">ring at a time;</text>
+    <text x="40" y="158">numbers are the</text>
+    <text x="40" y="174">settled distances.</text>
+  </g>
+  <text x="40" y="312" fill="#1a2026" font-size="13">The wavefront reaches the food # at distance <tspan fill="#4169E1" font-weight="600">3</tspan>, so the first pop of a food cell returns 3 steps.</text>
+</svg>

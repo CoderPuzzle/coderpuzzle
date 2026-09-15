@@ -1,0 +1,1116 @@
+{
+  "public": [
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "emit",
+          "subscribe",
+          "subscribe",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "firstEvent"
+          ],
+          [
+            "firstEvent",
+            "function cb1() { return 5; }"
+          ],
+          [
+            "firstEvent",
+            "function cb1() { return 6; }"
+          ],
+          [
+            "firstEvent"
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "emitted",
+          []
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            5,
+            6
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "emit",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "firstEvent",
+            "function cb1(...args) { return args.join(','); }"
+          ],
+          [
+            "firstEvent",
+            [
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            "firstEvent",
+            [
+              3,
+              4,
+              6
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            "1,2,3"
+          ]
+        ],
+        [
+          "emitted",
+          [
+            "3,4,6"
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "emit",
+          "unsubscribe",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "firstEvent",
+            "(...args) => args.join(',')"
+          ],
+          [
+            "firstEvent",
+            [
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            0
+          ],
+          [
+            "firstEvent",
+            [
+              4,
+              5,
+              6
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            "1,2,3"
+          ]
+        ],
+        [
+          "unsubscribed",
+          0
+        ],
+        [
+          "emitted",
+          []
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "subscribe",
+          "unsubscribe",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "firstEvent",
+            "x => x + 1"
+          ],
+          [
+            "firstEvent",
+            "x => x + 2"
+          ],
+          [
+            0
+          ],
+          [
+            "firstEvent",
+            [
+              5
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "unsubscribed",
+          0
+        ],
+        [
+          "emitted",
+          [
+            7
+          ]
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "neverSubscribed"
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "emitted",
+          []
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "subscribe",
+          "emit",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "eventA",
+            "() => 5"
+          ],
+          [
+            "eventB",
+            "() => 6"
+          ],
+          [
+            "eventA"
+          ],
+          [
+            "eventB"
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            5
+          ]
+        ],
+        [
+          "emitted",
+          [
+            6
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "subscribe",
+          "subscribe",
+          "emit",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e1",
+            "x => x + 1"
+          ],
+          [
+            "e2",
+            "x => x * 2"
+          ],
+          [
+            "e1",
+            "x => x + 2"
+          ],
+          [
+            "e1",
+            [
+              10
+            ]
+          ],
+          [
+            "e2",
+            [
+              10
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            11,
+            12
+          ]
+        ],
+        [
+          "emitted",
+          [
+            20
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "subscribe",
+          "unsubscribe",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "x => x + 1"
+          ],
+          [
+            "e",
+            "x => x + 2"
+          ],
+          [
+            1
+          ],
+          [
+            "e",
+            [
+              5
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "unsubscribed",
+          1
+        ],
+        [
+          "emitted",
+          [
+            6
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "subscribe",
+          "subscribe",
+          "unsubscribe",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "x => x + 1"
+          ],
+          [
+            "e",
+            "x => x * 2"
+          ],
+          [
+            "e",
+            "x => x + 2"
+          ],
+          [
+            1
+          ],
+          [
+            "e",
+            [
+              3
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "unsubscribed",
+          1
+        ],
+        [
+          "emitted",
+          [
+            4,
+            5
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "subscribe",
+          "unsubscribe",
+          "unsubscribe",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "x => x + 1"
+          ],
+          [
+            "e",
+            "x => x * 2"
+          ],
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            "e",
+            [
+              9
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "unsubscribed",
+          0
+        ],
+        [
+          "unsubscribed",
+          1
+        ],
+        [
+          "emitted",
+          []
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "emit",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "(...args) => args.join(',')"
+          ],
+          [
+            "e",
+            []
+          ],
+          [
+            "e"
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            ""
+          ]
+        ],
+        [
+          "emitted",
+          [
+            ""
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "subscribe",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "x => x * 2"
+          ],
+          [
+            "e",
+            "x => x * 2"
+          ],
+          [
+            "e",
+            [
+              3
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            6,
+            6
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "emit",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "(...args) => args"
+          ],
+          [
+            "e",
+            [
+              1,
+              "two",
+              true,
+              null
+            ]
+          ],
+          [
+            "e",
+            [
+              "x"
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            [
+              1,
+              "two",
+              true,
+              null
+            ]
+          ]
+        ],
+        [
+          "emitted",
+          [
+            [
+              "x"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "emit",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "x => ({ \"value\": x, \"doubled\": x * 2 })"
+          ],
+          [
+            "e",
+            [
+              4
+            ]
+          ],
+          [
+            "e",
+            [
+              7
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            {
+              "value": 4,
+              "doubled": 8
+            }
+          ]
+        ],
+        [
+          "emitted",
+          [
+            {
+              "value": 7,
+              "doubled": 14
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "subscribe",
+          "emit",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "x => null"
+          ],
+          [
+            "e",
+            "(...args) => args.length > 1"
+          ],
+          [
+            "e",
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            "e",
+            [
+              1
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            null,
+            true
+          ]
+        ],
+        [
+          "emitted",
+          [
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "subscribe",
+          "subscribe",
+          "subscribe",
+          "subscribe",
+          "subscribe",
+          "subscribe",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "x => x * 2"
+          ],
+          [
+            "e",
+            "x => x + 1"
+          ],
+          [
+            "e",
+            "x => x * 2"
+          ],
+          [
+            "e",
+            "x => x + 1"
+          ],
+          [
+            "e",
+            "x => x * 2"
+          ],
+          [
+            "e",
+            "x => x + 1"
+          ],
+          [
+            "e",
+            "x => x * 2"
+          ],
+          [
+            "e",
+            [
+              10
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            20,
+            11,
+            20,
+            11,
+            20,
+            11,
+            20
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "unsubscribe",
+          "subscribe",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "x => x + 1"
+          ],
+          [
+            0
+          ],
+          [
+            "e",
+            "x => x * 2"
+          ],
+          [
+            "e",
+            [
+              4
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "unsubscribed",
+          0
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            8
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "subscribe",
+          "emit",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e1",
+            "(...args) => args.join(',')"
+          ],
+          [
+            "e2",
+            "(...args) => args.reduce((a, b) => a + b, 0)"
+          ],
+          [
+            "e1",
+            [
+              "a",
+              "b"
+            ]
+          ],
+          [
+            "e2",
+            [
+              2,
+              3
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            "a,b"
+          ]
+        ],
+        [
+          "emitted",
+          [
+            5
+          ]
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "emit",
+          "unsubscribe",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "x => x + 1"
+          ],
+          [
+            "e",
+            [
+              1
+            ]
+          ],
+          [
+            0
+          ],
+          [
+            "e",
+            [
+              1
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            2
+          ]
+        ],
+        [
+          "unsubscribed",
+          0
+        ],
+        [
+          "emitted",
+          []
+        ]
+      ]
+    },
+    {
+      "input": {
+        "actions": [
+          "EventEmitter",
+          "subscribe",
+          "subscribe",
+          "subscribe",
+          "emit",
+          "unsubscribe",
+          "emit",
+          "subscribe",
+          "unsubscribe",
+          "emit"
+        ],
+        "values": [
+          [],
+          [
+            "e",
+            "x => x + 1"
+          ],
+          [
+            "e",
+            "x => x * 2"
+          ],
+          [
+            "e",
+            "x => x + 2"
+          ],
+          [
+            "e",
+            [
+              5
+            ]
+          ],
+          [
+            2
+          ],
+          [
+            "e",
+            [
+              5
+            ]
+          ],
+          [
+            "e",
+            "(...args) => args.join(',')"
+          ],
+          [
+            0
+          ],
+          [
+            "e",
+            [
+              7
+            ]
+          ]
+        ]
+      },
+      "expected": [
+        [],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "emitted",
+          [
+            6,
+            10,
+            7
+          ]
+        ],
+        [
+          "unsubscribed",
+          2
+        ],
+        [
+          "emitted",
+          [
+            6,
+            10
+          ]
+        ],
+        [
+          "subscribed"
+        ],
+        [
+          "unsubscribed",
+          0
+        ],
+        [
+          "emitted",
+          [
+            14,
+            "7"
+          ]
+        ]
+      ]
+    }
+  ]
+}

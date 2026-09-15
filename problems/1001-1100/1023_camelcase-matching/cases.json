@@ -1,0 +1,223 @@
+{
+  "public": [
+    {
+      "input": [
+        [
+          "FooBar",
+          "FooBarTest",
+          "FootBall",
+          "FrameBuffer",
+          "ForceFeedBack"
+        ],
+        "FB"
+      ],
+      "expected": [
+        true,
+        false,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "input": [
+        [
+          "FooBar",
+          "FooBarTest",
+          "FootBall",
+          "FrameBuffer",
+          "ForceFeedBack"
+        ],
+        "FoBa"
+      ],
+      "expected": [
+        true,
+        false,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "input": [
+        [
+          "FooBar",
+          "FooBarTest",
+          "FootBall",
+          "FrameBuffer",
+          "ForceFeedBack"
+        ],
+        "FoBaT"
+      ],
+      "expected": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        [
+          "FB"
+        ],
+        "FB"
+      ],
+      "expected": [
+        true
+      ]
+    },
+    {
+      "input": [
+        [
+          "aFB"
+        ],
+        "FB"
+      ],
+      "expected": [
+        true
+      ]
+    },
+    {
+      "input": [
+        [
+          "FaB"
+        ],
+        "FB"
+      ],
+      "expected": [
+        true
+      ]
+    },
+    {
+      "input": [
+        [
+          "FBa"
+        ],
+        "FB"
+      ],
+      "expected": [
+        true
+      ]
+    },
+    {
+      "input": [
+        [
+          "Foo"
+        ],
+        "FB"
+      ],
+      "expected": [
+        false
+      ]
+    },
+    {
+      "input": [
+        [
+          "FBX"
+        ],
+        "FB"
+      ],
+      "expected": [
+        false
+      ]
+    },
+    {
+      "input": [
+        [
+          "abc"
+        ],
+        ""
+      ],
+      "expected": [
+        true
+      ]
+    },
+    {
+      "input": [
+        [
+          "aBc"
+        ],
+        ""
+      ],
+      "expected": [
+        false
+      ]
+    },
+    {
+      "input": [
+        [
+          ""
+        ],
+        ""
+      ],
+      "expected": [
+        true
+      ]
+    },
+    {
+      "input": [
+        [
+          ""
+        ],
+        "F"
+      ],
+      "expected": [
+        false
+      ]
+    },
+    {
+      "input": [
+        [
+          "BF"
+        ],
+        "FB"
+      ],
+      "expected": [
+        false
+      ]
+    },
+    {
+      "input": [
+        [
+          "Alpha",
+          "Beta",
+          "AlphaBeta",
+          "alpha"
+        ],
+        "AB"
+      ],
+      "expected": [
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "input": [
+        [
+          "ABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDE"
+        ],
+        "ABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDE"
+      ],
+      "expected": [
+        true
+      ]
+    },
+    {
+      "input": [
+        [
+          "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxAyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyB"
+        ],
+        "AB"
+      ],
+      "expected": [
+        true
+      ]
+    }
+  ]
+}

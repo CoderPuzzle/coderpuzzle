@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3309,
+  "slug": "maximum-possible-number-by-binary-concatenation",
+  "title": "Maximum Possible Number by Binary Concatenation",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Bit Manipulation",
+    "Enumeration"
+  ],
+  "topics": [
+    "Array",
+    "Bit Manipulation",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxGoodNumber",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxGoodNumber",
+      "rust": "max_good_number",
+      "typescript": "maxGoodNumber"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

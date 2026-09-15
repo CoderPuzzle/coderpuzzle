@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 412,
+  "slug": "fizz-buzz",
+  "title": "Fizz Buzz",
+  "difficulty": "Easy",
+  "tags": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "fizzBuzz",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "fizzBuzz",
+      "rust": "fizz_buzz",
+      "typescript": "fizzBuzz"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

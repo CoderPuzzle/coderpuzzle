@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 537,
+  "slug": "complex-number-multiplication",
+  "title": "Complex Number Multiplication",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "complexNumberMultiply",
+    "parameters": [
+      {
+        "name": "num1",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "num2",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "complexNumberMultiply",
+      "rust": "complex_number_multiply",
+      "typescript": "complexNumberMultiply"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

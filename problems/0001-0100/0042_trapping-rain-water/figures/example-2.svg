@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 416 246" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="416" height="246" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- water above bars: level = min(max left, max right) -->
+  <g fill="#4169E1">
+    <rect x="108" y="56" width="56" height="76"/>
+    <rect x="164" y="56" width="56" height="152"/>
+    <rect x="220" y="56" width="56" height="38"/>
+    <rect x="276" y="56" width="56" height="76"/>
+  </g>
+  <!-- elevation bars: [4,2,0,3,2,5] -->
+  <g fill="#1a2026">
+    <rect x="52" y="56" width="56" height="152"/>
+    <rect x="108" y="132" width="56" height="76"/>
+    <rect x="220" y="94" width="56" height="114"/>
+    <rect x="276" y="132" width="56" height="76"/>
+    <rect x="332" y="18" width="56" height="190"/>
+  </g>
+  <!-- axes -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <line x1="52" y1="208" x2="52" y2="8" marker-end="url(#arrow)"/>
+    <line x1="52" y1="208" x2="400" y2="208" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="45" y1="18" x2="52" y2="18"/>
+    <line x1="45" y1="56" x2="52" y2="56"/>
+    <line x1="45" y1="94" x2="52" y2="94"/>
+    <line x1="45" y1="132" x2="52" y2="132"/>
+    <line x1="45" y1="170" x2="52" y2="170"/>
+    <line x1="45" y1="208" x2="52" y2="208"/>
+    <line x1="52" y1="208" x2="52" y2="213"/>
+    <line x1="108" y1="208" x2="108" y2="213"/>
+    <line x1="164" y1="208" x2="164" y2="213"/>
+    <line x1="220" y1="208" x2="220" y2="213"/>
+    <line x1="276" y1="208" x2="276" y2="213"/>
+    <line x1="332" y1="208" x2="332" y2="213"/>
+    <line x1="388" y1="208" x2="388" y2="213"/>
+  </g>
+  <g fill="#5c6b76" text-anchor="end">
+    <text x="40" y="22.5">5</text>
+    <text x="40" y="60.5">4</text>
+    <text x="40" y="98.5">3</text>
+    <text x="40" y="136.5">2</text>
+    <text x="40" y="174.5">1</text>
+    <text x="40" y="212.5">0</text>
+  </g>
+</svg>

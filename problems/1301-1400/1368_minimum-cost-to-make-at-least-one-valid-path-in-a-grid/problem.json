@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1368,
+  "slug": "minimum-cost-to-make-at-least-one-valid-path-in-a-grid",
+  "title": "Minimum Cost to Make at Least One Valid Path in a Grid",
+  "difficulty": "Hard",
+  "tags": [
+    "Graph",
+    "Breadth-First Search",
+    "Shortest Path"
+  ],
+  "topics": [
+    "Array",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Heap (Priority Queue)",
+    "Matrix",
+    "Shortest Path",
+    "0-1 BFS",
+    "Dijkstra's Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minCost",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minCost",
+      "rust": "min_cost",
+      "typescript": "minCost"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

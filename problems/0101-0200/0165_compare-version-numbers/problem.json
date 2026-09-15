@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 165,
+  "slug": "compare-version-numbers",
+  "title": "Compare Version Numbers",
+  "difficulty": "Medium",
+  "tags": [
+    "Two Pointers",
+    "String"
+  ],
+  "topics": [
+    "Two Pointers",
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "compareVersion",
+    "parameters": [
+      {
+        "name": "version1",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "version2",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "compareVersion",
+      "rust": "compare_version",
+      "typescript": "compareVersion"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

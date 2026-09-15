@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3834,
+  "slug": "merge-adjacent-equal-elements",
+  "title": "Merge Adjacent Equal Elements",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Stack",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "mergeAdjacent",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 64
+      }
+    },
+    "entrypoints": {
+      "go": "mergeAdjacent",
+      "rust": "merge_adjacent",
+      "typescript": "mergeAdjacent"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

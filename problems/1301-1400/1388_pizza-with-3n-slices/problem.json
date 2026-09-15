@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1388,
+  "slug": "pizza-with-3n-slices",
+  "title": "Pizza With 3n Slices",
+  "difficulty": "Hard",
+  "tags": [
+    "Dynamic Programming",
+    "Interval DP"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxSizeSlices",
+    "parameters": [
+      {
+        "name": "slices",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxSizeSlices",
+      "rust": "max_size_slices",
+      "typescript": "maxSizeSlices"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

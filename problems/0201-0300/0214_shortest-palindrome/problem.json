@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 214,
+  "slug": "shortest-palindrome",
+  "title": "Shortest Palindrome",
+  "difficulty": "Hard",
+  "tags": [
+    "KMP",
+    "String"
+  ],
+  "topics": [
+    "String",
+    "Rolling Hash",
+    "String Matching",
+    "Hash Function",
+    "Manacher",
+    "Z Algorithm",
+    "Knuth–Morris–Pratt Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "shortestPalindrome",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "shortestPalindrome",
+      "rust": "shortest_palindrome",
+      "typescript": "shortestPalindrome"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

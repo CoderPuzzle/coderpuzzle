@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1507,
+  "slug": "reformat-date",
+  "title": "Reformat Date",
+  "difficulty": "Easy",
+  "tags": [
+    "String"
+  ],
+  "topics": [
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "reformatDate",
+    "parameters": [
+      {
+        "name": "date",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "reformatDate",
+      "rust": "reformat_date",
+      "typescript": "reformatDate"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

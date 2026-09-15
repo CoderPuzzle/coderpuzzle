@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="300" fill="#ffffff"/>
+  <!-- time axis: t -> 60 + 42*t, t in 0..14 -->
+  <line x1="60" y1="230" x2="650" y2="230" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="60" y1="230" x2="60" y2="238"/><line x1="186" y1="230" x2="186" y2="238"/>
+    <line x1="312" y1="230" x2="312" y2="238"/><line x1="438" y1="230" x2="438" y2="238"/>
+    <line x1="564" y1="230" x2="564" y2="238"/><line x1="648" y1="230" x2="648" y2="238"/>
+  </g>
+  <g fill="#5c6b76" font-size="12" text-anchor="middle">
+    <text x="60" y="254">0</text><text x="186" y="254">3</text><text x="312" y="254">6</text>
+    <text x="438" y="254">9</text><text x="564" y="254">12</text><text x="648" y="254">14</text>
+  </g>
+  <!-- flower bars -->
+  <g fill="#4169E1">
+    <rect x="102" y="60" width="210" height="20" rx="9"/>
+    <rect x="186" y="95" width="168" height="20" rx="9"/>
+    <rect x="438" y="130" width="126" height="20" rx="9"/>
+    <rect x="228" y="165" width="378" height="20" rx="9"/>
+  </g>
+  <g fill="#ffffff" font-size="12" font-weight="600">
+    <text x="207" y="74">[1,6]</text><text x="270" y="109">[3,7]</text>
+    <text x="501" y="144">[9,12]</text><text x="417" y="179">[4,13]</text>
+  </g>
+  <!-- people queries -->
+  <g stroke="#1a2026" stroke-width="1.6" stroke-dasharray="5 4">
+    <line x1="144" y1="50" x2="144" y2="228"/>
+    <line x1="186" y1="50" x2="186" y2="228"/>
+    <line x1="354" y1="50" x2="354" y2="228"/>
+    <line x1="522" y1="50" x2="522" y2="228"/>
+  </g>
+  <g font-size="12.5" text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="144" y="40">t=2 → 1</text><text x="196" y="28" text-anchor="start">t=3 → 2</text>
+    <text x="354" y="40">t=7 → 2</text><text x="522" y="40">t=11 → 2</text>
+  </g>
+  <!-- circles at intersections -->
+  <g fill="#1a2026">
+    <circle cx="144" cy="70" r="4"/>
+    <circle cx="186" cy="70" r="4"/><circle cx="186" cy="105" r="4"/>
+    <circle cx="354" cy="105" r="4"/><circle cx="354" cy="175" r="4"/>
+    <circle cx="522" cy="140" r="4"/><circle cx="522" cy="175" r="4"/>
+  </g>
+  <text x="60" y="282" fill="#1a2026" font-size="13">At t = 7: three starts are ≤ 7 (flowers [1,6], [3,7], [4,13]) and one end is &lt; 7, so 3 − 1 = <tspan fill="#4169E1" font-weight="600">2</tspan> in bloom.</text>
+</svg>

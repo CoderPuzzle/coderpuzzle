@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1290,
+  "slug": "convert-binary-number-in-a-linked-list-to-integer",
+  "title": "Convert Binary Number in a Linked List to Integer",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List",
+    "Math"
+  ],
+  "topics": [
+    "Linked List",
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getDecimalValue",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "getDecimalValue",
+      "rust": "get_decimal_value",
+      "typescript": "getDecimalValue"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

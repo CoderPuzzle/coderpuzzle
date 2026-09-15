@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 260" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12">
+  <rect width="340" height="260" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+  </defs>
+  <!-- water between indices 0 and 1, up to min(1, 1) = 1 -->
+  <rect x="80" y="120" width="110" height="80" fill="#4169E1" fill-opacity="0.15"/>
+  <line x1="80" y1="120" x2="190" y2="120" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="135" y="168" text-anchor="middle" fill="#4169E1" stroke="none" font-size="21" font-weight="600">1</text>
+  <!-- both lines form the optimal pair -->
+  <g stroke="#4169E1" stroke-width="2.4">
+    <line x1="80" y1="200" x2="80" y2="120"/>
+    <line x1="190" y1="200" x2="190" y2="120"/>
+  </g>
+  <!-- axes with unit ticks -->
+  <g stroke="#1a2026" stroke-width="1.6">
+    <line x1="80" y1="200" x2="280" y2="200" marker-end="url(#arrow)"/>
+    <line x1="80" y1="200" x2="80" y2="66" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#1a2026" stroke-width="1.2">
+    <line x1="80" y1="200" x2="80" y2="204"/><line x1="190" y1="200" x2="190" y2="204"/>
+    <line x1="76" y1="200" x2="80" y2="200"/><line x1="76" y1="120" x2="80" y2="120"/>
+  </g>
+  <g fill="#5c6b76">
+    <g text-anchor="middle">
+      <text x="80" y="222">0</text><text x="190" y="222">1</text>
+    </g>
+    <g text-anchor="end">
+      <text x="70" y="204">0</text><text x="70" y="124">1</text>
+    </g>
+  </g>
+</svg>

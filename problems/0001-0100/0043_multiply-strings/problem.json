@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 43,
+  "slug": "multiply-strings",
+  "title": "Multiply Strings",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "multiply",
+    "parameters": [
+      {
+        "name": "num1",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "num2",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "multiply",
+      "rust": "multiply",
+      "typescript": "multiply"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

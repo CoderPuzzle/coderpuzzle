@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "union_find_virtual",
+  "id": 130,
+  "slug": "surrounded-regions",
+  "title": "Surrounded Regions",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "solve",
+    "parameters": [
+      {
+        "name": "board",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "string"
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "solve",
+      "rust": "solve",
+      "typescript": "solve"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

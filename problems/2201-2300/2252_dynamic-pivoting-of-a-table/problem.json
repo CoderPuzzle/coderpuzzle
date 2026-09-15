@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2252,
+  "slug": "dynamic-pivoting-of-a-table",
+  "title": "Dynamic Pivoting of a Table",
+  "difficulty": "Hard",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "exact",
+    "sql": {
+      "schema": "CREATE TABLE Products (product_id INTEGER, store TEXT, price INTEGER);",
+      "headers": true,
+      "dynamic_columns": true
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

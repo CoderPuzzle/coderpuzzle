@@ -1,0 +1,305 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(336,'hwkiy@test.edu'),\n(489,'adcmaf@outlook.com'),\n(449,'vrzmwyum@yahoo.com'),\n(95,'tof@test.edu'),\n(320,'jxhbagkpm@example.org'),\n(411,'zxcf@outlook.com');"
+      ],
+      "expected": [
+        [
+          "outlook.com",
+          2
+        ],
+        [
+          "yahoo.com",
+          1
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(1,'ann@gmail.com'),\n(2,'bob@gmail.com'),\n(3,'cat@gmail.com'),\n(4,'dan@yahoo.com'),\n(5,'eve@mit.edu'),\n(6,'fin@coderpuzzle.dev'),\n(7,'gus@protonmail.com');"
+      ],
+      "expected": [
+        [
+          "gmail.com",
+          3
+        ],
+        [
+          "protonmail.com",
+          1
+        ],
+        [
+          "yahoo.com",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(1,'a@x.org'),\n(2,'b@y.edu'),\n(3,'c@z.net'),\n(4,'d@sub.company.co');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(42,'solo@lonely.com');"
+      ],
+      "expected": [
+        [
+          "lonely.com",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(7,'only@unique.org');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(1,'alice@a.com'),\n(2,'alice@b.net'),\n(3,'alice@c.com'),\n(4,'bob@a.com'),\n(5,'carol@b.net');"
+      ],
+      "expected": [
+        [
+          "a.com",
+          2
+        ],
+        [
+          "c.com",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(1,'u1@mail.foo.com'),\n(2,'u2@mail.foo.com'),\n(3,'u3@foo.com'),\n(4,'u4@foo.com'),\n(5,'u5@foo.com'),\n(6,'u6@api.foo.com'),\n(7,'u7@foo.org'),\n(8,'u8@foo.org'),\n(9,'u9@foo.org'),\n(10,'u10@foo.org'),\n(11,'u11@foo.org');"
+      ],
+      "expected": [
+        [
+          "api.foo.com",
+          1
+        ],
+        [
+          "foo.com",
+          3
+        ],
+        [
+          "mail.foo.com",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(1,'a@alpha.com'),\n(2,'b@zeta.com'),\n(3,'c@mid.com'),\n(4,'d@zeta.com'),\n(5,'e@alpha.com'),\n(6,'f@mid.com'),\n(7,'g@other.org');"
+      ],
+      "expected": [
+        [
+          "alpha.com",
+          2
+        ],
+        [
+          "mid.com",
+          2
+        ],
+        [
+          "zeta.com",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(501,'u1@gmail.com'),\n(23,'u2@gmail.com'),\n(87,'u3@gmail.com'),\n(410,'u4@gmail.com'),\n(66,'u5@gmail.com'),\n(129,'u6@gmail.com'),\n(300,'u7@gmail.com'),\n(77,'u8@gmail.com'),\n(512,'u9@gmail.com'),\n(45,'u10@gmail.com'),\n(88,'n1@hotmail.com'),\n(9,'n2@qq.com'),\n(404,'n3@gmx.de');"
+      ],
+      "expected": [
+        [
+          "gmail.com",
+          10
+        ],
+        [
+          "hotmail.com",
+          1
+        ],
+        [
+          "qq.com",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(1,'u@com'),\n(2,'v@a.com'),\n(3,'w@sub.a.com'),\n(4,'x@dotcom'),\n(5,'y@com.com'),\n(6,'z@a.community.org'),\n(7,'q@b.co');"
+      ],
+      "expected": [
+        [
+          "a.com",
+          1
+        ],
+        [
+          "com.com",
+          1
+        ],
+        [
+          "sub.a.com",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(1,'same@dup.com'),\n(2,'same@dup.com'),\n(3,'diff@dup.com'),\n(4,'same@other.org');"
+      ],
+      "expected": [
+        [
+          "dup.com",
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(5,'p@2b.com'),\n(1,'q@1a.com'),\n(9,'r@ab.com'),\n(3,'s@aa.com'),\n(2,'t@1a.com');"
+      ],
+      "expected": [
+        [
+          "1a.com",
+          2
+        ],
+        [
+          "2b.com",
+          1
+        ],
+        [
+          "aa.com",
+          1
+        ],
+        [
+          "ab.com",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Emails VALUES\n(29,'shared@bulk.com'),\n(12,'shared@bulk.com'),\n(186,'shared@bulk.com'),\n(147,'user0146@gmx.com'),\n(162,'user0161@gmail.com'),\n(139,'user0138@zoho.com'),\n(21,'user0020@foo.com'),\n(169,'user0168@gov.uk'),\n(77,'user0076@news.jp'),\n(119,'user0118@yandex.com'),\n(143,'user0142@fastmail.com'),\n(108,'user0107@coderpuzzle.dev'),\n(202,'user0201@coderpuzzle.dev'),\n(190,'user0189@example.org'),\n(146,'user0145@sub.company.co'),\n(71,'user0070@gmx.com'),\n(197,'user0196@mail.foo.com'),\n(103,'user0102@shop.co'),\n(38,'user0037@inbox.google.com'),\n(121,'user0120@bar.com'),\n(40,'user0039@mit.edu'),\n(194,'user0193@mit.edu'),\n(210,'user0209@hotmail.com'),\n(135,'user0134@sina.com'),\n(57,'user0056@news.jp'),\n(96,'user0095@yahoo.com'),\n(104,'user0103@aol.com'),\n(37,'user0036@outlook.com'),\n(219,'user0218@bar.com'),\n(66,'user0065@news.jp'),\n(98,'user0097@foo.com'),\n(157,'user0156@shop.co'),\n(2,'user0001@example.org'),\n(116,'user0115@gmx.com'),\n(181,'user0180@example.org'),\n(42,'user0041@shop.co'),\n(50,'user0049@news.jp'),\n(125,'user0124@hotmail.com'),\n(81,'user0080@sub.company.co'),\n(209,'user0208@qq.com'),\n(180,'user0179@126.com'),\n(82,'user0081@msn.com'),\n(204,'user0203@mail.foo.com'),\n(46,'user0045@mail.gmail.com'),\n(54,'user0053@mit.edu'),\n(173,'user0172@mit.edu'),\n(109,'user0108@hey.com'),\n(73,'user0072@126.com'),\n(122,'user0121@fastmail.com'),\n(123,'user0122@163.com'),\n(62,'user0061@protonmail.com'),\n(211,'user0210@example.org'),\n(150,'user0149@stanford.edu'),\n(154,'user0153@live.com'),\n(168,'user0167@example.org'),\n(43,'user0042@126.com'),\n(106,'user0105@mail.gmail.com'),\n(16,'user0015@aol.com'),\n(45,'user0044@coderpuzzle.dev'),\n(208,'user0207@gmail.com'),\n(27,'user0026@proton.com'),\n(61,'user0060@sina.com'),\n(111,'user0110@fastmail.com'),\n(198,'user0197@shop.co'),\n(167,'user0166@api.bar.com'),\n(165,'user0164@bar.com'),\n(114,'user0113@proton.com'),\n(102,'user0101@zoho.com'),\n(133,'user0132@mail.foo.com'),\n(39,'user0038@qq.com'),\n(163,'user0162@hey.com'),\n(142,'user0141@mit.edu'),\n(128,'user0127@sina.com'),\n(176,'user0175@protonmail.com'),\n(55,'user0054@mit.edu'),\n(212,'user0211@bar.com'),\n(175,'user0174@yahoo.com'),\n(36,'user0035@msn.com'),\n(220,'user0219@zoho.com'),\n(140,'user0139@hey.com'),\n(78,'user0077@api.bar.com'),\n(200,'user0199@msn.com'),\n(92,'user0091@api.bar.com'),\n(65,'user0064@qq.com'),\n(148,'user0147@coderpuzzle.dev'),\n(56,'user0055@hey.com'),\n(156,'user0155@outlook.com'),\n(105,'user0104@proton.com'),\n(145,'user0144@news.jp'),\n(174,'user0173@fastmail.com'),\n(23,'user0022@live.com'),\n(34,'user0033@bar.com'),\n(58,'user0057@shop.co'),\n(195,'user0194@coderpuzzle.dev'),\n(118,'user0117@zoho.com'),\n(8,'user0007@hotmail.com'),\n(28,'user0027@outlook.com'),\n(113,'user0112@163.com'),\n(217,'user0216@shop.co'),\n(132,'user0131@126.com'),\n(79,'user0078@stanford.edu'),\n(11,'user0010@hey.com'),\n(69,'user0068@outlook.com'),\n(9,'user0008@zoho.com'),\n(149,'user0148@example.org'),\n(153,'user0152@aol.com'),\n(63,'user0062@inbox.google.com'),\n(10,'user0009@126.com'),\n(41,'user0040@zoho.com'),\n(32,'user0031@foo.com'),\n(97,'user0096@yahoo.com'),\n(70,'user0069@shop.co'),\n(1,'user0000@sina.com'),\n(112,'user0111@mail.gmail.com'),\n(155,'user0154@stanford.edu'),\n(129,'user0128@gov.uk'),\n(51,'user0050@live.com'),\n(152,'user0151@mit.edu'),\n(13,'user0012@gmail.com'),\n(216,'user0215@proton.com'),\n(30,'user0029@gmail.com'),\n(60,'user0059@gmail.com'),\n(189,'user0188@protonmail.com'),\n(124,'user0123@mail.gmail.com'),\n(192,'user0191@mail.foo.com'),\n(83,'user0082@mail.gmail.com'),\n(75,'user0074@api.bar.com'),\n(158,'user0157@stanford.edu'),\n(187,'user0186@aol.com'),\n(84,'user0083@hotmail.com'),\n(35,'user0034@stanford.edu'),\n(18,'user0017@mail.foo.com'),\n(206,'user0205@stanford.edu'),\n(93,'user0092@protonmail.com'),\n(72,'user0071@qq.com'),\n(191,'user0190@gmx.com'),\n(19,'user0018@icloud.com'),\n(170,'user0169@api.bar.com'),\n(44,'user0043@proton.com'),\n(86,'user0085@zoho.com'),\n(17,'user0016@sina.com'),\n(203,'user0202@bar.com'),\n(120,'user0119@sub.company.co'),\n(20,'user0019@mail.gmail.com'),\n(5,'user0004@163.com'),\n(164,'user0163@bar.com'),\n(188,'user0187@live.com'),\n(24,'user0023@hotmail.com'),\n(85,'user0084@shop.co'),\n(199,'user0198@mit.edu'),\n(126,'user0125@sina.com'),\n(22,'user0021@gmx.com'),\n(193,'user0192@yandex.com'),\n(182,'user0181@gmail.com'),\n(137,'user0136@yahoo.com'),\n(90,'user0089@qq.com'),\n(201,'user0200@gov.uk'),\n(7,'user0006@gmail.com'),\n(101,'user0100@hey.com'),\n(184,'user0183@yandex.com'),\n(48,'user0047@mit.edu'),\n(117,'user0116@sina.com'),\n(4,'user0003@coderpuzzle.dev'),\n(115,'user0114@mail.gmail.com'),\n(144,'user0143@mit.edu'),\n(87,'user0086@example.org'),\n(166,'user0165@proton.com'),\n(31,'user0030@gov.uk'),\n(179,'user0178@sub.company.co'),\n(160,'user0159@zoho.com'),\n(185,'user0184@hey.com'),\n(53,'user0052@stanford.edu'),\n(95,'user0094@msn.com'),\n(88,'user0087@mail.foo.com'),\n(136,'user0135@bar.com'),\n(161,'user0160@sina.com'),\n(131,'user0130@api.bar.com'),\n(171,'user0170@fastmail.com'),\n(215,'user0214@yandex.com'),\n(47,'user0046@news.jp'),\n(100,'user0099@inbox.google.com'),\n(130,'user0129@inbox.google.com'),\n(141,'user0140@mail.foo.com'),\n(138,'user0137@aol.com'),\n(59,'user0058@msn.com'),\n(205,'user0204@yandex.com'),\n(134,'user0133@live.com'),\n(89,'user0088@outlook.com'),\n(172,'user0171@163.com'),\n(178,'user0177@stanford.edu'),\n(26,'user0025@foo.com'),\n(91,'user0090@gov.uk'),\n(110,'user0109@sub.company.co'),\n(159,'user0158@bar.com'),\n(74,'user0073@mail.gmail.com'),\n(76,'user0075@sina.com'),\n(151,'user0150@zoho.com'),\n(127,'user0126@live.com'),\n(6,'user0005@example.org'),\n(107,'user0106@live.com'),\n(67,'user0066@gov.uk'),\n(207,'user0206@proton.com'),\n(33,'user0032@coderpuzzle.dev'),\n(68,'user0067@hey.com'),\n(177,'user0176@mit.edu'),\n(94,'user0093@yahoo.com'),\n(218,'user0217@example.org'),\n(214,'user0213@gmail.com'),\n(213,'user0212@coderpuzzle.dev'),\n(196,'user0195@mail.foo.com'),\n(183,'user0182@yahoo.com'),\n(49,'user0048@fastmail.com'),\n(52,'user0051@aol.com'),\n(64,'user0063@gmail.com'),\n(25,'user0024@fastmail.com'),\n(14,'user0013@mail.gmail.com'),\n(3,'user0002@mit.edu'),\n(99,'user0098@zoho.com'),\n(15,'user0014@inbox.google.com'),\n(80,'user0079@coderpuzzle.dev');"
+      ],
+      "expected": [
+        [
+          "126.com",
+          5
+        ],
+        [
+          "163.com",
+          4
+        ],
+        [
+          "aol.com",
+          6
+        ],
+        [
+          "api.bar.com",
+          6
+        ],
+        [
+          "bar.com",
+          9
+        ],
+        [
+          "bulk.com",
+          3
+        ],
+        [
+          "fastmail.com",
+          7
+        ],
+        [
+          "foo.com",
+          4
+        ],
+        [
+          "gmail.com",
+          9
+        ],
+        [
+          "gmx.com",
+          5
+        ],
+        [
+          "hey.com",
+          8
+        ],
+        [
+          "hotmail.com",
+          5
+        ],
+        [
+          "icloud.com",
+          1
+        ],
+        [
+          "inbox.google.com",
+          5
+        ],
+        [
+          "live.com",
+          7
+        ],
+        [
+          "mail.foo.com",
+          8
+        ],
+        [
+          "mail.gmail.com",
+          9
+        ],
+        [
+          "msn.com",
+          5
+        ],
+        [
+          "outlook.com",
+          5
+        ],
+        [
+          "proton.com",
+          7
+        ],
+        [
+          "protonmail.com",
+          4
+        ],
+        [
+          "qq.com",
+          5
+        ],
+        [
+          "sina.com",
+          9
+        ],
+        [
+          "yahoo.com",
+          6
+        ],
+        [
+          "yandex.com",
+          5
+        ],
+        [
+          "zoho.com",
+          10
+        ]
+      ]
+    }
+  ]
+}

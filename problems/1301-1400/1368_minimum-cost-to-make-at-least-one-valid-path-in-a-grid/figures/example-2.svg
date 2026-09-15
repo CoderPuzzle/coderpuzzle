@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 316" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="i" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+  </defs>
+  <!-- every cell is on the zero-cost path -->
+  <g fill="#e8edfb">
+    <rect x="70" y="24" width="84" height="84"/><rect x="154" y="24" width="84" height="84"/><rect x="238" y="24" width="84" height="84"/>
+    <rect x="70" y="108" width="84" height="84"/><rect x="154" y="108" width="84" height="84"/><rect x="238" y="108" width="84" height="84"/>
+    <rect x="70" y="192" width="84" height="84"/><rect x="154" y="192" width="84" height="84"/><rect x="238" y="192" width="84" height="84"/>
+  </g>
+  <g fill="none" stroke="#c8cfd6">
+    <rect x="70" y="24" width="252" height="252"/>
+    <line x1="154" y1="24" x2="154" y2="276"/><line x1="238" y1="24" x2="238" y2="276"/>
+    <line x1="70" y1="108" x2="322" y2="108"/><line x1="70" y1="192" x2="322" y2="192"/>
+  </g>
+  <!-- the walk: (0,0) (0,1) (0,2) (1,2) (1,1) (1,0) (2,0) (2,1) (2,2) -->
+  <path d="M 112 66 L 280 66 L 280 150 L 112 150 L 112 234 L 196 234 L 280 234" fill="none" stroke="#4169E1" stroke-width="3"/>
+  <circle cx="112" cy="66" r="6" fill="#4169E1"/>
+  <circle cx="280" cy="234" r="8" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <!-- signs (offset from the walk so both stay readable) -->
+  <g stroke="#1a2026" stroke-width="2">
+    <line x1="94" y1="48" x2="120" y2="48" marker-end="url(#i)"/><line x1="178" y1="48" x2="204" y2="48" marker-end="url(#i)"/>
+    <line x1="262" y1="90" x2="262" y2="116" marker-end="url(#i)"/>
+    <line x1="262" y1="132" x2="236" y2="132" marker-end="url(#i)"/><line x1="178" y1="132" x2="152" y2="132" marker-end="url(#i)"/>
+    <line x1="94" y1="174" x2="94" y2="200" marker-end="url(#i)"/>
+    <line x1="94" y1="252" x2="120" y2="252" marker-end="url(#i)"/><line x1="178" y1="252" x2="204" y2="252" marker-end="url(#i)"/>
+    <line x1="280" y1="262" x2="280" y2="238" marker-end="url(#i)"/>
+  </g>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="360" y="66" fill="#4169E1" font-weight="700" font-size="15">cost = 0</text>
+    <text x="360" y="94" fill="#5c6b76">every sign on the way</text>
+    <text x="360" y="112" fill="#5c6b76">already points where</text>
+    <text x="360" y="130" fill="#5c6b76">the walk needs to go</text>
+    <text x="360" y="164" font-weight="600">signs</text>
+    <text x="360" y="186" fill="#5c6b76">1 → right, 2 → left,</text>
+    <text x="360" y="204" fill="#5c6b76">3 → down, 4 → up</text>
+  </g>
+</svg>

@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3790,
+  "slug": "smallest-all-ones-multiple",
+  "title": "Smallest All-Ones Multiple",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Math"
+  ],
+  "topics": [
+    "Hash Table",
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minAllOneMultiple",
+    "parameters": [
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minAllOneMultiple",
+      "rust": "min_all_one_multiple",
+      "typescript": "minAllOneMultiple"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

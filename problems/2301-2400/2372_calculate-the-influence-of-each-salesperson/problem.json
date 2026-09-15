@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2372,
+  "slug": "calculate-the-influence-of-each-salesperson",
+  "title": "Calculate the Influence of Each Salesperson",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "multiset",
+    "sql": {
+      "schema": "CREATE TABLE Salesperson (salesperson_id INTEGER PRIMARY KEY, name VARCHAR); CREATE TABLE Customer (customer_id INTEGER PRIMARY KEY, salesperson_id INTEGER); CREATE TABLE Sales (sale_id INTEGER PRIMARY KEY, customer_id INTEGER, price INTEGER);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

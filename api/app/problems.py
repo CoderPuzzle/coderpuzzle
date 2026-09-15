@@ -7,20 +7,25 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Optional
 
-from .problem_source import resolve_spec
+class ProblemSetError(ValueError):
+    pass
 
 
 def _problems_dir() -> Path:
-    # CODERPUZZLE_PROBLEMS selects the source (GitHub shorthand, git URL, or an
-    # explicit local path — see problem_source); without it problems come
-    # from CODERPUZZLE_PROBLEMS_DIR as before.
-    spec = os.environ.get("CODERPUZZLE_PROBLEMS", "").strip()
-    if spec:
-        cache = os.environ.get("CODERPUZZLE_PROBLEMS_CACHE", "").strip()
-        # update=False: the API container has no network — the
-        # problems-fetcher service populated the cache before startup
-        return resolve_spec(spec, Path(cache) if cache else None, update=False).resolve()
-    return Path(os.environ.get("CODERPUZZLE_PROBLEMS_DIR", "problems")).resolve()
+    """The problem set is always a directory on disk.
+
+    ``CODERPUZZLE_PROBLEMS`` is the one selector and it is a filesystem path,
+    never a repository: the app fetches nothing and has no problem-set cache.
+    Unset means ``./problems`` — the tree that ships in this repo and is bind
+    mounted into the container at /problems."""
+    path = os.environ.get("CODERPUZZLE_PROBLEMS", "").strip() or "problems"
+    resolved = Path(path).expanduser().resolve()
+    if not resolved.is_dir():
+        raise ProblemSetError(
+            f"CODERPUZZLE_PROBLEMS={path!r} is not a directory. It must be a path "
+            "to a problem-set directory on disk; remote problem sets are not supported."
+        )
+    return resolved
 
 
 PROBLEMS_DIR = _problems_dir()

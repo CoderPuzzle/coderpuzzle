@@ -1,0 +1,6 @@
+from typing import List, Optional
+
+
+class Solution:
+    def deleteDuplicateFolder(self, paths: List[List[str]]) -> List[List[str]]:
+        raise NotImplementedError("TODO")

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="320" fill="#ffffff"/>
+  <!-- s = "bac"; four panels -->
+  <!-- panel i=0 -->
+  <text x="60" y="44" fill="#5c6b76" font-size="12.5">i = 0, s[i] = b</text>
+  <text x="60" y="62" fill="#5c6b76" font-size="12.5">suffix min = a</text>
+  <rect x="60" y="150" width="46" height="34" fill="#4169E1" stroke="#42525e" stroke-width="1.5"/>
+  <text x="83" y="172" text-anchor="middle" font-weight="600" fill="#ffffff">b</text>
+  <text x="83" y="120" text-anchor="middle" fill="#5c6b76" font-size="12.5">push b</text>
+  <text x="60" y="216" fill="#5c6b76" font-size="12.5">paper: ""</text>
+  <!-- panel i=1 -->
+  <text x="190" y="44" fill="#5c6b76" font-size="12.5">i = 1, s[i] = a</text>
+  <text x="190" y="62" fill="#5c6b76" font-size="12.5">suffix min = a</text>
+  <rect x="190" y="150" width="46" height="34" fill="#dbe4f6" stroke="#42525e" stroke-width="1.5"/>
+  <text x="213" y="172" text-anchor="middle" font-weight="600">b</text>
+  <rect x="190" y="116" width="46" height="34" fill="#4169E1" stroke="#42525e" stroke-width="1.5"/>
+  <text x="213" y="138" text-anchor="middle" font-weight="600" fill="#ffffff">a</text>
+  <text x="190" y="100" fill="#5c6b76" font-size="12.5">b &gt; a → hold, push a</text>
+  <text x="190" y="216" fill="#5c6b76" font-size="12.5">paper: ""</text>
+  <!-- panel i=2 -->
+  <text x="330" y="44" fill="#5c6b76" font-size="12.5">i = 2, s[i] = c</text>
+  <text x="330" y="62" fill="#5c6b76" font-size="12.5">suffix min = c</text>
+  <g opacity="0.45">
+    <rect x="330" y="150" width="46" height="34" fill="#dbe4f6" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="330" y="116" width="46" height="34" fill="#dbe4f6" stroke="#42525e" stroke-width="1.5"/>
+    <text x="353" y="172" text-anchor="middle" font-weight="600">b</text>
+    <text x="353" y="138" text-anchor="middle" font-weight="600">a</text>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.6">
+    <line x1="326" y1="124" x2="380" y2="178"/>
+    <line x1="326" y1="158" x2="380" y2="186"/>
+  </g>
+  <rect x="410" y="116" width="46" height="34" fill="#4169E1" stroke="#42525e" stroke-width="1.5"/>
+  <text x="433" y="138" text-anchor="middle" font-weight="600" fill="#ffffff">c</text>
+  <text x="330" y="100" fill="#5c6b76" font-size="12.5">a, b ≤ c → pop both, push c</text>
+  <text x="330" y="216" fill="#4169E1" font-size="12.5" font-weight="600">paper: "ab"</text>
+  <!-- panel final -->
+  <text x="520" y="44" fill="#5c6b76" font-size="12.5">input exhausted</text>
+  <rect x="520" y="116" width="46" height="34" fill="#dbe4f6" stroke="#42525e" stroke-width="1.5"/>
+  <text x="543" y="138" text-anchor="middle" font-weight="600">c</text>
+  <text x="520" y="100" fill="#5c6b76" font-size="12.5">drain the stack</text>
+  <text x="520" y="216" fill="#4169E1" font-size="12.5" font-weight="600">paper: "abc"</text>
+  <text x="60" y="270" fill="#1a2026" font-size="13">The stack t only releases a character when nothing smaller remains in the unread suffix, so 'b' waits</text>
+  <text x="60" y="290" fill="#1a2026" font-size="13">for the 'a', both flush once 'c' arrives, and the final drain writes the leftover c last.</text>
+</svg>

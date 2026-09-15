@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2607,
+  "slug": "make-k-subarray-sums-equal",
+  "title": "Make K-Subarray Sums Equal",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Greedy",
+    "Sorting",
+    "Number Theory"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Greedy",
+    "Sorting",
+    "Number Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "makeSubKSumEqual",
+    "parameters": [
+      {
+        "name": "arr",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "makeSubKSumEqual",
+      "rust": "make_sub_k_sum_equal",
+      "typescript": "makeSubKSumEqual"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

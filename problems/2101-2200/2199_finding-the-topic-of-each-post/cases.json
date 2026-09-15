@@ -1,0 +1,824 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'handball'),\n(1,'football'),\n(3,'WAR'),\n(2,'Vaccine');\nINSERT INTO Posts VALUES\n(1,'We call it soccer They call it football hahaha'),\n(2,'Americans prefer basketball while Europeans love handball and football'),\n(3,'stop the war and play handball'),\n(4,'warning I planted some flowers this morning and then got vaccinated');"
+      ],
+      "expected": [
+        [
+          1,
+          "1"
+        ],
+        [
+          2,
+          "1"
+        ],
+        [
+          3,
+          "1,3"
+        ],
+        [
+          4,
+          "Ambiguous!"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(3,'football'),\n(5,'handball'),\n(2,'warden'),\n(1,'love'),\n(1,'ball'),\n(1,'soccer'),\n(2,'warm'),\n(5,'vaccinated'),\n(1,'call'),\n(1,'vaccinated'),\n(1,'war');\nINSERT INTO Posts VALUES\n(1,'ball vaccinated play love ball call'),\n(2,'faint love warden war soccer vaccinated vaccinated faint vaccine'),\n(3,'warning warning vaccinated'),\n(4,'basketball call faint war warden football vaccine'),\n(5,'football war paint vaccinated war war'),\n(6,'faint call call soccer haha warden ball play');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,5"
+        ],
+        [
+          2,
+          "1,2,5"
+        ],
+        [
+          3,
+          "1,5"
+        ],
+        [
+          4,
+          "1,2,3"
+        ],
+        [
+          5,
+          "1,3,5"
+        ],
+        [
+          6,
+          "1,2"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(2,'warm'),\n(2,'vacation'),\n(1,'warden'),\n(3,'vaccine');\nINSERT INTO Posts VALUES\n(1,'warden warning vacation vacation warning stop vacation vaccine'),\n(2,'vacation warden vacation stop football vacation warm ball baseball'),\n(3,'paint love haha ball vacation baseball'),\n(4,'ball haha warning call vaccine vaccine vaccine faint vaccinated vacation vaccine'),\n(5,'play basketball play football vaccine vaccine vacation warm love vacation vacation');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,2,3"
+        ],
+        [
+          2,
+          "1,2"
+        ],
+        [
+          3,
+          "2"
+        ],
+        [
+          4,
+          "2,3"
+        ],
+        [
+          5,
+          "2,3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'warning'),\n(5,'warm'),\n(2,'vacation'),\n(1,'ball'),\n(2,'soccer'),\n(4,'vaccine'),\n(1,'stop'),\n(1,'handball'),\n(3,'vaccine'),\n(2,'stop'),\n(2,'warning'),\n(1,'warrant');\nINSERT INTO Posts VALUES\n(1,'handball haha handball stop'),\n(2,'warm ball soccer play stop play stop warning baseball paint'),\n(3,'vaccine stop warm stop warning stop ball'),\n(4,'warden ball warden paint warrant love call vacation baseball love stop'),\n(5,'soccer call ball soccer war baseball soccer football'),\n(6,'stop baseball warm paint paint handball vaccinated faint haha warrant stop');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,2"
+        ],
+        [
+          2,
+          "1,2,5"
+        ],
+        [
+          3,
+          "1,2,3,4,5"
+        ],
+        [
+          4,
+          "1,2"
+        ],
+        [
+          5,
+          "1,2"
+        ],
+        [
+          6,
+          "1,2,5"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'basketball'),\n(5,'ball'),\n(1,'vacation'),\n(1,'play'),\n(5,'warning'),\n(2,'stop'),\n(1,'call'),\n(1,'vaccine');\nINSERT INTO Posts VALUES\n(1,'vacation call basketball vacation warning vaccinated warden call handball vacation war'),\n(2,'vacation ball warning warning warning warning warden vacation handball call'),\n(3,'warden stop love vaccinated ball paint ball basketball play'),\n(4,'warrant vacation ball basketball warning');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,5"
+        ],
+        [
+          2,
+          "1,5"
+        ],
+        [
+          3,
+          "1,2,5"
+        ],
+        [
+          4,
+          "1,5"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'paint'),\n(5,'football'),\n(2,'stop'),\n(2,'warm');\nINSERT INTO Posts VALUES\n(1,'warm warning stop'),\n(2,'ball warm warm warden war warning vaccine'),\n(3,'paint faint warden stop stop vacation vaccine warm'),\n(4,'paint handball stop handball basketball call'),\n(5,'warm stop warm stop paint'),\n(6,'warning love war ball soccer stop baseball'),\n(7,'football play stop football warm');"
+      ],
+      "expected": [
+        [
+          1,
+          "2"
+        ],
+        [
+          2,
+          "2"
+        ],
+        [
+          3,
+          "1,2"
+        ],
+        [
+          4,
+          "1,2"
+        ],
+        [
+          5,
+          "1,2"
+        ],
+        [
+          6,
+          "2"
+        ],
+        [
+          7,
+          "2,5"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(2,'warrant'),\n(3,'war'),\n(4,'soccer'),\n(1,'paint'),\n(3,'soccer'),\n(1,'call'),\n(1,'ball'),\n(3,'warden'),\n(3,'warm'),\n(3,'vacation'),\n(4,'warning');\nINSERT INTO Posts VALUES\n(1,'call vaccinated warrant soccer soccer vacation warden love basketball'),\n(2,'war ball handball war vaccinated warning football'),\n(3,'football warning vacation football basketball paint warrant warrant play'),\n(4,'handball paint vaccine vacation warden');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,2,3,4"
+        ],
+        [
+          2,
+          "1,3,4"
+        ],
+        [
+          3,
+          "1,2,3,4"
+        ],
+        [
+          4,
+          "1,3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(2,'paint'),\n(2,'handball'),\n(5,'vaccine'),\n(1,'handball'),\n(3,'paint'),\n(5,'warrant'),\n(1,'play'),\n(3,'warden'),\n(1,'baseball'),\n(2,'war'),\n(1,'call');\nINSERT INTO Posts VALUES\n(1,'basketball call handball vaccinated'),\n(2,'warning war handball war paint vaccine football basketball handball'),\n(3,'war paint war warrant play warm play war paint stop'),\n(4,'handball warden war call war play warden'),\n(5,'ball vaccine paint'),\n(6,'faint love paint ball paint basketball soccer call handball');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,2"
+        ],
+        [
+          2,
+          "1,2,3,5"
+        ],
+        [
+          3,
+          "1,2,3,5"
+        ],
+        [
+          4,
+          "1,2,3"
+        ],
+        [
+          5,
+          "2,3,5"
+        ],
+        [
+          6,
+          "1,2,3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(2,'haha'),\n(3,'stop'),\n(3,'haha'),\n(5,'football'),\n(2,'vaccine'),\n(4,'vaccinated'),\n(1,'ball');\nINSERT INTO Posts VALUES\n(1,'warden warrant ball warden haha faint vaccine stop haha haha'),\n(2,'stop handball football soccer ball warning vaccine'),\n(3,'war baseball soccer play'),\n(4,'faint warden stop warm stop ball vaccine warrant football'),\n(5,'handball football football haha ball play'),\n(6,'stop haha warning vaccinated soccer vaccine haha vaccinated baseball ball');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,2,3"
+        ],
+        [
+          2,
+          "1,2,3,5"
+        ],
+        [
+          3,
+          "Ambiguous!"
+        ],
+        [
+          4,
+          "1,2,3,5"
+        ],
+        [
+          5,
+          "1,2,3,5"
+        ],
+        [
+          6,
+          "1,2,3,4"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'soccer'),\n(2,'warm'),\n(2,'warden'),\n(4,'vaccine');\nINSERT INTO Posts VALUES\n(1,'handball vaccine stop call warm call warden vaccine'),\n(2,'handball vaccine vaccine warden ball haha warm soccer soccer vaccine'),\n(3,'soccer haha soccer warm'),\n(4,'vaccine vaccinated warm haha football soccer ball warden soccer'),\n(5,'warm vaccine vaccine warden vacation warning warden vacation warrant football'),\n(6,'love soccer football warm call vaccine war haha');"
+      ],
+      "expected": [
+        [
+          1,
+          "2,4"
+        ],
+        [
+          2,
+          "1,2,4"
+        ],
+        [
+          3,
+          "1,2"
+        ],
+        [
+          4,
+          "1,2,4"
+        ],
+        [
+          5,
+          "2,4"
+        ],
+        [
+          6,
+          "1,2,4"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'stop'),\n(3,'stop'),\n(4,'soccer'),\n(3,'love'),\n(5,'soccer'),\n(4,'haha'),\n(4,'stop'),\n(1,'warrant'),\n(1,'warden');\nINSERT INTO Posts VALUES\n(1,'football vaccinated war stop ball football'),\n(2,'play warrant play stop faint warden soccer faint stop warm handball'),\n(3,'vaccinated stop warning stop warning handball baseball love'),\n(4,'soccer warrant warm play soccer vaccinated'),\n(5,'vacation haha call warrant vaccinated call stop soccer stop');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,3,4"
+        ],
+        [
+          2,
+          "1,3,4,5"
+        ],
+        [
+          3,
+          "1,3,4"
+        ],
+        [
+          4,
+          "1,4,5"
+        ],
+        [
+          5,
+          "1,3,4,5"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'vaccine'),\n(1,'ball'),\n(3,'soccer'),\n(1,'call'),\n(3,'handball'),\n(5,'baseball'),\n(1,'warden');\nINSERT INTO Posts VALUES\n(1,'haha call warden'),\n(2,'faint baseball haha love handball baseball warden haha'),\n(3,'paint football war stop haha warden vaccinated'),\n(4,'warm warden ball vaccinated vaccine haha vaccine warm handball soccer basketball'),\n(5,'basketball baseball faint play warrant soccer soccer handball play'),\n(6,'faint basketball football call');"
+      ],
+      "expected": [
+        [
+          1,
+          "1"
+        ],
+        [
+          2,
+          "1,3,5"
+        ],
+        [
+          3,
+          "1"
+        ],
+        [
+          4,
+          "1,3"
+        ],
+        [
+          5,
+          "3,5"
+        ],
+        [
+          6,
+          "1"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(4,'haha'),\n(5,'faint'),\n(1,'war'),\n(2,'football'),\n(2,'paint');\nINSERT INTO Posts VALUES\n(1,'faint handball call vacation haha love haha'),\n(2,'paint paint faint soccer haha'),\n(3,'call paint call handball haha faint vacation');"
+      ],
+      "expected": [
+        [
+          1,
+          "4,5"
+        ],
+        [
+          2,
+          "2,4,5"
+        ],
+        [
+          3,
+          "2,4,5"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(3,'ball'),\n(1,'football'),\n(1,'paint'),\n(1,'love'),\n(4,'vacation'),\n(2,'vacation'),\n(1,'ball'),\n(2,'soccer'),\n(1,'warm');\nINSERT INTO Posts VALUES\n(1,'football faint basketball'),\n(2,'football stop ball baseball ball war vaccinated vaccine love paint football'),\n(3,'baseball paint vacation play soccer war football love warm');"
+      ],
+      "expected": [
+        [
+          1,
+          "1"
+        ],
+        [
+          2,
+          "1,3"
+        ],
+        [
+          3,
+          "1,2,4"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'play'),\n(1,'warm'),\n(4,'faint'),\n(1,'haha'),\n(3,'play'),\n(2,'paint'),\n(1,'stop'),\n(1,'faint');\nINSERT INTO Posts VALUES\n(1,'baseball love baseball warrant warm'),\n(2,'warm vacation warrant warning baseball'),\n(3,'call basketball faint ball warning paint'),\n(4,'play faint call baseball stop paint warm love'),\n(5,'baseball ball warden haha play baseball baseball handball play'),\n(6,'play vaccine warm paint');"
+      ],
+      "expected": [
+        [
+          1,
+          "1"
+        ],
+        [
+          2,
+          "1"
+        ],
+        [
+          3,
+          "1,2,4"
+        ],
+        [
+          4,
+          "1,2,3,4"
+        ],
+        [
+          5,
+          "1,3"
+        ],
+        [
+          6,
+          "1,2,3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'vaccinated'),\n(2,'baseball'),\n(3,'soccer'),\n(2,'war');\nINSERT INTO Posts VALUES\n(1,'basketball warrant baseball warm football play'),\n(2,'soccer football vaccinated vaccine stop soccer handball warm baseball'),\n(3,'vaccinated vaccinated warden war warning soccer baseball soccer basketball'),\n(4,'stop vaccine vaccinated vaccinated'),\n(5,'stop soccer soccer war paint war vaccine'),\n(6,'baseball soccer warden warrant');"
+      ],
+      "expected": [
+        [
+          1,
+          "2"
+        ],
+        [
+          2,
+          "1,2,3"
+        ],
+        [
+          3,
+          "1,2,3"
+        ],
+        [
+          4,
+          "1"
+        ],
+        [
+          5,
+          "2,3"
+        ],
+        [
+          6,
+          "2,3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(4,'baseball'),\n(5,'ball'),\n(1,'play'),\n(1,'handball'),\n(1,'vacation'),\n(1,'warrant'),\n(3,'soccer'),\n(1,'vaccinated'),\n(4,'warning'),\n(5,'vaccine');\nINSERT INTO Posts VALUES\n(1,'vacation warm paint warrant call stop call faint vaccine'),\n(2,'vaccine handball soccer warm paint paint warning vaccine'),\n(3,'vacation vaccine warm baseball handball ball vaccinated vaccinated ball vaccine handball');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,5"
+        ],
+        [
+          2,
+          "1,3,4,5"
+        ],
+        [
+          3,
+          "1,4,5"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(3,'vacation'),\n(3,'play'),\n(1,'football'),\n(4,'handball'),\n(2,'stop'),\n(2,'paint'),\n(2,'vaccine'),\n(1,'play'),\n(1,'ball'),\n(2,'baseball'),\n(1,'call');\nINSERT INTO Posts VALUES\n(1,'paint call warden soccer football warning call love'),\n(2,'call vaccine vacation vacation stop vaccinated'),\n(3,'stop warning vaccine call stop warden baseball call stop'),\n(4,'paint vaccine stop baseball handball ball baseball'),\n(5,'baseball vacation handball basketball vaccine'),\n(6,'baseball ball handball play warden play paint warrant faint play'),\n(7,'play vacation football baseball play warden war paint baseball play football'),\n(8,'baseball play faint warrant');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,2"
+        ],
+        [
+          2,
+          "1,2,3"
+        ],
+        [
+          3,
+          "1,2"
+        ],
+        [
+          4,
+          "1,2,4"
+        ],
+        [
+          5,
+          "2,3,4"
+        ],
+        [
+          6,
+          "1,2,3,4"
+        ],
+        [
+          7,
+          "1,2,3"
+        ],
+        [
+          8,
+          "1,2,3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(3,'war'),\n(1,'paint'),\n(2,'warning'),\n(3,'love');\nINSERT INTO Posts VALUES\n(1,'vaccine baseball warning vaccinated warning warning'),\n(2,'handball love warning'),\n(3,'call warning warning warrant faint vaccine warning love'),\n(4,'love handball faint warning ball warrant'),\n(5,'war paint warning paint love paint faint'),\n(6,'play paint vacation stop love faint warning war'),\n(7,'love paint play');"
+      ],
+      "expected": [
+        [
+          1,
+          "2"
+        ],
+        [
+          2,
+          "2,3"
+        ],
+        [
+          3,
+          "2,3"
+        ],
+        [
+          4,
+          "2,3"
+        ],
+        [
+          5,
+          "1,2,3"
+        ],
+        [
+          6,
+          "1,2,3"
+        ],
+        [
+          7,
+          "1,3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(3,'warden'),\n(2,'stop'),\n(1,'war'),\n(1,'stop'),\n(3,'basketball'),\n(3,'warm'),\n(2,'baseball'),\n(2,'warm'),\n(4,'play'),\n(3,'faint'),\n(2,'vaccinated'),\n(3,'soccer');\nINSERT INTO Posts VALUES\n(1,'baseball play basketball haha soccer warm basketball stop soccer paint ball'),\n(2,'love war football basketball'),\n(3,'play soccer handball stop'),\n(4,'call haha baseball war'),\n(5,'stop basketball faint stop baseball football vacation play'),\n(6,'vaccinated ball ball warm warrant stop warden');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,2,3,4"
+        ],
+        [
+          2,
+          "1,3"
+        ],
+        [
+          3,
+          "1,2,3,4"
+        ],
+        [
+          4,
+          "1,2"
+        ],
+        [
+          5,
+          "1,2,3,4"
+        ],
+        [
+          6,
+          "1,2,3"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(4,'warm'),\n(1,'call'),\n(1,'basketball'),\n(1,'paint'),\n(3,'basketball'),\n(4,'vacation'),\n(1,'vaccine'),\n(5,'vaccinated'),\n(2,'love'),\n(2,'warden'),\n(5,'vaccine'),\n(2,'soccer');\nINSERT INTO Posts VALUES\n(1,'football play warning warrant'),\n(2,'warden handball vacation vaccinated vacation soccer'),\n(3,'call call play warden paint warden call vaccinated football vaccinated ball'),\n(4,'love handball baseball call soccer'),\n(5,'baseball basketball haha vaccine soccer faint football soccer vaccine call');"
+      ],
+      "expected": [
+        [
+          1,
+          "Ambiguous!"
+        ],
+        [
+          2,
+          "2,4,5"
+        ],
+        [
+          3,
+          "1,2,5"
+        ],
+        [
+          4,
+          "1,2"
+        ],
+        [
+          5,
+          "1,2,3,5"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(2,'basketball'),\n(1,'war'),\n(4,'warm'),\n(5,'call'),\n(1,'warm'),\n(1,'play');\nINSERT INTO Posts VALUES\n(1,'call stop love play'),\n(2,'call play football haha warrant warm'),\n(3,'call call ball vaccine warm warden');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,5"
+        ],
+        [
+          2,
+          "1,4,5"
+        ],
+        [
+          3,
+          "1,4,5"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(5,'warden'),\n(4,'vaccine'),\n(1,'play'),\n(3,'war'),\n(3,'play'),\n(3,'warning'),\n(1,'warden');\nINSERT INTO Posts VALUES\n(1,'war play play'),\n(2,'warden warrant haha'),\n(3,'play basketball warning warden warden vaccine'),\n(4,'vaccine warden haha play stop ball play football vaccine');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,3"
+        ],
+        [
+          2,
+          "1,5"
+        ],
+        [
+          3,
+          "1,3,4,5"
+        ],
+        [
+          4,
+          "1,3,4,5"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(3,'love'),\n(1,'paint'),\n(2,'play'),\n(1,'football'),\n(5,'warden'),\n(1,'handball'),\n(5,'warrant'),\n(3,'haha');\nINSERT INTO Posts VALUES\n(1,'faint play vaccine vaccine warning football warrant haha play'),\n(2,'stop paint ball warden vaccine football soccer'),\n(3,'football handball vaccinated soccer call paint');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,2,3,5"
+        ],
+        [
+          2,
+          "1,5"
+        ],
+        [
+          3,
+          "1"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'war'),\n(5,'warning'),\n(4,'play'),\n(4,'warm'),\n(1,'vaccinated'),\n(1,'warden'),\n(2,'warrant'),\n(2,'paint');\nINSERT INTO Posts VALUES\n(1,'handball war vacation'),\n(2,'paint warm football warden warm baseball football war paint warden'),\n(3,'haha vaccine war baseball handball vaccine'),\n(4,'vaccine stop warrant warden');"
+      ],
+      "expected": [
+        [
+          1,
+          "1"
+        ],
+        [
+          2,
+          "1,2,4"
+        ],
+        [
+          3,
+          "1"
+        ],
+        [
+          4,
+          "1,2"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "-- no keywords\nINSERT INTO Posts VALUES\n(1,'hello world'),\n(2,'another post here');"
+      ],
+      "expected": [
+        [
+          1,
+          "Ambiguous!"
+        ],
+        [
+          2,
+          "Ambiguous!"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(7,'war');\nINSERT INTO Posts VALUES\n(1,'war is war');"
+      ],
+      "expected": [
+        [
+          1,
+          "7"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(2,'vac');\nINSERT INTO Posts VALUES\n(1,'vaccine vacation vacant'),\n(2,'vacuum sealed');"
+      ],
+      "expected": [
+        [
+          1,
+          "Ambiguous!"
+        ],
+        [
+          2,
+          "Ambiguous!"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'goal'),\n(2,'goal'),\n(3,'goal'),\n(4,'goal');\nINSERT INTO Posts VALUES\n(1,'own goal'),\n(2,'no goals scored');"
+      ],
+      "expected": [
+        [
+          1,
+          "1,2,3,4"
+        ],
+        [
+          2,
+          "Ambiguous!"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(5,'alpha'),\n(5,'beta'),\n(5,'gamma');\nINSERT INTO Posts VALUES\n(1,'alpha beta gamma delta'),\n(2,'delta only');"
+      ],
+      "expected": [
+        [
+          1,
+          "5"
+        ],
+        [
+          2,
+          "Ambiguous!"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'x');\nINSERT INTO Posts VALUES\n(1,''),\n(2,'');"
+      ],
+      "expected": [
+        [
+          1,
+          "Ambiguous!"
+        ],
+        [
+          2,
+          "Ambiguous!"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(3,'HeLLo');\nINSERT INTO Posts VALUES\n(1,'HELLO there'),\n(2,'hello there'),\n(3,'eLlO odd'),\n(4,'hell no');"
+      ],
+      "expected": [
+        [
+          1,
+          "3"
+        ],
+        [
+          2,
+          "3"
+        ],
+        [
+          3,
+          "Ambiguous!"
+        ],
+        [
+          4,
+          "Ambiguous!"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(10,'aa'),\n(2,'bb'),\n(100,'cc'),\n(33,'dd');\nINSERT INTO Posts VALUES\n(1,'aa bb cc dd'),\n(2,'cc aa dd bb');"
+      ],
+      "expected": [
+        [
+          1,
+          "2,10,33,100"
+        ],
+        [
+          2,
+          "2,10,33,100"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Keywords VALUES\n(1,'art');\nINSERT INTO Posts VALUES\n(1,'start the art'),\n(2,'party artsy artifact');"
+      ],
+      "expected": [
+        [
+          1,
+          "1"
+        ],
+        [
+          2,
+          "Ambiguous!"
+        ]
+      ]
+    }
+  ]
+}

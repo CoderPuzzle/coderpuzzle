@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "explicit_stack",
+  "id": 124,
+  "slug": "binary-tree-maximum-path-sum",
+  "title": "Binary Tree Maximum Path Sum",
+  "difficulty": "Hard",
+  "tags": [
+    "Binary Tree",
+    "Depth-First Search",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree",
+    "DP on Trees"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxPathSum",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxPathSum",
+      "rust": "max_path_sum",
+      "typescript": "maxPathSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

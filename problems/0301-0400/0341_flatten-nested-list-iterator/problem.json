@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 341,
+  "slug": "flatten-nested-list-iterator",
+  "title": "Flatten Nested List Iterator",
+  "difficulty": "Medium",
+  "tags": [
+    "Stack",
+    "Tree",
+    "Depth-First Search",
+    "Design",
+    "Queue",
+    "Iterator"
+  ],
+  "topics": [
+    "Stack",
+    "Tree",
+    "Depth-First Search",
+    "Design",
+    "Queue",
+    "Iterator"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "NestedIterator",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "nestedList",
+          "codec": "nested",
+          "value_type": {
+            "kind": "nested",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "next",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "hasNext",
+        "parameters": [],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

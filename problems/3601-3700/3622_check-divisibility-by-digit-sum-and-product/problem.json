@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3622,
+  "slug": "check-divisibility-by-digit-sum-and-product",
+  "title": "Check Divisibility by Digit Sum and Product",
+  "difficulty": "Easy",
+  "tags": [
+    "Math"
+  ],
+  "topics": [
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "checkDivisibility",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "checkDivisibility",
+      "rust": "check_divisibility",
+      "typescript": "checkDivisibility"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

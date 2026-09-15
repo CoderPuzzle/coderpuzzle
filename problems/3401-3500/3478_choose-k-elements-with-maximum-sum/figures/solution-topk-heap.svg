@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="640" height="330" fill="#ffffff"/>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="40" y="34">group (nums1)</text>
+    <text x="170" y="34">top-k pool, k = 2</text>
+    <text x="420" y="34">insert</text>
+    <text x="570" y="34" text-anchor="end">answer</text>
+  </g>
+  <!-- row template y = 58 + r*54 -->
+  <g font-size="12.5">
+    <!-- row 0: nums1 = 1 -->
+    <text x="40" y="80" fill="#1a2026" font-weight="600">nums1 = 1</text>
+    <text x="40" y="96" fill="#5c6b76">idx 2</text>
+    <rect x="170" y="66" width="44" height="32" rx="4" fill="#ffffff" stroke="#98a2ac" stroke-dasharray="4 3"/>
+    <rect x="218" y="66" width="44" height="32" rx="4" fill="#ffffff" stroke="#98a2ac" stroke-dasharray="4 3"/>
+    <text x="420" y="86" fill="#5c6b76">nums2 = 30 fills slot 1</text>
+    <text x="570" y="86" text-anchor="end" fill="#4169E1" font-weight="600">0</text>
+    <!-- row 1: nums1 = 2 -->
+    <text x="40" y="134" fill="#1a2026" font-weight="600">nums1 = 2</text>
+    <text x="40" y="150" fill="#5c6b76">idx 1</text>
+    <rect x="170" y="120" width="44" height="32" rx="4" fill="#e8edfa" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="218" y="120" width="44" height="32" rx="4" fill="#ffffff" stroke="#98a2ac" stroke-dasharray="4 3"/>
+    <text x="192" y="141" text-anchor="middle" fill="#1a2026" font-weight="600">30</text>
+    <text x="420" y="140" fill="#5c6b76">insert 20 fills slot 2</text>
+    <text x="570" y="140" text-anchor="end" fill="#4169E1" font-weight="600">30</text>
+    <!-- row 2: nums1 = 3 -->
+    <text x="40" y="188" fill="#1a2026" font-weight="600">nums1 = 3</text>
+    <text x="40" y="204" fill="#5c6b76">idx 4</text>
+    <rect x="170" y="174" width="44" height="32" rx="4" fill="#e8edfa" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="218" y="174" width="44" height="32" rx="4" fill="#e8edfa" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="192" y="195" text-anchor="middle" fill="#1a2026" font-weight="600">20</text>
+    <text x="240" y="195" text-anchor="middle" fill="#1a2026" font-weight="600">30</text>
+    <text x="420" y="188" fill="#5c6b76">insert 50 &gt; min 20:</text>
+    <text x="420" y="204" fill="#5c6b76">evict 20, total 30→80</text>
+    <text x="570" y="194" text-anchor="end" fill="#4169E1" font-weight="600">50</text>
+    <!-- row 3: nums1 = 4 -->
+    <text x="40" y="242" fill="#1a2026" font-weight="600">nums1 = 4</text>
+    <text x="40" y="258" fill="#5c6b76">idx 0</text>
+    <rect x="170" y="228" width="44" height="32" rx="4" fill="#e8edfa" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="218" y="228" width="44" height="32" rx="4" fill="#e8edfa" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="192" y="249" text-anchor="middle" fill="#1a2026" font-weight="600">30</text>
+    <text x="240" y="249" text-anchor="middle" fill="#1a2026" font-weight="600">50</text>
+    <text x="420" y="242" fill="#5c6b76">insert 10 &lt; min 30:</text>
+    <text x="420" y="258" fill="#5c6b76">ignored</text>
+    <text x="570" y="248" text-anchor="end" fill="#4169E1" font-weight="600">80</text>
+    <!-- row 4: nums1 = 5 -->
+    <text x="40" y="296" fill="#1a2026" font-weight="600">nums1 = 5</text>
+    <text x="40" y="312" fill="#5c6b76">idx 3</text>
+    <rect x="170" y="282" width="44" height="32" rx="4" fill="#e8edfa" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="218" y="282" width="44" height="32" rx="4" fill="#e8edfa" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="192" y="303" text-anchor="middle" fill="#1a2026" font-weight="600">30</text>
+    <text x="240" y="303" text-anchor="middle" fill="#1a2026" font-weight="600">50</text>
+    <text x="420" y="296" fill="#5c6b76">insert 40 &gt; min 30:</text>
+    <text x="420" y="312" fill="#5c6b76">evict 30</text>
+    <text x="570" y="302" text-anchor="end" fill="#4169E1" font-weight="600">80</text>
+  </g>
+  <g stroke="#98a2ac" stroke-width="1.1">
+    <line x1="170" y1="108" x2="262" y2="108"/>
+    <line x1="170" y1="162" x2="262" y2="162"/>
+    <line x1="170" y1="216" x2="262" y2="216"/>
+    <line x1="170" y1="270" x2="262" y2="270"/>
+  </g>
+  <text x="320" y="328" text-anchor="middle" fill="#5c6b76" font-size="12.5">answers are read for the whole block before its own values enter the pool → [80, 30, 0, 80, 50]</text>
+</svg>

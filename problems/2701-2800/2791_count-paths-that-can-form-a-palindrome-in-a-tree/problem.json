@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2791,
+  "slug": "count-paths-that-can-form-a-palindrome-in-a-tree",
+  "title": "Count Paths That Can Form a Palindrome in a Tree",
+  "difficulty": "Hard",
+  "tags": [
+    "Bit Manipulation",
+    "Hash Table",
+    "Tree",
+    "DFS"
+  ],
+  "topics": [
+    "Hash Table",
+    "Bit Manipulation",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countPalindromePaths",
+    "parameters": [
+      {
+        "name": "parent",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "countPalindromePaths",
+      "rust": "count_palindrome_paths",
+      "typescript": "countPalindromePaths"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

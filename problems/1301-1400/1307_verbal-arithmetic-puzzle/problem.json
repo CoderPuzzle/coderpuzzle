@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1307,
+  "slug": "verbal-arithmetic-puzzle",
+  "title": "Verbal Arithmetic Puzzle",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "String",
+    "Backtracking"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "String",
+    "Backtracking"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "isSolvable",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      },
+      {
+        "name": "result",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "isSolvable",
+      "rust": "is_solvable",
+      "typescript": "isSolvable"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

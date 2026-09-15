@@ -1,0 +1,6 @@
+class Cashier {
+
+    public Cashier(int n, int discount, int[] products, int[] prices) {}
+
+    public double getBill(int[] product, int[] amount) {}
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3094,
+  "slug": "guess-the-number-using-bitwise-questions-ii",
+  "title": "Guess the Number Using Bitwise Questions II",
+  "difficulty": "Medium",
+  "tags": [
+    "Bit Manipulation",
+    "Interactive"
+  ],
+  "topics": [
+    "Bit Manipulation",
+    "Interactive"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "findNumber",
+    "oracle": "CommonBits",
+    "oracle_methods": [
+      {
+        "name": "commonBits",
+        "parameters": [
+          {
+            "name": "num",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "parameters": [],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "query_limit": 1000000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "CommonBits",
+        "construct": [
+          "n"
+        ],
+        "auxiliary": []
+      }
+    },
+    "entrypoints": {
+      "go": "findNumber",
+      "rust": "find_number",
+      "cpp": "findNumber",
+      "javascript": "findNumber",
+      "typescript": "findNumber"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 227,
+  "slug": "basic-calculator-ii",
+  "title": "Basic Calculator II",
+  "difficulty": "Medium",
+  "tags": [
+    "Expression Parsing",
+    "Stack"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "calculate",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "calculate",
+      "rust": "calculate",
+      "typescript": "calculate"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

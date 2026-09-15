@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="640" height="344" fill="#ffffff"/>
+  <!-- layer A: next action odd -->
+  <text x="150" y="28" fill="#1a2026" font-weight="600">next action ODD — right / down free</text>
+  <g stroke="#98a2ac" stroke-width="1.2" fill="none">
+    <rect x="150" y="40" width="60" height="60"/>
+    <rect x="210" y="40" width="60" height="60"/>
+    <rect x="150" y="100" width="60" height="60"/>
+  </g>
+  <rect x="210" y="100" width="60" height="60" fill="#e8edfa" stroke="#4169E1" stroke-width="1.8"/>
+  <g text-anchor="middle" fill="#5c6b76">
+    <text x="240" y="75">2</text><text x="180" y="135">2</text>
+  </g>
+  <rect x="150" y="40" width="60" height="60" fill="#e8edfa" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="180" y="75" text-anchor="middle" fill="#4169E1" font-weight="600">1</text>
+  <text x="240" y="135" text-anchor="middle" fill="#4169E1" font-weight="600">4</text>
+  <text x="140" y="75" text-anchor="end" fill="#4169E1" font-size="12.5">start</text>
+  <text x="330" y="112" fill="#4169E1" font-weight="600">goal — either parity · total 8</text>
+  <!-- layer B: next action even -->
+  <text x="150" y="196" fill="#1a2026" font-weight="600">next action EVEN — left / up free</text>
+  <g stroke="#98a2ac" stroke-width="1.2" fill="none">
+    <rect x="150" y="206" width="60" height="60"/>
+    <rect x="210" y="206" width="60" height="60"/>
+    <rect x="210" y="266" width="60" height="60"/>
+  </g>
+  <rect x="150" y="266" width="60" height="60" fill="#e8edfa" stroke="#4169E1" stroke-width="1.8"/>
+  <g text-anchor="middle" fill="#5c6b76">
+    <text x="180" y="241">1</text><text x="240" y="241">2</text><text x="240" y="301">4</text>
+  </g>
+  <text x="180" y="301" text-anchor="middle" fill="#4169E1" font-weight="600">2</text>
+  <!-- transitions -->
+  <path d="M 186 102 L 186 260" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="124" y="182" fill="#4169E1" font-size="12.5" text-anchor="start">action 1 (odd): down · +2</text>
+  <path d="M 212 300 C 320 300 320 130 276 130" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="336" y="222" fill="#4169E1" font-size="12.5">action 2 (even): right violates —</text>
+  <text x="336" y="240" fill="#4169E1" font-size="12.5">+4 entry + penalty[1][0] = 1</text>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="440" y="290">each grid cell is split into two states;</text>
+    <text x="440" y="308">every move or wait flips the layer, and</text>
+    <text x="440" y="326">Dijkstra runs on the doubled graph.</text>
+  </g>
+</svg>

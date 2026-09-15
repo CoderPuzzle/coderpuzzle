@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1823,
+  "slug": "find-the-winner-of-the-circular-game",
+  "title": "Find the Winner of the Circular Game",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Recursion",
+    "Queue",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Recursion",
+    "Queue",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findTheWinner",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "findTheWinner",
+      "rust": "find_the_winner",
+      "typescript": "findTheWinner"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

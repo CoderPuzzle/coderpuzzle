@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 148,
+  "slug": "sort-list",
+  "title": "Sort List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Divide and Conquer",
+    "Sorting"
+  ],
+  "topics": [
+    "Linked List",
+    "Two Pointers",
+    "Divide and Conquer",
+    "Sorting",
+    "Merge Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sortList",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "sortList",
+      "rust": "sort_list",
+      "typescript": "sortList"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

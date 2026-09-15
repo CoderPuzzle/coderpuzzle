@@ -1,0 +1,86 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3829,
+  "slug": "design-ride-sharing-system",
+  "title": "Design Ride Sharing System",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Design",
+    "Queue",
+    "Data Stream"
+  ],
+  "topics": [
+    "Hash Table",
+    "Design",
+    "Queue",
+    "Data Stream"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "RideSharingSystem",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "addRider",
+        "parameters": [
+          {
+            "name": "riderId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "addDriver",
+        "parameters": [
+          {
+            "name": "driverId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "matchDriverWithRider",
+        "parameters": [],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "cancelRider",
+        "parameters": [
+          {
+            "name": "riderId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

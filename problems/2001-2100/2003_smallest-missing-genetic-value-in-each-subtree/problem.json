@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2003,
+  "slug": "smallest-missing-genetic-value-in-each-subtree",
+  "title": "Smallest Missing Genetic Value in Each Subtree",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search",
+    "Union-Find"
+  ],
+  "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Tree",
+    "Depth-First Search",
+    "Union-Find"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "smallestMissingValueSubtree",
+    "parameters": [
+      {
+        "name": "parents",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "smallestMissingValueSubtree",
+      "rust": "smallest_missing_value_subtree",
+      "typescript": "smallestMissingValueSubtree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="640" height="240" fill="#ffffff"/>
+  <!-- array cells -->
+  <g stroke="#1a2026" stroke-width="1.6" fill="none">
+    <rect x="60" y="28" width="60" height="40" rx="4"/>
+    <rect x="120" y="28" width="60" height="40" rx="4"/>
+    <rect x="180" y="28" width="60" height="40" rx="4"/>
+    <rect x="240" y="28" width="60" height="40" rx="4"/>
+    <rect x="300" y="28" width="60" height="40" rx="4"/>
+    <rect x="360" y="28" width="60" height="40" rx="4"/>
+    <rect x="420" y="28" width="60" height="40" rx="4"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="90" y="53">3</text><text x="150" y="53">1</text><text x="210" y="53">4</text>
+    <text x="270" y="53">3</text><text x="330" y="53">2</text><text x="390" y="53">2</text><text x="450" y="53">4</text>
+  </g>
+  <g fill="#5c6b76" font-size="12.5" text-anchor="middle">
+    <text x="90" y="20">i=0</text><text x="150" y="20">1</text><text x="210" y="20">2</text>
+    <text x="270" y="20">3</text><text x="330" y="20">4</text><text x="390" y="20">5</text><text x="450" y="20">6</text>
+  </g>
+  <!-- window 1: right = 5, [0..5], adds n - right = 2 -->
+  <path d="M 60 108 L 60 96 L 360 96 L 360 108" fill="none" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="210" y="128" text-anchor="middle" fill="#4169E1">right = 5: pairs (3,3) and (2,2) = 2 ≥ k → every start ≤ left works: +n−right = +2</text>
+  <!-- window 2: after shrinking, right = 6, [1..6] -->
+  <path d="M 120 158 L 120 146 L 450 146 L 450 158" fill="none" stroke="#1a2026" stroke-width="1.6"/>
+  <text x="285" y="178" text-anchor="middle" fill="#1a2026">shrink to [1..6]: pairs (2,2) and (4,4) = 2 ≥ k → +1</text>
+  <!-- window 3: [2..6] -->
+  <path d="M 180 208 L 180 196 L 450 196 L 450 208" fill="none" stroke="#1a2026" stroke-width="1.6"/>
+  <text x="315" y="230" text-anchor="middle" fill="#1a2026">shrink to [2..6]: still 2 pairs → +1 · total = 4</text>
+</svg>

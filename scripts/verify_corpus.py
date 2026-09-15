@@ -1,15 +1,14 @@
 """Whole-corpus coverage + consistency verification (merged layout).
 
 Chain: ~/code/lc-crawl (raw crawl) -> ~/code/bettercode (curated good
-tier, 838) -> problems-originals/ (both originals archives: canonical
-names for bettercode originals, `-crawl` slug suffix on the 13 extend
-twins) + problems/ (the merged served tree: 838 bettercode-derived
-bundles keyed by problems/MAPPING.json + every other crawl id adapted
-1:1 by the extend corpus).
+tier, 838) -> this repo's problems/ original tree (canonical names for
+bettercode originals, `-crawl` slug suffix on the 13 extend twins) plus the
+private lc-adapt checkout's problems/ tree (838 bettercode-derived bundles
+keyed by MAPPING.json plus every other crawl id adapted 1:1).
 
 Checks:
   A. crawl index is complete and well-formed
-  B. every good-tier bettercode problem is archived in problems-originals
+  B. every good-tier bettercode problem is archived in problems/
      with the same id+slug (and slug == crawl slug); every archive bundle
      has its required files
   C. every extend original maps to a crawl id with the exact crawl slug
@@ -17,7 +16,7 @@ Checks:
      parseable problem.json/cases.json, present statement/solutions/
      solution files; no extras
   D. crawl ids covered by neither original set == none (corpus complete)
-  E. problems-adapt/ has exactly one adapt bundle per crawl id (coverage
+  E. the adapted problems/ tree has exactly one bundle per crawl id (coverage
      both directions), parses cleanly, and carries exactly one
      bettercode-derived bundle per MAPPING.json row (id == source id,
      dir == `<id>_<slug>`)
@@ -28,17 +27,20 @@ import re
 import sys
 from pathlib import Path
 
-# Bank defaults to the sibling checkout; the two upstream scrape sources
-# are only needed for the crawl-side checks and stay env-overridable.
-BANK = Path(os.environ.get(
-    "CODERPUZZLE_PROBLEMS_BANK",
-    str(Path(__file__).resolve().parents[2] / "coderpuzzle-problems")))
+# Originals live in this repo; the private adapted checkout and two upstream
+# scrape sources stay env-overridable for whole-chain audits.
+ROOT = Path(__file__).resolve().parents[1]
 CRAWL = Path(os.environ.get(
     "CODERPUZZLE_CRAWL", str(Path.home() / "code/lc-crawl/problems")))
 BETTERCODE = Path(os.environ.get(
     "CODERPUZZLE_BETTERCODE", str(Path.home() / "code/bettercode/data/problems.jsonl")))
-ORIGINALS = BANK / "problems-originals"
-SERVED = BANK / "problems-adapt"
+ORIGINALS = ROOT / "problems"
+ADAPTED = Path(
+    os.environ.get(
+        "CODERPUZZLE_ADAPTED_PROBLEMS",
+        str(ROOT.parent / "lc-adapt" / "problems"),
+    )
+).expanduser().resolve()
 
 failures = []
 
@@ -73,7 +75,7 @@ CRAWL_SUFFIX = "-crawl"  # slug suffix marking an extend-side twin original
 
 
 def originals_index():
-    """(canonical, crawl_twins) over problems-originals: canonical maps
+    """(canonical, crawl_twins) over problems: canonical maps
     id -> (slug, dir) for non-suffixed bundles; crawl_twins holds the
     `-crawl`-suffixed extend twins with the suffix stripped."""
     canonical, crawl_twins = {}, {}
@@ -82,19 +84,19 @@ def originals_index():
             continue
         match = re.match(r"^(\d+)_(.+)$", bundle_dir.name)
         if not match:
-            fail(f"problems-originals dir not parseable: {bundle_dir}")
+            fail(f"problems dir not parseable: {bundle_dir}")
             continue
         bundle_id = int(match.group(1))
         slug = match.group(2)
         if slug.endswith(CRAWL_SUFFIX):
             slug = slug[: -len(CRAWL_SUFFIX)]
             if bundle_id in crawl_twins:
-                fail(f"problems-originals twin id twice: {bundle_id}")
+                fail(f"problems twin id twice: {bundle_id}")
             crawl_twins[bundle_id] = (slug, bundle_dir)
         else:
             if bundle_id in canonical:
                 fail(
-                    f"problems-originals id appears twice: {bundle_id} at "
+                    f"problems id appears twice: {bundle_id} at "
                     f"{canonical[bundle_id][1]} and {bundle_dir}"
                 )
             canonical[bundle_id] = (slug, bundle_dir)
@@ -174,12 +176,12 @@ def main():
 
     canonical, crawl_twins = originals_index()
     print(
-        f"   problems-originals bundles: {len(canonical) + len(crawl_twins)} "
+        f"   problems bundles: {len(canonical) + len(crawl_twins)} "
         f"({len(crawl_twins)} `-crawl` twins)"
     )
     for bundle_id, slug in good.items():
         if bundle_id not in canonical:
-            fail(f"bettercode {bundle_id} {slug} missing from problems-originals")
+            fail(f"bettercode {bundle_id} {slug} missing from problems")
         elif canonical[bundle_id][0] != slug:
             fail(
                 f"archive slug drift {bundle_id}: {canonical[bundle_id][0]} "
@@ -226,7 +228,7 @@ def main():
     if uncovered:
         print(f"   missing ids ({len(uncovered)}): {sorted(uncovered)}")
 
-    mapping = json.loads((SERVED / "MAPPING.json").read_text(encoding="utf-8"))
+    mapping = json.loads((ADAPTED / "MAPPING.json").read_text(encoding="utf-8"))
     adapted = {}
     for source, row in mapping.items():
         source_id = int(source.split("_", 1)[0])
@@ -235,7 +237,7 @@ def main():
         name = row["adapted"]
         if not re.match(rf"^{source_id:04d}_[a-z0-9-]+$", name):
             fail(f"MAPPING {source}: adapted dir {name} not <source-id>_<slug>")
-        bundle_dir = SERVED / expected_shard(source_id) / name
+        bundle_dir = ADAPTED / expected_shard(source_id) / name
         if not bundle_dir.is_dir():
             fail(f"MAPPING {source}: adapted bundle missing: {bundle_dir}")
         if source_id in adapted:
@@ -243,12 +245,12 @@ def main():
                  f"({adapted[source_id]} and {name})")
         adapted[source_id] = name
     served_ids = {}
-    for bundle_dir in sorted(SERVED.glob("*/*")):
+    for bundle_dir in sorted(ADAPTED.glob("*/*")):
         if not bundle_dir.is_dir() or bundle_dir.name.startswith("."):
             continue
         match = re.match(r"^(\d+)_(.+)$", bundle_dir.name)
         if not match:
-            fail(f"problems-adapt/ dir not parseable: {bundle_dir}")
+            fail(f"adapted problems/ dir not parseable: {bundle_dir}")
             continue
         bundle_id, slug = int(match.group(1)), match.group(2)
         served_ids.setdefault(bundle_id, []).append(bundle_dir.name)
@@ -258,11 +260,11 @@ def main():
     # unnoticed, since all checks below run over the ids that ARE present.
     missing_served = set(crawl) - set(served_ids)
     if missing_served:
-        fail(f"problems-adapt/ missing {len(missing_served)} crawl ids: "
+        fail(f"adapted problems/ missing {len(missing_served)} crawl ids: "
              f"{sorted(missing_served)[:20]}")
     bettercode_served = sum(1 for i in adapted if i in served_ids)
     print(
-        f"E. problems-adapt/ bundles: {sum(len(v) for v in served_ids.values())} "
+        f"E. adapted problems/ bundles: {sum(len(v) for v in served_ids.values())} "
         f"(bettercode-derived: {bettercode_served}/{len(adapted)})"
     )
     if bettercode_served != len(adapted):

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="240" fill="#ffffff"/>
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- input list: 5 -> 2 -> 13 -> 3 -> 8 -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <rect x="40" y="40" width="46" height="34" rx="4" fill="#f6dede"/>
+    <rect x="126" y="40" width="46" height="34" rx="4" fill="#f6dede"/>
+    <rect x="212" y="40" width="46" height="34" rx="4" fill="#dbe4f6"/>
+    <rect x="298" y="40" width="46" height="34" rx="4" fill="#f6dede"/>
+    <rect x="384" y="40" width="46" height="34" rx="4" fill="#dbe4f6"/>
+    <line x1="86" y1="57" x2="122" y2="57" marker-end="url(#a1)"/>
+    <line x1="172" y1="57" x2="208" y2="57" marker-end="url(#a1)"/>
+    <line x1="258" y1="57" x2="294" y2="57" marker-end="url(#a1)"/>
+    <line x1="344" y1="57" x2="380" y2="57" marker-end="url(#a1)"/>
+    <line x1="430" y1="57" x2="472" y2="57" marker-end="url(#a1)"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="63" y="61" fill="#8c4a43">5</text>
+    <text x="149" y="61" fill="#8c4a43">2</text>
+    <text x="235" y="61" fill="#1a2026">13</text>
+    <text x="321" y="61" fill="#8c4a43">3</text>
+    <text x="407" y="61" fill="#1a2026">8</text>
+  </g>
+  <text x="486" y="61" fill="#5c6b76" font-size="13">None</text>
+  <g font-size="12" fill="#5c6b76">
+    <text x="40" y="96" fill="#8c4a43">removed (13 to the right)</text>
+    <text x="298" y="96" fill="#8c4a43">removed (8 to the right)</text>
+  </g>
+  <line x1="235" y1="110" x2="235" y2="140" stroke="#4169E1" stroke-width="2" marker-end="url(#a1)"/>
+  <!-- result: 13 -> 8 -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <rect x="188" y="152" width="46" height="34" rx="4" fill="#dbe4f6"/>
+    <rect x="274" y="152" width="46" height="34" rx="4" fill="#dbe4f6"/>
+    <line x1="234" y1="169" x2="270" y2="169" marker-end="url(#a1)"/>
+    <line x1="320" y1="169" x2="362" y2="169" marker-end="url(#a1)"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="211" y="173" fill="#1a2026">13</text>
+    <text x="297" y="173" fill="#1a2026">8</text>
+  </g>
+  <text x="376" y="173" fill="#5c6b76" font-size="13">None</text>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="380" y="152" fill="#4169E1" font-weight="600">remaining: [13, 8]</text>
+    <text x="40" y="224">Every node with a strictly greater value to its right is dropped.</text>
+  </g>
+</svg>

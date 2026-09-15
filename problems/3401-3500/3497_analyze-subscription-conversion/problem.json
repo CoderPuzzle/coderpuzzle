@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3497,
+  "slug": "analyze-subscription-conversion",
+  "title": "Analyze Subscription Conversion",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "set",
+    "sql": {
+      "schema": "CREATE TABLE UserActivity (user_id INTEGER, activity_date DATE, activity_type VARCHAR, activity_duration INTEGER, PRIMARY KEY (user_id, activity_date, activity_type));"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

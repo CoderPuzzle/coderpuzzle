@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1960,
+  "slug": "maximum-product-of-the-length-of-two-palindromic-substrings",
+  "title": "Maximum Product of the Length of Two Palindromic Substrings",
+  "difficulty": "Hard",
+  "tags": [
+    "String",
+    "Two Pointers",
+    "Manacher"
+  ],
+  "topics": [
+    "Two Pointers",
+    "String",
+    "Rolling Hash",
+    "Hash Function",
+    "Manacher",
+    "Palindromic Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxProduct",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "maxProduct",
+      "rust": "max_product",
+      "typescript": "maxProduct"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

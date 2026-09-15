@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3921,
+  "slug": "score-validator",
+  "title": "Score Validator",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "String",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "scoreValidator",
+    "parameters": [
+      {
+        "name": "events",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "scoreValidator",
+      "rust": "score_validator",
+      "typescript": "scoreValidator"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

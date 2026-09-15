@@ -1,0 +1,247 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(135,13,'2024-02-01','Enjoying a great start to the day! #HappyDay'),\n(136,14,'2024-02-03','Another #HappyDay with good vibes!'),\n(137,15,'2024-02-04','Productivity peaks! #WorkLife'),\n(138,16,'2024-02-04','Exploring new tech frontiers. #TechLife'),\n(139,17,'2024-02-05','Gratitude for today''s moments. #HappyDay'),\n(140,18,'2024-02-07','Innovation drives us. #TechLife'),\n(141,19,'2024-02-09','Connecting with nature''s serenity. #Nature');"
+      ],
+      "expected": [
+        [
+          "#HappyDay",
+          3
+        ],
+        [
+          "#TechLife",
+          2
+        ],
+        [
+          "#WorkLife",
+          1
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(9,1,'2024-02-05','Just checking in #Solo');"
+      ],
+      "expected": [
+        [
+          "#Solo",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-02','Great morning so far! #Beta'),\n(2,2,'2024-02-03','Loving this #Beta moment right now'),\n(3,3,'2024-02-10','Absolutely #Beta'),\n(4,4,'2024-02-11','#Beta'),\n(5,5,'2024-02-12','Great morning so far! #Alpha'),\n(6,6,'2024-02-20','Loving this #Alpha moment right now');"
+      ],
+      "expected": [
+        [
+          "#Beta",
+          4
+        ],
+        [
+          "#Alpha",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-01','Great morning so far! #Dusk'),\n(2,2,'2024-02-02','Loving this #Dusk moment right now'),\n(3,3,'2024-02-03','Absolutely #Dusk'),\n(4,4,'2024-02-04','#Aria'),\n(5,5,'2024-02-05','Great morning so far! #Aria'),\n(6,6,'2024-02-06','Loving this #Zest moment right now'),\n(7,7,'2024-02-07','Absolutely #Zest'),\n(8,8,'2024-02-08','#Mint'),\n(9,9,'2024-02-09','Great morning so far! #Mint');"
+      ],
+      "expected": [
+        [
+          "#Dusk",
+          3
+        ],
+        [
+          "#Zest",
+          2
+        ],
+        [
+          "#Mint",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-01','Great morning so far! #Gamma'),\n(2,2,'2024-02-02','Loving this #Gamma moment right now'),\n(3,3,'2024-02-03','Absolutely #Gamma'),\n(4,4,'2024-02-04','#Gamma'),\n(5,5,'2024-02-05','Great morning so far! #Gamma'),\n(6,6,'2024-02-06','Loving this #Delta moment right now'),\n(7,7,'2024-02-07','Absolutely #Delta'),\n(8,8,'2024-02-08','#Delta'),\n(9,9,'2024-02-09','Great morning so far! #Delta'),\n(10,10,'2024-02-10','Loving this #Delta moment right now'),\n(11,11,'2024-02-11','Absolutely #Beta'),\n(12,12,'2024-02-12','#Beta'),\n(13,13,'2024-02-13','Great morning so far! #Beta'),\n(14,14,'2024-02-14','Loving this #Beta moment right now'),\n(15,15,'2024-02-15','Absolutely #Beta'),\n(16,16,'2024-02-16','#Omega');"
+      ],
+      "expected": [
+        [
+          "#Gamma",
+          5
+        ],
+        [
+          "#Delta",
+          5
+        ],
+        [
+          "#Beta",
+          5
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-01-01','Great morning so far! #Cold'),\n(2,2,'2024-01-02','Loving this #Cold moment right now'),\n(3,3,'2024-01-03','Absolutely #Cold'),\n(4,4,'2024-01-04','#Cold'),\n(5,5,'2024-01-05','Great morning so far! #Cold'),\n(6,6,'2024-01-06','Loving this #Cold moment right now'),\n(7,7,'2024-02-02','Absolutely #FebOnly'),\n(8,8,'2024-02-04','#FebOnly'),\n(9,9,'2024-02-06','Great morning so far! #FebOnly');"
+      ],
+      "expected": [
+        [
+          "#FebOnly",
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-28','Great morning so far! #Late'),\n(2,2,'2024-02-29','Loving this #Late moment right now'),\n(3,3,'2024-02-28','Absolutely #Late'),\n(4,4,'2024-02-29','#Late'),\n(5,5,'2024-03-01','Great morning so far! #Next'),\n(6,6,'2024-03-02','Loving this #Next moment right now'),\n(7,7,'2024-03-05','Absolutely #Next'),\n(8,8,'2024-03-10','#Next'),\n(9,9,'2024-03-20','Great morning so far! #Next');"
+      ],
+      "expected": [
+        [
+          "#Late",
+          4
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-03','Great morning so far! #Now'),\n(2,2,'2024-02-09','Loving this #Now moment right now'),\n(3,3,'2024-02-10','Absolutely #Now'),\n(4,4,'2023-02-01','#Past'),\n(5,5,'2023-02-14','Great morning so far! #Past'),\n(6,6,'2023-02-28','Loving this #Past moment right now'),\n(7,7,'2025-02-02','Absolutely #Past'),\n(8,8,'2025-02-15','#Past'),\n(9,9,'2025-02-27','Great morning so far! #Past'),\n(10,10,'2023-02-01','Loving this #Future moment right now'),\n(11,11,'2023-02-14','Absolutely #Future'),\n(12,12,'2023-02-28','#Future'),\n(13,13,'2025-02-02','Great morning so far! #Future');"
+      ],
+      "expected": [
+        [
+          "#Now",
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-29','Leap day vibes #Leap'),\n(2,2,'2024-02-29','Still leaping #Leap'),\n(3,3,'2024-02-10','Ordinary day #Plain'),\n(4,4,'2024-02-10','Another one #Plain'),\n(5,5,'2024-02-01','Top of the pile #Winner'),\n(6,6,'2024-02-02','Winner again #Winner'),\n(7,7,'2024-02-03','Winner once more #Winner');"
+      ],
+      "expected": [
+        [
+          "#Winner",
+          3
+        ],
+        [
+          "#Plain",
+          2
+        ],
+        [
+          "#Leap",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(11,1,'2024-02-01','Had coffee then wrote about #MorningRitual in my journal'),\n(12,2,'2024-02-02','A thread on #MorningRitual and why it matters'),\n(13,3,'2024-02-03','Race day! #RunningClub out in force'),\n(14,4,'2024-02-04','Joined #RunningClub this year'),\n(15,5,'2024-02-05','Joined #RunningClub last year too'),\n(16,6,'2024-02-06','Reading about #SlowNews week');"
+      ],
+      "expected": [
+        [
+          "#RunningClub",
+          3
+        ],
+        [
+          "#MorningRitual",
+          2
+        ],
+        [
+          "#SlowNews",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(21,1,'2024-02-06','AI winter is coming #AI'),\n(22,2,'2024-02-07','ai summer too #ai'),\n(23,3,'2024-02-08','More AI talk #AI'),\n(24,4,'2024-02-09','lowercase again #ai'),\n(25,5,'2024-02-10','The #Ai half-measure');"
+      ],
+      "expected": [
+        [
+          "#ai",
+          2
+        ],
+        [
+          "#AI",
+          2
+        ],
+        [
+          "#Ai",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(31,1,'2024-02-01','Stay safe everyone #Covid19'),\n(32,2,'2024-02-02','Numbers up #Covid19'),\n(33,3,'2024-02-03','Numbers down #Covid19'),\n(34,4,'2024-02-04','Election night #Vote2026'),\n(35,5,'2024-02-05','Debate recap #Vote2026'),\n(36,6,'2024-02-06','Trivia: #42isTheAnswer'),\n(37,7,'2024-02-07','Asked again #42isTheAnswer');"
+      ],
+      "expected": [
+        [
+          "#Covid19",
+          3
+        ],
+        [
+          "#Vote2026",
+          2
+        ],
+        [
+          "#42isTheAnswer",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-01','Great morning so far! #Echo'),\n(2,2,'2024-02-02','Loving this #Echo moment right now'),\n(3,3,'2024-02-03','Absolutely #Echo'),\n(4,4,'2024-02-04','#Echo'),\n(5,5,'2024-02-05','Great morning so far! #Echo'),\n(6,6,'2024-02-06','Loving this #Echo moment right now'),\n(7,7,'2024-02-07','Absolutely #Echo'),\n(8,8,'2024-02-08','#Echo'),\n(9,9,'2024-02-09','Great morning so far! #Echo'),\n(10,10,'2024-02-10','Loving this #Echo moment right now'),\n(11,11,'2024-02-11','Absolutely #Echo'),\n(12,12,'2024-02-12','#Echo'),\n(13,13,'2024-02-13','Great morning so far! #Echo'),\n(14,14,'2024-02-14','Loving this #Echo moment right now'),\n(15,15,'2024-02-15','Absolutely #Echo'),\n(16,16,'2024-02-16','#Echo'),\n(17,17,'2024-02-17','Great morning so far! #Echo'),\n(18,18,'2024-02-18','Loving this #Echo moment right now'),\n(19,19,'2024-02-19','Absolutely #Echo'),\n(20,20,'2024-02-20','#Echo'),\n(21,21,'2024-02-21','Great morning so far! #Echo'),\n(22,22,'2024-02-22','Loving this #Echo moment right now'),\n(23,23,'2024-02-23','Absolutely #Echo'),\n(24,24,'2024-02-24','#Echo'),\n(25,25,'2024-02-25','Great morning so far! #Echo'),\n(26,26,'2024-02-26','Loving this #Echo moment right now'),\n(27,27,'2024-02-27','Absolutely #Echo'),\n(28,28,'2024-02-28','#Echo'),\n(29,29,'2024-02-29','Great morning so far! #Echo'),\n(30,30,'2024-02-01','Loving this #Echo moment right now'),\n(31,31,'2024-02-02','Absolutely #Echo'),\n(32,32,'2024-02-03','#Echo'),\n(33,33,'2024-02-04','Great morning so far! #Echo'),\n(34,34,'2024-02-05','Loving this #Echo moment right now'),\n(35,35,'2024-02-06','Absolutely #Echo'),\n(36,36,'2024-02-07','#Echo'),\n(37,37,'2024-02-08','Great morning so far! #Echo'),\n(38,38,'2024-02-09','Loving this #Echo moment right now'),\n(39,39,'2024-02-10','Absolutely #Echo'),\n(40,40,'2024-02-11','#Echo');"
+      ],
+      "expected": [
+        [
+          "#Echo",
+          40
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-19','Great morning so far! #Tag01'),\n(2,2,'2024-02-02','Loving this #Tag01 moment right now'),\n(3,3,'2024-02-05','Absolutely #Tag01'),\n(4,4,'2024-02-28','#Tag01'),\n(5,5,'2024-02-08','Great morning so far! #Tag01'),\n(6,6,'2024-02-13','Loving this #Tag01 moment right now'),\n(7,7,'2024-02-28','Absolutely #Tag01'),\n(8,8,'2024-02-27','#Tag01'),\n(9,9,'2024-02-17','Great morning so far! #Tag01'),\n(10,10,'2024-02-03','Loving this #Tag01 moment right now'),\n(11,11,'2024-02-08','Absolutely #Tag01'),\n(12,12,'2024-02-08','#Tag01'),\n(13,13,'2024-02-02','Great morning so far! #Tag01'),\n(14,14,'2024-02-24','Loving this #Tag01 moment right now'),\n(15,15,'2024-02-23','Absolutely #Tag01'),\n(16,16,'2024-02-07','#Tag01'),\n(17,17,'2024-02-05','Great morning so far! #Tag01'),\n(18,18,'2024-02-14','Loving this #Tag01 moment right now'),\n(19,19,'2024-02-29','Absolutely #Tag01'),\n(20,20,'2024-02-05','#Tag01'),\n(21,21,'2024-02-25','Great morning so far! #Tag01'),\n(22,22,'2024-02-02','Loving this #Tag01 moment right now'),\n(23,23,'2024-02-14','Absolutely #Tag01'),\n(24,24,'2024-02-03','#Tag01'),\n(25,25,'2024-02-20','Great morning so far! #Tag01'),\n(26,26,'2024-02-24','Loving this #Tag01 moment right now'),\n(27,27,'2024-02-15','Absolutely #Tag01'),\n(28,28,'2024-02-20','#Tag01'),\n(29,29,'2024-02-25','Great morning so far! #Tag02'),\n(30,30,'2024-02-11','Loving this #Tag02 moment right now'),\n(31,31,'2024-02-18','Absolutely #Tag02'),\n(32,32,'2024-02-14','#Tag02'),\n(33,33,'2024-02-08','Great morning so far! #Tag02'),\n(34,34,'2024-02-25','Loving this #Tag02 moment right now'),\n(35,35,'2024-02-01','Absolutely #Tag02'),\n(36,36,'2024-02-27','#Tag02'),\n(37,37,'2024-02-10','Great morning so far! #Tag02'),\n(38,38,'2024-02-29','Loving this #Tag02 moment right now'),\n(39,39,'2024-02-10','Absolutely #Tag02'),\n(40,40,'2024-02-13','#Tag02'),\n(41,41,'2024-02-07','Great morning so far! #Tag02'),\n(42,42,'2024-02-22','Loving this #Tag02 moment right now'),\n(43,43,'2024-02-24','Absolutely #Tag02'),\n(44,44,'2024-02-19','#Tag02'),\n(45,45,'2024-02-27','Great morning so far! #Tag02'),\n(46,46,'2024-02-21','Loving this #Tag02 moment right now'),\n(47,47,'2024-02-20','Absolutely #Tag02'),\n(48,48,'2024-02-26','#Tag02'),\n(49,49,'2024-02-17','Great morning so far! #Tag02'),\n(50,50,'2024-02-27','Loving this #Tag02 moment right now'),\n(51,51,'2024-02-15','Absolutely #Tag02'),\n(52,52,'2024-02-08','#Tag02'),\n(53,53,'2024-02-01','Great morning so far! #Tag02'),\n(54,54,'2024-02-26','Loving this #Tag02 moment right now'),\n(55,55,'2024-02-06','Absolutely #Tag03'),\n(56,56,'2024-02-19','#Tag03'),\n(57,57,'2024-02-28','Great morning so far! #Tag03'),\n(58,58,'2024-02-24','Loving this #Tag03 moment right now'),\n(59,59,'2024-02-12','Absolutely #Tag03'),\n(60,60,'2024-02-11','#Tag03'),\n(61,61,'2024-02-17','Great morning so far! #Tag03'),\n(62,62,'2024-02-02','Loving this #Tag03 moment right now'),\n(63,63,'2024-02-16','Absolutely #Tag03'),\n(64,64,'2024-02-05','#Tag03'),\n(65,65,'2024-02-17','Great morning so far! #Tag03'),\n(66,66,'2024-02-02','Loving this #Tag03 moment right now'),\n(67,67,'2024-02-12','Absolutely #Tag03'),\n(68,68,'2024-02-02','#Tag03'),\n(69,69,'2024-02-18','Great morning so far! #Tag03'),\n(70,70,'2024-02-22','Loving this #Tag03 moment right now'),\n(71,71,'2024-02-24','Absolutely #Tag03'),\n(72,72,'2024-02-03','#Tag03'),\n(73,73,'2024-02-02','Great morning so far! #Tag03'),\n(74,74,'2024-02-22','Loving this #Tag03 moment right now'),\n(75,75,'2024-02-10','Absolutely #Tag03'),\n(76,76,'2024-02-12','#Tag03'),\n(77,77,'2024-02-07','Great morning so far! #Tag03'),\n(78,78,'2024-02-04','Loving this #Tag03 moment right now'),\n(79,79,'2024-02-23','Absolutely #Tag04'),\n(80,80,'2024-02-17','#Tag04'),\n(81,81,'2024-02-29','Great morning so far! #Tag04'),\n(82,82,'2024-02-07','Loving this #Tag04 moment right now'),\n(83,83,'2024-02-07','Absolutely #Tag04'),\n(84,84,'2024-02-29','#Tag04'),\n(85,85,'2024-02-16','Great morning so far! #Tag04'),\n(86,86,'2024-02-09','Loving this #Tag04 moment right now'),\n(87,87,'2024-02-22','Absolutely #Tag04'),\n(88,88,'2024-02-02','#Tag04'),\n(89,89,'2024-02-19','Great morning so far! #Tag04'),\n(90,90,'2024-02-08','Loving this #Tag04 moment right now'),\n(91,91,'2024-02-23','Absolutely #Tag04'),\n(92,92,'2024-02-12','#Tag04'),\n(93,93,'2024-02-29','Great morning so far! #Tag04'),\n(94,94,'2024-02-05','Loving this #Tag04 moment right now'),\n(95,95,'2024-02-15','Absolutely #Tag04'),\n(96,96,'2024-02-26','#Tag04'),\n(97,97,'2024-02-28','Great morning so far! #Tag04'),\n(98,98,'2024-02-06','Loving this #Tag04 moment right now'),\n(99,99,'2024-02-18','Absolutely #Tag04'),\n(100,100,'2024-02-05','#Tag04'),\n(101,101,'2024-02-21','Great morning so far! #Tag05'),\n(102,102,'2024-02-07','Loving this #Tag05 moment right now'),\n(103,103,'2024-02-06','Absolutely #Tag05'),\n(104,104,'2024-02-02','#Tag05'),\n(105,105,'2024-02-13','Great morning so far! #Tag05'),\n(106,106,'2024-02-28','Loving this #Tag05 moment right now'),\n(107,107,'2024-02-21','Absolutely #Tag05'),\n(108,108,'2024-02-28','#Tag05'),\n(109,109,'2024-02-10','Great morning so far! #Tag05'),\n(110,110,'2024-02-24','Loving this #Tag05 moment right now'),\n(111,111,'2024-02-24','Absolutely #Tag05'),\n(112,112,'2024-02-05','#Tag05'),\n(113,113,'2024-02-12','Great morning so far! #Tag05'),\n(114,114,'2024-02-28','Loving this #Tag05 moment right now'),\n(115,115,'2024-02-04','Absolutely #Tag05'),\n(116,116,'2024-02-13','#Tag05'),\n(117,117,'2024-02-24','Great morning so far! #Tag05'),\n(118,118,'2024-02-22','Loving this #Tag05 moment right now'),\n(119,119,'2024-02-23','Absolutely #Tag05'),\n(120,120,'2024-02-24','#Tag05'),\n(121,121,'2024-02-12','Great morning so far! #Tag06'),\n(122,122,'2024-02-05','Loving this #Tag06 moment right now'),\n(123,123,'2024-02-07','Absolutely #Tag06'),\n(124,124,'2024-02-20','#Tag06'),\n(125,125,'2024-02-01','Great morning so far! #Tag06'),\n(126,126,'2024-02-12','Loving this #Tag06 moment right now'),\n(127,127,'2024-02-24','Absolutely #Tag06'),\n(128,128,'2024-02-13','#Tag06'),\n(129,129,'2024-02-29','Great morning so far! #Tag06'),\n(130,130,'2024-02-20','Loving this #Tag06 moment right now'),\n(131,131,'2024-02-06','Absolutely #Tag06'),\n(132,132,'2024-02-05','#Tag06'),\n(133,133,'2024-02-20','Great morning so far! #Tag06'),\n(134,134,'2024-02-27','Loving this #Tag06 moment right now'),\n(135,135,'2024-02-09','Absolutely #Tag06'),\n(136,136,'2024-02-04','#Tag06'),\n(137,137,'2024-02-09','Great morning so far! #Tag06'),\n(138,138,'2024-02-19','Loving this #Tag06 moment right now'),\n(139,139,'2024-02-25','Absolutely #Tag07'),\n(140,140,'2024-02-05','#Tag07'),\n(141,141,'2024-02-12','Great morning so far! #Tag07'),\n(142,142,'2024-02-17','Loving this #Tag07 moment right now'),\n(143,143,'2024-02-24','Absolutely #Tag07'),\n(144,144,'2024-02-09','#Tag07'),\n(145,145,'2024-02-21','Great morning so far! #Tag07'),\n(146,146,'2024-02-10','Loving this #Tag07 moment right now'),\n(147,147,'2024-02-25','Absolutely #Tag07'),\n(148,148,'2024-02-11','#Tag07'),\n(149,149,'2024-02-13','Great morning so far! #Tag07'),\n(150,150,'2024-02-08','Loving this #Tag07 moment right now'),\n(151,151,'2024-02-16','Absolutely #Tag07'),\n(152,152,'2024-02-28','#Tag07'),\n(153,153,'2024-02-20','Great morning so far! #Tag07'),\n(154,154,'2024-02-05','Loving this #Tag07 moment right now'),\n(155,155,'2024-02-25','Absolutely #Tag08'),\n(156,156,'2024-02-29','#Tag08'),\n(157,157,'2024-02-10','Great morning so far! #Tag08'),\n(158,158,'2024-02-25','Loving this #Tag08 moment right now'),\n(159,159,'2024-02-05','Absolutely #Tag08'),\n(160,160,'2024-02-27','#Tag08'),\n(161,161,'2024-02-28','Great morning so far! #Tag08'),\n(162,162,'2024-02-19','Loving this #Tag08 moment right now'),\n(163,163,'2024-02-24','Absolutely #Tag08'),\n(164,164,'2024-02-21','#Tag08'),\n(165,165,'2024-02-25','Great morning so far! #Tag08'),\n(166,166,'2024-02-27','Loving this #Tag08 moment right now'),\n(167,167,'2024-02-20','Absolutely #Tag08'),\n(168,168,'2024-02-17','#Tag08'),\n(169,169,'2024-02-09','Great morning so far! #Tag09'),\n(170,170,'2024-02-01','Loving this #Tag09 moment right now'),\n(171,171,'2024-02-07','Absolutely #Tag09'),\n(172,172,'2024-02-09','#Tag09'),\n(173,173,'2024-02-12','Great morning so far! #Tag09'),\n(174,174,'2024-02-17','Loving this #Tag09 moment right now'),\n(175,175,'2024-02-28','Absolutely #Tag09'),\n(176,176,'2024-02-05','#Tag09'),\n(177,177,'2024-02-15','Great morning so far! #Tag09'),\n(178,178,'2024-02-04','Loving this #Tag09 moment right now'),\n(179,179,'2024-02-07','Absolutely #Tag09'),\n(180,180,'2024-02-26','#Tag09'),\n(181,181,'2024-02-10','Great morning so far! #Tag10'),\n(182,182,'2024-02-16','Loving this #Tag10 moment right now'),\n(183,183,'2024-02-03','Absolutely #Tag10'),\n(184,184,'2024-02-26','#Tag10'),\n(185,185,'2024-02-06','Great morning so far! #Tag10'),\n(186,186,'2024-02-11','Loving this #Tag10 moment right now'),\n(187,187,'2024-02-04','Absolutely #Tag10'),\n(188,188,'2024-02-14','#Tag10'),\n(189,189,'2024-02-14','Great morning so far! #Tag10'),\n(190,190,'2024-02-13','Loving this #Tag10 moment right now'),\n(191,191,'2024-02-10','Absolutely #Tag11'),\n(192,192,'2024-02-07','#Tag11'),\n(193,193,'2024-02-07','Great morning so far! #Tag11'),\n(194,194,'2024-02-27','Loving this #Tag11 moment right now'),\n(195,195,'2024-02-06','Absolutely #Tag11'),\n(196,196,'2024-02-05','#Tag11'),\n(197,197,'2024-02-22','Great morning so far! #Tag11'),\n(198,198,'2024-02-26','Loving this #Tag11 moment right now'),\n(199,199,'2024-02-16','Absolutely #Tag12'),\n(200,200,'2024-02-26','#Tag12'),\n(201,201,'2024-02-16','Great morning so far! #Tag12'),\n(202,202,'2024-02-29','Loving this #Tag12 moment right now'),\n(203,203,'2024-02-22','Absolutely #Tag12'),\n(204,204,'2024-02-20','#Tag12');"
+      ],
+      "expected": [
+        [
+          "#Tag01",
+          28
+        ],
+        [
+          "#Tag02",
+          26
+        ],
+        [
+          "#Tag03",
+          24
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Tweets VALUES\n(1,1,'2024-02-01','Great morning so far! #Three'),\n(2,2,'2024-02-02','Loving this #Three moment right now'),\n(3,3,'2024-02-03','Absolutely #Three'),\n(4,4,'2024-02-04','#Three'),\n(5,5,'2024-02-05','Great morning so far! #Three'),\n(6,6,'2024-02-06','Loving this #Three moment right now'),\n(7,7,'2024-02-07','Absolutely #Three'),\n(8,8,'2024-02-08','#Two'),\n(9,9,'2024-02-09','Great morning so far! #Two'),\n(10,10,'2024-02-10','Loving this #Two moment right now'),\n(11,11,'2024-02-11','Absolutely #Two'),\n(12,12,'2024-02-12','#One');"
+      ],
+      "expected": [
+        [
+          "#Three",
+          7
+        ],
+        [
+          "#Two",
+          4
+        ],
+        [
+          "#One",
+          1
+        ]
+      ]
+    }
+  ]
+}

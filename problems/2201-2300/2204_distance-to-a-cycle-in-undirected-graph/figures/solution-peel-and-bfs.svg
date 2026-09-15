@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <!-- cycle square 1-2-4-3; tails 0 -> 1, 5 -> 2, 6 -> 5 -->
+  <g stroke="#42525e" stroke-width="1.8">
+    <line x1="198" y1="110" x2="402" y2="110"/>
+    <line x1="420" y1="128" x2="420" y2="212"/>
+    <line x1="402" y1="230" x2="198" y2="230"/>
+    <line x1="180" y1="212" x2="180" y2="128"/>
+    <line x1="98" y1="110" x2="162" y2="110"/>
+    <line x1="438" y1="110" x2="502" y2="110"/>
+    <line x1="518" y1="124" x2="560" y2="180"/>
+  </g>
+  <!-- cycle nodes accent -->
+  <g fill="#4169E1" stroke="#42525e" stroke-width="1.6">
+    <circle cx="180" cy="110" r="19"/><circle cx="420" cy="110" r="19"/>
+    <circle cx="420" cy="230" r="19"/><circle cx="180" cy="230" r="19"/>
+  </g>
+  <g fill="#9db4ea" stroke="#42525e" stroke-width="1.6">
+    <circle cx="80" cy="110" r="19"/><circle cx="520" cy="110" r="19"/>
+  </g>
+  <g fill="#dbe4f6" stroke="#42525e" stroke-width="1.6">
+    <circle cx="572" cy="194" r="19"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#ffffff">
+    <text x="180" y="115">1</text><text x="420" y="115">2</text>
+    <text x="420" y="235">4</text><text x="180" y="235">3</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="80" y="115">0</text><text x="520" y="115">5</text><text x="572" y="199">6</text>
+  </g>
+  <!-- distance labels -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="180" y="80" text-anchor="middle" fill="#4169E1" font-weight="600">dist 0</text>
+    <text x="420" y="80" text-anchor="middle" fill="#4169E1" font-weight="600">dist 0</text>
+    <text x="420" y="266" text-anchor="middle" fill="#4169E1" font-weight="600">dist 0</text>
+    <text x="180" y="266" text-anchor="middle" fill="#4169E1" font-weight="600">dist 0</text>
+    <text x="80" y="80" text-anchor="middle">dist 1</text>
+    <text x="520" y="80" text-anchor="middle">dist 1</text>
+    <text x="572" y="230" text-anchor="middle">dist 2</text>
+  </g>
+  <!-- narration -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="30" y="160">Peeling degree-1</text>
+    <text x="30" y="176">nodes removes 0, then</text>
+    <text x="30" y="192">6, then 5 — the four</text>
+    <text x="30" y="208">nodes that survive are</text>
+    <text x="30" y="224">exactly the cycle.</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="30" y="290">A multi-source BFS seeded with the whole</text>
+    <text x="30" y="308">cycle then numbers each hanging branch by</text>
+    <text x="30" y="326">its hop count toward it.</text>
+  </g>
+</svg>

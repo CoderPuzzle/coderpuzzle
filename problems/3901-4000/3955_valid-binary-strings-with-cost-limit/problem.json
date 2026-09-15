@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3955,
+  "slug": "valid-binary-strings-with-cost-limit",
+  "title": "Valid Binary Strings With Cost Limit",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Backtracking",
+    "Bit Manipulation",
+    "Enumeration"
+  ],
+  "topics": [
+    "String",
+    "Backtracking",
+    "Bit Manipulation",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "generateValidStrings",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "entrypoints": {
+      "go": "generateValidStrings",
+      "rust": "generate_valid_strings",
+      "typescript": "generateValidStrings"
+    },
+    "comparison": "set"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

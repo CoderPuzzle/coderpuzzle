@@ -1,0 +1,189 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,100,2008,10,5000),\n(2,100,2009,12,5000),\n(7,200,2011,15,9000);\nINSERT INTO Product VALUES\n(100,'Nokia'),\n(200,'Apple'),\n(300,'Samsung');"
+      ],
+      "expected": [
+        [
+          100,
+          22
+        ],
+        [
+          200,
+          15
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,500,2015,7,100);\nINSERT INTO Product VALUES\n(500,'Widget');"
+      ],
+      "expected": [
+        [
+          500,
+          7
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(10,700,2010,5,10),\n(11,700,2011,8,12),\n(12,700,2012,3,14);\nINSERT INTO Product VALUES\n(700,'Gadget');"
+      ],
+      "expected": [
+        [
+          700,
+          16
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(20,1,2000,10,1),\n(21,2,2000,20,2),\n(22,3,2000,30,3);\nINSERT INTO Product VALUES\n(1,'A'),\n(2,'B'),\n(3,'C');"
+      ],
+      "expected": [
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          20
+        ],
+        [
+          3,
+          30
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(30,9,2001,1,5),\n(31,9,2002,2,5),\n(32,9,2003,3,5),\n(33,9,2004,4,5),\n(34,9,2005,5,5),\n(35,9,2006,6,5);\nINSERT INTO Product VALUES\n(9,'X');"
+      ],
+      "expected": [
+        [
+          9,
+          21
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(40,42,2018,20000,3),\n(41,42,2019,20000,3),\n(42,42,2020,20000,3),\n(43,42,2021,20000,3),\n(44,42,2022,20000,3),\n(45,84,2018,15000,4),\n(46,84,2019,15000,4);\nINSERT INTO Product VALUES\n(42,'Bulk'),\n(84,'Bulk2');"
+      ],
+      "expected": [
+        [
+          42,
+          100000
+        ],
+        [
+          84,
+          30000
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(50,55,2000,1,2),\n(51,55,2001,2,2),\n(52,55,2002,3,2),\n(53,55,2003,4,2),\n(54,55,2004,5,2),\n(55,55,2005,6,2),\n(56,55,2006,7,2),\n(57,55,2007,8,2),\n(58,55,2008,9,2),\n(59,55,2009,10,2);\nINSERT INTO Product VALUES\n(55,'Solo');"
+      ],
+      "expected": [
+        [
+          55,
+          55
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Product VALUES\n(1,'A'),\n(2,'B'),\n(3,'C');"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,1,1900,1,1);\nINSERT INTO Product VALUES\n(1,'Min');"
+      ],
+      "expected": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,100,2008,10,5000),\n(2,100,2009,12,5000),\n(7,200,2011,15,9000);\nINSERT INTO Product VALUES\n(100,'Nokia'),\n(200,'Apple'),\n(300,'Samsung');"
+      ],
+      "expected": [
+        [
+          100,
+          22
+        ],
+        [
+          200,
+          15
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(60,200,2010,100,5),\n(61,201,2010,1,5),\n(62,201,2011,2,5),\n(63,201,2012,3,5),\n(64,201,2013,4,5),\n(65,201,2014,5,5),\n(66,202,2010,50,5),\n(67,202,2011,25,5);\nINSERT INTO Product VALUES\n(200,'One'),\n(201,'Five'),\n(202,'Two');"
+      ],
+      "expected": [
+        [
+          200,
+          100
+        ],
+        [
+          201,
+          15
+        ],
+        [
+          202,
+          75
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(70,300,2020,3,5),\n(71,300,2020,4,5),\n(72,300,2020,5,5);\nINSERT INTO Product VALUES\n(300,'SameYear');"
+      ],
+      "expected": [
+        [
+          300,
+          12
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(80,400,2019,0,5),\n(81,400,2020,10,5);\nINSERT INTO Product VALUES\n(400,'ZeroRow');"
+      ],
+      "expected": [
+        [
+          400,
+          10
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(90,999999999,2020,42,5),\n(91,999999999,2021,58,5);\nINSERT INTO Product VALUES\n(999999999,'BigId');"
+      ],
+      "expected": [
+        [
+          999999999,
+          100
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 252" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- n = 3, edges = [[0,1],[0,2]], label = "abc"; no multi-node path is palindromic, answer 1 (verified by brute-force search) -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="250" y1="54" x2="150" y2="150"/>
+    <line x1="250" y1="54" x2="350" y2="150"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="250" cy="54" r="21"/>
+    <circle cx="150" cy="150" r="21"/>
+    <circle cx="350" cy="150" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="250" y="59">a</text>
+    <text x="150" y="155">b</text>
+    <text x="350" y="155">c</text>
+  </g>
+  <text x="250" y="26" text-anchor="middle" fill="#5c6b76" font-size="11.5">node 0</text>
+  <g font-size="11.5" fill="#5c6b76" text-anchor="middle">
+    <text x="150" y="190">node 1</text>
+    <text x="350" y="190">node 2</text>
+  </g>
+  <g font-size="12" fill="#5c6b76">
+    <text x="186" y="90">ab</text>
+    <text x="296" y="90" text-anchor="end">ac</text>
+    <text x="250" y="116" text-anchor="middle">bac</text>
+  </g>
+  <text x="250" y="238" text-anchor="middle" fill="#1a2026" font-size="13.5">every multi-node path spells ab, ac or bac — never a palindrome; best is a single node, length <tspan fill="#4169E1" font-weight="700">1</tspan></text>
+</svg>

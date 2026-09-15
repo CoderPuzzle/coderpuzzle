@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1954,
+  "slug": "minimum-garden-perimeter-to-collect-enough-apples",
+  "title": "Minimum Garden Perimeter to Collect Enough Apples",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Binary Search"
+  ],
+  "topics": [
+    "Math",
+    "Binary Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minimumPerimeter",
+    "parameters": [
+      {
+        "name": "neededApples",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "minimumPerimeter",
+      "rust": "minimum_perimeter",
+      "typescript": "minimumPerimeter"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('California','Los Angeles'),\n('California','San Francisco'),\n('California','San Diego'),\n('Texas','Houston'),\n('Texas','Austin'),\n('Texas','Dallas'),\n('New York','New York City'),\n('New York','Buffalo'),\n('New York','Rochester');"
+      ],
+      "expected": [
+        [
+          "California",
+          "Los Angeles, San Diego, San Francisco"
+        ],
+        [
+          "New York",
+          "Buffalo, New York City, Rochester"
+        ],
+        [
+          "Texas",
+          "Austin, Dallas, Houston"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Oregon','Portland');"
+      ],
+      "expected": [
+        [
+          "Oregon",
+          "Portland"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Arizona','Tucson'),\n('Ohio','Toledo'),\n('Utah','Provo'),\n('Maine','Bar Harbor');"
+      ],
+      "expected": [
+        [
+          "Arizona",
+          "Tucson"
+        ],
+        [
+          "Maine",
+          "Bar Harbor"
+        ],
+        [
+          "Ohio",
+          "Toledo"
+        ],
+        [
+          "Utah",
+          "Provo"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Illinois','Springfield'),\n('Illinois','Spring'),\n('Illinois','Springtown'),\n('Illinois','Springside');"
+      ],
+      "expected": [
+        [
+          "Illinois",
+          "Spring, Springfield, Springside, Springtown"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Oregon','Portland'),\n('Maine','Portland'),\n('Oregon','Eugene'),\n('Maine','Lewiston');"
+      ],
+      "expected": [
+        [
+          "Maine",
+          "Lewiston, Portland"
+        ],
+        [
+          "Oregon",
+          "Eugene, Portland"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Nevada','Reno'),\n('Alabama','Huntsville'),\n('Nevada','Austin'),\n('Colorado','Denver'),\n('Alabama','Birmingham'),\n('Nevada','Elko'),\n('Colorado','Boulder'),\n('Alabama','Montgomery'),\n('Colorado','Aspen');"
+      ],
+      "expected": [
+        [
+          "Alabama",
+          "Birmingham, Huntsville, Montgomery"
+        ],
+        [
+          "Colorado",
+          "Aspen, Boulder, Denver"
+        ],
+        [
+          "Nevada",
+          "Austin, Elko, Reno"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('North Carolina','Winston-Salem'),\n('North Carolina','Cary'),\n('North Carolina','Chapel Hill'),\n('North Carolina','Durham'),\n('West Virginia','Charleston'),\n('West Virginia','Blue Bell');"
+      ],
+      "expected": [
+        [
+          "North Carolina",
+          "Cary, Chapel Hill, Durham, Winston-Salem"
+        ],
+        [
+          "West Virginia",
+          "Blue Bell, Charleston"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Michigan','Ypsilanti'),\n('Michigan','Yale'),\n('Michigan','Ada');"
+      ],
+      "expected": [
+        [
+          "Michigan",
+          "Ada, Yale, Ypsilanti"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Iowa','Arbor'),\n('Iowa','Arbor View'),\n('Iowa','Milford'),\n('Iowa','Juniper Field'),\n('Iowa','Milltown City'),\n('Iowa','Jordan Park'),\n('Iowa','Benton'),\n('Iowa','Lansing'),\n('Kansas','Haven'),\n('Kansas','Granby View'),\n('Kansas','Juniper'),\n('Kansas','Jordan Field'),\n('Kansas','Granby Grove'),\n('Kansas','Granby Field'),\n('Kansas','Juniper Falls'),\n('Kansas','Harlow Falls'),\n('Idaho','Hudson Field'),\n('Idaho','Lansing'),\n('Idaho','Haven'),\n('Idaho','Jordan City'),\n('Idaho','Hudson View'),\n('Montana','Milltown'),\n('Montana','Juniper Falls'),\n('Montana','Haven'),\n('Montana','Arbor'),\n('Montana','Arbor City'),\n('Montana','Lansing'),\n('Montana','Hudson Park'),\n('Montana','Benton'),\n('Vermont','Milford'),\n('Vermont','Hudson Grove'),\n('Vermont','Granby Grove'),\n('Vermont','Jordan');"
+      ],
+      "expected": [
+        [
+          "Idaho",
+          "Haven, Hudson Field, Hudson View, Jordan City, Lansing"
+        ],
+        [
+          "Iowa",
+          "Arbor, Arbor View, Benton, Jordan Park, Juniper Field, Lansing, Milford, Milltown City"
+        ],
+        [
+          "Kansas",
+          "Granby Field, Granby Grove, Granby View, Harlow Falls, Haven, Jordan Field, Juniper, Juniper Falls"
+        ],
+        [
+          "Montana",
+          "Arbor, Arbor City, Benton, Haven, Hudson Park, Juniper Falls, Lansing, Milltown"
+        ],
+        [
+          "Vermont",
+          "Granby Grove, Hudson Grove, Jordan, Milford"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('New York','Albany'),\n('New Jersey','Newark'),\n('New Hampshire','Nashua');"
+      ],
+      "expected": [
+        [
+          "New Hampshire",
+          "Nashua"
+        ],
+        [
+          "New Jersey",
+          "Newark"
+        ],
+        [
+          "New York",
+          "Albany"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Nevada','Area 5'),\n('Nevada','Area 42'),\n('Nevada','Area 100');"
+      ],
+      "expected": [
+        [
+          "Nevada",
+          "Area 100, Area 42, Area 5"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Ohio','Benton Grove'),\n('Ohio','Benton Park'),\n('Ohio','Granby Grove'),\n('Ohio','Granby View'),\n('Ohio','Harlow Field'),\n('Ohio','Haven Field'),\n('Ohio','Haven View'),\n('Ohio','Hudson Falls'),\n('Ohio','Hudson Field'),\n('Ohio','Hudson Grove'),\n('Ohio','Hudson Park'),\n('Ohio','Hudson View'),\n('Ohio','Jordan Grove'),\n('Ohio','Jordan Park'),\n('Ohio','Juniper City'),\n('Ohio','Juniper Field'),\n('Ohio','Juniper Grove'),\n('Ohio','Lansing Falls'),\n('Ohio','Lansing Grove'),\n('Ohio','Lansing Park'),\n('Ohio','Milford City'),\n('Ohio','Milford Field'),\n('Ohio','Milford Grove'),\n('Ohio','Milltown Falls'),\n('Ohio','Milltown Field'),\n('Ohio','Milltown Grove'),\n('Ohio','Milltown Park'),\n('Ohio','Weston Grove'),\n('Ohio','Weston View');"
+      ],
+      "expected": [
+        [
+          "Ohio",
+          "Benton Grove, Benton Park, Granby Grove, Granby View, Harlow Field, Haven Field, Haven View, Hudson Falls, Hudson Field, Hudson Grove, Hudson Park, Hudson View, Jordan Grove, Jordan Park, Juniper City, Juniper Field, Juniper Grove, Lansing Falls, Lansing Grove, Lansing Park, Milford City, Milford Field, Milford Grove, Milltown Falls, Milltown Field, Milltown Grove, Milltown Park, Weston Grove, Weston View"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO cities VALUES\n('Texas','Amarillo'),\n('Texas','Ama'),\n('Texas','Amboy'),\n('Texas','Anson');"
+      ],
+      "expected": [
+        [
+          "Texas",
+          "Ama, Amarillo, Amboy, Anson"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "reference_solution": "math_lagrange",
+  "id": 279,
+  "slug": "perfect-squares",
+  "title": "Perfect Squares",
+  "difficulty": "Medium",
+  "tags": [
+    "Dynamic Programming",
+    "Math",
+    "BFS"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Breadth-First Search",
+    "Knapsack Problem",
+    "Complete Knapsack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numSquares",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numSquares",
+      "rust": "num_squares",
+      "typescript": "numSquares"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

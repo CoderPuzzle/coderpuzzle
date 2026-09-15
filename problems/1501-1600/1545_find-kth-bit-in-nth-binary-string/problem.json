@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1545,
+  "slug": "find-kth-bit-in-nth-binary-string",
+  "title": "Find Kth Bit in Nth Binary String",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Recursion",
+    "Simulation"
+  ],
+  "topics": [
+    "String",
+    "Recursion",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findKthBit",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "findKthBit",
+      "rust": "find_kth_bit",
+      "typescript": "findKthBit"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

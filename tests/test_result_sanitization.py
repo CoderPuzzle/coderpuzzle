@@ -42,9 +42,9 @@ class ResultSanitizationTests(unittest.TestCase):
         self.assertNotIn("wall_time_ms", results[1])
 
     def test_canonical_markdown_metadata_is_not_duplicated_in_the_ui_body(self) -> None:
-        problem = load_problem("pair-sum")
-        self.assertTrue(problem["description"].startswith("You are given an integer array"))
-        self.assertNotIn("# 1. Two Sum", problem["description"])
+        problem = load_problem("two-sum")
+        self.assertTrue(problem["description"].startswith("Given an array of integers"))
+        self.assertNotIn("# Two Sum", problem["description"])
 
 
 if __name__ == "__main__":

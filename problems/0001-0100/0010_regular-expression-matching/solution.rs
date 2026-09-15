@@ -1,0 +1,34 @@
+impl Solution {
+    pub fn is_match(s: String, p: String) -> bool {
+        let s = s.as_bytes();
+        let p = p.as_bytes();
+        let (m, n) = (s.len(), p.len());
+        // dp[i][j]: do the first i chars of s match the first j chars of p?
+        let mut dp = vec![vec![false; n + 1]; m + 1];
+        // The empty string matches the empty pattern.
+        dp[0][0] = true;
+        // First row: only trailing x* units can vanish, so dropping the
+        // star's two-character unit must still match nothing.
+        for j in 1..=n {
+            if p[j - 1] == b'*' {
+                dp[0][j] = dp[0][j - 2];
+            }
+        }
+        for i in 1..=m {
+            for j in 1..=n {
+                if p[j - 1] == b'*' {
+                    // Two cases cover every repetition count: zero
+                    // occurrences (erase the x* unit), or one more
+                    // occurrence of p[j-2] consuming s[i-1].
+                    dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (p[j - 2] == b'.' || p[j - 2] == s[i - 1]));
+                } else {
+                    // A literal or '.' must consume one character of s that
+                    // it equals ('.' agrees with anything).
+                    dp[i][j] = dp[i - 1][j - 1] && (p[j - 1] == b'.' || p[j - 1] == s[i - 1]);
+                }
+            }
+        }
+        // Prefix table: true only when the pattern matches all of s.
+        dp[m][n]
+    }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 252,
+  "slug": "meeting-rooms",
+  "title": "Meeting Rooms",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Quicksort"
+  ],
+  "topics": [
+    "Array",
+    "Sorting",
+    "Quicksort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canAttendMeetings",
+    "parameters": [
+      {
+        "name": "intervals",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canAttendMeetings",
+      "rust": "can_attend_meetings",
+      "typescript": "canAttendMeetings"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

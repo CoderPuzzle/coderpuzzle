@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1279,
+  "slug": "traffic-light-controlled-intersection",
+  "title": "Traffic Light Controlled Intersection",
+  "difficulty": "Easy",
+  "tags": [
+    "Concurrency"
+  ],
+  "topics": [
+    "Concurrency"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "concurrent",
+    "class_name": "TrafficLight",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "carArrived",
+        "parameters": [
+          {
+            "name": "carId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "roadId",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "direction",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "turnGreen",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback",
+              "record": false
+            }
+          },
+          {
+            "name": "crossCar",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback",
+              "event": [
+                "pass",
+                "#0",
+                "#1",
+                "#2"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "multiset"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64,
+    "threads": 20
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1625,
+  "slug": "lexicographically-smallest-string-after-applying-operations",
+  "title": "Lexicographically Smallest String After Applying Operations",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Enumeration"
+  ],
+  "topics": [
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Enumeration"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findLexSmallestString",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "a",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "b",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "findLexSmallestString",
+      "rust": "find_lex_smallest_string",
+      "typescript": "findLexSmallestString"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

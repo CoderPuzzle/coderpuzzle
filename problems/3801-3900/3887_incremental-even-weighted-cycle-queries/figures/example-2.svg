@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- n = 3, edges = [[0,1,1],[1,2,1],[0,2,0]]; all three added (verified by DSU-with-parity: cycle 0-1-2-0 sums to 2, even) -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="240" y1="64" x2="130" y2="214"/>
+    <line x1="130" y1="214" x2="350" y2="214"/>
+    <line x1="240" y1="64" x2="350" y2="214"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="240" cy="64" r="21"/>
+    <circle cx="130" cy="214" r="21"/>
+    <circle cx="350" cy="214" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="240" y="69">0</text>
+    <text x="130" y="219">1</text>
+    <text x="350" y="219">2</text>
+  </g>
+  <g font-size="12" font-weight="600" fill="#5c6b76">
+    <text x="162" y="152" text-anchor="end">1</text>
+    <text x="240" y="248" text-anchor="middle">1</text>
+    <text x="318" y="152">0</text>
+  </g>
+  <text x="240" y="182" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">1 + 1 + 0 = 2 (even)</text>
+  <text x="240" y="286" text-anchor="middle" fill="#1a2026" font-size="13.5">the cycle closes with even weight 2, so all <tspan fill="#4169E1" font-weight="700">3</tspan> edges are added</text>
+</svg>

@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1554,
+  "slug": "strings-differ-by-one-character",
+  "title": "Strings Differ by One Character",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Rolling Hash",
+    "Hash Function"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Rolling Hash",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "differByOne",
+    "parameters": [
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "differByOne",
+      "rust": "differ_by_one",
+      "typescript": "differByOne"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

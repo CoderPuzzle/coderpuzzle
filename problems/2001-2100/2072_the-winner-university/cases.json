@@ -1,0 +1,186 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,90),\n(2,87);\nINSERT INTO California VALUES\n(2,89),\n(3,88);"
+      ],
+      "expected": [
+        [
+          "New York University"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,89),\n(2,88);\nINSERT INTO California VALUES\n(2,90),\n(3,87);"
+      ],
+      "expected": [
+        [
+          "California University"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,89),\n(2,90);\nINSERT INTO California VALUES\n(2,87),\n(3,99);"
+      ],
+      "expected": [
+        [
+          "No Winner"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,90);\nINSERT INTO California VALUES\n(1,89);"
+      ],
+      "expected": [
+        [
+          "New York University"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,89);\nINSERT INTO California VALUES\n(1,90);"
+      ],
+      "expected": [
+        [
+          "California University"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,0),\n(2,89),\n(3,75),\n(4,88);\nINSERT INTO California VALUES\n(11,1),\n(12,50),\n(13,89),\n(14,0);"
+      ],
+      "expected": [
+        [
+          "No Winner"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,90),\n(2,95),\n(3,40);\nINSERT INTO California VALUES\n(11,91),\n(12,100),\n(13,89);"
+      ],
+      "expected": [
+        [
+          "No Winner"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,89),\n(2,90),\n(3,90);\nINSERT INTO California VALUES\n(11,88),\n(12,89),\n(13,100);"
+      ],
+      "expected": [
+        [
+          "New York University"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,100),\n(2,0),\n(3,0);\nINSERT INTO California VALUES\n(11,100),\n(12,100),\n(13,0);"
+      ],
+      "expected": [
+        [
+          "California University"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(101,92),\n(205,12),\n(999,45);\nINSERT INTO California VALUES\n(7001,30),\n(8002,91),\n(9003,89);"
+      ],
+      "expected": [
+        [
+          "No Winner"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,95),\n(2,95),\n(3,95),\n(4,95),\n(5,95),\n(6,95),\n(7,95),\n(8,95),\n(9,95),\n(10,95),\n(11,95),\n(12,95),\n(13,60),\n(14,60),\n(15,60),\n(16,60),\n(17,60),\n(18,60),\n(19,60),\n(20,60);\nINSERT INTO California VALUES\n(101,90),\n(102,90),\n(103,90),\n(104,90),\n(105,90),\n(106,90),\n(107,90),\n(108,89),\n(109,89),\n(110,89),\n(111,89),\n(112,89),\n(113,89),\n(114,89),\n(115,89),\n(116,89),\n(117,89),\n(118,89),\n(119,89),\n(120,89);"
+      ],
+      "expected": [
+        [
+          "New York University"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,90),\n(2,90),\n(3,90),\n(4,90),\n(5,20),\n(6,20),\n(7,20),\n(8,20),\n(9,20),\n(10,20),\n(11,20),\n(12,20),\n(13,20),\n(14,20),\n(15,20),\n(16,20),\n(17,20),\n(18,20),\n(19,20),\n(20,20);\nINSERT INTO California VALUES\n(101,100),\n(102,100),\n(103,100),\n(104,100),\n(105,100),\n(106,100),\n(107,100),\n(108,100),\n(109,100),\n(110,100),\n(111,100),\n(112,100),\n(113,100),\n(114,10),\n(115,10),\n(116,10),\n(117,10),\n(118,10),\n(119,10),\n(120,10);"
+      ],
+      "expected": [
+        [
+          "California University"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(40,90),\n(10,30),\n(30,89),\n(20,100),\n(50,70);\nINSERT INTO California VALUES\n(205,89),\n(201,90),\n(204,88),\n(202,91),\n(203,92);"
+      ],
+      "expected": [
+        [
+          "California University"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,100),\n(2,100),\n(3,1),\n(4,1);\nINSERT INTO California VALUES\n(11,90),\n(12,90),\n(13,89),\n(14,89);"
+      ],
+      "expected": [
+        [
+          "No Winner"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,90),\n(2,1),\n(3,2),\n(4,3),\n(5,4),\n(6,5),\n(7,6),\n(8,7);\nINSERT INTO California VALUES\n(11,89),\n(12,88),\n(13,87),\n(14,86),\n(15,85),\n(16,84),\n(17,83),\n(18,82);"
+      ],
+      "expected": [
+        [
+          "New York University"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,90),\n(2,91),\n(3,99),\n(4,100);\nINSERT INTO California VALUES\n(11,100),\n(12,95),\n(13,94),\n(14,90);"
+      ],
+      "expected": [
+        [
+          "No Winner"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,90),\n(2,91),\n(3,92),\n(4,93),\n(5,94),\n(6,89),\n(7,88),\n(8,87),\n(9,50),\n(10,0);\nINSERT INTO California VALUES\n(101,100),\n(102,99),\n(103,98),\n(104,97),\n(105,89),\n(106,88),\n(107,87),\n(108,86),\n(109,85),\n(110,84);"
+      ],
+      "expected": [
+        [
+          "New York University"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO NewYork VALUES\n(1,100),\n(2,89),\n(3,88),\n(4,87),\n(5,86),\n(6,85),\n(7,84),\n(8,83),\n(9,82),\n(10,81);\nINSERT INTO California VALUES\n(101,90),\n(102,91),\n(103,89),\n(104,88),\n(105,87),\n(106,86),\n(107,85),\n(108,84),\n(109,83),\n(110,82);"
+      ],
+      "expected": [
+        [
+          "California University"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+  </defs>
+  <!-- grid 3x3 [[0,1,1],[1,1,0],[1,1,0]]; cell 92, x=180 y=40; obstacle fill -->
+  <g fill="#e3e7eb">
+    <rect x="272" y="40" width="92" height="92"/><rect x="364" y="40" width="92" height="92"/>
+    <rect x="180" y="132" width="92" height="92"/><rect x="272" y="132" width="92" height="92"/>
+    <rect x="180" y="224" width="92" height="92"/><rect x="272" y="224" width="92" height="92"/>
+  </g>
+  <g fill="#ffffff">
+    <rect x="180" y="40" width="92" height="92"/>
+    <rect x="364" y="132" width="92" height="92"/>
+    <rect x="364" y="224" width="92" height="92"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <rect x="180" y="40" width="92" height="92"/><rect x="272" y="40" width="92" height="92"/><rect x="364" y="40" width="92" height="92"/>
+    <rect x="180" y="132" width="92" height="92"/><rect x="272" y="132" width="92" height="92"/><rect x="364" y="132" width="92" height="92"/>
+    <rect x="180" y="224" width="92" height="92"/><rect x="272" y="224" width="92" height="92"/><rect x="364" y="224" width="92" height="92"/>
+  </g>
+  <!-- grid values + distances -->
+  <g text-anchor="middle">
+    <text x="226" y="70" font-weight="600">0</text><text x="318" y="70" fill="#5c6b76">1</text><text x="410" y="70" fill="#5c6b76">1</text>
+    <text x="226" y="162" fill="#5c6b76">1</text><text x="318" y="162" fill="#5c6b76">1</text><text x="410" y="162" font-weight="600">0</text>
+    <text x="226" y="254" fill="#5c6b76">1</text><text x="318" y="254" fill="#5c6b76">1</text><text x="410" y="254" font-weight="600">0</text>
+    <text x="226" y="100" fill="#4169E1" font-weight="600" font-size="15">0</text>
+    <text x="318" y="100" fill="#4169E1" font-weight="600" font-size="15">1</text>
+    <text x="410" y="100" fill="#4169E1" font-weight="600" font-size="15">2</text>
+    <text x="226" y="192" fill="#4169E1" font-weight="600" font-size="15">1</text>
+    <text x="318" y="192" fill="#4169E1" font-weight="600" font-size="15">2</text>
+    <text x="410" y="192" fill="#4169E1" font-weight="600" font-size="15">2</text>
+    <text x="226" y="284" fill="#4169E1" font-weight="600" font-size="15">2</text>
+    <text x="318" y="284" fill="#4169E1" font-weight="600" font-size="15">3</text>
+    <text x="410" y="284" fill="#4169E1" font-weight="600" font-size="15">2</text>
+  </g>
+  <!-- optimal path -->
+  <g stroke="#1a2026" stroke-width="2.6" fill="none">
+    <polyline points="226,86 318,86 410,86 410,178 410,270" marker-end="url(#arrow)"/>
+  </g>
+  <!-- narration -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="30" y="60">Small numbers are</text>
+    <text x="30" y="76">final dist values;</text>
+    <text x="30" y="92">gray cells are the</text>
+    <text x="30" y="108">obstacles that cost 1.</text>
+    <text x="30" y="140">0-cost steps push to</text>
+    <text x="30" y="156">the deque front, 1-cost</text>
+    <text x="30" y="172">steps to the back, so</text>
+    <text x="30" y="188">the deque stays sorted</text>
+    <text x="30" y="204">and no heap is needed.</text>
+  </g>
+  <text x="30" y="316" fill="#1a2026" font-size="13">The dark route clears the two obstacles on the top row: dist at the corner is <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

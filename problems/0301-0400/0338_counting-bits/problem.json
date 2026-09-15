@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "reference_solution": "dp_lowest_bit",
+  "id": 338,
+  "slug": "counting-bits",
+  "title": "Counting Bits",
+  "difficulty": "Easy",
+  "tags": [
+    "Dynamic Programming",
+    "Bit Manipulation"
+  ],
+  "topics": [
+    "Dynamic Programming",
+    "Bit Manipulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countBits",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "countBits",
+      "rust": "count_bits",
+      "typescript": "countBits"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

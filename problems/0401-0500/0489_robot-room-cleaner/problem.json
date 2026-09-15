@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 489,
+  "slug": "robot-room-cleaner",
+  "title": "Robot Room Cleaner",
+  "difficulty": "Hard",
+  "tags": [
+    "DFS",
+    "Backtracking"
+  ],
+  "topics": [
+    "Backtracking",
+    "Interactive"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "interactive",
+    "class_name": "Solution",
+    "method": "cleanRoom",
+    "oracle": "Robot",
+    "oracle_methods": [
+      {
+        "name": "move",
+        "parameters": [],
+        "return_type": {
+          "kind": "boolean"
+        }
+      },
+      {
+        "name": "turnLeft",
+        "parameters": [],
+        "return_type": {
+          "kind": "void"
+        }
+      },
+      {
+        "name": "turnRight",
+        "parameters": [],
+        "return_type": {
+          "kind": "void"
+        }
+      },
+      {
+        "name": "clean",
+        "parameters": [],
+        "return_type": {
+          "kind": "void"
+        }
+      }
+    ],
+    "parameters": [],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "void"
+    },
+    "query_limit": 200000,
+    "comparison": "exact",
+    "provided": {
+      "oracle": {
+        "class": "Robot",
+        "construct": [
+          "room",
+          "start"
+        ],
+        "auxiliary": []
+      }
+    }
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

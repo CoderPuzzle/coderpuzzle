@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 264" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect x="0" y="0" width="640" height="264" fill="#ffffff"/>
+  <!-- hours -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="130" y="36">Y</text><text x="230" y="36">Y</text><text x="330" y="36">N</text><text x="430" y="36">Y</text>
+    <text x="130" y="20">h0</text><text x="230" y="20">h1</text><text x="330" y="20">h2</text><text x="430" y="20">h3</text>
+  </g>
+  <g stroke="#98a2ac" stroke-width="1.1" stroke-dasharray="3 4">
+    <line x1="80" y1="44" x2="80" y2="206"/>
+    <line x1="180" y1="44" x2="180" y2="206"/>
+    <line x1="280" y1="44" x2="280" y2="206"/>
+    <line x1="380" y1="44" x2="380" y2="206"/>
+    <line x1="480" y1="44" x2="480" y2="206"/>
+  </g>
+  <!-- stacked bars: Y-after (accent) below, N-before (gray) on top; 30 px per unit -->
+  <g stroke-width="1.4">
+    <rect x="58" y="110" width="44" height="90" fill="#e8edfa" stroke="#4169E1"/>
+    <rect x="158" y="140" width="44" height="60" fill="#e8edfa" stroke="#4169E1"/>
+    <rect x="258" y="170" width="44" height="30" fill="#e8edfa" stroke="#4169E1" stroke-width="2.2"/>
+    <rect x="358" y="170" width="44" height="30" fill="#f3f5f7" stroke="#98a2ac"/>
+    <rect x="358" y="140" width="44" height="30" fill="#e8edfa" stroke="#4169E1"/>
+    <rect x="458" y="170" width="44" height="30" fill="#f3f5f7" stroke="#98a2ac"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="80" y="102">3</text><text x="180" y="132">2</text><text x="280" y="162">1</text>
+    <text x="380" y="132">2</text><text x="480" y="162">1</text>
+  </g>
+  <!-- axis -->
+  <line x1="60" y1="206" x2="560" y2="206" stroke="#1a2026" stroke-width="1.5"/>
+  <g fill="#5c6b76" font-size="12.5" text-anchor="middle">
+    <text x="80" y="226">j=0</text><text x="180" y="226">j=1</text><text x="280" y="226">j=2</text>
+    <text x="380" y="226">j=3</text><text x="480" y="226">j=4</text>
+  </g>
+  <text x="280" y="248" text-anchor="middle" fill="#4169E1" font-weight="600">earliest minimum: close at j = 2, penalty 1</text>
+  <!-- legend -->
+  <g font-size="12.5" fill="#5c6b76">
+    <rect x="580" y="120" width="16" height="16" fill="#e8edfa" stroke="#4169E1"/>
+    <text x="602" y="133">‘Y’ after j</text>
+    <rect x="580" y="144" width="16" height="16" fill="#f3f5f7" stroke="#98a2ac"/>
+    <text x="602" y="157">‘N’ before j</text>
+  </g>
+</svg>

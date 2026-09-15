@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3821,
+  "slug": "find-nth-smallest-integer-with-k-one-bits",
+  "title": "Find Nth Smallest Integer With K One Bits",
+  "difficulty": "Hard",
+  "tags": [
+    "Math",
+    "Bit Manipulation",
+    "Combinatorics"
+  ],
+  "topics": [
+    "Math",
+    "Bit Manipulation",
+    "Combinatorics"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "nthSmallest",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 64
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "nthSmallest",
+      "rust": "nth_smallest",
+      "typescript": "nthSmallest"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

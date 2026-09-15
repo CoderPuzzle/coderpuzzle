@@ -1,0 +1,28 @@
+/**
+ * @param {number[]} nums
+ * @param {number} threshold
+ * @return {number}
+ */
+var longestAlternatingSubarray = function (nums, threshold) {
+    let best = 0;
+    let i = 0;
+    while (i < nums.length) {
+        // A window can only open here if nums[i] is even and within the
+        // threshold; an odd or over-threshold element never starts a run.
+        if (nums[i] % 2 !== 0 || nums[i] > threshold) {
+            i++;
+            continue;
+        }
+        // Stretch the right edge while parities alternate and every element
+        // stays within the threshold.
+        let j = i + 1;
+        while (j < nums.length && nums[j] % 2 !== nums[j - 1] % 2 && nums[j] <= threshold) {
+            j++;
+        }
+        best = Math.max(best, j - i);
+        // Sub-windows inside [i, j) are all shorter than this one, so resume
+        // at the breaker: if it can start a window, it will.
+        i = j;
+    }
+    return best;
+};

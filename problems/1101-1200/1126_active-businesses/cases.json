@@ -1,0 +1,203 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'reviews',7),\n(3,'reviews',3),\n(1,'ads',11),\n(2,'ads',7),\n(3,'ads',6),\n(1,'page views',3),\n(2,'page views',12);"
+      ],
+      "expected": [
+        [
+          1
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'reviews',5);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'reviews',10),\n(2,'reviews',2),\n(1,'ads',9),\n(2,'ads',1);"
+      ],
+      "expected": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'reviews',10),\n(2,'reviews',10),\n(1,'ads',4),\n(2,'ads',6);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'reviews',9),\n(2,'reviews',1),\n(1,'ads',8),\n(2,'ads',2),\n(1,'page views',7),\n(2,'page views',3);"
+      ],
+      "expected": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'reviews',9),\n(2,'reviews',1),\n(1,'ads',5),\n(2,'ads',5);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'a',6),\n(2,'a',6),\n(3,'a',6),\n(1,'b',2),\n(2,'b',10),\n(3,'b',4),\n(1,'c',8),\n(2,'c',8),\n(3,'c',2);"
+      ],
+      "expected": [
+        [
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'x',8),\n(2,'x',7),\n(1,'y',9),\n(2,'y',6);"
+      ],
+      "expected": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'x',7),\n(2,'x',8),\n(1,'y',6),\n(2,'y',9);"
+      ],
+      "expected": [
+        [
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'reviews',11),\n(1,'ads',30),\n(1,'page views',34),\n(1,'clicks',40),\n(2,'reviews',18),\n(2,'ads',24),\n(2,'page views',41),\n(2,'clicks',47),\n(3,'reviews',12),\n(3,'ads',31),\n(3,'page views',35),\n(3,'clicks',41),\n(4,'reviews',19),\n(4,'ads',25),\n(4,'page views',42),\n(4,'clicks',48),\n(5,'reviews',13),\n(5,'ads',32),\n(5,'page views',36),\n(5,'clicks',42),\n(6,'reviews',20),\n(6,'ads',26),\n(6,'page views',30),\n(6,'clicks',49),\n(7,'reviews',14),\n(7,'ads',20),\n(7,'page views',37),\n(7,'clicks',43),\n(8,'reviews',21),\n(8,'ads',27),\n(8,'page views',31),\n(8,'clicks',50),\n(9,'reviews',15),\n(9,'ads',21),\n(9,'page views',38),\n(9,'clicks',44),\n(10,'reviews',22),\n(10,'ads',28),\n(10,'page views',32),\n(10,'clicks',51),\n(11,'reviews',16),\n(11,'ads',22),\n(11,'page views',39),\n(11,'clicks',45),\n(12,'reviews',10),\n(12,'ads',29),\n(12,'page views',33),\n(12,'clicks',52),\n(13,'reviews',17),\n(13,'ads',23),\n(13,'page views',40),\n(13,'clicks',46),\n(14,'reviews',11),\n(14,'ads',30),\n(14,'page views',34),\n(14,'clicks',40),\n(15,'reviews',18),\n(15,'ads',24),\n(15,'page views',41),\n(15,'clicks',47),\n(16,'reviews',12),\n(16,'ads',31),\n(16,'page views',35),\n(16,'clicks',41),\n(17,'reviews',19),\n(17,'ads',25),\n(17,'page views',42),\n(17,'clicks',48),\n(18,'reviews',13),\n(18,'ads',32),\n(18,'page views',36),\n(18,'clicks',42),\n(19,'reviews',20),\n(19,'ads',26),\n(19,'page views',30),\n(19,'clicks',49),\n(20,'reviews',14),\n(20,'ads',20),\n(20,'page views',37),\n(20,'clicks',43),\n(21,'reviews',21),\n(21,'ads',27),\n(21,'page views',31),\n(21,'clicks',50),\n(22,'reviews',15),\n(22,'ads',21),\n(22,'page views',38),\n(22,'clicks',44),\n(23,'reviews',22),\n(23,'ads',28),\n(23,'page views',32),\n(23,'clicks',51),\n(24,'reviews',16),\n(24,'ads',22),\n(24,'page views',39),\n(24,'clicks',45),\n(25,'reviews',10),\n(25,'ads',29),\n(25,'page views',33),\n(25,'clicks',52),\n(26,'reviews',17),\n(26,'ads',23),\n(26,'page views',40),\n(26,'clicks',46),\n(27,'reviews',11),\n(27,'ads',30),\n(27,'page views',34),\n(27,'clicks',40),\n(28,'reviews',18),\n(28,'ads',24),\n(28,'page views',41),\n(28,'clicks',47),\n(29,'reviews',12),\n(29,'ads',31),\n(29,'page views',35),\n(29,'clicks',41),\n(30,'reviews',19),\n(30,'ads',25),\n(30,'page views',42),\n(30,'clicks',48),\n(31,'reviews',13),\n(31,'ads',32),\n(31,'page views',36),\n(31,'clicks',42),\n(32,'reviews',20),\n(32,'ads',26),\n(32,'page views',30),\n(32,'clicks',49),\n(33,'reviews',14),\n(33,'ads',20),\n(33,'page views',37),\n(33,'clicks',43),\n(34,'reviews',21),\n(34,'ads',27),\n(34,'page views',31),\n(34,'clicks',50),\n(35,'reviews',15),\n(35,'ads',21),\n(35,'page views',38),\n(35,'clicks',44),\n(36,'reviews',22),\n(36,'ads',28),\n(36,'page views',32),\n(36,'clicks',51),\n(37,'reviews',16),\n(37,'ads',22),\n(37,'page views',39),\n(37,'clicks',45),\n(38,'reviews',10),\n(38,'ads',29),\n(38,'page views',33),\n(38,'clicks',52),\n(39,'reviews',17),\n(39,'ads',23),\n(39,'page views',40),\n(39,'clicks',46),\n(40,'reviews',11),\n(40,'ads',30),\n(40,'page views',34),\n(40,'clicks',40),\n(41,'reviews',18),\n(41,'ads',24),\n(41,'page views',41),\n(41,'clicks',47),\n(42,'reviews',12),\n(42,'ads',31),\n(42,'page views',35),\n(42,'clicks',41),\n(43,'reviews',19),\n(43,'ads',25),\n(43,'page views',42),\n(43,'clicks',48),\n(44,'reviews',13),\n(44,'ads',32),\n(44,'page views',36),\n(44,'clicks',42),\n(45,'reviews',20),\n(45,'ads',26),\n(45,'page views',30),\n(45,'clicks',49),\n(46,'reviews',14),\n(46,'ads',20),\n(46,'page views',37),\n(46,'clicks',43),\n(47,'reviews',21),\n(47,'ads',27),\n(47,'page views',31),\n(47,'clicks',50),\n(48,'reviews',15),\n(48,'ads',21),\n(48,'page views',38),\n(48,'clicks',44),\n(49,'reviews',22),\n(49,'ads',28),\n(49,'page views',32),\n(49,'clicks',51),\n(50,'reviews',16),\n(50,'ads',22),\n(50,'page views',39),\n(50,'clicks',45);"
+      ],
+      "expected": [
+        [
+          2
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          8
+        ],
+        [
+          10
+        ],
+        [
+          12
+        ],
+        [
+          13
+        ],
+        [
+          15
+        ],
+        [
+          17
+        ],
+        [
+          18
+        ],
+        [
+          19
+        ],
+        [
+          21
+        ],
+        [
+          23
+        ],
+        [
+          25
+        ],
+        [
+          26
+        ],
+        [
+          28
+        ],
+        [
+          30
+        ],
+        [
+          31
+        ],
+        [
+          32
+        ],
+        [
+          34
+        ],
+        [
+          36
+        ],
+        [
+          38
+        ],
+        [
+          39
+        ],
+        [
+          41
+        ],
+        [
+          43
+        ],
+        [
+          44
+        ],
+        [
+          45
+        ],
+        [
+          47
+        ],
+        [
+          49
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'solo',1),\n(1,'flat',5),\n(2,'solo',2),\n(2,'flat',5),\n(3,'solo',3),\n(3,'flat',5),\n(4,'solo',4),\n(4,'flat',5),\n(5,'solo',5),\n(5,'flat',5),\n(6,'solo',6),\n(6,'flat',5),\n(7,'solo',7),\n(7,'flat',5),\n(8,'solo',8),\n(8,'flat',5),\n(9,'solo',9),\n(9,'flat',5),\n(10,'solo',10),\n(10,'flat',5),\n(11,'solo',11),\n(11,'flat',5),\n(12,'solo',12),\n(12,'flat',5),\n(13,'solo',13),\n(13,'flat',5),\n(14,'solo',14),\n(14,'flat',5),\n(15,'solo',15),\n(15,'flat',5),\n(16,'solo',16),\n(16,'flat',5),\n(17,'solo',17),\n(17,'flat',5),\n(18,'solo',18),\n(18,'flat',5),\n(19,'solo',19),\n(19,'flat',5),\n(20,'solo',20),\n(20,'flat',5);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Events VALUES\n(1,'e1',100),\n(2,'e1',10),\n(3,'e1',10),\n(4,'e1',10),\n(5,'e1',10),\n(1,'e2',100),\n(2,'e2',10),\n(3,'e2',10),\n(4,'e2',10),\n(5,'e2',10),\n(1,'e3',100),\n(2,'e3',10),\n(3,'e3',10),\n(4,'e3',10),\n(5,'e3',10),\n(1,'e4',100),\n(2,'e4',10),\n(3,'e4',10),\n(4,'e4',10),\n(5,'e4',10),\n(1,'e5',100),\n(2,'e5',10),\n(3,'e5',10),\n(4,'e5',10),\n(5,'e5',10),\n(1,'e6',100),\n(2,'e6',10),\n(3,'e6',10),\n(4,'e6',10),\n(5,'e6',10),\n(1,'e7',100),\n(2,'e7',10),\n(3,'e7',10),\n(4,'e7',10),\n(5,'e7',10),\n(1,'e8',100),\n(2,'e8',10),\n(3,'e8',10),\n(4,'e8',10),\n(5,'e8',10),\n(1,'e9',100),\n(2,'e9',10),\n(3,'e9',10),\n(4,'e9',10),\n(5,'e9',10),\n(1,'e10',100),\n(2,'e10',10),\n(3,'e10',10),\n(4,'e10',10),\n(5,'e10',10),\n(1,'e11',100),\n(2,'e11',10),\n(3,'e11',10),\n(4,'e11',10),\n(5,'e11',10),\n(1,'e12',100),\n(2,'e12',10),\n(3,'e12',10),\n(4,'e12',10),\n(5,'e12',10);"
+      ],
+      "expected": [
+        [
+          1
+        ]
+      ]
+    }
+  ]
+}

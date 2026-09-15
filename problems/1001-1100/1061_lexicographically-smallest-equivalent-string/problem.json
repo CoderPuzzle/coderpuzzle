@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1061,
+  "slug": "lexicographically-smallest-equivalent-string",
+  "title": "Lexicographically Smallest Equivalent String",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Union Find",
+    "Graph"
+  ],
+  "topics": [
+    "String",
+    "Union-Find"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "smallestEquivalentString",
+    "parameters": [
+      {
+        "name": "s1",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "s2",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "baseStr",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "smallestEquivalentString",
+      "rust": "smallest_equivalent_string",
+      "typescript": "smallestEquivalentString"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

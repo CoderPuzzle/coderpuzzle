@@ -1,0 +1,342 @@
+{
+  "public": [
+    {
+      "input": [
+        [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ]
+      ],
+      "expected": [
+        [
+          "eat",
+          "tea",
+          "ate"
+        ],
+        [
+          "tan",
+          "nat"
+        ],
+        [
+          "bat"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          ""
+        ]
+      ],
+      "expected": [
+        [
+          ""
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "a"
+        ]
+      ],
+      "expected": [
+        [
+          "a"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        [
+          "a",
+          "a"
+        ]
+      ],
+      "expected": [
+        [
+          "a",
+          "a"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expected": [
+        [
+          "a"
+        ],
+        [
+          "b"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "ab",
+          "ba"
+        ]
+      ],
+      "expected": [
+        [
+          "ab",
+          "ba"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "abc",
+          "bca",
+          "cab",
+          "xyz",
+          "zyx"
+        ]
+      ],
+      "expected": [
+        [
+          "abc",
+          "bca",
+          "cab"
+        ],
+        [
+          "xyz",
+          "zyx"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "listen",
+          "silent",
+          "enlist",
+          "google",
+          "gogole",
+          "banana"
+        ]
+      ],
+      "expected": [
+        [
+          "listen",
+          "silent",
+          "enlist"
+        ],
+        [
+          "google",
+          "gogole"
+        ],
+        [
+          "banana"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "aa",
+          "aa",
+          "aaa",
+          "aaa"
+        ]
+      ],
+      "expected": [
+        [
+          "aa",
+          "aa"
+        ],
+        [
+          "aaa",
+          "aaa"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "x"
+        ]
+      ],
+      "expected": [
+        [
+          "x"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "",
+          "",
+          ""
+        ]
+      ],
+      "expected": [
+        [
+          "",
+          "",
+          ""
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "abc",
+          "def",
+          "ghi"
+        ]
+      ],
+      "expected": [
+        [
+          "abc"
+        ],
+        [
+          "def"
+        ],
+        [
+          "ghi"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "lls",
+          "sll",
+          "s"
+        ]
+      ],
+      "expected": [
+        [
+          "lls",
+          "sll"
+        ],
+        [
+          "s"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "ad",
+          "bc",
+          "abcd",
+          "cbad",
+          "dacb"
+        ]
+      ],
+      "expected": [
+        [
+          "ad"
+        ],
+        [
+          "bc"
+        ],
+        [
+          "abcd",
+          "cbad",
+          "dacb"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "aaa",
+          "bbb",
+          "ccc",
+          "aaa",
+          "bbb"
+        ]
+      ],
+      "expected": [
+        [
+          "aaa",
+          "aaa"
+        ],
+        [
+          "bbb",
+          "bbb"
+        ],
+        [
+          "ccc"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "pot",
+          "top",
+          "opt",
+          "spot",
+          "tops",
+          "pots"
+        ]
+      ],
+      "expected": [
+        [
+          "pot",
+          "top",
+          "opt"
+        ],
+        [
+          "spot",
+          "tops",
+          "pots"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
+        ]
+      ],
+      "expected": [
+        [
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ],
+        [
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "abababababababababababababababababababababababababababababababababababababababababababababababababab",
+          "babababababababababababababababababababababababababababababababababababababababababababababababababa",
+          "abababababababababababababababababababababababababababababababababababababababababababababababababc"
+        ]
+      ],
+      "expected": [
+        [
+          "abababababababababababababababababababababababababababababababababababababababababababababababababab",
+          "babababababababababababababababababababababababababababababababababababababababababababababababababa"
+        ],
+        [
+          "abababababababababababababababababababababababababababababababababababababababababababababababababc"
+        ]
+      ]
+    }
+  ]
+}

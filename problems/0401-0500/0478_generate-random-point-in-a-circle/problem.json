@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 478,
+  "slug": "generate-random-point-in-a-circle",
+  "title": "Generate Random Point in a Circle",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Geometry",
+    "Rejection Sampling",
+    "Randomized"
+  ],
+  "topics": [
+    "Math",
+    "Geometry",
+    "Rejection Sampling",
+    "Randomized"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Solution",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "radius",
+          "codec": "json",
+          "value_type": {
+            "kind": "number"
+          }
+        },
+        {
+          "name": "x_center",
+          "codec": "json",
+          "value_type": {
+            "kind": "number"
+          }
+        },
+        {
+          "name": "y_center",
+          "codec": "json",
+          "value_type": {
+            "kind": "number"
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "randPoint",
+        "parameters": [],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "number"
+          }
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

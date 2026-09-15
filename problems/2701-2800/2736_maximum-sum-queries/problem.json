@@ -1,0 +1,89 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2736,
+  "slug": "maximum-sum-queries",
+  "title": "Maximum Sum Queries",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Stack",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Sorting",
+    "Monotonic Stack"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Stack",
+    "Binary Indexed Tree",
+    "Segment Tree",
+    "Sorting",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maximumSumQueries",
+    "parameters": [
+      {
+        "name": "nums1",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "nums2",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 64
+      }
+    },
+    "entrypoints": {
+      "go": "maximumSumQueries",
+      "rust": "maximum_sum_queries",
+      "typescript": "maximumSumQueries"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

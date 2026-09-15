@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1561,
+  "slug": "maximum-number-of-coins-you-can-get",
+  "title": "Maximum Number of Coins You Can Get",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Greedy",
+    "Sorting",
+    "Game Theory"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Greedy",
+    "Sorting",
+    "Game Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxCoins",
+    "parameters": [
+      {
+        "name": "piles",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxCoins",
+      "rust": "max_coins",
+      "typescript": "maxCoins"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

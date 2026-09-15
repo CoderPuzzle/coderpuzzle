@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 288,
+  "slug": "unique-word-abbreviation",
+  "title": "Unique Word Abbreviation",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "ValidWordAbbr",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "dictionary",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "string"
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "isUnique",
+        "parameters": [
+          {
+            "name": "word",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

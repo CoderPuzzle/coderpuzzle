@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 792,
+  "slug": "number-of-matching-subsequences",
+  "title": "Number of Matching Subsequences",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Hash Table",
+    "Trie",
+    "Binary Search"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Binary Search",
+    "Dynamic Programming",
+    "Trie",
+    "Sorting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numMatchingSubseq",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "words",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numMatchingSubseq",
+      "rust": "num_matching_subseq",
+      "typescript": "numMatchingSubseq"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

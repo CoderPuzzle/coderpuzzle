@@ -1,0 +1,108 @@
+{
+  "public": [
+    {
+      "input": [
+        "Hello, my name is John"
+      ],
+      "expected": 5
+    },
+    {
+      "input": [
+        "Hello"
+      ],
+      "expected": 1
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        ""
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        " "
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "      "
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "a"
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        "  a  "
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        "one two"
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        "Start    end"
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        "   Hello, my name is John   "
+      ],
+      "expected": 5
+    },
+    {
+      "input": [
+        "Hello,  my   name    is     John"
+      ],
+      "expected": 5
+    },
+    {
+      "input": [
+        "!@#$%^&*() _+-=',.: !@#"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        " a b c d "
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        "x1 = 3+4, y2 = 5-2"
+      ],
+      "expected": 6
+    },
+    {
+      "input": [
+        "'quoted' text, isn't it"
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        "  multiple   inner    runs     with      edges   "
+      ],
+      "expected": 5
+    },
+    {
+      "input": [
+        "          uRtV(eeR        f*GLeJ,k           1K89t           YY=SyRBt7&h3mc-0yr#    gr$_av-=zV   YpmDr     EQqGzz-lB   =7rTmy8&#Nc!D_zdrx=     oGSu'p*ZgC^$             OEwQK!X)6VkBb3)FixIW !A     (afi6      NuX'BieV!        W_t1C=y5   !PM48p  4P.SzXgI,S%b  tG7'UnlI_-!+_u%)htcYO   #Qg0q  k1f@E#I     "
+      ],
+      "expected": 19
+    }
+  ]
+}

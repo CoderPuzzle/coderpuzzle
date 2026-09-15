@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 892,
+  "slug": "surface-area-of-3d-shapes",
+  "title": "Surface Area of 3D Shapes",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Matrix"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Matrix"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "surfaceArea",
+    "parameters": [
+      {
+        "name": "grid",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "surfaceArea",
+      "rust": "surface_area",
+      "typescript": "surfaceArea"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

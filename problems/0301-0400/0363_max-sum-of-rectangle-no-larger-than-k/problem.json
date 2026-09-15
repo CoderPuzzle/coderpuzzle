@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "reference_solution": "sorted_prefix_search",
+  "id": 363,
+  "slug": "max-sum-of-rectangle-no-larger-than-k",
+  "title": "Max Sum of Rectangle No Larger Than K",
+  "difficulty": "Hard",
+  "tags": [
+    "Prefix Sum",
+    "Binary Search",
+    "Balanced BST"
+  ],
+  "topics": [
+    "Array",
+    "Binary Search",
+    "Matrix",
+    "Prefix Sum",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxSumSubmatrix",
+    "parameters": [
+      {
+        "name": "matrix",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxSumSubmatrix",
+      "rust": "max_sum_submatrix",
+      "typescript": "maxSumSubmatrix"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

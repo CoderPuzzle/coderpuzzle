@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 640,
+  "slug": "solve-the-equation",
+  "title": "Solve the Equation",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "String",
+    "Simulation",
+    "Linear Algebra"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Simulation",
+    "Linear Algebra"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "solveEquation",
+    "parameters": [
+      {
+        "name": "equation",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "solveEquation",
+      "rust": "solve_equation",
+      "typescript": "solveEquation"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,6 @@
+class Solution {
+
+    public String convertToBase7(int num) {
+        throw new UnsupportedOperationException("TODO");
+    }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1461,
+  "slug": "check-if-a-string-contains-all-binary-codes-of-size-k",
+  "title": "Check If a String Contains All Binary Codes of Size K",
+  "difficulty": "Medium",
+  "tags": [
+    "String",
+    "Hash Table",
+    "Rolling Hash",
+    "Sliding Window"
+  ],
+  "topics": [
+    "Hash Table",
+    "String",
+    "Bit Manipulation",
+    "Rolling Hash",
+    "Hash Function",
+    "Directed Acyclic Graph"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "hasAllCodes",
+    "parameters": [
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "hasAllCodes",
+      "rust": "has_all_codes",
+      "typescript": "hasAllCodes"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

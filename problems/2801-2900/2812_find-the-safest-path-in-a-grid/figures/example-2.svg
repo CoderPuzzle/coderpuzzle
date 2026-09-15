@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 242" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <!-- grid=[[0,0,1],[0,0,0],[0,0,0]]; thief at (0,2); path (0,0)(1,0)(2,0)(2,1)(2,2) has min thief-distance 2 (verified by multi-source BFS); max safeness = 2 -->
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <rect x="222" y="40" width="52" height="52"/>
+    <rect x="222" y="92" width="52" height="52"/>
+    <rect x="274" y="92" width="52" height="52"/>
+  </g>
+  <rect x="274" y="40" width="52" height="52" stroke="#b57f30" stroke-width="1.6" fill="#f7ecd9"/>
+  <g stroke="#4169E1" stroke-width="1.6" fill="#e6ecfb">
+    <rect x="170" y="40" width="52" height="52"/>
+    <rect x="170" y="92" width="52" height="52"/>
+    <rect x="170" y="144" width="52" height="52"/>
+    <rect x="222" y="144" width="52" height="52"/>
+    <rect x="274" y="144" width="52" height="52"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="196" y="71" fill="#5c6b76">0</text>
+    <text x="248" y="71" fill="#5c6b76">0</text>
+    <text x="300" y="71" font-weight="700" fill="#7a5a1e">1</text>
+    <text x="196" y="123" fill="#5c6b76">0</text>
+    <text x="248" y="123" fill="#5c6b76">0</text>
+    <text x="300" y="123" fill="#5c6b76">0</text>
+    <text x="196" y="175" fill="#5c6b76">0</text>
+    <text x="248" y="175" fill="#5c6b76">0</text>
+    <text x="300" y="175" fill="#5c6b76">0</text>
+  </g>
+  <line x1="296" y1="54" x2="206" y2="54" stroke="#b57f30" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text x="251" y="32" text-anchor="middle" fill="#7a5a1e" font-size="12" font-weight="600">|0-0| + |0-2| = 2</text>
+  <text x="162" y="66" text-anchor="end" fill="#4169E1" font-size="12" font-weight="600">start</text>
+  <text x="334" y="178" text-anchor="start" fill="#4169E1" font-size="12" font-weight="600">end</text>
+  <text x="320" y="228" text-anchor="middle" fill="#1a2026" font-size="13.5">the shaded path keeps every cell at distance ≥ 2 from the thief — safeness <tspan fill="#4169E1" font-weight="700">2</tspan></text>
+</svg>

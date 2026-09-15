@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2034,
+  "slug": "stock-price-fluctuation",
+  "title": "Stock Price Fluctuation",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Heap",
+    "Balanced BST"
+  ],
+  "topics": [
+    "Hash Table",
+    "Design",
+    "Heap (Priority Queue)",
+    "Data Stream",
+    "Ordered Set"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "StockPrice",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "update",
+        "parameters": [
+          {
+            "name": "timestamp",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "price",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "current",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "maximum",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "minimum",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

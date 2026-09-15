@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 946,
+  "slug": "validate-stack-sequences",
+  "title": "Validate Stack Sequences",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Stack",
+    "Simulation"
+  ],
+  "topics": [
+    "Array",
+    "Stack",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "validateStackSequences",
+    "parameters": [
+      {
+        "name": "pushed",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "popped",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "validateStackSequences",
+      "rust": "validate_stack_sequences",
+      "typescript": "validateStackSequences"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

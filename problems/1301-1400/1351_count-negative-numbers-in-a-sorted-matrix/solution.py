@@ -1,0 +1,15 @@
+from typing import List
+
+
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        # Negatives are a per-row suffix and the boundary only moves left
+        # down the columns, so one monotonically sliding pointer counts all.
+        n = len(grid[0])
+        count = 0
+        col = n - 1
+        for row in grid:
+            while col >= 0 and row[col] < 0:
+                col -= 1
+            count += n - 1 - col
+        return count

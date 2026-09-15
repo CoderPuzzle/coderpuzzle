@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3907,
+  "slug": "count-smaller-elements-with-opposite-parity",
+  "title": "Count Smaller Elements With Opposite Parity",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Binary Indexed Tree"
+  ],
+  "topics": [
+    "Binary Indexed Tree",
+    "Divide and Conquer",
+    "Binary Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "countSmallerOppositeParity",
+    "parameters": [
+      {
+        "name": "nums",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "countSmallerOppositeParity",
+      "rust": "count_smaller_opposite_parity",
+      "typescript": "countSmallerOppositeParity"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

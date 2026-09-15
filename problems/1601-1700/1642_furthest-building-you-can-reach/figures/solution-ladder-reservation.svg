@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <!-- bars: heights [4,2,7,6,9,14,12]; x = 66 + i*86, w 56, baseline 268, scale 12px/unit -->
+  <line x1="40" y1="268" x2="660" y2="268" stroke="#42525e" stroke-width="1.6"/>
+  <g fill="#dbe4f6" stroke="#42525e" stroke-width="1.5">
+    <rect x="66" y="220" width="56" height="48"/>
+    <rect x="152" y="244" width="56" height="24"/>
+    <rect x="238" y="184" width="56" height="84"/>
+    <rect x="324" y="196" width="56" height="72"/>
+    <rect x="410" y="160" width="56" height="108"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5" stroke-dasharray="5 4">
+    <rect x="496" y="100" width="56" height="168"/>
+    <rect x="582" y="124" width="56" height="144"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="94" y="212">4</text><text x="180" y="236">2</text><text x="266" y="176">7</text>
+    <text x="352" y="188">6</text><text x="438" y="152">9</text><text x="524" y="92">14</text><text x="610" y="116">12</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="94" y="288">0</text><text x="180" y="288">1</text><text x="266" y="288">2</text>
+    <text x="352" y="288">3</text><text x="438" y="288">4</text><text x="524" y="288">5</text><text x="610" y="288">6</text>
+  </g>
+  <!-- climb annotations -->
+  <path d="M 186 230 Q 212 208 238 220" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="212" y="200" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="12.5">+5 · ladder</text>
+  <path d="M 358 202 Q 384 186 410 194" fill="none" stroke="#5c6b76" stroke-width="2"/>
+  <text x="384" y="176" text-anchor="middle" fill="#5c6b76" font-weight="600" font-size="12.5">+3 · bricks</text>
+  <path d="M 444 176 Q 470 156 496 164" fill="none" stroke="#42525e" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="470" y="136" text-anchor="middle" fill="#42525e" font-weight="600" font-size="12.5">+5 · only 2 bricks left</text>
+  <!-- reachable marker -->
+  <line x1="40" y1="310" x2="466" y2="310" stroke="#4169E1" stroke-width="2.5"/>
+  <text x="40" y="326" fill="#4169E1" font-size="12.5" font-weight="600">reachable with 5 bricks, 1 ladder</text>
+  <text x="480" y="326" fill="#5c6b76" font-size="12.5">stops at index 4</text>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="36">The min-heap keeps the 1 largest climb on the ladder; the smaller +3 is evicted</text>
+    <text x="40" y="54">and paid in bricks (5 − 3 = 2 left). The next +5 would evict another climb,</text>
+    <text x="40" y="72">driving bricks negative — so building 4 is the furthest reachable index.</text>
+  </g>
+</svg>

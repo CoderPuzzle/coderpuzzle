@@ -1,0 +1,8 @@
+class MagicDictionary {
+
+    public MagicDictionary() {}
+
+    public void buildDict(String[] dictionary) {}
+
+    public boolean search(String searchWord) {}
+}

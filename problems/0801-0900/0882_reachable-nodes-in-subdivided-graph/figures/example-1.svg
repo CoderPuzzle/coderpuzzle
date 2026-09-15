@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 224" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <!-- edges = [[0,1,10],[0,2,1],[1,2,2]], maxMoves = 6 -->
+  <text x="100" y="22" text-anchor="middle" fill="#5c6b76" font-size="12.5">original graph</text>
+  <g stroke="#1a2026" stroke-width="1.6">
+    <line x1="66" y1="70" x2="134" y2="70"/>
+    <line x1="57.8" y1="84" x2="92.2" y2="146"/>
+    <line x1="142.2" y1="84" x2="107.8" y2="146"/>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="100" y="62" text-anchor="middle">10</text>
+    <text x="62" y="120" text-anchor="end">1</text>
+    <text x="138" y="120">2</text>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="50" cy="70" r="16"/>
+    <circle cx="150" cy="70" r="16"/>
+    <circle cx="100" cy="160" r="16"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="50" y="75">0</text>
+    <text x="150" y="75">1</text>
+    <text x="100" y="165">2</text>
+  </g>
+  <!-- final graph: chains of 10, 1 and 2 inserted nodes; blue = reachable within 6 moves -->
+  <text x="420" y="22" text-anchor="middle" fill="#5c6b76" font-size="12.5">after subdividing every edge</text>
+  <g stroke="#b9c4cd" stroke-width="1.2">
+    <line x1="296" y1="70" x2="544" y2="70"/>
+    <line x1="293.5" y1="78.7" x2="406.5" y2="151.3"/>
+    <line x1="546.5" y1="78.7" x2="433.5" y2="151.3"/>
+  </g>
+  <!-- chain 0-1: x1..x6 reachable from 0, x10 reachable from 1, x7..x9 out of range -->
+  <g fill="#4169E1">
+    <circle cx="318.5" cy="70" r="5"/>
+    <circle cx="341.1" cy="70" r="5"/>
+    <circle cx="363.6" cy="70" r="5"/>
+    <circle cx="386.2" cy="70" r="5"/>
+    <circle cx="408.7" cy="70" r="5"/>
+    <circle cx="431.3" cy="70" r="5"/>
+    <circle cx="521.5" cy="70" r="5"/>
+  </g>
+  <g fill="#ffffff" stroke="#b9c4cd" stroke-width="1.2">
+    <circle cx="453.8" cy="70" r="5"/>
+    <circle cx="476.4" cy="70" r="5"/>
+    <circle cx="498.9" cy="70" r="5"/>
+  </g>
+  <circle cx="350" cy="115" r="5" fill="#4169E1"/>
+  <circle cx="513.3" cy="100" r="5" fill="#4169E1"/>
+  <circle cx="466.7" cy="130" r="5" fill="#4169E1"/>
+  <g fill="#e5ebfa" stroke="#4169E1" stroke-width="2">
+    <circle cx="280" cy="70" r="16"/>
+    <circle cx="560" cy="70" r="16"/>
+    <circle cx="420" cy="160" r="16"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="280" y="75">0</text>
+    <text x="560" y="75">1</text>
+    <text x="420" y="165">2</text>
+  </g>
+  <text x="310" y="212" text-anchor="middle" fill="#5c6b76" font-size="12.5">reachable within 6 moves: the 3 original nodes plus 10 subdivided nodes = 13</text>
+</svg>

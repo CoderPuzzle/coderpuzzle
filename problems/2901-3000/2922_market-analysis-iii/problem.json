@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2922,
+  "slug": "market-analysis-iii",
+  "title": "Market Analysis III",
+  "difficulty": "Medium",
+  "tags": [
+    "Database"
+  ],
+  "topics": [
+    "Database"
+  ],
+  "type": "Database",
+  "invocation": {
+    "type": "sql",
+    "parameters": [
+      {
+        "name": "dataset",
+        "codec": "sql_setup"
+      }
+    ],
+    "return_codec": "rows",
+    "comparison": "exact",
+    "sql": {
+      "schema": "CREATE TABLE Users (seller_id INTEGER PRIMARY KEY, join_date DATE, favorite_brand VARCHAR); CREATE TABLE Items (item_id INTEGER PRIMARY KEY, item_brand VARCHAR); CREATE TABLE Orders (order_id INTEGER PRIMARY KEY, order_date DATE, item_id INTEGER, seller_id INTEGER);"
+    }
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

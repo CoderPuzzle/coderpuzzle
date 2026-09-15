@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 262" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <path id="drop" d="M 0 -6 C 3 -1.5 4.2 0.6 4.2 2.6 A 4.2 4.2 0 1 1 -4.2 2.6 C -4.2 0.6 -3 -1.5 0 -6 Z"/>
+  </defs>
+  <!-- pipes (chosen ones highlighted) -->
+  <line x1="260" y1="56" x2="110" y2="190" stroke="#4169E1" stroke-width="3"/>
+  <line x1="110" y1="190" x2="400" y2="190" stroke="#4169E1" stroke-width="3"/>
+  <!-- pipe costs -->
+  <g font-size="13" fill="#1a2026">
+    <text x="158" y="116">1</text>
+    <text x="249" y="181">1</text>
+  </g>
+  <!-- houses -->
+  <g stroke-width="2">
+    <circle cx="260" cy="56" r="22" fill="#ffffff" stroke="#4169E1" stroke-width="2.5"/>
+    <circle cx="110" cy="190" r="22" fill="#ffffff" stroke="#1a2026"/>
+    <circle cx="400" cy="190" r="22" fill="#ffffff" stroke="#1a2026"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="260" y="61">1</text>
+    <text x="110" y="195">2</text>
+    <text x="400" y="195">3</text>
+  </g>
+  <!-- well costs -->
+  <g>
+    <use href="#drop" x="0" y="0" transform="translate(238,100)" fill="#4169E1"/>
+    <text x="250" y="105" font-size="12.5" fill="#4169E1" font-weight="700">1</text>
+    <use href="#drop" transform="translate(88,234)" fill="#9aa5ae"/>
+    <text x="100" y="239" font-size="12.5" fill="#5c6b76">2</text>
+    <use href="#drop" transform="translate(378,234)" fill="#9aa5ae"/>
+    <text x="390" y="239" font-size="12.5" fill="#5c6b76">2</text>
+  </g>
+  <text x="260" y="250" text-anchor="middle" fill="#1a2026" font-size="13.5">well at house 1 (1) + pipes 1–2, 2–3 (1 + 1) = 3</text>
+</svg>

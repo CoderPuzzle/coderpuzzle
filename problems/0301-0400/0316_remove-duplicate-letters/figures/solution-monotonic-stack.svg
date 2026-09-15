@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 250" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="250" fill="#ffffff"/>
+  <!-- one column per character of "cbacdcbc"; stack shown bottom-up -->
+  <g font-size="15" font-weight="600" text-anchor="middle">
+    <text x="62"  y="42" fill="#1a2026">c</text>
+    <text x="138" y="42" fill="#4169E1">b</text>
+    <text x="214" y="42" fill="#4169E1">a</text>
+    <text x="290" y="42" fill="#1a2026">c</text>
+    <text x="366" y="42" fill="#1a2026">d</text>
+    <text x="442" y="42" fill="#5c6b76">c</text>
+    <text x="518" y="42" fill="#1a2026">b</text>
+    <text x="594" y="42" fill="#5c6b76">c</text>
+  </g>
+  <g font-size="11" fill="#5c6b76" text-anchor="middle">
+    <text x="62" y="60">push</text>
+    <text x="138" y="60">pop c</text>
+    <text x="214" y="60">pop b</text>
+    <text x="290" y="60">push</text>
+    <text x="366" y="60">push</text>
+    <text x="442" y="60">skip</text>
+    <text x="518" y="60">push</text>
+    <text x="594" y="60">skip</text>
+  </g>
+  <!-- stack cells: 4 slots, bottom slot at y 176..200, top at 92..116 -->
+  <g font-size="14" text-anchor="middle">
+    <!-- col 1: c -->
+    <rect x="42" y="176" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="62" y="193" fill="#1a2026">c</text>
+    <!-- col 2: b (c popped) -->
+    <rect x="118" y="176" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="138" y="193" fill="#1a2026">b</text>
+    <rect x="118" y="152" width="40" height="24" rx="4" fill="#f7e9d7" stroke="#b57f30" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <text x="138" y="169" fill="#b57f30">c</text>
+    <!-- col 3: a (b popped) -->
+    <rect x="194" y="176" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="214" y="193" fill="#1a2026">a</text>
+    <rect x="194" y="152" width="40" height="24" rx="4" fill="#f7e9d7" stroke="#b57f30" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <text x="214" y="169" fill="#b57f30">b</text>
+    <!-- col 4: a c -->
+    <rect x="270" y="176" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="290" y="193" fill="#1a2026">a</text>
+    <rect x="270" y="152" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="290" y="169" fill="#1a2026">c</text>
+    <!-- col 5: a c d -->
+    <rect x="346" y="176" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="366" y="193" fill="#1a2026">a</text>
+    <rect x="346" y="152" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="366" y="169" fill="#1a2026">c</text>
+    <rect x="346" y="128" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="366" y="145" fill="#1a2026">d</text>
+    <!-- col 6: a c d (c skipped) -->
+    <rect x="422" y="176" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="442" y="193" fill="#1a2026">a</text>
+    <rect x="422" y="152" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="442" y="169" fill="#1a2026">c</text>
+    <rect x="422" y="128" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="442" y="145" fill="#1a2026">d</text>
+    <!-- col 7: a c d b -->
+    <rect x="498" y="176" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="518" y="193" fill="#1a2026">a</text>
+    <rect x="498" y="152" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="518" y="169" fill="#1a2026">c</text>
+    <rect x="498" y="128" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="518" y="145" fill="#1a2026">d</text>
+    <rect x="498" y="104" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="518" y="121" fill="#1a2026">b</text>
+    <!-- col 8: a c d b (c skipped) -->
+    <rect x="574" y="176" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="594" y="193" fill="#1a2026">a</text>
+    <rect x="574" y="152" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="594" y="169" fill="#1a2026">c</text>
+    <rect x="574" y="128" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="594" y="145" fill="#1a2026">d</text>
+    <rect x="574" y="104" width="40" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="594" y="121" fill="#1a2026">b</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="42" y="230">dashed cells = popped: top &gt; incoming char and it still occurs later,</text>
+    <text x="42" y="246">so it can safely come back. Final stack reads "acdb".</text>
+  </g>
+</svg>

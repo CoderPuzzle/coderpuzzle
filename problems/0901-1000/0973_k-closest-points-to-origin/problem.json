@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 973,
+  "slug": "k-closest-points-to-origin",
+  "title": "K Closest Points to Origin",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Divide and Conquer",
+    "Geometry",
+    "Sorting",
+    "Heap",
+    "Quickselect"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Divide and Conquer",
+    "Geometry",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Quickselect",
+    "K-D Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "kClosest",
+    "parameters": [
+      {
+        "name": "points",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    },
+    "entrypoints": {
+      "go": "kClosest",
+      "rust": "k_closest",
+      "typescript": "kClosest"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,8 @@
+class ExamRoom {
+
+    public ExamRoom(int n) {}
+
+    public int seat() {}
+
+    public void leave(int p) {}
+}

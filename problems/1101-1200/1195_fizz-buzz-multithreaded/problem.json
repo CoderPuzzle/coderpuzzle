@@ -1,0 +1,89 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1195,
+  "slug": "fizz-buzz-multithreaded",
+  "title": "Fizz Buzz Multithreaded",
+  "difficulty": "Medium",
+  "tags": [
+    "Concurrency"
+  ],
+  "topics": [
+    "Concurrency"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "concurrent",
+    "class_name": "FizzBuzz",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "n",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "fizz",
+        "parameters": [
+          {
+            "name": "printFizz",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback"
+            }
+          }
+        ]
+      },
+      {
+        "name": "buzz",
+        "parameters": [
+          {
+            "name": "printBuzz",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback"
+            }
+          }
+        ]
+      },
+      {
+        "name": "fizzbuzz",
+        "parameters": [
+          {
+            "name": "printFizzBuzz",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback"
+            }
+          }
+        ]
+      },
+      {
+        "name": "number",
+        "parameters": [
+          {
+            "name": "printNumber",
+            "codec": "json",
+            "value_type": {
+              "kind": "callback",
+              "value": true
+            }
+          }
+        ]
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 4000,
+    "memory_mb": 256,
+    "output_kb": 64,
+    "threads": 4
+  }
+}

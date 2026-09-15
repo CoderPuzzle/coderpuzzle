@@ -1,0 +1,153 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(1,1,0),\n(1,1,1),\n(1,1,2),\n(1,2,3),\n(1,2,4),\n(2,1,5),\n(2,1,6);"
+      ],
+      "expected": [
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(1,10,0),\n(1,10,1),\n(1,10,2);"
+      ],
+      "expected": [
+        [
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(2,20,0),\n(2,20,1);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(3,30,0),\n(3,30,1),\n(3,30,2),\n(3,30,3),\n(3,30,4),\n(3,30,5);"
+      ],
+      "expected": [
+        [
+          3,
+          30
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(4,40,0);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(1,1,0),\n(1,1,1),\n(1,1,2),\n(2,2,3),\n(2,2,4),\n(2,2,5),\n(2,2,6);"
+      ],
+      "expected": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(1,1,0),\n(1,1,1),\n(2,2,2),\n(2,2,3),\n(3,3,4);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(5,6,0),\n(5,6,1),\n(5,6,2),\n(5,7,3),\n(5,7,4),\n(5,8,5),\n(5,8,6),\n(5,8,7),\n(5,8,8);"
+      ],
+      "expected": [
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          8
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(20,9,0),\n(20,9,1),\n(20,9,2),\n(21,9,3),\n(21,9,4),\n(22,9,5),\n(22,9,6),\n(22,9,7),\n(22,9,8),\n(22,9,9);"
+      ],
+      "expected": [
+        [
+          20,
+          9
+        ],
+        [
+          22,
+          9
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(6,60,100),\n(6,60,205),\n(6,60,9999);"
+      ],
+      "expected": [
+        [
+          6,
+          60
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(1,1,0),\n(1,1,1),\n(1,1,2),\n(1,2,10),\n(1,2,11),\n(1,3,20),\n(1,3,21),\n(1,3,22),\n(1,3,23),\n(2,1,30),\n(2,2,40),\n(2,2,41),\n(2,2,42),\n(3,3,50),\n(3,3,51),\n(3,3,52),\n(3,3,53),\n(3,3,54);"
+      ],
+      "expected": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO ActorDirector VALUES\n(1,1,0),\n(1,1,1),\n(1,1,2),\n(1,2,3),\n(1,2,4),\n(2,1,5),\n(2,1,6);"
+      ],
+      "expected": [
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

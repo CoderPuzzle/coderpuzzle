@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 543,
+  "slug": "diameter-of-binary-tree",
+  "title": "Diameter of Binary Tree",
+  "difficulty": "Easy",
+  "tags": [
+    "Tree",
+    "Binary Tree",
+    "Depth-First Search",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree",
+    "DP on Trees"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "diameterOfBinaryTree",
+    "parameters": [
+      {
+        "name": "root",
+        "codec": "tree_node",
+        "value_type": {
+          "kind": "binary_tree",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "diameterOfBinaryTree",
+      "rust": "diameter_of_binary_tree",
+      "typescript": "diameterOfBinaryTree"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2954,
+  "slug": "count-the-number-of-infection-sequences",
+  "title": "Count the Number of Infection Sequences",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Math",
+    "Combinatorics",
+    "Fermat's Little Theorem"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Combinatorics",
+    "Fermat's Little Theorem"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numberOfSequence",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "sick",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numberOfSequence",
+      "rust": "number_of_sequence",
+      "typescript": "numberOfSequence"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

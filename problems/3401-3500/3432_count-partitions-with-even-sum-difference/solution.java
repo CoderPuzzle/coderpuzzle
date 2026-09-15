@@ -1,0 +1,13 @@
+class Solution {
+
+    public int countPartitions(int[] nums) {
+        // left - right = total - 2 * right, and twice any integer is even,
+        // so every partition's difference carries the total's parity: either
+        // all n - 1 splits are even (total even) or none is (total odd).
+        int total = 0;
+        for (int v : nums) {
+            total += v;
+        }
+        return total % 2 == 0 ? nums.length - 1 : 0;
+    }
+}

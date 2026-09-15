@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class TypedExecutorTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        path = ROOT / "problems" / "0001-0100" / "0001_pair-sum" / "problem.json"
+        path = ROOT / "problems" / "0001-0100" / "0001_two-sum" / "problem.json"
         cls.invocation = json.loads(path.read_text(encoding="utf-8"))["invocation"]
 
     def test_two_sum_case_has_a_language_neutral_binary_encoding(self) -> None:
@@ -126,11 +126,11 @@ class TypedExecutorTests(unittest.TestCase):
             _, _, methods[language] = function_signature(self.invocation, language)
         self.assertEqual(
             {
-                "cpp": "pairSum",
-                "javascript": "pairSum",
-                "typescript": "pairSum",
-                "go": "pairSum",
-                "rust": "pair_sum",
+                "cpp": "twoSum",
+                "javascript": "twoSum",
+                "typescript": "twoSum",
+                "go": "twoSum",
+                "rust": "two_sum",
             },
             methods,
         )

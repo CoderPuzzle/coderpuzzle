@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3327,
+  "slug": "check-if-dfs-strings-are-palindromes",
+  "title": "Check if DFS Strings Are Palindromes",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Tree",
+    "Depth-First Search",
+    "Hash Function"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Tree",
+    "Depth-First Search",
+    "Hash Function"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findAnswer",
+    "parameters": [
+      {
+        "name": "parent",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "boolean"
+      }
+    },
+    "entrypoints": {
+      "go": "findAnswer",
+      "rust": "find_answer",
+      "typescript": "findAnswer"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 128
+  }
+}

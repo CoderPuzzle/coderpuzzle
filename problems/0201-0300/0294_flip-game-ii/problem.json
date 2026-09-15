@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 294,
+  "slug": "flip-game-ii",
+  "title": "Flip Game II",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Backtracking",
+    "Memoization",
+    "Minimax",
+    "Game Theory",
+    "Sprague–Grundy Theorem",
+    "Impartial Game"
+  ],
+  "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Backtracking",
+    "Memoization",
+    "Minimax",
+    "Game Theory",
+    "Sprague–Grundy Theorem",
+    "Impartial Game"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "canWin",
+    "parameters": [
+      {
+        "name": "currentState",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "canWin",
+      "rust": "can_win",
+      "typescript": "canWin"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

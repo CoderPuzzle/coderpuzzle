@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "reference_solution": "floyd",
+  "id": 141,
+  "slug": "linked-list-cycle",
+  "title": "Linked List Cycle",
+  "difficulty": "Easy",
+  "tags": [
+    "Linked List",
+    "Two Pointers",
+    "Hash Table"
+  ],
+  "topics": [
+    "Hash Table",
+    "Linked List",
+    "Two Pointers",
+    "Floyd's Cycle Finding Algorithm"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "hasCycle",
+    "parameters": [
+      {
+        "name": "values",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      },
+      {
+        "name": "pos",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "boolean"
+    },
+    "entrypoints": {
+      "go": "hasCycle",
+      "rust": "has_cycle",
+      "typescript": "hasCycle"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

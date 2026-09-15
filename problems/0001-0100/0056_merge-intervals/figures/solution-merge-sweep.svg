@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 260" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="560" height="260" fill="#ffffff"/>
+  <text x="20" y="24" fill="#1a2026" font-weight="600">intervals = [[1,3],[2,6],[8,10],[15,18]] sorted by start - one sweep, keep only the last merged span</text>
+  <!-- input rows -->
+  <g stroke="#1a2026" stroke-width="1.4" fill="#ffffff">
+    <rect x="64" y="46" width="48" height="18"/>
+    <rect x="88" y="74" width="96" height="18"/>
+    <rect x="232" y="102" width="48" height="18"/>
+    <rect x="400" y="130" width="72" height="18"/>
+  </g>
+  <g fill="#5b6470" font-size="11" text-anchor="end">
+    <text x="56" y="59">[1,3]</text>
+    <text x="56" y="87">[2,6]</text>
+    <text x="56" y="115">[8,10]</text>
+    <text x="56" y="143">[15,18]</text>
+  </g>
+  <!-- axis -->
+  <line x1="40" y1="170" x2="530" y2="170" stroke="#1a2026" stroke-width="1.4"/>
+  <g stroke="#1a2026" stroke-width="1">
+    <line x1="64" y1="166" x2="64" y2="174"/><line x1="112" y1="166" x2="112" y2="174"/><line x1="160" y1="166" x2="160" y2="174"/><line x1="208" y1="166" x2="208" y2="174"/><line x1="256" y1="166" x2="256" y2="174"/><line x1="304" y1="166" x2="304" y2="174"/><line x1="352" y1="166" x2="352" y2="174"/><line x1="400" y1="166" x2="400" y2="174"/><line x1="448" y1="166" x2="448" y2="174"/><line x1="496" y1="166" x2="496" y2="174"/>
+  </g>
+  <g fill="#8a94a0" font-size="10.5" text-anchor="middle">
+    <text x="64" y="186">1</text><text x="112" y="186">3</text><text x="160" y="186">5</text><text x="208" y="186">7</text><text x="256" y="186">9</text><text x="304" y="186">11</text><text x="352" y="186">13</text><text x="400" y="186">15</text><text x="448" y="186">17</text><text x="496" y="186">19</text>
+  </g>
+  <!-- merged output -->
+  <g stroke="#4169E1" stroke-width="2" fill="#e9eefb">
+    <rect x="64" y="204" width="120" height="20"/>
+    <rect x="232" y="204" width="48" height="20"/>
+    <rect x="400" y="204" width="72" height="20"/>
+  </g>
+  <g fill="#1a2026" font-size="11" font-weight="600" text-anchor="middle">
+    <text x="124" y="218">[1,6]</text>
+    <text x="256" y="218">[8,10]</text>
+    <text x="436" y="218">[15,18]</text>
+  </g>
+  <!-- overlap guides -->
+  <line x1="112" y1="40" x2="112" y2="230" stroke="#8a94a0" stroke-width="0.9" stroke-dasharray="3 3"/>
+  <line x1="184" y1="40" x2="184" y2="230" stroke="#8a94a0" stroke-width="0.9" stroke-dasharray="3 3"/>
+  <path d="M 114 66 C 138 34, 162 34, 186 64" fill="none" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="150" y="30" fill="#4169E1" font-size="10.5" text-anchor="middle">2 &lt;= 3: overlap - end rises to 6</text>
+  <text x="20" y="250" fill="#5b6470" font-size="11.5">Because the input is sorted by start, any overlap must reach the newest span - nothing earlier can still be open.</text>
+</svg>

@@ -1,0 +1,91 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3841,
+  "slug": "palindromic-path-queries-in-a-tree",
+  "title": "Palindromic Path Queries in a Tree",
+  "difficulty": "Hard",
+  "tags": [
+    "Array",
+    "String",
+    "Divide and Conquer",
+    "Bit Manipulation",
+    "Tree",
+    "Depth-First Search",
+    "Segment Tree"
+  ],
+  "topics": [
+    "Array",
+    "String",
+    "Divide and Conquer",
+    "Bit Manipulation",
+    "Tree",
+    "Depth-First Search",
+    "Segment Tree"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "palindromePath",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "edges",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      },
+      {
+        "name": "s",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      },
+      {
+        "name": "queries",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "boolean"
+      }
+    },
+    "entrypoints": {
+      "go": "palindromePath",
+      "rust": "palindrome_path",
+      "typescript": "palindromePath"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 512
+  }
+}

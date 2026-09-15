@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3968,
+  "slug": "maximum-manhattan-distance-after-all-moves",
+  "title": "Maximum Manhattan Distance After All Moves",
+  "difficulty": "Medium",
+  "tags": [
+    "Math",
+    "String",
+    "Counting"
+  ],
+  "topics": [
+    "Math",
+    "String",
+    "Counting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "maxDistance",
+    "parameters": [
+      {
+        "name": "moves",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "maxDistance",
+      "rust": "max_distance",
+      "typescript": "maxDistance"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="ma" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- root = [0,3,0]: two coins rise from the left child, one drops to the right -->
+  <g stroke="#1a2026" stroke-width="1.6">
+    <line x1="200" y1="80" x2="200" y2="118"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2.6" fill="none">
+    <line x1="128" y1="152" x2="185.6" y2="75.2" marker-end="url(#ma)"/>
+    <line x1="214.4" y1="75.2" x2="272" y2="152" marker-end="url(#ma)"/>
+  </g>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="136" y="112" text-anchor="end">2 coins</text>
+    <text x="264" y="112">1 coin</text>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="200" cy="56" r="24"/>
+    <circle cx="290" cy="176" r="24"/>
+  </g>
+  <circle cx="110" cy="176" r="24" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <g fill="#f5c443" stroke="#b57f30" stroke-width="1.4">
+    <circle cx="110" cy="164" r="5.5"/>
+    <circle cx="110" cy="176" r="5.5"/>
+    <circle cx="110" cy="188" r="5.5"/>
+  </g>
+  <text x="200" y="238" text-anchor="middle" fill="#5c6b76" font-size="12.5">two moves up the left edge, then one move down the right edge: 3 moves</text>
+</svg>

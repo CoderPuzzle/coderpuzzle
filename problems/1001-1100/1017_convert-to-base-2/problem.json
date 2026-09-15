@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1017,
+  "slug": "convert-to-base-2",
+  "title": "Convert to Base -2",
+  "difficulty": "Medium",
+  "tags": [
+    "Math"
+  ],
+  "topics": [
+    "Math"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "baseNeg2",
+    "parameters": [
+      {
+        "name": "n",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "baseNeg2",
+      "rust": "base_neg2",
+      "typescript": "baseNeg2"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

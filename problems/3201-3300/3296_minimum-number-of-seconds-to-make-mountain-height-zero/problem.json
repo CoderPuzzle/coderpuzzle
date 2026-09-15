@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3296,
+  "slug": "minimum-number-of-seconds-to-make-mountain-height-zero",
+  "title": "Minimum Number of Seconds to Make Mountain Height Zero",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Math",
+    "Binary Search",
+    "Greedy"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Binary Search",
+    "Greedy",
+    "Heap (Priority Queue)"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "minNumberOfSeconds",
+    "parameters": [
+      {
+        "name": "mountainHeight",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "workerTimes",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "minNumberOfSeconds",
+      "rust": "min_number_of_seconds",
+      "typescript": "minNumberOfSeconds"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

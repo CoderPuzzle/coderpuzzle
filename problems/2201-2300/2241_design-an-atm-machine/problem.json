@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2241,
+  "slug": "design-an-atm-machine",
+  "title": "Design an ATM Machine",
+  "difficulty": "Medium",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Design"
+  ],
+  "topics": [
+    "Array",
+    "Greedy",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "ATM",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "deposit",
+        "parameters": [
+          {
+            "name": "banknotesCount",
+            "codec": "json",
+            "value_type": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 64
+              }
+            }
+          }
+        ],
+        "return_type": null
+      },
+      {
+        "name": "withdraw",
+        "parameters": [
+          {
+            "name": "amount",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 64
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 64
+          }
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

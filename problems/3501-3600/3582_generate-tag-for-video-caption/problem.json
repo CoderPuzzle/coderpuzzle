@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3582,
+  "slug": "generate-tag-for-video-caption",
+  "title": "Generate Tag for Video Caption",
+  "difficulty": "Easy",
+  "tags": [
+    "String",
+    "Simulation"
+  ],
+  "topics": [
+    "String",
+    "Simulation"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "generateTag",
+    "parameters": [
+      {
+        "name": "caption",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "generateTag",
+      "rust": "generate_tag",
+      "typescript": "generateTag"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

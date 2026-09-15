@@ -1,0 +1,157 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Joe',70000,3),\n(2,'Henry',80000,4),\n(3,'Sam',60000,NULL),\n(4,'Max',90000,NULL);"
+      ],
+      "expected": [
+        [
+          "Joe"
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Sam',100000,NULL),\n(2,'Dan',80000,1),\n(3,'Eve',70000,1);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Sam',60000,NULL),\n(2,'Joe',60000,1);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Sam',100,NULL),\n(2,'Max',900,NULL);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Sam',50000,NULL),\n(2,'Joe',70000,1),\n(3,'Henry',40000,1),\n(4,'Jane',60000,1);"
+      ],
+      "expected": [
+        [
+          "Joe"
+        ],
+        [
+          "Jane"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Ann',50000,NULL),\n(2,'Bob',60000,1),\n(3,'Cy',70000,2);"
+      ],
+      "expected": [
+        [
+          "Bob"
+        ],
+        [
+          "Cy"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Max',90000,NULL),\n(2,'Henry',80000,1),\n(3,'Sam',60000,NULL),\n(4,'Joe',70000,3);"
+      ],
+      "expected": [
+        [
+          "Joe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Sam',60000,NULL),\n(2,'Joe',70000,1),\n(3,'Henry',55000,1),\n(4,'Jane',60000,1),\n(5,'Kim',90000,1);"
+      ],
+      "expected": [
+        [
+          "Joe"
+        ],
+        [
+          "Kim"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Sam',1000000,NULL),\n(2,'Joe',2000000000,1),\n(3,'Henry',999999,1),\n(4,'Max',1000000000,3);"
+      ],
+      "expected": [
+        [
+          "Joe"
+        ],
+        [
+          "Max"
+        ]
+      ]
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Sam',100,NULL),\n(2,'Joe',500,99),\n(3,'Max',50,2);"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Sam',100,1),\n(2,'Joe',200,1);"
+      ],
+      "expected": [
+        [
+          "Joe"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Sam',100,NULL),\n(2,'Sam',200,1),\n(3,'Sam',300,1);"
+      ],
+      "expected": [
+        [
+          "Sam"
+        ],
+        [
+          "Sam"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Ann',100000,NULL),\n(2,'Ben',90000,1),\n(3,'Cy',105000,1),\n(4,'Dee',80000,2),\n(5,'Eli',95000,2),\n(6,'Fay',90000,2),\n(7,'Gil',120000,99),\n(8,'Hal',99000,3),\n(9,'Ida',110000,3),\n(10,'Jon',130000,NULL);"
+      ],
+      "expected": [
+        [
+          "Cy"
+        ],
+        [
+          "Eli"
+        ],
+        [
+          "Ida"
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Employee VALUES\n(1,'Sam',0,NULL),\n(2,'Joe',-5,1),\n(3,'Kim',1,1);"
+      ],
+      "expected": [
+        [
+          "Kim"
+        ]
+      ]
+    }
+  ]
+}

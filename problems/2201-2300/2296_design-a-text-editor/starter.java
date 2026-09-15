@@ -1,0 +1,12 @@
+class TextEditor {
+
+    public TextEditor() {}
+
+    public void addText(String text) {}
+
+    public int deleteText(int k) {}
+
+    public String cursorLeft(int k) {}
+
+    public String cursorRight(int k) {}
+}

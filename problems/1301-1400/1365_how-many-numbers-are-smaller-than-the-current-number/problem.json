@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1365,
+  "slug": "how-many-numbers-are-smaller-than-the-current-number",
+  "title": "How Many Numbers Are Smaller Than the Current Number",
+  "difficulty": "Easy",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting",
+    "Counting Sort"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "Sorting",
+    "Counting Sort"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "SmallerNumbersThanCurrent",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "smallerNumbersThanCurrent",
+        "parameters": [
+          {
+            "name": "nums",
+            "codec": "json",
+            "value_type": {
+              "kind": "array",
+              "items": {
+                "kind": "integer",
+                "bits": 32
+              }
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "entrypoints": {
+      "rust.smallerNumbersThanCurrent": "smaller_numbers_than_current"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

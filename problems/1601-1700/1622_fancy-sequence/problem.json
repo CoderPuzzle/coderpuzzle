@@ -1,0 +1,94 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1622,
+  "slug": "fancy-sequence",
+  "title": "Fancy Sequence",
+  "difficulty": "Hard",
+  "tags": [
+    "Math",
+    "Design",
+    "Segment Tree",
+    "Number Theory",
+    "Fermat's Little Theorem"
+  ],
+  "topics": [
+    "Math",
+    "Design",
+    "Segment Tree",
+    "Number Theory",
+    "Fermat's Little Theorem"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "Fancy",
+    "constructor": {
+      "parameters": []
+    },
+    "methods": [
+      {
+        "name": "append",
+        "parameters": [
+          {
+            "name": "val",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "addAll",
+        "parameters": [
+          {
+            "name": "inc",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "multAll",
+        "parameters": [
+          {
+            "name": "m",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ]
+      },
+      {
+        "name": "getIndex",
+        "parameters": [
+          {
+            "name": "idx",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 256
+  }
+}

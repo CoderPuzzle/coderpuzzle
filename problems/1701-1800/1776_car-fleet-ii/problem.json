@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1776,
+  "slug": "car-fleet-ii",
+  "title": "Car Fleet II",
+  "difficulty": "Hard",
+  "tags": [
+    "Monotonic Stack",
+    "Stack"
+  ],
+  "topics": [
+    "Array",
+    "Math",
+    "Stack",
+    "Heap (Priority Queue)",
+    "Monotonic Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "getCollisionTimes",
+    "parameters": [
+      {
+        "name": "cars",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "array",
+      "items": {
+        "kind": "number"
+      }
+    },
+    "entrypoints": {
+      "go": "getCollisionTimes",
+      "rust": "get_collision_times",
+      "typescript": "getCollisionTimes"
+    },
+    "comparison": "close"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1600,
+  "slug": "throne-inheritance",
+  "title": "Throne Inheritance",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Design"
+  ],
+  "topics": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Design"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "ThroneInheritance",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "kingName",
+          "codec": "json",
+          "value_type": {
+            "kind": "string"
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "birth",
+        "parameters": [
+          {
+            "name": "parentName",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          },
+          {
+            "name": "childName",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "death",
+        "parameters": [
+          {
+            "name": "name",
+            "codec": "json",
+            "value_type": {
+              "kind": "string"
+            }
+          }
+        ]
+      },
+      {
+        "name": "getInheritanceOrder",
+        "parameters": [],
+        "return_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

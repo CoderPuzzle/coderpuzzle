@@ -1,0 +1,240 @@
+{
+  "public": [
+    {
+      "input": [
+        "<DIV>This is the first line <![CDATA[<div>]]></DIV>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<DIV>>>  ![cdata[]] <![CDATA[<div>]>]]>]]>>]</DIV>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<A>  <B> </A>   </B>"
+      ],
+      "expected": false
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "Hello world 123"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "x<DIV>y</DIV>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<DIV>y</DIV>tail"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<DIV>a</DIV><DIV>b</DIV>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<![CDATA[shielded]]>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A></A></A>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A></A>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<DIV></DIV>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<A1>1</A1>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<div>d</div>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<ABCDEFGHIJ>x</ABCDEFGHIJ>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<>x</>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A/>data</A>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<ABCDEFGHI></ABCDEFGHI>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "</A>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A></a>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A>x</B>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A><B>y</B>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A><1B>x</1B></A>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A><A><A></A></A></A>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<B><A>text 1.5 ok.</A></B>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<A>>></A>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<A>x</A"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A><B"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A>a<b</A>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A>ok</A><"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A><![CDATA[<div>]]></A>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<A><![CDATA[</A>]]></A>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<DIV><![CDATA[<div>]]>]]></DIV>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<A><![CDATA[a]]]]]></A>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<A><![CDATA[no closer"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A><![CDATA[]]</A>"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "<A><![CDATA[]]></A>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A><A>hi!</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "<X><![CDATA[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]]></X>"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "expected": false
+    }
+  ]
+}

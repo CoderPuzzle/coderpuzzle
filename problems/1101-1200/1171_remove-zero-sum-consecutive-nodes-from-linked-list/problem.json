@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1171,
+  "slug": "remove-zero-sum-consecutive-nodes-from-linked-list",
+  "title": "Remove Zero Sum Consecutive Nodes from Linked List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Hash Table",
+    "Prefix Sum"
+  ],
+  "topics": [
+    "Hash Table",
+    "Linked List"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "removeZeroSumSublists",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "list_node",
+    "return_type": {
+      "kind": "linked_list",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      }
+    },
+    "entrypoints": {
+      "go": "removeZeroSumSublists",
+      "rust": "remove_zero_sum_sublists",
+      "typescript": "removeZeroSumSublists"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

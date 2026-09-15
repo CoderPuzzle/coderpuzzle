@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 260" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="560" height="260" fill="#ffffff"/>
+  <!-- grid cells -->
+  <g stroke="#98a2ac" stroke-width="1.2" fill="none">
+    <rect x="70" y="36" width="54" height="54"/>
+    <rect x="124" y="36" width="54" height="54"/>
+    <rect x="178" y="36" width="54" height="54"/>
+    <rect x="232" y="36" width="54" height="54"/>
+    <rect x="70" y="90" width="54" height="54"/>
+    <rect x="124" y="90" width="54" height="54"/>
+    <rect x="178" y="90" width="54" height="54"/>
+    <rect x="232" y="90" width="54" height="54"/>
+    <rect x="70" y="144" width="54" height="54"/>
+    <rect x="124" y="144" width="54" height="54"/>
+    <rect x="178" y="144" width="54" height="54"/>
+    <rect x="232" y="144" width="54" height="54"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="97" y="67">0</text><text x="151" y="67">1</text><text x="205" y="67">3</text><text x="259" y="67">2</text>
+    <text x="97" y="121">5</text><text x="151" y="121">1</text><text x="205" y="121">2</text><text x="259" y="121">5</text>
+    <text x="97" y="175">4</text><text x="151" y="175">3</text><text x="205" y="175">8</text><text x="259" y="175">6</text>
+  </g>
+  <!-- path highlight cells -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <rect x="70" y="36" width="54" height="54"/>
+    <rect x="124" y="36" width="54" height="54"/>
+    <rect x="124" y="90" width="54" height="54"/>
+    <rect x="178" y="90" width="54" height="54"/>
+    <rect x="232" y="90" width="54" height="54"/>
+    <rect x="232" y="144" width="54" height="54"/>
+  </g>
+  <!-- arrival times -->
+  <g fill="#4169E1" font-size="11.5" text-anchor="middle">
+    <text x="116" y="46">t=0</text><text x="170" y="46">t=1</text>
+    <text x="170" y="100">t=2</text><text x="224" y="100">t=3</text>
+    <text x="278" y="100">t=6</text><text x="278" y="154">t=7</text>
+  </g>
+  <!-- moves -->
+  <g stroke="#1a2026" stroke-width="1.6" fill="none">
+    <line x1="112" y1="63" x2="142" y2="63" marker-end="url(#arrow)"/>
+    <line x1="151" y1="94" x2="151" y2="114" marker-end="url(#arrow)"/>
+    <line x1="166" y1="117" x2="196" y2="117" marker-end="url(#arrow)"/>
+    <line x1="224" y1="117" x2="254" y2="117" marker-end="url(#arrow)"/>
+    <line x1="259" y1="148" x2="259" y2="168" marker-end="url(#arrow)"/>
+  </g>
+  <!-- bounce between (1,1) and (1,2) -->
+  <path d="M 196 132 C 210 152, 190 152, 166 132" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrowA)"/>
+  <path d="M 166 102 C 190 84, 210 84, 196 102" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrowA)"/>
+  <text x="181" y="166" text-anchor="middle" fill="#4169E1" font-size="12">bounce t=4, t=5</text>
+  <text x="181" y="80" text-anchor="middle" fill="#4169E1" font-size="12">(2 s round trip)</text>
+  <text x="285" y="30" text-anchor="middle" fill="#5c6b76" font-size="12.5">grid[r][c] = earliest entry time</text>
+  <text x="285" y="226" text-anchor="middle" fill="#5c6b76" font-size="12.5">Cell (1,3) needs t ≥ 6; parity forces waiting — two 1-second bounces</text>
+  <text x="285" y="244" text-anchor="middle" fill="#5c6b76" font-size="12.5">between (1,1) and (1,2) buy exactly the missing 3 seconds → total 7.</text>
+</svg>

@@ -1,0 +1,6 @@
+class Solution {
+
+    public int maximumSumSubsequence(int[] nums, int[][] queries) {
+        throw new UnsupportedOperationException("TODO");
+    }
+}

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 318" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="318" fill="#ffffff"/>
+  <!-- tree edges; the three sum-to-8 paths are overdrawn in color -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="286.9" y1="49.2" x2="213.1" y2="100.8"/>
+    <line x1="313.1" y1="49.2" x2="386.9" y2="100.8"/>
+    <line x1="189.6" y1="122.1" x2="150.4" y2="167.9"/>
+    <line x1="210.4" y1="122.1" x2="249.6" y2="167.9"/>
+    <line x1="400" y1="126" x2="400" y2="164"/>
+    <line x1="131.3" y1="193.5" x2="103.7" y2="236.5"/>
+    <line x1="148.7" y1="193.5" x2="176.3" y2="236.5"/>
+    <line x1="260" y1="196" x2="260" y2="234"/>
+  </g>
+  <!-- path 1: 5 -> 3 ; path 2: 5 -> 2 -> 1 (blue) ; path 3: -3 -> 11 (amber) -->
+  <g stroke="#4169E1" stroke-width="2.8">
+    <line x1="189.6" y1="122.1" x2="150.4" y2="167.9"/>
+    <line x1="210.4" y1="122.1" x2="249.6" y2="167.9"/>
+    <line x1="260" y1="196" x2="260" y2="234"/>
+  </g>
+  <line x1="400" y1="126" x2="400" y2="164" stroke="#b57f30" stroke-width="2.8"/>
+  <!-- nodes on paths -->
+  <circle cx="200" cy="110" r="16" fill="#4169E1" fill-opacity="0.15" stroke="#4169E1" stroke-width="1.8"/>
+  <circle cx="140" cy="180" r="16" fill="#4169E1" fill-opacity="0.15" stroke="#4169E1" stroke-width="1.8"/>
+  <circle cx="260" cy="180" r="16" fill="#4169E1" fill-opacity="0.15" stroke="#4169E1" stroke-width="1.8"/>
+  <circle cx="260" cy="250" r="16" fill="#4169E1" fill-opacity="0.15" stroke="#4169E1" stroke-width="1.8"/>
+  <circle cx="400" cy="110" r="16" fill="#b57f30" fill-opacity="0.15" stroke="#b57f30" stroke-width="1.8"/>
+  <circle cx="400" cy="180" r="16" fill="#b57f30" fill-opacity="0.15" stroke="#b57f30" stroke-width="1.8"/>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="300" cy="40" r="16"/>
+    <circle cx="95" cy="250" r="16"/>
+    <circle cx="185" cy="250" r="16"/>
+  </g>
+  <g fill="#1a2026" font-weight="600" text-anchor="middle">
+    <text x="300" y="45">10</text>
+    <text x="200" y="115">5</text>
+    <text x="400" y="115">-3</text>
+    <text x="140" y="185">3</text>
+    <text x="260" y="185">2</text>
+    <text x="400" y="185">11</text>
+    <text x="95" y="255">3</text>
+    <text x="185" y="255">-2</text>
+    <text x="260" y="255">1</text>
+  </g>
+  <g font-size="11.5" font-weight="600">
+    <circle cx="150" cy="132" r="9" fill="#4169E1"/><text x="150" y="136" text-anchor="middle" fill="#ffffff">1</text>
+    <circle cx="237" cy="213" r="9" fill="#4169E1"/><text x="237" y="217" text-anchor="middle" fill="#ffffff">2</text>
+    <circle cx="432" cy="145" r="9" fill="#b57f30"/><text x="432" y="149" text-anchor="middle" fill="#ffffff">3</text>
+  </g>
+  <g font-size="12.5">
+    <text x="120" y="296"><tspan fill="#4169E1" font-weight="600">1</tspan><tspan fill="#1a2026">  5 → 3 = 8</tspan></text>
+    <text x="230" y="296"><tspan fill="#4169E1" font-weight="600">2</tspan><tspan fill="#1a2026">  5 → 2 → 1 = 8</tspan></text>
+    <text x="390" y="296"><tspan fill="#b57f30" font-weight="600">3</tspan><tspan fill="#1a2026">  -3 → 11 = 8</tspan></text>
+  </g>
+  <text x="280" y="314" text-anchor="middle" fill="#5c6b76" font-size="12">three downward paths sum to the target 8 → output 3</text>
+</svg>

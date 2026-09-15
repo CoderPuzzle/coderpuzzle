@@ -1,0 +1,10 @@
+class DinnerPlates {
+
+    public DinnerPlates(int capacity) {}
+
+    public void push(int val) {}
+
+    public int pop() {}
+
+    public int popAtStack(int index) {}
+}

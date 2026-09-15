@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2264,
+  "slug": "largest-3-same-digit-number-in-string",
+  "title": "Largest 3-Same-Digit Number in String",
+  "difficulty": "Easy",
+  "tags": [
+    "String"
+  ],
+  "topics": [
+    "String"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "largestGoodInteger",
+    "parameters": [
+      {
+        "name": "num",
+        "codec": "json",
+        "value_type": {
+          "kind": "string"
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "string"
+    },
+    "entrypoints": {
+      "go": "largestGoodInteger",
+      "rust": "largest_good_integer",
+      "typescript": "largestGoodInteger"
+    }
+  },
+  "limits": {
+    "time_ms": 3000,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <!-- robots: charge [3,6,1,3,4], run [2,1,3,4,5]; cells x = 70 + 100i, w 92 -->
+  <g font-size="12" fill="#5c6b76" text-anchor="middle">
+    <text x="116" y="40">charge 3 · run 2</text><text x="216" y="40">charge 6 · run 1</text>
+    <text x="316" y="40">charge 1 · run 3</text><text x="416" y="40">charge 3 · run 4</text>
+    <text x="516" y="40">charge 4 · run 5</text>
+  </g>
+  <g font-size="12" fill="#5c6b76" text-anchor="middle">
+    <text x="116" y="58">0</text><text x="216" y="58">1</text><text x="316" y="58">2</text>
+    <text x="416" y="58">3</text><text x="516" y="58">4</text>
+  </g>
+  <!-- state rows -->
+  <!-- A: window [0,2] -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <rect x="70" y="70" width="246" height="34" fill="#dbe4f6"/>
+    <rect x="316" y="70" width="292" height="34"/>
+  </g>
+  <text x="193" y="92" text-anchor="middle" fill="#1a2026" font-weight="600">window [0, 2]</text>
+  <text x="70" y="122" fill="#4169E1" font-weight="600" font-size="12.5">max 6 (deque [1, 2]) + 3 × 6 = 24 ≤ 25 ✓ length 3</text>
+  <!-- B: window [0,3] -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <rect x="70" y="150" width="346" height="34" fill="#e3e7eb"/>
+    <rect x="416" y="150" width="192" height="34"/>
+  </g>
+  <text x="243" y="172" text-anchor="middle" fill="#1a2026" font-weight="600">robot 3 joins → window [0, 3]</text>
+  <text x="70" y="202" fill="#5c6b76" font-size="12.5">max 6 (deque [1, 3]) + 4 × 10 = 46 &gt; 25 → shrink from the left</text>
+  <!-- C: window [2,3] -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <rect x="70" y="230" width="192" height="34"/>
+    <rect x="262" y="230" width="346" height="34" fill="#dbe4f6"/>
+  </g>
+  <text x="435" y="252" text-anchor="middle" fill="#1a2026" font-weight="600">window [2, 3]</text>
+  <text x="70" y="286" fill="#1a2026" font-size="12.5">left passes index 1, so the deque front 1 drops; new max is 3: 3 + 2 × 7 = 17 ✓ but length is only 2</text>
+  <text x="70" y="316" fill="#1a2026" font-size="13">The deque keeps window charges strictly decreasing, so its front is always the current maximum for the cost check.</text>
+</svg>

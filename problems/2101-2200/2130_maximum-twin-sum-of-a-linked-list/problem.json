@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 2130,
+  "slug": "maximum-twin-sum-of-a-linked-list",
+  "title": "Maximum Twin Sum of a Linked List",
+  "difficulty": "Medium",
+  "tags": [
+    "Linked List",
+    "Two Pointers",
+    "Stack"
+  ],
+  "topics": [
+    "Linked List",
+    "Two Pointers",
+    "Stack"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "pairSum",
+    "parameters": [
+      {
+        "name": "head",
+        "codec": "list_node",
+        "value_type": {
+          "kind": "linked_list",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "pairSum",
+      "rust": "pair_sum",
+      "typescript": "pairSum"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

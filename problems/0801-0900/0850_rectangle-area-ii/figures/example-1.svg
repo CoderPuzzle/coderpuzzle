@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 250" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <!-- grid over [0,3] x [0,3]; x -> 66 + 57x, y -> 206 - 57y -->
+  <g stroke="#dfe5ea" stroke-width="1">
+    <line x1="66" y1="35" x2="66" y2="206"/>
+    <line x1="123" y1="35" x2="123" y2="206"/>
+    <line x1="180" y1="35" x2="180" y2="206"/>
+    <line x1="237" y1="35" x2="237" y2="206"/>
+    <line x1="66" y1="206" x2="237" y2="206"/>
+    <line x1="66" y1="149" x2="237" y2="149"/>
+    <line x1="66" y1="92" x2="237" y2="92"/>
+    <line x1="66" y1="35" x2="237" y2="35"/>
+  </g>
+  <!-- [0,0,2,2] green, [1,0,2,3] red, [1,0,3,1] blue; overlaps darken -->
+  <rect x="66" y="92" width="114" height="114" fill="#3f9d55" fill-opacity="0.30"/>
+  <rect x="66" y="92" width="114" height="114" fill="none" stroke="#2e7d43" stroke-width="1.6"/>
+  <rect x="123" y="35" width="57" height="171" fill="#d64545" fill-opacity="0.30"/>
+  <rect x="123" y="35" width="57" height="171" fill="none" stroke="#b03030" stroke-width="1.6"/>
+  <rect x="123" y="149" width="114" height="57" fill="#4169E1" fill-opacity="0.30"/>
+  <rect x="123" y="149" width="114" height="57" fill="none" stroke="#3555c0" stroke-width="1.6"/>
+  <!-- axes -->
+  <g stroke="#5c6b76" stroke-width="1.2">
+    <line x1="58" y1="206" x2="245" y2="206"/>
+    <line x1="66" y1="214" x2="66" y2="28"/>
+  </g>
+  <g fill="#5c6b76" font-size="11.5" text-anchor="middle">
+    <text x="66" y="224">0</text>
+    <text x="123" y="224">1</text>
+    <text x="180" y="224">2</text>
+    <text x="237" y="224">3</text>
+    <text x="54" y="210" text-anchor="end">0</text>
+    <text x="54" y="153" text-anchor="end">1</text>
+    <text x="54" y="96" text-anchor="end">2</text>
+    <text x="54" y="39" text-anchor="end">3</text>
+  </g>
+  <text x="150" y="242" text-anchor="middle" fill="#5c6b76" font-size="12.5">the union of the three rectangles covers 6 unit squares</text>
+</svg>

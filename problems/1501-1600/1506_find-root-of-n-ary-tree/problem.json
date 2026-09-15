@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1506,
+  "slug": "find-root-of-n-ary-tree",
+  "title": "Find Root of N-ary Tree",
+  "difficulty": "Medium",
+  "tags": [
+    "Hash Table",
+    "Bit Manipulation",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "topics": [
+    "Hash Table",
+    "Bit Manipulation",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "findRoot",
+    "parameters": [
+      {
+        "name": "tree",
+        "codec": "nary_tree_nodes",
+        "value_type": {
+          "kind": "nary_tree_nodes",
+          "items": {
+            "kind": "integer",
+            "bits": 32
+          },
+          "class": "SharedNode"
+        }
+      }
+    ],
+    "return_codec": "nary_tree",
+    "return_type": {
+      "kind": "nary_tree",
+      "items": {
+        "kind": "integer",
+        "bits": 32
+      },
+      "class": "SharedNode"
+    },
+    "entrypoints": {
+      "go": "findRoot",
+      "rust": "find_root",
+      "typescript": "findRoot"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 1024
+  }
+}

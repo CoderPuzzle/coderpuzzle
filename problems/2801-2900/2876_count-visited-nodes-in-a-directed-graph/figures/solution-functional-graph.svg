@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 260" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2026"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="560" height="260" fill="#ffffff"/>
+  <!-- tail edge 3 -> 0 -->
+  <path d="M 78 168 Q 108 120 158 88" fill="none" stroke="#1a2026" stroke-width="1.7" marker-end="url(#arrow)"/>
+  <!-- cycle edges -->
+  <path d="M 200 60 Q 250 24 300 60" fill="none" stroke="#4169E1" stroke-width="1.9" marker-end="url(#arrowA)"/>
+  <path d="M 330 88 Q 352 134 272 168" fill="none" stroke="#4169E1" stroke-width="1.9" marker-end="url(#arrowA)"/>
+  <path d="M 228 168 Q 148 134 170 88" fill="none" stroke="#4169E1" stroke-width="1.9" marker-end="url(#arrowA)"/>
+  <!-- nodes -->
+  <circle cx="180" cy="74" r="19" fill="#e8edfa" stroke="#4169E1" stroke-width="1.8"/>
+  <circle cx="320" cy="74" r="19" fill="#e8edfa" stroke="#4169E1" stroke-width="1.8"/>
+  <circle cx="250" cy="184" r="19" fill="#e8edfa" stroke="#4169E1" stroke-width="1.8"/>
+  <circle cx="60" cy="184" r="19" fill="#ffffff" stroke="#1a2026" stroke-width="1.8"/>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="180" y="79">0</text>
+    <text x="320" y="79">1</text>
+    <text x="250" y="189">2</text>
+    <text x="60" y="189">3</text>
+  </g>
+  <!-- answers -->
+  <g text-anchor="middle" font-size="12.5" fill="#4169E1">
+    <text x="180" y="112">answer 3</text>
+    <text x="320" y="112">answer 3</text>
+    <text x="250" y="222">answer 3</text>
+  </g>
+  <text x="60" y="222" text-anchor="middle" fill="#1a2026" font-size="12.5">answer 3 + 1</text>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="430" y="60">edges = [1,2,0,0]:</text>
+    <text x="430" y="78">0 → 1 → 2 → 0 is the cycle;</text>
+    <text x="430" y="96">node 3 hangs off it.</text>
+    <text x="430" y="120">Cycle nodes visit the 3</text>
+    <text x="430" y="138">cycle nodes; the tail adds</text>
+    <text x="430" y="156">its distance to the cycle:</text>
+    <text x="430" y="174">[3, 3, 3, 4].</text>
+  </g>
+</svg>

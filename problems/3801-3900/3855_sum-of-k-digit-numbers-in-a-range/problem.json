@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 3855,
+  "slug": "sum-of-k-digit-numbers-in-a-range",
+  "title": "Sum of K-Digit Numbers in a Range",
+  "difficulty": "Hard",
+  "tags": [
+    "Math",
+    "Divide and Conquer",
+    "Combinatorics",
+    "Number Theory"
+  ],
+  "topics": [
+    "Math",
+    "Divide and Conquer",
+    "Combinatorics",
+    "Number Theory"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "sumOfNumbers",
+    "parameters": [
+      {
+        "name": "l",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "r",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "k",
+        "codec": "json",
+        "value_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 64
+    },
+    "entrypoints": {
+      "go": "sumOfNumbers",
+      "rust": "sum_of_numbers",
+      "typescript": "sumOfNumbers"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

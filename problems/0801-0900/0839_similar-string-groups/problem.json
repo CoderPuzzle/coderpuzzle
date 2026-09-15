@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 839,
+  "slug": "similar-string-groups",
+  "title": "Similar String Groups",
+  "difficulty": "Hard",
+  "tags": [
+    "Union Find",
+    "Graph",
+    "String"
+  ],
+  "topics": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "function",
+    "class_name": "Solution",
+    "method": "numSimilarGroups",
+    "parameters": [
+      {
+        "name": "strs",
+        "codec": "json",
+        "value_type": {
+          "kind": "array",
+          "items": {
+            "kind": "string"
+          }
+        }
+      }
+    ],
+    "return_codec": "json",
+    "return_type": {
+      "kind": "integer",
+      "bits": 32
+    },
+    "entrypoints": {
+      "go": "numSimilarGroups",
+      "rust": "num_similar_groups",
+      "typescript": "numSimilarGroups"
+    },
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

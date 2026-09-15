@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 1483,
+  "slug": "kth-ancestor-of-a-tree-node",
+  "title": "Kth Ancestor of a Tree Node",
+  "difficulty": "Hard",
+  "tags": [
+    "Tree",
+    "Dynamic Programming"
+  ],
+  "topics": [
+    "Binary Search",
+    "Dynamic Programming",
+    "Bit Manipulation",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Design",
+    "Binary Lifting"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "TreeAncestor",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "n",
+          "codec": "json",
+          "value_type": {
+            "kind": "integer",
+            "bits": 32
+          }
+        },
+        {
+          "name": "parent",
+          "codec": "json",
+          "value_type": {
+            "kind": "array",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "getKthAncestor",
+        "parameters": [
+          {
+            "name": "node",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          },
+          {
+            "name": "k",
+            "codec": "json",
+            "value_type": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        ],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 2048
+  }
+}

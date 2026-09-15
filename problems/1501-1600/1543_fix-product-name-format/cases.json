@@ -1,0 +1,203 @@
+{
+  "public": [
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,'LCPHONE','2000-01-16'),\n(2,'LCPhone','2000-01-17'),\n(3,'LcPhOnE','2000-02-18'),\n(4,'LCKeyCHAiN','2000-02-19'),\n(5,'LCKeyChain','2000-02-28'),\n(6,'Matryoshka','2000-03-31');"
+      ],
+      "expected": [
+        [
+          "lckeychain",
+          "2000-02",
+          2
+        ],
+        [
+          "lcphone",
+          "2000-01",
+          2
+        ],
+        [
+          "lcphone",
+          "2000-02",
+          1
+        ],
+        [
+          "matryoshka",
+          "2000-03",
+          1
+        ]
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,'Apple','2001-05-01'),\n(2,'APPLE','2001-05-02'),\n(3,'apple','2001-05-03'),\n(4,'ApPlE','2001-05-04');"
+      ],
+      "expected": [
+        [
+          "apple",
+          "2001-05",
+          4
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,'  Widget','2002-03-10'),\n(2,'Widget  ','2002-03-11'),\n(3,'   Widget   ','2002-03-12'),\n(4,'Widget','2002-03-13');"
+      ],
+      "expected": [
+        [
+          "widget",
+          "2002-03",
+          4
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,'Board Game','2003-06-05'),\n(2,'Board  Game','2003-06-06'),\n(3,'Board Game','2003-06-07');"
+      ],
+      "expected": [
+        [
+          "board  game",
+          "2003-06",
+          1
+        ],
+        [
+          "board game",
+          "2003-06",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,'Gadget','2004-07-01'),\n(2,'Gadget','2004-07-28'),\n(3,'Gadget','2004-08-02'),\n(4,'Gadget','2004-09-15');"
+      ],
+      "expected": [
+        [
+          "gadget",
+          "2004-07",
+          2
+        ],
+        [
+          "gadget",
+          "2004-08",
+          1
+        ],
+        [
+          "gadget",
+          "2004-09",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,'Lonely Item','2005-11-20');"
+      ],
+      "expected": [
+        [
+          "lonely item",
+          "2005-11",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,'Zeta','2006-01-05'),\n(2,'Zeta','2006-01-06'),\n(3,'Alpha','2006-02-01'),\n(4,'Alpha','2006-02-02'),\n(5,'Beta','2006-01-09'),\n(6,'Beta','2006-01-10');"
+      ],
+      "expected": [
+        [
+          "alpha",
+          "2006-02",
+          2
+        ],
+        [
+          "beta",
+          "2006-01",
+          2
+        ],
+        [
+          "zeta",
+          "2006-01",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,'Widget','2007-04-01'),\n(2,'Widget','2007-03-15'),\n(3,'Widget','2007-03-20');"
+      ],
+      "expected": [
+        [
+          "widget",
+          "2007-03",
+          2
+        ],
+        [
+          "widget",
+          "2007-04",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(1,'MixCase','2008-05-01'),\n(2,'mixcase','2008-05-02'),\n(3,' MIXCASE ','2008-05-03'),\n(4,'MixCase','2008-06-01'),\n(5,'mixCASE','2008-06-02');"
+      ],
+      "expected": [
+        [
+          "mixcase",
+          "2008-05",
+          3
+        ],
+        [
+          "mixcase",
+          "2008-06",
+          2
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(6,'Matryoshka','2000-03-31'),\n(5,'LCKeyChain','2000-02-28'),\n(4,'LCKeyCHAiN','2000-02-19'),\n(3,'LcPhOnE','2000-02-18'),\n(2,'LCPhone','2000-01-17'),\n(1,'LCPHONE','2000-01-16');"
+      ],
+      "expected": [
+        [
+          "lckeychain",
+          "2000-02",
+          2
+        ],
+        [
+          "lcphone",
+          "2000-01",
+          2
+        ],
+        [
+          "lcphone",
+          "2000-02",
+          1
+        ],
+        [
+          "matryoshka",
+          "2000-03",
+          1
+        ]
+      ]
+    },
+    {
+      "input": [
+        "INSERT INTO Sales VALUES\n(4,'ApPlE','2001-05-04'),\n(3,'apple','2001-05-03'),\n(2,'APPLE','2001-05-02'),\n(1,'Apple','2001-05-01');"
+      ],
+      "expected": [
+        [
+          "apple",
+          "2001-05",
+          4
+        ]
+      ]
+    }
+  ]
+}
