@@ -139,6 +139,13 @@ services:
     cap_add:
       - CHOWN
       - DAC_OVERRIDE
+      # The runtime sandbox runs submissions as `nobody` in a sticky,
+      # world-writable /tmp, so the files they leave behind belong to a
+      # different uid than the worker. Unlinking those from a sticky
+      # directory needs CAP_FOWNER: without it _sweep_tmp silently reclaims
+      # nothing and /tmp fills until every language fails. Same for dropping
+      # the compiler-owned Go build cache once it outgrows its budget.
+      - FOWNER
       - KILL
       - SETUID
       - SETGID

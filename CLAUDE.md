@@ -263,6 +263,107 @@ repo). The stack fetches the problem set from `CoderPuzzle/coderpuzzle-problems`
 start. gcloud ssh can be flaky; retry. First account registered through
 the gate bootstraps as admin on a fresh DB.
 
+## Current calibration and local-validation checkpoint (2026-09-15)
+
+- Production VM `katze` completed the full 25,505-combination calibration.
+  `/calibration/calibration.json` exists with 16,931 successful records and
+  8,574 failures. The calibration process exited after writing the final
+  artifact; the API health endpoint returns 200.
+- Production hardware fingerprint is `509a0d3113d7`; hardware reported by
+  the artifact is AMD EPYC 9B45, 4 logical CPUs and 7,090,944 KiB RAM.
+- Production login/judging calibration enforcement is still blocked because
+  the matrix is incomplete. Do not change VM configuration or request a
+  static IP while investigating this checkpoint.
+- Failure inventory copied locally to `/tmp/coderpuzzle-calibration/calibration.json`.
+  Of 8,574 failures, 8,557 are reference verdict failures and 17 are runner
+  timeouts. Reference verdict failures include 3,590 compile errors, 4,965
+  runtime errors (mostly with skipped cases), and 2 wrong answers. Compile
+  failures are concentrated in Go/C++/Rust; runtime failures are concentrated
+  in TypeScript/JavaScript/Java/Python/SQL. The 17 runner errors are isolated
+  runner 503 timeouts and must be separated from corpus/reference defects.
+- A local-only opt-in legacy timing path was added and committed as
+  `f3e2685` (`CODERPUZZLE_LEGACY_REFERENCE_TIMING=1`). It runs the designated
+  reference after an accepted submission and reports the reference wall-time
+  ratio without requiring calibration. Production does not enable this flag.
+- The local service was first run against `CoderPuzzle/coderpuzzle-problems`,
+  then corrected to use the intended remote `zydo/openoj-problems` set and its
+  `problems-originals` tree. The corrected local stack was still fetching when
+  this checkpoint was written and has been stopped.
+
+### Root cause found (2026-09-15) — the corpus is clean
+
+The 8,574 failures are ONE host fault, not corpus defects. Evidence:
+
+- Calibration runs in id order. Successes stop at id 2709; failures run
+  2640 → 4018 (the last id) unbroken. 1,173 slugs fail in ALL 7 languages
+  and succeed in none — 8,211 of the 8,557 reference-verdict failures.
+- The 17 runner 503s sit at ids 2364–2683 and the 113 partial-language
+  failures cluster in the same window: the degradation ramp.
+- Only 6 failures predate it (ids 366, 690, 1226, 1242, 1265, 2237). All
+  six judge 7/7 green locally, as do 12 bundles sampled across
+  2640–4018. Nothing in the corpus is broken.
+- Production runner `/tmp` is a 384 MiB tmpfs and was **100% full, 0
+  bytes free**, with `/tmp/coderpuzzle-gocache` at 383 MiB plus 231
+  leaked `nobody`-owned `cc*.o` files. A full `/tmp` fails every
+  language exactly as observed: compiled ones cannot write objects
+  (`compile_error`), interpreted ones cannot stage source
+  (`runtime_error`, all cases skipped).
+
+Three defects, all fixed in this repo (verified in a rebuilt image):
+
+1. `runner/Dockerfile` — the supervisor's file capabilities lacked
+   `cap_fowner`, so `_sweep_tmp` could never unlink the `nobody`-owned
+   litter it exists to remove (sticky-directory deletion is an ownership
+   check `cap_dac_override` does not cover). `compose.yaml` gained the
+   matching `cap_add`. The file caps are authoritative — `cap_add` alone
+   only widens the bounding set.
+2. `runner/worker.py` — the Go build cache was exempt from the sweep and
+   unbounded, so it grew until `/tmp` filled. Now size-capped
+   (`CODERPUZZLE_GOCACHE_MAX_BYTES`, default 128 MiB) and trimmed
+   between jobs. Also: the prewarm blindly re-chmod'ed a directory it
+   had already chowned to the compiler uid, so it died with EPERM from
+   its second pass on and left every toolchain cold for the container's
+   whole life — 294 log lines. Setup is idempotent now and one
+   toolchain's failure no longer cancels the other four.
+3. `api/app/calibrate.py` — no circuit breaker, so a broken host became
+   a matrix that looked complete. `CONSECUTIVE_FAILURE_LIMIT` (default
+   40) aborts the sweep and deliberately does NOT publish
+   `calibration.json`; the checkpoint survives for a resume.
+   `tests/test_calibration_breaker.py` covers it.
+
+Separately: the VM root disk is at 91% (3.7 G free of 38 G) with 2.5 G
+reclaimable in docker. Worth headroom, but it is NOT the cause — the
+exhausted filesystem was the container's RAM-backed tmpfs.
+
+Two more defects in the resume path, found while preparing the re-run:
+
+4. `hardware_snapshot()` hashed `platform.node()` — inside a container
+   that is the container id, so ANY deploy recreated the container and
+   changed the fingerprint, silently discarding the checkpoint and
+   restarting from zero. The hash now covers hardware identity only
+   (`IDENTITY_KEYS`); `same_hardware()` compares those fields directly so
+   checkpoints written by older builds still resume. `--force` now
+   resumes (it only overrides the "already current" skip); the new
+   `--restart` is the explicit way to discard a checkpoint.
+5. The resume carried the previous run's `failures` into the new
+   artifact even though every one is retried, so combinations that had
+   since passed stayed published as failures. It starts empty now.
+   `tests/test_calibration_resume.py` covers 4 and 5.
+
+### Pending work after this checkpoint
+
+1. Deploy the fixes to `katze` — needs a runner image REBUILD, the
+   capability is baked into the image — then resume calibration. Only the
+   8,574 previously failed combinations are re-measured; the 16,931
+   successful records are kept (user's decision 2026-09-15). Note the
+   1,927 of those records with id >= 2364 were measured while /tmp was
+   filling, so their timings may run slightly high; kept deliberately.
+2. Keep failed combinations blocked until the replacement matrix is
+   complete and validated.
+3. Problem-set restructure (below) deploys AFTER calibration finishes —
+   it recreates containers, and the corpus content is identical either
+   way, so it does not affect calibration validity.
+
 ## Extending the problem set — checklist
 
 1. Adapt the statement (copyright-free, algorithm-identical), pick the

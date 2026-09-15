@@ -436,7 +436,78 @@ def _reap_orphans() -> None:
 # Entries under /tmp the worker manages itself (the shared Go build cache
 # the executors compile against, and the prewarm build directory).
 PREWARM_DIR = Path(os.environ.get("CODERPUZZLE_PREWARM_DIR", "/tmp/coderpuzzle-prewarm"))
-_MANAGED_TMP = {"coderpuzzle-gocache", PREWARM_DIR.name}
+GO_CACHE = Path("/tmp/coderpuzzle-gocache")
+_MANAGED_TMP = {GO_CACHE.name, PREWARM_DIR.name}
+
+# The Go build cache is exempt from _sweep_tmp (the toolchain owns its own
+# layout), so it is the one entry under /tmp that grows without bound: every
+# distinct build adds entries and Go never evicts them. On a 384 MiB tmpfs a
+# long sweep — a full calibration is ~17k Go builds over many hours — fills
+# /tmp completely, after which EVERY language fails: compiled ones cannot
+# write objects (compile_error) and interpreted ones cannot even stage their
+# source (runtime_error with every case skipped). Bound it here and let the
+# next build repopulate what it needs.
+GO_CACHE_MAX_BYTES = int(os.environ.get("CODERPUZZLE_GOCACHE_MAX_BYTES", str(128 * 1024 * 1024)))
+GO_CACHE_CHECK_INTERVAL = float(os.environ.get("CODERPUZZLE_GOCACHE_CHECK_INTERVAL", "60"))
+
+
+def _tree_bytes(root: Path) -> int:
+    total = 0
+    stack = [root]
+    while stack:
+        try:
+            entries = list(os.scandir(stack.pop()))
+        except OSError:
+            continue
+        for entry in entries:
+            try:
+                if entry.is_dir(follow_symlinks=False):
+                    stack.append(Path(entry.path))
+                else:
+                    total += entry.stat(follow_symlinks=False).st_size
+            except OSError:
+                continue
+    return total
+
+
+def _prepare_go_cache() -> None:
+    """Create the shared Go build cache owned by the compiler uid.
+
+    The Go toolchain refuses to reuse a cache written by another uid, so the
+    directory must belong to the uid submissions compile under. That makes it
+    un-chmod-able afterwards for a worker without CAP_FOWNER, so only touch
+    the mode while we still own the directory — a blind chmod on every pass
+    is what used to raise EPERM and abort the whole prewarm from its second
+    pass onward, leaving every toolchain permanently cold."""
+    fresh = not GO_CACHE.exists()
+    GO_CACHE.mkdir(parents=True, exist_ok=True)
+    if fresh:
+        GO_CACHE.chmod(0o1777)
+        os.chown(GO_CACHE, NOBODY_UID, NOBODY_GID)
+
+
+def _trim_go_cache() -> None:
+    """Drop the shared Go build cache once it outgrows its budget."""
+    size = _tree_bytes(GO_CACHE)
+    if size <= GO_CACHE_MAX_BYTES:
+        return
+    shutil.rmtree(GO_CACHE, ignore_errors=True)
+    remaining = _tree_bytes(GO_CACHE) if GO_CACHE.exists() else 0
+    if remaining > GO_CACHE_MAX_BYTES:
+        # Nothing was reclaimed: the cache belongs to the compiler uid, so
+        # removing it needs CAP_FOWNER (see the runner's cap_add). Say so
+        # rather than filling /tmp silently.
+        print(
+            f"CoderPuzzle go cache at {remaining} bytes could not be trimmed "
+            "(CAP_FOWNER missing?); /tmp will fill and every language will fail",
+            file=sys.stderr, flush=True,
+        )
+        return
+    try:
+        _prepare_go_cache()
+    except OSError as error:
+        print(f"CoderPuzzle go cache could not be recreated: {error}", file=sys.stderr, flush=True)
+    print(f"CoderPuzzle trimmed the go build cache at {size} bytes", file=sys.stderr, flush=True)
 
 
 def _sweep_tmp() -> None:
@@ -465,16 +536,22 @@ def _sweep_tmp() -> None:
 
 
 _last_tmp_sweep = 0.0
+_last_go_cache_check = 0.0
 
 
 def _hygiene() -> None:
-    """Reap inherited zombies every pass; sweep /tmp at most once a second."""
-    global _last_tmp_sweep
+    """Reap inherited zombies every pass; sweep /tmp at most once a second
+    and size-check the shared Go build cache at most once a minute."""
+    global _last_tmp_sweep, _last_go_cache_check
     _reap_orphans()
     now = time.monotonic()
     if now - _last_tmp_sweep >= 1.0:
         _last_tmp_sweep = now
         _sweep_tmp()
+    if now - _last_go_cache_check >= GO_CACHE_CHECK_INTERVAL:
+        _last_go_cache_check = now
+        if not _prewarming and GO_CACHE.exists():
+            _trim_go_cache()
 
 
 def _prewarm_toolchains_once() -> None:
@@ -529,16 +606,19 @@ def _prewarm_toolchains_once() -> None:
         # toolchain refuses to reuse a build cache written by another uid, so
         # the warm build drops to the compiler uid (65534) that submissions
         # run under; the directory is chowned to match.
-        go_cache = Path("/tmp/coderpuzzle-gocache")
-        go_cache.mkdir(parents=True, exist_ok=True)
-        go_cache.chmod(0o1777)
-        os.chown(go_cache, NOBODY_UID, NOBODY_GID)
-        jobs.append((
-            (SUPERVISOR_PYTHON, "/runner/compiler_sandbox.py", "2048", "32", "240",
-             "/usr/bin/go", "build", "-trimpath", "-o", str(warm_dir / "warm-go-bin"), str(go_dir / "main.go")),
-            {**environment, "GOCACHE": str(go_cache), "GOENV": "off", "GOPROXY": "off", "CGO_ENABLED": "0"},
-            None,
-        ))
+        # One toolchain's setup failing must not cancel the other four warm
+        # jobs, so the Go cache is prepared in its own guard.
+        try:
+            _prepare_go_cache()
+        except OSError as error:
+            print(f"CoderPuzzle go pre-warm skipped: {error}", file=sys.stderr, flush=True)
+        else:
+            jobs.append((
+                (SUPERVISOR_PYTHON, "/runner/compiler_sandbox.py", "2048", "32", "240",
+                 "/usr/bin/go", "build", "-trimpath", "-o", str(warm_dir / "warm-go-bin"), str(go_dir / "main.go")),
+                {**environment, "GOCACHE": str(GO_CACHE), "GOENV": "off", "GOPROXY": "off", "CGO_ENABLED": "0"},
+                None,
+            ))
         java_source = warm_dir / "Warm.java"
         java_source.write_text("class Warm {}\n", encoding="utf-8")
         jobs.append((

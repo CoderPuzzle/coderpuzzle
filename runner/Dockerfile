@@ -87,15 +87,19 @@ RUN mkdir -p /runner/java-classes /runner/benchmarks \
 RUN groupadd --gid 10001 coderpuzzle \
     && useradd --uid 10000 --gid coderpuzzle --no-create-home coderpuzzle-runner \
     && cp /usr/local/bin/python3.14 /usr/local/bin/coderpuzzle-supervisor-python \
-    && setcap cap_chown,cap_dac_override,cap_kill,cap_setuid,cap_setgid=ep \
+    && setcap cap_chown,cap_dac_override,cap_fowner,cap_kill,cap_setuid,cap_setgid=ep \
         /usr/local/bin/coderpuzzle-supervisor-python \
     && mkdir -p /queue \
     && chown coderpuzzle-runner:coderpuzzle /queue \
     && chmod 0770 /queue \
     && chmod -R 0555 /runner
 
-# The supervisor is unprivileged but retains five explicit container
+# The supervisor is unprivileged but retains six explicit container
 # capabilities so it can manage and remove scratch space, drop children to
 # UID/GID 65534, and terminate processes hostile submissions leave behind.
+# cap_fowner is what makes "remove scratch space" true: submissions run as
+# UID 65534 in a sticky, world-writable /tmp, and unlinking another uid's
+# file from a sticky directory is an ownership check that cap_dac_override
+# does not cover. Without it _sweep_tmp reclaims nothing and /tmp fills.
 USER 10000:10001
 CMD ["coderpuzzle-supervisor-python", "-I", "-S", "/runner/worker.py"]
