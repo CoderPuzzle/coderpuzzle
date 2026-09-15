@@ -17,6 +17,15 @@ class JavaExecutor:
     # HotSpot reserves substantially more virtual address space than its
     # resident heap. Physical memory remains capped by JVM flags and cgroups.
     address_space_overhead_mb = 1792
+    # Measured on 1226 (the-dining-philosophers), whose schedules run 5..100
+    # threads: its 5-thread cases pass inside the base allowance, but every
+    # case from 20 threads up needs ~512 MiB more address space, and the need
+    # then plateaus rather than scaling with the thread count — so a flat term
+    # is the right shape, and 1024 leaves headroom over the measured step.
+    # Without it the JVM dies with "unable to create native thread" before
+    # emitting anything. RLIMIT_AS bounds reservation, not residency; real
+    # memory stays capped by -Xmx192m and the runner cgroup.
+    schedule_address_space_mb = 1024
     max_processes = 48
     java_path = "/usr/bin/java"
     javac_path = "/usr/bin/javac"

@@ -25,6 +25,12 @@ class LanguageExecutor(Protocol):
 
     language: str
     address_space_overhead_mb: int
+    # Extra address space a *concurrency schedule* costs this runtime, on top
+    # of address_space_overhead_mb and the per-thread stack allowance. Managed
+    # runtimes reserve in bulk once a schedule spawns threads rather than in
+    # proportion to the thread count, so this is a flat term applied only when
+    # a problem declares `threads`. 0 for runtimes that show no such step.
+    schedule_address_space_mb: int = 0
     max_processes: int
 
     def calibrate(self) -> tuple[float, float]:

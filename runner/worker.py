@@ -75,13 +75,14 @@ def _sandboxed_runtime_command(
 PROTOCOL_FD = 63
 
 
-# True only while the prewarm thread's Go build runs. That build drops to
-# the shared submission uid (via the compiler sandbox), which the kill sweep
-# below targets — sweeping mid-build would kill the warm build (and risk a
-# torn shared Go build cache). The other prewarm jobs run as root and never
-# match the sweep, so judging (and its sweeps) proceeds around them; only
-# the Go build's window needs exclusivity.
+# Prewarming and judging must never overlap. Besides distorting measured
+# timings, a compiler warm-up can consume enough of a shared-mode container's
+# CPU or memory to kill the testcase beside it. A queued job cancels the
+# current warm-up and takes this lock as soon as its process group has exited.
+# `_prewarming` also keeps cache hygiene away from a warm-up's files.
 _prewarming = False
+_execution_lock = threading.Lock()
+_prewarm_cancel = threading.Event()
 
 
 def _kill_lingering_children() -> None:
@@ -106,6 +107,26 @@ def _kill_lingering_children() -> None:
             continue
 
 
+def _effective_memory_mb(
+    limits: dict[str, Any], executor: LanguageExecutor
+) -> int:
+    """Return the runtime's virtual-address allowance.
+
+    Managed runtimes reserve address space for the VM in addition to the
+    problem's physical-memory allowance. Thread stacks add a per-thread term;
+    runtimes that reserve another region as soon as any schedule exists can
+    declare one flat schedule term as well. Physical memory remains bounded
+    separately by the execution cgroup.
+    """
+    threads = int(limits.get("threads", 0))
+    return (
+        int(limits.get("memory_mb", 256))
+        + executor.address_space_overhead_mb
+        + threads * 2
+        + (getattr(executor, "schedule_address_space_mb", 0) if threads else 0)
+    )
+
+
 def _run_case(
     job_root: Path,
     case_input: Any,
@@ -126,16 +147,7 @@ def _run_case(
     effective_limits = {
         **limits,
         "time_ms": calibrated_time_ms,
-        # Managed runtimes reserve address space for the VM in addition to the
-        # problem's user-memory allowance. The executor declares that overhead.
-        # Thread stacks and per-thread allocator arenas come out of the
-        # address-space allowance, the same way a managed runtime's VM does,
-        # so a declared schedule brings its own headroom.
-        "memory_mb": (
-            int(limits.get("memory_mb", 256))
-            + executor.address_space_overhead_mb
-            + int(limits.get("threads", 0)) * 2
-        ),
+        "memory_mb": _effective_memory_mb(limits, executor),
         # A concurrency problem's schedule needs one OS thread per scheduled
         # call, and threads count against the process cap. RLIMIT_NPROC is a
         # budget shared by every process of the submission uid — including
@@ -554,6 +566,35 @@ def _hygiene() -> None:
             _trim_go_cache()
 
 
+def _run_prewarm_command(
+    command: tuple[str, ...], environment: dict[str, str], cwd: Path
+) -> None:
+    """Run one warm-up command, aborting promptly when a job is queued."""
+    process = subprocess.Popen(
+        command,
+        env=environment,
+        cwd=cwd,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        start_new_session=True,
+    )
+    deadline = time.monotonic() + 240
+    try:
+        while process.poll() is None:
+            if _prewarm_cancel.wait(0.05):
+                os.killpg(process.pid, signal.SIGKILL)
+                process.wait()
+                return
+            if time.monotonic() >= deadline:
+                os.killpg(process.pid, signal.SIGKILL)
+                process.wait()
+                raise subprocess.TimeoutExpired(command, 240)
+    finally:
+        if process.poll() is None:
+            os.killpg(process.pid, signal.SIGKILL)
+            process.wait()
+
+
 def _prewarm_toolchains_once() -> None:
     """Compile throwaway programs so a user's first submission never pays
     the cold toolchain cost (page-cache faults dominate rustc/g++/javac/tsc
@@ -614,9 +655,9 @@ def _prewarm_toolchains_once() -> None:
             print(f"CoderPuzzle go pre-warm skipped: {error}", file=sys.stderr, flush=True)
         else:
             jobs.append((
-                (SUPERVISOR_PYTHON, "/runner/compiler_sandbox.py", "2048", "32", "240",
+                (SUPERVISOR_PYTHON, "/runner/compiler_sandbox.py", "2048", "64", "240",
                  "/usr/bin/go", "build", "-trimpath", "-o", str(warm_dir / "warm-go-bin"), str(go_dir / "main.go")),
-                {**environment, "GOCACHE": str(GO_CACHE), "GOENV": "off", "GOPROXY": "off", "CGO_ENABLED": "0"},
+                {**environment, "GOCACHE": str(GO_CACHE), "GOENV": "off", "GOPROXY": "off", "CGO_ENABLED": "0", "GOMAXPROCS": "1"},
                 None,
             ))
         java_source = warm_dir / "Warm.java"
@@ -634,19 +675,26 @@ def _prewarm_toolchains_once() -> None:
             environment,
             None,
         ))
-        for command, job_environment, preexec in jobs:
-            # Narrow the sweep suppression to the one job the sweep could
-            # catch: the Go build under the compiler-sandbox's submission uid.
-            _prewarming = command[1] == "/runner/compiler_sandbox.py"
-            try:
-                subprocess.run(
-                    command, env=job_environment, cwd=warm_dir,
-                    preexec_fn=preexec,
-                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                    timeout=240, check=False,
-                )
-            except (OSError, subprocess.SubprocessError) as error:
-                print(f"CoderPuzzle pre-warm skipped {' '.join(command[:2])}: {error}", file=sys.stderr, flush=True)
+        for command, job_environment, _preexec in jobs:
+            if _prewarm_cancel.is_set():
+                break
+            # A job that appears while this command runs sets the cancellation
+            # event, kills the warm-up's whole process group, then acquires the
+            # lock. It never competes with a warm-up for resources.
+            with _execution_lock:
+                if _prewarm_cancel.is_set():
+                    break
+                _prewarming = True
+                try:
+                    _run_prewarm_command(command, job_environment, warm_dir)
+                except (OSError, subprocess.SubprocessError) as error:
+                    print(
+                        f"CoderPuzzle pre-warm skipped {' '.join(command[:2])}: {error}",
+                        file=sys.stderr,
+                        flush=True,
+                    )
+                finally:
+                    _prewarming = False
     except OSError as error:
         print(f"CoderPuzzle pre-warm disabled: {error}", file=sys.stderr, flush=True)
     finally:
@@ -697,32 +745,39 @@ def main() -> None:
             file=sys.stderr,
             flush=True,
         )
-    # Serve immediately; warming runs alongside queue polling so startup is
-    # never delayed, and repeats periodically to keep the toolchains warm.
+    # Serve immediately. Warm-up work repeats in the background, but yields
+    # and terminates its current process group as soon as a job is queued.
     threading.Thread(target=_prewarm_loop, name="coderpuzzle-prewarm", daemon=True).start()
     QUEUE_DIR.mkdir(parents=True, exist_ok=True)
     WORK_DIR.mkdir(parents=True, exist_ok=True)
     while True:
         found = False
-        for ready in queued_jobs():
+        ready_jobs = queued_jobs()
+        if ready_jobs:
+            # Wake a cancellable warm-up before waiting for the execution lock.
+            _prewarm_cancel.set()
+        for ready in ready_jobs:
             found = True
-            try:
-                # The ready inode is stable until publication; death releases
-                # the lock, so another slot can retry an abandoned claim.
-                with claim_ready(ready) as claimed:
-                    if not claimed:
-                        continue
-                    _process_job(ready.parent)
-            except FileNotFoundError:
-                continue
-            except Exception:  # noqa: BLE001 — one bad job must never kill the worker
-                print(
-                    f"Runner job {ready.parent.name} crashed:\n{traceback.format_exc()}",
-                    file=sys.stderr,
-                    flush=True,
-                )
+            with _execution_lock:
+                try:
+                    # The ready inode is stable until publication; death
+                    # releases the lock, so another slot can retry an
+                    # abandoned claim.
+                    with claim_ready(ready) as claimed:
+                        if not claimed:
+                            continue
+                        _process_job(ready.parent)
+                except FileNotFoundError:
+                    continue
+                except Exception:  # noqa: BLE001 — one bad job must never kill the worker
+                    print(
+                        f"Runner job {ready.parent.name} crashed:\n{traceback.format_exc()}",
+                        file=sys.stderr,
+                        flush=True,
+                    )
             _hygiene()
         if not found:
+            _prewarm_cancel.clear()
             _hygiene()
         time.sleep(POLL_INTERVAL)
 

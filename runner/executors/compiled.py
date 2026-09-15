@@ -37,6 +37,9 @@ class CompiledExecutor:
     compiler_gid = 65534
     compiler_timeout_seconds = 10
     compiler_memory_mb = 512
+    # Separate from the runtime process cap: compiler toolchains may need
+    # more helper processes even though the resulting submission may not.
+    compiler_max_processes: int | None = None
     max_processes = 32
     language: str
     benchmark_command: tuple[str, ...]
@@ -77,7 +80,7 @@ class CompiledExecutor:
                     sandboxed_compiler_command(
                         command,
                         self.compiler_memory_mb,
-                        self.max_processes,
+                        self.compiler_max_processes or self.max_processes,
                         self.compiler_timeout_seconds,
                     ),
                     cwd=job_root,

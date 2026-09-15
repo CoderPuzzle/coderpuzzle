@@ -99,6 +99,10 @@ class GoExecutor(CompiledExecutor):
     # by GOMEMLIMIT and the container cgroup.
     address_space_overhead_mb = 2048
     max_processes = 32
+    # `go build` is itself a Go program and uses helper compiler processes.
+    # RLIMIT_NPROC is uid-global, so the runtime-sized limit can be exhausted
+    # by unrelated uid-65534 processes on the host before this build starts.
+    compiler_max_processes = 64
     compiler_memory_mb = 2048
     # A cold GOCACHE (fresh container, or stdlib packages the warm build does
     # not cover) makes `go build` compile standard-library packages on the

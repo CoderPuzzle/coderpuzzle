@@ -939,15 +939,21 @@ class CppExecutor(CompiledExecutor):
                     for field in fields
                 ):
                     continue  # emit referenced structs first
-                reads = ", ".join(
-                    f"CoderPuzzleDecoder<{cpp_type(field['value_type'])}>::read(reader)"
-                    for field in fields
+                reads = "\n".join(
+                    f"auto coderpuzzle_field_{index} = "
+                    f"CoderPuzzleDecoder<{cpp_type(field['value_type'])}>::read(reader);"
+                    for index, field in enumerate(fields)
+                )
+                arguments = ", ".join(
+                    f"std::move(coderpuzzle_field_{index})"
+                    for index in range(len(fields))
                 )
                 struct_codecs += textwrap.dedent(
                     f"""
                     template <> struct CoderPuzzleDecoder<{name}> {{
                         static {name} read(CoderPuzzleReader& reader) {{
-                            return {name}({reads});
+                    {textwrap.indent(reads, '        ')}
+                            return {name}({arguments});
                         }}
                     }};
                     """
