@@ -1,5 +1,6 @@
 import re
 import time
+import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Annotated, Any
@@ -39,6 +40,9 @@ from .problems import (
     load_solutions,
     public_problem,
 )
+
+
+LEGACY_REFERENCE_TIMING = os.environ.get("CODERPUZZLE_LEGACY_REFERENCE_TIMING", "0") == "1"
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
@@ -445,6 +449,16 @@ def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_se
     summary = _summarize(results)
     _attach_tamper_warnings(summary, bundle, request.language, request.code)
     baseline = calibration.lookup(request.slug, request.language)
+    if LEGACY_REFERENCE_TIMING and summary["status"] == "accepted":
+        reference = load_designated_reference(request.slug, request.language, path=bundle)
+        if reference:
+            reference_results = _run_judge(problem_data, request.language, reference, cases, public_count, bundle)
+            reference_summary = _summarize(reference_results)
+            if reference_summary["status"] == "accepted" and reference_summary["runtime_ms"] > 0:
+                baseline = {
+                    "reference_walltime_ms": reference_summary["runtime_ms"],
+                    "timeout_ms": None,
+                }
     summary["reference_runtime_ms"] = baseline["reference_walltime_ms"] if baseline else None
     summary["timeout_ms"] = baseline["timeout_ms"] if baseline else None
     summary["performance_ratio_percent"] = (
