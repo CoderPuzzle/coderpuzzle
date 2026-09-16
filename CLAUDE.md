@@ -263,10 +263,17 @@ filled completely (unbounded Go build cache + a `_sweep_tmp` that could
 not unlink `nobody`-owned litter without `CAP_FOWNER`), after which
 compiled languages could not write objects and interpreted ones could not
 stage source. Calibration runs in id order, so the damage is a clean
-block: successes stop at id 2709, failures run 2640 → 4018 unbroken,
-1,173 slugs failing in all seven languages. Only six failures predate the
-ramp (ids 366, 690, 1226, 1242, 1265, 2237) and each of those is a real,
-reproducible defect.
+block: successes stop at id 2709 and failures run 2640 → 4018 unbroken,
+1,173 slugs failing in all seven languages.
+
+Retrying only the failed combinations, with the `/tmp` fixes deployed,
+left **six** standing failures — no tail at all:
+
+- four are real, reproducible defects: ids 366, 690, 1226, 1265 (below);
+- two (2364, 2369 — python3, ~6-minute `runtime_error`s on the largest
+  case corpora) were the prewarm/job collision, not the bundles: the
+  periodic compiler warm-up could not spawn its helper processes and then
+  starved the testcase running beside it.
 
 Runner fixes landed with this checkpoint (all verified in a rebuilt
 image, then re-verified against the live sandbox):

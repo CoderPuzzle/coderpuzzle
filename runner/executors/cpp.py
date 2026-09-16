@@ -939,24 +939,22 @@ class CppExecutor(CompiledExecutor):
                     for field in fields
                 ):
                     continue  # emit referenced structs first
-                reads = "\n".join(
-                    f"auto coderpuzzle_field_{index} = "
-                    f"CoderPuzzleDecoder<{cpp_type(field['value_type'])}>::read(reader);"
+                reads = "".join(
+                    "        " + f"auto coderpuzzle_field_{index} = "
+                    f"CoderPuzzleDecoder<{cpp_type(field['value_type'])}>::read(reader);\n"
                     for index, field in enumerate(fields)
                 )
                 arguments = ", ".join(
                     f"std::move(coderpuzzle_field_{index})"
                     for index in range(len(fields))
                 )
-                struct_codecs += textwrap.dedent(
-                    f"""
-                    template <> struct CoderPuzzleDecoder<{name}> {{
-                        static {name} read(CoderPuzzleReader& reader) {{
-                    {textwrap.indent(reads, '        ')}
-                            return {name}({arguments});
-                        }}
-                    }};
-                    """
+                struct_codecs += (
+                    f"template <> struct CoderPuzzleDecoder<{name}> {{\n"
+                    f"    static {name} read(CoderPuzzleReader& reader) {{\n"
+                    f"{reads}"
+                    f"        return {name}({arguments});\n"
+                    f"    }}\n"
+                    f"}};\n"
                 )
                 del pending_specs[name]
                 emitted = True
