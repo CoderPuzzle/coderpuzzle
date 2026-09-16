@@ -7,15 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Robot {
-    private static final int[][] DIRECTIONS = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+
+    private static final int[][] DIRECTIONS = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
     private final int[][] room;
     private final int rows;
     private final int cols;
     private int row;
     private int col;
     private int face; // starts facing up, LeetCode convention
-    private final java.util.TreeSet<long[]> cleaned = new java.util.TreeSet<>(
-        (a, b) -> a[0] != b[0] ? Long.compare(a[0], b[0]) : Long.compare(a[1], b[1])
+    private final java.util.TreeSet<long[]> cleaned = new java.util.TreeSet<>((a, b) ->
+        a[0] != b[0] ? Long.compare(a[0], b[0]) : Long.compare(a[1], b[1])
     );
     private long budget;
 
@@ -76,7 +77,7 @@ public class Robot {
 
     public void clean() {
         spend();
-        cleaned.add(new long[] {row, col});
+        cleaned.add(new long[] { row, col });
     }
 
     public Object verdict() {

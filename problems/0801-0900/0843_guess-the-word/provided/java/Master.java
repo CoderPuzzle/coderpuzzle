@@ -4,6 +4,7 @@
  * starter. Constructed from the case state (wordlist, secret, budget and the query
  * budget). */
 public class Master {
+
     private final String secret;
     private long budget;
     private boolean found;

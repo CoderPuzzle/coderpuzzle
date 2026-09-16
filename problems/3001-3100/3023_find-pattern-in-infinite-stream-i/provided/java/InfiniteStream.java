@@ -6,6 +6,7 @@
 import java.util.List;
 
 public class InfiniteStream {
+
     private final int[] bits;
     private long budget;
     private int position;

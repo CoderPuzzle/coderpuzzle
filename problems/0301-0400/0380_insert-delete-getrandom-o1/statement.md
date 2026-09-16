@@ -24,7 +24,6 @@ live element must fall within a tolerance band of its uniform probability.
 Any correct uniform sampler passes; `insert` and `remove` return values are
 compared exactly.
 
-
 ### Example 1
 
 ```text

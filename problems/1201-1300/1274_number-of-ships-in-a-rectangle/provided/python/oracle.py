@@ -19,6 +19,4 @@ class Sea:
         self.budget -= 1
         right, top = topRight
         left, bottom = bottomLeft
-        return any(
-            left <= x <= right and bottom <= y <= top for x, y in self.ships
-        )
+        return any(left <= x <= right and bottom <= y <= top for x, y in self.ships)

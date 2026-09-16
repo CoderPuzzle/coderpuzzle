@@ -6,6 +6,7 @@
 import java.util.List;
 
 public class GridMaster {
+
     private static final String U = "U";
     private static final String D = "D";
     private static final String L = "L";
@@ -60,11 +61,16 @@ public class GridMaster {
 
     private int[] delta(String direction) {
         switch (direction) {
-            case U: return new int[] {-1, 0};
-            case D: return new int[] {1, 0};
-            case L: return new int[] {0, -1};
-            case R: return new int[] {0, 1};
-            default: throw new IllegalArgumentException("Direction must be one of U, D, L, R");
+            case U:
+                return new int[] { -1, 0 };
+            case D:
+                return new int[] { 1, 0 };
+            case L:
+                return new int[] { 0, -1 };
+            case R:
+                return new int[] { 0, 1 };
+            default:
+                throw new IllegalArgumentException("Direction must be one of U, D, L, R");
         }
     }
 

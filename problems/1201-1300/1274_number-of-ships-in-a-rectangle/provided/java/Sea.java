@@ -6,6 +6,7 @@
 import java.util.List;
 
 public class Sea {
+
     private final int[][] ships;
     private long budget;
 
@@ -13,10 +14,7 @@ public class Sea {
         this.ships = new int[shipData.size()][];
         for (int i = 0; i < shipData.size(); i++) {
             List<Object> point = asRow(shipData.get(i), i);
-            this.ships[i] = new int[] {
-                ((Number) point.get(0)).intValue(),
-                ((Number) point.get(1)).intValue(),
-            };
+            this.ships[i] = new int[] { ((Number) point.get(0)).intValue(), ((Number) point.get(1)).intValue() };
         }
         this.budget = budget;
     }
@@ -36,8 +34,9 @@ public class Sea {
         }
         budget -= 1;
         for (int[] ship : ships) {
-            if (ship[0] >= bottomLeft[0] && ship[0] <= topRight[0]
-                && ship[1] >= bottomLeft[1] && ship[1] <= topRight[1]) {
+            if (
+                ship[0] >= bottomLeft[0] && ship[0] <= topRight[0] && ship[1] >= bottomLeft[1] && ship[1] <= topRight[1]
+            ) {
                 return true;
             }
         }

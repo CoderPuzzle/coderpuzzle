@@ -6,6 +6,7 @@
 import java.util.List;
 
 public class BinaryMatrix {
+
     private final int[][] matrix;
     private long budget;
 

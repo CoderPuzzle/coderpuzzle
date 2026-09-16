@@ -27,7 +27,9 @@ class Solution {
         for (int i = 0; i < edges.length; i++) {
             // on a shortest path iff d0(one end) + w + dN(other end) == total,
             // tested both ways since the undirected edge may be crossed either way
-            int u = edges[i][0], v = edges[i][1], w = edges[i][2];
+            int u = edges[i][0],
+                v = edges[i][1],
+                w = edges[i][2];
             if (dist0[u] + w + distN[v] == total || dist0[v] + w + distN[u] == total) {
                 ans[i] = true;
             }

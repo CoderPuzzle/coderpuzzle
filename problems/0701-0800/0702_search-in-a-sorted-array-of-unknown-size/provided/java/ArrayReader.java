@@ -6,6 +6,7 @@
 import java.util.List;
 
 public class ArrayReader {
+
     public static final int SENTINEL = Integer.MAX_VALUE;
     private final int[] arr;
     private long budget;

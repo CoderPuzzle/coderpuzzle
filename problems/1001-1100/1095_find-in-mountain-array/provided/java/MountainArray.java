@@ -6,6 +6,7 @@
 import java.util.List;
 
 public class MountainArray {
+
     private final int[] mountain;
     private long budget;
 
