@@ -135,6 +135,26 @@ class ResumeTests(unittest.TestCase):
         self.assertEqual({row["slug"] for row in published["records"]},
                          {"demo-1", "demo-2", "demo-3"})
 
+    def test_the_reference_is_measured_above_the_judging_deadline(self):
+        """A reference that is merely slow must still be measurable.
+
+        The bundle's time_ms is what a submission is held to. Holding the
+        reference to it too made a correct-but-slow reference unmeasurable,
+        and an unmeasured pair is a pair that cannot be judged at all."""
+        seen = []
+
+        def judge(problem, language, reference, cases, public_count, bundle,
+                  respect_calibration=True):
+            seen.append(problem["limits"]["time_ms"])
+            return [{"index": 0, "status": "accepted", "wall_time_ms": 5}]
+
+        self._write_checkpoint(hostname="a-previous-container")
+        with mock.patch.object(calibrate, "_run_judge", side_effect=judge), \
+                mock.patch("sys.argv", ["app.calibrate", "--force"]):
+            calibrate.main()
+        self.assertTrue(seen)
+        self.assertEqual([1500 * calibrate.MEASUREMENT_HEADROOM] * len(seen), seen)
+
     def test_a_record_carries_both_measured_figures(self):
         """The per-case figures exclude the fixed cost of starting a case, so
         the job budget needs its own end-to-end measurement, and the per-case

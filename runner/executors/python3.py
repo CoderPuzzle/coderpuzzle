@@ -1,9 +1,10 @@
 import json
+import subprocess
 import time
 from pathlib import Path
 from typing import Any
 
-from .base import PreparedProgram
+from .base import ExecutorError, PreparedProgram
 
 
 class Python3Executor:
@@ -15,13 +16,34 @@ class Python3Executor:
     max_processes = 16
     python_path = "/usr/local/bin/python3.14"
     harness_path = Path("/runner/python_harness.py")
-    reference_benchmark_ms = 55.0
+    # Timed as a subprocess, like every other executor: a testcase pays for
+    # a fresh interpreter and then the work, and timing the loop in-process
+    # instead made python3 the one language whose benchmark excluded its own
+    # startup. On the deployment host the same loop measures 67.8 ms
+    # in-process against 113.7 ms spawned, so the old figure understated this
+    # host's python cost by a third. The constant is re-based by that ratio,
+    # which leaves the derived factor where it was: the measurement was
+    # wrong, the host's relative speed was not.
+    reference_benchmark_ms = 92.0
+    benchmark_source = (
+        "accumulator = 0x12345678\n"
+        "for value in range(750_000):\n"
+        "    accumulator = ((accumulator << 5) - accumulator + value) & 0xFFFFFFFF\n"
+    )
 
     def calibrate(self) -> tuple[float, float]:
         started = time.perf_counter()
-        accumulator = 0x12345678
-        for value in range(750_000):
-            accumulator = ((accumulator << 5) - accumulator + value) & 0xFFFFFFFF
+        try:
+            subprocess.run(
+                (self.python_path, "-I", "-S", "-c", self.benchmark_source),
+                check=True,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                timeout=10,
+                env={"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": "/nonexistent"},
+            )
+        except (OSError, subprocess.SubprocessError) as error:
+            raise ExecutorError(f"{self.language} calibration failed: {error}") from error
         elapsed_ms = (time.perf_counter() - started) * 1000
         factor = min(3.0, max(0.75, elapsed_ms / self.reference_benchmark_ms))
         return elapsed_ms, factor

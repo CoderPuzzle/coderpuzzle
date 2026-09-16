@@ -41,6 +41,15 @@ PROGRESS_FILE = calibration.CALIBRATION_DIR / "calibration-progress.json"
 # complete. Stop instead: the checkpoint survives, so a fixed host resumes
 # exactly where the breaker tripped.
 CONSECUTIVE_FAILURE_LIMIT = int(os.environ.get("CODERPUZZLE_CALIBRATION_FAILURE_LIMIT", "40"))
+# Measuring is not judging. A bundle's time_ms is the deadline a *submission*
+# is held to, and holding the reference to it as well means a pair can become
+# unmeasurable for being merely slow: maximum-good-subtree-score/python3 needs
+# about 2.5 s on its one large case against a 1500 ms nominal, so the sweep
+# recorded a failure for a reference that is perfectly correct. The ceiling
+# here exists only to stop a runaway reference, and what the reference
+# actually costs is then written into the record -- which is what every
+# derived deadline is built from anyway.
+MEASUREMENT_HEADROOM = max(1, int(os.environ.get("CODERPUZZLE_CALIBRATION_HEADROOM", "10")))
 
 
 class HostUnhealthy(RuntimeError):
@@ -190,6 +199,11 @@ def main() -> int:
         finally:
             Path(temp).unlink(missing_ok=True)
     started = time.time()
+    # A ratio only means something when its two halves were timed the same
+    # way, so the artifact records what this sweep measured under and the
+    # judge refuses to divide across a change (docs/api-and-cli.md).
+    measured_modes: set[str] = set()
+    measured_profiles: set[str] = set()
     problems = list_problems()
     total = len(starter_languages())
     completed = 0
@@ -234,9 +248,12 @@ def main() -> int:
                 judge.RUNNER_TIMEOUT = max(base_timeout, _pair_wait_seconds(
                     len(judge.select_cases(cases, public_count)),
                     allowances.get(language, judge.PER_CASE_RUNNER_SECONDS)))
+                measured = {**problem, "limits": {
+                    **problem["limits"],
+                    "time_ms": int(problem["limits"]["time_ms"]) * MEASUREMENT_HEADROOM}}
                 started = time.monotonic()
                 try:
-                    results = _run_judge(problem, language, reference, cases, public_count, bundle,
+                    results = _run_judge(measured, language, reference, cases, public_count, bundle,
                                          respect_calibration=False)
                     failed_results = [row for row in results if row.get("status") not in {"accepted", "completed"}]
                     if failed_results:
@@ -262,6 +279,8 @@ def main() -> int:
                 # job budget has to cover; the per-case figures above exclude
                 # the fixed cost of starting one.
                 observed_job_ms = int((time.monotonic() - started) * 1000)
+                measured_modes.update(r.get("timing_mode", "wall") for r in results)
+                measured_profiles.update(r.get("resource_profile", "shared-wall-v1") for r in results)
                 allowances[language] = max(allowances.get(language, 0.0),
                                            observed_job_ms / 1000 / max(1, len(results)))
                 if wall <= 0:
@@ -286,6 +305,9 @@ def main() -> int:
     payload = {"schema_version": 1, "created_at": time.time(),
                "platform": platform.platform(), "hardware": hardware, "records": rows,
                "failures": failures,
+               "timing_mode": next(iter(measured_modes)) if len(measured_modes) == 1 else "mixed",
+               "resource_profile": (next(iter(measured_profiles))
+                                    if len(measured_profiles) == 1 else "mixed"),
                "duration_seconds": time.time() - started}
     calibration.CALIBRATION_DIR.mkdir(parents=True, exist_ok=True)
     fd, temp = tempfile.mkstemp(prefix="calibration-", suffix=".json", dir=calibration.CALIBRATION_DIR)
