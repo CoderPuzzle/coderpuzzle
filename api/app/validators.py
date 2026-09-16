@@ -14,10 +14,6 @@ import json
 from typing import Any
 
 
-def _is_number(value: Any) -> bool:
-    return isinstance(value, (int, float)) and not isinstance(value, bool)
-
-
 def _is_index(value: Any) -> bool:
     return isinstance(value, int) and not isinstance(value, bool)
 

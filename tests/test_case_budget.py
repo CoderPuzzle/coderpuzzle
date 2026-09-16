@@ -68,8 +68,8 @@ if __name__ == "__main__":
 
 
 class JobTimeoutTests(unittest.TestCase):
-    """RUNNER_TIMEOUT is a module global that the calibration driver raises to
-    900 s for its own sweep, so pin it rather than inherit a sibling test's
+    """RUNNER_TIMEOUT is a module global that the calibration driver rewrites
+    per pair as it sweeps, so pin it rather than inherit a sibling test's
     import order."""
 
     def setUp(self):

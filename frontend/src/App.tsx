@@ -1741,12 +1741,12 @@ function Results({ result, busy, error, comparison, invocationType }: {
           <span>{result.passed} of {result.total} cases passed</span>
         </div>
         <div className="runtime"><Clock3 size={14} /> {result.runtime_ms} ms{result.timing_mode === "cpu" ? " CPU" : ""}</div>
-        {result.reference_runtime_ms != null && result.reference_runtime_ms > 0 && (
+        {result.performance_ratio_percent != null && result.reference_runtime_ms != null && (
           <div
             className="runtime"
             title={`Reference solution: ${result.reference_runtime_ms} ms on the same judge and cases`}
           >
-            <Clock3 size={14} /> {Math.round((result.runtime_ms / result.reference_runtime_ms) * 100)}% of reference
+            <Clock3 size={14} /> {Math.round(result.performance_ratio_percent)}% of reference
           </div>
         )}
       </div>

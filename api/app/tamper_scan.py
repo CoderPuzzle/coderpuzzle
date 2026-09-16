@@ -37,7 +37,6 @@ STATE_ATTR = re.compile(r"(secret|password|hidden_word|target_word|answer_key)",
 
 _JS_DECL = re.compile(r"\b(?:class|function)\s+([A-Za-z_$][\w$]*)")
 _JS_LET = re.compile(r"\b(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=")
-_JAVA_CLASS = re.compile(r"\b(?:class|interface)\s+([A-Za-z_]\w*)")
 
 
 def protected_names(provided_files: dict[str, str]) -> dict[str, list[str]]:

@@ -104,10 +104,6 @@ def _format_json(code: str) -> str:
     return json.dumps(json.loads(code), indent=2, ensure_ascii=False) + "\n"
 
 
-def formattable_languages() -> tuple[str, ...]:
-    return tuple(sorted(_COMMANDS))
-
-
 def format_source(language: str, code: str) -> str:
     """Return `code` formatted for `language`.
 

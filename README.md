@@ -203,17 +203,19 @@ produced by running a reference solution.
 ## Judging and time limits
 
 Each testcase runs in its own sandboxed process, so a job's wall time is set
-by the size of its case list rather than by the submission's own runtime. A
-bundle whose corpus was generated into the tens of thousands of cases would
-otherwise take hours, so a job judges at most `CODERPUZZLE_MAX_JUDGED_CASES`
-cases (default 200): the bundle's public examples, its largest inputs, and an
-even sample of the rest, chosen deterministically so a submission, its
-calibration record, and any later re-judge agree. The runner wait is sized
-from the pair's own measured job: what a case costs is mostly the fixed cost
-of starting its process, which is a property of the language (roughly 215 ms
-under python3 against 44 ms under C++ on the reference host), so one figure
-cannot serve both. A pair with no measurement yet falls back to a per-case
-allowance.
+by its case count rather than by the submission's own runtime. A corpus
+generated into the tens of thousands of cases would take hours, so a job
+judges at most `CODERPUZZLE_MAX_JUDGED_CASES` cases (default 200): the public
+examples, the largest inputs, and an even sample of the rest, chosen
+deterministically so a submission, its calibration record, and any later
+re-judge agree.
+
+Both deadlines — per testcase, and the wait for the whole job — come from that
+pair's own calibration rather than one figure for every language, because most
+of a case is the fixed cost of starting its process (~215 ms under python3
+against ~44 ms under C++ on the reference host). [Judge
+resources](docs/JUDGE-RESOURCES.md#tuning) lists the measured fields and the
+knobs over them.
 
 The default shared profile uses `time_ms` as a nominal per-testcase deadline. At runner startup,
 each executor runs a deterministic language-specific benchmark. The runner

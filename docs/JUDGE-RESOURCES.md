@@ -240,12 +240,43 @@ logs that calibration is current and exits without rerunning. The command runs e
 reference solution sequentially and atomically writes
 `/calibration/calibration.json` (the local `.calibration/` directory is
 ignored by Git). The file records CPU model, logical CPU count, total RAM,
-cgroup/Docker resource limits and a hardware fingerprint. Each record contains
-the reference wall time, the slowest case the sweep saw, and a timeout equal to
-ten times the wall time; the deadline each testcase is held to is ten times
-that slowest case, because a capped job judges a generated corpus's heaviest
-inputs and their average does not predict their worst. Production API containers require a complete
-file before registration, login, or judging; missing records return HTTP 503.
+cgroup/Docker resource limits and a hardware fingerprint.
+
+Each record measures one (problem, language) pair:
+
+| field | meaning | what reads it |
+| --- | --- | --- |
+| `reference_walltime_ms` | the judged cases' reported times, summed | the ratio denominator |
+| `timeout_ms` | ten times that | reported to the client |
+| `case_count` | cases judged (bounded by the cap below) | both derivations |
+| `slowest_case_ms` | the slowest single case | the per-testcase deadline: ten times it |
+| `observed_job_ms` | the whole job, timed end to end | the runner wait: three times it |
+
+The last two exist because neither is predictable from an average. A capped
+job judges a generated corpus's *heaviest* cases, so the mean case understates
+the worst one; and most of a job is the fixed cost of starting each case,
+which is a property of the language, not of the problem. Records written
+before a field existed fall back to the average-derived value.
+
+Production API containers require a complete file before registration, login,
+or judging; missing records return HTTP 503.
+
+### Tuning
+
+Every judged case costs a sandboxed process, so a bundle whose corpus was
+generated into the tens of thousands of cases would take hours. A job judges a
+bounded, deterministic subset instead — the public examples, the largest
+inputs, then an even sample of the rest — and the waits are sized from the
+measurements above rather than from one figure for every language.
+
+| variable | default | what it sets |
+| --- | --- | --- |
+| `CODERPUZZLE_MAX_JUDGED_CASES` | `200` | cases one job may judge |
+| `CODERPUZZLE_PER_CASE_REFERENCE_MULTIPLE` | `10` | per-testcase deadline, over the reference's slowest case |
+| `CODERPUZZLE_JOB_HEADROOM` | `3` | runner wait, over the pair's measured job |
+| `CODERPUZZLE_PER_CASE_RUNNER_SECONDS` | `0.25` | per-case wait for a pair with no measurement yet |
+| `CODERPUZZLE_RUNNER_TIMEOUT_SECONDS` | `20` | floor under every runner wait |
+| `CODERPUZZLE_CALIBRATION_FAILURE_LIMIT` | `40` | consecutive sweep failures before the breaker trips |
 
 User submissions run only once. Their wall time is compared with the matching
 calibration record and returned as `reference_runtime_ms`, `timeout_ms`, and

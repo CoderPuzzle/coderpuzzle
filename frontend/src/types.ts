@@ -88,6 +88,7 @@ export type JudgeResult = {
     timing_mode?: "cpu" | "wall" | "mixed";
     resource_profile?: string;
     reference_runtime_ms?: number | null;
+    performance_ratio_percent?: number | null;
     results: CaseResult[];
     submission_id?: number;
     warnings?: string[];
