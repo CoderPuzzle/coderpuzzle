@@ -31,7 +31,7 @@ class Solution {
         int best = 0;
         for (int a = 0; a <= w1; ++a) {
             // Fixed a: the best partner is the highest reachable bit.
-            for (int b = w2; a + b > best; --b) {
+            for (int b = w2; b >= 0 && a + b > best; --b) {
                 if (rows[a][b]) {
                     best = a + b;
                     break;
