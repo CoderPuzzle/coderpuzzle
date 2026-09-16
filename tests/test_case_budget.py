@@ -1,4 +1,6 @@
+import shutil
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -84,3 +86,28 @@ class JobTimeoutTests(unittest.TestCase):
 
     def test_the_wait_grows_with_the_case_count(self):
         self.assertLess(judge.job_timeout_seconds(50), judge.job_timeout_seconds(500))
+
+
+class StaleJobPruningTests(unittest.TestCase):
+    """A queue entry outlives its client when the API dies mid-wait, and the
+    runner serves the oldest one first — so a single orphan starves every
+    live job behind it."""
+
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, self.root, ignore_errors=True)
+        patcher = patch.object(judge, "QUEUE_DIR", self.root)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def test_an_orphaned_job_is_discarded(self):
+        job = self.root / "abc123"
+        job.mkdir()
+        (job / "ready").touch()
+        (job / "request.json").write_text("{}")
+        self.assertEqual(1, judge.prune_stale_jobs())
+        self.assertEqual([], list(self.root.iterdir()))
+
+    def test_a_missing_or_empty_queue_is_a_no_op(self):
+        self.assertEqual(0, judge.prune_stale_jobs())
+        self.assertEqual(0, judge.prune_stale_jobs())

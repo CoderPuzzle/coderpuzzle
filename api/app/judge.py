@@ -35,6 +35,35 @@ class RunnerUnavailable(RuntimeError):
     pass
 
 
+def prune_stale_jobs() -> int:
+    """Drop queue entries nobody is waiting for.
+
+    A job directory outlives its client only when the API process died
+    mid-wait — a deploy, a crash, an OOM — because that skips the cleanup in
+    _submit. The runner serves the oldest `ready` job first, so a single such
+    entry pins it to work no one will read and every job behind it waits out
+    its whole deadline. Called once at startup, when nothing can be waiting on
+    this queue: the deployment runs one API replica, and the runner holds no
+    client of its own.
+    """
+    removed = 0
+    try:
+        entries = list(QUEUE_DIR.glob("*"))
+    except OSError:
+        return 0
+    for job_dir in entries:
+        if not job_dir.is_dir():
+            continue
+        try:
+            for path in job_dir.iterdir():
+                path.unlink(missing_ok=True)
+            job_dir.rmdir()
+            removed += 1
+        except OSError:
+            continue
+    return removed
+
+
 def job_timeout_seconds(case_count: int) -> float:
     """How long to wait for one job carrying this many cases.
 

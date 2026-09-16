@@ -1,3 +1,4 @@
+import logging
 import re
 import time
 import os
@@ -26,7 +27,14 @@ from .database import (
     validate_session,
 )
 from .web_session import SESSION_COOKIE, current_session, set_session_cookie
-from .judge import RunnerUnavailable, execute, format_code_report, judge_slot, select_cases
+from .judge import (
+    RunnerUnavailable,
+    execute,
+    format_code_report,
+    judge_slot,
+    prune_stale_jobs,
+    select_cases,
+)
 from . import tamper_scan
 from .models import FormatRequest, RunRequest, SubmitRequest
 from .problems import (
@@ -50,6 +58,12 @@ async def lifespan(_: FastAPI):
     initialize_database()
     load_defaults()
     purge_expired_sessions()
+    # A process that died mid-wait leaves its job queued; the runner would
+    # otherwise spend its oldest-first attention on that orphan and starve
+    # every live request behind it.
+    stale = prune_stale_jobs()
+    if stale:
+        logging.getLogger("uvicorn.error").warning("discarded %d queue job(s) left by a previous process", stale)
     yield
 
 
