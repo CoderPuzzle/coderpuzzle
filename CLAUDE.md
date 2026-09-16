@@ -10,9 +10,9 @@ problem set it serves.
   suffix. `docs/BETTERCODE-SUBSET.md` lists the bettercode-derived ids.
 - **`CoderPuzzle/lc-adapt`** (private, sibling `../lc-adapt`) — the
   copyright-free adaptation: 838 bettercode-derived bundles plus 3,193
-  extend-derived ones, all carrying their **original source ids**, as
-  `problems/`. Renamed and privatized from `coderpuzzle-problems` on
-  2026-09-15, when this repo took over the original corpus, the tooling,
+  extend-derived ones, all carrying their **original source ids**, and
+  holds nothing else. Renamed from `coderpuzzle-problems` and made private
+  on 2026-09-15, when this repo took over the original corpus, the tooling,
   and the docs. Its `problems/MAPPING.json` is copied here as
   `scripts/problems-tooling/adapt-mapping.json` (the provenance ledger);
   `docs/ADAPTATION-MAPPING.md` is the human-readable form.
