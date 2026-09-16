@@ -27,7 +27,7 @@ problem set it serves.
 ## Adaptation philosophy
 
 The adapted tree holds **copyright-free, algorithm-identical adaptations**
-of the `problems/` originals: rewritten statements in the bank's own voice,
+of the `problems/` originals: rewritten statements in the adaptation's own voice,
 the source's own id kept (shard = `0001-0100`-style hundreds buckets),
 descriptive kebab slugs, restated examples/constraints. `difficulty` mirrors
 the source difficulty (Easy/Medium/Hard) in both trees — never a
@@ -134,18 +134,17 @@ invocation.
 
 ## Authoring and verification loop
 
-1. Scrape/curate originals (lc-crawl → bettercode), archive into
-   `problems-originals/`, adapt into a new bundle (statement, problem.json,
-   cases, canonical solution in all 7 languages).
+1. Scrape/curate an original (lc-crawl → bettercode), land it here under
+   `problems/<shard>/`, then adapt it into the private `lc-adapt` tree
+   (statement, problem.json, cases, canonical solution in all 7 languages).
 2. `scripts/gen_starters.py` regenerates starters from problem.json.
-3. **Verify**: `python3 scripts/verify_solution.py problems-adapt/<shard>/<key>`
-   (coderpuzzle repo's scripts/) — judges every solution in the bundle
-   through the real executors. The key must be shard-qualified; a bare
-   key resolves without the shard and fails.
-4. **Check**: `python3 scripts/check.py` (bank repo) — static tier:
-   problem.json exact key set, statement grammar, starter = generator
-   output (needs clang-format, i.e. the image — locally this check false-
-   positives on every starter.cpp), plus a judged runtime tier.
+3. **Verify**: `CODERPUZZLE_PROBLEMS=<tree> python3 scripts/verify_solution.py
+   <shard>/<id>_<slug>` — judges every solution in the bundle through the
+   real executors; defaults to this repo's `problems/`.
+4. **Check**: `python3 scripts/check.py --tree problems --skip-runtime` —
+   static tier: problem.json exact key set, statement grammar, starter =
+   generator output (clang-format lives only in the image, so run it there),
+   plus a judged runtime tier.
 5. **Format**: run the pinned formatters in-image (see Environment below);
    hand-matched formatting is verified byte-exact this way.
 
@@ -170,8 +169,7 @@ formatters, no git) → on landing, hash-check the new files through the
 in-image formatter (normalizes any whitespace drift) and re-verify.
 
 There is no standing corpus-flags ledger — the retired `CORPUS-FLAGS.md`
-(bank repo) was deleted 2026-09-04 with every item resolved; its history
-is in git. Surface new contradictions to the user with evidence.
+was deleted 2026-09-04 with every item resolved; its history is in git. Surface new contradictions to the user with evidence.
 
 ## Tooling map
 
@@ -220,7 +218,7 @@ check the clock against the reset time before waiting on one.
 - Git: never commit/push unless asked this turn (see ~/.claude/CLAUDE.md
   for the full rules — no auto-amend, no attribution trailers). Session
   work typically lands as a handful of focused commits when the user says
-  so; scoped `git add` by path lists, never blanket `git add problems-adapt/`
+  so; scoped `git add` by path lists, never a blanket `git add problems/`
   mid-split.
 - `TODO.md` (coderpuzzle): design decisions agreed but not started; when work
   starts, it moves to the session task list; when done, the entry is
