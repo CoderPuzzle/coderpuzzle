@@ -26,7 +26,10 @@ CODERPUZZLE_PORT=9090 docker compose up --build
 Judging additionally needs a deployment-local calibration file, and the compose
 default is `CODERPUZZLE_REQUIRE_CALIBRATION=1`: until one is published,
 registration, login, and judging return `503`, while browsing problems and
-reading statements is unaffected. For a quick local spin, drop the requirement:
+reading statements is unaffected. A calibration that covers most of the set
+still serves: only the problem/language pairs it lacks return `503`.
+
+For a quick local spin, drop the requirement:
 
 ```bash
 CODERPUZZLE_REQUIRE_CALIBRATION=0 docker compose up --build

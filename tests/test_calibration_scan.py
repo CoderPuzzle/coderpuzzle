@@ -95,3 +95,78 @@ class CalibrationCacheTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PerPairGateTests(unittest.TestCase):
+    """An unmeasurable bundle must cost exactly its own pair.
+
+    The sweep left 3 of 25,505 pairs unmeasured -- one C++ bundle with
+    undefined behaviour, one Java reference above the JVM heap cap, one
+    Python case past its deadline. Because the gate demanded full coverage,
+    those three returned 503 for *every* problem, and for registration and
+    login besides. The judge path already refuses an unmeasured pair by
+    itself, so coverage is reported, not enforced.
+    """
+
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        root = Path(self.temporary.name)
+        self.problems_dir = (root / "problems").resolve()
+        self.problems_dir.mkdir()
+        for index in range(1, 4):
+            _bundle(self.problems_dir, index)
+        self.calibration_file = root / "calibration.json"
+        for module, name, value in (
+            (problems, "PROBLEMS_DIR", self.problems_dir),
+            (calibration, "CALIBRATION_FILE", self.calibration_file),
+            (calibration, "REQUIRED", True),
+        ):
+            patcher = mock.patch.object(module, name, value)
+            patcher.start()
+            self.addCleanup(patcher.stop)
+        # demo-3 is the bundle nothing could measure
+        self._write(["demo-1", "demo-2"])
+
+    def _write(self, slugs):
+        self.calibration_file.write_text(json.dumps({
+            "schema_version": 1,
+            "records": [{"slug": s, "language": "python3", "reference_walltime_ms": 7,
+                         "timeout_ms": 70, "case_count": 1} for s in slugs],
+        }), encoding="utf-8")
+
+    def test_a_partial_calibration_still_serves(self):
+        ok, detail = calibration.usable()
+        self.assertTrue(ok, detail)
+        calibration.enforce()  # must not raise
+
+    def test_the_measured_pairs_keep_their_records(self):
+        self.assertIsNotNone(calibration.lookup("demo-1", "python3"))
+        self.assertIsNotNone(calibration.lookup("demo-2", "python3"))
+
+    def test_only_the_unmeasured_pair_has_no_record(self):
+        self.assertIsNone(calibration.lookup("demo-3", "python3"))
+        self.assertEqual({("demo-3", "python3")}, calibration.missing())
+
+    def test_coverage_is_still_reported(self):
+        ok, detail = calibration.prerequisite()
+        self.assertFalse(ok)
+        self.assertIn("missing 1", detail)
+
+    def test_no_calibration_at_all_still_refuses_service(self):
+        self.calibration_file.unlink()
+        ok, _ = calibration.usable()
+        self.assertFalse(ok)
+        with self.assertRaises(Exception):
+            calibration.enforce()
+
+    def test_a_corrupt_timing_still_refuses_service(self):
+        self.calibration_file.write_text(json.dumps({
+            "schema_version": 1,
+            "records": [{"slug": "demo-1", "language": "python3",
+                         "reference_walltime_ms": 0, "timeout_ms": 0, "case_count": 1}],
+        }), encoding="utf-8")
+        ok, detail = calibration.usable()
+        self.assertFalse(ok)
+        self.assertIn("invalid timing", detail)
+

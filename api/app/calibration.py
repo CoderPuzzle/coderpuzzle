@@ -61,7 +61,15 @@ def records() -> dict[tuple[str, str], dict[str, Any]]:
     return result
 
 
-def prerequisite() -> tuple[bool, str]:
+def usable() -> tuple[bool, str]:
+    """Whether this deployment has a calibration fit to judge against.
+
+    Deliberately not "complete". A pair the sweep could not measure is
+    refused by the judge path itself, one pair at a time, so requiring full
+    coverage here only adds a second way to fail — one that takes down
+    registration, login, and all 25,502 measured pairs because a couple of
+    bundles are unmeasurable. Coverage is still reported by prerequisite().
+    """
     value = load()
     if value is None:
         return False, f"Calibration is required; missing {CALIBRATION_FILE}"
@@ -70,16 +78,34 @@ def prerequisite() -> tuple[bool, str]:
     rows = records()
     if not rows:
         return False, "Calibration record is empty"
-    try:
-        from .problems import starter_languages
-        missing = starter_languages() - set(rows)
-        if missing:
-            return False, f"Calibration is incomplete; missing {len(missing)} problem/language records"
-    except (OSError, ValueError, KeyError):
-        return False, "Problem bank is unavailable for calibration validation"
     if any(not isinstance(row.get("reference_walltime_ms"), (int, float)) or row["reference_walltime_ms"] <= 0
            or not isinstance(row.get("timeout_ms"), int) or row["timeout_ms"] <= 0 for row in rows.values()):
         return False, "Calibration record contains an invalid timing"
+    return True, "ok"
+
+
+def missing() -> set[tuple[str, str]]:
+    """(slug, language) pairs the problem set offers but the calibration lacks."""
+    from .problems import starter_languages
+    return starter_languages() - set(records())
+
+
+def prerequisite() -> tuple[bool, str]:
+    """usable(), plus full coverage of the problem set.
+
+    Reported rather than enforced: this is the operator's completeness
+    check (and what the calibration sweep works towards), not the gate in
+    front of a request.
+    """
+    ok, detail = usable()
+    if not ok:
+        return ok, detail
+    try:
+        gap = missing()
+    except (OSError, ValueError, KeyError):
+        return False, "Problem bank is unavailable for calibration validation"
+    if gap:
+        return False, f"Calibration is incomplete; missing {len(gap)} problem/language records"
     return True, "ok"
 
 
@@ -88,8 +114,13 @@ def lookup(slug: str, language: str) -> dict[str, Any] | None:
 
 
 def enforce() -> None:
+    """Refuse service when the deployment has no usable calibration at all.
+
+    An individual unmeasured pair is the judge path's business, not this
+    gate's — see usable().
+    """
     if REQUIRED:
-        ok, detail = prerequisite()
+        ok, detail = usable()
         if not ok:
             from fastapi import HTTPException
             raise HTTPException(status_code=503, detail=detail)

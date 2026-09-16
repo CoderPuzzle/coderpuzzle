@@ -258,8 +258,11 @@ the worst one; and most of a job is the fixed cost of starting each case,
 which is a property of the language, not of the problem. Records written
 before a field existed fall back to the average-derived value.
 
-Production API containers require a complete file before registration, login,
-or judging; missing records return HTTP 503.
+Production API containers require a calibration file before registration,
+login, or judging, but not a complete one: a pair the sweep could not measure
+returns HTTP 503 for that problem and language alone, and every measured pair
+keeps judging. Coverage is reported rather than enforced, so one unmeasurable
+bundle cannot take the deployment down.
 
 ### Tuning
 
