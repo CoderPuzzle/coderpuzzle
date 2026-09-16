@@ -10,14 +10,15 @@ from pathlib import Path
 from typing import Any
 
 from . import validators
-from . import calibration
 
 
 QUEUE_DIR = Path(os.environ.get("CODERPUZZLE_QUEUE_DIR", ".queue"))
-_configured_runner_timeout = float(os.environ.get("CODERPUZZLE_RUNNER_TIMEOUT_SECONDS", "20"))
-_calibration = calibration.load() or {}
-_calibration_timeout = max((int(row.get("timeout_ms", 0)) for row in _calibration.get("records", [])), default=0) / 1000
-RUNNER_TIMEOUT = max(_configured_runner_timeout, _calibration_timeout + 10)
+# The floor under every runner wait. It used to be raised by the largest
+# timeout_ms in the whole calibration, which made one heavy pair set the floor
+# for every job including a one-case format request. job_timeout_seconds now
+# sizes each job from its own pair's measurement, so the floor is just the
+# floor again.
+RUNNER_TIMEOUT = float(os.environ.get("CODERPUZZLE_RUNNER_TIMEOUT_SECONDS", "20"))
 
 # Every testcase runs in its own sandboxed process, so a job's wall time is
 # set by a fixed per-case cost — roughly 0.22 s for python3 and 0.05 s for the
