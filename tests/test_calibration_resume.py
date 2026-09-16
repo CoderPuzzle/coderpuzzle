@@ -135,6 +135,28 @@ class ResumeTests(unittest.TestCase):
         self.assertEqual({row["slug"] for row in published["records"]},
                          {"demo-1", "demo-2", "demo-3"})
 
+    def test_hidden_cases_count_towards_the_measurement(self):
+        """A record must describe every case the reference ran.
+
+        _run_judge moves a hidden case's timings behind an underscore so they
+        never reach a browser. Reading only the public keys made a record
+        describe the statement's examples alone -- on two-sum, 3 cases of 18,
+        so every ratio read about 6x and every derived deadline was that much
+        too tight. The examples are also a bundle's smallest inputs, while a
+        capped job judges its largest, which are hidden.
+        """
+        visible = {"index": 0, "status": "accepted", "wall_time_ms": 40, "runtime_ms": 40}
+        hidden = {"index": 1, "status": "accepted", "_wall_time_ms": 200, "_runtime_ms": 200}
+        self.assertEqual(40, calibrate._case_time_ms(visible))
+        self.assertEqual(200, calibrate._case_time_ms(hidden))
+        self.assertEqual(0, calibrate._case_time_ms({"index": 2, "status": "skipped"}))
+
+    def test_a_measurement_prefers_wall_time_over_runtime(self):
+        self.assertEqual(
+            70, calibrate._case_time_ms({"wall_time_ms": 70, "runtime_ms": 12}))
+        self.assertEqual(
+            70, calibrate._case_time_ms({"_wall_time_ms": 70, "_runtime_ms": 12}))
+
     def test_the_reference_is_measured_above_the_judging_deadline(self):
         """A reference that is merely slow must still be measurable.
 

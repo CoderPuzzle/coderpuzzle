@@ -109,6 +109,24 @@ def same_hardware(stored: dict[str, object] | None, current: dict[str, object]) 
         key in stored for key in IDENTITY_KEYS)
 
 
+def _case_time_ms(row: dict[str, object]) -> int:
+    """One judged case's wall time, whether or not the case is visible.
+
+    _run_judge hides a non-public case's measurements behind an underscore so
+    they never reach a browser. The sweep runs inside the trust boundary and
+    has to count them: reading only the public keys made every record
+    describe the statement's examples alone. On two-sum that is 3 of 18
+    cases, so the reference measured 643 ms where it really costs 3844 -- and
+    a bundle's examples are its smallest inputs, while the cases a capped job
+    actually judges are the largest, and hidden.
+    """
+    for key in ("wall_time_ms", "_wall_time_ms", "runtime_ms", "_runtime_ms"):
+        value = row.get(key)
+        if isinstance(value, (int, float)) and value > 0:
+            return int(value)
+    return 0
+
+
 def _pair_wait_seconds(case_count: int, per_case_seconds: float) -> float:
     """How long to wait for one measured pair, from its own language's cost."""
     return case_count * per_case_seconds * judge.JOB_HEADROOM + 10
@@ -273,7 +291,7 @@ def main() -> int:
                     continue
                 # The slowest case is what the per-case deadline has to
                 # cover; the mean does not predict it (see judge.py).
-                timings = [int(row.get("wall_time_ms", row.get("runtime_ms", 0))) for row in results]
+                timings = [_case_time_ms(row) for row in results]
                 wall = sum(timings)
                 # What the job cost end to end, which is what a submission's
                 # job budget has to cover; the per-case figures above exclude
