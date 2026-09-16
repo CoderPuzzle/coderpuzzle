@@ -19,9 +19,77 @@ _calibration = calibration.load() or {}
 _calibration_timeout = max((int(row.get("timeout_ms", 0)) for row in _calibration.get("records", [])), default=0) / 1000
 RUNNER_TIMEOUT = max(_configured_runner_timeout, _calibration_timeout + 10)
 
+# Every testcase runs in its own sandboxed process, so a job's wall time is
+# set by a fixed per-case cost — roughly 0.22 s for python3 and 0.05 s for the
+# compiled languages, whatever the solution itself does with a five-element
+# input — and not by the submission's own runtime. A bundle whose corpus was
+# generated into the tens of thousands of cases therefore takes hours: the
+# largest here hold 19,929, and 5,585 already exceeds any sane deadline in
+# python3. Jobs judge a deterministic subset instead, and the runner wait
+# scales with the subset that was actually sent.
+MAX_JUDGED_CASES = max(1, int(os.environ.get("CODERPUZZLE_MAX_JUDGED_CASES", "200")))
+PER_CASE_RUNNER_SECONDS = float(os.environ.get("CODERPUZZLE_PER_CASE_RUNNER_SECONDS", "0.25"))
+
 
 class RunnerUnavailable(RuntimeError):
     pass
+
+
+def job_timeout_seconds(case_count: int) -> float:
+    """How long to wait for one job carrying this many cases.
+
+    A job's wall time is set by its case count rather than by the submission,
+    so the wait is sized from the cases actually sent: the configured floor
+    covers small jobs, and a full-size selection gets the budget it was
+    bounded for.
+    """
+    return max(RUNNER_TIMEOUT, case_count * PER_CASE_RUNNER_SECONDS + 10)
+
+
+def _case_weight(case: dict[str, Any]) -> int:
+    """Rank a case by the size of its input.
+
+    Only ever used to order cases for selection, never judged: the corpus's
+    large inputs are where complexity and boundary handling actually differ,
+    so they earn a place ahead of the generated middle.
+    """
+    try:
+        return len(json.dumps(case.get("input"), separators=(",", ":"), ensure_ascii=False))
+    except (TypeError, ValueError):
+        return 0
+
+
+def select_cases(
+    cases: list[dict[str, Any]],
+    public_count: int,
+    limit: int | None = None,
+) -> list[int]:
+    """The indices of the cases one job executes, in their original order.
+
+    Public cases are the statement's own examples, so they always run. The
+    rest of the budget goes half to the largest inputs and half to an even
+    stride across what remains, which keeps a thin but broad sample of the
+    corpus's middle. A pure function of the case list, so a submission, its
+    calibration record, and any later re-judge all pick the same cases.
+    """
+    limit = MAX_JUDGED_CASES if limit is None else max(1, limit)
+    if len(cases) <= limit:
+        return list(range(len(cases)))
+    chosen = set(range(min(public_count, limit)))
+    hidden = list(range(public_count, len(cases)))
+    slots = limit - len(chosen)
+    if slots <= 0 or not hidden:
+        return sorted(chosen)
+    # Half the remaining budget to the corpus's largest inputs, half to an
+    # even stride across everything else.
+    ranked = sorted(hidden, key=lambda index: (-_case_weight(cases[index]), index))
+    chosen.update(ranked[: slots // 2])
+    rest = [index for index in hidden if index not in chosen]
+    remaining = limit - len(chosen)
+    if remaining > 0 and rest:
+        stride = len(rest) / remaining
+        chosen.update(rest[min(int(k * stride), len(rest) - 1)] for k in range(remaining))
+    return sorted(chosen)
 
 
 # The runner executes one job at a time, so letting every request enqueue
@@ -55,9 +123,7 @@ def _close_enough(actual: Any, expected: Any, tolerance: float) -> bool:
     if isinstance(actual, (int, float)) and isinstance(expected, (int, float)):
         return math.isclose(actual, expected, rel_tol=tolerance, abs_tol=tolerance)
     if isinstance(actual, list) and isinstance(expected, list):
-        return len(actual) == len(expected) and all(
-            _close_enough(a, e, tolerance) for a, e in zip(actual, expected)
-        )
+        return len(actual) == len(expected) and all(_close_enough(a, e, tolerance) for a, e in zip(actual, expected))
     if isinstance(actual, dict) and isinstance(expected, dict):
         return actual.keys() == expected.keys() and all(
             _close_enough(actual[key], expected[key], tolerance) for key in actual
@@ -152,9 +218,7 @@ def _compare(actual: Any, expected: Any, comparison: Any, case_input: Any = None
             and all(_compare(a, e, "exact", case_input) for a, e in zip(actual, expected))
         )
     if isinstance(expected, dict) and expected.get("mode") == "validator":
-        return validators.validate(
-            expected.get("name"), actual, expected.get("params"), case_input, expected
-        )
+        return validators.validate(expected.get("name"), actual, expected.get("params"), case_input, expected)
     if isinstance(expected, dict) and expected.get("mode") == "distribution":
         return _distribution_ok(actual, expected)
     # {"mode": "any_of", "values": [...]} accepts any listed answer, the way
@@ -174,9 +238,7 @@ def _compare(actual: Any, expected: Any, comparison: Any, case_input: Any = None
         return _grouped_ok(actual, expected)
     if comparison == "exact":
         return actual == expected
-    if comparison == "close" or (
-        isinstance(comparison, dict) and comparison.get("mode") == "close"
-    ):
+    if comparison == "close" or (isinstance(comparison, dict) and comparison.get("mode") == "close"):
         tolerance = (
             float(comparison.get("tolerance", DEFAULT_CLOSE_TOLERANCE))
             if isinstance(comparison, dict)
@@ -226,10 +288,12 @@ def _submit(request_body: dict[str, Any]) -> dict[str, Any]:
     request_path = job_dir / "request.json"
     ready_path = job_dir / "ready"
     result_path = job_dir / "result.json"
-    request_path.write_text(json.dumps({**request_body, "job_id": job_id, "enqueued_at_ns": time.monotonic_ns()}), encoding="utf-8")
+    request_path.write_text(
+        json.dumps({**request_body, "job_id": job_id, "enqueued_at_ns": time.monotonic_ns()}), encoding="utf-8"
+    )
     ready_path.touch(mode=0o600)
 
-    deadline = time.monotonic() + RUNNER_TIMEOUT
+    deadline = time.monotonic() + job_timeout_seconds(len(request_body.get("cases", [])))
     try:
         while time.monotonic() < deadline:
             if result_path.exists():
@@ -297,9 +361,7 @@ def execute(
     for index, (case, raw) in enumerate(zip(cases, raw_results)):
         visible = index < public_count
         status = raw["status"]
-        passed = status == "completed" and _compare(
-            raw.get("actual"), case["expected"], comparison, case.get("input")
-        )
+        passed = status == "completed" and _compare(raw.get("actual"), case["expected"], comparison, case.get("input"))
         result = {
             "index": index,
             "name": case.get("name", f"Case {index + 1}") if visible else f"Hidden case {index - public_count + 1}",
@@ -315,18 +377,27 @@ def execute(
             if metric in raw:
                 result[metric if visible else "_" + metric] = raw[metric]
         if visible:
-            for metric in ("cpu_limit_ms", "wall_limit_ms", "limit_mode", "timeout_reason", "memory_peak_bytes", "cpu_throttled_ms"):
+            for metric in (
+                "cpu_limit_ms",
+                "wall_limit_ms",
+                "limit_mode",
+                "timeout_reason",
+                "memory_peak_bytes",
+                "cpu_throttled_ms",
+            ):
                 if metric in raw:
                     result[metric] = raw[metric]
-            result.update({
-                "runtime_ms": raw.get("runtime_ms", 0),
-                "timeout_ms": raw.get("timeout_ms"),
-                "input": _display_input(invocation, case["input"]),
-                "expected": case["expected"],
-                "actual": raw.get("actual"),
-                "stdout": raw.get("stdout", ""),
-                "error": raw.get("error"),
-            })
+            result.update(
+                {
+                    "runtime_ms": raw.get("runtime_ms", 0),
+                    "timeout_ms": raw.get("timeout_ms"),
+                    "input": _display_input(invocation, case["input"]),
+                    "expected": case["expected"],
+                    "actual": raw.get("actual"),
+                    "stdout": raw.get("stdout", ""),
+                    "error": raw.get("error"),
+                }
+            )
         else:
             # Keep the duration private long enough to form an honest aggregate,
             # then remove it in _summarize before results cross the API boundary.

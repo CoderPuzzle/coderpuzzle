@@ -26,7 +26,7 @@ from .database import (
     validate_session,
 )
 from .web_session import SESSION_COOKIE, current_session, set_session_cookie
-from .judge import RunnerUnavailable, execute, format_code_report, judge_slot
+from .judge import RunnerUnavailable, execute, format_code_report, judge_slot, select_cases
 from . import tamper_scan
 from .models import FormatRequest, RunRequest, SubmitRequest
 from .problems import (
@@ -43,6 +43,7 @@ from .problems import (
 
 
 LEGACY_REFERENCE_TIMING = os.environ.get("CODERPUZZLE_LEGACY_REFERENCE_TIMING", "0") == "1"
+
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
@@ -118,7 +119,9 @@ def _judge_throttled(session_id: str) -> bool:
         return True
     recent.append(now)
     _judge_requests[session_id] = recent
-    for stale in [key for key, stamps in _judge_requests.items() if not stamps or now - stamps[-1] >= _JUDGE_WINDOW_SECONDS]:
+    for stale in [
+        key for key, stamps in _judge_requests.items() if not stamps or now - stamps[-1] >= _JUDGE_WINDOW_SECONDS
+    ]:
         del _judge_requests[stale]
     return False
 
@@ -235,8 +238,7 @@ def problem_topics(session_id: Annotated[str, Depends(current_session)]) -> dict
         for topic in summary.get("topics", []):
             counts[topic] = counts.get(topic, 0) + 1
     topics = [
-        {"name": name, "count": count}
-        for name, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))
+        {"name": name, "count": count} for name, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))
     ]
     return {"topics": topics}
 
@@ -321,6 +323,13 @@ def _run_judge(
         case_count = max(1, int(calibrated.get("case_count", len(cases))))
         per_case_timeout = max(1, int(calibrated["timeout_ms"] / case_count))
         problem_data = {**problem_data, "limits": {**problem_data["limits"], "time_ms": per_case_timeout}}
+    # A generated corpus can hold tens of thousands of cases, and every case
+    # costs a sandboxed process; judge a bounded, deterministic subset that
+    # keeps the statement's examples and the corpus's extremes.
+    selected = select_cases(cases, public_count)
+    if len(selected) < len(cases):
+        cases = [cases[index] for index in selected]
+        public_count = min(public_count, len(cases))
     try:
         with judge_slot():
             return execute(
@@ -343,9 +352,7 @@ def _run_judge(
 
 
 @app.post("/format")
-def format_source(
-    request: FormatRequest, session_id: Annotated[str, Depends(current_session)]
-) -> dict[str, Any]:
+def format_source(request: FormatRequest, session_id: Annotated[str, Depends(current_session)]) -> dict[str, Any]:
     """Tri-state format of an editor draft, judged by the bundles' toolchain.
 
     Always 200 when the runner is reachable — the payload carries the state:
@@ -404,7 +411,9 @@ def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)
                 try:
                     wire_input = [custom_input[parameter["name"]] for parameter in invocation["parameters"]]
                 except KeyError as error:
-                    raise HTTPException(status_code=400, detail=f"Missing testcase argument: {error.args[0]}") from error
+                    raise HTTPException(
+                        status_code=400, detail=f"Missing testcase argument: {error.args[0]}"
+                    ) from error
             elif invocation_type == "shell" and isinstance(custom_input, dict) and len(custom_input) == 1:
                 wire_input = next(iter(custom_input.values()))
             else:
@@ -412,11 +421,16 @@ def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)
             matched = next((case for case in canonical if case["input"] == wire_input), None)
             if matched is None:
                 # Custom cases execute without an assertion; their actual value is returned.
-                cases.append({"name": f"Custom case {index + 1}", "input": wire_input, "expected": None, "custom": True})
+                cases.append(
+                    {"name": f"Custom case {index + 1}", "input": wire_input, "expected": None, "custom": True}
+                )
             else:
                 cases.append(matched)
 
     results = _run_judge(problem_data, request.language, request.code, cases, len(cases), bundle)
+    # The judge may have bounded the case list (see select_cases); its
+    # results are what it actually ran.
+    cases = cases[: len(results)]
     for case, result in zip(cases, results, strict=True):
         if case.get("custom") and result["status"] in {"wrong_answer", "accepted"}:
             result["status"] = "completed"
@@ -463,7 +477,8 @@ def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_se
     summary["timeout_ms"] = baseline["timeout_ms"] if baseline else None
     summary["performance_ratio_percent"] = (
         round(summary["runtime_ms"] * 100 / baseline["reference_walltime_ms"], 2)
-        if baseline and baseline["reference_walltime_ms"] else None
+        if baseline and baseline["reference_walltime_ms"]
+        else None
     )
     submission_id = save_submission(
         request.slug,
@@ -501,9 +516,13 @@ def _summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
     for result in results:
         for key in ("_runtime_ms", "_cpu_time_ms", "_wall_time_ms", "_queue_ms", "_compile_ms", "_judge_job_id"):
             result.pop(key, None)
-    status = "accepted" if passed == len(results) else next(
-        (result["status"] for result in results if result["status"] not in {"accepted", "completed"}),
-        "wrong_answer",
+    status = (
+        "accepted"
+        if passed == len(results)
+        else next(
+            (result["status"] for result in results if result["status"] not in {"accepted", "completed"}),
+            "wrong_answer",
+        )
     )
     return {
         "status": status,
