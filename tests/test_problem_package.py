@@ -417,3 +417,62 @@ class TwoSumPackageTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ProblemCacheBudgetTests(unittest.TestCase):
+    """The parsed-bundle cache is bounded by bytes, not by entry count.
+
+    256 entries meant a few hundred megabytes or a couple of gigabytes
+    depending only on which bundles were hot, because one ~20,000-case
+    bundle parses into tens of megabytes while a typical one is well under
+    one. Both production OOM kills traced back to that.
+    """
+
+    def setUp(self):
+        from api.app import problems as problems_module
+        self.problems = problems_module
+        self.addCleanup(self._restore, problems_module,
+                        problems_module.PROBLEM_CACHE_BYTES)
+        problems_module._problem_cache.clear()
+        problems_module._problem_cache_bytes = 0
+
+    def _restore(self, module, budget):
+        module.PROBLEM_CACHE_BYTES = budget
+        module._problem_cache.clear()
+        module._problem_cache_bytes = 0
+
+    def _store(self, name, weight):
+        self.problems._problem_cache[(name, 0, 0)] = (weight, name)
+        self.problems._problem_cache_bytes += weight
+
+    def _evict(self):
+        while (self.problems._problem_cache_bytes > self.problems.PROBLEM_CACHE_BYTES
+               and len(self.problems._problem_cache) > 1):
+            _, (weight, _) = self.problems._problem_cache.popitem(last=False)
+            self.problems._problem_cache_bytes -= weight
+
+    def test_one_huge_bundle_evicts_many_small_ones(self):
+        self.problems.PROBLEM_CACHE_BYTES = 10_000_000
+        for index in range(50):
+            self._store(f"small-{index}", 100_000)
+        self._evict()
+        self.assertEqual(50, len(self.problems._problem_cache))
+        self._store("huge", 60_000_000)
+        self._evict()
+        self.assertIn(("huge", 0, 0), self.problems._problem_cache)
+        self.assertLess(len(self.problems._problem_cache), 50)
+
+    def test_an_entry_larger_than_the_whole_budget_is_still_kept(self):
+        """Evicting it would re-parse the same bundle on every request."""
+        self.problems.PROBLEM_CACHE_BYTES = 1_000
+        self._store("enormous", 500_000_000)
+        self._evict()
+        self.assertEqual(1, len(self.problems._problem_cache))
+
+    def test_the_budget_is_honoured_across_many_inserts(self):
+        self.problems.PROBLEM_CACHE_BYTES = 5_000_000
+        for index in range(200):
+            self._store(f"bundle-{index}", 250_000)
+            self._evict()
+        self.assertLessEqual(self.problems._problem_cache_bytes,
+                             self.problems.PROBLEM_CACHE_BYTES + 250_000)

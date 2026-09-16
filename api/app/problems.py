@@ -2,7 +2,9 @@ import copy
 import json
 import os
 import re
+import threading
 import time
+from collections import OrderedDict
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Optional
@@ -521,17 +523,59 @@ def parse_problem_bundle(path: Path) -> tuple[dict[str, Any], list[dict[str, Any
     return problem, public + hidden, len(public)
 
 
-@lru_cache(maxsize=256)
+# A parsed bundle stays in memory, and the generated corpora are nothing like
+# uniform: most cost well under a megabyte, while the largest carry ~20,000
+# cases and parse into tens of them. Capping this by entry count therefore
+# capped nothing that mattered -- 256 entries was a few hundred megabytes or
+# a couple of gigabytes depending only on which bundles happened to be hot,
+# and that is what left the API and the calibration sweep the two fattest
+# processes on the host, each OOM-killed once. The budget is bytes.
+PROBLEM_CACHE_BYTES = max(
+    1, int(os.environ.get("CODERPUZZLE_PROBLEM_CACHE_BYTES", str(192 * 1024 * 1024)))
+)
+# Parsed objects run several times their JSON source; the multiplier only has
+# to keep the estimate on the right side of reality, not be exact.
+_PARSE_EXPANSION = 6
+
+_problem_cache: "OrderedDict[tuple[str, int, int], tuple[int, Any]]" = OrderedDict()
+_problem_cache_lock = threading.Lock()
+_problem_cache_bytes = 0
+
+
 def _cached_problem(
     path_string: str,
     modified_ns: int,
     size: int,
 ) -> tuple[dict[str, Any], list[dict[str, Any]], int]:
-    del modified_ns, size
+    global _problem_cache_bytes
+    key = (path_string, modified_ns, size)
+    with _problem_cache_lock:
+        hit = _problem_cache.get(key)
+        if hit is not None:
+            _problem_cache.move_to_end(key)
+            return hit[1]
+
     path = Path(path_string)
     if path.is_dir():
-        return parse_problem_bundle(path)
-    return parse_problem_markdown(path.read_text(encoding="utf-8"), path)
+        value = parse_problem_bundle(path)
+        try:
+            weight = (path / "cases.json").stat().st_size * _PARSE_EXPANSION
+        except OSError:
+            weight = size * _PARSE_EXPANSION
+    else:
+        value = parse_problem_markdown(path.read_text(encoding="utf-8"), path)
+        weight = size * _PARSE_EXPANSION
+
+    with _problem_cache_lock:
+        if key not in _problem_cache:
+            _problem_cache[key] = (weight, value)
+            _problem_cache_bytes += weight
+        # Keep the entry just stored even when it alone exceeds the budget:
+        # evicting it would mean re-parsing the same bundle on every request.
+        while _problem_cache_bytes > PROBLEM_CACHE_BYTES and len(_problem_cache) > 1:
+            _, (evicted, _) = _problem_cache.popitem(last=False)
+            _problem_cache_bytes -= evicted
+    return value
 
 
 @lru_cache(maxsize=None)
