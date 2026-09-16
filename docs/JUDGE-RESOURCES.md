@@ -280,6 +280,18 @@ measurements above rather than from one figure for every language.
 | `CODERPUZZLE_PER_CASE_RUNNER_SECONDS` | `0.25` | per-case wait for a pair with no measurement yet |
 | `CODERPUZZLE_RUNNER_TIMEOUT_SECONDS` | `20` | floor under every runner wait |
 | `CODERPUZZLE_CALIBRATION_FAILURE_LIMIT` | `40` | consecutive sweep failures before the breaker trips |
+| `CODERPUZZLE_CALIBRATION_HEADROOM` | `10` | multiple of `time_ms` the sweep allows itself to *measure* a reference |
+| `CODERPUZZLE_PROBLEM_CACHE_BYTES` | `192 MiB` | budget for parsed bundles held in memory |
+
+The sweep measures under its own ceiling rather than the problem's deadline:
+`time_ms` is what a submission is held to, and holding the reference to it too
+makes a correct-but-slow reference unmeasurable — and an unmeasured pair is a
+pair that cannot be judged at all. What the reference actually costs is then
+what every derived deadline is built from.
+
+A ratio is only reported when both halves were timed the same way. The
+artifact records the timing mode and resource profile it was measured under,
+and `performance_ratio_percent` is omitted when a submission's differ.
 
 User submissions run only once. Their wall time is compared with the matching
 calibration record and returned as `reference_runtime_ms`, `timeout_ms`, and

@@ -494,9 +494,11 @@ def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_se
                 }
     summary["reference_runtime_ms"] = baseline["reference_walltime_ms"] if baseline else None
     summary["timeout_ms"] = baseline["timeout_ms"] if baseline else None
+    comparable = LEGACY_REFERENCE_TIMING or calibration.comparable(
+        summary["timing_mode"], summary["resource_profile"])
     summary["performance_ratio_percent"] = (
         round(summary["runtime_ms"] * 100 / baseline["reference_walltime_ms"], 2)
-        if baseline and baseline["reference_walltime_ms"]
+        if baseline and baseline["reference_walltime_ms"] and comparable
         else None
     )
     submission_id = save_submission(

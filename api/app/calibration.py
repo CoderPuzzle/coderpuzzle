@@ -109,6 +109,22 @@ def prerequisite() -> tuple[bool, str]:
     return True, "ok"
 
 
+def comparable(timing_mode: str, resource_profile: str) -> bool:
+    """Whether a run timed this way may be divided by a calibration baseline.
+
+    A wall-time baseline against a CPU-time run is not a ratio, it is two
+    different measurements; the same goes across resource profiles. An
+    artifact written before the sweep recorded its own mode says nothing
+    either way, so it is trusted rather than discarded.
+    """
+    value = load() or {}
+    for key, actual in (("timing_mode", timing_mode), ("resource_profile", resource_profile)):
+        recorded = value.get(key)
+        if isinstance(recorded, str) and recorded and recorded != actual:
+            return False
+    return True
+
+
 def lookup(slug: str, language: str) -> dict[str, Any] | None:
     return records().get((slug, language))
 

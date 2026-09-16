@@ -170,3 +170,41 @@ class PerPairGateTests(unittest.TestCase):
         self.assertFalse(ok)
         self.assertIn("invalid timing", detail)
 
+
+class RatioComparabilityTests(unittest.TestCase):
+    """A ratio is only a ratio when both halves were timed the same way."""
+
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.calibration_file = Path(self.temporary.name) / "calibration.json"
+        patcher = mock.patch.object(calibration, "CALIBRATION_FILE", self.calibration_file)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def _write(self, **extra):
+        self.calibration_file.write_text(json.dumps({
+            "schema_version": 1,
+            "records": [{"slug": "demo-1", "language": "python3",
+                         "reference_walltime_ms": 7, "timeout_ms": 70, "case_count": 1}],
+            **extra,
+        }), encoding="utf-8")
+
+    def test_the_same_mode_and_profile_compare(self):
+        self._write(timing_mode="wall", resource_profile="shared-wall-v1")
+        self.assertTrue(calibration.comparable("wall", "shared-wall-v1"))
+
+    def test_a_different_timing_mode_does_not(self):
+        self._write(timing_mode="wall", resource_profile="shared-wall-v1")
+        self.assertFalse(calibration.comparable("cpu", "shared-wall-v1"))
+
+    def test_a_different_resource_profile_does_not(self):
+        self._write(timing_mode="wall", resource_profile="shared-wall-v1")
+        self.assertFalse(calibration.comparable("wall", "isolated-cpu-v1"))
+
+    def test_an_artifact_without_the_fields_is_trusted(self):
+        """Written before the sweep recorded its own mode: it says nothing
+        either way, so it must not silently drop every ratio."""
+        self._write()
+        self.assertTrue(calibration.comparable("cpu", "isolated-cpu-v1"))
+
