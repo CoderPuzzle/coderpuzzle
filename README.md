@@ -23,6 +23,20 @@ Open <http://localhost:8081>. Set `CODERPUZZLE_PORT` to publish another port:
 CODERPUZZLE_PORT=9090 docker compose up --build
 ```
 
+Judging additionally needs a deployment-local calibration file, and the compose
+default is `CODERPUZZLE_REQUIRE_CALIBRATION=1`: until one is published,
+registration, login, and judging return `503`, while browsing problems and
+reading statements is unaffected. For a quick local spin, drop the requirement:
+
+```bash
+CODERPUZZLE_REQUIRE_CALIBRATION=0 docker compose up --build
+```
+
+For a real deployment, build the calibration instead — `python -m app.calibrate`
+inside the API image sweeps every problem × language pair and atomically
+publishes `/calibration/calibration.json` ([Judge
+resources](docs/JUDGE-RESOURCES.md)).
+
 The editor uses Monaco's language services and local worker bundles, so grammar
 highlighting, bracket matching, and indentation guides do not depend on a CDN.
 The first visit follows the operating system's light/dark preference; the
@@ -37,65 +51,40 @@ today; OAuth, OpenID, and email OTP plug in without new routes — see
 
 ## Problem packages
 
-CoderPuzzle loads problems from two package formats. The canonical split
-format is one directory per problem. This repository tracks the complete
-4,031-bundle original-source set directly under `problems/`:
+Problems come in two package formats, and both may coexist in one directory:
+the canonical **split format** (one directory per problem) and the legacy
+**flat format** (one `<zero-padded id>_<slug>.md` document per problem). This
+repository tracks the complete 4,031-bundle original-source set in the split
+format directly under `problems/`:
 
 ```text
 problems/
-└── 0001-0100/           id-range shards of 100
+└── 0001-0100/            id-range shards of 100
     └── 0001_two-sum/
-        ├── problem.json     metadata, invocation schema, limits
-        ├── cases.json       testcase corpus ({public, hidden} display grouping)
-        ├── statement.md     pure-prose statement with a fixed heading grammar
-        ├── starter.py       generated from problem.json — never handcrafted
-        └── solution.*       recommended solutions (served by the solutions endpoint)
+        ├── problem.json  metadata, invocation schema, limits
+        ├── cases.json    testcase corpus ({public, hidden} display grouping)
+        ├── statement.md  pure-prose statement with a fixed heading grammar
+        ├── starter.<ext> generated from problem.json — never handcrafted
+        ├── provided/<lang>/
+        │                 the bundle's own oracle and helper sources
+        └── solution.<ext>
+                          canonical solution; a `solution_<variant>.<ext>`
+                          carries a genuinely distinct alternative that
+                          solutions.md documents
 ```
 
-The flat single-file format (`0001_two-sum.md` with `## Metadata`,
-`## Description`, … `## Test Cases` sections) is still supported, although
-this checked-in corpus uses split bundles. Both formats can coexist in one directory;
-the split format's statement grammar is `# <Title>`, required `## Description`
-with `### Example N` and `### Constraints` (optional for SQL problems), and
-optional `## Hints` with `### Hint N` headings.
+The split format's statement grammar is `# <Title>`, a required
+`## Description` with `### Example N` and `### Constraints` (optional for SQL
+problems), and optional `## Hints` with `### Hint N` headings — the
+authoritative bundle reference is [docs/FORMAT.md](docs/FORMAT.md), including
+the `reference_solution` designation and the worst-to-best ordering of the
+alternative solutions.
 
-### Selecting a problem set
-
-**A problem set is always a directory on disk.** The app fetches nothing:
-there is no remote problem set, no clone, no cache. `./problems` in this
-repo is the problem set, bind mounted read-only into the `api` container at
-`/problems`.
-
-To serve a different tree, point the bind mount at it — no image rebuild:
-
-```bash
-docker compose up --build                                            # default: ./problems
-CODERPUZZLE_PROBLEMS_PATH=/absolute/path/to/other-set docker compose up --build
-```
-
-`CODERPUZZLE_PROBLEMS_PATH` is the host path to bind; `CODERPUZZLE_PROBLEMS`
-is the path the app reads *inside* the container and is already set to
-`/problems` by compose. Running the API outside compose, set
-`CODERPUZZLE_PROBLEMS` to the directory directly:
-
-```bash
-CODERPUZZLE_PROBLEMS=/srv/problem-sets/lc uvicorn app.main:app
-```
-
-The path must name an existing directory and it is the package root — the
-directory whose children are the id-range shards. Anything else (a GitHub
-`owner/name`, a git URL, a missing path) is a startup error rather than
-something the app goes and fetches.
-
-The adapted problem set lives in the private `CoderPuzzle/lc-adapt`
-repository as its `problems/` directory. Clone it wherever you like and
-point `CODERPUZZLE_PROBLEMS_PATH` at that directory; getting a problem set
-onto a host is an explicit operator step, not something the service does at
-startup.
-
-The flat single-file format (`<zero-padded id>_<slug>.md` with the
-level-two headings below) is also supported. Every document must contain
-these level-two headings exactly once and in this order:
+A flat document is self-contained, and is the language-agnostic source of
+truth for the problem statement, hints, LeetCode-style invocation, ordered
+parameters and codecs, comparison strategy, resource limits, adapters,
+starters, and testcase corpus. Every document must contain these level-two
+headings exactly once and in this order:
 
 ```text
 # <id>. <title>
@@ -114,13 +103,43 @@ fenced `json` block. `Starters` contains one `### <language key>` heading and
 one code fence for every language, in the same order as `Languages`. `Test
 Cases` contains ordered `### Public` and `### Hidden` headings, each with one
 JSON array of `{input, expected}` objects. Missing, duplicated, unknown, or
-reordered schema headings are rejected instead of being guessed.
+reordered schema headings are rejected instead of being guessed. Function
+inputs use positional argument arrays (`[[2,7,11,15], 9]` for Two Sum).
+Design problems use `{"actions": [...], "params": [...]}` sequences.
 
-The document is the language-agnostic source of truth for the problem
-statement, hints, LeetCode-style invocation, ordered parameters and codecs,
-comparison strategy, resource limits, adapters, starters, and testcase corpus.
-Function inputs use positional argument arrays (`[[2,7,11,15], 9]` for Two
-Sum). Design problems use `{"actions": [...], "params": [...]}` sequences.
+## Selecting a problem set
+
+**A problem set is always a directory on disk.** The app fetches nothing:
+there is no remote problem set, no clone, no cache. `./problems` in this
+repo is the problem set, bind mounted read-only into the `api` container at
+`/problems`.
+
+To serve a different tree, point the bind mount at it — no image rebuild:
+
+```bash
+docker compose up --build                                            # default: ./problems
+CODERPUZZLE_PROBLEMS_PATH=/absolute/path/to/other-set docker compose up --build
+```
+
+`CODERPUZZLE_PROBLEMS_PATH` is the host path to bind; `CODERPUZZLE_PROBLEMS`
+is the path the app reads _inside_ the container and is already set to
+`/problems` by compose. Running the API outside compose, set
+`CODERPUZZLE_PROBLEMS` to the directory directly:
+
+```bash
+CODERPUZZLE_PROBLEMS=/srv/problem-sets/lc uvicorn app.main:app
+```
+
+The path must name an existing directory and it is the package root — the
+directory whose children are the id-range shards. Anything else (a GitHub
+`owner/name`, a git URL, a missing path) is a startup error rather than
+something the app goes and fetches.
+
+The adapted problem set lives in the private `CoderPuzzle/lc-adapt`
+repository as its `problems/` directory. Clone it wherever you like and
+point `CODERPUZZLE_PROBLEMS_PATH` at that directory; getting a problem set
+onto a host is an explicit operator step, not something the service does at
+startup.
 
 Static-language function wrappers use the same neutral `value_type` shapes on
 parameters and return values. The full kind vocabulary — 25 kinds including
@@ -166,8 +185,10 @@ compared with a string expected value. Nonzero exits and output past the
 problem's limit are runtime errors. A shell bundle lists only `Shell` via its
 `starter.sh`, and the editor uses Monaco's built-in shell grammar.
 
-In the default shared profile the runner calibrates every executor at startup.
-A background thread pre-warms and periodically re-warms the compilers
+In the default shared profile the runner benchmarks every executor at startup,
+which is what scales each language's `time_ms` deadline to the host (see
+[Judging and time limits](#judging-and-time-limits)). A background thread
+pre-warms and periodically re-warms the compilers
 (rustc, g++, go build, javac, tsc) by building throwaway programs. This reduces
 cold compile costs. Go additionally shares one persistent build cache across
 submissions so its standard library is compiled once per container, not once
@@ -180,6 +201,15 @@ repository and can be selected by its local directory path. Difficulty labels
 produced by running a reference solution.
 
 ## Judging and time limits
+
+Each testcase runs in its own sandboxed process, so a job's wall time is set
+by the size of its case list rather than by the submission's own runtime. A
+bundle whose corpus was generated into the tens of thousands of cases would
+otherwise take hours, so a job judges at most `CODERPUZZLE_MAX_JUDGED_CASES`
+cases (default 200): the bundle's public examples, its largest inputs, and an
+even sample of the rest, chosen deterministically so a submission, its
+calibration record, and any later re-judge agree. The runner wait scales with
+the cases actually sent.
 
 The default shared profile uses `time_ms` as a nominal per-testcase deadline. At runner startup,
 each executor runs a deterministic language-specific benchmark. The runner
@@ -211,22 +241,30 @@ reduces interference, but does not guarantee identical elapsed milliseconds.
 ### Reference-relative timing
 
 Absolute milliseconds mean nothing across machines, so accepted submissions
-are also compared against the problem's built-in reference. When a submission
-is accepted, the judge runs the bundle's *designated* reference —
-`reference_solution` in problem.json names the one file (`solution.<ext>` or
-a `solution_<variant>.<ext>`), the optimal approach — through the same
-resource profile, the same executor, and the same cases, and the response
-carries `reference_runtime_ms` alongside the user's `runtime_ms`. The UI
-shows the ratio ("162% of reference"). The comparison is same-language by
-construction, indicative rather than precise for very fast solutions, and
-best-effort: without a bundled reference, or if the reference run cannot be
-completed, or if the resource profiles differ, the ratio is simply omitted.
+are also compared against the problem's built-in reference. The baseline is
+the deployment-local calibration record for that `(problem, language)` pair —
+its `reference_walltime_ms`, measured once per pair by the calibration sweep
+and stored in `/calibration/calibration.json`. The response carries
+`reference_runtime_ms` alongside the user's `runtime_ms`, and the UI shows
+the ratio ("162% of reference").
 
-Inspect the current calibration with:
+With `CODERPUZZLE_LEGACY_REFERENCE_TIMING=1` (which the local dev override
+sets), an accepted submission instead re-runs the bundle's _designated_
+reference — `reference_solution` in problem.json names the one file
+(`solution.<ext>` or a `solution_<variant>.<ext>`), the optimal approach —
+through the same resource profile, the same executor, and the same cases,
+and uses that run as the baseline.
 
-```bash
-docker compose logs runner
-```
+Either way the comparison is same-language by construction, indicative rather
+than precise for very fast solutions, and best-effort: without a baseline,
+without a bundled reference, or across differing resource profiles, the ratio
+is simply omitted. Calibration also supplies each pair's `timeout_ms`.
+
+Production requires a complete calibration file: with
+`CODERPUZZLE_REQUIRE_CALIBRATION=1` (the compose default) registration, login,
+and judging return `503` until one is published. Build or resume it with
+`python -m app.calibrate` inside the API image — see
+[Judge resources](docs/JUDGE-RESOURCES.md).
 
 ## Security boundary
 
@@ -282,9 +320,10 @@ comparison modes are documented in [docs/CODECS.md](docs/CODECS.md).
 
 ## REST API
 
-The judge's HTTP API (problems, run, submit, submissions, guest sessions,
-drafts) is available to scripted callers — see [docs/API.md](docs/API.md) for
-endpoints and the session model.
+The judge's HTTP API (sessions, problems, drafts, format, run, submit,
+submissions, progress) is available to scripted callers — see
+[docs/api-and-cli.md](docs/api-and-cli.md) for every endpoint, the session
+model, the error statuses, and the execution-timing fields.
 
 ## Persistence
 
@@ -299,3 +338,21 @@ python3.14 -m pytest -q
 cd frontend && npm run build && npm audit --omit=dev
 docker compose config --quiet
 ```
+
+The corpus gates run against a real toolchain. `scripts/format.sh` wraps the
+runner image, which is the only place the pinned formatters live:
+
+```bash
+scripts/format.sh --check problems                       # canonical formatting
+python3 scripts/check.py --tree problems --skip-runtime  # static bundle tier
+CODERPUZZLE_PROBLEMS=problems python3 scripts/verify_solution.py <shard>/<key>
+```
+
+`verify_solution.py` judges a bundle's `solution*.<ext>` through the real
+executors and expects the local toolchain on `PATH`; `check.py`'s static tier
+compares starters byte-for-byte against the generator, so it belongs in the
+image, where clang-format lives. [scripts/README.md](scripts/README.md) is
+the tooling map — the authoring gates, the corpus consistency check, and the
+headless-UI drivers. `.github/workflows/check-problems.yml` runs the static
+tier on pushes that touch the corpus or the judge, and a sharded all-bundle
+judge sweep on dispatch and weekly.

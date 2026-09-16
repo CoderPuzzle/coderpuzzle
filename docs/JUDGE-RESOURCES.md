@@ -222,18 +222,19 @@ Host services and compilation share the first physical core; execution owns
 the second core and uses one logical CPU. There is no VM resize requirement.
 Check topology rather than assuming consecutive CPU numbers are siblings.
 The emitted `CODERPUZZLE_SHARED_CONTROL=1` selects the matching startup checks.
-# Deployment calibration
 
-Production judging requires a deployment-local calibration file. Build the
-problem cache and start the runner, then run the following inside the API
-image:
+## Deployment calibration
+
+Production judging requires a deployment-local calibration file. Start the
+stack — the API, the runner, and the problem set bind-mounted read-only into
+the API — then run the following inside the API image:
 
 ```sh
 python -m app.calibrate
 ```
 
-Use `--force` after changing the VM, runner image, compiler toolchain,
-problem cache, or resource profile. `--recalibrate` remains a compatibility
+Use `--force` after changing the VM, runner image, compiler toolchain, or
+resource profile. `--recalibrate` remains a compatibility
 alias. If the recorded hardware fingerprint is unchanged, a repeat invocation
 logs that calibration is current and exits without rerunning. The command runs every designated
 reference solution sequentially and atomically writes
