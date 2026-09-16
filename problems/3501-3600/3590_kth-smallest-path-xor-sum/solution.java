@@ -48,6 +48,12 @@ class Solution {
                 if (base < 0 || lists[child].length > lists[base].length) base = child;
             }
             int[] acc = base >= 0 ? lists[base] : new int[0];
+            // The slot is what keeps a child's array alive. Small-to-large
+            // abandons every array it merges out of, so on a 5 * 10^4-node
+            // chain the abandoned sizes 1, 2, ... n stay reachable through
+            // lists[] and retain O(n^2) ints -- gigabytes. Release each slot
+            // as it is consumed; only the accumulator survives the step.
+            if (base >= 0) lists[base] = null;
             int own = path[node];
             int ownPos = Arrays.binarySearch(acc, own);
             if (ownPos < 0) {
@@ -57,6 +63,7 @@ class Solution {
             for (int child : kids) {
                 if (child == base) continue;
                 int[] small = lists[child];
+                lists[child] = null;
                 if (small.length >= 64) {
                     int[] merged = new int[acc.length + small.length]; // two-pointer pass
                     int i = 0,
