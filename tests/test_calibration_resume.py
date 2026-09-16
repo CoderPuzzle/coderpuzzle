@@ -175,7 +175,18 @@ class ResumeTests(unittest.TestCase):
                 mock.patch("sys.argv", ["app.calibrate", "--force"]):
             calibrate.main()
         self.assertTrue(seen)
-        self.assertEqual([1500 * calibrate.MEASUREMENT_HEADROOM] * len(seen), seen)
+        self.assertEqual([calibrate._measurement_time_ms(1500)] * len(seen), seen)
+
+    def test_the_measurement_ceiling_respects_the_runner_contract(self):
+        """The runner rejects a budget over 60 s and applies the language
+        factor (up to 3.0x) on top, so the nominal must stay under a third of
+        it. n-queens declares 4000 ms: ten times that became 114 s under
+        java and every case came back system_error."""
+        self.assertGreaterEqual(calibrate._measurement_time_ms(1500), 1500)
+        self.assertLessEqual(calibrate._measurement_time_ms(6000) * 3.0, 60_000)
+        self.assertLessEqual(calibrate._measurement_time_ms(4000) * 3.0, 60_000)
+        # and it never shortens a bundle that already asks for more
+        self.assertEqual(90_000, calibrate._measurement_time_ms(90_000))
 
     def test_a_record_carries_both_measured_figures(self):
         """The per-case figures exclude the fixed cost of starting a case, so

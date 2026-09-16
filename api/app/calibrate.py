@@ -50,6 +50,19 @@ CONSECUTIVE_FAILURE_LIMIT = int(os.environ.get("CODERPUZZLE_CALIBRATION_FAILURE_
 # actually costs is then written into the record -- which is what every
 # derived deadline is built from anyway.
 MEASUREMENT_HEADROOM = max(1, int(os.environ.get("CODERPUZZLE_CALIBRATION_HEADROOM", "10")))
+# The runner refuses a budget outside 1..60000 ms, and it multiplies the
+# language's deadline factor -- clamped at 3.0x -- onto whatever it is sent,
+# so the nominal has to stay under a third of that ceiling. n-queens declares
+# 4000 ms and the corpus goes to 6000; ten times either becomes 114 s or more
+# once java's 2.86x lands, and the runner then rejects the job outright as an
+# invalid budget rather than judging it, which reads as a system_error on
+# every case.
+MEASUREMENT_CEILING_MS = max(1, int(os.environ.get("CODERPUZZLE_CALIBRATION_CEILING_MS", "19000")))
+
+
+def _measurement_time_ms(nominal_ms: int) -> int:
+    """The per-case ceiling the sweep measures under. Never below nominal."""
+    return max(nominal_ms, min(nominal_ms * MEASUREMENT_HEADROOM, MEASUREMENT_CEILING_MS))
 
 
 class HostUnhealthy(RuntimeError):
@@ -268,7 +281,7 @@ def main() -> int:
                     allowances.get(language, judge.PER_CASE_RUNNER_SECONDS)))
                 measured = {**problem, "limits": {
                     **problem["limits"],
-                    "time_ms": int(problem["limits"]["time_ms"]) * MEASUREMENT_HEADROOM}}
+                    "time_ms": _measurement_time_ms(int(problem["limits"]["time_ms"]))}}
                 started = time.monotonic()
                 try:
                     results = _run_judge(measured, language, reference, cases, public_count, bundle,
