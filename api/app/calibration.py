@@ -12,20 +12,52 @@ CALIBRATION_FILE = CALIBRATION_DIR / "calibration.json"
 REQUIRED = os.environ.get("CODERPUZZLE_REQUIRE_CALIBRATION", "0") == "1"
 
 
+# The published file is tens of megabytes on a full problem set and every
+# judged pair looks a record up in it, so parsing it per call would put a
+# whole-file parse on the judging path. Both caches are keyed on the file's
+# identity, so a republished calibration is picked up on its next read.
+_loaded: tuple[tuple[str, int, int], dict[str, Any] | None] | None = None
+_indexed: tuple[tuple[str, int, int], dict[tuple[str, str], dict[str, Any]]] | None = None
+
+
+def _identity() -> tuple[str, int, int] | None:
+    try:
+        stat = CALIBRATION_FILE.stat()
+    except OSError:
+        return None
+    return str(CALIBRATION_FILE), stat.st_mtime_ns, stat.st_size
+
+
 def load() -> dict[str, Any] | None:
+    global _loaded
+    identity = _identity()
+    if identity is None:
+        return None
+    if _loaded is not None and _loaded[0] == identity:
+        return _loaded[1]
     try:
         value = json.loads(CALIBRATION_FILE.read_text(encoding="utf-8"))
     except (FileNotFoundError, OSError, json.JSONDecodeError):
         return None
-    return value if isinstance(value, dict) else None
+    value = value if isinstance(value, dict) else None
+    _loaded = (identity, value)
+    return value
 
 
 def records() -> dict[tuple[str, str], dict[str, Any]]:
+    """Every record, indexed by (slug, language). Shared and read-only:
+    callers get the cached rows themselves, not copies of them."""
+    global _indexed
+    identity = _identity()
+    if identity is not None and _indexed is not None and _indexed[0] == identity:
+        return _indexed[1]
     value = load() or {}
     result = {}
     for row in value.get("records", []):
         if isinstance(row, dict) and row.get("slug") and row.get("language"):
             result[(row["slug"], row["language"])] = row
+    if identity is not None:
+        _indexed = (identity, result)
     return result
 
 
@@ -39,14 +71,8 @@ def prerequisite() -> tuple[bool, str]:
     if not rows:
         return False, "Calibration record is empty"
     try:
-        from .problems import list_problems, safe_problem_path
-        languages = {"py":"python3", "js":"javascript", "ts":"typescript", "java":"java",
-                     "cpp":"cpp", "go":"go", "rs":"rust", "sql":"sql", "sh":"shell"}
-        expected = {(item["slug"], languages[starter.suffix[1:]])
-                    for item in list_problems()
-                    for starter in safe_problem_path(item["slug"]).glob("starter.*")
-                    if starter.suffix[1:] in languages}
-        missing = expected - set(rows)
+        from .problems import starter_languages
+        missing = starter_languages() - set(rows)
         if missing:
             return False, f"Calibration is incomplete; missing {len(missing)} problem/language records"
     except (OSError, ValueError, KeyError):

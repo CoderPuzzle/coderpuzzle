@@ -535,6 +535,51 @@ def _cached_problem(
 
 
 @lru_cache(maxsize=None)
+def _cached_starters(path_string: str, modified_ns: int) -> tuple[str, ...]:
+    """The language keys one bundle publishes, keyed by its directory mtime.
+
+    A bundle offers a language when it ships a starter for it, so this is a
+    directory listing — and the directory's own mtime changes when a starter
+    is added or removed, which is what invalidates the entry."""
+    return tuple(
+        sorted(
+            language
+            for starter in Path(path_string).glob("starter.*")
+            if (language := EXTENSION_LANGUAGE.get(starter.suffix[1:]))
+        )
+    )
+
+
+def starter_languages() -> set[tuple[str, str]]:
+    """Every (slug, language) the problem set offers, in one tree walk.
+
+    This is the matrix the calibration sweep measures and the completeness
+    check compares against. Resolving each slug back to its path instead
+    costs four tree-wide globs per bundle, which on the served corpus is
+    minutes of work — per request, on the judging path.
+    """
+    keys: set[tuple[str, str]] = set()
+    if not PROBLEMS_DIR.exists():
+        return keys
+    for candidate in _iter_problem_paths(PROBLEMS_DIR):
+        try:
+            path = candidate.resolve()
+            if not _is_direct_child(path) or not path.is_dir():
+                continue
+            if PROBLEM_BUNDLE_DIR.fullmatch(path.name) is None:
+                continue
+            signature = (path / "problem.json").stat()
+            summary = _cached_summary(str(path), signature.st_mtime_ns, signature.st_size)
+            if summary is None:
+                continue
+            for language in _cached_starters(str(path), path.stat().st_mtime_ns):
+                keys.add((summary["slug"], language))
+        except OSError:
+            continue
+    return keys
+
+
+@lru_cache(maxsize=None)
 def _cached_summary(path_string: str, modified_ns: int, size: int) -> Optional[dict[str, Any]]:
     """The home-page metadata for one problem, reading only problem.json.
 

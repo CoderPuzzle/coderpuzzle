@@ -20,7 +20,15 @@ from pathlib import Path
 from . import calibration
 from .main import _run_judge
 from . import judge
-from .problems import list_problems, load_all_cases, load_designated_reference, load_problem, safe_problem_path
+from .problems import (
+    EXTENSION_LANGUAGE,
+    list_problems,
+    load_all_cases,
+    load_designated_reference,
+    load_problem,
+    safe_problem_path,
+    starter_languages,
+)
 
 
 LOG = logging.getLogger("coderpuzzle.calibrate")
@@ -37,8 +45,6 @@ CONSECUTIVE_FAILURE_LIMIT = int(os.environ.get("CODERPUZZLE_CALIBRATION_FAILURE_
 
 class HostUnhealthy(RuntimeError):
     """Raised when consecutive failures indicate the judge host, not the corpus."""
-LANGUAGES = {"py":"python3", "js":"javascript", "ts":"typescript", "java":"java",
-             "cpp":"cpp", "go":"go", "rs":"rust", "sql":"sql", "sh":"shell"}
 
 
 def _read(path: str) -> str | None:
@@ -185,7 +191,7 @@ def main() -> int:
             Path(temp).unlink(missing_ok=True)
     started = time.time()
     problems = list_problems()
-    total = sum(1 for item in problems for starter in safe_problem_path(item["slug"]).glob("starter.*") if starter.suffix[1:] in LANGUAGES)
+    total = len(starter_languages())
     completed = 0
     consecutive = 0
 
@@ -212,7 +218,7 @@ def main() -> int:
             problem = load_problem(slug, path=bundle)
             cases, public_count = load_all_cases(slug, path=bundle)
             for starter in sorted(bundle.glob("starter.*")):
-                language = LANGUAGES.get(starter.suffix[1:])
+                language = EXTENSION_LANGUAGE.get(starter.suffix[1:])
                 if not language:
                     continue
                 if (slug, language) in completed_keys:
