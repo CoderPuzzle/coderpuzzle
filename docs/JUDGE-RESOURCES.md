@@ -240,8 +240,11 @@ logs that calibration is current and exits without rerunning. The command runs e
 reference solution sequentially and atomically writes
 `/calibration/calibration.json` (the local `.calibration/` directory is
 ignored by Git). The file records CPU model, logical CPU count, total RAM,
-cgroup/Docker resource limits and a hardware fingerprint. Each record contains the reference wall time and a timeout
-equal to ten times that value. Production API containers require a complete
+cgroup/Docker resource limits and a hardware fingerprint. Each record contains
+the reference wall time, the slowest case the sweep saw, and a timeout equal to
+ten times the wall time; the deadline each testcase is held to is ten times
+that slowest case, because a capped job judges a generated corpus's heaviest
+inputs and their average does not predict their worst. Production API containers require a complete
 file before registration, login, or judging; missing records return HTTP 503.
 
 User submissions run only once. Their wall time is compared with the matching

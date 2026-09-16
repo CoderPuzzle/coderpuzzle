@@ -197,7 +197,8 @@ def main() -> int:
                 completed += 1
                 LOG.info("[%d/%d] calibrating %s/%s", completed, total, slug, language)
                 try:
-                    results = _run_judge(problem, language, reference, cases, public_count, bundle)
+                    results = _run_judge(problem, language, reference, cases, public_count, bundle,
+                                         respect_calibration=False)
                     failed_results = [row for row in results if row.get("status") not in {"accepted", "completed"}]
                     if failed_results:
                         statuses = sorted({row.get("status") for row in failed_results})
@@ -214,7 +215,10 @@ def main() -> int:
                     note_failure({"slug": slug, "language": language, "kind": "runner_error",
                                   "error": f"{type(error).__name__}: {error}"})
                     continue
-                wall = sum(int(row.get("wall_time_ms", row.get("runtime_ms", 0))) for row in results)
+                # The slowest case is what the per-case deadline has to
+                # cover; the mean does not predict it (see judge.py).
+                timings = [int(row.get("wall_time_ms", row.get("runtime_ms", 0))) for row in results]
+                wall = sum(timings)
                 if wall <= 0:
                     LOG.error("[%d/%d] %s/%s produced no timing; continuing", completed, total, slug, language)
                     note_failure({"slug": slug, "language": language, "kind": "missing_timing"})
@@ -222,7 +226,8 @@ def main() -> int:
                 rows.append({"slug": slug, "language": language,
                              "reference_walltime_ms": wall,
                              "timeout_ms": max(1, wall * 10),
-                             "case_count": len(results)})
+                             "case_count": len(results),
+                             "slowest_case_ms": max(timings, default=0)})
                 consecutive = 0
                 checkpoint()
                 LOG.info("[%d/%d] %s/%s reference wall=%dms timeout=%dms", completed, total, slug, language, wall, wall * 10)

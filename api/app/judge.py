@@ -30,6 +30,28 @@ RUNNER_TIMEOUT = max(_configured_runner_timeout, _calibration_timeout + 10)
 MAX_JUDGED_CASES = max(1, int(os.environ.get("CODERPUZZLE_MAX_JUDGED_CASES", "200")))
 PER_CASE_RUNNER_SECONDS = float(os.environ.get("CODERPUZZLE_PER_CASE_RUNNER_SECONDS", "0.25"))
 
+# A calibration record's `timeout_ms` is ten times the whole reference sweep,
+# so dividing it by the case count yields ten times the *average* case. That
+# suits the hand-written corpora — dozens of similar cases — but not the
+# generated ones, whose distribution is a long tail. Once a job judges only
+# the heaviest cases the average sits far under what the reference itself
+# needs: measured on the deployment host, the slowest case of
+# armstrong-number/python3 takes 264 ms against the 23 ms an average-derived
+# budget allows, and the reference fails its own calibration as a result. The
+# deadline is therefore ten times whichever of the two is larger, which is
+# the old value whenever the average already predicts the slowest case and
+# the sweep records no slowest case at all.
+PER_CASE_REFERENCE_MULTIPLE = max(1, int(os.environ.get("CODERPUZZLE_PER_CASE_REFERENCE_MULTIPLE", "10")))
+
+
+def per_case_timeout_ms(calibrated: dict[str, Any]) -> int:
+    """The per-case deadline a calibration record implies."""
+    slowest = calibrated.get("slowest_case_ms")
+    slowest = slowest if isinstance(slowest, (int, float)) and slowest > 0 else 0
+    case_count = max(1, int(calibrated.get("case_count") or 1))
+    average = calibrated["timeout_ms"] / PER_CASE_REFERENCE_MULTIPLE / case_count
+    return max(1, int(PER_CASE_REFERENCE_MULTIPLE * max(slowest, average)))
+
 
 class RunnerUnavailable(RuntimeError):
     pass

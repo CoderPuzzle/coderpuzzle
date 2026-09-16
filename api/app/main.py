@@ -32,6 +32,7 @@ from .judge import (
     execute,
     format_code_report,
     judge_slot,
+    per_case_timeout_ms,
     prune_stale_jobs,
     select_cases,
 )
@@ -327,15 +328,18 @@ def _run_judge(
     cases: list[dict[str, Any]],
     public_count: int,
     bundle: Path,
+    respect_calibration: bool = True,
 ) -> list[dict[str, Any]]:
     calibration.enforce()
     _validate_language(problem_data, language)
-    calibrated = calibration.lookup(problem_data["slug"], language)
+    # The sweep judges a bundle's own reference to *produce* the record, so it
+    # must not be governed by the record it is measuring — on a re-run that
+    # reads the previous record's deadline back to the reference and fails it.
+    calibrated = calibration.lookup(problem_data["slug"], language) if respect_calibration else None
     if calibration.REQUIRED and calibrated is None:
         raise HTTPException(status_code=503, detail="Calibration is missing for this problem and language")
     if calibrated:
-        case_count = max(1, int(calibrated.get("case_count", len(cases))))
-        per_case_timeout = max(1, int(calibrated["timeout_ms"] / case_count))
+        per_case_timeout = per_case_timeout_ms(calibrated)
         problem_data = {**problem_data, "limits": {**problem_data["limits"], "time_ms": per_case_timeout}}
     # A generated corpus can hold tens of thousands of cases, and every case
     # costs a sandboxed process; judge a bounded, deterministic subset that

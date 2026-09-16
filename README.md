@@ -258,7 +258,11 @@ and uses that run as the baseline.
 Either way the comparison is same-language by construction, indicative rather
 than precise for very fast solutions, and best-effort: without a baseline,
 without a bundled reference, or across differing resource profiles, the ratio
-is simply omitted. Calibration also supplies each pair's `timeout_ms`.
+is simply omitted. Calibration also supplies each pair's `timeout_ms`, and
+with it the per-case deadline: ten times the slowest case the sweep measured,
+because a capped job judges a generated corpus's heaviest inputs and their
+average does not predict their worst. Records written before the sweep
+recorded that figure fall back to ten times the average.
 
 Production requires a complete calibration file: with
 `CODERPUZZLE_REQUIRE_CALIBRATION=1` (the compose default) registration, login,

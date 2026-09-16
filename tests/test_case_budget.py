@@ -2,12 +2,13 @@ import shutil
 import sys
 import tempfile
 import unittest
+from contextlib import nullcontext
 from pathlib import Path
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from api.app import judge
+from api.app import judge, main
 
 
 def case(size):
@@ -111,3 +112,71 @@ class StaleJobPruningTests(unittest.TestCase):
     def test_a_missing_or_empty_queue_is_a_no_op(self):
         self.assertEqual(0, judge.prune_stale_jobs())
         self.assertEqual(0, judge.prune_stale_jobs())
+
+
+class PerCaseBudgetTests(unittest.TestCase):
+    """The per-case deadline has to cover the reference's *slowest* case.
+
+    Generated corpora are a long tail: a capped job judges the heaviest cases,
+    so ten times the average lands below what the reference itself needs and
+    it fails its own calibration. Measured on the deployment host,
+    armstrong-number/python3 averages 2.4 ms a case but its slowest takes
+    264 ms, against the 23 ms an average-derived budget allowed.
+    """
+
+    SLOW_TAIL = {"reference_walltime_ms": 478, "timeout_ms": 4780, "case_count": 200}
+
+    def test_the_slowest_case_sets_the_budget(self):
+        record = {**self.SLOW_TAIL, "slowest_case_ms": 264}
+        self.assertEqual(264 * judge.PER_CASE_REFERENCE_MULTIPLE, judge.per_case_timeout_ms(record))
+
+    def test_that_budget_clears_the_case_it_was_measured_from(self):
+        record = {**self.SLOW_TAIL, "slowest_case_ms": 264}
+        self.assertGreater(judge.per_case_timeout_ms(record), record["slowest_case_ms"])
+
+    def test_a_hand_written_corpus_keeps_the_budget_it_has_today(self):
+        # dozens of similar cases: the average already predicts the slowest
+        record = {"reference_walltime_ms": 476, "timeout_ms": 4760, "case_count": 18}
+        self.assertEqual(4760 // 18, judge.per_case_timeout_ms(record))
+
+    def test_records_written_before_the_field_are_unchanged(self):
+        for case_count in (18, 200, 2172):
+            record = {"reference_walltime_ms": 426, "timeout_ms": 4260, "case_count": case_count}
+            self.assertEqual(4260 // case_count, judge.per_case_timeout_ms(record))
+
+    def test_a_measured_tail_raises_the_budget_above_the_average(self):
+        flat = judge.per_case_timeout_ms(self.SLOW_TAIL)
+        tailed = judge.per_case_timeout_ms({**self.SLOW_TAIL, "slowest_case_ms": 264})
+        self.assertGreater(tailed, flat)
+
+
+class CalibrationMeasurementTests(unittest.TestCase):
+    """The sweep measures the reference to *produce* the record, so it must not
+    be governed by the record it is producing."""
+
+    PROBLEM = {"slug": "sample", "languages": {"python3": {}}, "invocation": {},
+               "limits": {"time_ms": 1500}}
+
+    def _run(self, **kwargs):
+        seen = []
+
+        def lookup(slug, language):
+            seen.append((slug, language))
+            return {"reference_walltime_ms": 426, "timeout_ms": 4260,
+                    "case_count": 203, "slowest_case_ms": 264}
+
+        with patch.object(main.calibration, "enforce", lambda: None), \
+             patch.object(main.calibration, "REQUIRED", False), \
+             patch.object(main.calibration, "lookup", lookup), \
+             patch.object(main, "_validate_language", lambda *a: None), \
+             patch.object(main, "_assembly_sources", lambda *a: {}), \
+             patch.object(main, "judge_slot", nullcontext), \
+             patch.object(main, "execute", lambda *a, **k: []):
+            main._run_judge(self.PROBLEM, "python3", "", [], 0, Path("."), **kwargs)
+        return seen
+
+    def test_the_sweep_ignores_the_record_it_is_measuring(self):
+        self.assertEqual([], self._run(respect_calibration=False))
+
+    def test_a_live_judge_still_consults_it(self):
+        self.assertEqual([("sample", "python3")], self._run())

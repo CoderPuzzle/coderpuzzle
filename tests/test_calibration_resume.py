@@ -95,15 +95,26 @@ class ResumeTests(unittest.TestCase):
 
     def _run(self, argv):
         judged = []
+        self.respect_flags = []
 
-        def judge(problem, language, reference, cases, public_count, bundle):
+        def judge(problem, language, reference, cases, public_count, bundle,
+                  respect_calibration=True):
             judged.append(problem["slug"])
+            self.respect_flags.append(respect_calibration)
             return [{"index": 0, "status": "accepted", "wall_time_ms": 5}]
 
         with mock.patch.object(calibrate, "_run_judge", side_effect=judge), \
                 mock.patch("sys.argv", ["app.calibrate", *argv]):
             code = calibrate.main()
         return code, judged
+
+    def test_the_sweep_measures_the_reference_on_its_own_terms(self):
+        """The record it is producing must not govern the run that produces it:
+        reading a previous record's deadline back to the reference fails it."""
+        self._write_checkpoint(hostname="a-previous-container")
+        self._run(["--force"])
+        self.assertTrue(self.respect_flags)
+        self.assertEqual([False] * len(self.respect_flags), self.respect_flags)
 
     def test_resume_skips_measured_records_after_a_container_recreate(self):
         self._write_checkpoint(hostname="a-previous-container")
