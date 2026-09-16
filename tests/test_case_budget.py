@@ -88,6 +88,31 @@ class JobTimeoutTests(unittest.TestCase):
     def test_the_wait_grows_with_the_case_count(self):
         self.assertLess(judge.job_timeout_seconds(50), judge.job_timeout_seconds(500))
 
+    # A capped job mostly spends the fixed cost of starting a case, and that
+    # cost is a property of the language: measured on the deployment host, 200
+    # cases take 43 s in python3 and 8.8 s in cpp. One shared constant cannot
+    # hold both, and at 0.25 s a case the python3 wait left 17 s for the
+    # submission's own work before it returned a 503 instead of a verdict.
+    PYTHON3 = {"case_count": 200, "observed_job_ms": 43000}
+    CPP = {"case_count": 200, "observed_job_ms": 8800}
+
+    def test_a_pair_is_waited_for_according_to_its_own_measured_job(self):
+        self.assertAlmostEqual(43.0 * judge.JOB_HEADROOM,
+                               judge.job_timeout_seconds(200, self.PYTHON3))
+
+    def test_a_language_the_shared_budget_already_covers_keeps_it(self):
+        shared = 200 * judge.PER_CASE_RUNNER_SECONDS + 10
+        self.assertAlmostEqual(shared, judge.job_timeout_seconds(200, self.CPP))
+
+    def test_a_record_without_the_measurement_keeps_the_shared_budget(self):
+        for record in (None, {}, {"case_count": 200, "slowest_case_ms": 264}):
+            self.assertAlmostEqual(200 * judge.PER_CASE_RUNNER_SECONDS + 10,
+                                   judge.job_timeout_seconds(200, record))
+
+    def test_a_smaller_job_is_waited_for_proportionally(self):
+        self.assertAlmostEqual(0.5 * judge.job_timeout_seconds(200, self.PYTHON3),
+                               judge.job_timeout_seconds(100, self.PYTHON3))
+
 
 class StaleJobPruningTests(unittest.TestCase):
     """A queue entry outlives its client when the API dies mid-wait, and the
@@ -180,3 +205,20 @@ class CalibrationMeasurementTests(unittest.TestCase):
 
     def test_a_live_judge_still_consults_it(self):
         self.assertEqual([("sample", "python3")], self._run())
+
+
+class JobBudgetPlumbingTests(unittest.TestCase):
+    """The record has to reach the queue wait, or the budget silently stays
+    shared and the pair that needs its own still gets the language-blind one."""
+
+    def test_execute_hands_the_record_to_the_queue_wait(self):
+        seen = {}
+        record = {"case_count": 200, "observed_job_ms": 43000}
+
+        def fake_submit(body, calibrated=None):
+            seen["calibrated"] = calibrated
+            return {"results": []}
+
+        with patch.object(judge, "_submit", fake_submit):
+            judge.execute("", "python3", {"parameters": []}, {"time_ms": 1000}, [], 0, calibrated=record)
+        self.assertEqual(record, seen["calibrated"])

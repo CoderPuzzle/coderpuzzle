@@ -58,6 +58,8 @@ class ResumeTests(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
+        # the sweep sizes judge.RUNNER_TIMEOUT per pair; do not leak it
+        self.addCleanup(setattr, calibrate.judge, "RUNNER_TIMEOUT", calibrate.judge.RUNNER_TIMEOUT)
         root = Path(self.temporary.name)
         self.problems_dir = (root / "problems").resolve()
         self.problems_dir.mkdir()
@@ -133,6 +135,24 @@ class ResumeTests(unittest.TestCase):
         self.assertEqual({row["slug"] for row in published["records"]},
                          {"demo-1", "demo-2", "demo-3"})
 
+    def test_a_record_carries_both_measured_figures(self):
+        """The per-case figures exclude the fixed cost of starting a case, so
+        the job budget needs its own end-to-end measurement, and the per-case
+        deadline needs the slowest case rather than the average."""
+        self._write_checkpoint(hostname="a-previous-container")
+        self._run(["--force"])
+        published = json.loads(calibration.CALIBRATION_FILE.read_text(encoding="utf-8"))
+        measured = {row["slug"]: row for row in published["records"]}
+        for slug in ("demo-2", "demo-3"):
+            with self.subTest(slug=slug):
+                self.assertEqual(5, measured[slug]["slowest_case_ms"])
+                self.assertIn("observed_job_ms", measured[slug])
+                self.assertGreaterEqual(measured[slug]["observed_job_ms"], 0)
+        # a record inherited from an older build keeps the shape it was
+        # written with; both derivations fall back to it rather than guess
+        self.assertNotIn("slowest_case_ms", measured["demo-1"])
+        self.assertEqual(7, measured["demo-1"]["reference_walltime_ms"])
+
     def test_restart_discards_the_checkpoint(self):
         self._write_checkpoint(hostname="a-previous-container")
         code, judged = self._run(["--restart"])
@@ -142,3 +162,29 @@ class ResumeTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SweepWaitTests(unittest.TestCase):
+    """The sweep's own wait must not be one figure for every language either:
+    a judged case costs 215 ms to start in python3 and 44 ms in cpp on the
+    deployment host, so a shared budget is wrong for one of them."""
+
+    def test_the_wait_follows_the_language_cost_and_the_case_count(self):
+        python3 = calibrate._pair_wait_seconds(200, 0.215)
+        cpp = calibrate._pair_wait_seconds(200, 0.044)
+        self.assertGreater(python3, cpp)
+        self.assertGreater(calibrate._pair_wait_seconds(400, 0.215), python3)
+
+    def test_allowances_are_seeded_per_language_from_the_published_calibration(self):
+        rows = {
+            ("a", "python3"): {"observed_job_ms": 43000, "case_count": 200},
+            ("b", "python3"): {"observed_job_ms": 20000, "case_count": 200},
+            ("c", "cpp"): {"observed_job_ms": 8800, "case_count": 200},
+            ("d", "go"): {"reference_walltime_ms": 5, "case_count": 1},
+        }
+        with mock.patch.object(calibrate.calibration, "records", lambda: rows):
+            seeded = calibrate._seeded_allowances()
+        self.assertAlmostEqual(0.215, seeded["python3"], places=6)
+        self.assertAlmostEqual(0.044, seeded["cpp"], places=6)
+        self.assertNotIn("go", seeded, "a record without the measurement seeds nothing")
+

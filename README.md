@@ -208,8 +208,12 @@ bundle whose corpus was generated into the tens of thousands of cases would
 otherwise take hours, so a job judges at most `CODERPUZZLE_MAX_JUDGED_CASES`
 cases (default 200): the bundle's public examples, its largest inputs, and an
 even sample of the rest, chosen deterministically so a submission, its
-calibration record, and any later re-judge agree. The runner wait scales with
-the cases actually sent.
+calibration record, and any later re-judge agree. The runner wait is sized
+from the pair's own measured job: what a case costs is mostly the fixed cost
+of starting its process, which is a property of the language (roughly 215 ms
+under python3 against 44 ms under C++ on the reference host), so one figure
+cannot serve both. A pair with no measurement yet falls back to a per-case
+allowance.
 
 The default shared profile uses `time_ms` as a nominal per-testcase deadline. At runner startup,
 each executor runs a deterministic language-specific benchmark. The runner

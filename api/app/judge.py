@@ -29,6 +29,7 @@ RUNNER_TIMEOUT = max(_configured_runner_timeout, _calibration_timeout + 10)
 # scales with the subset that was actually sent.
 MAX_JUDGED_CASES = max(1, int(os.environ.get("CODERPUZZLE_MAX_JUDGED_CASES", "200")))
 PER_CASE_RUNNER_SECONDS = float(os.environ.get("CODERPUZZLE_PER_CASE_RUNNER_SECONDS", "0.25"))
+JOB_HEADROOM = float(os.environ.get("CODERPUZZLE_JOB_HEADROOM", "3"))
 
 # A calibration record's `timeout_ms` is ten times the whole reference sweep,
 # so dividing it by the case count yields ten times the *average* case. That
@@ -86,15 +87,33 @@ def prune_stale_jobs() -> int:
     return removed
 
 
-def job_timeout_seconds(case_count: int) -> float:
+def job_timeout_seconds(case_count: int, calibrated: dict[str, Any] | None = None) -> float:
     """How long to wait for one job carrying this many cases.
 
     A job's wall time is set by its case count rather than by the submission,
     so the wait is sized from the cases actually sent: the configured floor
     covers small jobs, and a full-size selection gets the budget it was
     bounded for.
+
+    A calibrated pair brings a better number, because one constant cannot fit
+    every language. What a job mostly spends is the fixed cost of starting a
+    case, not the submission: a capped python3 job runs 43 s of which the
+    reference's own algorithm is under a second, while the same corpus in cpp
+    takes 8.8 s. At the shared constant a python3 submission had 17 s of room
+    for its own work before the API stopped waiting and returned a 503 rather
+    than a verdict. `observed_job_ms` is that pair's reference measured end to
+    end by the sweep, so the wait follows what this problem in this language
+    actually costs, and the multiple on top is headroom for a solution slower
+    than the reference. It only ever raises the wait: a pair whose measured
+    job fits the shared budget keeps it.
     """
-    return max(RUNNER_TIMEOUT, case_count * PER_CASE_RUNNER_SECONDS + 10)
+    budget = case_count * PER_CASE_RUNNER_SECONDS + 10
+    record = calibrated or {}
+    observed = record.get("observed_job_ms")
+    if isinstance(observed, (int, float)) and observed > 0:
+        per_case = observed / max(1, int(record.get("case_count") or 1))
+        budget = max(budget, per_case * case_count * JOB_HEADROOM / 1000)
+    return max(RUNNER_TIMEOUT, budget)
 
 
 def _case_weight(case: dict[str, Any]) -> int:
@@ -321,7 +340,7 @@ def _display_input(invocation: dict[str, Any], raw_input: Any) -> Any:
     return raw_input
 
 
-def _submit(request_body: dict[str, Any]) -> dict[str, Any]:
+def _submit(request_body: dict[str, Any], calibrated: dict[str, Any] | None = None) -> dict[str, Any]:
     """Hand one job to the isolated runner and wait for its answer.
 
     The queue is a directory the runner watches; `job_id` is filled in here so
@@ -344,7 +363,7 @@ def _submit(request_body: dict[str, Any]) -> dict[str, Any]:
     )
     ready_path.touch(mode=0o600)
 
-    deadline = time.monotonic() + job_timeout_seconds(len(request_body.get("cases", [])))
+    deadline = time.monotonic() + job_timeout_seconds(len(request_body.get("cases", [])), calibrated)
     try:
         while time.monotonic() < deadline:
             if result_path.exists():
@@ -387,6 +406,7 @@ def execute(
     cases: list[dict[str, Any]],
     public_count: int,
     assembly: dict[str, dict[str, str]] | None = None,
+    calibrated: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     body = {
         "version": 2,
@@ -399,7 +419,7 @@ def execute(
     }
     if assembly:
         body["assembly"] = assembly
-    response = _submit(body)
+    response = _submit(body, calibrated)
     raw_results = response["results"]
 
     comparison = invocation.get("comparison", "exact")

@@ -94,6 +94,27 @@ def same_hardware(stored: dict[str, object] | None, current: dict[str, object]) 
         key in stored for key in IDENTITY_KEYS)
 
 
+def _pair_wait_seconds(case_count: int, per_case_seconds: float) -> float:
+    """How long to wait for one measured pair, from its own language's cost."""
+    return case_count * per_case_seconds * judge.JOB_HEADROOM + 10
+
+
+def _seeded_allowances() -> dict[str, float]:
+    """Per-language per-case job cost read out of the published calibration.
+
+    A deployment that has measured a language before already knows what a
+    case costs it, so a resumed sweep starts from that rather than from the
+    shared figure.
+    """
+    seeded: dict[str, float] = {}
+    for (_, language), row in calibration.records().items():
+        observed = row.get("observed_job_ms")
+        if isinstance(observed, (int, float)) and observed > 0:
+            per_case = observed / 1000 / max(1, int(row.get("case_count") or 1))
+            seeded[language] = max(seeded.get(language, 0.0), per_case)
+    return seeded
+
+
 def main() -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     parser = argparse.ArgumentParser(prog="python -m app.calibrate")
@@ -106,7 +127,15 @@ def main() -> int:
     args = parser.parse_args()
     # Calibration is the bootstrap operation that creates the prerequisite.
     calibration.REQUIRED = False
-    judge.RUNNER_TIMEOUT = max(judge.RUNNER_TIMEOUT, 900)
+    # The wait for one pair is sized from what that language has actually
+    # cost, not from one figure for every language: a judged case spends what
+    # it spends on starting a process, which is 215 ms in python3 and 44 ms in
+    # cpp on the deployment host. Allowances are seeded from the published
+    # calibration where it recorded a job and ratchet from this run's own
+    # measurements as they land, so the first pair of a language is the only
+    # one on the shared starting figure.
+    base_timeout = judge.RUNNER_TIMEOUT
+    allowances = _seeded_allowances()
     hardware = hardware_snapshot()
     progress = calibration.load() if PROGRESS_FILE == calibration.CALIBRATION_FILE else None
     try:
@@ -196,6 +225,10 @@ def main() -> int:
                     continue
                 completed += 1
                 LOG.info("[%d/%d] calibrating %s/%s", completed, total, slug, language)
+                judge.RUNNER_TIMEOUT = max(base_timeout, _pair_wait_seconds(
+                    len(judge.select_cases(cases, public_count)),
+                    allowances.get(language, judge.PER_CASE_RUNNER_SECONDS)))
+                started = time.monotonic()
                 try:
                     results = _run_judge(problem, language, reference, cases, public_count, bundle,
                                          respect_calibration=False)
@@ -219,6 +252,12 @@ def main() -> int:
                 # cover; the mean does not predict it (see judge.py).
                 timings = [int(row.get("wall_time_ms", row.get("runtime_ms", 0))) for row in results]
                 wall = sum(timings)
+                # What the job cost end to end, which is what a submission's
+                # job budget has to cover; the per-case figures above exclude
+                # the fixed cost of starting one.
+                observed_job_ms = int((time.monotonic() - started) * 1000)
+                allowances[language] = max(allowances.get(language, 0.0),
+                                           observed_job_ms / 1000 / max(1, len(results)))
                 if wall <= 0:
                     LOG.error("[%d/%d] %s/%s produced no timing; continuing", completed, total, slug, language)
                     note_failure({"slug": slug, "language": language, "kind": "missing_timing"})
@@ -227,7 +266,8 @@ def main() -> int:
                              "reference_walltime_ms": wall,
                              "timeout_ms": max(1, wall * 10),
                              "case_count": len(results),
-                             "slowest_case_ms": max(timings, default=0)})
+                             "slowest_case_ms": max(timings, default=0),
+                             "observed_job_ms": observed_job_ms})
                 consecutive = 0
                 checkpoint()
                 LOG.info("[%d/%d] %s/%s reference wall=%dms timeout=%dms", completed, total, slug, language, wall, wall * 10)

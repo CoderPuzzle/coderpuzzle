@@ -358,6 +358,7 @@ def _run_judge(
                 cases,
                 public_count,
                 assembly=_assembly_sources(bundle, language),
+                calibrated=calibrated,
             )
     except RunnerUnavailable as error:
         raise HTTPException(status_code=503, detail=str(error)) from error

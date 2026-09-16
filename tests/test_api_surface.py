@@ -119,7 +119,7 @@ class ApiSurfaceTests(unittest.TestCase):
         (bundle / "starter.py").write_text(STARTER, encoding="utf-8")
         (bundle / "solution.py").write_text(STARTER, encoding="utf-8")
 
-        def fake_submit(body):
+        def fake_submit(body, calibrated=None):
             return _expected_aware_submit(body)
 
         database_patch = mock.patch.object(
@@ -204,7 +204,7 @@ class ApiSurfaceTests(unittest.TestCase):
     def test_run_sends_inputs_only_and_reports_case_results(self):
         requests = []
 
-        def record(body):
+        def record(body, calibrated=None):
             requests.append(body)
             return _expected_aware_submit(body)
 
