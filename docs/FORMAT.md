@@ -229,7 +229,9 @@ languages the problem offers. Never edit a starter by hand — change
 
 Every problem must carry `solution.<ext>` for **every** `starter.<ext>`. A
 solution matches its starter's signature exactly and must pass every case in
-`cases.json` under CoderPuzzle's judge. `scripts/check.py` enforces this.
+`cases.json`; `scripts/check.py` and `coderpuzzle judge` run the whole
+corpus, while a served submission judges a bounded subset of it
+(docs/api-and-cli.md).
 
 ## Formatting
 

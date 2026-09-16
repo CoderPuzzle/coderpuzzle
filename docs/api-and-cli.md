@@ -180,7 +180,8 @@ deterministically from the bundle's own case list: all public examples, the
 largest inputs, then an even sample of the rest. `passed` and `total`
 describe the cases that ran.
 
-Judges every hidden case. Verdict statuses: `accepted`, `wrong_answer`,
+Judges the hidden cases the job selects (bounded as above). Verdict
+statuses: `accepted`, `wrong_answer`,
 `compile_error`, `runtime_error`, `time_limit_exceeded`,
 `memory_limit_exceeded`, `system_error`. The response adds `submission_id`
 and `reference_runtime_ms` (the bundle's designated reference solution on
