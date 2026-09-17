@@ -103,7 +103,7 @@ class ResumeTests(unittest.TestCase):
                   respect_calibration=True):
             judged.append(problem["slug"])
             self.respect_flags.append(respect_calibration)
-            return [{"index": 0, "status": "accepted", "wall_time_ms": 5}]
+            return [{"index": 0, "status": "accepted", "wall_time_ms": 5, "runtime_ms": 5}]
 
         with mock.patch.object(calibrate, "_run_judge", side_effect=judge), \
                 mock.patch("sys.argv", ["app.calibrate", *argv]):
@@ -147,15 +147,27 @@ class ResumeTests(unittest.TestCase):
         """
         visible = {"index": 0, "status": "accepted", "wall_time_ms": 40, "runtime_ms": 40}
         hidden = {"index": 1, "status": "accepted", "_wall_time_ms": 200, "_runtime_ms": 200}
-        self.assertEqual(40, calibrate._case_time_ms(visible))
-        self.assertEqual(200, calibrate._case_time_ms(hidden))
-        self.assertEqual(0, calibrate._case_time_ms({"index": 2, "status": "skipped"}))
+        for reader in (calibrate._case_runtime_ms, calibrate._case_wall_ms):
+            self.assertEqual(40, reader(visible))
+            self.assertEqual(200, reader(hidden))
+            self.assertEqual(0, reader({"index": 2, "status": "skipped"}))
 
-    def test_a_measurement_prefers_wall_time_over_runtime(self):
-        self.assertEqual(
-            70, calibrate._case_time_ms({"wall_time_ms": 70, "runtime_ms": 12}))
-        self.assertEqual(
-            70, calibrate._case_time_ms({"_wall_time_ms": 70, "_runtime_ms": 12}))
+    def test_the_ratio_denominator_counts_what_the_numerator_counts(self):
+        """reference_walltime_ms is divided into _summarize's runtime_ms, so
+        it has to be the same quantity. The two agree in the shared profile
+        and diverge in the isolated one, where runtime_ms is CPU time."""
+        isolated = {"wall_time_ms": 500, "runtime_ms": 120}
+        self.assertEqual(120, calibrate._case_runtime_ms(isolated))
+        self.assertEqual(120, calibrate._case_runtime_ms({"_wall_time_ms": 500, "_runtime_ms": 120}))
+
+    def test_the_deadline_basis_stays_on_the_wall_clock(self):
+        """time_ms is a wall-clock limit, so the slowest case is wall time
+        even where runtime_ms reports CPU."""
+        isolated = {"wall_time_ms": 500, "runtime_ms": 120}
+        self.assertEqual(500, calibrate._case_wall_ms(isolated))
+        self.assertEqual(500, calibrate._case_wall_ms({"_wall_time_ms": 500, "_runtime_ms": 120}))
+        # with no wall metric at all it falls back rather than reporting zero
+        self.assertEqual(120, calibrate._case_wall_ms({"runtime_ms": 120}))
 
     def test_the_reference_is_measured_above_the_judging_deadline(self):
         """A reference that is merely slow must still be measurable.
@@ -168,7 +180,7 @@ class ResumeTests(unittest.TestCase):
         def judge(problem, language, reference, cases, public_count, bundle,
                   respect_calibration=True):
             seen.append(problem["limits"]["time_ms"])
-            return [{"index": 0, "status": "accepted", "wall_time_ms": 5}]
+            return [{"index": 0, "status": "accepted", "wall_time_ms": 5, "runtime_ms": 5}]
 
         self._write_checkpoint(hostname="a-previous-container")
         with mock.patch.object(calibrate, "_run_judge", side_effect=judge), \

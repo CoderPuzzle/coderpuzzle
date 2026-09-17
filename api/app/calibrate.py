@@ -122,8 +122,8 @@ def same_hardware(stored: dict[str, object] | None, current: dict[str, object]) 
         key in stored for key in IDENTITY_KEYS)
 
 
-def _case_time_ms(row: dict[str, object]) -> int:
-    """One judged case's wall time, whether or not the case is visible.
+def _case_metric_ms(row: dict[str, object], keys: tuple[str, ...]) -> int:
+    """One judged case's timing, whether or not the case is visible.
 
     _run_judge hides a non-public case's measurements behind an underscore so
     they never reach a browser. The sweep runs inside the trust boundary and
@@ -133,11 +133,35 @@ def _case_time_ms(row: dict[str, object]) -> int:
     a bundle's examples are its smallest inputs, while the cases a capped job
     actually judges are the largest, and hidden.
     """
-    for key in ("wall_time_ms", "_wall_time_ms", "runtime_ms", "_runtime_ms"):
+    for key in keys:
         value = row.get(key)
         if isinstance(value, (int, float)) and value > 0:
             return int(value)
     return 0
+
+
+def _case_runtime_ms(row: dict[str, object]) -> int:
+    """What _summarize would count for this case.
+
+    reference_walltime_ms is the ratio's denominator and _summarize's
+    runtime_ms is its numerator, so the two have to be the same quantity.
+    They are the same number in the shared profile, where runtime_ms is wall
+    time, and they are not in the isolated profile, where it is CPU time --
+    which would divide a CPU numerator by a wall denominator.
+    """
+    # The wall keys are a last resort, not a preference: a judged case always
+    # carries runtime_ms, and falling through to 0 would read as a missing
+    # timing and fail a pair that actually ran.
+    return _case_metric_ms(row, ("runtime_ms", "_runtime_ms", "wall_time_ms", "_wall_time_ms"))
+
+
+def _case_wall_ms(row: dict[str, object]) -> int:
+    """This case on the wall clock.
+
+    The per-case deadline is a wall-clock limit, so the slowest case has to
+    be measured on the wall even where runtime_ms reports CPU time.
+    """
+    return _case_metric_ms(row, ("wall_time_ms", "_wall_time_ms", "runtime_ms", "_runtime_ms"))
 
 
 def _pair_wait_seconds(case_count: int, per_case_seconds: float) -> float:
@@ -304,8 +328,8 @@ def main() -> int:
                     continue
                 # The slowest case is what the per-case deadline has to
                 # cover; the mean does not predict it (see judge.py).
-                timings = [_case_time_ms(row) for row in results]
-                wall = sum(timings)
+                wall = sum(_case_runtime_ms(row) for row in results)
+                slowest = max((_case_wall_ms(row) for row in results), default=0)
                 # What the job cost end to end, which is what a submission's
                 # job budget has to cover; the per-case figures above exclude
                 # the fixed cost of starting one.
@@ -322,7 +346,7 @@ def main() -> int:
                              "reference_walltime_ms": wall,
                              "timeout_ms": max(1, wall * 10),
                              "case_count": len(results),
-                             "slowest_case_ms": max(timings, default=0),
+                             "slowest_case_ms": slowest,
                              "observed_job_ms": observed_job_ms})
                 consecutive = 0
                 checkpoint()
