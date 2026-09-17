@@ -282,6 +282,16 @@ measurements above rather than from one figure for every language.
 | `CODERPUZZLE_CALIBRATION_FAILURE_LIMIT` | `40` | consecutive sweep failures before the breaker trips |
 | `CODERPUZZLE_CALIBRATION_HEADROOM` | `10` | multiple of `time_ms` the sweep allows itself to *measure* a reference |
 | `CODERPUZZLE_PROBLEM_CACHE_BYTES` | `192 MiB` | budget for parsed bundles held in memory |
+| `CODERPUZZLE_MAX_PER_CASE_TIMEOUT_MS` | `19000` | ceiling on a derived per-testcase deadline |
+| `CODERPUZZLE_CALIBRATION_CEILING_MS` | that ceiling | ceiling on the sweep's measurement budget |
+| `CODERPUZZLE_GOCACHE_MAX_BYTES` | `128 MiB` | Go build cache, trimmed between jobs |
+| `CODERPUZZLE_GOCACHE_CHECK_INTERVAL` | — | how often that cache is checked |
+
+The two ceilings exist because the runner refuses an execution budget outside
+1–60000 ms and multiplies the language's deadline factor (up to 3.0x) on top,
+so anything derived has to stay under a third of it. A budget the runner
+refuses is not a generous deadline: the job is rejected whole and every case
+returns `system_error`.
 
 The sweep measures under its own ceiling rather than the problem's deadline:
 `time_ms` is what a submission is held to, and holding the reference to it too
