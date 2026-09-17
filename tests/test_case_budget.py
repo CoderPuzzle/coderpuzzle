@@ -169,6 +169,22 @@ class PerCaseBudgetTests(unittest.TestCase):
             record = {"reference_walltime_ms": 426, "timeout_ms": 4260, "case_count": case_count}
             self.assertEqual(4260 // case_count, judge.per_case_timeout_ms(record))
 
+    def test_the_budget_never_exceeds_what_the_runner_accepts(self):
+        """A deadline the runner refuses is not a generous deadline.
+
+        execution_budget rejects anything outside 1..60000 ms and the
+        language factor (up to 3.0x) lands on top, so a derived deadline
+        above a third of that ceiling gets the whole job rejected and every
+        case comes back system_error."""
+        enormous = {"timeout_ms": 10 * 9000 * 12, "case_count": 12, "slowest_case_ms": 9000}
+        budget = judge.per_case_timeout_ms(enormous)
+        self.assertEqual(judge.MAX_PER_CASE_TIMEOUT_MS, budget)
+        self.assertLessEqual(budget * 3.0, 60_000)
+
+    def test_an_ordinary_pair_is_nowhere_near_the_ceiling(self):
+        record = {"timeout_ms": 10 * 184 * 200, "case_count": 200, "slowest_case_ms": 184}
+        self.assertEqual(1840, judge.per_case_timeout_ms(record))
+
     def test_a_measured_tail_raises_the_budget_above_the_average(self):
         flat = judge.per_case_timeout_ms(self.SLOW_TAIL)
         tailed = judge.per_case_timeout_ms({**self.SLOW_TAIL, "slowest_case_ms": 264})

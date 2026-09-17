@@ -44,6 +44,13 @@ JOB_HEADROOM = float(os.environ.get("CODERPUZZLE_JOB_HEADROOM", "3"))
 # the old value whenever the average already predicts the slowest case and
 # the sweep records no slowest case at all.
 PER_CASE_REFERENCE_MULTIPLE = max(1, int(os.environ.get("CODERPUZZLE_PER_CASE_REFERENCE_MULTIPLE", "10")))
+# The runner refuses an execution budget outside 1..60000 ms and multiplies
+# the language's deadline factor -- clamped at 3.0x -- onto whatever it is
+# sent, so anything derived here has to stay under a third of its ceiling. A
+# deadline the runner refuses is not a generous deadline: the job is rejected
+# outright and every case comes back system_error, which is how n-queens lost
+# three languages when the sweep asked for 40 s.
+MAX_PER_CASE_TIMEOUT_MS = max(1, int(os.environ.get("CODERPUZZLE_MAX_PER_CASE_TIMEOUT_MS", "19000")))
 
 
 def per_case_timeout_ms(calibrated: dict[str, Any]) -> int:
@@ -52,7 +59,8 @@ def per_case_timeout_ms(calibrated: dict[str, Any]) -> int:
     slowest = slowest if isinstance(slowest, (int, float)) and slowest > 0 else 0
     case_count = max(1, int(calibrated.get("case_count") or 1))
     average = calibrated["timeout_ms"] / PER_CASE_REFERENCE_MULTIPLE / case_count
-    return max(1, int(PER_CASE_REFERENCE_MULTIPLE * max(slowest, average)))
+    budget = int(PER_CASE_REFERENCE_MULTIPLE * max(slowest, average))
+    return max(1, min(budget, MAX_PER_CASE_TIMEOUT_MS))
 
 
 class RunnerUnavailable(RuntimeError):

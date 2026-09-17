@@ -57,7 +57,8 @@ MEASUREMENT_HEADROOM = max(1, int(os.environ.get("CODERPUZZLE_CALIBRATION_HEADRO
 # once java's 2.86x lands, and the runner then rejects the job outright as an
 # invalid budget rather than judging it, which reads as a system_error on
 # every case.
-MEASUREMENT_CEILING_MS = max(1, int(os.environ.get("CODERPUZZLE_CALIBRATION_CEILING_MS", "19000")))
+MEASUREMENT_CEILING_MS = max(1, int(os.environ.get(
+    "CODERPUZZLE_CALIBRATION_CEILING_MS", str(judge.MAX_PER_CASE_TIMEOUT_MS))))
 
 
 def _measurement_time_ms(nominal_ms: int) -> int:
