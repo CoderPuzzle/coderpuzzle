@@ -2232,14 +2232,12 @@ function ProviderFields({
   confirms,
   onChange,
   onConfirm,
-  onSubmit,
 }: {
   fields: AuthField[];
   values: Record<string, string>;
   confirms: Record<string, string>;
   onChange: (name: string, value: string) => void;
   onConfirm: (name: string, value: string) => void;
-  onSubmit: () => void;
 }) {
   return (
     <>
@@ -2248,10 +2246,11 @@ function ProviderFields({
           <label className="gate-field">
             <span>{field.label}</span>
             <input
+              id={`gate-field-${field.name}`}
+              name={field.name}
               type={field.kind === "password" ? "password" : field.kind === "email" ? "email" : "text"}
               value={values[field.name] ?? ""}
               onChange={(event) => onChange(field.name, event.target.value)}
-              onKeyDown={(event) => { if (event.key === "Enter") onSubmit(); }}
               autoComplete={field.autocomplete || undefined}
               readOnly={field.readonly}
               autoFocus={index === 0 && !field.readonly}
@@ -2261,10 +2260,11 @@ function ProviderFields({
             <label className="gate-field">
               <span>Confirm {field.label.toLowerCase()}</span>
               <input
+                id={`gate-field-confirm-${field.name}`}
+                name={`confirm-${field.name}`}
                 type="password"
                 value={confirms[field.name] ?? ""}
                 onChange={(event) => onConfirm(field.name, event.target.value)}
-                onKeyDown={(event) => { if (event.key === "Enter") onSubmit(); }}
                 autoComplete="new-password"
               />
             </label>
@@ -2495,18 +2495,22 @@ function GuestGate({ expired, error, needsSetup, providers, entryMode = "welcome
                       ? (active.hint || "Create an account.")
                       : (active.hint || `Sign in with ${active.label}.`)}
                 </p>
-                <ProviderFields
-                  fields={activeFields}
-                  values={values}
-                  confirms={confirms}
-                  onChange={(name, value) => setValues((current) => ({ ...current, [name]: value }))}
-                  onConfirm={(name, value) => setConfirms((current) => ({ ...current, [name]: value }))}
-                  onSubmit={submitActive}
-                />
-                {formError && <p className="gate-notice">{formError}</p>}
-                <button className="gate-enter" onClick={submitActive}>
-                  {mode === "signup" ? (needsSetup ? "Create admin" : "Create account") : mode === "challenge" ? "Verify code" : "Log in"}
-                </button>
+                <form
+                  className="gate-form-fields"
+                  onSubmit={(event) => { event.preventDefault(); submitActive(); }}
+                >
+                  <ProviderFields
+                    fields={activeFields}
+                    values={values}
+                    confirms={confirms}
+                    onChange={(name, value) => setValues((current) => ({ ...current, [name]: value }))}
+                    onConfirm={(name, value) => setConfirms((current) => ({ ...current, [name]: value }))}
+                  />
+                  {formError && <p className="gate-notice">{formError}</p>}
+                  <button type="submit" className="gate-enter">
+                    {mode === "signup" ? (needsSetup ? "Create admin" : "Create account") : mode === "challenge" ? "Verify code" : "Log in"}
+                  </button>
+                </form>
               </>
             )}
             {(!needsSetup || mode !== "signup") && (
