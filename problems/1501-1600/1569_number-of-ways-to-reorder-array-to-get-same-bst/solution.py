@@ -1,4 +1,3 @@
-import sys
 from typing import List
 
 MOD = 10**9 + 7
@@ -6,9 +5,6 @@ MOD = 10**9 + 7
 
 class Solution:
     def numOfWays(self, nums: List[int]) -> int:
-        # A skewed 1000-element chain nests over 1000 calls, past CPython's
-        # default recursion limit; lift it so the recursion stays the answer.
-        sys.setrecursionlimit(10000)
 
         n = len(nums)
         # Factorials and their modular inverses (Fermat's little theorem:

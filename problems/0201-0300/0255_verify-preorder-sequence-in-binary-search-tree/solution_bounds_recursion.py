@@ -1,4 +1,3 @@
-import sys
 from typing import List
 
 
@@ -12,8 +11,6 @@ class Solution:
         # rejects waits in place for the ancestor that still admits it.
         # The call chain nests once per level of the implied tree — the
         # full length on a sorted spine — past CPython's default recursion
-        # limit, so lift it for the run.
-        sys.setrecursionlimit(len(preorder) + 1000)
         cursor = 0
 
         def walk(low, high):

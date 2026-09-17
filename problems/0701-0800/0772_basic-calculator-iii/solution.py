@@ -1,9 +1,5 @@
-import sys
-
-
 class Solution:
     def calculate(self, s: str) -> int:
-        sys.setrecursionlimit(100000)
         n = len(s)
         i = 0
 

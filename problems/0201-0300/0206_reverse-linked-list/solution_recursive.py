@@ -1,8 +1,4 @@
-import sys
 from typing import List, Optional
-
-# The list can hold 5000 nodes, past CPython's default recursion limit.
-sys.setrecursionlimit(10_000)
 
 
 class Solution:

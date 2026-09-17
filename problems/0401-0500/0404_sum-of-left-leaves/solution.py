@@ -1,4 +1,3 @@
-import sys
 from typing import Optional
 
 # Bundle-provided types (assembled with this submission):
@@ -8,9 +7,6 @@ from typing import Optional
 
 class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
-        # A skewed 1000-node chain nests over 1000 calls, past CPython's
-        # default recursion limit; lift it so the recursion stays the answer.
-        sys.setrecursionlimit(10000)
 
         # Pre-order carrying each node's side: when the walk enters a leaf it
         # already knows whether that leaf is the left child of another node,
