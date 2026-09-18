@@ -15,6 +15,7 @@ import platform
 import re
 import tempfile
 import time
+import urllib.request
 from pathlib import Path
 
 from . import calibration
@@ -77,6 +78,47 @@ def _read(path: str) -> str | None:
         return None
 
 
+def _cloud_instance() -> dict[str, str]:
+    """What the cloud says this machine is, when it is a cloud machine.
+
+    A timing is only meaningful next to the hardware that produced it, and
+    "AMD EPYC 9B45, 4 logical CPUs" does not say whether those are 4 shared
+    vCPUs on a burstable instance or 4 dedicated ones -- the instance type
+    does. Off GCE the metadata server is simply absent and the record omits
+    these keys rather than guessing.
+    """
+    found: dict[str, str] = {}
+    for key, path in (("machine_type", "machine-type"), ("zone", "zone"),
+                      ("instance_name", "name")):
+        request = urllib.request.Request(
+            "http://metadata.google.internal/computeMetadata/v1/instance/" + path,
+            headers={"Metadata-Flavor": "Google"})
+        try:
+            with urllib.request.urlopen(request, timeout=2) as response:
+                value = response.read().decode("utf-8", "replace").strip()
+        except (OSError, ValueError):
+            return found
+        if value:
+            found[key] = value.rsplit("/", 1)[-1]
+    return found
+
+
+def _cpu_topology(cpuinfo: str) -> dict[str, int]:
+    """Physical cores behind the logical CPUs, where /proc/cpuinfo says so."""
+    cores, current = set(), {}
+    for line in cpuinfo.splitlines():
+        if ":" not in line:
+            if current.get("physical id") is not None and current.get("core id") is not None:
+                cores.add((current["physical id"], current["core id"]))
+            current = {}
+            continue
+        key, _, value = line.partition(":")
+        current[key.strip()] = value.strip()
+    if current.get("physical id") is not None and current.get("core id") is not None:
+        cores.add((current["physical id"], current["core id"]))
+    return {"physical_cores": len(cores)} if cores else {}
+
+
 def hardware_snapshot() -> dict[str, object]:
     cpuinfo = _read("/proc/cpuinfo") or ""
     model = next((line.split(":", 1)[1].strip() for line in cpuinfo.splitlines()
@@ -93,7 +135,8 @@ def hardware_snapshot() -> dict[str, object]:
     snapshot = {"hostname": platform.node(), "platform": platform.platform(),
                 "cpu_model": model, "logical_cpus": os.cpu_count(),
                 "memory_total_kib": memory_kib, "cgroup": cgroup,
-                "container_user": os.getuid()}
+                "container_user": os.getuid(),
+                **_cpu_topology(cpuinfo), **_cloud_instance()}
     snapshot["fingerprint"] = hashlib.sha256(
         json.dumps({key: snapshot[key] for key in IDENTITY_KEYS}, sort_keys=True).encode()).hexdigest()
     return snapshot

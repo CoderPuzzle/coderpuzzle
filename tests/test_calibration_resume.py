@@ -253,3 +253,50 @@ class SweepWaitTests(unittest.TestCase):
         self.assertAlmostEqual(0.044, seeded["cpp"], places=6)
         self.assertNotIn("go", seeded, "a record without the measurement seeds nothing")
 
+
+class HardwareProvenanceTests(unittest.TestCase):
+    """A timing is only meaningful beside the machine that produced it."""
+
+    CPUINFO = (
+        "processor\t: 0\nmodel name\t: AMD EPYC 9B45\nphysical id\t: 0\ncore id\t\t: 0\n\n"
+        "processor\t: 1\nmodel name\t: AMD EPYC 9B45\nphysical id\t: 0\ncore id\t\t: 0\n\n"
+        "processor\t: 2\nmodel name\t: AMD EPYC 9B45\nphysical id\t: 0\ncore id\t\t: 1\n\n"
+        "processor\t: 3\nmodel name\t: AMD EPYC 9B45\nphysical id\t: 0\ncore id\t\t: 1\n"
+    )
+
+    def test_hyperthreads_collapse_into_physical_cores(self):
+        """4 logical CPUs over 2 cores is a different machine from 4 cores."""
+        self.assertEqual({"physical_cores": 2}, calibrate._cpu_topology(self.CPUINFO))
+
+    def test_a_cpuinfo_without_topology_adds_nothing(self):
+        self.assertEqual({}, calibrate._cpu_topology("processor\t: 0\nmodel name\t: Apple M2\n"))
+
+    def test_the_instance_type_is_recorded(self):
+        class Response:
+            def __init__(self, body): self.body = body
+            def read(self): return self.body
+            def __enter__(self): return self
+            def __exit__(self, *a): return False
+
+        answers = {"machine-type": b"projects/1008374281469/machineTypes/c4d-highcpu-4",
+                   "zone": b"projects/1008374281469/zones/us-east4-a",
+                   "name": b"katze"}
+        def fake_urlopen(request, timeout=None):
+            return Response(answers[request.full_url.rsplit("/", 1)[-1]])
+
+        with mock.patch.object(calibrate.urllib.request, "urlopen", fake_urlopen):
+            self.assertEqual(
+                {"machine_type": "c4d-highcpu-4", "zone": "us-east4-a", "instance_name": "katze"},
+                calibrate._cloud_instance())
+
+    def test_off_cloud_it_records_nothing_rather_than_guessing(self):
+        with mock.patch.object(calibrate.urllib.request, "urlopen",
+                               side_effect=OSError("no metadata server")):
+            self.assertEqual({}, calibrate._cloud_instance())
+
+    def test_the_fingerprint_ignores_provenance(self):
+        """Adding these must not invalidate a checkpoint: the fingerprint is
+        what decides whether hours of measurement can be resumed."""
+        for key in ("machine_type", "zone", "instance_name", "physical_cores"):
+            self.assertNotIn(key, calibrate.IDENTITY_KEYS)
+

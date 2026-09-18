@@ -240,7 +240,13 @@ logs that calibration is current and exits without rerunning. The command runs e
 reference solution sequentially and atomically writes
 `/calibration/calibration.json` (the local `.calibration/` directory is
 ignored by Git). The file records CPU model, logical CPU count, total RAM,
-cgroup/Docker resource limits and a hardware fingerprint.
+cgroup/Docker resource limits and a hardware fingerprint. On a cloud instance
+it also records what the provider says the machine is — `machine_type`
+(`c4d-highcpu-4`), `zone`, `instance_name` — because "4 logical CPUs" does not
+distinguish four dedicated vCPUs from four burstable ones, and a timing only
+means something beside the machine that produced it. These are provenance, not
+identity: they stay out of the fingerprint, so adding them does not invalidate
+a checkpoint.
 
 Each record measures one (problem, language) pair:
 
