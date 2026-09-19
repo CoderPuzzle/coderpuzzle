@@ -297,7 +297,7 @@ def main() -> int:
                 os.close(directory)
         finally:
             Path(temp).unlink(missing_ok=True)
-    started = time.time()
+    run_started = time.monotonic()
     # A ratio only means something when its two halves were timed the same
     # way, so the artifact records what this sweep measured under and the
     # judge refuses to divide across a change (docs/api-and-cli.md).
@@ -350,7 +350,7 @@ def main() -> int:
                 measured = {**problem, "limits": {
                     **problem["limits"],
                     "time_ms": _measurement_time_ms(int(problem["limits"]["time_ms"]))}}
-                started = time.monotonic()
+                pair_started = time.monotonic()
                 try:
                     results = _run_judge(measured, language, reference, cases, public_count, bundle,
                                          respect_calibration=False)
@@ -377,7 +377,7 @@ def main() -> int:
                 # What the job cost end to end, which is what a submission's
                 # job budget has to cover; the per-case figures above exclude
                 # the fixed cost of starting one.
-                observed_job_ms = int((time.monotonic() - started) * 1000)
+                observed_job_ms = int((time.monotonic() - pair_started) * 1000)
                 measured_modes.update(r.get("timing_mode", "wall") for r in results)
                 measured_profiles.update(r.get("resource_profile", "shared-wall-v1") for r in results)
                 allowances[language] = max(allowances.get(language, 0.0),
@@ -407,7 +407,7 @@ def main() -> int:
                "timing_mode": next(iter(measured_modes)) if len(measured_modes) == 1 else "mixed",
                "resource_profile": (next(iter(measured_profiles))
                                     if len(measured_profiles) == 1 else "mixed"),
-               "duration_seconds": time.time() - started}
+               "duration_seconds": time.monotonic() - run_started}
     calibration.CALIBRATION_DIR.mkdir(parents=True, exist_ok=True)
     fd, temp = tempfile.mkstemp(prefix="calibration-", suffix=".json", dir=calibration.CALIBRATION_DIR)
     try:

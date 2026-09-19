@@ -218,6 +218,25 @@ class ResumeTests(unittest.TestCase):
         self.assertNotIn("slowest_case_ms", measured["demo-1"])
         self.assertEqual(7, measured["demo-1"]["reference_walltime_ms"])
 
+    def test_duration_covers_the_run_not_only_the_last_pair(self):
+        """Whole-run and per-pair timers must not share a variable.
+
+        Reusing ``started`` for both mixed ``time.time`` with the last pair's
+        ``time.monotonic``, publishing roughly 1.8 billion seconds.
+        """
+        self._write_checkpoint(hostname="a-previous-container")
+        clock = mock.Mock()
+        # Run start; demo-2 pair start/end; demo-3 pair start/end; run end.
+        clock.monotonic.side_effect = [100.0, 110.0, 111.0, 120.0, 121.0, 130.0]
+        clock.time.return_value = 1_000.0
+        # Rebind here rather than mutating the stdlib module that problems.py
+        # also uses for its list cache.
+        with mock.patch.object(calibrate, "time", clock):
+            code, _ = self._run(["--force"])
+        self.assertEqual(code, 0)
+        published = json.loads(calibration.CALIBRATION_FILE.read_text(encoding="utf-8"))
+        self.assertEqual(30.0, published["duration_seconds"])
+
     def test_restart_discards_the_checkpoint(self):
         self._write_checkpoint(hostname="a-previous-container")
         code, judged = self._run(["--restart"])
