@@ -261,6 +261,23 @@ def _run_case(
             "timing_mode": "cpu" if group else "wall",
             "resource_profile": manager.profile,
         })
+        # algorithm_us is the first harness-supplied timing field. fd 63 is
+        # submission-writable, so accept it only inside physical bounds the
+        # supervisor already measured. A forged small value stays undetectable
+        # — same hygiene-not-protection class as the rest of this channel.
+        claimed = parsed.pop("algorithm_us", None)
+        ceiling_us = max(0, int(wall_ms) * 1000)
+        if isinstance(measurements.get("cpu_time_ms"), (int, float)):
+            ceiling_us = min(ceiling_us, max(0, int(measurements["cpu_time_ms"]) * 1000))
+        if isinstance(claimed, int) and 0 <= claimed <= ceiling_us:
+            parsed["algorithm_us"] = claimed
+            parsed["scored_quantity"] = "algorithm"
+        else:
+            parsed.pop("scored_quantity", None)
+        for optional in ("load_us", "clock_noise_ns"):
+            value = parsed.get(optional)
+            if not isinstance(value, int) or value < 0:
+                parsed.pop(optional, None)
         if process.returncode != 0 and parsed["status"] == "runtime_error" and not parsed.get("error"):
             parsed["error"] = f"{executor.language} exited with status {process.returncode}"
         return parsed
@@ -371,7 +388,8 @@ def _process_job(job_dir: Path) -> None:
                 results.append(result)
                 _audit("case_end", job_id=job_dir.name, case=case_index,
                        status=result["status"], **{key: result[key] for key in
-                           ("cpu_time_ms", "wall_time_ms", "cpu_throttled_ms", "memory_peak_bytes")
+                           ("cpu_time_ms", "wall_time_ms", "cpu_throttled_ms",
+                            "memory_peak_bytes", "algorithm_us", "load_us")
                            if key in result})
                 scratch = job_root / "scratch"
                 try:

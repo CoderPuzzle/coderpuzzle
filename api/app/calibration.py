@@ -109,19 +109,27 @@ def prerequisite() -> tuple[bool, str]:
     return True, "ok"
 
 
-def comparable(timing_mode: str, resource_profile: str) -> bool:
+def comparable(timing_mode: str, resource_profile: str, scored_quantity: str = "algorithm") -> bool:
     """Whether a run timed this way may be divided by a calibration baseline.
 
     A wall-time baseline against a CPU-time run is not a ratio, it is two
     different measurements; the same goes across resource profiles. An
     artifact written before the sweep recorded its own mode says nothing
-    either way, so it is trusted rather than discarded.
+    either way, so those two keys are trusted when missing.
+
+    ``scored_quantity`` is the opposite: every artifact before algorithm
+    timing measured wall-process time. A missing key therefore means wall,
+    and must not be trusted against an algorithm numerator — that would
+    silently divide microseconds by milliseconds.
     """
     value = load() or {}
     for key, actual in (("timing_mode", timing_mode), ("resource_profile", resource_profile)):
         recorded = value.get(key)
         if isinstance(recorded, str) and recorded and recorded != actual:
             return False
+    recorded_quantity = value.get("scored_quantity")
+    if recorded_quantity != scored_quantity:
+        return False
     return True
 
 

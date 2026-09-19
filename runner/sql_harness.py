@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.insert(0, "/runner")
 
 from protocol import emit_protocol
+import timing
 
 PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 MAX_CAPTURED_OUTPUT = 16_384
@@ -116,11 +117,15 @@ def main() -> None:
             argv = argv[argv.index("--") + 1 :]
         query = Path(argv[0]).read_text(encoding="utf-8")
         if sql_flags.get("dynamic_columns"):
+            started = timing.mark()
             answer = _run_dynamic_columns(connection, _split_statements(query), sql_flags)
+            timing.add(started)
         else:
             # The submission is a single SELECT whose row set is the answer.
             answer = query
+        started = timing.mark()
         actual = _run_query(connection, answer, bool(sql_flags.get("headers")))
+        timing.add(started)
         response = {"status": "completed", "actual": actual, "stdout": ""}
     except sqlite3.Error as error:
         response = {
@@ -136,6 +141,7 @@ def main() -> None:
             "error": f"{type(error).__name__}: {error}"[:1000],
             "stdout": "",
         }
+    response.update(timing.report())
     emit_protocol(PROTOCOL_PREFIX + json.dumps(response, allow_nan=False, separators=(",", ":")))
 
 

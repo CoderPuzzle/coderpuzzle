@@ -7,6 +7,7 @@ import tempfile
 sys.path.insert(0, "/runner")
 
 from protocol import emit_protocol
+import timing
 
 PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 MAX_CAPTURED_STDERR = 16_384
@@ -28,6 +29,7 @@ def _run(script: str) -> dict:
     cap = int(os.environ.get(OUTPUT_KB_ENV, DEFAULT_OUTPUT_KB)) * 1024
     with tempfile.TemporaryFile() as stderr_file:
         try:
+            started = timing.mark()
             process = subprocess.Popen(
                 ["bash", script],
                 stdin=sys.stdin,
@@ -50,12 +52,14 @@ def _run(script: str) -> dict:
             if len(collected) > cap:
                 process.kill()
                 process.wait()
+                timing.add(started)
                 return {
                     "status": "runtime_error",
                     "error": f"Output limit exceeded ({cap // 1024} KiB)",
                     "stdout": "",
                 }
         code = process.wait()
+        timing.add(started)
         stderr_file.seek(0, os.SEEK_END)
         stderr_size = stderr_file.tell()
         stderr_file.seek(max(0, stderr_size - MAX_CAPTURED_STDERR))
@@ -85,6 +89,7 @@ def main() -> None:
         }
     else:
         response = _run(script)
+    response.update(timing.report())
     emit_protocol(PROTOCOL_PREFIX + json.dumps(response, ensure_ascii=False, separators=(",", ":")))
 
 

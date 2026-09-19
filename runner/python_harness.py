@@ -13,6 +13,7 @@ from typing import Any
 # placed on the import path.
 sys.path.insert(0, "/runner")
 
+import timing
 from leetcode_codecs import (
     CLASS_BEARING_CODECS,
     binary_tree_nodes,
@@ -192,7 +193,9 @@ def _invoke_function(module, invocation: dict[str, Any], raw_input: Any) -> Any:
         )
     arguments, context = _decode_function_arguments(module, raw_input, parameters)
     instance = getattr(module, invocation["class_name"])()
+    started = timing.mark()
     actual = getattr(instance, invocation["method"])(*arguments)
+    timing.add(started)
     return _encode_function_result(actual, invocation.get("return_codec", "json"), invocation, context)
 
 
@@ -261,7 +264,13 @@ def _invoke_design(module, invocation: dict[str, Any], raw_input: Any) -> Any:
             value_type = constructor_value_types[index] if index < len(constructor_value_types) else {}
             class_name = value_type.get("class") if codec in CLASS_BEARING_CODECS else None
             arguments.append(decode(value, codec, module, class_name))
-        return entry_class(*arguments)
+        # Construction is measured: a design whose constructor builds the
+        # index it is asked about (a cache, a trie, a logger) would otherwise
+        # report nothing at all for the work it exists to do.
+        started = timing.mark()
+        instance = entry_class(*arguments)
+        timing.add(started)
+        return instance
 
     # Named instances ({"new": handle} actions) live here for the whole
     # replay; $ref arguments and "on" targets resolve through it. The
@@ -338,14 +347,18 @@ def _invoke_design(module, invocation: dict[str, Any], raw_input: Any) -> Any:
             )
             decoded.append(decode(argument, codec, module, class_name))
         if repeat <= 1:
+            started = timing.mark()
             value = getattr(target, action)(*decoded)
+            timing.add(started)
             raw_output.append(value)
             output.append(encode(value, return_codec))
             continue
         counts: dict[str, int] = {}
         last = None
         for _ in range(repeat):
+            started = timing.mark()
             last = getattr(target, action)(*decoded)
+            timing.add(started)
             key = _canonical_key(encode(last, return_codec))
             counts[key] = counts.get(key, 0) + 1
         raw_output.append(last)
@@ -388,7 +401,9 @@ def _invoke_interactive(module, invocation: dict[str, Any], raw_input: Any) -> A
         if name not in raw_input:
             raise ValueError(f"Interactive input needs {name!r}")
         arguments.append(raw_input[name])
+    started = timing.mark()
     result = getattr(instance, invocation["method"])(*arguments)
+    timing.add(started)
     # Void-method oracles are judged by their own final state — e.g. the
     # robot's exact set of cleaned cells.
     if result is None and hasattr(oracle, "verdict"):
@@ -544,6 +559,10 @@ def _invoke_concurrent(module, invocation: dict[str, Any], raw_input: Any) -> An
             )
             for spec in schedule
         ]
+        # A threaded schedule is timed as one outer span from starting every
+        # thread to joining them all: the per-thread regions overlap in time,
+        # so summing them would count the same wall clock several times.
+        started = timing.mark()
         for thread in threads:
             thread.start()
     finally:
@@ -552,6 +571,7 @@ def _invoke_concurrent(module, invocation: dict[str, Any], raw_input: Any) -> An
     # never completes simply never returns, and the case times out.
     for thread in threads:
         thread.join()
+    timing.add(started)
     if failures:
         raise RuntimeError(failures[0])
     return events
@@ -596,7 +616,9 @@ def main() -> None:
                 assembly_args, solution_args = argv[:split], argv[split + 1 :]
             else:
                 assembly_args, solution_args = [], argv
+            loaded = timing.mark()
             module = _load_solution(Path(solution_args[0]), [Path(a) for a in assembly_args])
+            timing.add(loaded, "load_us")
             actual = _invoke(module, invocation, payload["input"])
         escaped_stdout = len(json.dumps(captured.getvalue()))
         actual_budget = max(1024, output_limit - escaped_stdout - 512)
@@ -618,6 +640,10 @@ def main() -> None:
                 -2000:
             ],
         }
+    # The submission-only figures ride with the verdict, on a failure too:
+    # a case that raised still spent its algorithm time, and the API decides
+    # from the status whether a ratio may be formed.
+    response.update(timing.report())
     emit_protocol(
         PROTOCOL_PREFIX + json.dumps(response, allow_nan=False, separators=(",", ":"))
     )

@@ -1215,8 +1215,10 @@ class CppExecutor(CompiledExecutor):
 {declarations}
                     coderpuzzle_reader.finished();
                     {class_name} coderpuzzle_solution;
+                    auto coderpuzzle_started = coderpuzzle_clock_start();
                     auto coderpuzzle_actual = coderpuzzle_solution.{method}({arguments});
-                    coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"completed\\\",\\\"actual\\\":\" + coderpuzzle_result(coderpuzzle_actual) + \"}}\");
+                    coderpuzzle_clock_stop(coderpuzzle_started);
+                                        coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"completed\\\",\\\"actual\\\":\" + coderpuzzle_result(coderpuzzle_actual) + \",\\\"algorithm_us\\\":\" + std::to_string(coderpuzzle_algorithm_ns / 1000) + \"}}\");
                 }} catch (const std::exception& error) {{
                     coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\" + coderpuzzle_json(std::string(error.what())) + \"}}\");
                 }} catch (...) {{
@@ -1242,7 +1244,13 @@ class CppExecutor(CompiledExecutor):
             "        std::cout << payload << std::flush;\n"
             "    }\n"
             "}\n"
-            + assembly_decls
+            "static long long coderpuzzle_algorithm_ns = 0;\n"
+            "static auto coderpuzzle_clock_start() { return std::chrono::steady_clock::now(); }\n"
+            "static void coderpuzzle_clock_stop(std::chrono::steady_clock::time_point started) {\n"
+            "    coderpuzzle_algorithm_ns += std::chrono::duration_cast<std::chrono::nanoseconds>(\n"
+            "        std::chrono::steady_clock::now() - started).count();\n"
+            "}\n"
++ assembly_decls
             + code
             + "\n"
             + wrapper,

@@ -44,14 +44,10 @@ from .problems import (
     ProblemError,
     list_problems,
     load_all_cases,
-    load_designated_reference,
     load_problem,
     load_solutions,
     public_problem,
 )
-
-
-LEGACY_REFERENCE_TIMING = os.environ.get("CODERPUZZLE_LEGACY_REFERENCE_TIMING", "0") == "1"
 
 
 @asynccontextmanager
@@ -481,26 +477,44 @@ def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_se
     results = _run_judge(problem_data, request.language, request.code, cases, public_count, bundle)
     summary = _summarize(results)
     _attach_tamper_warnings(summary, bundle, request.language, request.code)
+    # The baseline is this deployment's calibration record for the pair --
+    # the reference measured once by the sweep, never re-run per submission.
+    # Deadlines stay on wall time; the scored ratio uses algorithm_us only.
     baseline = calibration.lookup(request.slug, request.language)
-    if LEGACY_REFERENCE_TIMING and summary["status"] == "accepted":
-        reference = load_designated_reference(request.slug, request.language, path=bundle)
-        if reference:
-            reference_results = _run_judge(problem_data, request.language, reference, cases, public_count, bundle)
-            reference_summary = _summarize(reference_results)
-            if reference_summary["status"] == "accepted" and reference_summary["runtime_ms"] > 0:
-                baseline = {
-                    "reference_walltime_ms": reference_summary["runtime_ms"],
-                    "timeout_ms": None,
-                }
     summary["reference_runtime_ms"] = baseline["reference_walltime_ms"] if baseline else None
     summary["timeout_ms"] = baseline["timeout_ms"] if baseline else None
-    comparable = LEGACY_REFERENCE_TIMING or calibration.comparable(
-        summary["timing_mode"], summary["resource_profile"])
-    summary["performance_ratio_percent"] = (
-        round(summary["runtime_ms"] * 100 / baseline["reference_walltime_ms"], 2)
-        if baseline and baseline["reference_walltime_ms"] and comparable
-        else None
+    floor_us = int(os.environ.get("CODERPUZZLE_ALGORITHM_FLOOR_US", "200"))
+    reference_algorithm_us = baseline.get("reference_algorithm_us") if baseline else None
+    if not isinstance(reference_algorithm_us, (int, float)) or reference_algorithm_us <= 0:
+        reference_algorithm_us = None
+    summary["reference_algorithm_us"] = int(reference_algorithm_us) if reference_algorithm_us is not None else None
+    algorithm_us = summary.get("algorithm_us")
+    scored_cases = int(summary.get("scored_cases") or 0)
+    executed = summary["status"] in {"accepted", "wrong_answer"} or (
+        summary["status"] not in {"compile_error", "system_error"} and summary["passed"] == summary["total"]
     )
+    comparable = calibration.comparable(
+        summary["timing_mode"], summary["resource_profile"], scored_quantity="algorithm")
+    state = "unmeasured"
+    ratio = None
+    if (
+        baseline
+        and reference_algorithm_us is not None
+        and isinstance(algorithm_us, (int, float))
+        and scored_cases == summary["total"]
+        and summary["total"] > 0
+        and executed
+        and summary["status"] == "accepted"
+    ):
+        if not comparable:
+            state = "incomparable"
+        elif reference_algorithm_us < floor_us:
+            state = "below_floor"
+        else:
+            state = "scored"
+            ratio = round(float(algorithm_us) * 100.0 / float(reference_algorithm_us), 2)
+    summary["performance_state"] = state
+    summary["performance_ratio_percent"] = ratio
     submission_id = save_submission(
         request.slug,
         request.language,
@@ -531,11 +545,19 @@ def _summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
         "queue_ms": sum(result.get("_queue_ms", 0) for result in results),
         "compile_ms": sum(result.get("_compile_ms", 0) for result in results),
     }
-    for metric in ("cpu_time_ms", "wall_time_ms"):
+    for metric in ("cpu_time_ms", "wall_time_ms", "algorithm_us"):
         if any(metric in result or "_" + metric in result for result in results):
             timing[metric] = sum(result.get(metric, result.get("_" + metric, 0)) for result in results)
+    scored_cases = sum(
+        1 for result in results
+        if isinstance(result.get("algorithm_us", result.get("_algorithm_us")), (int, float))
+    )
+    timing["scored_cases"] = scored_cases
     for result in results:
-        for key in ("_runtime_ms", "_cpu_time_ms", "_wall_time_ms", "_queue_ms", "_compile_ms", "_judge_job_id"):
+        for key in (
+            "_runtime_ms", "_cpu_time_ms", "_wall_time_ms", "_algorithm_us",
+            "_queue_ms", "_compile_ms", "_judge_job_id",
+        ):
             result.pop(key, None)
     status = (
         "accepted"

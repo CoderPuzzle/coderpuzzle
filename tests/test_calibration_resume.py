@@ -87,9 +87,11 @@ class ResumeTests(unittest.TestCase):
         calibrate.PROGRESS_FILE.write_text(json.dumps({
             "schema_version": 1,
             "hardware": hardware,
+            "scored_quantity": "algorithm",
             # demo-1 already measured; demo-2 failed last time and must be retried.
             "records": [{"slug": "demo-1", "language": "python3",
-                         "reference_walltime_ms": 7, "timeout_ms": 70, "case_count": 1}],
+                         "reference_walltime_ms": 7, "timeout_ms": 70, "case_count": 1,
+                         "reference_algorithm_us": 900}],
             "failures": [{"slug": "demo-2", "language": "python3",
                           "kind": "reference_verdict", "statuses": ["compile_error"],
                           "failed_cases": [0]}],

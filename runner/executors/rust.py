@@ -1428,6 +1428,8 @@ class RustExecutor(CompiledExecutor):
                 output
             }}
 
+            static CODERPUZZLE_ALGORITHM_NS: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+
             fn coderpuzzle_run() -> Result<String, String> {{
                 let mut bytes = Vec::new();
                 std::io::stdin().read_to_end(&mut bytes).map_err(|error| error.to_string())?;
@@ -1435,7 +1437,9 @@ class RustExecutor(CompiledExecutor):
             {input_locals}
             {declarations}
                 coderpuzzle_reader.finished()?;
+                let coderpuzzle_started = std::time::Instant::now();
                 let coderpuzzle_actual = Solution::{method}({arguments});
+                CODERPUZZLE_ALGORITHM_NS.fetch_add(coderpuzzle_started.elapsed().as_nanos() as u64, std::sync::atomic::Ordering::Relaxed);
                 // Bound to a local so any Ref temporary borrowed from the
                 // input-node registries drops before coderpuzzle_run's locals.
                 let coderpuzzle_output = {result_expression};
@@ -1460,7 +1464,7 @@ class RustExecutor(CompiledExecutor):
             fn main() {{
                 let response = std::panic::catch_unwind(coderpuzzle_run);
                 match response {{
-                    Ok(Ok(actual)) => coderpuzzle_emit(&format!("__CODERPUZZLE_RESULT__{{{{\\\"status\\\":\\\"completed\\\",\\\"actual\\\":{{}}}}}}", actual)),
+                    Ok(Ok(actual)) => coderpuzzle_emit(&format!("__CODERPUZZLE_RESULT__{{{{\\\"status\\\":\\\"completed\\\",\\\"actual\\\":{{}},\\\"algorithm_us\\\":{{}}}}}}", actual, CODERPUZZLE_ALGORITHM_NS.load(std::sync::atomic::Ordering::Relaxed) / 1000)),
                     Ok(Err(error)) => coderpuzzle_emit(&format!("__CODERPUZZLE_RESULT__{{{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":{{}}}}}}", coderpuzzle_json_string(&error))),
                     Err(_) => coderpuzzle_emit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\\\"Solution panicked\\\"}}"),
                 }}

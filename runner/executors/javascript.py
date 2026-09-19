@@ -987,15 +987,21 @@ class JavaScriptExecutor(CompiledExecutor):
                 try {{ require("fs").writeSync(63, line + "\\n"); }}
                 catch (error) {{ process.stdout.write(line + "\\n"); }}
             }}
+            let coderpuzzleAlgorithmNs = 0n;
+            function coderpuzzleMark() {{ return process.hrtime.bigint(); }}
+            function coderpuzzleAdd(since) {{ coderpuzzleAlgorithmNs += process.hrtime.bigint() - since; }}
+            function coderpuzzleAlgorithmUs() {{ return Number(coderpuzzleAlgorithmNs / 1000n); }}
             (() => {{
                 try {{
                     const coderpuzzleReader = new CoderPuzzleReader(require("fs").readFileSync(0));
             {declarations}
                     coderpuzzleReader.finished();
+                    const coderpuzzleStarted = coderpuzzleMark();
                     const coderpuzzleActual = {result_wrapper}({method}({arguments}));
+                    coderpuzzleAdd(coderpuzzleStarted);
                     const coderpuzzleEncoded = coderpuzzleSerialize(coderpuzzleActual);
                     if (typeof coderpuzzleEncoded !== "string") throw new Error("Return value is not JSON serializable");
-                    coderpuzzleEmit(`__CODERPUZZLE_RESULT__{{"status":"completed","actual":${{coderpuzzleEncoded}}}}`);
+                    coderpuzzleEmit(`__CODERPUZZLE_RESULT__{{"status":"completed","actual":${{coderpuzzleEncoded}},"algorithm_us":${{coderpuzzleAlgorithmUs()}}}}`);
                 }} catch (error) {{
                     const message = error instanceof Error ? `${{error.name}}: ${{error.message}}` : String(error);
                     coderpuzzleEmit(`__CODERPUZZLE_RESULT__{{"status":"runtime_error","error":${{JSON.stringify(message.slice(0, 4096))}}}}`);

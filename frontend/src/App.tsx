@@ -1741,12 +1741,17 @@ function Results({ result, busy, error, comparison, invocationType }: {
           <span>{result.passed} of {result.total} cases passed</span>
         </div>
         <div className="runtime"><Clock3 size={14} /> {result.runtime_ms} ms{result.timing_mode === "cpu" ? " CPU" : ""}</div>
-        {result.performance_ratio_percent != null && result.reference_runtime_ms != null && (
+        {result.performance_ratio_percent != null && result.reference_algorithm_us != null && (
           <div
             className="runtime"
-            title={`Reference solution: ${result.reference_runtime_ms} ms on the same judge and cases`}
+            title={`Algorithm time ${result.algorithm_us ?? "?"} µs vs calibrated reference ${result.reference_algorithm_us} µs (startup and compilation excluded)`}
           >
             <Clock3 size={14} /> {Math.round(result.performance_ratio_percent)}% of reference
+          </div>
+        )}
+        {result.performance_state === "below_floor" && (
+          <div className="runtime" title="The calibrated algorithm time is too small for a meaningful ratio">
+            <Clock3 size={14} /> too fast to compare
           </div>
         )}
       </div>

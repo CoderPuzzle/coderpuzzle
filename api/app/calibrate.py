@@ -208,6 +208,16 @@ def _case_wall_ms(row: dict[str, object]) -> int:
     return _case_metric_ms(row, ("wall_time_ms", "_wall_time_ms", "runtime_ms", "_runtime_ms"))
 
 
+def _case_algorithm_us(row: dict[str, object]) -> int:
+    """This case's submission-only span, in microseconds.
+
+    Pairs with _summarize's algorithm_us as the ratio's denominator. Zero
+    means unmeasured (or genuinely empty); the floor gate decides whether
+    a ratio may be formed. Deadlines keep reading the wall helpers above.
+    """
+    return _case_metric_ms(row, ("algorithm_us", "_algorithm_us"))
+
+
 def _pair_wait_seconds(case_count: int, per_case_seconds: float) -> float:
     """How long to wait for one measured pair, from its own language's cost."""
     return case_count * per_case_seconds * judge.JOB_HEADROOM + 10
@@ -260,12 +270,20 @@ def main() -> int:
     # Resuming is the default, including under --force: re-publishing a
     # calibration is not a reason to throw away hours of valid measurement.
     # Only --restart discards the checkpoint.
-    if progress and same_hardware(progress.get("hardware"), hardware) and not args.restart:
+    if (
+        progress
+        and same_hardware(progress.get("hardware"), hardware)
+        and progress.get("scored_quantity") == "algorithm"
+        and not args.restart
+    ):
         completed_keys = {(r["slug"], r["language"]) for r in progress.get("records", [])}
         LOG.info("resuming checkpoint with %d completed records and %d failures to retry",
                  len(completed_keys), len(progress.get("failures", [])))
     elif progress and not args.restart:
-        LOG.warning("checkpoint ignored: it was measured on different hardware")
+        if progress.get("scored_quantity") != "algorithm":
+            LOG.warning("checkpoint ignored: it was measured before algorithm timing")
+        else:
+            LOG.warning("checkpoint ignored: it was measured on different hardware")
     previous = calibration.load()
     if previous and same_hardware(previous.get("hardware"), hardware) and not (args.force or args.recalibrate):
         LOG.info("calibration is current; hardware fingerprint %s unchanged, skipping", hardware["fingerprint"][:12])
@@ -282,6 +300,7 @@ def main() -> int:
     def checkpoint() -> None:
         calibration.CALIBRATION_DIR.mkdir(parents=True, exist_ok=True)
         payload = json.dumps({"schema_version": 1, "hardware": hardware,
+            "scored_quantity": "algorithm",
             "records": rows, "failures": failures}, sort_keys=True).encode()
         fd, temp = tempfile.mkstemp(prefix="calibration-progress-", suffix=".json", dir=calibration.CALIBRATION_DIR)
         try:
@@ -386,12 +405,16 @@ def main() -> int:
                     LOG.error("[%d/%d] %s/%s produced no timing; continuing", completed, total, slug, language)
                     note_failure({"slug": slug, "language": language, "kind": "missing_timing"})
                     continue
-                rows.append({"slug": slug, "language": language,
-                             "reference_walltime_ms": wall,
-                             "timeout_ms": max(1, wall * 10),
-                             "case_count": len(results),
-                             "slowest_case_ms": slowest,
-                             "observed_job_ms": observed_job_ms})
+                algorithm = sum(_case_algorithm_us(row) for row in results)
+                record = {"slug": slug, "language": language,
+                          "reference_walltime_ms": wall,
+                          "timeout_ms": max(1, wall * 10),
+                          "case_count": len(results),
+                          "slowest_case_ms": slowest,
+                          "observed_job_ms": observed_job_ms}
+                if algorithm > 0:
+                    record["reference_algorithm_us"] = algorithm
+                rows.append(record)
                 consecutive = 0
                 checkpoint()
                 LOG.info("[%d/%d] %s/%s reference wall=%dms timeout=%dms", completed, total, slug, language, wall, wall * 10)
@@ -404,6 +427,7 @@ def main() -> int:
     payload = {"schema_version": 1, "created_at": time.time(),
                "platform": platform.platform(), "hardware": hardware, "records": rows,
                "failures": failures,
+               "scored_quantity": "algorithm",
                "timing_mode": next(iter(measured_modes)) if len(measured_modes) == 1 else "mixed",
                "resource_profile": (next(iter(measured_profiles))
                                     if len(measured_profiles) == 1 else "mixed"),

@@ -453,7 +453,7 @@ def execute(
             result["_judge_job_id"] = response.get("job_id")
             result["_queue_ms"] = response.get("queue_ms", 0)
             result["_compile_ms"] = response.get("compile_ms", 0)
-        for metric in ("cpu_time_ms", "wall_time_ms"):
+        for metric in ("cpu_time_ms", "wall_time_ms", "algorithm_us"):
             if metric in raw:
                 result[metric if visible else "_" + metric] = raw[metric]
         if visible:

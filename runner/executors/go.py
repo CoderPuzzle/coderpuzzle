@@ -20,7 +20,7 @@ from .typed import (
 GO_IMPORT_BLOCK = re.compile(
     r'^import \((?:\s*"[^"]+"\s*)+\)\s*\n|^import\s+"[^"]+"\s*\n', re.M
 )
-WRAPPER_IMPORTS = ("encoding/binary", "encoding/json", "fmt", "io", "math", "os")
+WRAPPER_IMPORTS = ("encoding/binary", "encoding/json", "fmt", "io", "math", "os", "time")
 
 # Reader method per value_type kind; struct kinds read through a method
 # named after the class. The assembled program is kept gofmt-canonical, so
@@ -1247,6 +1247,7 @@ class GoExecutor(CompiledExecutor):
                     // only the wrapper can catch a solution that returns the
                     // input structure itself.
                     var coderpuzzleInputNodes []any
+                    var coderpuzzleAlgorithmNs int64
 
                     func coderpuzzleRegisteredInput(node any) bool {{
                         for _, input := range coderpuzzleInputNodes {{
@@ -1266,9 +1267,11 @@ class GoExecutor(CompiledExecutor):
                         coderpuzzleReader := &coderpuzzleReaderType{{data: bytes}}
                     {declarations}
                         coderpuzzleReader.finished()
+                        coderpuzzleStarted := time.Now()
                         coderpuzzleRaw := {method}({arguments})
+                        coderpuzzleAlgorithmNs += time.Since(coderpuzzleStarted).Nanoseconds()
                         coderpuzzleActual := {result_conversion}(coderpuzzleRaw)
-                        return map[string]any{{"status": "completed", "actual": coderpuzzleActual}}
+                        return map[string]any{{"status": "completed", "actual": coderpuzzleActual, "algorithm_us": coderpuzzleAlgorithmNs / 1000}}
                     }}
 
                     func coderpuzzleEmit(line string) {{

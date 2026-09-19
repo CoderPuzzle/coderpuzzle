@@ -23,8 +23,40 @@ public final class CoderPuzzleJavaHarness {
     private static final String PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__";
     private static final int MAX_CAPTURED_OUTPUT = 16_384;
     private static final long SCHEDULE_STACK_BYTES = 512L * 1024L;
+    // Submission-only timing: the scored quantity is the algorithm, not the
+    // process. Accumulated across every measured call in this one-case process.
+    private static long algorithmNs;
+    private static long loadNs;
 
     private CoderPuzzleJavaHarness() {}
+
+    private static long mark() {
+        return System.nanoTime();
+    }
+
+    private static void add(long since) {
+        algorithmNs += System.nanoTime() - since;
+    }
+
+    private static void addLoad(long since) {
+        loadNs += System.nanoTime() - since;
+    }
+
+    private static long clockNoiseNs() {
+        long[] readings = new long[5];
+        for (int index = 0; index < readings.length; index++) {
+            long started = System.nanoTime();
+            readings[index] = System.nanoTime() - started;
+        }
+        java.util.Arrays.sort(readings);
+        return readings[readings.length / 2];
+    }
+
+    private static void putTiming(Map<String, Object> response) {
+        response.put("algorithm_us", algorithmNs / 1000L);
+        response.put("load_us", loadNs / 1000L);
+        response.put("clock_noise_ns", clockNoiseNs());
+    }
 
     public static void main(String[] arguments) {
         if (arguments.length == 1 && "--benchmark".equals(arguments[0])) {
@@ -54,6 +86,9 @@ public final class CoderPuzzleJavaHarness {
             System.setOut(protocolOutput);
             capturedOutput.flush();
             response.put("stdout", capturedBytes.asString());
+            // Ride with the verdict, on a failure too: a case that raised still
+            // spent its algorithm time, and the API decides whether a ratio forms.
+            putTiming(response);
         }
 
         try {
@@ -63,6 +98,7 @@ public final class CoderPuzzleJavaHarness {
             fallback.put("status", "runtime_error");
             fallback.put("error", boundedError(unwrap(serializationError)));
             fallback.put("stdout", capturedBytes.asString());
+            putTiming(fallback);
             protocolOutput.println(PROTOCOL_PREFIX + Json.stringify(fallback));
         }
     }
@@ -94,7 +130,9 @@ public final class CoderPuzzleJavaHarness {
 
     private static Object invoke(Map<String, Object> invocation, Object rawInput) throws Exception {
         String className = asString(invocation.get("class_name"), "Invocation class_name must be a string");
+        long loaded = mark();
         Class<?> targetClass = Class.forName(className);
+        addLoad(loaded);
         String type = invocation.getOrDefault("type", "function").toString();
         if ("design".equals(type)) {
             return invokeDesign(targetClass, invocation, rawInput);
@@ -195,6 +233,10 @@ public final class CoderPuzzleJavaHarness {
                 // short method, so a small stack is ample.
             }, "coderpuzzle-schedule", SCHEDULE_STACK_BYTES));
         }
+        // One outer span from starting every thread to joining them all: the
+        // per-thread regions overlap in time, so summing them would count the
+        // same wall clock several times.
+        long started = mark();
         for (Thread thread : threads) {
             thread.setDaemon(true);
             thread.start();
@@ -204,6 +246,7 @@ public final class CoderPuzzleJavaHarness {
         for (Thread thread : threads) {
             thread.join();
         }
+        add(started);
         if (!failures.isEmpty()) {
             throw propagate(failures.get(0));
         }
@@ -464,7 +507,9 @@ public final class CoderPuzzleJavaHarness {
         Object oracleInstance,
         int bufferSlot
     ) throws Exception {
+        long started = mark();
         Object result = method.invoke(instance, callArguments);
+        add(started);
         // Void-method oracles are judged by their own final state —
         // e.g. the robot's exact set of cleaned cells.
         if (result == null) {
@@ -609,8 +654,11 @@ public final class CoderPuzzleJavaHarness {
         }
 
         InvocationPlan<Method> plan = findMethod(targetClass, methodName, arguments);
-        Object result;        try {
+        Object result;
+        try {
+            long started = mark();
             result = plan.executable().invoke(instance, plan.arguments());
+            add(started);
         } catch (InvocationTargetException error) {
             throw propagate(error.getTargetException());
         }
@@ -2046,7 +2094,11 @@ public final class CoderPuzzleJavaHarness {
         InvocationPlan<Constructor<?>> constructorPlan = findConstructor(targetClass, constructorArguments);
         Object instance;
         try {
+            // Construction is measured: a design whose constructor builds the
+            // index it is asked about would otherwise report nothing.
+            long started = mark();
             instance = constructorPlan.executable().newInstance(constructorPlan.arguments());
+            add(started);
         } catch (InvocationTargetException error) {
             throw propagate(error.getTargetException());
         }
@@ -2085,7 +2137,9 @@ public final class CoderPuzzleJavaHarness {
                 InvocationPlan<Constructor<?>> plan = findConstructor(targetClass, row);
                 Object built;
                 try {
+                    long started = mark();
                     built = plan.executable().newInstance(plan.arguments());
+                    add(started);
                 } catch (InvocationTargetException error) {
                     throw propagate(error.getTargetException());
                 }
@@ -2154,7 +2208,9 @@ public final class CoderPuzzleJavaHarness {
             if (repeat <= 1) {
                 Object value;
                 try {
+                    long started = mark();
                     value = methodPlan.executable().invoke(target, methodPlan.arguments());
+                    add(started);
                 } catch (InvocationTargetException error) {
                     throw propagate(error.getTargetException());
                 }
@@ -2166,7 +2222,9 @@ public final class CoderPuzzleJavaHarness {
             Object last = null;
             for (int draw = 0; draw < repeat; draw++) {
                 try {
+                    long started = mark();
                     last = methodPlan.executable().invoke(target, methodPlan.arguments());
+                    add(started);
                 } catch (InvocationTargetException error) {
                     throw propagate(error.getTargetException());
                 }

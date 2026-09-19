@@ -251,23 +251,22 @@ reduces interference, but does not guarantee identical elapsed milliseconds.
 
 Absolute milliseconds mean nothing across machines, so accepted submissions
 are also compared against the problem's built-in reference. The baseline is
-the deployment-local calibration record for that `(problem, language)` pair —
-its `reference_walltime_ms`, measured once per pair by the calibration sweep
-and stored in `/calibration/calibration.json`. The response carries
-`reference_runtime_ms` alongside the user's `runtime_ms`, and the UI shows
-the ratio ("162% of reference").
+the deployment-local calibration record for that `(problem, language)` pair.
+Deadlines still come from wall-clock fields (`reference_walltime_ms`,
+`timeout_ms`, `slowest_case_ms`); the scored ratio uses **algorithm time**
+only — `algorithm_us` on the submission against `reference_algorithm_us` in
+the record, both measured inside the harness around the submission's own
+calls so process startup, compilation and harness decode/encode are
+excluded. The UI shows the ratio ("162% of reference") when the reference
+is large enough to compare; otherwise `performance_state` is
+`below_floor` and the UI says the run is too fast to compare.
 
-With `CODERPUZZLE_LEGACY_REFERENCE_TIMING=1` (which the local dev override
-sets), an accepted submission instead re-runs the bundle's _designated_
-reference — `reference_solution` in problem.json names the one file
-(`solution.<ext>` or a `solution_<variant>.<ext>`), the optimal approach —
-through the same resource profile, the same executor, and the same cases,
-and uses that run as the baseline.
-
-Either way the comparison is same-language by construction, indicative rather
-than precise for very fast solutions, and best-effort: without a baseline,
-without a bundled reference, or across differing resource profiles, the ratio
-is simply omitted. Calibration also supplies each pair's `timeout_ms`, and
+The reference is never re-run for a submission: `solution_<variant>.<ext>`
+named by `reference_solution` is measured once by the sweep and that one
+figure serves every submission of the pair. The comparison is same-language
+by construction, and best-effort: without a baseline, across differing
+resource profiles or timing modes, or when the harness has not yet reported
+algorithm time for every judged case, the ratio is simply omitted. Calibration also supplies each pair's `timeout_ms`, and
 with it the per-case deadline: ten times the slowest case the sweep measured,
 because a capped job judges a generated corpus's heaviest inputs and their
 average does not predict their worst. Records written before the sweep

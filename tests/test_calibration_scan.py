@@ -183,12 +183,15 @@ class RatioComparabilityTests(unittest.TestCase):
         self.addCleanup(patcher.stop)
 
     def _write(self, **extra):
-        self.calibration_file.write_text(json.dumps({
+        payload = {
             "schema_version": 1,
+            "scored_quantity": "algorithm",
             "records": [{"slug": "demo-1", "language": "python3",
-                         "reference_walltime_ms": 7, "timeout_ms": 70, "case_count": 1}],
-            **extra,
-        }), encoding="utf-8")
+                         "reference_walltime_ms": 7, "timeout_ms": 70, "case_count": 1,
+                         "reference_algorithm_us": 900}],
+        }
+        payload.update(extra)
+        self.calibration_file.write_text(json.dumps(payload), encoding="utf-8")
 
     def test_the_same_mode_and_profile_compare(self):
         self._write(timing_mode="wall", resource_profile="shared-wall-v1")
@@ -202,9 +205,19 @@ class RatioComparabilityTests(unittest.TestCase):
         self._write(timing_mode="wall", resource_profile="shared-wall-v1")
         self.assertFalse(calibration.comparable("wall", "isolated-cpu-v1"))
 
-    def test_an_artifact_without_the_fields_is_trusted(self):
-        """Written before the sweep recorded its own mode: it says nothing
-        either way, so it must not silently drop every ratio."""
+    def test_an_artifact_without_timing_fields_is_still_trusted_when_scored_quantity_matches(self):
+        """Written before the sweep recorded timing_mode/resource_profile: those
+        two keys still say nothing either way. scored_quantity must match."""
         self._write()
         self.assertTrue(calibration.comparable("cpu", "isolated-cpu-v1"))
+
+    def test_a_legacy_wall_artifact_is_not_trusted_for_algorithm_ratios(self):
+        """Every artifact before algorithm timing measured wall-process time.
+        Missing scored_quantity must not silently divide µs by ms."""
+        self._write(scored_quantity=None)
+        # json.dumps drops None if we pass it as value — force omit instead.
+        payload = json.loads(self.calibration_file.read_text())
+        payload.pop("scored_quantity", None)
+        self.calibration_file.write_text(json.dumps(payload), encoding="utf-8")
+        self.assertFalse(calibration.comparable("wall", "shared-wall-v1"))
 

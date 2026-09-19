@@ -184,8 +184,9 @@ Judges the hidden cases the job selects (bounded as above). Verdict
 statuses: `accepted`, `wrong_answer`,
 `compile_error`, `runtime_error`, `time_limit_exceeded`,
 `memory_limit_exceeded`, `system_error`. The response adds `submission_id`
-and `reference_runtime_ms` (the bundle's designated reference solution on
-the same runner; the ratio is a hardware-independent speed signal).
+and `reference_runtime_ms` (this deployment's calibration figure for the
+pair, measured once by the sweep rather than re-run per submission; the
+ratio is a hardware-independent speed signal).
 
 ```sh
 # Viewer's submission history for a problem (guest submissions are
@@ -222,7 +223,11 @@ Run/submit responses include `timing_mode` (`wall` or `cpu`) and
 shared profile and CPU times in the isolated profile. Separate `wall_time_ms`
 and (when available) `cpu_time_ms` aggregates exclude `queue_ms` and
 `compile_ms`. The latter includes language preparation, not just native
-compilation. These fields also apply to failures when measurements exist.
+compilation. `algorithm_us` is the sum of in-harness spans around the
+submission's own calls only (startup and compile excluded) and is the
+numerator of `performance_ratio_percent` against the calibration field
+`reference_algorithm_us`. These fields also apply to failures when
+measurements exist.
 
 Public testcase results may include `cpu_time_ms`, `wall_time_ms`,
 `memory_peak_bytes`, `cpu_throttled_ms`, `cpu_limit_ms`, `wall_limit_ms`,
