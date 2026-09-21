@@ -247,17 +247,6 @@ function formatTolerance(tolerance: number | undefined) {
   return value >= 0.001 ? String(value) : value.toExponential(0);
 }
 
-// Algorithm time only (the submission's own measured method call), never the
-// whole-process wall time — that stays a separate, unconverted figure because
-// the deadline that bounds a submission is deliberately still wall-clock
-// (see docs/api-and-cli.md: a hang or heavy work outside the timed region,
-// e.g. in module import or a constructor, has to stay caught by it).
-function formatAlgorithmTime(microseconds: number) {
-  if (microseconds < 1000) return `${Math.round(microseconds)} µs`;
-  const ms = microseconds / 1000;
-  return `${ms >= 100 ? Math.round(ms) : ms.toFixed(1)} ms`;
-}
-
 function App() {
   const [themeOverride, setThemeOverride] = useState<Theme | null>(storedTheme);
   const [systemTheme, setSystemTheme] = useState<Theme>(preferredTheme);
@@ -1784,34 +1773,18 @@ function Results({ result, busy, error, comparison, invocationType }: {
     <div className="results-view">
       <div className={`result-summary ${tone}`}>
         <div>
-          <strong className={tone === "success" ? "verdict-ok" : "verdict-fail"}>{statusLabel(result.status)}</strong>
-          <span>{result.passed} of {result.total} cases passed</span>
+          {/* A run only ever judges the visible examples, so "Accepted" would
+              overstate it; the pass count on its own says exactly what ran.
+              A failure label still stands — it's just as true on 3 examples
+              as it would be on the full hidden corpus. When nothing passed
+              at all (a crash, a timeout on the first case, ...) the count
+              is 0 of N regardless of what N is, so it adds nothing the
+              label didn't already say — show the label alone. */}
+          {tone !== "success" && <strong className="verdict-fail">{statusLabel(result.status)}</strong>}
+          {(tone === "success" || result.passed > 0) && (
+            <span>{result.passed} of {result.total} cases passed</span>
+          )}
         </div>
-        {result.algorithm_us != null ? (
-          <div
-            className="runtime"
-            title={`Algorithm time only, startup and compilation excluded — the full process (what the deadline bounds) took ${result.runtime_ms} ms${result.timing_mode === "cpu" ? " CPU" : ""}`}
-          >
-            <Clock3 size={14} /> {formatAlgorithmTime(result.algorithm_us)}
-          </div>
-        ) : (
-          <div className="runtime" title="Algorithm time isn't measured for this run; showing the full process time instead">
-            <Clock3 size={14} /> {result.runtime_ms} ms{result.timing_mode === "cpu" ? " CPU" : ""}
-          </div>
-        )}
-        {result.performance_ratio_percent != null && result.reference_algorithm_us != null && (
-          <div
-            className="runtime"
-            title={`Algorithm time ${result.algorithm_us ?? "?"} µs vs calibrated reference ${result.reference_algorithm_us} µs (startup and compilation excluded)`}
-          >
-            <Clock3 size={14} /> {Math.round(result.performance_ratio_percent)}% of reference
-          </div>
-        )}
-        {result.performance_state === "below_floor" && (
-          <div className="runtime" title="The calibrated algorithm time is too small for a meaningful ratio">
-            <Clock3 size={14} /> too fast to compare
-          </div>
-        )}
       </div>
       {result.warnings && result.warnings.length > 0 && (
         <div className="tamper-warning" title="Advisory only — warnings never affect the verdict">
@@ -1840,9 +1813,6 @@ function Results({ result, busy, error, comparison, invocationType }: {
           <div className="result-detail">
             <div className="detail-heading">
               <span className={`status-text ${statusTone(active.status)}`}>{statusLabel(active.status)}</span>
-              <span>{active.runtime_ms === undefined
-                ? "Timing hidden"
-                : `${active.runtime_ms} ms${active.timing_mode === "cpu" ? " CPU" : ""}${active.timeout_ms ? ` / ${active.timeout_ms} ms ${active.limit_mode === "cpu" ? "CPU" : "elapsed"} limit` : ""}`}</span>
             </div>
             {active.error && <div className="error-box">{active.error}</div>}
             {active.input !== undefined ? (
