@@ -338,9 +338,7 @@ button:disabled { cursor: not-allowed; opacity: .42; }
 
 .results-view { min-height: 100%; padding: 13px; }
 .result-summary { display: flex; align-items: center; gap: 11px; min-height: 56px; padding: 10px 13px; background: #111518; border: 1px solid var(--line); border-radius: 5px; }
-.result-summary > div:nth-child(2) { display: grid; gap: 3px; }
 .result-summary strong { font-size: 14px; }
-.result-summary > div:nth-child(2) span { color: var(--muted); font-size: 12px; }
 /* Just the verdict word, weight and color carrying it — no icon, no seal.
    Every non-accepted status (wrong answer, timeout, runtime error, ...)
    reads the same red; the distinction that matters to the viewer is
@@ -369,9 +367,8 @@ button:disabled { cursor: not-allowed; opacity: .42; }
 
 .result-layout { display: grid; grid-template-columns: minmax(145px, 31%) minmax(0, 1fr); min-height: 180px; margin-top: 10px; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
 .result-case-list { border-right: 1px solid var(--line); background: #121619; overflow-y: auto; }
-.result-case { width: 100%; min-height: 37px; display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; align-items: center; gap: 7px; padding: 0 9px; border: 0; border-bottom: 1px solid #242a2e; background: transparent; text-align: left; color: #b7c0c5; font-size: 12px; cursor: pointer; }
+.result-case { width: 100%; min-height: 37px; display: grid; grid-template-columns: 18px minmax(0, 1fr); align-items: center; gap: 7px; padding: 0 9px; border: 0; border-bottom: 1px solid #242a2e; background: transparent; text-align: left; color: #b7c0c5; font-size: 12px; cursor: pointer; }
 .result-case:hover, .result-case.active { background: #20262a; }
-.result-case small { color: var(--quiet); font: 10.5px "Roboto Mono", monospace; }
 .case-status { width: 16px; height: 16px; display: grid; place-items: center; border-radius: 50%; }
 .case-status.success { color: var(--green); background: #183124; }
 .case-status.danger { color: var(--red); background: #371d1f; }

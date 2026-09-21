@@ -1781,21 +1781,15 @@ function Results({ result, busy, error, comparison, invocationType }: {
   const rawAnswer = (value: unknown) => invocationType === "shell" && typeof value === "string";
   return (
     <div className="results-view">
-      <div className={`result-summary ${tone}`}>
-        <div>
-          {/* A run only ever judges the visible examples, so "Accepted" would
-              overstate it; the pass count on its own says exactly what ran.
-              A failure label still stands — it's just as true on 3 examples
-              as it would be on the full hidden corpus. When nothing passed
-              at all (a crash, a timeout on the first case, ...) the count
-              is 0 of N regardless of what N is, so it adds nothing the
-              label didn't already say — show the label alone. */}
-          {tone !== "success" && <strong className="verdict-fail">{statusLabel(result.status)}</strong>}
-          {(tone === "success" || result.passed > 0) && (
-            <span>{result.passed} of {result.total} cases passed</span>
-          )}
+      {/* A run only ever judges the visible examples, so there's no verdict
+          worth stating on a pass — the case list below already shows which
+          examples passed. A failure is still worth a line: it's just as
+          real on 3 examples as on the full hidden corpus. */}
+      {tone !== "success" && (
+        <div className={`result-summary ${tone}`}>
+          <strong className="verdict-fail">{statusLabel(result.status)}</strong>
         </div>
-      </div>
+      )}
       {result.warnings && result.warnings.length > 0 && (
         <div className="tamper-warning" title="Advisory only — warnings never affect the verdict">
           <CircleAlert size={13} />
@@ -1815,7 +1809,6 @@ function Results({ result, busy, error, comparison, invocationType }: {
             <button key={`${test.name}-${index}`} className={openCase === index ? "result-case active" : "result-case"} onClick={() => setOpenCase(index)}>
               <span className={`case-status ${statusTone(test.status)}`}>{statusTone(test.status) === "success" ? <Check size={12} /> : <X size={12} />}</span>
               <span>{test.name}</span>
-              <small>{test.runtime_ms === undefined ? "Hidden" : `${test.runtime_ms} ms${test.timing_mode === "cpu" ? " CPU" : ""}`}</small>
             </button>
           ))}
         </div>
