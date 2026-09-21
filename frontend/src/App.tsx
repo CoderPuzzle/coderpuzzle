@@ -1079,7 +1079,7 @@ function App() {
             <div className="verdict-rail" />
             <div className="panel-tabs console-tabs">
               <button className={bottomTab === "testcase" ? "tab active" : "tab"} onClick={() => setBottomTab("testcase")}>
-                <Braces size={15} /> Testcase
+                <Braces size={15} /> Testcases
               </button>
               {lastMode && (
                 <button className={bottomTab === "result" ? "tab active" : "tab"} onClick={() => setBottomTab("result")}>
