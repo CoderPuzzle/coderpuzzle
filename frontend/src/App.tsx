@@ -1675,9 +1675,11 @@ function Testcases({ problem, drafts, setDrafts, activeCase, setActiveCase }: {
           title={drafts.length >= 20 ? "A run accepts at most 20 testcases" : "Add testcase"}
           disabled={drafts.length >= 20}
           onClick={() => {
-            const blank = Object.fromEntries(parameters.map(({ name }) =>
-              [name, isRawTextParameter(problem, name) ? "" : name === "nums" ? "[]" : "0"]));
-            setDrafts((items) => [...items, blank]);
+            // Starting from the case the user is already looking at (rather
+            // than a generic blank) means the new one is already valid JSON
+            // in the right shape — there's something to tweak instead of a
+            // page of zeros to fill in from scratch.
+            setDrafts((items) => [...items, { ...current }]);
             setActiveCase(drafts.length);
           }}
         ><Plus size={15} /></button>
