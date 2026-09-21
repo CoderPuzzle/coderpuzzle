@@ -84,8 +84,7 @@ def _expected_aware_submit(body: dict) -> dict:
     if body.get("kind") == "format":
         return {"code": body["code"]}
     expected_by_input = {
-        json.dumps(case["input"]): case["expected"]
-        for case in CASES_JSON["public"] + CASES_JSON["hidden"]
+        json.dumps(case["input"]): case["expected"] for case in CASES_JSON["public"] + CASES_JSON["hidden"]
     }
     return {
         "results": [
@@ -109,12 +108,8 @@ class ApiSurfaceTests(unittest.TestCase):
 
         bundle = root / "0001-0100" / SLUG
         (bundle / "figures").mkdir(parents=True)
-        (bundle / "problem.json").write_text(
-            json.dumps(PROBLEM_JSON, indent=2), encoding="utf-8"
-        )
-        (bundle / "cases.json").write_text(
-            json.dumps(CASES_JSON, indent=2), encoding="utf-8"
-        )
+        (bundle / "problem.json").write_text(json.dumps(PROBLEM_JSON, indent=2), encoding="utf-8")
+        (bundle / "cases.json").write_text(json.dumps(CASES_JSON, indent=2), encoding="utf-8")
         (bundle / "statement.md").write_text(STATEMENT, encoding="utf-8")
         (bundle / "starter.py").write_text(STARTER, encoding="utf-8")
         (bundle / "solution.py").write_text(STARTER, encoding="utf-8")
@@ -122,14 +117,10 @@ class ApiSurfaceTests(unittest.TestCase):
         def fake_submit(body, calibrated=None):
             return _expected_aware_submit(body)
 
-        database_patch = mock.patch.object(
-            database, "DATABASE_PATH", (root / "test.sqlite3")
-        )
+        database_patch = mock.patch.object(database, "DATABASE_PATH", (root / "test.sqlite3"))
         # resolved: safe_problem_path compares against resolved parents
         # (macOS tempdirs sit behind /var → /private/var)
-        problems_patch = mock.patch.object(
-            problems_module, "PROBLEMS_DIR", root.resolve()
-        )
+        problems_patch = mock.patch.object(problems_module, "PROBLEMS_DIR", root.resolve())
         submit_patch = mock.patch.object(judge, "_submit", side_effect=fake_submit)
         database_patch.start()
         problems_patch.start()
@@ -169,9 +160,7 @@ class ApiSurfaceTests(unittest.TestCase):
         self.assertEqual("pair-sum", listing["items"][0]["slug"])
         detail = self.client.get("/problems/pair-sum").json()
         # function-style inputs are displayed as named arguments
-        self.assertEqual(
-            {"nums": [2, 7, 11, 15], "target": 9}, detail["public_cases"][0]["input"]
-        )
+        self.assertEqual({"nums": [2, 7, 11, 15], "target": 9}, detail["public_cases"][0]["input"])
 
     def test_register_bootstrap_and_login_contract(self):
         bare = TestClient(api_main.app)
@@ -180,9 +169,7 @@ class ApiSurfaceTests(unittest.TestCase):
         status = bare.get("/auth/status").json()
         self.assertTrue(status["needs_setup"])
         self.assertTrue(any(item["id"] == "password" for item in status["providers"]))
-        created = bare.post(
-            "/auth/register", json={"username": "admin", "password": "password123"}
-        )
+        created = bare.post("/auth/register", json={"username": "admin", "password": "password123"})
         self.assertEqual(200, created.status_code)
         self.assertTrue(created.json()["is_admin"])
         # register sets its own session cookie, so a cookie-less client is
@@ -190,14 +177,10 @@ class ApiSurfaceTests(unittest.TestCase):
         # caller's existing session; it never creates one)
         session = TestClient(api_main.app)
         self.addCleanup(session.close)
-        denied = session.post(
-            "/auth/login", json={"username": "admin", "password": "password123"}
-        )
+        denied = session.post("/auth/login", json={"username": "admin", "password": "password123"})
         self.assertEqual(401, denied.status_code)
         session.post("/session")
-        ok = session.post(
-            "/auth/login", json={"username": "admin", "password": "password123"}
-        )
+        ok = session.post("/auth/login", json={"username": "admin", "password": "password123"})
         self.assertEqual(200, ok.status_code)
         self.assertEqual("admin", session.get("/session").json()["user"]["username"])
 
@@ -209,9 +192,7 @@ class ApiSurfaceTests(unittest.TestCase):
             return _expected_aware_submit(body)
 
         with mock.patch.object(judge, "_submit", side_effect=record):
-            response = self.client.post(
-                "/run", json={"slug": "pair-sum", "language": "python3", "code": "x"}
-            )
+            response = self.client.post("/run", json={"slug": "pair-sum", "language": "python3", "code": "x"})
         self.assertEqual(200, response.status_code)
         sent = requests[0]
         self.assertEqual([{"input": [[2, 7, 11, 15], 9]}], sent["cases"])
@@ -222,6 +203,34 @@ class ApiSurfaceTests(unittest.TestCase):
         # /run anchors to public cases only; hidden-case masking is covered
         # by JudgeInternalsTests below
         self.assertEqual(1, len(summary["results"]))
+
+    def test_explicit_cases_are_named_by_position_not_the_matched_example(self):
+        # A case copied from another tab (the editor's own "+" button does
+        # exactly this) carries the same value as an existing example, so it
+        # matches one in `canonical` by input equality — but it must keep the
+        # position it actually has among the cases sent, not the matched
+        # example's own name, or two different tabs both read as e.g.
+        # "Example 1".
+        with mock.patch.object(
+            judge, "_submit", side_effect=lambda body, calibrated=None: _expected_aware_submit(body)
+        ):
+            response = self.client.post(
+                "/run",
+                json={
+                    "slug": "pair-sum",
+                    "language": "python3",
+                    "code": "x",
+                    "cases": [
+                        {"nums": [2, 7, 11, 15], "target": 9},
+                        {"nums": [2, 7, 11, 15], "target": 9},
+                    ],
+                },
+            )
+        self.assertEqual(200, response.status_code)
+        names = [case["name"] for case in response.json()["results"]]
+        self.assertEqual(["Case 1", "Case 2"], names)
+        # The value match still buys a real assertion, not a bare echo.
+        self.assertEqual(["accepted", "accepted"], [case["status"] for case in response.json()["results"]])
 
     def test_run_flags_tampering_with_provided_code(self):
         # The scan derives its symbol set from the bundle's own provided/
@@ -246,25 +255,15 @@ class ApiSurfaceTests(unittest.TestCase):
         self.assertTrue(summary.get("warnings"), "expected a tamper warning")
 
     def test_runner_unavailable_maps_to_503(self):
-        with mock.patch.object(
-            judge, "_submit", side_effect=judge.RunnerUnavailable("down")
-        ):
-            response = self.client.post(
-                "/run", json={"slug": "pair-sum", "language": "python3", "code": "x"}
-            )
+        with mock.patch.object(judge, "_submit", side_effect=judge.RunnerUnavailable("down")):
+            response = self.client.post("/run", json={"slug": "pair-sum", "language": "python3", "code": "x"})
         self.assertEqual(503, response.status_code)
 
     def test_per_session_judge_rate_limit(self):
         with mock.patch.object(api_main, "_JUDGE_MAX_REQUESTS", 2):
-            first = self.client.post(
-                "/format", json={"language": "python3", "code": "x=1\n"}
-            )
-            second = self.client.post(
-                "/format", json={"language": "python3", "code": "x=1\n"}
-            )
-            third = self.client.post(
-                "/format", json={"language": "python3", "code": "x=1\n"}
-            )
+            first = self.client.post("/format", json={"language": "python3", "code": "x=1\n"})
+            second = self.client.post("/format", json={"language": "python3", "code": "x=1\n"})
+            third = self.client.post("/format", json={"language": "python3", "code": "x=1\n"})
         self.assertEqual(200, first.status_code)
         self.assertEqual(200, second.status_code)
         self.assertEqual(429, third.status_code)
@@ -282,23 +281,17 @@ class ApiSurfaceTests(unittest.TestCase):
         with mock.patch.object(judge, "_submit", side_effect=formatted_already):
             self.assertEqual(
                 {"status": "formatted"},
-                self.client.post(
-                    "/format", json={"language": "python3", "code": "x=1\n"}
-                ).json(),
+                self.client.post("/format", json={"language": "python3", "code": "x=1\n"}).json(),
             )
         with mock.patch.object(judge, "_submit", side_effect=reformats):
             self.assertEqual(
                 {"status": "unformatted", "code": "x=1\n"},
-                self.client.post(
-                    "/format", json={"language": "python3", "code": "x=1"}
-                ).json(),
+                self.client.post("/format", json={"language": "python3", "code": "x=1"}).json(),
             )
         with mock.patch.object(judge, "_submit", side_effect=refuses):
             self.assertEqual(
                 {"status": "error", "diagnostics": "bad indent"},
-                self.client.post(
-                    "/format", json={"language": "python3", "code": "x=1\n"}
-                ).json(),
+                self.client.post("/format", json={"language": "python3", "code": "x=1\n"}).json(),
             )
 
     def test_submissions_are_scoped_per_viewer(self):
@@ -318,12 +311,8 @@ class ApiSurfaceTests(unittest.TestCase):
         )
         self.assertEqual("accepted", saved.json()["status"])
         self.assertIsNotNone(saved.json()["submission_id"])
-        self.assertEqual(
-            1, len(mine.get("/submissions", params={"slug": "pair-sum"}).json())
-        )
-        self.assertEqual(
-            [], theirs.get("/submissions", params={"slug": "pair-sum"}).json()
-        )
+        self.assertEqual(1, len(mine.get("/submissions", params={"slug": "pair-sum"}).json()))
+        self.assertEqual([], theirs.get("/submissions", params={"slug": "pair-sum"}).json())
         stored = mine.get(f"/submissions/{saved.json()['submission_id']}").json()
         self.assertEqual(2, stored["total"])
         other = theirs.get(f"/submissions/{saved.json()['submission_id']}")

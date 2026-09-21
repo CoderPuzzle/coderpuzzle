@@ -434,13 +434,18 @@ def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)
             else:
                 wire_input = custom_input
             matched = next((case for case in canonical if case["input"] == wire_input), None)
+            # Named positionally, matching the editor's own "Case N" tabs --
+            # never the matched example's own name. Two different tabs can
+            # hold the same value (a case copied from another, then left
+            # untouched) and would otherwise both display that one matched
+            # example's name, reading as duplicates of each other instead of
+            # the distinct tabs they are.
+            name = f"Case {index + 1}"
             if matched is None:
                 # Custom cases execute without an assertion; their actual value is returned.
-                cases.append(
-                    {"name": f"Custom case {index + 1}", "input": wire_input, "expected": None, "custom": True}
-                )
+                cases.append({"name": name, "input": wire_input, "expected": None, "custom": True})
             else:
-                cases.append(matched)
+                cases.append({**matched, "name": name})
 
     results = _run_judge(problem_data, request.language, request.code, cases, len(cases), bundle)
     # The judge may have bounded the case list (see select_cases); its
@@ -494,7 +499,8 @@ def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_se
         summary["status"] not in {"compile_error", "system_error"} and summary["passed"] == summary["total"]
     )
     comparable = calibration.comparable(
-        summary["timing_mode"], summary["resource_profile"], scored_quantity="algorithm")
+        summary["timing_mode"], summary["resource_profile"], scored_quantity="algorithm"
+    )
     state = "unmeasured"
     ratio = None
     if (
@@ -549,14 +555,18 @@ def _summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
         if any(metric in result or "_" + metric in result for result in results):
             timing[metric] = sum(result.get(metric, result.get("_" + metric, 0)) for result in results)
     scored_cases = sum(
-        1 for result in results
-        if isinstance(result.get("algorithm_us", result.get("_algorithm_us")), (int, float))
+        1 for result in results if isinstance(result.get("algorithm_us", result.get("_algorithm_us")), (int, float))
     )
     timing["scored_cases"] = scored_cases
     for result in results:
         for key in (
-            "_runtime_ms", "_cpu_time_ms", "_wall_time_ms", "_algorithm_us",
-            "_queue_ms", "_compile_ms", "_judge_job_id",
+            "_runtime_ms",
+            "_cpu_time_ms",
+            "_wall_time_ms",
+            "_algorithm_us",
+            "_queue_ms",
+            "_compile_ms",
+            "_judge_job_id",
         ):
             result.pop(key, None)
     status = (
