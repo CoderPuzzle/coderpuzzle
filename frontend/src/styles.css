@@ -17,10 +17,6 @@
   --red: #ed6a67;
   --orange: #e69552;
   --radius: 7px;
-  /* Verdict seal: a brass-rimmed medallion, dark like an inked stamp. */
-  --seal-fill: #1c180f;
-  --seal-fill-hi: #262010;
-  --seal-fill-lo: #100d07;
 }
 
 * { box-sizing: border-box; }
@@ -342,29 +338,15 @@ button:disabled { cursor: not-allowed; opacity: .42; }
 
 .results-view { min-height: 100%; padding: 13px; }
 .result-summary { display: flex; align-items: center; gap: 11px; min-height: 56px; padding: 10px 13px; background: #111518; border: 1px solid var(--line); border-radius: 5px; }
-.seal {
-  --tone: var(--quiet);
-  width: 48px;
-  height: 48px;
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  border: 2px solid var(--amber);
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 36%, var(--seal-fill-hi) 0%, var(--seal-fill) 60%, var(--seal-fill-lo) 100%);
-  color: var(--tone);
-  font: 600 13px "Roboto Mono", monospace;
-  letter-spacing: .04em;
-  box-shadow: inset 0 0 0 1px #0007, 0 0 16px color-mix(in srgb, var(--tone) 30%, transparent);
-  animation: seal-in .18s ease-out;
-}
-.result-summary.success .seal { --tone: var(--green); }
-.result-summary.danger .seal { --tone: var(--red); }
-.result-summary.warning .seal { --tone: var(--orange); }
-@keyframes seal-in { from { transform: scale(1.14) rotate(-4deg); opacity: 0; } to { transform: scale(1) rotate(0deg); opacity: 1; } }
 .result-summary > div:nth-child(2) { display: grid; gap: 3px; }
 .result-summary strong { font-size: 14px; }
 .result-summary > div:nth-child(2) span { color: var(--muted); font-size: 12px; }
+/* Just the verdict word, weight and color carrying it — no icon, no seal.
+   Every non-accepted status (wrong answer, timeout, runtime error, ...)
+   reads the same red; the distinction that matters to the viewer is
+   pass/fail, not which of the several failure kinds it was. */
+.verdict-ok { color: var(--green); }
+.verdict-fail { color: var(--red); }
 .runtime { margin-left: auto; display: flex; align-items: center; gap: 5px; color: var(--muted); font: 11px "Roboto Mono", monospace; }
 .tamper-warning {
   display: flex;
@@ -538,9 +520,6 @@ button:disabled { cursor: not-allowed; opacity: .42; }
   --green: #147a49;
   --red: #b23a38;
   --orange: #a85813;
-  --seal-fill: #f6edd6;
-  --seal-fill-hi: #fbf4e2;
-  --seal-fill-lo: #efe0be;
 }
 
 [data-theme="light"] .topbar { background: #fbfcfc; border-bottom-color: #d9e0e3; }

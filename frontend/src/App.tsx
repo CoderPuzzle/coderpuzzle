@@ -84,22 +84,6 @@ function statusLabel(status: string) {
   return labels[status] ?? status.replaceAll("_", " ");
 }
 
-// The judge's own short-hand for a verdict — what competitive programmers
-// read at a glance (AC, WA, TLE…). Stamped on the result seal.
-function verdictCode(status: string) {
-  const codes: Record<string, string> = {
-    accepted: "AC",
-    completed: "OK",
-    wrong_answer: "WA",
-    compile_error: "CE",
-    runtime_error: "RE",
-    time_limit_exceeded: "TLE",
-    memory_limit_exceeded: "MLE",
-    system_error: "JE",
-  };
-  return codes[status] ?? status.replaceAll("_", " ").split(" ").map((word) => word[0]?.toUpperCase() ?? "").join("").slice(0, 3);
-}
-
 function statusTone(status?: string) {
   if (!status) return "idle";
   if (status === "accepted" || status === "completed") return "success";
@@ -1726,18 +1710,6 @@ function Testcases({ problem, drafts, setDrafts, activeCase, setActiveCase }: {
   );
 }
 
-// A hand-drawn checkmark rather than the case list's small lucide <Check/> —
-// this one sits alone inside the 48px seal, so it needs its own weight. It
-// inherits the seal's --tone via currentColor, same as the verdict-code text
-// it replaces for an accepted submission.
-function AcceptedCheckmark() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M5 13l5 5L19 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 // A submitted verdict is scored against the whole hidden corpus and stored;
 // a run is exploratory and only ever sees the visible cases. The two need
 // different amounts of detail — a submission's per-case breakdown and
@@ -1757,10 +1729,7 @@ function SubmitResult({ result }: { result: JudgeResult }) {
   return (
     <div className="results-view">
       <div className={`result-summary ${tone}`}>
-        <span className="seal" title={statusLabel(result.status)}>
-          {accepted ? <AcceptedCheckmark /> : verdictCode(result.status)}
-        </span>
-        <strong>{statusLabel(result.status)}</strong>
+        <strong className={accepted ? "verdict-ok" : "verdict-fail"}>{statusLabel(result.status)}</strong>
         {accepted && result.performance_ratio_percent != null && result.reference_algorithm_us != null && (
           <div
             className="runtime"
@@ -1814,11 +1783,8 @@ function Results({ result, busy, error, comparison, invocationType }: {
   return (
     <div className="results-view">
       <div className={`result-summary ${tone}`}>
-        <span className="seal" title={statusLabel(result.status)}>
-          {tone === "success" ? <AcceptedCheckmark /> : verdictCode(result.status)}
-        </span>
         <div>
-          <strong>{statusLabel(result.status)}</strong>
+          <strong className={tone === "success" ? "verdict-ok" : "verdict-fail"}>{statusLabel(result.status)}</strong>
           <span>{result.passed} of {result.total} cases passed</span>
         </div>
         {result.algorithm_us != null ? (
