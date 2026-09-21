@@ -263,6 +263,17 @@ function formatTolerance(tolerance: number | undefined) {
   return value >= 0.001 ? String(value) : value.toExponential(0);
 }
 
+// Algorithm time only (the submission's own measured method call), never the
+// whole-process wall time — that stays a separate, unconverted figure because
+// the deadline that bounds a submission is deliberately still wall-clock
+// (see docs/api-and-cli.md: a hang or heavy work outside the timed region,
+// e.g. in module import or a constructor, has to stay caught by it).
+function formatAlgorithmTime(microseconds: number) {
+  if (microseconds < 1000) return `${Math.round(microseconds)} µs`;
+  const ms = microseconds / 1000;
+  return `${ms >= 100 ? Math.round(ms) : ms.toFixed(1)} ms`;
+}
+
 function App() {
   const [themeOverride, setThemeOverride] = useState<Theme | null>(storedTheme);
   const [systemTheme, setSystemTheme] = useState<Theme>(preferredTheme);
@@ -1715,6 +1726,73 @@ function Testcases({ problem, drafts, setDrafts, activeCase, setActiveCase }: {
   );
 }
 
+// A hand-drawn checkmark rather than the case list's small lucide <Check/> —
+// this one sits alone inside the 48px seal, so it needs its own weight. It
+// inherits the seal's --tone via currentColor, same as the verdict-code text
+// it replaces for an accepted submission.
+function AcceptedCheckmark() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M5 13l5 5L19 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// A submitted verdict is scored against the whole hidden corpus and stored;
+// a run is exploratory and only ever sees the visible cases. The two need
+// different amounts of detail — a submission's per-case breakdown and
+// inputs/outputs are either redundant with the one number that matters
+// (the reference ratio) or, for hidden cases, not there to show — so a
+// submit result (identified by carrying a submission_id) renders through
+// this compact view instead of the full case-by-case one below.
+function SubmitResult({ result }: { result: JudgeResult }) {
+  const accepted = result.status === "accepted";
+  const tone = statusTone(result.status);
+  // Hidden-case errors already arrive pre-redacted to a generic sentence
+  // (see api/app/judge.py); a visible case's error is the real trace. A
+  // timeout has no useful trace to show, only the verdict itself.
+  const firstError = !accepted && result.status !== "time_limit_exceeded"
+    ? result.results.find((test) => test.error)?.error
+    : undefined;
+  return (
+    <div className="results-view">
+      <div className={`result-summary ${tone}`}>
+        <span className="seal" title={statusLabel(result.status)}>
+          {accepted ? <AcceptedCheckmark /> : verdictCode(result.status)}
+        </span>
+        <strong>{statusLabel(result.status)}</strong>
+        {accepted && result.performance_ratio_percent != null && result.reference_algorithm_us != null && (
+          <div
+            className="runtime"
+            title={`Algorithm time ${result.algorithm_us ?? "?"} µs vs calibrated reference ${result.reference_algorithm_us} µs (startup and compilation excluded)`}
+          >
+            <Clock3 size={14} /> {Math.round(result.performance_ratio_percent)}% of reference
+          </div>
+        )}
+        {accepted && result.performance_state === "below_floor" && (
+          <div className="runtime" title="The calibrated algorithm time is too small for a meaningful ratio">
+            <Clock3 size={14} /> too fast to compare
+          </div>
+        )}
+      </div>
+      {result.warnings && result.warnings.length > 0 && (
+        <div className="tamper-warning" title="Advisory only — warnings never affect the verdict">
+          <CircleAlert size={13} />
+          <div>
+            <strong>Provided-code tampering patterns flagged</strong>
+            <ul>
+              {result.warnings.map((warning, index) => (
+                <li key={index}>{warning}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+      {firstError && <div className="error-box">{firstError}</div>}
+    </div>
+  );
+}
+
 function Results({ result, busy, error, comparison, invocationType }: {
   result: JudgeResult | null;
   busy: string | null;
@@ -1727,6 +1805,7 @@ function Results({ result, busy, error, comparison, invocationType }: {
   if (busy) return <ConsoleEmpty icon={<LoaderCircle className="spin" />} title="Executing code and judging" />;
   if (error) return <ConsoleEmpty icon={<CircleAlert />} title="Execution stopped" detail={error} tone="danger" />;
   if (!result) return <ConsoleEmpty icon={<TerminalSquare />} title="No results yet" detail="Run to check your code against the visible cases, or Submit to face the full judge." />;
+  if (result.submission_id != null) return <SubmitResult result={result} />;
   const active = result.results[openCase];
   const tone = statusTone(result.status);
   // A shell case's answer is the program's own stdout — raw text, shown with
@@ -1735,12 +1814,25 @@ function Results({ result, busy, error, comparison, invocationType }: {
   return (
     <div className="results-view">
       <div className={`result-summary ${tone}`}>
-        <span className="seal" title={statusLabel(result.status)}>{verdictCode(result.status)}</span>
+        <span className="seal" title={statusLabel(result.status)}>
+          {tone === "success" ? <AcceptedCheckmark /> : verdictCode(result.status)}
+        </span>
         <div>
           <strong>{statusLabel(result.status)}</strong>
           <span>{result.passed} of {result.total} cases passed</span>
         </div>
-        <div className="runtime"><Clock3 size={14} /> {result.runtime_ms} ms{result.timing_mode === "cpu" ? " CPU" : ""}</div>
+        {result.algorithm_us != null ? (
+          <div
+            className="runtime"
+            title={`Algorithm time only, startup and compilation excluded — the full process (what the deadline bounds) took ${result.runtime_ms} ms${result.timing_mode === "cpu" ? " CPU" : ""}`}
+          >
+            <Clock3 size={14} /> {formatAlgorithmTime(result.algorithm_us)}
+          </div>
+        ) : (
+          <div className="runtime" title="Algorithm time isn't measured for this run; showing the full process time instead">
+            <Clock3 size={14} /> {result.runtime_ms} ms{result.timing_mode === "cpu" ? " CPU" : ""}
+          </div>
+        )}
         {result.performance_ratio_percent != null && result.reference_algorithm_us != null && (
           <div
             className="runtime"

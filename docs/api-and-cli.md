@@ -240,6 +240,61 @@ are `wall` / `shared-wall-v1`. Reference ratios are omitted across different
 profiles or timing modes. Clients must not combine historical wall timing
 and isolated CPU timing into a single benchmark series.
 
+### Per-case deadline (2026-09-21)
+
+The judge enforces one deadline per case, `per_case_timeout_ms`
+(`api/app/judge.py`) — the wall-clock kill the runner arms before the
+submission runs. It **must** stay wall-clock at enforcement time: the
+supervisor arms it before the submission's process starts, and
+`algorithm_us` is only known once the harness measures the timed region and
+reports it back — a hang, or heavy work placed outside that region (module
+import, a "function" kind's constructor call, a compiled language's static
+initializer), would never report anything for the deadline to react to. A
+deadline that could only fire once `algorithm_us` arrives would let exactly
+that class of submission run unbounded.
+
+Within that constraint, the deadline is split into two terms so a slower
+_algorithm_ is judged on its own, separately from the fixed cost every
+submission pays regardless of algorithm quality:
+
+    deadline = OVERHEAD_HEADROOM_MULTIPLE × overhead_ms
+             + PER_CASE_REFERENCE_MULTIPLE × average_algorithm_ms
+
+- `overhead_ms` is `wall_basis_ms − average_algorithm_ms` — the reference's
+  own wall time (long-tail protected the same way as before, via
+  `slowest_case_ms`) minus what its algorithm accounted for. This is
+  interpreter/JVM boot, argument decode, and result encode: every submission
+  pays it independent of how good its algorithm is, so it gets its own,
+  smaller headroom (`OVERHEAD_HEADROOM_MULTIPLE`, default 3×) rather than
+  `PER_CASE_REFERENCE_MULTIPLE` (10×).
+- `average_algorithm_ms` is the reference's `reference_algorithm_us` divided
+  by its case count — the part a slower algorithm should actually be judged
+  against, at the full `PER_CASE_REFERENCE_MULTIPLE`.
+
+Before this split, one wall-clock multiplier covered both terms, so a pair
+where fixed overhead dominates wall time (most of the interpreted-language
+corpus — the reference's own algorithm routinely accounts for under 1% of
+its wall time) tolerated a submission whose algorithm was far more than
+`PER_CASE_REFERENCE_MULTIPLE` times worse than the reference, as long as its
+_total_ time stayed under the wall-derived ceiling. The split closes that
+gap without touching the deadlines of algorithm-dominated pairs, where the
+two formulas land close together by construction.
+
+A record with no `reference_algorithm_us` (not yet re-measured under
+algorithm timing) falls back to the pre-split, wall-only formula unchanged.
+
+**Known gap, tracked in `TODO.md`**: the formula above uses only the
+_average_ algorithm time per case; unlike `slowest_case_ms` for wall time,
+the sweep does not yet keep the reference's single heaviest case's
+algorithm contribution separately (it sums `algorithm_us` across cases and
+discards the per-case figures). A bundle whose scaled cases vary widely in
+size can therefore be under-protected on its single heaviest case — the
+wall-time long tail still bounds the deadline from below via
+`slowest_case_ms`, so it never regresses under the pre-split formula, but it
+is not yet as tight as it could be. Fixing this needs a `calibrate.py`
+change (record `slowest_case_algorithm_us`, mirroring `slowest_case_ms`) and
+one full re-sweep of both trees to populate it.
+
 ## Docker image CLI
 
 The image installs the CLI as `coderpuzzle`; locally test an edited

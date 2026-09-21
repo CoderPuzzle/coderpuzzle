@@ -51,15 +51,59 @@ PER_CASE_REFERENCE_MULTIPLE = max(1, int(os.environ.get("CODERPUZZLE_PER_CASE_RE
 # outright and every case comes back system_error, which is how n-queens lost
 # three languages when the sweep asked for 40 s.
 MAX_PER_CASE_TIMEOUT_MS = max(1, int(os.environ.get("CODERPUZZLE_MAX_PER_CASE_TIMEOUT_MS", "19000")))
+# The overhead component's own headroom. Interpreter/JVM boot, argument
+# decode, and result encode vary far less across hosts than a submission's
+# own algorithm quality can, so this stays a modest, separate constant
+# instead of reusing PER_CASE_REFERENCE_MULTIPLE — reusing it here would
+# just reintroduce the wall-time dilution documented below.
+OVERHEAD_HEADROOM_MULTIPLE = max(1.0, float(os.environ.get("CODERPUZZLE_OVERHEAD_HEADROOM_MULTIPLE", "3")))
 
 
 def per_case_timeout_ms(calibrated: dict[str, Any]) -> int:
-    """The per-case deadline a calibration record implies."""
+    """The per-case deadline a calibration record implies.
+
+    Split into two terms so PER_CASE_REFERENCE_MULTIPLE bears only on
+    algorithm quality: a fixed overhead allowance (interpreter/JVM boot,
+    argument decode, result encode — every submission pays this regardless
+    of how good its algorithm is) plus PER_CASE_REFERENCE_MULTIPLE times the
+    reference's own average algorithm time (the part a slower algorithm
+    should actually be judged against). One shared wall-time multiplier, as
+    before per-case algorithm timing existed, made the deadline enormously
+    lenient toward a genuinely bad algorithm on any pair where fixed
+    overhead dominates wall time — most of the corpus (measured corpus-wide:
+    interpreted-language pairs routinely spend under 1% of their wall time
+    in the submission's own algorithm). Falls back to the pre-algorithm-
+    timing formula for a record with no reference_algorithm_us (not yet
+    re-measured under algorithm timing).
+
+    This uses only the AVERAGE algorithm time per case, not a slowest-case
+    figure — that field isn't recorded yet (the sweep sums algorithm_us
+    across the reference's cases but, unlike slowest_case_ms for wall time,
+    doesn't keep the single worst case's contribution separately). A bundle
+    whose scaled cases vary widely in size can therefore be under-protected
+    here on its single heaviest case; the wall-time long tail is still
+    covered via slowest_case_ms below, so the deadline never drops under
+    what today's formula already guarantees. TODO: record
+    slowest_case_algorithm_us in calibrate.py (mirroring slowest_case_ms)
+    and fold it in with max(), then a full re-sweep of both trees publishes
+    it — see docs/api-and-cli.md.
+    """
     slowest = calibrated.get("slowest_case_ms")
     slowest = slowest if isinstance(slowest, (int, float)) and slowest > 0 else 0
     case_count = max(1, int(calibrated.get("case_count") or 1))
-    average = calibrated["timeout_ms"] / PER_CASE_REFERENCE_MULTIPLE / case_count
-    budget = int(PER_CASE_REFERENCE_MULTIPLE * max(slowest, average))
+    average_wall_ms = calibrated["timeout_ms"] / PER_CASE_REFERENCE_MULTIPLE / case_count
+    wall_basis_ms = max(slowest, average_wall_ms)
+
+    algorithm_us_total = calibrated.get("reference_algorithm_us")
+    if isinstance(algorithm_us_total, (int, float)) and algorithm_us_total > 0:
+        average_algorithm_ms = algorithm_us_total / 1000 / case_count
+        # algorithm_us can never legitimately exceed a case's own wall time
+        # (the runner enforces this on every submitted value), so this stays
+        # >= 0 in practice; clamped defensively rather than assumed.
+        overhead_ms = max(0.0, wall_basis_ms - average_algorithm_ms)
+        budget = int(OVERHEAD_HEADROOM_MULTIPLE * overhead_ms + PER_CASE_REFERENCE_MULTIPLE * average_algorithm_ms)
+    else:
+        budget = int(PER_CASE_REFERENCE_MULTIPLE * wall_basis_ms)
     return max(1, min(budget, MAX_PER_CASE_TIMEOUT_MS))
 
 

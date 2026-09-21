@@ -97,8 +97,7 @@ class JobTimeoutTests(unittest.TestCase):
     CPP = {"case_count": 200, "observed_job_ms": 8800}
 
     def test_a_pair_is_waited_for_according_to_its_own_measured_job(self):
-        self.assertAlmostEqual(43.0 * judge.JOB_HEADROOM,
-                               judge.job_timeout_seconds(200, self.PYTHON3))
+        self.assertAlmostEqual(43.0 * judge.JOB_HEADROOM, judge.job_timeout_seconds(200, self.PYTHON3))
 
     def test_a_language_the_shared_budget_already_covers_keeps_it(self):
         shared = 200 * judge.PER_CASE_RUNNER_SECONDS + 10
@@ -106,12 +105,12 @@ class JobTimeoutTests(unittest.TestCase):
 
     def test_a_record_without_the_measurement_keeps_the_shared_budget(self):
         for record in (None, {}, {"case_count": 200, "slowest_case_ms": 264}):
-            self.assertAlmostEqual(200 * judge.PER_CASE_RUNNER_SECONDS + 10,
-                                   judge.job_timeout_seconds(200, record))
+            self.assertAlmostEqual(200 * judge.PER_CASE_RUNNER_SECONDS + 10, judge.job_timeout_seconds(200, record))
 
     def test_a_smaller_job_is_waited_for_proportionally(self):
-        self.assertAlmostEqual(0.5 * judge.job_timeout_seconds(200, self.PYTHON3),
-                               judge.job_timeout_seconds(100, self.PYTHON3))
+        self.assertAlmostEqual(
+            0.5 * judge.job_timeout_seconds(200, self.PYTHON3), judge.job_timeout_seconds(100, self.PYTHON3)
+        )
 
 
 class StaleJobPruningTests(unittest.TestCase):
@@ -191,28 +190,97 @@ class PerCaseBudgetTests(unittest.TestCase):
         self.assertGreater(tailed, flat)
 
 
+class AlgorithmAwareBudgetTests(unittest.TestCase):
+    """A record measured under algorithm timing must not let PER_CASE_REFERENCE_MULTIPLE
+    bear on fixed process overhead — only on the submission's own algorithm.
+
+    two-sum/python3 on the deployment host: 213 ms/case wall (almost all
+    interpreter boot + decode/encode), 3.11 us/case algorithm. The pre-
+    algorithm-timing formula (10x the whole wall figure) would let a
+    submission's algorithm run ~2 seconds slower than the reference's and
+    still pass — a bad-algorithm pass rate the fix exists to close.
+    """
+
+    TWO_SUM_PY = {"reference_walltime_ms": 3834, "timeout_ms": 38340, "case_count": 18, "reference_algorithm_us": 56}
+
+    def test_the_multiplier_no_longer_falls_on_fixed_overhead(self):
+        old_formula = judge.PER_CASE_REFERENCE_MULTIPLE * (3834 / 18)
+        new_budget = judge.per_case_timeout_ms(self.TWO_SUM_PY)
+        self.assertLess(new_budget, old_formula, "the overhead term must use its own, smaller headroom")
+
+    def test_the_budget_still_covers_the_reference_with_headroom(self):
+        # Every submission, including the reference itself, has to clear
+        # this deadline on the same host — the fix must never make the
+        # deadline tighter than the reference's own measured cost.
+        average_wall_ms = 3834 / 18
+        self.assertGreater(judge.per_case_timeout_ms(self.TWO_SUM_PY), average_wall_ms)
+
+    def test_an_algorithm_dominated_pair_keeps_close_to_the_old_budget(self):
+        # When the reference's algorithm time already accounts for nearly
+        # all of its wall time, the two formulas should land close together
+        # — the fix is meant to change overhead-dominated pairs, not this one.
+        record = {
+            "reference_walltime_ms": 500,
+            "timeout_ms": 5000,
+            "case_count": 10,
+            "reference_algorithm_us": 490_000,
+        }  # 49 ms/case of 50 ms/case
+        old_formula = judge.PER_CASE_REFERENCE_MULTIPLE * (500 / 10)
+        self.assertAlmostEqual(judge.per_case_timeout_ms(record), old_formula, delta=old_formula * 0.15)
+
+    def test_a_zero_reference_algorithm_us_falls_back_to_the_wall_formula(self):
+        record = {**self.TWO_SUM_PY, "reference_algorithm_us": 0}
+        fallback = {k: v for k, v in self.TWO_SUM_PY.items() if k != "reference_algorithm_us"}
+        self.assertEqual(judge.per_case_timeout_ms(record), judge.per_case_timeout_ms(fallback))
+
+    def test_overhead_never_goes_negative(self):
+        # Constructed so average_algorithm_ms would exceed wall_basis_ms if
+        # unclamped — the runner's own forgery guard (algorithm_us <=
+        # wall_ms) means this shouldn't arise from real measurements, but
+        # the clamp must hold regardless.
+        record = {
+            "reference_walltime_ms": 100,
+            "timeout_ms": 1000,
+            "case_count": 10,
+            "reference_algorithm_us": 200_000,
+            "slowest_case_ms": 10,
+        }
+        expected = int(judge.PER_CASE_REFERENCE_MULTIPLE * (200_000 / 1000 / 10))
+        self.assertEqual(expected, judge.per_case_timeout_ms(record))
+
+    def test_the_new_budget_still_respects_the_runner_ceiling(self):
+        record = {
+            "reference_walltime_ms": 500_000,
+            "timeout_ms": 5_000_000,
+            "case_count": 10,
+            "reference_algorithm_us": 4_900_000_000,
+            "slowest_case_ms": 50_000,
+        }
+        self.assertEqual(judge.MAX_PER_CASE_TIMEOUT_MS, judge.per_case_timeout_ms(record))
+
+
 class CalibrationMeasurementTests(unittest.TestCase):
     """The sweep measures the reference to *produce* the record, so it must not
     be governed by the record it is producing."""
 
-    PROBLEM = {"slug": "sample", "languages": {"python3": {}}, "invocation": {},
-               "limits": {"time_ms": 1500}}
+    PROBLEM = {"slug": "sample", "languages": {"python3": {}}, "invocation": {}, "limits": {"time_ms": 1500}}
 
     def _run(self, **kwargs):
         seen = []
 
         def lookup(slug, language):
             seen.append((slug, language))
-            return {"reference_walltime_ms": 426, "timeout_ms": 4260,
-                    "case_count": 203, "slowest_case_ms": 264}
+            return {"reference_walltime_ms": 426, "timeout_ms": 4260, "case_count": 203, "slowest_case_ms": 264}
 
-        with patch.object(main.calibration, "enforce", lambda: None), \
-             patch.object(main.calibration, "REQUIRED", False), \
-             patch.object(main.calibration, "lookup", lookup), \
-             patch.object(main, "_validate_language", lambda *a: None), \
-             patch.object(main, "_assembly_sources", lambda *a: {}), \
-             patch.object(main, "judge_slot", nullcontext), \
-             patch.object(main, "execute", lambda *a, **k: []):
+        with (
+            patch.object(main.calibration, "enforce", lambda: None),
+            patch.object(main.calibration, "REQUIRED", False),
+            patch.object(main.calibration, "lookup", lookup),
+            patch.object(main, "_validate_language", lambda *a: None),
+            patch.object(main, "_assembly_sources", lambda *a: {}),
+            patch.object(main, "judge_slot", nullcontext),
+            patch.object(main, "execute", lambda *a, **k: []),
+        ):
             main._run_judge(self.PROBLEM, "python3", "", [], 0, Path("."), **kwargs)
         return seen
 
