@@ -53,7 +53,7 @@ var squareFreeSubsets = function (nums) {
         for (let i = 0; i < ones; i++) {
             factor = (factor * 2) % MOD;
         }
-        ways = (ways * factor) % MOD;
+        ways = Number((BigInt(ways) * BigInt(factor)) % BigInt(MOD));
     }
     ways = (((ways - 1) % MOD) + MOD) % MOD; // drop the empty subset
     return ways;
