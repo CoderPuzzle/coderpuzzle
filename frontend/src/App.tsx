@@ -292,6 +292,12 @@ function App() {
   const [activeCase, setActiveCase] = useState(0);
   const [result, setResult] = useState<JudgeResult | null>(null);
   const [busy, setBusy] = useState<"run" | "submit" | null>(null);
+  // Which of Run/Submit produced (or is producing) the current result tab.
+  // Unlike `busy`, this doesn't revert to null once the request finishes —
+  // it's what labels and reveals the tab through completion and through an
+  // error, and stays put until a fresh problem load below resets it with
+  // everything else the last problem left behind.
+  const [lastMode, setLastMode] = useState<"run" | "submit" | null>(null);
   const [actionError, setActionError] = useState("");
   const [leftTab, setLeftTab] = useState<"description" | "submissions" | "solutions">("description");
   const [bottomTab, setBottomTab] = useState<"testcase" | "result">("testcase");
@@ -620,6 +626,7 @@ function App() {
     setProblem(null);
     setLoadError("");
     setResult(null);
+    setLastMode(null);
     setActionError("");
     setActiveCase(0);
     setSubmissions([]);
@@ -716,6 +723,7 @@ function App() {
     const slug = problem.slug;
     const loadSeq = loadSeqRef.current;
     setBusy(mode);
+    setLastMode(mode);
     setActionError("");
     setBottomTab("result");
     setResult(null);
@@ -1073,10 +1081,12 @@ function App() {
               <button className={bottomTab === "testcase" ? "tab active" : "tab"} onClick={() => setBottomTab("testcase")}>
                 <Braces size={15} /> Testcase
               </button>
-              <button className={bottomTab === "result" ? "tab active" : "tab"} onClick={() => setBottomTab("result")}>
-                <TerminalSquare size={15} /> Test result
-                {result && <span className={`result-dot ${verdictTone}`} />}
-              </button>
+              {lastMode && (
+                <button className={bottomTab === "result" ? "tab active" : "tab"} onClick={() => setBottomTab("result")}>
+                  <TerminalSquare size={15} /> {lastMode === "submit" ? "Submission Results" : "Run Results"}
+                  {result && <span className={`result-dot ${verdictTone}`} />}
+                </button>
+              )}
             </div>
             <div className="console-body">
               {bottomTab === "testcase" ? (
@@ -1811,9 +1821,15 @@ function Results({ result, busy, error, comparison, invocationType }: {
         </div>
         {active && (
           <div className="result-detail">
-            <div className="detail-heading">
-              <span className={`status-text ${statusTone(active.status)}`}>{statusLabel(active.status)}</span>
-            </div>
+            {/* Same reasoning as the summary above: a passed example isn't
+                "Accepted" on a run that only ever saw a few examples, so
+                there's nothing to say here for one — a failure label still
+                stands, per case. */}
+            {statusTone(active.status) !== "success" && (
+              <div className="detail-heading">
+                <span className={`status-text ${statusTone(active.status)}`}>{statusLabel(active.status)}</span>
+              </div>
+            )}
             {active.error && <div className="error-box">{active.error}</div>}
             {active.input !== undefined ? (
               <>
