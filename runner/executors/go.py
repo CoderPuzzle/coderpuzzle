@@ -17,10 +17,8 @@ from .typed import (
 # Submitted code may import stdlib packages; Go requires every import to sit
 # in the file's import preamble, so user imports are lifted out of the code
 # and merged with the wrapper's own.
-GO_IMPORT_BLOCK = re.compile(
-    r'^import \((?:\s*"[^"]+"\s*)+\)\s*\n|^import\s+"[^"]+"\s*\n', re.M
-)
-WRAPPER_IMPORTS = ("encoding/binary", "encoding/json", "fmt", "io", "math", "os", "time")
+GO_IMPORT_BLOCK = re.compile(r'^import \((?:\s*"[^"]+"\s*)+\)\s*\n|^import\s+"[^"]+"\s*\n', re.M)
+WRAPPER_IMPORTS = ("encoding/binary", "encoding/json", "fmt", "io", "math", "os", "strconv", "time")
 
 # Reader method per value_type kind; struct kinds read through a method
 # named after the class. The assembled program is kept gofmt-canonical, so
@@ -124,9 +122,11 @@ class GoExecutor(CompiledExecutor):
     ) -> PreparedProgram:
         if invocation.get("type") == "design":
             from .go_design import prepare_design
+
             return prepare_design(self, job_root, scratch, code, invocation, assembly)
         if invocation.get("type") == "interactive":
             from .go_interactive import prepare_interactive
+
             return prepare_interactive(self, job_root, scratch, code, invocation, assembly)
         parameters, return_type, method = function_signature(invocation, self.language)
         structs = uses_struct_kinds(invocation)
@@ -209,8 +209,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "linked_list":
                 result_conversion = "coderpuzzleListNodeJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "linked_list"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "linked_list":
                 result_conversion = "coderpuzzleListNodeArrayJSON"
         # special_tree rides the plain binary-tree display; its reader
         # reuses tree() below and adds the leaf-ring wiring.
@@ -279,8 +278,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "binary_tree":
                 result_conversion = "coderpuzzleTreeNodeJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "binary_tree"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "binary_tree":
                 result_conversion = "coderpuzzleTreeNodeArrayJSON"
         # nary_tree_nodes and nary_tree_ref ride the n-ary display too:
         # the nodes reader and the inline ref resolver below both decode
@@ -350,8 +348,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "nary_tree":
                 result_conversion = "coderpuzzleNodeJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "nary_tree"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "nary_tree":
                 result_conversion = "coderpuzzleNodeArrayJSON"
         if "quad_tree" in structs:
             struct_codecs += textwrap.dedent(
@@ -403,8 +400,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "quad_tree":
                 result_conversion = "coderpuzzleQuadJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "quad_tree"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "quad_tree":
                 result_conversion = "coderpuzzleQuadArrayJSON"
         if "nested" in structs:
             struct_codecs += textwrap.dedent(
@@ -437,8 +433,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "nested":
                 result_conversion = "coderpuzzleNestedJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "nested"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "nested":
                 result_conversion = "coderpuzzleNestedArrayJSON"
         if "next_tree" in structs:
             struct_codecs += textwrap.dedent(
@@ -518,8 +513,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "next_tree":
                 result_conversion = "coderpuzzleNextTreeJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "next_tree"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "next_tree":
                 result_conversion = "coderpuzzleNextTreeArrayJSON"
         if "circular_list" in structs:
             struct_codecs += textwrap.dedent(
@@ -558,8 +552,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "circular_list":
                 result_conversion = "coderpuzzleCircularJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "circular_list"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "circular_list":
                 result_conversion = "coderpuzzleCircularArrayJSON"
         if "doubly_circular" in structs:
             struct_codecs += textwrap.dedent(
@@ -608,8 +601,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "doubly_circular":
                 result_conversion = "coderpuzzleDoublyJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "doubly_circular"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "doubly_circular":
                 result_conversion = "coderpuzzleDoublyArrayJSON"
         if "multi_list" in structs:
             struct_codecs += textwrap.dedent(
@@ -657,8 +649,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "multi_list":
                 result_conversion = "coderpuzzleMultiJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "multi_list"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "multi_list":
                 result_conversion = "coderpuzzleMultiArrayJSON"
         if "graph" in structs:
             struct_codecs += textwrap.dedent(
@@ -737,8 +728,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "graph":
                 result_conversion = "coderpuzzleGraphJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "graph"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "graph":
                 result_conversion = "coderpuzzleGraphArrayJSON"
         if "random_list" in structs:
             struct_codecs += textwrap.dedent(
@@ -806,8 +796,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "random_list":
                 result_conversion = "coderpuzzleRandomJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "random_list"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "random_list":
                 result_conversion = "coderpuzzleRandomArrayJSON"
         if "doubly_list" in structs:
             struct_codecs += textwrap.dedent(
@@ -848,13 +837,10 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "doubly_list":
                 result_conversion = "coderpuzzleDoublyListJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "doubly_list"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "doubly_list":
                 result_conversion = "coderpuzzleDoublyListArrayJSON"
         if "doubly_list_node" in structs:
-            doubly_node_spec = next(
-                (spec for spec in parameters if spec.get("kind") == "doubly_list_node"), {}
-            )
+            doubly_node_spec = next((spec for spec in parameters if spec.get("kind") == "doubly_list_node"), {})
             doubly_node_target = _read_expression(
                 doubly_node_spec.get("items") or struct_item_spec(invocation), "reader"
             )
@@ -1015,8 +1001,7 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "random_tree":
                 result_conversion = "coderpuzzleRandomTreeJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "random_tree"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "random_tree":
                 result_conversion = "coderpuzzleRandomTreeArrayJSON"
         if "special_tree" in structs:
             struct_codecs += textwrap.dedent(
@@ -1094,14 +1079,10 @@ class GoExecutor(CompiledExecutor):
             )
             if return_type.get("kind") == "alias_list":
                 result_conversion = "coderpuzzleAliasJSON"
-            if (return_type.get("kind") == "array"
-                    and (return_type.get("items") or {}).get("kind") == "alias_list"):
+            if return_type.get("kind") == "array" and (return_type.get("items") or {}).get("kind") == "alias_list":
                 result_conversion = "coderpuzzleAliasArrayJSON"
         for name, spec in sorted(struct_specs.items()):
-            reads = ", ".join(
-                _read_expression(field["value_type"], "reader")
-                for field in spec.get("fields") or []
-            )
+            reads = ", ".join(_read_expression(field["value_type"], "reader") for field in spec.get("fields") or [])
             struct_codecs += textwrap.dedent(
                 f"""
                 func (reader *coderpuzzleReaderType) {name}() {name} {{
@@ -1113,13 +1094,7 @@ class GoExecutor(CompiledExecutor):
         # Alias splices need the aliased list's node addresses, and clone
         # checks need every input node registered — read the parameters with
         # that bookkeeping inline.
-        alias_sources = sorted(
-            {
-                spec["alias"]
-                for spec in parameters
-                if spec.get("kind") == "alias_list"
-            }
-        )
+        alias_sources = sorted({spec["alias"] for spec in parameters if spec.get("kind") == "alias_list"})
         collectors = {
             "linked_list": "coderpuzzleCollectList",
             "graph": "coderpuzzleCollectGraph",
@@ -1180,27 +1155,38 @@ class GoExecutor(CompiledExecutor):
                 return _tabs("\n".join(lines))
             lines = [f"coderpuzzleArg{index} := {_read_expression(spec)}"]
             if kind == "linked_list" and index in alias_sources:
-                lines.extend([
-                    f"var coderpuzzleArg{index}Nodes []*ListNode",
-                    f"for node := coderpuzzleArg{index}; node != nil; node = node.Next {{"
-                    f" coderpuzzleArg{index}Nodes = append(coderpuzzleArg{index}Nodes, node) }}",
-                ])
+                lines.extend(
+                    [
+                        f"var coderpuzzleArg{index}Nodes []*ListNode",
+                        f"for node := coderpuzzleArg{index}; node != nil; node = node.Next {{"
+                        f" coderpuzzleArg{index}Nodes = append(coderpuzzleArg{index}Nodes, node) }}",
+                    ]
+                )
             if kind in collectors:
                 lines.append(f"{collectors[kind]}(coderpuzzleArg{index})")
             return _tabs("\n".join(lines))
 
-        declarations = "\n".join(
-            declaration(index, spec) for index, spec in enumerate(parameters)
-        )
+        declarations = "\n".join(declaration(index, spec) for index, spec in enumerate(parameters))
         arguments = ", ".join(f"coderpuzzleArg{index}" for index in range(len(parameters)))
-        code, merged_imports = _merge_imports(
-            code, extra=("sort",) if structs & {"graph", "special_tree"} else ()
+        # A repeat call restores each argument from a pristine copy taken
+        # before the timed region, outside every repeat's own bracket. A
+        # plain `:=` copy would only copy a slice's header (pointer,
+        # length, capacity) -- the same backing array a mutating solution
+        # (append, in-place sort, ...) could still be writing through, so
+        # a later repeat would see corrupted data. Round-tripping through
+        # encoding/json instead allocates a genuinely fresh value from
+        # scratch every time, correct for scalars, slices, and arbitrarily
+        # nested slices alike, with no per-parameter-shape special-casing.
+        repeat_pristine = "\n".join(
+            f"coderpuzzleArg{index}Bytes, _ := json.Marshal(coderpuzzleArg{index})" for index in range(len(parameters))
         )
-        source = (
-            f"package main\n\nimport (\n{merged_imports})\n\n"
-            + _tabs(
-                textwrap.dedent(
-                    f"""
+        repeat_restore = "\n".join(
+            f"json.Unmarshal(coderpuzzleArg{index}Bytes, &coderpuzzleArg{index})" for index in range(len(parameters))
+        )
+        code, merged_imports = _merge_imports(code, extra=("sort",) if structs & {"graph", "special_tree"} else ())
+        source = f"package main\n\nimport (\n{merged_imports})\n\n" + _tabs(
+            textwrap.dedent(
+                f"""
                     {code}
 
                     type coderpuzzleReaderType struct {{
@@ -1248,6 +1234,13 @@ class GoExecutor(CompiledExecutor):
                     // input structure itself.
                     var coderpuzzleInputNodes []any
                     var coderpuzzleAlgorithmNs int64
+                    // A repeated call's return value is otherwise unused, so
+                    // it could be proven dead and the call skipped entirely.
+                    // Assigning it to a package-level variable is the same
+                    // technique Go's own testing.B benchmarks use to keep a
+                    // benchmarked call from being optimized away: escaping
+                    // to a global is a real, observable side effect.
+                    var coderpuzzleRepeatSink any
 
                     func coderpuzzleRegisteredInput(node any) bool {{
                         for _, input := range coderpuzzleInputNodes {{
@@ -1267,9 +1260,32 @@ class GoExecutor(CompiledExecutor):
                         coderpuzzleReader := &coderpuzzleReaderType{{data: bytes}}
                     {declarations}
                         coderpuzzleReader.finished()
+                        // Below-floor pairs replay this many times and sum,
+                        // so a submission is timed the same way its pair's
+                        // reference was calibrated under (see
+                        // docs/api-and-cli.md). Unset, or any non-function-
+                        // kind/pointer-parameter pair the sweep never
+                        // requests a repeat for, this is exactly today's
+                        // single call.
+                        coderpuzzleRepeatCount := int64(1)
+                        if coderpuzzleRepeatEnv := os.Getenv("CODERPUZZLE_REPEAT"); coderpuzzleRepeatEnv != "" {{
+                            if parsed, parseError := strconv.ParseInt(coderpuzzleRepeatEnv, 10, 64); parseError == nil && parsed > coderpuzzleRepeatCount {{
+                                coderpuzzleRepeatCount = parsed
+                            }}
+                        }}
                         coderpuzzleStarted := time.Now()
                         coderpuzzleRaw := {method}({arguments})
                         coderpuzzleAlgorithmNs += time.Since(coderpuzzleStarted).Nanoseconds()
+                        if coderpuzzleRepeatCount > 1 {{
+{repeat_pristine}
+                            for coderpuzzleRepeatI := int64(1); coderpuzzleRepeatI < coderpuzzleRepeatCount; coderpuzzleRepeatI++ {{
+{repeat_restore}
+                                coderpuzzleRepeatStarted := time.Now()
+                                coderpuzzleRepeatResult := {method}({arguments})
+                                coderpuzzleAlgorithmNs += time.Since(coderpuzzleRepeatStarted).Nanoseconds()
+                                coderpuzzleRepeatSink = coderpuzzleRepeatResult
+                            }}
+                        }}
                         coderpuzzleActual := {result_conversion}(coderpuzzleRaw)
                         return map[string]any{{"status": "completed", "actual": coderpuzzleActual, "algorithm_us": coderpuzzleAlgorithmNs / 1000}}
                     }}
@@ -1294,7 +1310,6 @@ class GoExecutor(CompiledExecutor):
                         coderpuzzleEmit("__CODERPUZZLE_RESULT__" + string(encoded))
                     }}
                     """
-                )
             )
         )
         source_path = job_root / "main.go"
@@ -1342,8 +1357,10 @@ class GoExecutor(CompiledExecutor):
     def encode_case(self, invocation: dict[str, Any], case_input: Any) -> bytes:
         if invocation.get("type") == "interactive":
             from .typed import encode_interactive_case
+
             return encode_interactive_case(invocation, case_input)
         if invocation.get("type") == "design":
             from .design_interactive import encode_design_case
+
             return encode_design_case(invocation, case_input)
         return encode_case(invocation, case_input, self.language)

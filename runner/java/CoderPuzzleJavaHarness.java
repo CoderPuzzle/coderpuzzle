@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Set;
 
 public final class CoderPuzzleJavaHarness {
+
     private static final String PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__";
     private static final int MAX_CAPTURED_OUTPUT = 16_384;
     private static final long SCHEDULE_STACK_BYTES = 512L * 1024L;
@@ -27,6 +28,10 @@ public final class CoderPuzzleJavaHarness {
     // process. Accumulated across every measured call in this one-case process.
     private static long algorithmNs;
     private static long loadNs;
+    // A repeated call's return value is otherwise unused; assigning it to a
+    // static field (rather than letting it fall out of scope) is a real,
+    // observable side effect the JIT can't reason its way around removing.
+    private static volatile Object coderpuzzleRepeatSink;
 
     private CoderPuzzleJavaHarness() {}
 
@@ -149,7 +154,6 @@ public final class CoderPuzzleJavaHarness {
         return invokeFunction(targetClass, invocation, rawInput);
     }
 
-
     /**
      * Runs a schedule of calls on real threads and reports what happened.
      * Each schedule entry becomes one thread; a call that LeetCode hands a
@@ -159,19 +163,17 @@ public final class CoderPuzzleJavaHarness {
      * problem's invariant, because a correct concurrent program has many
      * valid interleavings.
      */
-    private static Object invokeConcurrent(
-        Class<?> targetClass,
-        Map<String, Object> invocation,
-        Object rawInput
-    ) throws Exception {
+    private static Object invokeConcurrent(Class<?> targetClass, Map<String, Object> invocation, Object rawInput)
+        throws Exception {
         Map<String, Object> state = asMap(rawInput, "Concurrent input must be an object");
         List<Object> schedule = asList(state.get("threads"), "Concurrent input needs a threads list");
         if (schedule.isEmpty()) {
             throw new IllegalArgumentException("Concurrent schedule must not be empty");
         }
-        List<Object> constructorArguments = state.get("constructor") == null
-            ? new ArrayList<>()
-            : asList(state.get("constructor"), "Constructor params must be a list");
+        List<Object> constructorArguments =
+            state.get("constructor") == null
+                ? new ArrayList<>()
+                : asList(state.get("constructor"), "Constructor params must be a list");
         InvocationPlan<Constructor<?>> constructorPlan = findConstructor(targetClass, constructorArguments);
         Object instance;
         try {
@@ -185,7 +187,8 @@ public final class CoderPuzzleJavaHarness {
             Map<String, Object> methodSpec = asMap(entry, "Method spec must be an object");
             parameterSpecs.put(
                 asString(methodSpec.get("name"), "Method spec needs a name"),
-                asList(methodSpec.getOrDefault("parameters", List.of()), "Method parameters must be a list"));
+                asList(methodSpec.getOrDefault("parameters", List.of()), "Method parameters must be a list")
+            );
         }
 
         List<Object> events = java.util.Collections.synchronizedList(new ArrayList<>());
@@ -194,44 +197,58 @@ public final class CoderPuzzleJavaHarness {
         for (Object entry : schedule) {
             Map<String, Object> spec = asMap(entry, "Schedule entry must be an object");
             String call = asString(spec.get("call"), "Schedule entry needs a call name");
-            List<Object> arguments = spec.get("args") == null
-                ? new ArrayList<>()
-                : asList(spec.get("args"), "Schedule args must be a list");
+            List<Object> arguments =
+                spec.get("args") == null ? new ArrayList<>() : asList(spec.get("args"), "Schedule args must be a list");
             Object emits = spec.get("emits");
             boolean records = Boolean.TRUE.equals(spec.get("records"));
-            threads.add(new Thread(null, () -> {
-                try {
-                    List<Object> parameterList = parameterSpecs.get(call);
-                    List<Integer> callbackSlots = callbackSlotIndexes(parameterList);
-                    if (!callbackSlots.isEmpty()) {
-                        // The manifest's callback parameters sit at fixed
-                        // positions; the schedule's args fill the rest in
-                        // order, converted to the method's own types.
-                        invokeWithCallbacks(
-                            targetClass, instance, call, arguments, emits,
-                            parameterList, callbackSlots, events, records);
-                    } else if (emits != null) {
-                        List<Object> callArguments = new ArrayList<>(arguments);
-                        callArguments.add((Runnable) () -> events.add(emits));
-                        InvocationPlan<Method> plan = findMethod(targetClass, call, callArguments);
-                        plan.executable().invoke(instance, plan.arguments());
-                    } else {
-                        InvocationPlan<Method> plan = findMethod(targetClass, call, arguments);
-                        Object value = plan.executable().invoke(instance, plan.arguments());
-                        if (records) {
-                            events.add(value);
+            threads.add(
+                new Thread(
+                    null,
+                    () -> {
+                        try {
+                            List<Object> parameterList = parameterSpecs.get(call);
+                            List<Integer> callbackSlots = callbackSlotIndexes(parameterList);
+                            if (!callbackSlots.isEmpty()) {
+                                // The manifest's callback parameters sit at fixed
+                                // positions; the schedule's args fill the rest in
+                                // order, converted to the method's own types.
+                                invokeWithCallbacks(
+                                    targetClass,
+                                    instance,
+                                    call,
+                                    arguments,
+                                    emits,
+                                    parameterList,
+                                    callbackSlots,
+                                    events,
+                                    records
+                                );
+                            } else if (emits != null) {
+                                List<Object> callArguments = new ArrayList<>(arguments);
+                                callArguments.add((Runnable) () -> events.add(emits));
+                                InvocationPlan<Method> plan = findMethod(targetClass, call, callArguments);
+                                plan.executable().invoke(instance, plan.arguments());
+                            } else {
+                                InvocationPlan<Method> plan = findMethod(targetClass, call, arguments);
+                                Object value = plan.executable().invoke(instance, plan.arguments());
+                                if (records) {
+                                    events.add(value);
+                                }
+                            }
+                        } catch (InvocationTargetException error) {
+                            failures.add(error.getTargetException());
+                        } catch (Throwable error) {
+                            failures.add(error);
                         }
-                    }
-                } catch (InvocationTargetException error) {
-                    failures.add(error.getTargetException());
-                } catch (Throwable error) {
-                    failures.add(error);
-                }
-                // Each thread reserves its stack from the sandbox's
-                // address-space allowance; the default times a schedule's
-                // worth of threads exceeds it, and a schedule thread runs one
-                // short method, so a small stack is ample.
-            }, "coderpuzzle-schedule", SCHEDULE_STACK_BYTES));
+                        // Each thread reserves its stack from the sandbox's
+                        // address-space allowance; the default times a schedule's
+                        // worth of threads exceeds it, and a schedule thread runs one
+                        // short method, so a small stack is ample.
+                    },
+                    "coderpuzzle-schedule",
+                    SCHEDULE_STACK_BYTES
+                )
+            );
         }
         // One outer span from starting every thread to joining them all: the
         // per-thread regions overlap in time, so summing them would count the
@@ -299,7 +316,8 @@ public final class CoderPuzzleJavaHarness {
             if (callbackSlots.contains(index)) {
                 Map<String, Object> valueType = asMap(
                     asMap(parameterList.get(index), "Parameter spec must be an object").get("value_type"),
-                    "value_type must be an object");
+                    "value_type must be an object"
+                );
                 // Event templates reference the enclosing call's CONVERTED
                 // arguments, so "#i" sees the same values the method sees
                 // (ints as ints, not the raw JSON doubles).
@@ -336,13 +354,12 @@ public final class CoderPuzzleJavaHarness {
     ) {
         if (!callbackType.isInterface()) {
             throw new IllegalArgumentException(
-                "Callback parameter must be an interface type: " + callbackType.getName());
+                "Callback parameter must be an interface type: " + callbackType.getName()
+            );
         }
         boolean silent = Boolean.FALSE.equals(spec.get("record"));
         boolean recordValue = Boolean.TRUE.equals(spec.get("value"));
-        List<Object> template = spec.get("event") == null
-            ? null
-            : asList(spec.get("event"), "event must be a list");
+        List<Object> template = spec.get("event") == null ? null : asList(spec.get("event"), "event must be a list");
         java.lang.reflect.InvocationHandler handler = (proxy, method, methodArguments) -> {
             if (method.getDeclaringClass() == Object.class) {
                 switch (method.getName()) {
@@ -351,9 +368,9 @@ public final class CoderPuzzleJavaHarness {
                     case "hashCode":
                         return System.identityHashCode(proxy);
                     case "equals":
-                        return proxy == (methodArguments != null && methodArguments.length > 0
-                            ? methodArguments[0]
-                            : null);
+                        return (
+                            proxy == (methodArguments != null && methodArguments.length > 0 ? methodArguments[0] : null)
+                        );
                     default:
                         return null;
                 }
@@ -378,7 +395,10 @@ public final class CoderPuzzleJavaHarness {
             return defaultValue(method.getReturnType());
         };
         return java.lang.reflect.Proxy.newProxyInstance(
-            callbackType.getClassLoader(), new Class<?>[] {callbackType}, handler);
+            callbackType.getClassLoader(),
+            new Class<?>[] { callbackType },
+            handler
+        );
     }
 
     /** The value a callback's declared return type implies when ignored. */
@@ -410,17 +430,15 @@ public final class CoderPuzzleJavaHarness {
         return 0.0d;
     }
 
-    private static Object invokeInteractive(
-        Class<?> targetClass,
-        Map<String, Object> invocation,
-        Object rawInput
-    ) throws Exception {
+    private static Object invokeInteractive(Class<?> targetClass, Map<String, Object> invocation, Object rawInput)
+        throws Exception {
         Map<String, Object> state = asMap(rawInput, "Interactive input must be an object");
         long budget = numberValue(invocation.getOrDefault("query_limit", 1_000_000)).longValue();
         Map<String, Object> providedOracle = providedOracle(invocation);
         if (providedOracle == null) {
             throw new IllegalArgumentException(
-                "Interactive problems must carry their oracle in provided/ (invocation.provided.oracle)");
+                "Interactive problems must carry their oracle in provided/ (invocation.provided.oracle)"
+            );
         }
         {
             // Bundle-carried oracle: the class ships in the problem's
@@ -433,7 +451,9 @@ public final class CoderPuzzleJavaHarness {
             String providedClass = asString(providedOracle.get("class"), "Provided oracle class must be a string");
             List<String> constructKeys = stringList(providedOracle.get("construct"), "provided.construct");
             List<Object> parameterSpecs = asList(
-                invocation.getOrDefault("parameters", List.of()), "Parameters must be a list");
+                invocation.getOrDefault("parameters", List.of()),
+                "Parameters must be a list"
+            );
             Class<?> oracleClass = Class.forName(providedClass);
             Constructor<?> chosen = null;
             for (Constructor<?> candidateCtor : oracleClass.getDeclaredConstructors()) {
@@ -444,8 +464,12 @@ public final class CoderPuzzleJavaHarness {
             }
             if (chosen == null) {
                 throw new IllegalArgumentException(
-                    "Provided oracle " + providedClass + " has no constructor taking "
-                        + constructKeys.size() + " case value(s) plus the query budget");
+                    "Provided oracle " +
+                        providedClass +
+                        " has no constructor taking " +
+                        constructKeys.size() +
+                        " case value(s) plus the query budget"
+                );
             }
             chosen.setAccessible(true);
             Class<?>[] parameterTypes = chosen.getParameterTypes();
@@ -492,7 +516,10 @@ public final class CoderPuzzleJavaHarness {
                     }
                     String name = asString(spec.get("name"), "Parameter spec needs a name");
                     callArguments[1 + index] = convert(
-                        state.get(name), methodParameters[1 + index], methodParameters[1 + index]);
+                        state.get(name),
+                        methodParameters[1 + index],
+                        methodParameters[1 + index]
+                    );
                 }
                 return finishInteractive(candidate, instance, callArguments, oracleInstance, bufferSlot);
             }
@@ -514,10 +541,7 @@ public final class CoderPuzzleJavaHarness {
         // e.g. the robot's exact set of cleaned cells.
         if (result == null) {
             try {
-                return oracleInstance
-                    .getClass()
-                    .getMethod("verdict")
-                    .invoke(oracleInstance);
+                return oracleInstance.getClass().getMethod("verdict").invoke(oracleInstance);
             } catch (NoSuchMethodException noVerdict) {
                 return null;
             }
@@ -561,13 +585,13 @@ public final class CoderPuzzleJavaHarness {
         return keys;
     }
 
-    private static Object invokeFunction(
-        Class<?> targetClass,
-        Map<String, Object> invocation,
-        Object rawInput
-    ) throws Exception {
+    private static Object invokeFunction(Class<?> targetClass, Map<String, Object> invocation, Object rawInput)
+        throws Exception {
         List<Object> rawArguments = asList(rawInput, "Function input must be a positional argument list");
-        List<Object> parameterSpecs = asList(invocation.getOrDefault("parameters", List.of()), "Parameters must be a list");
+        List<Object> parameterSpecs = asList(
+            invocation.getOrDefault("parameters", List.of()),
+            "Parameters must be a list"
+        );
         if (parameterSpecs.size() != rawArguments.size()) {
             throw new IllegalArgumentException("Input argument count does not match the problem manifest");
         }
@@ -598,8 +622,11 @@ public final class CoderPuzzleJavaHarness {
             String codec = spec.getOrDefault("codec", "json").toString();
             if ("alias_list".equals(codec)) {
                 Object aliasValue = spec.get("alias");
-                if (!(aliasValue instanceof Number alias) || alias.intValue() < 0
-                    || alias.intValue() >= arguments.size()) {
+                if (
+                    !(aliasValue instanceof Number alias) ||
+                    alias.intValue() < 0 ||
+                    alias.intValue() >= arguments.size()
+                ) {
                     throw new IllegalArgumentException("alias_list requires an earlier aliased parameter");
                 }
                 arguments.add(decodeAliasList(rawArguments.get(index), arguments.get(alias.intValue())));
@@ -610,8 +637,11 @@ public final class CoderPuzzleJavaHarness {
                 // value: the argument is that exact node object, so
                 // mutations through it land in the aliased tree.
                 Object aliasValue = spec.get("alias");
-                if (!(aliasValue instanceof Number alias) || alias.intValue() < 0
-                    || alias.intValue() >= arguments.size()) {
+                if (
+                    !(aliasValue instanceof Number alias) ||
+                    alias.intValue() < 0 ||
+                    alias.intValue() >= arguments.size()
+                ) {
                     throw new IllegalArgumentException("nary_tree_ref requires an earlier n-ary parameter");
                 }
                 arguments.add(decodeNaryTreeRef(rawArguments.get(index), arguments.get(alias.intValue())));
@@ -621,23 +651,37 @@ public final class CoderPuzzleJavaHarness {
             if ("graph".equals(codec)) {
                 decoded = decodeGraph(
                     rawArguments.get(index),
-                    declaredNodeClass(targetClass, methodName, rawArguments.size(), index, "val", "neighbors"));
+                    declaredNodeClass(targetClass, methodName, rawArguments.size(), index, "val", "neighbors")
+                );
             } else if ("random_list".equals(codec)) {
                 decoded = decodeRandomList(
                     rawArguments.get(index),
-                    declaredNodeClass(targetClass, methodName, rawArguments.size(), index, "val", "next", "random"));
+                    declaredNodeClass(targetClass, methodName, rawArguments.size(), index, "val", "next", "random")
+                );
             } else if ("doubly_list".equals(codec)) {
                 decoded = decodeDoublyChain(
                     rawArguments.get(index),
-                    declaredNodeClass(targetClass, methodName, rawArguments.size(), index, "val", "prev", "next"));
+                    declaredNodeClass(targetClass, methodName, rawArguments.size(), index, "val", "prev", "next")
+                );
             } else if ("doubly_list_node".equals(codec)) {
                 decoded = decodeDoublyListNode(
                     rawArguments.get(index),
-                    declaredNodeClass(targetClass, methodName, rawArguments.size(), index, "val", "prev", "next"));
+                    declaredNodeClass(targetClass, methodName, rawArguments.size(), index, "val", "prev", "next")
+                );
             } else if ("random_tree".equals(codec)) {
                 decoded = decodeRandomTree(
                     rawArguments.get(index),
-                    declaredNodeClass(targetClass, methodName, rawArguments.size(), index, "val", "left", "right", "random"));
+                    declaredNodeClass(
+                        targetClass,
+                        methodName,
+                        rawArguments.size(),
+                        index,
+                        "val",
+                        "left",
+                        "right",
+                        "random"
+                    )
+                );
             } else {
                 decoded = decodeCodec(rawArguments.get(index), codec);
             }
@@ -659,14 +703,51 @@ public final class CoderPuzzleJavaHarness {
             long started = mark();
             result = plan.executable().invoke(instance, plan.arguments());
             add(started);
+            // Below-floor pairs replay this many times and sum, so a
+            // submission is timed the same way its pair's reference was
+            // calibrated under (see docs/api-and-cli.md). Unset, or any
+            // non-function-kind/unsafe-parameter pair the sweep never
+            // requests a repeat for, this stays exactly today's single
+            // call. Each repeat re-decodes every parameter from the
+            // original, still-pristine raw input rather than cloning the
+            // already-decoded value: decodeCodec already handles arbitrary
+            // array nesting correctly (that's how the first call's
+            // arguments were built), so redoing it is a complete, correct
+            // restore against a mutating solution with no separate clone
+            // logic to get wrong for each parameter shape.
+            long repeatCount = 1L;
+            String repeatEnv = System.getenv("CODERPUZZLE_REPEAT");
+            if (repeatEnv != null) {
+                try {
+                    long parsed = Long.parseLong(repeatEnv.trim());
+                    if (parsed > repeatCount) {
+                        repeatCount = parsed;
+                    }
+                } catch (NumberFormatException ignored) {
+                    // Malformed value from our own request plumbing, never
+                    // submission-controlled -- fall back to no repeat.
+                }
+            }
+            for (long repeatIndex = 1; repeatIndex < repeatCount; repeatIndex++) {
+                List<Object> repeatArguments = new ArrayList<>(parameterSpecs.size());
+                for (int index = 0; index < parameterSpecs.size(); index++) {
+                    Map<String, Object> spec = asMap(parameterSpecs.get(index), "Parameter spec must be an object");
+                    String codec = spec.getOrDefault("codec", "json").toString();
+                    repeatArguments.add(decodeCodec(rawArguments.get(index), codec));
+                }
+                InvocationPlan<Method> repeatPlan = findMethod(targetClass, methodName, repeatArguments);
+                long repeatStarted = mark();
+                Object repeatResult = repeatPlan.executable().invoke(instance, repeatPlan.arguments());
+                add(repeatStarted);
+                coderpuzzleRepeatSink = repeatResult;
+            }
         } catch (InvocationTargetException error) {
             throw propagate(error.getTargetException());
         }
         String returnCodec = invocation.getOrDefault("return_codec", "json").toString();
         if ("alias_list".equals(returnCodec)) {
             Object aliasValue = invocation.get("return_alias");
-            if (!(aliasValue instanceof Number alias) || alias.intValue() < 0
-                || alias.intValue() >= listHeads.size()) {
+            if (!(aliasValue instanceof Number alias) || alias.intValue() < 0 || alias.intValue() >= listHeads.size()) {
                 throw new IllegalArgumentException("alias_list return requires return_alias");
             }
             return serializeAliasList(result, listHeads.get(alias.intValue()));
@@ -697,8 +778,11 @@ public final class CoderPuzzleJavaHarness {
             return Class.forName(name);
         } catch (ClassNotFoundException missing) {
             throw new IllegalArgumentException(
-                "This problem's wire needs a '" + name + "' class; provide it in provided/java/ "
-                    + "(see docs/CODECS.md for the required shape)");
+                "This problem's wire needs a '" +
+                    name +
+                    "' class; provide it in provided/java/ " +
+                    "(see docs/CODECS.md for the required shape)"
+            );
         }
     }
 
@@ -736,13 +820,21 @@ public final class CoderPuzzleJavaHarness {
             return object.getClass().getField(field).get(object);
         } catch (NoSuchFieldException | IllegalAccessException error) {
             throw new IllegalArgumentException(
-                "Return value's class " + object.getClass().getSimpleName()
-                    + " is missing the required field '" + field + "'");
+                "Return value's class " +
+                    object.getClass().getSimpleName() +
+                    " is missing the required field '" +
+                    field +
+                    "'"
+            );
         }
     }
 
-    private static Object newNaryNode(Constructor<?> ctor, java.lang.reflect.Field valField,
-            java.lang.reflect.Field childrenField, int value) throws Exception {
+    private static Object newNaryNode(
+        Constructor<?> ctor,
+        java.lang.reflect.Field valField,
+        java.lang.reflect.Field childrenField,
+        int value
+    ) throws Exception {
         Object node = newNode(ctor, valField, value);
         if (childrenField.get(node) == null) {
             childrenField.set(node, new ArrayList<>());
@@ -846,7 +938,12 @@ public final class CoderPuzzleJavaHarness {
                 @SuppressWarnings("unchecked")
                 List<Object> parentChildren = (List<Object>) childrenField.get(parent);
                 while (readIndex < values.size() && values.get(readIndex) != null) {
-                    Object child = newNaryNode(ctor, valField, childrenField, numberValue(values.get(readIndex)).intValue());
+                    Object child = newNaryNode(
+                        ctor,
+                        valField,
+                        childrenField,
+                        numberValue(values.get(readIndex)).intValue()
+                    );
                     parentChildren.add(child);
                     pending.add(child);
                     readIndex++;
@@ -1061,8 +1158,7 @@ public final class CoderPuzzleJavaHarness {
             }
             return values;
         }
-        if ("list_node_array".equals(codec) || "tree_node_array".equals(codec)
-                || "circular_list_array".equals(codec)) {
+        if ("list_node_array".equals(codec) || "tree_node_array".equals(codec) || "circular_list_array".equals(codec)) {
             List<?> items = asList(value, codec + " return value must be an array");
             List<Object> values = new ArrayList<>();
             for (Object item : items) {
@@ -1126,7 +1222,7 @@ public final class CoderPuzzleJavaHarness {
             List<Object> output = new ArrayList<>();
             output.add(fieldValue(value, "val"));
             Object current = fieldValue(value, "next");
-            for (int i = 0; i < (1 << 20); i++) {
+            for (int i = 0; i < 1 << 20; i++) {
                 if (current == null) {
                     throw new IllegalArgumentException("Circular list is not closed");
                 }
@@ -1180,7 +1276,7 @@ public final class CoderPuzzleJavaHarness {
         }
         List<Object> data = asList(value, "quad_tree input must be a display array");
         Class<?> nodeClass = wellKnownClass("QuadNode");
-        int[] cursor = {0};
+        int[] cursor = { 0 };
         Object root = parseQuadNode(nodeClass, data, cursor);
         if (cursor[0] != data.size()) {
             throw new IllegalArgumentException("quad_tree wire has trailing entries");
@@ -1320,7 +1416,7 @@ public final class CoderPuzzleJavaHarness {
         List<Object> output = new ArrayList<>();
         Object node = head;
         Object previous = null;
-        for (int i = 0; i < (1 << 20) && node != null; i++) {
+        for (int i = 0; i < 1 << 20 && node != null; i++) {
             if (fieldValue(node, "prev") != previous || fieldValue(node, "child") != null) {
                 throw new IllegalArgumentException("Flattened list is not properly linked");
             }
@@ -1344,7 +1440,7 @@ public final class CoderPuzzleJavaHarness {
         output.add(fieldValue(head, "val"));
         Object previous = head;
         Object current = fieldValue(head, "right");
-        for (int i = 0; i < (1 << 20); i++) {
+        for (int i = 0; i < 1 << 20; i++) {
             if (current == null || fieldValue(current, "left") != previous) {
                 throw new IllegalArgumentException("Doubly linked list is not properly linked");
             }
@@ -1392,7 +1488,8 @@ public final class CoderPuzzleJavaHarness {
             }
         }
         throw new IllegalArgumentException(
-            "Method " + methodName + " must declare a node parameter with field(s) " + String.join(", ", fields));
+            "Method " + methodName + " must declare a node parameter with field(s) " + String.join(", ", fields)
+        );
     }
 
     private static Object decodeGraph(Object value, Class<?> nodeClass) throws Exception {
@@ -1409,9 +1506,7 @@ public final class CoderPuzzleJavaHarness {
         ctor.setAccessible(true);
         Object[] nodes = new Object[rows.size()];
         for (int index = 0; index < rows.size(); index++) {
-            nodes[index] = ctor.getParameterCount() == 1
-                ? ctor.newInstance(index + 1)
-                : ctor.newInstance();
+            nodes[index] = ctor.getParameterCount() == 1 ? ctor.newInstance(index + 1) : ctor.newInstance();
             java.lang.reflect.Field val = nodeClass.getField("val");
             val.set(nodes[index], index + 1);
         }
@@ -1473,13 +1568,15 @@ public final class CoderPuzzleJavaHarness {
             visited.add(node);
             queue.addAll((List<?>) neighbors.get(node));
         }
-        visited.sort(java.util.Comparator.comparingInt(node -> {
-            try {
-                return valField.getInt(node);
-            } catch (ReflectiveOperationException error) {
-                throw propagate(error);
-            }
-        }));
+        visited.sort(
+            java.util.Comparator.comparingInt(node -> {
+                try {
+                    return valField.getInt(node);
+                } catch (ReflectiveOperationException error) {
+                    throw propagate(error);
+                }
+            })
+        );
         if (!inputNodes.isEmpty()) {
             for (Object node : visited) {
                 if (inputNodes.contains(node)) {
@@ -1513,9 +1610,10 @@ public final class CoderPuzzleJavaHarness {
         Object[] nodes = new Object[pairs.size()];
         for (int index = 0; index < pairs.size(); index++) {
             List<Object> pair = asList(pairs.get(index), "random_list pairs must be [val, random]");
-            nodes[index] = ctor.getParameterCount() == 1
-                ? ctor.newInstance(numberValue(pair.get(0)).intValue())
-                : ctor.newInstance();
+            nodes[index] =
+                ctor.getParameterCount() == 1
+                    ? ctor.newInstance(numberValue(pair.get(0)).intValue())
+                    : ctor.newInstance();
             nodeClass.getField("val").set(nodes[index], numberValue(pair.get(0)).intValue());
         }
         java.lang.reflect.Field next = nodeClass.getField("next");
@@ -1661,7 +1759,7 @@ public final class CoderPuzzleJavaHarness {
         java.lang.reflect.Field next = nodeClass.getField("next");
         Object node = head;
         Object previous = null;
-        for (int i = 0; i < (1 << 20) && node != null; i++) {
+        for (int i = 0; i < 1 << 20 && node != null; i++) {
             if (prev.get(node) != previous) {
                 throw new IllegalArgumentException("Doubly linked list is not properly linked");
             }
@@ -1709,7 +1807,7 @@ public final class CoderPuzzleJavaHarness {
         if (row.size() != 2) {
             throw new IllegalArgumentException("random_tree node must be a [val, random] row");
         }
-        return new Object[] {numberValue(row.get(0)).intValue(), row.get(1)};
+        return new Object[] { numberValue(row.get(0)).intValue(), row.get(1) };
     }
 
     private static Object decodeRandomTree(Object value, Class<?> nodeClass) throws Exception {
@@ -1738,13 +1836,13 @@ public final class CoderPuzzleJavaHarness {
         List<Object[]> pending = new ArrayList<>();
         List<Object> queue = new ArrayList<>();
         order.add(root);
-        pending.add(new Object[] {root, first[1]});
+        pending.add(new Object[] { root, first[1] });
         queue.add(root);
         int index = 1;
         int writeIndex = 0;
         while (writeIndex < queue.size() && index < rows.size()) {
             Object parent = queue.get(writeIndex++);
-            for (java.lang.reflect.Field side : new java.lang.reflect.Field[] {left, right}) {
+            for (java.lang.reflect.Field side : new java.lang.reflect.Field[] { left, right }) {
                 if (index >= rows.size()) {
                     break;
                 }
@@ -1756,7 +1854,7 @@ public final class CoderPuzzleJavaHarness {
                 Object child = newNode(ctor, valField, (Integer) row[0]);
                 side.set(parent, child);
                 order.add(child);
-                pending.add(new Object[] {child, row[1]});
+                pending.add(new Object[] { child, row[1] });
                 queue.add(child);
             }
         }
@@ -1911,7 +2009,8 @@ public final class CoderPuzzleJavaHarness {
                 ctor = cls.getDeclaredConstructor(ctorTypes);
             } catch (NoSuchMethodException noExactCtor) {
                 throw new IllegalArgumentException(
-                    "Provided class " + cls.getName() + " needs a constructor matching its declared fields");
+                    "Provided class " + cls.getName() + " needs a constructor matching its declared fields"
+                );
             }
             ctor.setAccessible(true);
             Object[] args = new Object[fields.size()];
@@ -2061,19 +2160,16 @@ public final class CoderPuzzleJavaHarness {
                 }
             }
             Object returnCodec = method.get("return_codec");
-            table.put(
-                asString(method.get("name"), "Method name must be a string"),
-                new Object[] { parameterCodecs, returnCodec == null ? "json" : returnCodec.toString() }
-            );
+            table.put(asString(method.get("name"), "Method name must be a string"), new Object[] {
+                parameterCodecs,
+                returnCodec == null ? "json" : returnCodec.toString(),
+            });
         }
         return table;
     }
 
-    private static Object invokeDesign(
-        Class<?> targetClass,
-        Map<String, Object> invocation,
-        Object rawInput
-    ) throws Exception {
+    private static Object invokeDesign(Class<?> targetClass, Map<String, Object> invocation, Object rawInput)
+        throws Exception {
         Map<String, Object> designInput = asMap(rawInput, "Design input must be an object");
         List<Object> actions = asList(designInput.get("actions"), "Design actions must be a list");
         List<Object> params = asList(designInput.get("params"), "Design params must be a list");
@@ -2081,8 +2177,10 @@ public final class CoderPuzzleJavaHarness {
             throw new IllegalArgumentException("Design actions and params must have the same non-zero length");
         }
         List<Object> constructorArguments = asList(params.get(0), "Constructor params must be a list");
-        if (invocation.get("constructor") instanceof Map<?, ?> constructorSpec
-            && constructorSpec.get("parameters") instanceof List<?> constructorParameters) {
+        if (
+            invocation.get("constructor") instanceof Map<?, ?> constructorSpec &&
+            constructorSpec.get("parameters") instanceof List<?> constructorParameters
+        ) {
             for (int slot = 0; slot < constructorArguments.size() && slot < constructorParameters.size(); slot++) {
                 String codec = "json";
                 if (constructorParameters.get(slot) instanceof Map<?, ?> spec && spec.get("codec") != null) {
@@ -2180,13 +2278,18 @@ public final class CoderPuzzleJavaHarness {
             for (int slot = 0; slot < methodArguments.size(); slot++) {
                 Object argument = methodArguments.get(slot);
                 boolean expectsInstance = slot < kinds.size() && "instance".equals(kinds.get(slot));
-                boolean isReference = argument instanceof Map<?, ?> reference
-                    && reference.size() == 1 && reference.get("$ref") instanceof String;
+                boolean isReference =
+                    argument instanceof Map<?, ?> reference &&
+                    reference.size() == 1 &&
+                    reference.get("$ref") instanceof String;
                 if (isReference || expectsInstance) {
                     if (!isReference || !expectsInstance) {
                         throw new IllegalArgumentException(
-                            "Design action " + index + " parameter " + (slot + 1)
-                                + ": {\"$ref\": handle} instance references are only valid on an instance parameter"
+                            "Design action " +
+                                index +
+                                " parameter " +
+                                (slot + 1) +
+                                ": {\"$ref\": handle} instance references are only valid on an instance parameter"
                         );
                     }
                     String handle = (String) ((Map<?, ?>) argument).get("$ref");
@@ -2253,9 +2356,11 @@ public final class CoderPuzzleJavaHarness {
             if (method.get("parameters") instanceof List<?> parameters) {
                 for (Object parameter : parameters) {
                     String kind = "json";
-                    if (parameter instanceof Map<?, ?> spec
-                        && spec.get("value_type") instanceof Map<?, ?> value
-                        && value.get("kind") != null) {
+                    if (
+                        parameter instanceof Map<?, ?> spec &&
+                        spec.get("value_type") instanceof Map<?, ?> value &&
+                        value.get("kind") != null
+                    ) {
                         kind = value.get("kind").toString();
                     }
                     kinds.add(kind);
@@ -2269,8 +2374,10 @@ public final class CoderPuzzleJavaHarness {
     /** Decode one {"new": handle} constructor row in place through the
      * constructor's declared codecs (same rule as params[0]). */
     private static void decodeConstructorRow(Map<String, Object> invocation, List<Object> row) throws Exception {
-        if (!(invocation.get("constructor") instanceof Map<?, ?> constructorSpec)
-            || !(constructorSpec.get("parameters") instanceof List<?> constructorParameters)) {
+        if (
+            !(invocation.get("constructor") instanceof Map<?, ?> constructorSpec) ||
+            !(constructorSpec.get("parameters") instanceof List<?> constructorParameters)
+        ) {
             return;
         }
         for (int slot = 0; slot < row.size() && slot < constructorParameters.size(); slot++) {
@@ -2282,11 +2389,7 @@ public final class CoderPuzzleJavaHarness {
         }
     }
 
-    private static InvocationPlan<Method> findMethod(
-        Class<?> targetClass,
-        String name,
-        List<Object> rawArguments
-    ) {
+    private static InvocationPlan<Method> findMethod(Class<?> targetClass, String name, List<Object> rawArguments) {
         IllegalArgumentException lastConversionError = null;
         for (Method method : targetClass.getDeclaredMethods()) {
             if (!method.getName().equals(name) || method.getParameterCount() != rawArguments.size()) {
@@ -2302,13 +2405,12 @@ public final class CoderPuzzleJavaHarness {
         if (lastConversionError != null) {
             throw lastConversionError;
         }
-        throw new IllegalArgumentException("No matching method " + name + " with " + rawArguments.size() + " arguments");
+        throw new IllegalArgumentException(
+            "No matching method " + name + " with " + rawArguments.size() + " arguments"
+        );
     }
 
-    private static InvocationPlan<Constructor<?>> findConstructor(
-        Class<?> targetClass,
-        List<Object> rawArguments
-    ) {
+    private static InvocationPlan<Constructor<?>> findConstructor(Class<?> targetClass, List<Object> rawArguments) {
         IllegalArgumentException lastConversionError = null;
         for (Constructor<?> constructor : targetClass.getDeclaredConstructors()) {
             if (constructor.getParameterCount() != rawArguments.size()) {
@@ -2396,7 +2498,7 @@ public final class CoderPuzzleJavaHarness {
             return new LinkedHashMap<>(values);
         }
         if (targetType.isEnum() && value instanceof String text) {
-            @SuppressWarnings({"unchecked", "rawtypes"})
+            @SuppressWarnings({ "unchecked", "rawtypes" })
             Object constant = Enum.valueOf((Class<? extends Enum>) targetType, text);
             return constant;
         }
@@ -2412,7 +2514,9 @@ public final class CoderPuzzleJavaHarness {
     }
 
     private static IllegalArgumentException conversionError(Object value, Class<?> targetType) {
-        return new IllegalArgumentException("Cannot convert " + value.getClass().getSimpleName() + " to " + targetType.getTypeName());
+        return new IllegalArgumentException(
+            "Cannot convert " + value.getClass().getSimpleName() + " to " + targetType.getTypeName()
+        );
     }
 
     private static RuntimeException propagate(Throwable error) {
@@ -2455,6 +2559,7 @@ public final class CoderPuzzleJavaHarness {
     private record InvocationPlan<T extends Executable>(T executable, Object[] arguments) {}
 
     private static final class CappedOutputStream extends OutputStream {
+
         private final ByteArrayOutputStream delegate = new ByteArrayOutputStream();
         private final int limit;
 
@@ -2479,6 +2584,7 @@ public final class CoderPuzzleJavaHarness {
     }
 
     private static final class Json {
+
         private Json() {}
 
         static Object parse(String text) {
@@ -2502,14 +2608,23 @@ public final class CoderPuzzleJavaHarness {
                 writeString(output, text);
             } else if (value instanceof Character character) {
                 writeString(output, character.toString());
-            } else if (value instanceof Boolean || value instanceof Byte || value instanceof Short
-                || value instanceof Integer || value instanceof Long) {
+            } else if (
+                value instanceof Boolean ||
+                value instanceof Byte ||
+                value instanceof Short ||
+                value instanceof Integer ||
+                value instanceof Long
+            ) {
                 output.append(value);
             } else if (value instanceof Float number) {
-                if (!Float.isFinite(number)) throw new IllegalArgumentException("Non-finite number cannot be serialized");
+                if (!Float.isFinite(number)) throw new IllegalArgumentException(
+                    "Non-finite number cannot be serialized"
+                );
                 output.append(number);
             } else if (value instanceof Double number) {
-                if (!Double.isFinite(number)) throw new IllegalArgumentException("Non-finite number cannot be serialized");
+                if (!Double.isFinite(number)) throw new IllegalArgumentException(
+                    "Non-finite number cannot be serialized"
+                );
                 output.append(number);
             } else if (value.getClass().isArray()) {
                 output.append('[');
@@ -2568,6 +2683,7 @@ public final class CoderPuzzleJavaHarness {
         }
 
         private static final class Parser {
+
             private final String text;
             private int position;
 
@@ -2666,7 +2782,8 @@ public final class CoderPuzzleJavaHarness {
 
             private Number parseNumber() {
                 int start = position;
-                if (consume('-')) {}
+                if (consume('-')) {
+                }
                 if (consume('0')) {
                     // A single leading zero is valid; further digits are rejected below.
                 } else {

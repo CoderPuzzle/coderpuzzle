@@ -38,9 +38,11 @@ class CppExecutor(CompiledExecutor):
             raise ExecutorError("Invalid C++ entry class")
         if invocation.get("type") == "design":
             from .cpp_design import prepare_design
+
             return prepare_design(self, job_root, scratch, code, invocation, assembly)
         if invocation.get("type") == "interactive":
             from .cpp_interactive import prepare_interactive
+
             return prepare_interactive(self, job_root, scratch, code, invocation, assembly)
         parameters, _, method = function_signature(invocation, self.language)
 
@@ -944,10 +946,7 @@ class CppExecutor(CompiledExecutor):
                     f"CoderPuzzleDecoder<{cpp_type(field['value_type'])}>::read(reader);\n"
                     for index, field in enumerate(fields)
                 )
-                arguments = ", ".join(
-                    f"std::move(coderpuzzle_field_{index})"
-                    for index in range(len(fields))
-                )
+                arguments = ", ".join(f"std::move(coderpuzzle_field_{index})" for index in range(len(fields)))
                 struct_codecs += (
                     f"template <> struct CoderPuzzleDecoder<{name}> {{\n"
                     f"    static {name} read(CoderPuzzleReader& reader) {{\n"
@@ -1029,13 +1028,7 @@ class CppExecutor(CompiledExecutor):
         # Alias splices need the aliased list's node addresses, and clone
         # checks need every input node registered — read the parameters with
         # that bookkeeping inline.
-        alias_sources = sorted(
-            {
-                spec["alias"]
-                for spec in parameters
-                if spec.get("kind") == "alias_list"
-            }
-        )
+        alias_sources = sorted({spec["alias"] for spec in parameters if spec.get("kind") == "alias_list"})
 
         def declaration(index: int, spec: dict[str, Any]) -> str:
             kind = spec.get("kind")
@@ -1082,10 +1075,22 @@ class CppExecutor(CompiledExecutor):
                 lines.append(f"coderpuzzleCollectInput(coderpuzzle_arg_{index});")
             return "\n".join(" " * 20 + line for line in lines)
 
-        declarations = "\n".join(
-            declaration(index, spec) for index, spec in enumerate(parameters)
-        )
+        declarations = "\n".join(declaration(index, spec) for index, spec in enumerate(parameters))
         arguments = ", ".join(f"coderpuzzle_arg_{index}" for index in range(len(parameters)))
+        # A repeat call restores each argument from a pristine copy taken
+        # before the timed region, outside every repeat's own bracket --
+        # calibrate.py only ever requests a repeat count above 1 for
+        # parameters made of plain values (see ALGORITHM_REPEAT_UNSAFE_
+        # PARAMETER_KINDS in api/app/calibrate.py), so a copy-assignment is
+        # a real, complete restore here, not just a pointer copy.
+        repeat_pristine = "\n".join(
+            " " * 24 + f"auto coderpuzzle_arg_{index}_pristine = coderpuzzle_arg_{index};"
+            for index in range(len(parameters))
+        )
+        repeat_restore = "\n".join(
+            " " * 28 + f"coderpuzzle_arg_{index} = coderpuzzle_arg_{index}_pristine;"
+            for index in range(len(parameters))
+        )
         wrapper = textwrap.dedent(
             f"""
             #undef main
@@ -1215,9 +1220,29 @@ class CppExecutor(CompiledExecutor):
 {declarations}
                     coderpuzzle_reader.finished();
                     {class_name} coderpuzzle_solution;
+                    // Below-floor pairs replay this many times and sum, so a
+                    // submission is timed the same way its pair's reference
+                    // was calibrated under (see docs/api-and-cli.md). Unset,
+                    // or any non-function-kind/pointer-parameter pair the
+                    // sweep never requests a repeat for, this is exactly
+                    // today's single call.
+                    long long coderpuzzle_repeat_count = 1;
+                    if (const char* coderpuzzle_repeat_env = std::getenv("CODERPUZZLE_REPEAT")) {{
+                        coderpuzzle_repeat_count = std::max(1LL, std::atoll(coderpuzzle_repeat_env));
+                    }}
                     auto coderpuzzle_started = coderpuzzle_clock_start();
                     auto coderpuzzle_actual = coderpuzzle_solution.{method}({arguments});
                     coderpuzzle_clock_stop(coderpuzzle_started);
+                    if (coderpuzzle_repeat_count > 1) {{
+{repeat_pristine}
+                        for (long long coderpuzzle_repeat_i = 1; coderpuzzle_repeat_i < coderpuzzle_repeat_count; ++coderpuzzle_repeat_i) {{
+{repeat_restore}
+                            auto coderpuzzle_repeat_started = coderpuzzle_clock_start();
+                            auto coderpuzzle_repeat_result = coderpuzzle_solution.{method}({arguments});
+                            coderpuzzle_clock_stop(coderpuzzle_repeat_started);
+                            coderpuzzle_keep_alive(coderpuzzle_repeat_result);
+                        }}
+                    }}
                                         coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"completed\\\",\\\"actual\\\":\" + coderpuzzle_result(coderpuzzle_actual) + \",\\\"algorithm_us\\\":\" + std::to_string(coderpuzzle_algorithm_ns / 1000) + \"}}\");
                 }} catch (const std::exception& error) {{
                     coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\" + coderpuzzle_json(std::string(error.what())) + \"}}\");
@@ -1239,7 +1264,7 @@ class CppExecutor(CompiledExecutor):
             "// keeps ordinary stdout noise out of the channel, but the submission\n"
             "// inherits it too — an accepted result must still carry matching output.\n"
             "void coderpuzzleEmit(const std::string& line) {\n"
-            "    std::string payload = line + \"\\n\";\n"
+            '    std::string payload = line + "\\n";\n'
             "    if (::write(63, payload.data(), payload.size()) < 0) {\n"
             "        std::cout << payload << std::flush;\n"
             "    }\n"
@@ -1250,10 +1275,16 @@ class CppExecutor(CompiledExecutor):
             "    coderpuzzle_algorithm_ns += std::chrono::duration_cast<std::chrono::nanoseconds>(\n"
             "        std::chrono::steady_clock::now() - started).count();\n"
             "}\n"
-+ assembly_decls
-            + code
-            + "\n"
-            + wrapper,
+            "// A repeated call's return value is otherwise unused, so at -O2 the\n"
+            "// compiler is entitled to prove the call has no observable effect and\n"
+            "// remove it outright -- silently collapsing every repeat back to zero\n"
+            "// extra work. Taking the value's address inside an empty volatile asm\n"
+            "// block tells the optimizer memory may have been read through that\n"
+            "// pointer, which is enough to keep the call itself from being elided\n"
+            "// (the same technique as Google Benchmark's DoNotOptimize).\n"
+            "template <typename T> static inline void coderpuzzle_keep_alive(const T& value) {\n"
+            '    asm volatile("" : : "g"(&value) : "memory");\n'
+            "}\n" + assembly_decls + code + "\n" + wrapper,
             encoding="utf-8",
         )
         source_path.chmod(0o444)
@@ -1284,8 +1315,10 @@ class CppExecutor(CompiledExecutor):
     def encode_case(self, invocation: dict[str, Any], case_input: Any) -> bytes:
         if invocation.get("type") == "interactive":
             from .typed import encode_interactive_case
+
             return encode_interactive_case(invocation, case_input)
         if invocation.get("type") == "design":
             from .design_interactive import encode_design_case
+
             return encode_design_case(invocation, case_input)
         return encode_case(invocation, case_input, self.language)

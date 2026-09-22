@@ -295,6 +295,135 @@ is not yet as tight as it could be. Fixing this needs a `calibrate.py`
 change (record `slowest_case_algorithm_us`, mirroring `slowest_case_ms`) and
 one full re-sweep of both trees to populate it.
 
+### Algorithm repeat count (design settled 2026-09-22, implemented 2026-09-22)
+
+17.3% of the corpus (4,450 of 25,790 pairs as measured 2026-09-21, cpp/go/rust
+dominant) reads `below_floor` honestly — the reference's algorithm genuinely
+finishes in single-digit-to-low-hundreds of microseconds, and for problems
+whose stated bound is itself small (LC 10's `s.length, p.length <= 20` is the
+motivating case: the difficulty is the recursion, not the input size), no
+amount of Phase-5-style case scaling can raise that. `TODO.md` tracks the
+remaining follow-up (the full corpus sweep that actually populates
+`algorithm_repeat_count` for these pairs, plus LC 10's own re-calibration);
+this section is the design the mechanism implements against, so a future
+change can be checked against the reasoning instead of just the numbers.
+
+**Field names, as shipped**: the calibration record gains
+`algorithm_repeat_count` (int, only written when > 1 — an absent field or a
+record from before this mechanism existed both mean 1, today's single-call
+behavior). The harness reads the count from a new environment variable,
+`CODERPUZZLE_REPEAT` (a string of the int; `worker.py`'s `_run_case` sets it
+from `limits["algorithm_repeat_count"]`, defaulting to `"1"`), which
+`main.py`'s `_run_judge` folds into `limits` from the calibration record
+exactly like `time_ms` already is. No change to `judge.py`: `limits` was
+already forwarded into `body["limits"]` untouched.
+
+**Scope, as shipped**: function-kind only (`calibrate.py`'s
+`ALGORITHM_REPEAT_KINDS = {"function"}`) — design/interactive/concurrent
+have zero base timing instrumentation in cpp/go/rust/js/ts today, and are
+only 0.25% of below-floor pairs, not worth building that instrumentation
+for first. Also excluded (`ALGORITHM_REPEAT_UNSAFE_PARAMETER_KINDS`): every
+wire-linked pointer kind (`linked_list`, `binary_tree`, `graph`,
+`random_list`, ... — a shallow copy can't undo node-level mutation) and
+`struct` (a bundle-provided `provided/<lang>/*` type isn't guaranteed to be
+cloneable in every language). Together these are 8.8% + a handful of the
+below-floor slugs; `_repeat_eligible(problem)` in `calibrate.py` is the
+single gate.
+
+**Mechanism**: repeat a judged case's timed call N times back-to-back inside
+the harness's existing measurement bracket, and report the total as that
+case's `algorithm_us` — a microbenchmark-style repeat-and-divide. Not a warm
+process pool (see Execution timing profiles above and TRUST-BOUNDARIES.md —
+the sandbox's per-case privilege drop and `_kill_lingering_children()` sweep
+assume a process is used once; reusing one across submissions would also
+leak state a submission can set, such as a global monkey-patch, into the
+next submission that happens to land on the same process).
+
+**N is per (slug, language), not a fixed count per language.** A fixed
+count — cpp always 20x, say — would either overshoot pairs already close to
+the floor (every later submission on that pair pays the extra repeats
+forever, for no benefit) or undershoot the genuinely fastest ones. N is
+instead discovered once per pair at calibration time and stored in the
+record, the same way `reference_algorithm_us` and `timeout_ms` already are,
+and replayed identically at submission judge time so the ratio and the
+deadline stay comparable.
+
+**Target and cap, derived from the corpus's own below-floor distribution**
+(not chosen arbitrarily): repeat until the total clears **2000us** — 10x the
+200us floor itself, not just past it, so the ratio has real margin against
+the measurement noise already documented above (shared-mode CPU contention
+dominates a single microsecond-scale case). Cap **N at 1000**: at that cap,
+96.8% of the corpus's below-floor pairs fully clear the target, and raising
+the cap further costs almost nothing to try since a pair needing a large N
+is, by construction, one with a tiny per-call cost — the worst-case added
+latency any cap produces is self-limiting to within ~2.2ms of the 2000us
+target, whether the cap is 200 or 2000. The remaining ~3.2% (all measured at
+exactly 1us on a single-shot reading — plausibly under the timer's real
+resolution rather than a genuine value) are left honestly `below_floor`
+rather than justify raising the cap for a number that's likely an artifact.
+
+**Compiler dead-code elimination, solved per language, verified empirically
+not assumed.** An optimizing compiler (cpp especially) can prove a pure
+function called N times with unchanged arguments has no observable effect
+beyond its return value, and legally hoist the whole repeat loop down to a
+single call — silently breaking the mechanism for exactly the pairs it
+exists to fix, producing a wrong number with no error. Every compiled/JIT
+language got its own barrier and was verified by actually compiling a
+throwaway solution and confirming `algorithm_us` scales with
+`CODERPUZZLE_REPEAT`, not by reading the generated source and assuming it
+would: cpp uses a `coderpuzzle_keep_alive<T>` template
+(`asm volatile("" : : "g"(&value) : "memory")`, Google-Benchmark-style); go
+assigns into a package-level `var coderpuzzleRepeatSink any` (the same
+technique `testing.B` benchmarks use); rust uses `std::hint::black_box`
+(stable); java assigns into a `private static volatile Object
+coderpuzzleRepeatSink` field; js/ts (V8 is JIT, not AOT — elision risk is
+lower but was still verified, not assumed) assign into a module-level `let
+coderpuzzleRepeatSink`.
+
+**Correctness stays anchored to the first call.** The comparison against
+`expected` reads only the first repeat's result; every repeat after it
+exists purely to accumulate timing signal. A mutating solution (in-place
+sort, in-place rotate, ...) gets a fresh copy of the input before each
+repeat, taken **outside** the timed bracket — inside it, the copy's own cost
+would be misattributed as algorithm time. This is per-language: python
+`copy.deepcopy`; cpp plain `=` (value-semantic `std::vector`); go
+`encoding/json` marshal/unmarshal round-trip (plain `:=` only copies the
+slice header — an aliasing bug caught before shipping); rust `.clone()`
+taken once into a pristine binding before the first (moving) call, then
+cloned fresh from that pristine binding into its own local ahead of every
+repeat's timed span, never inline in the call expression itself (an inline
+`.clone()` sits between the mark and the elapsed-read and gets its own cost
+counted as algorithm time — a real bug here, caught empirically via
+non-linear `algorithm_us` scaling and fixed); java re-decodes each
+parameter fresh from the still-pristine raw JSON input via the existing
+decode pipeline; js/ts `structuredClone()`, with the same
+clone-must-happen-before-the-timed-span discipline as rust (js's generator
+had the identical inline-clone bug, caught and fixed at the same time).
+
+**`slowest_case_algorithm_us` (the per-case-deadline long-tail fix above) is
+measured under this same N** — one calibration pass and one new field
+family will serve both TODO items once that fix itself lands (still
+tracked separately in `TODO.md`; not part of this mechanism's first cut).
+
+**Scope, as shipped**: `calibrate.py` (the N-discovery loop — measure at
+N=1, and if the pair is function-kind, eligible, and still below the 2000us
+target, compute `n = min(1000, ceil(2000 / measured))` and remeasure,
+bounded to a few rounds), the two plumbing sites (`main.py`'s `_run_judge`,
+`worker.py`'s `_run_case`), and every function-kind harness: python, cpp,
+go, rust, java, js, ts. `judge.py`'s `per_case_timeout_ms` needed no formula
+change — it already divides `reference_algorithm_us` by case count, never
+by count × N, so an N-times-larger reference auto-scales the deadline
+correctly; a doc comment there records the invariant this depends on (the
+same N must produce both the reference's and a submission's own
+`algorithm_us`, which holds structurally since both read
+`algorithm_repeat_count` from the one calibration record). Design,
+interactive, concurrent, sql, and shell are explicitly out of scope for
+this first cut (see above). Still pending: the full corpus sweep of both
+trees that actually populates `algorithm_repeat_count` for the eligible
+below-floor pairs — until that sweep runs, every existing calibration
+record still reads 1 (today's behavior), even though the mechanism itself
+is live.
+
 ## Docker image CLI
 
 The image installs the CLI as `coderpuzzle`; locally test an edited

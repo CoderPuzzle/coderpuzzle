@@ -16,11 +16,7 @@ from .typed import (
 def _read_expression(spec: dict[str, Any]) -> str:
     kind = spec["kind"]
     if kind == "integer":
-        return (
-            "coderpuzzleReader.int32()"
-            if spec.get("bits", 32) == 32
-            else "coderpuzzleReader.int64()"
-        )
+        return "coderpuzzleReader.int32()" if spec.get("bits", 32) == 32 else "coderpuzzleReader.int64()"
     if kind == "number":
         return "coderpuzzleReader.number()"
     if kind == "boolean":
@@ -154,9 +150,9 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "            values.push(node.val);\n"
             "            node = node.next;\n"
             "            if (node === head) return values;\n"
-            "            if (node === null) throw new Error(\"Circular list is not closed\");\n"
+            '            if (node === null) throw new Error("Circular list is not closed");\n'
             "        }\n"
-            "        throw new Error(\"Circular list exceeds the walk bound\");\n"
+            '        throw new Error("Circular list exceeds the walk bound");\n'
             "    }\n"
         )
     if "tree" in structs or "special_tree" in structs:
@@ -286,7 +282,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        this.need(1);\n"
             "        const tag = this.data[this.offset++];\n"
             "        if (tag === 1) return new NestedInteger(this.int32());\n"
-            "        if (tag !== 2) throw new Error(\"Invalid nested tag\");\n"
+            '        if (tag !== 2) throw new Error("Invalid nested tag");\n'
             "        const length = this.uint32();\n"
             "        const value = new NestedInteger();\n"
             "        for (let index = 0; index < length; index++) value.add(this.nested());\n"
@@ -370,18 +366,18 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "            // head's own back-link is the tail, verified when the\n"
             "            // walk closes below.\n"
             "            if (previous !== null && node.left !== previous) {\n"
-            "                throw new Error(\"Doubly linked list is not properly linked\");\n"
+            '                throw new Error("Doubly linked list is not properly linked");\n'
             "            }\n"
             "            values.push(node.val);\n"
             "            previous = node;\n"
             "            node = node.right;\n"
             "            if (node === head) {\n"
-            "                if (head.left !== previous) throw new Error(\"Doubly linked list is not properly linked\");\n"
+            '                if (head.left !== previous) throw new Error("Doubly linked list is not properly linked");\n'
             "                return values;\n"
             "            }\n"
-            "            if (node === null) throw new Error(\"Doubly linked list is not closed\");\n"
+            '            if (node === null) throw new Error("Doubly linked list is not closed");\n'
             "        }\n"
-            "        throw new Error(\"Doubly linked list exceeds the walk bound\");\n"
+            '        throw new Error("Doubly linked list exceeds the walk bound");\n'
             "    }\n"
         )
     if "multi_list" in structs:
@@ -412,13 +408,13 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        let bound = 0;\n"
             "        for (; node !== null && bound < (1 << 20); bound++) {\n"
             "            if (node.prev !== previous || node.child !== null) {\n"
-            "                throw new Error(\"Flattened list is not properly linked\");\n"
+            '                throw new Error("Flattened list is not properly linked");\n'
             "            }\n"
             "            values.push(node.val);\n"
             "            previous = node;\n"
             "            node = node.next;\n"
             "        }\n"
-            "        if (node !== null) throw new Error(\"Flattened list exceeds the walk bound\");\n"
+            '        if (node !== null) throw new Error("Flattened list exceeds the walk bound");\n'
             "        return values;\n"
             "    }\n"
         )
@@ -435,7 +431,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "            const degree = this.uint32();\n"
             "            for (let neighbor = 0; neighbor < degree; neighbor++) {\n"
             "                const value = this.int32() + 1;\n"
-            "                if (value < 1 || value > count) throw new Error(\"Graph neighbor is out of range\");\n"
+            '                if (value < 1 || value > count) throw new Error("Graph neighbor is out of range");\n'
             "                nodes[index].neighbors.push(nodes[value - 1]);\n"
             "            }\n"
             "        }\n"
@@ -466,7 +462,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        }\n"
             "        for (const node of visited) {\n"
             "            if (CoderPuzzleReader.inputNodes.has(node)) {\n"
-            "                throw new Error(\"Returned graph shares nodes with the input graph\");\n"
+            '                throw new Error("Returned graph shares nodes with the input graph");\n'
             "            }\n"
             "        }\n"
             "        visited.sort((a, b) => a.val - b.val);\n"
@@ -489,7 +485,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        for (let index = 0; index + 1 < count; index++) nodes[index].next = nodes[index + 1];\n"
             "        for (let index = 0; index < count; index++) {\n"
             "            if (targets[index] === 0xFFFFFFFF) continue;\n"
-            "            if (targets[index] >= count) throw new Error(\"Random pointer target is out of range\");\n"
+            '            if (targets[index] >= count) throw new Error("Random pointer target is out of range");\n'
             "            nodes[index].random = nodes[targets[index]];\n"
             "        }\n"
             "        return nodes[0];\n"
@@ -500,18 +496,18 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "    static randomListJSON(head) {\n"
             "        const nodes = [];\n"
             "        for (let node = head; node; node = node.next) {\n"
-            "            if (nodes.indexOf(node) !== -1) throw new Error(\"Random list has a cycle in next\");\n"
+            '            if (nodes.indexOf(node) !== -1) throw new Error("Random list has a cycle in next");\n'
             "            nodes.push(node);\n"
             "        }\n"
             "        for (const node of nodes) {\n"
             "            if (CoderPuzzleReader.inputNodes.has(node)) {\n"
-            "                throw new Error(\"Returned list shares nodes with the input list\");\n"
+            '                throw new Error("Returned list shares nodes with the input list");\n'
             "            }\n"
             "        }\n"
             "        return nodes.map((node) => {\n"
             "            if (node.random === null) return [node.val, null];\n"
             "            const target = nodes.indexOf(node.random);\n"
-            "            if (target === -1) throw new Error(\"Random pointer leaves the returned list\");\n"
+            '            if (target === -1) throw new Error("Random pointer leaves the returned list");\n'
             "            return [node.val, target];\n"
             "        });\n"
             "    }\n"
@@ -527,7 +523,9 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        if (this.data[this.offset++] === 0) return null;\n"
             "        const length = this.uint32();\n"
             "        const nodes = [];\n"
-            "        for (let index = 0; index < length; index++) nodes.push(new @@DOUBLY_CLASS@@(" + item_read + "));\n"
+            "        for (let index = 0; index < length; index++) nodes.push(new @@DOUBLY_CLASS@@("
+            + item_read
+            + "));\n"
             "        for (let index = 1; index < length; index++) {\n"
             "            nodes[index - 1].next = nodes[index];\n"
             "            nodes[index].prev = nodes[index - 1];\n"
@@ -542,13 +540,13 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        let node = head;\n"
             "        for (let bound = 0; node !== null && bound < (1 << 20); bound++) {\n"
             "            if (node.prev !== previous) {\n"
-            "                throw new Error(\"Doubly linked list is not properly linked\");\n"
+            '                throw new Error("Doubly linked list is not properly linked");\n'
             "            }\n"
             "            values.push(node.val);\n"
             "            previous = node;\n"
             "            node = node.next;\n"
             "        }\n"
-            "        if (node !== null) throw new Error(\"Doubly linked list exceeds the walk bound\");\n"
+            '        if (node !== null) throw new Error("Doubly linked list exceeds the walk bound");\n'
             "        return values;\n"
             "    }\n"
         )
@@ -562,7 +560,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        for (let node = head; node !== null; node = node.next) {\n"
             "            if (node.val === target) return node;\n"
             "        }\n"
-            "        throw new Error(\"doubly_list_node target value is not in the chain\");\n"
+            '        throw new Error("doubly_list_node target value is not in the chain");\n'
             "    }\n"
         )
     if "random_tree" in structs:
@@ -615,7 +613,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        }\n"
             "        for (const [node, target] of pending) {\n"
             "            if (target === 0xFFFFFFFF) continue;\n"
-            "            if (target >= order.length) throw new Error(\"Random pointer target is out of range\");\n"
+            '            if (target >= order.length) throw new Error("Random pointer target is out of range");\n'
             "            node.random = order[target];\n"
             "        }\n"
             "        return root;\n"
@@ -644,7 +642,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "            const node = queue.shift();\n"
             "            if (node === null) { order.push(null); continue; }\n"
             "            if (order.indexOf(node) !== -1) {\n"
-            "                throw new Error(\"Random tree repeats a node in level order\");\n"
+            '                throw new Error("Random tree repeats a node in level order");\n'
             "            }\n"
             "            order.push(node);\n"
             "            queue.push(node.left, node.right);\n"
@@ -652,7 +650,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        while (order.length > 0 && order[order.length - 1] === null) order.pop();\n"
             "        for (const node of order) {\n"
             "            if (node !== null && CoderPuzzleReader.inputNodes.has(node)) {\n"
-            "                throw new Error(\"Returned tree shares nodes with the input tree\");\n"
+            '                throw new Error("Returned tree shares nodes with the input tree");\n'
             "            }\n"
             "        }\n"
             "        // Random indices address present nodes in level order — the\n"
@@ -663,7 +661,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "            if (node === null) return null;\n"
             "            if (node.random === null) return [node.val, null];\n"
             "            const target = present.indexOf(node.random);\n"
-            "            if (target === -1) throw new Error(\"Random pointer leaves the returned tree\");\n"
+            '            if (target === -1) throw new Error("Random pointer leaves the returned tree");\n'
             "            return [node.val, target];\n"
             "        });\n"
             "    }\n"
@@ -728,12 +726,14 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "                stack.push(node.children[index]);\n"
             "            }\n"
             "        }\n"
-            "        throw new Error(\"nary_tree_ref target value is not in the aliased tree\");\n"
+            '        throw new Error("nary_tree_ref target value is not in the aliased tree");\n'
             "    }\n"
         )
-    if any(_uses_json(spec) for spec in
-           [parameter.get("value_type") for parameter in invocation.get("parameters", [])]
-           + [invocation.get("return_type")]):
+    if any(
+        _uses_json(spec)
+        for spec in [parameter.get("value_type") for parameter in invocation.get("parameters", [])]
+        + [invocation.get("return_type")]
+    ):
         codecs += (
             "    json() {\n"
             "        // The generic any-shaped value: length-prefixed compact\n"
@@ -750,7 +750,7 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
             "        // shared tail's values.\n"
             "        if (node === null) return [];\n"
             "        if (!CoderPuzzleReader.inputNodes.has(node)) {\n"
-            "            throw new Error(\"Returned node is not part of the input lists\");\n"
+            '            throw new Error("Returned node is not part of the input lists");\n'
             "        }\n"
             "        const values = [];\n"
             "        for (let walk = node; walk; walk = walk.next) values.push(walk.val);\n"
@@ -766,23 +766,16 @@ def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
         # provided/ source; the judge contributes only the decoder.
         fields = spec.get("fields") or []
         reads = ", ".join(
-            _read_expression(field["value_type"]).replace("coderpuzzleReader.", "this.")
-            for field in fields
+            _read_expression(field["value_type"]).replace("coderpuzzleReader.", "this.") for field in fields
         )
-        codecs += (
-            f"    read{name}() {{\n"
-            f"        return new {name}({reads});\n"
-            "    }\n"
-        )
+        codecs += f"    read{name}() {{\n        return new {name}({reads});\n    }}\n"
     return_type = invocation.get("return_type", {})
     if return_type.get("kind") == "array":
         item_kind = (return_type.get("items") or {}).get("kind")
         if item_kind in _ARRAY_RESULT_HELPERS:
             helper, converter = _ARRAY_RESULT_HELPERS[item_kind]
             result_helpers += (
-                f"function {helper}(values) {{\n"
-                f"    return values.map((value) => {converter}(value));\n"
-                "}\n"
+                f"function {helper}(values) {{\n    return values.map((value) => {converter}(value));\n}}\n"
             )
     codecs = codecs.replace("@@GRAPH_CLASS@@", graph_class).replace("@@RANDOM_CLASS@@", random_class)
     codecs = codecs.replace("@@DOUBLY_CLASS@@", doubly_class).replace("@@RANDOM_TREE_CLASS@@", random_tree_class)
@@ -854,9 +847,11 @@ class JavaScriptExecutor(CompiledExecutor):
     ) -> PreparedProgram:
         if invocation.get("type") == "design":
             from .js_design import prepare_design
+
             return prepare_design(self, job_root, scratch, code, invocation, assembly, is_typescript=False)
         if invocation.get("type") == "interactive":
             from .js_interactive import prepare_interactive
+
             return prepare_interactive(self, job_root, scratch, code, invocation, assembly, is_typescript=False)
         parameters, _, method = function_signature(invocation, self.language)
         # Class definitions arrive entirely as source from the problem's
@@ -874,13 +869,7 @@ class JavaScriptExecutor(CompiledExecutor):
         # Alias splices need the aliased list's nodes; clone checks need
         # every input node registered — read the parameters with that
         # bookkeeping inline (one registration per list-shaped parameter).
-        alias_sources = sorted(
-            {
-                spec["alias"]
-                for spec in parameters
-                if spec.get("kind") == "alias_list"
-            }
-        )
+        alias_sources = sorted({spec["alias"] for spec in parameters if spec.get("kind") == "alias_list"})
         reader_item = (
             "coderpuzzleReader.int64()"
             if struct_item_spec(invocation).get("bits", 32) == 64
@@ -899,8 +888,7 @@ class JavaScriptExecutor(CompiledExecutor):
                 # value: the reader resolves it inside the aliased tree the
                 # way an alias_list splices onto its earlier list.
                 return (
-                    f"    const coderpuzzleArg{index} = "
-                    f"coderpuzzleReader.naryTreeRef(coderpuzzleArg{spec['alias']});"
+                    f"    const coderpuzzleArg{index} = coderpuzzleReader.naryTreeRef(coderpuzzleArg{spec['alias']});"
                 )
             if spec.get("kind") == "alias_list":
                 aliased = f"coderpuzzleArg{spec['alias']}Nodes"
@@ -939,10 +927,32 @@ class JavaScriptExecutor(CompiledExecutor):
                 lines.append(f"    CoderPuzzleReader.{collector}(coderpuzzleArg{index});")
             return "\n".join(lines)
 
-        declarations = "\n".join(
-            declaration(index, spec) for index, spec in enumerate(parameters)
-        )
+        declarations = "\n".join(declaration(index, spec) for index, spec in enumerate(parameters))
         arguments = ", ".join(f"coderpuzzleArg{index}" for index in range(len(parameters)))
+        # A repeat call passes a fresh clone of each argument, taken from a
+        # pristine snapshot outside every repeat's own timed bracket --
+        # coderpuzzleArgN itself is declared const (declaration() above),
+        # so cloning into a fresh call argument each time, rather than
+        # reassigning it, is what the language actually allows here.
+        # structuredClone (global since Node 17) deep-clones arrays/objects
+        # correctly regardless of nesting depth, unlike a plain reference
+        # copy, which a mutating solution could still be writing through on
+        # a later repeat. calibrate.py only ever requests a repeat count
+        # above 1 for plain values (ALGORITHM_REPEAT_UNSAFE_PARAMETER_KINDS
+        # in api/app/calibrate.py), which structuredClone always handles.
+        repeat_pristine = "\n".join(
+            f"                    const coderpuzzleArg{index}Pristine = structuredClone(coderpuzzleArg{index});"
+            for index in range(len(parameters))
+        )
+        # Cloned into its own binding one loop iteration ahead of the timed
+        # call, never inline in the call expression itself -- inline, the
+        # clone would run between coderpuzzleMark() and coderpuzzleAdd(),
+        # misattributing its own cost as algorithm time.
+        repeat_clone_bindings = "\n".join(
+            f"                            const coderpuzzleRepeatArg{index} = structuredClone(coderpuzzleArg{index}Pristine);"
+            for index in range(len(parameters))
+        )
+        repeat_arguments = ", ".join(f"coderpuzzleRepeatArg{index}" for index in range(len(parameters)))
         wrapper = textwrap.dedent(
             f"""
             class CoderPuzzleReader {{
@@ -991,14 +1001,37 @@ class JavaScriptExecutor(CompiledExecutor):
             function coderpuzzleMark() {{ return process.hrtime.bigint(); }}
             function coderpuzzleAdd(since) {{ coderpuzzleAlgorithmNs += process.hrtime.bigint() - since; }}
             function coderpuzzleAlgorithmUs() {{ return Number(coderpuzzleAlgorithmNs / 1000n); }}
+            // A repeated call's return value is otherwise unused, so an
+            // aggressive optimizer could in principle prove it dead --
+            // routing it through a module-level sink is a defensive
+            // barrier against that (V8's JIT is a lower risk than an AOT
+            // compiler's -O2, but this was verified empirically, not
+            // assumed, the same as every other language here).
+            let coderpuzzleRepeatSink;
             (() => {{
                 try {{
                     const coderpuzzleReader = new CoderPuzzleReader(require("fs").readFileSync(0));
             {declarations}
                     coderpuzzleReader.finished();
+                    // Below-floor pairs replay this many times and sum, so
+                    // a submission is timed the same way its pair's
+                    // reference was calibrated under (see
+                    // docs/api-and-cli.md). Unset, or any non-function-
+                    // kind/unsafe-parameter pair the sweep never requests a
+                    // repeat for, this is exactly today's single call.
+                    const coderpuzzleRepeatCount = Math.max(1, parseInt(process.env.CODERPUZZLE_REPEAT, 10) || 1);
                     const coderpuzzleStarted = coderpuzzleMark();
                     const coderpuzzleActual = {result_wrapper}({method}({arguments}));
                     coderpuzzleAdd(coderpuzzleStarted);
+                    if (coderpuzzleRepeatCount > 1) {{
+{repeat_pristine}
+                        for (let coderpuzzleRepeatI = 1; coderpuzzleRepeatI < coderpuzzleRepeatCount; coderpuzzleRepeatI++) {{
+{repeat_clone_bindings}
+                            const coderpuzzleRepeatStarted = coderpuzzleMark();
+                            coderpuzzleRepeatSink = {method}({repeat_arguments});
+                            coderpuzzleAdd(coderpuzzleRepeatStarted);
+                        }}
+                    }}
                     const coderpuzzleEncoded = coderpuzzleSerialize(coderpuzzleActual);
                     if (typeof coderpuzzleEncoded !== "string") throw new Error("Return value is not JSON serializable");
                     coderpuzzleEmit(`__CODERPUZZLE_RESULT__{{"status":"completed","actual":${{coderpuzzleEncoded}},"algorithm_us":${{coderpuzzleAlgorithmUs()}}}}`);
@@ -1031,8 +1064,10 @@ class JavaScriptExecutor(CompiledExecutor):
     def encode_case(self, invocation: dict[str, Any], case_input: Any) -> bytes:
         if invocation.get("type") == "interactive":
             from .typed import encode_interactive_case
+
             return encode_interactive_case(invocation, case_input)
         if invocation.get("type") == "design":
             from .design_interactive import encode_design_case
+
             return encode_design_case(invocation, case_input)
         return encode_case(invocation, case_input, self.language)

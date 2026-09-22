@@ -42,10 +42,20 @@ RESOURCES: ResourceManager | None = None
 def _audit(event: str, **fields: Any) -> None:
     """Opt-in operator timing log; never include source, inputs or outputs."""
     if os.environ.get("CODERPUZZLE_RESOURCE_AUDIT") == "1":
-        print("__RESOURCE_AUDIT__" + json.dumps({
-            "event": event, "monotonic_ns": time.monotonic_ns(),
-            "slot": os.environ.get("CODERPUZZLE_SLOT_ID", "default"), **fields,
-        }, separators=(",", ":")), file=sys.stderr, flush=True)
+        print(
+            "__RESOURCE_AUDIT__"
+            + json.dumps(
+                {
+                    "event": event,
+                    "monotonic_ns": time.monotonic_ns(),
+                    "slot": os.environ.get("CODERPUZZLE_SLOT_ID", "default"),
+                    **fields,
+                },
+                separators=(",", ":"),
+            ),
+            file=sys.stderr,
+            flush=True,
+        )
 
 
 def _sandboxed_runtime_command(
@@ -107,9 +117,7 @@ def _kill_lingering_children() -> None:
             continue
 
 
-def _effective_memory_mb(
-    limits: dict[str, Any], executor: LanguageExecutor
-) -> int:
+def _effective_memory_mb(limits: dict[str, Any], executor: LanguageExecutor) -> int:
     """Return the runtime's virtual-address allowance.
 
     Managed runtimes reserve address space for the VM in addition to the
@@ -173,8 +181,10 @@ def _run_case(
     else:
         payload = executor.encode_case(invocation, case_input)
 
-    with tempfile.TemporaryFile(mode="w+b", dir="/tmp") as output_file, \
-            tempfile.TemporaryFile(mode="w+b", dir="/tmp") as protocol_file:
+    with (
+        tempfile.TemporaryFile(mode="w+b", dir="/tmp") as output_file,
+        tempfile.TemporaryFile(mode="w+b", dir="/tmp") as protocol_file,
+    ):
         channel = os.dup2(protocol_file.fileno(), PROTOCOL_FD)
         group = None
         process = None
@@ -188,12 +198,30 @@ def _run_case(
             environment.pop("CODERPUZZLE_RUN_CGROUP", None)
             if group:
                 environment["CODERPUZZLE_RUN_CGROUP"] = str(group.path)
+            # Repeat the timed call this many times and sum, for a pair
+            # calibrated below the scoring floor (api/app/main.py's
+            # CODERPUZZLE_ALGORITHM_FLOOR_US) whose problem-stated bound is
+            # too small to lift by scaling input size instead. Default 1 —
+            # every pair calibrated before this field existed, and every
+            # non-function kind, judges exactly as before. Env var rather
+            # than a compile-time constant: a per-job value flows uniformly
+            # through this one dict for every language without touching
+            # any executor's wire format or PreparedProgram's once-per-job
+            # contract, and a runtime-unknown loop bound is harder for an
+            # optimizing compiler to fully unroll away than a literal would
+            # be (see docs/api-and-cli.md — the barrier itself still has to
+            # exist per compiled language; this alone isn't the mitigation).
+            environment["CODERPUZZLE_REPEAT"] = str(max(1, int(limits.get("algorithm_repeat_count", 1))))
             started = time.monotonic()
             process = subprocess.Popen(
                 _sandboxed_runtime_command(program.command, effective_limits, output_limit),
-                cwd=scratch, stdin=subprocess.PIPE, stdout=output_file,
-                stderr=subprocess.STDOUT, env=environment,
-                start_new_session=True, pass_fds=(channel,),
+                cwd=scratch,
+                stdin=subprocess.PIPE,
+                stdout=output_file,
+                stderr=subprocess.STDOUT,
+                env=environment,
+                start_new_session=True,
+                pass_fds=(channel,),
             )
             pending_input = payload
             while True:
@@ -245,22 +273,27 @@ def _run_case(
         elif process.returncode == 126 and group:
             parsed = {"status": "system_error", "error": "Runtime launcher failed"}
         elif process.returncode != 0 and parsed["status"] == "completed":
-            parsed = {"status": "runtime_error", "error": f"{executor.language} exited with status {process.returncode}"}
+            parsed = {
+                "status": "runtime_error",
+                "error": f"{executor.language} exited with status {process.returncode}",
+            }
         # These values come only from the supervisor, never from harness output.
         for key in ("cpu_time_ms", "memory_peak_bytes", "cpu_throttled_ms", "timeout_reason"):
             if key != "timeout_reason" or not timeout_reason:
                 parsed.pop(key, None)
         parsed.update(measurements)
-        parsed.update({
-            "runtime_ms": measurements["cpu_time_ms"] if group else wall_ms,
-            "wall_time_ms": wall_ms,
-            "timeout_ms": budget.wall_ms if limits.get("threads") or not group else budget.cpu_ms,
-            "limit_mode": "wall" if limits.get("threads") or not group else "cpu",
-            "cpu_limit_ms": budget.cpu_ms,
-            "wall_limit_ms": budget.wall_ms,
-            "timing_mode": "cpu" if group else "wall",
-            "resource_profile": manager.profile,
-        })
+        parsed.update(
+            {
+                "runtime_ms": measurements["cpu_time_ms"] if group else wall_ms,
+                "wall_time_ms": wall_ms,
+                "timeout_ms": budget.wall_ms if limits.get("threads") or not group else budget.cpu_ms,
+                "limit_mode": "wall" if limits.get("threads") or not group else "cpu",
+                "cpu_limit_ms": budget.cpu_ms,
+                "wall_limit_ms": budget.wall_ms,
+                "timing_mode": "cpu" if group else "wall",
+                "resource_profile": manager.profile,
+            }
+        )
         # algorithm_us is the first harness-supplied timing field. fd 63 is
         # submission-writable, so accept it only inside physical bounds the
         # supervisor already measured. A forged small value stays undetectable
@@ -344,14 +377,16 @@ def _process_job(job_dir: Path) -> None:
         code = request.get("code")
         if not isinstance(code, str) or not code or len(code) > 100_000:
             raise ValueError("Invalid source code")
-        _audit("job_start", job_id=job_dir.name, language=executor.language,
-               source_sha256=hashlib.sha256(code.encode()).hexdigest(),
-               enqueued_at_ns=request.get("enqueued_at_ns"),
-               execution_cpus=RESOURCES.cpus if RESOURCES else "")
-
-        job_root = Path(
-            tempfile.mkdtemp(prefix=f"coderpuzzle-{request['job_id'][:12]}-", dir=WORK_DIR)
+        _audit(
+            "job_start",
+            job_id=job_dir.name,
+            language=executor.language,
+            source_sha256=hashlib.sha256(code.encode()).hexdigest(),
+            enqueued_at_ns=request.get("enqueued_at_ns"),
+            execution_cpus=RESOURCES.cpus if RESOURCES else "",
         )
+
+        job_root = Path(tempfile.mkdtemp(prefix=f"coderpuzzle-{request['job_id'][:12]}-", dir=WORK_DIR))
         try:
             compile_started = time.monotonic()
             try:
@@ -386,11 +421,24 @@ def _process_job(job_dir: Path) -> None:
                     program,
                 )
                 results.append(result)
-                _audit("case_end", job_id=job_dir.name, case=case_index,
-                       status=result["status"], **{key: result[key] for key in
-                           ("cpu_time_ms", "wall_time_ms", "cpu_throttled_ms",
-                            "memory_peak_bytes", "algorithm_us", "load_us")
-                           if key in result})
+                _audit(
+                    "case_end",
+                    job_id=job_dir.name,
+                    case=case_index,
+                    status=result["status"],
+                    **{
+                        key: result[key]
+                        for key in (
+                            "cpu_time_ms",
+                            "wall_time_ms",
+                            "cpu_throttled_ms",
+                            "memory_peak_bytes",
+                            "algorithm_us",
+                            "load_us",
+                        )
+                        if key in result
+                    },
+                )
                 scratch = job_root / "scratch"
                 try:
                     os.chown(scratch, os.getuid(), os.getgid())
@@ -405,7 +453,7 @@ def _process_job(job_dir: Path) -> None:
                             "error": "Not run after the preceding testcase stopped execution",
                             "runtime_ms": 0,
                         }
-                        for _ in request_cases[case_index + 1:]
+                        for _ in request_cases[case_index + 1 :]
                     )
                     break
         finally:
@@ -418,10 +466,7 @@ def _process_job(job_dir: Path) -> None:
         response = {
             "version": 2,
             "job_id": request.get("job_id", job_dir.name),
-            "results": [
-                {"status": "compile_error", "error": str(error), "runtime_ms": 0}
-                for _ in range(case_count)
-            ],
+            "results": [{"status": "compile_error", "error": str(error), "runtime_ms": 0} for _ in range(case_count)],
         }
     except Exception as error:
         case_count = max(1, len(request.get("cases", [])))
@@ -437,10 +482,14 @@ def _process_job(job_dir: Path) -> None:
 
     response["queue_ms"] = max(0, (claimed_at - request.get("enqueued_at_ns", claimed_at)) // 1_000_000)
     response["compile_ms"] = compile_ms
-    _audit("job_end", job_id=job_dir.name, queue_ms=response["queue_ms"],
-           compile_ms=compile_ms,
-           wall_time_ms=sum(r.get("wall_time_ms", 0) for r in response["results"]),
-           cpu_time_ms=sum(r.get("cpu_time_ms", 0) for r in response["results"]))
+    _audit(
+        "job_end",
+        job_id=job_dir.name,
+        queue_ms=response["queue_ms"],
+        compile_ms=compile_ms,
+        wall_time_ms=sum(r.get("wall_time_ms", 0) for r in response["results"]),
+        cpu_time_ms=sum(r.get("cpu_time_ms", 0) for r in response["results"]),
+    )
     _write_response(job_dir, response)
 
 
@@ -530,7 +579,8 @@ def _trim_go_cache() -> None:
         print(
             f"CoderPuzzle go cache at {remaining} bytes could not be trimmed "
             "(CAP_FOWNER missing?); /tmp will fill and every language will fail",
-            file=sys.stderr, flush=True,
+            file=sys.stderr,
+            flush=True,
         )
         return
     try:
@@ -584,9 +634,7 @@ def _hygiene() -> None:
             _trim_go_cache()
 
 
-def _run_prewarm_command(
-    command: tuple[str, ...], environment: dict[str, str], cwd: Path
-) -> None:
+def _run_prewarm_command(command: tuple[str, ...], environment: dict[str, str], cwd: Path) -> None:
     """Run one warm-up command, aborting promptly when a job is queued."""
     process = subprocess.Popen(
         command,
@@ -628,19 +676,34 @@ def _prewarm_toolchains_once() -> None:
         jobs = []
         rust_source = warm_dir / "warm.rs"
         rust_source.write_text("fn main() {}\n", encoding="utf-8")
-        jobs.append((
-            ("/usr/bin/rustc", "--edition=2021", "-C", "opt-level=2", "-C", "debuginfo=0",
-             "-C", "strip=symbols", "-o", str(warm_dir / "warm-rust"), str(rust_source)),
-            environment,
-            None,
-        ))
+        jobs.append(
+            (
+                (
+                    "/usr/bin/rustc",
+                    "--edition=2021",
+                    "-C",
+                    "opt-level=2",
+                    "-C",
+                    "debuginfo=0",
+                    "-C",
+                    "strip=symbols",
+                    "-o",
+                    str(warm_dir / "warm-rust"),
+                    str(rust_source),
+                ),
+                environment,
+                None,
+            )
+        )
         cpp_source = warm_dir / "warm.cpp"
         cpp_source.write_text("int main() { return 0; }\n", encoding="utf-8")
-        jobs.append((
-            ("/usr/bin/g++", "-std=c++20", "-O2", "-pipe", "-o", str(warm_dir / "warm-cpp"), str(cpp_source)),
-            environment,
-            None,
-        ))
+        jobs.append(
+            (
+                ("/usr/bin/g++", "-std=c++20", "-O2", "-pipe", "-o", str(warm_dir / "warm-cpp"), str(cpp_source)),
+                environment,
+                None,
+            )
+        )
         go_dir = warm_dir / "go"
         go_dir.mkdir(exist_ok=True)
         (go_dir / "go.mod").write_text("module warm\n\ngo 1.24\n", encoding="utf-8")
@@ -650,9 +713,20 @@ def _prewarm_toolchains_once() -> None:
         # blank imports pull their archives into the shared GOCACHE without
         # needing symbols. An empty main only warms the runtime chain.
         go_warm_imports = WRAPPER_IMPORTS + (
-            "sort", "container/heap", "container/list", "strconv", "strings",
-            "math/bits", "math/big", "bufio", "bytes", "errors",
-            "unicode", "unicode/utf8", "time", "cmp",
+            "sort",
+            "container/heap",
+            "container/list",
+            "strconv",
+            "strings",
+            "math/bits",
+            "math/big",
+            "bufio",
+            "bytes",
+            "errors",
+            "unicode",
+            "unicode/utf8",
+            "time",
+            "cmp",
         )
         (go_dir / "main.go").write_text(
             "package main\n\n"
@@ -672,27 +746,60 @@ def _prewarm_toolchains_once() -> None:
         except OSError as error:
             print(f"CoderPuzzle go pre-warm skipped: {error}", file=sys.stderr, flush=True)
         else:
-            jobs.append((
-                (SUPERVISOR_PYTHON, "/runner/compiler_sandbox.py", "2048", "64", "240",
-                 "/usr/bin/go", "build", "-trimpath", "-o", str(warm_dir / "warm-go-bin"), str(go_dir / "main.go")),
-                {**environment, "GOCACHE": str(GO_CACHE), "GOENV": "off", "GOPROXY": "off", "CGO_ENABLED": "0", "GOMAXPROCS": "1"},
-                None,
-            ))
+            jobs.append(
+                (
+                    (
+                        SUPERVISOR_PYTHON,
+                        "/runner/compiler_sandbox.py",
+                        "2048",
+                        "64",
+                        "240",
+                        "/usr/bin/go",
+                        "build",
+                        "-trimpath",
+                        "-o",
+                        str(warm_dir / "warm-go-bin"),
+                        str(go_dir / "main.go"),
+                    ),
+                    {
+                        **environment,
+                        "GOCACHE": str(GO_CACHE),
+                        "GOENV": "off",
+                        "GOPROXY": "off",
+                        "CGO_ENABLED": "0",
+                        "GOMAXPROCS": "1",
+                    },
+                    None,
+                )
+            )
         java_source = warm_dir / "Warm.java"
         java_source.write_text("class Warm {}\n", encoding="utf-8")
-        jobs.append((
-            ("/usr/bin/javac", "-proc:none", "-g:none", "-d", str(warm_dir), str(java_source)),
-            environment,
-            None,
-        ))
+        jobs.append(
+            (
+                ("/usr/bin/javac", "-proc:none", "-g:none", "-d", str(warm_dir), str(java_source)),
+                environment,
+                None,
+            )
+        )
         ts_source = warm_dir / "warm.ts"
         ts_source.write_text("const value: number = 1;\nconsole.log(value);\n", encoding="utf-8")
-        jobs.append((
-            ("/usr/local/bin/tsc", "--target", "ES2022", "--module", "commonjs",
-             "--skipLibCheck", "--outDir", str(warm_dir / "ts"), str(ts_source)),
-            environment,
-            None,
-        ))
+        jobs.append(
+            (
+                (
+                    "/usr/local/bin/tsc",
+                    "--target",
+                    "ES2022",
+                    "--module",
+                    "commonjs",
+                    "--skipLibCheck",
+                    "--outDir",
+                    str(warm_dir / "ts"),
+                    str(ts_source),
+                ),
+                environment,
+                None,
+            )
+        )
         for command, job_environment, _preexec in jobs:
             if _prewarm_cancel.is_set():
                 break

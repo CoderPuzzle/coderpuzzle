@@ -87,6 +87,19 @@ def per_case_timeout_ms(calibrated: dict[str, Any]) -> int:
     slowest_case_algorithm_us in calibrate.py (mirroring slowest_case_ms)
     and fold it in with max(), then a full re-sweep of both trees publishes
     it — see docs/api-and-cli.md.
+
+    No change needed here for a repeated reference (calibrate.py's below-
+    floor pairs sum algorithm_us over algorithm_repeat_count calls, not
+    just one): this still divides by case_count alone, never
+    case_count * N, so average_algorithm_ms scales up by N right along
+    with reference_algorithm_us — and the wall-time side scales the same
+    way, since the harness now spends N times longer per case too. The one
+    invariant this formula depends on, silently: reference_algorithm_us
+    and a submission's own algorithm_us must be measured under the same N,
+    or the ratio (and this deadline) stop meaning anything. That's
+    guaranteed structurally today, not by anything in this function — see
+    _run_judge in main.py, the one place both calibration and live
+    judging read algorithm_repeat_count from.
     """
     slowest = calibrated.get("slowest_case_ms")
     slowest = slowest if isinstance(slowest, (int, float)) and slowest > 0 else 0

@@ -336,7 +336,18 @@ def _run_judge(
         raise HTTPException(status_code=503, detail="Calibration is missing for this problem and language")
     if calibrated:
         per_case_timeout = per_case_timeout_ms(calibrated)
-        problem_data = {**problem_data, "limits": {**problem_data["limits"], "time_ms": per_case_timeout}}
+        # A submission replays the same repeat count the reference was
+        # measured under (default 1, i.e. no repeat, for every pair
+        # calibrated before this field existed) -- the ratio only means
+        # something when both sides of it were timed the same way.
+        problem_data = {
+            **problem_data,
+            "limits": {
+                **problem_data["limits"],
+                "time_ms": per_case_timeout,
+                "algorithm_repeat_count": calibrated.get("algorithm_repeat_count", 1),
+            },
+        }
     # A generated corpus can hold tens of thousands of cases, and every case
     # costs a sandboxed process; judge a bounded, deterministic subset that
     # keeps the statement's examples and the corpus's extremes.

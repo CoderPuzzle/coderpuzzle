@@ -306,3 +306,79 @@ class JobBudgetPlumbingTests(unittest.TestCase):
         with patch.object(judge, "_submit", fake_submit):
             judge.execute("", "python3", {"parameters": []}, {"time_ms": 1000}, [], 0, calibrated=record)
         self.assertEqual(record, seen["calibrated"])
+
+
+class AlgorithmRepeatPlumbingTests(unittest.TestCase):
+    """A submission has to replay the same repeat count its pair's
+    reference was calibrated under, or the ratio (and the deadline) stop
+    meaning anything — see judge.per_case_timeout_ms's docstring."""
+
+    PROBLEM = {
+        "slug": "sample",
+        "languages": {"python3": {}},
+        "invocation": {"type": "function"},
+        "limits": {"time_ms": 1500},
+    }
+
+    def _run_judge_limits(self, calibrated_record):
+        seen = {}
+
+        def lookup(slug, language):
+            return calibrated_record
+
+        def fake_execute(code, language, invocation, limits, *args, **kwargs):
+            seen["limits"] = limits
+            return []
+
+        with (
+            patch.object(main.calibration, "enforce", lambda: None),
+            patch.object(main.calibration, "REQUIRED", False),
+            patch.object(main.calibration, "lookup", lookup),
+            patch.object(main, "_validate_language", lambda *a: None),
+            patch.object(main, "_assembly_sources", lambda *a: {}),
+            patch.object(main, "judge_slot", nullcontext),
+            patch.object(main, "execute", fake_execute),
+        ):
+            main._run_judge(self.PROBLEM, "python3", "", [], 0, Path("."))
+        return seen["limits"]
+
+    def test_a_repeat_count_reaches_the_runner(self):
+        record = {
+            "reference_walltime_ms": 426,
+            "timeout_ms": 4260,
+            "case_count": 203,
+            "slowest_case_ms": 264,
+            "algorithm_repeat_count": 50,
+        }
+        self.assertEqual(50, self._run_judge_limits(record)["algorithm_repeat_count"])
+
+    def test_an_uncalibrated_pair_gets_no_repeat_at_all(self):
+        # No calibration record -> the `if calibrated:` branch never fires
+        # -> limits pass through untouched, so a pair the sweep hasn't
+        # reached yet never repeats anything.
+        with (
+            patch.object(main.calibration, "enforce", lambda: None),
+            patch.object(main.calibration, "REQUIRED", False),
+            patch.object(main.calibration, "lookup", lambda slug, language: None),
+            patch.object(main, "_validate_language", lambda *a: None),
+            patch.object(main, "_assembly_sources", lambda *a: {}),
+            patch.object(main, "judge_slot", nullcontext),
+        ):
+            seen = {}
+
+            def fake_execute(code, language, invocation, limits, *args, **kwargs):
+                seen["limits"] = limits
+                return []
+
+            with patch.object(main, "execute", fake_execute):
+                main._run_judge(self.PROBLEM, "python3", "", [], 0, Path("."))
+        self.assertNotIn("algorithm_repeat_count", seen["limits"])
+
+    def test_a_pair_calibrated_before_the_field_existed_defaults_to_one(self):
+        # A record with no algorithm_repeat_count at all (every pair
+        # measured before this feature existed) must still explicitly
+        # carry 1 once calibrated, not omit the key -- the runner's
+        # default only covers a MISSING key, and here the branch that
+        # sets it always fires once a record exists at all.
+        record = {"reference_walltime_ms": 426, "timeout_ms": 4260, "case_count": 203, "slowest_case_ms": 264}
+        self.assertEqual(1, self._run_judge_limits(record)["algorithm_repeat_count"])

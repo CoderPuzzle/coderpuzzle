@@ -10,6 +10,7 @@ Two defects found after the 2026-09-14 production run:
   though every one of them is retried, so combinations that had since
   passed would still be published as failures.
 """
+
 import json
 import tempfile
 import unittest
@@ -40,9 +41,11 @@ class HardwareIdentityTests(unittest.TestCase):
 
     def test_different_hardware_is_rejected(self):
         current = calibrate.hardware_snapshot()
-        for key, value in (("cpu_model", "Some Other CPU"),
-                           ("logical_cpus", (current["logical_cpus"] or 0) + 4),
-                           ("memory_total_kib", 123456)):
+        for key, value in (
+            ("cpu_model", "Some Other CPU"),
+            ("logical_cpus", (current["logical_cpus"] or 0) + 4),
+            ("memory_total_kib", 123456),
+        ):
             with self.subTest(key=key):
                 stored = dict(current)
                 stored[key] = value
@@ -84,31 +87,50 @@ class ResumeTests(unittest.TestCase):
         hardware = dict(calibrate.hardware_snapshot())
         hardware["hostname"] = hostname
         hardware["fingerprint"] = "written-by-an-older-build"
-        calibrate.PROGRESS_FILE.write_text(json.dumps({
-            "schema_version": 1,
-            "hardware": hardware,
-            "scored_quantity": "algorithm",
-            # demo-1 already measured; demo-2 failed last time and must be retried.
-            "records": [{"slug": "demo-1", "language": "python3",
-                         "reference_walltime_ms": 7, "timeout_ms": 70, "case_count": 1,
-                         "reference_algorithm_us": 900}],
-            "failures": [{"slug": "demo-2", "language": "python3",
-                          "kind": "reference_verdict", "statuses": ["compile_error"],
-                          "failed_cases": [0]}],
-        }), encoding="utf-8")
+        calibrate.PROGRESS_FILE.write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "hardware": hardware,
+                    "scored_quantity": "algorithm",
+                    # demo-1 already measured; demo-2 failed last time and must be retried.
+                    "records": [
+                        {
+                            "slug": "demo-1",
+                            "language": "python3",
+                            "reference_walltime_ms": 7,
+                            "timeout_ms": 70,
+                            "case_count": 1,
+                            "reference_algorithm_us": 900,
+                        }
+                    ],
+                    "failures": [
+                        {
+                            "slug": "demo-2",
+                            "language": "python3",
+                            "kind": "reference_verdict",
+                            "statuses": ["compile_error"],
+                            "failed_cases": [0],
+                        }
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
 
     def _run(self, argv):
         judged = []
         self.respect_flags = []
 
-        def judge(problem, language, reference, cases, public_count, bundle,
-                  respect_calibration=True):
+        def judge(problem, language, reference, cases, public_count, bundle, respect_calibration=True):
             judged.append(problem["slug"])
             self.respect_flags.append(respect_calibration)
             return [{"index": 0, "status": "accepted", "wall_time_ms": 5, "runtime_ms": 5}]
 
-        with mock.patch.object(calibrate, "_run_judge", side_effect=judge), \
-                mock.patch("sys.argv", ["app.calibrate", *argv]):
+        with (
+            mock.patch.object(calibrate, "_run_judge", side_effect=judge),
+            mock.patch("sys.argv", ["app.calibrate", *argv]),
+        ):
             code = calibrate.main()
         return code, judged
 
@@ -132,10 +154,8 @@ class ResumeTests(unittest.TestCase):
         code, _ = self._run(["--force"])
         self.assertEqual(code, 0)
         published = json.loads(calibration.CALIBRATION_FILE.read_text(encoding="utf-8"))
-        self.assertEqual(published["failures"], [],
-                         "demo-2 passed on retry, so it must not remain a failure")
-        self.assertEqual({row["slug"] for row in published["records"]},
-                         {"demo-1", "demo-2", "demo-3"})
+        self.assertEqual(published["failures"], [], "demo-2 passed on retry, so it must not remain a failure")
+        self.assertEqual({row["slug"] for row in published["records"]}, {"demo-1", "demo-2", "demo-3"})
 
     def test_hidden_cases_count_towards_the_measurement(self):
         """A record must describe every case the reference ran.
@@ -179,14 +199,15 @@ class ResumeTests(unittest.TestCase):
         and an unmeasured pair is a pair that cannot be judged at all."""
         seen = []
 
-        def judge(problem, language, reference, cases, public_count, bundle,
-                  respect_calibration=True):
+        def judge(problem, language, reference, cases, public_count, bundle, respect_calibration=True):
             seen.append(problem["limits"]["time_ms"])
             return [{"index": 0, "status": "accepted", "wall_time_ms": 5, "runtime_ms": 5}]
 
         self._write_checkpoint(hostname="a-previous-container")
-        with mock.patch.object(calibrate, "_run_judge", side_effect=judge), \
-                mock.patch("sys.argv", ["app.calibrate", "--force"]):
+        with (
+            mock.patch.object(calibrate, "_run_judge", side_effect=judge),
+            mock.patch("sys.argv", ["app.calibrate", "--force"]),
+        ):
             calibrate.main()
         self.assertTrue(seen)
         self.assertEqual([calibrate._measurement_time_ms(1500)] * len(seen), seen)
@@ -294,25 +315,35 @@ class HardwareProvenanceTests(unittest.TestCase):
 
     def test_the_instance_type_is_recorded(self):
         class Response:
-            def __init__(self, body): self.body = body
-            def read(self): return self.body
-            def __enter__(self): return self
-            def __exit__(self, *a): return False
+            def __init__(self, body):
+                self.body = body
 
-        answers = {"machine-type": b"projects/1008374281469/machineTypes/c4d-highcpu-4",
-                   "zone": b"projects/1008374281469/zones/us-east4-a",
-                   "name": b"katze"}
+            def read(self):
+                return self.body
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+        answers = {
+            "machine-type": b"projects/1008374281469/machineTypes/c4d-highcpu-4",
+            "zone": b"projects/1008374281469/zones/us-east4-a",
+            "name": b"katze",
+        }
+
         def fake_urlopen(request, timeout=None):
             return Response(answers[request.full_url.rsplit("/", 1)[-1]])
 
         with mock.patch.object(calibrate.urllib.request, "urlopen", fake_urlopen):
             self.assertEqual(
                 {"machine_type": "c4d-highcpu-4", "zone": "us-east4-a", "instance_name": "katze"},
-                calibrate._cloud_instance())
+                calibrate._cloud_instance(),
+            )
 
     def test_off_cloud_it_records_nothing_rather_than_guessing(self):
-        with mock.patch.object(calibrate.urllib.request, "urlopen",
-                               side_effect=OSError("no metadata server")):
+        with mock.patch.object(calibrate.urllib.request, "urlopen", side_effect=OSError("no metadata server")):
             self.assertEqual({}, calibrate._cloud_instance())
 
     def test_the_fingerprint_ignores_provenance(self):
@@ -321,3 +352,129 @@ class HardwareProvenanceTests(unittest.TestCase):
         for key in ("machine_type", "zone", "instance_name", "physical_cores"):
             self.assertNotIn(key, calibrate.IDENTITY_KEYS)
 
+
+class RepeatEligibilityTests(unittest.TestCase):
+    """A repeat call needs a pristine copy of every argument a solution
+    might mutate; a pointer-linked wire type (a list, a tree, a graph)
+    can't get one from a shallow copy, so those parameters stay ineligible
+    regardless of kind."""
+
+    def _problem(self, param_kind, items_kind=None):
+        value_type = {"kind": param_kind}
+        if items_kind:
+            value_type = {"kind": param_kind, "items": {"kind": items_kind}}
+        return {"invocation": {"type": "function",
+                               "parameters": [{"name": "x", "value_type": value_type}]}}
+
+    def test_plain_value_kinds_are_eligible(self):
+        for kind in ("integer", "string", "array", "boolean"):
+            with self.subTest(kind=kind):
+                self.assertTrue(calibrate._repeat_eligible(self._problem(kind)))
+
+    def test_pointer_linked_kinds_are_not_eligible(self):
+        for kind in sorted(calibrate.ALGORITHM_REPEAT_UNSAFE_PARAMETER_KINDS):
+            with self.subTest(kind=kind):
+                self.assertFalse(calibrate._repeat_eligible(self._problem(kind)))
+
+    def test_an_array_of_a_pointer_linked_kind_is_not_eligible(self):
+        # e.g. a List[TreeNode] parameter -- the unsafe kind sits in items,
+        # not at the top level.
+        self.assertFalse(calibrate._repeat_eligible(self._problem("array", "binary_tree")))
+
+    def test_non_function_kinds_are_never_eligible_regardless_of_parameters(self):
+        problem = self._problem("integer")
+        problem["invocation"]["type"] = "design"
+        self.assertFalse(calibrate._repeat_eligible(problem))
+
+
+class RepeatCountDiscoveryTests(unittest.TestCase):
+    """A below-floor function-kind pair gets its reference re-measured at
+    an increasing repeat count until the total clears the target (see
+    docs/api-and-cli.md "Algorithm repeat count"), and the settled N is
+    what gets published, not just the algorithm total."""
+
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.addCleanup(setattr, calibrate.judge, "RUNNER_TIMEOUT", calibrate.judge.RUNNER_TIMEOUT)
+        root = Path(self.temporary.name)
+        self.problems_dir = (root / "problems").resolve()
+        self.problems_dir.mkdir()
+        _bundle(self.problems_dir, 1)
+        self.calibration_dir = (root / "calibration").resolve()
+        self.calibration_dir.mkdir()
+        original = problems.PROBLEMS_DIR
+        self.addCleanup(setattr, problems, "PROBLEMS_DIR", original)
+        problems.PROBLEMS_DIR = self.problems_dir
+        for module, name, value in (
+            (calibration, "CALIBRATION_DIR", self.calibration_dir),
+            (calibration, "CALIBRATION_FILE", self.calibration_dir / "calibration.json"),
+            (calibrate, "PROGRESS_FILE", self.calibration_dir / "calibration-progress.json"),
+        ):
+            self.addCleanup(setattr, module, name, getattr(module, name))
+            setattr(module, name, value)
+
+    def _run_with_fake(self, judge_fn):
+        with (
+            mock.patch.object(calibrate, "_run_judge", side_effect=judge_fn),
+            mock.patch("sys.argv", ["app.calibrate", "--force"]),
+        ):
+            code = calibrate.main()
+        published = json.loads(calibration.CALIBRATION_FILE.read_text(encoding="utf-8"))
+        return code, {row["slug"]: row for row in published["records"]}
+
+    def test_a_below_floor_pair_is_remeasured_at_a_larger_repeat_count(self):
+        calls = []
+
+        def judge(problem, language, reference, cases, public_count, bundle, respect_calibration=True):
+            n = problem["limits"].get("algorithm_repeat_count", 1)
+            calls.append(n)
+            # 40us/call: exactly enough at n=50 to land right on the 2000us
+            # target, so this settles in a single retry round.
+            return [{"index": 0, "status": "accepted", "wall_time_ms": 5, "runtime_ms": 5, "algorithm_us": 40 * n}]
+
+        code, published = self._run_with_fake(judge)
+        self.assertEqual(0, code)
+        self.assertEqual([1, 50], calls, "one N=1 probe, one retry at the estimated N")
+        record = published["demo-1"]
+        self.assertEqual(50, record["algorithm_repeat_count"])
+        self.assertEqual(2000, record["reference_algorithm_us"])
+
+    def test_a_pair_already_above_target_is_never_retried(self):
+        calls = []
+
+        def judge(problem, language, reference, cases, public_count, bundle, respect_calibration=True):
+            calls.append(problem["limits"].get("algorithm_repeat_count", 1))
+            return [{"index": 0, "status": "accepted", "wall_time_ms": 5, "runtime_ms": 5, "algorithm_us": 5000}]
+
+        code, published = self._run_with_fake(judge)
+        self.assertEqual([1], calls)
+        self.assertNotIn("algorithm_repeat_count", published["demo-1"])
+
+    def test_the_repeat_count_never_exceeds_the_cap(self):
+        def judge(problem, language, reference, cases, public_count, bundle, respect_calibration=True):
+            n = problem["limits"].get("algorithm_repeat_count", 1)
+            # Pathologically sublinear: never remotely close to target no
+            # matter how far N is pushed, so the search must still stop.
+            return [
+                {"index": 0, "status": "accepted", "wall_time_ms": 5, "runtime_ms": 5, "algorithm_us": max(1, n // 100)}
+            ]
+
+        code, published = self._run_with_fake(judge)
+        record = published["demo-1"]
+        self.assertLessEqual(record.get("algorithm_repeat_count", 1), calibrate.ALGORITHM_REPEAT_CAP)
+
+    def test_non_function_kinds_are_never_retried(self):
+        bundle = self.problems_dir / "0001_demo-1"
+        problem_json = json.loads((bundle / "problem.json").read_text())
+        problem_json["invocation"]["type"] = "design"
+        (bundle / "problem.json").write_text(json.dumps(problem_json), encoding="utf-8")
+        calls = []
+
+        def judge(problem, language, reference, cases, public_count, bundle, respect_calibration=True):
+            calls.append(problem["limits"].get("algorithm_repeat_count", 1))
+            return [{"index": 0, "status": "accepted", "wall_time_ms": 5, "runtime_ms": 5, "algorithm_us": 1}]
+
+        code, published = self._run_with_fake(judge)
+        self.assertEqual([1], calls, "design kind must stay single-shot even when below floor")
+        self.assertNotIn("algorithm_repeat_count", published["demo-1"])

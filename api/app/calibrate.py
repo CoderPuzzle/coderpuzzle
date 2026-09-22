@@ -4,6 +4,7 @@ Run from the API image after the problems cache and runner are available:
 ``python -m app.calibrate``.  Use ``--recalibrate`` to replace an existing
 record atomically.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -58,8 +59,86 @@ MEASUREMENT_HEADROOM = max(1, int(os.environ.get("CODERPUZZLE_CALIBRATION_HEADRO
 # once java's 2.86x lands, and the runner then rejects the job outright as an
 # invalid budget rather than judging it, which reads as a system_error on
 # every case.
-MEASUREMENT_CEILING_MS = max(1, int(os.environ.get(
-    "CODERPUZZLE_CALIBRATION_CEILING_MS", str(judge.MAX_PER_CASE_TIMEOUT_MS))))
+MEASUREMENT_CEILING_MS = max(
+    1, int(os.environ.get("CODERPUZZLE_CALIBRATION_CEILING_MS", str(judge.MAX_PER_CASE_TIMEOUT_MS)))
+)
+
+# A pair whose reference algorithm finishes under the scoring floor
+# (api/app/main.py's CODERPUZZLE_ALGORITHM_FLOOR_US, 200us) never becomes
+# comparable by raising input size alone when the problem's own stated
+# bound is already small -- see docs/api-and-cli.md "Algorithm repeat
+# count". The sweep instead repeats the reference's timed call N times and
+# sums, discovered per (slug, language) rather than fixed per language: a
+# fixed count would either overshoot pairs already close to the floor
+# (every later submission pays the extra repeats forever, for nothing) or
+# undershoot the genuinely fastest ones. Target 10x the floor, not just
+# past it, for margin against the same measurement noise the floor itself
+# exists to guard against. The 1000 cap is corpus-derived (see the docs
+# section): it fully resolves 96.8% of below-floor pairs to target, and
+# because a pair needing a large N is by construction one with a tiny
+# per-call cost, the added latency any cap produces is self-limiting to
+# within ~2.2ms of the target regardless of the cap's exact size.
+ALGORITHM_TARGET_US = int(os.environ.get("CODERPUZZLE_ALGORITHM_TARGET_US", "2000"))
+ALGORITHM_REPEAT_CAP = max(1, int(os.environ.get("CODERPUZZLE_ALGORITHM_REPEAT_CAP", "1000")))
+# Only function-kind has algorithm_us instrumented in every language today
+# (design/interactive/concurrent have it in python and java only, and are
+# 0.25% of below-floor pairs corpus-wide) -- see the docs section.
+ALGORITHM_REPEAT_KINDS = {"function"}
+# A repeat call needs a pristine copy of every argument a solution might
+# mutate in place. For a plain value (an int, a vector, a string) that is a
+# cheap, generic copy in every language. For a wire type that decodes to a
+# heap-allocated, pointer-linked structure -- a linked list, a tree, a
+# graph -- a shallow copy of the pointer does not undo mutations a solution
+# made to the nodes themselves (reversing a list by rewiring ->next, for
+# one); a correct restore there needs a deep clone of the whole structure,
+# which the per-language repeat loops built so far do not attempt. Checked
+# against the corpus: only 8.8% of below-floor slugs (159 of 1,806) take a
+# parameter of one of these kinds, so this scope cut -- like the
+# function-only one above -- trades a small minority for a mechanism that
+# is unconditionally correct for the rest. Revisit alongside
+# design/interactive/concurrent, not before.
+ALGORITHM_REPEAT_UNSAFE_PARAMETER_KINDS = {
+    "linked_list",
+    "binary_tree",
+    "nary_tree",
+    "quad_tree",
+    "nested",
+    "next_tree",
+    "circular_list",
+    "multi_list",
+    "graph",
+    "random_list",
+    "doubly_list",
+    "doubly_list_node",
+    "nary_tree_nodes",
+    "special_tree",
+    "random_tree",
+    "alias_list",
+    "nary_tree_ref",
+    # A bundle-provided type (docs/CODECS.md's "struct" kind): Rust's repeat
+    # loop clones each argument before every call (needed for its by-value,
+    # ownership-moving call convention -- see runner/executors/rust.py), and
+    # a provided/rust/*.rs struct isn't guaranteed to derive Clone the way
+    # every built-in value type already does. Safer to exclude than to
+    # require every bundle author to remember an extra derive.
+    "struct",
+}
+
+
+def _repeat_eligible(problem: dict[str, object]) -> bool:
+    """Whether calibrate.py may try to lift this pair above the floor by
+    repeating its reference's timed call — see the two constants above."""
+    invocation = problem.get("invocation") or {}
+    if invocation.get("type", "function") not in ALGORITHM_REPEAT_KINDS:
+        return False
+    for parameter in invocation.get("parameters", []):
+        value_type = parameter.get("value_type") or {}
+        items = value_type.get("items") if isinstance(value_type.get("items"), dict) else {}
+        if value_type.get("kind") in ALGORITHM_REPEAT_UNSAFE_PARAMETER_KINDS:
+            return False
+        if items.get("kind") in ALGORITHM_REPEAT_UNSAFE_PARAMETER_KINDS:
+            return False
+    return True
 
 
 def _measurement_time_ms(nominal_ms: int) -> int:
@@ -88,11 +167,10 @@ def _cloud_instance() -> dict[str, str]:
     these keys rather than guessing.
     """
     found: dict[str, str] = {}
-    for key, path in (("machine_type", "machine-type"), ("zone", "zone"),
-                      ("instance_name", "name")):
+    for key, path in (("machine_type", "machine-type"), ("zone", "zone"), ("instance_name", "name")):
         request = urllib.request.Request(
-            "http://metadata.google.internal/computeMetadata/v1/instance/" + path,
-            headers={"Metadata-Flavor": "Google"})
+            "http://metadata.google.internal/computeMetadata/v1/instance/" + path, headers={"Metadata-Flavor": "Google"}
+        )
         try:
             with urllib.request.urlopen(request, timeout=2) as response:
                 value = response.read().decode("utf-8", "replace").strip()
@@ -121,10 +199,18 @@ def _cpu_topology(cpuinfo: str) -> dict[str, int]:
 
 def hardware_snapshot() -> dict[str, object]:
     cpuinfo = _read("/proc/cpuinfo") or ""
-    model = next((line.split(":", 1)[1].strip() for line in cpuinfo.splitlines()
-                  if line.lower().startswith("model name") or line.lower().startswith("hardware")), "unknown")
+    model = next(
+        (
+            line.split(":", 1)[1].strip()
+            for line in cpuinfo.splitlines()
+            if line.lower().startswith("model name") or line.lower().startswith("hardware")
+        ),
+        "unknown",
+    )
     meminfo = _read("/proc/meminfo") or ""
-    memory_kib = int(next((m.group(1) for m in (re.match(r"MemTotal:\s+(\d+)", line) for line in meminfo.splitlines()) if m), "0"))
+    memory_kib = int(
+        next((m.group(1) for m in (re.match(r"MemTotal:\s+(\d+)", line) for line in meminfo.splitlines()) if m), "0")
+    )
     cgroup = {}
     for name in ("cpuset.cpus.effective", "cpu.max", "memory.max", "memory.swap.max", "pids.max"):
         for root in ("/sys/fs/cgroup", "/sys/fs/cgroup/cpu"):
@@ -132,13 +218,20 @@ def hardware_snapshot() -> dict[str, object]:
             if value is not None:
                 cgroup[name] = value
                 break
-    snapshot = {"hostname": platform.node(), "platform": platform.platform(),
-                "cpu_model": model, "logical_cpus": os.cpu_count(),
-                "memory_total_kib": memory_kib, "cgroup": cgroup,
-                "container_user": os.getuid(),
-                **_cpu_topology(cpuinfo), **_cloud_instance()}
+    snapshot = {
+        "hostname": platform.node(),
+        "platform": platform.platform(),
+        "cpu_model": model,
+        "logical_cpus": os.cpu_count(),
+        "memory_total_kib": memory_kib,
+        "cgroup": cgroup,
+        "container_user": os.getuid(),
+        **_cpu_topology(cpuinfo),
+        **_cloud_instance(),
+    }
     snapshot["fingerprint"] = hashlib.sha256(
-        json.dumps({key: snapshot[key] for key in IDENTITY_KEYS}, sort_keys=True).encode()).hexdigest()
+        json.dumps({key: snapshot[key] for key in IDENTITY_KEYS}, sort_keys=True).encode()
+    ).hexdigest()
     return snapshot
 
 
@@ -148,8 +241,7 @@ def hardware_snapshot() -> dict[str, object]:
 # the resume check fail after any deploy and silently discard a checkpoint's
 # worth of good records (16,931 of them, ~20 h of measurement, after the
 # 2026-09-14 run). The hostname stays in the snapshot as a breadcrumb.
-IDENTITY_KEYS = ("cgroup", "container_user", "cpu_model", "logical_cpus",
-                 "memory_total_kib", "platform")
+IDENTITY_KEYS = ("cgroup", "container_user", "cpu_model", "logical_cpus", "memory_total_kib", "platform")
 
 
 def same_hardware(stored: dict[str, object] | None, current: dict[str, object]) -> bool:
@@ -163,7 +255,8 @@ def same_hardware(stored: dict[str, object] | None, current: dict[str, object]) 
     if stored.get("fingerprint") == current.get("fingerprint"):
         return True
     return all(stored.get(key) == current.get(key) for key in IDENTITY_KEYS) and all(
-        key in stored for key in IDENTITY_KEYS)
+        key in stored for key in IDENTITY_KEYS
+    )
 
 
 def _case_metric_ms(row: dict[str, object], keys: tuple[str, ...]) -> int:
@@ -223,6 +316,74 @@ def _pair_wait_seconds(case_count: int, per_case_seconds: float) -> float:
     return case_count * per_case_seconds * judge.JOB_HEADROOM + 10
 
 
+def _discover_repeat_count(
+    measured: dict[str, object],
+    language: str,
+    reference: str,
+    cases: list[dict[str, object]],
+    public_count: int,
+    bundle: Path,
+    results: list[dict[str, object]],
+    wall: int,
+    slowest: int,
+    algorithm: int,
+    observed_job_ms: int,
+) -> tuple[list[dict[str, object]], int, int, int, int, int]:
+    """Retry a below-floor pair's reference measurement at increasing
+    repeat counts until its algorithm total clears ALGORITHM_TARGET_US or
+    ALGORITHM_REPEAT_CAP is reached.
+
+    Bounded to a few rounds -- never an open-ended search -- since each
+    round re-runs the pair's whole selected case set. `wall`/`slowest` are
+    replaced by each successful round's own figures (not just `algorithm`):
+    the deadline built from this record has to reflect what a submission
+    replaying the same repeat count will actually cost, and that grows
+    with N on the wall-clock side too. `observed_job_ms` here is the same:
+    the record's own field, not the language-wide allowance (that one
+    deliberately stays seeded from this pair's first, unrepeated round --
+    see the caller). Falls back to whatever was last measured on any
+    failure mid-search, since a below-floor pair that can't be improved
+    further is still a perfectly valid pair to publish.
+    """
+    repeat_count = 1
+    for _ in range(4):
+        if algorithm >= ALGORITHM_TARGET_US or repeat_count >= ALGORITHM_REPEAT_CAP:
+            break
+        trial_n = min(ALGORITHM_REPEAT_CAP, max(repeat_count + 1, -(-ALGORITHM_TARGET_US // algorithm)))
+        if trial_n <= repeat_count:
+            break
+        retry_measured = {**measured, "limits": {**measured["limits"], "algorithm_repeat_count": trial_n}}
+        retry_started = time.monotonic()
+        try:
+            retry_results = _run_judge(
+                retry_measured, language, reference, cases, public_count, bundle, respect_calibration=False
+            )
+        except HostUnhealthy:
+            raise
+        except Exception:  # noqa: BLE001 -- keep the last good round, don't fail the pair
+            LOG.warning(
+                "repeat probe at N=%d failed for %s/%s; keeping N=%d",
+                trial_n,
+                measured.get("slug"),
+                language,
+                repeat_count,
+            )
+            break
+        if any(row.get("status") not in {"accepted", "completed"} for row in retry_results):
+            break
+        retry_wall = sum(_case_runtime_ms(row) for row in retry_results)
+        retry_algorithm = sum(_case_algorithm_us(row) for row in retry_results)
+        if retry_wall <= 0 or retry_algorithm <= 0:
+            break
+        results = retry_results
+        wall = retry_wall
+        slowest = max((_case_wall_ms(row) for row in retry_results), default=0)
+        algorithm = retry_algorithm
+        observed_job_ms = int((time.monotonic() - retry_started) * 1000)
+        repeat_count = trial_n
+    return results, wall, slowest, algorithm, repeat_count, observed_job_ms
+
+
 def _seeded_allowances() -> dict[str, float]:
     """Per-language per-case job cost read out of the published calibration.
 
@@ -243,11 +404,14 @@ def main() -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     parser = argparse.ArgumentParser(prog="python -m app.calibrate")
     parser.add_argument("--recalibrate", action="store_true", help="legacy alias for --force")
-    parser.add_argument("--force", action="store_true",
-                        help="run even when a calibration for this hardware already exists "
-                             "(still resumes from the checkpoint)")
-    parser.add_argument("--restart", action="store_true",
-                        help="discard the checkpoint and measure every combination again")
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="run even when a calibration for this hardware already exists (still resumes from the checkpoint)",
+    )
+    parser.add_argument(
+        "--restart", action="store_true", help="discard the checkpoint and measure every combination again"
+    )
     args = parser.parse_args()
     # Calibration is the bootstrap operation that creates the prerequisite.
     calibration.REQUIRED = False
@@ -277,8 +441,11 @@ def main() -> int:
         and not args.restart
     ):
         completed_keys = {(r["slug"], r["language"]) for r in progress.get("records", [])}
-        LOG.info("resuming checkpoint with %d completed records and %d failures to retry",
-                 len(completed_keys), len(progress.get("failures", [])))
+        LOG.info(
+            "resuming checkpoint with %d completed records and %d failures to retry",
+            len(completed_keys),
+            len(progress.get("failures", [])),
+        )
     elif progress and not args.restart:
         if progress.get("scored_quantity") != "algorithm":
             LOG.warning("checkpoint ignored: it was measured before algorithm timing")
@@ -288,20 +455,33 @@ def main() -> int:
     if previous and same_hardware(previous.get("hardware"), hardware) and not (args.force or args.recalibrate):
         LOG.info("calibration is current; hardware fingerprint %s unchanged, skipping", hardware["fingerprint"][:12])
         return 0
-    LOG.info("starting calibration on %s (%s), %s logical CPUs, %.1f GiB RAM, fingerprint %s",
-             hardware["cpu_model"], hardware["platform"], hardware["logical_cpus"],
-             int(hardware["memory_total_kib"]) / 1024 / 1024, hardware["fingerprint"][:12])
+    LOG.info(
+        "starting calibration on %s (%s), %s logical CPUs, %.1f GiB RAM, fingerprint %s",
+        hardware["cpu_model"],
+        hardware["platform"],
+        hardware["logical_cpus"],
+        int(hardware["memory_total_kib"]) / 1024 / 1024,
+        hardware["fingerprint"][:12],
+    )
     rows = list(progress.get("records", [])) if completed_keys else []
     # Deliberately NOT carried over: completed_keys holds only the successes,
     # so every previously failed combination is about to be measured again.
     # Keeping the old entries would publish failures for combinations that
     # have since passed, and double-count the ones that fail twice.
     failures: list[dict[str, object]] = []
+
     def checkpoint() -> None:
         calibration.CALIBRATION_DIR.mkdir(parents=True, exist_ok=True)
-        payload = json.dumps({"schema_version": 1, "hardware": hardware,
-            "scored_quantity": "algorithm",
-            "records": rows, "failures": failures}, sort_keys=True).encode()
+        payload = json.dumps(
+            {
+                "schema_version": 1,
+                "hardware": hardware,
+                "scored_quantity": "algorithm",
+                "records": rows,
+                "failures": failures,
+            },
+            sort_keys=True,
+        ).encode()
         fd, temp = tempfile.mkstemp(prefix="calibration-progress-", suffix=".json", dir=calibration.CALIBRATION_DIR)
         try:
             with os.fdopen(fd, "wb") as handle:
@@ -316,6 +496,7 @@ def main() -> int:
                 os.close(directory)
         finally:
             Path(temp).unlink(missing_ok=True)
+
     run_started = time.monotonic()
     # A ratio only means something when its two halves were timed the same
     # way, so the artifact records what this sweep measured under and the
@@ -363,31 +544,55 @@ def main() -> int:
                     continue
                 completed += 1
                 LOG.info("[%d/%d] calibrating %s/%s", completed, total, slug, language)
-                judge.RUNNER_TIMEOUT = max(base_timeout, _pair_wait_seconds(
-                    len(judge.select_cases(cases, public_count)),
-                    allowances.get(language, judge.PER_CASE_RUNNER_SECONDS)))
-                measured = {**problem, "limits": {
-                    **problem["limits"],
-                    "time_ms": _measurement_time_ms(int(problem["limits"]["time_ms"]))}}
+                judge.RUNNER_TIMEOUT = max(
+                    base_timeout,
+                    _pair_wait_seconds(
+                        len(judge.select_cases(cases, public_count)),
+                        allowances.get(language, judge.PER_CASE_RUNNER_SECONDS),
+                    ),
+                )
+                measured = {
+                    **problem,
+                    "limits": {**problem["limits"], "time_ms": _measurement_time_ms(int(problem["limits"]["time_ms"]))},
+                }
                 pair_started = time.monotonic()
                 try:
-                    results = _run_judge(measured, language, reference, cases, public_count, bundle,
-                                         respect_calibration=False)
+                    results = _run_judge(
+                        measured, language, reference, cases, public_count, bundle, respect_calibration=False
+                    )
                     failed_results = [row for row in results if row.get("status") not in {"accepted", "completed"}]
                     if failed_results:
                         statuses = sorted({row.get("status") for row in failed_results})
-                        LOG.error("[%d/%d] %s/%s reference failed (%s); continuing",
-                                  completed, total, slug, language, statuses)
-                        note_failure({"slug": slug, "language": language, "kind": "reference_verdict",
-                                      "statuses": statuses,
-                                      "failed_cases": [row.get("index") for row in failed_results]})
+                        LOG.error(
+                            "[%d/%d] %s/%s reference failed (%s); continuing",
+                            completed,
+                            total,
+                            slug,
+                            language,
+                            statuses,
+                        )
+                        note_failure(
+                            {
+                                "slug": slug,
+                                "language": language,
+                                "kind": "reference_verdict",
+                                "statuses": statuses,
+                                "failed_cases": [row.get("index") for row in failed_results],
+                            }
+                        )
                         continue
                 except HostUnhealthy:
                     raise
                 except Exception as error:  # noqa: BLE001 — preserve the full matrix
                     LOG.exception("[%d/%d] %s/%s calibration error; continuing", completed, total, slug, language)
-                    note_failure({"slug": slug, "language": language, "kind": "runner_error",
-                                  "error": f"{type(error).__name__}: {error}"})
+                    note_failure(
+                        {
+                            "slug": slug,
+                            "language": language,
+                            "kind": "runner_error",
+                            "error": f"{type(error).__name__}: {error}",
+                        }
+                    )
                     continue
                 # The slowest case is what the per-case deadline has to
                 # cover; the mean does not predict it (see judge.py).
@@ -399,39 +604,78 @@ def main() -> int:
                 observed_job_ms = int((time.monotonic() - pair_started) * 1000)
                 measured_modes.update(r.get("timing_mode", "wall") for r in results)
                 measured_profiles.update(r.get("resource_profile", "shared-wall-v1") for r in results)
-                allowances[language] = max(allowances.get(language, 0.0),
-                                           observed_job_ms / 1000 / max(1, len(results)))
+                allowances[language] = max(allowances.get(language, 0.0), observed_job_ms / 1000 / max(1, len(results)))
                 if wall <= 0:
                     LOG.error("[%d/%d] %s/%s produced no timing; continuing", completed, total, slug, language)
                     note_failure({"slug": slug, "language": language, "kind": "missing_timing"})
                     continue
                 algorithm = sum(_case_algorithm_us(row) for row in results)
-                record = {"slug": slug, "language": language,
-                          "reference_walltime_ms": wall,
-                          "timeout_ms": max(1, wall * 10),
-                          "case_count": len(results),
-                          "slowest_case_ms": slowest,
-                          "observed_job_ms": observed_job_ms}
+                # final_observed_job_ms is the record's own field, tracking
+                # whichever round actually got published; the allowance
+                # above deliberately stays seeded from this pair's first,
+                # unrepeated round, since one pair's below-floor repeats
+                # should not inflate the language-wide wait estimate every
+                # other pair's budget is sized from.
+                final_observed_job_ms = observed_job_ms
+                repeat_count = 1
+                if 0 < algorithm < ALGORITHM_TARGET_US and _repeat_eligible(problem):
+                    results, wall, slowest, algorithm, repeat_count, final_observed_job_ms = _discover_repeat_count(
+                        measured,
+                        language,
+                        reference,
+                        cases,
+                        public_count,
+                        bundle,
+                        results,
+                        wall,
+                        slowest,
+                        algorithm,
+                        final_observed_job_ms,
+                    )
+                record = {
+                    "slug": slug,
+                    "language": language,
+                    "reference_walltime_ms": wall,
+                    "timeout_ms": max(1, wall * 10),
+                    "case_count": len(results),
+                    "slowest_case_ms": slowest,
+                    "observed_job_ms": final_observed_job_ms,
+                }
                 if algorithm > 0:
                     record["reference_algorithm_us"] = algorithm
+                if repeat_count > 1:
+                    record["algorithm_repeat_count"] = repeat_count
                 rows.append(record)
                 consecutive = 0
                 checkpoint()
-                LOG.info("[%d/%d] %s/%s reference wall=%dms timeout=%dms", completed, total, slug, language, wall, wall * 10)
+                LOG.info(
+                    "[%d/%d] %s/%s reference wall=%dms timeout=%dms%s",
+                    completed,
+                    total,
+                    slug,
+                    language,
+                    wall,
+                    wall * 10,
+                    f" repeat={repeat_count}" if repeat_count > 1 else "",
+                )
     except HostUnhealthy as error:
         # Deliberately do NOT publish calibration.json: a matrix whose tail
         # is host noise would read as complete and block every combination
         # it touched. The checkpoint holds the good records for a resume.
         LOG.error("calibration aborted after %d records: %s", len(rows), error)
         return 2
-    payload = {"schema_version": 1, "created_at": time.time(),
-               "platform": platform.platform(), "hardware": hardware, "records": rows,
-               "failures": failures,
-               "scored_quantity": "algorithm",
-               "timing_mode": next(iter(measured_modes)) if len(measured_modes) == 1 else "mixed",
-               "resource_profile": (next(iter(measured_profiles))
-                                    if len(measured_profiles) == 1 else "mixed"),
-               "duration_seconds": time.monotonic() - run_started}
+    payload = {
+        "schema_version": 1,
+        "created_at": time.time(),
+        "platform": platform.platform(),
+        "hardware": hardware,
+        "records": rows,
+        "failures": failures,
+        "scored_quantity": "algorithm",
+        "timing_mode": next(iter(measured_modes)) if len(measured_modes) == 1 else "mixed",
+        "resource_profile": (next(iter(measured_profiles)) if len(measured_profiles) == 1 else "mixed"),
+        "duration_seconds": time.monotonic() - run_started,
+    }
     calibration.CALIBRATION_DIR.mkdir(parents=True, exist_ok=True)
     fd, temp = tempfile.mkstemp(prefix="calibration-", suffix=".json", dir=calibration.CALIBRATION_DIR)
     try:

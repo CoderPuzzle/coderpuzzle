@@ -1,7 +1,9 @@
 import contextlib
+import copy
 import importlib.util
 import io
 import json
+import os
 import sys
 import threading
 import traceback
@@ -100,9 +102,7 @@ def _decode_struct(value: Any, spec: dict[str, Any], module: Any) -> Any:
         fields = spec.get("fields", [])
         if not isinstance(value, list) or len(value) != len(fields):
             raise ValueError(f"Expected {len(fields)} struct fields")
-        return cls(
-            *[_decode_struct(item, field["value_type"], module) for item, field in zip(value, fields)]
-        )
+        return cls(*[_decode_struct(item, field["value_type"], module) for item, field in zip(value, fields)])
     if spec.get("kind") == "array":
         return [_decode_struct(item, spec["items"], module) for item in value]
     return value
@@ -165,9 +165,7 @@ def _decode_function_arguments(
     return arguments, context
 
 
-def _encode_function_result(
-    actual: Any, codec: str, invocation: dict[str, Any], context: dict[str, Any]
-) -> Any:
+def _encode_function_result(actual: Any, codec: str, invocation: dict[str, Any], context: dict[str, Any]) -> Any:
     if codec == "alias_list":
         alias = invocation.get("return_alias")
         heads = context.get("list_heads", [])
@@ -188,14 +186,28 @@ def _invoke_function(module, invocation: dict[str, Any], raw_input: Any) -> Any:
         raise ValueError("Function input must be a positional argument list")
     parameters = invocation.get("parameters", [])
     if len(raw_input) != len(parameters):
-        raise ValueError(
-            f"Expected {len(parameters)} arguments, received {len(raw_input)}"
-        )
+        raise ValueError(f"Expected {len(parameters)} arguments, received {len(raw_input)}")
     arguments, context = _decode_function_arguments(module, raw_input, parameters)
     instance = getattr(module, invocation["class_name"])()
     started = timing.mark()
     actual = getattr(instance, invocation["method"])(*arguments)
     timing.add(started)
+    # A pair calibrated below the scoring floor replays its reference's
+    # repeat count here too, so both sides of the ratio are timed the same
+    # way (see docs/api-and-cli.md). Only the first call's result is ever
+    # compared or returned; every repeat exists purely to accumulate more
+    # timing signal into the same timing.py accumulator the call above
+    # already fed. A repeat argument is a fresh deepcopy of the originally
+    # decoded arguments, taken outside the timed span -- a solution that
+    # mutates its input in place must not see already-mutated state on a
+    # repeat, and the copy's own cost must never be misattributed as
+    # algorithm time.
+    repeat = max(1, int(os.environ.get("CODERPUZZLE_REPEAT", "1")))
+    for _ in range(repeat - 1):
+        extra_arguments = copy.deepcopy(arguments)
+        started = timing.mark()
+        getattr(instance, invocation["method"])(*extra_arguments)
+        timing.add(started)
     return _encode_function_result(actual, invocation.get("return_codec", "json"), invocation, context)
 
 
@@ -214,9 +226,7 @@ def _method_codecs(
     resolves the bundle's own class name."""
     table: dict[str, tuple[list[str], str, list[str], list[str | None]]] = {}
     for method in invocation.get("methods", []):
-        parameter_codecs = [
-            parameter.get("codec", "json") for parameter in method.get("parameters", [])
-        ]
+        parameter_codecs = [parameter.get("codec", "json") for parameter in method.get("parameters", [])]
         value_types = [parameter.get("value_type") or {} for parameter in method.get("parameters", [])]
         parameter_kinds = [value_type.get("kind", "json") for value_type in value_types]
         parameter_class_names = [value_type.get("class") for value_type in value_types]
@@ -366,26 +376,19 @@ def _invoke_design(module, invocation: dict[str, Any], raw_input: Any) -> Any:
     return output
 
 
-
-
 def _invoke_interactive(module, invocation: dict[str, Any], raw_input: Any) -> Any:
     if not isinstance(raw_input, dict):
         raise ValueError("Interactive input must be an object")
     budget = int(invocation.get("query_limit", 1_000_000))
     provided = (invocation.get("provided") or {}).get("oracle")
     if not provided:
-        raise ValueError(
-            "Interactive problems must carry their oracle in provided/ "
-            "(invocation.provided.oracle)"
-        )
+        raise ValueError("Interactive problems must carry their oracle in provided/ (invocation.provided.oracle)")
     # Bundle-carried oracle: the class ships in the problem's provided/
     # sources (already assembled into the submission's namespace); the
     # manifest names it, the case keys that build it, and any keys that
     # ride as extra method arguments. The judge core holds no per-oracle
     # knowledge.
-    oracle = getattr(module, provided["class"])(
-        *(raw_input[key] for key in provided.get("construct", ())), budget
-    )
+    oracle = getattr(module, provided["class"])(*(raw_input[key] for key in provided.get("construct", ())), budget)
     instance = getattr(module, invocation["class_name"])()
     # A parameter may declare an out_buffer: the harness allocates the
     # buffer the solution writes into (capacity named by another case key),
@@ -471,6 +474,7 @@ def _invoke_concurrent(module, invocation: dict[str, Any], raw_input: Any) -> An
         solution invokes a NAMED method on the callback (launch(), pass(n),
         accept(x), run()), so the object records through whatever attribute
         the solution touches — or a bare call, for the Runnable legacy."""
+
         def invoke(*args: Any) -> None:
             if spec.get("record") is False:
                 return
@@ -479,12 +483,12 @@ def _invoke_concurrent(module, invocation: dict[str, Any], raw_input: Any) -> An
                 return
             template = spec.get("event")
             if template is not None:
-                record([
-                    call_arguments[int(token[1:])]
-                    if isinstance(token, str) and token.startswith("#")
-                    else token
-                    for token in template
-                ])
+                record(
+                    [
+                        call_arguments[int(token[1:])] if isinstance(token, str) and token.startswith("#") else token
+                        for token in template
+                    ]
+                )
                 return
             record(emits)
 
@@ -497,9 +501,7 @@ def _invoke_concurrent(module, invocation: dict[str, Any], raw_input: Any) -> An
 
         return callback()
 
-    methods = {
-        method["name"]: method for method in invocation.get("methods", [])
-    }
+    methods = {method["name"]: method for method in invocation.get("methods", [])}
 
     def runner(call: str, arguments: list[Any], emits: Any, records: bool):
         def run() -> None:
@@ -534,6 +536,7 @@ def _invoke_concurrent(module, invocation: dict[str, Any], raw_input: Any) -> An
             except BaseException as error:  # noqa: BLE001 — reported as a verdict
                 with lock:
                     failures.append(f"{type(error).__name__}: {error}")
+
         return run
 
     _cap_allocator_arenas()
@@ -636,17 +639,13 @@ def main() -> None:
             # 20 KiB covers the escaped error text, traceback, and framing;
             # the fit keeps quote-dense stdout from blowing the rest of the cap.
             "stdout": _fit_escaped(captured.getvalue(), max(0, output_limit - 20_480)),
-            "traceback": "".join(traceback.format_exception_only(type(error), error))[
-                -2000:
-            ],
+            "traceback": "".join(traceback.format_exception_only(type(error), error))[-2000:],
         }
     # The submission-only figures ride with the verdict, on a failure too:
     # a case that raised still spent its algorithm time, and the API decides
     # from the status whether a ratio may be formed.
     response.update(timing.report())
-    emit_protocol(
-        PROTOCOL_PREFIX + json.dumps(response, allow_nan=False, separators=(",", ":"))
-    )
+    emit_protocol(PROTOCOL_PREFIX + json.dumps(response, allow_nan=False, separators=(",", ":")))
 
 
 if __name__ == "__main__":

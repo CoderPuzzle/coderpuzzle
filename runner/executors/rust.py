@@ -98,9 +98,11 @@ class RustExecutor(CompiledExecutor):
     ) -> PreparedProgram:
         if invocation.get("type") == "design":
             from .rust_design import prepare_design
+
             return prepare_design(self, job_root, scratch, code, invocation, assembly)
         if invocation.get("type") == "interactive":
             from .rust_interactive import prepare_interactive
+
             return prepare_interactive(self, job_root, scratch, code, invocation, assembly)
         parameters, return_type, method = function_signature(invocation, self.language)
         # The bundle's provided/ source is prepended as the crate's leading
@@ -126,16 +128,8 @@ class RustExecutor(CompiledExecutor):
         # LC 1506's invocation carries only an nary_tree_nodes parameter (no
         # nary_tree one), so the class resolves from the kind actually
         # present — same split as the doubly pair above.
-        nary_class = provided_node_class(
-            invocation, "nary_tree_nodes" if "nary_tree_nodes" in structs else "nary_tree"
-        )
-        nary_ref_aliased = sorted(
-            {
-                spec["alias"]
-                for spec in parameters
-                if spec.get("kind") == "nary_tree_ref"
-            }
-        )
+        nary_class = provided_node_class(invocation, "nary_tree_nodes" if "nary_tree_nodes" in structs else "nary_tree")
+        nary_ref_aliased = sorted({spec["alias"] for spec in parameters if spec.get("kind") == "nary_tree_ref"})
         shared_nary_return = return_type.get("kind") == "nary_tree" and (
             "nary_tree_nodes" in structs or "nary_tree_ref" in structs or nary_ref_aliased
         )
@@ -176,9 +170,9 @@ class RustExecutor(CompiledExecutor):
                 result_expression = "Ok(coderpuzzle_list_node_json(&coderpuzzle_actual))"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "linked_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|part| coderpuzzle_list_node_json(part))"
-                    ".collect::<Vec<String>>().join(\",\")))"
+                    '.collect::<Vec<String>>().join(",")))'
                 )
         if "tree" in structs:
             struct_codecs += textwrap.dedent(
@@ -239,9 +233,9 @@ class RustExecutor(CompiledExecutor):
                 result_expression = "Ok(coderpuzzle_tree_node_json(&coderpuzzle_actual))"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "binary_tree":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|tree| coderpuzzle_tree_node_json(tree))"
-                    ".collect::<Vec<String>>().join(\",\")))"
+                    '.collect::<Vec<String>>().join(",")))'
                 )
         if "nary_tree" in structs:
             struct_codecs += textwrap.dedent(
@@ -308,9 +302,9 @@ class RustExecutor(CompiledExecutor):
                 result_expression = "Ok(coderpuzzle_nary_json(&coderpuzzle_actual))"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "nary_tree":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|tree| coderpuzzle_nary_json(tree))"
-                    ".collect::<Vec<String>>().join(\",\")))"
+                    '.collect::<Vec<String>>().join(",")))'
                 )
         if "quad_tree" in structs:
             struct_codecs += textwrap.dedent(
@@ -357,9 +351,9 @@ class RustExecutor(CompiledExecutor):
                 result_expression = "Ok(coderpuzzle_quad_json(&coderpuzzle_actual))"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "quad_tree":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|tree| coderpuzzle_quad_json(tree))"
-                    ".collect::<Vec<String>>().join(\",\")))"
+                    '.collect::<Vec<String>>().join(",")))'
                 )
         if "nested" in structs:
             struct_codecs += textwrap.dedent(
@@ -386,9 +380,9 @@ class RustExecutor(CompiledExecutor):
                 result_expression = "Ok(coderpuzzle_nested_json(&coderpuzzle_actual)?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "nested":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(coderpuzzle_nested_json)"
-                    ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
+                    '.collect::<Result<Vec<String>, String>>()?.join(",")))'
                 )
         if "next_tree" in structs:
             struct_codecs += textwrap.dedent(
@@ -459,9 +453,9 @@ class RustExecutor(CompiledExecutor):
                 result_expression = "Ok(coderpuzzle_next_tree_json(&coderpuzzle_actual))"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "next_tree":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|tree| coderpuzzle_next_tree_json(tree))"
-                    ".collect::<Vec<String>>().join(\",\")))"
+                    '.collect::<Vec<String>>().join(",")))'
                 )
         if "circular_list" in structs or "alias_list" in structs:
             struct_codecs += textwrap.dedent(
@@ -525,9 +519,9 @@ class RustExecutor(CompiledExecutor):
                 result_expression = "Ok(coderpuzzle_circular_json(&coderpuzzle_actual)?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "circular_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|part| coderpuzzle_circular_json(part))"
-                    ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
+                    '.collect::<Result<Vec<String>, String>>()?.join(",")))'
                 )
         if "doubly_circular" in structs:
             struct_codecs += textwrap.dedent(
@@ -582,9 +576,9 @@ class RustExecutor(CompiledExecutor):
                 result_expression = "Ok(coderpuzzle_doubly_json(&coderpuzzle_actual)?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "doubly_circular":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|part| coderpuzzle_doubly_json(part))"
-                    ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
+                    '.collect::<Result<Vec<String>, String>>()?.join(",")))'
                 )
         if "multi_list" in structs:
             struct_codecs += textwrap.dedent(
@@ -640,9 +634,9 @@ class RustExecutor(CompiledExecutor):
                 result_expression = "Ok(coderpuzzle_multi_json(&coderpuzzle_actual)?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "multi_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|part| coderpuzzle_multi_json(part))"
-                    ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
+                    '.collect::<Result<Vec<String>, String>>()?.join(",")))'
                 )
         if "alias_list" in structs:
             struct_codecs += textwrap.dedent(
@@ -666,12 +660,14 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "alias_list":
-                result_expression = "Ok(coderpuzzle_alias_json(&coderpuzzle_actual, &coderpuzzle_input_nodes_alias.borrow())?)"
+                result_expression = (
+                    "Ok(coderpuzzle_alias_json(&coderpuzzle_actual, &coderpuzzle_input_nodes_alias.borrow())?)"
+                )
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "alias_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|part| coderpuzzle_alias_json(part, &coderpuzzle_input_nodes_alias.borrow()))"
-                    ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
+                    '.collect::<Result<Vec<String>, String>>()?.join(",")))'
                 )
         if "graph" in structs:
             # The class is the using problem's provided/ source (LC 133);
@@ -727,12 +723,14 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "graph":
-                result_expression = "Ok(coderpuzzle_graph_json(&coderpuzzle_actual, &coderpuzzle_input_nodes_graph.borrow())?)"
+                result_expression = (
+                    "Ok(coderpuzzle_graph_json(&coderpuzzle_actual, &coderpuzzle_input_nodes_graph.borrow())?)"
+                )
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "graph":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|part| coderpuzzle_graph_json(part, &coderpuzzle_input_nodes_graph.borrow()))"
-                    ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
+                    '.collect::<Result<Vec<String>, String>>()?.join(",")))'
                 )
         if "random_list" in structs:
             struct_codecs += textwrap.dedent(
@@ -793,12 +791,14 @@ class RustExecutor(CompiledExecutor):
                 """
             )
             if return_type.get("kind") == "random_list":
-                result_expression = "Ok(coderpuzzle_random_json(&coderpuzzle_actual, &coderpuzzle_input_nodes_random.borrow())?)"
+                result_expression = (
+                    "Ok(coderpuzzle_random_json(&coderpuzzle_actual, &coderpuzzle_input_nodes_random.borrow())?)"
+                )
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "random_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|part| coderpuzzle_random_json(part, &coderpuzzle_input_nodes_random.borrow()))"
-                    ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
+                    '.collect::<Result<Vec<String>, String>>()?.join(",")))'
                 )
         if "doubly_list" in structs or "doubly_list_node" in structs:
             struct_codecs += textwrap.dedent(
@@ -875,9 +875,9 @@ class RustExecutor(CompiledExecutor):
                 result_expression = "Ok(coderpuzzle_doubly_list_json(&coderpuzzle_actual)?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "doubly_list":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|part| coderpuzzle_doubly_list_json(part))"
-                    ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
+                    '.collect::<Result<Vec<String>, String>>()?.join(",")))'
                 )
         if "random_tree" in structs:
             struct_codecs += textwrap.dedent(
@@ -978,9 +978,9 @@ class RustExecutor(CompiledExecutor):
                 result_expression = "Ok(coderpuzzle_random_tree_json(&coderpuzzle_actual, &coderpuzzle_input_nodes_random_tree.borrow())?)"
             if return_type.get("kind") == "array" and return_type.get("items", {}).get("kind") == "random_tree":
                 result_expression = (
-                    "Ok(format!(\"[{}]\", coderpuzzle_actual.iter()"
+                    'Ok(format!("[{}]", coderpuzzle_actual.iter()'
                     ".map(|part| coderpuzzle_random_tree_json(part, &coderpuzzle_input_nodes_random_tree.borrow()))"
-                    ".collect::<Result<Vec<String>, String>>()?.join(\",\")))"
+                    '.collect::<Result<Vec<String>, String>>()?.join(",")))'
                 )
         if "special_tree" in structs:
             struct_codecs += textwrap.dedent(
@@ -1138,12 +1138,12 @@ class RustExecutor(CompiledExecutor):
             )
             result_expression = "Ok(coderpuzzle_shared_nary_json(&coderpuzzle_actual)?)"
         if "struct" in structs:
+
             def _struct_reader(spec: dict[str, Any]) -> str:
                 fields = spec.get("fields") or []
                 class_name = spec["class"]
                 assignments = ", ".join(
-                    f"{field['name']}: {_read_expression(field['value_type'], 'self')}"
-                    for field in fields
+                    f"{field['name']}: {_read_expression(field['value_type'], 'self')}" for field in fields
                 )
                 return (
                     f"    fn read{_snake_case(class_name)}(&mut self) -> Result<{class_name}, String> {{\n"
@@ -1169,13 +1169,7 @@ class RustExecutor(CompiledExecutor):
         # Alias splices need the aliased list's nodes; clone checks need
         # every input node registered — read the parameters with that
         # bookkeeping inline (one registration per list-shaped parameter).
-        aliased_indexes = sorted(
-            {
-                spec["alias"]
-                for spec in parameters
-                if spec.get("kind") == "alias_list"
-            }
-        )
+        aliased_indexes = sorted({spec["alias"] for spec in parameters if spec.get("kind") == "alias_list"})
         input_locals = ""
         if "alias_list" in structs:
             input_locals += (
@@ -1298,9 +1292,7 @@ class RustExecutor(CompiledExecutor):
             read_expression = "coderpuzzle_reader.shared_list()?" if aliased else _read_expression(spec)
             if nary_aliased:
                 read_expression = "coderpuzzle_reader.shared_nary()?"
-            lines = [
-                f"    let coderpuzzle_arg_{index}: {parameter_type(index, spec)} = {read_expression};"
-            ]
+            lines = [f"    let coderpuzzle_arg_{index}: {parameter_type(index, spec)} = {read_expression};"]
             if aliased:
                 lines.append(
                     f"    let coderpuzzle_arg_{index}_nodes: Vec<std::rc::Rc<std::cell::RefCell<SharedListNode>>> = {{"
@@ -1320,7 +1312,9 @@ class RustExecutor(CompiledExecutor):
                     "        let mut queue: std::collections::VecDeque<std::rc::Rc<std::cell::RefCell<"
                     f"{graph_class}>>> = std::collections::VecDeque::new();"
                 )
-                lines.append(f"        if let Some(start) = coderpuzzle_arg_{index}.clone() {{ queue.push_back(start); }}")
+                lines.append(
+                    f"        if let Some(start) = coderpuzzle_arg_{index}.clone() {{ queue.push_back(start); }}"
+                )
                 lines.append("        while let Some(node) = queue.pop_front() {")
                 lines.append(
                     "            if coderpuzzle_input_nodes_graph.borrow().iter().any(|value| *value == std::rc::Rc::as_ptr(&node)) { continue; }"
@@ -1348,12 +1342,16 @@ class RustExecutor(CompiledExecutor):
                     "        let mut queue: std::collections::VecDeque<std::rc::Rc<std::cell::RefCell<"
                     f"{random_tree_class}>>> = std::collections::VecDeque::new();"
                 )
-                lines.append(f"        if let Some(root) = coderpuzzle_arg_{index}.clone() {{ queue.push_back(root); }}")
+                lines.append(
+                    f"        if let Some(root) = coderpuzzle_arg_{index}.clone() {{ queue.push_back(root); }}"
+                )
                 lines.append("        while let Some(node) = queue.pop_front() {")
                 lines.append(
                     "            if coderpuzzle_input_nodes_random_tree.borrow().iter().any(|value| *value == std::rc::Rc::as_ptr(&node)) { continue; }"
                 )
-                lines.append("            coderpuzzle_input_nodes_random_tree.borrow_mut().push(std::rc::Rc::as_ptr(&node));")
+                lines.append(
+                    "            coderpuzzle_input_nodes_random_tree.borrow_mut().push(std::rc::Rc::as_ptr(&node));"
+                )
                 lines.append("            let left = node.borrow().left.clone();")
                 lines.append("            let right = node.borrow().right.clone();")
                 lines.append("            for child in [left, right].into_iter().flatten() { queue.push_back(child); }")
@@ -1361,12 +1359,36 @@ class RustExecutor(CompiledExecutor):
                 lines.append("    }")
             return "\n".join(lines)
 
-        declarations = "\n".join(
-            declaration(index, spec) for index, spec in enumerate(parameters)
-        )
+        declarations = "\n".join(declaration(index, spec) for index, spec in enumerate(parameters))
         arguments = ", ".join(f"coderpuzzle_arg_{index}" for index in range(len(parameters)))
-        source = assembly_source + textwrap.dedent(
-            f"""
+        # This corpus's Rust convention takes every argument by value (see
+        # e.g. rotate-array's `mut nums: Vec<i32>`), so the first call below
+        # already moves coderpuzzle_arg_N into it -- a second use of the
+        # same name would be a compile error ("use of moved value"), not a
+        # runtime bug. A repeat instead clones from a pristine binding taken
+        # before that move, so it owns a fresh value every time and the
+        # pristine binding itself is never moved, only cloned from.
+        # calibrate.py only ever requests a repeat count above 1 for plain
+        # values (never a bundle-provided struct -- ALGORITHM_REPEAT_
+        # UNSAFE_PARAMETER_KINDS in api/app/calibrate.py), so Clone is
+        # always available: every built-in value type derives it.
+        repeat_pristine = "\n".join(
+            f"let coderpuzzle_arg_{index}_pristine = coderpuzzle_arg_{index}.clone();"
+            for index in range(len(parameters))
+        )
+        # Cloned into its own binding one loop iteration ahead of the timed
+        # call, never inline in the call expression itself -- inline, the
+        # clone would run between the mark and the read of elapsed(),
+        # misattributing its own cost as algorithm time.
+        repeat_clone_bindings = "\n".join(
+            f"let coderpuzzle_repeat_arg_{index} = coderpuzzle_arg_{index}_pristine.clone();"
+            for index in range(len(parameters))
+        )
+        repeat_arguments = ", ".join(f"coderpuzzle_repeat_arg_{index}" for index in range(len(parameters)))
+        source = (
+            assembly_source
+            + textwrap.dedent(
+                f"""
             use std::fmt::Write as CoderPuzzleFmtWrite;
             use std::io::Read as CoderPuzzleIoRead;
 
@@ -1437,9 +1459,39 @@ class RustExecutor(CompiledExecutor):
             {input_locals}
             {declarations}
                 coderpuzzle_reader.finished()?;
-                let coderpuzzle_started = std::time::Instant::now();
-                let coderpuzzle_actual = Solution::{method}({arguments});
-                CODERPUZZLE_ALGORITHM_NS.fetch_add(coderpuzzle_started.elapsed().as_nanos() as u64, std::sync::atomic::Ordering::Relaxed);
+                // Below-floor pairs replay this many times and sum, so a
+                // submission is timed the same way its pair's reference was
+                // calibrated under (see docs/api-and-cli.md). Unset, or any
+                // non-function-kind/unsafe-parameter pair the sweep never
+                // requests a repeat for, this is exactly today's single call.
+                let coderpuzzle_repeat_count: u64 = std::env::var("CODERPUZZLE_REPEAT")
+                    .ok()
+                    .and_then(|value| value.parse().ok())
+                    .filter(|value| *value > 0)
+                    .unwrap_or(1);
+                let coderpuzzle_actual;
+                if coderpuzzle_repeat_count > 1 {{
+{repeat_pristine}
+                    let coderpuzzle_started = std::time::Instant::now();
+                    coderpuzzle_actual = Solution::{method}({arguments});
+                    CODERPUZZLE_ALGORITHM_NS.fetch_add(coderpuzzle_started.elapsed().as_nanos() as u64, std::sync::atomic::Ordering::Relaxed);
+                    // The return value is otherwise unused, so at a high
+                    // optimization level the compiler could prove the call
+                    // has no observable effect and skip it -- black_box is
+                    // the stdlib's own barrier against exactly that (stable
+                    // since Rust 1.66).
+                    for _ in 1..coderpuzzle_repeat_count {{
+{repeat_clone_bindings}
+                        let coderpuzzle_repeat_started = std::time::Instant::now();
+                        let coderpuzzle_repeat_result = Solution::{method}({repeat_arguments});
+                        CODERPUZZLE_ALGORITHM_NS.fetch_add(coderpuzzle_repeat_started.elapsed().as_nanos() as u64, std::sync::atomic::Ordering::Relaxed);
+                        std::hint::black_box(&coderpuzzle_repeat_result);
+                    }}
+                }} else {{
+                    let coderpuzzle_started = std::time::Instant::now();
+                    coderpuzzle_actual = Solution::{method}({arguments});
+                    CODERPUZZLE_ALGORITHM_NS.fetch_add(coderpuzzle_started.elapsed().as_nanos() as u64, std::sync::atomic::Ordering::Relaxed);
+                }}
                 // Bound to a local so any Ref temporary borrowed from the
                 // input-node registries drops before coderpuzzle_run's locals.
                 let coderpuzzle_output = {result_expression};
@@ -1470,7 +1522,8 @@ class RustExecutor(CompiledExecutor):
                 }}
             }}
             """
-        ).lstrip()
+            ).lstrip()
+        )
         source_path = job_root / "main.rs"
         executable = job_root / "solution"
         source_path.write_text(source, encoding="utf-8")
@@ -1506,8 +1559,10 @@ class RustExecutor(CompiledExecutor):
     def encode_case(self, invocation: dict[str, Any], case_input: Any) -> bytes:
         if invocation.get("type") == "interactive":
             from .typed import encode_interactive_case
+
             return encode_interactive_case(invocation, case_input)
         if invocation.get("type") == "design":
             from .design_interactive import encode_design_case
+
             return encode_design_case(invocation, case_input)
         return encode_case(invocation, case_input, self.language)
