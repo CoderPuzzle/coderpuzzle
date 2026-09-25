@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 316" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="316" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [3,1,4,2] scanned right to left; cells 56x34 at x = 120+66c;
+       per-step rows: stack boxes 44x30 at x = 200 (dashed = popped this step), third column at x = 506;
+       index 0 is never read because the answer returns at value 1 -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="148" y="32">0</text><text x="214" y="32">1</text><text x="280" y="32">2</text><text x="346" y="32">3</text>
+  </g>
+  <text x="112" y="62" text-anchor="end" fill="#5c6b76" font-size="12.5">nums</text>
+  <g text-anchor="middle">
+    <rect x="120" y="40" width="56" height="34" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+    <rect x="186" y="40" width="56" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="252" y="40" width="56" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="318" y="40" width="56" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="148" y="62" fill="#9aa7b2">3</text><text x="214" y="62">1</text>
+    <text x="280" y="62">4</text><text x="346" y="62">2</text>
+  </g>
+  <path d="M 380 94 L 128 94" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="253" y="112" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">scan right to left</text>
+  <text x="222" y="138" text-anchor="middle" fill="#9aa7b2" font-size="11.5">stack</text>
+  <text x="506" y="138" text-anchor="middle" fill="#9aa7b2" font-size="11.5">third</text>
+  <!-- step i = 3 -->
+  <text x="56" y="164" fill="#1a2026" font-size="13">read 2 (i = 3)</text>
+  <rect x="200" y="144" width="44" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="222" y="164" text-anchor="middle" font-size="13">2</text>
+  <text x="270" y="164" fill="#5c6b76" font-size="12">push 2</text>
+  <text x="506" y="164" text-anchor="middle" fill="#9aa7b2" font-size="14">&#8722;&#8734;</text>
+  <!-- step i = 2 -->
+  <text x="56" y="208" fill="#1a2026" font-size="13">read 4 (i = 2)</text>
+  <rect x="200" y="188" width="44" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="222" y="208" text-anchor="middle" font-size="13">4</text>
+  <rect x="254" y="188" width="44" height="30" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="276" y="208" text-anchor="middle" font-size="13" fill="#9aa7b2">2</text>
+  <text x="324" y="208" fill="#5c6b76" font-size="12">4 pops 2, third = 2</text>
+  <text x="506" y="208" text-anchor="middle" fill="#4169E1" font-size="14" font-weight="600">2</text>
+  <!-- step i = 1: the check fires before the stack is touched -->
+  <text x="56" y="252" fill="#1a2026" font-size="13">read 1 (i = 1)</text>
+  <rect x="200" y="232" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="222" y="252" text-anchor="middle" font-size="13">4</text>
+  <text x="270" y="252" fill="#4169E1" font-size="12" font-weight="600">1 &lt; third: 1, 4, 2 found</text>
+  <text x="506" y="252" text-anchor="middle" fill="#4169E1" font-size="14" font-weight="600">2</text>
+  <text x="280" y="286" text-anchor="middle" fill="#1a2026" font-size="13">Scanning from the right, 4 pops 2 and raises third to 2; the next</text>
+  <text x="280" y="304" text-anchor="middle" fill="#1a2026" font-size="13">value 1 already sits below it &#8212; the 132 pattern <tspan fill="#4169E1" font-weight="600">1 &lt; 2 &lt; 4</tspan> is found.</text>
+</svg>

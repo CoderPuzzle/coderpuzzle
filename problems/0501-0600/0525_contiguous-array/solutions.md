@@ -17,6 +17,10 @@ very first element count too. The shipped code keeps a hash map in every
 language; since the balance only ever ranges over -n..n, a plain 2n+1 array
 indexed by balance + n is an equivalent drop-in.
 
+![Example 3's [0, 1, 1, 1, 1, 1, 0, 0, 0] with the running balance -1, 0, 1, 2,
+3, 4, 3, 2, 1: balance 1 recurs at i = 8 against its first sighting at i = 2,
+making [1, 1, 1, 0, 0, 0] the longest equal-count stretch, of length 6.](figures/solution-balance-first-seen.svg)
+
 The scan examines each element exactly once and records each distinct balance
 at most once, so the whole method is a single linear pass that never revisits
 an element — it reads only the running balance and the earliest place it was

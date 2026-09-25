@@ -17,6 +17,8 @@ case split — an empty stack simply contributes nothing — and a leftover
 carry after both stacks drain emits one final leading digit, which is the
 only way the result grows past the longer input.
 
+![With l1 = [7,2,4,3] and l2 = [5,6,4] on stacks, the columns pop 3+4, 4+6+1, 2+5+1, then a lone 7, and each emitted digit is front-inserted so the result reads 7→8→0→7.](figures/solution-stack-column-addition.svg)
+
 The output must also be most-significant first, yet the digits are produced
 least-significant first. Front-insertion dissolves that mismatch as the
 loop runs: every new node is linked in front of the previous one, so the

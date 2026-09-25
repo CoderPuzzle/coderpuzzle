@@ -6,6 +6,8 @@ Instead of deciding the split directly, the solution binary-searches the value o
 
 The search runs over `[max(nums), sum(nums)]`: no single element can be split, so the answer is at least the maximum element, and one piece covering everything gives the upper bound. For a candidate `mid`, the feasibility check walks the array greedily, packing values into the current piece until adding the next one would exceed `mid`, then starting a new piece. This greedy is optimal for counting because keeping each piece as long as possible can never force more pieces later — any valid partition under limit `mid` has at least as many cut points as the greedy's.
 
+![On nums = [7,2,5,10,8] with k = 2, the greedy packing at probes 21, 15, 18 and 17 narrows the binary search onto lo = hi = 18 — the split [7,2,5] | [10,8].](figures/solution-greedy-packing-probes.svg)
+
 If the greedy needs more than `k` pieces, `mid` is too small and the search moves the lower bound up; otherwise `mid` is achievable and the upper bound comes down. The loop converges on the smallest feasible limit with the standard `lo < hi` invariant, never evaluating an explicit final check.
 
 The search on Example 1 (`nums = [7,2,5,10,8]`, `k = 2`) runs as follows:

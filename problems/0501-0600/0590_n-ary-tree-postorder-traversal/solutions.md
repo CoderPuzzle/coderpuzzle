@@ -10,6 +10,8 @@ the recursive call stack exactly, but live on the heap, so a 1000-deep
 chain or a 1000-wide group costs loop iterations instead of stack frames —
 the follow-up's iterative requirement, met by construction.
 
+![On the tree [1, null, 3, 2, 4, null, 5, 6], each frame carries its node and how many children are entered; 3 emits at 2/2 right after [5, 6] and 1 at 3/3, giving the bottom-up order [5, 6, 3, 2, 4, 1].](figures/solution-postorder-frame-stack.svg)
+
 Each node acquires exactly one frame, entered once and closed once; the
 output order falls out of the frame lifetimes with no second pass or
 reversal.

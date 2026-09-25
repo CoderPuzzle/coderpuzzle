@@ -10,6 +10,10 @@ search starts. The recursion then never even proposes a doomed value: at
 position `p` it walks `candidates[p]`, marks each still-unused value,
 recurses into position `p + 1`, and unmarks on the way back.
 
+![n = 2 as the backtracking tree: position 1 can place 1 or 2, and position 2
+then has exactly one divisibility-legal value left, so both complete
+placements [1, 2] and [2, 1] survive and are counted.](figures/solution-candidate-tree.svg)
+
 A path that survives past position `n` has placed a valid value at every
 position, which is exactly one beautiful arrangement, counted as 1; the
 answer is the sum over all surviving paths. Dead ends prune themselves: the

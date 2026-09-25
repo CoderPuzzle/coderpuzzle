@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [23,2,4,6,7], k=6; cells 70x40 at x=100+70i, nums y=44, remainders y=116; r after each prefix: 5,1,5,(5,0 unscanned); map seeded {0:-1} -->
+  <text x="275" y="26" text-anchor="middle" fill="#1a2026" font-weight="600">nums = [23, 2, 4, 6, 7], k = 6</text>
+  <text x="90" y="69" text-anchor="end" fill="#5c6b76" font-size="12">nums</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="100" y="44" width="70" height="40" fill="#ffffff"/>
+    <rect x="170" y="44" width="70" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="240" y="44" width="70" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="310" y="44" width="70" height="40" fill="#ffffff"/>
+    <rect x="380" y="44" width="70" height="40" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="135" y="69">23</text><text x="205" y="69">2</text><text x="275" y="69">4</text>
+    <text x="345" y="69">6</text><text x="415" y="69">7</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="135" y="102">i = 0</text><text x="205" y="102">i = 1</text><text x="275" y="102">i = 2</text>
+    <text x="345" y="102">i = 3</text><text x="415" y="102">i = 4</text>
+  </g>
+  <!-- running remainder after each prefix -->
+  <text x="90" y="141" text-anchor="end" fill="#5c6b76" font-size="12">r mod 6</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="100" y="116" width="70" height="40" fill="#ffffff"/>
+    <rect x="170" y="116" width="70" height="40" fill="#ffffff"/>
+    <rect x="240" y="116" width="70" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="310" y="116" width="70" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+    <rect x="380" y="116" width="70" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="135" y="141" fill="#1a2026">5</text><text x="205" y="141" fill="#1a2026">1</text>
+    <text x="275" y="141" fill="#4169E1">5</text>
+    <text x="345" y="141" fill="#9aa7b2">5</text><text x="415" y="141" fill="#9aa7b2">0</text>
+  </g>
+  <text x="415" y="176" text-anchor="middle" fill="#9aa7b2" font-size="11">(not reached — true returns at i = 2)</text>
+  <!-- repeat arc between the two remainder-5 cells -->
+  <path d="M 135 162 Q 205 200 275 162" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="205" y="216" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">remainder 5 repeats — span 2 - 0 = 2</text>
+  <!-- first-occurrence map -->
+  <text x="480" y="50" fill="#5c6b76" font-size="11.5">map: r → first i</text>
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="480" y="58" width="118" height="24" fill="#ffffff"/>
+    <rect x="480" y="86" width="118" height="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="480" y="114" width="118" height="24" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="539" y="74" fill="#1a2026">0 → -1 <tspan fill="#9aa7b2" font-size="10.5">(seed)</tspan></text>
+    <text x="539" y="102" fill="#4169E1" font-weight="600">5 → 0</text>
+    <text x="539" y="130" fill="#1a2026">1 → 1</text>
+  </g>
+  <text x="480" y="158" fill="#5c6b76" font-size="11">first occurrence kept</text>
+  <text x="320" y="252" text-anchor="middle" fill="#1a2026" font-size="13">The repeat of remainder 5 at i = 2 against its first sighting at i = 0 certifies</text>
+  <text x="320" y="274" text-anchor="middle" fill="#1a2026" font-size="13">elements 1..2 — the good subarray <tspan fill="#4169E1" font-weight="600">[2, 4]</tspan>, whose sum 6 is a multiple of k = 6.</text>
+</svg>

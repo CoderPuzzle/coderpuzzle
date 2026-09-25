@@ -6,6 +6,8 @@ The only state that matters between spelling characters is which ring index curr
 
 The transition between layers prices a rotation correctly on a circle: moving the aligned index from `i` to `j` costs `min(abs(i - j), n - abs(i - j))` rotations, going the shorter of clockwise and counterclockwise. For each occurrence `j` of the next key character, the new cost is the minimum of `dp[i] + rotation cost` over every previous alignment `i`; the layers stay small because only positions of relevant characters survive, though in the worst case every ring index carries the character.
 
+![On ring = "godding", key = "gd", the ring's dp layers hold {0: 0, 6: 1} after 'g' and {2: 2, 3: 3} after 'd', and the cheapest path — rotating 2 from index 0 to the d at index 2 — costs 2 rotations plus 2 presses = 4.](figures/solution-dp-over-ring-positions.svg)
+
 After the last key character the answer is the cheapest final alignment plus one button press per key character — `len(key)` presses in total, added once at the end rather than per step. The guarantee that `key` can always be spelled means `positions[ch]` is never empty, and the first stage is just the special case of rotating from index 0 (which may cost zero if the character already sits at 12:00). With `k = len(key)` and `r = len(ring)`, each of the `k` stages pairs at most `r` targets with at most `r` sources.
 
 **Complexity:** `O(k·r^2)` time, `O(r)` space.

@@ -6,6 +6,8 @@ The maximum XOR is built one bit at a time from the most significant bit down. O
 
 For a given prefix mask, the code collects every number truncated to the bits considered so far. The answer's prefix `candidate = best | (1 << bit)` is achievable exactly when two numbers' prefixes `p1`, `p2` satisfy `p1 ^ p2 = candidate`, i.e. the higher (already fixed) bits differ exactly where required. Rearranged as `p1 = candidate ^ p2`, this becomes a set-membership test: iterate the prefix set and check whether `candidate ^ prefix` is also present. If any such pair exists, `best` adopts the bit; otherwise the bit is zero in every achievable maximum.
 
+![On nums = [3,10,5,25,2,8], the greedy bit build tests candidates 10000 through 11101 against the prefix set and locks best = 11100 = 28 from the pair 5 ^ 25.](figures/solution-prefix-set-bit-build.svg)
+
 Each pass rebuilds the prefix set from scratch (an implicit 31-level radix grouping of the numbers) and does at most one O(1) hash lookup per element, so the whole scan is 31 linear passes. The loop starts from bit 30, which correctly covers every allowed input value; leading zero bits simply fail the membership test until real signal appears.
 
 Note `i <= j` in the statement permits i = j, so a single-element array yields 0 (`x ^ x = 0`), which the algorithm returns naturally since no pair of prefixes can ever differ on any bit.

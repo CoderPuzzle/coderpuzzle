@@ -43,6 +43,8 @@ of them has arrived at `k` — the definition, verbatim. A letter rarer than
 `k` across the whole string simply never joins `qualified`; windows leaning
 on it are never recorded, and no special casing is needed.
 
+![On s = "ababbc" with k = 2 and budget t = 2, the sweep records "ababb" at length 5 (a:2, b:3, both at least k) before the trailing 'c' busts the letter budget.](figures/solution-budget-window-t2-sweep.svg)
+
 The optimum cannot slip through. Take any valid substring with `d` distinct
 letters and run the budget `t = d`: when the right edge reaches its last
 position, the window is the longest one ending there with at most `d`

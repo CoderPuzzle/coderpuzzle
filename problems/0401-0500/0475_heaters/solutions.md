@@ -17,6 +17,8 @@ heater or right of every heater has only one neighbour to consider, which the
 boundary checks handle, and a house sitting exactly on a heater finds distance
 0 immediately.
 
+![On houses = [1, 2, 3, 4] with heaters = [1, 4], each house's nearest-heater distance is 0, 1, 1, 0, and the answer is the largest of those minima, radius 1.](figures/solution-nearest-heater-distances.svg)
+
 Only the heaters are sorted — the houses can be visited in any order, since
 the maximum is order-independent. Unsorted inputs and duplicate positions on
 either side are normalized by the sort (a repeated heater changes nothing, and

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = bbbab, t = reverse(s) = babbb; LCS dp table (rows i, cols j), cells 46x32 at (96,84)
+       final dp[5][5] = 4; backtrack (accent) hits matches at (1,1),(2,3),(3,4),(5,5) = b b b b -->
+  <text x="96" y="58" fill="#5c6b76" font-size="12.5">s = bbbab (rows) · t = babbb (cols, reversed)</text>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="165" y="78">b</text><text x="211" y="78">a</text><text x="257" y="78">b</text><text x="303" y="78">b</text><text x="349" y="78">b</text>
+  </g>
+  <g text-anchor="end" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="82" y="137">b</text><text x="82" y="169">b</text><text x="82" y="201">b</text><text x="82" y="233">a</text><text x="82" y="265">b</text>
+  </g>
+  <!-- base grid -->
+  <g stroke="#42525e" stroke-width="1" fill="#ffffff">
+    <rect x="96" y="84" width="46" height="32"/><rect x="142" y="84" width="46" height="32"/><rect x="188" y="84" width="46" height="32"/><rect x="234" y="84" width="46" height="32"/><rect x="280" y="84" width="46" height="32"/><rect x="326" y="84" width="46" height="32"/>
+    <rect x="96" y="116" width="46" height="32"/><rect x="188" y="116" width="46" height="32"/><rect x="234" y="116" width="46" height="32"/><rect x="280" y="116" width="46" height="32"/><rect x="326" y="116" width="46" height="32"/>
+    <rect x="96" y="148" width="46" height="32"/><rect x="188" y="148" width="46" height="32"/><rect x="280" y="148" width="46" height="32"/><rect x="326" y="148" width="46" height="32"/>
+    <rect x="96" y="180" width="46" height="32"/><rect x="142" y="180" width="46" height="32"/><rect x="188" y="180" width="46" height="32"/><rect x="234" y="180" width="46" height="32"/><rect x="326" y="180" width="46" height="32"/>
+    <rect x="96" y="212" width="46" height="32"/><rect x="142" y="212" width="46" height="32"/><rect x="188" y="212" width="46" height="32"/><rect x="234" y="212" width="46" height="32"/><rect x="280" y="212" width="46" height="32"/><rect x="326" y="212" width="46" height="32"/>
+    <rect x="96" y="244" width="46" height="32"/><rect x="188" y="244" width="46" height="32"/><rect x="234" y="244" width="46" height="32"/><rect x="280" y="244" width="46" height="32"/>
+  </g>
+  <!-- match cells (s[i-1] = t[j-1], take diagonal + 1) -->
+  <g stroke="#42525e" stroke-width="1" fill="#dbe4fb">
+    <rect x="142" y="116" width="46" height="32"/><rect x="234" y="116" width="46" height="32"/><rect x="280" y="116" width="46" height="32"/><rect x="326" y="116" width="46" height="32"/>
+    <rect x="142" y="148" width="46" height="32"/><rect x="234" y="148" width="46" height="32"/><rect x="280" y="148" width="46" height="32"/><rect x="326" y="148" width="46" height="32"/>
+    <rect x="142" y="180" width="46" height="32"/><rect x="234" y="180" width="46" height="32"/><rect x="280" y="180" width="46" height="32"/><rect x="326" y="180" width="46" height="32"/>
+    <rect x="188" y="212" width="46" height="32"/>
+    <rect x="142" y="244" width="46" height="32"/><rect x="234" y="244" width="46" height="32"/><rect x="280" y="244" width="46" height="32"/><rect x="326" y="244" width="46" height="32"/>
+  </g>
+  <!-- backtrack cells -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <rect x="326" y="244" width="46" height="32"/><rect x="280" y="212" width="46" height="32"/><rect x="280" y="180" width="46" height="32"/><rect x="234" y="148" width="46" height="32"/><rect x="188" y="116" width="46" height="32"/><rect x="142" y="116" width="46" height="32"/>
+  </g>
+  <!-- zero row and column -->
+  <g text-anchor="middle" font-size="13" fill="#9aa7b2">
+    <text x="119" y="105">0</text><text x="165" y="105">0</text><text x="211" y="105">0</text><text x="257" y="105">0</text><text x="303" y="105">0</text><text x="349" y="105">0</text>
+    <text x="119" y="137">0</text><text x="119" y="169">0</text><text x="119" y="201">0</text><text x="119" y="233">0</text><text x="119" y="265">0</text>
+  </g>
+  <!-- table values -->
+  <g text-anchor="middle" font-size="13.5" fill="#1a2026">
+    <text x="165" y="137">1</text><text x="211" y="137">1</text><text x="257" y="137">1</text><text x="303" y="137">1</text><text x="349" y="137">1</text>
+    <text x="165" y="169">1</text><text x="211" y="169">1</text><text x="257" y="169">2</text><text x="303" y="169">2</text><text x="349" y="169">2</text>
+    <text x="165" y="201">1</text><text x="211" y="201">1</text><text x="257" y="201">2</text><text x="303" y="201">3</text><text x="349" y="201">3</text>
+    <text x="165" y="233">1</text><text x="211" y="233">2</text><text x="257" y="233">2</text><text x="303" y="233">3</text><text x="349" y="233">3</text>
+    <text x="165" y="265">1</text><text x="211" y="265">2</text><text x="257" y="265">3</text><text x="303" y="265">3</text>
+  </g>
+  <text x="349" y="266" text-anchor="middle" font-size="15" font-weight="600" fill="#4169E1">4</text>
+  <!-- backtrack arrows -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 337 252 L 315 236" marker-end="url(#arrow)"/>
+    <path d="M 303 219 L 303 207" marker-end="url(#arrow)"/>
+    <path d="M 291 188 L 269 172" marker-end="url(#arrow)"/>
+    <path d="M 245 156 L 223 140" marker-end="url(#arrow)"/>
+    <path d="M 197 132 L 179 132" marker-end="url(#arrow)"/>
+    <path d="M 153 124 L 131 108" marker-end="url(#arrow)"/>
+  </g>
+  <!-- legend -->
+  <rect x="400" y="104" width="20" height="16" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+  <text x="428" y="117" font-size="12" fill="#1a2026">match → diag + 1</text>
+  <rect x="400" y="132" width="20" height="16" fill="#ffffff" stroke="#42525e" stroke-width="1"/>
+  <text x="428" y="145" font-size="12" fill="#1a2026">diff → max(up, left)</text>
+  <path d="M 400 172 L 420 172" stroke="#4169E1" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+  <text x="428" y="176" font-size="12" fill="#1a2026">backtrack: 4 matches</text>
+  <text x="300" y="310" text-anchor="middle" fill="#1a2026" font-size="13">LCS(bbbab, babbb) = dp[5][5] = <tspan fill="#4169E1" font-weight="600">4</tspan>: the backtracked matches spell <tspan fill="#4169E1" font-weight="600">bbbb</tspan>,</text>
+  <text x="300" y="328" text-anchor="middle" fill="#1a2026" font-size="13">the longest palindromic subsequence of s.</text>
+</svg>

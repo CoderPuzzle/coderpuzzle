@@ -21,6 +21,8 @@ group's end and the next group begins. Because a group of `k` characters
 consumes at most `k` write slots, `write` never passes `read`, so no write
 can clobber input the scan still needs.
 
+![On chars = [a,a,b,b,c,c,c] each finished group leaves write = read — 2 after "aa", 4 after "bb" — and the last leaves write = 6 against read = 7, with the array front rewritten to a,2,b,2,c,3.](figures/solution-read-write-snapshots.svg)
+
 Only the two indexes and the run count live outside the array, which keeps
 the pass inside the statement's constant-extra-space rule. The in-place
 rewrite is performed exactly as described; the judge observes only the

@@ -10,6 +10,8 @@ value was visited before — it is a duplicate, and it is collected. Reading
 `abs(nums[i])` keeps the pass correct even when the element being read has
 already taken a flip from an earlier visit.
 
+![On nums = [4,3,2,7,8,2,3,1] the arcs map each read value v to slot v-1; the second 2 and 3 land on already-negative slots 1 and 2, marking the duplicates 2 and 3 before the final abs restore.](figures/solution-sign-marking-arcs.svg)
+
 The pass ends with a restore loop that reapplies `abs` to every element, so
 the marking leaves the array exactly as it arrived. Constant auxiliary
 space holds throughout: the only allocation is the output itself, which the

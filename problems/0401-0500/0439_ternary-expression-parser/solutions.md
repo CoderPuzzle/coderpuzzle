@@ -12,6 +12,8 @@ it, then the false branch. Both branches have already collapsed to single
 characters, because every conditional nested inside them met its own `'?'`
 earlier in the scan.
 
+![In F?1:T?4:5 scanned right to left, the stack holds 5 : 4 when the first ? pops 4 : 5 and T pushes back the true 4, then the second ? pops 1 : 4 and F pushes the false 4, leaving the answer 4.](figures/solution-backward-stack-eval.svg)
+
 The condition is the character immediately left of the `'?'` — always `'T'` or
 `'F'`, never a digit or a nested expression — so the scan consumes that one
 character along with the operator, picks the branch the condition demands, and

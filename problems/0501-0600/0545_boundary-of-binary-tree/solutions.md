@@ -11,6 +11,8 @@ leaf push its right child then its left, so pops always run left to right. The
 right boundary is the mirror walk from the root's right child, right child
 preferred, recorded on the way down to be emitted in reverse at the end.
 
+![On the Example 2 tree [1,2,3,4,5,6,null,null,null,7,8,9,10], the three sweeps mark the left boundary [2], the leaves [4,7,8,9,10] left to right and the right boundary [3,6] on one drawing, and concatenate to [1,2,4,7,8,9,10,6,3] with no node printed twice.](figures/solution-three-sweeps-boundary.svg)
+
 What keeps a node from printing in two pieces is where each sweep stops. The
 left walk tests for a leaf before recording, so it halts at — but never takes —
 the leftmost leaf, which then prints only among the leaves; the right walk does

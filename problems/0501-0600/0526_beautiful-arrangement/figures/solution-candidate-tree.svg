@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 630 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="630" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- n = 2; candidates[p] = {v in 1..2 : v % p == 0 or p % v == 0}; boxes: root y=26, children y=140, leaves y=254 -->
+  <g text-anchor="middle">
+    <rect x="235" y="26" width="150" height="60" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="310" y="48" fill="#1a2026" font-weight="600">position 1</text>
+    <text x="310" y="72" fill="#5c6b76" font-size="12.5">can place: 1, 2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 300 86 L 180 138" marker-end="url(#arrow)"/>
+    <path d="M 320 86 L 440 138" marker-end="url(#arrow)"/>
+  </g>
+  <text x="215" y="104" text-anchor="middle" fill="#5c6b76" font-size="11.5">place 1: 1 % 1 = 0</text>
+  <text x="425" y="104" text-anchor="middle" fill="#5c6b76" font-size="11.5">place 2: 2 % 1 = 0</text>
+  <g text-anchor="middle">
+    <rect x="95" y="140" width="150" height="72" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="170" y="160" fill="#1a2026" font-weight="600">position 2</text>
+    <text x="170" y="178" fill="#9aa7b2" font-size="12">used {1}</text>
+    <text x="170" y="198" fill="#4169E1" font-size="12.5" font-weight="600">can place: {2}</text>
+  </g>
+  <g text-anchor="middle">
+    <rect x="375" y="140" width="150" height="72" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="450" y="160" fill="#1a2026" font-weight="600">position 2</text>
+    <text x="450" y="178" fill="#9aa7b2" font-size="12">used {2}</text>
+    <text x="450" y="198" fill="#4169E1" font-size="12.5" font-weight="600">can place: {1}</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 170 212 L 170 252" marker-end="url(#arrow)"/>
+    <path d="M 450 212 L 450 252" marker-end="url(#arrow)"/>
+  </g>
+  <text x="178" y="237" fill="#5c6b76" font-size="11.5">place 2: 2 % 2 = 0</text>
+  <text x="458" y="237" fill="#5c6b76" font-size="11.5">place 1: 2 % 1 = 0</text>
+  <g text-anchor="middle">
+    <rect x="85" y="254" width="170" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="170" y="281" fill="#1a2026" font-weight="600">[1, 2] <tspan fill="#4169E1">counted</tspan></text>
+  </g>
+  <g text-anchor="middle">
+    <rect x="365" y="254" width="170" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="450" y="281" fill="#1a2026" font-weight="600">[2, 1] <tspan fill="#4169E1">counted</tspan></text>
+  </g>
+  <text x="315" y="322" text-anchor="middle" fill="#1a2026" font-size="13">The recursion proposes only divisibility-legal values, so no doomed branch ever forms:</text>
+  <text x="315" y="340" text-anchor="middle" fill="#1a2026" font-size="13">both complete placements [1, 2] and [2, 1] survive, so the answer for n = 2 is <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

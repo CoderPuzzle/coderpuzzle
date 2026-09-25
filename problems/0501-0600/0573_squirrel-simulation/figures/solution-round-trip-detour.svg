@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- garden 5 rows x 7 cols, cells 44px at (40,60); tree [2,2] -> (150,170), squirrel [4,4] -> (238,258),
+       nut [3,0] -> (62,214), nut [2,5] -> (282,170); dashed = 2x3 round trips, accent = winning first leg -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="62" y="52">0</text><text x="106" y="52">1</text><text x="150" y="52">2</text>
+    <text x="194" y="52">3</text><text x="238" y="52">4</text><text x="282" y="52">5</text>
+    <text x="326" y="52">6</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="11">
+    <text x="32" y="86">0</text><text x="32" y="130">1</text><text x="32" y="174">2</text>
+    <text x="32" y="218">3</text><text x="32" y="262">4</text>
+  </g>
+  <rect x="40" y="60" width="308" height="220" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <g stroke="#dbe4fb" stroke-width="1">
+    <path d="M 84 60 V 280 M 128 60 V 280 M 172 60 V 280 M 216 60 V 280 M 260 60 V 280 M 304 60 V 280"/>
+    <path d="M 40 104 H 348 M 40 148 H 348 M 40 192 H 348 M 40 236 H 348"/>
+  </g>
+  <!-- tree icon -->
+  <polygon points="150,150 136,172 164,172" fill="#4169E1"/>
+  <rect x="146" y="172" width="8" height="8" fill="#5c6b76"/>
+  <text x="174" y="190" fill="#5c6b76" font-size="11">tree</text>
+  <!-- squirrel icon -->
+  <circle cx="238" cy="258" r="8" fill="#1a2026"/>
+  <path d="M 245 252 Q 254 247 251 238" fill="none" stroke="#1a2026" stroke-width="2"/>
+  <text x="206" y="262" text-anchor="middle" fill="#5c6b76" font-size="11">squirrel</text>
+  <!-- nuts -->
+  <circle cx="62" cy="214" r="7" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="282" cy="170" r="7" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="62" y="200" text-anchor="middle" fill="#5c6b76" font-size="10.5">nut [3,0]</text>
+  <text x="282" y="152" text-anchor="middle" fill="#5c6b76" font-size="10.5">nut [2,5]</text>
+  <!-- fixed round trips, 2 x 3 = 6 each -->
+  <g stroke="#5c6b76" stroke-width="1.5" fill="none" stroke-dasharray="5 4">
+    <path d="M 66 214 H 150 V 182" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>
+    <path d="M 164 170 H 271" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>
+  </g>
+  <text x="108" y="230" text-anchor="middle" fill="#5c6b76" font-size="10.5">2&#215;3=6</text>
+  <text x="216" y="162" text-anchor="middle" fill="#5c6b76" font-size="10.5">2&#215;3=6</text>
+  <!-- winning first leg -->
+  <path d="M 248 258 H 282 V 179" fill="none" stroke="#4169E1" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <text x="264" y="276" text-anchor="middle" fill="#4169E1" font-size="10.5" font-weight="600">first leg: 3</text>
+  <!-- distance ledger -->
+  <text x="380" y="84" fill="#5c6b76" font-size="12.5">round trips (fixed):</text>
+  <text x="380" y="106" fill="#1a2026" font-size="13">nut [3,0]: 2 &#215; 3 = 6</text>
+  <text x="380" y="128" fill="#1a2026" font-size="13">nut [2,5]: 2 &#215; 3 = 6</text>
+  <text x="380" y="162" fill="#5c6b76" font-size="12.5">first-leg change:</text>
+  <text x="380" y="182" fill="#5c6b76" font-size="12">dist(squirrel, nut) &#8722; dist(nut, tree)</text>
+  <text x="380" y="206" fill="#5c6b76" font-size="13">start [3,0]: 5 &#8722; 3 = +2</text>
+  <text x="380" y="228" fill="#4169E1" font-size="13" font-weight="600">start [2,5]: 3 &#8722; 3 = 0 &#8592; best</text>
+  <text x="380" y="260" fill="#1a2026" font-size="14" font-weight="600">total = 6 + 6 + 0 = <tspan fill="#4169E1">12</tspan></text>
+  <text x="320" y="312" text-anchor="middle" fill="#1a2026" font-size="13">Both round trips cost 2 &#215; 3 = 6 whichever nut goes first; only the first leg varies:</text>
+  <text x="320" y="334" text-anchor="middle" fill="#1a2026" font-size="13">starting at [2,5] adds 3 instead of 5 &#8212; change 0 vs +2 &#8212; for a minimum total of <tspan fill="#4169E1" font-weight="600">12</tspan>.</text>
+</svg>

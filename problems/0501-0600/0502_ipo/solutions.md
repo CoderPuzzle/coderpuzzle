@@ -6,6 +6,8 @@ At every moment the only freedom is which affordable project to finish next, and
 
 The implementation makes each pick cheap by pre-sorting the projects by required capital and sweeping a pointer forward. Whenever the current capital meets `projects[index][0]`, that project becomes affordable forever, so its profit (negated, to invert Python's min-heap) is pushed onto a heap once — no project is ever pushed twice. A pick is then a single `heappop`, after first draining every newly affordable project into the heap.
 
+![On k = 2, w = 0, profits = [1,2,3], capital = [0,1,1], the sorted sweep pushes profit 1 into the heap in round 1 (w: 0 → 1), then profits 2 and 3 in round 2, and the pops of max 1 then max 3 lift the capital to 4.](figures/solution-greedy-sweep-max-heap.svg)
+
 Two terminations matter. The loop runs only `min(k, n)` times because at most `n` distinct projects can be finished, and it breaks early if the heap is empty — meaning capital is too low to start anything left, so picking must stop even though the quota remains. The final capital counter accumulates every popped profit, and since all profits are non-negative the greedy never regresses.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

@@ -48,6 +48,8 @@ and smaller than all after it, so the stretch between the two edges is the
 shortest subarray whose sort leaves the whole array sorted, and length 0
 falls out when no flag ever appears.
 
+![On nums [2, 6, 4, 8, 10, 9, 15], the forward scan's last dip is 9 under the running max 10 (index 5) and the backward scan's first rise is 6 over the running min 4 (index 1), bracketing a window of length 5.](figures/solution-running-extremes-edges.svg)
+
 The comparisons are strict, so equal values never extend the window on
 their own: an element that merely equals the running extreme still fits the
 sorted order and raises no flag. `[1, 2, 2, 3]` therefore needs no work,

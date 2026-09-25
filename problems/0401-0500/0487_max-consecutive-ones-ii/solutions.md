@@ -11,6 +11,8 @@ until the earlier 0 falls out and the one-flip budget is restored. The largest
 window seen along the way is the maximum run of consecutive 1s after the best
 flip.
 
+![On nums = [1, 0, 1, 1, 0] the window holding at most one 0 grows to length 4 over [1, 0, 1, 1], and when the second 0 enters at index 4 the left edge jumps to index 2, the best length staying 4.](figures/solution-window-at-most-one-zero.svg)
+
 Both pointers only ever move forward — each element enters the window once and
 leaves at most once — so the sweep is linear. It keeps nothing but three
 counters, which answers the Follow-up: fed as an infinite stream, the same

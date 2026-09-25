@@ -13,6 +13,8 @@ anchor fails at its first disagreement, so a wrong anchor usually costs one
 root-to-leaf path rather than all of `subRoot`, and the answer is true the
 moment any anchor accepts.
 
+![On root = [3,4,5,1,2] and subRoot = [4,1,2] the anchor walk tries node 3, then node 5 — each failing at its first compared pair, 3 ≠ 4 and 5 ≠ 4 — before the anchor at 4 matches every aligned pair 4=4, 1=1, 2=2 and returns true.](figures/solution-anchor-walk.svg)
+
 The worst case is honest but narrow: `subRoot` can disagree with an anchor
 only by walking out to its own frontier, so an all-equal adversarial pair —
 a 2000-node chain against a 1000-node chain sharing its values — forces

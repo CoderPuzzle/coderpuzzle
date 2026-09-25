@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 348" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="348" fill="#ffffff"/>
+  <!-- tree = [1,null,3,2,4,null,5,6]: 1 has children [3,2,4], 3 has children [5,6];
+       stack boxes 24x24 at x = 316 + 26k, drawn bottom-to-top, rows y = 78 + 30i;
+       each step shows the stack after it; the top of the stack is accented;
+       children pushed last-first, so the first child is on top; final emitted [1,3,5,6,2,4] -->
+  <text x="100" y="58" text-anchor="middle" fill="#5c6b76" font-size="11">the tree</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="92.3" y1="106" x2="61.7" y2="162"/>
+    <line x1="102.3" y1="107.8" x2="109.7" y2="160.2"/>
+    <line x1="110.2" y1="104.3" x2="159.8" y2="163.7"/>
+    <line x1="48.8" y1="191.2" x2="33.2" y2="236.8"/>
+    <line x1="59.2" y1="191.2" x2="74.8" y2="236.8"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="100" cy="92" r="16"/>
+    <circle cx="54" cy="176" r="16"/><circle cx="112" cy="176" r="16"/><circle cx="170" cy="176" r="16"/>
+    <circle cx="28" cy="252" r="16"/><circle cx="80" cy="252" r="16"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5" fill="#1a2026">
+    <text x="100" y="97">1</text>
+    <text x="54" y="181">3</text><text x="112" y="181">2</text><text x="170" y="181">4</text>
+    <text x="28" y="257">5</text><text x="80" y="257">6</text>
+  </g>
+  <!-- step table -->
+  <g fill="#5c6b76" font-size="11">
+    <text x="244" y="64">step</text>
+    <text x="316" y="64">stack (bottom → top)</text>
+    <text x="506" y="64">emitted</text>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="244" y="95">push 1</text>
+    <text x="244" y="125">pop 1</text>
+    <text x="244" y="155">pop 3</text>
+    <text x="244" y="185">pop 5</text>
+    <text x="244" y="215">pop 6</text>
+    <text x="244" y="245">pop 2</text>
+    <text x="244" y="275">pop 4</text>
+  </g>
+  <!-- stacks: plain boxes below, accented top-of-stack -->
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="#f0f3f7">
+    <rect x="316" y="108" width="24" height="24"/><rect x="342" y="108" width="24" height="24"/>
+    <rect x="316" y="138" width="24" height="24"/><rect x="342" y="138" width="24" height="24"/><rect x="368" y="138" width="24" height="24"/>
+    <rect x="316" y="168" width="24" height="24"/><rect x="342" y="168" width="24" height="24"/>
+    <rect x="316" y="198" width="24" height="24"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="#dbe4fb">
+    <rect x="316" y="78" width="24" height="24"/>
+    <rect x="368" y="108" width="24" height="24"/>
+    <rect x="394" y="138" width="24" height="24"/>
+    <rect x="368" y="168" width="24" height="24"/>
+    <rect x="342" y="198" width="24" height="24"/>
+    <rect x="316" y="228" width="24" height="24" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="328" y="95" fill="#4169E1" font-weight="600">1</text>
+    <text x="328" y="125">4</text><text x="354" y="125">2</text><text x="380" y="125" fill="#4169E1" font-weight="600">3</text>
+    <text x="328" y="155">4</text><text x="354" y="155">2</text><text x="380" y="155">6</text><text x="406" y="155" fill="#4169E1" font-weight="600">5</text>
+    <text x="328" y="185">4</text><text x="354" y="185">2</text><text x="380" y="185" fill="#4169E1" font-weight="600">6</text>
+    <text x="328" y="215">4</text><text x="354" y="215" fill="#4169E1" font-weight="600">2</text>
+    <text x="328" y="245" fill="#4169E1" font-weight="600">4</text>
+  </g>
+  <text x="316" y="275" fill="#9aa7b2" font-size="11">empty</text>
+  <!-- emitted so far; the newest value accented -->
+  <g font-size="12.5" fill="#1a2026">
+    <text x="506" y="95" fill="#9aa7b2">[]</text>
+    <text x="506" y="125">[<tspan fill="#4169E1" font-weight="600">1</tspan>]</text>
+    <text x="506" y="155">[1, <tspan fill="#4169E1" font-weight="600">3</tspan>]</text>
+    <text x="506" y="185">[1, 3, <tspan fill="#4169E1" font-weight="600">5</tspan>]</text>
+    <text x="506" y="215">[1, 3, 5, <tspan fill="#4169E1" font-weight="600">6</tspan>]</text>
+    <text x="506" y="245">[1, 3, 5, 6, <tspan fill="#4169E1" font-weight="600">2</tspan>]</text>
+    <text x="506" y="275" font-weight="600">[1, 3, 5, 6, 2, <tspan fill="#4169E1">4</tspan>]</text>
+  </g>
+  <text x="330" y="312" text-anchor="middle" fill="#1a2026" font-size="13">Pushing children last-first puts the first child on top: after 1, the stack is [4, 2, 3];</text>
+  <text x="330" y="332" text-anchor="middle" fill="#1a2026" font-size="13">the walk finishes 3's whole subtree [5, 6] before 2 or 4 — preorder <tspan fill="#4169E1" font-weight="600">[1, 3, 5, 6, 2, 4]</tspan>.</text>
+</svg>

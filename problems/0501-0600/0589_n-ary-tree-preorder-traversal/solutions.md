@@ -10,6 +10,8 @@ subtree is consumed before any sibling appears. Each node enters and leaves
 the stack exactly once, and the emitted sequence is the preorder walk by
 construction.
 
+![On the tree [1, null, 3, 2, 4, null, 5, 6], pushing 1's children last-first leaves the stack [4, 2, 3] with first child 3 on top, and the walk emits [1, 3, 5, 6, 2, 4].](figures/solution-preorder-stack-table.svg)
+
 The stack depth is bounded by the tree's height times the widest group on
 the current path, never by recursion frames — a 1000-node chain or a
 1000-leaf root are both plain loop iterations, which is what the follow-up

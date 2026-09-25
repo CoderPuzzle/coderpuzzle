@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 430" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="430" fill="#ffffff"/>
+  <!-- boxes = [1,3,2,2,2,3,4,3,1]; cells 52x38 at (106,44), center x = 132+52i;
+       accent digits = the scattered 3s that weld into one 3x3, gray digits = the
+       two 1s that weld into 2x2; table = the optimal dfs chain, 9 + 1 + 9 + 4 = 23 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="106" y="44" width="52" height="38"/><rect x="158" y="44" width="52" height="38"/>
+    <rect x="210" y="44" width="52" height="38"/><rect x="262" y="44" width="52" height="38"/>
+    <rect x="314" y="44" width="52" height="38"/><rect x="366" y="44" width="52" height="38"/>
+    <rect x="418" y="44" width="52" height="38"/><rect x="470" y="44" width="52" height="38"/>
+    <rect x="522" y="44" width="52" height="38"/>
+  </g>
+  <g text-anchor="middle" font-size="15">
+    <text x="132" y="69" fill="#5c6b76" font-weight="600">1</text>
+    <text x="184" y="69" fill="#4169E1" font-weight="600">3</text>
+    <text x="236" y="69">2</text><text x="288" y="69">2</text><text x="340" y="69">2</text>
+    <text x="392" y="69" fill="#4169E1" font-weight="600">3</text>
+    <text x="444" y="69">4</text>
+    <text x="496" y="69" fill="#4169E1" font-weight="600">3</text>
+    <text x="548" y="69" fill="#5c6b76" font-weight="600">1</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="132" y="100">0</text><text x="184" y="100">1</text><text x="236" y="100">2</text>
+    <text x="288" y="100">3</text><text x="340" y="100">4</text><text x="392" y="100">5</text>
+    <text x="444" y="100">6</text><text x="496" y="100">7</text><text x="548" y="100">8</text>
+  </g>
+  <!-- optimal dfs chain -->
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="52" y="136">state</text>
+    <text x="210" y="136">move</text>
+    <text x="616" y="136" text-anchor="middle">pts</text>
+  </g>
+  <g font-size="13">
+    <g fill="#1a2026">
+      <text x="52" y="161">dfs(0,8,0)</text>
+      <text x="52" y="189">dfs(1,7,0)</text>
+      <text x="52" y="217">dfs(2,4,0)</text>
+      <text x="52" y="245">dfs(5,7,1)</text>
+      <text x="52" y="273">dfs(6,6,0)</text>
+      <text x="52" y="301">dfs(7,7,2)</text>
+      <text x="52" y="329">dfs(8,8,1)</text>
+    </g>
+    <g fill="#1a2026">
+      <text x="210" y="161">hold the 1, clear the middle, meet the 1 at index 8</text>
+      <text x="210" y="189">hold the 3, clear the middle, meet the 3 at index 5</text>
+      <text x="210" y="217">run absorbed (k = 0 &#8594; 2): take the three 2s</text>
+      <text x="210" y="245">one 3 carried in; hold it, meet the 3 at index 7</text>
+      <text x="210" y="273">take the 4</text>
+      <text x="210" y="301">take the 3 joined by its 2 carried 3s</text>
+      <text x="210" y="329">take the last 1 joined by the held 1</text>
+    </g>
+    <g text-anchor="middle" fill="#9aa7b2">
+      <text x="616" y="161">&#8212;</text>
+      <text x="616" y="189">&#8212;</text>
+      <text x="616" y="245">&#8212;</text>
+    </g>
+    <g text-anchor="middle" fill="#1a2026">
+      <text x="616" y="217">3&#178; = 9</text>
+      <text x="616" y="273">1&#178; = 1</text>
+      <text x="616" y="301">3&#178; = 9</text>
+      <text x="616" y="329">2&#178; = 4</text>
+    </g>
+  </g>
+  <line x1="52" y1="346" x2="640" y2="346" stroke="#dbe4fb" stroke-width="1.2"/>
+  <text x="210" y="369" fill="#1a2026" font-size="13" font-weight="600">total after all removals</text>
+  <text x="616" y="370" text-anchor="middle" fill="#4169E1" font-size="15" font-weight="600">23</text>
+  <text x="340" y="399" text-anchor="middle" fill="#1a2026" font-size="13">Held boxes weld distant groups: the three 3s earn 3&#178; = 9, the two 1s earn 2&#178; = 4.</text>
+  <text x="340" y="417" text-anchor="middle" fill="#1a2026" font-size="13">With the run of 2s (3&#178; = 9) and the lone 4 (1), the best total is <tspan fill="#4169E1" font-weight="600">23</tspan>.</text>
+</svg>

@@ -54,6 +54,10 @@ When the two first letters agree they open a common subsequence, so
 from an optimal answer and `dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])`.
 The zero row seeds the table, and the answer is `dp[n][n]`.
 
+![For s = "bbbab" against its reversal "babbb", the completed LCS table holds
+dp[5][5] = 4, and the backtrack collects four matched b's — the palindrome
+"bbbb".](figures/solution-lcs-reversed-string.svg)
+
 Each cell reads only the cell above it and the cell to its left, so the
 code keeps two rows — `prev` holds row `i - 1` while `curr` grows left to
 right — and the fill lives in `O(n)` memory where the interval table needed

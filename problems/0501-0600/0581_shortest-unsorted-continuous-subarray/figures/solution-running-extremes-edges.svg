@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 348" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="348" fill="#ffffff"/>
+  <!-- nums = [2,6,4,8,10,9,15]; cells 64x40 at x = 106 + 64i, y = 152;
+       top row = running prefix max incl. self, bottom row = running suffix min incl. self;
+       a row value differing from the cell value is a flag; last forward flag = index 5 (9 < 10),
+       first backward flag = index 1 (6 > 4); window 1..5 has length 5 -->
+  <!-- prefix max row: [2,6,6,8,10,10,15]; flags at i=2 (secondary) and i=5 (accent, the right edge) -->
+  <text x="96" y="144" text-anchor="end" fill="#5c6b76" font-size="11">prefix max →</text>
+  <g text-anchor="middle" font-size="12">
+    <text x="138" y="144" fill="#9aa7b2">2</text>
+    <text x="202" y="144" fill="#9aa7b2">6</text>
+    <text x="266" y="144" fill="#5c6b76">6</text>
+    <text x="330" y="144" fill="#9aa7b2">8</text>
+    <text x="394" y="144" fill="#9aa7b2">10</text>
+    <text x="458" y="144" fill="#4169E1" font-weight="600">10</text>
+    <text x="522" y="144" fill="#9aa7b2">15</text>
+  </g>
+  <!-- array cells; edges (indices 1 and 5) accented -->
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="106" y="152" width="64" height="40"/>
+    <rect x="170" y="152" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="234" y="152" width="64" height="40"/>
+    <rect x="298" y="152" width="64" height="40"/>
+    <rect x="362" y="152" width="64" height="40"/>
+    <rect x="426" y="152" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="490" y="152" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="138" y="177" fill="#1a2026">2</text>
+    <text x="202" y="177" fill="#4169E1">6</text>
+    <text x="266" y="177" fill="#1a2026">4</text>
+    <text x="330" y="177" fill="#1a2026">8</text>
+    <text x="394" y="177" fill="#1a2026">10</text>
+    <text x="458" y="177" fill="#4169E1">9</text>
+    <text x="522" y="177" fill="#1a2026">15</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="138" y="208">0</text><text x="202" y="208">1</text><text x="266" y="208">2</text>
+    <text x="330" y="208">3</text><text x="394" y="208">4</text><text x="458" y="208">5</text>
+    <text x="522" y="208">6</text>
+  </g>
+  <!-- suffix min row: [2,4,4,8,9,9,15]; flags at i=4 (secondary) and i=1 (accent, the left edge) -->
+  <text x="96" y="242" text-anchor="end" fill="#5c6b76" font-size="11">← suffix min</text>
+  <g text-anchor="middle" font-size="12">
+    <text x="138" y="242" fill="#9aa7b2">2</text>
+    <text x="202" y="242" fill="#4169E1" font-weight="600">4</text>
+    <text x="266" y="242" fill="#9aa7b2">4</text>
+    <text x="330" y="242" fill="#9aa7b2">8</text>
+    <text x="394" y="242" fill="#5c6b76">9</text>
+    <text x="458" y="242" fill="#9aa7b2">9</text>
+    <text x="522" y="242" fill="#9aa7b2">15</text>
+  </g>
+  <!-- window bracket over indices 1..5 -->
+  <path d="M 202 254 V 260 H 458 V 254" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="330" y="282" text-anchor="middle" fill="#1a2026" font-size="12.5">sorting indices 1..5 sorts the array — length <tspan fill="#4169E1" font-weight="600">5</tspan></text>
+  <text x="330" y="308" text-anchor="middle" fill="#1a2026" font-size="13">Forward, the last dip under the running max is 9 &lt; 10 at index 5 — the right edge;</text>
+  <text x="330" y="328" text-anchor="middle" fill="#1a2026" font-size="13">backward, the first rise over the running min is 6 &gt; 4 at index 1 — the left edge.</text>
+</svg>

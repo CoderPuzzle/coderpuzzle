@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="520" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [2,4,6,8,10]; dp[i][d] = length>=2 arithmetic subsequences ending at i with difference d;
+       cells 62x32 at x = 100+66c (c = 0..3 for d = 2,4,6,8), rows y = 60+48r; right column = running total after index i -->
+  <text x="40" y="28" font-weight="600" fill="#1a2026">nums = [2, 4, 6, 8, 10]</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="131" y="54">d = 2</text><text x="197" y="54">d = 4</text>
+    <text x="263" y="54">d = 6</text><text x="329" y="54">d = 8</text>
+    <text x="405" y="54">total</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="92" y="81">i = 0</text><text x="92" y="129">i = 1</text><text x="92" y="177">i = 2</text>
+    <text x="92" y="225">i = 3</text><text x="92" y="273">i = 4</text>
+  </g>
+  <!-- empty cells (difference never seen at that index) -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1">
+    <rect x="100" y="60" width="62" height="32"/><rect x="166" y="60" width="62" height="32"/>
+    <rect x="232" y="60" width="62" height="32"/><rect x="298" y="60" width="62" height="32"/>
+    <rect x="166" y="108" width="62" height="32"/><rect x="232" y="108" width="62" height="32"/>
+    <rect x="298" y="108" width="62" height="32"/>
+    <rect x="232" y="156" width="62" height="32"/><rect x="298" y="156" width="62" height="32"/>
+    <rect x="298" y="204" width="62" height="32"/>
+  </g>
+  <!-- filled dp cells -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="100" y="108" width="62" height="32"/>
+    <rect x="100" y="156" width="62" height="32"/><rect x="166" y="156" width="62" height="32"/>
+    <rect x="100" y="204" width="62" height="32"/><rect x="166" y="204" width="62" height="32"/>
+    <rect x="232" y="204" width="62" height="32"/>
+    <rect x="100" y="252" width="62" height="32"/><rect x="166" y="252" width="62" height="32"/>
+    <rect x="232" y="252" width="62" height="32"/><rect x="298" y="252" width="62" height="32"/>
+  </g>
+  <!-- dp[3][2] = 3 is the source of the final extension -->
+  <rect x="100" y="252" width="62" height="32" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <!-- running total column -->
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.5">
+    <rect x="370" y="60" width="70" height="32"/><rect x="370" y="108" width="70" height="32"/>
+    <rect x="370" y="156" width="70" height="32"/><rect x="370" y="204" width="70" height="32"/>
+    <rect x="370" y="252" width="70" height="32"/>
+  </g>
+  <g text-anchor="middle">
+    <g font-size="14">
+      <text x="131" y="129">1</text>
+      <text x="131" y="177">2</text><text x="197" y="177">1</text>
+      <text x="131" y="225">3</text><text x="197" y="225">1</text><text x="263" y="225">1</text>
+    </g>
+    <text x="131" y="273" font-size="15" font-weight="600" fill="#4169E1">4</text>
+    <text x="197" y="273" font-size="14">2</text><text x="263" y="273" font-size="14">1</text>
+    <text x="329" y="273" font-size="14">1</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="405" y="81" fill="#5c6b76">0</text><text x="405" y="129" fill="#5c6b76">0</text>
+    <text x="405" y="177">1</text><text x="405" y="225">3</text>
+    <text x="405" y="273" font-size="15" font-weight="600" fill="#4169E1">7</text>
+  </g>
+  <!-- the final extension: dp[3][2] = 3 flows into dp[4][2], total 4 -> 7 -->
+  <path d="M 131 239 L 131 248" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="141" y="250" fill="#4169E1" font-size="12" font-weight="600">+3 to the total</text>
+  <text x="260" y="314" text-anchor="middle" fill="#1a2026" font-size="13">Every pair j &lt; i extends dp[j][d] subsequences to i and adds that</text>
+  <text x="260" y="332" text-anchor="middle" fill="#1a2026" font-size="13">count to the total; i = 4, d = 2 extends 3, lifting the total to <tspan fill="#4169E1" font-weight="600">7</tspan>.</text>
+</svg>

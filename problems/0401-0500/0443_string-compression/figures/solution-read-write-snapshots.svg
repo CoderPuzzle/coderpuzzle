@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- chars = [a,a,b,b,c,c,c]; one array row per finished group; cells 52x34 at x=90+52i;
+       light-accent cells = rewritten by write, pointers sit at index boundaries x=90+52i -->
+  <text x="90" y="40" fill="#5c6b76" font-size="12.5">chars = [a,a,b,b,c,c,c]</text>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="14" y="77">after "aa"</text>
+    <text x="14" y="163">after "bb"</text>
+    <text x="14" y="247">after "ccc"</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="90" y="56" width="52" height="34" fill="#dbe4fb"/><rect x="142" y="56" width="52" height="34" fill="#dbe4fb"/>
+    <rect x="194" y="56" width="52" height="34" fill="#ffffff"/><rect x="246" y="56" width="52" height="34" fill="#ffffff"/>
+    <rect x="298" y="56" width="52" height="34" fill="#ffffff"/><rect x="350" y="56" width="52" height="34" fill="#ffffff"/>
+    <rect x="402" y="56" width="52" height="34" fill="#ffffff"/>
+    <rect x="90" y="142" width="52" height="34" fill="#dbe4fb"/><rect x="142" y="142" width="52" height="34" fill="#dbe4fb"/>
+    <rect x="194" y="142" width="52" height="34" fill="#dbe4fb"/><rect x="246" y="142" width="52" height="34" fill="#dbe4fb"/>
+    <rect x="298" y="142" width="52" height="34" fill="#ffffff"/><rect x="350" y="142" width="52" height="34" fill="#ffffff"/>
+    <rect x="402" y="142" width="52" height="34" fill="#ffffff"/>
+    <rect x="90" y="226" width="52" height="34" fill="#dbe4fb"/><rect x="142" y="226" width="52" height="34" fill="#dbe4fb"/>
+    <rect x="194" y="226" width="52" height="34" fill="#dbe4fb"/><rect x="246" y="226" width="52" height="34" fill="#dbe4fb"/>
+    <rect x="298" y="226" width="52" height="34" fill="#dbe4fb"/><rect x="350" y="226" width="52" height="34" fill="#dbe4fb"/>
+    <rect x="402" y="226" width="52" height="34" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="116" y="78" fill="#4169E1">a</text><text x="168" y="78" fill="#4169E1">2</text>
+    <text x="220" y="78" fill="#1a2026">b</text><text x="272" y="78" fill="#1a2026">b</text>
+    <text x="324" y="78" fill="#1a2026">c</text><text x="376" y="78" fill="#1a2026">c</text>
+    <text x="428" y="78" fill="#1a2026">c</text>
+    <text x="116" y="164" fill="#4169E1">a</text><text x="168" y="164" fill="#4169E1">2</text>
+    <text x="220" y="164" fill="#4169E1">b</text><text x="272" y="164" fill="#4169E1">2</text>
+    <text x="324" y="164" fill="#1a2026">c</text><text x="376" y="164" fill="#1a2026">c</text>
+    <text x="428" y="164" fill="#1a2026">c</text>
+    <text x="116" y="248" fill="#4169E1">a</text><text x="168" y="248" fill="#4169E1">2</text>
+    <text x="220" y="248" fill="#4169E1">b</text><text x="272" y="248" fill="#4169E1">2</text>
+    <text x="324" y="248" fill="#4169E1">c</text><text x="376" y="248" fill="#4169E1">3</text>
+    <text x="428" y="248" fill="#9aa7b2">c</text>
+  </g>
+  <g fill="none" stroke-width="1.8">
+    <path d="M 194 112 L 194 100" stroke="#4169E1" marker-end="url(#arrow)"/>
+    <path d="M 298 198 L 298 186" stroke="#4169E1" marker-end="url(#arrow)"/>
+    <path d="M 402 282 L 402 270" stroke="#4169E1" marker-end="url(#arrow)"/>
+    <path d="M 454 282 L 454 270" stroke="#5c6b76" marker-end="url(#arrowgray)"/>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="194" y="130">write = read = 2</text>
+    <text x="298" y="216">write = read = 4</text>
+    <text x="402" y="300">write 6</text>
+    <text x="458" y="300">read 7</text>
+  </g>
+  <text x="40" y="330" fill="#1a2026" font-size="13">Each group writes its character and count over cells read has already</text>
+  <text x="40" y="348" fill="#1a2026" font-size="13">passed: the front becomes <tspan fill="#4169E1" font-weight="600">a,2,b,2,c,3</tspan> — write 6 never passes read 7.</text>
+</svg>

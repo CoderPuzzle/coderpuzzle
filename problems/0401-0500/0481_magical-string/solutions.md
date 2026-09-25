@@ -20,4 +20,6 @@ already on the table. The loop stops once `n` elements exist; the last group
 may overshoot, which is harmless, and the answer is the number of 1s among
 the first `n` elements.
 
+![Generating the magical string for n = 6, the read pointer consumes s[2] = 2 then s[3] = 1 to append the groups 11 and 2, growing the seed 122 into 122112, whose first 6 digits hold three 1s.](figures/solution-self-generation-pointers.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

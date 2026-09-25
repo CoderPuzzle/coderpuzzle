@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 386" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="386" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- ring = "godding" (n = 7), key = "gd"; positions 0:g 1:o 2:d 3:d 4:i 5:n 6:g
+       dp layers: after 'g' {0:0, 6:1}; after 'd' {2:2, 3:3}; chips show dp cost;
+       accent arc = cheapest rotation 0 -> 2 (2 steps); dashed g(6) arc = the
+       cost-3 clockwise rotation 6 -> 0 -> 1 -> 2 through 12:00 (min(4, 3) = 3) -->
+  <circle cx="200" cy="190" r="100" fill="none" stroke="#9aa7b2" stroke-width="1"/>
+  <!-- rotation arcs -->
+  <path d="M 122 127 A 100 100 0 0 1 298 212" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path d="M 200 90 A 100 100 0 0 0 122 127" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path d="M 200 90 A 100 100 0 0 1 298 212" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <text x="320" y="92" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">rotate 2</text>
+  <text x="149" y="84" text-anchor="middle" fill="#9aa7b2" font-size="11.5">cost 3</text>
+  <!-- ring letters -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="278" cy="127" r="15"/><circle cx="157" cy="280" r="15"/><circle cx="103" cy="212" r="15"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="#ffffff">
+    <circle cx="200" cy="90" r="15"/><circle cx="298" cy="212" r="15"/><circle cx="243" cy="280" r="15"/><circle cx="122" cy="127" r="15"/>
+  </g>
+  <g text-anchor="middle" font-size="14" fill="#1a2026">
+    <text x="200" y="95" font-weight="600">g</text><text x="278" y="132">o</text>
+    <text x="298" y="217" font-weight="600">d</text><text x="243" y="285" font-weight="600">d</text>
+    <text x="157" y="285">i</text><text x="103" y="217">n</text><text x="122" y="132" font-weight="600">g</text>
+  </g>
+  <!-- dp cost chips -->
+  <g stroke="#9aa7b2" stroke-width="1">
+    <line x1="200" y1="75" x2="200" y2="68"/>
+    <line x1="110" y1="118" x2="100" y2="109"/>
+    <line x1="313" y1="215" x2="325" y2="218"/>
+    <line x1="250" y1="293" x2="256" y2="305"/>
+  </g>
+  <circle cx="200" cy="56" r="12" fill="#dbe4fb"/>
+  <text x="200" y="61" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">0</text>
+  <circle cx="90" cy="102" r="12" fill="#dbe4fb"/>
+  <text x="90" y="107" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">1</text>
+  <circle cx="337" cy="221" r="12" fill="#4169E1"/>
+  <text x="337" y="226" text-anchor="middle" font-size="12.5" font-weight="600" fill="#ffffff">2</text>
+  <circle cx="261" cy="316" r="12" fill="#dbe4fb"/>
+  <text x="261" y="321" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">3</text>
+  <text x="222" y="60" fill="#5c6b76" font-size="11">12:00 · start, press</text>
+  <text x="337" y="247" text-anchor="middle" fill="#5c6b76" font-size="10.5">press</text>
+  <!-- dp layer panel -->
+  <text x="408" y="72" fill="#5c6b76" font-size="12.5" font-weight="600">dp layers (rotation steps)</text>
+  <text x="408" y="96" fill="#1a2026" font-size="13">after 'g':  dp = {0: 0,  6: 1}</text>
+  <text x="408" y="122" fill="#1a2026" font-size="13">after 'd':  dp = {2: 2,  3: 3}</text>
+  <text x="408" y="156" fill="#5c6b76" font-size="12.5">rotation i → j costs</text>
+  <text x="408" y="174" fill="#5c6b76" font-size="12.5">min(|i - j|, 7 - |i - j|)</text>
+  <text x="408" y="208" fill="#1a2026" font-size="13">answer: min(2, 3) rotations</text>
+  <text x="408" y="230" fill="#4169E1" font-size="13.5" font-weight="600">+ 2 presses = 4</text>
+  <text x="320" y="356" text-anchor="middle" fill="#1a2026" font-size="13">g starts aligned at 12:00 — press; rotate 2 to the d at index 2 — press:</text>
+  <text x="320" y="374" text-anchor="middle" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">2 rotations + 2 presses = 4</tspan> (the d at index 3 would cost 5).</text>
+</svg>

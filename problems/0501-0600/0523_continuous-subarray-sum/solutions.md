@@ -15,6 +15,10 @@ reverse. With more prefixes than remainders (`n + 1 > k`) some remainder must
 repeat by pigeonhole, but a repeat alone is not enough: adjacent equal
 remainders still fail the length rule.
 
+![nums [23, 2, 4, 6, 7] with k = 6: the running remainders 5, 1, 5, ... repeat
+the 5 at i = 2 against its first sighting at i = 0, a span of 2 that certifies
+the good subarray [2, 4] summing to 6, a multiple of k.](figures/solution-prefix-remainder-map.svg)
+
 The map is seeded with remainder `0` at index `-1`, standing for the empty
 prefix before any element. That single seed carries two rules of the
 statement. Windows starting at index `0` become ordinary map hits — the

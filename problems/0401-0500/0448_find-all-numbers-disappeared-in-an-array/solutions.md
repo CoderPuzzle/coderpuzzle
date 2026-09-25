@@ -42,6 +42,8 @@ seen". Reading `abs(nums[i])` keeps the pass correct even when the element
 being read has already taken a flip from an earlier visit, and repeats are
 harmless: only the first visit to a slot changes anything.
 
+![On nums = [4, 3, 2, 7, 8, 2, 3, 1], the marking pass flips slot v - 1 negative for every value read (repeats change nothing), leaving only slots 4 and 5 positive, which the second sweep reads as the answer [5, 6].](figures/solution-sign-marking-sweep.svg)
+
 A second sweep then reads the marks back. Slot `i` still positive means the
 value `i + 1` was never written anywhere in the array, so it belongs to the
 answer; collecting in index order gathers the values ascending by

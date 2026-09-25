@@ -22,6 +22,8 @@ Marking happens at enqueue time rather than at dequeue time, so no city can ente
 
 Instead of traversing, grow provinces by merging. Every city begins as its own province, and each road — an `isConnected[i][j] == 1` pair with `i < j` — is offered to a disjoint-set union: when the two endpoints have different roots the road genuinely joins two provinces, one root is glued under the other, and the count drops by one; when they already share a root the road is redundant and changes nothing. The matrix is symmetric, so scanning pairs `i < j` feeds every road to the union exactly once while skipping the self-diagonal.
 
+![On isConnected = [[1,1,0],[1,1,0],[0,0,1]], the single road above the diagonal unions city 1 under city 2 and drops the count 3 → 2, while city 3 stays its own root.](figures/solution-union-count-drop.svg)
+
 The parent array implements the DSU with path-halving — `parent[x] = parent[parent[x]]` splices every other node on the walk directly under its grandparent, flattening the tree as it goes so repeated finds get progressively cheaper. After all pairs are consumed, the surviving count is the number of provinces, with no visited array and no traversal at all.
 
 **Complexity:** `O(n^2 · α(n))` time — every matrix pair is inspected once and each union costs near-constant amortized time under compression — with `O(n)` space for the parent array.

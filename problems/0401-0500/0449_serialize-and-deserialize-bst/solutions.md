@@ -17,6 +17,8 @@ closes the slot. Filling a left slot re-opens the same parent's right slot
 beneath it, so the tokens are consumed in exactly the order the walk produced
 them and the shape rebuilds node for node.
 
+![Deserializing 2, 1, x, x, 3, x, x, the stack of open child slots fills and closes token by token — 1 fills 2's left slot and reopens its right, 3 fills 2's right — until the last x drains it and [2, 1, 3] is rebuilt.](figures/solution-open-slot-stack.svg)
+
 The BST property is never consulted in either direction: the structure
 traveled in full, so the round trip restores the identical binary search tree
 whatever order its values satisfy. Both methods touch each node and each of

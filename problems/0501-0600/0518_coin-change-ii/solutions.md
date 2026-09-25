@@ -6,6 +6,8 @@ Let `dp[a]` count the combinations of coins summing exactly to `a`, seeded with 
 
 The loop order is what makes the table count combinations rather than ordered sequences. Because one denomination is fully finished before the next begins, every combination is assembled with its coins in one fixed order (the input order of denominations), so each multiset is counted exactly once. Reversing the loops — amounts outside, coins inside — would let the same multiset be reached through different coin orders and would count permutations instead, the classic distinction this problem turns on.
 
+![Amount 5 with coins [1, 2, 5]: the dp row rebuilt after each denomination's full left-to-right pass, dp[5] growing 1 → 3 → 4 — one coin finishes before the next starts, so each of the four combinations is counted exactly once.](figures/solution-denomination-passes.svg)
+
 Since all coin values are positive, no amount below the smallest coin is reachable and the loop bounds naturally skip them; an unreachable target simply keeps its initial 0. One DP array of `amount + 1` cells suffices because each outer pass updates in place, and counts are guaranteed to fit a 32-bit integer. With `n = len(coins)` and `a = amount`, the work is one pass per coin over the amount axis.
 
 **Complexity:** `O(n·a)` time, `O(a)` space.

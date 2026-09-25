@@ -6,6 +6,8 @@ A 132 pattern needs `nums[i] < nums[k] < nums[j]` with `i < j < k`. Scanning fro
 
 `third` is produced by a monotonically decreasing stack of values scanned so far. When the current value exceeds the stack top, everything popped is smaller than the current value and lies to its right — so each popped value certifiably has a larger number before it, and `third` is updated to the last (largest) popped value. Pushing the current value keeps the stack decreasing for future comparisons. A `third` of negative infinity means no valid `(j, k)` pair has formed yet.
 
+![Scanning nums = [3, 1, 4, 2] from the right, the decreasing stack holds 2 then 4 — 4 pops 2 and raises third to 2 — and the next value 1 already sits below third, proving the 132 pattern 1 < 2 < 4.](figures/solution-monotonic-stack-third.svg)
+
 At each step, before touching the stack, the code checks whether the current value is smaller than `third`. If so, the current element is a valid `nums[i]` and the pattern exists: the pair that produced `third` lies entirely to the right. Since `third` only ever increases, the check gets easier as the scan proceeds leftward, and no candidate is missed.
 
 Arrays shorter than three elements are rejected up front. All-equal values never trigger the pattern because pops require strict inequality (`stack[-1] < value`), and equal runs just accumulate on the stack; each element is pushed and popped at most once, keeping the scan linear.

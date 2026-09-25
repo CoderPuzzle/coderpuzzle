@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- 3x1 grid, n=1 so virtual index v = row; strips: slots 44x40 at x=150/202/254, rows y=66/146/226; state shown at each draw, before its swap -->
+  <text x="340" y="18" text-anchor="middle" fill="#5c6b76" font-size="12">3 x 1 grid; virtual index v = row · n + col, n = 1</text>
+  <text x="340" y="34" text-anchor="middle" fill="#5c6b76" font-size="11.5">each strip shows the slots at the moment of its draw, before that swap lands</text>
+  <!-- swap arc: last slot's cell 2 moves into drawn slot 1 -->
+  <path d="M 276 62 Q 250 38 228 62" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- flip 1: remaining 3 -> 2, draw 1, cell 1, [1,0]; slot 1 <- cell 2, map {1: 2} -->
+  <text x="24" y="84" fill="#1a2026" font-weight="600" font-size="14">flip 1</text>
+  <text x="24" y="102" fill="#5c6b76" font-size="11.5">remaining 3 → 2</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="150" y="66" width="44" height="40" fill="#ffffff"/>
+    <rect x="202" y="66" width="44" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+    <rect x="254" y="66" width="44" height="40" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="172" y="80" fill="#5c6b76" font-size="10.5">slot 0</text>
+    <text x="224" y="80" fill="#5c6b76" font-size="10.5">slot 1</text>
+    <text x="276" y="80" fill="#5c6b76" font-size="10.5">slot 2</text>
+    <text x="172" y="99" fill="#1a2026" font-weight="600">0</text>
+    <text x="224" y="99" fill="#4169E1" font-weight="600">1</text>
+    <text x="276" y="99" fill="#1a2026" font-weight="600">2</text>
+  </g>
+  <g font-size="12.5">
+    <text x="320" y="78" fill="#1a2026">draw 1 → cell 1 → return <tspan fill="#4169E1" font-weight="600">[1, 0]</tspan></text>
+    <text x="320" y="94" fill="#5c6b76">swap last slot in: slot 1 ← cell 2</text>
+    <text x="320" y="110" fill="#5c6b76">map {1: 2}</text>
+  </g>
+  <!-- flip 2: remaining 2 -> 1, draw 1 resolves through map to cell 2, [2,0]; drawn = last live slot, map {1: 1} -->
+  <text x="24" y="164" fill="#1a2026" font-weight="600" font-size="14">flip 2</text>
+  <text x="24" y="182" fill="#5c6b76" font-size="11.5">remaining 2 → 1</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="150" y="146" width="44" height="40" fill="#ffffff"/>
+    <rect x="202" y="146" width="44" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+    <rect x="254" y="146" width="44" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="172" y="160" fill="#5c6b76" font-size="10.5">slot 0</text>
+    <text x="224" y="160" fill="#5c6b76" font-size="10.5">slot 1</text>
+    <text x="276" y="160" fill="#9aa7b2" font-size="10.5">slot 2</text>
+    <text x="172" y="179" fill="#1a2026" font-weight="600">0</text>
+    <text x="224" y="179" fill="#4169E1" font-weight="600">2</text>
+  </g>
+  <g font-size="12.5">
+    <text x="320" y="158" fill="#1a2026">draw 1 → map {1: 2} → cell 2 → <tspan fill="#4169E1" font-weight="600">[2, 0]</tspan></text>
+    <text x="320" y="174" fill="#5c6b76">drawn slot is the last live slot:</text>
+    <text x="320" y="190" fill="#5c6b76">slot 1 ← cell 1, map {1: 1}</text>
+  </g>
+  <!-- flip 3: remaining 1 -> 0, draw 0, cell 0, [0,0]; live range drained -->
+  <text x="24" y="244" fill="#1a2026" font-weight="600" font-size="14">flip 3</text>
+  <text x="24" y="262" fill="#5c6b76" font-size="11.5">remaining 1 → 0</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="150" y="226" width="44" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+    <rect x="202" y="226" width="44" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+    <rect x="254" y="226" width="44" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="172" y="240" fill="#5c6b76" font-size="10.5">slot 0</text>
+    <text x="224" y="240" fill="#9aa7b2" font-size="10.5">slot 1</text>
+    <text x="276" y="240" fill="#9aa7b2" font-size="10.5">slot 2</text>
+    <text x="172" y="259" fill="#4169E1" font-weight="600">0</text>
+  </g>
+  <g font-size="12.5">
+    <text x="320" y="238" fill="#1a2026">draw 0 → cell 0 → return <tspan fill="#4169E1" font-weight="600">[0, 0]</tspan></text>
+    <text x="320" y="254" fill="#5c6b76">the live range drains to empty —</text>
+    <text x="320" y="270" fill="#5c6b76">every cell returned exactly once</text>
+  </g>
+  <text x="340" y="304" text-anchor="middle" fill="#1a2026" font-size="13">Every draw is uniform over exactly the shrinking live range and resolves through the</text>
+  <text x="340" y="324" text-anchor="middle" fill="#1a2026" font-size="13">swap map — the calls yield <tspan fill="#4169E1" font-weight="600">[1, 0], [2, 0], [0, 0]</tspan> with no repeats, no grid built.</text>
+</svg>

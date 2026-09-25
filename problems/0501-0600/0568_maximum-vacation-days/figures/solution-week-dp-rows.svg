@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- dp rows: cities 0..2 x [start, week1, week2, week3]; cells 76x48 at x = 150 + 86c, y = 70 + 53r;
+       entries col-major: [0,-1,-1] then [1,6,3] [9,6,9] [10,12,12]; path 0 -> 6 (fly 0-1) -> 9 (fly 1-2) -> 12 (stay) -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="188" y="60">start</text><text x="274" y="60">week 1</text>
+    <text x="360" y="60">week 2</text><text x="446" y="60">week 3</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="140" y="99">city 0</text><text x="140" y="152">city 1</text><text x="140" y="205">city 2</text>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="150" y="70" width="76" height="48"/><rect x="236" y="70" width="76" height="48"/>
+    <rect x="322" y="70" width="76" height="48"/><rect x="408" y="70" width="76" height="48"/>
+    <rect x="150" y="123" width="76" height="48"/><rect x="236" y="123" width="76" height="48"/>
+    <rect x="322" y="123" width="76" height="48"/><rect x="408" y="123" width="76" height="48"/>
+    <rect x="150" y="176" width="76" height="48"/><rect x="236" y="176" width="76" height="48"/>
+    <rect x="322" y="176" width="76" height="48"/><rect x="408" y="176" width="76" height="48"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="188" y="100" fill="#4169E1">0</text><text x="274" y="100" fill="#1a2026">1</text>
+    <text x="360" y="100" fill="#1a2026">9</text><text x="446" y="100" fill="#1a2026">10</text>
+    <text x="188" y="153" fill="#9aa7b2">-1</text><text x="274" y="153" fill="#4169E1">6</text>
+    <text x="360" y="153" fill="#1a2026">6</text><text x="446" y="153" fill="#1a2026">12</text>
+    <text x="188" y="206" fill="#9aa7b2">-1</text><text x="274" y="206" fill="#1a2026">3</text>
+    <text x="360" y="206" fill="#4169E1">9</text><text x="446" y="206" fill="#4169E1">12</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="274" y="169">fly 0&#8594;1</text>
+    <text x="360" y="222">fly 1&#8594;2</text>
+    <text x="446" y="222">stay at 2</text>
+  </g>
+  <!-- winning schedule through the table -->
+  <polyline points="172,80 262,80 262,133 348,133 348,186 434,186" fill="none" stroke="#4169E1" stroke-width="3"/>
+  <g fill="#4169E1">
+    <circle cx="172" cy="80" r="3.5"/><circle cx="262" cy="133" r="3.5"/>
+    <circle cx="348" cy="186" r="3.5"/><circle cx="434" cy="186" r="3.5"/>
+  </g>
+  <text x="500" y="90" fill="#5c6b76" font-size="11.5">flights: i &#8594; j allowed</text>
+  <text x="500" y="106" fill="#5c6b76" font-size="11.5">for every i &#8800; j</text>
+  <text x="320" y="243" text-anchor="middle" fill="#5c6b76" font-size="11.5">days per week: week 1 [1,6,3], week 2 [3,0,3], week 3 [1,3,3]</text>
+  <text x="320" y="266" text-anchor="middle" fill="#1a2026" font-size="13">dp[city] after each week; -1 marks cities no schedule can occupy yet. Each entry</text>
+  <text x="320" y="286" text-anchor="middle" fill="#1a2026" font-size="13">takes the best stay-or-fly predecessor plus days[j][w]; the best final entry, <tspan fill="#4169E1" font-weight="600">12</tspan>,</text>
+  <text x="320" y="306" text-anchor="middle" fill="#1a2026" font-size="13">is the answer &#8212; city 1 opens at 6, city 2 banks 9, then 12 more by staying.</text>
+</svg>

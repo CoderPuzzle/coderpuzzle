@@ -26,6 +26,8 @@ which leaves the pair to meet as `dfs(m, r, k+1)`, one richer in the carry.
 The answer is the max over both, and the carry is why the square can be
 earned on boxes the interval itself does not contain.
 
+![On boxes [1,3,2,2,2,3,4,3,1], the optimal dfs chain holds the outer 1 and the 3 at index 1 across cleared gaps, takes the run of 2s for 9 and the lone 4 for 1, welds the three 3s into 3² = 9 and the two 1s into 2² = 4, totaling 23.](figures/solution-carry-weld-chain.svg)
+
 **Complexity:** `O(n^3)` states — interval endpoints times carry — each trying
 `O(n)` merge partners, `O(n^4)` time in the worst case and `O(n^3)` space for
 the memo; absorbing adjacent runs keeps the states a handful of `O(n^2)`

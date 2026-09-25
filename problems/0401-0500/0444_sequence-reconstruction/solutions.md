@@ -61,6 +61,8 @@ adjacent pairs is pinned; an unpinned adjacency always means an alternative
 order of the same length. For `n == 1` there are no adjacencies to pin and
 the answer is trivially true.
 
+![With nums = [1,2,3] the pair 1→2 pins the first adjacency slot while 1→3 skips ahead and pins nothing, leaving 2·3 unpinned — swapping it yields [1,3,2], so the answer is false.](figures/solution-pinned-adjacency-slots.svg)
+
 The code scans each sequence once. A value outside `[1, n]`, or a pair that
 runs backwards in `nums`, means its sequence never embeds in `nums` at
 all — `nums` is then not even a supersequence — so the scan stops with

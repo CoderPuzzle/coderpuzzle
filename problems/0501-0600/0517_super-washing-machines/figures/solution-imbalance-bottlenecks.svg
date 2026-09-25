@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 312" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="312" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- machines = [1,0,5], total 6, average 2; excesses -1,-2,+3;
+       boundary crossings (prefix sums of excess): -1 and -3 (both right-to-left);
+       answer = max(|-1|, |-3|, +3) = 3 -->
+  <text x="40" y="40" fill="#5c6b76" font-size="13">machines = [1, 0, 5] · total 6 · average = 2</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="225" y="58">m0</text><text x="365" y="58">m1</text><text x="505" y="58">m2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="170" y="64" width="110" height="50"/><rect x="310" y="64" width="110" height="50"/><rect x="450" y="64" width="110" height="50"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="17" fill="#1a2026">
+    <text x="225" y="95">1</text><text x="365" y="95">0</text><text x="505" y="95">5</text>
+  </g>
+  <!-- forced boundary crossings, right-to-left -->
+  <text x="150" y="140" text-anchor="end" fill="#5c6b76" font-size="12">crossings</text>
+  <path d="M 315 136 L 277 136" fill="none" stroke="#5c6b76" stroke-width="1.8" marker-end="url(#arrowg)"/>
+  <text x="295" y="128" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">1</text>
+  <path d="M 455 136 L 417 136" fill="none" stroke="#5c6b76" stroke-width="1.8" marker-end="url(#arrowg)"/>
+  <text x="435" y="128" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">3</text>
+  <!-- per-machine excess -->
+  <text x="150" y="184" text-anchor="end" fill="#5c6b76" font-size="12">excess</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="225" cy="179" r="14"/><circle cx="365" cy="179" r="14"/>
+  </g>
+  <circle cx="505" cy="179" r="14" fill="#4169E1"/>
+  <g text-anchor="middle" font-size="12.5" font-weight="600">
+    <text x="225" y="183" fill="#1a2026">-1</text><text x="365" y="183" fill="#1a2026">-2</text><text x="505" y="183" fill="#ffffff">+3</text>
+  </g>
+  <!-- the two bottlenecks -->
+  <text x="320" y="238" text-anchor="middle" fill="#1a2026" font-size="13">boundary crossings |-1| = 1, |-3| = 3 → worst boundary needs 3 moves</text>
+  <text x="320" y="260" text-anchor="middle" fill="#1a2026" font-size="13">machine 2's excess +3 needs one move per dress: 3 moves</text>
+  <text x="320" y="292" text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">answer = max(3, 3) = <tspan fill="#4169E1">3</tspan></text>
+</svg>

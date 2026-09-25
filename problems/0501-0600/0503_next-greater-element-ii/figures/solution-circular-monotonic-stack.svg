@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,1]; doubled scan i = 0..5 reads idx = i % 3
+       pops: lap-1's 2 (i=1) pops idx 0; lap-2's 2 (i=4) pops idx 2; result [2,-1,2] -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="178" y="52">idx 0</text><text x="288" y="52">idx 1</text><text x="398" y="52">idx 2</text>
+  </g>
+  <g text-anchor="start">
+    <text x="40" y="90" fill="#5c6b76" font-size="13" font-weight="600">lap 1</text>
+    <text x="40" y="106" fill="#5c6b76" font-size="11.5">i = 0-2</text>
+    <text x="40" y="176" fill="#5c6b76" font-size="13" font-weight="600">lap 2</text>
+    <text x="40" y="192" fill="#5c6b76" font-size="11.5">i = 3-5</text>
+  </g>
+  <!-- lap 1 cells -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="130" y="64" width="96" height="44"/><rect x="240" y="64" width="96" height="44"/><rect x="350" y="64" width="96" height="44"/>
+  </g>
+  <g fill="#5c6b76" font-size="10" text-anchor="start">
+    <text x="136" y="78">i=0</text><text x="246" y="78">i=1</text><text x="356" y="78">i=2</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="178" y="99">1</text><text x="288" y="99">2</text><text x="398" y="99">1</text>
+  </g>
+  <!-- pop arc: i=1's 2 pops idx 0 -->
+  <path d="M 262 103 Q 233 116 204 103" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <!-- lap 2 cells -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="130" y="150" width="96" height="44"/><rect x="240" y="150" width="96" height="44"/><rect x="350" y="150" width="96" height="44"/>
+  </g>
+  <g fill="#5c6b76" font-size="10" text-anchor="start">
+    <text x="136" y="164">i=3</text><text x="246" y="164">i=4</text><text x="356" y="164">i=5</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="178" y="185">1</text><text x="288" y="185">2</text><text x="398" y="185">1</text>
+  </g>
+  <!-- pop arc: i=4's 2 resolves idx 2 waiting since lap 1 -->
+  <path d="M 330 158 Q 368 128 368 105" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <!-- per-step actions -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="178" y="136">push idx 0</text>
+    <text x="288" y="136">2 &gt; 1: result[0] = 2</text>
+    <text x="398" y="136">push idx 2</text>
+    <text x="178" y="216">1 pops nothing,</text>
+    <text x="178" y="232">lap 2 never pushes</text>
+    <text x="288" y="216">2 &gt; 1: pop idx 2,</text>
+    <text x="288" y="232">result[2] = 2</text>
+    <text x="398" y="216">1 can't pop the 2:</text>
+    <text x="398" y="232">result[1] stays -1</text>
+  </g>
+  <!-- final stack panel -->
+  <rect x="466" y="64" width="190" height="76" fill="#f0f3f7"/>
+  <text x="478" y="88" font-size="12.5" font-weight="600" fill="#1a2026">stack at the end: [1]</text>
+  <text x="478" y="108" font-size="12" fill="#5c6b76">index 1 (value 2) never</text>
+  <text x="478" y="126" font-size="12" fill="#5c6b76">pops → result[1] = -1</text>
+  <!-- result row -->
+  <text x="40" y="295" fill="#5c6b76" font-size="13">result</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="130" y="272" width="96" height="36"/><rect x="240" y="272" width="96" height="36"/><rect x="350" y="272" width="96" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="178" y="295" fill="#4169E1">2</text><text x="288" y="295" fill="#9aa7b2">-1</text><text x="398" y="295" fill="#4169E1">2</text>
+  </g>
+  <text x="330" y="332" text-anchor="middle" fill="#1a2026" font-size="13">One extra lap suffices: lap 2's 2 (i = 4) resolves the waiting 1 at idx 2,</text>
+  <text x="330" y="350" text-anchor="middle" fill="#1a2026" font-size="13">while the 2 at idx 1 has no greater element and keeps <tspan fill="#4169E1" font-weight="600">-1</tspan>.</text>
+</svg>

@@ -6,6 +6,8 @@ In the array before the single element appears, every pair is intact, so each pa
 
 The comparison decides which side holds the answer. If `nums[mid] == nums[mid + 1]`, that pair is intact, so the single element must lie strictly to the right and the search moves `lo = mid + 2`; otherwise the pair is already broken (either `mid` is the single element or the break is earlier), so the answer is at `mid` or to its left and `hi = mid`. The bounds close without ever stepping past a valid index: while `lo < hi`, the even-adjusted `mid` stays at most `n - 2`, so `mid + 1` is always in range.
 
+![On nums = [1,1,2,3,3,4,4,8,8], three even-index probes — 3 ≠ 4 and 2 ≠ 3 pulling hi left, then the intact 1 = 1 pushing lo right — close the bounds onto index 2, where nums[2] = 2 is the single element.](figures/solution-even-index-pair-search.svg)
+
 The loop ends when `lo == hi`, and that surviving index is the single element — `hi` only ever settles onto a candidate left behind by a broken pair or by exhaustion of the right side, and a one-element array resolves trivially with the loop never running. The search halves the range each step and keeps only two indices, meeting the logarithmic-time, constant-space requirement without touching the input.
 
 **Complexity:** `O(log n)` time, `O(1)` space.

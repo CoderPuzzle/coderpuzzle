@@ -19,6 +19,8 @@ and the count is the cycle's length. Each index is marked by the single walk
 that first reaches it, so no index is ever walked twice and the total work
 is proportional to `n`.
 
+![On nums = [5,4,0,3,1,6,2] the sweep walks three disjoint cycles — 0 → 5 → 6 → 2 with four visit marks, 1 ⇄ 4 with two, and 3 alone — so the longest count, 4, is the answer.](figures/solution-cycle-walk-visited.svg)
+
 The answer is the largest count any walk produced. Marking lives in a
 separate boolean array, so `nums` itself is never modified.
 

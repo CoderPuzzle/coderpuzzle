@@ -6,6 +6,8 @@ Two strings are permutations of each other exactly when their character frequenc
 
 The solution builds `need`, the count vector for `s1`, and `window`, the counts of the first `len(s1)` characters of `s2`, using two length-26 arrays. It then slides the window one position at a time: the entering character's count is incremented, the leaving character's (at index `i - m`) is decremented, and after each slide the two arrays are compared with a direct list equality check. Equality of the vectors means the window is a permutation of `s1`.
 
+![On s2 = "eidbaooo" with s1 = "ab", each slide enters one letter and leaves one, and the window "ba" at s2[3..4] is the first whose counts b:1 a:1 equal need a:1 b:1, returning true.](figures/solution-window-counts-match.svg)
+
 Rebuilding the counts from scratch for every window would be quadratic; the incremental add/remove keeps each step O(1) per bookkeeping update, with the final equality comparison costing a constant 26 comparisons. If `len(s1) > len(s2)`, no window can exist and the function returns false immediately, which also protects the initial slice from overrunning.
 
 The alphabet is fixed at 26 lowercase letters, so the arrays occupy constant space regardless of input size.

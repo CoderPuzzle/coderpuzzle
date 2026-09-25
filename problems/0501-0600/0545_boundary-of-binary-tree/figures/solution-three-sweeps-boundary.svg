@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 528" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="528" fill="#ffffff"/>
+  <!-- tree [1,2,3,4,5,6,null,null,null,7,8,9,10];
+       left boundary [2] = light-accent fill, leaves [4,7,8,9,10] = accent fill,
+       right boundary [3,6] = gray stroke, interior 5 = muted, root 1 = plain;
+       the strip below concatenates root + left + leaves + right reversed -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <line x1="326" y1="86" x2="224" y2="149"/>
+    <line x1="354" y1="86" x2="456" y2="149"/>
+    <line x1="196" y1="180" x2="144" y2="245"/>
+    <line x1="224" y1="180" x2="276" y2="245"/>
+    <line x1="456" y1="180" x2="424" y2="245"/>
+    <line x1="276" y1="275" x2="234" y2="340"/>
+    <line x1="304" y1="275" x2="316" y2="340"/>
+    <line x1="396" y1="275" x2="436" y2="340"/>
+    <line x1="424" y1="275" x2="558" y2="342"/>
+  </g>
+  <!-- left boundary node -->
+  <circle cx="210" cy="165" r="20" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="210" y="170" text-anchor="middle" fill="#1a2026">2</text>
+  <!-- right boundary nodes -->
+  <circle cx="470" cy="165" r="20" fill="#ffffff" stroke="#5c6b76" stroke-width="1.6"/>
+  <text x="470" y="170" text-anchor="middle" fill="#1a2026">3</text>
+  <circle cx="410" cy="260" r="20" fill="#ffffff" stroke="#5c6b76" stroke-width="1.6"/>
+  <text x="410" y="265" text-anchor="middle" fill="#1a2026">6</text>
+  <!-- leaves -->
+  <g fill="#4169E1">
+    <circle cx="130" cy="260" r="20"/><circle cx="220" cy="355" r="20"/>
+    <circle cx="330" cy="355" r="20"/><circle cx="450" cy="355" r="20"/>
+    <circle cx="570" cy="355" r="20"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-weight="600">
+    <text x="130" y="265">4</text><text x="220" y="360">7</text><text x="330" y="360">8</text>
+    <text x="450" y="360">9</text><text x="570" y="360">10</text>
+  </g>
+  <!-- interior node and root -->
+  <circle cx="290" cy="260" r="20" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.6"/>
+  <text x="290" y="265" text-anchor="middle" fill="#9aa7b2">5</text>
+  <text x="318" y="265" text-anchor="start" fill="#9aa7b2" font-size="11.5">interior</text>
+  <circle cx="340" cy="70" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <text x="340" y="75" text-anchor="middle" fill="#1a2026" font-weight="600">1</text>
+  <!-- result strip: [1] + [2] + [4,7,8,9,10] + [6,3] -->
+  <g font-size="11.5" fill="#5c6b76" text-anchor="middle">
+    <text x="148" y="414">root</text>
+    <text x="196" y="414">left</text>
+    <text x="340" y="414">leaves</text>
+    <text x="508" y="414">right, reversed</text>
+  </g>
+  <g stroke-width="1.4">
+    <rect x="126" y="424" width="44" height="40" fill="#ffffff" stroke="#1a2026"/>
+    <rect x="174" y="424" width="44" height="40" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="222" y="424" width="44" height="40" fill="#4169E1" stroke="#4169E1"/>
+    <rect x="270" y="424" width="44" height="40" fill="#4169E1" stroke="#4169E1"/>
+    <rect x="318" y="424" width="44" height="40" fill="#4169E1" stroke="#4169E1"/>
+    <rect x="366" y="424" width="44" height="40" fill="#4169E1" stroke="#4169E1"/>
+    <rect x="414" y="424" width="44" height="40" fill="#4169E1" stroke="#4169E1"/>
+    <rect x="462" y="424" width="44" height="40" fill="#ffffff" stroke="#5c6b76"/>
+    <rect x="510" y="424" width="44" height="40" fill="#ffffff" stroke="#5c6b76"/>
+  </g>
+  <g text-anchor="middle" font-size="14">
+    <text x="148" y="449" fill="#1a2026" font-weight="600">1</text>
+    <text x="196" y="449" fill="#1a2026">2</text>
+    <g fill="#ffffff" font-weight="600">
+      <text x="244" y="449">4</text><text x="292" y="449">7</text><text x="340" y="449">8</text>
+      <text x="388" y="449">9</text><text x="436" y="449">10</text>
+    </g>
+    <text x="484" y="449" fill="#1a2026">6</text>
+    <text x="532" y="449" fill="#1a2026">3</text>
+  </g>
+  <text x="340" y="494" text-anchor="middle" fill="#1a2026" font-size="13">Three sweeps tile the answer: [1] + [2] + [4,7,8,9,10] + [6,3]</text>
+  <text x="340" y="512" text-anchor="middle" fill="#1a2026" font-size="13">= <tspan fill="#4169E1" font-weight="600">[1,2,4,7,8,9,10,6,3]</tspan> — no node prints twice.</text>
+</svg>

@@ -17,6 +17,8 @@ thus enters the list in breadth-first discovery order: `kill` first, its
 children next in the order their ids appear in `pid`, then theirs. When the head
 runs off the end of the list the answer is already assembled.
 
+![With ppid = [3, 0, 5, 3] inverted into a parent-to-children map, the breadth-first walk from kill = 5 makes the output list its own queue, appending 5 then 10 — the killed set in BFS order.](figures/solution-child-map-bfs.svg)
+
 Each process is appended exactly once and has its children consulted at most
 once, so the whole run is linear. The map and the answer each hold at most `n`
 entries — killing the root returns the entire tree, which makes the output

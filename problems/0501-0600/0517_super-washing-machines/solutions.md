@@ -27,4 +27,8 @@ machine excesses: a lower bound on any schedule, and achievable because a
 single move can serve every unsatisfied boundary and every still-owing
 machine at once, so no bottleneck ever waits on another.
 
+![On machines = [1,0,5] with average 2, the excesses are -1, -2, +3 and the
+forced right-to-left boundary crossings carry 1 and 3 dresses, so the answer
+is max(3, 3) = 3.](figures/solution-imbalance-bottlenecks.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space.

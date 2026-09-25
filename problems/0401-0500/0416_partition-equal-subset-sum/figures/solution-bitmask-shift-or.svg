@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 288" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="288" fill="#ffffff"/>
+  <!-- nums = [1,5,11,5], target = 11; bit cells 30x30 at x = 160+35s for sum s,
+       stage rows y = 58+54i; filled = reachable sum, accent cell = bit 11 hit -->
+  <text x="320" y="30" text-anchor="middle" fill="#1a2026" font-weight="600">nums = [1,5,11,5] — total 22, target = 11</text>
+  <g text-anchor="start" fill="#1a2026" font-size="12.5" font-weight="600">
+    <text x="40" y="78">after 1</text>
+    <text x="40" y="132">after 5</text>
+    <text x="40" y="186">after 11</text>
+  </g>
+  <!-- row 1: reachable {0,1} -->
+  <g stroke="#42525e" stroke-width="1.25">
+    <rect x="160" y="58" width="30" height="30" fill="#dbe4fb"/>
+    <rect x="195" y="58" width="30" height="30" fill="#dbe4fb"/>
+    <rect x="230" y="58" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="265" y="58" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="300" y="58" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="335" y="58" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="370" y="58" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="405" y="58" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="440" y="58" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="475" y="58" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="510" y="58" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="545" y="58" width="30" height="30" fill="#f0f3f7"/>
+  </g>
+  <!-- row 2: reachable {0,1,5,6} -->
+  <g stroke="#42525e" stroke-width="1.25">
+    <rect x="160" y="112" width="30" height="30" fill="#dbe4fb"/>
+    <rect x="195" y="112" width="30" height="30" fill="#dbe4fb"/>
+    <rect x="230" y="112" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="265" y="112" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="300" y="112" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="335" y="112" width="30" height="30" fill="#dbe4fb"/>
+    <rect x="370" y="112" width="30" height="30" fill="#dbe4fb"/>
+    <rect x="405" y="112" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="440" y="112" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="475" y="112" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="510" y="112" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="545" y="112" width="30" height="30" fill="#f0f3f7"/>
+  </g>
+  <!-- row 3: reachable {0,1,5,6,11} — bit 11 hit -->
+  <g stroke="#42525e" stroke-width="1.25">
+    <rect x="160" y="166" width="30" height="30" fill="#dbe4fb"/>
+    <rect x="195" y="166" width="30" height="30" fill="#dbe4fb"/>
+    <rect x="230" y="166" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="265" y="166" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="300" y="166" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="335" y="166" width="30" height="30" fill="#dbe4fb"/>
+    <rect x="370" y="166" width="30" height="30" fill="#dbe4fb"/>
+    <rect x="405" y="166" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="440" y="166" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="475" y="166" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="510" y="166" width="30" height="30" fill="#f0f3f7"/>
+    <rect x="545" y="166" width="30" height="30" fill="#4169E1"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="175" y="216">0</text><text x="210" y="216">1</text><text x="245" y="216">2</text>
+    <text x="280" y="216">3</text><text x="315" y="216">4</text><text x="350" y="216">5</text>
+    <text x="385" y="216">6</text><text x="420" y="216">7</text><text x="455" y="216">8</text>
+    <text x="490" y="216">9</text><text x="525" y="216">10</text><text x="560" y="216">11</text>
+  </g>
+  <text x="516" y="160" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">bit 11 set → true</text>
+  <text x="320" y="250" text-anchor="middle" fill="#1a2026" font-size="13">mask | (mask &lt;&lt; v) grows the reachable sums {0,1} → {0,1,5,6} → {0,1,5,6,11};</text>
+  <text x="320" y="268" text-anchor="middle" fill="#1a2026" font-size="13">bit 11 turns on as soon as 11 is read, so the last 5 is never used.</text>
+</svg>

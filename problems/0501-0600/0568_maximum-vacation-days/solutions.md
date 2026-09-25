@@ -13,6 +13,8 @@ closed week `w-1` in some `i` with `i == j` (staying put, which costs no
 flight) or `flights[i][j] == 1` (the single Monday hop), and such a week
 banks `days[j][w]` more.
 
+![On Example 1 the week-by-week dp rows roll from [0,-1,-1] through [1,6,3] and [9,6,9] to [10,12,12] — each entry the best stay-or-fly predecessor plus that week's days — and the largest final entry, 12, is the answer.](figures/solution-week-dp-rows.svg)
+
 The sweep starts before week 0: the traveler sits in city 0 with nothing
 banked, and every other city is marked unreachable — `-1` serves as that
 mark because vacation totals are never negative. Week 0's own transition
