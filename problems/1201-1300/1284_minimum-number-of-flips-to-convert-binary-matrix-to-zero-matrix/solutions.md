@@ -13,5 +13,7 @@ expanding by the cell masks, reaches zero in the minimum number of steps;
 if the search exhausts the component without hitting zero, the answer is
 `-1`.
 
+![Packing mat = [[0,0],[0,1]] as 0001 (bits (0,0),(0,1),(1,0),(1,1)), BFS expands each state by the four cell flip masks and first reaches 0000 at depth 3 — flip (1,0), then (0,1), then (1,1).](figures/solution-bfs-flip-states.svg)
+
 **Complexity:** `O(2^(m·n) · m·n)` time with `m, n <= 3` (at most 512
 states × 9 transitions), `O(2^(m·n))` space for the seen marks.

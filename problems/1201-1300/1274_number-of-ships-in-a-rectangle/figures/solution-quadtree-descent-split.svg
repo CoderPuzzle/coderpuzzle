@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 386" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="386" fill="#ffffff"/>
+  <!-- ships = [[1,1],[2,2],[3,3],[5,5]], query [0,0]-[4,4]; point (x,y) at (80+44x, 320-44y)
+       quads of split (2,2): BL [0,0]-[2,2] TL [0,3]-[2,4] BR [3,0]-[4,2] TR [3,3]-[4,4] (inset 4) -->
+  <!-- lattice -->
+  <g stroke="#dbe4fb" stroke-width="1">
+    <line x1="80" y1="100" x2="80" y2="320"/><line x1="124" y1="100" x2="124" y2="320"/>
+    <line x1="168" y1="100" x2="168" y2="320"/><line x1="212" y1="100" x2="212" y2="320"/>
+    <line x1="256" y1="100" x2="256" y2="320"/><line x1="300" y1="100" x2="300" y2="320"/>
+    <line x1="80" y1="100" x2="300" y2="100"/><line x1="80" y1="144" x2="300" y2="144"/>
+    <line x1="80" y1="188" x2="300" y2="188"/><line x1="80" y1="232" x2="300" y2="232"/>
+    <line x1="80" y1="276" x2="300" y2="276"/><line x1="80" y1="320" x2="300" y2="320"/>
+  </g>
+  <!-- query rectangle -->
+  <rect x="80" y="144" width="176" height="176" fill="none" stroke="#1a2026" stroke-width="1.8"/>
+  <text x="168" y="132" text-anchor="middle" fill="#5c6b76" font-size="11.5">query [0,0]-[4,4]: true</text>
+  <!-- first split at (2,2): true quads accent, false quads dashed gray -->
+  <rect x="84" y="236" width="80" height="80" fill="none" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="216" y="148" width="36" height="36" fill="none" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="84" y="148" width="80" height="36" fill="none" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <rect x="216" y="236" width="36" height="80" fill="none" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="126" y="262" fill="#4169E1" font-size="10.5" font-weight="600">true</text>
+  <text x="219" y="162" fill="#4169E1" font-size="10.5" font-weight="600">true</text>
+  <text x="88" y="163" fill="#9aa7b2" font-size="10.5">false</text>
+  <text x="219" y="250" fill="#9aa7b2" font-size="10.5">false</text>
+  <!-- second split of [0,0]-[2,2] at (1,1) -->
+  <rect x="84" y="280" width="36" height="36" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="84" y="236" width="36" height="36" fill="none" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <rect x="172" y="280" width="36" height="36" fill="none" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <rect x="162" y="226" width="12" height="12" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="88" y="258" fill="#9aa7b2" font-size="10.5">false</text>
+  <text x="176" y="302" fill="#9aa7b2" font-size="10.5">false</text>
+  <!-- ships -->
+  <g fill="#1a2026">
+    <circle cx="124" cy="276" r="4.5"/>
+    <circle cx="168" cy="232" r="4.5"/>
+    <circle cx="212" cy="188" r="4.5"/>
+  </g>
+  <circle cx="300" cy="100" r="4.5" fill="#9aa7b2"/>
+  <text x="300" y="120" text-anchor="middle" fill="#9aa7b2" font-size="10.5">[5,5]</text>
+  <text x="74" y="336" text-anchor="end" fill="#9aa7b2" font-size="10">(0,0)</text>
+  <text x="262" y="140" fill="#9aa7b2" font-size="10">[4,4]</text>
+  <!-- descent ledger -->
+  <g font-size="12">
+    <text x="370" y="104" fill="#1a2026" font-weight="600">[0,0]-[4,4] true, split at (2,2)</text>
+    <text x="388" y="128" fill="#1a2026">[0,0]-[2,2] true, split at (1,1)</text>
+    <text x="388" y="148" fill="#9aa7b2">[0,3]-[2,4] false: pruned, 1 call</text>
+    <text x="388" y="168" fill="#9aa7b2">[3,0]-[4,2] false: pruned, 1 call</text>
+    <text x="388" y="188" fill="#1a2026">[3,3]-[4,4] true, split at (3,3)</text>
+    <text x="406" y="216" fill="#1a2026">[0,0]-[1,1] true: ship at [1,1] = 1</text>
+    <text x="406" y="236" fill="#9aa7b2">[0,2]-[1,2] false: pruned</text>
+    <text x="406" y="256" fill="#9aa7b2">[2,0]-[2,1] false: pruned</text>
+    <text x="406" y="276" fill="#1a2026">[2,2] single cell = 1</text>
+    <text x="406" y="304" fill="#1a2026">[3,3] single cell = 1; other cells false</text>
+    <text x="370" y="332" fill="#4169E1" font-size="14" font-weight="600">1 + 1 + 1 = 3 ships</text>
+  </g>
+  <text x="340" y="354" text-anchor="middle" fill="#1a2026" font-size="13">Each false quadrant dies on one hasShips call - [0,3]-[2,4] and [3,0]-[4,2] at the</text>
+  <text x="340" y="374" text-anchor="middle" fill="#1a2026" font-size="13">first split; true quads refine to single-cell ships (1,1), (2,2), (3,3): 1 + 1 + 1 = <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

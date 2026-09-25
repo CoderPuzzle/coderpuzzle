@@ -11,5 +11,7 @@ descending tiebreak guaranteeing the wider twin lands first, so the
 narrower one is counted as covered even though starts are equal. One
 linear sweep keeping `best_end` counts the survivors.
 
+![Sorting [[1,4],[3,6],[2,8]] to [1,4], [2,8], [3,6], the sweep keeps the first two and drops [3,6] because its end 6 never passes the best end 8 recorded by [2,8] — 2 survivors.](figures/solution-best-end-sweep.svg)
+
 **Complexity:** `O(n log n)` time for the sort over `n` intervals,
 `O(1)` space beyond the sort.

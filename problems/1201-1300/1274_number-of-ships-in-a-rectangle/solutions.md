@@ -8,6 +8,8 @@ For a rectangle, the reference does three things in order. It rejects an empty r
 
 Otherwise it splits at the midpoint `((x₁ + x₂) / 2, (y₁ + y₂) / 2)` into the four quadrants `[bottomLeft, mid]`, `[bottomLeft.x…mid.x] × [mid.y+1…topRight.y]`, `[mid.x+1…topRight.x] × [bottomLeft.y…mid.y]`, and `[mid+1, topRight]`, and sums the four recursive counts. Using `mid` on the low side and `mid + 1` on the high side is what makes the four pieces a partition — no cell is counted twice, none is dropped.
 
+![On ships [[1,1],[2,2],[3,3],[5,5]] queried over [0,0]-[4,4], the first split at (2,2) prunes [0,3]-[2,4] and [3,0]-[4,2] with one false call each, while the true quadrants refine to the single-cell ships (1,1), (2,2) and (3,3) — 1 + 1 + 1 = 3.](figures/solution-quadtree-descent-split.svg)
+
 **Why it fits the 400-call budget.** At most 10 ships lie in the box, so at most 10 rectangles per level of the recursion can answer `true`, and only those spawn four children. The side length 1000 halves to 1 in about ten levels, which caps the visited nodes near `4 × 10 × 10`. Measured against the judge's own oracle, the worst case in this problem's tests — ten ships scattered across the full 1000 × 1000 sea — costs **341** calls, and the typical case is well under 150. A solution that queries individual points instead would need up to a million calls and dies immediately.
 
 **Complexity:** `O(k · log C)` levels of recursion with at most `4k` queries per level — about `O(k · log C)` calls to `hasShips` for `k ≤ 10` ships and a coordinate range `C = 1000` — and `O(log C)` recursion depth for space.
