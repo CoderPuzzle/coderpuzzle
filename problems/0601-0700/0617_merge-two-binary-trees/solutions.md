@@ -12,6 +12,8 @@ does, that side's subtree is already the merged answer below the overlap, so
 it attaches whole and the walk never descends it. An input that is empty
 contributes nothing, so the merge returns the other tree unchanged.
 
+![On root1 [1,3,2,5] and root2 [2,1,3,null,4,null,7] the stack sums the three overlapping pairs 1+2, 3+1, 2+3 in place while lone subtrees 5, 4, 7 attach whole, yielding [3,4,5,5,4,null,7].](figures/solution-stack-pair-merge.svg)
+
 Attaching instead of copying is invisible on the wire: the judge serializes
 the returned tree to its level-order values and never looks at node
 identity, so building the merged tree on `root1`'s nodes — summing into them

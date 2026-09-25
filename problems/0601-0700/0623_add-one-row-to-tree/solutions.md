@@ -21,6 +21,8 @@ the frontier is the tree's deepest level, so every node on it is a leaf and
 each grows a pair; a sparse tree's shallower leaves are not on the frontier
 and correctly receive nothing.
 
+![On root [4,2,6,3,1,5] with val = 1 and depth = 2 the frontier node 4 splices in two fresh 1-nodes and the old subtrees rooted 2 and 6 re-hang one level deeper, producing [4,1,1,2,null,null,6,3,1,5].](figures/solution-depth1-splice.svg)
+
 The frontier walk iterates deliberately: the tree may legally be a single
 10^4-node chain, and a recursive descent would nest 10000 calls — past
 CPython's default recursion limit and over the 512k stacks the judge hands

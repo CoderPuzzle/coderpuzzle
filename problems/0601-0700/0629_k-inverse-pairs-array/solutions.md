@@ -13,6 +13,8 @@ seeded by `dp[1][0] = 1`. For `n = 3` the rows grow `[1]`, `[1,1]`,
 `[1,2,2,1]` — `dp[3][0]` is the lone identity array and `dp[3][1]` counts
 `[1,3,2]` and `[2,1,3]`, the two example answers.
 
+![On n = 3 the dp rows grow [1], [1,1], [1,2,2,1], and the window over dp[2] slides one cell per step — 1 + 1 = 2 at j = 1, 0 enters at j = 2, 1 leaves and 0 enters at j = 3 — producing dp[3][1] = 2 for the arrays [1,3,2] and [2,1,3].](figures/solution-sliding-window-dp.svg)
+
 The inner sum covers the contiguous range `dp[m-1][j-m+1 .. j]`, and as
 `j` advances by one that range only slides: a fresh term enters on the
 right while `dp[m-1][j-m]` leaves on the left. Keeping a running window —

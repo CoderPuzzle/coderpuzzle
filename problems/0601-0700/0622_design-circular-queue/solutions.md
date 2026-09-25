@@ -15,6 +15,8 @@ two-index ring must either waste one slot or carry a flag to tell full from
 empty. `count` says it outright — `isEmpty` is `count == 0`, `isFull` is
 `count == k` — and lets every one of the `k` slots hold data.
 
+![On k = 3 after enQueue 1, 2, 3, deQueue, and enQueue 4 the ring holds buf [4, 2, 3] with head = 1 and count = 3, so Rear derives buf[(1 + 3 − 1) mod 3] = buf[0] = 4.](figures/solution-ring-head-count.svg)
+
 The reads follow the same two anchors. `Front` is `buf[head]`; `Rear` is
 `buf[(head + count - 1) % k]` — the subtraction-and-modulo that makes `Rear`
 the classic off-by-one trap, since after the ring wraps, the newest element

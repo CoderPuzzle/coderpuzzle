@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 328" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="328" fill="#ffffff"/>
+  <!-- courses deadline-sorted: (100,200),(1000,1250),(200,1300),(2000,3200); axis maps day 0@x90, 100@125, 1100@305, 1300@355, 3200@465, 3300@500; bars 24px tall at y = 70/115/160/205 -->
+  <text x="84" y="86" text-anchor="end" fill="#5c6b76" font-size="10.5">1: (100,200)</text>
+  <text x="84" y="131" text-anchor="end" fill="#5c6b76" font-size="10.5">2: (1000,1250)</text>
+  <text x="84" y="176" text-anchor="end" fill="#5c6b76" font-size="10.5">3: (200,1300)</text>
+  <text x="84" y="221" text-anchor="end" fill="#5c6b76" font-size="10.5">4: (2000,3200)</text>
+  <!-- running-total guide at day 1300 -->
+  <line x1="355" y1="62" x2="355" y2="236" stroke="#4169E1" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="355" y="54" text-anchor="middle" fill="#4169E1" font-size="10.5">total 1300</text>
+  <!-- taken bars -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="90" y="70" width="35" height="24"/>
+    <rect x="125" y="115" width="180" height="24"/>
+    <rect x="305" y="160" width="50" height="24"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="10.5">
+    <text x="107" y="86">100</text>
+    <text x="215" y="131">1000</text>
+    <text x="330" y="176">200</text>
+  </g>
+  <!-- per-course deadline dashes -->
+  <g stroke="#1a2026" stroke-width="1.2" stroke-dasharray="3 3">
+    <line x1="143" y1="66" x2="143" y2="98"/>
+    <line x1="342" y1="111" x2="342" y2="143"/>
+    <line x1="355" y1="156" x2="355" y2="188"/>
+    <line x1="465" y1="201" x2="465" y2="233"/>
+  </g>
+  <!-- rejected course 4: would-be bar crossing its deadline -->
+  <rect x="355" y="205" width="145" height="24" fill="none" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="410" y="221" text-anchor="middle" fill="#9aa7b2" font-size="10.5">2000</text>
+  <!-- axis -->
+  <line x1="85" y1="244" x2="505" y2="244" stroke="#42525e" stroke-width="1.4"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="90" y1="244" x2="90" y2="249"/>
+    <line x1="125" y1="244" x2="125" y2="249"/>
+    <line x1="305" y1="244" x2="305" y2="249"/>
+    <line x1="355" y1="244" x2="355" y2="249"/>
+    <line x1="465" y1="244" x2="465" y2="249"/>
+    <line x1="500" y1="244" x2="500" y2="249"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10">
+    <text x="90" y="261">0</text>
+    <text x="125" y="261">100</text>
+    <text x="305" y="261">1100</text>
+    <text x="355" y="261">1300</text>
+    <text x="465" y="261">3200</text>
+    <text x="500" y="261">3300</text>
+  </g>
+  <!-- heap snapshots -->
+  <text x="508" y="54" fill="#5c6b76" font-size="10.5">max-heap</text>
+  <g font-size="10.5" fill="#1a2026">
+    <text x="508" y="86">{100}</text>
+    <text x="508" y="131">{100, 1000}</text>
+    <text x="508" y="176">{100, 200, 1000}</text>
+    <text x="508" y="221" fill="#5c6b76">3300 &gt; 3200: rejected</text>
+  </g>
+  <!-- caption -->
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">Deadline order stacks three courses to day 1300; course (2000, 3200) would end on</text>
+  <text x="320" y="314" text-anchor="middle" fill="#1a2026" font-size="13">day 3300 &gt; 3200 and is rejected &#8212; the heap keeps <tspan fill="#4169E1" font-weight="600">{100, 200, 1000}</tspan>: answer <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

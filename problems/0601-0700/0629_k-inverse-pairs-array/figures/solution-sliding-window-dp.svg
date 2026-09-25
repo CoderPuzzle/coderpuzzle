@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="384" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- dp[2] = [1,1] padded with dry-window zeros; timeline strips 34x28 at x = 60/94/128/162, rows y = 64/150/236; window = tinted #dbe4fb cells; grown rows 32x26 at y = 300 -->
+  <text x="320" y="32" text-anchor="middle" fill="#5c6b76" font-size="12.5">prev row dp[2] for n = 3, padded with dry-window zeros (muted)</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10">
+    <text x="77" y="56">j = 0</text><text x="111" y="56">j = 1</text><text x="145" y="56">j = 2</text><text x="179" y="56">j = 3</text>
+  </g>
+  <!-- window slide arrows on the left -->
+  <path d="M 40 98 C 28 116, 28 132, 40 146" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M 40 184 C 28 202, 28 218, 40 232" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="30" y="170" text-anchor="middle" fill="#5c6b76" font-size="10.5">j advances</text>
+  <!-- strip 1: window j = 0..1 -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="60" y="64" width="34" height="28" fill="#dbe4fb"/>
+    <rect x="94" y="64" width="34" height="28" fill="#dbe4fb"/>
+    <rect x="128" y="64" width="34" height="28" fill="#f0f3f7"/>
+    <rect x="162" y="64" width="34" height="28" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="77" y="83" fill="#1a2026">1</text><text x="111" y="83" fill="#1a2026">1</text>
+    <text x="145" y="83" fill="#9aa7b2">0</text><text x="179" y="83" fill="#9aa7b2">0</text>
+  </g>
+  <text x="230" y="82" fill="#1a2026" font-size="13">j = 1: 1 + 1 = 2 &#8594; <tspan fill="#4169E1" font-weight="600">dp[3][1] = 2</tspan></text>
+  <!-- strip 2: window j = 0..2 -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="60" y="150" width="34" height="28" fill="#dbe4fb"/>
+    <rect x="94" y="150" width="34" height="28" fill="#dbe4fb"/>
+    <rect x="128" y="150" width="34" height="28" fill="#dbe4fb"/>
+    <rect x="162" y="150" width="34" height="28" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="77" y="169" fill="#1a2026">1</text><text x="111" y="169" fill="#1a2026">1</text>
+    <text x="145" y="169" fill="#9aa7b2">0</text><text x="179" y="169" fill="#9aa7b2">0</text>
+  </g>
+  <text x="230" y="168" fill="#1a2026" font-size="13">j = 2: 0 enters on the right &#8212; still 2</text>
+  <!-- strip 3: window j = 1..3 -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="60" y="236" width="34" height="28" fill="#ffffff"/>
+    <rect x="94" y="236" width="34" height="28" fill="#dbe4fb"/>
+    <rect x="128" y="236" width="34" height="28" fill="#dbe4fb"/>
+    <rect x="162" y="236" width="34" height="28" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="77" y="255" fill="#1a2026">1</text><text x="111" y="255" fill="#1a2026">1</text>
+    <text x="145" y="255" fill="#9aa7b2">0</text><text x="179" y="255" fill="#9aa7b2">0</text>
+  </g>
+  <text x="230" y="254" fill="#1a2026" font-size="13">j = 3: 1 leaves, 0 enters &#8212; 2 &#8722; 1 + 0 = 1</text>
+  <!-- grown rows -->
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="158" y="300" width="32" height="26"/>
+    <rect x="236" y="300" width="32" height="26"/><rect x="268" y="300" width="32" height="26"/>
+    <rect x="346" y="300" width="32" height="26"/><rect x="410" y="300" width="32" height="26"/>
+    <rect x="442" y="300" width="32" height="26"/>
+  </g>
+  <rect x="378" y="300" width="32" height="26" fill="#4169E1"/>
+  <g text-anchor="middle" font-size="13">
+    <text x="174" y="318" fill="#1a2026">1</text>
+    <text x="252" y="318" fill="#1a2026">1</text><text x="284" y="318" fill="#1a2026">1</text>
+    <text x="362" y="318" fill="#1a2026">1</text><text x="394" y="318" fill="#ffffff" font-weight="600">2</text>
+    <text x="426" y="318" fill="#1a2026">2</text><text x="458" y="318" fill="#1a2026">1</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="11.5">
+    <text x="150" y="318">dp[1]</text>
+    <text x="228" y="318">dp[2]</text>
+    <text x="338" y="318">dp[3]</text>
+  </g>
+  <!-- caption -->
+  <text x="320" y="352" text-anchor="middle" fill="#1a2026" font-size="13">dp[3][1] = 2 counts <tspan fill="#4169E1" font-weight="600">[1,3,2] and [2,1,3]</tspan>, the two n = 3, k = 1 arrays;</text>
+  <text x="320" y="370" text-anchor="middle" fill="#1a2026" font-size="13">each row is a sliding-window sum of the row above, one cell per step.</text>
+</svg>
