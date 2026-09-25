@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- numbers=[2,7,11,15], target=9; cells 52x40 at x=100+60i; stages y=64,130,196; R retires 15 then 11, 2+7 lands -->
+  <g fill="#9aa7b2" font-size="12.5">
+    <text x="46" y="89">step 1</text>
+    <text x="46" y="155">step 2</text>
+    <text x="46" y="221">step 3</text>
+  </g>
+  <!-- step 1: L on 2, R on 15 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="100" y="64" width="52" height="40"/><rect x="160" y="64" width="52" height="40"/>
+    <rect x="220" y="64" width="52" height="40"/><rect x="280" y="64" width="52" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="126" y="89">2</text><text x="186" y="89">7</text><text x="246" y="89">11</text><text x="306" y="89">15</text>
+  </g>
+  <g font-size="12.5" font-weight="700" fill="#4169E1" text-anchor="middle">
+    <text x="126" y="122">L</text><text x="306" y="122">R</text>
+  </g>
+  <text x="372" y="89" fill="#1a2026" font-size="13">2 + 15 = 17 &gt; 9 &#8594; retire 15</text>
+  <!-- step 2: 15 retired, R on 11 -->
+  <rect x="280" y="130" width="52" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="100" y="130" width="52" height="40"/><rect x="160" y="130" width="52" height="40"/>
+    <rect x="220" y="130" width="52" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="126" y="155" fill="#1a2026">2</text><text x="186" y="155" fill="#1a2026">7</text>
+    <text x="246" y="155" fill="#1a2026">11</text><text x="306" y="155" fill="#9aa7b2">15</text>
+  </g>
+  <g font-size="12.5" font-weight="700" fill="#4169E1" text-anchor="middle">
+    <text x="126" y="188">L</text><text x="246" y="188">R</text>
+  </g>
+  <text x="372" y="155" fill="#1a2026" font-size="13">2 + 11 = 13 &gt; 9 &#8594; retire 11</text>
+  <!-- step 3: 11 retired too, 2 + 7 = 9 -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5">
+    <rect x="220" y="196" width="52" height="40"/><rect x="280" y="196" width="52" height="40"/>
+  </g>
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="2">
+    <rect x="100" y="196" width="52" height="40"/><rect x="160" y="196" width="52" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="126" y="221" fill="#4169E1">2</text><text x="186" y="221" fill="#4169E1">7</text>
+    <text x="246" y="221" fill="#9aa7b2">11</text><text x="306" y="221" fill="#9aa7b2">15</text>
+  </g>
+  <g font-size="12.5" font-weight="700" fill="#4169E1" text-anchor="middle">
+    <text x="126" y="254">L</text><text x="186" y="254">R</text>
+  </g>
+  <text x="372" y="221" fill="#1a2026" font-size="13">2 + 7 = 9 &#8594; return <tspan fill="#4169E1" font-weight="600">[1, 2]</tspan></text>
+  <text x="40" y="288" fill="#1a2026" font-size="13">Sum above the target retires the right endpoint: 17 retires 15, then 13 retires 11,</text>
+  <text x="40" y="306" fill="#1a2026" font-size="13">and 2 + 7 = 9 lands exactly on the answer <tspan fill="#4169E1" font-weight="600">[1, 2]</tspan>.</text>
+</svg>

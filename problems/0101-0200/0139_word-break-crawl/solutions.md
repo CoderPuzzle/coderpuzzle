@@ -36,6 +36,8 @@ positions, and the walk from position 8 of `"railroadcar"` follows `c`,
 terminal is crossed, `reachable[11]` is never set, and the answer is
 false.
 
+![The trie of leet and code: position 0 consumes l-e-e-t to the ringed word end and marks 4, position 4 consumes c-o-d-e and marks 8 = n, and unreachable positions never start a walk.](figures/solution-trie-walk-marks.svg)
+
 **Complexity:** `O(T + n · L)` time with `T` the wordDict's total
 letters and `L ≤ 20` the longest word — one insert per letter builds the
 trie and every reachable position walks at most `L` single-character

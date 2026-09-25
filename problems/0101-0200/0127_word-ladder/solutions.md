@@ -6,6 +6,8 @@ Words are nodes of an implicit graph where adjacency means differing by one lett
 
 The trick is to bucket every dictionary word under each of its wildcard patterns: "hot" files under "*ot", "h*t", and "ho*", so all neighbors of a word share one of its patterns. The BFS proceeds level by level, and when a word is expanded its pattern buckets are popped from the map, so each bucket is read once overall and a `visited` set ensures every word is enqueued at most once. Popping also prevents re-reading shared buckets when two words of the same level have common neighbors.
 
+![On hit -> cog with wordList [hot,dot,dog,lot,log,cog] the BFS expands hit via h*t, hot via *ot, dot via do*, lot via lo*, and dog's *og bucket pops cog at level 5.](figures/solution-wildcard-bucket-bfs.svg)
+
 The step counter starts at 1 — `beginWord` itself counts — and increments once per level; the loop checks each dequeued word against `endWord` and returns the count the moment it is expanded, yielding the word count of the shortest ladder. An up-front membership check returns 0 when `endWord` is not in the dictionary, since no sequence can end outside it. With N words of length L, building the buckets and the BFS both cost N · L pattern constructions of length L.
 
 **Complexity:** `O(N · L^2)` time, `O(N · L)` space.

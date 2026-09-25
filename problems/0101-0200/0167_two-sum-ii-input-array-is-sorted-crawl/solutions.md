@@ -27,6 +27,10 @@ inside the range can rescue it, so the left marker steps inward. If instead the
 sum overshoots, the same argument retires the largest value — its most modest
 available partner is the one under the left marker, and even that overshot.
 
+![On `[2,7,11,15]` with target 9 each comparison certifies the discarded
+endpoint — `2 + 15 = 17` proves 15 and `2 + 11 = 13` proves 11 cannot belong
+to the pair — until `2 + 7 = 9` lands on `[1,2]`.](figures/solution-certified-endpoint-retire.svg)
+
 So every comparison eliminates one endpoint with a proof attached, and the
 range narrows by one position per step. Since the promised pair is never the
 element being discarded, it survives every round and the markers must meet on

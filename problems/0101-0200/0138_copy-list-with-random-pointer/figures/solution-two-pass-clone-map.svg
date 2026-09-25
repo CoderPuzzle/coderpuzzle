@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="372" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- head = [[7,null],[13,0],[11,4],[10,2],[1,0]]; boxes 76x38, original rail y=64, clone rail y=200, x = 40 + 108i -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="40" y="64" width="76" height="38"/><rect x="148" y="64" width="76" height="38"/><rect x="256" y="64" width="76" height="38"/><rect x="364" y="64" width="76" height="38"/><rect x="472" y="64" width="76" height="38"/>
+    <rect x="40" y="200" width="76" height="38"/><rect x="148" y="200" width="76" height="38"/><rect x="256" y="200" width="76" height="38"/><rect x="364" y="200" width="76" height="38"/><rect x="472" y="200" width="76" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="78" y="88">7</text><text x="186" y="88">13</text><text x="294" y="88">11</text><text x="402" y="88">10</text><text x="510" y="88">1</text>
+    <text x="78" y="224">7'</text><text x="186" y="224">13'</text><text x="294" y="224">11'</text><text x="402" y="224">10'</text><text x="510" y="224">1'</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 119 83 H 141" marker-end="url(#arrow)"/>
+    <path d="M 227 83 H 249" marker-end="url(#arrow)"/>
+    <path d="M 335 83 H 357" marker-end="url(#arrow)"/>
+    <path d="M 443 83 H 465" marker-end="url(#arrow)"/>
+    <path d="M 119 219 H 141" marker-end="url(#arrow)"/>
+    <path d="M 227 219 H 249" marker-end="url(#arrow)"/>
+    <path d="M 335 219 H 357" marker-end="url(#arrow)"/>
+    <path d="M 443 219 H 465" marker-end="url(#arrow)"/>
+  </g>
+  <!-- original random pointers, muted: 13->7, 11->1, 10->11, 1->7 -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="none">
+    <path d="M 176 62 Q 124 20 72 62" marker-end="url(#arrowM)"/>
+    <path d="M 304 62 Q 402 20 500 62" marker-end="url(#arrowM)"/>
+    <path d="M 394 62 Q 348 26 302 62" marker-end="url(#arrowM)"/>
+    <path d="M 502 62 Q 294 -6 86 62" marker-end="url(#arrowM)"/>
+  </g>
+  <!-- pass 1: identity-keyed clone map, one arrow per node -->
+  <g stroke="#4169E1" stroke-width="1.6" fill="none" stroke-dasharray="5 4">
+    <path d="M 78 106 V 194" marker-end="url(#arrowB)"/>
+    <path d="M 186 106 V 194" marker-end="url(#arrowB)"/>
+    <path d="M 294 106 V 194" marker-end="url(#arrowB)"/>
+    <path d="M 402 106 V 194" marker-end="url(#arrowB)"/>
+    <path d="M 510 106 V 194" marker-end="url(#arrowB)"/>
+  </g>
+  <text x="348" y="153" text-anchor="middle" fill="#5c6b76" font-size="12">pass 1</text>
+  <!-- pass 2: clone random pointers, wired by lookup -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 176 240 Q 122 320 68 240" marker-end="url(#arrowB)"/>
+    <path d="M 318 240 Q 405 280 492 240" marker-end="url(#arrowB)"/>
+    <path d="M 394 240 Q 345 340 296 240" marker-end="url(#arrowB)"/>
+    <path d="M 510 240 Q 298 384 88 240" marker-end="url(#arrowB)"/>
+  </g>
+  <text x="556" y="87" fill="#5c6b76" font-size="12">original</text>
+  <text x="556" y="223" fill="#5c6b76" font-size="12">clone</text>
+  <text x="556" y="258" fill="#4169E1" font-size="12">pass 2</text>
+  <text x="320" y="344" text-anchor="middle" fill="#1a2026" font-size="13">Pass 1 clones each node into the identity-keyed map; pass 2 wires every clone's</text>
+  <text x="320" y="362" text-anchor="middle" fill="#1a2026" font-size="13">next and random by lookup &#8212; 11'.random &#8594; <tspan fill="#4169E1" font-weight="600">1'</tspan>, 10'.random &#8594; <tspan fill="#4169E1" font-weight="600">11'</tspan> &#8212; never across rails.</text>
+</svg>

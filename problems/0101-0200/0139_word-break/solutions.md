@@ -20,6 +20,8 @@ The cost is dominated by the O(n^2) (j, i) pairs, each building and hashing a sl
 
 The same predicate, discovered in search order instead of sweep order. Think of each index `0..n` as a position: position `i` is reachable when the prefix ending there segments, and the edges out of `i` are the dictionary words — if `s[i..i+L)` is a word, it leads to position `i + L`. The question "can `s` be segmented" becomes "is position `n` reachable from position `0`", which a plain queue-based BFS answers: start at `0`, and whenever an edge lands exactly on `n`, the whole string has been segmented and the answer is yes.
 
+![BFS over s = 'leetcode' as positions: the leet edge carries 0 to 4 and the code edge from 4 lands exactly on 8 = n, so each position expands at most once and the answer is true.](figures/solution-bfs-position-queue.svg)
+
 Two details keep the search tight. First, a `visited` array marks a position when it is enqueued, so each position is expanded at most once — without it, the same prefix could be re-derived through many different last words and the queue would blow up. Second, the inner loop only tries word lengths up to the longest dictionary word (`maxLen`, at most 20 by the constraints), so each position checks at most `min(maxLen, n - i)` candidate pieces rather than every split point. That cap is what makes the BFS cheaper than the DP's inner sweep: `O(n · min(maxLen, n))` substring lookups instead of `O(n²)`.
 
 An unsegmentable string drains the queue — every reachable position expanded, `n` never hit — and returns false. Note the asymmetry with the DP: the sweep computes reachability for every prefix as a by-product, while the search stops at the first success and never revisits a position.

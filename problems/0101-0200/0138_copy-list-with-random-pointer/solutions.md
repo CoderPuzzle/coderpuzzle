@@ -12,6 +12,8 @@ values repeat freely). The canonical form fills the map in one pass over the
 `next` chain, then wires each clone's `next` and `random` in a second pass,
 looking every target up in the map.
 
+![Pass 1 clones each of 7, 13, 11, 10, 1 into the identity-keyed map and pass 2 wires the clone rail by lookup: 11'.random lands on 1' and 10'.random on 11', never across rails.](figures/solution-two-pass-clone-map.svg)
+
 Filling before wiring is what makes the lookups total: by the time any pointer
 is copied, every clone already exists. The same map also serves a memoized
 recursive walker — create the clone on first visit, register it immediately,

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="372" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- 4/333: remainders 4 -> 40 -> 67 -> 4; digits 0,1,2 at positions 0,1,2; map rows 4->0 40->1 67->2; step rows 330x36 at x=40 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="40" y="60" width="330" height="36"/>
+    <rect x="40" y="112" width="330" height="36"/>
+    <rect x="40" y="164" width="330" height="36"/>
+  </g>
+  <g font-size="13" fill="#1a2026">
+    <text x="52" y="83">rem 4 &#8594; 40 &#247; 333 gives digit 0, next rem 40</text>
+    <text x="52" y="135">rem 40 &#8594; 400 &#247; 333 gives digit 1, next rem 67</text>
+    <text x="52" y="187">rem 67 &#8594; 670 &#247; 333 gives digit 2, next rem 4</text>
+  </g>
+  <!-- remainder-to-position map -->
+  <rect x="430" y="60" width="170" height="142" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="515" y="82" text-anchor="middle" fill="#5c6b76" font-size="12.5">remainder &#8594; position</text>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="515" y="106">4 &#8594; 0</text>
+    <text x="515" y="132">40 &#8594; 1</text>
+    <text x="515" y="158">67 &#8594; 2</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="none">
+    <path d="M 374 78 L 426 101" marker-end="url(#arrow)"/>
+    <path d="M 374 130 L 426 127" marker-end="url(#arrow)"/>
+    <path d="M 374 182 L 426 153" marker-end="url(#arrow)"/>
+  </g>
+  <!-- remainder 4 arrives a second time -->
+  <rect x="40" y="216" width="330" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="52" y="239" font-size="13" font-weight="600" fill="#4169E1">rem 4 seen again &#8594; cycle opens at position 0</text>
+  <path d="M 374 234 Q 300 254 257 290" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- result string 0.(012) with the recurring digits -->
+  <g font-size="16" fill="#1a2026" text-anchor="middle">
+    <text x="238" y="312">.</text>
+    <text x="254" y="312">(</text>
+    <text x="408" y="312">)</text>
+  </g>
+  <rect x="190" y="288" width="36" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="208" y="311" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">0</text>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="268" y="288" width="36" height="36"/>
+    <rect x="314" y="288" width="36" height="36"/>
+    <rect x="360" y="288" width="36" height="36"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="286" y="311">0</text><text x="332" y="311">1</text><text x="378" y="311">2</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="286" y="342">pos 0</text><text x="332" y="342">pos 1</text><text x="378" y="342">pos 2</text>
+  </g>
+  <text x="40" y="360" fill="#1a2026" font-size="13">Remainder 4 returns; its recorded position 0 opens the parentheses: 4/333 = <tspan fill="#4169E1" font-weight="600">0.(012)</tspan>.</text>
+</svg>

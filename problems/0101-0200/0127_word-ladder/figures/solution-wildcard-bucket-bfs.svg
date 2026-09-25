@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- beginWord hit, wordList [hot,dot,dog,lot,log,cog]; BFS levels: hit / hot / dot lot / dog log / cog (returned); buckets h*t, *ot, do*, lo*, *og pop in that order -->
+  <g text-anchor="middle" font-size="12" fill="#9aa7b2">
+    <text x="28" y="44" font-size="10.5">level</text>
+    <text x="28" y="76">1</text><text x="28" y="132">2</text><text x="28" y="188">3</text>
+    <text x="28" y="244">4</text><text x="28" y="300">5</text>
+  </g>
+  <text x="102" y="48" text-anchor="middle" fill="#9aa7b2" font-size="10">beginWord</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="70" y="56" width="64" height="30"/><rect x="70" y="112" width="64" height="30"/>
+    <rect x="40" y="168" width="64" height="30"/><rect x="150" y="168" width="64" height="30"/>
+    <rect x="40" y="224" width="64" height="30"/><rect x="150" y="224" width="64" height="30"/>
+  </g>
+  <rect x="95" y="280" width="64" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="102" y="76">hit</text><text x="102" y="132">hot</text>
+    <text x="72" y="188">dot</text><text x="182" y="188">lot</text>
+    <text x="72" y="244">dog</text><text x="182" y="244">log</text>
+    <text x="127" y="300" fill="#4169E1">cog</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 102 86 L 102 108" marker-end="url(#arrow)"/>
+    <path d="M 92 142 L 76 164" marker-end="url(#arrow)"/>
+    <path d="M 112 142 L 170 164" marker-end="url(#arrow)"/>
+    <path d="M 72 198 L 72 220" marker-end="url(#arrow)"/>
+    <path d="M 182 198 L 182 220" marker-end="url(#arrow)"/>
+    <path d="M 82 254 L 116 276" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 172 254 L 150 276" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrowG)"/>
+  <g font-size="11.5" fill="#4169E1" font-weight="600">
+    <text x="112" y="102">h*t</text>
+    <text x="102" y="158" text-anchor="middle">*ot</text>
+    <text x="80" y="214">do*</text>
+    <text x="190" y="214">lo*</text>
+    <text x="60" y="272">*og</text>
+  </g>
+  <text x="164" y="272" fill="#9aa7b2" font-size="10">(bucket popped)</text>
+  <rect x="180" y="282" width="140" height="28" rx="14" fill="#4169E1"/>
+  <text x="250" y="301" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="600">found — return 5</text>
+  <path d="M 163 296 L 174 296" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <line x1="352" y1="40" x2="352" y2="320" stroke="#dbe4fb" stroke-width="2"/>
+  <!-- bucket map: each row is popped once, by the first word that expands it -->
+  <text x="505" y="64" text-anchor="middle" fill="#5c6b76" font-size="13" font-weight="600">wildcard buckets</text>
+  <g font-size="12.5">
+    <text x="386" y="92" fill="#4169E1" font-weight="600">h*t</text>
+    <text x="436" y="92" fill="#1a2026">hot</text>
+    <text x="544" y="92" fill="#9aa7b2" font-size="10.5">popped at hit</text>
+    <text x="386" y="118" fill="#4169E1" font-weight="600">*ot</text>
+    <text x="436" y="118" fill="#1a2026">hot · dot · lot</text>
+    <text x="544" y="118" fill="#9aa7b2" font-size="10.5">popped at hot</text>
+    <text x="386" y="144" fill="#4169E1" font-weight="600">do*</text>
+    <text x="436" y="144" fill="#1a2026">dot · dog</text>
+    <text x="544" y="144" fill="#9aa7b2" font-size="10.5">popped at dot</text>
+    <text x="386" y="170" fill="#4169E1" font-weight="600">lo*</text>
+    <text x="436" y="170" fill="#1a2026">lot · log</text>
+    <text x="544" y="170" fill="#9aa7b2" font-size="10.5">popped at lot</text>
+    <text x="386" y="196" fill="#4169E1" font-weight="600">*og</text>
+    <text x="436" y="196" fill="#1a2026">dog · log · cog</text>
+    <text x="544" y="196" fill="#9aa7b2" font-size="10.5">popped at dog</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#5c6b76">
+    <text x="505" y="232">every bucket is read once, then popped;</text>
+    <text x="505" y="250">visited words never re-enqueue</text>
+  </g>
+  <text x="340" y="340" text-anchor="middle" fill="#1a2026" font-size="13">BFS walks the implicit one-letter graph level by level, each expanded word</text>
+  <text x="340" y="358" text-anchor="middle" fill="#1a2026" font-size="13">popping its buckets; dog's *og pops cog, so the shortest ladder is <tspan fill="#4169E1" font-weight="600">5</tspan> words.</text>
+</svg>

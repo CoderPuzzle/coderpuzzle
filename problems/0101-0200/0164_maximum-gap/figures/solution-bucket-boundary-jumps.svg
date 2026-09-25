@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- nums=[3,6,9,1]; lo=1 hi=9 count=3 width=3; buckets [1-3][4-6][7-9]; boxes 160x64 at y=70, x=75/260/445; jump arcs below carry last max 3 -> 6 -> 9 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="155" y="60">bucket 0 &#183; 1&#8211;3</text>
+    <text x="340" y="60">bucket 1 &#183; 4&#8211;6</text>
+    <text x="525" y="60">bucket 2 &#183; 7&#8211;9</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="75" y="70" width="160" height="64"/>
+    <rect x="260" y="70" width="160" height="64"/>
+    <rect x="445" y="70" width="160" height="64"/>
+  </g>
+  <g>
+    <circle cx="115" cy="102" r="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <circle cx="195" cy="102" r="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <circle cx="340" cy="102" r="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <circle cx="525" cy="102" r="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="115" y="107">1</text><text x="195" y="107">3</text>
+    <text x="340" y="107">6</text><text x="525" y="107">9</text>
+  </g>
+  <!-- interior gap of bucket 0: 3 - 1 = 2, below the bound -->
+  <path d="M 133 102 L 176 102" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3" fill="none" marker-end="url(#arrow-muted)"/>
+  <text x="154" y="129" text-anchor="middle" fill="#9aa7b2" font-size="11.5">3 &#8722; 1 = 2</text>
+  <text x="340" y="129" text-anchor="middle" fill="#9aa7b2" font-size="11.5">min = max</text>
+  <text x="525" y="129" text-anchor="middle" fill="#9aa7b2" font-size="11.5">min = max</text>
+  <!-- sweep: carry last non-empty max, measure boundary jumps -->
+  <path d="M 195 142 Q 267 205 340 142" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 340 142 Q 432 240 525 142" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="267" y="196" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">6 &#8722; 3 = 3</text>
+  <text x="432" y="222" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">9 &#8722; 6 = 3</text>
+  <text x="40" y="252" fill="#1a2026" font-size="13">The sweep carries bucket 0's max 3 and measures only boundary jumps:</text>
+  <text x="40" y="272" fill="#1a2026" font-size="13">6 &#8722; 3 = 3 and 9 &#8722; 6 = 3, so the maximum gap is <tspan fill="#4169E1" font-weight="600">3</tspan>; the interior 3 &#8722; 1 = 2 stays hidden.</text>
+</svg>

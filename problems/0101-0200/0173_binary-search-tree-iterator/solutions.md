@@ -6,6 +6,10 @@ The iterator must produce the in-order sequence lazily, and the follow-up asks f
 
 That stack invariant makes both methods trivial. After construction the top is the leftmost (smallest) node of the whole tree, so `hasNext` is just a non-emptiness check. `next` pops the top and returns its value, but before doing so it pushes the left spine of the popped node's right child — because in-order visits that entire subtree before any ancestor. Every node is pushed exactly once and popped exactly once, and at any moment the stack holds a single root-to-current path, which is why its size is bounded by the height `h` and the amortized work per call is constant.
 
+![On the tree `[7,3,15,-1,-1,9,20]` the stack holds the left spine — 7 then 3
+after construction, then 15 and 9 once `next()` pops 3 and 7 — so the in-order
+pointer is held lazily in O(h) memory.](figures/solution-left-spine-stack.svg)
+
 Building the tree up front costs `O(n)` time and space; the iteration itself then meets the `O(h)`/average-`O(1)` target. Deep degenerate trees (a pure chain) are safe because both the build and the traversal are iterative — no recursion.
 
 **Complexity:** `O(n)` construction, average `O(1)` per `next` (`O(h)` worst case for a single call), `O(h)` iterator memory (plus the `O(n)` rebuilt tree).

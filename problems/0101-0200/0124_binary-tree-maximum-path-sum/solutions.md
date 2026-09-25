@@ -40,6 +40,8 @@ never pushed, so there is nothing to pop for it. The combine itself is the
 familiar arithmetic: clamp both gains at zero, offer `val + left + right` to
 the running best, and push `val + max(left, right)` back for the parent.
 
+![At node 20's combine in [-10,9,20,null,null,15,7] the gain stack holds 9, 15, 7 bottom to top; popping 7 then 15 yields the bend 15 + 20 + 7 = 42 as the new best, and gain 35 is pushed on toward -10.](figures/solution-gain-stack-combine.svg)
+
 Every node enters the frame stack three times and the gain stack once, so the
 sweep is still linear. The two stacks are what the recursion kept in
 registers and frames: the frame stack is as deep as the tree (its high-water

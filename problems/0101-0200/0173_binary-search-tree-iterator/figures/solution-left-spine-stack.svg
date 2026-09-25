@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 326" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="326" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tree [7,3,15,-1,-1,9,20]; left-spine pushes 7,3 then 15,9; stack cells 80x32, bottoms y=240, columns x=300/410/520 -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="140" y1="80" x2="190" y2="150"/>
+    <line x1="190" y1="150" x2="220" y2="215"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2.5">
+    <line x1="140" y1="80" x2="90" y2="150"/>
+    <line x1="190" y1="150" x2="160" y2="215"/>
+  </g>
+  <text x="76" y="118" text-anchor="middle" fill="#4169E1" font-size="11">push 7, 3</text>
+  <text x="140" y="185" text-anchor="middle" fill="#4169E1" font-size="11">push 15, 9</text>
+  <g font-weight="600" font-size="14" text-anchor="middle">
+    <circle cx="140" cy="80" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="140" y="85" fill="#1a2026">7</text>
+    <circle cx="90" cy="150" r="18" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <text x="90" y="155" fill="#1a2026">3</text>
+    <circle cx="190" cy="150" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="190" y="155" fill="#1a2026">15</text>
+    <circle cx="160" cy="215" r="18" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <text x="160" y="220" fill="#1a2026">9</text>
+    <circle cx="220" cy="215" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="220" y="220" fill="#1a2026">20</text>
+  </g>
+  <!-- stack states: bottom-to-top -->
+  <text x="340" y="158" text-anchor="middle" fill="#5c6b76" font-size="12">top = 3 = min</text>
+  <text x="560" y="158" text-anchor="middle" fill="#5c6b76" font-size="12">top = 9</text>
+  <rect x="300" y="208" width="80" height="32" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="340" y="229" text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">7</text>
+  <rect x="300" y="176" width="80" height="32" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="340" y="197" text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">3</text>
+  <rect x="410" y="208" width="80" height="32" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="450" y="229" text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">7</text>
+  <rect x="520" y="208" width="80" height="32" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="560" y="229" text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">15</text>
+  <rect x="520" y="176" width="80" height="32" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="560" y="197" text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">9</text>
+  <!-- transitions -->
+  <path d="M 340 172 Q 395 146 436 204" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 465 206 Q 505 146 560 172" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="388" y="136" text-anchor="middle" fill="#5c6b76" font-size="12">pop 3 &#183; no right child</text>
+  <text x="512" y="140" text-anchor="middle" fill="#5c6b76" font-size="12">pop 7 &#183; push 15, 9</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="340" y="262">after build</text>
+    <text x="450" y="262">after next() &#8594; 3</text>
+    <text x="560" y="262">after next() &#8594; 7</text>
+  </g>
+  <text x="40" y="292" fill="#1a2026" font-size="13">Construction pushes the left spine <tspan fill="#4169E1" font-weight="600">7 then 3</tspan>, so the top is the minimum; next()</text>
+  <text x="40" y="310" fill="#1a2026" font-size="13">pops 3, then pops 7 and pushes <tspan fill="#4169E1" font-weight="600">15, 9</tspan> &#8212; the stack never holds more than h nodes.</text>
+</svg>

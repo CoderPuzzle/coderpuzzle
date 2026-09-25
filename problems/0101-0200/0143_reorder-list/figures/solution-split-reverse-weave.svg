@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 332" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="332" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- head = [1,2,3,4]; boxes 44x36 at x = 90 + 80i; rows y = 52 / 142 / 232 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="90" y="52" width="44" height="36"/><rect x="170" y="52" width="44" height="36"/><rect x="250" y="52" width="44" height="36"/><rect x="330" y="52" width="44" height="36"/>
+    <rect x="90" y="142" width="44" height="36"/><rect x="170" y="142" width="44" height="36"/><rect x="330" y="142" width="44" height="36"/><rect x="410" y="142" width="44" height="36"/>
+    <rect x="90" y="232" width="44" height="36"/><rect x="170" y="232" width="44" height="36"/><rect x="250" y="232" width="44" height="36"/><rect x="330" y="232" width="44" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="112" y="75">1</text><text x="192" y="75">2</text><text x="272" y="75">3</text><text x="352" y="75">4</text>
+    <text x="112" y="165">1</text><text x="192" y="165">2</text><text x="352" y="165">3</text><text x="432" y="165">4</text>
+    <text x="112" y="255">1</text><text x="192" y="255">4</text><text x="272" y="255">2</text><text x="352" y="255">3</text>
+  </g>
+  <!-- row 1: split after node 2 -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 138 70 H 166" marker-end="url(#arrow)"/>
+    <path d="M 298 70 H 326" marker-end="url(#arrow)"/>
+    <path d="M 378 70 H 400" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 218 70 H 246" stroke="#9aa7b2" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <line x1="232" y1="46" x2="232" y2="96" stroke="#4169E1" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <text x="232" y="38" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">slow.next = null</text>
+  <polygon points="188,98 196,98 192,104" fill="#4169E1"/>
+  <text x="192" y="118" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">slow</text>
+  <polygon points="348,98 356,98 352,104" fill="#4169E1"/>
+  <text x="352" y="118" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">fast</text>
+  <text x="406" y="75" fill="#9aa7b2" font-size="12">null</text>
+  <text x="470" y="64" fill="#5c6b76" font-size="12">slow on 2, fast on 4 &#8212;</text>
+  <text x="470" y="80" fill="#5c6b76" font-size="12">cut after node 2</text>
+  <!-- row 2: back half reversed -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 138 160 H 166" marker-end="url(#arrow)"/>
+    <path d="M 218 160 H 242" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 406 160 H 378" stroke="#4169E1" stroke-width="2" fill="none" marker-end="url(#arrowB)"/>
+  <text x="246" y="165" fill="#9aa7b2" font-size="12">null</text>
+  <text x="152" y="196" text-anchor="middle" fill="#5c6b76" font-size="11.5">front</text>
+  <text x="392" y="196" text-anchor="middle" fill="#5c6b76" font-size="11.5">back, reversed</text>
+  <text x="470" y="154" fill="#5c6b76" font-size="12">back half reversed</text>
+  <text x="470" y="170" fill="#5c6b76" font-size="12">in place: 4 &#8594; 3</text>
+  <!-- row 3: weave -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 138 250 H 166" marker-end="url(#arrow)"/>
+    <path d="M 218 250 H 246" marker-end="url(#arrow)"/>
+    <path d="M 298 250 H 326" marker-end="url(#arrow)"/>
+    <path d="M 378 250 H 400" marker-end="url(#arrow)"/>
+  </g>
+  <text x="406" y="255" fill="#9aa7b2" font-size="12">null</text>
+  <text x="470" y="244" fill="#5c6b76" font-size="12">weave one back node</text>
+  <text x="470" y="260" fill="#5c6b76" font-size="12">between each front pair</text>
+  <text x="320" y="302" text-anchor="middle" fill="#1a2026" font-size="13">Three walks of next pointers, no new nodes and no value changed: the same list</text>
+  <text x="320" y="320" text-anchor="middle" fill="#1a2026" font-size="13">now reads <tspan fill="#4169E1" font-weight="600">1 &#8594; 4 &#8594; 2 &#8594; 3</tspan> &#8212; the output [1,4,2,3].</text>
+</svg>

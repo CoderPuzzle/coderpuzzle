@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <!-- tree = [4,9,0,5,1]; stack snapshot after popping (0,4) then (9,4): [(1,49),(5,49)]; leaf numbers 495 + 491 + 40 = 1026 -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <path d="M 121 96 L 154 144"/><path d="M 68 177 L 92 228"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="3">
+    <path d="M 100 96 L 70 144"/><path d="M 54 178 L 36 227"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="165" cy="160" r="19"/><circle cx="100" cy="245" r="19"/>
+  </g>
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="2.5">
+    <circle cx="110" cy="80" r="19"/><circle cx="60" cy="160" r="19"/><circle cx="30" cy="245" r="19"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="110" y="84.5">4</text><text x="60" y="164.5">9</text><text x="165" y="164.5">0</text>
+    <text x="30" y="249.5">5</text><text x="100" y="249.5">1</text>
+  </g>
+  <!-- prefix numbers grow as the walk descends the accented path 4 - 9 - 5 -->
+  <g font-size="12" font-weight="600" fill="#4169E1">
+    <text x="136" y="84">prefix 0 → 4</text>
+    <text x="84" y="150">4 → 49</text>
+    <text x="30" y="281" text-anchor="middle">49 → 495</text>
+  </g>
+  <g font-size="12" fill="#5c6b76">
+    <text x="190" y="165">4 → 40</text>
+    <text x="100" y="281" text-anchor="middle">49 → 491</text>
+  </g>
+  <text x="385" y="60" text-anchor="middle" fill="#5c6b76" font-size="12.5">stack of (node, prefix)</text>
+  <text x="300" y="97" text-anchor="end" fill="#9aa7b2" font-size="11">top</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="310" y="72" width="150" height="40"/>
+    <rect x="310" y="112" width="150" height="40"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="385" y="97">(1, 49)</text><text x="385" y="137">(5, 49)</text>
+  </g>
+  <text x="385" y="180" text-anchor="middle" fill="#9aa7b2" font-size="11.5">(9, 4) popped: 4×10+9 = 49</text>
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <path d="M 464 92 L 481 108"/><path d="M 464 132 L 481 137"/>
+  </g>
+  <text x="570" y="84" text-anchor="middle" fill="#5c6b76" font-size="12.5" font-weight="600">popping a leaf adds its number</text>
+  <g font-size="13" fill="#1a2026">
+    <text x="486" y="112">(1, 49) pops: 49×10+1 = 491</text>
+    <text x="486" y="140">(5, 49) pops: 49×10+5 = 495</text>
+    <text x="486" y="168">(0, 4) popped earlier: 40</text>
+  </g>
+  <line x1="486" y1="186" x2="660" y2="186" stroke="#dbe4fb" stroke-width="2"/>
+  <text x="570" y="210" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">495 + 491 + 40 = <tspan fill="#4169E1">1026</tspan></text>
+  <text x="340" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Each pop appends one digit — prefix 4 becomes 49, then 495 — and only a</text>
+  <text x="340" y="318" text-anchor="middle" fill="#1a2026" font-size="13">leaf's completed number joins the sum: 495 + 491 + 40 = <tspan fill="#4169E1" font-weight="600">1026</tspan>.</text>
+</svg>
