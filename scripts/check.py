@@ -41,6 +41,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -86,6 +87,36 @@ def _unclosed_fence(markdown: str) -> bool:
         if line.strip().startswith("```"):
             fence = not fence
     return fence
+
+
+def _figure_refs(markdown: str) -> list[str]:
+    """Figure references in image syntax, outside fenced blocks — exactly
+    the refs the frontend rewrites to the figure route and renders. The
+    alt text may carry arbitrary [brackets] (dp[3], [[0, 1], [-2, 3]]),
+    so each `](figures/…)` target is validated by walking back to its
+    matching alt bracket rather than by a flat regex."""
+    fence = False
+    outside = []
+    for line in markdown.splitlines():
+        if line.strip().startswith("```"):
+            fence = not fence
+            continue
+        if not fence:
+            outside.append(line)
+    text = "\n".join(outside)
+    refs = []
+    for match in re.finditer(r"\]\(figures/([^)\s]+)\)", text):
+        depth = 1
+        i = match.start() - 1
+        while i >= 0 and depth > 0:
+            if text[i] == "]":
+                depth += 1
+            elif text[i] == "[":
+                depth -= 1
+            i -= 1
+        if depth == 0 and i >= 0 and text[i] == "!":
+            refs.append(match.group(1))
+    return refs
 
 
 def _level3(text: str) -> list[tuple[str, str]]:
@@ -430,9 +461,12 @@ def check_bundle(bundle: Path) -> list[Failure]:
         if len(titles) != len(set(titles)):
             fail("solutions.md contains a duplicate variant section")
         allowed.add("solutions.md")
-    # statement figures: a flat figures/ directory of <name>.svg files
+    # statement figures: a flat figures/ directory of <name>.svg files.
+    # Beyond the filename shape, refs must resolve in both directions and
+    # every SVG must parse: a broken figure ships as a broken image in the
+    # UI tabs, which no other gate would ever catch.
     figures_dir = bundle / "figures"
-    figures_valid = True
+    figure_files: set[str] = set()
     if figures_dir.is_dir():
         for figure in figures_dir.iterdir():
             if (
@@ -442,8 +476,34 @@ def check_bundle(bundle: Path) -> list[Failure]:
                 fail(
                     f"unexpected figure entry {figure.name} (figures are flat <name>.svg files)"
                 )
-                figures_valid = False
+                continue
+            figure_files.add(figure.name)
         allowed.add("figures")
+    figure_refs: set[str] = set()
+    markdowns = [("statement.md", statement)]
+    if solutions_guide.is_file():
+        markdowns.append(("solutions.md", guide_text))
+    for name, text in markdowns:
+        for figure_name in _figure_refs(text):
+            if re.fullmatch(r"[a-z0-9-]+\.svg", figure_name) is None:
+                fail(f"{name} has a malformed figure reference (figures/{figure_name})")
+            else:
+                figure_refs.add(figure_name)
+                if figure_name not in figure_files:
+                    fail(f"{name} references figures/{figure_name}, which does not exist")
+    for figure_name in sorted(figure_files - figure_refs):
+        fail(
+            f"figures/{figure_name} is never referenced by statement.md or solutions.md"
+        )
+    for figure_name in sorted(figure_files):
+        figure_path = figures_dir / figure_name
+        try:
+            root = ET.parse(figure_path).getroot()
+        except ET.ParseError as error:
+            fail(f"figures/{figure_name} is not well-formed XML ({error})")
+            continue
+        if not root.tag.rpartition("}")[2].endswith("svg"):
+            fail(f"figures/{figure_name} is not an SVG document")
     for stray in sorted(
         path.name for path in bundle.iterdir() if path.name not in allowed
     ):
