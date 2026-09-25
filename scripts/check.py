@@ -116,6 +116,13 @@ def _figure_refs(markdown: str) -> list[str]:
             i -= 1
         if depth == 0 and i >= 0 and text[i] == "!":
             refs.append(match.group(1))
+        else:
+            # Alt text may hold unbalanced brackets (e.g. "[0, 12)"): the
+            # depth walk then never closes. CommonMark still parses the
+            # image, so fall back to the nearest preceding "![".
+            bang = text.rfind("![", 0, match.start())
+            if bang != -1:
+                refs.append(match.group(1))
     return refs
 
 
