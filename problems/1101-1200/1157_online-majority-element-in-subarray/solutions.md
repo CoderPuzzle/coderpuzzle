@@ -8,6 +8,8 @@ Proposing is where Boyer-Moore voting earns its segment tree. A node storing `(c
 
 Verification handles the fold's one failure mode — with no strict majority the survivor is arbitrary. Each value keeps its sorted list of positions (built in one pass); occurrences in `[left, right]` are `lowerBound(right + 1) - lowerBound(left)` — two binary searches in Python (`bisect_left`) and Java (hand-rolled, since the lists are boxed). If the count reaches `threshold` the candidate is the answer, otherwise no element qualifies and the query returns `-1`.
 
+![For query(0, 5, 4) on [1, 1, 2, 2, 1, 1], the (candidate, surplus) segment tree folds to (1, 2), and positions[1] = [0, 1, 4, 5] counts 4 occurrences, meeting the threshold — answer 1.](figures/solution-majority-tree-fold-verify.svg)
+
 An alternative canonical route is randomization — sample random indices in `[left, right]`; any true majority is hit with probability > 1/2 per draw — but the segment tree is deterministic, which suits exact judging, and answers in `O(log² n)` worst case rather than with high probability.
 
 **Complexity:** `O(n)` construction (`O(n log n)` in Java due to boxed position lists), `O(log n)` nodes per query fold plus `O(log n)` per binary search, `O(n)` space.

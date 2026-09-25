@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- fruits = [1,2,3,2,2]; cells 48x36 at x=170+58k, rows y=60/136/212; brackets mark the window -->
+  <text x="310" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5">fruits = [1, 2, 3, 2, 2]</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.2">
+    <rect x="170" y="60" width="48" height="36"/><rect x="228" y="60" width="48" height="36"/>
+    <rect x="344" y="60" width="48" height="36"/><rect x="402" y="60" width="48" height="36"/>
+    <rect x="228" y="136" width="48" height="36"/><rect x="286" y="136" width="48" height="36"/>
+    <rect x="344" y="136" width="48" height="36"/><rect x="402" y="136" width="48" height="36"/>
+    <rect x="170" y="212" width="48" height="36"/>
+  </g>
+  <rect x="286" y="60" width="48" height="36" fill="#ffffff" stroke="#4169E1" stroke-width="2.2"/>
+  <rect x="170" y="136" width="48" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="228" y="212" width="48" height="36"/><rect x="286" y="212" width="48" height="36"/><rect x="344" y="212" width="48" height="36"/><rect x="402" y="212" width="48" height="36"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="194" y="83">1</text><text x="252" y="83">2</text><text x="310" y="83">3</text><text x="368" y="83">2</text><text x="426" y="83">2</text>
+    <text x="252" y="159">2</text><text x="310" y="159">3</text><text x="368" y="159">2</text><text x="426" y="159">2</text>
+  </g>
+  <text x="194" y="159" text-anchor="middle" fill="#9aa7b2">1</text>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="252" y="235">2</text><text x="310" y="235">3</text><text x="368" y="235">2</text><text x="426" y="235">2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 170 100 V 110 H 334 V 100"/>
+    <path d="M 228 176 V 186 H 334 V 176"/>
+    <path d="M 480 102 V 130" marker-end="url(#arrow)"/>
+    <path d="M 480 178 V 206" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 228 252 V 262 H 450 V 252" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="252" y="128">window [1, 2, 3] &#8212; three types, illegal</text>
+    <text x="281" y="204">[2, 3] after the 1 retires from the left</text>
+    <text x="339" y="280">[2, 3, 2, 2] &#8212; length <tspan fill="#4169E1" font-weight="600">4</tspan>, the best window</text>
+  </g>
+  <text x="310" y="308" text-anchor="middle" fill="#1a2026" font-size="13">The window reaches [1, 2, 3], the 1 retires, and growth resumes &#8212;</text>
+  <text x="310" y="330" text-anchor="middle" fill="#1a2026" font-size="13">[2, 3, 2, 2] spans <tspan fill="#4169E1" font-weight="600">4</tspan> trees, the longest legal window and the answer.</text>
+</svg>

@@ -4,6 +4,8 @@
 
 A single `rand7()` draw gives seven equally likely values — no function of them can produce ten equally likely outcomes, since 7 is not divisible by 10. But two independent draws give 49 equally likely pairs, and 40 of those outcomes can be mapped onto ten values with four pairs each. The construction draws `a` and `b`, folds them into `idx = (a - 1) * 7 + b`, which is uniform over 1..49, and keeps only `idx <= 40`.
 
+![The 7x7 grid of (a, b) pairs numbers idx = (a - 1) * 7 + b from 1 to 49, keeps the 40 tinted cells that map onto outputs 1..10, strikes out 41..49 as rejected, and the example draws (1, 1) land on idx 1, returning 1.](figures/solution-rejection-grid.svg)
+
 The kept range matters exactly: 40 is both a multiple of 10 and the largest multiple under 49, so each output class receives exactly four indices and `((idx - 1) mod 10) + 1` is uniform over 1..10. Pairs 41..49 would break the symmetry (nine leftover outcomes cannot be split evenly) and are rejected — both draws are discarded and the pair is redrawn from scratch. Rejection introduces no bias precisely because every rejected outcome is thrown away wholesale rather than partially remapped.
 
 Since this judge replaces the live RNG with a recorded list `rand7_outputs`, the loop consumes the values strictly in order, two per attempt (`a` then `b`), advancing the index by two and discarding both halves of any rejected pair — matching how a real implementation would consume calls. The test data guarantees enough outputs for termination.

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <!-- s = "abcda"; cells 48x34 at (200, 40); prefix[i] = parity mask of s[:i] with bits shown in letter order a, b, c, d (bit boxes 18x18 at x = 232 + 24j); the query uses prefix[4] ^ prefix[0], so those two rows carry accent bars -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="224" y="32">0</text><text x="272" y="32">1</text><text x="320" y="32">2</text><text x="368" y="32">3</text><text x="416" y="32">4</text>
+  </g>
+  <text x="192" y="62" text-anchor="end" fill="#5c6b76" font-size="12.5">s =</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="200" y="40" width="48" height="34"/><rect x="248" y="40" width="48" height="34"/><rect x="296" y="40" width="48" height="34"/><rect x="344" y="40" width="48" height="34"/><rect x="392" y="40" width="48" height="34"/>
+  </g>
+  <g text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a2026">
+    <text x="224" y="62">a</text><text x="272" y="62">b</text><text x="320" y="62">c</text><text x="368" y="62">d</text><text x="416" y="62">a</text>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="108" y="92">prefix[i]</text>
+    <text x="241" y="92" text-anchor="middle">a</text><text x="265" y="92" text-anchor="middle">b</text><text x="289" y="92" text-anchor="middle">c</text><text x="313" y="92" text-anchor="middle">d</text>
+    <text x="336" y="92">toggle</text>
+  </g>
+  <!-- rows: prefix[0..5]; boxes filled #dbe4fb where the bit is 1 (odd count) -->
+  <g font-size="12.5">
+    <rect x="98" y="105" width="3" height="16" fill="#4169E1"/>
+    <text x="108" y="118" fill="#4169E1" font-weight="600">prefix[0]</text>
+    <text x="336" y="118" fill="#5c6b76" font-size="12">seed</text>
+    <text x="108" y="144" fill="#5c6b76">prefix[1]</text>
+    <text x="336" y="144" fill="#5c6b76" font-size="12">+ 'a'</text>
+    <text x="108" y="170" fill="#5c6b76">prefix[2]</text>
+    <text x="336" y="170" fill="#5c6b76" font-size="12">+ 'b'</text>
+    <text x="108" y="196" fill="#5c6b76">prefix[3]</text>
+    <text x="336" y="196" fill="#5c6b76" font-size="12">+ 'c'</text>
+    <rect x="98" y="209" width="3" height="16" fill="#4169E1"/>
+    <text x="108" y="222" fill="#4169E1" font-weight="600">prefix[4]</text>
+    <text x="336" y="222" fill="#5c6b76" font-size="12">+ 'd'</text>
+    <text x="108" y="248" fill="#5c6b76">prefix[5]</text>
+    <text x="336" y="248" fill="#5c6b76" font-size="12">+ 'a'</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.1">
+    <g fill="#ffffff">
+      <rect x="232" y="104" width="18" height="18"/><rect x="256" y="104" width="18" height="18"/><rect x="280" y="104" width="18" height="18"/><rect x="304" y="104" width="18" height="18"/>
+      <rect x="256" y="130" width="18" height="18"/><rect x="280" y="130" width="18" height="18"/><rect x="304" y="130" width="18" height="18"/>
+      <rect x="280" y="156" width="18" height="18"/><rect x="304" y="156" width="18" height="18"/>
+      <rect x="304" y="182" width="18" height="18"/>
+      <rect x="232" y="234" width="18" height="18"/>
+    </g>
+    <g fill="#dbe4fb">
+      <rect x="232" y="130" width="18" height="18"/>
+      <rect x="232" y="156" width="18" height="18"/><rect x="256" y="156" width="18" height="18"/>
+      <rect x="232" y="182" width="18" height="18"/><rect x="256" y="182" width="18" height="18"/><rect x="280" y="182" width="18" height="18"/>
+      <rect x="232" y="208" width="18" height="18"/><rect x="256" y="208" width="18" height="18"/><rect x="280" y="208" width="18" height="18"/><rect x="304" y="208" width="18" height="18"/>
+      <rect x="256" y="234" width="18" height="18"/><rect x="280" y="234" width="18" height="18"/><rect x="304" y="234" width="18" height="18"/>
+    </g>
+  </g>
+  <g text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a2026">
+    <text x="241" y="117">0</text><text x="265" y="117">0</text><text x="289" y="117">0</text><text x="313" y="117">0</text>
+    <text x="241" y="143">1</text><text x="265" y="143">0</text><text x="289" y="143">0</text><text x="313" y="143">0</text>
+    <text x="241" y="169">1</text><text x="265" y="169">1</text><text x="289" y="169">0</text><text x="313" y="169">0</text>
+    <text x="241" y="195">1</text><text x="265" y="195">1</text><text x="289" y="195">1</text><text x="313" y="195">0</text>
+    <text x="241" y="221">1</text><text x="265" y="221">1</text><text x="289" y="221">1</text><text x="313" y="221">1</text>
+    <text x="241" y="247">0</text><text x="265" y="247">1</text><text x="289" y="247">1</text><text x="313" y="247">1</text>
+  </g>
+  <text x="380" y="150" fill="#5c6b76" font-size="11.5">bit 1 = the letter has</text>
+  <text x="380" y="166" fill="#5c6b76" font-size="11.5">been seen an odd</text>
+  <text x="380" y="182" fill="#5c6b76" font-size="11.5">number of times</text>
+  <rect x="64" y="268" width="512" height="64" rx="10" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="320" y="293" text-anchor="middle" font-size="13.5" fill="#1a2026">query [0, 3, 2]:  mask = prefix[4] ^ prefix[0] = <tspan fill="#4169E1" font-weight="600">1111</tspan> ^ 0000 = <tspan fill="#4169E1" font-weight="600">1111</tspan></text>
+  <text x="320" y="317" text-anchor="middle" font-size="13.5" fill="#1a2026">odd = 4 → <tspan fill="#4169E1" font-weight="600">4 / 2 = 2 ≤ k = 2</tspan> → <tspan fill="#4169E1" font-weight="700">true</tspan></text>
+  <text x="320" y="348" text-anchor="middle" font-size="13" fill="#1a2026">"abcd" has all four letters odd — two replacements reach the palindrome "abba".</text>
+</svg>

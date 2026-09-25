@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 314" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="314" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- n=3, edges 0->1, 0->2, source 0, destination 2; DFS: 0 gray, 1 gray, leaf 1 != dest 2 -> false; node 2 stays white -->
+  <!-- edges -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 145.3 114.0 L 302.8 76.5" marker-end="url(#arrow)"/>
+    <path d="M 145.0 127.1 L 303.1 172.3" marker-end="url(#arrow)"/>
+  </g>
+  <!-- nodes: gray = on current DFS path, white = unvisited -->
+  <circle cx="120" cy="120" r="22" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <text x="120" y="125" text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">0</text>
+  <circle cx="330" cy="70" r="22" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <text x="330" y="75" text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">1</text>
+  <circle cx="330" cy="180" r="22" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="330" y="185" text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">2</text>
+  <g text-anchor="middle" font-size="11">
+    <text x="120" y="162" fill="#4169E1">gray · on path</text>
+    <text x="330" y="110" fill="#4169E1">gray · leaf, not dest</text>
+    <text x="330" y="222" fill="#9aa7b2">destination · white</text>
+  </g>
+  <!-- DFS steps -->
+  <text x="400" y="62" fill="#5c6b76" font-size="12">DFS from source 0</text>
+  <g font-size="13" fill="#1a2026">
+    <text x="400" y="90">1. visit 0 → gray</text>
+    <text x="400" y="116">2. visit child 1 → gray</text>
+    <text x="400" y="142">3. leaf: 1 has no out-edges</text>
+    <text x="400" y="168" fill="#4169E1" font-weight="600">4. leaf 1 ≠ destination 2</text>
+  </g>
+  <text x="400" y="194" font-size="13.5" font-weight="700" fill="#4169E1">→ return false</text>
+  <!-- color legend -->
+  <g font-size="11.5" fill="#5c6b76">
+    <circle cx="100" cy="242" r="7" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+    <text x="114" y="246">white · unvisited</text>
+    <circle cx="248" cy="242" r="7" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+    <text x="262" y="246">gray · on path</text>
+    <circle cx="382" cy="242" r="7" fill="#1a2026"/>
+    <text x="396" y="246" fill="#1a2026">black · safe</text>
+  </g>
+  <text x="320" y="282" text-anchor="middle" fill="#1a2026" font-size="13">The walk 0 → 1 stops at leaf 1, which is not the destination 2, so</text>
+  <text x="320" y="302" text-anchor="middle" fill="#1a2026" font-size="13">the answer is <tspan fill="#4169E1" font-weight="600">false</tspan> — node 2 is never even reached.</text>
+</svg>

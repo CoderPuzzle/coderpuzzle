@@ -12,6 +12,8 @@ the resulting preorder meets the flipped nodes. The first value that
 disagrees with the node being visited — or voyage entries left over once the
 tree is exhausted — means no flip set can work, and the answer is `[-1]`.
 
+![With root = [1,2,3] and voyage = [1,3,2], the descent pauses at node 1, flips it because the next voyage value 3 names its right child, and children 2 and 3 trade places so the preorder 1, 3, 2 matches voyage.](figures/solution-voyage-flip-descent.svg)
+
 No backtracking is ever needed, and the statement's constraints are why:
 values are unique in both the tree and the voyage. At a two-child node the
 next voyage value belongs to exactly one child's subtree, so whether that

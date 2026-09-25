@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="290" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- num = "1101111"; digit cells 52x44 at y=60, x from 148; cuts at x=252 and x=304;
+       a = cells 1-2, b = cell 3, forced pieces z = cells 4-5 and 6-7 -->
+  <text x="330" y="40" text-anchor="middle" fill="#5c6b76" font-size="12">first piece &#8220;1&#8221; fails for every second piece, so the first live pair is a = &#8220;11&#8221;, b = &#8220;0&#8221;</text>
+  <!-- cut ticks -->
+  <g stroke="#4169E1" stroke-width="2">
+    <line x1="252" y1="52" x2="252" y2="112"/>
+    <line x1="304" y1="52" x2="304" y2="112"/>
+  </g>
+  <!-- digit cells: a and b shaded -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="148" y="60" width="52" height="44" fill="#dbe4fb"/>
+    <rect x="200" y="60" width="52" height="44" fill="#dbe4fb"/>
+    <rect x="252" y="60" width="52" height="44" fill="#dbe4fb"/>
+    <rect x="304" y="60" width="52" height="44" fill="#ffffff"/>
+    <rect x="356" y="60" width="52" height="44" fill="#ffffff"/>
+    <rect x="408" y="60" width="52" height="44" fill="#ffffff"/>
+    <rect x="460" y="60" width="52" height="44" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16">
+    <text x="174" y="88">1</text>
+    <text x="226" y="88">1</text>
+    <text x="278" y="88">0</text>
+    <text x="330" y="88">1</text>
+    <text x="382" y="88">1</text>
+    <text x="434" y="88">1</text>
+    <text x="486" y="88">1</text>
+  </g>
+  <!-- free pieces: the two cuts -->
+  <g fill="none" stroke="#5c6b76" stroke-width="1.5">
+    <path d="M 150 118 V 124 H 250 V 118"/>
+    <path d="M 254 118 V 124 H 302 V 118"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="200" y="144">a = 11</text>
+    <text x="278" y="144">b = 0</text>
+  </g>
+  <!-- forced pieces: each is the sum of the two before it -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="356" y="168">forced</text>
+    <text x="460" y="168">forced</text>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="1.5">
+    <path d="M 306 176 V 182 H 406 V 176"/>
+    <path d="M 410 176 V 182 H 510 V 176"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">
+    <text x="356" y="202">z = 11 + 0 = 11</text>
+    <text x="460" y="202">z = 0 + 11 = 11</text>
+  </g>
+  <text x="330" y="240" text-anchor="middle" fill="#1a2026" font-size="13">With a = 11 and b = 0 pinned, each next piece is forced: 11 + 0 = 11 and</text>
+  <text x="330" y="260" text-anchor="middle" fill="#1a2026" font-size="13">0 + 11 = 11 consume the rest &#8212; the split is <tspan fill="#4169E1" font-weight="600">[11, 0, 11, 11]</tspan>.</text>
+</svg>

@@ -32,6 +32,8 @@ entry and replaces it for free. A price in between is noise — too low to
 clear the fee, too high to improve the entry — and the day passes without
 action.
 
+![Running the greedy on prices [1,3,2,8,4,9] with fee 2: the basis opens at 1, banking at 8 clears 5 and re-anchors the basis to 6 then 4, and the rise to 9 banks 3 — total 8 with one fee per leg.](figures/solution-greedy-basis-reanchor.svg)
+
 The rebate is what makes banking early safe. After banking at `p` the basis
 sits at `p - fee`; if the price then climbs to `q`, the next banking adds
 `q - (p - fee) - fee = q - p`, and the two together total `q - b - fee` — one

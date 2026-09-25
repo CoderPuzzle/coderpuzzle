@@ -8,6 +8,8 @@ edge of length `side` is solid exactly when the sum of its cells equals
 from `(r, c1)` to `(r, c2)` sum to" with four table lookups — no scanning,
 whatever the side length.
 
+![For grid [[1,1,1],[1,0,1],[1,1,1]], the 3×3 square's four strips each sum to 3 = side through prefix lookups while every smaller square fails on the center 0, so the answer is 9.](figures/solution-prefix-border-strips.svg)
+
 Building the prefix table is one `O(R·C)` pass. The search then enumerates
 every top-left corner and every side length that fits, which is
 `O(N³)` candidates for an `N×N` grid, each tested in constant time by four

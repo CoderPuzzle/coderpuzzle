@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 368" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="368" fill="#ffffff"/>
+  <!-- nums = [0,0,0,1,0,1,1,0], k = 3; cells 54x40 at (96 + 60i, 62);
+       flip = XOR of flip windows still covering i, eff = nums[i] ^ flip at the check;
+       arcs = the three forced flip windows, starting at i = 0, 4, 5 -->
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="84" y="58">i</text><text x="84" y="87">nums</text>
+    <text x="84" y="140">flip</text><text x="84" y="172">eff</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="123" y="58">0</text><text x="183" y="58">1</text><text x="243" y="58">2</text>
+    <text x="303" y="58">3</text><text x="363" y="58">4</text><text x="423" y="58">5</text>
+    <text x="483" y="58">6</text><text x="543" y="58">7</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="96" y="62" width="54" height="40"/><rect x="156" y="62" width="54" height="40"/>
+    <rect x="216" y="62" width="54" height="40"/><rect x="276" y="62" width="54" height="40"/>
+    <rect x="336" y="62" width="54" height="40"/><rect x="396" y="62" width="54" height="40"/>
+    <rect x="456" y="62" width="54" height="40"/><rect x="516" y="62" width="54" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="123" y="87">0</text><text x="183" y="87">0</text><text x="243" y="87">0</text>
+    <text x="303" y="87">1</text><text x="363" y="87">0</text><text x="423" y="87">1</text>
+    <text x="483" y="87">1</text><text x="543" y="87">0</text>
+  </g>
+  <g text-anchor="middle" font-size="13.5" fill="#1a2026">
+    <text x="123" y="140">0</text><text x="183" y="140">1</text><text x="243" y="140">1</text>
+    <text x="303" y="140">0</text><text x="363" y="140">0</text><text x="423" y="140">1</text>
+    <text x="483" y="140">0</text><text x="543" y="140">1</text>
+  </g>
+  <g fill="#dbe4fb">
+    <rect x="98" y="157" width="50" height="21" rx="4"/>
+    <rect x="338" y="157" width="50" height="21" rx="4"/>
+    <rect x="398" y="157" width="50" height="21" rx="4"/>
+  </g>
+  <g text-anchor="middle" font-size="14">
+    <text x="123" y="172" fill="#4169E1" font-weight="600">0</text><text x="183" y="172" fill="#1a2026">1</text>
+    <text x="243" y="172" fill="#1a2026">1</text><text x="303" y="172" fill="#1a2026">1</text>
+    <text x="363" y="172" fill="#4169E1" font-weight="600">0</text><text x="423" y="172" fill="#4169E1" font-weight="600">0</text>
+    <text x="483" y="172" fill="#1a2026">1</text><text x="543" y="172" fill="#1a2026">1</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 123 190 Q 183 226 243 190"/>
+    <path d="M 363 190 Q 423 226 483 190"/>
+    <path d="M 423 246 Q 483 282 543 246"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">
+    <text x="183" y="224">flip 1 @ i=0</text>
+    <text x="423" y="224">flip 2 @ i=4</text>
+    <text x="483" y="302">flip 3 @ i=5</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="310" y="332">eff = nums[i] ⊕ flip; where it is 0 the flip is forced — i = 0, 4, 5.</text>
+    <text x="310" y="350">hint[i + k] retires each flip k positions later; <tspan fill="#4169E1" font-weight="600">3</tspan> flips leave every bit 1.</text>
+  </g>
+</svg>

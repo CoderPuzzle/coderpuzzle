@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- mountainArr = [1,2,3,4,5,3,1], target = 3; dots at x=100+80i, y=248-38*v; axis y=248 -->
+  <text x="40" y="22" fill="#5c6b76" font-size="13">mountainArr = [1,2,3,4,5,3,1], target = 3</text>
+  <text x="420" y="40" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">peak search → index 4 (value 5)</text>
+  <!-- slopes: ascending accent, descending muted -->
+  <line x1="80" y1="248" x2="620" y2="248" stroke="#42525e" stroke-width="1.2"/>
+  <polyline points="100,212 180,174 260,136 340,98 420,60" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <polyline points="420,60 500,136 580,212" fill="none" stroke="#9aa7b2" stroke-width="2.5"/>
+  <g fill="#42525e">
+    <circle cx="100" cy="212" r="5"/><circle cx="180" cy="174" r="5"/>
+    <circle cx="260" cy="136" r="5"/><circle cx="340" cy="98" r="5"/>
+    <circle cx="500" cy="136" r="5"/><circle cx="580" cy="212" r="5"/>
+  </g>
+  <circle cx="420" cy="60" r="9" fill="#4169E1"/>
+  <text x="420" y="65" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">5</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="12">
+    <text x="100" y="200">1</text><text x="180" y="162">2</text>
+    <text x="260" y="124">3</text><text x="340" y="86">4</text>
+    <text x="500" y="124">3</text><text x="580" y="200">1</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="100" y="266">0</text><text x="180" y="266">1</text>
+    <text x="260" y="266">2</text><text x="340" y="266">3</text>
+    <text x="420" y="266">4</text><text x="500" y="266">5</text>
+    <text x="580" y="266">6</text>
+  </g>
+  <!-- ascending-slope hit -->
+  <text x="185" y="218" text-anchor="middle" fill="#5c6b76" font-size="12.5">ascending search:</text>
+  <text x="185" y="234" text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">A[2] = 3 = target → return 2</text>
+  <line x1="252" y1="206" x2="258" y2="144" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="555" y="238" text-anchor="middle" fill="#9aa7b2" font-size="12.5">descending search never runs</text>
+  <text x="40" y="298" fill="#1a2026" font-size="13">Three logarithmic searches: the peak lands on <tspan fill="#4169E1" font-weight="600">index 4</tspan> (value 5), then the</text>
+  <text x="40" y="316" fill="#1a2026" font-size="13">ascending slope hits A[2] = 3 = target and <tspan fill="#4169E1" font-weight="600">returns 2</tspan>, never probing the right slope.</text>
+</svg>

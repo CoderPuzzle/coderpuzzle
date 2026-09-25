@@ -6,6 +6,8 @@ Simulating erasures forward is painful because each removal can cascade a fallin
 
 Replay the hits backwards. For each hit in reverse order, record the top component's size before doing anything. If the original grid had no brick at that cell, the hit is a no-op and contributes 0. Otherwise restore the brick, union it with the virtual top if it sits in row 0, and union it with each of its four neighbors that currently exist. The bricks that this erasure had knocked loose are exactly those newly connected to the top, so the hit's fall count is the after-size minus the before-size minus one (the restored brick itself); clamping at 0 covers the case where the restored brick connects nothing new.
 
+![Replaying Example 1's single hit backwards, the replay grid [[1,0,0,0],[0,1,1,0]] holds a top component of 1 before the restore and 4 after brick (1,0) re-unions, so the fall count is 4 - 1 - 1 = 2.](figures/solution-reverse-time-replay.svg)
+
 The equivalence holds because connectivity in the final-minus-one-erasure grid matches stability after all later erasures have already been applied — reversing time turns "which bricks fall" into "which bricks regain a path to the top." Each hit does at most five union/find operations, and path halving keeps those nearly constant.
 
 Example 1 replays its single hit backwards:

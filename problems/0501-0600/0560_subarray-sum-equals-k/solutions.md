@@ -6,6 +6,8 @@ The subarray sum from index `i` to `j` is the difference of two prefix sums: `su
 
 The solution keeps those prefix-sum frequencies in a hash map, seeded with `{0: 1}`. The seed is essential: without it, subarrays that start at index 0 (whose "previous prefix" is the empty prefix of value 0) would be missed. At each element it first adds `prefix_counts.get(running - k, 0)` to the total and only then records the current running sum — this ordering guarantees the counted prefixes are strictly earlier ones, so a subarray is never matched against itself.
 
+![On nums = [1, 1, 1] with k = 2, the running sums 1, 2, 3 look up running - k = -1, 0, 1 in the map seeded {0: 1}, hitting one earlier prefix at i = 1 and one at i = 2 for a total of 2.](figures/solution-prefix-count-steps.svg)
+
 Because `nums[i]` can be negative, the prefix sums are not monotonic and window-based techniques break down; the hash map handles negative values, zeros, and `k = 0` uniformly since it only ever tests exact equality of sums. Each element is processed once with O(1) expected map operations.
 
 **Complexity:** `O(n)` time, `O(n)` space.

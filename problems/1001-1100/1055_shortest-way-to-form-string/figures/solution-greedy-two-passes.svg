@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="296" fill="#ffffff"/>
+  <!-- source="abc" target="abcbc"; target cells 48x44 at x=184+56i; pass 1 colors cells 0-2, pass 2 colors cells 3-4; strips below show each source scan -->
+  <!-- pass brackets over the target -->
+  <path d="M 184 50 V 44 H 344 V 50" fill="none" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="264" y="36" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">pass 1 · abc</text>
+  <path d="M 352 50 V 44 H 456 V 50" fill="none" stroke="#42525e" stroke-width="1.6"/>
+  <text x="404" y="36" text-anchor="middle" fill="#42525e" font-size="12.5" font-weight="600">pass 2 · bc</text>
+  <!-- target cells -->
+  <text x="172" y="83" text-anchor="end" fill="#9aa7b2" font-size="12">target</text>
+  <g stroke-width="1.4">
+    <rect x="184" y="56" width="48" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="240" y="56" width="48" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="296" y="56" width="48" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="352" y="56" width="48" height="44" fill="#f0f3f7" stroke="#42525e"/>
+    <rect x="408" y="56" width="48" height="44" fill="#f0f3f7" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="208" y="83">a</text><text x="264" y="83">b</text><text x="320" y="83">c</text>
+    <text x="376" y="83">b</text><text x="432" y="83">c</text>
+  </g>
+  <!-- pass 1 scan of source -->
+  <text x="124" y="159" text-anchor="end" fill="#4169E1" font-size="12.5" font-weight="600">pass 1</text>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4">
+    <rect x="136" y="138" width="36" height="30"/><rect x="180" y="138" width="36" height="30"/><rect x="224" y="138" width="36" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="154" y="158">a</text><text x="198" y="158">b</text><text x="242" y="158">c</text>
+  </g>
+  <text x="278" y="158" fill="#5c6b76" font-size="12.5">consumes a b c — target pointer 0 → 3</text>
+  <!-- pass 2 scan of source: leading a skipped -->
+  <text x="124" y="213" text-anchor="end" fill="#42525e" font-size="12.5" font-weight="600">pass 2</text>
+  <rect x="136" y="192" width="36" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <text x="154" y="212" text-anchor="middle" font-size="14" font-weight="600" fill="#9aa7b2">a</text>
+  <path d="M 141 196 L 167 218" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="180" y="192" width="36" height="30" fill="#f0f3f7" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="224" y="192" width="36" height="30" fill="#f0f3f7" stroke="#42525e" stroke-width="1.4"/>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="198" y="212">b</text><text x="242" y="212">c</text>
+  </g>
+  <text x="278" y="212" fill="#5c6b76" font-size="12.5">a skipped; b c match — pointer 3 → 5</text>
+  <text x="320" y="256" text-anchor="middle" fill="#1a2026" font-size="13">Each pass scans source abc and grabs every match for the next target letters:</text>
+  <text x="320" y="278" text-anchor="middle" fill="#1a2026" font-size="13">pass 1 forms "abc", pass 2 forms "bc" — <tspan fill="#4169E1" font-weight="600">2</tspan> subsequences in total.</text>
+</svg>

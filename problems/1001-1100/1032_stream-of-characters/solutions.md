@@ -20,6 +20,8 @@ trail's size is bounded by the longest word's length, because a candidate
 that has matched `L > max_word_length` characters can no longer equal any
 word.
 
+![On words = ["cd", "f", "kl"] queried with a, b, c, ..., l, the trail of live trie nodes advances one edge per query with dead starts dropping, and reaching an end node returns true at d, f, and l.](figures/solution-trie-trail-queries.svg)
+
 Construction inserts each word, marking its terminal node. Both the Python and
 Java canonical solutions implement exactly this structure (`dict` children
 with a `"#"` end marker; `HashMap` children with a `word` flag). With at most

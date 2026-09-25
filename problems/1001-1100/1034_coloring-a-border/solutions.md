@@ -18,6 +18,8 @@ construction adjacency to a different color also means adjacency to a
 different component). Collect border cells into a list; the grid itself
 stays untouched during this whole identification pass.
 
+![On grid [[1,1],[1,2]] the BFS from (0,0) floods the three color-1 cells through the queue, border-tests every member against the original grid, and the repaint leaves [[3,3],[3,2]].](figures/solution-bfs-flood-border-repaint.svg)
+
 Only after every component member has been classified does the second
 pass run: repaint each collected border cell to `color`. Because that
 overwrite happens strictly after border detection finishes, it cannot

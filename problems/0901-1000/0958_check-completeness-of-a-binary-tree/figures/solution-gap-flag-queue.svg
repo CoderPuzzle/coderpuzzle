@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- root = [1,2,3,4,5,null,7]; tree at left (slot labels in gray);
+       queue snapshots after popping 3 and after popping 5; first null sets the gap flag, then 7 pops -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <line x1="140" y1="66" x2="95" y2="126"/><line x1="140" y1="66" x2="185" y2="126"/>
+    <line x1="95" y1="126" x2="70" y2="186"/><line x1="95" y1="126" x2="120" y2="186"/>
+    <line x1="185" y1="126" x2="160" y2="186" stroke-dasharray="4 3" stroke="#9aa7b2"/>
+    <line x1="185" y1="126" x2="210" y2="186" stroke="#4169E1"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="140" cy="66" r="16"/><circle cx="95" cy="126" r="16"/><circle cx="185" cy="126" r="16"/>
+    <circle cx="70" cy="186" r="16"/><circle cx="120" cy="186" r="16"/>
+  </g>
+  <circle cx="160" cy="186" r="16" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="210" cy="186" r="16" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026" font-size="14">
+    <text x="140" y="71">1</text><text x="95" y="131">2</text><text x="185" y="131">3</text>
+    <text x="70" y="191">4</text><text x="120" y="191">5</text><text x="210" y="191">7</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10" stroke="#ffffff" stroke-width="3" paint-order="stroke">
+    <text x="140" y="96">slot 1</text><text x="95" y="156">slot 2</text><text x="185" y="156">slot 3</text>
+    <text x="70" y="216">slot 4</text><text x="120" y="216">slot 5</text><text x="160" y="216">hole</text><text x="210" y="216">slot 7</text>
+  </g>
+  <!-- queue, front at the left -->
+  <text x="340" y="40" fill="#5c6b76" font-size="12">queue — front → back</text>
+  <text x="340" y="64" fill="#5c6b76" font-size="11.5">after popping 3</text>
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="340" y="70" width="34" height="30"/><rect x="374" y="70" width="34" height="30"/>
+  </g>
+  <rect x="408" y="70" width="34" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <rect x="442" y="70" width="34" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026" font-size="13">
+    <text x="357" y="90">4</text><text x="391" y="90">5</text><text x="459" y="90">7</text>
+  </g>
+  <text x="425" y="90" text-anchor="middle" fill="#9aa7b2" font-size="10">null</text>
+  <text x="340" y="128" fill="#5c6b76" font-size="11.5">after popping 5</text>
+  <rect x="340" y="134" width="34" height="30" fill="#f0f3f7" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <rect x="374" y="134" width="34" height="30" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3">
+    <rect x="408" y="134" width="34" height="30"/><rect x="442" y="134" width="34" height="30"/>
+    <rect x="476" y="134" width="34" height="30"/><rect x="510" y="134" width="34" height="30"/>
+  </g>
+  <text x="357" y="154" text-anchor="middle" fill="#9aa7b2" font-size="10">null</text>
+  <text x="391" y="154" text-anchor="middle" font-weight="600" fill="#4169E1" font-size="13">7</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10">
+    <text x="425" y="154">null</text><text x="459" y="154">null</text>
+    <text x="493" y="154">null</text><text x="527" y="154">null</text>
+  </g>
+  <path d="M 357 168 L 374 186" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrowA)"/>
+  <rect x="330" y="188" width="112" height="26" rx="13" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="386" y="206" text-anchor="middle" font-weight="600" fill="#4169E1" font-size="12">gap flag set</text>
+  <path d="M 446 201 L 466 201" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="470" y="188" width="170" height="26" rx="13" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <text x="555" y="206" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="12">node 7 pops → false</text>
+  <text x="340" y="258" text-anchor="middle" fill="#1a2026" font-size="13">Nulls ride the queue so the first hole surfaces in slot order and the gap flag is set;</text>
+  <text x="340" y="278" text-anchor="middle" fill="#1a2026" font-size="13">node 7 popping afterwards sits beyond the hole, so the walk returns <tspan fill="#4169E1" font-weight="600">false</tspan>.</text>
+</svg>

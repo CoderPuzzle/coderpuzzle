@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="320" fill="#ffffff"/>
+  <!-- grid = [[1,1,1],[1,0,1],[1,1,1]]; P = 2-D prefix sums; the 3x3 border's four strips each look up to 3 = side; answer 9 -->
+  <text x="50" y="48" fill="#5c6b76" font-size="12.5">grid</text>
+  <text x="230" y="48" fill="#5c6b76" font-size="12.5">prefix P[i][j]</text>
+  <g stroke="#42525e" stroke-width="1" fill="#ffffff">
+    <rect x="50" y="60" width="40" height="40"/><rect x="90" y="60" width="40" height="40"/><rect x="130" y="60" width="40" height="40"/>
+    <rect x="50" y="100" width="40" height="40"/><rect x="90" y="100" width="40" height="40" fill="#f0f3f7"/><rect x="130" y="100" width="40" height="40"/>
+    <rect x="50" y="140" width="40" height="40"/><rect x="90" y="140" width="40" height="40"/><rect x="130" y="140" width="40" height="40"/>
+  </g>
+  <rect x="50" y="60" width="120" height="120" fill="none" stroke="#4169E1" stroke-width="3"/>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="70" y="85">1</text><text x="110" y="85">1</text><text x="150" y="85">1</text>
+    <text x="70" y="125">1</text><text x="110" y="125" fill="#9aa7b2">0</text><text x="150" y="125">1</text>
+    <text x="70" y="165">1</text><text x="110" y="165">1</text><text x="150" y="165">1</text>
+  </g>
+  <!-- prefix table: rows i, cols j; lookups used by the four strip sums shaded -->
+  <g stroke="#42525e" stroke-width="1" fill="#ffffff">
+    <rect x="230" y="60" width="34" height="34"/><rect x="264" y="60" width="34" height="34"/><rect x="298" y="60" width="34" height="34"/><rect x="332" y="60" width="34" height="34"/>
+    <rect x="230" y="94" width="34" height="34"/><rect x="264" y="94" width="34" height="34"/><rect x="298" y="94" width="34" height="34"/><rect x="332" y="94" width="34" height="34"/>
+    <rect x="230" y="128" width="34" height="34"/><rect x="264" y="128" width="34" height="34"/><rect x="298" y="128" width="34" height="34"/><rect x="332" y="128" width="34" height="34"/>
+    <rect x="230" y="162" width="34" height="34"/><rect x="264" y="162" width="34" height="34"/><rect x="298" y="162" width="34" height="34"/><rect x="332" y="162" width="34" height="34"/>
+  </g>
+  <g fill="#dbe4fb" stroke="none">
+    <rect x="332" y="94" width="34" height="34"/>
+    <rect x="332" y="128" width="34" height="34"/>
+    <rect x="264" y="162" width="34" height="34"/><rect x="298" y="162" width="34" height="34"/><rect x="332" y="162" width="34" height="34"/>
+  </g>
+  <g font-size="12" fill="#9aa7b2" text-anchor="middle">
+    <text x="247" y="81">0</text><text x="281" y="81">0</text><text x="315" y="81">0</text><text x="349" y="81">0</text>
+    <text x="247" y="115">0</text><text x="281" y="149">0</text><text x="247" y="183">0</text>
+  </g>
+  <g font-size="13" fill="#1a2026" text-anchor="middle">
+    <text x="281" y="115">1</text><text x="315" y="115">2</text><text x="349" y="115" font-weight="600">3</text>
+    <text x="281" y="149">2</text><text x="315" y="149">3</text><text x="349" y="149" font-weight="600">5</text>
+    <text x="281" y="183" font-weight="600">3</text><text x="315" y="183" font-weight="600">5</text><text x="349" y="183" font-weight="600">8</text>
+  </g>
+  <!-- the four constant-time strip sums for the 3x3 square -->
+  <text x="400" y="60" fill="#5c6b76" font-size="12.5">3×3 border, four strip sums:</text>
+  <g font-size="13">
+    <text x="400" y="86" fill="#5c6b76">top    <tspan fill="#1a2026"><tspan fill="#4169E1" font-weight="600">3</tspan> − 0 − 0 + 0 = 3 <tspan fill="#4169E1" font-weight="600">✓</tspan></tspan></text>
+    <text x="400" y="112" fill="#5c6b76">bottom <tspan fill="#1a2026"><tspan fill="#4169E1" font-weight="600">8</tspan> − 5 − 0 + 0 = 3 <tspan fill="#4169E1" font-weight="600">✓</tspan></tspan></text>
+    <text x="400" y="138" fill="#5c6b76">left   <tspan fill="#1a2026"><tspan fill="#4169E1" font-weight="600">3</tspan> − 0 − 0 + 0 = 3 <tspan fill="#4169E1" font-weight="600">✓</tspan></tspan></text>
+    <text x="400" y="164" fill="#5c6b76">right  <tspan fill="#1a2026"><tspan fill="#4169E1" font-weight="600">8</tspan> − 0 − 5 + 0 = 3 <tspan fill="#4169E1" font-weight="600">✓</tspan></tspan></text>
+  </g>
+  <text x="40" y="230" fill="#5c6b76" font-size="12.5">strip(r1,c1,r2,c2) = P[r2+1][c2+1] − P[r1][c2+1] − P[r2+1][c1] + P[r1][c1]</text>
+  <text x="40" y="252" fill="#1a2026" font-size="13">2×2 at (0,0): its bottom strip sums to 1 ≠ 2 — rejected on the center 0.</text>
+  <text x="40" y="288" fill="#1a2026" font-size="13">All four strips of the 3×3 square sum to 3 = side, so the border holds:</text>
+  <text x="40" y="306" fill="#1a2026" font-size="13">the answer is 3² = <tspan fill="#4169E1" font-weight="600">9</tspan>.</text>
+</svg>

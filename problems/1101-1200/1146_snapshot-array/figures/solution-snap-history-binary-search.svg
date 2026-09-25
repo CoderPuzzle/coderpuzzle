@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="290" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- Example 1: set(0,5) - snap() to 0 - set(0,6) - get(0,0); history[0] = [(0,5),(1,6)]; boxes 140x66 at y=66; query arcs rise from the get badge -->
+  <text x="40" y="46" font-weight="600" fill="#1a2026">history[0] — index 0's write history</text>
+  <rect x="150" y="66" width="140" height="66" stroke="#42525e" stroke-width="1.5" fill="#ffffff"/>
+  <rect x="330" y="66" width="140" height="66" stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7"/>
+  <g text-anchor="middle">
+    <text x="220" y="86" font-size="12" fill="#5c6b76">snap_id 0</text>
+    <text x="220" y="106" font-size="15" font-weight="600" fill="#1a2026">val 5</text>
+    <text x="220" y="124" font-size="11.5" fill="#9aa7b2">set(0, 5)</text>
+    <text x="400" y="86" font-size="12" fill="#9aa7b2">snap_id 1</text>
+    <text x="400" y="106" font-size="15" font-weight="600" fill="#9aa7b2">val 6</text>
+    <text x="400" y="124" font-size="11.5" fill="#9aa7b2">set(0, 6)</text>
+  </g>
+  <path d="M 288 188 Q 340 160 394 136" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 300 188 Q 250 162 226 136" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="470" y="170" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">1 &gt; 0 → go left</text>
+  <text x="150" y="170" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">0 ≤ 0 → take 5</text>
+  <text x="310" y="204" text-anchor="middle" font-size="13.5" font-weight="600" fill="#4169E1">get(0, 0): query snap_id = 0</text>
+  <text x="310" y="246" text-anchor="middle" font-size="13" fill="#1a2026">set(0, 5) lands in snap 0, snap() returns 0, set(0, 6) lands in snap 1;</text>
+  <text x="310" y="264" text-anchor="middle" font-size="13" fill="#1a2026">the rightmost entry with snap_id ≤ 0 is (0, 5): get(0, 0) returns <tspan fill="#4169E1" font-weight="600">5</tspan>, not 6.</text>
+</svg>

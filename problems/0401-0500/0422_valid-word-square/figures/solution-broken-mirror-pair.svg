@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- words = ["ball","area","read","lady"]; grid cells 56x40 at (120,70); matched mirror pairs fill #dbe4fb, the broken pair (0,2)/(2,0) is outlined; right panel reads row 2 vs column 2 in 34x34 boxes at x = 445+40k -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="148" y="60">j=0</text><text x="204" y="60">j=1</text><text x="260" y="60">j=2</text><text x="316" y="60">j=3</text>
+    <text x="110" y="95" text-anchor="end">i=0</text><text x="110" y="135" text-anchor="end">i=1</text>
+    <text x="110" y="175" text-anchor="end">i=2</text><text x="110" y="215" text-anchor="end">i=3</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="120" y="70" width="56" height="40" fill="#ffffff"/>
+    <rect x="176" y="70" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="232" y="70" width="56" height="40" fill="#f0f3f7" stroke="#4169E1" stroke-width="2.5"/>
+    <rect x="288" y="70" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="120" y="110" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="176" y="110" width="56" height="40" fill="#ffffff"/>
+    <rect x="232" y="110" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="288" y="110" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="120" y="150" width="56" height="40" fill="#f0f3f7" stroke="#4169E1" stroke-width="2.5"/>
+    <rect x="176" y="150" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="232" y="150" width="56" height="40" fill="#ffffff"/>
+    <rect x="288" y="150" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="120" y="190" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="176" y="190" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="232" y="190" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="288" y="190" width="56" height="40" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="148" y="95">b</text><text x="204" y="95">a</text><text x="260" y="95" fill="#4169E1" font-weight="700">l</text><text x="316" y="95">l</text>
+    <text x="148" y="135">a</text><text x="204" y="135">r</text><text x="260" y="135">e</text><text x="316" y="135">a</text>
+    <text x="148" y="175" fill="#4169E1" font-weight="700">r</text><text x="204" y="175">e</text><text x="260" y="175">a</text><text x="316" y="175">d</text>
+    <text x="148" y="215">l</text><text x="204" y="215">a</text><text x="260" y="215">d</text><text x="316" y="215">y</text>
+  </g>
+  <text x="232" y="252" text-anchor="middle" fill="#5c6b76" font-size="12">every row j reaches its mirror column here; only the boxed letters disagree</text>
+  <!-- row 2 vs column 2 -->
+  <text x="428" y="100" text-anchor="end" fill="#5c6b76" font-size="12.5">row 2</text>
+  <text x="428" y="172" text-anchor="end" fill="#5c6b76" font-size="12.5">col 2</text>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="445" y="78" width="34" height="34"/><rect x="485" y="78" width="34" height="34"/>
+    <rect x="525" y="78" width="34" height="34"/><rect x="565" y="78" width="34" height="34"/>
+    <rect x="445" y="150" width="34" height="34"/><rect x="485" y="150" width="34" height="34"/>
+    <rect x="525" y="150" width="34" height="34"/><rect x="565" y="150" width="34" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="462" y="100" fill="#4169E1" font-weight="700">r</text><text x="502" y="100">e</text><text x="542" y="100">a</text><text x="582" y="100">d</text>
+    <text x="462" y="172" fill="#4169E1" font-weight="700">l</text><text x="502" y="172">e</text><text x="542" y="172">a</text><text x="582" y="172">d</text>
+  </g>
+  <path d="M 462 116 L 462 146" fill="none" stroke="#4169E1" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="476" y="136" fill="#4169E1" font-size="12.5" font-weight="600">'r' vs 'l'</text>
+  <text x="310" y="284" text-anchor="middle" fill="#1a2026" font-size="13">Cell (0,2) holds <tspan fill="#4169E1" font-weight="600">'l'</tspan> but its mirror (2,0) holds <tspan fill="#4169E1" font-weight="600">'r'</tspan>, so row 2 reads 'read'</text>
+  <text x="310" y="304" text-anchor="middle" fill="#1a2026" font-size="13">while column 2 reads 'lead' — not a valid word square.</text>
+</svg>

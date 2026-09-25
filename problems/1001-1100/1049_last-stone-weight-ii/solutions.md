@@ -6,6 +6,8 @@ The insight that unlocks the problem is that the smash order is irrelevant to th
 
 Since group A + group B = total is fixed, minimizing total − 2·sum(A) means pushing sum(A) as close to total/2 as possible without exceeding it — a classic 0/1 subset-sum question: what is the largest reachable subset sum not exceeding total//2? The DP keeps a boolean array `reachable` over sums 0..target, seeded with sum 0, and processes each stone once, walking the array downward so a stone cannot be counted twice in the same sum.
 
+![On stones = [2,7,4,1,8,1], the reachable-sum table grows stone by stone until every sum up to the target 11 is reachable, so the best split 11 | 12 leaves 23 - 2*11 = 1.](figures/solution-subset-sum-table.svg)
+
 After all stones are processed, the best achievable sum at most target is found by scanning down from target for the first true entry, and the answer is total − 2·best. Edge cases fall out naturally: one stone gives total − 0 = the stone itself; stones summing symmetrically give 0. Since total ≤ 30·100 = 3000, the table is tiny.
 
 **Complexity:** `O(n·S)` time, `O(S)` space, where S is half the total weight.

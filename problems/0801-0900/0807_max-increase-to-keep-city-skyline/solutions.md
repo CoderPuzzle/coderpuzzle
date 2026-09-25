@@ -24,6 +24,8 @@ silhouette survives untouched. The same argument holds for every column,
 so all four skylines are unchanged and the total increase is simply
 `sum(min(rowMax[r], colMax[c]) - grid[r][c])`.
 
+![Raising Example 1's every cell to min(rowMax, colMax) turns grid into gridNew with row increases 12 + 7 + 8 + 8 — cell (2,3) rises 4 to min(9, 7) = 7 — for a total of 35.](figures/solution-min-row-col-ceiling.svg)
+
 Two sweeps tabulate the `2n` maxima, and a third sums the gaps — uniform
 and all-zero grids come out at `0` with no special case, since every
 building already sits at its ceiling.

@@ -11,6 +11,8 @@ holding each adjacent pair, and stops at the first gap satisfying either
 condition; splicing the new node in there keeps every rotation of the ring
 sorted. An empty input short-circuits to a single self-pointing node.
 
+![Walking the ring [3,4,1] once from node 3 with insertVal 2, pairs (3,4) and (4,1) fail both gap tests and the first fit 1 ≤ 2 ≤ 3 splices node 2 between 1 and 3 while node 3 stays the returned head.](figures/solution-one-walk-insertion-gap.svg)
+
 If the whole walk returns to the head without finding a gap, the ring is one
 constant run of equal values — every gap is equally valid — and the loop's
 natural exit leaves `previous` at the tail, so the same two pointer

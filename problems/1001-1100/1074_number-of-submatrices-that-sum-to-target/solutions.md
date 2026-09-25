@@ -6,6 +6,8 @@ Every submatrix is determined by its top row, bottom row, left column, and right
 
 Within a strip, the subarray trick is the running-sum hash map: with prefix sum S and an initially seeded map {0: 1}, the number of subarrays ending here with sum target is exactly the count of earlier prefixes equal to S − target. Each column is processed once with one dictionary lookup and one insertion, so counting one strip is O(cols) expected time.
 
+![Collapsing each row pair of [[0,1,0],[1,1,1],[0,1,0]] into a strip, only rows 0..0 and 2..2 hold zero-sum subarrays — 2 each via the map seeded {0: 1} — for 4 submatrices at target 0.](figures/solution-row-pair-strip-collapse.svg)
+
 The outer double loop enumerates all O(rows²) row pairs, including single-row strips (top == bottom). This covers every submatrix exactly once because a submatrix's row bounds are one specific pair and its column span is one specific subarray of that strip. Edge cases: negative values are fine since the hash map does not rely on monotonicity, and target 0 with a zero cell is caught by the {0: 1} seed. The final count can be large but fits comfortably for 100×100 inputs.
 
 **Complexity:** `O(rows² · cols)` time, `O(rows · cols)` space.

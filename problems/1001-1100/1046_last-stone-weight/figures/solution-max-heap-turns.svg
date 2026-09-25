@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 374" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="374" fill="#ffffff"/>
+  <!-- stones = [2,7,4,1,8,1]; circles r17 pitch 38, heap column from x380; row centers y = 64,124,184,244,304 -->
+  <g text-anchor="middle">
+    <g fill="#9aa7b2" font-size="11.5">
+      <text x="130" y="26">popped</text><text x="262" y="26">smash</text><text x="475" y="26">heap after (max-heap)</text>
+    </g>
+    <g fill="#5c6b76" font-size="12.5" text-anchor="end">
+      <text x="92" y="68">start</text><text x="92" y="128">turn 1</text><text x="92" y="188">turn 2</text>
+      <text x="92" y="248">turn 3</text><text x="92" y="308">turn 4</text>
+    </g>
+    <!-- start heap: 8 7 4 2 1 1 -->
+    <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+      <circle cx="380" cy="64" r="17"/><circle cx="418" cy="64" r="17"/><circle cx="456" cy="64" r="17"/>
+      <circle cx="494" cy="64" r="17"/><circle cx="532" cy="64" r="17"/><circle cx="570" cy="64" r="17"/>
+    </g>
+    <g font-weight="600" font-size="13" fill="#1a2026">
+      <text x="380" y="69">8</text><text x="418" y="69">7</text><text x="456" y="69">4</text>
+      <text x="494" y="69">2</text><text x="532" y="69">1</text><text x="570" y="69">1</text>
+    </g>
+    <!-- turn 1: pop 8,7 -> push 1 ; heap 4 2 1 1 1 -->
+    <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+      <circle cx="111" cy="124" r="17"/><circle cx="149" cy="124" r="17"/>
+    </g>
+    <g font-weight="600" font-size="13" fill="#9aa7b2">
+      <text x="111" y="129">8</text><text x="149" y="129">7</text>
+    </g>
+    <text x="262" y="129" fill="#5c6b76" font-size="12.5">8 &#8722; 7 &#8594; push 1</text>
+    <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+      <circle cx="380" cy="124" r="17"/><circle cx="418" cy="124" r="17"/><circle cx="456" cy="124" r="17"/>
+      <circle cx="494" cy="124" r="17"/><circle cx="532" cy="124" r="17"/>
+    </g>
+    <g font-weight="600" font-size="13" fill="#1a2026">
+      <text x="380" y="129">4</text><text x="418" y="129">2</text><text x="456" y="129">1</text>
+      <text x="494" y="129">1</text><text x="532" y="129">1</text>
+    </g>
+    <!-- turn 2: pop 4,2 -> push 2 ; heap 2 1 1 1 -->
+    <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+      <circle cx="111" cy="184" r="17"/><circle cx="149" cy="184" r="17"/>
+    </g>
+    <g font-weight="600" font-size="13" fill="#9aa7b2">
+      <text x="111" y="189">4</text><text x="149" y="189">2</text>
+    </g>
+    <text x="262" y="189" fill="#5c6b76" font-size="12.5">4 &#8722; 2 &#8594; push 2</text>
+    <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+      <circle cx="380" cy="184" r="17"/><circle cx="418" cy="184" r="17"/>
+      <circle cx="456" cy="184" r="17"/><circle cx="494" cy="184" r="17"/>
+    </g>
+    <g font-weight="600" font-size="13" fill="#1a2026">
+      <text x="380" y="189">2</text><text x="418" y="189">1</text><text x="456" y="189">1</text><text x="494" y="189">1</text>
+    </g>
+    <!-- turn 3: pop 2,1 -> push 1 ; heap 1 1 1 -->
+    <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+      <circle cx="111" cy="244" r="17"/><circle cx="149" cy="244" r="17"/>
+    </g>
+    <g font-weight="600" font-size="13" fill="#9aa7b2">
+      <text x="111" y="249">2</text><text x="149" y="249">1</text>
+    </g>
+    <text x="262" y="249" fill="#5c6b76" font-size="12.5">2 &#8722; 1 &#8594; push 1</text>
+    <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+      <circle cx="380" cy="244" r="17"/><circle cx="418" cy="244" r="17"/><circle cx="456" cy="244" r="17"/>
+    </g>
+    <g font-weight="600" font-size="13" fill="#1a2026">
+      <text x="380" y="249">1</text><text x="418" y="249">1</text><text x="456" y="249">1</text>
+    </g>
+    <!-- turn 4: pop 1,1 -> equal, both vanish ; heap 1 -->
+    <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+      <circle cx="111" cy="304" r="17"/><circle cx="149" cy="304" r="17"/>
+    </g>
+    <g font-weight="600" font-size="13" fill="#9aa7b2">
+      <text x="111" y="309">1</text><text x="149" y="309">1</text>
+    </g>
+    <text x="262" y="309" fill="#5c6b76" font-size="12.5">1 = 1 &#8594; both vanish</text>
+    <circle cx="380" cy="304" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+    <text x="380" y="309" font-weight="600" font-size="13" fill="#4169E1">1</text>
+    <text x="40" y="346" fill="#1a2026" font-size="13" text-anchor="start">Each turn pops the two heaviest stones: 8 and 7, then 4 and 2, then 2 and 1</text>
+    <text x="40" y="364" fill="#1a2026" font-size="13" text-anchor="start">push their differences back; 1 = 1 annihilates, leaving a last stone of <tspan fill="#4169E1" font-weight="600">1</tspan>.</text>
+  </g>
+</svg>

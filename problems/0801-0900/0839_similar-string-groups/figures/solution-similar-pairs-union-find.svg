@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="700" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- strs = ["tars","rats","arts","star"]; word boxes 100x46 at y=70, centers x=90,250,410,590;
+       arcs above = similar pairs (2 mismatches), arrows below = parent pointers after each union -->
+  <!-- similar pairs: tars-rats and rats-arts -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 90 64 Q 170 26 250 64"/>
+    <path d="M 250 64 Q 330 26 410 64"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">
+    <text x="170" y="38">2 mismatches</text>
+    <text x="330" y="38">2 mismatches</text>
+  </g>
+  <!-- word boxes -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="40" y="70" width="100" height="46"/>
+    <rect x="200" y="70" width="100" height="46"/>
+    <rect x="360" y="70" width="100" height="46"/>
+  </g>
+  <rect x="540" y="70" width="100" height="46" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <g text-anchor="middle">
+    <text x="90" y="92" font-weight="600">tars</text>
+    <text x="250" y="92" font-weight="600">rats</text>
+    <text x="410" y="92" font-weight="600">arts</text>
+    <text x="590" y="92" font-weight="600" fill="#5c6b76">star</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="90" y="108">i = 0</text>
+    <text x="250" y="108">i = 1</text>
+    <text x="410" y="108">i = 2</text>
+    <text x="590" y="108">i = 3</text>
+  </g>
+  <!-- star matches nothing -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="590" y="136">4 mismatches to each</text>
+    <text x="590" y="152">other word</text>
+    <text x="590" y="170">parent[3] = 3, its own root</text>
+  </g>
+  <!-- parent pointers built by the two unions -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 96 126 Q 170 172 244 122" marker-end="url(#arrow)"/>
+    <path d="M 256 126 Q 330 172 404 122" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="170" y="196">parent[0] = 1</text>
+    <text x="330" y="196">parent[1] = 2</text>
+  </g>
+  <text x="350" y="232" text-anchor="middle" fill="#1a2026" font-size="12.5">find(0) = find(1) = find(2) = 2 (arts) &#183; find(3) = 3 (star) &#8594; 2 distinct roots</text>
+  <text x="350" y="272" text-anchor="middle" fill="#1a2026" font-size="13">Union every similar pair &#8212; tars&#8211;rats and rats&#8211;arts &#8212; and all three words</text>
+  <text x="350" y="292" text-anchor="middle" fill="#1a2026" font-size="13">collapse into one group; star matches nothing, so <tspan fill="#4169E1" font-weight="600">2</tspan> groups remain.</text>
+</svg>

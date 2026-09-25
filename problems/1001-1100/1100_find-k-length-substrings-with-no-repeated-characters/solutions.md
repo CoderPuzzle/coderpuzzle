@@ -17,6 +17,8 @@ reached full length and that equality holds, one more substring is
 counted. `k` larger than the whole string never reaches a full window
 and naturally returns zero.
 
+![Sliding over s = havefunonleetcode with k = 5, the window's frequency table reaches five distinct characters in exactly 6 windows — havef, avefu, vefun, efuno, etcod, tcode — while windows like funon, with n twice, stay below k.](figures/solution-window-distinct-count.svg)
+
 Each character enters and leaves the window at most once, so the scan
 is linear.
 

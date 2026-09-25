@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 424" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="424" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- Example 1: tree1 root internal(1) with leaves 1,1,0,0; tree2 root internal(1) with leaves 1, split(0,0,1,1), 1, 0.
+       Result quadrants: TL 1∨1=1, TR leaf-1 swallows split, BL 0 vanishes into 1, BR 0∨0=0; merged 1,1,1,0 not uniform. -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <rect x="110" y="36" width="160" height="38" rx="8"/>
+    <rect x="390" y="36" width="160" height="38" rx="8"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="190" y="60" font-weight="600">tree1 root: internal</text>
+    <text x="470" y="60" font-weight="600">tree2 root: internal</text>
+    <text x="340" y="60" fill="#5c6b76">OR</text>
+  </g>
+  <!-- fan-out to the four quadrants -->
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 165 74 L 95 98" marker-end="url(#arrow)"/>
+    <path d="M 255 74 L 255 98" marker-end="url(#arrow)"/>
+    <path d="M 415 74 L 415 98" marker-end="url(#arrow)"/>
+    <path d="M 515 74 L 575 98" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="95" y="114">topLeft</text>
+    <text x="255" y="114">topRight</text>
+    <text x="415" y="114">bottomLeft</text>
+    <text x="575" y="114">bottomRight</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">
+    <text x="95" y="136">1 ∨ 1</text>
+    <text x="255" y="136">1 ∨ split</text>
+    <text x="415" y="136">0 ∨ 1</text>
+    <text x="575" y="136">0 ∨ 0</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 95 142 L 95 160" marker-end="url(#arrow)"/>
+    <path d="M 255 142 L 255 160" marker-end="url(#arrow)"/>
+    <path d="M 415 142 L 415 160" marker-end="url(#arrow)"/>
+    <path d="M 575 142 L 575 160" marker-end="url(#arrow)"/>
+  </g>
+  <!-- returned nodes -->
+  <g text-anchor="middle" font-size="12.5" font-weight="600">
+    <rect x="43" y="164" width="104" height="34" rx="8" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="95" y="186" fill="#1a2026">leaf 1</text>
+    <rect x="203" y="164" width="104" height="34" rx="8" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="255" y="186" fill="#1a2026">leaf 1</text>
+    <rect x="363" y="164" width="104" height="34" rx="8" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="415" y="186" fill="#1a2026">leaf 1</text>
+    <rect x="523" y="164" width="104" height="34" rx="8" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.6"/>
+    <text x="575" y="186" fill="#5c6b76">leaf 0</text>
+  </g>
+  <!-- merge arrows into the result root -->
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 95 198 L 268 232" marker-end="url(#arrow)"/>
+    <path d="M 255 198 L 315 232" marker-end="url(#arrow)"/>
+    <path d="M 415 198 L 365 232" marker-end="url(#arrow)"/>
+    <path d="M 575 198 L 412 232" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <rect x="245" y="236" width="190" height="44" rx="8"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="340" y="255" font-weight="600">result root: internal, val 0</text>
+    <text x="340" y="272" fill="#5c6b76" font-size="12">children 1, 1, 1, 0 — not uniform</text>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="40" y="314">topLeft 1 ∨ 1 and bottomRight 0 ∨ 0: both leaves, OR directly.</text>
+    <text x="40" y="334">topRight: tree1's leaf 1 swallows tree2's entire split subtree.</text>
+    <text x="40" y="354">bottomLeft: tree1's leaf 0 vanishes into tree2's leaf 1.</text>
+  </g>
+  <text x="340" y="388" text-anchor="middle" fill="#1a2026" font-size="13">The merged children 1, 1, 1, 0 are not four equal leaves, so no collapse:</text>
+  <text x="340" y="406" text-anchor="middle" fill="#1a2026" font-size="13">the root stays internal — output <tspan fill="#4169E1" font-weight="600">[[0,0],[1,1],[1,1],[1,1],[1,0]]</tspan>.</text>
+</svg>

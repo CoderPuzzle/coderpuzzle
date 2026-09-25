@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 328" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="328" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2; cells 42px, pitch 46, first cell at (70,60); top row: at r = 5 the window [0..5] holds zeros = 3 > k so left shrinks to 4; bottom row: best window [4..9], len 6, zeros at 4 and 5 flipped -->
+  <text x="321" y="30" text-anchor="middle" fill="#1a2026">right = 5: zeros = <tspan fill="#4169E1" font-weight="600">3 &gt; k = 2</tspan> → shrink from the left</text>
+  <path d="M 70 53 L 70 48 L 342 48 L 342 53" stroke="#5c6b76" stroke-width="1.2" fill="none"/>
+  <!-- row A: window [0..5] -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="70" y="60" width="42" height="36" fill="#f0f3f7"/><rect x="116" y="60" width="42" height="36" fill="#f0f3f7"/><rect x="162" y="60" width="42" height="36" fill="#f0f3f7"/>
+    <rect x="208" y="60" width="42" height="36" fill="#f0f3f7"/><rect x="254" y="60" width="42" height="36" fill="#f0f3f7"/><rect x="300" y="60" width="42" height="36" fill="#f0f3f7"/>
+    <rect x="346" y="60" width="42" height="36" fill="#ffffff"/><rect x="392" y="60" width="42" height="36" fill="#ffffff"/><rect x="438" y="60" width="42" height="36" fill="#ffffff"/>
+    <rect x="484" y="60" width="42" height="36" fill="#ffffff"/><rect x="530" y="60" width="42" height="36" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="91" y="83">1</text><text x="137" y="83">1</text><text x="183" y="83">1</text>
+    <text x="229" y="83" fill="#4169E1" font-weight="600">0</text><text x="275" y="83" fill="#4169E1" font-weight="600">0</text><text x="321" y="83" fill="#4169E1" font-weight="600">0</text>
+    <text x="367" y="83" fill="#9aa7b2">1</text><text x="413" y="83" fill="#9aa7b2">1</text><text x="459" y="83" fill="#9aa7b2">1</text><text x="505" y="83" fill="#9aa7b2">1</text><text x="551" y="83" fill="#9aa7b2">0</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="91" y="112">0</text><text x="137" y="112">1</text><text x="183" y="112">2</text><text x="229" y="112">3</text><text x="275" y="112">4</text><text x="321" y="112">5</text>
+    <text x="367" y="112">6</text><text x="413" y="112">7</text><text x="459" y="112">8</text><text x="505" y="112">9</text><text x="551" y="112">10</text>
+  </g>
+  <path d="M 91 122 Q 60 148 91 170" stroke="#5c6b76" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="104" y="146" fill="#5c6b76" font-size="12">left → 4</text>
+  <text x="321" y="168" text-anchor="middle" fill="#1a2026">after the shrink: zeros = 2 = k, window grows back to right = 9</text>
+  <!-- row B: best window [4..9] -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="70" y="180" width="42" height="36" fill="#ffffff"/><rect x="116" y="180" width="42" height="36" fill="#ffffff"/><rect x="162" y="180" width="42" height="36" fill="#ffffff"/>
+    <rect x="208" y="180" width="42" height="36" fill="#ffffff"/><rect x="254" y="180" width="42" height="36" fill="#dbe4fb"/><rect x="300" y="180" width="42" height="36" fill="#dbe4fb"/>
+    <rect x="346" y="180" width="42" height="36" fill="#f0f3f7"/><rect x="392" y="180" width="42" height="36" fill="#f0f3f7"/><rect x="438" y="180" width="42" height="36" fill="#f0f3f7"/>
+    <rect x="484" y="180" width="42" height="36" fill="#f0f3f7"/><rect x="530" y="180" width="42" height="36" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="91" y="203" fill="#9aa7b2">1</text><text x="137" y="203" fill="#9aa7b2">1</text><text x="183" y="203" fill="#9aa7b2">1</text><text x="229" y="203" fill="#9aa7b2">0</text>
+    <text x="275" y="203" fill="#4169E1" font-weight="600">0</text><text x="321" y="203" fill="#4169E1" font-weight="600">0</text>
+    <text x="367" y="203">1</text><text x="413" y="203">1</text><text x="459" y="203">1</text><text x="505" y="203">1</text><text x="551" y="203" fill="#9aa7b2">0</text>
+  </g>
+  <path d="M 254 235 L 254 230 L 526 230 L 526 235" stroke="#5c6b76" stroke-width="1.2" fill="none"/>
+  <text x="390" y="256" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">len 6 = best = 6</text>
+  <text x="40" y="292" fill="#1a2026" font-size="13">The window never holds more than k = 2 zeros: when the third 0 enters at</text>
+  <text x="40" y="310" fill="#1a2026" font-size="13">right = 5, left jumps to 4; the best window [4..9] spans <tspan fill="#4169E1" font-weight="600">6</tspan>, zeros at 4, 5 flipped.</text>
+</svg>

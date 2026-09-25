@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- root = [4,2,5,1,3]; in-order pops 1,2,3,4,5; node circles r=24 centered y=170 at x=110+110k; solid = .right successor, dashed = .left predecessor; top arc = 5.right closure, bottom arc = 1.left closure -->
+  <path d="M 550 146 C 550 58 110 58 110 146" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="330" y="66" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">5.right = 1 (tail → head)</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="220" cy="170" r="24"/><circle cx="330" cy="170" r="24"/>
+    <circle cx="440" cy="170" r="24"/>
+    <circle cx="110" cy="170" r="24" stroke="#4169E1" stroke-width="2.5"/>
+    <circle cx="550" cy="170" r="24" stroke="#4169E1" stroke-width="2.5"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" font-size="16" fill="#1a2026">
+    <text x="110" y="176">1</text><text x="220" y="176">2</text><text x="330" y="176">3</text>
+    <text x="440" y="176">4</text><text x="550" y="176">5</text>
+  </g>
+  <text x="60" y="175" text-anchor="end" fill="#4169E1" font-size="11.5" font-weight="600">head</text>
+  <text x="600" y="175" fill="#4169E1" font-size="11.5" font-weight="600">tail</text>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 136 160 L 194 160" marker-end="url(#arrow)"/>
+    <path d="M 246 160 L 304 160" marker-end="url(#arrow)"/>
+    <path d="M 356 160 L 414 160" marker-end="url(#arrow)"/>
+    <path d="M 466 160 L 524 160" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.5" fill="none" stroke-dasharray="5 4">
+    <path d="M 194 182 L 136 182" marker-end="url(#arrowgray)"/>
+    <path d="M 304 182 L 246 182" marker-end="url(#arrowgray)"/>
+    <path d="M 414 182 L 356 182" marker-end="url(#arrowgray)"/>
+    <path d="M 524 182 L 466 182" marker-end="url(#arrowgray)"/>
+  </g>
+  <text x="330" y="224" text-anchor="middle" fill="#5c6b76" font-size="12">solid = .right (successor) · dashed = .left (predecessor)</text>
+  <path d="M 110 196 C 110 286 550 286 550 196" fill="none" stroke="#5c6b76" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrowgray)"/>
+  <text x="330" y="284" text-anchor="middle" fill="#5c6b76" font-size="12.5" font-weight="600">1.left = 5 (head → tail)</text>
+  <text x="320" y="324" text-anchor="middle" fill="#1a2026" font-size="13">The stack pops 1, 2, 3, 4, 5 in order and links every neighbor pair both ways;</text>
+  <text x="320" y="344" text-anchor="middle" fill="#1a2026" font-size="13">the close-up wires <tspan fill="#4169E1" font-weight="600">5.right</tspan> back to <tspan fill="#4169E1" font-weight="600">1</tspan> and <tspan fill="#4169E1" font-weight="600">1.left</tspan> back to <tspan fill="#4169E1" font-weight="600">5</tspan>, closing the ring.</text>
+</svg>

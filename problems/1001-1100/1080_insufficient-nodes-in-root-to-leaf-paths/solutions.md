@@ -13,6 +13,8 @@ removed too. Because the decision for a node depends only on the original
 path sums above it and the pruned state of its children, this matches the
 "simultaneously" wording of the statement.
 
+![On the Example 1 tree with limit = 1 each node carries remaining = limit minus its ancestor values; the leaves -99, 12 and -99 fall below their budgets of 97, 96 and -10, so both -99 parents go childless and vanish, while 4 keeps 8 and 9 and 7 keeps 14.](figures/solution-post-order-budget-prune.svg)
+
 The recursion is implemented with an explicit stack instead of function
 calls. The tree may hold up to `5000` nodes, and a skewed chain makes the
 recursion depth grow with the node count — past the default recursion limit

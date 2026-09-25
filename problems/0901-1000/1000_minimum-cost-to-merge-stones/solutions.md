@@ -6,6 +6,8 @@ A feasibility gate comes first: each merge replaces `k` piles with one, shrinkin
 
 `dp[i][j][m]` is the minimum cost to compress `stones[i..j]` into exactly `m` piles. For `m >= 2`, split the interval at `mid`: reduce the left part to a single pile and the right part to `m - 1` piles, giving `dp[i][j][m] = min(dp[i][mid][1] + dp[mid + 1][j][m - 1])` over all `mid`. This asymmetric split (one pile on the left, the rest on the right) still enumerates every reachable configuration, because any collection of `m` piles inside the interval has a well-defined first pile covering some prefix, and the split point is chosen at that prefix's end. When an interval reaches `k` piles, those merge into one at a cost equal to the total stones present — prefix sums answer that in `O(1)`: `dp[i][j][1] = dp[i][j][k] + prefix[j + 1] - prefix[i]`.
 
+![On stones = [3, 2, 4, 1] with k = 2, the winning split is dp[0][3][2] = dp[0][1][1] + dp[2][3][1] = 5 + 5, and the final k-merge of the two 5-piles costs the interval total 10, so the merge tree 5 + 5 + 10 = 20 is dp[0][3][1].](figures/solution-stone-merge-dp-split.svg)
+
 Intervals are processed by increasing length so every subinterval is final before it is used, with `dp[i][i][1] = 0` as the base. Unreachable states stay at infinity, guarded by the `< INF` checks, and the answer is `dp[0][n - 1][1]` (with a final `-1` guard for safety).
 
 **Complexity:** `O(n^3 * k)` time, `O(n^2 * k)` space.

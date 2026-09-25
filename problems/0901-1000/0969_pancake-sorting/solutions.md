@@ -27,6 +27,10 @@ An already-sorted input therefore emits no flips at all, and every other
 round records at most two, making the sequence at most `2 * (n - 1)`
 entries long — comfortably inside the `10 * arr.length` acceptance bound.
 
+![On `arr = [3,2,4,1]` the pinned flips `k = 3, 4, 2, 3, 2` park `4` then
+`3` at the back — the sorted suffix freezing gray — and a final `k = 2`
+swaps the last pair, ending at `[1,2,3,4]`.](figures/solution-pancake-flip-rows.svg)
+
 Locating the value dominates each round: a linear scan of the prefix,
 which is `O(n)` per size and `O(n^2)` summed over all sizes, matching the
 cost of the flips themselves. The working copy of `arr` plus the recorded

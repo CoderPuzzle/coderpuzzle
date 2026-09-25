@@ -15,6 +15,8 @@ what keeps each room on the stack at most once, so cycles, self-keys, and
 duplicates of already-open rooms are absorbed without looping. A count of
 marked rooms, compared against `n` once the stack drains, settles the answer.
 
+![Example 1's flood over rooms [[1],[2],[3],[]]: each popped room's key marks the next room, the stack drains after room 3, and visited reaches 4 = n, so the answer is true.](figures/solution-stack-flood-keys.svg)
+
 Every room enters the stack at most once, and reading each room's key list
 once per visit charges every key examination to a single entry, so the flood
 is linear in the input; the mark array and the stack hold at most one entry

@@ -23,6 +23,8 @@ into the underfull ones until every column is exactly full — a column
 that receives records its donor as an `alias` and answers for its own
 index over the lower part of its height, for the donor over the rest.
 
+![With w = [1, 3] both columns are cut to height 4 and column 1 pours its surplus 2 into column 0, leaving index 0 to answer 2 of the 8 grid cells (1/4) and index 1 the other 6 (3/4).](figures/solution-alias-columns-pour.svg)
+
 A draw then consults no search structure at all. One uniform integer
 `cell` over the `n * total` grid decomposes into column `cell mod n` and
 level `cell div n`, and the answer is the column while the level sits

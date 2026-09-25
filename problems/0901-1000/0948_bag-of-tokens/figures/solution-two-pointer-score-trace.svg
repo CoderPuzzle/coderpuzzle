@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 396" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="396" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tokens = [100,200,300,400], power = 200; moves: buy 100, sell 400, buy 200, buy 300;
+       score trace 0,1,0,1,2 charted at x = 120 + 120k, y = 316 - 26*score -->
+  <text x="105" y="36" fill="#5c6b76" font-size="12.5">tokens sorted &#8212; power = 200, score = 0</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="105" y="48" width="90" height="40"/><rect x="225" y="48" width="90" height="40"/>
+    <rect x="345" y="48" width="90" height="40"/><rect x="465" y="48" width="90" height="40"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="150" y="73">100</text><text x="270" y="73">200</text>
+    <text x="390" y="73">300</text><text x="510" y="73">400</text>
+  </g>
+  <!-- move table -->
+  <g fill="#5c6b76" font-size="12">
+    <text x="90" y="112">move</text>
+    <text x="420" y="112" text-anchor="middle">power</text>
+    <text x="570" y="112" text-anchor="middle">score</text>
+  </g>
+  <g stroke="#dbe4fb" stroke-width="1">
+    <line x1="80" y1="146" x2="620" y2="146"/>
+    <line x1="80" y1="174" x2="620" y2="174"/>
+    <line x1="80" y1="202" x2="620" y2="202"/>
+  </g>
+  <g font-size="13" fill="#1a2026">
+    <text x="90" y="136">buy 100 face-up (front)</text>
+    <text x="420" y="136" text-anchor="middle">200 &#8594; 100</text>
+    <text x="570" y="136" text-anchor="middle" fill="#4169E1">0 &#8594; 1</text>
+    <text x="90" y="164">sell 400 face-down (back)</text>
+    <text x="420" y="164" text-anchor="middle">100 &#8594; 500</text>
+    <text x="570" y="164" text-anchor="middle" fill="#4169E1">1 &#8594; 0</text>
+    <text x="90" y="192">buy 200 face-up (front)</text>
+    <text x="420" y="192" text-anchor="middle">500 &#8594; 300</text>
+    <text x="570" y="192" text-anchor="middle" fill="#4169E1">0 &#8594; 1</text>
+    <text x="90" y="220">buy 300 face-up (front)</text>
+    <text x="420" y="220" text-anchor="middle">300 &#8594; 0</text>
+    <text x="570" y="220" text-anchor="middle" fill="#4169E1" font-weight="600">1 &#8594; 2</text>
+  </g>
+  <!-- score trace -->
+  <g fill="#9aa7b2" font-size="11" text-anchor="end">
+    <text x="104" y="320">0</text>
+    <text x="104" y="294">1</text>
+    <text x="104" y="268">2</text>
+  </g>
+  <line x1="112" y1="316" x2="620" y2="316" stroke="#dbe4fb" stroke-width="1.5"/>
+  <polyline points="120,316 240,290 360,316 480,290 600,264" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="2">
+    <circle cx="120" cy="316" r="4.5"/><circle cx="240" cy="290" r="4.5"/>
+    <circle cx="360" cy="316" r="4.5"/><circle cx="480" cy="290" r="4.5"/>
+  </g>
+  <circle cx="600" cy="264" r="4.5" fill="#4169E1"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="120" y="304">0</text><text x="240" y="278">1</text>
+    <text x="360" y="304">0</text><text x="480" y="278">1</text>
+  </g>
+  <text x="600" y="250" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">peak 2</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="120" y="338">start</text><text x="240" y="338">buy 100</text>
+    <text x="360" y="338">sell 400</text><text x="480" y="338">buy 200</text>
+    <text x="600" y="338">buy 300</text>
+  </g>
+  <text x="330" y="366" text-anchor="middle" fill="#1a2026" font-size="13">Buying at the front and selling at the back, the score trace 0&#8594;1&#8594;0&#8594;1&#8594;2</text>
+  <text x="330" y="384" text-anchor="middle" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">peaks at 2</tspan> &#8212; the answer &#8212; even though the walk ends with power 0 and no tokens.</text>
+</svg>

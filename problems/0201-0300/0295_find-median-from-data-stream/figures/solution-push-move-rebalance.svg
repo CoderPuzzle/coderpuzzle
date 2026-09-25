@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 354" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="354" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- stream 1,2,3; low = max-heap, high = min-heap, each written top-first; cells 32x30; columns centered at 150, 375, 600 -->
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="150" y="38">after addNum(1)</text>
+    <text x="375" y="38">after addNum(2)</text>
+    <text x="600" y="38">after addNum(3)</text>
+  </g>
+  <text x="24" y="90" text-anchor="start" fill="#5c6b76" font-size="12.5">low</text>
+  <text x="24" y="106" text-anchor="start" fill="#9aa7b2" font-size="10.5">max-heap</text>
+  <text x="24" y="158" text-anchor="start" fill="#5c6b76" font-size="12.5">high</text>
+  <text x="24" y="174" text-anchor="start" fill="#9aa7b2" font-size="10.5">min-heap</text>
+  <!-- low rows -->
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="134" y="70" width="32" height="30"/>
+    <rect x="359" y="70" width="32" height="30"/>
+    <rect x="568" y="70" width="32" height="30"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="600" y="70" width="32" height="30"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#4169E1">
+    <text x="150" y="90">1</text>
+    <text x="375" y="90">1</text>
+    <text x="584" y="90">2</text>
+  </g>
+  <text x="616" y="90" text-anchor="middle" fill="#1a2026">1</text>
+  <!-- high rows -->
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="359" y="138" width="32" height="30"/>
+    <rect x="584" y="138" width="32" height="30"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#4169E1">
+    <text x="375" y="158">2</text>
+    <text x="600" y="158">3</text>
+  </g>
+  <rect x="134" y="138" width="32" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="150" y="158" text-anchor="middle" fill="#9aa7b2" font-size="13">&#8709;</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="150" y="196">sizes 1 : 0</text>
+    <text x="375" y="196">sizes 1 : 1</text>
+    <text x="600" y="196">sizes 2 : 1</text>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600">
+    <text x="150" y="220" fill="#9aa7b2" font-size="11.5" font-weight="400">not queried yet</text>
+    <text x="375" y="220" fill="#1a2026">median (1 + 2) / 2 = <tspan fill="#4169E1">1.5</tspan></text>
+    <text x="600" y="220" fill="#1a2026">median = <tspan fill="#4169E1">2.0</tspan></text>
+  </g>
+  <!-- addNum(3) round trip -->
+  <text x="340" y="248" text-anchor="middle" fill="#5c6b76" font-size="12">inside addNum(3)</text>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">
+    <text x="120" y="266">push 3 onto low</text>
+    <text x="340" y="266">move low's top to high</text>
+    <text x="560" y="266">rebalance: move 2 back</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#5c6b76">
+    <text x="120" y="284">low [3,1] &#183; high []</text>
+    <text x="340" y="284">low [1] &#183; high [2,3]</text>
+    <text x="560" y="284">low [2,1] &#183; high [3]</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="none">
+    <path d="M 196 271 H 252" marker-end="url(#arrow)"/>
+    <path d="M 428 271 H 476" marker-end="url(#arrow)"/>
+  </g>
+  <text x="340" y="316" text-anchor="middle" fill="#1a2026" font-size="13">Every number rides the push &#8594; move &#8594; rebalance round trip, so low's max is always</text>
+  <text x="340" y="336" text-anchor="middle" fill="#1a2026" font-size="13">&#8804; high's min, and the tops read the medians <tspan fill="#4169E1" font-weight="600">1.5</tspan>, then <tspan fill="#4169E1" font-weight="600">2.0</tspan> directly.</text>
+</svg>

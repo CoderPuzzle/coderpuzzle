@@ -6,6 +6,8 @@ Let `dp[i]` be the largest attainable sum for the first `i` elements. The final 
 
 Evaluating each candidate naively would rescan the block for its maximum; instead the inner loop extends the block leftward one element at a time, sweeping `j` from 1 upward and folding each entering element into `running_max`. One running maximum then serves every candidate, so each prefix costs `O(k)` rather than `O(k^2)`. `dp[0] = 0` seeds the recursion, and the answer is `dp[n]`.
 
+![On arr = [1,15,7,9,2,5,10] with k = 3, the dp table fills left to right, each cell keeping the best of its up-to-3 last-block candidates, and dp[7]'s three candidates resolve to dp[7] = 84.](figures/solution-prefix-dp-block-max.svg)
+
 `k = 1` degenerates to the identity partition — every element alone — and returns the plain sum, and blocks are never forced to be maximal, since the max over `j` freely chooses smaller blocks when a larger maximum times a shorter length wins.
 
 **Complexity:** `O(n * k)` time, `O(n)` space.

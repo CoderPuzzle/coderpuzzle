@@ -26,6 +26,8 @@ carries the whole table. On `"DID"`: `[1]` — `'D'` → `[1, 0]` — `'I'` →
 `[0, 1, 1]` — `'D'` → `[2, 2, 1, 0]`, summing to 5, exactly the five
 permutations listed in Example 1.
 
+![On s = "DID" the rank DP fills [1], then [1, 0], [0, 1, 1] and [2, 2, 1, 0] row by row, and the last row sums to the answer 5.](figures/solution-di-rank-dp-rows.svg)
+
 Exact counts pass `10⁹ + 7` long before the bound — an alternating string
 of length 14 already holds 1,903,755,312 — so every cell is reduced modulo
 `10⁹ + 7` as it is written; rows and prefix sums accumulate in 64-bit

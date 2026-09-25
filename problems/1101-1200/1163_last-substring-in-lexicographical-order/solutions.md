@@ -6,6 +6,8 @@ The answer is always a suffix: if a suffix `s[i:]` is a candidate, extending it 
 
 Each step compares `s[i + k]` with `s[j + k]`, one character beyond the common prefix of the two candidates. If they are equal, the prefix grows (`k += 1`). If the challenger's character is larger, then `s[i:]` loses — and so does every suffix starting between `i` and `i + k`, because each shares a prefix with `s[i:]` and then meets the same losing comparison shifted; all of them are dominated by the corresponding suffixes around `j`. So `i` jumps to `max(i + k + 1, j)` and `j` resets to `i + 1`. Symmetrically, if the challenger's character is smaller, every suffix from `j` to `j + k` is dominated and `j` jumps to `j + k + 1`, with `i` untouched. Either way the frontier `max(i, j) + k` strictly advances, so the loop runs at most about `2n` comparisons.
 
+![On s = "abab" the scan jumps i from 0 to 1, then j from 2 to 3, and the shared 'b' grows k to 1 before j + k exits, leaving the survivor s[1:] = "bab".](figures/solution-two-pointer-suffix-jumps.svg)
+
 Starting with `i = 0, j = 1, k = 0` and stopping once `j + k` exits the string, the surviving `i` indexes the lexicographically largest suffix, returned as `s[i:]` — that output slice is the only `O(n)` storage; the search itself uses three integers. Single-character strings exit immediately and return themselves; repeated blocks like `"abab"` are exactly what the shared-prefix skipping is for.
 
 Example 1 (`s = "abab"`) moves the two candidate pointers:

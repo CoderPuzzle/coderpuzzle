@@ -6,6 +6,8 @@ The evaluator works on a token list produced by padding every parenthesis with s
 
 An `add` or `mult` form evaluates its two sub-expressions recursively, combines their values, and skips the closing parenthesis on the way out. A `let` form first copies the current environment into a fresh dictionary — that single copy implements lexical scoping, since assignments and shadowing performed here must not leak back to the caller. It then walks variable/expression pairs sequentially, each expression evaluated in a scope that already contains the earlier assignments (so `(let x 3 x 2 x)` ends with `x` bound to 2), and finally evaluates the trailing body expression in the same scope and returns its value.
 
+![Evaluating (let x 2 (mult x (let x 3 y 4 (add x y)))), the inner let copies the outer frame and shadows x with 3 beside y = 4, so the add reads x = 3 and the product is 2 × 7 = 14.](figures/solution-scoped-env-frames.svg)
+
 The one ambiguity inside a `let` is telling the final body expression from the next variable name; the resolver checks whether the token is an open parenthesis, an integer, or a lone variable with nothing between it and the closing parenthesis — the last case detected by peeking at the next token. Working over token indices rather than recursive substrings keeps each token examined a constant number of times, so parsing itself is linear in the token count; the quadratic worst case comes entirely from each `let` copying its whole environment, and the same live copies bound the memory (typical inputs with small or shallow scopes are near-linear).
 
 **Complexity:** `O(L^2)` time, `O(L^2)` space.

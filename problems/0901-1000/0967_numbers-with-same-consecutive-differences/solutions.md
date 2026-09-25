@@ -17,6 +17,10 @@ other next digit would already break the rule at that pair — and a
 continuation outside `0..9` is dropped immediately. When `k = 0` the two
 continuations name the same digit, and it is taken once.
 
+![With `n = 3, k = 7` two rounds grow five chains — seeds `3, 4, 5, 6` lose
+every child to the `0..9` bound — ending at exactly
+`181, 292, 707, 818, 929`.](figures/solution-bfs-prefix-chains.svg)
+
 Each round touches exactly one adjacent pair of the finished number and
 preserves the rule there, so after the last round every queue entry is an
 `n`-digit integer satisfying the rule at every pair; the nonzero seeds keep

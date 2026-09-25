@@ -38,6 +38,8 @@ written to the next back position and its pointer moves inward. When the
 squares tie (`-3` and `3` both square to 9) either value may go first; both
 get written, one now and one in a later step.
 
+![On nums = [-4,-1,0,3,10], each compare writes the larger end square into the next back slot — 100, then 16, 9, 1, and 0 — filling ans to [0,1,9,16,100] with no sort pass.](figures/solution-two-pointer-backfill.svg)
+
 The window shrinks by exactly one value per step, so after `n` steps the
 answer is full and the loop ends; every value is read a constant number of
 times and written exactly once. Magnitudes are bounded by `10⁴`, so squares

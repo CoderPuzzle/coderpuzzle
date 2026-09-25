@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 272" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="272" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- s = havefunonleetcode (17 chars), k = 5; cells 33x34 at x=25+37i, y=46;
+       winning windows start at 0,1,2,3,11,12; freq rows sample windows at 0 (havef) and 4 (funon) -->
+  <text x="40" y="26" fill="#5c6b76" font-size="13">s = havefunonleetcode, k = 5</text>
+  <rect x="21" y="42" width="189" height="42" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="25" y="46" width="33" height="34"/><rect x="62" y="46" width="33" height="34"/>
+    <rect x="99" y="46" width="33" height="34"/><rect x="136" y="46" width="33" height="34"/>
+    <rect x="173" y="46" width="33" height="34"/><rect x="210" y="46" width="33" height="34"/>
+    <rect x="247" y="46" width="33" height="34"/><rect x="284" y="46" width="33" height="34"/>
+    <rect x="321" y="46" width="33" height="34"/><rect x="358" y="46" width="33" height="34"/>
+    <rect x="395" y="46" width="33" height="34"/><rect x="432" y="46" width="33" height="34"/>
+    <rect x="469" y="46" width="33" height="34"/><rect x="506" y="46" width="33" height="34"/>
+    <rect x="543" y="46" width="33" height="34"/><rect x="580" y="46" width="33" height="34"/>
+    <rect x="617" y="46" width="33" height="34"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">
+    <text x="41.5" y="68">h</text><text x="78.5" y="68">a</text><text x="115.5" y="68">v</text>
+    <text x="152.5" y="68">e</text><text x="189.5" y="68">f</text><text x="226.5" y="68">u</text>
+    <text x="263.5" y="68">n</text><text x="300.5" y="68">o</text><text x="337.5" y="68">n</text>
+    <text x="374.5" y="68">l</text><text x="411.5" y="68">e</text><text x="448.5" y="68">e</text>
+    <text x="485.5" y="68">t</text><text x="522.5" y="68">c</text><text x="559.5" y="68">o</text>
+    <text x="596.5" y="68">d</text><text x="633.5" y="68">e</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10">
+    <text x="41.5" y="100">0</text><text x="78.5" y="100">1</text><text x="115.5" y="100">2</text>
+    <text x="152.5" y="100">3</text><text x="189.5" y="100">4</text><text x="226.5" y="100">5</text>
+    <text x="263.5" y="100">6</text><text x="300.5" y="100">7</text><text x="337.5" y="100">8</text>
+    <text x="374.5" y="100">9</text><text x="411.5" y="100">10</text><text x="448.5" y="100">11</text>
+    <text x="485.5" y="100">12</text><text x="522.5" y="100">13</text><text x="559.5" y="100">14</text>
+    <text x="596.5" y="100">15</text><text x="633.5" y="100">16</text>
+  </g>
+  <g text-anchor="middle" font-size="14">
+    <text x="41.5" y="124" fill="#4169E1" font-weight="600">✓</text>
+    <text x="78.5" y="124" fill="#4169E1" font-weight="600">✓</text>
+    <text x="115.5" y="124" fill="#4169E1" font-weight="600">✓</text>
+    <text x="152.5" y="124" fill="#4169E1" font-weight="600">✓</text>
+    <text x="189.5" y="124" fill="#9aa7b2">✗</text>
+    <text x="226.5" y="124" fill="#9aa7b2">✗</text>
+    <text x="263.5" y="124" fill="#9aa7b2">✗</text>
+    <text x="300.5" y="124" fill="#9aa7b2">✗</text>
+    <text x="337.5" y="124" fill="#9aa7b2">✗</text>
+    <text x="374.5" y="124" fill="#9aa7b2">✗</text>
+    <text x="411.5" y="124" fill="#9aa7b2">✗</text>
+    <text x="448.5" y="124" fill="#4169E1" font-weight="600">✓</text>
+    <text x="485.5" y="124" fill="#4169E1" font-weight="600">✓</text>
+  </g>
+  <!-- window verdicts sit under each window's start index -->
+  <!-- freq snapshots -->
+  <text x="40" y="157" fill="#1a2026" font-size="13" font-weight="600">havef</text>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="95" y="140" width="30" height="24"/><rect x="129" y="140" width="30" height="24"/>
+    <rect x="163" y="140" width="30" height="24"/><rect x="197" y="140" width="30" height="24"/>
+    
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5">
+    <text x="110" y="156">h 1</text><text x="144" y="156">a 1</text><text x="178" y="156">v 1</text>
+    <text x="212" y="156">e 1</text><text x="246" y="156">f 1</text>
+  </g>
+  <line x1="270" y1="152" x2="292" y2="152" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="302" y="157" fill="#1a2026" font-size="12.5">distinct = <tspan fill="#4169E1" font-weight="600">5 = k</tspan> → counted</text>
+  <text x="40" y="191" fill="#1a2026" font-size="13" font-weight="600">funon</text>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="95" y="174" width="30" height="24"/><rect x="129" y="174" width="30" height="24"/>
+    <rect x="197" y="174" width="30" height="24"/>
+  </g>
+  <rect x="163" y="174" width="30" height="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5">
+    <text x="110" y="190">f 1</text><text x="144" y="190">u 1</text><text x="178" y="190">n 2</text>
+    <text x="212" y="190">o 1</text>
+  </g>
+  <line x1="270" y1="186" x2="292" y2="186" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrowGray)"/>
+  <text x="302" y="191" fill="#5c6b76" font-size="12.5">distinct = 4 &lt; k → skipped</text>
+  <text x="40" y="232" fill="#1a2026" font-size="13">Sliding one character at a time, the window reaches distinct = k = 5 in exactly</text>
+  <text x="40" y="250" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">6 windows</tspan> — havef, avefu, vefun, efuno, etcod, tcode — each counted once.</text>
+</svg>

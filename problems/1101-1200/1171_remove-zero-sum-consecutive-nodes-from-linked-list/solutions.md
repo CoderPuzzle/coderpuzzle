@@ -6,6 +6,8 @@ A consecutive run of nodes sums to zero precisely when the running prefix sum re
 
 The linked list is first flattened into a value array, which makes slicing and rescanning trivial. Each pass seeds `prefix_to_index = {0: -1}` (the empty prefix before the first node) and walks the array accumulating `prefix`. On the first repeat — current index `i`, earlier index `j` — the slice `values[j+1..i]` is dropped via `values[:j+1] + values[i+1:]` and the pass ends with `restart = True`. A pass that completes with no repeat leaves the list fixed. Finally the surviving values are rebuilt into a fresh chain behind a dummy head, so the returned list contains no stale nodes from removed stretches.
 
+![Scanning [1,2,-3,3,1] with running prefix sums 1, 3, 0, 3, 4, the seeded prefix 0 repeats after -3, so the stretch [1,2,-3] is cut and the restart finds no repeat, leaving 3 -> 1.](figures/solution-prefix-sum-cut.svg)
+
 The seeded zero entry handles stretches starting at the very first node, and single nodes valued 0 are caught as the case `j = i - 1`. With at most 1000 nodes, the worst case — one node removed per pass — is at most a quadratic number of array steps, comfortably fast. Either valid answer (for example `[3,1]` for `[1,2,-3,3,1]`) may fall out depending on which repeat appears first.
 
 **Complexity:** `O(n^2)` time, `O(n)` space.

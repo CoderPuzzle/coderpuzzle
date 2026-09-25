@@ -20,6 +20,8 @@ matching the base -2 identity `total = digit + (-2) * carry`. Working
 through every reachable total confirms the carry never leaves `{-1, 0,
 1}`, so it stays well within any language's native integer range.
 
+![Adding arr1 = [1,1,1,1,1] and arr2 = [1,0,1] column by column, each raw total of 2 emits digit 0 with carry −1, and the carries settle to [1,0,0,0,0] = 16 = 11 + 5.](figures/solution-negabinary-column-addition.svg)
+
 The loop runs until both arrays are exhausted and the carry has settled
 to `0` — a nonzero carry on the final column produces one extra
 leading digit, which is how the result can end up longer than either

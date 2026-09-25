@@ -17,6 +17,8 @@ in the reversed, mapped digit sequence. Carrying `(cur, rotated,
 digits)` down the recursion turns the rotation test into `O(1)` per
 candidate, and a candidate is confusing exactly when `rotated != cur`.
 
+![On n = 20 the DFS over digits {0, 1, 6, 8, 9} visits 1, 6, 8, 9 and then 10, 11, 16, 18, 19, carrying each rotation incrementally (rot' = rot180(d)·10^k + rot); the six candidates whose rotation differs — 6, 9, 10, 16, 18, 19 — are the confusing numbers.](figures/solution-backtrack-rot-dfs.svg)
+
 **Complexity:** `O(V)` time and `O(L)` recursion space, where `V` is the
 number of valid-digit integers in `[1, n]` (at most `5¹⁰`) and `L <= 10`
 is the digit length of `n`.

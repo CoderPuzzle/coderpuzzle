@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="384" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums sorted = [1,8,23,24,33,34,54,75], k = 60; cells 68x40 at x=60+68i, y=44;
+       best pair recorded at step 6: indices 3 (24) and 5 (34) -->
+  <text x="40" y="26" fill="#5c6b76" font-size="13">nums sorted = [1,8,23,24,33,34,54,75], k = 60</text>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="60" y="44" width="68" height="40"/><rect x="128" y="44" width="68" height="40"/>
+    <rect x="196" y="44" width="68" height="40"/><rect x="264" y="44" width="68" height="40"/>
+    <rect x="332" y="44" width="68" height="40"/><rect x="400" y="44" width="68" height="40"/>
+    <rect x="468" y="44" width="68" height="40"/><rect x="536" y="44" width="68" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="15" font-weight="600">
+    <text x="94" y="69">1</text><text x="162" y="69">8</text>
+    <text x="230" y="69">23</text><text x="298" y="69">24</text>
+    <text x="366" y="69">33</text><text x="434" y="69">34</text>
+    <text x="502" y="69">54</text><text x="570" y="69">75</text>
+  </g>
+  <!-- best pair pointers -->
+  <line x1="298" y1="158" x2="298" y2="88" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="434" y1="158" x2="434" y2="88" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#5c6b76">
+    <text x="298" y="176">lo</text><text x="434" y="176">hi</text>
+  </g>
+  <text x="366" y="176" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">24 + 34 = 58</text>
+  <!-- scan trace -->
+  <text x="40" y="206" fill="#9aa7b2" font-size="11.5">scan steps</text>
+  <g fill="#1a2026" font-size="13">
+    <text x="40" y="226">lo=0, hi=7:  1 + 75 = 76 ≥ 60  →  hi moves left</text>
+    <text x="40" y="246">lo=0, hi=6:  1 + 54 = 55 &lt; 60  →  <tspan fill="#4169E1" font-weight="600">best 55</tspan>, lo moves right</text>
+    <text x="40" y="266">lo=1, hi=6:  8 + 54 = 62 ≥ 60  →  hi moves left</text>
+    <text x="40" y="286">lo=1, hi=5:  8 + 34 = 42 &lt; 60  →  lo moves right (best stays 55)</text>
+    <text x="40" y="306">lo=2, hi=5:  23 + 34 = 57 &lt; 60  →  <tspan fill="#4169E1" font-weight="600">best 57</tspan>, lo moves right</text>
+    <text x="40" y="326">lo=3, hi=5:  24 + 34 = 58 &lt; 60  →  <tspan fill="#4169E1" font-weight="600">best 58</tspan>, lo moves right</text>
+    <text x="40" y="346">lo=4, hi=5:  33 + 34 = 67 ≥ 60  →  hi moves left; lo = hi, stop</text>
+  </g>
+  <text x="40" y="372" fill="#1a2026" font-size="13">Seven moves in total; the largest sum recorded under k = 60 is <tspan fill="#4169E1" font-weight="600">24 + 34 = 58</tspan>.</text>
+</svg>

@@ -16,6 +16,8 @@ suffix of it also holds at most t distinct values, so the subarrays ending
 at the current right number exactly the window's length, `right - left + 1`
 — add that and move on.
 
+![On nums = [1,2,1,2,3], the atMost(2) sweep adds 1+2+3+4+2 = 12 while atMost(1) adds 1+1+1+1+1 = 5, so exactly-2 distinct counts 12 − 5 = 7.](figures/solution-atmost-window-sweep.svg)
+
 A subarray holds exactly k distinct values precisely when it holds at most
 k and not at most k − 1, so the answer is `atMost(k) - atMost(k - 1)`: two
 runs of the same loop with different bounds. `atMost(0)` is 0 by the same

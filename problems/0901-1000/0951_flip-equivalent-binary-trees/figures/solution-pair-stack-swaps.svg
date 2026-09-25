@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 428" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="428" fill="#ffffff"/>
+  <!-- root1 = [1,2,3,4,5,6,null,null,null,7,8]; root2 = [1,3,2,null,6,4,5,null,null,null,null,8,7];
+       the pair stack swaps children exactly at values 1, 3, 5 (double rings) and drains -->
+  <!-- edges -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="140" y1="70" x2="80" y2="120"/>
+    <line x1="140" y1="70" x2="200" y2="120"/>
+    <line x1="80" y1="120" x2="50" y2="170"/>
+    <line x1="80" y1="120" x2="110" y2="170"/>
+    <line x1="200" y1="120" x2="170" y2="170"/>
+    <line x1="110" y1="170" x2="80" y2="220"/>
+    <line x1="110" y1="170" x2="140" y2="220"/>
+    <line x1="500" y1="70" x2="440" y2="120"/>
+    <line x1="500" y1="70" x2="560" y2="120"/>
+    <line x1="440" y1="120" x2="470" y2="170"/>
+    <line x1="560" y1="120" x2="530" y2="170"/>
+    <line x1="560" y1="120" x2="590" y2="170"/>
+    <line x1="590" y1="170" x2="560" y2="220"/>
+    <line x1="590" y1="170" x2="620" y2="220"/>
+  </g>
+  <!-- flip rings on 1, 3, 5 in both trees -->
+  <g fill="none" stroke="#4169E1" stroke-width="1.5">
+    <circle cx="140" cy="70" r="17.5"/><circle cx="200" cy="120" r="17.5"/><circle cx="110" cy="170" r="17.5"/>
+    <circle cx="500" cy="70" r="17.5"/><circle cx="440" cy="120" r="17.5"/><circle cx="590" cy="170" r="17.5"/>
+  </g>
+  <!-- nodes -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="140" cy="70" r="13"/><circle cx="80" cy="120" r="13"/><circle cx="200" cy="120" r="13"/>
+    <circle cx="50" cy="170" r="13"/><circle cx="110" cy="170" r="13"/><circle cx="170" cy="170" r="13"/>
+    <circle cx="80" cy="220" r="13"/><circle cx="140" cy="220" r="13"/>
+    <circle cx="500" cy="70" r="13"/><circle cx="440" cy="120" r="13"/><circle cx="560" cy="120" r="13"/>
+    <circle cx="470" cy="170" r="13"/><circle cx="530" cy="170" r="13"/><circle cx="590" cy="170" r="13"/>
+    <circle cx="560" cy="220" r="13"/><circle cx="620" cy="220" r="13"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="140" y="75">1</text><text x="80" y="125">2</text><text x="200" y="125">3</text>
+    <text x="50" y="175">4</text><text x="110" y="175">5</text><text x="170" y="175">6</text>
+    <text x="80" y="225">7</text><text x="140" y="225">8</text>
+    <text x="500" y="75">1</text><text x="440" y="125">3</text><text x="560" y="125">2</text>
+    <text x="470" y="175">6</text><text x="530" y="175">4</text><text x="590" y="175">5</text>
+    <text x="560" y="225">8</text><text x="620" y="225">7</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="140" y="40">root1</text>
+    <text x="500" y="40">root2</text>
+  </g>
+  <text x="40" y="256" fill="#5c6b76" font-size="12">double ring = this pair commits to the swapped alignment</text>
+  <!-- pair-stack walk -->
+  <g font-size="12.5" fill="#1a2026">
+    <text x="40" y="278">pop (1,1): straight 2-3 / 3-2 fails &#8594; <tspan fill="#4169E1" font-weight="600">swap</tspan>, push (2,2) (3,3)</text>
+    <text x="40" y="297">pop (3,3): 6 sits left in root1, right in root2 &#8594; <tspan fill="#4169E1" font-weight="600">swap</tspan>, push (6,6)</text>
+    <text x="40" y="316">pop (6,6): leaf in both trees &#8594; pass, stack = [(2,2)]</text>
+    <text x="40" y="335">pop (2,2): straight 4-4, 5-5 holds &#8594; push (4,4) (5,5)</text>
+    <text x="40" y="354">pop (5,5): straight 7-8 / 8-7 fails &#8594; <tspan fill="#4169E1" font-weight="600">swap</tspan>, push (7,7) (8,8)</text>
+    <text x="40" y="373">pop (8,8) (7,7) (4,4): leaves &#8594; pass; stack empty &#8594; <tspan fill="#4169E1" font-weight="600">true</tspan></text>
+  </g>
+  <text x="340" y="398" text-anchor="middle" fill="#1a2026" font-size="13">The straight alignment fails exactly at values 1, 3, and 5 &#8212; the same flips the statement</text>
+  <text x="340" y="416" text-anchor="middle" fill="#1a2026" font-size="13">names &#8212; and the stack drains, so the trees are flip equivalent: <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

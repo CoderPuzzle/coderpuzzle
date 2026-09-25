@@ -12,4 +12,8 @@ minute's contribution when it is grumpy, shrink it by removing the
 leaving minute's contribution when it is grumpy, and keep the best
 window total seen. The answer is the baseline plus that best extra.
 
+![Sliding the 3-minute window over customers [1,0,1,2,1,1,7,5] with grumpy
+[0,1,0,1,0,1,0,1] peaks at an extra 1+5 = 6 on the calm baseline
+1+1+1+7 = 10, giving 16.](figures/solution-grumpy-window-extra.svg)
+
 **Complexity:** `O(n)` time and `O(1)` auxiliary space.

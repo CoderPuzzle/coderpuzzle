@@ -18,6 +18,8 @@ for score 0. Erasure at the borders needs no separate handling: a vote's
 shift maps one in-bounds cell exactly onto another, and whatever else it
 pushes out of the grid simply contributes nothing.
 
+![Example 1's twelve 1-cell pairs each vote for the shift a - b that aligns them, and (-1,-1) — img2 up one, left one — collects 3 votes, the largest overlap.](figures/solution-pair-vote-histogram.svg)
+
 The implementation packs each delta as `dr * 100 + dc`, injective because
 components lie in `[-(n-1), n-1] = [-29, 29]` while the column term stays
 within `(-50, 50)`. A hash map accumulates one count per packed delta, and

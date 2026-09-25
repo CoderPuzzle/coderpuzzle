@@ -6,6 +6,8 @@ Simulate the instruction string exactly once from the origin facing north, track
 
 The verdict needs only the end state of that single pass. If the robot ends facing north and not at the origin, every repetition adds the same displacement vector in the same direction, so the walk drifts without bound — false. Otherwise it is true: ending at the origin makes each pass a closed loop trivially; and any other final heading means each repetition's displacement is the previous one rotated by a fixed 90 or 180 or 270 degrees, so within at most four repetitions the rotated copies cancel and the robot returns to the origin, cycling forever inside a bounded region.
 
+![One pass of GGLLGG ends at (0, 0) heading south, and the rotated repetitions of that pass cancel within four loops, so the single-pass check returns true.](figures/solution-single-pass-end-state.svg)
+
 The check `(x, y) == (0, 0) or (dx, dy) != (0, 1)` expresses that dichotomy directly — return to start, or any turn at all. Constant state and one sweep over the string is all the algorithm uses.
 
 **Complexity:** `O(n)` time, `O(1)` space.

@@ -10,6 +10,8 @@ that tail's `next` to the node's old `next` (patching the old next's
 child and the child's `prev` to the node, clearing the `child` pointer —
 the flattened list must carry no child links anywhere.
 
+![On the list 1-2-3-4-5-6 with 3's child 7-8-9-10, the splice at node 3 wires child tail 10.next = 4 and 3.next = 7 with the child pointer cleared, and the walk continues straight into 7.](figures/solution-splice-child-chain.svg)
+
 After the splice the walk simply continues from the child, so whatever the
 child chain contains — including its own deeper children — is encountered
 in order and flattened by the same rule. No recursion and no auxiliary

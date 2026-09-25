@@ -18,5 +18,7 @@ original zero survives. The source pointer advances one step regardless,
 and the loop ends when every original element has been consumed — the
 in-place mutation is complete and the array is returned.
 
+![On arr = [1, 0, 2, 3, 0, 4, 5, 0] the read pointer i runs from 7 down to 0 while the write pointer j starts at 10 = 7 + 3 zeros; each zero is written twice, the writes landing at j >= 8 fall off the end, and arr ends [1, 0, 0, 2, 3, 0, 0, 4].](figures/solution-backward-two-pointer-write.svg)
+
 **Complexity:** `O(n)` time — each element is read once and written at
 most twice — and `O(1)` extra space, using only the two pointers.

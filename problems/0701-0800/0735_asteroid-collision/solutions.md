@@ -6,6 +6,8 @@ Scan the asteroids left to right and keep a stack of survivors — a stable conf
 
 Each fight is decided by size: if the top is smaller it explodes (popped) and the newcomer continues against the new top; if the sizes are equal both explode — the top is popped and the newcomer is spent; if the top is larger the newcomer explodes and the battle ends. A surviving newcomer is pushed. One strong left-mover can plow through the entire stack in a single arrival, which the while loop handles naturally, as in `[3,5,-6,2,-1,4]` where `-6` wipes out both `3` and `5`.
 
+![Scanning [3,5,-6,2,-1,4] arrival by arrival, the survivor stack absorbs each push until -6 plows 5 and 3 off the top, -1 explodes against 2, and the scan ends at [-6,2,4].](figures/solution-asteroid-survivor-stack.svg)
+
 Positive asteroids never trigger the loop and stack immediately, as do negative asteroids arriving on an empty stack or on a left-moving top. Every asteroid is pushed at most once and popped at most once, so although one arrival may resolve many collisions, the total work across the whole scan is linear.
 
 **Complexity:** `O(n)` time, `O(n)` space.

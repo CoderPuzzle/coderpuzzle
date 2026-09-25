@@ -13,6 +13,8 @@ exactly 1 (nudge whichever endpoint has room into the slot next to its
 neighbor). So the maximum number of moves is exactly the total number of
 empty slots, `(y - x - 1) + (z - y - 1)`, i.e. `z - x - 2`.
 
+![On stones at 1, 2, 5 the gaps are 0 and 2 empty slots; the direct jump 5 -> 3 gives the minimum 1 move and the nudges 5 -> 4 -> 3 give the maximum 2.](figures/solution-gaps-min-max.svg)
+
 For the minimum, one move suffices exactly when one of the two gaps is
 already 0 or 1 stone-width — that is, `y - x <= 2` or `z - y <= 2` — because
 then the far stone can jump directly into the remaining gap, landing the

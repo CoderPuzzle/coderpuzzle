@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="356" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,1,2,3], k = 2; column c = the atMost(2) state when right = c;
+       cells 88x40 at (154 + 96c, 64); highlighted column = right 4, where left finally moves -->
+  <rect x="534" y="54" width="88" height="254" rx="6" fill="#dbe4fb"/>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="486" y="42">l = 3</text><text x="582" y="42">r = 4</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="none">
+    <path d="M 486 46 L 486 59" marker-end="url(#arrow)"/>
+    <path d="M 582 46 L 582 59" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="154" y="64" width="88" height="40"/><rect x="250" y="64" width="88" height="40"/>
+    <rect x="346" y="64" width="88" height="40"/><rect x="442" y="64" width="88" height="40"/>
+    <rect x="538" y="64" width="88" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="198" y="89">1</text><text x="294" y="89">2</text><text x="390" y="89">1</text>
+    <text x="486" y="89">2</text><text x="582" y="89">3</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="198" y="120">0</text><text x="294" y="120">1</text><text x="390" y="120">2</text>
+    <text x="486" y="120">3</text><text x="582" y="120">4</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="140" y="89">nums</text><text x="140" y="120">right</text>
+    <text x="140" y="152">window</text><text x="140" y="182">distinct</text>
+    <text x="140" y="212">window map</text><text x="140" y="248">add r−l+1</text>
+    <text x="140" y="280">total</text>
+  </g>
+  <g text-anchor="middle" font-size="13.5" fill="#1a2026">
+    <text x="198" y="152">[0,0]</text><text x="294" y="152">[0,1]</text><text x="390" y="152">[0,2]</text>
+    <text x="486" y="152">[0,3]</text><text x="582" y="152" fill="#4169E1" font-weight="600">[3,4]</text>
+  </g>
+  <g text-anchor="middle" font-size="13.5" fill="#1a2026">
+    <text x="198" y="182">1</text><text x="294" y="182">2</text><text x="390" y="182">2</text>
+    <text x="486" y="182">2</text><text x="582" y="182" fill="#4169E1" font-weight="600">2</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#5c6b76">
+    <text x="198" y="212">{1:1}</text><text x="294" y="212">{1:1,2:1}</text><text x="390" y="212">{1:2,2:1}</text>
+    <text x="486" y="212">{1:2,2:2}</text><text x="582" y="212" fill="#4169E1" font-weight="600">{2:1,3:1}</text>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#4169E1">
+    <text x="198" y="248">+1</text><text x="294" y="248">+2</text><text x="390" y="248">+3</text>
+    <text x="486" y="248">+4</text><text x="582" y="248">+2</text>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="198" y="280">1</text><text x="294" y="280">3</text><text x="390" y="280">6</text>
+    <text x="486" y="280">10</text><text x="582" y="280" fill="#4169E1">12</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="340" y="320">atMost(2) adds 1+2+3+4+2 = 12; atMost(1) adds 1+1+1+1+1 = 5.</text>
+    <text x="340" y="338">exactly 2 distinct = 12 − 5 = <tspan fill="#4169E1" font-weight="600">7</tspan> good subarrays — the example's answer.</text>
+  </g>
+</svg>

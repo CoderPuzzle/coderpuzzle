@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 370" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="370" fill="#ffffff"/>
+  <!-- stones = [[0,0],[0,1],[1,0],[1,2],[2,1],[2,2]], n = 6; grid rows xi downward, columns yi
+       rightward; cell 56, grid origin (80,80); every union lands in one component -->
+  <!-- row / column labels -->
+  <g fill="#9aa7b2" font-size="11">
+    <text x="66" y="112" text-anchor="end">row 0</text>
+    <text x="66" y="168" text-anchor="end">row 1</text>
+    <text x="66" y="224" text-anchor="end">row 2</text>
+    <text x="108" y="70" text-anchor="middle">col 0</text>
+    <text x="164" y="70" text-anchor="middle">col 1</text>
+    <text x="220" y="70" text-anchor="middle">col 2</text>
+  </g>
+  <!-- shared-row / shared-column links -->
+  <g stroke="#4169E1" stroke-width="2">
+    <line x1="108" y1="108" x2="164" y2="108"/>
+    <line x1="108" y1="108" x2="108" y2="164"/>
+    <line x1="108" y1="164" x2="220" y2="164"/>
+    <line x1="164" y1="108" x2="164" y2="220"/>
+    <line x1="164" y1="220" x2="220" y2="220"/>
+    <line x1="220" y1="164" x2="220" y2="220"/>
+  </g>
+  <!-- stones by index -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <circle cx="108" cy="108" r="13"/><circle cx="164" cy="108" r="13"/>
+    <circle cx="108" cy="164" r="13"/><circle cx="220" cy="164" r="13"/>
+    <circle cx="164" cy="220" r="13"/><circle cx="220" cy="220" r="13"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="108" y="113">0</text><text x="164" y="113">1</text>
+    <text x="108" y="169">2</text><text x="220" y="169">3</text>
+    <text x="164" y="225">4</text><text x="220" y="225">5</text>
+  </g>
+  <!-- union sweep -->
+  <text x="300" y="88" fill="#5c6b76" font-size="12.5">each stone joins its row&#8217;s and column&#8217;s class</text>
+  <g font-size="12.5" fill="#1a2026">
+    <text x="300" y="116">stone 1 (0,1): row 0 holds 0 &#8594; union</text>
+    <text x="300" y="142">stone 2 (1,0): col 0 holds 0 &#8594; union</text>
+    <text x="300" y="168">stone 3 (1,2): row 1 holds 2 &#8594; union</text>
+    <text x="300" y="194">stone 4 (2,1): col 1 holds 1 &#8594; union</text>
+    <text x="300" y="220">stone 5 (2,2): row 2 holds 4, col 2 holds 3 &#8594; union</text>
+    <text x="300" y="246" fill="#5c6b76">one root left (stone 0) &#8594; components = 1</text>
+  </g>
+  <rect x="300" y="262" width="264" height="30" rx="15" fill="#dbe4fb"/>
+  <text x="432" y="282" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="13">6 stones &#8722; 1 component = 5 removed</text>
+  <text x="330" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Every stone joined through shared rows and columns lands in one component, so the</text>
+  <text x="330" y="348" text-anchor="middle" fill="#1a2026" font-size="13">largest possible number of removals is n &#8722; components = <tspan fill="#4169E1" font-weight="600">6 &#8722; 1 = 5</tspan>.</text>
+</svg>

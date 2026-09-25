@@ -31,6 +31,8 @@ exists and `even[higher[i]]` holds — and symmetrically `even[i]` follows
 series opens with, can work out, so the answer is the number of true
 `odd[i]`.
 
+![On arr = [10,13,12,14,15], the odd-jump arcs give each index its forced first jump and the right-to-left sweep leaves only odd[3] and odd[4] true, so the good starts are i = 3 and i = 4 and the answer is 2.](figures/solution-odd-even-jump-flags.svg)
+
 Sorting dominates the two table passes — each index moves through its stack
 once — and the sweep is linear over `n` two-state cells.
 

@@ -9,6 +9,10 @@ numeric value. Walk the output array's positions in the fixed order
 (every odd index, low to high), writing the sorted values into that
 sequence of positions, each value repeated as many times as it occurs.
 
+![With barcodes [1,1,1,2,2,2] the counts tie at 3, so value 1 fills the
+even slots 0, 2, 4 first and value 2 fills 1, 3, 5, producing
+[1,2,1,2,1,2] in six fill steps.](figures/solution-frequency-sorted-fill.svg)
+
 Spacing out the most frequent value first is what keeps it from landing
 next to itself: since no value occurs more than `ceil(n / 2)` times
 (otherwise no valid arrangement would exist), the most frequent value

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 368" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="368" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- instructions = "GGLLGG"; path column x=228, 64 px per lattice unit: (0,0) at y 216, (0,1) at 156, (0,2) at ~92; the pass ends at the origin heading south; dashed = the next pass -->
+  <line x1="128" y1="120" x2="128" y2="92" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrowM)"/>
+  <text x="128" y="82" text-anchor="middle" fill="#9aa7b2" font-size="12">north</text>
+  <!-- up leg: two G moves, origin to (0,2) -->
+  <line x1="220" y1="210" x2="220" y2="100" stroke="#42525e" stroke-width="2"/>
+  <circle cx="228" cy="216" r="3.5" fill="#1a2026"/>
+  <circle cx="228" cy="156" r="2.5" fill="#1a2026"/>
+  <g font-size="12" fill="#5c6b76">
+    <text x="204" y="221" text-anchor="end">(0, 0)</text>
+    <text x="204" y="161" text-anchor="end">(0, 1)</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="206" y="190" text-anchor="end">G</text>
+    <text x="206" y="130" text-anchor="end">G</text>
+  </g>
+  <!-- two L turns at (0,2): heading north to south -->
+  <path d="M 220 98 A 9 9 0 0 1 238 98" fill="none" stroke="#42525e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="229" y="74" text-anchor="middle" fill="#5c6b76" font-size="12.5">L L</text>
+  <text x="252" y="96" fill="#5c6b76" font-size="12">(0, 2)</text>
+  <!-- down leg: two G moves, back to the origin -->
+  <line x1="238" y1="98" x2="238" y2="210" stroke="#42525e" stroke-width="2" marker-end="url(#arrow)"/>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="252" y="130">G</text>
+    <text x="252" y="186">G</text>
+  </g>
+  <!-- end heading: south at the origin -->
+  <line x1="228" y1="224" x2="228" y2="252" stroke="#4169E1" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <text x="244" y="244" fill="#4169E1" font-size="12.5" font-weight="600">(dx, dy) = (0, -1)</text>
+  <!-- next pass, dashed -->
+  <line x1="228" y1="266" x2="228" y2="312" stroke="#9aa7b2" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowM)"/>
+  <text x="244" y="296" fill="#9aa7b2" font-size="12">next pass</text>
+  <line x1="396" y1="84" x2="396" y2="268" stroke="#dbe4fb" stroke-width="2"/>
+  <!-- verdict panel -->
+  <text x="420" y="96" fill="#5c6b76" font-size="12.5">one pass over GGLLGG ends:</text>
+  <text x="420" y="124" fill="#1a2026" font-size="15" font-weight="600">(x, y) = (0, 0)</text>
+  <text x="420" y="150" fill="#1a2026" font-size="14">heading (dx, dy) = (0, -1)</text>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="420" y="184">check: back at the origin, or heading</text>
+    <text x="420" y="202">no longer north — it passes</text>
+  </g>
+  <rect x="420" y="222" width="84" height="32" rx="6" fill="#dbe4fb"/>
+  <text x="462" y="243" text-anchor="middle" fill="#4169E1" font-weight="700" font-size="15">true</text>
+  <text x="340" y="330" text-anchor="middle" fill="#1a2026" font-size="13">One pass of GGLLGG ends at (0, 0) facing south; the second runs to (0, -2) and back,</text>
+  <text x="340" y="348" text-anchor="middle" fill="#1a2026" font-size="13">so repeated passes cycle inside the segment (0, -2)–(0, 2) — return <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

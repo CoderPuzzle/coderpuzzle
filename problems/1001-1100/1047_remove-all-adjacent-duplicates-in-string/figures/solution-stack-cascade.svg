@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 324" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="324" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "abbaca"; input cells w56 pitch80 from x90 y40; stack boxes w56 h32, floor y200; ghosts = popped -->
+  <g text-anchor="middle">
+    <text x="60" y="65" fill="#5c6b76" font-size="13">s</text>
+    <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+      <rect x="90" y="40" width="56" height="40"/><rect x="170" y="40" width="56" height="40"/>
+      <rect x="250" y="40" width="56" height="40"/><rect x="330" y="40" width="56" height="40"/>
+      <rect x="410" y="40" width="56" height="40"/><rect x="490" y="40" width="56" height="40"/>
+    </g>
+    <g font-weight="600" fill="#1a2026">
+      <text x="118" y="65">a</text><text x="198" y="65">b</text><text x="278" y="65">b</text>
+      <text x="358" y="65">a</text><text x="438" y="65">c</text><text x="518" y="65">a</text>
+    </g>
+    <g fill="#9aa7b2" font-size="11.5">
+      <text x="118" y="96">0</text><text x="198" y="96">1</text><text x="278" y="96">2</text>
+      <text x="358" y="96">3</text><text x="438" y="96">4</text><text x="518" y="96">5</text>
+    </g>
+    <text x="60" y="189" fill="#5c6b76" font-size="12">stack</text>
+    <line x1="84" y1="200" x2="556" y2="200" stroke="#9aa7b2" stroke-width="1"/>
+    <!-- col0: push a -> [a] -->
+    <rect x="90" y="168" width="56" height="32" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="118" y="189" font-weight="600" fill="#1a2026">a</text>
+    <!-- col1: push b -> [a,b] -->
+    <rect x="170" y="168" width="56" height="32" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="170" y="136" width="56" height="32" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="198" y="189" font-weight="600" fill="#1a2026">a</text>
+    <text x="198" y="157" font-weight="600" fill="#1a2026">b</text>
+    <!-- col2: pop b -> [a], ghost b -->
+    <rect x="250" y="168" width="56" height="32" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="278" y="189" font-weight="600" fill="#1a2026">a</text>
+    <rect x="250" y="136" width="56" height="32" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="278" y="157" font-weight="600" fill="#9aa7b2">b</text>
+    <!-- col3: pop a (cancels the earlier a) -> empty, ghost a -->
+    <rect x="330" y="168" width="56" height="32" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="358" y="189" font-weight="600" fill="#9aa7b2">a</text>
+    <!-- col4: push c -> [c] -->
+    <rect x="410" y="168" width="56" height="32" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="438" y="189" font-weight="600" fill="#1a2026">c</text>
+    <!-- col5: push a -> [c,a] = result -->
+    <rect x="490" y="168" width="56" height="32" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <rect x="490" y="136" width="56" height="32" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <text x="518" y="189" font-weight="600" fill="#4169E1">c</text>
+    <text x="518" y="157" font-weight="600" fill="#4169E1">a</text>
+    <!-- cascade arc: col3's a cancels the exposed earlier a (col2's new top) -->
+    <path d="M 352 88 Q 344 160 307 184" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="366" y="132" fill="#4169E1" font-size="11.5" font-weight="600" text-anchor="start">cancels the earlier a</text>
+    <g font-size="11.5">
+      <g fill="#5c6b76">
+        <text x="118" y="234">push a</text><text x="198" y="234">push b</text><text x="278" y="234">pop b</text>
+        <text x="358" y="234">pop a</text><text x="438" y="234">push c</text><text x="518" y="234">push a</text>
+      </g>
+      <g fill="#9aa7b2">
+        <text x="118" y="250">stack empty</text><text x="198" y="250">top a &#8800; b</text>
+        <text x="278" y="250">top b = b</text><text x="358" y="250">top a = a</text>
+        <text x="438" y="250">stack empty</text><text x="518" y="250">top c &#8800; a</text>
+      </g>
+    </g>
+    <text x="40" y="290" fill="#1a2026" font-size="13" text-anchor="start">The second b cancels the first, then a cancels the exposed earlier a; the stack</text>
+    <text x="40" y="308" fill="#1a2026" font-size="13" text-anchor="start">ends as c, a &#8212; the final string <tspan fill="#4169E1" font-weight="600">"ca"</tspan>, matching the example.</text>
+  </g>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 306" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="306" fill="#ffffff"/>
+  <!-- nums = [1,1,1], k = 2; seed {0:1}; steps: run 1 need -1 hit 0; run 2 need 0 hit 1; run 3 need 1 hit 1; total 2 -->
+  <text x="330" y="20" text-anchor="middle" fill="#1a2026" font-size="13.5" font-weight="600">nums = [1, 1, 1], k = 2</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="152" y="44" width="96" height="42"/>
+    <rect x="272" y="44" width="96" height="42"/>
+    <rect x="392" y="44" width="96" height="42"/>
+  </g>
+  <g text-anchor="middle">
+    <g fill="#5c6b76" font-size="12">
+      <text x="200" y="38">i = 0</text>
+      <text x="320" y="38">i = 1</text>
+      <text x="440" y="38">i = 2</text>
+    </g>
+    <g font-weight="600" font-size="16">
+      <text x="200" y="71">1</text>
+      <text x="320" y="71">1</text>
+      <text x="440" y="71">1</text>
+    </g>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="40" y="114">running</text>
+    <text x="40" y="142">look up running − k</text>
+    <text x="40" y="170">seen earlier?</text>
+    <text x="40" y="198">total</text>
+  </g>
+  <g text-anchor="middle">
+    <g font-weight="600" font-size="15" fill="#1a2026">
+      <text x="200" y="114">1</text>
+      <text x="320" y="114">2</text>
+      <text x="440" y="114">3</text>
+    </g>
+    <g font-size="14" fill="#1a2026">
+      <text x="200" y="142">−1</text>
+      <text x="320" y="142">0</text>
+      <text x="440" y="142">1</text>
+    </g>
+    <g font-size="14" font-weight="600">
+      <text x="200" y="170" fill="#9aa7b2">0</text>
+      <text x="320" y="170" fill="#4169E1">1</text>
+      <text x="440" y="170" fill="#4169E1">1</text>
+    </g>
+    <g font-size="15">
+      <text x="200" y="198" fill="#1a2026">0</text>
+      <text x="320" y="198" fill="#1a2026">1</text>
+      <text x="440" y="198" fill="#4169E1" font-weight="600">2</text>
+    </g>
+  </g>
+  <text x="330" y="236" text-anchor="middle" fill="#5c6b76" font-size="12">map seeded {0: 1}; after each element: {0:1, 1:1} → {0:1, 1:1, 2:1} → {0:1, 1:1, 2:1, 3:1}</text>
+  <text x="330" y="270" text-anchor="middle" fill="#1a2026" font-size="13">Each step adds the count of earlier prefixes equal to running − k: at i = 1</text>
+  <text x="330" y="288" text-anchor="middle" fill="#1a2026" font-size="13">prefix 0 hits (the first [1, 1]), at i = 2 prefix 1 hits — total <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

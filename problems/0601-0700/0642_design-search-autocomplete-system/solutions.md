@@ -24,6 +24,8 @@ empty list, inserts the buffered sentence along the trie (creating nodes as
 needed), increments its hot degree, and resets cursor and buffer — so the very
 next sentence typed can climb the rankings in the same session.
 
+![On the seed sentences with hot degrees 5, 3, 2, 2, the cursor descends along i and then the space, each subtree collect ranking the top 3, until the missing 'a' edge leaves the match list empty for "i a".](figures/solution-trie-cursor-dead-state.svg)
+
 Both the Python and Java canonical solutions implement exactly this structure.
 With at most `100` sentences of length at most `100` and `5000` input calls,
 each call walks a trie of at most `10⁴` nodes once, staying far inside the

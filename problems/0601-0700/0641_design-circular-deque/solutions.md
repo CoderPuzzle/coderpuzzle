@@ -25,4 +25,6 @@ both deletes on an empty one before anything moves, and both gets answer
 `-1` on an empty ring. Nothing is ever shifted or reallocated; an evicted
 value is simply overwritten when the ring next wraps onto its slot.
 
+![With k = 3, the ring after insertLast 1, 2 and insertFront 3 sits full at head 2; deleteLast only drops count to 2, insertFront 4 steps head back to slot 1, and getFront() answers 4.](figures/solution-head-count-ring.svg)
+
 **Complexity:** `O(1)` per operation; `O(k)` space.

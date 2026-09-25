@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="310" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s1 = "sea" down the side, s2 = "eat" across the top; dp[i][j] over prefixes; cells 74x40 at (110,84) -->
+  <!-- base row/col (gray) = ASCII prefix sums; dp[3][3] = 231 -->
+  <g text-anchor="middle" font-size="13" fill="#5c6b76">
+    <text x="147" y="76">−</text><text x="221" y="76">e</text><text x="295" y="76">a</text><text x="369" y="76">t</text>
+    <text x="83" y="109">−</text><text x="83" y="149">s</text><text x="83" y="189">e</text><text x="83" y="229">a</text>
+  </g>
+  <g fill="#f0f3f7" stroke="#42525e" stroke-width="1.2">
+    <rect x="110" y="84" width="74" height="40"/><rect x="184" y="84" width="74" height="40"/><rect x="258" y="84" width="74" height="40"/><rect x="332" y="84" width="74" height="40"/>
+    <rect x="110" y="124" width="74" height="40"/><rect x="110" y="164" width="74" height="40"/><rect x="110" y="204" width="74" height="40"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="184" y="124" width="74" height="40"/><rect x="258" y="124" width="74" height="40"/><rect x="332" y="124" width="74" height="40"/>
+    <rect x="184" y="164" width="74" height="40"/><rect x="258" y="164" width="74" height="40"/><rect x="332" y="164" width="74" height="40"/>
+    <rect x="184" y="204" width="74" height="40"/><rect x="258" y="204" width="74" height="40"/>
+  </g>
+  <rect x="184" y="164" width="74" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="258" y="204" width="74" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="332" y="204" width="74" height="40" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-size="14" fill="#5c6b76">
+    <text x="147" y="109">0</text><text x="221" y="109">101</text><text x="295" y="109">198</text><text x="369" y="109">314</text>
+    <text x="147" y="149">115</text>
+    <text x="147" y="189">216</text>
+    <text x="147" y="229">313</text>
+  </g>
+  <g text-anchor="middle" font-size="14" fill="#1a2026">
+    <text x="221" y="149">216</text><text x="295" y="149">313</text><text x="369" y="149">429</text>
+    <text x="295" y="189">212</text><text x="369" y="189">328</text>
+    <text x="221" y="229">212</text>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#4169E1">
+    <text x="221" y="189">115</text>
+    <text x="295" y="229">115</text>
+    <text x="369" y="229">231</text>
+  </g>
+  <!-- match diagonals copy 115; final right step deletes t -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 172 158 L 204 172" marker-end="url(#arrowA)"/>
+    <path d="M 246 198 L 278 212" marker-end="url(#arrowA)"/>
+    <path d="M 322 224 L 346 224" marker-end="url(#arrowA)"/>
+  </g>
+  <!-- final accounting -->
+  <g text-anchor="start">
+    <text x="436" y="106" font-size="14.5" font-weight="600" fill="#4169E1">dp[3][3] = 231</text>
+    <text x="436" y="128" font-size="12.5" fill="#1a2026">= 115 (delete s)</text>
+    <text x="436" y="144" font-size="12.5" fill="#1a2026">+ 116 (delete t)</text>
+    <text x="436" y="176" font-size="12" fill="#5c6b76">gray cells: base row and</text>
+    <text x="436" y="192" font-size="12" fill="#5c6b76">column = ASCII prefix sums</text>
+    <text x="436" y="218" font-size="12" fill="#5c6b76">blue cells: 'ea' matches</text>
+    <text x="436" y="234" font-size="12" fill="#5c6b76">copy diagonally, cost 0</text>
+  </g>
+  <text x="320" y="276" text-anchor="middle" font-size="13" fill="#1a2026">Row 0 and column 0 hold ASCII prefix sums; matching 'ea' copies <tspan fill="#4169E1" font-weight="600">115</tspan></text>
+  <text x="320" y="294" text-anchor="middle" font-size="13" fill="#1a2026">diagonally for free — dp[3][3] = <tspan fill="#4169E1" font-weight="600">231</tspan> = 115 + 116: delete s and t.</text>
+</svg>

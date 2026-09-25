@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <!-- img1 = [[1,1,0],[0,1,0],[0,1,0]], img2 = [[0,0,0],[0,1,1],[0,0,1]]; cells 40x40, img1 at (70,70), img2 at (270,70);
+       matching number badges = a pair voting for shift (-1,-1); histogram 40px per vote, baseline y=250 -->
+  <text x="130" y="54" text-anchor="middle" fill="#5c6b76" font-size="12.5">img1 — four 1s</text>
+  <text x="330" y="54" text-anchor="middle" fill="#5c6b76" font-size="12.5">img2 — three 1s</text>
+  <!-- img1 -->
+  <rect x="70" y="70" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="110" y="70" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="150" y="70" width="40" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="70" y="110" width="40" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="110" y="110" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="150" y="110" width="40" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="70" y="150" width="40" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="110" y="150" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="150" y="150" width="40" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <g text-anchor="middle">
+    <text x="90" y="95">1</text><text x="130" y="95">1</text><text x="170" y="95">0</text>
+    <text x="90" y="135">0</text><text x="130" y="135">1</text><text x="170" y="135">0</text>
+    <text x="90" y="175">0</text><text x="130" y="175">1</text><text x="170" y="175">0</text>
+  </g>
+  <g fill="#4169E1" font-size="11" font-weight="600">
+    <text x="74" y="84">1</text><text x="114" y="84">2</text><text x="114" y="124">3</text>
+  </g>
+  <!-- img2 -->
+  <rect x="270" y="70" width="40" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="310" y="70" width="40" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="350" y="70" width="40" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="270" y="110" width="40" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="310" y="110" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="350" y="110" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="270" y="150" width="40" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="310" y="150" width="40" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="350" y="150" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.3"/>
+  <g text-anchor="middle">
+    <text x="290" y="95">0</text><text x="330" y="95">0</text><text x="370" y="95">0</text>
+    <text x="290" y="135">0</text><text x="330" y="135">1</text><text x="370" y="135">1</text>
+    <text x="290" y="175">0</text><text x="330" y="175">0</text><text x="370" y="175">1</text>
+  </g>
+  <g fill="#4169E1" font-size="11" font-weight="600">
+    <text x="314" y="124">1</text><text x="354" y="124">2</text><text x="354" y="164">3</text>
+  </g>
+  <text x="230" y="214" text-anchor="middle" fill="#5c6b76" font-size="11.5">matching numbers mark the three pairs that vote for (-1,-1)</text>
+  <!-- vote histogram: (dr, dc) shifting img2 -->
+  <text x="536" y="54" text-anchor="middle" fill="#5c6b76" font-size="12.5">votes per shift (dr, dc)</text>
+  <rect x="452" y="130" width="44" height="120" fill="#4169E1"/>
+  <rect x="514" y="170" width="44" height="80" fill="#dbe4fb"/>
+  <rect x="576" y="210" width="44" height="40" fill="#dbe4fb"/>
+  <line x1="436" y1="250" x2="632" y2="250" stroke="#42525e" stroke-width="1.4"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="474" y="122" fill="#4169E1" font-size="14">3</text>
+    <text x="536" y="162" fill="#1a2026" font-size="14">2</text>
+    <text x="598" y="202" fill="#1a2026" font-size="14">1</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="474" y="266">(-1,-1)</text>
+    <text x="536" y="266">(0,-1)</text>
+    <text x="598" y="266">7 others</text>
+  </g>
+  <text x="320" y="298" text-anchor="middle" fill="#1a2026" font-size="13">Every ordered pair of 1-cells (a in img1, b in img2) votes for the shift a - b;</text>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">(-1,-1) — img2 up one, left one — takes <tspan fill="#4169E1" font-weight="600">3</tspan> votes, the largest overlap.</text>
+</svg>

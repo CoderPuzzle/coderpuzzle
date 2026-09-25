@@ -6,6 +6,8 @@ Forming a square means splitting the sticks into four groups of equal length, so
 
 The search assigns stick `i` to each of the four side buckets in turn, keeping only the current length of each side (which sticks are on a side never matters). A side is tried only when the stick still fits (`sides[j] + value <= side`); the assignment is made, the recursion moves to stick `i + 1`, and the choice is undone on failure. Two prunings keep the tree tiny: a `tried` set skips later sides whose current length equals one already attempted for this stick, because filling interchangeable sides explores symmetric, equivalent states; and the descending order concentrates failures near the root.
 
+![With matchsticks [1,1,2,2,2] sorted descending to 2,2,2,1,1, each 2 claims its own capacity-2 side and the two 1s share the last side, while the tried set would skip any further empty side for the same stick.](figures/solution-descending-side-buckets.svg)
+
 The base case checks that all four sides equal `side`, which given that every partial sum stays at most `side` and the grand total is `4 * side` is guaranteed once every stick is placed — the check is a final safety assertion. With at most 15 sticks the worst-case tree is `4^n`, but the equal-length and capacity prunings make typical inputs finish almost instantly. Space is the recursion depth plus the four running sums and the tiny `tried` set, all linear in the number of sticks at worst.
 
 **Complexity:** `O(4^n)` time, `O(n)` space.

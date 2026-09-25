@@ -6,6 +6,8 @@ A plain BFS on the nodes fails because the shortest path to a node depends on th
 
 The edges are split into two adjacency lists, one per color. Node 0 has no incoming edge, so the search seeds both states `(0, 0)` and `(0, 1)` at distance 0 — whichever color the first real edge must alternate from, one of the two seeds covers it. Popping `(node, color)` relaxes only the neighbors reachable via edges of the opposite color `1 - color`, recording `dist[nxt][1 - color]` the first time it is reached; first-time visits in a BFS are always at minimum distance, so an `INF` check doubles as the visited test. Self-edges and parallel edges need no special handling: a self-edge simply leads to a state already visited, and duplicates collapse in the distance check.
 
+![For n = 3 with red edges 0→1 and 1→2 the state table seeds both colors of node 0 at distance 0, reaches node 1 via (1, red) at distance 1, and never reaches node 2 — answer [0,1,-1].](figures/solution-bfs-node-color-states.svg)
+
 The per-node answer is the minimum over its two color states, taken on the fly: whenever a state distance is first set, `answer[nxt]` is lowered if it was already assigned. Nodes never reached in either color keep their initial `-1`, and `answer[0]` is fixed at 0 up front.
 
 Each directed edge — over both colors, so `E` counts red and blue edges together — is examined at most once (from the single opposite-color state of its tail), and each state enters the queue at most once.

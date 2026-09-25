@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- arr = [10,13,12,14,15]; cells x = 100 + 92i, w 80, y 140; higher[] arcs above, lower[] arc below;
+       odd = [F,F,F,T,T], even = [F,F,F,F,T] -->
+  <text x="40" y="36" font-size="12.5"><tspan fill="#4169E1" font-weight="600">odd jump:</tspan><tspan fill="#1a2026"> smallest arr[j] &#8805; arr[i] to the right</tspan></text>
+  <text x="40" y="54" font-size="12.5"><tspan fill="#5c6b76" font-weight="600">even jump:</tspan><tspan fill="#1a2026"> largest arr[j] &#8804; arr[i] to the right</tspan></text>
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 148 137 Q 222 30 296 137" marker-end="url(#arrow)"/>
+    <path d="M 240 137 Q 343 68 446 137" marker-end="url(#arrow)"/>
+    <path d="M 332 137 Q 361 96 390 137" marker-end="url(#arrow)"/>
+    <path d="M 418 137 Q 459 96 500 137" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 240 184 Q 282 212 316 184" fill="none" stroke="#5c6b76" stroke-width="2" marker-end="url(#arrowgray)"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="100" y="140" width="80" height="42"/>
+    <rect x="192" y="140" width="80" height="42"/>
+    <rect x="284" y="140" width="80" height="42"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="376" y="140" width="80" height="42"/>
+    <rect x="468" y="140" width="80" height="42"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="140" y="166" font-weight="600" fill="#1a2026">10</text>
+    <text x="232" y="166" font-weight="600" fill="#1a2026">13</text>
+    <text x="324" y="166" font-weight="600" fill="#1a2026">12</text>
+    <text x="416" y="166" font-weight="600" fill="#1a2026">14</text>
+    <text x="508" y="166" font-weight="600" fill="#1a2026">15</text>
+  </g>
+  <g text-anchor="middle" font-size="10" fill="#5c6b76">
+    <text x="140" y="177">i = 0</text>
+    <text x="232" y="177">i = 1</text>
+    <text x="324" y="177">i = 2</text>
+    <text x="416" y="177">i = 3</text>
+    <text x="508" y="177">i = 4</text>
+  </g>
+  <text x="88" y="249" text-anchor="end" fill="#5c6b76" font-size="12.5">odd[i]</text>
+  <text x="88" y="287" text-anchor="end" fill="#5c6b76" font-size="12.5">even[i]</text>
+  <g font-size="13" text-anchor="middle" font-weight="600">
+    <g fill="#f0f3f7">
+      <rect x="100" y="230" width="80" height="28"/>
+      <rect x="192" y="230" width="80" height="28"/>
+      <rect x="284" y="230" width="80" height="28"/>
+    </g>
+    <g fill="#dbe4fb">
+      <rect x="376" y="230" width="80" height="28"/>
+      <rect x="468" y="230" width="80" height="28"/>
+    </g>
+    <text x="140" y="249" fill="#9aa7b2">F</text>
+    <text x="232" y="249" fill="#9aa7b2">F</text>
+    <text x="324" y="249" fill="#9aa7b2">F</text>
+    <text x="416" y="249" fill="#4169E1">T</text>
+    <text x="508" y="249" fill="#4169E1">T</text>
+    <g fill="#f0f3f7">
+      <rect x="100" y="268" width="80" height="28"/>
+      <rect x="192" y="268" width="80" height="28"/>
+      <rect x="284" y="268" width="80" height="28"/>
+      <rect x="376" y="268" width="80" height="28"/>
+    </g>
+    <rect x="468" y="268" width="80" height="28" fill="#dbe4fb"/>
+    <text x="140" y="287" fill="#9aa7b2">F</text>
+    <text x="232" y="287" fill="#9aa7b2">F</text>
+    <text x="324" y="287" fill="#9aa7b2">F</text>
+    <text x="416" y="287" fill="#9aa7b2">F</text>
+    <text x="508" y="287" fill="#4169E1">T</text>
+  </g>
+  <text x="320" y="322" text-anchor="middle" font-size="13" fill="#1a2026">The right-to-left sweep marks <tspan fill="#4169E1" font-weight="600">odd[3] and odd[4]</tspan> true; every earlier index</text>
+  <text x="320" y="339" text-anchor="middle" font-size="13" fill="#1a2026">chains into a false even[&#183;], so the good starts are i = 3 and i = 4, answer <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

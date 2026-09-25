@@ -13,6 +13,8 @@ test. After measuring, jump the cursor past the right foot: every index in
 between sits on a descent, and a descent cannot rise again without breaking
 strictness, so no peak can hide there.
 
+![Example 1's single peak, the 7 in arr = [2,1,4,7,3,2,5]: the strict rise and fall walks expand down to 1 and 2, measuring [1,4,7,3,2] at length 5, and the cursor jumps past the right foot to i = 6, where the scan ends.](figures/solution-peak-expansion.svg)
+
 Strictness does all the discriminating. Plateaus never pass a comparison —
 equal neighbors on a slope stop the walk, and equal values beside a would-be
 top disqualify it entirely, which is why `[1,5,5,2]` holds no peak at all

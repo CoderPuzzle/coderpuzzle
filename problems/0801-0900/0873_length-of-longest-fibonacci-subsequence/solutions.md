@@ -6,6 +6,8 @@ Every Fibonacci-like subsequence is pinned down by its last two elements: if it 
 
 The loops walk `i` across the array and `j < i` over possible penultimate elements. For each pair, `need = arr[i] - arr[j]` is looked up; the guard `need < arr[j]` ensures the predecessor sits strictly left of `j` (values increase, so any smaller value has a smaller index) and rules out the degenerate case `need == arr[j]`, which would point back at `j` itself. On a hit, `dp[(j, i)] = dp.get((k, j), 2) + 1` — the earlier pair defaults to length 2 when it never started a chain — otherwise the pair begins fresh at length 2, and the maximum is tracked throughout.
 
+![On arr = [1, 2, 3, 4, 5, 6, 7, 8], the chain grows pair by pair — dp[(0, 1)] = 2 fresh, then each lookup of arr[i] − arr[j] resolves k and extends — until dp[(4, 7)] = 5 gives [1, 2, 3, 5, 8].](figures/solution-pair-dp-chain.svg)
+
 A length of 2 is just two elements, but the problem requires at least three, so the result is `best` only when `best >= 3` and 0 otherwise, as when no three values satisfy the recurrence. Each of the quadratic number of pairs performs one hash lookup, so the whole scan runs in quadratic time and stores one entry per pair.
 
 **Complexity:** `O(n^2)` time, `O(n^2)` space.

@@ -11,6 +11,8 @@ points the same way, so the code keeps one boolean per direction and answers
 `false` the moment both have fired; indices wrap around modulo `n` so the
 final turn, from the closing edge back to the first, is examined too.
 
+![On example 2's points [[0,0],[0,10],[10,10],[10,0],[5,5]], the vertex walk reads right turns of −100, −100, −50, −50 and then a +50 left turn at (5,5), so the signs disagree and the polygon is not convex.](figures/solution-cross-sign-walk.svg)
+
 A zero cross product is not a turn at all — it says three consecutive
 vertices are collinear, which a simple polygon may legally do along an edge
 (a square with the midpoint of one side listed as a vertex is still a

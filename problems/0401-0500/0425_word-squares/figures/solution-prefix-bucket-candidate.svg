@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- words = ["area","lead","wall","lady","ball"]; square so far = ball/area/lead; grid cells 48x36 at (70,60), column 3 accented; prefix chip (300,92,120x40); bucket box (450,86,164x52) -->
+  <g text-anchor="end" fill="#9aa7b2" font-size="11">
+    <text x="58" y="83">0</text><text x="58" y="119">1</text><text x="58" y="155">2</text><text x="58" y="191">3</text>
+  </g>
+  <text x="238" y="46" text-anchor="middle" fill="#5c6b76" font-size="12">col 3</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="70" y="60" width="48" height="36"/><rect x="118" y="60" width="48" height="36"/>
+    <rect x="166" y="60" width="48" height="36"/><rect x="214" y="60" width="48" height="36" fill="#dbe4fb"/>
+    <rect x="70" y="96" width="48" height="36"/><rect x="118" y="96" width="48" height="36"/>
+    <rect x="166" y="96" width="48" height="36"/><rect x="214" y="96" width="48" height="36" fill="#dbe4fb"/>
+    <rect x="70" y="132" width="48" height="36"/><rect x="118" y="132" width="48" height="36"/>
+    <rect x="166" y="132" width="48" height="36"/><rect x="214" y="132" width="48" height="36" fill="#dbe4fb"/>
+    <rect x="70" y="168" width="48" height="36" fill="#f0f3f7" stroke-dasharray="5 4"/>
+    <rect x="118" y="168" width="48" height="36" fill="#f0f3f7" stroke-dasharray="5 4"/>
+    <rect x="166" y="168" width="48" height="36" fill="#f0f3f7" stroke-dasharray="5 4"/>
+    <rect x="214" y="168" width="48" height="36" fill="#f0f3f7" stroke-dasharray="5 4"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="94" y="83">b</text><text x="142" y="83">a</text><text x="190" y="83">l</text><text x="238" y="83" fill="#4169E1" font-weight="700">l</text>
+    <text x="94" y="119">a</text><text x="142" y="119">r</text><text x="190" y="119">e</text><text x="238" y="119" fill="#4169E1" font-weight="700">a</text>
+    <text x="94" y="155">l</text><text x="142" y="155">e</text><text x="190" y="155">a</text><text x="238" y="155" fill="#4169E1" font-weight="700">d</text>
+  </g>
+  <path d="M 262 114 L 294 113" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="300" y="92" width="120" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="360" y="117" text-anchor="middle" font-size="13.5">prefix = <tspan fill="#4169E1" font-weight="600">"lad"</tspan></text>
+  <path d="M 420 112 L 444 112" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="450" y="86" width="164" height="52" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="532" y="106" text-anchor="middle" fill="#5c6b76" font-size="12">prefix-map["lad"]</text>
+  <text x="532" y="128" text-anchor="middle" fill="#4169E1" font-size="15" font-weight="700">lady</text>
+  <path d="M 520 142 Q 380 226 268 186" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="400" y="178" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">only candidate</text>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">With rows ball, area, lead placed, column 3 forces the prefix <tspan fill="#4169E1" font-weight="600">'lad'</tspan>,</text>
+  <text x="320" y="322" text-anchor="middle" fill="#1a2026" font-size="13">and only <tspan fill="#4169E1" font-weight="600">lady</tspan> starts with it — the bucket hands back exactly one candidate for row 3.</text>
+</svg>

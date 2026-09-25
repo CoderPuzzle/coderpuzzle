@@ -6,6 +6,8 @@ Because the substring may be freely rearranged, its order is irrelevant — only
 
 To answer up to 10^5 queries without scanning each substring, precompute `prefix[i]`, a 26-bit mask of the parities of letter counts in `s[:i]`. Each step is a single XOR: `prefix[i+1] = prefix[i] ^ (1 << (ord(ch) - ord('a')))`, since adding one occurrence toggles that letter's parity. The parity mask of any substring `s[left..right]` is then just `prefix[right + 1] ^ prefix[left]` — letters occurring an even number of times cancel, odd ones survive.
 
+![For s = "abcda" the prefix parity masks give query [0,3,2] the mask prefix[4] ^ prefix[0] = 1111, whose 4 odd letters need 4/2 = 2 replacements, and 2 <= k = 2 answers true.](figures/solution-prefix-parity-masks.svg)
+
 Each query is answered by popcounting that mask and checking `odd // 2 <= k`. Integer division is safe rather than a strict comparison because an odd-length substring may keep one odd letter as its center without spending a replacement, and the `k` budget is per query on the untouched original string. Query results are appended in order and returned.
 
 **Complexity:** `O(n + q)` time, `O(n)` space.

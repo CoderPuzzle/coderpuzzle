@@ -10,6 +10,8 @@ is therefore always a gap between values adjacent in the inorder walk —
 never between values from unrelated corners of the tree — so the problem
 reduces to the smallest step of one sorted traversal.
 
+![On the BST [4,2,6,1,3] the inorder walk emits 1, 2, 3, 4, 6 and each visit tests one candidate — the gap to the previous value, 1, 1, 1, then 2 — so the minimum 1 falls out of inorder neighbors alone.](figures/solution-inorder-prev-gaps.svg)
+
 The walk holds nothing but the value it emitted just before the current one.
 Each newly visited value offers exactly one candidate, the gap to that
 previous value, and the minimum over all candidates is the answer. The

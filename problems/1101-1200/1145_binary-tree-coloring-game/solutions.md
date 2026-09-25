@@ -17,6 +17,8 @@ combined. So the answer is exactly `max(left, right, above) > n / 2`, and
 counting the two subtree sizes of `x` gives all three, since `above = n -
 left - right - 1`.
 
+![With x = 3 in the 11-node example tree the cut-off regions hold 1, 1 and 8 nodes; y = 2 claims the 8, and 8 > 11/2, so the answer is true.](figures/solution-three-regions.svg)
+
 The code finds the node with value `x` by one traversal and counts its two
 subtrees; `n` is at most 100, so the traversal cost is trivial.
 

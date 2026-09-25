@@ -10,6 +10,8 @@ thing its parent needs. So one bottom-up pass settles every node exactly once:
 add `|left - right|` to the running total, hand `val + left + right` upward,
 done.
 
+![On the example root = [4,2,9,3,5,null,7], the post-order walk writes each node's subtree sum beside it — 3, 5, 10 under the left subtree, 16 and 7 under the right, 30 at the root — and takes each tilt as |left - right| = 2, 7, 6 for the internal nodes, summing with the leaves' zeros to 15.](figures/solution-postorder-tilt-sums.svg)
+
 The walk carries an explicit stack of frames instead of recursing: the tree
 may be a single 10^4-node chain, whose traversal would nest 10000 calls — past
 CPython's default recursion limit and over the 512k stacks the judge hands

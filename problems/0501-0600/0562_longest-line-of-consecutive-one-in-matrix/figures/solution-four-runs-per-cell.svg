@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 288" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="288" fill="#ffffff"/>
+  <!-- mat = [[0,1,1,0],[0,1,1,0],[0,0,0,1]]; cells 88x52 at x=60+88j, y=64+52i; each 1-cell shows its run lengths (h v d a);
+       diagonal cells (0,1),(1,2),(2,3) accent-filled, max d = 3 at (2,3) -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="104" y="56">j = 0</text>
+    <text x="192" y="56">j = 1</text>
+    <text x="280" y="56">j = 2</text>
+    <text x="368" y="56">j = 3</text>
+    <text x="50" y="94" text-anchor="end">i = 0</text>
+    <text x="50" y="146" text-anchor="end">i = 1</text>
+    <text x="50" y="198" text-anchor="end">i = 2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="60" y="64" width="88" height="52" fill="#f0f3f7"/>
+    <rect x="148" y="64" width="88" height="52" fill="#dbe4fb"/>
+    <rect x="236" y="64" width="88" height="52" fill="#ffffff"/>
+    <rect x="324" y="64" width="88" height="52" fill="#f0f3f7"/>
+    <rect x="60" y="116" width="88" height="52" fill="#f0f3f7"/>
+    <rect x="148" y="116" width="88" height="52" fill="#ffffff"/>
+    <rect x="236" y="116" width="88" height="52" fill="#dbe4fb"/>
+    <rect x="324" y="116" width="88" height="52" fill="#f0f3f7"/>
+    <rect x="60" y="168" width="88" height="52" fill="#f0f3f7"/>
+    <rect x="148" y="168" width="88" height="52" fill="#f0f3f7"/>
+    <rect x="236" y="168" width="88" height="52" fill="#f0f3f7"/>
+    <rect x="324" y="168" width="88" height="52" fill="#dbe4fb"/>
+  </g>
+  <!-- zeros -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="14">
+    <text x="104" y="95">0</text>
+    <text x="368" y="95">0</text>
+    <text x="104" y="147">0</text>
+    <text x="368" y="147">0</text>
+    <text x="104" y="199">0</text>
+    <text x="192" y="199">0</text>
+    <text x="280" y="199">0</text>
+  </g>
+  <!-- ones with (h v d a) runs -->
+  <g text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">
+    <text x="192" y="85">1</text>
+    <text x="280" y="85">1</text>
+    <text x="192" y="137">1</text>
+    <text x="280" y="137">1</text>
+    <text x="368" y="189">1</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5" fill="#42525e">
+    <text x="192" y="107">h1 v1 d1 a1</text>
+    <text x="280" y="107">h2 v1 d1 a1</text>
+    <text x="192" y="159">h1 v2 d1 a2</text>
+    <text x="280" y="159">h2 v2 d2 a1</text>
+    <text x="368" y="211"><tspan fill="#4169E1" font-weight="600">h1 v1 d3 a1</tspan></text>
+  </g>
+  <!-- legend -->
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="440" y="82">run lengths ending</text>
+    <text x="440" y="98">at each 1:</text>
+    <text x="440" y="122">h — from the left</text>
+    <text x="440" y="140">v — from above</text>
+    <text x="440" y="158">d — from upper-left</text>
+    <text x="440" y="176">a — from upper-right</text>
+  </g>
+  <text x="440" y="204" fill="#4169E1" font-size="13.5" font-weight="600">answer = max run = 3</text>
+  <text x="440" y="222" fill="#5c6b76" font-size="12">diagonal (0,1) → (1,2) → (2,3)</text>
+  <text x="340" y="252" text-anchor="middle" fill="#1a2026" font-size="13">A 1 extends the runs arriving from the left, above, and the two diagonals;</text>
+  <text x="340" y="270" text-anchor="middle" fill="#1a2026" font-size="13">at (2, 3) the diagonal run reaches 2 + 1 = <tspan fill="#4169E1" font-weight="600">3</tspan> — the longest line in the matrix.</text>
+</svg>

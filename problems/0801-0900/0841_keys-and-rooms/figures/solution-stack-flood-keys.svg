@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- rooms = [[1],[2],[3],[]]; room boxes 110x50 at y=46, centers x=90,250,410,570;
+       arrows = the one key each room holds; trace rows show stack and visited after each pop -->
+  <!-- key arrows -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 145 71 L 187 71" marker-end="url(#arrow)"/>
+    <path d="M 305 71 L 347 71" marker-end="url(#arrow)"/>
+    <path d="M 465 71 L 507 71" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">
+    <text x="170" y="62">key 1</text>
+    <text x="330" y="62">key 2</text>
+    <text x="490" y="62">key 3</text>
+  </g>
+  <!-- room boxes -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="35" y="46" width="110" height="50"/>
+    <rect x="195" y="46" width="110" height="50"/>
+    <rect x="355" y="46" width="110" height="50"/>
+    <rect x="515" y="46" width="110" height="50"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="90" y="68" font-weight="600">room 0</text>
+    <text x="250" y="68" font-weight="600">room 1</text>
+    <text x="410" y="68" font-weight="600">room 2</text>
+    <text x="570" y="68" font-weight="600">room 3</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="90" y="86">keys [1]</text>
+    <text x="250" y="86">keys [2]</text>
+    <text x="410" y="86">keys [3]</text>
+    <text x="570" y="86">keys []</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">
+    <text x="90" y="116">visited 1st</text>
+    <text x="250" y="116">visited 2nd</text>
+    <text x="410" y="116">visited 3rd</text>
+    <text x="570" y="116">visited 4th</text>
+  </g>
+  <!-- stack trace -->
+  <text x="40" y="146" fill="#5c6b76" font-size="12.5">start: seen[0] = true &#183; stack [0] &#183; visited = 1</text>
+  <g fill="#9aa7b2" font-size="11.5">
+    <text x="320" y="160">stack</text>
+    <text x="430" y="160">visited</text>
+  </g>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="40" y="184">pop 0 &#8212; key 1 marks room 1</text>
+    <text x="40" y="222">pop 1 &#8212; key 2 marks room 2</text>
+    <text x="40" y="260">pop 2 &#8212; key 3 marks room 3</text>
+    <text x="40" y="298">pop 3 &#8212; no keys; stack drains</text>
+  </g>
+  <!-- stack cells: one entry per row -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2">
+    <rect x="320" y="164" width="30" height="26"/>
+    <rect x="320" y="202" width="30" height="26"/>
+    <rect x="320" y="240" width="30" height="26"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-weight="600">
+    <text x="335" y="182">1</text>
+    <text x="335" y="220">2</text>
+    <text x="335" y="258">3</text>
+  </g>
+  <text x="335" y="296" text-anchor="middle" fill="#9aa7b2" font-size="11.5">(empty)</text>
+  <g font-size="12.5">
+    <text x="430" y="184" fill="#5c6b76">visited = 2</text>
+    <text x="430" y="222" fill="#5c6b76">visited = 3</text>
+    <text x="430" y="260" fill="#5c6b76">visited = 4</text>
+    <text x="430" y="298" fill="#1a2026">visited = 4 = n &#8594; <tspan fill="#4169E1" font-weight="600">true</tspan></text>
+  </g>
+  <text x="330" y="340" text-anchor="middle" fill="#1a2026" font-size="13">Marking each room the moment a key schedules it keeps every room on the</text>
+  <text x="330" y="358" text-anchor="middle" fill="#1a2026" font-size="13">stack at most once; visited reaches <tspan fill="#4169E1" font-weight="600">4 = n</tspan>, so every room is reached.</text>
+</svg>

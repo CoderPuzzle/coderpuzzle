@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 306" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="306" fill="#ffffff"/>
+  <!-- n = 3, k = 7; seeds 1..9 in boxes 44x32 at x=66+58i, y=50; level-1 prefixes y=140; depth-3 results y=210; dead seeds 3,4,5,6 have no in-range child -->
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="66" y="50" width="44" height="32"/><rect x="124" y="50" width="44" height="32"/>
+    <rect x="414" y="50" width="44" height="32"/><rect x="472" y="50" width="44" height="32"/><rect x="530" y="50" width="44" height="32"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="#f0f3f7">
+    <rect x="182" y="50" width="44" height="32"/><rect x="240" y="50" width="44" height="32"/>
+    <rect x="298" y="50" width="44" height="32"/><rect x="356" y="50" width="44" height="32"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="88" y="71">1</text><text x="146" y="71">2</text><text x="436" y="71">7</text><text x="494" y="71">8</text><text x="552" y="71">9</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2">
+    <text x="204" y="71">3</text><text x="262" y="71">4</text><text x="320" y="71">5</text><text x="378" y="71">6</text>
+  </g>
+  <!-- round 1 edges: only d + 7 or d - 7 stays inside 0..9 -->
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <line x1="88" y1="82" x2="88" y2="136"/><line x1="146" y1="82" x2="146" y2="136"/>
+    <line x1="436" y1="82" x2="436" y2="136"/><line x1="494" y1="82" x2="494" y2="136"/><line x1="552" y1="82" x2="552" y2="136"/>
+  </g>
+  <g fill="#5c6b76" font-size="11">
+    <text x="95" y="112">+7</text><text x="153" y="112">+7</text>
+    <text x="429" y="112" text-anchor="end">−7</text><text x="487" y="112" text-anchor="end">−7</text><text x="545" y="112" text-anchor="end">−7</text>
+  </g>
+  <text x="291" y="118" text-anchor="middle" fill="#9aa7b2" font-size="11.5">d ± 7 leaves 0..9 — dies</text>
+  <text x="24" y="115" fill="#9aa7b2" font-size="11.5">round 1</text>
+  <g text-anchor="middle" stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="66" y="140" width="44" height="32"/><rect x="124" y="140" width="44" height="32"/>
+    <rect x="414" y="140" width="44" height="32"/><rect x="472" y="140" width="44" height="32"/><rect x="530" y="140" width="44" height="32"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="88" y="161">18</text><text x="146" y="161">29</text><text x="436" y="161">70</text><text x="494" y="161">81</text><text x="552" y="161">92</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <line x1="88" y1="172" x2="88" y2="206"/><line x1="146" y1="172" x2="146" y2="206"/>
+    <line x1="436" y1="172" x2="436" y2="206"/><line x1="494" y1="172" x2="494" y2="206"/><line x1="552" y1="172" x2="552" y2="206"/>
+  </g>
+  <text x="291" y="192" text-anchor="middle" fill="#9aa7b2" font-size="11.5">again only one child stays in 0..9</text>
+  <text x="24" y="195" fill="#9aa7b2" font-size="11.5">round 2</text>
+  <g text-anchor="middle" stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="66" y="210" width="44" height="32"/><rect x="124" y="210" width="44" height="32"/>
+    <rect x="414" y="210" width="44" height="32"/><rect x="472" y="210" width="44" height="32"/><rect x="530" y="210" width="44" height="32"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="88" y="231">181</text><text x="146" y="231">292</text><text x="436" y="231">707</text><text x="494" y="231">818</text><text x="552" y="231">929</text>
+  </g>
+  <text x="320" y="274" text-anchor="middle" fill="#1a2026" font-size="13">Nine seeds shrink to five chains — 3, 4, 5 and 6 lose every child</text>
+  <text x="320" y="292" text-anchor="middle" fill="#1a2026" font-size="13">to the 0..9 bound — leaving exactly <tspan fill="#4169E1" font-weight="600">181, 292, 707, 818, 929</tspan>.</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="352" fill="#ffffff"/>
+  <!-- n = 5, lamps (0,0) and (4,4); 40px cells, grid at (50,60); grid drawn after the 3x3 turn-off around (1,1): lamp (0,0) crossed out, its row 0, col 0 and anti-diagonal gone dark, Q0 (1,1) true via diag x-y = 0 count 2, Q1 (1,0) false -->
+  <!-- lit cells, shown as the grid stands when Q1 is answered (lamp (0,0) already turned off): row 4, col 4, and the diagonal x - y = 0 still lit by lamp (4,4) -->
+  <g fill="#dbe4fb">
+    <rect x="210" y="60" width="40" height="40"/>
+    <rect x="50" y="220" width="40" height="40"/><rect x="90" y="220" width="40" height="40"/><rect x="130" y="220" width="40" height="40"/><rect x="170" y="220" width="40" height="40"/><rect x="210" y="220" width="40" height="40"/>
+    <rect x="210" y="100" width="40" height="40"/><rect x="210" y="140" width="40" height="40"/><rect x="210" y="180" width="40" height="40"/>
+    <rect x="90" y="100" width="40" height="40"/><rect x="130" y="140" width="40" height="40"/><rect x="170" y="180" width="40" height="40"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1" fill="none">
+    <path d="M 50 60 H 250 M 50 100 H 250 M 50 140 H 250 M 50 180 H 250 M 50 220 H 250 M 50 260 H 250"/>
+    <path d="M 50 60 V 260 M 90 60 V 260 M 130 60 V 260 M 170 60 V 260 M 210 60 V 260 M 250 60 V 260"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="70" y="52">c = 0</text><text x="110" y="52">1</text><text x="150" y="52">2</text><text x="190" y="52">3</text><text x="230" y="52">4</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="11">
+    <text x="42" y="84">r = 0</text><text x="42" y="124">1</text><text x="42" y="164">2</text><text x="42" y="204">3</text><text x="42" y="244">4</text>
+  </g>
+  <!-- lamps -->
+  <circle cx="70" cy="80" r="12" fill="#4169E1"/>
+  <circle cx="230" cy="240" r="12" fill="#4169E1"/>
+  <!-- lamp (0,0) removed by the turn-off -->
+  <g stroke="#1a2026" stroke-width="2.5">
+    <line x1="61" y1="71" x2="79" y2="89"/><line x1="79" y1="71" x2="61" y2="89"/>
+  </g>
+  <!-- queries -->
+  <circle cx="110" cy="120" r="16" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <text x="110" y="160" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">Q0</text>
+  <circle cx="70" cy="120" r="16" fill="none" stroke="#9aa7b2" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="70" y="160" text-anchor="middle" fill="#9aa7b2" font-size="12" font-weight="600">Q1</text>
+  <!-- 3x3 turn-off region around (1,1) -->
+  <rect x="50" y="60" width="120" height="120" fill="none" stroke="#5c6b76" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <g font-size="12.5">
+    <text x="290" y="80" fill="#1a2026">A lamp at (x, y) lights row x, column y,</text>
+    <text x="290" y="98" fill="#1a2026">diagonal x - y and anti-diagonal x + y.</text>
+    <text x="290" y="128" fill="#1a2026">Q0 (1,1): diagonal 1 - 1 = 0 holds <tspan fill="#4169E1" font-weight="600">2 lamps</tspan> → true</text>
+    <text x="290" y="156" fill="#5c6b76">Turn-off 3x3 around (1,1) removes lamp (0,0):</text>
+    <text x="290" y="174" fill="#5c6b76">rows {4: 1}, cols {4: 1},</text>
+    <text x="290" y="192" fill="#5c6b76">diag {0: 1}, anti {8: 1}.</text>
+    <text x="290" y="222" fill="#1a2026">Q1 (1,0): row 1, col 0, diag 1, anti 1</text>
+    <text x="290" y="240" fill="#1a2026">all read 0 → <tspan font-weight="600">false</tspan>.</text>
+  </g>
+  <text x="40" y="316" fill="#1a2026" font-size="13">Q0 (1,1) is lit only by the shared diagonal <tspan fill="#4169E1" font-weight="600">x - y = 0</tspan>; the 3x3 turn-off</text>
+  <text x="40" y="336" fill="#1a2026" font-size="13">around (1,1) removes lamp (0,0), so every counter at (1,0) reads 0 — dark.</text>
+</svg>

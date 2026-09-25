@@ -26,6 +26,10 @@ and `m` columns the sweep performs `n · m²` character comparisons while
 carrying a single `m`-entry array. Keeping a running maximum makes the
 final subtraction a one-liner.
 
+![Hand-simulating `strs = ["babca","bbazb"]`: `dp` fills left to right as
+`[1, 1, 1, 2, 2]`, and the longest chain keeps columns 2 and 3 — the rows
+then read `bc` and `az` — so the other `5 − 2 = 3` columns are deleted.](figures/solution-column-chain-dp.svg)
+
 Deleting every column outside a longest chain leaves each row
 non-decreasing, so `m - L` deletions always suffice. Conversely, an
 outcome with fewer deletions would keep more than `L` columns, and read in

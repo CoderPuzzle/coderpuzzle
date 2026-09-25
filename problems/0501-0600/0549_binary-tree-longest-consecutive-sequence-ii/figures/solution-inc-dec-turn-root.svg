@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 312" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="312" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- tree [2,1,3]: root 2 at (350,78), left 1 at (210,192), right 3 at (490,192), r 22; accent edges = the joined path 1-2-3 -->
+  <g stroke="#4169E1" stroke-width="2.5">
+    <line x1="336" y1="97" x2="224" y2="174"/>
+    <line x1="364" y1="97" x2="476" y2="174"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="350" cy="78" r="22"/>
+    <circle cx="210" cy="192" r="22"/>
+    <circle cx="490" cy="192" r="22"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="350" y="84">2</text>
+    <text x="210" y="198">1</text>
+    <text x="490" y="198">3</text>
+  </g>
+  <!-- (inc, dec) reports -->
+  <text x="350" y="36" text-anchor="middle" fill="#4169E1" font-size="13.5" font-weight="600">(inc 2, dec 2)</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="210" y="240">(inc 1, dec 1)</text>
+    <text x="490" y="240">(inc 1, dec 1)</text>
+  </g>
+  <!-- post-order report arrows, child to parent -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none" stroke-dasharray="5 4">
+    <path d="M 182 178 Q 165 120 310 88" marker-end="url(#arrow)"/>
+    <path d="M 518 178 Q 535 120 390 88" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="112" y="128">1 = 2−1:</text>
+    <text x="112" y="146">dec 1+1 = 2</text>
+    <text x="588" y="128">3 = 2+1:</text>
+    <text x="588" y="146">inc 1+1 = 2</text>
+  </g>
+  <text x="330" y="282" text-anchor="middle" fill="#1a2026" font-size="13">The two arms turn at the root: inc + dec − 1 = 2 + 2 − 1 = <tspan fill="#4169E1" font-weight="600">3</tspan>,</text>
+  <text x="330" y="300" text-anchor="middle" fill="#1a2026" font-size="13">the length-3 consecutive path 1-2-3 (accent edges).</text>
+</svg>

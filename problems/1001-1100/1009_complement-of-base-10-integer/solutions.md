@@ -15,6 +15,8 @@ ones and adding one extends it by one bit, so the mask is always
 `n ^ mask` is then the complement — for `n = 5` the mask climbs to `111`
 and `101 ^ 111 = 2`.
 
+![For n = 5 the mask climbs 1, 3, 7 until 111 covers the window, and 101 ^ 111 = 010 flips exactly the three window bits to give 2.](figures/solution-ones-window-mask.svg)
+
 Starting the window at a single bit handles `n = 0` for free: the loop
 body never runs (`1` is not narrower than `0`), so `mask` stays `1` and
 `0 ^ 1 = 1` — the corner case the hint calls out. At the top of the range

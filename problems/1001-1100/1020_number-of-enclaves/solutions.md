@@ -13,6 +13,8 @@ land neighbours that haven't been visited yet. Diagonal neighbours never
 count, so a region touching the boundary only corner-to-corner is not
 reached by this fill.
 
+![On the 4 x 4 grid the boundary scan seeds only (r1, c0); the fill reaches no other land, leaving the three interior 1s untouched for the answer 3.](figures/solution-boundary-flood-fill.svg)
+
 Once the fill drains, every land cell it touched can walk off the grid;
 every land cell it never touched cannot, no matter how many moves it takes,
 because a land path to the boundary would have been exactly the path the

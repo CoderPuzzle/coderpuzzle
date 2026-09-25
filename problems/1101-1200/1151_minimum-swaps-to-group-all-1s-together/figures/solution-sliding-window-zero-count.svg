@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 312" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="312" fill="#ffffff"/>
+  <!-- data = [1,0,1,0,1], ones = 3; three windows of length 3 in rows at y=70/138/206; cells 46px at x=130+50i; a zero inside the window is filled #dbe4fb -->
+  <text x="48" y="44" font-weight="600" fill="#1a2026">ones = sum(data) = 3 — every window of length 3 is scored by its zeros</text>
+  <!-- row i = 0 -->
+  <g text-anchor="end" font-size="12" fill="#5c6b76">
+    <text x="112" y="95">i = 0</text><text x="112" y="163">i = 1</text><text x="112" y="231">i = 2</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="#f0f3f7">
+    <rect x="280" y="70" width="46" height="40"/><rect x="330" y="70" width="46" height="40"/>
+    <rect x="130" y="138" width="46" height="40"/><rect x="330" y="138" width="46" height="40"/>
+    <rect x="130" y="206" width="46" height="40"/><rect x="180" y="206" width="46" height="40"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="#ffffff">
+    <rect x="130" y="70" width="46" height="40"/><rect x="180" y="70" width="46" height="40"/><rect x="230" y="70" width="46" height="40"/>
+    <rect x="180" y="138" width="46" height="40"/><rect x="230" y="138" width="46" height="40"/><rect x="280" y="138" width="46" height="40"/>
+    <rect x="230" y="206" width="46" height="40"/><rect x="280" y="206" width="46" height="40"/><rect x="330" y="206" width="46" height="40"/>
+  </g>
+  <rect x="180" y="70" width="46" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <rect x="180" y="138" width="46" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <rect x="280" y="138" width="46" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <rect x="280" y="206" width="46" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="153" y="95" fill="#1a2026">1</text><text x="203" y="95" fill="#4169E1">0</text><text x="253" y="95" fill="#1a2026">1</text>
+    <text x="303" y="95" fill="#9aa7b2">0</text><text x="353" y="95" fill="#9aa7b2">1</text>
+    <text x="153" y="163" fill="#9aa7b2">1</text><text x="203" y="163" fill="#4169E1">0</text><text x="253" y="163" fill="#1a2026">1</text>
+    <text x="303" y="163" fill="#4169E1">0</text><text x="353" y="163" fill="#9aa7b2">1</text>
+    <text x="153" y="231" fill="#9aa7b2">1</text><text x="203" y="231" fill="#9aa7b2">0</text><text x="253" y="231" fill="#1a2026">1</text>
+    <text x="303" y="231" fill="#4169E1">0</text><text x="353" y="231" fill="#1a2026">1</text>
+  </g>
+  <g font-size="12.5">
+    <text x="430" y="95" fill="#4169E1" font-weight="600">zeros = 1 <tspan fill="#5c6b76" font-weight="400">← min</tspan></text>
+    <text x="430" y="163" fill="#1a2026">zeros = 2</text>
+    <text x="430" y="231" fill="#4169E1" font-weight="600">zeros = 1 <tspan fill="#5c6b76" font-weight="400">← min</tspan></text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="253" y="127">slide: −0 (1 leaves), +1 (0 enters) → zeros 1 → 2</text>
+    <text x="253" y="195">slide: −1 (0 leaves), +0 (1 enters) → zeros 2 → 1</text>
+  </g>
+  <text x="300" y="278" text-anchor="middle" font-size="13" fill="#1a2026">Each window needs one swap per zero inside it; the best window of length 3</text>
+  <text x="300" y="296" text-anchor="middle" font-size="13" fill="#1a2026">contains just <tspan fill="#4169E1" font-weight="600">1</tspan> zero — one swap groups all three 1s (e.g. into [1, 1, 1, 0, 0]).</text>
+</svg>

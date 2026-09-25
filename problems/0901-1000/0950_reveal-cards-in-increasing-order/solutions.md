@@ -18,6 +18,8 @@ move its bottom card to its top, then push the new card on the front. The
 largest card starts the deque alone; the smallest ends on top of the
 finished deck, which is then read front to back.
 
+![Sorting [17,13,11,2,3,5,7] and placing 17 down to 2, each step rotates the deque's bottom card to the top before pushing the next smaller card on the front, ending at the answer [2,13,3,11,5,17,7].](figures/solution-reverse-deque-rotation.svg)
+
 Why the result is correct follows by induction, unwound from the last
 reveal: after the cards `k..n` of the sorted order are placed, the deque is
 precisely the state whose next reveals, with the intervening bottom-moves,

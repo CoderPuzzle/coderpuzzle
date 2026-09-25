@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- arr = [1,0,2,3,0,4,5,0]; read i from 7 down, write j from 10 = 7 + zeros(3); slots 8-10 are off the end -->
+  <!-- i labels over the read row -->
+  <g text-anchor="middle" font-size="10.5" fill="#9aa7b2">
+    <text x="54" y="46">i = 0</text><text x="110" y="46">i = 1</text><text x="166" y="46">i = 2</text>
+    <text x="222" y="46">i = 3</text><text x="278" y="46">i = 4</text><text x="334" y="46">i = 5</text>
+    <text x="390" y="46">i = 6</text><text x="446" y="46">i = 7</text>
+  </g>
+  <!-- read row: original arr -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="30" y="56" width="48" height="40"/><rect x="142" y="56" width="48" height="40"/>
+    <rect x="198" y="56" width="48" height="40"/><rect x="310" y="56" width="48" height="40"/>
+    <rect x="366" y="56" width="48" height="40"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="86" y="56" width="48" height="40"/><rect x="254" y="56" width="48" height="40"/>
+    <rect x="422" y="56" width="48" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14.5">
+    <text x="54" y="82" fill="#1a2026">1</text><text x="110" y="82" fill="#1a2026">0</text>
+    <text x="166" y="82" fill="#1a2026">2</text><text x="222" y="82" fill="#1a2026">3</text>
+    <text x="278" y="82" fill="#1a2026">0</text><text x="334" y="82" fill="#1a2026">4</text>
+    <text x="390" y="82" fill="#1a2026">5</text><text x="446" y="82" fill="#1a2026">0</text>
+  </g>
+  <!-- write arrows: gray = plain element, accent = zero written twice, dashed = falls off the end -->
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <line x1="54" y1="96" x2="54" y2="202" marker-end="url(#arrow)"/>
+    <line x1="166" y1="96" x2="222" y2="202" marker-end="url(#arrow)"/>
+    <line x1="222" y1="96" x2="278" y2="202" marker-end="url(#arrow)"/>
+    <line x1="334" y1="96" x2="446" y2="202" marker-end="url(#arrow)"/>
+    <line x1="390" y1="96" x2="502" y2="202" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="none">
+    <line x1="110" y1="96" x2="110" y2="202" marker-end="url(#arrowA)"/>
+    <line x1="114" y1="96" x2="170" y2="200" marker-end="url(#arrowA)"/>
+    <line x1="282" y1="96" x2="338" y2="202" marker-end="url(#arrowA)"/>
+    <line x1="286" y1="96" x2="394" y2="200" marker-end="url(#arrowA)"/>
+    <line x1="450" y1="96" x2="562" y2="202" stroke-dasharray="5 4" marker-end="url(#arrowA)"/>
+    <line x1="442" y1="96" x2="610" y2="204" stroke-dasharray="5 4" marker-end="url(#arrowA)"/>
+  </g>
+  <!-- write row: final arr in slots 0-7, dashed slots 8-10 hold what fell off -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="30" y="206" width="48" height="40"/><rect x="86" y="206" width="48" height="40"/>
+    <rect x="142" y="206" width="48" height="40"/><rect x="198" y="206" width="48" height="40"/>
+    <rect x="254" y="206" width="48" height="40"/><rect x="310" y="206" width="48" height="40"/>
+    <rect x="366" y="206" width="48" height="40"/><rect x="422" y="206" width="48" height="40"/>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="4 3">
+    <rect x="478" y="206" width="48" height="40"/><rect x="534" y="206" width="48" height="40"/>
+    <rect x="590" y="206" width="48" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14.5">
+    <text x="54" y="232" fill="#1a2026">1</text><text x="110" y="232" fill="#1a2026">0</text>
+    <text x="166" y="232" fill="#1a2026">0</text><text x="222" y="232" fill="#1a2026">2</text>
+    <text x="278" y="232" fill="#1a2026">3</text><text x="334" y="232" fill="#1a2026">0</text>
+    <text x="390" y="232" fill="#1a2026">0</text><text x="446" y="232" fill="#1a2026">4</text>
+  </g>
+  <g text-anchor="middle" font-size="14.5" fill="#9aa7b2">
+    <text x="502" y="232">5</text><text x="558" y="232">0</text><text x="614" y="232">0</text>
+  </g>
+  <text x="614" y="266" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">j starts at 10</text>
+  <text x="340" y="296" text-anchor="middle" fill="#1a2026" font-size="13">i reads from 7 down to 0; j writes leftward from <tspan fill="#4169E1" font-weight="600">10 = 7 + 3 zeros</tspan>, so every 0 lands twice.</text>
+  <text x="340" y="316" text-anchor="middle" fill="#1a2026" font-size="13">Writes with j ≥ 8 fall off the end (5 and the last 0 drop); arr ends <tspan fill="#4169E1" font-weight="600">[1, 0, 0, 2, 3, 0, 0, 4]</tspan>.</text>
+</svg>

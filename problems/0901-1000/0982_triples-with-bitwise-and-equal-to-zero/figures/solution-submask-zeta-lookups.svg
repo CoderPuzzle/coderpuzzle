@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="384" fill="#ffffff"/>
+  <!-- nums=[2,1,3]; rows: f (pair-AND counts), then h after the zeta pass per bit 0,1,2;
+       cols = masks 000..111; cells 48x30 at x=170+53c, y=68+38r; lit cols 4-6 are the
+       complement lookups ~2&7=5, ~1&7=6, ~3&7=4 -->
+  <text x="320" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5">nums = [2, 1, 3] — 3-bit view of the 16-bit table</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="194" y="58">000</text><text x="247" y="58">001</text><text x="300" y="58">010</text><text x="353" y="58">011</text>
+    <text x="406" y="58">100</text><text x="459" y="58">101</text><text x="512" y="58">110</text><text x="565" y="58">111</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="170" y="68" width="48" height="30"/><rect x="223" y="68" width="48" height="30"/><rect x="276" y="68" width="48" height="30"/><rect x="329" y="68" width="48" height="30"/>
+    <rect x="382" y="68" width="48" height="30"/><rect x="435" y="68" width="48" height="30"/><rect x="488" y="68" width="48" height="30"/><rect x="541" y="68" width="48" height="30"/>
+    <rect x="170" y="106" width="48" height="30"/><rect x="223" y="106" width="48" height="30"/><rect x="276" y="106" width="48" height="30"/><rect x="329" y="106" width="48" height="30"/>
+    <rect x="382" y="106" width="48" height="30"/><rect x="435" y="106" width="48" height="30"/><rect x="488" y="106" width="48" height="30"/><rect x="541" y="106" width="48" height="30"/>
+    <rect x="170" y="144" width="48" height="30"/><rect x="223" y="144" width="48" height="30"/><rect x="276" y="144" width="48" height="30"/><rect x="329" y="144" width="48" height="30"/>
+    <rect x="382" y="144" width="48" height="30"/><rect x="435" y="144" width="48" height="30"/><rect x="488" y="144" width="48" height="30"/><rect x="541" y="144" width="48" height="30"/>
+    <rect x="170" y="182" width="48" height="30"/><rect x="223" y="182" width="48" height="30"/><rect x="276" y="182" width="48" height="30"/><rect x="329" y="182" width="48" height="30"/>
+    <rect x="435" y="182" width="48" height="30"/><rect x="488" y="182" width="48" height="30"/><rect x="541" y="182" width="48" height="30"/>
+  </g>
+  <rect x="382" y="182" width="48" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="435" y="182" width="48" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="488" y="182" width="48" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="158" y="88">f (pairs)</text>
+    <text x="158" y="126">+ bit 0</text>
+    <text x="158" y="164">+ bit 1</text>
+    <text x="158" y="202" fill="#4169E1" font-weight="600">h (all bits)</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5">
+    <text x="194" y="88" fill="#1a2026">2</text><text x="247" y="88" fill="#1a2026">3</text><text x="300" y="88" fill="#1a2026">3</text><text x="353" y="88" fill="#1a2026">1</text>
+    <text x="406" y="88" fill="#9aa7b2" font-weight="400">0</text><text x="459" y="88" fill="#9aa7b2" font-weight="400">0</text><text x="512" y="88" fill="#9aa7b2" font-weight="400">0</text><text x="565" y="88" fill="#9aa7b2" font-weight="400">0</text>
+    <text x="194" y="126" fill="#1a2026">2</text><text x="247" y="126" fill="#4169E1">5</text><text x="300" y="126" fill="#1a2026">3</text><text x="353" y="126" fill="#4169E1">4</text>
+    <text x="406" y="126" fill="#9aa7b2" font-weight="400">0</text><text x="459" y="126" fill="#9aa7b2" font-weight="400">0</text><text x="512" y="126" fill="#9aa7b2" font-weight="400">0</text><text x="565" y="126" fill="#9aa7b2" font-weight="400">0</text>
+    <text x="194" y="164" fill="#1a2026">2</text><text x="247" y="164" fill="#1a2026">5</text><text x="300" y="164" fill="#4169E1">5</text><text x="353" y="164" fill="#4169E1">9</text>
+    <text x="406" y="164" fill="#9aa7b2" font-weight="400">0</text><text x="459" y="164" fill="#9aa7b2" font-weight="400">0</text><text x="512" y="164" fill="#9aa7b2" font-weight="400">0</text><text x="565" y="164" fill="#9aa7b2" font-weight="400">0</text>
+    <text x="194" y="202" fill="#1a2026">2</text><text x="247" y="202" fill="#1a2026">5</text><text x="300" y="202" fill="#1a2026">5</text><text x="353" y="202" fill="#1a2026">9</text>
+    <text x="406" y="202" fill="#4169E1">2</text><text x="459" y="202" fill="#4169E1">5</text><text x="512" y="202" fill="#4169E1">5</text><text x="565" y="202" fill="#4169E1">9</text>
+  </g>
+  <text x="320" y="238" text-anchor="middle" fill="#5c6b76" font-size="12">each pass: for every mask m carrying the bit, h[m] += h[m without the bit]</text>
+  <g font-size="13" fill="#1a2026">
+    <text x="60" y="272">k = 0: nums[k] = 2 (010) → ~2 &amp; 7 = 101 = 5 → <tspan fill="#4169E1" font-weight="600">h[5] = 5</tspan></text>
+    <text x="60" y="296">k = 1: nums[k] = 1 (001) → ~1 &amp; 7 = 110 = 6 → <tspan fill="#4169E1" font-weight="600">h[6] = 5</tspan></text>
+    <text x="60" y="320">k = 2: nums[k] = 3 (011) → ~3 &amp; 7 = 100 = 4 → <tspan fill="#4169E1" font-weight="600">h[4] = 2</tspan></text>
+  </g>
+  <text x="320" y="352" text-anchor="middle" fill="#1a2026" font-size="13">One accumulating pass per bit turns f into the submask sums h;</text>
+  <text x="320" y="372" text-anchor="middle" fill="#1a2026" font-size="13">the three complement lookups sum to 5 + 5 + 2 = <tspan fill="#4169E1" font-weight="600">12</tspan>, the statement's answer.</text>
+</svg>

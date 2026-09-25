@@ -29,4 +29,8 @@ lows of `[6,0,8,2,1,5]` sit at indices 0 and 1; scanning back, `j = 5` (the 5) p
 and answers 0; an all-equal array keeps only index 0 and pops it at the last
 index for width `n - 1`.
 
+![On `nums = [6,0,8,2,1,5]` the stack holds just the record lows at indices
+0 and 1; scanning back, `j = 5` pops the `0` at index 1 for the widest ramp
+`5 − 1 = 4`.](figures/solution-record-low-stack-pop.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

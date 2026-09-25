@@ -11,6 +11,8 @@ key it equals the original key plus the sum of all greater keys, so the walk
 writes it straight back as the node's new value and moves on. No second pass,
 no per-node search through the rest of the tree.
 
+![On Example 1 the reverse-inorder walk visits 8, 7, 6, 5, 4, 3, 2, 1, 0 with the accumulator climbing 8, 15, 21, 26, 30, 33, 35, 36, 36, so each key is overwritten by key plus the sum of greater keys — 4 becomes 30.](figures/solution-reverse-inorder-accumulator.svg)
+
 The rewrite happens in place, one value per visit, and the structure is never
 touched — the returned tree is the input tree with every key replaced. The
 traversal carries its own stack of nodes rather than recursing: the input may

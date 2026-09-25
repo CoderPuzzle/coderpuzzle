@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="344" fill="#ffffff"/>
+  <!-- grid = [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]; cells w 58 h 36; col x = 60 + 66c, row y = 50 + 44r;
+       numbers = visit order along statement path 1; bits r*4 + c, bit 11 = obstacle; full = 2047 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="126" y="50" width="58" height="36"/>
+    <rect x="192" y="50" width="58" height="36"/>
+    <rect x="258" y="50" width="58" height="36"/>
+    <rect x="60" y="94" width="58" height="36"/>
+    <rect x="126" y="94" width="58" height="36"/>
+    <rect x="192" y="94" width="58" height="36"/>
+    <rect x="258" y="94" width="58" height="36"/>
+    <rect x="60" y="138" width="58" height="36"/>
+    <rect x="126" y="138" width="58" height="36"/>
+  </g>
+  <rect x="192" y="138" width="58" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.5"/>
+  <rect x="258" y="138" width="58" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <rect x="60" y="50" width="58" height="36" fill="#4169E1"/>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="89" y="73" fill="#ffffff">1</text>
+    <text x="155" y="73" fill="#1a2026">2</text>
+    <text x="221" y="73" fill="#1a2026">3</text>
+    <text x="287" y="73" fill="#1a2026">4</text>
+    <text x="287" y="117" fill="#1a2026">5</text>
+    <text x="221" y="117" fill="#1a2026">6</text>
+    <text x="155" y="117" fill="#1a2026">7</text>
+    <text x="89" y="117" fill="#1a2026">8</text>
+    <text x="89" y="161" fill="#1a2026">9</text>
+    <text x="155" y="161" fill="#1a2026">10</text>
+    <text x="221" y="161" fill="#1a2026">11</text>
+  </g>
+  <text x="287" y="161" text-anchor="middle" font-size="13" font-weight="600" fill="#9aa7b2">-1</text>
+  <text x="60" y="206" font-size="11.5" fill="#5c6b76">numbers = visit order &#183; blue 1 = start &#183; outlined = end square (the 2) &#183; -1 = obstacle</text>
+  <text x="340" y="64" font-size="12.5" fill="#5c6b76">each visited square sets bit r&#183;4 + c</text>
+  <text x="340" y="90" font-size="12.5"><tspan fill="#5c6b76">step 5 &#8594; mask </tspan><tspan fill="#1a2026">000010001111</tspan></text>
+  <text x="340" y="114" font-size="12.5"><tspan fill="#5c6b76">step 8 &#8594; mask </tspan><tspan fill="#1a2026">001111111111</tspan></text>
+  <text x="340" y="138" font-size="12.5"><tspan fill="#5c6b76">step 11 &#8594; mask </tspan><tspan fill="#1a2026">011111111111</tspan></text>
+  <text x="340" y="162" font-size="12.5" fill="#4169E1" font-weight="600">= full = 2047 &#8212; this walk counts</text>
+  <text x="340" y="186" font-size="12" fill="#9aa7b2">obstacle bit 11 never sets</text>
+  <text x="60" y="228" font-size="12" fill="#5c6b76">mask = full after step 11 (bit 11 first):</text>
+  <g font-size="13" font-weight="600" text-anchor="middle">
+    <rect x="60" y="240" width="34" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <text x="77" y="260" fill="#9aa7b2">0</text>
+    <g fill="#dbe4fb">
+      <rect x="94" y="240" width="34" height="30"/><rect x="128" y="240" width="34" height="30"/>
+      <rect x="162" y="240" width="34" height="30"/><rect x="196" y="240" width="34" height="30"/>
+      <rect x="230" y="240" width="34" height="30"/><rect x="264" y="240" width="34" height="30"/>
+      <rect x="298" y="240" width="34" height="30"/><rect x="332" y="240" width="34" height="30"/>
+      <rect x="366" y="240" width="34" height="30"/><rect x="400" y="240" width="34" height="30"/>
+      <rect x="434" y="240" width="34" height="30"/>
+    </g>
+    <text x="111" y="260" fill="#4169E1">1</text>
+    <text x="145" y="260" fill="#4169E1">1</text>
+    <text x="179" y="260" fill="#4169E1">1</text>
+    <text x="213" y="260" fill="#4169E1">1</text>
+    <text x="247" y="260" fill="#4169E1">1</text>
+    <text x="281" y="260" fill="#4169E1">1</text>
+    <text x="315" y="260" fill="#4169E1">1</text>
+    <text x="349" y="260" fill="#4169E1">1</text>
+    <text x="383" y="260" fill="#4169E1">1</text>
+    <text x="417" y="260" fill="#4169E1">1</text>
+    <text x="451" y="260" fill="#4169E1">1</text>
+  </g>
+  <g font-size="10" fill="#9aa7b2" text-anchor="middle">
+    <text x="77" y="284">11</text>
+    <text x="111" y="284">10</text>
+    <text x="145" y="284">9</text>
+    <text x="179" y="284">8</text>
+    <text x="213" y="284">7</text>
+    <text x="247" y="284">6</text>
+    <text x="281" y="284">5</text>
+    <text x="315" y="284">4</text>
+    <text x="349" y="284">3</text>
+    <text x="383" y="284">2</text>
+    <text x="417" y="284">1</text>
+    <text x="451" y="284">0</text>
+  </g>
+  <text x="320" y="314" text-anchor="middle" font-size="13" fill="#1a2026">Stepping onto the end square with the mask at full &#8212; <tspan fill="#4169E1" font-weight="600">2047</tspan>, every non-obstacle</text>
+  <text x="320" y="332" text-anchor="middle" font-size="13" fill="#1a2026">bit set &#8212; counts this walk; the DFS backtrack finds exactly <tspan fill="#4169E1" font-weight="600">two</tspan> such walks.</text>
+</svg>

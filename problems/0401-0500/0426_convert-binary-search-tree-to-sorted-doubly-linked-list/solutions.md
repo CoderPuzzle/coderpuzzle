@@ -15,6 +15,8 @@ smallest — head and tail are one link apart, as a circular list demands.
 The returned head is the first-collected node, the tree's minimum; an
 empty tree has no ring and returns `null` (`[]` on the wire).
 
+![On root = [4,2,5,1,3], the explicit-stack walk pops 1, 2, 3, 4, 5 and threads solid successor and dashed predecessor links between every neighbor pair, then closes the ring with 5.right = 1 and 1.left = 5.](figures/solution-inorder-ring-threading.svg)
+
 Each node is pushed and popped exactly once and each ring node created
 once; the stack is at most the tree's height.
 

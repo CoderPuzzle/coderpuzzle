@@ -19,6 +19,10 @@ children have height 0 — equal — so a lone deepest leaf answers itself.
 Because judging a node needs both children's heights, the walk is
 post-order, children before the node.
 
+![On root = [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4], each node is annotated
+with its bottom-up subtree height, and the answer rises from the deepest
+leaves 7 and 4 through the deeper child until it settles at node 2.](figures/solution-height-propagation.svg)
+
 The answer bubbling out of a merge is always the lowest common ancestor of
 that subtree's deepest leaves: the rule re-roots exactly where those leaves
 split into both sides, and passing through above leaves the chosen node

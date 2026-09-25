@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 494" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="494" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- 6x6 board, squares numbered boustrophedon from bottom-left; cells 46x34 at (60+60c, 56+46r);
+       centre value = BFS level (fewest rolls from square 1); teleports: ladders 2->15 and 14->35, snake 17->13 -->
+  <text x="60" y="40" fill="#5c6b76" font-size="12">boustrophedon numbering &#8212; corner: square, centre: rolls from square 1</text>
+  <rect x="180" y="56" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="240" y="56" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="300" y="56" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="360" y="56" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="60" y="102" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="120" y="102" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="180" y="102" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="240" y="102" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="300" y="102" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="360" y="102" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="60" y="148" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="120" y="148" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="180" y="148" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="240" y="148" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="300" y="148" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="360" y="148" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="240" y="194" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="360" y="194" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="60" y="240" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="120" y="240" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="180" y="240" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="240" y="240" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="300" y="240" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="360" y="240" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="180" y="286" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="240" y="286" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="300" y="286" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="360" y="286" width="46" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.1"/>
+  <rect x="60" y="56" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="120" y="56" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="60" y="194" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="120" y="194" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="180" y="194" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="300" y="194" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="60" y="286" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="120" y="286" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="185" y="67.5" fill="#5c6b76" font-size="9.5">34</text>
+  <text x="203" y="79" text-anchor="middle">5</text>
+  <text x="245" y="67.5" fill="#5c6b76" font-size="9.5">33</text>
+  <text x="263" y="79" text-anchor="middle">4</text>
+  <text x="305" y="67.5" fill="#5c6b76" font-size="9.5">32</text>
+  <text x="323" y="79" text-anchor="middle">4</text>
+  <text x="365" y="67.5" fill="#5c6b76" font-size="9.5">31</text>
+  <text x="383" y="79" text-anchor="middle">4</text>
+  <text x="65" y="113.5" fill="#5c6b76" font-size="9.5">25</text>
+  <text x="83" y="125" text-anchor="middle">3</text>
+  <text x="125" y="113.5" fill="#5c6b76" font-size="9.5">26</text>
+  <text x="143" y="125" text-anchor="middle">3</text>
+  <text x="185" y="113.5" fill="#5c6b76" font-size="9.5">27</text>
+  <text x="203" y="125" text-anchor="middle">3</text>
+  <text x="245" y="113.5" fill="#5c6b76" font-size="9.5">28</text>
+  <text x="263" y="125" text-anchor="middle">4</text>
+  <text x="305" y="113.5" fill="#5c6b76" font-size="9.5">29</text>
+  <text x="323" y="125" text-anchor="middle">4</text>
+  <text x="365" y="113.5" fill="#5c6b76" font-size="9.5">30</text>
+  <text x="383" y="125" text-anchor="middle">4</text>
+  <text x="65" y="159.5" fill="#5c6b76" font-size="9.5">24</text>
+  <text x="83" y="171" text-anchor="middle">3</text>
+  <text x="125" y="159.5" fill="#5c6b76" font-size="9.5">23</text>
+  <text x="143" y="171" text-anchor="middle">3</text>
+  <text x="185" y="159.5" fill="#5c6b76" font-size="9.5">22</text>
+  <text x="203" y="171" text-anchor="middle">3</text>
+  <text x="245" y="159.5" fill="#5c6b76" font-size="9.5">21</text>
+  <text x="263" y="171" text-anchor="middle">2</text>
+  <text x="305" y="159.5" fill="#5c6b76" font-size="9.5">20</text>
+  <text x="323" y="171" text-anchor="middle">2</text>
+  <text x="365" y="159.5" fill="#5c6b76" font-size="9.5">19</text>
+  <text x="383" y="171" text-anchor="middle">2</text>
+  <text x="245" y="205.5" fill="#5c6b76" font-size="9.5">16</text>
+  <text x="263" y="217" text-anchor="middle">2</text>
+  <text x="365" y="205.5" fill="#5c6b76" font-size="9.5">18</text>
+  <text x="383" y="217" text-anchor="middle">2</text>
+  <text x="65" y="251.5" fill="#5c6b76" font-size="9.5">12</text>
+  <text x="83" y="263" text-anchor="middle">2</text>
+  <text x="125" y="251.5" fill="#5c6b76" font-size="9.5">11</text>
+  <text x="143" y="263" text-anchor="middle">2</text>
+  <text x="185" y="251.5" fill="#5c6b76" font-size="9.5">10</text>
+  <text x="203" y="263" text-anchor="middle">2</text>
+  <text x="245" y="251.5" fill="#5c6b76" font-size="9.5">9</text>
+  <text x="263" y="263" text-anchor="middle">2</text>
+  <text x="305" y="251.5" fill="#5c6b76" font-size="9.5">8</text>
+  <text x="323" y="263" text-anchor="middle">2</text>
+  <text x="365" y="251.5" fill="#5c6b76" font-size="9.5">7</text>
+  <text x="383" y="263" text-anchor="middle">1</text>
+  <text x="185" y="297.5" fill="#5c6b76" font-size="9.5">3</text>
+  <text x="203" y="309" text-anchor="middle">1</text>
+  <text x="245" y="297.5" fill="#5c6b76" font-size="9.5">4</text>
+  <text x="263" y="309" text-anchor="middle">1</text>
+  <text x="305" y="297.5" fill="#5c6b76" font-size="9.5">5</text>
+  <text x="323" y="309" text-anchor="middle">1</text>
+  <text x="365" y="297.5" fill="#5c6b76" font-size="9.5">6</text>
+  <text x="383" y="309" text-anchor="middle">1</text>
+  <text x="65" y="67.5" fill="#5c6b76" font-size="9.5">36</text>
+  <text x="83" y="79" text-anchor="middle" fill="#4169E1" font-weight="600">4</text>
+  <text x="125" y="67.5" fill="#5c6b76" font-size="9.5">35</text>
+  <text x="143" y="79" text-anchor="middle" fill="#4169E1" font-weight="600">3</text>
+  <text x="65" y="205.5" fill="#5c6b76" font-size="9.5">13</text>
+  <text x="83" y="217" text-anchor="middle" fill="#4169E1" font-weight="600">2</text>
+  <text x="125" y="205.5" fill="#5c6b76" font-size="9.5">14</text>
+  <text x="143" y="217" text-anchor="middle" fill="#4169E1" font-weight="600">3</text>
+  <text x="185" y="205.5" fill="#5c6b76" font-size="9.5">15</text>
+  <text x="203" y="217" text-anchor="middle" fill="#4169E1" font-weight="600">1</text>
+  <text x="305" y="205.5" fill="#5c6b76" font-size="9.5">17</text>
+  <text x="323" y="217" text-anchor="middle" fill="#4169E1" font-weight="600">2</text>
+  <text x="65" y="297.5" fill="#5c6b76" font-size="9.5">1</text>
+  <text x="83" y="309" text-anchor="middle" fill="#4169E1" font-weight="600">0</text>
+  <text x="125" y="297.5" fill="#5c6b76" font-size="9.5">2</text>
+  <text x="143" y="309" text-anchor="middle" fill="#4169E1" font-weight="600">1</text>
+  <path d="M 143 286 L 143 280 L 173 280 L 173 238 L 190 238 L 190 228" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <path d="M 323 194 L 323 188 L 50 188 L 50 211 L 60 211" fill="none" stroke="#5c6b76" stroke-width="2" marker-end="url(#arrowG)"/>
+  <path d="M 166 211 L 171 211 L 171 97 L 158 97 L 158 90" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="430" y="74" fill="#5c6b76" font-size="12.5">centre = fewest rolls</text>
+  <text x="430" y="92" fill="#5c6b76" font-size="12.5">from square 1 (BFS)</text>
+  <path d="M 434 116 L 486 116" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="500" y="120" fill="#5c6b76" font-size="12">ladder (forced)</text>
+  <path d="M 434 140 L 486 140" stroke="#5c6b76" stroke-width="2" marker-end="url(#arrowG)"/>
+  <text x="500" y="144" fill="#5c6b76" font-size="12">snake (forced)</text>
+  <rect x="432" y="160" width="24" height="18" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="466" y="174" fill="#5c6b76" font-size="12">4-roll route</text>
+  <!-- route strip: roll landings (dark arrows) and forced teleports (accent arrows) -->
+  <rect x="48" y="380" width="40" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="68" y="403" text-anchor="middle" fill="#1a2026" font-weight="600">1</text>
+  <rect x="122" y="380" width="40" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="142" y="403" text-anchor="middle" fill="#1a2026" font-weight="600">2</text>
+  <rect x="196" y="380" width="40" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="216" y="403" text-anchor="middle" fill="#1a2026" font-weight="600">15</text>
+  <rect x="270" y="380" width="40" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="290" y="403" text-anchor="middle" fill="#1a2026" font-weight="600">17</text>
+  <rect x="344" y="380" width="40" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="364" y="403" text-anchor="middle" fill="#1a2026" font-weight="600">13</text>
+  <rect x="418" y="380" width="40" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="438" y="403" text-anchor="middle" fill="#1a2026" font-weight="600">14</text>
+  <rect x="492" y="380" width="40" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="512" y="403" text-anchor="middle" fill="#1a2026" font-weight="600">35</text>
+  <rect x="566" y="380" width="40" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="586" y="403" text-anchor="middle" fill="#1a2026" font-weight="600">36</text>
+  <path d="M 92 398 L 118 398" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="105" y="374" text-anchor="middle" fill="#5c6b76" font-size="11">roll 1</text>
+  <path d="M 240 398 L 266 398" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="253" y="374" text-anchor="middle" fill="#5c6b76" font-size="11">roll 2</text>
+  <path d="M 388 398 L 414 398" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="401" y="374" text-anchor="middle" fill="#5c6b76" font-size="11">roll 3</text>
+  <path d="M 536 398 L 562 398" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="549" y="374" text-anchor="middle" fill="#5c6b76" font-size="11">roll 4</text>
+  <text x="68" y="374" text-anchor="middle" fill="#5c6b76" font-size="11">start</text>
+  <text x="586" y="374" text-anchor="middle" fill="#5c6b76" font-size="11">goal</text>
+  <path d="M 166 398 L 192 398" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrowB)"/>
+  <text x="179" y="434" text-anchor="middle" fill="#4169E1" font-size="11.5">ladder</text>
+  <path d="M 314 398 L 340 398" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrowB)"/>
+  <text x="327" y="434" text-anchor="middle" fill="#4169E1" font-size="11.5">snake</text>
+  <path d="M 462 398 L 488 398" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrowB)"/>
+  <text x="475" y="434" text-anchor="middle" fill="#4169E1" font-size="11.5">ladder</text>
+  <text x="330" y="458" text-anchor="middle" fill="#1a2026" font-size="13">Rolls land on 2, 17 and 14; each landing's teleport (to 15, 13, 35) is forced and free,</text>
+  <text x="330" y="478" text-anchor="middle" fill="#1a2026" font-size="13">so the fourth roll reaches square 36 &#8212; the BFS level of 36, and the answer, is <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

@@ -6,6 +6,8 @@ Let `dp[i][j]` be the minimum deleted-ASCII cost of making the prefixes `s1[:i]`
 
 For an interior cell there are two cases. If the current characters agree, keeping both costs nothing and the problem reduces to the shorter prefixes: `dp[i][j] = dp[i-1][j-1]`. Otherwise at least one of the two characters must go — no pair of equal final strings can retain both ends of a mismatch — so the recurrence takes the cheaper of deleting `s1[i-1]` (paying its ASCII value and moving to `dp[i-1][j]`) or deleting `s2[j-1]` (paying its value and moving to `dp[i][j-1]`). Equivalently, every solution keeps some common subsequence and pays the total ASCII weight of everything else; the table explores all such alignments.
 
+![Filling the 4x4 dp table for s1 = "sea", s2 = "eat": the gray base row and column carry ASCII prefix sums, the 'ea' matches copy 115 diagonally for free, and the bottom-right cell 231 = 115 + 116 deletes s and t.](figures/solution-prefix-dp-table.svg)
+
 The code fills the full table of one row per prefix length of `s1`, seeded with the base row, and returns the bottom-right cell. Both strings are non-empty per the constraints, so nothing beyond the base row and column needs special handling.
 
 **Complexity:** `O(m · n)` time, `O(m · n)` space.

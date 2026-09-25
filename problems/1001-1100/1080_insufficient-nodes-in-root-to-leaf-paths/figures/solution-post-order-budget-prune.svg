@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="372" fill="#ffffff"/>
+  <!-- tree = [1,2,3,4,-99,-99,7,8,9,-99,-99,12,13,-99,14], limit = 1; circles r=18, "rem N" = limit minus ancestor values -->
+  <text x="339" y="22" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">limit = 1</text>
+  <!-- edges; muted = edge into a pruned subtree -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <line x1="331" y1="72" x2="184" y2="110"/><line x1="347" y1="72" x2="494" y2="110"/>
+    <line x1="170" y1="142" x2="104" y2="180"/><line x1="182" y1="142" x2="248" y2="180" stroke="#9aa7b2"/>
+    <line x1="496" y1="142" x2="428" y2="180" stroke="#9aa7b2"/><line x1="508" y1="142" x2="576" y2="180"/>
+    <line x1="91" y1="212" x2="61" y2="250"/><line x1="103" y1="212" x2="133" y2="250"/>
+    <line x1="249" y1="212" x2="219" y2="250" stroke="#9aa7b2"/><line x1="261" y1="212" x2="291" y2="250" stroke="#9aa7b2"/>
+    <line x1="415" y1="212" x2="385" y2="250" stroke="#9aa7b2"/><line x1="427" y1="212" x2="457" y2="250" stroke="#9aa7b2"/>
+    <line x1="577" y1="212" x2="547" y2="250" stroke="#9aa7b2"/><line x1="589" y1="212" x2="619" y2="250"/>
+  </g>
+  <!-- surviving nodes -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="339" cy="56" r="18"/><circle cx="176" cy="126" r="18"/><circle cx="502" cy="126" r="18"/>
+    <circle cx="97" cy="196" r="18"/><circle cx="583" cy="196" r="18"/>
+    <circle cx="56" cy="266" r="18"/><circle cx="138" cy="266" r="18"/><circle cx="624" cy="266" r="18"/>
+  </g>
+  <!-- pruned nodes: leaves below budget and the two -99 parents left childless -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="4 3">
+    <circle cx="255" cy="196" r="18"/><circle cx="421" cy="196" r="18"/>
+    <circle cx="214" cy="266" r="18"/><circle cx="296" cy="266" r="18"/>
+    <circle cx="380" cy="266" r="18"/><circle cx="462" cy="266" r="18"/><circle cx="542" cy="266" r="18"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5">
+    <text x="339" y="61" fill="#1a2026">1</text><text x="176" y="131" fill="#1a2026">2</text>
+    <text x="502" y="131" fill="#1a2026">3</text><text x="97" y="201" fill="#1a2026">4</text>
+    <text x="583" y="201" fill="#1a2026">7</text><text x="56" y="271" fill="#1a2026">8</text>
+    <text x="138" y="271" fill="#1a2026">9</text><text x="624" y="271" fill="#1a2026">14</text>
+    <text x="255" y="201" fill="#9aa7b2">-99</text><text x="421" y="201" fill="#9aa7b2">-99</text>
+    <text x="214" y="271" fill="#9aa7b2">-99</text><text x="296" y="271" fill="#9aa7b2">-99</text>
+    <text x="380" y="271" fill="#9aa7b2">12</text><text x="462" y="271" fill="#9aa7b2">13</text>
+    <text x="542" y="271" fill="#9aa7b2">-99</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5">
+    <text x="339" y="89" fill="#5c6b76">rem 1</text>
+    <text x="176" y="159" fill="#5c6b76">rem 0</text><text x="502" y="159" fill="#5c6b76">rem 0</text>
+    <text x="97" y="229" fill="#5c6b76">rem -2</text><text x="583" y="229" fill="#5c6b76">rem -3</text>
+    <text x="56" y="299" fill="#5c6b76">rem -6</text><text x="138" y="299" fill="#5c6b76">rem -6</text>
+    <text x="624" y="299" fill="#5c6b76">rem -10</text>
+    <text x="255" y="229" fill="#9aa7b2">rem -2</text><text x="421" y="229" fill="#9aa7b2">rem -3</text>
+    <text x="214" y="299" fill="#9aa7b2">rem 97</text><text x="296" y="299" fill="#9aa7b2">rem 97</text>
+    <text x="380" y="299" fill="#9aa7b2">rem 96</text><text x="462" y="299" fill="#9aa7b2">rem 96</text>
+    <text x="542" y="299" fill="#9aa7b2">rem -10</text>
+  </g>
+  <text x="330" y="324" text-anchor="middle" fill="#1a2026" font-size="13">Carry remaining = limit - ancestor values down; a leaf survives only if its value ≥ remaining.</text>
+  <text x="330" y="342" text-anchor="middle" fill="#1a2026" font-size="13">Leaves -99 &lt; 97, 12 &lt; 96 and -99 &lt; -10 die, so <tspan fill="#4169E1" font-weight="600">both -99 nodes</tspan> lose every child and vanish;</text>
+  <text x="330" y="360" text-anchor="middle" fill="#1a2026" font-size="13">4 keeps <tspan fill="#4169E1" font-weight="600">8 and 9</tspan> (both ≥ -6), 7 keeps 14, and the root survives.</text>
+</svg>

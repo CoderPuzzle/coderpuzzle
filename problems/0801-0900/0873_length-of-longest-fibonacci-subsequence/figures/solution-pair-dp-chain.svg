@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- arr = [1,2,3,4,5,6,7,8]; cells 54x36 at (96+62i, 36), index labels under each; the array doubles as the value-to-index map -->
+  <text x="56" y="58" text-anchor="middle" fill="#5c6b76" font-size="12.5">arr</text>
+  <g stroke="#9aa7b2" stroke-width="1.3" fill="#f0f3f7">
+    <rect x="279" y="36" width="54" height="36"/>
+    <rect x="403" y="36" width="54" height="36"/><rect x="465" y="36" width="54" height="36"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.3" fill="#dbe4fb">
+    <rect x="93" y="36" width="54" height="36"/><rect x="155" y="36" width="54" height="36"/>
+    <rect x="217" y="36" width="54" height="36"/><rect x="341" y="36" width="54" height="36"/>
+    <rect x="527" y="36" width="54" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="120" y="59" fill="#1a2026">1</text><text x="182" y="59" fill="#1a2026">2</text>
+    <text x="244" y="59" fill="#1a2026">3</text><text x="306" y="59" fill="#9aa7b2">4</text>
+    <text x="368" y="59" fill="#1a2026">5</text><text x="430" y="59" fill="#9aa7b2">6</text>
+    <text x="492" y="59" fill="#9aa7b2">7</text><text x="554" y="59" fill="#1a2026">8</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="120" y="90">0</text><text x="182" y="90">1</text><text x="244" y="90">2</text>
+    <text x="306" y="90">3</text><text x="368" y="90">4</text><text x="430" y="90">5</text>
+    <text x="492" y="90">6</text><text x="554" y="90">7</text>
+  </g>
+  <!-- dp rows: chip | need lookup over arrow | result | chain built so far (28x24 boxes from x=456) -->
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="52" y="161">dp</text><text x="52" y="215">dp</text>
+    <text x="52" y="269">dp</text><text x="52" y="323">dp</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.3" fill="#f0f3f7">
+    <rect x="60" y="140" width="104" height="32"/><rect x="60" y="194" width="104" height="32"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.3" fill="#dbe4fb">
+    <rect x="60" y="248" width="104" height="32"/><rect x="60" y="302" width="104" height="32"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="112" y="161" fill="#5c6b76">dp[(0,1)]</text>
+    <text x="112" y="215" fill="#1a2026">dp[(1,2)]</text>
+    <text x="112" y="269" fill="#1a2026">dp[(2,4)]</text>
+    <text x="112" y="323" fill="#1a2026">dp[(4,7)]</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <line x1="196" y1="156" x2="356" y2="156" marker-end="url(#arrow)"/>
+    <line x1="196" y1="210" x2="356" y2="210" marker-end="url(#arrow)"/>
+    <line x1="196" y1="264" x2="356" y2="264" marker-end="url(#arrow)"/>
+    <line x1="196" y1="318" x2="356" y2="318" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600">
+    <text x="278" y="146" fill="#5c6b76" font-weight="400">need 2 − 1 = 1 — no k left of j</text>
+    <text x="278" y="200" fill="#4169E1">need arr[2] − arr[1] = 1 → k = 0</text>
+    <text x="278" y="254" fill="#4169E1">need arr[4] − arr[2] = 2 → k = 1</text>
+    <text x="278" y="308" fill="#4169E1">need arr[7] − arr[4] = 3 → k = 2</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="278" y="174">fresh pair</text>
+    <text x="278" y="228">dp[(0,1)] + 1</text>
+    <text x="278" y="282">dp[(1,2)] + 1</text>
+    <text x="278" y="336">dp[(2,4)] + 1</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.3" fill="#f0f3f7">
+    <rect x="396" y="140" width="36" height="32"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.3" fill="#dbe4fb">
+    <rect x="396" y="194" width="36" height="32"/><rect x="396" y="248" width="36" height="32"/>
+  </g>
+  <rect x="396" y="302" width="36" height="32" fill="#4169E1"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="414" y="162" fill="#5c6b76">2</text><text x="414" y="216" fill="#1a2026">3</text>
+    <text x="414" y="270" fill="#1a2026">4</text><text x="414" y="324" fill="#ffffff">5</text>
+  </g>
+  <!-- chain built so far, one box appended per row -->
+  <g stroke="#4169E1" stroke-width="1.2" fill="#dbe4fb">
+    <rect x="456" y="144" width="28" height="24"/><rect x="490" y="144" width="28" height="24"/>
+    <rect x="456" y="198" width="28" height="24"/><rect x="490" y="198" width="28" height="24"/>
+    <rect x="456" y="252" width="28" height="24"/><rect x="490" y="252" width="28" height="24"/>
+    <rect x="524" y="252" width="28" height="24"/>
+    <rect x="456" y="306" width="28" height="24"/><rect x="490" y="306" width="28" height="24"/>
+    <rect x="524" y="306" width="28" height="24"/><rect x="558" y="306" width="28" height="24"/>
+  </g>
+  <rect x="592" y="306" width="28" height="24" fill="#4169E1"/>
+  <rect x="524" y="198" width="28" height="24" fill="#4169E1"/>
+  <rect x="558" y="252" width="28" height="24" fill="#4169E1"/>
+  <rect x="490" y="144" width="28" height="24" fill="#4169E1"/>
+  <g text-anchor="middle" font-weight="600" font-size="12.5">
+    <text x="470" y="161" fill="#1a2026">1</text>
+    <text x="504" y="161" fill="#ffffff">2</text>
+    <text x="470" y="215" fill="#1a2026">1</text><text x="504" y="215" fill="#1a2026">2</text>
+    <text x="538" y="215" fill="#ffffff">3</text>
+    <text x="470" y="269" fill="#1a2026">1</text><text x="504" y="269" fill="#1a2026">2</text>
+    <text x="538" y="269" fill="#1a2026">3</text><text x="572" y="269" fill="#ffffff">5</text>
+    <text x="470" y="323" fill="#1a2026">1</text><text x="504" y="323" fill="#1a2026">2</text>
+    <text x="538" y="323" fill="#1a2026">3</text><text x="572" y="323" fill="#1a2026">5</text>
+    <text x="606" y="323" fill="#ffffff">8</text>
+  </g>
+  <text x="340" y="366" text-anchor="middle" fill="#1a2026" font-size="13">Each extension looks up arr[i] − arr[j] in the value-to-index map; the final pair reaches</text>
+  <text x="340" y="384" text-anchor="middle" fill="#1a2026" font-size="13">dp[(4,7)] = <tspan fill="#4169E1" font-weight="600">5</tspan>: the longest Fibonacci-like subsequence is [1, 2, 3, 5, 8].</text>
+</svg>

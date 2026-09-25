@@ -18,6 +18,8 @@ stays on the heap only while room remains. When no entry survives, either
 the tail row still has room — making it the leftmost vacant by definition,
 since no hole exists left of it — or a fresh row is appended.
 
+![After popAtStack(0) on the capacity-2 stacks [1] [3,4] [5], index 0 tops out at 1 with a punched vacant slot and the vacant-index heap holds 0, so the next push(20) refills that leftmost hole.](figures/solution-vacant-index-heap.svg)
+
 `popAtStack` on an empty or absent index answers `-1` directly. Every
 operation touches one heap position at most: amortized logarithmic despite
 the adversarial hole-punching sequences the constraints allow.

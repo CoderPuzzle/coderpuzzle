@@ -30,4 +30,6 @@ first, earliest level. Each square contributes at most six edges, so the
 whole search does constant work per cell; if a level ever arrives empty,
 square n² is unreachable and the answer is `-1`.
 
+![On the 6x6 example board every square carries its BFS level from square 1, and the route 1 → 2 → 15 → 17 → 13 → 14 → 35 → 36 shows four rolls reaching square 36.](figures/solution-bfs-board-route.svg)
+
 **Complexity:** `O(n²)` time, `O(n²)` space.

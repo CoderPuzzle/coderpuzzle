@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 252" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="252" fill="#ffffff"/>
+  <!-- barcodes=[1,1,1,2,2,2]; counts {1:3, 2:3}; output cells 64x44 at x=110+72i; badge under each cell = its step in the fill order 0,2,4,1,3,5 -->
+  <!-- count chips -->
+  <rect x="252" y="26" width="56" height="26" rx="6" fill="#dbe4fb" stroke="#4169E1" stroke-width="1"/>
+  <rect x="332" y="26" width="56" height="26" rx="6" fill="#f0f3f7" stroke="#42525e" stroke-width="1"/>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="280" y="43">1 × 3</text><text x="360" y="43">2 × 3</text>
+  </g>
+  <text x="400" y="43" fill="#5c6b76" font-size="12.5">= tied at 3 → value 1 first</text>
+  <!-- output cells -->
+  <g text-anchor="middle" font-size="11" fill="#9aa7b2">
+    <text x="142" y="82">0</text><text x="218" y="82">1</text><text x="294" y="82">2</text>
+    <text x="370" y="82">3</text><text x="446" y="82">4</text><text x="522" y="82">5</text>
+  </g>
+  <g stroke-width="1.4">
+    <rect x="110" y="90" width="64" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="182" y="90" width="64" height="44" fill="#f0f3f7" stroke="#42525e"/>
+    <rect x="254" y="90" width="64" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="326" y="90" width="64" height="44" fill="#f0f3f7" stroke="#42525e"/>
+    <rect x="398" y="90" width="64" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="470" y="90" width="64" height="44" fill="#f0f3f7" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="142" y="117">1</text><text x="218" y="117">2</text><text x="294" y="117">1</text>
+    <text x="370" y="117">2</text><text x="446" y="117">1</text><text x="522" y="117">2</text>
+  </g>
+  <!-- fill-order step badges -->
+  <text x="124" y="164" text-anchor="end" fill="#5c6b76" font-size="11.5">fill order</text>
+  <g fill="#ffffff" stroke-width="1.4">
+    <circle cx="142" cy="160" r="10" stroke="#4169E1"/><circle cx="218" cy="160" r="10" stroke="#42525e"/>
+    <circle cx="294" cy="160" r="10" stroke="#4169E1"/><circle cx="370" cy="160" r="10" stroke="#42525e"/>
+    <circle cx="446" cy="160" r="10" stroke="#4169E1"/><circle cx="522" cy="160" r="10" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-size="11" font-weight="600">
+    <text x="142" y="164" fill="#4169E1">1</text><text x="218" y="164" fill="#42525e">4</text>
+    <text x="294" y="164" fill="#4169E1">2</text><text x="370" y="164" fill="#42525e">5</text>
+    <text x="446" y="164" fill="#4169E1">3</text><text x="522" y="164" fill="#42525e">6</text>
+  </g>
+  <text x="320" y="210" text-anchor="middle" fill="#1a2026" font-size="13">Counts tie at 3, so value 1 goes first, filling the even slots 0, 2, 4;</text>
+  <text x="320" y="232" text-anchor="middle" fill="#1a2026" font-size="13">value 2 takes 1, 3, 5 — result <tspan fill="#4169E1" font-weight="600">[1, 2, 1, 2, 1, 2]</tspan> with no equal neighbors.</text>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 312" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="312" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- arr1 = [1,1,1,1,1] (=11), arr2 = [1,0,1] (=5); columns p4..p0 left to right, processed right to left.
+       totals 1,0,2,0,2 -> digits 1,0,0,0,0; carries in 0,-1,0,-1,0 and out 0,0,-1,0,-1 (sign-safe).
+       data columns centred at x=210,280,350,420,490 -->
+  <text x="345" y="22" text-anchor="middle" fill="#5c6b76" font-size="12">process from the least-significant end</text>
+  <path d="M 480 32 H 210" fill="none" stroke="#9aa7b2" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="160" y="58">position</text>
+    <text x="160" y="78">weight</text>
+    <text x="160" y="104">arr1</text>
+    <text x="160" y="128">arr2</text>
+    <text x="160" y="152">carry in</text>
+    <text x="160" y="176">total</text>
+    <text x="160" y="200">digit</text>
+    <text x="160" y="224">carry out</text>
+  </g>
+  <g text-anchor="middle">
+    <g font-size="13.5" fill="#1a2026">
+      <text x="210" y="58" font-weight="600">4</text><text x="280" y="58" font-weight="600">3</text>
+      <text x="350" y="58" font-weight="600">2</text><text x="420" y="58" font-weight="600">1</text>
+      <text x="490" y="58" font-weight="600">0</text>
+    </g>
+    <g font-size="12" fill="#5c6b76">
+      <text x="210" y="78">16</text><text x="280" y="78">−8</text><text x="350" y="78">4</text>
+      <text x="420" y="78">−2</text><text x="490" y="78">1</text>
+    </g>
+    <g font-size="14" fill="#1a2026">
+      <text x="210" y="104">1</text><text x="280" y="104">1</text><text x="350" y="104">1</text>
+      <text x="420" y="104">1</text><text x="490" y="104">1</text>
+      <text x="210" y="128" fill="#9aa7b2">—</text><text x="280" y="128" fill="#9aa7b2">—</text>
+      <text x="350" y="128">1</text><text x="420" y="128">0</text><text x="490" y="128">1</text>
+    </g>
+  </g>
+  <line x1="170" y1="86" x2="524" y2="86" stroke="#dbe4fb" stroke-width="1"/>
+  <!-- carry-in badges at p3, p1 -->
+  <g fill="#dbe4fb">
+    <rect x="265" y="138" width="30" height="20" rx="4"/>
+    <rect x="405" y="138" width="30" height="20" rx="4"/>
+    <rect x="335" y="162" width="30" height="20" rx="4"/>
+    <rect x="475" y="162" width="30" height="20" rx="4"/>
+    <rect x="335" y="210" width="30" height="20" rx="4"/>
+    <rect x="475" y="210" width="30" height="20" rx="4"/>
+  </g>
+  <g text-anchor="middle" font-size="14">
+    <text x="210" y="152" fill="#1a2026">0</text><text x="280" y="152" fill="#4169E1" font-weight="600">−1</text>
+    <text x="350" y="152" fill="#1a2026">0</text><text x="420" y="152" fill="#4169E1" font-weight="600">−1</text>
+    <text x="490" y="152" fill="#1a2026">0</text>
+    <text x="210" y="176" fill="#1a2026">1</text><text x="280" y="176" fill="#1a2026">0</text>
+    <text x="350" y="176" fill="#4169E1" font-weight="600">2</text><text x="420" y="176" fill="#1a2026">0</text>
+    <text x="490" y="176" fill="#4169E1" font-weight="600">2</text>
+    <text x="210" y="224" fill="#1a2026">0</text><text x="280" y="224" fill="#1a2026">0</text>
+    <text x="350" y="224" fill="#4169E1" font-weight="600">−1</text><text x="420" y="224" fill="#1a2026">0</text>
+    <text x="490" y="224" fill="#4169E1" font-weight="600">−1</text>
+  </g>
+  <g text-anchor="middle" font-size="14" fill="#1a2026">
+    <text x="210" y="200" font-weight="600">1</text><text x="280" y="200">0</text><text x="350" y="200">0</text>
+    <text x="420" y="200">0</text><text x="490" y="200">0</text>
+  </g>
+  <text x="310" y="252" text-anchor="middle" fill="#1a2026" font-size="13">Result digits MSB → LSB: <tspan fill="#4169E1" font-weight="600">[1, 0, 0, 0, 0]</tspan> = 16 = 11 + 5.</text>
+  <text x="310" y="278" text-anchor="middle" fill="#1a2026" font-size="13">Each total of 2 writes digit 0 and carries −1, since 2 = 0 + (−2)·(−1); the two</text>
+  <text x="310" y="296" text-anchor="middle" fill="#1a2026" font-size="13">−1 carries cancel the next column's 1s, so [1,1,1,1,1] + [1,0,1] = [1,0,0,0,0].</text>
+</svg>

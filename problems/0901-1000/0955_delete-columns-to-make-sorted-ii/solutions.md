@@ -20,6 +20,8 @@ run of identical prefixes can push the decisive column to the very edge of
 the grid. Only surviving characters are ever compared, so deleted columns
 simply cease to exist.
 
+![For `strs = ["ca","bb","ac"]`, column 0 strictly drops the still-tied pair ca/bb and is deleted, while column 1 rises on both still-tied pairs and is kept — one deletion in total.](figures/solution-tie-flag-scan.svg)
+
 Every deletion the scan makes is forced. When column j is condemned, some
 pair is equal on every column kept before j and drops at j. A dictionary
 comparison of those two rows finds its first differing surviving character,

@@ -6,6 +6,8 @@ The logs describe execution on a single-threaded CPU with a call stack, so the n
 
 A start log first bills the elapsed interval to the suspended caller: the current top of the stack gains `ts - resume_time` units, covering exactly the span it ran before being interrupted. The new call is then pushed with its own start timestamp. An end log closes the call on top: it pops the entry and credits `ts - start + 1` units, the inclusive convention matching the problem's rule that a function ending at timestamp `t` executes through the end of `t`. The parent underneath resumes at `ts + 1`, the first unit of time after the ended call.
 
+![On logs 0:start:0, 1:start:2, 1:end:5, 0:end:6, the timeline and stack snapshots bill function 0 two units at time 2, pop function 1 for 5 − 2 + 1 = 4, and close function 0 with 1, for exclusive times [3, 4].](figures/solution-call-stack-billing.svg)
+
 Because time is always charged to the stack top at the moment it elapses, nested and repeated calls — including recursion, where the same id appears at several stack depths — are attributed correctly without any special casing: each call's segments simply accumulate into its id's total. Start/end events are guaranteed to interleave properly, so every pop finds its matching start.
 
 Each log is parsed and processed once with constant stack work. The result array holds one entry per function id, and the stack depth is bounded by the number of simultaneously open calls.

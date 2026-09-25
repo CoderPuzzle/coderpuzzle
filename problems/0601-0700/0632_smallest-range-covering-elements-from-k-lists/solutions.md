@@ -6,6 +6,8 @@ Any covering range can be shrunk until both of its endpoints coincide with actua
 
 The solution seeds a min-heap with the head of every list, tagged with its list index and position, and tracks `cur_max`, the largest current head. Each round pops the smallest head: the pair [popped min, cur_max] covers all k lists and is compared against the best range so far, preferring a smaller width and, on ties, a smaller left endpoint (the problem's tie rule). The popped list then contributes its next element, which may raise `cur_max`, and the loop continues.
 
+![On nums [[4,10,15,24,26],[0,9,12,20],[5,18,22,30]], the pointers and the min-heap of heads {20, 22, 24} give the candidate bracket [20, 24]; the next pop is 20, list 1's last element, so the sweep stops at width 4.](figures/solution-min-heap-range-sweep.svg)
+
 The loop stops the moment the popped element is the last of its list. From that point no selection can include an element from that list together with anything larger, so every later candidate would be strictly worse — the smallest achievable min has been reached. Tracking the maximum incrementally avoids re-scanning the k heads each round.
 
 Every element enters and leaves the heap exactly once, and the heap never holds more than one element per list, so the merge costs logarithmic work per element.

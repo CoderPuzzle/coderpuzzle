@@ -15,6 +15,8 @@ once, those two trade places and both pointers step inward, until the
 pointers meet. On `a-bC-dEf-ghIj`, `j` lands in the first slot, `I` in the
 third, and every hyphen stays where it was.
 
+![On s = "ab-cd" the pointers swap a with d and then b with c while the hyphen never moves, leaving dc-ba.](figures/solution-two-pointer-letter-swap.svg)
+
 Every iteration advances at least one pointer, so the letters are all
 paired after one pass over the text. The letter test is an explicit
 two-range check, `a-z` and `A-Z` — the constraint alphabet is pure ASCII,

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 312" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="312" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [6,0,8,2,1,5]; cells 64x40 at x=80+72i, y=40; stack boxes 130x34 at x=330, top y=180, bottom y=218 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="80" y="40" width="64" height="40"/><rect x="152" y="40" width="64" height="40"/>
+    <rect x="224" y="40" width="64" height="40"/><rect x="296" y="40" width="64" height="40"/>
+    <rect x="368" y="40" width="64" height="40"/><rect x="440" y="40" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="112" y="66">6</text><text x="184" y="66">0</text><text x="256" y="66">8</text>
+    <text x="328" y="66">2</text><text x="400" y="66">1</text><text x="472" y="66">5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="112" y="100">0</text><text x="184" y="100">1</text><text x="256" y="100">2</text>
+    <text x="328" y="100">3</text><text x="400" y="100">4</text><text x="472" y="100" fill="#4169E1" font-weight="600">5</text>
+  </g>
+  <!-- stack of record lows after the left-to-right pass -->
+  <g text-anchor="middle" font-size="13.5" font-weight="600">
+    <rect x="330" y="180" width="130" height="34" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="330" y="218" width="130" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="395" y="202" fill="#4169E1">i = 1 · 0</text>
+    <text x="395" y="240" fill="#1a2026">i = 0 · 6</text>
+  </g>
+  <text x="316" y="192" text-anchor="end" fill="#42525e" font-size="12.5">j = 5: nums[5] = 5 ≥ nums[1] = 0 → pop</text>
+  <text x="316" y="212" text-anchor="end" fill="#4169E1" font-size="13" font-weight="600">width = 5 − 1 = <tspan font-size="15">4</tspan></text>
+  <text x="395" y="272" text-anchor="middle" fill="#5c6b76" font-size="12.5">stack (record lows)</text>
+  <!-- right-to-left sweep arrow from j = 5 to the stack top -->
+  <path d="M 452 84 Q 400 120 395 174" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="280" y="290" text-anchor="middle" fill="#1a2026" font-size="13">The stack keeps only the record lows 6 (i = 0) and 0 (i = 1); scanning back,</text>
+  <text x="280" y="308" text-anchor="middle" fill="#1a2026" font-size="13">j = 5 pops the 0 first: width 5 − 1 = <tspan fill="#4169E1" font-weight="600">4</tspan>, the widest ramp.</text>
+</svg>

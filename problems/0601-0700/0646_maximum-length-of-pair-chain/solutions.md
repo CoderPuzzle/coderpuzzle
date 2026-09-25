@@ -6,6 +6,8 @@ The chain condition `b < c` means a pair only constrains what may come after it,
 
 The solution sorts the pairs by their second element and walks through them with `current_end`, the right endpoint of the last pair taken, initialized to negative infinity. A pair is appended to the chain only when its left endpoint is strictly greater than `current_end`, at which point `current_end` advances to its right endpoint. The strict comparison encodes the problem's strict `b < c` rule, so touching intervals like `[1,2]` and `[2,3]` cannot both be taken.
 
+![On pairs [[1,2],[2,3],[3,4]] sorted by right endpoint, the scan takes [1, 2], rejects the touching [2, 3] because 2 > 2 is false, and takes [3, 4] as current_end advances 2 → 4, for a chain of length 2.](figures/solution-greedy-number-line.svg)
+
 Correctness follows from an exchange argument: take any optimal chain and compare it step by step with the greedy chain of the same length — each greedy choice ends no later than the corresponding optimal choice, so every subsequent optimal pair remains compatible, and the greedy chain can never fall behind. Pairs sharing a right endpoint are harmless: only the first encountered can be taken (the rest have left endpoints not exceeding that shared right end, so they fail the strict test).
 
 Sorting is the dominant cost, and the scan is a single pass with two variables. Python's `sorted` produces the sorted copy that the space bound reflects.

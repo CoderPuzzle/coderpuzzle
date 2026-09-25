@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 348" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="348" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- Example 1 bookings; accepted [10,20) [50,60) [10,40) [5,10) [25,55), refused [5,15); t -> x = 90 + 8.5t; lanes h20 at y = 44 + 26i; coverage band y 210-246; doubles = [10,20) [25,40) [50,55) -->
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="82" y="58">book(10,20)</text>
+    <text x="82" y="84">book(50,60)</text>
+    <text x="82" y="110">book(10,40)</text>
+    <text x="82" y="136" fill="#9aa7b2">book(5,15)</text>
+    <text x="82" y="162">book(5,10)</text>
+    <text x="82" y="188">book(25,55)</text>
+  </g>
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.2">
+    <rect x="175" y="44" width="85" height="20"/>
+    <rect x="515" y="70" width="85" height="20"/>
+    <rect x="175" y="96" width="255" height="20"/>
+    <rect x="132.5" y="148" width="42.5" height="20"/>
+    <rect x="302.5" y="174" width="255" height="20"/>
+  </g>
+  <rect x="132.5" y="122" width="85" height="20" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <path d="M 195 146 V 204" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="8" y="232" fill="#5c6b76" font-size="12">coverage</text>
+  <g>
+    <rect x="90" y="210" width="42.5" height="36" fill="#f0f3f7"/>
+    <rect x="132.5" y="210" width="42.5" height="36" fill="#dbe4fb"/>
+    <rect x="175" y="210" width="85" height="36" fill="#4169E1"/>
+    <rect x="260" y="210" width="42.5" height="36" fill="#dbe4fb"/>
+    <rect x="302.5" y="210" width="127.5" height="36" fill="#4169E1"/>
+    <rect x="430" y="210" width="85" height="36" fill="#dbe4fb"/>
+    <rect x="515" y="210" width="42.5" height="36" fill="#4169E1"/>
+    <rect x="557.5" y="210" width="42.5" height="36" fill="#dbe4fb"/>
+  </g>
+  <rect x="90" y="210" width="510" height="36" fill="none" stroke="#42525e" stroke-width="1.4"/>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="217.5" y="233" fill="#ffffff">2</text>
+    <text x="366.25" y="233" fill="#ffffff">2</text>
+    <text x="536.25" y="233" fill="#ffffff">2</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="153.75" y="233">1</text>
+    <text x="281.25" y="233">1</text>
+    <text x="472.5" y="233">1</text>
+    <text x="578.75" y="233">1</text>
+  </g>
+  <path d="M 90 246 v 5 M 175 246 v 5 M 260 246 v 5 M 345 246 v 5 M 430 246 v 5 M 515 246 v 5 M 600 246 v 5" stroke="#42525e" stroke-width="1.2"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="90" y="264">0</text><text x="175" y="264">10</text><text x="260" y="264">20</text><text x="345" y="264">30</text><text x="430" y="264">40</text><text x="515" y="264">50</text><text x="600" y="264">60</text>
+  </g>
+  <rect x="137" y="284" width="14" height="14" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+  <text x="157" y="296" fill="#5c6b76" font-size="12">covered once (singles)</text>
+  <rect x="357" y="284" width="14" height="14" fill="#4169E1"/>
+  <text x="377" y="296" fill="#5c6b76" font-size="12">covered twice (doubles)</text>
+  <text x="330" y="322" text-anchor="middle" fill="#1a2026" font-size="13">book(5,15) is refused: <tspan fill="#4169E1" font-weight="600">[10,15)</tspan> would triple-book the doubled [10,20).</text>
+  <text x="330" y="340" text-anchor="middle" fill="#1a2026" font-size="13">book(5,10) records nothing; book(25,55) adds doubles <tspan fill="#4169E1" font-weight="600">[25,40)</tspan> and <tspan fill="#4169E1" font-weight="600">[50,55)</tspan>.</text>
+</svg>

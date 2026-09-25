@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="380" fill="#ffffff"/>
+  <!-- tree of [1,null,3,2,4,null,null,null,5]; circles r=16; run length labeled under each node; accent = the 3-4-5 path -->
+  <text x="300" y="28" text-anchor="middle" fill="#5c6b76" font-size="12.5">run(child) = run(parent) + 1 when child = parent + 1, otherwise 1</text>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 135 64 L 285 126"/>
+    <path d="M 288 142 L 222 196"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="3" fill="none">
+    <path d="M 313 142 L 387 196"/>
+    <path d="M 413 216 L 487 270"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="120" cy="58" r="16"/>
+    <circle cx="210" cy="206" r="16"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8">
+    <circle cx="300" cy="132" r="16"/>
+    <circle cx="400" cy="206" r="16"/>
+    <circle cx="500" cy="280" r="16"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="120" y="63" fill="#1a2026">1</text>
+    <text x="210" y="211" fill="#1a2026">2</text>
+    <text x="300" y="137" fill="#4169E1">3</text>
+    <text x="400" y="211" fill="#4169E1">4</text>
+    <text x="500" y="285" fill="#4169E1">5</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5">
+    <text x="120" y="94" fill="#5c6b76">run 1</text>
+    <text x="210" y="242" fill="#5c6b76">run 1</text>
+    <text x="300" y="168" fill="#5c6b76">run 1</text>
+    <text x="400" y="242" fill="#4169E1" font-weight="600">run 2</text>
+    <text x="500" y="316" fill="#4169E1" font-weight="600">run 3</text>
+  </g>
+  <text x="300" y="350" text-anchor="middle" fill="#1a2026" font-size="13">Node 4 extends 3's run to 2 and node 5 extends it to 3; nodes 1 and 2 restart at 1.</text>
+  <text x="300" y="370" text-anchor="middle" fill="#1a2026" font-size="13">The longest consecutive path is 3 &#8594; 4 &#8594; 5, length <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

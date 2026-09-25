@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- s = a b - c d; cells 48x36 at x=174+56k; rows y=70/148/226; dashed arcs mark the swapped letter pairs -->
+  <text x="310" y="32" text-anchor="middle" fill="#5c6b76" font-size="12.5">s = "ab-cd"</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.2">
+    <rect x="174" y="70" width="48" height="36"/><rect x="230" y="70" width="48" height="36"/><rect x="286" y="70" width="48" height="36"/><rect x="342" y="70" width="48" height="36"/><rect x="398" y="70" width="48" height="36"/>
+    <rect x="174" y="148" width="48" height="36"/><rect x="230" y="148" width="48" height="36"/><rect x="286" y="148" width="48" height="36"/><rect x="342" y="148" width="48" height="36"/><rect x="398" y="148" width="48" height="36"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="174" y="226" width="48" height="36"/><rect x="230" y="226" width="48" height="36"/><rect x="286" y="226" width="48" height="36"/><rect x="342" y="226" width="48" height="36"/><rect x="398" y="226" width="48" height="36"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="198" y="93">a</text><text x="254" y="93">b</text><text x="366" y="93">c</text><text x="422" y="93">d</text>
+    <text x="198" y="171">d</text><text x="254" y="171">b</text><text x="366" y="171">c</text><text x="422" y="171">a</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2">
+    <text x="310" y="93">-</text><text x="310" y="171">-</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="198" y="249">d</text><text x="254" y="249">c</text><text x="366" y="249">b</text><text x="422" y="249">a</text>
+  </g>
+  <text x="310" y="249" text-anchor="middle" fill="#9aa7b2">-</text>
+  <path d="M 198 64 Q 310 30 422 64" fill="none" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <path d="M 254 142 Q 310 112 366 142" fill="none" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <g fill="#4169E1">
+    <circle cx="198" cy="64" r="3"/><circle cx="422" cy="64" r="3"/>
+    <circle cx="254" cy="142" r="3"/><circle cx="366" cy="142" r="3"/>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="158" y="92">start</text>
+    <text x="158" y="170">after swapping a, d</text>
+    <text x="158" y="248">after swapping b, c</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 198 128 V 108" marker-end="url(#arrow)"/>
+    <path d="M 422 128 V 108" marker-end="url(#arrow)"/>
+    <path d="M 254 206 V 186" marker-end="url(#arrow)"/>
+    <path d="M 366 206 V 186" marker-end="url(#arrow)"/>
+    <path d="M 310 284 V 264" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="198" y="142">i = 0</text><text x="422" y="142">j = 4</text>
+    <text x="254" y="220">i = 1</text><text x="366" y="220">j = 3</text>
+    <text x="310" y="298">i = j &#8212; stop</text>
+  </g>
+  <text x="310" y="324" text-anchor="middle" fill="#1a2026" font-size="13">Two swaps &#8212; a&#8596;d, then b&#8596;c &#8212; turn ab-cd into <tspan fill="#4169E1" font-weight="600">dc-ba</tspan>; the hyphen at index 2 never moves.</text>
+</svg>

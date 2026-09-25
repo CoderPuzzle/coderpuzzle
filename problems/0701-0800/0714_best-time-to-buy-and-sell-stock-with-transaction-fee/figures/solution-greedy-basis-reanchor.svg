@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- prices = [1,3,2,8,4,9], fee = 2; day i at x = 70 + 100i, price p at y = 250 - 22(p-1) -->
+  <text x="40" y="36" font-size="12.5" fill="#5c6b76">prices = [1,3,2,8,4,9], fee = 2</text>
+  <circle cx="46" cy="58" r="4" fill="#4169E1"/><text x="56" y="62" font-size="11.5" fill="#5c6b76">buy (sets basis)</text>
+  <circle cx="46" cy="78" r="4" fill="#ffffff" stroke="#4169E1" stroke-width="1.8"/><text x="56" y="82" font-size="11.5" fill="#5c6b76">bank (price − basis − fee)</text>
+  <!-- fee-adjusted basis: 1 over days 0-3, re-anchored to 6 then 4 over days 4-5 -->
+  <g stroke="#4169E1" stroke-width="1.5" stroke-dasharray="5 4">
+    <line x1="74" y1="250" x2="362" y2="250"/>
+    <line x1="474" y1="184" x2="562" y2="184"/>
+  </g>
+  <text x="64" y="254" text-anchor="end" font-size="11.5" font-weight="600" fill="#4169E1">basis 1</text>
+  <text x="474" y="202" text-anchor="start" font-size="11.5" font-weight="600" fill="#4169E1">basis 4</text>
+  <!-- price line -->
+  <polyline points="70,250 170,206 270,228 370,118 470,184 570,96" fill="none" stroke="#42525e" stroke-width="2"/>
+  <circle cx="70" cy="250" r="4.5" fill="#4169E1"/>
+  <circle cx="170" cy="206" r="4" fill="#9aa7b2"/>
+  <circle cx="270" cy="228" r="4" fill="#9aa7b2"/>
+  <circle cx="370" cy="118" r="4.5" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="470" cy="184" r="4.5" fill="#4169E1"/>
+  <circle cx="570" cy="96" r="4.5" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <!-- banked rises -->
+  <path d="M 76 246 Q 218 128 362 122" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <path d="M 472 180 Q 518 116 566 100" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="370" y="98" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">+5 = 8 − 1 − 2 banked</text>
+  <text x="580" y="92" text-anchor="start" font-size="12.5" font-weight="600" fill="#4169E1">+3 = 9 − 4 − 2</text>
+  <text x="580" y="108" text-anchor="start" font-size="12.5" font-weight="600" fill="#4169E1">banked</text>
+  <!-- price labels -->
+  <g font-size="12" fill="#1a2026">
+    <text x="70" y="238" text-anchor="middle">1</text>
+    <text x="170" y="196" text-anchor="middle">3</text>
+    <text x="284" y="232" text-anchor="start">2</text>
+    <text x="352" y="116" text-anchor="end">8</text>
+    <text x="466" y="168" text-anchor="middle">4</text>
+    <text x="570" y="82" text-anchor="middle">9</text>
+  </g>
+  <text x="220" y="242" text-anchor="middle" font-size="11.5" fill="#9aa7b2">noise: no action</text>
+  <g font-size="12" fill="#9aa7b2" text-anchor="middle">
+    <text x="70" y="272">0</text><text x="170" y="272">1</text><text x="270" y="272">2</text>
+    <text x="370" y="272">3</text><text x="470" y="272">4</text><text x="570" y="272">5</text>
+  </g>
+  <rect x="556" y="26" width="100" height="36" rx="6" fill="#dbe4fb"/>
+  <text x="606" y="49" text-anchor="middle" font-size="14" font-weight="600" fill="#4169E1">total = 8</text>
+  <text x="340" y="306" text-anchor="middle" font-size="13" fill="#1a2026">The fee-adjusted basis re-anchors at each new low — 1, then 6 → 4 after</text>
+  <text x="340" y="324" text-anchor="middle" font-size="13" fill="#1a2026">banking at 8: the cleared rises bank <tspan fill="#4169E1" font-weight="600">5 and 3</tspan> — total <tspan fill="#4169E1" font-weight="600">8</tspan>, one fee per leg.</text>
+</svg>

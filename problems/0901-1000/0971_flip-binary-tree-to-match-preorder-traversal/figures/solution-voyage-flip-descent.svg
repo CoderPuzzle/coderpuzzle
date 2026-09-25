@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- root = [1,2,3], voyage = [1,3,2]; circles r22; before: 1(150,95) 2(100,170) 3(200,170); after: 1(470,95) 3(420,170) 2(520,170) -->
+  <text x="150" y="42" text-anchor="middle" fill="#5c6b76" font-size="12.5">before</text>
+  <text x="470" y="42" text-anchor="middle" fill="#5c6b76" font-size="12.5">after</text>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="138" y1="113" x2="112" y2="150"/>
+    <line x1="162" y1="113" x2="188" y2="150"/>
+    <line x1="458" y1="113" x2="432" y2="150"/>
+    <line x1="482" y1="113" x2="508" y2="150"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="150" cy="95" r="22"/>
+    <circle cx="100" cy="170" r="22"/>
+    <circle cx="200" cy="170" r="22"/>
+    <circle cx="420" cy="170" r="22"/>
+    <circle cx="520" cy="170" r="22"/>
+  </g>
+  <circle cx="470" cy="95" r="22" fill="#4169E1"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="150" y="100" fill="#1a2026">1</text>
+    <text x="100" y="175" fill="#1a2026">2</text>
+    <text x="200" y="175" fill="#1a2026">3</text>
+    <text x="470" y="100" fill="#ffffff">1</text>
+    <text x="420" y="175" fill="#1a2026">3</text>
+    <text x="520" y="175" fill="#1a2026">2</text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#9aa7b2">
+    <text x="100" y="206">left</text>
+    <text x="200" y="206">right</text>
+    <text x="420" y="206">left</text>
+    <text x="520" y="206">right</text>
+  </g>
+  <text x="317" y="96" text-anchor="middle" font-size="13" fill="#1a2026">the next voyage value, 3,</text>
+  <text x="317" y="113" text-anchor="middle" font-size="13" fill="#1a2026">names node 1's right child</text>
+  <path d="M 252 132 L 382 132" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="317" y="158" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">flip node 1</text>
+  <text x="188" y="262" text-anchor="end" fill="#5c6b76" font-size="12.5">voyage</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="200" y="240" width="48" height="34"/>
+    <rect x="252" y="240" width="48" height="34"/>
+    <rect x="304" y="240" width="48" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="224" y="262" fill="#1a2026">1</text>
+    <text x="276" y="262" fill="#1a2026">3</text>
+    <text x="328" y="262" fill="#1a2026">2</text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#9aa7b2">
+    <text x="224" y="290">1st</text>
+    <text x="276" y="290">2nd</text>
+    <text x="328" y="290">3rd</text>
+  </g>
+  <text x="440" y="262" text-anchor="middle" fill="#4169E1" font-size="14" font-weight="600">flipped = [1]</text>
+  <text x="320" y="312" text-anchor="middle" font-size="13" fill="#1a2026">Flipping node 1 swaps children 2 and 3, so the descent reads <tspan fill="#4169E1" font-weight="600">1, 3, 2</tspan></text>
+  <text x="320" y="330" text-anchor="middle" font-size="13" fill="#1a2026">and matches voyage with the one forced flip.</text>
+</svg>

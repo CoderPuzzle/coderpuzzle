@@ -17,6 +17,8 @@ than val, since it lost to val's dominance the moment the walk reached
 it — becomes val's own left subtree. No node off the spine is ever
 visited or rebuilt.
 
+![With root = [5,2,4,null,1] and val = 3, the walk down the right spine stops at node 4, whose right child is absent, and 3 takes that slot while nodes 2 and 1 stay untouched.](figures/solution-right-spine-insert.svg)
+
 **Complexity:** `O(h)` time, where `h` is the height of the tree — the
 walk descends at most one right-spine node per step — and `O(1)` extra
 space beyond the single inserted node.

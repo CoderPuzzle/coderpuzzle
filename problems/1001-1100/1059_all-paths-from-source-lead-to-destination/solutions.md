@@ -13,6 +13,10 @@ node means the current path has looped back on itself -- a cycle, hence
 false. Reaching a black node needs no further work, since an earlier
 branch already proved everything below it safe.
 
+![The three-color DFS from source 0 marks 0 and 1 gray, stops at leaf 1
+which is not the destination 2, and returns false while node 2 is still
+white.](figures/solution-three-color-dfs-false.svg)
+
 The traversal uses an explicit stack of `(node, next child index)`
 frames rather than recursion, so the call depth never depends on how
 deep the graph goes. Each frame advances its own child pointer one edge

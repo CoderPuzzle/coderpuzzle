@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 306" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="306" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- words = ["cd","f","kl"]; trie at left; grid cell (node, query) filled when that trie node is live in the trail after the query; accent = word-end node reached (query true); dashed x = node dropped for lack of the edge -->
+  <text x="85" y="24" text-anchor="middle" fill="#5c6b76" font-size="12">trie of [cd, f, kl]</text>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="74" y1="64" x2="41" y2="111"/>
+    <line x1="85" y1="70" x2="85" y2="108"/>
+    <line x1="96" y1="64" x2="129" y2="111"/>
+    <line x1="35" y1="140" x2="35" y2="173"/>
+    <line x1="140" y1="140" x2="140" y2="173"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="85" cy="54" r="16"/>
+    <circle cx="35" cy="124" r="16"/>
+    <circle cx="85" cy="124" r="16" fill="#dbe4fb"/>
+    <circle cx="140" cy="124" r="16"/>
+    <circle cx="35" cy="190" r="16" fill="#dbe4fb"/>
+    <circle cx="140" cy="190" r="16" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="85" y="59" fill="#1a2026" font-size="12">root</text>
+    <text x="35" y="129" fill="#1a2026">c</text>
+    <text x="85" y="129" fill="#1a2026">f</text>
+    <text x="140" y="129" fill="#1a2026">k</text>
+    <text x="35" y="195" fill="#1a2026">d</text>
+    <text x="140" y="195" fill="#1a2026">l</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="85" y="156">"f"</text>
+    <text x="35" y="222">"cd"</text>
+    <text x="140" y="222">"kl"</text>
+  </g>
+  <text x="455" y="34" text-anchor="middle" fill="#5c6b76" font-size="12">query stream</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="268" y="56">a</text><text x="302" y="56">b</text><text x="336" y="56">c</text>
+    <text x="370" y="56">d</text><text x="404" y="56">e</text><text x="438" y="56">f</text>
+    <text x="472" y="56">g</text><text x="506" y="56">h</text><text x="540" y="56">i</text>
+    <text x="574" y="56">j</text><text x="608" y="56">k</text><text x="642" y="56">l</text>
+  </g>
+  <!-- row labels -->
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="230" y="82">root</text>
+    <text x="230" y="108">c</text>
+    <text x="230" y="134">d (end)</text>
+    <text x="230" y="160">f (end)</text>
+    <text x="230" y="186">k</text>
+    <text x="230" y="212">l (end)</text>
+  </g>
+  <!-- root is in every trail -->
+  <g fill="#f0f3f7">
+    <rect x="259" y="69" width="18" height="18" rx="3"/><rect x="293" y="69" width="18" height="18" rx="3"/>
+    <rect x="327" y="69" width="18" height="18" rx="3"/><rect x="361" y="69" width="18" height="18" rx="3"/>
+    <rect x="395" y="69" width="18" height="18" rx="3"/><rect x="429" y="69" width="18" height="18" rx="3"/>
+    <rect x="463" y="69" width="18" height="18" rx="3"/><rect x="497" y="69" width="18" height="18" rx="3"/>
+    <rect x="531" y="69" width="18" height="18" rx="3"/><rect x="565" y="69" width="18" height="18" rx="3"/>
+    <rect x="599" y="69" width="18" height="18" rx="3"/><rect x="633" y="69" width="18" height="18" rx="3"/>
+  </g>
+  <!-- live non-end nodes -->
+  <g fill="#dbe4fb" stroke="#9aa7b2" stroke-width="1">
+    <rect x="327" y="95" width="18" height="18" rx="3"/>
+    <rect x="599" y="173" width="18" height="18" rx="3"/>
+  </g>
+  <!-- end nodes reached: query returns true -->
+  <g fill="#4169E1">
+    <rect x="361" y="121" width="18" height="18" rx="3"/>
+    <rect x="429" y="147" width="18" height="18" rx="3"/>
+    <rect x="633" y="199" width="18" height="18" rx="3"/>
+  </g>
+  <!-- d1 dropped at query e -->
+  <rect x="395" y="121" width="18" height="18" rx="3" fill="none" stroke="#9aa7b2" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="404" y="135" text-anchor="middle" fill="#9aa7b2" font-size="13">x</text>
+  <path d="M 342 112 Q 366 114 369 120" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- results -->
+  <text x="230" y="240" text-anchor="end" fill="#1a2026" font-size="12" font-weight="600">result</text>
+  <g text-anchor="middle" font-size="12.5" fill="#9aa7b2">
+    <text x="268" y="240">F</text><text x="302" y="240">F</text><text x="336" y="240">F</text>
+    <text x="438" y="240">F</text><text x="472" y="240">F</text><text x="506" y="240">F</text>
+    <text x="540" y="240">F</text><text x="574" y="240">F</text><text x="608" y="240">F</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#4169E1" font-weight="600">
+    <text x="370" y="240">T</text><text x="404" y="240" fill="#9aa7b2" font-weight="400">F</text><text x="438" y="240" fill="#4169E1" font-weight="600">T</text><text x="642" y="240">T</text>
+  </g>
+  <text x="380" y="274" text-anchor="middle" fill="#1a2026" font-size="13">Each query adds the root and advances every live node one edge; a node</text>
+  <text x="380" y="292" text-anchor="middle" fill="#1a2026" font-size="13">without that edge drops, and reaching an end node at <tspan fill="#4169E1" font-weight="600">d, f, l</tspan> returns true.</text>
+</svg>

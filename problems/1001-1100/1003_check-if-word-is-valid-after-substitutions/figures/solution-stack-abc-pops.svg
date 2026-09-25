@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="310" fill="#ffffff"/>
+  <!-- s = "aabcbc"; one column per push, stacks bottom-aligned at y=210, cells 50x30 at centers 75..550 step 95; steps 4 and 6 complete a top a,b,c triple (dashed) that pops, leaving the state shown below -->
+  <g text-anchor="middle" font-weight="600">
+    <text x="75" y="58">a</text><text x="170" y="58">a</text><text x="265" y="58">b</text>
+    <text x="360" y="58">c</text><text x="455" y="58">b</text><text x="550" y="58">c</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="122" y="54">→</text><text x="217" y="54">→</text><text x="312" y="54">→</text><text x="407" y="54">→</text><text x="502" y="54">→</text>
+  </g>
+  <text x="360" y="78" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">pops a b c</text>
+  <text x="550" y="78" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">pops a b c</text>
+  <!-- step 1: stack a -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="50" y="180" width="50" height="30"/>
+  </g>
+  <text x="75" y="200" text-anchor="middle" fill="#1a2026" font-weight="600">a</text>
+  <!-- step 2: stack a a -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="145" y="150" width="50" height="30"/><rect x="145" y="180" width="50" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="170" y="170">a</text><text x="170" y="200">a</text>
+  </g>
+  <!-- step 3: stack a a b -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="240" y="120" width="50" height="30"/><rect x="240" y="150" width="50" height="30"/><rect x="240" y="180" width="50" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="265" y="140">b</text><text x="265" y="170">a</text><text x="265" y="200">a</text>
+  </g>
+  <!-- step 4: push c completes a b c on top (dashed = popped), a remains -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7" stroke-dasharray="4 3">
+    <rect x="335" y="90" width="50" height="30"/><rect x="335" y="120" width="50" height="30"/><rect x="335" y="150" width="50" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-weight="600">
+    <text x="360" y="110">c</text><text x="360" y="140">b</text><text x="360" y="170">a</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="335" y="180" width="50" height="30"/>
+  </g>
+  <text x="360" y="200" text-anchor="middle" fill="#1a2026" font-weight="600">a</text>
+  <!-- step 5: stack a b -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="430" y="150" width="50" height="30"/><rect x="430" y="180" width="50" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="455" y="170">b</text><text x="455" y="200">a</text>
+  </g>
+  <!-- step 6: push c completes a b c, all of it pops; stack empty -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7" stroke-dasharray="4 3">
+    <rect x="525" y="120" width="50" height="30"/><rect x="525" y="150" width="50" height="30"/><rect x="525" y="180" width="50" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-weight="600">
+    <text x="550" y="140">c</text><text x="550" y="170">b</text><text x="550" y="200">a</text>
+  </g>
+  <!-- stack state after each step -->
+  <g text-anchor="middle" font-size="12.5">
+    <text x="75" y="236" fill="#5c6b76">a</text>
+    <text x="170" y="236" fill="#5c6b76">aa</text>
+    <text x="265" y="236" fill="#5c6b76">aab</text>
+    <text x="360" y="236" fill="#4169E1" font-weight="600">a</text>
+    <text x="455" y="236" fill="#5c6b76">ab</text>
+    <text x="550" y="236" fill="#4169E1" font-weight="600">∅</text>
+  </g>
+  <text x="40" y="274" fill="#1a2026" font-size="13">After the 4th and 6th pushes the top triple reads a, b, c and pops;</text>
+  <text x="40" y="292" fill="#1a2026" font-size="13">the stack ends <tspan fill="#4169E1" font-weight="600">empty</tspan>, so "aabcbc" is a chain of "abc" insertions.</text>
+</svg>

@@ -34,4 +34,6 @@ never flips a sign, so no run outgrows the opening pair and the answer is
 compared, never combined, so the constraint's 10⁹ extreme needs no wider
 arithmetic.
 
+![On arr = [9,4,2,10,7,8,8,1,9], the run counter climbs to 5 across [4,2,10,7,8], restarts at 1 on the equal 8s, and the tail only reaches 3, so best stays 5.](figures/solution-running-sign-sweep.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space.

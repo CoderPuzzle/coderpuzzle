@@ -17,6 +17,8 @@ can no longer create a triple anywhere: every accepted event it meets is
 single at the meeting, and each intersection `[max(start, s), min(end, e))`
 joins `doubles` while the candidate itself joins `singles`.
 
+![Example 1's six calls on one timeline: the doubles list shades [10,20), [25,40) and [50,55) as covered twice, refusing [5,15) while [5,10) and [25,55) slip past untouched.](figures/solution-two-list-timeline.svg)
+
 The `doubles` regions stay pairwise disjoint, which is why a single overlap
 test per region is sound. Two regions in `doubles` could only intersect at a
 moment covered by three or four accepted events — but any event that would

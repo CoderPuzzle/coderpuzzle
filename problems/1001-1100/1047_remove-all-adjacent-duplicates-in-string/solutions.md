@@ -13,4 +13,6 @@ neighbor for the next character, so cascading removals fall out of the
 same rule without any extra bookkeeping or restarting the scan. Joining
 the stack's contents at the end produces the final string.
 
+![On s = "abbaca", the stack pushes a, b, pops the second b, then pops the exposed earlier a in a cascade, and finishes holding c, a — the final string "ca".](figures/solution-stack-cascade.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

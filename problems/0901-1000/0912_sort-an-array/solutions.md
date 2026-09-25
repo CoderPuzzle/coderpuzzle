@@ -18,6 +18,8 @@ the end is simply shorter, and clamping the three boundaries with `min`
 keeps the merge correct. Because the doubling starts at `w = 1`, no
 recursion and no run-splitting bookkeeping is ever needed.
 
+![On nums = [5, 2, 3, 1] the width-1 pass produces [2, 5, 1, 3] and the width-2 pass merges the runs into the sorted [1, 2, 3, 5].](figures/solution-bottom-up-merge-passes.svg)
+
 Source and buffer alternate roles: each pass reads from `source` and writes
 every position of `buffer` exactly once (the merge drains both heads, then
 copies whichever run still holds values), and the two arrays swap

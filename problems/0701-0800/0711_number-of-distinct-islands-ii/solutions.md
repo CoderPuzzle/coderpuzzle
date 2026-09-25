@@ -20,6 +20,8 @@ images and therefore the same smallest one; inequivalent islands share no
 image at all, so their minima differ, and the answer is the size of the hash
 set holding one signature per island.
 
+![Flooding Example 1's grid, the L at (0,0)/(0,1)/(1,0) and the L at (2,4)/(3,3)/(3,4) are 180° rotations whose eight dihedral images share the lexicographically smallest normalized shape [(0,0), (0,1), (1,0)], so the answer is 1.](figures/solution-dihedral-min-signature.svg)
+
 Each cell of the grid is pushed at most once across all fills, and an island
 of k cells costs eight transformed copies at k log k each to sort — bounded
 over all islands by O(m·n log(m·n)) — while the marks, the stacks, and the

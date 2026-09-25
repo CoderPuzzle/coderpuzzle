@@ -22,5 +22,7 @@ means a lamp switched off by one query can no longer contribute to the
 illumination of a later query, so answers must be produced strictly in
 query order.
 
+![On n = 5 with lamps (0,0) and (4,4), each lamp lights its row, column, diagonal and anti-diagonal; query (1,1) is answered by the shared diagonal x - y = 0 holding 2 lamps, and the 3x3 turn-off around (1,1) removes lamp (0,0), so query (1,0) finds all four counters 0 and answers false.](figures/solution-lamp-lines-turnoff.svg)
+
 **Complexity:** `O(lamps.length + queries.length)` time and
 `O(lamps.length)` space.

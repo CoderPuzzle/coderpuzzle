@@ -17,6 +17,8 @@ it leaves the map, restoring exactly two. Example 3 walks `[1,2,3,2,2]`: the
 window reaches `[1,2,3]`, retires the `1`, and then grows through `[2,3,2,2]`
 to length 4.
 
+![On fruits = [1, 2, 3, 2, 2] the window grows to [1, 2, 3], the 1 retires from the left, and growth resumes to [2, 3, 2, 2] — the best length 4.](figures/solution-window-third-type.svg)
+
 Each tree enters the window once and leaves at most once, so both edges move
 only forward through `n` steps total. The map never holds more than three
 entries — the two basket types plus the transient third during a shrink — so

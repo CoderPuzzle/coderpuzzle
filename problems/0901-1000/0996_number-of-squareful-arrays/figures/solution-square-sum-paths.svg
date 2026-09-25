@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 424" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="424" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,17,8]; square-sum edges 1+8=9 and 8+17=25 exist, 1+17=18 does not;
+       the two full value walks are 1->8->17 and 17->8->1 -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="226" y1="92" x2="454" y2="92" stroke="#9aa7b2" stroke-dasharray="5 4"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2">
+    <line x1="221" y1="107" x2="319" y2="177"/>
+    <line x1="459" y1="107" x2="361" y2="177"/>
+  </g>
+  <g stroke="#1a2026" stroke-width="1.6" fill="#ffffff">
+    <circle cx="200" cy="92" r="26"/><circle cx="480" cy="92" r="26"/>
+    <circle cx="340" cy="192" r="26"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="200" y="97">1</text><text x="480" y="97">17</text><text x="340" y="197">8</text>
+  </g>
+  <text x="340" y="72" text-anchor="middle" fill="#9aa7b2" font-size="12.5">1+17 = 18: not a square</text>
+  <g font-size="12.5" font-weight="600" fill="#4169E1">
+    <text x="256" y="146" text-anchor="end">1+8 = 9</text>
+    <text x="424" y="146" text-anchor="start">8+17 = 25</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="158" y="282">walk 1</text><text x="158" y="338">walk 2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="170" y="258" width="40" height="36"/><rect x="226" y="258" width="40" height="36"/>
+    <rect x="282" y="258" width="40" height="36"/>
+    <rect x="170" y="314" width="40" height="36"/><rect x="226" y="314" width="40" height="36"/>
+    <rect x="282" y="314" width="40" height="36"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 212 276 L 224 276" marker-end="url(#arrow)"/>
+    <path d="M 268 276 L 280 276" marker-end="url(#arrow)"/>
+    <path d="M 212 332 L 224 332" marker-end="url(#arrow)"/>
+    <path d="M 268 332 L 280 332" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">
+    <text x="190" y="281">1</text><text x="246" y="281">8</text><text x="302" y="281">17</text>
+    <text x="190" y="337">17</text><text x="246" y="337">8</text><text x="302" y="337">1</text>
+  </g>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="342" y="281">= 1 permutation</text>
+    <text x="342" y="337">= 1 permutation</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="340" y="386">The search starts from each distinct value and extends only across square-sum edges:</text>
+    <text x="340" y="404">1→8→17 and 17→8→1 — <tspan fill="#4169E1" font-weight="600">2</tspan> squareful permutations; both starts at 8 die on 1+17 = 18.</text>
+  </g>
+</svg>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 304" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="304" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- a,b,c = 1,2,5 sorted to x=1,y=2,z=5; axis rows at y=56,142,228; position p ticks at x=60+80p; gap0 = y-x-1 = 0, gap1 = z-y-1 = 2 -->
+  <text x="24" y="24" fill="#5c6b76" font-size="12">sorted: x = 1, y = 2, z = 5</text>
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <line x1="110" y1="56" x2="550" y2="56"/>
+    <line x1="110" y1="142" x2="550" y2="142"/>
+    <line x1="110" y1="228" x2="550" y2="228"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <line x1="140" y1="52" x2="140" y2="60"/><line x1="220" y1="52" x2="220" y2="60"/>
+    <line x1="300" y1="52" x2="300" y2="60"/><line x1="380" y1="52" x2="380" y2="60"/>
+    <line x1="460" y1="52" x2="460" y2="60"/><line x1="540" y1="52" x2="540" y2="60"/>
+    <line x1="140" y1="138" x2="140" y2="146"/><line x1="220" y1="138" x2="220" y2="146"/>
+    <line x1="300" y1="138" x2="300" y2="146"/><line x1="380" y1="138" x2="380" y2="146"/>
+    <line x1="460" y1="138" x2="460" y2="146"/><line x1="540" y1="138" x2="540" y2="146"/>
+    <line x1="140" y1="224" x2="140" y2="232"/><line x1="220" y1="224" x2="220" y2="232"/>
+    <line x1="300" y1="224" x2="300" y2="232"/><line x1="380" y1="224" x2="380" y2="232"/>
+    <line x1="460" y1="224" x2="460" y2="232"/><line x1="540" y1="224" x2="540" y2="232"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="140" y="78">1</text><text x="220" y="78">2</text><text x="300" y="78">3</text>
+    <text x="380" y="78">4</text><text x="460" y="78">5</text><text x="540" y="78">6</text>
+    <text x="140" y="164">1</text><text x="220" y="164">2</text><text x="300" y="164">3</text>
+    <text x="380" y="164">4</text><text x="460" y="164">5</text><text x="540" y="164">6</text>
+    <text x="140" y="250">1</text><text x="220" y="250">2</text><text x="300" y="250">3</text>
+    <text x="380" y="250">4</text><text x="460" y="250">5</text><text x="540" y="250">6</text>
+  </g>
+  <!-- row 1: start -->
+  <text x="16" y="54" fill="#1a2026" font-size="12.5" font-weight="600">start</text>
+  <text x="16" y="70" fill="#5c6b76" font-size="11.5">gaps 0, 2</text>
+  <circle cx="140" cy="56" r="14" fill="#4169E1"/><circle cx="220" cy="56" r="14" fill="#4169E1"/>
+  <circle cx="460" cy="56" r="14" fill="#4169E1"/>
+  <circle cx="300" cy="56" r="8" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <circle cx="380" cy="56" r="8" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <g text-anchor="middle" fill="#ffffff" font-size="12" font-weight="600">
+    <text x="140" y="60">1</text><text x="220" y="60">2</text><text x="460" y="60">5</text>
+  </g>
+  <path d="M 140 88 L 140 94 L 220 94 L 220 88" fill="none" stroke="#9aa7b2" stroke-width="1.2"/>
+  <path d="M 220 88 L 220 94 L 460 94 L 460 88" fill="none" stroke="#9aa7b2" stroke-width="1.2"/>
+  <text x="180" y="112" text-anchor="middle" fill="#5c6b76" font-size="12">0 empty slots</text>
+  <text x="340" y="112" text-anchor="middle" fill="#5c6b76" font-size="12">2 empty slots (3, 4)</text>
+  <!-- row 2: minimum, direct jump -->
+  <text x="16" y="140" fill="#4169E1" font-size="12.5" font-weight="600">min = 1</text>
+  <text x="16" y="156" fill="#5c6b76" font-size="11.5">jump 5 -&gt; 3</text>
+  <circle cx="140" cy="142" r="14" fill="#f0f3f7" stroke="#42525e" stroke-width="1.4"/>
+  <circle cx="220" cy="142" r="14" fill="#f0f3f7" stroke="#42525e" stroke-width="1.4"/>
+  <circle cx="300" cy="142" r="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <circle cx="460" cy="142" r="14" fill="#4169E1"/>
+  <path d="M 444 138 Q 380 108 318 134" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" font-size="12" font-weight="600">
+    <text x="140" y="146" fill="#1a2026">1</text><text x="220" y="146" fill="#1a2026">2</text>
+    <text x="300" y="146" fill="#1a2026">3</text><text x="460" y="146" fill="#ffffff">5</text>
+  </g>
+  <text x="562" y="146" fill="#5c6b76" font-size="12">done: 1, 2, 3</text>
+  <!-- row 3: maximum, two nudges -->
+  <text x="16" y="226" fill="#4169E1" font-size="12.5" font-weight="600">max = 2</text>
+  <text x="16" y="242" fill="#5c6b76" font-size="11.5">5 -&gt; 4 -&gt; 3</text>
+  <circle cx="140" cy="228" r="14" fill="#f0f3f7" stroke="#42525e" stroke-width="1.4"/>
+  <circle cx="220" cy="228" r="14" fill="#f0f3f7" stroke="#42525e" stroke-width="1.4"/>
+  <circle cx="300" cy="228" r="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <circle cx="380" cy="228" r="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <circle cx="460" cy="228" r="14" fill="#4169E1"/>
+  <path d="M 444 222 Q 420 202 398 218" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 364 222 Q 340 202 318 218" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" font-size="12" font-weight="600">
+    <text x="140" y="232" fill="#1a2026">1</text><text x="220" y="232" fill="#1a2026">2</text>
+    <text x="300" y="232" fill="#1a2026">3</text><text x="380" y="232" fill="#1a2026">4</text>
+    <text x="460" y="232" fill="#ffffff">5</text>
+  </g>
+  <text x="562" y="232" fill="#5c6b76" font-size="12">done: 1, 2, 3</text>
+  <text x="340" y="276" text-anchor="middle" fill="#1a2026" font-size="13">Gaps 0 and 2: a single jump 5 -&gt; 3 lands 1, 2, 3 consecutive, so the minimum is <tspan fill="#4169E1" font-weight="600">1</tspan>;</text>
+  <text x="340" y="294" text-anchor="middle" fill="#1a2026" font-size="13">the maximum is the empty-slot count 0 + 2 = <tspan fill="#4169E1" font-weight="600">2</tspan>: nudge 5 -&gt; 4, then 4 -&gt; 3.</text>
+</svg>

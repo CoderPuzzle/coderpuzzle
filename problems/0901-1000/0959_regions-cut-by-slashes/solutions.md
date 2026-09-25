@@ -53,6 +53,8 @@ region; since roots are precisely the self-parented nodes, one sweep
 counting `parent[x] == x` over all `4 * n * n` triangles returns the
 answer.
 
+![For `grid = ["/\\", "\\/"]`, quartering every square into top/right/bottom/left triangles and unioning everything that touches leaves five sets — the four corner halves plus the central diamond.](figures/solution-triangle-union-regions.svg)
+
 The quartering is faithful at exactly the resolution the walls need: a
 wall's endpoints are square corners, so two open areas can touch only
 inside a square, along a shared edge, or around a corner — and each of

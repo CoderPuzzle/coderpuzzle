@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- board = [["E","E","E","E","E"],["E","E","M","E","E"],["E","E","E","E","E"],["E","E","E","E","E"]], click = [3,0]; cells 64x44 at (60,64); result: 11 B, ring of eight 1s, mine stays M, (0,2) stays E -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="92" y="56">0</text><text x="156" y="56">1</text><text x="220" y="56">2</text><text x="284" y="56">3</text><text x="348" y="56">4</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="10.5">
+    <text x="52" y="91">0</text><text x="52" y="135">1</text><text x="52" y="179">2</text><text x="52" y="223">3</text>
+  </g>
+  <!-- row 0 -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="60" y="64" width="64" height="44" fill="#dbe4fb"/>
+    <rect x="124" y="64" width="64" height="44" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="188" y="64" width="64" height="44" fill="#f0f3f7"/>
+    <rect x="252" y="64" width="64" height="44" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="316" y="64" width="64" height="44" fill="#dbe4fb"/>
+  </g>
+  <!-- row 1 -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="60" y="108" width="64" height="44" fill="#dbe4fb"/>
+    <rect x="124" y="108" width="64" height="44" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="188" y="108" width="64" height="44" fill="#1a2026"/>
+    <rect x="252" y="108" width="64" height="44" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="316" y="108" width="64" height="44" fill="#dbe4fb"/>
+  </g>
+  <!-- row 2 -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="60" y="152" width="64" height="44" fill="#dbe4fb"/>
+    <rect x="124" y="152" width="64" height="44" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="188" y="152" width="64" height="44" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="252" y="152" width="64" height="44" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="316" y="152" width="64" height="44" fill="#dbe4fb"/>
+  </g>
+  <!-- row 3 -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="60" y="196" width="64" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.5"/>
+    <rect x="124" y="196" width="64" height="44" fill="#dbe4fb"/>
+    <rect x="188" y="196" width="64" height="44" fill="#dbe4fb"/>
+    <rect x="252" y="196" width="64" height="44" fill="#dbe4fb"/>
+    <rect x="316" y="196" width="64" height="44" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="14">
+    <text x="92" y="91" fill="#1a2026">B</text><text x="156" y="91" font-weight="600" fill="#1a2026">1</text><text x="220" y="91" fill="#9aa7b2">E</text><text x="284" y="91" font-weight="600" fill="#1a2026">1</text><text x="348" y="91" fill="#1a2026">B</text>
+    <text x="92" y="135" fill="#1a2026">B</text><text x="156" y="135" font-weight="600" fill="#1a2026">1</text><text x="220" y="135" fill="#ffffff" font-weight="600">M</text><text x="284" y="135" font-weight="600" fill="#1a2026">1</text><text x="348" y="135" fill="#1a2026">B</text>
+    <text x="92" y="179" fill="#1a2026">B</text><text x="156" y="179" font-weight="600" fill="#1a2026">1</text><text x="220" y="179" font-weight="600" fill="#1a2026">1</text><text x="284" y="179" font-weight="600" fill="#1a2026">1</text><text x="348" y="179" fill="#1a2026">B</text>
+    <text x="92" y="223" fill="#1a2026">B</text><text x="156" y="223" fill="#1a2026">B</text><text x="220" y="223" fill="#1a2026">B</text><text x="284" y="223" fill="#1a2026">B</text><text x="348" y="223" fill="#1a2026">B</text>
+  </g>
+  <path d="M 50 292 Q 58 268 80 250" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="16" y="308" text-anchor="start" fill="#4169E1" font-size="12.5" font-weight="600">click [3,0]</text>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="416" y="80">from [3,0], every zero-count</text>
+    <text x="416" y="100">square turns 'B' and enqueues</text>
+    <text x="416" y="120">its neighbors; a count-1 square</text>
+    <text x="416" y="140">becomes a digit and enqueues</text>
+    <text x="416" y="160">nothing — the flood dies there</text>
+  </g>
+  <g font-size="12" fill="#5c6b76">
+    <rect x="416" y="186" width="16" height="16" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+    <text x="440" y="198">revealed blank 'B' (11 squares)</text>
+    <rect x="416" y="214" width="16" height="16" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <text x="440" y="226">digit ring: flood dies here (8)</text>
+    <rect x="416" y="242" width="16" height="16" fill="#f0f3f7" stroke="#42525e" stroke-width="1"/>
+    <text x="440" y="254">unrevealed 'E' beyond it (1)</text>
+    <rect x="416" y="270" width="16" height="16" fill="#1a2026"/>
+    <text x="440" y="282">the mine 'M' is never revealed</text>
+  </g>
+  <text x="340" y="308" text-anchor="middle" fill="#1a2026" font-size="13">From click [3,0] the flood fills <tspan fill="#4169E1" font-weight="600">11</tspan> blanks with 'B' and dies on the ring of</text>
+  <text x="340" y="326" text-anchor="middle" fill="#1a2026" font-size="13">eight count-1 squares around the mine — (0,2) alone stays 'E' beyond it.</text>
+</svg>

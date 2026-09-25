@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="400" fill="#ffffff"/>
+  <!-- s = "abab"; cells 80x42 at x = 160 + 80i, rows y = 48/146/244; the two cells compared in each step fill #dbe4fb; suffix starts already dominated by an earlier jump are gray -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="200" y="40">0</text><text x="280" y="40">1</text><text x="360" y="40">2</text><text x="440" y="40">3</text>
+  </g>
+  <!-- step 1: i = 0, j = 1, k = 0 — s[0] loses to s[1], start 0 dominated -->
+  <text x="70" y="74" fill="#5c6b76" font-size="12">step 1 (k = 0)</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="160" y="48" width="80" height="42" fill="#dbe4fb"/>
+    <rect x="240" y="48" width="80" height="42" fill="#dbe4fb"/>
+    <rect x="320" y="48" width="80" height="42" fill="#ffffff"/>
+    <rect x="400" y="48" width="80" height="42" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="200" y="75">a</text><text x="280" y="75">b</text><text x="360" y="75">a</text><text x="440" y="75">b</text>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="200" y="106" fill="#4169E1">i</text><text x="280" y="106" fill="#1a2026">j</text>
+  </g>
+  <text x="320" y="130" text-anchor="middle" font-size="13" fill="#1a2026"><tspan fill="#4169E1" font-weight="600">'a' &lt; 'b'</tspan>: suffix start 0 is dominated → i = 1, j = 2</text>
+  <!-- step 2: i = 1, j = 2, k = 0 — challenger s[2] loses, start 2 dominated -->
+  <text x="70" y="172" fill="#5c6b76" font-size="12">step 2 (k = 0)</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="160" y="146" width="80" height="42" fill="#f0f3f7"/>
+    <rect x="240" y="146" width="80" height="42" fill="#dbe4fb"/>
+    <rect x="320" y="146" width="80" height="42" fill="#dbe4fb"/>
+    <rect x="400" y="146" width="80" height="42" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="200" y="173" fill="#9aa7b2">a</text><text x="280" y="173" fill="#1a2026">b</text><text x="360" y="173" fill="#1a2026">a</text><text x="440" y="173" fill="#1a2026">b</text>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="280" y="204" fill="#4169E1">i</text><text x="360" y="204" fill="#1a2026">j</text>
+  </g>
+  <text x="320" y="228" text-anchor="middle" font-size="13" fill="#1a2026"><tspan fill="#4169E1" font-weight="600">'b' &gt; 'a'</tspan>: suffix start 2 is dominated → j = 3</text>
+  <!-- step 3: i = 1, j = 3, k = 0 — equal characters grow k to 1, then j + k exits -->
+  <text x="70" y="270" fill="#5c6b76" font-size="12">step 3 (k = 0)</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="160" y="244" width="80" height="42" fill="#f0f3f7"/>
+    <rect x="240" y="244" width="80" height="42" fill="#dbe4fb"/>
+    <rect x="320" y="244" width="80" height="42" fill="#f0f3f7"/>
+    <rect x="400" y="244" width="80" height="42" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="200" y="271" fill="#9aa7b2">a</text><text x="280" y="271" fill="#1a2026">b</text><text x="360" y="271" fill="#9aa7b2">a</text><text x="440" y="271" fill="#1a2026">b</text>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="280" y="302" fill="#4169E1">i</text><text x="440" y="302" fill="#1a2026">j</text>
+  </g>
+  <text x="320" y="326" text-anchor="middle" font-size="13" fill="#1a2026"><tspan fill="#4169E1" font-weight="600">'b' = 'b'</tspan>: the shared prefix grows to k = 1, and j + k = 4 exits</text>
+  <text x="320" y="358" text-anchor="middle" font-size="15" fill="#1a2026">answer: s[1:] = <tspan fill="#4169E1" font-weight="700">"bab"</tspan></text>
+  <text x="320" y="386" text-anchor="middle" font-size="13" fill="#1a2026">Gray starts are dominated and never re-examined — three comparisons settle i = 1.</text>
+</svg>

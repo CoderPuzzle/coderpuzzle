@@ -13,6 +13,8 @@ node's own value is folded into `pathMin`/`pathMax` for its children.
 Folding after the compare, not before, matters: a node is never its own
 ancestor, so the pair it contributes must come from strictly above it.
 
+![On root = [8,3,10,1,6,null,14,null,null,4,7,13], each stack frame carries the min and max of the node's strict ancestors, and node 1 pairs against 3 and 8 to set the maximum difference of 7.](figures/solution-ancestor-min-max-frames.svg)
+
 The traversal is deliberately iterative rather than the classic recursive
 `dfs(child, min(pathMin, node.val), max(pathMax, node.val))`. The tree may
 hold up to `5000` nodes, and a skewed chain makes recursion depth grow

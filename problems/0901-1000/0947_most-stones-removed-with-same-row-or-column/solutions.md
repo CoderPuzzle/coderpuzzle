@@ -56,6 +56,8 @@ every stone of a column, so the classes are exactly the components. A final
 pass counts the indices that are their own root and returns `n` minus that
 count.
 
+![Union-find on Example 1's six stones merges every stone sharing a row or column into one component, so the answer is 6 stones − 1 component = 5 removals.](figures/solution-union-find-components.svg)
+
 Each of the `n` stones does two expected-`O(1)` map operations and at most
 two finds, and the parent and size arrays hold one entry per stone.
 

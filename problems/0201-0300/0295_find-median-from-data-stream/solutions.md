@@ -6,6 +6,8 @@ A running median needs the middle of the sorted order, and only the middle. The 
 
 `addNum` routes every number through both heaps: push onto `low`, move `low`'s maximum across to `high`, and if `high` then holds more elements than `low`, move `high`'s minimum back. This round trip looks redundant but is what keeps the invariant "`low`'s maximum ≤ `high`'s minimum, sizes within one" true no matter where the new value belongs — one comparison-free dispatch instead of three cases. `findMedian` then averages the two tops for an even count, or returns `low`'s top alone when it holds the extra element.
 
+![Adding 1, 2, 3: each push-move-rebalance round trip leaves the tops readable, so the medians come out 1.5 and then 2.0 with low = [2, 1] and high = [3].](figures/solution-push-move-rebalance.svg)
+
 Medians of integer streams are integers or exact halves, so the double arithmetic is exact. With `5 * 10⁴` calls, each a constant number of `O(log n)` heap operations, the workload stays tiny.
 
 **Complexity:** `O(log n)` per `addNum`, `O(1)` per `findMedian`, `O(n)` space.

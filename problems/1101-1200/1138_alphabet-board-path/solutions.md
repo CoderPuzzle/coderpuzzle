@@ -18,6 +18,8 @@ reaching `z` means the `L`s run before the `D`s, so the descent into row 5
 happens strictly in column 0. Leaving `z` is the mirror case: the `U`s climb
 column 0 before any `R` fires.
 
+![Spelling leet from a, the four legs a→l, l→e, e→e and e→t emit DDR!, UURRR!, ! and DDD! in U-L-D-R order without ever entering row 5, giving DDR!UURRR!!DDD!.](figures/solution-uld-r-walk.svg)
+
 The result is one short string per leg appended to the answer, and the
 whole output length is `Σ(|Δr| + |Δc| + 1)` — minimal by construction.
 

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 304" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="304" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tree 1(2,3(4,5)) from statement Example 1; stream 1,2,#,#,3,4,#,#,5,#,# = 11 tokens for 5 nodes;
+       snapshot: after consuming 1,2,#,# the stack holds just the root's right slot, and token 3 claims it, leaving 3's two slots -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 112 71 L 78 127"/>
+    <path d="M 128 71 L 162 127"/>
+    <path d="M 162 153 L 128 209"/>
+    <path d="M 178 153 L 212 209"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="120" cy="58" r="15"/>
+    <circle cx="70" cy="140" r="15"/>
+    <circle cx="120" cy="222" r="15"/>
+    <circle cx="220" cy="222" r="15"/>
+  </g>
+  <circle cx="170" cy="140" r="15" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.7"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="120" y="63" fill="#1a2026">1</text>
+    <text x="70" y="145" fill="#1a2026">2</text>
+    <text x="170" y="145" fill="#4169E1">3</text>
+    <text x="120" y="227" fill="#1a2026">4</text>
+    <text x="220" y="227" fill="#1a2026">5</text>
+  </g>
+  <text x="120" y="254" text-anchor="middle" fill="#5c6b76" font-size="11.5">the rebuilt tree</text>
+  <!-- token stream -->
+  <text x="310" y="44" fill="#5c6b76" font-size="12">preorder tokens</text>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="310" y="58" width="28" height="30"/><rect x="340" y="58" width="28" height="30"/>
+    <rect x="370" y="58" width="28" height="30"/><rect x="400" y="58" width="28" height="30"/>
+  </g>
+  <rect x="430" y="58" width="28" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="460" y="58" width="28" height="30"/><rect x="490" y="58" width="28" height="30"/>
+    <rect x="520" y="58" width="28" height="30"/><rect x="550" y="58" width="28" height="30"/>
+    <rect x="580" y="58" width="28" height="30"/><rect x="610" y="58" width="28" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="324" y="78" fill="#9aa7b2">1</text><text x="354" y="78" fill="#9aa7b2">2</text>
+    <text x="384" y="78" fill="#9aa7b2">#</text><text x="414" y="78" fill="#9aa7b2">#</text>
+    <text x="444" y="78" fill="#4169E1" font-weight="600">3</text>
+    <text x="474" y="78" fill="#1a2026">4</text><text x="504" y="78" fill="#1a2026">#</text>
+    <text x="534" y="78" fill="#1a2026">#</text><text x="564" y="78" fill="#1a2026">5</text>
+    <text x="594" y="78" fill="#1a2026">#</text><text x="624" y="78" fill="#1a2026">#</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1">
+    <path d="M 310 96 H 424" fill="none"/>
+  </g>
+  <text x="367" y="109" text-anchor="middle" fill="#9aa7b2" font-size="10.5">consumed</text>
+  <text x="444" y="109" text-anchor="middle" fill="#4169E1" font-size="10.5">next</text>
+  <!-- stack of open child slots, before and after token 3 -->
+  <text x="310" y="152" fill="#5c6b76" font-size="11.5">after 1, 2, #, #</text>
+  <rect x="310" y="160" width="120" height="28" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="370" y="179" text-anchor="middle" fill="#1a2026" font-size="12.5">root's right</text>
+  <path d="M 434 174 H 494" stroke="#4169E1" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <text x="464" y="164" text-anchor="middle" fill="#4169E1" font-size="11">read 3</text>
+  <text x="500" y="152" fill="#5c6b76" font-size="11.5">after 3</text>
+  <rect x="500" y="160" width="120" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="560" y="179" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">3's left</text>
+  <rect x="500" y="192" width="120" height="28" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="560" y="211" text-anchor="middle" fill="#1a2026" font-size="12.5">3's right</text>
+  <text x="560" y="238" text-anchor="middle" fill="#5c6b76" font-size="10.5">its top takes token 4 next</text>
+  <text x="340" y="270" text-anchor="middle" fill="#1a2026" font-size="13">Each token fills the stack's top slot; a value opens two slots, a # closes one.</text>
+  <text x="340" y="290" text-anchor="middle" fill="#1a2026" font-size="13">The stream ends with the <tspan fill="#4169E1" font-weight="600">stack empty</tspan> and the tree 1(2, 3(4, 5)) rebuilt.</text>
+</svg>

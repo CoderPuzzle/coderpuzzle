@@ -17,5 +17,7 @@ count for making that row uniform under `v`. The overall answer is the
 smaller such count over both candidates, tried in turn, or `-1` if
 neither candidate survives the pass.
 
+![On tops = [2,1,2,4,2,2] and bottoms = [5,2,6,2,3,2], candidate 2 sits on some face of all six dominoes: rotating i = 1 and i = 3 fills the top row for 2 rotations versus 3 for the bottom, so min picks 2.](figures/solution-candidate-2-rotation-counts.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space, where `n` is the number of
 dominoes.

@@ -29,4 +29,6 @@ current walk, so the call stack is safely small in every language here; the
 count itself also stays far inside 32 bits, being a count of walks over at
 most twenty squares.
 
+![On the [[1,0,0,0],[0,0,0,0],[0,0,2,-1]] grid, the walk sets one bit per square and reaches mask = full = 2047 exactly when it steps onto the end square 2; the backtrack counts two such walks.](figures/solution-backtrack-bitmask-walk.svg)
+
 **Complexity:** `O(4^(m*n))` time, `O(m*n)` space.

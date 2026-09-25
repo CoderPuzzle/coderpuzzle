@@ -18,6 +18,10 @@ endpoint and its midpoint-reflection on the other. Midpoints are kept doubled
 midpoint is half-integral. With at most `C(50, 2) = 1,225` pairs, each doing
 one hash lookup against a tiny bucket, the scan is instant.
 
+![On `[[1,2],[2,1],[1,0],[0,1]]` both diagonals hash to the same key
+`(2, 2, 4)` — doubled midpoint `(1 + 1, 1 + 1)` and squared length `4` — so
+their collision certifies the tilted rectangle of area `2`.](figures/solution-diagonal-midpoint-key.svg)
+
 The area needs no square roots along the way. For the current pair `(x1, y1)`
 and a stored endpoint `(rx, ry)`, the sides at that corner run to `(rx, ry)`
 and to the reflection, whose offset is `(x2 - rx, y2 - ry)`; the product of

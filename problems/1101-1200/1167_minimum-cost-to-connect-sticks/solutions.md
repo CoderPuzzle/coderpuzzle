@@ -6,6 +6,8 @@ Each merge of lengths `x` and `y` costs `x + y`, and the combined stick carries 
 
 A min-heap of the stick lengths gives the two smallest in logarithmic time. The loop pops the two shortest, adds their sum to the running total, and pushes the combined length back for future merges. Each iteration reduces the stick count by one, so after `len(sticks) - 1` iterations a single stick remains and the accumulated total is the answer.
 
+![For sticks = [2,4,3] the greedy merges 2 + 3 = 5 and then 5 + 4 = 9, and the merge tree's internal nodes read off the total cost 5 + 9 = 14 with the short sticks sitting deepest.](figures/solution-min-heap-merge-tree.svg)
+
 A single stick needs no merge and returns 0 immediately, which also covers the smallest input. Sorting up-front is unnecessary — `heapify` builds the heap in linear time, and the sequence of pops automatically considers sticks in the right order as combined lengths re-enter the pool.
 
 **Complexity:** `O(N log N)` time, `O(N)` space.

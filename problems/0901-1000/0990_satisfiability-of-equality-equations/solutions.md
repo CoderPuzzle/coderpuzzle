@@ -29,4 +29,6 @@ re-reads the list and fails exactly when some '!=' has both sides in
 one class — such a pair demands two different values from letters
 obliged to share one.
 
+![On equations = ["a==b", "b!=a"], pass one leaves parent[a] = b with b the class root, and pass two finds both sides of b!=a inside that one class, so the verdict is false.](figures/solution-union-first-judge.svg)
+
 **Complexity:** `O(n * alpha(26))` time, `O(1)` space (26 letters).

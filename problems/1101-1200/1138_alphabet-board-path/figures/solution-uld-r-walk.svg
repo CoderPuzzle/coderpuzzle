@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- board = abcde/fghij/klmno/pqrst/uvwxy/z; target "leet" visits a f k l g b c d e j o t; cells 44x44 at (60,30); output DDR!UURRR!!DDD! -->
+  <g stroke="#42525e" stroke-width="1">
+    <g fill="#4169E1">
+      <rect x="60" y="30" width="44" height="44"/><rect x="104" y="118" width="44" height="44"/>
+      <rect x="236" y="30" width="44" height="44"/><rect x="236" y="162" width="44" height="44"/>
+    </g>
+    <g fill="#dbe4fb">
+      <rect x="60" y="74" width="44" height="44"/><rect x="60" y="118" width="44" height="44"/>
+      <rect x="104" y="74" width="44" height="44"/><rect x="104" y="30" width="44" height="44"/>
+      <rect x="148" y="30" width="44" height="44"/><rect x="192" y="30" width="44" height="44"/>
+      <rect x="236" y="74" width="44" height="44"/><rect x="236" y="118" width="44" height="44"/>
+    </g>
+    <g fill="#ffffff">
+      <rect x="148" y="74" width="44" height="44"/><rect x="192" y="74" width="44" height="44"/>
+      <rect x="148" y="118" width="44" height="44"/><rect x="192" y="118" width="44" height="44"/>
+      <rect x="60" y="162" width="44" height="44"/><rect x="104" y="162" width="44" height="44"/>
+      <rect x="148" y="162" width="44" height="44"/><rect x="192" y="162" width="44" height="44"/>
+      <rect x="60" y="206" width="44" height="44"/><rect x="104" y="206" width="44" height="44"/>
+      <rect x="148" y="206" width="44" height="44"/><rect x="192" y="206" width="44" height="44"/>
+      <rect x="236" y="206" width="44" height="44"/>
+    </g>
+    <rect x="60" y="250" width="44" height="44" fill="#f0f3f7"/>
+  </g>
+  <!-- letters -->
+  <g text-anchor="middle" fill="#1a2026">
+    <g fill="#ffffff" font-weight="600">
+      <text x="82" y="57">a</text><text x="126" y="145">l</text><text x="258" y="57">e</text><text x="258" y="189">t</text>
+    </g>
+    <text x="126" y="57">b</text><text x="170" y="57">c</text><text x="214" y="57">d</text>
+    <text x="82" y="101">f</text><text x="126" y="101">g</text><text x="258" y="101">j</text>
+    <text x="82" y="145">k</text><text x="258" y="145">o</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76">
+    <text x="170" y="101">h</text><text x="214" y="101">i</text>
+    <text x="170" y="145">m</text><text x="214" y="145">n</text>
+    <text x="82" y="189">p</text><text x="126" y="189">q</text><text x="170" y="189">r</text><text x="214" y="189">s</text>
+    <text x="82" y="233">u</text><text x="126" y="233">v</text><text x="170" y="233">w</text><text x="214" y="233">x</text><text x="258" y="233">y</text>
+  </g>
+  <text x="82" y="277" text-anchor="middle" fill="#9aa7b2">z</text>
+  <!-- per-move arrows crossing cell borders, in walking order -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 82 66 L 82 83" marker-end="url(#arrow)"/>
+    <path d="M 82 110 L 82 127" marker-end="url(#arrow)"/>
+    <path d="M 95 145 L 113 145" marker-end="url(#arrow)"/>
+    <path d="M 126 127 L 126 111" marker-end="url(#arrow)"/>
+    <path d="M 126 83 L 126 66" marker-end="url(#arrow)"/>
+    <path d="M 139 57 L 157 57" marker-end="url(#arrow)"/>
+    <path d="M 183 57 L 201 57" marker-end="url(#arrow)"/>
+    <path d="M 227 57 L 245 57" marker-end="url(#arrow)"/>
+    <path d="M 258 66 L 258 83" marker-end="url(#arrow)"/>
+    <path d="M 258 110 L 258 127" marker-end="url(#arrow)"/>
+    <path d="M 258 154 L 258 171" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="10.5" fill="#5c6b76" text-anchor="middle">
+    <text x="96" y="68">D</text><text x="96" y="112">D</text><text x="94" y="137">R</text>
+    <text x="140" y="112">U</text><text x="140" y="68">U</text><text x="136" y="49">R</text>
+    <text x="180" y="49">R</text><text x="226" y="49">R</text><text x="272" y="68">D</text>
+    <text x="272" y="112">D</text><text x="272" y="156">D</text>
+  </g>
+  <!-- the four legs, each emitted in U, L, D, R order -->
+  <text x="320" y="44" fill="#5c6b76" font-size="12.5">legs, moves in U L D R order:</text>
+  <g font-size="13">
+    <text x="320" y="76" fill="#1a2026">a → l:  <tspan fill="#4169E1" font-weight="600">D D R !</tspan></text>
+    <text x="320" y="106" fill="#1a2026">l → e:  <tspan fill="#4169E1" font-weight="600">U U R R R !</tspan></text>
+    <text x="320" y="136" fill="#1a2026">e → e:  <tspan fill="#4169E1" font-weight="600">!</tspan></text>
+    <text x="320" y="166" fill="#1a2026">e → t:  <tspan fill="#4169E1" font-weight="600">D D D !</tspan></text>
+  </g>
+  <text x="320" y="205" fill="#5c6b76" font-size="12">each leg: |Δr| + |Δc| moves then !</text>
+  <text x="40" y="306" fill="#1a2026" font-size="13">Ordered U, then L, then D, then R, no leg ever steps on row 5's</text>
+  <text x="40" y="324" fill="#1a2026" font-size="13">nonexistent cells: leet spells <tspan fill="#4169E1" font-weight="600">DDR!UURRR!!DDD!</tspan>.</text>
+</svg>

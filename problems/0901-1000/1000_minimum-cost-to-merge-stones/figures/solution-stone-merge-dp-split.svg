@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 348" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="348" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- stones = [3,2,4,1], k = 2; cells 70x40 at (150,40); merge nodes (225,150) (385,150), final pile (305,240); dp[0][3][2] = dp[0][1][1] + dp[2][3][1] = 5 + 5, final merge cost = 10 -->
+  <text x="305" y="22" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">split mid = 1</text>
+  <line x1="305" y1="30" x2="305" y2="86" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="150" y="40" width="70" height="40"/><rect x="230" y="40" width="70" height="40"/>
+    <rect x="310" y="40" width="70" height="40"/><rect x="390" y="40" width="70" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="185" y="66">3</text><text x="265" y="66">2</text><text x="345" y="66">4</text><text x="425" y="66">1</text>
+  </g>
+  <!-- merge edges: piles to first merges, merges to the final pile -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 185 80 L 222 126" marker-end="url(#arrow)"/>
+    <path d="M 265 80 L 228 126" marker-end="url(#arrow)"/>
+    <path d="M 345 80 L 382 126" marker-end="url(#arrow)"/>
+    <path d="M 425 80 L 388 126" marker-end="url(#arrow)"/>
+    <path d="M 225 172 L 302 212" marker-end="url(#arrow)"/>
+    <path d="M 385 172 L 308 212" marker-end="url(#arrow)"/>
+  </g>
+  <circle cx="225" cy="150" r="22" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <text x="225" y="156" text-anchor="middle" font-weight="600">5</text>
+  <circle cx="385" cy="150" r="22" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <text x="385" y="156" text-anchor="middle" font-weight="600">5</text>
+  <circle cx="305" cy="240" r="26" fill="#4169E1"/>
+  <text x="305" y="246" text-anchor="middle" fill="#ffffff" font-weight="600">10</text>
+  <text x="195" y="155" text-anchor="end" fill="#4169E1" font-size="12.5" font-weight="600">dp[0][1][1] = 5</text>
+  <text x="415" y="155" fill="#4169E1" font-size="12.5" font-weight="600">dp[2][3][1] = 5</text>
+  <text x="270" y="244" text-anchor="end" fill="#4169E1" font-size="12.5" font-weight="600">dp[0][3][1] = 20</text>
+  <text x="340" y="244" fill="#5c6b76" font-size="12.5">dp[0][3][2] = 10</text>
+  <text x="40" y="310" fill="#1a2026" font-size="13">Split dp[0][3][2] = dp[0][1][1] + dp[2][3][1] = 5 + 5 at mid = 1;</text>
+  <text x="40" y="330" fill="#1a2026" font-size="13">the final k-merge costs the interval total 10, so dp[0][3][1] = <tspan fill="#4169E1" font-weight="600">20</tspan>.</text>
+</svg>

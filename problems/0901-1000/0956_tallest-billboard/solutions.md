@@ -20,6 +20,8 @@ pinned by `right = left - d`, and both welding moves pay off monotonically in
 `left` — so one height per difference is a faithful summary. At the end
 `d = 0` holds equal stands, and its recorded height is the answer.
 
+![For `rods = [1,2,3,6]`, each rod relaxes every reached gap three ways; welding rods 1, 2, and 3 left reaches (d 6, left 6), and rod 6's right weld closes the gap, leaving d = 0 at left height 6.](figures/solution-difference-dp-map.svg)
+
 Differences never leave `[-total, total]` for `total` the sum of all rods, so
 the map is one flat array of `2 * total + 1` slots indexed by `d + total`,
 with `-1` marking differences no build reaches. Each rod rebuilds the array

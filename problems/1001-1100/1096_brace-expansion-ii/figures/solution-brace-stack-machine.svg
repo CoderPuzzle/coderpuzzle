@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- expression = {a,b}{c,{d,e}}; stack boxes 150x28; prefix boxes #dbe4fb, union slots #ffffff;
+       deepest stack is just after the inner '{' opens: prefixes {a,b} and {""}, slots {c} and {} -->
+  <text x="40" y="26" fill="#5c6b76" font-size="13">expression = {a,b}{c,{d,e}}</text>
+  <rect x="430" y="15" width="12" height="12" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+  <text x="448" y="25" fill="#5c6b76" font-size="11.5">saved prefix</text>
+  <rect x="545" y="15" width="12" height="12" fill="#ffffff" stroke="#42525e" stroke-width="1"/>
+  <text x="563" y="25" fill="#5c6b76" font-size="11.5">union slot</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">
+    <text x="120" y="58">after "{a,b}" closes</text>
+    <text x="340" y="58">deepest stack, before d</text>
+    <text x="560" y="58">before the final }</text>
+  </g>
+  <!-- panel 1: empty stack -->
+  <rect x="48" y="140" width="144" height="80" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="120" y="184" text-anchor="middle" fill="#9aa7b2" font-size="12.5">stack empty</text>
+  <!-- panel 2: deepest stack -->
+  <line x1="265" y1="228" x2="415" y2="228" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="265" y="194" width="150" height="28" fill="#dbe4fb" stroke="#42525e" stroke-width="1.4"/>
+  <text x="340" y="212.5" text-anchor="middle" fill="#1a2026" font-size="12.5">prefix {a, b}</text>
+  <rect x="265" y="164" width="150" height="28" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="340" y="182.5" text-anchor="middle" fill="#1a2026" font-size="12.5">slot {c}</text>
+  <rect x="265" y="134" width="150" height="28" fill="#dbe4fb" stroke="#42525e" stroke-width="1.4"/>
+  <text x="340" y="152.5" text-anchor="middle" fill="#1a2026" font-size="12.5">prefix {""}</text>
+  <rect x="265" y="104" width="150" height="28" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="340" y="122.5" text-anchor="middle" fill="#1a2026" font-size="12.5">slot {}</text>
+  <!-- panel 3: near the end -->
+  <line x1="485" y1="228" x2="635" y2="228" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="485" y="194" width="150" height="28" fill="#dbe4fb" stroke="#42525e" stroke-width="1.4"/>
+  <text x="560" y="212.5" text-anchor="middle" fill="#1a2026" font-size="12.5">prefix {a, b}</text>
+  <rect x="485" y="164" width="150" height="28" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="560" y="182.5" text-anchor="middle" fill="#1a2026" font-size="12.5">slot {c}</text>
+  <!-- flow arrows between panels -->
+  <text x="230" y="144" text-anchor="middle" fill="#9aa7b2" font-size="11">{ c , {</text>
+  <line x1="205" y1="155" x2="253" y2="155" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrowGray)"/>
+  <text x="450" y="144" text-anchor="middle" fill="#9aa7b2" font-size="11">d , e }</text>
+  <line x1="425" y1="155" x2="473" y2="155" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrowGray)"/>
+  <!-- cur row -->
+  <g text-anchor="middle" font-size="13" fill="#5c6b76">
+    <text x="120" y="252">cur = <tspan fill="#4169E1" font-weight="600">{a, b}</tspan></text>
+    <text x="340" y="252">cur = <tspan fill="#4169E1" font-weight="600">{""}</tspan></text>
+    <text x="560" y="252">cur = <tspan fill="#4169E1" font-weight="600">{d, e}</tspan></text>
+  </g>
+  <text x="40" y="296" fill="#1a2026" font-size="13">The last } unions the slot {c} with cur {d,e} and concatenates the saved prefix:</text>
+  <text x="40" y="314" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">{a,b} × {c,d,e} = [ac, ad, ae, bc, bd, be]</tspan>, deduplicated and sorted.</text>
+</svg>

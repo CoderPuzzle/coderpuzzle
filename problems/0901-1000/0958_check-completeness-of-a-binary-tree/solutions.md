@@ -26,6 +26,8 @@ ever happening. A chain of three or more nodes fails this test like any
 other hole: its third node sits at slot 4 while slot 3 stays empty,
 leaving a level above the last unfilled.
 
+![For `root = [1,2,3,4,5,null,7]`, the queue carries null placeholders until the first null pops and sets the gap flag; node 7 popping afterwards is a real node beyond the hole and returns false.](figures/solution-gap-flag-queue.svg)
+
 Every node enters the queue once, plus at most two placeholders per
 node, and the walk is iterative throughout — a chain of any length
 never touches the call stack.

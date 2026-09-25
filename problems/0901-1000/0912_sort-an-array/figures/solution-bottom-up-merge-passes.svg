@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- nums = [5,2,3,1]; cells 52x40 at x=191+62k, rows y=74/154/234; brackets = adjacent runs merged in each pass -->
+  <text x="310" y="30" text-anchor="middle" fill="#5c6b76" font-size="12.5">nums = [5, 2, 3, 1]</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.2">
+    <rect x="191" y="74" width="52" height="40"/><rect x="253" y="74" width="52" height="40"/><rect x="315" y="74" width="52" height="40"/><rect x="377" y="74" width="52" height="40"/>
+    <rect x="191" y="154" width="52" height="40"/><rect x="253" y="154" width="52" height="40"/><rect x="315" y="154" width="52" height="40"/><rect x="377" y="154" width="52" height="40"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="191" y="234" width="52" height="40"/><rect x="253" y="234" width="52" height="40"/><rect x="315" y="234" width="52" height="40"/><rect x="377" y="234" width="52" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="217" y="99">5</text><text x="279" y="99">2</text><text x="341" y="99">3</text><text x="403" y="99">1</text>
+    <text x="217" y="179">2</text><text x="279" y="179">5</text><text x="341" y="179">1</text><text x="403" y="179">3</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="217" y="259">1</text><text x="279" y="259">2</text><text x="341" y="259">3</text><text x="403" y="259">5</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 191 66 V 58 H 305 V 66"/>
+    <path d="M 315 66 V 58 H 429 V 66"/>
+    <path d="M 191 146 V 138 H 429 V 146"/>
+    <path d="M 460 120 V 148" marker-end="url(#arrow)"/>
+    <path d="M 460 200 V 228" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="310" y="46">merges at width 1</text>
+    <text x="310" y="130">one merge of the two runs, width 2</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="170" y="99">start</text>
+    <text x="170" y="179">after the w = 1 pass</text>
+    <text x="170" y="259">after the w = 2 pass</text>
+  </g>
+  <text x="310" y="308" text-anchor="middle" fill="#1a2026" font-size="13">The width-1 pass merges (5, 2) &#8594; [2, 5] and (3, 1) &#8594; [1, 3];</text>
+  <text x="310" y="330" text-anchor="middle" fill="#1a2026" font-size="13">one width-2 merge finishes <tspan fill="#4169E1" font-weight="600">[1, 2, 3, 5]</tspan> &#8212; bottom-up, no recursion.</text>
+</svg>

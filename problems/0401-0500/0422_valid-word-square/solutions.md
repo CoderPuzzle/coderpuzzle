@@ -18,6 +18,8 @@ missing row, a too-short row, a too-long row, a plain character mismatch —
 returns false on the spot; a full silent pass means every cell is mirrored
 and the sequence is a valid word square.
 
+![On words = ["ball", "area", "read", "lady"], the mirror pair (0,2)/(2,0) is the one that breaks — cell (0,2) holds 'l' against 'r' at (2,0) — so row 2 reads 'read' while column 2 reads 'lead'.](figures/solution-broken-mirror-pair.svg)
+
 Each character is visited once and provokes at most one lookup on the far
 side of the diagonal, so the whole pass costs the total character count of
 the input. Only indices are kept — no transposed copy, no padded grid, no

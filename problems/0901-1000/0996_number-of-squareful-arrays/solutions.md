@@ -23,5 +23,7 @@ the loop only ever iterates admissible successors. Counting each distinct
 value sequence once is exactly the multiset semantics the rule for different
 permutations asks for: `[2,2,2]` has the single ordering it visibly has.
 
+![For nums = [1,17,8], the square-sum adjacency has only the edges 1+8=9 and 8+17=25, so the backtracking walks exactly 1→8→17 and 17→8→1: 2 squareful permutations.](figures/solution-square-sum-paths.svg)
+
 **Complexity:** `O(d! · d²)` worst case (`d` = distinct values, `d <= 12`)
 time, `O(d²)` space.

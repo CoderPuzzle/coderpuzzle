@@ -21,6 +21,8 @@ sum that ends at or before the start of the current `M`-length window
 At each step, combine that running maximum with the current `M`-length
 window's sum and keep the best total seen.
 
+![On nums = [0,6,5,2,2,5,1,9,4] with firstLen = 1 and secondLen = 2, the sweep keeps the best leading window left of each trailing window, and leading [6,5] plus trailing [9] gives the best total 20.](figures/solution-leading-trailing-windows.svg)
+
 That helper only accounts for "the `L`-length window occurs before the
 `M`-length window" — the array could just as well place `firstLen`
 after `secondLen`, so the helper is called twice, once with

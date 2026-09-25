@@ -13,6 +13,8 @@ down to `1`, applying the next operator in the fixed rotation to each:
 a brand-new entry. Once every number is consumed, each stack entry already
 carries the sign its term contributes, so summing the stack is the answer.
 
+![For n = 4 the stack evolves [4] → [12] → [6] as * 3 and / 2 fold one multiplicative chain into the top entry, then + 1 pushes a second entry, and the stack [6, 1] sums to the answer 7.](figures/solution-signed-chain-stack.svg)
+
 The one subtlety is division. A `-` push can leave a negative value on top
 of the stack, and the very next operator in the rotation is always `*`,
 which can go on to multiply that negative top by another number before a

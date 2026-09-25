@@ -9,6 +9,8 @@ internal node, and return it. The top-level call covers the whole `n * n`
 grid, and since `n` is a power of two every split lands exactly on cell
 boundaries, terminating at 1×1 squares that are uniform by definition.
 
+![On grid = [[0,1],[1,0]], the single split makes the root internal — [0, 1] — and each uniform 1x1 quadrant becomes a leaf, giving [[0, 1], [1, 0], [1, 1], [1, 1], [1, 0]] in level order.](figures/solution-quad-split-leaves.svg)
+
 A uniform check costs one pass over the region's cells, so the worst case
 (a checkerboard, which splits at every level) does `O(n^2)` work per level
 over `O(log n)` levels. Depth is at most 7 for the constraint's `n <= 64`,

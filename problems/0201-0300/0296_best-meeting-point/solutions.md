@@ -11,6 +11,8 @@ more homes always saves more than it costs, and at a median the two sides
 balance. The meeting point is therefore `(median row, median column)` and the
 answer is the row spread plus the column spread around those two medians.
 
+![With homes at (0, 0), (0, 4), and (2, 2), the median row 0 and median column 2 cross at the meeting point (0, 2), and each home travels 2, for a total of 2 + 2 + 2 = 6.](figures/solution-median-row-col-cross.svg)
+
 The code never sorts. Collecting the homes row-major appends their row
 indexes in nondecreasing order, and a column-major pass does the same for the
 column indexes, so two sweeps already produce the two sorted coordinate lists

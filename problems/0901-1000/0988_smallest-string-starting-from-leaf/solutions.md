@@ -15,6 +15,8 @@ a chain 8500 nodes deep, past CPython's default recursion limit and past
 the small stacks the judge hands the managed runtimes; the explicit stack
 is one entry per node or marker and never nests a call.
 
+![On the root = [0, 1, 2, 3, 4, 3, 4] tree, the explicit-stack sweep carries one shared letter buffer and reverses it at each leaf, yielding the leaf-to-root candidates dba, eba, dca, eca — dba is the lexicographically smallest.](figures/solution-shared-buffer-candidates.svg)
+
 The comparison is where the problem's one trap lives, and it needs no
 custom code. The statement's order is plain lexicographic order with the
 addition that a strict prefix counts as smaller — Example 3's `"abc"` beats

@@ -13,6 +13,8 @@ running total; the leaf is the only place a value is ever summed. An
 internal node contributes nothing on its own — its bit only matters inside
 the values of the leaves below it.
 
+![On root = [1,0,1,0,1,0,1] the (node, running) stack walk appends each bit with running*2 + bit, and the four leaves emit 4, 5, 6 and 7 into the total 22.](figures/solution-running-value-stack-walk.svg)
+
 Unlike a fixed-depth digit problem, nothing in the statement caps how deep
 a path can run before it must fit the promised 32-bit answer, so the
 running value is carried in a 64-bit accumulator (`long` / `int64_t` /

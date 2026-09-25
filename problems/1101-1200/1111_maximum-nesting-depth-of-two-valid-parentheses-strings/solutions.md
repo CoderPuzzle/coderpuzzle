@@ -10,6 +10,8 @@ groups are tied, the previous `'('`'s group is reused; a group id stack
 remembers, for each still-open parenthesis, which group it belongs to, so a
 `')'` can be assigned by popping.
 
+![Splitting seq = "(()())" by the shallower-group rule: matched pairs (0,5), (1,2), (3,4) share one group, giving answer [0,1,1,1,1,0] with both groups at depth 1.](figures/solution-shallower-group-split.svg)
+
 The invariant that makes this optimal is that the depth difference between
 the two groups never exceeds one: adding a parenthesis to the shallower group
 closes a gap of one to zero, and adding on a tie opens a gap of at most one.

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="376" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- target=100, startFuel=10, stations [[10,60],[20,30],[30,30],[60,40]]; axis x=60+5.6m, y=120; reach arcs above; heap snapshots below -->
+  <text x="620" y="66" text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">target 100</text>
+  <line x1="620" y1="74" x2="620" y2="116" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="88" y="84" text-anchor="middle" fill="#5c6b76" font-size="12.5">reach 10</text>
+  <text x="284" y="44" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">heap [60] → pop 60: stop 1, fuel 70, reach 70</text>
+  <text x="470" y="62" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">pop 40: stop 2, fuel 110</text>
+  <path d="M 60 118 Q 88 88 116 118" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <path d="M 116 118 Q 284 30 452 118" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <path d="M 396 118 Q 508 70 620 118" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <line x1="60" y1="120" x2="620" y2="120" stroke="#42525e" stroke-width="2"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="60" y1="116" x2="60" y2="124"/><line x1="116" y1="116" x2="116" y2="124"/>
+    <line x1="172" y1="116" x2="172" y2="124"/><line x1="228" y1="116" x2="228" y2="124"/>
+    <line x1="396" y1="116" x2="396" y2="124"/><line x1="620" y1="116" x2="620" y2="124"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="60" y="140">0</text><text x="116" y="140">10</text><text x="172" y="140">20</text>
+    <text x="228" y="140">30</text><text x="396" y="140">60</text><text x="620" y="140">100</text>
+  </g>
+  <g fill="#42525e">
+    <circle cx="116" cy="120" r="3.5"/><circle cx="172" cy="120" r="3.5"/>
+    <circle cx="228" cy="120" r="3.5"/><circle cx="396" cy="120" r="3.5"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12">
+    <text x="116" y="164">(10, 60)</text><text x="172" y="186">(20, 30)</text>
+    <text x="228" y="164">(30, 30)</text><text x="396" y="186">(60, 40)</text>
+  </g>
+  <!-- heap snapshots -->
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="70" y="240">after passing (10, 60)</text>
+    <text x="390" y="240">after reaching 70 (three more passed)</text>
+  </g>
+  <rect x="70" y="252" width="36" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="88" y="270" text-anchor="middle" font-weight="600" fill="#1a2026">60</text>
+  <rect x="390" y="252" width="36" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <rect x="434" y="252" width="36" height="26" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.4"/>
+  <rect x="478" y="252" width="36" height="26" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.4"/>
+  <text x="408" y="270" text-anchor="middle" font-weight="600" fill="#1a2026">40</text>
+  <text x="452" y="270" text-anchor="middle" fill="#5c6b76">30</text>
+  <text x="496" y="270" text-anchor="middle" fill="#5c6b76">30</text>
+  <text x="70" y="306" fill="#1a2026" font-size="13">pop 60: stop <tspan fill="#4169E1" font-weight="600">1</tspan>, fuel 70</text>
+  <text x="390" y="306" fill="#1a2026" font-size="13">pop 40: stop <tspan fill="#4169E1" font-weight="600">2</tspan>, fuel 110</text>
+  <text x="340" y="344" text-anchor="middle" fill="#1a2026" font-size="13">Taking the largest passed fuel retroactively, the car reaches 110 ≥ target 100</text>
+  <text x="340" y="362" text-anchor="middle" fill="#1a2026" font-size="13">with <tspan fill="#4169E1" font-weight="600">2 stops</tspan> — the two 30-liter stations are never needed.</text>
+</svg>

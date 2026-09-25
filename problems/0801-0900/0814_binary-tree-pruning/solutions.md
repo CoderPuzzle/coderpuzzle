@@ -18,6 +18,8 @@ up, where the parent's keep test reruns against the already-updated children.
 An all-zero tree unwinds all the way to an empty root; a 0 root above a
 surviving branch stays, because its own subtree does contain that 1.
 
+![Example 1's post-order walk prunes the lone 0 leaf first, then keeps the 0 parent because a 1 child survived, leaving [1, null, 0, null, 1].](figures/solution-post-order-prune.svg)
+
 Recursion is safe under this statement's bounds: the tree holds at most 200
 nodes, so even a single chain nests at most 201 calls — far under CPython's
 default 1000-frame limit and trivial against the 512k stacks the judge hands

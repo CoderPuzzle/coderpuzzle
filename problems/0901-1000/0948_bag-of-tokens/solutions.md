@@ -23,6 +23,8 @@ traces exactly one such cycle: buy 100, sell 400, then buy 200 and 300 for a
 peak of 2, while Example 1 never gets moving at all. The walk halts when the
 cheapest token is unaffordable and no legal refill exists.
 
+![On tokens = [100,200,300,400] with power 200, the two-pointer walk buys 100, sells 400, then buys 200 and 300, and the score trace 0→1→0→1→2 peaks at the answer 2.](figures/solution-two-pointer-score-trace.svg)
+
 There are at most 1000 tokens, each below 10⁴ in value, so even a fully
 refilled power stays under about 10⁷ — comfortably inside the 32-bit
 integers the signature already uses.

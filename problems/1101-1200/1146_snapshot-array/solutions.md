@@ -25,6 +25,8 @@ the start — the query predates every write to the index — or the index was
 never written, the answer is the initial value `0`. Indices are kept in a
 hash map, so untouched cells cost nothing.
 
+![On the Example 1 calls, index 0's history holds (0, 5) then (1, 6); the get(0, 0) binary search rejects (1, 6) because 1 > 0 and lands on (0, 5), returning 5 rather than 6.](figures/solution-snap-history-binary-search.svg)
+
 Both the Python and Java canonical solutions implement exactly this
 structure. With at most `5 * 10⁴` mixed calls, each `set` an `O(1)` amortized
 append and each `get` an `O(log h)` search over that index's `h` entries,

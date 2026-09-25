@@ -16,6 +16,8 @@ encloses no more area than that. So run an iterative BFS/DFS from
 capped fill from `target`. Each fill also short-circuits to `true`
 immediately if it ever steps onto the other endpoint.
 
+![A diagonal wall of n blocked cells seals at most n(n-1)/2 open cells; on blocked = [[0,1],[1,0]] the cap is 1, the source fill stalls at 1 visited cell while the target fill's second cell passes it, so the answer is false.](figures/solution-bounded-fill-cap.svg)
+
 Both fills return `true` (either by reaching the other endpoint directly
 or by blowing past the enclosure cap) exactly when neither `source` nor
 `target` sits in a sealed pocket — which, given the tiny blocked budget,

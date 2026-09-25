@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 304" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="304" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- capacity 2; state after popAtStack(0): stacks [1], [3, 4], [5]; plates 90x28 at column centers 140/320/500 (bottom row y = 180); the punched hole at index 0 is the dashed slot at (95, 148) and the vacant-index heap holds 0 -->
+  <text x="320" y="26" text-anchor="middle" fill="#5c6b76" font-size="12.5">after popAtStack(0):  [1]  [3, 4]  [5]   (capacity 2)</text>
+  <rect x="70" y="44" width="140" height="56" rx="10" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="140" y="64" text-anchor="middle" fill="#5c6b76" font-size="11.5">vacant-index heap</text>
+  <text x="140" y="89" text-anchor="middle" fill="#4169E1" font-size="16" font-weight="700">0</text>
+  <path d="M 140 104 V 146" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="152" y="128" font-size="12" font-weight="600" fill="#4169E1">next push(20)</text>
+  <rect x="95" y="148" width="90" height="28" rx="6" fill="#ffffff" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="140" y="167" text-anchor="middle" font-size="12.5" font-style="italic" fill="#9aa7b2">open</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="95" y="180" width="90" height="28" rx="6"/>
+    <rect x="275" y="148" width="90" height="28" rx="6"/>
+    <rect x="275" y="180" width="90" height="28" rx="6"/>
+    <rect x="455" y="180" width="90" height="28" rx="6"/>
+  </g>
+  <g text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a2026">
+    <text x="140" y="199">1</text>
+    <text x="320" y="167">4</text>
+    <text x="320" y="199">3</text>
+    <text x="500" y="199">5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="140" y="234">index 0</text>
+    <text x="320" y="234">index 1 (full)</text>
+    <text x="500" y="234">index 2</text>
+  </g>
+  <text x="320" y="270" text-anchor="middle" font-size="13" fill="#1a2026">popAtStack(0) punches a hole at index 0 and pushes <tspan fill="#4169E1" font-weight="600">0</tspan> onto the heap;</text>
+  <text x="320" y="290" text-anchor="middle" font-size="13" fill="#1a2026">the next <tspan fill="#4169E1" font-weight="600">push(20)</tspan> pops that 0 and refills the leftmost vacancy → [1, 20].</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 490" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="490" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="darrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- sentences = ["i love you":5, "island":3, "iroman":2, "i love leetcode":2]; edges carry the characters, end nodes carry the hot degree; dashed rings = cursor after 'i' and after ' ' -->
+  <!-- edges -->
+  <g fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)">
+    <path d="M 56 175 L 138 175"/>
+    <path d="M 156 169 L 286 83"/>
+    <path d="M 159 175 L 246 175"/>
+    <path d="M 155 181 L 256 270"/>
+    <path d="M 303 69 L 411 49"/>
+    <path d="M 305 81 L 395 116"/>
+  </g>
+  <path d="M 305 84 C 350 122, 380 150, 408 182" fill="none" stroke="#5c6b76" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#darrow)"/>
+  <!-- edge labels with white halos -->
+  <g>
+    <rect x="178" y="160" width="52" height="16" fill="#ffffff"/>
+    <text x="204" y="172" text-anchor="middle" fill="#1a2026" font-size="12">sland</text>
+    <rect x="205" y="117" width="34" height="16" fill="#ffffff"/>
+    <text x="222" y="129" text-anchor="middle" fill="#1a2026" font-size="12">' '</text>
+    <rect x="184" y="218" width="48" height="16" fill="#ffffff"/>
+    <text x="208" y="230" text-anchor="middle" fill="#1a2026" font-size="12">roman</text>
+    <rect x="341" y="51" width="38" height="16" fill="#ffffff"/>
+    <text x="360" y="63" text-anchor="middle" fill="#1a2026" font-size="12">you</text>
+    <rect x="313" y="91" width="76" height="16" fill="#ffffff"/>
+    <text x="351" y="103" text-anchor="middle" fill="#1a2026" font-size="12">leetcode</text>
+    <text x="432" y="168" text-anchor="middle" fill="#5c6b76" font-size="11.5">no 'a' edge</text>
+  </g>
+  <!-- nodes -->
+  <circle cx="48" cy="175" r="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="48" y="199" text-anchor="middle" fill="#9aa7b2" font-size="10.5">root</text>
+  <circle cx="150" cy="175" r="9" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="295" cy="75" r="9" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="252" y="161" width="96" height="28"/>
+    <rect x="262" y="261" width="96" height="28"/>
+    <rect x="417" y="31" width="126" height="28"/>
+    <rect x="400" y="106" width="160" height="28"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="300" y="180">island <tspan fill="#4169E1" font-weight="600">· 3</tspan></text>
+    <text x="310" y="280">iroman <tspan fill="#4169E1" font-weight="600">· 2</tspan></text>
+    <text x="480" y="50">i love you <tspan fill="#4169E1" font-weight="600">· 5</tspan></text>
+    <text x="480" y="125">i love leetcode <tspan fill="#4169E1" font-weight="600">· 2</tspan></text>
+  </g>
+  <!-- dead state -->
+  <rect x="405" y="181" width="90" height="28" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="450" y="200" text-anchor="middle" fill="#5c6b76" font-size="12">dead state</text>
+  <!-- cursor rings -->
+  <circle cx="150" cy="175" r="17" fill="none" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="150" y="148" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">after 'i'</text>
+  <circle cx="295" cy="75" r="16" fill="none" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="270" y="46" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">after ' '</text>
+  <!-- keystroke results -->
+  <g text-anchor="start" fill="#1a2026" font-size="12.5">
+    <text x="40" y="370" font-weight="600">input('i') <tspan font-weight="400">→ "i love you" (5), "island" (3), "i love leetcode" (2)</tspan></text>
+    <text x="40" y="390" font-weight="600">input(' ') <tspan font-weight="400">→ "i love you" (5), "i love leetcode" (2)</tspan></text>
+    <text x="40" y="410" font-weight="600">input('a') <tspan fill="#5c6b76" font-weight="400">→ no 'a' child: dead state, returns [ ]</tspan></text>
+    <text x="40" y="430" font-weight="600">input('#') <tspan font-weight="400">→ returns [ ]; "i a" is recorded (hot degree 1)</tspan></text>
+  </g>
+  <text x="40" y="458" fill="#1a2026" font-size="13">Hot degrees sit at sentence-end nodes and the cursor walks one edge per</text>
+  <text x="40" y="476" fill="#1a2026" font-size="13">call — "i love leetcode" and "iroman" tie at 2; ASCII puts the space first.</text>
+</svg>

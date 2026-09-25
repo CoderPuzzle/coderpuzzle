@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="296" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [10,9,2,5,3,7,101,18]; cells 64x40 at x = 63 + 70k (nums y=70, dp y=140); each arrow runs from dp[i] back to its best smaller predecessor dp[j] -->
+  <text x="24" y="95" fill="#5c6b76" font-size="12.5">nums</text>
+  <text x="24" y="165" fill="#5c6b76" font-size="12.5">dp</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="63" y="70" width="64" height="40"/><rect x="133" y="70" width="64" height="40"/><rect x="203" y="70" width="64" height="40"/><rect x="273" y="70" width="64" height="40"/>
+    <rect x="343" y="70" width="64" height="40"/><rect x="413" y="70" width="64" height="40"/><rect x="483" y="70" width="64" height="40"/><rect x="553" y="70" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="95" y="95">10</text><text x="165" y="95">9</text><text x="235" y="95">2</text><text x="305" y="95">5</text>
+    <text x="375" y="95">3</text><text x="445" y="95">7</text><text x="515" y="95">101</text><text x="585" y="95">18</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="95" y="124">0</text><text x="165" y="124">1</text><text x="235" y="124">2</text><text x="305" y="124">3</text>
+    <text x="375" y="124">4</text><text x="445" y="124">5</text><text x="515" y="124">6</text><text x="585" y="124">7</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="63" y="140" width="64" height="40"/><rect x="133" y="140" width="64" height="40"/><rect x="203" y="140" width="64" height="40"/><rect x="273" y="140" width="64" height="40"/>
+    <rect x="343" y="140" width="64" height="40"/><rect x="413" y="140" width="64" height="40"/><rect x="483" y="140" width="64" height="40"/><rect x="553" y="140" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="95" y="166" fill="#1a2026">1</text><text x="165" y="166" fill="#1a2026">1</text><text x="235" y="166" fill="#1a2026">1</text>
+    <text x="305" y="166" fill="#1a2026">2</text><text x="375" y="166" fill="#1a2026">2</text><text x="445" y="166" fill="#1a2026">3</text>
+    <text x="515" y="166" fill="#4169E1">4</text><text x="585" y="166" fill="#4169E1">4</text>
+  </g>
+  <!-- predecessor arrows: 5->2, 3->2, 7->5, 101->7, 18->7 -->
+  <g stroke="#4169E1" stroke-width="1.6" fill="none">
+    <path d="M 305 182 Q 275 198 245 182" marker-end="url(#arrow)"/>
+    <path d="M 515 182 Q 485 198 455 182" marker-end="url(#arrow)"/>
+    <path d="M 375 182 Q 305 222 225 182" marker-end="url(#arrow)"/>
+    <path d="M 445 182 Q 375 248 305 182" marker-end="url(#arrow)"/>
+    <path d="M 585 182 Q 510 236 435 182" marker-end="url(#arrow)"/>
+  </g>
+  <text x="340" y="252" text-anchor="middle" fill="#1a2026" font-size="13">Each dp[i] is 1 + the largest dp[j] with nums[j] &lt; nums[i], drawn as arrows;</text>
+  <text x="340" y="272" text-anchor="middle" fill="#1a2026" font-size="13">the arrows back from 101 retrace one longest subsequence, length <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

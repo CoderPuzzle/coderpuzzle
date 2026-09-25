@@ -11,6 +11,8 @@ assigned to its neighbors (only the ones colored so far, since gardens
 with a higher index have not been visited yet), and give `i` the
 smallest type in `{1, 2, 3, 4}` that is not among them.
 
+![On n = 3 with paths [[1,2],[2,3],[3,1]] the greedy colors the gardens 1, 2, 3 in order, each taking the smallest type absent from its already-colored neighbors, yielding [1, 2, 3].](figures/solution-greedy-smallest-color.svg)
+
 Because the judge compares the returned array exactly rather than
 merely checking that adjacent gardens differ, this exact procedure —
 processing order 1..n, and the smallest-available tie-break — is what

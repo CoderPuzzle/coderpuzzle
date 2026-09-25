@@ -11,6 +11,10 @@ always the next to pop. An exhausted stack means the sequence is complete,
 and the trees are leaf-similar exactly when the two written sequences are
 equal.
 
+![On the two example trees, each explicit-stack DFS marks its leaves in
+visit order — 1st through 5th — so both sequences read (6, 7, 4, 9, 8) and
+the trees are leaf-similar.](figures/solution-leaf-visit-order.svg)
+
 Because only leaves enter the sequences, everything internal is invisible
 to the comparison: values at internal nodes, and the shapes above the
 leaves, may differ freely. `[1,2,3]` and `[200,2,3]` agree — both

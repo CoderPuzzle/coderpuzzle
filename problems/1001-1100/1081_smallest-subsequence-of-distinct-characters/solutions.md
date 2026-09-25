@@ -15,4 +15,6 @@ stacked character is fine, since the stack is kept lexicographically
 minimal at every step. Each character enters and leaves the stack at most
 once.
 
+![On s = bcabc the stack holds b, c when the second a arrives at i = 2; since last[c] = 4 and last[b] = 3 reoccur later, a pops c then b, pushes a, and the stack ends as the lexicographically smallest abc.](figures/solution-greedy-stack-pops.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

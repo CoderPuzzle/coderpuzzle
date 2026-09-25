@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 392" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="392" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- deck = [17,13,11,2,3,5,7]; sorted descending, placed 17 down to 2; each row is the
+       deque (front left, bottom right) after the step; cells 40x24 at x = 130 + 44k,
+       row tops y = 60 + 42r; accent cell = new card, light fill = card rotated bottom-to-top -->
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="130" y="44">front / top</text>
+    <text x="434" y="44" text-anchor="end">bottom</text>
+  </g>
+  <!-- place 17 -->
+  <g font-size="13">
+    <text x="30" y="76" fill="#5c6b76">place 17</text>
+    <rect x="130" y="60" width="40" height="24" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <text x="150" y="77" text-anchor="middle" fill="#4169E1" font-weight="600">17</text>
+  </g>
+  <!-- place 13: [17] rotates (no visible move), 13 on the front -->
+  <g font-size="13">
+    <text x="30" y="118" fill="#5c6b76">place 13</text>
+    <rect x="130" y="102" width="40" height="24" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="174" y="102" width="40" height="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <text x="150" y="119" text-anchor="middle" fill="#4169E1" font-weight="600">13</text>
+    <text x="194" y="119" text-anchor="middle" fill="#1a2026" font-weight="600">17</text>
+    <path d="M 206 100 Q 194 86 182 100" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+  <!-- place 11: bottom 13 rotates to top, 11 on the front -->
+  <g font-size="13">
+    <text x="30" y="160" fill="#5c6b76">place 11</text>
+    <rect x="130" y="144" width="40" height="24" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="174" y="144" width="40" height="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <rect x="218" y="144" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="150" y="161" text-anchor="middle" fill="#4169E1" font-weight="600">11</text>
+    <text x="194" y="161" text-anchor="middle" fill="#1a2026" font-weight="600">17</text>
+    <text x="238" y="161" text-anchor="middle" fill="#1a2026" font-weight="600">13</text>
+    <path d="M 238 142 Q 196 126 194 142" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+  <!-- place 7: bottom 17 rotates to top, 7 on the front -->
+  <g font-size="13">
+    <text x="30" y="202" fill="#5c6b76">place 7</text>
+    <rect x="130" y="186" width="40" height="24" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="174" y="186" width="40" height="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <rect x="218" y="186" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="262" y="186" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="150" y="203" text-anchor="middle" fill="#4169E1" font-weight="600">7</text>
+    <text x="194" y="203" text-anchor="middle" fill="#1a2026" font-weight="600">13</text>
+    <text x="238" y="203" text-anchor="middle" fill="#1a2026" font-weight="600">11</text>
+    <text x="282" y="203" text-anchor="middle" fill="#1a2026" font-weight="600">17</text>
+    <path d="M 282 184 Q 196 166 194 184" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+  <!-- place 5: bottom 11 rotates to top, 5 on the front -->
+  <g font-size="13">
+    <text x="30" y="244" fill="#5c6b76">place 5</text>
+    <rect x="130" y="228" width="40" height="24" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="174" y="228" width="40" height="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <rect x="218" y="228" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="262" y="228" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="306" y="228" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="150" y="245" text-anchor="middle" fill="#4169E1" font-weight="600">5</text>
+    <text x="194" y="245" text-anchor="middle" fill="#1a2026" font-weight="600">17</text>
+    <text x="238" y="245" text-anchor="middle" fill="#1a2026" font-weight="600">7</text>
+    <text x="282" y="245" text-anchor="middle" fill="#1a2026" font-weight="600">13</text>
+    <text x="326" y="245" text-anchor="middle" fill="#1a2026" font-weight="600">11</text>
+    <path d="M 326 226 Q 196 206 194 226" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+  <!-- place 3: bottom 13 rotates to top, 3 on the front -->
+  <g font-size="13">
+    <text x="30" y="286" fill="#5c6b76">place 3</text>
+    <rect x="130" y="270" width="40" height="24" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="174" y="270" width="40" height="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <rect x="218" y="270" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="262" y="270" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="306" y="270" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="350" y="270" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="150" y="287" text-anchor="middle" fill="#4169E1" font-weight="600">3</text>
+    <text x="194" y="287" text-anchor="middle" fill="#1a2026" font-weight="600">11</text>
+    <text x="238" y="287" text-anchor="middle" fill="#1a2026" font-weight="600">5</text>
+    <text x="282" y="287" text-anchor="middle" fill="#1a2026" font-weight="600">17</text>
+    <text x="326" y="287" text-anchor="middle" fill="#1a2026" font-weight="600">7</text>
+    <text x="370" y="287" text-anchor="middle" fill="#1a2026" font-weight="600">13</text>
+    <path d="M 370 268 Q 196 246 194 268" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+  <!-- place 2: bottom 13 rotates to top, 2 on the front - the finished deck -->
+  <g font-size="13">
+    <text x="30" y="328" fill="#5c6b76">place 2</text>
+    <rect x="130" y="312" width="40" height="24" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="174" y="312" width="40" height="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <rect x="218" y="312" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="262" y="312" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="306" y="312" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="350" y="312" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="394" y="312" width="40" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="150" y="329" text-anchor="middle" fill="#4169E1" font-weight="600">2</text>
+    <text x="194" y="329" text-anchor="middle" fill="#1a2026" font-weight="600">13</text>
+    <text x="238" y="329" text-anchor="middle" fill="#1a2026" font-weight="600">3</text>
+    <text x="282" y="329" text-anchor="middle" fill="#1a2026" font-weight="600">11</text>
+    <text x="326" y="329" text-anchor="middle" fill="#1a2026" font-weight="600">5</text>
+    <text x="370" y="329" text-anchor="middle" fill="#1a2026" font-weight="600">17</text>
+    <text x="414" y="329" text-anchor="middle" fill="#1a2026" font-weight="600">7</text>
+    <path d="M 414 310 Q 196 286 194 310" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+  <text x="448" y="176" fill="#5c6b76" font-size="11.5">bottom card rotates to the</text>
+  <text x="448" y="192" fill="#5c6b76" font-size="11.5">top; new card lands on front</text>
+  <text x="330" y="360" text-anchor="middle" fill="#1a2026" font-size="13">Placing 17 down to 2, each step moves the deque&#8217;s bottom card to the top, then</text>
+  <text x="330" y="378" text-anchor="middle" fill="#1a2026" font-size="13">pushes the next smaller card on the front &#8212; the deck reads <tspan fill="#4169E1" font-weight="600">[2,13,3,11,5,17,7]</tspan>.</text>
+</svg>

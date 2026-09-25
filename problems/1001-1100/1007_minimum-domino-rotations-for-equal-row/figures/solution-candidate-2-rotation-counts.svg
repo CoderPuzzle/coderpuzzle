@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tops = [2,1,2,4,2,2], bottoms = [5,2,6,2,3,2]; dominoes 70 wide at x = 60 + 100i, halves 44 tall at y = 56/100; 2-faces tinted -->
+  <text x="340" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5">candidate v = 2 — every domino must carry it on some face</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="60" y="56" width="70" height="44" fill="#dbe4fb"/>
+    <rect x="60" y="100" width="70" height="44" fill="#ffffff"/>
+    <rect x="160" y="56" width="70" height="44" fill="#ffffff"/>
+    <rect x="160" y="100" width="70" height="44" fill="#dbe4fb"/>
+    <rect x="260" y="56" width="70" height="44" fill="#dbe4fb"/>
+    <rect x="260" y="100" width="70" height="44" fill="#ffffff"/>
+    <rect x="360" y="56" width="70" height="44" fill="#ffffff"/>
+    <rect x="360" y="100" width="70" height="44" fill="#dbe4fb"/>
+    <rect x="460" y="56" width="70" height="44" fill="#dbe4fb"/>
+    <rect x="460" y="100" width="70" height="44" fill="#ffffff"/>
+    <rect x="560" y="56" width="70" height="44" fill="#dbe4fb"/>
+    <rect x="560" y="100" width="70" height="44" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="15">
+    <text x="95" y="83" font-weight="600">2</text><text x="95" y="127">5</text>
+    <text x="195" y="83">1</text><text x="195" y="127" font-weight="600">2</text>
+    <text x="295" y="83" font-weight="600">2</text><text x="295" y="127">6</text>
+    <text x="395" y="83">4</text><text x="395" y="127" font-weight="600">2</text>
+    <text x="495" y="83" font-weight="600">2</text><text x="495" y="127">3</text>
+    <text x="595" y="83" font-weight="600">2</text><text x="595" y="127" font-weight="600">2</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="95" y="163">i = 0</text><text x="195" y="163">i = 1</text><text x="295" y="163">i = 2</text>
+    <text x="395" y="163">i = 3</text><text x="495" y="163">i = 4</text><text x="595" y="163">i = 5</text>
+  </g>
+  <!-- rotate arcs on i = 1 and i = 3: the only dominoes whose flip puts 2 on top -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 236 80 Q 260 101 233 122" marker-end="url(#arrow)"/>
+    <path d="M 436 80 Q 460 101 433 122" marker-end="url(#arrow)"/>
+  </g>
+  <text x="340" y="192" text-anchor="middle" fill="#5c6b76" font-size="12.5">arrows mark the dominoes rotated to bring the 2 into the top row</text>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="60" y="212" width="280" height="62" rx="4"/>
+    <rect x="340" y="212" width="280" height="62" rx="4"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="200" y="238" font-weight="600">top row all 2s: <tspan fill="#4169E1">2 rotations</tspan></text>
+    <text x="200" y="260" fill="#5c6b76" font-size="12">rotate i = 1 and i = 3</text>
+    <text x="480" y="238" font-weight="600">bottom row all 2s: 3 rotations</text>
+    <text x="480" y="260" fill="#5c6b76" font-size="12">rotate i = 0, i = 2 and i = 4</text>
+  </g>
+  <text x="340" y="302" text-anchor="middle" fill="#1a2026" font-size="13">check(2): min(2, 3) = <tspan fill="#4169E1" font-weight="600">2</tspan> — flip i = 1 and i = 3 and tops is all 2s.</text>
+  <text x="340" y="324" text-anchor="middle" fill="#1a2026" font-size="13">Candidate 5 (bottoms[0]) dies at i = 1 — neither face is 5 — so the <tspan fill="#4169E1" font-weight="600">answer is 2</tspan>.</text>
+</svg>

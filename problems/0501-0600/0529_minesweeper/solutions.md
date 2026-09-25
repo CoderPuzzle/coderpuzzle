@@ -11,6 +11,8 @@ what makes the reveal a flood: it spreads from blank to blank and stops the
 moment it reaches a digit, so the digit ring around each mine is exactly
 the frontier where the flood dies.
 
+![On Example 1's board the flood from click [3,0] turns the 11 zero-count squares 'B' and dies on the ring of eight count-1 squares around the mine, leaving only (0,2) unrevealed beyond it.](figures/solution-bfs-flood-frontier.svg)
+
 The fill runs on an explicit queue rather than recursion, because a blank
 region can span every cell of a `50 x 50` board, deeper than a call stack
 safely allows. A cell may enter the queue twice — two blanks can share it

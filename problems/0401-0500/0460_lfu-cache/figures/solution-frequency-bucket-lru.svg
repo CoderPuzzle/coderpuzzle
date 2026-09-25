@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 524" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="524" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- capacity-2 example trace; each row = one op's bucket state. Tab "f=n" + cells
+       left-to-right = inner list head-to-tail = least-recent to most-recent.
+       Accent tab = bucket created by this op; tinted cell = node just bumped in;
+       struck grey box = evicted key; accent arc = node bumping one bucket up. -->
+  <text x="340" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">capacity-2 example: frequency buckets, per-bucket LRU lists (head side = least recent)</text>
+  <!-- put 1, put 2: both keys in bucket f=1 -->
+  <text x="24" y="112" fill="#1a2026" font-size="12.5">put 1, put 2</text>
+  <rect x="210" y="88" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.4"/>
+  <text x="230" y="112" text-anchor="middle" fill="#1a2026" font-size="12.5">f=1</text>
+  <rect x="250" y="88" width="34" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="267" y="112" text-anchor="middle" fill="#1a2026" font-size="13">1</text>
+  <rect x="284" y="88" width="34" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="301" y="112" text-anchor="middle" fill="#1a2026" font-size="13">2</text>
+  <text x="462" y="104" fill="#5c6b76" font-size="12">new keys enter the f=1 bucket;</text>
+  <text x="462" y="121" fill="#5c6b76" font-size="12">2 lands at the tail (most recent)</text>
+  <!-- get 1: node 1 bumps f=1 to a new f=2 -->
+  <text x="24" y="192" fill="#1a2026" font-size="12.5">get 1 &#8594; 1</text>
+  <rect x="210" y="168" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.4"/>
+  <text x="230" y="192" text-anchor="middle" fill="#1a2026" font-size="12.5">f=1</text>
+  <rect x="250" y="168" width="34" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="267" y="192" text-anchor="middle" fill="#1a2026" font-size="13">2</text>
+  <path d="M 268 164 Q 334 136 403 165" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="335" y="142" text-anchor="middle" fill="#4169E1" font-size="11.5">1 bumps f=1 &#8594; new f=2</text>
+  <rect x="350" y="168" width="40" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="370" y="192" text-anchor="middle" fill="#1a2026" font-size="12.5">f=2</text>
+  <rect x="390" y="168" width="34" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="407" y="192" text-anchor="middle" fill="#1a2026" font-size="13">1</text>
+  <text x="462" y="184" fill="#5c6b76" font-size="12">get(1) bumps 1: unlink from f=1,</text>
+  <text x="462" y="201" fill="#5c6b76" font-size="12">relink at the tail of a new f=2</text>
+  <!-- put 3: evict 2 = head-side node of first bucket; fresh f=1 for 3 -->
+  <text x="24" y="272" fill="#1a2026" font-size="12.5">put 3</text>
+  <rect x="210" y="248" width="40" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="230" y="272" text-anchor="middle" fill="#1a2026" font-size="12.5">f=1</text>
+  <rect x="250" y="248" width="34" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="267" y="272" text-anchor="middle" fill="#1a2026" font-size="13">3</text>
+  <rect x="296" y="254" width="28" height="28" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <text x="310" y="274" text-anchor="middle" fill="#9aa7b2" font-size="13">2</text>
+  <line x1="299" y1="257" x2="321" y2="279" stroke="#9aa7b2" stroke-width="1.3"/>
+  <text x="310" y="250" text-anchor="middle" fill="#9aa7b2" font-size="10">evicted</text>
+  <rect x="350" y="248" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.4"/>
+  <text x="370" y="272" text-anchor="middle" fill="#1a2026" font-size="12.5">f=2</text>
+  <rect x="390" y="248" width="34" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="407" y="272" text-anchor="middle" fill="#1a2026" font-size="13">1</text>
+  <text x="462" y="258" fill="#5c6b76" font-size="12">cache full: evict the first</text>
+  <text x="462" y="275" fill="#5c6b76" font-size="12">bucket's head-side node &#8212; 2;</text>
+  <text x="462" y="292" fill="#5c6b76" font-size="12">3 starts a fresh f=1</text>
+  <!-- get 3: node 3 bumps into the existing f=2 tail; f=1 empties and unlinks -->
+  <text x="24" y="352" fill="#1a2026" font-size="12.5">get 3 &#8594; 3</text>
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="3 2">
+    <rect x="210" y="328" width="40" height="40"/>
+    <rect x="250" y="328" width="34" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12.5">
+    <text x="230" y="352">f=1</text>
+    <text x="267" y="352">3</text>
+  </g>
+  <text x="252" y="384" text-anchor="middle" fill="#9aa7b2" font-size="10">unlinked</text>
+  <path d="M 267 324 Q 352 302 438 326" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="352" y="308" text-anchor="middle" fill="#4169E1" font-size="11.5">3 bumps into f=2's tail</text>
+  <rect x="350" y="328" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.4"/>
+  <text x="370" y="352" text-anchor="middle" fill="#1a2026" font-size="12.5">f=2</text>
+  <rect x="390" y="328" width="34" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="407" y="352" text-anchor="middle" fill="#1a2026" font-size="13">1</text>
+  <rect x="424" y="328" width="34" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="441" y="352" text-anchor="middle" fill="#1a2026" font-size="13">3</text>
+  <text x="462" y="344" fill="#5c6b76" font-size="12">get(3) bumps 3 to the existing</text>
+  <text x="462" y="361" fill="#5c6b76" font-size="12">f=2 tail; the emptied f=1 unlinks</text>
+  <!-- put 4: tie at count 2, evict least-recent 1; fresh f=1 for 4 -->
+  <text x="24" y="432" fill="#1a2026" font-size="12.5">put 4</text>
+  <rect x="210" y="408" width="40" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="230" y="432" text-anchor="middle" fill="#1a2026" font-size="12.5">f=1</text>
+  <rect x="250" y="408" width="34" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="267" y="432" text-anchor="middle" fill="#1a2026" font-size="13">4</text>
+  <rect x="296" y="414" width="28" height="28" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <text x="310" y="434" text-anchor="middle" fill="#9aa7b2" font-size="13">1</text>
+  <line x1="299" y1="417" x2="321" y2="439" stroke="#9aa7b2" stroke-width="1.3"/>
+  <text x="310" y="456" text-anchor="middle" fill="#9aa7b2" font-size="10">evicted</text>
+  <rect x="350" y="408" width="40" height="40" fill="#dbe4fb" stroke="#42525e" stroke-width="1.4"/>
+  <text x="370" y="432" text-anchor="middle" fill="#1a2026" font-size="12.5">f=2</text>
+  <rect x="390" y="408" width="34" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="407" y="432" text-anchor="middle" fill="#1a2026" font-size="13">3</text>
+  <text x="462" y="418" fill="#5c6b76" font-size="12">1 and 3 tie at count 2 &#8212; the</text>
+  <text x="462" y="435" fill="#5c6b76" font-size="12">first bucket's least-recent (1)</text>
+  <text x="462" y="452" fill="#5c6b76" font-size="12">goes; 4 starts a fresh f=1</text>
+  <text x="340" y="482" text-anchor="middle" fill="#1a2026" font-size="13">Every use bumps its node one bucket up &#8212; created on demand when no f+1 neighbour exists;</text>
+  <text x="340" y="502" text-anchor="middle" fill="#1a2026" font-size="13">both evictions (<tspan fill="#4169E1" font-weight="600">2</tspan> at put 3, <tspan fill="#4169E1" font-weight="600">1</tspan> at put 4) read the first bucket's least-recent node.</text>
+</svg>

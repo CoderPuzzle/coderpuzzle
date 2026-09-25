@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 370" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="370" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- grid = [[0,1],[1,0]]; cells 60x60 at (70,120); root internal [0,1] box 104x40 at (380,64); four 1x1 quadrant leaves 76x36 at y=240, centers x=282/382/482/582, tagged [isLeaf,val] -->
+  <text x="130" y="108" text-anchor="middle" fill="#5c6b76" font-size="12.5">grid</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="70" y="120" width="60" height="60" fill="#f0f3f7"/>
+    <rect x="130" y="120" width="60" height="60" fill="#dbe4fb"/>
+    <rect x="70" y="180" width="60" height="60" fill="#dbe4fb"/>
+    <rect x="130" y="180" width="60" height="60" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" font-size="22" fill="#1a2026">
+    <text x="100" y="158">0</text><text x="160" y="158">1</text>
+    <text x="100" y="218">1</text><text x="160" y="218">0</text>
+  </g>
+  <g fill="#9aa7b2" font-size="10.5">
+    <text x="74" y="133">TL</text><text x="186" y="133" text-anchor="end">TR</text>
+    <text x="74" y="193">BL</text><text x="186" y="193" text-anchor="end">BR</text>
+  </g>
+  <path d="M 194 168 Q 280 92 372 86" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="285" y="140" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">cells differ → split</text>
+  <text x="432" y="56" text-anchor="middle" fill="#5c6b76" font-size="11.5">internal</text>
+  <rect x="380" y="64" width="104" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="432" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#1a2026">[0, 1]</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <path d="M 432 104 L 282 240"/>
+    <path d="M 432 104 L 382 240"/>
+    <path d="M 432 104 L 482 240"/>
+    <path d="M 432 104 L 582 240"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="244" y="240" width="76" height="36"/>
+    <rect x="344" y="240" width="76" height="36"/>
+    <rect x="444" y="240" width="76" height="36"/>
+    <rect x="544" y="240" width="76" height="36"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="282" y="263">[1, 0]</text><text x="382" y="263">[1, 1]</text>
+    <text x="482" y="263">[1, 1]</text><text x="582" y="263">[1, 0]</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="282" y="294">topLeft</text><text x="382" y="294">topRight</text>
+    <text x="482" y="294">bottomLeft</text><text x="582" y="294">bottomRight</text>
+  </g>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">The 2x2 grid is not uniform, so the root is internal — [0, 1] — and the four 1x1</text>
+  <text x="320" y="350" text-anchor="middle" fill="#1a2026" font-size="13">quadrants become leaves: <tspan fill="#4169E1" font-weight="600">[[0, 1], [1, 0], [1, 1], [1, 1], [1, 0]]</tspan> in level order.</text>
+</svg>

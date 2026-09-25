@@ -47,6 +47,8 @@ into the running bill — the root's own record carries price `0`, so
 planting the tree costs nothing — and files the offers to its
 still-unsettled neighbours.
 
+![On the cost triangle 5, 6, 1 Prim plants city 1, pops (5,2) then (1,3) for a total of 6, and discards the stale (6,3) record for the already-settled city 3.](figures/solution-prim-heap-growth.svg)
+
 Each settlement grows the tree by exactly one node, so after `n` of them
 the purchase spans everything and the loop stops with whatever is left in
 the queue unread. A queue that drains while nodes remain unsettled means

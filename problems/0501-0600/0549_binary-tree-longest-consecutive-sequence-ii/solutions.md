@@ -24,6 +24,8 @@ pairing: an arm can extend `inc` past length 1 only from a `+1` child and
 different children — `[2,1,3]` turns at the 2 into the length-3 path `1-2-3`,
 while `[1,2,3]` cannot turn anywhere and stays at 2.
 
+![On the example root = [2,1,3], each leaf reports (inc 1, dec 1) upward and the root 2 reports (inc 2, dec 2), so the two arms turning at it give inc + dec - 1 = 2 + 2 - 1 = 3, the path 1-2-3.](figures/solution-inc-dec-turn-root.svg)
+
 The answer is the maximum of that candidate over all nodes, collected in the
 same sweep that computes the reports. The traversal is iterative in every
 language: the constraint ceiling is a single `3 * 10⁴`-node chain, and walking

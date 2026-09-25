@@ -42,6 +42,8 @@ tokens, so the counts match exactly: `2n + 1` tokens for `n` nodes, the
 last one always a marker, and no end-of-input guards anywhere. The empty
 tree is the single token `#` — no special case in either direction.
 
+![The stream 1, 2, #, #, 3, 4, #, #, 5, #, # replays into the tree 1(2, 3(4, 5)) as a stack of open child slots consumes each token and ends empty.](figures/solution-slot-stack-replay.svg)
+
 Nothing is trimmed here, and that is the one thing this format gives up.
 In the level walk the tail markers describe slots that would have led
 nowhere, so dropping them loses nothing; in this walk every closing marker

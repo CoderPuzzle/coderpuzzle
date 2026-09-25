@@ -12,6 +12,8 @@ and repeatedly step into the taller child; the first node whose children's
 heights tie (or which has no deeper side at all) is the lowest common
 ancestor of the deepest leaves.
 
+![Heights for root = [3,5,1,6,2,0,8,null,null,7,4]: the descent 3 → 5 → 2 steps into the taller child and stops at 2, where the children's heights tie at 0.](figures/solution-height-table-descent.svg)
+
 Heights are computed in one reversed breadth-first pass: BFS lists parents
 before children, so the reversed list visits every child before its parent,
 letting each node read `1 + max(children)` from an already-settled table.

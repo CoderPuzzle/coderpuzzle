@@ -23,6 +23,8 @@ a popped value can never reappear on top, so deferring its pop only piles new
 blockers above it. With every move dictated, one linear replay explores the
 entire space of interleavings.
 
+![On pushed = [1,2,3,4,5] and popped = [4,5,3,2,1], the stack snapshot after each forced move shows 4,5,3,2,1 popping off the top until the stack drains empty, so the verdict is true.](figures/solution-forced-replay-stack.svg)
+
 Each of the at most 1000 values is pushed once and popped at most once, so the
 working stack never holds more than `pushed` itself and every comparison is on
 plain integers — nothing here can strain time or memory.

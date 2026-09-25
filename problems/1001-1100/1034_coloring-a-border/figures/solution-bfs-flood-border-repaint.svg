@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="376" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- grid = [[1,1],[1,2]], row=0, col=0, color=3; three BFS snapshots, 2x2 mini-grids, cells 56x40 at x 64/264/464, y 56; final repainted grid at (484,218) -->
+  <text x="64" y="34" fill="#5c6b76" font-size="12.5">BFS from (0, 0) — dark = dequeued · light = queued · gray = the color-2 cell</text>
+  <!-- snapshot 1: popped (0,0), enqueued (0,1) and (1,0) -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="64" y="56" width="56" height="40" fill="#4169E1"/>
+    <rect x="120" y="56" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="64" y="96" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="120" y="96" width="56" height="40" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="92" y="81" fill="#ffffff" font-weight="600">1</text>
+    <text x="148" y="81" fill="#1a2026">1</text>
+    <text x="92" y="121" fill="#1a2026">1</text>
+    <text x="148" y="121" fill="#9aa7b2">2</text>
+  </g>
+  <path d="M 184 96 H 250" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- snapshot 2: popped (0,0) and (0,1), (1,0) still queued -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="264" y="56" width="56" height="40" fill="#4169E1"/>
+    <rect x="320" y="56" width="56" height="40" fill="#4169E1"/>
+    <rect x="264" y="96" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="320" y="96" width="56" height="40" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="292" y="81" fill="#ffffff" font-weight="600">1</text>
+    <text x="348" y="81" fill="#ffffff" font-weight="600">1</text>
+    <text x="292" y="121" fill="#1a2026">1</text>
+    <text x="348" y="121" fill="#9aa7b2">2</text>
+  </g>
+  <path d="M 384 96 H 450" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- snapshot 3: queue drained, all three color-1 cells identified -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="464" y="56" width="56" height="40" fill="#4169E1"/>
+    <rect x="520" y="56" width="56" height="40" fill="#4169E1"/>
+    <rect x="464" y="96" width="56" height="40" fill="#4169E1"/>
+    <rect x="520" y="96" width="56" height="40" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="492" y="81" fill="#ffffff" font-weight="600">1</text>
+    <text x="548" y="81" fill="#ffffff" font-weight="600">1</text>
+    <text x="492" y="121" fill="#ffffff" font-weight="600">1</text>
+    <text x="548" y="121" fill="#9aa7b2">2</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="120" y="160" fill="#4169E1" font-weight="600">pop (0, 0)</text>
+    <text x="320" y="160" fill="#4169E1" font-weight="600">pop (0, 1)</text>
+    <text x="520" y="160" fill="#4169E1" font-weight="600">pop (1, 0)</text>
+    <text x="120" y="178" fill="#5c6b76" font-size="12">queue: (0, 1) (1, 0)</text>
+    <text x="320" y="178" fill="#5c6b76" font-size="12">queue: (1, 0)</text>
+    <text x="520" y="178" fill="#5c6b76" font-size="12">queue: empty — component done</text>
+  </g>
+  <!-- border test against the original grid -->
+  <text x="64" y="222" fill="#5c6b76" font-size="12.5" font-weight="600">border test (against the original grid):</text>
+  <g font-size="13" fill="#1a2026">
+    <text x="64" y="246">(0, 0) — row 0 / col 0: on the grid edge → <tspan fill="#4169E1" font-weight="600">border</tspan></text>
+    <text x="64" y="268">(0, 1) — neighbor (1, 1) = 2 outside → <tspan fill="#4169E1" font-weight="600">border</tspan></text>
+    <text x="64" y="290">(1, 0) — neighbor (1, 1) = 2 outside → <tspan fill="#4169E1" font-weight="600">border</tspan></text>
+  </g>
+  <!-- repainted grid -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="484" y="218" width="56" height="40" fill="#4169E1"/>
+    <rect x="540" y="218" width="56" height="40" fill="#4169E1"/>
+    <rect x="484" y="258" width="56" height="40" fill="#4169E1"/>
+    <rect x="540" y="258" width="56" height="40" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="512" y="243" fill="#ffffff" font-weight="600">3</text>
+    <text x="568" y="243" fill="#ffffff" font-weight="600">3</text>
+    <text x="512" y="283" fill="#ffffff" font-weight="600">3</text>
+    <text x="568" y="283" fill="#1a2026">2</text>
+  </g>
+  <text x="540" y="318" text-anchor="middle" fill="#5c6b76" font-size="12">after repaint</text>
+  <text x="340" y="344" text-anchor="middle" fill="#1a2026" font-size="13">All three members are border cells — grid edge or the color-2 neighbor —</text>
+  <text x="340" y="362" text-anchor="middle" fill="#1a2026" font-size="13">so the repaint pass writes 3 into each: <tspan fill="#4169E1" font-weight="600">[[3, 3], [3, 2]]</tspan>.</text>
+</svg>

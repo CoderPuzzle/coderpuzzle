@@ -14,6 +14,8 @@ was cut loose by this deletion, so it becomes a new tree root and is added to
 the result. The node then returns `null` so its parent drops it. If the node
 is not deleted, it keeps whatever children survived and returns itself.
 
+![Running the post-order prune on root [1,2,3,4,5,6,7] with to_delete = [3,5], the deleted nodes 3 and 5 are struck out and nodes 6 and 7 are cut loose as new roots beside the surviving root 1, giving [[1,2,null,4],[6],[7]].](figures/solution-postorder-prune-forest.svg)
+
 The only surviving root not produced by a deletion is the original root, so
 after the recursion the code checks whether the root's pruning left it alive
 and adds it to the forest if so. Because every node value is distinct, a set

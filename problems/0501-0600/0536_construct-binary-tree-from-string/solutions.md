@@ -21,6 +21,8 @@ say: a right group is only legal after a left one, so a node holding a right
 child but no left child has no representation at all, and the empty string
 is simply the empty tree.
 
+![Scanning s = 4(2(3)(1))(6(5)), each integer pushes an open ancestor and each ) pops the finished subtree into its parent's left-then-right slot, ending with root 4 over [4,2,6,3,1,5].](figures/solution-stack-open-ancestors.svg)
+
 The parse is iterative in every language because the ceiling is deep, not
 wide: `3 * 10⁴` characters of `1(1(1(…)))` cost three characters per level
 and admit a chain 10000 nodes tall, and recursion that deep nests ten times

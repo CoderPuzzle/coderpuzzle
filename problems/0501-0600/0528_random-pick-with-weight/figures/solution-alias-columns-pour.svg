@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- w = [1, 3]; n = 2, total = 4, cap = 4; own fills w[i]*n = [2, 6] -> column 1 pours 2 into column 0; final fills [4, 4], alias [1, -]; cells 84x36, columns at x=150/x=294, baseline y=240, 36px per level -->
+  <path d="M 330 86 Q 264 22 198 86" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="264" y="30" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">column 1 pours its surplus 2</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="150" y="204" width="84" height="36" fill="#dbe4fb"/>
+    <rect x="150" y="168" width="84" height="36" fill="#dbe4fb"/>
+    <rect x="150" y="132" width="84" height="36" fill="#ffffff"/>
+    <rect x="150" y="96" width="84" height="36" fill="#ffffff"/>
+    <rect x="294" y="204" width="84" height="36" fill="#dbe4fb"/>
+    <rect x="294" y="168" width="84" height="36" fill="#dbe4fb"/>
+    <rect x="294" y="132" width="84" height="36" fill="#dbe4fb"/>
+    <rect x="294" y="96" width="84" height="36" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="192" y="227" fill="#1a2026">0</text>
+    <text x="192" y="191" fill="#1a2026">0</text>
+    <text x="192" y="155" fill="#4169E1">1</text>
+    <text x="192" y="119" fill="#4169E1">1</text>
+    <text x="336" y="227" fill="#1a2026">1</text>
+    <text x="336" y="191" fill="#1a2026">1</text>
+    <text x="336" y="155" fill="#1a2026">1</text>
+    <text x="336" y="119" fill="#1a2026">1</text>
+  </g>
+  <line x1="150" y1="168" x2="234" y2="168" stroke="#4169E1" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="264" y="172" text-anchor="middle" fill="#4169E1" font-size="11.5">fill 2</text>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="140" y="226">0</text>
+    <text x="140" y="190">1</text>
+    <text x="140" y="154">2</text>
+    <text x="140" y="118">3</text>
+  </g>
+  <text x="140" y="86" text-anchor="end" fill="#5c6b76" font-size="11.5">level</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="192" y="262">column 0</text>
+    <text x="336" y="262">column 1</text>
+  </g>
+  <g font-size="12.5">
+    <text x="430" y="106" fill="#1a2026">one uniform cell in [0, 8):</text>
+    <text x="430" y="130" fill="#5c6b76">column = cell mod 2</text>
+    <text x="430" y="152" fill="#5c6b76">level = cell div 2</text>
+    <text x="430" y="174" fill="#5c6b76">under its own fill: column</text>
+    <text x="430" y="196" fill="#5c6b76">above it: the alias</text>
+  </g>
+  <g font-size="13" fill="#1a2026">
+    <text x="430" y="232">index 0: 2 of 8 cells → <tspan fill="#4169E1" font-weight="600">1/4</tspan></text>
+    <text x="430" y="256">index 1: 6 of 8 cells → <tspan fill="#4169E1" font-weight="600">3/4</tspan></text>
+  </g>
+  <g font-size="12" fill="#5c6b76">
+    <rect x="430" y="274" width="14" height="14" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+    <text x="452" y="286">own fill</text>
+    <rect x="530" y="274" width="14" height="14" fill="#ffffff" stroke="#42525e" stroke-width="1"/>
+    <text x="552" y="286">alias part</text>
+  </g>
+  <text x="320" y="308" text-anchor="middle" fill="#1a2026" font-size="13">w = [1, 3]: both columns are cut to height 4 and column 1 pours its surplus 2</text>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">into column 0 — index 0 then owns 2 of the 8 cells (<tspan fill="#4169E1" font-weight="600">1/4</tspan>), index 1 the other 6 (<tspan fill="#4169E1" font-weight="600">3/4</tspan>).</text>
+</svg>

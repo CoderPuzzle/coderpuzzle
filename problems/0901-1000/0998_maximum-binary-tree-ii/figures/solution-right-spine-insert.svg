@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- root = [5,2,4,null,1], val = 3; the walk down the right spine 5 -> 4 stops
+       where the right child is absent; 3 takes that slot; right panel shows the result -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="140" y="46">before</text><text x="510" y="46">after</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="140" y1="84" x2="80" y2="164"/>
+    <line x1="140" y1="84" x2="200" y2="164"/>
+    <line x1="80" y1="164" x2="140" y2="244"/>
+    <line x1="510" y1="84" x2="450" y2="164"/>
+    <line x1="510" y1="84" x2="570" y2="164"/>
+    <line x1="450" y1="164" x2="510" y2="244"/>
+  </g>
+  <line x1="570" y1="164" x2="630" y2="244" stroke="#4169E1" stroke-width="2"/>
+  <g stroke="#1a2026" stroke-width="1.6" fill="#ffffff">
+    <circle cx="140" cy="84" r="22"/><circle cx="80" cy="164" r="22"/>
+    <circle cx="200" cy="164" r="22"/><circle cx="140" cy="244" r="22"/>
+    <circle cx="510" cy="84" r="22"/><circle cx="450" cy="164" r="22"/>
+    <circle cx="570" cy="164" r="22"/><circle cx="510" cy="244" r="22"/>
+  </g>
+  <circle cx="260" cy="244" r="22" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <circle cx="630" cy="244" r="22" fill="#4169E1"/>
+  <g text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">
+    <text x="140" y="89">5</text><text x="80" y="169">2</text><text x="200" y="169">4</text>
+    <text x="140" y="249">1</text>
+    <text x="510" y="89">5</text><text x="450" y="169">2</text><text x="570" y="169">4</text>
+    <text x="510" y="249">1</text>
+  </g>
+  <text x="630" y="249" text-anchor="middle" font-weight="600" font-size="14" fill="#ffffff">3</text>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 164 94 L 197 139" marker-end="url(#arrow)"/>
+    <path d="M 226 176 L 250 214" marker-end="url(#arrow)"/>
+    <path d="M 296 160 L 412 160" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="12.5" font-weight="600" fill="#4169E1">
+    <text x="204" y="112" text-anchor="start">5 &gt; 3</text>
+    <text x="258" y="200" text-anchor="start">4 &gt; 3</text>
+  </g>
+  <text x="260" y="284" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">absent → stop here</text>
+  <text x="354" y="148" text-anchor="middle" fill="#5c6b76" font-size="12.5">val = 3 arrives</text>
+  <text x="480" y="296" text-anchor="middle" fill="#5c6b76" font-size="12.5">nodes 2 and 1 are off-spine — untouched</text>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="340" y="328">The walk down the right spine stops at the first node with no right child —</text>
+    <text x="340" y="346">here node 4 — and <tspan fill="#4169E1" font-weight="600">3</tspan> takes that slot; the off-spine subtree is never rebuilt.</text>
+  </g>
+</svg>

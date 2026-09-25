@@ -15,6 +15,8 @@ with the final alternative, then the saved prefix is popped and the
 group's union is concatenated with it, `{a + b}`, restoring a single
 `cur` for whatever follows.
 
+![Scanning {a,b}{c,{d,e}}, the stack holds saved prefixes and union slots — at its deepest, prefix {a,b}, slot {c}, prefix {""} — and the final } concatenates {a,b} × {c,d,e} into the sorted, deduplicated set [ac, ad, ae, bc, bd, be].](figures/solution-brace-stack-machine.svg)
+
 Working with sets throughout gives the deduplication the statement
 demands — `{{a,b},{b,c}}` collapses to `{a,b,c}` automatically, since a
 set holds each word once. Every brace, comma, and letter is visited

@@ -20,6 +20,8 @@ it and swaps, so no value is ever read after being overwritten. Reads past the
 left, right, or top border contribute 0, which is exactly what a run meeting
 the matrix edge means, so border cells need no special case.
 
+![On the example matrix, each 1-cell carries the four run lengths (h, v, d, a) ending at it, inherited from the left, above, and the two upper diagonals — cell (2, 3) lifts its diagonal run to 2 + 1 = 3 along (0, 1), (1, 2), (2, 3), the longest line.](figures/solution-four-runs-per-cell.svg)
+
 The `m * n <= 10⁴` ceiling keeps the sweep at ten thousand cells regardless of
 how skewed the rectangle is, and the answer can never exceed `max(m, n)`, so it
 sits far inside a 32-bit integer. Degenerate shapes fall out of the same

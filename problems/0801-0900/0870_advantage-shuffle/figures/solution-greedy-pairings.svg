@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="376" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums2 = [1,10,4,11]; sorted nums1 = [2,7,11,15]; cells 76x40 at (80+92i, 40) and (80+92i, 180); output cells 54x34 at (157+64j, 280) -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="118" y="30">i = 0</text><text x="210" y="30">i = 1</text>
+    <text x="302" y="30">i = 2</text><text x="394" y="30">i = 3</text>
+  </g>
+  <text x="48" y="64" text-anchor="middle" fill="#5c6b76" font-size="12.5">nums2</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="80" y="40" width="76" height="40"/><rect x="172" y="40" width="76" height="40"/>
+    <rect x="264" y="40" width="76" height="40"/><rect x="356" y="40" width="76" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="118" y="65">1</text><text x="210" y="65">10</text>
+    <text x="302" y="65">4</text><text x="394" y="65">11</text>
+  </g>
+  <!-- assignment arrows: each nums2[i] to the smallest unused nums1 value that still wins -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <line x1="118" y1="84" x2="118" y2="174" marker-end="url(#arrow)"/>
+    <path d="M 210 84 Q 244 132 298 168" marker-end="url(#arrow)"/>
+    <path d="M 302 84 Q 262 160 216 172" marker-end="url(#arrow)"/>
+    <line x1="394" y1="84" x2="394" y2="174" marker-end="url(#arrow)"/>
+  </g>
+  <text x="516" y="204" text-anchor="middle" fill="#5c6b76" font-size="12.5">sorted nums1</text>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="80" y="180" width="76" height="40"/><rect x="172" y="180" width="76" height="40"/>
+    <rect x="264" y="180" width="76" height="40"/><rect x="356" y="180" width="76" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="118" y="205">2</text><text x="210" y="205">7</text>
+    <text x="302" y="205">11</text><text x="394" y="205">15</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="118" y="242">used at i = 0</text><text x="210" y="242">used at i = 2</text>
+    <text x="302" y="242">used at i = 1</text><text x="394" y="242">used at i = 3</text>
+  </g>
+  <text x="137" y="301" text-anchor="middle" fill="#5c6b76" font-size="12.5">output</text>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="157" y="280" width="54" height="34"/><rect x="221" y="280" width="54" height="34"/>
+    <rect x="285" y="280" width="54" height="34"/><rect x="349" y="280" width="54" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="184" y="302">2</text><text x="248" y="302">11</text>
+    <text x="312" y="302">7</text><text x="376" y="302">15</text>
+  </g>
+  <text x="280" y="342" text-anchor="middle" fill="#1a2026" font-size="13">Each nums2[i] takes the smallest unused nums1 value that still beats it,</text>
+  <text x="280" y="360" text-anchor="middle" fill="#1a2026" font-size="13">so <tspan fill="#4169E1" font-weight="600">[2, 11, 7, 15]</tspan> wins all four head-to-heads against [1, 10, 4, 11].</text>
+</svg>

@@ -17,6 +17,8 @@ values land in one class exactly when a chain of primes joins them, and
 counting class members over the values (never over the primes
 themselves) yields the largest component.
 
+![For nums = [4, 6, 15, 35], each value unions with each of its distinct primes, and the shared-prime chain 2–3–5 merges all four values into one component of size 4.](figures/solution-prime-union-graph.svg)
+
 The sieve is the dominant cost; afterwards each of the `n` values does
 at most six unions — a number below 10⁵ has at most six distinct prime
 factors — and one find per value for the tally.

@@ -20,6 +20,8 @@ either missing on both sides or equal in value — commits to it when it
 holds, otherwise commits to the swapped one, and when neither lines up no
 flip anywhere in the trees can repair the pairing.
 
+![Walking Example 1's two trees as a stack of node pairs, the straight child alignment fails at values 1, 3, and 5, the walk commits to the swapped alignment there, and the stack drains to true.](figures/solution-pair-stack-swaps.svg)
+
 Both trees are consumed pair by pair, each node entering at most one pair,
 so the walk touches every node once. It stays off the call stack on
 purpose: a chain at the node bound of 100 nodes would make a recursive

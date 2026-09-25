@@ -17,5 +17,7 @@ that slot back into a zigzag label using the parent row's direction. The
 path is collected in a buffer sized to the tree's height and filled from the
 back, so it comes out root-first without a separate reverse.
 
+![On label = 14, the zigzag tree's alternating rows and the three mirrored parent hops 14 → 4 → 3 → 1: row 4 is right-to-left, so 14's position is 15 − 14 = 1, halved to position 0, which row 3 spells as 4.](figures/solution-zigzag-parent-hops.svg)
+
 **Complexity:** `O(log label)` time and `O(log label)` space — the path has
 one entry per level of the tree.

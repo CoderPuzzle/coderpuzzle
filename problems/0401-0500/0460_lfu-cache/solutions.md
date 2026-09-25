@@ -6,6 +6,8 @@ An LFU cache juggles two live orderings at once: frequency decides _which_ count
 
 Every use — a `get` hit, a value-updating `put`, or a fresh insert — funnels into one `bump` routine: unlink the node from its bucket, look at the neighbouring bucket, and either reuse it (its frequency is exactly one more) or create it right there; then relink the node at the tail (most-recent) end. A bucket that empties is unlinked on the spot — this is what keeps "first bucket = minimum" true without ever scanning for the minimum. New keys always enter a frequency-1 bucket, created at the front when the current first bucket holds a higher count.
 
+![On the capacity-2 example, the bucket snapshots after put 1, put 2, get 1, put 3, get 3 and put 4 show each use bumping its node one bucket up (1 opens the f=2 bucket, 3 joins f=2's tail) and both evictions — 2, then 1 — reading the first bucket's least-recent node.](figures/solution-frequency-bucket-lru.svg)
+
 Eviction therefore reads two pointers: the first bucket, and the node after its head sentinel — the least frequently used key, least recently used among ties. Its own `key` field tells the map which entry to delete.
 
 **Complexity:** `O(1)` average time per `get`/`put`, `O(capacity)` space.

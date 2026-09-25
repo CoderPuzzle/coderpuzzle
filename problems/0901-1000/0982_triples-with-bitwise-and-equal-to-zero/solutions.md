@@ -28,4 +28,6 @@ fit 16 bits by the constraints, so the complement is masked to `0xFFFF`
 before the lookup. Pair counts reach `n² = 10⁶` and the answer reaches
 `n³ = 10⁹`, so the table entries and the total are 64-bit wide.
 
+![On nums = [2, 1, 3], the pair-AND counts f turn into submask sums h after one accumulating pass per bit, and the three complement lookups h[5] + h[6] + h[4] = 5 + 5 + 2 give the answer 12.](figures/solution-submask-zeta-lookups.svg)
+
 **Complexity:** `O(n² + n + 2¹⁶ · 16)` time, `O(2¹⁶)` space.

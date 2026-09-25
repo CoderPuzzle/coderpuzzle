@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="384" fill="#ffffff"/>
+  <!-- root = [1,2,3,4,5,6,7]; node (row, col), child (row+1, col±1);
+       bands 90px at centers 140..500; nodes 5 and 6 share the one cell (2, 0) -->
+  <g fill="#f0f3f7">
+    <rect x="95" y="38" width="88" height="190"/><rect x="185" y="38" width="88" height="190"/><rect x="275" y="38" width="88" height="190"/><rect x="365" y="38" width="88" height="190"/><rect x="455" y="38" width="88" height="190"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="140" y="28">col -2</text><text x="230" y="28">col -1</text><text x="320" y="28">col 0</text><text x="410" y="28">col +1</text><text x="500" y="28">col +2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="320" y1="66" x2="230" y2="138"/>
+    <line x1="320" y1="66" x2="410" y2="138"/>
+    <line x1="230" y1="138" x2="140" y2="210"/>
+    <line x1="230" y1="138" x2="300" y2="210"/>
+    <line x1="410" y1="138" x2="340" y2="210"/>
+    <line x1="410" y1="138" x2="500" y2="210"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="320" cy="66" r="18"/>
+    <circle cx="230" cy="138" r="18"/>
+    <circle cx="410" cy="138" r="18"/>
+    <circle cx="140" cy="210" r="18"/>
+    <circle cx="500" cy="210" r="18"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <circle cx="300" cy="210" r="18"/>
+    <circle cx="340" cy="210" r="18"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="320" y="71">1</text><text x="230" y="143">2</text><text x="410" y="143">3</text>
+    <text x="140" y="215">4</text><text x="300" y="215">5</text><text x="340" y="215">6</text><text x="500" y="215">7</text>
+  </g>
+  <g fill="#9aa7b2" font-size="11">
+    <text x="294" y="70" text-anchor="end">(0, 0)</text>
+    <text x="204" y="142" text-anchor="end">(1, -1)</text>
+    <text x="436" y="142">(1, +1)</text>
+    <text x="140" y="246" text-anchor="middle">(2, -2)</text>
+    <text x="500" y="246" text-anchor="middle">(2, +2)</text>
+    <text x="320" y="256" text-anchor="middle" fill="#5c6b76">(2, 0) — two nodes, one cell</text>
+  </g>
+  <path d="M 282 234 H 358" stroke="#4169E1" stroke-width="1.2" fill="none"/>
+  <text x="320" y="284" text-anchor="middle" fill="#5c6b76" font-size="12.5">each column's bucket after its (row, value) sort:</text>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.3">
+    <rect x="120" y="294" width="40" height="30"/>
+    <rect x="210" y="294" width="40" height="30"/>
+    <rect x="272" y="294" width="96" height="30"/>
+    <rect x="390" y="294" width="40" height="30"/>
+    <rect x="480" y="294" width="40" height="30"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5" fill="#1a2026">
+    <text x="140" y="314">[4]</text><text x="230" y="314">[2]</text><text x="320" y="314">[1, 5, 6]</text><text x="410" y="314">[3]</text><text x="500" y="314">[7]</text>
+  </g>
+  <text x="320" y="352" text-anchor="middle" fill="#1a2026" font-size="13">One sweep records (row, col, value) per node; buckets sort by (row, value):</text>
+  <text x="320" y="372" text-anchor="middle" fill="#1a2026" font-size="13">columns emit left to right — <tspan fill="#4169E1" font-weight="600">[1, 5, 6]</tspan>, the (2, 0) tie broken by value.</text>
+</svg>

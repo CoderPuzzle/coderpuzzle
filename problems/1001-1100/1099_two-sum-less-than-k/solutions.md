@@ -18,6 +18,8 @@ times. Because all values are positive, the best answer found this way
 is exactly the maximum pair sum below `k`; a fresh `-1` reports that no
 valid pair exists.
 
+![On sorted [1,8,23,24,33,34,54,75] with k = 60, lo and hi converge inward over seven moves, recording 55 and 57 before settling on the pair 24 + 34 = 58, the largest sum below 60.](figures/solution-two-pointer-inward-scan.svg)
+
 The pointers do the whole search in linear time, but the sort that
 precedes them dominates the cost.
 

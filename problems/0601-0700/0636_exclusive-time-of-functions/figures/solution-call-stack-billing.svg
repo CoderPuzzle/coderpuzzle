@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 364" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="364" fill="#ffffff"/>
+  <!-- logs = ["0:start:0","1:start:2","1:end:5","0:end:6"]; timeline cells 52x34 at x=90+58t; fn0 row y=56, fn1 row y=112 -->
+  <!-- fn 0 running units -->
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="90" y="56" width="52" height="34"/><rect x="148" y="56" width="52" height="34"/><rect x="438" y="56" width="52" height="34"/>
+  </g>
+  <!-- fn 0 suspended while 1 runs -->
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="#ffffff" stroke-dasharray="4 3">
+    <rect x="206" y="56" width="52" height="34"/><rect x="264" y="56" width="52" height="34"/><rect x="322" y="56" width="52" height="34"/><rect x="380" y="56" width="52" height="34"/>
+  </g>
+  <!-- fn 1 running units -->
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="206" y="112" width="52" height="34"/><rect x="264" y="112" width="52" height="34"/><rect x="322" y="112" width="52" height="34"/><rect x="380" y="112" width="52" height="34"/>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="80" y="78">fn 0</text><text x="80" y="134">fn 1</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="116" y="166">0</text><text x="174" y="166">1</text><text x="232" y="166">2</text><text x="290" y="166">3</text><text x="348" y="166">4</text><text x="406" y="166">5</text><text x="464" y="166">6</text>
+  </g>
+  <text x="510" y="72" fill="#9aa7b2" font-size="11">dashed =</text>
+  <text x="510" y="86" fill="#9aa7b2" font-size="11">suspended</text>
+  <!-- unit brackets -->
+  <g fill="none" stroke="#4169E1" stroke-width="1.2">
+    <path d="M 90 50 L 90 42 L 200 42 L 200 50"/>
+    <path d="M 438 50 L 438 42 L 490 42 L 490 50"/>
+    <path d="M 206 106 L 206 98 L 432 98 L 432 106"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="145" y="36">2 units</text><text x="464" y="36">1 unit</text><text x="319" y="48">4 units</text>
+  </g>
+  <!-- stack snapshots -->
+  <text x="110" y="206" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">1:start:2</text>
+  <text x="310" y="206" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">1:end:5</text>
+  <text x="540" y="206" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">0:end:6</text>
+  <text x="84" y="236" text-anchor="end" fill="#9aa7b2" font-size="11">stack</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="88" y="218" width="44" height="28"/><rect x="88" y="250" width="44" height="28"/>
+    <rect x="288" y="250" width="44" height="28"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="110" y="237">1</text><text x="110" y="269">0</text><text x="310" y="269">0</text>
+  </g>
+  <!-- popped frame ghost -->
+  <rect x="288" y="218" width="44" height="28" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="310" y="237" text-anchor="middle" fill="#9aa7b2" font-size="13">1</text>
+  <!-- emptied stack -->
+  <rect x="518" y="250" width="44" height="28" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="540" y="269" text-anchor="middle" fill="#9aa7b2" font-size="9.5">empty</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <text x="110" y="310">push 1 · <tspan fill="#4169E1" font-weight="600">f0 += 2</tspan></text>
+    <text x="310" y="310">pop 1: <tspan fill="#4169E1" font-weight="600">f1 += 5 − 2 + 1 = 4</tspan></text>
+    <text x="540" y="310">pop 0: f0 += 1 → <tspan fill="#4169E1" font-weight="600">[3, 4]</tspan></text>
+  </g>
+  <text x="40" y="334" fill="#1a2026" font-size="13">Every elapsed unit bills the stack top: f0 banks 2 before 1 starts and its</text>
+  <text x="40" y="352" fill="#1a2026" font-size="13">final unit after; 1 banks 5 − 2 + 1 = 4 — exclusive times [3, 4].</text>
+</svg>

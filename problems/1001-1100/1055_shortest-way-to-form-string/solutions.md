@@ -8,6 +8,10 @@ The target is built one full pass through `source` at a time. Each pass walks
 is exactly one such pass, so counting completed passes counts the subsequences
 used.
 
+![On source "abc" and target "abcbc" the first pass consumes a·b·c and the
+second pass skips its a and consumes b·c, so two passes — two subsequences —
+finish the target.](figures/solution-greedy-two-passes.svg)
+
 A pass that advances the `target` pointer by zero characters means the pass's
 scan of every character in `source` found not a single match for the next
 required character — that character never occurs anywhere in `source`, so the

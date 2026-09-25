@@ -11,6 +11,8 @@ either steps off the board or lands on a non-empty square: a `p` counts
 as a capture, and a `B` (or the edge) yields nothing for that direction,
 exactly matching the rule that a rook cannot move through another piece.
 
+![On Example 3's board the four rays from the rook stop at the first piece they meet — pawns at (2,3), (3,1), (3,5) are captured while the bishop at (5,3) blocks the down ray.](figures/solution-rook-rays.svg)
+
 Because each of the four scans is independent and bounded by the board's
 fixed 8-square width, the whole method runs in constant time regardless
 of how many pieces are on the board.

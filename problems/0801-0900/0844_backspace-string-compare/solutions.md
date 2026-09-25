@@ -17,6 +17,8 @@ deletes nothing at all, which is why backspacing an empty text leaves it
 empty. A `#` never survives to be deleted by a later `#`; it always acts,
 never persists.
 
+![Example 1's reverse walks on s = "ab#c" and t = "ad#c": each # banks one skip and strikes the nearest live letter to its left, so b and d are deleted without ever being compared and the surviving letters pair up as a = a, c = c.](figures/solution-reverse-skip-walk.svg)
+
 The main loop settles both indexes and compares the survivors pairwise,
 returning `false` at the first unequal pair. When either index falls off the
 left end, the answer is whether both fell off together: both texts empty

@@ -18,6 +18,8 @@ is always left, so this test alone decides the slot), and the node is then
 pushed as the new top, ready to be someone's parent in turn. After the last
 pair the stack's bottom entry is the root.
 
+![Reading "1-2--3--4-5--6--7", the ancestor stack trims down to each dash depth before the node pushes on, so 3 and 4 attach under 2 and 5, 6, 7 complete the tree [1,2,5,3,4,6,7].](figures/solution-stack-trim-depths.svg)
+
 **Complexity:** `O(n)` time, where `n` is the length of `traversal` — every
 character is scanned once and each node is pushed and popped from the stack
 at most once — and `O(n)` space for the stack and the reconstructed tree.

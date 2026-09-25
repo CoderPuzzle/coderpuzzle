@@ -6,6 +6,8 @@ A subarray starting at index i is valid exactly while every element stays ≥ nu
 
 The stack holds indices whose next-smaller element has not yet been seen, and it is kept strictly increasing in value from bottom to top. Scanning left to right, when the current value is strictly smaller than the value at the stack top, that top index j has just met its next-smaller element at position i: it is popped and contributes i − j valid subarrays (the runs [j..j] through [j..i−1]). Equal values stay on the stack, matching the "not larger than" wording — a later duplicate can extend past an earlier one only when a strictly smaller value arrives to settle both. A sentinel pass with the value −1 after the last index flushes every remaining index against the virtual boundary n.
 
+![Scanning nums = [1,4,2,5,3], the stack pops the 4 at i = 2 and the 5 at i = 4 for one subarray each, and the sentinel then banks 1 + 3 + 5 more — 11 in all.](figures/solution-monotonic-stack-pops.svg)
+
 Each index is pushed once and popped once, so the whole computation is linear. Edge cases: a strictly decreasing array pops everything immediately and yields exactly n; an all-equal array keeps everything on the stack until the sentinel, giving n(n+1)/2.
 
 Example 1 (`nums = [1,4,2,5,3]`) pops as it scans:

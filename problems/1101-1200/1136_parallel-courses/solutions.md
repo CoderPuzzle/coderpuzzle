@@ -6,6 +6,8 @@ The minimum number of semesters is the length of the longest chain of prerequisi
 
 Build the adjacency list from each `relations` pair and count each course's indegree (number of unfinished prerequisites). The first queue holds all courses with indegree 0 — those available in semester 1. Each iteration of the outer loop drains the entire current queue as one semester: every drained course is counted as taken, and for each successor the indegree drops by one; a successor reaching indegree 0 joins the queue for the next semester. Draining the queue a full level at a time (snapshotting its length before popping) is what makes `semesters` count rounds rather than individual courses.
 
+![On n = 3 with relations [[1,3],[2,3]], semester 1 drains courses 1 and 2 and drops course 3's indegree from 2 to 0, so course 3 runs alone in semester 2 — the answer is 2.](figures/solution-semester-drain.svg)
+
 If the prerequisite graph contains a cycle, the courses on it never reach indegree 0, the queue empties early, and the count of taken courses falls short of `n` — that is the `-1` case. The acyclic case ends with every course taken, and the number of levels drained is the answer. Both the Python and Java reference solutions implement this identical layered BFS.
 
 Each course enters the queue exactly once and each of the `E = len(relations)` relations is relaxed exactly once.

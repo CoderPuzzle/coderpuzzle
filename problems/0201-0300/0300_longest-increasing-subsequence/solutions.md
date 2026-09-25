@@ -31,6 +31,8 @@ With `n` up to 2500 this comfortably answers the follow-up: the quadratic DP tha
 
 The direct transcription of the definition. `dp[i]` is the length of the longest increasing subsequence that ends exactly at `nums[i]` — every subsequence ends somewhere, so the answer is `max(dp)`. A subsequence ending at `i` either is `nums[i]` alone (length 1, the seed) or extends some shorter chain: any earlier `nums[j] < nums[i]` can be the element directly before `nums[i]`, so `dp[i]` is one plus the largest `dp[j]` among those predecessors.
 
+![For nums = [10, 9, 2, 5, 3, 7, 101, 18] each dp cell points back to its best smaller predecessor, filling the row 1, 1, 1, 2, 2, 3, 4, 4 with maximum 4.](figures/solution-dp-predecessor-arrows.svg)
+
 Each entry therefore scans every earlier index, comparing values and taking the best chain — the `j < i` double loop that gives the method its quadratic cost. With `n <= 2500` that is at most ~3 million comparisons, comfortably inside the limits here, and the table itself makes the correctness argument transparent: `dp[i]` is computed only from final, already-settled entries because it reads strictly earlier positions.
 
 Strictness comes from the guard `nums[j] < nums[i]`, not `<=`: an equal value cannot extend a chain, so `[7, 7, 7, 7]` leaves every `dp[i]` at 1. Decreasing inputs never find a predecessor and also stay at 1, and a single-element array returns its seeded 1 without entering the outer scan in any meaningful way.

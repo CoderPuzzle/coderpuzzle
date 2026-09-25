@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [-4,-1,0,3,10]; cells x = 150 + 70i, w 64, y 46, squares beneath;
+       ans rows top y = 148 + 30k; ans cells x = 300 + 56j, w 48, h 24;
+       accent cell = the square written this step, light cells = already written -->
+  <text x="138" y="72" text-anchor="end" fill="#5c6b76" font-size="12.5">nums</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="150" y="46" width="64" height="44"/>
+    <rect x="220" y="46" width="64" height="44"/>
+    <rect x="290" y="46" width="64" height="44"/>
+    <rect x="360" y="46" width="64" height="44"/>
+    <rect x="430" y="46" width="64" height="44"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="182" y="66" font-weight="600" fill="#1a2026">-4</text>
+    <text x="252" y="66" font-weight="600" fill="#1a2026">-1</text>
+    <text x="322" y="66" font-weight="600" fill="#1a2026">0</text>
+    <text x="392" y="66" font-weight="600" fill="#1a2026">3</text>
+    <text x="462" y="66" font-weight="600" fill="#1a2026">10</text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#5c6b76">
+    <text x="182" y="83">sq 16</text>
+    <text x="252" y="83">sq 1</text>
+    <text x="322" y="83">sq 0</text>
+    <text x="392" y="83">sq 9</text>
+    <text x="462" y="83">sq 100</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="2">
+    <line x1="182" y1="124" x2="182" y2="96" marker-end="url(#arrow)"/>
+    <line x1="462" y1="124" x2="462" y2="96" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#4169E1">
+    <text x="182" y="141">L</text>
+    <text x="462" y="141">R</text>
+  </g>
+  <text x="324" y="140" text-anchor="middle" fill="#5c6b76" font-size="12">ans</text>
+  <g font-size="12.5">
+    <text x="40" y="165" fill="#1a2026">16 vs 100 &#8594; ans[4] = <tspan fill="#4169E1" font-weight="600">100</tspan></text>
+    <text x="40" y="195" fill="#1a2026">16 vs 9 &#8594; ans[3] = <tspan fill="#4169E1" font-weight="600">16</tspan></text>
+    <text x="40" y="225" fill="#1a2026">1 vs 9 &#8594; ans[2] = <tspan fill="#4169E1" font-weight="600">9</tspan></text>
+    <text x="40" y="255" fill="#1a2026">1 vs 0 &#8594; ans[1] = <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="40" y="285" fill="#1a2026">one value left &#8594; ans[0] = <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+  </g>
+  <!-- row 0 -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1">
+    <rect x="300" y="148" width="48" height="24"/><rect x="356" y="148" width="48" height="24"/>
+    <rect x="412" y="148" width="48" height="24"/><rect x="468" y="148" width="48" height="24"/>
+  </g>
+  <rect x="524" y="148" width="48" height="24" fill="#4169E1"/>
+  <text x="548" y="165" text-anchor="middle" font-size="12.5" font-weight="600" fill="#ffffff">100</text>
+  <!-- row 1 -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1">
+    <rect x="300" y="178" width="48" height="24"/><rect x="356" y="178" width="48" height="24"/>
+    <rect x="412" y="178" width="48" height="24"/>
+  </g>
+  <rect x="468" y="178" width="48" height="24" fill="#4169E1"/>
+  <rect x="524" y="178" width="48" height="24" fill="#dbe4fb"/>
+  <text x="492" y="195" text-anchor="middle" font-size="12.5" font-weight="600" fill="#ffffff">16</text>
+  <text x="548" y="195" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">100</text>
+  <!-- row 2 -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1">
+    <rect x="300" y="208" width="48" height="24"/><rect x="356" y="208" width="48" height="24"/>
+  </g>
+  <rect x="412" y="208" width="48" height="24" fill="#4169E1"/>
+  <rect x="468" y="208" width="48" height="24" fill="#dbe4fb"/>
+  <rect x="524" y="208" width="48" height="24" fill="#dbe4fb"/>
+  <text x="436" y="225" text-anchor="middle" font-size="12.5" font-weight="600" fill="#ffffff">9</text>
+  <text x="492" y="225" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">16</text>
+  <text x="548" y="225" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">100</text>
+  <!-- row 3 -->
+  <rect x="300" y="238" width="48" height="24" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="356" y="238" width="48" height="24" fill="#4169E1"/>
+  <rect x="412" y="238" width="48" height="24" fill="#dbe4fb"/>
+  <rect x="468" y="238" width="48" height="24" fill="#dbe4fb"/>
+  <rect x="524" y="238" width="48" height="24" fill="#dbe4fb"/>
+  <text x="380" y="255" text-anchor="middle" font-size="12.5" font-weight="600" fill="#ffffff">1</text>
+  <text x="436" y="255" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">9</text>
+  <text x="492" y="255" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">16</text>
+  <text x="548" y="255" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">100</text>
+  <!-- row 4 -->
+  <rect x="300" y="268" width="48" height="24" fill="#4169E1"/>
+  <g fill="#dbe4fb">
+    <rect x="356" y="268" width="48" height="24"/><rect x="412" y="268" width="48" height="24"/>
+    <rect x="468" y="268" width="48" height="24"/><rect x="524" y="268" width="48" height="24"/>
+  </g>
+  <text x="324" y="285" text-anchor="middle" font-size="12.5" font-weight="600" fill="#ffffff">0</text>
+  <text x="380" y="285" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">1</text>
+  <text x="436" y="285" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">9</text>
+  <text x="492" y="285" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">16</text>
+  <text x="548" y="285" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">100</text>
+  <text x="320" y="318" text-anchor="middle" font-size="13" fill="#1a2026">Whichever end holds the larger square wins the compare, so the answer fills</text>
+  <text x="320" y="336" text-anchor="middle" font-size="13" fill="#1a2026"><tspan fill="#4169E1" font-weight="600">from the back</tspan>: 100, 16, 9, 1, then 0 &#8212; sorted, with no sort pass.</text>
+</svg>

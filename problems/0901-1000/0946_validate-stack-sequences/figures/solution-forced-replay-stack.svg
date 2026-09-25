@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 420" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="420" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- pushed = [1,2,3,4,5], popped = [4,5,3,2,1]; stack snapshots bottom-to-top after each move;
+       cells 60x22, columns centered x = 100 + 130c, row bottoms y = 150 and y = 330 -->
+  <text x="30" y="30" fill="#5c6b76" font-size="12.5">working stack after each forced move (bottom &#8594; top)</text>
+  <!-- progression arrows -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="none">
+    <path d="M 136 139 L 194 139" marker-end="url(#arrowm)"/>
+    <path d="M 266 139 L 324 139" marker-end="url(#arrowm)"/>
+    <path d="M 396 139 L 454 139" marker-end="url(#arrowm)"/>
+    <path d="M 526 139 L 584 139" marker-end="url(#arrowm)"/>
+    <path d="M 136 319 L 194 319" marker-end="url(#arrowm)"/>
+    <path d="M 266 319 L 324 319" marker-end="url(#arrowm)"/>
+    <path d="M 396 319 L 454 319" marker-end="url(#arrowm)"/>
+    <path d="M 526 319 L 584 319" marker-end="url(#arrowm)"/>
+  </g>
+  <!-- row 1: push 1, push 2, push 3, push 4, pop 4 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="70" y="128" width="60" height="22"/>
+    <rect x="200" y="128" width="60" height="22"/><rect x="200" y="106" width="60" height="22"/>
+    <rect x="330" y="128" width="60" height="22"/><rect x="330" y="106" width="60" height="22"/><rect x="330" y="84" width="60" height="22"/>
+    <rect x="460" y="128" width="60" height="22"/><rect x="460" y="106" width="60" height="22"/><rect x="460" y="84" width="60" height="22"/><rect x="460" y="62" width="60" height="22"/>
+    <rect x="590" y="128" width="60" height="22"/><rect x="590" y="106" width="60" height="22"/><rect x="590" y="84" width="60" height="22"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="100" y="143">1</text>
+    <text x="230" y="143">1</text><text x="230" y="121">2</text>
+    <text x="360" y="143">1</text><text x="360" y="121">2</text><text x="360" y="99">3</text>
+    <text x="490" y="143">1</text><text x="490" y="121">2</text><text x="490" y="99">3</text><text x="490" y="77">4</text>
+    <text x="620" y="143">1</text><text x="620" y="121">2</text><text x="620" y="99">3</text>
+  </g>
+  <!-- popped 4 leaves the top -->
+  <path d="M 620 83 L 620 72" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="620" y="66" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">4</text>
+  <!-- row 2: push 5, pop 5, pop 3, pop 2, pop 1 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="70" y="308" width="60" height="22"/><rect x="70" y="286" width="60" height="22"/><rect x="70" y="264" width="60" height="22"/><rect x="70" y="242" width="60" height="22"/>
+    <rect x="200" y="308" width="60" height="22"/><rect x="200" y="286" width="60" height="22"/><rect x="200" y="264" width="60" height="22"/>
+    <rect x="330" y="308" width="60" height="22"/><rect x="330" y="286" width="60" height="22"/>
+    <rect x="460" y="308" width="60" height="22"/>
+    <rect x="590" y="308" width="60" height="22" stroke="#9aa7b2" stroke-dasharray="3 3" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="100" y="323">1</text><text x="100" y="301">2</text><text x="100" y="279">3</text><text x="100" y="257">5</text>
+    <text x="230" y="323">1</text><text x="230" y="301">2</text><text x="230" y="279">3</text>
+    <text x="360" y="323">1</text><text x="360" y="301">2</text>
+    <text x="490" y="323">1</text>
+  </g>
+  <text x="620" y="323" text-anchor="middle" fill="#9aa7b2" font-size="11">empty</text>
+  <!-- popped values leaving the top -->
+  <path d="M 230 263 L 230 252" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="230" y="246" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">5</text>
+  <path d="M 360 285 L 360 274" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="360" y="268" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">3</text>
+  <path d="M 490 307 L 490 296" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="490" y="290" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">2</text>
+  <path d="M 620 307 L 620 296" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="620" y="290" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">1</text>
+  <!-- move labels -->
+  <g text-anchor="middle" font-size="12.5">
+    <text x="100" y="172" fill="#5c6b76">push 1</text>
+    <text x="230" y="172" fill="#5c6b76">push 2</text>
+    <text x="360" y="172" fill="#5c6b76">push 3</text>
+    <text x="490" y="172" fill="#5c6b76">push 4</text>
+    <text x="620" y="172" fill="#4169E1" font-weight="600">pop 4</text>
+    <text x="100" y="352" fill="#5c6b76">push 5</text>
+    <text x="230" y="352" fill="#4169E1" font-weight="600">pop 5</text>
+    <text x="360" y="352" fill="#4169E1" font-weight="600">pop 3</text>
+    <text x="490" y="352" fill="#4169E1" font-weight="600">pop 2</text>
+    <text x="620" y="352" fill="#4169E1" font-weight="600">pop 1</text>
+  </g>
+  <text x="330" y="386" text-anchor="middle" fill="#1a2026" font-size="13">Pushes are forced in order; the moment the top equals the next wanted value the pop</text>
+  <text x="330" y="404" text-anchor="middle" fill="#1a2026" font-size="13">is forced too &#8212; <tspan fill="#4169E1" font-weight="600">4,5,3,2,1</tspan> leave from the top, the stack drains, verdict <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

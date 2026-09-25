@@ -20,5 +20,7 @@ has been scanned this way, `s` is valid precisely when the stack is
 empty — any leftover characters could never have come from a chain of
 `"abc"` insertions.
 
+![Scanning s = "aabcbc", the stack grows a, aa, aab, pops the completed a,b,c triple back down to a on the fourth push, grows to ab, and empties on the sixth push — the empty stack is the signature that "aabcbc" is a chain of "abc" insertions.](figures/solution-stack-abc-pops.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space, where `n` is the length of
 `s`.

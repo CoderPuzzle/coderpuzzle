@@ -25,4 +25,6 @@ the answer, and the first such pair in the loop order is exactly the
 shortest-first split the statement pins; if the loops run out, no split
 exists and `[]` goes back.
 
+![Example 1's winning pair on num "1101111": first piece "1" dies for every second piece, so the cuts pin a = 11 and b = 0, and the forced run reads 11 + 0 = 11, then 0 + 11 = 11, consuming the string as [11, 0, 11, 11].](figures/solution-forced-fibonacci-run.svg)
+
 **Complexity:** `O(n²)` time, `O(n)` space.

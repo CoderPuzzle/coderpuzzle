@@ -20,6 +20,8 @@ Every recursive call that places a letter corresponds to one distinct
 non-empty sequence, so summing those calls is exactly the answer — there
 is no separate step that walks a list of finished sequences afterward.
 
+![Backtracking over the counter {A: 2, B: 1} for tiles AAB places a letter at every node, and the 8 nodes come out as A, B, AA, AB, BA, AAB, ABA, BAA.](figures/solution-tile-counter-backtracking.svg)
+
 **Complexity:** `O(n · n!)` time, `O(n)` space, where `n` is the number
 of distinct letters and their multiplicities bound the branching factor
 at each depth.

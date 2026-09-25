@@ -8,6 +8,8 @@ The array's shape is the whole problem: sorted ascending, one peak, sorted desce
 
 **Searching the slopes.** Left of the peak the array is an ordinary ascending array: binary search for the smallest index with value `>= target`, then confirm equality. Searching this slope first is what makes the answer the _minimum_ index — any hit there precedes every index on the right slope, so the search can return immediately. Only on a miss does the mirrored search run on the strictly descending right slope (smallest index with value `<= target`, confirm equality). A miss on both slopes yields `-1`.
 
+![On mountainArr [1,2,3,4,5,3,1] with target 3, the peak search lands on index 4 (value 5) and the ascending-slope search hits A[2] = 3 = target, returning the minimum index 2 without ever probing the descending slope.](figures/solution-mountain-triple-search.svg)
+
 For `n = 10⁴` the three searches together make roughly `4 log n ≈ 55` calls to `get` — comfortably inside the 100-call budget, while any linear scan would blow it by two orders of magnitude.
 
 **Complexity:** `O(log n)` time, `O(1)` space.

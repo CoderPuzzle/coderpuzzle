@@ -56,6 +56,8 @@ read top to bottom and — the twist this problem adds to plain vertical order
 which is exactly why the example with the two swapped nodes has the same
 answer as the unswapped tree. The columns themselves emit left to right.
 
+![On the root = [1, 2, 3, 4, 5, 6, 7] tree, the sweep places every node in its column band and each bucket's (row, value) sort emits [4], [2], [1, 5, 6], [3], [7] — the two nodes sharing the one cell (2, 0) fall back to value order, 5 before 6.](figures/solution-column-bands-cell-tie.svg)
+
 Every node is recorded once and joins one per-column sort of at most `n`
 pairs, so the whole pass is `n log n`; the buckets and the walk stack hold
 `O(n)` records between them.
