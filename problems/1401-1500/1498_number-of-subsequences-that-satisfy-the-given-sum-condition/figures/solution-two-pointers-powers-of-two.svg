@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="356" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- sorted nums = [3,5,6,7], target 9; two-pointer states: (0,3) fail, (0,2) add 2^2 = 4, (1,2) fail, (1,1) fail -> stop; cells 44x34 at x=70+52i -->
+  <!-- state 1: l=0, r=3 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="70" y="56" width="44" height="34"/><rect x="122" y="56" width="44" height="34"/>
+    <rect x="174" y="56" width="44" height="34"/><rect x="226" y="56" width="44" height="34"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="92" y="78">3</text><text x="144" y="78">5</text><text x="196" y="78">6</text><text x="248" y="78">7</text>
+  </g>
+  <line x1="84" y1="38" x2="84" y2="53" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrowL)"/>
+  <line x1="256" y1="38" x2="256" y2="53" stroke="#5c6b76" stroke-width="1.6" marker-end="url(#arrowR)"/>
+  <text x="84" y="32" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">l</text>
+  <text x="256" y="32" text-anchor="middle" fill="#5c6b76" font-size="11" font-weight="600">r</text>
+  <text x="300" y="77" fill="#5c6b76" font-size="13">3 + 7 = 10 &gt; 9 &#8594; r &#8212;</text>
+  <!-- state 2: l=0, r=2, middle 5 free -->
+  <rect x="70" y="122" width="44" height="34" fill="#ffffff" stroke="#4169E1" stroke-width="2.5"/>
+  <rect x="122" y="122" width="44" height="34" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="174" y="122" width="44" height="34" fill="#ffffff" stroke="#4169E1" stroke-width="2.5"/>
+  <rect x="226" y="122" width="44" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="92" y="144">3</text><text x="144" y="144">5</text><text x="196" y="144">6</text><text x="248" y="144">7</text>
+  </g>
+  <line x1="84" y1="104" x2="84" y2="119" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrowL)"/>
+  <line x1="204" y1="104" x2="204" y2="119" stroke="#5c6b76" stroke-width="1.6" marker-end="url(#arrowR)"/>
+  <text x="84" y="98" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">l</text>
+  <text x="204" y="98" text-anchor="middle" fill="#5c6b76" font-size="11" font-weight="600">r</text>
+  <text x="300" y="143" font-size="13" fill="#1a2026">3 + 6 = 9 &#8804; 9 &#8594; add <tspan fill="#4169E1" font-weight="600">2&#178; = 4</tspan></text>
+  <!-- state 3: l=1, r=2 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="70" y="188" width="44" height="34"/><rect x="122" y="188" width="44" height="34"/>
+    <rect x="174" y="188" width="44" height="34"/><rect x="226" y="188" width="44" height="34"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="92" y="210">3</text><text x="144" y="210">5</text><text x="196" y="210">6</text><text x="248" y="210">7</text>
+  </g>
+  <line x1="136" y1="170" x2="136" y2="185" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrowL)"/>
+  <line x1="204" y1="170" x2="204" y2="185" stroke="#5c6b76" stroke-width="1.6" marker-end="url(#arrowR)"/>
+  <text x="136" y="164" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">l</text>
+  <text x="204" y="164" text-anchor="middle" fill="#5c6b76" font-size="11" font-weight="600">r</text>
+  <text x="300" y="209" fill="#5c6b76" font-size="13">5 + 6 = 11 &gt; 9 &#8594; r &#8212;</text>
+  <!-- state 4: l = r = 1 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="70" y="254" width="44" height="34"/><rect x="122" y="254" width="44" height="34"/>
+    <rect x="174" y="254" width="44" height="34"/><rect x="226" y="254" width="44" height="34"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="92" y="276">3</text><text x="144" y="276">5</text><text x="196" y="276">6</text><text x="248" y="276">7</text>
+  </g>
+  <line x1="136" y1="236" x2="136" y2="251" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrowL)"/>
+  <line x1="152" y1="236" x2="152" y2="251" stroke="#5c6b76" stroke-width="1.6" marker-end="url(#arrowR)"/>
+  <text x="136" y="230" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">l</text>
+  <text x="152" y="230" text-anchor="middle" fill="#5c6b76" font-size="11" font-weight="600">r</text>
+  <text x="300" y="275" fill="#5c6b76" font-size="13">5 + 5 = 10 &gt; 9 &#8594; r &#8212;: r &lt; l, stop &#8212; total = <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  <text x="340" y="322" text-anchor="middle" fill="#1a2026" font-size="13">Sort once; each success at (l, r) adds 2<tspan dy="-5" font-size="10">r&#8722;l</tspan><tspan dy="5">: the elements between them join freely.</tspan></text>
+  <text x="340" y="342" text-anchor="middle" fill="#1a2026" font-size="13">Here only (0, 2) succeeds &#8212; 3 + 6 = 9 &#8212; adding <tspan fill="#4169E1" font-weight="600">2&#178; = 4</tspan>, the answer.</text>
+</svg>

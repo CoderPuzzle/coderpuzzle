@@ -24,5 +24,7 @@ tracks the highest probability seen for each node so that stale, weaker
 heap entries for an already-improved node are skipped in O(1) rather
 than reprocessed.
 
+![On Example 1's graph with edge probabilities 0.5, 0.5, 0.2, the max-heap pops node 0 at 1.0 and node 1 at 0.5, lifting node 2 to 0.25 before the direct 0.2 edge could win.](figures/solution-max-heap-dijkstra.svg)
+
 **Complexity:** `O(E log V)` time, `O(V + E)` space, where `V = n` and
 `E = edges.length`.

@@ -6,6 +6,8 @@ The physical picture of ants bouncing off one another is a distraction. When two
 
 Under pass-through semantics each ant simply walks to the end it was already facing and falls off. An ant at position p moving left needs p seconds; one moving right needs n - p seconds. The moment the plank empties is the maximum of these waiting times over all ants, which the solution computes with two linear scans — one over the left-movers, one over the right-movers — starting from zero.
 
+![On Example 1's plank (n = 4, left = [4,3], right = [0,1]), the meet-and-turn trajectories and the straight ghost trajectories occupy identical positions over the same seconds, so the answer is simply the longest walk to a facing end, 4.](figures/solution-turn-versus-pass-through.svg)
+
 What would otherwise demand a collision-by-collision simulation becomes a single maximization: the answer depends only on each ant's starting position and direction, never on the interleaving of meetings. The two input lists may be empty individually, but at least one ant exists, so the maximum is well defined.
 
 **Complexity:** `O(L + R)` time, `O(1)` space.

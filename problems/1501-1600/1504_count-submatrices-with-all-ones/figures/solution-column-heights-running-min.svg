@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- mat = [[1,0,1],[1,1,0],[1,1,0]]; grid cells 40x32 at (56,70); height cells 40x32 at x = 246 + 40c; per-row adds 2, 4, 7 -->
+  <text x="116" y="60" text-anchor="middle" fill="#5c6b76" font-size="12">mat</text>
+  <text x="306" y="60" text-anchor="middle" fill="#5c6b76" font-size="12">height[c] — consecutive ones ending at row r</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="56" y="70" width="40" height="32"/><rect x="96" y="70" width="40" height="32"/><rect x="136" y="70" width="40" height="32"/>
+    <rect x="56" y="102" width="40" height="32"/><rect x="96" y="102" width="40" height="32"/><rect x="136" y="102" width="40" height="32"/>
+    <rect x="56" y="134" width="40" height="32"/><rect x="96" y="134" width="40" height="32"/><rect x="136" y="134" width="40" height="32"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="76" y="90">1</text><text x="116" y="90">0</text><text x="156" y="90">1</text>
+    <text x="76" y="122">1</text><text x="116" y="122">1</text><text x="156" y="122">0</text>
+    <text x="76" y="154">1</text><text x="116" y="154">1</text><text x="156" y="154">0</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="11">
+    <text x="44" y="90">r = 0</text><text x="44" y="122">r = 1</text><text x="44" y="154">r = 2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 204 118 H 240" marker-end="url(#arrow)"/>
+  </g>
+  <!-- height rows: a one extends the run, a zero resets it -->
+  <g stroke="#1a2026" stroke-width="1.4">
+    <rect x="246" y="70" width="40" height="32" fill="#ffffff"/><rect x="286" y="70" width="40" height="32" fill="#f0f3f7"/><rect x="326" y="70" width="40" height="32" fill="#ffffff"/>
+    <rect x="246" y="102" width="40" height="32" fill="#ffffff"/><rect x="286" y="102" width="40" height="32" fill="#ffffff"/><rect x="326" y="102" width="40" height="32" fill="#f0f3f7"/>
+    <rect x="246" y="134" width="40" height="32" fill="#ffffff"/><rect x="286" y="134" width="40" height="32" fill="#ffffff"/><rect x="326" y="134" width="40" height="32" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="266" y="90" fill="#1a2026">1</text><text x="306" y="90" fill="#9aa7b2">0</text><text x="346" y="90" fill="#1a2026">1</text>
+    <text x="266" y="122" fill="#1a2026">2</text><text x="306" y="122" fill="#1a2026">1</text><text x="346" y="122" fill="#9aa7b2">0</text>
+    <text x="266" y="154" fill="#1a2026">3</text><text x="306" y="154" fill="#1a2026">2</text><text x="346" y="154" fill="#9aa7b2">0</text>
+  </g>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="430" y="90">row 0 adds 2 → total 2</text>
+    <text x="430" y="122">row 1 adds 4 → total 6</text>
+    <text x="430" y="154">row 2 adds 7 → total <tspan fill="#4169E1" font-weight="600">13</tspan></text>
+  </g>
+  <line x1="56" y1="190" x2="584" y2="190" stroke="#dbe4fb" stroke-width="1.5"/>
+  <!-- row 2 sweep: the running min only decreases as a span widens -->
+  <text x="56" y="216" fill="#1a2026" font-size="12.5">Row 2 sweep — each span adds its running minimum height:</text>
+  <text x="56" y="244" fill="#1a2026" font-size="12.5">from left 0: 3 → 2 → 0 (adds 5); from left 1: 2 → 0 (adds 2); from left 2: 0</text>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Every column span of every row contributes its minimum height: rows add 2 + 4 + 7.</text>
+  <text x="320" y="320" text-anchor="middle" fill="#1a2026" font-size="13">That counts <tspan fill="#4169E1" font-weight="600">13</tspan> all-ones submatrices in Example 1.</text>
+</svg>

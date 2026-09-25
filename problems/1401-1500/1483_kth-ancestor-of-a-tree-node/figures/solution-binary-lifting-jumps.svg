@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 368" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="368" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- parent = [-1,0,0,1,1,2,2]; tree nodes 0..6 at (160,70)(100,140)(220,140)(70,210)(130,210)(190,210)(250,210); table up[j][v] cells 30x24 at x=352+30v, rows j=0,1,2 at y=76,100,124; traces below -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="160" y1="70" x2="100" y2="140"/><line x1="160" y1="70" x2="220" y2="140"/>
+    <line x1="100" y1="140" x2="70" y2="210"/><line x1="100" y1="140" x2="130" y2="210"/>
+    <line x1="220" y1="140" x2="190" y2="210"/><line x1="220" y1="140" x2="250" y2="210"/>
+  </g>
+  <!-- the two query jumps -->
+  <path d="M 241 197 Q 272 112 169 83" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <path d="M 187 194 L 164 86" fill="none" stroke="#5c6b76" stroke-width="2" marker-end="url(#arrowG)"/>
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.5">
+    <circle cx="160" cy="70" r="16"/><circle cx="100" cy="140" r="16"/><circle cx="220" cy="140" r="16"/>
+    <circle cx="70" cy="210" r="16"/><circle cx="130" cy="210" r="16"/>
+    <circle cx="190" cy="210" r="16" stroke="#5c6b76" stroke-width="2.5"/>
+    <circle cx="250" cy="210" r="16" stroke="#4169E1" stroke-width="2.5"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">
+    <text x="160" y="75">0</text><text x="100" y="145">1</text><text x="220" y="145">2</text>
+    <text x="70" y="215">3</text><text x="130" y="215">4</text><text x="190" y="215">5</text><text x="250" y="215">6</text>
+  </g>
+  <!-- sparse table up[j][v]: row j holds the 2^j-jump, -1 = off the tree -->
+  <text x="352" y="40" fill="#1a2026" font-size="13" font-weight="600">up[j][v]</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="367" y="66">0</text><text x="397" y="66">1</text><text x="427" y="66">2</text><text x="457" y="66">3</text>
+    <text x="487" y="66">4</text><text x="517" y="66">5</text><text x="547" y="66">6</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="11.5">
+    <text x="344" y="92">j = 0</text><text x="344" y="116">j = 1</text><text x="344" y="140">j = 2</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1" fill="#ffffff">
+    <rect x="352" y="76" width="30" height="24"/><rect x="382" y="76" width="30" height="24"/><rect x="412" y="76" width="30" height="24"/><rect x="442" y="76" width="30" height="24"/><rect x="472" y="76" width="30" height="24"/><rect x="502" y="76" width="30" height="24"/><rect x="532" y="76" width="30" height="24"/>
+    <rect x="352" y="100" width="30" height="24"/><rect x="382" y="100" width="30" height="24"/><rect x="412" y="100" width="30" height="24"/><rect x="442" y="100" width="30" height="24"/><rect x="472" y="100" width="30" height="24"/><rect x="502" y="100" width="30" height="24"/><rect x="532" y="100" width="30" height="24"/>
+    <rect x="352" y="124" width="30" height="24"/><rect x="382" y="124" width="30" height="24"/><rect x="412" y="124" width="30" height="24"/><rect x="442" y="124" width="30" height="24"/><rect x="472" y="124" width="30" height="24"/><rect x="502" y="124" width="30" height="24"/><rect x="532" y="124" width="30" height="24"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <g fill="#9aa7b2">
+      <text x="367" y="92">-1</text><text x="367" y="116">-1</text>
+      <text x="367" y="140">-1</text><text x="397" y="140">-1</text><text x="427" y="140">-1</text><text x="457" y="140">-1</text><text x="487" y="140">-1</text><text x="517" y="140">-1</text><text x="547" y="140">-1</text>
+    </g>
+    <g fill="#1a2026" font-weight="600">
+      <text x="397" y="92">0</text><text x="427" y="92">0</text><text x="457" y="92">1</text><text x="487" y="92">1</text><text x="517" y="92">2</text><text x="547" y="92">2</text>
+      <text x="397" y="116">0</text><text x="427" y="116">0</text><text x="457" y="116">0</text><text x="487" y="116">0</text><text x="517" y="116">0</text><text x="547" y="116">0</text>
+    </g>
+  </g>
+  <!-- read cells: up[1][6] and up[0][0] for query (6,3); up[1][5] for query (5,2) -->
+  <g fill="none" stroke-width="2.5">
+    <rect x="532" y="100" width="30" height="24" stroke="#4169E1"/>
+    <rect x="352" y="76" width="30" height="24" stroke="#4169E1"/>
+    <rect x="502" y="100" width="30" height="24" stroke="#5c6b76"/>
+  </g>
+  <!-- query traces -->
+  <text x="40" y="257" fill="#1a2026" font-size="13">getKthAncestor(6, 3): k = 2 + 1</text>
+  <circle cx="266" cy="252" r="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.5"/>
+  <text x="266" y="257" text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">6</text>
+  <line x1="284" y1="252" x2="326" y2="252" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="305" y="238" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">jump 2</text>
+  <circle cx="346" cy="252" r="14" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <text x="346" y="257" text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">0</text>
+  <line x1="364" y1="252" x2="406" y2="252" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="385" y="238" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">jump 1</text>
+  <circle cx="426" cy="252" r="14" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="426" y="257" text-anchor="middle" fill="#9aa7b2" font-size="12.5" font-weight="600">-1</text>
+  <text x="450" y="257" fill="#4169E1" font-size="12.5" font-weight="600">answer -1 <tspan fill="#5c6b76" font-weight="400">(past the root)</tspan></text>
+  <text x="40" y="305" fill="#1a2026" font-size="13">getKthAncestor(5, 2): k = 2</text>
+  <circle cx="266" cy="300" r="14" fill="#dbe4fb" stroke="#5c6b76" stroke-width="2.5"/>
+  <text x="266" y="305" text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">5</text>
+  <line x1="284" y1="300" x2="326" y2="300" stroke="#5c6b76" stroke-width="2" marker-end="url(#arrowG)"/>
+  <text x="305" y="286" text-anchor="middle" fill="#5c6b76" font-size="11" font-weight="600">jump 2</text>
+  <circle cx="346" cy="300" r="14" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <text x="346" y="305" text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">0</text>
+  <text x="372" y="305" fill="#1a2026" font-size="12.5" font-weight="600">answer 0 <tspan fill="#5c6b76" font-weight="400">(the root)</tspan></text>
+  <text x="340" y="336" text-anchor="middle" fill="#1a2026" font-size="13">up[j][v] holds the 2ʲ-jump; k = 3 = 2 + 1 lifts 6 → 0, then one more jump</text>
+  <text x="340" y="354" text-anchor="middle" fill="#1a2026" font-size="13">overshoots the root to <tspan fill="#4169E1" font-weight="600">-1</tspan>, while k = 2 = 2 lands 5 on the root <tspan fill="#4169E1" font-weight="600">0</tspan>.</text>
+</svg>

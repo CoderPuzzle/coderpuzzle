@@ -33,6 +33,8 @@ route through it strictly improves the record; heap entries that went stale
 before a shorter route was found are discarded by a `d > dist` guard, and a
 node still at infinity when the heap empties is genuinely disconnected.
 
+![Dijkstra from city 0 on the example graph settles distances 0, 3, 4, 5 — city 3 lands at 5, outside threshold 4 — and all four runs fill the table with neighbor counts 0:2, 1:3, 2:3, 3:2, the tie at 2 going to the greatest number, city 3.](figures/solution-dijkstra-counts.svg)
+
 Each finished run contributes one row of the same table Floyd-Warshall would
 have filled, so the selection pass is unchanged: the neighborhood size is
 the count of entries at or below `distanceThreshold`, the zero at the source excluded,

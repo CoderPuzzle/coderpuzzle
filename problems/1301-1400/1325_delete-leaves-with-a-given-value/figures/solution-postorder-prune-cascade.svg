@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="280" fill="#ffffff"/>
+  <!-- root=[1,2,3,2,null,2,4], target=2; three stages of the post-order prune; node circles r=16 at rows y=75,125,175, panel centers x=115,340,565; doomed nodes dashed muted -->
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="115" y="36">2-leaves judged first</text>
+    <text x="340" y="36">parent 2 is now a leaf</text>
+    <text x="565" y="36">it dies too: survivors</text>
+  </g>
+  <!-- stage 1: full tree, both leaf 2s doomed -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="115" y1="75" x2="65" y2="125"/>
+    <line x1="115" y1="75" x2="170" y2="125"/>
+    <line x1="65" y1="125" x2="30" y2="175"/>
+    <line x1="170" y1="125" x2="135" y2="175"/>
+    <line x1="170" y1="125" x2="205" y2="175"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="115" cy="75" r="16"/><circle cx="65" cy="125" r="16"/><circle cx="170" cy="125" r="16"/><circle cx="205" cy="175" r="16"/>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3">
+    <circle cx="30" cy="175" r="16"/><circle cx="135" cy="175" r="16"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600">
+    <text x="115" y="80" fill="#1a2026">1</text><text x="65" y="130" fill="#1a2026">2</text>
+    <text x="170" y="130" fill="#1a2026">3</text><text x="205" y="180" fill="#1a2026">4</text>
+    <text x="30" y="180" fill="#9aa7b2">2</text><text x="135" y="180" fill="#9aa7b2">2</text>
+  </g>
+  <!-- stage 2: leaves gone, the depth-1 node 2 doomed -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="340" y1="75" x2="290" y2="125"/>
+    <line x1="340" y1="75" x2="395" y2="125"/>
+    <line x1="395" y1="125" x2="430" y2="175"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="340" cy="75" r="16"/><circle cx="395" cy="125" r="16"/><circle cx="430" cy="175" r="16"/>
+  </g>
+  <circle cx="290" cy="125" r="16" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <g text-anchor="middle" font-size="13" font-weight="600">
+    <text x="340" y="80" fill="#1a2026">1</text><text x="395" y="130" fill="#1a2026">3</text><text x="430" y="180" fill="#1a2026">4</text>
+    <text x="290" y="130" fill="#9aa7b2">2</text>
+  </g>
+  <!-- stage 3: final tree [1,null,3,null,4] -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="565" y1="75" x2="620" y2="125"/>
+    <line x1="620" y1="125" x2="655" y2="175"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="565" cy="75" r="16"/><circle cx="620" cy="125" r="16"/><circle cx="655" cy="175" r="16"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="565" y="80">1</text><text x="620" y="130">3</text><text x="655" y="180">4</text>
+  </g>
+  <text x="340" y="242" text-anchor="middle" fill="#1a2026" font-size="13">Children before parents: both 2-leaves die, then parent 2 (no children left, value = 2) dies too,</text>
+  <text x="340" y="262" text-anchor="middle" fill="#1a2026" font-size="13">leaving <tspan fill="#4169E1" font-weight="600">[1, null, 3, null, 4]</tspan> — one pass, no rescan.</text>
+</svg>

@@ -11,6 +11,8 @@ an unused one is tried (zero forbidden for letters that lead a word) —
 and the column check prunes the branch immediately, long before all
 letters are bound.
 
+![On SEND + MORE = MONEY (9567 + 1085 = 10652), each right-to-left column fixes its result letter — 12→Y2, 15→E5, 6→N6, 10→O0, carry 1→M1 — and hands its carry left, so a column check that misses prunes the branch on the spot.](figures/solution-column-carry-checks.svg)
+
 Two structural prunes keep the search tiny. If the result is longer
 than every word, the top result column is checked against the carry
 alone; and if the result is not long enough to hold the widest column

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 276" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="276" fill="#ffffff"/>
+  <!-- houses = [1,4,8,10,20], k = 3; x = 56 + 26*position; axis y=150; optimal runs [1,4] [8,10] [20] with mailboxes at 3, 9, 20 -->
+  <g text-anchor="middle" font-size="12" fill="#1a2026">
+    <text x="121" y="64">houses 1, 4 · cost 2+1 = <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+    <text x="290" y="64">houses 8, 10 · cost 1+1 = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="576" y="64">house 20 · cost <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 82 78 v 6 H 160 v -6"/>
+    <path d="M 264 78 v 6 H 316 v -6"/>
+    <path d="M 570 78 v 6 H 582 v -6"/>
+  </g>
+  <!-- houses on the number line -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="72" y="96" width="20" height="20"/><rect x="150" y="96" width="20" height="20"/>
+    <rect x="254" y="96" width="20" height="20"/><rect x="306" y="96" width="20" height="20"/>
+    <rect x="566" y="96" width="20" height="20"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5" font-weight="600">
+    <text x="82" y="110">1</text><text x="160" y="110">4</text><text x="264" y="110">8</text><text x="316" y="110">10</text><text x="576" y="110">20</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1">
+    <line x1="82" y1="116" x2="82" y2="150"/><line x1="160" y1="116" x2="160" y2="150"/>
+    <line x1="264" y1="116" x2="264" y2="150"/><line x1="316" y1="116" x2="316" y2="150"/>
+    <line x1="576" y1="116" x2="576" y2="150"/>
+  </g>
+  <line x1="44" y1="150" x2="600" y2="150" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1">
+    <line x1="56" y1="150" x2="56" y2="155"/><line x1="186" y1="150" x2="186" y2="155"/>
+    <line x1="316" y1="150" x2="316" y2="155"/><line x1="446" y1="150" x2="446" y2="155"/>
+    <line x1="576" y1="150" x2="576" y2="155"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="56" y="167">0</text><text x="186" y="167">5</text><text x="316" y="167">10</text><text x="446" y="167">15</text><text x="576" y="167">20</text>
+  </g>
+  <!-- mailboxes at the run medians -->
+  <g fill="#4169E1">
+    <path d="M 134 152 L 127 164 L 141 164 Z"/>
+    <path d="M 290 152 L 283 164 L 297 164 Z"/>
+    <path d="M 576 152 L 569 164 L 583 164 Z"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="134" y="184">3</text><text x="290" y="184">9</text><text x="576" y="184">20</text>
+  </g>
+  <!-- house-to-mailbox distances -->
+  <g stroke="#4169E1" stroke-width="1.5">
+    <line x1="82" y1="198" x2="134" y2="198"/><line x1="134" y1="198" x2="160" y2="198"/>
+    <line x1="264" y1="198" x2="290" y2="198"/><line x1="290" y1="198" x2="316" y2="198"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1">
+    <line x1="82" y1="194" x2="82" y2="202"/><line x1="134" y1="194" x2="134" y2="202"/><line x1="160" y1="194" x2="160" y2="202"/>
+    <line x1="264" y1="194" x2="264" y2="202"/><line x1="290" y1="194" x2="290" y2="202"/><line x1="316" y1="194" x2="316" y2="202"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="108" y="216">2</text><text x="147" y="216">1</text>
+    <text x="277" y="216">1</text><text x="303" y="216">1</text>
+  </g>
+  <text x="576" y="216" text-anchor="middle" fill="#9aa7b2" font-size="12">0</text>
+  <text x="320" y="242" text-anchor="middle" fill="#1a2026" font-size="13">Sorted houses split into runs [1, 4], [8, 10] and [20]; each run's mailbox sits</text>
+  <text x="320" y="260" text-anchor="middle" fill="#1a2026" font-size="13">at its median — <tspan fill="#4169E1" font-weight="600">3, 9, 20</tspan> — and the run costs 3 + 2 + 0 sum to the answer <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

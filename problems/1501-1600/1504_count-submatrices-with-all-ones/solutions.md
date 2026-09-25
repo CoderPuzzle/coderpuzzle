@@ -6,6 +6,8 @@ Enumerating submatrices by their four corners is quartic; the efficient anchor i
 
 The height array is maintained incrementally: a one extends the previous column run, a zero resets it to zero. For the inner enumeration, the left column is fixed and the right edge sweeps outward while a single running variable tracks the minimum height of the growing span — the minimum over a span only decreases as the span widens, so no recomputation is needed, and each visited span contributes its current minimum to the total.
 
+![On Example 1's mat = [[1,0,1],[1,1,0],[1,1,0]], the consecutive-ones heights build row by row while each column span adds its running minimum, so the rows contribute 2 + 4 + 7 = 13 all-ones submatrices.](figures/solution-column-heights-running-min.svg)
+
 The double loop per row visits every span of every row exactly once, which replaces the naive per-span minimum rescan with constant amortized work per span. All-zero rows simply contribute zero, and single cells are covered as spans of length one whose minimum is the column height itself.
 
 **Complexity:** `O(m · n²)` time, `O(n)` space.

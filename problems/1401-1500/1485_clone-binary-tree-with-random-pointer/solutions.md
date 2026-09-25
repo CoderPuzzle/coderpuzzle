@@ -44,6 +44,11 @@ copy, captured before the split, is the answer: the judge's clone check
 sees only freshly allocated nodes, and the input tree comes out of the
 split exactly as it went in.
 
+![On Example 1's tree [1,null,4,7] with randoms 4→7 and 7→1, the weave inserts
+clones 1′, 4′, and 7′ as their originals' left children so 4.random.left reads
+7′, and the split restores 1-4-7 exactly while freeing the clone tree 1′-4′-7′
+as the answer.](figures/solution-weave-then-split.svg)
+
 **Complexity:** `O(n)` time, `O(1)` extra space — no registry is ever
 built; the only auxiliary storage is the passes' walk stacks, `O(h)` for
 the tree's height.

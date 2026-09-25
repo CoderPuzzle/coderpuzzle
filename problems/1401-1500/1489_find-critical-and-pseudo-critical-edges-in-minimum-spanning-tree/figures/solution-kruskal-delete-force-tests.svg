@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 324" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="324" fill="#ffffff"/>
+  <!-- edges [[0,1,1],[1,2,1],[2,3,2],[0,3,2],[0,4,3],[3,4,3],[1,4,6]]; base order 0..6 by weight; base MST = 1+1+2+3 = 7 via edges 0,1,2,4 (edge 3 closes a cycle, edges 5-6 unreached); delete test re-runs Kruskal skipping the edge; force test unions it first and runs only on deletion survivors -->
+  <g font-size="12.5" fill="#5c6b76" text-anchor="middle">
+    <text x="70" y="64">edge</text>
+    <text x="185" y="64">base sweep</text>
+    <text x="305" y="64">delete test</text>
+    <text x="425" y="64">force test</text>
+    <text x="565" y="64">verdict</text>
+  </g>
+  <line x1="28" y1="74" x2="652" y2="74" stroke="#dbe4fb" stroke-width="1.5"/>
+  <g fill="#f0f3f7">
+    <rect x="24" y="100" width="632" height="24"/>
+    <rect x="24" y="152" width="632" height="24"/>
+    <rect x="24" y="204" width="632" height="24"/>
+  </g>
+  <g font-size="13" text-anchor="middle">
+    <text x="70" y="92"><tspan fill="#1a2026" font-weight="600">0</tspan><tspan fill="#5c6b76"> &#183; 0&#8211;1 w1</tspan></text>
+    <text x="70" y="118"><tspan fill="#1a2026" font-weight="600">1</tspan><tspan fill="#5c6b76"> &#183; 1&#8211;2 w1</tspan></text>
+    <text x="70" y="144"><tspan fill="#1a2026" font-weight="600">2</tspan><tspan fill="#5c6b76"> &#183; 2&#8211;3 w2</tspan></text>
+    <text x="70" y="170"><tspan fill="#1a2026" font-weight="600">3</tspan><tspan fill="#5c6b76"> &#183; 0&#8211;3 w2</tspan></text>
+    <text x="70" y="196"><tspan fill="#1a2026" font-weight="600">4</tspan><tspan fill="#5c6b76"> &#183; 0&#8211;4 w3</tspan></text>
+    <text x="70" y="222"><tspan fill="#1a2026" font-weight="600">5</tspan><tspan fill="#5c6b76"> &#183; 3&#8211;4 w3</tspan></text>
+    <text x="70" y="248"><tspan fill="#1a2026" font-weight="600">6</tspan><tspan fill="#5c6b76"> &#183; 1&#8211;4 w6</tspan></text>
+  </g>
+  <g font-size="13" text-anchor="middle">
+    <text x="185" y="92"><tspan fill="#5c6b76">take </tspan><tspan fill="#1a2026" font-weight="600">1</tspan></text>
+    <text x="185" y="118"><tspan fill="#5c6b76">take </tspan><tspan fill="#1a2026" font-weight="600">2</tspan></text>
+    <text x="185" y="144"><tspan fill="#5c6b76">take </tspan><tspan fill="#1a2026" font-weight="600">4</tspan></text>
+    <text x="185" y="170" fill="#5c6b76">cycle</text>
+    <text x="185" y="196"><tspan fill="#5c6b76">take </tspan><tspan fill="#1a2026" font-weight="600">7</tspan></text>
+    <text x="185" y="222" fill="#9aa7b2">&#8211;</text>
+    <text x="185" y="248" fill="#9aa7b2">&#8211;</text>
+  </g>
+  <g font-size="13" text-anchor="middle">
+    <text x="305" y="92" fill="#4169E1" font-weight="600">8</text>
+    <text x="305" y="118" fill="#4169E1" font-weight="600">8</text>
+    <text x="305" y="144" fill="#1a2026">7</text>
+    <text x="305" y="170" fill="#1a2026">7</text>
+    <text x="305" y="196" fill="#1a2026">7</text>
+    <text x="305" y="222" fill="#1a2026">7</text>
+    <text x="305" y="248" fill="#1a2026">7</text>
+  </g>
+  <g font-size="13" text-anchor="middle">
+    <text x="425" y="92" fill="#9aa7b2">&#8211;</text>
+    <text x="425" y="118" fill="#9aa7b2">&#8211;</text>
+    <text x="425" y="144" fill="#1a2026">7</text>
+    <text x="425" y="170" fill="#1a2026">7</text>
+    <text x="425" y="196" fill="#1a2026">7</text>
+    <text x="425" y="222" fill="#1a2026">7</text>
+    <text x="425" y="248" fill="#5c6b76">10</text>
+  </g>
+  <g font-size="13" font-weight="600" text-anchor="middle">
+    <text x="565" y="92" fill="#4169E1">critical</text>
+    <text x="565" y="118" fill="#4169E1">critical</text>
+    <text x="565" y="144" fill="#1a2026">pseudo</text>
+    <text x="565" y="170" fill="#1a2026">pseudo</text>
+    <text x="565" y="196" fill="#1a2026">pseudo</text>
+    <text x="565" y="222" fill="#1a2026">pseudo</text>
+    <text x="565" y="248" fill="#9aa7b2">neither</text>
+  </g>
+  <text x="340" y="286" text-anchor="middle" fill="#1a2026" font-size="13">The weight-ordered sweep takes edges 0, 1, 2, 4 (edge 3 closes a cycle) for weight <tspan fill="#4169E1" font-weight="600">7</tspan>;</text>
+  <text x="340" y="304" text-anchor="middle" fill="#1a2026" font-size="13">deleting 0 or 1 raises it to <tspan fill="#4169E1" font-weight="600">8</tspan> &#8212; critical; forcing 2&#8211;5 still totals <tspan fill="#4169E1" font-weight="600">7</tspan> &#8212; pseudo; edge 6: neither.</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="296" fill="#ffffff"/>
+  <!-- arr = [7,3,4,7], target = 7; cells 64x42 at x=70+76c, y=64; arcs = the target windows [0..0] len 1, [1..2] len 2, [3..3] len 1; best row y=206 -->
+  <text x="40" y="38" fill="#1a2026" font-size="12.5" font-weight="600">target = 7</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="102" y="58">0</text><text x="178" y="58">1</text><text x="254" y="58">2</text><text x="330" y="58">3</text>
+  </g>
+  <text x="58" y="90" text-anchor="end" fill="#5c6b76" font-size="12.5">arr</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="70" y="64" width="64" height="42"/><rect x="146" y="64" width="64" height="42"/>
+    <rect x="218" y="64" width="64" height="42"/><rect x="290" y="64" width="64" height="42"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="102" y="90">7</text><text x="178" y="90">3</text><text x="254" y="90">4</text><text x="330" y="90">7</text>
+  </g>
+  <g fill="none" stroke-width="2">
+    <path d="M 78 114 Q 102 138 126 114" stroke="#4169E1"/>
+    <path d="M 154 114 Q 214 154 274 114" stroke="#5c6b76"/>
+    <path d="M 298 114 Q 322 138 346 114" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="102" y="160" fill="#4169E1" font-weight="600">len 1</text>
+    <text x="214" y="178" fill="#5c6b76">len 2</text>
+    <text x="322" y="160" fill="#4169E1" font-weight="600">len 1</text>
+  </g>
+  <text x="40" y="196" fill="#5c6b76" font-size="12">best[i] = shortest target-window ending at or before i</text>
+  <text x="58" y="227" text-anchor="end" fill="#5c6b76" font-size="12.5">best</text>
+  <g fill="#dbe4fb" stroke-width="2">
+    <rect x="70" y="206" width="64" height="32" stroke="#5c6b76"/>
+    <rect x="146" y="206" width="64" height="32" stroke="#42525e" stroke-width="1.5"/>
+    <rect x="218" y="206" width="64" height="32" stroke="#4169E1"/>
+    <rect x="290" y="206" width="64" height="32" stroke="#42525e" stroke-width="1.5"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="102" y="227">1</text><text x="178" y="227">1</text><text x="254" y="227">1</text><text x="330" y="227">1</text>
+  </g>
+  <text x="320" y="264" text-anchor="middle" fill="#5c6b76" font-size="12.5">window [1..2] pairs with <tspan font-weight="600">best[0]</tspan> = 1 → 1 + 2 = 3</text>
+  <text x="320" y="282" text-anchor="middle" fill="#1a2026" font-size="12.5">window [3..3] pairs with <tspan fill="#4169E1" font-weight="600">best[2]</tspan> = 1 → 1 + 1 = <tspan fill="#4169E1" font-weight="600">2</tspan>, the answer.</text>
+</svg>

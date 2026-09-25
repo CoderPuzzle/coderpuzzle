@@ -13,6 +13,8 @@ reach) and asks: how many still-active digits precede this position? The
 first digit (in increasing value) whose cost fits the remaining budget is
 appended, its cost is deducted from `k`, and that position is retired.
 
+![On Example 1's num = "4321" with k = 4, each output slot greedily takes the smallest digit whose drag cost fits the remaining budget — 1 costs 3, then 3 costs 1 — spending the budget exactly to produce 1342.](figures/solution-greedy-slots-budget.svg)
+
 Counting "still-active digits before position `p`" and retiring a position
 are both prefix-sum operations, so a Fenwick tree (binary indexed tree)
 initialized to all ones over the string's length answers each query and

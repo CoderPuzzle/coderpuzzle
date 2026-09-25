@@ -43,6 +43,10 @@ the empty array is the answer. Otherwise that day takes the lake number
 and is spent by pointing `nxt[j]` at `j + 1` — the union step, merging
 the day into its successor so every later find skips straight over it.
 
+![On Example 2's rains [1,2,0,0,2,1], day 5's rain on full lake 1 runs
+find(0 + 1) and the pointers hop 1 → 2 → 3 to the earliest unspent dry day,
+which dries lake 1, after day 4's find(2) spent day 2 on lake 2.](figures/solution-uf-skip-dry-days.svg)
+
 Path compression flattens the chains as they are walked, so the sweep
 costs an inverse-Ackermann factor per day instead of a logarithm. Dry
 days never claimed keep pointing at themselves and already carry lake

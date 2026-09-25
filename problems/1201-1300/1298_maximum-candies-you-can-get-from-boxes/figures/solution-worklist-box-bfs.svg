@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="290" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- status=[1,0,1,0], candies=[7,5,4,100], keys[2]=[1], containedBoxes=[[1,2],[3],[],[]];
+       boxes 120x56 at y=60 (x = 30, 200, 370, 540);
+       gray arrows = boxes found inside, blue arrow = key release, box 3 stays parked -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 90 60 Q 260 8 430 60" marker-end="url(#arrow)"/>
+    <path d="M 90 116 Q 160 168 230 116" marker-end="url(#arrow)"/>
+    <path d="M 260 116 Q 430 210 600 116" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 430 116 Q 360 168 290 116" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="260" y="22" text-anchor="middle" fill="#5c6b76" font-size="12">finds box 2 — open, queues it</text>
+  <text x="160" y="164" text-anchor="middle" fill="#5c6b76" font-size="12">box 1 locked → parked</text>
+  <text x="255" y="188" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">key 1 frees held box 1</text>
+  <text x="430" y="206" text-anchor="middle" fill="#5c6b76" font-size="12">finds box 3 — no key, stays parked</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="30" y="60" width="120" height="56" fill="#dbe4fb"/>
+    <rect x="200" y="60" width="120" height="56" fill="#ffffff"/>
+    <rect x="370" y="60" width="120" height="56" fill="#ffffff"/>
+    <rect x="540" y="60" width="120" height="56" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="90" y="82" font-weight="600" fill="#1a2026">box 0</text>
+    <text x="90" y="102" fill="#1a2026">7 · open</text>
+    <text x="260" y="82" font-weight="600" fill="#1a2026">box 1</text>
+    <text x="260" y="102"><tspan fill="#1a2026">5</tspan><tspan fill="#5c6b76"> · locked</tspan></text>
+    <text x="430" y="82" font-weight="600" fill="#1a2026">box 2</text>
+    <text x="430" y="102" fill="#1a2026">4 · open</text>
+    <text x="600" y="82" font-weight="600" fill="#9aa7b2">box 3</text>
+    <text x="600" y="102" fill="#9aa7b2">100 · locked</text>
+  </g>
+  <text x="340" y="244" text-anchor="middle" fill="#1a2026" font-size="13">The worklist opens 0 → 2 → 1 and collects 7 + 4 + 5 = <tspan fill="#4169E1" font-weight="600">16</tspan>.</text>
+  <text x="340" y="266" text-anchor="middle" fill="#1a2026" font-size="13">Box 3 rides in box 1 but its key never appears — its 100 candies stay out of reach.</text>
+</svg>

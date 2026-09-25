@@ -51,4 +51,6 @@ to keep. Every node is visited a constant number of times, no node is
 allocated, and the only extra state is the cursor, the skipper, and the
 placeholder — all of it constant.
 
+![On the 13-node Example 1 list with m = 2 and n = 3, the cursor stands on each kept run's last node (2, 7 and 12) and one splice node.next = skipper.next deletes the runs 3-5, 8-10 and 13, leaving [1, 2, 6, 7, 11, 12].](figures/solution-inplace-splice-cycles.svg)
+
 **Complexity:** `O(sz)` time, `O(1)` space.

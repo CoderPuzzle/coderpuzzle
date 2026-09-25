@@ -19,4 +19,6 @@ of an optimal pair ends before the later one starts), and updates the
 answer with `best[l - 1] + (r - l + 1)`. Then fold the new length into
 `best`. One pass, constant extra work per index.
 
+![Sweeping arr = [7, 3, 4, 7] with target 7 records the target windows of lengths 1, 2 and 1 and fills best with 1s; the window ending at index 3 pairs with best[2] = 1 for 1 + 1 = 2.](figures/solution-prefix-minima-sweep.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space for the prefix minima.

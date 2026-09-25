@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- grid = [[1,2,3],[4,5,6],[7,8,9]]; cells 64x40, grid at (90,70), dp at (380,70);
+       dp cell = corner grid value + previous row's min1 (min2 where the m2 tag sits);
+       blue routed line + blue numbers = winning path columns 0,1,0 -->
+  <text x="186" y="54" text-anchor="middle" fill="#5c6b76" font-size="12.5">grid</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="90" y="70" width="64" height="40"/><rect x="154" y="70" width="64" height="40"/><rect x="218" y="70" width="64" height="40"/>
+    <rect x="90" y="110" width="64" height="40"/><rect x="154" y="110" width="64" height="40"/><rect x="218" y="110" width="64" height="40"/>
+    <rect x="90" y="150" width="64" height="40"/><rect x="154" y="150" width="64" height="40"/><rect x="218" y="150" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="122" y="95">1</text><text x="186" y="95">2</text><text x="250" y="95">3</text>
+    <text x="122" y="135">4</text><text x="186" y="135">5</text><text x="250" y="135">6</text>
+    <text x="122" y="175">7</text><text x="186" y="175">8</text><text x="250" y="175">9</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 292 130 H 356" marker-end="url(#arrow)"/>
+  </g>
+  <text x="324" y="112" text-anchor="middle" fill="#5c6b76" font-size="12">row by row,</text>
+  <text x="324" y="152" text-anchor="middle" fill="#5c6b76" font-size="12">top to bottom</text>
+  <text x="476" y="54" text-anchor="middle" fill="#5c6b76" font-size="12.5">dp — best sum per column</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="380" y="70" width="64" height="40"/><rect x="444" y="70" width="64" height="40"/><rect x="508" y="70" width="64" height="40"/>
+    <rect x="380" y="110" width="64" height="40"/><rect x="444" y="110" width="64" height="40"/><rect x="508" y="110" width="64" height="40"/>
+    <rect x="380" y="150" width="64" height="40"/><rect x="444" y="150" width="64" height="40"/><rect x="508" y="150" width="64" height="40"/>
+  </g>
+  <!-- winning path visits dp cells (0,0), (1,1), (2,0); routed along cell boundaries -->
+  <polyline points="412,90 412,110 476,110 476,150 412,150 412,170" fill="none" stroke="#4169E1" stroke-width="3"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="424" y="96" fill="#4169E1">1</text><text x="476" y="96" fill="#1a2026">2</text><text x="540" y="96" fill="#1a2026">3</text>
+    <text x="416" y="136" fill="#1a2026">6</text><text x="490" y="140" fill="#4169E1">6</text><text x="540" y="136" fill="#1a2026">7</text>
+    <text x="430" y="180" fill="#4169E1">13</text><text x="476" y="176" fill="#1a2026">14</text><text x="540" y="176" fill="#1a2026">15</text>
+  </g>
+  <g text-anchor="start" fill="#5c6b76" font-size="10.5">
+    <text x="384" y="84">1</text><text x="448" y="84">2</text><text x="512" y="84">3</text>
+    <text x="384" y="124">4</text><text x="448" y="124">5</text><text x="512" y="124">6</text>
+    <text x="384" y="164">7</text><text x="448" y="164">8</text><text x="512" y="164">9</text>
+  </g>
+  <g fill="#4169E1" font-size="10.5">
+    <text x="383" y="146">m2</text><text x="383" y="186">m2</text>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="380" y="214">row 0: min1 = 1 (col 0), min2 = 2</text>
+    <text x="380" y="232">row 1: min1 = 6 (col 0), min2 = 6</text>
+  </g>
+  <text x="320" y="262" text-anchor="middle" fill="#1a2026" font-size="13">Each cell adds the previous row's min1 unless it sits in idx1's column —</text>
+  <text x="320" y="281" text-anchor="middle" fill="#1a2026" font-size="13">the two m2 cells take min2 instead — so path 1 → 5 → 7 ends at <tspan fill="#4169E1" font-weight="600">13</tspan>.</text>
+</svg>

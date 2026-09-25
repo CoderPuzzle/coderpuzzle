@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 312" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="312" fill="#ffffff"/>
+  <!-- prices = [8,4,6,2,3]; cols = arrival i at x=90+120i; rows = stack index 4 (top) to 0 (bottom); #dbe4fb = pending on stack, struck grey = popped by this arrival -->
+  <g text-anchor="middle" font-size="12">
+    <g fill="#5c6b76">
+      <text x="90" y="36">i = 0</text><text x="210" y="36">i = 1</text><text x="330" y="36">i = 2</text><text x="450" y="36">i = 3</text><text x="570" y="36">i = 4</text>
+    </g>
+    <g fill="#1a2026" font-weight="600">
+      <text x="90" y="54">arrive 8</text><text x="210" y="54">arrive 4</text><text x="330" y="54">arrive 6</text><text x="450" y="54">arrive 2</text><text x="570" y="54">arrive 3</text>
+    </g>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="11">
+    <text x="52" y="92">idx 4</text><text x="52" y="118">idx 3</text><text x="52" y="144">idx 2</text><text x="52" y="170">idx 1</text><text x="52" y="196">idx 0</text>
+  </g>
+  <!-- stack cells after each arrival -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="58" y="178" width="64" height="26"/>
+    <rect x="178" y="152" width="64" height="26"/>
+    <rect x="298" y="152" width="64" height="26"/><rect x="298" y="126" width="64" height="26"/>
+    <rect x="418" y="100" width="64" height="26"/>
+    <rect x="538" y="100" width="64" height="26"/><rect x="538" y="74" width="64" height="26"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="178" y="178" width="64" height="26"/>
+    <rect x="418" y="126" width="64" height="26"/><rect x="418" y="152" width="64" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="90" y="196">8</text>
+    <text x="210" y="170">4</text>
+    <text x="330" y="170">4</text><text x="330" y="144">6</text>
+    <text x="450" y="118">2</text>
+    <text x="570" y="118">2</text><text x="570" y="92">3</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#9aa7b2">
+    <text x="210" y="196">8</text>
+    <text x="450" y="144">6</text><text x="450" y="170">4</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <line x1="202" y1="191.5" x2="218" y2="191.5"/>
+    <line x1="442" y1="139.5" x2="458" y2="139.5"/>
+    <line x1="442" y1="165.5" x2="458" y2="165.5"/>
+  </g>
+  <!-- pop arithmetic per arrival -->
+  <g text-anchor="middle" font-size="11.5">
+    <text x="210" y="232" fill="#5c6b76">pops 8 → 8-4 = <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+    <text x="330" y="232" fill="#9aa7b2">no pop — 4 &lt; 6</text>
+    <text x="450" y="232" fill="#5c6b76">pops 6 → 6-2 = <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+    <text x="450" y="250" fill="#5c6b76">pops 4 → 4-2 = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="570" y="232" fill="#9aa7b2">no pop — 2 &lt; 3</text>
+  </g>
+  <text x="320" y="280" text-anchor="middle" fill="#1a2026" font-size="13">Stack prices stay strictly increasing bottom-to-top, so each arrival pops every</text>
+  <text x="320" y="298" text-anchor="middle" fill="#1a2026" font-size="13">pending item it discounts; the never-popped keep their price: <tspan fill="#4169E1" font-weight="600">[4, 2, 4, 2, 3]</tspan>.</text>
+</svg>

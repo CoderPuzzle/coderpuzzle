@@ -8,6 +8,8 @@ holds (node, parent value, grandparent value), and the children are pushed
 with the roles shifted one level down. A node whose carried grandparent
 value is even contributes its value to the running sum.
 
+![In the example tree each pop carries (node, parent, grandparent), and the values sitting over even grandparents — 3, 5, 1, 7, 2 — accumulate 3 + 5 + 1 + 7 + 2 = 18.](figures/solution-dfs-parent-grandparent.svg)
+
 The traversal uses an explicit stack rather than recursion — the tree may
 be a 10⁴-node chain, far beyond the default recursion budget of every
 language in the judge. Each node is pushed and popped exactly once, and

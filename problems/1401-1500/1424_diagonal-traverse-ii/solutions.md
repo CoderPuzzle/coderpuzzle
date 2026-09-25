@@ -15,6 +15,8 @@ diagonal sum to a growable list does the collection in one pass over all
 `sum(nums[i].length)` cells; the answer is then concatenated from
 diagonal `0` up to the largest sum seen.
 
+![On Example 2 the ragged cells grouped by their i + j sum give buckets stored top-down, so reading each back to front turns diagonal 2's 3, 7, 8 into 8, 7, 3 and the traversal opens 1, 6, 2, 8, 7, 3.](figures/solution-diagonal-buckets.svg)
+
 Nothing is sorted and no tuples are materialized: the row scan itself
 supplies the within-diagonal order, making the whole algorithm a linear
 counting pass. The ragged rows cost nothing — a row simply stops

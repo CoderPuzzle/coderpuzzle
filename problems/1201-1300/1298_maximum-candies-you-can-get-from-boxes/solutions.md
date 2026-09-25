@@ -16,6 +16,8 @@ releasing it from the locked-held set if we were already holding it. The
 total accumulates every opened box exactly once; when the queue drains, no
 remaining box can ever satisfy both conditions at once.
 
+![From initial box 0 the worklist opens 0, then 2 — whose key frees the parked box 1 — while keyless box 3 stays parked forever, collecting 7 + 4 + 5 = 16.](figures/solution-worklist-box-bfs.svg)
+
 The loop is a fixpoint search: every box is enqueued at most once per
 ownership event and opened once, so the sweep is linear in the total size of
 `keys` and `containedBoxes`. A key for a box you never own is harmless, and

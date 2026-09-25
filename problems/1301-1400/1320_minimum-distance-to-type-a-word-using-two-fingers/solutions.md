@@ -16,4 +16,6 @@ resting one). Rolling the array one step per character over all 27 rest
 slots keeps the table at 27 entries; the answer is the minimum over rest
 slots after the last character.
 
+![On word="CAKE" the statement's 6-wide keyboard grid gives C → A = 2 and K → E = 1: the rolling dp over resting-finger slots keeps rest-on-A at 2 through CAK, then pays 1 for K → E and lands on the minimum 3.](figures/solution-dp-rest-slot-roll.svg)
+
 **Complexity:** O(n · 27) time, O(27) space.

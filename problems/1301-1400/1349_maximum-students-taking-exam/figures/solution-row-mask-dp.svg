@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 322" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="322" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- seats = [["#",".","#","#",".","#"],[".","#","#","#","#","."],["#",".","#","#",".","#"]];
+       grid cells 36x30 at (48,92); chosen chain 010010 -> 000000 -> 010010 = 2+0+2 = 4 students -->
+  <text x="156" y="60" text-anchor="middle" fill="#5c6b76" font-size="12.5">seats</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="48" y="92" width="36" height="30"/><rect x="84" y="92" width="36" height="30"/><rect x="120" y="92" width="36" height="30"/><rect x="156" y="92" width="36" height="30"/><rect x="192" y="92" width="36" height="30"/><rect x="228" y="92" width="36" height="30"/>
+    <rect x="48" y="122" width="36" height="30"/><rect x="84" y="122" width="36" height="30"/><rect x="120" y="122" width="36" height="30"/><rect x="156" y="122" width="36" height="30"/><rect x="192" y="122" width="36" height="30"/><rect x="228" y="122" width="36" height="30"/>
+    <rect x="48" y="152" width="36" height="30"/><rect x="84" y="152" width="36" height="30"/><rect x="120" y="152" width="36" height="30"/><rect x="156" y="152" width="36" height="30"/><rect x="192" y="152" width="36" height="30"/><rect x="228" y="152" width="36" height="30"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="84" y="92" width="36" height="30"/><rect x="192" y="92" width="36" height="30"/>
+    <rect x="84" y="152" width="36" height="30"/><rect x="192" y="152" width="36" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="66" y="111">#</text><text x="138" y="111">#</text><text x="174" y="111">#</text><text x="246" y="111">#</text>
+    <text x="102" y="141">#</text><text x="138" y="141">#</text><text x="174" y="141">#</text><text x="210" y="141">#</text>
+    <text x="66" y="171">#</text><text x="138" y="171">#</text><text x="174" y="171">#</text><text x="246" y="171">#</text>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="102" cy="107" r="6.5"/><circle cx="210" cy="107" r="6.5"/>
+    <circle cx="102" cy="167" r="6.5"/><circle cx="210" cy="167" r="6.5"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="66" y="84">c0</text><text x="102" y="84">c1</text><text x="138" y="84">c2</text>
+    <text x="174" y="84">c3</text><text x="210" y="84">c4</text><text x="246" y="84">c5</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="40" y="111">row 0</text><text x="40" y="141">row 1</text><text x="40" y="171">row 2</text>
+  </g>
+  <!-- row-1 open seats face a row-0 student diagonally: both placements cheat -->
+  <path d="M 66 130 Q 76 118 96 111" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M 246 130 Q 236 118 216 111" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g fill="#4169E1" font-size="11" font-weight="600" text-anchor="middle">
+    <text x="88" y="134">&#10005;</text><text x="224" y="134">&#10005;</text>
+  </g>
+  <text x="156" y="202" text-anchor="middle" fill="#5c6b76" font-size="11">blue dot = seated student, # = broken seat</text>
+  <!-- admissible masks per row, chosen chain boxed -->
+  <text x="488" y="64" text-anchor="middle" fill="#5c6b76" font-size="12.5">admissible row masks (bit c = column c)</text>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4">
+    <rect x="547" y="84" width="74" height="22" rx="5"/>
+    <rect x="547" y="140" width="74" height="22" rx="5"/>
+    <rect x="547" y="196" width="74" height="22" rx="5"/>
+  </g>
+  <g fill="#5c6b76" font-size="12.5" text-anchor="end">
+    <text x="338" y="100">row 0</text><text x="338" y="156">row 1</text><text x="338" y="212">row 2</text>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="368" y="100" fill="#9aa7b2">000000</text><text x="440" y="100" fill="#9aa7b2">000010</text><text x="512" y="100" fill="#9aa7b2">010000</text><text x="584" y="100" fill="#4169E1" font-weight="600">010010</text>
+    <text x="368" y="156" fill="#9aa7b2">000001</text><text x="440" y="156" fill="#9aa7b2">100000</text><text x="512" y="156" fill="#9aa7b2">100001</text><text x="584" y="156" fill="#4169E1" font-weight="600">000000</text>
+    <text x="368" y="212" fill="#9aa7b2">000000</text><text x="440" y="212" fill="#9aa7b2">000010</text><text x="512" y="212" fill="#9aa7b2">010000</text><text x="584" y="212" fill="#4169E1" font-weight="600">010010</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="368" y="172">&#10005; c0&#8596;c1</text><text x="440" y="172">&#10005; c5&#8596;c4</text><text x="512" y="172">&#10005; both</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 584 108 L 584 136" marker-end="url(#arrow)"/>
+    <path d="M 584 164 L 584 192" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="end" font-size="13" fill="#1a2026">
+    <text x="660" y="100">+2</text><text x="660" y="156">+0</text><text x="660" y="212">+2</text>
+  </g>
+  <text x="660" y="240" text-anchor="end" fill="#4169E1" font-size="14" font-weight="600">total 4</text>
+  <text x="340" y="284" text-anchor="middle" fill="#1a2026" font-size="13">Rows 0 and 2 take mask <tspan fill="#4169E1" font-weight="600">010010</tspan> (columns 1 and 4); in row 1 both open seats face a</text>
+  <text x="340" y="304" text-anchor="middle" fill="#1a2026" font-size="13">student diagonally, so only the empty mask survives &#8212; 2 + 0 + 2 = <tspan fill="#4169E1" font-weight="600">4</tspan> students.</text>
+</svg>

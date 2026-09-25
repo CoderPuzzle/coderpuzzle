@@ -17,6 +17,8 @@ letter — and so on for each remaining position, halving the block size
 each step. Ten characters at most means every count fits comfortably in
 any integer width.
 
+![On n = 3, k = 9 the twelve happy strings form three blocks of four, and the halving descent picks block c with (9-1)/4 = 2, then a, then b, landing on cab.](figures/solution-happy-tree-descent.svg)
+
 Each step is pure arithmetic: `O(n)` total work with no allocation
 beyond the answer string itself.
 

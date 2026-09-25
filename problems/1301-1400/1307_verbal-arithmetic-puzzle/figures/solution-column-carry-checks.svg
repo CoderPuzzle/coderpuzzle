@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 390" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="390" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- SEND=9567 MORE=1085 MONEY=10652; map chips 58x26 at y=44; column boxes 116x170 at x=30+126i, y=118; carry chain arrow y=302 with values under gaps x=151,277,403,529 -->
+  <text x="340" y="36" text-anchor="middle" fill="#5c6b76" font-size="12">letter &#8594; digit map</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="80" y="44" width="58" height="26" rx="4"/><rect x="146" y="44" width="58" height="26" rx="4"/>
+    <rect x="212" y="44" width="58" height="26" rx="4"/><rect x="278" y="44" width="58" height="26" rx="4"/>
+    <rect x="344" y="44" width="58" height="26" rx="4"/><rect x="410" y="44" width="58" height="26" rx="4"/>
+    <rect x="476" y="44" width="58" height="26" rx="4"/><rect x="542" y="44" width="58" height="26" rx="4"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12">
+    <text x="109" y="61">S = 9</text><text x="175" y="61">E = 5</text><text x="241" y="61">N = 6</text><text x="307" y="61">D = 7</text>
+    <text x="373" y="61">M = 1</text><text x="439" y="61">O = 0</text><text x="505" y="61">R = 8</text><text x="571" y="61">Y = 2</text>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.4" fill="none">
+    <path d="M 646 108 H 560" marker-end="url(#arrow)"/>
+  </g>
+  <text x="603" y="98" text-anchor="middle" fill="#5c6b76" font-size="12">process right to left</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="30" y="118" width="116" height="170"/><rect x="156" y="118" width="116" height="170"/>
+    <rect x="282" y="118" width="116" height="170"/><rect x="408" y="118" width="116" height="170"/>
+    <rect x="534" y="118" width="116" height="170"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="88" y="136">10&#8308;</text><text x="214" y="136">10&#179;</text><text x="340" y="136">10&#178;</text><text x="466" y="136">10&#185;</text><text x="592" y="136">10&#8304;</text>
+  </g>
+  <g text-anchor="middle" font-size="13.5">
+    <!-- 10^4: carry alone -->
+    <text x="88" y="158" fill="#5c6b76" font-size="12">carry 1</text>
+    <!-- 10^3 -->
+    <text x="214" y="158" fill="#1a2026">S 9</text><text x="214" y="180" fill="#1a2026">M 1</text><text x="214" y="202" fill="#5c6b76" font-size="12">carry 0</text>
+    <!-- 10^2 -->
+    <text x="340" y="158" fill="#1a2026">E 5</text><text x="340" y="180" fill="#1a2026">O 0</text><text x="340" y="202" fill="#5c6b76" font-size="12">carry 1</text>
+    <!-- 10^1 -->
+    <text x="466" y="158" fill="#1a2026">N 6</text><text x="466" y="180" fill="#1a2026">R 8</text><text x="466" y="202" fill="#5c6b76" font-size="12">carry 1</text>
+    <!-- 10^0 -->
+    <text x="592" y="158" fill="#1a2026">D 7</text><text x="592" y="180" fill="#1a2026">E 5</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1">
+    <line x1="44" y1="216" x2="132" y2="216"/><line x1="170" y1="216" x2="258" y2="216"/>
+    <line x1="296" y1="216" x2="384" y2="216"/><line x1="422" y1="216" x2="510" y2="216"/>
+    <line x1="548" y1="216" x2="636" y2="216"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" fill="#1a2026">
+    <text x="88" y="240">= 1</text><text x="214" y="240">= 10</text><text x="340" y="240">= 6</text>
+    <text x="466" y="240">= 15</text><text x="592" y="240">= 12</text>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#4169E1">
+    <text x="88" y="266">&#8594; M 1</text><text x="214" y="266">&#8594; O 0</text><text x="340" y="266">&#8594; N 6</text>
+    <text x="466" y="266">&#8594; E 5</text><text x="592" y="266">&#8594; Y 2</text>
+  </g>
+  <path d="M 622 302 H 52" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="88" y="324" text-anchor="middle" fill="#5c6b76" font-size="12">carries</text>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#4169E1">
+    <text x="151" y="324">1</text><text x="277" y="324">0</text><text x="403" y="324">1</text><text x="529" y="324">1</text>
+  </g>
+  <text x="340" y="354" text-anchor="middle" fill="#1a2026" font-size="13">Column checks, right to left: 12&#8594;Y2, 15&#8594;E5, 6&#8594;N6, 10&#8594;O0, carry 1&#8594;M1 &#8212; all pass.</text>
+  <text x="340" y="376" text-anchor="middle" fill="#1a2026" font-size="13">One miss prunes the branch immediately &#8212; <tspan fill="#4169E1" font-weight="600">9567 + 1085 = 10652</tspan> with carries 1, 1, 0, 1.</text>
+</svg>

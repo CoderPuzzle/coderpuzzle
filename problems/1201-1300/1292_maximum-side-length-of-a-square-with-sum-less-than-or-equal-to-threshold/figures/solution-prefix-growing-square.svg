@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="300" fill="#ffffff"/>
+  <!-- mat = [[1,1,3,2,4,3,2],[1,1,3,2,4,3,2],[1,1,3,2,4,3,2]], threshold 4;
+       prefix is the (m+1)x(n+1) table, cells 42x28 at (60,76), mat cells 32x26 at (440,76);
+       shaded prefix[2][2] = 4 passes the side-2 lookup, boxed prefix[3][3] = 15 fails side 3 -->
+  <text x="228" y="58" text-anchor="middle" fill="#5c6b76" font-size="12.5">prefix (4 x 8)</text>
+  <g fill="#9aa7b2" font-size="10" text-anchor="middle">
+    <text x="81" y="70">0</text><text x="123" y="70">1</text><text x="165" y="70">2</text><text x="207" y="70">3</text>
+    <text x="249" y="70">4</text><text x="291" y="70">5</text><text x="333" y="70">6</text><text x="375" y="70">7</text>
+  </g>
+  <g fill="#9aa7b2" font-size="10" text-anchor="end">
+    <text x="54" y="95">0</text><text x="54" y="123">1</text><text x="54" y="151">2</text><text x="54" y="179">3</text>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.2">
+    <rect x="60" y="76" width="42" height="28"/><rect x="102" y="76" width="42" height="28"/><rect x="144" y="76" width="42" height="28"/><rect x="186" y="76" width="42" height="28"/><rect x="228" y="76" width="42" height="28"/><rect x="270" y="76" width="42" height="28"/><rect x="312" y="76" width="42" height="28"/><rect x="354" y="76" width="42" height="28"/>
+    <rect x="60" y="104" width="42" height="28"/><rect x="102" y="104" width="42" height="28"/><rect x="144" y="104" width="42" height="28"/><rect x="186" y="104" width="42" height="28"/><rect x="228" y="104" width="42" height="28"/><rect x="270" y="104" width="42" height="28"/><rect x="312" y="104" width="42" height="28"/><rect x="354" y="104" width="42" height="28"/>
+    <rect x="60" y="132" width="42" height="28"/><rect x="102" y="132" width="42" height="28"/><rect x="144" y="132" width="42" height="28"/><rect x="186" y="132" width="42" height="28"/><rect x="228" y="132" width="42" height="28"/><rect x="270" y="132" width="42" height="28"/><rect x="312" y="132" width="42" height="28"/><rect x="354" y="132" width="42" height="28"/>
+    <rect x="60" y="160" width="42" height="28"/><rect x="102" y="160" width="42" height="28"/><rect x="144" y="160" width="42" height="28"/><rect x="186" y="160" width="42" height="28"/><rect x="228" y="160" width="42" height="28"/><rect x="270" y="160" width="42" height="28"/><rect x="312" y="160" width="42" height="28"/><rect x="354" y="160" width="42" height="28"/>
+  </g>
+  <rect x="144" y="132" width="42" height="28" fill="#dbe4fb"/>
+  <rect x="186" y="160" width="42" height="28" fill="#ffffff" stroke="#4169E1" stroke-width="2.5"/>
+  <g text-anchor="middle" font-weight="600">
+    <g fill="#9aa7b2">
+      <text x="81" y="95">0</text><text x="123" y="95">0</text><text x="165" y="95">0</text><text x="207" y="95">0</text><text x="249" y="95">0</text><text x="291" y="95">0</text><text x="333" y="95">0</text><text x="375" y="95">0</text>
+    </g>
+    <g fill="#1a2026">
+      <text x="81" y="123">0</text><text x="123" y="123">1</text><text x="165" y="123">2</text><text x="207" y="123">5</text><text x="249" y="123">7</text><text x="291" y="123">11</text><text x="333" y="123">14</text><text x="375" y="123">16</text>
+      <text x="81" y="151">0</text><text x="123" y="151">2</text><text x="165" y="151">4</text><text x="207" y="151">10</text><text x="249" y="151">14</text><text x="291" y="151">22</text><text x="333" y="151">28</text><text x="375" y="151">32</text>
+      <text x="81" y="179">0</text><text x="123" y="179">3</text><text x="165" y="179">6</text><text x="207" y="179">15</text><text x="249" y="179">21</text><text x="291" y="179">33</text><text x="333" y="179">42</text><text x="375" y="179">48</text>
+    </g>
+  </g>
+  <text x="552" y="58" text-anchor="middle" fill="#5c6b76" font-size="12.5">mat</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.2">
+    <rect x="440" y="76" width="32" height="26"/><rect x="472" y="76" width="32" height="26"/><rect x="504" y="76" width="32" height="26"/><rect x="536" y="76" width="32" height="26"/><rect x="568" y="76" width="32" height="26"/><rect x="600" y="76" width="32" height="26"/><rect x="632" y="76" width="32" height="26"/>
+    <rect x="440" y="102" width="32" height="26"/><rect x="472" y="102" width="32" height="26"/><rect x="504" y="102" width="32" height="26"/><rect x="536" y="102" width="32" height="26"/><rect x="568" y="102" width="32" height="26"/><rect x="600" y="102" width="32" height="26"/><rect x="632" y="102" width="32" height="26"/>
+    <rect x="440" y="128" width="32" height="26"/><rect x="472" y="128" width="32" height="26"/><rect x="504" y="128" width="32" height="26"/><rect x="536" y="128" width="32" height="26"/><rect x="568" y="128" width="32" height="26"/><rect x="600" y="128" width="32" height="26"/><rect x="632" y="128" width="32" height="26"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="456" y="93">1</text><text x="488" y="93">1</text><text x="520" y="93">3</text><text x="552" y="93">2</text><text x="584" y="93">4</text><text x="616" y="93">3</text><text x="648" y="93">2</text>
+    <text x="456" y="119">1</text><text x="488" y="119">1</text><text x="520" y="119">3</text><text x="552" y="119">2</text><text x="584" y="119">4</text><text x="616" y="119">3</text><text x="648" y="119">2</text>
+    <text x="456" y="145">1</text><text x="488" y="145">1</text><text x="520" y="145">3</text><text x="552" y="145">2</text><text x="584" y="145">4</text><text x="616" y="145">3</text><text x="648" y="145">2</text>
+  </g>
+  <rect x="440" y="76" width="64" height="52" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <rect x="440" y="76" width="96" height="78" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="472" y="172" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">side 2: 4</text>
+  <text x="556" y="172" text-anchor="middle" fill="#9aa7b2" font-size="12">side 3: 15 &gt; 4</text>
+  <g fill="#5c6b76" font-size="12">
+    <text x="60" y="212">corner (0,0), side 2: prefix[2][2] − 0 − 0 + 0 = 4 ≤ 4 → ans = 2</text>
+    <text x="60" y="232">corner (0,0), side 3: prefix[3][3] − 0 − 0 + 0 = 15 &gt; 4 → stop</text>
+  </g>
+  <text x="340" y="264" text-anchor="middle" fill="#1a2026" font-size="13">With threshold 4 the scan's only winning extension is the side-2 square</text>
+  <text x="340" y="283" text-anchor="middle" fill="#1a2026" font-size="13">of 1s at the top-left corner — sum exactly 4 — so the answer is <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

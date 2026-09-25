@@ -6,6 +6,8 @@ A subsequence is defined by which elements it contains, not their order, so sort
 
 Rather than binary-searching j for each i, the solution walks two pointers inward from both ends of the sorted array. When the current endpoints satisfy the sum bound, every element between them is also a legal partner of the left end, and the earlier decrements of the right pointer guarantee none beyond it can be — so the right pointer is exactly the farthest partner of the left end, and 2^(right - left) is added before advancing the left end. When the sum bound fails, the right end is too large to pair with anything at or after the left end, so it is decremented.
 
+![On Example 1's sorted [3,5,6,7] with target 9, the pointers shrink past 7 and stop after 5 + 5 = 10 fails; the single success at (l, r) = (0, 2), where 3 + 6 = 9, adds 2² = 4 subsequences.](figures/solution-two-pointers-powers-of-two.svg)
+
 Powers of two are precomputed modulo 10^9 + 7 up to n - 1 so each contribution is one multiplication, and the running total is reduced at every step. Single-element subsequences fall out naturally: when both pointers meet, the sum compared is twice that element, exactly the condition for it to stand alone.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

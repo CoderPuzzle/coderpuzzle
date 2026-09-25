@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- rains = [1,2,0,0,2,1]; ans = [-1,-1,2,1,-1,-1]; day cells 64x52 at x=90+80i, y=60; nxt cells 64x44 at y=168; nxt shown final: [1,3,3,4,5,6,6]; find(1) on day 5 walked 1->2->3 when nxt was [_,2,3,3,...] -->
+  <text x="80" y="90" text-anchor="end" fill="#5c6b76" font-size="12.5">days</text>
+  <text x="562" y="90" fill="#9aa7b2" font-size="10.5">rains / ans</text>
+  <g font-size="11" fill="#9aa7b2" text-anchor="middle">
+    <text x="122" y="50">0</text><text x="202" y="50">1</text><text x="282" y="50">2</text>
+    <text x="362" y="50">3</text><text x="442" y="50">4</text><text x="522" y="50">5</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="90" y="60" width="64" height="52" fill="#ffffff"/>
+    <rect x="170" y="60" width="64" height="52" fill="#ffffff"/>
+    <rect x="250" y="60" width="64" height="52" fill="#f0f3f7"/>
+    <rect x="330" y="60" width="64" height="52" fill="#f0f3f7"/>
+    <rect x="410" y="60" width="64" height="52" fill="#dbe4fb"/>
+    <rect x="490" y="60" width="64" height="52" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="122" y="84" fill="#1a2026">1</text><text x="202" y="84" fill="#1a2026">2</text>
+    <text x="282" y="84" fill="#5c6b76">0</text><text x="362" y="84" fill="#5c6b76">0</text>
+    <text x="442" y="84" fill="#4169E1">2</text><text x="522" y="84" fill="#4169E1">1</text>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="122" y="103" fill="#5c6b76">-1</text><text x="202" y="103" fill="#5c6b76">-1</text>
+    <text x="282" y="103" fill="#4169E1" font-weight="600">2</text><text x="362" y="103" fill="#4169E1" font-weight="600">1</text>
+    <text x="442" y="103" fill="#5c6b76">-1</text><text x="522" y="103" fill="#5c6b76">-1</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5">
+    <text x="282" y="128" fill="#4169E1">dries lake 2</text>
+    <text x="362" y="128" fill="#4169E1">dries lake 1</text>
+    <text x="442" y="128" fill="#5c6b76">lake 2 full</text>
+    <text x="522" y="128" fill="#5c6b76">lake 1 full</text>
+  </g>
+  <!-- nxt array, final state after day 5 -->
+  <text x="80" y="194" text-anchor="end" fill="#5c6b76" font-size="12.5">nxt (final)</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="90" y="168" width="64" height="44" fill="#ffffff"/>
+    <rect x="170" y="168" width="64" height="44" fill="#ffffff"/>
+    <rect x="250" y="168" width="64" height="44" fill="#dbe4fb"/>
+    <rect x="330" y="168" width="64" height="44" fill="#dbe4fb"/>
+    <rect x="410" y="168" width="64" height="44" fill="#ffffff"/>
+    <rect x="490" y="168" width="64" height="44" fill="#ffffff"/>
+    <rect x="570" y="168" width="64" height="44" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="122" y="195" fill="#1a2026">1</text><text x="202" y="195" fill="#4169E1">3</text>
+    <text x="282" y="195" fill="#1a2026">3</text><text x="362" y="195" fill="#1a2026">4</text>
+    <text x="442" y="195" fill="#1a2026">5</text><text x="522" y="195" fill="#1a2026">6</text>
+    <text x="602" y="195" fill="#9aa7b2">6</text>
+  </g>
+  <g font-size="11" fill="#9aa7b2" text-anchor="middle">
+    <text x="122" y="232">0</text><text x="202" y="232">1</text><text x="282" y="232">2</text>
+    <text x="362" y="232">3</text><text x="442" y="232">4</text><text x="522" y="232">5</text>
+    <text x="602" y="232">6</text>
+  </g>
+  <!-- the day-5 walk 1 -> 2 -> 3, and the compression nxt[1] <- 3 -->
+  <g stroke="#4169E1" stroke-width="1.6" fill="none">
+    <path d="M 202 212 Q 242 240 282 212" marker-end="url(#arrow)"/>
+    <path d="M 282 212 Q 322 240 362 212" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 202 166 Q 282 122 362 166" fill="none" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="380" y="140" fill="#4169E1" font-size="10.5">nxt[1] &#8592; 3 (path compression)</text>
+  <text x="395" y="244" fill="#4169E1" font-size="10.5">day 5: find(1) hops 1 &#8594; 2 &#8594; 3</text>
+  <text x="340" y="296" text-anchor="middle" fill="#1a2026" font-size="13">Day 5's rain on full lake 1 runs find(0 + 1): pointers hop <tspan fill="#4169E1" font-weight="600">1 &#8594; 2 &#8594; 3</tspan> to dry day 3,</text>
+  <text x="340" y="314" text-anchor="middle" fill="#1a2026" font-size="13">spent on lake 1; day 4's find(2) landed straight on day 2 the same way.</text>
+</svg>

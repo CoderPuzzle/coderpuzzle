@@ -40,6 +40,8 @@ while it points at a negative — counts each row's negative suffix as
 `n - 1 - pointer`, and the pointer never moves right again, giving one
 pass of at most m + n steps.
 
+![On the example 1 grid the column pointer enters at column 3 and only slides left, stopping at columns 2, 2, 1 and -1, so the rows add 1 + 1 + 2 + 4 = 8 negatives.](figures/solution-staircase-walk.svg)
+
 Each matrix cell is examined at most once by the pointer, and each row's
 contribution is computed in O(1) from the pointer position.
 

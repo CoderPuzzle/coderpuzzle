@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 354" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="354" fill="#ffffff"/>
+  <!-- num = "4321", k = 4; input cells 46x44 at x = 180 + 50p, y = 50; out cells 26x26 at x = 40 + 30c, rows y = 139, 179, 219, 259 -->
+  <text x="170" y="78" text-anchor="end" fill="#5c6b76" font-size="12.5">num</text>
+  <g stroke="#1a2026" stroke-width="1.4" fill="#ffffff">
+    <rect x="180" y="50" width="46" height="44"/><rect x="230" y="50" width="46" height="44"/>
+    <rect x="280" y="50" width="46" height="44"/><rect x="330" y="50" width="46" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="203" y="78">4</text><text x="253" y="78">3</text><text x="303" y="78">2</text><text x="353" y="78">1</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="203" y="112">p = 0</text><text x="253" y="112">p = 1</text><text x="303" y="112">p = 2</text><text x="353" y="112">p = 3</text>
+  </g>
+  <text x="420" y="78" fill="#5c6b76" font-size="12.5">start: k = 4</text>
+  <!-- step rows: filled slot cells on the left, greedy choice and budget on the right -->
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="#ffffff">
+    <rect x="70" y="139" width="26" height="26"/><rect x="100" y="139" width="26" height="26"/><rect x="130" y="139" width="26" height="26"/>
+    <rect x="100" y="179" width="26" height="26"/><rect x="130" y="179" width="26" height="26"/>
+    <rect x="130" y="219" width="26" height="26"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2">
+    <rect x="40" y="139" width="26" height="26"/>
+    <rect x="40" y="179" width="26" height="26"/><rect x="70" y="179" width="26" height="26"/>
+    <rect x="40" y="219" width="26" height="26"/><rect x="70" y="219" width="26" height="26"/><rect x="100" y="219" width="26" height="26"/>
+    <rect x="40" y="259" width="26" height="26"/><rect x="70" y="259" width="26" height="26"/><rect x="100" y="259" width="26" height="26"/><rect x="130" y="259" width="26" height="26"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="53" y="157">1</text>
+    <text x="53" y="197">1</text><text x="83" y="197">3</text>
+    <text x="53" y="237">1</text><text x="83" y="237">3</text><text x="113" y="237">4</text>
+    <text x="53" y="277">1</text><text x="83" y="277">3</text><text x="113" y="277">4</text><text x="143" y="277">2</text>
+  </g>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="170" y="157">drag <tspan fill="#4169E1" font-weight="600">1</tspan> from p = 3 past 3 digits — cost 3, k: 4 → 1</text>
+    <text x="170" y="197"><tspan fill="#9aa7b2">2 would cost 2 &gt; 1 — skip;</tspan> drag <tspan fill="#4169E1" font-weight="600">3</tspan> from p = 1, cost 1, k: 1 → 0</text>
+    <text x="170" y="237"><tspan fill="#9aa7b2">2 would cost 1 &gt; 0 — skip;</tspan> drag <tspan fill="#4169E1" font-weight="600">4</tspan> from p = 0, cost 0, k = 0</text>
+    <text x="170" y="277">last digit <tspan fill="#4169E1" font-weight="600">2</tspan> fills the last slot, cost 0</text>
+  </g>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">Each slot takes the smallest digit whose drag cost fits the budget left.</text>
+  <text x="320" y="338" text-anchor="middle" fill="#1a2026" font-size="13">Dragging 1 to the front costs 3, then 3 costs 1: k = 4 buys exactly <tspan fill="#4169E1" font-weight="600">1342</tspan>.</text>
+</svg>

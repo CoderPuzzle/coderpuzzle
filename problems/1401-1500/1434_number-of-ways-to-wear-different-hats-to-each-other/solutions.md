@@ -6,6 +6,8 @@ The decisive observation is the asymmetry in the constraints: there are at most 
 
 The algorithm walks the hat ids from 1 to 40. For each hat it starts the next table as a copy of the current one — this encodes the option of leaving the hat unused — and then, for every mask holding a nonzero count and every person who likes this hat and is absent from the mask, adds dp[mask] into the entry for the mask with that person's bit set. Updating into a copy rather than in place guarantees that each counted way uses each hat at most once, so no two people can end up wearing the same hat.
 
+![For hats [[3,5,1],[3,5]] each hat column copies the previous table and then extends every liker still bare, leaving dp[11] = 4 ways after hats 1, 3 and 5.](figures/solution-hat-mask-dp-table.svg)
+
 Hats that nobody wants are skipped outright, since for them the copy step would change nothing. Every addition is reduced modulo 10^9 + 7, and unreachable masks simply stay at zero and are skipped. After all hats are processed, the answer is the entry for the full mask of all n people: every person must receive a hat, while unused hats cost nothing. With n at most 10 the table never exceeds 1024 entries, so even the worst case of 40 hats × 1024 masks × 10 people is tiny.
 
 **Complexity:** `O(40 · n · 2^n)` time, `O(2^n)` space.

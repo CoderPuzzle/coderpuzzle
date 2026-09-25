@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 248" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="248" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- head = [1..13], m=2, n=3; cells 36x36 at x=40+44i, y=70; kept #dbe4fb, dropped #f0f3f7; arcs = the splice node.next = skipper.next -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <g fill="#dbe4fb">
+      <rect x="40" y="70" width="36" height="36"/><rect x="84" y="70" width="36" height="36"/>
+      <rect x="260" y="70" width="36" height="36"/><rect x="304" y="70" width="36" height="36"/>
+      <rect x="480" y="70" width="36" height="36"/><rect x="524" y="70" width="36" height="36"/>
+    </g>
+    <g fill="#f0f3f7" stroke="#9aa7b2">
+      <rect x="128" y="70" width="36" height="36"/><rect x="172" y="70" width="36" height="36"/><rect x="216" y="70" width="36" height="36"/>
+      <rect x="348" y="70" width="36" height="36"/><rect x="392" y="70" width="36" height="36"/><rect x="436" y="70" width="36" height="36"/>
+      <rect x="568" y="70" width="36" height="36"/>
+    </g>
+  </g>
+  <g text-anchor="middle" font-size="13.5">
+    <g fill="#1a2026" font-weight="600">
+      <text x="58" y="93">1</text><text x="102" y="93">2</text>
+      <text x="278" y="93">6</text><text x="322" y="93">7</text>
+      <text x="498" y="93">11</text><text x="542" y="93">12</text>
+    </g>
+    <g fill="#9aa7b2">
+      <text x="146" y="93">3</text><text x="190" y="93">4</text><text x="234" y="93">5</text>
+      <text x="366" y="93">8</text><text x="410" y="93">9</text><text x="454" y="93">10</text>
+      <text x="586" y="93">13</text>
+    </g>
+  </g>
+  <!-- splice arcs over each dropped run -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 102 64 Q 190 20 278 64" marker-end="url(#arrow)"/>
+    <path d="M 322 64 Q 410 20 498 64" marker-end="url(#arrow)"/>
+    <path d="M 542 64 Q 582 26 612 74" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="190" y="36">2.next = 6</text>
+    <text x="410" y="36">7.next = 11</text>
+    <text x="579" y="36">12.next = null</text>
+  </g>
+  <text x="626" y="96" text-anchor="middle" fill="#9aa7b2" font-size="12">null</text>
+  <!-- cursor rests on each kept run's last node -->
+  <g fill="#4169E1">
+    <path d="M 102 112 L 96 122 L 108 122 Z"/>
+    <path d="M 322 112 L 316 122 L 328 122 Z"/>
+    <path d="M 542 112 L 536 122 L 548 122 Z"/>
+  </g>
+  <text x="102" y="138" text-anchor="middle" fill="#4169E1" font-size="12">cursor</text>
+  <!-- keep/drop spans of the three cycles -->
+  <g stroke-width="2">
+    <line x1="40" y1="156" x2="120" y2="156" stroke="#4169E1"/>
+    <line x1="128" y1="156" x2="252" y2="156" stroke="#9aa7b2"/>
+    <line x1="260" y1="156" x2="340" y2="156" stroke="#4169E1"/>
+    <line x1="348" y1="156" x2="472" y2="156" stroke="#9aa7b2"/>
+    <line x1="480" y1="156" x2="560" y2="156" stroke="#4169E1"/>
+    <line x1="568" y1="156" x2="604" y2="156" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="80" y="174" fill="#1a2026">keep 1-2</text>
+    <text x="190" y="174" fill="#9aa7b2">drop 3-5</text>
+    <text x="300" y="174" fill="#1a2026">keep 6-7</text>
+    <text x="410" y="174" fill="#9aa7b2">drop 8-10</text>
+    <text x="520" y="174" fill="#1a2026">keep 11-12</text>
+    <text x="586" y="174" fill="#9aa7b2">drop 13</text>
+  </g>
+  <text x="330" y="206" text-anchor="middle" fill="#1a2026" font-size="13">Standing on each kept run's last node (2, 7, 12), one splice node.next = skipper.next</text>
+  <text x="330" y="224" text-anchor="middle" fill="#1a2026" font-size="13">deletes the following dropped run, leaving <tspan fill="#4169E1" font-weight="600">[1, 2, 6, 7, 11, 12]</tspan>.</text>
+</svg>

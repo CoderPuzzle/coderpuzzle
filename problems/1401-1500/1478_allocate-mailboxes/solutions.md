@@ -19,4 +19,6 @@ house `i`'s run extends to some `j` (paying `cost(i, j)`, moving to
 rest is free (one mailbox per house costs nothing). Memoized recursion
 evaluates each state once over `O(n)` transitions.
 
+![On houses = [1, 4, 8, 10, 20] with k = 3, the optimal partition into the runs [1, 4], [8, 10] and [20] puts mailboxes at the medians 3, 9 and 20, whose run costs 3, 2 and 0 sum to 5.](figures/solution-median-run-costs.svg)
+
 **Complexity:** `O(n² · k)` time, `O(n · k)` space.

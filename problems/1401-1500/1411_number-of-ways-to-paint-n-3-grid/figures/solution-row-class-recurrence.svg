@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 318" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="318" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- the twelve n = 1 rows: aba class = aba aca bab bcb cac cbc, abc class = abc acb bac bca cab cba; successor counts 3/2 above an aba row and 2/2 above an abc row -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="60" y="42" width="240" height="118"/>
+    <rect x="340" y="42" width="240" height="118"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5">
+    <text x="180" y="66">class aba (two colors)</text>
+    <text x="460" y="66">class abc (three colors)</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="130" y="92">aba</text><text x="230" y="92">aca</text>
+    <text x="130" y="114">bab</text><text x="230" y="114">bcb</text>
+    <text x="130" y="136">cac</text><text x="230" y="136">cbc</text>
+    <text x="410" y="92">abc</text><text x="510" y="92">acb</text>
+    <text x="410" y="114">bac</text><text x="510" y="114">bca</text>
+    <text x="410" y="136">cab</text><text x="510" y="136">cba</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="180" y="186">an aba row admits 3 aba + 2 abc above it</text>
+    <text x="460" y="186">an abc row admits 2 aba + 2 abc above it</text>
+  </g>
+  <text x="320" y="216" text-anchor="middle" font-size="13.5">next step:  <tspan fill="#4169E1" font-weight="600">a' = 3a + 2b</tspan>,  <tspan fill="#4169E1" font-weight="600">b' = 2a + 2b</tspan></text>
+  <g fill="#dbe4fb">
+    <rect x="60" y="234" width="190" height="36"/>
+    <rect x="300" y="234" width="210" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="155" y="257">n = 1: a = 6, b = 6 → 12</text>
+    <text x="405" y="257">n = 2: a = 30, b = 24 → 54</text>
+  </g>
+  <path d="M 254 252 H 292" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="320" y="298" text-anchor="middle" fill="#1a2026" font-size="13">The twelve single-row colorings split six and six; iterating the recurrence</text>
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">counts every grid — n = 1 gives <tspan fill="#4169E1" font-weight="600">12</tspan> and n = 2 gives <tspan fill="#4169E1" font-weight="600">54</tspan>.</text>
+</svg>

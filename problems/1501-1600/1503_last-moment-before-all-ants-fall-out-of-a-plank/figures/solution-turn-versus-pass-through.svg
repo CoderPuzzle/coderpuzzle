@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 404" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="404" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- n = 4; A at 0 right, B at 1 right, C at 3 left, D at 4 left; p maps to x = 130 + 100p -->
+  <!-- panel 1 time scale y = 64 + 40t; panel 2 time scale y = 246 + 22t -->
+  <text x="330" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">what we see: ants meet and turn</text>
+  <g stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 4">
+    <line x1="130" y1="58" x2="130" y2="158"/><line x1="530" y1="58" x2="530" y2="158"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600">
+    <text x="130" y="54" fill="#4169E1">A</text><text x="230" y="54" fill="#4169E1">B</text>
+    <text x="430" y="54" fill="#5c6b76">C</text><text x="530" y="54" fill="#5c6b76">D</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="11">
+    <text x="118" y="68">t = 0</text><text x="118" y="108">t = 1</text>
+    <text x="118" y="128">t = 1.5</text><text x="118" y="148">t = 2</text>
+  </g>
+  <!-- turn trajectories: A and B bounce off C and B; C bounces off D -->
+  <polyline points="130,64 280,124 210,152" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <polyline points="230,64 330,104 280,124 330,144 310,152" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <polyline points="430,64 330,104 380,124 330,144 350,152" fill="none" stroke="#5c6b76" stroke-width="2"/>
+  <polyline points="530,64 380,124 450,152" fill="none" stroke="#5c6b76" stroke-width="2"/>
+  <g fill="none" stroke="#1a2026" stroke-width="1.4">
+    <circle cx="330" cy="104" r="5"/><circle cx="280" cy="124" r="5"/>
+    <circle cx="380" cy="124" r="5"/><circle cx="330" cy="144" r="5"/>
+  </g>
+  <g text-anchor="middle" font-size="11" font-weight="600">
+    <text x="210" y="168" fill="#4169E1">A</text><text x="310" y="168" fill="#4169E1">B</text>
+    <text x="350" y="168" fill="#5c6b76">C</text><text x="450" y="168" fill="#5c6b76">D</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="118" y="192">p</text><text x="130" y="192">0</text><text x="230" y="192">1</text>
+    <text x="330" y="192">2</text><text x="430" y="192">3</text><text x="530" y="192">4</text>
+  </g>
+  <text x="330" y="216" text-anchor="middle" fill="#5c6b76" font-size="12.5">same seconds: ghosts pass straight through</text>
+  <g stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 4">
+    <line x1="130" y1="228" x2="130" y2="338"/><line x1="530" y1="228" x2="530" y2="338"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600">
+    <text x="130" y="240" fill="#4169E1">A</text><text x="230" y="240" fill="#4169E1">B</text>
+    <text x="430" y="240" fill="#5c6b76">C</text><text x="530" y="240" fill="#5c6b76">D</text>
+  </g>
+  <!-- ghost trajectories: each ant walks to the end it faces -->
+  <line x1="130" y1="246" x2="530" y2="334" stroke="#4169E1" stroke-width="2"/>
+  <line x1="230" y1="246" x2="530" y2="312" stroke="#4169E1" stroke-width="2"/>
+  <line x1="430" y1="246" x2="130" y2="312" stroke="#5c6b76" stroke-width="2"/>
+  <line x1="530" y1="246" x2="130" y2="334" stroke="#5c6b76" stroke-width="2"/>
+  <g fill="none" stroke="#1a2026" stroke-width="1.4">
+    <circle cx="330" cy="268" r="5"/><circle cx="280" cy="279" r="5"/>
+    <circle cx="380" cy="279" r="5"/><circle cx="330" cy="290" r="5"/>
+  </g>
+  <g font-size="11" font-weight="600">
+    <text x="122" y="316" text-anchor="end" fill="#5c6b76">t = 3</text>
+    <text x="122" y="338" text-anchor="end" fill="#5c6b76">t = 4</text>
+    <text x="538" y="316" fill="#4169E1">t = 3</text>
+    <text x="538" y="338" fill="#4169E1">t = 4</text>
+  </g>
+  <text x="320" y="368" text-anchor="middle" fill="#1a2026" font-size="13">Turning around is identical to swapping identities — the positions stay the same.</text>
+  <text x="320" y="388" text-anchor="middle" fill="#1a2026" font-size="13">So each ant just walks to its facing end: the last fall is max(n − p, p) = <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

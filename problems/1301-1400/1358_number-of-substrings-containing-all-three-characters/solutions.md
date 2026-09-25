@@ -6,6 +6,8 @@ Count substrings by their right endpoint. A substring `s[l..i]` contains all of 
 
 Every valid left endpoint in `[0, min(last)]` yields one valid substring ending at `i`, so the scan adds `min(last) + 1` to the total at each step. Summing over all `i` counts every qualifying substring exactly once, because each substring is attributed to its own right endpoint. Before all three letters have appeared, `min(last)` is `-1` and the contribution is correctly zero.
 
+![Scanning s = "abcabc", each position adds min(last) + 1 valid left endpoints - 0, 0, 1, 2, 3, 4 - accumulating 10 substrings containing all three characters.](figures/solution-last-seen-count.svg)
+
 Updating is a single array write when `s[i]` is one of the three letters (the string is guaranteed to contain only `a`, `b`, `c`), and the running minimum over three values is constant work, so the whole pass is linear.
 
 Edge cases: strings shorter than needed or with a missing letter contribute nothing and fall out of the `-1` initialization, and the full-string case is covered at the final index. Only a fixed three-slot array is used besides the input.

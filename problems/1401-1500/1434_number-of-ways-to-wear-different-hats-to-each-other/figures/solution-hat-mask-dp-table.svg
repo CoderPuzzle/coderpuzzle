@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 292" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="292" fill="#ffffff"/>
+  <!-- hats = [[3,5,1],[3,5]]; rows are people-masks (bit i = person i), columns process hats 1, 3, 5; each column copies the previous one, then every liker still bare extends their bit; dp[11] = 4 -->
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="250" y="52">start</text>
+    <text x="332" y="52">hat 1</text>
+    <text x="414" y="52">hat 3</text>
+    <text x="496" y="52">hat 5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="250" y="70">no hats</text>
+    <text x="332" y="70">p0 likes it</text>
+    <text x="414" y="70">p0, p1</text>
+    <text x="496" y="70">p0, p1</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="214" y="84" width="72" height="28"/><rect x="296" y="84" width="72" height="28"/><rect x="378" y="84" width="72" height="28"/><rect x="460" y="84" width="72" height="28"/>
+    <rect x="214" y="116" width="72" height="28"/><rect x="296" y="116" width="72" height="28"/><rect x="378" y="116" width="72" height="28"/><rect x="460" y="116" width="72" height="28"/>
+    <rect x="214" y="148" width="72" height="28"/><rect x="296" y="148" width="72" height="28"/><rect x="378" y="148" width="72" height="28"/><rect x="460" y="148" width="72" height="28"/>
+    <rect x="214" y="180" width="72" height="28"/><rect x="296" y="180" width="72" height="28"/><rect x="378" y="180" width="72" height="28"/>
+  </g>
+  <rect x="460" y="180" width="72" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="13">
+    <text x="250" y="103" fill="#1a2026">1</text><text x="332" y="103" fill="#1a2026">1</text><text x="414" y="103" fill="#1a2026">1</text><text x="496" y="103" fill="#1a2026">1</text>
+    <text x="250" y="135" fill="#9aa7b2">0</text><text x="332" y="135" fill="#1a2026">1</text><text x="414" y="135" fill="#1a2026">2</text><text x="496" y="135" fill="#1a2026">3</text>
+    <text x="250" y="167" fill="#9aa7b2">0</text><text x="332" y="167" fill="#9aa7b2">0</text><text x="414" y="167" fill="#1a2026">1</text><text x="496" y="167" fill="#1a2026">2</text>
+    <text x="250" y="199" fill="#9aa7b2">0</text><text x="332" y="199" fill="#9aa7b2">0</text><text x="414" y="199" fill="#1a2026">1</text>
+  </g>
+  <text x="496" y="200" text-anchor="middle" font-size="15" font-weight="600" fill="#4169E1">4</text>
+  <g font-size="13">
+    <text x="48" y="103"><tspan font-weight="600" fill="#1a2026">mask 00</tspan><tspan fill="#9aa7b2">&#160;&#160;none</tspan></text>
+    <text x="48" y="135"><tspan font-weight="600" fill="#1a2026">mask 01</tspan><tspan fill="#9aa7b2">&#160;&#160;p0</tspan></text>
+    <text x="48" y="167"><tspan font-weight="600" fill="#1a2026">mask 10</tspan><tspan fill="#9aa7b2">&#160;&#160;p1</tspan></text>
+    <text x="48" y="199"><tspan font-weight="600" fill="#1a2026">mask 11</tspan><tspan fill="#9aa7b2">&#160;&#160;both</tspan></text>
+  </g>
+  <text x="320" y="236" text-anchor="middle" fill="#1a2026" font-size="13">the <tspan fill="#4169E1" font-weight="600">4</tspan> ways — hats (p0, p1): (3,5)&#160;&#160;(5,3)&#160;&#160;(1,3)&#160;&#160;(1,5)</text>
+  <text x="320" y="264" text-anchor="middle" fill="#1a2026" font-size="13">Each column copies the previous one (a hat may go unworn), then every liker</text>
+  <text x="320" y="282" text-anchor="middle" fill="#1a2026" font-size="13">still bare extends their bit; hat 5 leaves <tspan fill="#4169E1" font-weight="600">dp[11] = 4</tspan>, the answer.</text>
+</svg>

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="376" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tree [1,null,4,7]: 1.random=null, 4.random=7, 7.random=1; circles r=19; white = original, #dbe4fb = clone; left = weave pass, middle = far links, right = after split -->
+  <text x="110" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">original tree</text>
+  <!-- original structure -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="121" y1="99" x2="149" y2="137"/>
+    <line x1="149" y1="167" x2="121" y2="205"/>
+  </g>
+  <text x="141" y="114" text-anchor="middle" fill="#9aa7b2" font-size="10.5">R</text>
+  <text x="124" y="178" text-anchor="middle" fill="#9aa7b2" font-size="10.5">L</text>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="110" cy="84" r="19"/><circle cx="160" cy="152" r="19"/><circle cx="110" cy="220" r="19"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="110" y="89">1</text><text x="160" y="157">4</text><text x="110" y="225">7</text>
+  </g>
+  <!-- random pointers 4->7 and 7->1 -->
+  <g stroke="#4169E1" stroke-width="1.6" fill="none" stroke-dasharray="5 4">
+    <path d="M 180 143 Q 228 180 128 209" marker-end="url(#arrow)"/>
+    <path d="M 91 211 Q 44 152 92 97" marker-end="url(#arrow)"/>
+  </g>
+  <text x="110" y="258" text-anchor="middle" fill="#5c6b76" font-size="11">dashed = random &#183; &#8242; = clone</text>
+  <!-- weaved state -->
+  <text x="380" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">weave pass + far links</text>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="359" y1="84" x2="401" y2="84"/>
+    <line x1="340" y1="103" x2="340" y2="133"/>
+    <line x1="420" y1="103" x2="420" y2="133"/>
+    <line x1="420" y1="171" x2="420" y2="201"/>
+    <line x1="420" y1="239" x2="420" y2="269"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="340" cy="84" r="19"/><circle cx="420" cy="84" r="19"/>
+    <circle cx="420" cy="220" r="19"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="#dbe4fb">
+    <circle cx="340" cy="152" r="19"/><circle cx="420" cy="152" r="19"/><circle cx="420" cy="288" r="19"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="340" y="89" fill="#1a2026">1</text><text x="420" y="89" fill="#1a2026">4</text>
+    <text x="340" y="157" fill="#1a2026">1&#8242;</text><text x="420" y="157" fill="#1a2026">4&#8242;</text>
+    <text x="420" y="225" fill="#1a2026">7</text><text x="420" y="293" fill="#1a2026">7&#8242;</text>
+  </g>
+  <!-- far links: clone.right and clone.random read originals' .left -->
+  <path d="M 361 148 L 399 148" fill="none" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="380" y="141" text-anchor="middle" fill="#4169E1" font-size="10">right</text>
+  <path d="M 438 97 Q 492 152 438 207" fill="none" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="462" y="92" fill="#4169E1" font-size="10.5">4.random</text>
+  <path d="M 403 164 Q 358 222 402 276" fill="none" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="372" y="240" text-anchor="end" fill="#4169E1" font-size="10.5">&#8592; 4.random.left</text>
+  <!-- after the split -->
+  <text x="553" y="56" text-anchor="middle" fill="#5c6b76" font-size="11">input restored</text>
+  <text x="637" y="56" text-anchor="middle" fill="#5c6b76" font-size="11">fresh copy</text>
+  <line x1="600" y1="66" x2="600" y2="200" stroke="#9aa7b2" stroke-width="1" stroke-dasharray="4 4"/>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="549" y1="101" x2="557" y2="117"/>
+    <line x1="557" y1="151" x2="549" y2="167"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6">
+    <line x1="633" y1="101" x2="641" y2="117"/>
+    <line x1="641" y1="151" x2="633" y2="167"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="540" cy="84" r="19"/><circle cx="566" cy="134" r="19"/><circle cx="540" cy="184" r="19"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="#dbe4fb">
+    <circle cx="624" cy="84" r="19"/><circle cx="650" cy="134" r="19"/><circle cx="624" cy="184" r="19"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="540" y="89" fill="#1a2026">1</text><text x="566" y="139" fill="#1a2026">4</text><text x="540" y="189" fill="#1a2026">7</text>
+    <text x="624" y="89" fill="#1a2026">1&#8242;</text><text x="650" y="139" fill="#1a2026">4&#8242;</text><text x="624" y="189" fill="#1a2026">7&#8242;</text>
+  </g>
+  <text x="637" y="216" text-anchor="middle" fill="#4169E1" font-size="11">answer: 1&#8242;</text>
+  <text x="340" y="338" text-anchor="middle" fill="#1a2026" font-size="13">Weaved, each far link reads as original.random.left: 4.random.left is the clone <tspan fill="#4169E1" font-weight="600">7&#8242;</tspan>,</text>
+  <text x="340" y="356" text-anchor="middle" fill="#1a2026" font-size="13">and the split restores 1-4-7 exactly while the fresh tree <tspan fill="#4169E1" font-weight="600">1&#8242;-4&#8242;-7&#8242;</tspan> becomes the answer.</text>
+</svg>

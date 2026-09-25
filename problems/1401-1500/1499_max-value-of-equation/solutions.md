@@ -6,6 +6,8 @@ The points arrive sorted with strictly increasing x, so for a pair i < j the abs
 
 The solution keeps a deque of earlier indices whose keys are strictly decreasing, so the front is always the best candidate for the current j. Stale candidates are discarded first: while the front's x lies more than k behind xj, it is popped — points are processed in x order, so anything too far for the current j is too far for every later j as well. If a candidate survives, the equation value against the front is computed and the overall maximum updated. Finally the current point enters: while the back's key is at most the newcomer's key, that back index is popped, since it can never again beat the newcomer for a future j, and the new index is appended.
 
+![On Example 1's points [[1,3],[2,0],[5,10],[6,-10]] with k = 1, the deque of strictly decreasing y − x keys pops its stale fronts as j sweeps right, and at j = 1 the surviving front scores 0 + 2 + 2 = 4, the answer.](figures/solution-y-minus-x-deque.svg)
+
 Popping ties is safe because the newer index has the larger x and therefore stays inside the k-window at least as long as the older one. Each index is appended once and popped at most once, so the pass is linear. The problem guarantees at least one legal pair exists, so the minus-infinity sentinel is always replaced by a real value.
 
 **Complexity:** `O(n)` time, `O(n)` space.

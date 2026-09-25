@@ -6,6 +6,8 @@ Let `dp[i]` be the best subsequence sum among subsequences that end exactly at i
 
 Computing the window maximum naively costs `O(nk)`. Instead keep a deque of indices whose `dp` values are strictly decreasing from front to back. The front is always the maximum of the current window: before computing `dp[i]`, indices older than `i - k` are popped from the front; then `dp[i] = nums[i] + max(0, dp[front])`. Afterward, indices whose `dp` values are `<= dp[i]` are popped from the back — they can never again be a window maximum once `dp[i]` exists to their right — and `i` joins. Each index enters and leaves the deque at most once, making the whole sweep linear.
 
+![Rolling k = 2 over [10, 2, -10, 5, 20], the strictly decreasing deque fronts each window maximum, and the sweep ends at dp[4] = 20 + 17 = 37 from the subsequence [10, 2, 5, 20].](figures/solution-deque-dp-sweep.svg)
+
 The `if prev < 0: prev = 0` clamp is the subtle part: without it, an all-negative array would force every subsequence to drag the least-bad predecessor along, but a subsequence may consist of a single element, so clamping negative window maxima to 0 (i.e., extending nothing) is what lets the answer be the largest single value, as in `[-1, -2, -3]`.
 
 Edge cases: `k >= n` never evicts anything and the deque spans all previous positions; the first element has an empty deque and takes the `prev = 0` path, seeding single-element subsequences; and `best` initialized to negative infinity guarantees a non-empty result even when every `dp[i]` is negative.

@@ -16,6 +16,8 @@ in 3 ways if the row below is `aba` and 2 ways if it is `abc`, giving
 giving `b' = 2a + 2b`. Starting from `a = b = 6` (the twelve single-row
 patterns) and iterating `n - 1` times, the answer is `(a + b) mod 10⁹+7`.
 
+![On n = 1 the twelve rows split into six aba and six abc strings, and the class counts a = b = 6 then step by a' = 3a + 2b and b' = 2a + 2b, giving 12 and 54 for n = 1, 2.](figures/solution-row-class-recurrence.svg)
+
 Every intermediate stays below `3 · 10⁹ + 21`, so 64-bit arithmetic holds
 the sums exactly and only one modulo reduction per step is needed; `n` is
 at most 5000, so the loop is a few thousand iterations.
