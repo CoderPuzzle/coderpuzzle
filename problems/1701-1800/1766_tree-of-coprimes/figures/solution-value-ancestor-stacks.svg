@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [2,3,3,2], edges 0-1, 1-2, 1-3; stacks hold the current root path, deepest last -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="160" y1="88" x2="160" y2="134"/>
+    <line x1="145" y1="173" x2="98" y2="233"/>
+    <line x1="175" y1="173" x2="222" y2="233"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="160" cy="66" r="22"/><circle cx="160" cy="156" r="22"/>
+    <circle cx="85" cy="250" r="22"/><circle cx="235" cy="250" r="22"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="160" y="71">0</text><text x="160" y="161">1</text>
+    <text x="85" y="255">2</text><text x="235" y="255">3</text>
+  </g>
+  <g font-size="12" fill="#5c6b76">
+    <text x="192" y="60">val 2</text><text x="192" y="150">val 3</text>
+    <text x="56" y="255" text-anchor="end">val 3</text><text x="262" y="255">val 2</text>
+  </g>
+  <g font-size="12.5" font-weight="600" fill="#4169E1">
+    <text x="192" y="77">ans = -1</text><text x="192" y="167">ans = 0</text>
+    <text x="85" y="292" text-anchor="middle">ans = 0</text>
+    <text x="235" y="292" text-anchor="middle">ans = 1</text>
+  </g>
+  <text x="505" y="60" text-anchor="middle" fill="#5c6b76" font-size="12.5">per-value ancestor stacks</text>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="505" y="92">enter node 2 (value 3)</text>
+    <text x="505" y="212">enter node 3 (value 2), node 2 popped</text>
+  </g>
+  <!-- moment A: node 2 skips stack[3], reads stack[2] -->
+  <rect x="400" y="106" width="80" height="28" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <text x="440" y="124" text-anchor="middle" fill="#9aa7b2" font-size="12.5">node 1</text>
+  <rect x="545" y="106" width="80" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="585" y="124" text-anchor="middle" fill="#1a2026" font-weight="600" font-size="12.5">node 0</text>
+  <line x1="484" y1="120" x2="539" y2="120" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="432" y="152" text-anchor="middle" fill="#9aa7b2" font-size="11.5">same value</text>
+  <text x="588" y="152" text-anchor="middle" fill="#4169E1" font-size="11.5">closest coprime top</text>
+  <text x="505" y="176" text-anchor="middle" fill="#1a2026" font-size="12.5">ans[2] = <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+  <!-- moment B: node 3 reads stack[3], which is deeper than stack[2] -->
+  <rect x="400" y="226" width="80" height="28" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <text x="440" y="244" text-anchor="middle" fill="#9aa7b2" font-size="12.5">node 0</text>
+  <rect x="545" y="226" width="80" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="585" y="244" text-anchor="middle" fill="#1a2026" font-weight="600" font-size="12.5">node 1</text>
+  <line x1="484" y1="240" x2="539" y2="240" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="512" y="272" text-anchor="middle" fill="#4169E1" font-size="11.5">deeper</text>
+  <text x="440" y="272" text-anchor="middle" fill="#9aa7b2" font-size="11.5">farther</text>
+  <text x="585" y="292" text-anchor="middle" fill="#4169E1" font-size="11.5">deepest coprime top</text>
+  <text x="505" y="316" text-anchor="middle" fill="#1a2026" font-size="12.5">ans[3] = <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  <text x="40" y="332" fill="#1a2026" font-size="13">Node 2 skips value 3's stack (gcd(3,3)=3) and answers stack[2]'s node 0;</text>
+  <text x="40" y="350" fill="#1a2026" font-size="13">node 3 enters after node 2 pops and answers stack[3]'s node 1 — ans = <tspan fill="#4169E1" font-weight="600">[-1,0,0,1]</tspan>.</text>
+</svg>

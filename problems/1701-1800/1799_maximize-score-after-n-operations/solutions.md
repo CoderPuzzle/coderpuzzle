@@ -12,6 +12,10 @@ the two elements chosen. Precompute the gcd of every index pair once
 order: transitions only set bits, so every mask is final before anyone
 reads it, and the answer sits at `dp` of the full mask.
 
+![For nums = [3,4,6,8], the ascending mask sweep reaches dp[0101] = 3 by
+removing {6,3} for 1×3, then closes at dp[1111] = 3 + 2×4 = 11 — the best
+of the six final pair choices.](figures/solution-mask-dp-sweep.svg)
+
 Each transition pairs any two still-present elements — deliberately not
 just pairs containing, say, the lowest free index. The multiplier grows
 with the operation count, so the richest pair usually belongs to the last

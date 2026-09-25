@@ -21,6 +21,10 @@ queries answer 0 through it, and lazy decrements keep every count exact
 without ever rewiring the tree. The confirming walk is also what makes an
 erase of an absent word a harmless no-op.
 
+![After insert("apple") twice (equal = 2, prefix "app" = 2), erase("apple")
+walks the a-p-p-l-e path decrementing prefix_count 2 → 1 at every node and
+word_count 2 → 1 at e, so both queries now return 1.](figures/solution-counted-trie-erase.svg)
+
 Each call is a single root-to-node walk, so every operation costs time
 proportional to the word or prefix length `L`; `insert` is the only one
 that allocates, at most `L` new tail nodes. Because erases free nothing,

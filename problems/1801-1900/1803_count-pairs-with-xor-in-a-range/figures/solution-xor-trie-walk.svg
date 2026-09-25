@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 406" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="406" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums=[1,4,2,7], k=6=110; querying x=7=111 (last element) against the trie of
+       {1,4,2} (values inserted before it); bits 15-3 are one shared zero-count spine,
+       elided; node counts = values through the node; at each 1-bit of k the x-bit
+       subtree is banked whole (+1 at value 4, +1 at value 2), the walk descends the
+       opposite child, and after bit 0 the landed node counts exactly (+1 at value 1,
+       7^1=6=k); query total 3; stream total f(6)-f(1) = 6-0 = 6 -->
+  <text x="340" y="30" text-anchor="middle" fill="#1a2026" font-weight="600">nums = [1, 4, 2, 7], low = 2, high = 6</text>
+  <text x="340" y="48" text-anchor="middle" fill="#5c6b76" font-size="12">querying x = 7 = 111 against k = 6 = 110 (trie = values before 7; bits 15–3 elided zero spine)</text>
+  <!-- edges; accent = walked, gray = counted whole / untouched -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="340" y1="96" x2="470" y2="164"/>
+    <line x1="250" y1="164" x2="330" y2="232"/>
+    <line x1="470" y1="164" x2="540" y2="232"/>
+    <line x1="330" y1="232" x2="330" y2="300"/>
+    <line x1="540" y1="232" x2="540" y2="300"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2.5">
+    <line x1="340" y1="96" x2="250" y2="164"/>
+    <line x1="250" y1="164" x2="170" y2="232"/>
+    <line x1="170" y1="232" x2="170" y2="300"/>
+  </g>
+  <!-- edge bit labels -->
+  <g font-size="11.5" fill="#5c6b76">
+    <text x="280" y="126" text-anchor="middle">0</text>
+    <text x="417" y="126" text-anchor="middle">1</text>
+    <text x="198" y="194" text-anchor="middle">0</text>
+    <text x="302" y="194" text-anchor="middle">1</text>
+    <text x="517" y="194" text-anchor="middle">0</text>
+    <text x="184" y="270" text-anchor="middle">1</text>
+    <text x="344" y="270" text-anchor="middle">0</text>
+    <text x="554" y="270" text-anchor="middle">0</text>
+  </g>
+  <!-- nodes: count of values passing through -->
+  <g stroke-width="1.5">
+    <circle cx="340" cy="96" r="16" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="250" cy="164" r="16" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="470" cy="164" r="16" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="170" cy="232" r="16" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="330" cy="232" r="16" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="540" cy="232" r="16" fill="#dbe4fb" stroke="#42525e"/>
+    <circle cx="170" cy="300" r="16" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="330" cy="300" r="16" fill="#dbe4fb" stroke="#42525e"/>
+    <circle cx="540" cy="300" r="16" fill="#dbe4fb" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="340" y="101">3</text>
+    <text x="250" y="169">2</text>
+    <text x="470" y="169" fill="#4169E1">1</text>
+    <text x="170" y="237">1</text>
+    <text x="330" y="237" fill="#4169E1">1</text>
+    <text x="540" y="237">1</text>
+    <text x="170" y="305" fill="#4169E1">1</text>
+    <text x="330" y="305">1</text>
+    <text x="540" y="305">1</text>
+  </g>
+  <!-- level and value labels -->
+  <g font-size="11.5" fill="#5c6b76">
+    <text x="660" y="169" text-anchor="end">bit 2</text>
+    <text x="660" y="237" text-anchor="end">bit 1</text>
+    <text x="660" y="305" text-anchor="end">bit 0</text>
+    <text x="170" y="332" text-anchor="middle">value 1</text>
+    <text x="330" y="332" text-anchor="middle">value 2</text>
+    <text x="540" y="332" text-anchor="middle">value 4</text>
+  </g>
+  <!-- walk annotations -->
+  <g font-size="12.5" font-weight="600" fill="#4169E1">
+    <text x="440" y="168" text-anchor="end">bank +1 (7^4 = 3)</text>
+    <text x="300" y="236" text-anchor="end">bank +1 (7^2 = 5)</text>
+    <text x="148" y="304" text-anchor="end">count +1 (7^1 = 6)</text>
+  </g>
+  <text x="340" y="372" text-anchor="middle" fill="#1a2026" font-size="13">Each 1-bit of k banks a whole subtree: 7^4=3, 7^2=5, then exact 7^1=6 → 3 pairs.</text>
+  <text x="340" y="390" text-anchor="middle" fill="#1a2026" font-size="13">Streaming every element: f(high) − f(low−1) = 6 − 0 = <tspan fill="#4169E1" font-weight="600">6</tspan> nice pairs.</text>
+</svg>

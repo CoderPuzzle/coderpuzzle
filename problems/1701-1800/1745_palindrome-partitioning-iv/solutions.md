@@ -15,6 +15,10 @@ is a palindrome exactly when `s[l] == s[r]` and the inner substring
 `s[l+1 .. r-1]` is. Building the table by increasing length makes each
 entry depend only on an already-computed, strictly shorter one.
 
+![On s = "abcbdd" the isPal table fills by increasing length, true only on
+the diagonal, "dd", and "bcb"; the accented cuts i = 1, j = 4 give
+"a" + "bcb" + "dd".](figures/solution-ispal-table-two-cuts.svg)
+
 With the table filled, two nested loops over `i` and `j` — the first part
 always non-empty (`i >= 1`) and the third always non-empty (`j <= n-1`) —
 return `true` as soon as all three segments test as palindromes. The whole

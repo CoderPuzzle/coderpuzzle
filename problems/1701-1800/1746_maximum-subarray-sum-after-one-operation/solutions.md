@@ -17,6 +17,10 @@ operation must be used exactly once, the answer is the largest `dp1`
 over all positions — every valid subarray with one square ends somewhere,
 and `dp1` at that ending index captures it.
 
+![On nums = [2,-1,-4,-3] the two states advance per index; at i = 2 the
+square lands on -4, making 16, and dp1[2] = max(16, 1 + 16, 3 - 4) = 17 is
+the best subarray, 2 + -1 + 16.](figures/solution-two-state-kadane.svg)
+
 All sums stay below `2³¹ - 1`: a subarray of at most `10⁵` elements with
 one squared value sums to at most `(10⁵ - 1)·10⁴ + 10⁸ ≈ 1.1·10⁹`, so a
 32-bit result is exact. The recurrence reads only the two previous

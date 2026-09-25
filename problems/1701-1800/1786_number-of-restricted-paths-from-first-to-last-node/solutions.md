@@ -18,6 +18,8 @@ time it is read: when node `u` is visited, each strictly-closer neighbor
 `v` was already visited, so `count[u]` is the sum of `count[v]` over those
 neighbors, reduced modulo `10⁹ + 7`.
 
+![On the 5-node example graph, Dijkstra from node 5 gives d = [4,2,1,6,0], every edge is redirected toward the strictly closer endpoint, and the distance-ordered count DP accumulates count[1] = 3 along 1→2→5, 1→2→3→5, and 1→3→5.](figures/solution-dijkstra-then-count-dp.svg)
+
 Distances are held in 64-bit integers: a shortest path uses at most `n - 1`
 edges of weight up to `10⁵`, so a distance can reach about `2 * 10⁹`,
 grazing the 32-bit ceiling (plain JavaScript numbers hold it exactly, being

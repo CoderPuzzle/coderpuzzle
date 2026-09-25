@@ -19,6 +19,11 @@ equals `K`. Each element is counted against the trie before it is
 inserted, so every unordered pair is counted exactly once, and both walks
 are iterative.
 
+![With nums = [1,4,2,7] and k = 6, the query for x = 2 banks value 1's
+whole subtree (2^1 = 3), banks nothing at the empty child, then counts
+value 4 exactly (2^4 = 6) — 2 pairs — and f(high) − f(low−1) = 6 over the
+stream.](figures/solution-xor-trie-bank-walk.svg)
+
 The answer never exceeds `n(n-1)/2 < 2 * 10⁸`, so 32-bit integers carry
 every value in every language (JavaScript's doubles are exact far below
 `2⁵³`).

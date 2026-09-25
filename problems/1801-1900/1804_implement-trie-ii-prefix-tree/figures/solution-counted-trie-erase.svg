@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 276" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="276" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- example 1: insert("apple") x2 then erase("apple"); one node per character of
+       "apple" (root + a p p l e); tag under each node = prefix_count before → after
+       the erase, e also carries word_count; every prefix_count drops 2 → 1 (root
+       included) and word_count 2 → 1 at e -->
+  <text x="340" y="32" text-anchor="middle" fill="#1a2026" font-size="13">insert("apple") twice → countWordsEqualTo("apple") = 2,</text>
+  <text x="340" y="50" text-anchor="middle" fill="#1a2026" font-size="13">countWordsStartingWith("app") = 2, then erase("apple")</text>
+  <text x="346" y="86" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">erase("apple"): prefix_count −1 at every node, word_count −1 at e</text>
+  <path d="M 76 100 L 616 100" stroke="#4169E1" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <!-- trie chain for "apple" -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="98" y1="134" x2="162" y2="134"/>
+    <line x1="206" y1="134" x2="270" y2="134"/>
+    <line x1="314" y1="134" x2="378" y2="134"/>
+    <line x1="422" y1="134" x2="486" y2="134"/>
+    <line x1="530" y1="134" x2="594" y2="134"/>
+  </g>
+  <g stroke-width="1.5">
+    <circle cx="76" cy="134" r="22" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="184" cy="134" r="22" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="292" cy="134" r="22" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="400" cy="134" r="22" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="508" cy="134" r="22" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="616" cy="134" r="22" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="76" y="139" font-size="11" fill="#5c6b76">root</text>
+    <text x="184" y="140" font-size="15" font-weight="600">a</text>
+    <text x="292" y="140" font-size="15" font-weight="600">p</text>
+    <text x="400" y="140" font-size="15" font-weight="600">p</text>
+    <text x="508" y="140" font-size="15" font-weight="600">l</text>
+    <text x="616" y="140" font-size="15" font-weight="600" fill="#4169E1">e</text>
+  </g>
+  <!-- per-node counters, before → after the erase -->
+  <g text-anchor="middle" font-size="12">
+    <text x="76" y="182"><tspan fill="#5c6b76">pre </tspan><tspan fill="#9aa7b2">2 → </tspan><tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="184" y="182"><tspan fill="#5c6b76">pre </tspan><tspan fill="#9aa7b2">2 → </tspan><tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="292" y="182"><tspan fill="#5c6b76">pre </tspan><tspan fill="#9aa7b2">2 → </tspan><tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="400" y="182"><tspan fill="#5c6b76">pre </tspan><tspan fill="#9aa7b2">2 → </tspan><tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="508" y="182"><tspan fill="#5c6b76">pre </tspan><tspan fill="#9aa7b2">2 → </tspan><tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="616" y="182"><tspan fill="#5c6b76">pre </tspan><tspan fill="#9aa7b2">2 → </tspan><tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="616" y="202"><tspan fill="#5c6b76">word </tspan><tspan fill="#9aa7b2">2 → </tspan><tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  </g>
+  <text x="340" y="240" text-anchor="middle" fill="#1a2026" font-size="13">After two inserts every counter on the path is 2; the erase walks it once more:</text>
+  <text x="340" y="258" text-anchor="middle" fill="#1a2026" font-size="13">prefix_count 2 → 1 at every node, word_count 2 → 1 at e — both queries return <tspan fill="#4169E1" font-weight="600">1</tspan>.</text>
+</svg>

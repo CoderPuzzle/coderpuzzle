@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 324" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="324" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "aabccabba"; peel a-runs (cells 0,1 vs 8) then b-runs (cell 2 vs 6,7); remnant cells 3-5 = "cca", l=3, r=5 -->
+  <text x="320" y="108" text-anchor="middle" fill="#5c6b76" font-size="12.5">s = "aabccabba"</text>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4">
+    <rect x="114" y="150" width="44" height="40"/><rect x="160" y="150" width="44" height="40"/>
+    <rect x="206" y="150" width="44" height="40"/>
+    <rect x="390" y="150" width="44" height="40"/><rect x="436" y="150" width="44" height="40"/>
+    <rect x="482" y="150" width="44" height="40"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="2">
+    <rect x="252" y="150" width="44" height="40"/><rect x="298" y="150" width="44" height="40"/>
+    <rect x="344" y="150" width="44" height="40"/>
+  </g>
+  <g text-anchor="middle" font-size="15">
+    <text x="136" y="175" fill="#9aa7b2">a</text><text x="182" y="175" fill="#9aa7b2">a</text>
+    <text x="228" y="175" fill="#9aa7b2">b</text><text x="274" y="175" fill="#1a2026" font-weight="600">c</text>
+    <text x="320" y="175" fill="#1a2026" font-weight="600">c</text><text x="366" y="175" fill="#1a2026" font-weight="600">a</text>
+    <text x="412" y="175" fill="#9aa7b2">b</text><text x="458" y="175" fill="#9aa7b2">b</text>
+    <text x="504" y="175" fill="#9aa7b2">a</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="136" y="204">0</text><text x="182" y="204">1</text><text x="228" y="204">2</text>
+    <text x="274" y="204">3</text><text x="320" y="204">4</text><text x="366" y="204">5</text>
+    <text x="412" y="204">6</text><text x="458" y="204">7</text><text x="504" y="204">8</text>
+  </g>
+  <text x="60" y="130" text-anchor="end" fill="#4169E1" font-size="13" font-weight="600">l</text>
+  <line x1="70" y1="126" x2="274" y2="144" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="580" y="130" fill="#4169E1" font-size="13" font-weight="600">r</text>
+  <line x1="570" y1="126" x2="366" y2="144" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="320" y="232" text-anchor="middle" fill="#5c6b76" font-size="12.5">step 1: ends a/a — peel "aa" left and "a" right, so l = 2, r = 7</text>
+  <text x="320" y="252" text-anchor="middle" fill="#5c6b76" font-size="12.5">step 2: ends b/b — peel "b" left and "bb" right, so l = 3, r = 5</text>
+  <text x="320" y="288" text-anchor="middle" fill="#1a2026" font-size="13">The end characters c and a now differ, so peeling stops; the remnant</text>
+  <text x="320" y="308" text-anchor="middle" fill="#1a2026" font-size="13">span "cca" keeps <tspan fill="#4169E1" font-weight="600">3</tspan> characters — the answer is <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

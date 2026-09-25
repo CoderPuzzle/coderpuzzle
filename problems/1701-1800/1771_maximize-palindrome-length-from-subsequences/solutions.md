@@ -22,4 +22,6 @@ palindrome assembled from both words, so the answer is the maximum of
 which is the "no palindromes can be constructed" case. The fill is iterative
 throughout, so a 2000-character concatenation needs no recursion at all.
 
+![On s = "cacb" + "cbba" = "cacbcbba", the interval-dp table fills with i descending, shades every matching boundary pair, and lifts dp[1][7] to dp[2][6] + 2 = 3 + 2 = 5 — the answer, spelled "abcba".](figures/solution-boundary-lps-table.svg)
+
 **Complexity:** `O(n²)` time, `O(n²)` space, with `n` the combined length.

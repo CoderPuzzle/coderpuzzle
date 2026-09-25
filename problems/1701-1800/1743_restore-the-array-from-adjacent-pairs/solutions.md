@@ -9,6 +9,10 @@ value to its neighbours turns reconstruction into a walk that starts at
 one endpoint and, at every step, moves to the neighbour that was not just
 visited.
 
+![On adjacentPairs [[2,1],[3,4],[3,2]] the path graph is 1-2-3-4 with
+degree-1 endpoints 1 and 4; the walk starts at endpoint 1 and emits
+[1,2,3,4].](figures/solution-adjacency-path-walk.svg)
+
 Because the judge compares the returned array exactly rather than merely
 checking that its adjacent pairs match the input, the traversal must be
 deterministic — a reversed-but-valid array would still satisfy the

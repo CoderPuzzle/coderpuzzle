@@ -8,6 +8,8 @@ Exploration is an iterative DFS that keeps the robot physically on the DFS tree.
 
 With the map known and every edge of length 1, breadth-first search from the origin is exactly the shortest-path algorithm: the first time the frontier reaches the remembered target cell, its distance is final. If exploration never saw the target, the target is outside the reachable component and the answer is `-1`.
 
+![On the hidden 3x3 grid of example 2, DFS enters the five reachable cells in order, backtracking along its own path between subtrees, and BFS rings from the start then first reach the remembered target at distance 4.](figures/solution-dfs-then-bfs.svg)
+
 The query budget is comfortable because exploration is thrifty: each cell costs at most four `canMove` probes, one `isTarget`, one move in and one move back — under ten queries per cell, so even a fully open 500 x 500 grid stays an order of magnitude below the 4,000,000-call budget. The Java port encodes `(r, c)` pairs as a single `long` key with an offset that keeps relative coordinates positive.
 
 **Complexity:** `O(mn)` time and space for exploration plus BFS, with at most a constant number of oracle queries per cell.

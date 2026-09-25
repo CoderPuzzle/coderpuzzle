@@ -13,6 +13,8 @@ value is strictly farther away, which is exactly the first hint.
 Coprimality is fixed for the whole input, so the 50 by 50 gcd table is
 built once up front.
 
+![On nums = [2,3,3,2] with edges [[0,1],[1,2],[1,3]], node 2 skips its same-value ancestor sitting on stack[3] and answers stack[2]'s node 0, while node 3 enters after node 2 pops and answers stack[3]'s node 1 — ans = [-1,0,0,1].](figures/solution-value-ancestor-stacks.svg)
+
 The traversal is iterative because the tree may be a single chain of 10⁵
 nodes, past every default recursion budget. An explicit frame stack
 handles enter and exit events: on enter a node is answered against the

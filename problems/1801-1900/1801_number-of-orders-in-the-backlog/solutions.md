@@ -18,6 +18,10 @@ amount is exhausted. Whatever remains joins the incoming side's heap as
 one new batch, so partially consumed batches keep trading later with
 their reduced amounts.
 
+![Processing [[10,5,0],[15,2,1],[25,1,1],[30,4,0]], the buy max-heap and
+sell min-heap evolve batch by batch until step 4's buy at 30 matches 2
+sells at 15 and 1 at 25, leaving 5@10 and 1@30 in the backlog — 6 orders.](figures/solution-two-heap-backlog.svg)
+
 The final answer sums every amount still in the two heaps. That total
 reaches `10⁵ × 10⁹ = 10¹⁴`, past 32-bit range, so the accumulation is
 kept in 64-bit integers everywhere (JavaScript's numbers hold it

@@ -18,6 +18,10 @@ counting each leg of the path exactly once. The root rides with a parent
 that is never a real value's entry to follow, because no climb ever
 passes the LCA, and the LCA is at the latest the root.
 
+![On the example tree with p = 5 and q = 0 every node carries its depth and
+parent from the build; the lift and the lockstep climb meet at LCA 3, and
+depth[5] + depth[0] - 2·depth[3] = 3 edges over the path 5-3-1-0.](figures/solution-parent-depth-lca-climb.svg)
+
 Every query shape falls out of the same three loops by construction. A
 query with `p == q` needs no special case: the depth lifts make no move,
 the lockstep walk finds the two already equal, and the formula cancels

@@ -19,6 +19,9 @@ sides consumed into an all-same remnant — length 0), they met exactly
 (a single undeletable character — length 1), or they rest on different
 characters (nothing more is deletable — their span is the answer).
 
+![On s = "aabccabba" the pointers peel the a-runs, then the b-runs, and
+stop on "cca" whose end characters c and a differ — the answer is 3.](figures/solution-two-pointer-run-peel.svg)
+
 On `"cabaabac"` the runs peel c, a, b, then a again, leaving the
 pointers crossed and the string empty. On `"aabccabba"` the a-runs and
 b-runs go, leaving `"cca"` with ends `c` and `a` — different, so 3
