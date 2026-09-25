@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="250" fill="#ffffff"/>
+  <!-- dividend 10, divisor 3: peel 6, then 3, remainder 1 -->
+  <g fill="#dbe4fb" stroke="#1a2026" stroke-width="1.4">
+    <rect x="100" y="90" width="36" height="36"/><rect x="136" y="90" width="36" height="36"/><rect x="172" y="90" width="36" height="36"/><rect x="208" y="90" width="36" height="36"/><rect x="244" y="90" width="36" height="36"/><rect x="280" y="90" width="36" height="36"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="316" y="90" width="36" height="36"/><rect x="352" y="90" width="36" height="36"/><rect x="388" y="90" width="36" height="36"/>
+  </g>
+  <rect x="424" y="90" width="36" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <!-- first chunk: 3 doubled to 6 -->
+  <path d="M 100 82 V 74 H 316 V 82" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="208" y="64" text-anchor="middle" fill="#4169E1" font-weight="600">chunk 3 + 3 = 6 — quotient += 2</text>
+  <!-- second chunk: back to 3 -->
+  <path d="M 316 134 V 142 H 424 V 134" fill="none" stroke="#42525e" stroke-width="2"/>
+  <text x="370" y="160" text-anchor="middle" fill="#5c6b76" font-size="12.5">chunk 3 — quotient += 1</text>
+  <text x="442" y="150" text-anchor="middle" fill="#9aa7b2" font-size="11.5">remainder 1</text>
+  <text x="320" y="180" text-anchor="middle" fill="#1a2026" font-size="13">One more doubling (6 + 6 = 12) would overshoot the remaining 4, so the chunk resets to 3;</text>
+  <text x="320" y="200" text-anchor="middle" fill="#1a2026" font-size="13">when the remainder 1 can no longer hold a chunk, the quotient is <tspan fill="#4169E1" font-weight="600">2 + 1 = 3</tspan>.</text>
+  <text x="320" y="228" text-anchor="middle" fill="#5c6b76" font-size="12.5">10 ÷ 3: two subtractions instead of ten — each pass strips the top power-of-two block.</text>
+</svg>

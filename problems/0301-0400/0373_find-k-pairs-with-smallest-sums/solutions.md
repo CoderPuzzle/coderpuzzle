@@ -48,6 +48,8 @@ The full cross product of `nums1` and `nums2` can hold 10^10 pairs, so only a fr
 
 Each pop yields the globally smallest remaining pair, which is appended to the result. When `(i, j)` is consumed, the only unexplored pair that could be its successor within row `i` is `(i, j + 1)` — everything to its left in the row has already been popped, and everything else in the heap belongs to different rows. Pushing that one successor restores the invariant that the heap always contains the minimum un-emitted pair of every active row, so `k` pops produce exactly the `k` smallest pairs in order. The heap tuples `(sum, i, j)` compare by sum first and then by the `nums1` index, which matches the required tie-breaking: equal sums are emitted with the smaller `nums1` index first.
 
+![The implicit sum matrix for nums1 = [1,7,11] and nums2 = [2,4,6]: the heap is seeded with each row's smallest pair — sums 3, 9, 13 — and three pops emit 3, 5, 7, each followed by pushing the popped pair's right neighbour, returning [[1,2],[1,4],[1,6]].](figures/solution-heap-frontier.svg)
+
 Edge cases: empty inputs or `k <= 0` return an empty list immediately, and the `j + 1 < len(nums2)` guard prevents pushing past the end of a row (the problem guarantees `k` never exceeds the total pair count, so the loop always fills `k` results). Heap size never exceeds its seeding size plus one push per pop, i.e. `O(k)`.
 
 **Complexity:** `O(k log k)` time, `O(k)` space.

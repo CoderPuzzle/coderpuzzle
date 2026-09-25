@@ -6,6 +6,8 @@ Every path into a cell arrives by exactly one of two moves, from the cell above 
 
 The grid itself carries the table: each cell is overwritten in place with the cheapest sum reaching it, so no second table is ever allocated. The overwrite order is what makes this safe — by the time a cell is updated, the value above it was written on the previous row and the value to its left earlier in the current row, and no cell is ever read again after being replaced.
 
+![The example grid overwritten in place by one row-major scan: each cell becomes the cheapest sum reaching it — the centre reads 5 + min(4, 2) = 7 — and the accented path 1 → 3 → 1 → 1 → 1 ends at 7 in the bottom-right corner.](figures/solution-inplace-dp-grid.svg)
+
 A path crosses `m + n - 1 <= 399` cells of value at most 200, so no running sum ever exceeds 79,800. Every prefix and the final answer therefore fit the grid's own 32-bit integers, and the fixed-width ports accumulate in place without widening.
 
 **Complexity:** `O(mn)` time, `O(1)` extra space.
