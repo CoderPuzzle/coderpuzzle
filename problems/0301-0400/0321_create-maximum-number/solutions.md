@@ -29,4 +29,6 @@ merged candidates. Candidates all have length `k`, so a straight digit-wise
 comparison picks the winner. Each split costs one stack pass over each array
 plus one merge whose tie comparisons scan at most the remaining tails.
 
+![On example 1 the winning split take1 = 2, take2 = 3 has the monotonic stack pick [6, 5] from nums1 and [9, 8, 3] from nums2, and the head-to-head merge interleaves them into [9, 8, 6, 5, 3].](figures/solution-split-pick-merge.svg)
+
 **Complexity:** `O(k^2 * (m + n))` time, `O(m + n)` space.

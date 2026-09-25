@@ -6,6 +6,10 @@ Divisibility is transitive — if `a | b` and `b | c` then `a | c` — so in a v
 
 For each `i`, every earlier `j` with `nums[i] % nums[j] == 0` offers an extension `dp[j] + 1`; the code keeps the best and records `parent[i] = j` so the actual subset can be rebuilt rather than just counted. The sort is essential for correctness: with ascending order, any chain built left to right is a valid subset, and every valid subset appears in sorted order, so the DP searches exactly the right solution space. After filling the table, the index with the maximum `dp` value is traced back through the parent links, and reversing the collected elements yields the subset in ascending order.
 
+![On sorted nums = [1,2,4,8], dp climbs 1, 2, 3, 4 with parents -1, 0, 1, 2,
+and the walk from best index 3 hops 8 → 4 → 2 → 1, reversing to
+[1, 2, 4, 8].](figures/solution-sort-dp-parent-walk.svg)
+
 Edge cases: an empty input returns `[]`; a single element returns itself; and elements that divide nothing simply keep `dp[i] = 1` with parent `-1`, terminating reconstruction. Equal divisibility candidates never arise since all values are distinct, and `nums[i] % nums[j] == 0` with `nums[j] <= nums[i]` correctly rejects non-divisible pairs.
 
 **Complexity:** `O(n²)` time, `O(n)` space.

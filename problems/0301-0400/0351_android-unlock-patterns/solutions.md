@@ -21,6 +21,11 @@ So three searches — from corner 1, edge 2, and center 5, the first two counts
 each multiplied by four — cover all nine starting dots. This solution applies
 that symmetry pruning, which is the classic optimization for the problem.
 
+![On the 3 x 3 grid the DFS consults the eight skip pairs — 1-3, 7-9, 1-7, 3-9
+and 1-9, 3-7, 2-8, 4-6 through 5 — and symmetry folds the nine starts into
+corner 1, edge 2, and center 5, giving 4 x 6 + 4 x 8 + 9 = 65 patterns for
+`m = 1, n = 2`.](figures/solution-skip-table-symmetry.svg)
+
 The domain is finite, so the cost is honest and concrete: the search tree is
 exactly the tree of valid pattern prefixes, 389,497 nodes at full depth
 (`m = 1, n = 9`) inside the 986,409 ordered dot sequences of length at most

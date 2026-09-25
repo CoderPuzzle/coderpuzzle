@@ -6,6 +6,8 @@ Neither of the two obvious containers suffices alone: an array answers `getRando
 
 `insert` is an append plus one map entry. `remove` cannot afford to shift the array, so it overwrites the vacated slot with the array's **last** element and drops the final slot; the moved element's map entry is rewritten to the new (smaller) index. When the removed value already sits at the end, the slot and the swap partner coincide and the array simply shrinks — the `slot != last` guard skips the self-move. Because this is a set, each value has exactly one index, so one repair per removal is always enough.
 
+![The example's remove(1) on values = [1, 2] with index {1: 0, 2: 1}: the last element 2 moves into slot 0, leaving values = [2] and the moved entry repaired to index[2] = 0.](figures/solution-remove-swap-last.svg)
+
 `getRandom` draws uniformly from the live `values` array — a random slot in `O(1)`. The judge verifies uniformity statistically (each judged `getRandom` is invoked ~2000 times and every live element's empirical frequency must match its uniform probability within a tolerance band), so any correct uniform sampler passes.
 
 Both the Python and Java canonical solutions implement exactly this pair of structures. With at most `2 * 10⁵` operations, each costing a constant number of map and array touches, the whole workload stays far inside the limits.

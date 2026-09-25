@@ -14,5 +14,9 @@ The trick that removes the max-depth pre-pass: descending one more level
 raises every already-seen integer's weight by one, and re-adding the running
 `flat` sum implements exactly that raise.
 
+![On nestedList = [1,[4,[6]]], the three levels raise flat to 1, 5, 11 and
+total to 1, 6, 17, so each integer is counted maxDepth - depth + 1 times and
+1×3 + 4×2 + 6×1 = 17.](figures/solution-bfs-running-reweight.svg)
+
 **Complexity:** `O(N)` time for `N` total elements, `O(N)` space for the
 level frontiers.

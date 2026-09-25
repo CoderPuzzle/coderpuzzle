@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="372" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- s = aaadbbcc, k = 2: counts a3 b2 c2 d1; count cells 34x30 at (100+40j, 64+46*pass), appended cells at (306,344) -->
+  <text x="176" y="48" text-anchor="middle" fill="#5c6b76" font-size="11">counts before the pass</text>
+  <text x="342" y="48" text-anchor="middle" fill="#5c6b76" font-size="11">appended</text>
+  <text x="500" y="48" text-anchor="middle" fill="#5c6b76" font-size="11">decrements</text>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <line x1="262" y1="79" x2="296" y2="79" marker-end="url(#arrow)"/>
+    <line x1="262" y1="125" x2="296" y2="125" marker-end="url(#arrow)"/>
+    <line x1="262" y1="171" x2="296" y2="171" marker-end="url(#arrow)"/>
+    <line x1="262" y1="217" x2="296" y2="217" marker-end="url(#arrow)"/>
+  </g>
+  <!-- pass rows -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="83">pass 1</text>
+    <text x="40" y="129">pass 2</text>
+    <text x="40" y="175">pass 3</text>
+    <text x="40" y="221">pass 4</text>
+  </g>
+  <!-- count cells: drained ones accent-stroked, zero cells muted -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="180" y="64" width="34" height="30"/><rect x="220" y="64" width="34" height="30"/>
+    <rect x="140" y="110" width="34" height="30"/><rect x="220" y="110" width="34" height="30"/>
+    <rect x="180" y="156" width="34" height="30"/><rect x="220" y="156" width="34" height="30"/>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="100" y="202" width="34" height="30"/><rect x="140" y="202" width="34" height="30"/>
+  </g>
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="1.8">
+    <rect x="100" y="64" width="34" height="30"/><rect x="140" y="64" width="34" height="30"/>
+    <rect x="100" y="110" width="34" height="30"/><rect x="180" y="110" width="34" height="30"/>
+    <rect x="100" y="156" width="34" height="30"/><rect x="140" y="156" width="34" height="30"/>
+    <rect x="180" y="202" width="34" height="30"/><rect x="220" y="202" width="34" height="30"/>
+  </g>
+  <g text-anchor="middle">
+    <!-- letters -->
+    <g font-size="10" fill="#5c6b76">
+      <text x="117" y="76">a</text><text x="157" y="76">b</text><text x="197" y="76">c</text><text x="237" y="76">d</text>
+      <text x="117" y="122">a</text><text x="157" y="122">b</text><text x="197" y="122">c</text><text x="237" y="122">d</text>
+      <text x="117" y="168">a</text><text x="157" y="168">b</text><text x="197" y="168">c</text><text x="237" y="168">d</text>
+      <text x="117" y="214">a</text><text x="157" y="214">b</text><text x="197" y="214">c</text><text x="237" y="214">d</text>
+    </g>
+    <!-- counts -->
+    <g font-size="12.5" font-weight="600">
+      <text x="117" y="89" fill="#4169E1">3</text><text x="157" y="89" fill="#4169E1">2</text><text x="197" y="89" fill="#1a2026">2</text><text x="237" y="89" fill="#1a2026">1</text>
+      <text x="117" y="135" fill="#4169E1">2</text><text x="157" y="135" fill="#1a2026">1</text><text x="197" y="135" fill="#4169E1">2</text><text x="237" y="135" fill="#1a2026">1</text>
+      <text x="117" y="181" fill="#4169E1">1</text><text x="157" y="181" fill="#4169E1">1</text><text x="197" y="181" fill="#1a2026">1</text><text x="237" y="181" fill="#1a2026">1</text>
+      <text x="117" y="227" fill="#9aa7b2">0</text><text x="157" y="227" fill="#9aa7b2">0</text><text x="197" y="227" fill="#4169E1">1</text><text x="237" y="227" fill="#4169E1">1</text>
+    </g>
+  </g>
+  <!-- appended letters -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="306" y="64" width="34" height="30"/><rect x="344" y="64" width="34" height="30"/>
+    <rect x="306" y="110" width="34" height="30"/><rect x="344" y="110" width="34" height="30"/>
+    <rect x="306" y="156" width="34" height="30"/><rect x="344" y="156" width="34" height="30"/>
+    <rect x="306" y="202" width="34" height="30"/><rect x="344" y="202" width="34" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="323" y="84">a</text><text x="361" y="84">b</text>
+    <text x="323" y="130">a</text><text x="361" y="130">c</text>
+    <text x="323" y="176">a</text><text x="361" y="176">b</text>
+    <text x="323" y="222">c</text><text x="361" y="222">d</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="420" y="83">a 3→2 · b 2→1</text>
+    <text x="420" y="129">a 2→1 · c 2→1</text>
+    <text x="420" y="175">a 1→0 · b 1→0</text>
+    <text x="420" y="221">c 1→0 · d 1→0</text>
+  </g>
+  <!-- pinned output: ab | ac | ab | cd -->
+  <text x="40" y="305" font-size="12.5" fill="#5c6b76">output</text>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="100" y="286" width="32" height="30"/><rect x="140" y="286" width="32" height="30"/>
+    <rect x="182" y="286" width="32" height="30"/><rect x="222" y="286" width="32" height="30"/>
+    <rect x="264" y="286" width="32" height="30"/><rect x="304" y="286" width="32" height="30"/>
+    <rect x="346" y="286" width="32" height="30"/><rect x="386" y="286" width="32" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="116" y="306">a</text><text x="156" y="306">b</text>
+    <text x="198" y="306">a</text><text x="238" y="306">c</text>
+    <text x="280" y="306">a</text><text x="320" y="306">b</text>
+    <text x="362" y="306">c</text><text x="402" y="306">d</text>
+  </g>
+  <text x="340" y="336" text-anchor="middle" fill="#1a2026" font-size="13">Each pass drains the k = 2 largest counts, ties to the smaller letter: ab | ac | ab | cd,</text>
+  <text x="340" y="358" text-anchor="middle" fill="#1a2026" font-size="13">so equal letters sit 2 apart — the pinned output <tspan fill="#4169E1" font-weight="600">abacabcd</tspan>.</text>
+</svg>

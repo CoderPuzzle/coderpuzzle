@@ -18,6 +18,8 @@ of the problem: a sealed pocket next to one building scores a deceptively
 small sum that no valid house site can use. If no cell qualifies, the answer
 is `-1`.
 
+![Adding the three buildings' BFS floods on example 1's grid, the running dist_sum grid bottoms out at 7 on cell (1,2) and the reach grid counts 3 there — 3 + 3 + 1 = 7.](figures/solution-flood-dist-sum-reach.svg)
+
 Both accumulators are `m x n` grids and the queue holds at most that many
 cells, so the extra space is a constant number of grids. At the constraint
 ceiling the answer stays small: a `50 x 50` grid puts every cell at distance

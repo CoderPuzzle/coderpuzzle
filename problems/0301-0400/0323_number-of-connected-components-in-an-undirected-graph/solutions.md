@@ -16,4 +16,6 @@ Components counted the direct way: build an undirected adjacency list — each e
 
 The flood is an explicit-stack DFS, so there is no recursion-depth concern. Popping a node walks its neighbor list; every unvisited neighbor is marked visited and pushed immediately. Marking at push time rather than at pop time keeps any node from being stacked twice, so each node is popped once and each adjacency list is read once over the whole run — the linear total reflects the edge-list representation, where reading one node's neighbors touches only its actual edges rather than a full matrix row.
 
+![On n = 5 with edges [[0, 1], [1, 2], [3, 4]], the sweep finds 0 unvisited and floods {0, 1, 2} for count 1, then finds 3 and floods {3, 4} for count 2.](figures/solution-dfs-two-floods.svg)
+
 **Complexity:** `O(n + E)` time, `O(n + E)` space — the adjacency list plus the visited array, with the stack holding at most all `n` nodes in the worst case.

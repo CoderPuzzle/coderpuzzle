@@ -9,6 +9,8 @@ exactly the number of lists enclosing it. Empty list holds contribute
 nothing and need no special case — the loop over their (empty) children
 simply sums to zero.
 
+![In `[[1,1],2,[1,1]]` the depth-first walk finds the four 1's at depth 2 and the 2 at depth 1, so 1×2 + 1×2 + 2×1 + 1×2 + 1×2 = 10.](figures/solution-depth-multiplier-tree.svg)
+
 The recursion tracks only a depth counter and an accumulator, and the
 constraint caps depth at 50, so no stack concerns arise in any language.
 

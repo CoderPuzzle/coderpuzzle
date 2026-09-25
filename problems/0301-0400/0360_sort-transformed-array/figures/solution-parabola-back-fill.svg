@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 368" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="368" fill="#ffffff"/>
+  <!-- nums = [-4,-2,2,4], a=1,b=3,c=5: f = 9,3,15,33; x_px = 55+(x+5)*26, y_px = 250-5*f -->
+  <text x="178" y="44" text-anchor="middle" fill="#5c6b76" font-size="12.5">f(x) = x² + 3x + 5 (a = 1 &gt; 0)</text>
+  <text x="435" y="44" text-anchor="middle" fill="#5c6b76" font-size="12.5">result filled from the back</text>
+  <!-- axes -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <line x1="55" y1="70" x2="55" y2="250"/>
+    <line x1="55" y1="250" x2="300" y2="250"/>
+  </g>
+  <text x="50" y="80" text-anchor="end" fill="#5c6b76" font-size="11">f(x)</text>
+  <g font-size="11.5" fill="#9aa7b2" text-anchor="middle">
+    <text x="81" y="266">-4</text>
+    <text x="133" y="266">-2</text>
+    <text x="237" y="266">2</text>
+    <text x="289" y="266">4</text>
+  </g>
+  <!-- parabola through f(-5..4) -->
+  <polyline fill="none" stroke="#9aa7b2" stroke-width="2" points="55,175 68,191 81,205 94,216 107,225 120,231 133,235 146,236 159,235 172,231 185,225 198,216 211,205 224,191 237,175 250,156 263,135 276,111 289,85"/>
+  <g fill="#4169E1">
+    <circle cx="81" cy="205" r="4.5"/>
+    <circle cx="133" cy="235" r="4.5"/>
+    <circle cx="237" cy="175" r="4.5"/>
+    <circle cx="289" cy="85" r="4.5"/>
+  </g>
+  <g font-size="12" font-weight="600" fill="#4169E1">
+    <text x="88" y="193">9</text>
+    <text x="127" y="224" text-anchor="end">3</text>
+    <text x="245" y="190">15</text>
+    <text x="283" y="76" text-anchor="end">33</text>
+  </g>
+  <!-- result snapshots: rows at y0 = 72+46i; cells 36x32 at (360+38j) -->
+  <g font-size="12" fill="#5c6b76" text-anchor="end">
+    <text x="348" y="92">res[3]</text>
+    <text x="348" y="138">res[2]</text>
+    <text x="348" y="184">res[1]</text>
+    <text x="348" y="230">res[0]</text>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="360" y="72" width="36" height="32"/><rect x="398" y="72" width="36" height="32"/><rect x="436" y="72" width="36" height="32"/>
+    <rect x="360" y="118" width="36" height="32"/><rect x="398" y="118" width="36" height="32"/>
+    <rect x="360" y="164" width="36" height="32"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="474" y="72" width="36" height="32"/>
+    <rect x="436" y="118" width="36" height="32"/><rect x="474" y="118" width="36" height="32"/>
+    <rect x="398" y="164" width="36" height="32"/><rect x="436" y="164" width="36" height="32"/><rect x="474" y="164" width="36" height="32"/>
+    <rect x="360" y="210" width="36" height="32"/><rect x="398" y="210" width="36" height="32"/><rect x="436" y="210" width="36" height="32"/><rect x="474" y="210" width="36" height="32"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="492" y="93" fill="#1a2026">33</text>
+    <text x="454" y="139" fill="#1a2026">15</text><text x="492" y="139" fill="#1a2026">33</text>
+    <text x="416" y="185" fill="#1a2026">9</text><text x="454" y="185" fill="#1a2026">15</text><text x="492" y="185" fill="#1a2026">33</text>
+    <text x="378" y="231" fill="#4169E1">3</text><text x="416" y="231" fill="#1a2026">9</text><text x="454" y="231" fill="#1a2026">15</text><text x="492" y="231" fill="#1a2026">33</text>
+  </g>
+  <g font-size="11.5" fill="#5c6b76">
+    <text x="524" y="92">f(4) = 33 wins, hi--</text>
+    <text x="524" y="138">f(2) = 15 wins, hi--</text>
+    <text x="524" y="184">f(-4) = 9 wins, lo++</text>
+    <text x="524" y="230">last write: f(-2) = 3</text>
+  </g>
+  <text x="340" y="336" text-anchor="middle" fill="#1a2026" font-size="13">With a &gt; 0 the extremes sit at the two ends; each step writes the larger at the back —</text>
+  <text x="340" y="358" text-anchor="middle" fill="#1a2026" font-size="13">33, 15, 9, then the vertex-side 3 leave <tspan fill="#4169E1" font-weight="600">[3, 9, 15, 33]</tspan> sorted.</text>
+</svg>

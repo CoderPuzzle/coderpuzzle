@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 284" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="284" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- moves: (0,0,1)(0,2,2)(2,2,1)(1,1,2)(2,0,1)(1,0,2)(2,1,1); X = player 1, O = player 2; cells 36px, boards at x=60,260,460, y=70; shaded band = row 2 -->
+  <g fill="#f0f3f7">
+    <rect x="60" y="142" width="108" height="36"/><rect x="260" y="142" width="108" height="36"/><rect x="460" y="142" width="108" height="36"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <rect x="60" y="70" width="108" height="108"/><line x1="96" y1="70" x2="96" y2="178"/><line x1="132" y1="70" x2="132" y2="178"/><line x1="60" y1="106" x2="168" y2="106"/><line x1="60" y1="142" x2="168" y2="142"/>
+    <rect x="260" y="70" width="108" height="108"/><line x1="296" y1="70" x2="296" y2="178"/><line x1="332" y1="70" x2="332" y2="178"/><line x1="260" y1="106" x2="368" y2="106"/><line x1="260" y1="142" x2="368" y2="142"/>
+    <rect x="460" y="70" width="108" height="108"/><line x1="496" y1="70" x2="496" y2="178"/><line x1="532" y1="70" x2="532" y2="178"/><line x1="460" y1="106" x2="568" y2="106"/><line x1="460" y1="142" x2="568" y2="142"/>
+  </g>
+  <g text-anchor="middle" font-size="18" font-weight="600">
+    <!-- board 1: X(0,0) O(0,2) X(2,2) -->
+    <text x="78" y="95" fill="#4169E1">X</text><text x="150" y="95" fill="#9aa7b2">O</text><text x="150" y="167" fill="#4169E1">X</text>
+    <!-- board 2: X(0,0) O(0,2) O(1,1) X(2,0) X(2,2) -->
+    <text x="278" y="95" fill="#4169E1">X</text><text x="350" y="95" fill="#9aa7b2">O</text><text x="314" y="131" fill="#9aa7b2">O</text><text x="278" y="167" fill="#4169E1">X</text><text x="350" y="167" fill="#4169E1">X</text>
+    <!-- board 3: X(0,0) O(0,2) O(1,1) O(1,0) X(2,0) X(2,1) X(2,2) -->
+    <text x="478" y="95" fill="#4169E1">X</text><text x="550" y="95" fill="#9aa7b2">O</text><text x="514" y="131" fill="#9aa7b2">O</text><text x="478" y="131" fill="#9aa7b2">O</text><text x="478" y="167" fill="#4169E1">X</text><text x="514" y="167" fill="#4169E1">X</text><text x="550" y="167" fill="#4169E1">X</text>
+  </g>
+  <!-- newest move ring per board: (2,2) then (2,0) then (2,1) -->
+  <g fill="none" stroke="#4169E1" stroke-width="2.2">
+    <rect x="134.5" y="144.5" width="31" height="31"/>
+    <rect x="262.5" y="144.5" width="31" height="31"/>
+    <rect x="498.5" y="144.5" width="31" height="31"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.8" fill="none">
+    <line x1="176" y1="124" x2="250" y2="124" marker-end="url(#arrow)"/>
+    <line x1="376" y1="124" x2="450" y2="124" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="114" y="50">after move(2, 2, 1)</text>
+    <text x="314" y="50">after move(2, 0, 1)</text>
+    <text x="514" y="50">after move(2, 1, 1)</text>
+  </g>
+  <g text-anchor="middle" font-size="13.5">
+    <text x="114" y="204">rows[2] = <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="314" y="204">rows[2] = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="514" y="204">rows[2] = <tspan fill="#4169E1" font-weight="600">3 = n</tspan>, win</text>
+  </g>
+  <text x="40" y="246" fill="#1a2026" font-size="13">Player 1's row-2 counter climbs 1, 2, 3 across its three moves on row 2;</text>
+  <text x="40" y="264" fill="#1a2026" font-size="13">the closing move(2, 1, 1) reads 3 = n and declares the win — none earlier reaches 3.</text>
+</svg>

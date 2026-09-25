@@ -6,6 +6,8 @@ For a target hidden in `[i, j]`, guessing `g` costs `g` immediately plus whateve
 
 The table is filled by interval length because a range's value depends strictly on shorter subranges of it. `length = 1` ranges are already 0 (a single candidate is guessed for free), so the loops start at length 2, with `i` ranging over all starts and `j = i + length - 1`; the answer is `dp[1][n]`. The array is padded to `(n+2) x (n+2)` so the boundary accesses `dp[i][i-1]` and `dp[j+1][j]` are valid without conditionals. A plain recursion recomputes the same intervals exponentially often; the length-ordered table computes each of the `O(n²)` cells once, each cell scanning up to `n` guesses.
 
+![The filled minimax table for n = 10, whose final cell dp[1][10] = 16 = 7 + max(dp[1][6] = 8, dp[8][10] = 9) comes from the guess-7 split the statement's tree walks.](figures/solution-interval-dp-table.svg)
+
 Edge cases: `n = 1` returns 0 because every loop body is skipped and `dp[1][1]` stays 0; `n = 2` correctly yields 1 (guess the cheaper number, pay 1 if wrong). Guessing an interior number that leaves two non-empty sides is handled by the `max`, and the minimum over guesses naturally prefers boundary guesses when they dominate.
 
 **Complexity:** `O(n³)` time, `O(n²)` space.

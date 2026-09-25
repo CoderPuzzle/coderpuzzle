@@ -28,4 +28,6 @@ On the statement's example with `size = 3`, the window grows `[1]`,
 fourth call writes `5` over the oldest slot `1`, leaving
 `(10 + 3 + 5) / 3 = 6.0`.
 
+![With `size = 3` the first three calls fill the ring `[1, 10, 3]` with sum 14; `next(5)` writes 5 over the oldest slot, `head` wraps to slot 1, and the running sum `14 - 1 + 5 = 18` returns `18 / 3 = 6.0`.](figures/solution-ring-buffer-running-sum.svg)
+
 **Complexity:** `O(1)` per `next`; `O(size)` space.

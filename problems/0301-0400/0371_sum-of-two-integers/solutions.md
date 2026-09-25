@@ -12,6 +12,10 @@ higher; when `b` reaches `0`, `a` is the answer. `1 + 2` finishes in one round
 `2 + 3` needs two: `10 ^ 11` leaves `01` with a carry of `100`, and the second
 round settles at `101`.
 
+![On a = 2, b = 3 in 3-bit columns, round 1 keeps 10 ^ 11 = 01 with carry
+(a & b) << 1 = 100, and round 2 computes 01 ^ 100 = 101 with the carry
+exhausted at 0, so a ends at 5.](figures/solution-xor-carry-rounds.svg)
+
 The loop cannot run long, because every carry bit sits strictly higher than
 the ones from the round before — on a 32-bit word at most 32 rounds can pass,
 so the count is bounded by the width, not by the operands. Two's complement is

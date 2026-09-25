@@ -22,6 +22,8 @@ Reading the same problem as a shortest-path turns the coin count into a path len
 
 The search runs level by level: the queue starts holding only `0` (zero coins), and each pass expands the whole current level, producing exactly the set of amounts makeable with one more coin. The first time `amount` comes off the queue, the level counter is the answer, because BFS reaches no vertex through fewer levels than the one it is dequeued at. A `visited` array marks each amount when it is enqueued, so every vertex enters the queue at most once and the whole search touches at most `amount + 1` vertices and `amount · |coins|` edges — the same work bound as the DP, just discovered in a different order: where the DP finishes all smaller amounts first, BFS explores strictly by coin count.
 
+![With coins = [1, 2, 5], the wavefronts over amounts 0..11 are {0}, then {1, 2, 5}, then {3, 4, 6, 7, 10}, then {8, 9, 11}, and 11 first comes off the queue at level 3 — three coins, 1 + 5 + 5.](figures/solution-bfs-amount-levels.svg)
+
 Unmakeable targets fall out as queue exhaustion: if every reachable amount has been expanded and `amount` was never among them, no path exists and the answer is `-1` (as with `coins = [2]`, `amount = 3`). `amount = 0` needs no special case — it is the start vertex, dequeued at level 0. Coins larger than `amount - a` cannot extend an amount and are skipped before any addition, which also sidesteps overflow in the fixed-width languages since a coin may be nearly `INT_MAX`.
 
 **Complexity:** `O(amount · |coins|)` time, `O(amount)` space for the queue and visited array.

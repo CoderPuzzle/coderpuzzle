@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,4,8] sorted; cells x = 90 + 134i, w 104; dp = [1,2,3,4]; parent = [-1,0,1,2]; walk chips sit under their own cell -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="90" y="56" width="104" height="44"/><rect x="224" y="56" width="104" height="44"/>
+    <rect x="358" y="56" width="104" height="44"/><rect x="492" y="56" width="104" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="142" y="83">1</text><text x="276" y="83">2</text>
+    <text x="410" y="83">4</text><text x="544" y="83">8</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="142" y="118">i = 0</text><text x="276" y="118">i = 1</text>
+    <text x="410" y="118">i = 2</text><text x="544" y="118">i = 3</text>
+  </g>
+  <text x="40" y="150" fill="#5c6b76" font-size="12.5">dp</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="142" y="150">1</text><text x="276" y="150">2</text>
+    <text x="410" y="150">3</text><text x="544" y="150" fill="#4169E1">4</text>
+  </g>
+  <text x="574" y="150" fill="#4169E1" font-size="12.5" font-weight="600">best</text>
+  <text x="40" y="176" fill="#5c6b76" font-size="12.5">parent</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="13">
+    <text x="142" y="176">-1</text><text x="276" y="176">0</text>
+    <text x="410" y="176">1</text><text x="544" y="176">2</text>
+  </g>
+  <!-- reconstruction: follow parent links right to left, chips under their cells -->
+  <text x="90" y="212" fill="#5c6b76" font-size="12.5">reconstruct from best index 3:</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="110" y="224" width="64" height="34" rx="6"/><rect x="244" y="224" width="64" height="34" rx="6"/>
+    <rect x="378" y="224" width="64" height="34" rx="6"/><rect x="512" y="224" width="64" height="34" rx="6"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="142" y="246">8</text><text x="276" y="246">4</text>
+    <text x="410" y="246">2</text><text x="544" y="246">1</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 238 241 L 182 241" marker-end="url(#arrow)"/>
+    <path d="M 372 241 L 316 241" marker-end="url(#arrow)"/>
+    <path d="M 506 241 L 450 241" marker-end="url(#arrow)"/>
+  </g>
+  <text x="209" y="278" text-anchor="middle" fill="#5c6b76" font-size="12">parent</text>
+  <text x="30" y="300" fill="#1a2026" font-size="13">Following parents from dp = 4 at 8 hops 8 → 4 → 2 → 1; reversed</text>
+  <text x="30" y="318" fill="#1a2026" font-size="13">that is <tspan fill="#4169E1" font-weight="600">[1, 2, 4, 8]</tspan>, each element divisible by the one before it.</text>
+</svg>

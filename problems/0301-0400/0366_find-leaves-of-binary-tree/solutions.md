@@ -22,6 +22,10 @@ one, so values enter each group left to right, which is exactly the pinned
 order, and the root — visited last, with the largest height — closes the
 final group alone.
 
+![On root = [1,2,3,4,5], the post-order sweep visits 4, 5, 2, 3, 1 and files
+each node under its height 0, 0, 1, 0, 2, growing the groups
+[[4, 5, 3], [2], [1]] one list at a time.](figures/solution-postorder-height-groups.svg)
+
 **Complexity:** `O(n)` time — each node is visited exactly once — and `O(h)`
 space for the recursion, where `h` is the tree's height (at most 100 nodes),
 plus the `O(n)` output.

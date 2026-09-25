@@ -29,6 +29,8 @@ are waiting to be overtaken. That stretch is the snowball: it grows by one
 every time `fast` rolls over a zero, and every non-zero vaults the whole
 ball in a single exchange.
 
+![On nums = [0,1,0,3,12] the pass skips the leading 0, swaps 1 into slot 0, skips the second 0 so the ball grows to two zeros, then vaults 3 and 12 over it, ending as [1,3,12,0,0].](figures/solution-snowball-swap.svg)
+
 When `fast` finds a non-zero value it trades places with whatever sits at
 `slow` and both cursors advance; a zero is left where it is, joining the
 middle stretch that the prefix will eventually absorb into the tail. Since

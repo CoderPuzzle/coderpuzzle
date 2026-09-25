@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="700" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- added words bad, dad, mad; spines at x = 150/400/650, levels y = 132/205/280; accent edges = the query .ad walk; ringed node = end of word -->
+  <text x="150" y="42" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">search(".ad")</text>
+  <text x="400" y="20" text-anchor="middle" fill="#5c6b76" font-size="12">root</text>
+  <!-- pad dies at the root: p is not among children b, d, m -->
+  <text x="243" y="54" text-anchor="end" fill="#5c6b76" font-size="12.5">query "pad"</text>
+  <circle cx="265" cy="50" r="17" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="265" y="55" text-anchor="middle" fill="#9aa7b2" font-weight="600">p</text>
+  <path d="M 284 50 H 372" fill="none" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrowGray)"/>
+  <text x="330" y="38" text-anchor="middle" fill="#5c6b76" font-size="12">no p child</text>
+  <!-- accent query edges with the consumed query character -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 380 56 L 176 124" marker-end="url(#arrow)"/>
+    <path d="M 400 71 L 400 109" marker-end="url(#arrow)"/>
+    <path d="M 420 56 L 626 124" marker-end="url(#arrow)"/>
+    <path d="M 150 157 L 150 180" marker-end="url(#arrow)"/>
+    <path d="M 400 157 L 400 180" marker-end="url(#arrow)"/>
+    <path d="M 650 157 L 650 180" marker-end="url(#arrow)"/>
+    <path d="M 150 230 L 150 253" marker-end="url(#arrow)"/>
+    <path d="M 400 230 L 400 253" marker-end="url(#arrow)"/>
+    <path d="M 650 230 L 650 253" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#4169E1" font-weight="600" font-size="15">
+    <text x="268" y="82" text-anchor="middle">.</text>
+    <text x="412" y="86">.</text>
+    <text x="532" y="82" text-anchor="middle">.</text>
+    <text x="162" y="173">a</text><text x="412" y="173">a</text><text x="662" y="173">a</text>
+    <text x="162" y="246">d</text><text x="412" y="246">d</text><text x="662" y="246">d</text>
+  </g>
+  <!-- trie nodes -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="400" cy="50" r="21"/>
+    <circle cx="150" cy="132" r="21"/><circle cx="400" cy="132" r="21"/><circle cx="650" cy="132" r="21"/>
+    <circle cx="150" cy="205" r="21"/><circle cx="400" cy="205" r="21"/><circle cx="650" cy="205" r="21"/>
+    <circle cx="150" cy="280" r="21"/><circle cx="400" cy="280" r="21"/><circle cx="650" cy="280" r="21"/>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="1.6">
+    <circle cx="150" cy="280" r="27"/><circle cx="400" cy="280" r="27"/><circle cx="650" cy="280" r="27"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="150" y="137">b</text><text x="400" y="137">d</text><text x="650" y="137">m</text>
+    <text x="150" y="210">a</text><text x="400" y="210">a</text><text x="650" y="210">a</text>
+    <text x="150" y="285">d</text><text x="400" y="285">d</text><text x="650" y="285">d</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="150" y="330">bad</text><text x="400" y="330">dad</text><text x="650" y="330">mad</text>
+  </g>
+  <text x="350" y="372" text-anchor="middle" fill="#1a2026" font-size="13">search("<tspan fill="#4169E1" font-weight="600">.ad</tspan>") fans out at the dot: all three spines end at a ringed flag — <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+  <text x="350" y="390" text-anchor="middle" fill="#1a2026" font-size="13">search("pad") dies at once: the root has <tspan fill="#4169E1" font-weight="600">no p child</tspan>.</text>
+</svg>

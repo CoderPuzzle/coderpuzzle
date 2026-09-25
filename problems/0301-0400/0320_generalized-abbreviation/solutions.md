@@ -19,6 +19,8 @@ is precisely the statement's non-overlapping, non-adjacent construction,
 and the reverse reading holds as well: any abbreviation that satisfies the
 rule corresponds to exactly one keep-or-count choice per position.
 
+![The keep-or-count choice tree over "word" has 2^4 = 16 leaves; trying abbreviate before keep emits them left to right from "4" to "word", each kept letter flushing the pending count first.](figures/solution-count-or-keep-tree.svg)
+
 The emission order needs no post-sort. The search tries the abbreviate
 branch before the keep branch, so the leaves come out in the canonical
 order the statement pins: the first path abbreviated everything ("4" leads

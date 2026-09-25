@@ -19,6 +19,8 @@ runs from the front taking the smaller. Either discipline consumes exactly
 one element per step and never needs to look back — the pointer that did not
 move still guards a value at least as extreme as everything already written.
 
+![For `nums = [-4, -2, 2, 4]` the parabola `f(x) = x² + 3x + 5` pins the f-values 9, 3, 15, 33 toward the two ends; the lo/hi pointers write the larger end-value from the back — 33, 15, 9, then 3 — filling `[3, 9, 15, 33]`.](figures/solution-parabola-back-fill.svg)
+
 The degenerate a = 0 leaves f a straight line, monotone over the sorted
 input, and either discipline stays correct; this code folds that case into
 the a > 0 branch (fill from the back, take the larger). Values never

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="290" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- a = 2 = 010, b = 3 = 011; round 1: a^b = 001, carry (a&b)<<1 = 100; round 2: 001^100 = 101 = 5, carry 0; cells 28px, cols x 162/196/230 and +316 -->
+  <text x="210" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">round 1</text>
+  <text x="526" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">round 2</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="162" y="56" width="28" height="28" fill="#ffffff"/><rect x="196" y="56" width="28" height="28" fill="#dbe4fb"/><rect x="230" y="56" width="28" height="28" fill="#ffffff"/>
+    <rect x="162" y="96" width="28" height="28" fill="#ffffff"/><rect x="196" y="96" width="28" height="28" fill="#dbe4fb"/><rect x="230" y="96" width="28" height="28" fill="#ffffff"/>
+    <rect x="162" y="152" width="28" height="28" fill="#ffffff"/><rect x="196" y="152" width="28" height="28" fill="#ffffff"/><rect x="230" y="152" width="28" height="28" fill="#ffffff"/>
+    <rect x="162" y="196" width="28" height="28" fill="#dbe4fb"/><rect x="196" y="196" width="28" height="28" fill="#ffffff"/><rect x="230" y="196" width="28" height="28" fill="#ffffff"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="478" y="56" width="28" height="28" fill="#ffffff"/><rect x="512" y="56" width="28" height="28" fill="#ffffff"/><rect x="546" y="56" width="28" height="28" fill="#ffffff"/>
+    <rect x="478" y="96" width="28" height="28" fill="#ffffff"/><rect x="512" y="96" width="28" height="28" fill="#ffffff"/><rect x="546" y="96" width="28" height="28" fill="#ffffff"/>
+    <rect x="478" y="152" width="28" height="28" fill="#4169E1"/><rect x="512" y="152" width="28" height="28" fill="#4169E1"/><rect x="546" y="152" width="28" height="28" fill="#4169E1"/>
+    <rect x="478" y="196" width="28" height="28" fill="#f0f3f7"/><rect x="512" y="196" width="28" height="28" fill="#f0f3f7"/><rect x="546" y="196" width="28" height="28" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="176" y="75">0</text><text x="210" y="75">1</text><text x="244" y="75">0</text>
+    <text x="176" y="115">0</text><text x="210" y="115">1</text><text x="244" y="115">1</text>
+    <text x="176" y="171">0</text><text x="210" y="171">0</text><text x="244" y="171">1</text>
+    <text x="176" y="215" fill="#4169E1">1</text><text x="210" y="215">0</text><text x="244" y="215">0</text>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="492" y="75">0</text><text x="526" y="75">0</text><text x="560" y="75">1</text>
+    <text x="492" y="115">1</text><text x="526" y="115">0</text><text x="560" y="115">0</text>
+    <text x="492" y="171" fill="#ffffff">1</text><text x="526" y="171" fill="#ffffff">0</text><text x="560" y="171" fill="#ffffff">1</text>
+    <text x="492" y="215" fill="#9aa7b2">0</text><text x="526" y="215" fill="#9aa7b2">0</text><text x="560" y="215" fill="#9aa7b2">0</text>
+  </g>
+  <line x1="156" y1="142" x2="262" y2="142" stroke="#42525e" stroke-width="1.5"/>
+  <line x1="472" y1="142" x2="578" y2="142" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="end" font-size="12.5" fill="#5c6b76">
+    <text x="150" y="75">a = 2</text>
+    <text x="150" y="115">b = 3</text>
+    <text x="150" y="172">a ^ b = 1</text>
+    <text x="150" y="216">(a&amp;b)&lt;&lt;1 = 4</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="584" y="75">a = 1</text>
+    <text x="584" y="115">b = 4 (carry)</text>
+    <text x="584" y="172">a ^ b = 5</text>
+    <text x="584" y="216">(a&amp;b)&lt;&lt;1 = 0</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 296 166 L 470 72" marker-end="url(#arrow)"/>
+    <path d="M 296 210 L 470 112" marker-end="url(#arrow)"/>
+  </g>
+  <text x="352" y="126" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">sum</text>
+  <text x="352" y="168" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">carry</text>
+  <text x="30" y="258" fill="#1a2026" font-size="13">Round 1: 10 ^ 11 = 01 with carry 100; round 2: 01 ^ 100 = 101</text>
+  <text x="30" y="276" fill="#1a2026" font-size="13">with the carry exhausted at 0 — the loop ends at a = <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

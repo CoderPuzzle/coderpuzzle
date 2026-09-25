@@ -45,6 +45,10 @@ own turn comes. On `[3,-4,2]` against `[-1, 4]`, the arrivals `3`, `-1`,
 `1` query the windows `[-1, 4]`, `[-5, 0]`, `[-3, 2]` against the
 predecessors `{0}`, `{0, 3}`, `{0, 3, -1}` and collect 1 + 1 + 2.
 
+![On nums = [-2, 5, -1] with [-2, 2], the prefixes 0, -2, 3, 2 compress to
+ranks over the sorted strip [-2, 0, 2, 3], and each arrival queries its
+window [p-upper, p-lower] before inserting — collecting 1 + 0 + 2 = 3.](figures/solution-fenwick-rank-window.svg)
+
 The compression pass costs a sort — the same `O(n log n)` the merges
 spend — and each of the `n + 1` prefixes then costs two queries and one
 insert, each a logarithmic number of tree hops. 32-bit-scale elements make

@@ -6,6 +6,8 @@ A valid combination is just which `k` of the digits `1..9` it contains — the o
 
 The loop's bounds are the walk's only pruning, one per constraint. A digit must leave `slots - 1` larger digits behind it, so it can never exceed `10 - slots`: the first digit of a `k = 3` combination is at most 7, and branches that could not be completed are never entered. And digits grow across the loop, so the first digit that overshoots the remaining budget ends it — every later digit is at least as large. A leaf with all `k` slots filled records its snapshot exactly when the remaining budget has hit zero, so only combinations summing to `n` are kept.
 
+![With k = 3 and n = 9 the depth-first walk tries ascending digits under a rising start floor; only 1+2+6, 1+3+5 and 2+3+4 reach sum 9, emitted lexicographically, while the d ≤ 10 − slots bound and the floor-above-budget break prune the rest.](figures/solution-rising-floor-backtrack.svg)
+
 The domain is tiny by construction — `k` is at most 9, so the search tree has a few hundred nodes and the largest output the domain admits is 12 combinations (`k = 4, n = 20` and `k = 5, n = 25`) — far inside the judge's output budget.
 
 **Complexity:** `O(k · C(9, k))` time, `O(k)` auxiliary space excluding the output.

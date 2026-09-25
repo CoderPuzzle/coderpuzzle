@@ -8,6 +8,8 @@ The array is padded with a virtual 1 on each end so boundary bursts need no spec
 
 The table is filled by increasing interval length, from length 1 up to the full interior, so both subintervals are always ready when a larger interval needs them. The answer is `dp[1][m-2]`, the open interval between the two padding balloons — bursting everything inside with the virtual 1s as permanent boundaries.
 
+![Filling Example 1's padded row [1,3,1,5,8,1] by increasing interval length, the final split dp[1][4] = 1·8·1 + dp[1][3] = 8 + 159 keeps balloon 8 for last and yields 167.](figures/solution-interval-dp-last-burst.svg)
+
 Stepping Example 1 (`nums = [3,1,5,8]`, padded to `[1, 3, 1, 5, 8, 1]`) through the table:
 
 1. Length 1 bursts a lone balloon between its padded neighbors: `dp[1][1] = 1·3·1 = 3`, `dp[2][2] = 3·1·5 = 15`, `dp[3][3] = 1·5·8 = 40`, `dp[4][4] = 5·8·1 = 40`.

@@ -43,6 +43,10 @@ survivors are the top `k` by (higher count, then smaller value), the same
 selection the bucket walk makes, and a final sort of the survivors by that
 key produces the same list.
 
+![Streaming `[1, 1, 1, 2, 2, 3]`'s pairs `(1, 3)`, `(2, 2)`, `(3, 1)` through the
+size-2 min-heap: both pushes fill it, and `(3, 1)`'s count 1 fails to evict the
+root's count 2, leaving the top-2 answer `[1, 2]`.](figures/solution-size-k-minheap.svg)
+
 Each of the `u` unique values costs at most one heap replacement at
 `O(log k)`, so the selection is independent of how many values share
 frequencies — unlike the bucket variant's in-bucket sorts, this never pays

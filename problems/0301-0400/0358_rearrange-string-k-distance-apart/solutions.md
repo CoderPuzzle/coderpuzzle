@@ -27,6 +27,8 @@ occurrences sit `k + (j' - j) >= k` apart. `k <= 1` never enters the loop:
 every pair of positions already satisfies the rule, and the canonical
 returns `s` unchanged.
 
+![Starting from counts a = 3, b = 2, c = 2, d = 1, the four passes on `"aaadbbcc"` with `k = 2` drain the two largest counts into ab, ac, ab, cd — decrementing the table to empty — which pins the output `abacabcd`.](figures/solution-greedy-pass-drains.svg)
+
 The implementation keeps the counts in a max-heap keyed by (count
 descending, letter ascending), so each pass is a bounded drain of `k` pops
 followed by re-pushing the decremented survivors — only afterwards, so a

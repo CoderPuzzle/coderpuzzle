@@ -22,6 +22,11 @@ position `2k` receives `sorted[m - 1 - k]` and each odd position `2k + 1`
 receives `sorted[n - 1 - k]`, the reorder happens in place, and the mutated
 array is returned as the answer.
 
+![Sorting [1, 5, 1, 1, 6, 4] to [1, 1, 1, 4, 5, 6], then writing the lower
+three values reversed into the even slots and the upper three reversed into
+the odd slots, yields [1, 6, 1, 5, 1, 4] with the duplicate 1s held apart on
+valley positions 0, 2, 4.](figures/solution-reverse-interleave.svg)
+
 Sorting dominates the cost; the redistribution pass is linear. (The follow-up
 is answerable in principle — a quickselect median plus three-way partitioning
 through virtual indexing reaches average `O(n)` time with `O(1)` extra space

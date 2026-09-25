@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]; cells 54x44; left board = markers (2 was-live dies, 3 was-dead born) with corner neighbor counts; right = normalized [[0,0,0],[1,0,1],[0,1,1],[0,1,0]] -->
+  <text x="171" y="64" text-anchor="middle" fill="#5c6b76" font-size="12.5">after the scan</text>
+  <text x="473" y="64" text-anchor="middle" fill="#5c6b76" font-size="12.5">after the second pass</text>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="90" y="80" width="54" height="44"/><rect x="198" y="80" width="54" height="44"/>
+    <rect x="90" y="124" width="54" height="44"/><rect x="144" y="124" width="54" height="44"/>
+    <rect x="90" y="168" width="54" height="44"/><rect x="144" y="168" width="54" height="44"/><rect x="198" y="168" width="54" height="44"/>
+    <rect x="90" y="212" width="54" height="44"/><rect x="198" y="212" width="54" height="44"/>
+  </g>
+  <rect x="144" y="80" width="54" height="44" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="90" y="124" width="54" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="90" y="168" width="54" height="44" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="144" y="212" width="54" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="start" fill="#9aa7b2" font-size="10.5">
+    <text x="96" y="94">1</text><text x="150" y="94">1</text><text x="204" y="94">2</text>
+    <text x="96" y="138">3</text><text x="150" y="138">5</text><text x="204" y="138">3</text>
+    <text x="96" y="182">1</text><text x="150" y="182">3</text><text x="204" y="182">2</text>
+    <text x="96" y="226">2</text><text x="150" y="226">3</text><text x="204" y="226">2</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="117" y="107" fill="#9aa7b2">0</text><text x="171" y="107" fill="#5c6b76" font-weight="600">2</text><text x="225" y="107" fill="#9aa7b2">0</text>
+    <text x="117" y="151" fill="#4169E1" font-weight="600">3</text><text x="171" y="151" fill="#9aa7b2">0</text><text x="225" y="151">1</text>
+    <text x="117" y="195" fill="#5c6b76" font-weight="600">2</text><text x="171" y="195">1</text><text x="225" y="195">1</text>
+    <text x="117" y="239" fill="#9aa7b2">0</text><text x="171" y="239" fill="#4169E1" font-weight="600">3</text><text x="225" y="239" fill="#9aa7b2">0</text>
+  </g>
+  <path d="M 262 162 H 390" stroke="#42525e" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <text x="326" y="148" text-anchor="middle" fill="#5c6b76" font-size="12">second pass: odd → 1</text>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="400" y="80" width="54" height="44"/><rect x="454" y="80" width="54" height="44"/><rect x="508" y="80" width="54" height="44"/>
+    <rect x="400" y="124" width="54" height="44"/><rect x="454" y="124" width="54" height="44"/><rect x="508" y="124" width="54" height="44"/>
+    <rect x="400" y="168" width="54" height="44"/><rect x="454" y="168" width="54" height="44"/><rect x="508" y="168" width="54" height="44"/>
+    <rect x="400" y="212" width="54" height="44"/><rect x="454" y="212" width="54" height="44"/><rect x="508" y="212" width="54" height="44"/>
+  </g>
+  <rect x="454" y="124" width="54" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="508" y="124" width="54" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="454" y="168" width="54" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="508" y="168" width="54" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="454" y="212" width="54" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle">
+    <text x="427" y="107" fill="#9aa7b2">0</text><text x="481" y="107" fill="#9aa7b2">0</text><text x="535" y="107" fill="#9aa7b2">0</text>
+    <text x="427" y="151" fill="#4169E1" font-weight="600">1</text><text x="481" y="151" fill="#9aa7b2">0</text><text x="535" y="151" fill="#4169E1" font-weight="600">1</text>
+    <text x="427" y="195" fill="#9aa7b2">0</text><text x="481" y="195" fill="#4169E1" font-weight="600">1</text><text x="535" y="195" fill="#4169E1" font-weight="600">1</text>
+    <text x="427" y="239" fill="#9aa7b2">0</text><text x="481" y="239" fill="#4169E1" font-weight="600">1</text><text x="535" y="239" fill="#9aa7b2">0</text>
+  </g>
+  <text x="320" y="282" text-anchor="middle" fill="#5c6b76" font-size="12">2 = was live, will die · 3 = was dead, will live · corner number = live-neighbor count</text>
+  <text x="320" y="312" text-anchor="middle" fill="#1a2026" font-size="13">Values 1 and 2 both read as was-live, 0 and 3 as was-dead, so the scan never loses the old generation;</text>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">the low bit is already the next state — normalize to <tspan fill="#4169E1" font-weight="600">[[0,0,0],[1,0,1],[0,1,1],[0,1,0]]</tspan>.</text>
+</svg>

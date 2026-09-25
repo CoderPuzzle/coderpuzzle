@@ -11,6 +11,8 @@ a window of at most six consecutive distances. The whole question collapses to
 one forward scan that checks three exact configurations at every position
 `i >= 3`.
 
+![On `distance = [2,1,1,2]` the path runs north 2, west 1, south 1, then east 2, and the fourth side crosses the first at `(0, 1)` because `d[3] = 2 >= d[1] = 1` and `d[2] = 1 <= d[0] = 2`.](figures/solution-four-line-case.svg)
+
 The first case is the plain four-line crossing: the current line reaches at
 least as far as the line two back while the previous line fails to get past
 the line three back (`d[i] >= d[i-2]` and `d[i-1] <= d[i-3]`) — the shape of

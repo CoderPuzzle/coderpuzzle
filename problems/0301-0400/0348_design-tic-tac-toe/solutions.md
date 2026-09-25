@@ -22,4 +22,8 @@ reported on that move and on none earlier. The construction allocates the
 2 x n row and column counters plus the two diagonal scalars, which is also
 the whole space bill.
 
+![On the example's eight moves, player 1's row-2 counter climbs 1, 2, 3 across
+`move(2, 2, 1)`, `move(2, 0, 1)`, and `move(2, 1, 1)` — the last reads 3 = n and
+declares the win, while every earlier move returns 0.](figures/solution-row-counter-climb.svg)
+
 **Complexity:** `O(1)` per move, `O(n)` space.

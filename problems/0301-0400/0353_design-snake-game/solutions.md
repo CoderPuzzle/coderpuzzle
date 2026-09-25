@@ -28,4 +28,8 @@ On the statement's example the snake eats at `(1, 2)` and then `(0, 1)`,
 the score reads `0, 0, 1, 1, 2`, and the final `U` steps the head to row
 `-1` — a wall hit, so the answer is `-1` and the game ends.
 
+![The example's six moves on the 3 x 2 board with food `(1, 2)`, `(0, 1)`: the
+deque numbered from the head grows only on the two eating moves — scores 0, 0,
+1, 1, 2 — and the closing `U` draws the head off the top edge for `-1`.](figures/solution-snake-deque-walk.svg)
+
 **Complexity:** `O(1)` time per move amortized; `O(food.length)` space.

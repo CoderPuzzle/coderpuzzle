@@ -9,6 +9,8 @@ root. A run of digits (with an optional leading `-`) is parsed as one
 integer and appended to the current top; commas are skipped. A string that
 does not start with `[` is a lone integer, handled up front.
 
+![Parsing s = "[123,[456,[789]]]": the stack bottoms out at [123] / [456] / [789], then each ']' pops the top into its parent until the last ']' leaves the root [123, [456, [789]]].](figures/solution-stack-parse.svg)
+
 The explicit stack makes the parse iterative, so nesting depth costs heap,
 not call stack — the `5 * 10⁴` length bound permits far deeper nesting than
 any default recursion limit would survive.

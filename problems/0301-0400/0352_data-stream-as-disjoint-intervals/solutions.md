@@ -14,6 +14,10 @@ value touching one interval extends it (extending with a value the
 interval already covers is a harmless no-op); a value touching two welds
 them into one.
 
+![Streaming 1, 3, 7, 2, 6 through the sorted interval list: `addNum(2)` welds
+the touching `[1, 1]` and `[3, 3]` into `[1, 3]`, and `addNum(6)` extends
+`[7, 7]` down to `[6, 7]`, leaving `[[1, 3], [6, 7]]`.](figures/solution-interval-list-weld.svg)
+
 `getIntervals` then has no thinking left to do: the list is already
 disjoint and sorted by construction, so it copies the pairs out as they
 stand. Repairing at add time rather than summarizing at query time is

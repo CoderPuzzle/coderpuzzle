@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <!-- nestedList = [[1,1],2,[1,1]]; list boxes 120x40 at depth 1 (y=88), integer leaves 44x40 at depth 2 (y=188); bands mark the two depths; each leaf's tag is value x depth -->
+  <g fill="#f0f3f7">
+    <rect x="118" y="78" width="404" height="64" rx="6"/>
+    <rect x="118" y="178" width="404" height="64" rx="6"/>
+  </g>
+  <text x="108" y="113" text-anchor="end" fill="#5c6b76" font-size="12.5">depth 1</text>
+  <text x="108" y="213" text-anchor="end" fill="#5c6b76" font-size="12.5">depth 2</text>
+
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="200" y1="128" x2="172" y2="188"/>
+    <line x1="200" y1="128" x2="228" y2="188"/>
+    <line x1="440" y1="128" x2="412" y2="188"/>
+    <line x1="440" y1="128" x2="468" y2="188"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="140" y="88" width="120" height="40"/>
+    <rect x="380" y="88" width="120" height="40"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#dbe4fb">
+    <rect x="300" y="88" width="40" height="40"/>
+    <rect x="150" y="188" width="44" height="40"/>
+    <rect x="206" y="188" width="44" height="40"/>
+    <rect x="390" y="188" width="44" height="40"/>
+    <rect x="446" y="188" width="44" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13.5" font-weight="600">
+    <text x="200" y="113">[1, 1]</text>
+    <text x="320" y="113">2</text>
+    <text x="440" y="113">[1, 1]</text>
+    <text x="172" y="213">1</text><text x="228" y="213">1</text>
+    <text x="412" y="213">1</text><text x="468" y="213">1</text>
+  </g>
+  <text x="320" y="76" text-anchor="middle" fill="#5c6b76" font-size="11.5">2 × 1</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="172" y="252">1 × 2</text><text x="228" y="252">1 × 2</text>
+    <text x="412" y="252">1 × 2</text><text x="468" y="252">1 × 2</text>
+  </g>
+
+  <text x="320" y="288" text-anchor="middle" fill="#1a2026" font-size="13.5" font-weight="600">1×2 + 1×2 + 2×1 + 1×2 + 1×2 = <tspan fill="#4169E1">10</tspan></text>
+  <text x="320" y="312" text-anchor="middle" fill="#1a2026" font-size="13">Four 1's sit at depth 2 and the 2 at depth 1 — each integer contributes value × depth.</text>
+</svg>

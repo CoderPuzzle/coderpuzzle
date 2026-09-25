@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="290" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- example 1 trace: after insert(1), insert(2) the set is values = [1, 2], index = {1:0, 2:1};
+       remove(1) moves the last element 2 into slot 0, leaving values = [2], index = {2:0}.
+       Array cells 52x40 at (70,86); map rows at x = 250 (before) and 560 (after) -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="170" y="56">before remove(1)</text>
+    <text x="496" y="56">after remove(1)</text>
+  </g>
+  <g fill="#9aa7b2" font-size="12">
+    <text x="70" y="78">values</text>
+    <text x="250" y="78">index</text>
+    <text x="470" y="78">values</text>
+    <text x="560" y="78">index</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="70" y="86" width="52" height="40"/>
+    <rect x="126" y="86" width="52" height="40"/>
+    <rect x="470" y="86" width="52" height="40" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="96" y="111" fill="#1a2026">1</text>
+    <text x="152" y="111" fill="#4169E1">2</text>
+    <text x="496" y="111" fill="#4169E1">2</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="96" y="146">0</text>
+    <text x="152" y="146">1</text>
+    <text x="496" y="146">0</text>
+  </g>
+  <g font-size="13.5" fill="#1a2026">
+    <text x="250" y="106">1 → 0</text>
+    <text x="250" y="130">2 → <tspan fill="#9aa7b2">1</tspan></text>
+    <text x="560" y="106">2 → <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+  </g>
+  <!-- the removal: gray divider arrow, accent curve for the moved element -->
+  <path d="M 370 120 L 455 120" fill="none" stroke="#5c6b76" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="412" y="106" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">remove(1)</text>
+  <path d="M 165 130 C 165 218, 505 218, 505 130" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="335" y="220" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">last element 2</text>
+  <text x="40" y="246" fill="#1a2026" font-size="13">Overwriting the vacated slot with the last element keeps every remove O(1):</text>
+  <text x="40" y="264" fill="#1a2026" font-size="13">after remove(1) the array is <tspan fill="#4169E1" font-weight="600">[2]</tspan> and index[2] = <tspan fill="#4169E1" font-weight="600">0</tspan>.</text>
+</svg>

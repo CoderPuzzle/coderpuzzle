@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- matrix [[1,0,1],[0,-2,3]], k=2; cells 52x36 at (50+52j, 76+36i); col_sum cells 48x36 at (256+50j, 94); sweep rows baseline 222+28*j -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="50" y="76" width="52" height="36"/><rect x="102" y="76" width="52" height="36"/><rect x="154" y="76" width="52" height="36"/>
+    <rect x="50" y="112" width="52" height="36"/><rect x="102" y="112" width="52" height="36"/><rect x="154" y="112" width="52" height="36"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="76" y="99">1</text><text x="128" y="99">0</text><text x="180" y="99">1</text>
+    <text x="76" y="135">0</text><text x="128" y="135" fill="#4169E1" font-weight="600">-2</text><text x="180" y="135" fill="#4169E1" font-weight="600">3</text>
+  </g>
+  <text x="128" y="170" text-anchor="middle" fill="#5c6b76" font-size="11.5">row pair 0-1</text>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <line x1="212" y1="112" x2="248" y2="112" marker-end="url(#arrow)"/>
+  </g>
+  <text x="230" y="98" text-anchor="middle" fill="#5c6b76" font-size="11">collapse</text>
+  <text x="330" y="84" text-anchor="middle" fill="#5c6b76" font-size="11.5">col_sum</text>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="256" y="94" width="48" height="36"/><rect x="306" y="94" width="48" height="36"/><rect x="356" y="94" width="48" height="36"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="280" y="117">1</text><text x="330" y="117">-2</text><text x="380" y="117">4</text>
+  </g>
+  <!-- prefix sweep over col_sum with sorted prefix list, k = 2 -->
+  <g font-size="11" fill="#5c6b76" text-anchor="middle">
+    <text x="80" y="200">j</text>
+    <text x="150" y="200">prefix</text>
+    <text x="260" y="200">query prefix - k</text>
+    <text x="400" y="200">earliest ≥ it</text>
+    <text x="510" y="200">candidate</text>
+    <text x="610" y="200">sorted prefixes</text>
+  </g>
+  <line x1="60" y1="208" x2="660" y2="208" stroke="#9aa7b2" stroke-width="0.5"/>
+  <rect x="60" y="262" width="600" height="24" fill="#dbe4fb"/>
+  <g font-size="13" text-anchor="middle" fill="#1a2026">
+    <text x="80" y="226">0</text>
+    <text x="150" y="226">1</text>
+    <text x="260" y="226">-1</text>
+    <text x="400" y="226">0</text>
+    <text x="510" y="226">1 - 0 = 1</text>
+    <text x="610" y="226" fill="#5c6b76" font-size="12">{0}</text>
+    <text x="80" y="254">1</text>
+    <text x="150" y="254">-1</text>
+    <text x="260" y="254">-3</text>
+    <text x="400" y="254">0</text>
+    <text x="510" y="254">-1 - 0 = -1</text>
+    <text x="610" y="254" fill="#5c6b76" font-size="12">{0, 1}</text>
+    <text x="80" y="280">2</text>
+    <text x="150" y="280">3</text>
+    <text x="260" y="280">1</text>
+    <text x="400" y="280" font-weight="600">1</text>
+    <text x="510" y="280" font-weight="600">3 - 1 = <tspan fill="#4169E1">2</tspan></text>
+    <text x="610" y="280" fill="#5c6b76" font-size="12">{-1, 0, 1}</text>
+  </g>
+  <text x="340" y="312" text-anchor="middle" fill="#1a2026" font-size="13">The smallest earlier prefix at least prefix - k caps every candidate at k = 2;</text>
+  <text x="340" y="334" text-anchor="middle" fill="#1a2026" font-size="13">j = 2 finds 3 - 1 = <tspan fill="#4169E1" font-weight="600">2</tspan> — the rows 0-1, cols 1-2 rectangle [[0, 1], [-2, 3]].</text>
+</svg>

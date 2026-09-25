@@ -26,6 +26,8 @@ The cost is the copy itself — an entire extra board, `O(m·n)` memory. It is t
 
 The follow-up's in-place answer: let the same cell carry both generations. Two intermediate markers cover the two transitions — `2` means "was live, will die" and `3` means "was dead, will live" (in both, the low bit already holds the next state, so odd values end up live). While the first pass scans, a cell's original state can still be recovered: values `1` and `2` both mean the cell was live, `0` and `3` both mean it was dead. A live cell with fewer than 2 or more than 3 live neighbors becomes `2`; a dead cell with exactly 3 becomes `3`; cells keeping their state are left untouched. Because neighbor counting only looks for `1` or `2`, a cell already rewritten to `3` still correctly reads as "was dead" to later scans in the same pass.
 
+![Scanning board [[0,1,0],[0,0,1],[1,1,1],[0,0,0]] in place marks the dying live cells 2 and the births 3 (corner numbers are live-neighbor counts), and the second pass normalizes the low bits to [[0,0,0],[1,0,1],[0,1,1],[0,1,0]].](figures/solution-state-bits.svg)
+
 A second pass normalizes the board: `1` and `3` become `1`, everything else becomes `0`. After this the board holds exactly the next generation, and the transformed board is returned. The encoding makes the update in-place with `O(1)` extra memory, and only integer arithmetic is involved, so the representation extends to larger or sparser boards without changes to the logic.
 
 **Complexity:** `O(m·n)` time, `O(1)` space.

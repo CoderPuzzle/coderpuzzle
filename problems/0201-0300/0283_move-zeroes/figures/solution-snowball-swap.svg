@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 432" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="432" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [0,1,0,3,12]; cells 44x30 at x=230+44i, rows y0=60..340 step 70; blue = settled prefix, gray = zero ball [slow..fast] -->
+  <text x="320" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5">snowball swap on nums = [0,1,0,3,12]</text>
+  <!-- row 1: inspect 0, skip -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="230" y="60" width="44" height="30" fill="#f0f3f7"/>
+    <rect x="274" y="60" width="44" height="30" fill="#ffffff"/>
+    <rect x="318" y="60" width="44" height="30" fill="#ffffff"/>
+    <rect x="362" y="60" width="44" height="30" fill="#ffffff"/>
+    <rect x="406" y="60" width="44" height="30" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="252" y="80" fill="#9aa7b2">0</text><text x="296" y="80">1</text><text x="340" y="80">0</text>
+    <text x="384" y="80">3</text><text x="428" y="80">12</text>
+  </g>
+  <path d="M 252 49 L 246 57 L 258 57 z" fill="#42525e"/>
+  <path d="M 252 93 L 246 101 L 258 101 z" fill="#4169E1"/>
+  <text x="264" y="56" fill="#42525e" font-size="11.5">fast</text>
+  <text x="264" y="105" fill="#4169E1" font-size="11.5">slow</text>
+  <text x="36" y="81" font-size="12.5" fill="#1a2026">fast 0: 0 → skip</text>
+  <text x="470" y="81" fill="#9aa7b2" font-size="12">zero ball: 1</text>
+  <!-- row 2: 1 swaps into slot 0 -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="230" y="130" width="44" height="30" fill="#dbe4fb"/>
+    <rect x="274" y="130" width="44" height="30" fill="#f0f3f7"/>
+    <rect x="318" y="130" width="44" height="30" fill="#ffffff"/>
+    <rect x="362" y="130" width="44" height="30" fill="#ffffff"/>
+    <rect x="406" y="130" width="44" height="30" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="252" y="150" font-weight="600">1</text><text x="296" y="150" fill="#9aa7b2">0</text><text x="340" y="150">0</text>
+    <text x="384" y="150">3</text><text x="428" y="150">12</text>
+  </g>
+  <path d="M 296 126 Q 274 96 252 126" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 296 163 L 290 171 L 302 171 z" fill="#4169E1"/>
+  <text x="36" y="151" font-size="12.5" fill="#1a2026">fast 1: <tspan fill="#4169E1" font-weight="600">1</tspan> swaps into slot 0</text>
+  <text x="470" y="151" fill="#9aa7b2" font-size="12">zero ball: 1</text>
+  <!-- row 3: inspect 0, skip, ball grows -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="230" y="200" width="44" height="30" fill="#dbe4fb"/>
+    <rect x="274" y="200" width="44" height="30" fill="#f0f3f7"/>
+    <rect x="318" y="200" width="44" height="30" fill="#f0f3f7"/>
+    <rect x="362" y="200" width="44" height="30" fill="#ffffff"/>
+    <rect x="406" y="200" width="44" height="30" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="252" y="220" font-weight="600">1</text><text x="296" y="220" fill="#9aa7b2">0</text><text x="340" y="220" fill="#9aa7b2">0</text>
+    <text x="384" y="220">3</text><text x="428" y="220">12</text>
+  </g>
+  <path d="M 340 189 L 334 197 L 346 197 z" fill="#42525e"/>
+  <path d="M 296 233 L 290 241 L 302 241 z" fill="#4169E1"/>
+  <text x="36" y="221" font-size="12.5" fill="#1a2026">fast 2: 0 → skip, ball grows</text>
+  <text x="470" y="221" fill="#9aa7b2" font-size="12">zero ball: 2</text>
+  <!-- row 4: 3 vaults the ball -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="230" y="270" width="44" height="30" fill="#dbe4fb"/>
+    <rect x="274" y="270" width="44" height="30" fill="#dbe4fb"/>
+    <rect x="318" y="270" width="44" height="30" fill="#f0f3f7"/>
+    <rect x="362" y="270" width="44" height="30" fill="#f0f3f7"/>
+    <rect x="406" y="270" width="44" height="30" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="252" y="290" font-weight="600">1</text><text x="296" y="290" font-weight="600">3</text><text x="340" y="290" fill="#9aa7b2">0</text>
+    <text x="384" y="290" fill="#9aa7b2">0</text><text x="428" y="290">12</text>
+  </g>
+  <path d="M 384 266 Q 340 236 296 266" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 340 303 L 334 311 L 346 311 z" fill="#4169E1"/>
+  <text x="36" y="291" font-size="12.5" fill="#1a2026">fast 3: <tspan fill="#4169E1" font-weight="600">3</tspan> vaults both zeros</text>
+  <text x="470" y="291" fill="#9aa7b2" font-size="12">zero ball: 2</text>
+  <!-- row 5: 12 vaults, final -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="230" y="340" width="44" height="30" fill="#dbe4fb"/>
+    <rect x="274" y="340" width="44" height="30" fill="#dbe4fb"/>
+    <rect x="318" y="340" width="44" height="30" fill="#dbe4fb"/>
+    <rect x="362" y="340" width="44" height="30" fill="#f0f3f7"/>
+    <rect x="406" y="340" width="44" height="30" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="252" y="360" font-weight="600">1</text><text x="296" y="360" font-weight="600">3</text><text x="340" y="360" font-weight="600">12</text>
+    <text x="384" y="360" fill="#9aa7b2">0</text><text x="428" y="360" fill="#9aa7b2">0</text>
+  </g>
+  <path d="M 428 336 Q 384 306 340 336" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 384 373 L 378 381 L 390 381 z" fill="#4169E1"/>
+  <text x="36" y="361" font-size="12.5" fill="#1a2026">fast 4: <tspan fill="#4169E1" font-weight="600">12</tspan> vaults → done</text>
+  <text x="470" y="361" fill="#4169E1" font-size="12" font-weight="600">ball = the tail</text>
+  <text x="320" y="402" text-anchor="middle" fill="#1a2026" font-size="13">Each non-zero vaults the zero ball in one swap — order survives,</text>
+  <text x="320" y="420" text-anchor="middle" fill="#1a2026" font-size="13">and [0,1,0,3,12] ends as <tspan fill="#4169E1" font-weight="600">[1,3,12,0,0]</tspan> with both zeros parked at the end.</text>
+</svg>

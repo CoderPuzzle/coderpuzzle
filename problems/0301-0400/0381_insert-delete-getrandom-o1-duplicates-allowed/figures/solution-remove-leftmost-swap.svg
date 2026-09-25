@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="296" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- example 1 trace: a = [1, 1, 2], map 1 -> {0, 1}, 2 -> {2}; remove(1) takes the leftmost
+       index 0, moves the last element 2 into slot 0, a = [2, 1], sets 1 -> {1}, 2 -> {0}.
+       Array cells 46x40 at (48,82) before and (460,82) after; map rows at x = 250 / 600 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="190" y="52">before remove(1)</text>
+    <text x="557" y="52">after remove(1)</text>
+  </g>
+  <g fill="#9aa7b2" font-size="12">
+    <text x="48" y="74">values</text>
+    <text x="250" y="74">index</text>
+    <text x="460" y="74">values</text>
+    <text x="600" y="74">index</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="48" y="82" width="46" height="40" fill="#f0f3f7"/>
+    <rect x="98" y="82" width="46" height="40" fill="#ffffff"/>
+    <rect x="148" y="82" width="46" height="40" fill="#ffffff"/>
+    <rect x="460" y="82" width="46" height="40" fill="#dbe4fb"/>
+    <rect x="510" y="82" width="46" height="40" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="71" y="107" fill="#9aa7b2">1</text>
+    <text x="121" y="107" fill="#1a2026">1</text>
+    <text x="171" y="107" fill="#4169E1">2</text>
+    <text x="483" y="107" fill="#4169E1">2</text>
+    <text x="533" y="107" fill="#1a2026">1</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="71" y="142">0</text>
+    <text x="121" y="142">1</text>
+    <text x="171" y="142">2</text>
+    <text x="483" y="142">0</text>
+    <text x="533" y="142">1</text>
+  </g>
+  <text x="95" y="160" text-anchor="middle" fill="#5c6b76" font-size="12">leftmost 1 removed</text>
+  <g font-size="13.5" fill="#1a2026">
+    <text x="250" y="102">1 → {0, 1}</text>
+    <text x="250" y="126">2 → {2}</text>
+    <text x="600" y="102">1 → {1}</text>
+    <text x="600" y="126">2 → <tspan fill="#4169E1" font-weight="600">{0}</tspan></text>
+  </g>
+  <!-- the removal: gray divider arrow, accent curve for the moved last element -->
+  <path d="M 368 108 L 438 108" fill="none" stroke="#5c6b76" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="403" y="94" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">remove(1)</text>
+  <path d="M 190 126 C 190 224, 496 224, 496 126" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="340" y="222" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">last element 2</text>
+  <text x="40" y="254" fill="#1a2026" font-size="13">The leftmost occurrence goes: remove(1) picks slot 0 from 1's set {0, 1} → {1},</text>
+  <text x="40" y="272" fill="#1a2026" font-size="13">moves the last element into it, and 2's set trades {2} for {0}: a = <tspan fill="#4169E1" font-weight="600">[2, 1]</tspan>.</text>
+</svg>

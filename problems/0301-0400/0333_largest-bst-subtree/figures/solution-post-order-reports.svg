@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <!-- root = [10,5,15,1,8,null,7]; circles r=20; small gray badges = post-order visit order; the right list is each node's (isBST, size, [min, max]) report in that order; accent = the answer subtree -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="180" y1="102" x2="100" y2="148"/>
+    <line x1="180" y1="102" x2="260" y2="148"/>
+    <line x1="100" y1="188" x2="60" y2="234"/>
+    <line x1="100" y1="188" x2="140" y2="234"/>
+    <line x1="260" y1="188" x2="300" y2="234"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="#dbe4fb">
+    <circle cx="100" cy="168" r="20"/>
+    <circle cx="60" cy="254" r="20"/>
+    <circle cx="140" cy="254" r="20"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="180" cy="82" r="20"/>
+    <circle cx="260" cy="168" r="20"/>
+    <circle cx="300" cy="254" r="20"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13.5" font-weight="600">
+    <text x="180" y="87">10</text>
+    <text x="100" y="173">5</text><text x="260" y="173">15</text>
+    <text x="60" y="259">1</text><text x="140" y="259">8</text><text x="300" y="259">7</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="196" y="66">6</text>
+    <text x="116" y="152">3</text><text x="276" y="152">5</text>
+    <text x="76" y="240">1</text><text x="156" y="240">2</text><text x="316" y="240">4</text>
+  </g>
+  <text x="210" y="78" fill="#5c6b76" font-size="12">not a BST</text>
+
+  <!-- reports in post-order -->
+  <text x="360" y="78" fill="#5c6b76" font-size="12">report = (BST?, size, [min, max])</text>
+  <g fill="#1a2026" font-size="13">
+    <text x="360" y="106">1 → true, 1, [1, 1]</text>
+    <text x="360" y="132">8 → true, 1, [8, 8]</text>
+    <text x="360" y="184">7 → true, 1, [7, 7]</text>
+    <text x="360" y="210">15 → true, 2, [<tspan fill="#4169E1" font-weight="600">7</tspan>, 15]</text>
+    <text x="360" y="236">10 → false — needs 10 &lt; right.min <tspan fill="#4169E1" font-weight="600">7</tspan></text>
+  </g>
+  <rect x="352" y="140" width="272" height="26" fill="#dbe4fb" rx="4"/>
+  <text x="360" y="158" fill="#1a2026" font-size="13" font-weight="600">5 → true, 3, [1, 8]</text>
+
+  <text x="320" y="304" text-anchor="middle" fill="#1a2026" font-size="13">7 lifts 15's min to 7, so the root's check 10 &lt; right.min 7 fails;</text>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">the largest BST subtree is [5, 1, 8] with <tspan fill="#4169E1" font-weight="600">size 3</tspan>.</text>
+</svg>

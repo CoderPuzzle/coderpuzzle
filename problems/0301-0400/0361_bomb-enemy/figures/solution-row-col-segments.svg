@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="310" fill="#ffffff"/>
+  <!-- grid [["0","E","0","0"],["E","0","W","E"],["0","E","0","0"]]; cells 52x40 at (70+52j, 70+40i); row totals right, column totals below -->
+  <text x="174" y="52" text-anchor="middle" fill="#5c6b76" font-size="11.5">grid</text>
+  <text x="296" y="58" fill="#5c6b76" font-size="11">row segment enemies</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="70" y="70" width="52" height="40"/><rect x="122" y="70" width="52" height="40"/><rect x="174" y="70" width="52" height="40"/><rect x="226" y="70" width="52" height="40"/>
+    <rect x="70" y="110" width="52" height="40"/><rect x="122" y="110" width="52" height="40"/><rect x="174" y="110" width="52" height="40"/><rect x="226" y="110" width="52" height="40"/>
+    <rect x="70" y="150" width="52" height="40"/><rect x="122" y="150" width="52" height="40"/><rect x="174" y="150" width="52" height="40"/><rect x="226" y="150" width="52" height="40"/>
+  </g>
+  <!-- wall cell -->
+  <rect x="174" y="110" width="52" height="40" fill="#f0f3f7" stroke="#42525e" stroke-width="1.4"/>
+  <!-- bomb cell (1,1) -->
+  <rect x="122" y="110" width="52" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-size="14">
+    <text x="96" y="95" fill="#9aa7b2">0</text><text x="148" y="95" fill="#4169E1" font-weight="600">E</text><text x="200" y="95" fill="#9aa7b2">0</text><text x="252" y="95" fill="#9aa7b2">0</text>
+    <text x="96" y="135" fill="#4169E1" font-weight="600">E</text><text x="148" y="135" fill="#1a2026" font-weight="600">0</text><text x="200" y="135" fill="#5c6b76">W</text><text x="252" y="135" fill="#4169E1" font-weight="600">E</text>
+    <text x="96" y="175" fill="#9aa7b2">0</text><text x="148" y="175" fill="#4169E1" font-weight="600">E</text><text x="200" y="175" fill="#9aa7b2">0</text><text x="252" y="175" fill="#9aa7b2">0</text>
+  </g>
+  <!-- row segment totals: row 1 splits at the wall into 1 and 1 -->
+  <g font-size="13" font-weight="600" fill="#5c6b76">
+    <text x="296" y="95">1</text>
+    <text x="296" y="135">1 · 1</text>
+    <text x="296" y="175">1</text>
+  </g>
+  <!-- column segment totals: 1, 2, 0, 1 -->
+  <g font-size="13" font-weight="600" fill="#5c6b76" text-anchor="middle">
+    <text x="96" y="212">1</text>
+    <text x="148" y="212">2</text>
+    <text x="200" y="212">0</text>
+    <text x="252" y="212">1</text>
+  </g>
+  <text x="174" y="234" text-anchor="middle" fill="#5c6b76" font-size="10.5">column segment enemies</text>
+  <!-- scoring callout for cell (1,1) -->
+  <g font-size="13" fill="#1a2026">
+    <text x="430" y="96">bomb at cell (1,1):</text>
+    <text x="430" y="118">row segment total <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="430" y="140">+ column segment total <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="430" y="162">= <tspan fill="#4169E1" font-weight="600">3</tspan> enemies killed</text>
+  </g>
+  <text x="430" y="192" font-size="14" font-weight="600" fill="#1a2026">answer: <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+  <text x="340" y="268" text-anchor="middle" fill="#1a2026" font-size="13">Walls cut rows and columns into segments; every empty cell reuses its two segment totals.</text>
+  <text x="340" y="290" text-anchor="middle" fill="#1a2026" font-size="13">Cell (1,1) adds its row's <tspan fill="#4169E1" font-weight="600">1</tspan> and its column's <tspan fill="#4169E1" font-weight="600">2</tspan>: <tspan fill="#4169E1" font-weight="600">3</tspan>, the maximum.</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- envelopes [[5,4],[6,4],[6,7],[2,3]] sorted to [2,3],[5,4],[6,7],[6,4]; box 76x36 at (40, 76+50i); tails cells 40x32 at (210+40j, 78+50i) -->
+  <text x="340" y="36" text-anchor="middle" fill="#5c6b76" font-size="12.5">sorted by width ascending then height descending — feed each height to the tails</text>
+  <text x="78" y="64" text-anchor="middle" fill="#5c6b76" font-size="11.5">envelope (w×h)</text>
+  <text x="270" y="64" text-anchor="middle" fill="#5c6b76" font-size="11.5">tails after each envelope</text>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <line x1="124" y1="94" x2="168" y2="94" marker-end="url(#arrow)"/>
+    <line x1="124" y1="144" x2="168" y2="144" marker-end="url(#arrow)"/>
+    <line x1="124" y1="194" x2="168" y2="194" marker-end="url(#arrow)"/>
+    <line x1="124" y1="244" x2="168" y2="244" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="40" y="76" width="76" height="36"/>
+    <rect x="40" y="126" width="76" height="36"/>
+    <rect x="40" y="176" width="76" height="36"/>
+    <rect x="40" y="226" width="76" height="36"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="78" y="99">2×<tspan fill="#4169E1" font-weight="600">3</tspan></text>
+    <text x="78" y="149">5×<tspan fill="#4169E1" font-weight="600">4</tspan></text>
+    <text x="78" y="199">6×<tspan fill="#4169E1" font-weight="600">7</tspan></text>
+    <text x="78" y="249">6×<tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  </g>
+  <!-- tails snapshots: [3], [3,4], [3,4,7], then the h=4 replace leaves [3,4,7]; the new or replaced cell is accented -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="210" y="128" width="40" height="32"/>
+    <rect x="210" y="178" width="40" height="32"/><rect x="250" y="178" width="40" height="32"/>
+    <rect x="210" y="228" width="40" height="32"/><rect x="290" y="228" width="40" height="32"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="210" y="78" width="40" height="32"/>
+    <rect x="250" y="128" width="40" height="32"/>
+    <rect x="290" y="178" width="40" height="32"/>
+    <rect x="250" y="228" width="40" height="32"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="230" y="99" fill="#4169E1">3</text>
+    <text x="230" y="149" fill="#1a2026">3</text><text x="270" y="149" fill="#4169E1">4</text>
+    <text x="230" y="199" fill="#1a2026">3</text><text x="270" y="199" fill="#1a2026">4</text><text x="310" y="199" fill="#4169E1">7</text>
+    <text x="230" y="249" fill="#1a2026">3</text><text x="270" y="249" fill="#4169E1">4</text><text x="310" y="249" fill="#1a2026">7</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="390" y="99">h = 3: no tail ≥ 3, so append</text>
+    <text x="390" y="149">h = 4: no tail ≥ 4, so append</text>
+    <text x="390" y="199">h = 7: no tail ≥ 7, so append</text>
+    <text x="390" y="249">h = 4: tails[1] = 4 replaced in place</text>
+  </g>
+  <text x="340" y="298" text-anchor="middle" fill="#1a2026" font-size="13">Width-6 twins never chain: the second 4 finds tail 4 and replaces it in place,</text>
+  <text x="340" y="320" text-anchor="middle" fill="#1a2026" font-size="13">so tails holds <tspan fill="#4169E1" font-weight="600">3</tspan> tails — the chain [2, 3] → [5, 4] → [6, 7] nests 3 deep.</text>
+</svg>

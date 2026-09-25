@@ -6,6 +6,8 @@ Every candidate expression is determined by two independent choices per gap betw
 
 Multiplication is the subtle case because it must bind only to the immediately preceding operand, not to the whole running value. The state therefore carries a second number, `prev`: the value of the trailing multiplicand chain. Adding or subtracting an operand `nxt` simply folds it into `current` and resets `prev` to `nxt` (or `-nxt`, so a later `*` reverses the subtraction correctly). Multiplying instead rewrites the tail in place — the new chain value is `prev * nxt`, so the new running total is `current - prev + prev * nxt`. The very first operand seeds both `current` and `prev`.
 
+![Tracing num = "123" toward target 6, the plus path carries (current, prev) from (1,1) through (3,2) to (6,3) while the times path rewrites its tail through prev from (1,1) through (2,2) to (6,6) — both leaves compare equal to 6.](figures/solution-current-prev-trace.svg)
+
 Leading zeros are pruned inside the split loop: once `num[index]` is `'0'`, no longer operand may start there, so the loop breaks after the single-digit `0` (a lone `0` is legal, `01` is not). Inputs are at most 10 digits, bounding the tree: each of the `n - 1` gaps offers four continuations (extend the operand, or one of three operators), giving roughly `4^(n-1)` candidates, each materializing a string of length up to `2n`; recursion depth is at most `n`, and the collected expressions are output rather than auxiliary working storage.
 
 **Complexity:** `O(n · 4^(n-1))` time, `O(n)` space.

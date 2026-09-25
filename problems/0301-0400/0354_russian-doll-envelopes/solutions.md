@@ -6,6 +6,8 @@ A chain of nested envelopes is a 2D strictly increasing sequence, and the trick 
 
 That LIS is computed with patience sorting over a `tails` array: for each height, binary search (`bisect_left`) finds the first tail `>= h`; if none exists the height extends the longest chain and is appended, otherwise it replaces that tail. `tails` stays sorted and its length is the LIS length — replacement is safe because a smaller tail preserves the invariant that `tails[i]` is the minimum possible height ending a chain of length `i + 1`, giving future heights a better chance to extend. `bisect_left` (rather than `bisect_right`) enforces the _strict_ increase the problem requires, rejecting equal heights.
 
+![Sorting the example to [2, 3], [5, 4], [6, 7], [6, 4] and feeding heights 3, 4, 7, 4 into `tails` grows [3] → [3, 4] → [3, 4, 7]; the duplicate 6×4 finds tail 4 via `bisect_left` and replaces it in place, so `tails` stays length 3 — the answer.](figures/solution-heights-patience-tails.svg)
+
 Edge cases: duplicate envelopes (same width and height) are handled by the descending-height tie-break plus strict search — the second copy only ever replaces the tail the first copy created, never lengthening the chain. A single envelope yields length 1, and the quadratic DP LIS (too slow at 10^5 elements) is avoided entirely.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

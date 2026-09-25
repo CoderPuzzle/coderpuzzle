@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 260" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="260" fill="#ffffff"/>
+  <!-- nums=[-2,5,-1], lower=-2, upper=2; prefixes 0,-2,3,2 compressed to ranks of
+       sorted [-2,0,2,3]; per step: query window [p-upper, p-lower] among inserted
+       values, then insert p. Strips 4 cells x 40w at column x=24/248/472, y=64 -->
+  <text x="340" y="24" text-anchor="middle" fill="#5c6b76" font-size="12">rank strip: sorted distinct prefixes [-2, 0, 2, 3] · shaded = already inserted</text>
+  <!-- step 1: p=-2 -->
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="120" y="52">p = -2 (j = 1)</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="24" y="64" width="40" height="36" fill="#f0f3f7"/>
+    <rect x="68" y="64" width="40" height="36" fill="#dbe4fb"/>
+    <rect x="112" y="64" width="40" height="36" fill="#f0f3f7"/>
+    <rect x="156" y="64" width="40" height="36" fill="#f0f3f7"/>
+  </g>
+  <rect x="22" y="62" width="88" height="40" fill="none" stroke="#4169E1" stroke-width="2.2"/>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="44" y="87">-2</text><text x="88" y="87">0</text><text x="132" y="87">2</text><text x="176" y="87">3</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="120" y="124" fill="#5c6b76">window [-4, 0]</text>
+    <text x="120" y="144" fill="#4169E1" font-weight="600">count = 1</text>
+    <text x="120" y="164" fill="#5c6b76">then insert -2</text>
+  </g>
+  <!-- step 2: p=3 -->
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="344" y="52">p = 3 (j = 2)</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="248" y="64" width="40" height="36" fill="#dbe4fb"/>
+    <rect x="292" y="64" width="40" height="36" fill="#dbe4fb"/>
+    <rect x="336" y="64" width="40" height="36" fill="#f0f3f7"/>
+    <rect x="380" y="64" width="40" height="36" fill="#f0f3f7"/>
+  </g>
+  <rect x="334" y="62" width="88" height="40" fill="none" stroke="#4169E1" stroke-width="2.2"/>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="268" y="87">-2</text><text x="312" y="87">0</text><text x="356" y="87">2</text><text x="400" y="87">3</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="344" y="124" fill="#5c6b76">window [1, 5]</text>
+    <text x="344" y="144" fill="#4169E1" font-weight="600">count = 0</text>
+    <text x="344" y="164" fill="#5c6b76">then insert 3</text>
+  </g>
+  <!-- step 3: p=2 -->
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="568" y="52">p = 2 (j = 3)</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="472" y="64" width="40" height="36" fill="#dbe4fb"/>
+    <rect x="516" y="64" width="40" height="36" fill="#dbe4fb"/>
+    <rect x="560" y="64" width="40" height="36" fill="#f0f3f7"/>
+    <rect x="604" y="64" width="40" height="36" fill="#dbe4fb"/>
+  </g>
+  <rect x="514" y="62" width="132" height="40" fill="none" stroke="#4169E1" stroke-width="2.2"/>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="492" y="87">-2</text><text x="536" y="87">0</text><text x="580" y="87">2</text><text x="624" y="87">3</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="568" y="124" fill="#5c6b76">window [0, 4]</text>
+    <text x="568" y="144" fill="#4169E1" font-weight="600">count = 2</text>
+    <text x="568" y="164" fill="#5c6b76">then insert 2</text>
+  </g>
+  <text x="40" y="222" fill="#1a2026" font-size="13">Querying before inserting enforces i &lt; j: -2 pairs with 0, 3 finds nothing,</text>
+  <text x="40" y="240" fill="#1a2026" font-size="13">and 2 pairs with 0 and 3 — <tspan fill="#4169E1" font-weight="600">1 + 0 + 2 = 3</tspan> range sums land in [-2, 2].</text>
+</svg>

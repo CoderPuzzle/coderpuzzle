@@ -19,6 +19,8 @@ the cell above `(i, j)` is a wall or the top edge, so a column segment is
 scanned exactly once, at its first cell. When a cell is `'0'`, the candidate
 is `row_hits + col_hits[j]`.
 
+![In the example grid the walls cut each row and column into segments with enemy totals — row segments 1, 1·1, 1 and column segments 1, 2, 0, 1 — so the bomb at (1,1) adds its row segment's 1 and column segment's 2 to kill 3, the maximum.](figures/solution-row-col-segments.svg)
+
 Because each cell of the grid is visited once by the outer walk and at most
 once more by the scan of the row segment and the column segment it belongs
 to, the whole sweep is linear in the grid. The only bookkeeping beyond

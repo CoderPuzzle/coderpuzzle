@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "[123,[456,[789]]]": each '[' pushes a fresh list, digits append to the top,
+       each ']' pops the top into the new top. Deepest stack: L0 [123] / L1 [456] / L2 [789]
+       (rows 76/120 wide, 40 tall at y = 208/164/120); final root list in the accent cell -->
+  <text x="40" y="48" fill="#1a2026" font-size="14"><tspan fill="#5c6b76">s = </tspan><tspan font-weight="600">"[123,[456,[789]]]"</tspan></text>
+  <text x="40" y="72" fill="#9aa7b2" font-size="12">stack of partially built lists, bottom → top</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="76" y="104">after '789'</text>
+    <text x="278" y="104">after 1st ']'</text>
+    <text x="529" y="104">after 2nd ']'</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="36" y="208" width="76" height="40" fill="#ffffff"/>
+    <rect x="36" y="164" width="76" height="40" fill="#ffffff"/>
+    <rect x="36" y="120" width="76" height="40" fill="#dbe4fb"/>
+    <rect x="218" y="208" width="76" height="40" fill="#ffffff"/>
+    <rect x="218" y="164" width="120" height="40" fill="#dbe4fb"/>
+    <rect x="444" y="208" width="170" height="40" fill="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600">
+    <text x="74" y="233" fill="#1a2026">[123]</text>
+    <text x="74" y="189" fill="#1a2026">[456]</text>
+    <text x="74" y="145" fill="#1a2026">[789]</text>
+    <text x="256" y="233" fill="#1a2026">[123]</text>
+    <text x="278" y="189" fill="#1a2026">[456, [789]]</text>
+    <text x="529" y="233" fill="#ffffff">[123, [456, [789]]]</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="11.5">
+    <text x="28" y="233">L0</text>
+    <text x="28" y="189">L1</text>
+    <text x="28" y="145">L2</text>
+    <text x="210" y="233">L0</text>
+    <text x="210" y="189">L1</text>
+  </g>
+  <text x="622" y="233" fill="#9aa7b2" font-size="11.5">root</text>
+  <!-- each ']' pops the highlighted top into the list below it -->
+  <path d="M 124 184 L 206 184" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="165" y="166" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">']'</text>
+  <text x="165" y="204" text-anchor="middle" fill="#5c6b76" font-size="12">L1 += [789]</text>
+  <path d="M 348 228 L 438 228" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="390" y="210" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">']'</text>
+  <text x="390" y="248" text-anchor="middle" fill="#5c6b76" font-size="12">L0 += [456,[789]]</text>
+  <text x="40" y="278" fill="#1a2026" font-size="13">Each ']' pops the top list and appends it to the new top; the final ']' empties</text>
+  <text x="40" y="296" fill="#1a2026" font-size="13">the stack and leaves the root <tspan fill="#4169E1" font-weight="600">[123, [456, [789]]]</tspan> — the parsed NestedInteger.</text>
+</svg>

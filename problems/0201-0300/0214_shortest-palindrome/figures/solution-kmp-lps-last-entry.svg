@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- combined = abcd#dcba; cells 48x44 at x = 124 + 48i, y = 110; lps = [0,0,0,0,0,0,0,0,1]; answer strip = dcb + abcd at y 214 -->
+  <text x="340" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5">combined = s + &quot;#&quot; + rev(s) = abcd#dcba</text>
+  <!-- final match: position 8 (a) extends the border to the prefix a at position 0 -->
+  <path d="M 532 104 Q 340 52 148 104" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="340" y="70" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">match: a == a</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="124" y="110" width="48" height="44"/><rect x="172" y="110" width="48" height="44"/>
+    <rect x="220" y="110" width="48" height="44"/><rect x="268" y="110" width="48" height="44"/>
+    <rect x="316" y="110" width="48" height="44"/><rect x="364" y="110" width="48" height="44"/>
+    <rect x="412" y="110" width="48" height="44"/><rect x="460" y="110" width="48" height="44"/>
+    <rect x="508" y="110" width="48" height="44"/>
+  </g>
+  <rect x="316" y="110" width="48" height="44" fill="#f0f3f7" stroke="none"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="148" y="137">a</text><text x="196" y="137">b</text><text x="244" y="137">c</text>
+    <text x="292" y="137">d</text><text x="340" y="137" fill="#5c6b76">#</text><text x="388" y="137">d</text>
+    <text x="436" y="137">c</text><text x="484" y="137">b</text><text x="532" y="137">a</text>
+  </g>
+  <text x="106" y="180" text-anchor="end" fill="#5c6b76" font-size="12.5">lps</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="148" y="180">0</text><text x="196" y="180">0</text><text x="244" y="180">0</text>
+    <text x="292" y="180">0</text><text x="340" y="180">0</text><text x="388" y="180">0</text>
+    <text x="436" y="180">0</text><text x="484" y="180">0</text><text x="532" y="180" fill="#4169E1">1</text>
+  </g>
+  <!-- answer strip: reverse of the tail bcd prepended to s -->
+  <text x="253" y="206" text-anchor="middle" fill="#4169E1" font-size="12">prepended</text>
+  <text x="411" y="206" text-anchor="middle" fill="#5c6b76" font-size="12">original s</text>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="193" y="214" width="40" height="36"/><rect x="233" y="214" width="40" height="36"/>
+    <rect x="273" y="214" width="40" height="36"/>
+  </g>
+  <text x="322" y="237" text-anchor="middle" fill="#5c6b76">+</text>
+  <g stroke="#1a2026" stroke-width="1.4" fill="#ffffff">
+    <rect x="331" y="214" width="40" height="36"/><rect x="371" y="214" width="40" height="36"/>
+    <rect x="411" y="214" width="40" height="36"/><rect x="451" y="214" width="40" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="213" y="237">d</text><text x="253" y="237">c</text><text x="293" y="237">b</text>
+    <text x="351" y="237">a</text><text x="391" y="237">b</text><text x="431" y="237">c</text><text x="471" y="237">d</text>
+  </g>
+  <text x="340" y="288" text-anchor="middle" fill="#1a2026" font-size="13">Last entry <tspan fill="#4169E1" font-weight="600">1</tspan>: the longest border of abcd#dcba is &quot;a&quot; — the longest palindromic prefix.</text>
+  <text x="340" y="308" text-anchor="middle" fill="#1a2026" font-size="13">Prepend the remaining tail reversed: dcb + abcd = <tspan fill="#4169E1" font-weight="600">dcbabcd</tspan>.</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 322" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="322" fill="#ffffff"/>
+  <!-- root = [1,2,3,4,5]; heights: 4,5,3 = 0, 2 = 1, 1 = 2; post-order visit order 4,5,2,3,1; group boxes x 395 w 190 -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="168" y1="72" x2="132" y2="120"/>
+    <line x1="192" y1="72" x2="258" y2="120"/>
+    <line x1="109" y1="153" x2="81" y2="199"/>
+    <line x1="131" y1="153" x2="179" y2="199"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="180" cy="56" r="20"/>
+    <circle cx="120" cy="136" r="20"/>
+    <circle cx="270" cy="136" r="20"/>
+    <circle cx="70" cy="216" r="20"/>
+    <circle cx="190" cy="216" r="20"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="180" y="61">1</text>
+    <text x="120" y="141">2</text>
+    <text x="270" y="141">3</text>
+    <text x="70" y="221">4</text>
+    <text x="190" y="221">5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="180" y="94">h = 2</text>
+    <text x="120" y="176">h = 1</text>
+    <text x="270" y="176">h = 0</text>
+    <text x="70" y="254">h = 0</text>
+    <text x="190" y="254">h = 0</text>
+  </g>
+  <text x="395" y="52" fill="#5c6b76" font-size="12.5">groups</text>
+  <g text-anchor="middle" font-size="14">
+    <rect x="395" y="66" width="190" height="38" rx="6" fill="#dbe4fb"/>
+    <text x="490" y="90"><tspan fill="#5c6b76">h = 0</tspan>  <tspan font-weight="600">[4, 5, 3]</tspan></text>
+    <rect x="395" y="134" width="190" height="38" rx="6" fill="#dbe4fb"/>
+    <text x="490" y="158"><tspan fill="#5c6b76">h = 1</tspan>  <tspan font-weight="600">[2]</tspan></text>
+    <rect x="395" y="202" width="190" height="38" rx="6" fill="#dbe4fb"/>
+    <text x="490" y="226"><tspan fill="#5c6b76">h = 2</tspan>  <tspan font-weight="600">[1]</tspan></text>
+  </g>
+  <text x="30" y="290" fill="#1a2026" font-size="13">One post-order sweep visits 4, 5, 2, 3, 1 and files each node</text>
+  <text x="30" y="308" fill="#1a2026" font-size="13">by height: <tspan fill="#4169E1" font-weight="600">[[4, 5, 3], [2], [1]]</tspan> — no node is ever deleted.</text>
+</svg>

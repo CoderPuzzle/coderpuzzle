@@ -42,6 +42,8 @@ greater than the minimum can belong to the top `k`, and it then enters by
 popping the root and pushing itself. Skipping everything else is what
 keeps the pass `O(n log k)` — most elements cost one comparison.
 
+![Streaming [3,2,1,5,6,4] with k = 2 through the heap: 1 and 4 are skipped at the root, 5 and 6 each replace the minimum, and the final root 5 is the 2nd largest.](figures/solution-minheap-size-k.svg)
+
 Each heap operation is logarithmic in `k`, not in `n`, so this beats fully
 sorting at `O(n log n)` whenever `k` is small relative to `n`; when `k` is
 small the heap rarely turns over and the pass is nearly linear. The scan

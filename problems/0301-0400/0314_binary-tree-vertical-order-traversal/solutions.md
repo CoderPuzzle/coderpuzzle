@@ -48,6 +48,8 @@ simply appended to its column's list as it is dequeued. That dequeue order is
 also what settles ties: two nodes sharing a row and a column enter the queue
 with the left one first, because siblings are enqueued left before right.
 
+![BFS on example 1's tree 3(9, 20(15, 7)) dequeues 3, 9, 20, 15, 7 in that order, appending each value to its column's list to give [[9], [3, 15], [20], [7]].](figures/solution-bfs-dequeue-append.svg)
+
 As the traversal runs, the values accumulate in a map from column to its list,
 and the smallest and largest column seen are tracked on the side. The visited
 columns form one contiguous range — a column is only ever reached by a step of

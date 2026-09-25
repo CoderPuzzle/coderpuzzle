@@ -8,4 +8,6 @@ The loop guard asks whether the even tail and a node beyond it both exist, so ea
 
 When the walk ends, one splice finishes the job: the odd tail's `next` is pointed at the remembered even head. Every relink is a pointer write on an existing node, nothing is allocated, and each node is written a constant number of times.
 
+![On head = [1, 2, 3, 4, 5], the two tails relink the nodes into the chains 1→3→5 and 2→4 — the even head 2 ringed, remembered before the walk — and the final splice from 5 lands on it, giving [1, 3, 5, 2, 4].](figures/solution-weave-two-chains.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space.

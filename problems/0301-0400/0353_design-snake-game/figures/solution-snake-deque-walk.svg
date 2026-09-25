@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 222" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="650" height="222" fill="#ffffff"/>
+  <!-- food = [[1,2],[0,1]]; board 3 wide x 2 tall; one 28px-cell board per move R,D,R,U,L,U at x=30+102i, y=56; cell numbers = position from head in the deque; ring = food in play; board 6: dashed cell = attempted head at row -1 -->
+  <text x="40" y="30" fill="#5c6b76" font-size="12.5">cells number the body from head (1) to tail; the ring is the food in play</text>
+  <g stroke="#42525e" stroke-width="1.3" fill="none">
+    <rect x="30" y="56" width="84" height="56"/><line x1="58" y1="56" x2="58" y2="112"/><line x1="86" y1="56" x2="86" y2="112"/><line x1="30" y1="84" x2="114" y2="84"/>
+    <rect x="132" y="56" width="84" height="56"/><line x1="160" y1="56" x2="160" y2="112"/><line x1="188" y1="56" x2="188" y2="112"/><line x1="132" y1="84" x2="216" y2="84"/>
+    <rect x="234" y="56" width="84" height="56"/><line x1="262" y1="56" x2="262" y2="112"/><line x1="290" y1="56" x2="290" y2="112"/><line x1="234" y1="84" x2="318" y2="84"/>
+    <rect x="336" y="56" width="84" height="56"/><line x1="364" y1="56" x2="364" y2="112"/><line x1="392" y1="56" x2="392" y2="112"/><line x1="336" y1="84" x2="420" y2="84"/>
+    <rect x="438" y="56" width="84" height="56"/><line x1="466" y1="56" x2="466" y2="112"/><line x1="494" y1="56" x2="494" y2="112"/><line x1="438" y1="84" x2="522" y2="84"/>
+    <rect x="540" y="56" width="84" height="56"/><line x1="568" y1="56" x2="568" y2="112"/><line x1="596" y1="56" x2="596" y2="112"/><line x1="540" y1="84" x2="624" y2="84"/>
+  </g>
+  <!-- snake cells -->
+  <g text-anchor="middle" font-size="12.5" font-weight="600">
+    <rect x="58" y="56" width="28" height="28" fill="#4169E1"/><text x="72" y="75" fill="#ffffff">1</text>
+    <rect x="160" y="84" width="28" height="28" fill="#4169E1"/><text x="174" y="103" fill="#ffffff">1</text>
+    <rect x="290" y="84" width="28" height="28" fill="#4169E1"/><text x="304" y="103" fill="#ffffff">1</text>
+    <rect x="262" y="84" width="28" height="28" fill="#dbe4fb"/><text x="276" y="103" fill="#1a2026">2</text>
+    <rect x="392" y="56" width="28" height="28" fill="#4169E1"/><text x="406" y="75" fill="#ffffff">1</text>
+    <rect x="392" y="84" width="28" height="28" fill="#dbe4fb"/><text x="406" y="103" fill="#1a2026">2</text>
+    <rect x="466" y="56" width="28" height="28" fill="#4169E1"/><text x="480" y="75" fill="#ffffff">1</text>
+    <rect x="494" y="56" width="28" height="28" fill="#dbe4fb"/><text x="508" y="75" fill="#1a2026">2</text>
+    <rect x="494" y="84" width="28" height="28" fill="#dbe4fb"/><text x="508" y="103" fill="#1a2026">3</text>
+    <rect x="568" y="56" width="28" height="28" fill="#4169E1"/><text x="582" y="75" fill="#ffffff">1</text>
+    <rect x="596" y="56" width="28" height="28" fill="#dbe4fb"/><text x="610" y="75" fill="#1a2026">2</text>
+    <rect x="596" y="84" width="28" height="28" fill="#dbe4fb"/><text x="610" y="103" fill="#1a2026">3</text>
+  </g>
+  <!-- food rings -->
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="2">
+    <circle cx="100" cy="98" r="6.5"/>
+    <circle cx="202" cy="98" r="6.5"/>
+    <circle cx="276" cy="70" r="6.5"/>
+    <circle cx="378" cy="70" r="6.5"/>
+  </g>
+  <!-- board 6: attempted head at row -1 -->
+  <rect x="568" y="28" width="28" height="28" fill="#ffffff" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <g stroke="#4169E1" stroke-width="2">
+    <line x1="578" y1="38" x2="586" y2="46"/><line x1="586" y1="38" x2="578" y2="46"/>
+  </g>
+  <!-- move and returned score per board -->
+  <g text-anchor="middle" font-size="13.5" font-weight="600">
+    <text x="72" y="134" fill="#1a2026">R <tspan fill="#9aa7b2">→</tspan> <tspan fill="#5c6b76">0</tspan></text>
+    <text x="174" y="134" fill="#1a2026">D <tspan fill="#9aa7b2">→</tspan> <tspan fill="#5c6b76">0</tspan></text>
+    <text x="276" y="134" fill="#1a2026">R <tspan fill="#9aa7b2">→</tspan> <tspan fill="#4169E1">1</tspan><tspan fill="#5c6b76" font-size="11.5" font-weight="400"> (ate)</tspan></text>
+    <text x="378" y="134" fill="#1a2026">U <tspan fill="#9aa7b2">→</tspan> <tspan fill="#4169E1">1</tspan></text>
+    <text x="480" y="134" fill="#1a2026">L <tspan fill="#9aa7b2">→</tspan> <tspan fill="#4169E1">2</tspan><tspan fill="#5c6b76" font-size="11.5" font-weight="400"> (ate)</tspan></text>
+    <text x="582" y="134" fill="#1a2026">U <tspan fill="#9aa7b2">→</tspan> <tspan fill="#4169E1">-1</tspan></text>
+  </g>
+  <text x="40" y="176" fill="#1a2026" font-size="13">The tail pops unless food is eaten — scores run 0, 0, 1, 1, 2 while the body</text>
+  <text x="40" y="194" fill="#1a2026" font-size="13">slides forward; the final U steps the head off the top edge and returns <tspan fill="#4169E1" font-weight="600">-1</tspan>.</text>
+</svg>

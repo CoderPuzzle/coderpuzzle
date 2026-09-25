@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- size = 3, calls 1, 10, 3, 5; window cells 64x44; before: [1,10,3] with head=0 and sum=14; next(5) writes slot 0 so total = 14 - 1 + 5 = 18 and head wraps to 1; the call returns 18 / 3 = 6.0 -->
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="125" y="36" width="90" height="30"/><rect x="225" y="36" width="90" height="30"/>
+    <rect x="325" y="36" width="90" height="30"/>
+    <rect x="425" y="36" width="90" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <text x="170" y="55">next(1)</text><text x="270" y="55">next(10)</text>
+    <text x="370" y="55">next(3)</text><text x="470" y="55" font-weight="600">next(5)</text>
+  </g>
+  <text x="320" y="90" text-anchor="middle" fill="#5c6b76" font-size="11.5">the first three calls fill the window in order</text>
+
+  <text x="152" y="112" text-anchor="middle" fill="#5c6b76" font-size="12">before next(5)</text>
+  <text x="496" y="112" text-anchor="middle" fill="#5c6b76" font-size="12">after</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="80" y="122">0</text><text x="144" y="122">1</text><text x="208" y="122">2</text>
+    <text x="432" y="122">0</text><text x="496" y="122">1</text><text x="560" y="122">2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="48" y="126" width="64" height="44"/>
+    <rect x="112" y="126" width="64" height="44"/>
+    <rect x="176" y="126" width="64" height="44"/>
+    <rect x="400" y="126" width="64" height="44"/>
+    <rect x="464" y="126" width="64" height="44"/>
+    <rect x="528" y="126" width="64" height="44"/>
+  </g>
+  <rect x="48" y="126" width="64" height="44" fill="none" stroke="#4169E1" stroke-width="2.4"/>
+  <rect x="400" y="126" width="64" height="44" fill="none" stroke="#4169E1" stroke-width="2.4"/>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="80" y="154" fill="#9aa7b2">1</text><text x="144" y="154" fill="#1a2026">10</text><text x="208" y="154" fill="#1a2026">3</text>
+    <text x="432" y="154" fill="#4169E1">5</text><text x="496" y="154" fill="#1a2026">10</text><text x="560" y="154" fill="#1a2026">3</text>
+  </g>
+
+  <path d="M 252 148 H 388" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="322" y="136" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">next(5)</text>
+  <text x="322" y="170" text-anchor="middle" fill="#5c6b76" font-size="12">evict 1, add 5</text>
+
+  <path d="M 80 214 V 180" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrowG)"/>
+  <text x="80" y="232" text-anchor="middle" fill="#5c6b76" font-size="12">head = 0</text>
+  <path d="M 432 214 V 180" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrowG)"/>
+  <text x="432" y="232" text-anchor="middle" fill="#5c6b76" font-size="12">head = 1 (wrapped)</text>
+
+  <text x="144" y="262" text-anchor="middle" fill="#1a2026" font-size="12.5">sum = 14</text>
+  <text x="496" y="262" text-anchor="middle" fill="#1a2026" font-size="12.5">sum = 14 − 1 + 5 = <tspan fill="#4169E1" font-weight="600">18</tspan></text>
+  <text x="320" y="290" text-anchor="middle" fill="#1a2026" font-size="13.5" font-weight="600">return 18 / 3 = <tspan fill="#4169E1">6.0</tspan></text>
+
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">One write, one subtract, one add — the window slides to [10, 3, 5] with nothing shifted.</text>
+</svg>
