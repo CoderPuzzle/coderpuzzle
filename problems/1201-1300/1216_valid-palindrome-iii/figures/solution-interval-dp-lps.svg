@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- s = "abcdeca" (n=7), k=2; dp[i][j] = LPS(s[i..j]); cells 42x30 at
+       (74+42j, 58+30i), upper triangle only. Accent: dp[2][5]=3 (c..c) and
+       dp[0][6]=5 (a..a); accent text marks their sources dp[3][4], dp[1][5]. -->
+  <text x="74" y="24" fill="#5c6b76" font-size="11.5">dp[i][j] = LPS length of s[i..j]; diagonal = 1 (single chars);</text>
+  <text x="74" y="40" fill="#5c6b76" font-size="11.5">filled by increasing interval length — each cell reads only smaller intervals.</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="95" y="52">a</text><text x="137" y="52">b</text><text x="179" y="52">c</text><text x="221" y="52">d</text><text x="263" y="52">e</text><text x="305" y="52">c</text><text x="347" y="52">a</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="64" y="78">a</text><text x="64" y="108">b</text><text x="64" y="138">c</text><text x="64" y="168">d</text><text x="64" y="198">e</text><text x="64" y="228">c</text><text x="64" y="258">a</text>
+  </g>
+  <!-- base diagonal -->
+  <g fill="#f0f3f7" stroke="#42525e" stroke-width="1.1">
+    <rect x="74" y="58" width="42" height="30"/><rect x="116" y="88" width="42" height="30"/><rect x="158" y="118" width="42" height="30"/><rect x="200" y="148" width="42" height="30"/><rect x="242" y="178" width="42" height="30"/><rect x="284" y="208" width="42" height="30"/><rect x="326" y="238" width="42" height="30"/>
+  </g>
+  <!-- off-diagonal cells -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.1">
+    <rect x="116" y="58" width="42" height="30"/><rect x="158" y="58" width="42" height="30"/><rect x="200" y="58" width="42" height="30"/><rect x="242" y="58" width="42" height="30"/><rect x="284" y="58" width="42" height="30"/>
+    <rect x="158" y="88" width="42" height="30"/><rect x="200" y="88" width="42" height="30"/><rect x="242" y="88" width="42" height="30"/><rect x="284" y="88" width="42" height="30"/><rect x="326" y="88" width="42" height="30"/>
+    <rect x="200" y="118" width="42" height="30"/><rect x="242" y="118" width="42" height="30"/><rect x="326" y="118" width="42" height="30"/>
+    <rect x="242" y="148" width="42" height="30"/><rect x="284" y="148" width="42" height="30"/><rect x="326" y="148" width="42" height="30"/>
+    <rect x="284" y="178" width="42" height="30"/><rect x="326" y="178" width="42" height="30"/>
+    <rect x="326" y="208" width="42" height="30"/>
+  </g>
+  <!-- the two matched-end cells -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="284" y="118" width="42" height="30"/><rect x="326" y="58" width="42" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="95" y="78">1</text><text x="137" y="108">1</text><text x="179" y="138">1</text><text x="221" y="168">1</text><text x="263" y="198">1</text><text x="305" y="228">1</text><text x="347" y="258">1</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12">
+    <text x="137" y="78">1</text><text x="179" y="78">1</text><text x="221" y="78">1</text><text x="263" y="78">1</text><text x="305" y="78">3</text>
+    <text x="179" y="108">1</text><text x="221" y="108">1</text><text x="263" y="108">1</text><text x="347" y="108">3</text>
+    <text x="221" y="138">1</text><text x="263" y="138">1</text><text x="347" y="138">3</text>
+    <text x="263" y="168">1</text>
+    <text x="305" y="168">1</text><text x="347" y="168">1</text>
+    <text x="305" y="198">1</text><text x="347" y="198">1</text>
+    <text x="347" y="228">1</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12">
+    <text x="305" y="108">3</text>
+    <text x="263" y="168">1</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="305" y="138">3</text>
+    <text x="347" y="78">5</text>
+  </g>
+  <!-- callouts to the matched-end cells -->
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <line x1="398" y1="66" x2="366" y2="70" marker-end="url(#arrow)"/>
+    <line x1="398" y1="124" x2="324" y2="132" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="404" y="64">s[0..6] ends a..a: match →</text>
+    <text x="404" y="82"><tspan fill="#4169E1" font-weight="600">dp[1][5] + 2 = 5</tspan> = LPS</text>
+    <text x="404" y="122">s[2..5] = "cdec" ends c..c: →</text>
+    <text x="404" y="140"><tspan fill="#4169E1" font-weight="600">dp[3][4] + 2 = 3</tspan></text>
+  </g>
+  <text x="340" y="298" text-anchor="middle" fill="#1a2026" font-size="13">Keeping the LPS needs the fewest deletions: 7 − <tspan fill="#4169E1" font-weight="600">5</tspan> = <tspan fill="#4169E1" font-weight="600">2</tspan> ≤ k = 2, so</text>
+  <text x="340" y="318" text-anchor="middle" fill="#1a2026" font-size="13">dropping 'b' and 'e' turns "abcdeca" into the palindrome "acdca".</text>
+</svg>

@@ -13,5 +13,7 @@ Then climb from `region2`; the first of its ancestors (itself included) that
 appears in `region1`'s chain is the smallest common region — deeper common
 ancestors are strictly bigger, so the first hit wins.
 
+![In the Example 1 region tree, Quebec's ancestor set is {Quebec, Canada, North America, Earth}, and climbing from New York — New York, then United States, then North America — first hits North America, the smallest common region.](figures/solution-ancestor-set-climb.svg)
+
 **Complexity:** `O(n)` time to build plus `O(depth)` for the walks — `O(n)`
 total; `O(n)` space for the parent map and the ancestor set.

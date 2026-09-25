@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- after add 1, 2, 3, 4 with one possible coin-run (1 promoted to level 3,
+       3 to level 2, 2 and 4 stay on level 0); layers L2/L1/L0 at y 70/130/190,
+       node cells 44x34 at x 170/270/370/470; accent = the search(1) probe:
+       next is 1 at every level (never < 1), so it drops the head column and
+       confirms 1 on level 0 -->
+  <text x="390" y="44" text-anchor="middle" font-size="12" fill="#5c6b76">search(1): at each level next is 1, not &lt; 1, so drop</text>
+  <g font-size="11.5" fill="#5c6b76">
+    <text x="20" y="91">L2</text>
+    <text x="20" y="151">L1</text>
+    <text x="20" y="211">L0</text>
+  </g>
+  <rect x="76" y="62" width="56" height="170" fill="#f0f3f7" stroke="#42525e" stroke-width="1.5"/>
+  <text x="104" y="148" text-anchor="middle" font-size="13" fill="#5c6b76">head</text>
+  <text x="104" y="164" text-anchor="middle" font-size="10.5" fill="#9aa7b2">(-1)</text>
+  <!-- layer links -->
+  <g stroke="#5c6b76" stroke-width="1.5" fill="none">
+    <path d="M 136 87 L 166 87" marker-end="url(#arrowg)"/>
+    <path d="M 136 147 L 166 147" marker-end="url(#arrowg)"/>
+    <path d="M 218 147 L 366 147" marker-end="url(#arrowg)"/>
+    <path d="M 218 207 L 266 207" marker-end="url(#arrowg)"/>
+    <path d="M 318 207 L 366 207" marker-end="url(#arrowg)"/>
+    <path d="M 418 207 L 466 207" marker-end="url(#arrowg)"/>
+  </g>
+  <text x="292" y="139" text-anchor="middle" font-size="11" fill="#5c6b76">skips 2</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="170" y="70" width="44" height="34" fill="#ffffff"/>
+    <rect x="170" y="130" width="44" height="34" fill="#ffffff"/>
+    <rect x="370" y="130" width="44" height="34" fill="#ffffff"/>
+    <rect x="170" y="190" width="44" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+    <rect x="270" y="190" width="44" height="34" fill="#ffffff"/>
+    <rect x="370" y="190" width="44" height="34" fill="#ffffff"/>
+    <rect x="470" y="190" width="44" height="34" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="192" y="92">1</text>
+    <text x="192" y="152">1</text><text x="392" y="152">3</text>
+    <text x="192" y="212">1</text><text x="292" y="212">2</text>
+    <text x="392" y="212">3</text><text x="492" y="212">4</text>
+  </g>
+  <!-- search(1) probe path: start at head, drop twice, hop onto the candidate -->
+  <circle cx="88" cy="87" r="3.5" fill="#4169E1"/>
+  <g stroke="#4169E1" stroke-width="2.5" fill="none">
+    <path d="M 88 108 L 88 126" marker-end="url(#arrow)"/>
+    <path d="M 88 168 L 88 186" marker-end="url(#arrow)"/>
+    <path d="M 138 207 L 164 207" marker-end="url(#arrow)"/>
+  </g>
+  <text x="192" y="246" text-anchor="middle" font-size="12.5" fill="#4169E1" font-weight="600">cur.val = 1 &#8594; true</text>
+  <text x="330" y="274" text-anchor="middle" fill="#1a2026" font-size="13">One coin-run after add 1, 2, 3, 4: node 1 promoted twice, node 3 once; higher layers</text>
+  <text x="330" y="292" text-anchor="middle" fill="#1a2026" font-size="13">skip half the list, and search(1) drops down the head to confirm <tspan fill="#4169E1" font-weight="600">1 on level 0</tspan>.</text>
+</svg>

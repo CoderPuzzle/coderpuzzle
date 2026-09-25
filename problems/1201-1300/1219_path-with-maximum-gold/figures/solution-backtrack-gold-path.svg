@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 306" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="306" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- grid = [[0,6,0],[5,8,7],[0,9,0]]; cells 62x62 at (36+62c, 66+62r); values
+       top-left, walk arrows through cell centers; best path 9 -> 8 -> 7 = 24 -->
+  <g fill="#f0f3f7" stroke="#42525e" stroke-width="1.2">
+    <rect x="36" y="66" width="62" height="62"/><rect x="160" y="66" width="62" height="62"/>
+    <rect x="36" y="190" width="62" height="62"/><rect x="160" y="190" width="62" height="62"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="98" y="66" width="62" height="62"/>
+    <rect x="36" y="128" width="62" height="62"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="98" y="128" width="62" height="62"/><rect x="160" y="128" width="62" height="62"/><rect x="98" y="190" width="62" height="62"/>
+  </g>
+  <path d="M 129 221 L 129 159 L 191 159" fill="none" stroke="#4169E1" stroke-width="3" marker-end="url(#arrow)"/>
+  <g font-size="15" font-weight="600">
+    <text x="108" y="88" fill="#1a2026">6</text>
+    <text x="46" y="150" fill="#1a2026">5</text>
+    <text x="108" y="150" fill="#4169E1">8</text>
+    <text x="170" y="150" fill="#4169E1">7</text>
+    <text x="108" y="212" fill="#4169E1">9</text>
+  </g>
+  <g font-size="14" fill="#9aa7b2">
+    <text x="46" y="88">0</text><text x="170" y="88">0</text>
+    <text x="46" y="212">0</text><text x="170" y="212">0</text>
+  </g>
+  <text x="129" y="268" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">start here</text>
+  <text x="260" y="62" fill="#5c6b76" font-size="12.5">backtracking from (2,1), zeroing each cell as the visited set:</text>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="260" y="86">enter (2,1): collect the <tspan fill="#4169E1" font-weight="600">9</tspan>, zero the cell</text>
+    <text x="260" y="108">its only gold neighbor is (1,1) = <tspan fill="#4169E1" font-weight="600">8</tspan> → collect, zero</text>
+    <text x="260" y="130">from (1,1): the 6 branch totals 9+8+6 = 23</text>
+    <text x="260" y="152">the 5 branch totals 9+8+5 = 22</text>
+    <text x="260" y="174">the 7 branch totals <tspan fill="#4169E1" font-weight="600">9+8+7 = 24</tspan> — best</text>
+    <text x="260" y="196">on backtrack each zeroed cell is restored</text>
+    <text x="260" y="218">every gold cell is tried as a start; 24 is the maximum</text>
+  </g>
+  <text x="340" y="288" text-anchor="middle" fill="#1a2026" font-size="13">The untouched <tspan fill="#4169E1" font-weight="600">0</tspan> cells bound every branch; the best path <tspan fill="#4169E1" font-weight="600">9 → 8 → 7</tspan> collects <tspan fill="#4169E1" font-weight="600">24</tspan>.</text>
+</svg>

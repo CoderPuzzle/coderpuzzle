@@ -11,6 +11,8 @@ on leaving it restores the original value. That makes "not yet on the path"
 and "never visit a cell with 0 gold" the same test — a zeroed cell is either
 empty or currently occupied by the path — with no separate visited structure.
 
+![Starting the backtrack at the 9 cell, each entered cell is zeroed as the visited set while the untouched 0 cells bound every branch; the winning path 9 → 8 → 7 collects 9 + 8 + 7 = 24, beating the 23 and 22 branches.](figures/solution-backtrack-gold-path.svg)
+
 Recursion depth is bounded by the number of gold cells (at most 25), far
 under any stack limit, so plain recursion is safe. The best total seen at any
 point is the answer; an empty mine yields 0.

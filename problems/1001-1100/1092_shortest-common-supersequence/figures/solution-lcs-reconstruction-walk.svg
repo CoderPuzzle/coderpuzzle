@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 312" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="312" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- str1 = "abac", str2 = "cab"; dp[i][j] = LCS of str1[i:] and str2[j:]; cells 56x38 at (170,64) -->
+  <!-- the accent walk (0,0)->(0,1)->(1,2)->(2,3)->(3,3) emits c, a, b then str1's tail a, c -->
+  <text x="170" y="30" font-size="12" fill="#5c6b76">str2 = "cab"</text>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#5c6b76">
+    <text x="198" y="52">c</text><text x="254" y="52">a</text><text x="310" y="52">b</text>
+  </g>
+  <text x="366" y="52" text-anchor="middle" font-size="12.5" fill="#9aa7b2">&#949;</text>
+  <text x="40" y="88" font-size="12" fill="#5c6b76">str1 = "abac"</text>
+  <g text-anchor="end" font-size="12.5" font-weight="600" fill="#5c6b76">
+    <text x="160" y="88">a</text><text x="160" y="126">b</text><text x="160" y="164">a</text><text x="160" y="202">c</text>
+  </g>
+  <text x="160" y="240" text-anchor="end" font-size="12.5" fill="#9aa7b2">&#949;</text>
+  <!-- dp cells; light accent fill = the walk passes through -->
+  <g fill="#dbe4fb" stroke="#1a2026" stroke-width="1.2">
+    <rect x="170" y="64" width="56" height="38"/><rect x="226" y="64" width="56" height="38"/>
+    <rect x="282" y="102" width="56" height="38"/><rect x="338" y="140" width="56" height="38"/>
+    <rect x="338" y="178" width="56" height="38"/><rect x="338" y="216" width="56" height="38"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.2">
+    <rect x="282" y="64" width="56" height="38"/><rect x="338" y="64" width="56" height="38"/>
+    <rect x="170" y="102" width="56" height="38"/><rect x="226" y="102" width="56" height="38"/>
+    <rect x="170" y="140" width="56" height="38"/><rect x="226" y="140" width="56" height="38"/>
+    <rect x="282" y="140" width="56" height="38"/>
+    <rect x="170" y="178" width="56" height="38"/><rect x="226" y="178" width="56" height="38"/>
+    <rect x="282" y="178" width="56" height="38"/>
+    <rect x="170" y="216" width="56" height="38"/><rect x="226" y="216" width="56" height="38"/>
+    <rect x="282" y="216" width="56" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="198" y="88" fill="#1a2026">2</text><text x="254" y="88" fill="#1a2026">2</text>
+    <text x="310" y="88" fill="#1a2026">1</text><text x="366" y="88" fill="#9aa7b2" font-weight="400">0</text>
+    <text x="198" y="126" fill="#1a2026">1</text><text x="254" y="126" fill="#1a2026">1</text>
+    <text x="310" y="126" fill="#1a2026">1</text><text x="366" y="126" fill="#9aa7b2" font-weight="400">0</text>
+    <text x="198" y="164" fill="#1a2026">1</text><text x="254" y="164" fill="#1a2026">1</text>
+    <text x="310" y="164" fill="#9aa7b2" font-weight="400">0</text><text x="366" y="164" fill="#9aa7b2" font-weight="400">0</text>
+    <text x="198" y="202" fill="#1a2026">1</text><text x="254" y="202" fill="#9aa7b2" font-weight="400">0</text>
+    <text x="310" y="202" fill="#9aa7b2" font-weight="400">0</text><text x="366" y="202" fill="#9aa7b2" font-weight="400">0</text>
+    <text x="198" y="240" fill="#9aa7b2" font-weight="400">0</text><text x="254" y="240" fill="#9aa7b2" font-weight="400">0</text>
+    <text x="310" y="240" fill="#9aa7b2" font-weight="400">0</text><text x="366" y="240" fill="#9aa7b2" font-weight="400">0</text>
+  </g>
+  <!-- reconstruction walk: curves bow around the cell digits; badges mark the five emission steps -->
+  <path d="M 176 70 Q 200 70 226 83 L 282 102 Q 322 104 338 140 L 366 178 Q 386 197 366 216 L 366 226"
+        fill="none" stroke="#4169E1" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <circle cx="176" cy="70" r="3.5" fill="#4169E1"/>
+  <!-- step badges on the walk -->
+  <g text-anchor="middle" font-size="10.5" font-weight="600">
+    <circle cx="226" cy="83" r="8.5" fill="#4169E1"/><text x="226" y="87" fill="#ffffff">1</text>
+    <circle cx="282" cy="102" r="8.5" fill="#4169E1"/><text x="282" y="106" fill="#ffffff">2</text>
+    <circle cx="338" cy="140" r="8.5" fill="#4169E1"/><text x="338" y="144" fill="#ffffff">3</text>
+    <circle cx="366" cy="178" r="8.5" fill="#4169E1"/><text x="366" y="182" fill="#ffffff">4</text>
+    <circle cx="366" cy="216" r="8.5" fill="#4169E1"/><text x="366" y="220" fill="#ffffff">5</text>
+  </g>
+  <!-- the output the walk builds -->
+  <text x="526" y="84" text-anchor="middle" font-size="12" fill="#5c6b76">built output</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="430" y="100" width="32" height="36"/><rect x="510" y="100" width="32" height="36"/>
+    <rect x="550" y="100" width="32" height="36"/><rect x="590" y="100" width="32" height="36"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4">
+    <rect x="470" y="100" width="32" height="36"/><rect x="510" y="100" width="32" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14.5">
+    <text x="446" y="124" fill="#5c6b76">c</text><text x="486" y="124" fill="#4169E1">a</text>
+    <text x="526" y="124" fill="#4169E1">b</text><text x="566" y="124" fill="#1a2026">a</text>
+    <text x="606" y="124" fill="#1a2026">c</text>
+  </g>
+  <g text-anchor="middle" font-size="10" fill="#9aa7b2">
+    <text x="446" y="152">str2</text><text x="506" y="152">shared</text><text x="586" y="152">str1</text>
+  </g>
+  <text x="526" y="186" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="15">&#8594; "cabac"</text>
+  <text x="320" y="274" text-anchor="middle" fill="#1a2026" font-size="13">dp[i][j] = LCS of the suffixes; <tspan fill="#4169E1" font-weight="600">dp[0][0] = 2</tspan>, so the answer is 4 + 3 - 2 = 5 chars.</text>
+  <text x="320" y="294" text-anchor="middle" fill="#1a2026" font-size="13">The walk emits c from str2, shares a and b once each, then str1's tail ac: <tspan fill="#4169E1" font-weight="600">cabac</tspan>.</text>
+</svg>

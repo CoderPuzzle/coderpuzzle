@@ -8,6 +8,10 @@ each cell one slot forward with wraparound at the end. Applying it `k` times
 rotates by `k`, so every source cell `p` lands at destination `(p + k) mod
 (m*n)` — no intermediate grids, no per-step copying.
 
+![Flattening [[1,2,3],[4,5,6],[7,8,9]] row-major with k = 1, every source
+index p lands at (p + 1) mod 9, and only value 9 wraps from index 8 back to
+0 — the grid becomes [[9,1,2],[3,4,5],[6,7,8]].](figures/solution-flattened-rotation-mod.svg)
+
 Write each flattened value back at its shifted index, reshaped to `m` rows of
 `n`.
 

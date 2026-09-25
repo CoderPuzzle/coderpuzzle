@@ -6,6 +6,8 @@ The snake's configuration is fully described by a state `(r, c, horizontal)`, wh
 
 Start from `(0, 0, horizontal)`. From each dequeued state, generate the legal moves: slide right, slide down, and (when the two cells it would swing into are empty) rotate. A visited set keyed by the state prevents re-processing, and the first time the target state `(n-1, n-2, horizontal)` is reached, the number of moves accumulated so far is the answer.
 
+![Following one shortest route for the Example 1 grid, the BFS states along R R CW R D D D D CCW R D end at the target H(5,4) = cells (5,4),(5,5) after 11 moves, the two accented rotations swinging the head around the fixed tail cell.](figures/solution-bfs-snake-states.svg)
+
 Because all edges have weight one, BFS visits states in nondecreasing distance order, so the first arrival at the target is provably minimal. If the queue empties without ever reaching the target, the grid is unreachable and the answer is `-1`.
 
 **Complexity:** `O(n²)` time, `O(n²)` space.

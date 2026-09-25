@@ -40,6 +40,8 @@ fits the budget, so `right - left + 1` joins the total. The `cap < 0`
 guard is never taken under the statement's `k >= 1`; it merely lets the
 helper answer on its own terms.
 
+![For nums = [1, 1, 2, 1, 1] with k = 3 the two shrinking sweeps add 1+2+3+4+4 = 14 windows under the cap of 3 and 1+2+3+3+3 = 12 under the cap of 2 — retiring one more element from the left — and 14 - 12 = 2 is exactly the nice subarrays [1,1,2,1] and [1,2,1,1].](figures/solution-atmost-subtraction.svg)
+
 The second sweep replaces the tally table entirely: the whole state is
 three integers, and the extra memory no longer grows with `n`. Example 1
 makes the subtraction concrete — `atMost(2)` over `[3, 8, 3, 3]` counts 9

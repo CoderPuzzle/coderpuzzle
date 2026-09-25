@@ -13,5 +13,7 @@ append each group member to every partial sentence. The product of the group
 sizes bounds the output, which the constraints keep tiny (at most 10 positions
 and 20 words total). Sort at the end for lexicographic order.
 
+![With synonyms [[happy,joy],[sad,sorrow],[joy,cheerful]], union-find builds the groups {cheerful, happy, joy} and {sad, sorrow}, and expanding the text's two branch positions gives 3 × 2 = 6 sorted synonymous sentences.](figures/solution-union-groups-expand.svg)
+
 **Complexity:** `O(p α) ` for `p` pairs to union; generation and sorting are
 bounded by the output size times text length.

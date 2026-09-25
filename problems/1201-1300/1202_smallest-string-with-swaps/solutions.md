@@ -6,6 +6,8 @@ The key insight is that a swap between indices `a` and `b` can be repeated along
 
 A union-find structure first merges the indices of every pair, using path halving (`parent[x] = parent[parent[x]]`) in `find` to keep the trees shallow. A second pass then groups all indices by their root. Because the grouping loop scans indices in increasing order, each group's index list comes out already sorted.
 
+![For `s = "dcab"` with `pairs = [[0,3],[1,2]]`, union-find merges the pairs into components `{0,3}` and `{1,2}`; sorting each component's characters (`b,d` and `a,c`) and writing them back smallest-to-smallest-index turns `dcab` into `bacd`.](figures/solution-component-sort-writeback.svg)
+
 For each component, the characters sitting at its indices are collected, sorted, and written back in order — smallest character to smallest index. Components are independent (no swap crosses between them), so optimizing each one separately optimizes the whole string. For a string of `n` indices joined by `p` pairs, the union pass is effectively linear (inverse Ackermann) and the per-component sorts total `O(n log n)` at worst; indices in no pair form singleton components and pass through unchanged.
 
 **Complexity:** `O(n log n + p · α(n))` time, `O(n)` space.

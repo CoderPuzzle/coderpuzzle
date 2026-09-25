@@ -8,6 +8,8 @@ To make each decision cheap, the solution first preprocesses every word into a 2
 
 The DFS walks words by index. At each word it always explores the skip branch, and additionally explores the take branch only when `remaining` covers the word's `need` vector — an infeasible word simply prunes that subtree. Since any point in the search already represents a complete valid selection (the rest can be skipped), the running `total` is compared against `best` at every node rather than only at the leaves.
 
+![On words ["dog","cat","dad","good"], every cat branch is pruned because the budget has no 't', and the accented path — skip dog, take dad (+11), take good (+12) — reaches the best score 23.](figures/solution-subset-dfs-tree.svg)
+
 Edge cases fall out naturally: words whose letters are unavailable are skipped, zero-score words may be taken but never improve `best`, and if nothing can be formed the answer stays 0. Note that a zero-score word still consumes letters, so taking it can only hurt — but enumerating it anyway is harmless within the 2^n budget.
 
 **Complexity:** `O(26 · 2^n)` time, `O(26 · n)` space, where `n` is the number of words.

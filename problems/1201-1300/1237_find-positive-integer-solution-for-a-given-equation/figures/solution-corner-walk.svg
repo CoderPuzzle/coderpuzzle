@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- z = 5, f(x,y) = x + y (function_id 1); 5x5 excerpt, cells 60x40 at (110,66);
+       columns are y = 1..5 left to right, rows are x = 1..5 top to bottom;
+       walk (1,5) -> (1,4) -> (2,3) -> (3,2) -> (4,1); hits where x+y = 5 -->
+  <g fill="#5c6b76" font-size="12" text-anchor="middle">
+    <text x="140" y="58">y=1</text><text x="200" y="58">y=2</text><text x="260" y="58">y=3</text>
+    <text x="320" y="58">y=4</text><text x="380" y="58">y=5</text>
+  </g>
+  <g fill="#5c6b76" font-size="12" text-anchor="end">
+    <text x="102" y="90">x=1</text><text x="102" y="130">x=2</text><text x="102" y="170">x=3</text>
+    <text x="102" y="210">x=4</text><text x="102" y="250">x=5</text>
+  </g>
+  <!-- f = x + y values; f > 5 muted on #f0f3f7, f &lt; 5 muted on white, f = 5 accented -->
+  <g stroke="#42525e" stroke-width="1.3">
+    <g fill="#ffffff">
+      <rect x="110" y="66" width="60" height="40"/><rect x="170" y="66" width="60" height="40"/>
+      <rect x="110" y="106" width="60" height="40"/><rect x="170" y="106" width="60" height="40"/>
+      <rect x="110" y="146" width="60" height="40"/>
+    </g>
+    <g fill="#f0f3f7">
+      <rect x="230" y="66" width="60" height="40"/><rect x="290" y="66" width="60" height="40"/>
+      <rect x="350" y="66" width="60" height="40"/>
+      <rect x="230" y="106" width="60" height="40"/><rect x="290" y="106" width="60" height="40"/>
+      <rect x="350" y="106" width="60" height="40"/>
+      <rect x="230" y="146" width="60" height="40"/><rect x="290" y="146" width="60" height="40"/>
+      <rect x="350" y="146" width="60" height="40"/>
+      <rect x="170" y="186" width="60" height="40"/><rect x="230" y="186" width="60" height="40"/>
+      <rect x="290" y="186" width="60" height="40"/><rect x="350" y="186" width="60" height="40"/>
+      <rect x="110" y="226" width="60" height="40"/><rect x="170" y="226" width="60" height="40"/>
+      <rect x="230" y="226" width="60" height="40"/><rect x="290" y="226" width="60" height="40"/>
+      <rect x="350" y="226" width="60" height="40"/>
+    </g>
+    <g fill="#dbe4fb" stroke="#4169E1" stroke-width="2">
+      <rect x="290" y="66" width="60" height="40"/><rect x="230" y="106" width="60" height="40"/>
+      <rect x="170" y="146" width="60" height="40"/><rect x="110" y="186" width="60" height="40"/>
+    </g>
+  </g>
+  <!-- start cell (1,5): dashed accent outline -->
+  <rect x="350" y="66" width="60" height="40" fill="none" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <g text-anchor="middle" font-weight="600">
+    <g fill="#9aa7b2">
+      <text x="140" y="91">2</text><text x="200" y="91">3</text><text x="260" y="91">4</text><text x="380" y="91">6</text>
+      <text x="140" y="131">3</text><text x="200" y="131">4</text><text x="260" y="131">5</text><text x="320" y="131">6</text><text x="380" y="131">7</text>
+      <text x="140" y="171">4</text><text x="200" y="171">5</text><text x="260" y="171">6</text><text x="320" y="171">7</text><text x="380" y="171">8</text>
+      <text x="200" y="211">6</text><text x="260" y="211">7</text><text x="320" y="211">8</text><text x="380" y="211">9</text>
+      <text x="140" y="251">6</text><text x="200" y="251">7</text><text x="260" y="251">8</text><text x="320" y="251">9</text><text x="380" y="251">10</text>
+    </g>
+    <g fill="#4169E1">
+      <text x="320" y="91">5</text><text x="260" y="131">5</text><text x="200" y="171">5</text><text x="140" y="211">5</text>
+    </g>
+  </g>
+  <!-- walk arrows: one column drop, then the diagonal hit-to-hit steps -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 364 86 H 336" marker-end="url(#arrow)"/>
+    <path d="M 308 96 L 272 116" marker-end="url(#arrow)"/>
+    <path d="M 248 136 L 212 156" marker-end="url(#arrow)"/>
+    <path d="M 188 176 L 152 196" marker-end="url(#arrow)"/>
+  </g>
+  <!-- walk log (excerpt note + per-step evaluations) -->
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="446" y="64">excerpt x, y &#8804; 5 &#8212; the real walk</text>
+    <text x="446" y="84">starts at (1,1000); y = 1000&#8230;6</text>
+    <text x="446" y="104">all give f &gt; 5.</text>
+    <text x="446" y="134">1. (1,5): f = 6 &gt; 5, y--</text>
+    <text x="446" y="156">2. (1,4): f = 5, hit <tspan fill="#4169E1" font-weight="600">[1,4]</tspan></text>
+    <text x="446" y="178">3. (2,3): f = 5, hit <tspan fill="#4169E1" font-weight="600">[2,3]</tspan></text>
+    <text x="446" y="200">4. (3,2): f = 5, hit <tspan fill="#4169E1" font-weight="600">[3,2]</tspan></text>
+    <text x="446" y="222">5. (4,1): f = 5, hit <tspan fill="#4169E1" font-weight="600">[4,1]</tspan></text>
+    <text x="446" y="244">on a hit both pointers move;</text>
+    <text x="446" y="264">y = 0 ends the walk</text>
+  </g>
+  <text x="340" y="298" text-anchor="middle" fill="#1a2026" font-size="13">Each step deletes a whole row or column &#8212; f = 6 &gt; 5 drops y = 5 first;</text>
+  <text x="340" y="316" text-anchor="middle" fill="#1a2026" font-size="13">the hits walk the anti-diagonal x + y = 5: <tspan fill="#4169E1" font-weight="600">[1,4], [2,3], [3,2], [4,1]</tspan>.</text>
+</svg>

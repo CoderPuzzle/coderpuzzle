@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 316" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="316" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- s = "abcd", t = "bcdf", maxCost = 3; per-position costs |s[i]-t[i]| = 1,1,1,2
+       in cells 56x36 at y 184, columns centered at x 186/282/378/474; accent bracket
+       = the best window [0,3) with sum 3, gray bracket = after the cost-2 position
+       forces two shrinks to [2,4) -->
+  <text x="130" y="60" text-anchor="end" font-size="12" fill="#5c6b76">s</text>
+  <text x="130" y="116" text-anchor="end" font-size="12" fill="#5c6b76">t</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="158" y="40" width="56" height="30"/>
+    <rect x="254" y="40" width="56" height="30"/>
+    <rect x="350" y="40" width="56" height="30"/>
+    <rect x="446" y="40" width="56" height="30"/>
+    <rect x="158" y="96" width="56" height="30"/>
+    <rect x="254" y="96" width="56" height="30"/>
+    <rect x="350" y="96" width="56" height="30"/>
+    <rect x="446" y="96" width="56" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="186" y="60">a</text><text x="282" y="60">b</text>
+    <text x="378" y="60">c</text><text x="474" y="60">d</text>
+    <text x="186" y="116">b</text><text x="282" y="116">c</text>
+    <text x="378" y="116">d</text><text x="474" y="116">f</text>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.5" fill="none">
+    <path d="M 186 74 L 186 92" marker-end="url(#arrowg)"/>
+    <path d="M 282 74 L 282 92" marker-end="url(#arrowg)"/>
+    <path d="M 378 74 L 378 92" marker-end="url(#arrowg)"/>
+    <path d="M 474 74 L 474 92" marker-end="url(#arrowg)"/>
+  </g>
+  <!-- cost array with the sliding-window brackets -->
+  <text x="126" y="208" text-anchor="end" font-size="12" fill="#5c6b76">cost</text>
+  <text x="540" y="208" font-size="11.5" fill="#5c6b76">cost[i] = |s[i]&#8722;t[i]|</text>
+  <path d="M 158 178 L 158 172 L 406 172 L 406 178" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="282" y="164" text-anchor="middle" font-size="12.5" fill="#4169E1" font-weight="600">window [0, 3): sum 1+1+1 = 3 &#8804; 3, length 3 &#8212; best</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="158" y="184" width="56" height="36"/>
+    <rect x="254" y="184" width="56" height="36"/>
+    <rect x="350" y="184" width="56" height="36"/>
+    <rect x="446" y="184" width="56" height="36"/>
+  </g>
+  <g text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a2026">
+    <text x="186" y="208">1</text><text x="282" y="208">1</text>
+    <text x="378" y="208">1</text><text x="474" y="208">2</text>
+  </g>
+  <path d="M 350 226 L 350 232 L 502 232 L 502 226" fill="none" stroke="#5c6b76" stroke-width="2"/>
+  <text x="426" y="252" text-anchor="middle" font-size="12" fill="#5c6b76">the trailing 2: 3 + 2 = 5 &gt; 3 &#8594; shrink twice &#8594; [2, 4), length 2</text>
+  <text x="330" y="284" text-anchor="middle" fill="#1a2026" font-size="13">Growing right, the window reaches <tspan fill="#4169E1" font-weight="600">'abc'</tspan> with sum 3 &#8804; maxCost 3 &#8212; length 3;</text>
+  <text x="330" y="302" text-anchor="middle" fill="#1a2026" font-size="13">appending the cost-2 position overshoots to 5, and the shrunk window never beats 3.</text>
+</svg>

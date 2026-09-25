@@ -8,4 +8,6 @@ The reconstruction walks (i, j) from (0, 0). When the current characters match, 
 
 Correctness rests on the greedy being an LCS witness: at every step the emitted unmatched character is provably not part of every remaining LCS, so the walk uses a full-length common subsequence and each of its characters exactly once. Edge cases: identical strings take the match branch throughout and return themselves; strings with no common character emit both strings in the tie order.
 
+![On str1 = abac and str2 = cab the suffix table gives dp[0][0] = 2, and the walk from (0, 0) emits c from str2, the shared a and b once each, then str1's tail ac — building cabac of length 4 + 3 - 2 = 5.](figures/solution-lcs-reconstruction-walk.svg)
+
 **Complexity:** `O(n·m)` time, `O(n·m)` space, for input lengths n and m.

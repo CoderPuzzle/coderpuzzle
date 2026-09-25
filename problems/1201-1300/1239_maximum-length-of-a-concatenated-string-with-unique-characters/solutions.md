@@ -6,6 +6,8 @@ The key insight is that a candidate concatenation is fully characterized by whic
 
 Preprocessing converts each input string to its mask, marking it `-1` if the string itself repeats a character (such a string can never appear in a valid concatenation, so it is skipped entirely). The depth-first search walks the array with a start index: at each call it records the popcount of the current mask as a candidate answer, then tries extending with every later string whose mask is not `-1` and shares no letter with the accumulated mask. The start index only moves forward, which enumerates each subsequence once (in index order) instead of all orderings — concatenation length is order-independent, so nothing is lost.
 
+![For arr = [un, iq, ue] the DFS tree records each node's 5-bit mask (bits u n i q e); the leaves uniq (11110) and ique (01111) both reach popcount 4, while every ue extension sharing u is pruned, so the answer is 4.](figures/solution-dfs-bitmask-tree.svg)
+
 Because `arr` has at most 16 entries (`n = len(arr)`), the search space is at most `2^n` subsequences, small enough to exhaust directly. The empty selection gives the starting candidate 0, and any single self-consistent string immediately beats it. Duplicate-letter strings and conflicting extensions prune branches early, keeping the recursion tree far below the theoretical bound in practice.
 
 **Complexity:** `O(2^n · n)` time, `O(n)` space.

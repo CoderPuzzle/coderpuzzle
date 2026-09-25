@@ -13,6 +13,8 @@ to help any later slot2 (they only start further right), so only pointer 1
 advances; symmetrically otherwise. Each slot is skipped at most once by each
 pointer, giving a linear merge after the sort.
 
+![Merging the sorted rows, the pointers reject [10,15] (length 5 < 8) and the empty [10,50] × [60,70] pairing, then the overlap [60,70] fits duration 8 and returns [60,68].](figures/solution-two-pointer-merge.svg)
+
 When an overlap is at least `duration` long, the answer is
 `[max(start1, start2), max(start1, start2) + duration]`; if the merge
 finishes without one, the two calendars share no long-enough window and the

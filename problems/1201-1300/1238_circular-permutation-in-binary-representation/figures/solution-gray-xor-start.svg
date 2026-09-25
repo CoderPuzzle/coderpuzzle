@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 314" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="314" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- n = 2, start = 3: g(i) = i ^ (i>>1) = 00, 01, 11, 10 (bit1 left, bit0 right);
+       flipped bit shaded per step; XOR by 11 gives p = 11,10,00,01 = [3,2,0,1] -->
+  <text x="80" y="64" text-anchor="middle" fill="#9aa7b2" font-size="10">b1</text>
+  <text x="124" y="64" text-anchor="middle" fill="#9aa7b2" font-size="10">b0</text>
+  <!-- wrap arrow g(3) -> g(0) -->
+  <path d="M 474 62 C 474 28, 102 28, 102 62" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="288" y="22" text-anchor="middle" fill="#5c6b76" font-size="11.5">wrap: g(3) &#8594; g(0) flips b1</text>
+  <!-- gray-code row; each box's flipped bit carries the shaded cell -->
+  <g stroke="#42525e" stroke-width="1.3">
+    <g fill="#ffffff">
+      <rect x="70" y="70" width="32" height="32"/><rect x="102" y="70" width="32" height="32"/>
+      <rect x="194" y="70" width="32" height="32"/>
+      <rect x="350" y="70" width="32" height="32"/>
+      <rect x="442" y="70" width="32" height="32"/>
+    </g>
+    <g fill="#dbe4fb">
+      <rect x="226" y="70" width="32" height="32"/>
+      <rect x="318" y="70" width="32" height="32"/>
+      <rect x="474" y="70" width="32" height="32"/>
+    </g>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <g fill="#1a2026">
+      <text x="86" y="91">0</text><text x="118" y="91">0</text>
+      <text x="210" y="91">0</text>
+      <text x="366" y="91">1</text>
+      <text x="458" y="91">1</text>
+    </g>
+    <g fill="#4169E1">
+      <text x="242" y="91">1</text>
+      <text x="334" y="91">1</text>
+      <text x="490" y="91">0</text>
+    </g>
+  </g>
+  <!-- step arrows with the bit that flips -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 140 86 H 188" marker-end="url(#arrow)"/>
+    <path d="M 264 86 H 312" marker-end="url(#arrow)"/>
+    <path d="M 388 86 H 436" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="164" y="106">flip b0</text><text x="288" y="106">flip b1</text><text x="412" y="106">flip b0</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="102" y="124">i = 0</text><text x="226" y="124">i = 1</text><text x="350" y="124">i = 2</text><text x="474" y="124">i = 3</text>
+  </g>
+  <!-- translation stage -->
+  <text x="310" y="172" text-anchor="middle" fill="#1a2026" font-size="13">XOR every entry by <tspan fill="#4169E1" font-weight="600">start = 11</tspan></text>
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="64" y="192" width="76" height="40"/><rect x="188" y="192" width="76" height="40"/>
+    <rect x="312" y="192" width="76" height="40"/><rect x="436" y="192" width="76" height="40"/>
+  </g>
+  <g text-anchor="middle">
+    <g font-weight="600" font-size="15" fill="#4169E1">
+      <text x="102" y="210">11</text><text x="226" y="210">10</text><text x="350" y="210">00</text><text x="474" y="210">01</text>
+    </g>
+    <g font-size="12" fill="#5c6b76">
+      <text x="102" y="226">= 3</text><text x="226" y="226">= 2</text><text x="350" y="226">= 0</text><text x="474" y="226">= 1</text>
+    </g>
+  </g>
+  <text x="310" y="262" text-anchor="middle" fill="#1a2026" font-size="13">g(i) = i ^ (i &gt;&gt; 1) walks 00, 01, 11, 10 &#8212; one bit flips per step;</text>
+  <text x="310" y="280" text-anchor="middle" fill="#1a2026" font-size="13">XOR by start = 11 translates it to <tspan fill="#4169E1" font-weight="600">[3, 2, 0, 1]</tspan> with one-bit steps preserved,</text>
+  <text x="310" y="298" text-anchor="middle" fill="#1a2026" font-size="13">and the wrap 11 &#8594; 01 still differs in the single top bit.</text>
+</svg>

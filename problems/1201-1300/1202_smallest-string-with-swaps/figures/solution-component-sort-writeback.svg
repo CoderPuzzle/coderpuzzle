@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 404" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="404" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- s = "dcab", pairs = [[0,3],[1,2]]; index columns centered at x 225/295/365/435,
+       input cells 56x40 at y 40, component color = stroke: {0,3} accent, {1,2} gray;
+       middle row = each component's chars sorted (corner 1,2 = write-back order),
+       arrows write them onto the result row -->
+  <g text-anchor="middle" font-size="11.5" fill="#5c6b76">
+    <text x="225" y="30">0</text><text x="295" y="30">1</text>
+    <text x="365" y="30">2</text><text x="435" y="30">3</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="197" y="40" width="56" height="40"/>
+    <rect x="267" y="40" width="56" height="40"/>
+    <rect x="337" y="40" width="56" height="40"/>
+    <rect x="407" y="40" width="56" height="40"/>
+  </g>
+  <g text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a2026">
+    <text x="225" y="66">d</text><text x="295" y="66">c</text>
+    <text x="365" y="66">a</text><text x="435" y="66">b</text>
+  </g>
+  <!-- union arcs for the two pairs -->
+  <path d="M 225 92 Q 330 124 435 92" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 295 92 Q 330 108 365 92" fill="none" stroke="#5c6b76" stroke-width="2" marker-end="url(#arrowg)"/>
+  <text x="447" y="90" font-size="12" fill="#4169E1">pair [0,3]</text>
+  <text x="373" y="124" font-size="12" fill="#5c6b76">pair [1,2]</text>
+  <!-- per-component sorted chars, aligned under the index they fill -->
+  <text x="40" y="184" font-size="12" fill="#5c6b76">sorted chars,</text>
+  <text x="40" y="199" font-size="12" fill="#5c6b76">per component</text>
+  <g stroke-width="2" fill="#ffffff">
+    <rect x="197" y="170" width="56" height="36" stroke="#4169E1"/>
+    <rect x="267" y="170" width="56" height="36" stroke="#5c6b76"/>
+    <rect x="337" y="170" width="56" height="36" stroke="#5c6b76"/>
+    <rect x="407" y="170" width="56" height="36" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a2026">
+    <text x="225" y="193">b</text><text x="295" y="193">a</text>
+    <text x="365" y="193">c</text><text x="435" y="193">d</text>
+  </g>
+  <g font-size="10" fill="#9aa7b2">
+    <text x="203" y="181">1</text><text x="273" y="181">1</text>
+    <text x="343" y="181">2</text><text x="413" y="181">2</text>
+  </g>
+  <!-- write-back arrows -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 225 210 L 225 298" marker-end="url(#arrow)"/>
+    <path d="M 295 210 L 295 298" marker-end="url(#arrow)"/>
+    <path d="M 365 210 L 365 298" marker-end="url(#arrow)"/>
+    <path d="M 435 210 L 435 298" marker-end="url(#arrow)"/>
+  </g>
+  <text x="40" y="332" font-size="12" fill="#5c6b76">result</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="197" y="306" width="56" height="40"/>
+    <rect x="267" y="306" width="56" height="40"/>
+    <rect x="337" y="306" width="56" height="40"/>
+    <rect x="407" y="306" width="56" height="40"/>
+  </g>
+  <g text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a2026">
+    <text x="225" y="332">b</text><text x="295" y="332">a</text>
+    <text x="365" y="332">c</text><text x="435" y="332">d</text>
+  </g>
+  <text x="330" y="376" text-anchor="middle" fill="#1a2026" font-size="13">Union-find merges each pair into a component ({0,3} and {1,2}); each component's</text>
+  <text x="330" y="394" text-anchor="middle" fill="#1a2026" font-size="13">characters are sorted and written back smallest-to-smallest-index: dcab becomes <tspan fill="#4169E1" font-weight="600">bacd</tspan>.</text>
+</svg>

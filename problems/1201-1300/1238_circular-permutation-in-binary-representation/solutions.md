@@ -14,4 +14,6 @@ differences to one-bit differences. The first element becomes
 `start ^ g(0) = start`, so `p[i] = start ^ (i ^ (i >> 1))` is exactly the
 required circular permutation, emitted in one pass.
 
+![For n = 2, start = 3 the reflected gray code walks 00, 01, 11, 10 with a single bit flipping per step, and XOR-ing the whole list by start = 11 translates it to [3, 2, 0, 1] with every one-bit step and the wrap 11 -> 01 preserved.](figures/solution-gray-xor-start.svg)
+
 **Complexity:** `O(2^n)` time, `O(2^n)` space for the output.

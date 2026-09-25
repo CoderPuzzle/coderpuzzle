@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 368" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="368" fill="#ffffff"/>
+  <!-- words = ["dog","cat","dad","good"], budget a2 c1 d3 g1 o2 (no t); node = remaining counts + score so far -->
+  <!-- best path: skip dog, skip cat, take dad (+11), take good (+12) = 23 -->
+  <text x="40" y="18" fill="#5c6b76" font-size="11.5">node = remaining letter counts (a c d g o) + score so far</text>
+  <!-- level labels -->
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="8" y="87">dog?</text><text x="8" y="147">cat?</text>
+    <text x="8" y="207">dad?</text><text x="8" y="268">good?</text>
+  </g>
+  <!-- plain edges -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="320" y1="66" x2="164" y2="100"/>
+    <line x1="220" y1="186" x2="86" y2="220"/>
+    <line x1="540" y1="186" x2="406" y2="220"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.4">
+    <line x1="160" y1="126" x2="216" y2="160"/>
+    <line x1="480" y1="126" x2="424" y2="160"/>
+    <line x1="220" y1="186" x2="236" y2="220"/>
+    <line x1="540" y1="186" x2="556" y2="220"/>
+    <line x1="80" y1="246" x2="116" y2="282"/>
+    <line x1="240" y1="246" x2="276" y2="282"/>
+    <line x1="400" y1="246" x2="436" y2="282"/>
+    <line x1="560" y1="246" x2="596" y2="282"/>
+  </g>
+  <!-- pruned infeasible take-branches -->
+  <g stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="4 3">
+    <line x1="160" y1="126" x2="104" y2="160"/>
+    <line x1="480" y1="126" x2="424" y2="160"/>
+    <line x1="80" y1="246" x2="44" y2="278"/>
+    <line x1="240" y1="246" x2="204" y2="278"/>
+  </g>
+  <!-- best path: skip dog, skip cat, take dad, take good -->
+  <g stroke="#4169E1" stroke-width="3">
+    <line x1="320" y1="66" x2="476" y2="100"/>
+    <line x1="480" y1="126" x2="536" y2="160"/>
+    <line x1="540" y1="186" x2="406" y2="220"/>
+    <line x1="400" y1="246" x2="364" y2="282"/>
+  </g>
+  <ellipse cx="400" cy="234" rx="46" ry="21" fill="#dbe4fb"/>
+  <!-- take-edge values -->
+  <g fill="#42525e" font-size="10.5">
+    <text x="226" y="74">+10</text><text x="128" y="198">+11</text><text x="450" y="198">+11</text>
+  </g>
+  <!-- node labels -->
+  <g text-anchor="middle">
+    <text x="320" y="48" font-size="10.5">a2 c1 d3 g1 o2</text><text x="320" y="62" font-size="10.5" fill="#5c6b76">=0</text>
+    <text x="160" y="108" font-size="10.5">a2 c1 d2 g0 o1</text><text x="160" y="122" font-size="10.5" fill="#5c6b76">=10</text>
+    <text x="480" y="108" font-size="10.5">a2 c1 d3 g1 o2</text><text x="480" y="122" font-size="10.5" fill="#5c6b76">=0</text>
+    <text x="100" y="172" font-size="10.5" fill="#9aa7b2">✕ cat (no t)</text>
+    <text x="220" y="168" font-size="10.5">a2 c1 d2 g0 o1</text><text x="220" y="182" font-size="10.5" fill="#5c6b76">=10</text>
+    <text x="420" y="172" font-size="10.5" fill="#9aa7b2">✕ cat (no t)</text>
+    <text x="540" y="168" font-size="10.5">a2 c1 d3 g1 o2</text><text x="540" y="182" font-size="10.5" fill="#5c6b76">=0</text>
+    <text x="80" y="228" font-size="10.5">a1 c1 d0 g0 o1</text><text x="80" y="242" font-size="10.5" fill="#5c6b76">=21</text>
+    <text x="240" y="228" font-size="10.5">a2 c1 d2 g0 o1</text><text x="240" y="242" font-size="10.5" fill="#5c6b76">=10</text>
+    <text x="400" y="228" font-size="10.5" fill="#1a2026">a1 c1 d1 g1 o2</text><text x="400" y="242" font-size="10.5" fill="#5c6b76">=11</text>
+    <text x="560" y="228" font-size="10.5">a2 c1 d3 g1 o2</text><text x="560" y="242" font-size="10.5" fill="#5c6b76">=0</text>
+    <text x="40" y="290" font-size="10.5" fill="#9aa7b2">✕ good (no g)</text>
+    <text x="200" y="290" font-size="10.5" fill="#9aa7b2">✕ good (no g)</text>
+    <text x="120" y="292" font-size="15" font-weight="600">21</text>
+    <text x="280" y="292" font-size="15" font-weight="600">10</text>
+    <text x="360" y="293" font-size="16" font-weight="700" fill="#4169E1">23</text>
+    <text x="440" y="292" font-size="15" font-weight="600">11</text>
+    <text x="520" y="292" font-size="15" font-weight="600">12</text>
+    <text x="600" y="292" font-size="15" font-weight="600">0</text>
+    <text x="360" y="312" font-size="11.5" font-weight="600" fill="#4169E1">best: {dad, good}</text>
+  </g>
+  <text x="40" y="338" fill="#1a2026" font-size="13">cat can never be formed (the budget has no 't'), so every cat branch is</text>
+  <text x="40" y="356" fill="#1a2026" font-size="13">pruned; the accented path takes dad (+11) then good (+12) = <tspan fill="#4169E1" font-weight="600">23</tspan>.</text>
+</svg>

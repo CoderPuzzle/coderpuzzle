@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 262" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="262" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- Example 1 route R R CW R D D D D CCW R D (11 moves); BFS states 0..11 as
+       two occupied cells, H = (r,c),(r,c+1) side by side, V = (r,c),(r+1,c)
+       stacked. Slots 104 apart, centers x=66+104*i; squares 18x18, gap 2. -->
+  <text x="24" y="18" fill="#5c6b76" font-size="12">one shortest route for the Example 1 grid: R R CW R D D D D CCW R D</text>
+  <text x="24" y="34" fill="#5c6b76" font-size="12">each BFS state = the two occupied cells + their orientation</text>
+  <g stroke="#5c6b76" stroke-width="1.4" fill="none">
+    <line x1="90" y1="71" x2="142" y2="71" marker-end="url(#arrow)"/>
+    <line x1="194" y1="71" x2="246" y2="71" marker-end="url(#arrow)"/>
+    <line x1="402" y1="71" x2="449" y2="71" marker-end="url(#arrow)"/>
+    <line x1="506" y1="71" x2="553" y2="71" marker-end="url(#arrow)"/>
+    <line x1="586" y1="116" x2="586" y2="134"/>
+    <line x1="586" y1="134" x2="66" y2="134"/>
+    <line x1="66" y1="134" x2="66" y2="146" marker-end="url(#arrow)"/>
+    <line x1="90" y1="171" x2="142" y2="171" marker-end="url(#arrow)"/>
+    <line x1="194" y1="171" x2="246" y2="171" marker-end="url(#arrow)"/>
+    <line x1="402" y1="171" x2="449" y2="171" marker-end="url(#arrow)"/>
+    <line x1="506" y1="171" x2="553" y2="171" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="none">
+    <line x1="298" y1="71" x2="356" y2="71" marker-end="url(#arrowA)"/>
+    <line x1="298" y1="171" x2="356" y2="171" marker-end="url(#arrowA)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="116" y="60">R</text>
+    <text x="220" y="60">R</text>
+    <text x="428" y="60">R</text>
+    <text x="532" y="60">D</text>
+    <text x="116" y="160">D</text>
+    <text x="220" y="160">D</text>
+    <text x="428" y="160">R</text>
+    <text x="532" y="160">D</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="10.5" font-weight="600">
+    <text x="324" y="60">CW</text>
+    <text x="324" y="160">CCW</text>
+  </g>
+  <!-- states 0..5 (row 1) -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4">
+    <rect x="47" y="62" width="18" height="18"/><rect x="67" y="62" width="18" height="18"/>
+    <rect x="151" y="62" width="18" height="18"/><rect x="171" y="62" width="18" height="18"/>
+    <rect x="255" y="62" width="18" height="18"/><rect x="275" y="62" width="18" height="18"/>
+    <rect x="369" y="52" width="18" height="18"/><rect x="369" y="72" width="18" height="18"/>
+    <rect x="473" y="52" width="18" height="18"/><rect x="473" y="72" width="18" height="18"/>
+    <rect x="577" y="52" width="18" height="18"/><rect x="577" y="72" width="18" height="18"/>
+  </g>
+  <!-- states 6..10 (row 2) -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4">
+    <rect x="57" y="152" width="18" height="18"/><rect x="57" y="172" width="18" height="18"/>
+    <rect x="161" y="152" width="18" height="18"/><rect x="161" y="172" width="18" height="18"/>
+    <rect x="265" y="152" width="18" height="18"/><rect x="265" y="172" width="18" height="18"/>
+    <rect x="359" y="162" width="18" height="18"/><rect x="379" y="162" width="18" height="18"/>
+    <rect x="463" y="162" width="18" height="18"/><rect x="483" y="162" width="18" height="18"/>
+  </g>
+  <!-- target state 11 -->
+  <g fill="#4169E1">
+    <rect x="567" y="162" width="18" height="18"/><rect x="587" y="162" width="18" height="18"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="34" y="106">0</text>
+    <text x="138" y="106">1</text>
+    <text x="242" y="106">2</text>
+    <text x="326" y="106">3</text>
+    <text x="430" y="106">4</text>
+    <text x="534" y="106">5</text>
+    <text x="24" y="206">6</text>
+    <text x="128" y="206">7</text>
+    <text x="232" y="206">8</text>
+    <text x="316" y="206">9</text>
+    <text x="420" y="206">10</text>
+  </g>
+  <text x="524" y="206" text-anchor="middle" fill="#4169E1" font-size="10.5" font-weight="600">11</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5">
+    <text x="70" y="106">H(0,0)</text>
+    <text x="174" y="106">H(0,1)</text>
+    <text x="278" y="106">H(0,2)</text>
+    <text x="382" y="106">V(0,2)</text>
+    <text x="486" y="106">V(0,3)</text>
+    <text x="590" y="106">V(1,3)</text>
+    <text x="60" y="206">V(2,3)</text>
+    <text x="164" y="206">V(3,3)</text>
+    <text x="268" y="206">V(4,3)</text>
+    <text x="372" y="206">H(4,3)</text>
+    <text x="476" y="206">H(4,4)</text>
+  </g>
+  <text x="580" y="206" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="11.5">H(5,4)</text>
+  <text x="340" y="234" text-anchor="middle" fill="#1a2026" font-size="13">BFS over states (r, c, orientation) reaches the target <tspan fill="#4169E1" font-weight="600">H(5,4)</tspan> = cells (5,4),(5,5)</text>
+  <text x="340" y="254" text-anchor="middle" fill="#1a2026" font-size="13">in <tspan fill="#4169E1" font-weight="600">11</tspan> moves; the accented rotations swing the head around the fixed tail cell.</text>
+</svg>

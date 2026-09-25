@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "lee(t(c)o)de)"; cells 40x40 at x=76+40i, y=48; stack boxes 110x56 at y=152, x=17+134j -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="76" y="48" width="40" height="40" fill="#ffffff"/>
+    <rect x="116" y="48" width="40" height="40" fill="#ffffff"/>
+    <rect x="156" y="48" width="40" height="40" fill="#ffffff"/>
+    <rect x="196" y="48" width="40" height="40" fill="#dbe4fb"/>
+    <rect x="236" y="48" width="40" height="40" fill="#ffffff"/>
+    <rect x="276" y="48" width="40" height="40" fill="#dbe4fb"/>
+    <rect x="316" y="48" width="40" height="40" fill="#ffffff"/>
+    <rect x="356" y="48" width="40" height="40" fill="#ffffff"/>
+    <rect x="396" y="48" width="40" height="40" fill="#ffffff"/>
+    <rect x="436" y="48" width="40" height="40" fill="#ffffff"/>
+    <rect x="476" y="48" width="40" height="40" fill="#ffffff"/>
+    <rect x="516" y="48" width="40" height="40" fill="#ffffff"/>
+    <rect x="556" y="48" width="40" height="40" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="96" y="73" fill="#1a2026">l</text>
+    <text x="136" y="73" fill="#1a2026">e</text>
+    <text x="176" y="73" fill="#1a2026">e</text>
+    <text x="216" y="73" fill="#1a2026">(</text>
+    <text x="256" y="73" fill="#1a2026">t</text>
+    <text x="296" y="73" fill="#1a2026">(</text>
+    <text x="336" y="73" fill="#1a2026">c</text>
+    <text x="376" y="73" fill="#1a2026">)</text>
+    <text x="416" y="73" fill="#1a2026">o</text>
+    <text x="456" y="73" fill="#1a2026">)</text>
+    <text x="496" y="73" fill="#1a2026">d</text>
+    <text x="536" y="73" fill="#1a2026">e</text>
+    <text x="576" y="73" fill="#9aa7b2">)</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="96" y="106">0</text><text x="136" y="106">1</text><text x="176" y="106">2</text>
+    <text x="216" y="106">3</text><text x="256" y="106">4</text><text x="296" y="106">5</text>
+    <text x="336" y="106">6</text><text x="376" y="106">7</text><text x="416" y="106">8</text>
+    <text x="456" y="106">9</text><text x="496" y="106">10</text><text x="536" y="106">11</text>
+  </g>
+  <text x="576" y="106" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">remove</text>
+  <text x="340" y="140" text-anchor="middle" fill="#5c6b76" font-size="12.5">index stack after each event</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="17" y="152" width="110" height="56"/>
+    <rect x="151" y="152" width="110" height="56"/>
+    <rect x="285" y="152" width="110" height="56"/>
+    <rect x="419" y="152" width="110" height="56"/>
+    <rect x="553" y="152" width="110" height="56" fill="#f0f3f7"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="none">
+    <path d="M 130 180 H 146" marker-end="url(#arrow)"/>
+    <path d="M 264 180 H 280" marker-end="url(#arrow)"/>
+    <path d="M 398 180 H 414" marker-end="url(#arrow)"/>
+    <path d="M 532 180 H 548" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="72" y="172" fill="#5c6b76" font-size="12">i=3 push</text>
+    <text x="72" y="194" fill="#4169E1" font-size="15" font-weight="600">[3]</text>
+    <text x="206" y="172" fill="#5c6b76" font-size="12">i=5 push</text>
+    <text x="206" y="194" fill="#4169E1" font-size="15" font-weight="600">[3, 5]</text>
+    <text x="340" y="172" fill="#5c6b76" font-size="12">i=7 ) pops 5</text>
+    <text x="340" y="194" fill="#4169E1" font-size="15" font-weight="600">[3]</text>
+    <text x="474" y="172" fill="#5c6b76" font-size="12">i=9 ) pops 3</text>
+    <text x="474" y="194" fill="#4169E1" font-size="15" font-weight="600">[ ]</text>
+    <text x="608" y="172" fill="#5c6b76" font-size="12">i=12 ) on empty</text>
+    <text x="608" y="194" fill="#4169E1" font-size="15" font-weight="600">remove 12</text>
+  </g>
+  <text x="340" y="240" text-anchor="middle" font-size="13.5"><tspan fill="#5c6b76">keeping every other index: </tspan><tspan fill="#1a2026" font-weight="600">"lee(t(c)o)de"</tspan></text>
+  <text x="340" y="272" text-anchor="middle" fill="#1a2026" font-size="13">Both closes pop their opens, and the final ) at index 12 lands on an empty</text>
+  <text x="340" y="290" text-anchor="middle" fill="#1a2026" font-size="13">stack — it is the <tspan fill="#4169E1" font-weight="600">only removal</tspan>, and filtering it out leaves "lee(t(c)o)de".</text>
+</svg>

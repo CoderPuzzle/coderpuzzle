@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 314" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="314" fill="#ffffff"/>
+  <!-- slots1 = [[10,50],[60,120],[140,210]], slots2 = [[0,15],[60,70]],
+       duration = 8; x = 60 + 2.6*t; bars 22 tall: slots1 y=80, slots2 y=140 -->
+  <text x="620" y="26" text-anchor="end" fill="#5c6b76" font-size="12">duration = 8</text>
+  <text x="8" y="95" fill="#5c6b76" font-size="12">slots1</text>
+  <text x="8" y="155" fill="#5c6b76" font-size="12">slots2</text>
+  <!-- connector lines between the paired slots -->
+  <g stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 3">
+    <line x1="86" y1="102" x2="86" y2="140"/>
+    <line x1="99" y1="102" x2="99" y2="140"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.4" stroke-dasharray="3 3">
+    <line x1="216" y1="102" x2="216" y2="140"/>
+    <line x1="242" y1="102" x2="242" y2="140"/>
+  </g>
+  <!-- slots1 bars -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="86" y="80" width="104" height="22"/>
+    <rect x="216" y="80" width="156" height="22"/>
+    <rect x="424" y="80" width="182" height="22"/>
+  </g>
+  <rect x="86" y="80" width="13" height="22" fill="#dbe4fb"/>
+  <rect x="216" y="80" width="26" height="22" fill="#4169E1"/>
+  <text x="138" y="74" text-anchor="middle" fill="#5c6b76" font-size="11">[10,50]</text>
+  <text x="294" y="74" text-anchor="middle" fill="#5c6b76" font-size="11">[60,120]</text>
+  <text x="515" y="74" text-anchor="middle" fill="#5c6b76" font-size="11">[140,210]</text>
+  <!-- slots2 bars -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="60" y="140" width="39" height="22"/>
+    <rect x="216" y="140" width="26" height="22"/>
+  </g>
+  <rect x="86" y="140" width="13" height="22" fill="#dbe4fb"/>
+  <rect x="216" y="140" width="26" height="22" fill="#4169E1"/>
+  <text x="80" y="176" text-anchor="middle" fill="#5c6b76" font-size="11">[0,15]</text>
+  <text x="254" y="155" fill="#5c6b76" font-size="11">[60,70]</text>
+  <!-- pointer positions when the fit is found -->
+  <circle cx="203" cy="91" r="9" fill="#ffffff" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="203" y="95" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">i</text>
+  <circle cx="203" cy="151" r="9" fill="#ffffff" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="203" y="155" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">j</text>
+  <!-- step markers -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.1">
+    <circle cx="113" cy="121" r="8"/><circle cx="203" cy="121" r="8"/><circle cx="256" cy="121" r="8"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10">
+    <text x="113" y="124.5">1</text><text x="203" y="124.5">2</text><text x="256" y="124.5">3</text>
+  </g>
+  <!-- answer [60,68] under the winning overlap -->
+  <g stroke="#4169E1" stroke-width="1.6">
+    <line x1="216" y1="168" x2="216" y2="176"/>
+    <line x1="237" y1="168" x2="237" y2="176"/>
+  </g>
+  <line x1="216" y1="172" x2="237" y2="172" stroke="#4169E1" stroke-width="3"/>
+  <text x="226" y="196" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">[60,68]</text>
+  <!-- time axis -->
+  <line x1="60" y1="180" x2="620" y2="180" stroke="#9aa7b2" stroke-width="1.2"/>
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <line x1="60" y1="180" x2="60" y2="186"/><line x1="190" y1="180" x2="190" y2="186"/><line x1="320" y1="180" x2="320" y2="186"/><line x1="450" y1="180" x2="450" y2="186"/><line x1="580" y1="180" x2="580" y2="186"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="60" y="200">0</text><text x="190" y="200">50</text><text x="320" y="200">100</text><text x="450" y="200">150</text><text x="580" y="200">200</text>
+  </g>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="60" y="228"><tspan fill="#4169E1" font-weight="600">1</tspan>: [10,50] ∩ [0,15] = [10,15], length 5 &lt; 8 → advance j</text>
+    <text x="60" y="250"><tspan fill="#4169E1" font-weight="600">2</tspan>: [10,50] ends at 50, before [60,70] starts → advance i</text>
+    <text x="60" y="272"><tspan fill="#4169E1" font-weight="600">3</tspan>: [60,120] ∩ [60,70] = [60,70], length <tspan fill="#4169E1" font-weight="600">10 ≥ 8</tspan> → return <tspan fill="#4169E1" font-weight="600">[60,68]</tspan></text>
+  </g>
+  <text x="340" y="300" text-anchor="middle" fill="#1a2026" font-size="13">The first overlap at least 8 long wins: the meeting runs <tspan fill="#4169E1" font-weight="600">[60, 68]</tspan>, from max(60, 60) = 60.</text>
+</svg>

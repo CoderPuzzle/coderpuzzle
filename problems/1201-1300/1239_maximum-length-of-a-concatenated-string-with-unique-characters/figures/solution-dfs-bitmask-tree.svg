@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- arr = [un, iq, ue]; masks in bit order u n i q e: un=11000, iq=00110, ue=10001,
+       uniq=11110, ique=01111; dashed boxes are pruned extensions (share u);
+       dfs records popcount at every node, best leaf popcount = 4 -->
+  <text x="16" y="26" fill="#5c6b76" font-size="11.5">mask bits u n i q e</text>
+  <!-- level 0: root -->
+  <rect x="280" y="24" width="120" height="40" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="340" y="41" text-anchor="middle" font-weight="600" fill="#1a2026">&quot;&quot;</text>
+  <text x="340" y="57" text-anchor="middle" fill="#5c6b76" font-size="11">mask 00000 &#183; len 0</text>
+  <!-- level 1 -->
+  <rect x="110" y="104" width="120" height="44" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="350" y="104" width="120" height="44" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="510" y="104" width="120" height="44" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="170" y="122" text-anchor="middle" font-weight="600" fill="#1a2026">un</text>
+  <text x="170" y="139" text-anchor="middle" fill="#5c6b76" font-size="11">11000 &#183; len 2</text>
+  <text x="410" y="122" text-anchor="middle" font-weight="600" fill="#1a2026">iq</text>
+  <text x="410" y="139" text-anchor="middle" fill="#5c6b76" font-size="11">00110 &#183; len 2</text>
+  <text x="570" y="122" text-anchor="middle" font-weight="600" fill="#1a2026">ue</text>
+  <text x="570" y="139" text-anchor="middle" fill="#5c6b76" font-size="11">10001 &#183; len 2</text>
+  <!-- level 2 -->
+  <rect x="30" y="196" width="120" height="44" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="375" y="196" width="120" height="44" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="190" y="196" width="130" height="44" rx="5" fill="none" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="90" y="214" text-anchor="middle" font-weight="600" fill="#4169E1">uniq</text>
+  <text x="90" y="231" text-anchor="middle" fill="#4169E1" font-size="11">11110 &#183; len 4</text>
+  <text x="435" y="214" text-anchor="middle" font-weight="600" fill="#4169E1">ique</text>
+  <text x="435" y="231" text-anchor="middle" fill="#4169E1" font-size="11">01111 &#183; len 4</text>
+  <text x="255" y="214" text-anchor="middle" font-weight="600" fill="#9aa7b2">ue</text>
+  <text x="255" y="231" text-anchor="middle" fill="#9aa7b2" font-size="11">shares u</text>
+  <!-- level 3: uniq + ue prunes on the shared u -->
+  <rect x="35" y="262" width="110" height="38" rx="5" fill="none" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="90" y="278" text-anchor="middle" font-weight="600" fill="#9aa7b2" font-size="12">ue</text>
+  <text x="90" y="293" text-anchor="middle" fill="#9aa7b2" font-size="10.5">shares u</text>
+  <!-- solid extend edges -->
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 340 64 L 170 104" marker-end="url(#arrow)"/>
+    <path d="M 340 64 L 410 104" marker-end="url(#arrow)"/>
+    <path d="M 340 64 L 570 104" marker-end="url(#arrow)"/>
+    <path d="M 170 148 L 90 196" marker-end="url(#arrow)"/>
+    <path d="M 410 148 L 435 196" marker-end="url(#arrow)"/>
+  </g>
+  <!-- dashed pruned edges -->
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="none" stroke-dasharray="5 4">
+    <path d="M 170 148 L 255 196" marker-end="url(#arrowMuted)"/>
+    <path d="M 90 240 L 90 262" marker-end="url(#arrowMuted)"/>
+  </g>
+  <g font-size="11" fill="#5c6b76">
+    <text x="95" y="168" text-anchor="middle">+ iq</text>
+    <text x="452" y="172" text-anchor="middle">+ ue</text>
+    <text x="240" y="164" text-anchor="middle" fill="#9aa7b2">pruned</text>
+    <text x="100" y="254" fill="#9aa7b2">pruned</text>
+    <text x="570" y="172" text-anchor="middle" fill="#9aa7b2">no strings left to add</text>
+  </g>
+  <text x="340" y="328" text-anchor="middle" fill="#1a2026" font-size="13">un = 11000, iq = 00110, ue = 10001 in bit order u n i q e; masks extend only when AND = 0.</text>
+  <text x="340" y="346" text-anchor="middle" fill="#1a2026" font-size="13">The leaves uniq (11110) and ique (01111) both reach <tspan fill="#4169E1" font-weight="600">popcount 4</tspan>; every extension by ue</text>
+  <text x="340" y="364" text-anchor="middle" fill="#1a2026" font-size="13">that would reuse u is pruned, so the answer is <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

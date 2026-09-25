@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- n=8, group = [-1,-1,1,0,0,1,0,-1], beforeItems = [[],[6],[5],[6],[3,6],[],[],[]];
+       items 0,1,7 get private groups 2,3,4 (dashed cells). Band = group-Kahn emission
+       order g0,g3,g1,g2,g4 (only cross-group edge 0->3, from item 6 before item 1);
+       chips inside each box = that group's item-Kahn order; under-chip arrows are the
+       intra-group edges 6->3, 3->4 and 5->2 -->
+  <text x="24" y="61" font-size="11.5" fill="#5c6b76">item</text>
+  <text x="24" y="88" font-size="11.5" fill="#5c6b76">group</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="137" y="40" width="36" height="32"/>
+    <rect x="187" y="40" width="36" height="32" stroke-dasharray="4 3"/>
+    <rect x="237" y="40" width="36" height="32"/>
+    <rect x="287" y="40" width="36" height="32"/>
+    <rect x="337" y="40" width="36" height="32"/>
+    <rect x="387" y="40" width="36" height="32"/>
+    <rect x="437" y="40" width="36" height="32" stroke-dasharray="4 3"/>
+    <rect x="487" y="40" width="36" height="32" stroke-dasharray="4 3"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="155" y="61">0</text><text x="205" y="61">1</text><text x="255" y="61">2</text>
+    <text x="305" y="61">3</text><text x="355" y="61">4</text><text x="405" y="61">5</text>
+    <text x="455" y="61">6</text><text x="505" y="61">7</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5">
+    <text x="155" y="84" fill="#9aa7b2">g2</text>
+    <text x="205" y="84" fill="#9aa7b2">g3</text>
+    <text x="255" y="84" fill="#5c6b76">g1</text>
+    <text x="305" y="84" fill="#4169E1" font-weight="600">g0</text>
+    <text x="355" y="84" fill="#4169E1" font-weight="600">g0</text>
+    <text x="405" y="84" fill="#5c6b76">g1</text>
+    <text x="455" y="84" fill="#4169E1" font-weight="600">g0</text>
+    <text x="505" y="84" fill="#9aa7b2">g4</text>
+  </g>
+  <!-- group boxes in group-Kahn order -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="73" y="142" width="148" height="64"/>
+    <rect x="245" y="142" width="56" height="64"/>
+    <rect x="325" y="142" width="102" height="64"/>
+    <rect x="451" y="142" width="56" height="64"/>
+    <rect x="531" y="142" width="56" height="64"/>
+  </g>
+  <g text-anchor="middle" font-size="11.5">
+    <text x="147" y="157" fill="#4169E1" font-weight="600">group 0</text>
+    <text x="273" y="157" fill="#5c6b76">group 3</text>
+    <text x="376" y="157" fill="#5c6b76">group 1</text>
+    <text x="479" y="157" fill="#5c6b76">group 2</text>
+    <text x="559" y="157" fill="#5c6b76">group 4</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="85" y="164" width="32" height="28"/>
+    <rect x="131" y="164" width="32" height="28"/>
+    <rect x="177" y="164" width="32" height="28"/>
+    <rect x="257" y="164" width="32" height="28"/>
+    <rect x="337" y="164" width="32" height="28"/>
+    <rect x="383" y="164" width="32" height="28"/>
+    <rect x="463" y="164" width="32" height="28"/>
+    <rect x="543" y="164" width="32" height="28"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="101" y="182">6</text><text x="147" y="182">3</text><text x="193" y="182">4</text>
+    <text x="273" y="182">1</text>
+    <text x="353" y="182">5</text><text x="399" y="182">2</text>
+    <text x="479" y="182">0</text>
+    <text x="559" y="182">7</text>
+  </g>
+  <!-- cross-group edge: item 6 (group 0) before item 1 (group 3) -->
+  <path d="M 147 138 Q 210 104 273 138" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="210" y="98" text-anchor="middle" font-size="12" fill="#4169E1">cross-group edge: 6 before 1</text>
+  <!-- intra-group edges resolved by each group's own Kahn pass -->
+  <g stroke="#5c6b76" stroke-width="1.5" fill="none">
+    <path d="M 109 200 L 139 200" marker-end="url(#arrowg)"/>
+    <path d="M 155 200 L 185 200" marker-end="url(#arrowg)"/>
+    <path d="M 361 200 L 391 200" marker-end="url(#arrowg)"/>
+  </g>
+  <!-- emission order rail -->
+  <path d="M 73 226 L 579 226" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="326" y="246" text-anchor="middle" font-size="12" fill="#5c6b76">group-level Kahn emission order, whole groups at a time</text>
+  <text x="330" y="272" text-anchor="middle" fill="#1a2026" font-size="13">After items 0, 1, 7 take private groups 2, 3, 4 (dashed), group-Kahn emits g0, g3, g1, g2, g4;</text>
+  <text x="330" y="290" text-anchor="middle" fill="#1a2026" font-size="13">inside each group, item-Kahn orders 6,3,4 | 1 | 5,2 | 0 | 7 = <tspan fill="#4169E1" font-weight="600">6,3,4,1,5,2,0,7</tspan>.</text>
+</svg>
