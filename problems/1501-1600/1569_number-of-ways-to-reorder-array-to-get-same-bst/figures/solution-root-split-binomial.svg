@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [3,4,5,1,2]; root 3; left run [1,2], right run [4,5] (order-preserving);
+       C(4,2) = 6 interleavings, one is the original tail [4,5,1,2], answer 6 - 1 = 5;
+       tree nodes r=19; slot cells 40x36 at y=84, x = 320 + 52k -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="150" y1="80" x2="86" y2="150"/>
+    <line x1="150" y1="80" x2="214" y2="150"/>
+    <line x1="86" y1="150" x2="122" y2="218"/>
+    <line x1="214" y1="150" x2="246" y2="218"/>
+  </g>
+  <circle cx="150" cy="80" r="19" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="86" cy="150" r="19" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="214" cy="150" r="19" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="122" cy="218" r="19" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="246" cy="218" r="19" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="150" y="85" fill="#4169E1">3</text><text x="86" y="155" fill="#1a2026">1</text>
+    <text x="214" y="155" fill="#1a2026">4</text><text x="122" y="223" fill="#1a2026">2</text>
+    <text x="246" y="223" fill="#1a2026">5</text>
+  </g>
+  <text x="150" y="252" text-anchor="middle" fill="#5c6b76" font-size="12">first element 3 becomes the root</text>
+  <text x="150" y="272" text-anchor="middle" font-size="12.5"><tspan fill="#4169E1" font-weight="600">left run [1, 2]</tspan><tspan fill="#5c6b76" dx="12">right run [4, 5]</tspan></text>
+  <path d="M 169 83 Q 252 124 314 102" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="444" y="76" text-anchor="middle" fill="#5c6b76" font-size="12">the four slots after the root</text>
+  <rect x="320" y="84" width="40" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="340" y="106" text-anchor="middle" fill="#4169E1" font-weight="600">3</text>
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3">
+    <rect x="372" y="84" width="40" height="36"/><rect x="424" y="84" width="40" height="36"/>
+    <rect x="476" y="84" width="40" height="36"/><rect x="528" y="84" width="40" height="36"/>
+  </g>
+  <text x="444" y="150" text-anchor="middle" fill="#1a2026" font-size="12.5">choose which 2 of the 4 slots take the left run [1, 2]</text>
+  <text x="444" y="176" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="15">C(4, 2) = 6 interleavings</text>
+  <text x="444" y="202" text-anchor="middle" fill="#5c6b76" font-size="12.5">e.g. slots [1, 4, 2, 5] build [3, 1, 4, 2, 5]</text>
+  <text x="444" y="228" text-anchor="middle" fill="#5c6b76" font-size="12.5">the original tail [4, 5, 1, 2] is one of the 6</text>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Both runs keep their internal order, so the count is the weave count C(4, 2) = 6</text>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">minus the original array — <tspan fill="#4169E1" font-weight="600">5</tspan> other orders rebuild the exact same tree.</text>
+</svg>

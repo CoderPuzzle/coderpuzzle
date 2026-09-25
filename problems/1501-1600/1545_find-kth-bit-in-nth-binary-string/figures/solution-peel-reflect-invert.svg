@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="376" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- S(4) = 011100110110001 splits at half = 8 into S(3) | 1 | reverse(invert(S(3))); cells 26x26, stride 28; k = 11 -> 5 -> 3 -> 1 with 3 inversions -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="227" y="54">S(3)</text>
+    <text x="339" y="54">1</text>
+    <text x="451" y="54">rev(invert(S(3)))</text>
+  </g>
+  <!-- S(4) row -->
+  <text x="118" y="81" text-anchor="end" fill="#5c6b76" font-size="12.5">S(4)</text>
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="130" y="64" width="26" height="26"/><rect x="158" y="64" width="26" height="26"/><rect x="186" y="64" width="26" height="26"/>
+    <rect x="214" y="64" width="26" height="26"/><rect x="242" y="64" width="26" height="26"/><rect x="270" y="64" width="26" height="26"/>
+    <rect x="298" y="64" width="26" height="26"/><rect x="326" y="64" width="26" height="26"/><rect x="354" y="64" width="26" height="26"/>
+    <rect x="382" y="64" width="26" height="26"/><rect x="410" y="64" width="26" height="26" fill="#dbe4fb"/><rect x="438" y="64" width="26" height="26"/>
+    <rect x="466" y="64" width="26" height="26"/><rect x="494" y="64" width="26" height="26"/><rect x="522" y="64" width="26" height="26"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="143" y="82">0</text><text x="171" y="82">1</text><text x="199" y="82">1</text><text x="227" y="82">1</text>
+    <text x="255" y="82">0</text><text x="283" y="82">0</text><text x="311" y="82">1</text><text x="339" y="82">1</text>
+    <text x="367" y="82">0</text><text x="395" y="82">1</text><text x="423" y="82" fill="#4169E1" font-weight="600">1</text>
+    <text x="451" y="82">0</text><text x="479" y="82">0</text><text x="507" y="82">0</text><text x="535" y="82">1</text>
+  </g>
+  <text x="339" y="106" text-anchor="middle" fill="#5c6b76" font-size="11.5">half = 8</text>
+  <!-- reflection 1: k 11 -> 5 -->
+  <path d="M 423 94 Q 395 118 367 136" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="455" y="122" fill="#5c6b76" font-size="12">k 11 &gt; half 8: k → 5, inv 1</text>
+  <!-- S(3) row -->
+  <text x="118" y="159" text-anchor="end" fill="#5c6b76" font-size="12.5">S(3)</text>
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="242" y="142" width="26" height="26"/><rect x="270" y="142" width="26" height="26"/><rect x="298" y="142" width="26" height="26"/>
+    <rect x="326" y="142" width="26" height="26"/><rect x="354" y="142" width="26" height="26" fill="#dbe4fb"/><rect x="382" y="142" width="26" height="26"/>
+    <rect x="410" y="142" width="26" height="26"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="255" y="160">0</text><text x="283" y="160">1</text><text x="311" y="160">1</text><text x="339" y="160">1</text>
+    <text x="367" y="160" fill="#4169E1" font-weight="600">0</text><text x="395" y="160">0</text><text x="423" y="160">1</text>
+  </g>
+  <text x="339" y="186" text-anchor="middle" fill="#5c6b76" font-size="11.5">half = 4</text>
+  <!-- reflection 2: k 5 -> 3 -->
+  <path d="M 367 172 V 208" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="455" y="196" fill="#5c6b76" font-size="12">k 5 &gt; half 4: k → 3, inv 2</text>
+  <!-- S(2) row -->
+  <text x="118" y="233" text-anchor="end" fill="#5c6b76" font-size="12.5">S(2)</text>
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="298" y="216" width="26" height="26"/><rect x="326" y="216" width="26" height="26"/>
+    <rect x="354" y="216" width="26" height="26" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="311" y="234">0</text><text x="339" y="234">1</text><text x="367" y="234" fill="#4169E1" font-weight="600">1</text>
+  </g>
+  <text x="339" y="260" text-anchor="middle" fill="#5c6b76" font-size="11.5">half = 2</text>
+  <!-- reflection 3: k 3 -> 1 -->
+  <path d="M 367 244 Q 367 270 347 286" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="455" y="270" fill="#5c6b76" font-size="12">k 3 &gt; half 2: k → 1, inv 3</text>
+  <!-- S(1) row and the flip -->
+  <text x="118" y="309" text-anchor="end" fill="#5c6b76" font-size="12.5">S(1)</text>
+  <rect x="326" y="292" width="26" height="26" fill="#dbe4fb" stroke="#42525e" stroke-width="1.3"/>
+  <text x="339" y="310" text-anchor="middle" fill="#1a2026" font-weight="600">0</text>
+  <text x="366" y="310" fill="#5c6b76" font-size="12">3 inversions flip the base 0 → <tspan fill="#4169E1" font-weight="600" font-size="13">1</tspan></text>
+  <text x="330" y="344" text-anchor="middle" fill="#1a2026" font-size="13">Three reflections 11 → 5 → 3 → 1 stack up three inversions, so the base bit 0</text>
+  <text x="330" y="362" text-anchor="middle" fill="#1a2026" font-size="13">comes back flipped and S(4)'s 11th bit is <tspan fill="#4169E1" font-weight="600">1</tspan>.</text>
+</svg>

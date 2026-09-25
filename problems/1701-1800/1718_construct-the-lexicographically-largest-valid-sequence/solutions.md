@@ -14,6 +14,8 @@ cell and try the still-unused values from `n` down to `1`: the pair value
 `1` fills its cell alone. Whenever a choice cannot be completed, undo it
 and step down to the next value.
 
+![For n = 3 the DFS fills the five cells left to right trying 3, 2, 1; the 2 tried at cell 1 dies because its partner cell 3 already holds 3, and the first complete sequence [3,1,2,3,2] is the answer.](figures/solution-descending-backtracking.svg)
+
 The first complete sequence this DFS returns is the lexicographically
 largest. The search commits cells in reading order and always tries the
 largest still-placeable value first, so it attempts prefixes in strictly

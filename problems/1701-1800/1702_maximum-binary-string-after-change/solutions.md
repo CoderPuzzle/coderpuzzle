@@ -19,6 +19,8 @@ seat right per fusion; after herding all `z` zeros into the first one,
 the lone survivor sits at index `first + z - 1`, where `first` is the
 index of the initial first zero.
 
+![On binary = "000110" (zeros at seats 0, 1, 2, 5), fusing adjacent pairs and sliding the seat-5 zero left herds all four zeros into the single seat first + z - 1 = 3, yielding 111011.](figures/solution-herd-zeros-one-seat.svg)
+
 That seat is also the best anyone can do. Consider the sum of the
 leftmost zero's index and the number of zeros: sliding a zero left never
 raises the leftmost index, and a fusion buys at most `+1` on that index

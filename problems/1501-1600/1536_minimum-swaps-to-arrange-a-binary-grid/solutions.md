@@ -22,4 +22,6 @@ rows already placed above `i` are never disturbed again. If no row from
 `i` onward has enough trailing zeros, the grid can never be made valid
 and the answer is `-1`.
 
+![On Example 1's grid [[0,0,1],[1,1,0],[1,0,0]] the trailing-zero counts 0, 1, 2 are fixed per row, so row [1,0,0] bubbles up 2 adjacent swaps into row 0 and row [1,1,0] with 1 trailing zero needs 1 more swap to cover row 1 — 3 swaps in total.](figures/solution-trailing-zero-bubble.svg)
+
 **Complexity:** `O(n^2)` time, `O(n)` space.

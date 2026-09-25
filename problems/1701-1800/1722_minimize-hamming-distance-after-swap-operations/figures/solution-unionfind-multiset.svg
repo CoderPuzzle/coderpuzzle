@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 392" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="392" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- source [1,2,3,4], target [2,1,4,5], allowedSwaps [[0,1],[2,3]]; cells 64x40 at x=170+74i;
+       components {0,1} and {2,3}; comp {0,1}: {1,2} matches {2,1}; comp {2,3}: {3,4} vs {4,5}, target 5 unmatched -->
+  <text x="60" y="81" fill="#5c6b76" font-size="12.5">source</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="170" y="56" width="64" height="40"/><rect x="244" y="56" width="64" height="40"/>
+    <rect x="318" y="56" width="64" height="40"/><rect x="392" y="56" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="202" y="81">1</text><text x="276" y="81">2</text><text x="350" y="81">3</text><text x="424" y="81">4</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="202" y="120">0</text><text x="276" y="120">1</text><text x="350" y="120">2</text><text x="424" y="120">3</text>
+  </g>
+  <text x="60" y="161" fill="#5c6b76" font-size="12.5">target</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="170" y="136" width="64" height="40" fill="#ffffff"/><rect x="244" y="136" width="64" height="40" fill="#ffffff"/>
+    <rect x="318" y="136" width="64" height="40" fill="#ffffff"/><rect x="392" y="136" width="64" height="40" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="202" y="161">2</text><text x="276" y="161">1</text><text x="350" y="161">4</text><text x="424" y="161">5</text>
+  </g>
+  <!-- union arcs under the target row -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 202 184 Q 239 202 276 184"/>
+    <path d="M 350 184 Q 387 202 424 184"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="239" y="222">union(0,1)</text>
+    <text x="387" y="222">union(2,3)</text>
+  </g>
+  <!-- per-component multiset matching -->
+  <text x="60" y="268" fill="#5c6b76" font-size="12.5">comp {0,1}</text>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="170" y="246" width="26" height="26"/><rect x="200" y="246" width="26" height="26"/>
+    <rect x="276" y="246" width="26" height="26"/><rect x="306" y="246" width="26" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="183" y="264">1</text><text x="213" y="264">2</text>
+    <text x="289" y="264">2</text><text x="319" y="264">1</text>
+  </g>
+  <path d="M 232 259 H 262" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrowD)"/>
+  <text x="345" y="268" fill="#1a2026" font-size="12.5">every value matched</text>
+  <text x="60" y="308" fill="#5c6b76" font-size="12.5">comp {2,3}</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="170" y="286" width="26" height="26" fill="#ffffff"/><rect x="200" y="286" width="26" height="26" fill="#ffffff"/>
+    <rect x="276" y="286" width="26" height="26" fill="#ffffff"/><rect x="306" y="286" width="26" height="26" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="183" y="304">3</text><text x="213" y="304">4</text>
+    <text x="289" y="304">4</text><text x="319" y="304">5</text>
+  </g>
+  <path d="M 232 299 H 262" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrowD)"/>
+  <text x="345" y="308" fill="#1a2026" font-size="12.5">target 5 unmatched → <tspan fill="#4169E1" font-weight="600">+1</tspan></text>
+  <text x="320" y="356" text-anchor="middle" fill="#1a2026" font-size="13">Values never leave their swap component: {0,1} matches fully, but</text>
+  <text x="320" y="376" text-anchor="middle" fill="#1a2026" font-size="13">target 5 has no partner in {2,3} — the Hamming distance is <tspan fill="#4169E1" font-weight="600">1</tspan>, at index 3.</text>
+</svg>

@@ -31,6 +31,10 @@ example `[2,1,6,4]` the totals open at even `2 + 6 = 8` and odd
 against new odd `0 + 6 = 6` — the single fair removal, while every other
 index fails its test.
 
+![On nums = [2, 1, 6, 4] the sweep tests every split with prefix sums on the
+left and parity-flipped suffix sums on the right, and only removing i = 1
+balances at 6 versus 6.](figures/solution-parity-flip-splits.svg)
+
 With `n` up to `10⁵` and values up to `10⁴`, each total reaches
 `5 * 10⁸` and their sum `10⁹` — inside the 32-bit range but at its edge,
 so the four accumulators are kept in 64-bit integers (`long`,

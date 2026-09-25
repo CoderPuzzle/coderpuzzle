@@ -6,6 +6,8 @@ Only the positions of the `1`s matter, and an optimal solution picks `k` ones th
 
 For a window of `k` consecutive ones starting at index `i`, the optimal meeting point is the median of their `q` values, taken at `mid = i + k // 2`. The cost of pulling the left half onto the median is `q[mid] * (mid - i) - (pref[mid] - pref[i])`, and symmetrically the right half costs `(pref[i + k] - pref[mid + 1]) - q[mid] * (i + k - 1 - mid)`, where `pref` is the prefix sum of `q`. This is the classic L1-distance-to-median formula; using the median minimizes the sum of absolute deviations.
 
+![On nums = [1, 0, 0, 1, 0, 1] with k = 2, the ones compress to q = [0, 2, 3]; window i = 1 gathers its q values around median 3 at cost |2−3| + |3−3| = 1, the minimum over both windows.](figures/solution-q-space-median-window.svg)
+
 The algorithm slides `i` from `0` to `m - k` over the `m` ones, computing each window's cost in O(1) from the prefix sums and keeping the minimum. Sliding rightward never needs to look back because the optimal group of `k` ones is contiguous in `pos` — interleaving an unchosen one between two chosen ones only adds movement. The trivial case `k <= 1` returns 0 immediately since a single one is already "consecutive".
 
 **Complexity:** `O(n)` time, `O(n)` space.

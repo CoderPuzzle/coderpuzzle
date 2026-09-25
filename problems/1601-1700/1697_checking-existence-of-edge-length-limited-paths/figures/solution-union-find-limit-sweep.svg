@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- edgeList [[0,1,2],[1,2,4],[2,0,8],[1,0,16]]; left panel nodes 0 (170,100) 1 (100,180) 2 (240,180), right panel +300; node r 17 -->
+  <g text-anchor="middle">
+    <text x="170" y="34" font-weight="600">query [0, 1, 2] · limit 2</text>
+    <text x="170" y="54" fill="#5c6b76" font-size="12.5">edges with weight &lt; 2: none</text>
+    <text x="470" y="34" font-weight="600">query [0, 2, 5] · limit 5</text>
+    <text x="470" y="54" fill="#5c6b76" font-size="12.5">union edges 2 and 4 first</text>
+  </g>
+  <!-- component hull of the right panel -->
+  <ellipse cx="470" cy="140" rx="112" ry="80" fill="#dbe4fb" fill-opacity="0.38"/>
+  <text x="470" y="80" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">one component, root 2</text>
+  <!-- unconsumed edges: dashed gray -->
+  <g stroke="#9aa7b2" stroke-width="1.6" stroke-dasharray="5 4" fill="none">
+    <path d="M 155.0 109.5 L 107.4 163.9"/>
+    <path d="M 162.6 116.1 L 115.0 170.5"/>
+    <path d="M 455.0 109.5 L 407.4 163.9"/>
+    <path d="M 228.8 167.2 L 181.2 112.8"/>
+    <path d="M 528.8 167.2 L 481.2 112.8"/>
+    <path d="M 117 180 H 223"/>
+    <path d="M 417 180 H 523"/>
+  </g>
+  <!-- consumed edges: solid accent -->
+  <g stroke="#4169E1" stroke-width="2.4" fill="none">
+    <path d="M 462.6 116.1 L 415.0 170.5"/>
+    <path d="M 467 180 H 523"/>
+  </g>
+  <!-- edge weight labels -->
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="120" y="127">16</text>
+    <text x="420" y="127">16</text>
+    <text x="217" y="129">8</text>
+    <text x="517" y="129">8</text>
+    <text x="170" y="174">4</text>
+    <text x="470" y="174" fill="#4169E1" font-weight="600">4</text>
+  </g>
+  <text x="147" y="152" text-anchor="middle" font-size="12" fill="#9aa7b2">2</text>
+  <text x="447" y="152" text-anchor="middle" font-size="12" fill="#4169E1" font-weight="600">2</text>
+  <!-- nodes -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="170" cy="100" r="17"/><circle cx="100" cy="180" r="17"/><circle cx="240" cy="180" r="17"/>
+    <circle cx="470" cy="100" r="17"/><circle cx="400" cy="180" r="17"/><circle cx="540" cy="180" r="17"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="170" y="105">0</text><text x="100" y="185">1</text><text x="240" y="185">2</text>
+    <text x="470" y="105">0</text><text x="400" y="185">1</text><text x="540" y="185">2</text>
+  </g>
+  <!-- sweep arrow between the two states -->
+  <path d="M 292 140 H 350" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="321" y="126" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">union 2, 4</text>
+  <!-- per-panel verdicts -->
+  <g text-anchor="middle" font-size="13">
+    <text x="170" y="216" fill="#5c6b76" font-size="12.5">three singletons: roots 0, 1, 2</text>
+    <text x="170" y="248">find(0) = 0 ≠ find(1) = 1 → <tspan fill="#4169E1" font-weight="600">false</tspan></text>
+    <text x="470" y="248">find(0) = find(2) = 2 → <tspan fill="#4169E1" font-weight="600">true</tspan></text>
+  </g>
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">Sweeping limits upward: every edge of weight &lt; limit is unioned before that query answers.</text>
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">At limit 2 the roots differ → <tspan fill="#4169E1" font-weight="600">false</tspan>; at limit 5 both endpoints sit in root 2's component → <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

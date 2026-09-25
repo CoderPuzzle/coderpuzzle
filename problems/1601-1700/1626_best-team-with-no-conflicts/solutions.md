@@ -22,4 +22,6 @@ checked directly, giving an `O(n²)` scan over all pairs; the answer is the
 largest `dp[i]` over the whole roster, since the best team may end at any
 player.
 
+![Sorting example 2's players by age into scores [5,5,4,6] (ages 1,1,2,2), the dp row fills left to right to 5, 10, 4, 16, and the accented arrows from each player back to its non-decreasing-score predecessors trace the best chain 5 + 5 + 6 ending at dp[3] = 16.](figures/solution-age-sorted-dp.svg)
+
 **Complexity:** `O(n²)` time, `O(n)` space.

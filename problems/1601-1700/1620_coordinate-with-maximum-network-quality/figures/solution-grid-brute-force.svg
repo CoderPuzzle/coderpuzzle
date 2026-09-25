@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="356" fill="#ffffff"/>
+  <defs>
+    <clipPath id="gridclip"><rect x="60" y="46" width="240" height="240"/></clipPath>
+  </defs>
+  <!-- towers = [[1,2,5],[2,1,7],[3,1,9]], radius = 2; grid cells 48px, origin (60,46); bar 14px per quality unit -->
+  <rect x="156" y="190" width="48" height="48" fill="#dbe4fb"/>
+  <g stroke="#42525e" stroke-width="1">
+    <path d="M 60 46 V 286 M 108 46 V 286 M 156 46 V 286 M 204 46 V 286 M 252 46 V 286 M 300 46 V 286"/>
+    <path d="M 60 46 H 300 M 60 94 H 300 M 60 142 H 300 M 60 190 H 300 M 60 238 H 300 M 60 286 H 300"/>
+  </g>
+  <g fill="none" clip-path="url(#gridclip)">
+    <circle cx="132" cy="166" r="96" stroke="#42525e" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <circle cx="180" cy="214" r="96" stroke="#4169E1" stroke-width="2"/>
+    <circle cx="228" cy="214" r="96" stroke="#5c6b76" stroke-width="1.5" stroke-dasharray="5 4"/>
+  </g>
+  <circle cx="132" cy="166" r="5" fill="#42525e"/>
+  <circle cx="180" cy="214" r="5.5" fill="#4169E1"/>
+  <circle cx="228" cy="214" r="5" fill="#5c6b76"/>
+  <rect x="114" y="146" width="36" height="13" fill="#ffffff"/>
+  <rect x="146" y="222" width="68" height="13" fill="#ffffff"/>
+  <rect x="210" y="234" width="36" height="13" fill="#ffffff"/>
+  <g text-anchor="middle" font-size="11" font-weight="600">
+    <text x="132" y="156" fill="#42525e">q5</text>
+    <text x="180" y="232" fill="#4169E1">(2, 1) q7</text>
+    <text x="228" y="244" fill="#5c6b76">q9</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="84" y="302">0</text><text x="132" y="302">1</text><text x="180" y="302">2</text><text x="228" y="302">3</text><text x="276" y="302">4</text>
+    <text x="50" y="74">4</text><text x="50" y="122">3</text><text x="50" y="170">2</text><text x="50" y="218">1</text><text x="50" y="266">0</text>
+  </g>
+  <text x="424" y="70" text-anchor="middle" fill="#5c6b76" font-size="12.5">quality at (2, 1)</text>
+  <text x="424" y="90" text-anchor="middle" font-weight="600" fill="#1a2026">total <tspan fill="#4169E1">13</tspan></text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="396" y="188" width="56" height="98" fill="#dbe4fb"/>
+    <rect x="396" y="160" width="56" height="28" fill="#ffffff"/>
+    <rect x="396" y="104" width="56" height="56" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="424" y="242">7</text><text x="424" y="179">2</text><text x="424" y="137">4</text>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="462" y="240">tower (2, 1) q7</text>
+    <text x="462" y="177">tower (1, 2) q5</text>
+    <text x="462" y="135">tower (3, 1) q9</text>
+  </g>
+  <text x="320" y="322" text-anchor="middle" fill="#1a2026" font-size="13">Scanning every integer coordinate, (2, 1) stacks 7 + 2 + 4 = <tspan fill="#4169E1" font-weight="600">13</tspan>, the maximum quality.</text>
+  <text x="320" y="342" text-anchor="middle" fill="#1a2026" font-size="13">⌊7/1⌋ from q7 at (2, 1), ⌊5/(1+√2)⌋ = 2 from q5 at (1, 2), ⌊9/2⌋ = 4 from q9 at (3, 1).</text>
+</svg>

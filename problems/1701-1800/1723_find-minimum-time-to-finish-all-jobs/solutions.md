@@ -31,6 +31,8 @@ takes `sub` while the workers already placed must cover `mask ^ sub`, and the
 worse side of the pair is the finished assignment's maximum, so
 `dp[i][mask] = min over sub of max(dp[i-1][mask ^ sub], sums[sub])`.
 
+![On example 2's jobs [1,2,4,7,8] with k = 2, the sums table is the dp's first row, and the best split of the full mask 11111 puts 10011 ({1,2,8}) against 01100 ({4,7}) — both sides sum 11 — so dp[2][full] = 11.](figures/solution-bitmask-dp-full-split.svg)
+
 Enumerating every subset of every mask is the classic `3^n` sweep — each of
 the `n` bits sits in the mask, in the submask, or in neither. One ordering
 cut applies: workers are interchangeable, so the worker being placed may be

@@ -24,5 +24,7 @@ operations at all). Summing the independent increment counts and adding
 that one shared doubling term gives the minimum total:
 `sum(popcount(nums[i])) + max(bit_length(max(nums)) - 1, 0)`.
 
+![On Example 3's nums = [4,2,5], each value's bits form a column — 100, 10, 101 — with the four 1-bits as increments and two shared doubling bands spanning all columns between them, giving popcount sum 4 plus 2 doublings = 6 calls.](figures/solution-bit-columns-shared-doubles.svg)
+
 **Complexity:** `O(n log M)` time, `O(1)` space, where `M` is the
 largest value in `nums`.

@@ -27,4 +27,8 @@ reaching this slot, so the transformation is impossible. Otherwise `pos`
 is free to arrive, and it is marked consumed by clearing it out of its own
 digit's Fenwick tree before moving on to the next character of `t`.
 
+![Placing t = "34852"'s first digit 3 pops queue 3's earliest position 3 out of
+s = "84532", and the lone smaller digit, the 2 at position 4, sits to the right
+of position 3, so the blocker count is 0 and the placement is legal.](figures/solution-queue-pop-blocker-check.svg)
+
 **Complexity:** `O(n log n)` time, `O(n)` space.

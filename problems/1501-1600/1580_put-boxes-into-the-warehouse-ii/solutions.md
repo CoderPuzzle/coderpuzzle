@@ -25,4 +25,6 @@ room pointer always, and the box pointer only on a fit — greedily pairs
 each room with the smallest box that still fits it, which places as many
 boxes as any other pairing could.
 
+![For warehouse [3, 4, 1, 2] the caps max(prefixMin [3, 3, 1, 1], suffixMin [1, 1, 1, 2]) form the non-monotonic effective heights [3, 3, 1, 2], and sorted boxes [1, 2, 2, 3, 4] matched against sorted rooms [1, 2, 3, 3] place 4 — only the height-4 box fits nothing.](figures/solution-two-sided-effective-heights.svg)
+
 **Complexity:** `O(n log n)` time, `O(n)` space.

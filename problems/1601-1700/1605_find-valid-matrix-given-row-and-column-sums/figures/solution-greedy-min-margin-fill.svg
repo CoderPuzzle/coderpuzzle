@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 292" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="292" fill="#ffffff"/>
+  <!-- rowSum = [3,2,1], colSum = [1,2,3]; cells fill row-major (tiny order numbers 1..9); each cell takes min(remaining row, remaining col) = 1, 2, 0, 0, 0, 2, 0, 0, 1; trails right/below show each margin shrinking to zero, final zero accented; result [[1,2,0],[0,0,2],[0,0,1]] -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="150" y="64" width="68" height="44"/><rect x="218" y="64" width="68" height="44"/><rect x="286" y="64" width="68" height="44"/>
+    <rect x="150" y="108" width="68" height="44"/><rect x="218" y="108" width="68" height="44"/><rect x="286" y="108" width="68" height="44"/>
+    <rect x="150" y="152" width="68" height="44"/><rect x="218" y="152" width="68" height="44"/><rect x="286" y="152" width="68" height="44"/>
+  </g>
+  <g text-anchor="start" fill="#9aa7b2" font-size="9.5">
+    <text x="157" y="78">1</text><text x="225" y="78">2</text><text x="293" y="78">3</text>
+    <text x="157" y="122">4</text><text x="225" y="122">5</text><text x="293" y="122">6</text>
+    <text x="157" y="166">7</text><text x="225" y="166">8</text><text x="293" y="166">9</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="184" y="92" fill="#4169E1">1</text><text x="252" y="92" fill="#4169E1">2</text><text x="320" y="92" fill="#9aa7b2">0</text>
+    <text x="184" y="136" fill="#9aa7b2">0</text><text x="252" y="136" fill="#9aa7b2">0</text><text x="320" y="136" fill="#4169E1">2</text>
+    <text x="184" y="180" fill="#9aa7b2">0</text><text x="252" y="180" fill="#9aa7b2">0</text><text x="320" y="180" fill="#4169E1">1</text>
+  </g>
+  <g text-anchor="start" fill="#5c6b76" font-size="12.5">
+    <text x="372" y="90">3 → 2 → <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+    <text x="372" y="134">2 → <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+    <text x="372" y="178">1 → <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="184" y="224">1 → <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+    <text x="252" y="224">2 → <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+    <text x="320" y="224">3 → 1 → <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+  </g>
+  <text x="320" y="258" text-anchor="middle" fill="#1a2026" font-size="13">Cell (i, j) takes min(remaining row, remaining col): 1, 2, 2, 1 placed — a margin hits</text>
+  <text x="320" y="278" text-anchor="middle" fill="#1a2026" font-size="13">zero every step: col 0, row 0 + col 1, row 1, row 2 + col 2 → [[1,2,0],[0,0,2],[0,0,1]].</text>
+</svg>

@@ -23,6 +23,11 @@ descending and pairing them index by index is provably optimal — pairing
 any two elements out of that order could only be improved by swapping
 them back into sorted order.
 
+![For nums = [1, 2, 3, 4, 5] with requests [[1, 3], [0, 1]], the two request
+arcs over the index row give coverage weights [1, 2, 1, 1, 0], and pairing the
+sorted values 5, 4, 3, 2, 1 against the sorted weights 2, 1, 1, 1, 0 reaches
+the maximum total 19.](figures/solution-weights-desc-pairing.svg)
+
 The pairing is summed into a 64-bit accumulator before reducing modulo
 `10^9 + 7`, since a single term can already reach roughly `10^5 * 10^5`
 and the full sum across up to `10^5` indices comfortably overflows a

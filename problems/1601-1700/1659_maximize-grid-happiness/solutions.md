@@ -22,6 +22,10 @@ sides of the bond at once, −60 for two introverts, −10 for a mixed pair,
 +40 for two extroverts — so every edge is paid exactly once, at the
 moment its second endpoint appears.
 
+![The 2 x 3 grid of example 1 housing the introvert at (1,1) and the
+extroverts at (1,3) and (2,3), with each occupied cell's happiness ledger
+summing to the maximum 240.](figures/solution-happiness-ledger.svg)
+
 Each cell step rolls the whole table forward: placing `v` shifts the mask
 (`v` becomes trit 0, the oldest trit falls off), spends from the matching
 budget, and relaxes the destination state. A state's value is always

@@ -17,6 +17,10 @@ the largest chunk of currently inserted values that can appear next in
 the order. Inserting an id beyond a hole returns an empty chunk and
 changes nothing but that one slot.
 
+![The OrderedStream(5) trace of example 1, one row per insert: values park in
+their slots while ptr drains the runs returning [], ["aaaaa"],
+["bbbbb", "ccccc"], [] and ["ddddd", "eeeee"].](figures/solution-frontier-drain-trace.svg)
+
 Every value enters exactly one chunk exactly once, and `ptr` only ever
 moves forward, so across all `n` inserts the drain step visits each slot
 a constant number of times — linear total work, amortized constant per

@@ -23,6 +23,8 @@ sub-sequence has `0` or `1` elements, where `ways` is `1`. The problem's
 answer is `ways(nums) - 1`, since the original array is one of the
 counted reorderings and must be excluded.
 
+![For [3, 4, 5, 1, 2] the root 3 splits the rest into the order-preserving runs [1, 2] and [4, 5], whose C(4, 2) = 6 interleavings include the original tail [4, 5, 1, 2] — leaving 5 reorderings that rebuild the same tree.](figures/solution-root-split-binomial.svg)
+
 Since `n` can reach `1000`, computing `C(L + R, L)` on demand needs
 factorials `0..n` and their modular inverses precomputed once — via
 Fermat's little theorem, since `10^9 + 7` is prime, `inv(k!)` is

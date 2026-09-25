@@ -22,6 +22,8 @@ because an ancestor's pair set swallows the child's whole ancestry and
 descent. A v with no placed neighbor, or a neighbor outside the parent's
 adjacency, proves no tree realizes the pairs: 0.
 
+![On pairs [[1,2],[2,3],[1,3]] every node's degree ties at V − 1 = 2, both placements pick parent 1 with an equal-degree pass, and flipping the {2,3} edge between the chains 1-2-3 and 1-3-2 shows why the verdict is 2.](figures/solution-degree-containment-verdict.svg)
+
 The verdicts fall out of the degrees. A parent whose degree equals the
 child's has an adjacency set differing from the child's exactly by the
 two nodes themselves, so flipping that one edge leaves every pair intact

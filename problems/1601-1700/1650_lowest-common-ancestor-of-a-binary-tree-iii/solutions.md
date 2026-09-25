@@ -22,6 +22,8 @@ guaranteed to label real nodes, this walk always terminates: if one
 target is already an ancestor of the other, that is caught on `q`'s very
 first check, since a node counts as a descendant of itself.
 
+![On the tree [3,5,1,6,2,0,8,null,null,7,4] with p = 5 and q = 4, p's stored path is 5, 3 and q's climb 4, 2, 5 first hits it at 5, the LCA.](figures/solution-stored-path-hit.svg)
+
 The parent map takes one linear pass to build, and each of the two path
 walks costs at most the tree's height, so the whole approach stays
 linear in the number of nodes despite the extra reconstruction step the

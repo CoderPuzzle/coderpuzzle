@@ -28,4 +28,6 @@ sorted, the smallest valid `j` for a given `i` never decreases as `i`
 grows, so each pointer only moves forward — the whole merge does
 `O(left + (n - right))` work, never revisiting a pair.
 
+![In arr = [1, 2, 3, 10, 4, 2, 3, 5] the sorted prefix arr[0..2] = [1, 2, 3] and sorted suffix arr[5..7] = [2, 3, 5] splice at arr[2] = 3 ≤ arr[6] = 3, removing arr[3..5] = [10, 4, 2] between them — the shortest removal, length 3.](figures/solution-prefix-suffix-splice.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space.

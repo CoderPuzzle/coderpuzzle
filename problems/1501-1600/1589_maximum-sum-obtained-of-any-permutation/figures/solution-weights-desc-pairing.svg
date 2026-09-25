@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 406" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="406" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,3,4,5], requests = [[1,3],[0,1]]; index cells w72 at x = 126+84i; d = [+1,+1,-1,0,-1]; freq = [1,2,1,1,0] -->
+  <text x="204" y="58" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">[0,1]</text>
+  <text x="330" y="30" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">[1,3]</text>
+  <path d="M 162 92 Q 204 60 246 92" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <path d="M 246 92 Q 330 32 414 92" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="114" y="120" text-anchor="end" fill="#5c6b76" font-size="12">freq</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="126" y="96" width="72" height="36"/><rect x="210" y="96" width="72" height="36"/>
+    <rect x="294" y="96" width="72" height="36"/><rect x="378" y="96" width="72" height="36"/>
+    <rect x="462" y="96" width="72" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="162" y="120">1</text><text x="246" y="120" fill="#4169E1">2</text><text x="330" y="120">1</text>
+    <text x="414" y="120">1</text><text x="498" y="120">0</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="162" y="152">0</text><text x="246" y="152">1</text><text x="330" y="152">2</text>
+    <text x="414" y="152">3</text><text x="498" y="152">4</text>
+  </g>
+  <text x="330" y="180" text-anchor="middle" fill="#5c6b76" font-size="12">difference array d = [+1, +1, −1, 0, −1] → prefix sums = the weights</text>
+  <!-- sorted pairing: values 5,4,3,2,1 against weights 2,1,1,1,0 -->
+  <text x="138" y="236" text-anchor="end" fill="#5c6b76" font-size="12">sorted values</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="150" y="214" width="52" height="34"/><rect x="212" y="214" width="52" height="34"/>
+    <rect x="274" y="214" width="52" height="34"/><rect x="336" y="214" width="52" height="34"/>
+    <rect x="398" y="214" width="52" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="176" y="236">5</text><text x="238" y="236">4</text><text x="300" y="236">3</text>
+    <text x="362" y="236">2</text><text x="424" y="236">1</text>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.5">
+    <line x1="176" y1="252" x2="176" y2="270" marker-end="url(#arrowG)"/>
+    <line x1="238" y1="252" x2="238" y2="270" marker-end="url(#arrowG)"/>
+    <line x1="300" y1="252" x2="300" y2="270" marker-end="url(#arrowG)"/>
+    <line x1="362" y1="252" x2="362" y2="270" marker-end="url(#arrowG)"/>
+    <line x1="424" y1="252" x2="424" y2="270" marker-end="url(#arrowG)"/>
+  </g>
+  <text x="138" y="298" text-anchor="end" fill="#5c6b76" font-size="12">sorted weights</text>
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.5">
+    <rect x="150" y="276" width="52" height="34"/><rect x="212" y="276" width="52" height="34"/>
+    <rect x="274" y="276" width="52" height="34"/><rect x="336" y="276" width="52" height="34"/>
+    <rect x="398" y="276" width="52" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="176" y="298" fill="#4169E1">2</text><text x="238" y="298">1</text><text x="300" y="298">1</text>
+    <text x="362" y="298">1</text><text x="424" y="298">0</text>
+  </g>
+  <text x="330" y="338" text-anchor="middle" fill="#1a2026" font-size="13">5·2 + 4·1 + 3·1 + 2·1 + 1·0 = <tspan fill="#4169E1" font-weight="600">19</tspan></text>
+  <text x="330" y="370" text-anchor="middle" fill="#1a2026" font-size="13">Prefix sums of the difference array give the coverage weights [1,2,1,1,0];</text>
+  <text x="330" y="390" text-anchor="middle" fill="#1a2026" font-size="13">pairing sorted values 5,4,3,2,1 with sorted weights 2,1,1,1,0 tops out at <tspan fill="#4169E1" font-weight="600">19</tspan>.</text>
+</svg>

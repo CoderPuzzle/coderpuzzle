@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 316" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="316" fill="#ffffff"/>
+  <!-- cuboids=[[50,45,20],[95,37,53],[45,23,12]] sorted to [20,45,50],[37,53,95],[12,23,45]; stack bottom-up 95+50+45=190; widths 4.5px/unit, heights 0.8px/unit -->
+  <text x="20" y="40" fill="#5c6b76" font-size="12.5">sort each cuboid's dimensions</text>
+  <g fill="#1a2026" font-size="13">
+    <text x="20" y="66">0: [50,45,20] → [20,45,50]</text>
+    <text x="20" y="90">1: [95,37,53] → [37,53,95]</text>
+    <text x="20" y="114">2: [45,23,12] → [12,23,45]</text>
+  </g>
+  <text x="20" y="150" fill="#5c6b76" font-size="12.5">nesting chain (component-wise ≤):</text>
+  <text x="20" y="174" fill="#1a2026" font-size="13" font-weight="600">[12,23,45] ≤ [20,45,50] ≤ [37,53,95]</text>
+  <!-- stack, largest base at the bottom -->
+  <text x="430" y="80" text-anchor="middle" font-size="14" fill="#1a2026">95 + 50 + 45 = <tspan fill="#4169E1" font-weight="700">190</tspan></text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="311" y="174" width="238" height="76"/>
+    <rect x="329" y="134" width="202" height="40"/>
+    <rect x="378" y="98" width="104" height="36"/>
+  </g>
+  <text x="430" y="216" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="13">base 53 × 37 · h 95</text>
+  <text x="430" y="158" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="13">base 45 × 20 · h 50</text>
+  <text x="430" y="113" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="11.5">23 × 12</text>
+  <text x="430" y="127" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="11.5">h 45</text>
+  <text x="20" y="284" fill="#1a2026" font-size="13">Sorted bases nest component-wise — 23 × 12 ≤ 45 × 20 ≤ 53 × 37 — so all</text>
+  <text x="20" y="302" fill="#1a2026" font-size="13">three cuboids stack into one tower: 95 + 50 + 45 = the maximum <tspan fill="#4169E1" font-weight="600">190</tspan>.</text>
+</svg>

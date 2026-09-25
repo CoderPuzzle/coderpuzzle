@@ -13,6 +13,10 @@ remainder to the _most recent_ index it occurred at — unlike a "does a
 multiple exist" question, here the goal is the shortest span, so the
 latest occurrence (not the first) gives the smallest gap.
 
+![For nums = [3, 1, 4, 2] with p = 6 the running prefix remainders are
+3, 4, 2, 4 against target 4; at index 2 the needed remainder 4 was last seen
+at index 1, so removing [4] is the shortest span and the answer is 1.](figures/solution-prefix-remainder-match.svg)
+
 The map is seeded with remainder `0` at index `-1`, standing for the
 empty prefix before the array starts. That seed is also exactly the
 trap the statement warns about: matching it at the very last index would

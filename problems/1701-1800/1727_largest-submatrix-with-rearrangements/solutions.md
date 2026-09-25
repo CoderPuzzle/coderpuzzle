@@ -6,6 +6,8 @@ Because entire columns may be reordered, a submatrix of all ones is characterize
 
 The code maintains `heights[j]`, the number of consecutive ones ending at the current row in column `j`, incremented when `row[j] == 1` and reset to 0 otherwise. For each row it sorts the height array in non-increasing order; after sorting, `ordered[i]` is the `(i+1)`-th largest height, and a submatrix of width `i + 1` with all heights at least `ordered[i]` exists exactly when the top `i + 1` columns are chosen. The candidate area `ordered[i] * (i + 1)` is evaluated for every position, and the loop breaks at the first zero height since the descending order guarantees all following heights are zero too.
 
+![On example 1's matrix [[0,0,1],[1,1,1],[1,0,1]], each row's consecutive-ones heights sort descending and score ordered[i]·(i+1); row 2's [2,0,3] sorts to [3,2,0] and its 2·2 = 4 beats row 1's best 1·3 = 3.](figures/solution-row-heights-sort-areas.svg)
+
 Correctness rests on the exchange argument that only the multiset of column heights at a row matters: any all-ones submatrix bottomed at that row uses some set of columns, and replacing any of them by a taller column keeps it all ones (heights only constrain from the bottom upward, and a taller run contains every shorter one). Taking the maximum over all rows and widths therefore covers every submatrix.
 
 **Complexity:** `O(m n log n)` time, `O(n)` space.

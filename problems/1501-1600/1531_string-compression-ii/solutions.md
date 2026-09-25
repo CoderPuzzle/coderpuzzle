@@ -16,6 +16,8 @@ position and `encodedLength` counts how many characters the run itself
 contributes to the compressed output. The answer is `dp(0, k)`, the
 better of the two moves minimized over every valid run-length choice.
 
+![On Example 1's s = aaabcccd with k = 2, each dp state branches between deleting s[i] and committing to a run tallied by same versus diff characters, and the winning branch keep aaa, delete b, keep ccc leaves aaaccc compressing to a3c3 of length 4.](figures/solution-run-or-delete-branch.svg)
+
 `encodedLength(count)` is the run-length-contribution rule spelled out
 by the problem: `0` for a run of `0` (nothing kept), `1` character for a
 run of length `1` (no digit is written), `2` for lengths `2`–`9` (one

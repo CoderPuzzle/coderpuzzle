@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="336" fill="#ffffff"/>
+  <!-- nums=[4,1,5,20,3] normalized to [4,2,10,20,6]; each row = multiset after one halving; cells 44x28 at x=132+48i, y=72+42i -->
+  <text x="20" y="28" fill="#5c6b76" font-size="13">normalize [4,1,5,20,3]: double each odd → [4,2,10,20,6]</text>
+  <g fill="#5c6b76" font-size="12">
+    <text x="120" y="58" text-anchor="end">operation</text>
+    <text x="254" y="58" text-anchor="middle">multiset</text>
+    <text x="436" y="58" text-anchor="middle">dev</text>
+  </g>
+  <rect x="310" y="46" width="13" height="13" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <text x="329" y="57" fill="#5c6b76" font-size="12">max</text>
+  <rect x="368" y="46" width="13" height="13" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <text x="387" y="57" fill="#5c6b76" font-size="12">min</text>
+  <!-- row 0: start {4,2,10,20,6}, dev 20-2=18 -->
+  <text x="120" y="91" text-anchor="end" fill="#5c6b76" font-size="12.5">start</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="132" y="72" width="44" height="28" fill="#ffffff"/><rect x="180" y="72" width="44" height="28" fill="#dbe4fb"/>
+    <rect x="228" y="72" width="44" height="28" fill="#ffffff"/><rect x="276" y="72" width="44" height="28" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="324" y="72" width="44" height="28" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="154" y="91">4</text><text x="202" y="91">2</text><text x="250" y="91">10</text><text x="298" y="91">20</text><text x="346" y="91">6</text>
+  </g>
+  <text x="436" y="91" text-anchor="middle" font-weight="600" fill="#4169E1">18</text>
+  <!-- row 1: halve 20 -> 10: {4,2,10,10,6}, dev 10-2=8 -->
+  <text x="120" y="133" text-anchor="end" fill="#5c6b76" font-size="12.5">halve 20 → 10</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="132" y="114" width="44" height="28" fill="#ffffff"/><rect x="180" y="114" width="44" height="28" fill="#dbe4fb"/>
+    <rect x="228" y="114" width="44" height="28" fill="#ffffff" stroke="#4169E1" stroke-width="2"/><rect x="276" y="114" width="44" height="28" fill="#ffffff"/>
+    <rect x="324" y="114" width="44" height="28" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="154" y="133">4</text><text x="202" y="133">2</text><text x="250" y="133">10</text><text x="298" y="133">10</text><text x="346" y="133">6</text>
+  </g>
+  <text x="436" y="133" text-anchor="middle" font-weight="600" fill="#4169E1">8</text>
+  <!-- row 2: halve 10 -> 5: {4,2,5,10,6}, dev still 10-2=8, no improvement -->
+  <text x="120" y="175" text-anchor="end" fill="#5c6b76" font-size="12.5">halve 10 → 5</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="132" y="156" width="44" height="28" fill="#ffffff"/><rect x="180" y="156" width="44" height="28" fill="#dbe4fb"/>
+    <rect x="228" y="156" width="44" height="28" fill="#ffffff"/><rect x="276" y="156" width="44" height="28" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="324" y="156" width="44" height="28" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="154" y="175">4</text><text x="202" y="175">2</text><text x="250" y="175">5</text><text x="298" y="175">10</text><text x="346" y="175">6</text>
+  </g>
+  <text x="436" y="175" text-anchor="middle" font-weight="600" fill="#9aa7b2">8</text>
+  <!-- row 3: halve the other 10 -> 5: {4,2,5,5,6}, dev 6-2=4 -->
+  <text x="120" y="217" text-anchor="end" fill="#5c6b76" font-size="12.5">halve 10 → 5</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="132" y="198" width="44" height="28" fill="#ffffff"/><rect x="180" y="198" width="44" height="28" fill="#dbe4fb"/>
+    <rect x="228" y="198" width="44" height="28" fill="#ffffff"/><rect x="276" y="198" width="44" height="28" fill="#ffffff"/>
+    <rect x="324" y="198" width="44" height="28" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="154" y="217">4</text><text x="202" y="217">2</text><text x="250" y="217">5</text><text x="298" y="217">5</text><text x="346" y="217">6</text>
+  </g>
+  <text x="436" y="217" text-anchor="middle" font-weight="600" fill="#4169E1">4</text>
+  <!-- row 4: halve 6 -> 3: {4,2,5,5,3}, dev 5-2=3; next max 5 is odd -> stop -->
+  <text x="120" y="259" text-anchor="end" fill="#5c6b76" font-size="12.5">halve 6 → 3</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="132" y="240" width="44" height="28" fill="#ffffff"/><rect x="180" y="240" width="44" height="28" fill="#dbe4fb"/>
+    <rect x="228" y="240" width="44" height="28" fill="#ffffff" stroke="#4169E1" stroke-width="2"/><rect x="276" y="240" width="44" height="28" fill="#ffffff"/>
+    <rect x="324" y="240" width="44" height="28" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="154" y="259">4</text><text x="202" y="259">2</text><text x="250" y="259">5</text><text x="298" y="259">5</text><text x="346" y="259">3</text>
+  </g>
+  <text x="436" y="259" text-anchor="middle" font-weight="600" font-size="15" fill="#4169E1">3</text>
+  <text x="470" y="259" fill="#4169E1" font-size="12">5 is odd → stop</text>
+  <text x="20" y="300" fill="#1a2026" font-size="13">dev = max − min after every halving; the best shrinks 18 → 8 → 4 → 3,</text>
+  <text x="20" y="318" fill="#1a2026" font-size="13">and when the maximum <tspan font-weight="600">5</tspan> is odd it can never shrink again — the answer is <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="336" fill="#ffffff"/>
+  <!-- destination = [2,3], k = 1; nodes (r,c) at (110+110c, 80+80r); the accent path takes every H while C(h-1+v, v) >= 1, then both V's: HHHVV -->
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <path d="M 110 80 H 440"/><path d="M 110 160 H 440"/><path d="M 110 240 H 440"/>
+    <path d="M 110 80 V 240"/><path d="M 220 80 V 240"/><path d="M 330 80 V 240"/><path d="M 440 80 V 240"/>
+  </g>
+  <polyline points="110,80 440,80 440,240" fill="none" stroke="#4169E1" stroke-width="3"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="220" cy="160" r="5"/><circle cx="330" cy="160" r="5"/><circle cx="440" cy="160" r="5"/>
+    <circle cx="110" cy="160" r="5"/><circle cx="110" cy="240" r="5"/><circle cx="220" cy="240" r="5"/><circle cx="330" cy="240" r="5"/>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="110" cy="80" r="5.5"/><circle cx="220" cy="80" r="5.5"/><circle cx="330" cy="80" r="5.5"/>
+    <circle cx="440" cy="80" r="5.5"/><circle cx="440" cy="240" r="5.5"/>
+  </g>
+  <!-- each H fork: completions left if H is chosen = C(h-1+v, v) -->
+  <g text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">
+    <text x="165" y="64">H: C(4,2)=6</text><text x="275" y="64">H: C(3,2)=3</text><text x="385" y="64">H: C(2,2)=1</text>
+  </g>
+  <g text-anchor="start" fill="#9aa7b2" font-size="10.5">
+    <text x="122" y="104">(3H, 2V)</text><text x="232" y="104">(2H, 2V)</text><text x="342" y="104">(1H, 2V)</text><text x="452" y="104">(0H, 2V)</text>
+  </g>
+  <g text-anchor="start" fill="#5c6b76" font-size="11.5">
+    <text x="454" y="124">V - no H left</text>
+    <text x="454" y="204">V</text>
+  </g>
+  <text x="94" y="84" text-anchor="end" fill="#5c6b76" font-size="11.5">start</text>
+  <text x="454" y="244" text-anchor="start" fill="#5c6b76" font-size="11.5">destination [2,3]</text>
+  <text x="310" y="296" text-anchor="middle" fill="#1a2026" font-size="13">k=1 fits under every H-count - <tspan fill="#4169E1" font-weight="600">C(4,2)=6</tspan>, <tspan fill="#4169E1" font-weight="600">C(3,2)=3</tspan>, <tspan fill="#4169E1" font-weight="600">C(2,2)=1</tspan> - so all three H's</text>
+  <text x="310" y="316" text-anchor="middle" fill="#1a2026" font-size="13">are taken first and the two forced V's finish the 1st instruction, <tspan fill="#4169E1" font-weight="600">HHHVV</tspan>.</text>
+</svg>

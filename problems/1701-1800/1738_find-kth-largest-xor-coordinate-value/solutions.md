@@ -18,6 +18,8 @@ prefix[a][b-1] ^ prefix[a-1][b-1]`. Each coordinate value is one XOR away
 from values already computed, so the whole table costs one pass over the
 matrix.
 
+![On example 1's matrix [[5,2],[1,6]], the prefix-XOR table fills as 5, 7, 4, 0 — cell (1,1) XORs 6 with prefixes 7, 4, 5 and the shared 5 cancels — and sorted ascending, k = 1 reads 7 off the end.](figures/solution-prefix-xor-sort.svg)
+
 The recurrence only ever reads the previous prefix row, so the sweep keeps
 two rows alive: fold the running XOR of the current row (`matrix[a][0]`
 through `matrix[a][b]`) into `prefix[a-1][b]` and the new row is complete —

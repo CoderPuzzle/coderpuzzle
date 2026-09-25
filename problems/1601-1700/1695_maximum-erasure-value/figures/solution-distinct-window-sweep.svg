@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="700" height="336" fill="#ffffff"/>
+  <!-- nums=[4,2,4,5,6]; each row = window after admitting r; cells 44x26 at x=120+48i, y=88+42r; row r=2 evicts the left 4; best 17 at r=4 -->
+  <text x="120" y="64" fill="#5c6b76" font-size="12">nums = [4,2,4,5,6]</text>
+  <text x="425" y="64" text-anchor="middle" fill="#5c6b76" font-size="12">sum</text>
+  <text x="505" y="64" text-anchor="middle" fill="#5c6b76" font-size="12">best</text>
+  <!-- r=0: admit 4; window [4]; sum 4 -->
+  <text x="100" y="106" text-anchor="end" fill="#5c6b76" font-size="12.5">r = 0</text>
+  <rect x="120" y="88" width="44" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.3"/>
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1">
+    <rect x="168" y="88" width="44" height="26"/><rect x="216" y="88" width="44" height="26"/><rect x="264" y="88" width="44" height="26"/><rect x="312" y="88" width="44" height="26"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="142" y="106" fill="#1a2026">4</text><text x="190" y="106" fill="#9aa7b2">2</text><text x="238" y="106" fill="#9aa7b2">4</text><text x="286" y="106" fill="#9aa7b2">5</text><text x="334" y="106" fill="#9aa7b2">6</text>
+  </g>
+  <text x="425" y="106" text-anchor="middle" font-weight="600" fill="#1a2026">4</text>
+  <text x="505" y="106" text-anchor="middle" font-weight="600" fill="#1a2026">4</text>
+  <!-- r=1: admit 2; window [4,2]; sum 6 -->
+  <text x="100" y="148" text-anchor="end" fill="#5c6b76" font-size="12.5">r = 1</text>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.3">
+    <rect x="120" y="130" width="44" height="26"/><rect x="168" y="130" width="44" height="26"/>
+  </g>
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1">
+    <rect x="216" y="130" width="44" height="26"/><rect x="264" y="130" width="44" height="26"/><rect x="312" y="130" width="44" height="26"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="142" y="148" fill="#1a2026">4</text><text x="190" y="148" fill="#1a2026">2</text><text x="238" y="148" fill="#9aa7b2">4</text><text x="286" y="148" fill="#9aa7b2">5</text><text x="334" y="148" fill="#9aa7b2">6</text>
+  </g>
+  <text x="425" y="148" text-anchor="middle" font-weight="600" fill="#1a2026">6</text>
+  <text x="505" y="148" text-anchor="middle" font-weight="600" fill="#1a2026">6</text>
+  <!-- r=2: incoming 4 repeats; evict the left 4; window [2,4]; sum 6 -->
+  <text x="100" y="190" text-anchor="end" fill="#5c6b76" font-size="12.5">r = 2</text>
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1">
+    <rect x="120" y="172" width="44" height="26"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.3">
+    <rect x="168" y="172" width="44" height="26"/><rect x="216" y="172" width="44" height="26"/>
+  </g>
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1">
+    <rect x="264" y="172" width="44" height="26"/><rect x="312" y="172" width="44" height="26"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="142" y="190" fill="#9aa7b2">4</text><text x="190" y="190" fill="#1a2026">2</text><text x="238" y="190" fill="#1a2026">4</text><text x="286" y="190" fill="#9aa7b2">5</text><text x="334" y="190" fill="#9aa7b2">6</text>
+  </g>
+  <text x="425" y="190" text-anchor="middle" font-weight="600" fill="#1a2026">6</text>
+  <text x="505" y="190" text-anchor="middle" font-weight="600" fill="#1a2026">6</text>
+  <text x="535" y="190" fill="#4169E1" font-size="11.5">repeat 4 → evict left 4</text>
+  <!-- r=3: admit 5; window [2,4,5]; sum 11 -->
+  <text x="100" y="232" text-anchor="end" fill="#5c6b76" font-size="12.5">r = 3</text>
+  <rect x="120" y="214" width="44" height="26" fill="#ffffff" stroke="#9aa7b2" stroke-width="1"/>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.3">
+    <rect x="168" y="214" width="44" height="26"/><rect x="216" y="214" width="44" height="26"/><rect x="264" y="214" width="44" height="26"/>
+  </g>
+  <rect x="312" y="214" width="44" height="26" fill="#ffffff" stroke="#9aa7b2" stroke-width="1"/>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="142" y="232" fill="#9aa7b2">4</text><text x="190" y="232" fill="#1a2026">2</text><text x="238" y="232" fill="#1a2026">4</text><text x="286" y="232" fill="#1a2026">5</text><text x="334" y="232" fill="#9aa7b2">6</text>
+  </g>
+  <text x="425" y="232" text-anchor="middle" font-weight="600" fill="#1a2026">11</text>
+  <text x="505" y="232" text-anchor="middle" font-weight="600" fill="#1a2026">11</text>
+  <!-- r=4: admit 6; window [2,4,5,6]; sum 17 = best -->
+  <text x="100" y="274" text-anchor="end" fill="#5c6b76" font-size="12.5">r = 4</text>
+  <rect x="120" y="256" width="44" height="26" fill="#ffffff" stroke="#9aa7b2" stroke-width="1"/>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="2">
+    <rect x="168" y="256" width="44" height="26"/><rect x="216" y="256" width="44" height="26"/><rect x="264" y="256" width="44" height="26"/><rect x="312" y="256" width="44" height="26"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="142" y="274" fill="#9aa7b2">4</text><text x="190" y="274" fill="#1a2026">2</text><text x="238" y="274" fill="#1a2026">4</text><text x="286" y="274" fill="#1a2026">5</text><text x="334" y="274" fill="#1a2026">6</text>
+  </g>
+  <text x="425" y="274" text-anchor="middle" font-weight="700" font-size="15" fill="#4169E1">17</text>
+  <text x="505" y="274" text-anchor="middle" font-weight="700" font-size="15" fill="#4169E1">17</text>
+  <text x="20" y="300" fill="#1a2026" font-size="13">Each settled window holds distinct values and its sum challenges the best;</text>
+  <text x="20" y="318" fill="#1a2026" font-size="13">after the repeat 4 evicts the prefix, window [2,4,5,6] scores the best <tspan fill="#4169E1" font-weight="600">17</tspan>.</text>
+</svg>

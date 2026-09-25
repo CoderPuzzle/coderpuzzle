@@ -6,6 +6,8 @@ Building the road graph directly is hopeless — it can have quadratically many 
 
 The union phase is a sieve: the total number of `union` calls is the harmonic sum `n/(threshold+1) + n/(threshold+2) + …`, bounded by `O(n log n)`. Path compression (path halving in `find`) keeps these operations effectively constant on average, and each query then reduces to comparing the roots of its two cities. A further skip avoids redundant passes: if `z` has already been merged into a smaller representative, its multiples were merged by that smaller divisor's pass too, so `z`'s inner loop can be dropped.
 
+![On n = 6, threshold = 2, the sieve's only union is z = 3 merging 3 and 6 into one shaded component while 1, 2, 4, 5 stay isolated, and each query resolves by comparing roots: false, false, true.](figures/solution-union-find-sieve.svg)
+
 Two boundary behaviors are worth noting. When `threshold = 0`, the pass over `z = 1` unions 1 with every number, correctly marking all queries true (the `z > 1` guard exempts 1 from the skip so its pass always runs). City 1 itself has no divisor above any nonnegative threshold except when `threshold = 0`, so it stays isolated otherwise.
 
 **Complexity:** `O(n log n + q)` time, `O(n)` space.

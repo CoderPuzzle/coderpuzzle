@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- inventory = [2, 5], orders = 4; balls as 64x26 cells stacked by value; sold cells in light accent -->
+  <text x="40" y="46" fill="#5c6b76" font-size="12.5">inventory = [2, 5], orders = 4 — each ball's value = balls left of that color</text>
+  <!-- greedy sells top-down -->
+  <path d="M 344 158 L 344 262" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g text-anchor="end" font-size="12.5" fill="#4169E1" font-weight="600">
+    <text x="330" y="200">sell the top</text>
+    <text x="330" y="218">ball first</text>
+  </g>
+  <!-- color with 5 balls, sold band 5+4+3 -->
+  <g stroke-width="1.5">
+    <rect x="360" y="150" width="64" height="26" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="360" y="176" width="64" height="26" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="360" y="202" width="64" height="26" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="360" y="228" width="64" height="26" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="360" y="254" width="64" height="26" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <!-- color with 2 balls, lone sold ball valued 2 -->
+  <g stroke-width="1.5">
+    <rect x="140" y="228" width="64" height="26" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="140" y="254" width="64" height="26" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="392" y="168" fill="#1a2026">5</text>
+    <text x="392" y="194" fill="#1a2026">4</text>
+    <text x="392" y="220" fill="#1a2026">3</text>
+    <text x="392" y="246" fill="#9aa7b2">2</text>
+    <text x="392" y="272" fill="#9aa7b2">1</text>
+    <text x="172" y="246" fill="#1a2026">2</text>
+    <text x="172" y="272" fill="#9aa7b2">1</text>
+  </g>
+  <line x1="120" y1="280" x2="460" y2="280" stroke="#42525e" stroke-width="1.4"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="172" y="300">2 balls</text>
+    <text x="392" y="300">5 balls</text>
+  </g>
+  <!-- band brackets -->
+  <path d="M 436 150 h 8 v 78 h -8" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <g font-size="12.5" fill="#4169E1" font-weight="600">
+    <text x="456" y="184">5 + 4 + 3 = 12,</text>
+    <text x="456" y="202">a full band off</text>
+    <text x="456" y="220">the tall pile</text>
+  </g>
+  <path d="M 216 228 h 8 v 26 h -8" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="236" y="246" font-size="12.5" fill="#4169E1" font-weight="600">+ 2</text>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Selling in horizontal bands from the top, the 5 + 4 + 3 band plus the</text>
+  <text x="320" y="348" text-anchor="middle" fill="#1a2026" font-size="13">lone 2 off the short pile earn <tspan fill="#4169E1" font-weight="600">14</tspan> from all 4 orders.</text>
+</svg>

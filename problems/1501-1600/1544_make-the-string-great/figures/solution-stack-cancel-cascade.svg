@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = a b B A c C; input cells 52x34 at x = 110 + 80i, y = 48; stack boxes 48x28, bottom row y = 242; dashed pairs are canceled characters -->
+  <text x="84" y="34" fill="#5c6b76" font-size="12.5">s = "abBAcC"</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="84" y="48" width="52" height="34"/><rect x="164" y="48" width="52" height="34"/>
+    <rect x="244" y="48" width="52" height="34"/><rect x="324" y="48" width="52" height="34"/>
+    <rect x="404" y="48" width="52" height="34"/><rect x="484" y="48" width="52" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="110" y="71">a</text><text x="190" y="71">b</text><text x="270" y="71">B</text>
+    <text x="350" y="71">A</text><text x="430" y="71">c</text><text x="510" y="71">C</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="110" y="110" fill="#5c6b76">push</text>
+    <text x="190" y="110" fill="#5c6b76">push</text>
+    <text x="270" y="110" fill="#4169E1" font-weight="600">pop: bB</text>
+    <text x="350" y="110" fill="#4169E1" font-weight="600">pop: aA</text>
+    <text x="430" y="110" fill="#5c6b76">push</text>
+    <text x="510" y="110" fill="#4169E1" font-weight="600">pop: cC</text>
+  </g>
+  <!-- push arrows (stub above the label, arrowhead segment below it) -->
+  <g stroke="#5c6b76" stroke-width="1.6" fill="none">
+    <path d="M 110 86 V 96"/><path d="M 110 118 V 236" marker-end="url(#arrow)"/>
+    <path d="M 190 86 V 96"/><path d="M 190 118 V 200" marker-end="url(#arrow)"/>
+    <path d="M 430 86 V 96"/><path d="M 430 118 V 236" marker-end="url(#arrow)"/>
+  </g>
+  <!-- pop arrows -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 270 86 V 96"/><path d="M 270 118 V 200" marker-end="url(#arrowB)"/>
+    <path d="M 350 86 V 96"/><path d="M 350 118 V 236" marker-end="url(#arrowB)"/>
+    <path d="M 510 86 V 96"/><path d="M 510 118 V 236" marker-end="url(#arrowB)"/>
+  </g>
+  <!-- stack floors -->
+  <g stroke="#dbe4fb" stroke-width="3">
+    <path d="M 86 272 H 134"/><path d="M 166 272 H 214"/><path d="M 246 272 H 294"/>
+    <path d="M 326 272 H 374"/><path d="M 406 272 H 454"/><path d="M 486 272 H 534"/>
+  </g>
+  <!-- surviving stacks -->
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.5">
+    <rect x="86" y="242" width="48" height="28"/>
+    <rect x="166" y="242" width="48" height="28"/><rect x="166" y="206" width="48" height="28"/>
+    <rect x="246" y="242" width="48" height="28"/>
+    <rect x="406" y="242" width="48" height="28"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">
+    <text x="110" y="261">a</text>
+    <text x="190" y="261">a</text><text x="190" y="225">b</text>
+    <text x="270" y="261">a</text>
+    <text x="430" y="261">c</text>
+  </g>
+  <!-- canceled pairs (dashed) -->
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="4 3">
+    <rect x="236" y="206" width="30" height="28"/><rect x="274" y="206" width="30" height="28"/>
+    <rect x="316" y="242" width="30" height="28"/><rect x="354" y="242" width="30" height="28"/>
+    <rect x="476" y="242" width="30" height="28"/><rect x="514" y="242" width="30" height="28"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#9aa7b2">
+    <text x="251" y="225">b</text><text x="289" y="225">B</text>
+    <text x="331" y="261">a</text><text x="369" y="261">A</text>
+    <text x="491" y="261">c</text><text x="529" y="261">C</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#9aa7b2" font-style="italic">
+    <text x="350" y="290">empty</text>
+    <text x="510" y="290">empty</text>
+  </g>
+  <text x="310" y="320" text-anchor="middle" fill="#1a2026" font-size="13">Scanning left to right, bB cancels and the pop exposes aA; then cC cancels too,</text>
+  <text x="310" y="338" text-anchor="middle" fill="#1a2026" font-size="13">so every character is paired off and the stack ends <tspan fill="#4169E1" font-weight="600">empty</tspan> — the answer is "".</text>
+</svg>

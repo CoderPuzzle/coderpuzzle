@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- Example 4: root = [1,null,2,3,null,4], p = 1, q = 4. Before: 1 - [2,3], 2 - [4].
+       After: 4 - [1], 1 - [2,3]. Circles r=16 at the centers below; edges run center to
+       center under the circles. Depth labels d0/d1/d2 are the sweep's inside-p depth. -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="140" y="30">before</text>
+    <text x="520" y="30">after</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="140" y1="66" x2="95" y2="136"/>
+    <line x1="140" y1="66" x2="185" y2="136"/>
+    <line x1="95" y1="136" x2="95" y2="206"/>
+    <line x1="520" y1="66" x2="520" y2="146"/>
+    <line x1="520" y1="146" x2="475" y2="216"/>
+    <line x1="520" y1="146" x2="565" y2="216"/>
+  </g>
+  <!-- the cut on edge 2-4, with step badge 1 -->
+  <g stroke="#4169E1" stroke-width="2" stroke-linecap="round">
+    <line x1="89" y1="165" x2="101" y2="177"/>
+    <line x1="101" y1="165" x2="89" y2="177"/>
+  </g>
+  <g fill="#4169E1" font-size="10.5" font-weight="600">
+    <circle cx="117" cy="171" r="8"/><circle cx="494" cy="52" r="8"/><circle cx="538" cy="108" r="8"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600">
+    <text x="117" y="174.5">1</text><text x="494" y="55.5">2</text><text x="538" y="111.5">3</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="140" cy="66" r="16"/><circle cx="95" cy="136" r="16"/><circle cx="185" cy="136" r="16"/>
+    <circle cx="95" cy="206" r="16"/><circle cx="520" cy="66" r="16"/><circle cx="520" cy="146" r="16"/>
+    <circle cx="475" cy="216" r="16"/><circle cx="565" cy="216" r="16"/>
+  </g>
+  <circle cx="140" cy="66" r="16" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="95" cy="206" r="16" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="520" cy="66" r="16" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="520" cy="146" r="16" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="140" y="71">1</text><text x="95" y="141">2</text><text x="185" y="141">3</text>
+    <text x="95" y="211">4</text><text x="520" y="71">4</text><text x="520" y="151">1</text>
+    <text x="475" y="221">2</text><text x="565" y="221">3</text>
+  </g>
+  <g font-size="12" font-weight="600" fill="#4169E1">
+    <text x="162" y="64">p &#183; root</text>
+    <text x="71" y="210" text-anchor="end">q &#183; d2</text>
+    <text x="499" y="74" text-anchor="end">q &#183; root</text>
+    <text x="542" y="150">p</text>
+  </g>
+  <g font-size="11.5" fill="#9aa7b2">
+    <text x="71" y="140" text-anchor="end">d1</text>
+    <text x="208" y="140">d1</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="338" y="84"><tspan fill="#4169E1" font-weight="600">1.</tspan> cut 4 from 2</text>
+    <text x="338" y="122"><tspan fill="#4169E1" font-weight="600">2.</tspan> 4 takes the root slot</text>
+    <text x="338" y="160"><tspan fill="#4169E1" font-weight="600">3.</tspan> 1 re-attached as</text>
+    <text x="338" y="178">4's last child</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="330" y="278">The sweep finds 4 at <tspan fill="#4169E1" font-weight="600">depth 2</tspan> inside p's subtree: 4 is cut from 2 and takes over the</text>
+    <text x="330" y="296">root slot, and old root 1 becomes 4's last child &#8212; output <tspan fill="#4169E1" font-weight="600">[4,null,1,null,2,3]</tspan>.</text>
+  </g>
+</svg>

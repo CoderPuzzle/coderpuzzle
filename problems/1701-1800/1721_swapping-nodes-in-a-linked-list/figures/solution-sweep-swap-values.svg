@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 398" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="398" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- head = [1,2,3,4,5], k = 2; node boxes 64x44 at x=60+90i, row y=70;
+       first cursor on node 2 (k-1=1 step), second cursor on node 4, scout on node 5 (tail);
+       after swapping .val: [1,4,3,2,5] -->
+  <text x="92" y="58" text-anchor="middle" fill="#9aa7b2" font-size="11">head</text>
+  <path d="M 182 24 V 62" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrowD)"/>
+  <text x="192" y="40" fill="#5c6b76" font-size="12.5">first cursor: k − 1 = 1 step → node 2</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="70" width="64" height="44"/><rect x="150" y="70" width="64" height="44"/>
+    <rect x="240" y="70" width="64" height="44"/><rect x="330" y="70" width="64" height="44"/>
+    <rect x="420" y="70" width="64" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="92" y="97">1</text><text x="182" y="97">2</text><text x="272" y="97">3</text>
+    <text x="362" y="97">4</text><text x="452" y="97">5</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 126 92 H 144" marker-end="url(#arrowD)"/>
+    <path d="M 216 92 H 234" marker-end="url(#arrowD)"/>
+    <path d="M 306 92 H 324" marker-end="url(#arrowD)"/>
+    <path d="M 396 92 H 414" marker-end="url(#arrowD)"/>
+  </g>
+  <path d="M 362 142 V 120" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrowD)"/>
+  <path d="M 452 142 V 120" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrowD)"/>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="362" y="160" text-anchor="middle">second cursor</text>
+    <text x="452" y="160" text-anchor="middle">scout = tail</text>
+  </g>
+  <text x="407" y="178" text-anchor="middle" fill="#5c6b76" font-size="12">the two move in lockstep, k − 1 = 1 apart</text>
+  <path d="M 370 190 Q 407 208 448 190" fill="none" stroke="#42525e" stroke-width="1.6" marker-start="url(#arrowD)" marker-end="url(#arrowD)"/>
+  <path d="M 182 200 Q 272 236 362 200" fill="none" stroke="#4169E1" stroke-width="2" marker-start="url(#arrowB)" marker-end="url(#arrowB)"/>
+  <text x="272" y="254" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">swap the two .val fields</text>
+  <text x="60" y="278" fill="#5c6b76" font-size="12.5">after the value swap — links untouched</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="60" y="288" width="64" height="44" fill="#ffffff"/><rect x="150" y="288" width="64" height="44" fill="#dbe4fb"/>
+    <rect x="240" y="288" width="64" height="44" fill="#ffffff"/><rect x="330" y="288" width="64" height="44" fill="#dbe4fb"/>
+    <rect x="420" y="288" width="64" height="44" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="92" y="315">1</text><text x="182" y="315">4</text><text x="272" y="315">3</text>
+    <text x="362" y="315">2</text><text x="452" y="315">5</text>
+  </g>
+  <text x="320" y="364" text-anchor="middle" fill="#1a2026" font-size="13">When the scout lands on the tail, the trailing cursor stands on the 2nd node</text>
+  <text x="320" y="384" text-anchor="middle" fill="#1a2026" font-size="13">from the end; swapping values 2 and 4 gives <tspan fill="#4169E1" font-weight="600">[1,4,3,2,5]</tspan>, links untouched.</text>
+</svg>

@@ -13,6 +13,8 @@ and nothing changes; if `k > half`, the bit lives inside the mirrored,
 inverted copy, so its position inside `S(n-1)` is `2 * half - k` and one
 more inversion needs to be remembered for the final answer.
 
+![On Example 2's S(4) = "011100110110001", the query k = 11 lands in the mirrored copy, so it reflects to 5 in S(3), then 3 in S(2), then 1 in S(1) while three inversions accumulate and flip the base 0 into the answer 1.](figures/solution-peel-reflect-invert.svg)
+
 The loop tracks only two things — the current `k` and a running `invert`
 flag — and shrinks `n` by one each iteration, so it terminates after at
 most `n` steps at `S(1) = "0"`, where the accumulated flag decides whether

@@ -20,6 +20,8 @@ Type 2 edges (union only in Bob's), again counting each edge that performs a
 real merge. Path compression and union-by-merge keep every `find`/`union`
 call close to constant time.
 
+![On Example 1's six edges the type-3 pass merges both union-finds with [3, 1, 2] and [3, 2, 3], the type-1 pass then adds only [1, 2, 4] for Alice, and the type-2 pass adds only [2, 3, 4] for Bob — 4 edges used, so the redundant [1, 1, 3] and [1, 1, 2] are the 2 removable ones.](figures/solution-type3-first-union-find.svg)
+
 Once every edge has been offered to the right structure(s), the graph is
 fully traversable by both exactly when both structures have collapsed to a
 single component (`components == 1`); otherwise the answer is `-1`,

@@ -23,6 +23,8 @@ mod `1e9 + 7`, gives `dp[i][j]`. The base row `dp[0][j] = 1` for every
 `j` (the empty prefix needs no columns), and the answer is
 `dp[len(target)][W]`.
 
+![Example 1's words = ["acca","bbbb","caca"] and target = "aba" beside the per-column counts of 'a' and 'b' that feed the dp grid, where each column is skipped (left cell) or spent on the next target character (diagonal cell times its count); dp[3][4] = 0 + dp[2][3] * 2 = 3 * 2 = 6 counts every way to place 'a', 'b', 'a' with strictly increasing columns.](figures/solution-column-count-dp.svg)
+
 The table has `(len(target) + 1) * (W + 1)` cells, each computed in
 O(1) once the frequency table exists, so the whole computation is
 dominated by building `charCount` and filling the DP grid; a rolling

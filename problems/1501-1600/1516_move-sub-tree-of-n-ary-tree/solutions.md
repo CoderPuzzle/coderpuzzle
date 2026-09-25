@@ -52,6 +52,8 @@ q's last child, return q only when p was the root. The direct-child guard
 runs first here too, and for the same reason — that one pair is the
 exception the statement freezes in place.
 
+![On Example 4's tree [1,null,2,3,null,4] with p = 1 and q = 4, the sweep reports q at depth 2 inside p's subtree, and the surgery cuts 4 from 2, hangs it in the root slot p vacates, and appends old root 1 as 4's last child.](figures/solution-q-takes-root-slot.svg)
+
 Nothing is stored between frames and no node is revisited: the answer is
 assembled as the traversal finishes, so the space bill is the explicit
 stack alone — which also makes the walk indifferent to a 1000-deep chain,

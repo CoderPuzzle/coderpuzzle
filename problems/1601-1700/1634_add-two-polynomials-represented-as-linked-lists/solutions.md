@@ -21,5 +21,7 @@ pointer advances. Once one array is exhausted, whatever remains of the
 other is already in the correct descending order and is appended
 wholesale.
 
+![Example 2's merge of 2x²+4x+3 and 3x²-4x-1: the pointers walk the aligned term lists in lockstep over equal powers, 2+3=5 and 3-1=2 append while 4-4=0 cancels and is omitted, and the merged result is [[2, 5], [0, 2]], i.e. 5x² + 2.](figures/solution-two-pointer-merge.svg)
+
 **Complexity:** `O(n + m)` time, `O(n + m)` space, where `n` and `m` are
 the lengths of `poly1` and `poly2`.

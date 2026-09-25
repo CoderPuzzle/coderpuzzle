@@ -24,6 +24,8 @@ before it: `same[i][j] = 0` and `diff[i][j] = same[i-1][j-1] + 1`. Every
 that differ by one character, so summing it over all `i, j` is the answer;
 no separate one-mismatch bound needs to be subtracted from anything else.
 
+![Example 1's two tables for s = "aba" against t = "baba", shown per ending pair as same-run / one-mismatch run lengths filling along diagonals: each shaded mismatch cell takes `same[i-1][j-1] + 1` (e.g. diff[2][2] = same[1][1] + 1 = 1), and the six shaded cells — all single-character pairs — sum to 6.](figures/solution-same-diff-diagonals.svg)
+
 Since row `i` of both tables reads only row `i - 1` at the diagonal
 neighbor, each pass only needs the previous row, and the two `n x m`
 tables never exist in full — the running total is accumulated cell by

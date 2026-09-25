@@ -48,6 +48,8 @@ calls and no node is ever revisited: a node's bend is scored at the one
 moment its last child finishes, which is precisely when all the numbers
 it needs are in hand.
 
+![On Example 1's tree [1,null,3,2,4,null,5,6], heights return up the post-order sweep — leaves h0, node 3 h1, root h2 — and each node scores first + second + 2, the widest bend 5-3-1-2 through the root giving 3.](figures/solution-bend-scores.svg)
+
 The seeding does the degenerate work. A leaf never enters the loop, scores
 `-1 + -1 + 2 = 0`, and returns height `0`. On a straight chain of `k`
 nodes the root finally scores `(k - 2) + -1 + 2 = k - 1` — the whole chain

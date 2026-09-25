@@ -8,6 +8,8 @@ one: put `min(remaining rowSum[i], remaining colSum[j])` into cell
 remaining sum. Whichever of the two was smaller reaches zero immediately,
 so every step fully satisfies at least one remaining row or column total.
 
+![On example 2 (rowSum [3,2,1], colSum [1,2,3]), the greedy fill places 1, 2, 2, 1 row-major and zeroes a remaining margin at every step — col 0, then row 0 + col 1, then row 1, then row 2 + col 2 — producing [[1,2,0],[0,0,2],[0,0,1]].](figures/solution-greedy-min-margin-fill.svg)
+
 This greedy choice can never paint itself into a corner. By the time
 processing reaches row `i`, all the sum already assigned to earlier rows
 still balances against the columns exactly, so `rowSum[i]`'s leftover

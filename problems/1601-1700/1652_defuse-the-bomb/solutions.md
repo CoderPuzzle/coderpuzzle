@@ -11,6 +11,8 @@ past either end, so every index used to read `code` is wrapped with
 negative offsets from previous-direction sums correct in languages whose
 `%` can return a negative result.
 
+![On code = [5, 7, 1, 4] with k = 3, each slot's three-element forward window wraps past the end, producing [12, 10, 16, 13].](figures/solution-circular-forward-windows.svg)
+
 The implementation loops over each position `i`, then loops `|k|` steps
 in the required direction, accumulating `code` at each wrapped index into
 that position's sum. With `n <= 100` and `|k| < n`, this nested loop does

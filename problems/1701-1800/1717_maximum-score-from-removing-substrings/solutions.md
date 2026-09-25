@@ -6,6 +6,8 @@ It is always optimal to remove all instances of the more valuable pattern first.
 
 Each pass is a single left-to-right scan with a stack, the standard adjacent-pair-removal pattern: when the incoming character `c` equals `second` and the stack top equals `first`, the pair is removed — the top is popped and `points` are added; otherwise `c` is pushed. The characters that survive the scan are exactly the input after all non-overlapping removals of that pattern have been applied greedily, and joining them yields the string handed to the second pass.
 
+![On s = "cdbcbbaaabab" with y = 5 > x = 4, the first stack pass pops three "ba" pairs for 15 points and the leftover pass pops one "ab" for 4, scoring 19 and leaving "cdbc".](figures/solution-two-pass-stack-removal.svg)
+
 After the first pass no occurrence of the first pattern remains, so the second pass over the leftover string extracts every remaining point from the other pattern. Characters other than `a` and `b` pass through both stacks untouched and never interact. Each character is pushed and popped at most once per pass, and the total score is just the sum of the two passes.
 
 **Complexity:** `O(n)` time, `O(n)` space.

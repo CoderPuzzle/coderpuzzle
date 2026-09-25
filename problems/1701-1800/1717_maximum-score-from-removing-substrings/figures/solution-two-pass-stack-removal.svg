@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 312" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="312" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "cdbcbbaaabab"; pass 1 cells 30x34 at x=60+32i, y=62, popped pairs (b5,a6) (b4,a7) (b9,a10);
+       pass 2 cells for "cdbcab" at x=60+32i, y=182, popped pair (a4,b5) -->
+  <text x="60" y="30" fill="#5c6b76" font-size="12.5">pass 1 — scan left to right, pattern "ba" pays 5 (y = 5 &gt; x = 4)</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="60" y="62" width="30" height="34" fill="#ffffff"/>
+    <rect x="92" y="62" width="30" height="34" fill="#ffffff"/>
+    <rect x="124" y="62" width="30" height="34" fill="#ffffff"/>
+    <rect x="156" y="62" width="30" height="34" fill="#ffffff"/>
+    <rect x="188" y="62" width="30" height="34" fill="#dbe4fb"/>
+    <rect x="220" y="62" width="30" height="34" fill="#dbe4fb"/>
+    <rect x="252" y="62" width="30" height="34" fill="#dbe4fb"/>
+    <rect x="284" y="62" width="30" height="34" fill="#dbe4fb"/>
+    <rect x="316" y="62" width="30" height="34" fill="#ffffff"/>
+    <rect x="348" y="62" width="30" height="34" fill="#dbe4fb"/>
+    <rect x="380" y="62" width="30" height="34" fill="#dbe4fb"/>
+    <rect x="412" y="62" width="30" height="34" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="75" y="84">c</text><text x="107" y="84">d</text><text x="139" y="84">b</text>
+    <text x="171" y="84">c</text><text x="203" y="84">b</text><text x="235" y="84">b</text>
+    <text x="267" y="84">a</text><text x="299" y="84">a</text><text x="331" y="84">a</text>
+    <text x="363" y="84">b</text><text x="395" y="84">a</text><text x="427" y="84">b</text>
+  </g>
+  <!-- popped-pair arcs below the row: stack-top b to incoming a -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 235 100 Q 251 114 267 100" marker-end="url(#arrow)"/>
+    <path d="M 203 100 Q 251 130 299 100" marker-end="url(#arrow)"/>
+    <path d="M 363 100 Q 379 114 395 100" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="267" y="122">+5</text><text x="299" y="122">+5</text><text x="395" y="122">+5</text>
+  </g>
+  <text x="60" y="168" fill="#5c6b76" font-size="12.5">pass 2 — the same scan on the leftover "cdbcab", pattern "ab" pays 4</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="60" y="182" width="30" height="34" fill="#ffffff"/>
+    <rect x="92" y="182" width="30" height="34" fill="#ffffff"/>
+    <rect x="124" y="182" width="30" height="34" fill="#ffffff"/>
+    <rect x="156" y="182" width="30" height="34" fill="#ffffff"/>
+    <rect x="188" y="182" width="30" height="34" fill="#dbe4fb"/>
+    <rect x="220" y="182" width="30" height="34" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="75" y="204">c</text><text x="107" y="204">d</text><text x="139" y="204">b</text>
+    <text x="171" y="204">c</text><text x="203" y="204">a</text><text x="235" y="204">b</text>
+  </g>
+  <path d="M 203 220 Q 219 234 235 220" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="219" y="250" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">+4</text>
+  <text x="270" y="204" fill="#5c6b76" font-size="12.5">leftover "cdbc"</text>
+  <text x="280" y="282" text-anchor="middle" fill="#1a2026" font-size="13">Pass 1 pops three "ba" for 15 and pass 2 one "ab" for 4 —</text>
+  <text x="280" y="302" text-anchor="middle" fill="#1a2026" font-size="13">total <tspan fill="#4169E1" font-weight="600">19</tspan>, leaving "cdbc" behind.</text>
+</svg>

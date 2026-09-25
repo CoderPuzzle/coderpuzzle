@@ -6,6 +6,8 @@ The allowed swaps partition the indices: any chain of swaps lets you permute the
 
 The code builds a disjoint-set forest over indices with path halving, unioning the endpoints of every allowed swap. A second pass groups all indices by their root. For each group it counts the source values with a `Counter`, then walks the group's indices: if `target[i]` still has an available count it is matched (decrementing the counter), otherwise the distance grows by one. Matching greedy-in-place is valid because only counts matter, not which exact index supplies which equal value.
 
+![On source [1,2,3,4], target [2,1,4,5] with swaps [[0,1],[2,3]], the union-find splits the indices into components {0,1} and {2,3}; the first matches its multisets completely while the second leaves target 5 unmatched, so the Hamming distance is 1 at index 3.](figures/solution-unionfind-multiset.svg)
+
 Each unmatched target element contributes exactly one to the answer, and the sum over components is the global minimum — no swap can fix a mismatch across components, and within a component all mismatches that are fixable are fixed. Components of size one (indices in no swap) fall out naturally, matching the no-swap baseline.
 
 **Complexity:** `O((n + S) α(n))` time, `O(n)` space.

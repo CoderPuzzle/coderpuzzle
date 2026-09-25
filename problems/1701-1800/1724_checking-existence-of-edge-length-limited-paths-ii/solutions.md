@@ -35,4 +35,6 @@ finally over the two parent edges, taking the maximum weight every hop
 touches. At most `2 log n` table entries decide the answer, against
 `10⁴` queries over a graph of up to `10⁴` edges.
 
+![On example 1's graph, cheapest-first Kruskal keeps edges 2–3 (1), 0–3 (2), 1–2 (3) and 4–5 (5) while 0–2 (4) closes a cycle, and the lifting walk answers query (2,0,3) with path max 2 < 3 true against query (1,3,3) whose path max 3 fails the strict bound.](figures/solution-msf-lifting-queries.svg)
+
 **Complexity:** `O((E + Q) log n)` time, `O(n log n)` space.

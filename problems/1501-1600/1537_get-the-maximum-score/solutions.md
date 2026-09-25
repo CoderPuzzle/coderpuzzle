@@ -12,6 +12,8 @@ crossing point: the better of the two segments is locked in — `max(sum1,
 sum2)` — plus the shared value itself, both running sums reset to zero, and
 both pointers move past it.
 
+![On Example 1's nums1 = [2,4,5,8,10] and nums2 = [4,6,8,9], the running sums reset at the shared 4 and 8, where max(2, 0) + 4 = 6 and max(5, 6) + 8 = 14 are banked, and the larger tail max(10, 9) = 10 closes the best path at a total of 30.](figures/solution-crossing-segment-max.svg)
+
 This works because a valid path can only switch arrays at a value present
 in both, so between two consecutive crossings (or before the first / after
 the last) the path is forced to stay in one array — there is nothing to

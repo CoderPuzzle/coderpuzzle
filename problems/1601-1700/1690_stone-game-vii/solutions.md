@@ -23,6 +23,8 @@ whichever net is larger. A lone stone is the base — removing it scores
 nothing, so `dp[l][l] = 0` — and prefix sums turn every segment sum into one
 subtraction.
 
+![For stones = [5,3,1,4,2] the interval table fills by shrinking spans, and the top cell evaluates to dp[0][4] = max(10 − 7, 13 − 7) = 6 — Alice taking the right stone 2 first, as in the example's walkthrough.](figures/solution-interval-dp-margin-table.svg)
+
 Filling `l` descending and `r` ascending leaves both one-stone-shorter runs
 ready, and the answer is `dp[0][n-1]`. Bob's minimization is already inside
 the recurrence: after Alice banks a segment sum, the sign flips through the

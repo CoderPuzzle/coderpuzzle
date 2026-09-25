@@ -11,6 +11,8 @@ subset is achievable exactly when every building's net change is zero,
 because that is precisely the "arrivals equal departures" condition the
 problem describes.
 
+![On example 1 (n = 5), the kept five requests balance every building — 2 out · 2 in at 0, 2 out · 2 in at 1, 1 out · 1 in at 2, nothing at 3 and 4 — while adding the dropped [3,4] would strand building 3 one short and building 4 one over.](figures/solution-balanced-subset.svg)
+
 The search walks every mask from `0` to `2^m - 1`. For each one it rebuilds
 the per-building net-change array from scratch (an `O(n)`-sized array
 cleared each iteration), applies every selected request's `+1`/`-1` pair,

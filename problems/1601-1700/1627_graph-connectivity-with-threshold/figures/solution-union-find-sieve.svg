@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <!-- n = 6, threshold = 2; sieve unions z with 2z, 3z, .. <= 6: only z = 3 -> union(3, 6);
+       roots 1,2,3,4,5,3; queries [1,4] false, [2,5] false, [3,6] true -->
+  <text x="250" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5">n = 6, threshold = 2 — union each z &#8805; 3 with its multiples</text>
+  <path d="M 370 112 V 168" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="130" cy="90" r="22" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="250" cy="90" r="22" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="370" cy="90" r="22" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <circle cx="130" cy="190" r="22" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="250" cy="190" r="22" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="370" cy="190" r="22" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="130" y="95">1</text><text x="250" y="95">2</text><text x="370" y="95" fill="#4169E1">3</text>
+    <text x="130" y="195">4</text><text x="250" y="195">5</text><text x="370" y="195" fill="#4169E1">6</text>
+  </g>
+  <text x="340" y="95" text-anchor="end" fill="#4169E1" font-size="11" font-weight="600">root</text>
+  <text x="370" y="232" text-anchor="middle" fill="#5c6b76" font-size="10.5">find(6) = 3</text>
+  <text x="384" y="144" fill="#4169E1" font-size="12" font-weight="600">z = 3</text>
+  <text x="250" y="256" text-anchor="middle" fill="#5c6b76" font-size="11.5">z = 4, 5, 6 have no second multiple &#8804; 6, so nothing else merges</text>
+  <text x="455" y="70" fill="#5c6b76" font-size="12">queries, answered by roots</text>
+  <g font-size="12.5">
+    <text x="455" y="105" fill="#1a2026">[1,4]: roots 1 &#8800; 4 &#8594; <tspan fill="#5c6b76">false</tspan></text>
+    <text x="455" y="150" fill="#1a2026">[2,5]: roots 2 &#8800; 5 &#8594; <tspan fill="#5c6b76">false</tspan></text>
+    <text x="455" y="195" fill="#1a2026">[3,6]: roots 3 = 3 &#8594; <tspan fill="#4169E1" font-weight="600">true</tspan></text>
+  </g>
+  <text x="320" y="290" text-anchor="middle" fill="#1a2026" font-size="13">The sieve unions each z &gt; 2 with its multiples: only z = 3 merges a pair, 3 and 6.</text>
+  <text x="320" y="310" text-anchor="middle" fill="#1a2026" font-size="13">Each query compares roots: only [3, 6] shares root 3 — answers false, false, <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

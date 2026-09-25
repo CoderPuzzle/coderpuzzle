@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="330" fill="#ffffff"/>
+  <!-- matrix = [[20,-21,14],[-19,4,19],[22,-47,24],[-19,4,19]]; ranks [[4,2,3],[1,3,4],[5,1,6],[1,3,4]]; cells 62x46 at (48,64), panel rows at y=90+19k -->
+  <text x="141" y="38" text-anchor="middle" fill="#5c6b76" font-size="12.5">matrix and its ranks</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="79" y="56">c0</text><text x="141" y="56">c1</text><text x="203" y="56">c2</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="40" y="91">r0</text><text x="40" y="137">r1</text><text x="40" y="183">r2</text><text x="40" y="229">r3</text>
+  </g>
+  <!-- equal-valued cells sharing a column (rows 1 and 3) carry the light accent fill -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="48" y="64" width="62" height="46" fill="#ffffff"/><rect x="110" y="64" width="62" height="46" fill="#ffffff"/><rect x="172" y="64" width="62" height="46" fill="#ffffff"/>
+    <rect x="48" y="110" width="62" height="46" fill="#dbe4fb"/><rect x="110" y="110" width="62" height="46" fill="#dbe4fb"/><rect x="172" y="110" width="62" height="46" fill="#dbe4fb"/>
+    <rect x="48" y="156" width="62" height="46" fill="#ffffff"/><rect x="110" y="156" width="62" height="46" fill="#ffffff"/><rect x="172" y="156" width="62" height="46" fill="#ffffff"/>
+    <rect x="48" y="202" width="62" height="46" fill="#dbe4fb"/><rect x="110" y="202" width="62" height="46" fill="#dbe4fb"/><rect x="172" y="202" width="62" height="46" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="79" y="84" font-weight="600" fill="#1a2026">20</text><text x="141" y="84" font-weight="600" fill="#1a2026">-21</text><text x="203" y="84" font-weight="600" fill="#1a2026">14</text>
+    <text x="79" y="130" font-weight="600" fill="#1a2026">-19</text><text x="141" y="130" font-weight="600" fill="#1a2026">4</text><text x="203" y="130" font-weight="600" fill="#1a2026">19</text>
+    <text x="79" y="176" font-weight="600" fill="#1a2026">22</text><text x="141" y="176" font-weight="600" fill="#1a2026">-47</text><text x="203" y="176" font-weight="600" fill="#1a2026">24</text>
+    <text x="79" y="222" font-weight="600" fill="#1a2026">-19</text><text x="141" y="222" font-weight="600" fill="#1a2026">4</text><text x="203" y="222" font-weight="600" fill="#1a2026">19</text>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="600" fill="#4169E1">
+    <text x="79" y="103">rank 4</text><text x="141" y="103">rank 2</text><text x="203" y="103">rank 3</text>
+    <text x="79" y="149">rank 1</text><text x="141" y="149">rank 3</text><text x="203" y="149">rank 4</text>
+    <text x="79" y="195">rank 5</text><text x="141" y="195">rank 1</text><text x="203" y="195">rank 6</text>
+    <text x="79" y="241">rank 1</text><text x="141" y="241">rank 3</text><text x="203" y="241">rank 4</text>
+  </g>
+  <text x="459" y="38" text-anchor="middle" fill="#5c6b76" font-size="12.5">processed in increasing value order</text>
+  <!-- pair rows (unioned components) sit on a light accent chip -->
+  <rect x="282" y="114.5" width="354" height="17" rx="3" fill="#dbe4fb"/>
+  <rect x="282" y="133.5" width="354" height="17" rx="3" fill="#dbe4fb"/>
+  <rect x="282" y="171.5" width="354" height="17" rx="3" fill="#dbe4fb"/>
+  <g font-size="12">
+    <g text-anchor="end" font-weight="600" fill="#1a2026">
+      <text x="330" y="90">-47</text><text x="330" y="109">-21</text><text x="330" y="128">-19</text>
+      <text x="330" y="147">4</text><text x="330" y="166">14</text><text x="330" y="185">19</text>
+      <text x="330" y="204">20</text><text x="330" y="223">22</text><text x="330" y="242">24</text>
+    </g>
+    <g text-anchor="start" fill="#5c6b76">
+      <text x="344" y="90">(2,1)</text><text x="344" y="109">(0,1)</text><text x="344" y="128">(1,0) with (3,0), same column</text>
+      <text x="344" y="147">(1,1) with (3,1), same column</text><text x="344" y="166">(0,2)</text><text x="344" y="185">(1,2) with (3,2), same column</text>
+      <text x="344" y="204">(0,0)</text><text x="344" y="223">(2,0)</text><text x="344" y="242">(2,2)</text>
+    </g>
+    <g text-anchor="end" font-weight="600" fill="#4169E1">
+      <text x="632" y="90">rank 1</text><text x="632" y="109">rank 2</text><text x="632" y="128">rank 1</text>
+      <text x="632" y="147">rank 3</text><text x="632" y="166">rank 3</text><text x="632" y="185">rank 4</text>
+      <text x="632" y="204">rank 4</text><text x="632" y="223">rank 5</text><text x="632" y="242">rank 6</text>
+    </g>
+  </g>
+  <text x="330" y="286" text-anchor="middle" fill="#1a2026" font-size="13">Each component is stamped once: rank = max(row_max, col_max) + 1 - the 4-pair</text>
+  <text x="330" y="306" text-anchor="middle" fill="#1a2026" font-size="13">sees row_max 1 (after -19) and col_max 2 (after -21), so both cells get <tspan fill="#4169E1" font-weight="600">rank 3</tspan>.</text>
+</svg>

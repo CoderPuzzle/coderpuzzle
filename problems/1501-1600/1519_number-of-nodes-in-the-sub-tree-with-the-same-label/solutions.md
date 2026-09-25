@@ -17,6 +17,8 @@ After the fold, `ans[i]` is simply node `i`'s own counter at its own
 label's slot, since a node's final counters hold the label tally over its
 whole subtree.
 
+![On Example 1's 7-node tree with labels "abaedcd", each node's counter starts seeded with its own label, and the reversed BFS order [6,3,5,4,2,1,0] folds child counters into parents until node 0's slot a holds 2 — ans = [2,1,1,1,1,1,1].](figures/solution-reverse-bfs-counter-fold.svg)
+
 Recording the traversal order with a queue rather than recursing keeps
 the whole computation on the heap instead of the call stack, so a tree
 shaped like a straight chain of 10⁵ nodes — the constraint's worst case —

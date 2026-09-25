@@ -15,6 +15,8 @@ current cell's value; no case analysis on the current cell's sign is
 needed, since taking a global max/min over all four candidates handles
 sign flips automatically.
 
+![On example 2's grid [[1,-2,1],[1,-2,1],[3,-4,1]], the row-major DP fills each cell with its (max, min) product pair, and the -4 cell flips the running minimum -2 into the new maximum +8 that the corner keeps as the answer 8.](figures/solution-max-min-product-pairs.svg)
+
 The only subtlety is how large these running products get: a path visits
 at most `m + n - 1` cells (at most `29` for the `15 x 15` bound), and
 every cell magnitude is at most `4`, so the largest possible product

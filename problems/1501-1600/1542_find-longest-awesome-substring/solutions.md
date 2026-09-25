@@ -25,6 +25,8 @@ single-bit digit flags, taking the widest span found among all matches (and
 against the sentinel empty-prefix mask 0 at index -1, covering substrings
 that start at index 0).
 
+![On Example 1's s = 3242415 the 10-bit prefix parity mask flips beneath each character to 8, 12, 28, 24, 8, 10, 42, and at j = 5 the lookup 10 ⊕ bit 1 = 8 hits the earliest index 0, making s[1..5] = 24241 the widest awesome span of length 5.](figures/solution-parity-mask-earliest-span.svg)
+
 Each position does O(1) mask work plus a fixed 10-entry lookup, and the map
 holds at most 1024 distinct masks, so the whole scan stays linear in the
 length of `s`.

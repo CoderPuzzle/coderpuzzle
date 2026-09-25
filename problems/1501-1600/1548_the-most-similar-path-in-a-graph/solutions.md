@@ -22,5 +22,7 @@ several neighbors tie for a cell's minimum, keeping the first one found
 is enough — any of the resulting paths carries the optimal cost, and the
 problem accepts any one of them.
 
+![On Example 1's road graph with targetPath ATX, MIA, BOS, ORD, the dp rows fill one path position at a time — each cell the best neighbor above plus 1 on a name miss — and walking parents backward from the minimum 1 at dp[3][2] recovers [0,3,0,2] at cost 1.](figures/solution-dp-parent-backtrack.svg)
+
 **Complexity:** `O(L * (n + m))` time, `O(L * n)` space, where `L =
 targetPath.length`, `n` is the city count, and `m = roads.length`.

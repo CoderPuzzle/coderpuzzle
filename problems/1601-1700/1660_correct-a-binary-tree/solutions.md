@@ -18,6 +18,10 @@ same depth, so every node right of `fromNode` at that depth is enqueued
 before `fromNode` is dequeued, and when `fromNode` finally comes up its right
 child — the wired edge — stares at a node already in the seen set.
 
+![In example 2's tree [8, 3, 1, 7, null, 9, 4, 2, null, null, null, 5, 6], the
+right-to-left sweep has already enqueued 4 when 7 is dequeued, so 7's rogue
+right edge lands in the seen set and clearing 3's left link drops 7 with 2.](figures/solution-right-to-left-seen-set.svg)
+
 That test can fire at exactly one node, which is what makes the sweep a
 correction rather than a guess. In a tree every child is enqueued exactly
 once, by its own parent, so no node's right child can predate its own

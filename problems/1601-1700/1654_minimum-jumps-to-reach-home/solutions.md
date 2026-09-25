@@ -13,6 +13,10 @@ with the fewest jumps possible: levels are jump counts, and the first level
 containing a node at `x` is the answer. If the frontier empties first, no
 sequence of legal jumps reaches home and the result is `-1`.
 
+![On example 3, forbidden = [1, 6, 2, 14, 5, 17, 4] with a = 16, b = 9, x = 7,
+the number line shows the two-jump path 0 → 16 → 7, whose landing state
+(7, back) bars any second backward jump.](figures/solution-direction-state-number-line.svg)
+
 The line stretches forward forever, so the search needs an upper bound:
 nothing above `max(x, max(forbidden)) + a + b` is ever worth visiting.
 Beyond `max(x, max(forbidden))` there is nothing to hit — home is below and

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- dp[i][c] for targetPath [ATX,MIA,BOS,ORD]; cities 0 ATX, 1 SEA, 2 ORD, 3 MIA, 4 BOS; cells 72x32, stride (80,56) from (150,74); parent walk 2 -> 0 -> 3 -> 0 -->
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="186" y="46">0</text><text x="266" y="46">1</text><text x="346" y="46">2</text>
+    <text x="426" y="46">3</text><text x="506" y="46">4</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="186" y="62">ATX</text><text x="266" y="62">SEA</text><text x="346" y="62">ORD</text>
+    <text x="426" y="62">MIA</text><text x="506" y="62">BOS</text>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="134" y="86" text-anchor="end">i = 0</text>
+    <text x="134" y="142" text-anchor="end">i = 1</text>
+    <text x="134" y="198" text-anchor="end">i = 2</text>
+    <text x="134" y="254" text-anchor="end">i = 3</text>
+  </g>
+  <g text-anchor="end" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="134" y="101">ATX</text><text x="134" y="157">MIA</text>
+    <text x="134" y="213">BOS</text><text x="134" y="269">ORD</text>
+  </g>
+  <!-- dp cells -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="150" y="74" width="72" height="32"/><rect x="230" y="74" width="72" height="32"/><rect x="310" y="74" width="72" height="32"/><rect x="390" y="74" width="72" height="32"/><rect x="470" y="74" width="72" height="32"/>
+    <rect x="150" y="130" width="72" height="32"/><rect x="230" y="130" width="72" height="32"/><rect x="310" y="130" width="72" height="32"/><rect x="390" y="130" width="72" height="32"/><rect x="470" y="130" width="72" height="32"/>
+    <rect x="150" y="186" width="72" height="32"/><rect x="230" y="186" width="72" height="32"/><rect x="310" y="186" width="72" height="32"/><rect x="390" y="186" width="72" height="32"/><rect x="470" y="186" width="72" height="32"/>
+    <rect x="150" y="242" width="72" height="32"/><rect x="230" y="242" width="72" height="32"/><rect x="310" y="242" width="72" height="32" fill="#dbe4fb"/><rect x="390" y="242" width="72" height="32"/><rect x="470" y="242" width="72" height="32"/>
+  </g>
+  <rect x="150" y="74" width="72" height="32" fill="#dbe4fb" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="390" y="130" width="72" height="32" fill="#dbe4fb" stroke="#42525e" stroke-width="1.3"/>
+  <rect x="150" y="186" width="72" height="32" fill="#dbe4fb" stroke="#42525e" stroke-width="1.3"/>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="186" y="95" fill="#4169E1">0</text><text x="266" y="95">1</text><text x="346" y="95">1</text><text x="426" y="95">1</text><text x="506" y="95">1</text>
+    <text x="186" y="151">2</text><text x="266" y="151">2</text><text x="346" y="151">1</text><text x="426" y="151" fill="#4169E1">0</text><text x="506" y="151">2</text>
+    <text x="186" y="207" fill="#4169E1">1</text><text x="266" y="207">1</text><text x="346" y="207">3</text><text x="426" y="207">3</text><text x="506" y="207">1</text>
+    <text x="186" y="263">4</text><text x="266" y="263">2</text><text x="346" y="263" fill="#4169E1">1</text><text x="426" y="263">2</text><text x="506" y="263">2</text>
+  </g>
+  <!-- parent walk backward: dp[3][2] -> dp[2][0] -> dp[1][3] -> dp[0][0], routed through the row gaps -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 346 239 V 228 H 190 V 221" marker-end="url(#arrow)"/>
+    <path d="M 186 183 V 174 H 424 V 165" marker-end="url(#arrow)"/>
+    <path d="M 426 127 V 118 H 188 V 109" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="268" y="224">parent</text>
+    <text x="306" y="170">parent</text>
+    <text x="308" y="114">parent</text>
+  </g>
+  <text x="320" y="304" text-anchor="middle" fill="#1a2026" font-size="13">Each cell = best neighbor in the row above + 1 when the name misses targetPath[i];</text>
+  <text x="320" y="322" text-anchor="middle" fill="#1a2026" font-size="13">walking parents back from the min <tspan fill="#4169E1" font-weight="600">1</tspan> at dp[3][2] rebuilds 0 → 3 → 0 → 2, cost <tspan fill="#4169E1" font-weight="600">1</tspan>.</text>
+</svg>

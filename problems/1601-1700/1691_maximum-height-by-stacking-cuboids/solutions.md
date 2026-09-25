@@ -6,6 +6,8 @@ Rotations are free, so each cuboid may as well present its dimensions in sorted 
 
 The problem then reduces to a longest-increasing-subsequence-style DP over heights: `dp[i]` is the tallest stack with cuboid `i` on top, initialized to cuboid `i`'s height. For each `i`, every earlier `j` whose three sorted dimensions are all at most cuboid `i`'s (non-strict, since equal dimensions may touch) is a valid support, and `dp[i]` takes the best `dp[j] + height(i)`. The answer is the maximum over all `dp[i]`.
 
+![Reoriented to sorted triples, the example's cuboids nest with bases 53 × 37, 45 × 20 and 23 × 12 — each component-wise at most the one below — stacking to 95 + 50 + 45 = 190.](figures/solution-sorted-nesting-stack.svg)
+
 Checking all earlier pairs is safe and exhaustive: the lexicographic sort guarantees that whenever `j`'s sorted triple is component-wise at most `i`'s, `j` appears before `i`, and any stacking order can be arranged so each box rests on one with smaller-or-equal sorted dimensions. A cuboid can never stack on itself, and the input never needs more than one orientation of the same box because the DP considers each cuboid exactly once.
 
 **Complexity:** `O(n²)` time, `O(n)` space.

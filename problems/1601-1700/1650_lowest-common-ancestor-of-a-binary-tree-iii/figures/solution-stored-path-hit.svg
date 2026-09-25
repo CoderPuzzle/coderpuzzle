@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 326" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="326" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- tree = [3,5,1,6,2,0,8,null,null,7,4], p=5, q=4; boxes 48x40; climb steps read the parent map -->
+  <text x="40" y="42" fill="#5c6b76" font-size="12.5">tree [3,5,1,6,2,0,8,null,null,7,4] with p = 5, q = 4</text>
+  <!-- step 1: store p's path -->
+  <text x="40" y="84" fill="#1a2026" font-size="13" font-weight="600">1. Record the path from p = 5 up to the root:</text>
+  <g stroke-width="1.6">
+    <rect x="270" y="96" width="48" height="40" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="370" y="96" width="48" height="40" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <line x1="322" y1="116" x2="364" y2="116" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="294" y="122" fill="#1a2026">5</text>
+    <text x="394" y="122" fill="#1a2026">3</text>
+  </g>
+  <text x="430" y="121" fill="#5c6b76" font-size="12.5">(root — stop)</text>
+  <!-- step 2: climb q -->
+  <text x="40" y="176" fill="#1a2026" font-size="13" font-weight="600">2. Climb from q = 4, checking each value against that path:</text>
+  <g stroke-width="1.6">
+    <rect x="270" y="188" width="48" height="40" fill="#ffffff" stroke="#42525e"/>
+    <rect x="370" y="188" width="48" height="40" fill="#ffffff" stroke="#42525e"/>
+    <rect x="470" y="188" width="48" height="40" fill="#4169E1" stroke="#4169E1"/>
+  </g>
+  <line x1="322" y1="208" x2="364" y2="208" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="422" y1="208" x2="464" y2="208" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="294" y="214" fill="#1a2026">4</text>
+    <text x="394" y="214" fill="#1a2026">2</text>
+    <text x="494" y="214" fill="#ffffff">5</text>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="294" y="244" fill="#9aa7b2">not seen</text>
+    <text x="394" y="244" fill="#9aa7b2">not seen</text>
+    <text x="494" y="244" fill="#4169E1" font-weight="600">first hit — the LCA</text>
+  </g>
+  <text x="40" y="270" fill="#5c6b76" font-size="12.5">one pass fills the parent map (4→2, 2→5, 5→3); each climb step reads it.</text>
+  <text x="320" y="294" text-anchor="middle" fill="#1a2026" font-size="13">q's climb 4, 2, 5 first lands on 5 — already on p's stored path {5, 3} —</text>
+  <text x="320" y="312" text-anchor="middle" fill="#1a2026" font-size="13">so the lowest common ancestor is <tspan fill="#4169E1" font-weight="600">5</tspan>, a node counting as its own descendant.</text>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="290" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- grid = [[0,0,1],[1,1,0],[1,0,0]]; cells 34px, grids at x=46/262/478, y=76; tz = trailing zeros -->
+  <g text-anchor="middle" font-size="13" fill="#5c6b76">
+    <text x="97" y="60">row 0 needs 2</text>
+    <text x="313" y="60">row 1 needs 1</text>
+    <text x="529" y="60">valid — 3 swaps</text>
+  </g>
+  <!-- grid A -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="46" y="76" width="34" height="34" fill="#ffffff"/><rect x="80" y="76" width="34" height="34" fill="#ffffff"/><rect x="114" y="76" width="34" height="34" fill="#ffffff"/>
+    <rect x="46" y="110" width="34" height="34" fill="#ffffff"/><rect x="80" y="110" width="34" height="34" fill="#ffffff"/><rect x="114" y="110" width="34" height="34" fill="#ffffff"/>
+    <rect x="46" y="144" width="34" height="34" fill="#ffffff"/><rect x="80" y="144" width="34" height="34" fill="#ffffff"/><rect x="114" y="144" width="34" height="34" fill="#ffffff"/>
+  </g>
+  <rect x="44.5" y="142.5" width="105" height="37" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="63" y="98" fill="#9aa7b2">0</text><text x="97" y="98" fill="#9aa7b2">0</text><text x="131" y="98" fill="#1a2026">1</text>
+    <text x="63" y="132" fill="#1a2026">1</text><text x="97" y="132" fill="#1a2026">1</text><text x="131" y="132" fill="#9aa7b2">0</text>
+    <text x="63" y="166" fill="#1a2026">1</text><text x="97" y="166" fill="#9aa7b2">0</text><text x="131" y="166" fill="#9aa7b2">0</text>
+  </g>
+  <g font-size="12.5">
+    <text x="156" y="98" fill="#4169E1">tz 0 &lt; 2</text>
+    <text x="156" y="132" fill="#4169E1">tz 1 &lt; 2</text>
+    <text x="156" y="166" fill="#4169E1" font-weight="600">tz 2 ≥ 2</text>
+  </g>
+  <!-- grid B -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="262" y="76" width="34" height="34" fill="#dbe4fb"/><rect x="296" y="76" width="34" height="34" fill="#dbe4fb"/><rect x="330" y="76" width="34" height="34" fill="#dbe4fb"/>
+    <rect x="262" y="110" width="34" height="34" fill="#ffffff"/><rect x="296" y="110" width="34" height="34" fill="#ffffff"/><rect x="330" y="110" width="34" height="34" fill="#ffffff"/>
+    <rect x="262" y="144" width="34" height="34" fill="#ffffff"/><rect x="296" y="144" width="34" height="34" fill="#ffffff"/><rect x="330" y="144" width="34" height="34" fill="#ffffff"/>
+  </g>
+  <rect x="260.5" y="142.5" width="105" height="37" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="279" y="98" fill="#1a2026">1</text><text x="313" y="98" fill="#9aa7b2">0</text><text x="347" y="98" fill="#9aa7b2">0</text>
+    <text x="279" y="132" fill="#9aa7b2">0</text><text x="313" y="132" fill="#9aa7b2">0</text><text x="347" y="132" fill="#1a2026">1</text>
+    <text x="279" y="166" fill="#1a2026">1</text><text x="313" y="166" fill="#1a2026">1</text><text x="347" y="166" fill="#9aa7b2">0</text>
+  </g>
+  <g font-size="12.5">
+    <text x="372" y="98" fill="#9aa7b2">tz 2 ok</text>
+    <text x="372" y="132" fill="#4169E1">tz 0 &lt; 1</text>
+    <text x="372" y="166" fill="#4169E1" font-weight="600">tz 1 ≥ 1</text>
+  </g>
+  <!-- grid C -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="478" y="76" width="34" height="34" fill="#dbe4fb"/><rect x="512" y="76" width="34" height="34" fill="#dbe4fb"/><rect x="546" y="76" width="34" height="34" fill="#dbe4fb"/>
+    <rect x="478" y="110" width="34" height="34" fill="#dbe4fb"/><rect x="512" y="110" width="34" height="34" fill="#dbe4fb"/><rect x="546" y="110" width="34" height="34" fill="#dbe4fb"/>
+    <rect x="478" y="144" width="34" height="34" fill="#ffffff"/><rect x="512" y="144" width="34" height="34" fill="#ffffff"/><rect x="546" y="144" width="34" height="34" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="495" y="98" fill="#1a2026">1</text><text x="529" y="98" fill="#9aa7b2">0</text><text x="563" y="98" fill="#9aa7b2">0</text>
+    <text x="495" y="132" fill="#1a2026">1</text><text x="529" y="132" fill="#1a2026">1</text><text x="563" y="132" fill="#9aa7b2">0</text>
+    <text x="495" y="166" fill="#9aa7b2">0</text><text x="529" y="166" fill="#9aa7b2">0</text><text x="563" y="166" fill="#1a2026">1</text>
+  </g>
+  <g font-size="12.5" fill="#9aa7b2">
+    <text x="588" y="98">tz 2 ≥ 2</text>
+    <text x="588" y="132">tz 1 ≥ 1</text>
+    <text x="588" y="166">tz 0 ≥ 0</text>
+  </g>
+  <!-- bubble-up arrows -->
+  <g stroke="#5c6b76" stroke-width="1.6" fill="none">
+    <line x1="208" y1="127" x2="248" y2="127" marker-end="url(#arrow)"/>
+    <line x1="424" y1="127" x2="464" y2="127" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#5c6b76">
+    <text x="228" y="200">swap ×2</text>
+    <text x="444" y="200">swap ×1</text>
+  </g>
+  <text x="46" y="222" fill="#5c6b76" font-size="12.5">tz = trailing zeros after the row's last 1 — adjacent swaps move whole rows, so tz never changes</text>
+  <text x="340" y="252" text-anchor="middle" fill="#1a2026" font-size="13">Row [1,0,0] has the 2 trailing zeros row 0 demands — 2 swaps bubble it up;</text>
+  <text x="340" y="270" text-anchor="middle" fill="#1a2026" font-size="13">then [1,1,0] with 1 trailing zero covers row 1 after 1 more swap: <tspan fill="#4169E1" font-weight="600">3 in total</tspan>.</text>
+</svg>

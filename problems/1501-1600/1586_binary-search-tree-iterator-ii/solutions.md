@@ -18,6 +18,11 @@ toward `index - 1`. Because every step only touches the pointer and one
 array slot, both directions retrace exactly the same in-order values
 regardless of how many times the walk changes direction.
 
+![For the tree [7, 3, 15, null, null, 9, 20] the in-order array [3, 7, 9, 15,
+20] sits under the tree: next() steps the pointer one slot right and prev()
+retreats one slot left, so after next, next, prev the pointer rests at index 0
+holding 3.](figures/solution-inorder-array-pointer.svg)
+
 The array is built once and never resized or recomputed, so every call
 after construction does a fixed, small amount of work no matter how
 large the tree is or how many calls follow.

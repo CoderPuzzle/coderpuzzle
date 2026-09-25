@@ -24,6 +24,8 @@ theorem, `mult^(MOD-2) mod MOD`, which is valid because `MOD` is prime and
 MOD`. `getIndex` then just evaluates `stored[idx] * mult + add (mod 10⁹ +
 7)`, or `-1` when `idx` falls outside the current length.
 
+![On the trace append 2, addAll 3, append 7, multAll 2, the global (mult, add) pair snapshots to (1,0), (1,3), (1,3), (2,6), and append(7) is stored backward as 4 so the later multAll(2) reads it back as 4·2 + 6 = 14 beside index 0's 2·2 + 6 = 10.](figures/solution-lazy-global-transform.svg)
+
 **Complexity:** `append`, `addAll`, `multAll`, and `getIndex` each run in
 `O(1)` time (the modular exponentiation in `append` is `O(log MOD)`); `O(n)`
 space for `n` appended elements.

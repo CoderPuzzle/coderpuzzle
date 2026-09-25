@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 400" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- OrderedStream(5); slots hold ids 1..5, cells 54x30 at x = 180 + 58j, rows y = 64 + 56k;
+       rows = the five inserts of example 1, ptr = next id awaited after the call -->
+  <g font-size="12" fill="#5c6b76">
+    <text x="16" y="30">ptr = next id the output waits for</text>
+    <rect x="298" y="19" width="14" height="14" fill="#dbe4fb" stroke="#4169E1"/>
+    <text x="318" y="30">drained this call</text>
+    <rect x="446" y="19" width="14" height="14" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <text x="466" y="30">empty</text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#5c6b76">
+    <text x="207" y="56">1</text><text x="265" y="56">2</text><text x="323" y="56">3</text>
+    <text x="381" y="56">4</text><text x="439" y="56">5</text>
+  </g>
+  <!-- row 1: insert(3, "ccccc") — parked, drains nothing, ptr stays at 1 -->
+  <text x="16" y="84" font-size="12" fill="#1a2026">insert(3, "ccccc")</text>
+  <g stroke="#9aa7b2" fill="#f0f3f7"><rect x="180" y="64" width="54" height="30"/><rect x="238" y="64" width="54" height="30"/><rect x="354" y="64" width="54" height="30"/><rect x="412" y="64" width="54" height="30"/></g>
+  <g stroke="#42525e" fill="#ffffff"><rect x="296" y="64" width="54" height="30"/></g>
+  <text x="323" y="84" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2026">ccccc</text>
+  <text x="505" y="84" font-size="11.5" fill="#9aa7b2">[]</text>
+  <path d="M 207 95 L 202 103 L 212 103 Z" fill="#4169E1"/>
+  <text x="216" y="101" font-size="10.5" fill="#4169E1">ptr</text>
+  <!-- row 2: insert(1, "aaaaa") — drains slot 1, ptr advances to 2 -->
+  <text x="16" y="140" font-size="12" fill="#1a2026">insert(1, "aaaaa")</text>
+  <g stroke="#9aa7b2" fill="#f0f3f7"><rect x="238" y="120" width="54" height="30"/><rect x="354" y="120" width="54" height="30"/><rect x="412" y="120" width="54" height="30"/></g>
+  <g stroke="#4169E1" fill="#dbe4fb"><rect x="180" y="120" width="54" height="30"/></g>
+  <g stroke="#42525e" fill="#ffffff"><rect x="296" y="120" width="54" height="30"/></g>
+  <text x="207" y="140" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2026">aaaaa</text>
+  <text x="323" y="140" text-anchor="middle" font-size="12" fill="#1a2026">ccccc</text>
+  <text x="505" y="140" font-size="11.5" fill="#1a2026">["aaaaa"]</text>
+  <path d="M 265 151 L 260 159 L 270 159 Z" fill="#4169E1"/>
+  <text x="274" y="157" font-size="10.5" fill="#4169E1">ptr</text>
+  <!-- row 3: insert(2, "bbbbb") — drains slots 2 and 3, ptr advances to 4 -->
+  <text x="16" y="196" font-size="12" fill="#1a2026">insert(2, "bbbbb")</text>
+  <g stroke="#9aa7b2" fill="#f0f3f7"><rect x="354" y="176" width="54" height="30"/><rect x="412" y="176" width="54" height="30"/></g>
+  <g stroke="#4169E1" fill="#dbe4fb"><rect x="238" y="176" width="54" height="30"/><rect x="296" y="176" width="54" height="30"/></g>
+  <g stroke="#42525e" fill="#ffffff"><rect x="180" y="176" width="54" height="30"/></g>
+  <text x="207" y="196" text-anchor="middle" font-size="12" fill="#1a2026">aaaaa</text>
+  <text x="265" y="196" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2026">bbbbb</text>
+  <text x="323" y="196" text-anchor="middle" font-size="12" fill="#1a2026">ccccc</text>
+  <text x="505" y="196" font-size="11.5" fill="#1a2026">["bbbbb", "ccccc"]</text>
+  <path d="M 381 207 L 376 215 L 386 215 Z" fill="#4169E1"/>
+  <text x="390" y="213" font-size="10.5" fill="#4169E1">ptr</text>
+  <!-- row 4: insert(5, "eeeee") — parked past the hole at 4, drains nothing -->
+  <text x="16" y="252" font-size="12" fill="#1a2026">insert(5, "eeeee")</text>
+  <g stroke="#9aa7b2" fill="#f0f3f7"><rect x="354" y="232" width="54" height="30"/></g>
+  <g stroke="#42525e" fill="#ffffff"><rect x="180" y="232" width="54" height="30"/><rect x="238" y="232" width="54" height="30"/><rect x="296" y="232" width="54" height="30"/><rect x="412" y="232" width="54" height="30"/></g>
+  <g text-anchor="middle" font-size="12" fill="#1a2026">
+    <text x="207" y="252">aaaaa</text><text x="265" y="252">bbbbb</text><text x="323" y="252">ccccc</text>
+  </g>
+  <text x="439" y="252" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2026">eeeee</text>
+  <text x="505" y="252" font-size="11.5" fill="#9aa7b2">[]</text>
+  <path d="M 381 263 L 376 271 L 386 271 Z" fill="#4169E1"/>
+  <text x="390" y="269" font-size="10.5" fill="#4169E1">ptr</text>
+  <!-- row 5: insert(4, "ddddd") — drains slots 4 and 5, ptr passes the end -->
+  <text x="16" y="308" font-size="12" fill="#1a2026">insert(4, "ddddd")</text>
+  <g stroke="#4169E1" fill="#dbe4fb"><rect x="354" y="288" width="54" height="30"/><rect x="412" y="288" width="54" height="30"/></g>
+  <g stroke="#42525e" fill="#ffffff"><rect x="180" y="288" width="54" height="30"/><rect x="238" y="288" width="54" height="30"/><rect x="296" y="288" width="54" height="30"/></g>
+  <g text-anchor="middle" font-size="12" fill="#1a2026">
+    <text x="207" y="308">aaaaa</text><text x="265" y="308">bbbbb</text><text x="323" y="308">ccccc</text>
+  </g>
+  <text x="381" y="308" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2026">ddddd</text>
+  <text x="439" y="308" text-anchor="middle" font-size="12" fill="#1a2026">eeeee</text>
+  <text x="505" y="308" font-size="11.5" fill="#1a2026">["ddddd", "eeeee"]</text>
+  <path d="M 472 319 L 467 327 L 477 327 Z" fill="#4169E1"/>
+  <text x="481" y="325" font-size="10.5" fill="#4169E1">ptr = 6, past the end</text>
+  <text x="330" y="364" text-anchor="middle" fill="#1a2026" font-size="13">Each insert parks its value, then drains the filled run starting at <tspan fill="#4169E1" font-weight="600">ptr</tspan>.</text>
+  <text x="330" y="382" text-anchor="middle" fill="#1a2026" font-size="13">Chunks returned: [] , ["aaaaa"] , ["bbbbb", "ccccc"] , [] , ["ddddd", "eeeee"].</text>
+</svg>

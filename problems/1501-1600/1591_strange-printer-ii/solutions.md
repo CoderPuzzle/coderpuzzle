@@ -27,6 +27,10 @@ rectangles), because each color is stamped before every color the target
 grid shows on top of it, and stamped after nothing that would need to see
 through it. The grid is printable exactly when no cycle is found.
 
+![In the 4×4 grid of 1s around an inner 2×2 of 2s, color 1's bounding
+rectangle is the whole grid and contains 2's cells, so the dependency graph
+gains edge 1 → 2 and the acyclic order 1, then 2 prints the grid.](figures/solution-bounding-rect-dependency.svg)
+
 **Complexity:** `O(m·n + k²)` time, where `k <= 60` is the number of
 distinct colors — `O(m·n)` to compute each color's bounding rectangle and
 scan those rectangles for dependency edges, plus `O(k²)` for the cycle

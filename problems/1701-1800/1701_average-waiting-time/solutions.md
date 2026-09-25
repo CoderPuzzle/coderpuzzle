@@ -16,6 +16,8 @@ wait contributed is `finish - arrival`; `free_at` becomes that finish and
 the sweep moves on. The answer is the wait total divided by the customer
 count.
 
+![On customers [[1, 2], [2, 5], [4, 3]] the sweep runs the three orders from starts 1, 3, 8 to finishes 3, 8, 11, and the arrival-to-finish gaps give waits 2, 6, 7, averaging 5.](figures/solution-chef-free-time-sweep.svg)
+
 Width goes to the total, not the schedule: even the deepest legal queue —
 everyone arriving at time 1 with the maximal `10⁴` preparation — keeps
 each individual wait near `10⁹` (inside 32 bits) but pushes the total to

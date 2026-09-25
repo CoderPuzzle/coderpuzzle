@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <!-- warehouse = [3,4,1,2]; prefixMin = [3,3,1,1], suffixMin = [1,1,1,2],
+       effective[i] = max(prefixMin[i], suffixMin[i]) = [3,3,1,2] (non-monotonic);
+       boxes sorted [1,2,2,3,4] vs rooms sorted [1,2,3,3] place 4, the height-4 box fits nothing;
+       bars 88w at x = 96 + 120i, 28px per height unit, baseline y = 252; placements 3->room 0, 2->room 1, 1->room 2, 2->room 3 -->
+  <g stroke-width="2" stroke-dasharray="6 4">
+    <line x1="40" y1="56" x2="66" y2="56" stroke="#4169E1"/>
+    <line x1="240" y1="56" x2="266" y2="56" stroke="#5c6b76"/>
+  </g>
+  <line x1="440" y1="56" x2="466" y2="56" stroke="#1a2026" stroke-width="2.5"/>
+  <g fill="#5c6b76" font-size="12">
+    <text x="72" y="60">prefixMin [3, 3, 1, 1]</text>
+    <text x="272" y="60">suffixMin [1, 1, 1, 2]</text>
+    <text x="472" y="60">effective = max</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="96" y="168" width="88" height="84"/><rect x="216" y="140" width="88" height="112"/>
+    <rect x="336" y="224" width="88" height="28"/><rect x="456" y="196" width="88" height="56"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="140" y="186">3</text><text x="260" y="158">4</text>
+    <text x="380" y="240">1</text><text x="500" y="214">2</text>
+  </g>
+  <polyline points="140,168 260,168 380,224 500,224" fill="none" stroke="#4169E1" stroke-width="2" stroke-dasharray="6 4"/>
+  <polyline points="140,224 260,224 380,224 500,196" fill="none" stroke="#5c6b76" stroke-width="2" stroke-dasharray="6 4"/>
+  <polyline points="140,168 260,168 380,224 500,196" fill="none" stroke="#1a2026" stroke-width="2.5"/>
+  <g fill="#1a2026">
+    <circle cx="140" cy="168" r="3"/><circle cx="260" cy="168" r="3"/>
+    <circle cx="380" cy="224" r="3"/><circle cx="500" cy="196" r="3"/>
+  </g>
+  <text x="88" y="200" text-anchor="end" fill="#5c6b76" font-size="12">warehouse</text>
+  <g fill="#4169E1">
+    <rect x="112" y="228" width="56" height="20"/><rect x="232" y="228" width="56" height="20"/>
+    <rect x="352" y="228" width="56" height="20"/><rect x="472" y="228" width="56" height="20"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-weight="600" font-size="13">
+    <text x="140" y="243">3</text><text x="260" y="243">2</text>
+    <text x="380" y="243">1</text><text x="500" y="243">2</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="140" y="268">0</text><text x="260" y="268">1</text>
+    <text x="380" y="268">2</text><text x="500" y="268">3</text>
+  </g>
+  <text x="320" y="292" text-anchor="middle" fill="#1a2026" font-size="12.5">sorted boxes [1, 2, 2, 3, 4] vs sorted rooms [1, 2, 3, 3]: 1↔1, 2↔2, 2↔3, 3↔3 fit</text>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">The height-4 box fits no room (largest effective is 3), so <tspan fill="#4169E1" font-weight="600">4 of the 5</tspan> boxes are placed.</text>
+</svg>

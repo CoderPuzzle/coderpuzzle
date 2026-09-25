@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- Example 1: root = [1,null,3,2,4,null,5,6]: 1 - [3,2,4], 3 - [5,6].
+       Circles r=17. Accent badges give the post-order report order; tags show each
+       node's height and bend (first + second + 2, seeded -1). Heights: leaves 0,
+       node 3 = 1, root = 2. Bends: 3 scores 2, root scores 3 = the answer. -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="40" y="60">as each child's height comes</text>
+    <text x="40" y="78">back, the node keeps the two</text>
+    <text x="40" y="96">largest; when all have reported</text>
+    <text x="40" y="114">it scores first + second + 2</text>
+    <text x="40" y="132">and returns first + 1.</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="430" y1="70" x2="330" y2="160"/>
+    <line x1="430" y1="70" x2="430" y2="160"/>
+    <line x1="430" y1="70" x2="530" y2="160"/>
+    <line x1="330" y1="160" x2="280" y2="250"/>
+    <line x1="330" y1="160" x2="380" y2="250"/>
+  </g>
+  <polyline points="280,250 330,160 430,70 430,160" fill="none" stroke="#4169E1" stroke-width="3"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="280" cy="250" r="17"/><circle cx="330" cy="160" r="17"/>
+    <circle cx="430" cy="160" r="17"/><circle cx="380" cy="250" r="17"/>
+  </g>
+  <circle cx="530" cy="160" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.5">
+    <circle cx="430" cy="70" r="17"/>
+  </g>
+  <circle cx="280" cy="250" r="17" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="330" cy="160" r="17" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="430" cy="160" r="17" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="430" y="75">1</text><text x="330" y="165">3</text><text x="430" y="165">2</text>
+    <text x="530" y="165">4</text><text x="280" y="255">5</text><text x="380" y="255">6</text>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="254" cy="268" r="8"/><circle cx="354" cy="268" r="8"/><circle cx="306" cy="176" r="8"/>
+    <circle cx="404" cy="172" r="8"/><circle cx="504" cy="172" r="8"/><circle cx="404" cy="52" r="8"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600">
+    <text x="254" y="271.5">1</text><text x="354" y="271.5">2</text><text x="306" y="179.5">3</text>
+    <text x="404" y="175.5">4</text><text x="504" y="175.5">5</text><text x="404" y="55.5">6</text>
+  </g>
+  <g font-size="13" fill="#1a2026">
+    <text x="430" y="36" text-anchor="middle">h2 &#183; bend <tspan fill="#4169E1" font-weight="600">1 + 0 + 2 = 3</tspan></text>
+    <text x="306" y="165" text-anchor="end">h1 &#183; bend 0 + 0 + 2 = 2</text>
+    <text x="280" y="290" text-anchor="middle">h0 &#183; bend 0</text>
+    <text x="380" y="290" text-anchor="middle">h0 &#183; bend 0</text>
+    <text x="430" y="197" text-anchor="middle">h0 &#183; bend 0</text>
+    <text x="530" y="197" text-anchor="middle">h0 &#183; bend 0</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="340" y="306">Leaves score 0; node 3 scores 0 + 0 + 2 = 2, and the root scores <tspan fill="#4169E1" font-weight="600">1 + 0 + 2 = 3</tspan> &#8212; the</text>
+    <text x="340" y="324">widest bend <tspan fill="#4169E1" font-weight="600">5-3-1-2</tspan> through the root, so the diameter is <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+  </g>
+</svg>

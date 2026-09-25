@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 378" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="378" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- code = [5,7,1,4], k = 3; circle center (190,180) ring r 88, nodes r 24; arc of slot i runs clockwise from node i+1 to node i+3 -->
+  <text x="40" y="46" fill="#5c6b76" font-size="12.5">code = [5, 7, 1, 4], k = 3 — each slot becomes the sum of the next 3</text>
+  <!-- window arcs, nested radii 62/57/52/47; accent arc carries the only arrowhead -->
+  <path d="M 252 180 A 62 62 0 0 1 128 180" fill="none" stroke="#4169E1" stroke-width="3" marker-end="url(#arrowA)"/>
+  <path d="M 190 237 A 57 57 0 0 1 190 123" fill="none" stroke="#42525e" stroke-width="2"/>
+  <path d="M 138 180 A 52 52 0 0 1 242 180" fill="none" stroke="#5c6b76" stroke-width="2"/>
+  <path d="M 190 133 A 47 47 0 0 1 190 227" fill="none" stroke="#9aa7b2" stroke-width="2"/>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="190" cy="92" r="24"/>
+    <circle cx="278" cy="180" r="24"/>
+    <circle cx="190" cy="268" r="24"/>
+    <circle cx="102" cy="180" r="24"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="190" y="97" fill="#1a2026">5</text>
+    <text x="278" y="185" fill="#1a2026">7</text>
+    <text x="190" y="273" fill="#1a2026">1</text>
+    <text x="102" y="185" fill="#1a2026">4</text>
+  </g>
+  <g fill="#9aa7b2" font-size="12">
+    <text x="156" y="98" text-anchor="end">i = 0</text>
+    <text x="316" y="184">i = 1</text>
+    <text x="190" y="312" text-anchor="middle">i = 2</text>
+    <text x="64" y="212">i = 3</text>
+  </g>
+  <!-- legend: one arc color per output slot -->
+  <text x="360" y="104" fill="#1a2026" font-size="13" font-weight="600">each arc sums its window:</text>
+  <g font-size="13.5" fill="#1a2026">
+    <line x1="360" y1="135" x2="384" y2="135" stroke="#4169E1" stroke-width="3"/>
+    <text x="394" y="140">out[0] = 7 + 1 + 4 = <tspan fill="#4169E1" font-weight="600">12</tspan></text>
+    <line x1="360" y1="167" x2="384" y2="167" stroke="#42525e" stroke-width="3"/>
+    <text x="394" y="172">out[1] = 1 + 4 + 5 = <tspan fill="#4169E1" font-weight="600">10</tspan></text>
+    <line x1="360" y1="199" x2="384" y2="199" stroke="#5c6b76" stroke-width="3"/>
+    <text x="394" y="204">out[2] = 4 + 5 + 7 = <tspan fill="#4169E1" font-weight="600">16</tspan></text>
+    <line x1="360" y1="231" x2="384" y2="231" stroke="#9aa7b2" stroke-width="3"/>
+    <text x="394" y="236">out[3] = 5 + 7 + 1 = <tspan fill="#4169E1" font-weight="600">13</tspan></text>
+  </g>
+  <text x="320" y="344" text-anchor="middle" fill="#1a2026" font-size="13">Every three-element forward window wraps past the end — out[0] takes</text>
+  <text x="320" y="362" text-anchor="middle" fill="#1a2026" font-size="13">7 + 1 + 4 from across the seam, giving decrypted code <tspan fill="#4169E1" font-weight="600">[12, 10, 16, 13]</tspan>.</text>
+</svg>

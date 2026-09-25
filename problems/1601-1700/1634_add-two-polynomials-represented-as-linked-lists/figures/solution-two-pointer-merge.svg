@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- poly1 = [[2,2],[1,4],[0,3]] = 2x^2+4x+3; poly2 = [[2,3],[1,-4],[0,-1]] = 3x^2-4x-1; rows at y 64/120/176, h 46 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="139" y="50">poly1 = 2x²+4x+3</text><text x="261" y="50">poly2 = 3x²-4x-1</text>
+    <text x="393" y="50">merge</text><text x="540" y="50">result</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="11.5">
+    <text x="64" y="91">step 1</text><text x="64" y="147">step 2</text><text x="64" y="203">step 3</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="84" y="64" width="110" height="46"/><rect x="206" y="64" width="110" height="46"/>
+    <rect x="84" y="120" width="110" height="46"/><rect x="206" y="120" width="110" height="46"/>
+    <rect x="84" y="176" width="110" height="46"/><rect x="206" y="176" width="110" height="46"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="139" y="83" font-weight="600" fill="#1a2026">2x²</text><text x="139" y="102" fill="#5c6b76" font-size="10.5">[2, 2]</text>
+    <text x="261" y="83" font-weight="600" fill="#1a2026">3x²</text><text x="261" y="102" fill="#5c6b76" font-size="10.5">[2, 3]</text>
+    <text x="139" y="139" font-weight="600" fill="#1a2026">4x¹</text><text x="139" y="158" fill="#5c6b76" font-size="10.5">[1, 4]</text>
+    <text x="261" y="139" font-weight="600" fill="#1a2026">-4x¹</text><text x="261" y="158" fill="#5c6b76" font-size="10.5">[1, -4]</text>
+    <text x="139" y="195" font-weight="600" fill="#1a2026">3</text><text x="139" y="214" fill="#5c6b76" font-size="10.5">[0, 3]</text>
+    <text x="261" y="195" font-weight="600" fill="#1a2026">-1</text><text x="261" y="214" fill="#5c6b76" font-size="10.5">[0, -1]</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="393" y="84" fill="#5c6b76" font-size="11">powers equal</text>
+    <text x="393" y="102" fill="#4169E1" font-weight="600" font-size="13">2 + 3 = 5</text>
+    <text x="393" y="140" fill="#5c6b76" font-size="11">powers equal</text>
+    <text x="393" y="158" fill="#4169E1" font-weight="600" font-size="13">4 + (-4) = 0</text>
+    <text x="393" y="196" fill="#5c6b76" font-size="11">powers equal</text>
+    <text x="393" y="214" fill="#4169E1" font-weight="600" font-size="13">3 + (-1) = 2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 446 87 H 472" marker-end="url(#arrow)"/>
+    <path d="M 446 143 H 472" marker-end="url(#arrow)"/>
+    <path d="M 446 199 H 472" marker-end="url(#arrow)"/>
+  </g>
+  <rect x="478" y="64" width="124" height="46" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="478" y="120" width="124" height="46" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <rect x="478" y="176" width="124" height="46" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle">
+    <text x="540" y="83" font-weight="600" fill="#4169E1">5x²</text><text x="540" y="102" fill="#5c6b76" font-size="10.5">[2, 5]</text>
+    <text x="540" y="139" font-weight="600" fill="#9aa7b2">0x¹</text><text x="540" y="158" fill="#9aa7b2" font-size="10.5">omitted</text>
+    <text x="540" y="195" font-weight="600" fill="#4169E1">2</text><text x="540" y="214" fill="#5c6b76" font-size="10.5">[0, 2]</text>
+  </g>
+  <text x="320" y="242" text-anchor="middle" fill="#9aa7b2" font-size="11">each box shows the term and its [power, coefficient] pair</text>
+  <text x="320" y="266" text-anchor="middle" fill="#1a2026" font-size="13">Equal powers at every step: <tspan fill="#4169E1" font-weight="600">2+3=5</tspan> and <tspan fill="#4169E1" font-weight="600">3-1=2</tspan> append, while 4-4=0 cancels and</text>
+  <text x="320" y="286" text-anchor="middle" fill="#1a2026" font-size="13">is omitted - the merged list is <tspan fill="#4169E1" font-weight="600">[[2, 5], [0, 2]]</tspan>, i.e. 5x² + 2.</text>
+</svg>

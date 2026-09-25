@@ -16,6 +16,8 @@ surviving anchor yields one "good" substring, and by construction two
 good substrings can never partially overlap — one is always either
 disjoint from or nested entirely inside the other.
 
+![On Example 1's s = "adefaddaccc", the character ranges a [0,7], d [1,6] (dead: the a inside first occurs at 0), e [2,2], f [3,3], c [8,10] pull to their fixed points, and the end-sorted greedy keeps e, f, ccc as the three non-overlapping good substrings.](figures/solution-fixed-point-then-greedy.svg)
+
 With the candidate good substrings in hand, choosing the maximum
 non-overlapping set is the classic activity-selection greedy: sort
 candidates by ending index (breaking ties by length, so a shorter, nested

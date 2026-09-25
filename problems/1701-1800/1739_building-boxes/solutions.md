@@ -35,6 +35,8 @@ next full staircase and `S_k + T'_{k+1} = S_{k+1}`, so
 `capacity(m) = S_k + T'_j` is strictly increasing and welds seamlessly
 across pyramid boundaries.
 
+![On example 3's n = 10, the k = 2 corner staircase plus the j = 3 runoff cells on the next diagonal give the rows 3–2–1 footprint whose columns 3·2·2·1·1·1 hold exactly 10 boxes, so the floor count is T(2) + j = 3 + 3 = 6.](figures/solution-corner-pyramid-runoff.svg)
+
 Since capacity strictly increases with `m`, the answer is the least `m`
 with `capacity(m) >= n`: binary-search the largest `k` with `S_k < n` —
 the biggest complete pyramid below the target — then the least `j` with

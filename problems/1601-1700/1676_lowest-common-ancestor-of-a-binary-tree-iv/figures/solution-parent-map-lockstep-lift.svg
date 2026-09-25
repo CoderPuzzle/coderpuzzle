@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tree = [3,5,1,6,2,0,8,null,null,7,4], nodes=[4,7]; circles r=17; right panel: fold lifts 4 and 7 in lockstep to 2 -->
+  <text x="24" y="26" fill="#5c6b76" font-size="12.5">root = [3,5,1,6,2,0,8,null,null,7,4]&#160;&#160;&#160;nodes = [4, 7]</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="180" y1="58" x2="105" y2="128"/><line x1="180" y1="58" x2="258" y2="128"/>
+    <line x1="105" y1="128" x2="63" y2="198"/><line x1="105" y1="128" x2="147" y2="198"/>
+    <line x1="258" y1="128" x2="216" y2="198"/><line x1="258" y1="128" x2="300" y2="198"/>
+    <line x1="147" y1="198" x2="105" y2="268"/><line x1="147" y1="198" x2="189" y2="268"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="180" cy="58" r="17"/><circle cx="105" cy="128" r="17"/><circle cx="258" cy="128" r="17"/>
+    <circle cx="63" cy="198" r="17"/><circle cx="216" cy="198" r="17"/><circle cx="300" cy="198" r="17"/>
+  </g>
+  <circle cx="147" cy="198" r="17" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="105" cy="268" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="189" cy="268" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="180" y="63">3</text><text x="105" y="133">5</text><text x="258" y="133">1</text>
+    <text x="63" y="203">6</text><text x="147" y="203">2</text><text x="216" y="203">0</text><text x="300" y="203">8</text>
+    <text x="105" y="273">7</text><text x="189" y="273">4</text>
+  </g>
+  <g fill="#9aa7b2" font-size="10.5">
+    <text x="202" y="62">d0</text>
+    <text x="127" y="132">d1</text><text x="280" y="132">d1</text>
+    <text x="85" y="202">d2</text><text x="169" y="202">d2</text><text x="238" y="202">d2</text><text x="322" y="202">d2</text>
+    <text x="127" y="272">d3</text><text x="211" y="272">d3</text>
+  </g>
+  <text x="380" y="44" fill="#1a2026" font-size="13" font-weight="600">depth &amp; parent maps</text>
+  <text x="380" y="72" fill="#1a2026" font-size="13">depth[4] = 3,&#160;&#160;depth[7] = 3 — equal</text>
+  <text x="380" y="94" fill="#1a2026" font-size="13">parent[4] = 2,&#160;&#160;parent[7] = 2</text>
+  <text x="380" y="134" fill="#1a2026" font-size="13" font-weight="600">lockstep lift</text>
+  <circle cx="410" cy="168" r="15" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="480" cy="168" r="15" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <text x="410" y="173" text-anchor="middle" font-weight="600" fill="#1a2026">4</text>
+  <text x="480" y="173" text-anchor="middle" font-weight="600" fill="#1a2026">7</text>
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 414 183 L 434 213" marker-end="url(#arrow)"/>
+    <path d="M 476 183 L 456 213" marker-end="url(#arrow)"/>
+  </g>
+  <circle cx="445" cy="232" r="15" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <text x="445" y="237" text-anchor="middle" font-weight="600" fill="#1a2026">2</text>
+  <text x="472" y="237" fill="#4169E1" font-size="12.5" font-weight="600">meet — candidate = 2</text>
+  <text x="20" y="310" fill="#1a2026" font-size="13">depth[4] = depth[7] = 3, so no leveling move; one lockstep lift takes</text>
+  <text x="20" y="328" fill="#1a2026" font-size="13">4 and 7 to their shared parent <tspan font-weight="600">2</tspan> — the fold's candidate, and the answer <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

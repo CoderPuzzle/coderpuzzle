@@ -11,6 +11,8 @@ postfix expression leaves the stack holding exactly the pending
 sub-results still needed higher up, this never underflows, and after the
 final token the stack holds exactly one value — the answer.
 
+![On example 2's tokens 4, 5, 2, 7, +, -, *, the operand stack snapshot after every token grows to 4,5,2,7, then + collapses 2 and 7 into 9, - pops 9 then 5 and pushes 5 - 9 = -4, and the final * leaves the single answer -16.](figures/solution-operand-stack-postfix.svg)
+
 This is the original design exercise's `Node.evaluate()` collapsed into a
 single loop: each pop-apply-push step computes exactly the value an
 internal `OperatorNode` would return from evaluating its two children,

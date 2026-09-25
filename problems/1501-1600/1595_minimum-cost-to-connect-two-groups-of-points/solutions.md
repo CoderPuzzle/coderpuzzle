@@ -29,4 +29,6 @@ threaded one link through it explicitly. The table is filled bottom-up,
 and the answer is `dp[0][0]` — no first-group point placed yet, no
 second-group point reached yet.
 
+![On example 2's cost matrix [[1,3,5],[4,1,1],[1,5,3]], the forward pass threads one link per row — 0→A, 1→B, 2→A, advancing the reached mask 000 → 001 → 011 — and the base case force-connects still-unreached C at minToReach[2] = cost[1][2] = 1, so first-group point 1 ends up serving both B and C for the total 4.](figures/solution-reached-mask-thread.svg)
+
 **Complexity:** `O(size1 · 2^size2 · size2)` time, `O(2^size2)` space.

@@ -17,4 +17,6 @@ is enough to reproduce the effect of repeatedly scanning for and removing
 bad pairs anywhere in the string, regardless of which pair got removed
 first. Joining the final stack gives the good string.
 
+![On Example 2's s = "abBAcC", the stack takes a, adds b, then bB cancels, the pop exposes aA, and cC cancels too, leaving the stack empty and the answer "".](figures/solution-stack-cancel-cascade.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

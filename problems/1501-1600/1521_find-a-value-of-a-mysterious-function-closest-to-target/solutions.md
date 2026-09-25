@@ -21,6 +21,8 @@ naturally since it is a set. Every value produced this way is some
 and keeping the smallest `|value - target|` seen across all indices finds
 the global minimum without ever enumerating both endpoints explicitly.
 
+![On Example 1's arr = [9,12,3,7,15] with target 5, the per-index sets of distinct AND-values evolve as {9}, {12,8}, {3,0}, {7,3,0}, {15,7,3,0} — staying tiny while the closest distance to 5 bottoms out at 2 (value 7 or 3).](figures/solution-and-value-sets.svg)
+
 Because the set at each step has at most `O(log(max(arr)))` distinct
 values, and building the next set touches every value in the previous
 one exactly once, the whole scan does `O(n log(max(arr)))` work in total.

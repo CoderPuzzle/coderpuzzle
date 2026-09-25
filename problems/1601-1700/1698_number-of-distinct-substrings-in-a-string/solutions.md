@@ -22,6 +22,8 @@ on `aabbaba` that sum is the 21 substrings the statement enumerates, and on
 `abcdefg`, where nothing repeats, every class holds a single substring and
 the sum is the triangular number `7 * 8 / 2 = 28`.
 
+![On s = "aabbaba", the built automaton's ten non-root states each own the (len[link], len] length class printed in its suffix-link-tree box, and the widths 1+1+1+3+1+3+4+1+5+1 sum to the 21 distinct substrings.](figures/solution-suffix-link-tree-classes.svg)
+
 Appending a character `c` from `last`, the state of the whole prefix so
 far, creates a fresh state `cur` for the new longest suffix, then walks the
 suffix-link chain from `last` adding a `c`-transition to `cur` wherever

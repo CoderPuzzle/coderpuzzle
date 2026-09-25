@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tree of example 2, root = [8,3,1,7,null,9,4,2,null,null,null,5,6], rogue edge 7.right -> 4;
+       node radius 17, centres: 8(320,50) 3(200,124) 1(440,124) 7(140,198) 9(380,198) 4(500,198)
+       2(90,272) 5(450,272) 6(550,272); #n = right-to-left dequeue order -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="320" y1="50" x2="200" y2="124"/><line x1="320" y1="50" x2="440" y2="124"/>
+    <line x1="200" y1="124" x2="140" y2="198"/><line x1="440" y1="124" x2="380" y2="198"/>
+    <line x1="440" y1="124" x2="500" y2="198"/><line x1="140" y1="198" x2="90" y2="272"/>
+    <line x1="500" y1="198" x2="450" y2="272"/><line x1="500" y1="198" x2="550" y2="272"/>
+  </g>
+  <g stroke-width="1.4">
+    <g fill="#dbe4fb" stroke="#42525e">
+      <circle cx="320" cy="50" r="17"/><circle cx="200" cy="124" r="17"/>
+      <circle cx="440" cy="124" r="17"/><circle cx="380" cy="198" r="17"/>
+      <circle cx="500" cy="198" r="17"/><circle cx="450" cy="272" r="17"/>
+      <circle cx="550" cy="272" r="17"/>
+    </g>
+    <circle cx="140" cy="198" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.5"/>
+    <circle cx="90" cy="272" r="17" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="320" y="55">8</text><text x="200" y="129">3</text><text x="440" y="129">1</text>
+    <text x="380" y="203">9</text><text x="500" y="203">4</text><text x="450" y="277">5</text>
+    <text x="550" y="277">6</text>
+  </g>
+  <text x="140" y="203" text-anchor="middle" font-size="13.5" font-weight="600" fill="#4169E1">7</text>
+  <text x="90" y="277" text-anchor="middle" font-size="13.5" fill="#9aa7b2">2</text>
+  <!-- dequeue order badges -->
+  <g font-size="10" fill="#9aa7b2">
+    <text x="342" y="38">#1</text><text x="462" y="110">#2</text><text x="200" y="98" text-anchor="middle">#3</text>
+    <text x="522" y="184">#4</text><text x="402" y="184">#5</text><text x="162" y="184">#6</text>
+  </g>
+  <!-- rogue right edge 7 -> 4, wired by the judge -->
+  <path d="M 156 204 Q 320 254 484 204" fill="none" stroke="#4169E1" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowB)"/>
+  <text x="320" y="252" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">rogue right edge: 7 → 4</text>
+  <text x="320" y="312" text-anchor="middle" font-size="11.5" fill="#5c6b76">shaded = enqueued (seen) when 7 comes up · faded = not enqueued yet · #n = dequeue order</text>
+  <text x="320" y="344" text-anchor="middle" fill="#1a2026" font-size="13">Levels swept right to left: 4 is <tspan fill="#4169E1" font-weight="600">already seen</tspan> when 7 is dequeued, so 7's</text>
+  <text x="320" y="364" text-anchor="middle" fill="#1a2026" font-size="13">right child exposes the defect — clear 3's left link and 7 drops with its subtree 2.</text>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 318" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="318" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- n = 5, requests = [[0,1],[1,0],[0,1],[1,2],[2,0],[3,4]]; kept = all but [3,4]: two 0->1 arcs, one 1->0, one 1->2, one 2->0 (below the row); per-building out/in counts under each circle; dashed gray = dropped [3,4], which alone would leave 3 at -1 and 4 at +1 -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 101 158 Q 147 130 193 158" marker-end="url(#arrow)"/>
+    <path d="M 93 149 Q 147 90 202 149" marker-end="url(#arrow)"/>
+    <path d="M 222 147 Q 151 56 80 146" marker-end="url(#arrow)"/>
+    <path d="M 235 158 Q 281 128 327 158" marker-end="url(#arrow)"/>
+    <path d="M 336 191 Q 214 278 92 191" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 494 191 Q 549 252 604 191" fill="none" stroke="#9aa7b2" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrowMuted)"/>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.5">
+    <circle cx="80" cy="170" r="24"/><circle cx="214" cy="170" r="24"/><circle cx="348" cy="170" r="24"/>
+    <circle cx="482" cy="170" r="24"/><circle cx="616" cy="170" r="24"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="80" y="175">0</text><text x="214" y="175">1</text><text x="348" y="175">2</text>
+    <text x="482" y="175">3</text><text x="616" y="175">4</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#1a2026">
+    <text x="80" y="222">2 out · 2 in</text>
+    <text x="214" y="222">2 out · 2 in</text>
+    <text x="348" y="222">1 out · 1 in</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#9aa7b2">
+    <text x="482" y="222">0 out · 0 in</text>
+    <text x="616" y="222">0 out · 0 in</text>
+  </g>
+  <text x="549" y="272" text-anchor="middle" fill="#5c6b76" font-size="12">dropped [3,4]</text>
+  <text x="340" y="292" text-anchor="middle" fill="#1a2026" font-size="13">The kept five balance every building: 0 sees 2 out · 2 in, 1 sees 2 out · 2 in, 2 sees 1 out · 1 in.</text>
+  <text x="340" y="310" text-anchor="middle" fill="#1a2026" font-size="13">Adding the dropped [3,4] would strand building 3 one short and building 4 one over — answer <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

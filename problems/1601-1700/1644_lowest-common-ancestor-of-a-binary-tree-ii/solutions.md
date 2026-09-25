@@ -22,6 +22,8 @@ the very first check, and two nodes in unrelated subtrees converge only
 once the climb from `q` reaches the point where the two ancestor paths
 actually meet.
 
+![On the tree [3,5,1,6,2,0,8,null,null,7,4] with p = 5 and q = 4, p's climb records the chain 5, 3 and q's climb 4, 2, 5 stops at 5, the first value already recorded, which is the LCA.](figures/solution-parent-chain-climb.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space — the traversal and both maps
 touch every node once, and the ancestor climbs are bounded by the tree's
 height.

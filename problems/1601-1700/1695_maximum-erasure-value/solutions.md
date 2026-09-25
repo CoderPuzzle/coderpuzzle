@@ -18,6 +18,8 @@ so far. Values lie in `[1, 10^4]`, so a flat count array of 10001 slots
 replaces a hash map: presence is one array read, constant and
 cache-friendly.
 
+![Sweeping nums = [4,2,4,5,6], the count-array window admits 4 then 2, evicts the first 4 when the next 4 repeats, and settles on [2,4,5,6] whose running sum 17 is the best.](figures/solution-distinct-window-sweep.svg)
+
 The sweep never misses the optimum. For a fixed right end `r`, every
 distinct window ending at `r` is a suffix of the longest one — a shorter
 window sits inside it — and since all values are positive, the longest

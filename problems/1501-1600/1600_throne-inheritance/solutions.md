@@ -22,6 +22,8 @@ visited, first; a dead person is popped and skipped from the output
 exactly like everyone else, but their children are still pushed and
 still appear at their correct nested position.
 
+![On example 1's family, the pre-order walk numbers king 1, andy 2, matthew 3, bob 4, alex 5, asha 6, catherine 7 — dead bob is still visited at 4 and his children keep 5 and 6, so the returned order skips only bob.](figures/solution-preorder-skip-dead.svg)
+
 Because `birth` and `death` only ever touch one map entry or one set
 entry, both run in constant time regardless of how large the tree has
 grown; the traversal is the only operation that scans the whole tree,

@@ -21,6 +21,8 @@ is associative — the LCA of a list is the LCA of the running candidate
 and each new value — so the fold lands on the deepest node above every
 queried value.
 
+![For root = [3,5,1,6,2,0,8,null,null,7,4] the depth map puts query values 4 and 7 both at depth 3, and one lockstep parent lift walks them together to node 2 — the fold's candidate and the answer.](figures/solution-parent-map-lockstep-lift.svg)
+
 The fold's two loops resolve every query shape by construction. A
 single-value query never enters the fold and returns itself, matching
 the "descendant of itself" clause of the definition. A value that is an

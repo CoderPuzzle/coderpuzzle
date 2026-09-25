@@ -23,5 +23,7 @@ first character. All the binomial coefficients needed (up to `C(row +
 column, ·)`) are precomputed once via Pascal's triangle so no step
 recomputes a factorial or risks overflow.
 
+![Example 1's construction for destination = [2, 3] with k = 1: every H fork leaves C(4,2)=6, then C(3,2)=3, then C(2,2)=1 affordable completions, so the path takes all three H's along the top row and the two V's are forced once no H remains, spelling HHHVV.](figures/solution-binomial-forks.svg)
+
 **Complexity:** `O((row + column)^2)` time, `O((row + column)^2)`
 space.

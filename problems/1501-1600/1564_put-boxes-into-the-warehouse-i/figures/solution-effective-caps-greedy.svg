@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="376" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- warehouse = [5,3,3,4,1]; effective = min-prefix = [5,3,3,3,1]; boxes sorted = [1,3,4,4];
+       bars 80w at x = 88 + 96i, 28px per height unit, baseline y = 252; placements 1->room 4, 3->room 3, 4->room 0 -->
+  <text x="118" y="56" text-anchor="end" fill="#5c6b76" font-size="12.5">boxes sorted</text>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="130" y="36" width="40" height="30"/><rect x="178" y="36" width="40" height="30"/><rect x="226" y="36" width="40" height="30"/>
+  </g>
+  <rect x="274" y="36" width="40" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="150" y="56" fill="#1a2026">1</text><text x="198" y="56" fill="#1a2026">3</text>
+    <text x="246" y="56" fill="#1a2026">4</text><text x="294" y="56" fill="#9aa7b2">4</text>
+  </g>
+  <text x="198" y="80" text-anchor="middle" fill="#4169E1" font-size="12">placed</text>
+  <text x="294" y="80" text-anchor="middle" fill="#9aa7b2" font-size="12">left out</text>
+  <text x="128" y="100" fill="#5c6b76" font-size="12.5">dashed: effective[i] = min(warehouse[0..i])</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="88" y="112" width="80" height="140"/><rect x="184" y="168" width="80" height="84"/>
+    <rect x="280" y="168" width="80" height="84"/><rect x="376" y="140" width="80" height="112"/>
+    <rect x="472" y="224" width="80" height="28"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="128" y="130">5</text><text x="224" y="186">3</text><text x="320" y="186">3</text>
+    <text x="416" y="158">4</text><text x="512" y="242">1</text>
+  </g>
+  <polyline points="128,112 224,168 320,168 416,168 512,224" fill="none" stroke="#4169E1" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="80" y="186" text-anchor="end" fill="#5c6b76" font-size="12">warehouse</text>
+  <g fill="#4169E1">
+    <rect x="100" y="228" width="56" height="20"/><rect x="388" y="228" width="56" height="20"/><rect x="484" y="228" width="56" height="20"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-weight="600" font-size="13">
+    <text x="128" y="243">4</text><text x="416" y="243">3</text><text x="512" y="243">1</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="224" y="243">4 &gt; 3</text><text x="320" y="243">4 &gt; 3</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="128" y="268">0</text><text x="224" y="268">1</text><text x="320" y="268">2</text>
+    <text x="416" y="268">3</text><text x="512" y="268">4</text>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="600">
+    <text x="128" y="286" fill="#4169E1">3rd</text><text x="224" y="286" fill="#9aa7b2">skip</text>
+    <text x="320" y="286" fill="#9aa7b2">skip</text><text x="416" y="286" fill="#4169E1">2nd</text>
+    <text x="512" y="286" fill="#4169E1">1st</text>
+  </g>
+  <line x1="500" y1="298" x2="158" y2="298" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="329" y="316" text-anchor="middle" fill="#4169E1" font-size="12">greedy sweep: deepest room first</text>
+  <text x="320" y="340" text-anchor="middle" fill="#1a2026" font-size="13">Effective heights [5, 3, 3, 3, 1] cap each room; boxes [1, 3, 4, 4] place deepest-first —</text>
+  <text x="320" y="358" text-anchor="middle" fill="#1a2026" font-size="13">1 → room 4, 3 → room 3, 4 → room 0; rooms 1–2 refuse the height-4 box. <tspan fill="#4169E1" font-weight="600">3 placed</tspan>.</text>
+</svg>

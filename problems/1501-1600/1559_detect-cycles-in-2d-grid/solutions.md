@@ -26,6 +26,8 @@ loop rather than racing an unprocessed sibling. The scan over the grid tries
 every unvisited cell as a fresh region seed, and the whole grid is
 `false` only once no seed anywhere produces a cycle.
 
+![On Example 1's grid, the DFS marks the outer ring of a cells in push order, every stack entry carrying its parent; popping (2,0) with parent (3,0) meets the already-visited (1,0), which is not the parent, so the ring closes and the search returns true.](figures/solution-dfs-parent-ring-close.svg)
+
 **Complexity:** `O(m·n)` time — every cell is pushed onto the stack at most
 once, and each of its incident edges is examined a constant number of times.
 `O(m·n)` extra space for the visited grid and, in the worst case (one region

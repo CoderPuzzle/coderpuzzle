@@ -20,4 +20,6 @@ that turns even the smallest remaining box away is simply skipped. Every
 room considered this way is matched to the box most likely to fit it, so
 no swap could ever place more boxes overall.
 
+![Capping warehouse [5, 3, 3, 4, 1] at the running minimum [5, 3, 3, 3, 1], the deepest-first sweep places sorted boxes [1, 3, 4, 4] as 1 → room 4, 3 → room 3, and 4 → room 0, while rooms 1 and 2 refuse the height-4 box — 3 of 4 placed.](figures/solution-effective-caps-greedy.svg)
+
 **Complexity:** `O(n log n)` time, `O(n)` space.

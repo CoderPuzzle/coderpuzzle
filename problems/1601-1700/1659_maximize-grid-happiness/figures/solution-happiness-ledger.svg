@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 256" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="256" fill="#ffffff"/>
+  <!-- 2x3 grid of example 1: introvert at (1,1), extroverts at (1,3) and (2,3);
+       cells 64x44 at x = 70 + 66c, y = 84 + 46r -->
+  <g text-anchor="middle" font-size="11" fill="#5c6b76">
+    <text x="102" y="76">col 1</text><text x="168" y="76">col 2</text><text x="234" y="76">col 3</text>
+  </g>
+  <g text-anchor="end" font-size="11" fill="#5c6b76">
+    <text x="62" y="111">row 1</text><text x="62" y="157">row 2</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="70" y="84" width="64" height="44"/><rect x="136" y="84" width="64" height="44"/>
+    <rect x="202" y="84" width="64" height="44"/><rect x="70" y="130" width="64" height="44"/>
+    <rect x="136" y="130" width="64" height="44"/><rect x="202" y="130" width="64" height="44"/>
+  </g>
+  <g fill="#dbe4fb">
+    <rect x="70" y="84" width="64" height="44"/><rect x="202" y="84" width="64" height="44"/>
+    <rect x="202" y="130" width="64" height="44"/>
+  </g>
+  <!-- the one neighbour edge: (1,3) above (2,3) -->
+  <line x1="234" y1="126" x2="234" y2="132" stroke="#4169E1" stroke-width="4"/>
+  <text x="274" y="133" font-size="10.5" fill="#4169E1">+20 each side</text>
+  <g text-anchor="middle">
+    <text x="102" y="102" font-size="13" font-weight="700" fill="#1a2026">I</text>
+    <text x="102" y="121" font-size="13.5" font-weight="600" fill="#1a2026">120</text>
+    <text x="234" y="102" font-size="13" font-weight="700" fill="#1a2026">E</text>
+    <text x="234" y="121" font-size="13.5" font-weight="600" fill="#1a2026">60</text>
+    <text x="234" y="148" font-size="13" font-weight="700" fill="#1a2026">E</text>
+    <text x="234" y="167" font-size="13.5" font-weight="600" fill="#1a2026">60</text>
+  </g>
+  <text x="168" y="194" text-anchor="middle" font-size="11" fill="#5c6b76">I introvert · E extrovert</text>
+  <!-- per-person ledger -->
+  <g font-size="13" fill="#1a2026">
+    <text x="360" y="100">I at (1,1): 120 − 0·30 = 120</text>
+    <text x="360" y="128">E at (1,3): 40 + 1·20 = 60</text>
+    <text x="360" y="156">E at (2,3): 40 + 1·20 = 60</text>
+  </g>
+  <line x1="360" y1="174" x2="620" y2="174" stroke="#9aa7b2" stroke-width="1"/>
+  <text x="360" y="198" font-size="14" font-weight="600" fill="#1a2026">total = 120 + 60 + 60 = <tspan fill="#4169E1">240</tspan></text>
+  <text x="320" y="224" text-anchor="middle" fill="#1a2026" font-size="13">Per-person ledger: 120 alone; each extrovert 40 + 20 for its single neighbour.</text>
+  <text x="320" y="244" text-anchor="middle" fill="#1a2026" font-size="13">The profile DP books the shared edge as one +40 pair charge — total <tspan fill="#4169E1" font-weight="600">240</tspan>.</text>
+</svg>

@@ -12,6 +12,8 @@ formula is correct. A tower's contribution is `qi` integer-divided by
 `1 + d` after flooring, and a tower strictly outside `radius`
 contributes nothing at all.
 
+![On towers [[1,2,5],[2,1,7],[3,1,9]] with radius 2, the reach circles around the three towers and the stacked floored contributions 7 + 2 + 4 at coordinate (2, 1) total the maximum quality 13.](figures/solution-grid-brute-force.svg)
+
 The scan visits `x` from `0` to `50` and, within it, `y` from `0` to
 `50`, in increasing order, so the first coordinate to strictly beat the
 running best total is recorded and only a later strictly greater total

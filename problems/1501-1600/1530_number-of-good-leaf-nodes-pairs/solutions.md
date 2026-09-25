@@ -16,6 +16,8 @@ its parent is just those counts shifted one level deeper, dropping any depth
 that would already exceed `distance` — a leaf that far away can never help
 an ancestor either, so there is no reason to keep carrying it.
 
+![On Example 1's tree [1,2,3,null,4] with distance 3, the leaf tables {0: 1} flow upward, node 2 shifts its child's table to {1: 1}, and the root's merge of {1: 1} × {0: 1} at depths 1 + 0 + 2 = 3 ≤ 3 counts the single good pair 1 × 1 = 1.](figures/solution-leaf-depth-tables-merge.svg)
+
 Both the traversal and the depth tables are built without the call stack.
 The tree can hold up to 2¹⁰ nodes, and a skewed instance packs all of them
 into one chain — deep enough to blow past CPython's default recursion limit

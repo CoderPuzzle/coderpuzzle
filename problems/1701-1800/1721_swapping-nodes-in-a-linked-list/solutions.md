@@ -17,6 +17,8 @@ nodes apart, so when the scout lands on the tail the second cursor has `k -
 1` nodes behind it — it stands on the `k`th node from the end. Both targets
 are pinned before anything is written.
 
+![On head [1,2,3,4,5] with k = 2, the first cursor stops on node 2, the scout and the trailing cursor move in lockstep one apart until the scout lands on the tail, and swapping the two .val fields turns the list into [1,4,3,2,5] with every link intact.](figures/solution-sweep-swap-values.svg)
+
 The exchange itself is one assignment of the two `.val` fields; every link,
 including both ends of the list, is untouched, and the original head is
 returned. The degenerate shapes need no special casing: when `n = 2k - 1` the

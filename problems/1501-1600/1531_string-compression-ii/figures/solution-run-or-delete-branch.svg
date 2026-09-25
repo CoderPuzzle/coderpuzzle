@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="300" fill="#ffffff"/>
+  <!-- s = aaabcccd, k = 2; cells 44x40 at (40,54); winning branch keeps runs aaa/ccc, deletes b and d -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="62" y="46">0</text><text x="106" y="46">1</text><text x="150" y="46">2</text><text x="194" y="46">3</text>
+    <text x="238" y="46">4</text><text x="282" y="46">5</text><text x="326" y="46">6</text><text x="370" y="46">7</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="40" y="54" width="44" height="40" fill="#dbe4fb"/><rect x="84" y="54" width="44" height="40" fill="#dbe4fb"/>
+    <rect x="128" y="54" width="44" height="40" fill="#dbe4fb"/><rect x="172" y="54" width="44" height="40" fill="#f0f3f7"/>
+    <rect x="216" y="54" width="44" height="40" fill="#dbe4fb"/><rect x="260" y="54" width="44" height="40" fill="#dbe4fb"/>
+    <rect x="304" y="54" width="44" height="40" fill="#dbe4fb"/><rect x="348" y="54" width="44" height="40" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="62" y="79" fill="#1a2026">a</text><text x="106" y="79" fill="#1a2026">a</text>
+    <text x="150" y="79" fill="#1a2026">a</text><text x="194" y="79" fill="#9aa7b2">b</text>
+    <text x="238" y="79" fill="#1a2026">c</text><text x="282" y="79" fill="#1a2026">c</text>
+    <text x="326" y="79" fill="#1a2026">c</text><text x="370" y="79" fill="#9aa7b2">d</text>
+  </g>
+  <g font-size="12" text-anchor="middle">
+    <text x="106" y="112" fill="#4169E1" font-weight="600">a3 — 2 chars</text>
+    <text x="194" y="112" fill="#9aa7b2">deleted</text>
+    <text x="282" y="112" fill="#4169E1" font-weight="600">c3 — 2 chars</text>
+    <text x="370" y="112" fill="#9aa7b2">deleted</text>
+  </g>
+  <!-- dp branches: dp(0,2) -> dp(3,2) -> dp(4,1); dp(1,1)=5, dp(4,2)=2, dp(5,0)=3, dp(7,1)=0 -->
+  <g font-size="13">
+    <text x="40" y="152"><tspan fill="#1a2026" font-weight="600">dp(0, 2)</tspan><tspan fill="#9aa7b2">  delete 'a' → dp(1, 1) = 5</tspan><tspan fill="#4169E1" font-weight="600">   keep aaa run (same 3, diff 0) → 2 + dp(3, 2) = 4</tspan></text>
+    <text x="40" y="188"><tspan fill="#1a2026" font-weight="600">dp(3, 2)</tspan><tspan fill="#9aa7b2">  keep b alone → 1 + dp(4, 2) = 3</tspan><tspan fill="#4169E1" font-weight="600">   delete 'b' → dp(4, 1) = 2</tspan></text>
+    <text x="40" y="224"><tspan fill="#1a2026" font-weight="600">dp(4, 1)</tspan><tspan fill="#9aa7b2">  delete 'c' → dp(5, 0) = 3</tspan><tspan fill="#4169E1" font-weight="600">   keep ccc run (same 3, diff 1) → 2 + 0 = 2</tspan></text>
+  </g>
+  <text x="330" y="264" text-anchor="middle" fill="#1a2026" font-size="13">The winning branch keeps each run and spends both deletions on</text>
+  <text x="330" y="282" text-anchor="middle" fill="#1a2026" font-size="13">b and d, leaving aaaccc = <tspan fill="#4169E1" font-weight="600">a3c3 of length 4</tspan>.</text>
+</svg>

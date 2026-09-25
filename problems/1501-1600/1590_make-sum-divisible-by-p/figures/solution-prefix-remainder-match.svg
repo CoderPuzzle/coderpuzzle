@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 276" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="276" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [3,1,4,2], p = 6; total 10, target 4; prefix remainders 3,4,2,4; cells w72 at x = 155+86i -->
+  <text x="320" y="48" text-anchor="middle" fill="#1a2026" font-size="13">sum = 10, target = 10 mod 6 = <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="155" y="68" width="72" height="40"/><rect x="241" y="68" width="72" height="40"/>
+    <rect x="413" y="68" width="72" height="40"/>
+  </g>
+  <rect x="327" y="68" width="72" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="191" y="94">3</text><text x="277" y="94">1</text>
+    <text x="363" y="94" fill="#4169E1">4</text><text x="449" y="94">2</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="143" y="130" text-anchor="end">index</text>
+    <text x="191" y="130">0</text><text x="277" y="130">1</text><text x="363" y="130">2</text>
+    <text x="449" y="130">3</text>
+  </g>
+  <text x="143" y="156" text-anchor="end" fill="#5c6b76" font-size="12">prefix mod 6</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="191" y="156">3</text><text x="277" y="156" fill="#4169E1">4</text>
+    <text x="363" y="156" fill="#4169E1">2</text><text x="449" y="156">4</text>
+  </g>
+  <!-- match: at index 2 the needed remainder 4 was last seen at index 1, span 1 -->
+  <path d="M 277 166 Q 320 192 363 166" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="320" y="226" text-anchor="middle" fill="#1a2026" font-size="13">at index 2 the current remainder 2 needs (2 − 4) mod 6 = <tspan fill="#4169E1" font-weight="600">4</tspan>,</text>
+  <text x="320" y="246" text-anchor="middle" fill="#1a2026" font-size="13">last seen at index 1 — removing nums[2] = [4] leaves sum 6, answer <tspan fill="#4169E1" font-weight="600">1</tspan>.</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="280" fill="#ffffff"/>
+  <!-- nums1 = [2,4,5,8,10], nums2 = [4,6,8,9]; cells 52x34; shared values 4 and 8 aligned in one column -->
+  <g text-anchor="middle" font-size="12.5" fill="#5c6b76">
+    <text x="112" y="52">shared</text>
+    <text x="216" y="52">shared</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" stroke-dasharray="4 4">
+    <line x1="112" y1="58" x2="112" y2="156"/>
+    <line x1="216" y1="58" x2="216" y2="156"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="60" y="70" width="52" height="34" fill="#ffffff"/><rect x="112" y="70" width="52" height="34" fill="#dbe4fb"/>
+    <rect x="164" y="70" width="52" height="34" fill="#ffffff"/><rect x="216" y="70" width="52" height="34" fill="#dbe4fb"/>
+    <rect x="268" y="70" width="52" height="34" fill="#ffffff"/>
+    <rect x="112" y="112" width="52" height="34" fill="#dbe4fb"/><rect x="164" y="112" width="52" height="34" fill="#ffffff"/>
+    <rect x="216" y="112" width="52" height="34" fill="#dbe4fb"/><rect x="268" y="112" width="52" height="34" fill="#ffffff"/>
+  </g>
+  <text x="14" y="91" fill="#5c6b76" font-size="12.5">nums1</text>
+  <text x="14" y="133" fill="#5c6b76" font-size="12.5">nums2</text>
+  <g text-anchor="middle" font-weight="600">
+    <text x="86" y="91" fill="#1a2026">2</text><text x="138" y="91" fill="#1a2026">4</text>
+    <text x="190" y="91" fill="#1a2026">5</text><text x="242" y="91" fill="#1a2026">8</text>
+    <text x="294" y="91" fill="#1a2026">10</text>
+    <text x="138" y="133" fill="#1a2026">4</text><text x="190" y="133" fill="#1a2026">6</text>
+    <text x="242" y="133" fill="#1a2026">8</text><text x="294" y="133" fill="#1a2026">9</text>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="86" y="176" fill="#1a2026">max(2, 0) → <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="190" y="176" fill="#1a2026">max(5, 6) → <tspan fill="#4169E1" font-weight="600">6</tspan></text>
+    <text x="294" y="176" fill="#1a2026">max(10, 9) → <tspan fill="#4169E1" font-weight="600">10</tspan></text>
+  </g>
+  <rect x="520" y="186" width="110" height="30" rx="8" fill="#dbe4fb"/>
+  <text x="575" y="206" text-anchor="middle" fill="#4169E1" font-weight="600">total 30</text>
+  <text x="340" y="244" text-anchor="middle" fill="#1a2026" font-size="13">Crossing at 4 banks max(2, 0) + 4 = 6; crossing at 8 banks max(5, 6) + 8 = 14;</text>
+  <text x="340" y="262" text-anchor="middle" fill="#1a2026" font-size="13">the drain keeps the larger tail max(10, 9) = 10: 6 + 14 + 10 = <tspan fill="#4169E1" font-weight="600">30</tspan>.</text>
+</svg>
