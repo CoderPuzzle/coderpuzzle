@@ -13,6 +13,11 @@ zero into that run. For `n = 5` the fold gives `x = 0b111`; for `n = 11`,
 whose two low ones collide, it gives `x = 0b1110` with the zero embedded at
 bit 0.
 
+![For n = 5 the fold builds x = 0b111 bit by bit — a solid run of ones whose
+x & (x + 1) is 0b0000, so the test says true — while n = 11 folds to 0b1110,
+whose zero gap at bit 0 leaves 0b1110 & 0b1111 nonzero and the test says
+false.](figures/solution-fold-xor-run-check.svg)
+
 Testing for the run is one more operation. A positive integer equals `2^m - 1`
 exactly when `x & (x + 1)` is zero: adding one carries into the run's first
 clear bit and wipes every one below it, leaving the two values with no bit in

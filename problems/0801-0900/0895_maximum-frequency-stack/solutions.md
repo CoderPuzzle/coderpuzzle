@@ -18,6 +18,10 @@ pop the value's occurrence at level `f` is spent, but its occurrence at level
 `f-1` remains in the bucket below — decrementing `freq` and leaving that
 bucket untouched implements the demotion.
 
+![After pushes 5, 7, 5, 7, 4, 5 the buckets hold f = 3: [5], f = 2: [5, 7],
+f = 1: [5, 7, 4], and the pops 5, 7, 5, 4 each drain the top of the highest
+occupied bucket.](figures/solution-frequency-bucket-pops.svg)
+
 A running `maxfreq` avoids scanning for the highest bucket. It rises by one
 exactly when a value enters a bucket above the current maximum. When a pop
 empties the top bucket, no value can still hold that frequency — its only

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="310" fill="#ffffff"/>
+  <!-- n = 5, mines = [[4,2]]; final dp after the four sweeps; cells 46x36 at (76,66);
+       light-blue cells = the order-2 plus centered at (1,2); mine cell (4,2) holds 0;
+       mini plus on the right = the four arm runs at center (1,2): up 2, down 3, left 3, right 3 -->
+  <text x="191" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">dp after the four sweeps (n = 5, mine at (4,2))</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="99" y="58">0</text><text x="145" y="58">1</text><text x="191" y="58">2</text><text x="237" y="58">3</text><text x="283" y="58">4</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="10.5">
+    <text x="66" y="90">0</text><text x="66" y="126">1</text><text x="66" y="162">2</text><text x="66" y="198">3</text><text x="66" y="234">4</text>
+  </g>
+  <!-- plain cells -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="76" y="66" width="46" height="36"/><rect x="122" y="66" width="46" height="36"/><rect x="214" y="66" width="46" height="36"/><rect x="260" y="66" width="46" height="36"/>
+    <rect x="76" y="102" width="46" height="36"/><rect x="260" y="102" width="46" height="36"/>
+    <rect x="76" y="138" width="46" height="36"/><rect x="122" y="138" width="46" height="36"/><rect x="214" y="138" width="46" height="36"/><rect x="260" y="138" width="46" height="36"/>
+    <rect x="76" y="174" width="46" height="36"/><rect x="122" y="174" width="46" height="36"/><rect x="168" y="174" width="46" height="36"/><rect x="214" y="174" width="46" height="36"/><rect x="260" y="174" width="46" height="36"/>
+    <rect x="76" y="210" width="46" height="36"/><rect x="122" y="210" width="46" height="36"/><rect x="214" y="210" width="46" height="36"/><rect x="260" y="210" width="46" height="36"/>
+  </g>
+  <!-- the order-2 plus centered at (1,2) -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8">
+    <rect x="168" y="66" width="46" height="36"/><rect x="122" y="102" width="46" height="36"/><rect x="168" y="102" width="46" height="36"/><rect x="214" y="102" width="46" height="36"/><rect x="168" y="138" width="46" height="36"/>
+  </g>
+  <!-- the mine at (4,2) -->
+  <rect x="168" y="210" width="46" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="99" y="89">1</text><text x="145" y="89">1</text><text x="191" y="89">1</text><text x="237" y="89">1</text><text x="283" y="89">1</text>
+    <text x="99" y="125">1</text><text x="145" y="125">2</text><text x="191" y="125">2</text><text x="237" y="125">2</text><text x="283" y="125">1</text>
+    <text x="99" y="161">1</text><text x="145" y="161">2</text><text x="191" y="161">2</text><text x="237" y="161">2</text><text x="283" y="161">1</text>
+    <text x="99" y="197">1</text><text x="145" y="197">2</text><text x="191" y="197">1</text><text x="237" y="197">2</text><text x="283" y="197">1</text>
+    <text x="99" y="233">1</text><text x="145" y="233">1</text><text x="237" y="233">1</text><text x="283" y="233">1</text>
+  </g>
+  <text x="191" y="233" text-anchor="middle" fill="#9aa7b2">0</text>
+  <!-- four arm runs at center (1,2) -->
+  <text x="470" y="56" text-anchor="middle" fill="#5c6b76" font-size="12.5">runs at center (1,2)</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="470" y="82" width="42" height="32" fill="#ffffff"/>
+    <rect x="424" y="118" width="42" height="32" fill="#ffffff"/>
+    <rect x="516" y="118" width="42" height="32" fill="#ffffff"/>
+    <rect x="470" y="154" width="42" height="32" fill="#ffffff"/>
+  </g>
+  <rect x="470" y="118" width="42" height="32" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="491" y="103" fill="#1a2026">2</text>
+    <text x="445" y="139" fill="#1a2026">3</text><text x="537" y="139" fill="#1a2026">3</text>
+    <text x="491" y="175" fill="#1a2026">3</text>
+    <text x="491" y="139" fill="#4169E1">2</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="491" y="76">up</text><text x="491" y="200">down</text>
+  </g>
+  <text x="416" y="139" text-anchor="end" fill="#9aa7b2" font-size="10.5">left</text>
+  <text x="566" y="139" text-anchor="start" fill="#9aa7b2" font-size="10.5">right</text>
+  <text x="491" y="218" text-anchor="middle" fill="#1a2026" font-size="13">min(3, 3, 2, 3) = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <text x="491" y="240" text-anchor="middle" fill="#5c6b76" font-size="11.5">the mine's 0 caps every run through it</text>
+  <text x="320" y="282" text-anchor="middle" fill="#1a2026" font-size="13">dp[i][j] = min of the four arm runs; the largest entry in the grid is <tspan fill="#4169E1" font-weight="600">2</tspan> —</text>
+  <text x="320" y="302" text-anchor="middle" fill="#1a2026" font-size="13">the order-2 plus centered at (1,2), drawn light blue above.</text>
+</svg>

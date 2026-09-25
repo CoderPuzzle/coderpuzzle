@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tree = [6,2,8,0,4,7,9,null,null,3,5]; p = 2, q = 4; circles r 18; path edge 6-&gt;2 accented -->
+  <!-- edges -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="470" y1="67" x2="580" y2="133"/>
+    <line x1="304" y1="156" x2="257" y2="212"/>
+    <line x1="326" y1="156" x2="374" y2="212"/>
+    <line x1="584" y1="156" x2="536" y2="212"/>
+    <line x1="604" y1="158" x2="632" y2="210"/>
+    <line x1="374" y1="240" x2="326" y2="296"/>
+    <line x1="396" y1="240" x2="444" y2="296"/>
+  </g>
+  <line x1="440" y1="67" x2="330" y2="133" stroke="#4169E1" stroke-width="2.5"/>
+  <!-- descent step badges -->
+  <circle cx="497" cy="38" r="9" fill="#4169E1"/>
+  <text x="497" y="42" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">1</text>
+  <circle cx="365" cy="96" r="9" fill="#4169E1"/>
+  <text x="365" y="100" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">2</text>
+  <!-- descent arc 6 -&gt; 2 -->
+  <path d="M 430 76 Q 370 112 334 127" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- nodes -->
+  <circle cx="455" cy="58" r="18" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <text x="455" y="63" text-anchor="middle" fill="#1a2026" font-weight="600">6</text>
+  <circle cx="315" cy="142" r="18" fill="#4169E1"/>
+  <text x="315" y="147" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
+  <circle cx="595" cy="142" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="595" y="147" text-anchor="middle" fill="#1a2026">8</text>
+  <circle cx="245" cy="226" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="245" y="231" text-anchor="middle" fill="#1a2026">0</text>
+  <circle cx="385" cy="226" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="385" y="231" text-anchor="middle" fill="#1a2026">4</text>
+  <circle cx="525" cy="226" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="525" y="231" text-anchor="middle" fill="#1a2026">7</text>
+  <circle cx="640" cy="226" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="640" y="231" text-anchor="middle" fill="#1a2026">9</text>
+  <circle cx="315" cy="310" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="315" y="315" text-anchor="middle" fill="#1a2026">3</text>
+  <circle cx="455" cy="310" r="18" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="455" y="315" text-anchor="middle" fill="#1a2026">5</text>
+  <text x="315" y="178" text-anchor="middle" fill="#5c6b76" font-size="12">p</text>
+  <text x="385" y="262" text-anchor="middle" fill="#5c6b76" font-size="12">q</text>
+  <!-- step annotations -->
+  <text x="36" y="50" fill="#5c6b76" font-size="12.5">iterative descent, p = 2, q = 4</text>
+  <g font-size="12.5" fill="#1a2026">
+    <text x="36" y="80"><tspan fill="#4169E1" font-weight="600">1.</tspan> at 6: both 2 and 4 &lt; 6</text>
+    <text x="36" y="96">    both targets in the left subtree</text>
+    <text x="36" y="128"><tspan fill="#4169E1" font-weight="600">2.</tspan> at 2: the node equals p</text>
+    <text x="36" y="144">    a node may be its own ancestor,</text>
+    <text x="36" y="160">    so the walk stops: LCA = 2</text>
+  </g>
+  <text x="340" y="352" text-anchor="middle" fill="#1a2026" font-size="13">Both targets sit left of 6, so the walk steps left to 2 without inspecting 8;</text>
+  <text x="340" y="370" text-anchor="middle" fill="#1a2026" font-size="13">node 2 equals p, so the walk stops right there — <tspan fill="#4169E1" font-weight="600">LCA(2, 4) = 2</tspan>.</text>
+</svg>

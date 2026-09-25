@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 448" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="448" fill="#ffffff"/>
+  <!-- n = 5 = 0b101: n >> 1 = 0b010, x = n ^ (n>>1) = 0b111, x + 1 = 0b1000, x & (x+1) = 0 -> true; n = 11 = 0b1011: n >> 1 = 0b0101, x = 0b1110, x + 1 = 0b1111, x & (x+1) = 0b1110 -> false. Bit cells 32x28 at x = 120 + 36c; rows y = 58, 98, 138 (panel A) and y = 236, 276, 316 (panel B) -->
+  <text x="120" y="46" font-weight="600" fill="#1a2026">n = 5 = 0b101</text>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="112" y="77">n</text>
+    <text x="112" y="117">n &gt;&gt; 1</text>
+    <text x="112" y="157">x</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="120" y="58" width="32" height="28"/><rect x="156" y="58" width="32" height="28"/><rect x="192" y="58" width="32" height="28"/>
+    <rect x="120" y="98" width="32" height="28" fill="#f0f3f7"/><rect x="156" y="98" width="32" height="28"/><rect x="192" y="98" width="32" height="28"/>
+    <rect x="120" y="138" width="32" height="28" fill="#dbe4fb" stroke="#4169E1"/><rect x="156" y="138" width="32" height="28" fill="#dbe4fb" stroke="#4169E1"/><rect x="192" y="138" width="32" height="28" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="136" y="77" fill="#1a2026">1</text><text x="172" y="77" fill="#1a2026">0</text><text x="208" y="77" fill="#1a2026">1</text>
+    <text x="136" y="117" fill="#9aa7b2">0</text><text x="172" y="117" fill="#1a2026">1</text><text x="208" y="117" fill="#1a2026">0</text>
+    <text x="136" y="157" fill="#4169E1">1</text><text x="172" y="157" fill="#4169E1">1</text><text x="208" y="157" fill="#4169E1">1</text>
+  </g>
+  <text x="300" y="80" fill="#1a2026" font-size="13">x + 1 = 0b1000</text>
+  <text x="300" y="108" fill="#1a2026" font-size="13">x &amp; (x + 1) = 0b0000 → <tspan fill="#4169E1" font-weight="600">true</tspan></text>
+  <text x="120" y="188" fill="#5c6b76" font-size="12">every adjacent pair differs — x is a solid run of ones</text>
+  <text x="120" y="224" font-weight="600" fill="#1a2026">n = 11 = 0b1011</text>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="112" y="255">n</text>
+    <text x="112" y="295">n &gt;&gt; 1</text>
+    <text x="112" y="335">x</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="120" y="236" width="32" height="28"/><rect x="156" y="236" width="32" height="28"/><rect x="192" y="236" width="32" height="28"/><rect x="228" y="236" width="32" height="28"/>
+    <rect x="120" y="276" width="32" height="28" fill="#f0f3f7"/><rect x="156" y="276" width="32" height="28"/><rect x="192" y="276" width="32" height="28"/><rect x="228" y="276" width="32" height="28"/>
+    <rect x="120" y="316" width="32" height="28" fill="#dbe4fb" stroke="#4169E1"/><rect x="156" y="316" width="32" height="28" fill="#dbe4fb" stroke="#4169E1"/><rect x="192" y="316" width="32" height="28" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="228" y="316" width="32" height="28" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="136" y="255" fill="#1a2026">1</text><text x="172" y="255" fill="#1a2026">0</text><text x="208" y="255" fill="#1a2026">1</text><text x="244" y="255" fill="#1a2026">1</text>
+    <text x="136" y="295" fill="#9aa7b2">0</text><text x="172" y="295" fill="#1a2026">1</text><text x="208" y="295" fill="#1a2026">0</text><text x="244" y="295" fill="#1a2026">1</text>
+    <text x="136" y="335" fill="#4169E1">1</text><text x="172" y="335" fill="#4169E1">1</text><text x="208" y="335" fill="#4169E1">1</text><text x="244" y="335" fill="#9aa7b2">0</text>
+  </g>
+  <text x="300" y="258" fill="#1a2026" font-size="13">x + 1 = 0b1111</text>
+  <text x="300" y="286" fill="#1a2026" font-size="13">x &amp; (x + 1) = 0b1110 → <tspan font-weight="600">false</tspan></text>
+  <text x="300" y="314" fill="#5c6b76" font-size="12">bits above the gap survive the AND</text>
+  <text x="244" y="366" text-anchor="middle" fill="#9aa7b2" font-size="11.5">gap</text>
+  <text x="340" y="404" text-anchor="middle" fill="#1a2026" font-size="13">Folding n ^ (n &gt;&gt; 1): 0b101 → 0b111 is a solid run of ones and passes x &amp; (x + 1) == 0,</text>
+  <text x="340" y="422" text-anchor="middle" fill="#1a2026" font-size="13">while 0b1011 → 0b1110 keeps a zero gap at bit 0, so the AND keeps bits — <tspan font-weight="600">false</tspan>.</text>
+</svg>

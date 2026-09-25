@@ -6,6 +6,8 @@ A wrapping subarray omits a contiguous middle chunk, so its sum is the total min
 
 One pass computes both: `cur_max = x + max(cur_max, 0)` extends or restarts the running maximum subarray, and the symmetric `cur_min = x + min(cur_min, 0)` tracks the minimum. Initializing both with `nums[0]` and scanning from the second element keeps every candidate non-empty, which matters most for small arrays and for all-negative inputs.
 
+![On nums = [5, -3, 5] the ring drops the minimum subarray [-3], so the wrap [5, 5] scores total 7 minus -3 = 10, beating plain Kadane's non-wrapping 7; the answer is 10.](figures/solution-wrap-minus-min.svg)
+
 That all-negative case is the one trap: if `best_max < 0`, every element is negative, the minimum subarray is the entire array, and the wrap candidate `total - best_min` degenerates to the empty subarray with sum 0, which is not allowed. The code then returns `best_max` directly — the single largest element, as in `[-3, -2, -3]` giving -2. Otherwise the answer is simply `max(best_max, total - best_min)`.
 
 **Complexity:** `O(n)` time, `O(1)` space.

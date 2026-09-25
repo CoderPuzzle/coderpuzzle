@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <!-- rectangles = [[1,1,3,3],[3,1,4,2],[3,2,4,4],[1,3,2,4],[2,3,3,4]]; 50 px per unit, (70,70) = (1,4) top-left, box (1,1)-(4,4) = (70,70)-(220,220), area 9 = piece sum; rings = shared corners toggled away, accent dots = the box's four corners -->
+  <rect x="66" y="66" width="158" height="158" fill="none" stroke="#4169E1" stroke-width="1.3" stroke-dasharray="5 3"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="70" y="120" width="100" height="100"/>
+    <rect x="170" y="170" width="50" height="50"/>
+    <rect x="170" y="70" width="50" height="100"/>
+    <rect x="70" y="70" width="50" height="50"/>
+    <rect x="120" y="70" width="50" height="50"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="95" y="99">1</text><text x="145" y="99">1</text><text x="195" y="124">2</text>
+    <text x="120" y="174">4</text><text x="195" y="199">1</text>
+  </g>
+  <text x="145" y="240" text-anchor="middle" fill="#5c6b76" font-size="11.5">piece areas</text>
+  <!-- corners toggled away (each hit by 2 pieces) -->
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1.5">
+    <circle cx="170" cy="220" r="4.5"/><circle cx="70" cy="120" r="4.5"/><circle cx="170" cy="120" r="4.5"/>
+    <circle cx="170" cy="170" r="4.5"/><circle cx="220" cy="170" r="4.5"/><circle cx="170" cy="70" r="4.5"/>
+    <circle cx="120" cy="120" r="4.5"/><circle cx="120" cy="70" r="4.5"/>
+  </g>
+  <g fill="#9aa7b2">
+    <circle cx="170" cy="220" r="1.5"/><circle cx="70" cy="120" r="1.5"/><circle cx="170" cy="120" r="1.5"/>
+    <circle cx="170" cy="170" r="1.5"/><circle cx="220" cy="170" r="1.5"/><circle cx="170" cy="70" r="1.5"/>
+    <circle cx="120" cy="120" r="1.5"/><circle cx="120" cy="70" r="1.5"/>
+  </g>
+  <!-- surviving corners of the bounding box -->
+  <g fill="#4169E1">
+    <circle cx="70" cy="70" r="5"/><circle cx="220" cy="70" r="5"/>
+    <circle cx="70" cy="220" r="5"/><circle cx="220" cy="220" r="5"/>
+  </g>
+  <g fill="#4169E1" font-size="11" font-weight="600">
+    <text x="62" y="66" text-anchor="end">(1,4)</text>
+    <text x="228" y="66" text-anchor="start">(4,4)</text>
+    <text x="62" y="238" text-anchor="end">(1,1)</text>
+    <text x="228" y="238" text-anchor="start">(4,1)</text>
+  </g>
+  <!-- right panel: the two signatures -->
+  <text x="300" y="84" fill="#5c6b76" font-size="12" font-weight="600">area check</text>
+  <text x="300" y="106" fill="#1a2026" font-size="13">pieces: 4 + 1 + 2 + 1 + 1 = <tspan fill="#4169E1" font-weight="600">9</tspan></text>
+  <text x="300" y="128" fill="#1a2026" font-size="13">bounding box: 3 × 3 = <tspan fill="#4169E1" font-weight="600">9</tspan> — equal</text>
+  <text x="300" y="164" fill="#5c6b76" font-size="12" font-weight="600">corner set after all toggles</text>
+  <text x="300" y="186" font-size="13"><tspan fill="#5c6b76">kept: </tspan><tspan fill="#4169E1" font-weight="600">(1,1) (1,4) (4,1) (4,4)</tspan></text>
+  <text x="300" y="208" fill="#5c6b76" font-size="12">toggled away — hit by 2 pieces each:</text>
+  <text x="300" y="230" fill="#9aa7b2" font-size="11.5">(3,1) (1,3) (3,3) (3,2) (4,2) (3,4) (2,3) (2,4)</text>
+  <text x="300" y="262" font-size="13" fill="#1a2026">area matches + 4 corners remain → <tspan fill="#4169E1" font-weight="600">exact cover</tspan></text>
+  <text x="340" y="306" text-anchor="middle" fill="#1a2026" font-size="13">The five pieces sum to area 9 over the 3 × 3 box; every shared corner cancels from the set,</text>
+  <text x="340" y="326" text-anchor="middle" fill="#1a2026" font-size="13">leaving exactly the box's corners <tspan fill="#4169E1" font-weight="600">(1,1), (1,4), (4,1), (4,4)</tspan> — an exact cover.</text>
+</svg>

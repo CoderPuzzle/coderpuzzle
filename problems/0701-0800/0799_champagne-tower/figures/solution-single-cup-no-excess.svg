@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 404" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="404" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- poured = 1, query (1, 1); trapezoids = glasses at (row, col); inner value = cups received; row 2 shown empty -->
+  <!-- pour -->
+  <text x="250" y="34" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">poured = 1.0</text>
+  <path d="M 250 44 L 250 72" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- glass connectors -->
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <line x1="242" y1="116" x2="213" y2="196"/><line x1="258" y1="116" x2="287" y2="196"/>
+    <line x1="200" y1="236" x2="171" y2="296"/><line x1="216" y1="236" x2="245" y2="296"/>
+    <line x1="284" y1="236" x2="255" y2="296"/><line x1="300" y1="236" x2="329" y2="296"/>
+  </g>
+  <!-- row 0 -->
+  <path d="M 228 80 L 272 80 L 266 114 L 234 114 Z" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="250" y="102" text-anchor="middle" fill="#4169E1" font-size="14" font-weight="600">1.0</text>
+  <text x="206" y="102" text-anchor="end" fill="#5c6b76" font-size="12">(0, 0)</text>
+  <!-- row 1 -->
+  <path d="M 186 200 L 230 200 L 224 234 L 192 234 Z" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="208" y="222" text-anchor="middle" fill="#5c6b76" font-size="13">0.0</text>
+  <text x="164" y="222" text-anchor="end" fill="#5c6b76" font-size="12">(1, 0)</text>
+  <path d="M 270 200 L 314 200 L 308 234 L 276 234 Z" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <text x="292" y="222" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">0.0</text>
+  <text x="352" y="222" fill="#4169E1" font-size="12" font-weight="600">queried (1, 1)</text>
+  <!-- row 2 -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <path d="M 144 300 L 188 300 L 182 334 L 150 334 Z"/>
+    <path d="M 228 300 L 272 300 L 266 334 L 234 334 Z"/>
+    <path d="M 312 300 L 356 300 L 350 334 L 318 334 Z"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="166" y="322">0.0</text><text x="250" y="322">0.0</text><text x="334" y="322">0.0</text>
+  </g>
+  <!-- excess arithmetic -->
+  <line x1="404" y1="88" x2="272" y2="97" stroke="#9aa7b2" stroke-width="1"/>
+  <text x="410" y="92" fill="#1a2026" font-size="13" font-weight="600">excess = (1.0 &#8722; 1.0) / 2 = 0</text>
+  <text x="410" y="112" fill="#5c6b76" font-size="12.5">nothing flows to row 1</text>
+  <text x="320" y="368" text-anchor="middle" fill="#1a2026" font-size="13">With poured = 1 the top glass (0, 0) receives exactly one cup and keeps it:</text>
+  <text x="320" y="386" text-anchor="middle" fill="#1a2026" font-size="13">excess = (1.0 &#8722; 1.0) / 2 = 0, so queried glass (1, 1) stays at <tspan fill="#4169E1" font-weight="600">0.0</tspan>.</text>
+</svg>

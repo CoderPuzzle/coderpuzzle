@@ -20,6 +20,8 @@ of those anchors against the pattern. Any disagreement — a trailing zero
 the earlier parts cannot produce, an extra 1 where the pattern has a 0 —
 means no split works and the answer is `[-1, -1]`.
 
+![Splitting [1,0,1,0,1] with k = 1 one per part: the suffix [1] taken from the third one fixes the shared value, and the cuts land at i = 0 and j = 3.](figures/solution-pattern-cuts.svg)
+
 When both windows match, the cut points are forced: the first part ends at
 `first + L`, so `i = first + L`, and the second part ends at
 `second + L`, so `j = second + L + 1`. With `k >= 1` the three anchors sit

@@ -19,6 +19,8 @@ sentinel to the cell in front of the position and splices the new cell in
 behind it. `deleteAtIndex` repeats the same walk and unlinks the cell it lands
 after.
 
+![Starting empty, addAtHead(1), addAtTail(3), addAtIndex(1, 2) and deleteAtIndex(1) all walk from the sentinel and splice or unlink behind it, growing the chain to 1-2-3 and severing it back to 1-3.](figures/solution-sentinel-walk-splices.svg)
+
 `get` bounds-checks against `size` — any index at or past the length is
 invalid and returns -1 — and otherwise reports the value of the cell one step
 past its walk. Because the sentinel is a real cell, walking to "the cell in

@@ -21,6 +21,8 @@ parent's share first and its right parent's share second. After
 `row[query_glass]` cups in total, of which it keeps at most one: the
 answer is `min(1.0, row[query_glass])`.
 
+![Pouring 1 cup fills glass (0, 0) exactly, so excess (1.0 - 1.0) / 2 = 0 flows nowhere and queried glass (1, 1) stays at 0.0.](figures/solution-single-cup-no-excess.svg)
+
 The judge compares the returned double exactly, and the arithmetic is
 built so every language produces the same bits. Each step is one
 subtraction, one division by `2.0` — a power-of-two scaling that rounds

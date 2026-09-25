@@ -6,4 +6,6 @@ The structure groups keys by their count: one **bucket** per distinct count, hol
 
 Because counts change by exactly one, a key never jumps over an intermediate bucket: `inc` moves it to the neighbouring bucket one count up (creating that bucket in place if absent), and `dec` moves it one count down — or, when the count reaches zero, deletes the node and its map entry. Each move is one unlink and one relink, plus the bucket bookkeeping that keeps the outer list honest: a bucket that empties is unlinked immediately, so the first and last buckets are always live extremes and no scanning is ever needed.
 
+![On inc("hello") twice then inc("leet"): the list holds the lone bucket 2 = {hello}, then bucket 1 = {leet} is spliced in before it, so getMinKey reads "leet" at the head end and getMaxKey reads "hello" at the tail end.](figures/solution-count-bucket-list.svg)
+
 **Complexity:** `O(1)` average time per operation, `O(number of stored keys)` space.

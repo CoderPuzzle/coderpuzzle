@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- s = "abcde"; words = ["a","bb","acd","ace"]; one row per streamed char; chips = word@nextIndex, accent chip = refiled this step -->
+  <text x="28" y="28" fill="#5c6b76" font-size="12.5">s = "abcde" streams down the left; buckets hold word@next needed index</text>
+  <!-- row 0: init -->
+  <text x="28" y="66" fill="#5c6b76" font-size="13">init</text>
+  <text x="104" y="66" fill="#5c6b76" font-size="12.5" font-weight="600">a:</text>
+  <rect x="124" y="50" width="36" height="22" rx="4" fill="#f0f3f7"/><text x="142" y="66" text-anchor="middle" fill="#5c6b76" font-size="12">a@1</text>
+  <rect x="166" y="50" width="50" height="22" rx="4" fill="#f0f3f7"/><text x="191" y="66" text-anchor="middle" fill="#5c6b76" font-size="12">acd@1</text>
+  <rect x="222" y="50" width="50" height="22" rx="4" fill="#f0f3f7"/><text x="247" y="66" text-anchor="middle" fill="#5c6b76" font-size="12">ace@1</text>
+  <text x="292" y="66" fill="#5c6b76" font-size="12.5" font-weight="600">b:</text>
+  <rect x="312" y="50" width="44" height="22" rx="4" fill="#f0f3f7"/><text x="334" y="66" text-anchor="middle" fill="#5c6b76" font-size="12">bb@1</text>
+  <text x="652" y="66" text-anchor="end" fill="#5c6b76" font-size="12.5">count 0</text>
+  <path d="M 41 76 L 41 86" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrowm)"/>
+  <!-- row 1: after 'a' -->
+  <rect x="28" y="92" width="26" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="41" y="110" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">a</text>
+  <text x="104" y="110" fill="#5c6b76" font-size="12.5" font-weight="600">b:</text>
+  <rect x="124" y="94" width="44" height="22" rx="4" fill="#f0f3f7"/><text x="146" y="110" text-anchor="middle" fill="#5c6b76" font-size="12">bb@1</text>
+  <text x="190" y="110" fill="#5c6b76" font-size="12.5" font-weight="600">c:</text>
+  <rect x="210" y="94" width="50" height="22" rx="4" fill="#dbe4fb" stroke="#4169E1"/><text x="235" y="110" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">acd@2</text>
+  <rect x="266" y="94" width="50" height="22" rx="4" fill="#dbe4fb" stroke="#4169E1"/><text x="291" y="110" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">ace@2</text>
+  <text x="652" y="110" text-anchor="end" fill="#4169E1" font-size="12.5" font-weight="600">count 1 &#8212; a done</text>
+  <path d="M 41 120 L 41 130" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrowm)"/>
+  <!-- row 2: after 'b' -->
+  <rect x="28" y="134" width="26" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="41" y="152" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">b</text>
+  <text x="104" y="152" fill="#5c6b76" font-size="12.5" font-weight="600">b:</text>
+  <rect x="124" y="136" width="44" height="22" rx="4" fill="#dbe4fb" stroke="#4169E1"/><text x="146" y="152" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">bb@2</text>
+  <text x="190" y="152" fill="#5c6b76" font-size="12.5" font-weight="600">c:</text>
+  <rect x="210" y="136" width="50" height="22" rx="4" fill="#f0f3f7"/><text x="235" y="152" text-anchor="middle" fill="#5c6b76" font-size="12">acd@2</text>
+  <rect x="266" y="136" width="50" height="22" rx="4" fill="#f0f3f7"/><text x="291" y="152" text-anchor="middle" fill="#5c6b76" font-size="12">ace@2</text>
+  <text x="652" y="152" text-anchor="end" fill="#5c6b76" font-size="12.5">count 1</text>
+  <path d="M 41 162 L 41 172" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrowm)"/>
+  <!-- row 3: after 'c' -->
+  <rect x="28" y="176" width="26" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="41" y="194" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">c</text>
+  <text x="104" y="194" fill="#5c6b76" font-size="12.5" font-weight="600">b:</text>
+  <rect x="124" y="178" width="44" height="22" rx="4" fill="#f0f3f7"/><text x="146" y="194" text-anchor="middle" fill="#5c6b76" font-size="12">bb@2</text>
+  <text x="190" y="194" fill="#5c6b76" font-size="12.5" font-weight="600">d:</text>
+  <rect x="210" y="178" width="50" height="22" rx="4" fill="#dbe4fb" stroke="#4169E1"/><text x="235" y="194" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">acd@3</text>
+  <text x="262" y="194" fill="#5c6b76" font-size="12.5" font-weight="600">e:</text>
+  <rect x="282" y="178" width="50" height="22" rx="4" fill="#dbe4fb" stroke="#4169E1"/><text x="307" y="194" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">ace@3</text>
+  <text x="652" y="194" text-anchor="end" fill="#5c6b76" font-size="12.5">count 1</text>
+  <path d="M 41 204 L 41 214" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrowm)"/>
+  <!-- row 4: after 'd' -->
+  <rect x="28" y="218" width="26" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="41" y="236" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">d</text>
+  <text x="104" y="236" fill="#5c6b76" font-size="12.5" font-weight="600">b:</text>
+  <rect x="124" y="220" width="44" height="22" rx="4" fill="#f0f3f7"/><text x="146" y="236" text-anchor="middle" fill="#5c6b76" font-size="12">bb@2</text>
+  <text x="190" y="236" fill="#5c6b76" font-size="12.5" font-weight="600">e:</text>
+  <rect x="210" y="220" width="50" height="22" rx="4" fill="#f0f3f7"/><text x="235" y="236" text-anchor="middle" fill="#5c6b76" font-size="12">ace@3</text>
+  <text x="652" y="236" text-anchor="end" fill="#4169E1" font-size="12.5" font-weight="600">count 2 &#8212; acd done</text>
+  <path d="M 41 246 L 41 256" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrowm)"/>
+  <!-- row 5: after 'e' -->
+  <rect x="28" y="260" width="26" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="41" y="278" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">e</text>
+  <text x="104" y="278" fill="#5c6b76" font-size="12.5" font-weight="600">b:</text>
+  <rect x="124" y="262" width="44" height="22" rx="4" fill="#f0f3f7"/><text x="146" y="278" text-anchor="middle" fill="#5c6b76" font-size="12">bb@2</text>
+  <text x="652" y="278" text-anchor="end" fill="#4169E1" font-size="12.5" font-weight="600">count 3 &#8212; ace done</text>
+  <text x="340" y="316" text-anchor="middle" fill="#1a2026" font-size="13">Each arriving letter pops its bucket and re-files survivors by their next need;</text>
+  <text x="340" y="334" text-anchor="middle" fill="#1a2026" font-size="13">a, acd and ace complete &#8212; count = <tspan fill="#4169E1" font-weight="600">3</tspan>; bb never finds its second b.</text>
+</svg>

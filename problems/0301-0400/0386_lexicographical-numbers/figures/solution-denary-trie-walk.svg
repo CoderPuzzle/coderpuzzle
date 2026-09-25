@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 398" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="398" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- n = 13; denary trie: children 1-9 of the root at cy=125 (cx = 64 + 68i); node 1's children 10-13 at cy=230 (cx = 64 + 68i); retreat lane x=22, y=268; output chips y=298 -->
+  <text x="340" y="30" text-anchor="middle" fill="#5c6b76" font-size="11.5">root</text>
+  <circle cx="340" cy="44" r="4.5" fill="#42525e"/>
+  <g stroke="#42525e" stroke-width="1.2" fill="none">
+    <path d="M 340 48.5 V 72"/>
+    <path d="M 64 72 H 608"/>
+    <path d="M 64 72 V 110"/><path d="M 132 72 V 110"/><path d="M 200 72 V 110"/><path d="M 268 72 V 110"/>
+    <path d="M 336 72 V 110"/><path d="M 404 72 V 110"/><path d="M 472 72 V 110"/><path d="M 540 72 V 110"/><path d="M 608 72 V 110"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="none">
+    <path d="M 64 140 V 170"/>
+    <path d="M 64 170 H 268"/>
+    <path d="M 64 170 V 215"/><path d="M 132 170 V 215"/><path d="M 200 170 V 215"/><path d="M 268 170 V 215"/>
+  </g>
+  <text x="166" y="158" text-anchor="middle" fill="#5c6b76" font-size="12">1 × 10 = 10 ≤ 13 — descend</text>
+  <!-- visited nodes 1, 10, 11, 12, 13; node 2 is the +1 target -->
+  <g stroke-width="1.5">
+    <circle cx="64" cy="125" r="15" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="132" cy="125" r="15" fill="#ffffff" stroke="#4169E1" stroke-dasharray="3 2"/>
+    <circle cx="200" cy="125" r="15" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="268" cy="125" r="15" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="336" cy="125" r="15" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="404" cy="125" r="15" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="472" cy="125" r="15" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="540" cy="125" r="15" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="608" cy="125" r="15" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="64" cy="230" r="15" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="132" cy="230" r="15" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="200" cy="230" r="15" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="268" cy="230" r="15" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5">
+    <text x="64" y="130" font-weight="600">1</text><text x="132" y="130">2</text><text x="200" y="130">3</text>
+    <text x="268" y="130">4</text><text x="336" y="130">5</text><text x="404" y="130">6</text>
+    <text x="472" y="130">7</text><text x="540" y="130">8</text><text x="608" y="130">9</text>
+    <text x="64" y="235" font-weight="600">10</text><text x="132" y="235" font-weight="600">11</text>
+    <text x="200" y="235" font-weight="600">12</text><text x="268" y="235" font-weight="600">13</text>
+  </g>
+  <!-- pre-order walk arrows -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 57 146 L 60 210" marker-end="url(#arrow)"/>
+    <path d="M 82 230 L 112 230" marker-end="url(#arrow)"/>
+    <path d="M 150 230 L 180 230" marker-end="url(#arrow)"/>
+    <path d="M 218 230 L 248 230" marker-end="url(#arrow)"/>
+    <path d="M 82 125 L 112 125" marker-end="url(#arrow)"/>
+  </g>
+  <text x="98" y="115" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">+1</text>
+  <!-- retreat 13 - 1 - 2 -->
+  <path d="M 268 247 V 268 H 22 V 125 H 44" fill="none" stroke="#4169E1" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="145" y="261" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">14 &gt; 13 — retreat ÷ 10</text>
+  <!-- output so far -->
+  <text x="106" y="316" text-anchor="end" fill="#5c6b76" font-size="12.5">output</text>
+  <g stroke-width="1.5" font-size="13">
+    <rect x="116" y="298" width="24" height="28" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="148" y="298" width="34" height="28" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="190" y="298" width="34" height="28" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="232" y="298" width="34" height="28" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="274" y="298" width="34" height="28" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="316" y="298" width="24" height="28" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="348" y="298" width="24" height="28" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="380" y="298" width="24" height="28" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="412" y="298" width="24" height="28" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="444" y="298" width="24" height="28" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="476" y="298" width="24" height="28" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="508" y="298" width="24" height="28" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="540" y="298" width="24" height="28" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="128" y="316" font-weight="600">1</text><text x="165" y="316" font-weight="600">10</text>
+    <text x="207" y="316" font-weight="600">11</text><text x="249" y="316" font-weight="600">12</text>
+    <text x="291" y="316" font-weight="600">13</text>
+    <text x="328" y="316" fill="#9aa7b2">2</text><text x="360" y="316" fill="#9aa7b2">3</text>
+    <text x="392" y="316" fill="#9aa7b2">4</text><text x="424" y="316" fill="#9aa7b2">5</text>
+    <text x="456" y="316" fill="#9aa7b2">6</text><text x="488" y="316" fill="#9aa7b2">7</text>
+    <text x="520" y="316" fill="#9aa7b2">8</text><text x="552" y="316" fill="#9aa7b2">9</text>
+  </g>
+  <text x="340" y="360" text-anchor="middle" fill="#1a2026" font-size="13">Pre-order emits <tspan fill="#4169E1" font-weight="600">1, 10, 11, 12, 13</tspan>; at 13, 14 &gt; 13 ends the branch, so the walk retreats</text>
+  <text x="340" y="378" text-anchor="middle" fill="#1a2026" font-size="13">13 → 1 (÷ 10), and +1 lands on <tspan fill="#4169E1" font-weight="600">2</tspan> — the output continues 2, 3, …, 9.</text>
+</svg>

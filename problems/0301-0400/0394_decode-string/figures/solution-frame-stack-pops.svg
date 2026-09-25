@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 292" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="292" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "3[a2[c]]"; four snapshots, one per bracket event; frame slots 118x28 (bottom y=130, top y=98); dashed = already popped; current = string built so far -->
+  <text x="24" y="38" fill="#1a2026" font-size="13.5">s = "3[a2[c]]"</text>
+  <text x="656" y="38" text-anchor="end" fill="#5c6b76" font-size="12">frame = (previous, repeat)</text>
+  <text x="656" y="56" text-anchor="end" fill="#5c6b76" font-size="12">current = string built so far</text>
+  <g fill="#5c6b76" font-size="12" text-anchor="middle">
+    <text x="90" y="78">on the first [</text>
+    <text x="265" y="78">on the second [</text>
+    <text x="440" y="78">on the first ]</text>
+    <text x="615" y="78">on the last ]</text>
+  </g>
+  <!-- panel 1: pushed ("", 3) -->
+  <rect x="31" y="130" width="118" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="90" y="148" text-anchor="middle" font-size="13" font-weight="600">("", 3)</text>
+  <text x="90" y="210" text-anchor="middle" font-size="13.5">""</text>
+  <!-- panel 2: pushed ("a", 2) on top -->
+  <rect x="206" y="130" width="118" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="206" y="98" width="118" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="265" y="148" text-anchor="middle" font-size="13" font-weight="600">("", 3)</text>
+  <text x="265" y="116" text-anchor="middle" font-size="13" font-weight="600">("a", 2)</text>
+  <text x="265" y="210" text-anchor="middle" font-size="13.5">""</text>
+  <!-- panel 3: pop ("a", 2) -->
+  <rect x="381" y="130" width="118" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="381" y="98" width="118" height="28" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="5 3"/>
+  <text x="440" y="148" text-anchor="middle" font-size="13" font-weight="600">("", 3)</text>
+  <text x="440" y="116" text-anchor="middle" font-size="13" fill="#9aa7b2">("a", 2)</text>
+  <path d="M 499 112 Q 545 160 472 192" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="440" y="210" text-anchor="middle" font-size="13.5" font-weight="600" fill="#4169E1">"acc"</text>
+  <text x="440" y="230" text-anchor="middle" fill="#5c6b76" font-size="11.5">a + c × 2</text>
+  <!-- panel 4: pop ("", 3) -->
+  <rect x="556" y="130" width="118" height="28" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="5 3"/>
+  <rect x="556" y="98" width="118" height="28" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="5 3"/>
+  <text x="615" y="148" text-anchor="middle" font-size="13" fill="#9aa7b2">("", 3)</text>
+  <text x="615" y="116" text-anchor="middle" font-size="13" fill="#9aa7b2">("a", 2)</text>
+  <path d="M 615 162 L 615 190" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="615" y="210" text-anchor="middle" font-size="13.5" font-weight="600" fill="#4169E1">"accaccacc"</text>
+  <text x="615" y="230" text-anchor="middle" fill="#5c6b76" font-size="11.5">acc × 3</text>
+  <text x="340" y="258" text-anchor="middle" fill="#1a2026" font-size="13">Each ] repeats the finished segment onto the restored outer string: a + c × 2 = <tspan fill="#4169E1" font-weight="600">acc</tspan>,</text>
+  <text x="340" y="276" text-anchor="middle" fill="#1a2026" font-size="13">then acc × 3 = <tspan fill="#4169E1" font-weight="600">accaccacc</tspan>; the stack is empty and current is the decoded string.</text>
+</svg>

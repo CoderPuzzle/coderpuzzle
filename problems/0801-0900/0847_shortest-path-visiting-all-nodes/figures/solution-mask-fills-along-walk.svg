@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 248" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="248" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- graph [[1,2,3],[0],[0],[0]], walk [1,0,2,0,3]; state columns centered at x = 114 + 112k, circles y=84 r=16, mask cells 20px at y=112, bits 3,2,1,0 left to right -->
+  <text x="320" y="36" text-anchor="middle" fill="#5c6b76" font-size="12.5">state = (current node, visited mask) — the walk 1 → 0 → 2 → 0 → 3</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="114" cy="84" r="16"/><circle cx="226" cy="84" r="16"/>
+    <circle cx="338" cy="84" r="16"/><circle cx="450" cy="84" r="16"/>
+  </g>
+  <circle cx="562" cy="84" r="16" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.2"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="114" y="89">1</text><text x="226" y="89">0</text><text x="338" y="89">2</text>
+    <text x="450" y="89">0</text><text x="562" y="89" fill="#4169E1">3</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 134 84 H 204" marker-end="url(#arrow)"/>
+    <path d="M 246 84 H 316" marker-end="url(#arrow)"/>
+    <path d="M 358 84 H 428" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 470 84 H 540" stroke="#4169E1" stroke-width="2" fill="none" marker-end="url(#arrowB)"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5" font-weight="600">
+    <text x="169" y="70">1 → 0</text><text x="281" y="70">0 → 2</text>
+    <text x="393" y="70">2 → 0</text><text x="505" y="70">0 → 3</text>
+  </g>
+  <!-- mask cells: newly set bit = accent, carried bit = light accent, unset = inactive -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="70" y="112" width="20" height="20" fill="#f0f3f7"/><rect x="93" y="112" width="20" height="20" fill="#f0f3f7"/><rect x="116" y="112" width="20" height="20" fill="#4169E1"/><rect x="139" y="112" width="20" height="20" fill="#f0f3f7"/>
+    <rect x="182" y="112" width="20" height="20" fill="#f0f3f7"/><rect x="205" y="112" width="20" height="20" fill="#f0f3f7"/><rect x="228" y="112" width="20" height="20" fill="#dbe4fb"/><rect x="251" y="112" width="20" height="20" fill="#4169E1"/>
+    <rect x="294" y="112" width="20" height="20" fill="#f0f3f7"/><rect x="317" y="112" width="20" height="20" fill="#4169E1"/><rect x="340" y="112" width="20" height="20" fill="#dbe4fb"/><rect x="363" y="112" width="20" height="20" fill="#dbe4fb"/>
+    <rect x="406" y="112" width="20" height="20" fill="#f0f3f7"/><rect x="429" y="112" width="20" height="20" fill="#dbe4fb"/><rect x="452" y="112" width="20" height="20" fill="#dbe4fb"/><rect x="475" y="112" width="20" height="20" fill="#dbe4fb"/>
+    <rect x="518" y="112" width="20" height="20" fill="#4169E1"/><rect x="541" y="112" width="20" height="20" fill="#dbe4fb"/><rect x="564" y="112" width="20" height="20" fill="#dbe4fb"/><rect x="587" y="112" width="20" height="20" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12">
+    <text x="80" y="126" fill="#9aa7b2">0</text><text x="103" y="126" fill="#9aa7b2">0</text><text x="126" y="126" fill="#ffffff">1</text><text x="149" y="126" fill="#9aa7b2">0</text>
+    <text x="192" y="126" fill="#9aa7b2">0</text><text x="215" y="126" fill="#9aa7b2">0</text><text x="238" y="126" fill="#1a2026">1</text><text x="261" y="126" fill="#ffffff">1</text>
+    <text x="304" y="126" fill="#9aa7b2">0</text><text x="327" y="126" fill="#ffffff">1</text><text x="350" y="126" fill="#1a2026">1</text><text x="373" y="126" fill="#1a2026">1</text>
+    <text x="416" y="126" fill="#9aa7b2">0</text><text x="439" y="126" fill="#1a2026">1</text><text x="462" y="126" fill="#1a2026">1</text><text x="485" y="126" fill="#1a2026">1</text>
+    <text x="528" y="126" fill="#ffffff">1</text><text x="551" y="126" fill="#1a2026">1</text><text x="574" y="126" fill="#1a2026">1</text><text x="597" y="126" fill="#1a2026">1</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10">
+    <text x="80" y="146">3</text><text x="103" y="146">2</text><text x="126" y="146">1</text><text x="149" y="146">0</text>
+    <text x="192" y="146">3</text><text x="215" y="146">2</text><text x="238" y="146">1</text><text x="261" y="146">0</text>
+    <text x="304" y="146">3</text><text x="327" y="146">2</text><text x="350" y="146">1</text><text x="373" y="146">0</text>
+    <text x="416" y="146">3</text><text x="439" y="146">2</text><text x="462" y="146">1</text><text x="485" y="146">0</text>
+    <text x="528" y="146">3</text><text x="551" y="146">2</text><text x="574" y="146">1</text><text x="597" y="146">0</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="114" y="170" fill="#5c6b76">d = 0</text><text x="226" y="170" fill="#5c6b76">d = 1</text>
+    <text x="338" y="170" fill="#5c6b76">d = 2</text><text x="450" y="170" fill="#5c6b76">d = 3</text>
+    <text x="562" y="170" fill="#4169E1" font-weight="700">d = 4</text>
+  </g>
+  <text x="450" y="186" text-anchor="middle" fill="#9aa7b2" font-size="10.5">revisit: no new bit</text>
+  <text x="40" y="212" fill="#1a2026" font-size="13">Every move ORs the next node's bit into the mask; the revisit 2 → 0</text>
+  <text x="40" y="230" fill="#1a2026" font-size="13">adds none — the first full-mask state (3, 1111) pops at <tspan fill="#4169E1" font-weight="600">d = 4</tspan>, the answer.</text>
+</svg>

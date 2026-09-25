@@ -31,6 +31,10 @@ wins; when n is odd, only the phase matching the majority value fits, and
 that is exactly the phase whose mismatch count comes out even, so taking
 the even member of the pair is never a choice.
 
+![The Example 1 board splits its rows into the complement classes 0110 and 1001 and its
+columns into 0011 and 1100; the first row and column each sit two seats off the alternating
+pattern, so one column swap plus one row swap gives the answer 2.](figures/solution-complement-classes-swaps.svg)
+
 The two budgets are independent — row swaps never disturb what the columns
 must decide, and vice versa — so the minimum total is their sum, and the
 bound is tight because a single swap moves at most one row and one column

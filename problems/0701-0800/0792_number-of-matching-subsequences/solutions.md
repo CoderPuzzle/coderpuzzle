@@ -6,6 +6,8 @@ Testing each word independently by scanning `s` is too slow when many words shar
 
 Initialize the buckets from the words' first characters. When character `c` is processed, pop the bucket for `c` (popping, not peeking, ensures the same bucket position is not reprocessed) and re-file each entry: if the just-matched character completed the word, increment the match count; otherwise push `(word, index + 1)` into the bucket for the word's next character. Characters with an empty or absent bucket are skipped in constant time.
 
+![Streaming s = "abcde" refills the waiting buckets letter by letter: a, acd, and ace complete for a count of 3 while bb is left still waiting on b.](figures/solution-waiting-buckets-stream.svg)
+
 Correctness is just the greedy subsequence check distributed across words: a word matches `s` if and only if its letters can be consumed in order as `s` streams by, and each word's pointer only ever moves forward. Empty words are counted up front (defensive, since the constraints guarantee non-empty words). Every character of every word advances its pointer at most once, so the total work besides reading `s` is proportional to the combined length of the words.
 
 **Complexity:** `O(|s| + sum of |words[i]|)` time, `O(|words|)` space (each word occupies one bucket entry at a time).

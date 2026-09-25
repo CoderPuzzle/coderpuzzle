@@ -18,6 +18,8 @@ character that neither matches the next wanted one nor repeats the previous
 one cannot appear in any transcription, so the scan stops with `false`; the
 same holds if `typed` runs out while `name` still has characters waiting.
 
+![Matching name = "alex" against typed = "aaleex" run by run: the runs "aa" and "ee" start with the wanted a and e and are long presses, so the two-pointer scan accepts, while a letter like the dashed b that neither matches nor repeats would stop it false.](figures/solution-two-pointer-runs.svg)
+
 Conversely, everything the scan accepts is a genuine transcription. The
 matched pairs line the i-th run of `typed` up with the i-th run of `name`,
 and every skipped repetition merely lengthens the run its matched character

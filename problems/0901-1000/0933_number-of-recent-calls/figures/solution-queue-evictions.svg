@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- pings 1, 100, 3001, 3002; queue after eviction, boxes 56x32 from x=250 at y=52,114,176,238; returns 1,2,3,3 -->
+  <text x="250" y="40" fill="#5c6b76" font-size="11.5">queue after appending t and evicting</text>
+  <text x="604" y="40" text-anchor="middle" fill="#5c6b76" font-size="11.5">returns</text>
+  <g fill="#1a2026" font-weight="600" font-size="13.5">
+    <text x="40" y="66">ping(1)</text>
+    <text x="40" y="128">ping(100)</text>
+    <text x="40" y="190">ping(3001)</text>
+    <text x="40" y="252">ping(3002)</text>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="40" y="82">window [-2999, 1]</text>
+    <text x="40" y="144">window [-2900, 100]</text>
+    <text x="40" y="206">window [1, 3001]</text>
+    <text x="40" y="268">window [2, 3002]</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="250" y="52" width="56" height="32"/>
+    <rect x="250" y="114" width="56" height="32"/><rect x="318" y="114" width="56" height="32"/>
+    <rect x="250" y="176" width="56" height="32"/><rect x="318" y="176" width="56" height="32"/><rect x="386" y="176" width="56" height="32"/>
+    <rect x="318" y="238" width="56" height="32"/><rect x="386" y="238" width="56" height="32"/><rect x="454" y="238" width="56" height="32"/>
+  </g>
+  <rect x="250" y="238" width="56" height="32" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <g text-anchor="middle" font-weight="600" font-size="13.5" fill="#1a2026">
+    <text x="278" y="73">1</text>
+    <text x="278" y="135">1</text><text x="346" y="135">100</text>
+    <text x="278" y="197">1</text><text x="346" y="197">100</text><text x="414" y="197">3001</text>
+    <text x="346" y="259">100</text><text x="414" y="259">3001</text><text x="482" y="259">3002</text>
+  </g>
+  <text x="278" y="259" text-anchor="middle" fill="#9aa7b2" font-weight="600" font-size="13.5">1</text>
+  <line x1="262" y1="254" x2="294" y2="254" stroke="#9aa7b2" stroke-width="1.4"/>
+  <path d="M 246 254 L 228 254" stroke="#9aa7b2" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" fill="#4169E1" font-weight="600" font-size="15">
+    <text x="604" y="73">→ 1</text>
+    <text x="604" y="135">→ 2</text>
+    <text x="604" y="197">→ 3</text>
+    <text x="604" y="259">→ 3</text>
+  </g>
+  <text x="250" y="224" fill="#5c6b76" font-size="12">1 &lt; 1 is false — a ping exactly 3000 ms old stays</text>
+  <text x="516" y="259" fill="#9aa7b2" font-size="12">1 &lt; 2 → out</text>
+  <text x="320" y="308" text-anchor="middle" fill="#1a2026" font-size="13">The window [t - 3000, t] only slides right, so evictions are permanent:</text>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">at t = 3002 the 1 turns 3001 ms old (1 &lt; 2) and leaves — <tspan fill="#4169E1" font-weight="600">3</tspan> requests remain.</text>
+</svg>

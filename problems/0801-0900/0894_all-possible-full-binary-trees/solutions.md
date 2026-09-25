@@ -19,6 +19,10 @@ odd by the parity of root-plus-pairs. For an odd size `n`, the loop walks
 emits a fresh root joining the two — one list per size, each emitted tree
 one root allocation that links its two subtrees.
 
+![For n = 7 the memoized split pairs shape lists of sizes (1,5), (3,3) and
+(5,1), contributing 1×2 + 1×1 + 2×1 = 5 full trees in
+all.](figures/solution-memo-split-accounting.svg)
+
 Memoization is what keeps this a construction rather than an explosion: the
 loop for size `n` asks for each smaller size many times (every split of 19
 wants the shapes of 1, 3, 5, …), and the memo answers all but the first ask

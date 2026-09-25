@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- p = 2, q = 1, g = 1: straight ray y = (q/p)x corners at (2p, p)
+       = 2 rooms across (even, west), 1 up (odd, north) -> receptor 2.
+       Left: unfolded tiling, rooms 70px, origin (70,225). Right: folded
+       room 110px at (430,120)-(540,230), zigzag (430,230)->(540,175)->(430,120). -->
+  <text x="175" y="72" text-anchor="middle" fill="#5c6b76" font-size="13" font-weight="600">unfolded tiling</text>
+  <text x="485" y="72" text-anchor="middle" fill="#5c6b76" font-size="13" font-weight="600">folded room</text>
+  <!-- rooms already reached: 2x1 solid block x 70..210, y 155..225 -->
+  <g stroke="#42525e" stroke-width="1.3" fill="none">
+    <rect x="70" y="155" width="140" height="70"/>
+    <line x1="140" y1="155" x2="140" y2="225"/>
+  </g>
+  <!-- tiling continuing beyond the reached corner -->
+  <g stroke="#9aa7b2" stroke-width="1" stroke-dasharray="4 3" fill="none">
+    <line x1="210" y1="155" x2="280" y2="155"/>
+    <line x1="210" y1="85" x2="210" y2="155"/>
+    <line x1="280" y1="85" x2="280" y2="225"/>
+    <line x1="70" y1="85" x2="280" y2="85"/>
+  </g>
+  <!-- straight ray to the first corner -->
+  <line x1="70" y1="225" x2="210" y2="155" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="210" cy="155" r="4" fill="#4169E1"/>
+  <text x="204" y="145" text-anchor="end" fill="#1a2026" font-size="12.5" font-weight="600">first corner (2p, p)</text>
+  <!-- p spans -->
+  <g fill="#5c6b76" font-size="12.5" text-anchor="middle">
+    <text x="105" y="243">p</text>
+    <text x="56" y="194">p</text>
+  </g>
+  <!-- folded room -->
+  <rect x="430" y="120" width="110" height="110" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <polyline points="430,230 540,175 430,120" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="540" cy="175" r="3.5" fill="#4169E1"/>
+  <circle cx="430" cy="120" r="6" fill="#4169E1"/>
+  <g font-size="14" font-weight="600">
+    <text x="556" y="125" fill="#5c6b76">1</text>
+    <text x="556" y="236" fill="#5c6b76">0</text>
+    <text x="414" y="125" fill="#4169E1">2</text>
+  </g>
+  <text x="550" y="207" fill="#5c6b76" font-size="12.5">q</text>
+  <text x="485" y="258" text-anchor="middle" fill="#5c6b76" font-size="12.5">zigzag: one east-wall bounce,</text>
+  <text x="485" y="276" text-anchor="middle" fill="#5c6b76" font-size="12.5">then the northwest corner</text>
+  <text x="70" y="258" fill="#4169E1" font-size="12.5">straight ray y = (q/p)·x</text>
+  <text x="70" y="276" fill="#5c6b76" font-size="12.5">first corner: 2 rooms across, 1 up</text>
+  <text x="340" y="296" text-anchor="middle" fill="#1a2026" font-size="13">The unfolded ray first corners 2 rooms across, 1 up: even across folds to the west wall,</text>
+  <text x="340" y="314" text-anchor="middle" fill="#1a2026" font-size="13">odd up to the north — the northwest receptor <tspan fill="#4169E1" font-weight="600">2</tspan>, met after one east-wall bounce.</text>
+</svg>

@@ -20,6 +20,8 @@ sibling beyond `n` is out of range, so while either holds the walk retreats
 legal again. For `n = 13` the turn happens at 13: `14 > 13` retreats
 13 → 1 and increments to 2, exactly where the example's list continues.
 
+![On `n = 13` the pre-order walk emits 1, 10, 11, 12, 13, then 13 retreats ÷ 10 to 1 and +1 to 2, fixing the output order 1, 10, 11, 12, 13, 2, …, 9.](figures/solution-denary-trie-walk.svg)
+
 Linearity holds because nothing runs away. Each of the `n` iterations appends
 one number, `+1` fires at most `n` times in total, and every `/10` retreat
 only undoes an earlier `*10` descent of the same digit, so climbs never

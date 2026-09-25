@@ -18,6 +18,11 @@ touching `p` and registers their union `(prev, next)`, restoring exactly the
 gap structure of the remaining occupancy (an empty room keeps no segments —
 the next student takes seat `0` outright).
 
+![On `n = 10` with seat, seat, seat, seat, leave(4), seat, the seat row after
+each operation with the live gap segments: each `seat()` splits the winning
+segment at its midpoint (0, 9, 4, 2), and `leave(4)` re-merges `(2,4)` and
+`(4,9)` into `(2,9)`, whose midpoint 5 wins the final seat.](figures/solution-gap-segment-splits.svg)
+
 Because segments are destroyed wholesale, heap entries go stale. The class
 keeps a **live-segment set**: a popped entry whose pair is absent from the
 set is garbage and skipped. This is safe because a segment's candidate seat

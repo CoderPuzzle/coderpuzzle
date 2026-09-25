@@ -39,6 +39,10 @@ of a person's disliked neighbors into one set, anchored on that person's
 first enemy. The union-find forest records exactly the "same group"
 relation and never decides which group is which.
 
+![For n = 4 with dislikes (1, 2), (1, 3), (2, 4), union-find merges person
+1's enemies 2 and 3, then person 2's enemies 1 and 4; the same-group sets
+{2, 3} and {1, 4} separate every dislike pair, so the split is possible.](figures/solution-enemy-union-sets.svg)
+
 The merging can overshoot — transitivity pulls two enemies into one set
 precisely when no valid split exists. The answer is therefore read off
 afterwards: scan the dislike pairs and return false the moment some

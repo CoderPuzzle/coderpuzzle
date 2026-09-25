@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 448" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="448" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- root = [5,3,6,2,4,null,8,1,null,null,null,7,9]; dashed edges are the left links the walk severs; in-order visit order 1st..9th equals the node values; the relinked right spine is drawn at y=348 -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="340" y1="62" x2="450" y2="126"/>
+    <line x1="230" y1="126" x2="300" y2="190"/>
+    <line x1="450" y1="126" x2="560" y2="190"/>
+    <line x1="560" y1="190" x2="620" y2="254"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="5 4">
+    <line x1="340" y1="62" x2="230" y2="126"/>
+    <line x1="230" y1="126" x2="160" y2="190"/>
+    <line x1="160" y1="190" x2="100" y2="254"/>
+    <line x1="560" y1="190" x2="500" y2="254"/>
+  </g>
+  <g fill="#9aa7b2" font-size="13" font-weight="700">
+    <text x="281" y="90">×</text>
+    <text x="191" y="154">×</text>
+    <text x="126" y="218">×</text>
+    <text x="526" y="218">×</text>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.8">
+    <circle cx="340" cy="58" r="17"/><circle cx="230" cy="122" r="17"/><circle cx="450" cy="122" r="17"/>
+    <circle cx="160" cy="186" r="17"/><circle cx="300" cy="186" r="17"/><circle cx="560" cy="186" r="17"/>
+    <circle cx="100" cy="250" r="17"/><circle cx="500" cy="250" r="17"/><circle cx="620" cy="250" r="17"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="340" y="63">5</text><text x="230" y="127">3</text><text x="450" y="127">6</text>
+    <text x="160" y="191">2</text><text x="300" y="191">4</text><text x="560" y="191">8</text>
+    <text x="100" y="255">1</text><text x="500" y="255">7</text><text x="620" y="255">9</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="340" y="92">5th</text>
+    <text x="230" y="156">3rd</text><text x="450" y="156">6th</text>
+    <text x="160" y="220">2nd</text><text x="300" y="220">4th</text><text x="560" y="220">8th</text>
+    <text x="100" y="284">1st visit</text><text x="500" y="284">7th</text><text x="620" y="284">9th</text>
+  </g>
+  <!-- relinked spine -->
+  <text x="340" y="330" text-anchor="middle" fill="#5c6b76" font-size="12.5">after relinking — one right spine, every left link null</text>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <circle cx="60" cy="376" r="15"/><circle cx="130" cy="376" r="15"/><circle cx="200" cy="376" r="15"/>
+    <circle cx="270" cy="376" r="15"/><circle cx="340" cy="376" r="15"/><circle cx="410" cy="376" r="15"/>
+    <circle cx="480" cy="376" r="15"/><circle cx="550" cy="376" r="15"/><circle cx="620" cy="376" r="15"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="60" y="381">1</text><text x="130" y="381">2</text><text x="200" y="381">3</text>
+    <text x="270" y="381">4</text><text x="340" y="381">5</text><text x="410" y="381">6</text>
+    <text x="480" y="381">7</text><text x="550" y="381">8</text><text x="620" y="381">9</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <line x1="77" y1="376" x2="111" y2="376" marker-end="url(#arrow)"/>
+    <line x1="147" y1="376" x2="181" y2="376" marker-end="url(#arrow)"/>
+    <line x1="217" y1="376" x2="251" y2="376" marker-end="url(#arrow)"/>
+    <line x1="287" y1="376" x2="321" y2="376" marker-end="url(#arrow)"/>
+    <line x1="357" y1="376" x2="391" y2="376" marker-end="url(#arrow)"/>
+    <line x1="427" y1="376" x2="461" y2="376" marker-end="url(#arrow)"/>
+    <line x1="497" y1="376" x2="531" y2="376" marker-end="url(#arrow)"/>
+    <line x1="567" y1="376" x2="601" y2="376" marker-end="url(#arrow)"/>
+  </g>
+  <text x="340" y="424" text-anchor="middle" fill="#1a2026" font-size="13">The left links (dashed ×) are all severed; each right link is rethreaded to the</text>
+  <text x="340" y="442" text-anchor="middle" fill="#1a2026" font-size="13">in-order successor, so the tree collapses to the spine <tspan fill="#4169E1" font-weight="600">1 → 2 → … → 9</tspan>.</text>
+</svg>

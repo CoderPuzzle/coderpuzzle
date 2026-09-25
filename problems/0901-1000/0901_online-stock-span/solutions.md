@@ -18,6 +18,10 @@ price is strictly greater, is precisely the wall that stops today's count;
 `1 + the absorbed spans` is therefore the exact answer. Pushing
 `(price, span)` restores the decreasing invariant.
 
+![For prices 100, 80, 60, 70, 60, 75, 85 the stack of (price, span) pairs
+stays strictly decreasing while 75 absorbs spans 1 + 1 + 2 = 4 and 85
+absorbs 1 + 4 + 1 = 6.](figures/solution-span-stack-absorb.svg)
+
 Each price is pushed once and popped at most once, so the total work across
 the whole stream is linear even though a single `next` may pop many entries.
 Both the Python and Java canonical solutions implement exactly this structure

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- target 12, position [10,8,0,5,3], speed [2,4,1,1,3]; miles to x: 70 + mile*(500/12); alone times (12-p)/s = 1,1,7,3,12; leaders 10, 5, 0 -->
+  <line x1="40" y1="100" x2="600" y2="100" stroke="#42525e" stroke-width="2"/>
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <line x1="70" y1="100" x2="70" y2="107"/><line x1="195" y1="100" x2="195" y2="107"/>
+    <line x1="278" y1="100" x2="278" y2="107"/><line x1="403" y1="100" x2="403" y2="107"/>
+    <line x1="487" y1="100" x2="487" y2="107"/><line x1="570" y1="100" x2="570" y2="107"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="70" y="120">0</text><text x="195" y="120">3</text><text x="278" y="120">5</text>
+    <text x="403" y="120">8</text><text x="487" y="120">10</text><text x="570" y="120">12</text>
+  </g>
+  <path d="M 195 76 Q 236 32 278 76" fill="none" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 403 76 Q 445 32 487 76" fill="none" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="236" y="24" text-anchor="middle" fill="#5c6b76" font-size="12">3 catches 5 at 6</text>
+  <text x="445" y="24" text-anchor="middle" fill="#5c6b76" font-size="12">8 catches 10 at 12</text>
+  <line x1="570" y1="62" x2="570" y2="98" stroke="#42525e" stroke-width="1.6"/>
+  <polygon points="570,62 598,69 570,76" fill="#4169E1"/>
+  <text x="570" y="52" text-anchor="middle" fill="#1a2026" font-size="12.5">target 12</text>
+  <!-- cars: leaders 10, 5, 0 accented; mergers 8, 3 plain -->
+  <g fill="#42525e">
+    <circle cx="62" cy="99" r="3"/><circle cx="78" cy="99" r="3"/>
+    <circle cx="187" cy="99" r="3"/><circle cx="203" cy="99" r="3"/>
+    <circle cx="270" cy="99" r="3"/><circle cx="286" cy="99" r="3"/>
+    <circle cx="395" cy="99" r="3"/><circle cx="411" cy="99" r="3"/>
+    <circle cx="479" cy="99" r="3"/><circle cx="495" cy="99" r="3"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="187" y="80" width="16" height="8" rx="3"/>
+    <rect x="180" y="86" width="30" height="12" rx="5"/>
+    <rect x="395" y="80" width="16" height="8" rx="3"/>
+    <rect x="388" y="86" width="30" height="12" rx="5"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="62" y="80" width="16" height="8" rx="3"/>
+    <rect x="55" y="86" width="30" height="12" rx="5"/>
+    <rect x="270" y="80" width="16" height="8" rx="3"/>
+    <rect x="263" y="86" width="30" height="12" rx="5"/>
+    <rect x="479" y="80" width="16" height="8" rx="3"/>
+    <rect x="472" y="86" width="30" height="12" rx="5"/>
+  </g>
+  <g text-anchor="middle" font-size="11">
+    <text x="70" y="138" fill="#1a2026" font-weight="600">0 · s1</text><text x="70" y="153" fill="#5c6b76">t = 12</text>
+    <text x="195" y="138" fill="#5c6b76">3 · s3</text><text x="195" y="153" fill="#5c6b76">t = 3</text>
+    <text x="278" y="138" fill="#1a2026" font-weight="600">5 · s1</text><text x="278" y="153" fill="#5c6b76">t = 7</text>
+    <text x="403" y="138" fill="#5c6b76">8 · s4</text><text x="403" y="153" fill="#5c6b76">t = 1</text>
+    <text x="487" y="138" fill="#1a2026" font-weight="600">10 · s2</text><text x="487" y="153" fill="#5c6b76">t = 1</text>
+  </g>
+  <!-- scan: sorted 10, 8, 5, 3, 0 against the fleet ahead's arrival -->
+  <text x="70" y="176" fill="#5c6b76" font-size="12.5">scan nearest-target first, counting strictly later arrivals:</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="70" y="186" width="96" height="60" fill="#dbe4fb"/>
+    <rect x="184" y="186" width="96" height="60" fill="#ffffff"/>
+    <rect x="298" y="186" width="96" height="60" fill="#dbe4fb"/>
+    <rect x="412" y="186" width="96" height="60" fill="#ffffff"/>
+    <rect x="526" y="186" width="96" height="60" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="118" y="206" font-weight="600" fill="#1a2026">10</text><text x="118" y="224" fill="#5c6b76" font-size="12">t = 1</text>
+    <text x="118" y="240" fill="#4169E1" font-size="11" font-weight="600">new fleet</text>
+    <text x="232" y="206" font-weight="600" fill="#1a2026">8</text><text x="232" y="224" fill="#5c6b76" font-size="12">t = 1</text>
+    <text x="232" y="240" fill="#5c6b76" font-size="11">merges into 10</text>
+    <text x="346" y="206" font-weight="600" fill="#1a2026">5</text><text x="346" y="224" fill="#5c6b76" font-size="12">t = 7</text>
+    <text x="346" y="240" fill="#4169E1" font-size="11" font-weight="600">new fleet</text>
+    <text x="460" y="206" font-weight="600" fill="#1a2026">3</text><text x="460" y="224" fill="#5c6b76" font-size="12">t = 3</text>
+    <text x="460" y="240" fill="#5c6b76" font-size="11">merges into 5</text>
+    <text x="574" y="206" font-weight="600" fill="#1a2026">0</text><text x="574" y="224" fill="#5c6b76" font-size="12">t = 12</text>
+    <text x="574" y="240" fill="#4169E1" font-size="11" font-weight="600">new fleet</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="118" y="262">fleets: 1</text><text x="232" y="262">fleets: 1</text><text x="346" y="262">fleets: 2</text>
+    <text x="460" y="262">fleets: 2</text><text x="574" y="262">fleets: 3</text>
+  </g>
+  <text x="340" y="290" text-anchor="middle" fill="#1a2026" font-size="13">Sorted 10, 8, 5, 3, 0 has alone-arrival times 1, 1, 7, 3, 12 — equality merges too;</text>
+  <text x="340" y="310" text-anchor="middle" fill="#1a2026" font-size="13">only 10, 5 and 0 start a new fleet, so <tspan fill="#4169E1" font-weight="600">3</tspan> fleets reach the target.</text>
+</svg>

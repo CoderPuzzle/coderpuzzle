@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,3,4]; left pass leaves prefixes [1,1,2,6]; right pass multiplies running suffix 24,12,4,1 -->
+  <!-- row A: nums -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="150" y="44" width="64" height="40"/><rect x="230" y="44" width="64" height="40"/><rect x="310" y="44" width="64" height="40"/><rect x="390" y="44" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="182" y="69">1</text><text x="262" y="69">2</text><text x="342" y="69">3</text><text x="422" y="69">4</text>
+  </g>
+  <text x="140" y="69" text-anchor="end" fill="#5c6b76" font-size="12.5">nums</text>
+  <!-- left pass -->
+  <path d="M 480 90 L 480 118" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="492" y="108" fill="#5c6b76" font-size="12">left pass</text>
+  <!-- row B: after left pass -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="150" y="124" width="64" height="40"/><rect x="230" y="124" width="64" height="40"/><rect x="310" y="124" width="64" height="40"/><rect x="390" y="124" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="182" y="149">1</text><text x="262" y="149">1</text><text x="342" y="149">2</text><text x="422" y="149">6</text>
+  </g>
+  <text x="140" y="146" text-anchor="end" fill="#5c6b76" font-size="12.5">after left pass</text>
+  <!-- right pass -->
+  <text x="305" y="176" text-anchor="middle" fill="#5c6b76" font-size="12">right pass</text>
+  <path d="M 470 184 L 140 184" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" fill="#4169E1" font-weight="600" font-size="13">
+    <text x="182" y="210">× 24</text><text x="262" y="210">× 12</text><text x="342" y="210">× 4</text><text x="422" y="210">× 1</text>
+  </g>
+  <!-- row C: final answer -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="150" y="226" width="64" height="40"/><rect x="230" y="226" width="64" height="40"/><rect x="310" y="226" width="64" height="40"/><rect x="390" y="226" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-weight="600" font-size="15">
+    <text x="182" y="251">24</text><text x="262" y="251">12</text><text x="342" y="251">8</text><text x="422" y="251">6</text>
+  </g>
+  <text x="140" y="251" text-anchor="end" fill="#5c6b76" font-size="12.5">answer</text>
+  <text x="310" y="296" text-anchor="middle" fill="#1a2026" font-size="13">The left pass stores the product of everything before i — <tspan fill="#4169E1" font-weight="600">1, 1, 2, 6</tspan>;</text>
+  <text x="310" y="316" text-anchor="middle" fill="#1a2026" font-size="13">the right pass multiplies in 24, 12, 4, 1, landing on <tspan fill="#4169E1" font-weight="600">[24, 12, 8, 6]</tspan>.</text>
+</svg>

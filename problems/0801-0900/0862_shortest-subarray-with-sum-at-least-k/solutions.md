@@ -6,6 +6,11 @@ With negative numbers present, the sliding window of the all-positive version br
 
 The deque holds start indices whose prefix sums strictly increase from front to back. At each `i`, the front is consumed while it qualifies — `prefix[front] <= p - k` — and each pop offers the length `i - front` to the running minimum. Popping is safe because a start consumed now can only look worse for later endings: later `i` give strictly longer subarrays with the same start. Afterwards the tail is trimmed of every index whose prefix sum is `>= p`: a later index with an equal-or-smaller prefix dominates them as a future start (it is shorter from any future end and at least as likely to satisfy the threshold), so they can never again be useful.
 
+![On `nums = [2,-1,2]`, `k = 3` with prefix sums `[0, 2, 1, 3]`, the deque of
+candidate starts after each sweep index: index 1 is trimmed as a dominated
+tail at `i = 2`, and at `i = 3` the qualifying front 0 yields `3 - 0 = 3`,
+the answer.](figures/solution-prefix-deque-sweep.svg)
+
 Finally `i` itself joins as a candidate start. Each index enters and leaves the deque at most once, so despite the nested `while` loops the whole algorithm is linear. If no qualifying pair was ever found, `best` stays above `n` and the answer is `-1`; the leading sentinel `prefix[0] = 0` lets subarrays that start at index 0 compete.
 
 Example 3 (`nums = [2,-1,2]`, `k = 3`) has prefix sums `[0, 2, 1, 3]`:

@@ -61,6 +61,8 @@ final, fully-inherited answer into it. That induction is why a single
 candidate per edge suffices — the quietest person among `b` and its direct
 richer neighbors transitively covers every ancestor.
 
+![On example 1's richness DAG the Kahn queue settles the sources 2, 4, 5, 6 first, then 3, 1, 7, 0, and person 5 (quiet 1) flows down to give answer[3] = answer[1] = answer[0] = 5 while quiet-0 person 7 keeps itself — answer = [5, 5, 2, 5, 4, 5, 6, 7].](figures/solution-kahn-settle-order.svg)
+
 Each person and each pair is touched a constant number of times, so the sweep
 is linear in the input; the adjacency, counters, worklist, and answer array
 are each bounded by `n` persons plus `m` pairs.

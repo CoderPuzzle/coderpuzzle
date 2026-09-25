@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 348" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="348" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- k = 3, nums = [4,5,8,2]: heapify then poll the 2 → heap [4,5,8] -->
+  <!-- adds push then pop the overflow min; heaps after each add: [4,5,8] [5,5,8] [5,8,10] [8,9,10] [8,9,10] -->
+  <!-- rows y=52+40i; pop chips 64x26 at x=120; heap cells 34x30 at x=220+38i; return read at x=398 -->
+  <text x="36" y="22" fill="#5c6b76" font-size="12.5">k = 3, start [4, 5, 8, 2] — heapify, then trim to the 3 largest</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="152" y="40">popped</text>
+    <text x="275" y="40">heap after the add</text>
+    <text x="398" y="40">returns</text>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="36" y="72">init</text>
+    <text x="36" y="112">add(3)</text>
+    <text x="36" y="152">add(5)</text>
+    <text x="36" y="192">add(10)</text>
+    <text x="36" y="232">add(9)</text>
+    <text x="36" y="272">add(4)</text>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="120" y="54" width="64" height="26" rx="13"/>
+    <rect x="120" y="94" width="64" height="26" rx="13"/>
+    <rect x="120" y="134" width="64" height="26" rx="13"/>
+    <rect x="120" y="174" width="64" height="26" rx="13"/>
+    <rect x="120" y="214" width="64" height="26" rx="13"/>
+    <rect x="120" y="254" width="64" height="26" rx="13"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="152" y="72">pop 2</text>
+    <text x="152" y="112">pop 3</text>
+    <text x="152" y="152">pop 4</text>
+    <text x="152" y="192">pop 5</text>
+    <text x="152" y="232">pop 5</text>
+    <text x="152" y="272">pop 4</text>
+  </g>
+  <!-- heap cells: root (first) accented — it is the kth largest -->
+  <g stroke="#4169E1" stroke-width="1.6" fill="#dbe4fb">
+    <rect x="220" y="52" width="34" height="30"/><rect x="220" y="92" width="34" height="30"/>
+    <rect x="220" y="132" width="34" height="30"/><rect x="220" y="172" width="34" height="30"/>
+    <rect x="220" y="212" width="34" height="30"/><rect x="220" y="252" width="34" height="30"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="258" y="52" width="34" height="30"/><rect x="296" y="52" width="34" height="30"/>
+    <rect x="258" y="92" width="34" height="30"/><rect x="296" y="92" width="34" height="30"/>
+    <rect x="258" y="132" width="34" height="30"/><rect x="296" y="132" width="34" height="30"/>
+    <rect x="258" y="172" width="34" height="30"/><rect x="296" y="172" width="34" height="30"/>
+    <rect x="258" y="212" width="34" height="30"/><rect x="296" y="212" width="34" height="30"/>
+    <rect x="258" y="252" width="34" height="30"/><rect x="296" y="252" width="34" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="237" y="72">4</text><text x="275" y="72">5</text><text x="313" y="72">8</text>
+    <text x="237" y="112">4</text><text x="275" y="112">5</text><text x="313" y="112">8</text>
+    <text x="237" y="152">5</text><text x="275" y="152">5</text><text x="313" y="152">8</text>
+    <text x="237" y="192">5</text><text x="275" y="192">8</text><text x="313" y="192">10</text>
+    <text x="237" y="232">8</text><text x="275" y="232">9</text><text x="313" y="232">10</text>
+    <text x="237" y="272">8</text><text x="275" y="272">9</text><text x="313" y="272">10</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="none">
+    <path d="M 338 67 H 366" marker-end="url(#arrow)"/>
+    <path d="M 338 107 H 366" marker-end="url(#arrow)"/>
+    <path d="M 338 147 H 366" marker-end="url(#arrow)"/>
+    <path d="M 338 187 H 366" marker-end="url(#arrow)"/>
+    <path d="M 338 227 H 366" marker-end="url(#arrow)"/>
+    <path d="M 338 267 H 366" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="398" y="72" fill="#9aa7b2" font-weight="400">—</text>
+    <text x="398" y="112" fill="#4169E1">4</text>
+    <text x="398" y="152" fill="#4169E1">5</text>
+    <text x="398" y="192" fill="#4169E1">5</text>
+    <text x="398" y="232" fill="#4169E1">8</text>
+    <text x="398" y="272" fill="#4169E1">8</text>
+  </g>
+  <text x="280" y="312" text-anchor="middle" fill="#1a2026" font-size="13">The root of the size-3 min-heap is the current 3rd largest score;</text>
+  <text x="280" y="332" text-anchor="middle" fill="#1a2026" font-size="13">the adds return <tspan fill="#4169E1" font-weight="600">4, 5, 5, 8, 8</tspan> and each overflow minimum pops right back out.</text>
+</svg>

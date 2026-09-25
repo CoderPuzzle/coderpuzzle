@@ -16,6 +16,8 @@ runs off the end means no start qualifies, so `-1` goes in. Because `i` may
 equal `j`, nothing special happens when an interval's own start already
 reaches its end — a `[5,5]` simply finds itself.
 
+![On intervals = [[3,4],[2,3],[1,2]], each end drops to the first sorted start at or above it — end 3 to start 3 (i = 0), end 2 to start 2 (i = 1) — while end 4 finds no qualifying start and takes -1, giving [-1, 0, 1].](figures/solution-bisect-sorted-starts.svg)
+
 The bisection keeps the answer slot inside the live window: a mid below the
 end retires everything up to it, anything else stays a candidate and shrinks
 the window from the top. At the ceiling of `20000` intervals the sort

@@ -12,6 +12,8 @@ above: `matrix[row][col] + min(dp[row-1][col-1 .. col+1])`, clamped to the
 columns that exist at the edges. Every falling path ends somewhere in the
 last row, so the answer is the minimum entry of the last `dp` row.
 
+![Rolling dp over [[2,1,3],[6,5,4],[7,8,9]]: each cell adds its value to the cheapest of its parents above, and the accent path 1 → 4 → 8 ends at the answer 13.](figures/solution-rolling-row-dp.svg)
+
 Since filling one row reads only the row just above it, a single rolling
 array is enough. Seed it with the first row, sweep downward computing each
 new row from the previous one, and take the minimum of what remains — no

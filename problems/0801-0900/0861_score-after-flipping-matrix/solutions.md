@@ -22,6 +22,10 @@ row toggles are already spent — so each column independently contributes
 nothing, and the maximum is still taken. No flip is ever applied; the best
 count is simply added.
 
+![On `grid = [[0,0,1,1],[1,0,1,0],[1,1,0,0]]`, the two stages: row 0 (the
+only leading `0`) toggled, then columns 2 and 3 (more 0s than 1s) toggled,
+leaving rows that read 15, 9, and 15 for a score of 39.](figures/solution-greedy-two-stage-flips.svg)
+
 The head pass never needs to touch the matrix either. Row `i` was toggled
 exactly when its head was `0`, so afterwards cell `(i, j)` holds `1` exactly
 when `grid[i][j]` originally agreed with `grid[i][0]` — agreeing with a `1`

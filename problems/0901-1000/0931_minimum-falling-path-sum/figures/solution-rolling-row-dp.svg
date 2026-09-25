@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- matrix = [[2,1,3],[6,5,4],[7,8,9]]; dp rows [2,1,3] [7,6,5] [13,13,14]; cells 84x50 at (150,64), row pitch 84 -->
+  <text x="276" y="52" text-anchor="middle" fill="#5c6b76" font-size="12">matrix value · dp = best sum ending here</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="150" y="64" width="84" height="50" fill="#ffffff"/>
+    <rect x="234" y="64" width="84" height="50" fill="#dbe4fb"/>
+    <rect x="318" y="64" width="84" height="50" fill="#ffffff"/>
+    <rect x="150" y="148" width="84" height="50" fill="#ffffff"/>
+    <rect x="234" y="148" width="84" height="50" fill="#ffffff"/>
+    <rect x="318" y="148" width="84" height="50" fill="#dbe4fb"/>
+    <rect x="150" y="232" width="84" height="50" fill="#ffffff"/>
+    <rect x="234" y="232" width="84" height="50" fill="#dbe4fb"/>
+    <rect x="318" y="232" width="84" height="50" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="192" y="86">2</text><text x="276" y="86">1</text><text x="360" y="86">3</text>
+    <text x="192" y="170">6</text><text x="276" y="170">5</text><text x="360" y="170">4</text>
+    <text x="192" y="254">7</text><text x="276" y="254">8</text><text x="360" y="254">9</text>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="192" y="106" fill="#5c6b76">dp 2</text>
+    <text x="276" y="106" fill="#5c6b76">dp <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="360" y="106" fill="#5c6b76">dp 3</text>
+    <text x="192" y="190" fill="#5c6b76">dp 7</text>
+    <text x="276" y="190" fill="#5c6b76">dp 6</text>
+    <text x="360" y="190" fill="#5c6b76">dp <tspan fill="#4169E1" font-weight="600">5</tspan></text>
+    <text x="192" y="274" fill="#5c6b76">dp 13</text>
+    <text x="276" y="274" fill="#5c6b76">dp <tspan fill="#4169E1" font-weight="600">13</tspan></text>
+    <text x="360" y="274" fill="#5c6b76">dp 14</text>
+  </g>
+  <!-- accent arrows: the cheapest parent each path cell took -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 276 118 L 350 143" marker-end="url(#arrow)"/>
+    <path d="M 354 202 L 286 228" marker-end="url(#arrow)"/>
+  </g>
+  <rect x="430" y="80" width="14" height="14" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+  <text x="452" y="91" fill="#5c6b76" font-size="12.5">dp path 1 → 4 → 8</text>
+  <text x="430" y="160" fill="#5c6b76" font-size="12.5">last dp row: 13, 13, 14</text>
+  <text x="430" y="184" fill="#4169E1" font-size="15" font-weight="600">answer = 13</text>
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">Each cell adds its value to the cheapest of its parents above (8 + min(7, 6, 5) = 13);</text>
+  <text x="320" y="334" text-anchor="middle" fill="#1a2026" font-size="13">the accent path 1 → 4 → 8 builds dp 1 → 5 → 13, and min(13, 13, 14) = <tspan fill="#4169E1" font-weight="600">13</tspan> wins.</text>
+</svg>

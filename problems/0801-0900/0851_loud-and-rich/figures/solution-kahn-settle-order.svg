@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- richer [[1,0],[2,1],[3,1],[3,7],[4,3],[5,3],[6,3]], quiet [3,2,5,4,6,1,7,0]; settle order 2,4,5,6,3,1,7,0 = badge numbers; blue = person 5's answer flowing to 3, 1, 0 -->
+  <text x="340" y="20" text-anchor="middle" fill="#5c6b76" font-size="11.5">edge a → b: a richer than b — a node settles when all its richer neighbors relaxed</text>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="none">
+    <path d="M 86 51 L 412 79" marker-end="url(#arrow)"/>
+    <path d="M 86 113 L 232 137" marker-end="url(#arrow)"/>
+    <path d="M 86 223 L 234 148" marker-end="url(#arrow)"/>
+    <path d="M 265 146 L 413 204" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2.2" fill="none">
+    <path d="M 86 167 L 232 143" marker-end="url(#arrowB)"/>
+    <path d="M 265 135 L 413 86" marker-end="url(#arrowB)"/>
+    <path d="M 446 80 L 582 80" marker-end="url(#arrowB)"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="70" cy="50" r="16"/><circle cx="70" cy="110" r="16"/>
+    <circle cx="70" cy="230" r="16"/>
+    <circle cx="430" cy="210" r="16"/>
+  </g>
+  <circle cx="250" cy="140" r="16" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.2"/>
+  <circle cx="70" cy="170" r="16" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.2"/>
+  <circle cx="430" cy="80" r="16" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.2"/>
+  <circle cx="600" cy="80" r="16" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.2"/>
+  <g text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">
+    <text x="70" y="55">2</text><text x="70" y="115">4</text><text x="70" y="175">5</text>
+    <text x="70" y="235">6</text><text x="250" y="145">3</text><text x="430" y="85">1</text>
+    <text x="430" y="215">7</text><text x="600" y="85">0</text>
+  </g>
+  <!-- settle-order badges -->
+  <g fill="#4169E1">
+    <circle cx="90" cy="30" r="9"/><circle cx="90" cy="90" r="9"/><circle cx="90" cy="150" r="9"/>
+    <circle cx="90" cy="210" r="9"/><circle cx="270" cy="120" r="9"/><circle cx="450" cy="60" r="9"/>
+    <circle cx="450" cy="190" r="9"/><circle cx="620" cy="60" r="9"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-size="10" font-weight="600">
+    <text x="90" y="34">1</text><text x="90" y="94">2</text><text x="90" y="154">3</text>
+    <text x="90" y="214">4</text><text x="270" y="124">5</text><text x="450" y="64">6</text>
+    <text x="450" y="194">7</text><text x="620" y="64">8</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="70" y="82">q = 5 · ans = 2</text>
+    <text x="70" y="142">q = 6 · ans = 4</text>
+    <text x="70" y="202">q = 1 · <tspan fill="#4169E1" font-weight="600">ans = 5</tspan></text>
+    <text x="70" y="262">q = 7 · ans = 6</text>
+    <text x="250" y="172">q = 4 · <tspan fill="#4169E1" font-weight="600">ans = 5</tspan></text>
+    <text x="430" y="112">q = 2 · <tspan fill="#4169E1" font-weight="600">ans = 5</tspan></text>
+    <text x="430" y="242">q = 0 · ans = 7</text>
+    <text x="600" y="112">q = 3 · <tspan fill="#4169E1" font-weight="600">ans = 5</tspan></text>
+  </g>
+  <text x="320" y="215" text-anchor="middle" fill="#9aa7b2" font-size="11.5">into 7: quiet 1 vs 0 — keep 7</text>
+  <text x="340" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Kahn settles the sources 2, 4, 5, 6 first, then 3, 1, 7, 0 — richest side first.</text>
+  <text x="340" y="320" text-anchor="middle" fill="#1a2026" font-size="13">Person 5 (quiet 1) flows down the blue edges: answer[3] = answer[1] = answer[0] = <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- start = RXXLRXRXL, result = XRLXXRRLX; cells 40x34, origins x = 140 + 40i;
+       letters ranked 0..4 pair up: R 0->1, L 3->2, R 4->5, R 6->6, L 8->7;
+       accent arrows = R moving right, dark arrows = L moving left -->
+  <text x="320" y="30" text-anchor="middle" fill="#5c6b76" font-size="12">rank r of start pairs with rank r of result; R may only move right, L only left</text>
+  <text x="100" y="77" text-anchor="middle" fill="#5c6b76" font-size="12.5">start</text>
+  <text x="100" y="231" text-anchor="middle" fill="#5c6b76" font-size="12.5">result</text>
+  <!-- start row: X cells white, letter cells light accent -->
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="180" y="56" width="40" height="34"/><rect x="220" y="56" width="40" height="34"/>
+    <rect x="340" y="56" width="40" height="34"/><rect x="420" y="56" width="40" height="34"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.4" fill="#dbe4fb">
+    <rect x="140" y="56" width="40" height="34"/><rect x="260" y="56" width="40" height="34"/>
+    <rect x="300" y="56" width="40" height="34"/><rect x="380" y="56" width="40" height="34"/><rect x="460" y="56" width="40" height="34"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="160" y="77" fill="#1a2026" font-weight="600">R</text><text x="200" y="77" fill="#9aa7b2">X</text><text x="240" y="77" fill="#9aa7b2">X</text>
+    <text x="280" y="77" fill="#1a2026" font-weight="600">L</text><text x="320" y="77" fill="#1a2026" font-weight="600">R</text><text x="360" y="77" fill="#9aa7b2">X</text>
+    <text x="400" y="77" fill="#1a2026" font-weight="600">R</text><text x="440" y="77" fill="#9aa7b2">X</text><text x="480" y="77" fill="#1a2026" font-weight="600">L</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="160" y="48">0</text><text x="280" y="48">3</text><text x="320" y="48">4</text><text x="400" y="48">6</text><text x="480" y="48">8</text>
+  </g>
+  <!-- rank arrows -->
+  <g fill="none" stroke-width="2">
+    <path d="M 160 94 L 200 204" stroke="#4169E1" marker-end="url(#arrowR)"/>
+    <path d="M 280 94 L 240 204" stroke="#42525e" marker-end="url(#arrowG)"/>
+    <path d="M 320 94 L 360 204" stroke="#4169E1" marker-end="url(#arrowR)"/>
+    <path d="M 400 94 L 400 204" stroke="#4169E1" marker-end="url(#arrowR)"/>
+    <path d="M 480 94 L 440 204" stroke="#42525e" marker-end="url(#arrowG)"/>
+  </g>
+  <!-- result row -->
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="140" y="210" width="40" height="34"/><rect x="260" y="210" width="40" height="34"/>
+    <rect x="300" y="210" width="40" height="34"/><rect x="460" y="210" width="40" height="34"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.4" fill="#dbe4fb">
+    <rect x="180" y="210" width="40" height="34"/><rect x="220" y="210" width="40" height="34"/>
+    <rect x="340" y="210" width="40" height="34"/><rect x="380" y="210" width="40" height="34"/><rect x="420" y="210" width="40" height="34"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="160" y="231" fill="#9aa7b2">X</text><text x="200" y="231" fill="#1a2026" font-weight="600">R</text><text x="240" y="231" fill="#1a2026" font-weight="600">L</text>
+    <text x="280" y="231" fill="#9aa7b2">X</text><text x="320" y="231" fill="#9aa7b2">X</text><text x="360" y="231" fill="#1a2026" font-weight="600">R</text>
+    <text x="400" y="231" fill="#1a2026" font-weight="600">R</text><text x="440" y="231" fill="#1a2026" font-weight="600">L</text><text x="480" y="231" fill="#9aa7b2">X</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="200" y="262">1</text><text x="240" y="262">2</text><text x="360" y="262">5</text><text x="400" y="262">6</text><text x="440" y="262">7</text>
+  </g>
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">Pair by rank: R at 0→1, 4→5, 6→6 only moves right; L at 3→2, 8→7 only moves left —</text>
+  <text x="320" y="314" text-anchor="middle" fill="#1a2026" font-size="13">kinds agree and <tspan fill="#4169E1" font-weight="600">no pair crosses</tspan>, so the transform is reachable.</text>
+</svg>

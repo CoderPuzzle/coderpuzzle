@@ -25,6 +25,8 @@ splices the missing bucket `1 = {leet}` in before it, so `getMaxKey` reads
 bucket 2 and answers `"hello"` while `getMinKey` reads bucket 1 and answers
 `"leet"` — no scan of the counts was needed anywhere.
 
+![After two inc("hello") calls the list holds the single bucket 2 = {hello}; inc("leet") splices bucket 1 = {leet} in directly before it, and the extremes read off the end buckets: getMinKey "leet", getMaxKey "hello".](figures/solution-bucket-list-splice.svg)
+
 **Complexity:** `inc`/`dec` run in `O(1)` average time (a hash lookup plus a
 constant number of list splices); `getMaxKey`/`getMinKey` scan their bucket
 for the pinned key in `O(k)`, where `k` is the number of keys tied at the

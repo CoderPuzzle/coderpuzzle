@@ -15,6 +15,8 @@ exactly what a difference array turns into totals: mark `+1` at each range's
 start, `-1` just past its end, then one prefix pass reads off the score of
 every rotation at once.
 
+![For nums = [2,3,1,4,0] the elements' scoring ranges stack into the diff row [2,1,0,1,-1,-3], whose prefix sums give per-k scores 2,3,3,4,3 with the first maximum 4 at k = 3.](figures/solution-score-ranges-diff.svg)
+
 The marks need `n + 1` slots because a range can end at `k = n - 1`, whose
 closing `-1` lands at index `n`; and the second range of the `v <= i` branch
 starts at `i + 1` only when `i + 1 < n`. The constraints promise

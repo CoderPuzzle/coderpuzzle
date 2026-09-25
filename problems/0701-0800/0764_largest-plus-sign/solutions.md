@@ -17,6 +17,10 @@ same from their sides. After the four sweeps `dp[i][j]` is capped by all four
 arm lengths, which is precisely the order of the largest plus centered at
 `(i, j)` — and a mined cell stays `0`, because every counter restarts at it.
 
+![With n = 5 and the mine at (4,2), the four sweeps leave each cell holding the minimum of
+its four arm runs — center (1,2) computes min(3, 3, 2, 3) = 2, and the largest entry in the
+grid is the order-2 plus sign, so the answer is 2.](figures/solution-four-sweep-run-min.svg)
+
 Each sweep reads and writes each cell once, so the four passes together do
 `O(n²)` work over one `n x n` grid; the answer is the maximum entry.
 

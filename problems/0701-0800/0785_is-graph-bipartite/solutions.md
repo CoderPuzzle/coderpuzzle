@@ -20,6 +20,10 @@ Bipartite means the nodes split into two groups with every edge crossing between
 
 Then verify the other half of the definition: scan every edge (u, v) and check that u and v landed in different sets. A node that shares a set with one of its own enemies sits inside an odd cycle, the sole obstruction to bipartiteness, so any `find(u) == find(v)` returns false; if no edge fails, the sets of each component are the required two groups.
 
+![Unioning each node's neighbors in the Example 1 graph merges 1, 2, 3 into one set and then
+pulls 0 in, leaving all four nodes in a single set; the first scanned edge 0-1 then joins two
+same-set endpoints, and the odd cycle 0-1-2 makes the graph not bipartite.](figures/solution-union-neighbors-one-set.svg)
+
 `find` locates a node's root and then walks the path a second time to repoint every visited node straight at it (path compression), so repeated queries flatten the structure and future finds shorten.
 
 **Complexity:** `O((V + E)·log V)` time — each of the `O(V + E)` find/union calls is logarithmic amortized, effectively near-linear — and `O(V)` space for the parent array.

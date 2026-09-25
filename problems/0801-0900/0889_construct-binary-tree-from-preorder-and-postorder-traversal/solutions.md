@@ -13,6 +13,11 @@ the position. A hash from value to postorder index makes that measurement an
 `O(1)` lookup; the values are unique, so a hit names one position with no
 ambiguity.
 
+![With preorder [1, 2, 4, 5, 3, 6, 7] and postorder [4, 5, 2, 6, 7, 3, 1],
+each segment's next root is located in postorder — 2 sits at index 2,
+splitting root 1's range into sizes 3 and 3 — and the spans rebuild
+1(2(4, 5), 3(6, 7)).](figures/solution-postorder-index-split.svg)
+
 The measured size splits the remaining preorder range into a left part and
 a right part, and the same argument rebuilds each. The split also settles
 the statement's determinism rule with no extra branch at all: when a node

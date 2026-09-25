@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 406" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="406" fill="#ffffff"/>
+  <!-- nums = [2,3,1,4,0]; k columns 88px from x=150; bars = each element's scoring ranges; diff row [2,1,0,1,-1,-3]; prefix scores [2,3,3,4,3] -->
+  <!-- k header -->
+  <text x="140" y="54" text-anchor="end" fill="#5c6b76" font-size="12.5">k</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="13">
+    <text x="194" y="54">0</text><text x="282" y="54">1</text><text x="370" y="54">2</text>
+    <text x="458" y="54">3</text><text x="546" y="54">4</text><text x="634" y="54" fill="#9aa7b2">n</text>
+  </g>
+  <!-- column guides -->
+  <g stroke="#dbe4fb" stroke-width="1">
+    <line x1="150" y1="62" x2="150" y2="246"/><line x1="238" y1="62" x2="238" y2="246"/>
+    <line x1="326" y1="62" x2="326" y2="246"/><line x1="414" y1="62" x2="414" y2="246"/>
+    <line x1="502" y1="62" x2="502" y2="246"/><line x1="590" y1="62" x2="590" y2="246"/>
+  </g>
+  <!-- scoring-range bars, one row per element -->
+  <g fill="#5c6b76" font-size="12" text-anchor="end">
+    <text x="140" y="78.5">v=2, i=0</text>
+    <text x="140" y="112.5">v=3, i=1</text>
+    <text x="140" y="146.5">v=1, i=2</text>
+    <text x="140" y="180.5">v=4, i=3</text>
+    <text x="140" y="214.5">v=0, i=4</text>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1">
+    <rect x="238" y="66" width="264" height="16" rx="3"/>
+    <rect x="326" y="100" width="176" height="16" rx="3"/>
+    <rect x="150" y="134" width="176" height="16" rx="3"/>
+    <rect x="414" y="134" width="176" height="16" rx="3"/>
+    <rect x="502" y="168" width="88" height="16" rx="3"/>
+    <rect x="150" y="202" width="440" height="16" rx="3"/>
+  </g>
+  <text x="370" y="146.5" text-anchor="middle" fill="#9aa7b2" font-size="11.5">wrap</text>
+  <!-- difference array -->
+  <text x="140" y="271" text-anchor="end" fill="#5c6b76" font-size="12.5">diff</text>
+  <g stroke="#42525e" stroke-width="1" fill="#ffffff">
+    <rect x="150" y="252" width="88" height="30"/><rect x="238" y="252" width="88" height="30"/>
+    <rect x="326" y="252" width="88" height="30"/><rect x="414" y="252" width="88" height="30"/>
+    <rect x="502" y="252" width="88" height="30"/><rect x="590" y="252" width="88" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="194" y="271.5" fill="#1a2026">2</text><text x="282" y="271.5" fill="#1a2026">1</text>
+    <text x="370" y="271.5" fill="#1a2026">0</text><text x="458" y="271.5" fill="#1a2026">1</text>
+    <text x="546" y="271.5" fill="#5c6b76">-1</text><text x="634" y="271.5" fill="#5c6b76">-3</text>
+  </g>
+  <!-- prefix-sum scores -->
+  <text x="140" y="335" text-anchor="end" fill="#5c6b76" font-size="12.5">score</text>
+  <g stroke="#42525e" stroke-width="1" fill="#ffffff">
+    <rect x="150" y="316" width="88" height="30"/><rect x="238" y="316" width="88" height="30"/>
+    <rect x="326" y="316" width="88" height="30"/>
+    <rect x="502" y="316" width="88" height="30"/>
+  </g>
+  <rect x="414" y="316" width="88" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="194" y="335.5" fill="#1a2026">2</text><text x="282" y="335.5" fill="#1a2026">3</text>
+    <text x="370" y="335.5" fill="#1a2026">3</text><text x="458" y="335.5" fill="#4169E1">4</text>
+    <text x="546" y="335.5" fill="#1a2026">3</text>
+  </g>
+  <text x="340" y="372" text-anchor="middle" fill="#1a2026" font-size="13">Marking every element's scoring ranges gives diff row [2, 1, 0, 1, -1, -3], whose</text>
+  <text x="340" y="390" text-anchor="middle" fill="#1a2026" font-size="13">prefix sums are scores 2, 3, 3, 4, 3 &#8212; the first <tspan fill="#4169E1" font-weight="600">4</tspan> appears at <tspan fill="#4169E1" font-weight="600">k = 3</tspan>.</text>
+</svg>

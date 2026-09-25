@@ -20,6 +20,8 @@ looks across at unvisited land, that land can only be island 2, and the
 count so far is the answer. Marking a cell when it enters the frontier, not
 when it leaves, is the detail that keeps every cell enqueued at most once.
 
+![Flooding [[0,1,0],[0,0,0],[0,0,1]]: island 1 at (0,1) seeds the BFS, whose layers cross one and then two water cells before (1,2) looks across at island 2 at (2,2), so the answer is 2 flips.](figures/solution-bfs-layers.svg)
+
 The queue, not recursion, is the load-bearing choice in both phases. A
 recursive fill walks the island as a call chain, and nothing in the
 constraints bounds that chain's length: an island one cell wide can snake

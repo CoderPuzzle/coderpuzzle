@@ -19,6 +19,11 @@ choice. Infinite supply means a sticker may be spent on many consecutive
 layers — reuse is exactly that repetition, which is how a single `a`
 sticker spells a 15-letter run one copy at a time.
 
+![For stickers ["with", "example", "science"] and target "thehat", the BFS
+layers walk the 6-bit spelled masks — "with" covers t, h at 0, 1, a second
+"with" the remaining t, h, then "example" the e, a — so the full mask 111111
+is first reached at depth 3.](figures/solution-bfs-spelled-mask-layers.svg)
+
 The search can only stall when some target letter appears on no sticker at
 all: then the full mask is unreachable and the answer is `-1`, checked up
 front so impossible inputs cost no search. Otherwise every spent sticker

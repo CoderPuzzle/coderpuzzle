@@ -26,6 +26,11 @@ statement asks for: `k = 0` leaves the frontier as the target itself, and a
 the empty array. Every node enters the frontier at most once because the
 tree has a unique path between any two nodes.
 
+![On `root = [3,5,1,6,2,0,8,null,null,7,4]` with target 5, the dashed arrows
+are the parent links pass 1 records, and the BFS rings spread from the target:
+ring 1 takes parent 3 and children 6, 2, and ring 2 shades the frontier
+7, 4, and 1 — sorted, the answer [1,4,7].](figures/solution-parent-link-rings.svg)
+
 Collecting the frontier's values and sorting them ascending settles the
 output pin. Both passes touch each node and edge a constant number of
 times, so the walk is linear; only the final sort adds a logarithmic factor,

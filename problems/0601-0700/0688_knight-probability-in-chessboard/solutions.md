@@ -13,6 +13,10 @@ parts addressed off the board are exactly the walks that stop early, so
 they are simply dropped. After `k` such steps the answer is the total mass
 left on the board.
 
+![With n = 3, k = 2 from (0, 0), the probability-mass board holds 2/8 after
+the first move — 1/8 each on (1, 2) and (2, 1) — and drains to 4/64 = 0.25 ×
+0.25 = 0.0625 after the second.](figures/solution-probability-mass-drain.svg)
+
 Each step is one sweep: for every cell in row-major order, gather the eight
 incoming contributions in a fixed move order, dividing each term by `8.0`
 as it is added, and write the sum to the next board. That discipline is not

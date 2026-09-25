@@ -20,6 +20,8 @@ Zeros need no special casing: a single zero makes every prefix-then-suffix produ
 
 The same identity, compressed. The first pass, left to right, stores the running left product into `answer[i]` _before_ multiplying `nums[i]` in, so `answer[i]` ends up holding exactly the product of the prefix preceding `i`. The second pass, right to left, multiplies each `answer[i]` by a running right product that similarly lags one position behind, then absorbs `nums[i]`. After the two sweeps each cell holds prefix × suffix, which is the desired value.
 
+![On Example 1's nums [1, 2, 3, 4], the left pass leaves the prefix products [1, 1, 2, 6] in answer and the right pass multiplies in the running suffix products 24, 12, 4, 1, landing on [24, 12, 8, 6].](figures/solution-rolling-two-sweeps.svg)
+
 The trick is that the intermediate prefix array is never needed all at once — each cell consumes the running product the moment it is produced, so a single scalar accumulator replaces the whole `pre` array, and a second scalar replaces `suf`. Apart from the output array (which by convention does not count), the only state is two integer accumulators, meeting the `O(1)` extra-space follow-up.
 
 Zeros behave exactly as in the explicit-array version: a lone zero makes every cell zero except its own, where the two sweeps multiply the non-zero elements around it, and multiple zeros zero everything — all automatic, still without division.

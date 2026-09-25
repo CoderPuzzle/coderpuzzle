@@ -23,6 +23,11 @@ on the middle, mixing the smaller left flank into the smaller middle would
 yield an optimal triple that is lexicographically smaller still — so the
 global minimum always sits at the minimal middle, which the sweep keeps.
 
+![With nums = [1, 2, 1, 2, 6, 7, 5, 1] and k = 2, the window sums are [3, 3,
+3, 8, 13, 12, 6], and the sweep's middle j = 3 pairs window 8 with the best
+flanks left[1] = 0 and right[5] = 5, totaling 3 + 8 + 12 = 23 for the answer
+[0, 3, 5].](figures/solution-left-right-flank-sweep.svg)
+
 All sums stay exact in 32-bit arithmetic in the fixed-width ports: a window
 holds at most `6666 * 65535 < 2³¹` and the winning triple at most about
 `1.31 * 10⁹ < 2³¹ - 1`; the JavaScript ports hold every value exactly as a

@@ -19,6 +19,8 @@ are exactly the names containing a dot, and each of those candidates updates
 the maximum. When the input holds no dotted name at all, the maximum stays
 at `0`.
 
+![On example 2 the slots carry 3, 11, 22, 32 as same-depth siblings overwrite their slot, and the dotted names lift the max from 21 to 22 + 1 + 9 = 32.](figures/solution-depth-slot-overwrite.svg)
+
 Splitting on `'\n'` and counting leading `'\t'` visits each character a
 constant number of times, and the array never grows past the deepest chain in
 the system.

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 268" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="268" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- name = "alex", typed = "aaleex"; name cells 52x36 at (150, 78), typed cells at (190, 126), pitch 52; dark arrows = match moves (i and j advance), accent cells = long presses (only j advances); dashed b shows the reject rule -->
+  <text x="138" y="100" text-anchor="end" fill="#5c6b76" font-size="12.5">name (i)</text>
+  <text x="138" y="148" text-anchor="end" fill="#5c6b76" font-size="12.5">typed (j)</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="150" y="78" width="52" height="36"/><rect x="202" y="78" width="52" height="36"/>
+    <rect x="254" y="78" width="52" height="36"/><rect x="306" y="78" width="52" height="36"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="176" y="101">a</text><text x="228" y="101">l</text><text x="280" y="101">e</text><text x="332" y="101">x</text>
+  </g>
+  <!-- match arrows from each wanted letter to the first cell of its typed run -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 176 116 L 211 122.5" marker-end="url(#arrow)"/>
+    <path d="M 228 116 L 314 122.5" marker-end="url(#arrow)"/>
+    <path d="M 280 116 L 366 122.5" marker-end="url(#arrow)"/>
+    <path d="M 332 116 L 470 122.5" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="190" y="126" width="52" height="36" fill="#ffffff"/>
+    <rect x="242" y="126" width="52" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="294" y="126" width="52" height="36" fill="#ffffff"/>
+    <rect x="346" y="126" width="52" height="36" fill="#ffffff"/>
+    <rect x="398" y="126" width="52" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="450" y="126" width="52" height="36" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="216" y="149">a</text><text x="268" y="149">a</text><text x="320" y="149">l</text>
+    <text x="372" y="149">e</text><text x="424" y="149">e</text><text x="476" y="149">x</text>
+  </g>
+  <!-- run brackets; x 2 marks the long presses -->
+  <g fill="none" stroke="#5c6b76" stroke-width="1.4">
+    <path d="M 190 170 Q 190 178 198 178 L 286 178 Q 294 178 294 170"/>
+    <path d="M 294 170 Q 294 178 302 178 L 338 178 Q 346 178 346 170"/>
+    <path d="M 346 170 Q 346 178 354 178 L 442 178 Q 450 178 450 170"/>
+    <path d="M 450 170 Q 450 178 458 178 L 494 178 Q 502 178 502 170"/>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="242" y="196" fill="#1a2026">"aa" = a <tspan fill="#4169E1" font-weight="600">× 2</tspan></text>
+    <text x="320" y="196" fill="#5c6b76">l × 1</text>
+    <text x="398" y="196" fill="#1a2026">"ee" = e <tspan fill="#4169E1" font-weight="600">× 2</tspan></text>
+    <text x="476" y="196" fill="#5c6b76">x × 1</text>
+  </g>
+  <!-- a stray letter that neither matches nor repeats -->
+  <rect x="508" y="126" width="48" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="532" y="149" text-anchor="middle" fill="#9aa7b2">b</text>
+  <text x="532" y="196" text-anchor="middle" fill="#9aa7b2" font-size="12">reject</text>
+  <text x="320" y="230" text-anchor="middle" fill="#1a2026" font-size="13">"aa" and "ee" are long presses of a and e — each run starts with the next wanted letter,</text>
+  <text x="320" y="250" text-anchor="middle" fill="#1a2026" font-size="13">so the scan returns true; a letter that neither matches nor repeats (the b) would fail.</text>
+</svg>

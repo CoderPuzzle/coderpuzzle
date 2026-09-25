@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- grid [[1,1,0,0,0],[1,1,0,0,0],[0,0,0,1,1],[0,0,0,1,1]]; cells 34px at (48,64), cell (r,c) center = (48+34c+17, 64+34r+17); island A rows 0-1 cols 0-1, anchor (0,0) ringed; island B rows 2-3 cols 3-4, anchor (2,3) ringed; both subtract the anchor and re-seat to the offsets (0,0) (0,1) (1,0) (1,1) -->
+  <g fill="#9aa7b2" font-size="10.5" text-anchor="middle">
+    <text x="65" y="56">0</text><text x="99" y="56">1</text><text x="133" y="56">2</text><text x="167" y="56">3</text><text x="201" y="56">4</text>
+    <text x="38" y="85">0</text><text x="38" y="119">1</text><text x="38" y="153">2</text><text x="38" y="187">3</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="48" y="64" width="34" height="34" fill="#dbe4fb"/><rect x="82" y="64" width="34" height="34" fill="#dbe4fb"/><rect x="116" y="64" width="34" height="34" fill="#ffffff"/><rect x="150" y="64" width="34" height="34" fill="#ffffff"/><rect x="184" y="64" width="34" height="34" fill="#ffffff"/>
+    <rect x="48" y="98" width="34" height="34" fill="#dbe4fb"/><rect x="82" y="98" width="34" height="34" fill="#dbe4fb"/><rect x="116" y="98" width="34" height="34" fill="#ffffff"/><rect x="150" y="98" width="34" height="34" fill="#ffffff"/><rect x="184" y="98" width="34" height="34" fill="#ffffff"/>
+    <rect x="48" y="132" width="34" height="34" fill="#ffffff"/><rect x="82" y="132" width="34" height="34" fill="#ffffff"/><rect x="116" y="132" width="34" height="34" fill="#ffffff"/><rect x="150" y="132" width="34" height="34" fill="#dbe4fb"/><rect x="184" y="132" width="34" height="34" fill="#dbe4fb"/>
+    <rect x="48" y="166" width="34" height="34" fill="#ffffff"/><rect x="82" y="166" width="34" height="34" fill="#ffffff"/><rect x="116" y="166" width="34" height="34" fill="#ffffff"/><rect x="150" y="166" width="34" height="34" fill="#dbe4fb"/><rect x="184" y="166" width="34" height="34" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="65" y="85">1</text><text x="99" y="85">1</text>
+    <text x="65" y="119">1</text><text x="99" y="119">1</text>
+    <text x="167" y="153">1</text><text x="201" y="153">1</text>
+    <text x="167" y="187">1</text><text x="201" y="187">1</text>
+  </g>
+  <circle cx="65" cy="80" r="7" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="167" cy="148" r="7" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="82" y="220" text-anchor="middle" font-weight="600" font-size="11.5" fill="#4169E1">island A</text>
+  <text x="184" y="220" text-anchor="middle" font-weight="600" font-size="11.5" fill="#4169E1">island B</text>
+  <path d="M 122 88 Q 190 78 262 94" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="244" y="60" fill="#4169E1" font-size="11.5" font-weight="600">− anchor (0,0)</text>
+  <path d="M 224 186 Q 252 178 266 144" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="268" y="178" fill="#4169E1" font-size="11.5" font-weight="600">− anchor (2,3)</text>
+  <text x="338" y="76" fill="#5c6b76" font-size="12">re-seated at the origin</text>
+  <g stroke="#42525e" stroke-width="1.2" fill="#dbe4fb">
+    <rect x="270" y="84" width="30" height="30"/><rect x="300" y="84" width="30" height="30"/>
+    <rect x="270" y="114" width="30" height="30"/><rect x="300" y="114" width="30" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="9.5" fill="#1a2026">
+    <text x="285" y="102">(0,0)</text><text x="315" y="102">(0,1)</text>
+    <text x="285" y="132">(1,0)</text><text x="315" y="132">(1,1)</text>
+  </g>
+  <rect x="240" y="192" width="260" height="32" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="370" y="213" text-anchor="middle" fill="#1a2026" font-size="12.5">sorted offsets (0,0) (0,1) (1,0) (1,1)</text>
+  <path d="M 370 228 L 370 242" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrowg)"/>
+  <text x="240" y="244" fill="#9aa7b2" font-size="11">hash set</text>
+  <rect x="240" y="250" width="260" height="36" rx="4" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="370" y="273" text-anchor="middle" fill="#1a2026" font-size="12.5">{ (0,0) (0,1) (1,0) (1,1) }</text>
+  <path d="M 504 268 L 514 268" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="522" y="273" fill="#4169E1" font-size="15" font-weight="600">count = 1</text>
+  <text x="330" y="310" text-anchor="middle" fill="#1a2026" font-size="13">Both 2x2 islands subtract their anchor — (0,0) and (2,3) — and leave the same sorted</text>
+  <text x="330" y="328" text-anchor="middle" fill="#1a2026" font-size="13">offset signature (0,0) (0,1) (1,0) (1,1), so the hash set counts <tspan fill="#4169E1" font-weight="600">1</tspan> distinct island.</text>
+</svg>

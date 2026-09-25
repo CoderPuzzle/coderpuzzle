@@ -14,6 +14,8 @@ Tracing Example 2, `s = "3[a2[c]]"`, shows the frames at work:
 4. `c` builds `current = "c"`; the first `]` pops `("a", 2)` and sets `current = "a" + "c" * 2 = "acc"`.
 5. The final `]` pops `("", 3)` and sets `current = "" + "acc" * 3 = "accaccacc"` — the decoded output.
 
+![On `s = "3[a2[c]]"` the stack pushes `("", 3)` then `("a", 2)`, and the two pops rebuild `current` into `"acc"`, then `"accaccacc"`.](figures/solution-frame-stack-pops.svg)
+
 Nothing is ever discarded — each frame's segment is absorbed wholesale into its parent — so the total character-copies performed are bounded by the decoded length times the nesting depth, which the input's small size (at most 30 characters) keeps shallow. Edge cases are guaranteed away by the problem statement (well-formed brackets, no bare digits or stray letters outside groups), so the loop needs no error handling.
 
 **Complexity:** `O(n + m)` time (where `n` is the input length and `m` the decoded output length), `O(n + m)` space.

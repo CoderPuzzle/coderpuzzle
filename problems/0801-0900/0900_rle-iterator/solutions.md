@@ -15,6 +15,11 @@ from that run's count, and the run's value is the answer. Runs of length zero
 never stop the walk — a count of `0` is smaller than any `n` — so empty runs
 cost nothing but a cursor step.
 
+![For encoding [3, 8, 0, 9, 2, 5] the cursor drains 8's count 3 → 1 → 0,
+skips the 0-count 9-run, spends 5's count 2 → 1, and the calls return
+8, 8, 5, then -1 on the final
+underflow.](figures/solution-run-cursor-drain.svg)
+
 Amortization comes from the cursor only ever moving forward: every run is
 stepped past at most once over the object's whole lifetime, so a thousand
 calls together traverse the thousand-slot encoding a single time, and each

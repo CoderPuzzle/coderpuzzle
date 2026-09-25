@@ -19,6 +19,10 @@ only ever moves left, so its index in `result` may not exceed its index in
 If one string runs out of letters while the other still has one, the letter
 counts differ and the pairing fails the same way.
 
+![Pairing the letters of start and result by rank, each R moves right (0 to 1, 4 to 5, 6 to
+6) and each L moves left (3 to 2, 8 to 7); kinds agree pair by pair and no two letters cross,
+so the transform is reachable.](figures/solution-skeleton-two-pointers.svg)
+
 These two conditions are also sufficient: any pair that satisfies them can
 be realized by walking each letter across the X's separating it from its
 target, taking the R's right-to-left and the L's left-to-right so no letter

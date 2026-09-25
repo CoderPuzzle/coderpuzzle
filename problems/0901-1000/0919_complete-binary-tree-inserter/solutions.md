@@ -29,4 +29,6 @@ most once, so across all inserts the queue work amortizes to constant.
 `get_root()` just hands back the root stored at construction; the
 inserts attached children into the live tree, so it is always current.
 
+![Starting from [1, 2] the frontier queue is [1, 2]; insert(3) fills 1's right slot, returns 1, and leaves [2, 3], then insert(4) fills 2's left slot, returns 2, and leaves [2, 3, 4] with 2 still front holding its free right slot.](figures/solution-open-slot-frontier.svg)
+
 **Complexity:** `O(n)` build, `O(1)` amortized per insert time, `O(n)` space.

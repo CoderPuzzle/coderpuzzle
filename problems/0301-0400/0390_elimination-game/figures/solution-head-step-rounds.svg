@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 412" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="412" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- n = 9; chips 40x36 at x = 50 + 50*(k-1); strike = removed that round, accent fill = current head; rows y = 54, 148, 242 -->
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="50" y="44">round 1 — left to right: remove 1, 3, 5, 7, 9</text>
+    <text x="50" y="138">round 2 — right to left: remove 8, then 4</text>
+    <text x="50" y="232">round 3 — left to right: remove 2</text>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="505" y="76">9 left, step 1</text>
+    <text x="505" y="170">4 left</text>
+    <text x="505" y="264">2 left</text>
+  </g>
+  <!-- round 1 row: 1..9 -->
+  <g stroke-width="1.5">
+    <rect x="50" y="54" width="40" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="100" y="54" width="40" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="150" y="54" width="40" height="36" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="200" y="54" width="40" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="250" y="54" width="40" height="36" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="300" y="54" width="40" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="350" y="54" width="40" height="36" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="400" y="54" width="40" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="450" y="54" width="40" height="36" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-size="14.5">
+    <text x="70" y="77" font-weight="600">1</text><text x="120" y="77">2</text><text x="170" y="77" fill="#9aa7b2">3</text>
+    <text x="220" y="77">4</text><text x="270" y="77" fill="#9aa7b2">5</text><text x="320" y="77">6</text>
+    <text x="370" y="77" fill="#9aa7b2">7</text><text x="420" y="77">8</text><text x="470" y="77" fill="#9aa7b2">9</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.3">
+    <path d="M 57 72 H 83"/><path d="M 157 72 H 183"/><path d="M 257 72 H 283"/>
+    <path d="M 357 72 H 383"/><path d="M 457 72 H 483"/>
+  </g>
+  <text x="70" y="103" text-anchor="middle" fill="#4169E1" font-size="10" font-weight="600">head</text>
+  <path d="M 270 96 L 270 120" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="284" y="112" fill="#5c6b76" font-size="12">head 1 dies: head = 1 + 1 = 2, step doubles to 2</text>
+  <!-- round 2 row: 2,4,6,8 -->
+  <g stroke-width="1.5">
+    <rect x="100" y="148" width="40" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="200" y="148" width="40" height="36" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="300" y="148" width="40" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="400" y="148" width="40" height="36" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-size="14.5">
+    <text x="120" y="171" font-weight="600">2</text><text x="220" y="171" fill="#9aa7b2">4</text>
+    <text x="320" y="171">6</text><text x="420" y="171" fill="#9aa7b2">8</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.3">
+    <path d="M 207 166 H 233"/><path d="M 407 166 H 433"/>
+  </g>
+  <text x="120" y="197" text-anchor="middle" fill="#4169E1" font-size="10" font-weight="600">head</text>
+  <path d="M 270 190 L 270 214" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="284" y="206" fill="#5c6b76" font-size="12">right to left over an even 4 — head 2 survives, step 4</text>
+  <!-- round 3 row: 2,6 -->
+  <g stroke-width="1.5">
+    <rect x="100" y="242" width="40" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="300" y="242" width="40" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-size="14.5">
+    <text x="120" y="265" font-weight="600">2</text>
+    <text x="320" y="265" font-weight="600" fill="#4169E1">6</text>
+  </g>
+  <path d="M 107 260 H 133" stroke="#9aa7b2" stroke-width="1.3"/>
+  <text x="120" y="291" text-anchor="middle" fill="#4169E1" font-size="10" font-weight="600">head</text>
+  <path d="M 300 284 L 300 308" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="314" y="300" fill="#5c6b76" font-size="12">head = 2 + 4 = 6 — one number left</text>
+  <!-- answer -->
+  <text x="256" y="341" text-anchor="end" fill="#5c6b76" font-size="12.5">last number remaining:</text>
+  <rect x="270" y="316" width="60" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <text x="300" y="343" text-anchor="middle" fill="#4169E1" font-size="20" font-weight="600">6</text>
+  <text x="310" y="384" text-anchor="middle" fill="#1a2026" font-size="13">head <tspan fill="#4169E1" font-weight="600">1 → 2 → 2 → 6</tspan>, step 1 → 2 → 4, count 9 → 4 → 2 → 1 — each round doubles the step,</text>
+  <text x="310" y="402" text-anchor="middle" fill="#1a2026" font-size="13">and a right-to-left round spares the head only when the count is even. The survivor is <tspan fill="#4169E1" font-weight="600">6</tspan>.</text>
+</svg>

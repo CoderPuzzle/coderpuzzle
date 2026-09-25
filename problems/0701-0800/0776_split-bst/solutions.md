@@ -20,6 +20,10 @@ the walk falls off the tree, the collected path nodes form the right spine
 of the first tree and the left spine of the second; the two roots those
 spines hang from are the answer.
 
+![With target = 2 the walk visits 4, then 2, then 3: 2 threads onto the small spine, giving
+2 with child 1, while 4 and 3 build the large spine 4 with left child 3 and right subtree 6,
+5, 7 — exactly the expected pair of subtrees.](figures/solution-two-dangling-tails.svg)
+
 Both outputs are forced, never chosen. Each spine descends through strictly
 increasing values (first tree) or strictly decreasing ones (second tree), and
 every node hanging off a spine kept its original subtree, so both results are

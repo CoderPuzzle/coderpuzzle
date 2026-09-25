@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- encoding [3,8,0,9,2,5] = runs 8x3, 9x0, 5x2; count lines show the in-place drain 3->1->0 and 2->1; calls return 8, 8, 5, -1 -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="60" y="58" width="180" height="80"/>
+    <rect x="270" y="58" width="180" height="80"/>
+    <rect x="480" y="58" width="180" height="80"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="150" y="76">run 0</text><text x="360" y="76">run 1</text><text x="570" y="76">run 2</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="17" fill="#1a2026">
+    <text x="150" y="102">8 × 3</text><text x="360" y="102">9 × 0</text><text x="570" y="102">5 × 2</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">
+    <text x="150" y="126">count 3 → 1 → 0</text>
+    <text x="360" y="126" fill="#9aa7b2">count 0 — skipped</text>
+    <text x="570" y="126">count 2 → 1</text>
+  </g>
+  <!-- cursor sweeps forward only -->
+  <text x="368" y="164" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">the cursor advances run 0 → run 2 and never moves back</text>
+  <line x1="60" y1="180" x2="662" y2="180" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="62" y="200">starts on run 0</text>
+    <text x="660" y="200" text-anchor="end">ends past the last run</text>
+  </g>
+  <!-- the four calls -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="60" y="222" width="146" height="42"/><rect x="214" y="222" width="146" height="42"/>
+    <rect x="368" y="222" width="146" height="42"/><rect x="522" y="222" width="146" height="42"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="133" y="248" fill="#1a2026">next(2) → <tspan font-weight="700">8</tspan></text>
+    <text x="287" y="248" fill="#1a2026">next(1) → <tspan font-weight="700">8</tspan></text>
+    <text x="441" y="248" fill="#1a2026">next(1) → <tspan font-weight="700">5</tspan></text>
+    <text x="595" y="248" fill="#1a2026">next(2) → <tspan font-weight="700" fill="#4169E1">-1</tspan></text>
+  </g>
+  <text x="340" y="300" text-anchor="middle" fill="#1a2026" font-size="13">next(2) and next(1) drain 8's count 3 → 1 → 0; next(1) skips the empty 9-run</text>
+  <text x="340" y="320" text-anchor="middle" fill="#1a2026" font-size="13">and spends 5's count 2 → 1; the final next(2) finds 1 &lt; 2 and returns <tspan fill="#4169E1" font-weight="600">-1</tspan>.</text>
+</svg>

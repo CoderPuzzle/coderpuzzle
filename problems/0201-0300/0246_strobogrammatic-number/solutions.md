@@ -15,6 +15,8 @@ settles the answer `false` on the spot, otherwise the mapped digit is compared
 with the right one. A mismatch is likewise immediate, since no later pair can
 repair it; when a pair agrees, both pointers step inward.
 
+![On Example 1's "69", the two pointers check the outer pair through the rotation map — 6 rotates to 9, matching the right digit — then step inward and cross, so every mirrored pair has checked out and the answer is true.](figures/solution-rotation-map-pointers.svg)
+
 When the length is odd the pointers meet on the middle digit, which is paired
 with itself — so it must be one of the self-rotating `0`, `1`, `8`, and a
 middle `6` or `9` fails exactly like a digit that does not rotate at all. The

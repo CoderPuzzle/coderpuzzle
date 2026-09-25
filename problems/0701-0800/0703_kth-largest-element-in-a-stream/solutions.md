@@ -20,6 +20,8 @@ polling until only `k` elements remain. (When `nums` holds fewer than `k`
 scores, the heap is simply smaller and grows toward `k` on the first `add`
 calls, as the constraints allow.)
 
+![With k = 3 over [4,5,8,2] and then the adds 3, 5, 10, 9, 4, the size-3 min-heap pops each overflow minimum and its root reads out 4, 5, 5, 8, 8.](figures/solution-minheap-root-reads.svg)
+
 Both the Python and Java canonical solutions implement this structure
 (`heapq` and `PriorityQueue` are both binary min-heaps). With at most `10⁴`
 adds and `k ≤ 10⁴ + 1`, each operation costs `O(log k)` and the total

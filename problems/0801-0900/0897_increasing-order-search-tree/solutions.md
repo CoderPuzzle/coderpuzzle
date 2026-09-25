@@ -21,6 +21,11 @@ differs in mechanics, not in result: its owned boxes cannot be rewired in
 place, so its walk consumes the tree and folds the visited values back
 into the same spine.
 
+![For root [5, 3, 6, 2, 4, null, 8, 1, null, null, null, 7, 9] the in-order
+walk visits 1 through 9, severs every left link, and rethreads each right
+link into the single spine 1 → 2 → … →
+9.](figures/solution-inorder-right-spine.svg)
+
 At this statement's bounds even a single 100-node chain would nest at
 most 100 recursive frames, but the traversal ships iterative anyway, so
 no runtime's call stack is involved at all. What the walk stores is the

@@ -21,6 +21,11 @@ signature goes into a hash set, and the answer is that set's size. Shapes that
 are rotations or reflections of each other keep different signatures, which is
 exactly the rule the statement fixes.
 
+![In the example grid, island A (anchor (0, 0)) and island B (anchor (2, 3))
+both re-seat to the same sorted offsets (0,0) (0,1) (1,0) (1,1), so the hash
+set holds one signature and the answer is 1 distinct
+island.](figures/solution-anchor-offset-signature.svg)
+
 Each cell of the grid is enqueued at most once, so the fills together do
 `O(m·n)` work; sorting an island's own cells adds only a logarithmic term over
 that island's size, and the queue, the marks, and the signatures all stay

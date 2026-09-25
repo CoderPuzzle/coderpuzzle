@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 232" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="232" fill="#ffffff"/>
+  <!-- s = "cbaebabacd", p = "abc"; cells 44 wide at x = 70 + 48i; diff per window start k = [0,2,2,2,2,2,0,2] -->
+  <!-- the two matching windows outlined -->
+  <text x="140" y="22" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">window "cba"</text>
+  <text x="428" y="22" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">window "bac"</text>
+  <rect x="64" y="33" width="152" height="53" rx="7" fill="none" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="352" y="33" width="152" height="53" rx="7" fill="none" stroke="#4169E1" stroke-width="1.8"/>
+  <!-- s cells -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="70" y="40" width="44" height="40"/><rect x="118" y="40" width="44" height="40"/>
+    <rect x="166" y="40" width="44" height="40"/><rect x="214" y="40" width="44" height="40"/>
+    <rect x="262" y="40" width="44" height="40"/><rect x="310" y="40" width="44" height="40"/>
+    <rect x="358" y="40" width="44" height="40"/><rect x="406" y="40" width="44" height="40"/>
+    <rect x="454" y="40" width="44" height="40"/><rect x="502" y="40" width="44" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="92" y="65">c</text><text x="140" y="65">b</text><text x="188" y="65">a</text>
+    <text x="236" y="65">e</text><text x="284" y="65">b</text><text x="332" y="65">a</text>
+    <text x="380" y="65">b</text><text x="428" y="65">a</text><text x="476" y="65">c</text>
+    <text x="524" y="65">d</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="92" y="96">0</text><text x="140" y="96">1</text><text x="188" y="96">2</text>
+    <text x="236" y="96">3</text><text x="284" y="96">4</text><text x="332" y="96">5</text>
+    <text x="380" y="96">6</text><text x="428" y="96">7</text><text x="476" y="96">8</text>
+    <text x="524" y="96">9</text>
+  </g>
+  <!-- diff (nonzero delta letters) after each 3-wide window, chip k under start cell k -->
+  <text x="70" y="122" fill="#5c6b76" font-size="11.5">diff per window start:</text>
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="118" y="132" width="44" height="30"/><rect x="166" y="132" width="44" height="30"/>
+    <rect x="214" y="132" width="44" height="30"/><rect x="262" y="132" width="44" height="30"/>
+    <rect x="310" y="132" width="44" height="30"/><rect x="406" y="132" width="44" height="30"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="70" y="132" width="44" height="30"/><rect x="358" y="132" width="44" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#9aa7b2">
+    <text x="140" y="152">2</text><text x="188" y="152">2</text><text x="236" y="152">2</text>
+    <text x="284" y="152">2</text><text x="332" y="152">2</text><text x="428" y="152">2</text>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#4169E1">
+    <text x="92" y="152">0</text><text x="380" y="152">0</text>
+  </g>
+  <text x="300" y="196" text-anchor="middle" fill="#1a2026" font-size="13">The window is an anagram exactly when <tspan fill="#4169E1" font-weight="600">diff = 0</tspan> — hit at start 0 ("cba") and</text>
+  <text x="300" y="216" text-anchor="middle" fill="#1a2026" font-size="13">start 6 ("bac"); every other window keeps two mismatched letters, answer [0, 6].</text>
+</svg>

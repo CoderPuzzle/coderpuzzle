@@ -39,6 +39,8 @@ The BST ordering property turns LCA into a walk. Every value in a node's left su
 
 The first node where the two targets no longer sit on the same side is the answer. Every strict ancestor of that node has both targets inside one child subtree, so it is a common ancestor but not the lowest; at the split node the targets are separated into different subtrees — or the node's own value equals `p` or `q`, in which case it is an ancestor of the other target and of itself, which the LCA definition allows. Walking down from the root therefore lands exactly on the LCA.
 
+![On Example 2's tree with p = 2 and q = 4, the descent steps left at 6 because both targets are smaller and stops at 2, where the node equals p — LCA(2, 4) = 2.](figures/solution-bst-descent-lca.svg)
+
 The loop needs no stack, no recursion, and no parent pointers — just two comparisons per level, which makes the auxiliary space constant. In this judge the targets are given as values and the answer is the LCA's value, so the node's `val` is returned directly. The tree is not assumed balanced, so the height `h` can be as large as the node count on a degenerate tree.
 
 **Complexity:** `O(h)` time, `O(1)` space.

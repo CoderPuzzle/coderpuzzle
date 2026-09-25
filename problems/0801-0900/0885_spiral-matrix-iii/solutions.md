@@ -17,6 +17,10 @@ is taken even when it leaves the grid, because the spiral only reaches the
 cells far from the start by leaving the grid and curling back into it; a step
 is recorded exactly when both coordinates land in range.
 
+![On rows = 1, cols = 4 started at (0, 0), the turtle's runs grow 1, 1, 2, 2, 3,
+3, ... — the gray steps walk outside the single row, and southbound runs 3 and
+5 re-enter it to record [0, 2] and [0, 3], finishing all four cells.](figures/solution-turtle-run-lengths.svg)
+
 The walk is self-avoiding — ring `k` tours exactly the cells at Chebyshev
 distance `k` from the start, and rings never overlap — so the recorded cells
 are distinct and the count reaches `rows * cols` precisely when the whole grid

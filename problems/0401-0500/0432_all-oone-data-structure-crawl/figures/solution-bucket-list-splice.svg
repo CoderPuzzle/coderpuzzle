@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 324" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="324" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- inc(hello) x2 then inc(leet); list ascends by count; bucket 1 spliced directly before bucket 2 -->
+  <!-- before: head - bucket 2 {hello} - tail -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4">
+    <rect x="150" y="48" width="64" height="46"/><rect x="460" y="48" width="64" height="46"/>
+  </g>
+  <text x="182" y="76" text-anchor="middle" fill="#9aa7b2" font-size="13">head</text>
+  <text x="492" y="76" text-anchor="middle" fill="#9aa7b2" font-size="13">tail</text>
+  <rect x="280" y="48" width="120" height="46" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="340" y="68" text-anchor="middle" fill="#5c6b76" font-size="12">count 2</text>
+  <text x="340" y="86" text-anchor="middle" fill="#1a2026" font-weight="600">hello</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <line x1="217" y1="71" x2="277" y2="71" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="403" y1="71" x2="457" y2="71" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  </g>
+  <text x="340" y="114" text-anchor="middle" fill="#5c6b76" font-size="11.5">both getters return "hello"</text>
+  <path d="M 260 122 V 156" fill="none" stroke="#4169E1" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrowB)"/>
+  <text x="272" y="144" fill="#4169E1" font-size="12" font-weight="600">inc("leet") — new bucket 1 spliced in here</text>
+  <!-- after: bucket 1 sits directly before bucket 2 -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4">
+    <rect x="60" y="164" width="64" height="46"/><rect x="532" y="164" width="64" height="46"/>
+  </g>
+  <text x="92" y="192" text-anchor="middle" fill="#9aa7b2" font-size="13">head</text>
+  <text x="564" y="192" text-anchor="middle" fill="#9aa7b2" font-size="13">tail</text>
+  <rect x="200" y="164" width="120" height="46" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="260" y="184" text-anchor="middle" fill="#5c6b76" font-size="12">count 1</text>
+  <text x="260" y="202" text-anchor="middle" fill="#1a2026" font-weight="600">leet</text>
+  <rect x="366" y="164" width="120" height="46" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="426" y="184" text-anchor="middle" fill="#5c6b76" font-size="12">count 2</text>
+  <text x="426" y="202" text-anchor="middle" fill="#1a2026" font-weight="600">hello</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <line x1="127" y1="187" x2="197" y2="187" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="323" y1="187" x2="363" y2="187" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="489" y1="187" x2="529" y2="187" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 92 212 Q 158 252 224 216" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="150" y="256" text-anchor="middle" fill="#5c6b76" font-size="11.5">getMinKey()</text>
+  <path d="M 564 212 Q 498 252 432 216" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="500" y="256" text-anchor="middle" fill="#5c6b76" font-size="11.5">getMaxKey()</text>
+  <text x="320" y="290" text-anchor="middle" fill="#1a2026" font-size="13">Both getters first answer "hello" from the lone bucket 2; after inc("leet"), the</text>
+  <text x="320" y="310" text-anchor="middle" fill="#1a2026" font-size="13">spliced <tspan fill="#4169E1" font-weight="600">bucket 1</tspan> answers getMinKey "leet" and bucket 2 still answers "hello".</text>
+</svg>

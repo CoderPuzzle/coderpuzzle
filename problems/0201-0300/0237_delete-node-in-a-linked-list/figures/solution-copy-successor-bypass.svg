@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- head = [4,5,1,9], node = 5; two writes: copy 1 into node 5, node 5.next bypasses old 1 -->
+  <!-- before row -->
+  <text x="70" y="88" text-anchor="end" fill="#5c6b76" font-size="12.5">before</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="120" y="60" width="70" height="46"/><rect x="380" y="60" width="70" height="46"/><rect x="510" y="60" width="70" height="46"/>
+  </g>
+  <rect x="250" y="60" width="70" height="46" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="155" y="88">4</text><text x="285" y="88">5</text><text x="415" y="88">1</text><text x="545" y="88">9</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 192 83 L 246 83" marker-end="url(#arrow)"/>
+    <path d="M 322 83 L 376 83" marker-end="url(#arrow)"/>
+    <path d="M 452 83 L 506 83" marker-end="url(#arrow)"/>
+  </g>
+  <!-- write 1: copy successor value in -->
+  <path d="M 405 58 Q 315 8 292 58" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="332" y="20" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">copy the value 1 into node 5</text>
+  <!-- write 2: bypass the successor -->
+  <path d="M 295 108 Q 405 170 518 108" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="405" y="172" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">node 5's next skips past 1, landing on 9</text>
+  <!-- after row -->
+  <text x="70" y="238" text-anchor="end" fill="#5c6b76" font-size="12.5">after</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="120" y="210" width="70" height="46"/><rect x="510" y="210" width="70" height="46"/>
+  </g>
+  <rect x="250" y="210" width="70" height="46" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <rect x="380" y="210" width="70" height="46" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="155" y="238" fill="#1a2026">4</text>
+    <text x="285" y="234" fill="#1a2026">1</text>
+    <text x="285" y="251" fill="#5c6b76" font-size="10.5" font-weight="400">was 5</text>
+    <text x="415" y="234" fill="#9aa7b2">1</text>
+    <text x="415" y="251" fill="#9aa7b2" font-size="10.5" font-weight="400">unlinked</text>
+    <text x="545" y="238" fill="#1a2026">9</text>
+  </g>
+  <path d="M 192 233 L 246 233" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 322 260 Q 405 305 512 262" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">Node 5 copies in 1 and rewires its next, so the list reads <tspan fill="#4169E1" font-weight="600">4 → 1 → 9</tspan> —</text>
+  <text x="320" y="334" text-anchor="middle" fill="#1a2026" font-size="13">the old 1 node drops out of the chain; node 4 was never touched.</text>
+</svg>

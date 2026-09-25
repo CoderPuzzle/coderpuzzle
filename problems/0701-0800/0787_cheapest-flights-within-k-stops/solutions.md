@@ -25,6 +25,8 @@ Example 1 runs exactly `k + 1 = 2` rounds over `flights`:
 
 Plain Dijkstra is not enough here: the cheapest way to reach an intermediate node can be a bad way to continue, because it may have burned more of the stop budget than a slightly costlier rival. The fix is to widen the state — the min-heap holds `(cost, node, flights used)` triples, and expanding a state that has already used its `k + 1` flights is simply forbidden. Carrying the count in the state rather than in the node label is the whole trick; it is what enforces the limit.
 
+![On the example graph with k = 1, popped state (200, 2, 2) has no budget left to board flight 2 to 3, so the cheaper 400 walk dies and the first dst pop returns 700 via 0 to 1 to 3.](figures/solution-dijkstra-stop-budget.svg)
+
 The heap pops in cost order, so the first time `dst` surfaces its cost is final and is returned immediately. For intermediate nodes, a dominance prune replaces the usual distance array: `best[node]` records the fewest flights any already-expanded state used at that node, and a popped state with more flights than that is skipped — a strictly cheaper state with no more flights was expanded earlier, so this one can never yield a cheaper legal arrival. Without the prune the search would walk every budget-respecting walk in the graph.
 
 That prune is what separates this from textbook Dijkstra, and it also sizes the work: each edge can be boarded from at most `k + 1` budget levels, so the heap holds at most `O(E * k)` states. The `log` factor and heap constant make this variant slower in the worst case than Bellman-Ford's strict `O(k * E)` sweep, but the early exit at `dst` and the pruning of dominated states usually settle it long before that bound.

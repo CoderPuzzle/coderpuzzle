@@ -22,6 +22,8 @@ one stretch is still open, the trailing one, and its best seat is the far end
 grows, so a final maximum against it settles that case. The constraint that at
 least one person sits guarantees `prev` is a real index by then.
 
+![On seats [1,0,0,0,1,0,1] the pass closes two stretches: the gap 0 → 4 seats Alex at middle seat 2 for distance 4/2 = 2 and the gap 4 → 6 at seat 5 for distance 1, so the answer is the maximum 2.](figures/solution-gap-best-seats.svg)
+
 Example 1, `[1,0,0,0,1,0,1]`, has no edge stretches and gaps of width 4 and 2
 between its people, giving 2 and 1 — so 2. Example 2, `[1,0,0,0]`, closes no
 interior gap at all and answers 3 from the trailing stretch; Example 3,

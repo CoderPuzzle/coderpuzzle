@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 388" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="388" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- rows = 1, cols = 4, start (0,0); position (r,c) sits at px (160+40(c+2), 100+40(r+2));
+       the grid row is the filled band y 160-200; gray = steps outside the grid;
+       numbered badges = record order [0,0],[0,1],[0,2],[0,3] -->
+  <path d="M140 80V320M180 80V320M220 80V320M260 80V320M300 80V320M340 80V320M380 80V320M140 80H380M140 120H380M140 160H380M140 200H380M140 240H380M140 280H380M140 320H380" stroke="#dbe4fb" stroke-width="1" fill="none"/>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="220" y="160" width="40" height="40"/><rect x="260" y="160" width="40" height="40"/>
+    <rect x="300" y="160" width="40" height="40"/><rect x="340" y="160" width="40" height="40"/>
+  </g>
+  <text x="388" y="184" fill="#5c6b76" font-size="12">the grid</text>
+  <!-- walk: E1 inside, then outside runs S1 W2 N2 E3, S3 re-enters, W4 N4 E5, S5 re-enters -->
+  <path d="M 240 180 L 280 180" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <path d="M 280 180 L 280 220 L 240 220 L 200 220 L 200 180 L 200 140 L 240 140 L 280 140 L 320 140" fill="none" stroke="#9aa7b2" stroke-width="2"/>
+  <path d="M 320 140 L 320 180" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <path d="M 320 180 L 320 260 L 160 260 L 160 100 L 360 100 L 360 140" fill="none" stroke="#9aa7b2" stroke-width="2"/>
+  <path d="M 360 140 L 360 168" fill="none" stroke="#4169E1" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <g fill="#9aa7b2">
+    <circle cx="280" cy="220" r="3"/><circle cx="240" cy="220" r="3"/><circle cx="200" cy="220" r="3"/>
+    <circle cx="200" cy="180" r="3"/><circle cx="200" cy="140" r="3"/><circle cx="240" cy="140" r="3"/>
+    <circle cx="280" cy="140" r="3"/><circle cx="320" cy="140" r="3"/><circle cx="320" cy="220" r="3"/>
+    <circle cx="320" cy="260" r="3"/><circle cx="280" cy="260" r="3"/><circle cx="240" cy="260" r="3"/>
+    <circle cx="200" cy="260" r="3"/><circle cx="160" cy="260" r="3"/><circle cx="160" cy="220" r="3"/>
+    <circle cx="160" cy="140" r="3"/><circle cx="160" cy="100" r="3"/><circle cx="200" cy="100" r="3"/>
+    <circle cx="240" cy="100" r="3"/><circle cx="280" cy="100" r="3"/><circle cx="320" cy="100" r="3"/>
+    <circle cx="360" cy="100" r="3"/><circle cx="360" cy="140" r="3"/>
+  </g>
+  <!-- record-order badges on the four grid cells -->
+  <g>
+    <circle cx="240" cy="180" r="9" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+    <circle cx="280" cy="180" r="9" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+    <circle cx="320" cy="180" r="9" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+    <circle cx="360" cy="180" r="9" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+    <g text-anchor="middle" fill="#4169E1" font-weight="600" font-size="12">
+      <text x="240" y="184">1</text><text x="280" y="184">2</text><text x="320" y="184">3</text><text x="360" y="184">4</text>
+    </g>
+  </g>
+  <!-- run-length labels -->
+  <g fill="#9aa7b2" font-size="11">
+    <text x="240" y="236" text-anchor="middle">W 2</text>
+    <text x="188" y="176" text-anchor="end">N 2</text>
+    <text x="260" y="126" text-anchor="middle">E 3</text>
+    <text x="334" y="214">S 3</text>
+    <text x="240" y="276" text-anchor="middle">W 4</text>
+    <text x="146" y="176" text-anchor="end">N 4</text>
+    <text x="260" y="86" text-anchor="middle">E 5</text>
+    <text x="372" y="124">S 5</text>
+  </g>
+  <text x="280" y="352" text-anchor="middle" fill="#1a2026" font-size="13">Runs grow 1, 1, 2, 2, 3, 3, ... — gray steps walk outside the single row.</text>
+  <text x="280" y="370" text-anchor="middle" fill="#1a2026" font-size="13">Southbound runs 3 and 5 re-enter at [0, 2] and [0, 3], finishing all <tspan fill="#4169E1" font-weight="600">4</tspan> cells.</text>
+</svg>

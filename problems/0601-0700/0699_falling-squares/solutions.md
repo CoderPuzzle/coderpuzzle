@@ -20,5 +20,7 @@ squares of side `10^6` stack to at most `10^9`, under `2^31`. A segment tree
 with lazy max-update could push each drop to `O(log n)`, but at `n <= 1000`
 the plain cell scan is at most a few million operations and wins on constants.
 
+![Dropping positions [[1,2],[2,3],[6,1]] over the five compressed cells, each square lands at its side plus the max height under its run — tops 2, 5, 1 — and the recorded tallest reads 2, 5, 5.](figures/solution-compressed-cell-drops.svg)
+
 **Complexity:** `O(n²)` time — each of the `n` drops scans up to `2n` cells —
 and `O(n)` space for the compressed cells and their heights.

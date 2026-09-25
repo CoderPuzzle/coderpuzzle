@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- target "thehat": mask bits are positions 0..5 (t h e h a t); BFS layer masks, bits written position 0 first: layer 1 = {110000 with, 001010 example, 001000 science}; layer 2 = {110101, 111010, 111000}; the full mask 111111 is first reached at depth 3 via with, with, example. Boxes w76 h28; columns cx = 70, 210, 368, 558 -->
+  <text x="340" y="24" text-anchor="middle" fill="#1a2026" font-size="12.5">target = "thehat" — mask bits are positions 0..5: t, h, e, h, a, t</text>
+  <g text-anchor="middle" font-size="13" font-weight="600">
+    <rect x="32" y="140" width="76" height="28" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="70" y="159" fill="#1a2026">000000</text>
+    <rect x="172" y="140" width="76" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <text x="210" y="159" fill="#4169E1">110000</text>
+    <rect x="172" y="40" width="76" height="28" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2"/>
+    <text x="210" y="59" fill="#9aa7b2">001010</text>
+    <rect x="172" y="240" width="76" height="28" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2"/>
+    <text x="210" y="259" fill="#9aa7b2">001000</text>
+    <rect x="330" y="46" width="76" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <text x="368" y="65" fill="#4169E1">110101</text>
+    <rect x="330" y="140" width="76" height="28" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2"/>
+    <text x="368" y="159" fill="#9aa7b2">111010</text>
+    <rect x="330" y="234" width="76" height="28" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2"/>
+    <text x="368" y="253" fill="#9aa7b2">111000</text>
+    <rect x="520" y="140" width="76" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <text x="558" y="159" fill="#4169E1">111111</text>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 110 154 L 166 154" marker-end="url(#arrow)"/>
+    <path d="M 250 146 Q 298 100 326 66" marker-end="url(#arrow)"/>
+    <path d="M 408 68 Q 482 96 514 138" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.4">
+    <path d="M 110 148 Q 142 98 166 60" marker-end="url(#arrowg)"/>
+    <path d="M 110 160 Q 142 210 166 248" marker-end="url(#arrowg)"/>
+    <path d="M 250 154 L 324 154" marker-end="url(#arrowg)"/>
+    <path d="M 250 162 Q 298 208 326 242" marker-end="url(#arrowg)"/>
+    <path d="M 408 152 L 514 154" marker-end="url(#arrowg)"/>
+  </g>
+  <g text-anchor="middle" font-size="11.5" font-weight="600" fill="#4169E1">
+    <text x="139" y="145">with</text>
+    <text x="288" y="100">with</text>
+    <text x="464" y="96">example</text>
+  </g>
+  <g font-size="11" fill="#9aa7b2">
+    <text x="120" y="92">example</text>
+    <text x="120" y="228">science</text>
+    <text x="287" y="146">example</text>
+    <text x="288" y="222">science</text>
+    <text x="448" y="146">with</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="70" y="302">layer 0</text>
+    <text x="210" y="302">layer 1</text>
+    <text x="368" y="302">layer 2</text>
+    <text x="558" y="302">layer 3 — full mask</text>
+  </g>
+  <text x="340" y="326" text-anchor="middle" fill="#1a2026" font-size="13">BFS layers: "with" spells t, h at 0, 1, a second "with" the remaining t, h at 3, 5, then</text>
+  <text x="340" y="344" text-anchor="middle" fill="#1a2026" font-size="13">"example" the e, a — the full mask 111111 is first reached at depth <tspan fill="#4169E1" font-weight="600">3</tspan>: 3 stickers.</text>
+</svg>

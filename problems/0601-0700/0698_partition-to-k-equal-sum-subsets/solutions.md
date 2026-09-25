@@ -15,4 +15,6 @@ Example 1 (`nums = [4,3,2,3,5,2,1]`, `k = 4`) fills the four subsets one at a ti
 3. Subset 2 takes 4 then 1 — bits {1, 6}; subset 3 takes 3 then 2 — bits {2, 4}; subset 4 takes the remaining 3 and 2 — bits {3, 5}.
 4. Every element's bit is now set, so the full-mask check succeeds and the answer is true.
 
+![With nums = [4,3,2,3,5,2,1] and k = 4 (target 5), the bitmask search fills (5), (4+1), (3+2), (3+2) one subset at a time, each placement setting its element's bit until the mask reads 1111111 = 127.](figures/solution-bitmask-subset-fill.svg)
+
 **Complexity:** `O(n · 2^n)` time, `O(2^n)` space.

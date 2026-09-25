@@ -13,6 +13,8 @@ every interior point is a corner of an even number of pieces, two meeting
 along a shared edge or four meeting at a cross, so each such point is toggled
 away and exactly the four corners of the bounding rectangle survive.
 
+![On example 1 the piece areas 4 + 1 + 2 + 1 + 1 equal the 3 × 3 box's 9, and the corner set cancels to exactly (1,1), (1,4), (4,1), (4,4).](figures/solution-corner-cancellation.svg)
+
 Neither signature suffices alone, and the misses are disjoint. Duplicate one
 piece of a 2 x 2 tiling and drop another: the areas still balance at four unit
 squares, but the corner set keeps six points, so the balanced sum is exposed.

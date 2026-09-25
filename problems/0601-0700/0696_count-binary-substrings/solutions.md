@@ -29,4 +29,6 @@ returns `2 + 2 + 2 = 6`, matching the example, repeats included: equal runs
 just donate the same amount at each boundary, exactly the multiplicity the
 statement asks to count.
 
+![On s = "00110011" the four runs of length 2 bank min(prev, cur) = 2 at each of the three character changes — 2 + 2 + 2 = 6, the six valid substrings with repeats counted.](figures/solution-run-length-banks.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space.

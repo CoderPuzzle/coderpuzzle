@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- grid = [[0,1,0],[0,0,0],[0,0,1]]; cells 78x62 at (60,70); island 1 (0,1) seeds; L1 {(0,0),(0,2),(1,1)}, L2 {(1,0),(1,2),(2,1)}; (2,2) found from (1,2): answer 2 -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="60" y="70" width="78" height="62" fill="#dbe4fb"/>
+    <rect x="138" y="70" width="78" height="62" fill="#4169E1"/>
+    <rect x="216" y="70" width="78" height="62" fill="#dbe4fb"/>
+    <rect x="60" y="132" width="78" height="62" fill="#f0f3f7"/>
+    <rect x="138" y="132" width="78" height="62" fill="#dbe4fb"/>
+    <rect x="216" y="132" width="78" height="62" fill="#f0f3f7"/>
+    <rect x="60" y="194" width="78" height="62" fill="#ffffff"/>
+    <rect x="138" y="194" width="78" height="62" fill="#f0f3f7"/>
+    <rect x="216" y="194" width="78" height="62" fill="#ffffff" stroke="#1a2026" stroke-width="2.2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="99" y="98">0</text>
+    <text x="177" y="98" fill="#ffffff">1</text>
+    <text x="255" y="98">0</text>
+    <text x="99" y="160">0</text>
+    <text x="177" y="160">0</text>
+    <text x="255" y="160">0</text>
+    <text x="99" y="222" fill="#9aa7b2">0</text>
+    <text x="177" y="222">0</text>
+    <text x="255" y="222">1</text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#5c6b76">
+    <text x="99" y="120">layer 1</text>
+    <text x="177" y="120" fill="#dbe4fb">seed</text>
+    <text x="255" y="120">layer 1</text>
+    <text x="99" y="182">layer 2</text>
+    <text x="177" y="182">layer 1</text>
+    <text x="255" y="182">layer 2</text>
+    <text x="99" y="244" font-size="10.5">never reached</text>
+    <text x="177" y="244">layer 2</text>
+    <text x="255" y="244" fill="#4169E1">island 2</text>
+  </g>
+  <!-- BFS accounting -->
+  <text x="330" y="84" fill="#5c6b76" font-size="12.5">frontier 0: island 1 = {(0,1)}</text>
+  <text x="330" y="112" fill="#1a2026" font-size="13">layer 1 (1 flip): (0,0) (0,2) (1,1)</text>
+  <text x="330" y="140" fill="#1a2026" font-size="13">layer 2 (2 flips): (1,0) (1,2) (2,1)</text>
+  <text x="330" y="168" fill="#1a2026" font-size="13">expanding (1,2): (2,2) is <tspan fill="#4169E1" font-weight="600">land</tspan></text>
+  <text x="330" y="198" fill="#4169E1" font-size="15" font-weight="600">stop — answer 2</text>
+  <path d="M 338 224 L 304 225" stroke="#4169E1" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+  <text x="320" y="290" text-anchor="middle" fill="#1a2026" font-size="13">Each BFS layer from island 1 crosses one more 0; expanding layer-2 cell (1,2)</text>
+  <text x="320" y="308" text-anchor="middle" fill="#1a2026" font-size="13">looks across at island 2 at (2,2) — the bridge costs <tspan fill="#4169E1" font-weight="600">2</tspan> flips.</text>
+</svg>

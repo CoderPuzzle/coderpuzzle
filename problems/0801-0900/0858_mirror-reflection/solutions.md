@@ -15,6 +15,11 @@ widths `p` along both axes. Writing `g = gcd(p, q)`, the smallest `k` that
 makes `q·k` a multiple of `p` is `k = p/g`, so the first corner crossing sits
 `p/g` rooms across and `q/g` rooms up; those two counts carry everything.
 
+![For `p = 2`, `q = 1`, the unfolded straight ray `y = (q/p)·x` first corners
+two rooms across and one up; folding back by parity (even across, odd up)
+lands on the northwest receptor 2, which the folded zigzag reaches after one
+east-wall bounce.](figures/solution-unfold-parity-corner.svg)
+
 Folding them back into the original room: an odd count of rooms across ends
 on the east wall and an even count on the west, while an odd count up ends on
 the north wall and an even count on the south. The reduced pair `p/g`, `q/g`

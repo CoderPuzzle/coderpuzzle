@@ -18,6 +18,8 @@ than `k` apart would already break the window — so exactly `min(k, j)` of the
 `dp[i][j] = dp[i-1][j-1] * (n - j + 1) + dp[i-1][j] * max(0, j - k)`, seeded
 `dp[0][0] = 1`; the answer is `dp[goal][n]`.
 
+![On n = 3, goal = 3, k = 1 the dp table fills from dp[0][0] = 1 along the diagonal with introduce weights × 3, × 2, × 1, the repeat weight j - k = 1 fills dp[3][2] = 6, and the answer is dp[3][3] = 6.](figures/solution-dp-length-distinct.svg)
+
 Two closed forms anchor the recurrence. When `goal = n` no play can be a
 repeat, the second term never fires, and the chain of first terms collapses
 to `n!` — every playlist of length `n` using all `n` songs is a permutation,

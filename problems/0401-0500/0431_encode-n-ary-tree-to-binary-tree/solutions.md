@@ -10,6 +10,8 @@ becomes exactly one right-going chain under the parent's single left
 pointer, and a childless group contributes nothing. The children join the
 queue as their shells are linked, and every n-ary node is visited once.
 
+![On root = [1,null,3,2,4,null,5,6], node 1's first child 3 becomes its left child, siblings 2 and 4 chain right off 3, and 3's own children 5 and 6 form the next right-going chain.](figures/solution-first-child-left-next-sibling-right.svg)
+
 The mapping is invertible by construction: descending a parent's left gives
 the head of its children group, and walking right from there recovers the
 group in order, which is why this encoding round-trips the tree. It also
