@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 324" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="324" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- image rows ["0010","0110","0100"]; given pixel (x, y) = (0, 2); cells 48x40 at (150,80) -->
+  <!-- probes give top=0 (row 0), bottom=2 (row 2), left=1 (col 1), right=2 (col 2); area (2-0+1)*(2-1+1)=6 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="174" y="68">0</text><text x="222" y="68">1</text><text x="270" y="68">2</text><text x="318" y="68">3</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="140" y="105">0</text><text x="140" y="145">1</text><text x="140" y="185">2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="150" y="80" width="48" height="40" fill="#ffffff"/><rect x="198" y="80" width="48" height="40" fill="#ffffff"/>
+    <rect x="246" y="80" width="48" height="40" fill="#1a2026"/><rect x="294" y="80" width="48" height="40" fill="#ffffff"/>
+    <rect x="150" y="120" width="48" height="40" fill="#ffffff"/><rect x="198" y="120" width="48" height="40" fill="#1a2026"/>
+    <rect x="246" y="120" width="48" height="40" fill="#1a2026"/><rect x="294" y="120" width="48" height="40" fill="#ffffff"/>
+    <rect x="150" y="160" width="48" height="40" fill="#ffffff"/><rect x="198" y="160" width="48" height="40" fill="#1a2026"/>
+    <rect x="246" y="160" width="48" height="40" fill="#ffffff"/><rect x="294" y="160" width="48" height="40" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="174" y="105" fill="#9aa7b2">0</text><text x="222" y="105" fill="#9aa7b2">0</text>
+    <text x="270" y="105" fill="#ffffff">1</text><text x="318" y="105" fill="#9aa7b2">0</text>
+    <text x="174" y="145" fill="#9aa7b2">0</text><text x="222" y="145" fill="#ffffff">1</text>
+    <text x="270" y="145" fill="#ffffff">1</text><text x="318" y="145" fill="#9aa7b2">0</text>
+    <text x="174" y="185" fill="#9aa7b2">0</text><text x="222" y="185" fill="#ffffff">1</text>
+    <text x="270" y="185" fill="#9aa7b2">0</text><text x="318" y="185" fill="#9aa7b2">0</text>
+  </g>
+  <!-- given black pixel (0, 2) -->
+  <circle cx="270" cy="100" r="16" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- smallest enclosing rectangle: rows 0-2, cols 1-2 -->
+  <rect x="198" y="80" width="96" height="120" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <g stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="64" y1="100" x2="142" y2="100"/>
+    <line x1="428" y1="180" x2="348" y2="180"/>
+    <line x1="222" y1="32" x2="222" y2="54"/>
+    <line x1="270" y1="246" x2="270" y2="206"/>
+  </g>
+  <g fill="#4169E1" font-weight="600" font-size="13.5">
+    <text x="64" y="88">top = 0</text>
+    <text x="432" y="184">bottom = 2</text>
+    <text x="222" y="24" text-anchor="middle">left = 1</text>
+    <text x="270" y="264" text-anchor="middle">right = 2</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="280" y="296">Probing rows and columns outward from black pixel (0, 2), binary search finds</text>
+    <text x="280" y="314">top 0, bottom 2, left 1, right 2 — an enclosing 3 x 2 rectangle of area <tspan fill="#4169E1" font-weight="600">6</tspan>.</text>
+  </g>
+</svg>

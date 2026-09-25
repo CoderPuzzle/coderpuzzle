@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- s = "(1+(4+5+2)-3)+(6+8)"; one row per bracket event; stack cells hold (result, sign) pairs, 64x26 at x=190 -->
+  <g fill="#5c6b76" font-size="12">
+    <text x="16" y="50">scan moment</text>
+    <text x="190" y="50">stack, bottom → top</text>
+    <text x="346" y="50">what the bracket does</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 150 76 H 178" marker-end="url(#arrow)"/>
+    <path d="M 150 112 H 178" marker-end="url(#arrow)"/>
+    <path d="M 150 148 H 178" marker-end="url(#arrow)"/>
+    <path d="M 150 184 H 178" marker-end="url(#arrow)"/>
+    <path d="M 150 220 H 178" marker-end="url(#arrow)"/>
+    <path d="M 150 256 H 178" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="13" fill="#1a2026">
+    <text x="16" y="80">'(' opens (1 + …)</text>
+    <text x="16" y="116">'(' opens 4+5+2</text>
+    <text x="16" y="152">')' closes 4+5+2</text>
+    <text x="16" y="188">')' closes (1+…)−3</text>
+    <text x="16" y="224">'(' opens 6+8</text>
+    <text x="16" y="260">')' closes 6+8</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="190" y="63" width="64" height="26" fill="#ffffff"/>
+    <rect x="190" y="99" width="64" height="26" fill="#ffffff"/>
+    <rect x="262" y="99" width="64" height="26" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="190" y="135" width="64" height="26" fill="#ffffff"/>
+    <rect x="190" y="207" width="64" height="26" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3">
+    <rect x="190" y="171" width="64" height="26"/>
+    <rect x="190" y="243" width="64" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#1a2026">
+    <text x="222" y="81">(0, 1)</text>
+    <text x="222" y="117">(0, 1)</text><text x="294" y="117">(1, 1)</text>
+    <text x="222" y="153">(0, 1)</text>
+    <text x="222" y="189" font-size="11" fill="#9aa7b2">empty</text>
+    <text x="222" y="225">(9, 1)</text>
+    <text x="222" y="261" font-size="11" fill="#9aa7b2">empty</text>
+  </g>
+  <g font-size="13" fill="#1a2026">
+    <text x="346" y="80">push <tspan fill="#4169E1" font-weight="600">(0, 1)</tspan> — restart at 0, sign 1</text>
+    <text x="346" y="116">push <tspan fill="#4169E1" font-weight="600">(1, 1)</tspan> — restart at 0, sign 1</text>
+    <text x="346" y="152">pop (1, 1): 11 × 1 + 1 = <tspan fill="#4169E1" font-weight="600">12</tspan></text>
+    <text x="346" y="188">pop (0, 1): 9 × 1 + 0 = <tspan fill="#4169E1" font-weight="600">9</tspan></text>
+    <text x="346" y="224">push <tspan fill="#4169E1" font-weight="600">(9, 1)</tspan> — restart at 0, sign 1</text>
+    <text x="346" y="260">pop (1, 1): 14 × 1 + 9 = <tspan fill="#4169E1" font-weight="600">23</tspan></text>
+  </g>
+  <text x="340" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Every '(' parks the running (result, sign); every ')' pops it and folds the inner sum back in.</text>
+  <text x="340" y="322" text-anchor="middle" fill="#1a2026" font-size="13">The stack drains to empty twice; the final combine 14 × 1 + 9 = <tspan fill="#4169E1" font-weight="600">23</tspan> is the answer.</text>
+</svg>

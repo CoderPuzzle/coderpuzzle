@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,1,3,2,5]; duplicates 1,1,2,2 cancel; cells 54x44 at x=60+60k, y=52; binary MSB first, accented digit = bit 1 -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="60" y="52" width="54" height="44"/><rect x="120" y="52" width="54" height="44"/>
+    <rect x="180" y="52" width="54" height="44"/><rect x="240" y="52" width="54" height="44"/>
+    <rect x="300" y="52" width="54" height="44"/><rect x="360" y="52" width="54" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="87" y="74" fill="#9aa7b2">1</text><text x="147" y="74" fill="#9aa7b2">2</text>
+    <text x="207" y="74" fill="#9aa7b2">1</text><text x="267" y="74" fill="#4169E1">3</text>
+    <text x="327" y="74" fill="#9aa7b2">2</text><text x="387" y="74" fill="#4169E1">5</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="87" y="90">001</text><text x="147" y="90">010</text><text x="207" y="90">001</text>
+    <text x="267" y="90">0<tspan fill="#4169E1" font-weight="600">1</tspan>1</text>
+    <text x="327" y="90">010</text>
+    <text x="387" y="90">1<tspan fill="#4169E1" font-weight="600">0</tspan>1</text>
+  </g>
+  <path d="M 420 74 H 462" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="441" y="62" text-anchor="middle" fill="#5c6b76" font-size="11">3 ^ 5</text>
+  <rect x="470" y="50" width="152" height="50" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="546" y="72" text-anchor="middle" font-weight="600" font-size="15" fill="#4169E1">total = 6</text>
+  <text x="546" y="90" text-anchor="middle" fill="#5c6b76" font-size="11.5">= 0b110: pairs cancel</text>
+  <text x="320" y="142" text-anchor="middle" fill="#1a2026" font-size="13">mask = total &amp; -total = 6 &amp; -6 = <tspan fill="#4169E1" font-weight="600">2</tspan>, i.e. binary 10b:</text>
+  <text x="320" y="162" text-anchor="middle" fill="#1a2026" font-size="13">bit 1 is where the two singles, 011 and 101, differ.</text>
+  <!-- groups in array order; group A = 2,3,2 -> 3 ; group B = 1,1,5 -> 5 -->
+  <rect x="60" y="196" width="250" height="76" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="185" y="216" text-anchor="middle" fill="#5c6b76" font-size="12">values with bit 1 set</text>
+  <text x="185" y="238" text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">2 · 3 · 2</text>
+  <text x="185" y="260" text-anchor="middle" font-weight="600" font-size="14" fill="#4169E1">XOR = 3</text>
+  <rect x="330" y="196" width="250" height="76" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="455" y="216" text-anchor="middle" fill="#5c6b76" font-size="12">values with bit 1 clear</text>
+  <text x="455" y="238" text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">1 · 1 · 5</text>
+  <text x="455" y="260" text-anchor="middle" font-weight="600" font-size="14" fill="#4169E1">XOR = 5</text>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Each group keeps one single and cancels its pairs: 2 ^ 3 ^ 2 = <tspan fill="#4169E1" font-weight="600">3</tspan>, 1 ^ 1 ^ 5 = <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+  <text x="320" y="322" text-anchor="middle" fill="#1a2026" font-size="13">The second answer follows for free: total ^ 3 = 6 ^ 3 = 5.</text>
+</svg>

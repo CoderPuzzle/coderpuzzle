@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 368" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="368" fill="#ffffff"/>
+  <!-- n = 10; frontier rows show the min-heap after each pop; chips 30x30, pitch 36, rows y=60+52k; emitted row y=262 -->
+  <text x="378" y="44" text-anchor="middle" fill="#5c6b76" font-size="12.5">frontier (min-heap)</text>
+  <text x="36" y="79" fill="#5c6b76" font-size="12.5">seed</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="270" y="60" width="30" height="30" rx="6"/>
+  </g>
+  <text x="285" y="80" text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">1</text>
+  <text x="36" y="131" fill="#5c6b76" font-size="12.5">pop 1 → push 2, 3, 5</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="270" y="112" width="30" height="30" rx="6"/><rect x="306" y="112" width="30" height="30" rx="6"/><rect x="342" y="112" width="30" height="30" rx="6"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="285" y="132">2</text><text x="321" y="132">3</text><text x="357" y="132">5</text>
+  </g>
+  <text x="36" y="183" fill="#5c6b76" font-size="12.5">pop 2 → push 4, 6, 10</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="270" y="164" width="30" height="30" rx="6"/><rect x="306" y="164" width="30" height="30" rx="6"/><rect x="342" y="164" width="30" height="30" rx="6"/>
+    <rect x="414" y="164" width="30" height="30" rx="6"/>
+  </g>
+  <rect x="378" y="164" width="30" height="30" rx="6" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.3"/>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="285" y="184">3</text><text x="321" y="184">4</text><text x="357" y="184">5</text><text x="393" y="184" fill="#4169E1">6</text><text x="429" y="184">10</text>
+  </g>
+  <text x="36" y="235" fill="#5c6b76" font-size="12.5">pop 3 → 3·2 = 6 seen; push 9, 15</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="270" y="216" width="30" height="30" rx="6"/><rect x="306" y="216" width="30" height="30" rx="6"/>
+    <rect x="378" y="216" width="30" height="30" rx="6"/><rect x="414" y="216" width="30" height="30" rx="6"/><rect x="450" y="216" width="30" height="30" rx="6"/>
+  </g>
+  <rect x="342" y="216" width="30" height="30" rx="6" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.3"/>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="285" y="236">4</text><text x="321" y="236">5</text><text x="357" y="236" fill="#4169E1">6</text><text x="393" y="236">9</text><text x="429" y="236">10</text><text x="465" y="236">15</text>
+  </g>
+  <text x="500" y="236" fill="#9aa7b2" font-size="11.5">never re-pushed</text>
+  <!-- emitted strip: the ten pops 1 2 3 4 5 6 8 9 10 12 -->
+  <text x="133" y="281" text-anchor="end" fill="#5c6b76" font-size="12.5">pops</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="143" y="262" width="30" height="30" rx="6"/><rect x="179" y="262" width="30" height="30" rx="6"/><rect x="215" y="262" width="30" height="30" rx="6"/>
+    <rect x="251" y="262" width="30" height="30" rx="6"/><rect x="287" y="262" width="30" height="30" rx="6"/><rect x="323" y="262" width="30" height="30" rx="6"/>
+    <rect x="359" y="262" width="30" height="30" rx="6"/><rect x="395" y="262" width="30" height="30" rx="6"/><rect x="431" y="262" width="30" height="30" rx="6"/>
+  </g>
+  <rect x="467" y="262" width="30" height="30" rx="6" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.3"/>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="158" y="282">1</text><text x="194" y="282">2</text><text x="230" y="282">3</text><text x="266" y="282">4</text>
+    <text x="302" y="282">5</text><text x="338" y="282">6</text><text x="374" y="282">8</text><text x="410" y="282">9</text>
+    <text x="446" y="282">10</text><text x="482" y="282" fill="#4169E1">12</text>
+  </g>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">Each pop emits the smallest and pushes 2·v, 3·v, 5·v; 6 enters once, at 2·3,</text>
+  <text x="320" y="348" text-anchor="middle" fill="#1a2026" font-size="13">because 3·2 finds it seen. The 10th pop is <tspan fill="#4169E1" font-weight="600">12</tspan>.</text>
+</svg>

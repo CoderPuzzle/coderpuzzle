@@ -10,6 +10,8 @@ its own ending — that is the adjacency rule — so each new ending is that
 color's cost plus the smaller of the other two. The forbidden ending is
 dropped precisely because it repeats the neighbor's color.
 
+![On costs [[17,2,17],[16,16,5],[14,3,19]] the three endings advance to (17, 2, 17), (18, 33, 7), (21, 10, 37), each costing its cell plus the smaller of the other two endings, finishing at blue 10.](figures/solution-rolling-three-endings.svg)
+
 The code keeps the three endings in three scalars and advances them in one
 simultaneous step, every right-hand side reading the previous house's
 endings, so no table is ever allocated. A single house needs no loop — the

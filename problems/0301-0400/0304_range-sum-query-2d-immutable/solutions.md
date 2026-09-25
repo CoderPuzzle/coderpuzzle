@@ -8,6 +8,9 @@ Each entry is built from its three already-computed neighbors by inclusion–exc
 
 A query rectangle is then the same inclusion–exclusion in reverse: `sumRegion(r1, c1, r2, c2) = prefix[r2+1][c2+1] - prefix[r1][c2+1] - prefix[r2+1][c1] + prefix[r1][c1]`. The two strips above and to the left of the query cancel, leaving exactly the requested rectangle — four lookups and three arithmetic operations, independent of the rectangle's size.
 
+![For `sumRegion(2, 1, 4, 3)`, four top-left-anchored prefix rectangles combine as
+`38 - 24 - 14 + 8 = 8`, which is exactly the nine shaded query cells.](figures/solution-2d-prefix-inclusion-exclusion.svg)
+
 Both the Python and Java canonical solutions implement exactly this table (accumulating into `long`, safely above the worst-case total of `200 · 200 · 10⁴ = 4 · 10⁸`). With at most `10⁴` queries, the whole workload is quadratic preprocessing plus constant-time lookups, satisfying the follow-up.
 
 **Complexity:** `O(m · n)` construction, `O(1)` per `sumRegion`, `O(m · n)` extra space.

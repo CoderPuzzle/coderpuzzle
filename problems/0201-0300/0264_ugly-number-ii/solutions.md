@@ -27,6 +27,8 @@ Starting from `ugly[0] = 1`, each of the `n` slots costs three multiplications, 
 
 The same generation viewed as best-first expansion: keep a min-heap holding the frontier of ugly numbers not yet emitted, seeded with 1, and repeat n − 1 times — pop the smallest, push each of `2·v`, `3·v`, `5·v` that has not been seen. The heap invariant makes every pop the next ugly number in order, so after n − 1 pops the heap's top is the answer.
 
+![With n = 10 the frontier seeded at 1 grows [2, 3, 5] → [3, 4, 5, 6, 10] → [4, 5, 6, 9, 10, 15], the seen set rejecting 6 a second time at 3·2, and the 10th pop is 12.](figures/solution-heap-frontier.svg)
+
 The `seen` set is what keeps the frontier a set rather than a multiset: 6 is reachable as both 2·3 and 3·2, and gating pushes on first sight emits each ugly number exactly once. The heap stays small — each round replaces one element with at most three, so after 1690 rounds it holds a few thousand entries — and the `O(log k)` sift cost per push makes the total `O(n log n)`. The fixed-width ports keep 64-bit heap elements: pushed multiples routinely overshoot the 32-bit answer on their way to being popped, which is also why the dedupe set is keyed on the full 64-bit value.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

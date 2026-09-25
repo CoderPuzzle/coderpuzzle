@@ -30,6 +30,8 @@ counting every node as it is first reached. The frontier spreads level by
 level, so every node in node `0`'s component is counted exactly once; the
 verdict is `visited == n`.
 
+![From node 0 across [[0,1],[0,2],[0,3],[1,4]] the queue runs [0], [1, 2, 3], [2, 3, 4], [] as the frontier spreads level by level, and visited counts to 5 = n, so the graph is a tree.](figures/solution-bfs-frontier.svg)
+
 On Example 3 (`[[0,1],[2,3]]`) the walk marks `0` and `1`, empties the
 queue, and stops at two of four nodes — two components, so `false`, which
 the count check had already ruled out before any of this ran. A one-node

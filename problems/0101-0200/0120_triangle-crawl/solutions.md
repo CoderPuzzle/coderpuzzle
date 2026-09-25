@@ -38,6 +38,8 @@ Call `best(i, j)` the cheapest sum from cell `(i, j)` down to the bottom row. Th
 
 The code carries that beneath-row as a single array, seeded with a copy of the bottom row. Each pass folds row `i` into it in place: `row[j] = triangle[i][j] + min(row[j], row[j + 1])`. Both reads are final before the write retires `row[j]`, and a row of `i + 1` cells touches only columns `0..i`, so one array is reused all the way up without ever growing — exactly the `O(n)` extra space the follow-up asks for, with `n` the number of rows. The triangle itself is never mutated.
 
+![For [[2],[3,4],[6,5,7],[4,1,8,3]] the rolling row is seeded with the bottom row 4, 1, 8, 3 and folds upward to 7, 6, 10, then 9, 10, then 11 at the apex, while the accented path 2 + 3 + 5 + 1 = 11 climbs to best(0, 0).](figures/solution-bottom-up-rolling-row.svg)
+
 A path takes one cell per row, so it crosses at most 200 values of magnitude at most 10⁴: no sum anywhere exceeds 2 × 10⁶, three orders of magnitude inside a 32-bit integer. The fixed-width ports therefore keep the triangle's own 32-bit cells for both the rolling array and the answer, with no widening.
 
 **Complexity:** `O(n²)` time, `O(n)` extra space.

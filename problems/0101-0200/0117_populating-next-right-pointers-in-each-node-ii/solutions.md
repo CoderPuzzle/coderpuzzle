@@ -48,6 +48,8 @@ their own — missing children are simply never appended, so the surviving
 children close ranks. The walk restarts from the head of the freshly built
 chain and stops when a pass finds no children at all.
 
+![Walking the wired 2 to 3 chain of [1,2,3,4,5,null,7] appends 4, then 5, then 7 into the head/tail chain, and 3's missing left child is simply never appended, so 5 links straight to 7.](figures/solution-next-level-chain-building.svg)
+
 Every node is appended exactly once and read exactly once; the only state
 is the two chain cursors, which is the constant extra space the follow-up
 asks for. The returned serialization walks the same chains level by level.

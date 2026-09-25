@@ -6,6 +6,10 @@ Each day ends in exactly one of three states, and the solution sweeps the prices
 
 The transitions encode the rules. Selling moves `hold → sold` as `sold = hold + price` (selling into today's price). Resting carries the better of staying at rest or absorbing a previous sale: `rest = max(rest, prev_sold)`, where `prev_sold` is cached before the updates — this is the cooldown. Because `rest` is only updated from _yesterday's_ `sold`, a sale on day `i` cannot fund a new purchase on day `i + 1`; the earliest rebuy is day `i + 2`, exactly the one-day cooldown.
 
+![Sweeping prices `[1, 2, 3, 0, 2]` fills the table: day 4's buy can only spend day
+3's rest of 1 — day 3's sale of 2 is still cooling down — so selling on day 5 ends
+at `sold = 3`, the answer.](figures/solution-cooldown-state-table.svg)
+
 Buying enters the holding state as `hold = max(hold, rest - price)`: either keep the share already held, or spend `price` from yesterday's rest wealth (yesterday's `rest`, since it is updated after `hold` reads it). The single-pass variable ordering — save `prev_sold` first, then update `hold`, `sold`, `rest` — is what makes each day depend only on day-before quantities.
 
 The final answer is `max(sold, rest)`: after the last day, ending while holding a share is worthless since an unsold purchase only ever subtracted from wealth. A single-day input returns 0 (buying and "selling" the same day nets zero via `rest - price + price`), and a strictly decreasing price list never beats doing nothing.

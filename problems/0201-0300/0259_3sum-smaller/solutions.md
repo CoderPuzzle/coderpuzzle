@@ -21,6 +21,8 @@ anchors also stops early the moment their three smallest remaining values
 already reach `target`: every later anchor is no smaller, so nothing beyond it
 can contribute.
 
+![Anchored at -2 in sorted [-2, 0, 1, 3], the sweep counts hi - lo = 2 triplets the moment 0 + 3 = 3 falls under the remainder 4, then retreats hi on 1 + 3 = 4 and closes the anchor.](figures/solution-two-pointer-count.svg)
+
 Arrays shorter than three elements hold no triplet at all — the loops simply
 never run and the answer is zero — and sums sitting exactly at the target never
 count either, because the comparison is strict. The count itself stays within

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="290" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- costs = [[17,2,17],[16,16,5],[14,3,19]]; cost cells 64x40 at (90,70); endings table at (380,70), cols red/blue/green -->
+  <text x="186" y="54" text-anchor="middle" fill="#5c6b76" font-size="12.5">costs</text>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="78" y="95">house 0</text><text x="78" y="135">house 1</text><text x="78" y="175">house 2</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="90" y="70" width="64" height="40"/><rect x="154" y="70" width="64" height="40"/><rect x="218" y="70" width="64" height="40"/>
+    <rect x="90" y="110" width="64" height="40"/><rect x="154" y="110" width="64" height="40"/><rect x="218" y="110" width="64" height="40"/>
+    <rect x="90" y="150" width="64" height="40"/><rect x="154" y="150" width="64" height="40"/><rect x="218" y="150" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="122" y="95">17</text><text x="186" y="95">2</text><text x="250" y="95">17</text>
+    <text x="122" y="135">16</text><text x="186" y="135">16</text><text x="250" y="135">5</text>
+    <text x="122" y="175">14</text><text x="186" y="175">3</text><text x="250" y="175">19</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 290 130 H 372" marker-end="url(#arrow)"/>
+  </g>
+  <text x="322" y="112" text-anchor="middle" fill="#5c6b76" font-size="12">left to right,</text>
+  <text x="322" y="152" text-anchor="middle" fill="#5c6b76" font-size="12">three endings</text>
+  <!-- endings after each house: 17/2/17, 18/33/7, 21/10/37; picked blue,green,blue cells tinted -->
+  <text x="460" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">cheapest total ending each color</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="412" y="62" fill="#42525e">red</text><text x="476" y="62" fill="#42525e">blue</text><text x="540" y="62" fill="#42525e">green</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="380" y="70" width="64" height="40"/><rect x="444" y="70" width="64" height="40"/><rect x="508" y="70" width="64" height="40"/>
+    <rect x="380" y="110" width="64" height="40"/><rect x="444" y="110" width="64" height="40"/><rect x="508" y="110" width="64" height="40"/>
+    <rect x="380" y="150" width="64" height="40"/><rect x="444" y="150" width="64" height="40"/><rect x="508" y="150" width="64" height="40"/>
+  </g>
+  <rect x="444" y="70" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <rect x="508" y="110" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <rect x="444" y="150" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="412" y="95">17</text><text x="476" y="95" fill="#4169E1">2</text><text x="540" y="95">17</text>
+    <text x="412" y="135">18</text><text x="476" y="135">33</text><text x="540" y="135" fill="#4169E1">7</text>
+    <text x="412" y="175">21</text><text x="476" y="175" fill="#4169E1">10</text><text x="540" y="175">37</text>
+  </g>
+  <text x="320" y="222" text-anchor="middle" fill="#1a2026" font-size="13">Each new ending = its cost + the smaller of the other two endings above:</text>
+  <text x="320" y="246" text-anchor="middle" fill="#1a2026" font-size="13">green at house 1: 5 + min(17, 2) = 7; blue at house 2: 3 + min(18, 7) = 10.</text>
+  <text x="320" y="270" text-anchor="middle" fill="#1a2026" font-size="13">The answer is min(21, <tspan fill="#4169E1" font-weight="600">10</tspan>, 37) = <tspan fill="#4169E1" font-weight="600">10</tspan> — the tinted blue, green, blue row.</text>
+</svg>

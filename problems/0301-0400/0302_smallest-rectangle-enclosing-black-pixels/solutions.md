@@ -18,6 +18,10 @@ the four results `top`, `bottom`, `left`, `right` are exactly the edges of
 the smallest enclosing rectangle, whose area is
 `(bottom - top + 1) * (right - left + 1)`.
 
+![Probing rows and columns outward from the black pixel at (0, 2), binary search
+finds top 0, bottom 2, left 1 and right 2, so the enclosing 3 x 2 rectangle has
+area 6.](figures/solution-binary-search-bounds.svg)
+
 A row probe scans that row's `n` cells and a column probe scans `m`, and each
 bound needs only a logarithmic number of probes, so the whole method runs in
 `O(m log n + n log m)` — below the mandated `O(mn)` by the margin that

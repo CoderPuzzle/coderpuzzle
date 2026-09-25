@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tree = [1,2,3,4,5,6]; left spine 1-2-4 has depth 3, right spine 1-3 has depth 2; nodes r=18; resolution rows at x=372 -->
+  <text x="14" y="46" fill="#4169E1" font-size="12" font-weight="600">left spine: d = 3</text>
+  <text x="252" y="46" fill="#5c6b76" font-size="12" font-weight="600">right spine: d = 2</text>
+  <rect x="28" y="108" width="126" height="160" rx="10" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <rect x="176" y="108" width="90" height="160" rx="10" fill="none" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="90" y1="138" x2="125" y2="218"/>
+    <line x1="230" y1="138" x2="200" y2="218"/>
+  </g>
+  <line x1="150" y1="62" x2="103" y2="122" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrowB)"/>
+  <line x1="90" y1="138" x2="64" y2="199" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrowB)"/>
+  <line x1="150" y1="62" x2="215" y2="124" stroke="#42525e" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="150" cy="62" r="18"/><circle cx="90" cy="138" r="18"/><circle cx="230" cy="138" r="18"/>
+    <circle cx="55" cy="218" r="18"/><circle cx="125" cy="218" r="18"/><circle cx="200" cy="218" r="18"/>
+  </g>
+  <g fill="#1a2026" text-anchor="middle" font-weight="600">
+    <text x="150" y="67">1</text><text x="90" y="143">2</text><text x="230" y="143">3</text>
+    <text x="55" y="223">4</text><text x="125" y="223">5</text><text x="200" y="223">6</text>
+  </g>
+  <text x="91" y="254" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">perfect: 2² − 1 = 3</text>
+  <text x="221" y="248" text-anchor="middle" fill="#5c6b76" font-size="11.5">ragged</text>
+  <text x="221" y="263" text-anchor="middle" fill="#5c6b76" font-size="11.5">→ recurse</text>
+  <text x="372" y="64" fill="#5c6b76" font-size="12">resolution</text>
+  <g font-size="12" fill="#5c6b76">
+    <text x="372" y="94">count(1)</text><text x="372" y="126">count(2)</text>
+    <text x="372" y="158">count(3)</text><text x="372" y="190">count(6)</text>
+  </g>
+  <g font-size="13" fill="#1a2026">
+    <text x="444" y="94">3 ≠ 2 → 1 + count(2) + count(3)</text>
+    <text x="444" y="126">2 = 2 → perfect: 2² − 1 = <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+    <text x="444" y="158">2 ≠ 1 → 1 + count(6) + 0</text>
+    <text x="444" y="190">1 = 1 → <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  </g>
+  <text x="340" y="290" text-anchor="middle" fill="#1a2026" font-size="13">At 2 the probes tie 2 = 2 — perfect, so 2² − 1 = 3 nodes come from arithmetic alone.</text>
+  <text x="340" y="312" text-anchor="middle" fill="#1a2026" font-size="13">Only 3's ragged side recurses; the total is 1 + 3 + 2 = <tspan fill="#4169E1" font-weight="600">6</tspan>.</text>
+</svg>

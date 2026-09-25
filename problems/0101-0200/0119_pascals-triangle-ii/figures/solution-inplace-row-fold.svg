@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="350" fill="#ffffff"/>
+  <!-- rowIndex = 3; one seeded array [1,1,1,1] folded in place right-to-left:
+       after i=2 -> [1,2,1,1]; pass i=3: j=2 -> [1,2,3,1], j=1 -> [1,3,3,1];
+       cells 80x40 at x=140/220/300/380, rows at y=70/124/178/232 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="180" y="58">row[0]</text>
+    <text x="260" y="58">row[1]</text>
+    <text x="340" y="58">row[2]</text>
+    <text x="420" y="58">row[3]</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="140" y="70" width="80" height="40"/><rect x="220" y="70" width="80" height="40"/><rect x="300" y="70" width="80" height="40"/><rect x="380" y="70" width="80" height="40"/>
+    <rect x="140" y="124" width="80" height="40"/><rect x="220" y="124" width="80" height="40"/><rect x="300" y="124" width="80" height="40"/><rect x="380" y="124" width="80" height="40"/>
+    <rect x="140" y="178" width="80" height="40"/><rect x="220" y="178" width="80" height="40"/><rect x="300" y="178" width="80" height="40"/><rect x="380" y="178" width="80" height="40"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="140" y="232" width="80" height="40"/><rect x="220" y="232" width="80" height="40"/><rect x="300" y="232" width="80" height="40"/><rect x="380" y="232" width="80" height="40"/>
+  </g>
+  <rect x="220" y="124" width="80" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="300" y="178" width="80" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="128" y="95">seed</text>
+    <text x="128" y="149">after i = 2</text>
+    <text x="128" y="203">i = 3, j = 2</text>
+    <text x="128" y="257">i = 3, j = 1</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="180" y="95">1</text><text x="260" y="95">1</text><text x="340" y="95">1</text><text x="420" y="95">1</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="180" y="149" fill="#4169E1">1</text><text x="260" y="149" fill="#4169E1" font-weight="600">2</text><text x="340" y="149" fill="#1a2026">1</text><text x="420" y="149" fill="#1a2026">1</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="180" y="203" fill="#1a2026">1</text><text x="260" y="203" fill="#4169E1">2</text><text x="340" y="203" fill="#4169E1" font-weight="600">3</text><text x="420" y="203" fill="#1a2026">1</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-weight="600">
+    <text x="180" y="257">1</text><text x="260" y="257">3</text><text x="340" y="257">3</text><text x="420" y="257">1</text>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="480" y="90">seeded with ones</text>
+    <text x="480" y="144">row[1] += row[0] = 1</text>
+    <text x="480" y="198">row[2] += row[1] = 2</text>
+    <text x="480" y="252">row[1] += row[0] — done</text>
+  </g>
+  <text x="320" y="304" text-anchor="middle" fill="#1a2026" font-size="13">Right-to-left, row[j-1] is still the previous row when read: at j = 2, row[1] = 2.</text>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">The seeded ones fold in place to <tspan fill="#4169E1" font-weight="600">1, 3, 3, 1</tspan> — row 3, the only array ever allocated.</text>
+</svg>

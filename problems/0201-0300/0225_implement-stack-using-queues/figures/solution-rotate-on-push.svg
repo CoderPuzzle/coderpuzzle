@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- single queue, front → back; push(1) → [1]; push(2) → [1,2] then one rotation → [2,1]; cells 72x36 at x=220 -->
+  <text x="220" y="48" fill="#5c6b76" font-size="12">queue, front → back</text>
+  <text x="20" y="92" fill="#1a2026" font-size="13">push(1)</text>
+  <text x="20" y="174" fill="#1a2026" font-size="13">push(2)</text>
+  <text x="20" y="258" fill="#1a2026" font-size="13">rotate once</text>
+  <rect x="220" y="69" width="72" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="256" y="92" text-anchor="middle" fill="#1a2026" font-weight="600">1</text>
+  <text x="256" y="122" text-anchor="middle" fill="#5c6b76" font-size="11">front</text>
+  <path d="M 256 128 V 146" fill="none" stroke="#42525e" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <rect x="220" y="152" width="72" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="300" y="152" width="72" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="256" y="175" text-anchor="middle" fill="#1a2026" font-weight="600">1</text>
+  <text x="336" y="175" text-anchor="middle" fill="#1a2026" font-weight="600">2</text>
+  <text x="400" y="174" fill="#5c6b76" font-size="12.5">2 enters at the back, front still 1</text>
+  <path d="M 256 192 C 256 224, 336 200, 336 226" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="352" y="216" fill="#4169E1" font-size="12">1 re-enters at the back</text>
+  <text x="256" y="230" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">front = stack top</text>
+  <rect x="220" y="236" width="72" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <rect x="300" y="236" width="72" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="256" y="259" text-anchor="middle" fill="#1a2026" font-weight="600">2</text>
+  <text x="336" y="259" text-anchor="middle" fill="#1a2026" font-weight="600">1</text>
+  <text x="400" y="258" fill="#5c6b76" font-size="12.5">top() → <tspan fill="#4169E1" font-weight="600">2</tspan>, pop() → <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <text x="340" y="306" text-anchor="middle" fill="#1a2026" font-size="13">After the rotation the newest value fronts the queue — the queue's front is the stack's top.</text>
+  <text x="340" y="328" text-anchor="middle" fill="#1a2026" font-size="13">top() returns <tspan fill="#4169E1" font-weight="600">2</tspan> and pop() removes <tspan fill="#4169E1" font-weight="600">2</tspan>, matching the example.</text>
+</svg>

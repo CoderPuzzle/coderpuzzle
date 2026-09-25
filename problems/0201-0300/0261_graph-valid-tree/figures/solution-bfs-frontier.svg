@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="344" fill="#ffffff"/>
+  <!-- n = 5, edges [[0,1],[0,2],[0,3],[1,4]]; nodes r=17; tint = BFS level; queue trace panel at x=388 -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="200" y1="70" x2="120" y2="150"/>
+    <line x1="200" y1="70" x2="200" y2="150"/>
+    <line x1="200" y1="70" x2="280" y2="150"/>
+    <line x1="120" y1="150" x2="120" y2="230"/>
+  </g>
+  <circle cx="200" cy="70" r="17" fill="#4169E1" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="120" cy="150" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="200" cy="150" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="280" cy="150" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="120" cy="230" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="200" y="75" fill="#ffffff">0</text>
+    <text x="120" y="155" fill="#1a2026">1</text>
+    <text x="200" y="155" fill="#1a2026">2</text>
+    <text x="280" y="155" fill="#1a2026">3</text>
+    <text x="120" y="235" fill="#1a2026">4</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="12">
+    <text x="166" y="74">level 0</text>
+    <text x="88" y="154">level 1</text>
+    <text x="88" y="234">level 2</text>
+  </g>
+  <rect x="388" y="64" width="224" height="192" fill="#f0f3f7"/>
+  <text x="402" y="90" fill="#5c6b76" font-size="12" font-weight="600">queue trace from node 0</text>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="402" y="114">mark 0 → queue [0]</text>
+    <text x="402" y="138">pop 0: mark 1, 2, 3</text>
+    <text x="402" y="162">queue [1, 2, 3]</text>
+    <text x="402" y="186">pop 1: mark 4 → queue [2, 3, 4]</text>
+    <text x="402" y="210">pop 2, 3, 4: queue []</text>
+  </g>
+  <text x="402" y="238" fill="#4169E1" font-size="13.5" font-weight="600">visited = 5 = n → true</text>
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">The frontier spreads 0 → 1, 2, 3 → 4, counting each node once.</text>
+  <text x="320" y="320" text-anchor="middle" fill="#1a2026" font-size="13">visited reaches <tspan fill="#4169E1" font-weight="600">5</tspan> = n with 4 = n - 1 edges, so the graph is a tree.</text>
+</svg>

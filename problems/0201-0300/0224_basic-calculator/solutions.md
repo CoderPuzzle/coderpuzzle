@@ -6,6 +6,8 @@ The expression contains only additions, subtractions, and parenthesized groups, 
 
 Parentheses are handled by saving and restoring context with a stack. On `(` the code pushes the current `result` and `sign` and restarts both (`result = 0`, `sign = 1`) so the inner group is evaluated as a fresh expression. On `)` the inner `num` is folded in, then the inner value is combined with the saved context in one step: the popped sign is applied to the inner result and the popped outer result is added back. Since the sign was pushed last, `stack.pop()` retrieves it first.
 
+![Scanning the statement's `(1+(4+5+2)-3)+(6+8)`: each `(` pushes the saved (result, sign), each `)` pops and recombines, and the final pop lands 14 × 1 + 9 = 23 on an empty stack.](figures/solution-sign-tracking-stack.svg)
+
 Stepping the statement's Example 3, `(1+(4+5+2)-3)+(6+8)`, through the scan:
 
 1. The leading `(` pushes the outer context `(0, 1)` and restarts; `stack = [0, 1]`.

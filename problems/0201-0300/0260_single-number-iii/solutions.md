@@ -6,6 +6,8 @@ XOR-ing the entire array cancels every value that appears twice (a pair XORs to 
 
 Isolating the lowest set bit with `mask = total & -total` (the two's-complement negation keeps that bit and flips all lower bits, so the AND leaves exactly it) splits the array into two groups: values with that bit set and values without. Identical duplicates always land in the same group and cancel each other again, while the two singles — differing at that bit — land one per group. XOR-ing the masked group therefore yields one single, `first`; the other follows for free as `total ^ first`, since XOR-ing both singles gives `total`.
 
+![On [1, 2, 1, 3, 2, 5] the array XOR is total = 6, mask 6 & -6 = 2 isolates bit 1 where the singles 3 (011) and 5 (101) differ, and the two groups XOR to 3 and 5.](figures/solution-xor-split-mask.svg)
+
 The final `sorted` of the two-element list is constant work and only normalizes the output order. Two linear passes and a handful of integer variables satisfy the required linear time and constant extra space; Python's arbitrary-precision integers make `total & -total` behave exactly like the classic 32-bit trick with no overflow concerns.
 
 **Complexity:** `O(n)` time, `O(1)` space.

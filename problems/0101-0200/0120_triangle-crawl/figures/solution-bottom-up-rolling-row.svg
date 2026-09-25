@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="372" fill="#ffffff"/>
+  <!-- triangle [[2],[3,4],[6,5,7],[4,1,8,3]]; rolling best row snapshots sit level with
+       the triangle row each pass folds: seed [4,1,8,3] -> [7,6,10,3] -> [9,10,10,3] -> [11,10,10,3];
+       cells 52x36; retired columns grayed -->
+  <text x="164" y="46" text-anchor="middle" fill="#5c6b76" font-size="12">triangle</text>
+  <text x="484" y="46" text-anchor="middle" fill="#5c6b76" font-size="12">rolling best row</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="60" y="210" width="52" height="36"/><rect x="112" y="210" width="52" height="36"/><rect x="164" y="210" width="52" height="36"/><rect x="216" y="210" width="52" height="36"/>
+    <rect x="86" y="160" width="52" height="36"/><rect x="138" y="160" width="52" height="36"/><rect x="190" y="160" width="52" height="36"/>
+    <rect x="112" y="110" width="52" height="36"/><rect x="164" y="110" width="52" height="36"/>
+    <rect x="138" y="60" width="52" height="36"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="138" y="60" width="52" height="36"/>
+    <rect x="112" y="110" width="52" height="36"/>
+    <rect x="138" y="160" width="52" height="36"/>
+    <rect x="112" y="210" width="52" height="36"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2.5" fill="none">
+    <path d="M 164 96 L 138 110"/>
+    <path d="M 138 146 L 164 160"/>
+    <path d="M 164 196 L 138 210"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="164" y="83" fill="#4169E1" font-weight="600">2</text>
+    <text x="138" y="133" fill="#4169E1" font-weight="600">3</text><text x="190" y="133">4</text>
+    <text x="112" y="183">6</text><text x="164" y="183" fill="#4169E1" font-weight="600">5</text><text x="216" y="183">7</text>
+    <text x="86" y="233">4</text><text x="138" y="233" fill="#4169E1" font-weight="600">1</text><text x="190" y="233">8</text><text x="242" y="233">3</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="372" y="80">pass i = 0</text>
+    <text x="372" y="130">pass i = 1</text>
+    <text x="372" y="180">pass i = 2</text>
+    <text x="372" y="230">seed</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="380" y="210" width="52" height="36"/><rect x="432" y="210" width="52" height="36"/><rect x="484" y="210" width="52" height="36"/><rect x="536" y="210" width="52" height="36"/>
+    <rect x="380" y="160" width="52" height="36"/><rect x="432" y="160" width="52" height="36"/><rect x="484" y="160" width="52" height="36"/>
+    <rect x="380" y="110" width="52" height="36"/><rect x="432" y="110" width="52" height="36"/>
+  </g>
+  <rect x="536" y="160" width="52" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="484" y="110" width="52" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="536" y="110" width="52" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="432" y="60" width="52" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="484" y="60" width="52" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="536" y="60" width="52" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="380" y="60" width="52" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <rect x="432" y="160" width="52" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="380" y="110" width="52" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="432" y="210" width="52" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="406" y="233">4</text><text x="458" y="233" fill="#4169E1" font-weight="600">1</text><text x="510" y="233">8</text><text x="562" y="233">3</text>
+    <text x="406" y="183">7</text><text x="458" y="183" fill="#4169E1" font-weight="600">6</text><text x="510" y="183">10</text>
+    <text x="406" y="133" fill="#4169E1" font-weight="600">9</text><text x="458" y="133">10</text>
+  </g>
+  <text x="406" y="83" text-anchor="middle" fill="#4169E1" font-weight="600">11</text>
+  <g text-anchor="middle" fill="#9aa7b2">
+    <text x="562" y="183">3</text>
+    <text x="510" y="133">10</text><text x="562" y="133">3</text>
+    <text x="458" y="83">10</text><text x="510" y="83">10</text><text x="562" y="83">3</text>
+  </g>
+  <text x="320" y="304" text-anchor="middle" fill="#1a2026" font-size="13">row[j] = triangle[i][j] + min(row[j], row[j + 1]) — one seeded array, folded upward in place.</text>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">E.g. 6 + min(4, 1) = 7. The climb ends at 2 + 3 + 5 + 1 = <tspan fill="#4169E1" font-weight="600">11</tspan> = best(0, 0).</text>
+</svg>

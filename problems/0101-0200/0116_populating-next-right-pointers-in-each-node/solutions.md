@@ -47,6 +47,8 @@ parent links its own pair, then bridges to the next parent's `left`. When
 the current level's first node has no left child the tree's leaves are
 reached (a perfect tree ends everywhere at once) and the walk stops.
 
+![Threading the perfect tree [1,2,3,4,5,6,7]: after the root wires 2 to 3, the walk rides that wired chain to link 4 to 5, bridge 5 to 6 across parents, and link 6 to 7 with no queue.](figures/solution-level-chain-walk.svg)
+
 Every node is visited exactly once and the only state is the two walk
 cursors — the constant extra space the follow-up asks for.
 

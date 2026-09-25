@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 266" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="266" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowmuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- prices = [1,2,3,0,2]; wealth after each day: hold/sold/rest -->
+  <!-- day1: hold=-1, sold=impossible, rest=0; day4 buy must use rest[3]=1 (sold[3]=2 is cooling); day5 sold=3 -->
+  <text x="100" y="52" text-anchor="end" fill="#9aa7b2" font-size="11.5">day</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="148" y="52">1</text><text x="224" y="52">2</text><text x="300" y="52">3</text><text x="376" y="52">4</text><text x="452" y="52">5</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="100" y="84">price</text><text x="100" y="116">hold</text><text x="100" y="148">sold</text><text x="100" y="180">rest</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="110" y="64" width="76" height="32" fill="#f0f3f7"/><rect x="186" y="64" width="76" height="32" fill="#f0f3f7"/><rect x="262" y="64" width="76" height="32" fill="#f0f3f7"/><rect x="338" y="64" width="76" height="32" fill="#f0f3f7"/><rect x="414" y="64" width="76" height="32" fill="#f0f3f7"/>
+    <rect x="110" y="96" width="76" height="32" fill="#ffffff"/><rect x="186" y="96" width="76" height="32" fill="#ffffff"/><rect x="262" y="96" width="76" height="32" fill="#ffffff"/><rect x="338" y="96" width="76" height="32" fill="#dbe4fb"/><rect x="414" y="96" width="76" height="32" fill="#ffffff"/>
+    <rect x="110" y="128" width="76" height="32" fill="#ffffff"/><rect x="186" y="128" width="76" height="32" fill="#ffffff"/><rect x="262" y="128" width="76" height="32" fill="#ffffff"/><rect x="338" y="128" width="76" height="32" fill="#ffffff"/><rect x="414" y="128" width="76" height="32" fill="#4169E1"/>
+    <rect x="110" y="160" width="76" height="32" fill="#ffffff"/><rect x="186" y="160" width="76" height="32" fill="#ffffff"/><rect x="262" y="160" width="76" height="32" fill="#dbe4fb"/><rect x="338" y="160" width="76" height="32" fill="#ffffff"/><rect x="414" y="160" width="76" height="32" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="148" y="84" fill="#1a2026" font-weight="600">1</text><text x="224" y="84" fill="#1a2026" font-weight="600">2</text><text x="300" y="84" fill="#1a2026" font-weight="600">3</text><text x="376" y="84" fill="#1a2026" font-weight="600">0</text><text x="452" y="84" fill="#1a2026" font-weight="600">2</text>
+    <text x="148" y="116" fill="#1a2026">-1</text><text x="224" y="116" fill="#1a2026">-1</text><text x="300" y="116" fill="#1a2026">-1</text><text x="376" y="116" fill="#1a2026" font-weight="600">1</text><text x="452" y="116" fill="#1a2026">1</text>
+    <text x="148" y="148" fill="#9aa7b2">—</text><text x="224" y="148" fill="#1a2026">1</text><text x="300" y="148" fill="#1a2026">2</text><text x="376" y="148" fill="#1a2026">-1</text><text x="452" y="148" fill="#ffffff" font-weight="600">3</text>
+    <text x="148" y="180" fill="#1a2026">0</text><text x="224" y="180" fill="#1a2026">0</text><text x="300" y="180" fill="#1a2026" font-weight="600">1</text><text x="376" y="180" fill="#1a2026">2</text><text x="452" y="180" fill="#1a2026">2</text>
+  </g>
+  <!-- allowed buy: day 4 spends day 3's rest, routed below the table to hold day 4 -->
+  <path d="M 330 194 L 330 212 L 396 212 L 396 134" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- blocked buy: day 3's sale cannot fund day 4; the stroke dead-ends in an X -->
+  <line x1="312" y1="138" x2="344" y2="124" stroke="#9aa7b2" stroke-width="2" stroke-dasharray="5 4"/>
+  <g stroke="#9aa7b2" stroke-width="2">
+    <line x1="345" y1="115" x2="355" y2="125"/><line x1="355" y1="115" x2="345" y2="125"/>
+  </g>
+  <text x="502" y="148" fill="#5c6b76" font-size="12.5">answer <tspan fill="#4169E1" font-weight="600" font-size="14">3</tspan></text>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="310" y="232">Day 4's buy reads day 3's rest, 1 - 0 = 1: day 3's sale of 2 is still cooling down.</text>
+    <text x="310" y="252">Selling on day 5 lands at sold = 1 + 2 = 3, the final max(sold, rest) = <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="376" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- A = (-3,0)-(3,4) area 24; B = (0,-1)-(9,2) area 27; overlap (0,0)-(3,2) = 3x2 = 6; px = 150+40x, py = 250-40y -->
+  <rect x="30" y="90" width="240" height="160" fill="#f0f3f7" stroke="#42525e" stroke-width="1.6"/>
+  <rect x="150" y="170" width="360" height="120" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <rect x="150" y="170" width="120" height="80" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <text x="90" y="175" text-anchor="middle" fill="#42525e" font-size="13" font-weight="600">A</text>
+  <text x="390" y="235" text-anchor="middle" fill="#42525e" font-size="13" font-weight="600">B</text>
+  <text x="210" y="215" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">3 × 2 = 6</text>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="30" y="268">(−3, 0)</text>
+    <text x="276" y="86">(3, 4)</text>
+    <text x="150" y="308" text-anchor="middle">(0, −1)</text>
+    <text x="518" y="174">(9, 2)</text>
+    <text x="144" y="266" text-anchor="end">(0, 0)</text>
+    <text x="276" y="164">(3, 2)</text>
+  </g>
+  <path d="M 274 210 H 352" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrowB)"/>
+  <text x="360" y="214" fill="#4169E1" font-size="12">counted twice — subtract once</text>
+  <text x="310" y="336" text-anchor="middle" fill="#1a2026" font-size="13">A = 6 × 4 = 24&#160;&#160;&#160;B = 9 × 2 = 27&#160;&#160;&#160;shared = 3 × 2 = 6</text>
+  <text x="310" y="358" text-anchor="middle" fill="#1a2026" font-size="13">The shared rectangle is counted twice, so subtract it once: 24 + 27 − 6 = <tspan fill="#4169E1" font-weight="600">45</tspan>.</text>
+</svg>

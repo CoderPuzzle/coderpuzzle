@@ -17,6 +17,8 @@ the single array equivalent to the two-dimensional recurrence
 right instead would read an already-updated `dp[j-1]` and wrongly let one
 character of `s` be matched against several characters of `t`.
 
+![Consuming s = babgbag one character at a time, the rolling dp array over t = bag gains dp[j-1] in the one matching cell of each right-to-left sweep and ends at dp[3] = 5.](figures/solution-rolling-dp-right-to-left.svg)
+
 After all of `s` is consumed, `dp[m]` counts every distinct subsequence.
 Characters of `s` that match nothing leave `dp` untouched, and Python's
 arbitrary-width integers absorb the counts, which the constraints promise
