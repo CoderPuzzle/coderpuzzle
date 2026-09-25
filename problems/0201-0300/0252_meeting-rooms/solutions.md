@@ -17,6 +17,8 @@ strict violation settles the answer `false` on the spot, because two meetings
 already occupying the same moment cannot be attended no matter what the rest of
 the schedule looks like.
 
+![The example intervals [0, 30], [5, 10], [15, 20] sorted by start along the timeline: the first adjacent pair already clashes because 0–30 ends at 30, after 5–10 begins at 5, so one strict comparison settles the answer false.](figures/solution-sorted-adjacent-clash.svg)
+
 An empty array, or a single meeting, leaves the loop with no pair to check and
 the answer is `true`. Equal starts need no special handling: each meeting ends
 strictly after its own start, so two meetings sharing a start always fail the

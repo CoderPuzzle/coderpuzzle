@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 456" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="456" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- example 1, capacity 2; each row is the sentinel list MRU -> LRU after the named call;
+       node boxes 64x36 at x=210/292, sentinels 42 wide, map entries at x=546; ghost = evicted -->
+  <g text-anchor="start" fill="#5c6b76" font-size="12.5">
+    <text x="20" y="56">put(1, 1), then put(2, 2)</text>
+    <text x="20" y="152">get(1) → 1: node 1 unlinks and relinks at the MRU end</text>
+    <text x="20" y="248">put(3, 3): map at capacity 2 — evict LRU node 2, insert 3</text>
+    <text x="20" y="344">put(4, 4): evict LRU node 1, insert 4 — cache is {3 = 3, 4 = 4}</text>
+  </g>
+  <!-- row 1: head - 2 - 1 - tail -->
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="#f0f3f7">
+    <rect x="150" y="66" width="42" height="36"/><rect x="374" y="66" width="42" height="36"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="210" y="66" width="64" height="36"/><rect x="292" y="66" width="64" height="36"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 194 84 H 208" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <path d="M 276 84 H 290" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <path d="M 358 84 H 372" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="171" y="88" fill="#5c6b76" font-size="10.5">head</text>
+    <text x="242" y="88" font-weight="600" fill="#1a2026">2:2</text>
+    <text x="324" y="88" font-weight="600" fill="#1a2026">1:1</text>
+    <text x="395" y="88" fill="#5c6b76" font-size="10.5">tail</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10">
+    <text x="171" y="118">MRU</text><text x="395" y="118">LRU</text>
+  </g>
+  <text x="510" y="88" fill="#5c6b76" font-size="12">map</text>
+  <text x="546" y="88" fill="#1a2026" font-size="12">1→n1&#160;&#160;2→n2</text>
+  <!-- row 2: get(1) moves node 1 to the MRU end -->
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="#f0f3f7">
+    <rect x="150" y="162" width="42" height="36"/><rect x="374" y="162" width="42" height="36"/>
+  </g>
+  <rect x="210" y="162" width="64" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="292" y="162" width="64" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 194 180 H 208" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <path d="M 276 180 H 290" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <path d="M 358 180 H 372" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="171" y="184" fill="#5c6b76" font-size="10.5">head</text>
+    <text x="242" y="184" font-weight="600" fill="#4169E1">1:1</text>
+    <text x="324" y="184" font-weight="600" fill="#1a2026">2:2</text>
+    <text x="395" y="184" fill="#5c6b76" font-size="10.5">tail</text>
+  </g>
+  <text x="510" y="184" fill="#5c6b76" font-size="12">map</text>
+  <text x="546" y="184" fill="#1a2026" font-size="12">1→n1&#160;&#160;2→n2</text>
+  <!-- row 3: put(3,3) evicts node 2, inserts node 3 at MRU -->
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="#f0f3f7">
+    <rect x="150" y="258" width="42" height="36"/><rect x="374" y="258" width="42" height="36"/>
+  </g>
+  <rect x="210" y="258" width="64" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="292" y="258" width="64" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="434" y="258" width="56" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 194 276 H 208" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <path d="M 276 276 H 290" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <path d="M 358 276 H 372" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 421 276 H 429" stroke="#9aa7b2" stroke-width="1.4" fill="none" marker-end="url(#arrowM)"/>
+  <g text-anchor="middle">
+    <text x="171" y="280" fill="#5c6b76" font-size="10.5">head</text>
+    <text x="242" y="280" font-weight="600" fill="#4169E1">3:3</text>
+    <text x="324" y="280" font-weight="600" fill="#1a2026">1:1</text>
+    <text x="395" y="280" fill="#5c6b76" font-size="10.5">tail</text>
+    <text x="462" y="280" fill="#9aa7b2">2:2</text>
+    <text x="462" y="310" fill="#9aa7b2" font-size="10.5">evicted</text>
+  </g>
+  <text x="510" y="280" fill="#5c6b76" font-size="12">map</text>
+  <text x="546" y="280" fill="#1a2026" font-size="12">1→n1&#160;&#160;3→n3</text>
+  <!-- row 4: put(4,4) evicts node 1, inserts node 4 at MRU -->
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="#f0f3f7">
+    <rect x="150" y="354" width="42" height="36"/><rect x="374" y="354" width="42" height="36"/>
+  </g>
+  <rect x="210" y="354" width="64" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="292" y="354" width="64" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="434" y="354" width="56" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 194 372 H 208" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <path d="M 276 372 H 290" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <path d="M 358 372 H 372" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 421 372 H 429" stroke="#9aa7b2" stroke-width="1.4" fill="none" marker-end="url(#arrowM)"/>
+  <g text-anchor="middle">
+    <text x="171" y="376" fill="#5c6b76" font-size="10.5">head</text>
+    <text x="242" y="376" font-weight="600" fill="#4169E1">4:4</text>
+    <text x="324" y="376" font-weight="600" fill="#1a2026">3:3</text>
+    <text x="395" y="376" fill="#5c6b76" font-size="10.5">tail</text>
+    <text x="462" y="376" fill="#9aa7b2">1:1</text>
+    <text x="462" y="406" fill="#9aa7b2" font-size="10.5">evicted</text>
+  </g>
+  <text x="510" y="376" fill="#5c6b76" font-size="12">map</text>
+  <text x="546" y="376" fill="#1a2026" font-size="12">3→n3&#160;&#160;4→n4</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="340" y="424">Every touch moves its node beside the head sentinel; the node before the tail</text>
+    <text x="340" y="442">sentinel is the LRU one — put(3, 3) evicts <tspan fill="#4169E1" font-weight="600">node 2</tspan> and put(4, 4) evicts <tspan fill="#4169E1" font-weight="600">node 1</tspan>.</text>
+  </g>
+</svg>

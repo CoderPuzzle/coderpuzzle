@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- costs = [[1,5,3],[2,9,4]]; house rows y = 64 + 46c, cells 84x38 at x 78 (house 0) and x 488 (house 1) -->
+  <text x="120" y="50" text-anchor="middle" fill="#5c6b76" font-size="12.5">house 0 endings</text>
+  <text x="530" y="50" text-anchor="middle" fill="#5c6b76" font-size="12.5">house 1 endings</text>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="70" y="88">color 0</text><text x="70" y="134">color 1</text><text x="70" y="180">color 2</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="78" y="64" width="84" height="38"/><rect x="78" y="110" width="84" height="38"/><rect x="78" y="156" width="84" height="38"/>
+    <rect x="488" y="64" width="84" height="38"/><rect x="488" y="110" width="84" height="38"/><rect x="488" y="156" width="84" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="120" y="88">1</text><text x="120" y="134">5</text><text x="120" y="180">3</text>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="530" y="88" fill="#1a2026">3 + 2 = <tspan fill="#4169E1" font-weight="600">5</tspan></text>
+    <text x="530" y="134" fill="#1a2026">1 + 9 = <tspan font-weight="600">10</tspan></text>
+    <text x="530" y="180" fill="#1a2026">1 + 4 = <tspan fill="#4169E1" font-weight="600">5</tspan></text>
+  </g>
+  <!-- state badges carried out of house 0 -->
+  <rect x="250" y="58" width="150" height="30" rx="6" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="325" y="78" text-anchor="middle" fill="#1a2026" font-size="13">second <tspan font-weight="600">3</tspan> · color 2</text>
+  <rect x="250" y="150" width="150" height="30" rx="6" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="325" y="170" text-anchor="middle" fill="#1a2026" font-size="13">smallest <tspan font-weight="600">1</tspan> · color 0</text>
+  <!-- routing: color 0 is barred from the smallest, so it takes the second -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 400 73 L 484 88" marker-end="url(#arrow)"/>
+    <path d="M 400 162 Q 440 142 484 134" marker-end="url(#arrow)"/>
+    <path d="M 400 174 Q 440 181 484 181" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 400 156 Q 430 115 478 96" fill="none" stroke="#9aa7b2" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrowMuted)"/>
+  <g stroke="#9aa7b2" stroke-width="2">
+    <line x1="429" y1="114.5" x2="441" y2="126.5"/><line x1="441" y1="114.5" x2="429" y2="126.5"/>
+  </g>
+  <text x="320" y="258" text-anchor="middle" fill="#1a2026" font-size="13">House 1 extends the smallest ending 1 everywhere except color 0, the smallest's own —</text>
+  <text x="320" y="278" text-anchor="middle" fill="#1a2026" font-size="13">barred, it takes the second smallest 3 — min(5, 10, 5) = <tspan fill="#4169E1" font-weight="600">5</tspan> is the answer.</text>
+</svg>

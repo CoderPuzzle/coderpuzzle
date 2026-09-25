@@ -36,10 +36,11 @@ qualifying entries are those with `2 * v < x`, so the cut is binary-searched
 over the doubled values (kept in a wide type, since doubling either int32
 extreme wraps in 32 bits) and the prefix below it counts exactly the
 right-hand entries `x` more than doubles; `x` itself is then inserted at its
-own rank. On the first example the walk seats `2`, `5`, and `1` before `8`
-arrives: the cut falls between values `3` and `5`, since `2 · 5 = 10` is not
-below `8`, so the sweep credits `1` and `2` but not `5`; the final `3` finds
-only `1` below its cut — four pairs, matching the merge.
+own rank. On the first example the walk seats `1`, then `2`, then the first `3`: at
+each of the two `3`s (indices `1` and `3`) the only held value below the
+cut is the final `1` (`2 · 1 = 2 < 3`, while `2 · 2 = 4` is not), so the
+sweep credits exactly the pairs `(1, 4)` and `(3, 4)` — two, matching the
+statement.
 
 No recursion and no merging: the array is never reordered, the order
 statistics accumulate one insertion at a time, and each entry costs two

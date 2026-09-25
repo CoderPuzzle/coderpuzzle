@@ -18,6 +18,8 @@ Thirty-two passes over the array are still linear time — the constant 32 is in
 
 Per-bit counting can be run for all 32 positions simultaneously if the counts are compressed into two registers. Think of each bit position as a tiny automaton driven through the values: a bit starts cleared, moves into `ones` the first time it is seen, into `twos` the second, and clears again on the third — a mod-3 cycle `00 -> ones -> twos -> 00`. The transitions are written as whole-word bitwise updates: `ones = (ones ^ v) & ~twos` toggles membership using the old `twos` as a guard (a bit sitting in `twos` must not re-enter `ones` — it is on its way out), and `twos = (twos ^ v) & ~ones` does the symmetric update against the freshly computed `ones`.
 
+![On nums = [2, 2, 3, 2] bit 1 rides ones, twos, 00, ones across the three 2s while bit 0 holds the lone 3, so the scan ends with ones = 11 = 3.](figures/solution-ones-twos-automaton.svg)
+
 After the scan, every bit seen a multiple of three times has cycled back to clear in both registers, so `ones` holds exactly the bits of the value that appeared once — no assembly, no sign repair, and no per-position loop: one pass with a fixed handful of word operations per element.
 
 **Complexity:** `O(n)` time, `O(1)` space.

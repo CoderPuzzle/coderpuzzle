@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 350" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="350" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- dungeon = [[-2,-3,3],[-5,-10,1],[10,30,-5]]; grid cells 64x40 at (70,70); rolling need[] snapshots 52x34 from x=402 -->
+  <text x="166" y="54" text-anchor="middle" fill="#5c6b76" font-size="12.5">dungeon</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="70" y="70" width="64" height="40"/><rect x="134" y="70" width="64" height="40"/><rect x="198" y="70" width="64" height="40"/>
+    <rect x="70" y="110" width="64" height="40"/><rect x="134" y="110" width="64" height="40"/><rect x="198" y="110" width="64" height="40"/>
+    <rect x="70" y="150" width="64" height="40"/><rect x="134" y="150" width="64" height="40"/><rect x="198" y="150" width="64" height="40"/>
+  </g>
+  <text x="76" y="82" fill="#9aa7b2" font-size="10">K</text>
+  <text x="244" y="184" fill="#9aa7b2" font-size="10">P</text>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="102" y="95">-2</text><text x="166" y="95">-3</text><text x="230" y="95">3</text>
+    <text x="102" y="135">-5</text><text x="166" y="135">-10</text><text x="230" y="135">1</text>
+    <text x="102" y="175">10</text><text x="166" y="175">30</text><text x="230" y="175">-5</text>
+  </g>
+  <!-- optimal path RIGHT, RIGHT, DOWN, DOWN through cells (0,0) (0,1) (0,2) (1,2) (2,2) -->
+  <polyline points="102,79 250,79 250,169" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <circle cx="102" cy="79" r="3.5" fill="#4169E1"/>
+  <circle cx="250" cy="169" r="3.5" fill="#4169E1"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="332" y="108">rows fold</text>
+    <text x="332" y="124">right to left</text>
+  </g>
+  <path d="M 276 136 H 356" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="332" y="158" text-anchor="middle" fill="#5c6b76" font-size="12">bottom row first</text>
+  <text x="506" y="62" text-anchor="middle" fill="#5c6b76" font-size="12.5">rolling need[] row</text>
+  <text x="480" y="76" text-anchor="middle" fill="#5c6b76" font-size="11.5">room (2,1): max(1, 6 - 30) = 1</text>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="620" y="106">row 2</text>
+    <text x="620" y="174">row 1</text>
+    <text x="620" y="242">row 0</text>
+  </g>
+  <!-- snapshot rows: after folding dungeon row 2, then row 1, then row 0; index 3 is the sentinel -->
+  <g stroke="#1a2026" stroke-width="1.4">
+    <rect x="402" y="84" width="52" height="34" fill="#ffffff"/><rect x="454" y="84" width="52" height="34" fill="#ffffff"/><rect x="506" y="84" width="52" height="34" fill="#ffffff"/>
+    <rect x="558" y="84" width="52" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="402" y="152" width="52" height="34" fill="#ffffff"/><rect x="454" y="152" width="52" height="34" fill="#ffffff"/><rect x="506" y="152" width="52" height="34" fill="#ffffff"/>
+    <rect x="558" y="152" width="52" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="402" y="220" width="52" height="34" fill="#dbe4fb" stroke="#4169E1"/><rect x="454" y="220" width="52" height="34" fill="#ffffff"/><rect x="506" y="220" width="52" height="34" fill="#ffffff"/>
+    <rect x="558" y="220" width="52" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="428" y="106">1</text><text x="480" y="106">1</text><text x="532" y="106">6</text>
+    <text x="584" y="106" fill="#9aa7b2" font-size="12">10&#8309;</text>
+    <text x="428" y="174">6</text><text x="480" y="174">11</text><text x="532" y="174">5</text>
+    <text x="584" y="174" fill="#9aa7b2" font-size="12">10&#8309;</text>
+    <text x="428" y="242" fill="#4169E1">7</text><text x="480" y="242">5</text><text x="532" y="242">2</text>
+    <text x="584" y="242" fill="#9aa7b2" font-size="12">10&#8309;</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 506 122 V 148" marker-end="url(#arrow)"/>
+    <path d="M 506 190 V 216" marker-end="url(#arrow)"/>
+  </g>
+  <text x="340" y="296" text-anchor="middle" fill="#1a2026" font-size="13">Folding upward, need = max(1, min(need below, need right) - room) at every cell,</text>
+  <text x="340" y="316" text-anchor="middle" fill="#1a2026" font-size="13">clamped at 1; the start takes min(6, 5) - (-2) = <tspan fill="#4169E1" font-weight="600">7</tspan> health, and the accented</text>
+  <text x="340" y="336" text-anchor="middle" fill="#1a2026" font-size="13">path RIGHT, RIGHT, DOWN, DOWN reaches the princess with exactly 1 health.</text>
+</svg>

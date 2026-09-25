@@ -18,6 +18,8 @@ as `target = 3.5` between values 3 and 4 in favor of 3. Node values and
 exactly representable IEEE-754 doubles, so the equal-distance comparison is
 exact rather than tolerance-based.
 
+![For target 3.714286 the descent 4 → 2 → 3 keeps best (0.286, 4) from the root, and 4 beats the lower bracket 3 at 0.714, so the closest value is 4.](figures/solution-binary-walk-descent.svg)
+
 The loop touches one pointer and at most `h` nodes, where `h` is the tree's
 height — no recursion, no auxiliary container.
 

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 424" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="424" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [-1,-100,3,99], k = 2; position chips r=14 at y=72; snapshots 90x38 pitch 112 from x=127 -->
+  <text x="40" y="66" fill="#5c6b76" font-size="12.5">i &#8594; (i + 2) mod 4</text>
+  <text x="40" y="86" fill="#5c6b76" font-size="12.5">gcd(4, 2) = 2 cycles</text>
+  <path d="M 214 56 Q 298 16 382 56" fill="none" stroke="#4169E1" stroke-width="1.8" marker-start="url(#arrowB)" marker-end="url(#arrowB)"/>
+  <path d="M 298 88 Q 382 124 466 88" fill="none" stroke="#42525e" stroke-width="1.8" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="214" cy="72" r="14"/><circle cx="298" cy="72" r="14"/><circle cx="382" cy="72" r="14"/><circle cx="466" cy="72" r="14"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="214" y="77">0</text><text x="298" y="77">1</text><text x="382" y="77">2</text><text x="466" y="77">3</text>
+  </g>
+  <text x="298" y="26" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="12">0 &#8596; 2</text>
+  <text x="382" y="132" text-anchor="middle" fill="#5c6b76" font-weight="600" font-size="12">1 &#8596; 3</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="127" y="160" width="90" height="38"/><rect x="239" y="160" width="90" height="38"/><rect x="351" y="160" width="90" height="38"/><rect x="463" y="160" width="90" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">
+    <text x="172" y="184">-1</text><text x="284" y="184">-100</text><text x="396" y="184">3</text><text x="508" y="184">99</text>
+  </g>
+  <text x="563" y="184" fill="#5c6b76" font-size="11.5">start</text>
+  <path d="M 340 206 V 222" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="239" y="226" width="90" height="38"/><rect x="463" y="226" width="90" height="38"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="127" y="226" width="90" height="38"/><rect x="351" y="226" width="90" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="172" y="250" fill="#4169E1">3</text><text x="284" y="250" fill="#1a2026">-100</text><text x="396" y="250" fill="#4169E1">-1</text><text x="508" y="250" fill="#1a2026">99</text>
+  </g>
+  <text x="340" y="282" text-anchor="middle" fill="#5c6b76" font-size="12">cycle 0 &#8596; 2: carried -1 drops into 2, the caught 3 closes into 0</text>
+  <path d="M 340 290 V 306" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="127" y="310" width="90" height="38"/><rect x="351" y="310" width="90" height="38"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="239" y="310" width="90" height="38"/><rect x="463" y="310" width="90" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="172" y="334" fill="#1a2026">3</text><text x="284" y="334" fill="#4169E1">99</text><text x="396" y="334" fill="#1a2026">-1</text><text x="508" y="334" fill="#4169E1">-100</text>
+  </g>
+  <text x="563" y="334" fill="#4169E1" font-weight="600" font-size="11.5">result</text>
+  <text x="340" y="366" text-anchor="middle" fill="#5c6b76" font-size="12">cycle 1 &#8596; 3: carried -100 drops into 3, the caught 99 closes into 1</text>
+  <text x="340" y="394" text-anchor="middle" fill="#1a2026" font-size="13">Each cycle closes with one value in flight; the array ends rotated in place:</text>
+  <text x="340" y="412" text-anchor="middle" fill="#1a2026" font-size="13">[-1, -100, 3, 99] became [3, 99, -1, -100] after the 0 &#8596; 2 and 1 &#8596; 3 cycles.</text>
+</svg>

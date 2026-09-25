@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="360" fill="#ffffff"/>
+  <!-- tree = [5,1,5,5,5,null,5]: root 5; left child 1 with 5-leaf children; right child 5 with one 5-leaf; circles r=22 -->
+  <text x="40" y="40" fill="#5c6b76" font-size="12.5">post-order — verdicts flow up from the leaves</text>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="334" y1="81" x2="261" y2="147"/>
+    <line x1="367" y1="79" x2="458" y2="149"/>
+    <line x1="233" y1="180" x2="192" y2="240"/>
+    <line x1="257" y1="180" x2="298" y2="240"/>
+    <line x1="488" y1="180" x2="532" y2="240"/>
+  </g>
+  <!-- accented circles = the four counted uni-value subtrees: each 5-leaf, plus the 5 rooted above its 5-leaf -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8">
+    <circle cx="180" cy="258" r="22"/><circle cx="310" cy="258" r="22"/>
+    <circle cx="475" cy="162" r="22"/><circle cx="545" cy="258" r="22"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="350" cy="66" r="22"/><circle cx="245" cy="162" r="22"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="350" y="71">5</text><text x="245" y="167">1</text><text x="475" y="167">5</text>
+    <text x="180" y="263">5</text><text x="310" y="263">5</text><text x="545" y="263">5</text>
+  </g>
+  <g font-size="12.5">
+    <text x="382" y="62" fill="#5c6b76">not uni</text>
+    <text x="216" y="156" text-anchor="end" fill="#5c6b76">not uni</text>
+    <text x="505" y="156" fill="#4169E1" font-weight="600">uni → count 4</text>
+    <text x="180" y="298" text-anchor="middle" fill="#4169E1" font-weight="600">uni → count 1</text>
+    <text x="310" y="298" text-anchor="middle" fill="#4169E1" font-weight="600">uni → count 2</text>
+    <text x="545" y="298" text-anchor="middle" fill="#4169E1" font-weight="600">uni → count 3</text>
+  </g>
+  <text x="340" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Post-order verdicts flow up: the three 5-leaves and the 5 over its 5-child give count <tspan fill="#4169E1" font-weight="600">4</tspan>,</text>
+  <text x="340" y="352" text-anchor="middle" fill="#1a2026" font-size="13">while the root and node 1 both fail — 1's children are 5s, not 1s.</text>
+</svg>

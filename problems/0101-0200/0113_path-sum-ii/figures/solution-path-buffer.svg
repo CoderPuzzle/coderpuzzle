@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="372" fill="#ffffff"/>
+  <!-- shared path buffer over tree [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum 22; buffer cells 28x24 gap 4; stack frames are (node, remaining, length) -->
+  <text x="177" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5" font-weight="600">down the left subtree</text>
+  <text x="507" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5" font-weight="600">back up, then the right</text>
+  <!-- column A rows -->
+  <text x="24" y="62" font-size="12.5"><tspan fill="#1a2026" font-weight="600">visit 5</tspan><tspan fill="#5c6b76"> · remaining 17</tspan></text>
+  <text x="24" y="114" font-size="12.5"><tspan fill="#1a2026" font-weight="600">visit 4</tspan><tspan fill="#5c6b76"> · remaining 13</tspan></text>
+  <text x="24" y="166" font-size="12.5"><tspan fill="#1a2026" font-weight="600">visit 11</tspan><tspan fill="#5c6b76"> · remaining 2</tspan></text>
+  <text x="24" y="218" font-size="12.5"><tspan fill="#1a2026" font-weight="600">leaf 7</tspan><tspan fill="#5c6b76"> · 27 ≠ 22 → pop</tspan></text>
+  <text x="24" y="270" font-size="12.5"><tspan fill="#1a2026" font-weight="600">leaf 2</tspan><tspan fill="#4169E1" font-weight="600"> · 22 = 22 → capture</tspan></text>
+  <!-- column B rows -->
+  <text x="354" y="62" font-size="12.5"><tspan fill="#1a2026" font-weight="600">frame (8, 17, 1) pops</tspan><tspan fill="#5c6b76"> · cut back to [5], visit 8</tspan></text>
+  <text x="354" y="114" font-size="12.5"><tspan fill="#1a2026" font-weight="600">leaf 13</tspan><tspan fill="#5c6b76"> · 26 ≠ 22 → pop</tspan></text>
+  <text x="354" y="166" font-size="12.5"><tspan fill="#1a2026" font-weight="600">visit 4</tspan><tspan fill="#5c6b76"> · remaining 5</tspan></text>
+  <text x="354" y="218" font-size="12.5"><tspan fill="#1a2026" font-weight="600">leaf 5</tspan><tspan fill="#4169E1" font-weight="600"> · 22 = 22 → capture</tspan></text>
+  <text x="354" y="270" font-size="12.5"><tspan fill="#1a2026" font-weight="600">leaf 1</tspan><tspan fill="#5c6b76"> · 18 ≠ 22 → pop</tspan></text>
+  <!-- buffer cells: A -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="24" y="70" width="28" height="24"/>
+    <rect x="24" y="122" width="28" height="24"/><rect x="56" y="122" width="28" height="24"/>
+    <rect x="24" y="174" width="28" height="24"/><rect x="56" y="174" width="28" height="24"/><rect x="88" y="174" width="28" height="24"/>
+    <rect x="24" y="226" width="28" height="24"/><rect x="56" y="226" width="28" height="24"/><rect x="88" y="226" width="28" height="24"/>
+    <rect x="120" y="226" width="28" height="24" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="24" y="278" width="28" height="24"/><rect x="56" y="278" width="28" height="24"/>
+    <rect x="88" y="278" width="28" height="24"/><rect x="120" y="278" width="28" height="24"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="38" y="87">5</text>
+    <text x="38" y="139">5</text><text x="70" y="139">4</text>
+    <text x="38" y="191">5</text><text x="70" y="191">4</text><text x="102" y="191">11</text>
+    <text x="38" y="243">5</text><text x="70" y="243">4</text><text x="102" y="243">11</text>
+    <text x="134" y="243" fill="#5c6b76" font-weight="400">7</text>
+    <text x="38" y="295">5</text><text x="70" y="295">4</text><text x="102" y="295">11</text><text x="134" y="295">2</text>
+  </g>
+  <!-- buffer cells: B -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="354" y="70" width="28" height="24"/><rect x="386" y="70" width="28" height="24"/>
+    <rect x="354" y="122" width="28" height="24"/><rect x="386" y="122" width="28" height="24"/><rect x="418" y="122" width="28" height="24"/>
+    <rect x="354" y="174" width="28" height="24"/><rect x="386" y="174" width="28" height="24"/><rect x="418" y="174" width="28" height="24"/>
+    <rect x="354" y="278" width="28" height="24"/><rect x="386" y="278" width="28" height="24"/><rect x="418" y="278" width="28" height="24"/>
+    <rect x="450" y="278" width="28" height="24" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="354" y="226" width="28" height="24"/><rect x="386" y="226" width="28" height="24"/>
+    <rect x="418" y="226" width="28" height="24"/><rect x="450" y="226" width="28" height="24"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="368" y="87">5</text><text x="400" y="87">8</text>
+    <text x="368" y="139">5</text><text x="400" y="139">8</text><text x="432" y="139">13</text>
+    <text x="368" y="191">5</text><text x="400" y="191">8</text><text x="432" y="191">4</text>
+    <text x="368" y="243">5</text><text x="400" y="243">8</text><text x="432" y="243">4</text><text x="464" y="243">5</text>
+    <text x="368" y="295">5</text><text x="400" y="295">8</text><text x="432" y="295">4</text>
+    <text x="464" y="295" fill="#5c6b76" font-weight="400">1</text>
+  </g>
+  <text x="40" y="334" fill="#1a2026" font-size="13">One shared buffer grows 5 → 5,4 → 5,4,11 and captures <tspan fill="#4169E1" font-weight="600">[5,4,11,2]</tspan> at the first</text>
+  <text x="40" y="352" fill="#1a2026" font-size="13">matching leaf; a pop then cuts it back to [5] on the way to <tspan fill="#4169E1" font-weight="600">[5,8,4,5]</tspan> - preorder order.</text>
+</svg>

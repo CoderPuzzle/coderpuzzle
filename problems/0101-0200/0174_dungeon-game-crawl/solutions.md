@@ -6,6 +6,8 @@ Call `need(i, j)` the least health the knight may hold on entering room `(i, j)`
 
 The code keeps one rolling row of `n + 1` entries. Index `n` holds an impassable sentinel far above any real need, and index `n - 1` is seeded with 1, the demand of the virtual room past the princess; every other entry starts at the sentinel. Rows fold bottom-up, and each row right-to-left: when column `j` is updated, `need[j]` still holds the room below and `need[j + 1]` already holds this row — exactly the two moves the recurrence consults. The clamp `max(1, ...)` is the rule that health may never touch zero, and it is applied at every room, including orbs that would otherwise drive the need negative.
 
+![On the example dungeon [[-2,-3,3],[-5,-10,1],[10,30,-5]], the rolling need row folds from the princess's row upward through [1, 1, 6], [6, 11, 5] and [7, 5, 2], clamped at 1 in every orb room, so the knight must start with 7 health along the accented RIGHT, RIGHT, DOWN, DOWN path.](figures/solution-need-row-fold.svg)
+
 A path crosses at most `m + n - 1 = 399` rooms whose values are bounded by 1000 in magnitude, so no honest need exceeds `1 + 399 * 1000 = 399001`; the sentinel 10⁹ towers over that while staying three powers of ten below 32-bit overflow, and it never wins a `min` against a computed entry. The dungeon itself is never mutated.
 
 **Complexity:** `O(mn)` time, `O(n)` extra space.

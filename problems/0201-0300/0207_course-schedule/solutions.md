@@ -23,6 +23,10 @@ the edge into a course still colored 1: that course is an ancestor of the
 very path being walked, so the requirements close into a circle and the
 answer is false the moment such a back edge appears.
 
+![On prerequisites [[1,0],[0,1]] the DFS colors course 0 then course 1 as
+on-path before its own edge 1 → 0 lands back on still-on-path course 0 —
+the circle is closed, so the answer is false.](figures/solution-dfs-back-edge-gray.svg)
+
 A course whose whole subtree has been walked turns 2 and is never
 re-descended, so shared prerequisites are explored once, not once per
 dependent. The walk runs on an explicit stack of (node, next-child-index)

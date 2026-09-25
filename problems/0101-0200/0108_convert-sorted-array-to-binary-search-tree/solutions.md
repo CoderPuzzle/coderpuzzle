@@ -18,5 +18,7 @@ at least halves the segment and the depth is `ceil(log2 n)` — at most 14 frame
 language's call-stack limit. The input array can never produce a skewed tree, because the split
 itself is what fixes each subtree's shape.
 
+![On nums = [-10,-3,0,5,9] the midpoint split roots [0..4] at 0, roots the even segments [-10,-3] and [5,9] at their second middles -3 and 9, and assembles the balanced tree [0,-3,9,-10,null,5].](figures/solution-midpoint-splits.svg)
+
 **Complexity:** `O(n)` time — each element becomes exactly one node — and `O(log n)` stack space
 beside the `O(n)` tree being returned.

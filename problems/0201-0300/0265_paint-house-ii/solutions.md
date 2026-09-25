@@ -20,6 +20,8 @@ its own costs. Equal endings push the tie into the second smallest, which
 is exactly right — when two colors tie for cheapest, the smallest's own
 color can still be preceded by the other one at the same price.
 
+![On costs [[1,5,3],[2,9,4]], house 1 takes the smallest previous ending 1 on every color except its own color 0 — barred and routed from the second smallest 3 — so the row minimum 5 is the answer.](figures/solution-smallest-second-endings.svg)
+
 Taking the cheapest color house by house fails as soon as every row's
 cheapest is the same color: in `[[5,6,7,8,9],[1,20,20,20,20]]` opening
 with the 5 forces a 20 next, while one extra coin at the first house

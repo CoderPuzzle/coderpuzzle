@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- root = [4,2,5,1,3], target = 3.714286, k = 2; nodes r 17; pred cells x 268, succ cell x 398, both tops y 90; pick boxes y 222 -->
+  <line x1="105" y1="66" x2="150" y2="128" stroke="#9aa7b2" stroke-width="1.4"/>
+  <line x1="60" y1="128" x2="38" y2="190" stroke="#9aa7b2" stroke-width="1.4"/>
+  <line x1="105" y1="66" x2="60" y2="128" stroke="#4169E1" stroke-width="2.2"/>
+  <line x1="60" y1="128" x2="82" y2="190" stroke="#4169E1" stroke-width="2.2"/>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4">
+    <circle cx="150" cy="128" r="17"/><circle cx="38" cy="190" r="17"/>
+  </g>
+  <circle cx="105" cy="66" r="17" fill="#ffffff" stroke="#4169E1" stroke-width="2.2"/>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8">
+    <circle cx="60" cy="128" r="17"/><circle cx="82" cy="190" r="17"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="105" y="71" fill="#1a2026">4</text><text x="60" y="133" fill="#1a2026">2</text>
+    <text x="82" y="195" fill="#1a2026">3</text>
+    <text x="150" y="133" fill="#9aa7b2">5</text><text x="38" y="195" fill="#9aa7b2">1</text>
+  </g>
+  <!-- descent pushes: 4 above target onto successors, 2 then 3 below onto predecessors -->
+  <path d="M 124 62 Q 250 52 396 102" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="245" y="42" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">push 4</text>
+  <path d="M 80 118 Q 160 82 264 108" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="168" y="96" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">push 2, then 3</text>
+  <text x="300" y="180" text-anchor="middle" fill="#5c6b76" font-size="12.5">predecessors</text>
+  <text x="430" y="144" text-anchor="middle" fill="#5c6b76" font-size="12.5">successors</text>
+  <rect x="268" y="90" width="64" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="268" y="124" width="64" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="398" y="90" width="64" height="34" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">
+    <text x="300" y="112">3</text><text x="300" y="146">2</text><text x="430" y="112">4</text>
+  </g>
+  <g fill="#5c6b76" font-size="11">
+    <text x="340" y="111">top</text><text x="470" y="111">top</text>
+  </g>
+  <rect x="60" y="222" width="270" height="64" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="350" y="222" width="270" height="64" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <g text-anchor="middle">
+    <text x="195" y="246" fill="#1a2026" font-size="12.5">pick 1: |4 − t| = 0.286 vs |3 − t| = 0.714</text>
+    <text x="195" y="268" fill="#1a2026" font-size="13">4 is nearer → <tspan fill="#4169E1" font-weight="600">pop 4</tspan></text>
+    <text x="485" y="246" fill="#1a2026" font-size="12.5">pick 2: |3 − t| = 0.714 vs |5 − t| = 1.286</text>
+    <text x="485" y="268" fill="#1a2026" font-size="13">3 is nearer → <tspan fill="#4169E1" font-weight="600">pop 3</tspan></text>
+  </g>
+  <text x="320" y="308" text-anchor="middle" fill="#1a2026" font-size="13">The descent for t = 3.714286 stacks 2, 3 as predecessors and 4 as successor; the nearer</text>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">top wins each pick — 4 then 3, the output <tspan fill="#4169E1" font-weight="600">[4, 3]</tspan> for k = 2.</text>
+</svg>

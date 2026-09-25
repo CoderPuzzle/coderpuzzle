@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- push(1), push(2): in = 1 under 2; peek(): out is empty so both pour across; cells 56x36 -->
+  <text x="70" y="30" fill="#1a2026" font-size="13.5" font-weight="600">push(1), then push(2)</text>
+  <text x="400" y="30" fill="#1a2026" font-size="13.5" font-weight="600">peek(): out is empty, so transfer</text>
+  <!-- before: in holds 2 over 1, out empty -->
+  <rect x="170" y="120" width="56" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="170" y="160" width="56" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="198" y="144" text-anchor="middle" font-weight="600">2</text>
+  <text x="198" y="184" text-anchor="middle" font-weight="600">1</text>
+  <rect x="300" y="160" width="56" height="36" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="328" y="182" text-anchor="middle" fill="#9aa7b2" font-size="11.5">empty</text>
+  <text x="198" y="214" text-anchor="middle" fill="#5c6b76" font-size="12">in</text>
+  <text x="328" y="214" text-anchor="middle" fill="#5c6b76" font-size="12">out</text>
+  <text x="198" y="232" text-anchor="middle" fill="#9aa7b2" font-size="11">bottom = oldest</text>
+  <!-- transfer arc -->
+  <path d="M 198 114 C 320 56, 470 56, 588 112" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="394" y="62" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">transfer: pop 2, push; pop 1, push</text>
+  <!-- after: in drained, out holds 1 over 2 -->
+  <rect x="430" y="160" width="56" height="36" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="458" y="182" text-anchor="middle" fill="#9aa7b2" font-size="11.5">empty</text>
+  <rect x="560" y="160" width="56" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="560" y="120" width="56" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="588" y="184" text-anchor="middle" font-weight="600">2</text>
+  <text x="588" y="144" text-anchor="middle" font-weight="600" fill="#4169E1">1</text>
+  <text x="458" y="214" text-anchor="middle" fill="#5c6b76" font-size="12">in</text>
+  <text x="588" y="214" text-anchor="middle" fill="#5c6b76" font-size="12">out</text>
+  <text x="548" y="144" text-anchor="end" fill="#5c6b76" font-size="12.5">peek → <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  <text x="40" y="262" fill="#1a2026" font-size="13">Pushes pile onto in: 1, then 2 over it. The first peek finds out empty and pours in across.</text>
+  <text x="40" y="284" fill="#1a2026" font-size="13">The pour reverses twice: the oldest element, 1, lands on top of out — peek returns <tspan fill="#4169E1" font-weight="600">1</tspan>.</text>
+</svg>

@@ -6,6 +6,8 @@ A depth-first walk from the root keeps one running remainder that starts at `tar
 
 The explicit stack carries frames of (node, remaining sum, buffer length on entry). Popping a frame first truncates `path` back to the recorded length — every descendant appended by a previously explored sibling disappears — and that truncation is precisely the backtracking a recursive call stack would have performed when its frame unwound. Children are pushed right before left, so the left subtree is always popped first and paths are discovered in preorder, left to right: the leftmost matching path is reported first, exactly as the example output lists them.
 
+![With targetSum 22 the shared buffer grows 5, then 5-4, then 5-4-11, captures [5,4,11,2] at leaf 2, is cut back to [5] when frame (8, 17, 1) pops, and captures [5,8,4,5] next, so the matching paths come out in preorder.](figures/solution-path-buffer.svg)
+
 The stack is deliberate: the tree may be a skewed chain of up to 5000 nodes, and 5000 nested calls would overflow Python's default call-stack limit — an explicit stack of frames is the same memory with no call stack involved, and it keeps all seven languages on one identical shape. Every frame on the stack is a real node (the empty tree returns `[]` immediately), and the whole traversal touches each node exactly once.
 
 **Complexity:** `O(n + P)` time, where `P` is the total length of the matching paths (`O(n²)` in the degenerate dense case) — and `O(n)` space for the stack and the shared buffer, excluding the output.

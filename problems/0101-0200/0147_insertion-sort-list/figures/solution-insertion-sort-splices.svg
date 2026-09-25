@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 396" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="396" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- [4,2,1,3]; one row per insertion; accent = node being spliced, gray = not yet placed;
+       nodes 44x36 at x=104+60i, dummy 54 wide at x=30 -->
+  <text x="30" y="34" fill="#5c6b76" font-size="12">insertion sort on [4, 2, 1, 3], one node at a time</text>
+  <!-- row 1: dummy - 4 | 2 1 3 -->
+  <rect x="30" y="58" width="54" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <rect x="104" y="58" width="44" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="164" y="58" width="44" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="224" y="58" width="44" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <rect x="284" y="58" width="44" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 86 76 H 100" marker-end="url(#arrow)"/>
+    <path d="M 150 76 H 160" marker-end="url(#arrow)"/>
+    <path d="M 210 76 H 220" marker-end="url(#arrow)"/>
+    <path d="M 270 76 H 280" marker-end="url(#arrow)"/>
+  </g>
+  <text x="186" y="54" text-anchor="middle" fill="#4169E1" font-size="10">next</text>
+  <g text-anchor="middle">
+    <text x="57" y="80" fill="#5c6b76" font-size="11">dummy</text>
+    <text x="126" y="80" font-weight="600" fill="#1a2026">4</text>
+    <text x="186" y="80" font-weight="600" fill="#4169E1">2</text>
+    <text x="246" y="80" font-weight="600" fill="#9aa7b2">1</text>
+    <text x="306" y="80" font-weight="600" fill="#9aa7b2">3</text>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="370" y="72">the sorted prefix starts as the first node</text>
+    <text x="370" y="88">alone; next up: the 2</text>
+  </g>
+  <!-- row 2: dummy - 2 - 4 | 1 3 -->
+  <rect x="30" y="138" width="54" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <rect x="104" y="138" width="44" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="164" y="138" width="44" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="224" y="138" width="44" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="284" y="138" width="44" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 86 156 H 100" marker-end="url(#arrow)"/>
+    <path d="M 150 156 H 160" marker-end="url(#arrow)"/>
+    <path d="M 210 156 H 220" marker-end="url(#arrow)"/>
+    <path d="M 270 156 H 280" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 186 96 C 186 122, 126 110, 126 132" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="246" y="134" text-anchor="middle" fill="#4169E1" font-size="10">next</text>
+  <g text-anchor="middle">
+    <text x="57" y="160" fill="#5c6b76" font-size="11">dummy</text>
+    <text x="126" y="160" font-weight="600" fill="#1a2026">2</text>
+    <text x="186" y="160" font-weight="600" fill="#1a2026">4</text>
+    <text x="246" y="160" font-weight="600" fill="#4169E1">1</text>
+    <text x="306" y="160" font-weight="600" fill="#9aa7b2">3</text>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="370" y="152">2 &lt; 4: unlinked from after 4 and spliced</text>
+    <text x="370" y="168">before it, directly after the dummy</text>
+  </g>
+  <!-- row 3: dummy - 1 - 2 - 4 | 3 -->
+  <rect x="30" y="218" width="54" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <rect x="104" y="218" width="44" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="164" y="218" width="44" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="224" y="218" width="44" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="284" y="218" width="44" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 86 236 H 100" marker-end="url(#arrow)"/>
+    <path d="M 150 236 H 160" marker-end="url(#arrow)"/>
+    <path d="M 210 236 H 220" marker-end="url(#arrow)"/>
+    <path d="M 270 236 H 280" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 246 176 C 246 204, 126 188, 126 212" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="306" y="214" text-anchor="middle" fill="#4169E1" font-size="10">next</text>
+  <g text-anchor="middle">
+    <text x="57" y="240" fill="#5c6b76" font-size="11">dummy</text>
+    <text x="126" y="240" font-weight="600" fill="#1a2026">1</text>
+    <text x="186" y="240" font-weight="600" fill="#1a2026">2</text>
+    <text x="246" y="240" font-weight="600" fill="#1a2026">4</text>
+    <text x="306" y="240" font-weight="600" fill="#4169E1">3</text>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="370" y="232">1 &lt; 4 and 1 &lt; 2: walked past both to the</text>
+    <text x="370" y="248">very front</text>
+  </g>
+  <!-- row 4: dummy - 1 - 2 - 3 - 4 -->
+  <rect x="30" y="298" width="54" height="36" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <rect x="104" y="298" width="44" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="164" y="298" width="44" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="224" y="298" width="44" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="284" y="298" width="44" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 86 316 H 100" marker-end="url(#arrow)"/>
+    <path d="M 150 316 H 160" marker-end="url(#arrow)"/>
+    <path d="M 210 316 H 220" marker-end="url(#arrow)"/>
+    <path d="M 270 316 H 280" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 306 256 C 306 282, 246 270, 246 292" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <g text-anchor="middle">
+    <text x="57" y="320" fill="#5c6b76" font-size="11">dummy</text>
+    <text x="126" y="320" font-weight="600" fill="#1a2026">1</text>
+    <text x="186" y="320" font-weight="600" fill="#1a2026">2</text>
+    <text x="246" y="320" font-weight="600" fill="#1a2026">3</text>
+    <text x="306" y="320" font-weight="600" fill="#1a2026">4</text>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="370" y="312">3 passes 1 and 2, stops before 4: inserted</text>
+    <text x="370" y="328">between 2 and 4 — the list is sorted</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="340" y="362">Each step unlinks the first unsorted node (blue) and splices it into the sorted prefix;</text>
+    <text x="340" y="380">2 before 4, then 1 at the very front, then 3 between 2 and 4 — [4, 2, 1, 3] → <tspan fill="#4169E1" font-weight="600">[1, 2, 3, 4]</tspan>.</text>
+  </g>
+</svg>

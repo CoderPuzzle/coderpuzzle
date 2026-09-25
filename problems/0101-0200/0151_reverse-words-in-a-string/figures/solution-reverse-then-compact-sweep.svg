@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 388" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="388" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "the sky is blue" (15 chars); cells 30x30 at x=110+30i, row tops 62/142/222/302;
+       restored letters on white, still-reversed letters gray; r arrow above, w arrow below -->
+  <g fill="#5c6b76" font-size="12">
+    <text x="110" y="54">s = "the sky is blue"</text>
+    <text x="110" y="134">reverse the whole string — every word's letters end up backwards</text>
+    <text x="110" y="214">mid-sweep: w has written "blue is"</text>
+    <text x="110" y="294">after the sweep — the answer is the buffer cut to the write mark</text>
+  </g>
+  <!-- row 1: the original buffer -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="110" y="62" width="30" height="30"/><rect x="140" y="62" width="30" height="30"/><rect x="170" y="62" width="30" height="30"/>
+    <rect x="200" y="62" width="30" height="30"/>
+    <rect x="230" y="62" width="30" height="30"/><rect x="260" y="62" width="30" height="30"/><rect x="290" y="62" width="30" height="30"/>
+    <rect x="320" y="62" width="30" height="30"/>
+    <rect x="350" y="62" width="30" height="30"/><rect x="380" y="62" width="30" height="30"/>
+    <rect x="410" y="62" width="30" height="30"/>
+    <rect x="440" y="62" width="30" height="30"/><rect x="470" y="62" width="30" height="30"/><rect x="500" y="62" width="30" height="30"/><rect x="530" y="62" width="30" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="125" y="82">t</text><text x="155" y="82">h</text><text x="185" y="82">e</text>
+    <text x="245" y="82">s</text><text x="275" y="82">k</text><text x="305" y="82">y</text>
+    <text x="365" y="82">i</text><text x="395" y="82">s</text>
+    <text x="455" y="82">b</text><text x="485" y="82">l</text><text x="515" y="82">u</text><text x="545" y="82">e</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="9">
+    <text x="125" y="106">0</text><text x="155" y="106">1</text><text x="185" y="106">2</text><text x="215" y="106">3</text><text x="245" y="106">4</text><text x="275" y="106">5</text><text x="305" y="106">6</text><text x="335" y="106">7</text><text x="365" y="106">8</text><text x="395" y="106">9</text><text x="425" y="106">10</text><text x="455" y="106">11</text><text x="485" y="106">12</text><text x="515" y="106">13</text><text x="545" y="106">14</text>
+  </g>
+  <!-- row 2: whole-string reversal, all words' letters backwards -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="110" y="142" width="30" height="30"/><rect x="140" y="142" width="30" height="30"/><rect x="170" y="142" width="30" height="30"/>
+    <rect x="200" y="142" width="30" height="30"/>
+    <rect x="230" y="142" width="30" height="30"/><rect x="260" y="142" width="30" height="30"/><rect x="290" y="142" width="30" height="30"/>
+    <rect x="320" y="142" width="30" height="30"/>
+    <rect x="350" y="142" width="30" height="30"/><rect x="380" y="142" width="30" height="30"/>
+    <rect x="410" y="142" width="30" height="30"/>
+    <rect x="440" y="142" width="30" height="30"/><rect x="470" y="142" width="30" height="30"/><rect x="500" y="142" width="30" height="30"/><rect x="530" y="142" width="30" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-weight="600">
+    <text x="125" y="162">e</text><text x="155" y="162">u</text><text x="185" y="162">l</text><text x="215" y="162">b</text>
+    <text x="275" y="162">s</text><text x="305" y="162">i</text>
+    <text x="365" y="162">y</text><text x="395" y="162">k</text><text x="425" y="162">s</text>
+    <text x="485" y="162">e</text><text x="515" y="162">h</text><text x="545" y="162">t</text>
+  </g>
+  <!-- row 3: mid-sweep; cells 0-6 restored, r at 8 over the pending "yks" -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="110" y="222" width="30" height="30"/><rect x="140" y="222" width="30" height="30"/><rect x="170" y="222" width="30" height="30"/>
+    <rect x="200" y="222" width="30" height="30"/>
+    <rect x="230" y="222" width="30" height="30"/><rect x="260" y="222" width="30" height="30"/>
+  </g>
+  <rect x="290" y="222" width="30" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="320" y="222" width="30" height="30"/>
+    <rect x="350" y="222" width="30" height="30"/><rect x="380" y="222" width="30" height="30"/>
+    <rect x="410" y="222" width="30" height="30"/>
+    <rect x="440" y="222" width="30" height="30"/><rect x="470" y="222" width="30" height="30"/><rect x="500" y="222" width="30" height="30"/><rect x="530" y="222" width="30" height="30"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="125" y="242" fill="#1a2026">b</text><text x="155" y="242" fill="#1a2026">l</text><text x="185" y="242" fill="#1a2026">u</text><text x="215" y="242" fill="#1a2026">e</text>
+    <text x="275" y="242" fill="#1a2026">i</text><text x="305" y="242" fill="#1a2026">s</text>
+    <text x="365" y="242" fill="#9aa7b2">y</text><text x="395" y="242" fill="#9aa7b2">k</text><text x="425" y="242" fill="#9aa7b2">s</text>
+    <text x="485" y="242" fill="#9aa7b2">e</text><text x="515" y="242" fill="#9aa7b2">h</text><text x="545" y="242" fill="#9aa7b2">t</text>
+  </g>
+  <path d="M 365 204 V 218" stroke="#4169E1" stroke-width="1.6" fill="none" marker-end="url(#arrowB)"/>
+  <text x="374" y="215" font-size="12.5"><tspan fill="#4169E1" font-weight="700">r</tspan><tspan fill="#5c6b76"> skips the space run; 'yks' flips here</tspan></text>
+  <path d="M 335 268 V 258" stroke="#4169E1" stroke-width="1.6" fill="none" marker-end="url(#arrowB)"/>
+  <text x="322" y="268" text-anchor="end" font-size="12.5"><tspan fill="#4169E1" font-weight="700">w</tspan><tspan fill="#5c6b76"> = 7</tspan></text>
+  <!-- row 4: fully restored -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="110" y="302" width="30" height="30"/><rect x="140" y="302" width="30" height="30"/><rect x="170" y="302" width="30" height="30"/>
+    <rect x="200" y="302" width="30" height="30"/>
+    <rect x="230" y="302" width="30" height="30"/><rect x="260" y="302" width="30" height="30"/><rect x="290" y="302" width="30" height="30"/>
+    <rect x="320" y="302" width="30" height="30"/>
+    <rect x="350" y="302" width="30" height="30"/><rect x="380" y="302" width="30" height="30"/>
+    <rect x="410" y="302" width="30" height="30"/>
+    <rect x="440" y="302" width="30" height="30"/><rect x="470" y="302" width="30" height="30"/><rect x="500" y="302" width="30" height="30"/><rect x="530" y="302" width="30" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="125" y="322">b</text><text x="155" y="322">l</text><text x="185" y="322">u</text><text x="215" y="322">e</text>
+    <text x="275" y="322">i</text><text x="305" y="322">s</text>
+    <text x="365" y="322">s</text><text x="395" y="322">k</text><text x="425" y="322">y</text>
+    <text x="485" y="322">t</text><text x="515" y="322">h</text><text x="545" y="322">e</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="340" y="354">Reversing the whole string fixes the word order but leaves letters backwards, so</text>
+    <text x="340" y="372">one sweep compacts and flips each word: "the sky is blue" → <tspan fill="#4169E1" font-weight="600">"blue is sky the"</tspan>.</text>
+  </g>
+</svg>

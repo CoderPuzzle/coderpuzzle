@@ -6,6 +6,8 @@ Each adjacent pair of words constrains at most one letter pair: scanning the two
 
 The letters and edges form a directed graph, and a valid alphabet is a topological order of it. The solution runs Kahn's algorithm but drives the ready set with a min-heap instead of a FIFO queue: letters with in-degree zero are heapified, and each step pops the alphabetically smallest, appends it to the order, and decrements its neighbors. Always emitting the smallest available letter is precisely what makes the result the lexicographically smallest among all valid orders, which the problem demands when several topological orders exist. Duplicate edges between the same pair are filtered with an adjacency set, incrementing in-degree only the first time, so a repeated relation cannot strand a node.
 
+![The first-differing-letter edges w→e, e→r, r→t, t→f leave only w at in-degree 0, so the min-heap pops w, e, r, t, f in order and emits wertf.](figures/solution-minheap-topo.svg)
+
 If a cycle exists, the heap drains before every letter is emitted — nodes on or downstream of the cycle never reach in-degree zero — and the length check returns the empty string. Let C be the total number of characters across all words: building the graph costs O(C), and since the alphabet is capped at 26 letters and at most 26² edges, the heap and relaxation phases are bounded by a constant, making the input scan the only real cost. The graph and heap occupy constant space for the same reason.
 
 **Complexity:** `O(C)` time, `O(1)` space.

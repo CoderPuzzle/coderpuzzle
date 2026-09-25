@@ -28,6 +28,10 @@ hare two, so the hare gains exactly one position per round; both runners
 start on the move (`slow` one step past `n`, `fast` two), so an input
 already at `1` never enters the loop at all — the runners are born equal.
 
+![From n = 2 both runners walk into the 8-cycle 4 → 16 → … → 20 → 4, and
+after 7 rounds the hare's two-steps-per-round lead laps the tortoise onto
+20 — not 1 — so the verdict is false.](figures/solution-floyd-tortoise-hare-loop.svg)
+
 From there the chase resolves itself. A happy start parks both runners on
 `1`, which maps to itself, and they meet there. An unhappy start funnels
 both into the cycle, and inside a cycle a one-position-per-round lead can

@@ -39,6 +39,8 @@ the virtual node exactly when some cell of it lies on an edge, so
 `find(cell) != find(outside)` is precisely the statement that the cell is
 enclosed.
 
+![On Example 1's board the sweep leaves the interior O's as one set {5, 6, 10} with no outside member, so exactly those three cells flip to X, while bottom-edge O 13 is glued to virtual node 16 and survives.](figures/solution-union-virtual-border.svg)
+
 The parent array uses path halving — `parent[x] = parent[parent[x]]`
 splices every other node on a root walk under its grandparent — so the
 merges and lookups cost inverse-Ackermann amortized time and the two

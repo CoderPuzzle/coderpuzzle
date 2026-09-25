@@ -6,6 +6,8 @@ A plain array-backed stack already answers `push`, `pop`, and `top` in constant 
 
 The fix is to make every stack entry self-contained: alongside each pushed value, store the minimum of the stack **as of the moment it was pushed** — `min(value, minimum of the entry below)` for a non-empty stack, `value` itself otherwise. The pair on top of the stack then answers both `top` and `getMin` by reading one field.
 
+![With entries (value, min so far), pushing -2, 0, -3 stacks (-2, -2), (0, -2), (-3, -3); popping (-3, -3) exposes (0, -2), whose snapshot answers top() = 0 and getMin() = -2 with no rescan.](figures/solution-paired-min-stack.svg)
+
 The key observation is that a `pop` returns the stack to a state it occupied before, and the exposed entry's stored minimum is precisely the minimum of that earlier state — so deletion needs no recomputation at all. Duplicates of the minimum need no special handling: each copy carries its own snapshot, so the minimum survives until the last copy is popped.
 
 Both the Python and Java canonical solutions implement exactly this pairing (Python as a list of tuples, Java as two parallel `int` arrays grown geometrically, keeping values in raw `int` so the full `-2³¹..2³¹-1` range is exact).

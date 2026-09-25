@@ -27,10 +27,10 @@ order: a node's value, then all of its left subtree, then all of its right
 one, with `#` closing any child slot that is empty. Each subtree is one
 contiguous run of tokens, which is why the replay needs no queue discipline
 at all — when a run ends, the next token belongs to the nearest ancestor
-still owed a child. For the Example 1 tree the string is
-`4,2,#,3,#,#,7,6,#,#,9,#,#`: the `#` after `2` closes its empty left slot,
-`3` then lands in the right one, and the run `6,#,#` is the whole left
-subtree of `7`.
+still owed a child. For the Example 1 tree `[1,2,3,null,null,4,5]` the
+string is `1,2,#,#,3,4,#,#,5,#,#`: the two `#` after `2` close both of its
+empty child slots, `3` then lands in the slot the root still owed, and the
+run `4,#,#` is the whole left subtree of `3`.
 
 `serialize` runs preorder on an explicit stack: pop a node, emit its value,
 push the right child, then the left, so the left subtree is always written

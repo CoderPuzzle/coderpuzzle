@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 322" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="322" fill="#ffffff"/>
+  <!-- s = eceba; cells 48x36 at x = 120 + 56i, y=44; table row per read r = 0..4; the accented row r=2 holds the best window -->
+  <text x="104" y="67" text-anchor="end" fill="#5c6b76" font-size="12.5">s =</text>
+  <path d="M 120 40 L 120 34 L 280 34 L 280 40" fill="none" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="200" y="24" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">ece — width 3</text>
+  <g stroke-width="1.4">
+    <rect x="120" y="44" width="48" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="176" y="44" width="48" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="232" y="44" width="48" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="288" y="44" width="48" height="36" fill="#ffffff" stroke="#1a2026"/>
+    <rect x="344" y="44" width="48" height="36" fill="#ffffff" stroke="#1a2026"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="144" y="67">e</text><text x="200" y="67">c</text><text x="256" y="67">e</text><text x="312" y="67">b</text><text x="368" y="67">a</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="144" y="96">0</text><text x="200" y="96">1</text><text x="256" y="96">2</text><text x="312" y="96">3</text><text x="368" y="96">4</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="110" y="130">read</text><text x="230" y="130">window</text><text x="370" y="130">count map</text><text x="480" y="130">best</text>
+  </g>
+  <rect x="80" y="188" width="460" height="20" fill="#dbe4fb"/>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="110" y="152">s[0] = e</text><text x="230" y="152">e</text><text x="370" y="152">e:1</text><text x="480" y="152">1</text>
+    <text x="110" y="176">s[1] = c</text><text x="230" y="176">ec</text><text x="370" y="176">e:1, c:1</text><text x="480" y="176">2</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#4169E1" font-weight="600">
+    <text x="110" y="200" fill="#1a2026" font-weight="400">s[2] = e</text><text x="230" y="200">ece</text><text x="370" y="200">e:2, c:1</text><text x="480" y="200">3</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="110" y="224">s[3] = b</text><text x="230" y="224">eb</text><text x="370" y="224">e:1, b:1</text><text x="480" y="224">3</text>
+    <text x="110" y="248">s[4] = a</text><text x="230" y="248">ba</text><text x="370" y="248">b:1, a:1</text><text x="480" y="248">3</text>
+  </g>
+  <text x="310" y="282" text-anchor="middle" fill="#1a2026" font-size="13">b and a each arrive as a third letter, so the left end drains c to 0, then e,</text>
+  <text x="310" y="302" text-anchor="middle" fill="#1a2026" font-size="13">and the best window ever held stays <tspan fill="#4169E1" font-weight="600">ece</tspan> at width <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

@@ -23,6 +23,8 @@ final sort by `(length, lexicographic)` reassembles the display order
 `[8,8]` for `64` need the loop bound inclusive: `f * f == remaining` is a
 legal close.
 
+![The search tree for n = 12 branching over ascending factors — f = 2 closes [2, 6] and splits 6 into [2, 2, 3], f = 3 closes [3, 4] — and the final sort orders the combinations fewest factors first: [[2, 6], [3, 4], [2, 2, 3]].](figures/solution-factor-search-tree.svg)
+
 Each call does `O(√n)` trial divisions, one call happens per emitted prefix,
 and the recursion depth is at most `log₂ n` since every factor is at least 2.
 

@@ -20,6 +20,8 @@ order also orders the output: earlier positions vary slowest, halves emerge
 in ascending lexicographic order, and mirroring preserves that order because
 equal-length palindromes first differ inside their left halves. No final sort.
 
+![For s = "aabb" the bucket backtrack builds the two distinct left halves ab and ba, each mirrored around the empty middle into abba and baab.](figures/solution-left-half-backtrack.svg)
+
 Each completed half is emitted as `left + middle + reversed(left)`. Every
 letter of `s` is placed exactly once per palindrome, and the walk's
 bookkeeping is one shared buffer of depth `|s|/2`.

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="296" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- words = ["wrt","wrf","er","ett","rftt"]; edge labels name the adjacent pair; nodes cx = 70 + 127i, cy 84, r 21; heap cells y 170 -->
+  <g fill="none" stroke="#42525e" stroke-width="1.6">
+    <path d="M 93 84 L 174 84" marker-end="url(#arrow)"/>
+    <path d="M 220 84 L 301 84" marker-end="url(#arrow)"/>
+    <path d="M 347 84 L 428 84" marker-end="url(#arrow)"/>
+    <path d="M 474 84 L 555 84" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="133" y="68">wrf | er</text><text x="260" y="68">ett | rftt</text>
+    <text x="387" y="68">er | ett</text><text x="514" y="68">wrt | wrf</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="70" cy="84" r="21"/><circle cx="197" cy="84" r="21"/><circle cx="324" cy="84" r="21"/>
+    <circle cx="451" cy="84" r="21"/><circle cx="578" cy="84" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="70" y="90">w</text><text x="197" y="90">e</text><text x="324" y="90">r</text>
+    <text x="451" y="90">t</text><text x="578" y="90">f</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5">
+    <text x="70" y="126" fill="#4169E1" font-weight="600">in 0</text>
+    <text x="197" y="126" fill="#5c6b76">in 1</text><text x="324" y="126" fill="#5c6b76">in 1</text>
+    <text x="451" y="126" fill="#5c6b76">in 1</text><text x="578" y="126" fill="#5c6b76">in 1</text>
+  </g>
+  <text x="320" y="158" text-anchor="middle" fill="#5c6b76" font-size="12.5">min-heap over ready letters</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="18" y="170" width="104" height="46"/><rect x="145" y="170" width="104" height="46"/>
+    <rect x="272" y="170" width="104" height="46"/><rect x="399" y="170" width="104" height="46"/>
+    <rect x="526" y="170" width="104" height="46"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="70" y="188">heap [w]</text><text x="197" y="188">heap [e]</text><text x="324" y="188">heap [r]</text>
+    <text x="451" y="188">heap [t]</text><text x="578" y="188">heap [f]</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5" fill="#4169E1">
+    <text x="70" y="208">pop w</text><text x="197" y="208">pop e</text><text x="324" y="208">pop r</text>
+    <text x="451" y="208">pop t</text><text x="578" y="208">pop f</text>
+  </g>
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.5">
+    <path d="M 124 193 L 143 193" marker-end="url(#arrowMuted)"/>
+    <path d="M 251 193 L 270 193" marker-end="url(#arrowMuted)"/>
+    <path d="M 378 193 L 397 193" marker-end="url(#arrowMuted)"/>
+    <path d="M 505 193 L 524 193" marker-end="url(#arrowMuted)"/>
+  </g>
+  <text x="320" y="258" text-anchor="middle" fill="#1a2026" font-size="13">Each pop takes the smallest ready letter and zeroes the next in-degree, so the chain</text>
+  <text x="320" y="278" text-anchor="middle" fill="#1a2026" font-size="13">w → e → r → t → f drains left to right and the alphabet reads <tspan fill="#4169E1" font-weight="600">wertf</tspan>.</text>
+</svg>

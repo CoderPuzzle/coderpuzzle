@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 404" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="404" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tree [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum 22; stack pairs are (node, remaining); accent edges = the explored path 5-4-11-2 -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="271" y1="61" x2="329" y2="117"/>
+    <line x1="334" y1="146" x2="316" y2="196"/>
+    <line x1="348" y1="145" x2="377" y2="197"/>
+    <line x1="389" y1="228" x2="401" y2="277"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2">
+    <line x1="249" y1="61" x2="196" y2="117"/>
+    <line x1="177" y1="145" x2="148" y2="197"/>
+    <line x1="133" y1="228" x2="112" y2="278"/>
+    <line x1="147" y1="228" x2="168" y2="278"/>
+  </g>
+  <circle cx="260" cy="48" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <circle cx="185" cy="130" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <circle cx="340" cy="130" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="140" cy="212" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <circle cx="310" cy="212" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="385" cy="212" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="105" cy="294" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="175" cy="294" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <circle cx="405" cy="294" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="260" y="53" fill="#1a2026">5</text>
+    <text x="185" y="135" fill="#1a2026">4</text>
+    <text x="340" y="135" fill="#1a2026">8</text>
+    <text x="140" y="217" fill="#1a2026">11</text>
+    <text x="310" y="217" fill="#1a2026">13</text>
+    <text x="385" y="217" fill="#1a2026">4</text>
+    <text x="105" y="299" fill="#1a2026">7</text>
+    <text x="175" y="299" fill="#1a2026">2</text>
+    <text x="405" y="299" fill="#1a2026">1</text>
+  </g>
+  <g fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="260" y="20" text-anchor="middle">remaining 22</text>
+    <text x="156" y="126" text-anchor="end">remaining 17</text>
+    <text x="111" y="208" text-anchor="end">remaining 13</text>
+    <text x="175" y="330" text-anchor="middle">remaining 2</text>
+  </g>
+  <!-- stack at the deciding pops: top first -->
+  <text x="555" y="118" text-anchor="middle" fill="#5c6b76" font-size="12.5">stack of (node, remaining)</text>
+  <rect x="500" y="132" width="110" height="34" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="555" y="154" text-anchor="middle" font-weight="600" fill="#5c6b76" font-size="13.5">(7, 2)</text>
+  <rect x="500" y="170" width="110" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="555" y="192" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="13.5">(2, 2)</text>
+  <rect x="500" y="208" width="110" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="555" y="230" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="13.5">(8, 17)</text>
+  <text x="500" y="268" fill="#5c6b76" font-size="12.5">pop (7, 2): 7 ≠ 2</text>
+  <text x="500" y="292" fill="#4169E1" font-size="12.5" font-weight="600">pop (2, 2): 2 = 2 → true</text>
+  <text x="40" y="372" fill="#1a2026" font-size="13">Down the path 5-4-11 the remaining sum shrinks 22 to 17 to 13 to 2, and leaf 2</text>
+  <text x="40" y="390" fill="#1a2026" font-size="13">comes off the stack covering exactly what is still owed: <tspan fill="#4169E1" font-weight="600">2 = 2</tspan>, so the answer is <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="310" fill="#ffffff"/>
+  <!-- s = "3+2*2"; stack cells 46x36 at x = 210 + 46j, rows y = 52, 132, 212; rightmost cell is the top -->
+  <text x="233" y="38" text-anchor="middle" fill="#5c6b76" font-size="11.5">stack</text>
+  <!-- row 1: read 3, see '+' -->
+  <text x="40" y="76" fill="#5c6b76" font-size="12.5">read 3, see '+'</text>
+  <rect x="210" y="52" width="46" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="233" y="76" text-anchor="middle" font-weight="600">3</text>
+  <text x="430" y="76" fill="#5c6b76" font-size="12.5">push 3</text>
+  <!-- row 2: read 2, see '+' -->
+  <text x="40" y="156" fill="#5c6b76" font-size="12.5">read 2, see '+'</text>
+  <rect x="210" y="132" width="46" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="256" y="132" width="46" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="233" y="156" text-anchor="middle" font-weight="600">3</text>
+  <text x="279" y="156" text-anchor="middle" font-weight="600">2</text>
+  <text x="430" y="156" fill="#5c6b76" font-size="12.5">push 2</text>
+  <!-- row 3: read 2, string ends, op is '*' -->
+  <text x="40" y="236" fill="#5c6b76" font-size="12.5">read 2, string ends</text>
+  <rect x="210" y="212" width="46" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="256" y="212" width="46" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="233" y="236" text-anchor="middle" font-weight="600">3</text>
+  <text x="279" y="236" text-anchor="middle" font-weight="600" fill="#4169E1">4</text>
+  <text x="279" y="206" text-anchor="middle" fill="#9aa7b2" font-size="11">top</text>
+  <text x="430" y="236" fill="#5c6b76" font-size="12.5">pop 2, push 2 × 2 = <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  <text x="40" y="282" fill="#1a2026" font-size="13">Additions defer: 3 then 2 are pushed. '*' cannot wait — the last 2 pops the top 2, pushes 4.</text>
+  <text x="40" y="302" fill="#1a2026" font-size="13">The answer is the sum of the stack: 3 + 4 = <tspan fill="#4169E1" font-weight="600">7</tspan>.</text>
+</svg>

@@ -38,6 +38,8 @@ therefore sweeps outward from `target` one value per pick, never crossing
 sides, and every push in the whole run happens at most once per node — the
 work stays at the initial descent plus the picks.
 
+![For target 3.714286 the descent stacks predecessors 2, 3 and successor 4, then picking the nearer top pops 4 and 3 — the output [4, 3] for k = 2.](figures/solution-two-stack-descent.svg)
+
 The statement's pinned output order falls out for free: a stack's next pop is
 never nearer than its last, so distances never decrease across picks, and a
 tie's smaller value is the predecessor by construction. Every comparison is

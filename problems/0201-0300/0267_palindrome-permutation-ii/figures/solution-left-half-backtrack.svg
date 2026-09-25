@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "aabb"; counts a:2 b:2, middle empty, left-half buckets a:1 b:1; halves ab, ba mirror to abba, baab -->
+  <text x="250" y="30" text-anchor="middle" fill="#5c6b76" font-size="12.5">left-half buckets after halving — no odd count, middle empty</text>
+  <rect x="200" y="44" width="100" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="250" y="66" text-anchor="middle" font-weight="600" fill="#1a2026">a:1  b:1</text>
+  <rect x="80" y="134" width="100" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="130" y="156" text-anchor="middle" font-weight="600" fill="#1a2026">a:0  b:1</text>
+  <rect x="440" y="134" width="100" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="490" y="156" text-anchor="middle" font-weight="600" fill="#1a2026">a:1  b:0</text>
+  <g fill="none" stroke="#42525e" stroke-width="1.6">
+    <path d="M 250 78 L 136 130" marker-end="url(#arrow)"/>
+    <path d="M 250 78 L 484 130" marker-end="url(#arrow)"/>
+    <path d="M 130 168 L 130 218" marker-end="url(#arrow)"/>
+    <path d="M 490 168 L 490 218" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5" fill="#4169E1">
+    <text x="168" y="106">a</text><text x="360" y="106">b</text>
+    <text x="146" y="198">b</text><text x="506" y="198">a</text>
+  </g>
+  <rect x="95" y="224" width="70" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="130" y="244" text-anchor="middle" font-weight="600" fill="#1a2026">ab</text>
+  <rect x="455" y="224" width="70" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="490" y="244" text-anchor="middle" font-weight="600" fill="#1a2026">ba</text>
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 130 254 L 130 282" marker-end="url(#arrowB)"/>
+    <path d="M 490 254 L 490 282" marker-end="url(#arrowB)"/>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="144" y="272">mirror</text><text x="504" y="272">mirror</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#4169E1">
+    <text x="130" y="304">abba</text><text x="490" y="304">baab</text>
+  </g>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Counts a:2, b:2 leave no odd letter — the middle is empty; the left halves ab and ba</text>
+  <text x="320" y="348" text-anchor="middle" fill="#1a2026" font-size="13">mirror into <tspan fill="#4169E1" font-weight="600">abba</tspan> and <tspan fill="#4169E1" font-weight="600">baab</tspan>.</text>
+</svg>

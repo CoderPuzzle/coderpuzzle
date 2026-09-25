@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tree 1(2(4,5),3) flips to 4(5,2(3,1)); circles r=20; the left spine 1,2,4 is accented; in the flipped tree sibling-to-left edges are accent, parent-to-right edges gray -->
+  <text x="140" y="30" text-anchor="middle" fill="#5c6b76" font-size="12.5">root = [1, 2, 3, 4, 5]</text>
+  <text x="480" y="30" text-anchor="middle" fill="#5c6b76" font-size="12.5">upside down: [4, 5, 2, null, null, 3, 1]</text>
+  <!-- edges -->
+  <g stroke-width="1.6">
+    <line x1="140" y1="80" x2="90" y2="150" stroke="#4169E1" stroke-width="2.5"/>
+    <line x1="90" y1="150" x2="65" y2="220" stroke="#4169E1" stroke-width="2.5"/>
+    <line x1="140" y1="80" x2="190" y2="150" stroke="#42525e"/>
+    <line x1="90" y1="150" x2="115" y2="220" stroke="#42525e"/>
+    <line x1="480" y1="70" x2="430" y2="140" stroke="#4169E1" stroke-width="2.5"/>
+    <line x1="505" y1="210" x2="530" y2="140" stroke="#4169E1" stroke-width="2.5"/>
+    <line x1="480" y1="70" x2="530" y2="140" stroke="#42525e"/>
+    <line x1="555" y1="210" x2="530" y2="140" stroke="#42525e"/>
+  </g>
+  <!-- original tree -->
+  <g stroke="#1a2026" stroke-width="1.6" fill="#ffffff">
+    <circle cx="140" cy="80" r="20"/><circle cx="90" cy="150" r="20"/><circle cx="190" cy="150" r="20"/>
+    <circle cx="65" cy="220" r="20"/><circle cx="115" cy="220" r="20"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="140" y="85">1</text><text x="90" y="155">2</text><text x="190" y="155">3</text>
+    <text x="65" y="225">4</text><text x="115" y="225">5</text>
+  </g>
+  <!-- flipped tree -->
+  <circle cx="480" cy="70" r="20" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.5"/>
+  <g stroke="#1a2026" stroke-width="1.6" fill="#ffffff">
+    <circle cx="430" cy="140" r="20"/><circle cx="530" cy="140" r="20"/>
+    <circle cx="505" cy="210" r="20"/><circle cx="555" cy="210" r="20"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="480" y="75" fill="#4169E1">4</text><text x="430" y="145">5</text><text x="530" y="145">2</text>
+    <text x="505" y="215">3</text><text x="555" y="215">1</text>
+  </g>
+  <text x="442" y="56" text-anchor="end" fill="#4169E1" font-size="12" font-weight="600">new root</text>
+  <path d="M 446 53 L 459 59" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrowB)"/>
+  <path d="M 250 145 L 345 145" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="297" y="122">rotate every</text>
+    <text x="297" y="138">spine node</text>
+  </g>
+  <text x="330" y="290" text-anchor="middle" fill="#1a2026" font-size="13">Each spine node relinks: old right sibling to new left child (3 under 2, 5 under 4),</text>
+  <text x="330" y="308" text-anchor="middle" fill="#1a2026" font-size="13">old parent to new right child (1 under 2, 2 under 4); leftmost node <tspan fill="#4169E1" font-weight="600">4</tspan> is the new root.</text>
+</svg>

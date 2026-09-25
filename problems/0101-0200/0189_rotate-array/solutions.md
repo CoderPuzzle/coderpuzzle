@@ -24,6 +24,8 @@ Once the passes finish the method returns the same array it received — now rot
 
 One step of the roll sends position `i` to `(i + k) % n`, and that mapping partitions the `n` positions into `gcd(n, k)` cycles of equal length. Each cycle can be rewritten on its own with a single value in hand: pick up the element at the cycle's entry position, drop it into the slot it belongs to, catch the element that slot was holding, and repeat — after `n / gcd(n, k)` such moves the walk arrives back at its starting position, whose rightful element then closes the cycle.
 
+![On example 2, [-1,-100,3,99] with k = 2, the mapping i → (i + 2) mod 4 forms the two 2-cycles 0 ↔ 2 and 1 ↔ 3, each rewritten with one carried value to reach [3, 99, -1, -100].](figures/solution-cyclic-two-cycles.svg)
+
 Starting a walk from each of the first `gcd(n, k)` positions visits every position exactly once, so the `n` moves rewrite the whole array. The only storage is the one carried value (and the loop indices) — the `O(1)` extra space the follow-up asks for, with no reversal pass to run. Degenerate inputs collapse on their own: a normalized `k` of zero makes `gcd(n, k) = n`, so every cycle is a single fixed position and the walk touches each slot once without changing it, and a one-element array is its own fixed point.
 
 Once every cycle closes, the method returns the same array it received — now rotated — which is what the judge compares.

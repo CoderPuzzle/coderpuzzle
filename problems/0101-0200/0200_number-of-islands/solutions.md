@@ -27,5 +27,9 @@ carved in one depth-first sweep before returning to the seed's other
 neighbors. Implemented iteratively (an explicit stack) so a 300×300
 all-land grid cannot overflow the call stack.
 
+![On the example 2 grid the scan finds three unvisited land seeds, and each
+seed's explicit stack drains in one depth-first sweep — island 1 over 4
+cells, island 2 over 1, island 3 over 2 — so the count is 3.](figures/solution-stack-flood-per-island.svg)
+
 **Complexity:** `O(m·n)` time, `O(m·n)` extra space in the worst case —
 the stack can hold an entire landmass before it starts draining.

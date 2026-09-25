@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <!-- preorder = [5,2,1,3,6]; cells 56x36 at x = 110 + 62i; the table lists the window each value is claimed inside, in claim order -->
+  <text x="110" y="30" fill="#5c6b76" font-size="12.5">preorder — read once, cursor forward</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="110" y="44" width="56" height="36"/><rect x="172" y="44" width="56" height="36"/>
+    <rect x="234" y="44" width="56" height="36"/><rect x="296" y="44" width="56" height="36"/>
+    <rect x="358" y="44" width="56" height="36"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="138" y="67">5</text><text x="200" y="67">2</text><text x="262" y="67">1</text>
+    <text x="324" y="67">3</text><text x="386" y="67">6</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="138" y="96">i = 0</text><text x="200" y="96">i = 1</text><text x="262" y="96">i = 2</text>
+    <text x="324" y="96">i = 3</text><text x="386" y="96">i = 4</text>
+  </g>
+  <text x="138" y="130" text-anchor="middle" fill="#5c6b76" font-size="12">value</text>
+  <text x="180" y="130" fill="#5c6b76" font-size="12">window that must admit it</text>
+  <text x="480" y="130" fill="#5c6b76" font-size="12">verdict</text>
+  <line x1="90" y1="140" x2="650" y2="140" stroke="#dbe4fb" stroke-width="1.5"/>
+  <!-- row for 3 accented: (1, 2) rejects it, 2's right window (2, 5) claims it -->
+  <rect x="88" y="238" width="566" height="30" rx="4" fill="#dbe4fb"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="138" y="160">5</text><text x="138" y="192">2</text><text x="138" y="224">1</text>
+    <text x="138" y="256" fill="#4169E1">3</text><text x="138" y="288">6</text>
+  </g>
+  <g fill="#1a2026" font-size="13">
+    <text x="180" y="160">(−∞, ∞) — the root's own call</text>
+    <text x="180" y="192">(−∞, 5), left of 5</text>
+    <text x="180" y="224">(−∞, 2), left of 2</text>
+    <text x="180" y="256">(1, 2) rejects it → <tspan fill="#4169E1" font-weight="600">(2, 5), right of 2</tspan></text>
+    <text x="180" y="288">(5, ∞), right of 5</text>
+  </g>
+  <g fill="#5c6b76" font-size="13">
+    <text x="480" y="160">claimed</text>
+    <text x="480" y="192">claimed</text>
+    <text x="480" y="224">claimed</text>
+    <text x="480" y="256" fill="#4169E1" font-weight="600">waits, then claimed</text>
+    <text x="480" y="288">claimed</text>
+  </g>
+  <text x="340" y="312" text-anchor="middle" fill="#1a2026" font-size="13">The cursor never backs up: 3 is refused by 1's window (1, 2), waits while the calls</text>
+  <text x="340" y="332" text-anchor="middle" fill="#1a2026" font-size="13">unwind, and 2's right window (2, 5) claims it — every value lands, so the answer is <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

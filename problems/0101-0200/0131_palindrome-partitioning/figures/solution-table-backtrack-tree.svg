@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- s = aab; is_pal T at (0,0)(0,1)(1,1)(2,2), F at (0,2)(1,2); backtracking tree: a,a,b emits
+       [a,a,b] first, then aa,b; ab and aab fail the table; table cells 40x30 at (50,70) -->
+  <text x="105" y="46" text-anchor="middle" fill="#5c6b76" font-size="12.5">is_pal[i][j]</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="70" y="64">a</text><text x="110" y="64">a</text><text x="150" y="64">b</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="12">
+    <text x="42" y="90">a</text><text x="42" y="120">a</text><text x="42" y="150">b</text>
+  </g>
+  <g stroke="#1a2026" stroke-width="1.2">
+    <rect x="50" y="70" width="40" height="30" fill="#dbe4fb"/><rect x="90" y="70" width="40" height="30" fill="#dbe4fb"/><rect x="130" y="70" width="40" height="30" fill="#ffffff"/>
+    <rect x="90" y="100" width="40" height="30" fill="#dbe4fb"/><rect x="130" y="100" width="40" height="30" fill="#ffffff"/>
+    <rect x="130" y="130" width="40" height="30" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="70" y="90">T</text><text x="110" y="90">T</text><text x="110" y="120">T</text><text x="150" y="150">T</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2">
+    <text x="150" y="90">F</text><text x="150" y="120">F</text>
+  </g>
+  <text x="105" y="180" text-anchor="middle" fill="#5c6b76" font-size="11">only ✓ cells get tried</text>
+  <path d="M 176 106 H 252" stroke="#9aa7b2" stroke-width="1.3" fill="none" marker-end="url(#arrow)"/>
+  <!-- search tree: root start 0, pieces a then aa -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.3">
+    <rect x="355" y="37" width="80" height="26" rx="7"/>
+    <rect x="260" y="102" width="80" height="26" rx="7"/>
+    <rect x="465" y="102" width="80" height="26" rx="7"/>
+    <rect x="185" y="167" width="80" height="26" rx="7"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="395" y="54">start 0</text><text x="300" y="119">start 1</text><text x="505" y="119">start 2</text><text x="225" y="184">start 2</text>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4">
+    <rect x="140" y="239" width="130" height="26" rx="7"/>
+    <rect x="440" y="172" width="130" height="26" rx="7"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="205" y="256">emit [a,a,b]</text><text x="505" y="189">emit [aa,b]</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 375 63 L 310 100" marker-end="url(#arrow)"/>
+    <path d="M 415 63 L 495 100" marker-end="url(#arrow)"/>
+    <path d="M 285 128 L 240 165" marker-end="url(#arrow)"/>
+    <path d="M 225 193 L 210 237" marker-end="url(#arrow)"/>
+    <path d="M 505 128 L 505 170" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.3" fill="none" stroke-dasharray="4 3">
+    <path d="M 320 128 L 380 162"/>
+    <path d="M 435 50 H 588"/>
+  </g>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="330" y="78" text-anchor="middle">a ✓</text>
+    <text x="455" y="74" text-anchor="middle">aa ✓</text>
+    <text x="250" y="152" text-anchor="end">a ✓</text>
+    <text x="230" y="217">b ✓</text>
+    <text x="513" y="152">b ✓</text>
+  </g>
+  <g fill="#9aa7b2" font-size="12.5">
+    <text x="386" y="166">ab ✗</text>
+    <text x="512" y="42" text-anchor="middle">aab ✗</text>
+  </g>
+  <g fill="#4169E1" font-size="11" font-weight="600">
+    <text x="276" y="258">1st</text>
+    <text x="576" y="192">2nd</text>
+  </g>
+  <text x="340" y="300" text-anchor="middle" fill="#1a2026" font-size="13">On s = aab the table admits a, aa, and b (ab and aab fail);</text>
+  <text x="340" y="322" text-anchor="middle" fill="#1a2026" font-size="13">trying shorter pieces first emits <tspan fill="#4169E1" font-weight="600">[a,a,b]</tspan> before <tspan fill="#4169E1" font-weight="600">[aa,b]</tspan>.</text>
+</svg>

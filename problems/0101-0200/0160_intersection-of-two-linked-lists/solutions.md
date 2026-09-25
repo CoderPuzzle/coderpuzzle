@@ -53,6 +53,8 @@ list's head, so after at most one switch each pointer has covered
 `own prefix + other prefix`, the same total distance, and they meet at the
 intersection — or at `null` after both have traversed everything.
 
+![After each pointer falls off its list once and restarts at the other head, both have covered own plus other prefix — 8 nodes either way — and meet exactly at the shared node 8.](figures/solution-switchback-walks.svg)
+
 Both variants are pure pointer work: no allocation, no bookkeeping, and the
 input structure is only read. Values are ignored entirely, which is what makes
 the identity contract honest — equal values in the two prefixes must not fool

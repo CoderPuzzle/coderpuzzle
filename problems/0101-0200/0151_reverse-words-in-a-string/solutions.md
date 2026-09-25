@@ -16,6 +16,8 @@ never overtake the read pointer, since it advances at most once per read advance
 the sweep safely overwrites the already-consumed part of the same buffer, and the
 answer is the buffer truncated to the write mark.
 
+![Reversing "the sky is blue" yields the buffer 'eulb si yks eht', which one read/write sweep compacts and flips word by word into 'blue is sky the'.](figures/solution-reverse-then-compact-sweep.svg)
+
 C++ is the only language here whose strings are mutable, and its solution runs the
 sweep directly on `s` with `O(1)` extra space, as the follow-up asks. Every other
 language hands out immutable strings, so each solution first copies the text into a

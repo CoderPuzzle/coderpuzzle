@@ -16,6 +16,8 @@ The same traversal written in its direct recursive shape: descend left, visit th
 
 The stop is genuinely early: a guard at the top of the helper returns immediately once the countdown has reached zero, so after the kth visit no further recursion happens — the call stack unwinds without touching the unvisited remainder of the tree, and the work done is exactly the path to the kth node plus the k visits themselves.
 
+![In-order on the tree 3(1(-,2),4) would visit 1, 2, 3, 4, but with k = 1 the countdown hits zero at the very first visit, node 1, so 2, 3, 4 are never visited.](figures/solution-early-stop-inorder.svg)
+
 The price of the recursive shape is the call stack. Recursion depth is bounded by the tree height `h` — worst case `n` on a degenerate chain — which is precisely why the iterative twin exists: with an explicit stack the same traversal cannot overflow on adversarial shapes, whatever the node count grows to.
 
 **Complexity:** `O(h + k)` time, `O(h)` space for the call stack (worst case `n` on a chain).

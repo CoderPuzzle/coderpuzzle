@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 276" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="276" fill="#ffffff"/>
+  <!-- n = 10 linear sieve: spf cells 72x56 at y 56, columns from x 44;
+       final spf = 2:2, 3:3, 4:2, 5:5, 6:2, 7:7, 8:2, 9:3; primes (self-written) shaded #dbe4fb;
+       write order: spf[4] i=2,p=2; spf[6] i=3,p=2; spf[9] i=3,p=3; spf[8] i=4,p=2 -->
+  <text x="44" y="40" fill="#5c6b76" font-size="12.5">spf[] after one ascending scan of i = 2 … 9 (n = 10)</text>
+  <g stroke="#1a2026" stroke-width="1.4">
+    <rect x="44" y="56" width="72" height="56" fill="#dbe4fb"/><rect x="116" y="56" width="72" height="56" fill="#dbe4fb"/>
+    <rect x="188" y="56" width="72" height="56" fill="#ffffff"/><rect x="260" y="56" width="72" height="56" fill="#dbe4fb"/>
+    <rect x="332" y="56" width="72" height="56" fill="#ffffff"/><rect x="404" y="56" width="72" height="56" fill="#dbe4fb"/>
+    <rect x="476" y="56" width="72" height="56" fill="#ffffff"/><rect x="548" y="56" width="72" height="56" fill="#ffffff"/>
+  </g>
+  <g fill="#9aa7b2" font-size="10">
+    <text x="51" y="70">x=2</text><text x="123" y="70">x=3</text><text x="195" y="70">x=4</text><text x="267" y="70">x=5</text>
+    <text x="339" y="70">x=6</text><text x="411" y="70">x=7</text><text x="483" y="70">x=8</text><text x="555" y="70">x=9</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16">
+    <text x="80" y="102" fill="#4169E1">2</text><text x="152" y="102" fill="#4169E1">3</text>
+    <text x="224" y="102" fill="#1a2026">2</text><text x="296" y="102" fill="#4169E1">5</text>
+    <text x="368" y="102" fill="#1a2026">2</text><text x="440" y="102" fill="#4169E1">7</text>
+    <text x="512" y="102" fill="#1a2026">2</text><text x="584" y="102" fill="#1a2026">3</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5">
+    <text x="80" y="134" fill="#4169E1" font-weight="600">prime</text>
+    <text x="152" y="134" fill="#4169E1" font-weight="600">prime</text>
+    <text x="224" y="134" fill="#5c6b76">i=2, p=2</text><text x="224" y="148" fill="#5c6b76">write 1</text>
+    <text x="296" y="134" fill="#4169E1" font-weight="600">prime</text>
+    <text x="368" y="134" fill="#5c6b76">i=3, p=2</text><text x="368" y="148" fill="#5c6b76">write 2</text>
+    <text x="440" y="134" fill="#4169E1" font-weight="600">prime</text>
+    <text x="512" y="134" fill="#5c6b76">i=4, p=2</text><text x="512" y="148" fill="#5c6b76">write 4</text>
+    <text x="584" y="134" fill="#5c6b76">i=3, p=3</text><text x="584" y="148" fill="#5c6b76">write 3</text>
+  </g>
+  <text x="44" y="176" fill="#5c6b76" font-size="12.5">The inner loop stops at the first p past spf[i]: at i = 4, after writing spf[8],</text>
+  <text x="44" y="194" fill="#5c6b76" font-size="12.5"><tspan fill="#4169E1" font-weight="600">p = 3 &gt; spf[4] = 2</tspan> halts it; at i = 5 the next write 2·5 = 10 leaves the range.</text>
+  <text x="340" y="230" text-anchor="middle" fill="#1a2026" font-size="13">One write per composite — always by its smallest prime factor — keeps the sieve linear,</text>
+  <text x="340" y="252" text-anchor="middle" fill="#1a2026" font-size="13">and cells untouched by any smaller prime stay prime: 2, 3, 5, 7 — <tspan fill="#4169E1" font-weight="600">4</tspan> primes below 10.</text>
+</svg>

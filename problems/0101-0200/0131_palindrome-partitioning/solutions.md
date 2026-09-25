@@ -6,6 +6,8 @@ The search needs palindrome verdicts on arbitrary substrings, so the code first 
 
 The backtracking then consumes the table left to right: at position `start`, try every `end` such that `s[start..end]` is a palindrome, push that piece onto the current partition, recurse from `end + 1`, and pop it on return. When `start` reaches n the pieces tile the whole string and a snapshot is appended to the result. Trying ends in increasing order is precisely what produces the required deterministic output order — partitions with a shorter first piece before those with a longer one, applied recursively to each suffix.
 
+![On s = aab the is_pal table admits a, aa, and b (ab and aab fail), so the depth-first search trying shorter pieces first emits [a,a,b] before [aa,b].](figures/solution-table-backtrack-tree.svg)
+
 Every single character is a palindrome, so the search always has at least the all-single-characters partition and can never dead-end. The bound n ≤ 16 keeps the enumeration small, though a string of one repeated letter still admits 2^(n-1) partitions, so the running time is inherently output-sensitive; writing P for the number of partitions, the search performs O(P · n) piece pushes in total on top of the table construction.
 
 **Complexity:** `O(n^2 + P · n)` time, `O(n^2)` space.

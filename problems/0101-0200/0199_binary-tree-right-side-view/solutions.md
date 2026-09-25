@@ -39,6 +39,8 @@ than anything recorded so far, which happens exactly on that first
 touch; the view fills top to bottom with no map and no per-level
 buffer, and an empty tree starts with an empty stack and returns `[]`.
 
+![On the example tree [1,2,3,null,5,null,4], the right-first DFS pops the frames (1, 0), (3, 1) and (4, 2), each the first touch at a new depth and each recorded into the view [1, 3, 4], while (2, 1) and (5, 2) arrive at seen depths and add nothing.](figures/solution-right-first-dfs-pops.svg)
+
 **Complexity:** `O(n)` time — every node is pushed and popped exactly
 once — and `O(h)` space for the stack, which never holds more than one
 deferred left child per depth, against the sweep's `O(w)` queue for a

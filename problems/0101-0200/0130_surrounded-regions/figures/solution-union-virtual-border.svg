@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- board rows XXXX / XOOX / XXOX / XOXX; O ids i*4+j = 5,6,10,13; interior set {5,6,10};
+       bottom-edge O 13 unions the virtual outside node 16; board cells 50x36 at (40,70) -->
+  <text x="140" y="46" text-anchor="middle" fill="#5c6b76" font-size="12.5">board</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="65" y="64">0</text><text x="115" y="64">1</text><text x="165" y="64">2</text><text x="215" y="64">3</text>
+    <text x="28" y="92">0</text><text x="28" y="128">1</text><text x="28" y="164">2</text><text x="28" y="200">3</text>
+  </g>
+  <g stroke="#1a2026" stroke-width="1.4">
+    <rect x="40" y="70" width="50" height="36" fill="#ffffff"/><rect x="90" y="70" width="50" height="36" fill="#ffffff"/><rect x="140" y="70" width="50" height="36" fill="#ffffff"/><rect x="190" y="70" width="50" height="36" fill="#ffffff"/>
+    <rect x="40" y="106" width="50" height="36" fill="#ffffff"/><rect x="90" y="106" width="50" height="36" fill="#dbe4fb"/><rect x="140" y="106" width="50" height="36" fill="#dbe4fb"/><rect x="190" y="106" width="50" height="36" fill="#ffffff"/>
+    <rect x="40" y="142" width="50" height="36" fill="#ffffff"/><rect x="90" y="142" width="50" height="36" fill="#ffffff"/><rect x="140" y="142" width="50" height="36" fill="#dbe4fb"/><rect x="190" y="142" width="50" height="36" fill="#ffffff"/>
+    <rect x="40" y="178" width="50" height="36" fill="#ffffff"/><rect x="90" y="178" width="50" height="36" fill="#dbe4fb"/><rect x="140" y="178" width="50" height="36" fill="#ffffff"/><rect x="190" y="178" width="50" height="36" fill="#ffffff"/>
+  </g>
+  <rect x="90" y="178" width="50" height="36" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" fill="#9aa7b2">
+    <text x="65" y="93">X</text><text x="115" y="93">X</text><text x="165" y="93">X</text><text x="215" y="93">X</text>
+    <text x="65" y="129">X</text><text x="215" y="129">X</text>
+    <text x="65" y="165">X</text><text x="115" y="165">X</text><text x="215" y="165">X</text>
+    <text x="65" y="201">X</text><text x="165" y="201">X</text><text x="215" y="201">X</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="115" y="129">O</text><text x="165" y="129">O</text><text x="165" y="165">O</text><text x="115" y="201">O</text>
+  </g>
+  <path d="M 244 96 H 322" stroke="#42525e" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <text x="280" y="82" text-anchor="middle" fill="#5c6b76" font-size="11">union sweep</text>
+  <!-- interior set: one set, no outside member -->
+  <text x="435" y="58" text-anchor="middle" fill="#5c6b76" font-size="12">one set — enclosed</text>
+  <g stroke="#4169E1" stroke-width="2">
+    <path d="M 376 96 H 409"/><path d="M 461 96 H 494"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <circle cx="350" cy="96" r="26"/><circle cx="435" cy="96" r="26"/><circle cx="520" cy="96" r="26"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="350" y="101">5</text><text x="435" y="101">6</text><text x="520" y="101">10</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="350" y="136">(1,1)</text><text x="435" y="136">(1,2)</text><text x="520" y="136">(2,2)</text>
+  </g>
+  <text x="435" y="160" text-anchor="middle" fill="#1a2026" font-size="12.5">find ≠ find(outside): all three flip to X</text>
+  <!-- border set: bottom-edge O 13 glued to the virtual node 16 -->
+  <path d="M 378 212 H 492" stroke="#4169E1" stroke-width="2"/>
+  <text x="435" y="188" text-anchor="middle" fill="#5c6b76" font-size="11">edge O → virtual node</text>
+  <circle cx="350" cy="212" r="26" fill="#ffffff" stroke="#1a2026" stroke-width="1.4"/>
+  <circle cx="520" cy="212" r="26" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <text x="350" y="217" text-anchor="middle" font-weight="600" fill="#1a2026">13</text>
+  <text x="520" y="217" text-anchor="middle" font-weight="600" fill="#4169E1">16</text>
+  <text x="350" y="252" text-anchor="middle" fill="#9aa7b2" font-size="10.5">(3,1)</text>
+  <text x="520" y="252" text-anchor="middle" fill="#4169E1" font-size="10.5">outside</text>
+  <text x="435" y="278" text-anchor="middle" fill="#1a2026" font-size="12.5">find = find(outside): the O <tspan fill="#4169E1" font-weight="600">survives</tspan></text>
+  <text x="300" y="312" text-anchor="middle" fill="#1a2026" font-size="13">The sweep unions each O with its O neighbours and every edge O with node 16;</text>
+  <text x="300" y="334" text-anchor="middle" fill="#1a2026" font-size="13">exactly the enclosed set <tspan fill="#4169E1" font-weight="600">{5, 6, 10}</tspan> flips to X; bottom-edge O <tspan fill="#4169E1" font-weight="600">13</tspan> survives.</text>
+</svg>

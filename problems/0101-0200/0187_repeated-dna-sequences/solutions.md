@@ -33,6 +33,8 @@ falls out of the top exactly as the new one enters. Two operations per
 position maintain the code of the current window, versus slicing and hashing
 ten characters; after the tenth letter every position holds a complete code.
 
+![On the example string, the 20-bit register after 19 letters (window CAAAACCCCC) shifts left two bits, inserts the new C = 01 and masks to 20 bits, reproducing 341 — the code already seen at i = 9 — while 341 and 349184 land in the seen-again set as the two repeated windows.](figures/solution-rolling-bit-register.svg)
+
 The bookkeeping around the codes is the same as before, only cheaper to
 compare: a `seen` set of integers, a second set for the ones that arrive
 again, and a decode of the survivors back into letters at the very end —

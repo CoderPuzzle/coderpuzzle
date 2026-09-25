@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- intervals = [[0,30],[5,10],[15,20]] already sorted by start; timeline maps t to x = 90 + 18t; bars 26 tall -->
+  <text x="60" y="30" fill="#5c6b76" font-size="12.5">sorted by start</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="60" y="44" width="88" height="36"/><rect x="246" y="44" width="88" height="36"/><rect x="432" y="44" width="88" height="36"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="104" y="67">[0, 30]</text><text x="290" y="67">[5, 10]</text><text x="476" y="67">[15, 20]</text>
+  </g>
+  <path d="M 156 62 H 236" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="197" y="48" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">30 &gt; 5</text>
+  <text x="197" y="94" text-anchor="middle" fill="#4169E1" font-size="12">clash — false</text>
+  <path d="M 342 62 H 422" fill="none" stroke="#9aa7b2" stroke-width="1.6" marker-end="url(#arrowM)"/>
+  <text x="383" y="48" text-anchor="middle" fill="#9aa7b2" font-size="13">10 ≤ 15</text>
+  <text x="383" y="94" text-anchor="middle" fill="#9aa7b2" font-size="12">ok — never reached</text>
+  <!-- timeline bars: [0,30] x 90-630, [5,10] x 180-270, [15,20] x 360-450 -->
+  <rect x="90" y="150" width="540" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="360" y="167" text-anchor="middle" fill="#1a2026" font-size="12.5">0–30</text>
+  <text x="200" y="167" fill="#9aa7b2" font-size="11.5">still running</text>
+  <rect x="180" y="186" width="90" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="225" y="203" text-anchor="middle" fill="#1a2026" font-size="12.5">5–10</text>
+  <rect x="360" y="222" width="90" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="405" y="239" text-anchor="middle" fill="#1a2026" font-size="12.5">15–20</text>
+  <line x1="180" y1="142" x2="180" y2="246" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="180" y="134" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">t = 5</text>
+  <line x1="90" y1="250" x2="640" y2="250" stroke="#42525e" stroke-width="1.4"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="90" y1="250" x2="90" y2="256"/><line x1="180" y1="250" x2="180" y2="256"/>
+    <line x1="270" y1="250" x2="270" y2="256"/><line x1="360" y1="250" x2="360" y2="256"/>
+    <line x1="450" y1="250" x2="450" y2="256"/><line x1="540" y1="250" x2="540" y2="256"/>
+    <line x1="630" y1="250" x2="630" y2="256"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="90" y="272">0</text><text x="180" y="272">5</text><text x="270" y="272">10</text>
+    <text x="360" y="272">15</text><text x="450" y="272">20</text><text x="540" y="272">25</text>
+    <text x="630" y="272">30</text>
+  </g>
+  <text x="340" y="298" text-anchor="middle" fill="#1a2026" font-size="13">Sorted by start, the pass checks adjacent pairs: the first already clashes — 0–30 ends at 30,</text>
+  <text x="340" y="318" text-anchor="middle" fill="#1a2026" font-size="13">after 5–10 begins at 5 — the strict test fails and the answer is <tspan fill="#4169E1" font-weight="600">false</tspan>.</text>
+</svg>

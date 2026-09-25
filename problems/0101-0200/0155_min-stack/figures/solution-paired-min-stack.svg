@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 316" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="316" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- ops: push -2, 0, -3, then pop; every entry is the pair (value, min so far); cells 74x44, left stack x=140 rows y=100/144/188, right stack x=380 rows y=150/194 -->
+  <text x="214" y="36" text-anchor="middle" fill="#5c6b76" font-size="12.5">after three pushes</text>
+  <text x="454" y="36" text-anchor="middle" fill="#5c6b76" font-size="12.5">after pop()</text>
+  <text x="40" y="112" fill="#5c6b76" font-size="12.5">getMin()</text>
+  <text x="40" y="130" fill="#5c6b76" font-size="12.5">→ <tspan fill="#4169E1" font-weight="600">-3</tspan></text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="177" y="90">value</text><text x="251" y="90">min</text>
+  </g>
+  <!-- left stack, bottom to top: (-2,-2) (0,-2) (-3,-3) -->
+  <g stroke-width="1.4">
+    <rect x="140" y="188" width="74" height="44" fill="#ffffff" stroke="#1a2026"/><rect x="214" y="188" width="74" height="44" fill="#f0f3f7" stroke="#1a2026"/>
+    <rect x="140" y="144" width="74" height="44" fill="#ffffff" stroke="#1a2026"/><rect x="214" y="144" width="74" height="44" fill="#f0f3f7" stroke="#1a2026"/>
+    <rect x="140" y="100" width="74" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/><rect x="214" y="100" width="74" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="177" y="216" fill="#1a2026">-2</text><text x="251" y="216" fill="#1a2026">-2</text>
+    <text x="177" y="172" fill="#1a2026">0</text><text x="251" y="172" fill="#1a2026">-2</text>
+    <text x="177" y="128" fill="#4169E1">-3</text><text x="251" y="128" fill="#4169E1">-3</text>
+  </g>
+  <path d="M 294 122 C 330 122, 342 172, 374 172" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="334" y="106" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">pop()</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="417" y="140">value</text><text x="491" y="140">min</text>
+  </g>
+  <!-- right stack, bottom to top: (-2,-2) (0,-2) -->
+  <g stroke-width="1.4">
+    <rect x="380" y="194" width="74" height="44" fill="#ffffff" stroke="#1a2026"/><rect x="454" y="194" width="74" height="44" fill="#f0f3f7" stroke="#1a2026"/>
+    <rect x="380" y="150" width="74" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/><rect x="454" y="150" width="74" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="417" y="222" fill="#1a2026">-2</text><text x="491" y="222" fill="#1a2026">-2</text>
+    <text x="417" y="178" fill="#4169E1">0</text><text x="491" y="178" fill="#4169E1">-2</text>
+  </g>
+  <path d="M 542 150 L 536 150 L 536 194 L 542 194" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <g font-size="12.5" fill="#1a2026">
+    <text x="550" y="166">top() = <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+    <text x="550" y="184">getMin() = <tspan fill="#4169E1" font-weight="600">-2</tspan></text>
+  </g>
+  <text x="330" y="272" text-anchor="middle" fill="#1a2026" font-size="13">Popping the pair (-3, -3) exposes (0, -2), whose stored min already</text>
+  <text x="330" y="292" text-anchor="middle" fill="#1a2026" font-size="13">describes the earlier stack — getMin reads <tspan fill="#4169E1" font-weight="600">-2</tspan> off the top, no rescan.</text>
+</svg>

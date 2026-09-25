@@ -43,6 +43,10 @@ A trie stores words as root-to-node paths: each character of a word selects one 
 
 All three operations are the same walk. `insert` follows the path character by character, allocating a node the first time a slot is empty, and sets `end` on the final node. `search` follows the path without allocating and answers `node != null && node.end`; `startsWith` answers only `node != null`. That flag is the entire difference between the two queries — a prefix that was never inserted as a whole word leads to a live node without the flag, which is why `search("app")` is false while `startsWith("app")` is true after inserting `"apple"`.
 
+![After insert("apple") the end flag sits only on the final e, so the walk
+for "app" reaches a live but flagless node — search("app") returns false
+while startsWith("app") returns true on the same walk.](figures/solution-trie-app-end-flag.svg)
+
 The fixed 26-slot array beats a hash map per step here: indexing is a subtraction and an array access with no hashing, at the cost of `26 * pointers` bytes per node. Walking stops the instant a slot is empty, so a mismatching query costs only the length of the shared prefix.
 
 **Complexity:** `O(L)` time per operation for a word or prefix of length `L`, `O(total characters * 26)` space in the worst case.

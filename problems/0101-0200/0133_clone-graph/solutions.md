@@ -11,6 +11,8 @@ depth-first from the given node, every neighbor is either new — create its
 clone, register it, and recurse — or already mapped, in which case the current
 clone simply links to it.
 
+![On the 4-node cycle of Example 1 the DFS builds clones 1', 2', 3', 4' in that order, and each back edge — 4 revisiting 1 last — links to the clone the visited map already holds instead of recursing.](figures/solution-dfs-clone-visited-map.svg)
+
 Because the map holds a clone for a node the moment that node is discovered,
 the recursion terminates on cycles: each node enters the map exactly once, and
 every edge is visited exactly twice (once from each endpoint), so the whole

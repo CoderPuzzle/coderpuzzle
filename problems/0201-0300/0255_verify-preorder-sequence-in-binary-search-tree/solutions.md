@@ -55,6 +55,8 @@ still admits it picks the value up there. If no ancestor ever does, the
 array ends with unclaimed values, which is exactly what no BST preorder can
 produce.
 
+![Reading [5, 2, 1, 3, 6] as recursive descent: each value is claimed inside the first window an ancestor leaves open — 3 is refused by (1, 2), waits while the calls unwind, and is claimed by (2, 5) — so the cursor never backs up and the answer is true.](figures/solution-inherited-window-claims.svg)
+
 Draining the array is the success condition: every value found the one slot
 the ordering rules leave open, so the sequence is the preorder of the tree
 the calls implicitly built, at one comparison and one claim per value. The
