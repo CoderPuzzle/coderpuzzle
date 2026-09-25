@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- Example 1 room; spiral DFS from (1,3) facing up -->
+  <!-- room rows x cols; DFS cleans cells in order 1..11, dead end at (0,0) backs out to (0,1) -->
+  <!-- grid: x0=36, y0=96, cells 42x30 -->
+  <text x="57.0" y="88" text-anchor="middle" fill="#9aa7b2" font-size="10">0</text>
+  <text x="99.0" y="88" text-anchor="middle" fill="#9aa7b2" font-size="10">1</text>
+  <text x="141.0" y="88" text-anchor="middle" fill="#9aa7b2" font-size="10">2</text>
+  <text x="183.0" y="88" text-anchor="middle" fill="#9aa7b2" font-size="10">3</text>
+  <text x="225.0" y="88" text-anchor="middle" fill="#9aa7b2" font-size="10">4</text>
+  <text x="267.0" y="88" text-anchor="middle" fill="#9aa7b2" font-size="10">5</text>
+  <text x="309.0" y="88" text-anchor="middle" fill="#9aa7b2" font-size="10">6</text>
+  <text x="351.0" y="88" text-anchor="middle" fill="#9aa7b2" font-size="10">7</text>
+  <text x="24" y="114.5" text-anchor="middle" fill="#9aa7b2" font-size="10">0</text>
+  <text x="24" y="144.5" text-anchor="middle" fill="#9aa7b2" font-size="10">1</text>
+  <text x="24" y="174.5" text-anchor="middle" fill="#9aa7b2" font-size="10">2</text>
+  <text x="24" y="204.5" text-anchor="middle" fill="#9aa7b2" font-size="10">3</text>
+  <text x="24" y="234.5" text-anchor="middle" fill="#9aa7b2" font-size="10">4</text>
+  <rect x="36" y="96" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="78" y="96" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="120" y="96" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="162" y="96" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="204" y="96" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="246" y="96" width="42" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="288" y="96" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="330" y="96" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="36" y="126" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="78" y="126" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="120" y="126" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="162" y="126" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="204" y="126" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="246" y="126" width="42" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="288" y="126" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="330" y="126" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="36" y="156" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="78" y="156" width="42" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="120" y="156" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="162" y="156" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="204" y="156" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="246" y="156" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="288" y="156" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="330" y="156" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="36" y="186" width="42" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="78" y="186" width="42" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="120" y="186" width="42" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="162" y="186" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="204" y="186" width="42" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="246" y="186" width="42" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="288" y="186" width="42" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="330" y="186" width="42" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="36" y="216" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="78" y="216" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="120" y="216" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="162" y="216" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="204" y="216" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="246" y="216" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="288" y="216" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="330" y="216" width="42" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="162" y="126" width="42" height="30" fill="#4169E1" stroke="#42525e" stroke-width="1.2"/>
+  <text x="167" y="138" fill="#ffffff" font-size="10.5" font-weight="600">1</text>
+  <text x="167" y="108" fill="#1a2026" font-size="10.5">2</text>
+  <text x="209" y="108" fill="#1a2026" font-size="10.5">3</text>
+  <text x="209" y="138" fill="#1a2026" font-size="10.5">4</text>
+  <text x="209" y="168" fill="#1a2026" font-size="10.5">5</text>
+  <text x="167" y="168" fill="#1a2026" font-size="10.5">6</text>
+  <text x="125" y="168" fill="#1a2026" font-size="10.5">7</text>
+  <text x="125" y="138" fill="#1a2026" font-size="10.5">8</text>
+  <text x="125" y="108" fill="#1a2026" font-size="10.5">9</text>
+  <text x="83" y="108" fill="#1a2026" font-size="10.5">10</text>
+  <text x="41" y="108" fill="#1a2026" font-size="10.5">11</text>
+  <!-- path arrows between consecutive cleaned cells -->
+  <line x1="183.0" y1="135.0" x2="183.0" y2="117.0" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <line x1="191.0" y1="111.0" x2="218.0" y2="111.0" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <line x1="225.0" y1="117.0" x2="225.0" y2="135.0" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <line x1="225.0" y1="147.0" x2="225.0" y2="165.0" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <line x1="217.0" y1="171.0" x2="190.0" y2="171.0" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <line x1="175.0" y1="171.0" x2="148.0" y2="171.0" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <line x1="141.0" y1="165.0" x2="141.0" y2="147.0" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <line x1="141.0" y1="135.0" x2="141.0" y2="117.0" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <line x1="133.0" y1="111.0" x2="106.0" y2="111.0" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <line x1="91.0" y1="111.0" x2="64.0" y2="111.0" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <path d="M 57.0 100 C 57.0 48, 104 48, 104 100" fill="none" stroke="#5c6b76" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="200" y="48" text-anchor="middle" fill="#5c6b76" font-size="11">back out: turnRight &#215;2 &#183; move &#183; turnRight &#215;2</text>
+  <!-- inset: clockwise probe order from the arrival facing -->
+  <rect x="440" y="104" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <line x1="461.0" y1="102.0" x2="461.0" y2="86.0" stroke="#42525e" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="484.0" y1="119.0" x2="502.0" y2="119.0" stroke="#42525e" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="461.0" y1="136.0" x2="461.0" y2="152.0" stroke="#42525e" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="438.0" y1="119.0" x2="420.0" y2="119.0" stroke="#42525e" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <text x="461.0" y="80" text-anchor="middle" fill="#4169E1" font-size="10" font-weight="600">1st</text>
+  <text x="506" y="122.5" fill="#4169E1" font-size="10" font-weight="600">2nd</text>
+  <text x="461.0" y="162" text-anchor="middle" fill="#4169E1" font-size="10" font-weight="600">3rd</text>
+  <text x="416" y="122.5" text-anchor="end" fill="#4169E1" font-size="10" font-weight="600">4th</text>
+  <text x="404" y="188" fill="#5c6b76" font-size="12">From the arrival facing, probe clockwise:</text>
+  <text x="404" y="206" fill="#5c6b76" font-size="12">blocked or visited &#8594; turnRight and retry.</text>
+  <!-- inset: the five-call back-out retraces the entering step -->
+  <rect x="404" y="224" width="42" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <text x="425.0" y="243.5" text-anchor="middle" fill="#9aa7b2" font-size="12">&#215;</text>
+  <rect x="486" y="224" width="42" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <line x1="452.0" y1="239.0" x2="480.0" y2="239.0" stroke="#5c6b76" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="404" y="282" fill="#5c6b76" font-size="12">Frame exhausted &#8594; turnRight &#215;2 &#183; move</text>
+  <text x="404" y="300" fill="#5c6b76" font-size="12">&#183; turnRight &#215;2 backs out, facing restored.</text>
+  <text x="340" y="318" text-anchor="middle" fill="#1a2026" font-size="13">The spiral cleans cells 1&#8211;11 in order; the dead end (0,0) backs out to (0,1) with</text>
+  <text x="340" y="336" text-anchor="middle" fill="#1a2026" font-size="13">turnRight &#215;2 &#183; move &#183; turnRight &#215;2 &#8212; all <tspan fill="#4169E1" font-weight="600">30</tspan> reachable cells still get cleaned.</text>
+</svg>

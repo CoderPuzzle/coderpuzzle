@@ -18,6 +18,8 @@ per-level used set, the search lets them run and drops each finished sequence
 into a hash set keyed by the sequence itself — duplicate paths land on the
 same member, so the honest deduplication falls out of the container.
 
+![On nums = [4,6,7,7], the take-or-skip tree under the [4,6] prefix shows both 7-copies building [4,6,7] on different paths — the result set stores it once, and 8 members survive.](figures/solution-take-skip-tree-dedup.svg)
+
 Sorting the set's contents then emits the order the statement pins: ascending
 lexicographic by the sequence itself, element by element, a sequence before
 its own extensions. With `n <= 15` the tree has at most 32,768 leaves, each

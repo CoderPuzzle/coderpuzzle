@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="356" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- nums = [4,6,7,7]; take-or-skip tree drawn under the [4,6] prefix (the other
+       stubs are grayed); node rects 26px tall; the two accented leaves both build
+       [4,6,7] and dedup in the result-set panel at x=430 -->
+  <g text-anchor="start" fill="#5c6b76" font-size="11">
+    <text x="10" y="48">i=0 &#183; 4</text>
+    <text x="10" y="104">i=1 &#183; 6</text>
+    <text x="10" y="160">i=2 &#183; 7</text>
+    <text x="10" y="216">i=3 &#183; 7</text>
+  </g>
+  <!-- edges -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 130 57 V 87"/>
+    <path d="M 130 113 V 143"/>
+    <path d="M 130 169 L 80 199"/>
+    <path d="M 130 169 L 240 199"/>
+    <path d="M 80 225 L 50 255"/>
+    <path d="M 80 225 L 135 255"/>
+    <path d="M 240 225 L 215 255"/>
+    <path d="M 240 225 L 305 255"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.3" fill="none" stroke-dasharray="4 3">
+    <path d="M 150 44 H 180"/>
+    <path d="M 150 100 H 180"/>
+  </g>
+  <g text-anchor="start" fill="#9aa7b2" font-size="10.5">
+    <text x="186" y="48">skip 4</text>
+    <text x="186" y="104">skip 6</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="82" y="176">skip 7</text>
+    <text x="218" y="186">take 7</text>
+    <text x="38" y="244">skip 7</text>
+    <text x="136" y="244">take 7</text>
+    <text x="201" y="244">skip 7</text>
+    <text x="309" y="244">take 7</text>
+  </g>
+  <!-- nodes: prefix chain -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.3">
+    <rect x="110" y="31" width="40" height="26"/>
+    <rect x="110" y="87" width="40" height="26"/>
+    <rect x="103" y="143" width="54" height="26"/>
+    <rect x="53" y="199" width="54" height="26"/>
+    <rect x="206" y="199" width="68" height="26"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="130" y="48">[ ]</text>
+    <text x="130" y="104">[4]</text>
+    <text x="130" y="160">[4,6]</text>
+    <text x="80" y="216">[4,6]</text>
+    <text x="240" y="216">[4,6,7]</text>
+  </g>
+  <!-- leaves: the two [4,6,7] leaves are accented -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.3">
+    <rect x="23" y="255" width="54" height="26"/>
+    <rect x="264" y="255" width="82" height="26"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4">
+    <rect x="101" y="255" width="68" height="26"/>
+    <rect x="181" y="255" width="68" height="26"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#4169E1">
+    <text x="135" y="272">[4,6,7]</text>
+    <text x="215" y="272">[4,6,7]</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="50" y="272">[4,6]</text>
+    <text x="305" y="272">[4,6,7,7]</text>
+  </g>
+  <path d="M 135 287 Q 175 306 215 287" fill="none" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="175" y="312" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">same sequence</text>
+  <!-- result set panel -->
+  <rect x="430" y="64" width="235" height="226" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="547" y="86" text-anchor="middle" fill="#5c6b76" font-size="12.5">result set (sorted)</text>
+  <g text-anchor="start" fill="#1a2026" font-size="12.5">
+    <text x="452" y="110">[4,6]</text>
+    <text x="452" y="132" fill="#4169E1" font-weight="600">[4,6,7]</text>
+    <text x="452" y="154">[4,6,7,7]</text>
+    <text x="452" y="176">[4,7]</text>
+    <text x="452" y="198">[4,7,7]</text>
+    <text x="452" y="220">[6,7]</text>
+    <text x="452" y="242">[6,7,7]</text>
+    <text x="452" y="264">[7,7]</text>
+  </g>
+  <text x="520" y="132" text-anchor="start" fill="#4169E1" font-size="10.5">&#8592; inserted twice,</text>
+  <text x="520" y="146" text-anchor="start" fill="#4169E1" font-size="10.5">stored once</text>
+  <!-- takeaway -->
+  <text x="340" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Every index faces one take-or-skip choice; a take must keep the sequence non-decreasing.</text>
+  <text x="340" y="350" text-anchor="middle" fill="#1a2026" font-size="13">The two 7-copies both build <tspan fill="#4169E1" font-weight="600">[4,6,7]</tspan> &#8212; the set stores it once; <tspan fill="#4169E1" font-weight="600">8</tspan> members survive.</text>
+</svg>

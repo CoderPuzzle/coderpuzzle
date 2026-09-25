@@ -18,6 +18,8 @@ final: nothing still in the heap can beat it on distance, and no undiscovered
 path can beat it on either count. An empty heap means the hole is unreachable
 and the answer is `"impossible"`.
 
+![On Example 1's maze both shortest routes to the hole cost 6 — "ul" (4+2) and "lul" (1+4+1) — and the heap pops (6, "lul") before (6, "ul") because 'l' < 'u'.](figures/solution-dijkstra-lex-tiebreak.svg)
+
 The statement's rule that the next direction "must be different from last
 chosen direction" turns out to need no code. The ball only ever stops against
 a wall or the border — the one roll that halts without a wall ahead is the

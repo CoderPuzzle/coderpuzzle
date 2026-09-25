@@ -20,6 +20,8 @@ examples warn about. The start cell is itself a stop, since the ball begins
 at rest, so a destination equal to the start is answered by the first
 dequeue.
 
+![On Example 2's maze, the rolls between stopping cells mark 15 stops while every roll through the destination (3,2) never stops there — the queue empties and the answer is false.](figures/solution-bfs-stop-cells.svg)
+
 Each roll scans at most `m + n` cells before hitting something solid, and
 the search expands at most `m * n` stops, so the whole traversal stays
 cheap; the queue and the mark array are both bounded by the number of cells.

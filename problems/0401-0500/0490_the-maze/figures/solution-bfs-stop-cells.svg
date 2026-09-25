@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- maze = [[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]];
+       start (0,4), destination (3,2); cells 56x40 at (60,56); arrows are the 14
+       rolls that discover a new stopping cell (BFS order); the accent roll is the
+       one that passes through the destination -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="60" y="56" width="56" height="40"/><rect x="116" y="56" width="56" height="40"/>
+    <rect x="172" y="56" width="56" height="40"/><rect x="228" y="56" width="56" height="40"/>
+    <rect x="284" y="56" width="56" height="40"/>
+    <rect x="60" y="96" width="56" height="40"/><rect x="116" y="96" width="56" height="40"/>
+    <rect x="172" y="96" width="56" height="40"/><rect x="228" y="96" width="56" height="40"/>
+    <rect x="284" y="96" width="56" height="40"/>
+    <rect x="60" y="136" width="56" height="40"/><rect x="116" y="136" width="56" height="40"/>
+    <rect x="172" y="136" width="56" height="40"/><rect x="228" y="136" width="56" height="40"/>
+    <rect x="284" y="136" width="56" height="40"/>
+    <rect x="60" y="176" width="56" height="40"/><rect x="116" y="176" width="56" height="40"/>
+    <rect x="172" y="176" width="56" height="40"/><rect x="228" y="176" width="56" height="40"/>
+    <rect x="284" y="176" width="56" height="40"/>
+    <rect x="60" y="216" width="56" height="40"/><rect x="116" y="216" width="56" height="40"/>
+    <rect x="172" y="216" width="56" height="40"/><rect x="228" y="216" width="56" height="40"/>
+    <rect x="284" y="216" width="56" height="40"/>
+  </g>
+  <g fill="#f0f3f7">
+    <rect x="172" y="56" width="56" height="40"/>
+    <rect x="228" y="136" width="56" height="40"/>
+    <rect x="60" y="176" width="56" height="40"/><rect x="116" y="176" width="56" height="40"/>
+    <rect x="228" y="176" width="56" height="40"/><rect x="284" y="176" width="56" height="40"/>
+  </g>
+  <!-- BFS discovery edges (lane offsets keep opposite rolls apart) -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 318 79 V 151" marker-end="url(#arrow)"/>
+    <path d="M 309 70 H 259" marker-end="url(#arrow)"/>
+    <path d="M 262 79 V 113" marker-end="url(#arrow)"/>
+    <path d="M 253 110 H 91" marker-end="url(#arrow)"/>
+    <path d="M 259 122 H 309" marker-end="url(#arrow)"/>
+    <path d="M 82 113 V 79" marker-end="url(#arrow)"/>
+    <path d="M 94 119 V 153" marker-end="url(#arrow)"/>
+    <path d="M 91 82 H 141" marker-end="url(#arrow)"/>
+    <path d="M 91 162 H 197" marker-end="url(#arrow)"/>
+    <path d="M 150 79 V 153" marker-end="url(#arrow)"/>
+    <path d="M 194 153 V 119" marker-end="url(#arrow)"/>
+    <path d="M 196 240 H 91" marker-end="url(#arrow)"/>
+    <path d="M 206 244 H 309" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 214 159 V 233" stroke="#4169E1" stroke-width="2" fill="none" marker-end="url(#arrowB)"/>
+  <!-- stopping-cell dots -->
+  <g fill="#4169E1">
+    <circle cx="312" cy="156" r="3"/><circle cx="256" cy="76" r="3"/>
+    <circle cx="256" cy="116" r="3"/><circle cx="88" cy="116" r="3"/>
+    <circle cx="312" cy="116" r="3"/><circle cx="88" cy="76" r="3"/>
+    <circle cx="88" cy="156" r="3"/><circle cx="144" cy="76" r="3"/>
+    <circle cx="200" cy="156" r="3"/><circle cx="144" cy="156" r="3"/>
+    <circle cx="200" cy="116" r="3"/><circle cx="200" cy="236" r="3"/>
+    <circle cx="88" cy="236" r="3"/><circle cx="312" cy="236" r="3"/>
+  </g>
+  <!-- start and destination badges -->
+  <circle cx="312" cy="76" r="10" fill="#4169E1"/>
+  <text x="312" y="80" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">S</text>
+  <circle cx="200" cy="196" r="8" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <text x="200" y="200" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">D</text>
+  <!-- legend -->
+  <rect x="390" y="58" width="26" height="18" fill="#f0f3f7" stroke="#42525e" stroke-width="1.2"/>
+  <text x="424" y="72" text-anchor="start" fill="#1a2026" font-size="12">wall</text>
+  <circle cx="403" cy="102" r="3" fill="#4169E1"/>
+  <text x="424" y="106" text-anchor="start" fill="#1a2026" font-size="12">stopping cell</text>
+  <circle cx="403" cy="130" r="8" fill="#4169E1"/>
+  <text x="403" y="134" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="600">S</text>
+  <text x="424" y="134" text-anchor="start" fill="#1a2026" font-size="12">start (0,4)</text>
+  <circle cx="403" cy="158" r="8" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <text x="403" y="162" text-anchor="middle" fill="#4169E1" font-size="10" font-weight="600">D</text>
+  <text x="424" y="162" text-anchor="start" fill="#1a2026" font-size="12">destination (3,2)</text>
+  <path d="M 390 186 H 418" stroke="#4169E1" stroke-width="2" fill="none" marker-end="url(#arrowB)"/>
+  <text x="424" y="190" text-anchor="start" fill="#1a2026" font-size="12">roll through (3,2)</text>
+  <g text-anchor="start" fill="#5c6b76" font-size="12">
+    <text x="390" y="232">BFS expands stops from the</text>
+    <text x="390" y="250">queue; (3,2) is rolled through</text>
+    <text x="390" y="268">but is never a stop, so it is</text>
+    <text x="390" y="286">never dequeued: queue empties.</text>
+  </g>
+  <!-- takeaway -->
+  <text x="340" y="300" text-anchor="middle" fill="#1a2026" font-size="13">The ball rolls straight across the destination (3,2) but never comes to rest there:</text>
+  <text x="340" y="322" text-anchor="middle" fill="#1a2026" font-size="13">BFS marks <tspan fill="#4169E1" font-weight="600">15</tspan> stopping cells, none of them (3,2) &#8212; the queue empties, answer <tspan fill="#4169E1" font-weight="600">false</tspan>.</text>
+</svg>
