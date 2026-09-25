@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="336" fill="#ffffff"/>
+  <!-- trees = [[1,1],[2,2],[2,0],[2,4],[3,3],[4,2]]; data (x,y) -> svg (56 + 46x, 260 - 46y).
+       Welzl circles: (1,1) r 0; (1,1)-(2,2) diameter c=(1.5,1.5) r~0.71;
+       (2,0)-(2,2) diameter c=(2,1) r 1; (2,0)-(2,4) diameter c=(2,2) r 2 (final) -->
+  <text x="160" y="40" text-anchor="middle" fill="#5c6b76" font-size="11.5">trees = [[1,1],[2,2],[2,0],[2,4],[3,3],[4,2]]</text>
+  <g stroke="#9aa7b2" stroke-width="1">
+    <line x1="56" y1="60" x2="56" y2="272"/>
+    <line x1="48" y1="260" x2="264" y2="260"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10">
+    <text x="102" y="276">1</text><text x="148" y="276">2</text><text x="194" y="276">3</text><text x="240" y="276">4</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="10">
+    <text x="50" y="220">1</text><text x="50" y="174">2</text><text x="50" y="128">3</text><text x="50" y="82">4</text>
+  </g>
+  <circle cx="148" cy="168" r="92" fill="#dbe4fb" fill-opacity="0.35"/>
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3">
+    <circle cx="125" cy="191" r="32.5"/>
+    <circle cx="148" cy="214" r="46"/>
+  </g>
+  <circle cx="148" cy="168" r="92" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <g fill="#1a2026">
+    <circle cx="102" cy="214" r="4"/><circle cx="148" cy="168" r="4"/><circle cx="148" cy="260" r="4"/>
+    <circle cx="148" cy="76" r="4"/><circle cx="194" cy="122" r="4"/><circle cx="240" cy="168" r="4"/>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="1.5">
+    <circle cx="148" cy="260" r="7.5"/><circle cx="148" cy="76" r="7.5"/><circle cx="240" cy="168" r="7.5"/>
+  </g>
+  <g fill="#5c6b76" font-size="10.5">
+    <text x="94" y="218" text-anchor="end">(1,1)</text>
+    <text x="156" y="172">(2,2)</text>
+    <text x="156" y="276">(2,0)</text>
+    <text x="156" y="72">(2,4)</text>
+    <text x="202" y="118">(3,3)</text>
+    <text x="248" y="172">(4,2)</text>
+  </g>
+  <text x="330" y="56" fill="#5c6b76" font-size="12.5">Welzl sweep in input order</text>
+  <g text-anchor="start" font-size="12.5" fill="#1a2026">
+    <text x="330" y="84">(1,1) — circle = the point itself, r = 0</text>
+    <text x="330" y="110">(2,2) escapes → diameter (1,1)-(2,2), r ≈ 0.71</text>
+    <text x="330" y="136">(2,0) escapes → diameter (2,0)-(2,2), r = 1</text>
+    <text x="330" y="162">(2,4) escapes → diameter (2,0)-(2,4):</text>
+    <text x="330" y="186" fill="#4169E1" font-weight="600">c = (2,2), r = 2 — the final circle</text>
+    <text x="330" y="212">(3,3): dist √2 &lt; 2 — inside, circle stands</text>
+    <text x="330" y="238">(4,2): dist = 2 = r — on the border, enclosed</text>
+  </g>
+  <text x="340" y="296" text-anchor="middle" fill="#1a2026" font-size="13">Every escape pins the escapee to the border; after (2,4) escapes the r = 1 circle,</text>
+  <text x="340" y="316" text-anchor="middle" fill="#1a2026" font-size="13">the rebuild closes on center (2, 2), <tspan fill="#4169E1" font-weight="600">radius 2</tspan> — through (2,0), (2,4) and (4,2).</text>
+</svg>

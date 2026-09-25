@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- edges [[0,1,10],[1,2,10],[2,5,10],[0,3,1],[3,4,10],[4,5,15]], fees [5,1,2,20,20,3]; cells 118x52, rows y=64/200, cols x=30/190/350/510 -->
+  <!-- accent chain: layers along 0 -> 1 -> 2 -> 5 -->
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="30" y="64" width="118" height="52"/><rect x="190" y="64" width="118" height="52"/>
+    <rect x="350" y="64" width="118" height="52"/>
+  </g>
+  <rect x="510" y="64" width="118" height="52" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle">
+    <text x="89" y="84" fill="#5c6b76" font-size="12">t = 0 · city 0</text>
+    <text x="249" y="84" fill="#5c6b76" font-size="12">t = 10 · city 1</text>
+    <text x="409" y="84" fill="#5c6b76" font-size="12">t = 20 · city 2</text>
+    <text x="569" y="84" fill="#5c6b76" font-size="12">t = 30 · city 5</text>
+    <g font-weight="600" font-size="13.5" fill="#1a2026">
+      <text x="89" y="105">$5</text><text x="249" y="105">$6 = 5 + 1</text>
+      <text x="409" y="105">$8 = 6 + 2</text>
+    </g>
+    <text x="569" y="105" font-weight="600" font-size="13.5" fill="#4169E1">$11 = 8 + 3</text>
+  </g>
+  <!-- muted branch: layers along 0 -> 3 -> 4 -> 5 -->
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="#f0f3f7">
+    <rect x="30" y="200" width="118" height="52"/><rect x="190" y="200" width="118" height="52"/>
+    <rect x="350" y="200" width="118" height="52"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="89" y="220" fill="#5c6b76" font-size="12">t = 1 · city 3</text>
+    <text x="249" y="220" fill="#5c6b76" font-size="12">t = 11 · city 4</text>
+    <text x="409" y="220" fill="#5c6b76" font-size="12">t = 26 · city 5</text>
+    <g font-weight="600" font-size="13.5" fill="#5c6b76">
+      <text x="89" y="241">$25 = 5 + 20</text><text x="249" y="241">$45 = 25 + 20</text>
+      <text x="409" y="241">$48 = 45 + 3</text>
+    </g>
+  </g>
+  <!-- chain arrows + edge labels -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 152 90 H 184" marker-end="url(#arrow)"/>
+    <path d="M 312 90 H 344" marker-end="url(#arrow)"/>
+    <path d="M 472 90 H 504" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="169" y="54">0–1 · 10 min</text><text x="329" y="54">1–2 · 10 min</text>
+    <text x="489" y="54">2–5 · 10 min</text>
+  </g>
+  <!-- branch arrows + edge labels -->
+  <g stroke="#9aa7b2" stroke-width="1.6" fill="none">
+    <path d="M 89 120 V 194" marker-end="url(#arrowG)"/>
+    <path d="M 152 226 H 184" marker-end="url(#arrowG)"/>
+    <path d="M 312 226 H 344" marker-end="url(#arrowG)"/>
+  </g>
+  <text x="99" y="160" fill="#9aa7b2" font-size="11.5">0–3 · 1 min</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="169" y="194">3–4 · 10 min</text><text x="329" y="194">4–5 · 15 min</text>
+  </g>
+  <!-- caption -->
+  <text x="330" y="296" text-anchor="middle" fill="#1a2026" font-size="13">Both city-5 cells are layers[t][5]: min($48, <tspan fill="#4169E1" font-weight="600">$11</tspan>) — the layered walks cost</text>
+  <text x="330" y="316" text-anchor="middle" fill="#1a2026" font-size="13">$5+$1+$2+$3 vs $5+$20+$20+$3, and 0 → 1 → 2 → 5 lands at exactly t = 30 ≤ maxTime.</text>
+</svg>

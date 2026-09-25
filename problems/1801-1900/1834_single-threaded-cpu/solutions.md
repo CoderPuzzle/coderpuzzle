@@ -6,6 +6,8 @@ Two structures divide the work. The task indices are pre-sorted by `(enqueueTime
 
 The main loop runs while tasks remain un-enqueued or the heap is non-empty. If the heap is empty the CPU is idle, and rather than ticking through time it jumps straight to the next task's enqueue time (clamped with `max` so the clock never runs backwards). All tasks whose enqueue time is at most the current time are then pushed before the pop happens, which is what makes the index tie-break correct: every task available at this instant competes in the same heap order.
 
+![On `tasks = [[1,2],[2,4],[3,2],[4,1]]`, the heap pops task 0 at t = 1, task 2 at t = 3, task 3 at t = 5, and task 1 at t = 6 — the processing order [0, 2, 3, 1].](figures/solution-enqueue-heap-dispatch.svg)
+
 After the winner is popped and appended to the answer, the clock advances by exactly its processing time. Each task is pushed and popped once, and enqueue times up to 10^9 cost nothing because time only ever jumps to a value drawn from the input.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

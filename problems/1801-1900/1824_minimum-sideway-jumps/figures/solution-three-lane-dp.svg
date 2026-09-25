@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="376" fill="#ffffff"/>
+  <!-- obstacles = [0,1,2,3,0]; road cells 58x28, cols (points 0-4) x=143/207/271/335/399, lane rows y=66/98/130;
+       dp cells 58x30 at same cols, rows y=212/246/280; dp fills: lane1 [1,inf,2,2,2], lane2 [0,0,inf,3,3], lane3 [1,1,1,inf,3];
+       best = 0,0,1,2,2; optimal route side-jumps at points 1 and 2, answer 2 -->
+  <text x="135" y="58" text-anchor="end" fill="#9aa7b2" font-size="11.5">points</text>
+  <g fill="#9aa7b2" font-size="11.5" text-anchor="middle">
+    <text x="172" y="58">0</text><text x="236" y="58">1</text><text x="300" y="58">2</text><text x="364" y="58">3</text><text x="428" y="58">4</text>
+  </g>
+  <g fill="#9aa7b2" font-size="11.5" text-anchor="end">
+    <text x="135" y="84">lane 1</text><text x="135" y="116">lane 2</text><text x="135" y="148">lane 3</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="143" y="66" width="58" height="28"/><rect x="207" y="66" width="58" height="28"/><rect x="271" y="66" width="58" height="28"/><rect x="335" y="66" width="58" height="28"/><rect x="399" y="66" width="58" height="28"/>
+    <rect x="143" y="98" width="58" height="28"/><rect x="207" y="98" width="58" height="28"/><rect x="335" y="98" width="58" height="28"/><rect x="399" y="98" width="58" height="28"/>
+    <rect x="143" y="130" width="58" height="28"/><rect x="207" y="130" width="58" height="28"/><rect x="271" y="130" width="58" height="28"/><rect x="399" y="130" width="58" height="28"/>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4">
+    <rect x="207" y="66" width="58" height="28"/>
+    <rect x="271" y="98" width="58" height="28"/>
+    <rect x="335" y="130" width="58" height="28"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="2.5">
+    <path d="M 229 73 L 243 87 M 243 73 L 229 87"/>
+    <path d="M 307 105 L 321 119 M 321 105 L 307 119"/>
+    <path d="M 357 137 L 371 151 M 371 137 L 357 151"/>
+  </g>
+  <polyline points="172,112 236,112 236,144 300,144 300,80 428,80" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <path d="M 231 123 L 241 123 L 236 131 z" fill="#4169E1"/>
+  <path d="M 295 117 L 305 117 L 300 109 z" fill="#4169E1"/>
+  <g fill="#4169E1">
+    <circle cx="172" cy="112" r="3"/><circle cx="236" cy="112" r="3"/><circle cx="236" cy="144" r="3"/><circle cx="300" cy="144" r="3"/><circle cx="300" cy="80" r="3"/><circle cx="428" cy="80" r="3"/>
+  </g>
+  <text x="172" y="174" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">start</text>
+  <text x="428" y="174" text-anchor="middle" fill="#5c6b76" font-size="11.5">target: point 4</text>
+  <text x="300" y="204" text-anchor="middle" fill="#5c6b76" font-size="12.5">dp[point][lane] - fewest side jumps to be standing here</text>
+  <g fill="#9aa7b2" font-size="11.5" text-anchor="end">
+    <text x="135" y="231">lane 1</text><text x="135" y="265">lane 2</text><text x="135" y="299">lane 3</text>
+  </g>
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.4">
+    <rect x="271" y="212" width="58" height="30"/><rect x="335" y="212" width="58" height="30"/><rect x="399" y="212" width="58" height="30"/>
+    <rect x="143" y="246" width="58" height="30"/><rect x="207" y="246" width="58" height="30"/>
+    <rect x="207" y="280" width="58" height="30"/><rect x="271" y="280" width="58" height="30"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="143" y="212" width="58" height="30"/>
+    <rect x="143" y="280" width="58" height="30"/><rect x="399" y="280" width="58" height="30"/>
+    <rect x="335" y="246" width="58" height="30"/><rect x="399" y="246" width="58" height="30"/>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4">
+    <rect x="207" y="212" width="58" height="30"/>
+    <rect x="271" y="246" width="58" height="30"/>
+    <rect x="335" y="280" width="58" height="30"/>
+  </g>
+  <rect x="399" y="212" width="58" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="172" y="231" fill="#1a2026">1</text><text x="236" y="231" fill="#9aa7b2">&#8734;</text><text x="300" y="231" fill="#4169E1">2</text><text x="364" y="231" fill="#4169E1">2</text><text x="428" y="231" fill="#4169E1">2</text>
+    <text x="172" y="265" fill="#4169E1">0</text><text x="236" y="265" fill="#4169E1">0</text><text x="300" y="265" fill="#9aa7b2">&#8734;</text><text x="364" y="265" fill="#1a2026">3</text><text x="428" y="265" fill="#1a2026">3</text>
+    <text x="172" y="299" fill="#1a2026">1</text><text x="236" y="299" fill="#4169E1">1</text><text x="300" y="299" fill="#4169E1">1</text><text x="364" y="299" fill="#9aa7b2">&#8734;</text><text x="428" y="299" fill="#1a2026">3</text>
+  </g>
+  <text x="135" y="318" text-anchor="end" fill="#5c6b76" font-size="12.5">best</text>
+  <g fill="#5c6b76" font-size="13" text-anchor="middle">
+    <text x="172" y="318">0</text><text x="236" y="318">0</text><text x="300" y="318">1</text><text x="364" y="318">2</text><text x="428" y="318">2</text>
+  </g>
+  <text x="300" y="342" text-anchor="middle" fill="#1a2026" font-size="13">Each point zeroes the blocked lane to &#8734;, then open lanes take min(old, best + 1):</text>
+  <text x="300" y="360" text-anchor="middle" fill="#1a2026" font-size="13">point 4's cheapest slot is <tspan fill="#4169E1" font-weight="600">2</tspan> - the optimal route side-jumps at points 1 and 2.</text>
+</svg>

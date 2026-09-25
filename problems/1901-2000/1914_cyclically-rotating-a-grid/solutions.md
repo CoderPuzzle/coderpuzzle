@@ -17,6 +17,10 @@ Since a ring of length `L` returns to itself after `L` steps, only
 no step is ever simulated, each destination cell reads its source cell through
 one modular index.
 
+![For Example 2's 4x4 grid with k = 2, the outer ring peels counter-clockwise into
+1,5,9,13,14,15,16,12,8,4,3,2, shifts right by k % L = 2, and writes back as
+3,2,1,5,9,13,14,15,16,12,8,4.](figures/solution-ring-peel-shift.svg)
+
 Each cell is visited a constant number of times per layer, so the whole pass is
 linear in the matrix size, with the ring position list as the only scratch.
 

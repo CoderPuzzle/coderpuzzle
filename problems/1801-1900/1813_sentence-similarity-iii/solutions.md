@@ -16,6 +16,8 @@ the shorter sentence twice — without that guard a sentence such as
 `"a b a"` versus `"a"` would wrongly claim a one-word prefix and a one-word
 suffix out of a single word.
 
+![On `sentence1 = "My name is Haley"` versus `sentence2 = "My Haley"`, the front pointer matches the common prefix "My" (i = 1) and the back pointer the common suffix "Haley" (j = 1), leaving "name is" as the run an insertion would supply.](figures/solution-prefix-suffix-pointers.svg)
+
 The shorter word list can be similar only if the inserted run is absent
 from it entirely, so the test is `i + j` covering the shorter list: prefix
 plus suffix account for every word, and the words between position `i` and

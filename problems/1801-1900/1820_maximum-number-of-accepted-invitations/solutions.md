@@ -16,6 +16,8 @@ boy on it gets (re)matched and the total grows by exactly one. A `seen` set
 per top-level attempt keeps each girl from being probed twice, so the search
 for one boy costs at most `O(m·n)`.
 
+![On `grid = [[1,1,1],[1,0,1],[0,0,1]]`, seating boy 1 re-hangs boy 0 from girl 0 to girl 1 (the augmenting reroute) and boy 2 then takes girl 2 — three accepted invitations.](figures/solution-augmenting-reroute.svg)
+
 If an attempt fails, the boy stays uninvited; by the matching theory behind
 this construction (Kuhn's algorithm), retrying earlier boys can never rescue
 him — the matching left behind is already maximum for the boys processed so

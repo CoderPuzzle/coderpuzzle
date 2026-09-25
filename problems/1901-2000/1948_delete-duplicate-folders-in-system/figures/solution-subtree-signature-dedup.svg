@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="372" fill="#ffffff"/>
+  <!-- paths = [["a"],["c"],["d"],["a","b"],["c","b"],["d","a"]]; node boxes 68x46 centered at x 150/320/490, rows y 140 and 232; leaf children have the empty signature (sig 1), so /a and /c both get sig 2 = (b,1) while /d gets sig 3 = (a,1); dashed groups mark deletion -->
+  <!-- edges -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <line x1="320" y1="63" x2="150" y2="117"/>
+    <line x1="320" y1="63" x2="320" y2="117"/>
+    <line x1="320" y1="63" x2="490" y2="117"/>
+    <line x1="150" y1="163" x2="150" y2="209"/>
+    <line x1="320" y1="163" x2="320" y2="209"/>
+    <line x1="490" y1="163" x2="490" y2="209"/>
+  </g>
+  <!-- root -->
+  <rect x="298" y="33" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="320" y="53" text-anchor="middle" fill="#5c6b76" font-size="13">/</text>
+  <!-- duplicate groups: /a and /c -->
+  <rect x="92" y="106" width="116" height="160" fill="none" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="5 4"/>
+  <rect x="262" y="106" width="116" height="160" fill="none" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="5 4"/>
+  <!-- survivor group: /d -->
+  <rect x="432" y="106" width="116" height="160" fill="none" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <!-- level 1 nodes -->
+  <g>
+    <rect x="116" y="117" width="68" height="46" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+    <text x="150" y="136" text-anchor="middle" fill="#9aa7b2" font-weight="600">a</text>
+    <text x="150" y="154" text-anchor="middle" fill="#9aa7b2" font-size="10">sig (b,1)</text>
+    <rect x="286" y="117" width="68" height="46" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+    <text x="320" y="136" text-anchor="middle" fill="#9aa7b2" font-weight="600">c</text>
+    <text x="320" y="154" text-anchor="middle" fill="#9aa7b2" font-size="10">sig (b,1)</text>
+    <rect x="456" y="117" width="68" height="46" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="490" y="136" text-anchor="middle" fill="#1a2026" font-weight="600">d</text>
+    <text x="490" y="154" text-anchor="middle" fill="#4169E1" font-size="10">sig (a,1)</text>
+  </g>
+  <!-- level 2 nodes -->
+  <g>
+    <rect x="116" y="209" width="68" height="46" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+    <text x="150" y="228" text-anchor="middle" fill="#9aa7b2" font-weight="600">b</text>
+    <text x="150" y="246" text-anchor="middle" fill="#9aa7b2" font-size="10">sig 1 (leaf)</text>
+    <rect x="286" y="209" width="68" height="46" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+    <text x="320" y="228" text-anchor="middle" fill="#9aa7b2" font-weight="600">b</text>
+    <text x="320" y="246" text-anchor="middle" fill="#9aa7b2" font-size="10">sig 1 (leaf)</text>
+    <rect x="456" y="209" width="68" height="46" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="490" y="228" text-anchor="middle" fill="#1a2026" font-weight="600">a</text>
+    <text x="490" y="246" text-anchor="middle" fill="#4169E1" font-size="10">sig 1 (leaf)</text>
+  </g>
+  <!-- group verdicts -->
+  <g text-anchor="middle" font-size="11.5">
+    <text x="150" y="288" fill="#9aa7b2">count 2 → delete</text>
+    <text x="320" y="288" fill="#9aa7b2">count 2 → delete</text>
+    <text x="490" y="288" fill="#4169E1" font-weight="600">count 1 → keep</text>
+  </g>
+  <text x="320" y="334" text-anchor="middle" fill="#1a2026" font-size="13">In post-order, /a and /c each hold a single leaf b — the same signature, <tspan fill="#4169E1" font-weight="600">count 2</tspan> — so</text>
+  <text x="320" y="354" text-anchor="middle" fill="#1a2026" font-size="13">both are deleted; /d's leaf a gives a distinct signature, so <tspan fill="#4169E1" font-weight="600">/d and /d/a</tspan> survive.</text>
+</svg>

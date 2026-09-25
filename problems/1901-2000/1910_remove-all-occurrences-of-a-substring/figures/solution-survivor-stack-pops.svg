@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="372" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = daabcbaabcbc, part = abc; each column shows the stack right after one push:
+       top row pushes s[0..5] (centres x = 100 + 100j), bottom row pushes s[6..11];
+       pop columns show the post-pop stack under a small arrow -->
+  <line x1="60" y1="155" x2="640" y2="155" stroke="#dbe4fb" stroke-width="1"/>
+  <g text-anchor="end" fill="#9aa7b2" font-size="10.5">
+    <text x="38" y="60">push</text><text x="38" y="98">stack</text><text x="38" y="136">pop →</text>
+    <text x="38" y="184">push</text><text x="38" y="222">stack</text><text x="38" y="260">pop →</text>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="100" y="60" fill="#1a2026">d</text><text x="200" y="60" fill="#1a2026">a</text>
+    <text x="300" y="60" fill="#1a2026">a</text><text x="400" y="60" fill="#1a2026">b</text>
+    <text x="500" y="60" fill="#4169E1">c</text><text x="600" y="60" fill="#1a2026">b</text>
+    <text x="100" y="184" fill="#1a2026">a</text><text x="200" y="184" fill="#1a2026">a</text>
+    <text x="300" y="184" fill="#1a2026">b</text><text x="400" y="184" fill="#4169E1">c</text>
+    <text x="500" y="184" fill="#1a2026">b</text><text x="600" y="184" fill="#4169E1">c</text>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="100" y="98" fill="#1a2026">d</text>
+    <text x="200" y="98" fill="#1a2026">da</text>
+    <text x="300" y="98" fill="#1a2026">daa</text>
+    <text x="400" y="98" fill="#1a2026">daab</text>
+    <text x="500" y="98"><tspan fill="#1a2026">da</tspan><tspan fill="#4169E1" font-weight="600">abc</tspan></text>
+    <text x="600" y="98" fill="#1a2026">dab</text>
+    <text x="100" y="222" fill="#1a2026">daba</text>
+    <text x="200" y="222" fill="#1a2026">dabaa</text>
+    <text x="300" y="222" fill="#1a2026">dabaab</text>
+    <text x="400" y="222"><tspan fill="#1a2026">dab</tspan><tspan fill="#4169E1" font-weight="600">aabc</tspan></text>
+    <text x="500" y="222" fill="#1a2026">dabab</text>
+    <text x="600" y="222"><tspan fill="#1a2026">dab</tspan><tspan fill="#4169E1" font-weight="600">abc</tspan></text>
+  </g>
+  <line x1="500" y1="106" x2="500" y2="116" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="500" y="136" text-anchor="middle" font-size="13" fill="#4169E1" font-weight="600">da</text>
+  <g stroke="#4169E1" stroke-width="1.5">
+    <line x1="400" y1="230" x2="400" y2="240" marker-end="url(#arrow)"/>
+    <line x1="600" y1="230" x2="600" y2="240" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#4169E1" font-weight="600">
+    <text x="400" y="260">daba</text>
+    <text x="600" y="260">dab</text>
+  </g>
+  <path d="M 400 270 Q 500 300 600 270" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="500" y="312" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">rebuilt abc pops again</text>
+  <text x="340" y="340" text-anchor="middle" fill="#1a2026" font-size="13">Streaming s = daabcbaabcbc with part = abc, each push re-checks only the top 3,</text>
+  <text x="340" y="360" text-anchor="middle" fill="#1a2026" font-size="13">so every c that completes abc pops at once — the tail rebuilt from aabc included — leaving <tspan fill="#4169E1" font-weight="600">dab</tspan>.</text>
+</svg>

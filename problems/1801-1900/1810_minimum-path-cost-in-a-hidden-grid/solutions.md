@@ -8,6 +8,8 @@ Exploration is an iterative DFS that keeps the robot physically on the DFS tree.
 
 With the map known, Dijkstra finds the cheapest route from `(0, 0)` to the remembered target cell: popping `(d, r, c)` from the heap, skipping stale entries, and relaxing each neighbor's tentative distance with `d + cost(neighbor)`. If the DFS never saw the target, no route exists and the answer is `-1`.
 
+![On the hidden grid `[[2,3],[1,1]]` with start `(0,1)` and target `(1,0)`, the robot-walking DFS learns the entry costs keyed relative to the start, and Dijkstra settles the route that pays 1 + 1 = 2.](figures/solution-dfs-then-dijkstra.svg)
+
 Blocked cells never enter the map (they fail `canMove`), and the query budget of 1,000,000 is comfortable: a 100 x 100 grid costs a handful of `canMove` probes per cell plus one move out and one move back per tree edge.
 
 **Complexity:** `O(mn log(mn))` time, `O(mn)` space.

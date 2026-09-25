@@ -19,6 +19,8 @@ constant-time leaf replacement; the whole algorithm is dominated by the final
 `O(total nodes)` walk. Depth stays below `n`, so the walk is iterative
 (explicit stack) to remain safe at `n = 5·10⁴`.
 
+![Example 1's leaf-value map (1 -> root 2, 2 -> root 3, 5 -> root 5, 4 -> none) makes root 3 the final root and splices trees[0] under leaf 2 and trees[2] under leaf 5; the one in-order pass then reads 1, 2, 3, 4, 5 strictly increasing, so the assembled tree is valid.](figures/solution-leaf-map-splice-inorder.svg)
+
 If no unique candidate root exists (every root appears as some leaf), more
 than one candidate survives, or the walk finds an ordering violation or a
 duplicate, the answer is null; otherwise return the assembled root. Node

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- trees = [[2,1],[3,2,5],[5,4]]; input trees top-left, assembled tree top-right (circles r=14), in-order boxes 26x24 at y=250 -->
+  <!-- input trees -->
+  <g fill="#5c6b76" font-size="12" text-anchor="middle">
+    <text x="90" y="40">trees[0]</text><text x="190" y="40">trees[1]</text><text x="295" y="40">trees[2]</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4">
+    <line x1="90" y1="89" x2="90" y2="116"/>
+    <line x1="180" y1="86" x2="166" y2="118"/><line x1="200" y1="86" x2="214" y2="118"/>
+    <line x1="295" y1="89" x2="295" y2="116"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="90" cy="75" r="14"/><circle cx="90" cy="130" r="14"/>
+    <circle cx="190" cy="75" r="14" stroke="#4169E1" stroke-width="2"/>
+    <circle cx="160" cy="130" r="14"/><circle cx="220" cy="130" r="14"/>
+    <circle cx="295" cy="75" r="14"/><circle cx="295" cy="130" r="14"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="90" y="80">2</text><text x="90" y="135">1</text>
+    <text x="190" y="80">3</text><text x="160" y="135">2</text><text x="220" y="135">5</text>
+    <text x="295" y="80">5</text><text x="295" y="135">4</text>
+  </g>
+  <!-- splice arrow -->
+  <path d="M 337 100 H 421" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="380" y="82" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">n − 1 = 2 splices</text>
+  <!-- assembled tree [3,2,5,1,null,4]: nodes from trees[0] light-filled, from trees[2] accent-outlined -->
+  <text x="560" y="40" text-anchor="middle" fill="#5c6b76" font-size="12">assembled</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <line x1="551" y1="79" x2="514" y2="121"/><line x1="569" y1="79" x2="606" y2="121"/>
+    <line x1="497" y1="140" x2="478" y2="180"/><line x1="607" y1="140" x2="588" y2="180"/>
+  </g>
+  <circle cx="560" cy="70" r="14" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="505" cy="130" r="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="615" cy="130" r="14" fill="#ffffff" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="472" cy="190" r="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="582" cy="190" r="14" fill="#ffffff" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="560" y="75">3</text><text x="505" y="135">2</text><text x="615" y="135">5</text>
+    <text x="472" y="195">1</text><text x="582" y="195">4</text>
+  </g>
+  <!-- legend -->
+  <rect x="450" y="222" width="13" height="13" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+  <text x="469" y="233" fill="#5c6b76" font-size="11.5">from trees[0]</text>
+  <rect x="560" y="222" width="13" height="13" fill="#ffffff" stroke="#4169E1" stroke-width="1.2"/>
+  <text x="579" y="233" fill="#5c6b76" font-size="11.5">from trees[2]</text>
+  <!-- in-order walk -->
+  <text x="485" y="266" text-anchor="end" fill="#5c6b76" font-size="12">in-order</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="495" y="250" width="26" height="24"/><rect x="529" y="250" width="26" height="24"/>
+    <rect x="563" y="250" width="26" height="24"/><rect x="597" y="250" width="26" height="24"/>
+    <rect x="631" y="250" width="26" height="24"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12.5" fill="#1a2026">
+    <text x="508" y="266">1</text><text x="542" y="266">2</text><text x="576" y="266">3</text>
+    <text x="610" y="266">4</text><text x="644" y="266">5</text>
+  </g>
+  <path d="M 500 282 H 648" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- leaf-value map -->
+  <text x="40" y="240" fill="#5c6b76" font-size="12">leaf → matching root:</text>
+  <text x="40" y="264" fill="#1a2026" font-size="13"><tspan font-weight="600">1</tspan> → root 2 · <tspan font-weight="600">2</tspan> → root 3 · <tspan font-weight="600">5</tspan> → root 5 · <tspan fill="#9aa7b2">4 → none</tspan></text>
+  <text x="40" y="288" fill="#4169E1" font-size="12.5" font-weight="600">root 3 never appears as a leaf — the final root</text>
+  <!-- caption -->
+  <text x="340" y="314" text-anchor="middle" fill="#1a2026" font-size="13">The one in-order pass reads 1, 2, 3, 4, 5 — strictly increasing, no repeats: a valid BST.</text>
+</svg>

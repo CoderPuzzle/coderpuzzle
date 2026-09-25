@@ -9,6 +9,8 @@ reachable sum `s`, picking `value` in the next row reaches `s + value`. A
 dynamic program keeps every sum reachable after each row — a boolean table
 over `[0, maxSum]` that starts as just `{0}` and is folded row by row.
 
+![On mat = [[1,2,3],[4,5,6],[7,8,9]] with target 13 the reachable set grows {0} -> {1, 2, 3} -> {5, ..., 9} -> {12, ..., 18}, and picking 1, 5, 7 lands exactly on 13.](figures/solution-reachable-sum-sets.svg)
+
 The fold is where a bitset view pays off: shifting the current set left by
 `value` places every reachable sum `s` at position `s + value`, and OR-ing
 those shifted copies together is exactly the row transition. Because every

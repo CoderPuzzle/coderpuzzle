@@ -6,6 +6,8 @@ For query length `L`, the answer is the maximum, over all windows of size `L`, o
 
 One element seeds only its maximal span, not the shorter lengths it also covers — that gap is repaired by monotonicity of the answers. The answer for length `k` is always at least the answer for length `k + 1`, because any window of size `k + 1` contains a sub-window of size `k` whose minimum is no smaller. Hence after writing each element's value into `ans[span - 1]` (keeping the maximum when several elements claim the same span), a single right-to-left running maximum fills every shorter length with the best value any longer span guarantees. The `>=` (rather than `>`) pop condition deliberately splits spans at equal values, giving each duplicate the sub-window where it is the minimum; the suffix maximum then reconciles any conservative seed, so ties need no special handling.
 
+![On nums = [0,1,2,4], the nearest-smaller spans 4, 3, 2, 1 seed 0, 1, 2, 4 into ans[3], ans[2], ans[1], ans[0], and the right-to-left suffix maximum leaves ans = [4,2,1,0].](figures/solution-span-seeds-suffix-max.svg)
+
 All three phases — the two stack passes, the seeding loop, and the suffix max — touch each index a constant number of times, and the seeded value at `ans[n-1]` is always the global minimum since the whole array is one valid span for its minimum element.
 
 **Complexity:** `O(n)` time, `O(n)` space.

@@ -6,6 +6,8 @@ At most `k` resizings split the timeline into at most `k + 1` blocks, each serve
 
 The `g` table is computed for all `O(n^2)` intervals in `O(n^2)` total: fixing the start `i`, extend `j` rightward while carrying a running maximum, with prefix sums supplying the interval sum instantly. The DP is then `dp[j][i]` = minimum waste covering the suffix starting at `i` using exactly `j` allocations, with the sentinel `dp[0][n] = 0` (nothing left to cover) and the recurrence `dp[j][i] = min over t >= i of g[i][t] + dp[j-1][t+1]`. Iterating `j` upward and `i` downward means every referenced state (a shorter suffix, one fewer block) is already final, and the answer is `dp[k+1][0]` — using all `k + 1` blocks is never worse than using fewer, because splitting a block in two replaces one allocation sized to the block maximum by two allocations sized to smaller or equal maxima, which can only reduce the waste.
 
+![With k = 2 on nums = [10,20,15,30,20], the dp's best split [10] [20,15] [30,20] serves each block with its maximum, wasting 0 + 5 + 10 = 15.](figures/solution-partition-block-waste.svg)
+
 With `n <= 200` and `k <= n - 1`, the triple loop is at most a few million iterations. The dominant memory is the `n × n` waste table; the DP layers add `O(k·n)` on top.
 
 **Complexity:** `O(k·n^2)` time, `O(n^2)` space.

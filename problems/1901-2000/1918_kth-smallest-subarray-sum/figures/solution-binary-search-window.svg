@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [2,1,3], k = 4; subarray sums 1,2,3,3,4,6.
+       Binary search lo=2, hi=6: mid 4 (f=5), mid 3 (f=4), mid 2 (f=2) -> answer 3.
+       Sweep cells 50x36 at x = 388,438,488; rows y = 72,128,184 -->
+  <text x="56" y="56" fill="#5c6b76" font-size="12.5">binary search over x in [min, sum] = [2, 6]</text>
+  <g text-anchor="start" font-size="13" fill="#1a2026">
+    <text x="56" y="88">mid 4: f(4) = 5 ≥ 4 → hi = 4</text>
+    <text x="56" y="116">mid 3: f(3) = 4 ≥ 4 → hi = 3</text>
+    <text x="56" y="144">mid 2: f(2) = 2 &lt; 4 → lo = 3</text>
+  </g>
+  <text x="56" y="176" font-size="13" fill="#4169E1" font-weight="600">lo = hi = 3 — the answer</text>
+  <text x="56" y="208" fill="#5c6b76" font-size="12.5">f(x) = # subarrays with sum ≤ x</text>
+  <text x="388" y="56" fill="#5c6b76" font-size="12.5">the f(3) sweep, limit = 3</text>
+  <path d="M 300 112 C 342 112 348 60 374 60" fill="none" stroke="#4169E1" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arrowB)"/>
+  <g text-anchor="end" fill="#5c6b76" font-size="11.5">
+    <text x="376" y="95">r=0</text><text x="376" y="151">r=1</text><text x="376" y="207">r=2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="388" y="72" width="50" height="36" fill="#dbe4fb"/><rect x="438" y="72" width="50" height="36" fill="#ffffff"/><rect x="488" y="72" width="50" height="36" fill="#ffffff"/>
+    <rect x="388" y="128" width="50" height="36" fill="#dbe4fb"/><rect x="438" y="128" width="50" height="36" fill="#dbe4fb"/><rect x="488" y="128" width="50" height="36" fill="#ffffff"/>
+    <rect x="388" y="184" width="50" height="36" fill="#f0f3f7"/><rect x="438" y="184" width="50" height="36" fill="#f0f3f7"/><rect x="488" y="184" width="50" height="36" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="413" y="95" fill="#1a2026">2</text><text x="463" y="95" fill="#1a2026">1</text><text x="513" y="95" fill="#1a2026">3</text>
+    <text x="413" y="151" fill="#1a2026">2</text><text x="463" y="151" fill="#1a2026">1</text><text x="513" y="151" fill="#1a2026">3</text>
+    <text x="413" y="207" fill="#9aa7b2">2</text><text x="463" y="207" fill="#9aa7b2">1</text><text x="513" y="207" fill="#1a2026">3</text>
+  </g>
+  <g text-anchor="start" font-size="12" fill="#1a2026">
+    <text x="552" y="95">sum 2 ≤ 3 → +1</text>
+    <text x="552" y="151">sum 3 ≤ 3 → +2</text>
+    <text x="552" y="207">shrink: 6 → 3, +1</text>
+  </g>
+  <text x="388" y="248" font-size="13" fill="#4169E1" font-weight="600">f(3) = 1 + 2 + 1 = 4 ≥ k = 4</text>
+  <text x="340" y="296" text-anchor="middle" fill="#1a2026" font-size="13">f(x) only grows with x, so the smallest x with f(x) ≥ 4 is the 4th smallest sum:</text>
+  <text x="340" y="316" text-anchor="middle" fill="#1a2026" font-size="13">the probes 4 → 3 → 2 fold the range to <tspan fill="#4169E1" font-weight="600">x = 3</tspan>, where the window count reaches 4.</text>
+</svg>

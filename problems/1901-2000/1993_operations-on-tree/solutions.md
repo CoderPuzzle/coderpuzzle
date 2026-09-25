@@ -22,6 +22,8 @@ three conditions hold, the node is assigned to the caller and every
 collected descendant is reset to `-1`, which is precisely the "unlock all
 of its descendants" contract; locks elsewhere in the tree are untouched.
 
+![On Example 1's seven-node tree the owner badges evolve through the op sequence, and upgrade(0, 1) checks the ancestor chain, finds locked descendant 4, then locks 0 for user 1 and clears 4.](figures/solution-owner-array-upgrade.svg)
+
 With `n <= 2000` and at most 2000 calls, even the linear walks inside
 `upgrade` stay comfortably within budget, so the design optimizes for
 clarity rather than asymptotic cleverness.

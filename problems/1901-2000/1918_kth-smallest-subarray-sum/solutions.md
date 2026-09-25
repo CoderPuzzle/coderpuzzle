@@ -6,6 +6,9 @@ Generating and sorting all `n(n+1)/2` subarray sums is quadratic and hopeless fo
 
 `f` is computed with a classic sliding window: extend the right end accumulating `window_sum`, shrink from the left while the sum exceeds `limit`, then add `right - left + 1`, the number of subarrays ending at `right` whose sum fits. Each element enters and leaves the window at most once, so each evaluation is linear. Positivity is essential — it guarantees that shrinking monotonically reduces the sum and that the subarrays counted at each step are exactly those bounded by the current window.
 
+![For nums = [2,1,3] with k = 4, the probes x = 4, 3, 2 converge on x = 3, where the
+sliding window counts f(3) = 1 + 2 + 1 = 4 subarrays of sum at most 3.](figures/solution-binary-search-window.svg)
+
 The binary search runs over `[min(nums), sum(nums)]`: the smallest candidate is the minimum single element, the largest is the whole array. The loop invariant keeps the answer inside `[lo, hi]` and terminates with `lo == hi`. Edge cases fall out naturally — `k = 1` converges to `min(nums)`, `k = n(n+1)/2` to `sum(nums)`, and duplicate sums (ties) cause no trouble because the predicate counts multiplicities.
 
 **Complexity:** `O(n log S)` time (where `S = sum(nums)`), `O(1)` space.

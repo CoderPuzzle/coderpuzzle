@@ -21,6 +21,10 @@ of those two neighbours (consecutive values in a BST are always
 ancestor and descendant, so the later one hangs deeper). Every other popped
 value keeps the stack-below parent it received when pushed.
 
+![For order = [2,1,4,3], the inverted pos array drives the monotonic-stack sweep
+that pops 1 under 2 and 3 under 4, and the depth fold reads 3 off one
+left-to-right walk.](figures/solution-cartesian-stack-parents.svg)
+
 Depths then need no tree at all. A parent is always inserted before its
 children, so walking `order` once and setting `depth[v] = depth[parent[v]]
 

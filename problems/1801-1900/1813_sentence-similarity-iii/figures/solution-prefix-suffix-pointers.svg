@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="300" fill="#ffffff"/>
+  <!-- w1 = [My, name, is, Haley] (boxes 86x34 at x 60/154/248/342, y 64);
+       w2 = [My, Haley] (x 60/342, y 164) with the empty dashed gap where "name is" inserts;
+       i = 1 (prefix My), j = 1 (suffix Haley), i + j = 2 = len(w2) -->
+  <text x="60" y="52" fill="#5c6b76" font-size="12">sentence1</text>
+  <text x="244" y="50" text-anchor="middle" fill="#5c6b76" font-size="12">inserted run: 'name is'</text>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <rect x="60" y="64" width="86" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="103" y="86" fill="#1a2026">My</text>
+    <rect x="154" y="64" width="86" height="34" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3"/>
+    <text x="197" y="86" fill="#5c6b76">name</text>
+    <rect x="248" y="64" width="86" height="34" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3"/>
+    <text x="291" y="86" fill="#5c6b76">is</text>
+    <rect x="342" y="64" width="86" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="385" y="86" fill="#1a2026">Haley</text>
+  </g>
+  <path d="M 60 104 V 110 H 146 V 104" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="103" y="128" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">'My' matches - i = 1</text>
+  <g stroke="#9aa7b2" stroke-width="1" stroke-dasharray="4 4">
+    <line x1="197" y1="98" x2="197" y2="164"/>
+    <line x1="291" y1="98" x2="291" y2="164"/>
+  </g>
+  <text x="60" y="152" fill="#5c6b76" font-size="12">sentence2</text>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <rect x="60" y="164" width="86" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="103" y="186" fill="#1a2026">My</text>
+    <rect x="342" y="164" width="86" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="385" y="186" fill="#1a2026">Haley</text>
+  </g>
+  <rect x="154" y="164" width="180" height="34" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="244" y="186" text-anchor="middle" fill="#9aa7b2" font-size="11">(the insertion goes here)</text>
+  <path d="M 342 204 V 210 H 428 V 204" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="385" y="228" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">'Haley' matches - j = 1</text>
+  <text x="280" y="258" text-anchor="middle" fill="#1a2026" font-size="13">Both walks stop after one word: <tspan fill="#4169E1" font-weight="600">i + j = 1 + 1 = 2</tspan> covers all of sentence2,</text>
+  <text x="280" y="276" text-anchor="middle" fill="#1a2026" font-size="13">so 'My' + 'Haley' match and 'name is' is exactly the inserted run - similar.</text>
+</svg>

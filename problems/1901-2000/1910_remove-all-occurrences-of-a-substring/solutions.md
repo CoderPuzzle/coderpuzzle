@@ -14,6 +14,10 @@ of the stream (not pushed yet) or ends exactly at the current top — an
 occurrence ending earlier would already have been popped when its last
 character landed.
 
+![Streaming daabcbaabcbc against part = abc, the survivor stack pops abc whenever a
+pushed c completes it — including the abc rebuilt from the exposed aabc tail — and
+ends at dab.](figures/solution-survivor-stack-pops.svg)
+
 The stack also reproduces the chain reactions for free. A match must end
 at a freshly pushed character, because the stack was occurrence-free
 before that push — so checking the top `m` characters once per push, with

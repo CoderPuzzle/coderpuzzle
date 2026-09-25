@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="580" height="376" fill="#ffffff"/>
+  <!-- tasks = [[1,2],[2,4],[3,2],[4,1]]; x(t) = 90 + 44t, axis y=192; bars 22 tall at y=66/96/126/156;
+       runs: t0 1-3, t2 3-5, t3 5-6, t1 6-10 (order [0,2,3,1]); heap pops (2,0),(2,2),(1,3),(4,1) at t=1,3,5,6 -->
+  <g font-size="12.5">
+    <text x="84" y="81" text-anchor="end" fill="#1a2026">task 0 <tspan fill="#9aa7b2">(1,2)</tspan></text>
+    <text x="84" y="111" text-anchor="end" fill="#1a2026">task 1 <tspan fill="#9aa7b2">(2,4)</tspan></text>
+    <text x="84" y="141" text-anchor="end" fill="#1a2026">task 2 <tspan fill="#9aa7b2">(3,2)</tspan></text>
+    <text x="84" y="171" text-anchor="end" fill="#1a2026">task 3 <tspan fill="#9aa7b2">(4,1)</tspan></text>
+  </g>
+  <rect x="178" y="96" width="176" height="22" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <text x="266" y="111" text-anchor="middle" fill="#5c6b76" font-size="11">waits 4</text>
+  <rect x="266" y="156" width="44" height="22" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <text x="288" y="171" text-anchor="middle" fill="#5c6b76" font-size="11">wait</text>
+  <g fill="#4169E1">
+    <rect x="134" y="66" width="88" height="22"/>
+    <rect x="354" y="96" width="176" height="22"/>
+    <rect x="222" y="126" width="88" height="22"/>
+    <rect x="310" y="156" width="44" height="22"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">
+    <text x="178" y="81">run 2</text>
+    <text x="442" y="111">run 4</text>
+    <text x="266" y="141">run 2</text>
+    <text x="332" y="171">run 1</text>
+  </g>
+  <line x1="86" y1="192" x2="540" y2="192" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1">
+    <line x1="90" y1="192" x2="90" y2="197"/><line x1="134" y1="192" x2="134" y2="197"/><line x1="178" y1="192" x2="178" y2="197"/>
+    <line x1="222" y1="192" x2="222" y2="197"/><line x1="266" y1="192" x2="266" y2="197"/><line x1="310" y1="192" x2="310" y2="197"/>
+    <line x1="354" y1="192" x2="354" y2="197"/><line x1="398" y1="192" x2="398" y2="197"/><line x1="442" y1="192" x2="442" y2="197"/>
+    <line x1="486" y1="192" x2="486" y2="197"/><line x1="530" y1="192" x2="530" y2="197"/>
+  </g>
+  <g font-size="11.5" text-anchor="middle" fill="#5c6b76">
+    <text x="90" y="213">0</text>
+    <text x="134" y="213" fill="#4169E1" font-weight="600">1</text>
+    <text x="178" y="213">2</text>
+    <text x="222" y="213" fill="#4169E1" font-weight="600">3</text>
+    <text x="266" y="213">4</text>
+    <text x="310" y="213" fill="#4169E1" font-weight="600">5</text>
+    <text x="354" y="213" fill="#4169E1" font-weight="600">6</text>
+    <text x="398" y="213">7</text>
+    <text x="442" y="213">8</text>
+    <text x="486" y="213">9</text>
+    <text x="530" y="213">10</text>
+    <text x="560" y="213" fill="#9aa7b2">time</text>
+  </g>
+  <text x="90" y="240" fill="#5c6b76" font-size="12">heap = min-heap of (processingTime, index), popped at each dispatch:</text>
+  <g font-size="12.5" fill="#1a2026">
+    <text x="90" y="262">t=1: push (2,0) - pop <tspan fill="#4169E1" font-weight="600">(2,0)</tspan>: task 0 runs 1-3</text>
+    <text x="90" y="280">t=3: push (4,1) and (2,2) - pop <tspan fill="#4169E1" font-weight="600">(2,2)</tspan>: task 2 runs 3-5</text>
+    <text x="90" y="298">t=5: push (1,3) - pop <tspan fill="#4169E1" font-weight="600">(1,3)</tspan>: task 3 runs 5-6</text>
+    <text x="90" y="316">t=6: heap = {(4,1)} - pop <tspan fill="#4169E1" font-weight="600">(4,1)</tspan>: task 1 runs 6-10</text>
+  </g>
+  <text x="290" y="344" text-anchor="middle" fill="#1a2026" font-size="13">Sorted by enqueue time, every arrival at or before the clock is pushed before</text>
+  <text x="290" y="362" text-anchor="middle" fill="#1a2026" font-size="13">each pop; the pops at t = 1, 3, 5, 6 give the order <tspan fill="#4169E1" font-weight="600">[0, 2, 3, 1]</tspan>.</text>
+</svg>

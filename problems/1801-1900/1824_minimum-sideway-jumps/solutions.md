@@ -22,4 +22,6 @@ jump sideways and continue. After the last point the answer is the minimum
 of the three slots — any lane is an acceptable destination. Each of the
 `n` points does constant work over three lanes.
 
+![On `obstacles = [0,1,2,3,0]`, each point zeroes the blocked lane to ∞ and relaxes the open lanes with best + 1; the cheapest slot at point 4 is 2, the two side jumps of the optimal route.](figures/solution-three-lane-dp.svg)
+
 **Complexity:** `O(n)` time, `O(1)` extra space.

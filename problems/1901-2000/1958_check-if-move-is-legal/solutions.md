@@ -17,6 +17,8 @@ skips any direction that leaves the board, meets a free cell, or meets the
 move color before finding an endpoint, since none of those can complete a
 good line.
 
+![On example 1's board, the new B at (4,3) walks upward across the three W cells (3,3), (2,3) and (1,3) and is capped by the B at (0,3) — a good line, so the move is legal.](figures/solution-upward-good-line.svg)
+
 The walk is bounded by the fixed board size, so each direction inspects at
 most seven cells and the whole check runs in constant time regardless of the
 contents of the board.

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="356" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- board rows 0..7: B at (0,3),(4,1),(4,2),(4,7),(5,3),(6,3); W at (1,3),(2,3),(3,3),(4,0),(4,4),(4,5),(4,6),(7,3); cells 32px at (150,36), piece rect 24x24 at (154+32c, 40+32r); the move puts B at (4,3) and the upward ray (3,3),(2,3),(1,3) is three W cells capped by B (0,3) -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="166" y="28">0</text><text x="198" y="28">1</text><text x="230" y="28">2</text><text x="262" y="28">3</text>
+    <text x="294" y="28">4</text><text x="326" y="28">5</text><text x="358" y="28">6</text><text x="390" y="28">7</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="10.5">
+    <text x="142" y="56">0</text><text x="142" y="88">1</text><text x="142" y="120">2</text><text x="142" y="152">3</text>
+    <text x="142" y="184">4</text><text x="142" y="216">5</text><text x="142" y="248">6</text><text x="142" y="280">7</text>
+  </g>
+  <!-- empty grid -->
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="0.8">
+    <rect x="150" y="36" width="32" height="32"/><rect x="182" y="36" width="32" height="32"/><rect x="214" y="36" width="32" height="32"/><rect x="246" y="36" width="32" height="32"/><rect x="278" y="36" width="32" height="32"/><rect x="310" y="36" width="32" height="32"/><rect x="342" y="36" width="32" height="32"/><rect x="374" y="36" width="32" height="32"/>
+    <rect x="150" y="68" width="32" height="32"/><rect x="182" y="68" width="32" height="32"/><rect x="214" y="68" width="32" height="32"/><rect x="246" y="68" width="32" height="32"/><rect x="278" y="68" width="32" height="32"/><rect x="310" y="68" width="32" height="32"/><rect x="342" y="68" width="32" height="32"/><rect x="374" y="68" width="32" height="32"/>
+    <rect x="150" y="100" width="32" height="32"/><rect x="182" y="100" width="32" height="32"/><rect x="214" y="100" width="32" height="32"/><rect x="246" y="100" width="32" height="32"/><rect x="278" y="100" width="32" height="32"/><rect x="310" y="100" width="32" height="32"/><rect x="342" y="100" width="32" height="32"/><rect x="374" y="100" width="32" height="32"/>
+    <rect x="150" y="132" width="32" height="32"/><rect x="182" y="132" width="32" height="32"/><rect x="214" y="132" width="32" height="32"/><rect x="246" y="132" width="32" height="32"/><rect x="278" y="132" width="32" height="32"/><rect x="310" y="132" width="32" height="32"/><rect x="342" y="132" width="32" height="32"/><rect x="374" y="132" width="32" height="32"/>
+    <rect x="150" y="164" width="32" height="32"/><rect x="182" y="164" width="32" height="32"/><rect x="214" y="164" width="32" height="32"/><rect x="246" y="164" width="32" height="32"/><rect x="278" y="164" width="32" height="32"/><rect x="310" y="164" width="32" height="32"/><rect x="342" y="164" width="32" height="32"/><rect x="374" y="164" width="32" height="32"/>
+    <rect x="150" y="196" width="32" height="32"/><rect x="182" y="196" width="32" height="32"/><rect x="214" y="196" width="32" height="32"/><rect x="246" y="196" width="32" height="32"/><rect x="278" y="196" width="32" height="32"/><rect x="310" y="196" width="32" height="32"/><rect x="342" y="196" width="32" height="32"/><rect x="374" y="196" width="32" height="32"/>
+    <rect x="150" y="228" width="32" height="32"/><rect x="182" y="228" width="32" height="32"/><rect x="214" y="228" width="32" height="32"/><rect x="246" y="228" width="32" height="32"/><rect x="278" y="228" width="32" height="32"/><rect x="310" y="228" width="32" height="32"/><rect x="342" y="228" width="32" height="32"/><rect x="374" y="228" width="32" height="32"/>
+    <rect x="150" y="260" width="32" height="32"/><rect x="182" y="260" width="32" height="32"/><rect x="214" y="260" width="32" height="32"/><rect x="246" y="260" width="32" height="32"/><rect x="278" y="260" width="32" height="32"/><rect x="310" y="260" width="32" height="32"/><rect x="342" y="260" width="32" height="32"/><rect x="374" y="260" width="32" height="32"/>
+  </g>
+  <!-- black pieces -->
+  <g>
+    <rect x="250" y="40" width="24" height="24" rx="4" fill="#1a2026"/>
+    <text x="262" y="56.5" text-anchor="middle" fill="#ffffff" font-size="12">B</text>
+    <rect x="186" y="168" width="24" height="24" rx="4" fill="#1a2026"/>
+    <text x="198" y="184.5" text-anchor="middle" fill="#ffffff" font-size="12">B</text>
+    <rect x="218" y="168" width="24" height="24" rx="4" fill="#1a2026"/>
+    <text x="230" y="184.5" text-anchor="middle" fill="#ffffff" font-size="12">B</text>
+    <rect x="378" y="168" width="24" height="24" rx="4" fill="#1a2026"/>
+    <text x="390" y="184.5" text-anchor="middle" fill="#ffffff" font-size="12">B</text>
+    <rect x="250" y="200" width="24" height="24" rx="4" fill="#1a2026"/>
+    <text x="262" y="216.5" text-anchor="middle" fill="#ffffff" font-size="12">B</text>
+    <rect x="250" y="232" width="24" height="24" rx="4" fill="#1a2026"/>
+    <text x="262" y="248.5" text-anchor="middle" fill="#ffffff" font-size="12">B</text>
+  </g>
+  <!-- white pieces; the three ray cells (3,3),(2,3),(1,3) are filled light accent -->
+  <g>
+    <rect x="250" y="72" width="24" height="24" rx="4" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+    <text x="262" y="88.5" text-anchor="middle" fill="#1a2026" font-size="12">W</text>
+    <rect x="250" y="104" width="24" height="24" rx="4" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+    <text x="262" y="120.5" text-anchor="middle" fill="#1a2026" font-size="12">W</text>
+    <rect x="250" y="136" width="24" height="24" rx="4" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+    <text x="262" y="152.5" text-anchor="middle" fill="#1a2026" font-size="12">W</text>
+    <rect x="154" y="168" width="24" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <text x="166" y="184.5" text-anchor="middle" fill="#5c6b76" font-size="12">W</text>
+    <rect x="282" y="168" width="24" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <text x="294" y="184.5" text-anchor="middle" fill="#5c6b76" font-size="12">W</text>
+    <rect x="314" y="168" width="24" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <text x="326" y="184.5" text-anchor="middle" fill="#5c6b76" font-size="12">W</text>
+    <rect x="346" y="168" width="24" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <text x="358" y="184.5" text-anchor="middle" fill="#5c6b76" font-size="12">W</text>
+    <rect x="250" y="264" width="24" height="24" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <text x="262" y="280.5" text-anchor="middle" fill="#5c6b76" font-size="12">W</text>
+  </g>
+  <!-- the capping B at (0,3) gets the accent edge -->
+  <rect x="250" y="40" width="24" height="24" rx="4" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <!-- the move: new B at (4,3) with an accent ring -->
+  <rect x="247" y="165" width="30" height="30" rx="6" fill="none" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="250" y="168" width="24" height="24" rx="4" fill="#1a2026"/>
+  <text x="262" y="184.5" text-anchor="middle" fill="#ffffff" font-size="12">B</text>
+  <!-- walk arrow up the ray, between the piece fills and their letters -->
+  <line x1="253.5" y1="163" x2="253.5" y2="67" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <!-- annotation -->
+  <g text-anchor="start">
+    <text x="430" y="72" fill="#1a2026" font-weight="600">new B at (4,3)</text>
+    <text x="430" y="98" fill="#4169E1" font-weight="600">up: W → W → W → B</text>
+    <text x="430" y="124" fill="#4169E1" font-weight="600">good line → legal</text>
+  </g>
+  <text x="320" y="320" text-anchor="middle" fill="#1a2026" font-size="13">Placing B at (4,3), the upward ray crosses <tspan fill="#4169E1" font-weight="600">three W cells</tspan> — (3,3), (2,3), (1,3) —</text>
+  <text x="320" y="340" text-anchor="middle" fill="#1a2026" font-size="13">and ends at the B at (0,3): a good line, so the move is <tspan fill="#4169E1" font-weight="600">legal</tspan>.</text>
+</svg>

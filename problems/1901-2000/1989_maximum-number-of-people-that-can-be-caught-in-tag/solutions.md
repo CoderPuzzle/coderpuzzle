@@ -11,6 +11,8 @@ picking anyone earlier is impossible (every earlier person is out of range or
 already caught), and picking a later person instead would only leave the
 remaining "it" people a harder set of targets.
 
+![On team = [0,1,0,1,0] with dist = 3 the greedy arcs match it 1 to 0 and it 3 to 2 inside their catch ranges while person 4 is left uncaught, for 2 catches.](figures/solution-two-pointer-catches.svg)
+
 The code collects the positions of both teams into sorted lists, then advances
 two pointers. When the current "not it" person lies to the left of the current
 "it" person's reach, they can never be caught — every later "it" person is even
