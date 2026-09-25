@@ -6,6 +6,8 @@ A combination is fully determined by which `k` of the numbers `1..n` it contains
 
 The loop's upper bound is the walk's only pruning: a value larger than `n - remaining + 1` (where `remaining` counts the slots still to fill) would not leave enough bigger numbers to complete the buffer, so those dead branches are never entered and every leaf reached has exactly `k` numbers. The buffer is copied into the results only at a leaf, since it is shared by all branches on the way back up.
 
+![On n = 4, k = 2 the backtrack tree tries starts 1, 2, 3, prunes start 4 because 4 > n - remaining + 1 = 3, and its six leaves read out [1,2], [1,3], [1,4], [2,3], [2,4], [3,4] in lexicographic order.](figures/solution-backtrack-tree-pruning.svg)
+
 The tree has `C(n, k)` leaves and each is copied once when it is complete. The bound matters most in the middle of the range, where `C(n, k)` peaks: the largest output the cases exercise is `C(13, 6) = 1716` combinations, sized to the judge's output budget rather than the constraint ceiling.
 
 **Complexity:** `O(k · C(n, k))` time, `O(k)` auxiliary space excluding the output.

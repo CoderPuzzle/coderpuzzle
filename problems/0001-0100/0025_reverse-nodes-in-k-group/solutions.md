@@ -6,6 +6,8 @@ A dummy node placed before the head removes the only awkward case, the first gro
 
 When the probe does land on a group's k-th node, the group is reversed in place. `prev` starts at the node after the k-th, so each flipped link points backwards down the group and the last flip naturally splices the group onto whatever follows it. Walking `curr` from the group's first node and rotating the pair `curr.next, prev, curr` for exactly the nodes of the group leaves `prev` on the k-th node, the group's new head, which is attached to the anchor in its place.
 
+![On head = [1,2,3,4,5] with k = 3, the probe walks three nodes from the anchor and lands on node 3, the full group reverses in place so 3 leads, and the short tail 4 → 5 is left untouched, giving [3,2,1,4,5].](figures/solution-group-probe-reverse.svg)
+
 The old first node, now reached through the anchor before the reattachment, has become the group's last node and the anchor for the next group, so the loop simply repeats from there. Only pointers are ever rewritten — no `val` changes — and the whole reversal runs through two references besides the probe, which is the `O(1)` extra space the follow-up asks for.
 
 **Complexity:** `O(n)` time, `O(1)` extra space.

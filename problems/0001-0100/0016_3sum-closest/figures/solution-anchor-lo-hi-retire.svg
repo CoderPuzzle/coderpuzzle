@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- sorted nums = [-4,-1,1,2], target = 1; cells 96x46 at (100,92); final state i=1, lo=2, hi=3; closest = 2 -->
+  <text x="100" y="44" fill="#5c6b76" font-size="12.5">sorted nums</text>
+  <text x="540" y="44" text-anchor="middle" fill="#1a2026" font-size="12.5">target = <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="244" y="66" fill="#4169E1" font-weight="600">i = 1</text>
+    <text x="340" y="66" fill="#1a2026">lo = 2</text>
+    <text x="436" y="66" fill="#1a2026">hi = 3</text>
+  </g>
+  <path d="M 244 72 L 244 86" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrowB)"/>
+  <path d="M 340 72 L 340 86" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M 436 72 L 436 86" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <rect x="100" y="92" width="96" height="46" fill="#ffffff" stroke="#1a2026" stroke-width="1.4"/>
+  <g fill="#dbe4fb" stroke="#1a2026" stroke-width="1.4">
+    <rect x="196" y="92" width="96" height="46"/>
+    <rect x="292" y="92" width="96" height="46"/>
+    <rect x="388" y="92" width="96" height="46"/>
+  </g>
+  <g text-anchor="middle" font-size="15">
+    <text x="148" y="121" fill="#1a2026">-4</text>
+    <text x="244" y="121" fill="#4169E1" font-weight="600">-1</text>
+    <text x="340" y="121" fill="#4169E1" font-weight="600">1</text>
+    <text x="436" y="121" fill="#4169E1" font-weight="600">2</text>
+  </g>
+  <g fill="#5c6b76" font-size="10.5">
+    <text x="107" y="106">0</text><text x="203" y="106">1</text><text x="299" y="106">2</text><text x="395" y="106">3</text>
+  </g>
+  <text x="320" y="172" text-anchor="middle" fill="#1a2026" font-size="13">nums[1] + nums[2] + nums[3] = -1 + 1 + 2 = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <text x="320" y="206" text-anchor="middle" fill="#1a2026" font-size="13">anchor -4: totals -3 then -1 stay short of 1, so lo steps up twice</text>
+  <text x="320" y="230" text-anchor="middle" fill="#1a2026" font-size="13">anchor -1: total 2 overshoots, hi retires — and |2 - 1| = 1 is the best distance</text>
+  <text x="320" y="270" text-anchor="middle" fill="#1a2026" font-size="13">Each miss retires exactly one pointer; the walk lands on <tspan fill="#4169E1" font-weight="600">closest = 2</tspan>, one from target 1.</text>
+</svg>

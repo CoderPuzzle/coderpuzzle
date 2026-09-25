@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 288" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="288" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [2,3,1,1,4]; cells 88x48 at x=80+104i, y=58; BFS levels [0] [1,2] [3,4] as bands;
+       reach lines i -> i+nums[i]: 0->2 y=150, 2->3 and 3->4 y=172, 1->4 y=194; dashed edges = currentEnd -->
+  <g fill="#dbe4fb">
+    <rect x="72" y="40" width="104" height="80" rx="9"/>
+    <rect x="182" y="40" width="202" height="80" rx="9"/>
+    <rect x="388" y="40" width="204" height="80" rx="9"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="4 4">
+    <path d="M 179 34 V 124"/>
+    <path d="M 386 34 V 124"/>
+    <path d="M 590 34 V 124"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="124" y="28">level 0</text><text x="283" y="28">level 1</text><text x="491" y="28">level 2</text>
+    <text x="179" y="28" font-weight="600" fill="#1a2026">edge 0</text>
+    <text x="386" y="28" font-weight="600" fill="#1a2026">edge 2</text>
+    <text x="590" y="28" font-weight="600" fill="#1a2026">edge 4</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="80" y="58" width="88" height="48"/><rect x="184" y="58" width="88" height="48"/>
+    <rect x="288" y="58" width="88" height="48"/><rect x="392" y="58" width="88" height="48"/>
+    <rect x="496" y="58" width="88" height="48"/>
+  </g>
+  <g text-anchor="middle">
+    <g fill="#5c6b76" font-size="11.5">
+      <text x="124" y="54">0</text><text x="228" y="54">1</text><text x="332" y="54">2</text>
+      <text x="436" y="54">3</text><text x="540" y="54">4</text>
+    </g>
+    <g fill="#1a2026" font-weight="600" font-size="15">
+      <text x="124" y="87">2</text><text x="228" y="87">3</text><text x="332" y="87">1</text>
+      <text x="436" y="87">1</text><text x="540" y="87">4</text>
+    </g>
+  </g>
+  <!-- reach lines -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 124 150 H 332" marker-end="url(#arrow)"/>
+    <path d="M 332 172 H 436" marker-end="url(#arrow)"/>
+    <path d="M 436 172 H 540" marker-end="url(#arrow)"/>
+    <path d="M 228 194 H 540" marker-end="url(#arrow)"/>
+    <path d="M 124 146 V 154"/><path d="M 332 168 V 176"/>
+    <path d="M 436 168 V 176"/><path d="M 228 190 V 198"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="124" y="166">0</text><text x="228" y="210">1</text>
+    <text x="332" y="188">2</text><text x="436" y="188">3</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="218" y="145">0 + 2 = 2</text>
+    <text x="384" y="167">2 + 1 = 3</text>
+    <text x="488" y="167">3 + 1 = 4</text>
+    <text x="384" y="189">1 + 3 = 4</text>
+  </g>
+  <text x="320" y="244" text-anchor="middle" fill="#1a2026" font-size="13">The walk crosses edge 0 at i = 0 and edge 2 at i = 2, so the minimum is <tspan fill="#4169E1" font-weight="600">2</tspan> jumps.</text>
+  <text x="320" y="264" text-anchor="middle" fill="#1a2026" font-size="13">Edge 4 is the last index: landing there ends the walk — levels [0], [1, 2], [3, 4].</text>
+</svg>

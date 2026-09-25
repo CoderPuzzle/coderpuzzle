@@ -6,6 +6,8 @@ The list is restructured by walking it one pair at a time and crossing pointers,
 
 Each iteration unhooks exactly one pair. The two nodes are named `first` and `second`, and three pointer writes perform the swap: `first.next` adopts whatever followed the pair, `second.next` turns back onto `first`, and `prev.next` adopts `second` — the pair is now crossed, with `second` leading. The write order matters only in that `first.next` must be redirected before `second.next` claims it. Afterwards `prev` advances to `first`, the tail of the freshly swapped pair, which is precisely the node before the next pair.
 
+![On head = [1,2,3,4], the first iteration runs with prev = dummy, first = 1, and second = 2, and its three numbered pointer writes cross the pair so second leads; repeating the same swap on 3 and 4 yields [2,1,4,3].](figures/solution-pair-pointer-writes.svg)
+
 When the loop ends, `prev` stands on the last node (or the dummy, for a list shorter than two) and `dummy.next` is the new head. Empty and single-node lists never enter the loop and come back unchanged. The Rust port takes the pair fully out of the chain with `take()` before re-linking it, which is what ownership demands: two nodes cannot be re-crossed while the list still holds a path into them.
 
 **Complexity:** `O(n)` time, `O(1)` space.

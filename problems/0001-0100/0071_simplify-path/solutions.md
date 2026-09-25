@@ -6,4 +6,6 @@ Splitting the path on `'/'` hands the algorithm one candidate per directory: rep
 
 Popping from an empty stack is the root rule: `'..'` at the top level would climb above `'/'`, which the statement forbids, so it changes nothing — an empty stack already is the root. Every other dot run, `'...'` and `'....'` included, fails the exact-match tests for `'.'` and `'..'` and is pushed as an ordinary name. The canonical form then falls straight out of the stack: a leading `'/'` followed by the surviving names joined by single slashes, which yields exactly `'/'` when nothing survives.
 
+![On '/.../a/../b/c/../d/./' the scan pushes '...' like any ordinary name and each '..' pops one name — 'a', then 'c' — leaving the stack that renders '/.../b/d'.](figures/solution-segment-scan-name-stack.svg)
+
 **Complexity:** `O(n)` time and `O(n)` space, where `n` is the length of `path`.

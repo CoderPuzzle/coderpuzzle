@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="320" fill="#ffffff"/>
+  <!-- path = "/.../a/../b/c/../d/./" split on '/' = ['', '...', 'a', '..', 'b', 'c', '..', 'd', '.', ''];
+       cells 50x36 pitch 56 from x=70, y=56; stack columns below grow from the floor y=252 -->
+  <text x="70" y="42" fill="#5c6b76" font-size="12.5">path.split('/')</text>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="70" y="56" width="50" height="36"/><rect x="126" y="56" width="50" height="36"/><rect x="182" y="56" width="50" height="36"/>
+    <rect x="238" y="56" width="50" height="36"/><rect x="294" y="56" width="50" height="36"/><rect x="350" y="56" width="50" height="36"/>
+    <rect x="406" y="56" width="50" height="36"/><rect x="462" y="56" width="50" height="36"/><rect x="518" y="56" width="50" height="36"/>
+    <rect x="574" y="56" width="50" height="36"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="none" stroke-dasharray="3 3">
+    <rect x="70" y="56" width="50" height="36"/><rect x="574" y="56" width="50" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="151" y="79" fill="#4169E1">...</text><text x="207" y="79" fill="#4169E1">a</text>
+    <text x="263" y="79" fill="#42525e">..</text><text x="319" y="79" fill="#4169E1">b</text>
+    <text x="375" y="79" fill="#4169E1">c</text><text x="431" y="79" fill="#42525e">..</text>
+    <text x="487" y="79" fill="#4169E1">d</text><text x="543" y="79" fill="#9aa7b2">.</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5">
+    <text x="95" y="110" fill="#9aa7b2">skip</text><text x="151" y="110" fill="#4169E1">push</text>
+    <text x="207" y="110" fill="#4169E1">push</text><text x="263" y="110" fill="#42525e" font-weight="600">pop a</text>
+    <text x="319" y="110" fill="#4169E1">push</text><text x="375" y="110" fill="#4169E1">push</text>
+    <text x="431" y="110" fill="#42525e" font-weight="600">pop c</text><text x="487" y="110" fill="#4169E1">push</text>
+    <text x="543" y="110" fill="#9aa7b2">skip</text><text x="599" y="110" fill="#9aa7b2">skip</text>
+  </g>
+  <!-- stack after each segment; floor at y=252, boxes 44x20 -->
+  <line x1="64" y1="252" x2="630" y2="252" stroke="#9aa7b2" stroke-width="1"/>
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="none" stroke-dasharray="3 3">
+    <rect x="73" y="232" width="44" height="20"/>
+  </g>
+  <g fill="#dbe4fb">
+    <rect x="129" y="232" width="44" height="20"/>
+    <rect x="185" y="232" width="44" height="20"/><rect x="185" y="212" width="44" height="20"/>
+    <rect x="241" y="232" width="44" height="20"/>
+    <rect x="297" y="232" width="44" height="20"/><rect x="297" y="212" width="44" height="20"/>
+    <rect x="353" y="232" width="44" height="20"/><rect x="353" y="212" width="44" height="20"/><rect x="353" y="192" width="44" height="20"/>
+    <rect x="409" y="232" width="44" height="20"/><rect x="409" y="212" width="44" height="20"/>
+    <rect x="465" y="232" width="44" height="20"/><rect x="465" y="212" width="44" height="20"/><rect x="465" y="192" width="44" height="20"/>
+    <rect x="521" y="232" width="44" height="20"/><rect x="521" y="212" width="44" height="20"/><rect x="521" y="192" width="44" height="20"/>
+    <rect x="577" y="232" width="44" height="20"/><rect x="577" y="212" width="44" height="20"/><rect x="577" y="192" width="44" height="20"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="none" stroke-dasharray="3 3">
+    <rect x="241" y="212" width="44" height="20"/>
+    <rect x="409" y="192" width="44" height="20"/>
+  </g>
+  <g text-anchor="middle" font-size="11" font-weight="600" fill="#1a2026">
+    <text x="151" y="246">...</text>
+    <text x="207" y="246">...</text><text x="207" y="226">a</text>
+    <text x="263" y="246">...</text>
+    <text x="319" y="246">...</text><text x="319" y="226">b</text>
+    <text x="375" y="246">...</text><text x="375" y="226">b</text><text x="375" y="206">c</text>
+    <text x="431" y="246">...</text><text x="431" y="226">b</text>
+    <text x="487" y="246">...</text><text x="487" y="226">b</text><text x="487" y="206">d</text>
+    <text x="543" y="246">...</text><text x="543" y="226">b</text><text x="543" y="206">d</text>
+    <text x="599" y="246">...</text><text x="599" y="226">b</text><text x="599" y="206">d</text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#9aa7b2">
+    <text x="263" y="226" text-decoration="line-through">a</text>
+    <text x="431" y="206" text-decoration="line-through">c</text>
+  </g>
+  <text x="320" y="286" text-anchor="middle" fill="#1a2026" font-size="13">'...' fails the dot rules and pushes like any name; each '..' pops one name — <tspan fill="#4169E1" font-weight="600">'a'</tspan>, then <tspan fill="#4169E1" font-weight="600">'c'</tspan>.</text>
+  <text x="320" y="308" text-anchor="middle" fill="#1a2026" font-size="13">The survivors join under one leading slash: <tspan fill="#4169E1" font-weight="600">/.../b/d</tspan>.</text>
+</svg>

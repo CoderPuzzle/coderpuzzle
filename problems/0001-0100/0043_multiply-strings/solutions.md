@@ -6,4 +6,6 @@ The product of an `m`-digit and an `n`-digit number has at most `m + n` digits, 
 
 A single right-to-left pass then normalizes the array: each cell keeps `total % 10` and hands `total / 10` to the cell on its left, exactly the carrying done by hand. Because neither input has a leading zero (except `0` itself), the product occupies either `m + n` or `m + n - 1` cells, so stripping leading zeros removes at most one cell; the strip always keeps one digit, which is why `0` times anything falls out as `"0"` with no special case.
 
+![Multiplying 123 by 456 lands each digit product in cell i + j + 1 for raw sums [0, 4, 13, 28, 27, 18]; one right-to-left carry pass then leaves the digits 56088.](figures/solution-digit-array-carry-pass.svg)
+
 **Complexity:** `O(m · n)` time, `O(m + n)` space.

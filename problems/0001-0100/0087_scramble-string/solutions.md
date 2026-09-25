@@ -6,6 +6,8 @@ The scramble procedure is itself recursive, so the test mirrors it directly: `so
 
 What keeps the exponential swap tree tractable is that a scramble can never add or remove a letter. Every call therefore compares a 26-way letter count of `a` against `b` before doing anything else and returns false on any mismatch; because the check opens every call, each split's children are cut off before they can recurse deeper, and only anagram-consistent pairs ever multiply. Each pair that survives the guard is memoized, so no `(a, b)` pair is ever explored twice, and identical strings short-circuit to true immediately.
 
+![For s1 = "great" vs s2 = "rgeat", the split gr | eat keeps its order and then gr ↔ rg succeeds through its swap alignment — g ↔ g and r ↔ r — while the kept g ↔ r dies in the letter-count guard, and identical eat ↔ eat matches as-is.](figures/solution-split-alignment-tree.svg)
+
 An interval dynamic program over `(index, index, length)` reaches the same answers bottom-up, but it replaces the definition with a three-index table and gains nothing at the stated ceiling: with `n` at most 30 the pruned recursion resolves even adversarial balanced ternary inputs in milliseconds, in every offered language, while staying a line-by-line transcription of the procedure the statement describes.
 
 **Complexity:** pessimistically `O(n⁴)` substring-pair states times `O(n)` splits with `O(n)` counting each — `O(n⁶)` before pruning, which the anagram guard cuts to milliseconds at `n = 30`; the memo holds one entry per explored pair.

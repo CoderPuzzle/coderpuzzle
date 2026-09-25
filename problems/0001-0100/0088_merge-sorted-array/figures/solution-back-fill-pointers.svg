@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 308" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="308" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums1 = [1,2,3,0,0,0], nums2 = [2,5,6]; cells 54x44 (nums1 at y=78, nums2 at y=176, gap 10); accent cells are the four the loop writes -->
+  <text x="92" y="104" text-anchor="end" fill="#5c6b76" font-size="12.5">nums1</text>
+  <text x="92" y="202" text-anchor="end" fill="#5c6b76" font-size="12.5">nums2</text>
+  <!-- nums1's own 3 shifts from slot 2 into the scratch slot 3 -->
+  <path d="M 298 74 Q 321 44 344 74" fill="none" stroke="#9aa7b2" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="340" y="48" text-anchor="middle" fill="#5c6b76" font-size="11.5">3 shifts right</text>
+  <text x="285" y="52" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">i</text>
+  <line x1="285" y1="60" x2="285" y2="71" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="477" y="52" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">write</text>
+  <line x1="477" y1="60" x2="477" y2="71" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="130" y="78" width="54" height="44" fill="#ffffff"/>
+    <rect x="194" y="78" width="54" height="44" fill="#ffffff"/>
+    <rect x="258" y="78" width="54" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="322" y="78" width="54" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="386" y="78" width="54" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="450" y="78" width="54" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="157" y="105">1</text>
+    <text x="221" y="105">2</text>
+    <text x="285" y="105">2</text>
+    <text x="349" y="105">3</text>
+    <text x="413" y="105">5</text>
+    <text x="477" y="105">6</text>
+  </g>
+  <text x="162" y="140" text-anchor="middle" fill="#9aa7b2" font-size="11">untouched</text>
+  <!-- the backward writes: larger candidate wins, ties come from nums2 -->
+  <path d="M 157 174 Q 215 150 283 126" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 221 174 Q 320 138 411 126" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 285 174 Q 400 130 474 126" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="130" y="176" width="54" height="44" fill="#ffffff"/>
+    <rect x="194" y="176" width="54" height="44" fill="#ffffff"/>
+    <rect x="258" y="176" width="54" height="44" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="157" y="203">2</text>
+    <text x="221" y="203">5</text>
+    <text x="285" y="203">6</text>
+  </g>
+  <text x="285" y="252" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">j</text>
+  <line x1="285" y1="238" x2="285" y2="227" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="310" y="272">Each step writes the larger candidate at write — 6, 5, 3, then the tied 2 from nums2;</text>
+    <text x="310" y="290">then j is exhausted and the untouched prefix <tspan fill="#4169E1" font-weight="600">[1,2]</tspan> already sits in place.</text>
+  </g>
+</svg>

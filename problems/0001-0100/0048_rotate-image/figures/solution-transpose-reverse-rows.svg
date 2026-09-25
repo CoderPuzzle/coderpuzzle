@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 260" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="260" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- matrix = [[1,2,3],[4,5,6],[7,8,9]]; cells 52x34; grids at x=30,250,470, rows y=70,104,138;
+       diagonal cells shaded; swap arcs 2<->4 (top left) and 6<->8 (bottom right);
+       three row-reversal arrows in the second gap; answer [[7,4,1],[8,5,2],[9,6,3]] -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="108" y="54">input</text>
+    <text x="328" y="54">transposed</text>
+    <text x="548" y="54">rotated 90° clockwise</text>
+    <text x="218" y="54" fill="#4169E1" font-weight="600">transpose</text>
+    <text x="438" y="54" fill="#4169E1" font-weight="600">reverse</text>
+    <text x="438" y="190" fill="#4169E1" font-weight="600">each row</text>
+  </g>
+  <!-- grid 1: input -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="30" y="70" width="52" height="34" fill="#f0f3f7"/><rect x="82" y="70" width="52" height="34" fill="#ffffff"/><rect x="134" y="70" width="52" height="34" fill="#ffffff"/>
+    <rect x="30" y="104" width="52" height="34" fill="#ffffff"/><rect x="82" y="104" width="52" height="34" fill="#f0f3f7"/><rect x="134" y="104" width="52" height="34" fill="#ffffff"/>
+    <rect x="30" y="138" width="52" height="34" fill="#ffffff"/><rect x="82" y="138" width="52" height="34" fill="#ffffff"/><rect x="134" y="138" width="52" height="34" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="56" y="92">1</text><text x="108" y="92">2</text><text x="160" y="92">3</text>
+    <text x="56" y="126">4</text><text x="108" y="126">5</text><text x="160" y="126">6</text>
+    <text x="56" y="160">7</text><text x="108" y="160">8</text><text x="160" y="160">9</text>
+  </g>
+  <!-- swap arcs on the strict upper triangle -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 108 68 Q 52 14 44 104" marker-end="url(#arrow)"/>
+    <path d="M 186 121 Q 240 168 108 172" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="64" y="40">swap 2 ↔ 4</text>
+    <text x="206" y="188">swap 6 ↔ 8</text>
+  </g>
+  <!-- grid 2: transposed -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="250" y="70" width="52" height="34" fill="#f0f3f7"/><rect x="302" y="70" width="52" height="34" fill="#ffffff"/><rect x="354" y="70" width="52" height="34" fill="#ffffff"/>
+    <rect x="250" y="104" width="52" height="34" fill="#ffffff"/><rect x="302" y="104" width="52" height="34" fill="#f0f3f7"/><rect x="354" y="104" width="52" height="34" fill="#ffffff"/>
+    <rect x="250" y="138" width="52" height="34" fill="#ffffff"/><rect x="302" y="138" width="52" height="34" fill="#ffffff"/><rect x="354" y="138" width="52" height="34" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="276" y="92">1</text><text x="328" y="92">4</text><text x="380" y="92">7</text>
+    <text x="276" y="126">2</text><text x="328" y="126">5</text><text x="380" y="126">8</text>
+    <text x="276" y="160">3</text><text x="328" y="160">6</text><text x="380" y="160">9</text>
+  </g>
+  <!-- grid 3: rotated -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="470" y="70" width="52" height="34" fill="#f0f3f7"/><rect x="522" y="70" width="52" height="34" fill="#ffffff"/><rect x="574" y="70" width="52" height="34" fill="#ffffff"/>
+    <rect x="470" y="104" width="52" height="34" fill="#ffffff"/><rect x="522" y="104" width="52" height="34" fill="#f0f3f7"/><rect x="574" y="104" width="52" height="34" fill="#ffffff"/>
+    <rect x="470" y="138" width="52" height="34" fill="#ffffff"/><rect x="522" y="138" width="52" height="34" fill="#ffffff"/><rect x="574" y="138" width="52" height="34" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="496" y="92" fill="#4169E1">7</text><text x="548" y="92" fill="#4169E1">4</text><text x="600" y="92" fill="#4169E1">1</text>
+    <text x="496" y="126" fill="#1a2026">8</text><text x="548" y="126" fill="#1a2026">5</text><text x="600" y="126" fill="#1a2026">2</text>
+    <text x="496" y="160" fill="#1a2026">9</text><text x="548" y="160" fill="#1a2026">6</text><text x="600" y="160" fill="#1a2026">3</text>
+  </g>
+  <!-- transpose arrow, then three per-row reversal arrows -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 192 121 H 244" marker-end="url(#arrow)"/>
+    <path d="M 412 87 H 464" marker-end="url(#arrow)"/>
+    <path d="M 412 121 H 464" marker-end="url(#arrow)"/>
+    <path d="M 412 155 H 464" marker-end="url(#arrow)"/>
+  </g>
+  <text x="330" y="216" text-anchor="middle" fill="#1a2026" font-size="13">Transpose swaps (i, j) with (j, i) — 2 ↔ 4, 3 ↔ 7, 6 ↔ 8; reversing each row then lays</text>
+  <text x="330" y="236" text-anchor="middle" fill="#1a2026" font-size="13">every column bottom-up, so the answer's first row <tspan fill="#4169E1" font-weight="600">7 4 1</tspan> is the input's first column.</text>
+</svg>

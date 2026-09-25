@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- head [1,2,3,4,5], k = 2 so k%n = 2, n = 5; nodes 52x40 at y 70; new tail sits n&#8722;k&#8722;1 = 2 steps from the head -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 116 62 C 160 18 248 18 286 60" marker-end="url(#arrow)"/>
+  </g>
+  <text x="60" y="16" fill="#4169E1" font-size="11.5">walk 5 &#8722; 2 &#8722; 1 = 2 steps</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="90" y="70" width="52" height="40"/><rect x="178" y="70" width="52" height="40"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8">
+    <rect x="266" y="70" width="52" height="40"/><rect x="354" y="70" width="52" height="40"/>
+  </g>
+  <rect x="442" y="70" width="52" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="middle" fill="#1a2026" font-size="14">
+    <text x="116" y="95">1</text><text x="204" y="95">2</text><text x="292" y="95">3</text>
+    <text x="380" y="95">4</text><text x="468" y="95">5</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 146 90 H 172" marker-end="url(#arrow)"/>
+    <path d="M 234 90 H 260" marker-end="url(#arrow)"/>
+    <path d="M 322 90 H 348" marker-end="url(#arrow)"/>
+    <path d="M 410 90 H 436" marker-end="url(#arrow)"/>
+  </g>
+  <!-- the cut on the 3 -> 4 link -->
+  <g stroke="#4169E1" stroke-width="2">
+    <path d="M 330 84 L 342 96"/><path d="M 342 84 L 330 96"/>
+  </g>
+  <text x="336" y="74" text-anchor="middle" fill="#4169E1" font-size="11">cut</text>
+  <text x="292" y="128" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">new tail</text>
+  <text x="380" y="56" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">new head</text>
+  <!-- ring back -->
+  <path d="M 468 114 C 468 178 116 178 116 118" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="292" y="192" text-anchor="middle" fill="#4169E1" font-size="11.5">tail 5 links back to head 1</text>
+  <text x="292" y="228" text-anchor="middle" fill="#5c6b76" font-size="11.5">the rotated list</text>
+  <rect x="172" y="240" width="40" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="222" y="240" width="40" height="30"/><rect x="272" y="240" width="40" height="30"/>
+    <rect x="322" y="240" width="40" height="30"/><rect x="372" y="240" width="40" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="192" y="260" fill="#4169E1" font-weight="600">4</text><text x="242" y="260" fill="#1a2026">5</text>
+    <text x="292" y="260" fill="#1a2026">1</text><text x="342" y="260" fill="#1a2026">2</text><text x="392" y="260" fill="#1a2026">3</text>
+  </g>
+  <text x="320" y="302" text-anchor="middle" fill="#1a2026" font-size="13">Tail 5 links back to head 1; walking 5 &#8722; 2 &#8722; 1 = 2 steps from node 1 lands on node 3.</text>
+  <text x="320" y="322" text-anchor="middle" fill="#1a2026" font-size="13">Cutting 3&#8594;4 makes node 4 the head and releases <tspan fill="#4169E1" font-weight="600">[4, 5, 1, 2, 3]</tspan>.</text>
+</svg>

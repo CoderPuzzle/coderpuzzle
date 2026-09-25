@@ -6,6 +6,8 @@ Merging forward is awkward here: the answer has to end up inside `nums1` itself,
 
 Three cursors run the merge: `i` walks the real prefix of `nums1` from its last element down, `j` walks `nums2` the same way, and `write` marks the next free slot from the back. Each step compares the two candidates and copies the larger one to `nums1[write]`; on a tie the element comes from `nums2`, which keeps the choice deterministic. Whichever side was consumed, its cursor and `write` each step down one, so the invariant is that `nums1[write + 1 ..]` always holds the sorted tail of the merged result.
 
+![With nums1 = [1,2,3,0,0,0] and nums2 = [2,5,6], the cursors i, j and write fill nums1 from the back — 6, 5, 3, then the tied 2 from nums2 — until j exhausts and the prefix [1,2] sits in place.](figures/solution-back-fill-pointers.svg)
+
 The loop stops as soon as `j` runs past the start of `nums2`: whatever is left unread in `nums1`'s prefix is already the sorted head of the answer, sitting exactly where it belongs. At the extremes `m = 0` copies all of `nums2` wholesale, `n = 0` leaves `nums1` untouched, and every element is written at most once. The method then returns `nums1`, the merged array the judge compares exactly.
 
 **Complexity:** `O(m + n)` time, `O(1)` extra space.

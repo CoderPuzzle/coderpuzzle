@@ -17,6 +17,8 @@ gives `[1,2]` before the mask `100` gives `[3]`, matching the example listing. T
 the output position — the subset for mask `m` lands at index `m` of the result — so the loop
 appends with no other bookkeeping.
 
+![Counting masks 000 to 111 over nums = [1,2,3], mask 011 selects [1,2] before mask 100 selects [3], and each subset lands at the output index equal to its mask.](figures/solution-mask-count-table.svg)
+
 The enumeration touches `n` bits for each of the `2^n` masks. With `n` capped at 10 that is at
 most 1024 subsets, which is also the largest output the cases exercise — the full ceiling fits,
 serializing to well under the judge's output budget.

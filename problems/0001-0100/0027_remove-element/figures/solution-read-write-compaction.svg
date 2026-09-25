@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [3,2,2,3], val = 3; cells 104x46 at x = 110 + 120i; scan row y = 56, result row y = 196 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="110" y="56" width="104" height="46"/><rect x="230" y="56" width="104" height="46"/>
+    <rect x="350" y="56" width="104" height="46"/><rect x="470" y="56" width="104" height="46"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="162" y="85">3</text><text x="282" y="85">2</text><text x="402" y="85">2</text><text x="522" y="85">3</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="162" y="121">i = 0</text><text x="282" y="121">i = 1</text><text x="402" y="121">i = 2</text><text x="522" y="121">i = 3</text>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="162" y="139" fill="#9aa7b2">skip: 3 = val</text>
+    <text x="282" y="139" fill="#4169E1" font-weight="600">copy → slot 0</text>
+    <text x="402" y="139" fill="#4169E1" font-weight="600">copy → slot 1</text>
+    <text x="522" y="139" fill="#9aa7b2">skip: 3 = val</text>
+  </g>
+  <!-- result row: nums = [2,2,2,3] after the scan; prefix kept, tail ignored -->
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="110" y="196" width="104" height="46"/><rect x="230" y="196" width="104" height="46"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="350" y="196" width="104" height="46"/><rect x="470" y="196" width="104" height="46"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="162" y="225">2</text><text x="282" y="225">2</text>
+    <text x="402" y="225" fill="#9aa7b2">2</text><text x="522" y="225" fill="#9aa7b2">3</text>
+  </g>
+  <path d="M 110 252 L 110 258 L 334 258 L 334 252" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="222" y="276" text-anchor="middle" font-size="12" fill="#1a2026"><tspan fill="#4169E1" font-weight="600">k = 2</tspan> · return nums[:k] = [2, 2]</text>
+  <text x="502" y="276" text-anchor="middle" font-size="12" fill="#9aa7b2">beyond k the values are not important</text>
+  <text x="40" y="306" fill="#1a2026" font-size="13">The read cursor copies each survivor down to write slot k and steps over both 3s;</text>
+  <text x="40" y="326" fill="#1a2026" font-size="13">the scan ends with <tspan fill="#4169E1" font-weight="600">k = 2</tspan> and the prefix nums[:2] = <tspan fill="#4169E1" font-weight="600">[2, 2]</tspan>.</text>
+</svg>

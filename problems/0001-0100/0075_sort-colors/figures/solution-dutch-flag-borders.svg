@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="376" fill="#ffffff"/>
+  <!-- nums = [2,0,2,1,1,0]; cells 40x30 pitch 44 at x=70; fills: 0 #dbe4fb, 1 white, 2 #f0f3f7;
+       pointer states: (0,0,5) start; (0,0,4) after 2-swap; (2,2,4) after 0s; (2,2,3) after 2-swap; (2,4,3) done -->
+  <!-- cells by fill -->
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.4">
+    <rect x="114" y="56" width="40" height="30"/><rect x="290" y="56" width="40" height="30"/><rect x="70" y="110" width="40" height="30"/><rect x="114" y="110" width="40" height="30"/>
+    <rect x="70" y="164" width="40" height="30"/><rect x="114" y="164" width="40" height="30"/><rect x="70" y="218" width="40" height="30"/><rect x="114" y="218" width="40" height="30"/>
+    <rect x="70" y="272" width="40" height="30"/><rect x="114" y="272" width="40" height="30"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="202" y="56" width="40" height="30"/><rect x="246" y="56" width="40" height="30"/><rect x="202" y="110" width="40" height="30"/><rect x="246" y="110" width="40" height="30"/>
+    <rect x="202" y="164" width="40" height="30"/><rect x="246" y="164" width="40" height="30"/><rect x="158" y="218" width="40" height="30"/><rect x="202" y="218" width="40" height="30"/>
+    <rect x="158" y="272" width="40" height="30"/><rect x="202" y="272" width="40" height="30"/>
+  </g>
+  <g fill="#f0f3f7" stroke="#42525e" stroke-width="1.4">
+    <rect x="70" y="56" width="40" height="30"/><rect x="158" y="56" width="40" height="30"/><rect x="158" y="110" width="40" height="30"/><rect x="290" y="110" width="40" height="30"/>
+    <rect x="158" y="164" width="40" height="30"/><rect x="290" y="164" width="40" height="30"/><rect x="246" y="218" width="40" height="30"/><rect x="290" y="218" width="40" height="30"/>
+    <rect x="246" y="272" width="40" height="30"/><rect x="290" y="272" width="40" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="14">
+    <text x="90" y="76" font-weight="600">2</text>
+    <text x="134" y="76" font-weight="600">0</text>
+    <text x="178" y="76" font-weight="600">2</text>
+    <text x="222" y="76" font-weight="600">1</text>
+    <text x="266" y="76" font-weight="600">1</text>
+    <text x="310" y="76" font-weight="600">0</text>
+    <text x="90" y="130" font-weight="600">0</text>
+    <text x="134" y="130" font-weight="600">0</text>
+    <text x="178" y="130" font-weight="600">2</text>
+    <text x="222" y="130" font-weight="600">1</text>
+    <text x="266" y="130" font-weight="600">1</text>
+    <text x="310" y="130" font-weight="600">2</text>
+    <text x="90" y="184" font-weight="600">0</text>
+    <text x="134" y="184" font-weight="600">0</text>
+    <text x="178" y="184" font-weight="600">2</text>
+    <text x="222" y="184" font-weight="600">1</text>
+    <text x="266" y="184" font-weight="600">1</text>
+    <text x="310" y="184" font-weight="600">2</text>
+    <text x="90" y="238" font-weight="600">0</text>
+    <text x="134" y="238" font-weight="600">0</text>
+    <text x="178" y="238" font-weight="600">1</text>
+    <text x="222" y="238" font-weight="600">1</text>
+    <text x="266" y="238" font-weight="600">2</text>
+    <text x="310" y="238" font-weight="600">2</text>
+    <text x="90" y="292" font-weight="600">0</text>
+    <text x="134" y="292" font-weight="600">0</text>
+    <text x="178" y="292" font-weight="600">1</text>
+    <text x="222" y="292" font-weight="600">1</text>
+    <text x="266" y="292" font-weight="600">2</text>
+    <text x="310" y="292" font-weight="600">2</text>
+  </g>
+  <!-- row labels -->
+  <g>
+    <text x="8" y="76" fill="#5c6b76" font-size="11.5">start</text>
+    <text x="8" y="130" fill="#5c6b76" font-size="11.5">step 1</text>
+    <text x="8" y="184" fill="#5c6b76" font-size="11.5">steps 2-3</text>
+    <text x="8" y="238" fill="#5c6b76" font-size="11.5">step 4</text>
+    <text x="8" y="292" fill="#5c6b76" font-size="11.5">steps 5-6</text>
+  </g>
+  <!-- low/mid/high pointers under the cells they index -->
+  <g text-anchor="middle" font-size="11" font-weight="700">
+    <text x="90" y="100" fill="#4169E1">LM</text>
+    <text x="310" y="100" fill="#42525e">H</text>
+    <text x="90" y="154" fill="#4169E1">LM</text>
+    <text x="266" y="154" fill="#42525e">H</text>
+    <text x="178" y="208" fill="#4169E1">LM</text>
+    <text x="266" y="208" fill="#42525e">H</text>
+    <text x="178" y="262" fill="#4169E1">LM</text>
+    <text x="222" y="262" fill="#42525e">H</text>
+    <text x="178" y="316" fill="#4169E1">L</text>
+    <text x="222" y="316" fill="#42525e">H</text>
+    <text x="266" y="316" fill="#4169E1">M</text>
+  </g>
+  <!-- per-step notes -->
+  <g>
+    <text x="352" y="76" fill="#5c6b76" font-size="11.5">low = mid = 0, high = 5</text>
+    <text x="352" y="130" fill="#5c6b76" font-size="11.5">read 2: swap to the tail, mid holds</text>
+    <text x="352" y="184" fill="#5c6b76" font-size="11.5">read 0 twice: low and mid advance</text>
+    <text x="352" y="238" fill="#5c6b76" font-size="11.5">read 2: swap again, mid still holds</text>
+    <text x="352" y="292" fill="#5c6b76" font-size="11.5">read 1, 1: mid passes high — done</text>
+  </g>
+  <text x="320" y="342" text-anchor="middle" fill="#1a2026" font-size="13">After each 2 swaps to the tail border, mid deliberately holds: the value swapped down is unexamined.</text>
+  <text x="320" y="362" text-anchor="middle" fill="#1a2026" font-size="13">Zeros settle left, ones middle, twos right — <tspan fill="#4169E1" font-weight="600">[0, 0, 1, 1, 2, 2]</tspan>.</text>
+</svg>

@@ -15,6 +15,8 @@ copy of that value, so runs of equal values are skipped: only the first copy of 
 values still coexist inside a single subset — the deeper loop starts right after the copy just taken — only the
 redundant branch at each level is cut.
 
+![On nums = [1,2,2] the backtrack tree records [], [1], [1,2], [1,2,2], [2], [2,2] on entry, while each crossed 2 marks a same-value sibling the same-level skip refuses — duplicate subsets die, yet [1,2,2] and [2,2] still form on deeper branches.](figures/solution-same-value-skip-tree.svg)
+
 One shared buffer is appended to before descending and popped after returning, so the bookkeeping stays linear in
 `n`. With `n` capped at 10 the deduplicated power set is at its largest when every value is distinct (1024
 subsets), and duplicates only shrink it, so even the ceiling serializes well under the judge's output budget.

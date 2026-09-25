@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="376" fill="#ffffff"/>
+  <!-- nums = [2,5,6,0,0,1,2], target = 3; one row per window [lo..hi] with mid; tinted cells = the half proven sorted; the 2,2,2 tie at lo=mid=hi pays one lo-shrink; cells 44x30 at x = 60+48c -->
+  <text x="60" y="40" fill="#1a2026" font-size="13" font-weight="600">nums = [2,5,6,0,0,1,2], target = 3</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10">
+    <text x="84" y="58">0</text><text x="132" y="58">1</text><text x="180" y="58">2</text><text x="228" y="58">3</text>
+    <text x="276" y="58">4</text><text x="324" y="58">5</text><text x="372" y="58">6</text>
+  </g>
+  <!-- step 1: lo=0 mid=3 hi=6, right half sorted (cells 4..6) -->
+  <text x="84" y="70" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">lo</text>
+  <text x="228" y="70" text-anchor="middle" fill="#1a2026" font-size="11" font-weight="600">mid</text>
+  <text x="372" y="70" text-anchor="middle" fill="#5c6b76" font-size="11" font-weight="600">hi</text>
+  <rect x="56" y="74" width="340" height="38" rx="7" fill="none" stroke="#1a2026" stroke-width="1.4"/>
+  <g stroke-width="1.3">
+    <rect x="60" y="78" width="44" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="108" y="78" width="44" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="156" y="78" width="44" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="204" y="78" width="44" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="252" y="78" width="44" height="30" fill="#dbe4fb" stroke="#42525e"/>
+    <rect x="300" y="78" width="44" height="30" fill="#dbe4fb" stroke="#42525e"/>
+    <rect x="348" y="78" width="44" height="30" fill="#dbe4fb" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="82" y="98">2</text><text x="130" y="98">5</text><text x="178" y="98">6</text><text x="226" y="98">0</text>
+    <text x="274" y="98">0</text><text x="322" y="98">1</text><text x="370" y="98">2</text>
+  </g>
+  <g fill="#1a2026" font-size="12">
+    <text x="412" y="86">nums[lo] 2 &gt; nums[mid] 0 → right half</text>
+    <text x="412" y="104">sorted; 3 not in (0, 2] → hi = 2</text>
+  </g>
+  <!-- step 2: lo=0 mid=1 hi=2, left half sorted (cell 0) -->
+  <text x="84" y="134" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">lo</text>
+  <text x="132" y="134" text-anchor="middle" fill="#1a2026" font-size="11" font-weight="600">mid</text>
+  <text x="180" y="134" text-anchor="middle" fill="#5c6b76" font-size="11" font-weight="600">hi</text>
+  <rect x="56" y="138" width="172" height="38" rx="7" fill="none" stroke="#1a2026" stroke-width="1.4"/>
+  <g stroke-width="1.3">
+    <rect x="60" y="142" width="44" height="30" fill="#dbe4fb" stroke="#42525e"/>
+    <rect x="108" y="142" width="44" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="156" y="142" width="44" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="204" y="142" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="252" y="142" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="300" y="142" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="348" y="142" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600">
+    <text x="82" y="162" fill="#1a2026">2</text><text x="130" y="162" fill="#1a2026">5</text><text x="178" y="162" fill="#1a2026">6</text>
+    <text x="226" y="162" fill="#9aa7b2" font-weight="400">0</text><text x="274" y="162" fill="#9aa7b2" font-weight="400">0</text>
+    <text x="322" y="162" fill="#9aa7b2" font-weight="400">1</text><text x="370" y="162" fill="#9aa7b2" font-weight="400">2</text>
+  </g>
+  <g fill="#1a2026" font-size="12">
+    <text x="412" y="150">nums[lo] 2 &lt;= nums[mid] 5 → left half</text>
+    <text x="412" y="168">sorted; 2 &lt;= 3 &lt; 5 → hi = 0</text>
+  </g>
+  <!-- step 3: lo=mid=hi=0, the 2,2,2 tie -->
+  <text x="84" y="198" text-anchor="middle" fill="#1a2026" font-size="11" font-weight="600">lo = mid = hi</text>
+  <rect x="56" y="202" width="52" height="38" rx="7" fill="none" stroke="#1a2026" stroke-width="1.4"/>
+  <g stroke-width="1.3">
+    <rect x="60" y="206" width="44" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="108" y="206" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="156" y="206" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="204" y="206" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="252" y="206" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="300" y="206" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="348" y="206" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5">
+    <text x="82" y="226" fill="#1a2026" font-weight="600">2</text>
+    <text x="130" y="226" fill="#9aa7b2">5</text><text x="178" y="226" fill="#9aa7b2">6</text><text x="226" y="226" fill="#9aa7b2">0</text>
+    <text x="274" y="226" fill="#9aa7b2">0</text><text x="322" y="226" fill="#9aa7b2">1</text><text x="370" y="226" fill="#9aa7b2">2</text>
+  </g>
+  <g fill="#1a2026" font-size="12">
+    <text x="412" y="214">lo = mid = hi: nums read 2, 2, 2 —</text>
+    <text x="412" y="232">mid != 3, so pay one element: lo += 1</text>
+  </g>
+  <!-- step 4: lo=1 > hi=0, window empty -->
+  <text x="132" y="262" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">lo</text>
+  <text x="84" y="262" text-anchor="middle" fill="#5c6b76" font-size="11" font-weight="600">hi</text>
+  <g stroke-width="1.3">
+    <rect x="60" y="270" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="108" y="270" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="156" y="270" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="204" y="270" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="252" y="270" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="300" y="270" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="348" y="270" width="44" height="30" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" fill="#9aa7b2">
+    <text x="82" y="290">2</text><text x="130" y="290">5</text><text x="178" y="290">6</text><text x="226" y="290">0</text>
+    <text x="274" y="290">0</text><text x="322" y="290">1</text><text x="370" y="290">2</text>
+  </g>
+  <g fill="#1a2026" font-size="12">
+    <text x="412" y="278">lo = 1 &gt; hi = 0 — the window is empty;</text>
+    <text x="412" y="296">3 is absent: return <tspan fill="#4169E1" font-weight="600">false</tspan></text>
+  </g>
+  <text x="330" y="332" text-anchor="middle" fill="#1a2026" font-size="13">Duplicates cost single elements: the <tspan fill="#4169E1" font-weight="600">2, 2, 2</tspan> tie at lo = mid = hi shrinks lo by one,</text>
+  <text x="330" y="354" text-anchor="middle" fill="#1a2026" font-size="13">and the empty window closes the search: 3 is not in [2,5,6,0,0,1,2] — <tspan fill="#4169E1" font-weight="600">false</tspan>.</text>
+</svg>

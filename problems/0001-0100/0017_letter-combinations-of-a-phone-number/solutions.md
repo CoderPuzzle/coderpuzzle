@@ -8,4 +8,6 @@ The walk keeps one shared `current` buffer instead of building a fresh string at
 
 The empty string is decided before any walking: it has zero digits, hence zero letter combinations, and the method returns `[]` — a list with no elements, not a list holding the empty string. That guard also protects the walk itself, which would otherwise happily descend into an empty tree and emit one empty combination.
 
+![On digits "23" the walk fans a, b, c into the nine leaves ad through cf in output order, and along the accent path to "be" the shared buffer appends 'b' and 'e', records "be", then pops both.](figures/solution-dfs-buffer-tree.svg)
+
 **Complexity:** `O(4ⁿ · n)` time, `O(n)` auxiliary space excluding the output.

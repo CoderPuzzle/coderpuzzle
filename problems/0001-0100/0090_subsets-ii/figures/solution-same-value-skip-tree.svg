@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 455" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="455" fill="#ffffff"/>
+  <!-- nums = [1,2,2] sorted; each pill = the subset recorded when the node is entered;
+       crossed gray pills = a second copy of 2 refused at the same level; rows y = 54/150/246/342 -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- edges -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="282" y1="70" x2="130" y2="133"/>
+    <line x1="318" y1="70" x2="556" y2="132"/>
+    <line x1="120" y1="165" x2="120" y2="229"/>
+    <line x1="128" y1="167" x2="262" y2="228"/>
+    <line x1="120" y1="261" x2="120" y2="325"/>
+    <line x1="400" y1="165" x2="400" y2="229"/>
+  </g>
+  <!-- edge labels -->
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="118" y="118" text-anchor="end">i=0, take 1</text>
+    <text x="106" y="202" text-anchor="end">i=1, take 2</text>
+    <text x="96" y="318" text-anchor="end">i=2, take 2</text>
+    <text x="386" y="208" text-anchor="end">i=2, take 2</text>
+  </g>
+  <!-- level 0: root -->
+  <rect x="278" y="39" width="44" height="30" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="300" y="59" text-anchor="middle" fill="#1a2026">[]</text>
+  <!-- level 1 -->
+  <rect x="98" y="135" width="44" height="30" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="120" y="155" text-anchor="middle" fill="#1a2026">[1]</text>
+  <rect x="378" y="135" width="44" height="30" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="400" y="155" text-anchor="middle" fill="#1a2026">[2]</text>
+  <!-- same-value sibling refused at level 1 -->
+  <rect x="538" y="135" width="44" height="30" rx="8" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="560" y="155" text-anchor="middle" fill="#9aa7b2">[2]</text>
+  <line x1="544" y1="159" x2="576" y2="141" stroke="#9aa7b2" stroke-width="2"/>
+  <text x="545" y="182" text-anchor="middle" fill="#9aa7b2" font-size="11">i=2: same 2 as its left sibling, skip</text>
+  <!-- level 2 -->
+  <rect x="91" y="231" width="58" height="30" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="120" y="251" text-anchor="middle" fill="#1a2026">[1,2]</text>
+  <rect x="371" y="231" width="58" height="30" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="400" y="251" text-anchor="middle" fill="#1a2026">[2,2]</text>
+  <!-- same-value sibling refused under [1] -->
+  <rect x="248" y="231" width="44" height="30" rx="8" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="270" y="251" text-anchor="middle" fill="#9aa7b2">[2]</text>
+  <line x1="254" y1="255" x2="286" y2="237" stroke="#9aa7b2" stroke-width="2"/>
+  <text x="270" y="282" text-anchor="middle" fill="#9aa7b2" font-size="11">i=2: same 2 as its left sibling, skip</text>
+  <!-- level 3 -->
+  <rect x="84" y="327" width="72" height="30" rx="8" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="120" y="347" text-anchor="middle" fill="#1a2026">[1,2,2]</text>
+  <!-- caption -->
+  <text x="330" y="394" text-anchor="middle" fill="#1a2026" font-size="13">Entry order emits [], [1], [1,2], <tspan fill="#4169E1" font-weight="600">[1,2,2]</tspan>, [2], <tspan fill="#4169E1" font-weight="600">[2,2]</tspan> — the answer, already in order.</text>
+  <text x="330" y="414" text-anchor="middle" fill="#1a2026" font-size="13">Each crossed 2 repeats its left sibling at the same level — skipping it kills duplicates,</text>
+  <text x="330" y="432" text-anchor="middle" fill="#1a2026" font-size="13">while equal copies still share a subset: [1,2,2] and [2,2] grow on deeper branches.</text>
+</svg>

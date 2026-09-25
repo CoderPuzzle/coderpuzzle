@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 348" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="348" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- matrix = [[1,2,3],[4,5,6],[7,8,9]]; cells 68x48 at (200,64); badges 1-4 order the four ring runs, dashed box = the centre cell left for the next pass -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="200" y="64" width="68" height="48"/><rect x="268" y="64" width="68" height="48"/><rect x="336" y="64" width="68" height="48"/>
+    <rect x="200" y="112" width="68" height="48"/><rect x="268" y="112" width="68" height="48"/><rect x="336" y="112" width="68" height="48"/>
+    <rect x="200" y="160" width="68" height="48"/><rect x="268" y="160" width="68" height="48"/><rect x="336" y="160" width="68" height="48"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="14">
+    <text x="234" y="93">1</text><text x="302" y="93">2</text><text x="370" y="93">3</text>
+    <text x="234" y="141">4</text><text x="302" y="141">5</text><text x="370" y="141">6</text>
+    <text x="234" y="189">7</text><text x="302" y="189">8</text><text x="370" y="189">9</text>
+  </g>
+  <rect x="272" y="116" width="60" height="40" fill="none" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 204 50 H 396" marker-end="url(#arrow)"/>
+    <path d="M 416 68 V 200" marker-end="url(#arrow)"/>
+    <path d="M 400 218 H 208" marker-end="url(#arrow)"/>
+    <path d="M 188 204 V 72" marker-end="url(#arrow)"/>
+  </g>
+  <g>
+    <circle cx="302" cy="34" r="9" fill="#4169E1"/><text x="302" y="38" text-anchor="middle" fill="#ffffff" font-size="10.5">1</text>
+    <text x="286" y="40" text-anchor="end" fill="#5c6b76" font-size="11">1 2 3</text>
+    <circle cx="440" cy="134" r="9" fill="#4169E1"/><text x="440" y="138" text-anchor="middle" fill="#ffffff" font-size="10.5">2</text>
+    <text x="456" y="138" text-anchor="start" fill="#5c6b76" font-size="11">6, 9</text>
+    <circle cx="302" cy="234" r="9" fill="#4169E1"/><text x="302" y="238" text-anchor="middle" fill="#ffffff" font-size="10.5">3</text>
+    <text x="320" y="238" text-anchor="start" fill="#5c6b76" font-size="11">8, 7</text>
+    <circle cx="164" cy="134" r="9" fill="#4169E1"/><text x="164" y="138" text-anchor="middle" fill="#ffffff" font-size="10.5">4</text>
+    <text x="148" y="138" text-anchor="end" fill="#5c6b76" font-size="11">4</text>
+  </g>
+  <!-- emitted order -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="135" y="268" width="34" height="28"/><rect x="177" y="268" width="34" height="28"/><rect x="219" y="268" width="34" height="28"/>
+    <rect x="261" y="268" width="34" height="28"/><rect x="303" y="268" width="34" height="28"/><rect x="345" y="268" width="34" height="28"/>
+    <rect x="387" y="268" width="34" height="28"/><rect x="429" y="268" width="34" height="28"/>
+  </g>
+  <rect x="471" y="268" width="34" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="152" y="287">1</text><text x="194" y="287">2</text><text x="236" y="287">3</text><text x="278" y="287">6</text>
+    <text x="320" y="287">9</text><text x="362" y="287">8</text><text x="404" y="287">7</text><text x="446" y="287">4</text>
+    <text x="488" y="287" fill="#4169E1" font-weight="600">5</text>
+  </g>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">Each pass emits one ring &#8212; top row, right column, bottom row, left column &#8212;</text>
+  <text x="320" y="338" text-anchor="middle" fill="#1a2026" font-size="13">then every boundary steps inward; the last pass leaves only the centre, <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

@@ -8,4 +8,6 @@ Duplicate suppression falls out of the sorted order, at all three levels. Reusin
 
 Values reach ±10⁹ and four of them are added, so intermediate totals reach ±4 × 10⁹, beyond 32-bit range: the fixed-width languages accumulate the running total in a 64-bit type (`long`, `long long`, `i64`; Go's `int` is already 64-bit there), while the emitted quadruplet holds input values and stays at the input width. Sorting costs O(n log n); each of the O(n²) prefix pairs does one linear two-pointer sweep, which dominates.
 
+![On sorted nums = [-2, -1, 0, 0, 1, 2] the pinned pair -2, -1 converges onto -2 + (-1) + 1 + 2 = 0 and records [-2, -1, 1, 2], while the skip arc hops the duplicate 0 run.](figures/solution-nested-two-pointer-quad.svg)
+
 **Complexity:** `O(n^3)` time, `O(n)` space.

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "aa", p = "a*"; dp cells 64x40 at x = 120 + 72j, y = 64 + 48i; small numbers = row-major fill order -->
+  <text x="224" y="38" text-anchor="middle" fill="#5c6b76" font-size="12.5">dp[i][j] = does s[:i] match p[:j]?</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="152" y="58">ε</text><text x="224" y="58">a</text><text x="296" y="58">a*</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="110" y="89">ε</text><text x="110" y="137">a</text><text x="110" y="185">a</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="120" y="64" width="64" height="40"/><rect x="192" y="64" width="64" height="40"/>
+    <rect x="264" y="112" width="64" height="40"/><rect x="120" y="112" width="64" height="40"/><rect x="192" y="112" width="64" height="40"/>
+    <rect x="120" y="160" width="64" height="40"/><rect x="192" y="160" width="64" height="40"/>
+  </g>
+  <rect x="264" y="160" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <g fill="#9aa7b2" font-size="10">
+    <text x="124" y="77">1</text><text x="196" y="77">2</text><text x="268" y="77">3</text>
+    <text x="124" y="125">4</text><text x="196" y="125">5</text><text x="268" y="125">6</text>
+    <text x="124" y="173">7</text><text x="196" y="173">8</text><text x="268" y="173">9</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="152" y="90" fill="#4169E1">T</text><text x="224" y="90" fill="#9aa7b2">F</text><text x="296" y="90" fill="#4169E1">T</text>
+    <text x="152" y="138" fill="#9aa7b2">F</text><text x="224" y="138" fill="#4169E1">T</text><text x="296" y="138" fill="#4169E1">T</text>
+    <text x="152" y="186" fill="#9aa7b2">F</text><text x="224" y="186" fill="#9aa7b2">F</text>
+    <text x="296" y="187" fill="#1a2026" font-weight="700">T</text>
+  </g>
+  <!-- the star's two moves out of dp[2][2]: consume one (up, wins) and skip the x* unit (two back, loses) -->
+  <path d="M 296 160 L 296 153" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowB)"/>
+  <text x="344" y="163" fill="#4169E1" font-size="12" font-weight="600">consume one "a" → dp[i-1][j] = true</text>
+  <path d="M 296 202 Q 224 238 152 202" fill="none" stroke="#5c6b76" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="224" y="240" text-anchor="middle" fill="#5c6b76" font-size="12">skip "a*" → dp[i][j-2] = false</text>
+  <text x="320" y="266" text-anchor="middle" fill="#1a2026" font-size="13">Filled row-major (numbered 1-9), the table lands on <tspan fill="#4169E1" font-weight="600">dp[2][2] = true</tspan>: "aa" matches "a*".</text>
+  <text x="320" y="286" text-anchor="middle" fill="#1a2026" font-size="13">Skipping "a*" reads dp[2][0] = false; consuming one "a" reads <tspan fill="#4169E1" font-weight="600">dp[1][2] = true</tspan>.</text>
+</svg>

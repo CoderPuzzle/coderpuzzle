@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <!-- nums = [1,1,1,2,2,3]; one row per step, array shown after the step; tinted cells = kept prefix nums[0..write), dashed outline = the cell read holds next; w = write, r = read; cells 40x26 at x = 90+44c -->
+  <rect x="372" y="28" width="14" height="14" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+  <text x="392" y="40" fill="#5c6b76" font-size="11.5">kept prefix nums[0..write)</text>
+  <rect x="372" y="48" width="14" height="14" fill="#ffffff" stroke="#5c6b76" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="392" y="60" fill="#5c6b76" font-size="11.5">the cell read examines next</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10">
+    <text x="110" y="67">0</text><text x="154" y="67">1</text><text x="198" y="67">2</text>
+    <text x="242" y="67">3</text><text x="286" y="67">4</text><text x="330" y="67">5</text>
+  </g>
+  <!-- row k = 0..4 at y = 74+40k -->
+  <g stroke="#42525e" stroke-width="1.3">
+    <rect x="90" y="74" width="40" height="26" fill="#dbe4fb"/><rect x="134" y="74" width="40" height="26" fill="#dbe4fb"/>
+    <rect x="178" y="74" width="40" height="26" fill="#ffffff" stroke="#5c6b76" stroke-dasharray="3 2"/>
+    <rect x="222" y="74" width="40" height="26" fill="#ffffff"/><rect x="266" y="74" width="40" height="26" fill="#ffffff"/><rect x="310" y="74" width="40" height="26" fill="#ffffff"/>
+    <rect x="90" y="114" width="40" height="26" fill="#dbe4fb"/><rect x="134" y="114" width="40" height="26" fill="#dbe4fb"/>
+    <rect x="178" y="114" width="40" height="26" fill="#ffffff"/><rect x="222" y="114" width="40" height="26" fill="#ffffff" stroke="#5c6b76" stroke-dasharray="3 2"/>
+    <rect x="266" y="114" width="40" height="26" fill="#ffffff"/><rect x="310" y="114" width="40" height="26" fill="#ffffff"/>
+    <rect x="90" y="154" width="40" height="26" fill="#dbe4fb"/><rect x="134" y="154" width="40" height="26" fill="#dbe4fb"/>
+    <rect x="178" y="154" width="40" height="26" fill="#dbe4fb"/><rect x="222" y="154" width="40" height="26" fill="#ffffff"/>
+    <rect x="266" y="154" width="40" height="26" fill="#ffffff" stroke="#5c6b76" stroke-dasharray="3 2"/><rect x="310" y="154" width="40" height="26" fill="#ffffff"/>
+    <rect x="90" y="194" width="40" height="26" fill="#dbe4fb"/><rect x="134" y="194" width="40" height="26" fill="#dbe4fb"/>
+    <rect x="178" y="194" width="40" height="26" fill="#dbe4fb"/><rect x="222" y="194" width="40" height="26" fill="#dbe4fb"/>
+    <rect x="266" y="194" width="40" height="26" fill="#ffffff"/><rect x="310" y="194" width="40" height="26" fill="#ffffff" stroke="#5c6b76" stroke-dasharray="3 2"/>
+    <rect x="90" y="234" width="40" height="26" fill="#dbe4fb"/><rect x="134" y="234" width="40" height="26" fill="#dbe4fb"/>
+    <rect x="178" y="234" width="40" height="26" fill="#dbe4fb"/><rect x="222" y="234" width="40" height="26" fill="#dbe4fb"/>
+    <rect x="266" y="234" width="40" height="26" fill="#dbe4fb"/><rect x="310" y="234" width="40" height="26" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="110" y="92" font-weight="600">1</text><text x="154" y="92" font-weight="600">1</text><text x="198" y="92">1</text><text x="242" y="92">2</text><text x="286" y="92">2</text><text x="330" y="92">3</text>
+    <text x="110" y="132" font-weight="600">1</text><text x="154" y="132" font-weight="600">1</text><text x="198" y="132">1</text><text x="242" y="132">2</text><text x="286" y="132">2</text><text x="330" y="132">3</text>
+    <text x="110" y="172" font-weight="600">1</text><text x="154" y="172" font-weight="600">1</text><text x="198" y="172" font-weight="600">2</text><text x="242" y="172">2</text><text x="286" y="172">2</text><text x="330" y="172">3</text>
+    <text x="110" y="212" font-weight="600">1</text><text x="154" y="212" font-weight="600">1</text><text x="198" y="212" font-weight="600">2</text><text x="242" y="212" font-weight="600">2</text><text x="286" y="212">2</text><text x="330" y="212">3</text>
+    <text x="110" y="252" font-weight="600">1</text><text x="154" y="252" font-weight="600">1</text><text x="198" y="252" font-weight="600">2</text><text x="242" y="252" font-weight="600">2</text><text x="286" y="252" font-weight="600">3</text><text x="330" y="252">3</text>
+  </g>
+  <g text-anchor="end" font-size="11.5">
+    <text x="82" y="92"><tspan fill="#4169E1" font-weight="600">w=2</tspan> <tspan fill="#5c6b76">r=2</tspan></text>
+    <text x="82" y="132"><tspan fill="#4169E1" font-weight="600">w=2</tspan> <tspan fill="#5c6b76">r=3</tspan></text>
+    <text x="82" y="172"><tspan fill="#4169E1" font-weight="600">w=3</tspan> <tspan fill="#5c6b76">r=4</tspan></text>
+    <text x="82" y="212"><tspan fill="#4169E1" font-weight="600">w=4</tspan> <tspan fill="#5c6b76">r=5</tspan></text>
+    <text x="82" y="252"><tspan fill="#4169E1" font-weight="600">w=5</tspan> <tspan fill="#5c6b76">r=6</tspan></text>
+  </g>
+  <g fill="#1a2026" font-size="12">
+    <text x="372" y="92">both pointers start at 2</text>
+    <text x="372" y="132">third 1: 1 == nums[w-2] = nums[0] → skip</text>
+    <text x="372" y="172">2 != nums[w-2] = nums[0] → copy to slot 2</text>
+    <text x="372" y="212">2 != nums[w-2] = nums[1] → copy to slot 3</text>
+    <text x="372" y="252">3 != nums[2] → copy to slot 4; <tspan fill="#4169E1" font-weight="600">k = 5</tspan></text>
+  </g>
+  <text x="320" y="286" text-anchor="middle" fill="#1a2026" font-size="13">The third 1 equals nums[write-2] = nums[0], so write holds while read steps over it.</text>
+  <text x="320" y="308" text-anchor="middle" fill="#1a2026" font-size="13">The kept prefix grows to [1,1,2,2,3] and the scan returns <tspan fill="#4169E1" font-weight="600">k = 5</tspan>.</text>
+</svg>

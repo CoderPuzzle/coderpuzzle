@@ -6,6 +6,8 @@ A sorted list lines every duplicate up directly behind its original — all copi
 
 The unlink deliberately leaves the cursor in place, because the node behind the deleted copy may be yet another copy of the same value — staying put collapses a run of any length behind a single kept node, and only when the successor's value differs does the cursor step forward. The head node is always kept, being the first occurrence of its value, so the method returns `head` untouched; an empty list or a single node never enters the loop at all.
 
+![On head [1,1,2], current stays on the kept 1 while current.next = current.next.next unlinks the duplicate, advancing only once the successor differs — [1,1,2] becomes [1,2].](figures/solution-cursor-unlink-copy.svg)
+
 Every node is read once and every duplicate costs one pointer write, so the whole sweep is a single pass with no auxiliary structure. The Rust port keeps its mutable cursor on the kept node itself — ownership forbids holding a node and its successor live at once — so it peeks at `node.next` by shared reference and splices each duplicate out with `take()`; same unlink, same single pass.
 
 **Complexity:** `O(n)` time, `O(1)` space.

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 430" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="430" fill="#ffffff"/>
+  <!-- s = "226"; pill = letters decoded so far, edge label = the code just taken (one digit,
+       or a pair gated to 10-26); tinted pills = complete decodes; right strip = rolling way-counts -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <text x="190" y="30" text-anchor="middle" fill="#5c6b76" font-size="12.5">the two-way decode tree</text>
+  <text x="530" y="30" text-anchor="middle" fill="#5c6b76" font-size="12.5">the two rolling counts</text>
+  <!-- edges -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="176" y1="70" x2="100" y2="134"/>
+    <line x1="206" y1="70" x2="294" y2="134"/>
+    <line x1="83" y1="165" x2="77" y2="231"/>
+    <line x1="107" y1="166" x2="212" y2="231"/>
+    <line x1="72" y1="261" x2="66" y2="327"/>
+    <line x1="300" y1="165" x2="300" y2="231"/>
+  </g>
+  <!-- edge labels: the code taken -->
+  <g fill="#5c6b76" font-size="12">
+    <text x="128" y="96" text-anchor="middle">2</text>
+    <text x="262" y="96" text-anchor="middle">22</text>
+    <text x="68" y="202" text-anchor="end">2</text>
+    <text x="178" y="190" text-anchor="middle">26</text>
+    <text x="58" y="298" text-anchor="end">6</text>
+    <text x="312" y="202" text-anchor="start">6</text>
+  </g>
+  <!-- tree nodes -->
+  <rect x="168" y="39" width="44" height="30" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="190" y="59" text-anchor="middle" fill="#1a2026">""</text>
+  <rect x="67" y="135" width="56" height="30" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="95" y="155" text-anchor="middle" fill="#1a2026">B</text>
+  <rect x="272" y="135" width="56" height="30" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="300" y="155" text-anchor="middle" fill="#1a2026">V</text>
+  <rect x="47" y="231" width="56" height="30" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="75" y="251" text-anchor="middle" fill="#1a2026">BB</text>
+  <rect x="192" y="231" width="56" height="30" rx="8" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="220" y="251" text-anchor="middle" fill="#1a2026">BZ</text>
+  <rect x="272" y="231" width="56" height="30" rx="8" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="300" y="251" text-anchor="middle" fill="#1a2026">VF</text>
+  <rect x="37" y="327" width="56" height="30" rx="8" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="65" y="347" text-anchor="middle" fill="#1a2026">BBF</text>
+  <!-- rolling counts strip -->
+  <g fill="#5c6b76" font-size="11">
+    <text x="500" y="96" text-anchor="end">prefix</text>
+    <text x="580" y="96" text-anchor="middle">ways</text>
+  </g>
+  <g fill="#1a2026" font-size="14">
+    <text x="500" y="128" text-anchor="end">""</text>
+    <text x="500" y="160" text-anchor="end">"2"</text>
+    <text x="500" y="192" text-anchor="end">"22"</text>
+    <text x="500" y="224" text-anchor="end">"226"</text>
+  </g>
+  <g text-anchor="middle" font-size="14">
+    <text x="580" y="128" fill="#1a2026">1</text>
+    <text x="580" y="160" fill="#1a2026">1</text>
+    <text x="580" y="192" fill="#1a2026">2</text>
+    <text x="580" y="224" fill="#4169E1" font-weight="600" font-size="15">3</text>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="420" y="268">add ways[i-1] when s[i] is not "0",</text>
+    <text x="420" y="286">plus ways[i-2] when 10 &lt;= s[i-1..i] &lt;= 26</text>
+  </g>
+  <!-- caption -->
+  <text x="340" y="392" text-anchor="middle" fill="#1a2026" font-size="13">Three leaves survive the gates — BBF (2,2,6), VF (22,6), BZ (2,26) — so the answer is <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+  <text x="340" y="412" text-anchor="middle" fill="#1a2026" font-size="13">The rolling counts 1, 1, 2, <tspan fill="#4169E1" font-weight="600">3</tspan> tally the same walk one prefix at a time.</text>
+</svg>

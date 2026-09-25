@@ -44,6 +44,8 @@ at most twice — once descending, at most once more across a thread — so
 the walk stays linear while holding nothing but the cursor and the
 predecessor it is currently hunting.
 
+![On root = [1,null,2,3] Morris threads predecessor 3's free right pointer back to node 2, descends, reads 3, walks home across the thread to emit 2, and cuts it — the tree itself carries the return path behind inorder [1, 3, 2].](figures/solution-morris-thread-lay-cut.svg)
+
 This is deliberately not a second answer to the follow-up: the stack
 already walks with loops alone, and Morris swaps out no recursion — what
 it swaps out is the auxiliary stack, the one thing the iterative walk

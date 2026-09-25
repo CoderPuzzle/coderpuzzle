@@ -6,6 +6,8 @@ Sorting `nums` first settles both the deduplication rule and the output order at
 
 Duplicate permutations are suppressed by the sorted order rather than by a set. Within one loop over candidate slots, a value equal to the sibling just tried at the same depth would rebuild the same permutation through another copy, so at each depth runs of equal values are skipped: a duplicate may only be placed once the identical element to its left is already part of the current permutation. Equal values still coexist inside a single permutation — only the redundant branch at each level is cut.
 
+![On sorted nums = [1,1,2] the same-depth duplicate 1 branches are crossed out — at the root and under 2 — leaving exactly the three unique permutations [1,1,2], [1,2,1], [2,1,1] as leaves.](figures/solution-duplicate-skip-tree.svg)
+
 Each element is consumed at most once per permutation by a `used` flag on its slot, cleared again on the way back up. One shared buffer is appended to before descending and popped after returning, so the bookkeeping stays linear in `n` rather than proportional to the number of partial permutations.
 
 **Complexity:** `O(n · n!)` time, `O(n)` space.

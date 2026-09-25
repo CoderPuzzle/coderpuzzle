@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- list1 = 1,2,4 (accent) list2 = 1,3,4 (white); one call frame per row, its arrow leading to the node it reattaches while unwinding -->
+  <text x="40" y="26" fill="#5c6b76" font-size="12.5">list1 = [1,2,4]    list2 = [1,3,4]</text>
+  <rect x="500" y="15" width="13" height="13" fill="#4169E1"/>
+  <text x="519" y="26" fill="#5c6b76" font-size="12">list1</text>
+  <rect x="572" y="15" width="13" height="13" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="591" y="26" fill="#5c6b76" font-size="12">list2</text>
+  <text x="156" y="50" text-anchor="middle" fill="#5c6b76" font-size="12">call stack</text>
+  <text x="558" y="50" text-anchor="middle" fill="#5c6b76" font-size="12">merged chain</text>
+  <path d="M 44 62 V 258" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrowG)"/>
+  <text x="44" y="52" text-anchor="middle" fill="#5c6b76" font-size="11.5">calls</text>
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="56" y="60" width="200" height="28"/>
+    <rect x="56" y="96" width="200" height="28"/>
+    <rect x="56" y="132" width="200" height="28"/>
+    <rect x="56" y="168" width="200" height="28"/>
+    <rect x="56" y="204" width="200" height="28"/>
+    <rect x="56" y="240" width="200" height="28" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#1a2026">
+    <text x="156" y="78">f1  merge(1, 1) — <tspan fill="#4169E1" font-weight="600">pick 1</tspan></text>
+    <text x="156" y="114">f2  merge(2, 1) — <tspan font-weight="600">pick 1</tspan></text>
+    <text x="156" y="150">f3  merge(2, 3) — <tspan fill="#4169E1" font-weight="600">pick 2</tspan></text>
+    <text x="156" y="186">f4  merge(4, 3) — <tspan font-weight="600">pick 3</tspan></text>
+    <text x="156" y="222">f5  merge(4, 4) — <tspan fill="#4169E1" font-weight="600">pick 4</tspan></text>
+    <text x="156" y="258">f6  merge(null, 4) — <tspan font-weight="600">return 4</tspan></text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6">
+    <path d="M 262 74 H 537" marker-end="url(#arrow)"/>
+    <path d="M 262 110 H 537" marker-end="url(#arrow)"/>
+    <path d="M 262 146 H 537" marker-end="url(#arrow)"/>
+    <path d="M 262 182 H 537" marker-end="url(#arrow)"/>
+    <path d="M 262 218 H 537" marker-end="url(#arrow)"/>
+    <path d="M 262 254 H 537" marker-end="url(#arrow)"/>
+  </g>
+  <text x="400" y="168" text-anchor="middle" fill="#5c6b76" font-size="12">each frame reattaches its pick</text>
+  <g stroke="#42525e" stroke-width="1.3">
+    <rect x="541" y="59" width="34" height="30" fill="#4169E1"/>
+    <rect x="541" y="95" width="34" height="30" fill="#ffffff"/>
+    <rect x="541" y="131" width="34" height="30" fill="#4169E1"/>
+    <rect x="541" y="167" width="34" height="30" fill="#ffffff"/>
+    <rect x="541" y="203" width="34" height="30" fill="#4169E1"/>
+    <rect x="541" y="239" width="34" height="30" fill="#ffffff"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="558" y1="89" x2="558" y2="95"/>
+    <line x1="558" y1="125" x2="558" y2="131"/>
+    <line x1="558" y1="161" x2="558" y2="167"/>
+    <line x1="558" y1="197" x2="558" y2="203"/>
+    <line x1="558" y1="233" x2="558" y2="239"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="558" y="79" fill="#ffffff">1</text>
+    <text x="558" y="115" fill="#1a2026">1</text>
+    <text x="558" y="151" fill="#ffffff">2</text>
+    <text x="558" y="187" fill="#1a2026">3</text>
+    <text x="558" y="223" fill="#ffffff">4</text>
+    <text x="558" y="259" fill="#1a2026">4</text>
+  </g>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Unwinding, each frame reattaches its pick onto the chain returned to it — ties take</text>
+  <text x="320" y="320" text-anchor="middle" fill="#1a2026" font-size="13">list1's head — so the merge builds <tspan fill="#4169E1" font-weight="600">1 → 1 → 2 → 3 → 4 → 4</tspan> from the tail up.</text>
+</svg>

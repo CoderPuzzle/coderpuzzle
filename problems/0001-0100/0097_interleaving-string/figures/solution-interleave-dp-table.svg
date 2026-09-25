@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 444" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="444" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s1 = "aabcc" (rows i), s2 = "dbbca" (cols j), s3 = "aadbbcbcac"; cells 70x46 from (118,84); dp rows top to bottom: TFTFFF / TFTFFF / TTTTTF / FTTFTF / FFTTTT / FFF TFT; fork cell (i=3, j=2); answer dp[5][5] -->
+  <text x="112" y="54" text-anchor="end" fill="#5c6b76" font-size="12">s2 →</text>
+  <text x="98" y="80" text-anchor="middle" fill="#5c6b76" font-size="12">s1 ↓</text>
+  <g text-anchor="middle">
+    <g fill="#9aa7b2" font-size="10.5">
+      <text x="153" y="54">0</text><text x="223" y="54">1</text><text x="293" y="54">2</text>
+      <text x="363" y="54">3</text><text x="433" y="54">4</text><text x="503" y="54">5</text>
+    </g>
+    <g fill="#1a2026" font-size="13" font-weight="600">
+      <text x="153" y="72">∅</text><text x="223" y="72">d</text><text x="293" y="72">b</text>
+      <text x="363" y="72">b</text><text x="433" y="72">c</text><text x="503" y="72">a</text>
+    </g>
+  </g>
+  <!-- false cells -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1">
+    <rect x="188" y="84" width="70" height="46"/><rect x="258" y="84" width="70" height="46"/><rect x="328" y="84" width="70" height="46"/><rect x="398" y="84" width="70" height="46"/><rect x="468" y="84" width="70" height="46"/>
+    <rect x="188" y="130" width="70" height="46"/><rect x="258" y="130" width="70" height="46"/><rect x="328" y="130" width="70" height="46"/><rect x="398" y="130" width="70" height="46"/><rect x="468" y="130" width="70" height="46"/>
+    <rect x="468" y="176" width="70" height="46"/>
+    <rect x="118" y="222" width="70" height="46"/><rect x="328" y="222" width="70" height="46"/><rect x="468" y="222" width="70" height="46"/>
+    <rect x="118" y="268" width="70" height="46"/><rect x="188" y="268" width="70" height="46"/>
+    <rect x="118" y="314" width="70" height="46"/><rect x="188" y="314" width="70" height="46"/><rect x="258" y="314" width="70" height="46"/><rect x="398" y="314" width="70" height="46"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="13.5">
+    <text x="223" y="112">F</text><text x="293" y="112">F</text><text x="363" y="112">F</text><text x="433" y="112">F</text><text x="503" y="112">F</text>
+    <text x="223" y="158">F</text><text x="293" y="158">F</text><text x="363" y="158">F</text><text x="433" y="158">F</text><text x="503" y="158">F</text>
+    <text x="503" y="204">F</text>
+    <text x="153" y="250">F</text><text x="363" y="250">F</text><text x="503" y="250">F</text>
+    <text x="153" y="296">F</text><text x="223" y="296">F</text>
+    <text x="153" y="342">F</text><text x="223" y="342">F</text><text x="293" y="342">F</text><text x="433" y="342">F</text>
+  </g>
+  <!-- true cells: dp = row0 T F F F F F / row1 T F F F F F / row2 T T T T T F / row3 F T T F T F / row4 F F T T T T / row5 F F F F F T -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2">
+    <rect x="118" y="84" width="70" height="46"/>
+    <rect x="118" y="130" width="70" height="46"/>
+    <rect x="118" y="176" width="70" height="46"/><rect x="188" y="176" width="70" height="46"/><rect x="258" y="176" width="70" height="46"/><rect x="328" y="176" width="70" height="46"/><rect x="398" y="176" width="70" height="46"/>
+    <rect x="188" y="222" width="70" height="46"/><rect x="258" y="222" width="70" height="46"/><rect x="398" y="222" width="70" height="46"/>
+    <rect x="258" y="268" width="70" height="46"/><rect x="328" y="268" width="70" height="46"/><rect x="398" y="268" width="70" height="46"/><rect x="468" y="268" width="70" height="46"/>
+    <rect x="328" y="314" width="70" height="46"/><rect x="468" y="314" width="70" height="46"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="13.5" font-weight="600">
+    <text x="153" y="112">T</text>
+    <text x="153" y="158">T</text>
+    <text x="153" y="204">T</text><text x="223" y="204">T</text><text x="293" y="204">T</text><text x="363" y="204">T</text><text x="433" y="204">T</text>
+    <text x="223" y="250">T</text><text x="293" y="250">T</text><text x="433" y="250">T</text>
+    <text x="293" y="296">T</text><text x="363" y="296">T</text><text x="433" y="296">T</text><text x="503" y="296">T</text>
+    <text x="363" y="342">T</text><text x="503" y="342">T</text>
+  </g>
+  <!-- fork cell (3,2) dashed outline; answer cell (5,5) bold -->
+  <rect x="258" y="222" width="70" height="46" fill="none" stroke="#4169E1" stroke-width="2" stroke-dasharray="5 3"/>
+  <rect x="468" y="314" width="70" height="46" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <!-- fork feed arrows: from (2,2) above and (3,1) left into the fork cell -->
+  <line x1="293" y1="210" x2="293" y2="234" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="240" y1="232" x2="268" y2="232" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <!-- row headers -->
+  <g text-anchor="middle">
+    <g fill="#9aa7b2" font-size="10.5">
+      <text x="98" y="103">0</text><text x="98" y="149">1</text><text x="98" y="195">2</text>
+      <text x="98" y="241">3</text><text x="98" y="287">4</text><text x="98" y="333">5</text>
+    </g>
+    <g fill="#1a2026" font-size="13" font-weight="600">
+      <text x="98" y="120">∅</text><text x="98" y="166">a</text><text x="98" y="212">a</text>
+      <text x="98" y="258">b</text><text x="98" y="304">c</text><text x="98" y="350">c</text>
+    </g>
+  </g>
+  <text x="330" y="392" text-anchor="middle" fill="#1a2026" font-size="13">dp[5][5] = <tspan fill="#4169E1" font-weight="600">true</tspan> — "aabcc" and "dbbca" do reinterleave into "aadbbcbcac".</text>
+  <text x="330" y="410" text-anchor="middle" fill="#1a2026" font-size="13">T cells trace every accepting reach; at the dashed fork cell both the up and</text>
+  <text x="330" y="428" text-anchor="middle" fill="#1a2026" font-size="13">left neighbors are true — both offer s3's "b" — so both branches stay alive.</text>
+</svg>

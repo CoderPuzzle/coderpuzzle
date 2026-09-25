@@ -6,6 +6,8 @@ A candidate path is a chain of horizontally or vertically adjacent cells spellin
 
 The no-reuse rule is enforced by the board itself: each level overwrites its cell with `"#"`, a string no letter cell can equal, so the grid doubles as the visited set and a path can never fold back onto a cell it already used. Retreating restores the cell's letter before returning, which reopens it for sibling branches and leaves the board intact for the remaining starting cells. Restoring matters twice over — a false start that stayed marked would corrupt every later search, not just its own.
 
+![On the Example 1 board with word ABCCED, the walk A-B-C-C-E-D from the top-left A overwrites each of its six cells with # and never folds back onto a marked cell, so the word is found.](figures/solution-dfs-path-no-reuse.svg)
+
 The recursion is bounded by the word length, at most 15, so plain recursion is safe without an explicit stack. After the first step each level has at most three live directions (the cell it came from is marked), which is what caps the explored tree; the 6 x 6 ceiling keeps even the worst false-start-heavy boards small.
 
 **Complexity:** `O(m · n · 3^L)` time for an `m x n` board and word length `L`, `O(L)` auxiliary space for the recursion stack.

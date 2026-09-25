@@ -6,6 +6,8 @@ Let `dp[i][j]` record whether the first `i` characters of `s` match the first `j
 
 The table is then filled row by row. If `p[j-1]` is a literal or `.`, it must consume one character of `s` that it equals, so `dp[i][j]` is true only when `dp[i-1][j-1]` holds and the characters agree (a `.` agrees with anything). If `p[j-1]` is `*`, its preceding element `p[j-2]` can be used any number of times, and two cases cover all counts: zero occurrences, which erases the `x*` unit and copies `dp[i][j-2]`; or one more occurrence, allowed when `p[j-2]` matches `s[i-1]`, in which case consuming that character reduces the question to `dp[i-1][j]`. Every possible repetition count reduces to some chain of these two moves, so the recurrence is complete.
 
+![Filling the dp table for s = "aa", p = "a*" row-major: dp[2][2] is true because skipping "a*" reads dp[2][0] = false but consuming one "a" reads dp[1][2] = true.](figures/solution-star-dp-moves.svg)
+
 Because the table is over prefixes, `dp[m][n]` is true exactly when the pattern matches the entire string, never just a prefix. The code assumes well-formed patterns (no leading `*`), which the problem guarantees. The full `(m+1) x (n+1)` table is kept for clarity even though only the previous row is strictly needed.
 
 **Complexity:** `O(m*n)` time, `O(m*n)` space.

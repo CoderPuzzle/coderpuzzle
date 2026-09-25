@@ -6,4 +6,6 @@ Treat the array as a graph where index `i` edges to every later index it can jum
 
 The walk keeps `nextEnd`, the furthest index anything scanned so far reaches; `currentEnd`, the right edge of the level being scanned; and `jumps`, the count of completed levels. Each time `index` catches up with `currentEnd` the level is exhausted, so the counter increments and the next level begins at `nextEnd`. The loop deliberately stops before the last index: landing there is the goal, not a jumping-off point, so a single-element array never enters the loop and costs 0 jumps. The statement guarantees the last index is reachable, which means every exhausted level extends strictly past its own right edge and the walk can never stall. All seven ports are this same six-line walk — only the spelling of `max` differs between the languages.
 
+![On nums = [2,3,1,1,4] the index line is banded into the BFS levels [0], [1, 2], [3, 4]; each index's reach i + nums[i] shows the walk crossing edge 0 then edge 2, so jumps = 2.](figures/solution-bfs-levels-walk.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space.

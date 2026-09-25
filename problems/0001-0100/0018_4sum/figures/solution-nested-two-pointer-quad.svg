@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 312" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="312" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- sorted nums = [-2,-1,0,0,1,2], target 0; cells 84x46 at (68,92); state i=0, j=1, left=4, right=5; total 0 records [-2,-1,1,2]; j-skip arc hops index 3 -->
+  <text x="68" y="44" fill="#5c6b76" font-size="12.5">sorted nums</text>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="110" y="66" fill="#4169E1" font-weight="600">i = 0</text>
+    <text x="194" y="66" fill="#4169E1" font-weight="600">j = 1</text>
+    <text x="446" y="66" fill="#1a2026">left = 4</text>
+    <text x="530" y="66" fill="#1a2026">right = 5</text>
+  </g>
+  <path d="M 110 72 L 110 86" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrowB)"/>
+  <path d="M 194 72 L 194 86" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrowB)"/>
+  <path d="M 446 72 L 446 86" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M 530 72 L 530 86" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g stroke="#1a2026" stroke-width="1.4" fill="#ffffff">
+    <rect x="236" y="92" width="84" height="46"/>
+    <rect x="320" y="92" width="84" height="46"/>
+  </g>
+  <g stroke="#1a2026" stroke-width="1.4" fill="#dbe4fb">
+    <rect x="68" y="92" width="84" height="46"/>
+    <rect x="152" y="92" width="84" height="46"/>
+    <rect x="404" y="92" width="84" height="46"/>
+    <rect x="488" y="92" width="84" height="46"/>
+  </g>
+  <g text-anchor="middle" font-size="15">
+    <text x="110" y="121" fill="#4169E1" font-weight="600">-2</text>
+    <text x="194" y="121" fill="#4169E1" font-weight="600">-1</text>
+    <text x="278" y="121" fill="#1a2026">0</text>
+    <text x="362" y="121" fill="#1a2026">0</text>
+    <text x="446" y="121" fill="#4169E1" font-weight="600">1</text>
+    <text x="530" y="121" fill="#4169E1" font-weight="600">2</text>
+  </g>
+  <g fill="#5c6b76" font-size="10.5">
+    <text x="75" y="106">0</text><text x="159" y="106">1</text><text x="243" y="106">2</text>
+    <text x="327" y="106">3</text><text x="411" y="106">4</text><text x="495" y="106">5</text>
+  </g>
+  <text x="320" y="172" text-anchor="middle" fill="#1a2026" font-size="13">nums[0] + nums[1] + nums[4] + nums[5] = -2 + (-1) + 1 + 2 = <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+  <path d="M 362 186 Q 404 218 446 186" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="404" y="238" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">j skips the duplicate 0</text>
+  <text x="320" y="268" text-anchor="middle" fill="#1a2026" font-size="13">Pinning -2 and -1, the sweep closes the accented <tspan fill="#4169E1" font-weight="600">[-2, -1, 1, 2]</tspan>; j = 2 then closes</text>
+  <text x="320" y="290" text-anchor="middle" fill="#1a2026" font-size="13">[-2, 0, 0, 2], and the skip arc hops the second 0 so no quadruplet repeats.</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 254" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="254" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "babad"; char cells 56x44 at x = 120 + 60i; centers at y=126, x = 148 + 30i -->
+  <text x="268" y="30" text-anchor="middle" fill="#5c6b76" font-size="12.5">s = "babad"</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="148" y="46">0</text><text x="208" y="46">1</text><text x="268" y="46">2</text><text x="328" y="46">3</text><text x="388" y="46">4</text>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8">
+    <rect x="120" y="52" width="56" height="44"/><rect x="180" y="52" width="56" height="44"/><rect x="240" y="52" width="56" height="44"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="300" y="52" width="56" height="44"/><rect x="360" y="52" width="56" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="148" y="80" fill="#1a2026">b</text><text x="208" y="80" fill="#1a2026">a</text><text x="268" y="80" fill="#1a2026">b</text>
+    <text x="328" y="80" fill="#1a2026">a</text><text x="388" y="80" fill="#1a2026">d</text>
+  </g>
+  <!-- legend -->
+  <circle cx="456" cy="58" r="4.5" fill="#42525e"/>
+  <text x="468" y="62" fill="#5c6b76" font-size="12">odd center (5)</text>
+  <g stroke="#9aa7b2" stroke-width="1.6">
+    <line x1="452" y1="74" x2="460" y2="82"/><line x1="452" y1="82" x2="460" y2="74"/>
+  </g>
+  <text x="468" y="82" fill="#5c6b76" font-size="12">even gap (4)</text>
+  <!-- expansion out of the accent center at index 1 -->
+  <path d="M 202 120 Q 174 106 152 100" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M 214 120 Q 242 106 264 100" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="108" y="130" text-anchor="end" fill="#5c6b76" font-size="12">9 centers</text>
+  <circle cx="148" cy="126" r="4.5" fill="#42525e"/>
+  <circle cx="208" cy="126" r="5.5" fill="#4169E1"/>
+  <circle cx="268" cy="126" r="4.5" fill="#42525e"/>
+  <circle cx="328" cy="126" r="4.5" fill="#42525e"/>
+  <circle cx="388" cy="126" r="4.5" fill="#42525e"/>
+  <g stroke="#9aa7b2" stroke-width="1.6">
+    <line x1="174" y1="122" x2="182" y2="130"/><line x1="174" y1="130" x2="182" y2="122"/>
+    <line x1="234" y1="122" x2="242" y2="130"/><line x1="234" y1="130" x2="242" y2="122"/>
+    <line x1="294" y1="122" x2="302" y2="130"/><line x1="294" y1="130" x2="302" y2="122"/>
+    <line x1="354" y1="122" x2="362" y2="130"/><line x1="354" y1="130" x2="362" y2="122"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="178" y="150">b ≠ a</text><text x="238" y="150">a ≠ b</text><text x="298" y="150">b ≠ a</text><text x="358" y="150">a ≠ d</text>
+  </g>
+  <text x="208" y="176" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">s[0] = s[2] = 'b' → 'bab' (length 3)</text>
+  <text x="320" y="210" text-anchor="middle" fill="#1a2026" font-size="13">From the center at index 1, 'a' expands once to <tspan fill="#4169E1" font-weight="600">'bab'</tspan>; every even gap fails its first</text>
+  <text x="320" y="232" text-anchor="middle" fill="#1a2026" font-size="13">comparison, and the later tie 'aba' never replaces the leftmost answer.</text>
+</svg>

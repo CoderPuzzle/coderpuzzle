@@ -46,4 +46,6 @@ Duplicate suppression falls out of the sorted order. Reusing the same value for 
 
 The `sorted(nums)` call builds a fresh list, leaving the caller's array untouched. Sorting costs `O(n log n)` and each of the `n` fixed positions does one linear two-pointer sweep, which dominates.
 
+![On sorted nums = [-4, -1, -1, 0, 1, 2] the anchor -1 converges left and right onto [-1, 0, 1] after [-1, -1, 2], and when i reaches the duplicate -1 the skip arc hops it so no triplet repeats.](figures/solution-two-pointer-triplet-skip.svg)
+
 **Complexity:** `O(n^2)` time, `O(n)` space.

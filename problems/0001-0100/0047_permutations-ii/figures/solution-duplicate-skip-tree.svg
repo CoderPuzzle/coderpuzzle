@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 316" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="316" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- sorted nums = [1,1,2] (slot0:1, slot1:1, slot2:2); same-depth duplicate 1 branches crossed:
+       depth-0 slot1 twin at x=320 and the second 1 under node 2 at x=560;
+       surviving leaves [1,1,2] [1,2,1] [2,1,1] at x=80,200,440 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 306 40 L 154 76" marker-end="url(#arrow)"/>
+    <path d="M 334 40 L 486 76" marker-end="url(#arrow)"/>
+    <path d="M 126 102 L 94 146" marker-end="url(#arrow)"/>
+    <path d="M 154 102 L 186 146" marker-end="url(#arrow)"/>
+    <path d="M 486 102 L 454 146" marker-end="url(#arrow)"/>
+    <path d="M 80 170 V 216" marker-end="url(#arrow)"/>
+    <path d="M 200 170 V 216" marker-end="url(#arrow)"/>
+    <path d="M 440 170 V 216" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="none" stroke-dasharray="4 4">
+    <path d="M 320 40 V 76"/>
+    <path d="M 514 102 L 546 146"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="292" y="16" width="56" height="24" rx="6"/>
+    <rect x="126" y="76" width="28" height="26" rx="6"/>
+    <rect x="486" y="76" width="28" height="26" rx="6"/>
+    <rect x="52" y="146" width="56" height="24" rx="6"/>
+    <rect x="172" y="146" width="56" height="24" rx="6"/>
+    <rect x="412" y="146" width="56" height="24" rx="6"/>
+    <rect x="36" y="216" width="88" height="36" rx="6"/>
+    <rect x="156" y="216" width="88" height="36" rx="6"/>
+    <rect x="396" y="216" width="88" height="36" rx="6"/>
+  </g>
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 4">
+    <rect x="306" y="76" width="28" height="26" rx="6"/>
+    <rect x="532" y="146" width="56" height="24" rx="6"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.8">
+    <path d="M 306 76 L 334 102"/>
+    <path d="M 334 76 L 306 102"/>
+    <path d="M 538 146 L 582 170"/>
+    <path d="M 582 146 L 538 170"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="320" y="33" font-size="12.5">start</text>
+    <text x="140" y="94" font-weight="600">1</text>
+    <text x="320" y="94" font-weight="600" fill="#9aa7b2">1</text>
+    <text x="500" y="94" font-weight="600">2</text>
+    <g font-size="12.5">
+      <text x="80" y="162">[1,1]</text><text x="200" y="162">[1,2]</text>
+      <text x="440" y="162">[2,1]</text><text x="560" y="162" fill="#9aa7b2">[1]</text>
+    </g>
+    <g font-size="13.5" font-weight="600">
+      <text x="80" y="239">1 1 2</text><text x="200" y="239">1 2 1</text><text x="440" y="239">2 1 1</text>
+    </g>
+  </g>
+  <g fill="#5c6b76" font-size="11" text-anchor="middle">
+    <text x="320" y="124">duplicate of the left sibling at this depth — skipped</text>
+    <text x="548" y="190">same 1 as sibling — skipped</text>
+  </g>
+  <text x="320" y="278" text-anchor="middle" fill="#1a2026" font-size="13">Skipping the second twin 1 at each depth cuts the duplicate branches, leaving exactly</text>
+  <text x="320" y="298" text-anchor="middle" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">three</tspan> unique permutations: [1, 1, 2], [1, 2, 1], [2, 1, 1].</text>
+</svg>

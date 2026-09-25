@@ -19,6 +19,8 @@ Every iteration permanently consumes one node from one list, so the total step c
 
 The same decision made one node at a time by the call stack. The base case writes itself: if either list is empty, the other list — whatever remains of it — is already sorted, so it is the merged continuation as is. Otherwise the smaller current head is the merged list's next node; the recursion merges what follows it with the untouched other list, and the call reattaches that result as the head's new tail. `<=` takes `list1` on ties, the same stability rule as the iterative walk.
 
+![On list1 = [1,2,4] and list2 = [1,3,4], six calls stack up, each picking the smaller head (ties to list1; the base case hands back the leftover 4), and unwind to reattach their picks into 1 → 1 → 2 → 3 → 4 → 4.](figures/solution-recursive-merge-frames.svg)
+
 Each call consumes one node for good, so the recursion bottoms out after n + m calls, and relinking allocates nothing. The trade is the call stack, which grows one frame per merged node — the depth the iterative version avoids. (The Rust port takes a small ownership detour — detach the winner's tail so the recursive call owns it, then reattach the merged remainder — but chooses the same node on every call.)
 
 **Complexity:** `O(n + m)` time, `O(n + m)` space for the call stack.

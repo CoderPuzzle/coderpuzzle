@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 262" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="262" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "PAYPALISHIRING", numRows = 3; zigzag cells 24x28 at x = 64 + 24c, rows y = 48 + 42r -->
+  <text x="232" y="32" text-anchor="middle" fill="#5c6b76" font-size="12.5">s = "PAYPALISHIRING", numRows = 3</text>
+  <!-- pen path under the cells -->
+  <polyline points="76,62 100,104 124,146 148,104 172,62 196,104 220,146 244,104 268,62 292,104 316,146 340,104 364,62 388,104" fill="none" stroke="#4169E1" stroke-width="1.6"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="64" y="48" width="24" height="28"/><rect x="160" y="48" width="24" height="28"/><rect x="256" y="48" width="24" height="28"/><rect x="352" y="48" width="24" height="28"/>
+    <rect x="88" y="90" width="24" height="28"/><rect x="136" y="90" width="24" height="28"/><rect x="184" y="90" width="24" height="28"/><rect x="232" y="90" width="24" height="28"/><rect x="280" y="90" width="24" height="28"/><rect x="328" y="90" width="24" height="28"/><rect x="376" y="90" width="24" height="28"/>
+    <rect x="112" y="132" width="24" height="28"/><rect x="208" y="132" width="24" height="28"/><rect x="304" y="132" width="24" height="28"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600" font-size="13">
+    <text x="76" y="66">P</text><text x="172" y="66">A</text><text x="268" y="66">H</text><text x="364" y="66">N</text>
+    <text x="100" y="108">A</text><text x="148" y="108">P</text><text x="196" y="108">L</text><text x="244" y="108">S</text><text x="292" y="108">I</text><text x="340" y="108">I</text><text x="388" y="108">G</text>
+    <text x="124" y="150">Y</text><text x="220" y="150">I</text><text x="316" y="150">R</text>
+  </g>
+  <!-- row buffers, read top to bottom -->
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="454" y="66">row 0</text><text x="454" y="108">row 1</text><text x="454" y="150">row 2</text>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="470" y="48" width="24" height="28"/><rect x="494" y="48" width="24" height="28"/><rect x="518" y="48" width="24" height="28"/><rect x="542" y="48" width="24" height="28"/>
+    <rect x="470" y="90" width="24" height="28"/><rect x="494" y="90" width="24" height="28"/><rect x="518" y="90" width="24" height="28"/><rect x="542" y="90" width="24" height="28"/><rect x="566" y="90" width="24" height="28"/><rect x="590" y="90" width="24" height="28"/><rect x="614" y="90" width="24" height="28"/>
+    <rect x="470" y="132" width="24" height="28"/><rect x="494" y="132" width="24" height="28"/><rect x="518" y="132" width="24" height="28"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600" font-size="13">
+    <text x="482" y="66">P</text><text x="506" y="66">A</text><text x="530" y="66">H</text><text x="554" y="66">N</text>
+    <text x="482" y="108">A</text><text x="506" y="108">P</text><text x="530" y="108">L</text><text x="554" y="108">S</text><text x="578" y="108">I</text><text x="602" y="108">I</text><text x="626" y="108">G</text>
+    <text x="482" y="150">Y</text><text x="506" y="150">I</text><text x="530" y="150">R</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="none">
+    <path d="M 488 78 L 488 88" marker-end="url(#arrow)"/>
+    <path d="M 488 120 L 488 130" marker-end="url(#arrow)"/>
+  </g>
+  <text x="554" y="190" text-anchor="middle" fill="#4169E1" font-size="14.5" font-weight="600">PAHNAPLSIIGYIR</text>
+  <text x="330" y="222" text-anchor="middle" fill="#1a2026" font-size="13">The pen bounces at the top and bottom rows, dropping each character into its row's buffer;</text>
+  <text x="330" y="242" text-anchor="middle" fill="#1a2026" font-size="13">reading the buffers top to bottom gives PAHN + APLSIIG + YIR = <tspan fill="#4169E1" font-weight="600">PAHNAPLSIIGYIR</tspan>.</text>
+</svg>

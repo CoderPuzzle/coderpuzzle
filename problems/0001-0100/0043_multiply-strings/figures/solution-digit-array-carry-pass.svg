@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 348" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="348" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- num1 = "123", num2 = "456"; res cells 70x44 at x = 90 + 78i; raw row y = 70, digit row y = 204 -->
+  <text x="36" y="40" fill="#5c6b76" font-size="12">num1 = "123" × num2 = "456" · 3 + 3 = 6 cells, most significant first</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="125" y="62">cell 0</text><text x="203" y="62">cell 1</text><text x="281" y="62">cell 2</text>
+    <text x="359" y="62">cell 3</text><text x="437" y="62">cell 4</text><text x="515" y="62">cell 5</text>
+  </g>
+  <text x="36" y="96" fill="#5c6b76" font-size="11.5">raw</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="90" y="70" width="70" height="44"/><rect x="168" y="70" width="70" height="44"/>
+    <rect x="246" y="70" width="70" height="44"/><rect x="324" y="70" width="70" height="44"/>
+    <rect x="402" y="70" width="70" height="44"/><rect x="480" y="70" width="70" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="125" y="98">0</text><text x="203" y="98">4</text><text x="281" y="98">13</text>
+    <text x="359" y="98">28</text><text x="437" y="98">27</text><text x="515" y="98">18</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="125" y="134">carry only</text>
+    <text x="203" y="134">1×4</text>
+    <text x="281" y="134">1×5 + 2×4</text>
+    <text x="359" y="134">1×6 + 2×5</text>
+    <text x="359" y="148">+ 3×4</text>
+    <text x="437" y="134">2×6 + 3×5</text>
+    <text x="515" y="134">3×6</text>
+  </g>
+  <text x="320" y="178" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">one right-to-left carry pass</text>
+  <path d="M 540 188 L 100 188" fill="none" stroke="#4169E1" stroke-width="1.75" marker-end="url(#arrow)"/>
+  <text x="36" y="230" fill="#5c6b76" font-size="11.5">digits</text>
+  <rect x="90" y="204" width="70" height="44" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="168" y="204" width="70" height="44"/><rect x="246" y="204" width="70" height="44"/>
+    <rect x="324" y="204" width="70" height="44"/><rect x="402" y="204" width="70" height="44"/>
+    <rect x="480" y="204" width="70" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="125" y="232" fill="#9aa7b2">0</text><text x="203" y="232">5</text><text x="281" y="232">6</text>
+    <text x="359" y="232">0</text><text x="437" y="232">8</text><text x="515" y="232">8</text>
+  </g>
+  <text x="566" y="230" fill="#4169E1" font-size="14" font-weight="600">= "56088"</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="125" y="266">0 + 0</text>
+    <text x="125" y="280">→ strip</text>
+    <text x="203" y="266">4 + 1</text>
+    <text x="203" y="280">→ 5 · c0</text>
+    <text x="281" y="266">13 + 3</text>
+    <text x="281" y="280">→ 6 · c1</text>
+    <text x="359" y="266">28 + 2</text>
+    <text x="359" y="280">→ 0 · c3</text>
+    <text x="437" y="266">27 + 1</text>
+    <text x="437" y="280">→ 8 · c2</text>
+    <text x="515" y="266">18 + 0</text>
+    <text x="515" y="280">→ 8 · c1</text>
+  </g>
+  <text x="40" y="312" fill="#1a2026" font-size="13">Each product num1[i] × num2[j] lands in cell i + j + 1, so the raw sums are</text>
+  <text x="40" y="330" fill="#1a2026" font-size="13">[0, 4, 13, 28, 27, 18]; one right-to-left carry pass leaves <tspan fill="#4169E1" font-weight="600">56088</tspan>.</text>
+</svg>

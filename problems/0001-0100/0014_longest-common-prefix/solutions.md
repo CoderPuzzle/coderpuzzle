@@ -6,4 +6,6 @@ A prefix shared by every string can never be longer than the shortest of them, w
 
 The method takes the first string as the column labels and, for each column, re-checks every other string. `column == len(s)` means a shorter string has ended; `s[column] != ch` is an outright disagreement. Either fault returns `first[:column]`, because every earlier column agreed and nothing after a fault can matter. When no column ever faults, the first string itself is the prefix, which is why a lone string or a set of identical strings falls straight through to returning it whole.
 
+![On strs = ["flower", "flow", "flight"] columns 0-1 agree in every row, so the vertical scan stops at the column-2 fault, 'o' against flight's 'i', and returns first[:2] = "fl".](figures/solution-vertical-scan-first-fault.svg)
+
 **Complexity:** `O(S)` time where `S` is the total number of characters, `O(1)` extra space.

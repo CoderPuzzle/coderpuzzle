@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- matrix = [[1,1,1],[1,0,1],[1,1,1]]; grids 3x3, cells 44x38 at x=48/248/448, y=76;
+       markers stamped at (1,0) and (0,1); sweeps zero row 1 and column 1; both flags false -->
+  <text x="114" y="60" text-anchor="middle" fill="#5c6b76" font-size="12.5">matrix</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="48" y="76" width="44" height="38"/><rect x="92" y="76" width="44" height="38"/><rect x="136" y="76" width="44" height="38"/>
+    <rect x="48" y="114" width="44" height="38"/><rect x="136" y="114" width="44" height="38"/>
+    <rect x="48" y="152" width="44" height="38"/><rect x="92" y="152" width="44" height="38"/><rect x="136" y="152" width="44" height="38"/>
+    <rect x="92" y="114" width="44" height="38" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="70" y="100">1</text><text x="114" y="100">1</text><text x="158" y="100">1</text>
+    <text x="70" y="138">1</text><text x="158" y="138">1</text>
+    <text x="70" y="176">1</text><text x="114" y="176">1</text><text x="158" y="176">1</text>
+    <text x="114" y="138" fill="#4169E1" font-weight="600">0</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 194 133 H 232" marker-end="url(#arrow)"/>
+  </g>
+  <text x="213" y="118" text-anchor="middle" fill="#5c6b76" font-size="11">stamp</text>
+  <text x="314" y="60" text-anchor="middle" fill="#5c6b76" font-size="12.5">markers stamped</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="248" y="76" width="44" height="38"/><rect x="336" y="76" width="44" height="38"/>
+    <rect x="336" y="114" width="44" height="38"/>
+    <rect x="248" y="152" width="44" height="38"/><rect x="292" y="152" width="44" height="38"/><rect x="336" y="152" width="44" height="38"/>
+    <rect x="292" y="114" width="44" height="38" fill="#f0f3f7"/>
+    <rect x="248" y="114" width="44" height="38" fill="#dbe4fb"/>
+  </g>
+  <rect x="292" y="76" width="44" height="38" fill="#dbe4fb" stroke="#42525e" stroke-width="1.4"/>
+  <g text-anchor="middle">
+    <text x="270" y="100" fill="#1a2026">1</text><text x="358" y="100" fill="#1a2026">1</text>
+    <text x="358" y="138" fill="#1a2026">1</text>
+    <text x="270" y="176" fill="#1a2026">1</text><text x="314" y="176" fill="#1a2026">1</text><text x="358" y="176" fill="#1a2026">1</text>
+    <text x="270" y="138" fill="#4169E1" font-weight="600">0</text>
+    <text x="314" y="138" fill="#1a2026" font-weight="600">0</text>
+    <text x="314" y="100" fill="#4169E1" font-weight="600">0</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 394 133 H 432" marker-end="url(#arrow)"/>
+  </g>
+  <text x="413" y="118" text-anchor="middle" fill="#5c6b76" font-size="11">sweep</text>
+  <text x="514" y="60" text-anchor="middle" fill="#5c6b76" font-size="12.5">final</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="448" y="76" width="44" height="38"/><rect x="536" y="76" width="44" height="38"/>
+    <rect x="448" y="114" width="44" height="38"/><rect x="536" y="114" width="44" height="38"/>
+    <rect x="448" y="152" width="44" height="38"/><rect x="536" y="152" width="44" height="38"/>
+    <rect x="492" y="76" width="44" height="38" fill="#dbe4fb"/>
+    <rect x="492" y="114" width="44" height="38" fill="#dbe4fb"/>
+    <rect x="492" y="152" width="44" height="38" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="470" y="100">1</text><text x="558" y="100">1</text>
+    <text x="470" y="138">0</text><text x="558" y="138">1</text>
+    <text x="470" y="176">1</text><text x="558" y="176">1</text>
+    <text x="514" y="100">0</text><text x="514" y="138">0</text><text x="514" y="176">0</text>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="155" y="206" width="160" height="26" rx="4"/>
+    <rect x="325" y="206" width="160" height="26" rx="4"/>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#5c6b76">
+    <text x="235" y="223">row 0 held a 0? no</text>
+    <text x="405" y="223">column 0 held a 0? no</text>
+  </g>
+  <text x="320" y="252" text-anchor="middle" fill="#9aa7b2" font-size="11">saved before stamping, applied last — both false, so row 0 and column 0 survive</text>
+  <text x="320" y="282" text-anchor="middle" fill="#1a2026" font-size="13">The centre <tspan fill="#4169E1" font-weight="600">0</tspan> stamps its row and column markers; the sweeps zero row 1 and column 1.</text>
+</svg>

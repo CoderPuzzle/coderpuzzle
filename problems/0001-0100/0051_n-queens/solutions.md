@@ -6,6 +6,8 @@ Placing one queen per row removes row conflicts by construction, so the search o
 
 Conflict checks are `O(1)` thanks to three sets. `cols` holds occupied columns; `diag1` holds `row - col`, which is the same for every cell on one family of diagonals; `diag2` holds `row + col`, constant along the other family. A candidate `(row, col)` is safe exactly when all three values are unseen; if so, the three values are inserted, a row string of dots with a `Q` at `col` is appended to `board`, and the search descends. On return, the additions are popped, restoring the state for the next candidate.
 
+![On n = 4 the branch opening (0,0), (1,2) dies in row 2 with every column conflicting, and after backtracking to row 0 the queens (0,1), (1,3), (2,0), (3,2) complete the first solution with cols {0,1,2,3}, diag1 {-1,-2,2,1}, diag2 {1,4,2,5}.](figures/solution-conflict-set-search.svg)
+
 When `row == n`, every row holds a queen and no pair attacks — the completed `board` (copied with `list(board)` so later backtracking cannot mutate it) is recorded as one solution. Because columns are tried in increasing order and rows filled top to bottom, solutions are emitted exactly in the row-by-row, left-to-right order the statement requires. The `n = 1` base case returns the single board `["Q"]` directly, and unsatisfiable branches simply die when no column in some row passes the check.
 
 The search tree has at most `n` choices at each of `n` rows, giving the familiar `O(n!)` upper bound on the work (pruning by the three sets cuts the practical tree down enormously, but worst-case growth is still factorial). Beyond the output, the state is `O(n)`: recursion depth plus three sets and a board of `n` entries each.

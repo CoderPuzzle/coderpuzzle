@@ -55,6 +55,8 @@ tail sent back is unexamined, and the next iteration must read it before
 deciding anything. That asymmetry — advance after a low swap, hold after a
 high swap — is the whole correctness of the sweep.
 
+![On [2,0,2,1,1,0] each read 2 swaps to the tail border while mid holds, the 0s advance low and mid together, the 1s advance mid alone, and mid passes high on the final [0,0,1,1,2,2].](figures/solution-dutch-flag-borders.svg)
+
 On `[1,0,2,1,0,0,2]`: the leading `1` just advances `mid`; the `0` swaps
 left; the `2` trades with the trailing `2` and shrinks the band; the second
 `1` advances; and the three remaining zeros migrate left one swap each,

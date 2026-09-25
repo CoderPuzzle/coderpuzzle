@@ -6,6 +6,8 @@ An address is nothing more than a way of cutting `s` into four consecutive piece
 
 Not every piece is a legal segment: it must be 0-255, and it may not have a leading zero unless it is exactly `"0"`. The length-3 candidates are the only ones the numeric check can reject, and the leading-zero rule costs one character comparison per candidate. One window prune keeps the walk from descending into dead ends: whatever digits remain must feed 1 to 3 of them to each segment still missing, so a remainder outside that window returns immediately — at zero segments left the same test accepts only a fully consumed string, which is why the leaf check needs no separate length comparison.
 
+![On s = "101023" the depth-first cut tree tries segment lengths 1-3 shortest-first, prunes every leading-zero or starved remainder, and its five numbered leaves join into the five valid addresses, emitted already in lexicographic order.](figures/solution-three-cuts-dfs-tree.svg)
+
 The children are visited shortest first, and since a dot sorts before every digit, an address whose next segment is shorter precedes any address that extends that digit instead — the walk therefore emits the addresses already in the ascending lexicographic order the statement pins, with no explicit sorting. The tree is bounded by the four-segment shape: at most 3⁴ root-to-leaf paths exist, each built from at most the whole string.
 
 **Complexity:** `O(3⁴ · n)` time, `O(n)` auxiliary space excluding the output.

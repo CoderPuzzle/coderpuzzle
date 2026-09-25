@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- head = [1,2,3,4]; one iteration with prev = dummy, first = 1, second = 2; numbered badges mark the three writes, bottom row is the list after both iterations -->
+  <text x="170" y="30" text-anchor="middle" fill="#5c6b76" font-size="12">second</text>
+  <text x="60" y="128" text-anchor="middle" fill="#5c6b76" font-size="12">prev</text>
+  <text x="170" y="168" text-anchor="middle" fill="#5c6b76" font-size="12">first</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="32" y="72" width="56" height="36"/>
+    <rect x="152" y="42" width="36" height="36"/>
+    <rect x="152" y="112" width="36" height="36"/>
+    <rect x="262" y="72" width="36" height="36"/>
+    <rect x="352" y="72" width="36" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="60" y="94" font-size="11.5">dummy</text>
+    <text x="170" y="64">2</text>
+    <text x="170" y="134">1</text>
+    <text x="280" y="94">3</text>
+    <text x="370" y="94">4</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 90 82 L 148 63" marker-end="url(#arrow)"/>
+    <path d="M 170 78 V 110" marker-end="url(#arrow)"/>
+    <path d="M 190 124 L 258 101" marker-end="url(#arrow)"/>
+    <path d="M 298 90 H 346" marker-end="url(#arrow)"/>
+  </g>
+  <g>
+    <circle cx="119" cy="71" r="8" fill="#4169E1"/>
+    <text x="119" y="75.5" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="600">3</text>
+    <circle cx="170" cy="94" r="8" fill="#4169E1"/>
+    <text x="170" y="98.5" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="600">2</text>
+    <circle cx="224" cy="112" r="8" fill="#4169E1"/>
+    <text x="224" y="116.5" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="600">1</text>
+  </g>
+  <text x="420" y="52" fill="#5c6b76" font-size="12">the three writes</text>
+  <g font-size="12" fill="#1a2026">
+    <text x="420" y="76"><tspan fill="#4169E1" font-weight="600">(1)</tspan>  first.next = second.next</text>
+    <text x="420" y="100"><tspan fill="#4169E1" font-weight="600">(2)</tspan>  second.next = first</text>
+    <text x="420" y="124"><tspan fill="#4169E1" font-weight="600">(3)</tspan>  prev.next = second</text>
+  </g>
+  <text x="32" y="192" fill="#5c6b76" font-size="12">original order: dummy → 1 → 2 → 3 → 4</text>
+  <path d="M 60 202 V 220" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrowG)"/>
+  <text x="76" y="216" fill="#5c6b76" font-size="12">after both iterations</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="32" y="230" width="56" height="36" fill="#ffffff"/>
+    <rect x="152" y="230" width="36" height="36" fill="#dbe4fb"/>
+    <rect x="232" y="230" width="36" height="36" fill="#ffffff"/>
+    <rect x="312" y="230" width="36" height="36" fill="#dbe4fb"/>
+    <rect x="392" y="230" width="36" height="36" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="60" y="252" font-size="11.5">dummy</text>
+    <text x="170" y="252">2</text>
+    <text x="250" y="252">1</text>
+    <text x="330" y="252">4</text>
+    <text x="410" y="252">3</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 90 248 H 148" marker-end="url(#arrowB)"/>
+    <path d="M 190 248 H 228" marker-end="url(#arrowB)"/>
+    <path d="M 270 248 H 308" marker-end="url(#arrowB)"/>
+    <path d="M 350 248 H 388" marker-end="url(#arrowB)"/>
+  </g>
+  <text x="340" y="302" text-anchor="middle" fill="#1a2026" font-size="13">The three writes cross each pair — second leads and prev advances to first — so</text>
+  <text x="340" y="322" text-anchor="middle" fill="#1a2026" font-size="13">repeating the swap on 3 and 4 turns 1 → 2 → 3 → 4 into <tspan fill="#4169E1" font-weight="600">2 → 1 → 4 → 3</tspan>.</text>
+</svg>

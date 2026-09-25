@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- digits = "23"; tree: root "" fans into a, b, c, each into d, e, f (leaves ad..cf); accent path "" -> b -> be traces the buffer -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="323" y1="54" x2="197" y2="130"/>
+    <line x1="357" y1="54" x2="483" y2="130"/>
+    <line x1="170" y1="157" x2="124" y2="216"/>
+    <line x1="180" y1="157" x2="180" y2="216"/>
+    <line x1="190" y1="157" x2="236" y2="216"/>
+    <line x1="330" y1="157" x2="284" y2="216"/>
+    <line x1="350" y1="157" x2="396" y2="216"/>
+    <line x1="490" y1="157" x2="444" y2="216"/>
+    <line x1="500" y1="157" x2="500" y2="216"/>
+    <line x1="510" y1="157" x2="556" y2="216"/>
+  </g>
+  <line x1="340" y1="64" x2="340" y2="120" stroke="#4169E1" stroke-width="2.5"/>
+  <line x1="340" y1="160" x2="340" y2="214" stroke="#4169E1" stroke-width="2.5"/>
+  <!-- accent path nodes -->
+  <circle cx="340" cy="44" r="20" fill="#4169E1"/>
+  <text x="340" y="49" text-anchor="middle" fill="#ffffff" font-weight="600">""</text>
+  <circle cx="340" cy="140" r="20" fill="#4169E1"/>
+  <text x="340" y="145" text-anchor="middle" fill="#ffffff" font-weight="600">b</text>
+  <ellipse cx="340" cy="231" rx="18" ry="15" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="340" y="236" text-anchor="middle" fill="#4169E1" font-weight="600">be</text>
+  <!-- untraced nodes -->
+  <circle cx="180" cy="140" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <text x="180" y="145" text-anchor="middle" fill="#1a2026">a</text>
+  <circle cx="500" cy="140" r="20" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <text x="500" y="145" text-anchor="middle" fill="#1a2026">c</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="13.5">
+    <text x="124" y="236">ad</text><text x="180" y="236">ae</text><text x="236" y="236">af</text>
+    <text x="284" y="236">bd</text><text x="396" y="236">bf</text>
+    <text x="444" y="236">cd</text><text x="500" y="236">ce</text><text x="556" y="236">cf</text>
+  </g>
+  <g fill="#4169E1" font-size="12" font-weight="600">
+    <text x="326" y="96" text-anchor="end">append 'b'</text>
+    <text x="354" y="96" text-anchor="start">pop 'b'</text>
+    <text x="304" y="174" text-anchor="end">append 'e'</text>
+    <text x="376" y="174" text-anchor="start">pop 'e'</text>
+    <text x="340" y="264" text-anchor="middle">record "be"</text>
+  </g>
+  <text x="340" y="298" text-anchor="middle" fill="#1a2026" font-size="13">One shared buffer holds exactly the path being walked: each edge down appends its</text>
+  <text x="340" y="320" text-anchor="middle" fill="#1a2026" font-size="13">letter, each edge back pops it, and the nine leaves read left to right in <tspan fill="#4169E1" font-weight="600">output order</tspan>.</text>
+</svg>

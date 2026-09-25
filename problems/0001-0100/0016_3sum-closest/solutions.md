@@ -8,4 +8,6 @@ The method sorts `nums`, then for each anchor index `i` scans `lo` upward from `
 
 Moving exactly one pointer per miss is the step that keeps the sweep honest. When `total` falls short of `target`, sorted order guarantees that pairing the same `lo` with any smaller `hi` lands even further below, so `lo` itself is the spent index and it steps up; symmetrically, an overshoot retires `hi`. Every remaining pair stays reachable by the one move that could improve on the current total, which is why the walk can discard the rest without a second thought.
 
+![On sorted nums = [-4, -1, 1, 2] with target 1, anchor -4 retires lo twice on totals -3 and -1, and anchor -1's total -1 + 1 + 2 = 2 retires hi carrying distance 1 — the closest sum.](figures/solution-anchor-lo-hi-retire.svg)
+
 **Complexity:** `O(n²)` time, `O(n)` space.

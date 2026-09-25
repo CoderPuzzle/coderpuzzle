@@ -6,6 +6,8 @@ Every permutation assigns each position one of the not-yet-used elements, so the
 
 The walk keeps one shared `current` buffer plus a `used` mark per element instead of scanning the partial permutation for membership at every step. Each recursion level marks its choice before descending and unmarks it after returning, so on arrival at a leaf the buffer holds exactly the path taken and is copied into the results only there. The marks are what keep the branching cheap: deciding which candidates remain is a constant-time check per element rather than a linear scan of `current`.
 
+![On nums = [1,2,3] the backtracking tree hangs the six permutations as leaves in ascending lexicographic order; the accented path appends 2 then 1 then 3, copying current = [2,1,3] at its leaf.](figures/solution-sorted-backtrack-tree.svg)
+
 The elements are guaranteed distinct, so no two paths ever spell the same permutation and nothing needs de-duplicating. At `n` elements the tree has `n!` leaves; with `n` capped at 6 that is at most 720 permutations, and each is copied once at its leaf.
 
 **Complexity:** `O(n · n!)` time, `O(n)` auxiliary space excluding the output.

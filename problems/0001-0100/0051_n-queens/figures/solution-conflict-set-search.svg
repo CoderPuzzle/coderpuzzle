@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- n = 4; cells 36x36; dead board A at x=40 (queens (0,0),(1,2), row 2 all rejected), first
+       solution board B at x=300 (queens (0,1),(1,3),(2,0),(3,2)); conflict sets at completion:
+       cols {0,1,2,3}, diag1 {-1,-2,2,1}, diag2 {1,4,2,5} -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="112" y="54">a dead first branch</text>
+    <text x="372" y="54">the first solution</text>
+  </g>
+  <!-- board A -->
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="40" y="66" width="36" height="36"/><rect x="76" y="66" width="36" height="36"/><rect x="112" y="66" width="36" height="36"/><rect x="148" y="66" width="36" height="36"/>
+    <rect x="40" y="102" width="36" height="36"/><rect x="76" y="102" width="36" height="36"/><rect x="112" y="102" width="36" height="36"/><rect x="148" y="102" width="36" height="36"/>
+    <rect x="40" y="138" width="36" height="36"/><rect x="76" y="138" width="36" height="36"/><rect x="112" y="138" width="36" height="36"/><rect x="148" y="138" width="36" height="36"/>
+    <rect x="40" y="174" width="36" height="36"/><rect x="76" y="174" width="36" height="36"/><rect x="112" y="174" width="36" height="36"/><rect x="148" y="174" width="36" height="36"/>
+  </g>
+  <rect x="40" y="66" width="144" height="144" fill="none" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <g text-anchor="middle" fill="#5c6b76" font-weight="600">
+    <text x="58" y="90">Q</text><text x="130" y="126">Q</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.6">
+    <path d="M 54 152 L 62 160"/><path d="M 62 152 L 54 160"/>
+    <path d="M 90 152 L 98 160"/><path d="M 98 152 L 90 160"/>
+    <path d="M 126 152 L 134 160"/><path d="M 134 152 L 126 160"/>
+    <path d="M 162 152 L 170 160"/><path d="M 170 152 L 162 160"/>
+  </g>
+  <text x="112" y="234" text-anchor="middle" fill="#5c6b76" font-size="12">row 2: every column conflicts</text>
+  <!-- backtrack arrow -->
+  <g fill="#5c6b76" font-size="11.5" text-anchor="middle">
+    <text x="242" y="116">backtrack,</text>
+    <text x="242" y="132">try col 1</text>
+  </g>
+  <path d="M 194 150 H 286" stroke="#4169E1" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <!-- board B -->
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="300" y="66" width="36" height="36"/><rect x="336" y="66" width="36" height="36"/><rect x="372" y="66" width="36" height="36"/><rect x="408" y="66" width="36" height="36"/>
+    <rect x="300" y="102" width="36" height="36"/><rect x="336" y="102" width="36" height="36"/><rect x="372" y="102" width="36" height="36"/><rect x="408" y="102" width="36" height="36"/>
+    <rect x="300" y="138" width="36" height="36"/><rect x="336" y="138" width="36" height="36"/><rect x="372" y="138" width="36" height="36"/><rect x="408" y="138" width="36" height="36"/>
+    <rect x="300" y="174" width="36" height="36"/><rect x="336" y="174" width="36" height="36"/><rect x="372" y="174" width="36" height="36"/><rect x="408" y="174" width="36" height="36"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="292" y="88">0</text><text x="292" y="124">1</text><text x="292" y="160">2</text><text x="292" y="196">3</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-weight="600">
+    <text x="354" y="90">Q</text><text x="426" y="126">Q</text><text x="318" y="162">Q</text><text x="390" y="198">Q</text>
+  </g>
+  <!-- conflict sets at completion -->
+  <g font-size="12.5">
+    <text x="470" y="100" fill="#5c6b76">conflict sets at completion</text>
+    <text x="470" y="130" fill="#5c6b76">cols</text><text x="516" y="130" fill="#1a2026" font-weight="600">{0, 1, 2, 3}</text>
+    <text x="470" y="152" fill="#5c6b76">diag1</text><text x="516" y="152" fill="#1a2026" font-weight="600">{-1, -2, 2, 1}</text>
+    <text x="470" y="174" fill="#5c6b76">diag2</text><text x="516" y="174" fill="#1a2026" font-weight="600">{1, 4, 2, 5}</text>
+  </g>
+  <text x="320" y="262" text-anchor="middle" fill="#1a2026" font-size="13">Every placed queen fills cols, diag1 (row - col) and diag2 (row + col); the dead branch</text>
+  <text x="320" y="282" text-anchor="middle" fill="#1a2026" font-size="13">backs up to row 0, and (0,1), (1,3), (2,0), (3,2) completes the <tspan fill="#4169E1" font-weight="600">first solution</tspan>.</text>
+</svg>

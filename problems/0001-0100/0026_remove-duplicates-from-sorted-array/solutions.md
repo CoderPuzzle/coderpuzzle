@@ -6,6 +6,8 @@ Because `nums` arrives sorted, all copies of a value sit in one adjacent run, an
 
 Whenever `nums[read]` differs from `nums[write - 1]` — the last value kept — a new run has started, and its value is copied down into `nums[write]` before `write` advances. Duplicates are never moved at all; they are simply stepped over, and everything from `write` onward is scratch space the contract lets us ignore. The invariant throughout is that `nums[0..write)` holds exactly the unique values seen among `nums[0..read]`, in sorted order, so when the scan ends the method returns `nums[:write]`, the compacted prefix — its length is `k`, the count of unique elements, which is exactly what the judge compares as a sorted array.
 
+![On nums = [0,0,1,1,1,2,2,3,3,4], read sweeps right while write lags — at read = 5 the value 2 differs from the last kept 1 and is copied down into nums[write] — leaving the unique prefix 0,1,2,3,4 compacted in place with k = 5.](figures/solution-read-write-compaction.svg)
+
 No second array is ever allocated, which is what "in place" demands; the Rust port receives the `Vec` by value and compacts that same allocation. At the extremes the two indexes tell the whole story: on an all-identical array `write` never moves and `k` is `1`, while on an all-distinct array every element is copied onto itself (`write` and `read` advance in lockstep) and `k` is the length.
 
 **Complexity:** `O(n)` time, `O(1)` space.

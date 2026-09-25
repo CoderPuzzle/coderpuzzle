@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 484" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="484" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- inorder [9,3,15,20,7], postorder [9,15,7,20,3]; strips 5 cells 64x44 from x=158; badges give the backwards claim order; 3 splits the inorder -->
+  <g fill="#4169E1">
+    <circle cx="470" cy="30" r="9.5"/><circle cx="400" cy="30" r="9.5"/><circle cx="330" cy="30" r="9.5"/>
+    <circle cx="260" cy="30" r="9.5"/><circle cx="190" cy="30" r="9.5"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">
+    <text x="470" y="34">1</text><text x="400" y="34">2</text><text x="330" y="34">3</text>
+    <text x="260" y="34">4</text><text x="190" y="34">5</text>
+  </g>
+  <text x="520" y="34" text-anchor="start" fill="#5c6b76" font-size="11.5">← claim order</text>
+  <text x="106" y="74" text-anchor="middle" fill="#5c6b76" font-size="12.5">postorder</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="158" y="48" width="64" height="44"/><rect x="228" y="48" width="64" height="44"/><rect x="298" y="48" width="64" height="44"/>
+    <rect x="368" y="48" width="64" height="44"/><rect x="438" y="48" width="64" height="44"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="14.5" font-weight="600">
+    <text x="190" y="75">9</text><text x="260" y="75">15</text><text x="330" y="75">7</text>
+    <text x="400" y="75">20</text><text x="470" y="75">3</text>
+  </g>
+  <line x1="502" y1="110" x2="158" y2="110" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="330" y="130" text-anchor="middle" fill="#5c6b76" font-size="12">the cursor claims roots right to left</text>
+  <text x="106" y="166" text-anchor="middle" fill="#5c6b76" font-size="12.5">inorder</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="158" y="140" width="64" height="44"/><rect x="368" y="140" width="64" height="44"/>
+    <rect x="438" y="140" width="64" height="44"/>
+  </g>
+  <rect x="228" y="140" width="64" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.2"/>
+  <rect x="298" y="140" width="64" height="44" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <g text-anchor="middle" fill="#1a2026" font-size="14.5" font-weight="600">
+    <text x="190" y="167">9</text><text x="260" y="167">3</text><text x="330" y="167">15</text>
+    <text x="400" y="167">20</text><text x="470" y="167">7</text>
+  </g>
+  <!-- split brackets: left range [9], right range [15,20,7] -->
+  <g fill="none" stroke="#4169E1" stroke-width="1.8">
+    <path d="M 158 194 L 158 204 L 222 204 L 222 194"/>
+    <path d="M 298 194 L 298 204 L 502 204 L 502 194"/>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="600" fill="#4169E1">
+    <text x="190" y="224">left: [9]</text>
+    <text x="400" y="224">right: [15, 20, 7]</text>
+  </g>
+  <text x="260" y="224" text-anchor="middle" fill="#5c6b76" font-size="11.5">split</text>
+  <!-- the tree these claims build -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="330" y1="272" x2="252" y2="330"/>
+    <line x1="330" y1="272" x2="408" y2="330"/>
+    <line x1="408" y1="330" x2="368" y2="388"/>
+    <line x1="408" y1="330" x2="448" y2="388"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="330" cy="272" r="18"/><circle cx="252" cy="330" r="18"/><circle cx="408" cy="330" r="18"/>
+    <circle cx="368" cy="388" r="18"/><circle cx="448" cy="388" r="18"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13.5" font-weight="600">
+    <text x="330" y="277">3</text><text x="252" y="335">9</text><text x="408" y="335">20</text>
+    <text x="368" y="393">15</text><text x="448" y="393">7</text>
+  </g>
+  <text x="330" y="424" text-anchor="middle" fill="#5c6b76" font-size="11.5">the built tree</text>
+  <text x="330" y="452" text-anchor="middle" fill="#1a2026" font-size="13">Postorder's last value 3 splits the inorder: [9] goes left, [15, 20, 7] right; walking</text>
+  <text x="330" y="470" text-anchor="middle" fill="#1a2026" font-size="13">backwards, 20 roots that range, then 7 and 15 — tree <tspan fill="#4169E1" font-weight="600">[3, 9, 20, null, null, 15, 7]</tspan>.</text>
+</svg>

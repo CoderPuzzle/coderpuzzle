@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 236" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="236" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- head = [1,2,3,3,4,4,5]; cells 42x42 (dummy 56) in a row at y=78, gaps 18; kept prefix [1,2] accent, the run of 3s muted -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="128" y1="99" x2="139" y2="99" marker-end="url(#arrow)"/>
+    <line x1="189" y1="99" x2="199" y2="99" marker-end="url(#arrow)"/>
+    <line x1="309" y1="99" x2="319" y2="99" marker-end="url(#arrow)"/>
+    <line x1="369" y1="99" x2="379" y2="99" marker-end="url(#arrow)"/>
+    <line x1="429" y1="99" x2="439" y2="99" marker-end="url(#arrow)"/>
+    <line x1="489" y1="99" x2="499" y2="99" marker-end="url(#arrow)"/>
+  </g>
+  <!-- the two unlinks tail writes while judging the run of 3s -->
+  <path d="M 226 76 Q 286 22 344 74" fill="none" stroke="#9aa7b2" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <path d="M 226 76 Q 316 -6 404 74" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="70" y="78" width="56" height="42" fill="#ffffff"/>
+    <rect x="144" y="78" width="42" height="42" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="204" y="78" width="42" height="42" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="264" y="78" width="42" height="42" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="324" y="78" width="42" height="42" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="384" y="78" width="42" height="42" fill="#ffffff"/>
+    <rect x="444" y="78" width="42" height="42" fill="#ffffff"/>
+    <rect x="504" y="78" width="42" height="42" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="98" y="104" fill="#5c6b76" font-size="11.5">dummy</text>
+    <text x="165" y="104" font-weight="600">1</text>
+    <text x="225" y="96" font-weight="600">2</text>
+    <text x="225" y="112" fill="#4169E1" font-size="10.5" font-weight="600">tail</text>
+    <text x="285" y="104" fill="#9aa7b2" font-weight="600">3</text>
+    <text x="345" y="104" fill="#9aa7b2" font-weight="600">3</text>
+    <text x="405" y="104" font-weight="600">4</text>
+    <text x="465" y="104" font-weight="600">4</text>
+    <text x="525" y="104" font-weight="600">5</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <line x1="110" y1="132" x2="136" y2="132" stroke="#9aa7b2" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <text x="144" y="136">unlink the first 3: tail.next moves to the second 3</text>
+    <line x1="110" y1="154" x2="136" y2="154" stroke="#4169E1" stroke-width="2"/>
+    <text x="144" y="158">unlink the second 3: tail.next lands on the differing 4</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="310" y="196">tail holds the kept prefix [1,2] while the whole run of 3s is unlinked node by node;</text>
+    <text x="310" y="214">the differing 4 ends the run; the walk goes on and leaves <tspan fill="#4169E1" font-weight="600">[1,2,5]</tspan>.</text>
+  </g>
+</svg>

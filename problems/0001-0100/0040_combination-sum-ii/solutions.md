@@ -6,6 +6,8 @@ Sorting the candidates first turns the search into a walk over suffixes: a call 
 
 Duplicate combinations are suppressed by the sorted order rather than by a set. Within one loop over sibling choices, a value equal to the sibling just tried at the same depth would re-explore the identical combinations through a different copy, so runs of equal values are skipped at each depth, measured against `start` — equal values may still coexist inside a single combination. Sortedness also prunes: the first value larger than the remaining budget ends the loop, since every later value is at least as large.
 
+![On the sorted candidates [1, 1, 2, 5, 6, 7, 10] with target 8 the backtrack tree crosses out the second 1 at depth 0 as a same-value sibling, while the accented path 1-1-6 spends the budget exactly to record [1, 1, 6].](figures/solution-sorted-backtrack-skip.svg)
+
 Values are at least 1, so the recursion depth is bounded by the target and the path stack stays tiny; the cost is dominated by how many combinations the input admits, which is exponential in the worst case.
 
 **Complexity:** `O(2^n)` time, `O(n)` space.

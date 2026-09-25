@@ -6,4 +6,6 @@ All words share one length `w`, so every candidate match is a chain of `w`-sized
 
 A block that is not one of the words can never appear inside a match, so when one enters, the window empties and resumes after it. When the block count reaches `words.length`, every count is exactly satisfied, so the window's left edge is a match: it is recorded, the leftmost block is released, and the scan continues — the next match can be as close as one block away, which is why `s = "barfoofoobarthefoobarman"` yields 6, 9, and 12. Each offset emits its matches already ascending within its own residue class, and a final sort of the collected indices (at most `O(r · log r)` on top of the sweep, `r` being the answer size) merges the classes into the single ascending order the statement pins.
 
+![On s = barfoothefoobarman with words [foo, bar] the offset-0 window fills to {bar: 1, foo: 1} to record 0, empties on the alien block the, refills to record 9, and offsets 1-2 record nothing — the answer is [0, 9].](figures/solution-block-window-offsets.svg)
+
 **Complexity:** `O(n · w)` time, `O(k · w)` space, for `n = s.length`, `k = words.length`, and common word length `w`.

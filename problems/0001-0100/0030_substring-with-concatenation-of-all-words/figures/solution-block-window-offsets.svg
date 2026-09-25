@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "barfoothefoobarman", words = ["foo","bar"], w = 3; blocks 88x40 at x = 40 + 100b; rows y = 58 (offset 0) and y = 196 (offset 1) -->
+  <text x="40" y="48" fill="#5c6b76" font-size="12.5" font-weight="600">offset r = 0 — blocks start at 0, 3, 6, 9, 12, 15</text>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#ffffff">
+    <rect x="40" y="58" width="88" height="40"/><rect x="140" y="58" width="88" height="40"/>
+    <rect x="340" y="58" width="88" height="40"/><rect x="440" y="58" width="88" height="40"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="240" y="58" width="88" height="40"/><rect x="540" y="58" width="88" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5">
+    <text x="84" y="83">bar</text><text x="184" y="83">foo</text>
+    <text x="284" y="83" fill="#9aa7b2">the</text>
+    <text x="384" y="83">foo</text><text x="484" y="83">bar</text>
+    <text x="584" y="83" fill="#9aa7b2">man</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="84" y="114">start 0</text><text x="184" y="114">start 3</text><text x="284" y="114">start 6</text>
+    <text x="384" y="114">start 9</text><text x="484" y="114">start 12</text><text x="584" y="114">start 15</text>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="84" y="134" fill="#5c6b76">{bar:1}</text>
+    <text x="184" y="134" fill="#4169E1" font-weight="600">match at 0</text>
+    <text x="284" y="134" fill="#5c6b76" font-weight="600">'the' → empty</text>
+    <text x="384" y="134" fill="#5c6b76">{foo:1}</text>
+    <text x="484" y="134" fill="#4169E1" font-weight="600">match at 9</text>
+    <text x="584" y="134" fill="#5c6b76">'man': empty</text>
+  </g>
+  <text x="40" y="186" fill="#5c6b76" font-size="12.5" font-weight="600">offset r = 1 — blocks start at 1, 4, 7, 10, 13, 16</text>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="40" y="196" width="88" height="40"/><rect x="140" y="196" width="88" height="40"/>
+    <rect x="240" y="196" width="88" height="40"/><rect x="340" y="196" width="88" height="40"/>
+    <rect x="440" y="196" width="88" height="40"/>
+    <rect x="540" y="196" width="88" height="40" stroke-dasharray="4 3"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5" fill="#9aa7b2">
+    <text x="84" y="221">arf</text><text x="184" y="221">oot</text><text x="284" y="221">hef</text>
+    <text x="384" y="221">oob</text><text x="484" y="221">arm</text><text x="584" y="221">an</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="84" y="252">start 1</text><text x="184" y="252">start 4</text><text x="284" y="252">start 7</text>
+    <text x="384" y="252">start 10</text><text x="484" y="252">start 13</text><text x="584" y="252">start 16 (short)</text>
+  </g>
+  <text x="334" y="274" text-anchor="middle" fill="#5c6b76" font-size="12">the window resets on every block and records nothing</text>
+  <text x="40" y="306" fill="#1a2026" font-size="13">Offset 0 fills {bar:1, foo:1} to record 0, the alien 'the' empties the window,</text>
+  <text x="40" y="326" fill="#1a2026" font-size="13">it refills to record 9, and offsets 1–2 stay empty: the answer is <tspan fill="#4169E1" font-weight="600">[0, 9]</tspan>.</text>
+</svg>

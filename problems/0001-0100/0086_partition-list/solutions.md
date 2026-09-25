@@ -6,6 +6,8 @@ The order-preservation requirement is what rules out anything clever: no swappin
 
 The splice at the end is where the care goes. `before_tail.next` adopts `after_head.next`, joining the finished chains — and if one side collected nothing, the join simply degenerates to the other chain, which is why empty inputs and all-on-one-side inputs need no special cases. The final cut, `after_tail.next = null`, is not decoration: the last node appended to the high chain still carries its original successor link, and that successor now lives somewhere in the low chain, so leaving the link intact would turn the spliced list into a loop.
 
+![On head [1,4,3,2,5,2] with x = 3, the walk appends 1,2,2 to the before chain and 4,3,5 to the after chain; the splice joins them and after_tail.next = null cuts 5's old link to 2, yielding [1,2,2,4,3,5].](figures/solution-two-dummy-chains.svg)
+
 The Rust port needs no cut at all: the walk takes each node's `next` link with `take()` before choosing a chain, so every link is consumed as the list is dismantled and the high chain's tail is already detached when the splice runs.
 
 **Complexity:** `O(n)` time, `O(1)` space.
