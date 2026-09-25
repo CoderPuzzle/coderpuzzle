@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 444" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="444" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- s = "11011000"; cells 44 wide at x=130+48i, balance walk y = 96 - 16*balance (0,1,2,1,2,3,2,1,0); interior 101100 = mountains 10 + 1100; sorted re-wrap gives 11100100 -->
+  <text x="40" y="38" fill="#5c6b76" font-size="12.5">s = 11011000 — balance walk (+1 on 1, -1 on 0)</text>
+  <polyline points="130,96 178,80 226,64 274,80 322,64 370,48 418,64 466,80 514,96" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="130" y="100" width="44" height="40"/><rect x="178" y="100" width="44" height="40"/>
+    <rect x="226" y="100" width="44" height="40"/><rect x="274" y="100" width="44" height="40"/>
+    <rect x="322" y="100" width="44" height="40"/><rect x="370" y="100" width="44" height="40"/>
+    <rect x="418" y="100" width="44" height="40"/><rect x="466" y="100" width="44" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="152" y="125">1</text><text x="200" y="125">1</text><text x="248" y="125">0</text>
+    <text x="296" y="125">1</text><text x="344" y="125">1</text><text x="392" y="125">0</text>
+    <text x="440" y="125">0</text><text x="488" y="125">0</text>
+  </g>
+  <path d="M 130 148 V 154 H 514 V 148" fill="none" stroke="#5c6b76" stroke-width="1.2"/>
+  <text x="322" y="174" text-anchor="middle" fill="#5c6b76" font-size="12">returns to 0 only at the end — one mountain: 1 · 101100 · 0</text>
+  <line x1="322" y1="182" x2="322" y2="202" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrowG)"/>
+  <text x="40" y="235" fill="#5c6b76" font-size="12.5">interior 101100 → mountains:</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="280" y="210" width="36" height="40"/><rect x="320" y="210" width="36" height="40"/>
+    <rect x="360" y="210" width="36" height="40"/><rect x="400" y="210" width="36" height="40"/>
+    <rect x="440" y="210" width="36" height="40"/><rect x="480" y="210" width="36" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="298" y="235">1</text><text x="338" y="235">0</text><text x="378" y="235">1</text>
+    <text x="418" y="235">1</text><text x="458" y="235">0</text><text x="498" y="235">0</text>
+  </g>
+  <g fill="none" stroke="#5c6b76" stroke-width="1.2">
+    <path d="M 280 258 V 264 H 316 V 258"/>
+    <path d="M 320 258 V 264 H 516 V 258"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="298" y="282">mountain 10</text><text x="418" y="282">mountain 1100</text>
+  </g>
+  <line x1="322" y1="292" x2="322" y2="312" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrowG)"/>
+  <text x="338" y="306" fill="#4169E1" font-size="12">sorted descending: 1100 before 10</text>
+  <rect x="130" y="316" width="44" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4">
+    <rect x="178" y="316" width="44" height="40"/><rect x="226" y="316" width="44" height="40"/>
+    <rect x="274" y="316" width="44" height="40"/><rect x="322" y="316" width="44" height="40"/>
+  </g>
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="1.4">
+    <rect x="370" y="316" width="44" height="40"/><rect x="418" y="316" width="44" height="40"/>
+  </g>
+  <rect x="466" y="316" width="44" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="152" y="341" fill="#5c6b76">1</text>
+    <text x="200" y="341" fill="#1a2026">1</text><text x="248" y="341" fill="#1a2026">1</text>
+    <text x="296" y="341" fill="#1a2026">0</text><text x="344" y="341" fill="#1a2026">0</text>
+    <text x="392" y="341" fill="#1a2026">1</text><text x="440" y="341" fill="#1a2026">0</text>
+    <text x="488" y="341" fill="#5c6b76">0</text>
+  </g>
+  <text x="530" y="341" fill="#4169E1" font-size="14" font-weight="600">= "11100100"</text>
+  <g fill="none" stroke="#4169E1" stroke-width="1.2">
+    <path d="M 178 366 V 372 H 366 V 366"/>
+    <path d="M 370 366 V 372 H 462 V 366"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="272" y="390">1100</text><text x="416" y="390">10</text>
+  </g>
+  <text x="320" y="414" text-anchor="middle" fill="#1a2026" font-size="13">The scan closes no mountain until the final 0: 11011000 is one mountain around</text>
+  <text x="320" y="434" text-anchor="middle" fill="#1a2026" font-size="13">101100 = 10·1100; maximized inside and sorted descending, it re-wraps to <tspan fill="#4169E1" font-weight="600">11100100</tspan>.</text>
+</svg>

@@ -28,6 +28,8 @@ The `O(V·E)` cost is a few times ten thousand operations at `n <= 100` here, so
 
 Instead of one source, compute everything at once. The graph becomes an `(n+1)×(n+1)` adjacency matrix — zero on the diagonal, infinity elsewhere, and the smallest weight when parallel edges repeat a pair — and a triple loop relaxes, for every midpoint `m`, every path `i → m → j` against the direct `d[i][j]`. After the outer loop has admitted each node as a midpoint in turn, `d[i][j]` is the true shortest distance for every pair simultaneously.
 
+![On times = [[2,1,1],[2,3,1],[3,4,1]] with n = 4, k = 2, the 4x4 distance matrix relaxes through each midpoint in turn: only m = 3 improves anything, d[2][4] = 2, and row k = 2 ends at [1, 0, 1, 2] whose maximum 2 is the answer.](figures/solution-floyd-warshall-midpoints.svg)
+
 That breadth is overkill for a single source but costs nothing here: `n <= 100` makes the cubic loop about a million comparisons, comfortably inside the limits, and the infinity guards keep `INF + INF` from overflowing the integer sentinel in the languages without float infinities. The answer is then just row `k`: any infinity among `d[k][1..n]` means the signal never arrives (`-1`), otherwise the row's maximum is the moment the last node hears it.
 
 **Complexity:** `O(n^3)` time, `O(n^2)` space.

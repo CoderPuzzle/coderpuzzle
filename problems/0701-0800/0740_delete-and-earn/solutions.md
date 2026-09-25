@@ -6,6 +6,8 @@ If you ever delete a value `v`, deleting every copy of `v` is free — the neigh
 
 The code keeps two rolling values: `take`, the best total when the previous distinct value was taken, and `skip`, the best when it was not. The carry-in for the current value is `skip` if the previous distinct value was exactly one less (adjacent, so the previous take conflicts) but `max(take, skip)` otherwise — this gap check is what makes missing values free: if no `v-1` exists in the input, taking `v` conflicts with nothing. The new states then become the carry-in plus `v * count[v]`, and the better of the old states.
 
+![On nums = [2,2,3,3,3,4] the take/skip pair rolls across values 2, 3, 4 — adjacent values carry in the previous skip, the gap before 2 carries max(take, skip), and the best final state max(8, 9) = 9 is the answer.](figures/solution-take-skip-roll.svg)
+
 Counting occurrences costs one pass over the input; iterating only the sorted distinct values avoids allocating a bucket for every value up to 10^4 when far fewer are present. With `V` the number of distinct values, the sort of those keys dominates the arithmetic.
 
 Example 2 (`nums = [2,2,3,3,3,4]`) rolls the two states over the sorted distinct values:

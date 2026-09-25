@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums1 = [1,2,3,2,1] rows i=0..4, nums2 = [3,2,1,4,7] cols j=0..4; cells 64x40 at (110,60); accent diagonal dp[2][0]=3, dp[3][1]=2, dp[4][2]=1 -->
+  <text x="270" y="28" text-anchor="middle" fill="#5c6b76" font-size="11.5">nums2[j]</text>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="142" y="52">3</text><text x="206" y="52">2</text><text x="270" y="52">1</text><text x="334" y="52">4</text><text x="398" y="52">7</text>
+  </g>
+  <text x="58" y="52" text-anchor="middle" fill="#5c6b76" font-size="11.5">nums1[i]</text>
+  <g text-anchor="end" font-size="12" fill="#5c6b76">
+    <text x="100" y="84">i=0 (1)</text><text x="100" y="124">i=1 (2)</text><text x="100" y="164">i=2 (3)</text>
+    <text x="100" y="204">i=3 (2)</text><text x="100" y="244">i=4 (1)</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="110" y="60" width="64" height="40"/><rect x="174" y="60" width="64" height="40"/><rect x="238" y="60" width="64" height="40"/><rect x="302" y="60" width="64" height="40"/><rect x="366" y="60" width="64" height="40"/>
+    <rect x="110" y="100" width="64" height="40"/><rect x="174" y="100" width="64" height="40"/><rect x="238" y="100" width="64" height="40"/><rect x="302" y="100" width="64" height="40"/><rect x="366" y="100" width="64" height="40"/>
+    <rect x="110" y="140" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="174" y="140" width="64" height="40"/><rect x="238" y="140" width="64" height="40"/><rect x="302" y="140" width="64" height="40"/><rect x="366" y="140" width="64" height="40"/>
+    <rect x="110" y="180" width="64" height="40"/><rect x="174" y="180" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="238" y="180" width="64" height="40"/><rect x="302" y="180" width="64" height="40"/><rect x="366" y="180" width="64" height="40"/>
+    <rect x="110" y="220" width="64" height="40"/><rect x="174" y="220" width="64" height="40"/><rect x="238" y="220" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="302" y="220" width="64" height="40"/><rect x="366" y="220" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#9aa7b2">
+    <text x="142" y="84">0</text><text x="206" y="84">0</text><text x="270" y="84" fill="#1a2026">1</text><text x="334" y="84">0</text><text x="398" y="84">0</text>
+    <text x="142" y="124">0</text><text x="206" y="124" fill="#1a2026">1</text><text x="270" y="124">0</text><text x="334" y="124">0</text><text x="398" y="124">0</text>
+    <text x="142" y="164.5" font-size="14" font-weight="600" fill="#4169E1">3</text><text x="206" y="164">0</text><text x="270" y="164">0</text><text x="334" y="164">0</text><text x="398" y="164">0</text>
+    <text x="142" y="204">0</text><text x="206" y="204.5" font-size="14" font-weight="600" fill="#4169E1">2</text><text x="270" y="204">0</text><text x="334" y="204">0</text><text x="398" y="204">0</text>
+    <text x="142" y="244">0</text><text x="206" y="244">0</text><text x="270" y="244.5" font-size="14" font-weight="600" fill="#4169E1">1</text><text x="334" y="244">0</text><text x="398" y="244">0</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="none">
+    <line x1="257" y1="232" x2="219" y2="208" marker-end="url(#arrowA)"/>
+    <line x1="193" y1="192" x2="155" y2="168" marker-end="url(#arrowA)"/>
+  </g>
+  <line x1="44" y1="252" x2="44" y2="68" stroke="#9aa7b2" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <text x="44" y="272" text-anchor="middle" fill="#9aa7b2" font-size="10.5">fill order</text>
+  <text x="540" y="104" text-anchor="middle" font-size="12" fill="#1a2026">dp[i][j] = dp[i+1][j+1] + 1</text>
+  <text x="540" y="122" text-anchor="middle" font-size="11.5" fill="#5c6b76">on a match, else 0</text>
+  <rect x="460" y="140" width="168" height="104" rx="8" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="544" y="162" text-anchor="middle" fill="#5c6b76" font-size="11.5">answer</text>
+  <text x="544" y="200" text-anchor="middle" font-size="26" font-weight="600" fill="#4169E1">3</text>
+  <text x="544" y="220" text-anchor="middle" font-size="11" fill="#1a2026">the subarray [3, 2, 1]</text>
+  <text x="544" y="236" text-anchor="middle" font-size="10.5" fill="#9aa7b2">found at dp[2][0]</text>
+  <text x="320" y="300" text-anchor="middle" font-size="13" fill="#1a2026">Each matched pair extends its diagonal: 1 → 2 → 3 up the run <tspan fill="#4169E1" font-weight="600">[3, 2, 1]</tspan>.</text>
+  <text x="320" y="320" text-anchor="middle" font-size="13" fill="#1a2026">The maximum cell is dp[2][0] = 3 — the longest repeated subarray.</text>
+</svg>

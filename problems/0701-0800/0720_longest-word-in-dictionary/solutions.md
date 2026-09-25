@@ -42,6 +42,8 @@ because those nodes are precisely the string's prefixes, all present in
 a word: every path it can take spells a buildable word, and a child that ends
 no word is never entered at all.
 
+![On Example 2's words, the trie walk descends only through word-ending nodes to reach apple and apply, both length 5, and keeps apple as the lexicographically smaller answer.](figures/solution-trie-buildable-walk.svg)
+
 Each trie node is reached by exactly one string, so the walk carries no
 bookkeeping beyond one comparison per visit: strictly longer wins, and among
 equal lengths the lexicographically smaller word wins — compared explicitly,

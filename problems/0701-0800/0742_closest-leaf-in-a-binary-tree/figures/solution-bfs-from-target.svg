@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="480" height="310" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- root = [1,3,2], k = 1; nodes r22 at 1:(240,84), 3:(120,190), 2:(360,190); each tree edge is also a parent link, drawn one line, traversable both ways -->
+  <text x="240" y="24" text-anchor="middle" fill="#5c6b76" font-size="12.5">parent links make every edge walkable in both directions</text>
+  <text x="240" y="46" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">target k = 1</text>
+  <!-- leaf rings -->
+  <circle cx="120" cy="190" r="28" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <circle cx="360" cy="190" r="28" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <!-- undirected edges (tree edge + parent link) -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="221" y1="101" x2="140" y2="173" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="259" y1="101" x2="340" y2="173" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  </g>
+  <!-- nodes -->
+  <circle cx="240" cy="84" r="22" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="120" cy="190" r="22" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <circle cx="360" cy="190" r="22" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="240" y="90">1</text><text x="120" y="196">3</text><text x="360" y="196">2</text>
+  </g>
+  <!-- BFS distances -->
+  <text x="240" y="130" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">d = 0</text>
+  <text x="120" y="240" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">d = 1</text>
+  <text x="360" y="240" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">d = 1</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="120" y="257">leaf</text><text x="360" y="257">leaf</text>
+  </g>
+  <text x="240" y="282" text-anchor="middle" fill="#1a2026" font-size="13">With parent links added, one BFS step from node 1 reaches both leaves.</text>
+  <text x="240" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Leaves 3 and 2 sit at d = 1; the tie rule keeps the smaller value, <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

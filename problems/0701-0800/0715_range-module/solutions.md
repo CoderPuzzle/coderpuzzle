@@ -27,6 +27,8 @@ before `left` and check whether its end reaches `right`. Two pieces meeting
 exactly at `left`/`right` boundaries can never make a query pass falsely —
 the canonical form would have merged them.
 
+![On Example 1, addRange(10, 20) then removeRange(14, 16) leaves the disjoint intervals [10, 14) and [16, 20) on the number line, and each of the three queries is answered by containment in a single stored interval.](figures/solution-disjoint-interval-carve.svg)
+
 Both the Python and Java canonical solutions implement exactly this
 structure (`bisect` splices; `ArrayList` with `lowerBound`/`upperBound`
 helpers and `subList` clearing). With at most `10⁴` calls over values up to

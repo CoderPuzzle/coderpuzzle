@@ -20,6 +20,8 @@ which is why `[10, 20)` and `[20, 30)` can coexist. If both tests pass the
 event is inserted exactly at the position the search identified, keeping the
 arrays sorted without a re-sort; a rejected event mutates nothing.
 
+![On Example 1's bookings, [10, 20) is stored, [15, 25) is rejected because prev.end 20 is strictly greater than start 15, and [20, 30) is admitted because 20 > 20 is false — the intervals merely touch.](figures/solution-neighbor-overlap-tests.svg)
+
 Both the Python and Java canonical solutions implement exactly this structure.
 With at most `1000` calls, each costing a logarithmic search plus a linear
 shift of the parallel arrays, the workload is trivial.

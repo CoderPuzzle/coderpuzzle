@@ -19,6 +19,8 @@ simply sums in the parent, and nested multipliers compound as plain repeated
 multiplication — counts ride in 64-bit integers so even deep compounding
 cannot pinch on the way to totals the statement bounds by 32 bits.
 
+![On Example 3's `K4(ON(SO3)2)2`, the stack holds `{K:4}`, then `{O:1,N:1}`, then `{S:1,O:3}`; the two closing parens fold ×2 and ×2 again, leaving the bottom map `K4 N2 O14 S4`.](figures/solution-stack-of-maps.svg)
+
 When the scan ends, exactly the bottom map remains, holding one total per
 distinct element. Sorting its names and appending each count unless it is
 exactly 1 gives the answer; lexicographic order over names is plain byte

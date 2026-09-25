@@ -19,6 +19,8 @@ every node has already been handed out, so the head they receive is already
 null and the hop loop simply does not run; positive-size parts always find
 their `size - 1` successors because the sizes sum to `n` exactly.
 
+![On Example 2's ten-node chain with k = 3, the count pass fixes sizes 4, 3, 3 (width 3 plus one extra) and exactly two cuts land: 4's severed next hands node 5 to part 1, 7's severed next hands node 8 to part 2.](figures/solution-count-then-cut.svg)
+
 Because each part's start is the previous part's orphaned successor, the
 parts are consecutive by construction and keep the input's node order —
 nothing is copied, reordered, or rebuilt; the returned heads are the original

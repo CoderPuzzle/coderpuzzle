@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="356" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- cells s1..s3 = the pushes 5,1,5; heap keyed (value, seq); popMax takes (5, s3) over (5, s1); later pop() flags (1, s2) dead -->
+  <text x="40" y="46" fill="#5c6b76" font-size="12.5">list — tail is the top</text>
+  <text x="330" y="46" fill="#5c6b76" font-size="12.5">max-heap of (value, seq)</text>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="40" y="62" width="76" height="36"/><rect x="140" y="62" width="76" height="36"/><rect x="240" y="62" width="76" height="36"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="78" y="81" font-weight="600" fill="#1a2026">5</text><text x="78" y="94" font-size="10" fill="#5c6b76">s1</text>
+    <text x="178" y="81" font-weight="600" fill="#1a2026">1</text><text x="178" y="94" font-size="10" fill="#5c6b76">s2</text>
+    <text x="278" y="81" font-weight="600" fill="#1a2026">5</text><text x="278" y="94" font-size="10" fill="#5c6b76">s3</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4">
+    <line x1="118" y1="80" x2="138" y2="80" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line x1="218" y1="80" x2="238" y2="80" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  </g>
+  <text x="278" y="112" text-anchor="middle" font-size="10.5" font-weight="600" fill="#4169E1">top</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="330" y="62" width="130" height="22" rx="4" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+    <rect x="330" y="88" width="130" height="22" rx="4"/>
+    <rect x="330" y="114" width="130" height="22" rx="4"/>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#1a2026">
+    <text x="395" y="77">(5, s3)</text><text x="395" y="103">(5, s1)</text><text x="395" y="129">(1, s2)</text>
+  </g>
+  <text x="454" y="77" text-anchor="end" font-size="9.5" font-weight="600" fill="#4169E1">top</text>
+  <text x="40" y="150" font-size="12.5" fill="#1a2026"><tspan font-weight="600">popMax()</tspan> → <tspan fill="#4169E1" font-weight="600">5</tspan></text>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="40" y="158" width="76" height="36"/><rect x="140" y="158" width="76" height="36"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="78" y="177" font-weight="600" fill="#1a2026">5</text><text x="78" y="190" font-size="10" fill="#5c6b76">s1</text>
+    <text x="178" y="177" font-weight="600" fill="#1a2026">1</text><text x="178" y="190" font-size="10" fill="#5c6b76">s2</text>
+  </g>
+  <line x1="118" y1="176" x2="138" y2="176" stroke="#42525e" stroke-width="1.4" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <rect x="240" y="158" width="76" height="36" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="278" y="181" text-anchor="middle" font-size="11" fill="#9aa7b2">5 · s3</text>
+  <line x1="258" y1="177" x2="298" y2="177" stroke="#9aa7b2" stroke-width="1.2"/>
+  <g stroke="#9aa7b2" stroke-width="1.4">
+    <line x1="223" y1="171" x2="233" y2="181"/><line x1="233" y1="171" x2="223" y2="181"/>
+  </g>
+  <text x="178" y="208" text-anchor="middle" font-size="10.5" font-weight="600" fill="#4169E1">top</text>
+  <text x="278" y="208" text-anchor="middle" font-size="10.5" fill="#9aa7b2">unlinked</text>
+  <rect x="330" y="158" width="130" height="22" rx="4" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="395" y="173" text-anchor="middle" font-size="12" fill="#9aa7b2">(5, s3)</text>
+  <line x1="370" y1="170" x2="420" y2="170" stroke="#9aa7b2" stroke-width="1.2"/>
+  <text x="470" y="173" font-size="11" fill="#9aa7b2">consumed by popMax()</text>
+  <rect x="330" y="184" width="130" height="22" rx="4" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="395" y="199" text-anchor="middle" font-size="12" fill="#1a2026">(5, s1)</text>
+  <text x="454" y="199" text-anchor="end" font-size="9.5" font-weight="600" fill="#4169E1">top</text>
+  <rect x="330" y="210" width="130" height="22" rx="4" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="395" y="225" text-anchor="middle" font-size="12" fill="#1a2026">(1, s2)</text>
+  <text x="40" y="240" font-size="12.5" fill="#1a2026"><tspan font-weight="600">pop()</tspan> → <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  <rect x="40" y="248" width="76" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="78" y="267" text-anchor="middle" font-weight="600" fill="#1a2026">5</text>
+  <text x="78" y="280" text-anchor="middle" font-size="10" fill="#5c6b76">s1</text>
+  <text x="78" y="298" text-anchor="middle" font-size="10.5" font-weight="600" fill="#4169E1">top</text>
+  <rect x="140" y="248" width="76" height="36" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="178" y="271" text-anchor="middle" font-size="11" fill="#9aa7b2">1 · s2</text>
+  <line x1="158" y1="267" x2="198" y2="267" stroke="#9aa7b2" stroke-width="1.2"/>
+  <g stroke="#9aa7b2" stroke-width="1.4">
+    <line x1="123" y1="261" x2="133" y2="271"/><line x1="133" y1="261" x2="123" y2="271"/>
+  </g>
+  <text x="178" y="298" text-anchor="middle" font-size="10.5" fill="#9aa7b2">unlinked</text>
+  <rect x="330" y="248" width="130" height="22" rx="4" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="395" y="263" text-anchor="middle" font-size="12" fill="#1a2026">(5, s1)</text>
+  <text x="454" y="263" text-anchor="end" font-size="9.5" font-weight="600" fill="#4169E1">top</text>
+  <rect x="330" y="274" width="130" height="22" rx="4" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="395" y="289" text-anchor="middle" font-size="12" fill="#9aa7b2">(1, s2)</text>
+  <line x1="370" y1="286" x2="420" y2="286" stroke="#9aa7b2" stroke-width="1.2"/>
+  <text x="470" y="289" font-size="11" fill="#9aa7b2">dead (skipped)</text>
+  <text x="320" y="324" text-anchor="middle" font-size="13" fill="#1a2026">Equal 5s tie on value; seq <tspan fill="#4169E1" font-weight="600">s3</tspan> beats s1, so popMax() unlinks the topmost 5.</text>
+  <text x="320" y="342" text-anchor="middle" font-size="13" fill="#1a2026">pop() leaves (1, s2) behind flagged dead — peekMax() discards dead tops.</text>
+</svg>

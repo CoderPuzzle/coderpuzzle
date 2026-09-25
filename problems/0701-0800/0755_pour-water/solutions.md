@@ -20,6 +20,8 @@ two failed probes leave it. Each settled unit raises exactly one column, and
 the next droplet probes the updated surface, so no state beyond `heights`
 itself is needed.
 
+![On heights [2,1,1,2,1,2,2] with volume 4 at k = 3, droplets 1-3 probe left then right and settle in the valley cells 2, 1, 4 in turn, while the fourth falls neither way and rises at k itself, giving final levels [2,2,2,3,2,2,2].](figures/solution-droplet-settling.svg)
+
 Each droplet costs at most one left sweep plus one right sweep of the array, so
 `v` droplets over `n` columns stay linear per droplet; the surface is updated
 in place and returned as the answer.

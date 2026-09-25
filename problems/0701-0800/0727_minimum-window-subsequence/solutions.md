@@ -19,6 +19,8 @@ opening: the earliest match for `s2[k]` leaves every later choice at least as
 good, so the walk's landing index is the smallest right edge that opening can
 have, and the window length is `pos - i + 1`.
 
+![On Example 1's `s1 = "abcdebdde"`, the walk from the b at index 1 hops to the next d and e and closes "bcde" at length 4, the walk from the b at index 5 closes "bdde" at the same length, and the strictly-shorter rule keeps the left-most "bcde".](figures/solution-greedy-walks.svg)
+
 Scanning openings left to right and recording a window only when it is
 strictly shorter than the best so far keeps the left-most window among
 equal-length winners, exactly as the statement demands; if `s2` never fits,

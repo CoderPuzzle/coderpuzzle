@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 254" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="254" fill="#ffffff"/>
+  <!-- nums = [2,2,3,3,3,4]; counts 2x2, 3x3, 4x1; label col 24..114, value cols 140 wide at x=114+140c; header y=56 h40, state rows h32 -->
+  <g text-anchor="middle" font-size="11.5">
+    <text x="184" y="24" fill="#9aa7b2">gap (no 1)</text>
+    <text x="254" y="26" fill="#4169E1" font-weight="600">conflict</text>
+    <text x="394" y="26" fill="#4169E1" font-weight="600">conflict</text>
+  </g>
+  <path d="M 222 50 Q 254 30 286 50" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <path d="M 362 50 Q 394 30 426 50" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <!-- table -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="114" y="56" width="140" height="40" fill="#dbe4fb"/>
+    <rect x="254" y="56" width="140" height="40" fill="#dbe4fb"/>
+    <rect x="394" y="56" width="140" height="40" fill="#dbe4fb"/>
+    <rect x="114" y="96" width="140" height="32" fill="#ffffff"/>
+    <rect x="254" y="96" width="140" height="32" fill="#ffffff"/>
+    <rect x="394" y="96" width="140" height="32" fill="#ffffff"/>
+    <rect x="114" y="128" width="140" height="32" fill="#ffffff"/>
+    <rect x="254" y="128" width="140" height="32" fill="#ffffff"/>
+    <rect x="394" y="128" width="140" height="32" fill="#ffffff"/>
+    <rect x="114" y="160" width="140" height="32" fill="#ffffff"/>
+    <rect x="254" y="160" width="140" height="32" fill="#ffffff"/>
+    <rect x="394" y="160" width="140" height="32" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="184" y="81" font-weight="600">2 (x2)</text>
+    <text x="324" y="81" font-weight="600">3 (x3)</text>
+    <text x="464" y="81" font-weight="600">4 (x1)</text>
+    <g font-size="15">
+      <text x="184" y="117">4</text><text x="324" y="117">9</text><text x="464" y="117">4</text>
+      <text x="184" y="149">4</text><text x="324" y="149">9</text><text x="464" y="149">8</text>
+      <text x="184" y="181">0</text><text x="324" y="181">4</text>
+      <text x="464" y="181" fill="#4169E1" font-weight="600">9</text>
+    </g>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="104" y="117">v*cnt</text>
+    <text x="104" y="149">take</text>
+    <text x="104" y="181">skip</text>
+  </g>
+  <text x="280" y="224" text-anchor="middle" fill="#1a2026" font-size="13">Adjacent values conflict, so 3 carries in skip = 0 and 4 carries in skip = 4.</text>
+  <text x="280" y="242" text-anchor="middle" fill="#1a2026" font-size="13">Only the gap before 2 carries max(take, skip); the final best is max(8, 9) = <tspan fill="#4169E1" font-weight="600">9</tspan>.</text>
+</svg>

@@ -20,6 +20,8 @@ split-at-a-point gap can appear. The infinite gaps before the first and
 after the last interval never surface because the sweep has no interval to
 trigger them.
 
+![On schedule [[[1,2],[5,6]],[[1,3]],[[4,10]]], the pooled intervals sort to [1,2],[1,3],[4,10],[5,6] on one timeline and the running prev_end advances 2 → 3 until [4,10] starts beyond it, exposing the single finite gap [3,4] before [5,6] merges into prev_end 10.](figures/solution-sorted-sweep-gap.svg)
+
 Sorting pooled intervals costs `O(N log N)` for `N` total intervals (at most
 `50 × 50 = 2500` here). The follow-up's k-way alternative — a min-heap over
 each employee's list head — exploits that every list is already sorted and

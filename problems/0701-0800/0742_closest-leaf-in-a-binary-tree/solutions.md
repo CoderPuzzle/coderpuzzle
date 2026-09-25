@@ -19,6 +19,8 @@ The `k` node can itself be a leaf — the single-node tree answers with its
 own value — and the level-zero check catches that before any step is
 taken.
 
+![On root = [1,3,2] with k = 1 the tree becomes an undirected graph once parent links are added, and the first BFS level from node 1 that holds a leaf is level 1 = {3, 2}, so the tie rule answers 2.](figures/solution-bfs-from-target.svg)
+
 Both passes carry their own queue, so nothing is recursive, and each node
 and edge is touched a constant number of times. The parent map dominates
 the memory.

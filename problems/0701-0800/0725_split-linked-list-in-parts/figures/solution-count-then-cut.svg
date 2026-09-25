@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 236" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="236" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- head = [1..10], k = 3; width = 10//3 = 3, extra = 10%3 = 1 -> sizes 4,3,3;
+       cuts sever 4.next (x 255-269) and 7.next (x 429-443); nodes 44x36 at x = 37 + 58i, y = 84;
+       part 1 = nodes 5-7, part 2 = nodes 8-10 -->
+  <text x="320" y="40" text-anchor="middle" fill="#1a2026" font-size="13.5">count pass: n = 10, k = 3 → width = 3, extra = 1 → part sizes <tspan fill="#4169E1" font-weight="600">4, 3, 3</tspan></text>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="37" y="84" width="44" height="36" rx="7"/><rect x="95" y="84" width="44" height="36" rx="7"/>
+    <rect x="153" y="84" width="44" height="36" rx="7"/><rect x="211" y="84" width="44" height="36" rx="7"/>
+    <rect x="269" y="84" width="44" height="36" rx="7" stroke="#4169E1" stroke-width="2.4"/>
+    <rect x="327" y="84" width="44" height="36" rx="7"/><rect x="385" y="84" width="44" height="36" rx="7"/>
+    <rect x="443" y="84" width="44" height="36" rx="7" stroke="#4169E1" stroke-width="2.4"/>
+    <rect x="501" y="84" width="44" height="36" rx="7"/>
+    <rect x="559" y="84" width="44" height="36" rx="7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="59" y="107">1</text><text x="117" y="107">2</text><text x="175" y="107">3</text><text x="233" y="107">4</text>
+    <text x="291" y="107">5</text><text x="349" y="107">6</text><text x="407" y="107">7</text><text x="465" y="107">8</text>
+    <text x="523" y="107">9</text><text x="581" y="107">10</text>
+  </g>
+  <!-- intact next pointers -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 81 102 H 91" marker-end="url(#arrow)"/>
+    <path d="M 139 102 H 149" marker-end="url(#arrow)"/>
+    <path d="M 197 102 H 207" marker-end="url(#arrow)"/>
+    <path d="M 313 102 H 323" marker-end="url(#arrow)"/>
+    <path d="M 371 102 H 381" marker-end="url(#arrow)"/>
+    <path d="M 487 102 H 497" marker-end="url(#arrow)"/>
+    <path d="M 545 102 H 555" marker-end="url(#arrow)"/>
+  </g>
+  <!-- the two cuts: 4.next and 7.next severed -->
+  <g stroke="#4169E1" stroke-width="2.5">
+    <path d="M 257 96 L 267 108"/><path d="M 257 108 L 267 96"/>
+    <path d="M 431 96 L 441 108"/><path d="M 431 108 L 441 96"/>
+  </g>
+  <text x="262" y="76" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">cut 1</text>
+  <text x="436" y="76" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">cut 2</text>
+  <!-- part brackets -->
+  <g stroke="#5c6b76" stroke-width="1.4" fill="none">
+    <path d="M 37 132 L 37 138 L 255 138 L 255 132"/>
+    <path d="M 269 132 L 269 138 L 429 138 L 429 132"/>
+    <path d="M 443 132 L 443 138 L 603 138 L 603 132"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#5c6b76">
+    <text x="146" y="158">part 0 — 4 nodes (width + 1)</text>
+    <text x="349" y="158">part 1 — 3 nodes, head 5</text>
+    <text x="523" y="158">part 2 — 3 nodes, head 8</text>
+  </g>
+  <text x="320" y="196" text-anchor="middle" fill="#1a2026" font-size="13">Each cut severs one next pointer — 4's next hands node 5 to part 1, 7's next hands node 8</text>
+  <text x="320" y="216" text-anchor="middle" fill="#1a2026" font-size="13">to part 2 — consecutive original nodes, nothing copied; the sizes stay <tspan fill="#4169E1" font-weight="600">4, 3, 3</tspan>.</text>
+</svg>

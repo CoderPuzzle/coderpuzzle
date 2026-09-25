@@ -6,6 +6,8 @@ Sort the intervals by right endpoint ascending, breaking ties by larger start (t
 
 When an interval is not yet satisfied, the points to add are the largest ones inside it: its right end `e`, or `e-1` and `e` when nothing yet covers it. The exchange argument is that later intervals all end at `e` or beyond, so of all points that serve the current interval, the largest have the best chance of also serving future intervals; any optimal solution can be rewritten to use them without growing. Three cases fall out: two points already inside — add nothing; one point inside — add `e`; none — add both `e-1` and `e`.
 
+![On intervals [[1,3],[3,7],[8,9]] sorted by right endpoint, the greedy checks the last two chosen points per interval — [1,3] adds 2, 3; [3,7] already holds 3 and adds only 7; [8,9] adds 8, 9 — so the chosen set {2,3,7,8,9} reaches the minimum size 5.](figures/solution-greedy-right-endpoint.svg)
+
 One pass over the sorted intervals suffices, with constant work per interval thanks to the trailing-run observation. The answer is the final length of the chosen list, at most two points per interval and usually far fewer.
 
 **Complexity:** `O(m log m)` time, `O(m)` space.

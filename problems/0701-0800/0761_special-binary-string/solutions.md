@@ -26,4 +26,6 @@ mountains descending and joining ends the move sequence. Nesting depth is
 at most half the length (each level consumes an outer `1...0` pair), so
 plain recursion is safe at the stated bound.
 
+![On s = 11011000 the balance scan closes no mountain until the final 0, so the whole string is one mountain around interior 101100 = 10·1100; with each interior maximized and the mountains sorted descending as 1100·10, the re-wrap yields 11100100.](figures/solution-mountain-sort-rewrap.svg)
+
 **Complexity:** `O(n² log n)` time, `O(n)` space.

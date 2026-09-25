@@ -20,6 +20,8 @@ advance `x` by the block, and take the block off `n`; when the count runs
 out, the emitted sizes have summed to exactly the requested range and cover
 nothing outside it.
 
+![On ip = 255.0.0.7 with n = 10 the owed line .7 – .16 splits into the aligned blocks 7/32 (size 1), 8/29 (size 8), and 16/32 (size 1), each block's size being its start's lowest set bit halved until it fits the count still owed.](figures/solution-lowest-set-bit-blocks.svg)
+
 The arithmetic keeps the address in a 64-bit integer even though addresses
 fit in 32 bits, because the alignment cap at address `0` is the full `2^32`
 — one past what an unsigned 32-bit type can hold. The loop does constant

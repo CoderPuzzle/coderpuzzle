@@ -31,4 +31,6 @@ below — two of them can lift to the same row above — which is what keeps
 the frontier from multiplying. An empty set ends the sweep with `false`;
 arriving at a non-empty set of one-letter rows means the apex exists.
 
+![On bottom BCD with allowed = ["BCC","CDE","CEA","FFF"], the sweep's alive rows shrink level by level from BCD to the only candidate CE and then to the single apex A — building the pyramid with BCC, CDE, CEA while the unused FFF never enters the sweep — so the answer is true.](figures/solution-pyramid-level-sweep.svg)
+
 **Complexity:** `O(n·|Σ|²ⁿ)` time, `O(|Σ|ⁿ)` space.

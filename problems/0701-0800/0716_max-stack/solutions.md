@@ -23,4 +23,6 @@ one. A stale entry is skipped at most once, so the discards amortize into
 the pushes that created them, and the heap holds one entry per element ever
 pushed — the price of the O(n) list's mirror in space.
 
+![On the Example 1 pushes 5, 1, 5, the lazy max-heap breaks the 5 = 5 tie by sequence number so popMax() unlinks the topmost 5, and the later pop() leaves a dead entry that peekMax() would discard.](figures/solution-lazy-heap-popmax.svg)
+
 **Complexity:** `O(log n)` time per operation, `O(n)` space.

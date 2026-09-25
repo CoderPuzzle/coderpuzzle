@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <!-- intervals [[1,3],[3,7],[8,9]] sorted by right endpoint; x(v) = 60 + 56v, number line y=250; chosen points accumulate as accent dots 2,3 then 7 then 8,9 -->
+  <g fill="#f0f3f7" stroke="#42525e" stroke-width="1.4">
+    <rect x="116" y="90" width="112" height="26"/>
+    <rect x="228" y="140" width="224" height="26"/>
+    <rect x="508" y="190" width="56" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#1a2026">
+    <text x="172" y="107">[1,3]</text><text x="340" y="157">[3,7]</text><text x="536" y="207">[8,9]</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#4169E1">
+    <text x="172" y="82">none inside → adds 2, 3</text>
+    <text x="340" y="132">1 inside (3) → adds 7</text>
+    <text x="536" y="182">none inside → adds 8, 9</text>
+  </g>
+  <line x1="48" y1="250" x2="584" y2="250" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1">
+    <line x1="116" y1="245" x2="116" y2="255"/><line x1="172" y1="245" x2="172" y2="255"/>
+    <line x1="228" y1="245" x2="228" y2="255"/><line x1="284" y1="245" x2="284" y2="255"/>
+    <line x1="340" y1="245" x2="340" y2="255"/><line x1="396" y1="245" x2="396" y2="255"/>
+    <line x1="452" y1="245" x2="452" y2="255"/><line x1="508" y1="245" x2="508" y2="255"/>
+    <line x1="564" y1="245" x2="564" y2="255"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="116" y="270">1</text><text x="172" y="270">2</text><text x="228" y="270">3</text>
+    <text x="284" y="270">4</text><text x="340" y="270">5</text><text x="396" y="270">6</text>
+    <text x="452" y="270">7</text><text x="508" y="270">8</text><text x="564" y="270">9</text>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="172" cy="250" r="5"/><circle cx="228" cy="250" r="5"/><circle cx="452" cy="250" r="5"/>
+    <circle cx="508" cy="250" r="5"/><circle cx="564" cy="250" r="5"/>
+  </g>
+  <text x="320" y="298" text-anchor="middle" fill="#1a2026" font-size="13">Sorted by right endpoint, each interval checks only the last two chosen points:</text>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">[1,3] adds 2, 3; [3,7] holds 3 and adds 7; [8,9] adds 8, 9 — <tspan fill="#4169E1" font-weight="600">five points: 2,3,7,8,9</tspan></text>
+</svg>

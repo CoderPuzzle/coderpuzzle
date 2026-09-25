@@ -21,6 +21,8 @@ count, then overwrite its cells with an inert mark so they never spread
 again and never rejoin a region. Third comes the night: every remaining
 region infects its frontier simultaneously.
 
+![On Example 1's day 1 the flood fill labels region A (frontier 5, walls 5) and region B (frontier 4, walls 4), A is walled for 5 walls, and B then infects its 4 frontier cells in the night.](figures/solution-one-day-three-passes.svg)
+
 The night is where the two easy mistakes live. A frontier cell shared by
 several spreading regions is infected once, not once per region, and a
 cell the quarantined region had threatened is still infectable by an active

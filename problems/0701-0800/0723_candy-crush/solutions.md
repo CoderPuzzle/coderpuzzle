@@ -18,6 +18,8 @@ column is zeroed — holes bubble to the top, and nothing enters from outside
 the board. Dropping realigns survivors into new triples, so the settled board
 goes through the same round again.
 
+![On Example 1's 10x5 board, round 1 flags nine cells at once (the column of 1s, the column of 2s, the bottom row of 2s), zeroes them, and gravity drops the survivors into the rows of 5s and 4s that round 2 crushes before the board stabilizes.](figures/solution-flag-crush-drop.svg)
+
 Every round that flags anything removes at least one candy, and the board
 starts with at most `m · n` of them, so the loop runs at most `m · n` rounds,
 each a constant amount of work per cell: the flag grid is the only storage
