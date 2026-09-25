@@ -19,6 +19,8 @@ out-of-range child link with a same-side descendant, so each surviving node
 keeps exactly its original descendants — the structure-preservation rule —
 and the unique-answer promise means the output is forced, never a choice.
 
+![With low = 1 and high = 3, the 0 below low is replaced by its kept right descendant 2 while the 4 above high has an empty left side and its link is dropped, re-linking [3,0,4,null,2,null,null,1] into [3,2,null,1].](figures/solution-trim-relink.svg)
+
 Each repaired child is itself in range, so it goes on a stack for the same
 treatment of its own children. The traversal carries that stack explicitly
 rather than recursing: the tree may be a single 10^4-node chain, whose

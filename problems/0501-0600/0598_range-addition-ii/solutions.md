@@ -11,6 +11,8 @@ prefix rectangles is itself a prefix rectangle, the one sized by the smallest
 `a` and the smallest `b`, so the cells holding the maximum value `len(ops)`
 are exactly the `min(a) · min(b)` cells of that top-left block.
 
+![On m = n = 3 with ops `[[2,2],[3,3]]`, the two prefix rectangles overlap in the top-left 2 × 2 block, whose four cells hold the maximum 2 — the answer is 4.](figures/solution-min-prefix-rectangle.svg)
+
 When `ops` is empty no rectangle exists, every cell stays at `0`, and every
 cell is a maximum: the count is the whole `m · n`. Starting both running
 minima at `m` and `n` folds that case into the same expression — each

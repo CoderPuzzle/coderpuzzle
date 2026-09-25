@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- code = "<A>  <B> </A>   </B>"; each · is one literal space; stack boxes 96x32, columns centered at x = 120, 340, 560, stack bottoms y = 220 -->
+  <text x="340" y="40" text-anchor="middle" fill="#1a2026">code = "&lt;A&gt;··&lt;B&gt;·&lt;/A&gt;···&lt;/B&gt;"</text>
+  <g text-anchor="middle" font-size="13">
+    <text x="120" y="86"><tspan fill="#5c6b76">read </tspan><tspan fill="#1a2026" font-weight="600">&lt;A&gt;</tspan><tspan fill="#5c6b76"> → push </tspan><tspan fill="#4169E1" font-weight="600">A</tspan></text>
+    <text x="340" y="86"><tspan fill="#5c6b76">read </tspan><tspan fill="#1a2026" font-weight="600">&lt;B&gt;</tspan><tspan fill="#5c6b76"> → push </tspan><tspan fill="#4169E1" font-weight="600">B</tspan></text>
+    <text x="560" y="86"><tspan fill="#5c6b76">read </tspan><tspan fill="#1a2026" font-weight="600">&lt;/A&gt;</tspan><tspan fill="#5c6b76"> → top must be A</tspan></text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 120 94 L 120 182" marker-end="url(#arrow)"/>
+    <path d="M 340 94 L 340 150" marker-end="url(#arrow)"/>
+    <path d="M 560 134 L 560 151" marker-end="url(#arrow)"/>
+  </g>
+  <!-- end tag arriving in column 3 -->
+  <rect x="524" y="104" width="72" height="30" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="560" y="124" text-anchor="middle" fill="#4169E1" font-weight="600">&lt;/A&gt;</text>
+  <!-- stacks: column 1 [A], columns 2 and 3 [A, B] -->
+  <g stroke-width="1.5">
+    <rect x="72" y="188" width="96" height="32" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="292" y="188" width="96" height="32" fill="#ffffff" stroke="#42525e"/>
+    <rect x="292" y="156" width="96" height="32" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="512" y="188" width="96" height="32" fill="#ffffff" stroke="#42525e"/>
+    <rect x="512" y="156" width="96" height="32" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="120" y="209" fill="#1a2026">A</text>
+    <text x="340" y="209" fill="#1a2026">A</text>
+    <text x="340" y="177" fill="#1a2026">B</text>
+    <text x="560" y="209" fill="#1a2026">A</text>
+    <text x="560" y="177" fill="#4169E1">B</text>
+  </g>
+  <g font-size="12" fill="#5c6b76">
+    <text x="178" y="208">top</text>
+    <text x="398" y="176">top</text>
+  </g>
+  <text x="618" y="176" font-size="12" fill="#4169E1">top</text>
+  <g stroke="#9aa7b2" stroke-width="1">
+    <line x1="64" y1="226" x2="176" y2="226"/>
+    <line x1="284" y1="226" x2="396" y2="226"/>
+    <line x1="504" y1="226" x2="616" y2="226"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#5c6b76">
+    <text x="120" y="254">stack [A]</text>
+    <text x="340" y="254">stack [A, B]</text>
+  </g>
+  <text x="560" y="254" text-anchor="middle" font-size="13" font-weight="600" fill="#4169E1">top is B ≠ A → false</text>
+  <text x="340" y="288" text-anchor="middle" fill="#1a2026" font-size="13">When &lt;/A&gt; arrives, <tspan fill="#4169E1" font-weight="600">B</tspan> still sits atop the stack [A, B], so A cannot be popped —</text>
+  <text x="340" y="308" text-anchor="middle" fill="#1a2026" font-size="13">the scan stops before &lt;/B&gt; and the document is invalid: <tspan fill="#4169E1" font-weight="600">false</tspan>.</text>
+</svg>

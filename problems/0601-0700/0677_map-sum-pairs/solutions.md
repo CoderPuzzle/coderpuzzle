@@ -48,6 +48,8 @@ instead of depositing a second copy. The number on any node is therefore
 always exactly the sum of the current values of all live keys whose paths
 pass through it.
 
+![After insert("apple", 3), insert("app", 2) is a new key, so delta +2 lifts the running totals on a, ap and app from 3 to 5 while appl and apple keep 3 — sum("ap") just reads the 5 on the ap node.](figures/solution-trie-running-prefix-sums.svg)
+
 `sum` walks the prefix through the same trie and returns the total on the node
 it lands on. That node sits on the path of a key exactly when the key starts
 with the prefix, so its running total is by construction the wanted sum — no

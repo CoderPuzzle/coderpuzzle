@@ -12,6 +12,8 @@ replaced by the result. Four values become three, three become two, and a
 single leftover value decides the answer — no expression tree exists outside
 this recursion, and none is visited twice.
 
+![On cards [4,1,8,7] the multiset shrinks 4 → 3 → 2 → 1 values as 8 − 4 = 4 combines first while 7 − 1 = 6 waits, then 4 × 6 = 24 lands within epsilon of 24 — true.](figures/solution-multiset-reduction.svg)
+
 Two operators are asymmetric, so `-` and `/` spawn both orders, `a-b` and
 `b-a`, `a/b` and `b/a`; division additionally guards against a zero divisor.
 Arithmetic runs on real-valued doubles because the winning expression often

@@ -21,6 +21,8 @@ Emitting it needs no special machinery: the walk knows both children at the
 moment it opens the groups, and the placeholder is just what the left slot
 writes when its child is absent but its sibling's group is coming.
 
+![On root [1,2,3,null,4] the preorder walk emits 1(2()(4))(3): node 2's empty left slot writes the accented () because its right group follows.](figures/solution-preorder-placeholder-pair.svg)
+
 The walk is iterative in every language, its explicit stack interleaving the
 pending nodes with the literal parentheses in exactly the order they must be
 written. That choice is forced by the constraints, not taste: the tree may be

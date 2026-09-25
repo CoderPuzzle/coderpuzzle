@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="310" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrow-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- senate = "RDD", n = 3; chips 44x44; Radiant lane y=58, Dire lane y=128; state columns at x=200 (start), x=410 (after step 1), x=580 (after step 2) -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="246" y="36">start</text>
+    <text x="432" y="36">after 0 bans 1</text>
+    <text x="602" y="36">after 2 bans 3</text>
+  </g>
+  <text x="40" y="84" fill="#4169E1" font-size="12.5" font-weight="600">Radiant</text>
+  <text x="40" y="154" fill="#1a2026" font-size="12.5" font-weight="600">Dire</text>
+  <!-- Radiant chips -->
+  <g fill="#4169E1">
+    <rect x="200" y="58" width="44" height="44"/>
+    <rect x="410" y="58" width="44" height="44"/>
+  </g>
+  <rect x="580" y="58" width="44" height="44" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="222" y="86" fill="#ffffff">0</text>
+    <text x="432" y="86" fill="#ffffff">3</text>
+    <text x="602" y="86" fill="#9aa7b2">∅</text>
+  </g>
+  <text x="602" y="116" text-anchor="middle" fill="#9aa7b2" font-size="11">(empty)</text>
+  <!-- Dire chips -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <rect x="200" y="128" width="44" height="44"/><rect x="248" y="128" width="44" height="44"/>
+    <rect x="410" y="128" width="44" height="44"/>
+    <rect x="580" y="128" width="44" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="222" y="156">1</text><text x="270" y="156">2</text>
+    <text x="432" y="156">2</text>
+    <text x="602" y="156">5</text>
+  </g>
+  <!-- strikes on banned-for-good senators: 1 (Dire, start) and 3 (Radiant, step 1) -->
+  <g stroke="#9aa7b2" stroke-width="2">
+    <line x1="204" y1="168" x2="240" y2="132"/>
+    <line x1="414" y1="98" x2="450" y2="62"/>
+  </g>
+  <!-- ban arrows: front vs front -->
+  <line x1="222" y1="106" x2="222" y2="122" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="212" y="118" text-anchor="end" fill="#5c6b76" font-size="11">bans</text>
+  <line x1="432" y1="124" x2="432" y2="106" stroke="#42525e" stroke-width="2" marker-end="url(#arrow-dark)"/>
+  <text x="442" y="118" fill="#5c6b76" font-size="11">bans</text>
+  <!-- re-enqueue arcs at index + n -->
+  <path d="M 248 80 Q 326 22 406 76" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="326" y="34" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">0 + 3</text>
+  <path d="M 294 150 Q 350 112 404 146" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
+  <text x="349" y="114" text-anchor="middle" fill="#5c6b76" font-size="12">2 + 3</text>
+  <path d="M 456 150 Q 516 112 574 146" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrow-dark)"/>
+  <text x="515" y="114" text-anchor="middle" fill="#5c6b76" font-size="12">2 + 3</text>
+  <!-- per-step notes -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="432" y="210">1 is banned for good,</text>
+    <text x="432" y="228">0 re-enqueues as 0 + 3</text>
+    <text x="602" y="210">3 is banned for good,</text>
+    <text x="602" y="228">Dire's queue is alone</text>
+  </g>
+  <text x="340" y="272" text-anchor="middle" fill="#1a2026" font-size="13">Every fight permanently removes one senator, so at most n − 1 fights decide it:</text>
+  <text x="340" y="290" text-anchor="middle" fill="#1a2026" font-size="13">Radiant's queue empties first and <tspan fill="#4169E1" font-weight="600">Dire</tspan> — its queue [5] alone — announces.</text>
+</svg>

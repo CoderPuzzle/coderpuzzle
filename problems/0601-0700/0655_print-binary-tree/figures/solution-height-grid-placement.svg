@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 316" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="316" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- root = [1,2,3,null,4] measures height 2; grid 3 x 7, cells 76x44 at x = 70 + 80c, rows y = 64,128,192; placed cells light accent, "" cells gray -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="108" y="48">0</text><text x="188" y="48">1</text><text x="268" y="48">2</text>
+    <text x="348" y="48">3</text><text x="428" y="48">4</text><text x="508" y="48">5</text>
+    <text x="588" y="48">6</text>
+  </g>
+  <g fill="#f0f3f7">
+    <rect x="70" y="64" width="76" height="44"/><rect x="150" y="64" width="76" height="44"/>
+    <rect x="230" y="64" width="76" height="44"/><rect x="390" y="64" width="76" height="44"/>
+    <rect x="470" y="64" width="76" height="44"/><rect x="550" y="64" width="76" height="44"/>
+    <rect x="70" y="128" width="76" height="44"/><rect x="230" y="128" width="76" height="44"/>
+    <rect x="310" y="128" width="76" height="44"/><rect x="390" y="128" width="76" height="44"/>
+    <rect x="550" y="128" width="76" height="44"/>
+    <rect x="70" y="192" width="76" height="44"/><rect x="150" y="192" width="76" height="44"/>
+    <rect x="310" y="192" width="76" height="44"/><rect x="390" y="192" width="76" height="44"/>
+    <rect x="470" y="192" width="76" height="44"/><rect x="550" y="192" width="76" height="44"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="310" y="64" width="76" height="44"/>
+    <rect x="150" y="128" width="76" height="44"/><rect x="470" y="128" width="76" height="44"/>
+    <rect x="230" y="192" width="76" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="348" y="91">1</text>
+    <text x="188" y="155">2</text><text x="508" y="155">3</text>
+    <text x="268" y="219">4</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="38" y="91">r = 0</text><text x="38" y="155">r = 1</text><text x="38" y="219">r = 2</text>
+  </g>
+  <!-- child-placement arrows: root -> 2,3 at ±2 columns; 2 -> 4 at ±1 column -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <line x1="330" y1="110" x2="200" y2="126" marker-end="url(#arrow)"/>
+    <line x1="366" y1="110" x2="496" y2="126" marker-end="url(#arrow)"/>
+    <line x1="210" y1="174" x2="256" y2="190" marker-end="url(#arrow)"/>
+  </g>
+  <text x="348" y="258" text-anchor="middle" fill="#5c6b76" font-size="12.5">a child sits 2^(height − r − 1) columns out: row 0 → ±2, row 1 → ±1</text>
+  <text x="348" y="280" text-anchor="middle" fill="#1a2026" font-size="13">Height 2 fixes a 3 × 7 grid: 1 lands at column (7 − 1)/2 = 3, children step 2 then 1</text>
+  <text x="348" y="298" text-anchor="middle" fill="#1a2026" font-size="13">columns sideways, and untouched cells keep "" — the empties are the layout.</text>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <!-- m = n = 3, ops = [[2,2],[3,3]]; final M = [[2,2,1],[2,2,1],[1,1,1]]; cells 64x44 at (110,76); dashed accent outline = op [2,2], plain outline = op [3,3] -->
+  <text x="206" y="52" text-anchor="middle" fill="#5c6b76" font-size="12.5">M after both operations</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="238" y="76" width="64" height="44"/><rect x="238" y="120" width="64" height="44"/>
+    <rect x="110" y="164" width="64" height="44"/><rect x="174" y="164" width="64" height="44"/><rect x="238" y="164" width="64" height="44"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.4">
+    <rect x="110" y="76" width="64" height="44"/><rect x="174" y="76" width="64" height="44"/>
+    <rect x="110" y="120" width="64" height="44"/><rect x="174" y="120" width="64" height="44"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="142" y="103" font-weight="600" fill="#4169E1">2</text><text x="206" y="103" font-weight="600" fill="#4169E1">2</text><text x="270" y="103" fill="#5c6b76">1</text>
+    <text x="142" y="147" font-weight="600" fill="#4169E1">2</text><text x="206" y="147" font-weight="600" fill="#4169E1">2</text><text x="270" y="147" fill="#5c6b76">1</text>
+    <text x="142" y="191" fill="#5c6b76">1</text><text x="206" y="191" fill="#5c6b76">1</text><text x="270" y="191" fill="#5c6b76">1</text>
+  </g>
+  <rect x="105" y="71" width="138" height="98" fill="none" stroke="#4169E1" stroke-width="2" stroke-dasharray="5 4"/>
+  <rect x="99" y="65" width="214" height="154" fill="none" stroke="#42525e" stroke-width="1.6"/>
+  <!-- legend -->
+  <g fill="none" stroke-width="1.6">
+    <rect x="352" y="74" width="20" height="13" stroke="#42525e"/>
+    <rect x="352" y="130" width="20" height="13" fill="#dbe4fb" stroke="#42525e"/>
+  </g>
+  <rect x="352" y="102" width="20" height="13" fill="none" stroke="#4169E1" stroke-width="2" stroke-dasharray="5 4"/>
+  <g font-size="12.5" fill="#1a2026">
+    <text x="380" y="85">ops [3, 3] → every cell +1</text>
+    <text x="380" y="113">ops [2, 2] → top-left 2 × 2 +1</text>
+    <text x="380" y="141">covered by both → value 2</text>
+  </g>
+  <text x="352" y="169" font-size="12.5" fill="#1a2026">min(a) · min(b) = 2 × 2 = <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  <text x="320" y="252" text-anchor="middle" fill="#1a2026" font-size="13">Only the top-left 2 × 2 lies under every operation, so its four cells hold</text>
+  <text x="320" y="274" text-anchor="middle" fill="#1a2026" font-size="13">the maximum <tspan fill="#4169E1" font-weight="600">2</tspan> = len(ops) — the answer is <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

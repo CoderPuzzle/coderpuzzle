@@ -21,4 +21,6 @@ to the root accumulates its whole path, and summing those walks over all
 leaves is the answer. Depth never exceeds 4, so each walk costs at most
 four lookups.
 
+![On nums = [113, 215, 221], the decoded tree holds 3 at (1, 1), 5 at (2, 1), and 1 at (2, 2), and both leaves walk up the halving positions to (1, 1), summing (3 + 5) + (3 + 1) = 12.](figures/solution-leaf-walks-upward.svg)
+
 **Complexity:** `O(n * depth)` time, `O(n)` space.

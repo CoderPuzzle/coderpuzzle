@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <!-- n = 5, bits "101", m = 3; fib[0..2] = 1, 2, 3; bit cells 64x44 at y = 56, x = 224, 288, 352; contributions fib[m - i - 1] under each 1 bit -->
+  <text x="320" y="36" text-anchor="middle" fill="#1a2026">n = 5, bits = 101</text>
+  <g stroke-width="1.4">
+    <rect x="224" y="56" width="64" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="288" y="56" width="64" height="44" fill="#ffffff" stroke="#42525e"/>
+    <rect x="352" y="56" width="64" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-size="16" font-weight="600" fill="#1a2026">
+    <text x="256" y="84">1</text><text x="320" y="84">0</text><text x="384" y="84">1</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="256" y="116">i = 0</text><text x="320" y="116">i = 1</text><text x="384" y="116">i = 2</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="256" y="146" font-size="12.5" fill="#5c6b76">put a 0 here:</text>
+    <text x="384" y="146" font-size="12.5" fill="#5c6b76">put a 0 here:</text>
+    <text x="256" y="165" font-size="12.5" fill="#1a2026">fib[2] = <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+    <text x="384" y="165" font-size="12.5" fill="#1a2026">fib[0] = <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="256" y="182" font-size="12" fill="#5c6b76">(000 001 010)</text>
+    <text x="384" y="182" font-size="12" fill="#5c6b76">(100)</text>
+  </g>
+  <text x="320" y="214" text-anchor="middle" font-size="12.5" fill="#1a2026">+ 1 for n itself: 101 has no consecutive ones</text>
+  <text x="320" y="252" text-anchor="middle" fill="#1a2026" font-size="13">Counting under each 1 bit gives 3 + 1, and n itself adds 1, so <tspan fill="#4169E1" font-weight="600">5</tspan> of the</text>
+  <text x="320" y="274" text-anchor="middle" fill="#1a2026" font-size="13">6 integers in [0, 5] qualify — only 3 (binary 11) is skipped.</text>
+</svg>

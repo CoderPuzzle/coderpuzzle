@@ -6,6 +6,8 @@ A string with no `'*'` is decided by one counter: rise on `'('`, fall on `')'`, 
 
 Two boundary facts turn the range into a decision procedure. If `hi` drops below zero, even the greediest reading — every star so far as `'('` — cannot absorb the `')'` just seen, and no later character can repay a debt that already exists, so the answer is false on the spot. `lo` is clamped at zero for the mirror reason: readings that had already closed more than they opened are dead, and clamping simply drops them from the range while the surviving readings stay contiguous. `"(*))"` runs `(1,1) → (0,2) → (-1,1)→(0,1) → (0,0)`, ending with a range that still contains zero, while `")*("` dies at its first character.
 
+![Sweeping "(*))", the open-count band walks (1,1) → (0,2) → (0,1) → (0,0) — lo clamped at zero the one time it dips to −1 — and the final band still holds zero, so the string is valid.](figures/solution-open-count-range.svg)
+
 The string is valid exactly when the final range contains zero, and since `lo` is the range's bottom the test is `lo == 0`: some surviving reading closed everything it opened. Nothing is stored per star — the range is the entire state — so the sweep is one pass with two integer counters regardless of how the stars are sprinkled, and the `'('`-before-`')'` ordering rule is enforced structurally, by the counters themselves, rather than checked afterward.
 
 **Complexity:** `O(n)` time, `O(1)` space.

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,3,5,4,7]; cells 88x42 at x=70+104i, y=60; lengths=[1,2,3,3,4], counts=[1,1,1,1,2] -->
+  <text x="8" y="87" fill="#5c6b76" font-size="12.5">nums</text>
+  <text x="8" y="225" fill="#5c6b76" font-size="12.5">lengths</text>
+  <text x="8" y="263" fill="#5c6b76" font-size="12.5">counts</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="70" y="60" width="88" height="42"/><rect x="174" y="60" width="88" height="42"/><rect x="278" y="60" width="88" height="42"/>
+    <rect x="382" y="60" width="88" height="42"/><rect x="486" y="60" width="88" height="42" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="114" y="87" fill="#1a2026">1</text><text x="218" y="87" fill="#1a2026">3</text><text x="322" y="87" fill="#1a2026">5</text>
+    <text x="426" y="87" fill="#1a2026">4</text><text x="530" y="87" fill="#4169E1">7</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="114" y="124">0</text><text x="218" y="124">1</text><text x="322" y="124">2</text><text x="426" y="124">3</text><text x="530" y="124">4</text>
+  </g>
+  <!-- the two length-4 arrivals at the 7 -->
+  <text x="322" y="156" text-anchor="end" fill="#5c6b76" font-size="12">from the 5: length 3 + 1 = 4, count +1</text>
+  <path d="M 334 152 H 514" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="434" y="182" text-anchor="end" fill="#5c6b76" font-size="12">from the 4: ties it &#8212; count +1</text>
+  <path d="M 446 178 H 514" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="114" y="225" fill="#1a2026">1</text><text x="218" y="225" fill="#1a2026">2</text><text x="322" y="225" fill="#1a2026">3</text>
+    <text x="426" y="225" fill="#1a2026">3</text><text x="530" y="225" fill="#4169E1">4</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="114" y="263" fill="#1a2026">1</text><text x="218" y="263" fill="#1a2026">1</text><text x="322" y="263" fill="#1a2026">1</text>
+    <text x="426" y="263" fill="#1a2026">1</text><text x="530" y="263" fill="#4169E1">2</text>
+  </g>
+  <text x="320" y="298" text-anchor="middle" fill="#1a2026" font-size="13">Only the 7 reaches length 4, so the answer is counts[4] = 1 + 1 = <tspan fill="#4169E1" font-weight="600">2</tspan>:</text>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">the two longest increasing subsequences [1, 3, 5, 7] and [1, 3, 4, 7].</text>
+</svg>

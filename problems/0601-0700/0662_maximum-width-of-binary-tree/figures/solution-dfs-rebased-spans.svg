@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 366" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="366" fill="#ffffff"/>
+  <!-- root = [1,3,2,5,null,null,9,6,null,7]; raw complete-tree indices beside each
+       node (r 20); raw level spans d0 0-0, d1 0-1, d2 3-6, d3 7-13; widths 1,2,4,7;
+       re-based, level 3 stores 0-6 — same width 7 -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="200" y1="56" x2="120" y2="128"/>
+    <line x1="200" y1="56" x2="280" y2="128"/>
+    <line x1="120" y1="128" x2="80" y2="200"/>
+    <line x1="280" y1="128" x2="320" y2="200"/>
+    <line x1="80" y1="200" x2="50" y2="272"/>
+    <line x1="320" y1="200" x2="290" y2="272"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <circle cx="200" cy="56" r="20"/><circle cx="120" cy="128" r="20"/>
+    <circle cx="280" cy="128" r="20"/><circle cx="80" cy="200" r="20"/>
+    <circle cx="320" cy="200" r="20"/>
+    <circle cx="50" cy="272" r="20" fill="#4169E1"/>
+    <circle cx="290" cy="272" r="20" fill="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">
+    <text x="200" y="61">1</text><text x="120" y="133">3</text><text x="280" y="133">2</text>
+    <text x="80" y="205">5</text><text x="320" y="205">9</text>
+    <text x="50" y="277" fill="#ffffff">6</text><text x="290" y="277" fill="#ffffff">7</text>
+  </g>
+  <g font-size="11.5" fill="#5c6b76">
+    <text x="200" y="26" text-anchor="middle">idx 0</text>
+    <text x="94" y="124" text-anchor="end">idx 1</text>
+    <text x="306" y="124">idx 2</text>
+    <text x="54" y="196" text-anchor="end">idx 3</text>
+    <text x="346" y="196">idx 6</text>
+    <text x="50" y="310" text-anchor="middle">idx 7</text>
+    <text x="290" y="310" text-anchor="middle">idx 13</text>
+  </g>
+  <text x="430" y="36" fill="#5c6b76" font-size="11.5">raw index span and width per depth</text>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="430" y="62">depth 0:  <tspan fill="#1a2026">0 - 0</tspan>  ·  width 1</text>
+    <text x="430" y="134">depth 1:  <tspan fill="#1a2026">0 - 1</tspan>  ·  width 2</text>
+    <text x="430" y="206">depth 2:  <tspan fill="#1a2026">3 - 6</tspan>  ·  width 4</text>
+    <text x="430" y="278">depth 3:  <tspan fill="#1a2026">7 - 13</tspan>  ·  <tspan fill="#4169E1" font-weight="600">width 7 (max)</tspan></text>
+  </g>
+  <text x="40" y="330" fill="#1a2026" font-size="13">Before doubling, the walk re-bases each level to its leftmost: level 3 stores 0 - 6.</text>
+  <text x="40" y="350" fill="#1a2026" font-size="13">The raw span 7 - 13 counts its five nulls by arithmetic: <tspan fill="#4169E1" font-weight="600">width 7</tspan> is the answer.</text>
+</svg>

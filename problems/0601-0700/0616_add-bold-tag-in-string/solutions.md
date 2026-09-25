@@ -22,6 +22,8 @@ or `bold[i-1]` is false, the character itself, then `</b>` where true meets the
 end of the string or a false successor. An empty `words`, or words none of
 which occur, leaves the mask untouched and returns `s` unchanged.
 
+![On s = aaabbb with words [aa, b], the occurrences paint all six mask cells into one true run, so the boundary-only emit wraps the whole string in a single `<b>aaabbb</b>`.](figures/solution-bold-mask-run.svg)
+
 **Complexity:** `O(W * n * L)` time worst case — `W` words, `n = |s|`, `L` the
 longest word, each occurrence-searched across all positions — and `O(n)` extra
 space. (The bound is loose: the true worst, Σ `(n - L_w + 1) * L_w`, peaks near

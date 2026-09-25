@@ -20,6 +20,10 @@ keep their `""` — the empties are the layout: a 10-node left chain prints as
 a 10 x 1023 matrix, as wide as the deepest path alone, not as the node
 count.
 
+![For root [1,2,3,null,4] the height-2 tree fills a 3 x 7 grid: 1 lands at
+column 3, its children 2 and 3 step 2 columns to columns 1 and 5, and 4 steps
+1 column to column 2, every other cell left as "".](figures/solution-height-grid-placement.svg)
+
 Both passes are `O(n)` over the tree's nodes; everything else is the grid
 itself, which the answer's shape — not the traversal — fixes.
 

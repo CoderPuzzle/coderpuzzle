@@ -14,6 +14,8 @@ _replaces_ the tally — everything shorter is no longer relevant — and when
 it merely ties the best, its count _adds_: each maximum-length arrival at
 `i` decomposes through exactly one such `j`.
 
+![On nums = [1,3,5,4,7], the lengths row fills 1, 2, 3, 3, 4 and the counts row 1, 1, 1, 1, 2, as both the 5 and the 4 hand the 7 a length-4 arrival one count each, for the answer 2.](figures/solution-length-count-pair.svg)
+
 Every position starts as its own length-1 subsequence with count 1, and
 the answer is the total count over the positions holding the maximum
 length, tallied as the sweep goes. The examples fall out directly: in

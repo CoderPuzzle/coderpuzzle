@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="540" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowmut" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- s = "abca"; pair (0,3) matches, pair (1,2) = b,c is the mismatch; both salvage stretches "c" and "b" are palindromes -->
+  <path d="M 155 58 Q 281 16 407 58" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="281" y="26" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">s[0] = s[3]: a = a — walk inward</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="123" y="60" width="64" height="48"/>
+    <rect x="207" y="60" width="64" height="48"/>
+    <rect x="291" y="60" width="64" height="48"/>
+    <rect x="375" y="60" width="64" height="48"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="155" y="89">a</text>
+    <text x="239" y="89">b</text>
+    <text x="323" y="89">c</text>
+    <text x="407" y="89">a</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 239 132 L 239 114" marker-end="url(#arrow)"/>
+    <path d="M 323 132 L 323 114" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12.5" fill="#4169E1">
+    <text x="239" y="148">lo = 1</text>
+    <text x="323" y="148">hi = 2</text>
+  </g>
+  <text x="281" y="174" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">b ≠ c — pay the one deletion here</text>
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="none">
+    <path d="M 239 181 L 180 192" marker-end="url(#arrowmut)"/>
+    <path d="M 323 181 L 386 192" marker-end="url(#arrowmut)"/>
+  </g>
+  <!-- salvage checks -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="45" y="198" width="230" height="62" rx="10"/>
+    <rect x="285" y="198" width="230" height="62" rx="10"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="160" y="224" fill="#4169E1" font-weight="600">delete s[lo] = "b"</text>
+    <text x="160" y="246" fill="#1a2026">leaves "c" — a palindrome ✓</text>
+    <text x="400" y="224" fill="#4169E1" font-weight="600">delete s[hi] = "c"</text>
+    <text x="400" y="246" fill="#1a2026">leaves "b" — a palindrome ✓</text>
+  </g>
+  <text x="40" y="290" fill="#1a2026" font-size="13">The end a's match; at b ≠ c the single deletion is paid —</text>
+  <text x="40" y="308" fill="#1a2026" font-size="13">both salvage stretches, "b" and "c", are exact palindromes, so <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

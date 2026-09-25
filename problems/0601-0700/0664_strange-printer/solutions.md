@@ -14,6 +14,8 @@ merges equal neighbors — `aa` costs one turn, not two — so a whole run of
 one letter falls to a single stroke: `aaabbb` is 2, and `aba` is 2, stroke
 `aaa` first, then `b` over the middle.
 
+![On s = "aba", one stroke of aaa covers every cell before a b-stroke covers the middle, and the recurrence prices the plan as dp[0][2] = dp[1][1] + dp[2][2] = 1 + 1 = 2 turns.](figures/solution-two-stroke-plan.svg)
+
 Why the two options suffice: in any schedule for `s[i..j]`, look at the
 last stroke whose ink survives on cell `i`, and let `k` be the last cell
 where that same ink survives — `s[k] == s[i]` by definition. No later

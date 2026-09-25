@@ -9,6 +9,8 @@ subtree sums to half of the whole tree's total. One post-order pass computes
 every subtree sum bottom-up, and the root's own sum, the last to finish, is
 that total: collect the sums, halve, look.
 
+![On root [5,10,10,null,null,2,3], post-order subtree sums 2, 3, 15 and 10 build the total 30 at the root, and the right subtree's 15 is exactly half — the one edge whose cut leaves 15 and 15.](figures/solution-subtree-half-sums.svg)
+
 Two guardrails. The candidate must be a proper subtree — the whole tree never
 counts as the cut part — which is what keeps a total of `0` honest: the root's
 own sum always equals its half there, so `[0,-1,1]` is false (no proper

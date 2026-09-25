@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="250" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,3,3,4,5]; walk cells x = 110 + 84i, w 76; the walk starts
+       run A at 1 (taking 2 and a 3 ahead) and run B at its 3 (taking 4 and 5);
+       chains: A = 1-2-3, B = 3-4-5; need = {4: 1, 6: 1} -->
+  <g text-anchor="middle" font-size="12">
+    <text x="148" y="32" fill="#4169E1" font-weight="600">starts A</text>
+    <text x="232" y="32" fill="#9aa7b2">taken by A</text>
+    <text x="316" y="32" fill="#4169E1" font-weight="600">starts B</text>
+    <text x="400" y="32" fill="#9aa7b2">consumed</text>
+    <text x="484" y="32" fill="#9aa7b2">taken by B</text>
+    <text x="568" y="32" fill="#9aa7b2">taken by B</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="110" y="44" width="76" height="40"/><rect x="194" y="44" width="76" height="40"/>
+    <rect x="278" y="44" width="76" height="40"/><rect x="362" y="44" width="76" height="40"/>
+    <rect x="446" y="44" width="76" height="40"/><rect x="530" y="44" width="76" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="148" y="70">1</text><text x="232" y="70">2</text><text x="316" y="70">3</text>
+    <text x="400" y="70">3</text><text x="484" y="70">4</text><text x="568" y="70">5</text>
+  </g>
+  <text x="140" y="143" text-anchor="end" fill="#4169E1" font-size="12.5" font-weight="600">run A</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="156" y="120" width="44" height="36"/><rect x="208" y="120" width="44" height="36"/>
+    <rect x="260" y="120" width="44" height="36"/>
+    <line x1="200" y1="138" x2="207" y2="138"/><line x1="252" y1="138" x2="259" y2="138"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="178" y="143">1</text><text x="230" y="143">2</text><text x="282" y="143">3</text>
+  </g>
+  <text x="384" y="143" text-anchor="end" fill="#4169E1" font-size="12.5" font-weight="600">run B</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="400" y="120" width="44" height="36"/><rect x="452" y="120" width="44" height="36"/>
+    <rect x="504" y="120" width="44" height="36"/>
+    <line x1="444" y1="138" x2="451" y2="138"/><line x1="496" y1="138" x2="503" y2="138"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="422" y="143">3</text><text x="474" y="143">4</text><text x="526" y="143">5</text>
+  </g>
+  <text x="320" y="186" text-anchor="middle" fill="#5c6b76" font-size="12.5">Pending need: need[4] = 1 (run A), need[6] = 1 (run B) — spares would extend them.</text>
+  <text x="40" y="216" fill="#1a2026" font-size="13">The walk's 3 finds no pending need[3], so it starts a fresh run, pre-taking 4 and 5.</text>
+  <text x="40" y="234" fill="#1a2026" font-size="13">Chains <tspan fill="#4169E1" font-weight="600">1-2-3</tspan> and <tspan fill="#4169E1" font-weight="600">3-4-5</tspan> stand — true, with every element placed exactly once.</text>
+</svg>

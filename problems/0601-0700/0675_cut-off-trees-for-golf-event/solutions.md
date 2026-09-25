@@ -17,6 +17,8 @@ returns the moment the target tree is scheduled. A leg can also fail: a `0` at
 or an emptied queue both mean some tree can never be reached, and the whole
 answer is `-1`.
 
+![The forest [[1,2,3],[0,0,4],[7,6,5]] cut in order 2,3,4,5,6,7: six BFS legs of one step each thread down through (1, 2), the middle row's only open cell — 6 steps in all.](figures/solution-cut-order-bfs-legs.svg)
+
 With `T` trees (at most `m * n` of them) the chain runs `T` searches, and each
 search touches every cell at most once, so the work is `T` BFS sweeps of the
 grid; the queue and the distance matrix live within one grid.

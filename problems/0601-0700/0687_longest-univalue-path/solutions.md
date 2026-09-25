@@ -12,6 +12,8 @@ leaves every needed number already computed, and a running maximum over all
 bend points, single-armed ones included (the other arm contributes zero), is
 the answer.
 
+![On root [1, 4, 5, 4, 4, null, 5] the two 4-leaves each hand their parent an arm of 1, so the bend at the left 4 spans 1 + 1 = 2 edges — the longest same-value path.](figures/solution-arms-postorder.svg)
+
 The walk collects nodes with an explicit stack and then reads the collection
 backwards: a parent always precedes its descendants in the collection, so the
 reversed order settles every child before its parent, which is exactly the

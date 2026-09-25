@@ -11,6 +11,8 @@ interior position — the interior is then still dark at
 `max(days[i], days[i+k+1])` — so each window contributes one candidate day,
 and the answer is the minimum candidate over all windows, `-1` if none.
 
+![With bulbs [1, 3, 2] inverted to days [1, 3, 2], the window between positions 1 and 3 is valid because its interior day 3 exceeds max(1, 2) = 2, fixing the answer at day 2.](figures/solution-days-inversion-window.svg)
+
 The interior `[i+1, i+k]` is a fixed-width window that slides one position
 at a time as `i` advances, so its minimum is exactly what a monotonic deque
 tracks in amortized constant time: the deque holds interior indices whose

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 204" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="204" fill="#ffffff"/>
+  <!-- arr = [1,2,3,4,5], k = 4, x = 3; lo = 0, hi = n - k = 1, mid = 0;
+       cells x = 150 + 92i, w 84; window = arr[0..3], first excluded = arr[4] -->
+  <text x="192" y="26" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">mid = 0</text>
+  <text x="192" y="44" text-anchor="middle" fill="#1a2026" font-size="12.5">x - arr[0] = 3 - 1 = 2</text>
+  <text x="560" y="26" text-anchor="middle" fill="#5c6b76" font-size="12.5">first excluded</text>
+  <text x="560" y="44" text-anchor="middle" fill="#1a2026" font-size="12.5">arr[4] - x = 5 - 3 = 2</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="150" y="60" width="84" height="44" fill="#dbe4fb"/>
+    <rect x="242" y="60" width="84" height="44" fill="#dbe4fb"/>
+    <rect x="334" y="60" width="84" height="44" fill="#dbe4fb"/>
+    <rect x="426" y="60" width="84" height="44" fill="#dbe4fb"/>
+    <rect x="518" y="60" width="84" height="44" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="192" y="88">1</text><text x="284" y="88">2</text><text x="376" y="88">3</text>
+    <text x="468" y="88">4</text><text x="560" y="88" fill="#9aa7b2">5</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="none">
+    <line x1="150" y1="112" x2="150" y2="120"/>
+    <line x1="510" y1="112" x2="510" y2="120"/>
+    <line x1="150" y1="120" x2="510" y2="120"/>
+  </g>
+  <text x="330" y="140" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">candidate window, k = 4</text>
+  <text x="560" y="140" text-anchor="middle" fill="#5c6b76" font-size="12">at index mid + k = 4</text>
+  <text x="40" y="170" fill="#1a2026" font-size="13">The deciding comparison ties: x - arr[0] = 2 is not greater than arr[4] - x = 2.</text>
+  <text x="40" y="188" fill="#1a2026" font-size="13">So hi = mid = 0 ends the search - the tie keeps the smaller window <tspan fill="#4169E1" font-weight="600">[1,2,3,4]</tspan>.</text>
+</svg>

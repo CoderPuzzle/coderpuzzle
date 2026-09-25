@@ -9,6 +9,8 @@ two entries, so the record is a stack and the operation list is a program for
 it: replay the operations left to right, pushing and popping at the top, and
 the game's state after each step is exactly what the rules prescribe.
 
+![Replaying [5, 2, C, D, +] on the stack pushes 5, then 2, pops the 2, pushes 2×5 = 10, then pushes 5 + 10 = 15, leaving [5, 10, 15] for a total of 30.](figures/solution-stack-replay.svg)
+
 The dispatch compares each operation against the three whole command strings
 `"C"`, `"D"`, and `"+"`; anything else is an integer literal, which is also
 what keeps a negative record such as `"-2"` out of the command branches —

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- root = [3,0,4,null,2,null,null,1], low=1, high=3;
+       before: 3(165,92) 0(100,156) 4(230,156) 2(152,220) 1(116,284); after: 3(480,92) 2(415,156) 1(379,220) -->
+  <text x="320" y="24" text-anchor="middle" fill="#5c6b76" font-size="12.5">root = [3,0,4,null,2,null,null,1]&#160;&#160;&#160;&#160;low = 1&#160;&#160;&#160;&#160;high = 3</text>
+  <text x="165" y="52" text-anchor="middle" fill="#5c6b76" font-size="12">before</text>
+  <text x="480" y="52" text-anchor="middle" fill="#5c6b76" font-size="12">after</text>
+  <!-- cut links dashed and muted -->
+  <g stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="4 3" fill="none">
+    <path d="M 165 92 L 100 156 M 165 92 L 230 156 M 100 156 L 152 220"/>
+  </g>
+  <path d="M 152 220 L 116 284" stroke="#42525e" stroke-width="1.6" fill="none"/>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3" stroke-dasharray="4 3">
+    <circle cx="100" cy="156" r="16"/><circle cx="230" cy="156" r="16"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="165" cy="92" r="16"/><circle cx="152" cy="220" r="16"/><circle cx="116" cy="284" r="16"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="165" y="97" fill="#1a2026">3</text><text x="152" y="225" fill="#1a2026">2</text><text x="116" y="289" fill="#1a2026">1</text>
+    <text x="100" y="161" fill="#9aa7b2">0</text><text x="230" y="161" fill="#9aa7b2">4</text>
+  </g>
+  <text x="74" y="160" text-anchor="end" fill="#5c6b76" font-size="11.5">0 &lt; low</text>
+  <text x="256" y="160" fill="#5c6b76" font-size="11.5">4 &gt; high</text>
+  <text x="256" y="178" fill="#5c6b76" font-size="11">left empty: link dropped</text>
+  <!-- 3.left re-pointed to 0's kept right descendant 2 -->
+  <path d="M 168 202 Q 216 150 182 104" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="128" y="212" text-anchor="end" fill="#4169E1" font-size="12" font-weight="600">3.left &#8592; 2</text>
+  <path d="M 205 92 H 440" fill="none" stroke="#5c6b76" stroke-width="1.6" marker-end="url(#arrowG)"/>
+  <text x="322" y="80" text-anchor="middle" fill="#5c6b76" font-size="12">discard 0 and 4, re-link</text>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 480 92 L 415 156 M 415 156 L 379 220"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="480" cy="92" r="16"/><circle cx="415" cy="156" r="16"/><circle cx="379" cy="220" r="16"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">
+    <text x="480" y="97">3</text><text x="415" y="161">2</text><text x="379" y="225">1</text>
+  </g>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">0 falls below low: 3's left link re-points to 0's kept right descendant 2;</text>
+  <text x="320" y="350" text-anchor="middle" fill="#1a2026" font-size="13">4 sits above high with an empty left side, so the right link drops: <tspan fill="#4169E1" font-weight="600">[3,2,null,1]</tspan>.</text>
+</svg>

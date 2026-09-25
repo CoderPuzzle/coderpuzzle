@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 348" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="348" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- root = [1,4,5,4,4,null,5]; arm(n) = longest same-value downward path from n in edges; the two 4-leaves give arm 0, each plus its edge = 1, bending at left 4 into a 2-edge path; nodes r=22 -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="323.4" y1="70.5" x2="246.6" y2="137.5"/>
+    <line x1="356.6" y1="70.5" x2="433.4" y2="137.5"/>
+    <line x1="461.7" y1="170.7" x2="498.3" y2="229.3"/>
+  </g>
+  <!-- the 2-edge same-value path, accented -->
+  <g stroke="#4169E1" stroke-width="3">
+    <line x1="218.3" y1="170.7" x2="181.7" y2="229.3"/>
+    <line x1="241.7" y1="170.7" x2="278.3" y2="229.3"/>
+  </g>
+  <circle cx="340" cy="56" r="22" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <circle cx="230" cy="152" r="22" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="450" cy="152" r="22" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <circle cx="170" cy="248" r="22" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="290" cy="248" r="22" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="510" cy="248" r="22" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="340" y="62">1</text><text x="230" y="158">4</text><text x="450" y="158">5</text>
+    <text x="170" y="254">4</text><text x="290" y="254">4</text><text x="510" y="254">5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="340" y="22">arm 0</text>
+    <text x="170" y="292">arm 0</text><text x="290" y="292">arm 0</text><text x="510" y="292">arm 0</text>
+  </g>
+  <text x="194" y="148" text-anchor="end" fill="#4169E1" font-weight="600" font-size="12.5">arm 1</text>
+  <text x="486" y="156" fill="#5c6b76" font-size="12.5">arm 1</text>
+  <text x="230" y="224" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="12.5">1 + 1 = 2</text>
+  <text x="340" y="320" text-anchor="middle" fill="#1a2026" font-size="13">Bottom-up each node keeps one arm: a 4-leaf hands its parent 0 + 1 = 1,</text>
+  <text x="340" y="338" text-anchor="middle" fill="#1a2026" font-size="13">so the bend at 4 spans 1 + 1 = <tspan fill="#4169E1" font-weight="600">2</tspan> edges — the longest same-value path.</text>
+</svg>

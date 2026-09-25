@@ -21,6 +21,8 @@ scans cover every way a single deletion could have been spent at the
 mismatch; nothing beyond it needs reconsidering, since both scans verify
 their remainder in full.
 
+![On s = "abca" the pointers match the end a's, then hit the one mismatch b ≠ c, where both salvage stretches — "c" and "b" — are exact palindromes, so one deletion suffices.](figures/solution-two-pointers-one-mismatch.svg)
+
 Each of the at most three walks traverses disjoint ranges of the string once,
 touching only two indices and no copies of the data.
 

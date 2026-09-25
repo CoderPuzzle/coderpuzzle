@@ -17,6 +17,8 @@ its subtree is at least that node's own value, so the node itself is the best
 its whole subtree can contribute. The walk takes it as a candidate and prunes
 the subtree entire — however deep that subtree grows, it costs a single visit.
 
+![In [2,2,5,null,null,5,7], the walk descends only through the 2s, takes the right child 5 as the first larger candidate, and prunes that subtree unvisited, so the second minimum is 5.](figures/solution-prune-candidate-subtree.svg)
+
 The answer accumulator starts at `-1`, which no node value can equal
 (`Node.val` is at least 1), so when every node equals the root the untouched
 `-1` comes back exactly as the statement demands. The traversal carries an

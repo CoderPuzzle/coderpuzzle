@@ -11,6 +11,10 @@ sorted by current position, so the fronts are always the earliest still-living
 senator of each party in the wrap-around order. When one queue empties, every
 living senator belongs to the other party and it announces.
 
+![On senate RDD, Radiant's 0 bans Dire's 1 and re-enqueues as 3, Dire's front
+2 then bans that 3, and Radiant's empty queue leaves Dire — its [5] alone —
+announcing.](figures/solution-senate-queue-duel.svg)
+
 Every fight permanently removes exactly one senator, so at most `n - 1` fights
 decide the senate and the loop terminates with one survivor queue.
 

@@ -10,6 +10,8 @@ added to, so a blocked or stranded index can never look cheap. `next[i]`
 records which `j` supplied that minimum, and the answer is read off by
 starting at index 1 and following `next` until index `n`.
 
+![On coins [1,2,4,-1,2] with maxJump 2, the cost table fills right to left as 7, 8, 6, unreachable, 2 with the -1 at index 4 stranded, and the front walk follows next from index 1 through 3 to 5 for the path [1,3,5] at cost 7.](figures/solution-suffix-cost-next-walk.svg)
+
 The tie rule needs no extra machinery. Any two minimum-cost paths from the same
 index agree up to their first divergence, and lexicographic comparison is
 settled right there — both paths end at `n`, so the shorter-prefix clause of

@@ -6,6 +6,8 @@ Because `arr` is sorted, the k closest elements always form a contiguous block �
 
 At a candidate start `mid`, the two elements that decide the outcome are `arr[mid]` at the window's left edge and `arr[mid + k]`, the first element just past the window. If `x - arr[mid] > arr[mid + k] - x`, the element being excluded on the right is strictly closer than the one being kept on the left, so this window (and every window starting further left) is beatable — search moves to `lo = mid + 1`. Otherwise the left element is at least as close, the window stays, and the search tightens toward earlier starts.
 
+![On arr [1,2,3,4,5] with k = 4 and x = 3, the candidate window at mid = 0 ties its left-edge distance 2 against the first excluded arr[4]'s 2, so hi = mid = 0 and the tie keeps the smaller window [1,2,3,4].](figures/solution-window-start-tie.svg)
+
 The tie rule falls out of the same comparison: when the distances are equal, the condition is false and `hi = mid` keeps the window with the smaller elements, which is exactly the problem's preference for the smaller value on equal distance. Note the asymmetry — the comparison uses the element just outside the window rather than the window's right end, correctly capturing a swap of the leftmost kept element for the first excluded one.
 
 Each iteration halves the candidate start range, and the final answer is one slice of the array.

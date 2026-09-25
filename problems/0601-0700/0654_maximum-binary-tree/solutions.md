@@ -11,6 +11,10 @@ then the last one popped, the run's largest, becomes the new node's left
 child. If some larger value survives on the stack, the new node is its right
 child; either way it joins the spine itself.
 
+![On nums [3,2,1,6,0,5] the spine stack runs [3], [3,2], [3,2,1], then 6 pops
+the whole run to hang 3 as its left child, and 5 finally pops 0 onto its
+left, leaving [6,5] — the finished tree rooted at 6.](figures/solution-right-spine-stack.svg)
+
 When a value pops a whole run, the run is already linked: each popped node
 took the previously popped, smaller chain as its own right subtree, so only
 the run's head needs adopting — the right links are write-once this way, which

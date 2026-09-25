@@ -21,6 +21,8 @@ sweep runs clean, the remaining `n - 1` edges are already a rooted tree, and
 parents, nothing is skipped and the first edge whose union fails is the one
 that closes the cycle; it is the unique removable edge there.
 
+![On edges [[1, 2], [1, 3], [2, 3]], node 3 takes two parent arrows, cand1 [1, 3] and cand2 [2, 3]; the union-find sweep that skips cand2 finds no cycle, so the later candidate [2, 3] is the answer.](figures/solution-double-parent-sweep.svg)
+
 Both passes are iterative: `find` walks to the root and then repoints every
 visited node straight at it (path compression), so a 1000-node chain
 flattens without ever recursing.

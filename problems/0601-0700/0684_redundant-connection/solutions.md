@@ -16,6 +16,8 @@ The input is a tree plus one extra edge, so exactly one cycle exists and the edg
 
 Same detection with no auxiliary structure: build the graph edge by edge and, before accepting each edge (a, b), run a reachability DFS over the adjacency collected so far. If b is already reachable from a, the endpoints were connected without this edge — adding it would close the cycle, so it is exactly the edge to return. Otherwise the edge joins two previously separate parts and is recorded in both directions.
 
+![For edges [[1, 2], [1, 3], [2, 3]], the probe before adding [2, 3] finds node 3 already reachable from 2 along 2 → 1 → 3, so [2, 3] closes the cycle.](figures/solution-dfs-reachability-probe.svg)
+
 The probe uses an explicit stack with mark-on-push discipline: nodes are marked seen when pushed, so each enters the stack at most once, and the search dives depth-first through the prefix graph until it either meets b or exhausts a's component. Because every prefix of the input is a forest, "reachable" and "already connected" agree here, so this variant returns the same edge as the union-find one.
 
 **Complexity:** `O(E·(V+E))` time — each of the E edges may trigger a reachability DFS over the prefix graph — and `O(V+E)` space for the adjacency, stack, and seen set.

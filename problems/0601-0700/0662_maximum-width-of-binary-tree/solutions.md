@@ -52,6 +52,8 @@ map holding two running extremes per depth, `leftmost` and `rightmost`,
 therefore absorbs each level entirely: no queue, no per-level vectors, and
 the answer is the largest `rightmost - leftmost + 1` over the map.
 
+![On root [1,3,2,5,null,null,9,6,null,7], the re-based preorder walk records per-depth raw index spans 0-0, 0-1, 3-6 and 7-13, and the fourth level's 13 - 7 + 1 = 7 counts its five nulls by arithmetic to the answer.](figures/solution-dfs-rebased-spans.svg)
+
 The breadth-first pass re-bases each level before doubling its indices,
 and the walk needs exactly the same discipline: before an index doubles on
 the way down, subtract the depth's stored leftmost, so the children's

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="384" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- root = [1,2,3,null,4]; nodes r = 20: 1 (330,80), 2 (230,160), 3 (430,160), 4 (300,235); dashed ghost = 2's absent left child at (160,235); output boxes 30x32, stride 36, from x = 107 at y = 296 -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="316" y1="94" x2="244" y2="142"/>
+    <line x1="344" y1="94" x2="416" y2="142"/>
+    <line x1="244" y1="174" x2="286" y2="221"/>
+  </g>
+  <line x1="216" y1="174" x2="172" y2="222" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="180" y="196" text-anchor="end" font-size="11.5" fill="#9aa7b2">left</text>
+  <text x="272" y="198" font-size="11.5" fill="#9aa7b2">right</text>
+  <circle cx="330" cy="80" r="20" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="230" cy="160" r="20" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="430" cy="160" r="20" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="300" cy="235" r="20" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="160" cy="235" r="16" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="330" y="86" fill="#1a2026">1</text>
+    <text x="230" y="166" fill="#4169E1">2</text>
+    <text x="430" y="166" fill="#1a2026">3</text>
+    <text x="300" y="241" fill="#1a2026">4</text>
+  </g>
+  <text x="150" y="282" text-anchor="middle" font-size="12" fill="#5c6b76">no left child</text>
+  <path d="M 178 250 L 248 290" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <!-- output tokens of 1(2()(4))(3); the () after 2 accented -->
+  <text x="97" y="317" text-anchor="end" font-size="12.5" fill="#5c6b76">output</text>
+  <g stroke-width="1.4">
+    <rect x="107" y="296" width="30" height="32" fill="#ffffff" stroke="#42525e"/>
+    <rect x="143" y="296" width="30" height="32" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="179" y="296" width="30" height="32" fill="#ffffff" stroke="#42525e"/>
+    <rect x="215" y="296" width="30" height="32" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="251" y="296" width="30" height="32" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="287" y="296" width="30" height="32" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="323" y="296" width="30" height="32" fill="#ffffff" stroke="#42525e"/>
+    <rect x="359" y="296" width="30" height="32" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="395" y="296" width="30" height="32" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="431" y="296" width="30" height="32" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="467" y="296" width="30" height="32" fill="#ffffff" stroke="#42525e"/>
+    <rect x="503" y="296" width="30" height="32" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="122" y="317" fill="#1a2026">1</text>
+    <text x="158" y="317" fill="#5c6b76">(</text>
+    <text x="194" y="317" fill="#1a2026">2</text>
+    <text x="230" y="317" fill="#4169E1">(</text>
+    <text x="266" y="317" fill="#4169E1">)</text>
+    <text x="302" y="317" fill="#5c6b76">(</text>
+    <text x="338" y="317" fill="#1a2026">4</text>
+    <text x="374" y="317" fill="#5c6b76">)</text>
+    <text x="410" y="317" fill="#5c6b76">)</text>
+    <text x="446" y="317" fill="#5c6b76">(</text>
+    <text x="482" y="317" fill="#1a2026">3</text>
+    <text x="518" y="317" fill="#5c6b76">)</text>
+  </g>
+  <text x="320" y="352" text-anchor="middle" fill="#1a2026" font-size="13">Node 2 has a right child but no left child, so its left slot emits the empty</text>
+  <text x="320" y="372" text-anchor="middle" fill="#1a2026" font-size="13">pair <tspan fill="#4169E1" font-weight="600">()</tspan> — 2()(4) says right-only, where 2(4) would say left-only.</text>
+</svg>

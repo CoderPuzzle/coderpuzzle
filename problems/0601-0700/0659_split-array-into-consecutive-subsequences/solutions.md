@@ -12,6 +12,8 @@ waiting subsequence: the run that ended at `x - 1` now ends at `x` and wants
 their position in the walk and wants `x + 3`. If neither move is possible, `x`
 can join nothing legal and the answer is `false`.
 
+![On nums [1,2,3,3,4,5], the walk starts run A at 1 and, finding no need[3] pending, starts run B at its 3 — pre-taking the 4 and the 5 — until the chains 1-2-3 and 3-4-5 stand with need[4] = 1 and need[6] = 1 pending.](figures/solution-greedy-need-starts.svg)
+
 Extending always beats starting. A valid split that gives some copy of `x` to a
 fresh run while another copy of `x` extends a run ending at `x - 1` can be
 rearranged into one where the extending copy does that work twice over — equal

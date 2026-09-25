@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 388" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="388" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowmut" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- s = "(*))"; per prefix the open-count range (lo, hi): (1,1), (0,2), (0,1) with raw lo -1 clamped, (0,0) -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="118" y="40" width="64" height="38"/>
+    <rect x="218" y="40" width="64" height="38"/>
+    <rect x="318" y="40" width="64" height="38"/>
+    <rect x="418" y="40" width="64" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="150" y="65">(</text>
+    <text x="250" y="65">*</text>
+    <text x="350" y="65">)</text>
+    <text x="450" y="65">)</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12.5" fill="#1a2026">
+    <text x="150" y="106">(1, 1)</text>
+    <text x="250" y="106">(0, 2)</text>
+    <text x="350" y="106">(0, 1)</text>
+    <text x="450" y="106" fill="#4169E1">(0, 0)</text>
+  </g>
+  <!-- count axis -->
+  <line x1="90" y1="112" x2="90" y2="310" stroke="#9aa7b2" stroke-width="1.2"/>
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <line x1="86" y1="120" x2="94" y2="120"/>
+    <line x1="86" y1="180" x2="94" y2="180"/>
+    <line x1="86" y1="240" x2="94" y2="240"/>
+    <line x1="86" y1="300" x2="94" y2="300"/>
+  </g>
+  <g text-anchor="end" font-size="12" fill="#5c6b76">
+    <text x="80" y="124">2</text>
+    <text x="80" y="184">1</text>
+    <text x="80" y="244">0</text>
+    <text x="80" y="304" fill="#9aa7b2">−1</text>
+  </g>
+  <line x1="104" y1="240" x2="500" y2="240" stroke="#9aa7b2" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- band evolution: top = hi, bottom = lo -->
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <line x1="150" y1="180" x2="250" y2="120"/>
+    <line x1="150" y1="180" x2="250" y2="240"/>
+    <line x1="250" y1="120" x2="350" y2="180"/>
+    <line x1="250" y1="240" x2="350" y2="240"/>
+    <line x1="350" y1="180" x2="450" y2="240"/>
+    <line x1="350" y1="240" x2="450" y2="240"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="8" stroke-linecap="round">
+    <line x1="250" y1="124" x2="250" y2="236"/>
+    <line x1="350" y1="184" x2="350" y2="236"/>
+  </g>
+  <circle cx="150" cy="180" r="4.5" fill="#4169E1"/>
+  <circle cx="450" cy="240" r="4.5" fill="#4169E1"/>
+  <!-- raw lo = -1 clamps to 0 at the third character -->
+  <circle cx="350" cy="300" r="5" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="3 3"/>
+  <path d="M 350 293 L 350 249" fill="none" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arrowmut)"/>
+  <text x="350" y="322" text-anchor="middle" fill="#9aa7b2" font-size="12">raw lo = −1 clamps to 0</text>
+  <text x="40" y="352" fill="#1a2026" font-size="13">"(*))" sweeps (1,1) → (0,2) → (0,1) → <tspan fill="#4169E1" font-weight="600">(0,0)</tspan>; the band never drops below 0.</text>
+  <text x="40" y="370" fill="#1a2026" font-size="13">Band top is hi, bottom is lo; the end still holds zero — <tspan fill="#4169E1" font-weight="600">lo = 0</tspan>, valid.</text>
+</svg>

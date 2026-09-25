@@ -13,6 +13,10 @@ plus one per paste. That gives
 `best[i] = max(best[i - 1] + 1, best[j] * (i - j - 1))` over `j <= i - 3`,
 since a pair with no paste after it earns nothing.
 
+![For n = 7 the table gives best[7] = best[3] x (7 - 3 - 1) = 3 x 3 = 9 — a
+Ctrl-A / Ctrl-C pair at presses 4-5 copying the 3 A's, then two pastes —
+beating plain printing's best[6] + 1 = 7.](figures/solution-press-table-capture-jump.svg)
+
 Scanning `j` is also what lets pairs compose. The best capture point may sit
 at the top of an earlier pair's paste chain, because `best[j]` has already
 priced that chain in, so the table finds multi-ply sequences without ever

@@ -48,6 +48,10 @@ out of letters before any `end` was crossed. No length cap is needed: a root
 is at most 100 letters, so the tree has no paths deeper than that and a
 longer word's walk dies on its own.
 
+![On dictionary [cat, bat, rat], the walk down cattle descends c, a, t and
+stops at the first end flag, so it prints cat, while was finds no w child at
+the root and keeps itself.](figures/solution-trie-prefix-walk.svg)
+
 **Complexity:** `O(D + S)` time — `D` total dictionary letters build the
 trie once, then each of the sentence's words is walked a single time along
 its own letters (`S` the sentence's length) — and `O(D)` space for the
