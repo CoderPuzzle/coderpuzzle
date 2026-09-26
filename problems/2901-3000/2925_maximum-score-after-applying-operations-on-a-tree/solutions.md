@@ -22,6 +22,8 @@ discharge the duty, so it keeps itself and `dp[leaf] = 0`. The answer is
 `dp[0]`, since the root's obligation is precisely the statement's health
 condition.
 
+![On the tree with values [5,2,5,2,1,1], the bottom-up dp makes node 2 take (5 + dp[4] = 6 over keep 2) while the root keeps its 5, so dp[0] = max(5 + 6, 2 + 7 + 2) = 11.](figures/solution-subtree-dp-take-keep.svg)
+
 A path-shaped tree with n up to 2·10⁴ nodes would overflow any recursive
 walk, so both passes are iterative: a BFS from the root fixes parents and
 an order in which parents precede children, and the reverse order lets

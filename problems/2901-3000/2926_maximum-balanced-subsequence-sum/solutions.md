@@ -6,6 +6,8 @@ The balance condition `nums[j] - nums[i] >= j - i` rearranges into `nums[j] - j 
 
 Evaluating that max naively is quadratic; the standard speedup is a Fenwick (Binary Indexed) tree keyed by rank, storing prefix maxima instead of sums. Coordinate-compress the `b` values once, then sweep `i` left to right: query the tree for the best `dp` among ranks `<= rank(b[i])`, form `dp[i]`, track the global maximum, and then insert `dp[i]` at its rank. Non-decreasing order allows `b[y] <= b[i]`, and ties are fine since equal transformed values always satisfy the rearranged inequality — so the query includes `i`'s own rank.
 
+![On nums [3,3,5,6], the transformed row b = nums[i] - i is [3,2,3,3] and the Fenwick prefix-max sweep fills dp = 3, 3, 8, 14, the arc from dp[2] to dp[3] tracing the balanced subsequence 3, 5, 6.](figures/solution-fenwick-prefix-max-dp.svg)
+
 The Fenwick tree needs only the max-flavored update (propagate `dp[i]` upward while it improves a node) and prefix-max query (take the best over the canonical set of covering nodes), both logarithmic. Initializing the tree to zero implements the `max(0, ...)` cutoff for free: on an all-negative array, every query returns zero, each element stands alone, and the answer is the largest single element.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums=[3,3,5,6]; b=[3,2,3,3]; ranks: b=2 -> 1, b=3 -> 2; query max = Fenwick
+       prefix max over ranks <= rank(b[i]) taken before inserting dp[i];
+       table x 40..560, rows 40px tall from y=102, columns at 90,170,290,360,470 -->
+  <g fill="#5c6b76" font-size="12.5" font-weight="600" text-anchor="middle">
+    <text x="65" y="78">i</text><text x="130" y="78">nums[i]</text><text x="230" y="78">b = nums[i] - i</text>
+    <text x="325" y="78">rank(b)</text><text x="415" y="78">query max</text><text x="515" y="78">dp[i]</text>
+  </g>
+  <text x="325" y="93" text-anchor="middle" fill="#9aa7b2" font-size="10.5">2→1, 3→2</text>
+  <text x="515" y="93" text-anchor="middle" fill="#9aa7b2" font-size="10.5">then insert</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="40" y="102" width="520" height="40"/>
+    <rect x="40" y="142" width="520" height="40"/>
+    <rect x="40" y="182" width="520" height="40"/>
+    <rect x="40" y="222" width="520" height="40"/>
+  </g>
+  <rect x="470" y="222" width="90" height="40" fill="#dbe4fb"/>
+  <g stroke="#42525e" stroke-width="1">
+    <line x1="90" y1="102" x2="90" y2="262"/><line x1="170" y1="102" x2="170" y2="262"/>
+    <line x1="290" y1="102" x2="290" y2="262"/><line x1="360" y1="102" x2="360" y2="262"/>
+    <line x1="470" y1="102" x2="470" y2="262"/>
+  </g>
+  <g text-anchor="middle" font-size="14" fill="#1a2026">
+    <text x="65" y="127">0</text><text x="130" y="127">3</text><text x="230" y="127">3</text><text x="325" y="127">2</text>
+    <text x="65" y="167">1</text><text x="130" y="167">3</text><text x="230" y="167">2</text><text x="325" y="167">1</text>
+    <text x="65" y="207">2</text><text x="130" y="207">5</text><text x="230" y="207">3</text><text x="325" y="207">2</text>
+    <text x="65" y="247">3</text><text x="130" y="247">6</text><text x="230" y="247">3</text><text x="325" y="247">2</text>
+  </g>
+  <g text-anchor="middle" font-size="14" fill="#5c6b76">
+    <text x="415" y="127">0</text><text x="415" y="167">0</text><text x="415" y="207">3</text><text x="415" y="247">8</text>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="515" y="128">3</text><text x="515" y="168">3</text><text x="515" y="208">8</text>
+    <text x="515" y="248" fill="#4169E1">14</text>
+  </g>
+  <path d="M 566 122 Q 606 182 566 242" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="320" y="292" text-anchor="middle" font-size="13" fill="#1a2026">dp[i] = nums[i] + best earlier dp with b &lt;= b[i]: 3, 3, 5 + 3 = 8, 6 + 8 = 14;</text>
+  <text x="320" y="310" text-anchor="middle" font-size="13" fill="#1a2026">the arc traces the balanced subsequence 3, 5, 6 (indices 0, 2, 3).</text>
+</svg>

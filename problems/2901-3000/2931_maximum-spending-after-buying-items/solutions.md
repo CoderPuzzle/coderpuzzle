@@ -20,6 +20,8 @@ any schedule into the sorted one. Feasibility comes free: the globally
 cheapest unbought item is always some shop's rightmost item, since within
 a shop values only shrink toward the tail.
 
+![With values [[8,5,2],[6,4,1],[9,7,3]], each shop pops its rightmost tail and each day takes the globally cheapest one, so values 1 through 9 land on days 1 through 9 for 1+4+9+16+25+36+49+64+81 = 285.](figures/solution-cheapest-tail-greedy.svg)
+
 The simulation walks days 1..m·n, each time taking the minimum of the m
 current tails, crediting `value × day`, and advancing that shop's tail. A
 min-heap over the shops does each step in O(log m) — with m ≤ 10 even a

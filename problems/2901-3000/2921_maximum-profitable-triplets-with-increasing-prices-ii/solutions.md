@@ -16,6 +16,8 @@ ranks to fill `right[j]`, the best profit among later pricier items. Both
 queries exclude equal ranks by construction, which enforces the strict
 inequalities even when prices repeat.
 
+![With prices [10,2,3,4] and profits [100,2,7,10], the two Fenwick sweeps give left = [0,0,2,7] and right = [0,10,10,0]; only item 2 has both sides, so the middle j = 2 sums 2 + 7 + 10 = 19.](figures/solution-fenwick-left-right-sweeps.svg)
+
 Every profit is at least 1, so a query result of 0 certifies that no item
 exists on that side, and item `j` contributes a candidate only when both
 `left[j]` and `right[j]` are positive; the answer is the best candidate,

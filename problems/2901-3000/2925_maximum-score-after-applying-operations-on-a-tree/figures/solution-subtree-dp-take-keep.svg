@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 390" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="390" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- edges=[[0,1],[0,2],[0,3],[2,4],[4,5]], values=[5,2,5,2,1,1];
+       circles r=21: 0@(360,52) 1@(170,140) 2@(360,140) 3@(540,140) 4@(310,228) 5@(260,312);
+       taken nodes accent-filled, kept node 0 white -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="360" y1="52" x2="170" y2="140"/>
+    <line x1="360" y1="52" x2="360" y2="140"/>
+    <line x1="360" y1="52" x2="540" y2="140"/>
+    <line x1="360" y1="140" x2="310" y2="228"/>
+    <line x1="310" y1="228" x2="260" y2="312"/>
+  </g>
+  <circle cx="360" cy="52" r="21" fill="#ffffff" stroke="#1a2026" stroke-width="1.6"/>
+  <circle cx="170" cy="140" r="21" fill="#4169E1"/>
+  <circle cx="360" cy="140" r="21" fill="#4169E1"/>
+  <circle cx="540" cy="140" r="21" fill="#4169E1"/>
+  <circle cx="310" cy="228" r="21" fill="#4169E1"/>
+  <circle cx="260" cy="312" r="21" fill="#4169E1"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="360" y="57" fill="#1a2026">5</text>
+    <text x="170" y="145" fill="#ffffff">2</text>
+    <text x="360" y="145" fill="#ffffff">5</text>
+    <text x="540" y="145" fill="#ffffff">2</text>
+    <text x="310" y="233" fill="#ffffff">1</text>
+    <text x="260" y="317" fill="#ffffff">1</text>
+  </g>
+  <g font-size="12" fill="#5c6b76">
+    <text x="360" y="20" text-anchor="middle">dp 11 · sum 16</text>
+    <text x="170" y="178" text-anchor="middle">dp 0 · sum 2</text>
+    <text x="540" y="178" text-anchor="middle">dp 0 · sum 2</text>
+    <text x="392" y="170">dp 6 · sum 7</text>
+    <text x="340" y="226">dp 1 · sum 2</text>
+    <text x="290" y="310">dp 0 · sum 1</text>
+  </g>
+  <g font-size="12" fill="#4169E1" font-weight="600">
+    <text x="170" y="194" text-anchor="middle">keeps itself</text>
+    <text x="540" y="194" text-anchor="middle">keeps itself</text>
+    <text x="392" y="186">take: 5 + dp 1 = 6</text>
+    <text x="340" y="242">take: 1 = keep 1</text>
+    <text x="290" y="326">keeps itself</text>
+  </g>
+  <text x="340" y="354" text-anchor="middle" font-size="13" fill="#1a2026">Bottom-up: node 2 takes (5 + dp 1 = 6 beats keep 2) and node 4 takes —</text>
+  <text x="340" y="372" text-anchor="middle" font-size="13" fill="#1a2026">the root keeps its 5 and the rest goes free: dp[0] = max(5 + 6, 2 + 7 + 2) = <tspan fill="#4169E1" font-weight="600">11</tspan>.</text>
+</svg>

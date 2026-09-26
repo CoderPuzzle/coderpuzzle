@@ -20,6 +20,8 @@ and may go negative), the second is the second way; state 14 absorbs to 0
 because every remaining coin is 0 and the second way always yields at
 least 0. The answer is dp[0][0].
 
+![On the path 0-1-2-3 with coins [10,10,3,3] and k = 5, each node's dp row over states t fills children-first, and the chosen plan — paying k at nodes 0 and 1, halving at nodes 2 and 3 — sums to dp[0][0] = 11.](figures/solution-halving-state-dp.svg)
+
 The tree is rooted at 0 once with a BFS pass that fixes parents and a
 top-down visit order; the dp then runs over the reverse order, with each
 node accumulating its finalized dp row into its parent's per-state child
