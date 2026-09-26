@@ -21,6 +21,8 @@ adds one. That keeps each `r`'s sweep linear and the total `O(n²)` —
 for `n = 1000`, roughly a million transitions, comfortably within the
 limits.
 
+![On nums = [1,2,1,2,1,3,3] with k = 2 the dp row fills to [0,2,2,4,4,6,6,8], and the r = 7 sweep wins at dp[2] + importance(2..6) = 2 + 6 = 8 for the last piece [1,2,1,3,3].](figures/solution-dp-row-running-frequency-sweep.svg)
+
 Nothing tricky hides in the bookkeeping: only `dp[l]` values that are
 already final participate (`l < r`), tables reset per `r`, and the
 whole-array single-split candidate falls out naturally at `l = 0`. The

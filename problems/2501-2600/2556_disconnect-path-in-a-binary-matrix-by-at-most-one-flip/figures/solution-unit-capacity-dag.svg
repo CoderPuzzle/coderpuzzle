@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 430" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- grid=[[1,1,1],[1,0,0],[1,1,1]]; each live cell -> in/out node pair, in->out arc cap 1 (corners inf), right/down arcs inf;
+       only root-to-corner route (0,0)-(1,0)-(2,0)-(2,1)-(2,2); top branch dies at (0,2); flow stops at 1 < 2 -> true;
+       cell centers cx=120+170c, cy=70+120r; in at cx-38, out at cx+38, r=13 -->
+  <text x="320" y="24" text-anchor="middle" fill="#5c6b76" font-size="12">live cell = in→out arc with capacity 1 (corners ∞); right/down moves = ∞ arcs</text>
+  <g text-anchor="middle" font-size="11.5" fill="#9aa7b2">
+    <text x="290" y="40">(0,1)</text><text x="460" y="40">(0,2)</text>
+    <text x="120" y="160">(1,0)</text><text x="120" y="280">(2,0)</text><text x="290" y="264">(2,1)</text>
+  </g>
+  <text x="120" y="34" text-anchor="middle" font-size="11.5" fill="#1a2026" font-weight="600">(0,0) = source</text>
+  <text x="460" y="280" text-anchor="middle" font-size="11.5" fill="#1a2026" font-weight="600">(2,2) = sink</text>
+  <!-- zero cells -->
+  <g>
+    <rect x="262" y="170" width="56" height="40" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+    <rect x="432" y="170" width="56" height="40" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+    <text x="290" y="195" text-anchor="middle" fill="#9aa7b2">0</text>
+    <text x="460" y="195" text-anchor="middle" fill="#9aa7b2">0</text>
+  </g>
+  <!-- move arcs: gray = unused/dead branch, blue = the single augmenting path -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="none">
+    <path d="M 158 70 H 239" marker-end="url(#arrowG)"/>
+    <path d="M 328 70 H 409" marker-end="url(#arrowG)"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 158 83 L 82 177" marker-end="url(#arrowB)"/>
+    <path d="M 158 203 L 82 297" marker-end="url(#arrowB)"/>
+    <path d="M 171 310 H 239" marker-end="url(#arrowB)"/>
+    <path d="M 341 310 H 409" marker-end="url(#arrowB)"/>
+  </g>
+  <text x="556" y="130" text-anchor="middle" fill="#9aa7b2" font-size="11">(0,2) has no live move</text>
+  <!-- in->out capacity arcs -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="none">
+    <path d="M 265 74 Q 290 88 315 74" marker-end="url(#arrowG)"/>
+    <path d="M 435 74 Q 460 88 485 74" marker-end="url(#arrowG)"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 95 74 Q 120 88 145 74" marker-end="url(#arrowB)"/>
+    <path d="M 95 194 Q 120 208 145 194" marker-end="url(#arrowB)"/>
+    <path d="M 95 314 Q 120 328 145 314" marker-end="url(#arrowB)"/>
+    <path d="M 265 314 Q 290 328 315 314" marker-end="url(#arrowB)"/>
+    <path d="M 435 314 Q 460 328 485 314" marker-end="url(#arrowB)"/>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#5c6b76">
+    <text x="120" y="100">∞</text><text x="290" y="100">1</text><text x="460" y="100">1</text>
+    <text x="120" y="220">1</text><text x="120" y="340">1</text><text x="290" y="340">1</text><text x="460" y="340">∞</text>
+  </g>
+  <!-- nodes: route cells accented, dead branch muted -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="#dbe4fb">
+    <circle cx="82" cy="70" r="13"/><circle cx="158" cy="70" r="13"/>
+    <circle cx="82" cy="190" r="13"/><circle cx="158" cy="190" r="13"/>
+    <circle cx="82" cy="310" r="13"/><circle cx="158" cy="310" r="13"/>
+    <circle cx="252" cy="310" r="13"/><circle cx="328" cy="310" r="13"/>
+    <circle cx="422" cy="310" r="13"/><circle cx="498" cy="310" r="13"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <circle cx="252" cy="70" r="13"/><circle cx="328" cy="70" r="13"/>
+    <circle cx="422" cy="70" r="13"/><circle cx="498" cy="70" r="13"/>
+  </g>
+  <!-- flip badge on (2,1) -->
+  <ellipse cx="290" cy="310" rx="62" ry="34" fill="none" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="290" y="362" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">one flip here disconnects</text>
+  <text x="320" y="396" text-anchor="middle" fill="#1a2026" font-size="13">The top branch dies at (0, 2); pass 1 carries one unit through (1,0)-(2,0)-(2,1).</text>
+  <text x="320" y="414" text-anchor="middle" fill="#1a2026" font-size="13">Pass 2 finds no second path — flow <tspan fill="#4169E1" font-weight="600">1 &lt; 2</tspan>, so one flip disconnects.</text>
+</svg>

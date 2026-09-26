@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="376" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- nums1=[1,3,3,2] nums2=[2,1,3,4] k=3; sweep order by nums2 desc: (idx3 b4 a2)(idx2 b3 a3)(idx0 b2 a1)(idx1 b1 a3);
+       rows cy=90+64r; pair cells x=88/124 w32; heap box x=288 w84 (contents listed sorted); sum x=470; candidate x=575 -->
+  <text x="340" y="24" text-anchor="middle" fill="#5c6b76" font-size="12.5">nums1 = [1,3,3,2], nums2 = [2,1,3,4], k = 3 — sweep in descending nums2 order</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="122" y="42">pair (b, a)</text>
+    <text x="330" y="42">min-heap</text>
+    <text x="470" y="42">sum</text>
+    <text x="575" y="42">candidate sum × b</text>
+  </g>
+  <!-- accent band behind the b = 2 step -->
+  <rect x="28" y="190" width="624" height="56" rx="8" fill="#dbe4fb"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="52" cy="90" r="13"/><circle cx="52" cy="154" r="13"/><circle cx="52" cy="218" r="13"/><circle cx="52" cy="282" r="13"/>
+    <rect x="88" y="74" width="32" height="32"/><rect x="124" y="74" width="32" height="32"/>
+    <rect x="88" y="138" width="32" height="32"/><rect x="124" y="138" width="32" height="32"/>
+    <rect x="88" y="202" width="32" height="32"/><rect x="124" y="202" width="32" height="32"/>
+    <rect x="88" y="266" width="32" height="32"/><rect x="124" y="266" width="32" height="32"/>
+    <rect x="288" y="74" width="84" height="32" rx="6"/><rect x="288" y="138" width="84" height="32" rx="6"/>
+    <rect x="288" y="202" width="84" height="32" rx="6"/><rect x="288" y="266" width="84" height="32" rx="6"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="52" y="95">1</text><text x="52" y="159">2</text><text x="52" y="223">3</text><text x="52" y="287">4</text>
+    <text x="104" y="95">4</text><text x="140" y="95">2</text>
+    <text x="104" y="159">3</text><text x="140" y="159">3</text>
+    <text x="104" y="223">2</text><text x="140" y="223">1</text>
+    <text x="104" y="287">1</text><text x="140" y="287">3</text>
+    <text x="330" y="95">2</text><text x="330" y="159">2 3</text>
+    <text x="330" y="223" fill="#4169E1">1 2 3</text><text x="330" y="287">2 3 3</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="122" y="122">idx 3</text><text x="122" y="186">idx 2</text><text x="122" y="250">idx 0</text><text x="122" y="314">idx 1</text>
+    <text x="330" y="122">push 2</text><text x="330" y="186">push 3</text><text x="330" y="250">push 1</text><text x="330" y="314">push 3, eject 1</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="none">
+    <path d="M 166 90 H 276" marker-end="url(#arrow)"/>
+    <path d="M 166 154 H 276" marker-end="url(#arrow)"/>
+    <path d="M 166 218 H 276" marker-end="url(#arrow)"/>
+    <path d="M 166 282 H 276" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="470" y="95">2</text><text x="470" y="159">5</text>
+    <text x="470" y="223" fill="#4169E1">6</text><text x="470" y="287">8</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="575" y="95" fill="#9aa7b2">—</text><text x="575" y="159" fill="#9aa7b2">—</text>
+    <text x="575" y="122" fill="#9aa7b2" font-size="11">size 1 &lt; 3</text><text x="575" y="186" fill="#9aa7b2" font-size="11">size 2 &lt; 3</text>
+    <text x="575" y="224" fill="#4169E1" font-weight="700" font-size="15">6 × 2 = 12</text>
+    <text x="575" y="287" fill="#1a2026" font-weight="600">8 × 1 = 8</text>
+  </g>
+  <text x="340" y="340" text-anchor="middle" fill="#1a2026" font-size="13">First valid candidate: 6 × 2 = <tspan fill="#4169E1" font-weight="600">12</tspan> at b = 2 (heap 1 2 3 = indices 0, 2, 3);</text>
+  <text x="340" y="358" text-anchor="middle" fill="#1a2026" font-size="13">later 8 × 1 = 8 at b = 1 loses, so the answer is 12.</text>
+</svg>

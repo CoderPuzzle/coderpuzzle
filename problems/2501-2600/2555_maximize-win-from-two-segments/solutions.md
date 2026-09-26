@@ -20,6 +20,8 @@ achieve `pre[c]` and `suf[c]` collects at least their restricted sums —
 the sides count disjoint index ranges even if the physical segments
 cross — so the scanned maximum is always attainable and never beatable.
 
+![On prizePositions = [1,1,2,2,3,3,5] with k = 2 the best windows [1,3] and [3,5] overlap at position 3, yet the cut scan reaches pre[6] + suf[6] = 6 + 1 = 7 by counting them disjointly.](figures/solution-pre-suffix-cut-scan.svg)
+
 Both direction sweeps are linear because each pointer moves only forward,
 and every array cell is written once; the final pass is another linear
 scan of `n + 1` split candidates. Three passes total run comfortably

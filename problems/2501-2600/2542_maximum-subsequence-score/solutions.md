@@ -6,6 +6,8 @@ The score multiplies the sum of chosen `nums1` values by the minimum of the chos
 
 Maintaining "the k largest seen so far" while the sweep advances is exactly a min-heap of size `k` with a running sum: push each arriving `a`, and whenever the heap exceeds `k`, the current smallest is ejected and subtracted, keeping the top-`k` sum correct in O(log k) per element. Once the heap holds exactly `k` elements, `total * b` is the best score achievable under the assumption that `b` is the minimum, and the answer is the maximum of these candidates over the whole sweep.
 
+![Sweeping nums1 = [1,3,3,2] and nums2 = [2,1,3,4] with k = 3 in descending nums2 order, the size-3 min-heap first completes at b = 2, where sum 6 × 2 = 12 beats the later 8 × 1 = 8.](figures/solution-nums2-descending-minheap-sweep.svg)
+
 Ties in `nums2` need no special handling — when several pairs share the minimum value, whichever of them the sweep processes last still sees all others in the heap, so the best companion set is evaluated at least once. The heap never reaches size `k` only if `k > n`, which the constraints exclude, and `best` initialized to 0 is overwritten on the k-th step since scores are non-negative. Sorting dominates at O(n log n) versus O(n log k) for the heap operations.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

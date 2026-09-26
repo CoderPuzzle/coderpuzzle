@@ -21,6 +21,8 @@ disjoint paths demonstrably exist and the answer is false. Cells that lie
 on no root-to-corner route are skipped while building, and reaching flow 2
 aborts further searching, so at most two BFS passes ever execute.
 
+![On grid = [[1,1,1],[1,0,0],[1,1,1]] the in/out-split DAG carries only one unit: the top branch dies at (0,2), so the second BFS finds no path and flow 1 < 2 means one flip disconnects.](figures/solution-unit-capacity-dag.svg)
+
 Each pass visits every node and arc once for linear work; with at most two
 passes plus one failed probe folded into them, the whole decision is
 linear in the cell count, comfortably inside the `m · n ≤ 10⁵` cap. Every

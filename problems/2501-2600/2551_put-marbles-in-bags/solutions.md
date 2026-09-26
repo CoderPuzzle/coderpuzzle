@@ -6,6 +6,8 @@ Every bag holds a contiguous block of marbles and costs `weights[i] + weights[j]
 
 So the maximum score is the base endpoints plus the `k - 1` _largest_ adjacent-pair sums, and the minimum score is the base plus the `k - 1` _smallest_. Their difference — the answer — is simply the sum of the top `k - 1` pair sums minus the sum of the bottom `k - 1`, computed after sorting all `n - 1` adjacent-pair sums once.
 
+![On weights = [1,3,5,1] with k = 2 the adjacent-pair sums 4, 8, 6 sort so the top cut 8 gives max 10 and the bottom cut 4 gives min 6; the shared endpoints 1 + 1 cancel, leaving 10 − 6 = 4.](figures/solution-sorted-adjacent-pair-sums.svg)
+
 The `k == 1` early return is not an optimization but a correctness guard: with one bag there are no cuts, and the general formula's slices (`adj[-0:]` would grab the whole list) do not describe that case — the difference is 0. For `k = n` every adjacent pair is a cut and both slices coincide, again yielding 0. Weights up to 10^9 make the pair sums and their differences reach into the trillions, which Python's native integers absorb without any overflow concerns.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.
