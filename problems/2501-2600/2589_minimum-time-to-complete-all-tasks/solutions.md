@@ -18,6 +18,8 @@ answer. The exchange argument above makes the resulting schedule optimal,
 not merely feasible: any optimal solution can be reshaped, task by task
 in end-time order, into this latest-fit shape without growing.
 
+![On example 1's tasks [[2,3,1],[4,5,1],[1,5,2]], the greedy books minute 3 for the first task and minute 5 for the second, and the third task's window already contains both — so only minutes 3 and 5 are ever on, 2 seconds in total.](figures/solution-latest-fit-booking.svg)
+
 The whole run is bounded by 2000 tasks times 2000 time points of window
 work — a few million simple operations, comfortably within limits; all
 values stay far below 32-bit range.

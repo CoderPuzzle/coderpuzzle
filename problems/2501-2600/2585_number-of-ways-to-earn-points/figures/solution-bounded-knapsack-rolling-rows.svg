@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="250" fill="#ffffff"/>
+  <!-- target 6, types [[6,1],[3,2],[2,3]]; rolling dp rows over sums 0..6: [1x7], [1,1,2,2,3,3,4], [1,1,2,3,4,5,7]; dp[6]=7=4+2+1 -->
+  <text x="128" y="62" text-anchor="end" fill="#5c6b76" font-size="12">sum p</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="168" y="62">0</text><text x="224" y="62">1</text><text x="280" y="62">2</text>
+    <text x="336" y="62">3</text><text x="392" y="62">4</text><text x="448" y="62">5</text><text x="504" y="62">6</text>
+  </g>
+  <!-- row: after type [6,1] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="140" y="66" width="56" height="40"/><rect x="196" y="66" width="56" height="40"/><rect x="252" y="66" width="56" height="40"/>
+    <rect x="308" y="66" width="56" height="40"/><rect x="364" y="66" width="56" height="40"/><rect x="420" y="66" width="56" height="40"/>
+    <rect x="476" y="66" width="56" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14.5" fill="#1a2026">
+    <text x="168" y="90">1</text><text x="224" y="90">1</text><text x="280" y="90">1</text><text x="336" y="90">1</text>
+    <text x="392" y="90">1</text><text x="448" y="90">1</text><text x="504" y="90">1</text>
+  </g>
+  <!-- row: after type [3,2]; cols 0, 3, 6 feed the final dp[6] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="140" y="106" width="56" height="40" fill="#dbe4fb"/><rect x="196" y="106" width="56" height="40"/><rect x="252" y="106" width="56" height="40"/>
+    <rect x="308" y="106" width="56" height="40" fill="#dbe4fb"/><rect x="364" y="106" width="56" height="40"/><rect x="420" y="106" width="56" height="40"/>
+    <rect x="476" y="106" width="56" height="40" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14.5" fill="#1a2026">
+    <text x="168" y="130">1</text><text x="224" y="130">1</text><text x="280" y="130">2</text><text x="336" y="130">2</text>
+    <text x="392" y="130">3</text><text x="448" y="130">3</text><text x="504" y="130">4</text>
+  </g>
+  <!-- row: after type [2,3] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="140" y="146" width="56" height="40"/><rect x="196" y="146" width="56" height="40"/><rect x="252" y="146" width="56" height="40"/>
+    <rect x="308" y="146" width="56" height="40"/><rect x="364" y="146" width="56" height="40"/><rect x="420" y="146" width="56" height="40"/>
+    <rect x="476" y="146" width="56" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14.5" fill="#1a2026">
+    <text x="168" y="170">1</text><text x="224" y="170">1</text><text x="280" y="170">2</text><text x="336" y="170">3</text>
+    <text x="392" y="170">4</text><text x="448" y="170">5</text><text x="504" y="170" fill="#4169E1">7</text>
+  </g>
+  <g text-anchor="end">
+    <text x="128" y="82" fill="#1a2026" font-size="12.5">after [6,1]</text>
+    <text x="128" y="97" fill="#9aa7b2" font-size="11">q&#183;1 point</text>
+    <text x="128" y="122" fill="#1a2026" font-size="12.5">after [3,2]</text>
+    <text x="128" y="137" fill="#9aa7b2" font-size="11">q&#183;2 points</text>
+    <text x="128" y="162" fill="#1a2026" font-size="12.5">after [2,3]</text>
+    <text x="128" y="177" fill="#9aa7b2" font-size="11">q&#183;3 points</text>
+  </g>
+  <text x="320" y="216" text-anchor="middle" fill="#1a2026" font-size="13">Row [2,3] takes q = 0, 1, 2 copies: dp[6] = dp[6] + dp[3] + dp[0] = 4 + 2 + 1 = <tspan fill="#4169E1" font-weight="600">7</tspan>.</text>
+  <text x="320" y="236" text-anchor="middle" fill="#1a2026" font-size="13">dp[6] = <tspan fill="#4169E1" font-weight="600">7</tspan> ways to score exactly 6 points.</text>
+</svg>

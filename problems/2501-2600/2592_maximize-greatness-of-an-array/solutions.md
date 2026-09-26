@@ -11,6 +11,8 @@ commits it, and counts one win. Any leftover pool values smaller than or
 equal to everything still pending can never win again, so they are skipped
 forever.
 
+![On sorted example 1, the demand row 1,1,1,2,3,3,5 faces the same-valued pool row and the fast pointer spends 2, 3, 3, 5 on the demands 1, 1, 1, 2 while the three pool 1s never win — greatness 4.](figures/solution-greedy-pool-spends.svg)
+
 The exchange argument makes this optimal: if an optimal solution wins some
 position with a value larger than necessary while a cheaper sufficient
 value sits unused and loses, swapping the two assignments frees nothing but

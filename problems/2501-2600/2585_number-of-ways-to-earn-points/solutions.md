@@ -17,6 +17,8 @@ of the current type than allowed — reads come strictly from earlier
 types' row. After all `n` rows, `dp[target]` is the answer, and an
 unreachable target simply stays at `0`.
 
+![For example 1 (target 6, types [[6,1],[3,2],[2,3]]), the rolling rows over sums 0..6 read 1,1,1,1,1,1,1, then 1,1,2,2,3,3,4, then 1,1,2,3,4,5,7 — the last row takes q = 0, 1, 2 copies of the [2,3] type and lands dp[6] = dp[6] + dp[3] + dp[0] = 4 + 2 + 1 = 7 ways.](figures/solution-bounded-knapsack-rolling-rows.svg)
+
 Precision stays tame under the modulus: every entry kept in `dp` is a
 reduced residue below `10⁹ + 7`, so any inner sum adds at most
 `counti + 1 <= 51` such residues — under `5.5 * 10¹⁰`, which fits a

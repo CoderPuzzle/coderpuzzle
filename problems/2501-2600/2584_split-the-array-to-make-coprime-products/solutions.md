@@ -12,6 +12,8 @@ before `i` and after `i` — equivalently, when the boundary `i` does not
 fall inside the occurrence span `[first(p), last(p)]` of any prime `p`
 present in the array.
 
+![In example 1's [4,7,8,15,3,5], prime 2 spans indices 0–2, prime 3 spans 3–4 and prime 5 spans 3–5 (7 occurs once and straddles nothing), so boundaries 0, 1, 3 and 4 are blocked and the first free split is i = 2, where gcd(224, 225) = 1.](figures/solution-prime-span-blocked-boundaries.svg)
+
 A smallest-prime-factor sieve up to `max(nums)` factorizes every element
 in `O(log nums[i])`. One pass records, per distinct prime, its first and
 last element index; the spans shorter than that (`first == last`) cannot
