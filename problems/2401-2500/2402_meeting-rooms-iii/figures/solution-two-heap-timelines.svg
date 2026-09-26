@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- n = 2, meetings [[0,10],[1,5],[2,7],[3,4]]; x = 90 + 44t; M3 delayed to [5,10) room 1, M4 delayed to [10,11) room 0; counts 2-2 -> room 0 -->
+  <text x="310" y="52" text-anchor="middle" fill="#5c6b76" font-size="10.5">room 1 frees</text>
+  <text x="530" y="52" text-anchor="middle" fill="#5c6b76" font-size="10.5">both free</text>
+  <g stroke="#9aa7b2" stroke-width="1" stroke-dasharray="4 3">
+    <line x1="310" y1="58" x2="310" y2="150"/>
+    <line x1="530" y1="58" x2="530" y2="150"/>
+  </g>
+  <rect x="90" y="66" width="484" height="32" fill="#f0f3f7"/>
+  <rect x="90" y="110" width="484" height="32" fill="#f0f3f7"/>
+  <text x="80" y="86" text-anchor="end" fill="#5c6b76" font-size="12">room 0</text>
+  <text x="80" y="130" text-anchor="end" fill="#5c6b76" font-size="12">room 1</text>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="90" y="70" width="440" height="24"/>
+    <rect x="134" y="114" width="176" height="24"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.4" fill="#dbe4fb">
+    <rect x="530" y="70" width="44" height="24"/>
+    <rect x="310" y="114" width="220" height="24"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12">
+    <text x="310" y="86">M1 0–10</text>
+    <text x="552" y="86" font-size="10.5">M4</text>
+    <text x="222" y="130">M2 1–5</text>
+    <text x="420" y="130">M3 5–10</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="90" y="164">0</text><text x="310" y="164">5</text><text x="530" y="164">10</text>
+    <text x="576" y="164">t</text>
+  </g>
+  <!-- heap states at each allocation decision -->
+  <g fill="#5c6b76" font-size="11">
+    <text x="36" y="196">meeting</text>
+    <text x="150" y="196">free heap</text>
+    <text x="248" y="196">busy heap (end, room)</text>
+    <text x="412" y="196">decision</text>
+  </g>
+  <g fill="#1a2026" font-size="12">
+    <text x="36" y="220">M1 [0,10)</text>
+    <text x="150" y="220">{0, 1}</text>
+    <text x="248" y="220">—</text>
+    <text x="412" y="220">room 0</text>
+    <text x="36" y="244">M2 [1,5)</text>
+    <text x="150" y="244">{1}</text>
+    <text x="248" y="244">(10, r0)</text>
+    <text x="412" y="244">room 1</text>
+    <text x="36" y="268">M3 [2,7)</text>
+    <text x="150" y="268">{ }</text>
+    <text x="248" y="268">(10, r0) (5, r1)</text>
+    <text x="412" y="268" fill="#4169E1" font-weight="600">delay → [5, 10) in r1</text>
+    <text x="36" y="292">M4 [3,4)</text>
+    <text x="150" y="292">{ }</text>
+    <text x="248" y="292">(10, r0) (10, r1)</text>
+    <text x="412" y="292" fill="#4169E1" font-weight="600">delay → [10, 11) in r0</text>
+  </g>
+  <text x="320" y="324" text-anchor="middle" fill="#1a2026" font-size="13">A free room goes to the <tspan fill="#4169E1" font-weight="600">lowest number</tspan>; with none free, the meeting follows the</text>
+  <text x="320" y="342" text-anchor="middle" fill="#1a2026" font-size="13">earliest busy end — the (10, r0)/(10, r1) tie breaks to r0. Counts 2–2 → room <tspan fill="#4169E1" font-weight="600">0</tspan>.</text>
+</svg>

@@ -6,6 +6,8 @@ A subarray is nice exactly when no two of its elements share a set bit, which is
 
 The window is maintained by the standard two-pointer pattern. Extend the right end; while the incoming value conflicts with the current OR mask, remove elements from the left. Since each element's bits were folded in with `|`, removing one is a matter of XOR-ing it back out (`a ^ a = 0` clears exactly the bits that element contributed, and disjointness guarantees no other element shares them). After the conflict clears, OR in the new value and record the window length.
 
+![On nums = [1, 3, 8, 48, 10], the running window OR reaches 59 (111011); when 10 arrives it hits bit b1 owned by 3 and bit b3 owned by 8, so the left end drops 3 then 8 until window_or & 10 = 0 — the longest nice window is [3, 8, 48], length 3.](figures/solution-window-or-shrink.svg)
+
 Each element enters and leaves the window at most once, so the scan is linear. Subarrays of length 1 are always nice, which the initial `best = 1` and an initially empty mask (`window_or = 0`, disjoint from everything) cover without a special case. A nice subarray can never exceed about 30 elements because each member needs at least one private bit, though the algorithm does not rely on that fact.
 
 **Complexity:** `O(n)` time, `O(1)` space.
