@@ -11,6 +11,8 @@ exactly `k` from every edge, and in a short trailing strip, clamping the
 sensor to the last existing row or column still leaves at most `s - 1 = 2 * k`
 cells on either side of it.
 
+![On Example 1's 5 x 5 grid with k = 1, cutting rows and columns into strips of s = 3 puts a sensor at each strip center — (1,1), (1,4), (4,1), (4,4) — whose side-3 squares, clipped at the borders, cover every cell: ceil(5/3) x ceil(5/3) = 4 sensors.](figures/solution-sensor-square-tiling.svg)
+
 Fewer sensors cannot do. The witness rows `0, s, 2s, ...` inside the grid are
 pairwise at least `s` apart — strictly more than the `2k` one sensor's reach
 spans row-wise or column-wise — and the same holds for the witness columns.

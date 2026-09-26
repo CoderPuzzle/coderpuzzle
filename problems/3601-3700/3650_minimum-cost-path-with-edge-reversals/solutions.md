@@ -12,6 +12,8 @@ a node, enters each node exactly once, and can therefore flip at most one
 switch per node even though the encoding would allow more. What the rules
 forbid, the optimality of simple paths never wants.
 
+![With n = 4 and edges [[0,1,3],[3,1,1],[2,3,4],[0,2,2]], every input edge is doubled by a dashed reversal arc priced 2·w, and Dijkstra walks 0 → 1 for 3, then the flipped 3 → 1 as arc 1 → 3 for 2·1 = 2, reaching node 3 at distance 5.](figures/solution-dijkstra-reversal-arcs.svg)
+
 Run Dijkstra from node `0` over this augmented graph and read off the distance
 of node `n - 1`. All arc weights are positive, so every heap pop finalizes its
 node; a popped entry whose stored distance no longer matches the table is a

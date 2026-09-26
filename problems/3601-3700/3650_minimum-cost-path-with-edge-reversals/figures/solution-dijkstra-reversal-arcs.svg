@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="356" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- n=4, edges [[0,1,3],[3,1,1],[2,3,4],[0,2,2]]; solid = input edge priced w, dashed = added reversal arc priced 2w; nodes 0(110,165) 1(330,75) 2(330,255) 3(545,165), r=22; accented path 0->1 then reversal 1->3 totals 5 -->
+  <g fill="none" stroke-width="1.8">
+    <path d="M 126.4 150.4 Q 200 85 308.1 76.7" stroke="#4169E1" stroke-width="3" marker-end="url(#arrowA)"/>
+    <path d="M 312.6 88.5 Q 240 145 131.7 161.7" stroke="#9aa7b2" stroke-dasharray="5 4" marker-end="url(#arrowM)"/>
+    <path d="M 126.4 179.6 Q 200 245 308.1 253.3" stroke="#42525e" marker-end="url(#arrowG)"/>
+    <path d="M 312.6 241.5 Q 240 185 131.7 168.3" stroke="#9aa7b2" stroke-dasharray="5 4" marker-end="url(#arrowM)"/>
+    <path d="M 528.5 150.4 Q 460 90 351.9 77.5" stroke="#42525e" marker-end="url(#arrowG)"/>
+    <path d="M 346.5 89.6 Q 415 150 523.1 162.5" stroke="#4169E1" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arrowA)"/>
+    <path d="M 351.7 251.2 Q 415 240 525.9 176.0" stroke="#42525e" marker-end="url(#arrowG)"/>
+    <path d="M 523.3 168.8 Q 460 180 349.1 244.0" stroke="#9aa7b2" stroke-dasharray="5 4" marker-end="url(#arrowM)"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="110" cy="165" r="22"/><circle cx="330" cy="75" r="22"/><circle cx="330" cy="255" r="22"/><circle cx="545" cy="165" r="22"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="110" y="170">0</text><text x="330" y="80">1</text><text x="330" y="260">2</text><text x="545" y="170">3</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="110" y="206">start</text><text x="545" y="206">target</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">
+    <text x="330" y="46">d = 3</text><text x="545" y="136">d = 5</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="204" y="89" fill="#4169E1" font-size="13.5" font-weight="600">3</text>
+    <text x="236" y="150" fill="#9aa7b2" font-size="11.5">6</text>
+    <text x="204" y="246" fill="#42525e" font-size="12.5">2</text>
+    <text x="236" y="184" fill="#9aa7b2" font-size="11.5">4</text>
+    <text x="455" y="92" fill="#42525e" font-size="12.5">1</text>
+    <text x="410" y="164" fill="#4169E1" font-size="12.5" font-weight="600">2&#183;1 = 2</text>
+    <text x="433" y="245" fill="#42525e" font-size="12.5">4</text>
+    <text x="443" y="182" fill="#9aa7b2" font-size="11.5">8</text>
+  </g>
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">0 &#8594; 1 costs 3; at node 1 the switch flips incoming 3 &#8594; 1 into arc 1 &#8594; 3 for 2 &#183; 1 = 2.</text>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">Dijkstra totals 3 + 2 = <tspan fill="#4169E1" font-weight="600">5</tspan> &#8212; the doubled arcs turn the switch into plain shortest paths.</text>
+  <text x="320" y="340" text-anchor="middle" fill="#5c6b76" font-size="12">solid = input edge priced w &#183; dashed = added reversal arc priced 2 &#183; w</text>
+</svg>

@@ -11,6 +11,8 @@ reachable state three moves: leave the item out, spend `w` more of bag 1
 when `i + w <= w1`, or spend `w` more of bag 2 when `j + w <= w2`. The answer
 is the largest `i + j` over all reachable states.
 
+![For weights [1,4,3,2] with w1 = 5 and w2 = 4, the (bag 1, bag 2) capacity grid fills item by item — each cell naming the item whose placement first reached that state — until the accented corner (5,4) makes 5 + 4 = 9 the answer.](figures/solution-reachable-capacity-grid.svg)
+
 Bit-parallelism collapses the bag-2 axis: row `i` is one wide integer whose
 bit `j` marks state `(i, j)` reachable. Placing the current item in bag 2
 shifts a whole row left by `w`, trimmed by a mask to the `w2 + 1` legal

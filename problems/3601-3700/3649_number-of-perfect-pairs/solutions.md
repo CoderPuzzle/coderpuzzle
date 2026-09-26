@@ -19,6 +19,8 @@ then every position strictly between `i` and `j` pairs with `i` — add
 `j - i - 1` to the answer. Each element crosses the frontier exactly once,
 so counting is linear once the sort has run.
 
+![Sorting Example 1's absolute values gives [0,1,2,3]; the frontier stops at j = 1, 3, 4, 4 as each anchor advances within its doubled bound, so anchors i = 1 and i = 2 add j - i - 1 = 1 each and the answer is 2.](figures/solution-abs-two-pointer-frontier.svg)
+
 The answer itself outgrows 32 bits before the array outgrows anything: at
 `n = 10^5` up to `n(n-1)/2 ≈ 5 * 10^9` pairs qualify, which is why
 fixed-width languages accumulate and return through 64-bit integers

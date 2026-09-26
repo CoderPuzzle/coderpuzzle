@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- grid = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]], x=1, y=0, k=3; square rows 1-3, cols 0-2; cells 54x40 at (116,84) and (430,84) -->
+  <text x="224" y="64" text-anchor="middle" fill="#5c6b76" font-size="12.5">before</text>
+  <text x="538" y="64" text-anchor="middle" fill="#5c6b76" font-size="12.5">after</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="116" y="84" width="54" height="40"/><rect x="170" y="84" width="54" height="40"/><rect x="224" y="84" width="54" height="40"/><rect x="278" y="84" width="54" height="40"/>
+    <rect x="116" y="124" width="54" height="40"/><rect x="170" y="124" width="54" height="40"/><rect x="224" y="124" width="54" height="40"/><rect x="278" y="124" width="54" height="40"/>
+    <rect x="116" y="164" width="54" height="40"/><rect x="170" y="164" width="54" height="40"/><rect x="224" y="164" width="54" height="40"/><rect x="278" y="164" width="54" height="40"/>
+    <rect x="116" y="204" width="54" height="40"/><rect x="170" y="204" width="54" height="40"/><rect x="224" y="204" width="54" height="40"/><rect x="278" y="204" width="54" height="40"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="430" y="84" width="54" height="40"/><rect x="484" y="84" width="54" height="40"/><rect x="538" y="84" width="54" height="40"/><rect x="592" y="84" width="54" height="40"/>
+    <rect x="430" y="124" width="54" height="40"/><rect x="484" y="124" width="54" height="40"/><rect x="538" y="124" width="54" height="40"/><rect x="592" y="124" width="54" height="40"/>
+    <rect x="430" y="164" width="54" height="40"/><rect x="484" y="164" width="54" height="40"/><rect x="538" y="164" width="54" height="40"/><rect x="592" y="164" width="54" height="40"/>
+    <rect x="430" y="204" width="54" height="40"/><rect x="484" y="204" width="54" height="40"/><rect x="538" y="204" width="54" height="40"/><rect x="592" y="204" width="54" height="40"/>
+  </g>
+  <!-- square outlines rows 1-3, cols 0-2 -->
+  <rect x="112" y="120" width="170" height="128" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <rect x="426" y="120" width="170" height="128" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <!-- before values: square rows accent, middle row muted -->
+  <g text-anchor="middle">
+    <text x="143" y="109" fill="#1a2026">1</text><text x="197" y="109" fill="#1a2026">2</text><text x="251" y="109" fill="#1a2026">3</text><text x="305" y="109" fill="#1a2026">4</text>
+    <text x="143" y="149" fill="#4169E1" font-weight="600">5</text><text x="197" y="149" fill="#4169E1" font-weight="600">6</text><text x="251" y="149" fill="#4169E1" font-weight="600">7</text><text x="305" y="149" fill="#1a2026">8</text>
+    <text x="143" y="189" fill="#9aa7b2">9</text><text x="197" y="189" fill="#9aa7b2">10</text><text x="251" y="189" fill="#9aa7b2">11</text><text x="305" y="189" fill="#1a2026">12</text>
+    <text x="143" y="229" fill="#4169E1" font-weight="600">13</text><text x="197" y="229" fill="#4169E1" font-weight="600">14</text><text x="251" y="229" fill="#4169E1" font-weight="600">15</text><text x="305" y="229" fill="#1a2026">16</text>
+  </g>
+  <!-- after values: rows 1 and 3 traded places -->
+  <g text-anchor="middle">
+    <text x="457" y="109" fill="#1a2026">1</text><text x="511" y="109" fill="#1a2026">2</text><text x="565" y="109" fill="#1a2026">3</text><text x="619" y="109" fill="#1a2026">4</text>
+    <text x="457" y="149" fill="#4169E1" font-weight="600">13</text><text x="511" y="149" fill="#4169E1" font-weight="600">14</text><text x="565" y="149" fill="#4169E1" font-weight="600">15</text><text x="619" y="149" fill="#1a2026">8</text>
+    <text x="457" y="189" fill="#9aa7b2">9</text><text x="511" y="189" fill="#9aa7b2">10</text><text x="565" y="189" fill="#9aa7b2">11</text><text x="619" y="189" fill="#1a2026">12</text>
+    <text x="457" y="229" fill="#4169E1" font-weight="600">5</text><text x="511" y="229" fill="#4169E1" font-weight="600">6</text><text x="565" y="229" fill="#4169E1" font-weight="600">7</text><text x="619" y="229" fill="#1a2026">16</text>
+  </g>
+  <!-- row pointers on the before grid -->
+  <g font-size="12">
+    <text x="88" y="148" text-anchor="end" fill="#4169E1" font-weight="600">top (r1)</text>
+    <path d="M 94 144 H 110" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+    <text x="88" y="188" text-anchor="end" fill="#5c6b76">meet</text>
+    <text x="88" y="228" text-anchor="end" fill="#4169E1" font-weight="600">bottom (r3)</text>
+    <path d="M 94 224 H 110" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  </g>
+  <path d="M 344 166 H 418" fill="none" stroke="#42525e" stroke-width="1.8" marker-end="url(#arrowG)"/>
+  <text x="381" y="152" text-anchor="middle" fill="#1a2026" font-size="12">swap rows</text>
+  <text x="381" y="192" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">1 &#8596; 3</text>
+  <text x="224" y="272" text-anchor="middle" fill="#5c6b76" font-size="12">pointers meet at the middle row</text>
+  <text x="538" y="272" text-anchor="middle" fill="#5c6b76" font-size="12">middle row [9,10,11] untouched</text>
+  <text x="340" y="306" text-anchor="middle" fill="#1a2026" font-size="13">The pointers swap the square's outer rows and meet; middle row [9,10,11] stays,</text>
+  <text x="340" y="326" text-anchor="middle" fill="#1a2026" font-size="13">giving [[1,2,3,4],[<tspan fill="#4169E1" font-weight="600">13,14,15,8</tspan>],[9,10,11,12],[<tspan fill="#4169E1" font-weight="600">5,6,7,16</tspan>]].</text>
+</svg>
