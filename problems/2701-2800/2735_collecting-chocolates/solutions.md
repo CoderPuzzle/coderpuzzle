@@ -10,6 +10,8 @@ takes away a price it already offered. Collecting everything after exactly `k`
 operations costs the sum over types of the cheapest price seen within the
 first `k` rotations, plus `k * x` for the operations themselves.
 
+![On nums = [20,1,15] with x = 5 the turn at each k folds in nums rotated right k times into the running per-type cheapest, so the totals fall 36, 22, and 13 — the answer.](figures/solution-rotation-cheapest-totals.svg)
+
 Only `k` from `0` to `n - 1` needs trying: after `n` operations every chocolate
 is back at its starting type, so any larger count produces a layout identical
 to some smaller `k` while paying an extra `n * x`. The code sweeps those counts

@@ -11,6 +11,8 @@ the search space over row contents shrinks from arbitrary matrices to at
 most 32 distinct signatures, and everything the statement asks for can be
 decided from those integers alone.
 
+![On grid = [[0,1,1,0],[0,0,0,1],[1,1,1,1]] the rows collapse to signatures 0110, 0001, and 1111; 0110 & 0001 = 0000 makes rows 0 and 1 a good subset, while 1111 & any seen mask is nonzero.](figures/solution-row-signatures-disjoint.svg)
+
 The scan walks the rows in order. A zero-signature row is answered
 immediately with its own index, since it is a good subset by itself. Any
 other row consults a map of already-seen signatures to their earliest index

@@ -18,5 +18,7 @@ least yi; descending values make that entry's sum the largest among all
 eligible points, and an empty suffix means no index qualifies, so the answer
 is -1.
 
+![On points (4,2), (3,4), (2,5), (1,9) sorted by x descending, the sweep inserts each point into a map whose keys ascend while sums descend, pruning 2 → 6, 4 → 7, and 5 → 7 in turn, and each query's first key at least yi reads 6, 7, and 10 for answers [6,10,7].](figures/solution-descending-map-sweep.svg)
+
 **Complexity:** `O(n log n + q log q + (n + q) log n)` time and `O(n + q)`
 space.

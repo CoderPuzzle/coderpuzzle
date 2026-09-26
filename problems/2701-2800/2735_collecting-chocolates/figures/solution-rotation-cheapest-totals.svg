@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 484" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="484" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [20,1,15], x = 5; new row at k is nums rotated right k times; cheapest = running per-type min; columns 72px at x = 180+80t -->
+  <g fill="#9aa7b2" font-size="9.5">
+    <text x="330" y="32" text-anchor="middle">t0</text>
+    <text x="382" y="102">t1</text>
+    <text x="280" y="102" text-anchor="end">t2</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="315" y="39" width="30" height="22" rx="4"/>
+    <rect x="343" y="87" width="30" height="22" rx="4"/>
+    <rect x="287" y="87" width="30" height="22" rx="4"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12" fill="#1a2026">
+    <text x="330" y="55">20</text><text x="358" y="102">1</text><text x="302" y="102">15</text>
+  </g>
+  <path d="M 364 50 A 48 48 0 0 1 330 132" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g fill="#5c6b76" font-size="12">
+    <text x="396" y="72">one operation rotates every chocolate</text>
+    <text x="396" y="90">to the next type · cost x = 5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="216" y="150">type 0</text><text x="296" y="150">type 1</text><text x="376" y="150">type 2</text>
+  </g>
+  <text x="440" y="150" fill="#5c6b76" font-size="12">sum + k·x</text>
+  <text x="296" y="170" text-anchor="middle" fill="#9aa7b2" font-size="11.5">top row: new candidate this turn · bottom row: running cheapest</text>
+  <!-- k = 0 -->
+  <text x="100" y="221" text-anchor="end" fill="#1a2026" font-size="13" font-weight="600">k = 0</text>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="180" y="188" width="72" height="26"/><rect x="260" y="188" width="72" height="26"/><rect x="340" y="188" width="72" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#5c6b76">
+    <text x="216" y="206">20</text><text x="296" y="206">1</text><text x="376" y="206">15</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="180" y="220" width="72" height="26"/><rect x="260" y="220" width="72" height="26"/><rect x="340" y="220" width="72" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="216" y="238">20</text><text x="296" y="238">1</text><text x="376" y="238">15</text>
+  </g>
+  <text x="440" y="221" fill="#5c6b76" font-size="13">36 + 0·5 = <tspan fill="#1a2026" font-weight="600">36</tspan></text>
+  <!-- k = 1 -->
+  <text x="100" y="305" text-anchor="end" fill="#1a2026" font-size="13" font-weight="600">k = 1</text>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="180" y="272" width="72" height="26"/><rect x="260" y="272" width="72" height="26"/><rect x="340" y="272" width="72" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#5c6b76">
+    <text x="216" y="290">15</text><text x="296" y="290">20</text><text x="376" y="290">1</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="180" y="304" width="72" height="26"/><rect x="260" y="304" width="72" height="26"/><rect x="340" y="304" width="72" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="216" y="322">15</text><text x="296" y="322">1</text><text x="376" y="322">1</text>
+  </g>
+  <text x="440" y="305" fill="#5c6b76" font-size="13">17 + 1·5 = <tspan fill="#1a2026" font-weight="600">22</tspan></text>
+  <!-- k = 2: the answer -->
+  <text x="100" y="389" text-anchor="end" fill="#4169E1" font-size="13" font-weight="600">k = 2</text>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="180" y="356" width="72" height="26"/><rect x="260" y="356" width="72" height="26"/><rect x="340" y="356" width="72" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#5c6b76">
+    <text x="216" y="374">1</text><text x="296" y="374">15</text><text x="376" y="374">20</text>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="180" y="388" width="72" height="26"/><rect x="260" y="388" width="72" height="26"/><rect x="340" y="388" width="72" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="216" y="406">1</text><text x="296" y="406">1</text><text x="376" y="406">1</text>
+  </g>
+  <text x="440" y="389" fill="#4169E1" font-size="13" font-weight="600">3 + 2·5 = 13</text>
+  <text x="330" y="444" text-anchor="middle" fill="#1a2026" font-size="13">Totals 36 → 22 → <tspan fill="#4169E1" font-weight="600">13</tspan>: each turn folds in one new candidate per type and keeps the min.</text>
+  <text x="330" y="464" text-anchor="middle" fill="#1a2026" font-size="13">At k = 2 every type costs 1: 1 + 1 + 1 + 2·5 = 13, the answer.</text>
+</svg>

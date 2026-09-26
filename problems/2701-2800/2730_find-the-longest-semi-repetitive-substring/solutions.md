@@ -12,6 +12,8 @@ contains. While `pairs` exceeds one, advance `left` until that excess is
 gone — and the only way it can drop is when `left` itself steps past the
 first element of the leftmost kept pair, i.e. `s[left] == s[left + 1]`.
 
+![Sliding window over s = "52233": each strip shows the window ending at right with its equal-pair count; right = 3 holds the best window "5223" of length 4, and the second pair 33 at right = 4 pushes left past the kept 22 pair.](figures/solution-window-pair-shrink.svg)
+
 After each shrink the window `[left, right]` satisfies the constraint by
 construction, so recording `right - left + 1` every step and keeping the
 maximum visits the longest valid window ending at each `right` without ever
