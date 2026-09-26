@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="510" height="360" fill="#ffffff"/>
+  <!-- tree = [5,3,8,2,4,7,1]; postorder maxima: 2->2, 4->4, 3->4, 7->7, 1->1, 8->8, 5->8; dominant = value == subtree max -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="239" y1="69" x2="161" y2="133"/>
+    <line x1="271" y1="69" x2="349" y2="133"/>
+    <line x1="134" y1="164" x2="101" y2="218"/>
+    <line x1="156" y1="164" x2="189" y2="218"/>
+    <line x1="354" y1="164" x2="321" y2="218"/>
+    <line x1="376" y1="164" x2="409" y2="218"/>
+  </g>
+  <!-- dominant nodes: 2, 4, 7, 1, 8 -->
+  <g stroke="#4169E1" stroke-width="2.2" fill="#dbe4fb">
+    <circle cx="90" cy="236" r="21"/><circle cx="200" cy="236" r="21"/><circle cx="310" cy="236" r="21"/>
+    <circle cx="420" cy="236" r="21"/><circle cx="365" cy="146" r="21"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.6" fill="#f0f3f7">
+    <circle cx="255" cy="56" r="21"/><circle cx="145" cy="146" r="21"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="90" y="241">2</text><text x="200" y="241">4</text><text x="310" y="241">7</text>
+    <text x="420" y="241">1</text><text x="365" y="151">8</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#5c6b76">
+    <text x="255" y="61">5</text><text x="145" y="151">3</text>
+  </g>
+  <!-- postorder visit order -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="64" y="216">1</text><text x="174" y="216">2</text><text x="119" y="126">3</text>
+    <text x="284" y="216">4</text><text x="394" y="216">5</text><text x="391" y="126">6</text><text x="229" y="36">7</text>
+  </g>
+  <!-- subtree maxima -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="284" y="61" text-anchor="start">max(5,4,8) = 8</text>
+    <text x="172" y="151" text-anchor="start">max(3,2,4) = 4</text>
+    <text x="392" y="151" text-anchor="start">max(8,7,1) = 8</text>
+    <text x="90" y="273">max 2</text><text x="200" y="273">max 4</text>
+    <text x="310" y="273">max 7</text><text x="420" y="273">max 1</text>
+  </g>
+  <g font-size="12.5">
+    <rect x="100" y="295" width="14" height="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <text x="120" y="307" fill="#5c6b76">dominant: value = subtree max</text>
+    <rect x="314" y="295" width="14" height="14" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.6"/>
+    <text x="334" y="307" fill="#5c6b76">not dominant</text>
+  </g>
+  <text x="255" y="332" text-anchor="middle" fill="#1a2026" font-size="13">Each node compares its value with the max returned by its children.</text>
+  <text x="255" y="352" text-anchor="middle" fill="#1a2026" font-size="13">Five nodes match their subtree max — 2, 4, 7, 1, 8 — answer <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

@@ -21,6 +21,8 @@ value no class contains, and it never understates a cost: an absent value
 really does cost the full size, while a present one is charged exactly by its
 count option.
 
+![On nums [3, 4, 5, 2, 1, 7, 3, 4, 7] with k = 3, each residue class keeps its majority value — 3, 4, 7, whose XOR is 0 — so changing the three off-class cells (5→7, 2→3, 1→4) makes the array periodic and dp[0] = 3.](figures/solution-periodic-residue-classes.svg)
+
 After all `k` classes, `dp[0]` is the answer — the fewest changes whose
 chosen values XOR to zero. Counts live in a flat 1024-slot table per class,
 and the table is filled by a plain index walk, so the whole method is

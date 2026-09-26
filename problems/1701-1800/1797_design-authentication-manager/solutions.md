@@ -20,6 +20,8 @@ passed" means `expiry <= currentTime`, strictly. Once the front is live
 and unexpired, everything behind it is unexpired too, since expiries only
 grow along the queue, so the map's size is the answer on the spot.
 
+![With timeToLive 5, the queue after the calls holds (aaa, 7), the stale (bbb, 12) orphaned by the renew to 15, and (bbb, 15): count(6) finds the live front 7 > 6 and returns 1, while count(15) pops all three — expired, stale, expired — and returns 0.](figures/solution-expiry-queue-lazy-deletion.svg)
+
 Each event is pushed once and popped at most once across the whole call
 sequence, so every operation — including the count that happens to retire
 many entries — costs amortized constant time. The queue holds one entry

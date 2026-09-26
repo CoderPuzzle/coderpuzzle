@@ -12,6 +12,8 @@ nothing, and no flower outside `[i, j]` may survive. The answer is the
 maximum of `2v` plus the positive flowers strictly between `i` and `j`,
 over all such pairs.
 
+![On flowers [1, 2, 3, 1, 2], the equal-value pairs bracket their gardens: value 1 closes for 2·1 + 2 + 3 = 7 and value 2 for 2·2 + 3 + 1 = 8, so the best garden is [2, 3, 1, 2] with beauty 8.](figures/solution-equal-endpoint-pairs.svg)
+
 Scanning left to right with `pos`, the running sum of positive values,
 turns that maximum into one pass: `seen[v]` remembers the smallest value
 `pos` has taken just after a past occurrence of `v`. Meeting `v` again at

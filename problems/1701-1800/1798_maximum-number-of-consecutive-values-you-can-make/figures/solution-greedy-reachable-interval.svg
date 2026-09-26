@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <!-- coins = [1,3] sorted; reachable rows at y = 72/142/212, cells 76x36 pitch 88 from x=152,
+       columns are values 0..4; shaded cells = every value in [0, reachable] is makeable;
+       coin 1 lifts 0 -> 1; coin 3 > 1 + 1 stops, leaving 2 unmakeable; answer 2 -->
+  <text x="32" y="36" fill="#5c6b76" font-size="12.5">sorted coins [1, 3]</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="190" y="62">0</text><text x="278" y="62">1</text><text x="366" y="62">2</text>
+    <text x="454" y="62">3</text><text x="542" y="62">4</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="140" y="95">start</text>
+    <text x="140" y="165">+ coin 1</text>
+    <text x="140" y="235">+ coin 3</text>
+  </g>
+  <!-- row 1: reachable = 0 -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="152" y="72" width="76" height="36" fill="#dbe4fb"/>
+    <rect x="240" y="72" width="76" height="36" fill="#ffffff"/>
+    <rect x="328" y="72" width="76" height="36" fill="#ffffff"/>
+    <rect x="416" y="72" width="76" height="36" fill="#ffffff"/>
+    <rect x="504" y="72" width="76" height="36" fill="#ffffff"/>
+  </g>
+  <text x="190" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">0</text>
+  <text x="366" y="126" text-anchor="middle" fill="#5c6b76" font-size="12">reachable = 0 — just the empty selection</text>
+  <!-- row 2: coin 1 <= 0 + 1, reachable = 1 -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="152" y="142" width="76" height="36" fill="#dbe4fb"/>
+    <rect x="240" y="142" width="76" height="36" fill="#dbe4fb"/>
+    <rect x="328" y="142" width="76" height="36" fill="#ffffff"/>
+    <rect x="416" y="142" width="76" height="36" fill="#ffffff"/>
+    <rect x="504" y="142" width="76" height="36" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="190" y="165">0</text><text x="278" y="165">1</text>
+  </g>
+  <text x="366" y="196" text-anchor="middle" fill="#5c6b76" font-size="12">coin 1: 1 ≤ 0 + 1 → range extends to [0, 1]</text>
+  <!-- row 3: coin 3 > 1 + 1, stop; value 2 is the gap -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="152" y="212" width="76" height="36" fill="#dbe4fb"/>
+    <rect x="240" y="212" width="76" height="36" fill="#dbe4fb"/>
+    <rect x="328" y="212" width="76" height="36" fill="#f0f3f7"/>
+    <rect x="416" y="212" width="76" height="36" fill="#ffffff"/>
+    <rect x="504" y="212" width="76" height="36" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600">
+    <text x="190" y="235" fill="#1a2026">0</text><text x="278" y="235" fill="#1a2026">1</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.4">
+    <line x1="332" y1="216" x2="400" y2="244"/><line x1="400" y1="216" x2="332" y2="244"/>
+  </g>
+  <!-- knockout over the X center so the crossed-out digit stays legible -->
+  <rect x="357" y="220" width="18" height="21" fill="#f0f3f7"/>
+  <text x="366" y="235" text-anchor="middle" font-size="13" font-weight="600" fill="#9aa7b2">2</text>
+  <text x="366" y="266" text-anchor="middle" fill="#5c6b76" font-size="12">coin 3: 3 &gt; 1 + 1 → stop here</text>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">The answer is reachable + 1 = <tspan fill="#4169E1" font-weight="600">2</tspan>: values 0 and 1 are makeable, and no</text>
+  <text x="320" y="320" text-anchor="middle" fill="#1a2026" font-size="13">remaining coin (all ≥ 3) can ever repair the gap at 2.</text>
+</svg>

@@ -14,6 +14,8 @@ contribution of the edge leaving the subtree. Absorbing `c` occurrences of
 group `g` into a map that already holds `b` updates them in constant time:
 `A += k[g] * c` and `B += 2 * b * c + c^2`.
 
+![In the star tree of example 3 with group [1,1,4,4], each edge's subtree holds one node of a group with k = 2, so every edge contributes 1·(2−1) = 1 and the three edges sum to 3.](figures/solution-edge-x-k-minus-x.svg)
+
 The maps are merged bottom-up in an iterative breadth-first pass, processed
 in reverse so every child is finished before its parent; each node adopts
 its largest child's map and has its own group plus every smaller child map

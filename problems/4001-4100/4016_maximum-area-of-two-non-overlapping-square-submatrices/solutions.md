@@ -22,6 +22,8 @@ disjoint; conversely, if both spans are below `k`, then every pair of
 corners differs by less than `k` in both row and column, so their
 squares always intersect.
 
+![For mat [[1,1,1,0],[1,1,1,1],[0,0,1,1]] at k = 2, the valid corners (0,0), (0,1), (1,2) span columns 0 to 2, and max_col − min_col = 2 ≥ k certifies the disjoint pair — the squares at (0,0) and (1,2) give area 4.](figures/solution-corner-span-disjoint.svg)
+
 Nothing else needs special casing. A single-row or single-column matrix
 caps `k` at 1 and just asks for two separated usable cells; dense grids
 are limited by fitting two squares into one dimension (`m >= 2k` or

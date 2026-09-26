@@ -6,6 +6,8 @@ Since the average divides by the fixed class count, maximizing it means maximizi
 
 The code implements this with a max-heap keyed on negated gain, built in one `heapify` over the classes. For each of the `extraStudents` students it pops the class with the largest current gain, increments both its pass and total counts, and pushes it back with its recomputed gain. Re-pushing is essential: after absorbing a student the class's gain drops, and a different class may now offer the best marginal return.
 
+![On classes [[1, 2], [3, 5], [2, 2]] with 2 extra students, the max-heap keyed on gain (p+1)/(t+1) − p/t hands both students to class (1, 2) — its gain 1/6, then 1/12, stays largest — and the final ratios 3/4, 3/5, 2/2 average 0.78333.](figures/solution-greedy-max-gain-heap.svg)
+
 Optimality follows from the standard exchange argument for decreasing marginal returns: if an optimal assignment ever gives a student to a class whose gain at that moment was smaller than another's, swapping that student to the higher-gain class changes the total by the (non-negative) difference in gains, so the greedy choice is never worse. After the loop, the answer is the average of the final ratios read straight off the heap contents.
 
 **Complexity:** `O(C + E log C)` time, `O(C)` space.

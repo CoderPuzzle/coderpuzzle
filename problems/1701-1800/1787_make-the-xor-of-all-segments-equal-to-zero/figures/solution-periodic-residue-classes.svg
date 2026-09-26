@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 424" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="424" fill="#ffffff"/>
+  <!-- nums = [3,4,5,2,1,7,3,4,7], k = 3; cells 52x36 pitch 56 from x=86, array rows y=46 and y=292;
+       class fill by i mod 3: 0 -> #dbe4fb, 1 -> #ffffff, 2 -> #f0f3f7; changed cells are i = 2, 3, 4 -->
+  <text x="40" y="69" fill="#5c6b76" font-size="12.5">nums</text>
+  <text x="594" y="69" fill="#5c6b76" font-size="12.5">k = 3</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="86" y="46" width="52" height="36" fill="#dbe4fb"/>
+    <rect x="142" y="46" width="52" height="36" fill="#ffffff"/>
+    <rect x="198" y="46" width="52" height="36" fill="#f0f3f7"/>
+    <rect x="254" y="46" width="52" height="36" fill="#dbe4fb"/>
+    <rect x="310" y="46" width="52" height="36" fill="#ffffff"/>
+    <rect x="366" y="46" width="52" height="36" fill="#f0f3f7"/>
+    <rect x="422" y="46" width="52" height="36" fill="#dbe4fb"/>
+    <rect x="478" y="46" width="52" height="36" fill="#ffffff"/>
+    <rect x="534" y="46" width="52" height="36" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="112" y="69">3</text><text x="168" y="69">4</text><text x="224" y="69">5</text>
+    <text x="280" y="69">2</text><text x="336" y="69">1</text><text x="392" y="69">7</text>
+    <text x="448" y="69">3</text><text x="504" y="69">4</text><text x="560" y="69">7</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="112" y="98">i = 0</text><text x="168" y="98">i = 1</text><text x="224" y="98">i = 2</text>
+    <text x="280" y="98">i = 3</text><text x="336" y="98">i = 4</text><text x="392" y="98">i = 5</text>
+    <text x="448" y="98">i = 6</text><text x="504" y="98">i = 7</text><text x="560" y="98">i = 8</text>
+  </g>
+  <!-- class columns: class 0 = {3,2,3} choose 3, class 1 = {4,1,4} choose 4, class 2 = {5,7,7} choose 7 -->
+  <g>
+    <rect x="94" y="118" width="14" height="13" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+    <text x="114" y="129" fill="#5c6b76" font-size="12.5">class i ≡ 0 (mod 3)</text>
+    <g text-anchor="middle" font-size="13.5">
+      <text x="160" y="158" fill="#1a2026">i = 0 · 3</text>
+      <text x="160" y="180" fill="#4169E1" font-weight="600">i = 3 · 2 → 3</text>
+      <text x="160" y="202" fill="#1a2026">i = 6 · 3</text>
+    </g>
+    <text x="160" y="228" text-anchor="middle" fill="#5c6b76" font-size="12.5">chosen <tspan fill="#4169E1" font-weight="600">3</tspan> · cost 1</text>
+  </g>
+  <g>
+    <rect x="254" y="118" width="14" height="13" fill="#ffffff" stroke="#42525e" stroke-width="1"/>
+    <text x="274" y="129" fill="#5c6b76" font-size="12.5">class i ≡ 1 (mod 3)</text>
+    <g text-anchor="middle" font-size="13.5">
+      <text x="320" y="158" fill="#1a2026">i = 1 · 4</text>
+      <text x="320" y="180" fill="#4169E1" font-weight="600">i = 4 · 1 → 4</text>
+      <text x="320" y="202" fill="#1a2026">i = 7 · 4</text>
+    </g>
+    <text x="320" y="228" text-anchor="middle" fill="#5c6b76" font-size="12.5">chosen <tspan fill="#4169E1" font-weight="600">4</tspan> · cost 1</text>
+  </g>
+  <g>
+    <rect x="414" y="118" width="14" height="13" fill="#f0f3f7" stroke="#42525e" stroke-width="1"/>
+    <text x="434" y="129" fill="#5c6b76" font-size="12.5">class i ≡ 2 (mod 3)</text>
+    <g text-anchor="middle" font-size="13.5">
+      <text x="480" y="158" fill="#4169E1" font-weight="600">i = 2 · 5 → 7</text>
+      <text x="480" y="180" fill="#1a2026">i = 5 · 7</text>
+      <text x="480" y="202" fill="#1a2026">i = 8 · 7</text>
+    </g>
+    <text x="480" y="228" text-anchor="middle" fill="#5c6b76" font-size="12.5">chosen <tspan fill="#4169E1" font-weight="600">7</tspan> · cost 1</text>
+  </g>
+  <text x="320" y="262" text-anchor="middle" fill="#1a2026" font-size="13">chosen values 3 ⊕ 4 ⊕ 7 = 0 — every size-3 segment XORs to 0</text>
+  <!-- result = [3,4,7,3,4,7,3,4,7]; changed cells i = 2, 3, 4 accented -->
+  <text x="40" y="315" fill="#5c6b76" font-size="12.5">result</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="86" y="292" width="52" height="36" fill="#dbe4fb"/>
+    <rect x="142" y="292" width="52" height="36" fill="#ffffff"/>
+    <rect x="198" y="292" width="52" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="254" y="292" width="52" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="310" y="292" width="52" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="366" y="292" width="52" height="36" fill="#f0f3f7"/>
+    <rect x="422" y="292" width="52" height="36" fill="#dbe4fb"/>
+    <rect x="478" y="292" width="52" height="36" fill="#ffffff"/>
+    <rect x="534" y="292" width="52" height="36" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="112" y="315" fill="#1a2026">3</text><text x="168" y="315" fill="#1a2026">4</text>
+    <text x="224" y="315" fill="#4169E1">7</text><text x="280" y="315" fill="#4169E1">3</text>
+    <text x="336" y="315" fill="#4169E1">4</text><text x="392" y="315" fill="#1a2026">7</text>
+    <text x="448" y="315" fill="#1a2026">3</text><text x="504" y="315" fill="#1a2026">4</text>
+    <text x="560" y="315" fill="#1a2026">7</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="11">
+    <text x="224" y="346">5→7</text><text x="280" y="346">2→3</text><text x="336" y="346">1→4</text>
+  </g>
+  <text x="320" y="384" text-anchor="middle" fill="#1a2026" font-size="13">Each class keeps its majority value — 3, 4, 7 — whose XOR is 0; the three</text>
+  <text x="320" y="404" text-anchor="middle" fill="#1a2026" font-size="13">off-class cells change (5→7, 2→3, 1→4) and the array turns periodic — dp[0] = <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

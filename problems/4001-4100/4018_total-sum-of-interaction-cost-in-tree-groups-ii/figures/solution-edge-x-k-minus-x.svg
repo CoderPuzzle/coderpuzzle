@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <!-- n = 4, edges = [[0,1],[0,2],[0,3]], group = [1,1,4,4]; k(g1) = k(g4) = 2; per-edge subtree counts give x*(k-x) = 1 each, total 3 -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="140" y1="141" x2="300" y2="69"/>
+    <line x1="142" y1="150" x2="298" y2="150"/>
+    <line x1="140" y1="159" x2="300" y2="231"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="#ffffff">
+    <circle cx="120" cy="150" r="22"/>
+    <circle cx="320" cy="60" r="22"/>
+    <circle cx="320" cy="150" r="22"/>
+    <circle cx="320" cy="240" r="22"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="120" y="148">0</text><text x="320" y="58">1</text><text x="320" y="148">2</text><text x="320" y="238">3</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5" font-weight="600" fill="#4169E1">
+    <text x="120" y="163">g1</text><text x="320" y="73">g1</text><text x="320" y="163">g4</text><text x="320" y="253">g4</text>
+  </g>
+  <text x="120" y="98" text-anchor="middle" fill="#5c6b76" font-size="12.5">group sizes k: g1 = 2, g4 = 2</text>
+  <!-- per-edge subtree counts and x*(k-x) -->
+  <g font-size="12.5">
+    <text x="352" y="65" fill="#1a2026">subtree {1}: <tspan fill="#4169E1" font-weight="600">g1:1</tspan><tspan fill="#9aa7b2">, g4:0</tspan><tspan fill="#5c6b76"> → </tspan>1·(2−1) = <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="352" y="155" fill="#1a2026">subtree {2}: <tspan fill="#9aa7b2">g1:0, </tspan><tspan fill="#4169E1" font-weight="600">g4:1</tspan><tspan fill="#5c6b76"> → </tspan>1·(2−1) = <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="352" y="245" fill="#1a2026">subtree {3}: <tspan fill="#9aa7b2">g1:0, </tspan><tspan fill="#4169E1" font-weight="600">g4:1</tspan><tspan fill="#5c6b76"> → </tspan>1·(2−1) = <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  </g>
+  <text x="320" y="290" text-anchor="middle" fill="#1a2026" font-size="13">Each edge counts the paths crossing it: a group with x of its k nodes below adds x·(k−x).</text>
+  <text x="320" y="312" text-anchor="middle" fill="#1a2026" font-size="13">Every edge here crosses exactly one same-group pair: 1 + 1 + 1 = <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>
