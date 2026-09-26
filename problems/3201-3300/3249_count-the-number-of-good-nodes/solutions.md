@@ -19,6 +19,10 @@ they all agree. Leaves never appear in the parent role at all, so they
 count as good outright, and one mismatched child condemns exactly that
 one node.
 
+![On Example 1's tree the reverse-BFS fold fills sizes [7,3,3,1,1,1,1] —
+node 0 sees 3 = 3 and nodes 1 and 2 each see 1 = 1, while the four leaves
+are good outright — so all 7 nodes are good.](figures/solution-reverse-bfs-fold.svg)
+
 Recording the traversal order with a queue rather than recursing keeps
 the whole computation on the heap instead of the call stack, so a tree
 shaped like a straight chain of 10⁵ nodes — the constraint's worst case —

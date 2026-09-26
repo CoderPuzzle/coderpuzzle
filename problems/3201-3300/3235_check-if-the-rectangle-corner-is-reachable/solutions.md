@@ -21,4 +21,8 @@ corner touches both neighboring edges at once, so it is reported by the same
 unions. The answer is false exactly when one of the pairs left-right,
 left-bottom, right-top, or top-bottom ends up connected.
 
+![On Example 3's 3×3 rectangle, circle A (2,1,1) touches the bottom and right
+edges and circle B (1,2,1) the left and top, so the accented left–B–A–bottom
+union chain pins one blob across the start corner and the answer is false.](figures/solution-union-find-edge-nodes.svg)
+
 **Complexity:** `O(n² α(n))` time and `O(n)` space for `n` circles.

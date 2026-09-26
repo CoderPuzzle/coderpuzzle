@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 406" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="406" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- n=5, queries [[2,4],[0,2],[0,4]]; rows at y 100/205/310; city boxes 50x34 at x 21,151,281,411,541; arcs hop the retired cities -->
+  <text x="21" y="36" fill="#5c6b76" font-size="12.5">initial route 0→1→2→3→4: 4 hops</text>
+  <!-- row 1: after [2,4] -->
+  <g stroke="#42525e" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="71" y1="100" x2="144" y2="100"/>
+    <line x1="201" y1="100" x2="274" y2="100"/>
+  </g>
+  <path d="M 306 79 Q 436 50 566 79" fill="none" stroke="#4169E1" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <g stroke="#42525e" stroke-width="1.6">
+    <rect x="21" y="83" width="50" height="34" fill="#ffffff"/>
+    <rect x="151" y="83" width="50" height="34" fill="#ffffff"/>
+    <rect x="281" y="83" width="50" height="34" fill="#ffffff"/>
+    <rect x="541" y="83" width="50" height="34" fill="#ffffff"/>
+  </g>
+  <rect x="411" y="83" width="50" height="34" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="46" y="105" fill="#1a2026">0</text><text x="176" y="105" fill="#1a2026">1</text>
+    <text x="306" y="105" fill="#1a2026">2</text><text x="436" y="105" fill="#9aa7b2">3</text>
+    <text x="566" y="105" fill="#1a2026">4</text>
+  </g>
+  <text x="21" y="141" fill="#5c6b76" font-size="12.5">query [2, 4]: splice road 2→4, retire city 3 — ans <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+  <!-- row 2: after [0,2] -->
+  <path d="M 46 184 Q 176 155 306 184" fill="none" stroke="#4169E1" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 306 184 Q 436 155 566 184" fill="none" stroke="#42525e" stroke-width="2" marker-end="url(#arrow)"/>
+  <g stroke="#42525e" stroke-width="1.6">
+    <rect x="21" y="188" width="50" height="34" fill="#ffffff"/>
+    <rect x="281" y="188" width="50" height="34" fill="#ffffff"/>
+    <rect x="541" y="188" width="50" height="34" fill="#ffffff"/>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3">
+    <rect x="151" y="188" width="50" height="34"/>
+    <rect x="411" y="188" width="50" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="46" y="210" fill="#1a2026">0</text><text x="176" y="210" fill="#9aa7b2">1</text>
+    <text x="306" y="210" fill="#1a2026">2</text><text x="436" y="210" fill="#9aa7b2">3</text>
+    <text x="566" y="210" fill="#1a2026">4</text>
+  </g>
+  <text x="21" y="246" fill="#5c6b76" font-size="12.5">query [0, 2]: splice road 0→2, retire city 1 — ans <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <!-- row 3: after [0,4] -->
+  <path d="M 46 289 Q 306 246 566 289" fill="none" stroke="#4169E1" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <g stroke="#42525e" stroke-width="1.6">
+    <rect x="21" y="293" width="50" height="34" fill="#ffffff"/>
+    <rect x="541" y="293" width="50" height="34" fill="#ffffff"/>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3">
+    <rect x="151" y="293" width="50" height="34"/>
+    <rect x="281" y="293" width="50" height="34"/>
+    <rect x="411" y="293" width="50" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="46" y="315" fill="#1a2026">0</text><text x="176" y="315" fill="#9aa7b2">1</text>
+    <text x="306" y="315" fill="#9aa7b2">2</text><text x="436" y="315" fill="#9aa7b2">3</text>
+    <text x="566" y="315" fill="#1a2026">4</text>
+  </g>
+  <text x="21" y="351" fill="#5c6b76" font-size="12.5">query [0, 4]: splice road 0→4, retire city 2 — ans <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  <text x="330" y="374" text-anchor="middle" fill="#1a2026" font-size="13">each useful road splices straight in and the cities it swallows retire for good,</text>
+  <text x="330" y="392" text-anchor="middle" fill="#1a2026" font-size="13">so the hop count drops one per retirement: answers <tspan fill="#4169E1" font-weight="600">3, 2, 1</tspan>.</text>
+</svg>

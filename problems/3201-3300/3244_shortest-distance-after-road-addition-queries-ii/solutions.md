@@ -15,6 +15,10 @@ set `nxt[u] = v`. Every retired city previously contributed exactly one hop,
 so the hop count falls by one per retirement and that value is the answer
 for this query.
 
+![On Example 1 (n = 5) the splices retire city 3, then city 1, then city 2,
+so the route 0→1→2→3→4 collapses to 0→4 and the answers drop one per
+retirement: 3, 2, 1.](figures/solution-jump-pointer-route.svg)
+
 The greedy state stays optimal because the roads never properly cross — any
 two are nested, share an endpoint, or sit side by side. On such a family the
 best route always prefers a maximal road over anything nested inside it:

@@ -18,6 +18,10 @@ maximal run of g good edges hosting `g - (k - 1) + 1` such starts when
 of runs of at least `k - 1` minus `k - 2` times their count; if no bad edge
 exists every one of the n starting tiles works.
 
+![After [2,1,0] recolors Example 1's tiles to [0,0,1,0,1], only edge 0–1 is
+bad, leaving one maximal run of g = 4 good edges, which hosts
+g−(k−1)+1 = 2 starts for k = 4 — the count query answers 2.](figures/solution-bad-edge-runs.svg)
+
 Flipping one tile toggles only the two edges incident to it. An edge turning
 bad splits its run into two; an edge turning good merges its two neighbors
 into one, with the empty and fully-alternating states handled explicitly.

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="356" fill="#ffffff"/>
+  <!-- Example 1 after [2,1,0]: colors [0,1,1,0,1] -> [0,0,1,0,1]; tiles 0..4 at pentagon r=78 center (150,170), r=17; bad edge 0-1, one good run g=4 -->
+  <text x="24" y="34" fill="#5c6b76" font-size="13">after [2, 1, 0]: colors [0,1,1,0,1] → [0,0,1,0,1] (tiles 0..4)</text>
+  <line x1="166" y1="97" x2="208" y2="141" stroke="#4169E1" stroke-width="3"/>
+  <line x1="218" y1="165" x2="202" y2="214" stroke="#42525e" stroke-width="1.6"/>
+  <line x1="176" y1="233" x2="124" y2="233" stroke="#42525e" stroke-width="1.6"/>
+  <line x1="98" y1="214" x2="82" y2="165" stroke="#42525e" stroke-width="1.6"/>
+  <line x1="92" y1="134" x2="134" y2="104" stroke="#42525e" stroke-width="1.6"/>
+  <text x="197" y="107" fill="#4169E1" font-size="12" font-weight="600">bad</text>
+  <circle cx="150" cy="92" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="224" cy="146" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="196" cy="233" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="104" cy="233" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="76" cy="146" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600" font-size="13">
+    <text x="150" y="97">0</text><text x="224" y="151">1</text><text x="196" y="238">2</text>
+    <text x="104" y="238">3</text><text x="76" y="151">4</text>
+  </g>
+  <text x="150" y="164" text-anchor="middle" fill="#5c6b76" font-size="12">good edges 1–4</text>
+  <text x="150" y="182" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">one run, g = 4</text>
+  <rect x="36" y="282" width="14" height="14" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <text x="56" y="293" fill="#5c6b76" font-size="12">colors[i] = 0</text>
+  <rect x="160" y="282" width="14" height="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.3"/>
+  <text x="180" y="293" fill="#5c6b76" font-size="12">colors[i] = 1</text>
+  <g font-size="13">
+    <text x="300" y="96">bad edges: only 0–1 (tiles 0 and 1 both 0)</text>
+    <text x="300" y="120">maximal good runs: one run of g = <tspan fill="#4169E1" font-weight="600">4</tspan> (edges 1–4)</text>
+    <text x="300" y="146" fill="#5c6b76" font-size="12.5">Fenwick count: 1</text>
+    <text x="425" y="146" fill="#5c6b76" font-size="12.5">Fenwick sum: 4</text>
+    <text x="300" y="180">query [1, 4]: a group needs k−1 = 3 good edges</text>
+    <text x="300" y="204">starts = sum(runs ≥ 3) − (k−2)·count(runs ≥ 3)</text>
+    <text x="300" y="228">= 4 − 2·1 = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  </g>
+  <text x="330" y="324" text-anchor="middle" fill="#1a2026" font-size="13">one bad edge leaves one good run of g = 4; a size-4 group needs k−1 = 3 good edges,</text>
+  <text x="330" y="342" text-anchor="middle" fill="#1a2026" font-size="13">so the run hosts g−(k−1)+1 = 4−3+1 = 2 starts — the Fenwicks answer <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

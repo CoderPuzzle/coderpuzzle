@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <!-- Example 3: edges [[2,4],[0,1],[2,3],[0,2]]; nodes 0(300,60) 1(130,150) 2(400,150) 3(300,260) 4(500,260); last=[4,0,2,0,0], up=[0,6,3,5,5] -->
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="28" y="46">edge label: entry cost of the child</text>
+    <text x="28" y="62">(odd +1, even +2)</text>
+    <text x="28" y="88"><tspan fill="#1a2026">last</tspan> = deepest time below</text>
+    <text x="28" y="104"><tspan fill="#1a2026">up</tspan> = deepest time above</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="281" y1="70" x2="149" y2="140"/>
+    <line x1="316" y1="74" x2="384" y2="136"/>
+    <line x1="386" y1="165" x2="314" y2="245"/>
+    <line x1="414" y1="165" x2="486" y2="245"/>
+  </g>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="216" y="100" text-anchor="end">+1</text>
+    <text x="336" y="100" text-anchor="end">+2</text>
+    <text x="344" y="202" text-anchor="end">+1</text>
+    <text x="452" y="196">+2</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="300" cy="60" r="21"/><circle cx="130" cy="150" r="21"/>
+    <circle cx="400" cy="150" r="21"/><circle cx="300" cy="260" r="21"/>
+    <circle cx="500" cy="260" r="21"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="300" y="65">0</text><text x="130" y="155">1</text><text x="400" y="155">2</text>
+    <text x="300" y="265">3</text><text x="500" y="265">4</text>
+  </g>
+  <g font-size="13">
+    <text x="330" y="64">last <tspan fill="#4169E1" font-weight="600">4</tspan> · up <tspan fill="#5c6b76">0</tspan></text>
+    <text x="360" y="88" fill="#5c6b76" font-size="12">champion child 2 → 2 + 2 = 4</text>
+    <text x="360" y="104" fill="#5c6b76" font-size="12">runner-up child 1 → 0 + 1 = 1</text>
+    <text x="100" y="155" text-anchor="end">last <tspan fill="#5c6b76">0</tspan> · up <tspan fill="#4169E1" font-weight="600">6</tspan></text>
+    <text x="430" y="155">last <tspan fill="#5c6b76">2</tspan> · up <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+    <text x="270" y="265" text-anchor="end">last <tspan fill="#5c6b76">0</tspan> · up <tspan fill="#4169E1" font-weight="600">5</tspan></text>
+    <text x="530" y="265">last <tspan fill="#5c6b76">0</tspan> · up <tspan fill="#4169E1" font-weight="600">5</tspan></text>
+  </g>
+  <text x="320" y="322" text-anchor="middle" fill="#1a2026" font-size="13">at child 1 the champion branch (via 2) is banned: up[1] = 2 + 4 = <tspan fill="#4169E1" font-weight="600">6</tspan>;</text>
+  <text x="320" y="340" text-anchor="middle" fill="#1a2026" font-size="13">answer[i] = max(last[i], up[i]) = <tspan fill="#4169E1" font-weight="600">[4, 6, 3, 5, 5]</tspan>.</text>
+</svg>
