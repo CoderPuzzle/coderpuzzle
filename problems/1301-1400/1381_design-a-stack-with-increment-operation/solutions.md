@@ -18,6 +18,11 @@ pushed _before_ it also deserved the same increments (they were aimed at the
 bottom of the stack), the slot's pending value is folded into the new deepest
 slot before being discarded.
 
+![Through Example 1 the values array moves beside a pending-adds array:
+increment(5,100) and increment(2,100) each land as one pending write, and the
+three pops collect the pending 100/200 on the way out while folding it into
+the slot below, returning 103, 202, 201.](figures/solution-lazy-pending-array.svg)
+
 Why is the fold correct? Increments always target a _prefix_ of the stack, so
 at any moment the pending values are non-decreasing from top to bottom in what
 they cover; the element being popped absorbed exactly the increments recorded

@@ -8,6 +8,8 @@ Break the circle with the standard trick — a non-adjacent selection on a circl
 
 That DP is two-dimensional: `dp[i][j]` = best sum using the first `i` entries of the linear array while picking exactly `j`, with no two chosen adjacent. Either entry `i` is skipped (`dp[i][j] = dp[i-1][j]`) or it is taken, which forces entry `i - 1` to be skipped and adds `arr[i-1]` to `dp[i-2][j-1]`; `-1` entries encode unreachable states so they never win a maximization. The answer of a run is `dp[len][k]`.
 
+![On slices [1,2,3,4,5,6] the two linear runs fill their dp tables for exactly j = 2 non-adjacent picks; into run B's last cell the skip keeps 8 while take adds 6 to dp[3][1] = 4, so the runs yield 8 and 10 and the answer is max(8, 10) = 10.](figures/solution-two-run-dp-tables.svg)
+
 Edge cases: the code defensively special-cases a length-1 array, where both runs would otherwise be empty; requiring exactly `k` picks is essential — picking fewer would miscount the alternating turn order, and the `-1` sentinel guarantees no plan with the wrong pick count is ever scored. Each of the two runs fills an `O(len * k)` table.
 
 **Complexity:** `O(n^2)` time, `O(n^2)` space.

@@ -11,6 +11,10 @@ and 5–8); otherwise one group fits when either the middle block (seats 4–7,
 bits 3–6) is free or one side is; otherwise none. Rows never reserved
 contribute `2 * (n - touched)`.
 
+![Example 1's three rows pack into masks 0110000100, 0000010000 and
+1000000001; the 2-5 / 4-7 / 6-9 block tests give 1, 1 and 2 groups, so
+1 + 1 + 2 = 4.](figures/solution-row-mask-blocks.svg)
+
 **Complexity:** `O(r)` time for `r = reservedSeats.length` to build the masks
 and score each touched row in constant time, `O(t)` space for the `t`
 distinct touched rows.
