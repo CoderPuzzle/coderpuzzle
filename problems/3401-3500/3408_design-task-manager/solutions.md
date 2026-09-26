@@ -21,6 +21,8 @@ returned; `-1` falls out naturally when the heap drains. Each pushed entry is
 popped at most once, so the cleanup amortizes into the pushes, and the map
 keeps every check constant-time.
 
+![After edit(102, 8) in example 1, the heap still holds the stale ghost (20, 102) above the live entries (15, 103), (10, 101), and (8, 102); execTop() pops that ghost because the map records 102 at priority 8, then executes (15, 103) and returns user 3.](figures/solution-lazy-heap-ghost-discard.svg)
+
 Both the Python and Java canonical solutions implement exactly this scheme
 (the Java one stores `long[] {priority, taskId, userId}` triples so
 priorities up to `10⁹` compare safely).

@@ -18,6 +18,8 @@ the greedy value at every row — hence its increment total, the sum of
 per-cell raises, is the global minimum; raising any cell higher can only
 add operations.
 
+![On grid = [[3,2],[1,3],[3,4],[0,1]], the greedy sweep raises column 0 by 3 + 2 + 6 and column 1 by 4, so the final columns (3,4,5,6) and (2,3,4,5) cost 15 operations in total.](figures/solution-greedy-column-raises.svg)
+
 The sweep keeps a single `previous` row: start from a copy of row 0, and
 for each later row lift cells that fail `previous[j] + 1`, counting the
 lift as it happens, otherwise just refresh `previous[j]`. That is one

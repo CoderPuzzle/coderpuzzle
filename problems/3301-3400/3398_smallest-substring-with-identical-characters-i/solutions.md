@@ -16,6 +16,8 @@ always leave some piece above `m`, and since the flips never interact across
 runs, summing the per-run floors over all runs gives the exact minimum flip
 count; the cap `m` is feasible iff that sum stays within `numOps`.
 
+![On s = 000001 with numOps = 1, the runs are 00000 and 1, and cap m = 2 asks floor(5/(2+1)) = 1 interior flip, which placed at s[2] turns the string into 001001 whose identical-character pieces all have length at most 2.](figures/solution-bsearch-cap-interior-flip.svg)
+
 The cap `m == 1` is the one case where runs do interact, because a flip at a
 run boundary can bridge two runs — `"1001"` needs two flips to alternate,
 though its runs considered apart would suggest one. There the predicate is

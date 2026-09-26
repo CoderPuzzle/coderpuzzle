@@ -18,5 +18,7 @@ and the axis works as soon as two gaps appear. Trying the x-axis and
 then the y-axis answers the question. The grid size `n` never enters
 the computation — only the relative order of rectangle edges matters.
 
+![On example 1's rectangles ([[1,0,5,2],[0,2,2,4],[3,2,5,3],[0,4,4,5]]), the sorted x-projections never gap under the running-max sweep while the sorted y-projections gap at start 2 ≥ max end 2 and start 4 ≥ max end 4, so the two horizontal cuts at y = 2 and y = 4 exist.](figures/solution-projection-gap-sweep.svg)
+
 **Complexity:** `O(m log m)` time, `O(m)` space for the projection
 lists, where `m` is the number of rectangles.

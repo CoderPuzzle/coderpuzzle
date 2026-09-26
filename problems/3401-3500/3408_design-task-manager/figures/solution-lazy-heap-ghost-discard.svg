@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- heap array after edit(102, 8) = [(20,102),(15,103),(10,101),(5,104),(8,102)]; boxes 100x36 -->
+  <text x="340" y="26" text-anchor="middle" fill="#5c6b76" font-size="13">after edit(102, 8) the heap keeps the stale (20, 102) and gains fresh (8, 102)</text>
+  <text x="235" y="44" text-anchor="middle" fill="#9aa7b2" font-size="11.5">stale ghost</text>
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="235" y1="88" x2="125" y2="132"/>
+    <line x1="235" y1="88" x2="345" y2="132"/>
+    <line x1="125" y1="168" x2="65" y2="212"/>
+    <line x1="125" y1="168" x2="185" y2="212"/>
+  </g>
+  <rect x="185" y="52" width="100" height="36" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <rect x="75" y="132" width="100" height="36" rx="6" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <rect x="295" y="132" width="100" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="15" y="212" width="100" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="135" y="212" width="100" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="13">
+    <text x="235" y="75" fill="#9aa7b2">(20, 102)</text>
+    <text x="125" y="155" fill="#1a2026" font-weight="600">(15, 103)</text>
+    <text x="345" y="155" fill="#1a2026">(10, 101)</text>
+    <text x="65" y="235" fill="#1a2026">(5, 104)</text>
+    <text x="185" y="235" fill="#1a2026">(8, 102)</text>
+  </g>
+  <!-- execTop validity checks against the map -->
+  <line x1="285" y1="70" x2="452" y2="70" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrowMuted)"/>
+  <path d="M 172 170 L 452 190" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g font-size="12.5">
+    <text x="460" y="60" fill="#1a2026">map: 102 → 8 (user 2)</text>
+    <text x="460" y="84" fill="#5c6b76">execTop() peek (20, 102):</text>
+    <text x="460" y="104" fill="#1a2026">map says <tspan fill="#4169E1" font-weight="600">8 ≠ 20</tspan> →</text>
+    <text x="460" y="124" fill="#4169E1" font-weight="600">stale ghost — pop, discard</text>
+    <text x="460" y="158" fill="#5c6b76">next top (15, 103):</text>
+    <text x="460" y="178" fill="#1a2026">map matches 15 — live,</text>
+    <text x="460" y="198" fill="#4169E1" font-weight="600">execute task 103 of user 3</text>
+  </g>
+  <text x="340" y="282" text-anchor="middle" fill="#1a2026" font-size="13">execTop() discards the stale (20, 102), then executes (15, 103) — task 103 of</text>
+  <text x="340" y="300" text-anchor="middle" fill="#1a2026" font-size="13">user 3 <tspan fill="#4169E1" font-weight="600">returns 3</tspan>; the fresh (8, 102) and the rest stay queued for later calls.</text>
+</svg>

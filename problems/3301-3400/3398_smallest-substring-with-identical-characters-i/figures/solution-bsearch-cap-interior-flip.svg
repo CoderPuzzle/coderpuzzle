@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="300" fill="#ffffff"/>
+  <!-- s = 000001, numOps = 1; cells 48x44, pitch 52, first cell at x = 300; bisection cap m = 2 -->
+  <!-- run brackets above row A -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="none">
+    <path d="M 300 42 L 300 36 L 556 36 L 556 42"/>
+    <path d="M 560 42 L 560 36 L 608 36 L 608 42"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="428" y="28">run L = 5</text><text x="584" y="28">L = 1</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="300" y="50" width="48" height="44"/><rect x="352" y="50" width="48" height="44"/>
+    <rect x="404" y="50" width="48" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+    <rect x="456" y="50" width="48" height="44"/><rect x="508" y="50" width="48" height="44"/>
+    <rect x="560" y="50" width="48" height="44"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="324" y="77">0</text><text x="376" y="77">0</text><text x="428" y="77">0</text>
+    <text x="480" y="77">0</text><text x="532" y="77">0</text><text x="584" y="77">1</text>
+  </g>
+  <text x="428" y="112" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">flip s[2] to 1</text>
+  <!-- predicate text -->
+  <g font-size="13" fill="#1a2026">
+    <text x="30" y="64">s = 000001</text>
+    <text x="30" y="84">numOps = 1</text>
+    <text x="30" y="114">cap <tspan fill="#4169E1" font-weight="600">m = 2</tspan>:</text>
+    <text x="30" y="134">run L = 5 takes</text>
+    <text x="30" y="154">floor(5/(2+1)) = <tspan fill="#4169E1" font-weight="600">1 flip</tspan></text>
+    <text x="30" y="174">strictly inside, at s[2]</text>
+    <text x="30" y="198">s → 001001</text>
+  </g>
+  <!-- result row -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="300" y="170" width="48" height="44"/><rect x="352" y="170" width="48" height="44"/>
+    <rect x="404" y="170" width="48" height="44" stroke="#4169E1" stroke-width="2"/>
+    <rect x="456" y="170" width="48" height="44"/><rect x="508" y="170" width="48" height="44"/>
+    <rect x="560" y="170" width="48" height="44"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="324" y="197">0</text><text x="376" y="197">0</text><text x="428" y="197">1</text>
+    <text x="480" y="197">0</text><text x="532" y="197">0</text><text x="584" y="197">1</text>
+  </g>
+  <!-- piece brackets: 00 | 1 | 00 | 1 -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="none">
+    <path d="M 300 224 L 300 218 L 400 218 L 400 224"/>
+    <path d="M 404 224 L 404 218 L 452 218 L 452 224"/>
+    <path d="M 456 224 L 456 218 L 556 218 L 556 224"/>
+    <path d="M 560 224 L 560 218 L 608 218 L 608 224"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="350" y="240">2</text><text x="428" y="240">1</text>
+    <text x="506" y="240">2</text><text x="584" y="240">1</text>
+  </g>
+  <text x="330" y="268" text-anchor="middle" fill="#1a2026" font-size="13">One interior flip splits 00000 into pieces of length 2 · 1 · 2 · 1, so 001001's</text>
+  <text x="330" y="286" text-anchor="middle" fill="#1a2026" font-size="13">longest identical piece has length <tspan fill="#4169E1" font-weight="600">2</tspan> — the smallest cap feasible with 1 flip.</text>
+</svg>
