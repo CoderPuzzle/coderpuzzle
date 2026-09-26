@@ -11,6 +11,8 @@ window grows, so `atLeast` is well-behaved, and every exactly-k window is in
 `atLeast(k)` but not `atLeast(k + 1)`; the answer is simply
 `atLeast(k) - atLeast(k + 1)`, computed with two sweeps of the same routine.
 
+![At the shared left end l = 0 of "ieaouqqieaouqq" with k = 1, the atLeast(1) window stops at r = 5 and counts 14 − 5 = 9 windows while atLeast(2) stops at r = 6 and counts 8, and the difference 1 is exactly the one-consonant substring "ieaouq".](figures/solution-atleast-window-subtract.svg)
+
 Each sweep walks a two-pointer window: for every left end `l`, extend the
 right end `r` until the window first holds all five vowels (tracked as a
 count of distinct vowel letters seen) and `c` consonants; then that window

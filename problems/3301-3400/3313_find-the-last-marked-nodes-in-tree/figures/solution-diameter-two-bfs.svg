@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="340" fill="#ffffff"/>
+  <!-- Example 3: edges [[0,1],[0,2],[2,3],[2,4]]; sweep 1 from 0 -> u = 3 (d = 2);
+       sweep 2 from 3 -> v = 1 (d = 3). distU = [2,3,1,0,1], distV = [1,0,2,3,3];
+       distU larger (answer 3): nodes 0,1 accent; distV larger (answer 1): nodes 2,3,4 gray -->
+  <text x="30" y="28" fill="#5c6b76" font-size="13">sweep 1 — BFS from 0: farthest is 3 (d = 2)</text>
+  <text x="30" y="48" fill="#4169E1" font-size="13" font-weight="600">sweep 2 — BFS from u = 3: farthest is v = 1 (d = 3)</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="72" y1="150" x2="148" y2="150"/>
+    <line x1="192" y1="150" x2="278" y2="150"/>
+    <line x1="320" y1="140" x2="420" y2="90"/>
+    <line x1="320" y1="160" x2="420" y2="210"/>
+  </g>
+  <circle cx="440" cy="80" r="27" fill="none" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="50" cy="150" r="27" fill="none" stroke="#5c6b76" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <circle cx="170" cy="150" r="22" fill="#dbe4fb"/>
+    <circle cx="50" cy="150" r="22" fill="#dbe4fb"/>
+    <circle cx="300" cy="150" r="22" fill="#f0f3f7"/>
+    <circle cx="440" cy="80" r="22" fill="#f0f3f7"/>
+    <circle cx="440" cy="220" r="22" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="170" y="155">0</text><text x="50" y="155">1</text><text x="300" y="155">2</text>
+    <text x="440" y="85">3</text><text x="440" y="225">4</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="170" y="188">U2 V1</text><text x="50" y="188">U3 V0</text><text x="300" y="188">U1 V2</text>
+    <text x="440" y="118">U0 V3</text><text x="440" y="258">U1 V3</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="60" y="272" width="14" height="14" fill="#dbe4fb"/>
+    <rect x="372" y="272" width="14" height="14" fill="#f0f3f7"/>
+  </g>
+  <text x="82" y="284" fill="#5c6b76" font-size="12.5">distU larger → last mark u = 3 (nodes 0, 1)</text>
+  <text x="394" y="284" fill="#5c6b76" font-size="12.5">distV larger → v = 1 (2, 3, 4)</text>
+  <text x="300" y="312" text-anchor="middle" fill="#1a2026" font-size="13">Comparing the two distances per node yields the answers <tspan fill="#4169E1" font-weight="600">[3, 3, 1, 1, 1]</tspan>,</text>
+  <text x="300" y="330" text-anchor="middle" fill="#1a2026" font-size="13">e.g. node 0: distU = 2 &gt; distV = 1, so its last mark is u = 3.</text>
+</svg>

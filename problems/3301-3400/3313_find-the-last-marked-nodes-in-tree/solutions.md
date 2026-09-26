@@ -19,4 +19,6 @@ second, so either is a valid answer. All three traversals are iterative
 level walks over an explicit queue, so no recursion touches the call stack
 even at the top of the size range.
 
+![On the 5-node tree of Example 3, the two BFS sweeps pick diameter endpoints u = 3 and v = 1, and comparing distU with distV at every node yields the answers [3, 3, 1, 1, 1].](figures/solution-diameter-two-bfs.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

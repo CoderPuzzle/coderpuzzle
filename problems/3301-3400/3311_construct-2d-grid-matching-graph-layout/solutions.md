@@ -24,4 +24,6 @@ new row is the unique unplaced common neighbor of `new_row[j-1]` and the cell
 above. Since grid degrees never exceed 4, all neighbor tests are constant-time
 scans over adjacency lists, giving a linear reconstruction.
 
+![On Example 3, the degree-2 corner 8 starts the first row, which walks 8 → 6 → 3 past the shared neighbor, and rows two and three are then forced as unplaced common neighbors from above, landing on the grid [[8, 6, 3], [7, 4, 2], [1, 0, 5]].](figures/solution-grid-reconstruction-steps.svg)
+
 **Complexity:** `O(n + |edges|)` time, `O(n + |edges|)` space.

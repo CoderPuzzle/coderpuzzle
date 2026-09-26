@@ -17,6 +17,8 @@ This matters at this version's bounds: with `nums[i]` up to 10⁹ an
 ascending scan over candidates is out of the question, while the closed
 form is a handful of operations per entry.
 
+![On nums = [2, 3, 5, 7], clearing the highest bit of each trailing run of 1s gives 111 → 011 = 3, 101 → 100 = 4, and 11 → 01 = 1, while even 2 has no run and becomes -1.](figures/solution-trailing-ones-clear.svg)
+
 All intermediate values stay below 2³¹, so 32-bit integers are safe in
 every language.
 

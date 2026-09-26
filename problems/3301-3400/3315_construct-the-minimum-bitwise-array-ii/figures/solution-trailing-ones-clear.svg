@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 410" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="410" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [2,3,5,7] -> ans = [-1,1,4,3]; bit boxes 26x26 right-aligned at x=186 (3-bit rows at
+       x=100,130,160; 2-bit rows at x=130,160); group tops T = 34, 118, 202, 286;
+       run outline accents the trailing 1s; arrow copies the run with its highest bit cleared -->
+  <g fill="#9aa7b2" font-size="12">
+    <text x="80" y="22" text-anchor="end">x</text>
+    <text x="143" y="22" text-anchor="middle">binary</text>
+    <text x="250" y="22">minimal a</text>
+    <text x="340" y="22">check a OR (a + 1)</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="100" y="34" width="26" height="26" fill="#ffffff"/><rect x="130" y="34" width="26" height="26" fill="#ffffff"/><rect x="160" y="34" width="26" height="26" fill="#ffffff"/>
+    <rect x="100" y="118" width="26" height="26" fill="#ffffff"/><rect x="130" y="118" width="26" height="26" fill="#ffffff"/><rect x="160" y="118" width="26" height="26" fill="#ffffff"/>
+    <rect x="130" y="202" width="26" height="26" fill="#ffffff"/><rect x="160" y="202" width="26" height="26" fill="#ffffff"/>
+    <rect x="130" y="286" width="26" height="26" fill="#ffffff"/><rect x="160" y="286" width="26" height="26" fill="#ffffff"/>
+  </g>
+  <rect x="96" y="30" width="94" height="34" rx="6" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="156" y="114" width="34" height="34" rx="6" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="126" y="198" width="64" height="34" rx="6" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="80" y="53">7</text>
+    <text x="113" y="53">1</text><text x="143" y="53">1</text><text x="173" y="53">1</text>
+    <text x="80" y="137">5</text>
+    <text x="113" y="137">1</text><text x="143" y="137">0</text><text x="173" y="137">1</text>
+    <text x="80" y="221">3</text>
+    <text x="143" y="221">1</text><text x="173" y="221">1</text>
+    <text x="80" y="305">2</text>
+    <text x="143" y="305">1</text><text x="173" y="305">0</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 113 68 L 113 78" marker-end="url(#arrow)"/>
+    <path d="M 173 152 L 173 162" marker-end="url(#arrow)"/>
+    <path d="M 143 236 L 143 246" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="130" y="82" width="26" height="26" fill="#ffffff"/><rect x="160" y="82" width="26" height="26" fill="#ffffff"/>
+    <rect x="100" y="166" width="26" height="26" fill="#ffffff"/><rect x="130" y="166" width="26" height="26" fill="#ffffff"/>
+    <rect x="160" y="250" width="26" height="26" fill="#ffffff"/>
+  </g>
+  <rect x="100" y="82" width="26" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+  <rect x="160" y="166" width="26" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+  <rect x="130" y="250" width="26" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="113" y="101" fill="#4169E1">0</text><text x="143" y="101">1</text><text x="173" y="101">1</text>
+    <text x="113" y="185">1</text><text x="143" y="185">0</text><text x="173" y="185" fill="#4169E1">0</text>
+    <text x="143" y="269" fill="#4169E1">0</text><text x="173" y="269">1</text>
+  </g>
+  <g fill="#4169E1" font-weight="600" font-size="15">
+    <text x="250" y="101">a = 3</text>
+    <text x="250" y="185">a = 4</text>
+    <text x="250" y="269">a = 1</text>
+  </g>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="340" y="101">3 OR 4 = 7</text>
+    <text x="340" y="185">4 OR 5 = 5</text>
+    <text x="340" y="269">1 OR 2 = 3</text>
+    <text x="250" y="305">even: a OR (a + 1) is always odd,</text>
+    <text x="250" y="323">no trailing 1s → a = <tspan fill="#4169E1" font-weight="600">-1</tspan></text>
+  </g>
+  <text x="280" y="372" text-anchor="middle" fill="#1a2026" font-size="13">Clearing the highest bit of the trailing 1-run gives the smallest a:</text>
+  <text x="280" y="390" text-anchor="middle" fill="#1a2026" font-size="13">7 → 3, 5 → 4, 3 → 1; even 2 has no run — ans = <tspan fill="#4169E1" font-weight="600">[-1, 1, 4, 3]</tspan>.</text>
+</svg>

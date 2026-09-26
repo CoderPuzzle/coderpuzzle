@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="280" fill="#ffffff"/>
+  <!-- word = "ieaouqqieaouqq" (n = 14), k = 1; cells 34x34 at x = 84+34i, y = 84; consonant q shaded;
+       atLeast(1) bracket spans l=0..r=5, atLeast(2) bracket spans l=0..r=6 -->
+  <text x="186" y="48" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">atLeast(1): first valid r = 5</text>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 84 78 L 84 60 L 288 60 L 288 78"/>
+  </g>
+  <text x="298" y="64" fill="#5c6b76" font-size="12.5">→ counts n − r = 14 − 5 = 9 windows</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="84" y="84" width="34" height="34" fill="#ffffff"/><rect x="118" y="84" width="34" height="34" fill="#ffffff"/>
+    <rect x="152" y="84" width="34" height="34" fill="#ffffff"/><rect x="186" y="84" width="34" height="34" fill="#ffffff"/>
+    <rect x="220" y="84" width="34" height="34" fill="#ffffff"/><rect x="254" y="84" width="34" height="34" fill="#dbe4fb"/>
+    <rect x="288" y="84" width="34" height="34" fill="#dbe4fb"/><rect x="322" y="84" width="34" height="34" fill="#ffffff"/>
+    <rect x="356" y="84" width="34" height="34" fill="#ffffff"/><rect x="390" y="84" width="34" height="34" fill="#ffffff"/>
+    <rect x="424" y="84" width="34" height="34" fill="#ffffff"/><rect x="458" y="84" width="34" height="34" fill="#ffffff"/>
+    <rect x="492" y="84" width="34" height="34" fill="#dbe4fb"/><rect x="526" y="84" width="34" height="34" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="101" y="106">i</text><text x="135" y="106">e</text><text x="169" y="106">a</text>
+    <text x="203" y="106">o</text><text x="237" y="106">u</text><text x="271" y="106">q</text>
+    <text x="305" y="106">q</text><text x="339" y="106">i</text><text x="373" y="106">e</text>
+    <text x="407" y="106">a</text><text x="441" y="106">o</text><text x="475" y="106">u</text>
+    <text x="509" y="106">q</text><text x="543" y="106">q</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="101" y="134">0</text><text x="135" y="134">1</text><text x="169" y="134">2</text>
+    <text x="203" y="134">3</text><text x="237" y="134">4</text><text x="271" y="134">5</text>
+    <text x="305" y="134">6</text><text x="339" y="134">7</text><text x="373" y="134">8</text>
+    <text x="407" y="134">9</text><text x="441" y="134">10</text><text x="475" y="134">11</text>
+    <text x="509" y="134">12</text><text x="543" y="134">13</text>
+  </g>
+  <g stroke="#5c6b76" stroke-width="2" fill="none">
+    <path d="M 84 142 L 84 154 L 322 154 L 322 142"/>
+  </g>
+  <text x="203" y="176" text-anchor="middle" fill="#5c6b76" font-size="12.5" font-weight="600">atLeast(2): first valid r = 6</text>
+  <text x="332" y="158" fill="#5c6b76" font-size="12.5">→ counts n − r = 14 − 6 = 8 windows</text>
+  <text x="84" y="208" fill="#1a2026" font-size="13">Same left end l = 0: 9 − 8 = <tspan fill="#4169E1" font-weight="600">1</tspan> exactly-k window — r = 5, the substring "ieaouq".</text>
+  <text x="320" y="244" text-anchor="middle" fill="#1a2026" font-size="13">Summed over all left ends: atLeast(1) = 39 and atLeast(2) = 36,</text>
+  <text x="320" y="262" text-anchor="middle" fill="#1a2026" font-size="13">so the exactly-one-consonant count is 39 − 36 = <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

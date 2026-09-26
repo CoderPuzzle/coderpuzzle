@@ -17,6 +17,8 @@ into the group, and the answer is every method `0 .. n - 1`. Otherwise
 the removal goes through, and the answer is every method the traversal
 did not mark, emitted in ascending order.
 
+![In Example 1 (n = 4, k = 1), the iterative DFS from method 1 shades the suspicious set {1, 2}, but the outside edges 0 → 1 and 3 → 2 invoke into that set, so nothing can be removed and the answer stays [0, 1, 2, 3].](figures/solution-outside-invocation-blocks.svg)
+
 Both passes are linear over the graph, so even the maximum shape —
 `n = 10⁵` methods and `2 * 10⁵` invocations — is a single linear sweep
 per structure. A BFS frontier instead of the DFS stack, or scanning the
