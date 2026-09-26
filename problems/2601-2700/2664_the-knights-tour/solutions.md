@@ -9,6 +9,10 @@ square whose own onward move count is smallest. Corners and near-dead cells get
 consumed early, which is exactly what a Hamiltonian path needs — leaving a
 degree-1 cell for later is how tours die.
 
+![On the 3x4 board from (0,0), the completed tour is numbered 0..11 with
+knight-move arrows; at junction (0,1) Warnsdorff takes (1,3) with 1 onward
+move over (2,2) with 2.](figures/solution-warnsdorff-onward-counts.svg)
+
 The search keeps the standard backtracking safety net: every candidate is tried
 in Warnsdorff order, a square is unmarked when its subtree fails, and the first
 complete `m * n`-step ordering is returned. With the heuristic ordering, the

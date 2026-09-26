@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- board [[0,3,6,9],[11,8,1,4],[2,5,10,7]] from (0,0); cells 110x52 at (100+110c, 70+52r);
+       muted arrows join successive visit numbers; junction (0,1) accented, its candidates
+       (1,3) onward 1 (taken) vs (2,2) onward 2 (skipped) annotated in-cell -->
+  <text x="320" y="26" text-anchor="middle" fill="#5c6b76" font-size="12.5">m = 3, n = 4, start (0,0) — cell numbers give the visit order 0..11</text>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="100" y="70" width="110" height="52"/><rect x="210" y="70" width="110" height="52"/><rect x="320" y="70" width="110" height="52"/><rect x="430" y="70" width="110" height="52"/>
+    <rect x="100" y="122" width="110" height="52"/><rect x="210" y="122" width="110" height="52"/><rect x="320" y="122" width="110" height="52"/>
+    <rect x="100" y="174" width="110" height="52"/><rect x="210" y="174" width="110" height="52"/><rect x="430" y="174" width="110" height="52"/>
+  </g>
+  <rect x="210" y="70" width="110" height="52" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <rect x="430" y="122" width="110" height="52" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <rect x="320" y="174" width="110" height="52" fill="#f0f3f7" stroke="#42525e" stroke-width="1.4"/>
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.3" marker-end="url(#arrowG)">
+    <path d="M 165 98 L 350 142"/><path d="M 365 150 L 180 194"/><path d="M 162 193 L 247 114"/>
+    <path d="M 275 98 L 460 142" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+    <path d="M 475 150 L 290 194"/><path d="M 272 193 L 357 114"/><path d="M 382 103 L 467 182"/>
+    <path d="M 475 198 L 290 154"/><path d="M 275 146 L 460 102"/><path d="M 476 104 L 393 182"/>
+    <path d="M 365 198 L 180 154"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="155" y="101">0</text><text x="265" y="101">3</text><text x="375" y="101">6</text><text x="485" y="101">9</text>
+    <text x="155" y="153">11</text><text x="265" y="153">8</text><text x="375" y="153">1</text><text x="485" y="153">4</text>
+    <text x="155" y="205">2</text><text x="265" y="205">5</text><text x="375" y="205">10</text><text x="485" y="205">7</text>
+  </g>
+  <text x="485" y="169" text-anchor="middle" fill="#4169E1" font-size="10" font-weight="600">onward 1</text>
+  <text x="375" y="221" text-anchor="middle" fill="#9aa7b2" font-size="10">onward 2</text>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Warnsdorff always takes the candidate square with the fewest onward moves:</text>
+  <text x="320" y="322" text-anchor="middle" fill="#1a2026" font-size="13">at (0,1) that is (1,3) with <tspan fill="#4169E1" font-weight="600">1</tspan>, not (2,2) with <tspan fill="#9aa7b2" font-weight="600">2</tspan> — the tour covers all 12 squares.</text>
+</svg>

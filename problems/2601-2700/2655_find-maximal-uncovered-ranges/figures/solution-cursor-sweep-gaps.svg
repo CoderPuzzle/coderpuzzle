@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="310" fill="#ffffff"/>
+  <!-- n=10; cells 52x36 at x = 40 + 52i, y 64; covered [3,5] and [7,8] shaded #dbe4fb;
+       gap brackets under cells 0-2, 6, 9; sweep trace rows below -->
+  <text x="320" y="26" text-anchor="middle" fill="#5c6b76" font-size="12.5">n = 10, ranges sorted by start: [3,5], [7,8]</text>
+  <g fill="none" stroke="#5c6b76" stroke-width="1.5">
+    <path d="M 196 60 V 54 H 352 V 60"/>
+    <path d="M 404 60 V 54 H 508 V 60"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="274" y="46">[3,5]</text><text x="456" y="46">[7,8]</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="40" y="64" width="52" height="36" fill="#ffffff"/><rect x="92" y="64" width="52" height="36" fill="#ffffff"/>
+    <rect x="144" y="64" width="52" height="36" fill="#ffffff"/><rect x="196" y="64" width="52" height="36" fill="#dbe4fb"/>
+    <rect x="248" y="64" width="52" height="36" fill="#dbe4fb"/><rect x="300" y="64" width="52" height="36" fill="#dbe4fb"/>
+    <rect x="352" y="64" width="52" height="36" fill="#ffffff"/><rect x="404" y="64" width="52" height="36" fill="#dbe4fb"/>
+    <rect x="456" y="64" width="52" height="36" fill="#dbe4fb"/><rect x="508" y="64" width="52" height="36" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="66" y="87">0</text><text x="118" y="87">1</text><text x="170" y="87">2</text>
+    <text x="222" y="87">3</text><text x="274" y="87">4</text><text x="326" y="87">5</text>
+    <text x="378" y="87">6</text><text x="430" y="87">7</text><text x="482" y="87">8</text>
+    <text x="534" y="87">9</text>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 40 104 V 110 H 196 V 104"/>
+    <path d="M 352 104 V 110 H 404 V 104"/>
+    <path d="M 508 104 V 110 H 560 V 104"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-weight="600" font-size="13">
+    <text x="118" y="128">[0, 2]</text><text x="378" y="128">[6, 6]</text><text x="534" y="128">[9, 9]</text>
+  </g>
+  <text x="110" y="154" fill="#5c6b76" font-size="12">sorted-cursor sweep</text>
+  <g fill="#1a2026" font-size="13">
+    <text x="110" y="180">cur = 0: range [3,5] starts at 3 &gt; 0, so emit <tspan fill="#4169E1" font-weight="600">[0, 2]</tspan>; cur jumps to 6</text>
+    <text x="110" y="206">cur = 6: range [7,8] starts at 7 &gt; 6, so emit <tspan fill="#4169E1" font-weight="600">[6, 6]</tspan>; cur jumps to 9</text>
+    <text x="110" y="232">cur = 9: ranges exhausted and 9 &lt; n = 10, so emit <tspan fill="#4169E1" font-weight="600">[9, 9]</tspan></text>
+  </g>
+  <text x="320" y="268" text-anchor="middle" fill="#1a2026" font-size="13">A maximal gap appears exactly where the next sorted range starts past the cursor:</text>
+  <text x="320" y="290" text-anchor="middle" fill="#1a2026" font-size="13">the uncovered ranges are <tspan fill="#4169E1" font-weight="600">[[0,2], [6,6], [9,9]]</tspan>.</text>
+</svg>

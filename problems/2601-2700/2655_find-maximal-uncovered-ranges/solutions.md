@@ -19,6 +19,10 @@ emission order is automatically ascending by start, and gaps are maximal
 by construction: adjacent emissions are always separated by at least one
 covered cell belonging to some input range.
 
+![On n = 10 with sorted ranges [3,5] and [7,8], the cursor sweep emits the
+gaps [0,2], [6,6], [9,9] — each exactly where the next range starts past
+the cursor.](figures/solution-cursor-sweep-gaps.svg)
+
 Widening: with n up to 10⁹ the cursor's `e + 1` reaches n itself, which
 still fits 32 bits (10⁹ < 2³¹ − 1), though C++ and Rust keep the running
 cursor in 64-bit as belt-and-braces; Python, Go ints, Java longs-free int

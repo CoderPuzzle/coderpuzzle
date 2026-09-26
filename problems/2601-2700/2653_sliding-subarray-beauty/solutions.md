@@ -20,6 +20,9 @@ beauty is 0. Each slide touches one entering and one leaving element and
 walks at most fifty buckets, so no sorting or ordered-map machinery is
 ever needed for windows whose contents change only by one element.
 
+![On nums = [1,-1,-3,-2,3] with k = 3, x = 2, each window's bucket walk stops
+at its 2nd-smallest negative, giving beauties -1, -2, -2.](figures/solution-bucket-walk-beauty.svg)
+
 Widening: every answer lies in [-50, 0], comfortably inside 32-bit range
 in all seven languages, and each bucket count is at most k <= n <= 10⁵,
 also far below any overflow bound — JavaScript numbers stay exact since

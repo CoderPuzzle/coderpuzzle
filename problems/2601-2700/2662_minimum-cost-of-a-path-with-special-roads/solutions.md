@@ -22,4 +22,8 @@ the crux: a road priced cheaper than its own Manhattan distance is the only
 way an edge can beat walking, and roads facing the wrong direction are simply
 never relaxed backwards.
 
+![On start [1,1], target [4,5] with roads [[1,2,3,3,2],[3,4,4,5,1]], the
+accented route (1,1) → (1,2) → (3,3) → (3,4) → (4,5) mixes Manhattan walks
+with the two directed roads for 1 + 2 + 1 + 1 = 5.](figures/solution-dijkstra-road-endpoints.svg)
+
 **Complexity:** `O(R²)` time and `O(R)` space with `R <= 402` candidate nodes.
