@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="350" fill="#ffffff"/>
+  <!-- nums = [1,3,2,4,5], k = 3; window rows y0 = 34/134/234; cells 48x44 at x = 120/172/224; value inside, global index under it -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="120" y="34" width="48" height="44"/><rect x="172" y="34" width="48" height="44"/><rect x="224" y="34" width="48" height="44"/>
+    <rect x="120" y="134" width="48" height="44"/><rect x="172" y="134" width="48" height="44"/><rect x="224" y="134" width="48" height="44"/>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5">
+    <rect x="120" y="234" width="48" height="44"/><rect x="172" y="234" width="48" height="44"/><rect x="224" y="234" width="48" height="44"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="144" y="54">1</text><text x="196" y="54">3</text><text x="248" y="54">2</text>
+    <text x="144" y="154">3</text><text x="196" y="154">2</text><text x="248" y="154">4</text>
+    <text x="144" y="254" fill="#5c6b76">2</text><text x="196" y="254" fill="#5c6b76">4</text><text x="248" y="254" fill="#5c6b76">5</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5" fill="#9aa7b2">
+    <text x="144" y="71">0</text><text x="196" y="71">1</text><text x="248" y="71">2</text>
+    <text x="144" y="171">1</text><text x="196" y="171">2</text><text x="248" y="171">3</text>
+    <text x="144" y="271">2</text><text x="196" y="271">3</text><text x="248" y="271">4</text>
+  </g>
+  <g font-size="13" fill="#5c6b76">
+    <text x="36" y="61">window 0</text>
+    <text x="36" y="161">window 1</text>
+    <text x="36" y="261">window 2</text>
+  </g>
+  <!-- running-max scan marks right, running-min scan marks left -->
+  <g fill="#4169E1" font-size="11.5" font-weight="600" text-anchor="middle">
+    <text x="248" y="18">right = 2</text>
+    <text x="196" y="101">left = 1</text>
+    <text x="196" y="118">right = 2</text>
+    <text x="144" y="201">left = 1</text>
+  </g>
+  <g fill="#4169E1">
+    <polygon points="242,25 254,25 248,34"/>
+    <polygon points="196,78 190,87 202,87"/>
+    <polygon points="190,125 202,125 196,134"/>
+    <polygon points="144,178 138,187 150,187"/>
+  </g>
+  <g font-size="13.5" fill="#1a2026">
+    <text x="300" y="61">sort [1..2] → <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="300" y="161">sort [1..2] → <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="300" y="261" fill="#5c6b76">already sorted → <tspan fill="#4169E1" font-weight="600">0</tspan></text>
+  </g>
+  <text x="320" y="316" text-anchor="middle" font-size="13" fill="#1a2026">The max-scan sets right: the last value below the running max; the min-scan sets left.</text>
+  <text x="320" y="336" text-anchor="middle" font-size="13" fill="#1a2026">Answers <tspan fill="#4169E1" font-weight="600">[2, 2, 0]</tspan>: windows 0 and 1 each sort [3, 2]; window 2 [2,4,5] is already sorted.</text>
+</svg>

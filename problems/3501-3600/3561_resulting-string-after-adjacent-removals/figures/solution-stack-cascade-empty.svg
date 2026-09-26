@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- s = "adcb"; columns cx = 88 + 152i; stack boxes 56x32, bottom row y 164-196, above 132-164; dashed box + accent slash = cancelled pair -->
+  <g font-size="12.5" fill="#5c6b76" text-anchor="middle">
+    <text x="88" y="40">read 'a'</text>
+    <text x="240" y="40">read 'd'</text>
+    <text x="392" y="40">read 'c'</text>
+    <text x="544" y="40">read 'b'</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="68" y="56" width="40" height="30" rx="6"/>
+    <rect x="220" y="56" width="40" height="30" rx="6"/>
+    <rect x="372" y="56" width="40" height="30" rx="6"/>
+    <rect x="524" y="56" width="40" height="30" rx="6"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="88" y="76">a</text><text x="240" y="76">d</text><text x="392" y="76">c</text><text x="544" y="76">b</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5">
+    <line x1="88" y1="92" x2="88" y2="156" marker-end="url(#arrow)"/>
+    <line x1="240" y1="92" x2="240" y2="124" marker-end="url(#arrow)"/>
+    <line x1="392" y1="92" x2="392" y2="124" marker-end="url(#arrow)"/>
+    <line x1="544" y1="92" x2="544" y2="156" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.5">
+    <line x1="122" y1="176" x2="196" y2="176" marker-end="url(#arrowg)"/>
+    <line x1="274" y1="176" x2="348" y2="176" marker-end="url(#arrowg)"/>
+    <line x1="426" y1="176" x2="500" y2="176" marker-end="url(#arrowg)"/>
+  </g>
+  <line x1="46" y1="200" x2="604" y2="200" stroke="#dbe4fb" stroke-width="2"/>
+  <text x="12" y="196" font-size="11" fill="#9aa7b2">stack</text>
+  <!-- real stack entries -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="60" y="164" width="56" height="32"/>
+    <rect x="212" y="164" width="56" height="32"/>
+    <rect x="212" y="132" width="56" height="32"/>
+    <rect x="364" y="164" width="56" height="32"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="88" y="185">a</text>
+    <text x="240" y="185">a</text><text x="240" y="153">d</text>
+    <text x="392" y="185">a</text>
+  </g>
+  <!-- cancelled entries: pushed d popped by c, exposed a popped by b -->
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3,3">
+    <rect x="364" y="132" width="56" height="32"/>
+    <rect x="516" y="164" width="56" height="32"/>
+  </g>
+  <g text-anchor="middle" font-size="14" fill="#9aa7b2">
+    <text x="392" y="153">d</text>
+    <text x="544" y="185">a</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5">
+    <line x1="372" y1="139" x2="412" y2="157"/>
+    <line x1="524" y1="171" x2="564" y2="189"/>
+  </g>
+  <g font-size="11" fill="#5c6b76" text-anchor="middle">
+    <text x="88" y="222">stack empty → push</text>
+    <text x="240" y="222">a·d: diff 3 → push</text>
+    <text x="392" y="222">d·c: diff 1 → pop both</text>
+    <text x="544" y="222">a·b: diff 1 → pop both</text>
+  </g>
+  <text x="320" y="266" text-anchor="middle" font-size="13" fill="#1a2026">'c' cancels 'd', then 'b' cancels the newly exposed 'a' — the cascade empties the stack.</text>
+  <text x="320" y="286" text-anchor="middle" font-size="13" fill="#1a2026">After each pop the new top meets the next character, so both pops happen in one pass.</text>
+</svg>

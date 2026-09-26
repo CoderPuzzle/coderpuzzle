@@ -37,6 +37,8 @@ includes it, because the segment can only wander inside the ancestor's
 subtree. The shallowest entry between `first[x]` and `first[y]` therefore is
 the LCA itself, found without a single upward step.
 
+![On Example 1's tree the query [2,3,4] paths 2-1, 3-1 and 1-4 meet at LCA 1, and d(x,y) = f(x)+f(y)−2·f(1) gives 8, 9 and 7, so the Steiner subtree of edges 3+5+4 totals 12.](figures/solution-steiner-paths-meet-at-lca.svg)
+
 Answering "shallowest entry in a range" in constant time is the sparse
 table's job. `table[k][i]` holds the shallowest node over the `2^k` tour
 entries starting at `i`; each level is built from the one below by comparing

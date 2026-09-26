@@ -15,6 +15,8 @@ own multiset re-sorts into the sorted window's slice — and the answer is
 `right - left + 1`. A window with no violation never sets `right`, so its
 answer is `0`, covering the already-sorted case for free.
 
+![On nums=[1,3,2,4,5] with k=3 the running-max scan marks right = 2 and the running-min scan marks left = 1 in windows 0 and 1, whose answers are 2 and 2, while window 2 [2,4,5] is already sorted and answers 0.](figures/solution-max-min-window-scans.svg)
+
 Two short index scans per window — `2k` comparisons and `O(1)` extra state —
 give `O(n · k)` over all `n − k + 1` windows, comfortably inside the `n ≤
 1000` constraint; no stacks or extra structures are needed despite the topic

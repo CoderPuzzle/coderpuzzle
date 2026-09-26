@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <!-- edges = [[0,1,2],[1,2,3],[1,3,5],[1,4,4],[2,5,6]]; query [2,3,4]; nodes r=17 at 0:(70,170) 1:(165,170) 2:(270,90) 3:(270,170) 4:(270,250) 5:(370,90) -->
+  <!-- muted edges 0-1 (w2) and 2-5 (w6) leave the Steiner subtree; accent edges 1-2 (w3), 1-3 (w5), 1-4 (w4) form it -->
+  <g stroke="#9aa7b2" stroke-width="1.5">
+    <line x1="87" y1="170" x2="148" y2="170"/>
+    <line x1="287" y1="90" x2="353" y2="90"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="3">
+    <line x1="179" y1="160" x2="256" y2="100"/>
+    <line x1="182" y1="170" x2="253" y2="170"/>
+    <line x1="179" y1="180" x2="256" y2="240"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="117" y="161" fill="#9aa7b2">2</text>
+    <text x="320" y="81" fill="#9aa7b2">6</text>
+    <text x="208" y="118" fill="#1a2026" font-weight="600">3</text>
+    <text x="217" y="158" fill="#1a2026" font-weight="600">5</text>
+    <text x="226" y="200" fill="#1a2026" font-weight="600">4</text>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5">
+    <circle cx="70" cy="170" r="17"/>
+    <circle cx="370" cy="90" r="17"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <circle cx="165" cy="170" r="17"/>
+    <circle cx="270" cy="90" r="17"/>
+    <circle cx="270" cy="170" r="17"/>
+    <circle cx="270" cy="250" r="17"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="70" y="175" fill="#9aa7b2">0</text>
+    <text x="165" y="175" fill="#1a2026">1</text>
+    <text x="270" y="95" fill="#1a2026">2</text>
+    <text x="270" y="175" fill="#1a2026">3</text>
+    <text x="270" y="255" fill="#1a2026">4</text>
+    <text x="370" y="95" fill="#9aa7b2">5</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5" font-weight="600" fill="#4169E1">
+    <text x="270" y="58">src1</text>
+    <text x="270" y="143">src2</text>
+    <text x="270" y="222">dest</text>
+  </g>
+  <!-- distance panel: f(1)=2, f(2)=5, f(3)=7, f(4)=6 from root 0 -->
+  <text x="430" y="88" font-size="12.5" fill="#5c6b76">d = f(x)+f(y)−2·f(w), LCA w = 1</text>
+  <g font-size="14" fill="#1a2026">
+    <text x="430" y="124">d(2,3) = 5+7−2·2 = 8</text>
+    <text x="430" y="152">d(3,4) = 7+6−2·2 = 9</text>
+    <text x="430" y="180">d(2,4) = 5+6−2·2 = 7</text>
+  </g>
+  <text x="430" y="218" font-size="15" font-weight="600" fill="#1a2026">(8+9+7) / 2 = <tspan fill="#4169E1">12</tspan></text>
+  <text x="340" y="310" text-anchor="middle" font-size="13" fill="#1a2026">Query [2,3,4]: the pairwise paths 2-1, 3-1 and 1-4 meet at LCA 1, a Steiner subtree of 3+5+4 = 12.</text>
+  <text x="340" y="330" text-anchor="middle" font-size="13" fill="#1a2026">Each distance is f(x)+f(y)−2·f(1); (8+9+7) / 2 = <tspan fill="#4169E1" font-weight="600">12</tspan>.</text>
+</svg>

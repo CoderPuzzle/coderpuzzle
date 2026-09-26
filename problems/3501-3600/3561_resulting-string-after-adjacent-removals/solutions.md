@@ -19,6 +19,8 @@ and it is compared against the _next_ incoming character, which is the pair
 the leftmost rule would test next. Chained removals therefore happen as the
 scan continues, and each character is pushed and popped at most once.
 
+![On s="adcb" the stack pushes a and d, c cancels d, and b then cancels the newly exposed a, so the cascading pops empty the stack and the resulting string is "".](figures/solution-stack-cascade-empty.svg)
+
 Circularity ('a' next to 'z') is handled by taking the letter difference
 modulo 26 in both directions rather than comparing raw distance, which would
 miss the wrap-around pair. Everything is iterative — a flat buffer over

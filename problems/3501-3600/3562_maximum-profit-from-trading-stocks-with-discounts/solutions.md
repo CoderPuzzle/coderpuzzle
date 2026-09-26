@@ -6,6 +6,8 @@ Whether an employee can buy at half price depends only on whether their direct b
 
 Children are merged with a bounded knapsack convolution: combine folds the children's arrays pairwise, distributing each child's spending t against every budget level b and keeping the maximum, then applies a prefix maximum so that leftover budget never lowers a value. u's tables both start from the merged children's f arrays (if u does not buy, no child gets a discount); f[u] additionally allows buying at the full price, transitioning from the children's g arrays with cost present[u], and g[u] allows the discounted purchase with cost present[u] // 2 in the same way.
 
+![On Example 4's chain 1→2→3 the bottom-up f/g profiles merge so the halved child costs enter only the g transitions, and buying at 5 makes f[1][7] = g[2][2] + 3 = 9 + 3 = 12.](figures/solution-f-g-knapsack-profiles.svg)
+
 Nodes are processed in reverse BFS order so a node's children are final before it is evaluated, avoiding recursion. The answer is f[root][budget] — the CEO has no boss and hence never gets a discount. With n, budget ≤ 160 and prices ≤ 50, each merge costs O(B²) in the budget dimension, which is negligible.
 
 **Complexity:** `O(n · B²)` time (B = budget), `O(n · B)` space.
