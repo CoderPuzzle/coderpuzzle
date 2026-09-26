@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="320" fill="#ffffff"/>
+  <!-- nums = [5,3,1,4,2]; patience for the longest non-increasing subsequence: each value
+       lands on the leftmost pile whose top is smaller, else opens a new pile (the
+       section's -x with bisect_right); piles bottom->top [5], [3,4], [1,2];
+       cards 56x32, bottom row y=150, landed row y=110 -->
+  <text x="70" y="28" fill="#5c6b76" font-size="12.5">nums = [5,3,1,4,2] — each value lands on the leftmost pile whose top is smaller</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="90" y="44" width="46" height="36"/><rect x="146" y="44" width="46" height="36"/>
+    <rect x="202" y="44" width="46" height="36"/><rect x="258" y="44" width="46" height="36"/>
+    <rect x="314" y="44" width="46" height="36"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">
+    <text x="113" y="66">5</text><text x="169" y="66">3</text><text x="225" y="66">1</text>
+    <text x="281" y="66">4</text><text x="337" y="66">2</text>
+  </g>
+  <g text-anchor="middle" font-size="11">
+    <text x="281" y="98" fill="#4169E1">→ pile 2</text>
+    <text x="337" y="98" fill="#4169E1">→ pile 3</text>
+  </g>
+  <!-- final piles: bottom row = pile openers, top row = landed values -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="142" y="150" width="56" height="32"/>
+    <rect x="292" y="150" width="56" height="32"/>
+    <rect x="442" y="150" width="56" height="32"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="292" y="110" width="56" height="32"/>
+    <rect x="442" y="110" width="56" height="32"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600">
+    <text x="170" y="170" fill="#1a2026">5</text>
+    <text x="320" y="170" fill="#1a2026">3</text><text x="320" y="130" fill="#1a2026">4</text>
+    <text x="470" y="170" fill="#1a2026">1</text><text x="470" y="130" fill="#1a2026">2</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="170" y="204" fill="#5c6b76" font-size="12">pile 1</text>
+    <text x="320" y="204" fill="#5c6b76" font-size="12">pile 2</text>
+    <text x="470" y="204" fill="#5c6b76" font-size="12">pile 3</text>
+    <text x="170" y="224" fill="#1a2026" font-size="12.5">removes [5]</text>
+    <text x="320" y="224" fill="#1a2026" font-size="12.5">removes [3, 4]</text>
+    <text x="470" y="224" fill="#1a2026" font-size="12.5">removes [1, 2]</text>
+  </g>
+  <text x="310" y="260" text-anchor="middle" fill="#1a2026" font-size="13">Dealing left to right, 5, 3, 1 open three piles; 4 lands on 3 and 2 lands on 1.</text>
+  <text x="310" y="280" text-anchor="middle" fill="#1a2026" font-size="13">Each pile spells one strictly increasing removal — [5], [3,4], [1,2] — and the tops</text>
+  <text x="310" y="300" text-anchor="middle" fill="#1a2026" font-size="13">5, 4, 2 form a longest non-increasing subsequence, so the answer is <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

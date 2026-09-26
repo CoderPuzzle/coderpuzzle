@@ -19,6 +19,8 @@ cursor deliberately stays put, because the node behind a match may match
 too; only a differing value steps the cursor forward. When the walk runs
 off the end, `dummy.next` is the new head.
 
+![On `nums = [1]`, `head = [1,2,1,2,1,2]`, the cursor stays on its kept node while one pointer write apiece unlinks each matching `1`, riding out the adjacent matches until `dummy.next` is the `2 → 2 → 2` chain.](figures/solution-dummy-cursor-unlink.svg)
+
 Every node is read once and every removal costs one pointer write, so
 after the set build the sweep is a single pass over the list; the memory
 footprint is the set itself and does not depend on how much of the list

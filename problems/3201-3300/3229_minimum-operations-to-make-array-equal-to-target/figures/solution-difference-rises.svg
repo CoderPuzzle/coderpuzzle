@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,3,2], target = [2,1,4] -> d = [-1,2,-2]; padded levels 0,-1,2,-2,0
+       at x = 100 + 100i; y = 140 - 34*v; accent risers = the positive rises
+       +3 (at x=300) and +2 (at x=500); 3 + 2 = 5 = answer -->
+  <text x="80" y="28" fill="#5c6b76" font-size="12.5">d[i] = nums[i] - target[i] = [-1, 2, -2], shown with the implicit zero pads</text>
+  <!-- step levels -->
+  <path d="M 100 140 H 200 M 200 174 H 300 M 300 72 H 400 M 400 208 H 500 M 500 140 H 560" stroke="#1a2026" stroke-width="2" fill="none"/>
+  <g text-anchor="middle" fill="#42525e" font-size="12">
+    <text x="150" y="130">0</text><text x="250" y="164">-1</text><text x="350" y="62">2</text>
+    <text x="450" y="198">-2</text><text x="530" y="130">0</text>
+  </g>
+  <!-- falls (muted) and the two accent rises -->
+  <path d="M 200 142 V 172 M 400 74 V 206" stroke="#9aa7b2" stroke-width="1.5" fill="none"/>
+  <path d="M 300 172 V 76" stroke="#4169E1" stroke-width="2.5" fill="none" marker-end="url(#arrowA)"/>
+  <path d="M 500 206 V 144" stroke="#4169E1" stroke-width="2.5" fill="none" marker-end="url(#arrowA)"/>
+  <text x="312" y="120" fill="#4169E1" font-size="13" font-weight="600">+3</text>
+  <text x="512" y="180" fill="#4169E1" font-size="13" font-weight="600">+2</text>
+  <!-- axis -->
+  <path d="M 80 235 H 590" stroke="#9aa7b2" stroke-width="1" fill="none"/>
+  <path d="M 150 235 V 240 M 250 235 V 240 M 350 235 V 240 M 450 235 V 240 M 530 235 V 240" stroke="#9aa7b2" stroke-width="1" fill="none"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="150" y="254">pad 0</text><text x="250" y="254">d[0] = -1</text><text x="350" y="254">d[1] = 2</text>
+    <text x="450" y="254">d[2] = -2</text><text x="530" y="254">pad 0</text>
+  </g>
+  <text x="330" y="288" text-anchor="middle" fill="#1a2026" font-size="13">The positive rises out of the padded sequence are <tspan fill="#4169E1" font-weight="600">3</tspan> and <tspan fill="#4169E1" font-weight="600">2</tspan> — their sum <tspan fill="#4169E1" font-weight="600">5</tspan> is the answer;</text>
+  <text x="330" y="308" text-anchor="middle" fill="#1a2026" font-size="13">each rise opens one interval operation that a later fall closes.</text>
+</svg>

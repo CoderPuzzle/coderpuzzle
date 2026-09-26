@@ -28,4 +28,6 @@ of doubles — so the compiled languages accumulate in 64-bit integers
 (`long long`, `long`, `int64`, `i64`) from the first product and return a
 64-bit answer; JavaScript numbers hold these sums exactly.
 
+![On `m = 3, n = 2` with `horizontalCut = [1,3]`, `verticalCut = [5]`, the greedy cuts the vertical `5` first (× 1 strip), then the horizontal `3` and `1` (× 2 strips each): `5·1 + 3·2 + 1·2 = 13`.](figures/solution-greedy-cut-order.svg)
+
 **Complexity:** `O((m + n) log(m + n))` time, `O(m + n)` space.

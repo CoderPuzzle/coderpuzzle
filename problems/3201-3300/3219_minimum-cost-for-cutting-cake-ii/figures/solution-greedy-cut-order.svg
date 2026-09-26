@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 276" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="276" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- m=3, n=2; horizontalCut=[1,3], verticalCut=[5]; greedy cuts lines in descending cost
+       order 5, 3, 1; dashed accent = the line being cut, gaps = cuts already made;
+       cakes: cells 64x36, panel centers x=110/330/550, cake top y=60 -->
+  <text x="20" y="26" fill="#5c6b76" font-size="12.5">m = 3, n = 2 · horizontalCut = [1,3] · verticalCut = [5]</text>
+  <g fill="none" stroke="#42525e" stroke-width="1.5">
+    <path d="M 184 114 H 247" marker-end="url(#arrow)"/>
+    <path d="M 409 114 H 469" marker-end="url(#arrow)"/>
+  </g>
+  <!-- step 1: cut the vertical 5 while the cake is one horizontal strip -->
+  <text x="110" y="46" text-anchor="middle" fill="#5c6b76" font-size="12.5">1 · vertical cut, cost 5</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="46" y="60" width="64" height="36"/><rect x="110" y="60" width="64" height="36"/>
+    <rect x="46" y="96" width="64" height="36"/><rect x="110" y="96" width="64" height="36"/>
+    <rect x="46" y="132" width="64" height="36"/><rect x="110" y="132" width="64" height="36"/>
+  </g>
+  <path d="M 110 52 V 176" stroke="#4169E1" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+  <text x="110" y="196" text-anchor="middle" fill="#1a2026" font-size="12.5">5 × 1 strip = <tspan fill="#4169E1" font-weight="600">5</tspan></text>
+  <!-- step 2: cut the horizontal 3 in both vertical strips -->
+  <text x="330" y="46" text-anchor="middle" fill="#5c6b76" font-size="12.5">2 · horizontal cut, cost 3</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="259" y="60" width="64" height="36"/><rect x="337" y="60" width="64" height="36"/>
+    <rect x="259" y="96" width="64" height="36"/><rect x="337" y="96" width="64" height="36"/>
+    <rect x="259" y="132" width="64" height="36"/><rect x="337" y="132" width="64" height="36"/>
+  </g>
+  <path d="M 259 132 H 323 M 337 132 H 401" stroke="#4169E1" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+  <text x="330" y="196" text-anchor="middle" fill="#1a2026" font-size="12.5">3 × 2 strips = <tspan fill="#4169E1" font-weight="600">6</tspan></text>
+  <!-- step 3: cut the horizontal 1 in both strips; the cost-3 line is already open -->
+  <text x="550" y="46" text-anchor="middle" fill="#5c6b76" font-size="12.5">3 · horizontal cut, cost 1</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="479" y="60" width="64" height="72"/><rect x="557" y="60" width="64" height="72"/>
+    <rect x="479" y="140" width="64" height="28"/><rect x="557" y="140" width="64" height="28"/>
+  </g>
+  <path d="M 479 96 H 543 M 557 96 H 621" stroke="#4169E1" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+  <text x="550" y="196" text-anchor="middle" fill="#1a2026" font-size="12.5">1 × 2 strips = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <text x="330" y="234" text-anchor="middle" fill="#1a2026" font-size="13">Cutting most expensive first, each line is charged times the perpendicular strips</text>
+  <text x="330" y="254" text-anchor="middle" fill="#1a2026" font-size="13">alive when it falls: <tspan fill="#4169E1" font-weight="600">5·1 + 3·2 + 1·2 = 13</tspan> — the minimum total.</text>
+</svg>

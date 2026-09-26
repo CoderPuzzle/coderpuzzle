@@ -17,6 +17,8 @@ wrong deeper in the tree, so every branch that survives to length `n` is
 a valid string, and no valid string is ever cut off: the pruning is exact,
 not a heuristic.
 
+![On `n = 3` the search prunes exactly the two append-`0`-after-`0` branches (gray), and the five surviving leaves come out in DFS order `010, 011, 101, 110, 111` — already the sorted output.](figures/solution-backtrack-prune-tree.svg)
+
 The output order comes for free. At each position the walk tries `0`
 before `1`, so among equal-length strings the depth-first visit sequence
 is exactly ascending lexicographic order — the same string never arises

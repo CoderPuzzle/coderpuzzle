@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 460" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="460" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1] so set = {1}; head = [1,2,1,2,1,2]; rows = list state after each unlink;
+       dashed = the match the next single pointer write removes; cur = cursor -->
+  <text x="112" y="20" fill="#5c6b76" font-size="12.5">set = {1} from nums = [1]; head = 1 → 2 → 1 → 2 → 1 → 2</text>
+  <!-- row A: unlink the head 1 while cur stays on dummy -->
+  <path d="M 136 74 Q 196 56 256 74" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="196" y="50" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">cur.next = cur.next.next</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 162 92 H 176" marker-end="url(#arrow)"/><path d="M 220 92 H 234" marker-end="url(#arrow)"/>
+    <path d="M 278 92 H 292" marker-end="url(#arrow)"/><path d="M 336 92 H 350" marker-end="url(#arrow)"/>
+    <path d="M 394 92 H 408" marker-end="url(#arrow)"/><path d="M 452 92 H 466" marker-end="url(#arrow)"/>
+  </g>
+  <rect x="112" y="74" width="48" height="36" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <text x="136" y="96" text-anchor="middle" fill="#5c6b76" font-size="11">dummy</text>
+  <rect x="178" y="74" width="40" height="36" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="198" y="96" text-anchor="middle" fill="#9aa7b2" font-size="13">1</text>
+  <rect x="236" y="74" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="256" y="96" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <rect x="294" y="74" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="314" y="96" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">1</text>
+  <rect x="352" y="74" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="372" y="96" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <rect x="410" y="74" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="430" y="96" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">1</text>
+  <rect x="468" y="74" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="488" y="96" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <path d="M 136 114 L 130 122 L 142 122 Z" fill="#4169E1"/>
+  <text x="148" y="122" fill="#4169E1" font-size="11">cur</text>
+  <text x="112" y="140" fill="#5c6b76" font-size="12">dummy.next = 1, in the set → one write unlinks it; cur stays</text>
+  <!-- row B: cur advances to the kept 2, unlink the next 1 -->
+  <path d="M 198 162 Q 256 144 314 162" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 162 180 H 176" marker-end="url(#arrow)"/><path d="M 220 180 H 234" marker-end="url(#arrow)"/>
+    <path d="M 278 180 H 292" marker-end="url(#arrow)"/><path d="M 336 180 H 350" marker-end="url(#arrow)"/>
+    <path d="M 394 180 H 408" marker-end="url(#arrow)"/>
+  </g>
+  <rect x="112" y="162" width="48" height="36" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <text x="136" y="184" text-anchor="middle" fill="#5c6b76" font-size="11">dummy</text>
+  <rect x="178" y="162" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="198" y="184" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <rect x="236" y="162" width="40" height="36" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="256" y="184" text-anchor="middle" fill="#9aa7b2" font-size="13">1</text>
+  <rect x="294" y="162" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="314" y="184" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <rect x="352" y="162" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="372" y="184" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">1</text>
+  <rect x="410" y="162" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="430" y="184" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <path d="M 198 202 L 192 210 L 204 210 Z" fill="#4169E1"/>
+  <text x="210" y="210" fill="#4169E1" font-size="11">cur</text>
+  <text x="112" y="228" fill="#5c6b76" font-size="12">cur advances to the kept 2; its next 1 is in the set → unlink</text>
+  <!-- row C: same again on the next adjacent match -->
+  <path d="M 256 250 Q 314 232 372 250" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 162 268 H 176" marker-end="url(#arrow)"/><path d="M 220 268 H 234" marker-end="url(#arrow)"/>
+    <path d="M 278 268 H 292" marker-end="url(#arrow)"/><path d="M 336 268 H 350" marker-end="url(#arrow)"/>
+  </g>
+  <rect x="112" y="250" width="48" height="36" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <text x="136" y="272" text-anchor="middle" fill="#5c6b76" font-size="11">dummy</text>
+  <rect x="178" y="250" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="198" y="272" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <rect x="236" y="250" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="256" y="272" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <rect x="294" y="250" width="40" height="36" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="314" y="272" text-anchor="middle" fill="#9aa7b2" font-size="13">1</text>
+  <rect x="352" y="250" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="372" y="272" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <path d="M 256 290 L 250 298 L 262 298 Z" fill="#4169E1"/>
+  <text x="268" y="298" fill="#4169E1" font-size="11">cur</text>
+  <text x="112" y="316" fill="#5c6b76" font-size="12">cur advances to the kept 2; its next 1 is in the set → unlink</text>
+  <!-- row D: walk runs off the end -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 162 356 H 176" marker-end="url(#arrow)"/><path d="M 220 356 H 234" marker-end="url(#arrow)"/>
+    <path d="M 278 356 H 292" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 336 356 H 346" stroke="#9aa7b2" stroke-width="1.5" fill="none"/>
+  <text x="352" y="360" fill="#9aa7b2" font-size="12">null</text>
+  <rect x="112" y="338" width="48" height="36" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <text x="136" y="360" text-anchor="middle" fill="#5c6b76" font-size="11">dummy</text>
+  <rect x="178" y="338" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="198" y="360" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <rect x="236" y="338" width="40" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="256" y="360" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <rect x="294" y="338" width="40" height="36" rx="6" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="314" y="360" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">2</text>
+  <path d="M 314 378 L 308 386 L 320 386 Z" fill="#4169E1"/>
+  <text x="326" y="386" fill="#4169E1" font-size="11">cur</text>
+  <text x="310" y="424" text-anchor="middle" fill="#1a2026" font-size="13">The cursor waits on a kept node while each matching 1 is unlinked by a single write,</text>
+  <text x="310" y="444" text-anchor="middle" fill="#1a2026" font-size="13">riding out the adjacent matches — dummy.next comes back as the <tspan fill="#4169E1" font-weight="600">2 → 2 → 2</tspan> chain.</text>
+</svg>
