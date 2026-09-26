@@ -22,6 +22,8 @@ became usable — then pop the top and add its value to the total. The
 moment the heap is empty after a step's unlocks have been folded in, no
 unused index qualifies and the process stops.
 
+![For Example 1, each step pushes its unlocking bucket into the max-heap before the top pops — 10, then 6, then 1 — until the heap drains at step 4 with the total at 17.](figures/solution-greedy-heap-pops.svg)
+
 Two details keep this exact. First, the pop happens after the pushes:
 an element unlocking at step `s` is legitimately available for the pick
 at step `s`, which is what `threshold[i] <= step` says. Second, the

@@ -39,6 +39,8 @@ terminal digit would have been a match ending at that depth. Because no
 word is a prefix of another, at most one terminal sits on the whole path,
 so the walk either finds it or reports no word after at most five steps.
 
+![For s = "onefourthree", the trie walk from position 0 consumes "one" down to its terminal digit 1, and the scan restarts at "four" (digit 4) and "three" (digit 3), giving "143".](figures/solution-trie-walk-digits.svg)
+
 Each character participates in at most two walks: the successful one that
 consumes it as part of a matched word, and the single-step probe from the
 position just before a mismatch kills its walk. That bounds total trie work

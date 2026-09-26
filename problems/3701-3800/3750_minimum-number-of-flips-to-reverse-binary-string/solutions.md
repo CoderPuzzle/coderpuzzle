@@ -6,6 +6,8 @@ The target is fixed before any flip happens: it is the original string read back
 
 That disagreement has mirror symmetry. Position `i` holds `s[i]` and must become `s[len - 1 - i]`; position `len - 1 - i` holds `s[len - 1 - i]` and must become `s[i]`. So whenever the two ends of a pair differ, both members miss their target, and the pair contributes exactly two flips; when they agree, both already match and it contributes none. Walking two pointers inward from the ends and adding two per unequal pair counts every position exactly once without ever materializing the reversed string.
 
+![For n = 10, the bits of s = "1010" sit above their mirrored targets "0101", and each diverging end-pair costs exactly two flips, for a total of 4.](figures/solution-mirror-pair-flips.svg)
+
 The loop stops when the pointers meet. A middle character in an odd-length string pairs with itself — its target bit is its own bit — so it never needs a flip, which the strict `left < right` condition handles by simply skipping over it.
 
 **Complexity:** `O(log n)` time, `O(log n)` space.

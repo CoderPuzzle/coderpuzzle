@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 430" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- tree of div(mul(4,sub(9,5)),add(1,1)); op circles r=25 accent, literals r=19; returns flow bottom-up 4, 16, 2, then 8 at the root -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="330" y1="55" x2="150" y2="150"/>
+    <line x1="330" y1="55" x2="510" y2="150"/>
+    <line x1="150" y1="150" x2="60" y2="250"/>
+    <line x1="150" y1="150" x2="245" y2="250"/>
+    <line x1="245" y1="250" x2="165" y2="350"/>
+    <line x1="245" y1="250" x2="325" y2="350"/>
+    <line x1="510" y1="150" x2="430" y2="250"/>
+    <line x1="510" y1="150" x2="590" y2="250"/>
+  </g>
+  <!-- operator nodes -->
+  <g fill="#4169E1">
+    <circle cx="330" cy="55" r="25"/>
+    <circle cx="150" cy="150" r="25"/>
+    <circle cx="510" cy="150" r="25"/>
+    <circle cx="245" cy="250" r="25"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-weight="600">
+    <text x="330" y="60">div</text>
+    <text x="150" y="155">mul</text>
+    <text x="510" y="155">add</text>
+    <text x="245" y="255">sub</text>
+  </g>
+  <!-- literal leaves -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="60" cy="250" r="19"/>
+    <circle cx="165" cy="350" r="19"/>
+    <circle cx="325" cy="350" r="19"/>
+    <circle cx="430" cy="250" r="19"/>
+    <circle cx="590" cy="250" r="19"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="60" y="255">4</text>
+    <text x="165" y="355">9</text>
+    <text x="325" y="355">5</text>
+    <text x="430" y="255">1</text>
+    <text x="590" y="255">1</text>
+  </g>
+  <!-- each operator's arithmetic on the way out of the recursion -->
+  <g font-size="13" fill="#5c6b76">
+    <text x="105" y="155" text-anchor="end">4 × 4 = <tspan fill="#4169E1" font-weight="700">16</tspan></text>
+    <text x="205" y="255" text-anchor="end">9 − 5 = <tspan fill="#4169E1" font-weight="700">4</tspan></text>
+    <text x="548" y="155">1 + 1 = <tspan fill="#4169E1" font-weight="700">2</tspan></text>
+    <text x="372" y="48">16 ÷ 2 = <tspan fill="#4169E1" font-weight="700">8</tspan></text>
+  </g>
+  <text x="330" y="404" text-anchor="middle" fill="#1a2026" font-size="13">Recursive descent evaluates bottom-up: sub returns <tspan fill="#4169E1" font-weight="600">4</tspan>, mul returns <tspan fill="#4169E1" font-weight="600">16</tspan>, add returns <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+  <text x="330" y="424" text-anchor="middle" fill="#1a2026" font-size="13">The root then divides 16 by 2 and returns <tspan fill="#4169E1" font-weight="600">8</tspan>.</text>
+</svg>

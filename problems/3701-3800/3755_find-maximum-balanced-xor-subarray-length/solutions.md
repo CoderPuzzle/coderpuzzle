@@ -22,6 +22,8 @@ otherwise the current index becomes that pair's recorded origin. Keeping only
 the _first_ occurrence per pair is what maximizes every length the pair can
 ever report.
 
+![For nums = [3, 1, 3, 2, 0], the running pair (pxor, gap) first takes (3, -1) after index 0 and recurs there after index 4, bracketing the balanced window [1, 3, 2, 0] of length 4.](figures/solution-xor-gap-pair-map.svg)
+
 The values themselves never constrain the arithmetic: each element fits in
 32 bits and stays below 2³⁰, so XORs stay in range everywhere, and the gap
 merely walks between −n and +n. The map holds at most n + 1 pairs, and the

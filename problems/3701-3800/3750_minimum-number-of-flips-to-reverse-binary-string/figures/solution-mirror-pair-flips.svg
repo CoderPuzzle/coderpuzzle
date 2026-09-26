@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "1010" (n = 10); bottom row is the target reverse "0101"; end-pairs (0,3) and (1,2) each diverge, 2 flips each, total 4 -->
+  <!-- pairing arcs over the two end-pairs -->
+  <text x="294" y="20" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">(0, 3): 1 ≠ 0 → 2 flips</text>
+  <text x="294" y="38" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">(1, 2): 0 ≠ 1 → 2 flips</text>
+  <path d="M 168 88 Q 294 24 420 88" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <path d="M 252 88 Q 294 40 336 88" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <!-- s row -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="140" y="96" width="56" height="44"/><rect x="224" y="96" width="56" height="44"/>
+    <rect x="308" y="96" width="56" height="44"/><rect x="392" y="96" width="56" height="44"/>
+  </g>
+  <text x="118" y="124" text-anchor="end" fill="#5c6b76" font-size="13">s</text>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="168" y="124">1</text><text x="252" y="124">0</text><text x="336" y="124">1</text><text x="420" y="124">0</text>
+  </g>
+  <!-- each position must become its bit in reverse(s) -->
+  <g stroke="#4169E1" stroke-width="1.5" fill="none">
+    <path d="M 168 148 L 168 194" marker-end="url(#arrow)"/>
+    <path d="M 252 148 L 252 194" marker-end="url(#arrow)"/>
+    <path d="M 336 148 L 336 194" marker-end="url(#arrow)"/>
+    <path d="M 420 148 L 420 194" marker-end="url(#arrow)"/>
+  </g>
+  <!-- target row -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="140" y="200" width="56" height="44"/><rect x="224" y="200" width="56" height="44"/>
+    <rect x="308" y="200" width="56" height="44"/><rect x="392" y="200" width="56" height="44"/>
+  </g>
+  <text x="118" y="228" text-anchor="end" fill="#5c6b76" font-size="13">reverse</text>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="168" y="228">0</text><text x="252" y="228">1</text><text x="336" y="228">0</text><text x="420" y="228">1</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#9aa7b2">
+    <text x="118" y="268">index</text>
+    <text x="168" y="268">0</text><text x="252" y="268">1</text><text x="336" y="268">2</text><text x="420" y="268">3</text>
+  </g>
+  <text x="300" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Every position differs from its mirrored target, and each diverging end-pair costs</text>
+  <text x="300" y="318" text-anchor="middle" fill="#1a2026" font-size="13">exactly two flips: 2 + 2 = <tspan fill="#4169E1" font-weight="600">4</tspan> to turn "1010" into its reverse "0101".</text>
+</svg>
