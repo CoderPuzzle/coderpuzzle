@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="372" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- maxHeights = [6,5,3,9,2,7]; bars 40w at x=110+56i, baseline y=160, 11px/unit; left=[6,10,9,18,10,17], right=[21,15,10,13,4,7]; dashed box marks the two peak cells i=3 -->
+  <text x="40" y="28" fill="#5c6b76" font-size="12.5">maxHeights = [6,5,3,9,2,7] — two stack sweeps fill prefix and suffix sums:</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="110" y="94" width="40" height="66"/><rect x="166" y="105" width="40" height="55"/>
+    <rect x="222" y="127" width="40" height="33"/><rect x="278" y="61" width="40" height="99"/>
+    <rect x="334" y="138" width="40" height="22"/><rect x="390" y="83" width="40" height="77"/>
+  </g>
+  <line x1="100" y1="160" x2="440" y2="160" stroke="#42525e" stroke-width="1.4"/>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="130" y="88">6</text><text x="186" y="99">5</text><text x="242" y="121">3</text>
+    <text x="298" y="55">9</text><text x="354" y="132">2</text><text x="410" y="77">7</text>
+  </g>
+  <text x="298" y="40" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">peak i = 3</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="130" y="176">0</text><text x="186" y="176">1</text><text x="242" y="176">2</text>
+    <text x="298" y="176">3</text><text x="354" y="176">4</text><text x="410" y="176">5</text>
+  </g>
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1.3">
+    <rect x="110" y="196" width="40" height="26"/><rect x="166" y="196" width="40" height="26"/>
+    <rect x="222" y="196" width="40" height="26"/><rect x="334" y="196" width="40" height="26"/>
+    <rect x="390" y="196" width="40" height="26"/>
+  </g>
+  <rect x="278" y="196" width="40" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="274" y="190" width="48" height="90" rx="5" fill="none" stroke="#4169E1" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <g text-anchor="middle" font-size="12.5" fill="#1a2026">
+    <text x="130" y="213">6</text><text x="186" y="213">10</text><text x="242" y="213">9</text>
+    <text x="298" y="213" fill="#4169E1" font-weight="600">18</text><text x="354" y="213">10</text><text x="410" y="213">17</text>
+  </g>
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1.3">
+    <rect x="110" y="248" width="40" height="26"/><rect x="166" y="248" width="40" height="26"/>
+    <rect x="222" y="248" width="40" height="26"/><rect x="334" y="248" width="40" height="26"/>
+    <rect x="390" y="248" width="40" height="26"/>
+  </g>
+  <rect x="278" y="248" width="40" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="12.5" fill="#1a2026">
+    <text x="130" y="265">21</text><text x="186" y="265">15</text><text x="242" y="265">10</text>
+    <text x="298" y="265" fill="#4169E1" font-weight="600">13</text><text x="354" y="265">4</text><text x="410" y="265">7</text>
+  </g>
+  <text x="88" y="213" text-anchor="end" fill="#5c6b76" font-size="12">left</text>
+  <text x="88" y="227" text-anchor="end" fill="#9aa7b2" font-size="10">fills →</text>
+  <text x="88" y="265" text-anchor="end" fill="#5c6b76" font-size="12">right</text>
+  <text x="88" y="279" text-anchor="end" fill="#9aa7b2" font-size="10">← fills</text>
+  <text x="470" y="212" fill="#5c6b76" font-size="12">left and right overlap at</text>
+  <text x="470" y="228" fill="#5c6b76" font-size="12">the peak i = 3; subtract 9:</text>
+  <text x="470" y="254" fill="#1a2026" font-size="15" font-weight="600">18 + 13 - 9 = <tspan fill="#4169E1">22</tspan></text>
+  <path d="M 354 282 Q 298 304 242 282" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="298" y="322" text-anchor="middle" fill="#1a2026" font-size="12">right[2] = right[4] + 3*(4-2) = 4 + 6 = 10 — one stack jump spans two towers</text>
+  <text x="320" y="344" text-anchor="middle" fill="#1a2026" font-size="13">left[i] and right[i] hold the best clamped prefix and suffix sums for a peak at i;</text>
+  <text x="320" y="362" text-anchor="middle" fill="#1a2026" font-size="13">their best overlap is left[3] + right[3] - 9 = <tspan fill="#4169E1" font-weight="600">22</tspan> — the mountain [3,3,3,9,2,2].</text>
+</svg>

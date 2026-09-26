@@ -23,6 +23,10 @@ absorbed, and the total is repaired with one multiplication
 is pushed once and popped at most once, so a sweep over n towers costs O(n)
 despite the clamping chains it encodes.
 
+![On heights = [6,5,3,9,2,7] the two stack sweeps clamp the skyline toward
+peak i = 3 into [3,3,3,9,2,2], and left[3] + right[3] - 9 = 18 + 13 - 9 =
+22.](figures/solution-mountain-stack-clamp.svg)
+
 Two size notes keep the implementation honest. The heaviest possible
 answer is `10³ · 10⁹ = 10¹²`, beyond 32-bit range, so C++, Java, and Rust
 accumulate in 64-bit integers; JavaScript numbers are exact up to 2⁵³,

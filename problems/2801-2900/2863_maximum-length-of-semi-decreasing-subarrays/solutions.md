@@ -22,6 +22,10 @@ backwards only. Every valid pair `(j, i)` is examined when the group of
 merged earlier, and `min_index <= j` keeps that candidate at least as
 long — so the running maximum ends at the true answer.
 
+![Sweeping [7,6,5,4,3,2,1,6,10,11] by descending value, min_index drops to
+0 at value 7, and the two-6 group queries before merging, so the 6 at index
+7 spans back to 7 at index 0 for the winning length 8.](figures/solution-value-group-sweep.svg)
+
 Sorting dominates the cost; the sweep is linear over the sorted pairs with
 two passes per equal-value group. Endpoints are plain 32-bit values
 (`|nums[i]| <= 10^9`) and lengths are at most `10^5`, so no 64-bit

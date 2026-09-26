@@ -20,4 +20,7 @@ element nums[k + 1] must land at slot 0, which takes
 are at most 100 and n at most 100, so everything fits comfortably in a
 signed 32-bit int.
 
+![On nums = [3,4,5,1,2] the ring has exactly one cyclic descent, 5 followed
+by 1 at k = 2, so the answer is n - 1 - k = 2 right shifts.](figures/solution-one-descent-ring.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space.

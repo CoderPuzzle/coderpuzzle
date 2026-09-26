@@ -8,4 +8,6 @@ Each undirected edge is stored twice with a traversal cost: following `u -> v` c
 
 The second pass walks the order forward, parents before children, pushing answers down: `ans[y] = ans[x] + 1` if the edge is originally directed `x -> y` (cost 0 from `x`'s side — from `y` as root it now points the wrong way), and `ans[x] - 1` if it is directed `y -> x` (from `y`'s side it is already correct, one reversal saved). Every non-root node's answer is derived from its parent's in constant time, so the two sweeps together are linear. Iteration over the BFS order replaces recursion, which matters at `n = 10^5` where deep chains would overflow the call stack.
 
+![On n = 4 with edges [[2,0],[2,1],[1,3]] the dp sweep from root 0 costs 1, and rerooting moves the answer by -1, +1, +1 along the chain to fill [1, 1, 0, 2].](figures/solution-reroot-dp-sweep.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

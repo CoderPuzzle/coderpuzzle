@@ -21,6 +21,10 @@ own best mountain, so `left[i] = left[j] + maxHeights[i] * (i - j)` — and
 popped at most once per sweep, so both tables and the final combining pass
 are linear.
 
+![On maxHeights = [6,5,3,9,2,7] the two stack sweeps fill left[i] and
+right[i] as clamped prefix and suffix sums that meet at the peak i = 3,
+where left[3] + right[3] - 9 = 18 + 13 - 9 = 22.](figures/solution-prefix-suffix-stack-dp.svg)
+
 Widths stay bounded: an answer is at most `n * max(maxHeights[i]) = 10^5 *
 10^9 = 10^14`, past the signed 32-bit range, so the fixed-width languages
 accumulate the tables in 64-bit integers; JavaScript/TypeScript keep exact
