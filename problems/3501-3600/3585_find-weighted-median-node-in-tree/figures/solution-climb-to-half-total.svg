@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- query [3,4]: path 3-1-0-2-4 with edge weights 1,2,5,3, tot 11, half 5.5; dist = [0,2,5,3,8]; bars 26 wide, 5 px per unit of the cumulative sum, baseline y = 262 -->
+  <text x="40" y="34" font-size="12.5" fill="#1a2026">tot = dist[u] + dist[v] − 2·dist[l] = 3 + 8 − 0 = 11</text>
+  <text x="40" y="54" font-size="12.5" fill="#1a2026">acc = dist[u] − dist[l] = 3; 2·acc = 6 &lt; 11 <tspan fill="#4169E1" font-weight="600">→ climb the v-side</tspan></text>
+  <!-- path chain -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="124" y1="150" x2="192" y2="150" marker-end="url(#arrow)"/>
+    <line x1="244" y1="150" x2="312" y2="150" marker-end="url(#arrow)"/>
+    <line x1="484" y1="150" x2="552" y2="150" marker-end="url(#arrow)"/>
+  </g>
+  <line x1="364" y1="150" x2="432" y2="150" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <g text-anchor="middle" font-size="12.5" fill="#5c6b76">
+    <text x="158" y="138">1</text><text x="278" y="138">2</text><text x="398" y="138" fill="#4169E1" font-weight="600">5</text><text x="518" y="138">3</text>
+  </g>
+  <g stroke-width="1.6">
+    <circle cx="100" cy="150" r="22" fill="#ffffff" stroke="#1a2026"/>
+    <circle cx="220" cy="150" r="22" fill="#ffffff" stroke="#1a2026"/>
+    <circle cx="340" cy="150" r="22" fill="#ffffff" stroke="#1a2026"/>
+    <circle cx="460" cy="150" r="22" fill="#4169E1" stroke="#4169E1"/>
+    <circle cx="580" cy="150" r="22" fill="#ffffff" stroke="#1a2026"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="100" y="156" fill="#1a2026">3</text><text x="220" y="156" fill="#1a2026">1</text><text x="340" y="156" fill="#1a2026">0</text><text x="460" y="156" fill="#ffffff">2</text><text x="580" y="156" fill="#1a2026">4</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="100" y="188">u</text><text x="340" y="188">l (LCA)</text><text x="580" y="188">v</text>
+  </g>
+  <!-- cumulative sum from u at each path node, against the half-total line -->
+  <text x="40" y="206" fill="#5c6b76" font-size="12">sum from u</text>
+  <g fill="#dbe4fb">
+    <rect x="207" y="257" width="26" height="5"/>
+    <rect x="327" y="247" width="26" height="15"/>
+    <rect x="567" y="207" width="26" height="55"/>
+  </g>
+  <rect x="447" y="222" width="26" height="40" fill="#4169E1"/>
+  <line x1="70" y1="262" x2="610" y2="262" stroke="#42525e" stroke-width="1.2"/>
+  <line x1="70" y1="235" x2="610" y2="235" stroke="#5c6b76" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="40" y="230" fill="#5c6b76" font-size="12">half = 5.5</text>
+  <g text-anchor="middle" font-size="12.5" fill="#1a2026">
+    <text x="100" y="280">0</text><text x="220" y="280">1</text><text x="340" y="280">3</text><text x="460" y="280" fill="#4169E1" font-weight="600">8</text><text x="580" y="280">11</text>
+  </g>
+  <text x="40" y="304" fill="#1a2026" font-size="13">Climbing from v, node 2 is the first with 2·sum ≥ tot: 2·8 = 16 ≥ 11 while 2·3 = 6 &lt; 11 at l,</text>
+  <text x="40" y="322" fill="#1a2026" font-size="13">so the weighted median of query [3, 4] is <tspan fill="#4169E1" font-weight="600">node 2</tspan>.</text>
+</svg>

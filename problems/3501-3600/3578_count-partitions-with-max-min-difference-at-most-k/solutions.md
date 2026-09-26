@@ -14,6 +14,8 @@ by one element and advances `lo` while the window's `max − min` exceeds
 decreasing — expose the current window minimum and maximum in constant
 time, including the fronts abandoned as `lo` advances.
 
+![On nums=[9,4,1,3,7], k=4, one bracket per right end shows the valid-start window [lo..i] sliding forward with lo = 0, 1, 1, 1, 3, and dp[i+1] = pre[i+1] − pre[lo] reading out 1, 1, 2, 4, 6, so the final window [3..4] gives dp[5] = pre[5] − pre[3] = 9 − 3 = 6.](figures/solution-window-slide-prefix-jump.svg)
+
 With `pre` the prefix sums of `dp`, the answer for one position is the
 single subtraction `pre[i + 1] − pre[lo]`, and the total is `dp[n]`,
 taken modulo `10⁹ + 7`. Every stored value is reduced before use, so the

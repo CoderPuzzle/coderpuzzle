@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 284" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="284" fill="#ffffff"/>
+  <!-- nums = [2,3,5,7], all prime, k = 3; cells 90x42 at x = 110 + 102i, y = 44; window rows y = 132 + 28j with lo = -,0,0,2; contributions prev2 - lo + 1 = 0,1,2,1 -->
+  <text x="40" y="70" fill="#5c6b76" font-size="12">primes</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="110" y="44" width="90" height="42"/><rect x="212" y="44" width="90" height="42"/><rect x="314" y="44" width="90" height="42"/><rect x="416" y="44" width="90" height="42"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="155" y="71" fill="#1a2026">2</text><text x="257" y="71" fill="#1a2026">3</text><text x="359" y="71" fill="#1a2026">5</text><text x="461" y="71" fill="#1a2026">7</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="155" y="104">0</text><text x="257" y="104">1</text><text x="359" y="104">2</text><text x="461" y="104">3</text>
+  </g>
+  <!-- one bracket row per right end i: starts [lo..prev2] each contribute one subarray -->
+  <g fill="#5c6b76" font-size="12">
+    <text x="36" y="136">i = 0</text>
+    <text x="36" y="164">i = 1</text>
+    <text x="36" y="192">i = 2</text>
+    <text x="36" y="220">i = 3</text>
+  </g>
+  <path d="M 110 127 L 110 137 M 110 132 L 200 132 M 200 127 L 200 137" stroke="#9aa7b2" stroke-width="1.5" fill="none"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 110 155 L 110 165 M 110 160 L 302 160 M 302 155 L 302 165"/>
+    <path d="M 110 183 L 110 193 M 110 188 L 404 188 M 404 183 L 404 193"/>
+  </g>
+  <path d="M 314 211 L 314 221 M 314 216 L 506 216 M 506 211 L 506 221" stroke="#4169E1" stroke-width="2" fill="none"/>
+  <text x="212" y="136" fill="#9aa7b2" font-size="12">needs two primes → +0</text>
+  <g fill="#5c6b76" font-size="12">
+    <text x="314" y="164">min 2, max 3 → prev2 − lo + 1 = 1</text>
+    <text x="416" y="192">min 2, max 5 → prev2 − lo + 1 = 2</text>
+  </g>
+  <text x="302" y="220" text-anchor="end" fill="#4169E1" font-size="12" font-weight="600">min 5, max 7 → prev2 − lo + 1 = 1</text>
+  <text x="40" y="250" fill="#1a2026" font-size="13">Each right end adds prev2 − lo + 1 starts once its prime spread is ≤ 3: 0 + 1 + 2 + 1 = <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  <text x="40" y="268" fill="#1a2026" font-size="13">— at i = 3 the window slides [0..3] → [2..3] since 7 − 2 = 5 &gt; 3, keeping only [5, 7].</text>
+</svg>

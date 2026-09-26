@@ -13,6 +13,8 @@ primes, the starts whose prime spread stays within `k` form a suffix. So
 only moves forward, and the balanced subarrays ending at `i` number
 `prev2 - lo + 1` whenever `lo <= prev2`.
 
+![On nums=[2,3,5,7], k=3, each right end i contributes prev2 − lo + 1 balanced subarrays once the window's min and max prime sit within 3 — 0, 1, 2, 1 for lo = -, 0, 0, 2 — and the window slides [0..3] → [2..3] when 7 − 2 = 5 > 3, totaling 4.](figures/solution-prime-window-contributions.svg)
+
 Two monotonic deques of prime positions — values increasing, values
 decreasing — expose the current window's min and max prime in constant
 time; the shrink loop advances `lo`, dropping each deque's front when it

@@ -21,5 +21,7 @@ non-negative displacements, bounded by `n²/8 + n < 1.3 * 10⁹` at
 `n = 10⁵` (evens packed at one end against interlaced slots); that fits
 a 32-bit integer, and 64-bit accumulators give headroom everywhere.
 
+![On nums=[2,4,6,5,7], the order-preserving arcs carry the evens 2, 4, 6 onto the even slots 0, 2, 4 at displacement costs 0 + 1 + 2 = 3, the answer, while the odds 5, 7 mirror onto slots 1, 3.](figures/solution-even-slot-arcs.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space (the even-index list; `O(1)`
 beyond it).

@@ -19,6 +19,8 @@ side (a right triangle) is counted by the horizontal branch as well, so
 the two sweeps together cover every valid triangle; if no line ever
 holds two points, no axis-parallel side exists and the answer is `-1`.
 
+![On coords=[[1,1],[1,2],[3,2],[3,3]], the line y=2 holds the widest base with span 3 − 1 = 2 and the off-line apex (3, 3) sits at height 3 − 2 = 1, so 2·area = span × h = 2 × 1 = 2, the answer.](figures/solution-span-times-height.svg)
+
 With all points grouped once, each line costs `O(1)` beyond the global
 extrema, giving linear time overall and a single hash map per axis.
 Products reach `(10⁶ - 1) * (10⁶ - 1) < 10¹²` for `2 * area`, which

@@ -15,6 +15,8 @@ are searched by climbing, which is why the tree is traversed with an
 explicit stack — a 10⁵-node chain would overflow the recursion stack of
 every runtime.
 
+![For query [3, 4] on Example 3, tot = dist[3] + dist[4] − 2·dist[0] = 11 and acc = 3 fail 2·acc ≥ tot, so the climb runs along 3 → 1 → 0 → 2 → 4, where the cumulative sums 1, 3, 8 first cross the half-total 5.5 at node 2 — the weighted median.](figures/solution-climb-to-half-total.svg)
+
 Binary lifting turns each climb into `O(log n)`. On the `u`-side the
 criterion fails at `u` itself and holds at `l`, so we repeatedly jump
 `x` to its `2^k`-th ancestor whenever that ancestor still fails the
