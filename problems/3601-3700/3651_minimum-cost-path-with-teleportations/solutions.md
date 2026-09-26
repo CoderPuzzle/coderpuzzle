@@ -11,6 +11,8 @@ from any cell whose value is at least `grid[i][j]` you may land on
 previous layer over all such launch cells — including `(i, j)` itself,
 since equal values are allowed.
 
+![On grid [[1,3,3],[2,5,4],[4,3,5]] with k = 2, layer 0 walks down then right to (1,1) for 2 + 5 = 7 and layer 1 teleports from there to (2,2) for free since 5 ≤ 5, so d1(2,2) = 7 and layer 2 repeats it — the answer is 7.](figures/solution-layered-teleport-dp.svg)
+
 Sorting the cells by value, descending, turns that "minimum over
 everything at least as valuable" scan into one running prefix minimum:
 cells sharing a value sit inside the same prefix however ties are broken,

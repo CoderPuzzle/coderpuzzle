@@ -19,6 +19,8 @@ right value — a cut — and conversely, wherever the prefix maximum strictly
 exceeds the suffix minimum, some inverted pair crosses that boundary and the
 component continues.
 
+![On nums [2,1,3] the inverted pair 2 > 1 makes indices 0 and 1 mutually reachable, the boundary where left max 2 ≤ right min 3 cuts the array, and each segment reports its maximum: ans = [2,2,3].](figures/solution-inversion-segments.svg)
+
 That turns the answer into one scan. Precompute suffix minima, then sweep
 left to right growing the current segment while its running maximum stays
 strictly above the suffix minimum just past it; when the maximum drops to

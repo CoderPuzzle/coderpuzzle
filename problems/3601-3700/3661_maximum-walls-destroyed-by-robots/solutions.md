@@ -13,6 +13,10 @@ destroy it — while a robot's co-located wall falls to either of its own two
 directions. Two binary searches over the sorted walls count any interval,
 and an empty interval simply counts as zero.
 
+![On robots [10,2] with distance [5,1] and walls [5,2,7], the leftward shots cover
+[5,10] — capped by range p − d = 5, the robot-at-2 clip at 3 being looser — and [1,2],
+destroying walls 5, 7, and 2 for a total of 3.](figures/solution-neighbor-clipped-intervals.svg)
+
 The catch is that adjacent robots' facing shots overlap: everything in the
 gap between them is reachable from both sides, and the answer counts
 distinct walls. So sweep the robots left to right carrying two totals — the

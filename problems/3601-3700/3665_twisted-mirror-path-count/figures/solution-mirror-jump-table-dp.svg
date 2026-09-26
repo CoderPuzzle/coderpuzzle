@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- grid = [[0,1,0],[0,0,1],[1,0,0]]; mirrors at (0,1),(1,2),(2,0) drawn with a diagonal;
+       jump table: right into (0,1) -> (1,1); right into (1,2) -> (2,2); down into (2,0) -> (2,1);
+       dp sweep: dp(0,0)=1, dp(1,0)=1, dp(1,1)=2, dp(2,1)=3, dp(2,2)=5; cells 76x60 at (150,80) -->
+  <text x="264" y="68" text-anchor="middle" fill="#5c6b76" font-size="12.5">grid</text>
+  <!-- cells: mirrors shaded with diagonal, answer cell tinted -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="150" y="80" width="76" height="60" fill="#ffffff"/>
+    <rect x="226" y="80" width="76" height="60" fill="#f0f3f7"/>
+    <rect x="302" y="80" width="76" height="60" fill="#ffffff"/>
+    <rect x="150" y="140" width="76" height="60" fill="#ffffff"/>
+    <rect x="226" y="140" width="76" height="60" fill="#ffffff"/>
+    <rect x="302" y="140" width="76" height="60" fill="#f0f3f7"/>
+    <rect x="150" y="200" width="76" height="60" fill="#f0f3f7"/>
+    <rect x="226" y="200" width="76" height="60" fill="#ffffff"/>
+    <rect x="302" y="200" width="76" height="60" fill="#dbe4fb"/>
+  </g>
+  <g stroke="#42525e" stroke-width="2.5">
+    <line x1="240" y1="90" x2="288" y2="130"/>
+    <line x1="316" y1="150" x2="364" y2="190"/>
+    <line x1="164" y1="210" x2="212" y2="250"/>
+  </g>
+  <!-- dp counts in cell corners -->
+  <g font-weight="600" font-size="12.5" fill="#1a2026">
+    <text x="160" y="98">1</text>
+    <text x="160" y="158">1</text>
+    <text x="236" y="158">2</text>
+    <text x="236" y="218">3</text>
+    <text x="312" y="98" fill="#9aa7b2" font-weight="400">0</text>
+  </g>
+  <text x="340" y="248" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="16">5</text>
+  <!-- dp flows through the jump targets -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 202 106 L 262 106 L 262 148" marker-end="url(#arrow)"/>
+    <path d="M 184 116 L 184 154" marker-end="url(#arrow)"/>
+    <path d="M 202 170 L 250 170" marker-end="url(#arrow)"/>
+    <path d="M 184 182 L 184 226 L 246 226" marker-end="url(#arrow)"/>
+    <path d="M 278 168 L 338 168 L 338 212" marker-end="url(#arrow)"/>
+    <path d="M 264 182 L 272 224" marker-end="url(#arrow)"/>
+    <path d="M 278 232 L 318 232" marker-end="url(#arrow)"/>
+  </g>
+  <!-- jump table -->
+  <text x="405" y="96" fill="#5c6b76" font-size="12.5" font-weight="600">jump table</text>
+  <g font-size="12" fill="#1a2026">
+    <text x="405" y="120">right into (0,1) → land (1,1)</text>
+    <text x="405" y="142">right into (1,2) → land (2,2)</text>
+    <text x="405" y="164">down into (2,0) → land (2,1)</text>
+    <text x="405" y="186" fill="#9aa7b2">down into (1,2) → out of grid</text>
+    <text x="405" y="208" fill="#9aa7b2">right into (2,0) → out of grid</text>
+    <text x="405" y="230" fill="#5c6b76">corner numbers: dp counts</text>
+  </g>
+  <text x="320" y="292" text-anchor="middle" fill="#1a2026" font-size="13">Mirrors bounce right-steps down and down-steps right; dp flows through</text>
+  <text x="320" y="312" text-anchor="middle" fill="#1a2026" font-size="13">the precomputed jump targets — <tspan fill="#4169E1" font-weight="600">5</tspan> paths reach (2,2).</text>
+</svg>

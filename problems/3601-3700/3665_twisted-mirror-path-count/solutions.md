@@ -27,4 +27,6 @@ when it is empty, otherwise the precomputed bounce target — dropping jumps
 whose chain leaves the grid. Every addition is taken modulo `10⁹ + 7`, and
 `dp[m - 1][n - 1]` is the answer once the sweep ends.
 
+![On grid [[0,1,0],[0,0,1],[1,0,0]], the precomputed mirror bounces — right into (0,1) lands (1,1), right into (1,2) lands (2,2), down into (2,0) lands (2,1) — carry the dp sweep to dp(2,2) = 5 paths.](figures/solution-mirror-jump-table-dp.svg)
+
 **Complexity:** `O(mn)` time, `O(mn)` space.

@@ -27,6 +27,8 @@ whose "deletion" would be a no-op. When no deletion is ever legal every
 lookup misses, the keep steps alone carry the sweep, and the full array sum
 falls out unchanged — the spec's no-deletion outcome needs no special case.
 
+![On nums [3,1,4,1,5] with k = 3, prefix remainders 0,0,1,2,0,2 let the sweep delete [3] at dp[1] = 0 and [1,4,1] at dp[4] = 0, so only 5 survives and dp[5] = 5.](figures/solution-prefix-remainder-dp.svg)
+
 The sums outgrow 32 bits before anything else does: `10⁵` elements of `10⁶`
 total up to `10¹¹`, so fixed-width languages accumulate and return through
 64-bit integers (`long long`, `long`, `int64_t`, `i64`). JavaScript numbers

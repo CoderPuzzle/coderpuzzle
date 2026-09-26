@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <!-- nums = [3,1,4,1,5], k = 3; prefix sums P = 0,3,4,8,9,14; remainders 0,0,1,2,0,2;
+       dp sweep: dp[1] = dp[0] = 0 deletes [3], dp[4] = dp[1] = 0 deletes [1,4,1], dp[5] = 5 -->
+  <text x="138" y="68" text-anchor="end" fill="#5c6b76" font-size="12.5">nums</text>
+  <g text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">
+    <text x="176" y="34">delete [3]</text>
+    <text x="280" y="34">delete [1,4,1]</text>
+  </g>
+  <!-- deleted blocks shaded, survivor 5 accented -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="150" y="44" width="52" height="38" fill="#dbe4fb"/>
+    <rect x="202" y="44" width="52" height="38" fill="#dbe4fb"/>
+    <rect x="254" y="44" width="52" height="38" fill="#dbe4fb"/>
+    <rect x="306" y="44" width="52" height="38" fill="#dbe4fb"/>
+    <rect x="358" y="44" width="52" height="38" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="14">
+    <text x="176" y="68" fill="#1a2026">3</text>
+    <text x="228" y="68" fill="#1a2026">1</text>
+    <text x="280" y="68" fill="#1a2026">4</text>
+    <text x="332" y="68" fill="#1a2026">1</text>
+    <text x="384" y="68" fill="#4169E1" font-weight="600">5</text>
+  </g>
+  <!-- dp sweep table -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="120" y="112">i</text>
+    <text x="195" y="112">prefix</text>
+    <text x="262" y="112">P mod 3</text>
+    <text x="335" y="112">dp[i]</text>
+  </g>
+  <text x="385" y="112" fill="#5c6b76" font-size="11.5">step taken</text>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="120" y="136">0</text><text x="195" y="136">0</text><text x="262" y="136">0</text>
+    <text x="335" y="136" font-weight="600">0</text>
+    <text x="385" y="136" text-anchor="start">seed dp[0] = 0</text>
+    <text x="120" y="160">1</text><text x="195" y="160">3</text><text x="262" y="160">0</text>
+    <text x="335" y="160" font-weight="600">0</text>
+    <text x="385" y="160" text-anchor="start">delete [3] — rem 0 seen at j = 0</text>
+    <text x="120" y="184">2</text><text x="195" y="184">4</text><text x="262" y="184">1</text>
+    <text x="335" y="184" font-weight="600">1</text>
+    <text x="385" y="184" text-anchor="start">keep 1 (bucket rem 1 empty)</text>
+    <text x="120" y="208">3</text><text x="195" y="208">8</text><text x="262" y="208">2</text>
+    <text x="335" y="208" font-weight="600">5</text>
+    <text x="385" y="208" text-anchor="start">keep 4 (bucket rem 2 empty)</text>
+    <text x="120" y="232">4</text><text x="195" y="232">9</text><text x="262" y="232">0</text>
+    <text x="335" y="232" font-weight="600" fill="#4169E1">0</text>
+    <text x="385" y="232" text-anchor="start">delete [1,4,1] — rem 0 at j = 1</text>
+    <text x="120" y="256">5</text><text x="195" y="256">14</text><text x="262" y="256">2</text>
+    <text x="335" y="256" font-weight="600" fill="#4169E1">5</text>
+    <text x="385" y="256" text-anchor="start">keep 5; deleting [5] also gives 5</text>
+  </g>
+  <text x="320" y="304" text-anchor="middle" fill="#1a2026" font-size="13">Equal prefix remainders (mod 3) open deletions: dp[1] = 0 drops [3],</text>
+  <text x="320" y="324" text-anchor="middle" fill="#1a2026" font-size="13">dp[4] = 0 drops [1,4,1], and only 5 survives — dp[5] = <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>
