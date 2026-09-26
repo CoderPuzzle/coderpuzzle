@@ -8,4 +8,6 @@ Frequencies come from one traversal per trip. An iterative DFS from `start` fill
 
 The discount choice is the classic independent-set DP on trees. `dfs(v, p)` returns a pair — the minimum subtree cost with `v`'s price kept full versus halved — seeded with `price[v] * freq[v]` and `(price[v] // 2) * freq[v]`. A full node may sit under children of either state, contributing `min(c0, c1)` per child, while a halved node forces every child to stay full because discounts are restricted to non-adjacent nodes. The answer is the better of the two states at the root.
 
+![Example 1's trips give frequencies 1, 3, 2, 2, and the tree DP rooted at node 1 keeps 1 full for 6 + 1 + 10 + 6 = 23, since halving it would force children 0, 2, 3 to stay full for 37 — so 0, 2, 3 halve and the total is 23.](figures/solution-tree-dp-keep-halve.svg)
+
 **Complexity:** `O(n * trips)` time, `O(n)` space.

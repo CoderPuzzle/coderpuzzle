@@ -12,6 +12,8 @@ that no original character can occupy. This matches the fix stated in the
 hints — on a mismatch, count one insertion and advance only the pattern
 pointer.
 
+![Example 2's word "aaa" claims pattern slots 0, 3, 6 of abcabcabc, and the six unclaimed slots — four two-pointer mismatches mid-scan plus two tail slots — are exactly the 6 insertions.](figures/solution-pattern-slot-claims.svg)
+
 When the word runs out, its last consumed letter may sit before the end of
 its own cycle, and the remaining slots must be filled by insertions too:
 `(3 - i % 3) % 3` more. The pointers never backtrack — each mismatch is a

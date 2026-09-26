@@ -12,6 +12,8 @@ a second sweep then walks those groups and writes the same difference into
 every member. The root gets `0` outright — it has no cousins and no sibling,
 so its group is empty by definition.
 
+![On Example 1's tree [5, 4, 9, 1, 10, null, 7] every node is rewritten to level total minus its sibling group's originals: level 2 sums 18, so 1 and 10 become 7 and 7 becomes 11, while 5, 4, 9 all become 0.](figures/solution-level-total-minus-group.svg)
+
 The read phase must complete before any write happens because all new values
 are derived from original ones; within a single parent's pair the two writes
 share one computed value anyway, and writes never touch values another parent

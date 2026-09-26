@@ -17,6 +17,8 @@ query. Two practical touches: the search returns the moment `node2` is
 popped (its distance is final at that point), and `node1 == node2` short
 circuits to `0` before any setup.
 
+![Query shortestPath(3, 2) on the example graph: the heap settles 3, 0, 1, 2 at distances 0, 3, 5, 6 along the accented path 3-0-1-2 and returns 6 the moment the target pops, skipping the stale (8, 2).](figures/solution-dijkstra-settle-order.svg)
+
 With `n <= 100`, at most `9900` initial edges plus `100` added ones, and
 `100` queries, even the worst case — every query scanning the full dense
 graph — is on the order of a few million heap operations at most, far inside

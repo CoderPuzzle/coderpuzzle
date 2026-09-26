@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="320" fill="#ffffff"/>
+  <!-- nums = [5,4,6], k = 1; chain boxes 100x48 at x 100/270/440, y 52; dp row baseline y 196 -->
+  <text x="320" y="30" text-anchor="middle" fill="#5c6b76" font-size="12.5">nums = [5, 4, 6], k = 1 → one sorted chain</text>
+  <!-- chain edges: adjacent members differ by exactly k, so they cannot both be picked -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="200" y1="76" x2="270" y2="76"/>
+    <line x1="370" y1="76" x2="440" y2="76"/>
+  </g>
+  <g fill="#5c6b76" font-size="11.5" text-anchor="middle">
+    <text x="235" y="94">Δ = 1</text>
+    <text x="405" y="94">Δ = 1</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="100" y="52" width="100" height="48"/>
+    <rect x="270" y="52" width="100" height="48"/>
+    <rect x="440" y="52" width="100" height="48"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="150" y="82">4</text><text x="320" y="82">5</text><text x="490" y="82">6</text>
+  </g>
+  <text x="320" y="146" text-anchor="middle" fill="#1a2026" font-size="13">the <tspan fill="#4169E1" font-weight="600">5</tspan> k-free picks: {}, {4}, {5}, {6}, {4, 6}</text>
+  <!-- dp row: dp[0] = 1 (empty prefix), dp[i] = dp[i-1] + dp[i-2] -->
+  <text x="38" y="196" fill="#5c6b76" font-size="12.5">dp</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="80" y="196" fill="#1a2026">1</text>
+    <text x="150" y="196" fill="#1a2026">2</text>
+    <text x="320" y="196" fill="#1a2026">3</text>
+    <text x="490" y="196" fill="#4169E1">5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="80" y="216">i = 0</text><text x="150" y="216">i = 1</text>
+    <text x="320" y="216">i = 2</text><text x="490" y="216">i = 3</text>
+  </g>
+  <text x="320" y="250" text-anchor="middle" fill="#1a2026" font-size="13">dp[i] = dp[i − 1] + dp[i − 2], so dp[3] = 3 + 2 = <tspan fill="#4169E1" font-weight="600">5</tspan></text>
+  <text x="320" y="286" text-anchor="middle" fill="#1a2026" font-size="13">A chain's k-free picks are exactly its no-two-adjacent picks;</text>
+  <text x="320" y="304" text-anchor="middle" fill="#1a2026" font-size="13">the count climbs 1, 2, 3, <tspan fill="#4169E1" font-weight="600">5</tspan>, and independent chains would multiply.</text>
+</svg>
