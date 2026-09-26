@@ -23,4 +23,6 @@ arithmetic run starting at k, computed directly as triangular numbers.
 With n, k <= 50 every term stays under 2500 and the whole sum under 2000,
 comfortably inside a signed 32-bit integer.
 
+![For n = 5, k = 4 the pair {1, 3} keeps its smaller side 1, the unpairable midpoint 2 stays, and the remaining 3 slots climb from k as 4, 5, 6, giving [1, 2, 4, 5, 6] with the minimum sum 18.](figures/solution-pair-side-tail.svg)
+
 **Complexity:** `O(1)` time, `O(1)` space.

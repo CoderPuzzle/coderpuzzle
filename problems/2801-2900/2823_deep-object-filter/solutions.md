@@ -18,6 +18,8 @@ member percolates out or, as in Example 4's chain of single-member
 arrays, the root collapses to `undefined` too. Rebuilding containers in
 member order preserves array positions and object key insertion order.
 
+![Example 3's [-1, [-1, -1, 5, -1, 10], -1, [-1], [-5]] under fn x > 0: the four -1 leaves fail fn, the emptied [-1] and [-5] drop, and only 5 and 10 percolate upward, so the root keeps [[5, 10]].](figures/solution-postorder-collapse.svg)
+
 Each value is visited once and its surviving copy written once, so the
 work is linear in the size of `obj`; the extra memory is one frame per
 nesting level plus the survivors accumulated on the current path, since

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 192" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="192" fill="#ffffff"/>
+  <!-- nums = [2,1,3,2,1]; trio (c1, c2, c3) after each read: (0,1,0) (1,1,0) (1,1,2) (1,2,2) (2,2,2);
+       cells 64x36 at x = 144 + 72i, y = 40; survivors are the 1s at indices 1 and 4; answer 5 - 2 = 3 -->
+  <text x="320" y="24" text-anchor="middle" fill="#5c6b76" font-size="12.5">(c1, c2, c3) = longest non-decreasing subsequence seen, ending in 1, 2 or 3</text>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="144" y="40" width="64" height="36"/><rect x="288" y="40" width="64" height="36"/>
+    <rect x="360" y="40" width="64" height="36"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="216" y="40" width="64" height="36"/><rect x="432" y="40" width="64" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="176" y="63" fill="#9aa7b2">2</text><text x="320" y="63" fill="#9aa7b2">3</text>
+    <text x="392" y="63" fill="#9aa7b2">2</text>
+    <text x="248" y="63" fill="#1a2026">1</text><text x="464" y="63" fill="#1a2026">1</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#5c6b76">
+    <text x="176" y="94">(0, <tspan fill="#4169E1" font-weight="600">1</tspan>, 0)</text>
+    <text x="248" y="94">(<tspan fill="#4169E1" font-weight="600">1</tspan>, 1, 0)</text>
+    <text x="320" y="94">(1, 1, <tspan fill="#4169E1" font-weight="600">2</tspan>)</text>
+    <text x="392" y="94">(1, <tspan fill="#4169E1" font-weight="600">2</tspan>, 2)</text>
+    <text x="464" y="94" fill="#4169E1" font-weight="600">(2, 2, 2)</text>
+  </g>
+  <path d="M 248 106 L 248 112 L 464 112 L 464 106" stroke="#4169E1" stroke-width="1.5" fill="none"/>
+  <text x="356" y="130" text-anchor="middle" fill="#4169E1" font-size="12">kept: 1, 1 (non-decreasing)</text>
+  <text x="320" y="160" text-anchor="middle" fill="#1a2026" font-size="13">Each element raises only its own counter; the trio ends at (2, 2, 2).</text>
+  <text x="320" y="178" text-anchor="middle" fill="#1a2026" font-size="13">Best kept length 2 means <tspan fill="#4169E1" font-weight="600">5 - 2 = 3</tspan> removals.</text>
+</svg>

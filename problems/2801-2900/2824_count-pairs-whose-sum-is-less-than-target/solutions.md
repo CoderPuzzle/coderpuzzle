@@ -12,6 +12,8 @@ advances. Otherwise even the largest partner fails lo, so no partner can
 pair with lo and hi retreats to look for smaller ones. Each step moves a
 pointer inward exactly once, so the window closes after n - 1 steps.
 
+![Example 1 sorted to [-1, 1, 1, 2, 3] with target = 2: the window first fails at -1 + 3 = 2, then credits all hi - lo = 3 pairs at once once hi reaches the 2 and the sum is 1, and closes with two more retreats for a final count of 3.](figures/solution-two-pointer-window.svg)
+
 The alternative that ignores the hint's allowance is the literal O(n²)
 double loop over index pairs; it reads straight off the statement but does
 n·(n-1)/2 comparisons where the sweep does O(n log n) sorting work plus a

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 252" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="252" fill="#ffffff"/>
+  <!-- n = 5, k = 4; below k the pair {1, 3} sums to k (keep the smaller 1), midpoint 2 is unpairable,
+       tail 4, 5, 6 fills the remaining slots; chosen [1, 2, 4, 5, 6], sum 18;
+       cells 72x44 at x = 69 + 86i, y = 90 -->
+  <text x="320" y="24" text-anchor="middle" fill="#5c6b76" font-size="12.5">n = 5, k = 4 — values below k pair up to k; values &gt;= k are unconstrained</text>
+  <path d="M 105 84 Q 191 26 277 84" stroke="#42525e" stroke-width="1.5" fill="none"/>
+  <circle cx="105" cy="84" r="3" fill="#42525e"/><circle cx="277" cy="84" r="3" fill="#42525e"/>
+  <text x="191" y="48" text-anchor="middle" fill="#5c6b76" font-size="12">1 + 3 = k</text>
+  <path d="M 327 82 L 327 76 L 571 76 L 571 82" stroke="#42525e" stroke-width="1.5" fill="none"/>
+  <text x="449" y="68" text-anchor="middle" fill="#5c6b76" font-size="12">3 free slots from k upward</text>
+  <rect x="69" y="90" width="72" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="155" y="90" width="72" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="241" y="90" width="72" height="44" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <rect x="327" y="90" width="72" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="413" y="90" width="72" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="499" y="90" width="72" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="105" y="118">1</text><text x="191" y="118">2</text><text x="363" y="118">4</text>
+    <text x="449" y="118">5</text><text x="535" y="118">6</text>
+    <text x="277" y="118" fill="#9aa7b2">3</text>
+  </g>
+  <g text-anchor="middle" font-size="11">
+    <text x="105" y="152" fill="#4169E1">keep</text>
+    <text x="191" y="152" fill="#4169E1">unpairable midpoint</text>
+    <text x="277" y="152" fill="#9aa7b2">drop</text>
+    <text x="363" y="152" fill="#4169E1">keep</text>
+    <text x="449" y="152" fill="#4169E1">keep</text>
+    <text x="535" y="152" fill="#4169E1">keep</text>
+  </g>
+  <text x="320" y="190" text-anchor="middle" fill="#1a2026" font-size="14">sum = 1 + 2 + 4 + 5 + 6 = <tspan fill="#4169E1" font-weight="600">18</tspan></text>
+  <text x="320" y="222" text-anchor="middle" fill="#1a2026" font-size="13">Pair {1, 3} gives up its larger 3; midpoint 2 threatens nothing.</text>
+  <text x="320" y="240" text-anchor="middle" fill="#1a2026" font-size="13">The last 3 slots take 4, 5, 6 straight up from k — the minimum sum is <tspan fill="#4169E1" font-weight="600">18</tspan>.</text>
+</svg>

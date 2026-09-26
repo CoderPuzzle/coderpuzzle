@@ -20,6 +20,8 @@ holds its best over strictly earlier prefixes. The answer is n minus the
 largest counter after the scan — Example 1's [2,1,3,2,1] ends with bests
 (2, 2, 2), so 5 − 2 = 3 removals.
 
+![Example 1's [2, 1, 3, 2, 1] steps the trio through (0, 1, 0), (1, 1, 0), (1, 1, 2), (1, 2, 2) and (2, 2, 2), so the best kept run is the two 1s and 5 − 2 = 3 elements are removed.](figures/solution-trio-counters.svg)
+
 With n ≤ 100 the kept length, the removal count, and every intermediate lie
 far below any overflow horizon (integers up to 100 versus signed 32-bit
 bounds near 2·10⁹, JavaScript's Number exact past 2⁵³). The scan touches
