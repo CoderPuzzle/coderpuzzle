@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 412" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="412" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- receiver = [2,0,1], k = 4 = 100 in binary;
+       from start 2: up/sm for 1,2,4 passes = 1/1, 0/1, 1/4; answer 2 + 4 = 6 -->
+  <text x="310" y="28" text-anchor="middle" fill="#5c6b76" font-size="12.5">receiver = [2, 0, 1] &#8212; every pass follows the cycle 2 &#8594; 1 &#8594; 0 &#8594; 2</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <circle cx="310" cy="78" r="20" stroke="#4169E1" stroke-width="2"/>
+    <circle cx="425" cy="158" r="20"/>
+    <circle cx="195" cy="158" r="20"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="310" y="83">2</text><text x="425" y="163">1</text><text x="195" y="163">0</text>
+  </g>
+  <text x="310" y="44" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">start</text>
+  <g stroke="#5c6b76" stroke-width="1.6" fill="none">
+    <path d="M 331 93 L 399 140" marker-end="url(#arrowG)"/>
+    <path d="M 399 158 L 221 158" marker-end="url(#arrowG)"/>
+    <path d="M 216 143 L 284 96" marker-end="url(#arrowG)"/>
+  </g>
+  <g fill="#5c6b76" font-size="11">
+    <text x="380" y="114">receiver[2] = 1</text>
+    <text x="310" y="178" text-anchor="middle">receiver[1] = 0</text>
+    <text x="246" y="108" text-anchor="end">receiver[0] = 2</text>
+  </g>
+  <text x="40" y="206" fill="#5c6b76" font-size="12.5" font-weight="600">Doubling jumps from start 2:</text>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="130" y="242">1 pass</text><text x="130" y="290">2 passes</text><text x="130" y="338">4 passes</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="142" y="220" width="44" height="36"/><rect x="142" y="268" width="44" height="36"/>
+    <rect x="142" y="316" width="44" height="36"/>
+    <rect x="338" y="220" width="44" height="36"/><rect x="338" y="268" width="44" height="36"/>
+  </g>
+  <rect x="338" y="316" width="44" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="164" y="243">2</text><text x="164" y="291">2</text><text x="164" y="339">2</text>
+    <text x="360" y="243">1</text><text x="360" y="291">0</text><text x="360" y="339" fill="#4169E1">1</text>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.5" fill="none">
+    <path d="M 190 238 H 330" marker-end="url(#arrowG)"/>
+    <path d="M 190 286 H 330" marker-end="url(#arrowG)"/>
+  </g>
+  <path d="M 190 334 H 330" fill="none" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" font-size="11.5" fill="#5c6b76">
+    <text x="250" y="225">receives 1</text>
+    <text x="250" y="273">receives 1 + 0 = 1</text>
+    <text x="250" y="321" fill="#4169E1" font-weight="600">receives 1+0+2+1 = 4</text>
+  </g>
+  <g font-size="12" fill="#5c6b76">
+    <text x="402" y="242">up[0][2] = 1 &#183; sm[0][2] = 1</text>
+    <text x="402" y="290">up[1][2] = 0 &#183; sm[1][2] = 1</text>
+    <text x="402" y="338" fill="#4169E1" font-weight="600">up[2][2] = 1 &#183; sm[2][2] = 4</text>
+  </g>
+  <text x="310" y="380" text-anchor="middle" fill="#1a2026" font-size="13">k = 4 = binary 100 &#8212; a single 4-pass jump; start 2 scores <tspan fill="#4169E1" font-weight="600">2 + 4 = 6</tspan>,</text>
+  <text x="310" y="400" text-anchor="middle" fill="#1a2026" font-size="13">the best over starts 0, 1, 2 (which score 5, 4, 6).</text>
+</svg>

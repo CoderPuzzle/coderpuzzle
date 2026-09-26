@@ -26,6 +26,8 @@ from promotions, whereas a coarser source split prematurely destroys capacity
 finer bits might need; promoting before borrowing keeps every higher bit's
 supply intact.
 
+![For nums = [1,2,8] with target 7, bits 0 and 1 are served from the stock 1 and 2 while bit 2 splits the lone 8 into 4 + 4 in one operation, so the subsequence 1 + 2 + 4 sums to 7 with one operation total.](figures/solution-bit-buckets-split-8.svg)
+
 Serving a set bit either costs nothing or triggers at most one splitting
 chain bounded by 31 levels, so the walk performs O(1) work per bit after an
 O(n) counting pass, well inside the limits; counts and operation totals stay

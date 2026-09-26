@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,8], target = 7 = 4+2+1; buckets exp0:[1] exp1:[2] exp2:[] exp3:[8];
+       bit rows: cells 52x40 at y = 64, 124, 184; bit 2 splits the 8 into 4+4 (1 op) -->
+  <text x="310" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5">target = 7 = 4 + 2 + 1 &#8212; serve the set bits 0, 1, 2 least-significant first</text>
+  <g text-anchor="end" font-weight="600" fill="#1a2026" font-size="13">
+    <text x="150" y="88">bit 0 &#8212; need 1</text>
+    <text x="150" y="148">bit 1 &#8212; need 2</text>
+    <text x="150" y="208">bit 2 &#8212; need 4</text>
+  </g>
+  <rect x="170" y="64" width="52" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="170" y="124" width="52" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="196" y="89">1</text><text x="196" y="149">2</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="250" y="89">in stock &#8212; spend it (0 ops)</text>
+    <text x="250" y="149">in stock &#8212; spend it (0 ops)</text>
+  </g>
+  <rect x="170" y="184" width="52" height="40" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="196" y="208" text-anchor="middle" fill="#9aa7b2" font-size="12">empty</text>
+  <rect x="280" y="184" width="52" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="306" y="209" text-anchor="middle" font-weight="600" font-size="15">8</text>
+  <path d="M 336 204 H 392" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="366" y="194" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">1 op</text>
+  <rect x="400" y="184" width="52" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <rect x="460" y="184" width="52" height="40" fill="#f0f3f7" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="426" y="209" fill="#4169E1">4</text><text x="486" y="209" fill="#5c6b76">4</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5">
+    <text x="196" y="240" fill="#9aa7b2">no 4 in stock</text>
+    <text x="426" y="240" fill="#4169E1">spent on bit 2</text>
+    <text x="486" y="240" fill="#9aa7b2">left over</text>
+  </g>
+  <text x="310" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Bits 0 and 1 come from stock; bit 2 finds no 4, so the lone 8 splits into 4 + 4.</text>
+  <text x="310" y="322" text-anchor="middle" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">One operation</tspan> total &#8212; the subsequence <tspan fill="#4169E1" font-weight="600">1 + 2 + 4 = 7</tspan> reaches the target.</text>
+</svg>

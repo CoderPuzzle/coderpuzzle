@@ -23,4 +23,6 @@ itself stays far inside signed 32-bit range, so plain int arithmetic is
 exact throughout. The answer is never zero: an empty deletion already keeps
 one element.
 
+![For nums = [1,3,2,3,1,3] with k = 3, the window over value 3's positions [1,3,5] grows through costs 0, 1, 2 — deleting the foreign 2 and 1 — for a best equal length of 3.](figures/solution-value-window-deletion-cost.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

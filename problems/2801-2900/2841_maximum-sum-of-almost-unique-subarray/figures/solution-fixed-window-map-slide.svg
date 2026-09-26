@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 346" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="346" fill="#ffffff"/>
+  <!-- nums = [2,6,7,3,1,7], m = 3, k = 4; windows start 0,1,2 (k = 4 wide);
+       sums 18, 17, 18; distinct 4, 4, 3; best 18 at [2,6,7,3];
+       strip cells 64x44 at x = 110+72i, window cells 52x36 at x = 142+58i -->
+  <text x="110" y="34" fill="#5c6b76" font-size="12.5">nums, m = 3, k = 4</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="110" y="48" width="64" height="44"/><rect x="182" y="48" width="64" height="44"/>
+    <rect x="254" y="48" width="64" height="44"/><rect x="326" y="48" width="64" height="44"/>
+    <rect x="398" y="48" width="64" height="44"/><rect x="470" y="48" width="64" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="142" y="76">2</text><text x="214" y="76">6</text><text x="286" y="76">7</text>
+    <text x="358" y="76">3</text><text x="430" y="76">1</text><text x="502" y="76">7</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="142" y="108">0</text><text x="214" y="108">1</text><text x="286" y="108">2</text>
+    <text x="358" y="108">3</text><text x="430" y="108">4</text><text x="502" y="108">5</text>
+  </g>
+  <!-- window 1 (best): accent border; entering element tinted in windows 2 and 3 -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="#ffffff">
+    <rect x="142" y="150" width="52" height="36"/><rect x="200" y="150" width="52" height="36"/>
+    <rect x="258" y="150" width="52" height="36"/><rect x="316" y="150" width="52" height="36"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="142" y="200" width="52" height="36"/><rect x="200" y="200" width="52" height="36"/>
+    <rect x="258" y="200" width="52" height="36"/>
+    <rect x="142" y="250" width="52" height="36"/><rect x="200" y="250" width="52" height="36"/>
+    <rect x="258" y="250" width="52" height="36"/>
+  </g>
+  <rect x="316" y="200" width="52" height="36" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="316" y="250" width="52" height="36" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="168" y="173">2</text><text x="226" y="173">6</text><text x="284" y="173">7</text><text x="342" y="173">3</text>
+    <text x="168" y="223">6</text><text x="226" y="223">7</text><text x="284" y="223">3</text><text x="342" y="223">1</text>
+    <text x="168" y="273">7</text><text x="226" y="273">3</text><text x="284" y="273">1</text><text x="342" y="273">7</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="11.5">
+    <text x="130" y="223">insert 1, evict 2</text>
+    <text x="130" y="273">insert 7, evict 6</text>
+  </g>
+  <g font-size="11.5" fill="#5c6b76">
+    <text x="388" y="173">{2, 6, 7, 3} &#183; distinct 4 &#183; <tspan fill="#4169E1" font-weight="600">sum 18</tspan></text>
+    <text x="388" y="223">{6, 7, 3, 1} &#183; distinct 4 &#183; sum 17</text>
+    <text x="388" y="273">{7:2, 3, 1} &#183; distinct 3 &#183; sum 18</text>
+  </g>
+  <text x="310" y="314" text-anchor="middle" fill="#1a2026" font-size="13">Sums run 18 &#8594; 17 &#8594; 18; every window has distinct &#8805; m = 3, so all compete.</text>
+  <text x="310" y="336" text-anchor="middle" fill="#1a2026" font-size="13">The maximum is <tspan fill="#4169E1" font-weight="600">18</tspan> &#8212; first reached by [2, 6, 7, 3].</text>
+</svg>

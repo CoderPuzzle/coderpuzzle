@@ -6,6 +6,8 @@ Because accepted offers must not overlap, the houses form a line and the problem
 
 To evaluate it in a single sweep, the offers are bucketed by their end house: `by_end[e]` holds the `(start, gold)` pairs finishing at `e`. The DP then walks `e` from `0` to `n - 1` in order, so every `dp[start]` an offer needs has already been computed when the offer's end is reached. No sorting of offers is required — the bucket array itself provides the ordering by end position.
 
+![For n = 5 with offers [[0,0,1],[0,2,2],[1,3,2]], the bucketed sweep takes dp[3] = dp[0]+2 from offer [0,2,2] and dp[4] = dp[1]+2 from offer [1,3,2], so the accepted offers [0,0] and [1,3] earn 3 gold.](figures/solution-offer-bucket-dp-sweep.svg)
+
 Houses that no offer ends at simply carry the previous value forward, which is also what lets offers be skipped when leaving a house unsold is better. Overlapping offers conflict automatically: an offer starting at or after a previous offer's start but before its end can only be combined if the DP value it reads excludes the earlier one, which the recurrence enforces by only adding gold to `dp[start]`, the optimum before the offer's own interval. Some houses remaining unsold is handled by the carry-over branch.
 
 **Complexity:** `O(n + m)` time, `O(n + m)` space, where `m` is the number of offers.

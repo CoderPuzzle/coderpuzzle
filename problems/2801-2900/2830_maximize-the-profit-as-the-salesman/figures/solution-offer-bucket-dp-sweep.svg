@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 420" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="420" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- n = 5; offers = [[0,0,1],[0,2,2],[1,3,2]]; dp[0..5] = 0,1,1,2,3,3;
+       house cells 56x34 at x = 120+64i, dp cells 64x50 at x = 130+72i;
+       arcs A [0,0,1] dp0->dp1, B [0,2,2] dp0->dp3, C [1,3,2] dp1->dp4 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="120" y="64" width="56" height="34"/><rect x="184" y="64" width="56" height="34"/>
+    <rect x="248" y="64" width="56" height="34"/><rect x="312" y="64" width="56" height="34"/>
+    <rect x="376" y="64" width="56" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="148" y="86">0</text><text x="212" y="86">1</text><text x="276" y="86">2</text>
+    <text x="340" y="86">3</text><text x="404" y="86">4</text>
+  </g>
+  <!-- offer spans over the house line: accepted [0,0,1] and [1,3,2] in accent, [0,2,2] muted -->
+  <path d="M 136 62 Q 148 22 160 62" fill="none" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="148" y="33" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">1 gold</text>
+  <path d="M 148 62 Q 212 -10 276 62" fill="none" stroke="#9aa7b2" stroke-width="1.6"/>
+  <text x="212" y="18" text-anchor="middle" fill="#9aa7b2" font-size="11.5">2 gold</text>
+  <path d="M 212 62 Q 276 4 340 62" fill="none" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="276" y="26" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">2 gold</text>
+  <text x="342" y="148" text-anchor="middle" fill="#5c6b76" font-size="12.5">dp[i] = the most gold from houses 0 &#8230; i&#8722;1</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="162" y="190">dp[0]</text><text x="234" y="190">dp[1]</text><text x="306" y="190">dp[2]</text>
+    <text x="378" y="190">dp[3]</text><text x="450" y="190">dp[4]</text><text x="522" y="190">dp[5]</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="130" y="200" width="64" height="50"/><rect x="202" y="200" width="64" height="50"/>
+    <rect x="274" y="200" width="64" height="50"/><rect x="346" y="200" width="64" height="50"/>
+    <rect x="418" y="200" width="64" height="50"/><rect x="490" y="200" width="64" height="50"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="162" y="228" fill="#9aa7b2">0</text><text x="234" y="228" fill="#4169E1">1</text>
+    <text x="306" y="228">1</text><text x="378" y="228">2</text>
+    <text x="450" y="228" fill="#4169E1">3</text><text x="522" y="228" fill="#4169E1">3</text>
+  </g>
+  <g text-anchor="middle" font-size="10">
+    <text x="306" y="242" fill="#9aa7b2">carry</text><text x="522" y="242" fill="#4169E1">answer</text>
+  </g>
+  <!-- transitions below: +1 offer [0,0,1]; dp[0]+2 offer [0,2,2]; dp[1]+2 offer [1,3,2] -->
+  <path d="M 150 256 Q 192 288 234 256" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="192" y="300" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">+1</text>
+  <path d="M 174 256 Q 274 314 374 256" fill="none" stroke="#9aa7b2" stroke-width="1.6" marker-end="url(#arrowG)"/>
+  <text x="282" y="301" text-anchor="middle" fill="#9aa7b2" font-size="12.5">dp[0]+2</text>
+  <path d="M 234 256 Q 300 460 450 256" fill="none" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <text x="330" y="374" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">dp[1]+2</text>
+  <text x="310" y="394" text-anchor="middle" fill="#1a2026" font-size="13">Bucketing offers by end house, dp[e+1] = max(dp[e], dp[start] + gold) sweeps once.</text>
+  <text x="310" y="414" text-anchor="middle" fill="#1a2026" font-size="13">Offer [0,2,2] gives dp[3] = 2; the winning chain dp[1] = 1 &#8594; dp[4] = 3 earns <tspan fill="#4169E1" font-weight="600">3 gold</tspan>.</text>
+</svg>
