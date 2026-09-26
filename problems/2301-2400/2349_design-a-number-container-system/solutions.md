@@ -20,6 +20,8 @@ invalidate specific entries without hiding any smaller live one beneath
 them. A duplicate `change` with the same index and number writes nothing at
 all — skipping the push keeps heaps from bloating on repeated calls.
 
+![After change(1,20) in Example 1, heap 10 still carries the stale 1 crossed out beside the live 2, 3, 5, and find(10) pops past it to return 2.](figures/solution-lazy-deletion-heaps.svg)
+
 The total work stays bounded because every pushed entry can be popped at
 most once across the whole run: `change` costs one push, and each pop in
 `find` is paid for by some earlier push, so a stream of `m` calls does

@@ -18,6 +18,8 @@ discarded without being pushed; otherwise it joins the stack. Amortized
 `O(1)` work per peak follows because each mountain is pushed and popped at
 most once.
 
+![On peaks [[2,2],[6,3],[5,4]] sorted by x, the containment test |6−5| = 1 ≤ 4−3 = 1 crosses out mountain 1's peak on mountain 2's slope, and the stack ends holding (2,2) and (5,4) — 2 visible mountains.](figures/solution-monotonic-stack-sweep.svg)
+
 Two edge details finish the count. Duplicate peaks must be collapsed with
 their multiplicity kept: identical mountains lie within each other, so any
 duplicated peak is invisible — yet an invisible duplicate still hides other

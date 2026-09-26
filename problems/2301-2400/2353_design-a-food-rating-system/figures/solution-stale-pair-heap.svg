@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 210" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="210" fill="#ffffff"/>
+  <!-- Example 1, japanese heap as a row sorted by pair order; cells 104x44 at y=56, pitch 110 from x=48; stale = rating disagrees with the food map (miso 12, sushi 16, ramen 16) -->
+  <text x="320" y="24" text-anchor="middle" fill="#5c6b76" font-size="12.5">heap for "japanese" after changeRating("ramen", 16):</text>
+  <text x="100" y="48" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">top</text>
+  <rect x="48" y="56" width="104" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="100" y="84" text-anchor="middle" fill="#1a2026" font-size="13.5" font-weight="600">(-16, ramen)</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="158" y="56" width="104" height="44"/><rect x="378" y="56" width="104" height="44"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13.5" font-weight="600">
+    <text x="210" y="84">(-16, sushi)</text><text x="430" y="84">(-12, miso)</text>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5">
+    <rect x="268" y="56" width="104" height="44"/><rect x="488" y="56" width="104" height="44"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="13.5" font-weight="600">
+    <text x="320" y="84">(-14, ramen)</text><text x="540" y="84">(-8, sushi)</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="2" stroke-linecap="round">
+    <line x1="356" y1="61" x2="366" y2="71"/><line x1="366" y1="61" x2="356" y2="71"/>
+    <line x1="576" y1="61" x2="586" y2="71"/><line x1="586" y1="61" x2="576" y2="71"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="320" y="120">ramen now rates 16</text>
+    <text x="540" y="120">sushi now rates 16</text>
+  </g>
+  <text x="320" y="150" text-anchor="middle" fill="#1a2026" font-size="12.5">highestRated peeks the top: (-16, ramen) is live (ramen rates 16) and</text>
+  <text x="320" y="168" text-anchor="middle" fill="#1a2026" font-size="12.5">beats (-16, sushi) by name — the answer is <tspan fill="#4169E1" font-weight="600">ramen</tspan>.</text>
+  <text x="320" y="196" text-anchor="middle" fill="#1a2026" font-size="13">Lazy deletion: stale pairs are popped only when they reach the top.</text>
+</svg>

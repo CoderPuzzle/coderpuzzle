@@ -18,6 +18,8 @@ then peeks the top and pops while it is stale — a valid top is never
 consumed, so answering the query never disturbs the ranking, and each pushed
 entry is discarded at most once, amortizing the cleanup into the pushes.
 
+![In Example 1's japanese heap after changeRating("ramen", 16), the stale pairs (-14, ramen) and (-8, sushi) sit crossed beside the live top (-16, ramen), which wins the -16 tie by name and answers ramen.](figures/solution-stale-pair-heap.svg)
+
 A tie re-rated to its own value is harmless: duplicates of a valid pair
 resolve to the same answer. The Java canonical solution stores heap entries
 as `{-rating, foodId}` with ids into a name table (comparing names only on
