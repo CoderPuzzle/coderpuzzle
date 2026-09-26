@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 316" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="316" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,4,4,1,3,5,5,3], pattern = [1,0,-1]; signs = [1,0,-1,1,1,0,-1];
+       nums cells 52x40 at x=96+52i, y=56; sign cells 52x44 at x=122+52j, y=140;
+       dashed match rects at offsets 0 (x=119) and 4 (x=327), w=162 -->
+  <text x="96" y="44" fill="#5c6b76" font-size="12.5">nums</text>
+  <text x="514" y="28" text-anchor="end" fill="#5c6b76" font-size="12">pattern</text>
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="520" y="10" width="24" height="26" fill="#dbe4fb"/><rect x="546" y="10" width="24" height="26" fill="#dbe4fb"/><rect x="572" y="10" width="24" height="26" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="600">
+    <text x="532" y="28">1</text><text x="558" y="28">0</text><text x="584" y="28">-1</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="96" y="56" width="52" height="40"/><rect x="148" y="56" width="52" height="40"/><rect x="200" y="56" width="52" height="40"/><rect x="252" y="56" width="52" height="40"/>
+    <rect x="304" y="56" width="52" height="40"/><rect x="356" y="56" width="52" height="40"/><rect x="408" y="56" width="52" height="40"/><rect x="460" y="56" width="52" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="122" y="81">1</text><text x="174" y="81">4</text><text x="226" y="81">4</text><text x="278" y="81">1</text>
+    <text x="330" y="81">3</text><text x="382" y="81">5</text><text x="434" y="81">5</text><text x="486" y="81">3</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 148 100 V 132" marker-end="url(#arrow)"/><path d="M 200 100 V 132" marker-end="url(#arrow)"/><path d="M 252 100 V 132" marker-end="url(#arrow)"/>
+    <path d="M 304 100 V 132" marker-end="url(#arrow)"/><path d="M 356 100 V 132" marker-end="url(#arrow)"/><path d="M 408 100 V 132" marker-end="url(#arrow)"/><path d="M 460 100 V 132" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="122" y="140" width="52" height="44" fill="#ffffff"/><rect x="174" y="140" width="52" height="44" fill="#ffffff"/><rect x="226" y="140" width="52" height="44" fill="#ffffff"/>
+    <rect x="278" y="140" width="52" height="44" fill="#ffffff"/><rect x="330" y="140" width="52" height="44" fill="#ffffff"/><rect x="382" y="140" width="52" height="44" fill="#ffffff"/>
+    <rect x="434" y="140" width="52" height="44" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="148" y="160">1</text><text x="200" y="160">0</text><text x="252" y="160">-1</text>
+    <text x="304" y="160">1</text><text x="356" y="160">1</text><text x="408" y="160">0</text><text x="460" y="160">-1</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="148" y="176">&gt;</text><text x="200" y="176">=</text><text x="252" y="176">&lt;</text>
+    <text x="304" y="176">&gt;</text><text x="356" y="176">&gt;</text><text x="408" y="176">=</text><text x="460" y="176">&lt;</text>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="2" stroke-dasharray="6 4">
+    <rect x="119" y="137" width="162" height="50" rx="6"/><rect x="327" y="137" width="162" height="50" rx="6"/>
+  </g>
+  <polyline points="193,226 199,232 210,216" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <polyline points="401,226 407,232 418,216" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <g stroke="#9aa7b2" stroke-width="2">
+    <line x1="246" y1="218" x2="258" y2="230"/><line x1="258" y1="218" x2="246" y2="230"/>
+    <line x1="298" y1="218" x2="310" y2="230"/><line x1="310" y1="218" x2="298" y2="230"/>
+    <line x1="350" y1="218" x2="362" y2="230"/><line x1="362" y1="218" x2="350" y2="230"/>
+  </g>
+  <text x="200" y="252" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">match</text>
+  <text x="304" y="252" text-anchor="middle" fill="#9aa7b2" font-size="11.5">no match</text>
+  <text x="408" y="252" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">match</text>
+  <text x="320" y="286" text-anchor="middle" fill="#1a2026" font-size="13">Signs [1, 0, -1, 1, 1, 0, -1]; the pattern window matches at offsets <tspan fill="#4169E1" font-weight="600">0</tspan> and <tspan fill="#4169E1" font-weight="600">4</tspan> &#8212;</text>
+  <text x="320" y="304" text-anchor="middle" fill="#1a2026" font-size="13">the subarrays [1, 4, 4, 1] and [3, 5, 5, 3], so the count is <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

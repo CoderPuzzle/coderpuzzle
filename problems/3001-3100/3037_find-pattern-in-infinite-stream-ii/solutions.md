@@ -12,6 +12,8 @@ bit disagrees with `pattern[matched]`, extend on agreement, and return
 longest prefix that could still end here, so no earlier start can match,
 and the first full state is by construction the first occurrence.
 
+![On the stream [1,0,1,1,0,1,...] with pattern [1,1,0,1] (fail [0,1,0,1]) the matched length walks 1, 0, 1, 2, 3, 4 — falling back to 0 on the index-1 bit — and hits m = 4 at read 6, so the first occurrence starts at index 2.](figures/solution-streaming-kmp-state.svg)
+
 Both ports run the same automaton; they differ only in plumbing. Each read
 bit costs amortized O(1) fallback work (every fallback strictly decreases
 `matched`, and each read raises it by at most one), so the whole run

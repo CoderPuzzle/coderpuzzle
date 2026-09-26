@@ -15,4 +15,6 @@ slides one position to the right. With `n <= 100` this direct comparison
 sits far inside the limits — the linear-time pattern matching that would
 matter at larger scales is deliberately out of scope for this version.
 
+![On nums = [1,4,4,1,3,5,5,3] the sign array is [1,0,-1,1,1,0,-1]; the pattern [1,0,-1] window matches only at offsets 0 and 4, the subarrays [1,4,4,1] and [3,5,5,3], so the count is 2.](figures/solution-sign-array-windows.svg)
+
 **Complexity:** `O(n * m)` time, `O(n)` space.

@@ -23,4 +23,6 @@ the count increments and `matched` drops to `failure[m - 1]`, which lets
 overlapping occurrences — the dominant case on constant arrays — be counted
 separately.
 
+![On nums = [1,4,4,1,3,5,5,3] with pattern [1,0,-1] (failure [0,0,0]) the KMP scan over the sign array [1,0,-1,1,1,0,-1] drives the matched length 1, 2, 3, falling back to 0 on the t = 4 mismatch, and records full matches at t = 2 and t = 6 — count 2.](figures/solution-kmp-sign-scan.svg)
+
 **Complexity:** `O(n + m)` time, `O(n)` space.

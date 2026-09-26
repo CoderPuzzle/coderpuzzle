@@ -6,4 +6,6 @@ After `t` seconds exactly the first `t * k` characters of the original word have
 
 The KMP prefix function yields all border lengths at once: starting from `fail[n-1]` and repeatedly following `fail` visits every length that is both a prefix and a suffix, which we mark in a boolean table. Scanning `t = 1, 2, ...` then answers at the first `t` whose cut passes either test — an O(1) check per candidate — and the scan cannot run past `ceil(n / k)`, where the whole word has rotated out regardless.
 
+![On word = "abacaba" with k = 3 the border lengths are 3 ("aba") and 1 ("a"); the t = 2 cut of six characters leaves the suffix "a", so n − t·k = 1 is the first border length the scan hits and the answer is 2.](figures/solution-border-cut-scan.svg)
+
 **Complexity:** `O(n)` time and `O(n)` space.
