@@ -26,4 +26,6 @@ every slot gets filled by the end of the walk, the recorded indices are the
 lexicographically smallest valid sequence — each slot took the earliest index
 any valid sequence could use there — and otherwise no sequence exists.
 
+![On word1 "bacdc" with word2 "abc", the backward sweep anchors last[1] = 0 and last[2] = 4 with no anchor for slot 0, and the greedy takes 1 exactly, spends the one change at 2 because the guard 2 < last[2] = 4 holds, then takes 4 — returning [1, 2, 4].](figures/solution-backward-anchors-guarded-greedy.svg)
+
 **Complexity:** `O(|word1| + |word2|)` time, `O(|word2|)` space.

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 368" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="368" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- word1 = "bacdc", word2 = "abc"; backward sweep anchors last = [none, 0, 4]; greedy takes 1 (exact), 2 (change, guard 2 < last[2] = 4), 4 (exact) -> [1,2,4]; word1 cells 64x40 at x = 83 + 90i -->
+  <text x="18" y="77" fill="#5c6b76" font-size="12.5">word1</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="83" y="52" width="64" height="40" fill="#f0f3f7"/>
+    <rect x="173" y="52" width="64" height="40" fill="#dbe4fb"/>
+    <rect x="263" y="52" width="64" height="40" fill="#dbe4fb"/>
+    <rect x="353" y="52" width="64" height="40" fill="#f0f3f7"/>
+    <rect x="443" y="52" width="64" height="40" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="115" y="77">b</text><text x="205" y="77">a</text><text x="295" y="77">c</text>
+    <text x="385" y="77">d</text><text x="475" y="77">c</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="115" y="112">i = 0</text><text x="205" y="112">i = 1</text><text x="295" y="112">i = 2</text>
+    <text x="385" y="112">i = 3</text><text x="475" y="112">i = 4</text>
+  </g>
+  <!-- forward greedy annotations -->
+  <g text-anchor="middle" font-size="11" font-weight="600">
+    <text x="115" y="138" fill="#5c6b76">skip</text>
+    <text x="205" y="138" fill="#4169E1">seq[0] = 1</text>
+    <text x="295" y="138" fill="#4169E1">seq[1] = 2</text>
+    <text x="385" y="138" fill="#5c6b76">skip</text>
+    <text x="475" y="138" fill="#4169E1">seq[2] = 4</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5" fill="#5c6b76">
+    <text x="115" y="154">0 &lt; last[1] = 0</text>
+    <text x="205" y="154">exact match</text>
+    <text x="295" y="154">change c to b</text>
+    <text x="385" y="154">change spent</text>
+    <text x="475" y="154">exact match</text>
+    <text x="115" y="170">guard fails</text>
+    <text x="295" y="170" fill="#4169E1" font-weight="600">2 &lt; last[2] = 4</text>
+  </g>
+  <!-- backward anchors above the word2 slots -->
+  <text x="18" y="238" fill="#5c6b76" font-size="12.5">last[j]</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="204" y="238" fill="#9aa7b2">—</text>
+    <text x="260" y="238" fill="#1a2026">0</text>
+    <text x="316" y="238" fill="#4169E1">4</text>
+  </g>
+  <text x="18" y="271" fill="#5c6b76" font-size="12.5">word2</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="180" y="246" width="48" height="40"/><rect x="236" y="246" width="48" height="40"/>
+    <rect x="292" y="246" width="48" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="204" y="271">a</text><text x="260" y="271">b</text><text x="316" y="271">c</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="204" y="304">j = 0</text><text x="260" y="304">j = 1</text><text x="316" y="304">j = 2</text>
+  </g>
+  <text x="360" y="271" fill="#5c6b76" font-size="12">from the right-to-left sweep:</text>
+  <text x="360" y="289" fill="#5c6b76" font-size="12">word2[j..] embeds exactly from i</text>
+  <text x="320" y="334" text-anchor="middle" fill="#1a2026" font-size="13">The sweep anchors slots 1 and 2 (last[1] = 0, last[2] = 4); slot 0 has none,</text>
+  <text x="320" y="356" text-anchor="middle" fill="#1a2026" font-size="13">so the change at slot 1 is guarded by 2 &lt; last[2] = 4 — the greedy returns <tspan fill="#4169E1" font-weight="600">[1, 2, 4]</tspan>.</text>
+</svg>

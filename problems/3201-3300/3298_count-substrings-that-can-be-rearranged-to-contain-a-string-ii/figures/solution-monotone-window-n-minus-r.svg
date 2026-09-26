@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- word1 = "abcabc" (n = 6), word2 = "abc"; per left end: l=0 covers at r=2 (+4), l=1 at r=3 (+3), l=2 at r=4 (+2), l=3 at r=5 (+1); total 10; cells 58x40 at x = 84 + 66i -->
+  <text x="18" y="77" fill="#5c6b76" font-size="12.5">word1</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="84" y="52" width="58" height="40"/><rect x="150" y="52" width="58" height="40"/>
+    <rect x="216" y="52" width="58" height="40"/><rect x="282" y="52" width="58" height="40"/>
+    <rect x="348" y="52" width="58" height="40"/><rect x="414" y="52" width="58" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="113" y="77">a</text><text x="179" y="77">b</text><text x="245" y="77">c</text>
+    <text x="311" y="77">a</text><text x="377" y="77">b</text><text x="443" y="77">c</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="113" y="112">0</text><text x="179" y="112">1</text><text x="245" y="112">2</text>
+    <text x="311" y="112">3</text><text x="377" y="112">4</text><text x="443" y="112">5</text>
+  </g>
+  <text x="486" y="66" fill="#5c6b76" font-size="12">word2 "abc"</text>
+  <text x="486" y="84" fill="#5c6b76" font-size="12">need a1 b1 c1</text>
+  <!-- left end l = 1: window [1..3] first covers -->
+  <path d="M 183 118 L 183 126 L 315 126 L 315 118" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="249" y="146" text-anchor="middle" fill="#1a2026" font-size="12.5">l = 1: window grows until it first covers</text>
+  <text x="249" y="166" text-anchor="middle" fill="#1a2026" font-size="12.5">r = 2: "bc" misses a; extend to r = 3: "bca" meets a1 b1 c1</text>
+  <!-- the n - r = 3 windows this left end contributes -->
+  <text x="18" y="216" fill="#5c6b76" font-size="12.5">windows</text>
+  <text x="18" y="232" fill="#5c6b76" font-size="12.5">from l = 1</text>
+  <g>
+    <rect x="180" y="190" width="138" height="12" rx="6" fill="#dbe4fb"/>
+    <rect x="180" y="208" width="204" height="12" rx="6" fill="#f0f3f7"/>
+    <rect x="180" y="226" width="270" height="12" rx="6" fill="#f0f3f7"/>
+  </g>
+  <g fill="#5c6b76" font-size="11">
+    <text x="326" y="200">r = 3</text>
+    <text x="392" y="218">r = 4</text>
+    <text x="458" y="236">r = 5</text>
+  </g>
+  <text x="516" y="216" fill="#4169E1" font-size="12.5" font-weight="600">n - r = 3</text>
+  <path d="M 484 214 L 508 214" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="330" y="266" text-anchor="middle" fill="#1a2026" font-size="13">Per left end: l = 0 → 4, l = 1 → <tspan fill="#4169E1" font-weight="600">3</tspan>, l = 2 → 2, l = 3 → 1</text>
+  <text x="330" y="294" text-anchor="middle" fill="#1a2026" font-size="13">Coverage is monotone, so the right pointer never steps back: left end l</text>
+  <text x="330" y="316" text-anchor="middle" fill="#1a2026" font-size="13">contributes n - r windows, and 4 + 3 + 2 + 1 = <tspan fill="#4169E1" font-weight="600">10</tspan> substrings in all.</text>
+</svg>

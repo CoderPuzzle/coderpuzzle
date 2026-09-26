@@ -13,6 +13,8 @@ them is the only possible mismatch, and changing it makes the window equal.
 So the test is just `f == m` or `f + b >= m - 1` — at most one character is
 ever unaccounted for, and it can always absorb the change.
 
+![On s "abcdefg" with pattern "bcdffg", the window s[1..6] = "bcdefg" matches a forward run of f = 3 and a backward run of b = 2, leaving exactly the one gap character s[4]; f + b = 5 = m - 1, so changing that e to f makes start 1 the answer.](figures/solution-forward-backward-gap-one.svg)
+
 Both run-length tables come from Z-functions. Running the Z-function over
 `pattern + separator + s` gives, for every start `i`, the forward length
 `f = min(z[m + 1 + i], m)` — how many characters of `pattern` match `s`

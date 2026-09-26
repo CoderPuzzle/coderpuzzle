@@ -12,10 +12,14 @@ threshold through the last index yields a valid substring.
 Slide a single right end across `word1` while maintaining the frequency
 counts of the current window. After each extension, shrink from the left
 for as long as the window still covers `word2`'s counts; when shrinking
-stops, `left - 1` marks, for this right end, the latest start whose window
-covers, so the suffix starting anywhere in `[left - 1..right]` is a valid
-window ending at `right`, contributing `right - left + 2` substrings.
-Each index enters and leaves the window once, giving linear time overall.
+stops, the left character is load-bearing, `[left..right]` is the minimal
+covering window ending at `right`, and every start in `[0..left]` yields a
+valid window ending there, contributing `left + 1` substrings. Each index
+enters and leaves the window once, giving linear time overall.
+
+![On word1 = "bcca" with word2 = "abc", the window counts reach need a1
+b1 c1 first at right = 3, the left 'b' fails the shrink test (b0 < b1),
+and the end reports left + 1 = 1 valid substring — the expected output.](figures/solution-shrink-stops-load-bearing.svg)
 
 The count accumulates in a 64-bit integer: with `n = 10⁵` identical
 letters and a one-letter `word2`, the answer is the triangular number

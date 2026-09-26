@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- target = "aabcdabc"; words = ["abc","aaaaa","bcdef"]; reach r = [1,2,2,3,3,1,2,3]; dp = [0,1,1,2,2,2,3,3,3]; cells 58x40 at x = 84 + 66i -->
+  <text x="344" y="26" text-anchor="middle" fill="#5c6b76" font-size="11.5">Aho-Corasick walk</text>
+  <path d="M 84 34 H 596" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="18" y="77" fill="#5c6b76" font-size="12.5">target</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="84" y="52" width="58" height="40"/><rect x="150" y="52" width="58" height="40"/>
+    <rect x="216" y="52" width="58" height="40"/><rect x="282" y="52" width="58" height="40"/>
+    <rect x="348" y="52" width="58" height="40"/><rect x="414" y="52" width="58" height="40"/>
+    <rect x="480" y="52" width="58" height="40"/><rect x="546" y="52" width="58" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="113" y="77">a</text><text x="179" y="77">a</text><text x="245" y="77">b</text>
+    <text x="311" y="77">c</text><text x="377" y="77">d</text><text x="443" y="77">a</text>
+    <text x="509" y="77">b</text><text x="575" y="77">c</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="113" y="112">j = 0</text><text x="179" y="112">j = 1</text><text x="245" y="112">j = 2</text>
+    <text x="311" y="112">j = 3</text><text x="377" y="112">j = 4</text><text x="443" y="112">j = 5</text>
+    <text x="509" y="112">j = 6</text><text x="575" y="112">j = 7</text>
+  </g>
+  <text x="18" y="150" fill="#5c6b76" font-size="12.5">reach</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="113" y="150" fill="#1a2026">1</text><text x="179" y="150" fill="#1a2026">2</text>
+    <text x="245" y="150" fill="#1a2026">2</text><text x="311" y="150" fill="#1a2026">3</text>
+    <text x="377" y="150" fill="#1a2026">3</text><text x="443" y="150" fill="#1a2026">1</text>
+    <text x="509" y="150" fill="#1a2026">2</text><text x="575" y="150" fill="#4169E1">3</text>
+  </g>
+  <text x="18" y="168" fill="#5c6b76" font-size="10.5">word-prefix</text>
+  <g text-anchor="middle" font-size="10.5" fill="#9aa7b2">
+    <text x="113" y="168">a</text><text x="179" y="168">aa</text><text x="245" y="168">ab</text>
+    <text x="311" y="168">abc</text><text x="377" y="168">bcd</text><text x="443" y="168">a</text>
+    <text x="509" y="168">ab</text><text x="575" y="168" fill="#4169E1">abc</text>
+  </g>
+  <!-- dp row: window [5,7] cells tinted, answer dp[8] accented -->
+  <g fill="#f0f3f7">
+    <rect x="357" y="194" width="40" height="30"/><rect x="423" y="194" width="40" height="30"/>
+    <rect x="489" y="194" width="40" height="30"/>
+  </g>
+  <rect x="553" y="194" width="44" height="30" fill="#dbe4fb"/>
+  <text x="18" y="212" fill="#5c6b76" font-size="12.5">dp</text>
+  <text x="52" y="212" text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">0</text>
+  <text x="52" y="230" text-anchor="middle" fill="#9aa7b2" font-size="10">start</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="113" y="212" fill="#1a2026">1</text><text x="179" y="212" fill="#1a2026">1</text>
+    <text x="245" y="212" fill="#1a2026">2</text><text x="311" y="212" fill="#1a2026">2</text>
+    <text x="377" y="212" fill="#4169E1">2</text><text x="443" y="212" fill="#1a2026">3</text>
+    <text x="509" y="212" fill="#1a2026">3</text><text x="575" y="212" fill="#4169E1">3</text>
+  </g>
+  <path d="M 377 228 L 377 238 L 509 238 L 509 228" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="443" y="258" text-anchor="middle" fill="#1a2026" font-size="12.5">r[7] = 3 → start s ∈ [5, 7], min = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <text x="443" y="276" text-anchor="middle" fill="#1a2026" font-size="12.5">dp[8] = 1 + 2 = <tspan fill="#4169E1" font-weight="600">3</tspan> pieces</text>
+  <text x="330" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Each reach r[j] is the longest suffix of target[:j + 1] that is a prefix of some word;</text>
+  <text x="330" y="320" text-anchor="middle" fill="#1a2026" font-size="13">the segment tree reports each window [j + 1 - r, j] minimum, finishing dp[j + 1] = <tspan fill="#4169E1" font-weight="600">3</tspan> here.</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="296" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "abcdefg", pattern = "bcdffg" (m = 6); window s[1..6] = "bcdefg": forward f = 3 (b,c,d), backward b = 2 (f,g), gap at s[4] = 'e'; cells 56x40 at x = 110 + 62i -->
+  <text x="18" y="77" fill="#5c6b76" font-size="12.5">pattern</text>
+  <path d="M 138 48 L 138 40 L 262 40 L 262 48" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="200" y="30" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">forward f = 3</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="110" y="52" width="56" height="40" fill="#ffffff"/><rect x="172" y="52" width="56" height="40" fill="#ffffff"/>
+    <rect x="234" y="52" width="56" height="40" fill="#ffffff"/><rect x="296" y="52" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="358" y="52" width="56" height="40" fill="#ffffff"/><rect x="420" y="52" width="56" height="40" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="138" y="77">b</text><text x="200" y="77">c</text><text x="262" y="77">d</text>
+    <text x="324" y="77">f</text><text x="386" y="77">f</text><text x="448" y="77">g</text>
+  </g>
+  <text x="18" y="157" fill="#5c6b76" font-size="12.5">s[1..6]</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="110" y="132" width="56" height="40" fill="#ffffff"/><rect x="172" y="132" width="56" height="40" fill="#ffffff"/>
+    <rect x="234" y="132" width="56" height="40" fill="#ffffff"/><rect x="296" y="132" width="56" height="40" fill="#dbe4fb"/>
+    <rect x="358" y="132" width="56" height="40" fill="#ffffff"/><rect x="420" y="132" width="56" height="40" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="138" y="157">b</text><text x="200" y="157">c</text><text x="262" y="157">d</text>
+    <text x="324" y="157">e</text><text x="386" y="157">f</text><text x="448" y="157">g</text>
+  </g>
+  <path d="M 324 96 L 324 128" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="336" y="116" fill="#4169E1" font-size="12" font-weight="600">change e to f</text>
+  <path d="M 386 180 L 386 188 L 448 188 L 448 180" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="417" y="206" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">backward b = 2</text>
+  <text x="320" y="242" text-anchor="middle" fill="#1a2026" font-size="13">Test f + b &gt;= m - 1 (m = 6): start 0 fails (0 + 0); start 1 leaves one gap:</text>
+  <text x="320" y="264" text-anchor="middle" fill="#1a2026" font-size="13">f + b = <tspan fill="#4169E1" font-weight="600">3 + 2 = 5 = m - 1</tspan> — changing s[4] from e to f answers index <tspan fill="#4169E1" font-weight="600">1</tspan>.</text>
+</svg>

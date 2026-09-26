@@ -10,6 +10,8 @@ a two-pointer sweep exact — advance a right pointer until the counts of all 26
 letters first satisfy `count[c] >= need[c]`, then every extension of that
 window is also valid, contributing `n - r` windows for this left end.
 
+![On word1 "abcabc" with word2 "abc", the window from l = 1 grows to r = 3, where "bca" first covers the needs a1 b1 c1, so this left end contributes n - r = 3 windows; the same sweep gives 4, 3, 2, 1 across l = 0..3, totalling 10.](figures/solution-monotone-window-n-minus-r.svg)
+
 The right pointer never moves backwards: after dropping the leftmost
 character of a covered (or not-yet-covered) window, the smallest covering
 right end can only stay put or grow, so across the whole scan each character

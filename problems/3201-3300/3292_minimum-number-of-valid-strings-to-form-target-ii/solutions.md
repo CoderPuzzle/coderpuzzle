@@ -22,6 +22,8 @@ position. Greedy longest-jump fails here (a long early piece can strand a
 character only shorter pieces could cover), which is why the full window
 minimum is needed.
 
+![On target "aabcdabc" with words ["abc","aaaaa","bcdef"], the walk gives each position the reach r = 1, 2, 2, 3, 3, 1, 2, 3 — the trie depth of the longest word-prefix suffix — and the last window [5, 7] has minimum dp 2, so dp[8] = 1 + 2 = 3 pieces.](figures/solution-aho-corasick-reach-forward-dp.svg)
+
 Everything stays comfortably in 32-bit room: positions are at most `5 * 10⁴`,
 and the answer can never exceed `len(target) <= 5 * 10⁴` pieces.
 
