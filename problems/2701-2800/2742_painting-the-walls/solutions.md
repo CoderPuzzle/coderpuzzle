@@ -6,6 +6,8 @@ Reframe the two painters as a covering problem. Whenever the paid painter takes 
 
 That is a 0/1 knapsack over coverage: `dp[j]` is the cheapest selection of walls covering at least `j` walls' worth of demand, with `dp[0] = 0`. Processing wall `i` updates `dp[j] = min(dp[j], dp[max(j - (time[i] + 1), 0)] + cost[i])` for `j` descending; the clamp folds surpluses back to the `dp[0]` origin, sound because coverage beyond `n` is worthless. The answer is `dp[n]`.
 
+![On cost = [1, 2, 3, 2] and time = [1, 2, 3, 2], the rolling dp row fills to dp[4] = 3: paying walls 0 and 1 costs 1 + 2 = 3 and covers 2 + 3 = 5, at least the 4 walls.](figures/solution-coverage-dp-rolling-row.svg)
+
 Iterating `j` downward ensures each wall contributes at most once, exactly like bounded knapsack. With `n <= 500` the double loop is a quarter-million steps, and one rolling row suffices.
 
 **Complexity:** `O(n^2)` time, `O(n)` space.

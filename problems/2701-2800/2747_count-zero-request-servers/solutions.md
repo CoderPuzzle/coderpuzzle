@@ -26,5 +26,7 @@ below the upper one. A query whose window covers no logs finds an empty
 window and reports `n`; when every server appears, the count reaches `n` and
 the answer is `0`.
 
+![On example 1's logs sorted by time (s1@3, s1@5, s2@6) with x = 5, the band for q = 10 keeps s1@5 and s2@6 for an answer of 3 - 2 = 1, and the band for q = 11 keeps only s2@6 for 3 - 1 = 2.](figures/solution-two-pointer-band-sweep.svg)
+
 **Complexity:** `O(m log m + q log q)` time, `O(n + m + q)` space, where
 `m = logs.length` and `q = queries.length`.

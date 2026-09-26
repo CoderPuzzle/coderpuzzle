@@ -27,6 +27,8 @@ the previous copy, so every endpoint contributes exactly 1 and the answer
 is `n`; and since the alphabet has 26 lowercase letters, no window can be
 longer than 26, bounding every contribution.
 
+![On s = "abab", the window start jumps to 1 and then 2 at the repeated letters, and the per-endpoint contributions 1, 2, 2, 2 sum to the answer 7.](figures/solution-window-jump-contributions.svg)
+
 In the fixed-width languages the running total is carried in a 64-bit
 integer so the accumulation never depends on how large the count can grow.
 
