@@ -9,6 +9,8 @@ interval at every operator and combining its left and right sets generates all
 wrong-order results; values above `1000` can be discarded because answers are
 bounded, and multiplication uses wide intermediates before that filter.
 
+![On 7+3*1*2, the interval table stores each operand span's achievable set and the full span holds only {13, 20} — 13 from splitting at the +, 20 from splitting at either *, and 42 from no split — so the answers 20, 13, 42 score 2 + 5 + 0 = 7.](figures/solution-interval-value-sets.svg)
+
 Each submitted answer earns 5 points if it equals the correct value, checked
 first even when that value also belongs to the interval set. Only other values
 in the full-expression set earn 2 points; everything else earns zero.

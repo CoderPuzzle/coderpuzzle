@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <!-- answerKey = "TTFTTFTT", k = 1; one snapshot row per right end r = 0..7:
+       cells 26x22 at x = 40+26j, y = 56+30r; the live window [l, r] is outlined,
+       cells evicted by the single shrink (row r = 5) are gray -->
+  <text x="40" y="34" fill="#1a2026" font-size="13.5" font-weight="600">answerKey = TTFTTFTT, k = 1</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="9">
+    <text x="53" y="50">0</text><text x="79" y="50">1</text><text x="105" y="50">2</text><text x="131" y="50">3</text><text x="157" y="50">4</text><text x="183" y="50">5</text><text x="209" y="50">6</text><text x="235" y="50">7</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="11">
+    <text x="32" y="71">r=0</text><text x="32" y="101">r=1</text><text x="32" y="131">r=2</text><text x="32" y="161">r=3</text><text x="32" y="191">r=4</text><text x="32" y="221">r=5</text><text x="32" y="251">r=6</text><text x="32" y="281">r=7</text>
+  </g>
+  <!-- row r = 0 : window [0,0] -->
+  <g stroke="#42525e" stroke-width="1">
+    <rect x="40" y="56" width="26" height="22" fill="#dbe4fb"/><rect x="66" y="56" width="26" height="22" fill="#ffffff"/><rect x="92" y="56" width="26" height="22" fill="#ffffff"/><rect x="118" y="56" width="26" height="22" fill="#ffffff"/><rect x="144" y="56" width="26" height="22" fill="#ffffff"/><rect x="170" y="56" width="26" height="22" fill="#ffffff"/><rect x="196" y="56" width="26" height="22" fill="#ffffff"/><rect x="222" y="56" width="26" height="22" fill="#ffffff"/>
+  </g>
+  <rect x="38" y="54" width="30" height="26" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <!-- row r = 1 : window [0,1] -->
+  <g stroke="#42525e" stroke-width="1">
+    <rect x="40" y="86" width="26" height="22" fill="#dbe4fb"/><rect x="66" y="86" width="26" height="22" fill="#dbe4fb"/><rect x="92" y="86" width="26" height="22" fill="#ffffff"/><rect x="118" y="86" width="26" height="22" fill="#ffffff"/><rect x="144" y="86" width="26" height="22" fill="#ffffff"/><rect x="170" y="86" width="26" height="22" fill="#ffffff"/><rect x="196" y="86" width="26" height="22" fill="#ffffff"/><rect x="222" y="86" width="26" height="22" fill="#ffffff"/>
+  </g>
+  <rect x="38" y="84" width="56" height="26" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <!-- row r = 2 : window [0,2] -->
+  <g stroke="#42525e" stroke-width="1">
+    <rect x="40" y="116" width="26" height="22" fill="#dbe4fb"/><rect x="66" y="116" width="26" height="22" fill="#dbe4fb"/><rect x="92" y="116" width="26" height="22" fill="#dbe4fb"/><rect x="118" y="116" width="26" height="22" fill="#ffffff"/><rect x="144" y="116" width="26" height="22" fill="#ffffff"/><rect x="170" y="116" width="26" height="22" fill="#ffffff"/><rect x="196" y="116" width="26" height="22" fill="#ffffff"/><rect x="222" y="116" width="26" height="22" fill="#ffffff"/>
+  </g>
+  <rect x="38" y="114" width="82" height="26" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <!-- row r = 3 : window [0,3] -->
+  <g stroke="#42525e" stroke-width="1">
+    <rect x="40" y="146" width="26" height="22" fill="#dbe4fb"/><rect x="66" y="146" width="26" height="22" fill="#dbe4fb"/><rect x="92" y="146" width="26" height="22" fill="#dbe4fb"/><rect x="118" y="146" width="26" height="22" fill="#dbe4fb"/><rect x="144" y="146" width="26" height="22" fill="#ffffff"/><rect x="170" y="146" width="26" height="22" fill="#ffffff"/><rect x="196" y="146" width="26" height="22" fill="#ffffff"/><rect x="222" y="146" width="26" height="22" fill="#ffffff"/>
+  </g>
+  <rect x="38" y="144" width="108" height="26" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <!-- row r = 4 : window [0,4], first length-5 -->
+  <g stroke="#42525e" stroke-width="1">
+    <rect x="40" y="176" width="26" height="22" fill="#dbe4fb"/><rect x="66" y="176" width="26" height="22" fill="#dbe4fb"/><rect x="92" y="176" width="26" height="22" fill="#dbe4fb"/><rect x="118" y="176" width="26" height="22" fill="#dbe4fb"/><rect x="144" y="176" width="26" height="22" fill="#dbe4fb"/><rect x="170" y="176" width="26" height="22" fill="#ffffff"/><rect x="196" y="176" width="26" height="22" fill="#ffffff"/><rect x="222" y="176" width="26" height="22" fill="#ffffff"/>
+  </g>
+  <rect x="38" y="174" width="134" height="26" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <!-- row r = 5 : adding the second F forces the shrink to l = 3 -->
+  <g stroke="#42525e" stroke-width="1">
+    <rect x="40" y="206" width="26" height="22" fill="#f0f3f7"/><rect x="66" y="206" width="26" height="22" fill="#f0f3f7"/><rect x="92" y="206" width="26" height="22" fill="#f0f3f7"/><rect x="118" y="206" width="26" height="22" fill="#dbe4fb"/><rect x="144" y="206" width="26" height="22" fill="#dbe4fb"/><rect x="170" y="206" width="26" height="22" fill="#dbe4fb"/><rect x="196" y="206" width="26" height="22" fill="#ffffff"/><rect x="222" y="206" width="26" height="22" fill="#ffffff"/>
+  </g>
+  <rect x="116" y="204" width="82" height="26" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <!-- row r = 6 : window [3,6] -->
+  <g stroke="#42525e" stroke-width="1">
+    <rect x="40" y="236" width="26" height="22" fill="#ffffff"/><rect x="66" y="236" width="26" height="22" fill="#ffffff"/><rect x="92" y="236" width="26" height="22" fill="#ffffff"/><rect x="118" y="236" width="26" height="22" fill="#dbe4fb"/><rect x="144" y="236" width="26" height="22" fill="#dbe4fb"/><rect x="170" y="236" width="26" height="22" fill="#dbe4fb"/><rect x="196" y="236" width="26" height="22" fill="#dbe4fb"/><rect x="222" y="236" width="26" height="22" fill="#ffffff"/>
+  </g>
+  <rect x="116" y="234" width="108" height="26" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <!-- row r = 7 : window [3,7], the answer -->
+  <g stroke="#42525e" stroke-width="1">
+    <rect x="40" y="266" width="26" height="22" fill="#ffffff"/><rect x="66" y="266" width="26" height="22" fill="#ffffff"/><rect x="92" y="266" width="26" height="22" fill="#ffffff"/><rect x="118" y="266" width="26" height="22" fill="#dbe4fb"/><rect x="144" y="266" width="26" height="22" fill="#dbe4fb"/><rect x="170" y="266" width="26" height="22" fill="#dbe4fb"/><rect x="196" y="266" width="26" height="22" fill="#dbe4fb"/><rect x="222" y="266" width="26" height="22" fill="#dbe4fb"/>
+  </g>
+  <rect x="116" y="264" width="134" height="26" fill="none" stroke="#4169E1" stroke-width="3"/>
+  <g text-anchor="middle" font-size="13" font-weight="600">
+    <text x="53" y="71" fill="#1a2026">T</text><text x="79" y="71" fill="#1a2026">T</text><text x="105" y="71" fill="#1a2026">F</text><text x="131" y="71" fill="#1a2026">T</text><text x="157" y="71" fill="#1a2026">T</text><text x="183" y="71" fill="#1a2026">F</text><text x="209" y="71" fill="#1a2026">T</text><text x="235" y="71" fill="#1a2026">T</text>
+    <text x="53" y="101" fill="#1a2026">T</text><text x="79" y="101" fill="#1a2026">T</text><text x="105" y="101" fill="#1a2026">F</text><text x="131" y="101" fill="#1a2026">T</text><text x="157" y="101" fill="#1a2026">T</text><text x="183" y="101" fill="#1a2026">F</text><text x="209" y="101" fill="#1a2026">T</text><text x="235" y="101" fill="#1a2026">T</text>
+    <text x="53" y="131" fill="#1a2026">T</text><text x="79" y="131" fill="#1a2026">T</text><text x="105" y="131" fill="#1a2026">F</text><text x="131" y="131" fill="#1a2026">T</text><text x="157" y="131" fill="#1a2026">T</text><text x="183" y="131" fill="#1a2026">F</text><text x="209" y="131" fill="#1a2026">T</text><text x="235" y="131" fill="#1a2026">T</text>
+    <text x="53" y="161" fill="#1a2026">T</text><text x="79" y="161" fill="#1a2026">T</text><text x="105" y="161" fill="#1a2026">F</text><text x="131" y="161" fill="#1a2026">T</text><text x="157" y="161" fill="#1a2026">T</text><text x="183" y="161" fill="#1a2026">F</text><text x="209" y="161" fill="#1a2026">T</text><text x="235" y="161" fill="#1a2026">T</text>
+    <text x="53" y="191" fill="#1a2026">T</text><text x="79" y="191" fill="#1a2026">T</text><text x="105" y="191" fill="#1a2026">F</text><text x="131" y="191" fill="#1a2026">T</text><text x="157" y="191" fill="#1a2026">T</text><text x="183" y="191" fill="#1a2026">F</text><text x="209" y="191" fill="#1a2026">T</text><text x="235" y="191" fill="#1a2026">T</text>
+    <text x="53" y="221" fill="#9aa7b2">T</text><text x="79" y="221" fill="#9aa7b2">T</text><text x="105" y="221" fill="#9aa7b2">F</text><text x="131" y="221" fill="#1a2026">T</text><text x="157" y="221" fill="#1a2026">T</text><text x="183" y="221" fill="#1a2026">F</text><text x="209" y="221" fill="#1a2026">T</text><text x="235" y="221" fill="#1a2026">T</text>
+    <text x="53" y="251" fill="#9aa7b2">T</text><text x="79" y="251" fill="#9aa7b2">T</text><text x="105" y="251" fill="#9aa7b2">F</text><text x="131" y="251" fill="#1a2026">T</text><text x="157" y="251" fill="#1a2026">T</text><text x="183" y="251" fill="#1a2026">F</text><text x="209" y="251" fill="#1a2026">T</text><text x="235" y="251" fill="#1a2026">T</text>
+    <text x="53" y="281" fill="#9aa7b2">T</text><text x="79" y="281" fill="#9aa7b2">T</text><text x="105" y="281" fill="#9aa7b2">F</text><text x="131" y="281" fill="#1a2026">T</text><text x="157" y="281" fill="#1a2026">T</text><text x="183" y="281" fill="#1a2026">F</text><text x="209" y="281" fill="#1a2026">T</text><text x="235" y="281" fill="#1a2026">T</text>
+  </g>
+  <g font-size="12.5" fill="#1a2026">
+    <text x="272" y="71">add T — cT=1, cF=0 · best 1</text>
+    <text x="272" y="101">add T — cT=2, cF=0 · best 2</text>
+    <text x="272" y="131">add F — cT=2, cF=1 · best 3</text>
+    <text x="272" y="161">add T — cT=3, cF=1 · best 4</text>
+    <text x="272" y="191">add T — cT=4, cF=1 · <tspan fill="#4169E1" font-weight="600">best 5</tspan></text>
+    <text x="272" y="221">add F — cT=4, cF=2: minority 2 &gt; 1</text>
+    <text x="272" y="234" fill="#4169E1" font-weight="600">shrink l 0→3 — cT=2, cF=1</text>
+    <text x="272" y="251">add T — cT=3, cF=1 · best 5</text>
+    <text x="272" y="281">add T — cT=4, cF=1 · <tspan fill="#4169E1" font-weight="600">best 5 = answer</tspan></text>
+  </g>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">Every window keeps its minority within k = 1; the two length-5 windows TTFTT (0-4)</text>
+  <text x="320" y="336" text-anchor="middle" fill="#1a2026" font-size="13">and TTFTT (3-7) each flip one F, so the answer is <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 252" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="252" fill="#ffffff"/>
+  <!-- grid = [[2,5,4],[1,5,1]]; one mini-grid per candidate down-column,
+       cells 44x28, group centres x = 110/320/530, top row y = 72 -->
+  <g>
+    <rect x="56" y="14" width="14" height="14" fill="#f0f3f7" stroke="#42525e" stroke-width="1.2"/>
+    <text x="78" y="25" fill="#5c6b76" font-size="12">cleared by robot 1</text>
+    <rect x="256" y="14" width="14" height="14" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+    <text x="278" y="25" fill="#5c6b76" font-size="12">left for robot 2</text>
+  </g>
+  <rect x="240" y="44" width="160" height="146" rx="8" fill="none" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <g text-anchor="middle" font-weight="600" font-size="13.5">
+    <text x="110" y="58" fill="#1a2026">down at c = 0</text>
+    <text x="320" y="58" fill="#4169E1">down at c = 1</text>
+    <text x="530" y="58" fill="#1a2026">down at c = 2</text>
+  </g>
+  <!-- group c = 0 -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="44" y="72" width="44" height="28" fill="#f0f3f7"/><rect x="88" y="72" width="44" height="28" fill="#dbe4fb"/><rect x="132" y="72" width="44" height="28" fill="#dbe4fb"/>
+    <rect x="44" y="100" width="44" height="28" fill="#f0f3f7"/><rect x="88" y="100" width="44" height="28" fill="#f0f3f7"/><rect x="132" y="100" width="44" height="28" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5">
+    <text x="66" y="91" fill="#9aa7b2">2</text><text x="110" y="91" fill="#1a2026" font-weight="600">5</text><text x="154" y="91" fill="#1a2026" font-weight="600">4</text>
+    <text x="66" y="119" fill="#9aa7b2">1</text><text x="110" y="119" fill="#9aa7b2">5</text><text x="154" y="119" fill="#9aa7b2">1</text>
+  </g>
+  <!-- group c = 1 -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="254" y="72" width="44" height="28" fill="#f0f3f7"/><rect x="298" y="72" width="44" height="28" fill="#f0f3f7"/><rect x="342" y="72" width="44" height="28" fill="#dbe4fb"/>
+    <rect x="254" y="100" width="44" height="28" fill="#dbe4fb"/><rect x="298" y="100" width="44" height="28" fill="#f0f3f7"/><rect x="342" y="100" width="44" height="28" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5">
+    <text x="276" y="91" fill="#9aa7b2">2</text><text x="320" y="91" fill="#9aa7b2">5</text><text x="364" y="91" fill="#1a2026" font-weight="600">4</text>
+    <text x="276" y="119" fill="#1a2026" font-weight="600">1</text><text x="320" y="119" fill="#9aa7b2">5</text><text x="364" y="119" fill="#9aa7b2">1</text>
+  </g>
+  <!-- group c = 2 -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="464" y="72" width="44" height="28" fill="#f0f3f7"/><rect x="508" y="72" width="44" height="28" fill="#f0f3f7"/><rect x="552" y="72" width="44" height="28" fill="#f0f3f7"/>
+    <rect x="464" y="100" width="44" height="28" fill="#dbe4fb"/><rect x="508" y="100" width="44" height="28" fill="#dbe4fb"/><rect x="552" y="100" width="44" height="28" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5">
+    <text x="486" y="91" fill="#9aa7b2">2</text><text x="530" y="91" fill="#9aa7b2">5</text><text x="574" y="91" fill="#9aa7b2">4</text>
+    <text x="486" y="119" fill="#1a2026" font-weight="600">1</text><text x="530" y="119" fill="#1a2026" font-weight="600">5</text><text x="574" y="119" fill="#9aa7b2">1</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#5c6b76">
+    <text x="110" y="152">top → 9 · bottom → 0</text>
+    <text x="320" y="152">top → 4 · bottom → 1</text>
+    <text x="530" y="152">top → 0 · bottom → 6</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5">
+    <text x="110" y="174" fill="#1a2026">max = 9</text>
+    <text x="320" y="174" fill="#4169E1">max = 4</text>
+    <text x="530" y="174" fill="#1a2026">max = 6</text>
+  </g>
+  <text x="320" y="214" text-anchor="middle" fill="#1a2026" font-size="13">Going down at c = 1 leaves robot 2 the smaller worst case:</text>
+  <text x="320" y="232" text-anchor="middle" fill="#1a2026" font-size="13">max(top 4, bottom 1) = <tspan fill="#4169E1" font-weight="600">4</tspan>, the least of the column maxima 9, 4, 6.</text>
+</svg>

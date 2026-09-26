@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 362" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="362" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- lights = [[-3,2],[1,2],[3,3]] -> intervals [-5,-1], [-1,3], [0,6];
+       x(c) = 100 + (c+5)*34; events +1/-1 at -5/-1/0/4/7;
+       brightness levels 0/1/2 at y = 306/276/246 -->
+  <text x="88" y="46" text-anchor="end" fill="#9aa7b2" font-size="11">lights</text>
+  <g stroke="#4169E1" stroke-width="1.2" fill="#dbe4fb">
+    <rect x="100" y="58" width="136" height="14"/>
+    <rect x="236" y="80" width="136" height="14"/>
+    <rect x="270" y="102" width="204" height="14"/>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="168" cy="65" r="3.5"/><circle cx="304" cy="87" r="3.5"/><circle cx="372" cy="109" r="3.5"/>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="11">
+    <text x="88" y="69">[-3,2]</text><text x="88" y="91">[1,2]</text><text x="88" y="113">[3,3]</text>
+  </g>
+  <line x1="88" y1="136" x2="530" y2="136" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="100" y1="132" x2="100" y2="140"/><line x1="236" y1="132" x2="236" y2="140"/><line x1="270" y1="132" x2="270" y2="140"/><line x1="406" y1="132" x2="406" y2="140"/><line x1="508" y1="132" x2="508" y2="140"/>
+  </g>
+  <g text-anchor="middle" fill="#42525e" font-size="12">
+    <text x="100" y="154">-5</text><text x="236" y="154">-1</text><text x="270" y="154">0</text><text x="406" y="154">4</text><text x="508" y="154">7</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5" font-weight="600">
+    <text x="100" y="172" fill="#4169E1">+1</text><text x="236" y="172" fill="#4169E1">+1</text><text x="270" y="172" fill="#5c6b76">+1 -1</text><text x="406" y="172" fill="#5c6b76">-1</text><text x="508" y="172" fill="#5c6b76">-1</text>
+  </g>
+  <text x="270" y="186" text-anchor="middle" fill="#9aa7b2" font-size="9.5">cancel</text>
+  <g stroke="#9aa7b2" stroke-width="1" stroke-dasharray="3 3">
+    <line x1="100" y1="190" x2="100" y2="272"/>
+    <line x1="236" y1="190" x2="236" y2="242"/>
+    <line x1="270" y1="190" x2="270" y2="242"/>
+    <line x1="406" y1="190" x2="406" y2="242"/>
+    <line x1="508" y1="190" x2="508" y2="272"/>
+  </g>
+  <!-- running brightness -->
+  <text x="70" y="226" text-anchor="end" fill="#9aa7b2" font-size="12">brightness</text>
+  <g text-anchor="end" fill="#9aa7b2" font-size="12">
+    <text x="70" y="310">0</text><text x="70" y="280">1</text><text x="70" y="250">2</text>
+  </g>
+  <path d="M 80 306 L 100 306 L 100 276 L 236 276 L 236 246 L 406 246 L 406 276 L 508 276 L 508 306 L 528 306" fill="none" stroke="#42525e" stroke-width="2"/>
+  <path d="M 236 246 L 406 246" fill="none" stroke="#4169E1" stroke-width="3.5"/>
+  <circle cx="236" cy="246" r="4.5" fill="#4169E1"/>
+  <text x="321" y="238" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="700">2</text>
+  <text x="228" y="238" text-anchor="end" fill="#4169E1" font-size="12.5" font-weight="600">answer -1</text>
+  <g text-anchor="middle" fill="#42525e" font-size="12">
+    <text x="168" y="268">1</text><text x="457" y="268">1</text>
+  </g>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Sweeping left to right, brightness first reaches 2 at <tspan fill="#4169E1" font-weight="600">-1</tspan>; at 0 the +1 and -1 cancel,</text>
+  <text x="320" y="348" text-anchor="middle" fill="#1a2026" font-size="13">2 is not strictly exceeded, so the smallest brightest position is <tspan fill="#4169E1" font-weight="600">-1</tspan>.</text>
+</svg>
