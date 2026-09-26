@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="356" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [4,3,2,6]; cells 90x48 at x=130,220,310,400; kept cuts after 4 and after 2 give sums 4,5,6; the cut between 3 and 2 is rejected -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="130" y="48" width="90" height="48"/><rect x="220" y="48" width="90" height="48"/>
+    <rect x="310" y="48" width="90" height="48"/><rect x="400" y="48" width="90" height="48"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16">
+    <text x="175" y="78">4</text><text x="265" y="78">3</text><text x="355" y="78">2</text><text x="445" y="78">6</text>
+  </g>
+  <!-- kept cuts of the 3-block partition -->
+  <g stroke="#4169E1" stroke-width="3">
+    <line x1="220" y1="112" x2="220" y2="176"/>
+    <line x1="400" y1="112" x2="400" y2="176"/>
+  </g>
+  <!-- rejected extra cut between 3 and 2 -->
+  <line x1="310" y1="112" x2="310" y2="176" stroke="#5c6b76" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="326" y="150" fill="#5c6b76" font-size="19" font-weight="600">×</text>
+  <text x="310" y="200" text-anchor="middle" fill="#5c6b76" font-size="12">sums 4, 3 decrease</text>
+  <g stroke="#9aa7b2" stroke-width="1">
+    <line x1="220" y1="182" x2="220" y2="224"/>
+    <line x1="400" y1="182" x2="400" y2="224"/>
+  </g>
+  <!-- block sums of partition [4][3,2][6] -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="130" y="228" width="90" height="44"/>
+    <rect x="220" y="228" width="180" height="44"/>
+    <rect x="400" y="228" width="90" height="44"/>
+  </g>
+  <text x="40" y="255" fill="#5c6b76" font-size="12.5">sums</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="175" y="255">4</text><text x="310" y="255">5</text><text x="445" y="255">6</text>
+  </g>
+  <text x="310" y="300" text-anchor="middle" fill="#4169E1" font-size="14" font-weight="600">4 ≤ 5 ≤ 6</text>
+  <text x="40" y="330" fill="#1a2026" font-size="13">The cut [4][3,2][6] has block sums 4 ≤ 5 ≤ 6; any 4-block cut is forced to</text>
+  <text x="40" y="348" fill="#1a2026" font-size="13">[4][3][2][6] with sums 4, 3, 2, 6 — 4 &gt; 3 — so <tspan fill="#4169E1" font-weight="600">3 blocks</tspan> is the maximum.</text>
+</svg>

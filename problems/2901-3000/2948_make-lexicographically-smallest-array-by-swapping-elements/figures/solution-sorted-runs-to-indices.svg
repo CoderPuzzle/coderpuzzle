@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 276" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="276" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,5,3,9,8], limit = 2; sorted pairs (1,i0)(3,i2)(5,i1) split from (8,i4)(9,i3) at gap 8-5=3; each run fills its own indices in order -->
+  <text x="394" y="28" text-anchor="middle" fill="#5c6b76" font-size="12">8 − 5 = 3 &gt; limit 2</text>
+  <line x1="394" y1="42" x2="394" y2="102" stroke="#5c6b76" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- sorted values with original indices -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="#ffffff">
+    <rect x="90" y="48" width="88" height="48"/><rect x="194" y="48" width="88" height="48"/><rect x="298" y="48" width="88" height="48"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="402" y="48" width="88" height="48"/><rect x="506" y="48" width="88" height="48"/>
+  </g>
+  <text x="40" y="76" fill="#5c6b76" font-size="12.5">sorted</text>
+  <g text-anchor="middle">
+    <text x="134" y="74" font-weight="600" font-size="16">1</text>
+    <text x="238" y="74" font-weight="600" font-size="16">3</text>
+    <text x="342" y="74" font-weight="600" font-size="16">5</text>
+    <text x="446" y="74" font-weight="600" font-size="16">8</text>
+    <text x="550" y="74" font-weight="600" font-size="16">9</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="134" y="91">from 0</text><text x="238" y="91">from 2</text><text x="342" y="91">from 1</text>
+    <text x="446" y="91">from 4</text><text x="550" y="91">from 3</text>
+  </g>
+  <!-- each sorted value lands on its run's indices in ascending order -->
+  <g stroke="#4169E1" stroke-width="1.5" fill="none">
+    <path d="M 134 100 L 134 146" marker-end="url(#arrowA)"/>
+    <path d="M 238 100 L 238 146" marker-end="url(#arrowA)"/>
+    <path d="M 342 100 L 342 146" marker-end="url(#arrowA)"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 446 100 L 446 146" marker-end="url(#arrowB)"/>
+    <path d="M 550 100 L 550 146" marker-end="url(#arrowB)"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="#ffffff">
+    <rect x="90" y="150" width="88" height="48"/><rect x="194" y="150" width="88" height="48"/><rect x="298" y="150" width="88" height="48"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="402" y="150" width="88" height="48"/><rect x="506" y="150" width="88" height="48"/>
+  </g>
+  <text x="40" y="178" fill="#5c6b76" font-size="12.5">result</text>
+  <g text-anchor="middle">
+    <text x="134" y="176" font-weight="600" font-size="16">1</text>
+    <text x="238" y="176" font-weight="600" font-size="16">3</text>
+    <text x="342" y="176" font-weight="600" font-size="16">5</text>
+    <text x="446" y="176" font-weight="600" font-size="16">8</text>
+    <text x="550" y="176" font-weight="600" font-size="16">9</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="134" y="193">pos 0</text><text x="238" y="193">pos 1</text><text x="342" y="193">pos 2</text>
+    <text x="446" y="193">pos 3</text><text x="550" y="193">pos 4</text>
+  </g>
+  <text x="40" y="232" fill="#1a2026" font-size="13">The gap 8 − 5 = 3 exceeds limit 2, splitting the sorted values into runs</text>
+  <text x="40" y="250" fill="#1a2026" font-size="13">{1, 3, 5} and {8, 9}; each run fills its own indices in order: <tspan fill="#4169E1" font-weight="600">[1, 3, 5, 8, 9]</tspan>.</text>
+</svg>

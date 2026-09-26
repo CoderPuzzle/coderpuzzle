@@ -11,6 +11,8 @@ sum among those partitions; dp never decreases from i - 1 to i, because the
 previous partition stays valid after nums[i - 1] merges into its final
 block.
 
+![On nums = [4,3,2,6] the cut [4][3,2][6] gives block sums 4 ≤ 5 ≤ 6, while the extra cut between 3 and 2 is rejected because sums 4, 3 would decrease, so 3 blocks is the maximum.](figures/solution-non-decreasing-block-sums.svg)
+
 A block (j, i] can close a partition of the first j elements exactly when
 pre[i] - pre[j] >= last[j], with pre the prefix sums. Since dp is
 non-decreasing, the best predecessor is the rightmost one satisfying that

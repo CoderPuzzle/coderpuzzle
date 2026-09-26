@@ -6,6 +6,8 @@ Model the values as nodes of a graph where two values are adjacent when they dif
 
 The algorithm implements exactly that. Sort the `(value, original index)` pairs by value, then partition them into maximal runs where each consecutive pair of values differs by at most `limit`. For each run, collect the original indices and sort them; write the run's values — already in ascending order from the global sort — into those indices in ascending index order. Smaller values land on smaller positions, which is optimal position by position, and every value stays inside its own component so all placements are reachable by legal swaps.
 
+![On nums = [1,5,3,9,8] with limit 2 the sorted values split at the gap 8 − 5 = 3 into runs {1, 3, 5} and {8, 9}, and each run fills its own indices in ascending order to give [1, 3, 5, 8, 9].](figures/solution-sorted-runs-to-indices.svg)
+
 Runs are scanned with two pointers over the sorted pairs, so the whole pass is dominated by the two sorts. Duplicate values are unremarkable — they simply sit adjacent in a run — and a `limit` smaller than every gap leaves each element as its own run, returning the array unchanged.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

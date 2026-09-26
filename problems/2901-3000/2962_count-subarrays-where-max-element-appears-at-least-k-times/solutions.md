@@ -19,6 +19,8 @@ the k-th copy in view, and start `left` itself would drop below k. Adding
 once, at its right end, and the left end only ever moves forward, so the
 whole pass is linear.
 
+![On nums = [1,3,2,3,3] with k = 2 the shrink stops at one remaining 3, leaving left = 2 at r = 3 and left = 4 at r = 4, and 0 + 0 + 0 + 2 + 4 = 6 counts every qualifying subarray once.](figures/solution-left-counts-valid-starts.svg)
+
 The count fits in 64 bits: with n <= 10⁵ subarrays number at most
 n·(n + 1) / 2 ≈ 5 · 10⁹, which overflows 32 bits but is exact in every
 language's 64-bit integer (and far below 2⁵³ for JavaScript's numbers).

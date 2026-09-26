@@ -15,6 +15,8 @@ one copy of `nums[r]` falls out. Each index enters and leaves the window
 at most once, so the two edges together make one linear pass, with the
 hash map updated `O(1)` per step.
 
+![On nums = [1,2,3,1,2,3,1,2] with k = 2 the window reaches length 6 by index 5, and when index 6 makes count(1) = 3 > 2 the left edge hops past the old 1, repairing the window at still length 6.](figures/solution-third-1-window-repair.svg)
+
 After each repair the window `[left, r]` is the longest good window ending
 at `r`, and the answer is the maximum window width seen. The answer is at
 most `n <= 10⁵`, well inside 32-bit range.

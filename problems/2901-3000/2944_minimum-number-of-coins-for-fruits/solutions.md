@@ -13,6 +13,8 @@ fruits may be purchased to collect their rewards, which is exactly what
 makes the cheap-fruit-with-good-reward plans win), giving
 `dp[i] = prices[i] + min(dp[j])`. The answer is `dp[0]`.
 
+![On prices = [3,1,2] the dp table fills right to left, dp[2] = 2 and dp[1] = 1, and dp[0] = 3 + min(dp[1], dp[2]) = 4 buys fruit 0 and then fruit 1 — though fruit 1 is already free — so its reward funds fruit 2.](figures/solution-dp-free-window-chain.svg)
+
 Swept from right to left, both window edges move only leftward, so the
 minimum slides in a monotonic window: candidates enter with the older,
 shorter-lived entries discarded whenever a newer one is no more
