@@ -11,6 +11,8 @@ diagonally while both coordinate gaps are positive reaches it in that
 many seconds; therefore for distinct cells the answer is true precisely
 when `t` is at least that distance.
 
+![On the Chebyshev bounding square of the example, the walk from (2,4) to (7,7) covers the max(5,3) = 5-move greedy distance and spends the spare sixth second splitting one diagonal into two orthogonal steps, so t = 6 decides true.](figures/solution-chebyshev-king-walk.svg)
+
 Surplus seconds never hurt when the two cells differ: replacing one
 diagonal step of the greedy walk with its two orthogonal components
 costs one extra second with unchanged displacement, and once on the

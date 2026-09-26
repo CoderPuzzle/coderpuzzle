@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 436" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="436" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- bounding square cols x = 2..7, rows y = 7..2 (top to bottom), cells 46px at (80,56);
+       walk (2,4) D (3,5) D (4,6) R (5,6) U (5,7) R (6,7) R (7,7) = 6 moves, Chebyshev distance 5 -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="80" y="56" width="46" height="46"/><rect x="126" y="56" width="46" height="46"/><rect x="172" y="56" width="46" height="46"/>
+    <rect x="218" y="56" width="46" height="46"/><rect x="264" y="56" width="46" height="46"/><rect x="310" y="56" width="46" height="46"/>
+    <rect x="80" y="102" width="46" height="46"/><rect x="126" y="102" width="46" height="46"/><rect x="172" y="102" width="46" height="46"/>
+    <rect x="218" y="102" width="46" height="46"/><rect x="264" y="102" width="46" height="46"/><rect x="310" y="102" width="46" height="46"/>
+    <rect x="80" y="148" width="46" height="46"/><rect x="126" y="148" width="46" height="46"/><rect x="172" y="148" width="46" height="46"/>
+    <rect x="218" y="148" width="46" height="46"/><rect x="264" y="148" width="46" height="46"/><rect x="310" y="148" width="46" height="46"/>
+    <rect x="80" y="194" width="46" height="46"/><rect x="126" y="194" width="46" height="46"/><rect x="172" y="194" width="46" height="46"/>
+    <rect x="218" y="194" width="46" height="46"/><rect x="264" y="194" width="46" height="46"/><rect x="310" y="194" width="46" height="46"/>
+    <rect x="80" y="240" width="46" height="46"/><rect x="126" y="240" width="46" height="46"/><rect x="172" y="240" width="46" height="46"/>
+    <rect x="218" y="240" width="46" height="46"/><rect x="264" y="240" width="46" height="46"/><rect x="310" y="240" width="46" height="46"/>
+    <rect x="80" y="286" width="46" height="46"/><rect x="126" y="286" width="46" height="46"/><rect x="172" y="286" width="46" height="46"/>
+    <rect x="218" y="286" width="46" height="46"/><rect x="264" y="286" width="46" height="46"/><rect x="310" y="286" width="46" height="46"/>
+  </g>
+  <g fill="#dbe4fb">
+    <rect x="80" y="194" width="46" height="46"/><rect x="126" y="148" width="46" height="46"/><rect x="172" y="102" width="46" height="46"/>
+    <rect x="218" y="102" width="46" height="46"/><rect x="218" y="56" width="46" height="46"/><rect x="264" y="56" width="46" height="46"/>
+  </g>
+  <rect x="310" y="56" width="46" height="46" fill="#dbe4fb" stroke="#1a2026" stroke-width="2"/>
+  <rect x="80" y="194" width="46" height="46" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 103 217 L 149 171" marker-end="url(#arrow)"/>
+    <path d="M 149 171 L 195 125" marker-end="url(#arrow)"/>
+    <path d="M 195 125 L 241 125" marker-end="url(#arrow)"/>
+    <path d="M 241 125 L 241 79" marker-end="url(#arrow)"/>
+    <path d="M 241 79 L 287 79" marker-end="url(#arrow)"/>
+    <path d="M 287 79 L 333 79" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11" font-weight="600">
+    <text x="139" y="207">1</text><text x="185" y="161">2</text><text x="208" y="140">3</text>
+    <text x="255" y="116">4</text><text x="287" y="65">5</text><text x="333" y="65">6</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="103" y="350">2</text><text x="149" y="350">3</text><text x="195" y="350">4</text>
+    <text x="241" y="350">5</text><text x="287" y="350">6</text><text x="333" y="350">7</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="68" y="83">7</text><text x="68" y="129">6</text><text x="68" y="175">5</text>
+    <text x="68" y="221">4</text><text x="68" y="267">3</text><text x="68" y="313">2</text>
+  </g>
+  <text x="103" y="368" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">start (2,4)</text>
+  <text x="333" y="368" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">target (7,7)</text>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="396" y="118">Chebyshev distance</text>
+    <text x="396" y="172">t = 6 buys one spare second:</text>
+    <text x="396" y="192">one diagonal becomes two</text>
+    <text x="396" y="212">orthogonal steps (moves 3 + 4)</text>
+  </g>
+  <text x="396" y="140" fill="#1a2026" font-size="14" font-weight="600">max(|2−7|, |4−7|) = <tspan fill="#4169E1">5</tspan></text>
+  <text x="396" y="244" fill="#1a2026" font-size="14" font-weight="600">6 ≥ 5 → <tspan fill="#4169E1">true</tspan></text>
+  <text x="320" y="398" text-anchor="middle" fill="#1a2026" font-size="13">The greedy walk needs max(5, 3) = <tspan fill="#4169E1" font-weight="600">5</tspan> king moves; the spare 6th second splits</text>
+  <text x="320" y="420" text-anchor="middle" fill="#1a2026" font-size="13">one diagonal into two straights, so t = 6 ≥ 5 reaches (7,7) — <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

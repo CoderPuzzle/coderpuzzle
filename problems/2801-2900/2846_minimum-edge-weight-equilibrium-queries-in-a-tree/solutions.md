@@ -16,6 +16,8 @@ Minimizing operations then means maximizing that value over the 26 possible
 weights; a self-query has an empty path, every count is zero, and the answer
 is zero without special handling.
 
+![For query (0,6) on the example chain the rooted prefix counts reach 1:3 and 2:3 at node 6 while the root's buckets are all zero, so the six path edges split into three 1-edges and three 2-edges and the answer is 6 − 3 = 3.](figures/solution-root-prefix-cancel.svg)
+
 A breadth-first search from node 0 produces parent pointers, depths, and a
 parent-before-child node order in one queue pass; sweeping that order fills
 the whole `26 x n` table, because each node copies its parent's 26 buckets

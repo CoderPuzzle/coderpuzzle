@@ -12,6 +12,8 @@ only its fresh suffix counts, running from wherever the car starts — or from
 `reach + 1`, when it begins inside an earlier span — through its own end,
 which then becomes the new `reach`.
 
+![Sweeping the sorted cars [1,5], [3,6], [4,7], reach advances 5 to 6 to 7 as each already-counted prefix is skipped and only fresh suffixes count, giving 5 + 1 + 1 = 7 points.](figures/solution-sweep-reach-union.svg)
+
 Merely touching cars behave correctly without special cases: for `[1,5]`
 followed by `[5,10]`, the second car's fresh suffix starts at
 `reach + 1 = 6`, so the shared endpoint 5 is never counted twice while the

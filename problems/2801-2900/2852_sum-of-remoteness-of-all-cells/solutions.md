@@ -11,6 +11,8 @@ once per member cell, which collapses the whole question to
 `size_c * (S - values_c)` accumulated over components — blocked cells
 contribute nothing.
 
+![The example's flood fills find four singleton components with S = 13, so each open cell's remoteness reads 13 minus its own value — 12, 8, 9 and 10 — summing to 39.](figures/solution-component-remoteness.svg)
+
 So scan the grid, launch one iterative flood fill from every unvisited
 non-blocked cell while collecting its size and value sum in the same walk,
 then fold the closed-form accumulation at the end. The explicit stack marks

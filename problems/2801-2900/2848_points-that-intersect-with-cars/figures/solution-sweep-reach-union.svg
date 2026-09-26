@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <!-- sorted cars [1,5],[3,6],[4,7]; x(p) = 80 + 56p for points 0..8; fresh suffix accent, already-counted prefix gray -->
+  <g stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 4">
+    <line x1="360" y1="62" x2="360" y2="224"/><line x1="416" y1="118" x2="416" y2="224"/><line x1="472" y1="174" x2="472" y2="224"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="360" y="56">reach 5</text><text x="416" y="112">reach 6</text><text x="472" y="168">reach 7</text>
+  </g>
+  <text x="70" y="91" text-anchor="end" fill="#5c6b76" font-size="12">[1,5]</text>
+  <text x="70" y="147" text-anchor="end" fill="#5c6b76" font-size="12">[3,6]</text>
+  <text x="70" y="203" text-anchor="end" fill="#5c6b76" font-size="12">[4,7]</text>
+  <rect x="248" y="130" width="112" height="26" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="304" y="186" width="112" height="26" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <text x="304" y="147" text-anchor="middle" fill="#9aa7b2" font-size="10.5">already counted</text>
+  <text x="360" y="203" text-anchor="middle" fill="#9aa7b2" font-size="10.5">already counted</text>
+  <rect x="136" y="74" width="224" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="360" y="130" width="56" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="416" y="186" width="56" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="370" y="91">5 fresh points</text>
+    <text x="426" y="147">adds 1 (point 6)</text>
+    <text x="482" y="203">adds 1 (point 7)</text>
+  </g>
+  <line x1="70" y1="240" x2="540" y2="240" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1">
+    <line x1="80" y1="240" x2="80" y2="246"/><line x1="136" y1="240" x2="136" y2="246"/><line x1="192" y1="240" x2="192" y2="246"/>
+    <line x1="248" y1="240" x2="248" y2="246"/><line x1="304" y1="240" x2="304" y2="246"/><line x1="360" y1="240" x2="360" y2="246"/>
+    <line x1="416" y1="240" x2="416" y2="246"/><line x1="472" y1="240" x2="472" y2="246"/><line x1="528" y1="240" x2="528" y2="246"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="80" y="262">0</text><text x="136" y="262">1</text><text x="192" y="262">2</text><text x="248" y="262">3</text>
+    <text x="304" y="262">4</text><text x="360" y="262">5</text><text x="416" y="262">6</text><text x="472" y="262">7</text><text x="528" y="262">8</text>
+  </g>
+  <g fill="#9aa7b2">
+    <circle cx="80" cy="240" r="3.5"/><circle cx="528" cy="240" r="3.5"/>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="136" cy="240" r="3.5"/><circle cx="192" cy="240" r="3.5"/><circle cx="248" cy="240" r="3.5"/><circle cx="304" cy="240" r="3.5"/>
+    <circle cx="360" cy="240" r="3.5"/><circle cx="416" cy="240" r="3.5"/><circle cx="472" cy="240" r="3.5"/>
+  </g>
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">reach advances 5 → 6 → 7; the fresh suffixes add 5 + 1 + 1 = <tspan fill="#4169E1" font-weight="600">7</tspan> points —</text>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">the union spans 1..7 (accented ticks), so the answer is <tspan fill="#4169E1" font-weight="600">7</tspan>.</text>
+</svg>

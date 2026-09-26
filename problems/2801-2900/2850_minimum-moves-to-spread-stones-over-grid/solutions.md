@@ -15,6 +15,8 @@ Conversely, no plan of moves can beat this bound — following any valid
 sequence backwards decomposes it into per-stone walks whose lengths are at
 least the Manhattan distance between where a stone started and ended.
 
+![In the example grid the lone empty cell (0,2) pairs with donor (2,1), whose surplus stone relays (2,1) to (2,2) to (1,2) to (0,2) for 3 moves, exactly the Manhattan distance |2−0| + |1−2| = 3.](figures/solution-donor-relay-path.svg)
+
 That pairing view turns the search into a small backtracking over choices.
 The empty cells are visited in a fixed order; for each one, every cell that
 still holds at least two stones is tried as its donor, paying the Manhattan
