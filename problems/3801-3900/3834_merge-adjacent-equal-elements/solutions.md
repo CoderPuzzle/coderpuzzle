@@ -19,6 +19,10 @@ inner loop is precisely the cascade behind the merge point that the rule
 replays — then push the settled sum and continue the scan. The final
 stack, read bottom to top, is the answer.
 
+![On nums=[3,1,1,2], the survivor stack pushes 3 then 1, merges 1+1=2 when
+the incoming 1 meets the equal top and then 2+2=4, leaving the final stack
+[3, 4].](figures/solution-stack-leftward-cascade.svg)
+
 Each element is pushed exactly once and popped at most once, so the inner
 while loop's work is prepaid by earlier pushes and the whole sweep is
 linear despite the nesting. Nothing recursive happens, so no language

@@ -29,4 +29,8 @@ integers (JavaScript's doubles are exact far inside `2⁵³`), and all passes
 are plain iterative loops, so no language needs deep recursion or wider
 arithmetic.
 
+![On nums=[3,2,1,2,3,2,1], the bridge 1<3 across removed index 3 joins the
+greater-ending run [2,1] (dec[2]=2) to the greater-starting run [3,2]
+(rdec[4]=2) for 2+2=4.](figures/solution-run-tables-bridge.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

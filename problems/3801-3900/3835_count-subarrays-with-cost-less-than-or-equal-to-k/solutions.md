@@ -27,6 +27,9 @@ shrink loop runs in O(1) amortized per step and every index enters and
 leaves each deque at most once. A single element always costs 0 ≤ k, so the
 loop is guaranteed to stop before `left` passes `right`.
 
+![On nums=[1,3,2] with k=4, the deques track max 3 and min 2 while [1,3,2]
+costs 6 > 4 and shrinks, and the right ends add 1+2+2 = 5 valid subarrays.](figures/solution-sliding-window-deques.svg)
+
 Bounds force 64-bit arithmetic: at n = 10⁵ the count of subarrays reaches
 n·(n+1)/2 = 5,000,050,000, past the 32-bit ceiling, so the accumulator and
 the return are 64-bit everywhere. The cost comparison itself stays well

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="356" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums=[3,2,1,2,3,2,1]; cells 58x46 at x=64+66i, y=46; table rows y 148/172/228/252 -->
+  <path d="M 225 38 Q 291 0 357 38" fill="none" stroke="#4169E1" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="291" y="14" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">1 &lt; 3</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="64" y="46" width="58" height="46" rx="6" fill="#ffffff"/>
+    <rect x="130" y="46" width="58" height="46" rx="6" fill="#dbe4fb"/>
+    <rect x="196" y="46" width="58" height="46" rx="6" fill="#dbe4fb"/>
+    <rect x="328" y="46" width="58" height="46" rx="6" fill="#dbe4fb"/>
+    <rect x="394" y="46" width="58" height="46" rx="6" fill="#dbe4fb"/>
+    <rect x="460" y="46" width="58" height="46" rx="6" fill="#ffffff"/>
+  </g>
+  <rect x="262" y="46" width="58" height="46" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="93" y="75">3</text>
+    <text x="159" y="75">2</text>
+    <text x="225" y="75">1</text>
+    <text x="291" y="75" fill="#9aa7b2">2</text>
+    <text x="357" y="75">3</text>
+    <text x="423" y="75">2</text>
+    <text x="489" y="75">1</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#9aa7b2">
+    <text x="93" y="108">0</text>
+    <text x="159" y="108">1</text>
+    <text x="225" y="108">2</text>
+    <text x="357" y="108">4</text>
+    <text x="423" y="108">5</text>
+    <text x="489" y="108">6</text>
+  </g>
+  <text x="291" y="108" text-anchor="middle" font-size="11.5" font-weight="600" fill="#4169E1">r = 3 removed</text>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="24" y="148">inc</text>
+    <text x="24" y="172">dec</text>
+    <text x="24" y="228">rinc</text>
+    <text x="24" y="252">rdec</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#5c6b76">
+    <text x="93" y="148">1</text><text x="159" y="148">1</text><text x="225" y="148">1</text><text x="291" y="148">3</text><text x="357" y="148">2</text><text x="423" y="148">1</text><text x="489" y="148">1</text>
+    <text x="93" y="172">1</text><text x="159" y="172">2</text><text x="357" y="172">1</text><text x="423" y="172">3</text><text x="489" y="172">2</text>
+    <text x="93" y="228">1</text><text x="159" y="228">1</text><text x="225" y="228">2</text><text x="291" y="228">3</text><text x="357" y="228">1</text><text x="423" y="228">1</text><text x="489" y="228">1</text>
+    <text x="93" y="252">2</text><text x="159" y="252">3</text><text x="225" y="252">1</text><text x="291" y="252">1</text><text x="423" y="252">2</text><text x="489" y="252">1</text>
+  </g>
+  <text x="225" y="172" text-anchor="middle" font-size="14" font-weight="600" fill="#4169E1">2</text>
+  <text x="357" y="252" text-anchor="middle" font-size="14" font-weight="600" fill="#4169E1">2</text>
+  <g font-size="11.5" fill="#9aa7b2">
+    <text x="545" y="148">ends with &lt;</text>
+    <text x="545" y="172">ends with &gt;</text>
+    <text x="545" y="228">starts with &lt;</text>
+    <text x="545" y="252">starts with &gt;</text>
+  </g>
+  <path d="M 130 179 L 130 185 L 254 185 L 254 179" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="192" y="200" text-anchor="middle" font-size="12" font-weight="600" fill="#4169E1">[2, 1]</text>
+  <path d="M 328 259 L 328 265 L 452 265 L 452 259" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="390" y="280" text-anchor="middle" font-size="12" font-weight="600" fill="#4169E1">[3, 2]</text>
+  <text x="290" y="318" text-anchor="middle" font-size="13" fill="#1a2026">bridge r = 3: nums[2]=1 &lt; nums[4]=3, so dec[2] + rdec[4] = 2 + 2 = 4,</text>
+  <text x="290" y="338" text-anchor="middle" font-size="13" fill="#1a2026">beating every no-removal run (best 3) - the answer is <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

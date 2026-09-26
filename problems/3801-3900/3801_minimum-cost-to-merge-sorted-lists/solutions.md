@@ -12,6 +12,10 @@ natural state: the last merge of `mask` splits it into two nonempty halves
 `s` and `mask ^ s`, paying `dp[s] + dp[mask ^ s]` for the recursive folds
 plus `len(a) + len(b) + abs(median(a) - median(b))` for the final join.
 
+![On Example 1's lists=[[1,3,5],[2,4],[6,7,8]], the merge tree over submasks
+joins {0,1} at 3+2+|3-2| = 6 and the full mask at 8+|3-7| = 12, folding
+dp[{0,1,2}] = 6+0+12 = 18.](figures/solution-merge-tree-submask-dp.svg)
+
 The length part of that join is just `mask`'s total length, precomputed for
 every mask in one pass by peeling off the lowest set bit, so only the median
 term varies between splits. Each mask's median — the left middle of its

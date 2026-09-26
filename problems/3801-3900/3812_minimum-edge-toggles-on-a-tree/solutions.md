@@ -23,6 +23,10 @@ the only remaining toggle touching it, so marking that edge is forced and the
 unmatched parity moves one level up. Whatever parity survives at the root
 cannot be fixed anywhere and signals impossibility.
 
+![On Example 2's 7-node tree, the reverse-BFS fold forces edge 2 at node 3,
+edge 5 at node 6 and edge 1 at node 2, and the root's parity 0 returns
+[1, 2, 5].](figures/solution-reverse-bfs-parity-fold.svg)
+
 Marked edges land in a `take` flag per edge index, and a final ascending scan
 collects them, so the output is sorted without a sort. All values stay below
 10⁵ — 32-bit integers throughout, and JavaScript numbers are exact far below
