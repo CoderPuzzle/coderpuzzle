@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 404" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="404" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- 6x6 grid, cells 44px at (36,52); flood fill from S(4,4) reaches all 10 floor cells; box path B(2,3)->(2,2)->(2,1)->T(1,1), pushes left,left,up = 3 -->
+  <!-- walls -->
+  <g fill="#f0f3f7" stroke="#42525e" stroke-width="1">
+    <rect x="36" y="52" width="44" height="44"/><rect x="80" y="52" width="44" height="44"/><rect x="124" y="52" width="44" height="44"/><rect x="168" y="52" width="44" height="44"/><rect x="212" y="52" width="44" height="44"/><rect x="256" y="52" width="44" height="44"/>
+    <rect x="36" y="272" width="44" height="44"/><rect x="80" y="272" width="44" height="44"/><rect x="124" y="272" width="44" height="44"/><rect x="168" y="272" width="44" height="44"/><rect x="212" y="272" width="44" height="44"/><rect x="256" y="272" width="44" height="44"/>
+    <rect x="36" y="96" width="44" height="44"/><rect x="36" y="140" width="44" height="44"/><rect x="36" y="184" width="44" height="44"/><rect x="36" y="228" width="44" height="44"/>
+    <rect x="256" y="96" width="44" height="44"/><rect x="256" y="140" width="44" height="44"/><rect x="256" y="184" width="44" height="44"/><rect x="256" y="228" width="44" height="44"/>
+    <rect x="124" y="96" width="44" height="44"/><rect x="168" y="96" width="44" height="44"/><rect x="212" y="96" width="44" height="44"/>
+    <rect x="124" y="184" width="44" height="44"/><rect x="168" y="184" width="44" height="44"/>
+  </g>
+  <!-- player-reachable floor (flood fill from S, box = obstacle): all 10 floor cells -->
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1">
+    <rect x="80" y="96" width="44" height="44"/>
+    <rect x="80" y="140" width="44" height="44"/><rect x="124" y="140" width="44" height="44"/><rect x="168" y="140" width="44" height="44"/><rect x="212" y="140" width="44" height="44"/>
+    <rect x="80" y="184" width="44" height="44"/><rect x="212" y="184" width="44" height="44"/>
+    <rect x="80" y="228" width="44" height="44"/><rect x="124" y="228" width="44" height="44"/><rect x="168" y="228" width="44" height="44"/><rect x="212" y="228" width="44" height="44"/>
+  </g>
+  <!-- target cell -->
+  <rect x="80" y="96" width="44" height="44" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="102" y="114" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">T</text>
+  <!-- box at start (2,3) -->
+  <rect x="178" y="150" width="24" height="24" rx="3" fill="#42525e"/>
+  <text x="190" y="167" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="600">B</text>
+  <!-- player at (4,4) -->
+  <circle cx="234" cy="250" r="11" fill="#4169E1"/>
+  <text x="234" y="255" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="600">S</text>
+  <!-- push path: left, left, up -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 176 162 L 152 162" marker-end="url(#arrow)"/>
+    <path d="M 142 162 L 108 162" marker-end="url(#arrow)"/>
+    <path d="M 102 158 L 102 126" marker-end="url(#arrow)"/>
+  </g>
+  <g>
+    <circle cx="164" cy="162" r="9" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+    <circle cx="125" cy="162" r="9" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+    <circle cx="102" cy="142" r="9" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/>
+    <text x="164" y="166" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">1</text>
+    <text x="125" y="166" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">2</text>
+    <text x="102" y="146" text-anchor="middle" fill="#4169E1" font-size="11" font-weight="600">3</text>
+  </g>
+  <rect x="36" y="332" width="14" height="14" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+  <text x="58" y="343" fill="#5c6b76" font-size="12.5">floor the player can reach from S (the box counts as a wall)</text>
+  <!-- push log -->
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="348" y="96">Each push needs the player on a</text>
+    <text x="348" y="112">reachable side of the box.</text>
+  </g>
+  <g font-size="13" fill="#1a2026">
+    <text x="356" y="148" fill="#4169E1" font-weight="600">1</text><text x="374" y="148">stand right of B, push left</text>
+    <text x="356" y="180" fill="#4169E1" font-weight="600">2</text><text x="374" y="180">stand right of B, push left</text>
+    <text x="356" y="212" fill="#4169E1" font-weight="600">3</text><text x="374" y="212">stand below B, push up</text>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="348" y="244">after each push the player stands</text>
+    <text x="348" y="260">where the box just was</text>
+  </g>
+  <text x="348" y="292" fill="#1a2026" font-size="14">BFS pops the box on T at push <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+  <text x="320" y="378" text-anchor="middle" fill="#1a2026" font-size="13">The flood fill reaches every floor cell, so the player can line up each</text>
+  <text x="320" y="396" text-anchor="middle" fill="#1a2026" font-size="13">push: left, left, up lands the box on T in <tspan fill="#4169E1" font-weight="600">3</tspan> pushes.</text>
+</svg>

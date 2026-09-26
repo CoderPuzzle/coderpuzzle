@@ -10,6 +10,9 @@ every move it inspects the candidate cell: if that cell falls outside the
 grid or has already been written, the direction vector is rotated 90
 degrees clockwise once and the move is retried from the same cell.
 
+![On Example 1's 3x5 grid the direction walk lands all 13 list values with four
+90-degree clockwise turns, leaving cells (1,2) and (1,3) at -1.](figures/solution-spiral-walk-turns.svg)
+
 The walk stops the moment the list runs out of nodes, so it touches exactly
 as many cells as there are nodes; every cell left unwritten keeps its `-1`.
 Each step costs constant work — one write plus at most one bounds-and-marker

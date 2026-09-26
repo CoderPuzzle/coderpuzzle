@@ -8,6 +8,8 @@ the next box cell. For each box position, a flood fill of the free floor from
 the player's current spot (treating the box as an obstacle) tells which sides
 are reachable; every reachable side offers a push at cost one.
 
+![On example 1's grid the flood fill from S reaches every floor cell around B, and pushes left, left, up walk the box onto T in 3 pushes.](figures/solution-box-bfs-pushes.svg)
+
 BFS over `(box_row * n + box_col) * 4 + side` therefore yields minimal pushes:
 each layer expands all four candidate pushes whose standing cell is flooded,
 moving the box one step and placing the player where the box was. The first
