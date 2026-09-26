@@ -41,6 +41,8 @@ the number of bits read and the scan is linear. All seven ports run the
 identical array algorithm — one integer state and one table of `m + 1`
 entries — with no bigint window and no per-language adaptation.
 
+![Reading the stream [1,0,1,1,0,1] against pattern [1,1,0,1], the matched state runs 1,0,1,2,3,4 — one fallback at index 1 — and reaches m = 4 at index 5, so the first match starts at 5 − 4 + 1 = 2.](figures/solution-kmp-state-fallback.svg)
+
 Like the rolling window, this variant calls `next()` exactly
 `first_index + m` times and stops, far inside the 1 000 000-call budget;
 the linear scan pays off in time, not in query count.

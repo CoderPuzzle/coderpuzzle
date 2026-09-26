@@ -26,4 +26,6 @@ fail together only if the bishop would have to occupy two squares at once, or
 the rook's own square, or the queen's square — impossible — so one of them
 always lands clean.
 
+![On the example board with the rook at (1,1), bishop at (8,8) and queen at (2,3), no rank, file or diagonal reaches the queen, so the rook stages at (1,3) and captures at (2,3) in 2 moves.](figures/solution-rook-staging-capture.svg)
+
 **Complexity:** `O(1)` time, `O(1)` space.

@@ -15,4 +15,6 @@ closes and folds its maximum into the running one. If any element is smaller
 than a finished segment's maximum, some earlier value can never be moved
 past it, so the array cannot be sorted; otherwise it can.
 
+![In nums = [8,4,2,30,15] the popcount segments {8,4,2} (one set bit, range 2..8) and {30,15} (four set bits, range 15..30) are each freely permutable but sealed, and the single boundary check 8 ≤ 15 passes, so the array can be sorted.](figures/solution-popcount-segment-boundary.svg)
+
 **Complexity:** `O(n)` time and `O(1)` space.

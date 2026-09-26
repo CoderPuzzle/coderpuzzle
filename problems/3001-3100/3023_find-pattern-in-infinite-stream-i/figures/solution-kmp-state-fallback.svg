@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 404" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="404" fill="#ffffff"/>
+  <!-- pattern = [1,1,0,1], fail(k) = 0,1,0,1; stream bits 1,0,1,1,0,1; states 1,0,1,2,3,4 -->
+  <text x="40" y="74" font-size="12.5" fill="#5c6b76">pattern</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="130" y="48" width="48" height="44"/><rect x="184" y="48" width="48" height="44"/>
+    <rect x="238" y="48" width="48" height="44"/><rect x="292" y="48" width="48" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="154" y="76">1</text><text x="208" y="76">1</text><text x="262" y="76">0</text><text x="316" y="76">1</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="154" y="112">fail 0</text><text x="208" y="112">fail 1</text><text x="262" y="112">fail 0</text><text x="316" y="112">fail 1</text>
+  </g>
+  <text x="40" y="136" font-size="12" fill="#5c6b76">fail(k): longest proper prefix of the pattern that is also a suffix of its first k bits</text>
+  <text x="40" y="164" font-size="11.5" fill="#5c6b76">index</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="158" y="164">0</text><text x="222" y="164">1</text><text x="286" y="164">2</text>
+    <text x="350" y="164">3</text><text x="414" y="164">4</text><text x="478" y="164">5</text>
+  </g>
+  <text x="40" y="200" font-size="12.5" fill="#5c6b76">stream</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="130" y="172" width="56" height="44"/><rect x="194" y="172" width="56" height="44"/>
+    <rect x="258" y="172" width="56" height="44"/><rect x="322" y="172" width="56" height="44"/>
+    <rect x="386" y="172" width="56" height="44"/><rect x="450" y="172" width="56" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="158" y="200">1</text><text x="222" y="200">0</text><text x="286" y="200">1</text>
+    <text x="350" y="200">1</text><text x="414" y="200">0</text><text x="478" y="200">1</text>
+  </g>
+  <!-- match window: bits 2..5 -->
+  <path d="M 258 222 L 258 228 L 506 228 L 506 222" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="382" y="246" text-anchor="middle" font-size="12.5" fill="#1a2026">stream[2..5] = [1,1,0,1] — the pattern</text>
+  <text x="40" y="290" font-size="12.5" fill="#5c6b76">state</text>
+  <rect x="138" y="272" width="40" height="28" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="202" y="272" width="40" height="28" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="266" y="272" width="40" height="28" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="330" y="272" width="40" height="28" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="394" y="272" width="40" height="28" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="458" y="272" width="40" height="28" fill="#4169E1"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="158" y="291">1</text>
+    <text x="222" y="291" fill="#9aa7b2">0</text>
+    <text x="286" y="291">1</text><text x="350" y="291">2</text><text x="414" y="291">3</text>
+    <text x="478" y="291" fill="#ffffff">4</text>
+  </g>
+  <text x="40" y="326" font-size="12.5" fill="#1a2026">idx 1: bit 0 ≠ P[1] = 1 — the state falls back through fail(1) = 0</text>
+  <text x="40" y="348" font-size="12.5" fill="#1a2026">idx 5: the state reaches <tspan fill="#4169E1" font-weight="600">m = 4</tspan> — match ends at index 5, starts at 5 − 4 + 1 = 2</text>
+  <text x="320" y="376" text-anchor="middle" fill="#1a2026" font-size="13">Each arrival extends the matched count or walks it back through fail; the</text>
+  <text x="320" y="394" text-anchor="middle" fill="#1a2026" font-size="13">count first reaches m = 4 at index 5, so the first match starts at index <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

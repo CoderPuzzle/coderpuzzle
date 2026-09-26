@@ -20,6 +20,8 @@ count, floored again — this is exactly why Example 1 combines averages 9 and
 9.67 as `(9 + 9) / 2`: the floored region values are what get averaged. A
 pixel covered by no region keeps its original intensity.
 
+![With threshold 12 both 3×3 windows qualify and drop floor(225/9) = 25 and floor(270/9) = 30 into the sum and count grids; the overlap rows hold 55 over 2 visits and floor(55/2) = 27, giving result rows 25, 27, 27, 30.](figures/solution-window-average-accumulation.svg)
+
 **Complexity:** `O(m * n)` time — constant work per window position plus a
 linear combine; `O(m * n)` space for the prefix table and the two accumulator
 grids.

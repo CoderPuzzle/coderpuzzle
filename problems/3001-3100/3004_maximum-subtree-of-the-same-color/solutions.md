@@ -19,6 +19,8 @@ its color differs, and otherwise simply adds its count to the parent's
 run. Every monochrome node's final size is a candidate for the answer,
 and since each node alone counts, the answer is at least 1.
 
+![With colors [1,2,3,3,3], the reversed BFS order 4,3,2,1,0 folds nodes 4 and 3 into node 2 to form a monochrome subtree of size 3, while both folds into node 0 hit a color mismatch and poison it — the answer is 3.](figures/solution-reverse-bfs-fold.svg)
+
 Recording the traversal order with a queue rather than recursing keeps
 the whole computation on the heap instead of the call stack, so a tree
 shaped like a straight chain of 5 × 10⁴ nodes — the constraint's worst

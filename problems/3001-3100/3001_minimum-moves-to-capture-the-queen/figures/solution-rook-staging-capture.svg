@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 440" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- board: rank r file c square at (48+36(c-1), 64+36(r-1)), 36px cells; rook (1,1), queen (2,3), bishop (8,8) -->
+  <!-- rook lines: rank 1 row + file 1 column, staging square (1,3), all #dbe4fb -->
+  <rect x="48" y="64" width="288" height="36" fill="#dbe4fb"/>
+  <rect x="48" y="64" width="36" height="288" fill="#dbe4fb"/>
+  <rect x="120" y="64" width="36" height="36" fill="#dbe4fb"/>
+  <g stroke="#42525e" stroke-width="1">
+    <path d="M 84 64 V 352 M 120 64 V 352 M 156 64 V 352 M 192 64 V 352 M 228 64 V 352 M 264 64 V 352 M 300 64 V 352"/>
+    <path d="M 48 100 H 336 M 48 136 H 336 M 48 172 H 336 M 48 208 H 336 M 48 244 H 336 M 48 280 H 336 M 48 316 H 336"/>
+  </g>
+  <rect x="48" y="64" width="288" height="288" fill="none" stroke="#42525e" stroke-width="1.5"/>
+  <!-- bishop diagonal through (1,1) and (8,8); the queen is off it -->
+  <line x1="66" y1="82" x2="318" y2="334" stroke="#9aa7b2" stroke-width="2" stroke-dasharray="6 4"/>
+  <g text-anchor="end" fill="#5c6b76" font-size="11.5">
+    <text x="40" y="86">1</text><text x="40" y="122">2</text><text x="40" y="158">3</text><text x="40" y="194">4</text>
+    <text x="40" y="230">5</text><text x="40" y="266">6</text><text x="40" y="302">7</text><text x="40" y="338">8</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="66" y="372">1</text><text x="102" y="372">2</text><text x="138" y="372">3</text><text x="174" y="372">4</text>
+    <text x="210" y="372">5</text><text x="246" y="372">6</text><text x="282" y="372">7</text><text x="318" y="372">8</text>
+  </g>
+  <circle cx="66" cy="82" r="13" fill="#4169E1"/>
+  <text x="66" y="87" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">R</text>
+  <circle cx="138" cy="118" r="13" fill="#1a2026"/>
+  <text x="138" y="123" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">Q</text>
+  <circle cx="318" cy="334" r="13" fill="#4169E1"/>
+  <text x="318" y="339" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">B</text>
+  <!-- staging: rook (1,1) to (1,3), then down the queen's file to (2,3) -->
+  <line x1="80" y1="82" x2="134" y2="82" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="138" y1="90" x2="138" y2="102" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g font-size="13" fill="#1a2026">
+    <text x="380" y="84">Rook (1,1): attacks along rank 1 and</text>
+    <text x="380" y="104">file 1 — the queen (2,3) sits on neither.</text>
+    <text x="380" y="132">Bishop (8,8): |8-2| = 6, |8-3| = 5 —</text>
+    <text x="380" y="152">not a diagonal, so she is safe there too.</text>
+    <text x="380" y="180">The diagonal crosses the rook at (1,1):</text>
+    <text x="380" y="200">a white piece is the only possible blocker.</text>
+    <text x="380" y="232">So no piece attacks: the answer is <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+    <text x="380" y="258">1. rook → (1,3): the queen's own file</text>
+    <text x="380" y="278">2. rook (1,3) → (2,3): capture</text>
+  </g>
+  <text x="340" y="404" text-anchor="middle" fill="#1a2026" font-size="13">Nothing attacks the queen, so the rook stages at (1,3) — the queen's file —</text>
+  <text x="340" y="424" text-anchor="middle" fill="#1a2026" font-size="13">then captures at (2,3) in <tspan fill="#4169E1" font-weight="600">2</tspan> moves.</text>
+</svg>
