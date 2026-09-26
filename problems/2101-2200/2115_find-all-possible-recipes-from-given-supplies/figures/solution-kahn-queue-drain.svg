@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 404" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="404" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- recipes bread:[yeast,flour], sandwich:[bread,meat], burger:[sandwich,meat,bread]; supplies yeast,flour,meat;
+       supply ingredients add no edges; edges: bread->sandwich, bread->burger, sandwich->burger;
+       initial indegrees 0/1/2; queue drains bread, sandwich, burger; result returned sorted -->
+  <text x="155" y="34" text-anchor="middle" fill="#5c6b76" font-size="11.5">recipe graph — edge = ingredient recipe</text>
+  <!-- nodes -->
+  <rect x="50" y="60" width="140" height="40" rx="7" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="120" y="78" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">bread</text>
+  <text x="120" y="94" text-anchor="middle" font-size="11" fill="#5c6b76">indegree 0</text>
+  <rect x="50" y="140" width="140" height="40" rx="7" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="120" y="158" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">sandwich</text>
+  <text x="120" y="174" text-anchor="middle" font-size="11" fill="#5c6b76">indegree 1</text>
+  <rect x="50" y="220" width="140" height="40" rx="7" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="120" y="238" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">burger</text>
+  <text x="120" y="254" text-anchor="middle" font-size="11" fill="#5c6b76">indegree 2</text>
+  <!-- dependency edges -->
+  <g fill="none" stroke="#4169E1" stroke-width="1.8">
+    <path d="M 190 72 C 250 72, 250 150, 192 157" marker-end="url(#arrow)"/>
+    <path d="M 190 88 C 295 88, 295 228, 192 233" marker-end="url(#arrow)"/>
+    <path d="M 190 172 C 250 172, 250 230, 192 245" marker-end="url(#arrow)"/>
+  </g>
+  <!-- supplies -->
+  <rect x="50" y="292" width="210" height="30" rx="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <text x="155" y="311" text-anchor="middle" fill="#5c6b76" font-size="12">supplies: yeast, flour, meat</text>
+  <!-- queue timeline -->
+  <text x="306" y="44" fill="#5c6b76" font-size="11.5">Kahn queue</text>
+  <text x="448" y="44" fill="#5c6b76" font-size="11.5">answer</text>
+  <rect x="306" y="64" width="92" height="28" rx="6" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="352" y="83" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">bread</text>
+  <path d="M 402 78 H 436" stroke="#4169E1" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+  <text x="448" y="83" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">bread</tspan></text>
+  <text x="306" y="108" fill="#5c6b76" font-size="11.5">sandwich 1 → 0 · burger 2 → 1</text>
+  <rect x="306" y="128" width="92" height="28" rx="6" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="352" y="147" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">sandwich</text>
+  <path d="M 402 142 H 436" stroke="#4169E1" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+  <text x="448" y="147" fill="#1a2026" font-size="13">bread, <tspan fill="#4169E1" font-weight="600">sandwich</tspan></text>
+  <text x="306" y="172" fill="#5c6b76" font-size="11.5">burger 1 → 0</text>
+  <rect x="306" y="192" width="92" height="28" rx="6" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="352" y="211" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">burger</text>
+  <path d="M 402 206 H 436" stroke="#4169E1" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+  <text x="448" y="211" fill="#1a2026" font-size="13">bread, sandwich, <tspan fill="#4169E1" font-weight="600">burger</tspan></text>
+  <text x="306" y="236" fill="#5c6b76" font-size="11.5">returned sorted: [bread, burger, sandwich]</text>
+  <text x="330" y="366" text-anchor="middle" fill="#1a2026" font-size="13">Kahn's queue drains <tspan fill="#4169E1" font-weight="600">bread, then sandwich, then burger</tspan> — each pops only at indegree 0.</text>
+  <text x="330" y="388" text-anchor="middle" fill="#1a2026" font-size="13">A cyclic pair would keep both indegrees positive and never reach the queue.</text>
+</svg>

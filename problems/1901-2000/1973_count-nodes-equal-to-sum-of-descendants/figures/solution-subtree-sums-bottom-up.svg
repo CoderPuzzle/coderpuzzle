@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- tree [10,3,4,2,1], circles r = 24; subtree sums bottom-up:
+       Σ(2)=2, Σ(1)=1, Σ(4)=4, Σ(3)=3+2+1=6, Σ(10)=10+6+4=20;
+       value == descendants' sum at 10 (20-10=10) and 3 (6-3=3) -> count 2 -->
+  <!-- sum flows child -> parent -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 136 138 L 184 82" marker-end="url(#arrow)"/>
+    <path d="M 273 138 L 217 82" marker-end="url(#arrow)"/>
+    <path d="M 78 227 L 108 177" marker-end="url(#arrow)"/>
+    <path d="M 162 227 L 132 177" marker-end="url(#arrow)"/>
+  </g>
+  <!-- counting nodes 10 and 3 accented -->
+  <circle cx="200" cy="64" r="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.2"/>
+  <circle cx="120" cy="156" r="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="2.2"/>
+  <circle cx="290" cy="156" r="24" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="66" cy="248" r="24" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="174" cy="248" r="24" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <g text-anchor="middle">
+    <text x="200" y="61" font-weight="600" font-size="15">10</text>
+    <text x="200" y="79" fill="#4169E1" font-size="10.5" font-weight="600">Σ 20</text>
+    <text x="120" y="153" font-weight="600" font-size="15">3</text>
+    <text x="120" y="171" fill="#4169E1" font-size="10.5" font-weight="600">Σ 6</text>
+    <text x="290" y="153" font-weight="600" font-size="15">4</text>
+    <text x="290" y="171" fill="#5c6b76" font-size="10.5">Σ 4</text>
+    <text x="66" y="245" font-weight="600" font-size="15">2</text>
+    <text x="66" y="263" fill="#5c6b76" font-size="10.5">Σ 2</text>
+    <text x="174" y="245" font-weight="600" font-size="15">1</text>
+    <text x="174" y="263" fill="#5c6b76" font-size="10.5">Σ 1</text>
+  </g>
+  <!-- back-to-front scan over the reverse preorder -->
+  <g font-size="12.5" fill="#1a2026">
+    <text x="396" y="64" fill="#5c6b76">reverse preorder: 10 3 2 1 4</text>
+    <text x="396" y="86" fill="#5c6b76">scanned back to front, sums fill:</text>
+    <text x="396" y="116">4: descendants 0 — no</text>
+    <text x="396" y="138">1: descendants 0 — no</text>
+    <text x="396" y="160">2: descendants 0 — no</text>
+    <text x="396" y="182">3: descendants 2 + 1 = 3 — <tspan fill="#4169E1" font-weight="600">yes</tspan></text>
+    <text x="396" y="204">10: descendants 6 + 4 = 10 — <tspan fill="#4169E1" font-weight="600">yes</tspan></text>
+    <text x="396" y="232" font-weight="600" font-size="13.5">answer: <tspan fill="#4169E1">2</tspan> nodes</text>
+  </g>
+  <text x="320" y="298" text-anchor="middle" fill="#1a2026" font-size="13">Scanning the reverse preorder back to front fills each subtree sum Σ;</text>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">nodes <tspan fill="#4169E1" font-weight="600">10</tspan> (20 − 10 = 10) and <tspan fill="#4169E1" font-weight="600">3</tspan> (6 − 3 = 3) equal their descendants — answer <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

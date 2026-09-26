@@ -11,6 +11,8 @@ same sum for every assignment, while swapping one leaf letter changes the
 multiset and breaks equivalence for some assignment. So the whole problem
 collapses to counting leaves by variable and comparing the two counts.
 
+![Example 2's two trees have different shapes — a + (b + c) versus (b + c) + a — but one stack pass per tree finds the identical leaf multiset {a, b, c} with counts a:1, b:1, c:1, which is what makes the trees equivalent.](figures/solution-leaf-multiset-trees.svg)
+
 Because this judge's `TreeNode` carries an integer value, each leaf's
 lowercase letter is encoded as `ord(letter) - ord('a')`, an integer in
 `[0, 25]`, and the `+` operator is encoded as the sentinel `-1`, which

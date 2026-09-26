@@ -4,6 +4,8 @@
 
 Traverse the tree iteratively and record, for every value, its parent and whether it is that parent's left or right child. Walk upward from `startValue`, storing the distance to every ancestor. Then walk upward from `destValue` until reaching one of those ancestors, collecting each incoming `L` or `R` edge along the way.
 
+![On root [5,1,2,3,null,6,4] with start 3 and dest 6, the walks meet at LCA 5, contributing two U moves from the start side and L, R reversed into RL, for UURL.](figures/solution-lca-parent-walks.svg)
+
 The shared node is the lowest common ancestor. Its recorded start distance gives the required prefix of `U` moves, and reversing the directions collected from the destination gives the downward suffix. All traversals are iterative so a legal 100,000-node chain does not consume the runtime call stack.
 
 **Complexity:** `O(n)` time and `O(n)` auxiliary space.

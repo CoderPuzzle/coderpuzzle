@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <!-- k = 3 check: tasks sorted [1,2,3], workers sorted [0,3,3], pills = 1, strength = 1;
+       rows show the deque's decision-time contents per worker; accent box = the task taken -->
+  <text x="320" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5">tasks sorted [1, 2, 3] · workers sorted [0, 3, 3] · pills = 1 · strength = 1</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="82" y="58">worker</text>
+    <text x="191" y="58">task deque (easiest → hardest)</text>
+    <text x="300" y="58">action</text>
+  </g>
+  <!-- worker 0 -->
+  <rect x="40" y="80" width="84" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="82" y="103" text-anchor="middle" fill="#1a2026" font-weight="600">w = 0</text>
+  <text x="169" y="72" text-anchor="middle" fill="#4169E1" font-size="10.5">pill</text>
+  <rect x="150" y="80" width="38" height="36" fill="#ffffff" stroke="#4169E1" stroke-width="2.2"/>
+  <text x="169" y="104" text-anchor="middle" fill="#1a2026" font-weight="600">1</text>
+  <text x="290" y="103" fill="#1a2026" font-size="12.5">can't reach 1 → <tspan fill="#4169E1" font-weight="600">pill on 1</tspan> (0+1 ≥ 1), pills 1 → 0</text>
+  <!-- worker 3 -->
+  <rect x="40" y="156" width="84" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="82" y="179" text-anchor="middle" fill="#1a2026" font-weight="600">w = 3</text>
+  <text x="169" y="148" text-anchor="middle" fill="#4169E1" font-size="10.5">front</text>
+  <rect x="150" y="156" width="38" height="36" fill="#ffffff" stroke="#4169E1" stroke-width="2.2"/>
+  <text x="169" y="180" text-anchor="middle" fill="#1a2026" font-weight="600">2</text>
+  <rect x="194" y="156" width="38" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="213" y="180" text-anchor="middle" fill="#1a2026" font-weight="600">3</text>
+  <text x="290" y="179" fill="#1a2026" font-size="12.5">refill adds 2, 3 → <tspan fill="#4169E1" font-weight="600">assign 2</tspan> naturally (3 ≥ 2)</text>
+  <!-- worker 3 -->
+  <rect x="40" y="232" width="84" height="36" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="82" y="255" text-anchor="middle" fill="#1a2026" font-weight="600">w = 3</text>
+  <text x="169" y="224" text-anchor="middle" fill="#4169E1" font-size="10.5">front</text>
+  <rect x="150" y="232" width="38" height="36" fill="#ffffff" stroke="#4169E1" stroke-width="2.2"/>
+  <text x="169" y="256" text-anchor="middle" fill="#1a2026" font-weight="600">3</text>
+  <text x="290" y="255" fill="#1a2026" font-size="12.5"><tspan fill="#4169E1" font-weight="600">assign 3</tspan> naturally (3 ≥ 3) — all 3 tasks done</text>
+  <text x="320" y="298" text-anchor="middle" fill="#1a2026" font-size="13">k = 3 check, weakest to strongest: worker 0 spends the only pill on task 1;</text>
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">the two strength-3 workers clear tasks 2 and 3 naturally — feasible, so the answer is <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

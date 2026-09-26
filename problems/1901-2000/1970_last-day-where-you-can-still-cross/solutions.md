@@ -39,6 +39,8 @@ the flooded set is exactly the first `i` entries — the grid state of day
 returns `i` outright, knowing the connection cannot be older, since the
 state one day later was checked one iteration earlier and found split.
 
+![On the 2 x 2 Example 1 grid, walking back from day 4 first returns (2,2) to the bottom shore, and the next return (1,2) joins the top shore and welds to (2,2), so the day-2 grid is the last crossable state and the answer is 2.](figures/solution-reverse-day-union-find.svg)
+
 In Example 1 the walk back from day 6 returns (2,1), claimed by the
 bottom sentinel, then (1,3), claimed by the top; the third return, (2,3),
 welds those components together, so the answer is 3. A drained loop falls

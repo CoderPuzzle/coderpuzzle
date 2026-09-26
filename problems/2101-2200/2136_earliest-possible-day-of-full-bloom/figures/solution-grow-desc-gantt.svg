@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 288" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="288" fill="#ffffff"/>
+  <!-- plantTime = [1,4,3], growTime = [2,3,1]; sorted by grow desc: (p4,g3), (p1,g2), (p3,g1); x(day) = 150 + 46*day; rows y=64,106,148; prefixes 4,5,8; blooms 7,7,9 -->
+  <rect x="150" y="30" width="14" height="14" fill="#4169E1"/>
+  <text x="170" y="41" fill="#5c6b76" font-size="12">plant</text>
+  <rect x="224" y="30" width="14" height="14" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+  <text x="244" y="41" fill="#5c6b76" font-size="12">grow</text>
+  <g text-anchor="end" font-size="12.5">
+    <text x="140" y="83"><tspan fill="#1a2026" font-weight="600">seed 1</tspan><tspan fill="#5c6b76"> — grow 3</tspan></text>
+    <text x="140" y="125"><tspan fill="#1a2026" font-weight="600">seed 0</tspan><tspan fill="#5c6b76"> — grow 2</tspan></text>
+    <text x="140" y="167"><tspan fill="#1a2026" font-weight="600">seed 2</tspan><tspan fill="#5c6b76"> — grow 1</tspan></text>
+  </g>
+  <rect x="150" y="64" width="184" height="30" fill="#4169E1"/>
+  <rect x="334" y="64" width="138" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+  <text x="242" y="83" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="600">plant 4</text>
+  <text x="403" y="83" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">grow 3</text>
+  <circle cx="472" cy="79" r="3.5" fill="#4169E1"/>
+  <text x="480" y="83" fill="#4169E1" font-size="11.5" font-weight="600">bloom 7</text>
+  <rect x="334" y="106" width="46" height="30" fill="#4169E1"/>
+  <rect x="380" y="106" width="92" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+  <text x="426" y="125" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">grow 2</text>
+  <circle cx="472" cy="121" r="3.5" fill="#4169E1"/>
+  <text x="480" y="125" fill="#4169E1" font-size="11.5" font-weight="600">bloom 7</text>
+  <rect x="380" y="148" width="138" height="30" fill="#4169E1"/>
+  <rect x="518" y="148" width="46" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+  <text x="449" y="167" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="600">plant 3</text>
+  <text x="556" y="142" text-anchor="end" fill="#4169E1" font-size="11.5" font-weight="600">bloom 9</text>
+  <path d="M 564 163 V 193" fill="none" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="564" cy="163" r="3.5" fill="#4169E1"/>
+  <!-- day axis -->
+  <line x1="150" y1="196" x2="612" y2="196" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1">
+    <path d="M 150 196 V 201"/><path d="M 196 196 V 201"/><path d="M 242 196 V 201"/><path d="M 288 196 V 201"/>
+    <path d="M 334 196 V 201"/><path d="M 380 196 V 201"/><path d="M 426 196 V 201"/><path d="M 472 196 V 201"/>
+    <path d="M 518 196 V 201"/><path d="M 564 196 V 201"/><path d="M 610 196 V 201"/>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#5c6b76">
+    <text x="150" y="216">0</text><text x="196" y="216">1</text><text x="242" y="216">2</text><text x="288" y="216">3</text>
+    <text x="334" y="216">4</text><text x="380" y="216">5</text><text x="426" y="216">6</text><text x="472" y="216">7</text>
+    <text x="518" y="216">8</text><text x="564" y="216" fill="#4169E1" font-weight="700">9</text><text x="610" y="216">10</text>
+  </g>
+  <text x="320" y="248" text-anchor="middle" fill="#1a2026" font-size="13">Sorted by grow time descending, seeds (p4,g3), (p1,g2), (p3,g1) plant back to back:</text>
+  <text x="320" y="268" text-anchor="middle" fill="#1a2026" font-size="13">bloom days 4+3 = 7, 5+2 = 7, 8+1 = <tspan fill="#4169E1" font-weight="600">9</tspan> — the maximum <tspan fill="#4169E1" font-weight="600">9</tspan> is the answer.</text>
+</svg>

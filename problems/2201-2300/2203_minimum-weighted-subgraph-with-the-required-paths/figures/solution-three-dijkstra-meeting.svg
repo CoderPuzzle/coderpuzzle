@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 500" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="500" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- n = 6; edges 0->2(2) 0->5(6) 1->0(3) 1->4(5) 2->1(1) 2->3(3) 2->3(4) 3->4(2) 4->5(1);
+       circles r=20: 0(250,60) 1(60,180) 2(250,260) 3(470,260) 4(470,150) 5(620,60);
+       accent = d1 path 0->2->1 plus shared dd path 1->4->5; table columns are nodes 0..5 -->
+  <g fill="none" stroke="#42525e" stroke-width="1.5">
+    <path d="M 80 167 L 230 73" marker-end="url(#arrow)"/>
+    <path d="M 274 260 L 446 260" marker-end="url(#arrow)"/>
+    <path d="M 274 268 Q 360 296 446 268" marker-end="url(#arrow)"/>
+    <path d="M 470 236 L 470 174" marker-end="url(#arrow)"/>
+    <path d="M 274 60 L 596 60" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="3">
+    <path d="M 250 84 L 250 236" marker-end="url(#arrowB)"/>
+    <path d="M 227 268 Q 140 280 66 202" marker-end="url(#arrowB)"/>
+    <path d="M 84 178 L 446 152" marker-end="url(#arrowB)"/>
+    <path d="M 490 138 L 600 72" marker-end="url(#arrowB)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="148" y="106">3</text>
+    <text x="360" y="250">3</text>
+    <text x="360" y="300">4</text>
+    <text x="484" y="210">2</text>
+    <text x="430" y="50">6</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="262" y="210">2</text>
+    <text x="150" y="280">1</text>
+    <text x="350" y="146">5</text>
+    <text x="538" y="91">1</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <circle cx="250" cy="60" r="20" fill="#ffffff"/>
+    <circle cx="250" cy="260" r="20" fill="#ffffff"/>
+    <circle cx="470" cy="260" r="20" fill="#ffffff"/>
+    <circle cx="470" cy="150" r="20" fill="#ffffff"/>
+    <circle cx="620" cy="60" r="20" fill="#ffffff"/>
+  </g>
+  <circle cx="60" cy="180" r="20" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="250" y="65">0</text><text x="60" y="185">1</text><text x="250" y="265">2</text>
+    <text x="470" y="265">3</text><text x="470" y="155">4</text><text x="620" y="65">5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="250" y="30">src1 (d1)</text>
+    <text x="62" y="150">src2 (d2)</text>
+    <text x="620" y="30">dest (dd)</text>
+  </g>
+  <!-- sweep table: one column per node -->
+  <text x="355" y="326" text-anchor="middle" fill="#5c6b76" font-size="12">sweep: d1[v] + d2[v] + dd[v]</text>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="205" y="344">v</text>
+    <text x="205" y="368">d1</text>
+    <text x="205" y="390">d2</text>
+    <text x="205" y="412">dd</text>
+    <text x="205" y="434">sum</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="240" y="344">0</text><text x="290" y="344">1</text><text x="340" y="344">2</text>
+    <text x="390" y="344">3</text><text x="440" y="344">4</text><text x="490" y="344">5</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="240" y="368">0</text><text x="290" y="368">3</text><text x="340" y="368">2</text>
+    <text x="390" y="368">5</text><text x="440" y="368">7</text><text x="490" y="368">6</text>
+    <text x="240" y="390">3</text><text x="290" y="390">0</text><text x="340" y="390">5</text>
+    <text x="390" y="390">8</text><text x="440" y="390">5</text><text x="490" y="390">6</text>
+    <text x="240" y="412">6</text><text x="290" y="412">6</text><text x="340" y="412">6</text>
+    <text x="390" y="412">3</text><text x="440" y="412">1</text><text x="490" y="412">0</text>
+  </g>
+  <line x1="195" y1="352" x2="515" y2="352" stroke="#9aa7b2" stroke-width="1"/>
+  <line x1="195" y1="418" x2="515" y2="418" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="216" y="416" width="48" height="20" fill="#dbe4fb"/>
+  <rect x="266" y="416" width="48" height="20" fill="#dbe4fb"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="240" y="431" fill="#4169E1">9</text><text x="290" y="431" fill="#4169E1">9</text>
+    <text x="340" y="431">13</text><text x="390" y="431">16</text><text x="440" y="431">13</text><text x="490" y="431">12</text>
+  </g>
+  <text x="340" y="466" text-anchor="middle" fill="#1a2026" font-size="13">Dijkstra from 0, from 1, and from dest 5 on the reversed graph fills d1, d2, dd.</text>
+  <text x="340" y="486" text-anchor="middle" fill="#1a2026" font-size="13">Meeting at v = 1: <tspan fill="#4169E1" font-weight="600">3 + 0 + 6 = 9</tspan> (v = 0 ties); the drawn shared path 1 → 4 → 5 costs 6.</text>
+</svg>

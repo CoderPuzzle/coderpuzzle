@@ -15,6 +15,8 @@ time while `a[left] == b[right]`. Every step confirms one more mirrored
 pair no matter which split index is eventually chosen, as long as the
 split falls at or beyond the matched region.
 
+![With a = "ulacfd" and b = "jizalu", the outside-in matches u-u, l-l and a-a join a[0..2] to b[5..3] across any split boundary until the pointers cross, so the split at index 3 leaves no middle to check and ula + alu = ulaalu is a palindrome.](figures/solution-outside-in-mirror-arcs.svg)
+
 The scan stops either because `left >= right` — the two pointers met or
 crossed, so the entire string is already accounted for by matched pairs
 and any split in the exhausted range trivially works — or because

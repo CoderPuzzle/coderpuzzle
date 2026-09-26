@@ -26,6 +26,8 @@ walk's ordering). Either way the chosen server is flipped to busy, its
 count incremented, and `(arrival[i] + load[i], server)` is pushed onto the
 heap.
 
+![On k = 3, arrival = [1,2,3,4,5], load = [5,2,3,3,3], the busy timelines show request 3 wrapping from server 0 (busy until 6) to server 1, free again at time 4, while request 4 at time 5 falls over a fully busy column and is dropped, leaving server 1 the busiest with 2 requests.](figures/solution-server-timelines-wrap-drop.svg)
+
 Once every request has been processed, the answer is every server whose
 count equals the maximum count seen.
 

@@ -6,4 +6,6 @@ Create a directed edge from bomb `i` to bomb `j` when the squared distance betwe
 
 Run a graph search from every possible initial bomb and retain the largest number of reached vertices.
 
+![On the five-bomb example, the directed edges 0→1, 0→2, 2→1, 2→3, 3→1, 3→2, 3→4, 4→2, 4→3 let a DFS from bomb 0 follow 0→1, 0→2, 2→3, 3→4 and detonate all 5.](figures/solution-dfs-reachability.svg)
+
 **Complexity:** `O(n³)` time and `O(n²)` space.

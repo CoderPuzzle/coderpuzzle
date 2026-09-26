@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="260" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- piles = [5,4,9], k = 2; bars 36 wide, 10 px per stone, baseline y = 150;
+       op 1 pops 9: 9 - floor(9/2) = 5; op 2 pops a 5: 5 - floor(5/2) = 3;
+       final heap [5,4,3], sum 12 -->
+  <!-- heap after 0 ops: [9,5,4], pop the 9 -->
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="74" y="52" fill="#4169E1">9</text>
+    <text x="122" y="92" fill="#1a2026">5</text>
+    <text x="170" y="102" fill="#1a2026">4</text>
+  </g>
+  <rect x="56" y="60" width="36" height="90" fill="#4169E1"/>
+  <rect x="104" y="100" width="36" height="50" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="152" y="110" width="36" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <line x1="48" y1="150" x2="196" y2="150" stroke="#9aa7b2" stroke-width="1"/>
+  <text x="120" y="172" text-anchor="middle" fill="#5c6b76" font-size="12">start (k = 2)</text>
+  <!-- transition 9 -> 5 -->
+  <text x="221" y="96" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">9 → 5</text>
+  <path d="M 196 105 H 246" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- heap after 1 op: [5,5,4], pop a 5 -->
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="274" y="92" fill="#4169E1">5</text>
+    <text x="322" y="92" fill="#1a2026">5</text>
+    <text x="370" y="102" fill="#1a2026">4</text>
+  </g>
+  <rect x="256" y="100" width="36" height="50" fill="#4169E1"/>
+  <rect x="304" y="100" width="36" height="50" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="352" y="110" width="36" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <line x1="248" y1="150" x2="396" y2="150" stroke="#9aa7b2" stroke-width="1"/>
+  <text x="322" y="172" text-anchor="middle" fill="#5c6b76" font-size="12">after 1 op</text>
+  <!-- transition 5 -> 3 -->
+  <text x="421" y="96" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">5 → 3</text>
+  <path d="M 396 105 H 446" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- heap after 2 ops: [5,4,3] -->
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="474" y="92" fill="#1a2026">5</text>
+    <text x="522" y="102" fill="#1a2026">4</text>
+    <text x="570" y="112" fill="#1a2026">3</text>
+  </g>
+  <rect x="456" y="100" width="36" height="50" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="504" y="110" width="36" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="552" y="120" width="36" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <line x1="448" y1="150" x2="596" y2="150" stroke="#9aa7b2" stroke-width="1"/>
+  <text x="522" y="172" text-anchor="middle" fill="#5c6b76" font-size="12">after 2 ops</text>
+  <text x="320" y="216" text-anchor="middle" fill="#1a2026" font-size="13">Each round pops the tallest pile and pushes back p − ⌊p/2⌋: 9 → 5, then 5 → 3.</text>
+  <text x="320" y="238" text-anchor="middle" fill="#1a2026" font-size="13">After k = 2 operations the heap holds [5,4,3]; the total 5 + 4 + 3 = <tspan fill="#4169E1" font-weight="600">12</tspan> is minimal.</text>
+</svg>

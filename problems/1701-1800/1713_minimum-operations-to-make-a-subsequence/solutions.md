@@ -6,6 +6,8 @@ Insertions into `arr` are the complement of keeping elements: the elements of `t
 
 The rewritten sequence is processed with patience sorting: `tails` holds the smallest possible tail of an increasing subsequence of each length, and `bisect_left` finds where the next index belongs — appended when it extends every pile, otherwise it replaces the first pile tail that is `>=` it. Using `bisect_left` (rather than `bisect_right`) makes the subsequence strictly increasing, which matters when `arr` contains duplicates of the same target value: two occurrences map to the same index, and replacing in place correctly prevents both from being used.
 
+![Mapping target [5,1,3] to indices rewrites arr [9,4,2,3,4] as the single index [2], the patience pass leaves one pile with tails [2], and the answer is 3 - 1 = 2 insertions.](figures/solution-index-map-lis-piles.svg)
+
 Elements of `arr` absent from `target` are simply skipped by the index-map lookup — they can never contribute to a common subsequence but cost nothing since they may stay in `arr`. The final answer is `len(target) - len(tails)`.
 
 **Complexity:** `O((T + A) log T)` time, `O(T)` space.

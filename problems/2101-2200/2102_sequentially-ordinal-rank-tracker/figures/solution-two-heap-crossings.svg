@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 436" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="436" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- trace add bradford 2, add branford 3, get, add alps 2, get, add orland 2, get, add orlando 3, get, add alpine 2, get, get;
+       each column = state when get i is called: prefix heap top-down best..worst (bottom pill = root), rest heap below the
+       boundary with its best accented; dashed ghost = the slot the crossing element lands in; pill x = col center - 34, w 68 -->
+  <text x="276" y="20" text-anchor="middle" fill="#5c6b76" font-size="12">prefix heap per column — best on top, worst kept (heap root) at the bottom</text>
+  <text x="276" y="36" text-anchor="middle" fill="#5c6b76" font-size="12">rest heap below the boundary — its best (root) is the accented top pill</text>
+  <g text-anchor="middle" font-weight="600" font-size="12.5" fill="#1a2026">
+    <text x="60" y="52">get 1</text><text x="146" y="52">get 2</text><text x="232" y="52">get 3</text>
+    <text x="318" y="52">get 4</text><text x="404" y="52">get 5</text><text x="490" y="52">get 6</text>
+  </g>
+  <!-- boundary -->
+  <line x1="24" y1="252" x2="536" y2="252" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="84" y="248" fill="#9aa7b2" font-size="10.5">boundary</text>
+  <!-- prefix heap pills (col centers 60,146,232,318,404,490; slots y = 64+30j, h 26) -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <!-- col2 -->
+    <rect x="112" y="64" width="68" height="26" fill="#f0f3f7"/>
+    <!-- col3 -->
+    <rect x="198" y="64" width="68" height="26" fill="#ffffff"/>
+    <rect x="198" y="94" width="68" height="26" fill="#f0f3f7"/>
+    <!-- col4 -->
+    <rect x="284" y="64" width="68" height="26" fill="#ffffff"/>
+    <rect x="284" y="94" width="68" height="26" fill="#ffffff"/>
+    <rect x="284" y="124" width="68" height="26" fill="#f0f3f7"/>
+    <!-- col5 -->
+    <rect x="370" y="64" width="68" height="26" fill="#ffffff"/>
+    <rect x="370" y="94" width="68" height="26" fill="#ffffff"/>
+    <rect x="370" y="124" width="68" height="26" fill="#ffffff"/>
+    <rect x="370" y="154" width="68" height="26" fill="#f0f3f7"/>
+    <!-- col6 -->
+    <rect x="456" y="64" width="68" height="26" fill="#ffffff"/>
+    <rect x="456" y="94" width="68" height="26" fill="#ffffff"/>
+    <rect x="456" y="124" width="68" height="26" fill="#ffffff"/>
+    <rect x="456" y="154" width="68" height="26" fill="#ffffff"/>
+    <rect x="456" y="184" width="68" height="26" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#1a2026">
+    <text x="146" y="81">branford 3</text>
+    <text x="232" y="81">branford 3</text><text x="232" y="111">alps 2</text>
+    <text x="318" y="81">branford 3</text><text x="318" y="111">orlando 3</text><text x="318" y="141">alps 2</text>
+    <text x="404" y="81">branford 3</text><text x="404" y="111">orlando 3</text><text x="404" y="141">alpine 2</text><text x="404" y="171">alps 2</text>
+    <text x="490" y="81">branford 3</text><text x="490" y="111">orlando 3</text><text x="490" y="141">alpine 2</text><text x="490" y="171">alps 2</text><text x="490" y="201">bradford 2</text>
+  </g>
+  <!-- ghost landing slots (dashed) -->
+  <g stroke="#4169E1" stroke-width="1.4" stroke-dasharray="4 3" fill="none">
+    <rect x="26" y="64" width="68" height="26"/>
+    <rect x="112" y="94" width="68" height="26"/>
+    <rect x="198" y="124" width="68" height="26"/>
+    <rect x="284" y="154" width="68" height="26"/>
+    <rect x="370" y="184" width="68" height="26"/>
+    <rect x="456" y="214" width="68" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="60" y="81">branford 3</text>
+    <text x="146" y="111">alps 2</text>
+    <text x="232" y="141">bradford 2</text>
+    <text x="318" y="171">bradford 2</text>
+    <text x="404" y="201">bradford 2</text>
+    <text x="490" y="231">orland 2</text>
+  </g>
+  <!-- crossing arrows: rest best -> ghost slot -->
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 60 259 L 60 92" marker-end="url(#arrow)"/>
+    <path d="M 146 259 L 146 122" marker-end="url(#arrow)"/>
+    <path d="M 232 259 L 232 152" marker-end="url(#arrow)"/>
+    <path d="M 318 259 L 318 182" marker-end="url(#arrow)"/>
+    <path d="M 404 259 L 404 212" marker-end="url(#arrow)"/>
+    <path d="M 490 259 L 490 242" marker-end="url(#arrow)"/>
+  </g>
+  <!-- rest heap pills (top = best, accented; second y = 290) -->
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="#ffffff">
+    <rect x="26" y="290" width="68" height="26"/>
+    <rect x="112" y="290" width="68" height="26"/>
+    <rect x="198" y="290" width="68" height="26"/>
+    <rect x="284" y="290" width="68" height="26"/>
+    <rect x="370" y="290" width="68" height="26"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="26" y="260" width="68" height="26"/>
+    <rect x="112" y="260" width="68" height="26"/>
+    <rect x="198" y="260" width="68" height="26"/>
+    <rect x="284" y="260" width="68" height="26"/>
+    <rect x="370" y="260" width="68" height="26"/>
+    <rect x="456" y="260" width="68" height="26"/>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="60" y="277" font-weight="600" fill="#1a2026">branford 3</text><text x="60" y="307" fill="#5c6b76">bradford 2</text>
+    <text x="146" y="277" font-weight="600" fill="#1a2026">alps 2</text><text x="146" y="307" fill="#5c6b76">bradford 2</text>
+    <text x="232" y="277" font-weight="600" fill="#1a2026">bradford 2</text><text x="232" y="307" fill="#5c6b76">orland 2</text>
+    <text x="318" y="277" font-weight="600" fill="#1a2026">bradford 2</text><text x="318" y="307" fill="#5c6b76">orland 2</text>
+    <text x="404" y="277" font-weight="600" fill="#1a2026">bradford 2</text><text x="404" y="307" fill="#5c6b76">orland 2</text>
+    <text x="490" y="277" font-weight="600" fill="#1a2026">orland 2</text>
+  </g>
+  <!-- returned answers -->
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">
+    <text x="60" y="340">→ branford</text><text x="146" y="340">→ alps</text><text x="232" y="340">→ bradford</text>
+    <text x="318" y="340">→ bradford</text><text x="404" y="340">→ bradford</text><text x="490" y="340">→ orland</text>
+  </g>
+  <text x="280" y="372" text-anchor="middle" fill="#1a2026" font-size="13">Each get moves the rest's best across the boundary to become the prefix's new</text>
+  <text x="280" y="392" text-anchor="middle" fill="#1a2026" font-size="13">worst root — the <tspan fill="#4169E1" font-weight="600">i-th best</tspan>: branford, alps, bradford, bradford, bradford, orland.</text>
+  <text x="280" y="412" text-anchor="middle" fill="#1a2026" font-size="13">Adds cross back too: after add orlando 3, bradford 2 is popped into the rest heap.</text>
+</svg>

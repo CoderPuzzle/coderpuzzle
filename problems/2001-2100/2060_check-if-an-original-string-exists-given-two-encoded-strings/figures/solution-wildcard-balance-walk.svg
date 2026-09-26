@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 298" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="298" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s1 = l123e, s2 = 44, shared original leetcode;
+       walk of (i, j, diff): (0,0,0) -s2 '4'-> (0,1,-4) -s1 'l' consumes-> (1,1,-3) -s1 '1'-> (2,1,-2)
+       -s1 '2'-> (3,1,0) -s1 '3'-> (4,1,3) -s2 '4'-> (4,2,-1) -s1 'e' consumes-> (5,2,0) = accept;
+       points x = 70 + 72k, y = 130 - 20*diff -->
+  <text x="320" y="24" text-anchor="middle" fill="#1a2026" font-size="13">s1 = l123e &#183; s2 = 44 &#183; shared original leetcode</text>
+  <g stroke="#f0f3f7" stroke-width="1">
+    <line x1="60" y1="210" x2="610" y2="210"/><line x1="60" y1="190" x2="610" y2="190"/>
+    <line x1="60" y1="170" x2="610" y2="170"/><line x1="60" y1="150" x2="610" y2="150"/>
+    <line x1="60" y1="110" x2="610" y2="110"/><line x1="60" y1="90" x2="610" y2="90"/>
+    <line x1="60" y1="70" x2="610" y2="70"/>
+  </g>
+  <line x1="60" y1="130" x2="610" y2="130" stroke="#9aa7b2" stroke-width="1" stroke-dasharray="4 4"/>
+  <g text-anchor="end" fill="#9aa7b2" font-size="11.5">
+    <text x="52" y="74">+3</text><text x="52" y="134">0</text><text x="52" y="214">&#8722;4</text>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="70" y="48" fill="#5c6b76">start</text>
+    <text x="142" y="48" fill="#5c6b76">s2 &#8217;4&#8217;</text>
+    <text x="214" y="48" fill="#4169E1" font-weight="600">s1 &#8217;l&#8217;</text>
+    <text x="286" y="48" fill="#5c6b76">s1 &#8217;1&#8217;</text>
+    <text x="358" y="48" fill="#5c6b76">s1 &#8217;2&#8217;</text>
+    <text x="430" y="48" fill="#5c6b76">s1 &#8217;3&#8217;</text>
+    <text x="502" y="48" fill="#5c6b76">s2 &#8217;4&#8217;</text>
+    <text x="574" y="48" fill="#4169E1" font-weight="600">s1 &#8217;e&#8217;</text>
+  </g>
+  <polyline points="70,130 142,210 214,190 286,170 358,130 430,70 502,150 574,130" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <g fill="#4169E1">
+    <circle cx="70" cy="130" r="3.5"/><circle cx="142" cy="210" r="3.5"/>
+    <circle cx="214" cy="190" r="3.5"/><circle cx="286" cy="170" r="3.5"/>
+    <circle cx="358" cy="130" r="3.5"/><circle cx="430" cy="70" r="3.5"/>
+    <circle cx="502" cy="150" r="3.5"/><circle cx="574" cy="130" r="5"/>
+  </g>
+  <text x="574" y="110" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">true</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="70" y="232">(0,0)</text><text x="142" y="232">(0,1)</text>
+    <text x="214" y="232">(1,1)</text><text x="286" y="232">(2,1)</text>
+    <text x="358" y="232">(3,1)</text><text x="430" y="232">(4,1)</text>
+    <text x="502" y="232">(4,2)</text><text x="574" y="232">(5,2)</text>
+  </g>
+  <text x="40" y="262" fill="#1a2026" font-size="13">Digits push diff by their value (1, 2, 3 split from the run 123; 4 and 4 from s2);</text>
+  <text x="40" y="280" fill="#1a2026" font-size="13">literals l and e consume the surplus; both strings end at diff 0 &#8212; <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

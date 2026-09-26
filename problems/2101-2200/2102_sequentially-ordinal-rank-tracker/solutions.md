@@ -6,4 +6,6 @@ Keep the already-requested best prefix in one heap whose root is the worst locat
 
 On `get`, move the best remaining location into the prefix. The prefix grows by one, and its worst item is exactly the newly requested rank, ordered by higher score first and lexicographically smaller name on ties.
 
+![Across the example's six get calls, the rest heap's best crosses the boundary and lands as the prefix's new worst root — branford, alps, bradford, bradford, bradford, orland — exactly the i-th best.](figures/solution-two-heap-crossings.svg)
+
 **Complexity:** `O(log A)` time per operation and `O(A)` space after `A` additions.

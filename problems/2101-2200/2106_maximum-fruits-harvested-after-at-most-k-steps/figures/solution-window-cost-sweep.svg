@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="440" fill="#ffffff"/>
+  <!-- fruits positions 0,4,5,6,7,10 amounts 9,1,7,2,4,9; start 5, k=4; x = 40 + 56*pos, bars 30 wide, axis y=280;
+       prefix = [0,9,10,17,19,23,32], window fruits 4..7 = prefix[5]-prefix[1] = 23-9 = 14 -->
+  <!-- rejected window 0..4 (cost 5) -->
+  <path d="M 40 63 V 56 H 264 V 63" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="152" y="48" text-anchor="middle" fill="#5c6b76" font-size="12">window 0..4: cost 5 &gt; k — rejected</text>
+  <!-- rejected window 4..10 (cost 7) -->
+  <path d="M 264 91 V 84 H 600 V 91" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="432" y="76" text-anchor="middle" fill="#5c6b76" font-size="12">window 4..10: cost 7 &gt; k — rejected</text>
+  <!-- affordable window 4..7 -->
+  <text x="348" y="104" text-anchor="middle" fill="#1a2026" font-size="12.5">window [4, 7]: cost min(2·1+2, 2·2+1) = 4 ≤ k</text>
+  <text x="348" y="124" text-anchor="middle" fill="#1a2026" font-size="12.5">harvest 1 + 7 + 2 + 4 = <tspan fill="#4169E1" font-weight="600">14</tspan></text>
+  <path d="M 264 137 V 130 H 432 V 137" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <!-- fruit bars -->
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="#f0f3f7">
+    <rect x="25" y="172" width="30" height="108"/>
+    <rect x="585" y="172" width="30" height="108"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.4" fill="#dbe4fb">
+    <rect x="249" y="268" width="30" height="12"/>
+    <rect x="305" y="196" width="30" height="84"/>
+    <rect x="361" y="256" width="30" height="24"/>
+    <rect x="417" y="232" width="30" height="48"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="40" y="166" fill="#5c6b76">9</text>
+    <text x="264" y="262" fill="#1a2026">1</text>
+    <text x="320" y="190" fill="#1a2026">7</text>
+    <text x="376" y="250" fill="#1a2026">2</text>
+    <text x="432" y="226" fill="#1a2026">4</text>
+    <text x="600" y="166" fill="#5c6b76">9</text>
+  </g>
+  <!-- axis -->
+  <line x1="24" y1="280" x2="616" y2="280" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="40" y1="280" x2="40" y2="287"/><line x1="264" y1="280" x2="264" y2="287"/>
+    <line x1="320" y1="280" x2="320" y2="287"/><line x1="376" y1="280" x2="376" y2="287"/>
+    <line x1="432" y1="280" x2="432" y2="287"/><line x1="600" y1="280" x2="600" y2="287"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="40" y="303">0</text><text x="264" y="303">4</text><text x="320" y="303">5</text>
+    <text x="376" y="303">6</text><text x="432" y="303">7</text><text x="600" y="303">10</text>
+  </g>
+  <polygon points="320,281 313,291 327,291" fill="#4169E1"/>
+  <text x="320" y="323" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">start 5</text>
+  <!-- prefix strip -->
+  <text x="146" y="359" text-anchor="end" fill="#5c6b76" font-size="12">prefix</text>
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="#ffffff">
+    <rect x="154" y="344" width="44" height="22"/><rect x="250" y="344" width="44" height="22"/>
+    <rect x="298" y="344" width="44" height="22"/><rect x="346" y="344" width="44" height="22"/>
+    <rect x="442" y="344" width="44" height="22"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="#dbe4fb">
+    <rect x="202" y="344" width="44" height="22"/><rect x="394" y="344" width="44" height="22"/>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="176" y="359" fill="#5c6b76">0</text>
+    <text x="224" y="359" font-weight="600" fill="#1a2026">9</text>
+    <text x="272" y="359" fill="#5c6b76">10</text>
+    <text x="320" y="359" fill="#5c6b76">17</text>
+    <text x="368" y="359" fill="#5c6b76">19</text>
+    <text x="416" y="359" font-weight="600" fill="#1a2026">23</text>
+    <text x="464" y="359" fill="#5c6b76">32</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="176" y="380">p0</text><text x="224" y="380">p1</text><text x="272" y="380">p2</text>
+    <text x="320" y="380">p3</text><text x="368" y="380">p4</text><text x="416" y="380">p5</text><text x="464" y="380">p6</text>
+  </g>
+  <text x="320" y="406" text-anchor="middle" fill="#1a2026" font-size="13">The sweep takes the affordable window 4..7: prefix[5] − prefix[1] = 23 − 9 = <tspan fill="#4169E1" font-weight="600">14</tspan>,</text>
+  <text x="320" y="426" text-anchor="middle" fill="#1a2026" font-size="13">while windows 0..4 (cost 5) and 4..10 (cost 7) exceed k = 4.</text>
+</svg>

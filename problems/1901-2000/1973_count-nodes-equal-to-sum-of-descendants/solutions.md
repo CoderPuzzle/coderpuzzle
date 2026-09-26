@@ -18,5 +18,7 @@ Subtree sums can reach 10^5 × 10^5 = 10^10, so the accumulation uses
 64-bit integers in C++/Java/Go/Rust, and JavaScript numbers are exact far
 beyond that range.
 
+![On the Example 1 tree [10,3,4,2,1], the back-to-front scan fills each node's bottom-up subtree sum (Σ 20 at the root, Σ 6 at node 3), and nodes 10 and 3 are the two where the value equals the sum of descendants.](figures/solution-subtree-sums-bottom-up.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space, where `n` is the number of
 nodes in the tree.

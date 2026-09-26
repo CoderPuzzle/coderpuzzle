@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="376" fill="#ffffff"/>
+  <!-- nums [1,2,2,2,5,0]; prefix [0,1,3,5,7,12,12]; columns x=110+64k (cw 64);
+       stretch rows: i=1 [lo,hi)=[2,4) +2, i=2 [4,5) +1, i=3 lo=hi=5 +0 -->
+  <!-- nums row -->
+  <text x="100" y="71" text-anchor="end" font-size="12.5" fill="#5c6b76">nums</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="110" y="48" width="64" height="38"/><rect x="174" y="48" width="64" height="38"/>
+    <rect x="238" y="48" width="64" height="38"/><rect x="302" y="48" width="64" height="38"/>
+    <rect x="366" y="48" width="64" height="38"/><rect x="430" y="48" width="64" height="38"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="142" y="73">1</text><text x="206" y="73">2</text><text x="270" y="73">2</text>
+    <text x="334" y="73">2</text><text x="398" y="73">5</text><text x="462" y="73">0</text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#9aa7b2">
+    <text x="142" y="102">0</text><text x="206" y="102">1</text><text x="270" y="102">2</text>
+    <text x="334" y="102">3</text><text x="398" y="102">4</text><text x="462" y="102">5</text>
+  </g>
+  <!-- prefix row -->
+  <text x="100" y="155" text-anchor="end" font-size="12.5" fill="#5c6b76">prefix</text>
+  <g text-anchor="middle" font-size="11" fill="#9aa7b2">
+    <text x="142" y="126">0</text><text x="206" y="126">1</text><text x="270" y="126">2</text>
+    <text x="334" y="126">3</text><text x="398" y="126">4</text><text x="462" y="126">5</text>
+    <text x="526" y="126">6</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="110" y="132" width="64" height="38"/><rect x="174" y="132" width="64" height="38"/>
+    <rect x="238" y="132" width="64" height="38"/><rect x="302" y="132" width="64" height="38"/>
+    <rect x="366" y="132" width="64" height="38"/><rect x="430" y="132" width="64" height="38"/>
+    <rect x="494" y="132" width="64" height="38"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="142" y="157">0</text><text x="206" y="157">1</text><text x="270" y="157">3</text>
+    <text x="334" y="157">5</text><text x="398" y="157">7</text><text x="462" y="157">12</text>
+    <text x="526" y="157">12</text>
+  </g>
+  <!-- i = 1: stretch [2, 4), contributes 2 -->
+  <text x="100" y="221" text-anchor="end" font-size="12" fill="#5c6b76">i=1, left=1</text>
+  <rect x="238" y="202" width="128" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <polygon points="233,190 243,190 238,197" fill="#4169E1"/>
+  <text x="228" y="200" text-anchor="end" font-size="11.5" font-weight="600" fill="#4169E1">lo = 2</text>
+  <polygon points="361,190 371,190 366,197" fill="#5c6b76"/>
+  <text x="376" y="200" font-size="11.5" fill="#5c6b76">hi = 4</text>
+  <text x="570" y="221" font-size="13" font-weight="600" fill="#4169E1">+2</text>
+  <!-- i = 2: stretch [4, 5), contributes 1 -->
+  <text x="100" y="267" text-anchor="end" font-size="12" fill="#5c6b76">i=2, left=3</text>
+  <rect x="366" y="248" width="64" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <polygon points="361,236 371,236 366,243" fill="#4169E1"/>
+  <text x="356" y="246" text-anchor="end" font-size="11.5" font-weight="600" fill="#4169E1">lo = 4</text>
+  <polygon points="425,236 435,236 430,243" fill="#5c6b76"/>
+  <text x="440" y="246" font-size="11.5" fill="#5c6b76">hi = 5</text>
+  <text x="570" y="267" font-size="13" font-weight="600" fill="#4169E1">+1</text>
+  <!-- i = 3: lo catches hi, empty stretch -->
+  <text x="100" y="313" text-anchor="end" font-size="12" fill="#5c6b76">i=3, left=5</text>
+  <polygon points="425,282 435,282 430,289" fill="#4169E1"/>
+  <text x="424" y="291" text-anchor="end" font-size="11.5" fill="#5c6b76">lo = hi = 5 - empty</text>
+  <text x="570" y="313" font-size="13" fill="#9aa7b2">+0</text>
+  <text x="320" y="342" text-anchor="middle" fill="#1a2026" font-size="13">Neither pointer retreats - lo: 2 &#8594; 4 &#8594; 5, hi: 4 &#8594; 5 &#8594; 5 as i goes 1 &#8594; 2 &#8594; 3;</text>
+  <text x="320" y="360" text-anchor="middle" fill="#1a2026" font-size="13">the stretches add 2 + 1 + 0, so [1,2,2,2,5,0] has <tspan fill="#4169E1" font-weight="600">3</tspan> good splits.</text>
+</svg>

@@ -6,6 +6,8 @@ The schedule is fully described by where the d−1 cut points fall, so the probl
 
 The transition fixes the last day to be jobs `k .. i` for some k: its contribution is the maximum difficulty in that block, added to the already-optimal `dp[j−1][k−1]`. Naively each block maximum costs its own scan, but iterating k downward from i lets the code carry a single running `day_max` — extending the last day by one job to the left just folds one more value into the maximum — so every candidate split point is evaluated in O(1). Unreachable states (fewer jobs than days) keep infinity and never contaminate the answer.
 
+![Filling dp[j][i] for jobDifficulty = [6,5,4,3,2,1] with d = 2: the day-2 start k sweeps left, folding the running day-max 1 → 2 → 3 → 4 → 5, and the best cut after job 5 gives dp[2][6] = 6 + 1 = 7.](figures/solution-dp-day-max-fold.svg)
+
 Feasibility edges: if `n < d` there are not enough jobs to give each day at least one, so −1 is returned up front; the inner loop starting `i` at `j` likewise enforces one job per day, and `d = 1` reduces to the maximum of the whole array. Negative difficulties never occur, but the running maximum makes the order of the k loop the only thing that matters, not the sign of values.
 
 **Complexity:** `O(d · n²)` time, `O(d · n)` space.

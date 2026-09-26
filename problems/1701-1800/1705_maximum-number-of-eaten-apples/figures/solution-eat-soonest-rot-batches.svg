@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="372" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- apples [1,2,3,5,2], days [3,2,1,4,2]; batch i grows day i, rots day i+days[i];
+       day columns x=90+56d (cw 56); bars span fresh days grow..rot-1; badge = apples
+       that rot uneaten; strip cell = batch eaten that day -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="84" y="40" text-anchor="end">day</text>
+    <text x="118" y="40">0</text><text x="174" y="40">1</text><text x="230" y="40">2</text>
+    <text x="286" y="40">3</text><text x="342" y="40">4</text><text x="398" y="40">5</text>
+    <text x="454" y="40">6</text><text x="510" y="40">7</text><text x="566" y="40">8</text>
+  </g>
+  <!-- batch rows: label + rot day, bar, eaten dots, rot badge -->
+  <g text-anchor="end">
+    <text x="84" y="68" font-size="12.5" font-weight="600" fill="#1a2026">b0 x1</text>
+    <text x="84" y="82" font-size="10.5" fill="#9aa7b2">rots d3</text>
+    <text x="84" y="104" font-size="12.5" font-weight="600" fill="#1a2026">b1 x2</text>
+    <text x="84" y="118" font-size="10.5" fill="#9aa7b2">rots d3</text>
+    <text x="84" y="140" font-size="12.5" font-weight="600" fill="#1a2026">b2 x3</text>
+    <text x="84" y="154" font-size="10.5" fill="#9aa7b2">rots d3</text>
+    <text x="84" y="176" font-size="12.5" font-weight="600" fill="#1a2026">b3 x5</text>
+    <text x="84" y="190" font-size="10.5" fill="#9aa7b2">rots d7</text>
+    <text x="84" y="212" font-size="12.5" font-weight="600" fill="#1a2026">b4 x2</text>
+    <text x="84" y="226" font-size="10.5" fill="#9aa7b2">rots d6</text>
+  </g>
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.4">
+    <rect x="90" y="56" width="168" height="28"/>
+    <rect x="146" y="92" width="112" height="28"/>
+    <rect x="202" y="128" width="56" height="28"/>
+    <rect x="258" y="164" width="224" height="28"/>
+    <rect x="314" y="200" width="112" height="28"/>
+  </g>
+  <!-- eaten apples: accent dot on the supplying batch's row -->
+  <g fill="#4169E1">
+    <circle cx="118" cy="70" r="8"/>
+    <circle cx="174" cy="106" r="8"/><circle cx="230" cy="106" r="8"/>
+    <circle cx="286" cy="178" r="8"/><circle cx="454" cy="178" r="8"/>
+    <circle cx="342" cy="214" r="8"/><circle cx="398" cy="214" r="8"/>
+  </g>
+  <!-- apples that rot uneaten -->
+  <g>
+    <rect x="262" y="133" width="38" height="18" rx="9" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+    <text x="281" y="146" text-anchor="middle" font-size="11" fill="#9aa7b2">3 rot</text>
+    <rect x="486" y="169" width="38" height="18" rx="9" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+    <text x="505" y="182" text-anchor="middle" font-size="11" fill="#9aa7b2">3 rot</text>
+  </g>
+  <!-- per-day supplier strip -->
+  <text x="84" y="276" text-anchor="end" font-size="12.5" fill="#5c6b76">eats</text>
+  <g stroke="#4169E1" stroke-width="1" fill="#4169E1">
+    <rect x="90" y="254" width="56" height="34"/><rect x="146" y="254" width="56" height="34"/>
+    <rect x="202" y="254" width="56" height="34"/><rect x="258" y="254" width="56" height="34"/>
+    <rect x="314" y="254" width="56" height="34"/><rect x="370" y="254" width="56" height="34"/>
+    <rect x="426" y="254" width="56" height="34"/>
+  </g>
+  <rect x="482" y="254" width="56" height="34" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#ffffff">
+    <text x="118" y="276">b0</text><text x="174" y="276">b1</text><text x="230" y="276">b1</text>
+    <text x="286" y="276">b3</text><text x="342" y="276">b4</text><text x="398" y="276">b4</text>
+    <text x="454" y="276">b3</text>
+  </g>
+  <text x="510" y="276" text-anchor="middle" font-size="11" fill="#9aa7b2">stop</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="118" y="304">0</text><text x="174" y="304">1</text><text x="230" y="304">2</text>
+    <text x="286" y="304">3</text><text x="342" y="304">4</text><text x="398" y="304">5</text>
+    <text x="454" y="304">6</text><text x="510" y="304">7</text>
+  </g>
+  <text x="320" y="334" text-anchor="middle" fill="#1a2026" font-size="13">Eating whichever batch rots soonest consumes <tspan fill="#4169E1" font-weight="600">7</tspan> apples by day 6;</text>
+  <text x="320" y="352" text-anchor="middle" fill="#1a2026" font-size="13">batch 2's 3 apples rot on day 3, batch 3's last 3 rot on day 7.</text>
+</svg>

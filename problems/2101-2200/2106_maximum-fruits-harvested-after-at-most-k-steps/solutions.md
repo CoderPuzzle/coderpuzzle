@@ -6,6 +6,8 @@ Any optimal walk turns at most once: going left, turning right, and turning agai
 
 The solution precomputes a prefix-sum array over fruit amounts, then runs a two-pointer sweep: for each right endpoint it advances the left pointer while the interval's cost exceeds `k`, and whenever the current window is affordable it takes the window's fruit sum via `prefix[right + 1] − prefix[left]` as a candidate answer. Since both pointers only move forward over the sorted positions, the sweep is linear after the prefix construction.
 
+![On fruits at positions 0, 4, 5, 6, 7, 10 with start 5 and k = 4, the sweep rejects windows 0..4 (cost 5) and 4..10 (cost 7) and takes the affordable window [4, 7] of cost 4, whose prefix difference 23 − 9 = 14 is the answer.](figures/solution-window-cost-sweep.svg)
+
 Because each fruit position is unique and the window is contiguous, the answer covers exactly the positions visited by the corresponding single-turn walk. Edge cases fall out naturally: a window containing only the start position has cost 0, a single unreachable fruit keeps the window from being counted (the feasibility re-check before updating `best`), and when no fruit is reachable the answer stays 0.
 
 **Complexity:** `O(n)` time, `O(n)` space, where n is the number of fruit positions.

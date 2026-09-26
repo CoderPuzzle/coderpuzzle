@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 368" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="700" height="368" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- arr1 = [1,5,3,6,7], arr2 sorted = [1,2,3,4]; dp frontier (last value, min ops) per position -->
+  <!-- arr1 boxes 72x32 at x=cx-36 (cx = 84+134i), y=56; state boxes 92x30 at x=cx-46 -->
+  <text x="40" y="22" fill="#1a2026" font-size="12.5">arr1 = [1, 5, 3, 6, 7]&#160;&#160;&#160;&#160;arr2 sorted = [1, 2, 3, 4]</text>
+  <text x="40" y="40" fill="#5c6b76" font-size="11">each box: (last value, min ops)</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="48" y="56" width="72" height="32"/><rect x="182" y="56" width="72" height="32"/>
+    <rect x="316" y="56" width="72" height="32"/><rect x="450" y="56" width="72" height="32"/>
+    <rect x="584" y="56" width="72" height="32"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14.5" fill="#1a2026">
+    <text x="84" y="77">1</text><text x="218" y="77">5</text><text x="352" y="77">3</text>
+    <text x="486" y="77">6</text><text x="620" y="77">7</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#9aa7b2">
+    <text x="84" y="104">i = 0</text><text x="218" y="104">i = 1</text><text x="352" y="104">i = 2</text>
+    <text x="486" y="104">i = 3</text><text x="620" y="104">i = 4</text>
+  </g>
+  <!-- frontier states -->
+  <rect x="38" y="136" width="92" height="30" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="84" y="156" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">(1, 0)</text>
+  <rect x="172" y="118" width="92" height="30" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="218" y="138" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">(5, 0)</text>
+  <rect x="172" y="182" width="92" height="30" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="218" y="202" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">(2, 1)</text>
+  <text x="352" y="138" text-anchor="middle" font-size="15" fill="#9aa7b2">&#8709;</text>
+  <rect x="306" y="182" width="92" height="30" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="352" y="202" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">(3, 1)</text>
+  <rect x="440" y="182" width="92" height="30" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="486" y="202" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">(6, 1)</text>
+  <rect x="440" y="240" width="92" height="30" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="486" y="260" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">(4, 2)</text>
+  <rect x="574" y="182" width="92" height="30" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="620" y="202" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">(7, 1)</text>
+  <!-- forks: i=0 -> i=1 -->
+  <path d="M 130 149 Q 150 136 170 134" fill="none" stroke="#5c6b76" stroke-width="1.6" marker-end="url(#arrowG)"/>
+  <text x="150" y="124" text-anchor="middle" fill="#5c6b76" font-size="10.5">keep</text>
+  <path d="M 130 158 Q 150 184 170 194" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="148" y="208" text-anchor="middle" fill="#4169E1" font-size="10.5" font-weight="600">rep 2</text>
+  <!-- the (5,0) fork dies at i=2 -->
+  <path d="M 264 133 L 338 135" fill="none" stroke="#9aa7b2" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrowM)"/>
+  <text x="296" y="162" text-anchor="middle" fill="#9aa7b2" font-size="10.5">keep 3 fails, no rep &gt; 5</text>
+  <!-- forks: i=2 -> i=3 -->
+  <path d="M 264 197 L 304 197" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="284" y="190" text-anchor="middle" fill="#5c6b76" font-size="10.5">keep</text>
+  <path d="M 398 197 L 438 197" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="418" y="190" text-anchor="middle" fill="#5c6b76" font-size="10.5">keep</text>
+  <path d="M 398 204 Q 420 232 438 249" fill="none" stroke="#5c6b76" stroke-width="1.6" marker-end="url(#arrowG)"/>
+  <text x="410" y="238" text-anchor="middle" fill="#5c6b76" font-size="10.5">rep 4</text>
+  <!-- forks: i=3 -> i=4 -->
+  <path d="M 532 197 L 572 197" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <text x="552" y="190" text-anchor="middle" fill="#5c6b76" font-size="10.5">keep</text>
+  <path d="M 532 252 Q 560 236 580 216" fill="none" stroke="#9aa7b2" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrowM)"/>
+  <text x="486" y="286" text-anchor="middle" fill="#9aa7b2" font-size="11">keep &#8594; (7, 2) loses to (7, 1);</text>
+  <text x="486" y="302" text-anchor="middle" fill="#9aa7b2" font-size="11">no arr2 value exceeds 4</text>
+  <text x="620" y="244" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="13">min ops = 1</text>
+  <text x="350" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Replacing 5 with 2 is the only fork that survives past i = 2 &#8212; the (5, 0) state dies there &#8212;</text>
+  <text x="350" y="348" text-anchor="middle" fill="#1a2026" font-size="13">and the kept path 1, 2, 3, 6, 7 reaches (7, 1): strictly increasing at a cost of <tspan fill="#4169E1" font-weight="600">1</tspan>.</text>
+</svg>

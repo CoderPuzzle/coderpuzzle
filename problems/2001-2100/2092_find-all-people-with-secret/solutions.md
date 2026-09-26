@@ -41,6 +41,8 @@ forest, and the answer is a final pass asking which people share person
 
 Sort meetings by time. For every equal-time group, build a temporary undirected graph among its participants and start a breadth-first search from every participant who knew the secret before that time. Because sharing is instantaneous, the search reaches exactly the entire connected components that contain an informed person.
 
+![On meetings [[1,2,5],[2,3,8],[1,5,10]] with firstPerson 1, each timestamp group floods from its informed attendee — person 1 at time 5 reaches 2, person 2 at time 8 reaches 3, person 1 at time 10 reaches 5 — ending with people 0,1,2,3,5.](figures/solution-per-timestamp-flood.svg)
+
 Promote every reached participant into the permanent informed set before moving to the next timestamp. Components without an informed seed are discarded, so their meetings cannot incorrectly carry knowledge into later times.
 
 **Complexity:** `O(m log m + n)` time and `O(n + m)` space, where `m = meetings.length`.

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 346" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="346" fill="#ffffff"/>
+  <!-- root = [1,2,3,4,5,6]; circles r 25 at (200,62) (105,150) (295,150) (60,238) (150,238) (250,238); val inside, Sigma = subtree sum beneath it; edge 1-2 severed at t = 0.42 / 0.58 -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="200" y1="62" x2="105" y2="150"/>
+    <line x1="200" y1="62" x2="295" y2="150"/>
+    <line x1="105" y1="150" x2="60" y2="238"/>
+    <line x1="105" y1="150" x2="150" y2="238"/>
+    <line x1="295" y1="150" x2="250" y2="238"/>
+  </g>
+  <!-- the winning cut: edge above node 2, drawn severed -->
+  <g stroke="#4169E1" stroke-width="3">
+    <line x1="200" y1="62" x2="160" y2="99"/>
+    <line x1="145" y1="113" x2="105" y2="150"/>
+    <line x1="155.3" y1="93.9" x2="164.9" y2="104.1" stroke-width="2"/>
+    <line x1="140.1" y1="107.9" x2="149.7" y2="118.1" stroke-width="2"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="200" cy="62" r="25"/>
+    <circle cx="105" cy="150" r="25" stroke="#4169E1" stroke-width="2"/>
+    <circle cx="295" cy="150" r="25"/>
+    <circle cx="60" cy="238" r="25"/>
+    <circle cx="150" cy="238" r="25"/>
+    <circle cx="250" cy="238" r="25"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="200" y="60" font-weight="600">1</text><text x="200" y="78" fill="#5c6b76" font-size="11">&#931; 21</text>
+    <text x="105" y="148" font-weight="600">2</text><text x="105" y="166" fill="#5c6b76" font-size="11">&#931; 11</text>
+    <text x="295" y="148" font-weight="600">3</text><text x="295" y="166" fill="#5c6b76" font-size="11">&#931; 9</text>
+    <text x="60" y="236" font-weight="600">4</text><text x="60" y="254" fill="#5c6b76" font-size="11">&#931; 4</text>
+    <text x="150" y="236" font-weight="600">5</text><text x="150" y="254" fill="#5c6b76" font-size="11">&#931; 5</text>
+    <text x="250" y="236" font-weight="600">6</text><text x="250" y="254" fill="#5c6b76" font-size="11">&#931; 6</text>
+  </g>
+  <text x="180" y="300" text-anchor="middle" fill="#5c6b76" font-size="12.5">post-order fill: 4 &#8594; 5 &#8594; 2 &#8594; 6 &#8594; 3 &#8594; 1</text>
+  <!-- cut products, second pass over non-root nodes -->
+  <g font-size="13" fill="#5c6b76">
+    <text x="400" y="100">cut below 4: 4 &#215; 17 = 68</text>
+    <text x="400" y="126">cut below 5: 5 &#215; 16 = 80</text>
+    <text x="400" y="152">cut below 6: 6 &#215; 15 = 90</text>
+    <text x="400" y="178">cut below 3: 9 &#215; 12 = 108</text>
+    <text x="400" y="204" fill="#4169E1" font-weight="600">cut below 2: 11 &#215; 10 = 110</text>
+  </g>
+  <text x="310" y="322" text-anchor="middle" fill="#1a2026" font-size="13">With total 21, cutting below node 2 splits &#931; 11 from 10 &#8212;</text>
+  <text x="310" y="340" text-anchor="middle" fill="#1a2026" font-size="13">the maximum product <tspan fill="#4169E1" font-weight="600">11 &#215; 10 = 110</tspan>, ahead of 108, 90, 80, 68.</text>
+</svg>

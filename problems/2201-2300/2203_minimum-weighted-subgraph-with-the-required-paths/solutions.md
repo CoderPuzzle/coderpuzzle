@@ -6,6 +6,8 @@ In an optimal subgraph the paths from `src1` and `src2` to `dest` first behave i
 
 The trick that makes this computable is running the third search on the reversed graph: `dist(v, dest)` in the original graph equals `dist(dest, v)` when every edge `u -> v` is also stored as `v -> u`. The code therefore builds both an adjacency list and a reverse adjacency list in one pass over `edges`, then runs Dijkstra three times — from `src1` and `src2` on the forward graph, and from `dest` on the reverse graph. Weights are positive, so the lazy-delete heap version (skip a popped entry whose recorded distance is stale) is correct.
 
+![Running Dijkstra from src1 = 0, from src2 = 1, and from dest = 5 on the reversed graph gives d1, d2, dd for every node; the sweep minimum is 3 + 0 + 6 = 9 at the meeting node 1 (node 0 ties), and the accented edges are the d1 path 0 -> 2 -> 1 plus the shared path 1 -> 4 -> 5.](figures/solution-three-dijkstra-meeting.svg)
+
 The final sweep takes the minimum of `d1[v] + d2[v] + dd[v]` over every node `v` that the reverse search could reach, and this filtering is what makes `-1` detection work: a node with `dd[v] == inf` can never lie on any valid subgraph and is excluded outright, while a node reachable from `dest` but unreachable from `src1` or `src2` contributes an infinite sum, which is caught by the explicit `best == float("inf")` check. The `default = -1` argument to `min` additionally handles the degenerate case of an empty edge list where no candidate exists at all. With `E = edges.length`, each Dijkstra costs `O((n + E) log n)` and the sweep is a single `O(n)` pass.
 
 **Complexity:** `O((n + E) log n)` time, `O(n + E)` space.

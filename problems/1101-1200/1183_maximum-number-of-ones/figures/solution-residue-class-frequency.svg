@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 324" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="324" fill="#ffffff"/>
+  <!-- width = height = 3, side = 2, maxOnes = 1; grid cells 52x40 at (60,70) step (54,42) -->
+  <!-- lit = residue class (row%2, col%2) = (0,0): cells (0,0),(0,2),(2,0),(2,2); frequencies (0,0)=4, (0,1)=2, (1,0)=2, (1,1)=1 -->
+  <text x="140" y="56" text-anchor="middle" fill="#5c6b76" font-size="12">3 &#215; 3 grid</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="114" y="70" width="52" height="40"/><rect x="168" y="70" width="52" height="40"/>
+    <rect x="60" y="112" width="52" height="40"/><rect x="114" y="112" width="52" height="40"/><rect x="168" y="112" width="52" height="40"/>
+    <rect x="60" y="154" width="52" height="40"/><rect x="114" y="154" width="52" height="40"/><rect x="168" y="154" width="52" height="40"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="60" y="70" width="52" height="40"/><rect x="168" y="70" width="52" height="40"/>
+    <rect x="60" y="154" width="52" height="40"/><rect x="168" y="154" width="52" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="86" y="95" fill="#4169E1">1</text><text x="140" y="95" fill="#9aa7b2">0</text><text x="194" y="95" fill="#4169E1">1</text>
+    <text x="86" y="137" fill="#9aa7b2">0</text><text x="140" y="137" fill="#9aa7b2">0</text><text x="194" y="137" fill="#9aa7b2">0</text>
+    <text x="86" y="179" fill="#4169E1">1</text><text x="140" y="179" fill="#9aa7b2">0</text><text x="194" y="179" fill="#4169E1">1</text>
+  </g>
+  <!-- the four 2x2 windows, drawn over the cells: each catches exactly one lit corner -->
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="5 4">
+    <rect x="62" y="72" width="102" height="78" rx="5"/>
+    <rect x="116" y="72" width="102" height="78" rx="5"/>
+    <rect x="62" y="114" width="102" height="78" rx="5"/>
+    <rect x="116" y="114" width="102" height="78" rx="5"/>
+  </g>
+  <!-- residue class frequencies -->
+  <text x="300" y="66" fill="#5c6b76" font-size="11.5">residue class (row mod 2, col mod 2) &#8594; cells</text>
+  <!-- (0,0) picked -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.1">
+    <rect x="300" y="84" width="14" height="14"/><rect x="314" y="84" width="14" height="14"/>
+    <rect x="300" y="98" width="14" height="14"/><rect x="314" y="98" width="14" height="14"/>
+  </g>
+  <rect x="300" y="84" width="14" height="14" fill="#4169E1"/>
+  <text x="344" y="103" fill="#4169E1" font-weight="600" font-size="12.5">(0, 0):&#160;&#160;2 rows &#215; 2 cols = 4 cells</text>
+  <!-- (0,1) -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.1">
+    <rect x="300" y="124" width="14" height="14"/><rect x="314" y="124" width="14" height="14"/>
+    <rect x="300" y="138" width="14" height="14"/><rect x="314" y="138" width="14" height="14"/>
+  </g>
+  <rect x="314" y="124" width="14" height="14" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.1"/>
+  <text x="344" y="143" fill="#5c6b76" font-size="12.5">(0, 1):&#160;&#160;2 &#215; 1 = 2</text>
+  <!-- (1,0) -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.1">
+    <rect x="300" y="164" width="14" height="14"/><rect x="314" y="164" width="14" height="14"/>
+    <rect x="300" y="178" width="14" height="14"/><rect x="314" y="178" width="14" height="14"/>
+  </g>
+  <rect x="300" y="178" width="14" height="14" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.1"/>
+  <text x="344" y="183" fill="#5c6b76" font-size="12.5">(1, 0):&#160;&#160;1 &#215; 2 = 2</text>
+  <!-- (1,1) -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.1">
+    <rect x="300" y="204" width="14" height="14"/><rect x="314" y="204" width="14" height="14"/>
+    <rect x="300" y="218" width="14" height="14"/><rect x="314" y="218" width="14" height="14"/>
+  </g>
+  <rect x="314" y="218" width="14" height="14" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.1"/>
+  <text x="344" y="223" fill="#5c6b76" font-size="12.5">(1, 1):&#160;&#160;1 &#215; 1 = 1</text>
+  <text x="300" y="252" fill="#1a2026" font-size="12.5">sorted [4, 2, 2, 1] &#8594; top maxOnes = 1 sums to <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  <text x="320" y="288" text-anchor="middle" fill="#1a2026" font-size="13">All four 2&#215;2 windows catch exactly one lit cell of the picked class (0, 0),</text>
+  <text x="320" y="306" text-anchor="middle" fill="#1a2026" font-size="13">and that class alone covers 2 &#215; 2 = 4 cells &#8212; the answer for maxOnes = 1 is <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

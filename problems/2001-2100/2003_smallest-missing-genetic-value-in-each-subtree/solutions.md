@@ -13,4 +13,6 @@ walk. A shared candidate advances while its value is marked and therefore gives
 the smallest missing value for the current ancestor. Iterative traversal avoids
 depending on call-stack depth for a tree of `10⁵` nodes.
 
+![Walking up from the node holding genetic value 1 (node 0, the root) marks its subtree's values 1, 2, 3, 4 present, so the shared candidate stops at 5 and only ans[0] rises above the default: the answers come out [5, 1, 1, 1].](figures/solution-path-mark-candidate.svg)
+
 **Complexity:** `O(n + V)` time, where `V` is the number of candidate values examined, and `O(n)` space.

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- arr = [6,4,14,6,8,13,9,7,10,6,12], d = 2; bars w 36 at centers x = 78 + 50i, height 15*val, baseline y = 230; dp row below baseline; winning chain 10 -> 8 -> 6 -> 7 -->
+  <line x1="40" y1="230" x2="620" y2="230" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="140" width="36" height="90"/>
+    <rect x="110" y="170" width="36" height="60"/>
+    <rect x="160" y="20" width="36" height="210"/>
+    <rect x="210" y="140" width="36" height="90"/>
+    <rect x="260" y="110" width="36" height="120"/>
+    <rect x="310" y="35" width="36" height="195"/>
+    <rect x="360" y="95" width="36" height="135" fill="#dbe4fb"/>
+    <rect x="410" y="125" width="36" height="105" fill="#dbe4fb"/>
+    <rect x="460" y="80" width="36" height="150" fill="#dbe4fb"/>
+    <rect x="510" y="140" width="36" height="90"/>
+    <rect x="560" y="50" width="36" height="180" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12.5">
+    <text x="78" y="156">6</text><text x="128" y="186">4</text><text x="178" y="36">14</text>
+    <text x="228" y="156">6</text><text x="278" y="126">8</text><text x="328" y="51">13</text>
+    <text x="378" y="111">9</text><text x="428" y="141">7</text><text x="478" y="96">10</text>
+    <text x="528" y="156">6</text><text x="578" y="66">12</text>
+  </g>
+  <!-- blocked jump 6 -> 5: the target itself is taller (13 > 9) -->
+  <path d="M 372 86 Q 353 44 348 40" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <g stroke="#9aa7b2" stroke-width="2">
+    <line x1="347" y1="23" x2="357" y2="33"/><line x1="357" y1="23" x2="347" y2="33"/>
+  </g>
+  <text x="364" y="22" fill="#9aa7b2" font-size="11.5">13 &gt; 9: no</text>
+  <!-- winning chain 10 -> 8 -> 6 -> 7 -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 578 46 Q 528 22 482 74" marker-end="url(#arrow)"/>
+    <path d="M 478 76 Q 428 52 382 90" marker-end="url(#arrow)"/>
+    <path d="M 390 93 Q 412 60 428 121" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="78" y="248">0</text><text x="128" y="248">1</text><text x="178" y="248">2</text>
+    <text x="228" y="248">3</text><text x="278" y="248">4</text><text x="328" y="248">5</text>
+    <text x="378" y="248">6</text><text x="428" y="248">7</text><text x="478" y="248">8</text>
+    <text x="528" y="248">9</text><text x="578" y="248">10</text>
+  </g>
+  <text x="40" y="269" fill="#5c6b76" font-size="12">dp</text>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#5c6b76">
+    <text x="78" y="269">2</text><text x="128" y="269">1</text><text x="178" y="269">3</text>
+    <text x="228" y="269">1</text><text x="278" y="269">2</text><text x="328" y="269">3</text>
+    <text x="378" y="269">2</text><text x="428" y="269">1</text><text x="478" y="269">3</text>
+    <text x="528" y="269">1</text><text x="578" y="269" fill="#4169E1" font-size="14">4</text>
+  </g>
+  <text x="330" y="292" text-anchor="middle" fill="#5c6b76" font-size="12">fill in increasing height: 1, 0, 3, 9, 7, 4, 6, 8, 10, 5, 2</text>
+  <text x="330" y="314" text-anchor="middle" fill="#1a2026" font-size="13">Best chain 10 &#8594; 8 &#8594; 6 &#8594; 7 visits 4 indices: dp[10] = <tspan fill="#4169E1" font-weight="600">4</tspan>,</text>
+  <text x="330" y="332" text-anchor="middle" fill="#1a2026" font-size="13">each landing lower than the last; the 13 wall blocks the rest.</text>
+</svg>

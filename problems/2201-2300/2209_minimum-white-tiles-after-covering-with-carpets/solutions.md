@@ -13,6 +13,8 @@ scanned left to right, and its leftmost carpet that touches the suffix
 `floor[i:]` either starts at `i` or starts earlier and already hides tile
 `i`, which the minimum absorbs through a cheaper state.
 
+![For floor = 10110101 with 2 carpets of length 2 the suffix table fills bottom-up, each cell taking the cheaper of showing tile i or starting a carpet at i, and the answer dp[0][2] = min(1 + 1, 2) = 2 leaves tiles 0 and 5 white.](figures/solution-suffix-dp-carpets.svg)
+
 The table fills with `i` running downward and `j` upward, so every reference
 is already computed; the `j = 0` column is just the suffix white counts.
 Because the recurrence takes a minimum over placements rather than a sum,

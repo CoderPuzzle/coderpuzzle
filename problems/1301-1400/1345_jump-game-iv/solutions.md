@@ -6,6 +6,8 @@ Treat every index as a node in an unweighted graph: node `i` has edges to `i - 1
 
 The BFS keeps a `dist` array initialized to `-1` (doubly as the visited set) and starts from index `0` with distance `0`. When a node `i` is popped, its neighbor list is `[i - 1, i + 1] + indices[arr[i]]`; each unvisited, in-bounds neighbor gets `dist[i] + 1` and joins the queue. The search returns the moment the last index is labeled, otherwise it finishes with `dist[n - 1]`.
 
+![BFS on arr = [100,-23,-23,404,100,23,23,23,3,404]: the 100, -23 and 404 value groups each expand once and are emptied, and index 9 is labeled dist 3 — the 3-jump path 0 → 4 → 3 → 9.](figures/solution-bfs-value-groups.svg)
+
 The one performance-critical trick is clearing a value's group after it is used: `indices[arr[i]] = []`. When node `i` is expanded, every index in its group receives the same distance and becomes visited, so that group will never again produce an unvisited neighbor. Emptying it prevents an array of `5 * 10^4` identical values from re-scanning a length-`n` list from each of `n` nodes, which would be quadratic; with the clear, each index enters its group's neighbor list at most once.
 
 The trivial edge case `n == 1` returns `0` immediately since the start is already the target. Out-of-bounds candidates `i - 1 < 0` and `i + 1 >= n` are filtered by the bounds check.

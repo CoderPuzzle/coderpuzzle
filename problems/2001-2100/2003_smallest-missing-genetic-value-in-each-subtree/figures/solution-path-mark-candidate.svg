@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 368" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="368" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- parents = [-1,0,0,2], nums = [1,2,3,4]; node 0 holds value 1; marked {1,2,3,4}; candidate stops at 5 -->
+  <rect x="44" y="52" width="252" height="272" rx="10" fill="none" stroke="#4169E1" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="170" y="42" text-anchor="middle" fill="#5c6b76" font-size="12">subtree of node 0 (dashed) — the whole tree</text>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="127" y1="104" x2="90" y2="167"/>
+    <line x1="154" y1="104" x2="196" y2="167"/>
+    <line x1="210" y1="210" x2="210" y2="262"/>
+  </g>
+  <circle cx="140" cy="86" r="22" fill="#4169E1"/>
+  <text x="140" y="84" text-anchor="middle" fill="#ffffff" font-weight="600">1</text>
+  <text x="140" y="99" text-anchor="middle" fill="#dbe4fb" font-size="11">n0</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="80" cy="186" r="22"/><circle cx="210" cy="186" r="22"/><circle cx="210" cy="286" r="22"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="80" y="184" fill="#1a2026" font-weight="600">2</text><text x="80" y="199" fill="#5c6b76" font-size="11">n1</text>
+    <text x="210" y="184" fill="#1a2026" font-weight="600">3</text><text x="210" y="199" fill="#5c6b76" font-size="11">n2</text>
+    <text x="210" y="284" fill="#1a2026" font-weight="600">4</text><text x="210" y="299" fill="#5c6b76" font-size="11">n3</text>
+  </g>
+  <text x="473" y="60" text-anchor="middle" fill="#5c6b76" font-size="12.5">mark node 0's subtree values present</text>
+  <g stroke-width="1.5">
+    <rect x="332" y="76" width="50" height="38" rx="6" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="390" y="76" width="50" height="38" rx="6" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="448" y="76" width="50" height="38" rx="6" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="506" y="76" width="50" height="38" rx="6" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="564" y="76" width="50" height="38" rx="6" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="357" y="101" fill="#4169E1">1</text><text x="415" y="101" fill="#4169E1">2</text>
+    <text x="473" y="101" fill="#4169E1">3</text><text x="531" y="101" fill="#4169E1">4</text>
+    <text x="589" y="101" fill="#9aa7b2">5</text>
+  </g>
+  <text x="452" y="132" text-anchor="middle" fill="#5c6b76" font-size="11.5">marked present</text>
+  <text x="589" y="132" text-anchor="middle" fill="#5c6b76" font-size="11.5">missing</text>
+  <path d="M 357 150 H 573" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="465" y="172" text-anchor="middle" fill="#1a2026" font-size="12.5">candidate 1 → 2 → 3 → 4, stops at 5</text>
+  <text x="348" y="238" text-anchor="end" fill="#5c6b76" font-size="12.5">ans[]</text>
+  <g font-size="11" text-anchor="middle" fill="#5c6b76">
+    <text x="400" y="204">0</text><text x="468" y="204">1</text><text x="536" y="204">2</text><text x="604" y="204">3</text>
+  </g>
+  <g stroke-width="1.5">
+    <rect x="372" y="212" width="56" height="40" rx="6" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="440" y="212" width="56" height="40" rx="6" fill="#ffffff" stroke="#9aa7b2"/>
+    <rect x="508" y="212" width="56" height="40" rx="6" fill="#ffffff" stroke="#9aa7b2"/>
+    <rect x="576" y="212" width="56" height="40" rx="6" fill="#ffffff" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="400" y="238" fill="#4169E1">5</text><text x="468" y="238" fill="#1a2026">1</text>
+    <text x="536" y="238" fill="#1a2026">1</text><text x="604" y="238" fill="#1a2026">1</text>
+  </g>
+  <text x="320" y="340" text-anchor="middle" fill="#1a2026" font-size="13">Marking node 0's subtree presents 1, 2, 3, 4, so the shared candidate stops at <tspan fill="#4169E1" font-weight="600">5</tspan>:</text>
+  <text x="320" y="358" text-anchor="middle" fill="#1a2026" font-size="13">ans[0] = 5, and every subtree without the value 1 keeps the default answer 1.</text>
+</svg>

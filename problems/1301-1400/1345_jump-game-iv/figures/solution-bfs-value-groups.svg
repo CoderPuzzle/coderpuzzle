@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 272" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="272" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- arr = [100,-23,-23,404,100,23,23,23,3,404]; cells x = 40 + 60i (w 56) at y = 110, index inside each cell; gray arcs = +/-1 edges above the row; the 0 -> 4 same-value jump routes below the row, the 3 -> 9 same-value jump above it; dist row at the bottom -->
+  <g fill="none" stroke="#5c6b76" stroke-width="1.5">
+    <path d="M 74 103 Q 98 84 122 107" marker-end="url(#arrowg)"/>
+    <path d="M 134 103 Q 158 84 182 107" marker-end="url(#arrowg)"/>
+    <path d="M 302 103 Q 278 84 254 107" marker-end="url(#arrowg)"/>
+    <path d="M 314 103 Q 338 84 362 107" marker-end="url(#arrowg)"/>
+  </g>
+  <path d="M 248 102 Q 428 40 602 106" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="470" y="64" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">same value 404</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <g fill="#ffffff">
+      <rect x="40" y="110" width="56" height="44"/><rect x="100" y="110" width="56" height="44"/>
+      <rect x="160" y="110" width="56" height="44"/><rect x="220" y="110" width="56" height="44"/>
+      <rect x="280" y="110" width="56" height="44"/><rect x="340" y="110" width="56" height="44"/>
+      <rect x="400" y="110" width="56" height="44"/><rect x="460" y="110" width="56" height="44"/>
+      <rect x="520" y="110" width="56" height="44"/>
+    </g>
+    <rect x="40" y="110" width="56" height="44" fill="#dbe4fb"/>
+    <rect x="280" y="110" width="56" height="44" fill="#dbe4fb"/>
+    <rect x="220" y="110" width="56" height="44" fill="#dbe4fb"/>
+    <rect x="580" y="110" width="56" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="68" y="131" font-weight="600" font-size="13.5">100</text><text x="68" y="149" fill="#9aa7b2" font-size="10">0</text>
+    <text x="128" y="131" font-weight="600" font-size="13.5">-23</text><text x="128" y="149" fill="#9aa7b2" font-size="10">1</text>
+    <text x="188" y="131" font-weight="600" font-size="13.5">-23</text><text x="188" y="149" fill="#9aa7b2" font-size="10">2</text>
+    <text x="248" y="131" font-weight="600" font-size="13.5">404</text><text x="248" y="149" fill="#9aa7b2" font-size="10">3</text>
+    <text x="308" y="131" font-weight="600" font-size="13.5">100</text><text x="308" y="149" fill="#9aa7b2" font-size="10">4</text>
+    <text x="368" y="131" font-weight="600" font-size="13.5">23</text><text x="368" y="149" fill="#9aa7b2" font-size="10">5</text>
+    <text x="428" y="131" font-weight="600" font-size="13.5">23</text><text x="428" y="149" fill="#9aa7b2" font-size="10">6</text>
+    <text x="488" y="131" font-weight="600" font-size="13.5">23</text><text x="488" y="149" fill="#9aa7b2" font-size="10">7</text>
+    <text x="548" y="131" font-weight="600" font-size="13.5">3</text><text x="548" y="149" fill="#9aa7b2" font-size="10">8</text>
+    <text x="608" y="131" font-weight="600" font-size="13.5">404</text><text x="608" y="149" fill="#9aa7b2" font-size="10">9</text>
+  </g>
+  <!-- the 0 -> 4 same-value jump, routed under the row -->
+  <path d="M 68 157 Q 188 204 308 157" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="188" y="170" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">same value 100</text>
+  <text x="14" y="200" fill="#5c6b76" font-size="12">dist</text>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="68" y="200">0</text><text x="128" y="200">1</text><text x="188" y="200">1</text>
+    <text x="248" y="200">2</text><text x="308" y="200">2</text><text x="368" y="200">2</text>
+    <text x="428" y="200" fill="#9aa7b2">&#8211;</text><text x="488" y="200" fill="#9aa7b2">&#8211;</text>
+    <text x="548" y="200" fill="#9aa7b2">&#8211;</text><text x="608" y="200" fill="#4169E1">3</text>
+  </g>
+  <text x="340" y="236" text-anchor="middle" fill="#1a2026" font-size="13">The 100, -23 and 404 groups each expand once, then are emptied;</text>
+  <text x="340" y="254" text-anchor="middle" fill="#1a2026" font-size="13">index 9 is labeled dist 3 by the 404 group &#8212; <tspan fill="#4169E1" font-weight="600">3 jumps: 0 &#8594; 4 &#8594; 3 &#8594; 9</tspan>.</text>
+</svg>

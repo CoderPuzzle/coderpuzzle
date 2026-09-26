@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="290" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- head = [5,2,6,3,9,1,7,3,8,4]; groups of length 1,2,3,4; nodes 42x36, pitch 56 at x0=40;
+       top row = input, bottom row = output [5,6,2,3,9,1,4,8,3,7] -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="36" y="64" width="50" height="48" rx="8" fill="#f0f3f7"/>
+    <rect x="92" y="64" width="106" height="48" rx="8" fill="#dbe4fb"/>
+    <rect x="204" y="64" width="162" height="48" rx="8" fill="#f0f3f7"/>
+    <rect x="372" y="64" width="218" height="48" rx="8" fill="#dbe4fb"/>
+    <rect x="36" y="174" width="50" height="48" rx="8" fill="#f0f3f7"/>
+    <rect x="92" y="174" width="106" height="48" rx="8" fill="#dbe4fb"/>
+    <rect x="204" y="174" width="162" height="48" rx="8" fill="#f0f3f7"/>
+    <rect x="372" y="174" width="218" height="48" rx="8" fill="#dbe4fb"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="40" y="70" width="42" height="36"/><rect x="96" y="70" width="42" height="36"/><rect x="152" y="70" width="42" height="36"/>
+    <rect x="208" y="70" width="42" height="36"/><rect x="264" y="70" width="42" height="36"/><rect x="320" y="70" width="42" height="36"/>
+    <rect x="376" y="70" width="42" height="36"/><rect x="432" y="70" width="42" height="36"/><rect x="488" y="70" width="42" height="36"/>
+    <rect x="544" y="70" width="42" height="36"/>
+    <rect x="40" y="180" width="42" height="36"/><rect x="96" y="180" width="42" height="36"/><rect x="152" y="180" width="42" height="36"/>
+    <rect x="208" y="180" width="42" height="36"/><rect x="264" y="180" width="42" height="36"/><rect x="320" y="180" width="42" height="36"/>
+    <rect x="376" y="180" width="42" height="36"/><rect x="432" y="180" width="42" height="36"/><rect x="488" y="180" width="42" height="36"/>
+    <rect x="544" y="180" width="42" height="36"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.3" fill="none">
+    <path d="M 84 88 H 93" marker-end="url(#arrow)"/><path d="M 140 88 H 149" marker-end="url(#arrow)"/>
+    <path d="M 196 88 H 205" marker-end="url(#arrow)"/><path d="M 252 88 H 261" marker-end="url(#arrow)"/>
+    <path d="M 308 88 H 317" marker-end="url(#arrow)"/><path d="M 364 88 H 373" marker-end="url(#arrow)"/>
+    <path d="M 420 88 H 429" marker-end="url(#arrow)"/><path d="M 476 88 H 485" marker-end="url(#arrow)"/>
+    <path d="M 532 88 H 541" marker-end="url(#arrow)"/>
+    <path d="M 84 198 H 93" marker-end="url(#arrow)"/><path d="M 140 198 H 149" marker-end="url(#arrow)"/>
+    <path d="M 196 198 H 205" marker-end="url(#arrow)"/><path d="M 252 198 H 261" marker-end="url(#arrow)"/>
+    <path d="M 308 198 H 317" marker-end="url(#arrow)"/><path d="M 364 198 H 373" marker-end="url(#arrow)"/>
+    <path d="M 420 198 H 429" marker-end="url(#arrow)"/><path d="M 476 198 H 485" marker-end="url(#arrow)"/>
+    <path d="M 532 198 H 541" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="61" y="93">5</text><text x="117" y="93">2</text><text x="173" y="93">6</text>
+    <text x="229" y="93">3</text><text x="285" y="93">9</text><text x="341" y="93">1</text>
+    <text x="397" y="93">7</text><text x="453" y="93">3</text><text x="509" y="93">8</text><text x="565" y="93">4</text>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="61" y="203" fill="#1a2026">5</text><text x="117" y="203" fill="#4169E1">6</text><text x="173" y="203" fill="#4169E1">2</text>
+    <text x="229" y="203" fill="#1a2026">3</text><text x="285" y="203" fill="#1a2026">9</text><text x="341" y="203" fill="#1a2026">1</text>
+    <text x="397" y="203" fill="#4169E1">4</text><text x="453" y="203" fill="#4169E1">8</text><text x="509" y="203" fill="#4169E1">3</text><text x="565" y="203" fill="#4169E1">7</text>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="61" y="128" fill="#5c6b76">len 1 · odd</text>
+    <text x="145" y="128" fill="#4169E1" font-weight="600">len 2 · even</text>
+    <text x="285" y="128" fill="#5c6b76">len 3 · odd</text>
+    <text x="481" y="128" fill="#4169E1" font-weight="600">len 4 · even</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 145 136 V 168" marker-end="url(#arrowB)"/>
+    <path d="M 481 136 V 168" marker-end="url(#arrowB)"/>
+  </g>
+  <text x="313" y="157" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">reverse in place</text>
+  <text x="320" y="250" text-anchor="middle" fill="#1a2026" font-size="13">Groups of length 2 and 4 reverse in place — each old head becomes the tail:</text>
+  <text x="320" y="268" text-anchor="middle" fill="#1a2026" font-size="13">5 → [6 → 2] → 3, 1 → [4 → 8 → 3 → 7] → end — result <tspan fill="#4169E1" font-weight="600">[5, 6, 2, 3, 9, 1, 4, 8, 3, 7]</tspan>.</text>
+</svg>

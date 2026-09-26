@@ -17,6 +17,8 @@ value that is strictly less than the previous one. Any node that fails its
 level's parity or ordering check fails the whole tree, and the search can
 stop the moment that happens — no need to finish the remaining levels.
 
+![Example 1's four levels as horizontal bands — level 2 reads 3 < 7 < 9, odd and strictly increasing, and level 3 reads 12 > 8 > 6 > 2, even and strictly decreasing — so every band satisfies its parity rule and the tree is Even-Odd.](figures/solution-level-parity-bands.svg)
+
 Enqueuing children left-before-right, exactly as an ordinary level-order
 traversal does, is what keeps the reading order correct; nothing about the
 check requires buffering a level's values in a separate list first, since

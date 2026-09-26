@@ -9,6 +9,8 @@ post-order pass computes every subtree sum (an explicit stack, since the
 tree may be a 5·10⁴-node chain); a second pass over the nodes evaluates
 the cut product for each non-root node.
 
+![Post-order subtree sums for root = [1,2,3,4,5,6] with total 21: evaluating every edge gives 11 × 10 = 110 for the cut below node 2, the maximum product.](figures/solution-subtree-sum-cuts.svg)
+
 The products are compared in full 64-bit arithmetic and reduced modulo
 10⁹ + 7 only once, after the maximum is chosen — the statement requires
 maximizing before the modulo. With node values up to 10⁴ and 5·10⁴ nodes,

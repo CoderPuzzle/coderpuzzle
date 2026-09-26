@@ -39,6 +39,8 @@ the lift skips already failed the lower test), then walks forward while
 `hi - lo` cuts, and keeping `lo` above `i` while both walks stop at `n`
 leaves all three blocks non-empty.
 
+![On nums [1,2,2,2,5,0] the prefix row [0,1,3,5,7,12,12] shows each first cut's half-open stretch - [2,4) adds 2, [4,5) adds 1, i=3 finds lo=hi and adds 0 - as lo and hi only ever advance, summing 3.](figures/solution-two-pointer-stretches.svg)
+
 Neither pointer ever retreats, and each stops at `n` for good, so across all
 `n - 2` values of `i` the two walks take at most `n` advances apiece — the
 log factor of the bisections dissolves into one linear sweep. Inputs whose

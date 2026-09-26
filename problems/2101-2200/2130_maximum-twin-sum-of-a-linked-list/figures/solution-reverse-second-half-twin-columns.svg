@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- list = [5,4,2,1]; boxes 64x38, columns x = 68+90i at y=46; slow/fast split, second half 2->1 reversed into 1->2 below; twin sums 5+1=6, 4+2=6 -->
+  <text x="145" y="24" text-anchor="middle" fill="#5c6b76" font-size="12.5">first half</text>
+  <text x="325" y="24" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">second half (slow/fast split)</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="100" y="38">0</text><text x="190" y="38">1</text><text x="280" y="38">2</text><text x="370" y="38">3</text>
+  </g>
+  <rect x="242" y="30" width="166" height="62" rx="8" fill="none" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="68" y="46" width="64" height="38"/><rect x="158" y="46" width="64" height="38"/>
+    <rect x="248" y="46" width="64" height="38"/><rect x="338" y="46" width="64" height="38"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 132 65 H 152" marker-end="url(#arrow)"/>
+    <path d="M 222 65 H 242" marker-end="url(#arrow)"/>
+    <path d="M 312 65 H 332" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="100" y="71">5</text><text x="190" y="71">4</text><text x="280" y="71">2</text><text x="370" y="71">1</text>
+  </g>
+  <!-- reverse the second half: elbow into the reversed row -->
+  <path d="M 408 61 H 448 Q 456 61 456 69 V 189 Q 456 197 448 197 H 226" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="352" y="189" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">reverse</text>
+  <!-- twin alignment: node 3 (1) under node 0 (5), node 2 (2) under node 1 (4) -->
+  <g stroke="#4169E1" stroke-width="1.5" fill="none">
+    <path d="M 100 96 V 172" marker-end="url(#arrowB)"/>
+    <path d="M 190 96 V 172" marker-end="url(#arrowB)"/>
+  </g>
+  <text x="145" y="120" text-anchor="middle" fill="#5c6b76" font-size="11.5">twin sums</text>
+  <text x="110" y="145" fill="#1a2026" font-size="12.5">5+1 = <tspan fill="#4169E1" font-weight="600">6</tspan></text>
+  <text x="200" y="145" fill="#1a2026" font-size="12.5">4+2 = <tspan fill="#4169E1" font-weight="600">6</tspan></text>
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="1.4">
+    <rect x="68" y="178" width="64" height="38"/><rect x="158" y="178" width="64" height="38"/>
+  </g>
+  <path d="M 132 197 H 152" fill="none" stroke="#4169E1" stroke-width="1.4" marker-end="url(#arrowB)"/>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="100" y="203">1</text><text x="190" y="203">2</text>
+  </g>
+  <text x="145" y="234" text-anchor="middle" fill="#5c6b76" font-size="12">reversed half</text>
+  <text x="320" y="264" text-anchor="middle" fill="#1a2026" font-size="13">Reversing the second half of [5,4,2,1] into 1 → 2 puts each node under its twin;</text>
+  <text x="320" y="284" text-anchor="middle" fill="#1a2026" font-size="13">one walk reads the sums <tspan fill="#4169E1" font-weight="600">6</tspan> and <tspan fill="#4169E1" font-weight="600">6</tspan>, so the maximum twin sum is <tspan fill="#4169E1" font-weight="600">6</tspan>.</text>
+</svg>

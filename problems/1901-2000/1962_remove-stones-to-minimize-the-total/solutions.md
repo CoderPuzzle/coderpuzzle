@@ -6,6 +6,8 @@ Each operation removes `floor(piles[i] / 2)` stones from one pile, and operation
 
 The solution stores the piles in a max-heap (Python's `heapq` with negated values), pops the maximum, removes half of it, and pushes the remainder back, `k` times. `heapreplace` fuses the pop and push into one sift, keeping each round logarithmic in the heap size.
 
+![On piles = [5,4,9] with k = 2, the max-heap always pops the tallest bar — 9 shrinks to 5, then a 5 shrinks to 3 — leaving [5,4,3] with the minimum total 12.](figures/solution-greedy-max-heap-halving.svg)
+
 One useful early exit: once the maximum pile equals 1, `floor(1 / 2)` removes nothing, so every remaining operation is a no-op and the loop can stop immediately. This matters when `k` is large relative to the total stone count. The final answer is the sum of the heap contents, which is why the early break is safe — all remaining operations would leave the total unchanged.
 
 **Complexity:** `O(n + k log n)` time, `O(n)` space.

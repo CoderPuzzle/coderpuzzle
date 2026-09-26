@@ -6,6 +6,8 @@ Since exactly one seed is worked on per day, the total planting time is fixed at
 
 The only choice is the ordering, and an exchange argument shows it is optimal to plant seeds in decreasing `growTime`: swapping two adjacent seeds where the earlier one has the smaller grow time never delays the later seed's finish and can only improve or keep the earlier one's bloom constraint. Intuitively, seeds that grow slowly must be finished early so their long growth overlaps the planting of the others.
 
+![Planting [1,4,3]/[2,3,1] in decreasing grow order as a back-to-back Gantt gives bloom days 4+3 = 7, 5+2 = 7 and 8+1 = 9, so every seed is blooming by day 9.](figures/solution-grow-desc-gantt.svg)
+
 The solution sorts `(plantTime, growTime)` pairs by descending grow time and folds over them, accumulating `prefix` and tracking `max(prefix + grow)`. Note the answer is the maximum over all seeds, not the last one planted — a long-growing seed finished early can still be the one blooming last. Sorting creates the pairs copy; the sweep itself is a single pass.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

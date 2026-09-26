@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 328" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="328" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- target [5,1,3] -> index {5:0, 1:1, 3:2}; arr [9,4,2,3,4] keeps only 3 -> [2];
+       patience pass: tails = [2] (one pile); answer = 3 - 1 = 2 -->
+  <!-- target row -->
+  <text x="84" y="78" text-anchor="end" font-size="12.5" fill="#5c6b76">target</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="90" y="56" width="50" height="36"/><rect x="140" y="56" width="50" height="36"/><rect x="190" y="56" width="50" height="36"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="115" y="80">5</text><text x="165" y="80">1</text><text x="215" y="80">3</text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#9aa7b2">
+    <text x="115" y="110">0</text><text x="165" y="110">1</text><text x="215" y="110">2</text>
+  </g>
+  <text x="252" y="110" font-size="11" fill="#9aa7b2">(index)</text>
+  <!-- arr row -->
+  <text x="84" y="162" text-anchor="end" font-size="12.5" fill="#5c6b76">arr</text>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3">
+    <rect x="90" y="140" width="50" height="36"/><rect x="140" y="140" width="50" height="36"/>
+    <rect x="190" y="140" width="50" height="36"/><rect x="290" y="140" width="50" height="36"/>
+  </g>
+  <rect x="240" y="140" width="50" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#9aa7b2">
+    <text x="115" y="164">9</text><text x="165" y="164">4</text><text x="215" y="164">2</text>
+    <text x="315" y="164">4</text>
+  </g>
+  <text x="265" y="164" text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">3</text>
+  <g font-size="12" fill="#5c6b76">
+    <text x="360" y="156">9, 4, 2, 4 never appear in</text>
+    <text x="360" y="172">target - dropped, cost 0.</text>
+  </g>
+  <!-- rewrite arrow and kept index -->
+  <line x1="265" y1="180" x2="265" y2="204" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="84" y="232" text-anchor="end" font-size="12.5" fill="#5c6b76">rewritten</text>
+  <rect x="240" y="210" width="50" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="265" y="234" text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">2</text>
+  <text x="265" y="264" text-anchor="middle" font-size="11.5" fill="#5c6b76">the kept indices, in order</text>
+  <!-- patience pile -->
+  <line x1="292" y1="228" x2="388" y2="228" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="428" y="198" text-anchor="middle" font-size="12" fill="#5c6b76">patience piles</text>
+  <rect x="396" y="210" width="64" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="428" y="234" text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">2</text>
+  <text x="472" y="232" font-size="12.5" font-weight="600" fill="#1a2026">tails = [2]</text>
+  <text x="428" y="264" text-anchor="middle" font-size="11.5" fill="#5c6b76">pile 1 (tail 2)</text>
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">The rewrite keeps only 3 (mapped to index 2), so the LIS has one pile: tails = [2];</text>
+  <text x="320" y="314" text-anchor="middle" fill="#1a2026" font-size="13">answer = 3 - 1 = <tspan fill="#4169E1" font-weight="600">2</tspan> insertions (add 5 and 1).</text>
+</svg>

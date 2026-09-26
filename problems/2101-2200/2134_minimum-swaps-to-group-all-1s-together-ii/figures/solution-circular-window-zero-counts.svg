@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 302" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="302" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [0,1,0,1,1,0,0] on a ring, index 0 at top going clockwise; total ones = 3; zero counts per window start s=0..6: 2,1,1,1,2,3,2; the best windows s=1,2,3 hold a single zero -->
+  <text x="46" y="98" fill="#1a2026" font-size="12.5">total ones = <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+  <text x="46" y="118" fill="#5c6b76" font-size="12.5">window length 3</text>
+  <circle cx="330" cy="108" r="62" fill="none" stroke="#9aa7b2" stroke-width="1" stroke-dasharray="3 5"/>
+  <g stroke-width="1.4">
+    <g fill="#ffffff" stroke="#42525e">
+      <rect x="308" y="30" width="44" height="32" rx="6"/>
+      <rect x="281" y="148" width="44" height="32" rx="6"/>
+      <rect x="248" y="106" width="44" height="32" rx="6"/>
+      <rect x="260" y="53" width="44" height="32" rx="6"/>
+    </g>
+    <g fill="#dbe4fb" stroke="#4169E1" stroke-width="2">
+      <rect x="356" y="53" width="44" height="32" rx="6"/>
+      <rect x="368" y="106" width="44" height="32" rx="6"/>
+      <rect x="335" y="148" width="44" height="32" rx="6"/>
+    </g>
+  </g>
+  <g text-anchor="middle">
+    <g font-weight="600" font-size="14" fill="#1a2026">
+      <text x="330" y="45">0</text><text x="378" y="68">1</text><text x="390" y="121">0</text><text x="357" y="163">1</text>
+      <text x="303" y="163">1</text><text x="270" y="121">0</text><text x="282" y="68">0</text>
+    </g>
+    <g font-size="10" fill="#9aa7b2">
+      <text x="330" y="57">idx 0</text><text x="378" y="80">idx 1</text><text x="390" y="133">idx 2</text><text x="357" y="175">idx 3</text>
+      <text x="303" y="175">idx 4</text><text x="270" y="133">idx 5</text><text x="282" y="80">idx 6</text>
+    </g>
+  </g>
+  <text x="330" y="198" text-anchor="middle" fill="#5c6b76" font-size="12">zeros inside each circular window of length 3</text>
+  <g stroke="#42525e" stroke-width="1.2">
+    <g fill="#ffffff">
+      <rect x="103" y="210" width="58" height="42"/><rect x="367" y="210" width="58" height="42"/>
+      <rect x="433" y="210" width="58" height="42"/><rect x="499" y="210" width="58" height="42"/>
+    </g>
+    <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+      <rect x="169" y="210" width="58" height="42"/>
+      <rect x="235" y="210" width="58" height="42"/>
+      <rect x="301" y="210" width="58" height="42"/>
+    </g>
+  </g>
+  <g text-anchor="middle">
+    <g font-size="11" fill="#5c6b76">
+      <text x="132" y="226">s=0</text><text x="198" y="226">s=1</text><text x="264" y="226">s=2</text><text x="330" y="226">s=3</text>
+      <text x="396" y="226">s=4</text><text x="462" y="226">s=5</text><text x="528" y="226">s=6</text>
+    </g>
+    <g font-size="15" font-weight="600" fill="#1a2026">
+      <text x="132" y="245">2</text><text x="396" y="245">2</text><text x="462" y="245">3</text><text x="528" y="245">2</text>
+    </g>
+    <g font-size="15" font-weight="700" fill="#4169E1">
+      <text x="198" y="245">1</text><text x="264" y="245">1</text><text x="330" y="245">1</text>
+    </g>
+  </g>
+  <text x="330" y="276" text-anchor="middle" fill="#1a2026" font-size="13">Each zero inside a window costs one swap — the best windows keep just <tspan fill="#4169E1" font-weight="600">1</tspan> zero,</text>
+  <text x="330" y="294" text-anchor="middle" fill="#1a2026" font-size="13">so the three ones of [0,1,0,1,1,0,0] group with <tspan fill="#4169E1" font-weight="600">1</tspan> swap.</text>
+</svg>

@@ -6,6 +6,8 @@ With up to `10^5` point updates each followed by a global "longest run" query, a
 
 Merging two children is the crux. The parent's prefix is the left child's prefix, extended by the right child's prefix only when the left child is _entirely_ one run (`pref[l] == seg_len[l]`) and the two boundary characters agree; the suffix is handled symmetrically on the right. A run can also straddle the boundary, contributing `suf[l] + pref[r]` when the left child's rightmost character equals the right child's leftmost character, and the parent's `best` is the maximum of the two children's bests and that joined candidate. These fields are exactly enough information to recompute a parent from its two children without ever looking at the underlying string.
 
+![After the queries leave s = bbbbcc, the root [0..5] pulls from bbb (pref 3, suf 3, best 3) and bcc (pref 1, suf 2, best 2); the boundary characters b = b join suf 3 with pref 1 into a run of 4, so the root's best is max(3, 2, 4) = 4.](figures/solution-segment-run-merge.svg)
+
 The tree is built once bottom-up in `O(n)`; each query overwrites one leaf — updating both the tree node and the `chars` array — and then recomputes the `O(log n)` nodes on the path back to the root via `pull`. Reading `best[1]` afterwards costs `O(1)`, so `k` queries cost `k log n`. Leaf nodes hold the trivial summary (a run of length 1), and the `n == 0` guard keeps the build well-defined for an empty string.
 
 **Complexity:** `O(n + k log n)` time, `O(n)` space.

@@ -24,5 +24,7 @@ frequency, sort all `side²` frequencies descending, and sum the largest
 `maxOnes` — the greedy pick is safe since classes contribute
 independently.
 
+![With side 2 the four 2x2 windows of the 3x3 grid each catch exactly one lit cell of the picked residue class (0, 0), which alone covers 2 x 2 = 4 cells — the answer is 4.](figures/solution-residue-class-frequency.svg)
+
 **Complexity:** `O(side² log side)` for the frequency table and sort,
 `O(side²)` space.

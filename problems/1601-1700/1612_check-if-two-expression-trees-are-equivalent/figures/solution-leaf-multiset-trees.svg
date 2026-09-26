@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 430" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="430" fill="#ffffff"/>
+  <!-- example 2: root1 = [-1,0,-1,null,null,1,2] = a + (b + c), root2 = [-1,-1,0,1,2] = (b + c) + a; leaves a=0, b=1, c=2, + = -1; count cells 36x28 -->
+  <g text-anchor="middle" font-weight="600" font-size="13.5" fill="#1a2026">
+    <text x="170" y="40">a + (b + c)</text>
+    <text x="480" y="40">(b + c) + a</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <path d="M 170 88 L 105 168"/><path d="M 170 88 L 235 168"/>
+    <path d="M 235 168 L 170 248"/><path d="M 235 168 L 300 248"/>
+    <path d="M 480 88 L 415 168"/><path d="M 480 88 L 545 168"/>
+    <path d="M 415 168 L 350 248"/><path d="M 415 168 L 480 248"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="170" cy="88" r="18"/><circle cx="235" cy="168" r="18"/>
+    <circle cx="480" cy="88" r="18"/><circle cx="415" cy="168" r="18"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.5">
+    <circle cx="105" cy="168" r="18"/><circle cx="170" cy="248" r="18"/><circle cx="300" cy="248" r="18"/>
+    <circle cx="545" cy="168" r="18"/><circle cx="350" cy="248" r="18"/><circle cx="480" cy="248" r="18"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="170" y="93" font-size="15">+</text><text x="235" y="173" font-size="15">+</text>
+    <text x="480" y="93" font-size="15">+</text><text x="415" y="173" font-size="15">+</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="105" y="167" font-size="13.5">a</text><text x="170" y="247" font-size="13.5">b</text><text x="300" y="247" font-size="13.5">c</text>
+    <text x="545" y="167" font-size="13.5">a</text><text x="350" y="247" font-size="13.5">b</text><text x="480" y="247" font-size="13.5">c</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="9.5">
+    <text x="105" y="180">0</text><text x="170" y="260">1</text><text x="300" y="260">2</text>
+    <text x="545" y="180">0</text><text x="350" y="260">1</text><text x="480" y="260">2</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="170" y="292">leaf counts</text>
+    <text x="480" y="292">leaf counts</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2">
+    <g fill="#f0f3f7">
+      <rect x="98" y="300" width="36" height="28"/><rect x="134" y="300" width="36" height="28"/>
+      <rect x="170" y="300" width="36" height="28"/><rect x="206" y="300" width="36" height="28"/>
+      <rect x="408" y="300" width="36" height="28"/><rect x="444" y="300" width="36" height="28"/>
+      <rect x="480" y="300" width="36" height="28"/><rect x="516" y="300" width="36" height="28"/>
+    </g>
+    <g fill="#ffffff">
+      <rect x="98" y="328" width="36" height="28"/><rect x="134" y="328" width="36" height="28"/>
+      <rect x="170" y="328" width="36" height="28"/><rect x="206" y="328" width="36" height="28"/>
+      <rect x="408" y="328" width="36" height="28"/><rect x="444" y="328" width="36" height="28"/>
+      <rect x="480" y="328" width="36" height="28"/><rect x="516" y="328" width="36" height="28"/>
+    </g>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="116" y="319">a</text><text x="152" y="319">b</text><text x="188" y="319">c</text><text x="224" y="319">⋯</text>
+    <text x="426" y="319">a</text><text x="462" y="319">b</text><text x="498" y="319">c</text><text x="534" y="319">⋯</text>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="700">
+    <text x="116" y="347" fill="#4169E1">1</text><text x="152" y="347" fill="#4169E1">1</text>
+    <text x="188" y="347" fill="#4169E1">1</text><text x="224" y="347" fill="#9aa7b2" font-weight="400">0</text>
+    <text x="426" y="347" fill="#4169E1">1</text><text x="462" y="347" fill="#4169E1">1</text>
+    <text x="498" y="347" fill="#4169E1">1</text><text x="534" y="347" fill="#9aa7b2" font-weight="400">0</text>
+  </g>
+  <text x="325" y="346" text-anchor="middle" fill="#4169E1" font-size="22" font-weight="600">=</text>
+  <text x="320" y="394" text-anchor="middle" fill="#1a2026" font-size="13">Each stack pass counts its leaves: both trees read a:1, b:1, c:1 —</text>
+  <text x="320" y="414" text-anchor="middle" fill="#1a2026" font-size="13">identical multisets, so a + (b + c) and (b + c) + a are equivalent.</text>
+</svg>

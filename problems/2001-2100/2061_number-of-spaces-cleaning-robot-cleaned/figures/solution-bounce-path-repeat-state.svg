@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="372" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- room = [[0,0,0],[1,1,0],[0,0,0]]; cells 70x70 at x = 140+76c, y = 60+76r;
+       cleaned order: (0,0)1 (0,1)2 (0,2)3 (1,2)4 (2,2)5 (2,1)6 (2,0)7;
+       first pass solid at row centers, retrace dashed at y=231; repeat state (2,2,down) -->
+  <text x="251" y="38" text-anchor="middle" fill="#5c6b76" font-size="13">room = [[0,0,0],[1,1,0],[0,0,0]]</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="140" y="60" width="70" height="70"/><rect x="216" y="60" width="70" height="70"/>
+    <rect x="292" y="60" width="70" height="70"/><rect x="292" y="136" width="70" height="70"/>
+    <rect x="140" y="212" width="70" height="70"/><rect x="216" y="212" width="70" height="70"/>
+    <rect x="292" y="212" width="70" height="70"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="140" y="136" width="70" height="70"/><rect x="216" y="136" width="70" height="70"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="3">
+    <line x1="154" y1="150" x2="196" y2="192"/><line x1="196" y1="150" x2="154" y2="192"/>
+    <line x1="230" y1="150" x2="272" y2="192"/><line x1="272" y1="150" x2="230" y2="192"/>
+  </g>
+  <g fill="#4169E1" font-size="11.5" font-weight="600">
+    <text x="151" y="124">1</text><text x="227" y="124">2</text><text x="303" y="124">3</text>
+    <text x="303" y="200">4</text><text x="303" y="276">5</text><text x="227" y="276">6</text>
+    <text x="151" y="276">7</text>
+  </g>
+  <polygon points="163,89 163,101 175,95" fill="#4169E1"/>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 177 95 L 245 95" marker-end="url(#arrow)"/>
+    <path d="M 253 95 L 321 95" marker-end="url(#arrow)"/>
+    <path d="M 323 95 A 4 4 0 0 1 327 99"/>
+    <path d="M 327 103 L 327 165" marker-end="url(#arrow)"/>
+    <path d="M 327 177 L 327 237" marker-end="url(#arrow)"/>
+    <path d="M 327 239 A 8 8 0 0 1 319 247"/>
+    <path d="M 319 247 L 257 247" marker-end="url(#arrow)"/>
+    <path d="M 245 247 L 177 247" marker-end="url(#arrow)"/>
+    <path d="M 175 247 A 8 8 0 0 1 167 239 A 8 8 0 0 1 175 231" marker-end="url(#arrow)"/>
+    <path d="M 319 231 A 8 8 0 0 1 327 239" stroke-dasharray="0" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none" stroke-dasharray="5 4" opacity="0.85">
+    <path d="M 177 231 L 245 231" marker-end="url(#arrow)"/>
+    <path d="M 253 231 L 315 231" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="1.5">
+    <rect x="259" y="292" width="136" height="22" rx="11"/>
+  </g>
+  <text x="327" y="307" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">stop: seen (2,2,down)</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="392" y="60" width="16" height="16"/><rect x="392" y="86" width="16" height="16"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="2">
+    <line x1="396" y1="90" x2="404" y2="98"/><line x1="404" y1="90" x2="396" y2="98"/>
+  </g>
+  <line x1="392" y1="122" x2="410" y2="122" stroke="#4169E1" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <g fill="#5c6b76" font-size="12">
+    <text x="416" y="73">cleaned; numbered by first visit</text>
+    <text x="416" y="99">object</text>
+    <text x="416" y="126">second pass (retrace)</text>
+  </g>
+  <text x="392" y="160" fill="#1a2026" font-size="12.5" font-weight="600">Stop rule &#8212; repeat of (row, col, dir)</text>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="392" y="184">(2,0) up: object at (1,0) &#8594; right</text>
+    <text x="392" y="208">(2,2) right: wall ahead &#8594; down</text>
+    <text x="392" y="232">(2,2, down) again &#8594; <tspan fill="#4169E1" font-weight="600">stop</tspan></text>
+    <text x="392" y="256">cleaned spaces: <tspan fill="#4169E1" font-weight="600">7</tspan></text>
+  </g>
+  <text x="40" y="336" fill="#1a2026" font-size="13">The robot sweeps the top row, right column, and bottom row, turning clockwise</text>
+  <text x="40" y="354" fill="#1a2026" font-size="13">at walls and the (1,0) object; when state (2,2, down) repeats it stops &#8212; <tspan fill="#4169E1" font-weight="600">7</tspan> cleaned.</text>
+</svg>

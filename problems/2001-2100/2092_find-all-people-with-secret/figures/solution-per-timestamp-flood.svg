@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 350" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="350" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- n = 6, meetings [[1,2,5],[2,3,8],[1,5,10]], firstPerson 1; one band per timestamp; light-filled circle = already knows -->
+  <text x="40" y="34" fill="#1a2026" font-size="13">time 0: person 0 shares the secret with firstPerson 1 → informed <tspan fill="#4169E1" font-weight="600">{0, 1}</tspan></text>
+  <!-- t = 5 -->
+  <rect x="40" y="80" width="66" height="30" rx="15" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+  <text x="73" y="100" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">t = 5</text>
+  <line x1="197" y1="96" x2="283" y2="96" stroke="#42525e" stroke-width="1.6"/>
+  <path d="M 185 75 Q 240 51 295 75" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <circle cx="180" cy="96" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="300" cy="96" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="180" y="101" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">1</text>
+  <text x="300" y="101" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">2</text>
+  <text x="180" y="134" text-anchor="middle" font-size="11" fill="#4169E1">knows</text>
+  <text x="300" y="134" text-anchor="middle" font-size="11" fill="#4169E1">new</text>
+  <text x="372" y="92" fill="#5c6b76" font-size="12.5">seed 1 floods the group → add person 2</text>
+  <text x="372" y="114" fill="#1a2026" font-size="13">informed = {0, 1, <tspan fill="#4169E1" font-weight="600">2</tspan>}</text>
+  <!-- t = 8 -->
+  <rect x="40" y="158" width="66" height="30" rx="15" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+  <text x="73" y="178" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">t = 8</text>
+  <line x1="197" y1="174" x2="283" y2="174" stroke="#42525e" stroke-width="1.6"/>
+  <path d="M 185 153 Q 240 129 295 153" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <circle cx="180" cy="174" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="300" cy="174" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="180" y="179" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">2</text>
+  <text x="300" y="179" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">3</text>
+  <text x="180" y="212" text-anchor="middle" font-size="11" fill="#4169E1">knows</text>
+  <text x="300" y="212" text-anchor="middle" font-size="11" fill="#4169E1">new</text>
+  <text x="372" y="170" fill="#5c6b76" font-size="12.5">seed 2 floods the group → add person 3</text>
+  <text x="372" y="192" fill="#1a2026" font-size="13">informed = {0, 1, 2, <tspan fill="#4169E1" font-weight="600">3</tspan>}</text>
+  <!-- t = 10 -->
+  <rect x="40" y="236" width="66" height="30" rx="15" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+  <text x="73" y="256" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">t = 10</text>
+  <line x1="197" y1="252" x2="283" y2="252" stroke="#42525e" stroke-width="1.6"/>
+  <path d="M 185 231 Q 240 207 295 231" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <circle cx="180" cy="252" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="300" cy="252" r="17" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="180" y="257" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">1</text>
+  <text x="300" y="257" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">5</text>
+  <text x="180" y="290" text-anchor="middle" font-size="11" fill="#4169E1">knows</text>
+  <text x="300" y="290" text-anchor="middle" font-size="11" fill="#4169E1">new</text>
+  <text x="372" y="248" fill="#5c6b76" font-size="12.5">seed 1 floods the group → add person 5</text>
+  <text x="372" y="270" fill="#1a2026" font-size="13">informed = {0, 1, 2, 3, <tspan fill="#4169E1" font-weight="600">5</tspan>}</text>
+  <text x="340" y="316" text-anchor="middle" fill="#1a2026" font-size="13">Each moment's component floods from whoever already knows; person 4,</text>
+  <text x="340" y="336" text-anchor="middle" fill="#1a2026" font-size="13">with no meeting, is never reached — final set <tspan fill="#4169E1" font-weight="600">{0, 1, 2, 3, 5}</tspan>.</text>
+</svg>

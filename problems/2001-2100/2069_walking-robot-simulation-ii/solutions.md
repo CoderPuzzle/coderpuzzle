@@ -6,4 +6,6 @@ Number the perimeter cells in travel order, starting at `(0, 0)`, moving east al
 
 One extra flag distinguishes the initial state from a completed lap. Both have perimeter index zero, but the untouched robot faces East while a robot that has moved a positive whole number of laps arrives at `(0, 0)` facing South. All other perimeter indices have a unique arrival direction determined by their edge.
 
+![Example 1's 6x3 grid with the perimeter numbered 0-13 in travel order: the calls' cumulative steps 2, 4, 6, 7, 11 land on index-mapped cells, ending at index 11 = (1, 2) facing West, while index 0 needs the lap flag to separate East from South.](figures/solution-perimeter-index-mod.svg)
+
 **Complexity:** `O(1)` time per operation and `O(1)` space.

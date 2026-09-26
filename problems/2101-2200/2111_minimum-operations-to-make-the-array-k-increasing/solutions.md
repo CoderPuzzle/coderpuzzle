@@ -6,6 +6,8 @@ The constraint `arr[i-k] <= arr[i]` only relates indices that are congruent modu
 
 For a single sequence, the elements left unchanged must already form a non-decreasing subsequence, so the fewest operations keeps a longest non-decreasing subsequence (LNDS) and rewrites everything else: `len(sub) − LNDS(sub)`. Since values can be set to any positive integer, any subsequence can always be completed into a fully non-decreasing sequence. The LNDS is computed with the classic patience trick: maintain the list `tails` of smallest possible tail values per length, and for each value replace the first tail that is strictly greater — `bisect_right` rather than `bisect_left`, which is what allows equal elements to extend the subsequence (non-decreasing, not strictly increasing).
 
+![For arr [4, 1, 5, 2, 6, 2] with k = 3, the strands [4, 2], [1, 6], [5, 2] keep longest non-decreasing subsequences of lengths 1, 2, 1, so only arr[3] and arr[5] are rewritten — 1 + 0 + 1 = 2 operations.](figures/solution-strand-patience-tails.svg)
+
 Each of the `k` classes is processed independently, and slicing `arr[start::k]` plus the binary-search insertion keeps each class at `O(len · log len)`. Summed over all classes the lengths add up to `n`.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

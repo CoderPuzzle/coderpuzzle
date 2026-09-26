@@ -6,6 +6,8 @@ Swapping is transitive in a useful way: if two numbers share a prime factor they
 
 Factorization is made cheap by a linear-pass sieve that precomputes the smallest prime factor `spf[v]` of every `v` up to the sieve bound `M = 100001`; each array element then splits into its distinct primes by repeated division in a handful of steps. A disjoint-set forest with path halving answers the connectivity queries almost constant-time amortized. Note the union-find is indexed by _value_, not position, which automatically shares components between equal or related values appearing at multiple positions.
 
+![Unioning nums = [7, 21, 3] with their prime factors 3 and 7 folds every value into one component {3, 7, 21}, so each position's original value and sorted target — 7 → 3, 21 → 7, 3 → 21 — share it and the array sorts: true.](figures/solution-prime-union-component.svg)
+
 Once components are built, the array can be sorted if and only if, for every position, the original element and the target (sorted) element belong to the same component — each pair would then be exchangeable through some chain of gcd-greater-than-one swaps, and conversely a position whose two values sit in different components is immovable to its required place. Elements equal at a position trivially share a component with themselves.
 
 **Complexity:** `O(M log log M + n log n)` time, `O(M)` space.

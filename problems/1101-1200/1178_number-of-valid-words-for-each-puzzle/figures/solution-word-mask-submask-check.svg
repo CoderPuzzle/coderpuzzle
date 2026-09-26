@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="440" fill="#ffffff"/>
+  <!-- words = ["aaaa","asas","able","ability","actt","actor","access"]; puzzle "aboveyz" = {a,b,o,v,e,y,z} -->
+  <!-- word cells 22x22 at x=150 step 26, rows y=130+36i; muted cells = letters outside the puzzle -->
+  <text x="40" y="60" fill="#1a2026" font-weight="600" font-size="13.5">puzzle "aboveyz"</text>
+  <g stroke-width="1.4">
+    <rect x="183" y="40" width="34" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="223" y="40" width="34" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="263" y="40" width="34" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="303" y="40" width="34" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="343" y="40" width="34" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="383" y="40" width="34" height="30" fill="#ffffff" stroke="#42525e"/>
+    <rect x="423" y="40" width="34" height="30" fill="#ffffff" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">
+    <text x="200" y="60">a</text><text x="240" y="60">b</text><text x="280" y="60">o</text>
+    <text x="320" y="60">v</text><text x="360" y="60">e</text><text x="400" y="60">y</text><text x="440" y="60">z</text>
+  </g>
+  <text x="200" y="88" text-anchor="middle" fill="#4169E1" font-size="11">1st letter</text>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="40" y="118">word</text>
+    <text x="150" y="118">distinct letters</text>
+    <text x="400" y="118" text-anchor="middle">valid?</text>
+  </g>
+  <!-- row 0: aaaa = {a} -->
+  <text x="40" y="146" fill="#1a2026" font-weight="600" font-size="13">aaaa</text>
+  <rect x="150" y="130" width="22" height="22" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="161" y="146" text-anchor="middle" font-size="12" fill="#1a2026">a</text>
+  <text x="400" y="146" text-anchor="middle" font-size="15" fill="#4169E1" font-weight="600">&#10003;</text>
+  <text x="418" y="145" font-size="11.5" fill="#4169E1" font-weight="600">counts[{a}] = 1</text>
+  <!-- row 1: asas = {a, s} -->
+  <text x="40" y="182" fill="#1a2026" font-weight="600" font-size="13">asas</text>
+  <rect x="150" y="166" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="161" y="182" text-anchor="middle" font-size="12" fill="#1a2026">a</text>
+  <rect x="176" y="166" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="187" y="182" text-anchor="middle" font-size="12" fill="#9aa7b2">s</text>
+  <text x="400" y="182" text-anchor="middle" font-size="15" fill="#9aa7b2">&#10007;</text>
+  <text x="418" y="181" font-size="11.5" fill="#9aa7b2">'s' &#8713; puzzle</text>
+  <!-- row 2: able = {a, b, l, e} -->
+  <text x="40" y="218" fill="#1a2026" font-weight="600" font-size="13">able</text>
+  <rect x="150" y="202" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="161" y="218" text-anchor="middle" font-size="12" fill="#1a2026">a</text>
+  <rect x="176" y="202" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="187" y="218" text-anchor="middle" font-size="12" fill="#1a2026">b</text>
+  <rect x="202" y="202" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="213" y="218" text-anchor="middle" font-size="12" fill="#9aa7b2">l</text>
+  <rect x="228" y="202" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="239" y="218" text-anchor="middle" font-size="12" fill="#1a2026">e</text>
+  <text x="400" y="218" text-anchor="middle" font-size="15" fill="#9aa7b2">&#10007;</text>
+  <text x="418" y="217" font-size="11.5" fill="#9aa7b2">'l' &#8713; puzzle</text>
+  <!-- row 3: ability = {a, b, i, l, t, y} -->
+  <text x="40" y="254" fill="#1a2026" font-weight="600" font-size="13">ability</text>
+  <rect x="150" y="238" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="161" y="254" text-anchor="middle" font-size="12" fill="#1a2026">a</text>
+  <rect x="176" y="238" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="187" y="254" text-anchor="middle" font-size="12" fill="#1a2026">b</text>
+  <rect x="202" y="238" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="213" y="254" text-anchor="middle" font-size="12" fill="#9aa7b2">i</text>
+  <rect x="228" y="238" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="239" y="254" text-anchor="middle" font-size="12" fill="#9aa7b2">l</text>
+  <rect x="254" y="238" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="265" y="254" text-anchor="middle" font-size="12" fill="#9aa7b2">t</text>
+  <rect x="280" y="238" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="291" y="254" text-anchor="middle" font-size="12" fill="#1a2026">y</text>
+  <text x="400" y="254" text-anchor="middle" font-size="15" fill="#9aa7b2">&#10007;</text>
+  <text x="418" y="253" font-size="11.5" fill="#9aa7b2">'i', 'l', 't' &#8713; puzzle</text>
+  <!-- row 4: actt = {a, c, t} -->
+  <text x="40" y="290" fill="#1a2026" font-weight="600" font-size="13">actt</text>
+  <rect x="150" y="274" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="161" y="290" text-anchor="middle" font-size="12" fill="#1a2026">a</text>
+  <rect x="176" y="274" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="187" y="290" text-anchor="middle" font-size="12" fill="#9aa7b2">c</text>
+  <rect x="202" y="274" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="213" y="290" text-anchor="middle" font-size="12" fill="#9aa7b2">t</text>
+  <text x="400" y="290" text-anchor="middle" font-size="15" fill="#9aa7b2">&#10007;</text>
+  <text x="418" y="289" font-size="11.5" fill="#9aa7b2">'c', 't' &#8713; puzzle</text>
+  <!-- row 5: actor = {a, c, t, o, r} -->
+  <text x="40" y="326" fill="#1a2026" font-weight="600" font-size="13">actor</text>
+  <rect x="150" y="310" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="161" y="326" text-anchor="middle" font-size="12" fill="#1a2026">a</text>
+  <rect x="176" y="310" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="187" y="326" text-anchor="middle" font-size="12" fill="#9aa7b2">c</text>
+  <rect x="202" y="310" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="213" y="326" text-anchor="middle" font-size="12" fill="#9aa7b2">t</text>
+  <rect x="228" y="310" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="239" y="326" text-anchor="middle" font-size="12" fill="#1a2026">o</text>
+  <rect x="254" y="310" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="265" y="326" text-anchor="middle" font-size="12" fill="#9aa7b2">r</text>
+  <text x="400" y="326" text-anchor="middle" font-size="15" fill="#9aa7b2">&#10007;</text>
+  <text x="418" y="325" font-size="11.5" fill="#9aa7b2">'c', 't', 'r' &#8713; puzzle</text>
+  <!-- row 6: access = {a, c, e, s} -->
+  <text x="40" y="362" fill="#1a2026" font-weight="600" font-size="13">access</text>
+  <rect x="150" y="346" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="161" y="362" text-anchor="middle" font-size="12" fill="#1a2026">a</text>
+  <rect x="176" y="346" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="187" y="362" text-anchor="middle" font-size="12" fill="#9aa7b2">c</text>
+  <rect x="202" y="346" width="22" height="22" fill="#ffffff" stroke="#42525e"/>
+  <text x="213" y="362" text-anchor="middle" font-size="12" fill="#1a2026">e</text>
+  <rect x="228" y="346" width="22" height="22" fill="#f0f3f7" stroke="#9aa7b2"/>
+  <text x="239" y="362" text-anchor="middle" font-size="12" fill="#9aa7b2">s</text>
+  <text x="400" y="362" text-anchor="middle" font-size="15" fill="#9aa7b2">&#10007;</text>
+  <text x="418" y="361" font-size="11.5" fill="#9aa7b2">'c', 's' &#8713; puzzle</text>
+  <text x="320" y="402" text-anchor="middle" fill="#1a2026" font-size="13">Each word's letter mask must be a submask of {a, b, o, v, e, y, z} containing 'a':</text>
+  <text x="320" y="422" text-anchor="middle" fill="#1a2026" font-size="13">only "aaaa" qualifies, so the answer for "aboveyz" is counts[{a}] = <tspan fill="#4169E1" font-weight="600">1</tspan>.</text>
+</svg>

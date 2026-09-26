@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <!-- grid = [[0,1,1,0],[1,1,1,1]]; cells 52x44 at (50,88); plot A apex (0,1) solid, plot B apex (0,2) dashed -->
+  <text x="154" y="52" text-anchor="middle" fill="#5c6b76" font-size="12.5">grid</text>
+  <g fill="#f0f3f7" stroke="#42525e" stroke-width="1.4">
+    <rect x="50" y="88" width="52" height="44"/><rect x="206" y="88" width="52" height="44"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="102" y="88" width="52" height="44"/><rect x="154" y="88" width="52" height="44"/>
+    <rect x="50" y="132" width="52" height="44"/><rect x="102" y="132" width="52" height="44"/>
+    <rect x="154" y="132" width="52" height="44"/><rect x="206" y="132" width="52" height="44"/>
+  </g>
+  <g text-anchor="middle" font-size="15" fill="#1a2026">
+    <text x="76" y="115">0</text><text x="128" y="115">1</text><text x="180" y="115">1</text><text x="232" y="115">0</text>
+    <text x="76" y="159">1</text><text x="128" y="159">1</text><text x="180" y="159">1</text><text x="232" y="159">1</text>
+  </g>
+  <path d="M 102 88 H 154 V 132 H 206 V 176 H 50 V 132 H 102 Z" fill="none" stroke="#4169E1" stroke-width="2.4"/>
+  <path d="M 154 88 H 206 V 132 H 258 V 176 H 102 V 132 H 154 Z" fill="none" stroke="#4169E1" stroke-width="2.4" stroke-dasharray="6 4"/>
+  <circle cx="128" cy="74" r="10" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="128" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2026">A</text>
+  <circle cx="180" cy="74" r="10" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="180" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2026">B</text>
+  <text x="154" y="198" text-anchor="middle" fill="#5c6b76" font-size="12">A and B: the two plots</text>
+  <!-- pyramid dp table: row0 = [0,2,2,0], row1 = [1,1,1,1]; cells 42x36 at (416,72) -->
+  <text x="500" y="60" text-anchor="middle" fill="#5c6b76" font-size="12.5">pyramid dp, base → apex</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="416" y="72" width="42" height="36"/><rect x="458" y="72" width="42" height="36"/>
+    <rect x="500" y="72" width="42" height="36"/><rect x="542" y="72" width="42" height="36"/>
+    <rect x="416" y="108" width="42" height="36"/><rect x="458" y="108" width="42" height="36"/>
+    <rect x="500" y="108" width="42" height="36"/><rect x="542" y="108" width="42" height="36"/>
+  </g>
+  <g text-anchor="middle" font-size="15">
+    <text x="437" y="96" fill="#1a2026">0</text>
+    <text x="479" y="96" fill="#4169E1" font-weight="600">2</text>
+    <text x="521" y="96" fill="#4169E1" font-weight="600">2</text>
+    <text x="563" y="96" fill="#1a2026">0</text>
+    <text x="437" y="132" fill="#9aa7b2">1</text><text x="479" y="132" fill="#9aa7b2">1</text>
+    <text x="521" y="132" fill="#9aa7b2">1</text><text x="563" y="132" fill="#9aa7b2">1</text>
+  </g>
+  <text x="500" y="168" text-anchor="middle" fill="#5c6b76" font-size="12.5">1 + min(dp below-left, dp below-right)</text>
+  <text x="500" y="192" text-anchor="middle" fill="#1a2026" font-size="13">apex (0,1): 1 + min(1, 1) = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <text x="500" y="218" text-anchor="middle" fill="#5c6b76" font-size="12.5">inverse pass (top → bottom):</text>
+  <text x="500" y="240" text-anchor="middle" fill="#1a2026" font-size="13">every inverse height is 1 here → 0 plots</text>
+  <text x="340" y="292" text-anchor="middle" fill="#1a2026" font-size="13">Each apex of height h contributes h - 1 plots: the two 2s give 2,</text>
+  <text x="340" y="314" text-anchor="middle" fill="#1a2026" font-size="13">all other cells have height 1 — the answer is 2 + 0 = <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

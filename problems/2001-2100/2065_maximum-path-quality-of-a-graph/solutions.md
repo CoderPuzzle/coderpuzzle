@@ -9,6 +9,8 @@ to one, recurse, and restore the count while backtracking. Every time the walk
 returns to node `0`, its current unique-node quality is a valid candidate,
 including the initial zero-edge path.
 
+![For values = [0,32,10,43] with maxTime 49, the backtracking walk 0 → 1 → 0 → 3 → 0 spends 10+10+10+10 = 40 of the 49 seconds, records quality 32 at its first return and 0 + 32 + 43 = 75 at its last, and 75 is the best candidate because node 2 (value 10) cannot be visited and return within the budget.](figures/solution-bounded-walk-backtrack.svg)
+
 Every edge costs at least 10 seconds and every node has degree at most four, so
 the recursion has depth at most `maxTime / 10` and branching factor at most
 four. Repeated nodes remain available because only elapsed time bounds a walk;

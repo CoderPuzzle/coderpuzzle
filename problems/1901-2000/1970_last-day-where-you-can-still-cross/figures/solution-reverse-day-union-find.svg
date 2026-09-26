@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- row=2, col=2, cells = [[1,1],[2,1],[1,2],[2,2]]; walking days 4 -> 1:
+       step 1 un-floods cells[3] = (2,2) (bottom shore), top != bottom;
+       step 2 un-floods cells[2] = (1,2) (top shore), which unions with the
+       bottom-rooted (2,2): top = bottom at the day-2 state -> answer 2 -->
+  <!-- step 1: (2,2) returns -->
+  <text x="170" y="26" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">step 1 — cells[3] = (2,2) returns</text>
+  <rect x="126" y="40" width="88" height="26" fill="#f0f3f7" stroke="#5c6b76" stroke-width="1.2"/>
+  <text x="170" y="57" text-anchor="middle" fill="#5c6b76" font-size="12">top shore</text>
+  <rect x="126" y="86" width="44" height="44" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="170" y="86" width="44" height="44" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="126" y="130" width="44" height="44" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="170" y="130" width="44" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <g text-anchor="middle" font-size="10">
+    <text x="148" y="112" fill="#9aa7b2">1,1</text>
+    <text x="192" y="112" fill="#9aa7b2">1,2</text>
+    <text x="148" y="156" fill="#9aa7b2">2,1</text>
+    <text x="192" y="156" fill="#1a2026">2,2</text>
+  </g>
+  <rect x="126" y="194" width="88" height="26" fill="#f0f3f7" stroke="#5c6b76" stroke-width="1.2"/>
+  <text x="170" y="211" text-anchor="middle" fill="#5c6b76" font-size="12">bottom shore</text>
+  <path d="M 192 176 L 192 190" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="170" y="248" text-anchor="middle" fill="#1a2026" font-size="12.5">day-4 cell reappears and joins the</text>
+  <text x="170" y="266" text-anchor="middle" fill="#1a2026" font-size="12.5">bottom shore — top ≠ bottom</text>
+  <!-- step 2: (1,2) returns and welds -->
+  <text x="510" y="26" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">step 2 — cells[2] = (1,2) returns</text>
+  <rect x="466" y="40" width="88" height="26" fill="#f0f3f7" stroke="#5c6b76" stroke-width="1.2"/>
+  <text x="510" y="57" text-anchor="middle" fill="#5c6b76" font-size="12">top shore</text>
+  <rect x="466" y="86" width="44" height="44" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="510" y="86" width="44" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="466" y="130" width="44" height="44" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="510" y="130" width="44" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <g text-anchor="middle" font-size="10">
+    <text x="488" y="112" fill="#9aa7b2">1,1</text>
+    <text x="532" y="112" fill="#1a2026">1,2</text>
+    <text x="488" y="156" fill="#9aa7b2">2,1</text>
+    <text x="532" y="156" fill="#1a2026">2,2</text>
+  </g>
+  <line x1="510" y1="130" x2="554" y2="130" stroke="#4169E1" stroke-width="3"/>
+  <text x="564" y="135" fill="#4169E1" font-size="13" font-weight="600">∪</text>
+  <rect x="466" y="194" width="88" height="26" fill="#f0f3f7" stroke="#5c6b76" stroke-width="1.2"/>
+  <text x="510" y="211" text-anchor="middle" fill="#5c6b76" font-size="12">bottom shore</text>
+  <path d="M 532 84 L 532 68" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 532 176 L 532 190" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="510" y="248" text-anchor="middle" fill="#1a2026" font-size="12.5">day-3 cell reappears, joins the top</text>
+  <text x="510" y="266" text-anchor="middle" fill="#1a2026" font-size="12.5">shore and welds to (2,2) — top = bottom</text>
+  <text x="340" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Reading cells backwards, land returns one cell per step; the step that first reconnects</text>
+  <text x="340" y="320" text-anchor="middle" fill="#1a2026" font-size="13">the two shores restores the <tspan fill="#4169E1" font-weight="600">day-2</tspan> grid, so <tspan fill="#4169E1" font-weight="600">2</tspan> is the last crossable day.</text>
+</svg>
