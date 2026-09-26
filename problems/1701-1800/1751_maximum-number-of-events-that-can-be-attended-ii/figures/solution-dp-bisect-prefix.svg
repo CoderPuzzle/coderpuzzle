@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="296" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- events [[1,2,4],[3,4,3],[2,3,1]], k=2, sorted by end day; day columns 90px from x=150;
+       interval bars 180x30 at rows y=78/122/166; compatible-prefix band spans x 150-330 -->
+  <text x="20" y="30" fill="#5c6b76" font-size="12.5">events sorted by end day — [1,2,4], [2,3,1], [3,4,3] — k = 2</text>
+  <text x="240" y="66" text-anchor="middle" fill="#5c6b76" font-size="12">compatible prefix: end day &lt; start day 3 (bisect_left(ends, 3) = 1)</text>
+  <rect x="150" y="74" width="180" height="126" fill="#dbe4fb" opacity="0.4"/>
+  <g stroke="#42525e" stroke-width="1.4" fill="#f0f3f7">
+    <rect x="240" y="122" width="180" height="30"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="#ffffff">
+    <rect x="150" y="78" width="180" height="30"/>
+    <rect x="330" y="166" width="180" height="30"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="240" y="98" fill="#1a2026">4</text>
+    <text x="330" y="142" fill="#9aa7b2" font-weight="400">1</text>
+    <text x="420" y="186" fill="#1a2026">3</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="140" y="98">sorted 0: [1,2] v4</text>
+    <text x="140" y="142">sorted 1: [2,3] v1</text>
+    <text x="140" y="186">sorted 2: [3,4] v3</text>
+  </g>
+  <path d="M 336 163 C 240 166 190 152 190 110" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- day axis -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="150" y1="206" x2="510" y2="206"/>
+    <line x1="150" y1="202" x2="150" y2="210"/><line x1="240" y1="202" x2="240" y2="210"/>
+    <line x1="330" y1="202" x2="330" y2="210"/><line x1="420" y1="202" x2="420" y2="210"/>
+    <line x1="510" y1="202" x2="510" y2="210"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="195" y="224">1</text><text x="285" y="224">2</text><text x="375" y="224">3</text><text x="465" y="224">4</text>
+    <text x="140" y="224">day</text>
+  </g>
+  <text x="330" y="256" text-anchor="middle" fill="#1a2026" font-size="13">Sorted by end day, the k = 2 sweep takes [3,4] on its compatible prefix {[1,2]}:</text>
+  <text x="330" y="276" text-anchor="middle" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">3 + 4 = 7</tspan>; using [2,3] reaches just 1 — [1,2] ends the day it starts — answer 7.</text>
+</svg>

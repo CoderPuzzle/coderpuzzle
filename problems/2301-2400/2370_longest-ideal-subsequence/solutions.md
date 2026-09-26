@@ -18,6 +18,8 @@ so the window scan plus one already covers length-1 chains). The window is
 at most `2k + 1 <= 51` letters wide, making each step constant time. The
 answer is the largest entry after the scan.
 
+![Example 1's best[26] table for s = "acfgbd" with k = 2: each row is the per-letter maxima after reading one character, and the last character 'd' reads its ±2 window b..f, takes max(best[b..f]) = 3, and extends it to best[d] = 4, the answer.](figures/solution-alphabet-window-dp.svg)
+
 The alphabet is deliberately non-cyclic: the window clamps at `'a'` and
 `'z'` rather than wrapping, exactly matching the note in the statement.
 

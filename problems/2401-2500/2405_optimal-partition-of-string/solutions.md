@@ -12,6 +12,8 @@ substring, so a single integer bitmask over `'a'..'z'` tracks the current
 substring's letters — set bit `c - 'a'` on absorption, reset everything on
 a restart.
 
+![On s = "abacaba" the greedy scan boxes the string as [ab][ac][ab][a]: each accent-filled cell is the second a of its part, already present in the open substring, so it forces the cut — 4 parts, the minimum.](figures/solution-greedy-cut-boxes.svg)
+
 Extending every substring as far as possible is optimal by an exchange
 argument: consider any partition and the greedy's first cut position.
 Greedy cuts no earlier than any other partition does (its first substring
