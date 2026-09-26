@@ -11,6 +11,8 @@ second mismatch. Every compatible `j < i` offers `dp[j] + 1`, and `dp[i]`
 takes the best offer. Because `j < i`, filling `dp` in index order never
 depends on an unfinished value.
 
+![On example 1's words bab, dab, cab with groups [1, 2, 2], all three pairs are one hamming letter apart but the same-group pair dab–cab is blocked, so dp fills [1, 2, 2] with prev pointers 0, 0 and the backtrace from index 2 returns bab → cab.](figures/solution-dp-predecessor-edges.svg)
+
 Ties are broken deterministically so exactly one answer is produced out of
 the many the statement permits: predecessors are scanned from `i - 1`
 downward and `dp[i]` only updates on a strict improvement, so `prev[i]`

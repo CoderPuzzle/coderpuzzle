@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 318" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="318" fill="#ffffff"/>
+  <!-- nums = [5,1,4,1], indexDifference = 2, valueDifference = 4; cells 80x40 at x=150+80k, y=46 -->
+  <!-- j=0,1 window empty; j=2 window {0}: min/max idx 0 (5), |5-4|=1; j=3 window {0,1}: min idx 1, max idx 0, |5-1|=4 >= 4 -> [0,3] -->
+  <text x="140" y="71" text-anchor="end" fill="#5c6b76" font-size="12.5">nums</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="150" y="46" width="80" height="40"/><rect x="230" y="46" width="80" height="40"/>
+    <rect x="310" y="46" width="80" height="40"/><rect x="390" y="46" width="80" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="190" y="71">5</text><text x="270" y="71">1</text><text x="350" y="71">4</text><text x="430" y="71">1</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="190" y="102">0</text><text x="270" y="102">1</text><text x="350" y="102">2</text><text x="430" y="102">3</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="140" y="132">j = 0</text>
+    <text x="140" y="162">j = 1</text>
+    <text x="140" y="192">j = 2</text>
+    <text x="140" y="234">j = 3</text>
+  </g>
+  <g fill="#9aa7b2" font-size="12.5">
+    <text x="150" y="132">window empty — skip</text>
+    <text x="150" y="162">window empty — skip</text>
+  </g>
+  <rect x="150" y="178" width="80" height="20" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+  <text x="250" y="192" fill="#1a2026" font-size="12.5">t ≤ 0: min → 0 (5), max → 0 (5) — |5 − 4| = 1 &lt; 4</text>
+  <rect x="150" y="216" width="160" height="20" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="330" y="226" fill="#1a2026" font-size="12.5">t ≤ 1: min → 1 (1), max → 0 (5) — |1 − 1| = 0 &lt; 4,</text>
+  <text x="330" y="246" fill="#4169E1" font-size="12.5" font-weight="600">but |5 − 1| = 4 ≥ 4 → answer [0, 3]</text>
+  <text x="340" y="284" text-anchor="middle" fill="#1a2026" font-size="13">Each t joins the window once t ≤ j − 2; only the window min or max can reach</text>
+  <text x="340" y="304" text-anchor="middle" fill="#1a2026" font-size="13">valueDifference — at j = 3 the max, nums[0] = 5, sits exactly <tspan fill="#4169E1" font-weight="600">4</tspan> from nums[3] = 1.</text>
+</svg>

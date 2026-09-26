@@ -16,6 +16,8 @@ any later cut with exactly `k` ones is strictly longer. If the scan falls off
 the right end first, fewer than `k` ones remain from `i` and no beautiful
 substring starts there.
 
+![On example 1's s = "100011001" with k = 3, each start's window grows until it first holds three ones — 100011 (len 6), 00011001 (8), 0011001 (7), 011001 (6, which displaces 100011 lexicographically), and start 4's 11001 (len 5), the shortest and lexicographically smallest beautiful substring.](figures/solution-per-start-window-extension.svg)
+
 Every candidate found this way is compared against the best so far: shorter
 wins outright, and among equal lengths the lexicographically smaller string
 wins, which is exactly the ordering the statement defines. At most `n` starts

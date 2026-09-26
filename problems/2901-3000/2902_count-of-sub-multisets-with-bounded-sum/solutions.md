@@ -21,6 +21,8 @@ case: it changes no sum and simply multiplies every current count by
 `c + 1`. Values above `r` are skipped (their sums can never land in
 `[l, r]`), and the answer is the range sum `dp[l] + ... + dp[r]`.
 
+![On example 2's nums [2, 1, 4, 2, 7] with l = 1, r = 5, each distinct value refills the dp row over sums 0..5 from fixed windows into the previous row — the value-2 pass with c = 2 reads the three cells dp[x-4], dp[x-2], dp[x] — and after the value-4 pass, with value 7 skipped, the in-range cells hold 1+1+1+2+2 = 7.](figures/solution-bounded-knapsack-window.svg)
+
 The number of passes is the number of distinct values: since every
 distinct positive value contributes at least 1 to the sum and the sum is
 at most `2 * 10⁴`, there are at most about 200 of them, so the work is

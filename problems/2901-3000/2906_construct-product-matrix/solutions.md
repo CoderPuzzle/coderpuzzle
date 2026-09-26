@@ -25,6 +25,8 @@ intermediate product is below `12345²` — comfortably inside signed 32-bit
 range (and trivially exact in JavaScript doubles), so no 64-bit
 arithmetic is needed anywhere.
 
+![On example 1's grid [[1, 2], [3, 4]], the row-major flat [1, 2, 3, 4] gets prefix [1, 1, 2, 6] and suffix [24, 24, 12, 4] with the empty-product seed 1, and each answer cell is prefix[k] · suffix[k+1] with no division: 1·24 = 24, 1·12 = 12, 2·4 = 8, 6·1 = 6 → [[24, 12], [8, 6]].](figures/solution-prefix-suffix-flat-products.svg)
+
 Every cell is touched a constant number of times — once when flattening,
 once in each of the two product passes, once when writing the answer — and
 the prefix, suffix, and output arrays are each one pass long, so the cost

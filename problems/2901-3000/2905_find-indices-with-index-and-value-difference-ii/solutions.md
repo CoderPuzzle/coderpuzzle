@@ -13,6 +13,8 @@ reaches `valueDifference` away from `nums[j]`, `[extreme index, j]` is the
 answer; if the loop finishes with no qualifying `j`, no pair exists and
 `[-1, -1]` is returned.
 
+![On example 1's nums [5, 1, 4, 1] with indexDifference 2 and valueDifference 4, the window of indices at least 2 behind each j is empty for j = 0, 1, then grows over {0} and {0, 1} with running min index 1 and max index 0, until at j = 3 the max nums[0] = 5 sits exactly 4 from nums[3] = 1 and answers [0, 3].](figures/solution-prefix-minmax-window-scan.svg)
+
 The statement allows many valid answers, so the pass pins one
 deterministically: the minimum candidate is tested before the maximum, and
 on equal values the earlier index is kept. When `indexDifference` is `0`,
