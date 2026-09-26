@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 390" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="390" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- pad cells 84x62 at (44,64); hop lists 0:4,6 1:6,8 2:7,9 3:4,8 4:0,3,9 5:none 6:0,1,7 7:2,6 8:1,3 9:2,4;
+       count rows by digit 0-9: n=1 all 1, n=2 [2,2,2,2,3,0,3,2,2,2] summing to 20 -->
+  <text x="170" y="46" text-anchor="middle" fill="#5c6b76" font-size="12.5">knight hops, both directions</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="44" y="64" width="84" height="62"/><rect x="128" y="64" width="84" height="62"/><rect x="212" y="64" width="84" height="62"/>
+    <rect x="44" y="126" width="84" height="62"/><rect x="212" y="126" width="84" height="62"/>
+    <rect x="44" y="188" width="84" height="62"/><rect x="128" y="188" width="84" height="62"/><rect x="212" y="188" width="84" height="62"/>
+    <rect x="44" y="250" width="84" height="62"/><rect x="128" y="250" width="84" height="62"/><rect x="212" y="250" width="84" height="62"/>
+  </g>
+  <rect x="128" y="126" width="84" height="62" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="86" y="100">1</text><text x="170" y="100">2</text><text x="254" y="100">3</text>
+    <text x="86" y="162">4</text><text x="254" y="162">6</text>
+    <text x="86" y="224">7</text><text x="170" y="224">8</text><text x="254" y="224">9</text>
+  </g>
+  <text x="170" y="162" text-anchor="middle" font-weight="600" fill="#9aa7b2">5</text>
+  <text x="170" y="286" text-anchor="middle" font-weight="600">0</text>
+  <g text-anchor="middle" fill="#9aa7b2">
+    <text x="86" y="286">*</text><text x="254" y="286">#</text>
+  </g>
+  <!-- 10 knight-hop edges, double-headed, trimmed 19px short of each digit -->
+  <g fill="none" stroke="#4169E1" stroke-width="1.4" marker-start="url(#arrow)" marker-end="url(#arrow)">
+    <path d="M 103.8 101.6 L 236.2 150.4"/>
+    <path d="M 236.2 101.6 L 103.8 150.4"/>
+    <path d="M 96.7 110.7 L 159.3 203.3"/>
+    <path d="M 159.3 110.7 L 96.7 203.3"/>
+    <path d="M 180.7 110.7 L 243.3 203.3"/>
+    <path d="M 243.3 110.7 L 180.7 203.3"/>
+    <path d="M 103.8 163.6 L 236.2 212.4"/>
+    <path d="M 236.2 163.6 L 103.8 212.4"/>
+    <path d="M 96.7 172.7 L 159.3 265.3"/>
+    <path d="M 243.3 172.7 L 180.7 265.3"/>
+  </g>
+  <!-- count rows by digit 0-9 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="353" y="140">0</text><text x="379" y="140">1</text><text x="405" y="140">2</text><text x="431" y="140">3</text><text x="457" y="140">4</text><text x="483" y="140" fill="#9aa7b2">5</text><text x="509" y="140">6</text><text x="535" y="140">7</text><text x="561" y="140">8</text><text x="587" y="140">9</text>
+  </g>
+  <text x="332" y="168" text-anchor="end" fill="#5c6b76" font-size="12.5">n=1</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="13.5">
+    <text x="353" y="168">1</text><text x="379" y="168">1</text><text x="405" y="168">1</text><text x="431" y="168">1</text><text x="457" y="168">1</text><text x="483" y="168">1</text><text x="509" y="168">1</text><text x="535" y="168">1</text><text x="561" y="168">1</text><text x="587" y="168">1</text>
+  </g>
+  <text x="332" y="196" text-anchor="end" fill="#5c6b76" font-size="12.5">n=2</text>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="353" y="196">2</text><text x="379" y="196">2</text><text x="405" y="196">2</text><text x="431" y="196">2</text><text x="457" y="196" fill="#4169E1">3</text><text x="483" y="196" fill="#9aa7b2">0</text><text x="509" y="196" fill="#4169E1">3</text><text x="535" y="196">2</text><text x="561" y="196">2</text><text x="587" y="196">2</text>
+  </g>
+  <text x="470" y="224" text-anchor="middle" fill="#1a2026" font-size="13">sum = <tspan fill="#4169E1" font-weight="600">20</tspan></text>
+  <text x="320" y="352" text-anchor="middle" fill="#1a2026" font-size="13">One pass: each digit collects a 1 per knight-neighbor — the new row sums to <tspan fill="#4169E1" font-weight="600">20</tspan>.</text>
+  <text x="320" y="370" text-anchor="middle" fill="#1a2026" font-size="13">Digit 5 has no knight-neighbor: its count dies, 1 → 0.</text>
+</svg>

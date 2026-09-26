@@ -10,6 +10,8 @@ therefore reduces to pairing: put every point into a hash set, treat every
 pair of points as a candidate diagonal, and let two O(1) membership tests
 decide whether the rectangle actually exists.
 
+![On example 2's points, the diagonal pair (3,3)-(4,1) needs only the two hash lookups (3,1) and (4,3) — both hit — to force the winning area-2 rectangle beside the larger area-4 rival on x = 1..3.](figures/solution-diagonal-pair-lookups.svg)
+
 The scan enumerates each unordered pair once — the inner index runs past
 the outer one. A pair sharing an x or a y is skipped on the spot, since it
 would collapse the rectangle into a segment, which is no rectangle at all;

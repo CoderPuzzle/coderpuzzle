@@ -13,6 +13,8 @@ second copy of `v` — the duplicate records the plateau the optimal solution
 settles on. The accumulated payments are exactly the minimum cost of a
 non-decreasing reshaping.
 
+![On nums = [3, 2, 4, 5, 0] the non-decreasing sweep pays 3-2 = 1 when v = 2 arrives and 5-0 = 5 when v = 0 arrives, for a cost of 6, while the negated sweep on [-3, -2, -4, -5, 0] pays 2 when v = -4 arrives and 2 when v = -5 arrives, so min(6, 4) = 4.](figures/solution-slope-trick-heap-sweep.svg)
+
 Running the same procedure on the negated array measures the best
 non-increasing cost, since decreasing order over negated values is increasing
 order over the originals. The answer is the smaller of the two sweeps.

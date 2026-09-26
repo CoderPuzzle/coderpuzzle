@@ -19,6 +19,8 @@ cascades into `0 + 1 + ... + (k - 1)` moves, each copy climbing one step over
 the one beneath it — the all-equal case is exactly this quadratic, and the
 worst of it lands on the constraint bound.
 
+![Sorting [3,2,1,2,1,7] to [1,1,2,2,3,7], the sweep lifts each duplicate to prev + 1 into finals [1,2,3,4,5,7], spending 0+1+1+2+2+0 = 6 moves.](figures/solution-sort-sweep-lifts.svg)
+
 Example 2 sorts `[3,2,1,2,1,7]` into `[1,1,2,2,3,7]`, and the sweep hands out
 finals `[1,2,3,4,5,7]` for `1+1+2+2+0 = 6` moves — the statement's
 `[3,4,1,2,5,7]` up to order. That total can reach roughly `n²/2`, about

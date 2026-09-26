@@ -19,6 +19,8 @@ demand later. After `n` steps the two counters have met at the one unplaced
 value, which fills the final slot — the output uses each of `0..n` exactly
 once and matches `s` by construction.
 
+![On s = "IDID", lo and hi start at 0 and 4 and march inward — each I spends the low extreme, each D the high — filling [0,4,1,3] until the pointers meet at the leftover 2, giving perm = [0,4,1,3,2].](figures/solution-lo-hi-march.svg)
+
 The pass touches each character once and appends one element per step into a
 preallocated-per-language array, so beyond the output itself only the two
 counters survive.

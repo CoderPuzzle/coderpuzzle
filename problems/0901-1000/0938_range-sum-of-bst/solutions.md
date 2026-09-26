@@ -11,6 +11,8 @@ and either of its subtrees may still hold hits, so both go on visiting. That
 one three-way rule, applied from the root down, visits exactly the nodes that
 can matter and sums the in-window ones.
 
+![On the [10,5,15,3,7,null,18] tree with window [7,15], the pruned stack walk pops 10 (+10), 5 (left cut), 7 (+7), 15 (+15), and 18 (right cut), so the counted nodes 7 + 10 + 15 sum to 32.](figures/solution-pruned-stack-walk.svg)
+
 The walk carries an explicit stack. Each pop applies the rule: a node below
 `low` pushes only its right child, a node above `high` only its left child,
 an in-window node adds its value and pushes both children. Nothing pruned is

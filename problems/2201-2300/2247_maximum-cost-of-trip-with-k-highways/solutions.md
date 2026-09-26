@@ -6,6 +6,8 @@ A trip crossing exactly `k` highways is a simple path through exactly `k + 1` di
 
 Transitions extend a path by one highway at a time: from `(mask, v)` move to any neighbour `u` with `u` not in `mask`, giving `dp[mask | 1 << u][u] = max(..., cur + toll)`. Iterating masks in increasing numeric order is automatically topological, because a transition only ever adds bits and thus moves strictly upward. Two prunes keep the sweep tight: masks with more than `k + 1` bits are skipped, and states that already hold exactly `k + 1` cities are final, so their cost is folded into the answer instead of being extended — which also means a toll of 0 never breaks anything, as feasibility is governed by the count of cities, not accumulated cost. If `k + 1 > n` no simple path can be long enough and `-1` is returned up front; `best` likewise stays `-1` when the graph offers no path of the required length.
 
+![On the 5-city example, the trip 0 -> 1 -> 4 -> 3 grows its visited mask 00001 -> 00011 -> 10011 -> 11011, one city bit per highway, while dp[mask][last] accretes 0 -> 4 -> 15 -> 17.](figures/solution-mask-dp-growth.svg)
+
 The total transition work is, for each of the `2^n` masks, a scan over `n` endpoints plus their adjacency lists — every edge is relaxed once per mask per direction, i.e. `O(2^n · E)` overall, comfortably small at `n <= 15` and `E <= 50`. The `dp` table itself is the dominant memory.
 
 **Complexity:** `O(2^n · (n + E))` time, `O(2^n · n)` space.

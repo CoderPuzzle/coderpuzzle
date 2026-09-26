@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="300" fill="#ffffff"/>
+  <!-- points (x,y) plot at px x = 90+80(x-1), y = 200-65(y-1); winner diagonal (3,3)-(4,1), partners (3,1),(4,3), area 1x2=2; rival diagonal (1,3)-(3,1), area 2x2=4 -->
+  <!-- rival rectangle (dashed) then winner rectangle (filled) -->
+  <rect x="90" y="70" width="160" height="130" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <rect x="250" y="70" width="80" height="130" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <line x1="250" y1="70" x2="330" y2="200" stroke="#4169E1" stroke-width="2"/>
+  <line x1="90" y1="70" x2="250" y2="200" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="278" y="171" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">area 2</text>
+  <text x="196" y="124" text-anchor="middle" fill="#9aa7b2" font-size="13" font-weight="600">area 4</text>
+  <!-- points: diagonal pair accent, partner corners ringed, rest dark -->
+  <circle cx="250" cy="70" r="5.5" fill="#4169E1"/>
+  <circle cx="330" cy="200" r="5.5" fill="#4169E1"/>
+  <circle cx="250" cy="200" r="5.5" fill="#1a2026"/>
+  <circle cx="330" cy="70" r="5.5" fill="#1a2026"/>
+  <circle cx="90" cy="200" r="5.5" fill="#1a2026"/>
+  <circle cx="90" cy="70" r="5.5" fill="#1a2026"/>
+  <circle cx="250" cy="200" r="10" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <circle cx="330" cy="70" r="10" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <text x="90" y="222">(1,1)</text>
+    <text x="250" y="222">(3,1)</text>
+    <text x="330" y="222">(4,1)</text>
+    <text x="90" y="52">(1,3)</text>
+    <text x="250" y="52">(3,3)</text>
+    <text x="330" y="52">(4,3)</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">
+    <text x="250" y="238">hit</text>
+    <text x="330" y="38">hit</text>
+  </g>
+  <!-- side notes -->
+  <g font-size="12.5">
+    <text x="380" y="84" fill="#1a2026">diagonal pair: <tspan fill="#4169E1" font-weight="600">(3,3)-(4,1)</tspan></text>
+    <text x="380" y="104" fill="#1a2026">forced partners (3,1), (4,3):</text>
+    <text x="380" y="120" fill="#5c6b76">both hash lookups hit</text>
+    <text x="380" y="140" fill="#1a2026">area |3-4| · |3-1| = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="380" y="176" fill="#1a2026">rival diagonal (1,3)-(3,1):</text>
+    <text x="380" y="192" fill="#5c6b76">also closes, into area 2 · 2 = <tspan font-weight="600">4</tspan></text>
+  </g>
+  <text x="340" y="266" text-anchor="middle" fill="#1a2026" font-size="13">Diagonal (3,3)-(4,1) hits both partners: area 1 × 2 = <tspan fill="#4169E1" font-weight="600">2</tspan>, the minimum.</text>
+  <text x="340" y="284" text-anchor="middle" fill="#1a2026" font-size="13">The rival diagonal (1,3)-(3,1) also closes, but into a larger area-4 box.</text>
+</svg>

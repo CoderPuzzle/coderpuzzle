@@ -18,6 +18,8 @@ and `n - 1` passes grow the numbers to length `n`; the answer is the row
 sum. Cell 5 is the one trap: it has no knight-neighbor, so it contributes
 the single number `5` at `n = 1` and nothing longer.
 
+![On the knight's phone pad for n = 2, every digit collects one number per knight-neighbor, so the count row goes from ten 1s to [2,2,2,2,3,0,3,2,2,2] by digit 0-9, summing to 20, while 5's empty hop list strands it at 0.](figures/solution-knight-hop-counts.svg)
+
 Every cell holds a residue below the modulus and each write adds two of
 them, so intermediates stay below `2 · 10^9`: beyond 32-bit, far inside the
 64-bit accumulation of the fixed-width solutions, reduced modulo `10^9 + 7`
