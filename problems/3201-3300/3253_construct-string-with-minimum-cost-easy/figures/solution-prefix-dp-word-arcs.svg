@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 306" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="306" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- target "abcdef"; words/costs: abdef 100, abc 1, d 1, def 10, ef 5; columns 70 wide at x = 50+82p;
+       dp fills right to left, arcs are the word matches dp[i] <- dp[i+len] + cost -->
+  <text x="50" y="30" fill="#5c6b76" font-size="12.5">dp[i] = min cost to build the prefix target[:i]</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="85" y="52">0</text><text x="167" y="52">1</text><text x="249" y="52">2</text><text x="331" y="52">3</text>
+    <text x="413" y="52">4</text><text x="495" y="52">5</text><text x="577" y="52">6</text>
+  </g>
+  <!-- dp row -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="132" y="58" width="70" height="36" fill="#f0f3f7"/>
+    <rect x="214" y="58" width="70" height="36" fill="#f0f3f7"/>
+    <rect x="460" y="58" width="70" height="36" fill="#f0f3f7"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8">
+    <rect x="50" y="58" width="70" height="36" fill="#dbe4fb"/>
+    <rect x="296" y="58" width="70" height="36" fill="#dbe4fb"/>
+    <rect x="378" y="58" width="70" height="36" fill="#dbe4fb"/>
+    <rect x="542" y="58" width="70" height="36" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="85" y="82" fill="#4169E1" font-size="15">7</text>
+    <text x="167" y="82" fill="#9aa7b2">—</text>
+    <text x="249" y="82" fill="#9aa7b2">—</text>
+    <text x="331" y="82" fill="#1a2026">6</text>
+    <text x="413" y="82" fill="#1a2026">5</text>
+    <text x="495" y="82" fill="#9aa7b2">—</text>
+    <text x="577" y="82" fill="#1a2026">0</text>
+  </g>
+  <!-- target characters -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="50" y="104" width="70" height="36"/><rect x="132" y="104" width="70" height="36"/><rect x="214" y="104" width="70" height="36"/>
+    <rect x="296" y="104" width="70" height="36"/><rect x="378" y="104" width="70" height="36"/><rect x="460" y="104" width="70" height="36"/>
+    <rect x="542" y="104" width="70" height="36" fill="none" stroke-dasharray="5 4"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="85" y="127">a</text><text x="167" y="127">b</text><text x="249" y="127">c</text>
+    <text x="331" y="127">d</text><text x="413" y="127">e</text><text x="495" y="127">f</text>
+  </g>
+  <!-- losing matches (dashed gray): abdef over dp[5]=-, def over the pricier 10 -->
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="5 4">
+    <path d="M 75 144 Q 280 284 485 144" marker-end="url(#arrowG)"/>
+    <path d="M 356 144 Q 461 212 567 144" marker-end="url(#arrowG)"/>
+  </g>
+  <!-- winning chain: abc then d then ef, total 1+1+5 -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 95 144 Q 208 212 321 144" marker-end="url(#arrow)"/>
+    <path d="M 341 144 Q 372 168 403 144" marker-end="url(#arrow)"/>
+    <path d="M 423 144 Q 487 180 552 144" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="280" y="232" fill="#9aa7b2">abdef, cost 100</text>
+    <text x="208" y="196" fill="#4169E1" font-weight="600">abc, cost 1</text>
+    <text x="461" y="199" fill="#9aa7b2">def, cost 10</text>
+    <text x="372" y="176" fill="#4169E1" font-weight="600">d, cost 1</text>
+    <text x="492" y="181" fill="#4169E1" font-weight="600">ef, cost 5</text>
+  </g>
+  <text x="330" y="264" text-anchor="middle" fill="#1a2026" font-size="13">Right to left: dp[4] = 5 via ef; dp[3] = min(10 + 0, 1 + 5) = 6 via d; dp[0] = 1 + 6 = <tspan fill="#4169E1" font-weight="600">7</tspan>.</text>
+  <text x="330" y="286" text-anchor="middle" fill="#1a2026" font-size="13">Accented <tspan fill="#4169E1" font-weight="600">abc, d, ef</tspan> cost 1 + 1 + 5 = 7; dashed matches lose; — marks unreachable prefixes.</text>
+</svg>

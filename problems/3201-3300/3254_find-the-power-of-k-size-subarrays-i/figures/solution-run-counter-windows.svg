@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 448" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="448" fill="#ffffff"/>
+  <!-- nums = [1,2,3,4,3,2,5], k = 3; cells 70x44 at x = 80+80i; run row = consecutive +1 steps;
+       the five size-3 windows are bracketed, accent when the closing run still reaches k-1 = 2 -->
+  <text x="340" y="30" text-anchor="middle" fill="#5c6b76" font-size="13">nums = [1, 2, 3, 4, 3, 2, 5], k = 3 — run[i] = consecutive +1 steps ending at i</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="115" y="68">0</text><text x="195" y="68">1</text><text x="275" y="68">2</text><text x="355" y="68">3</text>
+    <text x="435" y="68">4</text><text x="515" y="68">5</text><text x="595" y="68">6</text>
+  </g>
+  <text x="14" y="102" fill="#5c6b76" font-size="12">nums</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="80" y="76" width="70" height="44"/><rect x="160" y="76" width="70" height="44"/><rect x="240" y="76" width="70" height="44"/>
+    <rect x="320" y="76" width="70" height="44"/><rect x="400" y="76" width="70" height="44"/><rect x="480" y="76" width="70" height="44"/>
+    <rect x="560" y="76" width="70" height="44"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600" font-size="15">
+    <text x="115" y="104">1</text><text x="195" y="104">2</text><text x="275" y="104">3</text><text x="355" y="104">4</text>
+    <text x="435" y="104">3</text><text x="515" y="104">2</text><text x="595" y="104">5</text>
+  </g>
+  <!-- step markers between neighbors: +1 extends the run, x resets it -->
+  <text x="14" y="138" fill="#5c6b76" font-size="11">step</text>
+  <g text-anchor="middle" font-size="11.5" font-weight="600">
+    <text x="155" y="138" fill="#4169E1">+1</text><text x="235" y="138" fill="#4169E1">+1</text><text x="315" y="138" fill="#4169E1">+1</text>
+    <text x="395" y="138" fill="#9aa7b2">×</text><text x="475" y="138" fill="#9aa7b2">×</text><text x="555" y="138" fill="#9aa7b2">×</text>
+  </g>
+  <!-- run counter beneath each cell -->
+  <text x="14" y="168" fill="#5c6b76" font-size="12">run[i]</text>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="115" y="168" fill="#1a2026">0</text><text x="195" y="168" fill="#1a2026">1</text>
+    <text x="275" y="168" fill="#4169E1">2</text><text x="355" y="168" fill="#4169E1">3</text>
+    <text x="435" y="168" fill="#1a2026">0</text><text x="515" y="168" fill="#1a2026">0</text><text x="595" y="168" fill="#1a2026">0</text>
+  </g>
+  <!-- the five size-3 windows -->
+  <g fill="none" stroke="#4169E1" stroke-width="1.8">
+    <path d="M 80 198 L 80 210 L 310 210 L 310 198"/>
+    <path d="M 160 238 L 160 250 L 390 250 L 390 238"/>
+  </g>
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.5">
+    <path d="M 240 278 L 240 290 L 470 290 L 470 278"/>
+    <path d="M 320 318 L 320 330 L 550 330 L 550 318"/>
+    <path d="M 400 358 L 400 370 L 630 370 L 630 358"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="195" y="226" fill="#5c6b76">run 2 ≥ 2 → <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+    <text x="275" y="266" fill="#5c6b76">run 3 ≥ 2 → <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+    <text x="355" y="306" fill="#9aa7b2">run 0 &lt; 2 → −1</text>
+    <text x="435" y="346" fill="#9aa7b2">run 0 &lt; 2 → −1</text>
+    <text x="515" y="386" fill="#9aa7b2">run 0 &lt; 2 → −1</text>
+  </g>
+  <text x="340" y="408" text-anchor="middle" fill="#1a2026" font-size="13">run counts +1 steps and resets to 0 at each break (4→3, 3→2, 2→5).</text>
+  <text x="340" y="428" text-anchor="middle" fill="#1a2026" font-size="13">Only windows closing on run ≥ 2 report their max — <tspan fill="#4169E1" font-weight="600">3</tspan> and <tspan fill="#4169E1" font-weight="600">4</tspan>; the rest report −1.</text>
+</svg>

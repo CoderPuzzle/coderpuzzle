@@ -11,6 +11,8 @@ cheapest occurrence — an identical word at a higher price can never help.
 An unreachable `dp[n]` means no decomposition exists, which is the `-1`
 case.
 
+![On target abcdef the dp cells 7, —, —, 6, 5, —, 0 fill right to left from the word arcs abdef 100, abc 1, def 10, d 1, ef 5, and the winning abc, d, ef chain gives dp[0] = 1 + 6 = 7.](figures/solution-prefix-dp-word-arcs.svg)
+
 Greedy longest-match fails (an expensive long word can block cheaper short
 ones), so every word is tried at every reachable position — and these Easy
 bounds make that direct scan affordable: at most 50 words against a target

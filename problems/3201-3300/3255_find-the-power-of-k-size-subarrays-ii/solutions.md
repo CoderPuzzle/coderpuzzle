@@ -11,6 +11,8 @@ exactly when `run >= k`, in which case every element is sorted ascending and
 consecutive, so the power is the maximum `nums[i]`; otherwise the window
 fails and the answer is `-1`.
 
+![On nums [1, 2, 3, 4, 3, 2, 5] with k = 3 one scan writes the streak lengths 1, 2, 3, 4, 1, 1, 1 and answers each closing window on the spot: 3, 4, −1, −1, −1.](figures/solution-scan-run-answers.svg)
+
 Each element is read once and each of the `n - k + 1` answers is written
 once, so the total work stays linear no matter how often the runs break.
 Only the current streak length survives between steps — constant state

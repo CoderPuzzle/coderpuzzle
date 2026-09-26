@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,3,4,3,2,5], k = 3; run = ascending streak length ending at i (resets to 1);
+       each result chip is written on the spot when the size-3 window closing at i is read -->
+  <text x="340" y="26" text-anchor="middle" fill="#5c6b76" font-size="13">nums = [1, 2, 3, 4, 3, 2, 5], k = 3 — one left-to-right scan</text>
+  <path d="M 70 44 H 626" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="115" y="68">0</text><text x="195" y="68">1</text><text x="275" y="68">2</text><text x="355" y="68">3</text>
+    <text x="435" y="68">4</text><text x="515" y="68">5</text><text x="595" y="68">6</text>
+  </g>
+  <text x="14" y="102" fill="#5c6b76" font-size="12">nums</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="80" y="74" width="70" height="44"/><rect x="160" y="74" width="70" height="44"/><rect x="240" y="74" width="70" height="44"/>
+    <rect x="320" y="74" width="70" height="44"/><rect x="400" y="74" width="70" height="44"/><rect x="480" y="74" width="70" height="44"/>
+    <rect x="560" y="74" width="70" height="44"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600" font-size="15">
+    <text x="115" y="102">1</text><text x="195" y="102">2</text><text x="275" y="102">3</text><text x="355" y="102">4</text>
+    <text x="435" y="102">3</text><text x="515" y="102">2</text><text x="595" y="102">5</text>
+  </g>
+  <!-- step markers: +1 extends the streak, x resets it to 1 -->
+  <g text-anchor="middle" font-size="11.5" font-weight="600">
+    <text x="155" y="136" fill="#4169E1">+1</text><text x="235" y="136" fill="#4169E1">+1</text><text x="315" y="136" fill="#4169E1">+1</text>
+    <text x="395" y="136" fill="#9aa7b2">×</text><text x="475" y="136" fill="#9aa7b2">×</text><text x="555" y="136" fill="#9aa7b2">×</text>
+  </g>
+  <!-- run, the streak length, written under each element as the scan passes -->
+  <text x="14" y="166" fill="#5c6b76" font-size="12">run</text>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="115" y="166" fill="#1a2026">1</text><text x="195" y="166" fill="#1a2026">2</text>
+    <text x="275" y="166" fill="#4169E1">3</text><text x="355" y="166" fill="#4169E1">4</text>
+    <text x="435" y="166" fill="#1a2026">1</text><text x="515" y="166" fill="#1a2026">1</text><text x="595" y="166" fill="#1a2026">1</text>
+  </g>
+  <!-- answers written on the spot as each window closes (i >= 2) -->
+  <g fill="none" stroke-width="1.6">
+    <path d="M 275 172 L 275 192" stroke="#4169E1" marker-end="url(#arrowA)"/>
+    <path d="M 355 172 L 355 192" stroke="#4169E1" marker-end="url(#arrowA)"/>
+    <path d="M 435 172 L 435 192" stroke="#9aa7b2" marker-end="url(#arrowG)"/>
+    <path d="M 515 172 L 515 192" stroke="#9aa7b2" marker-end="url(#arrowG)"/>
+    <path d="M 595 172 L 595 192" stroke="#9aa7b2" marker-end="url(#arrowG)"/>
+  </g>
+  <g font-size="10.5">
+    <text x="283" y="185" fill="#4169E1" font-weight="600">3 ≥ 3</text>
+    <text x="363" y="185" fill="#4169E1" font-weight="600">4 ≥ 3</text>
+    <text x="443" y="185" fill="#9aa7b2">1 &lt; 3</text>
+    <text x="523" y="185" fill="#9aa7b2">1 &lt; 3</text>
+    <text x="603" y="185" fill="#9aa7b2">1 &lt; 3</text>
+  </g>
+  <text x="14" y="215" fill="#5c6b76" font-size="12">results</text>
+  <g stroke="#4169E1" stroke-width="1.8">
+    <rect x="243" y="196" width="64" height="28" fill="#dbe4fb"/>
+    <rect x="323" y="196" width="64" height="28" fill="#dbe4fb"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="403" y="196" width="64" height="28" fill="#ffffff"/>
+    <rect x="483" y="196" width="64" height="28" fill="#ffffff"/>
+    <rect x="563" y="196" width="64" height="28" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="275" y="215" fill="#4169E1">3</text>
+    <text x="355" y="215" fill="#4169E1">4</text>
+    <text x="435" y="215" fill="#9aa7b2">−1</text>
+    <text x="515" y="215" fill="#9aa7b2">−1</text>
+    <text x="595" y="215" fill="#9aa7b2">−1</text>
+  </g>
+  <text x="340" y="258" text-anchor="middle" fill="#1a2026" font-size="13">run is the ascending streak length ending at i; it resets to 1 at every break.</text>
+  <text x="340" y="278" text-anchor="middle" fill="#1a2026" font-size="13">Each closed window answers on the spot: run ≥ 3 writes nums[i] — <tspan fill="#4169E1" font-weight="600">3</tspan>, then <tspan fill="#4169E1" font-weight="600">4</tspan> — else −1.</text>
+</svg>

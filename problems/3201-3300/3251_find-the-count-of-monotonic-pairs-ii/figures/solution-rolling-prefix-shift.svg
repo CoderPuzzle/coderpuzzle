@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 448" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="448" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- nums = [2,3,2]; cells 56x30 at x = 150+64v; alternating dp rows (white) and their
+       inclusive prefix rows (gray fill); slanted arrows = shift by d1 = 1, straight = d2 = 0 -->
+  <text x="340" y="30" text-anchor="middle" fill="#5c6b76" font-size="13">nums = [2, 3, 2] — every row is the previous row's prefix sums read at a shift</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11.5">
+    <text x="140" y="54" text-anchor="end">v</text>
+    <text x="178" y="54">0</text><text x="242" y="54">1</text><text x="306" y="54">2</text><text x="370" y="54">3</text>
+  </g>
+  <!-- dp row 0 -->
+  <text x="44" y="83" fill="#1a2026" font-size="12">dp[0]</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="150" y="64" width="56" height="30"/><rect x="214" y="64" width="56" height="30"/><rect x="278" y="64" width="56" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="178" y="84">1</text><text x="242" y="84">1</text><text x="306" y="84">1</text>
+  </g>
+  <!-- prefix of row 0 -->
+  <text x="44" y="123" fill="#5c6b76" font-size="11.5">prefix</text>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="150" y="104" width="56" height="30"/><rect x="214" y="104" width="56" height="30"/><rect x="278" y="104" width="56" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="13">
+    <text x="178" y="124">1</text><text x="242" y="124">2</text><text x="306" y="124">3</text>
+  </g>
+  <!-- shift by d1 = 1: pref[c] feeds dp[1][c+1] -->
+  <g fill="none" stroke="#4169E1" stroke-width="1.6">
+    <path d="M 178 138 L 242 190" marker-end="url(#arrow)"/>
+    <path d="M 242 138 L 306 190" marker-end="url(#arrow)"/>
+    <path d="M 306 138 L 370 190" marker-end="url(#arrow)"/>
+  </g>
+  <text x="420" y="158" fill="#1a2026" font-size="12.5">rise 2→3: d₁ = 1</text>
+  <text x="420" y="176" fill="#5c6b76" font-size="11.5">dp[1][v] = pref[v − 1]</text>
+  <!-- dp row 1 -->
+  <text x="44" y="215" fill="#1a2026" font-size="12">dp[1]</text>
+  <rect x="150" y="196" width="56" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="214" y="196" width="56" height="30"/><rect x="278" y="196" width="56" height="30"/><rect x="342" y="196" width="56" height="30"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="178" y="216" fill="#9aa7b2">0</text><text x="242" y="216" fill="#1a2026">1</text>
+    <text x="306" y="216" fill="#1a2026">2</text><text x="370" y="216" fill="#1a2026">3</text>
+  </g>
+  <!-- prefix of row 1 -->
+  <text x="44" y="255" fill="#5c6b76" font-size="11.5">prefix</text>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="150" y="236" width="56" height="30"/><rect x="214" y="236" width="56" height="30"/><rect x="278" y="236" width="56" height="30"/><rect x="342" y="236" width="56" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="13">
+    <text x="178" y="256">0</text><text x="242" y="256">1</text><text x="306" y="256">3</text><text x="370" y="256">6</text>
+  </g>
+  <text x="370" y="296" text-anchor="middle" fill="#9aa7b2" font-size="10.5">unused: v ≤ 2</text>
+  <!-- no shift for d2 = 0: pref[c] feeds dp[2][c] -->
+  <g fill="none" stroke="#5c6b76" stroke-width="1.6">
+    <path d="M 178 270 L 178 314" marker-end="url(#arrowG)"/>
+    <path d="M 242 270 L 242 314" marker-end="url(#arrowG)"/>
+    <path d="M 306 270 L 306 314" marker-end="url(#arrowG)"/>
+  </g>
+  <text x="420" y="288" fill="#1a2026" font-size="12.5">fall 3→2: d₂ = 0</text>
+  <text x="420" y="306" fill="#5c6b76" font-size="11.5">dp[2][v] = pref[v]</text>
+  <!-- dp row 2 + answer -->
+  <text x="44" y="339" fill="#1a2026" font-size="12">dp[2]</text>
+  <rect x="150" y="320" width="56" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="214" y="320" width="56" height="30"/><rect x="278" y="320" width="56" height="30"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="178" y="340" fill="#9aa7b2">0</text><text x="242" y="340" fill="#1a2026">1</text>
+    <text x="306" y="340" fill="#1a2026">3</text>
+  </g>
+  <path d="M 150 354 L 150 366 L 334 366 L 334 354" fill="none" stroke="#42525e" stroke-width="1.5"/>
+  <text x="242" y="384" text-anchor="middle" fill="#1a2026" font-size="13">final inclusive sum = 0 + 1 + 3 = <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  <text x="340" y="414" text-anchor="middle" fill="#1a2026" font-size="13">Rise 2→3: the prefix lookup shifts right by d₁ = 1, leaving dp[1][0] = 0.</text>
+  <text x="340" y="434" text-anchor="middle" fill="#1a2026" font-size="13">Fall 3→2: no shift — and 0 + 1 + 3 = <tspan fill="#4169E1" font-weight="600">4</tspan> monotonic pairs in the end.</text>
+</svg>

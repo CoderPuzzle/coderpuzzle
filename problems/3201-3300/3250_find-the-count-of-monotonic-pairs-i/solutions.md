@@ -26,6 +26,8 @@ when `v < d_i`) for each `v` in `[0, nums[i]]`, then rebuild the prefix
 sums. The answer is the final inclusive prefix sum at `nums[n - 1]`,
 taken modulo `10⁹ + 7`.
 
+![On nums [2, 3, 2] the dp rows 1, 1, 1 then 0, 1, 2, 3 then 0, 1, 3 fill by reading a prefix window of the row above shifted left by the rise d = 1, and the final prefix 0 + 1 + 3 = 4 counts the pairs.](figures/solution-dp-prefix-window-shift.svg)
+
 Two bounds keep the arithmetic small. The lookup index never escapes
 the previous row: if `nums` rose by `d_i`, subtracting it from
 `v <= nums[i]` lands back inside `[0, nums[i - 1]]`, and otherwise

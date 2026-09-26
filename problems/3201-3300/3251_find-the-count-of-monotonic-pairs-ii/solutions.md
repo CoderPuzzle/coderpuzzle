@@ -22,6 +22,8 @@ second linear pass re-accumulates the new row into prefix form. Each
 position therefore costs `O(max(nums))`, about `2 * 10^6` steps across
 the whole array.
 
+![On nums [2, 3, 2] the rolling pass turns row 1, 1, 1 into prefix 1, 2, 3, reads it shifted right by d = 1 into row 0, 1, 2, 3, re-accumulates to 0, 1, 3, 6, and reads that unshifted into row 0, 1, 3 — final sum 0 + 1 + 3 = 4.](figures/solution-rolling-prefix-shift.svg)
+
 The bookkeeping stays small. The lookup index cannot escape the previous
 row: when `nums` rose by `d_i`, subtracting it from `v <= nums[i]` lands
 back inside `[0, nums[i - 1]]`; otherwise `d_i = 0` and

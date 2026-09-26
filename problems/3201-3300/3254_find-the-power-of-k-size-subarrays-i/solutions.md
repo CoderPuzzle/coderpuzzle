@@ -12,6 +12,8 @@ to `0` — and a size-`k` window starting at `i` is powered precisely when
 `run[i + k - 1] >= k - 1`, meaning the last `k - 1` adjacent pairs of the
 window all stepped up by one.
 
+![On nums [1, 2, 3, 4, 3, 2, 5] with k = 3 the run counter 0, 1, 2, 3, 0, 0, 0 powers exactly the windows closing on run ≥ 2, giving results 3, 4, −1, −1, −1.](figures/solution-run-counter-windows.svg)
+
 So one left-to-right pass computes `run` while emitting answers: as soon as
 index `i` reaches `k - 1` a window ends there, and `results[i - k + 1]` is
 `nums[i]` when the counter still stands at least `k - 1`, otherwise `-1`.
