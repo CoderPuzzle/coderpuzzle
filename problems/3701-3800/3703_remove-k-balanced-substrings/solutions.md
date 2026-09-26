@@ -24,6 +24,10 @@ smaller side drops below k it can never recover — its runs only shrink, and
 no other junction ever touches them — so every junction is resolved once and
 the sweep ends on the irreducible string.
 
+![On s = (()) with k = 1 each arriving ) settles a junction that cancels
+t = min(open, close) = 1 block: (×2 | )×1 shrinks to (×1, and the second
+junction empties the stack, giving the empty string.](figures/solution-run-stack-cancellation.svg)
+
 Reading the surviving runs back out, each character repeated by its count,
 gives the answer. Every character is pushed once and every canceled block is
 removed once, so the work stays linear despite the nested loops.

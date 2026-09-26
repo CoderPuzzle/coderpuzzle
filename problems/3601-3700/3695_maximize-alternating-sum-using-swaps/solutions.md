@@ -20,4 +20,8 @@ splitting after the first `E` evaluates it directly. Summing this term
 over all components is the answer; totals reach about `10^14` at the given
 bounds, so fixed-width languages must accumulate in 64-bit integers.
 
+![On nums = [1,2,3] with swaps [[0,2],[1,2]] the two edges merge all three
+indices into one component, whose E = 2 largest values 3 and 2 take the even
+slots for 2 - 1 + 3 = 4.](figures/solution-component-top-even-slots.svg)
+
 **Complexity:** `O(n log n + m α(n))` time, `O(n)` space.

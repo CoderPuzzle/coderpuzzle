@@ -13,6 +13,10 @@ the factor of any split is either 0 or one of the inter-point distances,
 so probing the sorted O(n²) distance values keeps the probe count at
 O(log n).
 
+![On points [[0,0],[0,2],[2,0],[2,2]] the D = 4 conflict graph is the 4-cycle
+of d = 2 sides, whose two-coloring puts each diagonal pair at Manhattan
+distance 4 in one group, for a partition factor of min(4, 4) = 4.](figures/solution-bipartite-conflict-coloring.svg)
+
 Each probe is a standard bipartiteness pass. Collect adjacency lists from
 the pairs closer than the probed threshold, then walk every component with
 an explicit stack, assigning alternating colors and reporting failure the

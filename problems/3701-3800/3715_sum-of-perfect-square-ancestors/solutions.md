@@ -21,6 +21,10 @@ of counting matches against all earlier-processed nodes: in a star, two
 same-kernel siblings sit adjacent in processing order but are not ancestors
 of one another.
 
+![On parent = [-1,0,1], nums = [2,8,2] the chain 0-1-2 carries kernel 2 at
+every node (8 = 2³), so the path map reads {2:1}, {2:2}, {2:3} on the way
+down and yields t_1 = 1, t_2 = 2, total 3.](figures/solution-kernel-path-map.svg)
+
 The walk must be iterative: a chain keeps every node on the path at once,
 and `10⁵` nested calls overflow default stacks (CPython caps near 1000
 frames). The accumulator needs width too — a fully matching chain sums to

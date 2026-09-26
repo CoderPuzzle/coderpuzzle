@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <!-- points=[[0,0],[0,2],[2,0],[2,2]], D=4; plane 90..214 (62px/unit), origin (90,214); conflict edges = square sides d=2, diagonals d=4 stay together -->
+  <rect x="100" y="48" width="68" height="24" rx="12" fill="#dbe4fb"/>
+  <text x="134" y="65" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="13">D = 4</text>
+  <text x="152" y="84" text-anchor="middle" fill="#5c6b76" font-size="11">d = 2 &lt; D</text>
+  <g stroke="#f0f3f7" stroke-width="1">
+    <line x1="152" y1="90" x2="152" y2="214"/>
+    <line x1="90" y1="152" x2="214" y2="152"/>
+  </g>
+  <rect x="90" y="90" width="124" height="124" fill="none" stroke="#5c6b76" stroke-width="1.6"/>
+  <line x1="90" y1="214" x2="214" y2="90" stroke="#4169E1" stroke-width="2"/>
+  <line x1="90" y1="90" x2="214" y2="214" stroke="#4169E1" stroke-width="2"/>
+  <text x="135" y="198" text-anchor="start" fill="#4169E1" font-size="11">d = 4</text>
+  <text x="135" y="114" text-anchor="start" fill="#4169E1" font-size="11">d = 4</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="90" y="238">0</text><text x="152" y="238">1</text><text x="214" y="238">2</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="10.5">
+    <text x="70" y="218">0</text><text x="70" y="156">1</text><text x="70" y="94">2</text>
+  </g>
+  <circle cx="90" cy="214" r="13" fill="#4169E1"/>
+  <circle cx="214" cy="90" r="13" fill="#4169E1"/>
+  <circle cx="90" cy="90" r="11" fill="#ffffff" stroke="#42525e" stroke-width="2"/>
+  <circle cx="214" cy="214" r="11" fill="#ffffff" stroke="#42525e" stroke-width="2"/>
+  <circle cx="96" cy="254" r="7" fill="#4169E1"/>
+  <text x="110" y="258" text-anchor="start" fill="#5c6b76" font-size="11.5">filled = group 1</text>
+  <circle cx="96" cy="274" r="6" fill="#ffffff" stroke="#42525e" stroke-width="2"/>
+  <text x="110" y="278" text-anchor="start" fill="#5c6b76" font-size="11.5">hollow = group 2</text>
+  <text x="462" y="84" text-anchor="middle" fill="#5c6b76" font-size="12.5">the split certified at D = 4</text>
+  <text x="360" y="106" text-anchor="start" fill="#5c6b76" font-size="12">group 1</text>
+  <g stroke="#4169E1" stroke-width="1.8" fill="#ffffff">
+    <rect x="360" y="112" width="64" height="30" rx="8"/>
+    <rect x="520" y="112" width="64" height="30" rx="8"/>
+  </g>
+  <line x1="424" y1="127" x2="438" y2="127" stroke="#4169E1" stroke-width="1.4"/>
+  <line x1="486" y1="127" x2="520" y2="127" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="462" y="132" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="13">d = 4</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <text x="392" y="132">[0,0]</text><text x="552" y="132">[2,2]</text>
+  </g>
+  <text x="360" y="172" text-anchor="start" fill="#5c6b76" font-size="12">group 2</text>
+  <g stroke="#5c6b76" stroke-width="1.8" fill="#ffffff">
+    <rect x="360" y="178" width="64" height="30" rx="8"/>
+    <rect x="520" y="178" width="64" height="30" rx="8"/>
+  </g>
+  <line x1="424" y1="193" x2="438" y2="193" stroke="#5c6b76" stroke-width="1.4"/>
+  <line x1="486" y1="193" x2="520" y2="193" stroke="#5c6b76" stroke-width="1.4"/>
+  <text x="462" y="198" text-anchor="middle" fill="#5c6b76" font-weight="600" font-size="13">d = 4</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <text x="392" y="198">[0,2]</text><text x="552" y="198">[2,0]</text>
+  </g>
+  <rect x="360" y="232" width="212" height="30" rx="15" fill="#dbe4fb"/>
+  <text x="466" y="252" text-anchor="middle" fill="#1a2026" font-size="13.5">factor = min(4, 4) = <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  <text x="320" y="306" text-anchor="middle" fill="#1a2026" font-size="13">Conflict edges join pairs closer than D = 4: the four d = 2 sides form an even</text>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">cycle that two-colors; at D = 5 all six pairs conflict (K4), so the answer is <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

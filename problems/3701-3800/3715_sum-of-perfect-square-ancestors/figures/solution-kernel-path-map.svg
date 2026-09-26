@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 416" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="416" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- parent=[-1,0,1], nums=[2,8,2]; chain 0->1->2, all kernels = 2; map rows {2:1}->{2:2}->{2:3}; t1=1, t2=2, total 3 -->
+  <text x="425" y="46" text-anchor="middle" fill="#5c6b76" font-size="12.5">path kernel map</text>
+  <text x="556" y="46" text-anchor="middle" fill="#5c6b76" font-size="11.5">t at entry</text>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="72" y="88">node 0</text><text x="72" y="182">node 1</text><text x="72" y="276">node 2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="110" y1="110" x2="110" y2="146" marker-end="url(#arrow)"/>
+    <line x1="110" y1="204" x2="110" y2="240" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <circle cx="110" cy="84" r="26"/><circle cx="110" cy="178" r="26"/><circle cx="110" cy="272" r="26"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="110" y="90">2</text><text x="110" y="184">8</text><text x="110" y="278">2</text>
+  </g>
+  <g text-anchor="start" fill="#5c6b76" font-size="12.5">
+    <text x="148" y="88">nums 2 &#8594; kernel <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="148" y="182">nums 8 = 2&#179; &#8594; kernel <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="148" y="276">nums 2 &#8594; kernel <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <rect x="340" y="65" width="170" height="38" rx="8" fill="#f0f3f7"/>
+    <text x="425" y="89">{2 : <tspan font-weight="600">1</tspan>}</text>
+    <rect x="340" y="159" width="170" height="38" rx="8" fill="#f0f3f7"/>
+    <text x="425" y="183">{2 : <tspan font-weight="600">2</tspan>}</text>
+    <rect x="340" y="253" width="170" height="38" rx="8" fill="#f0f3f7"/>
+    <text x="425" y="277">{2 : <tspan font-weight="600">3</tspan>}</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <line x1="425" y1="107" x2="425" y2="153" marker-end="url(#arrowB)"/>
+    <line x1="425" y1="201" x2="425" y2="247" marker-end="url(#arrowB)"/>
+  </g>
+  <g text-anchor="start" font-size="13">
+    <text x="530" y="183">t&#8321; = <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="530" y="277">t&#8322; = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  </g>
+  <text x="530" y="89" text-anchor="start" fill="#9aa7b2" font-size="12">root: 0</text>
+  <rect x="340" y="318" width="170" height="32" rx="16" fill="#dbe4fb"/>
+  <text x="425" y="339" text-anchor="middle" fill="#1a2026" font-size="13">t&#8321; + t&#8322; = 1 + 2 = <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+  <text x="320" y="382" text-anchor="middle" fill="#1a2026" font-size="13">2, 8, 2 all share kernel 2 (8 = 2&#179;); equal kernels multiply to a perfect square,</text>
+  <text x="320" y="402" text-anchor="middle" fill="#1a2026" font-size="13">so the path map tells each node its equal-kernel ancestors: t&#8321; = 1, t&#8322; = 2, total <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

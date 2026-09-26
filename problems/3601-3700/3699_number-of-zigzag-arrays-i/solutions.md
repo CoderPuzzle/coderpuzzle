@@ -21,6 +21,10 @@ the value range instead of comparing every ordered pair of values. After
 `n - 1` layers the answer is the sum of both tables. Two rolling arrays
 carry the state between layers.
 
+![On n = 3, l = 1, r = 3 the up and down tables evolve 1,1,1/1,1,1, then
+0,1,2/2,1,0, then 0,2,3/3,2,0 through the prefix-sum range transitions, and
+the last layer sums to 10.](figures/solution-direction-dp-layers.svg)
+
 Every stored value is a residue below `10⁹ + 7`, and each running total
 absorbs exactly one residue per step, so even at the `n = 2000`,
 `r - l + 1 = 2000` bounds no accumulator leaves the comfortable range of

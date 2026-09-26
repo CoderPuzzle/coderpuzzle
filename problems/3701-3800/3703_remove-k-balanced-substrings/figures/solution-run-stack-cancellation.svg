@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 396" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="396" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s="(())", k=1; run boxes 92x34 (char cell 34 + count cell), rows at y=116/196/276; trace of the run-length stack sweep -->
+  <text x="40" y="71" fill="#5c6b76" font-size="12.5">s =</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="70" y="48" width="38" height="36" fill="#dbe4fb"/>
+    <rect x="108" y="48" width="38" height="36" fill="#dbe4fb"/>
+    <rect x="146" y="48" width="38" height="36" fill="#f0f3f7"/>
+    <rect x="184" y="48" width="38" height="36" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026" font-size="14.5">
+    <text x="89" y="72">(</text><text x="127" y="72">(</text><text x="165" y="72">)</text><text x="203" y="72">)</text>
+  </g>
+  <text x="246" y="71" fill="#5c6b76" font-size="12.5">k = 1</text>
+  <text x="40" y="137" fill="#5c6b76" font-size="12">read ( (</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="120" y="116" width="92" height="34" fill="#ffffff"/>
+    <rect x="120" y="116" width="34" height="34" fill="#dbe4fb"/>
+  </g>
+  <text x="137" y="138" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="14">(</text>
+  <text x="173" y="138" text-anchor="middle" fill="#1a2026" font-size="13.5">&#215; 2</text>
+  <text x="40" y="217" fill="#5c6b76" font-size="12">read )</text>
+  <text x="300" y="184" text-anchor="middle" fill="#5c6b76" font-size="11.5">junction: cancel t = min(2, 1) = 1 block</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="120" y="196" width="92" height="34" fill="#ffffff"/>
+    <rect x="120" y="196" width="34" height="34" fill="#dbe4fb"/>
+    <rect x="216" y="196" width="92" height="34" fill="#ffffff"/>
+    <rect x="216" y="196" width="34" height="34" fill="#f0f3f7"/>
+  </g>
+  <text x="137" y="218" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="14">(</text>
+  <text x="173" y="218" text-anchor="middle" fill="#1a2026" font-size="13.5">&#215; 2</text>
+  <text x="233" y="218" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="14">)</text>
+  <text x="269" y="218" text-anchor="middle" fill="#1a2026" font-size="13.5">&#215; 1</text>
+  <line x1="314" y1="213" x2="372" y2="213" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="392" y="196" width="92" height="34" fill="#ffffff"/>
+    <rect x="392" y="196" width="34" height="34" fill="#dbe4fb"/>
+  </g>
+  <text x="409" y="218" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="14">(</text>
+  <text x="445" y="218" text-anchor="middle" fill="#1a2026" font-size="13.5">&#215; 1</text>
+  <text x="40" y="297" fill="#5c6b76" font-size="12">read )</text>
+  <text x="300" y="264" text-anchor="middle" fill="#5c6b76" font-size="11.5">junction: cancel t = min(1, 1) = 1 block</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="120" y="276" width="92" height="34" fill="#ffffff"/>
+    <rect x="120" y="276" width="34" height="34" fill="#dbe4fb"/>
+    <rect x="216" y="276" width="92" height="34" fill="#ffffff"/>
+    <rect x="216" y="276" width="34" height="34" fill="#f0f3f7"/>
+  </g>
+  <text x="137" y="298" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="14">(</text>
+  <text x="173" y="298" text-anchor="middle" fill="#1a2026" font-size="13.5">&#215; 1</text>
+  <text x="233" y="298" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="14">)</text>
+  <text x="269" y="298" text-anchor="middle" fill="#1a2026" font-size="13.5">&#215; 1</text>
+  <line x1="314" y1="293" x2="372" y2="293" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="392" y="276" width="46" height="34" fill="#f0f3f7" stroke="#42525e" stroke-width="1.5"/>
+  <text x="415" y="330" text-anchor="middle" fill="#5c6b76" font-size="11.5">stack empties</text>
+  <text x="300" y="360" text-anchor="middle" fill="#1a2026" font-size="13">Each junction cancels t = min(open//k, close//k) whole k-blocks from both runs;</text>
+  <text x="300" y="380" text-anchor="middle" fill="#1a2026" font-size="13">for (()) with k = 1 the second cancellation removes the last (), leaving <tspan fill="#4169E1" font-weight="600">""</tspan>.</text>
+</svg>
