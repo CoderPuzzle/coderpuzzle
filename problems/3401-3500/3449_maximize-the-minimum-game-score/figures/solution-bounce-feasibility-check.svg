@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- points=[2,4], m=3; target=4: i=0 needs ceil(4/2)=2 visits -> 2*2-1=3 moves, banking 1 visit at i=1,
+       which covers i=1's ceil(4/4)=1 quota with no extra moves; target=5: i=0 needs ceil(5/2)=3 -> 2*3-1=5 moves > 3.
+       start cell 70x44 at (120,y); index cells 140x44 at x=250/480, rows y=56 and y=196 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="120" y="56" width="70" height="44"/>
+    <rect x="250" y="56" width="140" height="44"/>
+    <rect x="480" y="56" width="140" height="44"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="155" y="76" fill="#5c6b76" font-size="12">start</text>
+    <text x="155" y="92" font-size="12.5">&#8722;1</text>
+    <text x="320" y="76" font-weight="600">2 pts</text>
+    <text x="320" y="92" fill="#5c6b76" font-size="12">need &#8968;4/2&#8969; = 2</text>
+    <text x="550" y="76" font-weight="600">4 pts</text>
+    <text x="550" y="92" fill="#5c6b76" font-size="12">need &#8968;4/4&#8969; = 1</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="320" y="48">i = 0</text>
+    <text x="550" y="48">i = 1</text>
+  </g>
+  <text x="20" y="82" fill="#4169E1" font-size="13.5" font-weight="600">target = 4</text>
+  <!-- walk: -1 -> 0 -> 1 -> 0, three moves -->
+  <path d="M 190 78 L 246 78" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="218" y="70" text-anchor="middle" fill="#5c6b76" font-size="12">1</text>
+  <path d="M 390 70 Q 433 44 476 70" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="433" y="50" text-anchor="middle" fill="#5c6b76" font-size="12">2</text>
+  <path d="M 476 92 Q 435 118 396 92" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="435" y="124" text-anchor="middle" fill="#5c6b76" font-size="12">3</text>
+  <text x="20" y="130" fill="#1a2026" font-size="12.5" font-weight="600">3 moves &#8804; m = 3 &#8594; feasible</text>
+  <text x="320" y="130" text-anchor="middle" fill="#5c6b76" font-size="12">2 visits &#183; score 4</text>
+  <text x="550" y="130" text-anchor="middle" fill="#5c6b76" font-size="12">banked visit &#183; score 4</text>
+  <!-- row 2: target 5 aborts at index 0 -->
+  <text x="20" y="222" fill="#1a2026" font-size="13.5" font-weight="600">target = 5</text>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="120" y="196" width="70" height="44"/>
+    <rect x="480" y="196" width="140" height="44"/>
+  </g>
+  <rect x="250" y="196" width="140" height="44" stroke="#42525e" stroke-width="1.5" fill="#ffffff"/>
+  <g text-anchor="middle" fill="#9aa7b2">
+    <text x="155" y="216" font-size="12">start</text>
+    <text x="155" y="232" font-size="12.5">&#8722;1</text>
+    <text x="550" y="216" font-weight="600">4 pts</text>
+    <text x="550" y="232" font-size="12">not reached</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="320" y="216" font-weight="600">2 pts</text>
+    <text x="320" y="232" fill="#5c6b76" font-size="12">need &#8968;5/2&#8969; = 3</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="320" y="188">i = 0</text>
+    <text x="550" y="188">i = 1</text>
+  </g>
+  <path d="M 190 218 L 246 218" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="218" y="210" text-anchor="middle" fill="#5c6b76" font-size="12">1</text>
+  <path d="M 390 210 Q 433 184 476 210" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="433" y="190" text-anchor="middle" fill="#5c6b76" font-size="12">2, 4</text>
+  <path d="M 476 232 Q 435 258 396 232" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="435" y="264" text-anchor="middle" fill="#5c6b76" font-size="12">3, 5</text>
+  <text x="20" y="264" fill="#1a2026" font-size="12.5" font-weight="600">5 moves &gt; m = 3 &#8594; infeasible</text>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Each candidate target is checked in one pass: index i bounces for 2&#183;remain &#8722; 1 moves.</text>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">target 4 passes with 3 moves &#8804; m = 3, target 5 needs 5 &#8212; binary search returns <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

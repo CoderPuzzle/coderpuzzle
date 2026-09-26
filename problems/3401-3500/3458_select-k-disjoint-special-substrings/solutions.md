@@ -24,6 +24,11 @@ classic greedy: sort by right endpoint and keep taking the interval whose
 end blocks the least. Return whether that count reaches `k`; `k = 0` is
 trivially satisfied.
 
+![On s = "abcdbaefab" the start at 0 closes over the whole string, the start
+at 1 leaks left through the a at index 5, and the starts c, d, e, f settle
+into the disjoint closures [2,2], [3,3], [6,6], [7,7], whose greedy count 4
+clears k = 2.](figures/solution-first-occurrence-closures.svg)
+
 **Complexity:** `O(26 · n)` time — at most 26 closure walks of `O(n)` each,
 plus sorting at most 26 intervals — and `O(1)` extra space beyond the input
 (26-entry occurrence tables).

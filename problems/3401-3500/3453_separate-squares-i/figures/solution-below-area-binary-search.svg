@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="356" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- squares=[[0,0,1],[2,2,1]]; 70 px per unit, world (0,0) at px (62,280);
+       A px (70,210)-(140,280) is fully below the candidate line y = 1 (below = 1),
+       B px (210,70)-(280,140) is fully above it (below = 0); total 2, target 1;
+       binary search over [0,3]: mid 1.5 -> below 1 -> hi=1.5, mid 0.75 -> below 0.75 -> lo=0.75,
+       mid 1.125 -> below 1 -> hi=1.125, ... converges to y = 1 -->
+  <text x="62" y="48" fill="#5c6b76" font-size="12">total area = 2 &#8594; target = 1</text>
+  <!-- axes -->
+  <g stroke="#9aa7b2" stroke-width="1">
+    <line x1="62" y1="60" x2="62" y2="286"/>
+    <line x1="62" y1="286" x2="300" y2="286"/>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="11">
+    <text x="54" y="214">1</text>
+    <text x="54" y="144">2</text>
+    <text x="54" y="74">3</text>
+  </g>
+  <!-- square A: fully below the line, square B: fully above -->
+  <rect x="70" y="210" width="70" height="70" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="210" y="70" width="70" height="70" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="105" y="249" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">1 &#215; 1 = 1</text>
+  <text x="245" y="109" text-anchor="middle" fill="#9aa7b2" font-size="12">0 below</text>
+  <!-- candidate line y = 1 -->
+  <line x1="55" y1="210" x2="300" y2="210" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="60" y="202" fill="#4169E1" font-size="12.5" font-weight="600">candidate y = 1</text>
+  <!-- binary search trace -->
+  <text x="340" y="64" fill="#1a2026" font-size="13.5" font-weight="600">binary search on y over [0, 3]</text>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="340" y="94">mid 1.5:&#160;&#160;&#160;below = 1 &#8805; 1 &#8594; hi = 1.5</text>
+    <text x="340" y="120">mid 0.75:&#160;below = 0.75 &lt; 1 &#8594; lo = 0.75</text>
+    <text x="340" y="146">mid 1.125: below = 1 &#8805; 1 &#8594; hi = 1.125</text>
+  </g>
+  <text x="340" y="172" fill="#4169E1" font-size="12.5" font-weight="600">&#8230; converges to y = 1.00000</text>
+  <text x="340" y="210" fill="#5c6b76" font-size="12">every square adds l &#183; min(max(y &#8722; yi, 0), l),</text>
+  <text x="340" y="228" fill="#5c6b76" font-size="12">so below(y) only ever climbs.</text>
+  <text x="320" y="322" text-anchor="middle" fill="#1a2026" font-size="13">below(y) is non-decreasing and first reaches the half-total 1 at <tspan fill="#4169E1" font-weight="600">y = 1</tspan> (A full, B untouched).</text>
+  <text x="320" y="340" text-anchor="middle" fill="#1a2026" font-size="13">every y in [1, 2] halves the 2 total units; the search returns the lowest, <tspan fill="#4169E1" font-weight="600">1.00000</tspan>.</text>
+</svg>

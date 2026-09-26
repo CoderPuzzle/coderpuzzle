@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- s = "abcdbaefab", k = 2; first/last: a 0/8, b 1/9, c 2/2, d 3/3, e 6/6, f 7/7;
+       closures: start a=0 -> [0,9] whole string (discarded), start b=1 -> 'a' at 5 leaks to first 0 (none),
+       starts c,d,e,f -> [2,2],[3,3],[6,6],[7,7]; greedy by right end picks all 4, count 4 >= k = 2 -> true;
+       cells 48px at x = 80 + 48i, y = 40 -->
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="80" y="40" width="48" height="32"/><rect x="128" y="40" width="48" height="32"/>
+    <rect x="176" y="40" width="48" height="32"/><rect x="224" y="40" width="48" height="32"/>
+    <rect x="272" y="40" width="48" height="32"/><rect x="320" y="40" width="48" height="32"/>
+    <rect x="368" y="40" width="48" height="32"/><rect x="416" y="40" width="48" height="32"/>
+    <rect x="464" y="40" width="48" height="32"/><rect x="512" y="40" width="48" height="32"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="104" y="61">a</text><text x="152" y="61">b</text><text x="200" y="61">c</text>
+    <text x="248" y="61">d</text><text x="296" y="61">b</text><text x="344" y="61">a</text>
+    <text x="392" y="61">e</text><text x="440" y="61">f</text><text x="488" y="61">a</text>
+    <text x="536" y="61">b</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="104" y="86">0</text><text x="152" y="86">1</text><text x="200" y="86">2</text>
+    <text x="248" y="86">3</text><text x="296" y="86">4</text><text x="344" y="86">5</text>
+    <text x="392" y="86">6</text><text x="440" y="86">7</text><text x="488" y="86">8</text>
+    <text x="536" y="86">9</text>
+  </g>
+  <!-- start a = 0: closure spans the whole string -->
+  <path d="M 80 106 L 80 100 L 560 100 L 560 106" fill="none" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="320" y="122" text-anchor="middle" fill="#5c6b76" font-size="11.5">start a = 0: closure grows to [0, 9] &#8212; all of s, discarded</text>
+  <!-- start b = 1: the a at 5 leaks left -->
+  <path d="M 344 128 Q 226 152 110 128" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrowgray)"/>
+  <text x="320" y="168" text-anchor="middle" fill="#5c6b76" font-size="11.5">start b = 1: the &quot;a&quot; at 5 needs index 0 too &#8212; leaks left of the start, none</text>
+  <!-- surviving singleton closures -->
+  <g fill="none" stroke="#4169E1" stroke-width="1.5">
+    <path d="M 176 200 L 176 184 L 224 184 L 224 200"/>
+    <path d="M 224 200 L 224 184 L 272 184 L 272 200"/>
+    <path d="M 368 200 L 368 184 L 416 184 L 416 200"/>
+    <path d="M 416 200 L 416 184 L 464 184 L 464 200"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="11">
+    <text x="200" y="214">c: [2,2]</text>
+    <text x="248" y="214">d: [3,3]</text>
+    <text x="392" y="214">e: [6,6]</text>
+    <text x="440" y="214">f: [7,7]</text>
+  </g>
+  <text x="320" y="240" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">greedy by right end takes all four: count 4 &#8805; k = 2 &#8594; <tspan fill="#4169E1">true</tspan></text>
+  <text x="320" y="266" text-anchor="middle" fill="#1a2026" font-size="13">Only first-occurrence starts can host a special substring; their closures are the only</text>
+  <text x="320" y="284" text-anchor="middle" fill="#1a2026" font-size="13">candidates &#8212; <tspan fill="#4169E1" font-weight="600">c, d, e, f</tspan> survive here; 4 disjoint picks clear k = 2 (e.g. &quot;cd&quot; + &quot;ef&quot;).</text>
+</svg>

@@ -8,6 +8,8 @@ With two non-empty segments, for every occurrence `j` of the second, binary sear
 
 With three segments, chaining naively would try every pair of the first two. Instead, precompute for each occurrence `j` of the middle segment the latest occurrence of the first segment ending at or before it (`best_i_for_j`, via one binary search per `j`; it is `None` when none fits). Then sweep the third segment's occurrences `k`: binary search the latest middle occurrence at position `<= k - len2`; because `best_i_for_j` is monotone (later `j` can only allow an equal or later first-segment position), the entry at that index, when defined, is automatically the best pairing, and the candidate length is `k + len3 - best_i_for_j`. Take the minimum, or return `-1` when no chain closes.
 
+![On s = "abaacbaecebce" with p = "ba*c*ce" the segments ba, c and ce occur at {1, 5}, {4, 8, 11} and {8, 11}, and the backward-greedy chain ce at 11, c at 8, ba at 5 gives 11 + 2 − 5 = 8, beating the length-9 chain through ce at 8.](figures/solution-backward-greedy-chain.svg)
+
 Edge cases: empty literal segments between the stars (as in `"**"` or `"*adlogi*"`), overlapping-but-in-order occurrences handled by the `j - len` offsets so segments never overlap, and returning `-1` as soon as some segment never occurs in `s`.
 
 **Complexity:** `O(|s| + |p| + q log q)` time, `O(q)` space, where `q` is the total number of segment occurrences.

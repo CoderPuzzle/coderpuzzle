@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="296" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "abaacbaecebce", p = "ba*c*ce" -> segments ba:{1,5}, c:{4,8,11}, ce:{8,11};
+       winner: ce@11 -> latest c <= 10 is 8 -> latest ba before 8 is 5 -> 11 + 2 - 5 = 8 (s[5..12] = "baecebce");
+       runner-up: ce@8 -> c@4 -> ba@1 -> 8 + 2 - 1 = 9;
+       cells 38px at x = 64 + 38i, y = 42; lanes at y = 100/120/140; dots at cx = 83 + 38i -->
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="64" y="42" width="38" height="32"/><rect x="102" y="42" width="38" height="32"/>
+    <rect x="140" y="42" width="38" height="32"/><rect x="178" y="42" width="38" height="32"/>
+    <rect x="216" y="42" width="38" height="32"/><rect x="254" y="42" width="38" height="32" fill="#dbe4fb"/>
+    <rect x="292" y="42" width="38" height="32" fill="#dbe4fb"/><rect x="330" y="42" width="38" height="32"/>
+    <rect x="368" y="42" width="38" height="32" fill="#dbe4fb"/><rect x="406" y="42" width="38" height="32"/>
+    <rect x="444" y="42" width="38" height="32"/><rect x="482" y="42" width="38" height="32" fill="#dbe4fb"/>
+    <rect x="520" y="42" width="38" height="32" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="83" y="63">a</text><text x="121" y="63">b</text><text x="159" y="63">a</text>
+    <text x="197" y="63">a</text><text x="235" y="63">c</text><text x="273" y="63">b</text>
+    <text x="311" y="63">a</text><text x="349" y="63">e</text><text x="387" y="63">c</text>
+    <text x="425" y="63">e</text><text x="463" y="63">b</text><text x="501" y="63">c</text>
+    <text x="539" y="63">e</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="83" y="88">0</text><text x="121" y="88">1</text><text x="159" y="88">2</text>
+    <text x="197" y="88">3</text><text x="235" y="88">4</text><text x="273" y="88">5</text>
+    <text x="311" y="88">6</text><text x="349" y="88">7</text><text x="387" y="88">8</text>
+    <text x="425" y="88">9</text><text x="463" y="88">10</text><text x="501" y="88">11</text>
+    <text x="539" y="88">12</text>
+  </g>
+  <!-- occurrence lanes -->
+  <g stroke="#dbe4fb" stroke-width="2">
+    <line x1="64" y1="100" x2="558" y2="100"/>
+    <line x1="64" y1="120" x2="558" y2="120"/>
+    <line x1="64" y1="140" x2="558" y2="140"/>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="11.5">
+    <text x="58" y="104">&quot;ba&quot;</text>
+    <text x="58" y="124">&quot;c&quot;</text>
+    <text x="58" y="144">&quot;ce&quot;</text>
+  </g>
+  <g fill="#9aa7b2">
+    <circle cx="121" cy="100" r="3.5"/>
+    <circle cx="235" cy="120" r="3.5"/>
+    <circle cx="501" cy="120" r="3.5"/>
+    <circle cx="387" cy="140" r="3.5"/>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="273" cy="100" r="5"/>
+    <circle cx="387" cy="120" r="5"/>
+    <circle cx="501" cy="140" r="5"/>
+  </g>
+  <path d="M 280 103 Q 329 104 378 116" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 394 123 Q 443 124 492 136" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- span bracket for the winner -->
+  <path d="M 254 168 L 254 156 L 558 156 L 558 168" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="406" y="186" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">end(ce) &#8722; start(ba) = 11 + 2 &#8722; 5 = 8</text>
+  <g font-size="12.5">
+    <text x="64" y="214" fill="#5c6b76">ce at 8: latest c &#8804; 7 is 4, latest ba before it is 1 &#8594; 8 + 2 &#8722; 1 = 9</text>
+    <text x="64" y="234" fill="#1a2026">ce at 11: latest c &#8804; 10 is 8, latest ba before it is 5 &#8594; 11 + 2 &#8722; 5 = <tspan fill="#4169E1" font-weight="600">8</tspan></text>
+  </g>
+  <text x="320" y="264" text-anchor="middle" fill="#1a2026" font-size="13">Chaining greedily backwards &#8212; latest c before the ce, latest ba before that c &#8212;</text>
+  <text x="320" y="282" text-anchor="middle" fill="#1a2026" font-size="13">the best span is ba at 5 through ce at 11: s[5..12] = &quot;baecebce&quot;, length <tspan fill="#4169E1" font-weight="600">8</tspan>.</text>
+</svg>

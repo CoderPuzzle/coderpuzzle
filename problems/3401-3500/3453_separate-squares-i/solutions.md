@@ -6,6 +6,8 @@ The total area strictly below a horizontal line at height `y` is a continuous, n
 
 The search runs over `[0, max(y_i + l_i)]` for a fixed 60 iterations, halving the interval each time. Each evaluation of the midpoint sweeps all squares in linear time, comparing `below(mid)` against `target = total / 2`: if the lower half already holds at least half the area, the answer lies at or below `mid` (`hi = mid`); otherwise it lies above (`lo = mid`). Sixty iterations shrink the interval far below the required `10^-5` tolerance even for coordinates up to `10^9`, and returning `hi` gives the minimal qualifying height.
 
+![On squares = [[0,0,1],[2,2,1]] the candidate line y = 1 leaves square A fully below (1 of the 2 total units) and B untouched, and the mids 1.5, 0.75 and 1.125 steer the search to the lowest halving height 1.00000.](figures/solution-below-area-binary-search.svg)
+
 Two details keep it numerically safe: only the total is computed once outside the loop, and each square's contribution clamps both at its bottom (`mid <= y` contributes nothing) and at its top (`min(mid, y + l)`), so no square can contribute more than its area or a negative amount. Floating-point precision is ample because every quantity is at most around `10^12` and the loop performs no subtraction of nearly equal large numbers other than the bounded clamps.
 
 Edge cases: a single square (answer its vertical midpoint), stacked or identical squares (areas add), and the flat region where the below-area equals the target over an interval of heights — the `>= target` comparison steers the search to the leftmost such `y`, matching "minimum y-coordinate" in example 1.
