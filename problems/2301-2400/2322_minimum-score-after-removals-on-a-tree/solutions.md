@@ -24,6 +24,8 @@ Every pair of non-root nodes falls in exactly one case, so with the tables
 in hand each pair costs constant time: take max minus min over the three
 candidate XORs and keep the smallest difference seen.
 
+![On Example 1 (nums = [1,5,5,4,11]), the subtree XORs fold up to sub[4] = 11, sub[3] = 15, sub[2] = 5, sub[1] = 15 and total 14, and cutting edges (0,1) and (1,2) yields the three candidate XORs 1, 5, 10 for a score of 10 - 1 = 9.](figures/solution-subtree-xor-cuts.svg)
+
 Both passes are iterative — the DFS drives its own stack instead of
 recursing — so even a straight chain of 1000 nodes, the constraint's
 deepest shape, never touches a call-stack or recursion limit.

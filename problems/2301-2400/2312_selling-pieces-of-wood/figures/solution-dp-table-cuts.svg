@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 292" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="292" fill="#ffffff"/>
+  <!-- dp[h][w] for m=3 n=5, prices [[1,4,2],[2,2,7],[2,1,3]]; cells 84x44 at (130,76); rows h=1..3 top-down, cols w=1..5; winning split dp[1][5]=2 + dp[2][5]=17 -->
+  <text x="340" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">price shapes (dot): (1,4) → 2 · (2,2) → 7 · (2,1) → 3</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="172" y="64">w=1</text><text x="256" y="64">w=2</text><text x="340" y="64">w=3</text><text x="424" y="64">w=4</text><text x="508" y="64">w=5</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="118" y="103">h=1</text><text x="118" y="147">h=2</text><text x="118" y="191">h=3</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="130" y="76" width="84" height="44"/><rect x="214" y="76" width="84" height="44"/><rect x="298" y="76" width="84" height="44"/><rect x="382" y="76" width="84" height="44"/>
+    <rect x="130" y="120" width="84" height="44"/><rect x="214" y="120" width="84" height="44"/><rect x="298" y="120" width="84" height="44"/><rect x="382" y="120" width="84" height="44"/>
+    <rect x="130" y="164" width="84" height="44"/><rect x="214" y="164" width="84" height="44"/><rect x="298" y="164" width="84" height="44"/><rect x="382" y="164" width="84" height="44"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="466" y="76" width="84" height="44" fill="#dbe4fb"/><rect x="466" y="120" width="84" height="44" fill="#dbe4fb"/>
+    <rect x="466" y="164" width="84" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="172" y="103">0</text><text x="256" y="103">0</text><text x="340" y="103">0</text><text x="424" y="103">2</text>
+    <text x="172" y="147">3</text><text x="256" y="147">7</text><text x="340" y="147">10</text><text x="424" y="147">14</text>
+    <text x="172" y="191">3</text><text x="256" y="191">7</text><text x="340" y="191">10</text><text x="424" y="191">16</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#4169E1">
+    <text x="508" y="103" font-size="15">2</text><text x="508" y="147" font-size="15">17</text>
+    <text x="508" y="192" font-size="17">19</text>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="458" cy="84" r="3"/><circle cx="290" cy="128" r="3"/><circle cx="206" cy="128" r="3"/>
+  </g>
+  <!-- winning horizontal cut between the 1x5 and 2x5 pieces, on the w=5 column -->
+  <circle cx="550" cy="120" r="8" fill="#ffffff"/>
+  <g stroke="#4169E1" stroke-width="2">
+    <line x1="545.5" y1="115.5" x2="554.5" y2="124.5"/><line x1="545.5" y1="124.5" x2="554.5" y2="115.5"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <line x1="556" y1="76" x2="564" y2="76"/><line x1="560" y1="76" x2="560" y2="120"/>
+    <line x1="556" y1="120" x2="564" y2="120"/><line x1="560" y1="120" x2="560" y2="164"/>
+    <line x1="556" y1="164" x2="564" y2="164"/>
+  </g>
+  <g text-anchor="start">
+    <text x="598" y="101" font-size="12.5" fill="#4169E1" font-weight="600">1x5 → 2</text>
+    <text x="598" y="145" font-size="12.5" fill="#4169E1" font-weight="600">2x5 → 17</text>
+    <text x="598" y="162" font-size="10.5" fill="#9aa7b2">holds 7+7+3</text>
+  </g>
+  <text x="340" y="240" text-anchor="middle" fill="#1a2026" font-size="13">Filling in increasing h, w, each cell takes max(sell whole, best horizontal or vertical cut);</text>
+  <text x="340" y="262" text-anchor="middle" fill="#1a2026" font-size="13">one winning cut is horizontal after row 1: dp[3][5] = dp[1][5] + dp[2][5] = 2 + 17 = <tspan fill="#4169E1" font-weight="600">19</tspan>.</text>
+</svg>

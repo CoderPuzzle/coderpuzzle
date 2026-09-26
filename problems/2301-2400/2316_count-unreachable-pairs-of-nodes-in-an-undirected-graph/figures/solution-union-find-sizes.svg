@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 354" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="354" fill="#ffffff"/>
+  <!-- n=7, edges [[0,2],[0,5],[2,4],[1,6],[5,4]]; union by size -> components {0,2,4,5}=4, {1,6}=2, {3}=1; 21-(6+1+0)=14 -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="100" y1="105" x2="180" y2="62"/><line x1="180" y1="62" x2="260" y2="105"/>
+    <line x1="260" y1="105" x2="180" y2="148"/><line x1="180" y1="148" x2="100" y2="105"/>
+    <line x1="355" y1="70" x2="425" y2="70"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6">
+    <circle cx="100" cy="105" r="15" fill="#dbe4fb"/><circle cx="180" cy="62" r="15" fill="#dbe4fb"/>
+    <circle cx="260" cy="105" r="15" fill="#dbe4fb"/><circle cx="180" cy="148" r="15" fill="#dbe4fb"/>
+    <circle cx="355" cy="70" r="15" fill="#ffffff"/><circle cx="425" cy="70" r="15" fill="#ffffff"/>
+    <circle cx="390" cy="150" r="15" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14" fill="#1a2026">
+    <text x="100" y="110">0</text><text x="180" y="67">2</text><text x="260" y="110">4</text><text x="180" y="153">5</text>
+    <text x="355" y="75">1</text><text x="425" y="75">6</text><text x="390" y="155">3</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#1a2026">
+    <text x="560" y="110">{0,2,4,5}: size 4 → C(4,2) = 6</text>
+    <text x="560" y="132">{1,6}: size 2 → C(2,2) = 1</text>
+    <text x="560" y="154">{3}: size 1 → C(1,2) = 0</text>
+  </g>
+  <text x="48" y="224" fill="#5c6b76" font-size="12.5">merges (union by size)</text>
+  <g font-size="12.5" fill="#1a2026">
+    <text x="48" y="246">[0,2]: union 2 into 0, size[0] = 2</text>
+    <text x="48" y="264">[0,5]: 2 &gt; 1, size[0] = 3</text>
+    <text x="48" y="282">[2,4]: 3 &gt; 1, size[0] = 4</text>
+    <text x="48" y="300">[1,6]: 1 = 1, size[1] = 2</text>
+    <text x="48" y="318" fill="#9aa7b2">[5,4]: find both = 0, skipped</text>
+  </g>
+  <text x="340" y="340" text-anchor="middle" fill="#1a2026" font-size="13">All pairs C(7,2) = 21 minus within-component pairs 6 + 1 + 0 leaves <tspan fill="#4169E1" font-weight="600">14</tspan> unreachable pairs.</text>
+</svg>

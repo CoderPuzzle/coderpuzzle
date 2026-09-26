@@ -6,6 +6,8 @@ Two constraints shape a valid sequence: adjacent values must be coprime, and equ
 
 Let `dp[a][b]` count valid sequences of the current length ending in `..., a, b`. The base for length 2 is `dp[a][b] = 1` for every ordered coprime pair with `a != b` (and `n = 1` short-circuits to 6). Extending by a roll `c` requires `c != a`, `c != b`, and `gcd(c, b) == 1`; each valid extension contributes `dp[a][b]` into `ndp[b][c]`. Rolling the table forward `n - 2` times and summing all entries gives the count modulo `10^9 + 7`. Zero-count states are skipped inside the loop, which prunes most of the 36-entry table since coprime pairs are sparse.
 
+![On Example 1 (n = 4), the 6 x 6 dp[a][b] table starts with 1 on the 22 coprime pairs — from (1, 2) only c = 3, 5 survive — and two rolls take the totals 22 → 66 → 184.](figures/solution-two-roll-dp-table.svg)
+
 Note that coprimality alone already forbids `(b, b)` for `b > 1` (gcd is `b`), but the explicit `c != b` check also covers `(1, 1)`, and `c != a` handles the distance-2 repeat including the tricky `a = 1` case where gcd would not object. The double loop over 6 values keeps each transition step at 216 candidate triples.
 
 **Complexity:** `O(n)` time (constant 6 x 6 x 6 work per step), `O(1)` space (two 7 x 7 tables).

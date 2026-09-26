@@ -11,6 +11,8 @@ gain of that difference array, and symmetrically for the `nums2` side — and
 the best range gain of a fixed array is the classic maximum-subarray
 problem.
 
+![On Example 1 (nums1 = [60,60,60], nums2 = [10,90,10]), the difference array [-50, 30, -50] has its best range at i = 1 gaining 30, so 180 + 30 = 210 beats the nums2 side's 110 + 70 = 180.](figures/solution-diff-kadane-sweep.svg)
+
 The code runs one Kadane sweep per direction over the differences, keeping
 only the running best range sum; clamping at zero folds the "not do
 anything" option in for free, since a negative best gain simply means the
