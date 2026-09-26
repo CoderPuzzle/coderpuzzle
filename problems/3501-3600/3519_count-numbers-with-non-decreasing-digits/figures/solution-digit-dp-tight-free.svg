@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 270" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="270" fill="#ffffff"/>
+  <!-- r = 28 = base-8 [3,4]; branches: d0=0 not started -> 8, d0=1 -> 7, d0=2 -> 6, d0=3 tight -> 2; count(22) = 20 (8+7+5); answer 23-20 = 3 -->
+  <rect x="215" y="22" width="210" height="44" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="320" y="39" text-anchor="middle" font-weight="600" font-size="13">r = 28 → base-8 digits [3, 4]</text>
+  <text x="320" y="56" text-anchor="middle" fill="#5c6b76" font-size="11.5">pos 0 tight: first digit d ≤ 3</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 320 66 L 80 140"/>
+    <path d="M 320 66 L 240 140"/>
+    <path d="M 320 66 L 400 140"/>
+    <path d="M 320 66 L 560 140" stroke="#4169E1"/>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="146" y="113" text-anchor="end">d0 = 0</text>
+    <text x="264" y="113" text-anchor="end">d0 = 1</text>
+    <text x="376" y="113">d0 = 2</text>
+    <text x="492" y="113" fill="#4169E1" font-weight="600">d0 = 3 (tight)</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="10" y="140" width="140" height="70" fill="#ffffff"/>
+    <rect x="170" y="140" width="140" height="70" fill="#ffffff"/>
+    <rect x="330" y="140" width="140" height="70" fill="#ffffff"/>
+  </g>
+  <rect x="490" y="140" width="140" height="70" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle">
+    <text x="80" y="158" font-weight="600" font-size="12">not started</text>
+    <text x="80" y="176" fill="#5c6b76" font-size="11.5">free: d1 ∈ 0..7</text>
+    <text x="80" y="198" fill="#4169E1" font-weight="600" font-size="14">= 8</text>
+    <text x="240" y="158" font-weight="600" font-size="12">started, last = 1</text>
+    <text x="240" y="176" fill="#5c6b76" font-size="11.5">free: d1 ≥ 1, ≤ 7</text>
+    <text x="240" y="198" fill="#4169E1" font-weight="600" font-size="14">= 7</text>
+    <text x="400" y="158" font-weight="600" font-size="12">started, last = 2</text>
+    <text x="400" y="176" fill="#5c6b76" font-size="11.5">free: d1 ≥ 2, ≤ 7</text>
+    <text x="400" y="198" fill="#4169E1" font-weight="600" font-size="14">= 6</text>
+    <text x="560" y="158" font-weight="600" font-size="12">still tight, cap 4</text>
+    <text x="560" y="176" fill="#5c6b76" font-size="11.5">d1 ≥ 3: only 3, 4</text>
+    <text x="560" y="198" fill="#4169E1" font-weight="600" font-size="14">= 2</text>
+  </g>
+  <text x="320" y="238" text-anchor="middle" fill="#1a2026" font-size="13">Once started, the next digit must be ≥ the last — this enforces non-decreasing digits.</text>
+  <text x="320" y="258" text-anchor="middle" fill="#1a2026" font-size="13">count(28) = <tspan fill="#4169E1" font-weight="600">8+7+6+2 = 23</tspan>, count(22) = 20 → 3 survivors: base-8 27, 33, 34.</text>
+</svg>

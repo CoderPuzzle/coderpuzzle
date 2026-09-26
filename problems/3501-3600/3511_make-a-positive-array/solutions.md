@@ -25,6 +25,8 @@ endpoint. Windows containing a replaced slot can never test non-positive
 again: the slot contributes `5×10⁹` against at most four untouched
 elements of magnitude `10⁹`.
 
+![On nums = [-1, -2, 3, -1, 2, 6] the three bad windows [0..2] (sum 0), [0..3] (sum -1) and [1..3] (sum 0) all contain index 2, so the greedy's single replacement nums[2] = 5×10⁹ stabs all three at once — answer 1.](figures/solution-stabbing-bad-windows.svg)
+
 `5×10⁹` is comfortably inside the allowed replacement range `±10¹⁸`, and
 window sums are bounded by `5 × 5×10⁹ = 2.5×10¹⁰`, so 64-bit integers
 carry them in every language; JavaScript doubles stay exact because

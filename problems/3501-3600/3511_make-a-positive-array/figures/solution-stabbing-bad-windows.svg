@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 334" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="334" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [-1,-2,3,-1,2,6]; cells 64x40 at x=100+64i, y=56; bad-window bars 26 tall at y=150/190/230; stab line x=260 (index 2) -->
+  <text x="90" y="82" text-anchor="end" fill="#5c6b76" font-size="12.5">nums</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="132" y="48">0</text><text x="196" y="48">1</text><text x="260" y="48" fill="#4169E1" font-weight="600">2</text><text x="324" y="48">3</text><text x="388" y="48">4</text><text x="452" y="48">5</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="100" y="56" width="64" height="40"/><rect x="164" y="56" width="64" height="40"/><rect x="292" y="56" width="64" height="40"/><rect x="356" y="56" width="64" height="40"/><rect x="420" y="56" width="64" height="40"/>
+  </g>
+  <rect x="228" y="56" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle">
+    <text x="132" y="82">-1</text><text x="196" y="82">-2</text><text x="324" y="82">-1</text><text x="388" y="82">2</text><text x="452" y="82">6</text>
+    <text x="260" y="82" fill="#4169E1" font-weight="600">5×10⁹</text>
+  </g>
+  <text x="232" y="68" fill="#5c6b76" font-size="10.5">3</text>
+  <!-- bad windows of length 3/4/5 and the single greedy stab point -->
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.3">
+    <rect x="100" y="150" width="192" height="26"/>
+    <rect x="100" y="190" width="256" height="26"/>
+    <rect x="164" y="230" width="192" height="26"/>
+  </g>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="110" y="167">[0..2]  sum 0</text>
+    <text x="110" y="207">[0..3]  sum -1</text>
+    <text x="174" y="247">[1..3]  sum 0</text>
+  </g>
+  <path d="M 260 100 V 262" stroke="#4169E1" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="272" y="134" fill="#4169E1" font-size="12" font-weight="600">one point stabs all three</text>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Only windows of length 3–5 can be bad; any longer subarray splits into 3/4/5 chunks.</text>
+  <text x="320" y="320" text-anchor="middle" fill="#1a2026" font-size="13">The greedy's single replacement <tspan fill="#4169E1" font-weight="600">nums[2] = 5×10⁹</tspan> stabs all three bad windows — answer <tspan fill="#4169E1" font-weight="600">1</tspan>.</text>
+</svg>

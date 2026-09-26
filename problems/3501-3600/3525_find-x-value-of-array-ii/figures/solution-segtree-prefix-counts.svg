@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 366" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="366" fill="#ffffff"/>
+  <!-- nums after update = [1,2,2,4,5], k = 3, query [2,2,0,2]; leaf = v mod 3 (leaf 2 updated 3 -> 2, pads 5-7 prod 1 cnt 0);
+       node text = cnt r0·r1·r2 / prod; node2 merge: [0,1,1]p2 + [0,0,2] shifts p2 by 2 -> [0,3,1]; root [0,3,2], bucket x=2 -> answer 2 -->
+  <g stroke="#42525e" stroke-width="1.2">
+    <path d="M 68 248 L 95 210"/><path d="M 140 248 L 95 210"/>
+    <path d="M 212 248 L 245 210"/><path d="M 284 248 L 245 210"/>
+    <path d="M 356 248 L 395 210"/>
+    <path d="M 395 170 L 470 140"/><path d="M 545 170 L 470 140"/>
+    <path d="M 170 100 L 320 68"/><path d="M 470 100 L 320 68"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <path d="M 428 248 L 395 210"/>
+    <path d="M 500 248 L 545 210"/><path d="M 572 248 L 545 210"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2">
+    <path d="M 95 170 L 170 140"/><path d="M 245 170 L 170 140"/>
+  </g>
+  <!-- root -->
+  <rect x="268" y="28" width="104" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="320" y="46" text-anchor="middle" font-weight="600" font-size="13">0·3·2</text>
+  <text x="320" y="62" text-anchor="middle" fill="#5c6b76" font-size="11">prod 2</text>
+  <!-- level 2 -->
+  <rect x="118" y="100" width="104" height="40" fill="#ffffff" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="170" y="118" text-anchor="middle" font-weight="600" font-size="13">0·3·1</text>
+  <text x="170" y="134" text-anchor="middle" fill="#5c6b76" font-size="11">prod 1</text>
+  <rect x="418" y="100" width="104" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="470" y="118" text-anchor="middle" font-weight="600" font-size="13">0·0·1</text>
+  <text x="470" y="134" text-anchor="middle" fill="#5c6b76" font-size="11">prod 2</text>
+  <!-- level 3 -->
+  <rect x="43" y="170" width="104" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="95" y="188" text-anchor="middle" font-weight="600" font-size="13">0·1·1</text>
+  <text x="95" y="204" text-anchor="middle" fill="#5c6b76" font-size="11">prod 2</text>
+  <rect x="193" y="170" width="104" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="245" y="188" text-anchor="middle" font-weight="600" font-size="13">0·0·2</text>
+  <text x="245" y="204" text-anchor="middle" fill="#5c6b76" font-size="11">prod 2</text>
+  <rect x="343" y="170" width="104" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="395" y="188" text-anchor="middle" font-weight="600" font-size="13">0·0·1</text>
+  <text x="395" y="204" text-anchor="middle" fill="#5c6b76" font-size="11">prod 2</text>
+  <rect x="493" y="170" width="104" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <text x="545" y="188" text-anchor="middle" fill="#9aa7b2" font-weight="600" font-size="13">0·0·0</text>
+  <text x="545" y="204" text-anchor="middle" fill="#9aa7b2" font-size="11">pad</text>
+  <!-- leaves: v mod 3 of [1,2,2,4,5] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="40" y="248" width="56" height="34"/><rect x="112" y="248" width="56" height="34"/><rect x="256" y="248" width="56" height="34"/><rect x="328" y="248" width="56" height="34"/>
+  </g>
+  <rect x="184" y="248" width="56" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="400" y="248" width="56" height="34"/><rect x="472" y="248" width="56" height="34"/><rect x="544" y="248" width="56" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="68" y="270">1</text><text x="140" y="270">2</text><text x="212" y="270">2</text><text x="284" y="270">1</text><text x="356" y="270">2</text>
+    <text x="428" y="270" fill="#9aa7b2" font-weight="400">–</text><text x="500" y="270" fill="#9aa7b2" font-weight="400">–</text><text x="572" y="270" fill="#9aa7b2" font-weight="400">–</text>
+  </g>
+  <text x="188" y="259" fill="#5c6b76" font-size="10">3</text>
+  <text x="40" y="308" fill="#5c6b76" font-size="12.5">merge at node 2: prod(left) = 2 shifts the right child's two r2 counts to r1 → <tspan fill="#4169E1" font-weight="600">[0,3,1]</tspan></text>
+  <text x="320" y="334" text-anchor="middle" fill="#1a2026" font-size="13">With start = 0 the query is the whole array: the root's cnt [0, 3, 2] counts every prefix.</text>
+  <text x="320" y="354" text-anchor="middle" fill="#1a2026" font-size="13">Bucket x = 2 holds <tspan fill="#4169E1" font-weight="600">2</tspan> — the endings with products 2 and 80 ≡ 2 (mod 3) → answer <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

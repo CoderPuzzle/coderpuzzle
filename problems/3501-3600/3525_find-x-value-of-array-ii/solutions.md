@@ -21,4 +21,6 @@ of everything merged so far, and reads off bucket `x`. All stored values
 are below `k <= 5` and all counts below `n`, so every intermediate fits
 comfortably in fixed-width integers.
 
+![On nums = [1, 2, 2, 4, 5] with k = 3 (query [2, 2, 0, 2]), each segment tree node carries a 3-vector of prefix-product remainders, the highlighted merge shifts the right child's two r2 counts by prod(left) = 2 into r1, and the root's bucket x = 2 holds 2.](figures/solution-segtree-prefix-counts.svg)
+
 **Complexity:** `O((n + q log n) * k²)` time, `O(n * k)` space.

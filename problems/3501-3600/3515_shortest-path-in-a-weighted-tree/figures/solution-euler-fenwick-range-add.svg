@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 248" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="248" fill="#ffffff"/>
+  <!-- tree of example 2: edges (1,2,w=2) (1,3,w=4 -> 7); euler cells pos=tin 56x40 at x=360+56i, y=64; base=[0,2,4]; update adds +3 over [3..3], -3 at tout+1=4 -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="137" y1="86" x2="93" y2="143"/>
+    <line x1="163" y1="86" x2="207" y2="143"/>
+  </g>
+  <g text-anchor="middle">
+    <circle cx="150" cy="70" r="20" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+    <circle cx="85" cy="160" r="20" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+    <circle cx="215" cy="160" r="20" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <text x="150" y="75" font-weight="600">1</text>
+    <text x="85" y="165" font-weight="600">2</text>
+    <text x="215" y="165" font-weight="600">3</text>
+  </g>
+  <text x="100" y="112" text-anchor="end" fill="#5c6b76" font-size="12.5">2</text>
+  <text x="204" y="110" fill="#4169E1" font-size="12.5" font-weight="600">4 → 7 (Δ+3)</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="150" y="196">tin 1..3</text>
+    <text x="85" y="196">tin 2..2</text>
+    <text x="215" y="196" fill="#4169E1" font-weight="600">tin 3..3</text>
+  </g>
+  <text x="470" y="48" text-anchor="middle" fill="#5c6b76" font-size="12.5">Euler order (pos = tin)</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="360" y="64" width="56" height="40"/><rect x="416" y="64" width="56" height="40"/><rect x="528" y="64" width="56" height="40"/>
+  </g>
+  <rect x="472" y="64" width="56" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="388" y="89">1</text><text x="444" y="89">2</text><text x="500" y="89">3</text>
+    <text x="556" y="89" fill="#9aa7b2" font-weight="400">—</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="388" y="120">base 0</text><text x="444" y="120">base 2</text><text x="500" y="120">base 4</text>
+    <text x="556" y="120">−3</text>
+    <text x="556" y="136" font-size="10.5">(tout+1)</text>
+  </g>
+  <text x="500" y="136" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">+3 → 7</text>
+  <text x="320" y="216" text-anchor="middle" fill="#1a2026" font-size="13">Raising edge (1,3) from 4 to 7 adds <tspan fill="#4169E1" font-weight="600">+3</tspan> over node 3's Euler interval [3..3] (and −3 at tout+1).</text>
+  <text x="320" y="236" text-anchor="middle" fill="#1a2026" font-size="13">A query reads base[x] + prefix(tin[x]): dist(3) = 4 + 3 = <tspan fill="#4169E1" font-weight="600">7</tspan>, dist(2) = 2 + 0 = <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

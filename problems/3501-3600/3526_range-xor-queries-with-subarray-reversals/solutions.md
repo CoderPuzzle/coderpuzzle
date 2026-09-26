@@ -6,6 +6,8 @@ The array is stored as a balanced binary search tree keyed implicitly by positio
 
 All three operations reduce to split and merge. split(root, k) divides the tree into the first k elements and the rest by descending with subtree sizes; merge joins two treaps by priority. A point update splits out the single node at the index and rewrites its value; a range XOR query splits out [left, right] and reads its root's xor field; a reversal splits out the segment and toggles a lazy rev flag on it. The flag is applied on demand in push — swap the two children and flip their flags — before any descent touches a node, and pull recomputes size and xor from the children after every structural change. Lazy propagation is what makes a reversal O(log n) instead of a full rewrite.
 
+![On nums = [1, 2, 3, 4, 5], the split around [1, 3] leaves A = [1], a middle treap rooted at 4 whose xor field reads 2^3^4 = 5, and C = [5]; the whole-array reversal later toggles one lazy rev flag on [1, 2, 10, 4, 5], and the final query reads root xor 8.](figures/solution-treap-split-lazy-rev.svg)
+
 The treap is built by merging one node at a time onto the right end, which costs O(log n) per element. Empty subtrees contribute size 0 and XOR 0, so split/merge handle boundaries uniformly, and every query re-merges the three pieces in the same left-to-right order to restore the sequence.
 
 **Complexity:** `O((n + q) log n)` time, `O(n)` space.
