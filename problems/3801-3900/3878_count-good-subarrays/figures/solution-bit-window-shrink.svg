@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <!-- nums = [4,2,3]; header cells 80x44 at x=150/240/330, owner rows 80x40 at y=130/192/254;
+       x-mark = element carrying a bit the row's max lacks; accent cells = owner's effective window -->
+  <text x="150" y="30" fill="#5c6b76" font-size="12.5">nums</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="150" y="42" width="80" height="44"/><rect x="240" y="42" width="80" height="44"/><rect x="330" y="42" width="80" height="44"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="190" y="62" font-weight="600">4</text><text x="280" y="62" font-weight="600">2</text><text x="370" y="62" font-weight="600">3</text>
+    <text x="190" y="78" fill="#5c6b76" font-size="12">100</text><text x="280" y="78" fill="#5c6b76" font-size="12">010</text><text x="370" y="78" fill="#5c6b76" font-size="12">011</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="190" y="104">i = 0</text><text x="280" y="104">i = 1</text><text x="370" y="104">i = 2</text>
+  </g>
+  <text x="430" y="52" fill="#5c6b76" font-size="12">x = element carries</text>
+  <text x="430" y="68" fill="#5c6b76" font-size="12">a bit the max lacks</text>
+  <!-- owner row i=0, max 4 (100): stack window [0,2], shrunk to [0,0] -->
+  <text x="16" y="146" fill="#1a2026" font-size="12.5" font-weight="600">i = 0, max 4 (100)</text>
+  <text x="16" y="163" fill="#5c6b76" font-size="12">stack window [0, 2]</text>
+  <g stroke-width="1.4">
+    <rect x="150" y="130" width="80" height="40" fill="#dbe4fb" stroke="#42525e"/>
+    <rect x="240" y="130" width="80" height="40" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="330" y="130" width="80" height="40" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.8">
+    <path d="M 302 136 L 310 144 M 310 136 L 302 144"/>
+    <path d="M 392 136 L 400 144 M 400 136 L 392 144"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="190" y="155" fill="#1a2026">4</text><text x="280" y="155" fill="#9aa7b2">2</text><text x="370" y="155" fill="#9aa7b2">3</text>
+  </g>
+  <text x="430" y="155" fill="#1a2026" font-size="12.5">owns [4], count <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  <!-- owner row i=1, max 2 (010): stack window [1,1] already -->
+  <text x="16" y="208" fill="#1a2026" font-size="12.5" font-weight="600">i = 1, max 2 (010)</text>
+  <text x="16" y="225" fill="#5c6b76" font-size="12">stack window [1, 1]</text>
+  <g stroke-width="1.4">
+    <rect x="150" y="192" width="80" height="40" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="240" y="192" width="80" height="40" fill="#dbe4fb" stroke="#42525e"/>
+    <rect x="330" y="192" width="80" height="40" fill="#f0f3f7" stroke="#9aa7b2"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="190" y="217" fill="#9aa7b2">4</text><text x="280" y="217" fill="#1a2026">2</text><text x="370" y="217" fill="#9aa7b2">3</text>
+  </g>
+  <text x="430" y="217" fill="#1a2026" font-size="12.5">owns [2], count <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  <!-- owner row i=2, max 3 (011): stack window [1,2], shrunk on the left only -->
+  <text x="16" y="270" fill="#1a2026" font-size="12.5" font-weight="600">i = 2, max 3 (011)</text>
+  <text x="16" y="287" fill="#5c6b76" font-size="12">stack window [1, 2]</text>
+  <g stroke-width="1.4">
+    <rect x="150" y="254" width="80" height="40" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="240" y="254" width="80" height="40" fill="#dbe4fb" stroke="#42525e"/>
+    <rect x="330" y="254" width="80" height="40" fill="#dbe4fb" stroke="#42525e"/>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.8">
+    <path d="M 212 260 L 220 268 M 220 260 L 212 268"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="190" y="279" fill="#9aa7b2">4</text><text x="280" y="279" fill="#1a2026">2</text><text x="370" y="279" fill="#1a2026">3</text>
+  </g>
+  <text x="430" y="279" fill="#1a2026" font-size="12.5">owns [3], [2,3], count <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Shrunk stack windows give 1 + 1 + <tspan fill="#4169E1" font-weight="600">2</tspan> = <tspan fill="#4169E1" font-weight="600">4</tspan> good subarrays:</text>
+  <text x="320" y="348" text-anchor="middle" fill="#1a2026" font-size="13">[4], [2], [3], [2,3]: each accent cell is an owner's reach.</text>
+</svg>

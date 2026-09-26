@@ -26,6 +26,8 @@ smaller eventId — comes first. EventIds and priorities both fit in 32 bits
 and never exceed `10⁹`, so every arithmetic step is exact even in
 JavaScript's Number type (well below `2⁵³`).
 
+![After updatePriority(9, 7) on events [[5,7],[2,7],[9,4]], the heap holds the stale (4, 9) beside the fresh (7, 9); pollHighest checks each popped top against the live map and returns 5 then 9, discarding stale entries.](figures/solution-lazy-deletion-heap.svg)
+
 Each `updatePriority` and `pollHighest` does constant bookkeeping plus one
 heap operation. The heap can hold one stale entry per update in the worst
 case, so its size is bounded by the initial events plus the total number of

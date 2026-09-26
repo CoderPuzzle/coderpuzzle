@@ -16,6 +16,8 @@ the current path. Since every ancestor, including the parent, sits on the
 current path, the seen set alone prevents the search from turning back — no
 separate "visited parent" bookkeeping is needed.
 
+![On the tree [2,2,1], the DFS from the root 2 refuses the equal-valued child because 2 is already in the seen set, so the best valid path is 2 to 1 with sum 3.](figures/solution-distinct-dfs-refusal.svg)
+
 The current path's sum is carried alongside the traversal, and the running
 best is updated whenever a node is entered, which covers every single-node
 path as well. A node is entered at most once per starting point because the

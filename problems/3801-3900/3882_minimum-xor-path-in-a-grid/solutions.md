@@ -16,6 +16,8 @@ union of the two neighbours' sets, each XORed with `grid[i][j]`. Filling the
 grid in row-major order makes both neighbours available before the current
 cell is processed.
 
+![On the grid [[1,2],[3,4]], each cell fills in row-major order with the union of its above and left neighbours' sets xored by its own value, ending at {7, 6} where the minimum 6 is the answer.](figures/solution-reachable-xor-sets.svg)
+
 Once the table is full, the smallest `x` with `reach[m - 1][n - 1][x]` true
 is the answer; scanning `0` upward guarantees the minimum. Because at most
 `m * n <= 1000` cells each hold at most `1024` booleans, the whole table

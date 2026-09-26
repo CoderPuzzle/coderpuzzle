@@ -48,6 +48,8 @@ The solution maintains a disjoint-set union where `par[x]` stores the XOR of wei
 
 Each incoming edge `[u, v, w]` is then decided in near-constant time. If `u` and `v` have the same root, the edge would close exactly one new cycle, whose total weight is `xu ^ xv ^ w`; the edge is added precisely when this is zero, i.e. when the existing path parity `xu ^ xv` already equals `w`, and rejected otherwise. If the roots differ, the edge connects two different components and creates no cycle at all, so it is always added: the two trees are linked by rank, and the new parent link gets parity `xu ^ xv ^ w` to preserve the invariant.
 
+![On edges [[0,1,1],[1,2,1],[0,2,1]], the parity DSU ends with root 1 carrying children 0 and 2 at par 1 each, and the third offer is rejected because the standing path parity 1 ^ 1 = 0 misses w = 1, an odd cycle.](figures/solution-parity-dsu-reject.svg)
+
 Because accepted edges within a component never change any path parity (they only add redundant even cycles), the check of the single new cycle is sufficient — every older cycle was already even by induction. Union by rank together with path compression keeps the amortized cost per edge effectively constant, with `alpha` the inverse Ackermann function.
 
 **Complexity:** `O(E * alpha(N))` time, `O(N)` space.

@@ -24,6 +24,8 @@ making the whole loop `O(n · B)` with `B = 31` bits. The number of subarrays
 `i` owns after both shrinks is `(i - eff_left) · (eff_right - i)`, and the
 answer is the sum.
 
+![On nums = [4,2,3], each row shows one index's monotonic-stack window shrunk by the nearest elements carrying bits the max lacks, yielding the good subarrays [4], [2], [3], [2,3] and the answer 4.](figures/solution-bit-window-shrink.svg)
+
 Bounds force 64-bit arithmetic: at n = 10⁵ the count of good subarrays can
 reach n·(n+1)/2 = 5,000,050,000, past the 32-bit ceiling, so the accumulator
 and return are 64-bit everywhere (exact in JavaScript as well, since the
