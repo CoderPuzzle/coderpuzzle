@@ -46,6 +46,8 @@ The key observation is that every prefix-built string `s_i` is a suffix of the f
 
 The code computes the Z-array in the standard linear fashion by maintaining the rightmost-known match window `[left, right)`. For each position `i` inside the window, the already-computed value `z[i - left]` is a lower bound (capped at `right - i` so the claim never extends past verified territory); outside the window it starts at 0. A direct character-comparison loop then extends the match as far as it truly goes, and the window is moved whenever `i + z[i]` pushes past `right`. Every successful comparison strictly advances `right`, and `right` never decreases, so the total comparison work is `O(n)`.
 
+![For s = babab the z-array fills left to right as [5, 0, 3, 0, 1]: the window [2, 5) seeds position 4 with z[4 - 2] = 3 capped to right - i = 1, and the sum 9 is the answer.](figures/solution-z-array-window.svg)
+
 The guard for `n == 0` keeps the array allocations sane, though the constraint promises `n >= 1`. The whole computation is a single left-to-right pass over the string plus one summation, and the only auxiliary storage is the `z` array itself.
 
 **Complexity:** `O(n)` time, `O(n)` space.

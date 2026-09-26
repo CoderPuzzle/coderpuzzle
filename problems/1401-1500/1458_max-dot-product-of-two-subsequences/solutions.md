@@ -17,6 +17,8 @@ three options in `O(1)`, and the answer is `dp[0][0]`. With both lengths
 at most 500 the table holds 250,000 cells; products of values bounded by
 1000 keep every entry within 32-bit range (at most `5 · 10⁸`).
 
+![On [2,1,-2,5] x [3,0,-6] the suffix dp fills from the bottom-right, each cell taking the best of pair, skip-row and skip-column, and dp[0][0] = 6 + 12 = 18 pairs 2·3 with (-2)·(-6).](figures/solution-suffix-dp-pairs.svg)
+
 A rolling one-dimensional array would halve the memory, but the plain
 table is clearer and comfortably inside the limit.
 

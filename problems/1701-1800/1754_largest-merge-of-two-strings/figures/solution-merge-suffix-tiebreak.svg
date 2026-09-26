@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="380" fill="#ffffff"/>
+  <!-- word1 "cabaa", word2 "bcaaa"; step rows baseline y=72+32i; emit boxes 30x28 at x=598;
+       merge cells 34x28 at (90,272), sources: w1 light accent, w2 white, tail gray -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="36" y="40">step</text>
+    <text x="150" y="40">word1</text>
+    <text x="280" y="40">word2</text>
+    <text x="613" y="40">take</text>
+  </g>
+  <text x="330" y="40" fill="#5c6b76" font-size="12">comparison of remaining suffixes</text>
+  <rect x="24" y="152" width="632" height="28" fill="#dbe4fb"/>
+  <g text-anchor="middle" font-size="14.5">
+    <text x="36" y="76" fill="#5c6b76" font-size="12">1</text>
+    <text x="150" y="76" fill="#1a2026"><tspan font-weight="700">c</tspan>abaa</text>
+    <text x="280" y="76" fill="#1a2026"><tspan font-weight="700">b</tspan>caaa</text>
+    <text x="36" y="108" fill="#5c6b76" font-size="12">2</text>
+    <text x="150" y="108" fill="#1a2026"><tspan font-weight="700">a</tspan>baa</text>
+    <text x="280" y="108" fill="#1a2026"><tspan font-weight="700">b</tspan>caaa</text>
+    <text x="36" y="140" fill="#5c6b76" font-size="12">3</text>
+    <text x="150" y="140" fill="#1a2026"><tspan font-weight="700">a</tspan>baa</text>
+    <text x="280" y="140" fill="#1a2026"><tspan font-weight="700">c</tspan>aaa</text>
+    <text x="36" y="172" fill="#5c6b76" font-size="12">4</text>
+    <text x="150" y="172" fill="#1a2026"><tspan font-weight="700">a</tspan>baa</text>
+    <text x="280" y="172" fill="#1a2026"><tspan font-weight="700">a</tspan>aa</text>
+    <text x="36" y="204" fill="#5c6b76" font-size="12">5</text>
+    <text x="150" y="204" fill="#1a2026"><tspan font-weight="700">b</tspan>aa</text>
+    <text x="280" y="204" fill="#1a2026"><tspan font-weight="700">a</tspan>aa</text>
+  </g>
+  <g fill="#5c6b76" font-size="13">
+    <text x="330" y="76">c &gt; b → word1</text>
+    <text x="330" y="108">b &gt; a → word2</text>
+    <text x="330" y="140">c &gt; a → word2</text>
+    <text x="330" y="172" fill="#1a2026" font-weight="600">a = a: "abaa" &gt; "aaa" → word1</text>
+    <text x="330" y="204">b &gt; a → word1</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.4" fill="#dbe4fb">
+    <rect x="598" y="52" width="30" height="28"/><rect x="598" y="148" width="30" height="28"/>
+    <rect x="598" y="180" width="30" height="28" stroke-width="2.4"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="598" y="84" width="30" height="28"/><rect x="598" y="116" width="30" height="28"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14.5">
+    <text x="613" y="71">c</text><text x="613" y="103">b</text><text x="613" y="135">c</text>
+    <text x="613" y="167" font-weight="700">a</text><text x="613" y="199">b</text>
+  </g>
+  <text x="60" y="236" fill="#5c6b76" font-size="12.5">…both tails are all a's, so the remaining 5 a's (word1 "aa" + word2 "aaa") append freely</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="36" y="294">merge</text>
+    <text x="183" y="264">the five greedy picks</text>
+    <text x="373" y="264">the a-tail</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.4" fill="#dbe4fb">
+    <rect x="90" y="272" width="34" height="28"/><rect x="204" y="272" width="34" height="28" stroke-width="2.4"/>
+    <rect x="242" y="272" width="34" height="28"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="128" y="272" width="34" height="28"/><rect x="166" y="272" width="34" height="28"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="#f0f3f7">
+    <rect x="280" y="272" width="34" height="28"/><rect x="318" y="272" width="34" height="28"/>
+    <rect x="356" y="272" width="34" height="28"/><rect x="394" y="272" width="34" height="28"/>
+    <rect x="432" y="272" width="34" height="28"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14.5">
+    <text x="107" y="291">c</text><text x="145" y="291">b</text><text x="183" y="291">c</text>
+    <text x="221" y="291" font-weight="700">a</text><text x="259" y="291">b</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="14.5">
+    <text x="297" y="291">a</text><text x="335" y="291">a</text><text x="373" y="291">a</text>
+    <text x="411" y="291">a</text><text x="449" y="291">a</text>
+  </g>
+  <text x="340" y="340" text-anchor="middle" fill="#1a2026" font-size="13">When the heads tie, the larger remaining suffix decides: at a = a, "abaa" &gt; "aaa"</text>
+  <text x="340" y="360" text-anchor="middle" fill="#1a2026" font-size="13">sends the next a from word1 — and the merge reads <tspan fill="#4169E1" font-weight="600">cbcabaaaaa</tspan>.</text>
+</svg>

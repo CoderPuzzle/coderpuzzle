@@ -8,6 +8,8 @@ sum immediately before it. Thus, while scanning the array, the number of valid
 subarrays ending at the current position is the number of earlier prefix sums
 that are strictly smaller.
 
+![On nums = [0,1,1,0,1] the prefix trace 0,-1,0,1,0,1 gives per-position counts 0,1,3,1,4 of strictly smaller earlier prefixes, summing to 9.](figures/solution-prefix-trace-counts.svg)
+
 Store the frequencies of prior prefix sums in a Fenwick tree, shifted so the
 range from `-n` through `n` has positive indices. Insert the initial zero
 prefix, query only indices below each current prefix to enforce strict

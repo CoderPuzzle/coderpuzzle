@@ -10,6 +10,8 @@ trailing digit costs constant time per step. The window value is what
 matters, so windows with leading zeros (`"04"` → 4) are handled naturally,
 and a window whose value is `0` can never divide `num`.
 
+![On num = 240 with k = 2 the window over "24" holds 24 = 2*10 + 4 and rolls to 40 = (24 % 10) * 10 + 0 over "40", and both divide 240, so the k-beauty is 2.](figures/solution-sliding-window-rolling-value.svg)
+
 At every position the current window is tested: it must be nonzero and must
 divide `num` exactly. Because `num <= 10⁹` its decimal form has at most ten
 digits, so the whole scan is over a tiny alphabet of windows; the value in

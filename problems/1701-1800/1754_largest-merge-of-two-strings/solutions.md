@@ -19,6 +19,8 @@ suffix is a strict prefix of the other, the longer (larger) one wins
 the comparison the same way — the tie breaks once the shorter queue
 runs out against the longer one's continuation.
 
+![Merging "cabaa" and "bcaaa" row by row, each step takes from the lexicographically larger remaining suffix, and at the a = a tie "abaa" > "aaa" sends the next a from word1 — the merge builds "cbcab" before the five remaining a's append.](figures/solution-merge-suffix-tiebreak.svg)
+
 On `("cabaa", "bcaaa")` the comparison sequence c>b, b>a, c>a, a=a
 (tie: `"abaa" > "aaa"`), a=a (`"baa" > "aaa"`) produces
 `"cbcabaaaaa"`. Full-tie inputs like `("z"*3000, "z"*3000)` simply

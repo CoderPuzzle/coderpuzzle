@@ -13,6 +13,8 @@ each factor is below the modulus and below `2⁵³`, so even JavaScript's plain
 numbers keep every intermediate product exact while still honoring "maximize
 before taking the modulo" (the heap phase never sees the modulus).
 
+![For nums = [6,3,3,2] with k = 2 the min-heap pops its minimum twice — 2 becomes 3, then a 3 becomes 4 — balancing the factors at 6 * 4 * 3 * 3 = 216.](figures/solution-min-heap-increments.svg)
+
 The heap does `k` increments of `O(log n)` plus one build of `O(n)`; with n
 and k up to `10⁵` this is comfortably fast in every language.
 

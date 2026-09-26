@@ -9,6 +9,8 @@ its end into a difference array records every light in constant time, and
 a single prefix sum over the array then yields the brightness at every
 position without ever comparing pairs of lights.
 
+![For n = 5 with lights [[0,1],[2,1],[3,2]] each clamped range writes +1/-1 marks whose prefix sum gives brightness [1,3,2,2,1] against requirement [0,2,1,4,1]; only position 3 falls short.](figures/solution-difference-array-brightness.svg)
+
 A second pass counts the positions whose running brightness meets the
 requirement, giving the answer directly.
 

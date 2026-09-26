@@ -16,6 +16,8 @@ exactly when the map's price for its timestamp no longer matches — so when an
 extremum is requested, the top is peeked, and while it disagrees with the map
 it is popped and discarded.
 
+![After update(1, 10), update(2, 5), update(1, 3), maximum() peeks the max-heap's (10, 1), pops it because the map now says 1 → 3, and (5, 2) answers 5 while the min-heap's buried (10, 1) waits its turn.](figures/solution-lazy-heap-garbage-pop.svg)
+
 This is safe because prices only need to be _equal_ for an entry to be valid,
 not identical objects: a corrected-back price revives nothing incorrectly,
 since duplicates of a valid pair simply return the same extremum. Each pushed

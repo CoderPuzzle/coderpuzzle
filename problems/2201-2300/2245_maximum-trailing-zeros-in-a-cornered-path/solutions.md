@@ -6,6 +6,8 @@ Trailing zeros of a product equal `min(v2, v5)` — the total exponents of 2 and
 
 To get any arm's exponent sum in constant time, the code builds four prefix-sum tables: running sums of `count2` and `count5` along each row (prefix per row, so any horizontal segment is a subtraction) and the same along each column. For an elbow at `(r, c)`, each candidate path takes one horizontal segment and one vertical segment, each of which _includes_ the elbow, so the elbow's exponents are subtracted once from the combined total — the `- cell2` / `- cell5` corrections. Straight paths and even the single-cell path need no special casing: an "arm" is allowed to degenerate to just the elbow, which recovers them as the degenerate L.
 
+![On the 5 x 5 example grid every cell carries its (twos, fives) pair, and at the best elbow (3, 2) the column-run up arm (v2 3, v5 2) and row-run right arm (v2 1, v5 1) combine into min(4, 3) = 3 trailing zeros.](figures/solution-elbow-exponent-sums.svg)
+
 The answer is the maximum over all cells of the best of the four pairings, floored at 0 for grids whose products never contain both a 2 and a 5. Factorization, prefix tables, and the final double loop are each a constant amount of work per cell, and the six tables are all `O(mn)`.
 
 **Complexity:** `O(mn)` time, `O(mn)` space.

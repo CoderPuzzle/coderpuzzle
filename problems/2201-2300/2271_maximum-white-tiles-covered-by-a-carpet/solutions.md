@@ -18,6 +18,8 @@ is linear after the sort. For the window `[i, j)` the full interval lengths
 sum to `prefix[j] - prefix[i]`; if the last tile `j - 1` extends past the
 reach, the overshoot is subtracted to leave exactly the covered portion.
 
+![On tiles = [[1, 5], [10, 11], [12, 18], [20, 25], [30, 32]] with carpetLen = 10 the carpet anchored at tile 10 reaches 19 and covers [10, 11] and [12, 18] whole, 2 + 7 = 9 white tiles, beating the 6 from anchor 1.](figures/solution-sliding-window-tiles.svg)
+
 Non-overlapping tiles inside `[1, 10⁹]` contain at most `10⁹` white tiles in
 total, so every prefix sum and the answer fit comfortably in 32 bits; only
 the reach `li + carpetLen - 1` can approach `2 × 10⁹`, just under the 32-bit

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="296" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- groups [[1,-1,-1],[3,-2,0]], nums [1,-1,0,1,-1,-1,3,-2,0];
+       cells 48x44 at x=90+54i, y=96; matches at starts 3 and 6; cursor lanes y=196 -->
+  <text x="168" y="66" text-anchor="middle" fill="#9aa7b2" font-size="12">starts 0, 1, 2 fail</text>
+  <text x="330" y="66" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">groups[0] = [1,-1,-1]</text>
+  <text x="492" y="66" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">groups[1] = [3,-2,0]</text>
+  <g stroke="#4169E1" stroke-width="1.4" fill="none">
+    <path d="M 252 88 V 80 H 408 V 88"/>
+    <path d="M 414 88 V 80 H 570 V 88"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="#f0f3f7">
+    <rect x="90" y="96" width="48" height="44"/><rect x="144" y="96" width="48" height="44"/>
+    <rect x="198" y="96" width="48" height="44"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="#dbe4fb">
+    <rect x="252" y="96" width="48" height="44"/><rect x="306" y="96" width="48" height="44"/>
+    <rect x="360" y="96" width="48" height="44"/><rect x="414" y="96" width="48" height="44"/>
+    <rect x="468" y="96" width="48" height="44"/><rect x="522" y="96" width="48" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="114" y="124" fill="#9aa7b2">1</text><text x="168" y="124" fill="#9aa7b2">-1</text>
+    <text x="222" y="124" fill="#9aa7b2">0</text><text x="276" y="124" fill="#1a2026">1</text>
+    <text x="330" y="124" fill="#1a2026">-1</text><text x="384" y="124" fill="#1a2026">-1</text>
+    <text x="438" y="124" fill="#1a2026">3</text><text x="492" y="124" fill="#1a2026">-2</text>
+    <text x="546" y="124" fill="#1a2026">0</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="114" y="160">0</text><text x="168" y="160">1</text><text x="222" y="160">2</text>
+    <text x="276" y="160">3</text><text x="330" y="160">4</text><text x="384" y="160">5</text>
+    <text x="438" y="160">6</text><text x="492" y="160">7</text><text x="546" y="160">8</text>
+  </g>
+  <circle cx="94" cy="196" r="3" fill="#42525e"/>
+  <circle cx="418" cy="196" r="3" fill="#42525e"/>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 94 196 H 412" marker-end="url(#arrow)"/>
+    <path d="M 418 196 H 576" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="250" y="190">pos 0 → 6, jumping past the first match</text>
+    <text x="497" y="190">pos 6 → 9</text>
+  </g>
+  <text x="114" y="216" text-anchor="middle" fill="#5c6b76" font-size="12">pos = 0</text>
+  <text x="330" y="252" text-anchor="middle" fill="#1a2026" font-size="13">Starts 0-2 fail against [1,-1,-1]; the first full match sits at start 3, the cursor</text>
+  <text x="330" y="272" text-anchor="middle" fill="#1a2026" font-size="13">jumps to 6, where [3,-2,0] matches outright — every group placed in order, so <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

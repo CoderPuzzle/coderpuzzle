@@ -54,6 +54,8 @@ live elements per position — a cell reads 1 while that stamp's element
 is still live — and a timestamp-to-value map remembers what each stamp
 carries.
 
+![After fetch(3) then fetch(5) on n = 8, the tape holds values 1-8 in place with holes at positions 3 and 6 while the vacated values live on as stamps 9 and 10; fetch(5) counts live positions 1, 2, 4, 5, 6 and lands on position 6, which re-appends as value 6 at stamp 10.](figures/solution-fenwick-virtual-tape.svg)
+
 Each fetch asks which region owns the `kth` slot. In the run, the answer
 is the smallest `x` with `x - front + 1 - holes up to x >= k`: a binary
 search whose every probe counts holes by a second binary search, after

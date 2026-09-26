@@ -14,6 +14,8 @@ most one set bit — the pseudo-palindrome condition. Odd path length
 needs one odd digit (the middle), even length needs none, and both cases
 are covered by the same at-most-one test.
 
+![On the Example 1 tree each root-to-leaf path toggles its digits' bits down the walk, and leaves [2,3,3] and [2,1,1] end at mask 2 with one set bit — the answer 2.](figures/solution-parity-mask-paths.svg)
+
 The traversal uses an explicit stack rather than recursion: the tree may
 be a chain `10⁵` nodes deep, beyond what the stricter language runtimes'
 call stacks allow, so the walk keeps its own frame list of

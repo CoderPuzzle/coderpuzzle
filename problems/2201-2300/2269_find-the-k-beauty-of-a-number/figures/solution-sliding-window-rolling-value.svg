@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- num = 240, k = 2; digit boxes 56x48 at y=64; accent brackets mark the two length-2 windows and their rolling values -->
+  <text x="280" y="46" text-anchor="middle" font-size="12.5" fill="#5c6b76">digits of num = 240, k = 2</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="152" y="64" width="56" height="48"/>
+    <rect x="232" y="64" width="56" height="48"/>
+    <rect x="312" y="64" width="56" height="48"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="17" font-weight="600">
+    <text x="180" y="94">2</text><text x="260" y="94">4</text><text x="340" y="94">0</text>
+  </g>
+  <path d="M 152 120 V 130 H 288 V 120" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="220" y="152" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="13.5">window "24" = 24 = 2*10 + 4</text>
+  <text x="220" y="174" text-anchor="middle" fill="#1a2026" font-size="13">240 % 24 = 0, <tspan fill="#4169E1" font-weight="600">count = 1</tspan></text>
+  <text x="280" y="206" text-anchor="middle" fill="#5c6b76" font-size="13">drop 2, shift, append 0: (24 % 10) * 10 + 0 = 40</text>
+  <line x1="280" y1="214" x2="280" y2="237" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 232 240 V 250 H 368 V 240" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="300" y="272" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="13.5">window "40" = 40</text>
+  <text x="300" y="294" text-anchor="middle" fill="#1a2026" font-size="13">240 % 40 = 0, <tspan fill="#4169E1" font-weight="600">count = 2</tspan></text>
+  <text x="280" y="324" text-anchor="middle" font-size="13" fill="#1a2026">Both windows divide 240 (24*10, 40*6), so the k-beauty is <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

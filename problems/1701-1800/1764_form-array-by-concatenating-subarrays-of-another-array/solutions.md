@@ -17,6 +17,8 @@ at a later start, that assignment's next window begins at or beyond the
 later start's end, so the earliest occurrence leaves a suffix that contains
 it — the choice is never wrong. Advance `pos` past the window and move on.
 
+![Sweeping nums = [1,-1,0,1,-1,-1,3,-2,0]: starts 0-2 fail against groups[0] = [1,-1,-1], the first full match sits at start 3 and advances the cursor to 6, where groups[1] = [3,-2,0] matches outright.](figures/solution-greedy-cursor-sweep.svg)
+
 A group whose search runs off the end of `nums` fails immediately, since
 every later group would have even less room; when every group is placed the
 answer is `true`. Each start position costs at most one pass over the group,

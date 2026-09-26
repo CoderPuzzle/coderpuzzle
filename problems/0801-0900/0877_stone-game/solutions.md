@@ -22,6 +22,8 @@ is `dp[0][n-1] > 0`. The total is odd, and a difference of totals has the
 same parity as their sum, so the value is never zero — Example 1's
 `[5,3,4,5]` resolves to a margin of exactly 1, Alice 9 stones to Bob's 8.
 
+![On piles [5, 3, 4, 5], the dp triangle fills by increasing interval length — the base diagonal dp[i][i] = piles[i], then each cell as the better of take-left and take-right — until dp[0][3] = max(5 − dp[1][3], 5 − dp[0][2]) = 1, Alice 9 stones to Bob's 8.](figures/solution-interval-dp-margin-triangle.svg)
+
 Every entry is a difference of pile sums, and at most 500 piles of at most
 500 stones each, so all margins stay far inside the 32-bit range. The even
 length carries a famous consequence the table rediscovers on its own: parity

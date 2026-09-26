@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- n=5, minProfit=3: dp[members][cap], cap clamped to [0,3]; tables at x=70/270/476, cells 32x26, rows m=5..0 from y=78 -->
+  <text x="320" y="28" text-anchor="middle" font-size="12" fill="#5c6b76">n = 5, minProfit = 3 — dp[members][cap] with cap clamped to [0, 3]</text>
+  <g font-size="11.5" fill="#5c6b76" text-anchor="middle">
+    <text x="134" y="52">base</text>
+    <text x="334" y="52">after crime (2 members, 2 profit)</text>
+    <text x="540" y="52">after crime (2 members, 3 profit)</text>
+  </g>
+  <g font-size="11.5" fill="#5c6b76" text-anchor="middle">
+    <text x="86" y="72">0</text><text x="118" y="72">1</text><text x="150" y="72">2</text><text x="182" y="72">3</text>
+    <text x="286" y="72">0</text><text x="318" y="72">1</text><text x="350" y="72">2</text><text x="382" y="72">3</text>
+    <text x="492" y="72">0</text><text x="524" y="72">1</text><text x="556" y="72">2</text><text x="588" y="72">3</text>
+  </g>
+  <!-- table 1: base dp[m][0] = 1 -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="70" y="78" width="32" height="26"/><rect x="102" y="78" width="32" height="26"/><rect x="134" y="78" width="32" height="26"/><rect x="166" y="78" width="32" height="26"/>
+    <rect x="70" y="104" width="32" height="26"/><rect x="102" y="104" width="32" height="26"/><rect x="134" y="104" width="32" height="26"/><rect x="166" y="104" width="32" height="26"/>
+    <rect x="70" y="130" width="32" height="26"/><rect x="102" y="130" width="32" height="26"/><rect x="134" y="130" width="32" height="26"/><rect x="166" y="130" width="32" height="26"/>
+    <rect x="70" y="156" width="32" height="26"/><rect x="102" y="156" width="32" height="26"/><rect x="134" y="156" width="32" height="26"/><rect x="166" y="156" width="32" height="26"/>
+    <rect x="70" y="182" width="32" height="26"/><rect x="102" y="182" width="32" height="26"/><rect x="134" y="182" width="32" height="26"/><rect x="166" y="182" width="32" height="26"/>
+    <rect x="70" y="208" width="32" height="26"/><rect x="102" y="208" width="32" height="26"/><rect x="134" y="208" width="32" height="26"/><rect x="166" y="208" width="32" height="26"/>
+  </g>
+  <!-- table 2: after crime (2, 2); accent border on dp[3][0] = 2, the clamped read for cap 3 -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="270" y="78" width="32" height="26"/><rect x="302" y="78" width="32" height="26"/><rect x="334" y="78" width="32" height="26"/><rect x="366" y="78" width="32" height="26"/>
+    <rect x="270" y="104" width="32" height="26"/><rect x="302" y="104" width="32" height="26"/><rect x="334" y="104" width="32" height="26"/><rect x="366" y="104" width="32" height="26"/>
+    <rect x="270" y="130" width="32" height="26" stroke="#4169E1" stroke-width="2"/><rect x="302" y="130" width="32" height="26"/><rect x="334" y="130" width="32" height="26"/><rect x="366" y="130" width="32" height="26"/>
+    <rect x="270" y="156" width="32" height="26"/><rect x="302" y="156" width="32" height="26"/><rect x="334" y="156" width="32" height="26"/><rect x="366" y="156" width="32" height="26"/>
+    <rect x="270" y="182" width="32" height="26"/><rect x="302" y="182" width="32" height="26"/><rect x="334" y="182" width="32" height="26"/><rect x="366" y="182" width="32" height="26"/>
+    <rect x="270" y="208" width="32" height="26"/><rect x="302" y="208" width="32" height="26"/><rect x="334" y="208" width="32" height="26"/><rect x="366" y="208" width="32" height="26"/>
+  </g>
+  <!-- table 3: after crime (2, 3); dp[5][3] = 2 is the answer -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="476" y="78" width="32" height="26"/><rect x="508" y="78" width="32" height="26"/><rect x="540" y="78" width="32" height="26"/><rect x="572" y="78" width="32" height="26" fill="#4169E1"/>
+    <rect x="476" y="104" width="32" height="26"/><rect x="508" y="104" width="32" height="26"/><rect x="540" y="104" width="32" height="26"/><rect x="572" y="104" width="32" height="26"/>
+    <rect x="476" y="130" width="32" height="26"/><rect x="508" y="130" width="32" height="26"/><rect x="540" y="130" width="32" height="26"/><rect x="572" y="130" width="32" height="26"/>
+    <rect x="476" y="156" width="32" height="26"/><rect x="508" y="156" width="32" height="26"/><rect x="540" y="156" width="32" height="26"/><rect x="572" y="156" width="32" height="26"/>
+    <rect x="476" y="182" width="32" height="26"/><rect x="508" y="182" width="32" height="26"/><rect x="540" y="182" width="32" height="26"/><rect x="572" y="182" width="32" height="26"/>
+    <rect x="476" y="208" width="32" height="26"/><rect x="508" y="208" width="32" height="26"/><rect x="540" y="208" width="32" height="26"/><rect x="572" y="208" width="32" height="26"/>
+  </g>
+  <g font-size="11.5" fill="#5c6b76" text-anchor="end">
+    <text x="62" y="95">m=5</text><text x="62" y="121">m=4</text><text x="62" y="147">m=3</text><text x="62" y="173">m=2</text><text x="62" y="199">m=1</text><text x="62" y="225">m=0</text>
+    <text x="262" y="95">m=5</text><text x="262" y="121">m=4</text><text x="262" y="147">m=3</text><text x="262" y="173">m=2</text><text x="262" y="199">m=1</text><text x="262" y="225">m=0</text>
+    <text x="468" y="95">m=5</text><text x="468" y="121">m=4</text><text x="468" y="147">m=3</text><text x="468" y="173">m=2</text><text x="468" y="199">m=1</text><text x="468" y="225">m=0</text>
+  </g>
+  <g font-size="12" text-anchor="middle" fill="#1a2026">
+    <!-- base: every row [1, 0, 0, 0] -->
+    <g>
+      <text x="86" y="95">1</text><text x="118" y="95">0</text><text x="150" y="95">0</text><text x="182" y="95">0</text>
+      <text x="86" y="121">1</text><text x="118" y="121">0</text><text x="150" y="121">0</text><text x="182" y="121">0</text>
+      <text x="86" y="147">1</text><text x="118" y="147">0</text><text x="150" y="147">0</text><text x="182" y="147">0</text>
+      <text x="86" y="173">1</text><text x="118" y="173">0</text><text x="150" y="173">0</text><text x="182" y="173">0</text>
+      <text x="86" y="199">1</text><text x="118" y="199">0</text><text x="150" y="199">0</text><text x="182" y="199">0</text>
+      <text x="86" y="225">1</text><text x="118" y="225">0</text><text x="150" y="225">0</text><text x="182" y="225">0</text>
+    </g>
+    <!-- after crime (2, 2): m >= 2 becomes [2, 1, 1, 0] -->
+    <g>
+      <text x="286" y="95">2</text><text x="318" y="95">1</text><text x="350" y="95">1</text><text x="382" y="95">0</text>
+      <text x="286" y="121">2</text><text x="318" y="121">1</text><text x="350" y="121">1</text><text x="382" y="121">0</text>
+      <text x="286" y="147" font-weight="600">2</text><text x="318" y="147">1</text><text x="350" y="147">1</text><text x="382" y="147">0</text>
+      <text x="286" y="173">2</text><text x="318" y="173">1</text><text x="350" y="173">1</text><text x="382" y="173">0</text>
+      <text x="286" y="199">1</text><text x="318" y="199">0</text><text x="350" y="199">0</text><text x="382" y="199">0</text>
+      <text x="286" y="225">1</text><text x="318" y="225">0</text><text x="350" y="225">0</text><text x="382" y="225">0</text>
+    </g>
+    <!-- after crime (2, 3): dp[5] = [4, 3, 3, 2], dp[4] = [4, 3, 3, 2], m = 3, 2 -> [3, 2, 2, 1] -->
+    <g>
+      <text x="492" y="95">4</text><text x="524" y="95">3</text><text x="556" y="95">3</text><text x="588" y="95" fill="#ffffff" font-weight="600">2</text>
+      <text x="492" y="121">4</text><text x="524" y="121">3</text><text x="556" y="121">3</text><text x="588" y="121">2</text>
+      <text x="492" y="147">3</text><text x="524" y="147">2</text><text x="556" y="147">2</text><text x="588" y="147">1</text>
+      <text x="492" y="173">3</text><text x="524" y="173">2</text><text x="556" y="173">2</text><text x="588" y="173">1</text>
+      <text x="492" y="199">1</text><text x="524" y="199">0</text><text x="556" y="199">0</text><text x="588" y="199">0</text>
+      <text x="492" y="225">1</text><text x="524" y="225">0</text><text x="556" y="225">0</text><text x="588" y="225">0</text>
+    </g>
+  </g>
+  <text x="320" y="258" text-anchor="middle" font-size="12.5" fill="#5c6b76">Descending m = 5 → 2, cap = 3 → 0 uses each crime once; the clamp is max(0, cap − p).</text>
+  <text x="320" y="290" text-anchor="middle" font-size="13" fill="#1a2026">Crime (2, 3) at cap 3 clamps to cap 0 and adds the accented dp[3][0] = <tspan fill="#4169E1" font-weight="600">2</tspan> —</text>
+  <text x="320" y="310" text-anchor="middle" font-size="13" fill="#1a2026">so dp[5][3] = <tspan fill="#4169E1" font-weight="600">2</tspan>: the schemes are {crime 1} alone and {crime 0, crime 1}.</text>
+</svg>

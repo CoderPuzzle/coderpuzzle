@@ -18,6 +18,8 @@ so the set at a cell is the union of all balances its predecessors could
 reach. With at most `m + n - 1 <= 199` characters per path, the balance never
 leaves the range `0..199`, which keeps every set small.
 
+![On the 4 x 3 grid of Example 1 the twelve cells fill row-major with the balance sets reachable from above and left, and the bottom-right set {0, 2, 4} contains 0, so a valid path exists.](figures/solution-balance-set-dp-grid.svg)
+
 After the scan, the answer is whether the bottom-right cell can be reached
 with balance `0`. The DP is purely iterative and never revisits a cell, so
 large 100 x 100 grids are handled in bounded time regardless of recursion

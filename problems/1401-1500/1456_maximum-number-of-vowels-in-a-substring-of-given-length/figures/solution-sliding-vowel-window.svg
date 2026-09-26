@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 395" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="395" fill="#ffffff"/>
+  <!-- s = "abciiidef", k = 3; cells x = 46 + 52i, w 48; vowels a,i,i,i,e shaded -->
+  <!-- windows abc..def: vowel counts 1 1 2 3 2 2 1, peak iii = 3 -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="46" y="36" width="48" height="40" fill="#dbe4fb"/>
+    <rect x="98" y="36" width="48" height="40" fill="#ffffff"/>
+    <rect x="150" y="36" width="48" height="40" fill="#ffffff"/>
+    <rect x="202" y="36" width="48" height="40" fill="#dbe4fb"/>
+    <rect x="254" y="36" width="48" height="40" fill="#dbe4fb"/>
+    <rect x="306" y="36" width="48" height="40" fill="#dbe4fb"/>
+    <rect x="358" y="36" width="48" height="40" fill="#ffffff"/>
+    <rect x="410" y="36" width="48" height="40" fill="#dbe4fb"/>
+    <rect x="462" y="36" width="48" height="40" fill="#ffffff"/>
+  </g>
+  <rect x="199" y="33" width="158" height="46" rx="6" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="70" y="61">a</text><text x="122" y="61">b</text><text x="174" y="61">c</text>
+    <text x="226" y="61">i</text><text x="278" y="61">i</text><text x="330" y="61">i</text>
+    <text x="382" y="61">d</text><text x="434" y="61">e</text><text x="486" y="61">f</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="70" y="96">0</text><text x="122" y="96">1</text><text x="174" y="96">2</text>
+    <text x="226" y="96">3</text><text x="278" y="96">4</text><text x="330" y="96">5</text>
+    <text x="382" y="96">6</text><text x="434" y="96">7</text><text x="486" y="96">8</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="78" y="132">step</text><text x="160" y="132">window</text><text x="262" y="132">enter</text>
+    <text x="352" y="132">leave</text><text x="438" y="132">count</text><text x="498" y="132">best</text>
+  </g>
+  <path d="M 56 140 H 512" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="56" y="222" width="460" height="25" rx="4" fill="#dbe4fb"/>
+  <g text-anchor="middle" font-size="13">
+    <text x="78" y="160" fill="#5c6b76">init</text>
+    <text x="78" y="187" fill="#1a2026">1</text><text x="78" y="214" fill="#1a2026">2</text>
+    <text x="78" y="241" fill="#1a2026">3</text><text x="78" y="268" fill="#1a2026">4</text>
+    <text x="78" y="295" fill="#1a2026">5</text><text x="78" y="322" fill="#1a2026">6</text>
+    <g fill="#1a2026" letter-spacing="3">
+      <text x="160" y="160">abc</text><text x="160" y="187">bci</text><text x="160" y="214">cii</text>
+      <text x="160" y="241" font-weight="600">iii</text><text x="160" y="268">iid</text>
+      <text x="160" y="295">ide</text><text x="160" y="322">def</text>
+    </g>
+    <text x="262" y="160" fill="#9aa7b2">—</text><text x="352" y="160" fill="#9aa7b2">—</text>
+    <text x="262" y="187" fill="#1a2026">i <tspan fill="#4169E1" font-weight="600">+1</tspan></text>
+    <text x="352" y="187" fill="#1a2026">a <tspan fill="#4169E1" font-weight="600">-1</tspan></text>
+    <text x="262" y="214" fill="#1a2026">i <tspan fill="#4169E1" font-weight="600">+1</tspan></text>
+    <text x="352" y="214" fill="#1a2026">b <tspan fill="#9aa7b2">0</tspan></text>
+    <text x="262" y="241" fill="#1a2026">i <tspan fill="#4169E1" font-weight="600">+1</tspan></text>
+    <text x="352" y="241" fill="#1a2026">c <tspan fill="#9aa7b2">0</tspan></text>
+    <text x="262" y="268" fill="#1a2026">d <tspan fill="#9aa7b2">0</tspan></text>
+    <text x="352" y="268" fill="#1a2026">i <tspan fill="#4169E1" font-weight="600">-1</tspan></text>
+    <text x="262" y="295" fill="#1a2026">e <tspan fill="#4169E1" font-weight="600">+1</tspan></text>
+    <text x="352" y="295" fill="#1a2026">i <tspan fill="#4169E1" font-weight="600">-1</tspan></text>
+    <text x="262" y="322" fill="#1a2026">f <tspan fill="#9aa7b2">0</tspan></text>
+    <text x="352" y="322" fill="#1a2026">i <tspan fill="#4169E1" font-weight="600">-1</tspan></text>
+    <text x="438" y="160" fill="#1a2026" font-weight="600">1</text>
+    <text x="438" y="187" fill="#1a2026" font-weight="600">1</text>
+    <text x="438" y="214" fill="#1a2026" font-weight="600">2</text>
+    <text x="438" y="241" fill="#4169E1" font-weight="600">3</text>
+    <text x="438" y="268" fill="#1a2026" font-weight="600">2</text>
+    <text x="438" y="295" fill="#1a2026" font-weight="600">2</text>
+    <text x="438" y="322" fill="#1a2026" font-weight="600">1</text>
+    <text x="498" y="160" fill="#1a2026" font-weight="600">1</text>
+    <text x="498" y="187" fill="#1a2026" font-weight="600">1</text>
+    <text x="498" y="214" fill="#1a2026" font-weight="600">2</text>
+    <text x="498" y="241" fill="#4169E1" font-weight="600">3</text>
+    <text x="498" y="268" fill="#4169E1" font-weight="600">3</text>
+    <text x="498" y="295" fill="#4169E1" font-weight="600">3</text>
+    <text x="498" y="322" fill="#4169E1" font-weight="600">3</text>
+  </g>
+  <text x="280" y="358" text-anchor="middle" fill="#1a2026" font-size="13">Each slide applies the enter and leave deltas; from abc's 1 the count</text>
+  <text x="280" y="378" text-anchor="middle" fill="#1a2026" font-size="13">climbs to <tspan fill="#4169E1" font-weight="600">3</tspan> on iii and falls back — the answer is <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

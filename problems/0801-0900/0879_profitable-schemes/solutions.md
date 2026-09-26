@@ -6,6 +6,8 @@ Counting schemes is a 0-1 knapsack over crimes with two budgets: members (at mos
 
 The base case `dp[members][0] = 1` for every member budget seeds the empty scheme, which trivially satisfies "at least 0" profit — this is what makes `minProfit = 0` fall out naturally (every subset counts, including the empty one). Each crime `(g, p)` is processed by iterating `members` from `n` down to `g` and `cap` from `minProfit` down to `0`; the descending order is the classic knapsack guard ensuring each crime is used at most once, reading the previous crime's counts before overwriting them. The transition adds `dp[members - g][max(0, cap - p)]`, where `max(0, ...)` performs the profit clamp, and every accumulation is reduced modulo `10^9 + 7`.
 
+![With n = 5 and minProfit = 3, the dp[members][cap] table fills once per crime in descending member/cap order — crime (2, 2) lifts every row m ≥ 2 to [2, 1, 1, 0], and crime (2, 3) clamps cap 3 to cap 0, adding dp[3][0] = 2 so dp[5][3] ends at 2 schemes.](figures/solution-knapsack-capped-profit-table.svg)
+
 After all crimes are processed, `dp[n][minProfit]` is the number of subsets that fit the member budget while meeting the profit floor. With at most `G = len(group)` crimes, `n <= 100`, and `minProfit <= 100`, the triple loop stays within a few million operations.
 
 Example 1 (`n = 5`, `minProfit = 3`, `group = [2,2]`, `profit = [2,3]`) fills a tiny table:

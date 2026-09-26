@@ -17,6 +17,8 @@ and taking the largest such digit first is optimal because the remaining
 positions are forced to be fewer. When `dp[target]` is unreachable the
 answer is `"0"`.
 
+![For cost = [4, 3, 2, 5, 6, 7, 2, 5, 5] and target 9, the dp row of most digits per exact budget reads 0, -, 1, 1, 2, 2, 3, 3, 4, 4 and the greedy descent 9, 7, 5, 3, 0 picks digits 7, 7, 7, 2 to spell 7772.](figures/solution-dp-row-greedy-descent.svg)
+
 Costs and target are at most 5000, so the table is 5001 integers and the
 two phases are `9 · target` operations each. The answer string can hold
 up to 5000 digits — well within the output budget.

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 308" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="308" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- n=8 after fetch(3) then fetch(5); tape cells 52x46 at x=53+58i (centers 79..601), y=114;
+       holes at positions 3 and 6, stamps at 9/10 carry values 3/6; arrow lanes y=200/230 -->
+  <text x="340" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">n = 8, after fetch(3) then fetch(5) — the tape never shifts, it only gains holes and stamps</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="282" y="84">initial run: positions 1-8, front = 1, holes {3, 6}</text>
+    <text x="572" y="84">Fenwick stamps</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="none">
+    <path d="M 53 98 V 92 H 511 V 98"/>
+    <path d="M 517 98 V 92 H 627 V 98"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="53" y="114" width="52" height="46"/><rect x="111" y="114" width="52" height="46"/>
+    <rect x="227" y="114" width="52" height="46"/><rect x="285" y="114" width="52" height="46"/>
+    <rect x="401" y="114" width="52" height="46"/><rect x="459" y="114" width="52" height="46"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="#f0f3f7" stroke-dasharray="4 3">
+    <rect x="169" y="114" width="52" height="46"/><rect x="343" y="114" width="52" height="46"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="#dbe4fb">
+    <rect x="517" y="114" width="52" height="46"/><rect x="575" y="114" width="52" height="46"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="79" y="142" fill="#1a2026">1</text><text x="137" y="142" fill="#1a2026">2</text>
+    <text x="253" y="142" fill="#1a2026">4</text><text x="311" y="142" fill="#1a2026">5</text>
+    <text x="427" y="142" fill="#1a2026">7</text><text x="485" y="142" fill="#1a2026">8</text>
+    <text x="543" y="142" fill="#1a2026">3</text><text x="601" y="142" fill="#1a2026">6</text>
+  </g>
+  <g text-anchor="middle" font-size="15" fill="#9aa7b2">
+    <text x="195" y="142">×</text><text x="369" y="142">×</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="79" y="180">1</text><text x="137" y="180">2</text><text x="195" y="180">3</text>
+    <text x="253" y="180">4</text><text x="311" y="180">5</text><text x="369" y="180">6</text>
+    <text x="427" y="180">7</text><text x="485" y="180">8</text><text x="543" y="180">9</text>
+    <text x="601" y="180">10</text>
+  </g>
+  <text x="24" y="142" fill="#5c6b76" font-size="12">value</text>
+  <text x="24" y="180" fill="#5c6b76" font-size="12">pos</text>
+  <path d="M 179 160 V 200 H 527 V 160" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 353 160 V 230 H 585 V 160" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="444" y="196" text-anchor="middle" fill="#4169E1" font-size="12">value 3 → stamp 9</text>
+  <text x="469" y="226" text-anchor="middle" fill="#4169E1" font-size="12">value 6 → stamp 10</text>
+  <text x="340" y="272" text-anchor="middle" fill="#1a2026" font-size="13">Each fetch finds the kth smallest live position: after fetch(3) vacates position 3 for stamp 9,</text>
+  <text x="340" y="292" text-anchor="middle" fill="#1a2026" font-size="13">fetch(5) counts 1, 2, 4, 5, 6 and lands on position 6 — vacated for <tspan fill="#4169E1" font-weight="600">value 6 at stamp 10</tspan>.</text>
+</svg>

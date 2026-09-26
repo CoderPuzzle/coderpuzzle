@@ -8,6 +8,8 @@ The maximum and minimum are maintained with two deques of indices. The max-deque
 
 The right pointer advances one position at a time. While the front maximum minus the front minimum exceeds the limit, the left pointer advances, popping a deque front exactly when it is the index being evicted. After each shrink the window is again valid, and its length is compared against the best so far. Every index enters and leaves each deque at most once, so the whole pass is linear despite the nested loops.
 
+![On nums = [8, 2, 4, 7] with limit 4, each step shows the falling max-deque and the rising min-deque; the two failing spreads evict the 8 and then the 2, leaving window [4, 7] with spread 3 and the best length 2.](figures/solution-deque-window-shrink.svg)
+
 Duplicate values are handled by popping on non-strict comparisons, which still leaves one copy of the extreme in the deque, and a single-element window is always valid since its spread is zero, so the loop can never get stuck.
 
 Example 1 (`nums = [8,2,4,7]`, `limit = 4`) tracks both deques:

@@ -9,6 +9,8 @@ XOR-ing the two numbers concentrates that information in one value: a bit of
 `start ^ goal` is 1 precisely when start and goal differ there. The answer is
 the popcount of this single word.
 
+![For start = 10 and goal = 7 the XOR word 1010 ^ 0111 = 1101 accents the three differing bit positions, so the popcount 3 is the answer.](figures/solution-xor-popcount-flips.svg)
+
 Each language counts set bits with its native idiom — `count_ones`,
 `bits.OnesCount`, `Integer.bitCount`, C++20 `popcount` — while JavaScript and
 TypeScript clear the lowest set bit per iteration with `diff &= diff - 1`

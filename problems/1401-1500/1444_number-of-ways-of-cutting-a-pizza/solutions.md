@@ -17,6 +17,8 @@ the kept piece still does; vertical cuts are symmetric over columns. The
 base case is `remaining == 0`: exactly one way when the final piece holds
 an apple, none otherwise.
 
+![On pizza = ['A..', 'AAA', '...'] with k = 3, state dp(0, 0, 2) fans over its four first cuts: the two cuts whose kept piece still holds an apple contribute dp(1, 0, 1) = 2 and dp(0, 1, 1) = 1 while the other two contribute 0, for 3 ways.](figures/solution-pizza-cut-fanout.svg)
+
 The recursion depth is at most `k <= 10`, so no stack concerns, and all
 counts are reduced modulo `10⁹ + 7` as they combine; intermediate sums
 stay below `10⁹ · 100`, safe in 64-bit arithmetic.

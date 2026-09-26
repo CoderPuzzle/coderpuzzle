@@ -6,6 +6,8 @@ Each query asks whether course u is a prerequisite of course v, which is a reach
 
 The solution runs Kahn's algorithm with an indegree array and a queue seeded with the indegree-zero courses. When a course u is popped, the set it forwards is reach[u] merged with u's own bit, and this is OR-merged into every course that depends on u while its indegree is decremented. Topological order is what makes a single pass sufficient: by the time u is popped, every course that can reach u has already merged its bits into reach[u], so the transitive closure propagates with no iteration or fixpoint loop.
 
+![On the Example 3 DAG Kahn pops 1, 2, 0 and OR-merges each forwarded set into its dependents, leaving reach[0] = {1, 2, 0}; both queries pass by one bit test.](figures/solution-kahn-bitset-reach.svg)
+
 Each reachability set is one integer of numCourses bits, so a merge is a single word-packed OR instead of an element-by-element union — the precomputation is effectively linear in the number of edges plus a small per-operation cost for the bit arithmetic. The graph is guaranteed acyclic, so every course is eventually popped and no course is left with a stale indegree. Answering a query then just tests whether u's bit is set in reach[v].
 
 **Complexity:** `O((V + E) · V / 64 + Q)` time, `O(V² / 64)` space.
