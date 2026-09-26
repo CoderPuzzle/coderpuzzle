@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 314" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="314" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- robot = [0,4,6], factory = [[2,2],[6,2]]; axis y=72, x(p) = 90+76p; robots r=10 at y=38; factory squares 20x20; dp cells 60x30, centers x = 302+70k -->
+  <text x="90" y="16" text-anchor="middle" fill="#5c6b76" font-size="11">robots</text>
+  <g fill="#1a2026">
+    <circle cx="90" cy="38" r="10"/><circle cx="394" cy="38" r="10"/><circle cx="546" cy="38" r="10"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="11" fill="#ffffff">
+    <text x="90" y="42">0</text><text x="394" y="42">4</text><text x="546" y="42">6</text>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 90 48 Q 150 124 228 71" marker-end="url(#arrow)"/>
+    <path d="M 394 48 Q 330 124 254 74" marker-end="url(#arrow)"/>
+    <path d="M 546 49 L 546 57" marker-end="url(#arrow)"/>
+  </g>
+  <line x1="50" y1="72" x2="600" y2="72" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="90" y1="72" x2="90" y2="78"/><line x1="242" y1="72" x2="242" y2="78"/>
+    <line x1="394" y1="72" x2="394" y2="78"/><line x1="546" y1="72" x2="546" y2="78"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="90" y="93">0</text><text x="242" y="93">2</text><text x="394" y="93">4</text><text x="546" y="93">6</text>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8">
+    <rect x="232" y="62" width="20" height="20"/><rect x="536" y="62" width="20" height="20"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12">
+    <text x="242" y="112">F1 (cap 2)</text><text x="546" y="112">F2 (cap 2)</text>
+  </g>
+  <g fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="142" y="122" text-anchor="middle">2</text><text x="338" y="122" text-anchor="middle">2</text>
+    <text x="558" y="57">0</text>
+  </g>
+  <text x="56" y="164" fill="#5c6b76" font-size="12">dp after each factory</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="302" y="164">dp[0]</text><text x="372" y="164">dp[1]</text><text x="442" y="164">dp[2]</text><text x="512" y="164">dp[3]</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="272" y="182" width="60" height="30"/><rect x="342" y="182" width="60" height="30"/>
+    <rect x="412" y="182" width="60" height="30"/><rect x="482" y="182" width="60" height="30"/>
+    <rect x="272" y="220" width="60" height="30"/><rect x="342" y="220" width="60" height="30"/>
+    <rect x="412" y="220" width="60" height="30"/>
+  </g>
+  <rect x="482" y="220" width="60" height="30" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-size="13.5">
+    <text x="56" y="201" text-anchor="start" font-size="12.5" fill="#1a2026">after F1 (pos 2, cap 2)</text>
+    <text x="302" y="201" fill="#1a2026">0</text><text x="372" y="201" fill="#1a2026">2</text>
+    <text x="442" y="201" fill="#1a2026">4</text><text x="512" y="201" fill="#5c6b76">∞</text>
+    <text x="56" y="239" text-anchor="start" font-size="12.5" fill="#1a2026">after F2 (pos 6, cap 2)</text>
+    <text x="302" y="239" fill="#1a2026">0</text><text x="372" y="239" fill="#1a2026">2</text>
+    <text x="442" y="239" fill="#1a2026">4</text><text x="512" y="239" fill="#4169E1" font-weight="600">4</text>
+  </g>
+  <text x="320" y="286" text-anchor="middle" fill="#1a2026" font-size="13">Sorted, each factory absorbs one contiguous robot block: F1 takes {0, 4}, F2 takes {6}.</text>
+  <text x="320" y="304" text-anchor="middle" fill="#1a2026" font-size="13">dp[3] = |2−0| + |2−4| + |6−6| = <tspan fill="#4169E1" font-weight="600">4</tspan> — the non-crossing optimum.</text>
+</svg>

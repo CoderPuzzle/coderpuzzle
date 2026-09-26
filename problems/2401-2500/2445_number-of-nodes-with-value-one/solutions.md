@@ -17,6 +17,8 @@ walk (which costs `O(q · n)` at the constraints) and no DFS over an
 explicit tree. The tree exists only as the parent formula; nothing is
 built.
 
+![On the n = 5 tree of Example 1 with queries [1, 2, 5], sweeping labels in order accumulates each node's coverage from its parent — 1, 2, 1, 2, 3 — leaving nodes 1, 3, 5 odd, so the answer is 3.](figures/solution-coverage-parity-tally.svg)
+
 Counts fit easily in 32 bits: at most `10⁵` queries touch any node's
 chain. The labels themselves stay under `10⁵`, so index arithmetic is
 exact in every language with room to spare.

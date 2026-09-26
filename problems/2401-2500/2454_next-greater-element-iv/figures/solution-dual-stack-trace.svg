@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 304" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="304" fill="#ffffff"/>
+  <!-- nums = [2,4,0,9,6]; panels x = 8+130k w 122; stack cells 48x22 (top of stack drawn first); result cells 80x26 at y=192 -->
+  <g fill="#f0f3f7">
+    <rect x="8" y="10" width="122" height="158" rx="8"/><rect x="138" y="10" width="122" height="158" rx="8"/>
+    <rect x="268" y="10" width="122" height="158" rx="8"/><rect x="398" y="10" width="122" height="158" rx="8"/>
+    <rect x="528" y="10" width="122" height="158" rx="8"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13" fill="#1a2026">
+    <text x="69" y="31">i = 0</text><text x="199" y="31">i = 1</text><text x="329" y="31">i = 2</text>
+    <text x="459" y="31">i = 3</text><text x="589" y="31">i = 4</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12" fill="#4169E1">
+    <text x="69" y="48">x = 2</text><text x="199" y="48">x = 4</text><text x="329" y="48">x = 0</text>
+    <text x="459" y="48">x = 9</text><text x="589" y="48">x = 6</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="43" y="70">1st</text><text x="97" y="70">2nd</text>
+    <text x="173" y="70">1st</text><text x="227" y="70">2nd</text>
+    <text x="303" y="70">1st</text><text x="357" y="70">2nd</text>
+    <text x="433" y="70">1st</text><text x="487" y="70">2nd</text>
+    <text x="563" y="70">1st</text><text x="617" y="70">2nd</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <!-- i = 0 -->
+    <rect x="18" y="76" width="48" height="22"/>
+    <!-- i = 1 -->
+    <rect x="148" y="76" width="48" height="22"/><rect x="202" y="76" width="48" height="22"/>
+    <!-- i = 2 -->
+    <rect x="278" y="76" width="48" height="22"/><rect x="278" y="98" width="48" height="22"/><rect x="332" y="76" width="48" height="22"/>
+    <!-- i = 3 -->
+    <rect x="408" y="76" width="48" height="22"/><rect x="462" y="76" width="48" height="22"/><rect x="462" y="98" width="48" height="22"/>
+    <!-- i = 4 -->
+    <rect x="538" y="76" width="48" height="22"/><rect x="538" y="98" width="48" height="22"/>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#1a2026">
+    <text x="42" y="91">2 (i0)</text>
+    <text x="172" y="91">4 (i1)</text><text x="226" y="91">2 (i0)</text>
+    <text x="302" y="91">0 (i2)</text><text x="302" y="113">4 (i1)</text><text x="356" y="91">2 (i0)</text>
+    <text x="432" y="91">9 (i3)</text><text x="486" y="91">0 (i2)</text><text x="486" y="113">4 (i1)</text>
+    <text x="562" y="91">6 (i4)</text><text x="562" y="113">9 (i3)</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5">
+    <text x="69" y="142" fill="#9aa7b2">—</text>
+    <text x="199" y="142" fill="#5c6b76">i0 → 2nd stack</text>
+    <text x="329" y="142" fill="#9aa7b2">—</text>
+    <text x="459" y="132" fill="#4169E1" font-weight="600">ans[0] = 9</text>
+    <text x="459" y="150" fill="#5c6b76">i1, i2 → 2nd</text>
+    <text x="589" y="132" fill="#4169E1" font-weight="600">ans[1] = 6</text>
+    <text x="589" y="150" fill="#4169E1" font-weight="600">ans[2] = 6</text>
+  </g>
+  <text x="8" y="185" fill="#5c6b76" font-size="11">result</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.3">
+    <rect x="29" y="192" width="80" height="26"/><rect x="159" y="192" width="80" height="26"/><rect x="289" y="192" width="80" height="26"/>
+    <rect x="419" y="192" width="80" height="26"/><rect x="549" y="192" width="80" height="26"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="69" y="210" fill="#4169E1">9</text><text x="199" y="210" fill="#4169E1">6</text><text x="329" y="210" fill="#4169E1">6</text>
+    <text x="459" y="210" fill="#9aa7b2">−1</text><text x="589" y="210" fill="#9aa7b2">−1</text>
+  </g>
+  <text x="330" y="246" text-anchor="middle" fill="#5c6b76" font-size="12">stacks are drawn top-of-stack first; each arrival pops every smaller top it sees</text>
+  <text x="330" y="272" text-anchor="middle" fill="#1a2026" font-size="13">Arriving 9 answers i0 (its second greater) and graduates i1, i2 into the second stack;</text>
+  <text x="330" y="290" text-anchor="middle" fill="#1a2026" font-size="13">then 6 answers i1 and i2; i3 and i4 never see two greater values: <tspan fill="#4169E1" font-weight="600">[9, 6, 6, −1, −1]</tspan>.</text>
+</svg>

@@ -6,6 +6,8 @@ Each hiring session sees only the first `candidates` and last `candidates` remai
 
 Each round pops the cheaper heap top, preferring `left` on ties — the `left[0] <= right[0]` comparison encodes both the cost rule and the tie rule, since an equal pair resolves to the left one. After a hire from one side, the window on that side refills from the untouched middle: pointer `i` feeds `left` and pointer `j` feeds `right`, but only while `i <= j`, so no middle worker is ever inserted twice. Exactly `k` rounds run, accumulating the popped costs.
 
+![On costs = [17, 12, 10, 2, 7, 2, 11, 20, 8] with k = 3 and candidates = 4, the round log shows the 2-vs-2 tie hired from the left, the single refill at i = 4, and the running total 2 + 2 + 7 = 11.](figures/solution-two-heap-rounds.svg)
+
 The degenerate case gets special treatment: when `2 * candidates >= n`, the two windows overlap or cover everything, meaning every remaining worker is always eligible, and the greedy is simply "hire the `k` cheapest overall" — computed by one sort. Handling this up front keeps the two-pointer refill logic free of overlap bugs, and it is also the faster path when it applies.
 
 Initialization heapifies the two windows in linear time; afterwards each of the `k` hires does a constant number of `O(log candidates)` heap operations. With `k <= n <= 10^5` the logarithmic factor is the whole cost of the main path, and the fallback path is a single sort.

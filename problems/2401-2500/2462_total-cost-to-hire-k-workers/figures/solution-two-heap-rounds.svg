@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="350" fill="#ffffff"/>
+  <!-- costs = [17,12,10,2,7,2,11,20,8], k = 3, candidates = 4; cells 54x36 pitch 58 from x=61, y=70; round table rows y=198,230,262 -->
+  <text x="175" y="44" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">left heap · first 4</text>
+  <text x="465" y="44" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">right heap · last 4</text>
+  <g fill="none" stroke="#42525e" stroke-width="1.5">
+    <path d="M 61 58 L 61 52 L 289 52 L 289 58"/>
+    <path d="M 351 58 L 351 52 L 579 52 L 579 58"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="61" y="70" width="54" height="36"/><rect x="119" y="70" width="54" height="36"/><rect x="177" y="70" width="54" height="36"/>
+    <rect x="235" y="70" width="54" height="36"/><rect x="293" y="70" width="54" height="36"/><rect x="351" y="70" width="54" height="36"/>
+    <rect x="409" y="70" width="54" height="36"/><rect x="467" y="70" width="54" height="36"/><rect x="525" y="70" width="54" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5" fill="#1a2026">
+    <text x="88" y="93">17</text><text x="146" y="93">12</text><text x="204" y="93">10</text><text x="262" y="93">2</text>
+    <text x="320" y="93">7</text><text x="378" y="93">2</text><text x="436" y="93">11</text><text x="494" y="93">20</text><text x="552" y="93">8</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="88" y="122">i0</text><text x="146" y="122">i1</text><text x="204" y="122">i2</text><text x="262" y="122">i3</text>
+    <text x="320" y="122">i4</text><text x="378" y="122">i5</text><text x="436" y="122">i6</text><text x="494" y="122">i7</text><text x="552" y="122">i8</text>
+  </g>
+  <text x="320" y="141" text-anchor="middle" fill="#5c6b76" font-size="11">i4 starts in neither heap</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="75" y="170">round</text><text x="185" y="170">left top</text><text x="300" y="170">right top</text>
+    <text x="445" y="170">action</text><text x="580" y="170">total</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="75" y="198" fill="#5c6b76">1</text>
+    <text x="185" y="198" fill="#4169E1" font-weight="600">2 (i3)</text><text x="300" y="198" fill="#1a2026">2 (i5)</text>
+    <text x="445" y="198" fill="#1a2026">tie → left · refill 7 (i4)</text><text x="580" y="198" fill="#1a2026" font-weight="600">2</text>
+    <text x="75" y="230" fill="#5c6b76">2</text>
+    <text x="185" y="230" fill="#1a2026">7 (i4)</text><text x="300" y="230" fill="#4169E1" font-weight="600">2 (i5)</text>
+    <text x="445" y="230" fill="#1a2026">right cheaper · hire i5</text><text x="580" y="230" fill="#1a2026" font-weight="600">4</text>
+    <text x="75" y="262" fill="#5c6b76">3</text>
+    <text x="185" y="262" fill="#4169E1" font-weight="600">7 (i4)</text><text x="300" y="262" fill="#1a2026">8 (i8)</text>
+    <text x="445" y="262" fill="#1a2026">left cheaper · hire i4</text><text x="580" y="262" fill="#4169E1" font-weight="600">11</text>
+  </g>
+  <text x="320" y="292" text-anchor="middle" fill="#5c6b76" font-size="12">refills stop once the two windows meet: only i4 was ever in the untouched middle</text>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">The 2-vs-2 tie goes left (i3 &lt; i5); round 2 takes the right 2, round 3 the refilled 7:</text>
+  <text x="320" y="336" text-anchor="middle" fill="#1a2026" font-size="13">2 + 2 + 7 = <tspan fill="#4169E1" font-weight="600">11</tspan>.</text>
+</svg>

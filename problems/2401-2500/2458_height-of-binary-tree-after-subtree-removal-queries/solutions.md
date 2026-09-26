@@ -8,6 +8,8 @@ Two cheap tables make this possible in one bottom-up sweep. `depth[v]` is the ro
 
 A final top-down pass then distributes the outside maximum. The root starts with `-1` (removing it leaves nothing). When descending from a node `u`, the outside maximum offered to a child excludes `u`'s whole subtree and everything already outside it, but must additionally consider paths that stay in the tree by routing through `u` into the _sibling_ subtree: its level is `depth[u] + 1 + height[sibling]`, equivalently `submax[sibling]` (the code checks both forms, which coincide). Taking the max of the inherited value and the sibling contributions gives each child its exact `outside` value, stored in `ans` keyed by node value. Queries then reduce to a dictionary lookup.
 
+![On Example 1's tree, depth and height fill per node and the top-down pass routes the outside maximum through each sibling — outside(4) = 0 + 1 + height(3) = 2 — so query 4 reads the surviving path 1-3-2 and answers 2.](figures/solution-outside-max-pass.svg)
+
 Every node is visited a constant number of times across the three sweeps, and each visit does constant work. The recursion-free stack-based traversals keep the `10^5`-node worst case clear of Python's recursion limit.
 
 **Complexity:** `O(n + m)` time, `O(n)` space.

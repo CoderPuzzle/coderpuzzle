@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <!-- n = 5, queries [1,2,5]; tree parent(v)=v/2, circles r=22 at (150,66),(82,158),(222,158),(46,250),(130,250); tally rows y=106,138,170,202,234 -->
+  <text x="134" y="26" text-anchor="middle" fill="#5c6b76" font-size="11.5">tree (n = 5), queries [1, 2, 5]</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="137" y1="84" x2="95" y2="140"/>
+    <line x1="164" y1="83" x2="208" y2="141"/>
+    <line x1="74" y1="179" x2="54" y2="230"/>
+    <line x1="90" y1="180" x2="122" y2="229"/>
+  </g>
+  <g stroke-width="2">
+    <circle cx="150" cy="66" r="22" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="82" cy="158" r="22" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="222" cy="158" r="22" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="46" cy="250" r="22" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="130" cy="250" r="22" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="150" y="71">1</text><text x="82" y="163">2</text><text x="222" y="163">3</text>
+    <text x="46" y="255">4</text><text x="130" y="255">5</text>
+  </g>
+  <!-- white knockout so node 2's label clears both child edges -->
+  <rect x="62" y="185" width="40" height="15" fill="#ffffff"/>
+  <g text-anchor="middle" font-size="11.5">
+    <text x="150" y="104" fill="#4169E1" font-weight="600">cov 1</text>
+    <text x="82" y="196" fill="#5c6b76">cov 2</text>
+    <text x="222" y="196" fill="#4169E1" font-weight="600">cov 1</text>
+    <text x="46" y="288" fill="#5c6b76">cov 2</text>
+    <text x="130" y="288" fill="#4169E1" font-weight="600">cov 3</text>
+  </g>
+  <text x="466" y="46" text-anchor="middle" fill="#5c6b76" font-size="12.5">coverage tally — sweep labels 1 → 5</text>
+  <g fill="#dbe4fb">
+    <rect x="352" y="91" width="250" height="30" rx="7"/>
+    <rect x="352" y="155" width="250" height="30" rx="7"/>
+    <rect x="352" y="219" width="250" height="30" rx="7"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="380" y="76">node</text><text x="438" y="76">own</text><text x="502" y="76">+ parent</text><text x="570" y="76">= total</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="380" y="110" font-weight="600">1</text><text x="438" y="110">1</text><text x="502" y="110">—</text><text x="570" y="110" fill="#4169E1" font-weight="600">1</text>
+    <text x="380" y="142">2</text><text x="438" y="142">1</text><text x="502" y="142">1</text><text x="570" y="142">2</text>
+    <text x="380" y="174" font-weight="600">3</text><text x="438" y="174">0</text><text x="502" y="174">1</text><text x="570" y="174" fill="#4169E1" font-weight="600">1</text>
+    <text x="380" y="206">4</text><text x="438" y="206">0</text><text x="502" y="206">2</text><text x="570" y="206">2</text>
+    <text x="380" y="238" font-weight="600">5</text><text x="438" y="238">1</text><text x="502" y="238">2</text><text x="570" y="238" fill="#4169E1" font-weight="600">3</text>
+  </g>
+  <text x="320" y="312" text-anchor="middle" fill="#1a2026" font-size="13">Each node's coverage = its own query count + its parent's accumulated coverage:</text>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">totals 1, 2, 1, 2, 3 — odd coverage at <tspan fill="#4169E1" font-weight="600">nodes 1, 3, 5</tspan>, so the answer is <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>
