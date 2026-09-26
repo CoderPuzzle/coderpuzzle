@@ -6,6 +6,8 @@ A split is determined by the two cut points: `nums1 = nums[0:i]`, `nums2 = nums[
 
 With the table in hand, case A is cheap: if `nums1` is a prefix of `nums2` (`lcp[0][i] ≥ i`), then every cut `j ≥ 2i` is beautiful — `nums2` is long enough to contain the copy of `nums1` and any remainder plus `nums3` works — contributing `n - 2i` splits at once, provided `2i ≤ n - 1` keeps `nums3` non-empty. The scan for case B (`nums2` a prefix of `nums3`, checked as `lcp[i][j] ≥ j - i` with `nums3` long enough) then only visits the `j` in `(i, 2i)` not already covered by case A, avoiding double counting a split that satisfies both conditions.
 
+![On nums = [1, 1, 2, 1] the bottom-right-filled lcp table gives lcp[0][1] = 1 ≥ i = 1, so nums1 is a prefix of nums2 at both cut pairs (i, j) = (1, 2) and (1, 3) — the answer 2.](figures/solution-lcp-table-beautiful-cuts.svg)
+
 The LCP table must be built for all pairs, not just the ones queried, because the queried offsets depend on the enumeration; but every query afterwards is `O(1)`, so the counting phase is bounded by the `O(n²)` total range it scans.
 
 Edge cases: arrays shorter than 3 admit no split; equal adjacent values make many offsets share long common prefixes, which the table handles uniformly; the strict `j < n` bound ensures `nums3` is non-empty everywhere.

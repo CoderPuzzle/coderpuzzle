@@ -22,4 +22,6 @@ is read off p[], and the matched costs sum to the minimum total time.
 n ≤ 80 keeps each round at O(n²) edge relaxations, so the whole run is a
 few hundred thousand operations.
 
+![For strength = [3, 4, 1] the cost matrix ceil(strength[i] / (j+1)) circles the optimal assignment — strength 1 to position 1 (cost 1), 4 to position 2 (cost 2), 3 to position 3 (cost 1) — summing to the answer 4.](figures/solution-cost-matrix-assignment.svg)
+
 **Complexity:** `O(n³)` time, `O(n²)` space.

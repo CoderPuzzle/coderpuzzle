@@ -6,6 +6,8 @@ A path from `(0, 0)` to `(m-1, n-1)` using only right and down moves is built in
 
 The transition folds the current cell into the XOR: a path arriving at `(i, j)` with final prefix XOR `x` must have come from above or from the left with prefix XOR `x ^ grid[i][j]`, so `dp[i][j][x] = dp[i-1][j][x ^ v] + dp[i][j-1][x ^ v]`. The base case seeds `dp[0][0][grid[0][0]] = 1`, and the answer reads `dp[m-1][n-1][k]` after filling the table in row-major order.
 
+![On grid = [[2,1,5],[7,10,0],[12,6,4]] with k = 11, all three right/down paths end 15 ^ 4 = 11, so the goal cell's 16-slot dp bucket holds dp[2][2][11] = 3 — the answer.](figures/solution-xor-dp-paths.svg)
+
 Because every value is below 16, the XOR state lives in `[0, 16)`, making the state space just `m · n · 16` — at most `300 · 300 · 16 ≈ 1.4` million entries — and each cell's 16 states are computed in constant time. XOR's self-inverse property is what allows the transition to run backwards through the current value (`x ^ v ^ v = x`), keeping every intermediate XOR a valid state.
 
 Edge cases: a 1×1 grid answers `1` iff `grid[0][0] == k`; cells with value 0 leave the running XOR unchanged, which the recurrence handles without special-casing; unreachable XOR targets simply stay zero, including when the grid's values make parity (`popcount` of `k`) impossible.

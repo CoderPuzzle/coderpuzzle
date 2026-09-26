@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [2,4,8,3,9], threshold = 5; value cells 88x44 at y=64; anchor strip cells 64x36 at y=178 (m = 2..5) -->
+  <text x="68" y="42" fill="#5c6b76" font-size="12.5">process values ascending</text>
+  <!-- union arc between values 2 and 4 -->
+  <path d="M 112 64 Q 216 30 320 64" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="112" cy="64" r="3" fill="#4169E1"/><circle cx="320" cy="64" r="3" fill="#4169E1"/>
+  <text x="216" y="26" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">union {2, 4}</text>
+  <!-- value cells; 8 and 9 sit above the threshold -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="68" y="64" width="88" height="44"/><rect x="172" y="64" width="88" height="44"/><rect x="276" y="64" width="88" height="44"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="380" y="64" width="88" height="44"/><rect x="484" y="64" width="88" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="112" y="91">2</text><text x="216" y="91">3</text><text x="320" y="91">4</text>
+    <text x="424" y="91" fill="#9aa7b2">8</text><text x="528" y="91" fill="#9aa7b2">9</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="112" y="126">v = 2</text><text x="216" y="126">v = 3</text><text x="320" y="126">v = 4</text>
+    <text x="424" y="126" fill="#9aa7b2">8 &gt; 5</text><text x="528" y="126" fill="#9aa7b2">9 &gt; 5</text>
+  </g>
+  <!-- anchor strip -->
+  <text x="84" y="170" fill="#5c6b76" font-size="12.5">anchor[m]</text>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="84" y="178" width="64" height="36"/><rect x="168" y="178" width="64" height="36"/><rect x="336" y="178" width="64" height="36"/>
+  </g>
+  <rect x="252" y="178" width="64" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle" font-size="10.5" fill="#5c6b76">
+    <text x="116" y="192">m = 2</text><text x="200" y="192">m = 3</text><text x="284" y="192">m = 4</text><text x="368" y="192">m = 5</text>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="116" y="207" fill="#9aa7b2">—</text><text x="200" y="207" fill="#9aa7b2">—</text>
+    <text x="284" y="207" fill="#4169E1" font-weight="700">2</text><text x="368" y="207" fill="#9aa7b2">—</text>
+  </g>
+  <!-- claim arrow from 2, join arrow from 4 -->
+  <path d="M 130 108 Q 200 120 268 172" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="60" y="148" fill="#5c6b76" font-size="12">2 claims anchor[4]</text>
+  <path d="M 310 108 Q 306 140 298 172" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="340" y="145" fill="#1a2026" font-size="12">4 finds anchor[4] = 2 → union</text>
+  <!-- resulting components -->
+  <text x="68" y="274" fill="#5c6b76" font-size="12.5">components</text>
+  <rect x="170" y="252" width="80" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="270" y="252" width="48" height="34"/><rect x="338" y="252" width="48" height="34"/><rect x="406" y="252" width="48" height="34"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="210" y="274" fill="#4169E1">{2, 4}</text><text x="294" y="274">{3}</text><text x="362" y="274">{8}</text><text x="430" y="274">{9}</text>
+  </g>
+  <text x="474" y="274" font-size="14" fill="#1a2026">answer <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  <text x="320" y="312" text-anchor="middle" fill="#1a2026" font-size="13">Ascending walk: 2 claims <tspan fill="#4169E1" font-weight="600">anchor[4]</tspan>; 4 finds it there — lcm(2, 4) = 4 ≤ 5 — and unions.</text>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">3 has no multiple ≤ 5; 8 and 9 exceed it — components {2, 4}, {3}, {8}, {9}: <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

@@ -21,6 +21,8 @@ of hint 2 is not enough: `6` and `10` with threshold `30` share an edge
 while neither divides the other, and only the per-multiple anchor links
 such cross pairs.
 
+![On nums = [2, 4, 8, 3, 9] with threshold = 5, the ascending walk has 2 claim anchor[4], 4 find it there and union (lcm 2, 4 = 4 ≤ 5), while 3, 8, and 9 stay singletons — the four components {2, 4}, {3}, {8}, {9}.](figures/solution-lcm-anchor-union-find.svg)
+
 Connectivity itself is an iterative union-find with path halving and
 union by size. The total work is the harmonic sum
 `Σ threshold/v ≈ threshold·ln(threshold)` — about 2.4·10⁶ scans at the

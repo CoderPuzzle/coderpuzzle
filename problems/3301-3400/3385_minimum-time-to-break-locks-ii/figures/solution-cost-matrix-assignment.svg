@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="296" fill="#ffffff"/>
+  <!-- strength = [3,4,1]; cost[i][j] = ceil(strength[i]/(j+1)); cells 68x44 at (120,56); circled assignment: (s=1,pos 1)=1, (s=4,pos 2)=2, (s=3,pos 3)=1 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="154" y="44">pos 1</text><text x="222" y="44">pos 2</text><text x="290" y="44">pos 3</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="120" y="56" width="68" height="44"/><rect x="188" y="56" width="68" height="44"/><rect x="256" y="56" width="68" height="44"/>
+    <rect x="120" y="102" width="68" height="44"/><rect x="188" y="102" width="68" height="44"/><rect x="256" y="102" width="68" height="44"/>
+    <rect x="120" y="148" width="68" height="44"/><rect x="188" y="148" width="68" height="44"/><rect x="256" y="148" width="68" height="44"/>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="108" y="83">s = 3</text><text x="108" y="129">s = 4</text><text x="108" y="175">s = 1</text>
+  </g>
+  <g text-anchor="middle" font-size="14" fill="#1a2026">
+    <text x="154" y="83">3</text><text x="222" y="83">2</text><text x="290" y="83">1</text>
+    <text x="154" y="129">4</text><text x="222" y="129">2</text><text x="290" y="129">2</text>
+    <text x="154" y="175">1</text><text x="222" y="175">1</text><text x="290" y="175">1</text>
+  </g>
+  <!-- circled optimal assignment -->
+  <g fill="none" stroke="#4169E1" stroke-width="2.4">
+    <circle cx="154" cy="170" r="17"/><circle cx="222" cy="124" r="17"/><circle cx="290" cy="78" r="17"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="700" fill="#4169E1">
+    <text x="154" y="175">1</text><text x="222" y="129">2</text><text x="290" y="83">1</text>
+  </g>
+  <text x="120" y="216" fill="#9aa7b2" font-size="11">rows = locks in input order</text>
+  <g fill="#1a2026" font-size="13">
+    <text x="372" y="78">s = 1 → pos 1: 1 min</text>
+    <text x="372" y="112">s = 4 → pos 2: 2 min</text>
+    <text x="372" y="146">s = 3 → pos 3: 1 min</text>
+    <text x="372" y="186" font-size="14" font-weight="600">total = 1 + 2 + 1 = <tspan fill="#4169E1">4</tspan></text>
+  </g>
+  <text x="280" y="258" text-anchor="middle" fill="#1a2026" font-size="13">cost[i][j] = ceil(strength[i]/(j+1)) — the minutes if lock i breaks (j+1)-th.</text>
+  <text x="280" y="280" text-anchor="middle" fill="#1a2026" font-size="13">Minimum-cost perfect assignment = minimum total time: <tspan fill="#4169E1" font-weight="600">4</tspan> minutes.</text>
+</svg>

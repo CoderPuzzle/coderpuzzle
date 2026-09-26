@@ -6,6 +6,8 @@ Within a strongly connected component every focus point can already reach every 
 
 On the DAG, components containing crystals are marked good and a BFS forward along condensation edges propagates goodness to everything downstream — each such component is satisfied for free by existing runes. Any remaining component needs a new rune, and the efficient place to spend it is a source: adding one rune into a bad component with in-degree zero (from any crystal component) satisfies it and its entire downstream reach, which is never smaller than helping a non-source component. Conversely each bad source cannot be fixed through another bad component without first fixing that one, so at least one rune per bad source is necessary.
 
+![In example 1 the cycle 0 → 1 → 2 → 3 → 0 contracts to one SCC that the crystal at 0 marks good and reachable, leaving bad sources {4} and {5}, each fixed by one dashed rune from 0, for the answer 2.](figures/solution-scc-condensation-bad-sources.svg)
+
 Counting the bad components with in-degree zero in the condensation therefore gives the exact minimum. Cross-component edges are deduplicated with a seen-set while building the DAG's in-degree table so repeated edges between the same pair of components don't distort the source count.
 
 Edge cases: components that are part of a cycle with a crystal anywhere inside are all good; isolated nodes with no runes at all form singleton components counted as sources unless they hold a crystal; the graph may have up to `2 · 10⁵` edges, all handled in linear time.
