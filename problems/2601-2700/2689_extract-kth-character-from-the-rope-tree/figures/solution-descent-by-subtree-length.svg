@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 480" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="480" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- root=["10","4","abcpoe","g","rta"], k=6, S="grtaabcpoe"; circles r26/r24, leaf rects 104x40 and 48/60x32; gray subtree = skipped because k 6 > left total 4; strip cells 34x36 at (163,366) with the 6th character accented -->
+  <text x="330" y="42" text-anchor="middle" fill="#5c6b76" font-size="12">root (len 10)</text>
+  <text x="136" y="186" text-anchor="end" fill="#9aa7b2" font-size="12" font-weight="600">len 4</text>
+  <text x="136" y="202" text-anchor="end" fill="#9aa7b2" font-size="11.5">skipped</text>
+  <line x1="308" y1="98" x2="190" y2="177" stroke="#9aa7b2" stroke-width="1.4"/>
+  <line x1="155" y1="209" x2="114" y2="272" stroke="#9aa7b2" stroke-width="1.4"/>
+  <line x1="185" y1="209" x2="246" y2="272" stroke="#9aa7b2" stroke-width="1.4"/>
+  <line x1="352" y1="97" x2="452" y2="155" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrowB)"/>
+  <text x="470" y="108" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">6 &gt; 4: k ← 6 − 4 = 2</text>
+  <circle cx="330" cy="84" r="26" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <text x="330" y="90" text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">10</text>
+  <circle cx="170" cy="190" r="24" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="170" y="196" text-anchor="middle" font-weight="600" font-size="15" fill="#9aa7b2">4</text>
+  <rect x="441" y="160" width="104" height="40" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <text x="493" y="185" text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">abcpoe</text>
+  <text x="493" y="220" text-anchor="middle" fill="#5c6b76" font-size="11.5">len 6</text>
+  <text x="493" y="244" text-anchor="middle" fill="#4169E1" font-size="13.5" font-weight="600">k = 2 → val[1] = 'b'</text>
+  <rect x="86" y="274" width="48" height="32" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="110" y="295" text-anchor="middle" font-weight="600" font-size="14" fill="#9aa7b2">g</text>
+  <rect x="220" y="274" width="60" height="32" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="250" y="295" text-anchor="middle" font-weight="600" font-size="14" fill="#9aa7b2">rta</text>
+  <text x="110" y="326" text-anchor="middle" fill="#9aa7b2" font-size="11.5">len 1</text>
+  <text x="250" y="326" text-anchor="middle" fill="#9aa7b2" font-size="11.5">len 3</text>
+  <text x="333" y="356" text-anchor="middle" fill="#5c6b76" font-size="11.5">S[root], shown only to locate the answer</text>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="163" y="366" width="34" height="36"/><rect x="197" y="366" width="34" height="36"/>
+    <rect x="231" y="366" width="34" height="36"/><rect x="265" y="366" width="34" height="36"/>
+    <rect x="299" y="366" width="34" height="36"/>
+    <rect x="367" y="366" width="34" height="36"/><rect x="401" y="366" width="34" height="36"/>
+    <rect x="435" y="366" width="34" height="36"/><rect x="469" y="366" width="34" height="36"/>
+  </g>
+  <rect x="333" y="366" width="34" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-size="14" fill="#1a2026">
+    <text x="180" y="389">g</text><text x="214" y="389">r</text><text x="248" y="389">t</text>
+    <text x="282" y="389">a</text><text x="316" y="389">a</text><text x="384" y="389">c</text>
+    <text x="418" y="389">p</text><text x="452" y="389">o</text><text x="486" y="389">e</text>
+  </g>
+  <text x="350" y="389" text-anchor="middle" font-size="14" font-weight="600" fill="#4169E1">b</text>
+  <text x="350" y="418" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">6th</text>
+  <text x="330" y="444" text-anchor="middle" fill="#1a2026" font-size="13">At the root k = 6 passes the left total 4, drops to <tspan fill="#4169E1" font-weight="600">k = 2</tspan>, and the walk goes right.</text>
+  <text x="330" y="464" text-anchor="middle" fill="#1a2026" font-size="13">The leaf answers val[k−1] = 'b', the 6th character — no substring is ever assembled.</text>
+</svg>

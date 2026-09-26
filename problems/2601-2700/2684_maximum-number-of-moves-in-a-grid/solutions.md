@@ -15,4 +15,6 @@ push past that column — otherwise the move count grows by one and the new
 array becomes the frontier. The answer is the accumulated count, which is
 at most n - 1.
 
+![On the example grid [[2,4,3,5],[5,4,9,3],[3,4,2,11],[10,9,13,15]] the reachable-row frontier starts all-true, narrows to rows 1 and 3 in column 2 and then rows 2 and 3 in column 3 — its depth climbs 1, 2, 3 and the answer is 3, reached for instance by 2 → 4 → 9 → 11.](figures/solution-frontier-sweep-depth.svg)
+
 **Complexity:** `O(m * n)` time, `O(m)` space.

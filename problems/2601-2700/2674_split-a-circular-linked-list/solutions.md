@@ -18,6 +18,8 @@ genuine rings sharing no nodes, in their original order, with sizes
 `ceil(n / 2)` and `floor(n / 2)`. Nothing is allocated; the solution returns
 the original head and the second half's head as the two-element answer.
 
+![On nums [2,6,1,5] one counting lap lands on tail 5 with n = 4, the walk stops after ceil(4/2) = 2 nodes at node 6, and the two writes 6.next → 2 and 5.next → 1 close the rings [2,6] and [1,5] without allocating any node.](figures/solution-count-walk-two-writes.svg)
+
 Every loop is a flat iteration bounded by one lap (or half of one), so the
 100 000-node maximum costs at most two laps and no recursion. Node values are
 ignored throughout — only the ring's shape matters.

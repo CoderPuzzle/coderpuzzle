@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 452" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="452" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- nums=[2,6,1,5]; boxes 84x46 at x 120/244/368/492, row A y 64 (count lap), row B y 268 (cut + two writes); dashed gray = old tail->head pointer, accent = the two new writes -->
+  <text x="162" y="54" text-anchor="middle" fill="#5c6b76" font-size="12">head</text>
+  <text x="534" y="54" text-anchor="middle" fill="#5c6b76" font-size="12">tail</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="120" y="64" width="84" height="46"/><rect x="244" y="64" width="84" height="46"/>
+    <rect x="368" y="64" width="84" height="46"/><rect x="492" y="64" width="84" height="46"/>
+    <rect x="120" y="268" width="84" height="46"/><rect x="244" y="268" width="84" height="46"/>
+    <rect x="368" y="268" width="84" height="46"/><rect x="492" y="268" width="84" height="46"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="162" y="93">2</text><text x="286" y="93">6</text><text x="410" y="93">1</text><text x="534" y="93">5</text>
+    <text x="162" y="297">2</text><text x="286" y="297">6</text><text x="410" y="297">1</text><text x="534" y="297">5</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 204 87 H 236" marker-end="url(#arrow)"/>
+    <path d="M 328 87 H 360" marker-end="url(#arrow)"/>
+    <path d="M 452 87 H 484" marker-end="url(#arrow)"/>
+    <path d="M 204 291 H 236" marker-end="url(#arrow)"/>
+    <path d="M 452 291 H 484" marker-end="url(#arrow)"/>
+  </g>
+  <text x="348" y="296" text-anchor="middle" fill="#9aa7b2" font-size="11">cut</text>
+  <path d="M 534 114 Q 348 186 166 114" fill="none" stroke="#9aa7b2" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrowM)"/>
+  <text x="348" y="172" text-anchor="middle" fill="#5c6b76" font-size="12.5">one counting lap lands on the tail: n = 4</text>
+  <path d="M 286 264 Q 226 216 166 264" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="226" y="212" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">write 1: 6.next → 2 — ring [2,6]</text>
+  <path d="M 534 318 Q 472 372 414 318" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="472" y="394" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">write 2: 5.next → 1 — ring [1,5]</text>
+  <text x="348" y="420" text-anchor="middle" fill="#1a2026" font-size="13">Count one lap (n = 4), walk ceil(4/2) = 2 nodes to <tspan fill="#4169E1" font-weight="600">node 6</tspan>, then two writes close the rings.</text>
+  <text x="348" y="440" text-anchor="middle" fill="#1a2026" font-size="13">The tail re-points from the head to node 1; both halves stay circular — zero allocation.</text>
+</svg>

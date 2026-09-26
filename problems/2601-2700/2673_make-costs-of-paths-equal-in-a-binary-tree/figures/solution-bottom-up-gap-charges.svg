@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 392" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="392" fill="#ffffff"/>
+  <!-- cost=[1,5,2,2,3,3,1]; circles r24 at root (330,64), nodes 2/3 (185/475,176), leaves 4-7 (110/260/400/550,288); node id left of each circle, cost inside, subtree max beside/below, sibling gap badge in each parent's child-V -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="330" y1="64" x2="185" y2="176"/>
+    <line x1="330" y1="64" x2="475" y2="176"/>
+    <line x1="185" y1="176" x2="110" y2="288"/>
+    <line x1="185" y1="176" x2="260" y2="288"/>
+    <line x1="475" y1="176" x2="400" y2="288"/>
+    <line x1="475" y1="176" x2="550" y2="288"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="330" y="128">gap 3</text>
+    <text x="185" y="240">gap 1</text>
+    <text x="475" y="240">gap 2</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="11">
+    <text x="296" y="69">node 1</text>
+    <text x="151" y="181">node 2</text>
+    <text x="441" y="181">node 3</text>
+    <text x="76" y="293">node 4</text>
+    <text x="226" y="293">node 5</text>
+    <text x="366" y="293">node 6</text>
+    <text x="516" y="293">node 7</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="185" cy="176" r="24"/><circle cx="475" cy="176" r="24"/>
+    <circle cx="110" cy="288" r="24"/><circle cx="260" cy="288" r="24"/>
+    <circle cx="400" cy="288" r="24"/><circle cx="550" cy="288" r="24"/>
+  </g>
+  <circle cx="330" cy="64" r="24" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="330" y="69">1</text>
+    <text x="185" y="181">5</text>
+    <text x="475" y="181">2</text>
+    <text x="110" y="293">2</text>
+    <text x="260" y="293">3</text>
+    <text x="400" y="293">3</text>
+    <text x="550" y="293">1</text>
+  </g>
+  <g text-anchor="start" fill="#5c6b76" font-size="12.5" font-weight="600">
+    <text x="364" y="69" fill="#4169E1">max 9</text>
+    <text x="219" y="181">max 8</text>
+    <text x="509" y="181">max 5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5" font-weight="600">
+    <text x="110" y="332">max 2</text>
+    <text x="260" y="332">max 3</text>
+    <text x="400" y="332">max 3</text>
+    <text x="550" y="332">max 1</text>
+  </g>
+  <text x="330" y="356" text-anchor="middle" fill="#1a2026" font-size="13">Sweeping parents 3, 2, 1 bottom-up charges the sibling gaps 2 + 1 + 3 = <tspan fill="#4169E1" font-weight="600">6</tspan> increments.</text>
+  <text x="330" y="376" text-anchor="middle" fill="#1a2026" font-size="13">Lifting the smaller side at each shared parent ends every path at the root's max <tspan fill="#4169E1" font-weight="600">9</tspan>.</text>
+</svg>

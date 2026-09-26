@@ -42,6 +42,8 @@ component with `m` vertices is complete exactly when it contains all
 every pair to be adjacent. Counting is all that is needed: identify each
 component, know its vertex count and its edge count, and compare.
 
+![In example 2 the component {0, 1, 2} holds 3 edges = 3·2/2 and passes the count check, while {3, 4, 5} holds only 2 < 3 because the 4-5 edge is missing, so exactly 1 component is complete.](figures/solution-component-edge-count.svg)
+
 An iterative union-find merges components in one pass over `edges`:
 path-halving `find` plus union by size keeps trees flat without a single
 recursive call. A second pass then deposits one credit per edge at

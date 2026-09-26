@@ -21,6 +21,8 @@ ends the walk with the answer `val[k-1]` — no substring of the rope is
 ever assembled, which for a single character is exactly the point of the
 representation.
 
+![On root [10,4,abcpoe,g,rta] with k = 6 the descent reads the left total 4 at the root, drops k to 2, and goes right to the leaf abcpoe, answering val[1] = 'b' — the 6th character — without ever assembling grtaabcpoe.](figures/solution-descent-by-subtree-length.svg)
+
 Reconstruction and the totaling pass each visit every node once, and the
 descent visits at most one node per tree level, so the whole run is linear
 in the node count; the arena holds the decoded tree.
