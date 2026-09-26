@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 472" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="472" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- edges=[[0,1],[0,2],[0,3],[1,4],[1,5]], nums=[1,0,-10,3,4,5], k=2; table = per-subtree max/min closest-inversion DP rows, computed bottom-up (verified: node5 [-5,–,5], node4 [-4,–,4], node3 [-3,–,3], node2 [10,–,-10], node1 [-9,1,9]/[-9,-9,9], node0 [15,23,3]/[-3,-21,-15]); "–" = impossible -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="149.1" y1="109.0" x2="86.9" y2="183.0"/>
+    <line x1="169.9" y1="109.8" x2="222.1" y2="182.2"/>
+    <line x1="161.7" y1="112.9" x2="178.3" y2="275.1"/>
+    <line x1="70.0" y1="211.9" x2="46.0" y2="276.1"/>
+    <line x1="81.4" y1="212.1" x2="102.6" y2="275.9"/>
+  </g>
+  <circle cx="160" cy="96" r="22" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="76" cy="196" r="17"/><circle cx="180" cy="292" r="17"/><circle cx="40" cy="292" r="17"/><circle cx="108" cy="292" r="17"/>
+  </g>
+  <circle cx="232" cy="196" r="17" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026" font-size="13">
+    <text x="160" y="101">0</text><text x="76" y="201">1</text><text x="232" y="201">2</text>
+    <text x="180" y="297">3</text><text x="40" y="297">4</text><text x="108" y="297">5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="117" y="100">val 1</text><text x="38" y="200">val 0</text><text x="180" y="327">val 3</text>
+    <text x="40" y="327">val 4</text><text x="108" y="327">val 5</text>
+  </g>
+  <text x="232" y="231" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">−10 → +10</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <text x="140" y="360">k = 2: with node 2 inverted,</text>
+    <text x="140" y="378">node 0 at distance 1 is frozen</text>
+  </g>
+  <!-- bottom-up DP table -->
+  <text x="504" y="104" text-anchor="middle" fill="#5c6b76" font-size="11.5">subtree max / min by closest-inversion distance d</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12" font-weight="600">
+    <text x="372" y="138">node</text><text x="436" y="138">d = 0</text><text x="524" y="138">d = 1</text><text x="612" y="138">d = 2</text>
+  </g>
+  <g fill="#f0f3f7">
+    <rect x="352" y="177" width="304" height="27"/>
+    <rect x="352" y="231" width="304" height="27"/>
+    <rect x="352" y="285" width="304" height="27"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="372" y="168" font-weight="600" fill="#1a2026">5</text>
+    <text x="436" y="168" fill="#1a2026">−5 / −5</text><text x="524" y="168" fill="#9aa7b2">–</text><text x="612" y="168" fill="#1a2026">5 / 5</text>
+    <text x="372" y="195" font-weight="600" fill="#1a2026">4</text>
+    <text x="436" y="195" fill="#1a2026">−4 / −4</text><text x="524" y="195" fill="#9aa7b2">–</text><text x="612" y="195" fill="#1a2026">4 / 4</text>
+    <text x="372" y="222" font-weight="600" fill="#1a2026">3</text>
+    <text x="436" y="222" fill="#1a2026">−3 / −3</text><text x="524" y="222" fill="#9aa7b2">–</text><text x="612" y="222" fill="#1a2026">3 / 3</text>
+    <text x="372" y="249" font-weight="600" fill="#1a2026">2</text>
+    <text x="436" y="249" fill="#4169E1" font-weight="600">10 / 10</text><text x="524" y="249" fill="#9aa7b2">–</text><text x="612" y="249" fill="#1a2026">−10 / −10</text>
+    <text x="372" y="276" font-weight="600" fill="#1a2026">1</text>
+    <text x="436" y="276" fill="#1a2026">−9 / −9</text><text x="524" y="276" fill="#1a2026">1 / −9</text><text x="612" y="276" fill="#1a2026">9 / 9</text>
+    <text x="372" y="303" font-weight="600" fill="#1a2026">0</text>
+    <text x="436" y="303" fill="#1a2026" font-weight="600">15 / −3</text><text x="524" y="303" fill="#4169E1" font-weight="600">23 / −21</text><text x="612" y="303" fill="#1a2026" font-weight="600">3 / −15</text>
+  </g>
+  <line x1="342" y1="300" x2="342" y2="164" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="330" y="232" text-anchor="middle" fill="#5c6b76" font-size="11" transform="rotate(-90 330 232)">processed bottom-up</text>
+  <text x="340" y="436" text-anchor="middle" fill="#1a2026" font-size="13">Merging bottom-up, the root's max row is [15, 23, 3] — the answer</text>
+  <text x="340" y="454" text-anchor="middle" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">23</tspan> sits at d = 1: invert node 2 alone (−10 → +10).</text>
+</svg>
