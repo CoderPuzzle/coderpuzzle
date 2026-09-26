@@ -21,4 +21,6 @@ after its end. Each character is processed once and the letter table holds
 26 slots, so the work is linear regardless of how many candidate intervals
 the string actually contains.
 
+![Over word="abcdeafdef" the candidate substrings "abcdea" [0,5], "deafd" [3,7], "eafde" [4,8] and "fdef" [6,9] are taken earliest-finish-first: [0,5] first, then after the window resets past 5, [6,9] — 2 substrings in all.](figures/solution-earliest-finish-intervals.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space (a 26-slot table).

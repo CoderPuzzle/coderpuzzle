@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="296" fill="#ffffff"/>
+  <!-- word = "abcdeafdef"; cells 40x36 at x = 60 + 46k, y = 180; candidate bars h=22 at y = 40/74/108/142, drawn in earliest-finish order (ends 5, 7, 8, 9) -->
+  <g font-size="10.5" fill="#9aa7b2" text-anchor="end">
+    <text x="54" y="55">end 5</text>
+    <text x="54" y="89">end 7</text>
+    <text x="54" y="123">end 8</text>
+    <text x="54" y="157">end 9</text>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="60" y="40" width="270" height="22"/>
+    <rect x="336" y="142" width="178" height="22"/>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5">
+    <rect x="198" y="74" width="224" height="22"/>
+    <rect x="244" y="108" width="224" height="22"/>
+  </g>
+  <g text-anchor="middle" font-size="11.5">
+    <text x="195" y="55" fill="#1a2026" font-weight="600">abcdea [0,5]</text>
+    <text x="310" y="89" fill="#9aa7b2">deafd [3,7]</text>
+    <text x="356" y="123" fill="#9aa7b2">eafde [4,8]</text>
+    <text x="425" y="157" fill="#1a2026" font-weight="600">fdef [6,9]</text>
+  </g>
+  <g font-size="11.5">
+    <text x="338" y="55" fill="#4169E1" font-weight="600">taken 1st — ends at 5</text>
+    <text x="430" y="89" fill="#9aa7b2">skip — overlaps [0,5]</text>
+    <text x="476" y="123" fill="#9aa7b2">skip — overlaps [0,5]</text>
+    <text x="522" y="157" fill="#4169E1" font-weight="600">taken 2nd</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="60" y="180" width="40" height="36"/><rect x="106" y="180" width="40" height="36"/><rect x="152" y="180" width="40" height="36"/><rect x="198" y="180" width="40" height="36"/><rect x="244" y="180" width="40" height="36"/>
+    <rect x="290" y="180" width="40" height="36"/><rect x="336" y="180" width="40" height="36"/><rect x="382" y="180" width="40" height="36"/><rect x="428" y="180" width="40" height="36"/><rect x="474" y="180" width="40" height="36"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="80" y="203">a</text><text x="126" y="203">b</text><text x="172" y="203">c</text><text x="218" y="203">d</text><text x="264" y="203">e</text>
+    <text x="310" y="203">a</text><text x="356" y="203">f</text><text x="402" y="203">d</text><text x="448" y="203">e</text><text x="494" y="203">f</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5" fill="#9aa7b2">
+    <text x="80" y="231">0</text><text x="126" y="231">1</text><text x="172" y="231">2</text><text x="218" y="231">3</text><text x="264" y="231">4</text>
+    <text x="310" y="231">5</text><text x="356" y="231">6</text><text x="402" y="231">7</text><text x="448" y="231">8</text><text x="494" y="231">9</text>
+  </g>
+  <text x="330" y="262" text-anchor="middle" font-size="13" fill="#1a2026">Greedy takes the earliest finisher "abcdea" [0,5]; "deafd" and "eafde" overlap it and lose.</text>
+  <text x="330" y="282" text-anchor="middle" font-size="13" fill="#1a2026">The window resets past 5, so "fdef" [6,9] is taken next — <tspan fill="#4169E1" font-weight="600">2</tspan> non-intersecting substrings.</text>
+</svg>
