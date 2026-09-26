@@ -9,6 +9,8 @@ The sum of the first k elements seeds the window; each step right adds the
 entering element and removes the leaving one, an O(1) update, and the
 qualifying windows are counted as they pass.
 
+![Sliding window over arr = [2,2,2,2,5,5,5,8] with k = 3, threshold = 4: window sums 6, 6, 9, 12, 15, 18 against the bar 12 = k·threshold — exactly 3 windows qualify.](figures/solution-window-sum-bar.svg)
+
 Every window is examined exactly once, in order of its start index.
 
 **Complexity:** O(n) time, O(1) extra space.

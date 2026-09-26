@@ -22,5 +22,7 @@ only the leading `1` remains; if a carry is still pending the number is
 binary `10`, which takes one final divide-by-two step, so the carry is
 added to the count.
 
+![Scanning 1101 right to left, digit = bit + carry costs two steps at i = 3 and i = 2 and one step at i = 1, and the surviving carry pays a final step at the leading 1 — 2 + 2 + 1 + 1 = 6, the same six steps as 1101 → 1110 → 111 → 1000 → 100 → 10 → 1.](figures/solution-bit-scan-carry.svg)
+
 **Complexity:** `O(n)` time, `O(1)` extra space, where `n` is the length
 of the string `s`.

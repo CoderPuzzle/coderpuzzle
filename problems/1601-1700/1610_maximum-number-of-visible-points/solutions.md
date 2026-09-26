@@ -10,6 +10,8 @@ point with `atan2(dy, dx)`, converts it to degrees, and normalizes it into
 run of these sorted angles into view at once, because the view is a
 single arc of width `angle`.
 
+![Viewing points [[2,1],[2,2],[3,3]] from location [1,1], the point rays sit at 0° and 45°, and rotating to d = 22.5° puts the whole 90-degree field [−22.5°, 67.5°] over both, so the best window's span of 45° ≤ 90° sees all three points.](figures/solution-polar-angle-wedge.svg)
+
 To find the best run, the sorted angle list is duplicated with 360 added
 to every copy and appended to the original, which turns the circular
 wraparound (a window that straddles 0/360) into an ordinary contiguous

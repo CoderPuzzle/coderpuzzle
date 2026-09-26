@@ -6,6 +6,8 @@ Because a course must include obstacle `i` and list chosen obstacles in original
 
 Since equal heights may follow each other, the lookup uses `bisect_right`: it finds the first strictly greater tail, so an obstacle equal to an existing tail extends that course rather than replacing it. If `bisect_right` returns the end of the array, the obstacle is at least as tall as every current tail and starts a new longest course; otherwise it overwrites the first tail it can improve, keeping `tails[j]` minimal and therefore the array invariant intact. The answer for the position is the insertion index plus one, which is the length of the longest course ending with this obstacle.
 
+![On obstacles = [1,2,3,2], the tails array grows by appends to [1,2,3], then the final 2 lands at idx 2 and overwrites tail 3, leaving [1,2,2] while the course at i = 3 stays length 3.](figures/solution-tails-bisect-right.svg)
+
 This is the standard `O(n log n)` longest-increasing-subsequence machinery with `bisect_right` in place of `bisect_left`, which is the only change needed to switch from strictly increasing to non-decreasing. Heights up to `10^7` cause no issue because nothing is indexed by height.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

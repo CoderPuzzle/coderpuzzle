@@ -17,6 +17,8 @@ pair — `grid[r][c + d] != d` — whose boards close the gap's bottom in a
 `"V"`, and the box wall, which is all that `c + d` leaving `[0, n)` can
 mean.
 
+![Tracing all five balls on the example 5x5 grid, b0's funnel path reaches column 1 while b1-b4 each end in a dark V trap between columns 2 and 3, giving [1,-1,-1,-1,-1].](figures/solution-ball-paths-v-traps.svg)
+
 So each walk is one loop over the rows carrying a single column index:
 replace `c` with `c + d` after the two checks, and let a failed check pin
 the ball's answer to `-1`. A walk that clears the final row exits at

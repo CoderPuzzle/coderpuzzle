@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="330" fill="#ffffff"/>
+  <!-- obstacles = [1,2,3,2]; tails slots 56x36 at x = 150 + 64j; row y = 58,114,170,226;
+       bisect_right landing idx per row = 0,1,2,2 (accent slot); tails ends [1,2,2];
+       ans = [1,2,3,3] -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="178" y="48">j = 0</text><text x="242" y="48">j = 1</text>
+    <text x="306" y="48">j = 2</text><text x="370" y="48">j = 3</text>
+  </g>
+  <text x="436" y="48" fill="#5c6b76" font-size="12">bisect_right landing slot</text>
+  <!-- i = 0, x = 1: idx 0, append -->
+  <text x="24" y="80" fill="#5c6b76" font-size="12">i = 0, x = 1</text>
+  <rect x="150" y="58" width="56" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="214" y="58" width="56" height="36" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <rect x="278" y="58" width="56" height="36" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <rect x="342" y="58" width="56" height="36" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="178" y="81" text-anchor="middle" font-weight="600" font-size="14">1</text>
+  <text x="436" y="80" fill="#1a2026" font-size="12.5"><tspan fill="#4169E1" font-weight="600">idx 0</tspan> = end → append, ans 1</text>
+  <!-- i = 1, x = 2: idx 1, append -->
+  <text x="24" y="136" fill="#5c6b76" font-size="12">i = 1, x = 2</text>
+  <rect x="150" y="114" width="56" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="214" y="114" width="56" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="278" y="114" width="56" height="36" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <rect x="342" y="114" width="56" height="36" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="178" y="137">1</text><text x="242" y="137">2</text>
+  </g>
+  <text x="436" y="136" fill="#1a2026" font-size="12.5"><tspan fill="#4169E1" font-weight="600">idx 1</tspan> = end → append, ans 2</text>
+  <!-- i = 2, x = 3: idx 2, append -->
+  <text x="24" y="192" fill="#5c6b76" font-size="12">i = 2, x = 3</text>
+  <rect x="150" y="170" width="56" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="214" y="170" width="56" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="278" y="170" width="56" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="342" y="170" width="56" height="36" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="178" y="193">1</text><text x="242" y="193">2</text><text x="306" y="193">3</text>
+  </g>
+  <text x="436" y="192" fill="#1a2026" font-size="12.5"><tspan fill="#4169E1" font-weight="600">idx 2</tspan> = end → append, ans 3</text>
+  <!-- i = 3, x = 2: idx 2 overwrites 3 with 2 -->
+  <text x="24" y="248" fill="#5c6b76" font-size="12">i = 3, x = 2</text>
+  <rect x="150" y="226" width="56" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="214" y="226" width="56" height="36" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="278" y="226" width="56" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="342" y="226" width="56" height="36" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="178" y="249">1</text><text x="242" y="249">2</text><text x="306" y="249">2</text>
+  </g>
+  <text x="436" y="248" fill="#1a2026" font-size="12.5"><tspan fill="#4169E1" font-weight="600">idx 2</tspan> overwrites 3 with 2, ans 3</text>
+  <text x="330" y="294" text-anchor="middle" fill="#1a2026" font-size="13">bisect_right lands on the first strictly greater tail, so the final 2 overwrites the 3</text>
+  <text x="330" y="314" text-anchor="middle" fill="#1a2026" font-size="13">and tails only shrinks to [1,2,2] — the longest course at i = 3 stays length <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

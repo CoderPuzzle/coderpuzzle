@@ -11,6 +11,8 @@ stack once; the draining loop just keeps folding the absorbed tops into
 one running LCM. Because any merge order converges to the same final
 array, this greedy left-absorption produces exactly the required result.
 
+![Processing 6, 4, 3, 2, 7, 6, 2 left to right, each push drains non-coprime stack tops into a running LCM — 6 and 4 form 12, which then absorbs 3 and 2 — ending at the final stack 12, 7, 6.](figures/solution-stack-drain-lcm.svg)
+
 **Complexity:** `O(n log M)` time for `n` values bounded by `M` (each
 absorption at least halves a factor structure; gcds dominate), `O(n)`
 space.

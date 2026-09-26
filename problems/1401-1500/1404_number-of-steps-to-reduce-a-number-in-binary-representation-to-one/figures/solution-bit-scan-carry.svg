@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 358" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="358" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- s = "1101"; bit cells 56x44 at x = 210 + 80i; table shows digit = bit + carry per column; chain = the six simulated steps -->
+  <text x="358" y="40" text-anchor="middle" fill="#5c6b76" font-size="12">read right to left, one ÷ 2 per bit</text>
+  <line x1="462" y1="56" x2="254" y2="56" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="210" y="64" width="56" height="44"/><rect x="290" y="64" width="56" height="44"/>
+    <rect x="370" y="64" width="56" height="44"/><rect x="450" y="64" width="56" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16">
+    <text x="238" y="92" fill="#1a2026">1</text><text x="318" y="92" fill="#1a2026">1</text>
+    <text x="398" y="92" fill="#1a2026">0</text><text x="478" y="92" fill="#1a2026">1</text>
+  </g>
+  <g fill="#9aa7b2" font-size="10">
+    <text x="218" y="78">i = 0</text><text x="298" y="78">i = 1</text>
+    <text x="378" y="78">i = 2</text><text x="458" y="78">i = 3</text>
+  </g>
+  <rect x="122" y="126" width="396" height="20" fill="#f0f3f7"/>
+  <rect x="122" y="146" width="76" height="80" fill="#f0f3f7"/>
+  <g stroke="#42525e" stroke-width="1.2" fill="none">
+    <path d="M 122 126 H 518 M 122 146 H 518 M 122 166 H 518 M 122 186 H 518 M 122 206 H 518 M 122 226 H 518"/>
+    <path d="M 122 126 V 226 M 198 126 V 226 M 278 126 V 226 M 358 126 V 226 M 438 126 V 226 M 518 126 V 226"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="238" y="140">i = 0 (lead)</text><text x="318" y="140">i = 1</text>
+    <text x="398" y="140">i = 2</text><text x="478" y="140">i = 3</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="160" y="160">bit</text>
+    <text x="160" y="180">carry in</text>
+    <text x="160" y="200">digit</text>
+    <text x="160" y="220">steps</text>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="238" y="160" fill="#1a2026" font-weight="600">1</text><text x="318" y="160" fill="#1a2026" font-weight="600">1</text>
+    <text x="398" y="160" fill="#1a2026" font-weight="600">0</text><text x="478" y="160" fill="#1a2026" font-weight="600">1</text>
+    <text x="238" y="180" fill="#1a2026">1</text><text x="318" y="180" fill="#1a2026">1</text>
+    <text x="398" y="180" fill="#1a2026">1</text><text x="478" y="180" fill="#1a2026">0</text>
+    <text x="238" y="200" fill="#5c6b76">—</text><text x="318" y="200" fill="#1a2026">2</text>
+    <text x="398" y="200" fill="#1a2026">1</text><text x="478" y="200" fill="#1a2026">1</text>
+    <text x="238" y="220" fill="#4169E1" font-weight="600">1</text><text x="318" y="220" fill="#1a2026" font-weight="600">1</text>
+    <text x="398" y="220" fill="#1a2026" font-weight="600">2</text><text x="478" y="220" fill="#1a2026" font-weight="600">2</text>
+  </g>
+  <text x="320" y="250" text-anchor="middle" fill="#1a2026" font-size="13">total = 1 + 1 + 2 + 2 = <tspan fill="#4169E1" font-weight="600">6</tspan> steps</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="145" y="268">+1</text><text x="215" y="268">÷ 2</text><text x="285" y="268">+1</text>
+    <text x="355" y="268">÷ 2</text><text x="425" y="268">÷ 2</text><text x="495" y="268">÷ 2</text>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.5" fill="none">
+    <path d="M 132 284 H 154" marker-end="url(#arrowG)"/>
+    <path d="M 202 284 H 224" marker-end="url(#arrowG)"/>
+    <path d="M 272 284 H 294" marker-end="url(#arrowG)"/>
+    <path d="M 342 284 H 364" marker-end="url(#arrowG)"/>
+    <path d="M 412 284 H 434" marker-end="url(#arrowG)"/>
+    <path d="M 482 284 H 504" marker-end="url(#arrowG)"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="88" y="272" width="44" height="24"/><rect x="158" y="272" width="44" height="24"/>
+    <rect x="228" y="272" width="44" height="24"/><rect x="298" y="272" width="44" height="24"/>
+    <rect x="368" y="272" width="44" height="24"/><rect x="438" y="272" width="44" height="24"/>
+  </g>
+  <rect x="508" y="272" width="44" height="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-weight="600" font-size="12.5">
+    <text x="110" y="288.5" fill="#1a2026">1101</text><text x="180" y="288.5" fill="#1a2026">1110</text>
+    <text x="250" y="288.5" fill="#1a2026">111</text><text x="320" y="288.5" fill="#1a2026">1000</text>
+    <text x="390" y="288.5" fill="#1a2026">100</text><text x="460" y="288.5" fill="#1a2026">10</text>
+    <text x="530" y="288.5" fill="#1a2026">1</text>
+  </g>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">An odd digit costs two steps — add 1, then drop it — and keeps the carry; digit 2 costs one.</text>
+  <text x="320" y="344" text-anchor="middle" fill="#1a2026" font-size="13">The carry survives to the leading 1 and pays the final step: 2 + 2 + 1 + 1 = <tspan fill="#4169E1" font-weight="600">6</tspan>.</text>
+</svg>

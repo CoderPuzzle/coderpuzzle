@@ -6,6 +6,8 @@ Let `dp[i]` be the best achievable value of (current player's score minus oppone
 
 The recurrence is evaluated backwards from `i = n - 1` down to 0, with `dp[n] = 0` as the empty-suffix base — whoever faces an empty row scores nothing more. Each position tries at most three cut points `j` (clamped to the end of the row), accumulating `take` incrementally so every state is constant work. Filling backwards guarantees `dp[j + 1]` is already known when `dp[i]` needs it, replacing memoized recursion with a flat array.
 
+![Filling [1, 2, 3, 7] right to left from the base dp[4] = 0 gives dp = [-1, 12, 10, 7] — each cell the best of take minus the next dp — so dp[0] = -1 means Alice's best (1 + 2 + 3 = 6) still trails Bob's 7 and Bob wins.](figures/solution-difference-dp.svg)
+
 Alice moves first, so `dp[0]` is her optimal score difference over Bob: positive means "Alice" wins, negative means "Bob", zero means "Tie". Negative pile values are handled without special casing — a player facing a trailing block of negative piles may still be forced to take some of them, and the maximization automatically picks the least damaging number of piles (including taking one bad pile to hand the rest over).
 
 Edge cases: short rows with fewer than three piles limit the inner loop via `min(i + 3, n)`, and a single pile resolves to its sign directly.

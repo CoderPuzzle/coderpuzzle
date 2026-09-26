@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="356" fill="#ffffff"/>
+  <!-- arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4; cells x = 90 + 54i (w 54); window-sum bars w 64 at x = 83 + 82m, 5 px per unit, baseline y = 280; threshold line y = 220 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="90" y="40" width="54" height="38"/><rect x="144" y="40" width="54" height="38"/>
+    <rect x="198" y="40" width="54" height="38"/><rect x="252" y="40" width="54" height="38"/>
+    <rect x="306" y="40" width="54" height="38"/><rect x="360" y="40" width="54" height="38"/>
+    <rect x="414" y="40" width="54" height="38"/><rect x="468" y="40" width="54" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="117" y="64">2</text><text x="171" y="64">2</text><text x="225" y="64">2</text>
+    <text x="279" y="64">2</text><text x="333" y="64">5</text><text x="387" y="64">5</text>
+    <text x="441" y="64">5</text><text x="495" y="64">8</text>
+  </g>
+  <!-- first qualifying window, cells 3..5 -->
+  <path d="M 252 88 L 252 98 L 414 98 L 414 88" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="333" y="118" text-anchor="middle" fill="#1a2026" font-size="13">window [2,5,5]: <tspan fill="#4169E1" font-weight="600">12 &#8805; 12</tspan> qualifies</text>
+  <!-- window sums vs the integer bar -->
+  <line x1="70" y1="220" x2="575" y2="220" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="70" y="212" fill="#4169E1" font-size="12.5" font-weight="600">k&#183;threshold = 12</text>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="83" y="250" width="64" height="30"/>
+    <rect x="165" y="250" width="64" height="30"/>
+    <rect x="247" y="235" width="64" height="45"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="329" y="220" width="64" height="60"/>
+    <rect x="411" y="205" width="64" height="75"/>
+    <rect x="493" y="190" width="64" height="90"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="115" y="242" fill="#9aa7b2">6</text>
+    <text x="197" y="242" fill="#9aa7b2">6</text>
+    <text x="279" y="232" fill="#9aa7b2">9</text>
+    <text x="361" y="212" fill="#4169E1">12</text>
+    <text x="443" y="197" fill="#4169E1">15</text>
+    <text x="525" y="182" fill="#4169E1">18</text>
+  </g>
+  <line x1="70" y1="280" x2="575" y2="280" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="115" y="297">i = 0</text><text x="197" y="297">i = 1</text><text x="279" y="297">i = 2</text>
+    <text x="361" y="297">i = 3</text><text x="443" y="297">i = 4</text><text x="525" y="297">i = 5</text>
+  </g>
+  <text x="330" y="326" text-anchor="middle" fill="#1a2026" font-size="13">Each slide is one O(1) update; the sums march 6, 6, 9, 12, 15, 18.</text>
+  <text x="330" y="344" text-anchor="middle" fill="#1a2026" font-size="13">Windows with sum &#8805; 12 qualify &#8212; the count is <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 452" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="452" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]];
+       cells 56px at (110,84); 1 = "\", -1 = "/"; b0 accent path exits col 1,
+       b1-b4 gray paths end in the dark V pairs at rows 0-1 between cols 2-3 -->
+  <g fill="none" stroke="#9aa7b2" stroke-width="0.6" opacity="0.6">
+    <rect x="110" y="84" width="56" height="56"/><rect x="166" y="84" width="56" height="56"/><rect x="222" y="84" width="56" height="56"/><rect x="278" y="84" width="56" height="56"/><rect x="334" y="84" width="56" height="56"/>
+    <rect x="110" y="140" width="56" height="56"/><rect x="166" y="140" width="56" height="56"/><rect x="222" y="140" width="56" height="56"/><rect x="278" y="140" width="56" height="56"/><rect x="334" y="140" width="56" height="56"/>
+    <rect x="110" y="196" width="56" height="56"/><rect x="166" y="196" width="56" height="56"/><rect x="222" y="196" width="56" height="56"/><rect x="278" y="196" width="56" height="56"/><rect x="334" y="196" width="56" height="56"/>
+    <rect x="110" y="252" width="56" height="56"/><rect x="166" y="252" width="56" height="56"/><rect x="222" y="252" width="56" height="56"/><rect x="278" y="252" width="56" height="56"/><rect x="334" y="252" width="56" height="56"/>
+    <rect x="110" y="308" width="56" height="56"/><rect x="166" y="308" width="56" height="56"/><rect x="222" y="308" width="56" height="56"/><rect x="278" y="308" width="56" height="56"/><rect x="334" y="308" width="56" height="56"/>
+  </g>
+  <!-- boards -->
+  <g stroke="#9aa7b2" stroke-width="1.4">
+    <line x1="110" y1="84" x2="166" y2="140"/><line x1="166" y1="84" x2="222" y2="140"/><line x1="334" y1="84" x2="278" y2="140"/><line x1="390" y1="84" x2="334" y2="140"/>
+    <line x1="110" y1="140" x2="166" y2="196"/><line x1="166" y1="140" x2="222" y2="196"/><line x1="390" y1="140" x2="334" y2="196"/>
+    <line x1="166" y1="196" x2="110" y2="252"/><line x1="222" y1="196" x2="166" y2="252"/><line x1="278" y1="196" x2="222" y2="252"/><line x1="278" y1="196" x2="334" y2="252"/><line x1="334" y1="196" x2="390" y2="252"/>
+    <line x1="110" y1="252" x2="166" y2="308"/><line x1="166" y1="252" x2="222" y2="308"/><line x1="222" y1="252" x2="278" y2="308"/><line x1="278" y1="252" x2="334" y2="308"/><line x1="390" y1="252" x2="334" y2="308"/>
+    <line x1="166" y1="308" x2="110" y2="364"/><line x1="222" y1="308" x2="166" y2="364"/><line x1="278" y1="308" x2="222" y2="364"/><line x1="334" y1="308" x2="278" y2="364"/><line x1="390" y1="308" x2="334" y2="364"/>
+  </g>
+  <!-- the two V-shaped board pairs -->
+  <g stroke="#1a2026" stroke-width="2.5">
+    <line x1="222" y1="84" x2="278" y2="140"/><line x1="334" y1="84" x2="278" y2="140"/>
+    <line x1="222" y1="140" x2="278" y2="196"/><line x1="334" y1="140" x2="278" y2="196"/>
+  </g>
+  <!-- ball start labels -->
+  <g text-anchor="middle" font-size="12.5" font-weight="600">
+    <text x="138" y="66" fill="#4169E1">b0</text>
+    <text x="194" y="66" fill="#5c6b76">b1</text>
+    <text x="250" y="66" fill="#5c6b76">b2</text>
+    <text x="306" y="66" fill="#5c6b76">b3</text>
+    <text x="362" y="66" fill="#5c6b76">b4</text>
+  </g>
+  <!-- dead walks -->
+  <g fill="none" stroke="#5c6b76" stroke-width="1.8">
+    <polyline points="194,72 194,84 222,140 250,140 278,196"/>
+    <polyline points="250,72 250,84 278,140"/>
+    <polyline points="306,72 306,84 278,140"/>
+    <polyline points="362,72 362,84 334,140 306,140 278,196"/>
+  </g>
+  <!-- b0's successful walk -->
+  <polyline points="138,72 138,84 166,140 194,140 222,196 250,196 222,252 194,252 222,308 250,308 222,364 194,364 194,380" fill="none" stroke="#4169E1" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <text x="204" y="386" font-size="12" font-weight="600" fill="#4169E1">out at col 1</text>
+  <!-- V death badges -->
+  <g>
+    <circle cx="278" cy="140" r="10" fill="#1a2026"/>
+    <text x="278" y="144" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">V</text>
+    <circle cx="278" cy="196" r="10" fill="#1a2026"/>
+    <text x="278" y="200" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">V</text>
+  </g>
+  <!-- answer panel -->
+  <text x="424" y="96" font-size="12.5" fill="#5c6b76">answer</text>
+  <g font-size="13">
+    <text x="424" y="122" fill="#4169E1" font-weight="600">b0 &#8594; col 1</text>
+    <text x="424" y="150" fill="#5c6b76">b1 &#8594; -1 (V, row 1)</text>
+    <text x="424" y="178" fill="#5c6b76">b2 &#8594; -1 (V, row 0)</text>
+    <text x="424" y="206" fill="#5c6b76">b3 &#8594; -1 (V, row 0)</text>
+    <text x="424" y="234" fill="#5c6b76">b4 &#8594; -1 (V, row 1)</text>
+  </g>
+  <g font-size="12" fill="#5c6b76">
+    <text x="424" y="270">\ = 1 (deflect right)</text>
+    <text x="424" y="288">/ = -1 (deflect left)</text>
+  </g>
+  <text x="330" y="414" text-anchor="middle" fill="#1a2026" font-size="13">Each walk is forced: b0 funnels down to column 1 while b1-b4 slide into a \ meeting a / -</text>
+  <text x="330" y="434" text-anchor="middle" fill="#1a2026" font-size="13">the V traps at rows 0-1 between columns 2-3 - so the answer is <tspan fill="#4169E1" font-weight="600">[1,-1,-1,-1,-1]</tspan>.</text>
+</svg>

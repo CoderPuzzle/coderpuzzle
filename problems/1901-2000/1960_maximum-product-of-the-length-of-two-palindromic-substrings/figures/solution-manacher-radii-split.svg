@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- s = a b a b b b; cells 64x40 at x = 103 + 74i, y = 64; arcs = the three
+       length-3 odd palindromes bab[0..2], aba[1..3], bbb[3..5];
+       best_end = [1,1,3,3,1,3], best_start = [3,3,1,3,1,1];
+       split after i=2: left[2] = 3, right[3] = 3, product 9 -->
+  <!-- Manacher arcs over the maximal odd palindromes -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 135 60 Q 209 -16 283 60"/>
+    <path d="M 209 60 Q 283 32 357 60"/>
+    <path d="M 357 60 Q 431 -16 505 60"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="209" y="14">aba · 3</text>
+    <text x="283" y="38">bab · 3</text>
+    <text x="431" y="14">bbb · 3</text>
+  </g>
+  <!-- the string -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="103" y="64" width="64" height="40"/><rect x="177" y="64" width="64" height="40"/>
+    <rect x="251" y="64" width="64" height="40"/><rect x="325" y="64" width="64" height="40"/>
+    <rect x="399" y="64" width="64" height="40"/><rect x="473" y="64" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="135" y="90">a</text><text x="209" y="90">b</text><text x="283" y="90">a</text>
+    <text x="357" y="90">b</text><text x="431" y="90">b</text><text x="505" y="90">b</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="135" y="122">0</text><text x="209" y="122">1</text><text x="283" y="122">2</text>
+    <text x="357" y="122">3</text><text x="431" y="122">4</text><text x="505" y="122">5</text>
+  </g>
+  <!-- prefix / suffix picks at the winning split -->
+  <g stroke="#4169E1" stroke-width="1.5" fill="none">
+    <path d="M 103 132 H 315"/>
+    <path d="M 325 132 H 537"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="209" y="150">prefix pick aba</text>
+    <text x="431" y="150">suffix pick bbb</text>
+  </g>
+  <!-- winning split line -->
+  <line x1="320" y1="56" x2="320" y2="256" stroke="#4169E1" stroke-width="2" stroke-dasharray="5 4"/>
+  <!-- best_end: seeds 3s from arcs; m -> m-2 propagation right to left -->
+  <text x="48" y="190" fill="#5c6b76" font-size="12.5">best_end</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="135" y="190" fill="#1a2026">1</text>
+    <text x="209" y="190" fill="#1a2026">1</text>
+    <text x="283" y="190" fill="#4169E1">3</text>
+    <text x="357" y="190" fill="#4169E1">3</text>
+    <text x="431" y="190" fill="#1a2026">1</text>
+    <text x="505" y="190" fill="#4169E1">3</text>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.5" fill="none">
+    <path d="M 271 199 Q 247 213 224 200" marker-end="url(#arrow)"/>
+    <path d="M 493 199 Q 469 213 446 200" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="247" y="224">−2</text>
+    <text x="469" y="224">−2</text>
+  </g>
+  <!-- best_start: seeds 3s from arcs; m -> m-2 propagation left to right -->
+  <text x="42" y="242" fill="#5c6b76" font-size="12.5">best_start</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="135" y="242" fill="#4169E1">3</text>
+    <text x="209" y="242" fill="#4169E1">3</text>
+    <text x="283" y="242" fill="#1a2026">1</text>
+    <text x="357" y="242" fill="#4169E1">3</text>
+    <text x="431" y="242" fill="#1a2026">1</text>
+    <text x="505" y="242" fill="#1a2026">1</text>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.5" fill="none">
+    <path d="M 221 251 Q 245 263 268 252" marker-end="url(#arrow)"/>
+    <path d="M 443 251 Q 467 263 490 252" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="245" y="275">−2</text>
+    <text x="467" y="275">−2</text>
+  </g>
+  <text x="320" y="304" text-anchor="middle" fill="#1a2026" font-size="13">The split after index 2 pairs prefix best aba with suffix best bbb:</text>
+  <text x="320" y="324" text-anchor="middle" fill="#1a2026" font-size="13">left[2] = <tspan fill="#4169E1" font-weight="600">3</tspan>, right[3] = <tspan fill="#4169E1" font-weight="600">3</tspan>, product <tspan fill="#4169E1" font-weight="600">3 × 3 = 9</tspan> — the maximum over all splits.</text>
+</svg>

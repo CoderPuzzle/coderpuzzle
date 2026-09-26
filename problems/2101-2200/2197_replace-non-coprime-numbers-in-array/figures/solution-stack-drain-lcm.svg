@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 370" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="370" fill="#ffffff"/>
+  <!-- nums = [6,4,3,2,7,6,2]; input cells 70x34 at y=36 (x = 40+84i); stack cells 64x28, bottom row y=232, growing upward; accent cell = freshly merged value -->
+  <text x="40" y="26" fill="#5c6b76" font-size="12.5">nums</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="40" y="36" width="70" height="34"/><rect x="124" y="36" width="70" height="34"/>
+    <rect x="208" y="36" width="70" height="34"/><rect x="292" y="36" width="70" height="34"/>
+    <rect x="376" y="36" width="70" height="34"/><rect x="460" y="36" width="70" height="34"/>
+    <rect x="544" y="36" width="70" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="75" y="58">6</text><text x="159" y="58">4</text><text x="243" y="58">3</text>
+    <text x="327" y="58">2</text><text x="411" y="58">7</text><text x="495" y="58">6</text>
+    <text x="579" y="58">2</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="75" y="88">i = 0</text><text x="159" y="88">i = 1</text><text x="243" y="88">i = 2</text>
+    <text x="327" y="88">i = 3</text><text x="411" y="88">i = 4</text><text x="495" y="88">i = 5</text>
+    <text x="579" y="88">i = 6</text>
+  </g>
+  <text x="243" y="220" text-anchor="middle" fill="#5c6b76" font-size="12">running LCM 12</text>
+  <rect x="123" y="228" width="240" height="36" rx="8" fill="none" stroke="#9aa7b2" stroke-dasharray="4 3"/>
+  <!-- stack after each prefix; one cell per column until 7 and 6 land on top -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="43" y="232" width="64" height="28" fill="#ffffff"/>
+    <rect x="127" y="232" width="64" height="28" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="211" y="232" width="64" height="28" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="295" y="232" width="64" height="28" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="379" y="232" width="64" height="28" fill="#ffffff"/>
+    <rect x="379" y="200" width="64" height="28" fill="#ffffff"/>
+    <rect x="463" y="232" width="64" height="28" fill="#ffffff"/>
+    <rect x="463" y="200" width="64" height="28" fill="#ffffff"/>
+    <rect x="463" y="168" width="64" height="28" fill="#ffffff"/>
+    <rect x="547" y="232" width="64" height="28" fill="#ffffff"/>
+    <rect x="547" y="200" width="64" height="28" fill="#ffffff"/>
+    <rect x="547" y="168" width="64" height="28" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="75" y="251" fill="#1a2026">6</text>
+    <text x="159" y="251" fill="#4169E1">12</text>
+    <text x="243" y="251" fill="#4169E1">12</text>
+    <text x="327" y="251" fill="#4169E1">12</text>
+    <text x="411" y="251" fill="#1a2026">12</text><text x="411" y="219" fill="#1a2026">7</text>
+    <text x="495" y="251" fill="#1a2026">12</text><text x="495" y="219" fill="#1a2026">7</text><text x="495" y="187" fill="#1a2026">6</text>
+    <text x="579" y="251" fill="#1a2026">12</text><text x="579" y="219" fill="#1a2026">7</text><text x="579" y="187" fill="#4169E1">6</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="75" y="282">push 6</text><text x="159" y="282">6+4 → 12</text><text x="243" y="282">absorb 3</text>
+    <text x="327" y="282">absorb 2</text><text x="411" y="282">push 7</text><text x="495" y="282">push 6</text>
+    <text x="579" y="282">6+2 → 6</text>
+  </g>
+  <rect x="537" y="160" width="84" height="108" rx="8" fill="none" stroke="#4169E1" stroke-dasharray="4 3"/>
+  <text x="579" y="302" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">final</text>
+  <text x="340" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Each push drains non-coprime tops into the running LCM: 6, 4 become 12; 3 and 2 fold in.</text>
+  <text x="340" y="350" text-anchor="middle" fill="#1a2026" font-size="13">The stack ends as <tspan fill="#4169E1" font-weight="600">12, 7, 6</tspan> — gcd(12,7) = gcd(7,6) = 1, so nothing more merges.</text>
+</svg>
