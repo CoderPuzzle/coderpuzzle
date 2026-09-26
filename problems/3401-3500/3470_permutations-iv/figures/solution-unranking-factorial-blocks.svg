@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="300" fill="#ffffff"/>
+  <!-- n = 4, k = 6; per position the unused candidates are tried ascending, block = (odds left)! * (evens left)!;
+       k walks 6 -> 4 -> 2 -> 1; commits 3, 4, 1, 2 -->
+  <text x="340" y="26" text-anchor="middle" fill="#5c6b76" font-size="12.5">n = 4, k = 6 &#8212; a candidate's block = (odds left)! &#183; (evens left!) of the leftovers</text>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="85" y="60">pos 1 &#183; k = 6</text>
+    <text x="255" y="60">pos 2 &#183; k = 2 &#183; even</text>
+    <text x="425" y="60">pos 3 &#183; k = 1 &#183; odd</text>
+    <text x="595" y="60">pos 4 &#183; last slot</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#1a2026">
+    <text x="85" y="90">1: 1!&#183;2! = 2 &lt; 6, <tspan fill="#5c6b76">k &#8594; 4</tspan></text>
+    <text x="85" y="116">2: 2!&#183;1! = 2 &lt; 4, <tspan fill="#5c6b76">k &#8594; 2</tspan></text>
+    <text x="85" y="142" fill="#4169E1" font-weight="600">3: 1!&#183;2! = 2 &#8805; 2 &#10003;</text>
+    <text x="85" y="168" fill="#9aa7b2" font-size="11">4: never tried</text>
+    <text x="255" y="90" fill="#5c6b76" font-size="11.5">1: odd &#8594; count 0, free</text>
+    <text x="255" y="116">2: 1!&#183;1! = 1 &lt; 2, <tspan fill="#5c6b76">k &#8594; 1</tspan></text>
+    <text x="255" y="142" fill="#4169E1" font-weight="600">4: 1!&#183;1! = 1 &#8805; 1 &#10003;</text>
+    <text x="425" y="90" fill="#4169E1" font-weight="600">1: 0!&#183;1! = 1 &#8805; 1 &#10003;</text>
+    <text x="425" y="116" fill="#5c6b76" font-size="11">k stays 1</text>
+    <text x="595" y="90" fill="#5c6b76" font-size="11.5">only 2 remains</text>
+    <text x="595" y="116" fill="#4169E1" font-weight="600">2: forced &#10003;</text>
+  </g>
+  <text x="6" y="213" fill="#5c6b76" font-size="11">committed</text>
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="1.6">
+    <rect x="68" y="192" width="34" height="34"/><rect x="238" y="192" width="34" height="34"/>
+    <rect x="408" y="192" width="34" height="34"/><rect x="578" y="192" width="34" height="34"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#4169E1">
+    <text x="85" y="215">3</text><text x="255" y="215">4</text><text x="425" y="215">1</text><text x="595" y="215">2</text>
+  </g>
+  <text x="340" y="260" text-anchor="middle" fill="#1a2026" font-size="13">Skipped blocks subtract from k: 6 &#8594; 4 &#8594; 2 &#8594; 1; the first block reaching k commits.</text>
+  <text x="340" y="282" text-anchor="middle" fill="#1a2026" font-size="13">With counts saturated safely above k, the walk commits <tspan fill="#4169E1" font-weight="600">3, 4, 1, 2</tspan> &#8212; the 6th permutation.</text>
+</svg>

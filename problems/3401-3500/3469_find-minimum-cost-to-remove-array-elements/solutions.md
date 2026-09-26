@@ -13,6 +13,8 @@ suffix start advances by two (by three, from a state with no leftover), so
 each state branches three ways at constant cost. States where fewer than
 three elements remain pay the maximum of the rest and stop.
 
+![On nums = [6, 2, 8, 4], the start state branches over which front element survives, and the cheapest path keeps 2 (paying 8), then clears 2, 4 (paying 4), for a total of 12.](figures/solution-leftover-suffix-tree.svg)
+
 Filling the table backwards over `j` (rows `n`, `n-1` and `n-2` as base
 cases) leaves the answer at the initial state `(0, -1)`. Row `j` is only ever
 read while building rows `j-2` and `j-3`, so a ring of three rows keeps the

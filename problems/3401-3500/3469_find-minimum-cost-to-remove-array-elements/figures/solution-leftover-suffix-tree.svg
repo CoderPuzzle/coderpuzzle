@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- nums = [6,2,8,4]; states (c, j) = leftover nums[c] (none at the start), untouched suffix from j;
+       children keep 6 / 2 / 8 of the front three, paying max of the removed pair; bases at (c, 3) pay max of the rest -->
+  <text x="340" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">start: no leftover &#183; suffix j = 0</text>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="269" y="50" width="34" height="34"/><rect x="305" y="50" width="34" height="34"/><rect x="341" y="50" width="34" height="34"/>
+  </g>
+  <rect x="377" y="50" width="34" height="34" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="286" y="72">6</text><text x="322" y="72">2</text><text x="358" y="72">8</text>
+  </g>
+  <text x="394" y="72" text-anchor="middle" font-size="13.5" fill="#9aa7b2">4</text>
+  <text x="422" y="64" fill="#1a2026" font-size="11">front three</text>
+  <text x="422" y="80" fill="#5c6b76" font-size="10.5">survivor becomes the leftover</text>
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 340 88 L 340 108 L 110 108 L 110 142" marker-end="url(#arrow)"/>
+    <path d="M 340 108 L 340 142" marker-end="url(#arrow)"/>
+    <path d="M 340 108 L 570 108 L 570 142" marker-end="url(#arrow)"/>
+  </g>
+  <g font-size="11.5">
+    <text x="120" y="126" fill="#1a2026">keep 6</text>
+    <text x="120" y="140" fill="#5c6b76" font-size="11">pay max(2,8) = 8</text>
+    <text x="350" y="126" fill="#1a2026">keep 2</text>
+    <text x="350" y="140" fill="#5c6b76" font-size="11">pay max(6,8) = 8</text>
+    <text x="580" y="126" fill="#1a2026">keep 8</text>
+    <text x="580" y="140" fill="#5c6b76" font-size="11">pay max(6,2) = 6</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#5c6b76">
+    <text x="110" y="162">(0, 3)</text><text x="340" y="162">(1, 3)</text><text x="570" y="162">(2, 3)</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="75" y="170" width="34" height="34"/><rect x="111" y="170" width="34" height="34"/>
+    <rect x="535" y="170" width="34" height="34"/><rect x="571" y="170" width="34" height="34"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="305" y="170" width="34" height="34"/><rect x="341" y="170" width="34" height="34"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="92" y="192">6</text><text x="128" y="192">4</text>
+    <text x="322" y="192">2</text><text x="358" y="192">4</text>
+    <text x="552" y="192">8</text><text x="588" y="192">4</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5" fill="#5c6b76">
+    <text x="110" y="218">leftover &#183; suffix</text><text x="340" y="218">leftover &#183; suffix</text><text x="570" y="218">leftover &#183; suffix</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#1a2026">
+    <text x="110" y="238">clear rest: pay max(6,4) = 6</text>
+    <text x="340" y="238">clear rest: pay max(2,4) = 4</text>
+    <text x="570" y="238">clear rest: pay max(8,4) = 8</text>
+  </g>
+  <g text-anchor="middle" font-size="13.5">
+    <text x="110" y="262" fill="#1a2026">total 8 + 6 = 14</text>
+    <text x="340" y="262" fill="#4169E1" font-weight="600">total 8 + 4 = 12</text>
+    <text x="570" y="262" fill="#1a2026">total 6 + 8 = 14</text>
+  </g>
+  <text x="340" y="292" text-anchor="middle" fill="#1a2026" font-size="13">Each op removes two of the front three and pays their max, so the array never fragments:</text>
+  <text x="340" y="312" text-anchor="middle" fill="#1a2026" font-size="13">the cheapest path keeps 2 (pay 8), then clears 2, 4 (pay 4): <tspan fill="#4169E1" font-weight="600">8 + 4 = 12</tspan>.</text>
+</svg>

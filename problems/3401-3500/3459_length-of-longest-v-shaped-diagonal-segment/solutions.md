@@ -18,6 +18,8 @@ next cell, same direction) or make the single clockwise turn (straight `S`
 of the next cell in direction `(d+1) % 4`). The answer is `1` plus the best
 `M[2][d]` over the four neighbors of each `1` head.
 
+![On example 1's grid, the V from the 1 head at (0,2) reads M[2][SE] = 4 at neighbor (1,3) after the clockwise turn at (2,4), so the answer is 1 + 4 = 5.](figures/solution-v-diagonal-sm-tables.svg)
+
 Every transition steps one cell along a diagonal, so each table is filled
 by sweeping rows against its direction (top-down for upward directions,
 bottom-up for downward ones) — dependencies are always a finished row

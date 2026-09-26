@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- side = 2; corners (0,0)->0 (2,0)->2 (2,2)->4 (0,2)->6; square 100px at (70,130);
+       circle center (450,165) r 78, coord c sits 90*c degrees counterclockwise from the top -->
+  <text x="120" y="112" text-anchor="middle" fill="#5c6b76" font-size="12.5">side = 2 square</text>
+  <rect x="70" y="130" width="100" height="100" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <g font-size="11.5">
+    <text x="70" y="252" text-anchor="middle"><tspan fill="#5c6b76">(0,0) &#8594; </tspan><tspan fill="#4169E1" font-weight="600">0</tspan></text>
+    <text x="170" y="252" text-anchor="middle"><tspan fill="#5c6b76">(2,0) &#8594; </tspan><tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="178" y="134"><tspan fill="#5c6b76">(2,2) &#8594; </tspan><tspan fill="#4169E1" font-weight="600">4</tspan></text>
+    <text x="62" y="134" text-anchor="end"><tspan fill="#5c6b76">(0,2) &#8594; </tspan><tspan fill="#4169E1" font-weight="600">6</tspan></text>
+  </g>
+  <text x="450" y="42" text-anchor="middle" fill="#5c6b76" font-size="12.5">perimeter circle (4&#183;side = 8)</text>
+  <circle cx="450" cy="165" r="78" fill="none" stroke="#42525e" stroke-width="1.4"/>
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 450 87 A 78 78 0 0 0 372.4 156.8" marker-end="url(#arrow)"/>
+    <path d="M 372 165 A 78 78 0 0 0 441.8 242.6" marker-end="url(#arrow)"/>
+    <path d="M 450 243 A 78 78 0 0 0 527.6 173.2" marker-end="url(#arrow)"/>
+    <path d="M 528 165 A 78 78 0 0 0 458.2 87.4" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="450" cy="87" r="4"/><circle cx="372" cy="165" r="4"/><circle cx="450" cy="243" r="4"/><circle cx="528" cy="165" r="4"/>
+  </g>
+  <g font-size="11.5" text-anchor="middle">
+    <text x="450" y="66"><tspan fill="#4169E1" font-weight="600">0</tspan><tspan fill="#5c6b76"> &#183; (0,0)</tspan></text>
+    <text x="322" y="169" text-anchor="end"><tspan fill="#4169E1" font-weight="600">2</tspan><tspan fill="#5c6b76"> &#183; (2,0)</tspan></text>
+    <text x="450" y="264"><tspan fill="#4169E1" font-weight="600">4</tspan><tspan fill="#5c6b76"> &#183; (2,2)</tspan></text>
+    <text x="578" y="169" text-anchor="start"><tspan fill="#4169E1" font-weight="600">6</tspan><tspan fill="#5c6b76"> &#183; (0,2)</tspan></text>
+  </g>
+  <g fill="#4169E1" font-size="11.5" font-weight="600" text-anchor="middle">
+    <text x="385" y="100">2</text><text x="385" y="230">2</text><text x="515" y="230">2</text><text x="515" y="100">2</text>
+  </g>
+  <text x="450" y="292" text-anchor="middle" fill="#5c6b76" font-size="11.5">wrap check: 6 + 2 = 8 &#8804; 0 + 8, so all k = 4 picks fit at d = 2</text>
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">Boundary Manhattan distance = the shorter arc on the circle of circumference 4&#183;side = 8,</text>
+  <text x="320" y="334" text-anchor="middle" fill="#1a2026" font-size="13">so binary search <tspan fill="#4169E1" font-weight="600">d</tspan> and hop greedily while arc gaps stay &#8805; d &#8212; all 4 picks hold at <tspan fill="#4169E1" font-weight="600">d = 2</tspan>.</text>
+</svg>

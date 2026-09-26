@@ -14,6 +14,8 @@ from `k`. An odd `n` admits no even starter, which the same test expresses
 for free: such a prefix leaves leftover parities that cannot fit the forced
 pattern, so its count is zero and the scan walks over it.
 
+![On n = 4, k = 6, each skipped candidate subtracts its odd! · even! block from k (6 → 4 → 2 → 1), and the walk commits 3, 4, 1, 2 — the 6th alternating permutation.](figures/solution-unranking-factorial-blocks.svg)
+
 The factorials outrun 64-bit integers long before `n = 100`, but the counts
 only ever face the comparison against `k <= 10¹⁵`. Saturating them at a cap
 of `2 · 10¹⁵` preserves every decision: a saturated count still reads as
