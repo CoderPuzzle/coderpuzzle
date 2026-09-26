@@ -22,6 +22,8 @@ followed by a strict rise rather than a flat step. Finally the rest of the
 array must climb without interruption; the answer is yes exactly when that
 closing walk reaches the end.
 
+![Plotting [1,3,5,4,2,6], the single scan rises to the peak p = 2 (value 5), falls to the valley q = 4 (value 2), then rises to the last index, so the array is trionic.](figures/solution-rise-fall-rise-scan.svg)
+
 Every element takes part in at most a couple of comparisons across the
 three walks, and nothing but the moving indices is remembered.
 

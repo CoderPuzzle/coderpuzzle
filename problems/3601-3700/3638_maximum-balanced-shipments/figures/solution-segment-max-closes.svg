@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 290" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="290" fill="#ffffff"/>
+  <!-- weight = [2,5,1,4,3]; cells 76x44 at x = 110 + 82i, y = 84; running segment max above, close brackets below -->
+  <text x="110" y="40" fill="#5c6b76" font-size="12.5">weight = [2, 5, 1, 4, 3]</text>
+  <!-- running segment maximum carried by the sweep -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="148" y="74">max 2</text><text x="230" y="74">max 5</text><text x="312" y="74">max 5</text>
+    <text x="394" y="74">max 4</text><text x="476" y="74">max 4</text>
+  </g>
+  <!-- segment reset after the first close -->
+  <text x="353" y="56" text-anchor="middle" fill="#9aa7b2" font-size="11">reset</text>
+  <line x1="353" y1="62" x2="353" y2="184" stroke="#9aa7b2" stroke-width="1" stroke-dasharray="3 4"/>
+  <!-- parcels -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="110" y="84" width="76" height="44"/><rect x="192" y="84" width="76" height="44"/>
+    <rect x="274" y="84" width="76" height="44"/><rect x="356" y="84" width="76" height="44"/>
+    <rect x="438" y="84" width="76" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="148" y="112">2</text><text x="230" y="112">5</text><text x="312" y="112">1</text>
+    <text x="394" y="112">4</text><text x="476" y="112">3</text>
+  </g>
+  <!-- close brackets for the two shipments -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 110 144 v 8 h 240 v -8"/>
+    <path d="M 356 144 v 8 h 158 v -8"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#1a2026">
+    <text x="230" y="172">closes at 1 &lt; max 5 — <tspan fill="#4169E1" font-weight="600">shipment 1</tspan></text>
+    <text x="435" y="172">closes at 3 &lt; max 4 — <tspan fill="#4169E1" font-weight="600">shipment 2</tspan></text>
+  </g>
+  <text x="320" y="240" text-anchor="middle" fill="#1a2026" font-size="13">Close a shipment at each parcel strictly below the running segment maximum:</text>
+  <text x="320" y="262" text-anchor="middle" fill="#1a2026" font-size="13">[2,5,1] closes at 1 &lt; 5 and [4,3] at 3 &lt; 4 — <tspan fill="#4169E1" font-weight="600">2</tspan> shipments in one pass.</text>
+</svg>

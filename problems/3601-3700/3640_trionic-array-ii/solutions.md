@@ -15,6 +15,8 @@ descent. A strict fall symmetrically lets `s1` continue itself or open from a
 finished climb. Equal neighbors reset every state, because strictness is
 broken on both sides of them.
 
+![Scanning [0,-2,-1,-3,0,2,-1], the rolling s0/s1/s2 rows complete the trionic [-2,-1,-3,0,2] with s2 = -4 at i = 5, and no later state beats it, so the answer is -4.](figures/solution-slope-state-rolling.svg)
+
 The guards encode exactly the lengths the definition demands. Only `s0` may
 rest on a single element, and it does so only as extension fuel
 (`max(s0, prev)`); opening a descent from anything shorter than a two-element

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,3,1,2,3,4], k = 2; cells 46x36 at x = 60 + 50col; rows y = 64 (dup = 3, illegal) and y = 176 (after eviction) -->
+  <text x="60" y="46" fill="#5c6b76" font-size="12.5">nums = [1, 2, 3, 1, 2, 3, 4],  k = 2</text>
+  <!-- right end reaches the second 3: dup climbs past k -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="60" y="64" width="46" height="36" fill="#dbe4fb"/><rect x="110" y="64" width="46" height="36" fill="#dbe4fb"/>
+    <rect x="160" y="64" width="46" height="36" fill="#dbe4fb"/><rect x="210" y="64" width="46" height="36" fill="#dbe4fb"/>
+    <rect x="260" y="64" width="46" height="36" fill="#dbe4fb"/><rect x="310" y="64" width="46" height="36" fill="#dbe4fb"/>
+    <rect x="360" y="64" width="46" height="36" fill="#f0f3f7"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="83" y="87" fill="#1a2026">1</text><text x="133" y="87" fill="#1a2026">2</text><text x="183" y="87" fill="#1a2026">3</text>
+    <text x="233" y="87" fill="#1a2026">1</text><text x="283" y="87" fill="#1a2026">2</text><text x="333" y="87" fill="#1a2026">3</text>
+    <text x="383" y="87" fill="#9aa7b2">4</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="83" y="114">l = 0</text><text x="333" y="114">r = 5</text>
+  </g>
+  <text x="420" y="78" fill="#42525e" font-size="12.5">the new 3 → dup = 3 &gt; k = 2 ✗</text>
+  <text x="420" y="98" fill="#5c6b76" font-size="12.5">(1, 2, 3 each appear twice)</text>
+  <!-- eviction: left edge moves past the first 1 -->
+  <path d="M 54 120 Q 56 158 100 170" fill="none" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrowM)"/>
+  <!-- legal window after eviction -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="60" y="176" width="46" height="36" fill="#f0f3f7"/><rect x="110" y="176" width="46" height="36" fill="#dbe4fb"/>
+    <rect x="160" y="176" width="46" height="36" fill="#dbe4fb"/><rect x="210" y="176" width="46" height="36" fill="#dbe4fb"/>
+    <rect x="260" y="176" width="46" height="36" fill="#dbe4fb"/><rect x="310" y="176" width="46" height="36" fill="#dbe4fb"/>
+    <rect x="360" y="176" width="46" height="36" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="83" y="199" fill="#9aa7b2">1</text><text x="133" y="199" fill="#1a2026">2</text><text x="183" y="199" fill="#1a2026">3</text>
+    <text x="233" y="199" fill="#1a2026">1</text><text x="283" y="199" fill="#1a2026">2</text><text x="333" y="199" fill="#1a2026">3</text>
+    <text x="383" y="199" fill="#1a2026">4</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="133" y="226">l = 1</text><text x="383" y="226">r = 6</text>
+  </g>
+  <text x="420" y="190" fill="#42525e" font-size="12.5">evict the first 1 → dup = 2 ✓</text>
+  <text x="420" y="210" fill="#1a2026" font-size="12.5">length <tspan fill="#4169E1" font-weight="600">6</tspan> — the longest window</text>
+  <text x="320" y="260" text-anchor="middle" fill="#1a2026" font-size="13">Settling on [2,3,1,2,3,4] keeps exactly k = 2 repeating values (2 and 3),</text>
+  <text x="320" y="280" text-anchor="middle" fill="#1a2026" font-size="13">so the longest semi-repeating subarray has length <tspan fill="#4169E1" font-weight="600">6</tspan>.</text>
+</svg>

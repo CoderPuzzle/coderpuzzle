@@ -19,6 +19,8 @@ comparison product reaches `10⁹ · 10⁵ = 10¹⁴`, far past 32-bit range, so
 compiled language widens before multiplying (`long long`, `long`, `int64`);
 JavaScript numbers are doubles, exact through `2⁵³`, so they already hold it.
 
+![Sweeping sorted [1,2,6,9] with k = 3, no balanced window outgrows 2 elements — each overlong right end pushes the left edge to [2,6] and then [6,9] — so the answer is 4 − 2 = 2 deletions.](figures/solution-sorted-sliding-window-trace.svg)
+
 Keeping a single element is always legal, so the longest balanced window is
 never empty and an answer always exists.
 

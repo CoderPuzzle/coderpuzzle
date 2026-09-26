@@ -18,6 +18,8 @@ until the window is legal again. Once it is, its length `right - left + 1`
 is recorded — every legal subarray ending at `right` is no longer than this
 maximal one, so the maximum over all right endpoints is the answer.
 
+![Sliding over [1,2,3,1,2,3,4] with k = 2, the third repeating value forces the left edge past the first 1, settling on [2,3,1,2,3,4] with dup = 2 and length 6.](figures/solution-dup-window-eviction.svg)
+
 Both pointers cross the array exactly once, each element entering and
 leaving the frequency map a single time despite the nested loop, and the
 map never holds more than one entry per distinct value.

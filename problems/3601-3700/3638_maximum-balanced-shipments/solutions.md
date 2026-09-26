@@ -9,6 +9,8 @@ since the current segment opened, and close a balanced shipment at the first
 parcel that dips strictly below it. Everything between two closes is one
 segment; parcels left after the last close simply stay unshipped.
 
+![Sweeping [2,5,1,4,3], the running segment maximum closes a shipment wherever a parcel dips strictly below it — [2,5,1] at 1 < 5 and [4,3] at 3 < 4 — for 2 shipments.](figures/solution-segment-max-closes.svg)
+
 Closing as early as possible never costs a shipment. Any valid selection's
 first balanced run ends at an index whose parcel sits below the prefix
 maximum up to there — the same condition greedy closes on, no later than
