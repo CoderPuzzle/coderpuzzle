@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 304" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="304" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [5,2,3,1]; after op 1 folds (3,1) into 4: list 5<->2<->4 (indices 0,1,2) -->
+  <!-- heap by sum: 2+3=5 stale (3 merged away), 2+4=6 pops next, 5+2=7 waits -->
+  <text x="180" y="64" text-anchor="middle" fill="#5c6b76" font-size="12.5">list after operation 1</text>
+  <text x="525" y="64" text-anchor="middle" fill="#5c6b76" font-size="12.5">min-heap of adjacent pair sums</text>
+  <!-- doubly linked list -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <line x1="106" y1="104" x2="144" y2="104" marker-end="url(#arrowg)"/>
+    <line x1="144" y1="124" x2="106" y2="124" marker-end="url(#arrowg)"/>
+    <line x1="216" y1="104" x2="254" y2="104" marker-end="url(#arrowg)"/>
+    <line x1="254" y1="124" x2="216" y2="124" marker-end="url(#arrowg)"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="40" y="90" width="60" height="48" rx="8"/>
+    <rect x="150" y="90" width="60" height="48" rx="8"/>
+    <rect x="260" y="90" width="60" height="48" rx="8"/>
+  </g>
+  <g text-anchor="middle" font-size="16" font-weight="600" fill="#1a2026">
+    <text x="70" y="120">5</text><text x="180" y="120">2</text><text x="290" y="120">4</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="70" y="158">index 0</text><text x="180" y="158">index 1</text><text x="290" y="158">index 2</text>
+  </g>
+  <text x="290" y="176" text-anchor="middle" fill="#9aa7b2" font-size="10.5">(was 3 + 1)</text>
+  <!-- heap entries -->
+  <g stroke="#9aa7b2" stroke-width="1.4" fill="#f0f3f7">
+    <rect x="410" y="90" width="230" height="44" rx="8" stroke-dasharray="5 3"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="410" y="210" width="230" height="44" rx="8"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="#dbe4fb">
+    <rect x="410" y="150" width="230" height="44" rx="8"/>
+  </g>
+  <text x="426" y="117" font-size="14.5" font-weight="600" fill="#9aa7b2">2 + 3 = 5</text>
+  <line x1="422" y1="112" x2="512" y2="112" stroke="#9aa7b2" stroke-width="1.8"/>
+  <text x="624" y="116" text-anchor="end" font-size="11" fill="#9aa7b2">stale</text>
+  <text x="426" y="177" font-size="14.5" font-weight="600" fill="#1a2026">2 + 4 = 6</text>
+  <text x="624" y="176" text-anchor="end" font-size="11" fill="#4169E1" font-weight="600">pops next</text>
+  <text x="426" y="237" font-size="14.5" font-weight="600" fill="#1a2026">5 + 2 = 7</text>
+  <text x="624" y="236" text-anchor="end" font-size="11" fill="#5c6b76">waits</text>
+  <!-- the valid entry pops the live (2, 4) pair -->
+  <line x1="406" y1="170" x2="330" y2="121" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowa)"/>
+  <text x="340" y="274" text-anchor="middle" fill="#1a2026" font-size="13">The stale 2 + 3 = 5 is skipped (node 3 is gone); popping the valid 2 + 4 = 6 gives [5, 6],</text>
+  <text x="340" y="292" text-anchor="middle" fill="#1a2026" font-size="13">already non-decreasing in <tspan fill="#4169E1" font-weight="600">2 operations</tspan> — lazy invalidation keeps the heap honest.</text>
+</svg>

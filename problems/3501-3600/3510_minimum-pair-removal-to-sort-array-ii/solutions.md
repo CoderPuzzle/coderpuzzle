@@ -21,4 +21,6 @@ whether the array is already non-decreasing — the loop stops as soon as the
 count hits zero. Merged values can grow to `n * 10⁹`, so all sums and values
 use 64-bit integers.
 
+![On nums = [5,2,3,1], after folding (3,1) into 4 the heap's 2 + 3 = 5 entry is stale and skipped, the valid 2 + 4 = 6 pops next to leave [5, 6], and lazy invalidation over the linked list finishes in 2 operations.](figures/solution-lazy-heap-linked-list.svg)
+
 **Complexity:** `O(n log n)` time, `O(n)` space.

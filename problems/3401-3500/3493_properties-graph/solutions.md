@@ -25,6 +25,8 @@ stack replaces recursion deliberately — nothing here depends on call-stack
 depth, and marking-on-push keeps the whole sweep linear in nodes plus edges
 regardless of graph shape.
 
+![On properties = [[1,2],[1,1],[3,4],[4,5],[5,6],[7,7]] with k = 1, each row's distinct-value set gains an edge to every set it shares a value with, giving components {0, 1}, {2, 3, 4}, and {5} — the answer is their count, 3.](figures/solution-components-shared-values.svg)
+
 **Complexity:** `O(n² · m)` time (each of the `n²` pair comparisons costs at
 most `O(m)` set probes), `O(n² + n · m)` space for the adjacency lists and
 the value sets.

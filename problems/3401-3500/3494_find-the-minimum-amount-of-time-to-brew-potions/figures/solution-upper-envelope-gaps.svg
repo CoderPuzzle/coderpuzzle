@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 412" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="412" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- points (pref[i], skill[i]) = (0,1),(1,5),(6,2),(8,4); upper hull (0,1)-(1,5)-(8,4) -->
+  <!-- queries: t = (prev-cur)/prev = 0.8, -3, 0.5 for potion transitions 5->1, 1->4, 4->2 -->
+  <!-- axes -->
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <line x1="48" y1="280" x2="620" y2="280" marker-end="url(#arrow)"/>
+    <line x1="48" y1="280" x2="48" y2="52" marker-end="url(#arrow)"/>
+  </g>
+  <text x="58" y="56" fill="#5c6b76" font-size="11.5">skill[i]</text>
+  <text x="340" y="300" text-anchor="middle" fill="#5c6b76" font-size="12">pref[i]  (prefix sums of skill: 0, 1, 6, 8, 12)</text>
+  <!-- upper envelope chain through hull vertices -->
+  <path d="M 143.5 238 L 192.5 102 L 535.5 136" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <!-- points -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <circle cx="143.5" cy="238" r="5.5" fill="#4169E1"/>
+    <circle cx="192.5" cy="102" r="5.5" fill="#4169E1"/>
+    <circle cx="437.5" cy="204" r="5.5" fill="#9aa7b2"/>
+    <circle cx="535.5" cy="136" r="5.5" fill="#4169E1"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="143.5" y="262" fill="#1a2026" font-size="12.5">wizard 0 (0, 1)</text>
+    <text x="192.5" y="84" fill="#1a2026" font-size="12.5">wizard 1 (1, 5)</text>
+    <text x="243" y="126" fill="#4169E1" font-size="11.5" font-weight="600">wins potion 2</text>
+    <text x="437.5" y="228" fill="#5c6b76" font-size="12.5">wizard 2 (6, 2)</text>
+    <text x="437.5" y="244" fill="#9aa7b2" font-size="11.5">below the hull, never wins</text>
+    <text x="535.5" y="118" fill="#1a2026" font-size="12.5">wizard 3 (8, 4)</text>
+    <text x="535.5" y="160" fill="#4169E1" font-size="11.5" font-weight="600">wins potions 1 and 3</text>
+  </g>
+  <!-- query table -->
+  <g font-size="12.5" fill="#1a2026">
+    <text x="70" y="324">potion 1 (5 -&gt; 1):  t = 0.8,  wizard 3 wins,  gap = 5*4 + 4*8 = <tspan fill="#4169E1" font-weight="600">52</tspan>,  s1 = 52</text>
+    <text x="70" y="342">potion 2 (1 -&gt; 4):  t = -3,  wizard 1 wins,  gap = 1*5 - 3*1 = <tspan fill="#4169E1" font-weight="600">2</tspan>,  s2 = 54</text>
+    <text x="70" y="360">potion 3 (4 -&gt; 2):  t = 0.5,  wizard 3 wins,  gap = 4*4 + 2*8 = <tspan fill="#4169E1" font-weight="600">32</tspan>,  s3 = 86</text>
+  </g>
+  <text x="330" y="382" text-anchor="middle" fill="#1a2026" font-size="13">s0 = 0 and the last wizard finishes at s3 + 12*2 = 86 + 24 = <tspan fill="#4169E1" font-weight="600">110</tspan>: one envelope</text>
+  <text x="330" y="398" text-anchor="middle" fill="#1a2026" font-size="13">query per potion instead of a wizard-by-wizard simulation.</text>
+</svg>

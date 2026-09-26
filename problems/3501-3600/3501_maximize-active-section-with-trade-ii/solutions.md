@@ -20,4 +20,6 @@ the two boundary pairs computed directly from their clipped lengths. Each
 query then costs two binary searches plus constant work, and the answer is
 `ones(s)` plus the best gain, or just `ones(s)` when no legal trade exists.
 
+![On s = "0100" the zero runs have lens [1, 2] with pair sum 1 + 2 = 3; query [0,3] takes that range max for 1 + 3 = 4 while [0,2] repairs its clipped boundary pair to 1 + 1 = 2 for 3 and the single-run windows stay at 1 — answers 4, 3, 1, 1.](figures/solution-clipped-zero-run-pairs.svg)
+
 **Complexity:** `O(n + q log n)` time, `O(n log n)` space.

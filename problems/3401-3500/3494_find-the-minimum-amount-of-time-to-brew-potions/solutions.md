@@ -35,4 +35,6 @@ most `≈ 6.25 * 10^14`: past 32 bits, so the fixed-width languages carry
 every sum and product in 64-bit integers, while JavaScript's `Number` stays
 exact because `6.25 * 10^14 < 2^53`.
 
+![On skill = [1,5,2,4] the hull points (pref[i], skill[i]) = (0,1), (1,5), (8,4) answer every gap query — the three potion transitions win gaps 52, 2, and 32, so the starts are 0, 52, 54, 86 and the finish is 86 + 12\*2 = 110.](figures/solution-upper-envelope-gaps.svg)
+
 **Complexity:** `O(n + m log n)` time, `O(n)` space.

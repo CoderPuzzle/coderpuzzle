@@ -11,6 +11,8 @@ to their combined length. Flipping a far-away `'0'`-run in step 2 instead of
 the merged one can never do better: every such run is itself flanking some
 internal `'1'`-run, and trading that run gains at least that far run's length.
 
+![On s = "0100", augmenting to 101001 and trading the lone internal 1-run flips 101001 to 100001 and then 111111 — a net gain of the two flanking zero runs, 1 + 2 = 3, so the answer is 1 + 3 = 4.](figures/solution-trade-flanking-zero-runs.svg)
+
 The implementation augments `s` with `'1'` on both ends, so every `'0'`-run
 is genuinely surrounded, then run-length encodes `t`. Runs alternate starting
 with `'1'`, so the internal `'1'`-runs are exactly the even run indices that
