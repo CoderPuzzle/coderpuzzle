@@ -10,6 +10,8 @@ there no longer matches the live count table. Whatever surfaces is the true
 maximum, because every entry below it is either fresh or will itself be
 popped before it can ever reach the top.
 
+![On nums = [2,3,2,1], freq = [3,2,-3,1], the live count table sits beside the lazy max-heap: step 2 pushes (0,2) and pops the stale (3,2), leaving (2,3) as the true maximum and ans = [3,3,2,2].](figures/solution-lazy-heap-count-table.svg)
+
 Each step contributes one push, and every entry is popped at most once, so
 the whole run does `O(n)` heap operations — `O(n log n)` time for `n` steps.
 A fresh entry with count 0 can only top the heap when no ID holds any items,

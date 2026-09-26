@@ -6,6 +6,8 @@ Reversing every string turns longest common suffix into longest common prefix, t
 
 A query then walks its reversed string as deep as the trie allows, carrying the best index of each node it reaches; the deepest reached node corresponds to the longest suffix shared with any container word, and since every word with that suffix passes through it, its precomputed winner is the answer. If the very first character already misses, the walk never leaves the root, and the root's best — the globally shortest (then earliest) word — correctly answers the empty-suffix case, including queries that match nothing.
 
+![In the trie of the reversed words "dcba", "dcb", "dcbx", every node carries its best index — the whole spine holds 1 — and the query "bcd" walking its reverse "dcb" to depth 3 reads off index 1.](figures/solution-reversed-trie-best-index.svg)
+
 Building costs one trie insert per container word; each query costs at most its own length. Writing `C` and `Q` for the total character counts of `wordsContainer` and `wordsQuery` (each at most 5 * 10^5), both phases are linear in input size, and dictionary-based nodes pay only for characters actually present.
 
 **Complexity:** `O(C + Q)` time, `O(C)` space.

@@ -19,6 +19,8 @@ supplies an extreme, so sorting the indices by `u` (and separately by
 end of the sorted order when `p` sits there, otherwise keep the original
 endpoints.
 
+![Rotating [[3,10],[5,15],[10,2],[4,4]] to (u,v) = (x+y, x-y) marks the u- and v-extremes, and dropping (10,2) — the v-maximum — leaves ranges u 12 and v 10, so the answer is max(12, 10) = 12.](figures/solution-uv-rotation-extremes.svg)
+
 One pass over all candidate removals evaluates those four lookups per
 point and keeps the smallest resulting maximum; ties are harmless because
 a duplicate value occupies the next slot of the sorted order whenever an
