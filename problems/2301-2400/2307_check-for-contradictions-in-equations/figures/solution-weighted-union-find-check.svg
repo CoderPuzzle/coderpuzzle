@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 376" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="376" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- equations a/b=3, b/c=0.5, a/c=1.5; arrows point x -> parent[x] labeled weight[x] = x/parent[x]; accent = edge created this step; row 3 = ratio check on an already-merged pair -->
+  <g font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="24" y="71">a / b = 3</text>
+    <text x="24" y="175">b / c = 0.5</text>
+    <text x="24" y="283">a / c = 1.5</text>
+  </g>
+  <!-- row 1 -->
+  <rect x="130" y="50" width="36" height="32" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="148" y="71" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">a</text>
+  <rect x="280" y="50" width="36" height="32" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="298" y="71" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">b</text>
+  <path d="M 170 66 L 274 66" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="222" y="56" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">3</text>
+  <text x="298" y="100" text-anchor="middle" fill="#9aa7b2" font-size="10">root</text>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="420" y="60">both names new, wa = wb = 1;</text>
+    <text x="420" y="76">attach a under b: weight[a] = 1·3/1 = 3</text>
+  </g>
+  <!-- row 2 -->
+  <rect x="120" y="154" width="36" height="32" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="138" y="175" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">a</text>
+  <rect x="240" y="154" width="36" height="32" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="258" y="175" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">b</text>
+  <rect x="360" y="154" width="36" height="32" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="378" y="175" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">c</text>
+  <path d="M 160 170 L 234 170" stroke="#5c6b76" stroke-width="2" marker-end="url(#arrowG)"/>
+  <text x="197" y="158" text-anchor="middle" fill="#5c6b76" font-size="12" font-weight="600">3</text>
+  <path d="M 280 170 L 354 170" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="317" y="158" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">0.5</text>
+  <text x="378" y="204" text-anchor="middle" fill="#9aa7b2" font-size="10">root</text>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="420" y="164">b is a root (wb = 1), c is new;</text>
+    <text x="420" y="180">attach b under c:</text>
+    <text x="420" y="196">weight[b] = wb · w / wa = 0.5</text>
+  </g>
+  <!-- row 3 -->
+  <rect x="120" y="238" width="36" height="32" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="138" y="259" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">a</text>
+  <rect x="120" y="290" width="36" height="32" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="138" y="311" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">b</text>
+  <rect x="300" y="264" width="36" height="32" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="318" y="285" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">c</text>
+  <path d="M 138 270 L 138 284" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowM)"/>
+  <text x="152" y="281" fill="#9aa7b2" font-size="10.5">3</text>
+  <path d="M 160 250 L 294 274" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="224" y="250" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">1.5</text>
+  <path d="M 160 306 L 294 284" stroke="#5c6b76" stroke-width="2" marker-end="url(#arrowG)"/>
+  <text x="228" y="313" text-anchor="middle" fill="#5c6b76" font-size="12" font-weight="600">0.5</text>
+  <text x="318" y="314" text-anchor="middle" fill="#9aa7b2" font-size="10">root</text>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="420" y="252">compression folds a = 3·b into a = 1.5·c</text>
+    <text x="420" y="268">same root — the equation adds no merge,</text>
+    <text x="420" y="284">it only checks: |wa/wb − w| =</text>
+    <text x="420" y="300">|1.5 / 1 − 1.5| = 0 ≤ 10⁻⁵ → tolerated</text>
+  </g>
+  <text x="340" y="344" text-anchor="middle" fill="#1a2026" font-size="13">Two merges store a = 3·b and b = 0.5·c; the closing a / c = 1.5 finds both names already</text>
+  <text x="340" y="362" text-anchor="middle" fill="#1a2026" font-size="13">under root c and the implied ratio <tspan fill="#4169E1" font-weight="600">1.5</tspan> matches — no contradiction, so the answer is <tspan fill="#4169E1" font-weight="600">false</tspan>.</text>
+</svg>

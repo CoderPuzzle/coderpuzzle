@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="372" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = fool3e7bar, bit p = position p; sub = leet; four seen-word rows (accent = surviving bit); matched[e] = {4,5}, matched[t] = {6} -->
+  <text x="196" y="68" text-anchor="end" fill="#5c6b76">s</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="210" y="46" width="40" height="34"/><rect x="254" y="46" width="40" height="34"/>
+    <rect x="298" y="46" width="40" height="34"/><rect x="342" y="46" width="40" height="34"/>
+    <rect x="386" y="46" width="40" height="34"/><rect x="430" y="46" width="40" height="34"/>
+    <rect x="474" y="46" width="40" height="34"/><rect x="518" y="46" width="40" height="34"/>
+    <rect x="562" y="46" width="40" height="34"/><rect x="606" y="46" width="40" height="34"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="230" y="68">f</text><text x="274" y="68">o</text><text x="318" y="68">o</text>
+    <text x="362" y="68">l</text><text x="406" y="68">3</text><text x="450" y="68">e</text>
+    <text x="494" y="68">7</text><text x="538" y="68">b</text><text x="582" y="68">a</text>
+    <text x="626" y="68">r</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="196" y="98" text-anchor="end">bit</text>
+    <text x="230" y="98">0</text><text x="274" y="98">1</text><text x="318" y="98">2</text>
+    <text x="362" y="98">3</text><text x="406" y="98">4</text><text x="450" y="98">5</text>
+    <text x="494" y="98">6</text><text x="538" y="98">7</text><text x="582" y="98">8</text>
+    <text x="626" y="98">9</text>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="210" y="122">matched[l] = {3}; matched[e] = {4, 5} — s[5]='e' and s[4]='3' via e→3</text>
+    <text x="210" y="140">matched[t] = {6} — s[6]='7' via t→7; s has no 't' at all</text>
+    <text x="210" y="162">bit p of seen set ⇔ a matching window ends at position p</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="200" y="190">j=0 'l' → seed = matched[l]</text>
+    <text x="200" y="232">j=1 'e' → &lt;&lt;1 &amp; matched[e]</text>
+    <text x="200" y="274">j=2 'e' → &lt;&lt;1 &amp; matched[e]</text>
+    <text x="200" y="316">j=3 't' → &lt;&lt;1 &amp; matched[t]</text>
+  </g>
+  <!-- row 0: seen = {3} -->
+  <g text-anchor="middle" font-size="13" fill="#9aa7b2">
+    <text x="230" y="190">0</text><text x="274" y="190">0</text><text x="318" y="190">0</text>
+    <text x="406" y="190">0</text><text x="450" y="190">0</text><text x="494" y="190">0</text>
+    <text x="538" y="190">0</text><text x="582" y="190">0</text><text x="626" y="190">0</text>
+  </g>
+  <text x="362" y="190" text-anchor="middle" font-size="15" font-weight="700" fill="#4169E1">1</text>
+  <!-- row 1: seen = {4} -->
+  <g text-anchor="middle" font-size="13" fill="#9aa7b2">
+    <text x="230" y="232">0</text><text x="274" y="232">0</text><text x="318" y="232">0</text>
+    <text x="362" y="232">0</text><text x="450" y="232">0</text><text x="494" y="232">0</text>
+    <text x="538" y="232">0</text><text x="582" y="232">0</text><text x="626" y="232">0</text>
+  </g>
+  <text x="406" y="232" text-anchor="middle" font-size="15" font-weight="700" fill="#4169E1">1</text>
+  <!-- row 2: seen = {5} -->
+  <g text-anchor="middle" font-size="13" fill="#9aa7b2">
+    <text x="230" y="274">0</text><text x="274" y="274">0</text><text x="318" y="274">0</text>
+    <text x="362" y="274">0</text><text x="406" y="274">0</text><text x="494" y="274">0</text>
+    <text x="538" y="274">0</text><text x="582" y="274">0</text><text x="626" y="274">0</text>
+  </g>
+  <text x="450" y="274" text-anchor="middle" font-size="15" font-weight="700" fill="#4169E1">1</text>
+  <!-- row 3: seen = {6} -->
+  <g text-anchor="middle" font-size="13" fill="#9aa7b2">
+    <text x="230" y="316">0</text><text x="274" y="316">0</text><text x="318" y="316">0</text>
+    <text x="362" y="316">0</text><text x="406" y="316">0</text><text x="450" y="316">0</text>
+    <text x="538" y="316">0</text><text x="582" y="316">0</text><text x="626" y="316">0</text>
+  </g>
+  <text x="494" y="316" text-anchor="middle" font-size="15" font-weight="700" fill="#4169E1">1</text>
+  <!-- the surviving bit marching one position per step -->
+  <g stroke="#4169E1" stroke-width="1.6" fill="none">
+    <path d="M 364 192 L 400 213" marker-end="url(#arrow)"/>
+    <path d="M 408 234 L 444 255" marker-end="url(#arrow)"/>
+    <path d="M 452 276 L 488 297" marker-end="url(#arrow)"/>
+  </g>
+  <text x="340" y="344" text-anchor="middle" fill="#1a2026" font-size="13">After the last character <tspan fill="#4169E1" font-weight="600">bit 6</tspan> survives — the window ending there is s[3..6] = <tspan fill="#4169E1" font-weight="600">l3e7</tspan>:</text>
+  <text x="340" y="362" text-anchor="middle" fill="#1a2026" font-size="13">sub = leet matches fool3e7bar after replacing e→3 and t→7, so the answer is true.</text>
+</svg>

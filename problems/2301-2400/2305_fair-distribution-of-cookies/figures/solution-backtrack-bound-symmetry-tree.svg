@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 424" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="424" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- cookies = [8,15,10,20,8], k = 2; tree levels = bags in order (tags b<i>=size); node = per-child totals after that bag; accent = path to the best leaf; dashed gray = pruned -->
+  <g fill="#9aa7b2" font-size="10">
+    <text x="6" y="64">b0=8</text>
+    <text x="6" y="134">b1=15</text>
+    <text x="6" y="204">b2=10</text>
+    <text x="6" y="274">b3=20</text>
+    <text x="6" y="306">b4=8</text>
+  </g>
+  <!-- symmetry skip at the root -->
+  <path d="M 378 60 L 390 60" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arrowM)"/>
+  <g fill="#9aa7b2" font-size="10.5">
+    <text x="398" y="56">bag 0 → child 1 skipped:</text>
+    <text x="398" y="70">children hold equal totals (0 = 0)</text>
+  </g>
+  <!-- tree edges -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <path d="M 342 74 L 494 116" fill="none"/>
+    <path d="M 190 144 L 114 186" fill="none"/>
+    <path d="M 494 144 L 418 186" fill="none"/>
+    <path d="M 494 144 L 570 186" fill="none"/>
+    <path d="M 114 214 L 76 256" fill="none"/>
+    <path d="M 114 214 L 152 256" fill="none"/>
+    <path d="M 570 214 L 532 256" fill="none"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3" fill="none">
+    <path d="M 266 214 L 228 256"/>
+    <path d="M 418 214 L 380 256"/>
+    <path d="M 418 214 L 456 256"/>
+    <path d="M 570 214 L 608 256"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 342 74 L 190 116"/>
+    <path d="M 190 144 L 266 186"/>
+    <path d="M 266 214 L 304 256"/>
+    <path d="M 304 284 L 304 331"/>
+  </g>
+  <!-- level 0: bag 0 -->
+  <rect x="310" y="46" width="64" height="28" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="342" y="64" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">8 | 0</text>
+  <!-- level 1: bag 1 -->
+  <rect x="158" y="116" width="64" height="28" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="190" y="134" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">23 | 0</text>
+  <rect x="462" y="116" width="64" height="28" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="494" y="134" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">8 | 15</text>
+  <!-- level 2: bag 2 -->
+  <rect x="82" y="186" width="64" height="28" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="114" y="204" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">33 | 0</text>
+  <rect x="234" y="186" width="64" height="28" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="266" y="204" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">23 | 10</text>
+  <rect x="386" y="186" width="64" height="28" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="418" y="204" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">18 | 15</text>
+  <rect x="538" y="186" width="64" height="28" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="570" y="204" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">8 | 25</text>
+  <!-- level 3: bag 3 -->
+  <rect x="44" y="256" width="64" height="28" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="76" y="274" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">53 | 0</text>
+  <rect x="120" y="256" width="64" height="28" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="152" y="274" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">33 | 20</text>
+  <rect x="196" y="256" width="64" height="28" rx="5" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="228" y="274" text-anchor="middle" fill="#9aa7b2" font-size="12">43 | 10</text>
+  <rect x="272" y="256" width="64" height="28" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="304" y="274" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">23 | 30</text>
+  <rect x="348" y="256" width="64" height="28" rx="5" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="380" y="274" text-anchor="middle" fill="#9aa7b2" font-size="12">38 | 15</text>
+  <rect x="424" y="256" width="64" height="28" rx="5" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="456" y="274" text-anchor="middle" fill="#9aa7b2" font-size="12">18 | 35</text>
+  <rect x="500" y="256" width="64" height="28" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="532" y="274" text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">28 | 25</text>
+  <rect x="576" y="256" width="64" height="28" rx="5" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="608" y="274" text-anchor="middle" fill="#9aa7b2" font-size="12">8 | 45</text>
+  <!-- bag 4 outcomes -->
+  <g text-anchor="middle" font-size="10" fill="#5c6b76">
+    <text x="76" y="302">leaves 61, 53</text>
+    <text x="152" y="302">leaves 41, 33</text>
+    <text x="532" y="302">36, 33 cut</text>
+  </g>
+  <text x="312" y="300" fill="#4169E1" font-size="10.5" font-weight="600">bag 4 → c0</text>
+  <text x="312" y="314" fill="#9aa7b2" font-size="10">c1: 38 cut</text>
+  <g text-anchor="middle" font-size="10" fill="#9aa7b2">
+    <text x="228" y="326">43 ≥ 33 cut</text>
+    <text x="380" y="326">38 ≥ 31 cut</text>
+    <text x="456" y="326">35 ≥ 31 cut</text>
+    <text x="608" y="326">45 ≥ 31 cut</text>
+  </g>
+  <!-- the surviving best leaf -->
+  <rect x="272" y="331" width="64" height="28" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <text x="304" y="350" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="700">31 | 30</text>
+  <text x="340" y="388" text-anchor="middle" fill="#1a2026" font-size="13">Left edge = child 0, right = child 1; gray = cut by the max ≥ best bound or equal totals —</text>
+  <text x="340" y="406" text-anchor="middle" fill="#1a2026" font-size="13">five leaves survive (61, 53, 41, 33, 31); the best leaf splits <tspan fill="#4169E1" font-weight="600">31 | 30</tspan>, so the answer is 31.</text>
+</svg>

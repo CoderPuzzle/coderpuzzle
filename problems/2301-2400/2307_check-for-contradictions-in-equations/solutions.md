@@ -49,6 +49,10 @@ Model each variable as a node and each equation `a / b = w` as a weighted edge. 
 
 Process the equations in order. For `a / b = w`, find both roots together with the accumulated ratios `wa` and `wb`. If the roots differ, merge the components by attaching `root_a` under `root_b` with `weight[root_a] = wb * w / wa` — the unique value that makes the new edge consistent with the existing ratios. If the roots already coincide, the equation imposes a check rather than new information: it demands `a / b = wa / wb`, so when `abs(wa / wb - w)` exceeds the tolerance `10^-5` the equations contradict each other and the answer is `true`. If no equation ever fails the check, return `false`.
 
+On a / b = 3, b / c = 0.5, a / c = 1.5, the first two equations attach root_a under root_b with weight wb·w/wa, and the third resolves to a tolerated ratio check on the already-merged roots.
+
+![On a / b = 3, b / c = 0.5, a / c = 1.5, the first two equations attach root_a under root_b with weight wb·w/wa, and the third resolves to a tolerated ratio check on the already-merged roots.](figures/solution-weighted-union-find-check.svg)
+
 Floating-point arithmetic is safe here because the test data avoids precision traps, and the `10^-5` epsilon absorbs rounding noise. The `find` helper lazily creates singleton entries for unseen variables, so variables appearing only once are handled without special casing, and a self-loop like `a / a = v != 1` is caught naturally since both finds return the same root with `wa == wb`.
 
 **Complexity:** `O(E α(V))` time, `O(V)` space, where `E` is the number of equations and `V` the number of distinct variables.

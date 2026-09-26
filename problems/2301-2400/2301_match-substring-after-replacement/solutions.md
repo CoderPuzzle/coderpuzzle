@@ -26,6 +26,12 @@ deeper into s and ANDs with that character's mask, so bit `e` survives step
 there and `matched(sub[j], s[e])` holds — an induction on the window. Any
 bit left after the last character is a full match.
 
+On s = fool3e7bar with sub = leet, the seen word keeps a single surviving
+bit that marches from position 3 to position 6, one shift per pattern
+character, and bit 6 at the end marks the full match l3e7.
+
+![On s = fool3e7bar with sub = leet, the seen word keeps a single surviving bit that marches from position 3 to position 6, one shift per pattern character, and bit 6 at the end marks the full match l3e7.](figures/solution-bit-parallel-seen-march.svg)
+
 Duplicate pairs just re-OR an existing mask; empty mappings leave `matched`
 as plain character positions, so the sweep degenerates to exact substring
 search. Whole alignments move per machine word, so the scan costs word ops
