@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="356" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- grid = [[9,5,7,3],[8,9,6,1],[6,7,14,3],[2,5,3,1]]; cells 54x40, grid x0=70 y0=92; pref = inclusive prefix minima, table x0=380; shaded = legal starts for end (2,2) -->
+  <text x="178" y="56" text-anchor="middle" fill="#5c6b76" font-size="12.5">grid</text>
+  <text x="488" y="56" text-anchor="middle" fill="#5c6b76" font-size="12.5">pref minima</text>
+  <g fill="#9aa7b2" font-size="11" text-anchor="middle">
+    <text x="97" y="84">0</text><text x="151" y="84">1</text><text x="205" y="84">2</text><text x="259" y="84">3</text>
+  </g>
+  <g fill="#9aa7b2" font-size="11" text-anchor="end">
+    <text x="58" y="118">0</text><text x="58" y="158">1</text><text x="58" y="198">2</text><text x="58" y="238">3</text>
+  </g>
+  <!-- reachable-start rectangle: rows 0-1 all cols, row 2 cols 0-1 -->
+  <g fill="#dbe4fb">
+    <rect x="70" y="92" width="216" height="80"/>
+    <rect x="70" y="172" width="108" height="40"/>
+  </g>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.2">
+    <rect x="70" y="92" width="54" height="40"/><rect x="124" y="92" width="54" height="40"/><rect x="178" y="92" width="54" height="40"/><rect x="232" y="92" width="54" height="40"/>
+    <rect x="70" y="132" width="54" height="40"/><rect x="124" y="132" width="54" height="40"/><rect x="178" y="132" width="54" height="40"/><rect x="232" y="132" width="54" height="40"/>
+    <rect x="70" y="172" width="54" height="40"/><rect x="124" y="172" width="54" height="40"/>
+    <rect x="178" y="172" width="54" height="40" stroke="#4169E1" stroke-width="2.4"/>
+    <rect x="232" y="172" width="54" height="40"/>
+    <rect x="70" y="212" width="54" height="40"/><rect x="124" y="212" width="54" height="40"/><rect x="178" y="212" width="54" height="40"/><rect x="232" y="212" width="54" height="40"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026">
+    <text x="97" y="118">9</text><text x="151" y="118" fill="#4169E1" font-weight="700">5</text><text x="205" y="118">7</text><text x="259" y="118">3</text>
+    <text x="97" y="158">8</text><text x="151" y="158">9</text><text x="205" y="158">6</text><text x="259" y="158">1</text>
+    <text x="97" y="198">6</text><text x="151" y="198">7</text><text x="205" y="198" font-weight="600">14</text><text x="259" y="198">3</text>
+    <text x="97" y="238">2</text><text x="151" y="238">5</text><text x="205" y="238">3</text><text x="259" y="238">1</text>
+  </g>
+  <circle cx="151" cy="112" r="9.5" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <!-- best path (0,1) -> (2,1) -> (2,2), routed left of the column values -->
+  <path d="M 137 124 V 205 H 226" fill="none" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <circle cx="137" cy="124" r="3" fill="#4169E1"/>
+  <!-- pref table: inclusive prefix minima -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.2">
+    <rect x="380" y="92" width="54" height="40"/><rect x="434" y="92" width="54" height="40"/><rect x="488" y="92" width="54" height="40"/><rect x="542" y="92" width="54" height="40"/>
+    <rect x="380" y="132" width="54" height="40"/><rect x="434" y="132" width="54" height="40"/>
+    <rect x="488" y="132" width="54" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="542" y="132" width="54" height="40"/>
+    <rect x="380" y="172" width="54" height="40"/><rect x="434" y="172" width="54" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="488" y="172" width="54" height="40"/><rect x="542" y="172" width="54" height="40"/>
+    <rect x="380" y="212" width="54" height="40"/><rect x="434" y="212" width="54" height="40"/><rect x="488" y="212" width="54" height="40"/><rect x="542" y="212" width="54" height="40"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="407" y="118" fill="#1a2026">9</text><text x="461" y="118" fill="#1a2026">5</text><text x="515" y="118" fill="#1a2026">5</text><text x="569" y="118" fill="#1a2026">3</text>
+    <text x="407" y="158" fill="#1a2026">8</text><text x="461" y="158" fill="#1a2026">5</text><text x="515" y="158" fill="#4169E1" font-weight="700">5</text><text x="569" y="158" fill="#1a2026">1</text>
+    <text x="407" y="198" fill="#1a2026">6</text><text x="461" y="198" fill="#4169E1" font-weight="700">5</text><text x="515" y="198" fill="#1a2026">5</text><text x="569" y="198" fill="#1a2026">3</text>
+    <text x="407" y="238" fill="#1a2026">2</text><text x="461" y="238" fill="#1a2026">2</text><text x="515" y="238" fill="#1a2026">2</text><text x="569" y="238" fill="#1a2026">1</text>
+  </g>
+  <text x="70" y="274" fill="#5c6b76" font-size="11.5">shaded = legal starts for end (2, 2)</text>
+  <text x="380" y="274" fill="#5c6b76" font-size="11.5">accent = the two pref cells pricing (2, 2)</text>
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">For end (2, 2) = 14 the rectangle min is min(pref left = 5, pref above = 5) = <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+  <text x="320" y="334" text-anchor="middle" fill="#1a2026" font-size="13">The path (0, 1) → (2, 1) → (2, 2) scores 2 + 7, and 14 − 5 = <tspan fill="#4169E1" font-weight="600">9</tspan> is the answer.</text>
+</svg>

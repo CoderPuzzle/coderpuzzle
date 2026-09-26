@@ -6,6 +6,10 @@ The classic house-robber recurrence recomputes the whole array per query, which 
 
 The merge tries all choices of left exit state k and right entry state l, skipping k = l = 1 (that would select the two elements adjacent across the seam) and keeps the maximum of left[i][k] + right[l][j] for each outer pair (i, j). This operation is associative, so the four numbers behave like a monoid and can live in a segment tree: a leaf is ((0, NEG), (NEG, x)) — a single element either is skipped (sum 0, no boundary taken) or is taken alone — and the root after any set of updates holds the four boundary states of the whole array.
 
+![With nums = [3, −2, 9] after the first query, every node of the segment
+tree carries a 2×2 boundary matrix, each merge forbids the both-taken seam,
+and the root [[0, 9], [3, 12]] gives the maximum 12 = 3 + 9.](figures/solution-boundary-matrix-tree.svg)
+
 Each query is a point update (rewrite the leaf, re-merge the O(log n) nodes on the path) followed by taking the maximum of the root's four entries, which is exactly the best non-adjacent sum for the current array. NEG is a very negative sentinel so impossible boundary combinations never win, and it also makes all-negative arrays correctly return 0, the empty subsequence. The per-query answers are accumulated modulo 10⁹ + 7.
 
 **Complexity:** `O(n + q log n)` time, `O(n)` space.

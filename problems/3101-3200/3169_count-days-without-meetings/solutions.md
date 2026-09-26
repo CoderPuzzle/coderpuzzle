@@ -11,6 +11,10 @@ free count; otherwise (or in any case) the frontier extends to the larger of
 its own end. After the sweep, every day past `lastEnd` is free, so one final
 subtraction from `days` closes the count.
 
+![On days = 10 with meetings [[5,7],[1,3],[9,10]] sorted, the lastEnd
+frontier advances 0 → 3 → 7 → 10 and the uncovered starts yield the free
+days 4 and 8, summing to 2.](figures/solution-lastend-sweep-gaps.svg)
+
 The sort dominates at `O(n log n)` time for `n = meetings.length`, with a
 constant-size state machine after it; no auxiliary structure beyond the sort
 is needed, so space is `O(log n)`–`O(n)` depending on the language's sort.

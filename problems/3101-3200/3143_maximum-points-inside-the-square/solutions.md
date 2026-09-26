@@ -17,5 +17,9 @@ of points gathered before the block is the answer. Each point is touched a
 constant number of times once sorting is done, and only two 26-slot tag
 tables are ever held.
 
+![For points = [[2,2],[-1,-2],[-4,4],[-3,1],[3,-3]] and s = "abdca", the
+radius-2 block admits tags a and b inside the side-4 square, and the
+radius-3 block repeats tag a, so the sweep stops with 2 covered points.](figures/solution-chebyshev-radius-blocks.svg)
+
 **Complexity:** `O(n log n)` time for the sort plus a linear sweep,
 `O(1)` space beyond the index array (`26`-slot tables).

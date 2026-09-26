@@ -22,6 +22,11 @@ this end in constant time, and the largest price across the matrix is the
 answer. Seeding row `0`'s rectangle entries with an out-of-range sentinel
 keeps the very first cells honest until a real pair appears.
 
+![On grid = [[9,5,7,3],[8,9,6,1],[6,7,14,3],[2,5,3,1]], the shaded rectangle
+lists end cell (2,2)'s legal starts, the accented pref cells hand back the
+minimum 5 at (0,1), and the path (0,1) → (2,1) → (2,2) is worth 14 − 5 = 9,
+the answer.](figures/solution-prefix-min-sweep.svg)
+
 Two precision notes. First, answers are bounded by the value range — no
 journey can score outside `±(10⁵ − 1)` — so the arithmetic itself fits in
 32 bits and 64-bit accumulators simply honor the declared wide return;

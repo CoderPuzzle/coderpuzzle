@@ -11,6 +11,11 @@ A placement is possible exactly when some start `s ≤ x - sz` satisfies
 `d[s] >= sz`, which turns both query types into maintenance of the array
 `d[0..span-1]`, where `span` is the largest `x` any type-2 query will use.
 
+![In Example 2 after obstacles at 7 and 2, each start's free-run strip runs
+to the next obstacle, giving d = [2,1,5,4,3,2,1]; the range-max check over
+starts [0, x − sz] admits sz = 5 on d[2] = 5 but rejects sz = 6, whose best
+is only 2.](figures/solution-free-run-range-max.svg)
+
 Placing an obstacle at `t` rewrites one contiguous gap: every start whose
 nearest-after obstacle was beyond `t` now reads `d[i] = t - i`. Those starts
 are precisely `(previous obstacle, t)`, where the previous obstacle is found

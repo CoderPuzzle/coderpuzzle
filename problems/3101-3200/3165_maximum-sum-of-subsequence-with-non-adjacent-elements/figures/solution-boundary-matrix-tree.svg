@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="420" fill="#ffffff"/>
+  <!-- nums after query [1,-2]: [3,-2,9]; each node holds M[i][j] = best sum, first taken = i, last taken = j; NEG drawn as dash; matrices 60x40 at root (270,44), node[0..1] (150,168), leaves y=292 -->
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="30" y="50">matrix[i][j] = best sum with</text>
+    <text x="30" y="68">first taken = i, last taken = j</text>
+    <text x="30" y="86">− = impossible state</text>
+    <text x="30" y="110">merge skips left-last and right-</text>
+    <text x="30" y="128">first both taken (the seam)</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.4">
+    <line x1="300" y1="84" x2="184" y2="164"/>
+    <line x1="300" y1="84" x2="486" y2="288"/>
+    <line x1="180" y1="208" x2="94" y2="288"/>
+    <line x1="180" y1="208" x2="276" y2="288"/>
+  </g>
+  <!-- root matrix [[0,9],[3,12]] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="270" y="44" width="30" height="20"/><rect x="300" y="44" width="30" height="20"/>
+    <rect x="270" y="64" width="30" height="20"/>
+    <rect x="300" y="64" width="30" height="20" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="285" y="58" fill="#1a2026">0</text><text x="315" y="58" fill="#1a2026">9</text>
+    <text x="285" y="78" fill="#1a2026">3</text><text x="315" y="78" fill="#4169E1" font-weight="700">12</text>
+  </g>
+  <text x="336" y="58" fill="#9aa7b2" font-size="11">root</text>
+  <text x="336" y="78" fill="#4169E1" font-size="11.5" font-weight="600">= 3 + 9</text>
+  <!-- node [0..1] matrix [[0,-2],[3,NEG]] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="150" y="168" width="30" height="20"/><rect x="180" y="168" width="30" height="20"/>
+    <rect x="150" y="188" width="30" height="20"/><rect x="180" y="188" width="30" height="20"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="165" y="182" fill="#1a2026">0</text><text x="195" y="182" fill="#1a2026">-2</text>
+    <text x="165" y="202" fill="#1a2026">3</text><text x="195" y="202" fill="#9aa7b2">−</text>
+  </g>
+  <text x="218" y="192" fill="#9aa7b2" font-size="11">node [0..1]</text>
+  <!-- leaves -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="60" y="292" width="30" height="20"/><rect x="90" y="292" width="30" height="20"/>
+    <rect x="60" y="312" width="30" height="20"/><rect x="90" y="312" width="30" height="20"/>
+    <rect x="460" y="292" width="30" height="20"/><rect x="490" y="292" width="30" height="20"/>
+    <rect x="460" y="312" width="30" height="20"/><rect x="490" y="312" width="30" height="20"/>
+  </g>
+  <rect x="250" y="292" width="60" height="40" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="250" y="292" width="30" height="20"/><rect x="280" y="292" width="30" height="20"/>
+    <rect x="250" y="312" width="30" height="20"/><rect x="280" y="312" width="30" height="20"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="75" y="306" fill="#1a2026">0</text><text x="105" y="306" fill="#9aa7b2">−</text>
+    <text x="75" y="326" fill="#9aa7b2">−</text><text x="105" y="326" fill="#1a2026">3</text>
+    <text x="265" y="306" fill="#1a2026">0</text><text x="295" y="306" fill="#9aa7b2">−</text>
+    <text x="265" y="326" fill="#9aa7b2">−</text><text x="295" y="326" fill="#1a2026">-2</text>
+    <text x="475" y="306" fill="#1a2026">0</text><text x="505" y="306" fill="#9aa7b2">−</text>
+    <text x="475" y="326" fill="#9aa7b2">−</text><text x="505" y="326" fill="#1a2026">9</text>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="90" y="352" fill="#5c6b76">leaf 3</text>
+    <text x="280" y="352" fill="#4169E1">leaf −2 (query [1, −2], was 5)</text>
+    <text x="490" y="352" fill="#5c6b76">leaf 9</text>
+  </g>
+  <text x="320" y="384" text-anchor="middle" fill="#1a2026" font-size="13">After the first query rewrites the middle leaf, the root matrix [[0, 9], [3, 12]]</text>
+  <text x="320" y="402" text-anchor="middle" fill="#1a2026" font-size="13">has maximum entry <tspan fill="#4169E1" font-weight="600">12</tspan> = 3 + 9 — the answer for nums = [3, −2, 9].</text>
+</svg>
