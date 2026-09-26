@@ -8,4 +8,6 @@ Both "first later index" tables are built in one left-to-right pass each with a 
 
 With the edges known, run shortest-path DP over the DAG in increasing index order: `dp[i]` is the minimum cost of landing on `i`, starting from `dp[0] = 0`. For each `i < n - 1`, relax both outgoing edges by offering `dp[i] + costs[j]` to `dp[next_ge[i]]` and `dp[next_sm[i]]`. Because every edge points to a strictly larger index, one forward sweep visits every node after all of its predecessors, so no priority queue is needed. `dp[n - 1]` is the answer; edge cases such as plateaus (`nums[i] == nums[j]`) are handled naturally because the equality is folded into the first stack (`>=` pops) while the second stack uses strict `<`, matching the two jump conditions. A missing target (`-1`) is simply skipped, and with `n >= 1` index `n - 1` is always reachable along at least one chain.
 
+![On nums = [3, 2, 4, 4, 1] each index keeps at most two arcs — blue to the nearest later value at least nums[i], gray to the nearest later value below — and relaxing left to right settles dp[4] = min(9, 8, 12) = 8.](figures/solution-jump-arcs-dp-relax.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

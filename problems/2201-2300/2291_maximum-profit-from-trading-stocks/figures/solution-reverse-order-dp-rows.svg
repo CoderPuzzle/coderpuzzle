@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="372" fill="#ffffff"/>
+  <!-- present = [5,4,6,2,3], future = [8,5,4,3,5], budget = 10
+       profits = [3,1,-2,1,2]; stock 2 skipped
+       dp rows (money 0..10):
+         start              0 0 0 0 0 0 0 0 0 0 0
+         +s0 (5,+3)         0 0 0 0 0 3 3 3 3 3 3
+         +s1 (4,+1)         0 0 0 0 1 3 3 3 3 4 4
+          s2 (6,-2) skip    0 0 0 0 1 3 3 3 3 4 4
+         +s3 (2,+1)         0 0 1 1 1 3 3 4 4 4 4   (dp[7] = 4 shaded)
+         +s4 (3,+2)         0 0 1 2 2 3 3 4 5 5 6   (dp[10] = 6 accented) -->
+  <text x="40" y="44" fill="#5c6b76" font-size="12.5">dp[m] = best profit spending at most m; item = (cost, profit = future &#8722; present)</text>
+  <text x="140" y="84" text-anchor="end" fill="#5c6b76" font-size="12">money</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="172" y="84">0</text><text x="216" y="84">1</text><text x="260" y="84">2</text>
+    <text x="304" y="84">3</text><text x="348" y="84">4</text><text x="392" y="84">5</text>
+    <text x="436" y="84">6</text><text x="480" y="84">7</text><text x="524" y="84">8</text>
+    <text x="568" y="84">9</text><text x="612" y="84">10</text>
+  </g>
+  <!-- start row -->
+  <text x="140" y="116" text-anchor="end" fill="#5c6b76" font-size="12">start</text>
+  <g fill="#f0f3f7" stroke="#c8cfd6" stroke-width="1">
+    <rect x="150" y="96" width="44" height="30"/><rect x="194" y="96" width="44" height="30"/>
+    <rect x="238" y="96" width="44" height="30"/><rect x="282" y="96" width="44" height="30"/>
+    <rect x="326" y="96" width="44" height="30"/><rect x="370" y="96" width="44" height="30"/>
+    <rect x="414" y="96" width="44" height="30"/><rect x="458" y="96" width="44" height="30"/>
+    <rect x="502" y="96" width="44" height="30"/><rect x="546" y="96" width="44" height="30"/>
+    <rect x="590" y="96" width="44" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#9aa7b2">
+    <text x="172" y="116">0</text><text x="216" y="116">0</text><text x="260" y="116">0</text>
+    <text x="304" y="116">0</text><text x="348" y="116">0</text><text x="392" y="116">0</text>
+    <text x="436" y="116">0</text><text x="480" y="116">0</text><text x="524" y="116">0</text>
+    <text x="568" y="116">0</text><text x="612" y="116">0</text>
+  </g>
+  <!-- +s0 row -->
+  <text x="140" y="150" text-anchor="end" fill="#1a2026" font-size="12">+s0 (5, +3)</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="150" y="130" width="44" height="30"/><rect x="194" y="130" width="44" height="30"/>
+    <rect x="238" y="130" width="44" height="30"/><rect x="282" y="130" width="44" height="30"/>
+    <rect x="326" y="130" width="44" height="30"/><rect x="370" y="130" width="44" height="30"/>
+    <rect x="414" y="130" width="44" height="30"/><rect x="458" y="130" width="44" height="30"/>
+    <rect x="502" y="130" width="44" height="30"/><rect x="546" y="130" width="44" height="30"/>
+    <rect x="590" y="130" width="44" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="172" y="150">0</text><text x="216" y="150">0</text><text x="260" y="150">0</text>
+    <text x="304" y="150">0</text><text x="348" y="150">0</text><text x="392" y="150" font-weight="600">3</text>
+    <text x="436" y="150" font-weight="600">3</text><text x="480" y="150" font-weight="600">3</text>
+    <text x="524" y="150" font-weight="600">3</text><text x="568" y="150" font-weight="600">3</text>
+    <text x="612" y="150" font-weight="600">3</text>
+  </g>
+  <!-- +s1 row -->
+  <text x="140" y="184" text-anchor="end" fill="#1a2026" font-size="12">+s1 (4, +1)</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="150" y="164" width="44" height="30"/><rect x="194" y="164" width="44" height="30"/>
+    <rect x="238" y="164" width="44" height="30"/><rect x="282" y="164" width="44" height="30"/>
+    <rect x="326" y="164" width="44" height="30"/><rect x="370" y="164" width="44" height="30"/>
+    <rect x="414" y="164" width="44" height="30"/><rect x="458" y="164" width="44" height="30"/>
+    <rect x="502" y="164" width="44" height="30"/><rect x="546" y="164" width="44" height="30"/>
+    <rect x="590" y="164" width="44" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="172" y="184">0</text><text x="216" y="184">0</text><text x="260" y="184">0</text>
+    <text x="304" y="184">0</text><text x="348" y="184" font-weight="600">1</text><text x="392" y="184">3</text>
+    <text x="436" y="184">3</text><text x="480" y="184">3</text><text x="524" y="184">3</text>
+    <text x="568" y="184" font-weight="600">4</text><text x="612" y="184" font-weight="600">4</text>
+  </g>
+  <!-- s2 skipped row -->
+  <text x="140" y="218" text-anchor="end" fill="#9aa7b2" font-size="12">s2 (6, &#8722;2) skip</text>
+  <g fill="#f0f3f7" stroke="#c8cfd6" stroke-width="1">
+    <rect x="150" y="198" width="44" height="30"/><rect x="194" y="198" width="44" height="30"/>
+    <rect x="238" y="198" width="44" height="30"/><rect x="282" y="198" width="44" height="30"/>
+    <rect x="326" y="198" width="44" height="30"/><rect x="370" y="198" width="44" height="30"/>
+    <rect x="414" y="198" width="44" height="30"/><rect x="458" y="198" width="44" height="30"/>
+    <rect x="502" y="198" width="44" height="30"/><rect x="546" y="198" width="44" height="30"/>
+    <rect x="590" y="198" width="44" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#9aa7b2">
+    <text x="172" y="218">0</text><text x="216" y="218">0</text><text x="260" y="218">0</text>
+    <text x="304" y="218">0</text><text x="348" y="218">1</text><text x="392" y="218">3</text>
+    <text x="436" y="218">3</text><text x="480" y="218">3</text><text x="524" y="218">3</text>
+    <text x="568" y="218">4</text><text x="612" y="218">4</text>
+  </g>
+  <!-- +s3 row -->
+  <text x="140" y="252" text-anchor="end" fill="#1a2026" font-size="12">+s3 (2, +1)</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="150" y="232" width="44" height="30"/><rect x="194" y="232" width="44" height="30"/>
+    <rect x="238" y="232" width="44" height="30"/><rect x="282" y="232" width="44" height="30"/>
+    <rect x="326" y="232" width="44" height="30"/><rect x="370" y="232" width="44" height="30"/>
+    <rect x="414" y="232" width="44" height="30"/><rect x="458" y="232" width="44" height="30"/>
+    <rect x="502" y="232" width="44" height="30"/><rect x="546" y="232" width="44" height="30"/>
+    <rect x="590" y="232" width="44" height="30"/>
+  </g>
+  <rect x="458" y="232" width="44" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="172" y="252">0</text><text x="216" y="252">0</text><text x="260" y="252" font-weight="600">1</text>
+    <text x="304" y="252" font-weight="600">1</text><text x="348" y="252">1</text><text x="392" y="252">3</text>
+    <text x="436" y="252">3</text><text x="480" y="252" font-weight="600" fill="#4169E1">4</text>
+    <text x="524" y="252" font-weight="600">4</text><text x="568" y="252">4</text><text x="612" y="252">4</text>
+  </g>
+  <!-- +s4 row -->
+  <text x="140" y="286" text-anchor="end" fill="#1a2026" font-size="12">+s4 (3, +2)</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="150" y="266" width="44" height="30"/><rect x="194" y="266" width="44" height="30"/>
+    <rect x="238" y="266" width="44" height="30"/><rect x="282" y="266" width="44" height="30"/>
+    <rect x="326" y="266" width="44" height="30"/><rect x="370" y="266" width="44" height="30"/>
+    <rect x="414" y="266" width="44" height="30"/><rect x="458" y="266" width="44" height="30"/>
+    <rect x="502" y="266" width="44" height="30"/><rect x="546" y="266" width="44" height="30"/>
+    <rect x="590" y="266" width="44" height="30"/>
+  </g>
+  <rect x="590" y="266" width="44" height="30" fill="#4169E1" stroke="#4169E1" stroke-width="1.4"/>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="172" y="286">0</text><text x="216" y="286">0</text><text x="260" y="286">1</text>
+    <text x="304" y="286" font-weight="600">2</text><text x="348" y="286" font-weight="600">2</text>
+    <text x="392" y="286">3</text><text x="436" y="286">3</text><text x="480" y="286">4</text>
+    <text x="524" y="286" font-weight="600">5</text><text x="568" y="286" font-weight="600">5</text>
+  </g>
+  <text x="612" y="286" text-anchor="middle" font-size="13" fill="#ffffff" font-weight="600">6</text>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">Each row refreshes money right to left; the last buy sets dp[10] = dp[7] + 2 = <tspan fill="#4169E1" font-weight="600">6</tspan>,</text>
+  <text x="320" y="346" text-anchor="middle" fill="#1a2026" font-size="13">using stock 4 once, while stock 2 (profit 4 &#8722; 6 = &#8722;2) is skipped &#8212; answer dp[10] = 6.</text>
+</svg>

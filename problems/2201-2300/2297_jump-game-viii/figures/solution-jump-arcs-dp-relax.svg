@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- nums = [3,2,4,4,1], costs = [3,7,6,4,2]
+       arcs (nearest later target): ge (blue) 0->2, 1->2, 2->3; sm (gray) 0->1, 1->4, 2->4, 3->4
+       dp relaxes left to right: dp = [0, 7, 6, 10, 8]; dp[4] = min(7+2, 6+2, 10+2) = 8
+       optimal path 0 -> 2 -> 4 drawn thick -->
+  <line x1="40" y1="24" x2="68" y2="24" stroke="#4169E1" stroke-width="2.2"/>
+  <text x="76" y="28" fill="#1a2026" font-size="12.5">nearest later j: nums[j] &#8805; nums[i]</text>
+  <line x1="310" y1="24" x2="338" y2="24" stroke="#5c6b76" stroke-width="2.2"/>
+  <text x="346" y="28" fill="#1a2026" font-size="12.5">nearest later j: nums[j] &lt; nums[i]</text>
+  <!-- jump arcs (endpoints spread along each cell's top edge so arrowheads do not stack) -->
+  <g fill="none">
+    <path d="M 160 146 Q 194 94 228 146" stroke="#5c6b76" stroke-width="1.8" marker-end="url(#arrowg)"/>
+    <path d="M 246 146 Q 281 94 316 146" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowb)"/>
+    <path d="M 328 146 Q 361 94 394 146" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowb)"/>
+    <path d="M 410 146 Q 451 94 492 146" stroke="#5c6b76" stroke-width="1.8" marker-end="url(#arrowg)"/>
+    <path d="M 160 146 Q 232 46 304 146" stroke="#4169E1" stroke-width="2.6" marker-end="url(#arrowb)"/>
+    <path d="M 258 146 Q 363 -8 468 146" stroke="#5c6b76" stroke-width="1.8" marker-end="url(#arrowg)"/>
+    <path d="M 340 146 Q 410 46 480 146" stroke="#5c6b76" stroke-width="2.6" marker-end="url(#arrowg)"/>
+  </g>
+  <!-- array cells: nums over costs -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="120" y="150" width="80" height="48"/><rect x="200" y="150" width="80" height="48"/>
+    <rect x="280" y="150" width="80" height="48"/><rect x="360" y="150" width="80" height="48"/>
+    <rect x="440" y="150" width="80" height="48"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="160" y="172" font-weight="600">3</text><text x="240" y="172" font-weight="600">2</text>
+    <text x="320" y="172" font-weight="600">4</text><text x="400" y="172" font-weight="600">4</text>
+    <text x="480" y="172" font-weight="600">1</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="160" y="190">cost 3</text><text x="240" y="190">cost 7</text>
+    <text x="320" y="190">cost 6</text><text x="400" y="190">cost 4</text>
+    <text x="480" y="190">cost 2</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="160" y="216">i = 0</text><text x="240" y="216">i = 1</text><text x="320" y="216">i = 2</text>
+    <text x="400" y="216">i = 3</text><text x="480" y="216">i = 4</text>
+  </g>
+  <!-- dp row -->
+  <text x="96" y="246" text-anchor="end" fill="#5c6b76" font-size="12.5">dp</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="160" y="246">0</text><text x="240" y="246">7</text><text x="320" y="246" fill="#4169E1">6</text>
+    <text x="400" y="246">10</text><text x="480" y="246" fill="#4169E1">8</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="160" y="264">start</text><text x="480" y="264">min(9, 8, 12)</text>
+  </g>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Relaxing in index order, dp[4] = min(dp[1]+2 = 9, dp[2]+2 = 8, dp[3]+2 = 12) = <tspan fill="#4169E1" font-weight="600">8</tspan>;</text>
+  <text x="320" y="320" text-anchor="middle" fill="#1a2026" font-size="13">the thick path 0 &#8594; 2 &#8594; 4 pays landing costs 6 + 2 on top of dp[0] = 0.</text>
+</svg>

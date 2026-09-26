@@ -28,6 +28,8 @@ Since seats are never freed, each row is emptied at most once over the whole
 run, making the fill phase amortized logarithmic per call. Sums use 64 bits
 (`n * m` reaches `5 * 10¹³`).
 
+![On the 2×5 hall, the gather(4, 0) descent follows the left child whose max 5 reaches 4 to row 0 and books seats [0, 3], then scatter(5, 1) sums 1 + 5 = 6 ≥ 5 and drains seat 4 of row 0 then seats [0, 3] of row 1, leaving remaining [0, 1].](figures/solution-gather-descent-scatter-drain.svg)
+
 Both the Python and Java canonical solutions implement exactly this
 structure; the time limit is raised because the Python tree recurses through
 `5 * 10⁴` mixed calls.

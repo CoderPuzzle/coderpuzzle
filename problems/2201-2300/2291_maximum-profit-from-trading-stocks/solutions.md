@@ -13,4 +13,6 @@ present[i]]` still refers to the state before this stock was considered,
 which is what caps each purchase at one copy; an ascending loop would let a
 single stock be resold repeatedly. The answer is `dp[budget]`.
 
+![With budget 10, each profitable stock refreshes the dp[money] row right to left — stock 4 turns dp[10] into dp[7] + 2 = 6 while stock 2 (profit 4 − 6 = −2) is skipped — ending at dp[10] = 6.](figures/solution-reverse-order-dp-rows.svg)
+
 **Complexity:** `O(n * budget)` time, `O(budget)` space.

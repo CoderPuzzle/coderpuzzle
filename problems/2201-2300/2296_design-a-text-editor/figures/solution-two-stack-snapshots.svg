@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- addText("leetcode"): left top-down = e,d,o,c,t,e,e,l; right empty
+       deleteText(4) pops e,d,o,c; addText("practice"): left top-down = e,c,i,t,c,a,r,p,t,e,e,l
+       cursorLeft(8) pours top 8 onto right: left = t,e,e,l, right top-down = p,r,a,c,t,i,c,e; returns "leet" -->
+  <path d="M 152 34 L 288 34" fill="none" stroke="#42525e" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 372 34 L 508 34" fill="none" stroke="#42525e" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="220" y="24" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">pop e, d, o, c</text>
+  <text x="440" y="24" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">pour 8 left &#8594; right</text>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="110" y="64">after addText("leetcode")</text>
+    <text x="330" y="64">deleteText(4), then addText("practice")</text>
+    <text x="550" y="64">then cursorLeft(8)</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#5c6b76">
+    <text x="90" y="80">left</text><text x="130" y="80">right</text>
+    <text x="310" y="80">left</text><text x="350" y="80">right</text>
+    <text x="530" y="80">left</text><text x="570" y="80">right</text>
+  </g>
+  <!-- snapshot 1: left 8 chars (top 4 shaded = about to pop), right empty -->
+  <g text-anchor="middle" font-size="12">
+    <rect x="77" y="84" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="90" y="97">e</text>
+    <rect x="77" y="104" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="90" y="117">d</text>
+    <rect x="77" y="124" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="90" y="137">o</text>
+    <rect x="77" y="144" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="90" y="157">c</text>
+    <rect x="77" y="164" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="90" y="177">t</text>
+    <rect x="77" y="184" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="90" y="197">e</text>
+    <rect x="77" y="204" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="90" y="217">e</text>
+    <rect x="77" y="224" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="90" y="237">l</text>
+    <rect x="117" y="84" width="26" height="18" fill="none" stroke="#9aa7b2" stroke-dasharray="4 3"/>
+  </g>
+  <rect x="108.75" y="84" width="2.5" height="11" fill="#4169E1"/>
+  <!-- snapshot 2: left 12 chars (top 8 shaded = about to pour), right empty -->
+  <g text-anchor="middle" font-size="12">
+    <rect x="297" y="84" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="310" y="97">e</text>
+    <rect x="297" y="104" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="310" y="117">c</text>
+    <rect x="297" y="124" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="310" y="137">i</text>
+    <rect x="297" y="144" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="310" y="157">t</text>
+    <rect x="297" y="164" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="310" y="177">c</text>
+    <rect x="297" y="184" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="310" y="197">a</text>
+    <rect x="297" y="204" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="310" y="217">r</text>
+    <rect x="297" y="224" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="310" y="237">p</text>
+    <rect x="297" y="244" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="310" y="257">t</text>
+    <rect x="297" y="264" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="310" y="277">e</text>
+    <rect x="297" y="284" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="310" y="297">e</text>
+    <rect x="297" y="304" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="310" y="317">l</text>
+    <rect x="337" y="84" width="26" height="18" fill="none" stroke="#9aa7b2" stroke-dasharray="4 3"/>
+  </g>
+  <rect x="328.75" y="84" width="2.5" height="11" fill="#4169E1"/>
+  <!-- snapshot 3: left 4 chars, right 8 chars (the poured ones, shaded) -->
+  <g text-anchor="middle" font-size="12">
+    <rect x="517" y="84" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="530" y="97">t</text>
+    <rect x="517" y="104" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="530" y="117">e</text>
+    <rect x="517" y="124" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="530" y="137">e</text>
+    <rect x="517" y="144" width="26" height="18" fill="#ffffff" stroke="#42525e"/><text x="530" y="157">l</text>
+    <rect x="557" y="84" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="570" y="97">p</text>
+    <rect x="557" y="104" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="570" y="117">r</text>
+    <rect x="557" y="124" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="570" y="137">a</text>
+    <rect x="557" y="144" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="570" y="157">c</text>
+    <rect x="557" y="164" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="570" y="177">t</text>
+    <rect x="557" y="184" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="570" y="197">i</text>
+    <rect x="557" y="204" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="570" y="217">c</text>
+    <rect x="557" y="224" width="26" height="18" fill="#dbe4fb" stroke="#42525e"/><text x="570" y="237">e</text>
+  </g>
+  <rect x="548.75" y="84" width="2.5" height="11" fill="#4169E1"/>
+  <text x="550" y="270" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">returns "leet"</text>
+  <text x="340" y="356" text-anchor="middle" fill="#1a2026" font-size="13">Traced on leetcode/practice: deleteText(4) pops e, d, o, c off the left top;</text>
+  <text x="340" y="376" text-anchor="middle" fill="#1a2026" font-size="13">cursorLeft(8) pours 8 chars onto right, leaving left = t, e, e, l and returning <tspan fill="#4169E1" font-weight="600">leet</tspan>.</text>
+</svg>

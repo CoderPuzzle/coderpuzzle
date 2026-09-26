@@ -16,5 +16,7 @@ onto `left`; either way the return value reads at most ten characters below
 the top of `left`. Clamping falls out for free — an empty stack simply runs
 out of characters to move or delete.
 
+![On the leetcode/practice trace, deleteText(4) pops e, d, o, c off the left stack and cursorLeft(8) pours eight characters from left onto right, leaving left = t, e, e, l and returning "leet".](figures/solution-two-stack-snapshots.svg)
+
 **Complexity:** `O(len(text))` for `addText`, `O(k)` for every other call,
 `O(n)` space.

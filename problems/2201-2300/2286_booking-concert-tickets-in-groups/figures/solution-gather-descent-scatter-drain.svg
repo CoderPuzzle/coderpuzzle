@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+    <marker id="arrowd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- remaining = [5,5]; gather(4,0) descends to row 0 (max 5 &gt;= 4), books seats [0,3] -&gt; [1,5];
+       scatter(5,1) checks sum 1+5=6 &gt;= 5, drains row 0 (seat 4) then row 1 (seats [0,3]) -&gt; [0,1] -->
+  <!-- tree over remaining [5,5]: root (sum 10, max 5), leaves row 0 = 5, row 1 = 5 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="260" y="48" width="120" height="44"/>
+    <rect x="390" y="150" width="150" height="44"/>
+  </g>
+  <rect x="100" y="150" width="150" height="44" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle">
+    <text x="320" y="66" font-weight="600">sum 10</text>
+    <text x="320" y="84" fill="#5c6b76">max 5</text>
+    <text x="175" y="177" font-weight="600">row 0 = 5</text>
+    <text x="465" y="177" font-weight="600">row 1 = 5</text>
+  </g>
+  <path d="M 305 92 L 185 148" fill="none" stroke="#4169E1" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <path d="M 335 92 L 455 148" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrowm)"/>
+  <text x="140" y="122" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">left max 5 &#8805; 4</text>
+  <text x="500" y="106" text-anchor="middle" fill="#9aa7b2" font-size="12">row 1 not in [0, 0]</text>
+  <text x="175" y="214" text-anchor="middle" fill="#1a2026" font-size="12.5">gather(4, 0) = [0, 0]: books seats [0, 3]</text>
+  <!-- scatter band: remaining before and after the drain -->
+  <text x="320" y="252" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">scatter(5, 1): sum 1 + 5 = 6 &#8805; 5</text>
+  <text x="130" y="302" text-anchor="end" fill="#5c6b76" font-size="12.5">remaining</text>
+  <g font-size="11" fill="#5c6b76" text-anchor="middle">
+    <text x="166" y="270">row 0</text>
+    <text x="226" y="270">row 1</text>
+    <text x="416" y="270">row 0</text>
+    <text x="476" y="270">row 1</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="140" y="278" width="52" height="36"/><rect x="200" y="278" width="52" height="36"/>
+    <rect x="390" y="278" width="52" height="36"/><rect x="450" y="278" width="52" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="166" y="302">1</text><text x="226" y="302">5</text>
+    <text x="416" y="302" fill="#9aa7b2">0</text><text x="476" y="302">1</text>
+  </g>
+  <path d="M 272 296 L 368 296" fill="none" stroke="#42525e" stroke-width="1.8" marker-end="url(#arrowd)"/>
+  <text x="320" y="342" text-anchor="middle" fill="#1a2026" font-size="13">gather(4, 0) descends left (max 5 &#8805; 4) to row 0 and books seats [0, 3];</text>
+  <text x="320" y="362" text-anchor="middle" fill="#1a2026" font-size="13">scatter(5, 1) drains seat 4 of row 0 then seats [0, 3] of row 1, leaving <tspan fill="#4169E1" font-weight="600">[0, 1]</tspan>.</text>
+</svg>

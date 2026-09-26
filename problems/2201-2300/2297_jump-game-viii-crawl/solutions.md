@@ -6,6 +6,8 @@ Each jump rule admits exactly one target from an index. Rule A reaches the neare
 
 Two monotonic stacks recover both targets in a single backward sweep: popping entries with values below `nums[i]` exposes the nearest at-least-`nums[i]` index to the right, and popping entries with values at or above `nums[i]` exposes the nearest below-it index. A forward pass over the indices then computes shortest paths exactly: when `left` is reached its cost is final (every predecessor lies earlier), so relaxing `dp[right] = min(dp[right], dp[left] + costs[right])` for each of its targets settles `right` in turn. The start costs nothing; each landing pays its own `costs[right]`.
 
+![On nums = [3, 2, 4, 4, 1] the backward sweep fixes nearest-at-least targets [2, 2, 3, −1, −1] and nearest-below targets [1, 4, 4, 4, −1], and the forward pass along them lands dp[4] = min(7 + 2, 6 + 2, 10 + 2) = 8.](figures/solution-backward-stack-targets.svg)
+
 Total costs reach the sum of all `costs[i]`, about 10¹⁰, which overflows 32-bit integers — fixed-width languages accumulate in 64-bit, while JavaScript stays well under 2⁵³.
 
 **Complexity:** `O(n)` time, `O(n)` space.

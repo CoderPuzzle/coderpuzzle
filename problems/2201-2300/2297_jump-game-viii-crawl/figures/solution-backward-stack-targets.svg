@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="380" fill="#ffffff"/>
+  <!-- nums = [3,2,4,4,1], costs = [3,7,6,4,2]; backward sweep i = 4..0.
+       ge stack: pop while nums[top] &lt; nums[i] -&gt; top is nearest later nums[j] &gt;= nums[i]
+       sm stack: pop while nums[top] &gt;= nums[i] -&gt; top is nearest later nums[j] &lt; nums[i]
+       stacks shown before pushing i (top accented); next_ge = [2,2,3,-1,-1], next_sm = [1,4,4,4,-1]
+       forward pass: dp = [0,7,6,10,8], dp[4] = min(7+2, 6+2, 10+2) = 8 -->
+  <g text-anchor="middle" font-size="12" font-weight="600" fill="#5c6b76">
+    <text x="50" y="64">i</text>
+    <text x="118" y="64">nums[i]</text>
+    <text x="268" y="64">ge stack (top right)</text>
+    <text x="452" y="64">sm stack (top right)</text>
+    <text x="570" y="64">next_ge</text>
+    <text x="636" y="64">next_sm</text>
+  </g>
+  <!-- zebra rows -->
+  <g fill="#f0f3f7">
+    <rect x="28" y="78" width="652" height="28"/>
+    <rect x="28" y="138" width="652" height="28"/>
+    <rect x="28" y="198" width="652" height="28"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <!-- i = 4 -->
+    <text x="50" y="97">4</text><text x="118" y="97">1</text>
+    <text x="268" y="97" fill="#9aa7b2">&#8212;</text>
+    <text x="452" y="97" fill="#9aa7b2">&#8212;</text>
+    <text x="570" y="97">&#8722;1</text>
+    <text x="636" y="97">&#8722;1</text>
+    <!-- i = 3 -->
+    <text x="50" y="127">3</text><text x="118" y="127">4</text>
+    <text x="268" y="127" fill="#9aa7b2" font-size="11.5">&#8212; (popped 4)</text>
+    <text x="452" y="127"><tspan fill="#4169E1" font-weight="600">4</tspan></text>
+    <text x="570" y="127">&#8722;1</text>
+    <text x="636" y="127"><tspan fill="#4169E1" font-weight="600">4</tspan></text>
+    <!-- i = 2 -->
+    <text x="50" y="157">2</text><text x="118" y="157">4</text>
+    <text x="268" y="157"><tspan fill="#4169E1" font-weight="600">3</tspan></text>
+    <text x="452" y="157"><tspan fill="#4169E1" font-weight="600">4</tspan> <tspan fill="#9aa7b2" font-size="11.5">(popped 3)</tspan></text>
+    <text x="570" y="157"><tspan fill="#4169E1" font-weight="600">3</tspan></text>
+    <text x="636" y="157"><tspan fill="#4169E1" font-weight="600">4</tspan></text>
+    <!-- i = 1 -->
+    <text x="50" y="187">1</text><text x="118" y="187">2</text>
+    <text x="268" y="187">3 <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="452" y="187"><tspan fill="#4169E1" font-weight="600">4</tspan> <tspan fill="#9aa7b2" font-size="11.5">(popped 2)</tspan></text>
+    <text x="570" y="187"><tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="636" y="187"><tspan fill="#4169E1" font-weight="600">4</tspan></text>
+    <!-- i = 0 -->
+    <text x="50" y="217">0</text><text x="118" y="217">3</text>
+    <text x="268" y="217">3 <tspan fill="#4169E1" font-weight="600">2</tspan> <tspan fill="#9aa7b2" font-size="11.5">(popped 1)</tspan></text>
+    <text x="452" y="217">4 <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="570" y="217"><tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="636" y="217"><tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  </g>
+  <text x="340" y="266" text-anchor="middle" fill="#5c6b76" font-size="12.5">cheapest path: 0 &#8594; 2 (pay cost 6) &#8594; 4 (pay cost 2)</text>
+  <text x="340" y="330" text-anchor="middle" fill="#1a2026" font-size="13">The backward sweep fixes both targets per index; relaxing along them gives</text>
+  <text x="340" y="350" text-anchor="middle" fill="#1a2026" font-size="13">dp = [0, 7, 6, 10, 8] &#8212; dp[4] = min(7 + 2, 6 + 2, 10 + 2) = <tspan fill="#4169E1" font-weight="600">8</tspan>.</text>
+</svg>
