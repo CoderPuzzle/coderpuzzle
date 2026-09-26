@@ -6,6 +6,8 @@ Visibility decomposes cleanly: a person sees some set of people to the right and
 
 When person `x` is processed, everyone on the stack with height strictly below `x` is popped and counted: each of them is visible to `x`, because everyone between them and `x` is shorter than they are. If the stack is still nonempty afterwards, its top is the first person of height at least `x`, and that person is visible too — the "everyone in between shorter than both" rule is satisfied since all in-between people were just popped as strictly shorter than `x`. Equal heights get exactly this treatment: an equally tall person is visible, then blocks everything beyond, which is why the count adds 1 for a `>=` top, but the subsequent cleanup pops entries `<= x` so the equal person cannot be seen _through_ by anyone further back.
 
+![For heights [[5,1],[3,1],[4,1]], the right-to-left row stack and the bottom-to-top column stack pop shorter people into each cell's visibility count, summing right and below to [[3,1],[2,1],[1,0]].](figures/solution-row-column-stacks.svg)
+
 The horizontal pass runs this per row (right to left), the vertical pass per column (bottom to top), and both counts accumulate into the same `res` cell. Every height is pushed and popped at most once per pass, so the total work is linear in the grid; the stacks hold at most one row's or one column's worth of scalars at a time, transiently.
 
 **Complexity:** `O(mn)` time, `O(m + n)` space.

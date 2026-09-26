@@ -22,4 +22,6 @@ queries, where the path is a single vertex and only `LCA(start, end)`
 survives as the deepest — picking between just the two endpoint LCAs would
 miss it.
 
+![On the 7-node tree of example 1 both queries walk the path 5-2-0-3, and each outside node joins it at the deepest of the three pairwise LCAs: node 4 at node 0 (dist 2) and node 6 at node 2 (dist 1).](figures/solution-deepest-pairwise-lca.svg)
+
 **Complexity:** `O((n + m) log n)` time, `O(n log n)` space.

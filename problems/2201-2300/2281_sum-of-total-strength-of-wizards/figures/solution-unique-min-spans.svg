@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="352" fill="#ffffff"/>
+  <!-- strength = [1,3,1,2]; bars 70 wide at x = 110 + 100i, 24 px per strength unit, baseline y = 140;
+       span brackets are (prev[i], nxt[i]) at y = 196 + 26i, the dot marks the claiming wizard -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="110" y="116" width="70" height="24"/>
+    <rect x="210" y="68" width="70" height="72"/>
+    <rect x="310" y="116" width="70" height="24"/>
+    <rect x="410" y="92" width="70" height="48"/>
+  </g>
+  <line x1="100" y1="140" x2="490" y2="140" stroke="#42525e" stroke-width="1.5"/>
+  <g text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">
+    <text x="145" y="110">1</text><text x="245" y="62">3</text><text x="345" y="110">1</text><text x="445" y="86">2</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="66" y="158">i</text>
+    <text x="145" y="158">0</text><text x="245" y="158">1</text><text x="345" y="158">2</text><text x="445" y="158">3</text>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 110 190 L 110 196 L 280 196 L 280 190"/>
+    <path d="M 210 216 L 210 222 L 280 222 L 280 216"/>
+    <path d="M 110 242 L 110 248 L 480 248 L 480 242"/>
+    <path d="M 410 268 L 410 274 L 480 274 L 480 268"/>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="145" cy="196" r="3.5"/><circle cx="245" cy="222" r="3.5"/><circle cx="345" cy="248" r="3.5"/><circle cx="445" cy="274" r="3.5"/>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="100" y="200">i=0</text><text x="100" y="226">i=1</text><text x="100" y="252">i=2</text><text x="100" y="278">i=3</text>
+  </g>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="492" y="200">1×(1 + 4) = <tspan fill="#4169E1" font-weight="600">5</tspan></text>
+    <text x="492" y="226">3×3 = <tspan fill="#4169E1" font-weight="600">9</tspan></text>
+    <text x="492" y="252">1×(5+7+4+6+1+3) = <tspan fill="#4169E1" font-weight="600">26</tspan></text>
+    <text x="492" y="278">2×2 = <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="330" y="316">Each wizard is the unique minimum of its span: contributions 5 + 9 + 26 + 4 = <tspan fill="#4169E1" font-weight="600">44</tspan>.</text>
+    <text x="330" y="336">prev pops ≥, nxt pops &gt; — a tie among equal minima is claimed exactly once.</text>
+  </g>
+</svg>

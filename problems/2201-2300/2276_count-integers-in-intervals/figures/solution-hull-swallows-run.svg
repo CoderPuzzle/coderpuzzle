@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- integer line 1..10: cell v spans x = 96 + 38(v-1); bars are intervals, covered labels at right;
+       add(5,8) overlaps [7,10], tinted region x 324..400, and both are replaced by the hull [5,10] -->
+  <g stroke="#dbe4fb" stroke-width="1">
+    <line x1="96" y1="58" x2="96" y2="272"/><line x1="134" y1="58" x2="134" y2="272"/><line x1="172" y1="58" x2="172" y2="272"/><line x1="210" y1="58" x2="210" y2="272"/><line x1="248" y1="58" x2="248" y2="272"/><line x1="286" y1="58" x2="286" y2="272"/><line x1="324" y1="58" x2="324" y2="272"/><line x1="362" y1="58" x2="362" y2="272"/><line x1="400" y1="58" x2="400" y2="272"/><line x1="438" y1="58" x2="438" y2="272"/><line x1="476" y1="58" x2="476" y2="272"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="115" y="50">1</text><text x="153" y="50">2</text><text x="191" y="50">3</text><text x="229" y="50">4</text><text x="267" y="50">5</text><text x="305" y="50">6</text><text x="343" y="50">7</text><text x="381" y="50">8</text><text x="419" y="50">9</text><text x="457" y="50">10</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="84" y="80">add(2, 3)</text>
+    <text x="84" y="132">add(7, 10)</text>
+    <text x="84" y="180">add(5, 8)</text>
+    <text x="84" y="267">set now</text>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="134" y="66" width="76" height="18" rx="3"/>
+    <rect x="134" y="118" width="76" height="18" rx="3"/>
+    <rect x="324" y="118" width="152" height="18" rx="3"/>
+    <rect x="324" y="188" width="152" height="16" rx="3"/>
+    <rect x="134" y="254" width="76" height="18" rx="3"/>
+    <rect x="248" y="254" width="228" height="18" rx="3"/>
+  </g>
+  <!-- overlap of [5,8] and [7,10] on cells 7..8 -->
+  <rect x="324" y="152" width="76" height="52" fill="#dbe4fb"/>
+  <rect x="248" y="156" width="152" height="16" fill="none" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <line x1="340" y1="176" x2="340" y2="184" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="306" y="186" text-anchor="end" fill="#4169E1" font-size="11">swallows</text>
+  <path d="M 248 213 L 248 218 L 476 218 L 476 213" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="362" y="234" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">hull [5, 10]</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5">
+    <text x="172" y="79">[2, 3]</text>
+    <text x="172" y="131">[2, 3]</text><text x="400" y="131">[7, 10]</text>
+    <text x="324" y="168">[5, 8]</text><text x="400" y="200">[7, 10]</text>
+    <text x="172" y="267">[2, 3]</text><text x="362" y="267">[5, 10]</text>
+  </g>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="486" y="80">covered = 2</text>
+    <text x="486" y="132">covered = 6</text>
+    <text x="486" y="267">covered = 6 − 4 + 6 = <tspan fill="#4169E1" font-weight="700">8</tspan></text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="320" y="302">add(5, 8) overlaps [7, 10]: both are replaced by the hull <tspan fill="#4169E1" font-weight="600">[5, 10]</tspan>.</text>
+    <text x="320" y="322">covered steps 2 → 6 → 6 − 4 + 6 = <tspan fill="#4169E1" font-weight="600">8</tspan>; swallowed intervals never return.</text>
+  </g>
+</svg>
