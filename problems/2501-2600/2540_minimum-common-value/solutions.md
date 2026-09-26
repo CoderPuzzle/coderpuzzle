@@ -11,6 +11,8 @@ eliminated in order, no smaller common value exists; advancing either
 side past a drain means that array ran out of possible matches and -1
 closes the question.
 
+![On nums1 = [1,2,3] and nums2 = [2,4] the cursors discard the smaller front 1, after which both fronts read 2, the first common value.](figures/solution-two-pointer-drop.svg)
+
 This two-pointer sweep touches each element at most once, needs only the
 two cursors beyond the inputs, and never stores anything proportional to
 `n`. A hash set (hint 1) solves it equally well but pays `O(n)` extra

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="280" fill="#ffffff"/>
+  <!-- nums1=[1,2,3] cells 56x44 at x=120+64i, y=48; nums2=[2,4] at y=140;
+       step 1: fronts 1 < 2 -> drop nums1's front (struck, muted); step 2: fronts i=1 and j=0 both read 2 -->
+  <text x="40" y="75" fill="#1a2026" font-size="13" font-weight="600">nums1</text>
+  <g stroke="#9aa7b2" stroke-width="1.2" fill="#f0f3f7">
+    <rect x="120" y="48" width="56" height="44"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="248" y="48" width="56" height="44"/>
+    <rect x="184" y="140" width="56" height="44"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="#dbe4fb">
+    <rect x="184" y="48" width="56" height="44"/>
+    <rect x="120" y="140" width="56" height="44"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="148" y="75" fill="#9aa7b2">1</text>
+    <text x="212" y="75" fill="#4169E1">2</text>
+    <text x="276" y="75" fill="#1a2026">3</text>
+    <text x="148" y="167" fill="#4169E1">2</text>
+    <text x="212" y="167" fill="#1a2026">4</text>
+  </g>
+  <line x1="132" y1="58" x2="164" y2="82" stroke="#9aa7b2" stroke-width="2"/>
+  <text x="340" y="75" fill="#5c6b76" font-size="13">1 &lt; 2 → drop nums1's front</text>
+  <text x="340" y="167" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">2 = 2</tspan> → first common value</text>
+  <polygon points="196,42 228,42 212,33" fill="#4169E1"/>
+  <text x="212" y="28" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">i</text>
+  <polygon points="132,190 164,190 148,199" fill="#4169E1"/>
+  <text x="148" y="216" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">j</text>
+  <text x="40" y="244" fill="#1a2026" font-size="13">Each mismatch discards the smaller front — it can never be matched later.</text>
+  <text x="40" y="262" fill="#1a2026" font-size="13">After dropping 1, both fronts read 2: the first common value, so the answer is <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

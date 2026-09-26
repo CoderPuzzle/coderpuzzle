@@ -17,6 +17,8 @@ the chosen side becomes the streak's new direction. When nobody waits the
 clock jumps straight to the next arrival — that jump also resets the
 direction memory, exactly matching "not used in the previous second".
 
+![On arrival = [0,1,1,2,4] with state = [0,1,0,0,1] the entry streak from t = 0 keeps the door on enter through t = 2, so exiting person 1 waits until t = 3 and the answer is [0,3,1,2,4].](figures/solution-door-direction-streak.svg)
+
 Every person is enqueued once, dequeued once, and each second either crosses
 someone or advances the arrival pointer, giving linear work plus no sorting.
 Answer values are bounded by `max(arrival) + n ≤ 2·10⁵`, well inside 32-bit.

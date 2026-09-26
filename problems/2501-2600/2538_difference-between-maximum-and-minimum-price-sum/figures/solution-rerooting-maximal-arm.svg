@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="440" fill="#ffffff"/>
+  <!-- edges [[0,1],[1,2],[1,3],[3,4],[3,5]], price=[9,8,7,6,10,5], tree rooted at 0;
+       reverse sweep: d=[33,24,7,16,10,5]; top-two child arms t1/t2: node0 (24,-), node1 (16,7), node3 (10,5);
+       accent = maximal arm 1-3-4, prices 8+6+10 = 24 = ans (t1[0]) -->
+  <text x="40" y="24" fill="#1a2026" font-size="13">tree rooted at 0, price = [9, 8, 7, 6, 10, 5]</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="320" y1="70" x2="320" y2="150"/>
+    <line x1="320" y1="150" x2="200" y2="240"/>
+    <line x1="440" y1="240" x2="520" y2="330"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="3.5">
+    <line x1="320" y1="150" x2="440" y2="240"/>
+    <line x1="440" y1="240" x2="360" y2="330"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="320" cy="70" r="24"/><circle cx="200" cy="240" r="24"/><circle cx="520" cy="330" r="24"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="#dbe4fb">
+    <circle cx="320" cy="150" r="24"/><circle cx="440" cy="240" r="24"/><circle cx="360" cy="330" r="24"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="320" y="66" font-size="15" font-weight="600" fill="#1a2026">0</text>
+    <text x="320" y="84" font-size="12" fill="#5c6b76">9</text>
+    <text x="320" y="146" font-size="15" font-weight="600" fill="#1a2026">1</text>
+    <text x="320" y="164" font-size="12" fill="#5c6b76">8</text>
+    <text x="200" y="236" font-size="15" font-weight="600" fill="#1a2026">2</text>
+    <text x="200" y="254" font-size="12" fill="#5c6b76">7</text>
+    <text x="440" y="236" font-size="15" font-weight="600" fill="#1a2026">3</text>
+    <text x="440" y="254" font-size="12" fill="#5c6b76">6</text>
+    <text x="360" y="326" font-size="15" font-weight="600" fill="#1a2026">4</text>
+    <text x="360" y="344" font-size="12" fill="#5c6b76">10</text>
+    <text x="520" y="326" font-size="15" font-weight="600" fill="#1a2026">5</text>
+    <text x="520" y="344" font-size="12" fill="#5c6b76">5</text>
+  </g>
+  <text x="320" y="40" text-anchor="middle" fill="#9aa7b2" font-size="12">root</text>
+  <g font-size="12.5">
+    <text x="288" y="75" text-anchor="end" fill="#9aa7b2">d = 33</text>
+    <text x="288" y="155" text-anchor="end" fill="#4169E1" font-weight="600">d = 24</text>
+    <text x="168" y="245" text-anchor="end" fill="#1a2026">d = 7</text>
+    <text x="408" y="245" text-anchor="end" fill="#1a2026">d = 16</text>
+    <text x="360" y="374" text-anchor="middle" fill="#1a2026">d = 10</text>
+    <text x="520" y="374" text-anchor="middle" fill="#1a2026">d = 5</text>
+  </g>
+  <g font-size="12" fill="#5c6b76">
+    <text x="352" y="155">child arms: 16, 7</text>
+    <text x="472" y="245">child arms: 10, 5</text>
+  </g>
+  <text x="352" y="75" fill="#4169E1" font-size="12.5" font-weight="600">ans starts at t1[0] = 24</text>
+  <text x="40" y="404" fill="#1a2026" font-size="13">d[v] = best arm downward from v; top-two child arms drive the rerooting sweep.</text>
+  <text x="40" y="422" fill="#1a2026" font-size="13">Best arm 1-3-4 = 8 + 6 + 10 = 24; at root 2 that is 31 − 7, so the answer is <tspan fill="#4169E1" font-weight="600">24</tspan>.</text>
+</svg>

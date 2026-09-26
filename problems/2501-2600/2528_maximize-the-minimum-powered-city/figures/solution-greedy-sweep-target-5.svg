@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 324" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="324" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- stations=[1,2,4,5,0] r=1 k=2; base power=[3,7,11,9,5] (11px per unit, baseline y=200, bars 64w at x=70+104i);
+       at target 5 city 0 is short by 2 -> build 2 at city 1 (covers 0..2), retired entering city 3 via extra[3] -= 2 -->
+  <text x="40" y="24" fill="#1a2026" font-size="13">stations = [1, 2, 4, 5, 0], r = 1, k = 2 → base power = [3, 7, 11, 9, 5]</text>
+  <line x1="56" y1="200" x2="560" y2="200" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="70" y="167" width="64" height="33"/><rect x="174" y="123" width="64" height="77"/>
+    <rect x="278" y="79" width="64" height="121"/><rect x="382" y="101" width="64" height="99"/>
+    <rect x="486" y="145" width="64" height="55"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" stroke-dasharray="4 3" fill="#ffffff">
+    <rect x="70" y="145" width="64" height="22"/><rect x="174" y="101" width="64" height="22"/><rect x="278" y="57" width="64" height="22"/>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="600" fill="#4169E1">
+    <text x="102" y="160">+2</text><text x="206" y="116">+2</text><text x="310" y="72">+2</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="102" y="184">3</text><text x="206" y="140">7</text><text x="310" y="96">11</text>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">
+    <text x="102" y="137">5</text><text x="206" y="93">9</text><text x="310" y="49">13</text>
+    <text x="414" y="93">9</text><text x="518" y="137">5</text>
+  </g>
+  <line x1="56" y1="145" x2="556" y2="145" stroke="#5c6b76" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="562" y="149" fill="#5c6b76" font-size="12">target 5</text>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="102" y="218">city 0</text><text x="206" y="218">city 1</text><text x="310" y="218">city 2</text>
+    <text x="414" y="218">city 3</text><text x="518" y="218">city 4</text>
+  </g>
+  <path d="M 70 234 L 70 240 L 342 240 L 342 234" fill="none" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="206" y="258" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">both builds live here: extra[0] += 2</text>
+  <line x1="350" y1="234" x2="364" y2="234" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="374" y="238" fill="#5c6b76" font-size="12">retired entering city 3 (extra[3] -= 2)</text>
+  <text x="40" y="290" fill="#1a2026" font-size="13">At target 5 only city 0 is short (3 &lt; 5) → build 2 at city 1, rightmost covering it.</text>
+  <text x="40" y="308" fill="#1a2026" font-size="13">used = 2 ≤ k, so target 5 is feasible — the answer is <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

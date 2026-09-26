@@ -20,6 +20,8 @@ its own branch back upward — excluding exactly one child is what the
 second-best value buys. The final answer is the largest `d[v]` or
 climb-up value seen anywhere.
 
+![On the example tree with price = [9,8,7,6,10,5] the reverse sweep fills d = [33,24,7,16,10,5] with top-two child arms at nodes 1 and 3, and the maximal arm 1-3-4 sums 8 + 6 + 10 = 24, the answer.](figures/solution-rerooting-maximal-arm.svg)
+
 The bound check: a path price sum is at most `n · max(price)` =
 10⁵·10⁵ = 10¹⁰, which overflows 32-bit integers — Java uses `long`,
 C++/Go/Rust widen to 64-bit accumulators — while JavaScript Numbers stay

@@ -19,4 +19,6 @@ then advance `left` just until the window is back under every cap — each
 pointer crosses the string at most once. The final answer is
 `n − bestWindow`, zero when nothing needs to be taken (`k = 0`).
 
+![On s = aabaaaacaabc with k = 2 the caps are a ≤ 6, b ≤ 0, c ≤ 0, and the longest keepable middle is aaaa at indices 3-6, so the answer is 12 - 4 = 8 minutes.](figures/solution-keepable-window-caps.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space.
