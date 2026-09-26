@@ -20,6 +20,8 @@ at the current index is counted exactly once, at the bucket whose value
 equals `k`, so summing the matching bucket counts over all right endpoints
 counts each qualifying subarray once.
 
+![On nums = [1,1,2], k = 1, the suffix-AND buckets go (1,1), then merged (1,2), then (0,2) and (2,1); the buckets whose value equals k contribute 1 + 2 + 0 = 3.](figures/solution-suffix-and-buckets.svg)
+
 The whole-array answer is bounded by the total number of subarrays,
 `n * (n + 1) / 2 = 5,000,050,000` at `n = 10⁵`, which overflows a signed
 32-bit integer: accumulate in a 64-bit type (Java `long`, C++ `long long`,

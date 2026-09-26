@@ -13,6 +13,8 @@ smallest xi with target index `k-1` — sort the x-coordinates and compare
 against `0, 1, 2, ...`. The y-axis is handled identically and
 independently.
 
+![For rooks = [[0,0],[1,0],[1,1]], the sorted x-coordinates [0,1,1] paired with targets 0,1,2 cost |0-0|+|1-1|+|1-2| = 1 horizontal move and the sorted y-coordinates [0,0,1] cost 2, so the decoupled axes add to 3.](figures/solution-sort-axes-onto-targets.svg)
+
 The two sorted cost sums are then simply added. Neither axis can exceed
 `n*(n-1)/2 <= 124750` moves (even all-coordinates-equal costs at most
 `0+1+...+(n-1)`), so the answer — bounded by roughly `5 * 10^5` — fits a

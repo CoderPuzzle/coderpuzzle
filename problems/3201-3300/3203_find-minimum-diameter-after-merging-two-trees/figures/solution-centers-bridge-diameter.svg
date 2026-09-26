@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <!-- edges1 = edges2 = [[0,1],[0,2],[0,3],[2,4],[2,5],[3,6],[2,7]]; circles r=13, center ring r=19;
+       tree 1 nodes at (140,90),(60,160),(140,160),(220,160),(80,230),(140,230),(200,230),(260,230), tree 2 shifted +360 -->
+  <text x="160" y="48" text-anchor="middle" font-size="13" font-weight="600" fill="#5c6b76">tree 1 (n = 8)</text>
+  <text x="520" y="48" text-anchor="middle" font-size="13" font-weight="600" fill="#5c6b76">tree 2 (m = 8)</text>
+  <!-- non-path edges -->
+  <g stroke="#9aa7b2" stroke-width="1.5">
+    <path d="M 140 90 L 60 160"/><path d="M 140 160 L 140 230"/><path d="M 140 160 L 200 230"/>
+    <path d="M 500 90 L 420 160"/><path d="M 500 160 L 500 230"/><path d="M 500 160 L 560 230"/>
+  </g>
+  <!-- diameter path edges 4-2-0-3-6 -->
+  <g stroke="#4169E1" stroke-width="3">
+    <path d="M 80 230 L 140 160"/><path d="M 140 160 L 140 90"/><path d="M 140 90 L 220 160"/><path d="M 220 160 L 260 230"/>
+    <path d="M 440 230 L 500 160"/><path d="M 500 160 L 500 90"/><path d="M 500 90 L 580 160"/><path d="M 580 160 L 620 230"/>
+  </g>
+  <!-- bridge edge between the two centers -->
+  <path d="M 159 90 L 481 90" stroke="#4169E1" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+  <text x="320" y="76" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">new edge</text>
+  <!-- nodes -->
+  <g stroke-width="1.5">
+    <circle cx="60" cy="160" r="13" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="140" cy="230" r="13" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="200" cy="230" r="13" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="420" cy="160" r="13" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="500" cy="230" r="13" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="560" cy="230" r="13" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="80" cy="230" r="13" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="140" cy="160" r="13" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="220" cy="160" r="13" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="260" cy="230" r="13" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="440" cy="230" r="13" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="500" cy="160" r="13" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="580" cy="160" r="13" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="620" cy="230" r="13" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="140" cy="90" r="19" fill="none" stroke="#4169E1"/>
+    <circle cx="140" cy="90" r="13" fill="#4169E1"/>
+    <circle cx="500" cy="90" r="19" fill="none" stroke="#4169E1"/>
+    <circle cx="500" cy="90" r="13" fill="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600">
+    <text x="60" y="164" fill="#1a2026">1</text><text x="140" y="234" fill="#1a2026">5</text><text x="200" y="234" fill="#1a2026">7</text>
+    <text x="420" y="164" fill="#1a2026">1</text><text x="500" y="234" fill="#1a2026">5</text><text x="560" y="234" fill="#1a2026">7</text>
+    <text x="80" y="234" fill="#1a2026">4</text><text x="140" y="164" fill="#1a2026">2</text><text x="220" y="164" fill="#1a2026">3</text><text x="260" y="234" fill="#1a2026">6</text>
+    <text x="440" y="234" fill="#1a2026">4</text><text x="500" y="164" fill="#1a2026">2</text><text x="580" y="164" fill="#1a2026">3</text><text x="620" y="234" fill="#1a2026">6</text>
+    <text x="140" y="94" fill="#ffffff">0</text><text x="500" y="94" fill="#ffffff">0</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#5c6b76">
+    <text x="160" y="262">d = 4, center = 0</text><text x="520" y="262">d = 4, center = 0</text>
+  </g>
+  <text x="340" y="302" text-anchor="middle" font-size="13" fill="#1a2026">Both trees have diameter 4 and center node 0, ceil(4 / 2) = 2 from each path end;</text>
+  <text x="340" y="322" text-anchor="middle" font-size="13" fill="#1a2026">joining the centers gives max(4, 4, 2 + 2 + 1) = <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

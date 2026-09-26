@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="310" fill="#ffffff"/>
+  <!-- grid = [[1,0,1],[1,1,1]]; cells 64px, grid at (90,70); boxes: A col-0 band (2),
+       B tight box of the top strip = cell (0,2) (1), C row 1 cols 1-2 (2) -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="90" y="70" width="64" height="64"/><rect x="154" y="70" width="64" height="64"/><rect x="218" y="70" width="64" height="64"/>
+    <rect x="90" y="134" width="64" height="64"/><rect x="154" y="134" width="64" height="64"/><rect x="218" y="134" width="64" height="64"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="122" y="107" fill="#1a2026">1</text><text x="186" y="107" fill="#9aa7b2">0</text><text x="250" y="107" fill="#1a2026">1</text>
+    <text x="122" y="171" fill="#1a2026">1</text><text x="186" y="171" fill="#1a2026">1</text><text x="250" y="171" fill="#1a2026">1</text>
+  </g>
+  <!-- the three cover rectangles -->
+  <g fill="none" stroke="#4169E1" stroke-width="2.5">
+    <rect x="90" y="70" width="64" height="128"/>
+    <rect x="218" y="70" width="64" height="64"/>
+    <rect x="154" y="134" width="128" height="64"/>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600" fill="#4169E1">
+    <text x="122" y="60">A</text><text x="250" y="60">B</text><text x="218" y="222">C</text>
+  </g>
+  <!-- horizontal cut of the remainder -->
+  <path d="M 288 134 L 330 134" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="308" y="126" text-anchor="middle" font-size="11.5" fill="#5c6b76">cut</text>
+  <!-- area breakdown -->
+  <text x="344" y="78" font-size="12.5" fill="#5c6b76">peel col 0, then cut the remainder</text>
+  <g font-size="13" fill="#1a2026">
+    <text x="344" y="110">A&#160;&#160;left band: 1 &#215; 2 = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="344" y="140">B&#160;&#160;only (0, 2) in top strip: 1 &#215; 1 = <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="344" y="170">C&#160;&#160;row 1, cols 1-2: 1 &#215; 2 = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  </g>
+  <text x="344" y="206" font-size="15" font-weight="600" fill="#1a2026">2 + 1 + 2 = <tspan fill="#4169E1">5</tspan></text>
+  <text x="340" y="264" text-anchor="middle" font-size="13" fill="#1a2026">Peel the left column band (area 2), cut the remainder horizontally, and cover each</text>
+  <text x="340" y="284" text-anchor="middle" font-size="13" fill="#1a2026">side with its tight box: 2 + 1 + 2 = <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

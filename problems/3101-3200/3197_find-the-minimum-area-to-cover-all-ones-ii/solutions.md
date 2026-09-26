@@ -12,6 +12,8 @@ possible band over all four rotations of the grid, covers each peeled
 band's ones with their tight bounding box, and splits the remainder into
 two tight boxes at every internal horizontal or vertical cut.
 
+![On grid = [[1,0,1],[1,1,1]], one rotation peels the left column band into a 2-area box and splits the remainder by a horizontal cut into the tight 1-area box over (0,2) and a 2-area box on row 1, summing to 5.](figures/solution-rotate-peel-decomposition.svg)
+
 One subtlety costs correctness if skipped: a peeled band's covering
 rectangle spans only the rows that actually contain ones inside its span,
 not the raw strip — an empty row shrinks the real box. The code keeps all

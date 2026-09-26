@@ -10,6 +10,8 @@ attachment node `a` inside tree 1, plus the same for `b` in tree 2, plus
 the single connecting edge. The first two terms are fixed; minimizing the
 merged diameter therefore means minimizing the crossing term.
 
+![In Example 2 both trees are the same 8-node shape with a diameter path 4-2-0-3-6 of length 4 and center node 0; joining the two ringed centers gives max(4, 4, 2 + 2 + 1) = 5.](figures/solution-centers-bridge-diameter.svg)
+
 In a tree, the smallest over all nodes of the farthest-distance from that
 node is the radius, and a tree's radius is exactly `ceil(d / 2)` — the
 middle of a longest path beats every other attachment point. So the
