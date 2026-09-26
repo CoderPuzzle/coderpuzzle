@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 312" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="312" fill="#ffffff"/>
+  <!-- nums=[1,2,3,4,5], target=9; row r = dp[0..9] after processing r elements (r=0 is the init);
+       cols s = 0..9; cells 44x30 at (118,64); shaded: answer column s=9 and the dp[5]=2 read by element 4 -->
+  <text x="110" y="54" text-anchor="end" fill="#5c6b76" font-size="12">s</text>
+  <g font-size="12">
+    <text x="140" y="54" text-anchor="middle" fill="#5c6b76" font-size="12">0</text>
+    <text x="184" y="54" text-anchor="middle" fill="#5c6b76" font-size="12">1</text>
+    <text x="228" y="54" text-anchor="middle" fill="#5c6b76" font-size="12">2</text>
+    <text x="272" y="54" text-anchor="middle" fill="#5c6b76" font-size="12">3</text>
+    <text x="316" y="54" text-anchor="middle" fill="#5c6b76" font-size="12">4</text>
+    <text x="360" y="54" text-anchor="middle" fill="#5c6b76" font-size="12">5</text>
+    <text x="404" y="54" text-anchor="middle" fill="#5c6b76" font-size="12">6</text>
+    <text x="448" y="54" text-anchor="middle" fill="#5c6b76" font-size="12">7</text>
+    <text x="492" y="54" text-anchor="middle" fill="#5c6b76" font-size="12">8</text>
+    <text x="536" y="54" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="12">9</text>
+  </g>
+  <g>
+    <rect x="118" y="64" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="162" y="64" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="206" y="64" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="250" y="64" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="294" y="64" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="338" y="64" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="382" y="64" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="426" y="64" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="470" y="64" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="514" y="64" width="44" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="118" y="94" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="162" y="94" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="206" y="94" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="250" y="94" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="294" y="94" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="338" y="94" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="382" y="94" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="426" y="94" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="470" y="94" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="514" y="94" width="44" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="118" y="124" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="162" y="124" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="206" y="124" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="250" y="124" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="294" y="124" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="338" y="124" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="382" y="124" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="426" y="124" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="470" y="124" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="514" y="124" width="44" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="118" y="154" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="162" y="154" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="206" y="154" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="250" y="154" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="294" y="154" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="338" y="154" width="44" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+    <rect x="382" y="154" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="426" y="154" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="470" y="154" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="514" y="154" width="44" height="30" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="118" y="184" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="162" y="184" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="206" y="184" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="250" y="184" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="294" y="184" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="338" y="184" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="382" y="184" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="426" y="184" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="470" y="184" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="514" y="184" width="44" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+    <rect x="118" y="214" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="162" y="214" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="206" y="214" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="250" y="214" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="294" y="214" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="338" y="214" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="382" y="214" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="426" y="214" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="470" y="214" width="44" height="30" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <rect x="514" y="214" width="44" height="30" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  </g>
+  <g font-size="13.5">
+    <text x="140" y="83" text-anchor="middle" fill="#1a2026">0</text>
+    <text x="184" y="83" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="228" y="83" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="272" y="83" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="316" y="83" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="360" y="83" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="404" y="83" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="448" y="83" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="492" y="83" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="536" y="83" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="140" y="113" text-anchor="middle" fill="#1a2026">0</text>
+    <text x="184" y="113" text-anchor="middle" fill="#1a2026">1</text>
+    <text x="228" y="113" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="272" y="113" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="316" y="113" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="360" y="113" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="404" y="113" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="448" y="113" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="492" y="113" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="536" y="113" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="140" y="143" text-anchor="middle" fill="#1a2026">0</text>
+    <text x="184" y="143" text-anchor="middle" fill="#1a2026">1</text>
+    <text x="228" y="143" text-anchor="middle" fill="#1a2026">1</text>
+    <text x="272" y="143" text-anchor="middle" fill="#1a2026">2</text>
+    <text x="316" y="143" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="360" y="143" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="404" y="143" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="448" y="143" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="492" y="143" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="536" y="143" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="140" y="173" text-anchor="middle" fill="#1a2026">0</text>
+    <text x="184" y="173" text-anchor="middle" fill="#1a2026">1</text>
+    <text x="228" y="173" text-anchor="middle" fill="#1a2026">1</text>
+    <text x="272" y="173" text-anchor="middle" fill="#1a2026">2</text>
+    <text x="316" y="173" text-anchor="middle" fill="#1a2026">2</text>
+    <text x="360" y="173" text-anchor="middle" fill="#4169E1" font-weight="600">2</text>
+    <text x="404" y="173" text-anchor="middle" fill="#1a2026" font-weight="600">3</text>
+    <text x="448" y="173" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="492" y="173" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="536" y="173" text-anchor="middle" fill="#9aa7b2">-1</text>
+    <text x="140" y="203" text-anchor="middle" fill="#1a2026">0</text>
+    <text x="184" y="203" text-anchor="middle" fill="#1a2026">1</text>
+    <text x="228" y="203" text-anchor="middle" fill="#1a2026">1</text>
+    <text x="272" y="203" text-anchor="middle" fill="#1a2026">2</text>
+    <text x="316" y="203" text-anchor="middle" fill="#1a2026">2</text>
+    <text x="360" y="203" text-anchor="middle" fill="#1a2026">2</text>
+    <text x="404" y="203" text-anchor="middle" fill="#1a2026" font-weight="600">3</text>
+    <text x="448" y="203" text-anchor="middle" fill="#1a2026" font-weight="600">3</text>
+    <text x="492" y="203" text-anchor="middle" fill="#1a2026" font-weight="600">3</text>
+    <text x="536" y="203" text-anchor="middle" fill="#4169E1" font-weight="700">3</text>
+    <text x="140" y="233" text-anchor="middle" fill="#1a2026">0</text>
+    <text x="184" y="233" text-anchor="middle" fill="#1a2026">1</text>
+    <text x="228" y="233" text-anchor="middle" fill="#1a2026">1</text>
+    <text x="272" y="233" text-anchor="middle" fill="#1a2026">2</text>
+    <text x="316" y="233" text-anchor="middle" fill="#1a2026">2</text>
+    <text x="360" y="233" text-anchor="middle" fill="#1a2026">2</text>
+    <text x="404" y="233" text-anchor="middle" fill="#1a2026" font-weight="600">3</text>
+    <text x="448" y="233" text-anchor="middle" fill="#1a2026" font-weight="600">3</text>
+    <text x="492" y="233" text-anchor="middle" fill="#1a2026" font-weight="600">3</text>
+    <text x="536" y="233" text-anchor="middle" fill="#4169E1" font-weight="700">3</text>
+  </g>
+  <g>
+    <text x="110" y="83" text-anchor="end" fill="#5c6b76" font-size="12">init</text>
+    <text x="110" y="113" text-anchor="end" fill="#5c6b76" font-size="12">after 1</text>
+    <text x="110" y="143" text-anchor="end" fill="#5c6b76" font-size="12">after 2</text>
+    <text x="110" y="173" text-anchor="end" fill="#5c6b76" font-size="12">after 3</text>
+    <text x="110" y="203" text-anchor="end" fill="#5c6b76" font-size="12">after 4</text>
+    <text x="110" y="233" text-anchor="end" fill="#5c6b76" font-size="12">after 5</text>
+  </g>
+  <text x="320" y="278" text-anchor="middle" fill="#1a2026" font-size="13">Walking s right to left per element reads only pre-element states; column s = 9</text>
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">goes -1 → <tspan fill="#4169E1" font-weight="600">3</tspan> when element 4 extends <tspan fill="#4169E1" font-weight="600">dp[5] = 2</tspan> (subsequence [2, 3, 4]); 5 adds nothing.</text>
+</svg>

@@ -14,6 +14,8 @@ prefix queries over reversed ranks to fill `right[j]`, the best profit
 among later pricier items. Both queries exclude equal ranks by construction,
 which enforces the strict inequalities even when prices repeat.
 
+![On prices [10,2,3,4] and profits [100,2,7,10], the two Fenwick sweeps fill left = [0, 0, 2, 7] and right = [0, 10, 10, 0]; item 0 is the priciest so its right side is empty, item 1 the cheapest so its left side is empty, and only middle item j = 2 has both sides, so the best triplet sums 2 + 7 + 10 = 19.](figures/solution-fenwick-left-right-sweeps.svg)
+
 Every profit is at least 1, so a query result of 0 certifies that no item
 exists on that side, and item `j` contributes a candidate only when both
 `left[j]` and `right[j]` are positive; the answer is the best candidate, or

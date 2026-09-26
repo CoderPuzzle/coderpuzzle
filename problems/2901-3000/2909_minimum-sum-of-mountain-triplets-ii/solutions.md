@@ -18,6 +18,8 @@ nums[j]`, and the best triplet through it sums those three values. The
 strict inequalities are what reject equal shoulders — a plateau neighbor
 is not smaller, so it cannot serve as a side.
 
+![On nums [8,6,1,5,3], the two passes fill prefix_min = [8, 6, 1, 1, 1] and suffix_min = [1, 1, 1, 3, 3]; only interior peak j = 3 has both shoulders strictly below it, and it combines prefix_min[2] = 1, the peak 5, and suffix_min[4] = 3 into the minimal sum 9.](figures/solution-prefix-suffix-min-chart.svg)
+
 The scan keeps the smallest qualifying sum, starting from `-1` so that an
 array with no usable peak returns `-1` unchanged. Every value is at most
 `10^8`, so any candidate sum is at most `3 * 10^8`, comfortably inside

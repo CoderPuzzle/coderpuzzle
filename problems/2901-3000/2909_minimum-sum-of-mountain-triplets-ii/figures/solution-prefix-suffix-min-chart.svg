@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- nums=[8,6,1,5,3]; chart dots at (180+90i, 112-8*nums[i]); triplet (2,3,4) accented;
+       prefix_min=[8,6,1,1,1], suffix_min=[1,1,1,3,3]; row cells x=140+90i w=80 -->
+  <line x1="150" y1="112" x2="580" y2="112" stroke="#42525e" stroke-width="1.2"/>
+  <polyline points="180,48 270,64 360,104 450,72 540,88" fill="none" stroke="#9aa7b2" stroke-width="2"/>
+  <polyline points="360,104 450,72 540,88" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <g fill="#9aa7b2">
+    <circle cx="180" cy="48" r="3.5"/><circle cx="270" cy="64" r="3.5"/>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="360" cy="104" r="4"/><circle cx="450" cy="72" r="5"/><circle cx="540" cy="88" r="4"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="180" y="38" fill="#5c6b76">8</text><text x="270" y="54" fill="#5c6b76">6</text>
+    <text x="360" y="94" fill="#4169E1" font-weight="600">1</text>
+    <text x="450" y="60" fill="#4169E1" font-weight="600">5</text>
+    <text x="540" y="78" fill="#4169E1" font-weight="600">3</text>
+  </g>
+  <text x="450" y="42" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="12.5">peak j = 3</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="180" y="132">0</text><text x="270" y="132">1</text><text x="360" y="132">2</text>
+    <text x="450" y="132">3</text><text x="540" y="132">4</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="140" y="160" width="80" height="36"/><rect x="230" y="160" width="80" height="36"/>
+    <rect x="410" y="160" width="80" height="36"/><rect x="500" y="160" width="80" height="36"/>
+    <rect x="140" y="228" width="80" height="36"/><rect x="230" y="228" width="80" height="36"/>
+    <rect x="320" y="228" width="80" height="36"/><rect x="410" y="228" width="80" height="36"/>
+  </g>
+  <rect x="320" y="160" width="80" height="36" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <rect x="500" y="228" width="80" height="36" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="126" y="180">prefix_min</text>
+    <text x="126" y="195" font-size="10.5">running min →</text>
+    <text x="126" y="248">suffix_min</text>
+    <text x="126" y="263" font-size="10.5">← running min</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="180" y="184">8</text><text x="270" y="184">6</text>
+    <text x="360" y="184" fill="#4169E1">1</text>
+    <text x="450" y="184">1</text><text x="540" y="184">1</text>
+    <text x="180" y="252">1</text><text x="270" y="252">1</text><text x="360" y="252">1</text>
+    <text x="450" y="252">3</text>
+    <text x="540" y="252" fill="#4169E1">3</text>
+  </g>
+  <g stroke="#5c6b76" stroke-width="1.6" fill="none">
+    <path d="M 590 178 L 626 178" marker-end="url(#arrowG)"/>
+    <path d="M 626 246 L 590 246" marker-end="url(#arrowG)"/>
+  </g>
+  <text x="320" y="302" text-anchor="middle" fill="#1a2026" font-size="13">Scanning the interior indices, only peak j = 3 has both shoulders strictly</text>
+  <text x="320" y="320" text-anchor="middle" fill="#1a2026" font-size="13">smaller: prefix_min[2] + 5 + suffix_min[4] = <tspan fill="#4169E1" font-weight="600">1 + 5 + 3 = 9</tspan>, the minimum sum.</text>
+</svg>

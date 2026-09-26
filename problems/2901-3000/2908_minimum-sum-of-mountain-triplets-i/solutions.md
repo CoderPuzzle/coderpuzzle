@@ -15,6 +15,8 @@ right_min[j + 1], and j yields a mountain only when both are strictly
 smaller than nums[j] — an equal value on either side disqualifies the
 peak.
 
+![On nums [8,6,1,5,3], the two sweeps fill left_min = [8, 6, 1, 1, 1] and right_min = [1, 1, 1, 3, 3]; peaks j = 1 and j = 2 fail the strictly-smaller side check, so peak j = 3 (value 5) reads shoulders 1 and 3 for the minimal mountain sum 1 + 5 + 3 = 9.](figures/solution-prefix-suffix-min-peaks.svg)
+
 Each qualifying peak proposes the sum of its two flanking minima plus
 nums[j], and the smallest proposal wins; -1 is returned when no peak ever
 qualifies. Values never exceed 50, so a sum stays at most 150 and plain

@@ -19,6 +19,8 @@ subsequence. Elements larger than `target` simply fall outside the inner
 range and drop out on their own. The answer is `dp[target]`; a `-1` there
 means no subsequence reaches the target.
 
+![On nums [1,2,3,4,5] with target 9, the dp array over sums 0..9 updates right-to-left per element, so column s = 9 goes from -1 to 3 when element 4 extends dp[5] = 2 via the subsequence [2, 3, 4], and element 5 improves nothing — the longest subsequence summing to 9 has length 3.](figures/solution-knapsack-dp-grid.svg)
+
 Every intermediate value is bounded by `target <= 1000` or the length bound
 `n <= 1000`, so plain 32-bit integers carry the whole computation in every
 language. The `n × target` state space is at most 10^6 entries with O(1)

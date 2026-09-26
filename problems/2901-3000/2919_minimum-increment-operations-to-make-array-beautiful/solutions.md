@@ -21,6 +21,8 @@ nothing before it, so the answer is the minimum of the last three dp
 values. Only the three most recent states are ever read, so the table
 collapses to three rolling variables in a single left-to-right pass.
 
+![On nums [2,3,0,0,2] with k = 4, the per-position costs are (2, 1, 4, 4, 2) and the dp row fills left to right, each entry adding its cost to the min of the previous three — dp[3] = 4 + 1 = 5 and dp[4] = 2 + 1 = 3 — so the answer is min(4, 5, 3) = 3.](figures/solution-rolling-window-dp.svg)
+
 Widening: the total cost reaches `10⁵ · 10⁹ = 10¹⁴`, far past 32-bit
 range, so C++, Java, Go, and Rust carry the three rolling costs in a
 64-bit type (`long long`, `long`, `int64`, `i64`). Python integers are

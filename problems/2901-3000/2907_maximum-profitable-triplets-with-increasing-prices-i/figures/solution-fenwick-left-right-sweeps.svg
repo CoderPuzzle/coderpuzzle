@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <!-- prices=[10,2,3,4], profits=[100,2,7,10]; rank(2)=1, rank(3)=2, rank(4)=3, rank(10)=4;
+       item cells x=170+114i w=100; left row y=156, right row y=222; shaded column = middle j=2 -->
+  <rect x="388" y="42" width="120" height="262" rx="8" fill="#dbe4fb"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="170" y="50" width="100" height="48"/><rect x="284" y="50" width="100" height="48"/>
+    <rect x="398" y="50" width="100" height="48"/><rect x="512" y="50" width="100" height="48"/>
+    <rect x="170" y="156" width="100" height="36"/><rect x="284" y="156" width="100" height="36"/>
+    <rect x="398" y="156" width="100" height="36"/><rect x="512" y="156" width="100" height="36"/>
+    <rect x="170" y="222" width="100" height="36"/><rect x="284" y="222" width="100" height="36"/>
+    <rect x="398" y="222" width="100" height="36"/><rect x="512" y="222" width="100" height="36"/>
+  </g>
+  <text x="155" y="78" text-anchor="end" fill="#5c6b76" font-size="12.5">item</text>
+  <g text-anchor="middle">
+    <text x="220" y="72" font-weight="600" font-size="15">100</text>
+    <text x="334" y="72" font-weight="600" font-size="15">2</text>
+    <text x="448" y="72" font-weight="600" font-size="15" fill="#4169E1">7</text>
+    <text x="562" y="72" font-weight="600" font-size="15">10</text>
+    <text x="220" y="91" fill="#5c6b76" font-size="12">price 10</text>
+    <text x="334" y="91" fill="#5c6b76" font-size="12">price 2</text>
+    <text x="448" y="91" fill="#5c6b76" font-size="12">price 3</text>
+    <text x="562" y="91" fill="#5c6b76" font-size="12">price 4</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="220" y="118">i = 0</text><text x="334" y="118">i = 1</text>
+    <text x="448" y="118">i = 2</text><text x="562" y="118">i = 3</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="220" y="136">priciest, so right = 0</text>
+    <text x="334" y="136">cheapest, so left = 0</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="155" y="172">left[j]</text>
+    <text x="155" y="188" font-size="10.5">forward sweep →</text>
+    <text x="155" y="238">right[j]</text>
+    <text x="155" y="254" font-size="10.5">← backward sweep</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="220" y="178" fill="#9aa7b2">0</text>
+    <text x="334" y="178" fill="#9aa7b2">0</text>
+    <text x="448" y="178" fill="#4169E1">2</text>
+    <text x="562" y="178">7</text>
+    <text x="220" y="244" fill="#9aa7b2">0</text>
+    <text x="334" y="244">10</text>
+    <text x="448" y="244" fill="#4169E1">10</text>
+    <text x="562" y="244" fill="#9aa7b2">0</text>
+  </g>
+  <text x="448" y="290" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="13">2 + 7 + 10 = 19</text>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">Item 0 is the priciest so its right side is empty, item 1 the cheapest so its</text>
+  <text x="320" y="344" text-anchor="middle" fill="#1a2026" font-size="13">left side is empty — only middle j = 2 combines both: <tspan fill="#4169E1" font-weight="600">2 + 7 + 10 = 19</tspan>.</text>
+</svg>
