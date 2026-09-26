@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="372" fill="#ffffff"/>
+  <!-- nums = [2,4,-2], k = 5; base = 6, costs = [2,2,4]; heap (sum, idx) two-branch expansion;
+       pops: 1:(2,0) 2:(2,1) 3:(4,1) 4:(4,2); 1st smallest = empty 0; 5th smallest = 4; answer 6-4 = 2 -->
+  <text x="16" y="24" fill="#5c6b76" font-size="12.5">costs = [2, 2, 4] (sorted |nums|), base = 6; heap entries (sum, idx)</text>
+  <!-- expansion tree -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 175 83 L 85 147"/>
+    <path d="M 175 83 L 265 147"/>
+    <path d="M 85 173 L 40 237"/>
+    <path d="M 85 173 L 130 237"/>
+    <path d="M 265 173 L 220 237"/>
+    <path d="M 265 173 L 310 237"/>
+  </g>
+  <text x="56" y="208" text-anchor="end" fill="#5c6b76" font-size="11">replace</text>
+  <text x="114" y="208" text-anchor="start" fill="#5c6b76" font-size="11">extend</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="143" y="57" width="64" height="26" rx="6"/>
+    <rect x="53" y="147" width="64" height="26" rx="6"/>
+    <rect x="233" y="147" width="64" height="26" rx="6"/>
+  </g>
+  <rect x="8" y="237" width="64" height="26" rx="6" fill="#4169E1" stroke="#4169E1" stroke-width="1.5"/>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="98" y="237" width="64" height="26" rx="6"/>
+    <rect x="188" y="237" width="64" height="26" rx="6"/>
+    <rect x="278" y="237" width="64" height="26" rx="6"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="175" y="74">(2, 0)</text>
+    <text x="85" y="164">(2, 1)</text>
+    <text x="265" y="164">(4, 1)</text>
+    <text x="40" y="254" fill="#ffffff">(4, 2)</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#9aa7b2">
+    <text x="130" y="254">(6, 2)</text>
+    <text x="220" y="254">(6, 2)</text>
+    <text x="310" y="254">(8, 2)</text>
+  </g>
+  <!-- pop order badges -->
+  <g text-anchor="middle" font-size="10.5" font-weight="600">
+    <circle cx="145" cy="60" r="9" fill="#4169E1"/><text x="145" y="63.5" fill="#ffffff">1</text>
+    <circle cx="55" cy="150" r="9" fill="#4169E1"/><text x="55" y="153.5" fill="#ffffff">2</text>
+    <circle cx="235" cy="150" r="9" fill="#4169E1"/><text x="235" y="153.5" fill="#ffffff">3</text>
+    <circle cx="10" cy="240" r="9" fill="#ffffff" stroke="#4169E1" stroke-width="1.5"/><text x="10" y="243.5" fill="#4169E1">4</text>
+  </g>
+  <text x="175" y="296" text-anchor="middle" fill="#9aa7b2" font-size="11.5">numbered = popped in order; gray = still in the heap</text>
+  <!-- ordered smallest subset sums -->
+  <text x="400" y="76" fill="#5c6b76" font-size="12.5">smallest subset sums</text>
+  <g font-size="13" fill="#1a2026">
+    <text x="400" y="106">1st: 0 (empty)</text>
+    <text x="400" y="136">2nd: 2 — pop 1</text>
+    <text x="400" y="166">3rd: 2 — pop 2</text>
+    <text x="400" y="196">4th: 4 — pop 3</text>
+    <text x="400" y="226" font-weight="600" fill="#4169E1">5th: 4 — pop 4</text>
+  </g>
+  <text x="320" y="336" text-anchor="middle" fill="#1a2026" font-size="13">Two-branch expansion pops subset sums in order — 0 (empty), 2, 2, 4, <tspan fill="#4169E1" font-weight="600">4</tspan> —</text>
+  <text x="320" y="354" text-anchor="middle" fill="#1a2026" font-size="13">so the 5th smallest is 4 and the 5-Sum is base - 4 = <tspan fill="#4169E1" font-weight="600">6 - 4 = 2</tspan>.</text>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "abc", shifts = [[0,1,0],[1,2,1],[0,2,1]];
+       diff slots 0..3, cells 64x30 at x = 200 + 72i; rows: shifts y = 58/100/142, total y = 196, prefix y = 256;
+       diff = [0,1,1,-2], prefix net = 0,1,2 -> "ace" -->
+  <text x="44" y="22" fill="#5c6b76" font-size="12.5">s = "abc", shifts = [[0,1,0],[1,2,1],[0,2,1]]</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="232" y="48">0</text><text x="304" y="48">1</text><text x="376" y="48">2</text><text x="448" y="48">3</text>
+  </g>
+  <!-- one row per shift: +1/-1 dropped at start and end+1 -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="200" y="58" width="64" height="30"/><rect x="272" y="58" width="64" height="30"/>
+    <rect x="344" y="58" width="64" height="30" fill="#dbe4fb"/><rect x="416" y="58" width="64" height="30"/>
+    <rect x="200" y="100" width="64" height="30"/><rect x="272" y="100" width="64" height="30" fill="#dbe4fb"/>
+    <rect x="344" y="100" width="64" height="30"/><rect x="416" y="100" width="64" height="30"/>
+    <rect x="200" y="142" width="64" height="30" fill="#dbe4fb"/><rect x="272" y="142" width="64" height="30"/>
+    <rect x="344" y="142" width="64" height="30"/><rect x="416" y="142" width="64" height="30"/>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="44" y="78">[0,1,0] back</text>
+    <text x="44" y="120">[1,2,1] fwd</text>
+    <text x="44" y="162">[0,2,1] fwd</text>
+  </g>
+  <g text-anchor="middle" font-size="13" font-weight="600">
+    <text x="232" y="78" fill="#5c6b76">-1</text><text x="304" y="78" fill="#9aa7b2" font-weight="400">.</text>
+    <text x="376" y="78" fill="#4169E1">+1</text><text x="448" y="78" fill="#9aa7b2" font-weight="400">.</text>
+    <text x="232" y="120" fill="#9aa7b2" font-weight="400">.</text><text x="304" y="120" fill="#4169E1">+1</text>
+    <text x="376" y="120" fill="#9aa7b2" font-weight="400">.</text><text x="448" y="120" fill="#5c6b76">-1</text>
+    <text x="232" y="162" fill="#4169E1">+1</text><text x="304" y="162" fill="#9aa7b2" font-weight="400">.</text>
+    <text x="376" y="162" fill="#9aa7b2" font-weight="400">.</text><text x="448" y="162" fill="#5c6b76">-1</text>
+  </g>
+  <!-- diff totals -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="200" y="196" width="64" height="32" fill="#ffffff"/><rect x="272" y="196" width="64" height="32" fill="#dbe4fb"/>
+    <rect x="344" y="196" width="64" height="32" fill="#dbe4fb"/><rect x="416" y="196" width="64" height="32" fill="#ffffff"/>
+  </g>
+  <text x="44" y="217" fill="#5c6b76" font-size="12.5">diff (sum)</text>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="232" y="217" fill="#9aa7b2">0</text><text x="304" y="217" fill="#4169E1">1</text>
+    <text x="376" y="217" fill="#4169E1">1</text><text x="448" y="217" fill="#5c6b76">-2</text>
+  </g>
+  <!-- prefix sweep arrows carrying each diff value -->
+  <g text-anchor="middle" font-size="11" font-weight="600">
+    <text x="268" y="244" fill="#4169E1">+1</text>
+    <text x="340" y="244" fill="#4169E1">+1</text>
+    <text x="412" y="244" fill="#5c6b76">-2</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="none">
+    <path d="M 244 249 H 290" marker-end="url(#arrow)"/>
+    <path d="M 316 249 H 362" marker-end="url(#arrow)"/>
+    <path d="M 388 249 H 434" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="200" y="256" width="64" height="32"/><rect x="272" y="256" width="64" height="32"/>
+    <rect x="344" y="256" width="64" height="32"/><rect x="416" y="256" width="64" height="32"/>
+  </g>
+  <text x="44" y="277" fill="#5c6b76" font-size="12.5">prefix sweep</text>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="232" y="277" fill="#1a2026">0</text><text x="304" y="277" fill="#1a2026">1</text>
+    <text x="376" y="277" fill="#1a2026">2</text><text x="448" y="277" fill="#9aa7b2">0</text>
+  </g>
+  <!-- apply mod 26 -->
+  <text x="44" y="316" fill="#5c6b76" font-size="12.5">apply mod 26</text>
+  <g text-anchor="middle" font-size="13.5" fill="#1a2026">
+    <text x="232" y="316">a + 0 = <tspan fill="#4169E1" font-weight="600">a</tspan></text>
+    <text x="304" y="316">b + 1 = <tspan fill="#4169E1" font-weight="600">c</tspan></text>
+    <text x="376" y="316">c + 2 = <tspan fill="#4169E1" font-weight="600">e</tspan></text>
+    <text x="448" y="316" fill="#9aa7b2">-</text>
+  </g>
+  <text x="280" y="350" text-anchor="middle" fill="#1a2026" font-size="13">Three range updates become three O(1) boundary marks; the prefix</text>
+  <text x="280" y="368" text-anchor="middle" fill="#1a2026" font-size="13">sweep yields net shifts <tspan fill="#4169E1" font-weight="600">0, 1, 2</tspan>, turning "abc" into "ace".</text>
+</svg>

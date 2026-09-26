@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="600" height="420" fill="#ffffff"/>
+  <!-- nums = [1,2,5,6,1], removeQueries = [0,3,2,4,1]; reversed loop activates 1,4,2,3;
+       cells 52x24 at x = 120 + 58i, rows y = 72 + 60r; records [0,2,2,7,14] reversed -> [14,7,2,2,0] -->
+  <text x="16" y="24" fill="#5c6b76" font-size="12.5">nums = [1,2,5,6,1], removeQueries = [0,3,2,4,1] — running time backwards</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="146" y="62">0</text><text x="204" y="62">1</text><text x="262" y="62">2</text>
+    <text x="320" y="62">3</text><text x="378" y="62">4</text>
+  </g>
+  <text x="584" y="62" text-anchor="end" fill="#5c6b76" font-size="11.5">best</text>
+  <!-- row start: all removed -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="120" y="72" width="52" height="24"/><rect x="178" y="72" width="52" height="24"/>
+    <rect x="236" y="72" width="52" height="24"/><rect x="294" y="72" width="52" height="24"/>
+    <rect x="352" y="72" width="52" height="24"/>
+  </g>
+  <text x="16" y="89" fill="#5c6b76" font-size="12.5">start</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12.5">
+    <text x="146" y="89">.</text><text x="204" y="89">.</text><text x="262" y="89">.</text>
+    <text x="320" y="89">.</text><text x="378" y="89">.</text>
+  </g>
+  <text x="262" y="120" text-anchor="middle" fill="#9aa7b2" font-size="11.5">no segments</text>
+  <text x="584" y="89" text-anchor="end" font-size="14" font-weight="600" fill="#1a2026">0</text>
+  <!-- row activate 1 -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="120" y="132" width="52" height="24"/><rect x="236" y="132" width="52" height="24"/>
+    <rect x="294" y="132" width="52" height="24"/><rect x="352" y="132" width="52" height="24"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="178" y="132" width="52" height="24"/>
+  </g>
+  <text x="16" y="149" fill="#5c6b76" font-size="12.5">activate 1 (+2)</text>
+  <text x="204" y="149" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">2</text>
+  <path d="M 178 162 V 166 H 230 V 162" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="204" y="180" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">2</text>
+  <text x="584" y="149" text-anchor="end" font-size="14" font-weight="600" fill="#4169E1">2</text>
+  <!-- row activate 4 -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="120" y="192" width="52" height="24"/><rect x="236" y="192" width="52" height="24"/>
+    <rect x="294" y="192" width="52" height="24"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="178" y="192" width="52" height="24"/><rect x="352" y="192" width="52" height="24"/>
+  </g>
+  <text x="16" y="209" fill="#5c6b76" font-size="12.5">activate 4 (+1)</text>
+  <text x="204" y="209" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">2</text>
+  <text x="378" y="209" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">1</text>
+  <path d="M 178 222 V 226 H 230 V 222" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <path d="M 352 222 V 226 H 404 V 222" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="204" y="240" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">2</text>
+  <text x="378" y="240" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">1</text>
+  <text x="584" y="209" text-anchor="end" font-size="14" font-weight="600" fill="#5c6b76">2</text>
+  <!-- row activate 2 -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="120" y="252" width="52" height="24"/><rect x="294" y="252" width="52" height="24"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="178" y="252" width="52" height="24"/><rect x="236" y="252" width="52" height="24"/>
+    <rect x="352" y="252" width="52" height="24"/>
+  </g>
+  <text x="16" y="269" fill="#5c6b76" font-size="12.5">activate 2 (+5)</text>
+  <text x="204" y="269" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">2</text>
+  <text x="262" y="269" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">5</text>
+  <text x="378" y="269" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">1</text>
+  <path d="M 178 282 V 286 H 288 V 282" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <path d="M 352 282 V 286 H 404 V 282" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="233" y="300" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">2+5 = 7</text>
+  <text x="378" y="300" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">1</text>
+  <text x="584" y="269" text-anchor="end" font-size="14" font-weight="600" fill="#4169E1">7</text>
+  <!-- row activate 3 -->
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="120" y="312" width="52" height="24"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="178" y="312" width="52" height="24"/><rect x="236" y="312" width="52" height="24"/>
+    <rect x="294" y="312" width="52" height="24"/><rect x="352" y="312" width="52" height="24"/>
+  </g>
+  <text x="16" y="329" fill="#5c6b76" font-size="12.5">activate 3 (+6)</text>
+  <text x="204" y="329" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">2</text>
+  <text x="262" y="329" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">5</text>
+  <text x="320" y="329" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">6</text>
+  <text x="378" y="329" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">1</text>
+  <path d="M 178 342 V 346 H 404 V 342" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="291" y="360" text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">2+5+6+1 = 14</text>
+  <text x="584" y="329" text-anchor="end" font-size="14" font-weight="600" fill="#4169E1">14</text>
+  <text x="300" y="390" text-anchor="middle" fill="#1a2026" font-size="13">Running the queries backwards, each activation only merges segments; the records</text>
+  <text x="300" y="408" text-anchor="middle" fill="#1a2026" font-size="13">[0, 2, 2, 7, 14] reversed give the answers <tspan fill="#4169E1" font-weight="600">[14, 7, 2, 2, 0]</tspan>.</text>
+</svg>

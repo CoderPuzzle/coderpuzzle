@@ -15,4 +15,6 @@ block may add a white, the leaving block may remove one, and the running
 count tracks the current window exactly — no re-scan of the `k` cells per
 step. The minimum count seen across all windows is the answer.
 
+![On blocks = "WBBWWBBWBW" with k = 7, the four length-7 windows carry white counts 3, 3, 3, 4, so the cheapest window recolors its 3 whites.](figures/solution-sliding-window-white-counts.svg)
+
 **Complexity:** `O(n)` time, `O(1)` extra space.

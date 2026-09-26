@@ -6,6 +6,8 @@ Applying every shift to its range directly costs up to `O(n * q)` character upda
 
 A running prefix sum over the difference array then yields the net shift for every index in one pass. Applying it is a single modular step per character: `(ord(c) - 97 + shift) % 26 + 97`. Python's `%` always returns a value in `[0, 26)` for a positive modulus, so backward shifts and wrap-around past `'z'` or before `'a'` are handled by the same expression with no case analysis.
 
+![On s = "abc" with shifts [[0,1,0],[1,2,1],[0,2,1]], the three range updates drop +1/-1 marks into the difference array [0, 1, 1, -2], whose prefix sweep gives net shifts 0, 1, 2 and the answer "ace".](figures/solution-difference-array-prefix-sweep.svg)
+
 The result is assembled from a list of characters with a single `join`, avoiding quadratic string concatenation. Overlapping and repeated ranges need no special treatment because the difference array simply accumulates their deltas.
 
 **Complexity:** `O(n + q)` time, `O(n)` space.

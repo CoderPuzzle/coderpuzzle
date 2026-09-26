@@ -6,6 +6,8 @@ The largest possible subsequence sum is `base`, the sum of all positive elements
 
 Enumerating those smallest subset sums in order is done with a min-heap over pairs `(sum, idx)`, where `idx` is the largest index used by the subset, with the absolute values sorted increasingly. The heap is seeded with the single smallest element. Popping `(cur, idx)` yields the next smallest subset, and it is expanded two ways: replace the last chosen element with the next one (`cur - costs[idx] + costs[idx + 1]`, index `idx + 1`) or keep it and also take the next one (`cur + costs[idx + 1]`, index `idx + 1`). This classic two-branch expansion generates every subset exactly once and in non-decreasing order, so no deduplication is needed.
 
+![On nums = [2,4,-2] with k = 5, the min-heap over costs [2,2,4] pops (2,0), (2,1), (4,1), (4,2) by two-branch expansion, so the 5th smallest subset sum is 4 and the answer is 6 - 4 = 2.](figures/solution-heap-subset-sum-pops.svg)
+
 The empty subset counts as the first smallest, so the counter starts at 1 and the loop pops until the `k`-th smallest is reached, returning `base - cur`. The special case `k == 1` returns `base` immediately. Since `k` is capped at 2000, the heap never grows beyond about `2k` entries.
 
 **Complexity:** `O(n log n + k log k)` time, `O(n + k)` space.
