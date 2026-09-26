@@ -6,6 +6,8 @@ This is a maximum-weight independent set on a tree, solved with two DP states pe
 
 If the parent edge is not chosen, `u` may take at most one child edge. Starting from `base = sum(dp0[c])` (take no child edge), switching child `c` from unselected to selected changes the total by `dp1[c] + w - dp0[c]`, where `w` is the weight of the edge to `c`. So `dp0[u] = base + max(0, best gain)`. Because the gain is only applied when positive, negative-weight edges are never forced in: a losing child edge is simply skipped, which is why weights as low as `-10^6` need no special handling, and choosing no edges at all (answer 0) is always available.
 
+![Example 1's tree with dp0/dp1 filled in reverse preorder (3, 4, 2, 1, 0): node 2 takes its gain-6 edge over gain 4 to reach dp0[2] = 6, and the root takes the weight-5 edge whose gain 5 beats the weight-10 edge's gain 0+10−6 = 4, giving dp0[0] = 6 + 5 = 11 from the chosen edges 5 and 6.](figures/solution-postorder-dp-gains.svg)
+
 The implementation avoids recursion, since `n` can be `10^5` and a deep chain would overflow Python's stack. Children lists are built from the parent array, a stack produces a preorder listing of the nodes, and iterating that listing in reverse guarantees every child is finalized before its parent. A single node (`n == 1`) has no edges and returns 0 immediately.
 
 **Complexity:** `O(n)` time, `O(n)` space.

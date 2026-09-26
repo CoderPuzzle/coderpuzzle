@@ -10,5 +10,7 @@ answer at `target`: the frog arrives in exactly `t` jumps (probability carried
 at depth `t`), or it arrived earlier and got stuck on `target` — `target` is a
 leaf and its depth is at most `t`. Any other situation has probability zero.
 
+![Example 1's seven-vertex tree walked level by level: vertex 1 carries probability 1 and splits it into thirds at t = 1, vertex 2 splits its 1/3 in half at t = 2, and the 1/3 × 1/2 = 1/6 lands on target 4 while leaf 7 keeps its 1/3 forever.](figures/solution-bfs-probability-levels.svg)
+
 **Complexity:** `O(n)` time and space for `n` vertices (`t <= 50` never
 exceeds the tree height walked by BFS).

@@ -6,6 +6,8 @@ Define `dp[i][j]` as the number of strictly increasing paths that start at cell 
 
 Rather than memoizing recursively (risky over a `10^5`-cell grid in Python), the canonical solution processes cells in decreasing order of value. When cell `(i, j)` is handled, every neighbor with a larger value has already been finalized — it appeared earlier in the sorted order — so `dp` entries are simply read and added, with `dp` initialized to 1 everywhere to represent the length-1 path. Sorting the value-index tuples in reverse gives this order in one shot, without buckets or explicit level grouping.
 
+![On grid [[1,1],[3,4]] the decreasing-value order 4, 3, 1, 1 fills dp to [[3,2],[2,1]], each cell adding its larger neighbors' finished counts, for 3 + 2 + 2 + 1 = 8 paths.](figures/solution-dp-decreasing-value.svg)
+
 Each cell contributes its count modulo `10^9 + 7` at insertion time, so intermediate sums never overflow (and stay exact in Python regardless). Ties are handled correctly: neighbors with equal value fail the strict inequality and are skipped, so plateau cells never chain into each other. The degenerate 1-cell grid returns 1. Sorting dominates, and the four-direction scan is constant work per cell.
 
 **Complexity:** `O(mn log(mn))` time, `O(mn)` space.

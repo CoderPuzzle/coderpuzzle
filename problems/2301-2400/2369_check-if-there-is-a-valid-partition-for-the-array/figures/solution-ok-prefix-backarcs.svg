@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [4,4,4,5,6]; ok[0..5] = [T,F,T,T,F,T]; arcs: ok[2]<-ok[0] (2-equal), ok[3]<-ok[0] (3-equal), ok[5]<-ok[2] (3-run) -->
+  <text x="100" y="73" text-anchor="end" fill="#5c6b76" font-size="12.5">nums</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="140" y="46" width="80" height="44"/><rect x="232" y="46" width="80" height="44"/>
+    <rect x="324" y="46" width="80" height="44"/><rect x="416" y="46" width="80" height="44"/>
+    <rect x="508" y="46" width="80" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" font-size="15" fill="#1a2026">
+    <text x="180" y="73">4</text><text x="272" y="73">4</text><text x="364" y="73">4</text>
+    <text x="456" y="73">5</text><text x="548" y="73">6</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="138" y="142">0</text><text x="226" y="142">1</text><text x="314" y="142">2</text>
+    <text x="402" y="142">3</text><text x="490" y="142">4</text><text x="578" y="142">5</text>
+  </g>
+  <text x="100" y="175" text-anchor="end" fill="#5c6b76" font-size="12.5">ok[i]</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="100" y="150" width="76" height="40" fill="#dbe4fb"/>
+    <rect x="188" y="150" width="76" height="40" fill="#f0f3f7"/>
+    <rect x="276" y="150" width="76" height="40" fill="#dbe4fb"/>
+    <rect x="364" y="150" width="76" height="40" fill="#dbe4fb"/>
+    <rect x="452" y="150" width="76" height="40" fill="#f0f3f7"/>
+    <rect x="540" y="150" width="76" height="40" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" font-size="14">
+    <text x="138" y="175" fill="#4169E1">T</text>
+    <text x="226" y="175" fill="#9aa7b2">F</text>
+    <text x="314" y="175" fill="#4169E1">T</text>
+    <text x="402" y="175" fill="#4169E1">T</text>
+    <text x="490" y="175" fill="#9aa7b2">F</text>
+    <text x="578" y="175" fill="#4169E1">T</text>
+  </g>
+  <!-- back-arcs naming the good block that closes each true prefix -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 310 190 Q 226 248 146 192" marker-end="url(#arrow)"/>
+    <path d="M 398 190 Q 268 282 150 194" marker-end="url(#arrow)"/>
+    <path d="M 574 190 Q 446 250 322 192" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="196" y="246">2-equal [4,4]</text>
+    <text x="268" y="262">3-equal [4,4,4]</text>
+    <text x="447" y="244">3-run [4,5,6]</text>
+  </g>
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">ok[i] turns true only when a good final block ends on a true prefix — [4,4] lifts ok[2],</text>
+  <text x="320" y="314" text-anchor="middle" fill="#1a2026" font-size="13">[4,4,4] lifts ok[3], and the run [4,5,6] lifts <tspan fill="#4169E1" font-weight="600">ok[5] = T</tspan> — a valid partition exists.</text>
+</svg>

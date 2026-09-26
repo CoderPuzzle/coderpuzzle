@@ -25,6 +25,8 @@ collapsed; the two bits it pops then are precisely its children's
 results, and the last application leaves the root's bit alone on the
 shelf.
 
+![On Example 1's tree the work stack expands 2 (OR) and 3 (AND) with the left child on top, the leaves deposit 1, 0, 1, the AND folds 1 AND 0 = 0, and the OR folds 0 OR 1 = 1, leaving true alone on the shelf.](figures/solution-postorder-stack-fold.svg)
+
 Both structures live on the heap and grow with the tree's size, never
 with nesting depth; no call frame recurses at any point, so even the
 deepest spine the constraints allow evaluates comfortably.

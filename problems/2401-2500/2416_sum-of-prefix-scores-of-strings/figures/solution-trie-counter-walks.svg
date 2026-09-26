@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="420" fill="#ffffff"/>
+  <!-- words = ["abc","ab","bc","b"]; trie nodes: a(2), ab(2), abc(1), b(2), bc(1);
+       node circles r=23 spell the prefix, accent badge (+32,0) r=11 = pass counter;
+       accented edges = the abc walk; walks sum to 5,4,3,2 -->
+  <text x="140" y="34" text-anchor="middle" fill="#5c6b76" font-size="12">root</text>
+  <circle cx="140" cy="60" r="14" fill="#ffffff" stroke="#5c6b76" stroke-width="1.5"/>
+  <!-- trie edges; abc path accented -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="129" y1="72" x2="100" y2="129"/>
+    <line x1="151" y1="72" x2="220" y2="129"/>
+    <line x1="230" y1="173" x2="230" y2="221"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2.2">
+    <line x1="90" y1="173" x2="90" y2="221"/>
+    <line x1="90" y1="267" x2="90" y2="315"/>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="98" y="102">a</text>
+    <text x="192" y="102">b</text>
+    <text x="72" y="201">b</text>
+    <text x="72" y="295">c</text>
+    <text x="244" y="201">c</text>
+  </g>
+  <!-- nodes: prefix inside, counter badge to the right -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="90" cy="150" r="23"/>
+    <circle cx="230" cy="150" r="23"/>
+    <circle cx="90" cy="244" r="23"/>
+    <circle cx="230" cy="244" r="23"/>
+    <circle cx="90" cy="338" r="23"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13.5">
+    <text x="90" y="155">a</text>
+    <text x="230" y="155">b</text>
+    <text x="90" y="249">ab</text>
+    <text x="230" y="249">bc</text>
+    <text x="90" y="343">abc</text>
+  </g>
+  <g>
+    <circle cx="122" cy="150" r="11" fill="#dbe4fb"/>
+    <circle cx="262" cy="150" r="11" fill="#dbe4fb"/>
+    <circle cx="122" cy="244" r="11" fill="#dbe4fb"/>
+    <circle cx="262" cy="244" r="11" fill="#dbe4fb"/>
+    <circle cx="122" cy="338" r="11" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-weight="700" font-size="12">
+    <text x="122" y="154">2</text>
+    <text x="262" y="154">2</text>
+    <text x="122" y="248">2</text>
+    <text x="262" y="248">1</text>
+    <text x="122" y="342">1</text>
+  </g>
+  <!-- per-word walks -->
+  <text x="330" y="106" fill="#5c6b76" font-size="12.5">walk each word again, summing the counters on its path:</text>
+  <g font-size="13.5">
+    <text x="330" y="136" fill="#4169E1" font-weight="600">abc: 2 + 2 + 1 = 5</text>
+    <text x="330" y="166" fill="#1a2026">ab:&#160;&#160;2 + 2 = 4</text>
+    <text x="330" y="196" fill="#1a2026">bc:&#160;&#160;2 + 1 = 3</text>
+    <text x="330" y="226" fill="#1a2026">b:&#160;&#160;&#160;2 = 2</text>
+  </g>
+  <text x="330" y="256" fill="#5c6b76" font-size="12.5">badge = words passing through the node</text>
+  <text x="40" y="386" fill="#1a2026" font-size="13">Every node's counter is the score of the prefix it spells; summing along a</text>
+  <text x="40" y="404" fill="#1a2026" font-size="13">word's path gives its total: abc 5, ab 4, bc 3, b 2 — answer <tspan fill="#4169E1" font-weight="600">[5,4,3,2]</tspan>.</text>
+</svg>

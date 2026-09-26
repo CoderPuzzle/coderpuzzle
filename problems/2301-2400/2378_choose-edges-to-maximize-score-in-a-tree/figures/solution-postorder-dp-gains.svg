@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <!-- edges = [[-1,-1],[0,5],[0,10],[2,6],[2,4]]; reverse preorder 3,4,2,1,0;
+       dp0 = [11,0,6,0,0], dp1 = [6,0,0,0,0]; chosen edges 0-1 (w5) and 2-3 (w6) -->
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="24" y="38">post-order: children first —</text>
+    <text x="24" y="54">step order 3, 4, 2, 1, 0</text>
+  </g>
+  <!-- edges: accent = chosen -->
+  <line x1="300" y1="50" x2="410" y2="140" stroke="#42525e" stroke-width="1.6"/>
+  <line x1="410" y1="140" x2="500" y2="240" stroke="#42525e" stroke-width="1.6"/>
+  <line x1="300" y1="50" x2="190" y2="140" stroke="#4169E1" stroke-width="3.2"/>
+  <line x1="410" y1="140" x2="330" y2="240" stroke="#4169E1" stroke-width="3.2"/>
+  <g font-size="13" font-weight="600" text-anchor="middle">
+    <text x="233" y="88" fill="#4169E1">5</text>
+    <text x="370" y="88" fill="#5c6b76">10</text>
+    <text x="388" y="190" fill="#4169E1">6</text>
+    <text x="442" y="190" fill="#5c6b76">4</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="300" cy="50" r="20"/><circle cx="190" cy="140" r="20"/>
+    <circle cx="410" cy="140" r="20"/><circle cx="330" cy="240" r="20"/>
+    <circle cx="500" cy="240" r="20"/>
+  </g>
+  <g text-anchor="middle" font-weight="700" fill="#1a2026">
+    <text x="300" y="55">0</text><text x="190" y="145">1</text><text x="410" y="145">2</text>
+    <text x="330" y="245">3</text><text x="500" y="245">4</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="330" y="212">step 1</text><text x="500" y="212">step 2</text>
+    <text x="410" y="112">step 3</text><text x="190" y="112">step 4</text>
+    <text x="300" y="20">step 5</text>
+  </g>
+  <!-- dp0 / dp1 badges -->
+  <g text-anchor="middle" font-size="11.5" fill="#1a2026">
+    <text x="262" y="46" text-anchor="end">dp0 <tspan fill="#4169E1" font-weight="700">11</tspan> · dp1 6</text>
+    <text x="190" y="178">dp0 0 · dp1 0</text>
+    <text x="472" y="124">dp0 <tspan fill="#4169E1" font-weight="700">6</tspan> · dp1 0</text>
+    <text x="330" y="278">dp0 0 · dp1 0</text>
+    <text x="500" y="278">dp0 0 · dp1 0</text>
+  </g>
+  <!-- per-parent gain decisions -->
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <text x="532" y="158">node 2: gain(3) = 6,</text>
+    <text x="532" y="174">gain(4) = 4 → take edge 6</text>
+  </g>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="352" y="42">root: gain(1) = 5, gain(2) = 0+10−6 = 4</text>
+    <text x="352" y="58">take edge 5 → dp0[0] = 6 + 5 = <tspan fill="#4169E1" font-weight="700">11</tspan></text>
+  </g>
+  <text x="320" y="306" text-anchor="middle" fill="#1a2026" font-size="13">dp1[u] = Σ dp0[c]; dp0[u] = that plus the best positive gain dp1[c] + w − dp0[c]</text>
+  <text x="320" y="324" text-anchor="middle" fill="#1a2026" font-size="13">the 10-edge's gain 4 loses to the 5-edge's gain 5, so <tspan fill="#4169E1" font-weight="600">dp0[0] = 6 + 5 = 11</tspan></text>
+</svg>

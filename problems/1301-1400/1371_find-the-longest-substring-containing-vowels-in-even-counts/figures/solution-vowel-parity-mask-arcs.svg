@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 264" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="264" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = leetcodeisgreat; running masks after each index: 0,2,0,0,0,8,8,10,14,14,14,14,12,13,13; mask -1 = 0 -->
+  <!-- cells i = -1..14 at x = 46 + 38*(i+1), 34x54 at y 78 -->
+  <g font-size="10.5" text-anchor="middle" fill="#9aa7b2">
+    <text x="63" y="68">-1</text><text x="101" y="68">0</text><text x="139" y="68">1</text>
+    <text x="177" y="68">2</text><text x="215" y="68">3</text><text x="253" y="68">4</text>
+    <text x="291" y="68">5</text><text x="329" y="68">6</text><text x="367" y="68">7</text>
+    <text x="405" y="68">8</text><text x="443" y="68">9</text><text x="481" y="68">10</text>
+    <text x="519" y="68">11</text><text x="557" y="68">12</text><text x="595" y="68">13</text>
+    <text x="633" y="68">14</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.3">
+    <rect x="46" y="78" width="34" height="54" fill="#f0f3f7" stroke-dasharray="3 2"/>
+    <rect x="84" y="78" width="34" height="54" fill="#ffffff"/>
+    <rect x="122" y="78" width="34" height="54" fill="#dbe4fb"/>
+    <rect x="160" y="78" width="34" height="54" fill="#dbe4fb"/>
+    <rect x="198" y="78" width="34" height="54" fill="#ffffff"/>
+    <rect x="236" y="78" width="34" height="54" fill="#ffffff"/>
+    <rect x="274" y="78" width="34" height="54" fill="#dbe4fb"/>
+    <rect x="312" y="78" width="34" height="54" fill="#ffffff"/>
+    <rect x="350" y="78" width="34" height="54" fill="#dbe4fb"/>
+    <rect x="388" y="78" width="34" height="54" fill="#dbe4fb"/>
+    <rect x="426" y="78" width="34" height="54" fill="#ffffff"/>
+    <rect x="464" y="78" width="34" height="54" fill="#ffffff"/>
+    <rect x="502" y="78" width="34" height="54" fill="#ffffff"/>
+    <rect x="540" y="78" width="34" height="54" fill="#ffffff"/>
+    <rect x="578" y="78" width="34" height="54" fill="#dbe4fb"/>
+    <rect x="616" y="78" width="34" height="54" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="15" font-weight="600">
+    <text x="63" y="103">·</text><text x="101" y="103">l</text><text x="139" y="103">e</text>
+    <text x="177" y="103">e</text><text x="215" y="103">t</text><text x="253" y="103">c</text>
+    <text x="291" y="103">o</text><text x="329" y="103">d</text><text x="367" y="103">e</text>
+    <text x="405" y="103">i</text><text x="443" y="103">s</text><text x="481" y="103">g</text>
+    <text x="519" y="103">r</text><text x="557" y="103">e</text><text x="595" y="103">a</text>
+    <text x="633" y="103">t</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="63" y="124">0</text><text x="101" y="124">0</text><text x="139" y="124">2</text>
+    <text x="177" y="124">0</text><text x="215" y="124">0</text><text x="253" y="124">0</text>
+    <text x="291" y="124">8</text><text x="329" y="124">8</text><text x="367" y="124">10</text>
+    <text x="405" y="124">14</text><text x="443" y="124">14</text><text x="481" y="124">14</text>
+    <text x="519" y="124">14</text><text x="557" y="124">12</text><text x="595" y="124">13</text>
+    <text x="633" y="124">13</text>
+  </g>
+  <!-- arcs pairing equal masks; widest = mask 0 from -1 to 4 -->
+  <g fill="none">
+    <path d="M 63 136 Q 158 192 253 136" stroke="#4169E1" stroke-width="2.4"/>
+    <path d="M 291 136 Q 310 172 329 136" stroke="#9aa7b2" stroke-width="1.6"/>
+    <path d="M 405 136 Q 462 192 519 136" stroke="#9aa7b2" stroke-width="1.6"/>
+    <path d="M 595 136 Q 614 172 633 136" stroke="#9aa7b2" stroke-width="1.6"/>
+  </g>
+  <text x="158" y="184" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">equal 0s → "leetc" = 5</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="310" y="170">len 1</text>
+    <text x="462" y="184">len 3</text>
+    <text x="614" y="170">len 1</text>
+  </g>
+  <text x="348" y="40" text-anchor="middle" fill="#5c6b76" font-size="12">mask = running XOR of vowel bits (a=1, e=2, i=4, o=8, u=16); consonants don't change it</text>
+  <text x="348" y="222" text-anchor="middle" fill="#1a2026" font-size="13">Equal endpoint masks bracket an all-even substring: mask 0 at i = -1 and i = 4</text>
+  <text x="348" y="242" text-anchor="middle" fill="#1a2026" font-size="13">spans "leetc" — two e's, everything else consonants — so the answer is <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

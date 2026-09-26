@@ -17,6 +17,8 @@ Each index looks back at most three positions, so a single left-to-right
 pass filling a boolean table settles the whole array, and `ok[n]` is the
 answer.
 
+![Example 1's ok[] table on nums = [4,4,4,5,6]: ok = [T, F, T, T, F, T], where the back-arcs show [4,4] lifting ok[2] from ok[0], [4,4,4] lifting ok[3] from ok[0], and the 3-run [4,5,6] lifting ok[5] from ok[2], so ok[5] is true.](figures/solution-ok-prefix-backarcs.svg)
+
 The table can be trimmed to three rolling scalars since the reach is only
 three, but with `n <= 10⁵` the plain array is just as fast in practice and
 keeps the indexing transparent.

@@ -12,6 +12,8 @@ contrast, costs `expressCost` every time it happens from the regular side,
 so `exp[i] = min(reg[i-1] + expressCost, exp[i-1]) + express[i]`; staying on
 express carries no extra fee.
 
+![Example 1's two-route table on regular = [1,6,9,5], express = [5,2,3,10], expressCost = 8: the single paid transfer boards exp[1] = 0 + 8 + 5 = 13, the light cells are each stop's cheaper route, and the minima give costs [1, 7, 14, 19].](figures/solution-two-route-cost-table.svg)
+
 `costs[i]` is then simply `min(reg[i], exp[i])` — a stop counts as reached
 from either route. Each stop is settled with four additions and comparisons
 from its predecessor alone, so a single left-to-right pass fills the whole

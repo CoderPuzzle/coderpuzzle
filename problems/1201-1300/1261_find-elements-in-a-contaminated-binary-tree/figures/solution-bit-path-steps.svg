@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- example 1 [[-1,null,-1]] recovered: root 0 at (150,95), missing left slot (50,205),
+       right child 2 at (250,205); find(2) walk bits "1" (accent), find(1) walk bits "0" (muted);
+       chips on the right decode target+1 = 0b11 / 0b10 after dropping the leading 1 -->
+  <!-- tree edges -->
+  <line x1="138" y1="112" x2="62" y2="188" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="162" y1="112" x2="238" y2="188" stroke="#42525e" stroke-width="1.6"/>
+  <!-- query step arrows, offset beside their edges -->
+  <line x1="128" y1="104" x2="59" y2="180" stroke="#9aa7b2" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowM)"/>
+  <line x1="173" y1="103" x2="240" y2="181" stroke="#4169E1" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <text x="66" y="132" text-anchor="end" font-size="12.5" font-weight="600" fill="#9aa7b2">bit 0</text>
+  <text x="216" y="132" font-size="12.5" font-weight="600" fill="#4169E1">bit 1</text>
+  <!-- nodes: root recovered 0, absent left slot, right child 2 = 2*0+2 -->
+  <circle cx="50" cy="205" r="22" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="50" y="245" text-anchor="middle" font-size="11.5" fill="#9aa7b2">missing</text>
+  <circle cx="150" cy="95" r="22" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="150" y="101" text-anchor="middle" fill="#1a2026" font-size="15" font-weight="600">0</text>
+  <circle cx="250" cy="205" r="22" fill="#4169E1"/>
+  <text x="250" y="211" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="600">2</text>
+  <!-- panel labels -->
+  <text x="40" y="42" font-size="12.5" fill="#5c6b76">example 1: [[−1,null,−1]]</text>
+  <text x="40" y="58" font-size="12.5" fill="#5c6b76">recovered: root 0, right child 2</text>
+  <text x="340" y="42" font-size="12.5" fill="#5c6b76">each find walks the bits of target + 1:</text>
+  <text x="340" y="58" font-size="12.5" fill="#5c6b76">after the leading 1, bit 0 = left, bit 1 = right</text>
+  <!-- find(2): target+1 = 3 = 0b11, one move bit "1" -->
+  <text x="340" y="88" font-size="13.5" fill="#1a2026"><tspan font-weight="600" fill="#4169E1">find(2)</tspan><tspan dx="12">target + 1 = 3 = 0b11</tspan></text>
+  <rect x="340" y="100" width="26" height="26" rx="4" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3"/>
+  <text x="353" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#9aa7b2">1</text>
+  <rect x="382" y="100" width="26" height="26" rx="4" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="395" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#4169E1">1</text>
+  <text x="353" y="142" text-anchor="middle" font-size="11" fill="#9aa7b2">drop</text>
+  <text x="395" y="142" text-anchor="middle" font-size="11" font-weight="600" fill="#4169E1">right</text>
+  <text x="426" y="114" font-size="13" fill="#1a2026">steps right onto node 2</text>
+  <text x="426" y="136" font-size="13"><tspan fill="#5c6b76">find returns </tspan><tspan fill="#4169E1" font-weight="600">true</tspan></text>
+  <!-- find(1): target+1 = 2 = 0b10, one move bit "0" -->
+  <text x="340" y="190" font-size="13.5" fill="#1a2026"><tspan font-weight="600" fill="#5c6b76">find(1)</tspan><tspan dx="12">target + 1 = 2 = 0b10</tspan></text>
+  <rect x="340" y="202" width="26" height="26" rx="4" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3"/>
+  <text x="353" y="220" text-anchor="middle" font-size="13" font-weight="600" fill="#9aa7b2">1</text>
+  <rect x="382" y="202" width="26" height="26" rx="4" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.3"/>
+  <text x="395" y="220" text-anchor="middle" font-size="13" font-weight="600" fill="#5c6b76">0</text>
+  <text x="353" y="244" text-anchor="middle" font-size="11" fill="#9aa7b2">drop</text>
+  <text x="395" y="244" text-anchor="middle" font-size="11" font-weight="600" fill="#5c6b76">left</text>
+  <text x="426" y="216" font-size="13" fill="#1a2026">steps left — no left child</text>
+  <text x="426" y="238" font-size="13"><tspan fill="#5c6b76">find returns </tspan><tspan fill="#9aa7b2" font-weight="600">false</tspan></text>
+  <!-- caption -->
+  <text x="340" y="288" text-anchor="middle" font-size="13" fill="#1a2026">find(2): 0b11 drops its leading 1 and the last bit 1 steps right onto node 2 — <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+  <text x="340" y="308" text-anchor="middle" font-size="13" fill="#1a2026">find(1): 0b10 steps left off the missing left child — <tspan fill="#9aa7b2" font-weight="600">false</tspan>.</text>
+</svg>
