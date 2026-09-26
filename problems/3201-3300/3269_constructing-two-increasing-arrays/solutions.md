@@ -32,6 +32,8 @@ or `dp[i-1][j][1]` (switching), symmetrically for `nums2[j]`. The answer
 is the smaller of the two final states. Only the previous row is read
 while sweeping row-major, so two rolling rows of pairs suffice.
 
+![On nums1 = [0,1,0,1] and nums2 = [1,0,0,1], the optimal merge spends 1, 4, 6, 7 on nums2 and 2, 3, 8, 9 on nums1 — the replay steps +1 at each parity flip and +2 at the repeat 4 → 6, skipping odd 5, so the largest value is 9.](figures/solution-parity-replay-timeline.svg)
+
 Purely local strategies fail here: spending a cheap number early can
 strand the other array's parity later — with
 `nums1 = [0], nums2 = [0,0,0,1]` grabbing the even `2` up front forces

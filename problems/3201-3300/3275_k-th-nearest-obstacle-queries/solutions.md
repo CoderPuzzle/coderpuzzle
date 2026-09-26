@@ -19,6 +19,8 @@ and if it equals or exceeds it nothing changes. The reported answer is -1
 while the heap has fewer than k entries, and the heap's maximum once it is
 full.
 
+![On queries [[1,2],[3,4],[2,3],[-3,0]] with k = 2, the heap fills with 3 then 7, then 5 displaces the top 7 and 3 displaces the top 5, so the answers run -1, 7, 5, 3.](figures/solution-capped-max-heap-evictions.svg)
+
 The invariant survives every insertion because a multiset only gains
 elements: if the newcomer belongs among the k smallest, exactly one previous
 member — the largest — must leave, and that member is precisely the heap's

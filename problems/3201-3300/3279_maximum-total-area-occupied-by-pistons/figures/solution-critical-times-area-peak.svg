@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <!-- height 6, positions [0,0,6,3], directions UUDU (piston 2 flips at t=0); totals 9,11,13,15; chart x=90+80t, y=204-24*(area-9); table cols x=470+40t -->
+  <text x="205" y="28" text-anchor="middle" fill="#5c6b76" font-size="12">total area after each second</text>
+  <text x="505" y="28" text-anchor="middle" fill="#5c6b76" font-size="12">piston heights</text>
+  <path d="M 66 60 H 348" stroke="#dbe4fb" stroke-width="1" stroke-dasharray="5 4" fill="none"/>
+  <path d="M 66 44 V 216 H 348" stroke="#42525e" stroke-width="1.5" fill="none"/>
+  <g text-anchor="end" fill="#5c6b76" font-size="11.5">
+    <text x="58" y="208">9</text><text x="58" y="160">11</text>
+    <text x="58" y="112">13</text><text x="58" y="64">15</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="90" y="234">t = 0</text><text x="170" y="234">t = 1</text>
+    <text x="250" y="234">t = 2</text><text x="330" y="234">t = 3</text>
+  </g>
+  <polyline points="90,204 170,156 250,108 330,60" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="2">
+    <circle cx="90" cy="204" r="4"/><circle cx="170" cy="156" r="4"/><circle cx="250" cy="108" r="4"/>
+  </g>
+  <circle cx="330" cy="60" r="5" fill="#4169E1"/>
+  <g text-anchor="middle" font-weight="600" font-size="12.5" fill="#1a2026">
+    <text x="90" y="190">9</text><text x="170" y="142">11</text><text x="250" y="94">13</text>
+  </g>
+  <text x="330" y="42" text-anchor="middle" font-weight="600" font-size="15" fill="#4169E1">15</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="205" y="252">balance = 3 up - 1 down = +2 per second</text>
+    <text x="200" y="268">flips: piston 2 starts on top (t = 0); piston 3 lands on top (t = 3)</text>
+  </g>
+  <!-- per-piston table -->
+  <g text-anchor="end" fill="#5c6b76" font-size="11.5">
+    <text x="442" y="56">t =</text><text x="470" y="56">0</text><text x="510" y="56">1</text><text x="550" y="56">2</text><text x="590" y="56">3</text>
+  </g>
+  <path d="M 405 64 H 608" stroke="#dbe4fb" stroke-width="1.2"/>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="442" y="86">p0</text><text x="442" y="110">p1</text><text x="442" y="134">p2</text><text x="442" y="158">p3</text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="470" y="86">0</text><text x="510" y="86">1</text><text x="550" y="86">2</text><text x="590" y="86">3</text>
+    <text x="470" y="110">0</text><text x="510" y="110">1</text><text x="550" y="110">2</text><text x="590" y="110">3</text>
+    <text x="470" y="134">6</text><text x="510" y="134">5</text><text x="550" y="134">4</text><text x="590" y="134">3</text>
+    <text x="470" y="158">3</text><text x="510" y="158">4</text><text x="550" y="158">5</text><text x="590" y="158">6</text>
+  </g>
+  <path d="M 405 170 H 608" stroke="#dbe4fb" stroke-width="1.2"/>
+  <text x="442" y="192" text-anchor="end" fill="#5c6b76" font-size="12">total</text>
+  <g text-anchor="middle" font-weight="600" font-size="13.5" fill="#4169E1">
+    <text x="470" y="192">9</text><text x="510" y="192">11</text><text x="550" y="192">13</text>
+  </g>
+  <text x="590" y="192" text-anchor="middle" font-weight="600" font-size="15" fill="#4169E1">15</text>
+  <text x="320" y="302" text-anchor="middle" fill="#1a2026" font-size="13">While 3 pistons rise and 1 falls, the total gains <tspan fill="#4169E1" font-weight="600">+2</tspan> a second and peaks at <tspan fill="#4169E1" font-weight="600">15</tspan> at t = 3;</text>
+  <text x="320" y="320" text-anchor="middle" fill="#1a2026" font-size="13">there piston 3 reaches the top and flips, the balance zeroes, and 15 is the maximum.</text>
+</svg>

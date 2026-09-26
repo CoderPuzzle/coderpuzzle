@@ -19,6 +19,8 @@ binomial parities alone decide which elements survive to the final XOR.
 Filling the rows for `l = n-1` down to `0` costs `O(1)` per cell, so all
 subarray scores are known before any query is read.
 
+![For subarray [2, 8, 4] of nums = [2,8,4,32,16,1], the fold runs 2⊕8 = 10 and 8⊕4 = 12, then 10⊕12 = 6 — the recurrence score[l][r] = score[l][r-1] ⊕ score[l+1][r] precomputes every subarray's score.](figures/solution-xor-fold-triangle.svg)
+
 Queries ask for the largest score among subarrays contained in `[l..r]`,
 and that quantity obeys its own one-cell recurrence: any such subarray
 either drops the left endpoint, drops the right endpoint, or is the whole

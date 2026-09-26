@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 216" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="216" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums1 = [0,1,0,1], nums2 = [1,0,0,1]; merged values 1..9 owned n2,n1,n1,n2,-,n2,n2,n1,n1; boxes 50x42 at x=23+68i, y=72 -->
+  <text x="24" y="28" fill="#5c6b76" font-size="13">nums1 = [0,1,0,1]</text>
+  <text x="190" y="28" fill="#5c6b76" font-size="13">nums2 = [1,0,0,1]</text>
+  <!-- +1 steps at parity flips -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5" font-weight="600">
+    <text x="82" y="64">+1</text><text x="150" y="64">+1</text><text x="218" y="64">+1</text>
+    <text x="422" y="64">+1</text><text x="490" y="64">+1</text><text x="558" y="64">+1</text>
+  </g>
+  <!-- +2 leap over the unused odd 5 -->
+  <path d="M 252 66 Q 320 34 388 66" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="320" y="42" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">+2 · even repeats</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="23" y="72" width="50" height="42" fill="#ffffff"/><rect x="91" y="72" width="50" height="42" fill="#dbe4fb"/>
+    <rect x="159" y="72" width="50" height="42" fill="#dbe4fb"/><rect x="227" y="72" width="50" height="42" fill="#ffffff"/>
+    <rect x="295" y="72" width="50" height="42" fill="#f0f3f7"/><rect x="363" y="72" width="50" height="42" fill="#ffffff"/>
+    <rect x="431" y="72" width="50" height="42" fill="#ffffff"/><rect x="499" y="72" width="50" height="42" fill="#dbe4fb"/>
+    <rect x="567" y="72" width="50" height="42" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="48" y="99">1</text><text x="116" y="99">2</text><text x="184" y="99">3</text>
+    <text x="252" y="99">4</text><text x="320" y="99" fill="#9aa7b2">5</text><text x="388" y="99">6</text>
+    <text x="456" y="99">7</text><text x="524" y="99">8</text><text x="592" y="99">9</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5">
+    <text x="48" y="134" fill="#5c6b76">nums2</text><text x="116" y="134" fill="#4169E1">nums1</text>
+    <text x="184" y="134" fill="#4169E1">nums1</text><text x="252" y="134" fill="#5c6b76">nums2</text>
+    <text x="320" y="134" fill="#9aa7b2">unused</text><text x="388" y="134" fill="#5c6b76">nums2</text>
+    <text x="456" y="134" fill="#5c6b76">nums2</text><text x="524" y="134" fill="#4169E1">nums1</text>
+    <text x="592" y="134" fill="#4169E1">nums1</text>
+  </g>
+  <g font-size="11.5" fill="#5c6b76">
+    <rect x="24" y="150" width="12" height="12" fill="#dbe4fb" stroke="#42525e" stroke-width="1"/>
+    <text x="42" y="160">nums1 slot</text>
+    <rect x="120" y="150" width="12" height="12" fill="#ffffff" stroke="#42525e" stroke-width="1"/>
+    <text x="138" y="160">nums2 slot</text>
+    <rect x="216" y="150" width="12" height="12" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+    <text x="234" y="160">not consumed</text>
+  </g>
+  <text x="320" y="188" text-anchor="middle" fill="#1a2026" font-size="13">The greedy replay costs +1 at every parity flip and +2 at a repeat — <tspan fill="#4169E1" font-weight="600">4 → 6</tspan> skips odd 5.</text>
+  <text x="320" y="206" text-anchor="middle" fill="#1a2026" font-size="13">The dp over prefixes (i, j) of the two arrays picks this merge; its largest value is <tspan fill="#4169E1" font-weight="600">9</tspan>.</text>
+</svg>

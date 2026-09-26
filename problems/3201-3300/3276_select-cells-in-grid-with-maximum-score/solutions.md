@@ -6,6 +6,8 @@ Only two facts about the grid matter: which values exist, and for each value, th
 
 Values are processed in descending order. For each value, the next table starts as a copy of the current one (not taking this value), and for every reachable mask each still-free row containing the value offers the transition dp[mask | bit] = max(..., dp[mask] + value). Because the transitions all read the pre-update dp, a value can be selected at most once — the uniqueness constraint on values — and starting from the largest values means every candidate first selection is considered at its best.
 
+![On grid [[1,2,3],[4,3,2],[1,1,1]], the descending sweep takes 4 in row 1, 3 in row 0, and 1 in row 2, or-ing the mask from 000 up to 111 for the best score 8, while value 2 improves no mask.](figures/solution-row-bitmask-descending-dp.svg)
+
 The answer is the maximum over all masks, since the best selection uses some subset of the rows; the empty mask seeds dp with 0, and positive grid values ensure any real selection beats it. Distinct values are bounded by 100, rows by 10, giving at most 100 · 1024 masks each scanning at most 10 free-row bits.
 
 **Complexity:** `O(V · 2ⁿ · n)` time (V = distinct values, n = rows), `O(2ⁿ)` space.

@@ -11,6 +11,8 @@ so the total traces a straight line, and a straight line peaks at an
 endpoint; checking the total at the start and at every critical time
 therefore catches the overall maximum.
 
+![On height 6, positions [0,0,6,3], directions UUDU, the total climbs 9, 11, 13, 15 across seconds 0-3 while three pistons rise and one falls; at t = 3 piston 3 reaches the top and flips, and 15 is the maximum.](figures/solution-critical-times-area-peak.svg)
+
 Each piston's critical times are easy to list. Heading up from
 `positions[i]` it first reaches the top after `height - positions[i]`
 seconds; heading down, it reaches the floor after `positions[i]` seconds;
