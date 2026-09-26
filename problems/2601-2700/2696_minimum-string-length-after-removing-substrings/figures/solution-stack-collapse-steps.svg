@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 298" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="298" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "ABFCACDB"; char cells 58x30 at y=46, pitch 74 from x=48; stack cells 58x24, stack bottom y=214; stacks after each char: [A], [], [F], [F,C], [F,C,A], [F,C,A,C], [F,C,A], [F,C] -->
+  <!-- cross-seam pop: the final B (index 7) pops the A read at index 4 -->
+  <path d="M 595 42 Q 484 0 373 42" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="484" y="13" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">final B pops this A</text>
+  <text x="20" y="66" fill="#5c6b76" font-size="12">read</text>
+  <text x="20" y="210" fill="#5c6b76" font-size="12">stack</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="48" y="46" width="58" height="30"/><rect x="122" y="46" width="58" height="30"/>
+    <rect x="196" y="46" width="58" height="30"/><rect x="270" y="46" width="58" height="30"/>
+    <rect x="344" y="46" width="58" height="30"/><rect x="418" y="46" width="58" height="30"/>
+    <rect x="492" y="46" width="58" height="30"/><rect x="566" y="46" width="58" height="30"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="77" y="66">A</text><text x="151" y="66">B</text><text x="225" y="66">F</text><text x="299" y="66">C</text>
+    <text x="373" y="66">A</text><text x="447" y="66">C</text><text x="521" y="66">D</text><text x="595" y="66">B</text>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="77" y="100" fill="#5c6b76">push</text>
+    <text x="151" y="100" fill="#4169E1" font-weight="600">pop AB</text>
+    <text x="225" y="100" fill="#5c6b76">push</text>
+    <text x="299" y="100" fill="#5c6b76">push</text>
+    <text x="373" y="100" fill="#5c6b76">push</text>
+    <text x="447" y="100" fill="#5c6b76">push</text>
+    <text x="521" y="100" fill="#4169E1" font-weight="600">pop CD</text>
+    <text x="595" y="100" fill="#4169E1" font-weight="600">pop AB</text>
+  </g>
+  <line x1="48" y1="215" x2="624" y2="215" stroke="#9aa7b2" stroke-width="1"/>
+  <!-- stacks after each character -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="48" y="190" width="58" height="24"/>
+    <rect x="196" y="190" width="58" height="24"/>
+    <rect x="270" y="190" width="58" height="24"/><rect x="270" y="166" width="58" height="24"/>
+    <rect x="344" y="190" width="58" height="24"/><rect x="344" y="166" width="58" height="24"/><rect x="344" y="142" width="58" height="24"/>
+    <rect x="418" y="190" width="58" height="24"/><rect x="418" y="166" width="58" height="24"/><rect x="418" y="142" width="58" height="24"/><rect x="418" y="118" width="58" height="24"/>
+    <rect x="492" y="190" width="58" height="24"/><rect x="492" y="166" width="58" height="24"/><rect x="492" y="142" width="58" height="24"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="#dbe4fb">
+    <rect x="566" y="190" width="58" height="24"/><rect x="566" y="166" width="58" height="24"/>
+  </g>
+  <rect x="122" y="190" width="58" height="24" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="77" y="207">A</text>
+    <text x="151" y="207" font-size="11" font-weight="400" fill="#9aa7b2">empty</text>
+    <text x="225" y="207">F</text>
+    <text x="299" y="207">F</text><text x="299" y="183">C</text>
+    <text x="373" y="207">F</text><text x="373" y="183">C</text><text x="373" y="159">A</text>
+    <text x="447" y="207">F</text><text x="447" y="183">C</text><text x="447" y="159">A</text><text x="447" y="135">C</text>
+    <text x="521" y="207">F</text><text x="521" y="183">C</text><text x="521" y="159">A</text>
+    <text x="595" y="207">F</text><text x="595" y="183">C</text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#9aa7b2">
+    <text x="77" y="234">0</text><text x="151" y="234">1</text><text x="225" y="234">2</text><text x="299" y="234">3</text>
+    <text x="373" y="234">4</text><text x="447" y="234">5</text><text x="521" y="234">6</text><text x="595" y="234">7</text>
+  </g>
+  <text x="40" y="266" fill="#1a2026" font-size="13">Each incoming character pairs only with the stack top: D pops CD at once, and</text>
+  <text x="40" y="284" fill="#1a2026" font-size="13">the final B pops the earlier A across the seam — the stack ends [F, C], <tspan fill="#4169E1" font-weight="600">length 2</tspan>.</text>
+</svg>

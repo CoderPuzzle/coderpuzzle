@@ -21,6 +21,8 @@ the scan reaches it, because every move only ever references smaller
 indices. The answer is `dp[n]`, and it counts exactly the skips taken along
 the best chain of jumps.
 
+![On s = leetscode with dictionary leet, code, leetcode, the dp row over the ten prefix positions shows the free word jumps 0→4 (leet) and 5→9 (code) plus the single paid skip 4→5 for the lone s, so dp[9] = 1.](figures/solution-prefix-dp-jumps.svg)
+
 Word matching needs no trie at these sizes: with `n <= 50` and at most 50
 words of length at most 50, comparing each word against the slice starting
 at each position is about 125,000 character comparisons in the worst case,

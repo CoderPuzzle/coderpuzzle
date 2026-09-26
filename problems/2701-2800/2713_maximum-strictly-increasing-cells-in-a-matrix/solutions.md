@@ -11,6 +11,8 @@ anywhere in row `r` / column `c` among already-processed, strictly smaller
 values. The answer for a cell is then simply one more than the better of
 its two line maxima — exactly the best move available from it.
 
+![On mat = [[3,1,6],[-9,5,7]], the ascending sweep scores each cell 1 + the better of its running row and column maxima, and the chain -9 → 3 → 6 → 7 visits 4 cells.](figures/solution-ascending-sweep-chain.svg)
+
 Cells sharing one value must settle together as a read-then-write batch:
 their lengths all read the state from before their layer, so an
 equal-valued neighbour can never leak into an answer, and only after the

@@ -29,6 +29,8 @@ The routes through that alignment rise out of contention while the
 augmented route lands exactly on `target`; distances only ever grow, so
 the loop closes when the measured shortest distance equals `target`.
 
+![On example 3 (n = 4, edges [[1,0,4],[1,2,3],[2,3,5],[0,3,-1]], target 6), the floor pass measures 0→1→2 = 7 and the all-ones pass measures the route 0→3→2 = 1+5 = 6, so both gates pass and the deficit is 0 — edge (0,3) keeps weight 1.](figures/solution-allones-gates-route.svg)
+
 Two budget facts hold. An edge is scanned only while it binds the current
 shortest path, which pins its working weight below `target <= 10⁹`;
 lifting adds less than another `target`, so every emitted weight stays

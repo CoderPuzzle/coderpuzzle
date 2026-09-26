@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [2,3,6]; last[] sweep: i=0 claims prime 2, i=1 claims prime 3, i=2 (primes {2,3}) unions with last[2]=0 and last[3]=1; index circles r=24 at y=80, hubs 92x34 at y=223 -->
+  <!-- claim edges (gray): 0->prime 2, 1->prime 3 -->
+  <line x1="112.7" y1="100.3" x2="189.4" y2="223" stroke="#9aa7b2" stroke-width="1.5"/>
+  <line x1="487.3" y1="100.3" x2="410.6" y2="223" stroke="#9aa7b2" stroke-width="1.5"/>
+  <!-- union edges (blue): 2->prime 2, 2->prime 3 -->
+  <line x1="287.3" y1="100.3" x2="210.6" y2="223" stroke="#4169E1" stroke-width="2"/>
+  <line x1="312.7" y1="100.3" x2="389.4" y2="223" stroke="#4169E1" stroke-width="2"/>
+  <text x="146" y="174" text-anchor="end" fill="#5c6b76" font-size="11.5">i=0</text>
+  <text x="454" y="174" fill="#5c6b76" font-size="11.5">i=1</text>
+  <text x="300" y="132" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">i=2</text>
+  <text x="200" y="154" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">last[2] = 0</text>
+  <text x="400" y="154" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">last[3] = 1</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="100" cy="80" r="24"/><circle cx="300" cy="80" r="24"/><circle cx="500" cy="80" r="24"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="100" y="78" font-weight="600" font-size="15">0</text>
+    <text x="100" y="94" font-size="10.5" fill="#5c6b76">val 2</text>
+    <text x="300" y="78" font-weight="600" font-size="15">2</text>
+    <text x="300" y="94" font-size="10.5" fill="#5c6b76">val 6</text>
+    <text x="500" y="78" font-weight="600" font-size="15">1</text>
+    <text x="500" y="94" font-size="10.5" fill="#5c6b76">val 3</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="#dbe4fb">
+    <rect x="154" y="223" width="92" height="34" rx="6"/>
+    <rect x="354" y="223" width="92" height="34" rx="6"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="200" y="245">prime 2</text>
+    <text x="400" y="245">prime 3</text>
+  </g>
+  <text x="300" y="286" text-anchor="middle" fill="#5c6b76" font-size="12">gray: index claims the prime first &#183; blue: union with the last claimant</text>
+  <text x="40" y="312" fill="#1a2026" font-size="13">Index 2 (value 6) holds both primes, so it unions with last[2]=0 and last[3]=1;</text>
+  <text x="40" y="330" fill="#1a2026" font-size="13">all of [2, 3, 6] lands in <tspan fill="#4169E1" font-weight="600">one component</tspan> and the answer is true.</text>
+</svg>

@@ -9,6 +9,8 @@ of a removable substring — pop the top and drop `ch`; otherwise push `ch`.
 Whatever remains on the stack at the end survived every possible removal, so
 its size is the answer.
 
+![On s = ABFCACDB, the stack after each character: A and B collapse at once, F C A C stack up, D pops CD, and the final B pops the earlier A across the seam, leaving irreducible [F, C] with length 2.](figures/solution-stack-collapse-steps.svg)
+
 The order of removals never matters, which is why one greedy pass suffices.
 Two occurrences can never overlap: "AB" and "CD" share no letters, and an
 "AB" cannot overlap another "AB" (it would need one character to be both 'A'
