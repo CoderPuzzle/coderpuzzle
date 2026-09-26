@@ -16,6 +16,8 @@ end before `s`: `#(start <= e) - #(end < s)`. The two sets are nested — an
 interval ending before `s` necessarily starts before `s <= e` — so the
 difference counts precisely the overlapping intervals, `i` itself included.
 
+![On Example 1's intervals [1, 4], [2, 5], [3, 6], each overlap count is 3 = #(start ≤ e) − #(end < s), and the anchor interval [1, 4] meets all three, so the maximum team size is 3.](figures/solution-overlap-count-timeline.svg)
+
 Both counts come from sorted copies of the two arrays. Sorting `startTime`
 once lets a binary search report how many starts are at most `e` for every
 interval in `O(log n)`, and sorting `endTime` once lets another binary search

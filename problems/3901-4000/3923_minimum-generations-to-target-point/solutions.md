@@ -12,4 +12,6 @@ midpoint only after both endpoints are available, so its generation is one
 more than the larger endpoint generation. The relaxation terminates when no
 point improves.
 
+![On Example 2's points [0, 0, 0] and [5, 5, 5] with target [1, 1, 1], generation 1 adds 2 = mid(0, 5) and generation 2 adds 1 = mid(0, 2) and 3 = mid(2, 5), so the target first appears at k = 2.](figures/solution-generation-numberline.svg)
+
 **Complexity:** `O(7⁶ * iterations)` time, `O(7³)` space.

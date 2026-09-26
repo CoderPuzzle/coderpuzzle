@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 304" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="304" fill="#ffffff"/>
+  <!-- Example 1: startTime [1,2,3], endTime [4,5,6]; bars [1,4],[2,5],[3,6]; x(t)=110+74(t-1); rows y 50/100/150 -->
+  <text x="330" y="26" text-anchor="middle" fill="#5c6b76" font-size="12.5">sorted startTime = [1, 2, 3]   ·   sorted endTime = [4, 5, 6]</text>
+  <!-- interval bars -->
+  <rect x="110" y="50" width="222" height="24" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <rect x="184" y="100" width="222" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <rect x="258" y="150" width="222" height="24" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <!-- row labels -->
+  <g text-anchor="middle">
+    <text x="56" y="57" fill="#5c6b76" font-size="12">i = 0</text>
+    <text x="56" y="73" fill="#1a2026" font-size="12.5" font-weight="600">[1, 4]</text>
+    <text x="56" y="107" fill="#5c6b76" font-size="12">i = 1</text>
+    <text x="56" y="123" fill="#1a2026" font-size="12.5" font-weight="600">[2, 5]</text>
+    <text x="56" y="157" fill="#5c6b76" font-size="12">i = 2</text>
+    <text x="56" y="173" fill="#1a2026" font-size="12.5" font-weight="600">[3, 6]</text>
+  </g>
+  <!-- per-row count decomposition: #(start &lt;= e) - #(end &lt; s) -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="221" y="91">#(start ≤ 4) = 3   −   #(end &lt; 1) = 0</text>
+    <text x="295" y="141">#(start ≤ 5) = 3   −   #(end &lt; 2) = 0</text>
+    <text x="369" y="191">#(start ≤ 6) = 3   −   #(end &lt; 3) = 0</text>
+  </g>
+  <!-- overlap counts -->
+  <text x="545" y="36" text-anchor="middle" fill="#5c6b76" font-size="11.5">count</text>
+  <g text-anchor="middle" font-size="17" font-weight="600">
+    <text x="545" y="68" fill="#4169E1">3</text>
+    <text x="545" y="118" fill="#1a2026">3</text>
+    <text x="545" y="168" fill="#1a2026">3</text>
+  </g>
+  <g fill="#4169E1" font-size="12" font-weight="600">
+    <text x="578" y="62">anchor:</text>
+    <text x="578" y="78">meets all 3</text>
+  </g>
+  <!-- time axis -->
+  <line x1="98" y1="206" x2="495" y2="206" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="110" y1="202" x2="110" y2="210"/><line x1="184" y1="202" x2="184" y2="210"/>
+    <line x1="258" y1="202" x2="258" y2="210"/><line x1="332" y1="202" x2="332" y2="210"/>
+    <line x1="406" y1="202" x2="406" y2="210"/><line x1="480" y1="202" x2="480" y2="210"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <text x="110" y="228">1</text><text x="184" y="228">2</text><text x="258" y="228">3</text>
+    <text x="332" y="228">4</text><text x="406" y="228">5</text><text x="480" y="228">6</text>
+  </g>
+  <text x="512" y="210" fill="#5c6b76" font-size="12">time</text>
+  <!-- caption -->
+  <text x="330" y="262" text-anchor="middle" fill="#1a2026" font-size="13">Each interval counts 3 = #(start ≤ e) − #(end &lt; s); anchor [1, 4] overlaps all three,</text>
+  <text x="330" y="280" text-anchor="middle" fill="#1a2026" font-size="13">so the maximum team size is <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

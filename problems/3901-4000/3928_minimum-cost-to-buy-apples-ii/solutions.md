@@ -13,6 +13,8 @@ first distance array with edge weight `cost` and the second with edge weight
 two distances over every reachable `j`; choosing `j = i` naturally represents
 buying locally.
 
+![On the n = 2 example with road cost 1 and tax 2, each start's two Dijkstra layers are empty d = [0, 1] and loaded d = [0, 2] from shop 0, mirrored from shop 1, and the minimum of prices[j] + empty + loaded yields ans = [6, 3].](figures/solution-two-dijkstra-layers.svg)
+
 Repeat the two searches for each starting shop. Road costs can reach `10⁹`
 and loaded costs can be one hundred times larger, so distances and totals use
 64-bit integers. Disconnected components need no special case because only

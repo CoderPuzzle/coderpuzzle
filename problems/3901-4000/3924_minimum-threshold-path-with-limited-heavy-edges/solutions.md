@@ -12,6 +12,8 @@ to every node: zero-cost moves go to the front and one-cost moves go to the
 back. If `target` remains unreachable even when every edge is light, the
 answer is `-1`.
 
+![At threshold 4 on Example 1's six-node graph, edge 0–1 (5) is the lone heavy edge and the path 0 → 1 → 4 → 3 reaches node 3 with heavy count d = 1 ≤ k = 1, so the minimum threshold is 4.](figures/solution-heavy-edge-path.svg)
+
 Feasibility is monotone as the threshold grows, so binary search the integer
 range from zero through the largest edge weight. This includes threshold zero,
 which is necessary when `source == target` or when the heavy-edge allowance
