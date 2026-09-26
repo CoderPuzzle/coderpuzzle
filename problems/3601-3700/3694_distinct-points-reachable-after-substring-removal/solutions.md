@@ -10,6 +10,8 @@ to re-walk the surviving moves. One pass over `s` fixes the total
 displacement `(tx, ty)`, and one more pass primes the displacement of the
 first window.
 
+![For Example 1's s = "LUL" with k = 1, the full walk ends at the total (-2, 1), and subtracting each deleted move's vector yields the endpoints (-1, 1), (-2, 0), (-1, 1) — exactly 2 distinct points.](figures/solution-total-minus-window.svg)
+
 Slide the window across `s`, updating its displacement in constant time per
 step — subtract the outgoing move's vector, add the incoming one — and drop
 the point `(tx - wx, ty - wy)` into a hash set for each of the `n - k + 1`

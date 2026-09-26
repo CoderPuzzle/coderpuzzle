@@ -12,6 +12,8 @@ largest entry `(l, n - 1)`, then pop `k` times, pushing the next cell of
 that row, `(l, r - 1)`, back onto the heap whenever the popped row still
 has one.
 
+![For Example 2's nums = [4, 2, 5, 1], the grid of subarray spreads only grows along each row as the window widens, and the max-heap merging the rows pops 4, 4, 4 from (0,3), (1,3), (2,3) for a total of 12.](figures/solution-heap-merge-spread-rows.svg)
+
 Each popped cell needs its value immediately, so arbitrary range-extrema
 lookups must be constant-time. Two sparse tables deliver that: level `j`
 stores the maximum (respectively minimum) of every window of length `2^j`,

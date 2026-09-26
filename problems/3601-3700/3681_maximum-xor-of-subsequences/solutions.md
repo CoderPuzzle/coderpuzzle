@@ -21,6 +21,8 @@ with its own bit and higher steps settle strictly higher bits, so this
 local rule reaches the true maximum of the span; an all-zero input leaves
 every slot empty and answers 0.
 
+![On the basis built from Example 1's [1, 2, 3], inserting 3 = 11 reduces against both slots and collapses to zero, and the greedy fold 0 → 2 → 3 yields the maximum XOR 3.](figures/solution-basis-greedy-fold.svg)
+
 Values stay below 2³⁰, hence answers too, and every fixed-width language
 holds them in signed 32-bit integers (JavaScript's bitwise operators are
 32-bit, so plain numbers work there as well). All loops are bounded by the

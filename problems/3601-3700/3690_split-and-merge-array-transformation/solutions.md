@@ -21,6 +21,8 @@ the whole tuple. If the arrays already match, the answer is 0 without any
 search; the goal test runs on generation rather than on dequeue, which
 returns one layer earlier.
 
+![Starting from Example 2's nums1 = [1, 1, 2, 3, 4, 5], the three discovered cut-and-paste moves — cutting [1,1,2], [4,1,1], then [3,2] — walk the state chain to nums2 = [5, 4, 3, 2, 1, 1] in the minimum 3 operations.](figures/solution-bfs-cut-paste-chain.svg)
+
 The search always terminates with an answer: `nums2` is guaranteed to be a
 permutation of `nums1`, and moving one element at a time reaches any
 permutation, so `nums2` is reachable. At most `n!` states are visited, and

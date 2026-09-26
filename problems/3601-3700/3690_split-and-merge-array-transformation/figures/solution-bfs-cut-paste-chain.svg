@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums1 = [1,1,2,3,4,5] -> nums2 = [5,4,3,2,1,1] in three ops:
+       cut [1,1,2] paste at 2; cut [4,1,1] paste at 3; cut [3,2] paste at 2.
+       cells 38x34, x = 170 + 42i, rows y = 44,124,204,284; accented cells are each op's cut block -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="170" y="44" width="38" height="34"/><rect x="212" y="44" width="38" height="34"/><rect x="254" y="44" width="38" height="34"/>
+    <rect x="296" y="44" width="38" height="34"/><rect x="338" y="44" width="38" height="34"/><rect x="380" y="44" width="38" height="34"/>
+    <rect x="170" y="204" width="38" height="34"/><rect x="212" y="204" width="38" height="34"/><rect x="254" y="204" width="38" height="34"/>
+    <rect x="296" y="204" width="38" height="34"/><rect x="338" y="204" width="38" height="34"/><rect x="380" y="204" width="38" height="34"/>
+    <rect x="170" y="284" width="38" height="34"/><rect x="212" y="284" width="38" height="34"/><rect x="254" y="284" width="38" height="34"/>
+    <rect x="296" y="284" width="38" height="34"/><rect x="338" y="284" width="38" height="34"/><rect x="380" y="284" width="38" height="34"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="170" y="44" width="38" height="34"/><rect x="212" y="44" width="38" height="34"/><rect x="254" y="44" width="38" height="34"/>
+    <rect x="212" y="124" width="38" height="34"/><rect x="254" y="124" width="38" height="34"/><rect x="296" y="124" width="38" height="34"/>
+    <rect x="170" y="204" width="38" height="34"/><rect x="212" y="204" width="38" height="34"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="170" y="124" width="38" height="34"/><rect x="338" y="124" width="38" height="34"/><rect x="380" y="124" width="38" height="34"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="189" y="65">1</text><text x="231" y="65">1</text><text x="273" y="65">2</text><text x="315" y="65">3</text><text x="357" y="65">4</text><text x="399" y="65">5</text>
+    <text x="189" y="145">3</text>
+    <text x="231" y="145" fill="#4169E1" font-weight="600">4</text><text x="273" y="145" fill="#4169E1" font-weight="600">1</text><text x="315" y="145" fill="#4169E1" font-weight="600">1</text>
+    <text x="357" y="145">2</text><text x="399" y="145">5</text>
+    <text x="189" y="225" fill="#4169E1" font-weight="600">3</text><text x="231" y="225" fill="#4169E1" font-weight="600">2</text>
+    <text x="273" y="225">5</text><text x="315" y="225">4</text><text x="357" y="225">1</text><text x="399" y="225">1</text>
+    <text x="189" y="305">5</text><text x="231" y="305">4</text><text x="273" y="305">3</text><text x="315" y="305">2</text><text x="357" y="305">1</text><text x="399" y="305">1</text>
+  </g>
+  <g text-anchor="end" font-size="12.5" fill="#5c6b76">
+    <text x="156" y="65">nums1</text>
+    <text x="156" y="145">after op 1</text>
+    <text x="156" y="225">after op 2</text>
+    <text x="156" y="305" fill="#4169E1" font-weight="600">nums2</text>
+  </g>
+  <!-- cut block -> paste gap -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 231 80 C 231 102, 252 100, 252 119" marker-end="url(#arrow)"/>
+    <path d="M 274 160 C 274 182, 294 180, 294 199" marker-end="url(#arrow)"/>
+    <path d="M 212 240 C 212 262, 252 260, 252 279" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="436" y="105">op 1: cut [1,1,2], paste at 2</text>
+    <text x="436" y="185">op 2: cut [4,1,1], paste at 3</text>
+    <text x="436" y="265">op 3: cut [3,2], paste at 2</text>
+  </g>
+  <text x="320" y="348" text-anchor="middle" fill="#1a2026" font-size="13">Each move cuts one contiguous block and repastes it elsewhere; breadth-first</text>
+  <text x="320" y="366" text-anchor="middle" fill="#1a2026" font-size="13">search over array states reaches nums2 in 3 such moves &#8212; the minimum is <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

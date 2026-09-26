@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="350" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [4,2,5,1]; grid cell (l,r) = max-min of nums[l..r]; rows l = 0..3, cols r = 0..3.
+       popped cells (0,3), (1,3), (2,3) each worth 4; cells 56x38 at x = 130 + 62c, rows y = 120 + 44l -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="158" y="60">r = 0</text><text x="220" y="60">r = 1</text><text x="282" y="60">r = 2</text><text x="344" y="60">r = 3</text>
+  </g>
+  <text x="122" y="91" text-anchor="end" fill="#5c6b76" font-size="12">nums</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="130" y="70" width="56" height="34"/><rect x="192" y="70" width="56" height="34"/><rect x="254" y="70" width="56" height="34"/><rect x="316" y="70" width="56" height="34"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="158" y="91">4</text><text x="220" y="91">2</text><text x="282" y="91">5</text><text x="344" y="91">1</text>
+  </g>
+  <!-- inactive lower triangle -->
+  <g fill="#f0f3f7">
+    <rect x="130" y="164" width="56" height="38"/><rect x="130" y="208" width="56" height="38"/><rect x="192" y="208" width="56" height="38"/>
+    <rect x="130" y="252" width="56" height="38"/><rect x="192" y="252" width="56" height="38"/><rect x="254" y="252" width="56" height="38"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2">
+    <text x="158" y="188">&#8211;</text>
+    <text x="158" y="232">&#8211;</text><text x="220" y="232">&#8211;</text>
+    <text x="158" y="276">&#8211;</text><text x="220" y="276">&#8211;</text><text x="282" y="276">&#8211;</text>
+  </g>
+  <!-- active spread cells -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="130" y="120" width="56" height="38"/><rect x="192" y="120" width="56" height="38"/><rect x="254" y="120" width="56" height="38"/>
+    <rect x="192" y="164" width="56" height="38"/><rect x="254" y="164" width="56" height="38"/>
+    <rect x="254" y="208" width="56" height="38"/>
+    <rect x="316" y="252" width="56" height="38"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="316" y="120" width="56" height="38"/>
+    <rect x="316" y="164" width="56" height="38"/>
+    <rect x="316" y="208" width="56" height="38"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="158" y="144">0</text><text x="220" y="144">2</text><text x="282" y="144">3</text>
+    <text x="220" y="188">0</text><text x="282" y="188">3</text>
+    <text x="282" y="232">0</text>
+    <text x="344" y="276">0</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#4169E1">
+    <text x="344" y="145">4</text><text x="344" y="189">4</text><text x="344" y="233">4</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="122" y="144">l = 0</text><text x="122" y="188">l = 1</text><text x="122" y="232">l = 2</text><text x="122" y="276">l = 3</text>
+  </g>
+  <!-- pop order badges on the popped cells -->
+  <g fill="#4169E1">
+    <circle cx="366" cy="124" r="8.5"/><circle cx="366" cy="168" r="8.5"/><circle cx="366" cy="212" r="8.5"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600">
+    <text x="366" y="127.5">1</text><text x="366" y="171.5">2</text><text x="366" y="215.5">3</text>
+  </g>
+  <!-- heap pop log -->
+  <text x="430" y="82" fill="#5c6b76" font-size="12">seed: (l, 3) for each l</text>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="430" y="110">pop 1 &#8594; <tspan fill="#4169E1" font-weight="600">4</tspan>, push (0,2) = 3</text>
+    <text x="430" y="134">pop 2 &#8594; <tspan fill="#4169E1" font-weight="600">4</tspan>, push (1,2) = 3</text>
+    <text x="430" y="158">pop 3 &#8594; <tspan fill="#4169E1" font-weight="600">4</tspan>, push (2,2) = 0</text>
+    <text x="430" y="186">total 4 + 4 + 4 = <tspan fill="#4169E1" font-weight="600">12</tspan></text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 376 139 L 422 106" marker-end="url(#arrow)"/>
+    <path d="M 376 183 L 422 130" marker-end="url(#arrow)"/>
+    <path d="M 376 227 L 422 154" marker-end="url(#arrow)"/>
+  </g>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">Each row's spread only grows as the window widens; merging the rows with a</text>
+  <text x="320" y="336" text-anchor="middle" fill="#1a2026" font-size="13">max-heap pops 4, 4, 4 &#8212; the top three spreads sum to <tspan fill="#4169E1" font-weight="600">12</tspan>.</text>
+</svg>

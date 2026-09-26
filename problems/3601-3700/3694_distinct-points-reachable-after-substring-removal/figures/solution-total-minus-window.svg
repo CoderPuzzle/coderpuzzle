@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="310" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "LUL", k = 1; full walk (0,0) -> (-1,0) -> (-1,1) -> (-2,1), total (-2,1);
+       endpoints = total - window vector: (-1,1), (-2,0), (-1,1). grid cells 80x80 at (110,70) -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="110" y="70" width="80" height="80"/><rect x="190" y="70" width="80" height="80"/><rect x="270" y="70" width="80" height="80"/>
+    <rect x="110" y="150" width="80" height="80"/><rect x="190" y="150" width="80" height="80"/><rect x="270" y="150" width="80" height="80"/>
+  </g>
+  <!-- full walk -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 298 190 H 242" marker-end="url(#arrow)"/>
+    <path d="M 230 178 V 122" marker-end="url(#arrow)"/>
+    <path d="M 218 110 H 162" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="277" y="181">L</text><text x="243" y="165">U</text><text x="197" y="101">L</text>
+  </g>
+  <!-- prefix points; the two distinct endpoints accented -->
+  <circle cx="310" cy="190" r="10" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="230" cy="190" r="10" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="150" cy="110" r="10" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="230" cy="110" r="10.5" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <circle cx="150" cy="190" r="10.5" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g fill="#5c6b76" font-size="11">
+    <text x="310" y="216" text-anchor="middle">start</text>
+    <text x="150" y="84" text-anchor="middle">total (-2, 1)</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="230" y="84">(-1, 1)</text>
+    <text x="150" y="216">(-2, 0)</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="150" y="252">-2</text><text x="230" y="252">-1</text><text x="310" y="252">0</text>
+  </g>
+  <g text-anchor="end" fill="#9aa7b2" font-size="11">
+    <text x="98" y="114">1</text><text x="98" y="194">0</text>
+  </g>
+  <!-- per-window computation -->
+  <text x="430" y="84" fill="#1a2026" font-size="12.5">total (tx, ty) = <tspan fill="#4169E1" font-weight="600">(-2, 1)</tspan></text>
+  <text x="430" y="110" fill="#5c6b76" font-size="12">endpoint = total &#8722; window</text>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="430" y="140">del s[0] 'L' &#8594; <tspan fill="#4169E1" font-weight="600">(-1, 1)</tspan></text>
+    <text x="430" y="164">del s[1] 'U' &#8594; <tspan fill="#4169E1" font-weight="600">(-2, 0)</tspan></text>
+    <text x="430" y="188">del s[2] 'L' &#8594; <tspan fill="#4169E1" font-weight="600">(-1, 1)</tspan></text>
+    <text x="430" y="216">answer: <tspan fill="#4169E1" font-weight="600">2</tspan> distinct points</text>
+  </g>
+  <text x="320" y="282" text-anchor="middle" fill="#1a2026" font-size="13">Deleting a window subtracts its vector from the total (-2, 1); for</text>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">s = "LUL", k = 1 the endpoints repeat to just (-1, 1) and (-2, 0) &#8212; answer <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>
