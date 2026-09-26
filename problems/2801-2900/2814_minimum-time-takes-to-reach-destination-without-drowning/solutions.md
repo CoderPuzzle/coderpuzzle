@@ -19,6 +19,15 @@ bullet points. BFS layers equal seconds here as well, because every move
 costs exactly one; the first time the destination leaves the queue, its
 time is minimal, and the answer is `-1` when the frontier drains instead.
 
+On example 1's land, the flood BFS marks (0,1) and (1,2) at second 1 and
+(1,1) and (2,2) at second 2; the escape BFS enters (1,1) at second 1 — one
+second ahead of its water — and reaches D at second 3.
+
+![On example 1's land, the multi-source flood BFS writes each empty cell's
+flood second (0 at the `*`, 1 beside it, 2 one ring further), and the escape
+BFS walks S to (1,1) at second 1 — one step ahead of that cell's water —
+then (1,0) and D, arriving at second 3.](figures/solution-flood-then-escape.svg)
+
 Grid sizes are bounded by 100 * 100 = 10⁴ cells, times stay below 10⁴, and
 both passes visit every cell once, so plain arrays and queues are enough.
 

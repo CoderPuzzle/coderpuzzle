@@ -14,6 +14,14 @@ what makes the walk linear and terminating: each original adjacent pair is
 examined exactly once, and the loop stops on the final original node,
 whose `next` was never changed from null.
 
+On head = [18, 6, 10, 3] the three stops insert gcd nodes 6, 2, and 1, each
+rewiring the cursor's next and then advancing to the untouched successor,
+yielding [18, 6, 6, 2, 10, 1, 3].
+
+![On head = [18, 6, 10, 3], the cursor splices a fresh gcd node (6, then 2,
+then 1) between each adjacent pair and advances straight to the untouched
+successor, building [18, 6, 6, 2, 10, 1, 3] in one pass.](figures/solution-gcd-splice-steps.svg)
+
 Each insertion costs constant pointer work plus one Euclid reduction. With
 `Node.val <= 1000`, any gcd of two node values fits an `int` comfortably
 and settles in at most about ten division steps, so arithmetic never

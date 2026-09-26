@@ -15,6 +15,15 @@ successor's digit while that successor is still untouched, folds it into
 digit is examined exactly once and the last node's null successor yields a
 zero carry-in.
 
+On head = [1, 8, 9] the sweep reads 8 and 9 ahead of their predecessors, so
+both emit a carry: 2·8+1 = 17 folds to 7 and 2·1+1 lifts the head to 3,
+giving 3 → 7 → 8.
+
+![On head = [1, 8, 9], the single forward sweep has each node read its
+still-untouched successor — 8 and 9 both emit carry 1 — so 2·8+1 = 17 folds
+to 7, head 1 lifts to 3, and the list reads 3 → 7 → 8 = 378 with no
+reversal.](figures/solution-lookahead-carry-sweep.svg)
+
 Whether the result is longer than the input depends only on the original
 head digit, so it is read once before any mutation and remembered. When it
 was five or more the doubled number has one extra digit: a fresh node

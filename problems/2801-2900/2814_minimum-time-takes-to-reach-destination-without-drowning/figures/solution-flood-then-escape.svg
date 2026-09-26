@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 272" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="272" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- land = [["D",".","*"],[".",".","."],[".","S","."]]; cells 64x40,
+       left grid x=70/134/198, right grid x=396/460/524, rows y=70/110/150.
+       Left: flood BFS times (corner = land char, centre = second water arrives):
+       (0,1)=1 (1,2)=1 (1,1)=2 (2,2)=2 (1,0)=3 (2,1)=3 (2,0)=4; D never floods.
+       Right: escape BFS times; accented cells are the path S-(1,1)-(1,0)-D -->
+  <text x="166" y="54" text-anchor="middle" fill="#5c6b76" font-size="12.5">flood times (BFS from *)</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="70" y="70" width="64" height="40" fill="#ffffff"/><rect x="134" y="70" width="64" height="40" fill="#ffffff"/><rect x="198" y="70" width="64" height="40" fill="#dbe4fb"/>
+    <rect x="70" y="110" width="64" height="40" fill="#ffffff"/><rect x="134" y="110" width="64" height="40" fill="#ffffff"/><rect x="198" y="110" width="64" height="40" fill="#ffffff"/>
+    <rect x="70" y="150" width="64" height="40" fill="#ffffff"/><rect x="134" y="150" width="64" height="40" fill="#ffffff"/><rect x="198" y="150" width="64" height="40" fill="#ffffff"/>
+  </g>
+  <g fill="#9aa7b2" font-size="10.5">
+    <text x="74" y="82">D</text><text x="138" y="82">.</text><text x="202" y="82">*</text>
+    <text x="74" y="122">.</text><text x="138" y="122">.</text><text x="202" y="122">.</text>
+    <text x="74" y="162">.</text><text x="138" y="162">S</text><text x="202" y="162">.</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="102" y="95" fill="#9aa7b2" font-weight="400" font-size="14">∞</text><text x="166" y="95">1</text><text x="230" y="95">0</text>
+    <text x="102" y="135">3</text><text x="166" y="135">2</text><text x="230" y="135">1</text>
+    <text x="102" y="175">4</text><text x="166" y="175">3</text><text x="230" y="175">2</text>
+  </g>
+  <text x="166" y="206" text-anchor="middle" fill="#9aa7b2" font-size="11">∞ = never floods (D is safe)</text>
+  <path d="M 270 130 H 388" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="329" y="112" text-anchor="middle" fill="#5c6b76" font-size="12">enter only if</text>
+  <text x="329" y="154" text-anchor="middle" fill="#5c6b76" font-size="12">t + 1 &lt; flood</text>
+  <text x="492" y="54" text-anchor="middle" fill="#5c6b76" font-size="12.5">escape times (second BFS)</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="396" y="70" width="64" height="40" fill="#dbe4fb"/><rect x="460" y="70" width="64" height="40" fill="#ffffff"/><rect x="524" y="70" width="64" height="40" fill="#ffffff"/>
+    <rect x="396" y="110" width="64" height="40" fill="#dbe4fb"/><rect x="460" y="110" width="64" height="40" fill="#dbe4fb"/><rect x="524" y="110" width="64" height="40" fill="#ffffff"/>
+    <rect x="396" y="150" width="64" height="40" fill="#ffffff"/><rect x="460" y="150" width="64" height="40" fill="#dbe4fb"/><rect x="524" y="150" width="64" height="40" fill="#ffffff"/>
+  </g>
+  <g fill="#9aa7b2" font-size="10.5">
+    <text x="400" y="82">D</text><text x="464" y="82">.</text><text x="528" y="82">*</text>
+    <text x="400" y="122">.</text><text x="464" y="122">.</text><text x="528" y="122">.</text>
+    <text x="400" y="162">.</text><text x="464" y="162">S</text><text x="528" y="162">.</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="428" y="95" fill="#4169E1">3</text><text x="492" y="95" fill="#9aa7b2" font-weight="400" font-size="14">×</text><text x="556" y="95" fill="#9aa7b2" font-weight="400" font-size="14">×</text>
+    <text x="428" y="135">2</text><text x="492" y="135">1</text><text x="556" y="135" fill="#9aa7b2" font-weight="400" font-size="14">×</text>
+    <text x="428" y="175">1</text><text x="492" y="175">0</text><text x="556" y="175">1</text>
+  </g>
+  <text x="492" y="206" text-anchor="middle" fill="#9aa7b2" font-size="11">× = never entered (water too early)</text>
+  <!-- escape path S(2,1) -> (1,1) -> (1,0) -> D(0,0); routed along cell
+       margins (x=512/414, y=182/117) so the stroke never crosses a digit -->
+  <polyline points="492,182 512,182 512,117 414,117 414,90" fill="none" stroke="#4169E1" stroke-width="3"/>
+  <g fill="#4169E1">
+    <circle cx="492" cy="182" r="3.5"/><circle cx="414" cy="90" r="3.5"/>
+  </g>
+  <text x="320" y="232" text-anchor="middle" fill="#1a2026" font-size="13">Water reaches (1,1) at second 2; the escape enters it at second 1 — one</text>
+  <text x="320" y="250" text-anchor="middle" fill="#1a2026" font-size="13">step ahead — (1,0) floods at 3 but is entered at 2 — reaching D at <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

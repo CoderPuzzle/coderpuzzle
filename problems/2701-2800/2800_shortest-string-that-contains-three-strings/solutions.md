@@ -17,6 +17,14 @@ takes the largest `k` with `x[-k:] == y[:k]`, because a maximal overlap is
 exactly what makes the join as short as possible — and `k = 0`, plain
 concatenation, always works as the fallback.
 
+On a="abc", b="bca", c="aaa", the winning order c, a, b joins "aaa"+"abc" on
+1 shared letter and "abc"+"bca" on 2, assembling the length-6 superstring
+"aaabca".
+
+![On a="abc", b="bca", c="aaa", the winning order c, a, b lays the words out
+overlapping — "aaa" and "abc" share 1 letter, "abc" and "bca" share 2 —
+assembling the length-6 superstring "aaabca".](figures/solution-maximal-overlap-merge.svg)
+
 Each of the constant number of chains does two joins, so the whole search is
 bounded by the cost of one join: scanning overlaps up to the word-length cap
 `n <= 100` with `O(k)` slice comparisons each. The candidate strings never

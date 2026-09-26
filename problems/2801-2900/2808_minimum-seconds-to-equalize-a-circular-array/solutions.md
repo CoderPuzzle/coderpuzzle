@@ -18,6 +18,14 @@ that occurs in nums: each candidate is reachable (it already owns cells),
 and an unoccurring final value would only be slower than seeding from some
 value that does occur.
 
+On nums = [2, 1, 3, 3, 2], value 3 sits at indices 2 and 3: its wrap-around
+gap is first + n − last = 2 + 5 − 3 = 4 steps, so it needs ⌊4 / 2⌋ = 2
+seconds.
+
+![On circular nums = [2, 1, 3, 3, 2], the two occurrences of 3 leave a
+wrap-around arc of 4 steps, whose frontiers fill one cell per second from
+both ends to equalize in ⌊4 / 2⌋ = 2 seconds.](figures/solution-widest-occurrence-gap.svg)
+
 One sweep gathers everything per value with hash maps: the first index,
 the last index seen so far, and the widest forward gap between consecutive
 occurrences recorded when a repeat arrives. A second loop over the values

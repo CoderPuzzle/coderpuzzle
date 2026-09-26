@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- head = [1,8,9]; input boxes 56x44 at x=172/292/412, y=60; each node's
+       lookahead arc reads its still-untouched successor (>= 5 emits carry 1),
+       computations beside the down arrows; result row y=190 doubles to 3,7,8 -->
+  <g fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)">
+    <path d="M 200 56 Q 260 30 320 56"/>
+    <path d="M 320 56 Q 380 30 440 56"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12">
+    <text x="260" y="24">reads 8 ≥ 5</text>
+    <text x="380" y="24">reads 9 ≥ 5</text>
+  </g>
+  <text x="156" y="87" text-anchor="end" fill="#5c6b76" font-size="12">head</text>
+  <g stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)">
+    <path d="M 230 82 H 288" fill="none"/>
+    <path d="M 350 82 H 408" fill="none"/>
+    <path d="M 470 82 H 508" fill="none"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="172" y="60" width="56" height="44"/>
+    <rect x="292" y="60" width="56" height="44"/>
+    <rect x="412" y="60" width="56" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="200" y="88">1</text><text x="320" y="88">8</text><text x="440" y="88">9</text>
+  </g>
+  <text x="518" y="87" fill="#5c6b76" font-size="12">null</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="none" marker-end="url(#arrow)">
+    <path d="M 200 110 V 182"/>
+    <path d="M 320 110 V 182"/>
+    <path d="M 440 110 V 182"/>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="212" y="150">2·1+1 = 3</text>
+    <text x="332" y="150">2·8+1 = 17 → 7</text>
+    <text x="452" y="150">2·9+0 = 18 → 8</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4" fill="#dbe4fb">
+    <rect x="172" y="190" width="56" height="44"/>
+    <rect x="292" y="190" width="56" height="44"/>
+    <rect x="412" y="190" width="56" height="44"/>
+  </g>
+  <path d="M 230 212 H 288" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 350 212 H 408" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 470 212 H 508" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="200" y="218">3</text><text x="320" y="218">7</text><text x="440" y="218">8</text>
+  </g>
+  <text x="518" y="217" fill="#4169E1" font-weight="600" font-size="15">378</text>
+  <text x="320" y="266" text-anchor="middle" fill="#1a2026" font-size="13">Each node reads its still-untouched successor: 8 and 9 are both ≥ 5, so</text>
+  <text x="320" y="284" text-anchor="middle" fill="#1a2026" font-size="13">the carries fold 2·8+1 = 17 into <tspan fill="#4169E1" font-weight="600">7</tspan> and lift head 1 to <tspan fill="#4169E1" font-weight="600">3</tspan> — no reversal, 378.</text>
+</svg>

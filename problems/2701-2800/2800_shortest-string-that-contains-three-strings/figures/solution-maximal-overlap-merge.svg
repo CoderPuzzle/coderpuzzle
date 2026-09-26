@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 316" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="316" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- winning order c,a,b of a="abc" b="bca" c="aaa": final cells 48x40 at (176,206);
+       bars y 48/102/156, c x[176,320] a x[272,416] b x[320,464], accent = shared overlap -->
+  <text x="320" y="34" text-anchor="middle" fill="#5c6b76" font-size="12.5">one ordering of the three words, glued on overlaps</text>
+  <!-- bar c = "aaa" on ans[0..2], overlap with a accented -->
+  <rect x="272" y="48" width="48" height="34" fill="#dbe4fb"/>
+  <rect x="176" y="48" width="144" height="34" fill="none" stroke="#42525e" stroke-width="1.5"/>
+  <text x="222" y="70" text-anchor="middle" fill="#1a2026" font-size="13">c = "aaa"</text>
+  <!-- bar a = "abc" on ans[2..4], both ends overlap -->
+  <rect x="272" y="102" width="144" height="34" fill="#dbe4fb"/>
+  <rect x="272" y="102" width="144" height="34" fill="none" stroke="#42525e" stroke-width="1.5"/>
+  <text x="344" y="124" text-anchor="middle" fill="#1a2026" font-size="13">a = "abc"</text>
+  <!-- bar b = "bca" on ans[3..5], overlap with a accented -->
+  <rect x="320" y="156" width="96" height="34" fill="#dbe4fb"/>
+  <rect x="320" y="156" width="144" height="34" fill="none" stroke="#42525e" stroke-width="1.5"/>
+  <text x="368" y="178" text-anchor="middle" fill="#1a2026" font-size="13">b = "bca"</text>
+  <!-- overlap joins -->
+  <path d="M 296 84 L 296 100" fill="none" stroke="#42525e" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="308" y="96" fill="#5c6b76" font-size="11.5">share "a"</text>
+  <path d="M 368 138 L 368 154" fill="none" stroke="#42525e" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="380" y="150" fill="#5c6b76" font-size="11.5">share "bc"</text>
+  <!-- assembled superstring -->
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="176" y="206" width="48" height="40" fill="#ffffff"/>
+    <rect x="224" y="206" width="48" height="40" fill="#ffffff"/>
+    <rect x="272" y="206" width="48" height="40" fill="#dbe4fb"/>
+    <rect x="320" y="206" width="48" height="40" fill="#dbe4fb"/>
+    <rect x="368" y="206" width="48" height="40" fill="#dbe4fb"/>
+    <rect x="416" y="206" width="48" height="40" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="200" y="232">a</text><text x="248" y="232">a</text><text x="296" y="232">a</text>
+    <text x="344" y="232">b</text><text x="392" y="232">c</text><text x="440" y="232">a</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="200" y="262">0</text><text x="248" y="262">1</text><text x="296" y="262">2</text>
+    <text x="344" y="262">3</text><text x="392" y="262">4</text><text x="440" y="262">5</text>
+  </g>
+  <text x="320" y="288" text-anchor="middle" fill="#1a2026" font-size="13">Winning order c, a, b: "aaa" + "abc" share 1 letter, "abc" + "bca" share 2 —</text>
+  <text x="320" y="306" text-anchor="middle" fill="#1a2026" font-size="13">the merged superstring <tspan fill="#4169E1" font-weight="600">"aaabca"</tspan> is 3+3+3−1−2 = <tspan fill="#4169E1" font-weight="600">6</tspan> letters long.</text>
+</svg>
