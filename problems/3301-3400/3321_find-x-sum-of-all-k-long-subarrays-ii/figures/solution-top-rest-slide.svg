@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- nums [1,1,2,2,3,4,2,3], k = 6, x = 2; chips are (count, value) pairs, w84 h34; TOP lane (min-heap) chips at y108, REST lane (max-heap) at y234; before column x 34/134, after column x 420/524; arrows: demote, promote, count bump (arc), unchanged (gray) -->
+  <text x="320" y="30" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">slide one step — (count, value) pairs: nums[0] = 1 leaves, nums[6] = 2 enters</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="126" y="70">nums[0..5] = [1, 1, 2, 2, 3, 4]</text>
+    <text x="514" y="70">nums[1..6] = [1, 2, 2, 3, 4, 2]</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="126" y="100">TOP · min-heap · keeps top x = 2</text>
+    <text x="514" y="100">TOP · min-heap · keeps top x = 2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="34" y="108" width="84" height="34"/><rect x="134" y="108" width="84" height="34"/>
+    <rect x="420" y="108" width="84" height="34"/><rect x="524" y="108" width="84" height="34"/>
+    <rect x="34" y="234" width="84" height="34"/><rect x="134" y="234" width="84" height="34"/>
+    <rect x="420" y="234" width="84" height="34"/><rect x="524" y="234" width="84" height="34"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5" fill="#1a2026">
+    <text x="76" y="129">(2, 1)</text><text x="176" y="129">(2, 2)</text>
+    <text x="462" y="129">(1, 4)</text><text x="566" y="129">(3, 2)</text>
+    <text x="76" y="255">(1, 3)</text><text x="176" y="255">(1, 4)</text>
+    <text x="462" y="255">(1, 1)</text><text x="566" y="255">(1, 3)</text>
+  </g>
+  <path d="M 222 105 L 288 105" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <path d="M 421 105 L 516 105" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="355" y="109" text-anchor="middle" fill="#5c6b76" font-size="11">enter 2: (2, 2) → (3, 2)</text>
+  <path d="M 76 148 L 456 230" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="190" y="204" text-anchor="middle" fill="#4169E1" font-size="11">leave 1: (2, 1) → (1, 1)</text>
+  <path d="M 220 250 L 416 134" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="328" y="152" text-anchor="middle" fill="#4169E1" font-size="11">promote: 4 &gt; 1</text>
+  <path d="M 76 272 L 76 296 L 566 296 L 566 272" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowgray)"/>
+  <text x="321" y="290" text-anchor="middle" fill="#9aa7b2" font-size="10.5">unchanged</text>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="76" y="201" fill="#5c6b76">kept sum = 6</text>
+    <text x="514" y="201" fill="#5c6b76">kept sum = 4 + 6 = <tspan fill="#4169E1" font-weight="600">10</tspan></text>
+    <text x="126" y="222" fill="#5c6b76" font-weight="600">REST · max-heap · the rest</text>
+    <text x="514" y="222" fill="#5c6b76" font-weight="600">REST · max-heap · the rest</text>
+  </g>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Entering 2 lifts (2, 2) to (3, 2); leaving 1 shrinks (2, 1) to (1, 1),</text>
+  <text x="320" y="347" text-anchor="middle" fill="#1a2026" font-size="13">and REST's best (1, 4) replaces it — the kept sum <tspan fill="#4169E1" font-weight="600">10</tspan> is window 1's x-sum.</text>
+</svg>

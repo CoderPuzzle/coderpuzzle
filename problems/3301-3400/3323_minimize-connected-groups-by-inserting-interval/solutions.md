@@ -23,6 +23,8 @@ shrink from the left while `c_r.start - c_l.end` exceeds `k`. The answer
 is `m` minus the best window's component count minus one (zero when the
 intervals already form one component, leaving the count at `m`).
 
+![On merged components [1, 3], [5, 6], [8, 10] with k = 3 the bridge [3, 5] fits (5 − 3 = 2 ≤ 3) but no 3-component window does (8 − 3 = 5), so the best 2-component window leaves 3 − 2 + 1 = 2 groups.](figures/solution-merge-bridge-window.svg)
+
 Every intermediate quantity is bounded by the coordinate range: the span
 is at most `end_{m-1} - start_0 <= 10⁹`, comfortably inside 32-bit range
 in every language, and the component count is at most `n`. Both passes are

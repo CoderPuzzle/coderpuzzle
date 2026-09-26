@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 100 640 276" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="376" fill="#ffffff"/>
+  <!-- intervals [[1,3],[5,6],[8,10]], k = 3; axis maps v to x = 56 + 48v; component bars y 164-182, accent bridge bar [3,5] in between; window spans (c_l.end to c_r.start) bracketed at y 248 (rejected) and y 296 (best) -->
+  <line x1="40" y1="202" x2="600" y2="202" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="56" y1="202" x2="56" y2="208"/><line x1="104" y1="202" x2="104" y2="208"/><line x1="152" y1="202" x2="152" y2="208"/><line x1="200" y1="202" x2="200" y2="208"/><line x1="248" y1="202" x2="248" y2="208"/><line x1="296" y1="202" x2="296" y2="208"/><line x1="344" y1="202" x2="344" y2="208"/><line x1="392" y1="202" x2="392" y2="208"/><line x1="440" y1="202" x2="440" y2="208"/><line x1="488" y1="202" x2="488" y2="208"/><line x1="536" y1="202" x2="536" y2="208"/><line x1="584" y1="202" x2="584" y2="208"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="56" y="224">0</text><text x="104" y="224">1</text><text x="152" y="224">2</text><text x="200" y="224">3</text><text x="248" y="224">4</text><text x="296" y="224">5</text><text x="344" y="224">6</text><text x="392" y="224">7</text><text x="440" y="224">8</text><text x="488" y="224">9</text><text x="536" y="224">10</text><text x="584" y="224">11</text>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1" stroke-dasharray="3 3">
+    <line x1="104" y1="184" x2="104" y2="200"/><line x1="200" y1="184" x2="200" y2="200"/><line x1="296" y1="184" x2="296" y2="200"/><line x1="344" y1="184" x2="344" y2="200"/><line x1="440" y1="184" x2="440" y2="200"/><line x1="536" y1="184" x2="536" y2="200"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="104" y="164" width="96" height="18" fill="#dbe4fb"/>
+    <rect x="296" y="164" width="48" height="18" fill="#dbe4fb"/>
+    <rect x="440" y="164" width="96" height="18" fill="#dbe4fb"/>
+  </g>
+  <rect x="200" y="164" width="96" height="18" fill="#4169E1"/>
+  <g text-anchor="middle" font-weight="600" font-size="11.5">
+    <text x="152" y="177" fill="#1a2026">c₀ = [1, 3]</text>
+    <text x="320" y="177" fill="#1a2026">c₁</text>
+    <text x="488" y="177" fill="#1a2026">c₂ = [8, 10]</text>
+    <text x="248" y="177" fill="#ffffff">[3, 5]</text>
+  </g>
+  <text x="248" y="158" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">bridge length 5 − 3 = 2 ≤ k = 3</text>
+  <path d="M 104 140 L 104 134 L 344 134 L 344 140" fill="none" stroke="#42525e" stroke-width="1.5"/>
+  <text x="224" y="126" text-anchor="middle" fill="#5c6b76" font-size="12">one group: [1, 3] + [3, 5] + [5, 6]</text>
+  <path d="M 440 140 L 440 134 L 536 134 L 536 140" fill="none" stroke="#42525e" stroke-width="1.5"/>
+  <text x="488" y="126" text-anchor="middle" fill="#5c6b76" font-size="12">group 2</text>
+  <path d="M 200 242 L 200 248 L 440 248 L 440 242" fill="none" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="320" y="270" text-anchor="middle" fill="#5c6b76" font-size="12">l = 0, r = 2 needs 8 − 3 = 5 &gt; k = 3 — shrink left</text>
+  <path d="M 344 290 L 344 296 L 440 296 L 440 290" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="392" y="318" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">l = 1, r = 2 needs 8 − 6 = 2 ≤ k = 3 — best window</text>
+  <text x="320" y="344" text-anchor="middle" fill="#1a2026" font-size="13">No 3-component window fits (span 5 &gt; 3), so the best window merges 2 components:</text>
+  <text x="320" y="361" text-anchor="middle" fill="#1a2026" font-size="13">the answer is 3 − (2 − 1) = <tspan fill="#4169E1" font-weight="600">2 groups</tspan>, bridged by the new [3, 5].</text>
+</svg>

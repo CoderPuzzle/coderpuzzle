@@ -18,6 +18,8 @@ always holds the current top-x and the running sum is always the
 window's x-sum — which also collapses to the plain window sum whenever
 fewer than `x` distinct values exist, the stated special case.
 
+![Sliding from nums[0..5] to nums[1..6], entering 2 lifts (2, 2) to (3, 2) in TOP while leaving 1 turns (2, 1) into (1, 1), which is demoted as REST's best (1, 4) is promoted — the kept sum 10 is the window's x-sum.](figures/solution-top-rest-slide.svg)
+
 The structures behind TOP and REST are two heaps of `(count, value)`
 snapshots with lazy deletion: TOP is a min-heap (its peek is the worst
 kept pair, the eviction candidate) and REST a max-heap (its peek is the

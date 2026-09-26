@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 384" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="384" fill="#ffffff"/>
+  <!-- Example 1 tree [5,3,6,5,2,5,7,1,8,null,null,6,8]; circles r17 at the level-order layout; light accent = perfect subtree with its size tagged below, gray = not perfect; perfect sizes gather into the sorted boxes w44 at x = 112 + 52i, y = 278 -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="316" y1="46" x2="208" y2="106"/><line x1="316" y1="46" x2="424" y2="106"/>
+    <line x1="208" y1="106" x2="154" y2="166"/><line x1="208" y1="106" x2="262" y2="166"/>
+    <line x1="424" y1="106" x2="370" y2="166"/><line x1="424" y1="106" x2="478" y2="166"/>
+    <line x1="154" y1="166" x2="118" y2="226"/><line x1="154" y1="166" x2="190" y2="226"/>
+    <line x1="370" y1="166" x2="334" y2="226"/><line x1="370" y1="166" x2="406" y2="226"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#ffffff">
+    <circle cx="316" cy="46" r="17"/><circle cx="208" cy="106" r="17"/><circle cx="424" cy="106" r="17"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <circle cx="154" cy="166" r="17"/><circle cx="370" cy="166" r="17"/>
+    <circle cx="118" cy="226" r="17"/><circle cx="190" cy="226" r="17"/><circle cx="262" cy="166" r="17"/>
+    <circle cx="334" cy="226" r="17"/><circle cx="406" cy="226" r="17"/><circle cx="478" cy="166" r="17"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="316" y="51" fill="#9aa7b2">5</text><text x="208" y="111" fill="#9aa7b2">3</text><text x="424" y="111" fill="#9aa7b2">6</text>
+    <text x="154" y="171" fill="#1a2026">5</text><text x="370" y="171" fill="#1a2026">5</text>
+    <text x="118" y="231" fill="#1a2026">1</text><text x="190" y="231" fill="#1a2026">8</text><text x="262" y="171" fill="#1a2026">2</text>
+    <text x="334" y="231" fill="#1a2026">6</text><text x="406" y="231" fill="#1a2026">8</text><text x="478" y="171" fill="#1a2026">7</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5">
+    <text x="316" y="76" fill="#5c6b76">not perfect</text><text x="208" y="80" fill="#5c6b76">not perfect</text><text x="424" y="80" fill="#5c6b76">not perfect</text>
+    <text x="154" y="212" fill="#4169E1" font-weight="600">size 3</text><text x="370" y="212" fill="#4169E1" font-weight="600">size 3</text>
+    <text x="262" y="196" fill="#4169E1" font-weight="600">size 1</text>
+    <text x="118" y="256" fill="#4169E1" font-weight="600">size 1</text><text x="190" y="256" fill="#4169E1" font-weight="600">size 1</text>
+    <text x="334" y="256" fill="#4169E1" font-weight="600">size 1</text><text x="406" y="256" fill="#4169E1" font-weight="600">size 1</text>
+    <text x="478" y="256" fill="#4169E1" font-weight="600">size 1</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="112" y="278" width="44" height="36"/><rect x="216" y="278" width="44" height="36"/><rect x="268" y="278" width="44" height="36"/>
+    <rect x="320" y="278" width="44" height="36"/><rect x="372" y="278" width="44" height="36"/><rect x="424" y="278" width="44" height="36"/><rect x="476" y="278" width="44" height="36"/>
+  </g>
+  <rect x="164" y="278" width="44" height="36" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <path d="M 180 268 L 192 268 L 186 276 z" fill="#4169E1"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="134" y="301" fill="#1a2026">3</text><text x="186" y="301" fill="#4169E1">3</text><text x="238" y="301" fill="#1a2026">1</text><text x="290" y="301" fill="#1a2026">1</text>
+    <text x="342" y="301" fill="#1a2026">1</text><text x="394" y="301" fill="#1a2026">1</text><text x="446" y="301" fill="#1a2026">1</text><text x="498" y="301" fill="#1a2026">1</text>
+  </g>
+  <text x="530" y="301" fill="#5c6b76" font-size="11">descending</text>
+  <text x="186" y="332" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">k = 2</text>
+  <text x="310" y="354" text-anchor="middle" fill="#1a2026" font-size="13">Every perfect node adds its size; the sorted list is [3, 3, 1, 1, 1, 1, 1, 1],</text>
+  <text x="310" y="371" text-anchor="middle" fill="#1a2026" font-size="13">and the k = 2 entry is <tspan fill="#4169E1" font-weight="600">3</tspan> — a perfect subtree rooted at either inner 5.</text>
+</svg>

@@ -10,6 +10,8 @@ size[i] ending at i's own position pos[i] in the tour. A single traversal
 therefore reduces all n queries to "is tour[pos[i] - size[i] + 1 ..
 pos[i]] a palindrome?" — no per-node dfs re-runs are needed.
 
+![Touring Example 1's 6-node tree postorder writes "abaaba", and each subtree is a contiguous segment of it — n1's "aba" checks p = 3 ≥ 3 and n0's whole tour p = 6 ≥ 6, but n2's "ab" gets p = 0 < 2.](figures/solution-tour-manacher-segments.svg)
+
 Manacher's algorithm computes the maximal palindrome radius at every
 center of the tour in one linear pass over its '#' interleaving, and a
 segment [l, r] is a palindrome exactly when the radius at its transformed
