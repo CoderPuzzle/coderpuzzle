@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 262" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="262" fill="#ffffff"/>
+  <!-- a = 12 = 1100, b = 5 = 0101, n = 4; rows bit 3..0: differ(tie->ax), agree(both), agree(both), differ(bx<ax->bx) building ax = 1110 = 14, bx = 0111 = 7, product 98 at x = 0010 -->
+  <text x="340" y="30" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">maximize (a ⊕ x) · (b ⊕ x) — a = 12 = 1100, b = 5 = 0101, n = 4</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="55" y="56">bit</text><text x="130" y="56">a</text><text x="195" y="56">b</text><text x="285" y="56">relation</text><text x="425" y="56">decision</text><text x="560" y="56">ax</text><text x="645" y="56">bx</text>
+  </g>
+  <line x1="30" y1="64" x2="650" y2="64" stroke="#dbe4fb" stroke-width="1.5"/>
+  <!-- bit 3 -->
+  <g text-anchor="middle">
+    <text x="55" y="99" fill="#1a2026" font-weight="600">3</text>
+    <rect x="115" y="81" width="30" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/><text x="130" y="99" fill="#1a2026">1</text>
+    <rect x="180" y="81" width="30" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/><text x="195" y="99" fill="#1a2026">0</text>
+    <text x="285" y="99" fill="#5c6b76">differ</text>
+    <text x="425" y="99" fill="#1a2026" font-size="12.5">tie → ax</text>
+    <text x="560" y="99" fill="#1a2026" font-size="13.5" font-weight="600"><tspan fill="#4169E1">1</tspan>000 = 8</text>
+    <text x="645" y="99" fill="#1a2026" font-size="13.5" font-weight="600">0000 = 0</text>
+  </g>
+  <!-- bit 2 -->
+  <g text-anchor="middle">
+    <text x="55" y="135" fill="#1a2026" font-weight="600">2</text>
+    <rect x="115" y="117" width="30" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/><text x="130" y="135" fill="#1a2026">1</text>
+    <rect x="180" y="117" width="30" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/><text x="195" y="135" fill="#1a2026">1</text>
+    <text x="285" y="135" fill="#4169E1" font-weight="600">agree</text>
+    <text x="425" y="135" fill="#1a2026" font-size="12.5">set in both</text>
+    <text x="560" y="135" fill="#1a2026" font-size="13.5" font-weight="600">1<tspan fill="#4169E1">1</tspan>00 = 12</text>
+    <text x="645" y="135" fill="#1a2026" font-size="13.5" font-weight="600">0<tspan fill="#4169E1">1</tspan>00 = 4</text>
+  </g>
+  <!-- bit 1 -->
+  <g text-anchor="middle">
+    <text x="55" y="171" fill="#1a2026" font-weight="600">1</text>
+    <rect x="115" y="153" width="30" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/><text x="130" y="171" fill="#1a2026">0</text>
+    <rect x="180" y="153" width="30" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/><text x="195" y="171" fill="#1a2026">0</text>
+    <text x="285" y="171" fill="#4169E1" font-weight="600">agree</text>
+    <text x="425" y="171" fill="#1a2026" font-size="12.5">set in both</text>
+    <text x="560" y="171" fill="#1a2026" font-size="13.5" font-weight="600">11<tspan fill="#4169E1">1</tspan>0 = 14</text>
+    <text x="645" y="171" fill="#1a2026" font-size="13.5" font-weight="600">01<tspan fill="#4169E1">1</tspan>0 = 6</text>
+  </g>
+  <!-- bit 0 -->
+  <g text-anchor="middle">
+    <text x="55" y="207" fill="#1a2026" font-weight="600">0</text>
+    <rect x="115" y="189" width="30" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/><text x="130" y="207" fill="#1a2026">0</text>
+    <rect x="180" y="189" width="30" height="26" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/><text x="195" y="207" fill="#1a2026">1</text>
+    <text x="285" y="207" fill="#5c6b76">differ</text>
+    <text x="425" y="207" fill="#1a2026" font-size="12.5">bx &lt; ax → bx</text>
+    <text x="560" y="207" fill="#1a2026" font-size="13.5" font-weight="600">1110 = 14</text>
+    <text x="645" y="207" fill="#1a2026" font-size="13.5" font-weight="600">011<tspan fill="#4169E1">1</tspan> = 7</text>
+  </g>
+  <line x1="30" y1="220" x2="650" y2="220" stroke="#dbe4fb" stroke-width="1.5"/>
+  <text x="340" y="238" text-anchor="middle" fill="#1a2026" font-size="13">Agree rows set the bit in both factors; differ rows hand it to the smaller factor.</text>
+  <text x="340" y="256" text-anchor="middle" fill="#1a2026" font-size="13">Result ax = 14, bx = 7 at x = 0010 — the maximum product is <tspan fill="#4169E1" font-weight="600">14 × 7 = 98</tspan>.</text>
+</svg>

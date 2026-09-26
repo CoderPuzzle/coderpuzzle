@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 248" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="248" fill="#ffffff"/>
+  <!-- nums1 = [1,2,7], nums2 = [4,5,3]; fate 1 targets (7,3): i=0,1 must cross, cost 2; fate 2 targets (3,7): i=0,1 fit, last swapped, cost 1 -->
+  <line x1="336" y1="28" x2="336" y2="200" stroke="#dbe4fb" stroke-width="1.5"/>
+  <!-- fate 1 panel -->
+  <text x="182" y="40" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="13">fate 1: keep last — targets (7, 3)</text>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="56" y="89">nums1</text><text x="56" y="123">nums2</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="98" y="62">i = 0</text><text x="182" y="62">i = 1</text><text x="266" y="62">i = 2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="64" y="68" width="68" height="34" fill="#ffffff"/><rect x="148" y="68" width="68" height="34" fill="#ffffff"/><rect x="232" y="68" width="68" height="34" fill="#ffffff"/>
+    <rect x="64" y="102" width="68" height="34" fill="#dbe4fb"/><rect x="148" y="102" width="68" height="34" fill="#dbe4fb"/><rect x="232" y="102" width="68" height="34" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="98" y="90">1</text><text x="182" y="90">2</text><text x="266" y="90">7</text>
+    <text x="98" y="124">4</text><text x="182" y="124">5</text><text x="266" y="124">3</text>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="98" y="156" fill="#4169E1" font-weight="600">must cross</text><text x="182" y="156" fill="#4169E1" font-weight="600">must cross</text><text x="266" y="156" fill="#5c6b76">targets</text>
+  </g>
+  <text x="182" y="182" text-anchor="middle" fill="#1a2026" font-size="12.5">keep fate cost = <tspan fill="#4169E1" font-weight="600">2</tspan> (feasible)</text>
+  <!-- fate 2 panel -->
+  <text x="512" y="40" text-anchor="middle" font-weight="600" fill="#1a2026" font-size="13">fate 2: swap last — targets (3, 7)</text>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="386" y="89">nums1</text><text x="386" y="123">nums2</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="428" y="62">i = 0</text><text x="512" y="62">i = 1</text><text x="596" y="62">i = 2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="394" y="68" width="68" height="34" fill="#ffffff"/><rect x="478" y="68" width="68" height="34" fill="#ffffff"/>
+    <rect x="394" y="102" width="68" height="34" fill="#ffffff"/><rect x="478" y="102" width="68" height="34" fill="#ffffff"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8">
+    <rect x="562" y="68" width="68" height="34" fill="#dbe4fb"/><rect x="562" y="102" width="68" height="34" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="428" y="90">1</text><text x="512" y="90">2</text><text x="596" y="90">7</text>
+    <text x="428" y="124">4</text><text x="512" y="124">5</text><text x="596" y="124">3</text>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="428" y="156" fill="#5c6b76">fits as-is</text><text x="512" y="156" fill="#5c6b76">fits as-is</text><text x="596" y="156" fill="#4169E1" font-weight="600">swapped (+1)</text>
+  </g>
+  <text x="512" y="182" text-anchor="middle" fill="#1a2026" font-size="12.5">swap fate cost = <tspan fill="#4169E1" font-weight="600">1</tspan> (feasible)</text>
+  <text x="320" y="214" text-anchor="middle" fill="#1a2026" font-size="13">Both fates are feasible here: keep forces two crosses, swap-last costs exactly 1,</text>
+  <text x="320" y="232" text-anchor="middle" fill="#1a2026" font-size="13">so the answer is <tspan fill="#4169E1" font-weight="600">min(2, 1) = 1</tspan> — swap i = 2: nums1 = [1,2,3], nums2 = [4,5,7].</text>
+</svg>

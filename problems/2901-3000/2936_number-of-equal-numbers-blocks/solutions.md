@@ -26,6 +26,8 @@ final bisect stays logarithmic for long blocks. Every block ends with
 `i` jumped to one past its last index, so the walk advances at least one
 position per round and terminates.
 
+![On example 2 (nums = [1,1,1,3,9,9,9,2,10,10]), galloping from i = 0 probes indices 1 and 2 (hits) then 4, where at(4) = 9 misses; the bracket [2, 4] bisects with a miss at 3, so block 1 ends at index 2 — five blocks, 4, 1, 4, 1, 1 probes each.](figures/solution-gallop-bracket-bisect.svg)
+
 On widths: indices and lengths reach 10¹⁵, so all position arithmetic is
 64-bit; it peaks around 3 × 10¹⁵ mid-gallop, comfortably inside signed
 64-bit range and far below JavaScript's 2⁵³ exactness limit. Values are

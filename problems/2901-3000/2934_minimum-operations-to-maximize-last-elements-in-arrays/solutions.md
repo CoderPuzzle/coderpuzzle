@@ -18,6 +18,8 @@ count one operation; if it fits neither way, this fate is dead and no
 swaps elsewhere can save it. Summing the forced swaps gives the cheapest
 cost for that fate, entirely in one scan with two running values.
 
+![On example 1 (nums1 = [1,2,7], nums2 = [4,5,3]), the keep fate tags both earlier columns must-cross for a cost of 2, while the swap-last fate finds both fit as-is and pays exactly 1, so the answer is min(2, 1) = 1.](figures/solution-two-fates-panels.svg)
+
 The answer is the smaller of the two fate costs, or `-1` when both are
 dead. Note the answer can never exceed `n`: if the last column is swapped,
 at most `n` indices are touched in total. Values reach `10⁹` and nothing

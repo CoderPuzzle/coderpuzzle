@@ -64,6 +64,8 @@ inserting a value increments the counts along one root-to-leaf path, and
 when the left pointer advances, the departed value's path is decremented,
 so "subtree non-empty" means genuinely present in the current window.
 
+![On example 1 (nums = [1,2,3,4,5]), querying y = 4 over the window [2, 4] walks the counted trie down the opposite bits 0, 1, 1 to the leaf 011 = 3, giving 4 ^ 3 = 7, the sweep's running maximum.](figures/solution-window-trie-walk.svg)
+
 Each of the `n` values is inserted once, deleted once, and queried once,
 each at `20` levels of trie, so the whole sweep is linear in `n` up to the
 constant bit count. All values are below `2²⁰`, so the XOR of any pair is

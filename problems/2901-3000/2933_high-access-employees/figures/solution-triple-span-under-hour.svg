@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- minute axis: x = 60 + (min - 280) * 4.5; a: 05:32=332->294, 05:49=349->370.5, 06:21=381->514.5; b: 04:57=297->136.5, 05:40=340->330 -->
+  <!-- employee a lane -->
+  <text x="44" y="125" text-anchor="middle" font-weight="600" fill="#1a2026">a</text>
+  <line x1="60" y1="120" x2="600" y2="120" stroke="#42525e" stroke-width="1.5"/>
+  <path d="M 294 80 L 514.5 80" fill="none" stroke="#4169E1" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="404" y="66" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">t[k+2] − t[k] = 49 min &lt; 60</text>
+  <g fill="#4169E1">
+    <circle cx="294" cy="120" r="5"/><circle cx="370.5" cy="120" r="5"/><circle cx="514.5" cy="120" r="5"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="294" y="104">t[k]</text><text x="370.5" y="104">t[k+1]</text><text x="514.5" y="104">t[k+2]</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">
+    <text x="294" y="142">05:32</text><text x="370.5" y="142">05:49</text><text x="514.5" y="142">06:21</text>
+  </g>
+  <!-- light connectors tying both lanes to the shared minute scale -->
+  <g stroke="#dbe4fb" stroke-width="1">
+    <line x1="294" y1="148" x2="294" y2="182"/><line x1="370.5" y1="148" x2="370.5" y2="182"/><line x1="514.5" y1="148" x2="514.5" y2="182"/>
+  </g>
+  <!-- employee b lane -->
+  <text x="44" y="195" text-anchor="middle" font-weight="600" fill="#1a2026">b</text>
+  <line x1="60" y1="190" x2="600" y2="190" stroke="#42525e" stroke-width="1.5"/>
+  <g fill="#9aa7b2">
+    <circle cx="136.5" cy="190" r="5"/><circle cx="330" cy="190" r="5"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">
+    <text x="136.5" y="212">04:57</text><text x="330" y="212">05:40</text>
+  </g>
+  <text x="233" y="236" text-anchor="middle" fill="#5c6b76" font-size="12.5">only two stamps — no triple to test</text>
+  <text x="320" y="268" text-anchor="middle" fill="#1a2026" font-size="13">a's consecutive triple spans 06:21 − 05:32 = <tspan fill="#4169E1" font-weight="600">49 min &lt; 60</tspan>, so a is high-access;</text>
+  <text x="320" y="286" text-anchor="middle" fill="#1a2026" font-size="13">b has only two stamps (04:57, 05:40), so no triple exists — the answer is <tspan fill="#4169E1" font-weight="600">["a"]</tspan>.</text>
+</svg>

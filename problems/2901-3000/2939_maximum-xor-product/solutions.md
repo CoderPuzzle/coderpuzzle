@@ -22,6 +22,8 @@ Below bit `n`, two cases:
   `bit·larger` to the product while the alternative adds `bit·smaller` —
   so the smaller factor takes it, with ties free.
 
+![On example 1 (a = 12 = 1100, b = 5 = 0101, n = 4), the rows for bits 3..0 set both factors on the two agree rows and hand the differ rows to ax (tie) then bx (smaller), building ax = 14 and bx = 7 for the maximum product 98 at x = 0010.](figures/solution-greedy-bit-rows.svg)
+
 Each decision dominates the alternatives at its own bit height
 independently of the later ones, so the walk is optimal; it also fixes
 `x` itself implicitly (`x = ax ^ a`).

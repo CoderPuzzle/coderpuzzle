@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 404" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="404" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums sorted = [1,2,3,4,5]; at y = 4 the window is [ceil(4/2), 4] = [2, 4]; trie counts are live window values; query 4 walks 0 -> 01 -> 011, partner 3, 4 ^ 3 = 7 -->
+  <!-- sorted array with window shaded -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="148" y="28" width="56" height="32" fill="#ffffff"/><rect x="220" y="28" width="56" height="32" fill="#dbe4fb"/><rect x="292" y="28" width="56" height="32" fill="#dbe4fb"/><rect x="364" y="28" width="56" height="32" fill="#dbe4fb"/><rect x="436" y="28" width="56" height="32" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="176" y="49">1</text><text x="248" y="49">2</text><text x="320" y="49">3</text><text x="392" y="49">4</text><text x="464" y="49">5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="176" y="76">0</text><text x="248" y="76">1</text><text x="320" y="76">2</text><text x="392" y="76">3</text><text x="464" y="76">4</text>
+  </g>
+  <path d="M 248 96 L 248 66" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 392 96 L 392 66" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowB)"/>
+  <text x="248" y="112" text-anchor="middle" fill="#5c6b76" font-size="12">left</text>
+  <text x="392" y="112" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">y = 4</text>
+  <text x="320" y="132" text-anchor="middle" fill="#1a2026" font-size="12.5">window [ceil(4/2), 4] = <tspan fill="#4169E1" font-weight="600">[2, 4]</tspan> (shaded)</text>
+  <!-- trie with per-node live window counts -->
+  <text x="344" y="160" text-anchor="start" fill="#5c6b76" font-size="11.5">count = values now in window</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 310 174 L 231 201"/>
+    <path d="M 330 174 L 409 201"/>
+    <path d="M 211 224 L 179 249"/>
+    <path d="M 420 226 L 420 246"/>
+    <path d="M 161 272 L 154 294"/>
+    <path d="M 179 271 L 201 297"/>
+    <path d="M 420 274 L 420 294"/>
+  </g>
+  <path d="M 310 174 L 231 201" fill="none" stroke="#4169E1" stroke-width="2.2"/>
+  <path d="M 211 224 L 179 249" fill="none" stroke="#4169E1" stroke-width="2.2"/>
+  <path d="M 179 271 L 201 297" fill="none" stroke="#4169E1" stroke-width="2.2"/>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5" font-weight="600">
+    <text x="258" y="182">0</text><text x="384" y="182">1</text><text x="183" y="232">1</text><text x="440" y="240">0</text><text x="144" y="280">0</text><text x="206" y="280">1</text><text x="440" y="288">0</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="64" y="216">bit 2</text><text x="64" y="264">bit 1</text><text x="64" y="312">bit 0</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="420" cy="212" r="14"/><circle cx="420" cy="260" r="14"/><circle cx="150" cy="308" r="14"/><circle cx="420" cy="308" r="14"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="#dbe4fb">
+    <circle cx="320" cy="164" r="14"/><circle cx="220" cy="212" r="14"/><circle cx="170" cy="260" r="14"/><circle cx="210" cy="308" r="14"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13">
+    <text x="320" y="169">3</text><text x="220" y="217">2</text><text x="420" y="217">1</text><text x="170" y="265">2</text><text x="420" y="265">1</text><text x="150" y="313">1</text><text x="210" y="313">1</text><text x="420" y="313">1</text>
+  </g>
+  <g text-anchor="start">
+    <text x="234" y="303" fill="#5c6b76" font-size="12">011 = 3</text>
+    <text x="234" y="321" fill="#4169E1" font-size="13" font-weight="600">4 ^ 3 = 7</text>
+  </g>
+  <!-- per-y sweep results -->
+  <text x="320" y="348" text-anchor="middle" fill="#1a2026" font-size="12.5">each y's window best: 1→0, 2→3, 3→1, <tspan fill="#4169E1" font-weight="600">4→7</tspan>, 5→6</text>
+  <text x="320" y="374" text-anchor="middle" fill="#1a2026" font-size="13">For y = 4 the walk steps opposite each live level (0 → 01 → 011): partner 3, so <tspan fill="#4169E1" font-weight="600">4 ^ 3 = 7</tspan>.</text>
+  <text x="320" y="392" text-anchor="middle" fill="#1a2026" font-size="13">Bits 19..3 are a shared zero spine; no later y beats it — the answer is <tspan fill="#4169E1" font-weight="600">7</tspan>.</text>
+</svg>

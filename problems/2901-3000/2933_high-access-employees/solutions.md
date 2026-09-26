@@ -19,4 +19,6 @@ witness. The `<` (rather than `<=`) is what implements "exactly one hour of
 difference is not the same period". Each bucket is scanned once, so the
 whole method is a sort per bucket plus a linear sweep.
 
+![On example 1, employee a's sorted stamps 05:32, 05:49, 06:21 sit under a 60-minute bracket whose span is 49 minutes, the consecutive-triple witness that makes a high-access, while b's two stamps never form a triple.](figures/solution-triple-span-under-hour.svg)
+
 **Complexity:** `O(n log n)` time, `O(n)` space.
