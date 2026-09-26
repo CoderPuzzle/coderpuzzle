@@ -10,6 +10,8 @@ best achievable frequency at `v` is exactly
 `min(window(v), count(v) + numOperations)` — the window size capped by the
 free elements plus the operation budget.
 
+![On nums = [1,4,5] with k = 1 (Example 1), the reach intervals [0,2], [3,5], [4,6] put both 4 and 5 inside target v = 4's window [3,5], so frequency = min(window 2, count 1 + 2) = 2.](figures/solution-window-reach-intervals.svg)
+
 Values are bounded by `10⁵`, so instead of hunting for which `v` matters,
 the solution sorts the array and sweeps **every** integer target in
 `[1, max(nums) + k]` (targets below `1` never beat `v = 1` since all

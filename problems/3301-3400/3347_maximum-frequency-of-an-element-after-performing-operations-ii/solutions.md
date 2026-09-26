@@ -22,6 +22,8 @@ the three candidates of the hint. Sorting the array and scoring each
 candidate with two binary searches (window and exact count) keeps the
 whole pass at `O(n log n)`.
 
+![On nums = [1,4,5] with k = 1, the candidates x, x − k, x + k include v = 4 and v = 5 = 4 + k, and sliding the target from 4 up to 5 keeps both window members {4, 5}, each scoring min(2, 1 + 2) = 2.](figures/solution-candidate-slide-x-plus-k.svg)
+
 The one numeric care: window bounds `v ± k` reach `3 × 10⁹`, past 32-bit
 range, so the fixed-width languages run the search limits in 64-bit
 integers. No products are ever formed — the counts themselves stay below

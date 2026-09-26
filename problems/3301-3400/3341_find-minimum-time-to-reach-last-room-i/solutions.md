@@ -18,6 +18,8 @@ weights are effectively non-negative and the first pop of a cell is its
 final arrival time. Lazy deletion keeps the heap honest — stale entries
 whose stored time has since improved are skipped on pop.
 
+![On moveTime = [[0,4],[4,4]] (Example 1), every room except the start opens at 4, so the first move waits until t = 4 and lands at t = 5, and (1, 1) is entered at max(5, 4) + 1 = 6.](figures/solution-dijkstra-wait-grid.svg)
+
 The grid has at most 50 × 50 = 2,500 cells and each cell pushes at most
 four heap entries, so the heap holds a few thousand tuples and the whole
 run is well inside the limits. Arrival times are bounded by the largest

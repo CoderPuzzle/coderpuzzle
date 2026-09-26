@@ -20,4 +20,6 @@ preorder; consuming the preorder in reverse therefore visits every child
 before its parent, and folding `size[v]` into `size[newparent[v]]` in
 that order accumulates all subtree sizes in a single linear pass.
 
+![On parent = [-1,0,4,0,1] and s = "abbba" (Example 2), nodes 4 and 2 re-parent to their closest same-letter ancestors 0 and 1, and folding subtree sizes in reverse preorder 3, 2, 4, 1, 0 yields [5, 2, 1, 1, 1].](figures/solution-closest-ancestor-rewire.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

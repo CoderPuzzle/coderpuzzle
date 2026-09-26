@@ -21,6 +21,8 @@ move cannot start before the target room opens — and because arrivals
 never decrease along a walk, the first settle of a cell is final, with
 lazy deletion discarding stale heap entries.
 
+![On the 2x4 grid of Example 2, a cell with even i+j sends its move at cost 1s and odd at 2s, so the walk alternates 1, 2, 1, 2 seconds and the dist table fills 0, 1, 3, 4, 6 to reach (1, 3) at t = 6.](figures/solution-parity-outcost-grid.svg)
+
 Distances are bounded by the largest opening time plus the move sums over
 the longest shortest walk, at most 10⁹ + 2·(n + m − 2) < 10⁹ + 3000, so
 32-bit arithmetic would hold mathematically; the 64-bit distance arrays

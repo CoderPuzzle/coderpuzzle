@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- moveTime = [[0,0,0,0],[0,0,0,0]]; cells 104x64 at (48,56); out-cost 1s on even
+       i+j, 2s on odd; big number = settled dist; walk strip shows the Example 2 path -->
+  <text x="48" y="44" fill="#5c6b76" font-size="12">i+j parity fixes the out-cost; the big number is the dist</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="48" y="56" width="104" height="64" fill="#dbe4fb"/>
+    <rect x="152" y="56" width="104" height="64" fill="#ffffff"/>
+    <rect x="256" y="56" width="104" height="64" fill="#ffffff"/>
+    <rect x="360" y="56" width="104" height="64" fill="#ffffff"/>
+    <rect x="48" y="120" width="104" height="64" fill="#dbe4fb"/>
+    <rect x="152" y="120" width="104" height="64" fill="#dbe4fb"/>
+    <rect x="256" y="120" width="104" height="64" fill="#dbe4fb"/>
+    <rect x="360" y="120" width="104" height="64" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="11.5">
+    <text x="100" y="78"><tspan fill="#5c6b76">i+j 0 · </tspan><tspan fill="#4169E1" font-weight="600">out 1s</tspan></text>
+    <text x="204" y="78"><tspan fill="#5c6b76">i+j 1 · </tspan><tspan fill="#4169E1" font-weight="600">out 2s</tspan></text>
+    <text x="308" y="78"><tspan fill="#5c6b76">i+j 2 · </tspan><tspan fill="#4169E1" font-weight="600">out 1s</tspan></text>
+    <text x="412" y="78"><tspan fill="#5c6b76">i+j 3 · </tspan><tspan fill="#4169E1" font-weight="600">out 2s</tspan></text>
+    <text x="100" y="142"><tspan fill="#5c6b76">i+j 1 · </tspan><tspan fill="#4169E1" font-weight="600">out 2s</tspan></text>
+    <text x="204" y="142"><tspan fill="#5c6b76">i+j 2 · </tspan><tspan fill="#4169E1" font-weight="600">out 1s</tspan></text>
+    <text x="308" y="142"><tspan fill="#5c6b76">i+j 3 · </tspan><tspan fill="#4169E1" font-weight="600">out 2s</tspan></text>
+    <text x="412" y="142"><tspan fill="#5c6b76">i+j 4 · </tspan><tspan fill="#4169E1" font-weight="600">out 1s</tspan></text>
+  </g>
+  <g text-anchor="middle" font-size="19" font-weight="600">
+    <text x="100" y="106" fill="#1a2026">0</text><text x="204" y="106" fill="#1a2026">1</text>
+    <text x="308" y="106" fill="#1a2026">3</text><text x="412" y="106" fill="#1a2026">4</text>
+    <text x="100" y="170" fill="#1a2026">1</text><text x="204" y="170" fill="#1a2026">3</text>
+    <text x="308" y="170" fill="#1a2026">4</text><text x="412" y="170" fill="#4169E1">6</text>
+  </g>
+  <!-- the walked path: costs alternate 1s, 2s, 1s, 2s -->
+  <g stroke="#42525e" stroke-width="1.25">
+    <rect x="74" y="216" width="52" height="24" fill="#dbe4fb"/>
+    <rect x="164" y="216" width="52" height="24" fill="#dbe4fb"/>
+    <rect x="254" y="216" width="52" height="24" fill="#dbe4fb"/>
+    <rect x="344" y="216" width="52" height="24" fill="#dbe4fb"/>
+    <rect x="434" y="216" width="52" height="24" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5">
+    <text x="100" y="232">(0,0)</text><text x="190" y="232">(1,0)</text><text x="280" y="232">(1,1)</text>
+    <text x="370" y="232">(1,2)</text><text x="460" y="232">(1,3)</text>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 128 228 L 156 228" marker-end="url(#arrow)"/>
+    <path d="M 218 228 L 246 228" marker-end="url(#arrow)"/>
+    <path d="M 308 228 L 336 228" marker-end="url(#arrow)"/>
+    <path d="M 398 228 L 426 228" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">
+    <text x="142" y="210">+1s</text><text x="232" y="210">+2s</text>
+    <text x="322" y="210">+1s</text><text x="412" y="210">+2s</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5">
+    <text x="100" y="258" fill="#5c6b76">t=0</text><text x="190" y="258" fill="#5c6b76">t=1</text>
+    <text x="280" y="258" fill="#5c6b76">t=3</text><text x="370" y="258" fill="#5c6b76">t=4</text>
+    <text x="460" y="258" fill="#4169E1" font-weight="600">t=6</text>
+  </g>
+  <text x="280" y="292" text-anchor="middle" fill="#1a2026" font-size="13">A move out of a cell costs 1s when i+j is even, 2s when odd, so the walk</text>
+  <text x="280" y="310" text-anchor="middle" fill="#1a2026" font-size="13">alternates 1, 2, 1, 2 seconds and reaches (1, 3) at t = <tspan fill="#4169E1" font-weight="600">6</tspan>.</text>
+</svg>
