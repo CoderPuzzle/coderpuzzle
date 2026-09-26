@@ -25,4 +25,8 @@ ancestors above it, so the whole simulation runs in `O(n log n)` time with
 `O(n)` space for the doubled array that holds the tree. Capacities fit in
 32-bit integers throughout; the unplaced counter is bounded by `n`.
 
+![On fruits = [4,2,5] against baskets = [3,5,4], fruit 4 rejects the max-3
+left child and lands on basket 1 (capacity 5): root-max pruning plus
+left-first descent finds the leftmost fitting basket.](figures/solution-max-tree-leftmost-descent.svg)
+
 **Complexity:** `O(n log n)` time, `O(n)` space.

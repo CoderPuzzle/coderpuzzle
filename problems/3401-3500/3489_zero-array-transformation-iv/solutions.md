@@ -21,6 +21,8 @@ cannot un-reach a sum, which is also why monotonicity makes the first
 all-done prefix the minimum. A `val` larger than `nums[i]` is skipped,
 since positive items overshooting the target never help.
 
+![With nums = [2,0,2], indices 0 and 2 grow their reachable sums {0} → {0,1} → {0,1,2} as queries 0 and 1 stream past while index 1 needs only the empty subset — the first all-done prefix is k = 2.](figures/solution-streaming-subset-sums.svg)
+
 With `n <= 10` indices, at most `1000` queries, and targets at most
 `1000`, the total update work is bounded by `q · n · max(nums)` table
 writes.

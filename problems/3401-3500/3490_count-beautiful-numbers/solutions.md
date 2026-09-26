@@ -6,6 +6,8 @@ Count beautiful numbers up to `x` with a digit DP and take the difference `f(r) 
 
 Zeros deserve care. A zero digit among the significant digits makes the product zero, and zero is divisible by any positive digit sum, so every number containing a 0 digit is automatically beautiful; the recursion models this by multiplying `prod` by `d` (making it 0) while continuing to add to `ssum`. Leading zeros are the opposite case — the not-yet-started branch keeps `ssum = 0, prod = 1` so they contaminate nothing. At `pos == len(digits)` a state counts iff the number actually started and `ssum > 0` and `prod % ssum == 0`.
 
+![For the bound 20, leading zeros keep s = 0, p = 1 while each placed 0 digit (in 10 and 20) forces p = 0, divisible by any sum — f(20) = 9 + 1 + 1 = 11, so the answer f(20) − f(9) = 2.](figures/solution-digit-dp-sum-product.svg)
+
 The state space stays tiny: at most 10 positions, two `tight` and two `started` flags, digit sums up to 81, and the reachable nonzero products of digits 1–9 across at most 10 positions — a few thousand distinct values. The `lru_cache` is scoped inside `_count`, so the memo is rebuilt independently for `r` and `l - 1` (the digit strings differ), which is required for correctness of the `tight` transitions.
 
 Edge cases: `l = 1` (single-digit numbers are beautiful since product equals sum), numbers like 10 and 20 (containing 0, product 0 divisible by sum 1 and 2), and `x <= 0` short-circuiting to 0 for the lower boundary call.

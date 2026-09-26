@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <!-- digit DP for x = 20 (digits 2,0); state = (ssum, prod); tight branch caps the next digit at x's digit; leaf lines give each group's beautiful count -->
+  <text x="340" y="28" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">digit DP for x = 20 (digits 2, 0) — state (ssum, prod) at each node</text>
+  <!-- tree edges -->
+  <g stroke="#42525e" stroke-width="1.4" fill="none">
+    <path d="M 300 92 L 140 137"/>
+    <path d="M 340 92 L 340 137"/>
+    <path d="M 380 92 L 540 137"/>
+    <path d="M 115 183 L 115 204"/>
+    <path d="M 340 183 L 340 204"/>
+    <path d="M 565 183 L 565 204"/>
+    <path d="M 435 70 L 545 70" stroke-dasharray="4 3" stroke="#9aa7b2"/>
+  </g>
+  <!-- root -->
+  <rect x="245" y="48" width="190" height="44" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="340" y="66" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">start (pos 0, tight)</text>
+  <text x="340" y="83" text-anchor="middle" font-size="11" fill="#5c6b76">unstarted: s=0, p=1</text>
+  <!-- f(20) chip -->
+  <rect x="545" y="55" width="110" height="30" rx="8" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="600" y="75" text-anchor="middle" font-size="13" font-weight="600" fill="#4169E1">f(20) = 11</text>
+  <!-- three digit branches -->
+  <g text-anchor="middle">
+    <rect x="30" y="137" width="170" height="46" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="115" y="156" font-size="12.5" font-weight="600" fill="#1a2026">digit 0 (leading zero)</text>
+    <text x="115" y="173" font-size="11" fill="#5c6b76">(free, s=0, p=1)</text>
+    <rect x="255" y="137" width="170" height="46" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+    <text x="340" y="156" font-size="12.5" font-weight="600" fill="#1a2026">digit 1</text>
+    <text x="340" y="173" font-size="11" fill="#5c6b76">(free, s=1, p=1)</text>
+    <rect x="480" y="137" width="170" height="46" rx="8" fill="#ffffff" stroke="#4169E1" stroke-width="1.8"/>
+    <text x="565" y="156" font-size="12.5" font-weight="600" fill="#1a2026">digit 2 = x's digit</text>
+    <text x="565" y="173" font-size="11" fill="#5c6b76">(tight, s=2, p=2)</text>
+  </g>
+  <!-- leaf outcomes -->
+  <g text-anchor="middle" font-size="12">
+    <text x="115" y="220" fill="#5c6b76">d=0: never starts → 0</text>
+    <text x="115" y="238" fill="#4169E1" font-weight="600">d=1..9: s=d, p=d → +9 (1–9)</text>
+    <text x="340" y="220" fill="#4169E1" font-weight="600">d=0: 10 — s=1, p=0 → +1</text>
+    <text x="340" y="238" fill="#5c6b76">d=1..9: s=d+1, p=d → 0 (11–19)</text>
+    <text x="565" y="220" fill="#4169E1" font-weight="600">d=0 (cap): 20 — s=2, p=0 → +1</text>
+    <text x="565" y="238" fill="#5c6b76">d=1..9: blocked by tight</text>
+  </g>
+  <text x="340" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Leading zeros stay unstarted (s=0, p=1); any placed 0 digit forces p=0, divisible by every sum.</text>
+  <text x="340" y="318" text-anchor="middle" fill="#1a2026" font-size="13">f(20) = 11, f(9) = 9 → example answer f(20) − f(9) = <tspan fill="#4169E1" font-weight="600">2</tspan>: only 10 and 20 are new.</text>
+</svg>
