@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- s = "1234"; first pieces end at cut 1, 2, 3 (first_end < min(n, 11)); each branch extends one digit and dies: 12 > 0, 123 > 11, 1234 > 122 -->
+  <text x="42" y="26" fill="#5c6b76" font-size="12.5">each next piece must read prev − 1 — a forced successor</text>
+  <rect x="255" y="40" width="130" height="30" rx="6" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="320" y="60" text-anchor="middle" fill="#1a2026" font-size="13.5" font-weight="600">s = "1234"</text>
+  <g fill="none" stroke="#42525e" stroke-width="1.5">
+    <path d="M 308 70 Q 130 90 130 114" marker-end="url(#arrow)"/>
+    <path d="M 320 70 L 320 114" marker-end="url(#arrow)"/>
+    <path d="M 332 70 Q 510 90 510 114" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="55" y="118" width="150" height="36" rx="6"/>
+    <rect x="245" y="118" width="150" height="36" rx="6"/>
+    <rect x="435" y="118" width="150" height="36" rx="6"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="130" y="141">first '1' → <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="320" y="141">first '12' → <tspan fill="#4169E1" font-weight="600">12</tspan></text>
+    <text x="510" y="141">first '123' → <tspan fill="#4169E1" font-weight="600">123</tspan></text>
+  </g>
+  <g fill="none" stroke="#42525e" stroke-width="1.5">
+    <path d="M 130 154 L 130 206" marker-end="url(#arrow)"/>
+    <path d="M 320 154 L 320 206" marker-end="url(#arrow)"/>
+    <path d="M 510 154 L 510 206" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="138" y="184">append '2'</text>
+    <text x="328" y="184">append '3'</text>
+    <text x="518" y="184">append '4'</text>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4">
+    <rect x="42" y="210" width="175" height="36" rx="6"/>
+    <rect x="232" y="210" width="175" height="36" rx="6"/>
+    <rect x="422" y="210" width="175" height="36" rx="6"/>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="130" y="233">12 &gt; 1−1 = 0 → dies</text>
+    <text x="320" y="233">123 &gt; 12−1 = 11 → dies</text>
+    <text x="510" y="233">1234 &gt; 123−1 = 122 → dies</text>
+  </g>
+  <text x="320" y="288" text-anchor="middle" fill="#1a2026" font-size="13">Every piece after the first is a forced successor, so all three branches</text>
+  <text x="320" y="306" text-anchor="middle" fill="#1a2026" font-size="13">die on their first extension — 12 &gt; 0, 123 &gt; 11, 1234 &gt; 122 — <tspan fill="#4169E1" font-weight="600">no valid split</tspan>.</text>
+</svg>

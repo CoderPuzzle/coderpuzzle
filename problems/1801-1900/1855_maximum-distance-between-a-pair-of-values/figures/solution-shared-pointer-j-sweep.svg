@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums1=[55,30,5,4,2], nums2=[100,20,10,10,5]; cells 80x40 at x=120+80k, nums1 y=54, nums2 y=132; winning pair (i=2, j=4); per-i best distances 0, -, 2, 1, 0 -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="160" y="46">0</text><text x="240" y="46">1</text><text x="320" y="46">2</text>
+    <text x="400" y="46">3</text><text x="480" y="46">4</text>
+  </g>
+  <text x="14" y="79" fill="#5c6b76" font-size="12.5">nums1</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="120" y="54" width="80" height="40"/><rect x="200" y="54" width="80" height="40"/>
+    <rect x="360" y="54" width="80" height="40"/><rect x="440" y="54" width="80" height="40"/>
+  </g>
+  <rect x="280" y="54" width="80" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="160" y="79" fill="#1a2026">55</text><text x="240" y="79" fill="#1a2026">30</text>
+    <text x="320" y="79" fill="#4169E1">5</text><text x="400" y="79" fill="#1a2026">4</text>
+    <text x="480" y="79" fill="#1a2026">2</text>
+  </g>
+  <path d="M 320 98 V 118 H 480 V 129" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="320" cy="98" r="3.5" fill="#4169E1"/>
+  <text x="400" y="112" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">j − i = 4 − 2 = 2</text>
+  <text x="14" y="157" fill="#5c6b76" font-size="12.5">nums2</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="120" y="132" width="80" height="40"/><rect x="200" y="132" width="80" height="40"/>
+    <rect x="280" y="132" width="80" height="40"/><rect x="360" y="132" width="80" height="40"/>
+  </g>
+  <rect x="440" y="132" width="80" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="160" y="157" fill="#1a2026">100</text><text x="240" y="157" fill="#1a2026">20</text>
+    <text x="320" y="157" fill="#1a2026">10</text><text x="400" y="157" fill="#1a2026">10</text>
+    <text x="480" y="157" fill="#4169E1">5</text>
+  </g>
+  <path d="M 120 194 H 540" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="120" cy="194" r="3.5" fill="#4169E1"/>
+  <text x="330" y="214" text-anchor="middle" fill="#5c6b76" font-size="12">shared j advances 0 → 5 and never steps back</text>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="160" y="242" fill="#5c6b76">i = 0</text><text x="240" y="242" fill="#5c6b76">i = 1</text>
+    <text x="320" y="242" fill="#4169E1" font-weight="600">i = 2</text>
+    <text x="400" y="242" fill="#5c6b76">i = 3</text><text x="480" y="242" fill="#5c6b76">i = 4</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="160" y="262" fill="#5c6b76">dist 0</text><text x="240" y="262" fill="#5c6b76">—</text>
+    <text x="320" y="262" fill="#4169E1" font-weight="600">dist 2</text>
+    <text x="400" y="262" fill="#5c6b76">dist 1</text><text x="480" y="262" fill="#5c6b76">dist 0</text>
+  </g>
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">At i = 2 the shared j runs 1 → 5, so the farthest valid pair is (2, 4) with</text>
+  <text x="320" y="314" text-anchor="middle" fill="#1a2026" font-size="13">distance 4 − 2 = <tspan fill="#4169E1" font-weight="600">2</tspan> — neither pointer ever moves backward.</text>
+</svg>

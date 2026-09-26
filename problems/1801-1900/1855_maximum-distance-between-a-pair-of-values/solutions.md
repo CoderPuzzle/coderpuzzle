@@ -16,4 +16,6 @@ and the last accepted value still dominates — record `j - 1 - i`.
 Because each of `i` and `j` only ever moves forward, the whole sweep is
 linear despite the pairwise nature of the question.
 
+![Shared-pointer sweep on nums1 = [55,30,5,4,2] and nums2 = [100,20,10,10,5]: the shared j ends at index 5 after i = 2, making pair (2,4) the farthest valid pair with distance 2.](figures/solution-shared-pointer-j-sweep.svg)
+
 **Complexity:** `O(n1 + n2)` time, `O(1)` space.

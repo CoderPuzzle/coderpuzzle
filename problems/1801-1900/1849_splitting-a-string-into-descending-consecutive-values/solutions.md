@@ -19,6 +19,8 @@ digits is skipped outright — its successor alone would need ten of the at
 most nine leftover characters, which also keeps every computed value far
 inside 64-bit range.
 
+![Backtracking on s = "1234": first pieces 1, 12, and 123 each die on their first forced extension because 12 > 0, 123 > 11, and 1234 > 122, so no valid split exists.](figures/solution-forced-successor-backtrack.svg)
+
 Each position branches only over lengths whose value matches the forced
 successor, and the recursion consumes the string monotonically, giving a
 handful of live branches per level.

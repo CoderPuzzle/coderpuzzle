@@ -24,6 +24,8 @@ point the height simply ramps up for the remaining buildings. The answer
 is the maximum over all these candidates — computed in `O(m log m)` for
 `m` restrictions.
 
+![Two-pass sweep on n = 5 with restrictions [[2,1],[4,1]]: pins (1,0), (2,1), (4,1) shape the profile [0,1,2,1,2], and the ramps between pins 2 and 4 meet at (1+1+2)/2 = 2, the tallest height.](figures/solution-pinned-caps-ramp-peak.svg)
+
 The arithmetic needs care in fixed-width languages: ids reach `10⁹` and
 caps too, so cap-plus-distance sums reach `2 × 10⁹`, just past 32-bit
 range — every intermediate here runs on 64-bit integers.

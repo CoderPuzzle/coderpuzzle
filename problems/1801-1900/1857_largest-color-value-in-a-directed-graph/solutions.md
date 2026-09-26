@@ -8,4 +8,6 @@ Processing a node is three small steps. Its own color's counter is incremented (
 
 Cycles reveal themselves at the end: nodes on or downstream of a cycle never reach in-degree zero, so if the number of visited nodes is less than `n` the answer is `-1`. An acyclic single node with no edges is handled naturally (it is enqueued immediately and yields answer 1). The 26-way merge is the dominant cost, done once per edge.
 
+![Kahn processing of colors = "abaca" with edges 0→1, 0→2, 2→3, 3→4: each node's a/b/c count row max-merges into its successors, accruing a: 1 → 2 → 2 → 3 along 0→2→3→4 for answer 3.](figures/solution-kahn-color-dp.svg)
+
 **Complexity:** `O(26(n + m))` time, `O(26n + m)` space.
