@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 270" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="270" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- arr = [2,1,3,1,2,3,3]; cells 64x44 at x=72+72i, centers 104+72i; 3s at indices 2,5,6; pivot i=5: left 5*1-2=3, right 6-5*1=1 -->
+  <text x="464" y="32" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">pivot</text>
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="72" y="40" width="64" height="44"/><rect x="144" y="40" width="64" height="44"/>
+    <rect x="288" y="40" width="64" height="44"/><rect x="360" y="40" width="64" height="44"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="216" y="40" width="64" height="44"/><rect x="432" y="40" width="64" height="44"/>
+    <rect x="504" y="40" width="64" height="44"/>
+  </g>
+  <rect x="430.5" y="38.5" width="67" height="47" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="104" y="67">2</text><text x="176" y="67">1</text><text x="248" y="67">3</text>
+    <text x="320" y="67">1</text><text x="392" y="67">2</text><text x="464" y="67">3</text><text x="536" y="67">3</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="104" y="104">0</text><text x="176" y="104">1</text><text x="248" y="104">2</text>
+    <text x="320" y="104">3</text><text x="392" y="104">4</text><text x="464" y="104">5</text><text x="536" y="104">6</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="356" y="200">count = 1, sum = 2</text>
+    <text x="500" y="182">count = 1, sum = 6</text>
+  </g>
+  <!-- distance arcs from the earlier 3 (index 2) and the later 3 (index 6) into the pivot -->
+  <path d="M 248 124 Q 356 158 464 124" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <path d="M 464 124 Q 500 146 536 124" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="356" y="182" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">left = 5&#183;1 &#8722; 2 = 3</text>
+  <text x="500" y="164" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">right = 6 &#8722; 5&#183;1 = 1</text>
+  <text x="320" y="232" text-anchor="middle" fill="#1a2026" font-size="13">Index 5 holds a 3; the other 3s sit at indices 2 and 6, so its two parts are</text>
+  <text x="320" y="250" text-anchor="middle" fill="#1a2026" font-size="13">left 5&#183;1 &#8722; 2 = 3 and right 6 &#8722; 5&#183;1 = 1 &#8212; intervals[5] = 3 + 1 = <tspan fill="#4169E1" font-weight="600">4</tspan> (output[5] = 4).</text>
+</svg>

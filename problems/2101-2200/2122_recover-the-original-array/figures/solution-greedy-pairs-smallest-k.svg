@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 274" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="274" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- sorted nums = [2,4,6,8,10,12]; cells 72x46 at x=79+82i, centers 115+82i; k=1 pairs 2-4, 6-8, 10-12; midpoints 3,7,11 -->
+  <text x="79" y="32" fill="#5c6b76" font-size="12.5">sorted nums</text>
+  <text x="561" y="32" text-anchor="end" fill="#5c6b76" font-size="12.5">k = <tspan fill="#4169E1" font-weight="600">(4 &#8722; 2)/2 = 1</tspan>: pair each lower with value + 2</text>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="79" y="44" width="72" height="46"/><rect x="161" y="44" width="72" height="46"/>
+    <rect x="243" y="44" width="72" height="46"/><rect x="325" y="44" width="72" height="46"/>
+    <rect x="407" y="44" width="72" height="46"/><rect x="489" y="44" width="72" height="46"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="115" y="72">2</text><text x="197" y="72">4</text><text x="279" y="72">6</text>
+    <text x="361" y="72">8</text><text x="443" y="72">10</text><text x="525" y="72">12</text>
+  </g>
+  <!-- greedy pairing arcs lower -> higher under k = 1 (partner = value + 2k = value + 2) -->
+  <path d="M 115 102 Q 156 138 197 102" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <path d="M 279 102 Q 320 138 361 102" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <path d="M 443 102 Q 484 138 525 102" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="156" y="156">mid (2+4)/2 = <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+    <text x="320" y="156">mid (6+8)/2 = <tspan fill="#4169E1" font-weight="600">7</tspan></text>
+    <text x="484" y="156">mid (10+12)/2 = <tspan fill="#4169E1" font-weight="600">11</tspan></text>
+  </g>
+  <text x="116" y="194" text-anchor="end" fill="#5c6b76" font-size="12.5">recovered arr</text>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="128" y="172" width="56" height="36"/><rect x="292" y="172" width="56" height="36"/>
+    <rect x="456" y="172" width="56" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="156" y="195">3</text><text x="320" y="195">7</text><text x="484" y="195">11</text>
+  </g>
+  <text x="320" y="236" text-anchor="middle" fill="#1a2026" font-size="13">Testing the smallest candidate first, k = (4 &#8722; 2)/2 = 1, greedily pairs 2-4, 6-8,</text>
+  <text x="320" y="254" text-anchor="middle" fill="#1a2026" font-size="13">10-12 with no value left over; the midpoints are the answer arr = <tspan fill="#4169E1" font-weight="600">[3, 7, 11]</tspan>.</text>
+</svg>

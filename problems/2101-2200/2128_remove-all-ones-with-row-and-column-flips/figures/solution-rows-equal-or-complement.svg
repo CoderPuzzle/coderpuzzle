@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 414" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="414" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- grid = [[0,1,0],[1,0,1],[0,1,0]]; left strips 40px cells at x=76; right grids 24px cells at x=356, rows y=72/170/272; flips: column 1 then row 1 -->
+  <text x="190" y="50" text-anchor="middle" fill="#5c6b76" font-size="12.5">each row: row 0 or its complement</text>
+  <text x="494" y="50" text-anchor="middle" fill="#5c6b76" font-size="12.5">then the flips finish it</text>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="66" y="105">row 0</text><text x="66" y="161">row 1</text><text x="66" y="217">row 2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="76" y="80" width="40" height="40"/><rect x="120" y="80" width="40" height="40"/><rect x="164" y="80" width="40" height="40"/>
+    <rect x="76" y="192" width="40" height="40"/><rect x="120" y="192" width="40" height="40"/><rect x="164" y="192" width="40" height="40"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="76" y="136" width="40" height="40"/><rect x="120" y="136" width="40" height="40"/><rect x="164" y="136" width="40" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="96" y="105">0</text><text x="140" y="105">1</text><text x="184" y="105">0</text>
+    <text x="96" y="161">1</text><text x="140" y="161">0</text><text x="184" y="161">1</text>
+    <text x="96" y="217">0</text><text x="140" y="217">1</text><text x="184" y="217">0</text>
+  </g>
+  <g text-anchor="start" font-size="12.5">
+    <text x="216" y="105" fill="#5c6b76">= row 0 (reference)</text>
+    <text x="216" y="161" fill="#4169E1" font-weight="600">= bitwise complement</text>
+    <text x="216" y="217" fill="#5c6b76">= row 0</text>
+  </g>
+  <text x="190" y="252" text-anchor="middle" fill="#1a2026" font-size="12.5">every row matches &#8212; the check passes</text>
+  <!-- finish: flip column 1 (the 1s of row 0), then flip the all-one row -->
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="356" y="72" width="24" height="24"/><rect x="382" y="72" width="24" height="24"/><rect x="408" y="72" width="24" height="24"/>
+    <rect x="356" y="98" width="24" height="24"/><rect x="382" y="98" width="24" height="24"/><rect x="408" y="98" width="24" height="24"/>
+    <rect x="356" y="124" width="24" height="24"/><rect x="382" y="124" width="24" height="24"/><rect x="408" y="124" width="24" height="24"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12">
+    <text x="368" y="88">0</text><text x="394" y="88">1</text><text x="420" y="88">0</text>
+    <text x="368" y="114">1</text><text x="394" y="114">0</text><text x="420" y="114">1</text>
+    <text x="368" y="140">0</text><text x="394" y="140">1</text><text x="420" y="140">0</text>
+  </g>
+  <rect x="381" y="71" width="26" height="78" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <line x1="394" y1="152" x2="394" y2="164" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="404" y="163" fill="#4169E1" font-size="12.5" font-weight="600">flip column 1</text>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="356" y="170" width="24" height="24"/><rect x="382" y="170" width="24" height="24"/><rect x="408" y="170" width="24" height="24"/>
+    <rect x="356" y="222" width="24" height="24"/><rect x="382" y="222" width="24" height="24"/><rect x="408" y="222" width="24" height="24"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <rect x="356" y="196" width="24" height="24"/><rect x="382" y="196" width="24" height="24"/><rect x="408" y="196" width="24" height="24"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12">
+    <text x="368" y="186">0</text><text x="394" y="186">0</text><text x="420" y="186">0</text>
+    <text x="368" y="212">1</text><text x="394" y="212">1</text><text x="420" y="212">1</text>
+    <text x="368" y="238">0</text><text x="394" y="238">0</text><text x="420" y="238">0</text>
+  </g>
+  <rect x="355" y="195" width="78" height="26" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <line x1="394" y1="250" x2="394" y2="262" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="404" y="261" fill="#4169E1" font-size="12.5" font-weight="600">flip row 1</text>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="356" y="272" width="24" height="24"/><rect x="382" y="272" width="24" height="24"/><rect x="408" y="272" width="24" height="24"/>
+    <rect x="356" y="298" width="24" height="24"/><rect x="382" y="298" width="24" height="24"/><rect x="408" y="298" width="24" height="24"/>
+    <rect x="356" y="324" width="24" height="24"/><rect x="382" y="324" width="24" height="24"/><rect x="408" y="324" width="24" height="24"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12" fill="#9aa7b2">
+    <text x="368" y="288">0</text><text x="394" y="288">0</text><text x="420" y="288">0</text>
+    <text x="368" y="314">0</text><text x="394" y="314">0</text><text x="420" y="314">0</text>
+    <text x="368" y="340">0</text><text x="394" y="340">0</text><text x="420" y="340">0</text>
+  </g>
+  <text x="320" y="376" text-anchor="middle" fill="#1a2026" font-size="13">Row 1 is the bitwise complement of row 0 and row 2 equals row 0, so the check passes;</text>
+  <text x="320" y="394" text-anchor="middle" fill="#1a2026" font-size="13">flipping column 1 zeroes row 0, then flipping row 1 clears the grid &#8212; answer <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 448" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="448" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- s = ))()))  locked = 010100; cells 76x42 at x=62+88i; band rows y=150+34i; balance b maps to x = 360+120b -->
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="62" y="30" width="76" height="42"/><rect x="150" y="30" width="76" height="42"/>
+    <rect x="238" y="30" width="76" height="42"/><rect x="326" y="30" width="76" height="42"/>
+    <rect x="414" y="30" width="76" height="42"/><rect x="502" y="30" width="76" height="42"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="100" y="52" font-size="16" font-weight="600">)</text><text x="188" y="52" font-size="16" font-weight="600">)</text>
+    <text x="276" y="52" font-size="16" font-weight="600">(</text><text x="364" y="52" font-size="16" font-weight="600">)</text>
+    <text x="452" y="52" font-size="16" font-weight="600">)</text><text x="540" y="52" font-size="16" font-weight="600">)</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="100" y="65">free 0</text><text x="188" y="65">locked 1</text><text x="276" y="65">free 0</text>
+    <text x="364" y="65">locked 1</text><text x="452" y="65">free 0</text><text x="540" y="65">locked 1</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="100" y="90">i = 0</text><text x="188" y="90">i = 1</text><text x="276" y="90">i = 2</text>
+    <text x="364" y="90">i = 3</text><text x="452" y="90">i = 4</text><text x="540" y="90">i = 5</text>
+  </g>
+  <text x="60" y="124" fill="#5c6b76" font-size="12.5">reachable band [lo, hi] after each position</text>
+  <!-- balance axis gridlines -->
+  <g stroke="#9aa7b2" stroke-width="1" stroke-dasharray="3 4">
+    <line x1="240" y1="136" x2="240" y2="344"/>
+    <line x1="360" y1="136" x2="360" y2="344"/>
+    <line x1="480" y1="136" x2="480" y2="344"/>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="215" y="155">i = 0</text><text x="215" y="189">i = 1</text><text x="215" y="223">i = 2</text>
+    <text x="215" y="257">i = 3</text><text x="215" y="291">i = 4</text><text x="215" y="325">i = 5</text>
+  </g>
+  <!-- clamp stubs: raw lo would fall to -1, dashed arrow pulls it back to 0 -->
+  <g stroke="#9aa7b2" stroke-width="2" stroke-dasharray="4 3" fill="none">
+    <path d="M 240 150 H 346" marker-end="url(#arrowM)"/>
+    <path d="M 240 184 H 346" marker-end="url(#arrowM)"/>
+    <path d="M 240 218 H 346" marker-end="url(#arrowM)"/>
+    <path d="M 240 252 H 346" marker-end="url(#arrowM)"/>
+    <path d="M 240 286 H 346" marker-end="url(#arrowM)"/>
+    <path d="M 240 320 H 346" marker-end="url(#arrowM)"/>
+  </g>
+  <!-- bands: [0,1] rows are bars from 0 to 1, [0,0] rows are dots on 0 -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5">
+    <rect x="360" y="141" width="120" height="18"/>
+    <circle cx="360" cy="184" r="8"/>
+    <rect x="360" y="209" width="120" height="18"/>
+    <circle cx="360" cy="252" r="8"/>
+    <rect x="360" y="277" width="120" height="18"/>
+    <circle cx="360" cy="320" r="8"/>
+  </g>
+  <text x="376" y="325" fill="#4169E1" font-size="12.5" font-weight="600">0 lies in [0, 0]</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="240" y="364" fill="#9aa7b2">&#8722;1</text>
+    <text x="360" y="364">0</text>
+    <text x="480" y="364">1</text>
+  </g>
+  <text x="240" y="384" text-anchor="middle" fill="#9aa7b2" font-size="11.5">lo clamps to 0</text>
+  <text x="420" y="384" text-anchor="middle" fill="#9aa7b2" font-size="11.5">balance</text>
+  <text x="320" y="414" text-anchor="middle" fill="#1a2026" font-size="13">Each step clamps lo back to 0 and hi never drops below zero; the band ends at [0, 0],</text>
+  <text x="320" y="432" text-anchor="middle" fill="#1a2026" font-size="13">so 0 stays reachable and n = 6 is even &#8212; ))())) with locked = 010100 can be made valid.</text>
+</svg>

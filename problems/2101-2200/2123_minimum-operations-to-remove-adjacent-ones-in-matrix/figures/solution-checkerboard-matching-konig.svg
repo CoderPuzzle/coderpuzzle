@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 324" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="324" fill="#ffffff"/>
+  <!-- grid = [[1,1,0],[0,1,1],[1,1,1]]; cells 58x58 at (60,64); matching (0,0)-(0,1), (2,0)-(2,1), (2,2)-(1,2); graph: even x=380, odd x=560 -->
+  <text x="146" y="50" text-anchor="middle" fill="#5c6b76" font-size="12.5">checkerboard the 1-cells</text>
+  <text x="470" y="50" text-anchor="middle" fill="#5c6b76" font-size="12.5">bipartite graph, matching = 3</text>
+  <g stroke="#42525e" stroke-width="1.3">
+    <rect x="60" y="64" width="58" height="58" fill="#dbe4fb"/>
+    <rect x="118" y="64" width="58" height="58" fill="#ffffff"/>
+    <rect x="176" y="64" width="58" height="58" fill="#f0f3f7"/>
+    <rect x="60" y="122" width="58" height="58" fill="#f0f3f7"/>
+    <rect x="118" y="122" width="58" height="58" fill="#dbe4fb"/>
+    <rect x="176" y="122" width="58" height="58" fill="#ffffff"/>
+    <rect x="60" y="180" width="58" height="58" fill="#dbe4fb"/>
+    <rect x="118" y="180" width="58" height="58" fill="#ffffff"/>
+    <rect x="176" y="180" width="58" height="58" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="89" y="93">1</text><text x="147" y="93">1</text><text x="205" y="93" fill="#9aa7b2">0</text>
+    <text x="89" y="151" fill="#9aa7b2">0</text><text x="147" y="151">1</text><text x="205" y="151">1</text>
+    <text x="89" y="209">1</text><text x="147" y="209">1</text><text x="205" y="209">1</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="89" y="107">even</text><text x="147" y="107">odd</text>
+    <text x="147" y="165">even</text><text x="205" y="165">odd</text>
+    <text x="89" y="223">even</text><text x="147" y="223">odd</text><text x="205" y="223">even</text>
+  </g>
+  <!-- matched adjacencies, drawn on the shared cell borders -->
+  <g stroke="#4169E1" stroke-width="4" stroke-linecap="round">
+    <line x1="118" y1="66" x2="118" y2="120"/>
+    <line x1="118" y1="182" x2="118" y2="236"/>
+    <line x1="178" y1="180" x2="232" y2="180"/>
+  </g>
+  <text x="146" y="258" text-anchor="middle" fill="#5c6b76" font-size="11.5">thick accent = matched pair</text>
+  <!-- thin = every adjacent pair, thick = the three matched pairs -->
+  <g stroke="#42525e" stroke-width="1.3">
+    <line x1="380" y1="88" x2="560" y2="114"/>
+    <line x1="380" y1="140" x2="560" y2="114"/>
+    <line x1="380" y1="140" x2="560" y2="166"/>
+    <line x1="380" y1="140" x2="560" y2="218"/>
+    <line x1="380" y1="192" x2="560" y2="218"/>
+    <line x1="380" y1="244" x2="560" y2="166"/>
+    <line x1="380" y1="244" x2="560" y2="218"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="3.5">
+    <line x1="380" y1="88" x2="560" y2="114"/>
+    <line x1="380" y1="192" x2="560" y2="218"/>
+    <line x1="380" y1="244" x2="560" y2="166"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#dbe4fb">
+    <circle cx="380" cy="88" r="17"/><circle cx="380" cy="140" r="17"/>
+    <circle cx="380" cy="192" r="17"/><circle cx="380" cy="244" r="17"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="560" cy="114" r="17"/><circle cx="560" cy="166" r="17"/><circle cx="560" cy="218" r="17"/>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="354" y="92">(0,0)</text><text x="354" y="144">(1,1)</text>
+    <text x="354" y="196">(2,0)</text><text x="354" y="248">(2,2)</text>
+  </g>
+  <g text-anchor="start" fill="#5c6b76" font-size="12">
+    <text x="586" y="118">(0,1)</text><text x="586" y="170">(1,2)</text><text x="586" y="222">(2,1)</text>
+  </g>
+  <text x="320" y="290" text-anchor="middle" fill="#1a2026" font-size="13">Only three odd vertices exist, so the matching peaks at 3; by K&#246;nig's theorem the</text>
+  <text x="320" y="308" text-anchor="middle" fill="#1a2026" font-size="13">vertex cover has 3 cells &#8212; (0,1), (1,2), (2,1) &#8212; so the answer is <tspan fill="#4169E1" font-weight="600">3 operations</tspan>.</text>
+</svg>
