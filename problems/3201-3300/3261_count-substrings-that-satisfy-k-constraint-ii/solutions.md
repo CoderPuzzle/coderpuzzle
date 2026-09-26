@@ -28,6 +28,8 @@ into a prefix sum array. Each query then reads off in constant time: if
 `m * (m + 1) / 2` for `m = r - l + 1`; otherwise it is the triangle over the
 clean prefix plus `pre[r + 1] - pre[next[l]]`.
 
+![The example sweep over s = "0001111" with k = 2 writing bound = [0,0,0,0,0,1,1] under the endpoints and per-endpoint counts 1, 2, 3, 4, 5, 5, 6: query [0, 6] has next[0] = 0, so its clean triangle prefix is empty and the answer is just the boundary part pre[7] - pre[0] = 26.](figures/solution-boundary-prefix-sum-query.svg)
+
 A single query can cover all `n * (n + 1) / 2 ≈ 5 * 10⁹` substrings when
 `n = 10⁵`, far beyond a signed 32-bit integer, so the prefix sums and every
 answer are computed in 64-bit integers (exact in JavaScript doubles too,

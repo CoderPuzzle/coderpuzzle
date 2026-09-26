@@ -15,6 +15,8 @@ Doing this for every row yields an optimal placement made only of top-three
 cells, so enumerating row triples against three candidates per row still
 reaches the maximum.
 
+![The example board with each row's top three candidate cells circled: the winning non-attacking rooks at (0,2), (1,3) and (2,1) are all circled and sum to 1 + 1 + 2 = 4, while row 1's third slot only ties at -3 and is never needed.](figures/solution-row-top-three-candidates.svg)
+
 The search then trims itself two more ways without losing exactness.
 Candidates are kept sorted by value, so inside a row triple the combos are
 tried in decreasing partial-sum order and a prefix is dropped the moment

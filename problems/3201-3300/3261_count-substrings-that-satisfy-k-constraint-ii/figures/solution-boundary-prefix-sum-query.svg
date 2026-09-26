@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 306" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="306" fill="#ffffff"/>
+  <!-- s = "0001111", k = 2; bound = [0,0,0,0,0,1,1]; counts j-bound[j]+1 = 1,2,3,4,5,5,6; query [0,6] = pre[7]-pre[0] = 26; cells 54 wide, pitch 58, x from 118 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="145" y="58">0</text><text x="203" y="58">1</text><text x="261" y="58">2</text><text x="319" y="58">3</text><text x="377" y="58">4</text><text x="435" y="58">5</text><text x="493" y="58">6</text>
+  </g>
+  <text x="110" y="89" text-anchor="end" fill="#5c6b76" font-size="12">s[j]</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="118" y="66" width="54" height="38"/><rect x="176" y="66" width="54" height="38"/><rect x="234" y="66" width="54" height="38"/><rect x="292" y="66" width="54" height="38"/><rect x="350" y="66" width="54" height="38"/><rect x="408" y="66" width="54" height="38"/><rect x="466" y="66" width="54" height="38"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="145" y="89">0</text><text x="203" y="89">0</text><text x="261" y="89">0</text><text x="319" y="89">1</text><text x="377" y="89">1</text><text x="435" y="89">1</text><text x="493" y="89">1</text>
+  </g>
+  <text x="110" y="141" text-anchor="end" fill="#5c6b76" font-size="12">bound[j]</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="118" y="122" width="54" height="30"/><rect x="176" y="122" width="54" height="30"/><rect x="234" y="122" width="54" height="30"/><rect x="292" y="122" width="54" height="30"/><rect x="350" y="122" width="54" height="30"/>
+  </g>
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="1.8">
+    <rect x="408" y="122" width="54" height="30"/><rect x="466" y="122" width="54" height="30"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="145" y="141" fill="#1a2026">0</text><text x="203" y="141" fill="#1a2026">0</text><text x="261" y="141" fill="#1a2026">0</text><text x="319" y="141" fill="#1a2026">0</text><text x="377" y="141" fill="#1a2026">0</text>
+    <text x="435" y="141" fill="#4169E1" font-weight="600">1</text><text x="493" y="141" fill="#4169E1" font-weight="600">1</text>
+  </g>
+  <text x="110" y="189" text-anchor="end" fill="#5c6b76" font-size="10.5">j-bound[j]+1</text>
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.4">
+    <rect x="118" y="170" width="54" height="30"/><rect x="176" y="170" width="54" height="30"/><rect x="234" y="170" width="54" height="30"/><rect x="292" y="170" width="54" height="30"/><rect x="350" y="170" width="54" height="30"/><rect x="408" y="170" width="54" height="30"/><rect x="466" y="170" width="54" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-weight="600">
+    <text x="145" y="189">1</text><text x="203" y="189">2</text><text x="261" y="189">3</text><text x="319" y="189">4</text><text x="377" y="189">5</text><text x="435" y="189">5</text><text x="493" y="189">6</text>
+  </g>
+  <!-- query [0, 6] bracket: next[0] = 0, so the clean triangle prefix is empty -->
+  <path d="M 118 214 L 118 222 L 520 222 L 520 214" fill="none" stroke="#42525e" stroke-width="1.5"/>
+  <text x="319" y="242" text-anchor="middle" fill="#1a2026" font-size="12.5">query [0, 6]: next[0] = 0 — clean prefix empty, boundary part = pre[7] - pre[0] = <tspan fill="#4169E1" font-weight="600">26</tspan></text>
+  <text x="320" y="274" text-anchor="middle" fill="#1a2026" font-size="13">bound never moves backward — the left pointer jumps 0 to 1 at j = 5; every endpoint j</text>
+  <text x="320" y="294" text-anchor="middle" fill="#1a2026" font-size="13">contributes j - bound[j] + 1: 1+2+3+4+5+5+6 = <tspan fill="#4169E1" font-weight="600">26</tspan> of 28; only s[0..5] and s[0..6] fail.</text>
+</svg>

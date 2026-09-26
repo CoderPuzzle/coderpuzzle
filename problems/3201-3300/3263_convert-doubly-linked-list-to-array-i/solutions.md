@@ -38,6 +38,8 @@ iteration consumes one input node, allocates its answer node, links
 `tail.next` forward and `fresh.prev` backward in the same breath, and slides
 both handles one position right.
 
+![Example 1's build shown mid-walk with 1, 2, 3, 4 appended: the fresh node for 4 gets tail.next and fresh.prev wired in the same step while the two handles sit on nodes 3 and 4, and the head's prev is the single null set by the first append.](figures/solution-single-pass-tail-append.svg)
+
 The first iteration is the only special case, and only because the head's
 `prev` is null: the branch is the same "was there a tail?" test, taken once.
 Every value lives in exactly one place — the node it becomes — so beyond the

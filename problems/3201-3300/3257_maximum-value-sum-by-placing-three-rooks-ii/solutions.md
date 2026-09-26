@@ -21,6 +21,8 @@ pigeonhole that trims each row to its top three cells. Trying the `3 × 3 ×
 3` combinations of the three lists' top-three columns and keeping those with
 pairwise-distinct columns is then exact.
 
+![The example board reduced around fixed middle row 1 to a top strip, the middle row itself and a bottom strip of per-column best values: the winning pick takes col 2 from top, col 3 from the middle row and col 1 from bottom — three pairwise-distinct columns inside the strips' top threes, summing to 1 + 1 + 2 = 4.](figures/solution-prefix-suffix-column-maxima.svg)
+
 Computing the two max tables costs one pass per column (`O(mn)`), and every
 middle row re-reads only its row and the two tables' top-three columns, so
 the whole sweep is linear in the board size. Sums of three values reach

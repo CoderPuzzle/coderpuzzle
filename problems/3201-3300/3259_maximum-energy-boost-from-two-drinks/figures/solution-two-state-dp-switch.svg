@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="296" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- A = [4,1,1], B = [1,1,3]; dpA = [4,5,6], dpB = [1,2,7]; cells 110x52 at x 170/300/430, rows y 72/176 -->
+  <text x="320" y="34" text-anchor="middle" fill="#5c6b76" font-size="11.5">small gray number in each cell's corner: that hour's boost for the row's drink</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="225" y="58">hour 0</text><text x="355" y="58">hour 1</text><text x="485" y="58">hour 2</text>
+  </g>
+  <text x="156" y="103" text-anchor="end" fill="#1a2026" font-weight="600">dpA</text>
+  <text x="156" y="207" text-anchor="end" fill="#1a2026" font-weight="600">dpB</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="170" y="72" width="110" height="52"/><rect x="300" y="72" width="110" height="52"/><rect x="170" y="176" width="110" height="52"/><rect x="300" y="176" width="110" height="52"/>
+  </g>
+  <rect x="430" y="176" width="110" height="52" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="225" y="103" fill="#1a2026">4</text><text x="355" y="103" fill="#1a2026">5</text><text x="485" y="103" fill="#1a2026">6</text>
+    <text x="225" y="207" fill="#1a2026">1</text><text x="355" y="207" fill="#1a2026">2</text>
+  </g>
+  <text x="485" y="209" text-anchor="middle" fill="#4169E1" font-weight="600" font-size="17">7</text>
+  <g fill="#5c6b76" font-size="10.5">
+    <text x="178" y="88">+4</text><text x="308" y="88">+1</text><text x="438" y="88">+1</text>
+    <text x="178" y="192">+1</text><text x="308" y="192">+1</text><text x="438" y="192">+3</text>
+  </g>
+  <!-- switch: dpB[2] reads dpA[0] two hours back, across the idled cleanse hour 1 -->
+  <circle cx="225" cy="127" r="2.5" fill="#4169E1"/>
+  <path d="M 225 130 Q 355 140 485 172" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="355" y="168" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">switch: 4 + 3 = 7</text>
+  <!-- staying: dpB[1] extends to dpB[2] -->
+  <path d="M 412 202 L 426 202" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrowG)"/>
+  <text x="320" y="262" text-anchor="middle" fill="#1a2026" font-size="13">dpB[2] = max(dpB[1], dpA[0]) + B[2] = max(2, 4) + 3 = 7 — staying would give 2 + 3 = 5,</text>
+  <text x="320" y="282" text-anchor="middle" fill="#1a2026" font-size="13">and the switch reads i - 2 because hour 1 idles as the cleanse. Answer: <tspan fill="#4169E1" font-weight="600">max(6, 7) = 7</tspan>.</text>
+</svg>

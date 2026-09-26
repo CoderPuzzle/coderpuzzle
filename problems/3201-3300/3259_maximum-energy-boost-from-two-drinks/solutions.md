@@ -19,6 +19,8 @@ through hour `i-1`. That gives the pair of recurrences
 `dpB[i] = max(dpB[i-1], dpA[i-2]) + energyDrinkB[i]`, and the answer is
 the larger of the two final values.
 
+![Example 2's two dp rows over hours 0..2 (dpA = 4, 5, 6; dpB = 1, 2, 7): the switch arc carries dpA[0] = 4 across the idled cleanse hour 1 into dpB[2] = 4 + 3 = 7, beating the staying option 2 + 3 = 5, so the answer is max(6, 7) = 7.](figures/solution-two-state-dp-switch.svg)
+
 Each recurrence reads only the current pair and the one-hour-older pair,
 so four rolling variables suffice instead of full arrays: seed the pair at
 hour 1 by drinking one drink twice, keep the previous pair alongside, and

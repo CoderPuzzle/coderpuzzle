@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="280" fill="#ffffff"/>
+  <!-- board = [[-3,1,1,1],[-3,1,-3,1],[-3,2,1,1]]; cells 70x42 at (80,72); winners (0,2),(1,3),(2,1) = 1+1+2 = 4 -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="80" y="72" width="70" height="42"/><rect x="150" y="72" width="70" height="42"/><rect x="220" y="72" width="70" height="42"/><rect x="290" y="72" width="70" height="42"/>
+    <rect x="80" y="114" width="70" height="42"/><rect x="150" y="114" width="70" height="42"/><rect x="220" y="114" width="70" height="42"/><rect x="290" y="114" width="70" height="42"/>
+    <rect x="80" y="156" width="70" height="42"/><rect x="150" y="156" width="70" height="42"/><rect x="220" y="156" width="70" height="42"/><rect x="290" y="156" width="70" height="42"/>
+  </g>
+  <!-- winning cells get the light accent fill -->
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.4">
+    <rect x="220" y="72" width="70" height="42"/><rect x="290" y="114" width="70" height="42"/><rect x="150" y="156" width="70" height="42"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="115" y="98" fill="#1a2026">-3</text><text x="185" y="98" fill="#1a2026">1</text><text x="255" y="98" fill="#4169E1" font-weight="600">1</text><text x="325" y="98" fill="#1a2026">1</text>
+    <text x="115" y="140" fill="#1a2026">-3</text><text x="185" y="140" fill="#1a2026">1</text><text x="255" y="140" fill="#1a2026">-3</text><text x="325" y="140" fill="#4169E1" font-weight="600">1</text>
+    <text x="115" y="182" fill="#1a2026">-3</text><text x="185" y="182" fill="#4169E1" font-weight="600">2</text><text x="255" y="182" fill="#1a2026">1</text><text x="325" y="182" fill="#1a2026">1</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="115" y="64">0</text><text x="185" y="64">1</text><text x="255" y="64">2</text><text x="325" y="64">3</text>
+    <text x="68" y="97" text-anchor="end">0</text><text x="68" y="139" text-anchor="end">1</text><text x="68" y="181" text-anchor="end">2</text>
+  </g>
+  <!-- top-three candidate circles: solid muted = kept, dashed = row 1's -3 tie, accent = a winning rook -->
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.5">
+    <ellipse cx="185" cy="93" rx="25" ry="16"/><ellipse cx="325" cy="93" rx="25" ry="16"/>
+    <ellipse cx="185" cy="135" rx="25" ry="16"/>
+    <ellipse cx="255" cy="177" rx="25" ry="16"/><ellipse cx="325" cy="177" rx="25" ry="16"/>
+  </g>
+  <ellipse cx="115" cy="135" rx="25" ry="16" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <ellipse cx="255" cy="93" rx="25" ry="16"/><ellipse cx="325" cy="135" rx="25" ry="16"/><ellipse cx="185" cy="177" rx="25" ry="16"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="505" y="90" fill="#5c6b76" font-size="12.5">winning placement</text>
+    <text x="505" y="116" fill="#1a2026">row 0 → col 2: 1</text>
+    <text x="505" y="140" fill="#1a2026">row 1 → col 3: 1</text>
+    <text x="505" y="164" fill="#1a2026">row 2 → col 1: 2</text>
+    <text x="505" y="190" fill="#5c6b76" font-size="12">columns 2, 3, 1 all distinct</text>
+    <text x="505" y="218" fill="#4169E1" font-weight="600" font-size="16">sum = 4</text>
+  </g>
+  <text x="320" y="246" text-anchor="middle" fill="#1a2026" font-size="13">Only each row's top three cells can matter — the winning rooks (0,2), (1,3), (2,1)</text>
+  <text x="320" y="266" text-anchor="middle" fill="#1a2026" font-size="13">are all circled: <tspan fill="#4169E1" font-weight="600">1 + 1 + 2 = 4</tspan>. Row 1's third slot ties at -3 (dashed) and is never used.</text>
+</svg>
