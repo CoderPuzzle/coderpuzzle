@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- s = "YazaAay", indices 0-6; cells 38x38, column pitch 42; rows at y=64 / 170 / 286; dark cell = offender (wall) within its own segment; accent row = wall-free "aAa" -->
+  <!-- recursion arrows -->
+  <g fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)">
+    <path d="M 291 103 C 250 132, 100 130, 100 164"/>
+    <path d="M 315 103 C 360 132, 442 130, 442 164"/>
+    <path d="M 484 214 C 484 248, 421 248, 421 280"/>
+  </g>
+  <!-- wall split point inside "aAay" (between indices 5 and 6) -->
+  <line x1="484" y1="166" x2="484" y2="212" stroke="#42525e" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- top-level row: only 'z' is dark (no 'Z' anywhere) -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="200" y="64" width="38" height="38" fill="#ffffff"/>
+    <rect x="242" y="64" width="38" height="38" fill="#ffffff"/>
+    <rect x="284" y="64" width="38" height="38" fill="#42525e"/>
+    <rect x="326" y="64" width="38" height="38" fill="#ffffff"/>
+    <rect x="368" y="64" width="38" height="38" fill="#ffffff"/>
+    <rect x="410" y="64" width="38" height="38" fill="#ffffff"/>
+    <rect x="452" y="64" width="38" height="38" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="16" font-weight="600">
+    <text x="219" y="89" fill="#1a2026">Y</text>
+    <text x="261" y="89" fill="#1a2026">a</text>
+    <text x="303" y="89" fill="#ffffff">z</text>
+    <text x="345" y="89" fill="#1a2026">a</text>
+    <text x="387" y="89" fill="#1a2026">A</text>
+    <text x="429" y="89" fill="#1a2026">a</text>
+    <text x="471" y="89" fill="#1a2026">y</text>
+  </g>
+  <text x="20" y="83" font-size="13" fill="#5c6b76">top level: s = "YazaAay"</text>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="504" y="76">only 'z' has no 'Z'</text>
+    <text x="504" y="92">so it is a wall</text>
+  </g>
+  <!-- left piece "Ya": both chars lack partners inside it -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="60" y="170" width="38" height="38" fill="#42525e"/>
+    <rect x="102" y="170" width="38" height="38" fill="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-size="16" font-weight="600">
+    <text x="79" y="195" fill="#ffffff">Y</text>
+    <text x="121" y="195" fill="#ffffff">a</text>
+  </g>
+  <g font-size="11" text-anchor="middle" fill="#9aa7b2">
+    <text x="79" y="222">0</text>
+    <text x="121" y="222">1</text>
+    <text x="379" y="222">3</text>
+    <text x="421" y="222">4</text>
+    <text x="463" y="222">5</text>
+    <text x="505" y="222">6</text>
+  </g>
+  <g font-size="12.5" text-anchor="middle" fill="#5c6b76">
+    <text x="100" y="246">"Ya": both chars lack</text>
+    <text x="100" y="262">partners here → ""</text>
+  </g>
+  <!-- right piece "aAay": 'y' has no 'Y' inside this segment -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="360" y="170" width="38" height="38" fill="#ffffff"/>
+    <rect x="402" y="170" width="38" height="38" fill="#ffffff"/>
+    <rect x="444" y="170" width="38" height="38" fill="#ffffff"/>
+    <rect x="486" y="170" width="38" height="38" fill="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-size="16" font-weight="600">
+    <text x="379" y="195" fill="#1a2026">a</text>
+    <text x="421" y="195" fill="#1a2026">A</text>
+    <text x="463" y="195" fill="#1a2026">a</text>
+    <text x="505" y="195" fill="#ffffff">y</text>
+  </g>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="534" y="184">no 'Y' inside</text>
+    <text x="534" y="200">this piece</text>
+  </g>
+  <!-- wall-free result "aAa", returned as-is -->
+  <g stroke="#4169E1" stroke-width="1.5">
+    <rect x="360" y="286" width="38" height="38" fill="#dbe4fb"/>
+    <rect x="402" y="286" width="38" height="38" fill="#dbe4fb"/>
+    <rect x="444" y="286" width="38" height="38" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="16" font-weight="600" fill="#1a2026">
+    <text x="379" y="311">a</text>
+    <text x="421" y="311">A</text>
+    <text x="463" y="311">a</text>
+  </g>
+  <text x="421" y="348" font-size="12.5" text-anchor="middle" fill="#5c6b76">no offenders — returned as-is</text>
+  <text x="320" y="396" font-size="13" text-anchor="middle" fill="#1a2026">'z' is the only top-level wall; inside "aAay", 'y' lacks 'Y' and splits again.</text>
+  <text x="320" y="416" font-size="13" text-anchor="middle" fill="#1a2026">The wall-free <tspan fill="#4169E1" font-weight="600">"aAa"</tspan> is entirely nice — the answer, length <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>

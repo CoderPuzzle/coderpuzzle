@@ -18,8 +18,10 @@ alphabet: each level removes at least one letter entirely, so at most
 26 splits can occur on any path; with `n <= 100` the whole search is
 tiny.
 
-On `"YazaAay"` the character 'z' (no 'Z') and 'y' (no 'Y') are
-offenders, splitting out `"aAa"` — nice, length 3. On `"Bb"` both
+![On "YazaAay" only 'z' is a top-level wall, and inside the right piece "aAay" the 'y' loses its 'Y' partner and becomes a wall too, leaving the wall-free "aAa" (length 3) as the answer.](figures/solution-case-partner-walls.svg)
+
+On `"YazaAay"` only the character 'z' (no 'Z' anywhere) is an
+offender, splitting out `"aAa"` — nice, length 3. On `"Bb"` both
 partners are present, so the whole string is the answer. A single
 character has no partner and yields the empty string.
 
