@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="356" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = abacaba: cells 64x44 at x = 60 + 76i, y = 220; t = bzaa: x = 174 + 76i, y = 40.
+       Greedy anchors: pre[1] = 1 (t[:1] = b ends at s[1]), suf[2] = 4 and suf[3] = 6
+       (t[2:] = aa starts at s[4]). Block [1, 2) feasible: pre[1] = 1 &lt; suf[2] = 4,
+       cost 2 - 1 = 1. -->
+  <text x="282" y="28" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">delete [1, 2)</text>
+  <text x="30" y="66" text-anchor="middle" fill="#5c6b76" font-size="12.5">t</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="174" y="40" width="64" height="44"/>
+    <rect x="250" y="40" width="64" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="326" y="40" width="64" height="44"/>
+    <rect x="402" y="40" width="64" height="44"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="206" y="64" font-weight="600" font-size="14" fill="#1a2026">b</text>
+    <text x="282" y="64" font-weight="600" font-size="14" fill="#1a2026">z</text>
+    <text x="358" y="64" font-weight="600" font-size="14" fill="#1a2026">a</text>
+    <text x="434" y="64" font-weight="600" font-size="14" fill="#1a2026">a</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="206" y="78">0</text><text x="282" y="78">1</text><text x="358" y="78">2</text><text x="434" y="78">3</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 206 88 L 168 216" marker-end="url(#arrow)"/>
+    <path d="M 358 88 L 396 216" marker-end="url(#arrow)"/>
+    <path d="M 434 88 L 548 216" marker-end="url(#arrow)"/>
+  </g>
+  <text x="150" y="160" text-anchor="end" fill="#4169E1" font-size="12.5">pre[1] = 1</text>
+  <text x="396" y="160" fill="#4169E1" font-size="12.5">suf[2] = 4</text>
+  <text x="514" y="160" fill="#4169E1" font-size="12.5">suf[3] = 6</text>
+  <text x="30" y="246" text-anchor="middle" fill="#5c6b76" font-size="12.5">s</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="60" y="220" width="64" height="44"/>
+    <rect x="136" y="220" width="64" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="212" y="220" width="64" height="44"/>
+    <rect x="288" y="220" width="64" height="44"/>
+    <rect x="364" y="220" width="64" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="440" y="220" width="64" height="44"/>
+    <rect x="516" y="220" width="64" height="44" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="92" y="244" font-weight="600" font-size="14" fill="#1a2026">a</text>
+    <text x="168" y="244" font-weight="600" font-size="14" fill="#1a2026">b</text>
+    <text x="244" y="244" font-weight="600" font-size="14" fill="#1a2026">a</text>
+    <text x="320" y="244" font-weight="600" font-size="14" fill="#1a2026">c</text>
+    <text x="396" y="244" font-weight="600" font-size="14" fill="#1a2026">a</text>
+    <text x="472" y="244" font-weight="600" font-size="14" fill="#1a2026">b</text>
+    <text x="548" y="244" font-weight="600" font-size="14" fill="#1a2026">a</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="92" y="258">0</text><text x="168" y="258">1</text><text x="244" y="258">2</text><text x="320" y="258">3</text>
+    <text x="396" y="258">4</text><text x="472" y="258">5</text><text x="548" y="258">6</text>
+  </g>
+  <text x="320" y="308" text-anchor="middle" fill="#1a2026" font-size="13">pre[1] = 1 &lt; suf[2] = 4 keeps t[:1] = b and t[2:] = aa inside s;</text>
+  <text x="320" y="327" text-anchor="middle" fill="#1a2026" font-size="13">deleting [1, 2) costs 2 &#8722; 1 = <tspan fill="#4169E1" font-weight="600">1</tspan>, the minimum score.</text>
+</svg>

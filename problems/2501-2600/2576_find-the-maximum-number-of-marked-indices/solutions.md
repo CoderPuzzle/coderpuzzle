@@ -8,4 +8,6 @@ Given that, the best strategy pairs the candidates _in order_: the smallest elem
 
 The implementation is a single two-pointer scan: `j` walks the upper half starting at index `(n + 1) // 2`, and `i` (starting at 0 in the lower half) advances only when `2 * nums[i] <= nums[j]`, recording one successful match. Starting `j` at the midpoint encodes the fact that matched large elements must be a subset of the upper half — if the answer had more than `n - (n+1)//2` pairs, two partners would have to come from the same half, which is impossible for the maximally matched count. The answer is `2 * i`, twice the number of matches.
 
+![On sorted nums [2,3,4,5] j starts at the midpoint index 2 and i = 0 pairs 2 with 4 since 2 × 2 = 4 ≤ 4, while 2 × 3 = 6 > 5 stops the scan at an answer of 2 × 1 = 2.](figures/solution-half-split-two-pointer.svg)
+
 **Complexity:** `O(n log n)` time, `O(n)` space for the sorted copy.

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums1 = [1,0,1]; segment tree after flip [1,1]:
+       root [0,2] sum 3, [0,1] sum 2, [2,2] sum 1, [0,0] sum 1,
+       covered leaf [1,1] sum 0 -&gt; 1 - 0 = 1 with lazy flag set.
+       Root sum 3 feeds the running total: 0 + 1 x 3 = 3. -->
+  <g stroke="#9aa7b2" stroke-width="1.5">
+    <path d="M 320 82 L 460 124" fill="none"/>
+    <path d="M 180 170 L 90 212" fill="none"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2">
+    <path d="M 320 82 L 180 124" fill="none"/>
+    <path d="M 180 170 L 270 212" fill="none"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="260" y="36" width="120" height="46"/>
+    <rect x="120" y="124" width="120" height="46"/>
+    <rect x="400" y="124" width="120" height="46"/>
+    <rect x="40" y="212" width="100" height="46"/>
+  </g>
+  <rect x="220" y="212" width="100" height="46" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle">
+    <text x="320" y="56" font-size="13" font-weight="600" fill="#1a2026">[0, 2]</text>
+    <text x="320" y="73" font-size="12" fill="#5c6b76">sum <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+    <text x="180" y="144" font-size="13" font-weight="600" fill="#1a2026">[0, 1]</text>
+    <text x="180" y="161" font-size="12" fill="#5c6b76">sum 2</text>
+    <text x="460" y="144" font-size="13" font-weight="600" fill="#1a2026">[2, 2]</text>
+    <text x="460" y="161" font-size="12" fill="#5c6b76">sum 1</text>
+    <text x="90" y="232" font-size="13" font-weight="600" fill="#1a2026">[0, 0]</text>
+    <text x="90" y="249" font-size="12" fill="#5c6b76">sum 1</text>
+    <text x="270" y="232" font-size="13" font-weight="600" fill="#4169E1">[1, 1]</text>
+    <text x="270" y="249" font-size="12" fill="#5c6b76">sum <tspan fill="#4169E1" font-weight="600">1</tspan> &#183; flag <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  </g>
+  <path d="M 346 235 L 326 235" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="354" y="231" fill="#5c6b76" font-size="12.5">covered by flip [1, 1]:</text>
+  <text x="354" y="249" fill="#5c6b76" font-size="12.5">sum 0 &#8594; 1 &#8722; 0 = 1, flag = 1</text>
+  <text x="423" y="48" text-anchor="middle" fill="#5c6b76" font-size="12">root sum</text>
+  <path d="M 384 59 L 462 59" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="470" y="36" width="140" height="46" stroke="#42525e" stroke-width="1.5" fill="#ffffff"/>
+  <text x="540" y="54" text-anchor="middle" fill="#5c6b76" font-size="11.5">total = sum(nums2)</text>
+  <text x="540" y="72" text-anchor="middle" fill="#1a2026" font-size="12.5">0 + 1 &#215; <tspan fill="#4169E1" font-weight="600">3</tspan> = 3</text>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">flip [1, 1] covers one leaf: its sum inverts to 1 &#8722; 0 = 1 and its flag sets;</text>
+  <text x="320" y="319" text-anchor="middle" fill="#1a2026" font-size="13">the root reports <tspan fill="#4169E1" font-weight="600">3</tspan> ones, so type 2 adds 1 &#215; 3 and type 3 outputs [3].</text>
+</svg>

@@ -29,4 +29,6 @@ remove-everything fallback collapse onto the same sentinels (`pre[0] = -1`,
 empty suffix, score `m`), so no separate edge cases survive; when `L = m`
 nothing needs removing and the answer is 0.
 
+![On s = abacaba and t = bzaa the greedy anchors are pre[1] = 1 with suf[2] = 4 and suf[3] = 6, so deletion block [1, 2) is feasible (pre[1] < suf[2]) at cost 2 − 1 = 1.](figures/solution-pre-suf-anchors.svg)
+
 **Complexity:** `O(n + m)` time, `O(m)` extra space.

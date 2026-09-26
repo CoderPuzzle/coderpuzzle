@@ -18,6 +18,8 @@ the left pointer advances; otherwise the right pointer retreats. Each
 window sweep is linear after the sort, doing in one pass what hint 2
 achieves with `n` searches.
 
+![On sorted nums [0,1,4,4,5,7] the sum-at-most-6 sweep banks hi − lo = 4 then 3 pairs while the sum-at-most-2 sweep banks 1, so 7 − 1 = 6 fair pairs.](figures/solution-two-window-sweeps.svg)
+
 The arithmetic width is where care lives: elements reach `±10⁹`, so pair
 sums touch `±2 · 10⁹`, overflowing 32-bit math before any comparison;
 answers reach `C(10⁵, 2) ≈ 5 · 10⁹`, beyond an `int` return as well. Java,

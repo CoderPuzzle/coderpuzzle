@@ -24,6 +24,8 @@ count is self-limiting by construction: each stored cell rises above zero
 only through an actually matching letter pair, so the diagonal lands at
 `n-i` and every column stays within the substring lengths automatically.
 
+![On the 4x4 lcp matrix the positive cells flood-fill into classes a = {0, 2} and b = {1, 3}, giving word abab whose dp[i][j] = dp[i+1][j+1] + 1 rebuild matches all 16 entries.](figures/solution-equality-classes-grid.svg)
+
 All phases are at most quadratic: grouping touches each ordered pair once,
 labeling is linear, and the rebuild does `O(1)` work per cell over
 `n <= 1000` — on the order of a million elementary steps, comfortably
