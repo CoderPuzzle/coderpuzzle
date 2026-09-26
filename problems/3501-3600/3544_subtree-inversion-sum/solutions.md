@@ -6,6 +6,8 @@ An inversion at node u multiplies every value in u's subtree by −1, so the fin
 
 The DP is computed bottom-up in reverse BFS order, so no recursion is needed for n up to 5 × 10^4. For each node, the children's tables are summed per (flip, d) pair. Then, for each (flip, d), the "don't invert" option takes sign s = ±1 from flip and moves to the child row at distance d + 1 (capped at k); when d ≥ k, the node may additionally invert itself, which uses the opposite-parity child row at distance 1 below the new inversion, and the better of the two options is kept. The answer is dp[0][0][k] — the root sees no recent inversion, so it is free to invert.
 
+![On example 1 (k = 2) the leaf tables need inversions at 3, 4 and 6 to fill their flip-1, d = 2 cells with 3, 7 and 5; those cells feed dp[1][1][1] = 18 and dp[2][1][1] = 13, and the root's inversion gives -4 + 18 + 13 = 27.](figures/solution-dp-flip-distance-tables.svg)
+
 Capping d at k is what bounds the table at 2 × (k + 1) entries per node and makes the whole DP O(n·k) even when k exceeds the tree height; k = 1 degenerates to "every node may invert". Since values can be negative, the code always compares against the don't-invert branch rather than assuming inversion helps.
 
 **Complexity:** `O(n · k)` time, `O(n · k)` space.

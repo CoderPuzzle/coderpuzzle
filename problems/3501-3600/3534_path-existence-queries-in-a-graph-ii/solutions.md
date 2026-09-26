@@ -13,6 +13,8 @@ range is contiguous, the greedy strategy of always jumping as far right as
 possible achieves the minimum number of hops to any later position in the
 same component.
 
+![On example 1 (nums = [1,8,3,4,2], maxDiff = 3) the value-sorted ranks carry reach = [3,3,3,3,4] and the only cut is the gap 8 - 4 = 4 before node 1; queries [0,3] and [2,4] map to rank pairs (0,3) and (1,2), each inside one reach-3 hop, so both answers are 1.](figures/solution-sorted-reach-jumps.svg)
+
 One sort plus two linear passes (a two-pointer scan for every `reach[i]`,
 and a running counter for component labels) set up the data. A sparse
 binary-lifting table then stores `up[k][i]`, the farthest position

@@ -20,6 +20,8 @@ range mark over its flatten's positions. A difference array per direction
 plus one prefix pass yields, for every position of each flatten, whether at
 least one occurrence covers it.
 
+![On example 1's 5×4 grid with pattern "abaca", the row-major occurrence at positions 9–13 covers cells (2,1)–(3,1) (wrapping rows) and the col-major occurrence at positions 0–4 covers column 0; the bands share exactly cell (3,0), so the answer is 1.](figures/solution-kmp-flatten-bands.svg)
+
 Finally each cell is counted once, checking both of its flatten positions:
 cell `(r, c)` counts exactly when row-major position `r*n + c` is
 horizontally covered and column-major position `c*m + r` is vertically

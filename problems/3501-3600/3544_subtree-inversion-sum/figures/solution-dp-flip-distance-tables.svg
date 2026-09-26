@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 460" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="460" fill="#ffffff"/>
+  <!-- example 1: edges 0-1,0-2,1-3,1-4,2-5,2-6; nums = [4,-8,-6,3,7,-2,5]; k = 2;
+       leaf dp rows (f0 d0,d1,d2 / f1 d0,d1,d2): 3:[3,3,3/-3,-3,3] 4:[7,7,7/-7,-7,7]
+       5:[-2,-2,2/2,2,2] 6:[5,5,5/-5,-5,5]; dp[1] f0=[2,2,2] f1=[-2,18,18];
+       dp[2] f0=[-3,1,3] f1=[3,13,13]; root = max(4+2+3, -4+18+13) = 27
+       via inversions {0,3,4,6}; leaf 5 stays un-inverted (f1 d2 keeps 2) -->
+       accented: tree nodes 0,3,4,6 + invert tags; leaf-table f1 d2 cells 3,7,5;
+       dp f1 d=1 cells 18 and 13 -->
+  <text x="40" y="26" fill="#5c6b76" font-size="13">example 1: nums = [4,-8,-6,3,7,-2,5], k = 2 &#8212; dp[u][flip][d] per subtree</text>
+  <text x="40" y="44" fill="#5c6b76" font-size="12.5">children enter at d + 1 (capped at k = 2); invert allowed only when d &#8805; k</text>
+  <!-- tree -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="170" y1="94" x2="95" y2="188"/>
+    <line x1="170" y1="94" x2="250" y2="188"/>
+    <line x1="95" y1="188" x2="50" y2="292"/>
+    <line x1="95" y1="188" x2="140" y2="292"/>
+    <line x1="250" y1="188" x2="205" y2="292"/>
+    <line x1="250" y1="188" x2="295" y2="292"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2.5" fill="#dbe4fb">
+    <circle cx="170" cy="94" r="17"/>
+    <circle cx="50" cy="292" r="17"/>
+    <circle cx="140" cy="292" r="17"/>
+    <circle cx="295" cy="292" r="17"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <circle cx="95" cy="188" r="17"/>
+    <circle cx="250" cy="188" r="17"/>
+    <circle cx="205" cy="292" r="17"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="170" y="99" fill="#4169E1">0</text><text x="95" y="193">1</text><text x="250" y="193">2</text>
+    <text x="50" y="297" fill="#4169E1">3</text><text x="140" y="297" fill="#4169E1">4</text>
+    <text x="205" y="297">5</text><text x="295" y="297" fill="#4169E1">6</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="170" y="71">4</text>
+    <text x="66" y="193" text-anchor="end">-8</text>
+    <text x="221" y="193" text-anchor="end">-6</text>
+    <text x="50" y="323">3</text><text x="140" y="323">7</text>
+    <text x="205" y="323">-2</text><text x="295" y="323">5</text>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="10" font-weight="600">
+    <text x="170" y="59">invert</text>
+    <text x="50" y="337">invert</text><text x="140" y="337">invert</text><text x="295" y="337">invert</text>
+  </g>
+  <!-- leaf tables -->
+  <text x="350" y="70" fill="#5c6b76" font-size="12.5">leaf tables</text>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026" font-size="11.5">
+    <text x="415" y="88">3</text><text x="457" y="88">4</text><text x="499" y="88">5</text><text x="541" y="88">6</text>
+  </g>
+  <rect x="394" y="94" width="168" height="102" fill="#ffffff" stroke="#42525e" stroke-width="1"/>
+  <g stroke="#9aa7b2" stroke-width="0.75">
+    <line x1="436" y1="94" x2="436" y2="196"/><line x1="478" y1="94" x2="478" y2="196"/><line x1="520" y1="94" x2="520" y2="196"/>
+    <line x1="394" y1="111" x2="562" y2="111"/><line x1="394" y1="128" x2="562" y2="128"/>
+    <line x1="394" y1="145" x2="562" y2="145"/><line x1="394" y1="162" x2="562" y2="162"/>
+    <line x1="394" y1="179" x2="562" y2="179"/>
+  </g>
+  <rect x="394" y="179" width="42" height="17" fill="#dbe4fb"/>
+  <rect x="436" y="179" width="42" height="17" fill="#dbe4fb"/>
+  <rect x="520" y="179" width="42" height="17" fill="#dbe4fb"/>
+  <g fill="#5c6b76" font-size="10.5">
+    <text x="350" y="106">f0 d0</text><text x="350" y="123">f0 d1</text><text x="350" y="140">f0 d2</text>
+    <text x="350" y="157">f1 d0</text><text x="350" y="174">f1 d1</text><text x="350" y="191">f1 d2</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5">
+    <text x="415" y="106">3</text><text x="457" y="106">7</text><text x="499" y="106">-2</text><text x="541" y="106">5</text>
+    <text x="415" y="123">3</text><text x="457" y="123">7</text><text x="499" y="123">-2</text><text x="541" y="123">5</text>
+    <text x="415" y="140">3</text><text x="457" y="140">7</text><text x="499" y="140">2</text><text x="541" y="140">5</text>
+    <text x="415" y="157">-3</text><text x="457" y="157">-7</text><text x="499" y="157">2</text><text x="541" y="157">-5</text>
+    <text x="415" y="174">-3</text><text x="457" y="174">-7</text><text x="499" y="174">2</text><text x="541" y="174">-5</text>
+    <text x="415" y="191" fill="#4169E1" font-weight="600">3</text><text x="457" y="191" fill="#4169E1" font-weight="600">7</text><text x="499" y="191">2</text><text x="541" y="191" fill="#4169E1" font-weight="600">5</text>
+  </g>
+  <!-- dp[1] table -->
+  <text x="350" y="218" fill="#5c6b76" font-size="12.5">dp[1] (children 3, 4)</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="415" y="236">d = 0</text><text x="457" y="236">d = 1</text><text x="499" y="236">d = 2</text>
+  </g>
+  <rect x="394" y="242" width="126" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1"/>
+  <line x1="394" y1="259" x2="520" y2="259" stroke="#9aa7b2" stroke-width="0.75"/>
+  <line x1="436" y1="242" x2="436" y2="276" stroke="#9aa7b2" stroke-width="0.75"/>
+  <line x1="478" y1="242" x2="478" y2="276" stroke="#9aa7b2" stroke-width="0.75"/>
+  <rect x="436" y="259" width="42" height="17" fill="#dbe4fb"/>
+  <g fill="#5c6b76" font-size="10.5">
+    <text x="350" y="254">f0</text><text x="350" y="271">f1</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5">
+    <text x="415" y="254">2</text><text x="457" y="254">2</text><text x="499" y="254">2</text>
+    <text x="415" y="271">-2</text><text x="457" y="271" fill="#4169E1" font-weight="600">18</text><text x="499" y="271">18</text>
+  </g>
+  <!-- dp[2] table -->
+  <text x="350" y="298" fill="#5c6b76" font-size="12.5">dp[2] (children 5, 6)</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="415" y="316">d = 0</text><text x="457" y="316">d = 1</text><text x="499" y="316">d = 2</text>
+  </g>
+  <rect x="394" y="322" width="126" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1"/>
+  <line x1="394" y1="339" x2="520" y2="339" stroke="#9aa7b2" stroke-width="0.75"/>
+  <line x1="436" y1="322" x2="436" y2="356" stroke="#9aa7b2" stroke-width="0.75"/>
+  <line x1="478" y1="322" x2="478" y2="356" stroke="#9aa7b2" stroke-width="0.75"/>
+  <rect x="436" y="339" width="42" height="17" fill="#dbe4fb"/>
+  <g fill="#5c6b76" font-size="10.5">
+    <text x="350" y="334">f0</text><text x="350" y="351">f1</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5">
+    <text x="415" y="334">-3</text><text x="457" y="334">1</text><text x="499" y="334">3</text>
+    <text x="415" y="351">3</text><text x="457" y="351" fill="#4169E1" font-weight="600">13</text><text x="499" y="351">13</text>
+  </g>
+  <!-- root -->
+  <text x="350" y="386" fill="#1a2026" font-size="12.5">root inverts: -4 + dp[1][1][1] + dp[2][1][1]</text>
+  <text x="350" y="404" fill="#1a2026" font-size="12.5">= -4 + <tspan fill="#4169E1" font-weight="600">18</tspan> + <tspan fill="#4169E1" font-weight="600">13</tspan> = <tspan fill="#4169E1" font-weight="600">27</tspan></text>
+  <!-- caption -->
+  <text x="340" y="428" text-anchor="middle" fill="#1a2026" font-size="13">only sign parity and a distance d capped at k are needed per subtree;</text>
+  <text x="340" y="446" text-anchor="middle" fill="#1a2026" font-size="13">inversions at 0, 3, 4, 6; leaves 3, 4, 6 lift the flip-1, d = 2 cells, so 18 + 13 - 4 = <tspan fill="#4169E1" font-weight="600">27</tspan>.</text>
+</svg>

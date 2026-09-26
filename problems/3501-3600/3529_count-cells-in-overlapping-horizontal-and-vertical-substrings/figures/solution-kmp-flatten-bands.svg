@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="356" fill="#ffffff"/>
+  <!-- grid = [[a,a,c,c],[b,b,b,c],[a,a,b,a],[c,a,a,c],[a,a,b,a]]; pattern "abaca";
+       cells 56x38 at (88,64); horizontal band = row-major pos 9-13, vertical band = col-major pos 0-4 -->
+  <text x="88" y="36" fill="#5c6b76" font-size="13">grid 5&#215;4, pattern = "abaca"</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="116" y="56">c0</text><text x="172" y="56">c1</text><text x="228" y="56">c2</text><text x="284" y="56">c3</text>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12">
+    <text x="74" y="83">r0</text><text x="74" y="121">r1</text><text x="74" y="159">r2</text><text x="74" y="197">r3</text><text x="74" y="235">r4</text>
+  </g>
+  <!-- plain cells -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1">
+    <rect x="144" y="64" width="56" height="38"/><rect x="200" y="64" width="56" height="38"/><rect x="256" y="64" width="56" height="38"/>
+    <rect x="88" y="102" width="56" height="38"/><rect x="144" y="102" width="56" height="38"/><rect x="200" y="102" width="56" height="38"/><rect x="256" y="102" width="56" height="38"/>
+    <rect x="88" y="178" width="56" height="38"/><rect x="256" y="178" width="56" height="38"/>
+    <rect x="144" y="216" width="56" height="38"/><rect x="200" y="216" width="56" height="38"/><rect x="256" y="216" width="56" height="38"/>
+  </g>
+  <!-- horizontal band cells (2,1)(2,2)(2,3)(3,1) -->
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1">
+    <rect x="144" y="140" width="56" height="38"/><rect x="200" y="140" width="56" height="38"/><rect x="256" y="140" width="56" height="38"/>
+    <rect x="144" y="178" width="56" height="38"/>
+  </g>
+  <!-- vertical band cells (0,0)(1,0)(2,0)(4,0) -->
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="2.5">
+    <rect x="88" y="64" width="56" height="38"/><rect x="88" y="102" width="56" height="38"/>
+    <rect x="88" y="140" width="56" height="38"/><rect x="88" y="216" width="56" height="38"/>
+  </g>
+  <!-- shared cell (3,0) -->
+  <rect x="88" y="178" width="56" height="38" fill="#4169E1" stroke="#4169E1" stroke-width="2.5"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="116" y="88">a</text><text x="172" y="88">a</text><text x="228" y="88">c</text><text x="284" y="88">c</text>
+    <text x="116" y="126">b</text><text x="172" y="126">b</text><text x="228" y="126">b</text><text x="284" y="126">c</text>
+    <text x="116" y="164">a</text><text x="172" y="164">a</text><text x="228" y="164">b</text><text x="284" y="164">a</text>
+    <text x="172" y="202">a</text><text x="228" y="202">a</text><text x="284" y="202">c</text>
+    <text x="116" y="240">a</text><text x="172" y="240">a</text><text x="228" y="240">b</text><text x="284" y="240">a</text>
+  </g>
+  <text x="116" y="202" text-anchor="middle" font-weight="600" fill="#ffffff">c</text>
+  <!-- row-major occurrence strip: pos 9-13 = a b a c a -->
+  <text x="352" y="52" fill="#5c6b76" font-size="12.5">row-major flatten, occurrence at 9-13</text>
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1">
+    <rect x="352" y="60" width="40" height="30"/><rect x="392" y="60" width="40" height="30"/>
+    <rect x="432" y="60" width="40" height="30"/><rect x="512" y="60" width="40" height="30"/>
+  </g>
+  <rect x="472" y="60" width="40" height="30" fill="#4169E1" stroke="#4169E1" stroke-width="1"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="372" y="80">a</text><text x="412" y="80">b</text><text x="452" y="80">a</text><text x="492" y="80" fill="#ffffff">c</text><text x="532" y="80">a</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="372" y="106">(2,1)</text><text x="412" y="106">(2,2)</text><text x="452" y="106">(2,3)</text><text x="492" y="106">(3,0)</text><text x="532" y="106">(3,1)</text>
+  </g>
+  <text x="352" y="126" fill="#5c6b76" font-size="11.5">wraps from row 2 into row 3</text>
+  <!-- col-major occurrence strip: pos 0-4 = a b a c a -->
+  <text x="352" y="150" fill="#5c6b76" font-size="12.5">col-major flatten, occurrence at 0-4</text>
+  <g fill="#ffffff" stroke="#4169E1" stroke-width="2.5">
+    <rect x="352" y="158" width="40" height="30"/><rect x="392" y="158" width="40" height="30"/>
+    <rect x="432" y="158" width="40" height="30"/><rect x="512" y="158" width="40" height="30"/>
+  </g>
+  <rect x="472" y="158" width="40" height="30" fill="#4169E1" stroke="#4169E1" stroke-width="2.5"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="372" y="178">a</text><text x="412" y="178">b</text><text x="452" y="178">a</text><text x="492" y="178" fill="#ffffff">c</text><text x="532" y="178">a</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="372" y="204">(0,0)</text><text x="412" y="204">(1,0)</text><text x="452" y="204">(2,0)</text><text x="492" y="204">(3,0)</text><text x="532" y="204">(4,0)</text>
+  </g>
+  <text x="352" y="224" fill="#5c6b76" font-size="11.5">reads straight down column 0</text>
+  <!-- legend -->
+  <g stroke-width="1">
+    <rect x="88" y="272" width="16" height="16" fill="#dbe4fb" stroke="#42525e"/>
+    <rect x="230" y="272" width="16" height="16" fill="#ffffff" stroke="#4169E1" stroke-width="2.5"/>
+    <rect x="372" y="272" width="16" height="16" fill="#4169E1" stroke="#4169E1"/>
+  </g>
+  <g fill="#1a2026" font-size="12">
+    <text x="110" y="285">horizontal band</text>
+    <text x="252" y="285">vertical band</text>
+    <text x="394" y="285">shared cell (3,0)</text>
+  </g>
+  <!-- caption -->
+  <text x="320" y="322" text-anchor="middle" fill="#1a2026" font-size="13">KMP plus a difference array on each flatten marks 5 horizontal and 5 vertical cells;</text>
+  <text x="320" y="340" text-anchor="middle" fill="#1a2026" font-size="13">the bands share exactly cell <tspan fill="#4169E1" font-weight="600">(3,0)</tspan>, so the answer is <tspan fill="#4169E1" font-weight="600">1</tspan>.</text>
+</svg>

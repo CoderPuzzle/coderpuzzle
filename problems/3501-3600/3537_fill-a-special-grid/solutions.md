@@ -12,6 +12,8 @@ level of doubling turns every row `g` of the level-`k` grid into a top row
 left half is written before the right half and the lower quadrants sit
 below the upper ones in the quadrant ordering.
 
+![On example 3 (n = 2) two doubling levels grow [0] into [[3,0],[2,1]] and then, rewriting each row g as [12+g | g] on top and [8+g | 4+g] below, into [[15,12,3,0],[14,13,2,1],[11,8,7,4],[10,9,6,5]] with quadrant offsets 0, 4, 8, 12.](figures/solution-quadrant-doubling-levels.svg)
+
 Each level copies every cell exactly once into the new rows with one
 constant offset, so building the full `4^n`-cell grid costs total work
 proportional to its size; the offsets stay below `2^(2n) - 1 ≤ 2^20 - 1`,

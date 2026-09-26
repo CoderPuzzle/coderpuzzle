@@ -22,6 +22,8 @@ everything and counts nothing, since zeroed positions never need an
 operation of their own. Equal neighbors thus merge into one operation
 (the `[1,2,1,2,1,2]` example), while valleys split them.
 
+![On example 2 (nums = [3,1,2,1]) the maximal windows free of smaller values are (3,[0,0]), (1,[1,3]) and (2,[2,2]); the sweep pushes 3, replaces it with 1, pushes 2, then pops 2 on the final matching 1, counting 3 groups — so the answer is 3.](figures/solution-stack-window-groups.svg)
+
 Each element is pushed and popped at most once, so the pass is linear
 despite the nested loop. The count fits easily in 32 bits — it is bounded
 by `n ≤ 10⁵`.
