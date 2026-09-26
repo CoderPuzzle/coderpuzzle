@@ -8,4 +8,6 @@ Root the tree at node 1 using an iterative BFS order (recursion would risk stack
 
 Every path with exactly one prime is counted exactly once, at its apex `x`. When combining an already-accumulated multiset of branches (totals `total0`, `total1`) with a new child's paths (`c0`, `c1`), the new pairs through `x` with exactly one prime total are: if `x` is prime, both halves must be single-prime paths so the shared prime is not doubled (`total1 * c1`); if `x` is composite, exactly one half carries the prime (`total0 * c1 + total1 * c0`). The totals include `x` itself, so paths ending at `x` are covered, and pairs of branches are counted at their meeting point rather than twice.
 
+![Rooting the example tree at 1 with primes 2, 3, 5 shaded, the dp0/dp1 counts accumulate upward to (1,3) at node 1 and (0,2) at node 2, and the four valid pairs meet at their apexes — 1 pair at node 2 and 3 at node 1, totalling 4.](figures/solution-tree-dp-prime-pairs.svg)
+
 **Complexity:** `O(n log log n)` time, `O(n)` space.

@@ -21,6 +21,8 @@ the final values be walked without touching the bits slot by slot: start
 from the OR of every present bit, then sweep the slots once and drop bit
 `b` as the sweep passes index `count[b]`.
 
+![For nums = [2,6,5,8] and k = 2 the bit pools hold 1, 2, 2 and 1 copies from bit 3 down to bit 0, and pouring them high bits first packs the two kept slots as 1111 = 15 and 0110 = 6, a maximum sum of squares of 15² + 6² = 261.](figures/solution-bit-pool-pour.svg)
+
 Every kept value stays below `2³⁰`, but its square reaches about
 `1.15 × 10¹⁸` — past signed 32-bit, and past JavaScript Number's exact
 integer range — so each square is reduced modulo `10⁹ + 7` while the total

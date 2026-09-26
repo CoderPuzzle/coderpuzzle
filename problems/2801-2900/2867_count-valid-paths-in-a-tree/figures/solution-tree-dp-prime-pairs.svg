@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 440" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- edges [[1,2],[1,3],[2,4],[2,5]] rooted at 1; primes 2,3,5 shaded; dp0/dp1 per node; apex panel: (2,4)=1x1, (1,2)(1,4)=1x2, (1,3)=1x1 -->
+  <g fill="#5c6b76" font-size="11.5">
+    <rect x="40" y="36" width="12" height="12" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+    <text x="58" y="46">prime label</text>
+    <rect x="140" y="36" width="12" height="12" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+    <text x="158" y="46">composite</text>
+  </g>
+  <text x="250" y="52" text-anchor="middle" fill="#5c6b76" font-size="11.5">root</text>
+  <!-- merge arrows child to parent -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <path d="M 66 304 L 109 224" marker-end="url(#arrow)"/>
+    <path d="M 178 304 L 132 224" marker-end="url(#arrow)"/>
+    <path d="M 137 188 L 233 100" marker-end="url(#arrow)"/>
+    <path d="M 363 188 L 267 100" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke-width="1.6">
+    <circle cx="250" cy="84" r="23" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="120" cy="204" r="23" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="380" cy="204" r="23" fill="#dbe4fb" stroke="#4169E1"/>
+    <circle cx="55" cy="324" r="23" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="190" cy="324" r="23" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="250" y="89">1</text><text x="120" y="209">2</text><text x="380" y="209">3</text>
+    <text x="55" y="329">4</text><text x="190" y="329">5</text>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="281" y="79">dp0 = 1</text><text x="281" y="95">dp1 = 3</text>
+    <text x="89" y="199" text-anchor="end">dp0 = 0</text><text x="89" y="215" text-anchor="end">dp1 = 2</text>
+    <text x="411" y="199">dp0 = 0</text><text x="411" y="215">dp1 = 1</text>
+    <text x="86" y="319">dp0 = 1</text><text x="86" y="335">dp1 = 0</text>
+    <text x="221" y="319">dp0 = 0</text><text x="221" y="335">dp1 = 1</text>
+  </g>
+  <!-- apex panel -->
+  <text x="490" y="70" fill="#5c6b76" font-size="12.5">pairs counted at their apex</text>
+  <circle cx="502" cy="104" r="11" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="502" y="108.5" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a2026">2</text>
+  <text x="521" y="101" font-size="13" font-weight="600" fill="#1a2026">(2,4)</text>
+  <text x="521" y="118" font-size="11.5" fill="#5c6b76">1 &#215; 1 = 1 pair</text>
+  <circle cx="502" cy="158" r="11" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="502" y="162.5" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a2026">1</text>
+  <text x="521" y="155" font-size="13" font-weight="600" fill="#1a2026">(1,2), (1,4)</text>
+  <text x="521" y="172" font-size="11.5" fill="#5c6b76">1 &#215; 2 = 2 pairs</text>
+  <circle cx="502" cy="212" r="11" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="502" y="216.5" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a2026">1</text>
+  <text x="521" y="209" font-size="13" font-weight="600" fill="#1a2026">(1,3)</text>
+  <text x="521" y="226" font-size="11.5" fill="#5c6b76">1 &#215; 1 = 1 pair</text>
+  <line x1="490" y1="244" x2="660" y2="244" stroke="#dbe4fb" stroke-width="1.5"/>
+  <text x="490" y="272" font-size="13" fill="#1a2026">1 + 2 + 1 = <tspan fill="#4169E1" font-weight="600">4</tspan> valid pairs</text>
+  <text x="340" y="408" text-anchor="middle" fill="#1a2026" font-size="13">dp0/dp1 merge up the tree; every path with exactly one prime is counted once,</text>
+  <text x="340" y="426" text-anchor="middle" fill="#1a2026" font-size="13">at its apex &#8212; (2,4) at node 2, (1,2), (1,4), (1,3) at node 1: total <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

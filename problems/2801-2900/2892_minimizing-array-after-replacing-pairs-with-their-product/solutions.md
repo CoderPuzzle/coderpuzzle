@@ -26,4 +26,6 @@ product is held in 64 bits (safely exact doubles in JavaScript, where every
 continued product is at most `k < 2^53` and anything rounded is already far
 above `k`).
 
+![For nums = [2,3,3,7,3,5] and k = 20 the minimum partition is the three blocks 2·3·3 = 18, 7 and 3·5 = 15, each backward scan (3 → 9 → 18, 7, 5 → 15) staying within 20, and the prefix dp row 0,1,1,1,2,3,3 ending at the minimum length 3.](figures/solution-block-partition-dp.svg)
+
 **Complexity:** `O(n log k)` time, `O(n)` space.

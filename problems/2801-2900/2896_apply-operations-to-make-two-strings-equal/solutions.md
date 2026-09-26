@@ -26,6 +26,8 @@ it. One linear pass over the mismatch list with these transitions yields
 the minimum total, and an even mismatch count guarantees the final state
 has nothing pending.
 
+![For s1 = 1100011000 versus s2 = 0101001010 with x = 2, the mismatches 0, 3, 5, 8 are paired as one arbitrary flip spanning 0 to 8 at cost x = 2 plus an adjacent-flip chain bridging 3 to 5 at cost 1 + 1 = 2, a minimum total of 4.](figures/solution-mismatch-pairing-arcs.svg)
+
 The cost never exceeds `n / 2` pairs at price `x`, i.e. `250 * 500 =
 125000`, so plain 32-bit integers (and JavaScript's `number`, exact far
 below 2⁵³) are safe throughout.

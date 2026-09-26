@@ -6,6 +6,8 @@ Root the tree at node 0 and compute every subtree's sum bottom-up. Whenever a fi
 
 The implementation is two linear passes. A stack-based DFS from the root records parents and an order with parents before children; then that order is processed in reverse, so every node's subtree is complete before its parent reads it. If `subtree[u] % k == 0`, one component is counted and the sum is discarded (the edge is cut); otherwise the sum is merged into the parent and the decision is deferred upward.
 
+![On example 1 with k = 6 the bottom-up subtree sums run 4 into node 1, whose total 12 satisfies 12 % 6 = 0 and is cut off as a component, and 4 into node 2, whose 5 merges into the root's 6, leaving the two components 12 and 6.](figures/solution-subtree-sum-cuts.svg)
+
 After the pass, the one remaining component containing the root is added to the count. Its sum is necessarily divisible by `k` — every cut removed a divisible piece, and the original total was divisible — which is why the root needs no explicit check. Values of zero and large sums up to `3 x 10^13` are handled naturally by Python integers.
 
 **Complexity:** `O(n)` time, `O(n)` space.
