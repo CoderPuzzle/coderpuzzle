@@ -19,6 +19,8 @@ so their cost is minimized by taking the cheapest positions. Both phases
 are single scans — one downward over the 31 value bits of `num1`, one
 upward over the same range filling zeros.
 
+![With num1 = 3 (0011) and num2 = 5 (0101) the budget is 2 set bits, and keeping num1's bits 1 and 0 — with no surplus left to place — makes x = 3 and x XOR num1 = 0.](figures/solution-bit-budget-rows.svg)
+
 The uniqueness clause in the statement is satisfied automatically: this
 greedy produces one specific `x`, and no other arrangement ties it (a tie
 would require two different subsets with equal xor, impossible since each

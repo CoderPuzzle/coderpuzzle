@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="336" fill="#ffffff"/>
+  <!-- price = [10,20,20], tastiness = [5,8,8], maxAmount = 20, maxCoupons = 1 -->
+  <!-- each grid shows dp[amount][coupons]; rows a = 20,15,10,5,0 top-down (step 5), columns c = 0,1; cells 30x22 -->
+  <!-- grids at x = 110, 290, 470 after fruits 0, 1, 2; −1 = unreachable -->
+  <g text-anchor="end" fill="#9aa7b2" font-size="11">
+    <text x="102" y="75">20</text><text x="102" y="97">15</text><text x="102" y="119">10</text>
+    <text x="102" y="141">5</text><text x="102" y="163">0</text>
+  </g>
+  <text x="102" y="50" text-anchor="end" fill="#9aa7b2" font-size="10.5">a</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="10.5">
+    <text x="125" y="50">c = 0</text><text x="155" y="50">c = 1</text>
+    <text x="305" y="50">c = 0</text><text x="335" y="50">c = 1</text>
+    <text x="485" y="50">c = 0</text><text x="515" y="50">c = 1</text>
+  </g>
+  <!-- grid 1: after fruit 0 -->
+  <g stroke="#9aa7b2" stroke-width="1" fill="#f0f3f7">
+    <rect x="110" y="60" width="30" height="22"/><rect x="140" y="60" width="30" height="22"/>
+    <rect x="110" y="82" width="30" height="22"/><rect x="140" y="82" width="30" height="22"/>
+    <rect x="140" y="104" width="30" height="22"/>
+    <rect x="110" y="126" width="30" height="22"/>
+    <rect x="140" y="148" width="30" height="22"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="110" y="104" width="30" height="22"/>
+    <rect x="140" y="126" width="30" height="22"/>
+    <rect x="110" y="148" width="30" height="22"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12.5">
+    <text x="125" y="119">5</text><text x="155" y="141">5</text><text x="125" y="163">0</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="125" y="75">−1</text><text x="155" y="75">−1</text><text x="125" y="97">−1</text><text x="155" y="97">−1</text>
+    <text x="155" y="119">−1</text><text x="125" y="141">−1</text><text x="155" y="163">−1</text>
+  </g>
+  <text x="155" y="192" text-anchor="middle" fill="#1a2026" font-size="12.5">after fruit 0</text>
+  <!-- grid 2: after fruit 1 -->
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="290" y="60" width="30" height="22"/>
+    <rect x="290" y="104" width="30" height="22"/><rect x="320" y="104" width="30" height="22"/>
+    <rect x="320" y="126" width="30" height="22"/>
+    <rect x="290" y="148" width="30" height="22"/>
+  </g>
+  <rect x="320" y="60" width="30" height="22" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+  <g stroke="#9aa7b2" stroke-width="1" fill="#f0f3f7">
+    <rect x="290" y="82" width="30" height="22"/><rect x="320" y="82" width="30" height="22"/>
+    <rect x="290" y="126" width="30" height="22"/>
+    <rect x="320" y="148" width="30" height="22"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12.5">
+    <text x="305" y="75">8</text><text x="335" y="75" fill="#4169E1">13</text>
+    <text x="305" y="119">5</text><text x="335" y="119">8</text>
+    <text x="335" y="141">5</text><text x="305" y="163">0</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="305" y="97">−1</text><text x="335" y="97">−1</text>
+    <text x="305" y="141">−1</text><text x="335" y="163">−1</text>
+  </g>
+  <text x="335" y="192" text-anchor="middle" fill="#1a2026" font-size="12.5">after fruit 1</text>
+  <!-- grid 3: after fruit 2 (final; fruit 2 only ties existing cells) -->
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="470" y="60" width="30" height="22"/>
+    <rect x="470" y="104" width="30" height="22"/><rect x="500" y="104" width="30" height="22"/>
+    <rect x="500" y="126" width="30" height="22"/>
+    <rect x="470" y="148" width="30" height="22"/>
+  </g>
+  <rect x="500" y="60" width="30" height="22" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.2"/>
+  <g stroke="#9aa7b2" stroke-width="1" fill="#f0f3f7">
+    <rect x="470" y="82" width="30" height="22"/><rect x="500" y="82" width="30" height="22"/>
+    <rect x="470" y="126" width="30" height="22"/>
+    <rect x="500" y="148" width="30" height="22"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="12.5">
+    <text x="485" y="75">8</text><text x="515" y="75" fill="#4169E1">13</text>
+    <text x="485" y="119">5</text><text x="515" y="119">8</text>
+    <text x="515" y="141">5</text><text x="485" y="163">0</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="485" y="97">−1</text><text x="515" y="97">−1</text>
+    <text x="485" y="141">−1</text><text x="515" y="163">−1</text>
+  </g>
+  <text x="515" y="192" text-anchor="middle" fill="#1a2026" font-size="12.5">after fruit 2 — final</text>
+  <!-- fruit-by-fruit notes -->
+  <text x="70" y="220" fill="#1a2026" font-size="13">fruit 0 — price 10, tastiness 5: buy → (10, 0), coupon → (5, 1), both 5</text>
+  <text x="70" y="242" fill="#1a2026" font-size="13">fruit 1 — price 20, tastiness 8: coupon from (10, 0) reaches (20, 1) = 5 + 8 = <tspan fill="#4169E1" font-weight="600">13</tspan></text>
+  <text x="70" y="264" fill="#1a2026" font-size="13">fruit 2 — price 20, tastiness 8: every push ties an existing cell, so 13 stands</text>
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">Descending sweeps keep each fruit single-use; the best cell is (20, 1) = <tspan fill="#4169E1" font-weight="600">13</tspan>.</text>
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">Buy fruit 0 plain and fruit 1 with its coupon (10 + 10 = 20); skip fruit 2.</text>
+</svg>

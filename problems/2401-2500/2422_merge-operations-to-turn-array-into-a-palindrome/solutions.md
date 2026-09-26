@@ -23,6 +23,8 @@ which makes the greedy count provably minimal (hint 1's question — what it
 costs to equalize the outer pair — repeats identically on every inner
 layer).
 
+![On nums = [4, 3, 2, 1, 2, 3, 1] the sweep matches front 4 against back 1 + 3 = 4 and front 3 against back 2 + 1 = 3, leaving the lone middle 2, so exactly two merges — 7 − 5 = 2 operations — are needed.](figures/solution-two-pointer-block-sums.svg)
+
 Block sums never exceed `10⁵ · 10⁶ = 10¹¹`, beyond 32-bit range, so all
 four compiled languages carry them in 64-bit integers (`long long`,
 `long`, `int64`, `i64`); JavaScript's Number stays exact since `10¹¹ <

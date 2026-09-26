@@ -6,6 +6,8 @@ If the tree is cut into `k` equal-value components, each component must be worth
 
 Rooting the tree at node 0, one iterative DFS produces a visitation order whose reverse is a post-order, and a single backward sweep over it accumulates every subtree sum in `O(n)`. Divisors of `total` are enumerated by trial division up to `sqrt(total)`, each contributing both `d` and `total/d`. Candidates are then tried from the most components (`k` large, so deletions `k - 1` are maximized) down to one, returning the first that validates — since we want the maximum number of deleted edges, the first hit is optimal.
 
+![On nums = [6, 2, 2, 2, 6] the subtree sums are 18, 12, 2, 8, 6, and the bottom-up greedy cuts at v = 6 above nodes 1 and 4, giving pieces {0}, {1, 2, 3}, {4} and 3 − 1 = 2 deleted edges.](figures/solution-subtree-greedy-cuts.svg)
+
 Two practical guards keep the check honest. A candidate value smaller than the single largest node value is rejected immediately, because no component can absorb a node bigger than the target. And the acceptance test counts subtree sums divisible by `v` and demands the count equal `k` exactly — a count above `k` means the divisible nodes overlap within fewer than `k` realizable pieces, so that split does not exist.
 
 **Complexity:** `O(sqrt(S) + n·d(S))` time, `O(n)` space — with `S` the total node-value sum and `d(S)` its divisor count.

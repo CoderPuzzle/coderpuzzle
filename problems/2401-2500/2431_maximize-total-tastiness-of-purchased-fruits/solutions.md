@@ -19,6 +19,8 @@ states are skipped via the `-1` sentinel, which also handles `tastiness[i]
 = 0` fruits gracefully. At the end the answer is the largest entry in the
 table — the maximum tastiness over every affordable (amount, coupons) pair.
 
+![On price = [10, 20, 20], tastiness = [5, 8, 8] the dp[amount][coupons] table fills fruit by fruit to a best cell 13 at (20, 1): fruit 0 plain, fruit 1 on the coupon, fruit 2 skipped.](figures/solution-dp-grid-three-fruits.svg)
+
 The budget is at most 1000 and coupons at most 5, so the table has around
 6000 cells and each fruit visits every cell once: the whole method is tiny
 for the given limits.
