@@ -11,6 +11,8 @@ order — collect every positive balance as a `(distance, amount)` supply,
 sort it, and drain the deficit greedy-style, taking `min(amount,
 remaining)` from each nearest giver until the negative is covered.
 
+![For balance = [1, 2, −5, 2] the deficit 5 at index 2 drains nearest-first: the two distance-1 neighbors give 2 units each and index 0 at distance 2 gives the last unit, costing 2·1 + 2·1 + 1·2 = 6 moves.](figures/solution-distance-sorted-drain.svg)
+
 Two cases short-circuit the sweep. If nobody is negative, zero moves are
 needed; if the total balance is negative, the deficit exceeds the total
 supply and no sequence of transfers can help, so the answer is -1. When

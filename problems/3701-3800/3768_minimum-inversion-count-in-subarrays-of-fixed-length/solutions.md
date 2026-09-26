@@ -54,4 +54,6 @@ ends — equal neighbors are not inversions — and the accumulator widens to
 64 bits for the same reason as above: `k * (k - 1) / 2` outgrows 32 bits
 for windows past ~65535 elements.
 
+![Sliding nums = [3, 1, 2, 5, 4] with k = 3 from window [3, 1, 2] to [1, 2, 5]: the outgoing 3 has its two inversion arcs removed for −2 and the incoming 5 adds none for +0, dropping the count 2 − 2 + 0 = 0.](figures/solution-slide-inversion-delta.svg)
+
 **Complexity:** `O(n log n)` time, `O(n)` space.

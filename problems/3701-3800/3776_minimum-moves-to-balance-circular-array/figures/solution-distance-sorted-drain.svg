@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- balance = [1,2,-5,2]: sink i = 2 (deficit 5); supplies by circular distance (1,2) i=1, (1,2) i=3, (2,1) i=0; moves 2+2+2 = 6 -->
+  <g stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb">
+    <circle cx="168" cy="98" r="24"/>
+    <circle cx="250" cy="180" r="24"/>
+    <circle cx="86" cy="180" r="24"/>
+  </g>
+  <circle cx="168" cy="262" r="24" fill="#ffffff" stroke="#1a2026" stroke-width="2.25"/>
+  <g text-anchor="middle">
+    <text x="168" y="96" font-weight="600">+1</text>
+    <text x="168" y="110" font-size="11" fill="#5c6b76">i = 0</text>
+    <text x="250" y="178" font-weight="600">+2</text>
+    <text x="250" y="192" font-size="11" fill="#5c6b76">i = 3</text>
+    <text x="86" y="178" font-weight="600">+2</text>
+    <text x="86" y="192" font-size="11" fill="#5c6b76">i = 1</text>
+    <text x="168" y="260" font-weight="700">&#8722;5</text>
+    <text x="168" y="274" font-size="11" fill="#5c6b76">i = 2</text>
+  </g>
+  <g font-size="12.5" font-weight="600" fill="#4169E1">
+    <text x="168" y="64" text-anchor="middle">d = 2</text>
+    <text x="284" y="184">d = 1</text>
+    <text x="52" y="184" text-anchor="end">d = 1</text>
+  </g>
+  <text x="168" y="304" text-anchor="middle" fill="#5c6b76" font-size="12.5">deficit 5</text>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 105 199 L 149 243" marker-end="url(#arrow)"/>
+    <path d="M 231 199 L 189 243" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-size="11.5" font-weight="600" fill="#4169E1">
+    <text x="100" y="228">2u</text>
+    <text x="236" y="228">2u</text>
+  </g>
+  <text x="336" y="64" fill="#5c6b76" font-size="12.5">supply sorted by distance</text>
+  <g font-size="11.5" fill="#9aa7b2">
+    <text x="336" y="88">dist</text>
+    <text x="382" y="88">supply</text>
+    <text x="462" y="88">taken</text>
+    <text x="512" y="88">left</text>
+    <text x="558" y="88">moves</text>
+  </g>
+  <g stroke="#dbe4fb" stroke-width="1">
+    <line x1="330" y1="96" x2="614" y2="96"/>
+    <line x1="330" y1="120" x2="614" y2="120"/>
+    <line x1="330" y1="144" x2="614" y2="144"/>
+    <line x1="330" y1="166" x2="614" y2="166"/>
+  </g>
+  <g font-size="13" fill="#1a2026">
+    <text x="336" y="112">1</text>
+    <text x="382" y="112">2 (i = 1)</text>
+    <text x="462" y="112">2</text>
+    <text x="512" y="112">3</text>
+    <text x="558" y="112">2&#183;1 = 2</text>
+    <text x="336" y="136">1</text>
+    <text x="382" y="136">2 (i = 3)</text>
+    <text x="462" y="136">2</text>
+    <text x="512" y="136">1</text>
+    <text x="558" y="136">2&#183;1 = 2</text>
+    <text x="336" y="160">2</text>
+    <text x="382" y="160">1 (i = 0)</text>
+    <text x="462" y="160">1</text>
+    <text x="512" y="160">0</text>
+    <text x="558" y="160">1&#183;2 = 2</text>
+  </g>
+  <text x="336" y="190" fill="#1a2026" font-size="13" font-weight="600">drained in 2 + 2 + 2 = <tspan fill="#4169E1" font-weight="700">6</tspan> moves</text>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">the deficit drains nearest-first: 2 units from each distance-1 neighbor,</text>
+  <text x="320" y="348" text-anchor="middle" fill="#1a2026" font-size="13">then 1 unit from index 0 at distance 2 &#8212; 2&#183;1 + 2&#183;1 + 1&#183;2 = <tspan fill="#4169E1" font-weight="600">6</tspan> moves.</text>
+</svg>

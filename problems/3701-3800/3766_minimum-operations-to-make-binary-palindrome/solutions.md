@@ -53,4 +53,6 @@ b-bit head, so it is skipped; the boundary forms already own that ground.
 The answer is the smallest `|value - candidate|` among the survivors, with
 no preprocessing and no per-value probing.
 
+![For 12 = 1100 with b = 4, mirroring half 10 gives 1001 = 9 and half 11 gives 1111 = 15, each 3 steps away, half 01 is skipped for its leading zero, and the boundary forms 7 and 17 sit 5 away, so the answer is 3.](figures/solution-half-mirror-candidates.svg)
+
 **Complexity:** `O(n · b)` time, `O(1)` extra space beyond the output.

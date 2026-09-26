@@ -15,6 +15,8 @@ are positive, so Dijkstra's first settle is final, and the connected graph
 guarantees every node is reachable in both layers (layer 1 is entered from
 layer 0 through any edge).
 
+![On Example 1's path 0-1-2-3-4 the state graph has two layers, and crossing from (1, unspent) to (2, excluded) rides the 7-weight edge 1-2 free, so Dijkstra settles (4, excluded) at 2 + 0 + 7 + 4 = 13.](figures/solution-two-layer-exclusion.svg)
+
 Distances are sums of at most `n − 1` weights of `5 · 10⁴` each, so they
 reach `≈ 2.5 · 10⁹` — past 32-bit range, hence 64-bit accumulators
 (still far below `2⁵³`, so JavaScript numbers stay exact). Runtime is the

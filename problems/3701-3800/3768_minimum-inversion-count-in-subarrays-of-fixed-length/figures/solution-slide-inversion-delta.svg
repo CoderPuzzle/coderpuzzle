@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [3,1,2,5,4], k = 3; cells 84x40 at x = 100 + 104i; before row y=100, after row y=260 -->
+  <text x="48" y="36" font-weight="600" font-size="13.5" fill="#1a2026">window [3, 1, 2]</text>
+  <text x="592" y="36" text-anchor="end" font-weight="600" font-size="13.5" fill="#4169E1">count 2</text>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 142 96 Q 194 60 246 96" marker-end="url(#arrow)"/>
+    <path d="M 142 96 Q 246 30 350 96" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#4169E1">
+    <text x="194" y="52">+1</text>
+    <text x="246" y="36">+1</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="100" y="100" width="84" height="40"/>
+    <rect x="204" y="100" width="84" height="40"/>
+    <rect x="308" y="100" width="84" height="40"/>
+  </g>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="412" y="100" width="84" height="40"/>
+    <rect x="516" y="100" width="84" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="142" y="125">3</text>
+    <text x="246" y="125">1</text>
+    <text x="350" y="125">2</text>
+    <text x="454" y="125" fill="#9aa7b2">5</text>
+    <text x="558" y="125" fill="#9aa7b2">4</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="142" y="158">i = 0</text>
+    <text x="246" y="158">i = 1</text>
+    <text x="350" y="158">i = 2</text>
+    <text x="454" y="158">i = 3</text>
+    <text x="558" y="158">i = 4</text>
+  </g>
+  <path d="M 100 170 L 100 176 L 392 176 L 392 170" stroke="#42525e" stroke-width="1.5" fill="none"/>
+  <text x="246" y="194" text-anchor="middle" fill="#5c6b76" font-size="12.5">k = 3</text>
+  <text x="48" y="222" fill="#1a2026" font-size="13">remove 3 first: two smaller companions remain &#8594; <tspan fill="#4169E1" font-weight="600">&#8722;2</tspan></text>
+  <text x="48" y="244" fill="#1a2026" font-size="13">insert 5: no larger element inside &#8594; <tspan fill="#5c6b76" font-weight="600">+0</tspan></text>
+  <g stroke="#9aa7b2" stroke-width="1.5" fill="#f0f3f7">
+    <rect x="100" y="260" width="84" height="40"/>
+    <rect x="516" y="260" width="84" height="40"/>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="204" y="260" width="84" height="40"/>
+    <rect x="308" y="260" width="84" height="40"/>
+  </g>
+  <rect x="412" y="260" width="84" height="40" stroke="#4169E1" stroke-width="1.5" fill="#dbe4fb"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="142" y="285" fill="#9aa7b2">3</text>
+    <text x="246" y="285">1</text>
+    <text x="350" y="285">2</text>
+    <text x="454" y="285" fill="#4169E1">5</text>
+    <text x="558" y="285" fill="#9aa7b2">4</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="142" y="318">i = 0 &#183; out</text>
+    <text x="246" y="318">i = 1</text>
+    <text x="350" y="318">i = 2</text>
+    <text x="454" y="318" fill="#4169E1" font-weight="600">i = 3 &#183; in</text>
+    <text x="558" y="318">i = 4</text>
+  </g>
+  <path d="M 204 328 L 204 334 L 496 334 L 496 328" stroke="#42525e" stroke-width="1.5" fill="none"/>
+  <text x="350" y="352" text-anchor="middle" fill="#5c6b76" font-size="12.5">new window [1, 2, 5]</text>
+  <text x="320" y="378" text-anchor="middle" fill="#1a2026" font-size="13">count 2 &#8722; 2 + 0 = <tspan fill="#4169E1" font-weight="600">0</tspan>: [1, 2, 5] keeps no inversions,</text>
+  <text x="320" y="396" text-anchor="middle" fill="#1a2026" font-size="13">the minimum over all length-3 windows.</text>
+</svg>
