@@ -21,4 +21,6 @@ plus one settles the cell. Unreached cells keep their infinity sentinel,
 which maps to `-1`; the start seeds both structures with distance 1, and
 a single-cell grid is already at the answer.
 
+![Hand-simulating example 1, the row-major scan settles every cell's dis (finish 4); settling (3,3), rows[3]'s popped (2, col 0) leaves top (3, col 1) as the nearest still-live predecessor while cols[3] runs empty, so the accent path (0,0) → (3,0) → (3,1) → (3,3) visits 4 cells.](figures/solution-row-col-heap-dp.svg)
+
 **Complexity:** `O(m·n·log(m·n))` time, `O(m·n)` space.

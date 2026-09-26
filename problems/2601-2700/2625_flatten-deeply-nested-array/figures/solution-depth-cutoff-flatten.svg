@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="280" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowAccent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- example 2: arr = [1,2,3,[4,5,6],[7,8,[9,10,11],12],[13,14,15]], n = 1; input row y 50..124, result row y 164..222; depth chips mark each subarray's d; only d < 1 expands, [9,10,11] (d = 1) survives intact -->
+  <text x="40" y="36" font-size="12.5" fill="#5c6b76">input arr (top-level elements sit at depth 0)</text>
+  <text x="652" y="36" text-anchor="end" font-size="12.5" fill="#5c6b76">flatten only while d &lt; n, with <tspan fill="#4169E1" font-weight="600">n = 1</tspan></text>
+  <!-- input row -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="40" y="75" width="26" height="24" rx="5"/><rect x="72" y="75" width="26" height="24" rx="5"/><rect x="104" y="75" width="26" height="24" rx="5"/>
+    <rect x="138" y="50" width="114" height="74" rx="8"/>
+    <rect x="260" y="50" width="270" height="74" rx="8"/>
+    <rect x="538" y="50" width="114" height="74" rx="8"/>
+    <rect x="150" y="75" width="26" height="24" rx="5"/><rect x="182" y="75" width="26" height="24" rx="5"/><rect x="214" y="75" width="26" height="24" rx="5"/>
+    <rect x="272" y="75" width="26" height="24" rx="5"/><rect x="304" y="75" width="26" height="24" rx="5"/>
+    <rect x="496" y="75" width="26" height="24" rx="5"/>
+    <rect x="550" y="75" width="26" height="24" rx="5"/><rect x="582" y="75" width="26" height="24" rx="5"/><rect x="614" y="75" width="26" height="24" rx="5"/>
+  </g>
+  <rect x="338" y="60" width="150" height="54" rx="8" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="348" y="75" width="26" height="24" rx="5"/><rect x="380" y="75" width="26" height="24" rx="5"/><rect x="412" y="75" width="26" height="24" rx="5"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="53" y="91">1</text><text x="85" y="91">2</text><text x="117" y="91">3</text>
+    <text x="163" y="91">4</text><text x="195" y="91">5</text><text x="227" y="91">6</text>
+    <text x="285" y="91">7</text><text x="317" y="91">8</text>
+    <text x="361" y="91">9</text><text x="393" y="91">10</text><text x="425" y="91">11</text>
+    <text x="509" y="91">12</text>
+    <text x="563" y="91">13</text><text x="595" y="91">14</text><text x="627" y="91">15</text>
+  </g>
+  <!-- depth chips -->
+  <g>
+    <rect x="204" y="54" width="36" height="16" rx="4" fill="#dbe4fb"/><text x="222" y="66" text-anchor="middle" font-size="10.5" font-weight="600" fill="#4169E1">d = 0</text>
+    <rect x="490" y="54" width="36" height="16" rx="4" fill="#dbe4fb"/><text x="508" y="66" text-anchor="middle" font-size="10.5" font-weight="600" fill="#4169E1">d = 0</text>
+    <rect x="604" y="54" width="36" height="16" rx="4" fill="#dbe4fb"/><text x="622" y="66" text-anchor="middle" font-size="10.5" font-weight="600" fill="#4169E1">d = 0</text>
+    <rect x="444" y="64" width="36" height="16" rx="4" fill="#ffffff"/><text x="462" y="76" text-anchor="middle" font-size="10.5" font-weight="600" fill="#4169E1">d = 1</text>
+  </g>
+  <!-- expansion arrows -->
+  <g fill="none" stroke="#42525e" stroke-width="1.6">
+    <path d="M 190 124 C 198 142, 186 150, 182 160" marker-end="url(#arrow)"/>
+    <path d="M 296 124 C 288 142, 266 152, 263 160" marker-end="url(#arrow)"/>
+    <path d="M 588 124 C 578 142, 498 152, 492 160" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 413 114 C 413 142, 358 148, 352 167" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowAccent)"/>
+  <!-- result row -->
+  <text x="32" y="158" font-size="12" fill="#9aa7b2">result</text>
+  <rect x="32" y="164" width="514" height="58" rx="8" fill="none" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="40" y="176" width="26" height="24" rx="5"/><rect x="72" y="176" width="26" height="24" rx="5"/><rect x="104" y="176" width="26" height="24" rx="5"/>
+    <rect x="136" y="176" width="26" height="24" rx="5"/><rect x="168" y="176" width="26" height="24" rx="5"/><rect x="200" y="176" width="26" height="24" rx="5"/>
+    <rect x="232" y="176" width="26" height="24" rx="5"/><rect x="264" y="176" width="26" height="24" rx="5"/>
+    <rect x="414" y="176" width="26" height="24" rx="5"/>
+    <rect x="446" y="176" width="26" height="24" rx="5"/><rect x="478" y="176" width="26" height="24" rx="5"/><rect x="510" y="176" width="26" height="24" rx="5"/>
+  </g>
+  <rect x="296" y="172" width="110" height="40" rx="8" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="306" y="180" width="26" height="24" rx="5"/><rect x="338" y="180" width="26" height="24" rx="5"/><rect x="370" y="180" width="26" height="24" rx="5"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="53" y="192">1</text><text x="85" y="192">2</text><text x="117" y="192">3</text>
+    <text x="149" y="192">4</text><text x="181" y="192">5</text><text x="213" y="192">6</text>
+    <text x="245" y="192">7</text><text x="277" y="192">8</text>
+    <text x="319" y="197">9</text><text x="351" y="197">10</text><text x="383" y="197">11</text>
+    <text x="427" y="192">12</text>
+    <text x="459" y="192">13</text><text x="491" y="192">14</text><text x="523" y="192">15</text>
+  </g>
+  <text x="340" y="246" text-anchor="middle" font-size="13" fill="#1a2026"><tspan fill="#4169E1" font-weight="600">[9,10,11]</tspan> sits at depth 1 — not &lt; n = 1 — so it lands in the output intact.</text>
+  <text x="340" y="264" text-anchor="middle" font-size="13" fill="#1a2026">Depth-0 subarrays expand (0 &lt; 1); their scalars 4–8, 12, 13–15 spill out in order.</text>
+</svg>

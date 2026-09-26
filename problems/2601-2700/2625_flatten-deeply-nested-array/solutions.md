@@ -17,5 +17,7 @@ structural no-op, vanishes empty sub-arrays naturally when they qualify,
 and gives fresh copies of survivors' parents without disturbing the
 survivors themselves.
 
+![With n = 1 on example 2's arr, the depth-tagged nesting tree expands every depth-0 subarray — 4,5,6 / 7,8 / 12 / 13,14,15 spill into the result in order — while [9,10,11], itself at depth 1, survives intact.](figures/solution-depth-cutoff-flatten.svg)
+
 **Complexity:** `O(N)` time and space for `N` total nodes in the input
 tree.

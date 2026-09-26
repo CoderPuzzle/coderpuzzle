@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowAccent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- grid = [[3,4,2,1],[4,2,3,1],[2,1,0,0],[2,4,0,0]]; dis from the row-major lazy-heap scan; cells 84x52 at (56,60); answer path (0,0)->(3,0)->(3,1)->(3,3); settling (3,3): rows[3] pops (2,col 0), top (3,col 1), cols[3] empty -->
+  <g fill="#5c6b76" font-size="11.5" text-anchor="middle">
+    <text x="98" y="52">j = 0</text><text x="182" y="52">j = 1</text>
+    <text x="266" y="52">j = 2</text><text x="350" y="52">j = 3</text>
+  </g>
+  <!-- grid cells: value over settled dis; accented = answer path -->
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="140" y="60" width="84" height="52"/><rect x="224" y="60" width="84" height="52"/><rect x="308" y="60" width="84" height="52"/>
+    <rect x="56" y="112" width="84" height="52"/><rect x="140" y="112" width="84" height="52"/><rect x="224" y="112" width="84" height="52"/><rect x="308" y="112" width="84" height="52"/>
+    <rect x="56" y="164" width="84" height="52"/><rect x="140" y="164" width="84" height="52"/><rect x="224" y="164" width="84" height="52"/><rect x="308" y="164" width="84" height="52"/>
+    <rect x="56" y="216" width="84" height="52"/><rect x="140" y="216" width="84" height="52"/><rect x="224" y="216" width="84" height="52"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="#dbe4fb">
+    <rect x="56" y="60" width="84" height="52"/>
+    <rect x="56" y="216" width="84" height="52"/>
+    <rect x="140" y="216" width="84" height="52"/>
+    <rect x="308" y="216" width="84" height="52"/>
+  </g>
+  <g text-anchor="middle">
+    <g fill="#5c6b76" font-size="12">
+      <text x="98" y="79">3</text><text x="182" y="79">4</text><text x="266" y="79">2</text><text x="350" y="79">1</text>
+      <text x="98" y="131">4</text><text x="182" y="131">2</text><text x="266" y="131">3</text><text x="350" y="131">1</text>
+      <text x="98" y="183">2</text><text x="182" y="183">1</text><text x="266" y="183">0</text><text x="350" y="183">0</text>
+      <text x="98" y="235">2</text><text x="182" y="235">4</text><text x="266" y="235">0</text><text x="350" y="235">0</text>
+    </g>
+    <g font-size="15" font-weight="600" fill="#1a2026">
+      <text x="182" y="102">2</text><text x="266" y="102">2</text><text x="350" y="102">2</text>
+      <text x="98" y="154">2</text><text x="182" y="154">3</text><text x="266" y="154">3</text><text x="350" y="154">3</text>
+      <text x="98" y="206">2</text><text x="182" y="206">3</text><text x="266" y="206">3</text><text x="350" y="206">4</text>
+      <text x="266" y="258">3</text>
+    </g>
+    <g font-size="15" font-weight="600" fill="#4169E1">
+      <text x="98" y="102">1</text>
+      <text x="98" y="258">2</text><text x="182" y="258">3</text><text x="350" y="258">4</text>
+    </g>
+  </g>
+  <!-- answer path arrows -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 56 86 L 36 86 L 36 242 L 51 242" marker-end="url(#arrowAccent)"/>
+    <path d="M 98 268 L 98 282 L 182 282 L 182 272" marker-end="url(#arrowAccent)"/>
+    <path d="M 204 268 Q 266 318 344 273" marker-end="url(#arrowAccent)"/>
+  </g>
+  <text x="266" y="314" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">rows[3] top (3, col 1): grid 4 still reaches col 3</text>
+  <!-- right panel: settling the last cell -->
+  <text x="440" y="76" font-size="13" font-weight="600" fill="#1a2026">settling (3,3), the last cell:</text>
+  <rect x="440" y="88" width="220" height="66" rx="8" fill="#f0f3f7"/>
+  <text x="452" y="108" font-size="12" fill="#5c6b76">rows[3] after lazy pops</text>
+  <text x="452" y="126" font-size="12" fill="#5c6b76">popped (2, col 0): 0 + 2 &lt; 3</text>
+  <text x="452" y="144" font-size="12.5" font-weight="600" fill="#4169E1">top = (3, col 1), cell (3,1)</text>
+  <rect x="440" y="166" width="220" height="50" rx="8" fill="#f0f3f7"/>
+  <text x="452" y="186" font-size="12" fill="#5c6b76">cols[3] after lazy pops</text>
+  <text x="452" y="204" font-size="12.5" fill="#1a2026">every entry exhausted, empty</text>
+  <text x="440" y="244" font-size="14.5" font-weight="600" fill="#1a2026">dis[3][3] = 3 + 1 = <tspan fill="#4169E1">4</tspan></text>
+  <text x="340" y="344" text-anchor="middle" font-size="13" fill="#1a2026">Cells show grid value over settled dis; heap tops are the nearest</text>
+  <text x="340" y="362" text-anchor="middle" font-size="13" fill="#1a2026">still-live predecessor — the accented answer path visits <tspan fill="#4169E1" font-weight="600">4</tspan> cells.</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <!-- example 1: three jobs sleeping 300/400/200 ms, pool limit n = 2; x = 110 + 0.9*t so t=300 -> 380, t=500 -> 560; job 3 refills slot 1 at t=300, pool resolves at t=500 -->
+  <text x="110" y="40" font-size="13" font-weight="600" fill="#1a2026">pool limit n = 2</text>
+  <text x="560" y="40" text-anchor="end" font-size="12.5" fill="#5c6b76">jobs sleep 300 / 400 / 200 ms</text>
+  <g fill="none" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="5 4">
+    <path d="M 380 62 L 380 162"/>
+    <path d="M 560 62 L 560 162"/>
+  </g>
+  <path d="M 470 62 L 470 162" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="100" y="90" text-anchor="end" font-size="12" fill="#5c6b76">slot 1</text>
+  <text x="100" y="142" text-anchor="end" font-size="12" fill="#5c6b76">slot 2</text>
+  <rect x="110" y="66" width="450" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="110" y="118" width="450" height="40" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="110" y="72" width="270" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="380" y="72" width="180" height="28" fill="#4169E1"/>
+  <rect x="110" y="124" width="360" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <rect x="470" y="124" width="90" height="28" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <g text-anchor="middle">
+    <text x="245" y="90" font-size="12.5" fill="#1a2026">job 1 · 300 ms</text>
+    <text x="470" y="90" font-size="12.5" font-weight="600" fill="#ffffff">job 3 · 200 ms</text>
+    <text x="290" y="142" font-size="12.5" fill="#1a2026">job 2 · 400 ms</text>
+    <text x="515" y="142" font-size="11.5" fill="#9aa7b2">idle</text>
+  </g>
+  <!-- time axis -->
+  <path d="M 110 168 L 560 168" stroke="#42525e" stroke-width="1.2"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <path d="M 110 168 L 110 174"/><path d="M 200 168 L 200 174"/><path d="M 290 168 L 290 174"/>
+    <path d="M 380 168 L 380 174"/><path d="M 470 168 L 470 174"/><path d="M 560 168 L 560 174"/>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#5c6b76">
+    <text x="110" y="190">0</text><text x="200" y="190">100</text><text x="290" y="190">200</text>
+    <text x="380" y="190">300</text><text x="470" y="190">400</text><text x="560" y="190">500</text>
+  </g>
+  <text x="584" y="190" font-size="11.5" fill="#9aa7b2">t (ms)</text>
+  <!-- event notes -->
+  <text x="110" y="216" font-size="12.5" fill="#1a2026"><tspan fill="#4169E1" font-weight="600">t = 300</tspan> — job 1 resolves, job 3 starts in the freed slot instantly</text>
+  <text x="110" y="238" font-size="12.5" fill="#1a2026"><tspan fill="#9aa7b2" font-weight="600">t = 400</tspan> — job 2 resolves, nothing left to start, slot 2 sits idle</text>
+  <text x="110" y="260" font-size="12.5" fill="#1a2026"><tspan fill="#4169E1" font-weight="600">t = 500</tspan> — job 3 resolves, the pending count hits zero, the pool resolves</text>
+  <text x="340" y="292" text-anchor="middle" font-size="13" fill="#1a2026">Greedy FIFO: the moment lane 1 frees at <tspan fill="#4169E1" font-weight="600">t = 300</tspan>, job 3 (200 ms) takes</text>
+  <text x="340" y="310" text-anchor="middle" font-size="13" fill="#1a2026">the slot; the pool then drains and its promise resolves at <tspan fill="#4169E1" font-weight="600">t = 500</tspan>.</text>
+</svg>

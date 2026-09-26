@@ -12,6 +12,8 @@ against — then repeatedly asks `Object.getPrototypeOf` for the next link,
 returning true on the first match and false when the chain bottoms out at
 `null`.
 
+![For checkIfInstanceOf(new Date(), Date), one Object.getPrototypeOf step walks from the date instance to Date.prototype, the very first compare already matches, and the walk returns true — Object.prototype and null are never reached.](figures/solution-prototype-chain-walk.svg)
+
 The walk works unchanged for primitives because `Object.getPrototypeOf(5)`
 auto-boxes the value first, so the chain it starts from is
 `Number.prototype`, exactly matching Example 4's "it accesses the Number

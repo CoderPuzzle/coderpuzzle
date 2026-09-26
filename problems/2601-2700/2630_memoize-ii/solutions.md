@@ -13,6 +13,8 @@ twins therefore stay distinct — Example 2's fresh literals never hit — while
 the shared objects of Example 3 collapse onto one branch after their first
 call.
 
+![Replaying example 1's [[2,2],[2,2],[1,2]] grows the map-trie spine 2→2 to a parked result of 4, replays it on the second call without touching fn (calls stays 1), and opens a fresh level-0 branch 1→2 for the third call — each distinct tuple costs exactly one fn() call, two in total.](figures/solution-map-trie-spine.svg)
+
 The judged replay wraps `fn` in a counter before handing it to this memoizer,
 so each pass through the wrapper marks one genuine invocation and every row
 records the running total with its value. Because only an exact miss descends

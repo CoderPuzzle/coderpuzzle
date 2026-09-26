@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 392" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="392" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- checkIfInstanceOf(new Date(), Date): chain new Date() -> Date.prototype (first compare matches, return true); deeper links Object.prototype -> null never walked -->
+  <rect x="48" y="36" width="176" height="44" rx="8" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="136" y="63" text-anchor="middle" fill="#1a2026" font-weight="600">new Date()</text>
+  <rect x="48" y="126" width="176" height="44" rx="8" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="136" y="153" text-anchor="middle" fill="#1a2026" font-weight="600">Date.prototype</text>
+  <rect x="48" y="216" width="176" height="44" rx="8" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <text x="136" y="243" text-anchor="middle" fill="#9aa7b2">Object.prototype</text>
+  <rect x="91" y="300" width="90" height="32" rx="8" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <text x="136" y="321" text-anchor="middle" fill="#9aa7b2">null</text>
+  <g fill="none" stroke="#42525e" stroke-width="1.6">
+    <path d="M 136 80 L 136 121" marker-end="url(#arrow)"/>
+    <path d="M 136 170 L 136 211" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 136 260 L 136 295" fill="none" stroke="#9aa7b2" stroke-width="1.4" marker-end="url(#arrowMuted)"/>
+  <g font-size="12" fill="#5c6b76">
+    <text x="148" y="105">getPrototypeOf</text>
+    <text x="148" y="195">getPrototypeOf</text>
+  </g>
+  <text x="148" y="282" font-size="12" fill="#9aa7b2">getPrototypeOf</text>
+  <!-- per-link compares -->
+  <text x="268" y="60" font-size="12.5" fill="#1a2026">compare: Date.prototype === Date.prototype</text>
+  <text x="268" y="82" font-size="13.5" font-weight="600" fill="#4169E1">first link matches → return true</text>
+  <text x="268" y="150" font-size="12.5" fill="#9aa7b2">would compare: Object.prototype === Date.prototype</text>
+  <text x="268" y="172" font-size="12.5" fill="#9aa7b2">never reached — true already returned</text>
+  <text x="310" y="358" text-anchor="middle" font-size="13" fill="#1a2026">checkIfInstanceOf(new Date(), Date): the first chain link already is</text>
+  <text x="310" y="376" text-anchor="middle" font-size="13" fill="#1a2026">Date.prototype, so one getPrototypeOf step returns <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

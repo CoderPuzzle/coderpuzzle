@@ -13,6 +13,8 @@ initial fill and a settlement), no more than `n` promises can ever be
 pending, and index order of execution holds even when several promises
 settle at once: every refill walks the queue front to back.
 
+![With pool limit n = 2 on example 1, jobs 1 and 2 fill both slots at t = 0; when job 1 resolves at t = 300, job 3 (200 ms) starts in the freed slot the same instant, job 2 ends at t = 400 with nothing left, and the pool resolves at t = 500.](figures/solution-greedy-slot-refill.svg)
+
 Termination is decided inside `launch`: if nothing is running and nothing
 remains to start — which happens trivially for an empty input before any
 await — the aggregate promise resolves right there. The function handed
