@@ -12,6 +12,8 @@ are tried in ascending order, the finished permutations emerge already sorted
 in the lexicographical order the statement demands, so no post-sort of the
 output is needed.
 
+![On n = 4 the parity-pruned walk cuts every same-parity candidate (dashed marks: 1 refuses 3, 2 refuses 4, 3 refuses 1, 4 refuses 2), and its 8 leaves emerge in lexicographic order from [1,2,3,4] to [4,3,2,1].](figures/solution-parity-backtracking-tree.svg)
+
 The parity check is the walk's only pruning, and it fires early: the moment a
 branch would place two adjacent elements both odd or both even, that whole
 subtree — a large fraction of the remaining factorial — is never entered. The

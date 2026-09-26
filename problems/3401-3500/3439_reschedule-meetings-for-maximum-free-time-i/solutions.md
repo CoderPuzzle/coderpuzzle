@@ -18,6 +18,8 @@ fixed width `k + 1` slides over them once: add the entering gap, subtract the
 leaving one, keep the maximum. When `k = n` the window is the whole gap list
 and the loop body never runs.
 
+![On eventTime = 5 with meetings [1,2] and [3,5] the gaps are (1, 1, 0) and the sliding window of width k + 1 = 2 sums 1 + 1 = 2 then 1 + 0 = 1; the maximum 2 is realized by compacting meeting [1,2] against [3,5].](figures/solution-gap-window-compaction.svg)
+
 Every gap is non-negative and the gaps partition the time not spent in
 meetings, so every window sum is at most `eventTime <= 10⁹ < 2³¹` — 32-bit
 arithmetic is exact everywhere, and every value stays far below the `2⁵³`

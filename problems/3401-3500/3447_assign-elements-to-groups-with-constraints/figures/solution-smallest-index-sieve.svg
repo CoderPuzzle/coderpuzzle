@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 326" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="326" fill="#ffffff"/>
+  <!-- groups = [8,4,3,2,4], elements = [4,2]; best[] cells w56 gap6 from x = 120; accent fill = newly claimed multiple, -1 = unclaimed sentinel -->
+  <text x="28" y="30" fill="#5c6b76" font-size="12.5">best[] sieve over values 1..8, elements = [4,2]</text>
+  <!-- value headers -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="148" y="52">1</text><text x="210" y="52">2</text><text x="272" y="52">3</text>
+    <text x="334" y="52">4</text><text x="396" y="52">5</text><text x="458" y="52">6</text>
+    <text x="520" y="52">7</text><text x="582" y="52">8</text>
+  </g>
+  <!-- after element index 0 (value 4) -->
+  <text x="108" y="83" text-anchor="end" fill="#5c6b76" font-size="12.5">elements[0] = 4</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="120" y="60" width="56" height="34" fill="#ffffff"/>
+    <rect x="182" y="60" width="56" height="34" fill="#ffffff"/>
+    <rect x="244" y="60" width="56" height="34" fill="#ffffff"/>
+    <rect x="306" y="60" width="56" height="34" fill="#dbe4fb"/>
+    <rect x="368" y="60" width="56" height="34" fill="#ffffff"/>
+    <rect x="430" y="60" width="56" height="34" fill="#ffffff"/>
+    <rect x="492" y="60" width="56" height="34" fill="#ffffff"/>
+    <rect x="554" y="60" width="56" height="34" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="148" y="82" fill="#9aa7b2">-1</text><text x="210" y="82" fill="#9aa7b2">-1</text>
+    <text x="272" y="82" fill="#9aa7b2">-1</text><text x="334" y="82" fill="#1a2026" font-weight="600">0</text>
+    <text x="396" y="82" fill="#9aa7b2">-1</text><text x="458" y="82" fill="#9aa7b2">-1</text>
+    <text x="520" y="82" fill="#9aa7b2">-1</text><text x="582" y="82" fill="#1a2026" font-weight="600">0</text>
+  </g>
+  <!-- after element index 1 (value 2) -->
+  <text x="108" y="147" text-anchor="end" fill="#5c6b76" font-size="12.5">elements[1] = 2</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="120" y="124" width="56" height="34" fill="#ffffff"/>
+    <rect x="182" y="124" width="56" height="34" fill="#dbe4fb"/>
+    <rect x="244" y="124" width="56" height="34" fill="#ffffff"/>
+    <rect x="306" y="124" width="56" height="34" fill="#ffffff"/>
+    <rect x="368" y="124" width="56" height="34" fill="#ffffff"/>
+    <rect x="430" y="124" width="56" height="34" fill="#dbe4fb"/>
+    <rect x="492" y="124" width="56" height="34" fill="#ffffff"/>
+    <rect x="554" y="124" width="56" height="34" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="148" y="146" fill="#9aa7b2">-1</text><text x="210" y="146" fill="#1a2026" font-weight="600">1</text>
+    <text x="272" y="146" fill="#9aa7b2">-1</text><text x="334" y="146" fill="#5c6b76" font-weight="600">0</text>
+    <text x="396" y="146" fill="#9aa7b2">-1</text><text x="458" y="146" fill="#1a2026" font-weight="600">1</text>
+    <text x="520" y="146" fill="#9aa7b2">-1</text><text x="582" y="146" fill="#5c6b76" font-weight="600">0</text>
+  </g>
+  <!-- assigned lookup -->
+  <text x="120" y="196" fill="#1a2026" font-size="12.5">assigned[i] = best[groups[i]]:</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="120" y="204" width="62" height="44" fill="#ffffff"/>
+    <rect x="190" y="204" width="62" height="44" fill="#ffffff"/>
+    <rect x="260" y="204" width="62" height="44" fill="#f0f3f7" stroke-width="1.2"/>
+    <rect x="330" y="204" width="62" height="44" fill="#ffffff"/>
+    <rect x="400" y="204" width="62" height="44" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="151" y="222">8</text><text x="221" y="222">4</text><text x="291" y="222">3</text>
+    <text x="361" y="222">2</text><text x="431" y="222">4</text>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="151" y="240" fill="#1a2026">0</text><text x="221" y="240" fill="#1a2026">0</text>
+    <text x="291" y="240" fill="#9aa7b2">-1</text><text x="361" y="240" fill="#1a2026">1</text>
+    <text x="431" y="240" fill="#1a2026">0</text>
+  </g>
+  <text x="484" y="231" fill="#4169E1" font-size="13.5" font-weight="600">&#8594; [0, 0, -1, 1, 0]</text>
+  <text x="40" y="296" fill="#1a2026" font-size="13">Element index 0 claims 4 and 8 first, so index 1 can claim only the still-unclaimed</text>
+  <text x="40" y="314" fill="#1a2026" font-size="13">2 and 6; assigned[i] is <tspan fill="#4169E1" font-weight="600">one lookup</tspan> per group: [0, 0, -1, 1, 0].</text>
+</svg>

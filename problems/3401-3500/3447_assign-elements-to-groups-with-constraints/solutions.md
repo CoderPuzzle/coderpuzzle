@@ -16,6 +16,8 @@ earlier claimant. A repeated value is skipped after its first occurrence
 because it divides exactly the same multiples with a strictly larger index,
 so it can never win.
 
+![On groups = [8,4,3,2,4] with elements = [4,2] the sieve lets element 4 claim multiples 4 and 8 first, so element 2 claims only the still-unclaimed 2 and 6, and every assigned[i] is one lookup into best[]: [0, 0, -1, 1, 0].](figures/solution-smallest-index-sieve.svg)
+
 Once the table is filled, `assigned[i]` is simply `best[groups[i]]`, with
 the untouched `-1` entries doubling as the "no suitable element" answer.
 Sizes no element reached — 1 when no element equals 1, large primes with no

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- eventTime = 5, meetings [1,2] and [3,5]; strip x = 60 + 88t; gaps (g0, g1, g2) = (1, 1, 0); lookup = largest outside gap vs duration d = 1 of meeting [1,2] -->
+  <text x="28" y="30" fill="#5c6b76" font-size="12.5">eventTime = 5, meetings [1,2] and [3,5], gaps g = (1, 1, 0)</text>
+  <!-- original timeline -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="60" y="44" width="88" height="38" fill="#ffffff"/>
+    <rect x="148" y="44" width="88" height="38" fill="#dbe4fb"/>
+    <rect x="236" y="44" width="88" height="38" fill="#ffffff"/>
+    <rect x="324" y="44" width="176" height="38" fill="#dbe4fb"/>
+  </g>
+  <line x1="538" y1="62" x2="504" y2="62" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="546" y="66" fill="#9aa7b2" font-size="12.5">g2 = 0</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <text x="104" y="67">g0 = 1</text>
+    <text x="280" y="67">g1 = 1</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">
+    <text x="192" y="67">M0 d = 1</text>
+    <text x="412" y="67">M1 d = 2</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="60" y="100">0</text><text x="148" y="100">1</text><text x="236" y="100">2</text>
+    <text x="324" y="100">3</text><text x="412" y="100">4</text><text x="500" y="100">5</text>
+  </g>
+  <!-- outside-gap lookup for meeting [1,2] -->
+  <text x="246" y="126" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">flanking pair</text>
+  <path d="M 170 146 Q 246 118 322 146" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="162" y="171" text-anchor="end" fill="#9aa7b2" font-size="12.5">prefix[0] = &#8211;</text>
+  <text x="406" y="171" fill="#1a2026" font-size="12.5">suffix[2] = <tspan font-weight="600">0</tspan></text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="208" y="200">g0</text><text x="284" y="200">g1</text><text x="360" y="200">g2</text>
+  </g>
+  <g>
+    <rect x="170" y="150" width="76" height="34" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="246" y="150" width="76" height="34" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="322" y="150" width="76" height="34" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="208" y="172" fill="#1a2026">1</text>
+    <text x="284" y="172" fill="#1a2026">1</text>
+    <text x="360" y="172" fill="#9aa7b2">0</text>
+  </g>
+  <text x="284" y="220" text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">largest outside gap = max(&#8211;, 0) = <tspan fill="#4169E1">0 &lt; d = 1</tspan> &#8594; cannot relocate</text>
+  <path d="M 284 230 Q 235 244 172 250" fill="none" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#arrowA)"/>
+  <!-- meeting [1,2] slid flush left -->
+  <g stroke-width="1.5">
+    <rect x="60" y="252" width="176" height="38" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="236" y="252" width="88" height="38" fill="#dbe4fb" stroke="#42525e"/>
+    <rect x="324" y="252" width="176" height="38" fill="#dbe4fb" stroke="#42525e"/>
+  </g>
+  <text x="148" y="271" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">free [0, 2]</text>
+  <text x="148" y="286" text-anchor="middle" fill="#1a2026" font-size="12.5">= g0 + g1 = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <g text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">
+    <text x="280" y="275">M0 [2,3]</text>
+    <text x="412" y="275">M1 [3,5]</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="60" y="308">0</text><text x="148" y="308">1</text><text x="236" y="308">2</text>
+    <text x="324" y="308">3</text><text x="412" y="308">4</text><text x="500" y="308">5</text>
+  </g>
+  <text x="40" y="334" fill="#1a2026" font-size="13">No outside gap fits duration 1 (max(prefix[0], suffix[2]) = 0 &lt; 1), so meeting [1,2]</text>
+  <text x="40" y="352" fill="#1a2026" font-size="13">slides flush left; its emptied span g0 + g1 leaves one merged free block of <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

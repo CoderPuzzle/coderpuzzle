@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 670 392" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="670" height="392" fill="#ffffff"/>
+  <!-- backtracking tree for n = 4; leaf columns x = 55 + 80i; cut marks = same-parity candidate refused (after 1: x3, after 2: x4, after 3: x1, after 4: x2) -->
+  <text x="28" y="32" fill="#5c6b76" font-size="12.5">n = 4</text>
+  <!-- edges root -> depth 1 -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="335" y1="64" x2="95" y2="96"/><line x1="335" y1="64" x2="255" y2="96"/>
+    <line x1="335" y1="64" x2="415" y2="96"/><line x1="335" y1="64" x2="575" y2="96"/>
+    <line x1="95" y1="128" x2="55" y2="162"/><line x1="95" y1="128" x2="135" y2="162"/>
+    <line x1="255" y1="128" x2="215" y2="162"/><line x1="255" y1="128" x2="295" y2="162"/>
+    <line x1="415" y1="128" x2="375" y2="162"/><line x1="415" y1="128" x2="455" y2="162"/>
+    <line x1="575" y1="128" x2="535" y2="162"/><line x1="575" y1="128" x2="615" y2="162"/>
+    <line x1="55" y1="194" x2="55" y2="228"/><line x1="135" y1="194" x2="135" y2="228"/>
+    <line x1="215" y1="194" x2="215" y2="228"/><line x1="295" y1="194" x2="295" y2="228"/>
+    <line x1="375" y1="194" x2="375" y2="228"/><line x1="455" y1="194" x2="455" y2="228"/>
+    <line x1="535" y1="194" x2="535" y2="228"/><line x1="615" y1="194" x2="615" y2="228"/>
+    <line x1="55" y1="260" x2="55" y2="282"/><line x1="135" y1="260" x2="135" y2="282"/>
+    <line x1="215" y1="260" x2="215" y2="282"/><line x1="295" y1="260" x2="295" y2="282"/>
+    <line x1="375" y1="260" x2="375" y2="282"/><line x1="455" y1="260" x2="455" y2="282"/>
+    <line x1="535" y1="260" x2="535" y2="282"/><line x1="615" y1="260" x2="615" y2="282"/>
+  </g>
+  <!-- same-parity cut stubs off each depth-1 node -->
+  <g stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="3 3">
+    <line x1="95" y1="129" x2="95" y2="140"/><line x1="255" y1="129" x2="255" y2="140"/>
+    <line x1="415" y1="129" x2="415" y2="140"/><line x1="575" y1="129" x2="575" y2="140"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12" font-weight="600">
+    <text x="95" y="156">x3</text><text x="255" y="156">x4</text>
+    <text x="415" y="156">x1</text><text x="575" y="156">x2</text>
+  </g>
+  <!-- root -->
+  <circle cx="335" cy="46" r="18" fill="#4169E1"/>
+  <text x="335" y="51" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="600">&#8709;</text>
+  <!-- depth 1: first pick -->
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.6">
+    <circle cx="95" cy="112" r="16"/><circle cx="255" cy="112" r="16"/>
+    <circle cx="415" cy="112" r="16"/><circle cx="575" cy="112" r="16"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="14" font-weight="600">
+    <text x="95" y="117">1</text><text x="255" y="117">2</text>
+    <text x="415" y="117">3</text><text x="575" y="117">4</text>
+  </g>
+  <!-- depth 2: second pick -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="55" cy="178" r="16"/><circle cx="135" cy="178" r="16"/>
+    <circle cx="215" cy="178" r="16"/><circle cx="295" cy="178" r="16"/>
+    <circle cx="375" cy="178" r="16"/><circle cx="455" cy="178" r="16"/>
+    <circle cx="535" cy="178" r="16"/><circle cx="615" cy="178" r="16"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13.5">
+    <text x="55" y="183">2</text><text x="135" y="183">4</text>
+    <text x="215" y="183">1</text><text x="295" y="183">3</text>
+    <text x="375" y="183">2</text><text x="455" y="183">4</text>
+    <text x="535" y="183">1</text><text x="615" y="183">3</text>
+  </g>
+  <!-- depth 3: third pick -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="55" cy="244" r="16"/><circle cx="135" cy="244" r="16"/>
+    <circle cx="215" cy="244" r="16"/><circle cx="295" cy="244" r="16"/>
+    <circle cx="375" cy="244" r="16"/><circle cx="455" cy="244" r="16"/>
+    <circle cx="535" cy="244" r="16"/><circle cx="615" cy="244" r="16"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13.5">
+    <text x="55" y="249">3</text><text x="135" y="249">3</text>
+    <text x="215" y="249">4</text><text x="295" y="249">4</text>
+    <text x="375" y="249">1</text><text x="455" y="249">1</text>
+    <text x="535" y="249">2</text><text x="615" y="249">2</text>
+  </g>
+  <!-- leaves: the 8 alternating permutations -->
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.4">
+    <rect x="19" y="282" width="72" height="30"/><rect x="99" y="282" width="72" height="30"/>
+    <rect x="179" y="282" width="72" height="30"/><rect x="259" y="282" width="72" height="30"/>
+    <rect x="339" y="282" width="72" height="30"/><rect x="419" y="282" width="72" height="30"/>
+    <rect x="499" y="282" width="72" height="30"/><rect x="579" y="282" width="72" height="30"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5" font-weight="600">
+    <text x="55" y="301">[1,2,3,4]</text><text x="135" y="301">[1,4,3,2]</text>
+    <text x="215" y="301">[2,1,4,3]</text><text x="295" y="301">[2,3,4,1]</text>
+    <text x="375" y="301">[3,2,1,4]</text><text x="455" y="301">[3,4,1,2]</text>
+    <text x="535" y="301">[4,1,2,3]</text><text x="615" y="301">[4,3,2,1]</text>
+  </g>
+  <text x="40" y="360" fill="#1a2026" font-size="13">Candidates are tried in ascending order and same-parity choices are cut (x), so the</text>
+  <text x="40" y="378" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">8 leaves</tspan> emerge already lexicographic: [1,2,3,4] first, [4,3,2,1] last, no post-sort.</text>
+</svg>

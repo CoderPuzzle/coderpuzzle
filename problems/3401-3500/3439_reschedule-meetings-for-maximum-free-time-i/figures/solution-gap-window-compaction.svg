@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 436" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="436" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- eventTime = 5, k = 1, meetings [1,2] and [3,5]; strip x = 60 + 88t; gaps (g0, g1, g2) = (1, 1, 0); window width k + 1 = 2 -->
+  <text x="28" y="30" fill="#5c6b76" font-size="12.5">eventTime = 5, k = 1, meetings [1,2] and [3,5]</text>
+  <!-- original timeline -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="60" y="44" width="88" height="38" fill="#ffffff"/>
+    <rect x="148" y="44" width="88" height="38" fill="#dbe4fb"/>
+    <rect x="236" y="44" width="88" height="38" fill="#ffffff"/>
+    <rect x="324" y="44" width="176" height="38" fill="#dbe4fb"/>
+  </g>
+  <line x1="538" y1="62" x2="504" y2="62" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="546" y="66" fill="#9aa7b2" font-size="12.5">g2 = 0</text>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <text x="104" y="67">g0 = 1</text>
+    <text x="280" y="67">g1 = 1</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">
+    <text x="192" y="67">M1 [1,2]</text>
+    <text x="412" y="67">M2 [3,5]</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="60" y="100">0</text><text x="148" y="100">1</text><text x="236" y="100">2</text>
+    <text x="324" y="100">3</text><text x="412" y="100">4</text><text x="500" y="100">5</text>
+  </g>
+  <!-- gap array -->
+  <text x="186" y="171" text-anchor="end" fill="#1a2026" font-size="13" font-weight="600">gaps</text>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="238" y="142">g0</text><text x="314" y="142">g1</text><text x="390" y="142">g2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="200" y="150" width="76" height="34" fill="#ffffff"/>
+    <rect x="276" y="150" width="76" height="34" fill="#ffffff"/>
+    <rect x="352" y="150" width="76" height="34" fill="#f0f3f7" stroke-width="1.2"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="238" y="172" fill="#1a2026">1</text>
+    <text x="314" y="172" fill="#1a2026">1</text>
+    <text x="390" y="172" fill="#9aa7b2">0</text>
+  </g>
+  <!-- window over g0 + g1 -->
+  <path d="M 200 190 Q 276 214 352 190" fill="none" stroke="#4169E1" stroke-width="2.2"/>
+  <text x="276" y="230" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">1 + 1 = 2</text>
+  <!-- window over g1 + g2 -->
+  <path d="M 276 240 Q 314 266 352 240" fill="none" stroke="#5c6b76" stroke-width="1.8"/>
+  <text x="314" y="284" text-anchor="middle" fill="#5c6b76" font-size="12.5">1 + 0 = 1</text>
+  <!-- tie the winning window to the merged block -->
+  <path d="M 244 238 Q 200 284 196 328" fill="none" stroke="#4169E1" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#arrowA)"/>
+  <!-- compacted timeline -->
+  <text x="28" y="322" fill="#5c6b76" font-size="12.5">compact M1 against M2:</text>
+  <g stroke-width="1.5">
+    <rect x="60" y="330" width="176" height="38" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="236" y="330" width="88" height="38" fill="#dbe4fb" stroke="#42525e"/>
+    <rect x="324" y="330" width="176" height="38" fill="#dbe4fb" stroke="#42525e"/>
+  </g>
+  <text x="148" y="349" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">free [0, 2]</text>
+  <text x="148" y="364" text-anchor="middle" fill="#1a2026" font-size="12.5">g0 + g1 = <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <g text-anchor="middle" fill="#1a2026" font-size="12" font-weight="600">
+    <text x="280" y="353">M1 [2,3]</text>
+    <text x="412" y="353">M2 [3,5]</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="60" y="386">0</text><text x="148" y="386">1</text><text x="236" y="386">2</text>
+    <text x="324" y="386">3</text><text x="412" y="386">4</text><text x="500" y="386">5</text>
+  </g>
+  <text x="40" y="410" fill="#1a2026" font-size="13">A window of k + 1 = 2 consecutive gaps slides over (1, 1, 0): 1 + 1 = 2, then 1 + 0 = 1;</text>
+  <text x="40" y="428" fill="#1a2026" font-size="13">the maximum <tspan fill="#4169E1" font-weight="600">2</tspan> compacts meeting [1,2] against [3,5], merging free [0, 2].</text>
+</svg>

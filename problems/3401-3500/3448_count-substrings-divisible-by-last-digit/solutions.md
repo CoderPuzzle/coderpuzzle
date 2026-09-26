@@ -6,6 +6,8 @@ A substring is valid exactly when its numeric value is divisible by its final (n
 
 Appending a new digit `di` transforms every previously seen substring: a suffix with remainder `r` extends into one with remainder `(10*r + di) % d`, and the digit itself starts a fresh suffix with remainder `di % d`. This is a full remap of the table at each position — build `new_cnt` from `cnt` plus one for the new single-digit suffix, then swap.
 
+![On s = "12936" the d = 3 pass remaps its cnt[r] table by r → (10r + digit) mod 3 at each of the five positions and banks cnt[0] + 1 = 3 where the digit is 3 — one at-most-9-entry table per last digit makes the count linear.](figures/solution-remainder-table-bank.svg)
+
 Counting happens at positions where `di == d`: extending any earlier suffix whose value is `r` gives a new value `r*10 + d`, which is divisible by `d` exactly when `(r * 10) % d == 0`. Those remainders are fixed per `d`, so each matching position adds a constant subset of `cnt` plus 1 for the single-character substring `"d"` itself. Leading zeros are harmless because the DP treats each suffix by its true numeric value, and a zero-prefixed substring ending in `d` is counted exactly when its value is divisible by `d`.
 
 Edge cases: `d` may be larger than any digit present (the pass simply counts nothing), substrings of length 1 are handled by the `+1`, and remainder `0` entries can be both extended substrings and stored suffixes without double counting, because stored suffixes are only counted again after being extended by one more digit.

@@ -16,6 +16,8 @@ free period of `g[i] + g[i+1]`; relocating into a flanking gap is just such a
 slide in disguise, so it never does better. Not moving anything keeps the
 largest original gap, which is the answer's lower bound.
 
+![On eventTime = 5 with gaps g = (1, 1, 0) the meeting [1,2] of duration 1 finds no outside gap that fits (max(prefix[0], suffix[2]) = 0), so it slides flush left and its emptied span merges g0 + g1 = 2 into one free block.](figures/solution-outside-gap-lookup.svg)
+
 The only per-meeting question is the size of the largest non-flanking gap.
 `prefix[i]` (maximum of `g[0..i-1]`) and `suffix[i+2]` (maximum of
 `g[i+2..n]`) together cover exactly the gaps outside `{i, i+1}`, so one
