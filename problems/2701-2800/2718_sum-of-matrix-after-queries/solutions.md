@@ -20,6 +20,8 @@ column. Tracking just two counters plus the seen flags gives the whole
 answer in one pass; there is no need to materialize any part of the
 `n x n` grid.
 
+![On example 1 (queries [[0,0,1],[1,2,2],[0,2,3],[1,0,4]]), the reverse sweep claims column 0 for 3 x 4 = 12, row 2 for 2 x 3 = 6, column 2 for 2 x 2 = 4 and row 0 for 1 x 1 = 1, summing to 23.](figures/solution-reverse-sweep-claims.svg)
+
 The answer can reach `n * n * val = 10⁴ * 10⁴ * 10⁵ = 10¹³`, far past
 the 32-bit signed range, so fixed-width languages accumulate and return
 64-bit integers; JavaScript's doubles hold integers exactly below

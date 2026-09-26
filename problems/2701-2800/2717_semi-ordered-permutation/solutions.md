@@ -16,4 +16,6 @@ n, 1, ...]` advances both journeys simultaneously — it is counted once in
 each distance above but performed only once, so exactly one swap is shared
 and the answer is `i + (n - 1 - j) - 1`.
 
+![On nums = [2,4,1,3], value 1 at index 2 needs 2 swaps to the front and value 4 at index 1 needs 2 to the back; they start adjacent, so the one crossing swap serves both journeys and 2 + 2 - 1 = 3.](figures/solution-extreme-values-crossing-swaps.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space.

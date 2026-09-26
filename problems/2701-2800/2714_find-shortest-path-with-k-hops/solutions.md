@@ -23,6 +23,8 @@ whose node is `d` is the global minimum over every way of spending at most
 `k` hops, and the search can stop there; connectivity guarantees that pop
 always happens.
 
+![On example 1 (edges [[0,1,4],[0,2,2],[2,3,6]], s = 1, d = 3, k = 2), the walk (1,0) → (0,1) → (2,1) → (3,2) climbs one layer per free hop and pays only edge 0–2, totaling 0 + 2 + 0 = 2.](figures/solution-layered-dijkstra-states.svg)
+
 The layered table bounds the work: there are `n * (k + 1)` states and each
 settled state scans its incident edges in both directions, so the run is
 linear-ish in `E * k` with a logarithmic factor from the heap.

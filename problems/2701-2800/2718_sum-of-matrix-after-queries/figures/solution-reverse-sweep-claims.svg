@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- ex1: n=3, queries [[0,0,1],[1,2,2],[0,2,3],[1,0,4]]; grid = final matrix, tag = the reversed query whose write survives there; right = reverse-sweep contributions 12+6+4+1 = 23 -->
+  <text x="154" y="64" text-anchor="middle" fill="#5c6b76" font-size="12.5">final matrix</text>
+  <g fill="#dbe4fb" stroke="#42525e" stroke-width="1.4">
+    <rect x="70" y="90" width="56" height="44"/><rect x="126" y="90" width="56" height="44"/><rect x="182" y="90" width="56" height="44"/>
+    <rect x="70" y="134" width="56" height="44"/><rect x="182" y="134" width="56" height="44"/>
+    <rect x="70" y="178" width="56" height="44"/><rect x="126" y="178" width="56" height="44"/><rect x="182" y="178" width="56" height="44"/>
+  </g>
+  <rect x="126" y="134" width="56" height="44" fill="#f0f3f7" stroke="#42525e" stroke-width="1.4"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="98" y="84">col 0</text><text x="154" y="84">col 1</text><text x="210" y="84">col 2</text>
+    <text x="46" y="117">row 0</text><text x="46" y="161">row 1</text><text x="46" y="205">row 2</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="98" y="118">4</text><text x="154" y="118">1</text><text x="210" y="118">2</text>
+    <text x="98" y="162">4</text><text x="210" y="162">2</text>
+    <text x="98" y="206">4</text><text x="154" y="206">3</text><text x="210" y="206">3</text>
+  </g>
+  <text x="154" y="162" text-anchor="middle" font-weight="600" font-size="15" fill="#9aa7b2">0</text>
+  <g text-anchor="start" fill="#5c6b76" font-size="9.5">
+    <text x="74" y="102">q4</text><text x="130" y="102">q1</text><text x="186" y="102">q2</text>
+    <text x="74" y="146">q4</text><text x="130" y="146">—</text><text x="186" y="146">q2</text>
+    <text x="74" y="190">q4</text><text x="130" y="190">q3</text><text x="186" y="190">q3</text>
+  </g>
+  <path d="M 246 156 L 290 156" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <!-- reverse sweep: last input query first, first writer wins -->
+  <text x="460" y="64" text-anchor="middle" fill="#5c6b76" font-size="12.5">reverse sweep — first writer wins</text>
+  <g text-anchor="start" font-size="12.5" fill="#1a2026">
+    <text x="300" y="104"><tspan fill="#4169E1" font-weight="600">q4 col 0 = 4</tspan> : 3 unclaimed rows → 3 × 4 = 12</text>
+    <text x="300" y="140"><tspan fill="#4169E1" font-weight="600">q3 row 2 = 3</tspan> : 2 unclaimed cols → 2 × 3 = 6</text>
+    <text x="300" y="176"><tspan fill="#4169E1" font-weight="600">q2 col 2 = 2</tspan> : 2 unclaimed rows → 2 × 2 = 4</text>
+    <text x="300" y="212"><tspan fill="#4169E1" font-weight="600">q1 row 0 = 1</tspan> : 1 unclaimed col → 1 × 1 = 1</text>
+  </g>
+  <text x="300" y="250" text-anchor="start" font-size="13" fill="#1a2026">sum = 12 + 6 + 4 + 1 = <tspan fill="#4169E1" font-weight="600">23</tspan></text>
+  <text x="320" y="288" text-anchor="middle" fill="#1a2026" font-size="13">Read backwards, each line is claimed once and keeps only the cells on still-unclaimed lines:</text>
+  <text x="320" y="310" text-anchor="middle" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">12</tspan> + <tspan fill="#4169E1" font-weight="600">6</tspan> + <tspan fill="#4169E1" font-weight="600">4</tspan> + <tspan fill="#4169E1" font-weight="600">1</tspan> = <tspan fill="#4169E1" font-weight="600">23</tspan> — the lone 0 cell belongs to no surviving write.</text>
+</svg>

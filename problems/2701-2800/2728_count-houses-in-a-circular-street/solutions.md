@@ -22,6 +22,8 @@ right-steps, so the count between leaving the marker and re-sighting it is
 the answer. The walk always terminates within one lap because the marker
 is genuinely reachable from every other house.
 
+![On street = [1,0,1,1,0] with k = 5, closing five doors wraps the circle and leaves every door shut; reopening the start door and walking right counts 1 through 5 back to that landmark, so n = 5.](figures/solution-close-reopen-count-lap.svg)
+
 Every call — close, move, open, query — spends the same unit, so the run
 is measured in oracle operations: `2k` for the closing sweep, one reopen,
 and then `n` moves plus `n` queries for the lap, `2k + 2n + 2` calls in

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 388" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="388" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- ex1: n=4, edges [[0,1,4],[0,2,2],[2,3,6]], s=1, d=3, k=2; columns = hops used, rows = nodes in walk order (1,0,2,3); accented cells = the walk's states with their Dijkstra distance -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="170" y="48">hops used = 0</text><text x="350" y="48">hops used = 1</text><text x="530" y="48">hops used = 2</text>
+    <text x="58" y="48" font-size="11.5">walk order</text>
+  </g>
+  <!-- lattice cells -->
+  <g fill="#ffffff" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="292" y="68" width="116" height="44"/><rect x="472" y="68" width="116" height="44"/>
+    <rect x="112" y="136" width="116" height="44"/><rect x="472" y="136" width="116" height="44"/>
+    <rect x="112" y="204" width="116" height="44"/><rect x="472" y="204" width="116" height="44"/>
+    <rect x="112" y="272" width="116" height="44"/><rect x="292" y="272" width="116" height="44"/>
+  </g>
+  <!-- walk states: (1,0) 0, (0,1) 0, (2,1) 2, (3,2) 2 -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8">
+    <rect x="112" y="68" width="116" height="44"/><rect x="292" y="136" width="116" height="44"/>
+    <rect x="292" y="204" width="116" height="44"/><rect x="472" y="272" width="116" height="44"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="58" y="94" fill="#5c6b76" font-size="12">node 1 (s)</text>
+    <text x="58" y="162" fill="#5c6b76" font-size="12">node 0</text>
+    <text x="58" y="230" fill="#5c6b76" font-size="12">node 2</text>
+    <text x="58" y="298" fill="#5c6b76" font-size="12">node 3 (d)</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#4169E1">
+    <text x="170" y="88">0</text><text x="350" y="156">0</text>
+    <text x="350" y="224">2</text><text x="530" y="292">2</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5" fill="#5c6b76">
+    <text x="170" y="104">(1, 0)</text><text x="350" y="172">(0, 1)</text>
+    <text x="350" y="240">(2, 1)</text><text x="530" y="308">(3, 2)</text>
+  </g>
+  <!-- walk arrows: hop up a layer for free, pay to stay -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 222 116 L 292 141" marker-end="url(#arrow)"/>
+    <path d="M 350 182 L 350 202" marker-end="url(#arrow)"/>
+    <path d="M 402 252 L 480 280" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="257" y="110">hop, +0</text>
+    <text x="338" y="196" text-anchor="end">pay 2</text>
+    <text x="438" y="246">hop, +0</text>
+  </g>
+  <text x="320" y="348" text-anchor="middle" fill="#1a2026" font-size="13">Free hops climb one layer for free (edges 4 and 6 zeroed); paying edge 0–2 stays put:</text>
+  <text x="320" y="370" text-anchor="middle" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">0</tspan> + <tspan fill="#4169E1" font-weight="600">2</tspan> + <tspan fill="#4169E1" font-weight="600">0</tspan> = <tspan fill="#4169E1" font-weight="600">2</tspan> — the first pop of d = 3 is (3, 2), so the answer is <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

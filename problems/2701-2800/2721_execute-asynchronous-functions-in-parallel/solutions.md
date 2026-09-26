@@ -27,5 +27,7 @@ resolution moment is the maximum delay across all promises (Example 3's
 in which the promises actually settled. The built-in `Promise.all()` is
 nowhere in sight.
 
+![On example 3, settlements land out of order at 50, 100 and 150 ms, each value writing its own index while the pending counter falls 3, 2, 1, 0; the aggregate then resolves [4, 10, 16] at 150 ms.](figures/solution-pending-counter-timeline.svg)
+
 **Complexity:** `O(n)` time and `O(n)` space, where `n` is
 `functions.length`.
