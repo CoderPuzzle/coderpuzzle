@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "aczzx"; cells 64x40 at x = 140 + 72i, y = 72; sweep table rows at y = 186 + 24i -->
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="140" y="72" width="64" height="40"/><rect x="212" y="72" width="64" height="40"/>
+    <rect x="284" y="72" width="64" height="40"/><rect x="356" y="72" width="64" height="40"/>
+    <rect x="428" y="72" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="172" y="97">a</text><text x="244" y="97">c</text><text x="316" y="97">z</text>
+    <text x="388" y="97">z</text><text x="460" y="97">x</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="12">
+    <text x="172" y="130">0</text><text x="244" y="130">1</text><text x="316" y="130">2</text>
+    <text x="388" y="130">3</text><text x="460" y="130">4</text>
+  </g>
+  <!-- pair 2-0: z at i=2 pops a's stack top 0 -->
+  <path d="M 316 66 Q 244 4 172 66" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="192" y="36" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">+2</text>
+  <!-- pair 4-1: x at i=4 pops c's stack top 1 -->
+  <path d="M 460 66 Q 352 -6 244 66" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="404" y="26" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">+3</text>
+  <!-- sweep table -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="64" y="166">i</text><text x="112" y="166">s[i]</text>
+    <text x="240" y="166">mirror's stack</text><text x="414" y="166">action</text>
+    <text x="566" y="166">score</text>
+  </g>
+  <g stroke="#f0f3f7" stroke-width="1">
+    <line x1="40" y1="174" x2="600" y2="174"/><line x1="40" y1="198" x2="600" y2="198"/>
+    <line x1="40" y1="222" x2="600" y2="222"/><line x1="40" y1="246" x2="600" y2="246"/>
+    <line x1="40" y1="270" x2="600" y2="270"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="64" y="190">0</text><text x="112" y="190">a</text><text x="240" y="190">z: []</text>
+    <text x="414" y="190">push 0 to a</text><text x="566" y="190">0</text>
+    <text x="64" y="214">1</text><text x="112" y="214">c</text><text x="240" y="214">x: []</text>
+    <text x="414" y="214">push 1 to c</text><text x="566" y="214">0</text>
+    <text x="64" y="238">2</text><text x="112" y="238" font-weight="600">z</text>
+    <text x="240" y="238" font-weight="600">a: [0]</text>
+    <text x="414" y="238">pop 0, pair 0&#8211;2</text><text x="566" y="238" fill="#4169E1" font-weight="600">2</text>
+    <text x="64" y="262">3</text><text x="112" y="262">z</text><text x="240" y="262">a: []</text>
+    <text x="414" y="262">push 3 to z</text><text x="566" y="262">2</text>
+    <text x="64" y="286">4</text><text x="112" y="286" font-weight="600">x</text>
+    <text x="240" y="286" font-weight="600">c: [1]</text>
+    <text x="414" y="286">pop 1, pair 1&#8211;4</text><text x="566" y="286" fill="#4169E1" font-weight="600">5</text>
+  </g>
+  <text x="320" y="318" text-anchor="middle" fill="#1a2026" font-size="13">The mirror's stack top is the closest unmarked index: pops pair 0&#8211;2 (+2), 1&#8211;4 (+3).</text>
+  <text x="320" y="340" text-anchor="middle" fill="#1a2026" font-size="13">Index 3 waits unpaired on z's stack; the total score is <tspan fill="#4169E1" font-weight="600">5</tspan>.</text>
+</svg>

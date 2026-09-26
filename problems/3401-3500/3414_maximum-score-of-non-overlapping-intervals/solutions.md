@@ -19,6 +19,8 @@ Because the array is sorted by right endpoint, that predecessor range is a
 prefix, found by binary search on the right endpoints, so each state is
 O(log n) to compute and the whole table is four passes over `n` states.
 
+![On the example's six intervals sorted by right endpoint, the dashed line marks where the binary search for interval 3 (l = 6) lands — predecessors with r < 6 — and the highlighted pair idx 2 (w 5) then idx 3 (w 3) scores 8.](figures/solution-sorted-predecessor-dp.svg)
+
 The tie-break rides along in the state. Inserting the taken interval's
 original index into the predecessor's tuple keeps the tuple sorted, and
 inserting a common element into two tuples preserves their lexicographic

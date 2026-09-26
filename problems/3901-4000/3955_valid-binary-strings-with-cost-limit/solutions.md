@@ -12,6 +12,8 @@ rule, since each `'1'` contributes exactly its own index). Whenever the
 growing buffer reaches length `n` the string is valid by construction and
 is appended to the output verbatim — no post-filtering pass needed.
 
+![On n = 3, k = 1 the pruned backtracking tree tries '0' before '1' at each index, crosses out 001 and 101 for exceeding the cost and 011 and 11 for repeating a '1', and keeps exactly the leaves 000, 010 and 100.](figures/solution-backtracking-prune-tree.svg)
+
 Placing `'0'` before `'1'` at every branch makes the recursion enumerate
 valid strings in lexicographic order, which matches the examples' listings.
 The pruned tree contains exactly one node per valid prefix — a prefix is

@@ -14,6 +14,8 @@ layer. The start cell seeds all three layers (a robber there can be
 neutralized immediately); the answer is the largest of the three layers
 at the goal, since spending fewer charges is always allowed.
 
+![On coins = [[0,1,-1],[1,-2,3],[2,-3,4]], the three k = 0, 1, 2 layers fill row-major to 7, 8, 8 at the goal — the k = 1 layer spends its charge to enter the -2 for free along the accented path, so the answer is 8.](figures/solution-neutralization-budget-dp.svg)
+
 The layers update in place over a rolling row: the left neighbor is
 already the current row's value, while the three cell-above values are
 snapshotted before being overwritten — that snapshot is what keeps the

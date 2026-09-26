@@ -12,4 +12,9 @@ only child states that do not select the child are allowed. When the parent
 is not selected, either child state may be used. Subtract the empty subset at
 the root.
 
+![On the chain 0-1-2 with nums=[1,2,3], k=3, the residue-count arrays merge
+bottom-up — a selected parent takes only unselected child states — leaving
+dp0[0]=[2,0,1] and dp1[0]=[0,2,0], so the answer is 2 + 0 − 1 = 1, the subset
+{2}.](figures/solution-tree-dp-residue-merge.svg)
+
 **Complexity:** `O(n * k²)` time, `O(n * k)` space.

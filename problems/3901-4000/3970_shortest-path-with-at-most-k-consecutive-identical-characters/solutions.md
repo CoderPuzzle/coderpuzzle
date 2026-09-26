@@ -10,6 +10,8 @@ are all `labels[u]`. Traversing an edge resets the run to 1 when the label
 changes and increments it otherwise; a transition whose run would exceed `k`
 is discarded.
 
+![On the example with labels aab and k = 1 the (node, run) states cut edge 0→1 because the run would reach 2 > k, so the direct 0→2 edge of weight 3 settles node 2 first and the answer is 3.](figures/solution-dijkstra-run-states.svg)
+
 All edge weights are positive, so Dijkstra's algorithm settles these expanded
 states in increasing total weight. The answer is the least distance among the
 `k` possible states at node `n - 1`, or `-1` if none was reached. Distances use

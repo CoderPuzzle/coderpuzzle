@@ -13,6 +13,8 @@ are both exactly `x`, so subtract each such in-bounds corner when its value is
 greater than `x`. The cell is a local maximum precisely when the adjusted
 count is zero.
 
+![With threshold x = 2 on the 7x7 example, the greater-than indicator and every prefix entry are 0, so the clamped window query at (3,3) returns 0 and the four distance-2 corners (1,1), (1,5), (5,1), (5,5) subtract nothing — (3,3) is the one local maximum and the answer is 1.](figures/solution-threshold-prefix-query.svg)
+
 Process thresholds 1 through 200 and inspect only cells equal to the current
 threshold. Reusing a single prefix grid avoids storing 201 full grids while
 retaining the intended constant-time rectangle query.

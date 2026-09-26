@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 366" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="620" height="366" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- n = 3, labels aab, k = 1; edges 0->1 w1, 1->2 w1, 0->2 w3; Dijkstra states are
+       (node, run): (0,1) d=0 popped 1st, 0->1 cut (run 1+1=2 > k), (2,1) d=3 popped 2nd -->
+  <!-- edges -->
+  <line x1="136" y1="100" x2="474" y2="100" stroke="#4169E1" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="131.5" y1="114.5" x2="288.5" y2="220.5" stroke="#9aa7b2" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrowm)"/>
+  <line x1="331.2" y1="219.9" x2="478.8" y2="115.1" stroke="#9aa7b2" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrowm)"/>
+  <!-- cut mark on 0->1 -->
+  <g stroke="#9aa7b2" stroke-width="2.2">
+    <line x1="204" y1="161.5" x2="216" y2="173.5"/>
+    <line x1="216" y1="161.5" x2="204" y2="173.5"/>
+  </g>
+  <path d="M 168 172 L 198 167.5" fill="none" stroke="#9aa7b2" stroke-width="1.4" marker-end="url(#arrowm)"/>
+  <g text-anchor="start" fill="#9aa7b2" font-size="12.5">
+    <text x="30" y="162">edge 0&#8594;1, w = 1:</text>
+    <text x="30" y="178">run 1 + 1 = 2 &gt; k = 1</text>
+    <text x="30" y="194">&#8594; discarded</text>
+  </g>
+  <!-- edge labels -->
+  <text x="300" y="64" text-anchor="middle" fill="#5c6b76" font-size="12">labels a &#8594; b: run resets to 1</text>
+  <text x="300" y="86" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">w = 3</text>
+  <text x="385" y="150" text-anchor="middle" fill="#9aa7b2" font-size="12.5">w = 1</text>
+  <!-- nodes -->
+  <circle cx="110" cy="100" r="26" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="500" cy="100" r="26" fill="#4169E1" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="310" cy="235" r="26" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.4"/>
+  <text x="110" y="98" text-anchor="middle" fill="#1a2026" font-size="15" font-weight="600">0</text>
+  <text x="110" y="114" text-anchor="middle" fill="#5c6b76" font-size="11.5">a</text>
+  <text x="500" y="98" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="600">2</text>
+  <text x="500" y="114" text-anchor="middle" fill="#dbe4fb" font-size="11.5">b</text>
+  <text x="310" y="233" text-anchor="middle" fill="#9aa7b2" font-size="15" font-weight="600">1</text>
+  <text x="310" y="249" text-anchor="middle" fill="#9aa7b2" font-size="11.5">a</text>
+  <!-- Dijkstra state tags -->
+  <text x="110" y="48" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">(0, run 1) &#183; d = 0</text>
+  <text x="110" y="64" text-anchor="middle" fill="#5c6b76" font-size="11.5">popped 1st</text>
+  <text x="520" y="144" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">(2, run 1) &#183; d = 3</text>
+  <text x="520" y="160" text-anchor="middle" fill="#5c6b76" font-size="11.5">popped 2nd &#8212; settled</text>
+  <text x="310" y="286" text-anchor="middle" fill="#9aa7b2" font-size="12.5">node 1: every arrival ends 'aa',</text>
+  <text x="310" y="304" text-anchor="middle" fill="#9aa7b2" font-size="12.5">run 2 &gt; k = 1 &#8212; never enqueued</text>
+  <text x="310" y="332" text-anchor="middle" fill="#1a2026" font-size="13">With k = 1 the state space is (node, run): edge 0&#8594;1 would reach run 2 and is cut,</text>
+  <text x="310" y="352" text-anchor="middle" fill="#1a2026" font-size="13">so the direct w = 3 edge settles node 2 first — answer <tspan fill="#4169E1" font-weight="600">3</tspan> (labels 'ab').</text>
+</svg>

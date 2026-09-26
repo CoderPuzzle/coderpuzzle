@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- intervals = [[1,3,2],[4,5,2],[1,5,5],[6,9,3],[6,7,1],[8,9,1]]; number line x(p) = 90 + (p-1)*56;
+       rows sorted by (r, l): idx0, idx2, idx1, idx4, idx3, idx5 at y = 60 + 30i, bars h 16 -->
+  <text x="24" y="40" fill="#5c6b76" font-size="12">sorted by right endpoint</text>
+  <text x="80" y="53" text-anchor="end" fill="#9aa7b2" font-size="11">orig idx</text>
+  <g stroke="#f0f3f7" stroke-width="1">
+    <line x1="90" y1="54" x2="90" y2="238"/><line x1="146" y1="54" x2="146" y2="238"/>
+    <line x1="202" y1="54" x2="202" y2="238"/><line x1="258" y1="54" x2="258" y2="238"/>
+    <line x1="314" y1="54" x2="314" y2="238"/><line x1="370" y1="54" x2="370" y2="238"/>
+    <line x1="426" y1="54" x2="426" y2="238"/><line x1="482" y1="54" x2="482" y2="238"/>
+    <line x1="538" y1="54" x2="538" y2="238"/>
+  </g>
+  <g text-anchor="end" font-size="12" fill="#5c6b76">
+    <text x="80" y="72">idx 0</text><text x="80" y="102">idx 2</text><text x="80" y="132">idx 1</text>
+    <text x="80" y="162">idx 4</text><text x="80" y="192" font-weight="600" fill="#4169E1">idx 3</text>
+    <text x="80" y="222">idx 5</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2" fill="#f0f3f7">
+    <rect x="90" y="60" width="112" height="16"/><rect x="258" y="120" width="56" height="16"/>
+    <rect x="370" y="150" width="56" height="16"/><rect x="482" y="210" width="56" height="16"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="#dbe4fb">
+    <rect x="90" y="90" width="224" height="16"/><rect x="370" y="180" width="168" height="16"/>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="600" fill="#1a2026">
+    <text x="146" y="72">2</text><text x="190" y="102">5</text><text x="286" y="132">2</text>
+    <text x="398" y="162">1</text><text x="454" y="192">3</text><text x="510" y="222">1</text>
+  </g>
+  <!-- binary-search landing for interval 3 (l = 6): prefix with r < 6 ends above this line -->
+  <line x1="84" y1="143" x2="546" y2="143" stroke="#4169E1" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="554" y="140" fill="#4169E1" font-size="11.5" font-weight="600">r &lt; 6</text>
+  <text x="554" y="155" fill="#5c6b76" font-size="11">binary</text>
+  <text x="554" y="168" fill="#5c6b76" font-size="11">search</text>
+  <!-- take-3-after-2 jump -->
+  <path d="M 366 186 Q 326 150 316 108" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="340" y="132" fill="#4169E1" font-size="12" font-weight="600">5 + 3</text>
+  <!-- number line -->
+  <line x1="84" y1="238" x2="544" y2="238" stroke="#42525e" stroke-width="1.2"/>
+  <g stroke="#42525e" stroke-width="1">
+    <line x1="90" y1="238" x2="90" y2="243"/><line x1="146" y1="238" x2="146" y2="243"/>
+    <line x1="202" y1="238" x2="202" y2="243"/><line x1="258" y1="238" x2="258" y2="243"/>
+    <line x1="314" y1="238" x2="314" y2="243"/><line x1="370" y1="238" x2="370" y2="243"/>
+    <line x1="426" y1="238" x2="426" y2="243"/><line x1="482" y1="238" x2="482" y2="243"/>
+    <line x1="538" y1="238" x2="538" y2="243"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="90" y="256">1</text><text x="146" y="256">2</text><text x="202" y="256">3</text>
+    <text x="258" y="256">4</text><text x="314" y="256">5</text><text x="370" y="256">6</text>
+    <text x="426" y="256">7</text><text x="482" y="256">8</text><text x="538" y="256">9</text>
+  </g>
+  <text x="320" y="286" text-anchor="middle" fill="#1a2026" font-size="13">Interval 3's binary search keeps predecessors with r &lt; 6 &#8212; the rows above the dashed line.</text>
+  <text x="320" y="308" text-anchor="middle" fill="#1a2026" font-size="13">Its best predecessor is idx 2 (w 5), so taking 3 after 2 scores 5 + 3 = <tspan fill="#4169E1" font-weight="600">8</tspan>.</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 460" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="460" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- coins = [[0,1,-1],[1,-2,3],[2,-3,4]]; left cells 64x40 at (48 + 64j, 70 + 40i);
+       right dp grids cells 44x28 at (350 + 44j, 70 + 118k + 28i) -->
+  <text x="144" y="56" text-anchor="middle" fill="#5c6b76" font-size="12.5">coins</text>
+  <g fill="#ffffff" stroke="#1a2026" stroke-width="1.4">
+    <rect x="48" y="70" width="64" height="40"/><rect x="112" y="70" width="64" height="40"/><rect x="176" y="70" width="64" height="40"/>
+    <rect x="48" y="110" width="64" height="40"/><rect x="112" y="110" width="64" height="40"/><rect x="176" y="110" width="64" height="40"/>
+    <rect x="48" y="150" width="64" height="40"/><rect x="112" y="150" width="64" height="40"/><rect x="176" y="150" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="80" y="95" fill="#1a2026">0</text><text x="144" y="95" fill="#1a2026">1</text><text x="208" y="95" fill="#9aa7b2">-1</text>
+    <text x="80" y="135" fill="#1a2026">1</text><text x="144" y="135" fill="#9aa7b2">-2</text><text x="208" y="135" fill="#1a2026">3</text>
+    <text x="80" y="175" fill="#1a2026">2</text><text x="144" y="175" fill="#9aa7b2">-3</text><text x="208" y="175" fill="#1a2026">4</text>
+  </g>
+  <!-- optimal path (0,0) (0,1) (1,1) (1,2) (2,2), routed along cell tops; the -2 is entered for free -->
+  <polyline points="54,76 118,76 118,116 182,116 182,156" fill="none" stroke="#4169E1" stroke-width="3"/>
+  <line x1="134" y1="143" x2="154" y2="123" stroke="#4169E1" stroke-width="1.6"/>
+  <g fill="#4169E1">
+    <circle cx="54" cy="76" r="3.5"/><circle cx="118" cy="76" r="3.5"/><circle cx="118" cy="116" r="3.5"/>
+    <circle cx="182" cy="116" r="3.5"/><circle cx="182" cy="156" r="3.5"/>
+  </g>
+  <text x="144" y="216" text-anchor="middle" fill="#1a2026" font-size="12.5">path: 0 + 1 + 0 + 3 + 4 = <tspan fill="#4169E1" font-weight="600">8</tspan></text>
+  <text x="144" y="236" text-anchor="middle" fill="#5c6b76" font-size="11.5">the struck-through -2 adds 0 (one charge)</text>
+  <path d="M 254 130 H 336" stroke="#42525e" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <text x="295" y="114" text-anchor="middle" fill="#5c6b76" font-size="10.5">row-major fill,</text>
+  <text x="295" y="150" text-anchor="middle" fill="#5c6b76" font-size="10.5">3 layers per cell</text>
+  <g fill="#5c6b76" font-size="12">
+    <text x="350" y="60">k = 0</text>
+    <text x="350" y="178">k = 1 &#8212; charge spent on the -2</text>
+    <text x="350" y="296">k = 2</text>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.1">
+    <rect x="350" y="70" width="44" height="28"/><rect x="394" y="70" width="44" height="28"/><rect x="438" y="70" width="44" height="28"/>
+    <rect x="350" y="98" width="44" height="28"/><rect x="394" y="98" width="44" height="28"/><rect x="438" y="98" width="44" height="28"/>
+    <rect x="350" y="126" width="44" height="28"/><rect x="394" y="126" width="44" height="28"/><rect x="438" y="126" width="44" height="28"/>
+    <rect x="350" y="188" width="44" height="28"/><rect x="394" y="188" width="44" height="28"/><rect x="438" y="188" width="44" height="28"/>
+    <rect x="350" y="216" width="44" height="28"/><rect x="438" y="216" width="44" height="28"/>
+    <rect x="350" y="244" width="44" height="28"/><rect x="394" y="244" width="44" height="28"/><rect x="438" y="244" width="44" height="28"/>
+    <rect x="350" y="306" width="44" height="28"/><rect x="394" y="306" width="44" height="28"/><rect x="438" y="306" width="44" height="28"/>
+    <rect x="350" y="334" width="44" height="28"/><rect x="394" y="334" width="44" height="28"/><rect x="438" y="334" width="44" height="28"/>
+    <rect x="350" y="362" width="44" height="28"/><rect x="394" y="362" width="44" height="28"/><rect x="438" y="362" width="44" height="28"/>
+  </g>
+  <rect x="394" y="216" width="44" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <g text-anchor="middle" font-size="12.5" fill="#1a2026">
+    <text x="372" y="88">0</text><text x="416" y="88">1</text><text x="460" y="88">0</text>
+    <text x="372" y="116">1</text><text x="416" y="116">-1</text><text x="460" y="116">3</text>
+    <text x="372" y="144">3</text><text x="416" y="144">0</text><text x="460" y="144">7</text>
+    <text x="372" y="206">0</text><text x="416" y="206">1</text><text x="460" y="206">1</text>
+    <text x="372" y="234">1</text><text x="416" y="234" font-weight="600">1</text><text x="460" y="234">4</text>
+    <text x="372" y="262">3</text><text x="416" y="262">3</text><text x="460" y="262" fill="#4169E1" font-weight="600">8</text>
+    <text x="372" y="324">0</text><text x="416" y="324">1</text><text x="460" y="324">1</text>
+    <text x="372" y="352">1</text><text x="416" y="352">1</text><text x="460" y="352">4</text>
+    <text x="372" y="380">3</text><text x="416" y="380">3</text><text x="460" y="380">8</text>
+  </g>
+  <text x="280" y="424" text-anchor="middle" fill="#1a2026" font-size="13">Each cell fills three layers row-major; spending a charge enters the -2 for free.</text>
+  <text x="280" y="446" text-anchor="middle" fill="#1a2026" font-size="13">At the goal the layers hold 7, 8, 8 &#8212; the answer is the largest: <tspan fill="#4169E1" font-weight="600">8</tspan>.</text>
+</svg>

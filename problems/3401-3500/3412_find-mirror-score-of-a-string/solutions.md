@@ -18,6 +18,8 @@ popped. If the stack is non-empty, pop it, mark both sides implicitly, and
 add `i - j` to the score; otherwise push `i` onto `c`'s own stack and wait
 for a future mirror to claim it.
 
+![On s = "aczzx", the sweep table shows `z` at i=2 popping a's stack top 0 for +2 and `x` at i=4 popping c's stack top 1 for +3, leaving index 3 waiting on z's stack, for a total of 5.](figures/solution-per-letter-index-stacks.svg)
+
 Why the top of the stack is always exactly the closest unmarked index is
 the crux. A marked index is popped the moment it pairs, so stacks hold only
 unmarked positions; and positions enter each stack in increasing order, so

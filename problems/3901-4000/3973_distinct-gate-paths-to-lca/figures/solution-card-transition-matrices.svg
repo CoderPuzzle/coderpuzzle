@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- n = 3, parent [-1,0,0], gates [[1,0,1],[0,1,1],[1,1,0]]; M(u) = [[b, w], [w, r]];
+       query 0 = [1, 0, 2, 0]: Alice 1 blue, Bob 2 blue, LCA 0: blue rows give 2 and 1, 2 x 1 = 2 -->
+  <text x="30" y="28" text-anchor="start" fill="#5c6b76" font-size="11.5">M(u): row = card held, column = card after the move (B blue, R red)</text>
+  <text x="30" y="46" text-anchor="start" fill="#5c6b76" font-size="11.5">M(u) = [[b, w], [w, r]] built from gates[u] = [r, b, w]</text>
+  <!-- tree edges -->
+  <line x1="334" y1="89" x2="206" y2="175" stroke="#42525e" stroke-width="1.6"/>
+  <line x1="366" y1="89" x2="494" y2="175" stroke="#42525e" stroke-width="1.6"/>
+  <!-- Alice 1->0 and Bob 2->0 -->
+  <line x1="199" y1="165" x2="327" y2="79" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="501" y1="165" x2="373" y2="79" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="232" y="96" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">Alice, blue card</text>
+  <text x="492" y="128" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">Bob, blue card</text>
+  <!-- nodes -->
+  <circle cx="350" cy="74" r="22" fill="#4169E1" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="190" cy="190" r="22" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="510" cy="190" r="22" fill="#ffffff" stroke="#42525e" stroke-width="1.6"/>
+  <text x="350" y="80" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="600">0</text>
+  <text x="190" y="196" text-anchor="middle" fill="#1a2026" font-size="15" font-weight="600">1</text>
+  <text x="510" y="196" text-anchor="middle" fill="#1a2026" font-size="15" font-weight="600">2</text>
+  <text x="350" y="124" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">LCA</text>
+  <!-- M(0) beside the root: gates [1,0,1] -> [[0,1],[1,1]] -->
+  <text x="470" y="44" text-anchor="middle" fill="#5c6b76" font-size="11.5">M(0) &#183; gates [1, 0, 1]</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="455" y="58">B</text><text x="485" y="58">R</text>
+    <text x="432" y="78" text-anchor="end">B</text>
+    <text x="432" y="102" text-anchor="end">R</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="440" y="62" width="30" height="24"/><rect x="470" y="62" width="30" height="24"/>
+    <rect x="440" y="86" width="30" height="24"/><rect x="470" y="86" width="30" height="24"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13">
+    <text x="455" y="79">0</text><text x="485" y="79">1</text>
+    <text x="455" y="103">1</text><text x="485" y="103">1</text>
+  </g>
+  <!-- M(1) under node 1: gates [0,1,1] -> [[1,1],[1,0]]; blue row carries Alice -->
+  <text x="190" y="236" text-anchor="middle" fill="#5c6b76" font-size="11.5">M(1) &#183; gates [0, 1, 1]</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="175" y="250">B</text><text x="205" y="250">R</text>
+    <text x="152" y="270" text-anchor="end">B</text>
+    <text x="152" y="294" text-anchor="end">R</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="160" y="278" width="30" height="24"/><rect x="190" y="278" width="30" height="24"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.4" fill="#dbe4fb">
+    <rect x="160" y="254" width="30" height="24"/><rect x="190" y="254" width="30" height="24"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="175" y="271" fill="#4169E1" font-weight="600">1</text><text x="205" y="271" fill="#4169E1" font-weight="600">1</text>
+    <text x="175" y="295" fill="#1a2026">1</text><text x="205" y="295" fill="#1a2026">0</text>
+  </g>
+  <!-- M(2) under node 2: gates [1,1,0] -> [[1,0],[0,1]]; blue row carries Bob -->
+  <text x="510" y="236" text-anchor="middle" fill="#5c6b76" font-size="11.5">M(2) &#183; gates [1, 1, 0]</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="495" y="250">B</text><text x="525" y="250">R</text>
+    <text x="472" y="270" text-anchor="end">B</text>
+    <text x="472" y="294" text-anchor="end">R</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.2" fill="#ffffff">
+    <rect x="480" y="278" width="30" height="24"/><rect x="510" y="278" width="30" height="24"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.4" fill="#dbe4fb">
+    <rect x="480" y="254" width="30" height="24"/><rect x="510" y="254" width="30" height="24"/>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="495" y="271" fill="#4169E1" font-weight="600">1</text><text x="525" y="271" fill="#4169E1" font-weight="600">0</text>
+    <text x="495" y="295" fill="#1a2026">0</text><text x="525" y="295" fill="#1a2026">1</text>
+  </g>
+  <text x="190" y="322" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">Alice: blue row [1, 1] &#8594; 2 ways</text>
+  <text x="510" y="322" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">Bob: blue row [1, 0] &#8594; 1 way</text>
+  <text x="340" y="358" text-anchor="middle" fill="#1a2026" font-size="13">Query [1, 0, 2, 0]: Alice's blue row of M(1) sums to 2, Bob's blue row of M(2) to 1.</text>
+  <text x="340" y="376" text-anchor="middle" fill="#1a2026" font-size="13">Binary lifting composes these along the paths — <tspan fill="#4169E1" font-weight="600">2 &#215; 1 = 2</tspan>; 2 XOR 1 XOR 2 = 1 overall.</text>
+</svg>

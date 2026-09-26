@@ -16,6 +16,8 @@ so each slide only pushes the entering element onto the half it belongs
 to, books the leaving element as removed, and rebalances at most one
 element across the split: O(log n) heap work per position.
 
+![On nums = [4,-3,2,1,-4,6], k = 3, the best window [-3,2,1] splits into low max-heap {-3, 1} with median 1 on top and high min-heap {2}, and the half-sums price it at (1·2 - (-2)) + (2 - 1·1) = 5 — the cheapest of the window costs 7, 5, 6, 10.](figures/solution-two-heap-median-window.svg)
+
 Deletion is lazy, and it is made exact by a packing trick: every element
 carries the unique key `(v + 2^20) << 17 | index`, so heap keys never
 tie and the halves partition by key with max(low) strictly below
