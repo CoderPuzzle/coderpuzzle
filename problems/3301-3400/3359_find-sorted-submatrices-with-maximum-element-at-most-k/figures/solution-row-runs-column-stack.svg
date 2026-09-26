@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="310" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- grid = [[4,3,2,1],[8,7,6,1]], k = 3; run[j] rows 0,1,2,3 and 0,0,0,1; grid cells 48x34 at x = 40+52i y=48/86; run cells 48x28 y=138/170; column-3 stack pops (3,1) into (1,2), S 3 -> 2 -->
+  <text x="48" y="38" fill="#5c6b76" font-size="12.5">grid, k = 3</text>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="8" y="70">row 0</text><text x="8" y="108">row 1</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="48" y="48" width="48" height="34" fill="#f0f3f7"/><rect x="100" y="48" width="48" height="34" fill="#ffffff"/><rect x="152" y="48" width="48" height="34" fill="#ffffff"/><rect x="204" y="48" width="48" height="34" fill="#ffffff"/>
+    <rect x="48" y="86" width="48" height="34" fill="#f0f3f7"/><rect x="100" y="86" width="48" height="34" fill="#f0f3f7"/><rect x="152" y="86" width="48" height="34" fill="#f0f3f7"/><rect x="204" y="86" width="48" height="34" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="14">
+    <text x="72" y="70" fill="#9aa7b2">4</text><text x="124" y="70" fill="#1a2026">3</text><text x="176" y="70" fill="#1a2026">2</text><text x="228" y="70" fill="#1a2026">1</text>
+    <text x="72" y="108" fill="#9aa7b2">8</text><text x="124" y="108" fill="#9aa7b2">7</text><text x="176" y="108" fill="#9aa7b2">6</text><text x="228" y="108" fill="#1a2026">1</text>
+  </g>
+  <text x="48" y="132.5" fill="#5c6b76" font-size="12.5">run[j]: run ≤ k ending at column j</text>
+  <g stroke="#42525e" stroke-width="1.2">
+    <rect x="48" y="138" width="48" height="28" fill="#ffffff"/><rect x="100" y="138" width="48" height="28" fill="#ffffff"/><rect x="152" y="138" width="48" height="28" fill="#ffffff"/><rect x="204" y="138" width="48" height="28" fill="#ffffff"/>
+    <rect x="48" y="170" width="48" height="28" fill="#ffffff"/><rect x="100" y="170" width="48" height="28" fill="#ffffff"/><rect x="152" y="170" width="48" height="28" fill="#ffffff"/><rect x="204" y="170" width="48" height="28" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600">
+    <text x="72" y="157" fill="#9aa7b2">0</text><text x="124" y="157" fill="#4169E1">1</text><text x="176" y="157" fill="#4169E1">2</text><text x="228" y="157" fill="#4169E1">3</text>
+    <text x="72" y="189" fill="#9aa7b2">0</text><text x="124" y="189" fill="#9aa7b2">0</text><text x="176" y="189" fill="#9aa7b2">0</text><text x="228" y="189" fill="#4169E1">1</text>
+  </g>
+  <!-- column 3 stack evolution -->
+  <text x="320" y="38" fill="#5c6b76" font-size="12.5">column 3: stack of (run value, width)</text>
+  <text x="320" y="62" fill="#5c6b76" font-size="12">after row 0 (run = 3):</text>
+  <rect x="320" y="70" width="76" height="28" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <text x="358" y="89" text-anchor="middle" fill="#1a2026" font-size="13">(3, 1)</text>
+  <text x="412" y="89" fill="#1a2026" font-size="13">S = 3</text>
+  <path d="M 358 98 V 130" fill="none" stroke="#4169E1" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g fill="#5c6b76" font-size="12">
+    <text x="374" y="108">row 1 appends run = 1 —</text>
+    <text x="374" y="124">pops (3, 1) since 3 ≥ 1</text>
+  </g>
+  <text x="320" y="152" fill="#5c6b76" font-size="12">stack now (1 + popped width 1 = 2):</text>
+  <rect x="320" y="160" width="76" height="28" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="358" y="179" text-anchor="middle" fill="#4169E1" font-size="13" font-weight="600">(1, 2)</text>
+  <text x="412" y="179" fill="#4169E1" font-size="13" font-weight="600">S = 2</text>
+  <text x="320" y="212" fill="#5c6b76" font-size="12">columns 0–2 end at S = 0 (runs meet cells > k)</text>
+  <text x="340" y="246" text-anchor="middle" fill="#1a2026" font-size="13">per-corner counts: row 0 adds 0+1+2+3 = 6, row 1 adds 0+0+0+2 = 2</text>
+  <text x="340" y="276" text-anchor="middle" fill="#1a2026" font-size="13">Running sums total 6 + 2 = <tspan fill="#4169E1" font-weight="600">8</tspan> submatrices — all avoid cells above k = 3,</text>
+  <text x="340" y="296" text-anchor="middle" fill="#1a2026" font-size="13">with non-increasing rows, e.g. [3,2,1], [2,1] and [[1],[1]].</text>
+</svg>

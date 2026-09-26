@@ -26,4 +26,6 @@ with every query, so the answer is `-1`. Each query is pushed and popped
 once per role, and the answer is the total query count minus the
 selected minimum.
 
+![On nums = [2,0,2] with queries [[0,2],[0,2],[1,1]] the greedy keeps both [0,2] queries — coverage 2,2,2 meets demand 2,0,2 — and drops [1,1], removing 1 query.](figures/solution-greedy-keeps-farthest.svg)
+
 **Complexity:** `O((n + q) log q)` time, `O(n + q)` space.

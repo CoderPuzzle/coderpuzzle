@@ -21,4 +21,6 @@ and at each descent (and once more after the loop) fold
 `min(prev, cur)` and `cur // 2` into the answer. Every element is visited
 once with constant work; the counters stay below `n`, far inside 32 bits.
 
+![On nums = [2,5,7,8,9,2,3,4,3,1] the maximal increasing runs have lengths 5, 3, 1, 1, and the 9 → 2 descent between the first two gives k = min(prev, cur) = min(5, 3) = 3.](figures/solution-maximal-runs-boundaries.svg)
+
 **Complexity:** `O(n)` time, `O(1)` space, where `n = nums.length`.

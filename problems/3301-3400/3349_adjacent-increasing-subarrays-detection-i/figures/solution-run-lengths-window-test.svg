@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 264" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="264" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [2,5,7,8,9,2,3,4,3,1], k = 3; run[i] = 1,2,3,4,5,1,2,3,1,1; cells 52x42 at x = 66 + 58i, nums row y=42, run row y=118 -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="92" y="32">0</text><text x="150" y="32">1</text><text x="208" y="32">2</text><text x="266" y="32">3</text><text x="324" y="32">4</text><text x="382" y="32">5</text><text x="440" y="32">6</text><text x="498" y="32">7</text><text x="556" y="32">8</text><text x="614" y="32">9</text>
+  </g>
+  <text x="10" y="68" fill="#5c6b76" font-size="12.5">nums</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="66" y="42" width="52" height="42" fill="#ffffff"/><rect x="124" y="42" width="52" height="42" fill="#ffffff"/>
+    <rect x="182" y="42" width="52" height="42" fill="#dbe4fb"/><rect x="240" y="42" width="52" height="42" fill="#dbe4fb"/><rect x="298" y="42" width="52" height="42" fill="#dbe4fb"/>
+    <rect x="356" y="42" width="52" height="42" fill="#dbe4fb"/><rect x="414" y="42" width="52" height="42" fill="#dbe4fb"/><rect x="472" y="42" width="52" height="42" fill="#dbe4fb"/>
+    <rect x="530" y="42" width="52" height="42" fill="#ffffff"/><rect x="588" y="42" width="52" height="42" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="14.5">
+    <text x="92" y="68">2</text><text x="150" y="68">5</text><text x="208" y="68">7</text><text x="266" y="68">8</text><text x="324" y="68">9</text><text x="382" y="68">2</text><text x="440" y="68">3</text><text x="498" y="68">4</text><text x="556" y="68">3</text><text x="614" y="68">1</text>
+  </g>
+  <!-- the two adjacent length-3 windows -->
+  <rect x="182" y="90" width="168" height="3" fill="#4169E1"/>
+  <rect x="356" y="90" width="168" height="3" fill="#4169E1"/>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="266" y="110">[7,8,9]</text><text x="440" y="110">[2,3,4]</text>
+  </g>
+  <text x="10" y="143" fill="#5c6b76" font-size="12.5">run</text>
+  <g stroke="#42525e" stroke-width="1.4">
+    <rect x="66" y="118" width="52" height="38" fill="#ffffff"/><rect x="124" y="118" width="52" height="38" fill="#ffffff"/>
+    <rect x="182" y="118" width="52" height="38" fill="#dbe4fb"/><rect x="240" y="118" width="52" height="38" fill="#dbe4fb"/><rect x="298" y="118" width="52" height="38" fill="#dbe4fb"/>
+    <rect x="356" y="118" width="52" height="38" fill="#dbe4fb"/><rect x="414" y="118" width="52" height="38" fill="#dbe4fb"/><rect x="472" y="118" width="52" height="38" fill="#dbe4fb"/>
+    <rect x="530" y="118" width="52" height="38" fill="#ffffff"/><rect x="588" y="118" width="52" height="38" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="92" y="143">1</text><text x="150" y="143">2</text><text x="208" y="143">3</text><text x="266" y="143">4</text><text x="324" y="143" fill="#4169E1">5</text><text x="382" y="143">1</text><text x="440" y="143">2</text><text x="498" y="143" fill="#4169E1">3</text><text x="556" y="143">1</text><text x="614" y="143">1</text>
+  </g>
+  <!-- window-ending indices 4 and 7 sit k = 3 apart -->
+  <g stroke="#9aa7b2" stroke-width="1.2">
+    <path d="M 324 158 V 172"/><path d="M 498 158 V 172"/>
+  </g>
+  <path d="M 324 172 H 498" fill="none" stroke="#4169E1" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="411" y="166" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">3 apart = k</text>
+  <text x="330" y="200" text-anchor="middle" fill="#1a2026" font-size="13">i = 7: run[7] = <tspan fill="#4169E1" font-weight="600">3</tspan> ≥ k and run[7 − k] = run[4] = <tspan fill="#4169E1" font-weight="600">5</tspan> ≥ k</text>
+  <text x="330" y="230" text-anchor="middle" fill="#1a2026" font-size="13">Both length-3 windows [7,8,9] and [2,3,4] are strictly increasing</text>
+  <text x="330" y="250" text-anchor="middle" fill="#1a2026" font-size="13">and adjacent, so the answer is <tspan fill="#4169E1" font-weight="600">true</tspan>.</text>
+</svg>

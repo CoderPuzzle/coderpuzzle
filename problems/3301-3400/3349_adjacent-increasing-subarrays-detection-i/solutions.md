@@ -19,4 +19,6 @@ window ending at `i`, the second the window ending `k` positions earlier,
 and the gap of exactly `k` makes them adjacent. A single scan over `i`
 checks every placement.
 
+![On nums = [2,5,7,8,9,2,3,4,3,1] with k = 3 the strictly increasing run lengths are 1,2,3,4,5,1,2,3,1,1, and run[7] = 3 ≥ k together with run[4] = 5 ≥ k certifies the adjacent windows [7,8,9] and [2,3,4].](figures/solution-run-lengths-window-test.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space, where `n = nums.length`.

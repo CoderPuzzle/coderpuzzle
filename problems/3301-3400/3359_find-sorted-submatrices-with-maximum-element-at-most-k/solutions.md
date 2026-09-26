@@ -22,6 +22,8 @@ new run value pops equal-or-larger entries (their minima drop to the new
 value), and the resulting sum is exactly the number of valid submatrices
 ending at the current cell.
 
+![On grid = [[4,3,2,1],[8,7,6,1]] with k = 3 the run lengths are 0,1,2,3 and 0,0,0,1, and column 3's stack pops (3, 1) into (1, 2), dropping its sum from 3 to 2 inside the 6 + 2 = 8 total.](figures/solution-row-runs-column-stack.svg)
+
 Each cell is pushed and popped at most once per column, so the sweep is
 linear in the grid with a single row of auxiliary state. The answer grows
 to C(m+1, 2) · C(n+1, 2) ≈ 2.5·10¹¹ at the 10³ × 10³ limit — past 32 bits,
