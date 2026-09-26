@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b76"/>
+    </marker>
+  </defs>
+  <!-- nums1 = [1,10,6,2], nums2 = [1,4,1,5] -> d = [0,6,5,-3], sorted [-3,0,5,6]; cells 74x42 at (190,96); sweep banks r-l = 3 then 2, answer 5 -->
+  <text x="320" y="40" text-anchor="middle" fill="#1a2026">d = [0, 6, 5, -3]<tspan fill="#5c6b76">   (d[i] = nums1[i] - nums2[i])</tspan></text>
+  <path d="M 320 52 L 320 84" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrowG)"/>
+  <text x="334" y="73" text-anchor="start" fill="#5c6b76" font-size="12">sort</text>
+  <!-- sorted differences; d[r] = 6 accented -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="190" y="96" width="74" height="42"/>
+    <rect x="264" y="96" width="74" height="42"/>
+    <rect x="338" y="96" width="74" height="42"/>
+    <rect x="412" y="96" width="74" height="42" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle" font-size="16" font-weight="600" fill="#1a2026">
+    <text x="227" y="123">-3</text>
+    <text x="301" y="123">0</text>
+    <text x="375" y="123">5</text>
+    <text x="449" y="123">6</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.8" fill="none">
+    <path d="M 227 172 L 227 148" marker-end="url(#arrow)"/>
+    <path d="M 449 172 L 449 148" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#4169E1">
+    <text x="227" y="192">l</text>
+    <text x="449" y="192">r</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5" fill="#1a2026">
+    <text x="320" y="216">-3 + 6 = 3 &gt; 0: bank r - l = <tspan fill="#4169E1" font-weight="600">3</tspan> (6 pairs with -3, 0, 5), r--</text>
+    <text x="320" y="236">-3 + 5 = 2 &gt; 0: bank r - l = <tspan fill="#4169E1" font-weight="600">2</tspan> (5 pairs with -3, 0), r--</text>
+    <text x="320" y="256">-3 + 0 = -3 &lt;= 0: l++ &#8230; l meets r, stop</text>
+  </g>
+  <text x="320" y="288" text-anchor="middle" fill="#1a2026" font-size="13">Once d[l] + d[r] &gt; 0, every element between the pointers also pairs with d[r]:</text>
+  <text x="320" y="306" text-anchor="middle" fill="#1a2026" font-size="13">3 + 2 banked pairs = <tspan fill="#4169E1" font-weight="600">5</tspan> in one sweep &#8212; the example's answer.</text>
+</svg>

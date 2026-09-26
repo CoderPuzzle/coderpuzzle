@@ -16,6 +16,8 @@ swap. After all rows settle, emit the rotated matrix using
 `out[r][c] = rows[m - 1 - c][r]`, which is exactly a 90-degree clockwise
 turn of an m x n grid into n x m.
 
+![On example 2's 2 x 4 box, sliding each row right to left settles row 0 to . # * . while row 1 keeps its stones, and the settled grid turns 90 degrees clockwise into the 4 x 2 answer via out[r][c] = rows[m - 1 - c][r].](figures/solution-slide-then-rotate.svg)
+
 Each cell is touched a constant number of times across the two passes.
 
 **Complexity:** `O(m·n)` time, `O(m·n)` space for the result.

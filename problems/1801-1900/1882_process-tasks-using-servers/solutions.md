@@ -11,6 +11,8 @@ earliest release in `busy` and drain again. Then take the `(weight,
 index)`-smallest free server, record its index, and push it onto `busy`
 with release time `cur + tasks[j]`.
 
+![On example 1's servers [3,3,2] and tasks [1,2,3,2,1,2], the 0-7 second timeline shows each server's task bars and the drain-then-pop steps at t = 1 and t = 5, ending in ans = [2,2,0,2,1,2].](figures/solution-two-heap-timeline.svg)
+
 The heap orders reproduce the statement's priority rules exactly:
 `(weight, index)` picks the lightest then lowest-indexed server, and
 draining everything released at or before `cur` handles simultaneous

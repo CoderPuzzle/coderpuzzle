@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- servers = [3,3,2], tasks = [1,2,3,2,1,2]; seconds 0-7 at x = 110 + 60t; bars 26px tall on three server rows; ans = [2,2,0,2,1,2] -->
+  <text x="110" y="24" text-anchor="start" fill="#9aa7b2" font-size="11.5">bar label Tj = task j</text>
+  <g stroke="#9aa7b2" stroke-width="0.5">
+    <path d="M 110 70 V 210 M 170 70 V 210 M 230 70 V 210 M 290 70 V 210 M 350 70 V 210 M 410 70 V 210 M 470 70 V 210 M 530 70 V 210"/>
+  </g>
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="100" y="99">s0 w3</text>
+    <text x="100" y="139">s1 w3</text>
+    <text x="100" y="179">s2 w2</text>
+  </g>
+  <!-- per-server task bars -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.4">
+    <rect x="230" y="82" width="180" height="26"/>
+    <rect x="350" y="122" width="60" height="26"/>
+    <rect x="110" y="162" width="60" height="26"/>
+    <rect x="170" y="162" width="120" height="26"/>
+    <rect x="290" y="162" width="120" height="26"/>
+    <rect x="410" y="162" width="120" height="26"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="12.5">
+    <text x="320" y="99">T2</text>
+    <text x="380" y="139">T4</text>
+    <text x="140" y="179">T0</text>
+    <text x="230" y="179">T1</text>
+    <text x="350" y="179">T3</text>
+    <text x="470" y="179">T5</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="320" y="76">pop (3,0)</text>
+    <text x="380" y="116">pop (3,1)</text>
+  </g>
+  <!-- drain annotations -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="150" y="38">t=1: drain s2</text>
+    <text x="150" y="52">pop (2,2) again</text>
+    <text x="470" y="38">t=5: drain s0, s1, s2</text>
+    <text x="470" y="52">pop (2,2)</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="1.6" fill="none">
+    <path d="M 150 58 L 167 155" marker-end="url(#arrow)"/>
+    <path d="M 470 58 L 470 155" marker-end="url(#arrow)"/>
+  </g>
+  <!-- time axis -->
+  <path d="M 104 210 H 540" fill="none" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <path d="M 110 206 V 214 M 170 206 V 214 M 230 206 V 214 M 290 206 V 214 M 350 206 V 214 M 410 206 V 214 M 470 206 V 214 M 530 206 V 214"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="110" y="228">0</text><text x="170" y="228">1</text><text x="230" y="228">2</text>
+    <text x="290" y="228">3</text><text x="350" y="228">4</text><text x="410" y="228">5</text>
+    <text x="470" y="228">6</text><text x="530" y="228">7</text>
+  </g>
+  <text x="320" y="270" text-anchor="middle" fill="#1a2026" font-size="13">Drain busy servers with release &lt;= cur into free, then pop the (weight, index)-min.</text>
+  <text x="320" y="288" text-anchor="middle" fill="#1a2026" font-size="13">Server 2 (w2) wins at t = 0, 1, 3, 5 &#8212; ans = <tspan fill="#4169E1" font-weight="600">[2,2,0,2,1,2]</tspan>.</text>
+</svg>

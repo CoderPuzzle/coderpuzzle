@@ -14,6 +14,8 @@ as `d[l]`), so add `r - l` and step `r` down; otherwise step `l` up.
 Each element leaves exactly once, giving the full count of pairs with
 positive sum.
 
+![On example 2's differences [0,6,5,-3] sorted to [-3,0,5,6], the sweep banks r - l = 3 then 2 pairs while d[l] + d[r] stays positive and stops once -3 is measured against 0, counting the answer 5.](figures/solution-sorted-diff-two-pointer.svg)
+
 The maximum possible answer is C(10^5, 2) ≈ 5 * 10^9, which overflows
 32 bits — the 64-bit return type carries it. Differences fit easily in
 32-bit intermediates (`|d| < 10^5`) but are widened on accumulation.

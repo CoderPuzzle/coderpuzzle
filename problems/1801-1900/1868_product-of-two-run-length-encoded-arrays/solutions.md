@@ -15,6 +15,8 @@ instead when the product matches. Whichever side hits zero advances to
 its next segment and refills its leftover. The loop performs exactly one
 step per output run, so it never materializes the expanded arrays.
 
+![On example 2's encodings, the shared cursor takes min-leftover runs of 3, 1 and 2 cells at products 2, 6 and 9, giving the compressed output [[2,3],[6,1],[9,2]].](figures/solution-rle-min-leftover-sweep.svg)
+
 Every input segment is consumed in one or more constant-time steps, and
 each output run is written once.
 

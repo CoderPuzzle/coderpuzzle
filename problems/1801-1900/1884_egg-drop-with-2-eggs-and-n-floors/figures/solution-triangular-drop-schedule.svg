@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="260" fill="#ffffff"/>
+  <!-- n = 100; first-egg drops at 9, 22, 34, ..., 100 at x = 50 + 5.5*floor; gaps shrink 12, 11, 10, ...; gap budgets: 1+8=9, then 2+12=3+11=...=14 -->
+  <!-- floor axis 0..100 -->
+  <path d="M 46 130 H 612" fill="none" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <path d="M 50 126 V 134 M 610 126 V 134"/>
+    <path d="M 100 130 V 136 M 171 130 V 136 M 237 130 V 136 M 298 130 V 136"/>
+  </g>
+  <text x="50" y="150" text-anchor="middle" fill="#5c6b76" font-size="11.5">0</text>
+  <!-- first-egg drop stems at 9, 22, 34, 45, 55, 64, 72, 79, 85, 90, 94, 97, 99, 100 -->
+  <g stroke="#4169E1" stroke-width="1.5">
+    <path d="M 100 122 V 130 M 171 122 V 130 M 237 122 V 130 M 298 122 V 130 M 353 122 V 130 M 402 122 V 130 M 446 122 V 130 M 485 122 V 130 M 518 122 V 130 M 545 122 V 130 M 567 122 V 130 M 584 122 V 130 M 595 122 V 130 M 600 122 V 130"/>
+  </g>
+  <g fill="#4169E1">
+    <polygon points="100,128 96,120 104,120"/>
+    <polygon points="171,128 167,120 175,120"/>
+    <polygon points="237,128 233,120 241,120"/>
+    <polygon points="298,128 294,120 302,120"/>
+    <polygon points="353,128 349,120 357,120"/>
+    <polygon points="600,128 596,120 604,120"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5">
+    <text x="100" y="112">9</text>
+    <text x="171" y="112">22</text>
+    <text x="237" y="112">34</text>
+    <text x="298" y="112">45</text>
+    <text x="353" y="112">55</text>
+    <text x="460" y="112" fill="#9aa7b2">&#8230;</text>
+    <text x="600" y="112">100</text>
+  </g>
+  <!-- per-gap move budgets: first-egg drops used + floors to linear-scan -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="11">
+    <text x="75" y="152">1+8=9</text>
+    <text x="136" y="152">2+12=14</text>
+    <text x="204" y="152">3+11=14</text>
+    <text x="268" y="152">4+10=14</text>
+    <text x="325" y="152">5+9=14</text>
+    <text x="390" y="152" fill="#9aa7b2">&#8230;</text>
+  </g>
+  <text x="320" y="210" text-anchor="middle" fill="#1a2026" font-size="13">Gap k costs k+1 first-egg moves plus one scan per floor left in the gap, never more than 14.</text>
+  <text x="320" y="228" text-anchor="middle" fill="#1a2026" font-size="13">cover(m) = m(m+1)/2: 13 moves cover 91 &lt; 100, 14 moves cover 105 &#8212; answer <tspan fill="#4169E1" font-weight="600">14</tspan>.</text>
+</svg>

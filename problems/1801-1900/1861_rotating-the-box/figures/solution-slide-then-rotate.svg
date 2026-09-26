@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="280" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- box = [["#",".","*","."],["#","#","*","."]]; cells 36x32; slide settles row 0 to [".","#","*","."]; out = 4x2 grid at (456,46), moved stone accented -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="122" y="64">input 2 x 4</text>
+    <text x="324" y="64">after the slide</text>
+    <text x="492" y="34">output 4 x 2</text>
+  </g>
+  <!-- input grid -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="50" y="76" width="36" height="32" fill="#dbe4fb"/><rect x="86" y="76" width="36" height="32"/>
+    <rect x="122" y="76" width="36" height="32"/><rect x="158" y="76" width="36" height="32"/>
+    <rect x="50" y="108" width="36" height="32"/><rect x="86" y="108" width="36" height="32"/>
+    <rect x="122" y="108" width="36" height="32"/><rect x="158" y="108" width="36" height="32"/>
+  </g>
+  <g text-anchor="middle" font-size="15">
+    <text x="68" y="97" fill="#1a2026" font-weight="600">#</text><text x="104" y="97" fill="#9aa7b2">.</text>
+    <text x="140" y="97" fill="#5c6b76">*</text><text x="176" y="97" fill="#9aa7b2">.</text>
+    <text x="68" y="129" fill="#1a2026" font-weight="600">#</text><text x="104" y="129" fill="#1a2026" font-weight="600">#</text>
+    <text x="140" y="129" fill="#5c6b76">*</text><text x="176" y="129" fill="#9aa7b2">.</text>
+  </g>
+  <path d="M 200 108 H 244" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="223" y="96" text-anchor="middle" fill="#5c6b76" font-size="12">slide</text>
+  <!-- settled grid -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="252" y="76" width="36" height="32"/><rect x="288" y="76" width="36" height="32" fill="#dbe4fb"/>
+    <rect x="324" y="76" width="36" height="32"/><rect x="360" y="76" width="36" height="32"/>
+    <rect x="252" y="108" width="36" height="32"/><rect x="288" y="108" width="36" height="32"/>
+    <rect x="324" y="108" width="36" height="32"/><rect x="360" y="108" width="36" height="32"/>
+  </g>
+  <g text-anchor="middle" font-size="15">
+    <text x="270" y="97" fill="#9aa7b2">.</text><text x="306" y="97" fill="#1a2026" font-weight="600">#</text>
+    <text x="342" y="97" fill="#5c6b76">*</text><text x="378" y="97" fill="#9aa7b2">.</text>
+    <text x="270" y="129" fill="#1a2026" font-weight="600">#</text><text x="306" y="129" fill="#1a2026" font-weight="600">#</text>
+    <text x="342" y="129" fill="#5c6b76">*</text><text x="378" y="129" fill="#9aa7b2">.</text>
+  </g>
+  <path d="M 404 108 H 448" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="426" y="96" text-anchor="middle" fill="#5c6b76" font-size="12">rotate</text>
+  <text x="426" y="130" text-anchor="middle" fill="#5c6b76" font-size="12">90&#176;</text>
+  <!-- rotated grid; the slid stone lands at out[1][0] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="456" y="46" width="36" height="32"/><rect x="492" y="46" width="36" height="32"/>
+    <rect x="456" y="78" width="36" height="32" fill="#dbe4fb"/><rect x="492" y="78" width="36" height="32"/>
+    <rect x="456" y="110" width="36" height="32"/><rect x="492" y="110" width="36" height="32"/>
+    <rect x="456" y="142" width="36" height="32"/><rect x="492" y="142" width="36" height="32"/>
+  </g>
+  <g text-anchor="middle" font-size="15">
+    <text x="474" y="67" fill="#1a2026" font-weight="600">#</text><text x="510" y="67" fill="#9aa7b2">.</text>
+    <text x="474" y="99" fill="#1a2026" font-weight="600">#</text><text x="510" y="99" fill="#1a2026" font-weight="600">#</text>
+    <text x="474" y="131" fill="#5c6b76">*</text><text x="510" y="131" fill="#5c6b76">*</text>
+    <text x="474" y="163" fill="#9aa7b2">.</text><text x="510" y="163" fill="#9aa7b2">.</text>
+  </g>
+  <text x="320" y="224" text-anchor="middle" fill="#1a2026" font-size="13">Slide each row right to left, then emit out[r][c] = rows[m-1-c][r]:</text>
+  <text x="320" y="244" text-anchor="middle" fill="#1a2026" font-size="13">row 0's lone stone rests against the obstacle, and the 4 x 2 turn matches the example.</text>
+</svg>
