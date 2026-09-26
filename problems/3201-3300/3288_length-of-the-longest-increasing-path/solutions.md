@@ -12,6 +12,8 @@ all: any path through them would need a step where x or y fails to grow.
 So the answer is one plus the longest chain among the below-left points
 plus the longest chain among the above-right points.
 
+![On coordinates = [[3,1],[2,2],[4,1],[0,0],[5,3]] with pivot (2,2), only (0,0) lies below-left and only (5,3) above-right while (3,1) and (4,1) fall outside both quadrants, so the chain (0,0) → (2,2) → (5,3) gives 1 + 1 + 1 = 3.](figures/solution-pivot-quadrant-lis.svg)
+
 Each half is a longest increasing subsequence over 2D points: order the
 points by x ascending, breaking ties by y **descending**, then find the
 longest strictly increasing subsequence of the y values. The tie-break is

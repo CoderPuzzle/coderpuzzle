@@ -13,6 +13,8 @@ over words and `reach[i]` is the longest usable piece starting at `i`. With
 right by any length in `[1, reach[i]]`, and the answer is the fewest jumps to
 cover all `n` characters.
 
+![On target "aabcdabc" from words ["abc","aaaaa","bcdef"], the reach arrows carry 2, 3, 3, 0, 0, 3, 2, 0 and the layered frontier commits the pieces aa, bcd, abc — three layers, the answer 3.](figures/solution-reach-layers.svg)
+
 The jump count falls out of a single layered frontier scan rather than explicit
 range updates. Distances are monotone along `target` — every prefix of a valid
 string is itself valid, so a cheaper way to reach an earlier offset never

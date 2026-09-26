@@ -22,6 +22,8 @@ collects exactly. The optimal play is therefore fixed: repeatedly hop to
 the nearest strictly greater value, defaulting to the last index once
 none exists.
 
+![On nums = [1,3,1,5], every index's jump arc to its nearest strictly greater value is weighted (j - i) * nums[i] — 1·1, 2·3, and index 2's off-chain 1·1 — and the chain 0 → 1 → 3 sums to 7.](figures/solution-nearest-greater-hops.svg)
+
 Precompute those nearest greater neighbors in one right-to-left pass with
 a monotonic stack of candidates whose neighbor is still unknown — popping
 entries whose values do not exceed the current element leaves exactly the

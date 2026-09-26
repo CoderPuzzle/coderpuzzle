@@ -60,6 +60,8 @@ nondecreasing order just as in Dijkstra, and the answer is whether the
 destination's final distance stays within the budget. A plain BFS or a
 binary heap both work too; the deque merely avoids the heap's log factor.
 
+![On Example 1's grid with health = 1, the dist matrix fills as a 0-1 BFS wave: eleven 0-cells settle at cost 0 via front pushes (#0–#10, reaching the target last), the four 1-cells via back pushes at cost 1, so dist[2][4] = 0 meets the budget 0.](figures/solution-zero-one-bfs-wave.svg)
+
 The numbers stay tiny: costs never exceed `m * n <= 2500`, so 32-bit
 integers hold everything with room to spare.
 
