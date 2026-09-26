@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- hens = [3,6,7] at x = 60+58(p-1); grains = [2,4,7,9]; budget t = 2; segments [2],[4],[7,9] -->
+  <text x="320" y="40" text-anchor="middle" fill="#5c6b76" font-size="13">binary search mid <tspan fill="#4169E1" font-weight="600">t = 2</tspan>: hand each hen a contiguous grain prefix</text>
+  <g>
+    <circle cx="56" cy="62" r="6" fill="#4169E1"/>
+    <text x="68" y="66" fill="#5c6b76" font-size="11.5">hen</text>
+    <path d="M 56 82 L 61.5 88 L 56 94 L 50.5 88 Z" fill="#1a2026"/>
+    <text x="68" y="92" fill="#5c6b76" font-size="11.5">grain</text>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="11.5">
+    <text x="176" y="98">hen 3</text><text x="350" y="98">hen 6</text><text x="408" y="98">hen 7</text>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="176" cy="118" r="7"/><circle cx="350" cy="118" r="7"/><circle cx="408" cy="118" r="7"/>
+  </g>
+  <line x1="408" y1="127" x2="408" y2="141" stroke="#5c6b76" stroke-width="1.2" stroke-dasharray="2 3"/>
+  <!-- assignment arcs onto each hen's covered span -->
+  <g stroke="#4169E1" stroke-width="1.6" fill="none" marker-end="url(#arrow)">
+    <path d="M 168 112 Q 138 116 128 136"/>
+    <path d="M 342 111 Q 290 108 246 136"/>
+    <path d="M 414 112 Q 440 118 462 136"/>
+  </g>
+  <rect x="110" y="139" width="17" height="4" fill="#4169E1"/>
+  <rect x="225" y="139" width="18" height="4" fill="#4169E1"/>
+  <rect x="400" y="139" width="132" height="4" fill="#4169E1"/>
+  <!-- number line 1..10 -->
+  <line x1="40" y1="150" x2="612" y2="150" stroke="#42525e" stroke-width="1.6"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="60" y1="150" x2="60" y2="156"/><line x1="118" y1="150" x2="118" y2="156"/><line x1="176" y1="150" x2="176" y2="156"/>
+    <line x1="234" y1="150" x2="234" y2="156"/><line x1="292" y1="150" x2="292" y2="156"/><line x1="350" y1="150" x2="350" y2="156"/>
+    <line x1="408" y1="150" x2="408" y2="156"/><line x1="466" y1="150" x2="466" y2="156"/><line x1="524" y1="150" x2="524" y2="156"/>
+    <line x1="582" y1="150" x2="582" y2="156"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="60" y="172">1</text><text x="118" y="172">2</text><text x="176" y="172">3</text><text x="234" y="172">4</text>
+    <text x="292" y="172">5</text><text x="350" y="172">6</text><text x="408" y="172">7</text><text x="466" y="172">8</text>
+    <text x="524" y="172">9</text><text x="582" y="172">10</text>
+  </g>
+  <g fill="#1a2026">
+    <path d="M 118 143 L 124.5 150 L 118 157 L 111.5 150 Z"/>
+    <path d="M 234 143 L 240.5 150 L 234 157 L 227.5 150 Z"/>
+    <path d="M 408 143 L 414.5 150 L 408 157 L 401.5 150 Z"/>
+    <path d="M 524 143 L 530.5 150 L 524 157 L 517.5 150 Z"/>
+  </g>
+  <!-- per-hen sweep cost min(2L+R, L+2R) inside t = 2 -->
+  <g fill="#1a2026" font-size="12.5">
+    <text x="60" y="210"><tspan fill="#4169E1" font-weight="600">hen 3</tspan> covers grain [2]: L = 1, R = 0 → min(2·1 + 0, 1 + 0) = 1 <tspan fill="#4169E1" font-weight="600">≤ 2</tspan></text>
+    <text x="60" y="234"><tspan fill="#4169E1" font-weight="600">hen 6</tspan> covers grain [4]: L = 2, R = 0 → min(2·2 + 0, 2 + 0) = 2 <tspan fill="#4169E1" font-weight="600">≤ 2</tspan></text>
+    <text x="60" y="258"><tspan fill="#4169E1" font-weight="600">hen 7</tspan> covers grains [7, 9]: L = 0, R = 2 → min(2·0 + 2, 0 + 2·2) = 2 <tspan fill="#4169E1" font-weight="600">≤ 2</tspan></text>
+  </g>
+  <text x="320" y="300" text-anchor="middle" fill="#1a2026" font-size="13">The greedy check passes at the bisected budget t = <tspan fill="#4169E1" font-weight="600">2</tspan>: all four grains are eaten,</text>
+  <text x="320" y="320" text-anchor="middle" fill="#1a2026" font-size="13">while t = 1 fails — hen 6 alone needs 2 seconds to reach grain 4 — so the answer is <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

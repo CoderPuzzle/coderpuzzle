@@ -21,6 +21,8 @@ succeeds when every grain is consumed. Since all positions lie in
 `[0, 10⁹]`, `L + R ≤ 10⁹` for every segment, so costs stay at or below
 `1.5 · 10⁹`; 64-bit accumulators keep the arithmetic comfortably safe.
 
+![On example 1's hens [3, 6, 7] and grains [2, 4, 7, 9] at the bisected budget t = 2, the sweep hands hen 3 the grain at 2 for min(2·1 + 0, 1 + 0) = 1, hen 6 the grain at 4 for min(2·2 + 0, 2 + 0) = 2, and hen 7 the grains 7 and 9 for min(2·0 + 2, 0 + 2·2) = 2, so t = 2 is feasible.](figures/solution-greedy-budget-check.svg)
+
 **Complexity:** sorting plus about thirty-one linear sweeps of both arrays,
 so `O((n + m)(log n + log m + log A))` time with `A` the position bound;
 `O(1)` extra space beyond sorting.

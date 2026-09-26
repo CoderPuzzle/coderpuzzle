@@ -6,6 +6,8 @@ Equal sums for all circular windows of length `k` force adjacent windows to agre
 
 Equalizing a group of numbers with unit increments and decrements is cheapest around a median, so the code extracts each residue class `r, r + g, r + 2g, ...`, sorts it, and takes element `len(group) // 2` — for even-sized groups either middle element achieves the same minimal total. The cost of a class is the sum of `|v - median|` over its members.
 
+![In example 1 (arr [1, 4, 1, 3], k = 2, gcd 2) the ring splits into class {0, 2} = [1, 1] with cost 0 around its median and class {1, 3} = [4, 3] with cost |4−3| = 1 around median 3 — the single unit move 4 → 3.](figures/solution-gcd-class-medians.svg)
+
 Classes are independent because the window-sum constraint never couples two different residues, so the answer is just the sum of the per-class costs. Sorting the classes partitions all `n` elements, keeping the total work bounded by one global sort.
 
 **Complexity:** `O(n log n)` time, `O(n)` space.

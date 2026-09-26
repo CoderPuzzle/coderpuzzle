@@ -17,6 +17,8 @@ delta `dc` the move is a knight move exactly when `(dr, dc)` equals
 enumerated offset table is needed. Any failing pair, or a nonzero value
 on the top-left cell, rejects the whole board immediately.
 
+![Walking example 1's visits 1 through 24 through the inverse table, all 24 hops have row/column deltas of (2, 1) or (1, 2), so the tour 0 to 24 is valid and the answer is true.](figures/solution-inverse-position-walk.svg)
+
 Boards are tiny (`n <= 7`), so both passes run in microseconds; the
 check touches every cell once plus every hop once. Iteration and helper
 state are flat loops over preallocated arrays, so there is no recursion

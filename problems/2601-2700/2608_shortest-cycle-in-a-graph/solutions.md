@@ -9,6 +9,8 @@ _cross_ edge `(u, v)` — one whose endpoints already knew shorter routes back
 to the root — closes a ring whose length is exactly `dist[u] + dist[v] + 1`:
 walk from the root down to `u`, hop across, and climb back up `v`'s levels.
 
+![BFS rooted at 0 over example 1's graph discovers vertices 1 and 2 at dist 1, and the parent-checked cross edge 1–2 closes the cycle 0 → 1 → 2 → 0 of length 1 + 1 + 1 = 3, the shortest in the graph.](figures/solution-bfs-cross-edge-cycle.svg)
+
 Two details keep the count honest. First, an edge must be rejected when
 either endpoint is the other's `parent`, because re-scanning the very edge
 that built the tree would report "cycles" of no such length. Second,

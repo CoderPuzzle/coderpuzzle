@@ -24,5 +24,7 @@ exactly one valid selection; subtracting the single empty selection from
 the leaf total gives the count of non-empty beautiful subsets. The
 backtrack-depth equals `n <= 18`.
 
+![On example 1's sorted nums [2, 4, 6] with k = 2, the take-or-skip recursion reaches five leaves; keeping both 2 and 4 (or 4 and 6) is pruned by the cnt[value − k] clash check, and the four accented non-empty leaves give the answer 4.](figures/solution-take-or-skip-tree.svg)
+
 **Complexity:** `O(2^n)` time in the worst conflict-free case, `O(n)`
 space.
