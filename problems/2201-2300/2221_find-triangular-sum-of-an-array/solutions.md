@@ -16,4 +16,6 @@ read again. Python and Rust build each next row into its own list for the
 same effect; JavaScript and TypeScript slice once to keep the caller's array
 intact. When a single element remains it is the triangular sum.
 
+![For nums = [1,2,3,4,5] each row applies (a + b) % 10 to adjacent pairs, shrinking [1,2,3,4,5] through [3,5,7,9], [8,2,6], [0,8] to the apex 8.](figures/solution-triangular-pair-sums.svg)
+
 **Complexity:** `O(n²)` time, `O(1)` extra space (in-place variants).

@@ -6,6 +6,8 @@ Splitting the `2n` input elements into two equal halves makes the subset sums of
 
 To enumerate efficiently, subset sums of each half are bucketed by how many elements produce them — `A[c]` lists all sums of `c`-element subsets of the first half, `B[c]` likewise for the second half — by iterating every bitmask. For each count `c`, the list `B[n - c]` is sorted (once), and for each `a` in `A[c]` a binary search finds the insertion point of the value nearest to `total/2 - a`; the candidate `b` on each side of that point is evaluated and the best absolute difference retained. Working with `2*b >= total - 2*a` keeps everything in exact integers and sidesteps the half-sum being fractional.
 
+![On nums = [3,9,7,3] the halves bucket into A = 0 | 3,9 | 12 and B = 0 | 3,7 | 10, and the binary-searched pairings 3 with 7 and 9 with 3 drive |total - 2(a + b)| down to 2.](figures/solution-meet-in-the-middle-buckets.svg)
+
 Negative values need no special treatment because the search compares sums directly rather than assuming monotone subset structure. The minimum over all counts and all pairs is the answer; the smallest possible difference of 0 is found naturally when the two sides balance exactly.
 
 **Complexity:** `O(n * 2^n)` time, `O(2^n)` space.

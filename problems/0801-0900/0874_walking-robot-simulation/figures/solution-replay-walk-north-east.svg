@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- commands [4,-1,3]: lattice unit 56px in x / 52px in y, cell (0,0) at pixel (110,292); trace panel x=360..620 -->
+  <g stroke="#dbe4fb" stroke-width="1">
+    <line x1="110" y1="84" x2="110" y2="292"/><line x1="166" y1="84" x2="166" y2="292"/><line x1="222" y1="84" x2="222" y2="292"/><line x1="278" y1="84" x2="278" y2="292"/>
+    <line x1="110" y1="84" x2="278" y2="84"/><line x1="110" y1="136" x2="278" y2="136"/><line x1="110" y1="188" x2="278" y2="188"/><line x1="110" y1="240" x2="278" y2="240"/><line x1="110" y1="292" x2="278" y2="292"/>
+  </g>
+  <g fill="#9aa7b2">
+    <circle cx="166" cy="136" r="2.5"/><circle cx="222" cy="136" r="2.5"/><circle cx="278" cy="136" r="2.5"/>
+    <circle cx="166" cy="188" r="2.5"/><circle cx="222" cy="188" r="2.5"/><circle cx="278" cy="188" r="2.5"/>
+    <circle cx="166" cy="240" r="2.5"/><circle cx="222" cy="240" r="2.5"/><circle cx="278" cy="240" r="2.5"/>
+  </g>
+  <!-- one arrowhead per unit move: 4 north, then 3 east after the right turn -->
+  <g stroke="#4169E1" stroke-width="2.5">
+    <line x1="110" y1="292" x2="110" y2="240" marker-end="url(#arrowA)"/>
+    <line x1="110" y1="240" x2="110" y2="188" marker-end="url(#arrowA)"/>
+    <line x1="110" y1="188" x2="110" y2="136" marker-end="url(#arrowA)"/>
+    <line x1="110" y1="136" x2="110" y2="84" marker-end="url(#arrowA)"/>
+    <line x1="110" y1="84" x2="166" y2="84" marker-end="url(#arrowA)"/>
+    <line x1="166" y1="84" x2="222" y2="84" marker-end="url(#arrowA)"/>
+    <line x1="222" y1="84" x2="267" y2="84" marker-end="url(#arrowA)"/>
+  </g>
+  <!-- right-turn arc at the corner (0, 4), clockwise north to east -->
+  <path d="M 110 66 A 18 18 0 0 1 128 84" fill="none" stroke="#42525e" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <circle cx="110" cy="292" r="4" fill="#1a2026"/>
+  <circle cx="278" cy="84" r="10" fill="#4169E1"/>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="96" y="296" text-anchor="end">(0, 0)</text>
+    <text x="96" y="88" text-anchor="end">(0, 4)</text>
+    <!-- knockout so the label clears the y=188 grid line, the x=166 grid line, and the lattice dot -->
+    <rect x="119" y="177" width="82" height="16" fill="#ffffff"/>
+    <text x="122" y="190">4: north ×4</text>
+    <text x="194" y="66" text-anchor="middle">3: east ×3</text>
+    <text x="140" y="70">-1</text>
+  </g>
+  <text x="292" y="88" fill="#1a2026" font-weight="600">(3, 4)</text>
+  <g font-size="12.5">
+    <text x="366" y="86" fill="#5c6b76">commands [4, -1, 3], obstacles = []</text>
+    <text x="366" y="116" fill="#1a2026" font-weight="600">4</text>
+    <text x="398" y="116" fill="#1a2026">north ×4</text>
+    <text x="480" y="116" fill="#5c6b76">at (0, 4), best 16</text>
+    <text x="366" y="146" fill="#1a2026" font-weight="600">-1</text>
+    <text x="398" y="146" fill="#1a2026">turn right → east</text>
+    <text x="366" y="176" fill="#1a2026" font-weight="600">3</text>
+    <text x="398" y="176" fill="#1a2026">east ×3</text>
+    <text x="480" y="176" fill="#5c6b76">at (3, 4), best <tspan fill="#4169E1" font-weight="600">25</tspan></text>
+  </g>
+  <line x1="360" y1="196" x2="620" y2="196" stroke="#dbe4fb" stroke-width="1"/>
+  <text x="366" y="222" font-size="13" fill="#1a2026">furthest point (3, 4): 3² + 4² = 9 + 16 = <tspan fill="#4169E1" font-weight="600">25</tspan></text>
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="366" y="246">each unit move looks up the next cell</text>
+    <text x="366" y="264">in the obstacle set (empty here)</text>
+  </g>
+  <text x="320" y="316" text-anchor="middle" font-size="13" fill="#1a2026">Four north, a right turn, three east — the robot ends at (3, 4),</text>
+  <text x="320" y="336" text-anchor="middle" font-size="13" fill="#1a2026">and the furthest point of the whole path is (3, 4): 3² + 4² = <tspan fill="#4169E1" font-weight="600">25</tspan>.</text>
+</svg>

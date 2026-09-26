@@ -32,4 +32,6 @@ point somewhere in the middle of the run. Squared distances peak at
 solutions accumulate the square in a 64-bit value and narrow it at return,
 keeping a comfortable margin under the guaranteed bound.
 
+![On commands [4, -1, 3] with no obstacles, the robot walks four north to (0, 4), turns right, and walks three east to (3, 4), so the furthest point of the whole path is (3, 4) and the answer is 3² + 4² = 25.](figures/solution-replay-walk-north-east.svg)
+
 **Complexity:** `O(n + m)` time, `O(m)` space.
