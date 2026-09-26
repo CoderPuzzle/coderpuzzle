@@ -44,5 +44,7 @@ start matching again. Every keystroke costs one array read no matter how
 many words share the prefix, which is the whole trade: the comparison work
 is spent once, over the tree, instead of logarithmically per keystroke.
 
+![With products mobile, moneypot, monitor, mouse, mousepad, the cursor for 'mouse' walks nodes m, o, u, s, e and each one is alive, emitting its cached top 3 — [mobile, moneypot, monitor] twice, then [mouse, mousepad] three times.](figures/solution-trie-top-three.svg)
+
 **Complexity:** `O(S + m)` time, `O(26 · S + m)` space, with `S` the total
 length of the products's words and `m` the searchWord length.

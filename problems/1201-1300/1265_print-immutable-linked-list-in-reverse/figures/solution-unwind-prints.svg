@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- head = [1,2,3,4]; frames f(1)..f(4) stack on the descent, unwind fires printValue 4,3,2,1 -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="112" y="36" width="56" height="40"/><rect x="222" y="36" width="56" height="40"/>
+    <rect x="332" y="36" width="56" height="40"/><rect x="442" y="36" width="56" height="40"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="140" y="62">1</text><text x="250" y="62">2</text><text x="360" y="62">3</text><text x="470" y="62">4</text>
+  </g>
+  <g fill="none" stroke="#42525e" stroke-width="1.6">
+    <path d="M 168 56 L 216 56" marker-end="url(#arrow)"/>
+    <path d="M 278 56 L 326 56" marker-end="url(#arrow)"/>
+    <path d="M 388 56 L 436 56" marker-end="url(#arrow)"/>
+    <path d="M 498 56 L 546 56" marker-end="url(#arrow)"/>
+  </g>
+  <text x="552" y="61" fill="#5c6b76" font-size="12.5">null</text>
+  <!-- descent and unwind -->
+  <text x="85" y="124" text-anchor="middle" fill="#5c6b76" font-size="12">descend</text>
+  <path d="M 85 140 L 85 300" fill="none" stroke="#5c6b76" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="270" y="124" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">unwind</text>
+  <path d="M 270 300 L 270 140" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowA)"/>
+  <!-- call stack frames -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="120" y="130" width="110" height="40"/><rect x="120" y="178" width="110" height="40"/>
+    <rect x="120" y="226" width="110" height="40"/><rect x="120" y="274" width="110" height="40"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">
+    <text x="175" y="155">f(1)</text><text x="175" y="203">f(2)</text><text x="175" y="251">f(3)</text><text x="175" y="299">f(4)</text>
+  </g>
+  <!-- print chips fire bottom-up -->
+  <g fill="#dbe4fb">
+    <rect x="310" y="135" width="120" height="30"/><rect x="310" y="183" width="120" height="30"/>
+    <rect x="310" y="231" width="120" height="30"/><rect x="310" y="279" width="120" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="#1a2026">
+    <text x="370" y="155">prints <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+    <text x="370" y="203">prints <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+    <text x="370" y="251">prints <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+    <text x="370" y="299">prints <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  </g>
+  <g font-size="11.5" fill="#9aa7b2">
+    <text x="440" y="155" text-anchor="start">4th</text>
+    <text x="440" y="203" text-anchor="start">3rd</text>
+    <text x="440" y="251" text-anchor="start">2nd</text>
+    <text x="440" y="299" text-anchor="start">1st</text>
+  </g>
+  <!-- recorded output -->
+  <rect x="462" y="120" width="76" height="190" fill="#ffffff" stroke="#42525e" stroke-width="1.5"/>
+  <text x="500" y="142" text-anchor="middle" fill="#5c6b76" font-size="12">output</text>
+  <g text-anchor="middle" font-size="16" font-weight="600" fill="#4169E1">
+    <text x="500" y="174">4</text><text x="500" y="204">3</text><text x="500" y="234">2</text><text x="500" y="264">1</text>
+  </g>
+  <text x="120" y="336" fill="#5c6b76" font-size="12.5">f(v) = frame for node v: call f(v.next) first, then printValue()</text>
+  <text x="320" y="362" text-anchor="middle" fill="#1a2026" font-size="13">Nothing prints on the way down; the unwind fires printValue <tspan fill="#4169E1" font-weight="600">4, 3, 2, 1</tspan>.</text>
+</svg>

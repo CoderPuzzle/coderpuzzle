@@ -10,6 +10,8 @@ after everything downstream of it has already printed. The base case is the
 end of the list (`getNext()` returns null), so the recursion reads: if
 `head` is not null, recurse on `head.getNext()`, then `head.printValue()`.
 
+![For head = [1,2,3,4] the four frames f(1)-f(4) stack up printing nothing, and the unwind fires printValue 4, 3, 2, 1.](figures/solution-unwind-prints.svg)
+
 Each node is visited once and each API call happens once per node — one
 `getNext()` from the caller plus one `printValue()` on the way back — giving
 linear time. The price is stack depth proportional to the list length,

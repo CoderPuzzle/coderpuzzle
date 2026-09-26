@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 370" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="370" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- intervals [[0,2],[3,4],[5,7]], toBeRemoved [1,6]; unit 70px, x(v)=70+70v; kept: head [0,1] and tail [6,7]; [3,4] fully covered -->
+  <!-- clip-point guides at 1 and 6 -->
+  <g stroke="#9aa7b2" stroke-width="1" stroke-dasharray="4 4">
+    <line x1="140" y1="68" x2="140" y2="268"/>
+    <line x1="490" y1="68" x2="490" y2="268"/>
+  </g>
+  <text x="70" y="64" fill="#5c6b76" font-size="12">input intervals</text>
+  <!-- input interval bars -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="70" y="72" width="140" height="30" fill="#ffffff"/>
+    <rect x="280" y="72" width="70" height="30" fill="#f0f3f7"/>
+    <rect x="420" y="72" width="140" height="30" fill="#ffffff"/>
+  </g>
+  <text x="140" y="92" text-anchor="middle" fill="#1a2026" font-size="13">[0,2)</text>
+  <text x="315" y="92" text-anchor="middle" fill="#5c6b76" font-size="13">[3,4)</text>
+  <text x="490" y="92" text-anchor="middle" fill="#1a2026" font-size="13">[5,7)</text>
+  <text x="315" y="120" text-anchor="middle" fill="#5c6b76" font-size="11.5">fully covered &#8594; emits nothing</text>
+  <!-- removal span -->
+  <rect x="140" y="152" width="350" height="30" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="315" y="172" text-anchor="middle" fill="#5c6b76" font-size="13">[1,6) removed</text>
+  <text x="97" y="224" text-anchor="end" fill="#5c6b76" font-size="12">kept pieces</text>
+  <!-- head/tail arrows down to kept bars -->
+  <g fill="none" stroke="#4169E1" stroke-width="1.8">
+    <path d="M 105 106 L 105 226" marker-end="url(#arrow)"/>
+    <path d="M 525 106 L 525 226" marker-end="url(#arrow)"/>
+  </g>
+  <text x="97" y="172" text-anchor="end" fill="#4169E1" font-size="11.5" font-weight="600">head</text>
+  <text x="533" y="172" text-anchor="start" fill="#4169E1" font-size="11.5" font-weight="600">tail</text>
+  <!-- kept bars -->
+  <rect x="70" y="232" width="70" height="30" fill="#4169E1"/>
+  <rect x="490" y="232" width="70" height="30" fill="#4169E1"/>
+  <text x="105" y="252" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">[0,1)</text>
+  <text x="525" y="252" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">[6,7)</text>
+  <!-- axis -->
+  <line x1="60" y1="288" x2="570" y2="288" stroke="#42525e" stroke-width="1.2"/>
+  <g stroke="#42525e" stroke-width="1">
+    <line x1="70" y1="288" x2="70" y2="294"/><line x1="140" y1="288" x2="140" y2="294"/>
+    <line x1="210" y1="288" x2="210" y2="294"/><line x1="280" y1="288" x2="280" y2="294"/>
+    <line x1="350" y1="288" x2="350" y2="294"/><line x1="420" y1="288" x2="420" y2="294"/>
+    <line x1="490" y1="288" x2="490" y2="294"/><line x1="560" y1="288" x2="560" y2="294"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="70" y="310">0</text><text x="140" y="310">1</text><text x="210" y="310">2</text><text x="280" y="310">3</text>
+    <text x="350" y="310">4</text><text x="420" y="310">5</text><text x="490" y="310">6</text><text x="560" y="310">7</text>
+  </g>
+  <text x="320" y="338" text-anchor="middle" fill="#1a2026" font-size="13">Clip every interval against [1,6): [0,2) keeps its head [0,1), [3,4) is fully</text>
+  <text x="320" y="356" text-anchor="middle" fill="#1a2026" font-size="13">covered and vanishes, [5,7) keeps its tail [6,7] — output <tspan fill="#4169E1" font-weight="600">[[0,1],[6,7]]</tspan>.</text>
+</svg>
