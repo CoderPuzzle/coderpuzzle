@@ -18,6 +18,8 @@ up again at index i with those stored at a <= b, the candidate distance is
 2 * (i - a), and the pair slides forward to (b, i). Older occurrences can only
 widen the span, so discarding them loses nothing.
 
+![On nums = [1,2,1,1,3], value 1 occurs at indices 0, 2, 3; when it reappears at i = 3 the stored last-two pair is (0, 2), so the candidate collapses to 2 * (3 - 0) = 6 with the middle index 2 cancelling out of the abs-sum.](figures/solution-last-two-occurrences.svg)
+
 The per-value memory is a hash map from value to its last two indices — at
 most n entries. The answer starts as the -1 sentinel and is lowered by every
 candidate found; the arithmetic stays tiny (n <= 100 caps the distance at

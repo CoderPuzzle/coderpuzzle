@@ -25,6 +25,8 @@ unreachable marker sits a billion below them. After the sweep, the answer is
 the largest finite value anywhere on the final cell's cost axis, or `-1` if
 the whole axis is unreachable.
 
+![On grid [[0,1],[2,0]] with k = 1, each cell's dp state over cost c = 0 and c = 1: the charged cells shift every entry one step, so the down-then-right path lands score 2 at cost 1 in the final cell while right first would arrive there with only 1.](figures/solution-budget-dp-states.svg)
+
 Two bounds shrink the work. A path visits `m + n - 1` cells but starts free,
 so it can charge at most `m + n - 2` times — cost indices beyond
 `min(k, m + n - 2)` cannot occur and are not allocated. And scores top out at

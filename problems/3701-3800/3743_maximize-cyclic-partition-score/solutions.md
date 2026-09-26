@@ -15,6 +15,8 @@ subarray's range — regardless of orientation, so the problem reduces to
 choosing positions and orientations of at most min(k, n / 2) pairs maximizing
 the total credit.
 
+![On the cyclic nums = [1,2,3,3] with k = 2, the two 3s carry plus marks and 1 and 2 carry minus marks; pairing plus with minus alternately around the cycle credits (3 - 2) + (3 - 1) = 1 + 2 = 3, with one pair closing across the seam from index 3 back to index 0.](figures/solution-paired-extremes-cycle.svg)
+
 On the linear scan there are exactly two ways the marks pair up cyclically.
 In the first, every pair closes inside the array: the DP keeps j completed
 pairs, a pair opened with a plus that still owes a minus, and the mirror

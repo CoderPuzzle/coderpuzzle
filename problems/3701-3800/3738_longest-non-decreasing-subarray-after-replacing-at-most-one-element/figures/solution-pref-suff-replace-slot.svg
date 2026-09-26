@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,3,1,2]; pref = [1,2,3,1,2]; suff = [3,2,1,2,1]; cells 64x40 at x = 130 + 76i, y = 54 -->
+  <text x="390" y="30" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">replace p = 3 with any v</text>
+  <path d="M 390 36 L 390 48" fill="none" stroke="#4169E1" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="130" y="54" width="64" height="40"/><rect x="206" y="54" width="64" height="40"/>
+    <rect x="282" y="54" width="64" height="40"/><rect x="434" y="54" width="64" height="40"/>
+  </g>
+  <rect x="358" y="54" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="162" y="80">1</text><text x="238" y="80">2</text><text x="314" y="80">3</text>
+    <text x="390" y="80">1</text><text x="466" y="80">2</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="162" y="112">0</text><text x="238" y="112">1</text><text x="314" y="112">2</text>
+    <text x="390" y="112">3</text><text x="466" y="112">4</text>
+  </g>
+  <text x="112" y="150" text-anchor="end" fill="#5c6b76" font-size="12.5">pref</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="162" y="150" fill="#1a2026">1</text><text x="238" y="150" fill="#1a2026">2</text>
+    <text x="314" y="150" fill="#4169E1">3</text><text x="390" y="150" fill="#1a2026">1</text>
+    <text x="466" y="150" fill="#1a2026">2</text>
+  </g>
+  <text x="112" y="184" text-anchor="end" fill="#5c6b76" font-size="12.5">suff</text>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="162" y="184">3</text><text x="238" y="184">2</text><text x="314" y="184">1</text>
+    <text x="390" y="184">2</text><text x="466" y="184">1</text>
+  </g>
+  <!-- one-sided extension through the replaced slot: pref[2] + 1 = 4 -->
+  <path d="M 314 200 Q 352 224 390 200" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="352" y="246" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">pref[2] + 1 = 4</text>
+  <!-- full join would span indices 2..4 but nums[2] = 3 &gt; nums[4] = 2 -->
+  <path d="M 314 262 Q 390 288 466 262" fill="none" stroke="#9aa7b2" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrowG)"/>
+  <text x="390" y="308" text-anchor="middle" fill="#5c6b76" font-size="12.5">bridging both sides needs nums[2] &lt;= nums[4]</text>
+  <text x="320" y="332" text-anchor="middle" fill="#1a2026" font-size="13">Here nums[2] = 3 &gt; nums[4] = 2, so no value joins the runs: replacing</text>
+  <text x="320" y="350" text-anchor="middle" fill="#1a2026" font-size="13">index 3 only extends the left run — pref[2] + 1 = <tspan fill="#4169E1" font-weight="600">4</tspan>, the answer.</text>
+</svg>

@@ -20,6 +20,8 @@ three consecutive entries — keeping the smallest
 `indices[start + 2] - indices[start]` — visits an optimal triple of every
 value.
 
+![On nums = [1,1,2,3,2,1,2], the sorted buckets hold value 1 at 0,1,5 and value 2 at 2,4,6; value 1's only consecutive triple spans 5 - 0 = 5 for a distance of 10, while value 2's spans 6 - 2 = 4 for 2 * 4 = 8, the answer.](figures/solution-value-buckets-consecutive-triples.svg)
+
 A value with fewer than three occurrences contributes no windows at all; if
 no bucket ever yields one, no good tuple exists and the answer is -1.
 Otherwise the winning span doubles into the distance. Spans never exceed

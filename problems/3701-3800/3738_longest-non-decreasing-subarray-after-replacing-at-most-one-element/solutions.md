@@ -25,4 +25,6 @@ melt into one run. Taking the maximum over the baseline, both one-sided
 sweeps, and every feasible join inspects each candidate once across four
 linear passes.
 
+![On nums = [1,2,3,1,2], the pref row 1,2,3,1,2 and suff row 3,2,1,2,1 with index 3 marked for replacement: the join needs nums[2] <= nums[4] but nums[2] = 3 > nums[4] = 2, so the replacement only extends the left run and pref[2] + 1 = 4 is the answer.](figures/solution-pref-suff-replace-slot.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.
