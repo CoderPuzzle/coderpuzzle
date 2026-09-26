@@ -15,6 +15,10 @@ and placing it at `v` serves every leaf below. The answer is the number of
 nodes whose gap jumps, which by the monotonicity is the same set hinted at
 by "differs from minIncrease[parent]".
 
+![On Example 3's tree with cost [3,4,1,1,7], the raw path sums are 10, 8 and 8
+against M = 10, and the gap g = M - f first jumps to 2 at node 1, so exactly that
+node is charged the single increase.](figures/solution-gap-jump-node.svg)
+
 Computing `f` takes two iterative passes over a rooted ordering of the
 tree (explicit stacks: a path-shaped tree drives recursion depth to
 `10⁵`). Bottom-up, `down[v]` is the largest raw suffix sum from `v` to a

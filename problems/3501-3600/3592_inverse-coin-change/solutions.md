@@ -18,6 +18,10 @@ amount in one pass. Any other relationship (`dp[i]` above the target, or
 two or more below it) is unreachable by either choice, so no coin set
 exists and the answer is `[]`.
 
+![On numWays = [0,1,0,2,0,3,0,4,0,5] of Example 1, the dp row rebuilds after each
+forced coin — 2, then 4, then 6, folded in the moment its amount reads exactly one
+short — until it matches numWays everywhere and returns [2, 4, 6].](figures/solution-forced-greedy-dp-rebuild.svg)
+
 The scan never needs to backtrack, so a single pass settles everything:
 after amount `i` is decided, `dp[i] == numWays[i]` holds by construction,
 and coins are discovered in ascending order, which is exactly the sorted

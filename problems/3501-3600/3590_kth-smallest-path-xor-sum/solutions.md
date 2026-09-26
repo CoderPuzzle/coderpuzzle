@@ -13,6 +13,10 @@ smaller sorted distinct list into a larger one, which bounds each element
 to O(log n) moves across its ancestors — the small-to-large discipline from
 the hints, with plain sorted lists playing the role of the ordered set.
 
+![On the chain 0->1->2 with vals [5,2,7] of Example 2, bottom-up small-to-large
+merging builds node 1 the distinct list [0, 7] and node 0 [0, 5, 7], so query
+[1,2] reads 7 while [1,3] answers -1.](figures/solution-small-to-large-xor-lists.svg)
+
 The merge itself picks the cheaper of two representations: a small child
 (up to 64 values) splices its values into the base list one by one —
 binary search for the position, then a single contiguous insert — while a

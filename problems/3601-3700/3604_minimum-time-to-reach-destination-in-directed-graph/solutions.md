@@ -21,6 +21,10 @@ improves it. The start node seeds the heap at time 0; the answer is
 `10⁹ + 1`, so the labels are held 64-bit in the compiled languages while
 plain JS numbers remain exact far below `2⁵³`.
 
+![On Example 2's graph, the time axis shows the winning windows [1,5] and [4,7]:
+Dijkstra waits at node 0 until t = 1 to reach node 2 at t = 2, waits there until
+t = 4, and settles node 3 at t = 5, beating the t = 8 route through node 1.](figures/solution-window-gated-dijkstra.svg)
+
 The heap performs `O(E)` pushes in the worst case, each `O(log E)`, over an
 adjacency list built in one pass — well inside the limits for
 `n, E ≤ 10⁵`.

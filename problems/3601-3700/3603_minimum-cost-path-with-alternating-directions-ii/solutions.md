@@ -24,6 +24,10 @@ examples' accounting is the one implemented.) Since row `i` only reads row
 `i − 1`, two 1-D arrays of length `n` carry the whole table, and the
 answer is `dp[n-1]` at the last row.
 
+![On Example 3's 2x3 grid, dp fills row-major — 1, 3, 7 then 3, 8, 16 — each cell
+charging its predecessor's waitCost plus its own entry cost, so the accent path
+through the waits 1 and 2 reaches (1, 2) at 16.](figures/solution-arrival-cost-dp-grid.svg)
+
 Totals can reach roughly 2 × 10¹⁰ — the sweep of a 10⁵-cell grid with
 near-maximal waits — so the accumulators are 64-bit (`long`, `long long`,
 `i64`); in the JS family plain numbers are exact because the bound sits
