@@ -31,6 +31,10 @@ walk steps up to it. The original root is never processed: it only loses
 its pointer to its path child and hangs, with whatever else it kept, as a
 child of that path child.
 
+![Rerooting [3,5,1,6,2,0,8,null,null,7,4] with leaf 7, the three bottom-up
+steps each hang the old parent as the new left child and slide the old left
+child across, leaving 7, 2, 5, 3 as one left spine with 7 the new root.](figures/solution-reroot-rewire-steps.svg)
+
 The descent visits each node once and the walk re-hangs each path node
 once, and both the parent map and the explicit traversal stack keep even
 a 100-node chain entirely off the call stack.

@@ -18,6 +18,10 @@ exactly at the frontmost middle of the result. `popBack` empties `back`
 before touching `front`, and every pop returns `-1` only when both
 halves are empty.
 
+![Reaching [1,4,3,2] in example 1, pushMiddle(4) first moves 3 from the
+back of front across the seam to the front of back, then appends 4 at the
+back of front, landing exactly at the frontmost middle.](figures/solution-push-middle-rebalance.svg)
+
 No operation ever walks the queue: pushes and pops touch a constant
 number of deque ends, and the rebalance is a single element moving
 across the seam, so the two deques carry the whole `n`-element state in

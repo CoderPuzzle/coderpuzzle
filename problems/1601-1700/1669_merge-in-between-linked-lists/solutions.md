@@ -24,6 +24,10 @@ only reference — and after a walk down list2 to its last node, that tail's
 `next` is pointed at `after`. Nothing before, behind, or inside either list
 is otherwise touched, and the answer is list1's original head.
 
+![With list1 [10,1,13,6,9,5], a = 3 and b = 4, the span 6 -> 9 is lifted out
+and list2 [1000000,1000001,1000002] is spliced in through exactly two
+rewritten edges: 13's next to 1000000 and 1000002's next to 5.](figures/solution-splice-two-edges.svg)
+
 Each node of list1 up to `b+1` and each node of list2 is visited exactly
 once, and the walk holds nothing but the two cursors. The result always
 exists: it has `a + m + (list1.length - 1 - b)` nodes, at least the two

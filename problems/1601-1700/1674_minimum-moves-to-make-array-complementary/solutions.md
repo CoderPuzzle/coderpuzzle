@@ -6,6 +6,10 @@ Only the `n/2` mirror pairs matter, and the common target sum `t` they must all 
 
 Each pair contributes a base of 2 everywhere (`diff[2] += 2`), a −1 across the one-move interval `[lo + 1, hi + limit]`, and a further −1 exactly at `t = a + b` (canceling back at `a + b + 1`): `diff[lo + 1] -= 1`, `diff[a + b] -= 1`, `diff[a + b + 1] += 1`, `diff[hi + limit + 1] += 1`. Prefix-summing the array while sweeping `t` from 2 to `2·limit` yields the total move count for that target in constant amortized time per candidate; the answer is the minimum sweep value.
 
+![With pairs (1,3) and (2,4) and limit 4, each pair paints its one-move
+interval and zero-cost point on the t = 2..8 axis, and the prefix-summed
+cost curve 3, 2, 1, 2, 1, 2, 3 bottoms at 1, first at t = 4.](figures/solution-diff-array-cost-curve.svg)
+
 The interval logic is worth a sanity check: raising the smaller element can reach sums up to `lo + limit`, lowering the larger can reach down to `hi + 1`, so their union `[lo + 1, hi + limit]` is precisely the one-change region, and the pair's own sum sits inside it as the zero-cost point. The difference array is sized `2·limit + 2` so the writes at the upper boundary stay in range.
 
 **Complexity:** `O(n + limit)` time, `O(limit)` space.

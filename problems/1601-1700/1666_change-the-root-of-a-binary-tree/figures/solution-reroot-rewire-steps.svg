@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+    <marker id="arrowmuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- tree [3,5,1,6,2,0,8,null,null,7,4], leaf 7; each panel: before fragment (parent over cur,
+       cur's child slots) then after fragment (cur over old parent + slid child). Panels at x=20/240/460 -->
+  <text x="340" y="28" text-anchor="middle" fill="#1a2026" font-weight="600">rerooting [3,5,1,6,2,0,8,null,null,7,4] with leaf 7, bottom-up on 7 -&gt; 2 -&gt; 5</text>
+  <g stroke="#f0f3f7" stroke-width="2">
+    <line x1="225" y1="44" x2="225" y2="258"/>
+    <line x1="445" y1="44" x2="445" y2="258"/>
+  </g>
+
+  <!-- panel 1: cur = 7 (the leaf) -->
+  <text x="120" y="62" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">cur = 7 (the leaf)</text>
+  <circle cx="75" cy="92" r="17" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <text x="75" y="97" text-anchor="middle">2</text>
+  <line x1="75" y1="109" x2="75" y2="130" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="84" y="124" font-size="10.5" fill="#9aa7b2">cleared</text>
+  <circle cx="75" cy="150" r="17" fill="#4169E1"/>
+  <text x="75" y="155" text-anchor="middle" fill="#ffffff" font-weight="600">7</text>
+  <line x1="69" y1="166" x2="57" y2="192" stroke="#9aa7b2" stroke-width="1.2"/>
+  <line x1="81" y1="166" x2="93" y2="192" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="35" y="194" width="36" height="22" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="79" y="194" width="36" height="22" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <text x="53" y="209" text-anchor="middle" font-size="11" fill="#9aa7b2">null</text>
+  <text x="97" y="209" text-anchor="middle" font-size="11" fill="#9aa7b2">null</text>
+  <text x="53" y="231" text-anchor="middle" font-size="10" fill="#9aa7b2">left</text>
+  <text x="97" y="231" text-anchor="middle" font-size="10" fill="#9aa7b2">right</text>
+  <circle cx="170" cy="92" r="17" fill="#4169E1"/>
+  <text x="170" y="97" text-anchor="middle" fill="#ffffff" font-weight="600">7</text>
+  <line x1="160" y1="106" x2="152" y2="136" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="142" cy="150" r="17" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <text x="142" y="155" text-anchor="middle">2</text>
+  <line x1="180" y1="106" x2="194" y2="136" stroke="#9aa7b2" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="198" y="155" text-anchor="middle" font-size="11" fill="#9aa7b2">null</text>
+  <text x="170" y="182" text-anchor="middle" font-size="10.5" fill="#5c6b76">old parent</text>
+  <text x="170" y="196" text-anchor="middle" font-size="10.5" fill="#5c6b76">hangs left</text>
+  <text x="120" y="252" text-anchor="middle" font-size="11" fill="#5c6b76">leaf: nothing to slide</text>
+
+  <!-- panel 2: cur = 2 -->
+  <text x="340" y="62" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">cur = 2</text>
+  <circle cx="295" cy="92" r="17" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <text x="295" y="97" text-anchor="middle">5</text>
+  <line x1="295" y1="109" x2="295" y2="130" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="304" y="124" font-size="10.5" fill="#9aa7b2">cleared</text>
+  <circle cx="295" cy="150" r="17" fill="#4169E1"/>
+  <text x="295" y="155" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
+  <line x1="289" y1="166" x2="277" y2="192" stroke="#9aa7b2" stroke-width="1.2"/>
+  <line x1="301" y1="166" x2="313" y2="192" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="255" y="194" width="36" height="22" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <rect x="299" y="194" width="36" height="22" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="273" y="209" text-anchor="middle" font-size="11" fill="#9aa7b2">null</text>
+  <text x="317" y="209" text-anchor="middle" font-size="11">4</text>
+  <text x="273" y="231" text-anchor="middle" font-size="10" fill="#9aa7b2">left</text>
+  <text x="317" y="231" text-anchor="middle" font-size="10" fill="#9aa7b2">right</text>
+  <circle cx="390" cy="92" r="17" fill="#4169E1"/>
+  <text x="390" y="97" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
+  <line x1="380" y1="106" x2="372" y2="136" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="362" cy="150" r="17" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <text x="362" y="155" text-anchor="middle">5</text>
+  <line x1="400" y1="106" x2="408" y2="136" stroke="#9aa7b2" stroke-width="1.5" marker-end="url(#arrowmuted)"/>
+  <circle cx="418" cy="150" r="17" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="418" y="155" text-anchor="middle" fill="#5c6b76">4</text>
+  <text x="390" y="182" text-anchor="middle" font-size="10.5" fill="#5c6b76">4 stays put</text>
+  <text x="340" y="252" text-anchor="middle" font-size="11" fill="#5c6b76">7 hung off 2's left</text>
+
+  <!-- panel 3: cur = 5 -->
+  <text x="560" y="62" text-anchor="middle" font-size="13" font-weight="600" fill="#1a2026">cur = 5</text>
+  <circle cx="515" cy="92" r="17" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <text x="515" y="97" text-anchor="middle">3</text>
+  <line x1="515" y1="109" x2="515" y2="130" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="524" y="124" font-size="10.5" fill="#9aa7b2">cleared</text>
+  <circle cx="515" cy="150" r="17" fill="#4169E1"/>
+  <text x="515" y="155" text-anchor="middle" fill="#ffffff" font-weight="600">5</text>
+  <line x1="509" y1="166" x2="497" y2="192" stroke="#9aa7b2" stroke-width="1.2"/>
+  <line x1="521" y1="166" x2="533" y2="192" stroke="#9aa7b2" stroke-width="1.2"/>
+  <rect x="475" y="194" width="36" height="22" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <rect x="519" y="194" width="36" height="22" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1"/>
+  <text x="493" y="209" text-anchor="middle" font-size="11">6</text>
+  <text x="537" y="209" text-anchor="middle" font-size="11" fill="#9aa7b2">null</text>
+  <text x="493" y="231" text-anchor="middle" font-size="10" fill="#9aa7b2">left</text>
+  <text x="537" y="231" text-anchor="middle" font-size="10" fill="#9aa7b2">right</text>
+  <circle cx="610" cy="92" r="17" fill="#4169E1"/>
+  <text x="610" y="97" text-anchor="middle" fill="#ffffff" font-weight="600">5</text>
+  <line x1="600" y1="106" x2="592" y2="136" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="582" cy="150" r="17" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <text x="582" y="155" text-anchor="middle">3</text>
+  <line x1="620" y1="106" x2="628" y2="136" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="638" cy="150" r="17" fill="#dbe4fb" stroke="#42525e" stroke-width="1.5"/>
+  <text x="638" y="155" text-anchor="middle">6</text>
+  <text x="610" y="182" text-anchor="middle" font-size="10.5" fill="#5c6b76">6 slides across</text>
+  <text x="560" y="252" text-anchor="middle" font-size="11" fill="#5c6b76">3 keeps 1 on its right</text>
+
+  <text x="340" y="296" text-anchor="middle" fill="#1a2026" font-size="13">Each step clears the parent's pointer, slides cur's old left child across, and hangs</text>
+  <text x="340" y="314" text-anchor="middle" fill="#1a2026" font-size="13">the old parent as the new left child; the old root 3 is never processed, so <tspan fill="#4169E1" font-weight="600">7</tspan> is the new root.</text>
+</svg>

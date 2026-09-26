@@ -17,6 +17,8 @@ likewise the nearest y-coordinate is the middle of `yCenter`, `y1`, and
 because the rectangle is a box — for any point, the nearest point on an
 axis-aligned box is obtained coordinate by coordinate.
 
+![For Example 1 (radius 1, center (0, 0), rectangle [1, -1, 3, 1]) clamping gives x = mid(0, 1, 3) = 1 and y = mid(0, -1, 1) = 0, the touching point (1, 0), whose distance² of 1 equals radius² — so the circle and rectangle overlap.](figures/solution-clamp-closest-point.svg)
+
 When the center lies inside the rectangle both clamps are the identity
 and the distance is zero, so the comparison `distance² <= radius²`
 succeeds there too; that also covers a center sitting exactly on an edge
