@@ -16,6 +16,8 @@ A color never seen leaves its cells at "infinite", which the query stage
 translates to `-1`. Total work no longer depends on how many queries there
 are: two sweeps over the array plus constant time apiece.
 
+![Two sweeps carry per-color distances across colors = [1, 1, 2, 1, 3, 2, 2, 3, 3] and each cell keeps the smaller of its two candidates; the accented min cells give 3, 0, 3 for the example's three queries.](figures/solution-two-sweep-distance-table.svg)
+
 **Complexity:** `O(3n)` sweeps for preprocessing — `O(n)` time, `O(n)`
 space for the distance table; each of the `q` queries then answers in
 `O(1)`, for `O(n + q)` overall.

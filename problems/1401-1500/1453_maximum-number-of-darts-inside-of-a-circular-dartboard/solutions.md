@@ -16,6 +16,8 @@ pair is skipped (identical candidates come from the single-dart case),
 and when `h²` would be negative the pair is farther than `2r` apart and
 no circle covers both.
 
+![On Example 2's darts the pair (-3,0),(3,0) lies 6 apart, so both radius-5 centers sit at h = 4 on x = 0, at (0,4) and (0,-4); the circle at (0,4) covers 5 darts, missing only (7,8).](figures/solution-pair-circle-centers.svg)
+
 Each candidate center is scored by counting darts with
 `(x - cx)² + (y - cy)² <= r²`, using a `1e-7` slack on the squared
 comparison so darts exactly on the boundary — which the statement counts

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- paint = [[1,4],[4,7],[5,8]]; cells 46x34 at x=130+46c, rows y=60/130/200; ticks 0..8 above; day 2's walk does find(5)=7 and paints only cell 7 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="130" y="48">0</text><text x="176" y="48">1</text><text x="222" y="48">2</text><text x="268" y="48">3</text><text x="314" y="48">4</text><text x="360" y="48">5</text><text x="406" y="48">6</text><text x="452" y="48">7</text><text x="498" y="48">8</text>
+  </g>
+  <!-- day 0: paints [1,4) -->
+  <g stroke-width="1">
+    <rect x="130" y="60" width="46" height="34" fill="#ffffff" stroke="#9aa7b2"/>
+    <rect x="176" y="60" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="222" y="60" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="268" y="60" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="314" y="60" width="46" height="34" fill="#ffffff" stroke="#9aa7b2"/>
+    <rect x="360" y="60" width="46" height="34" fill="#ffffff" stroke="#9aa7b2"/>
+    <rect x="406" y="60" width="46" height="34" fill="#ffffff" stroke="#9aa7b2"/>
+    <rect x="452" y="60" width="46" height="34" fill="#ffffff" stroke="#9aa7b2"/>
+  </g>
+  <text x="118" y="82" text-anchor="end" fill="#5c6b76" font-size="12.5">day 0</text>
+  <text x="520" y="82" fill="#4169E1" font-size="13.5" font-weight="600">new = 3</text>
+  <!-- day 1: [1,4) finished, paints [4,7) -->
+  <g stroke-width="1">
+    <rect x="130" y="130" width="46" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="176" y="130" width="46" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="222" y="130" width="46" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="268" y="130" width="46" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="314" y="130" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="360" y="130" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="406" y="130" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="452" y="130" width="46" height="34" fill="#ffffff" stroke="#9aa7b2"/>
+  </g>
+  <text x="118" y="152" text-anchor="end" fill="#5c6b76" font-size="12.5">day 1</text>
+  <text x="520" y="152" fill="#4169E1" font-size="13.5" font-weight="600">new = 3</text>
+  <!-- day 2: [1,7) finished, find(5) jumps to 7, paints [7,8) -->
+  <g stroke-width="1">
+    <rect x="130" y="200" width="46" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="176" y="200" width="46" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="222" y="200" width="46" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="268" y="200" width="46" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="314" y="200" width="46" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="360" y="200" width="46" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="406" y="200" width="46" height="34" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="452" y="200" width="46" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  </g>
+  <text x="118" y="222" text-anchor="end" fill="#5c6b76" font-size="12.5">day 2</text>
+  <text x="520" y="222" fill="#4169E1" font-size="13.5" font-weight="600">new = 1</text>
+  <!-- compressed find on day 2 -->
+  <path d="M 383 246 Q 429 272 471 246" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="429" y="288" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">find(5) = 7 skips painted 5, 6</text>
+  <text x="320" y="312" text-anchor="middle" fill="#1a2026" font-size="13">Each day's walk visits only the still-blank cells: days 0 and 1 paint 3 units each,</text>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">and on day 2 the compressed <tspan fill="#4169E1" font-weight="600">find(5) = 7</tspan> leaves just 8 − 7 = <tspan fill="#4169E1" font-weight="600">1</tspan> new unit past position 7.</text>
+</svg>

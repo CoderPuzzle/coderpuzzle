@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <!-- nums = [7,9,5,8,1,3], n = 2; cols x=90+76j w=64; left_min[i] = min 2-sum of nums[0..i], right_max[i] = max 2-sum of nums[i..5]; diff[i] = left_min[i] - right_max[i+1]; gray = removed at the winning split -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="90" y="56" width="64" height="38"/><rect x="166" y="56" width="64" height="38"/><rect x="242" y="56" width="64" height="38"/><rect x="318" y="56" width="64" height="38"/><rect x="394" y="56" width="64" height="38"/><rect x="470" y="56" width="64" height="38"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="122" y="81" fill="#1a2026">7</text><text x="198" y="81" fill="#9aa7b2">9</text><text x="274" y="81" fill="#1a2026">5</text><text x="350" y="81" fill="#1a2026">8</text><text x="426" y="81" fill="#9aa7b2">1</text><text x="502" y="81" fill="#1a2026">3</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="122" y="112">0</text><text x="198" y="112">1</text><text x="274" y="112">2</text><text x="350" y="112">3</text><text x="426" y="112">4</text><text x="502" y="112">5</text>
+  </g>
+  <!-- left_min row: defined at i = 1..3 -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="166" y="134" width="64" height="36"/><rect x="242" y="134" width="64" height="36"/><rect x="318" y="134" width="64" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="198" y="158" fill="#1a2026">16</text><text x="274" y="158" fill="#4169E1">12</text><text x="350" y="158" fill="#1a2026">12</text>
+  </g>
+  <text x="78" y="158" text-anchor="end" fill="#5c6b76" font-size="12.5">left_min</text>
+  <!-- right_max row: defined at i = 2..4 -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="242" y="192" width="64" height="36"/><rect x="318" y="192" width="64" height="36"/><rect x="394" y="192" width="64" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="274" y="216" fill="#1a2026">13</text><text x="350" y="216" fill="#4169E1">11</text><text x="426" y="216" fill="#1a2026">4</text>
+  </g>
+  <text x="78" y="216" text-anchor="end" fill="#5c6b76" font-size="12.5">right_max</text>
+  <!-- diff row -->
+  <rect x="242" y="250" width="64" height="36" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="166" y="250" width="64" height="36"/><rect x="318" y="250" width="64" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="198" y="274" fill="#1a2026">3</text><text x="274" y="274" fill="#4169E1">1</text><text x="350" y="274" fill="#1a2026">8</text>
+  </g>
+  <text x="78" y="274" text-anchor="end" fill="#5c6b76" font-size="12.5">diff</text>
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">Sweeping both ways: left_min keeps the two smallest so far, right_max the two largest;</text>
+  <text x="320" y="336" text-anchor="middle" fill="#1a2026" font-size="13">split i = 2 minimizes left_min − right_max: <tspan fill="#4169E1" font-weight="600">12 − 11 = 1</tspan> — remove the gray 9 and 1.</text>
+</svg>

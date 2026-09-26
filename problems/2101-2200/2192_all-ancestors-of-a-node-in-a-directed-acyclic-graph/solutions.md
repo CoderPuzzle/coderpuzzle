@@ -30,6 +30,8 @@ parent together with that parent's set, one word-wise OR per incoming edge.
 Nodes nothing reaches into fold to the empty set, and every other row is
 finished the moment its node is dequeued.
 
+![On the 8-node example DAG the ancestor bitsets fold in Kahn order — node 6 is dequeued last and unions {3} ∪ {0,1} ∪ {4} ∪ {0,2} into {0,1,2,3,4}.](figures/solution-topological-bitset-fold.svg)
+
 The sets are bitsets, one per node, so the answer is read straight off the
 bits: scanning each node's set in ascending order emits exactly the sorted
 list the statement asks for.

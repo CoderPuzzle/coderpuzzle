@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 490" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="490" fill="#ffffff"/>
+  <!-- colors = [1,1,2,1,3,2,2,3,3]; cells w52 step 56 from x=100, rows h26 -->
+  <!-- per color: from-left sweep, from-right sweep, min = smaller candidate; accented min cells = the three query answers -->
+  <text x="92" y="57" text-anchor="end" fill="#5c6b76" font-size="12">colors</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="100" y="40" width="52" height="26"/><rect x="156" y="40" width="52" height="26"/>
+    <rect x="212" y="40" width="52" height="26"/><rect x="268" y="40" width="52" height="26"/>
+    <rect x="324" y="40" width="52" height="26"/><rect x="380" y="40" width="52" height="26"/>
+    <rect x="436" y="40" width="52" height="26"/><rect x="492" y="40" width="52" height="26"/>
+    <rect x="548" y="40" width="52" height="26"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="13.5" fill="#1a2026">
+    <text x="126" y="58">1</text><text x="182" y="58">1</text><text x="238" y="58">2</text>
+    <text x="294" y="58">1</text><text x="350" y="58">3</text><text x="406" y="58">2</text>
+    <text x="462" y="58">2</text><text x="518" y="58">3</text><text x="574" y="58">3</text>
+  </g>
+  <g text-anchor="middle" font-size="10.5" fill="#9aa7b2">
+    <text x="126" y="82">0</text><text x="182" y="82">1</text><text x="238" y="82">2</text>
+    <text x="294" y="82">3</text><text x="350" y="82">4</text><text x="406" y="82">5</text>
+    <text x="462" y="82">6</text><text x="518" y="82">7</text><text x="574" y="82">8</text>
+  </g>
+  <!-- color 1 (seen at 0, 1, 3) -->
+  <text x="92" y="104" text-anchor="end" fill="#1a2026" font-weight="600" font-size="12">color 1</text>
+  <text x="92" y="129" text-anchor="end" fill="#5c6b76" font-size="10.5">from left</text>
+  <text x="92" y="159" text-anchor="end" fill="#5c6b76" font-size="10.5">from right</text>
+  <text x="92" y="189" text-anchor="end" fill="#5c6b76" font-size="10.5" font-weight="600">min</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="100" y="112" width="52" height="26"/><rect x="156" y="112" width="52" height="26"/><rect x="212" y="112" width="52" height="26"/><rect x="268" y="112" width="52" height="26"/><rect x="324" y="112" width="52" height="26"/><rect x="380" y="112" width="52" height="26"/><rect x="436" y="112" width="52" height="26"/><rect x="492" y="112" width="52" height="26"/><rect x="548" y="112" width="52" height="26"/>
+    <rect x="100" y="142" width="52" height="26"/><rect x="156" y="142" width="52" height="26"/><rect x="212" y="142" width="52" height="26"/><rect x="268" y="142" width="52" height="26"/><rect x="324" y="142" width="52" height="26"/><rect x="380" y="142" width="52" height="26"/><rect x="436" y="142" width="52" height="26"/><rect x="492" y="142" width="52" height="26"/><rect x="548" y="142" width="52" height="26"/>
+    <rect x="100" y="172" width="52" height="26"/><rect x="156" y="172" width="52" height="26"/><rect x="212" y="172" width="52" height="26"/><rect x="268" y="172" width="52" height="26"/><rect x="324" y="172" width="52" height="26"/><rect x="380" y="172" width="52" height="26"/><rect x="492" y="172" width="52" height="26"/><rect x="548" y="172" width="52" height="26"/>
+  </g>
+  <rect x="436" y="172" width="52" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="126" y="129">0</text><text x="182" y="129">0</text><text x="238" y="129">1</text><text x="294" y="129">0</text><text x="350" y="129">1</text><text x="406" y="129">2</text><text x="462" y="129">3</text><text x="518" y="129">4</text><text x="574" y="129">5</text>
+    <text x="126" y="159">0</text><text x="182" y="159">0</text><text x="238" y="159">1</text><text x="294" y="159">0</text><text x="350" y="159" fill="#9aa7b2">&#8734;</text><text x="406" y="159" fill="#9aa7b2">&#8734;</text><text x="462" y="159" fill="#9aa7b2">&#8734;</text><text x="518" y="159" fill="#9aa7b2">&#8734;</text><text x="574" y="159" fill="#9aa7b2">&#8734;</text>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="600" fill="#1a2026">
+    <text x="126" y="189">0</text><text x="182" y="189">0</text><text x="238" y="189">1</text><text x="294" y="189">0</text>
+    <text x="350" y="189">1</text><text x="406" y="189">2</text>
+    <text x="462" y="189" fill="#4169E1">3</text>
+    <text x="518" y="189">4</text><text x="574" y="189">5</text>
+  </g>
+  <!-- color 2 (seen at 2, 5, 6) -->
+  <text x="92" y="228" text-anchor="end" fill="#1a2026" font-weight="600" font-size="12">color 2</text>
+  <text x="92" y="253" text-anchor="end" fill="#5c6b76" font-size="10.5">from left</text>
+  <text x="92" y="283" text-anchor="end" fill="#5c6b76" font-size="10.5">from right</text>
+  <text x="92" y="313" text-anchor="end" fill="#5c6b76" font-size="10.5" font-weight="600">min</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="100" y="236" width="52" height="26"/><rect x="156" y="236" width="52" height="26"/><rect x="212" y="236" width="52" height="26"/><rect x="268" y="236" width="52" height="26"/><rect x="324" y="236" width="52" height="26"/><rect x="380" y="236" width="52" height="26"/><rect x="436" y="236" width="52" height="26"/><rect x="492" y="236" width="52" height="26"/><rect x="548" y="236" width="52" height="26"/>
+    <rect x="100" y="266" width="52" height="26"/><rect x="156" y="266" width="52" height="26"/><rect x="212" y="266" width="52" height="26"/><rect x="268" y="266" width="52" height="26"/><rect x="324" y="266" width="52" height="26"/><rect x="380" y="266" width="52" height="26"/><rect x="436" y="266" width="52" height="26"/><rect x="492" y="266" width="52" height="26"/><rect x="548" y="266" width="52" height="26"/>
+    <rect x="100" y="296" width="52" height="26"/><rect x="156" y="296" width="52" height="26"/><rect x="268" y="296" width="52" height="26"/><rect x="324" y="296" width="52" height="26"/><rect x="380" y="296" width="52" height="26"/><rect x="436" y="296" width="52" height="26"/><rect x="492" y="296" width="52" height="26"/><rect x="548" y="296" width="52" height="26"/>
+  </g>
+  <rect x="212" y="296" width="52" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="126" y="253" fill="#9aa7b2">&#8734;</text><text x="182" y="253" fill="#9aa7b2">&#8734;</text><text x="238" y="253">0</text><text x="294" y="253">1</text><text x="350" y="253">2</text><text x="406" y="253">0</text><text x="462" y="253">0</text><text x="518" y="253">1</text><text x="574" y="253">2</text>
+    <text x="126" y="283">2</text><text x="182" y="283">1</text><text x="238" y="283">0</text><text x="294" y="283">2</text><text x="350" y="283">1</text><text x="406" y="283">0</text><text x="462" y="283">0</text><text x="518" y="283" fill="#9aa7b2">&#8734;</text><text x="574" y="283" fill="#9aa7b2">&#8734;</text>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="600" fill="#1a2026">
+    <text x="126" y="313">2</text><text x="182" y="313">1</text>
+    <text x="238" y="313" fill="#4169E1">0</text>
+    <text x="294" y="313">1</text><text x="350" y="313">1</text><text x="406" y="313">0</text><text x="462" y="313">0</text><text x="518" y="313">1</text><text x="574" y="313">2</text>
+  </g>
+  <!-- color 3 (seen at 4, 7, 8) -->
+  <text x="92" y="352" text-anchor="end" fill="#1a2026" font-weight="600" font-size="12">color 3</text>
+  <text x="92" y="377" text-anchor="end" fill="#5c6b76" font-size="10.5">from left</text>
+  <text x="92" y="407" text-anchor="end" fill="#5c6b76" font-size="10.5">from right</text>
+  <text x="92" y="437" text-anchor="end" fill="#5c6b76" font-size="10.5" font-weight="600">min</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="100" y="360" width="52" height="26"/><rect x="156" y="360" width="52" height="26"/><rect x="212" y="360" width="52" height="26"/><rect x="268" y="360" width="52" height="26"/><rect x="324" y="360" width="52" height="26"/><rect x="380" y="360" width="52" height="26"/><rect x="436" y="360" width="52" height="26"/><rect x="492" y="360" width="52" height="26"/><rect x="548" y="360" width="52" height="26"/>
+    <rect x="100" y="390" width="52" height="26"/><rect x="156" y="390" width="52" height="26"/><rect x="212" y="390" width="52" height="26"/><rect x="268" y="390" width="52" height="26"/><rect x="324" y="390" width="52" height="26"/><rect x="380" y="390" width="52" height="26"/><rect x="436" y="390" width="52" height="26"/><rect x="492" y="390" width="52" height="26"/><rect x="548" y="390" width="52" height="26"/>
+    <rect x="100" y="420" width="52" height="26"/><rect x="212" y="420" width="52" height="26"/><rect x="268" y="420" width="52" height="26"/><rect x="324" y="420" width="52" height="26"/><rect x="380" y="420" width="52" height="26"/><rect x="436" y="420" width="52" height="26"/><rect x="492" y="420" width="52" height="26"/><rect x="548" y="420" width="52" height="26"/>
+  </g>
+  <rect x="156" y="420" width="52" height="26" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="126" y="377" fill="#9aa7b2">&#8734;</text><text x="182" y="377" fill="#9aa7b2">&#8734;</text><text x="238" y="377" fill="#9aa7b2">&#8734;</text><text x="294" y="377" fill="#9aa7b2">&#8734;</text><text x="350" y="377">0</text><text x="406" y="377">1</text><text x="462" y="377">2</text><text x="518" y="377">0</text><text x="574" y="377">0</text>
+    <text x="126" y="407">4</text><text x="182" y="407">3</text><text x="238" y="407">2</text><text x="294" y="407">1</text><text x="350" y="407">0</text><text x="406" y="407">2</text><text x="462" y="407">1</text><text x="518" y="407">0</text><text x="574" y="407">0</text>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="600" fill="#1a2026">
+    <text x="126" y="437">4</text>
+    <text x="182" y="437" fill="#4169E1">3</text>
+    <text x="238" y="437">2</text><text x="294" y="437">1</text><text x="350" y="437">0</text><text x="406" y="437">1</text><text x="462" y="437">1</text><text x="518" y="437">0</text><text x="574" y="437">0</text>
+  </g>
+  <text x="320" y="462" text-anchor="middle" fill="#1a2026" font-size="13">Each min cell keeps the smaller carried candidate — color 1 at index 6:</text>
+  <text x="320" y="480" text-anchor="middle" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">3</tspan> from the left, &#8734; from the right &#8594; 3. The accented cells give the answers <tspan fill="#4169E1" font-weight="600">3, 0, 3</tspan>.</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <!-- s = "1100101"; value +1 per '1', -1 per '0'; cols x=100+64i w=54; zero axis y=150; Kadane min: min_end/best rows below; best = -2, answer n + best = 7 - 2 = 5 -->
+  <text x="88" y="79" text-anchor="end" fill="#5c6b76" font-size="12.5">s</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="100" y="56" width="54" height="36"/><rect x="164" y="56" width="54" height="36"/><rect x="292" y="56" width="54" height="36" stroke="#9aa7b2" fill="#f0f3f7"/><rect x="356" y="56" width="54" height="36" stroke="#9aa7b2" fill="#f0f3f7"/><rect x="420" y="56" width="54" height="36" stroke="#9aa7b2" fill="#f0f3f7"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="228" y="56" width="54" height="36" stroke="#9aa7b2" fill="#f0f3f7"/><rect x="484" y="56" width="54" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="127" y="79" fill="#1a2026">1</text><text x="191" y="79" fill="#1a2026">1</text><text x="255" y="79" fill="#5c6b76">0</text><text x="319" y="79" fill="#5c6b76">0</text><text x="383" y="79" fill="#1a2026">1</text><text x="447" y="79" fill="#5c6b76">0</text><text x="511" y="79" fill="#1a2026">1</text>
+  </g>
+  <!-- value bars over the zero axis -->
+  <line x1="94" y1="150" x2="544" y2="150" stroke="#42525e" stroke-width="1.2"/>
+  <g stroke="#9aa7b2" fill="#f0f3f7" stroke-width="1">
+    <rect x="113" y="122" width="28" height="28"/><rect x="177" y="122" width="28" height="28"/>
+    <rect x="369" y="122" width="28" height="28"/><rect x="497" y="122" width="28" height="28"/>
+    <rect x="433" y="150" width="28" height="28"/>
+  </g>
+  <g stroke="#4169E1" fill="#dbe4fb" stroke-width="1.6">
+    <rect x="241" y="150" width="28" height="28"/><rect x="305" y="150" width="28" height="28"/>
+  </g>
+  <g text-anchor="middle" font-size="11.5">
+    <text x="127" y="115" fill="#4169E1">+1</text><text x="191" y="115" fill="#4169E1">+1</text><text x="255" y="192" fill="#5c6b76">−1</text><text x="319" y="192" fill="#5c6b76">−1</text><text x="383" y="115" fill="#4169E1">+1</text><text x="447" y="192" fill="#5c6b76">−1</text><text x="511" y="115" fill="#4169E1">+1</text>
+  </g>
+  <text x="287" y="214" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">window sum = −2</text>
+  <!-- Kadane rows -->
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="127" y="250" fill="#1a2026">1</text><text x="191" y="250" fill="#1a2026">1</text><text x="255" y="250" fill="#1a2026">−1</text><text x="319" y="250" fill="#4169E1">−2</text><text x="383" y="250" fill="#1a2026">−1</text><text x="447" y="250" fill="#1a2026">−2</text><text x="511" y="250" fill="#1a2026">−1</text>
+  </g>
+  <text x="88" y="250" text-anchor="end" fill="#5c6b76" font-size="12.5">min_end</text>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="127" y="280" fill="#1a2026">0</text><text x="191" y="280" fill="#1a2026">0</text><text x="255" y="280" fill="#1a2026">−1</text><text x="319" y="280" fill="#4169E1">−2</text><text x="383" y="280" fill="#1a2026">−2</text><text x="447" y="280" fill="#1a2026">−2</text><text x="511" y="280" fill="#1a2026">−2</text>
+  </g>
+  <text x="88" y="280" text-anchor="end" fill="#5c6b76" font-size="12.5">best</text>
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">Kadane for minima finds the 00 window worth <tspan fill="#4169E1" font-weight="600">−2</tspan> — each middle '0' saves one end-deletion —</text>
+  <text x="320" y="336" text-anchor="middle" fill="#1a2026" font-size="13">so the answer is n + best = <tspan fill="#4169E1" font-weight="600">7 − 2 = 5</tspan>.</text>
+</svg>

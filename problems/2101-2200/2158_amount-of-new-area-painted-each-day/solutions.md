@@ -13,6 +13,8 @@ the path behind it, exactly like union-find. Painting a unit cell then just
 points it one past itself, so a day's walk from `find(start)` to `end` visits
 precisely the still-blank cells and counts them into `worklog[i]`.
 
+![On paint = [[1,4],[4,7],[5,8]] the canvas gains 3 units on day 0 and 3 on day 1, and on day 2 the compressed find(5) = 7 leaps over the painted stretch so only the unit past position 7 is painted.](figures/solution-jump-pointer-canvas.svg)
+
 Every unit of the painting is stepped on exactly once across all `n` days:
 once painted, a cell is only ever crossed again through a compressed pointer,
 never rescanned. Revisits of fully painted stretches cost one compressed

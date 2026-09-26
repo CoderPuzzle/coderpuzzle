@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "letelt"; cells 46x36 at x=162+54i, rows y=64/148/232; pass 1 bubbles the l at k=4 to position 5, pass 2 bubbles the e at k=3 to position 4: letelt -> letetl -> lettel -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="162" y="64" width="46" height="36" stroke="#1a2026" stroke-width="2"/><rect x="216" y="64" width="46" height="36"/><rect x="270" y="64" width="46" height="36"/><rect x="324" y="64" width="46" height="36"/><rect x="432" y="64" width="46" height="36" stroke="#1a2026" stroke-width="2"/>
+  </g>
+  <rect x="378" y="64" width="46" height="36" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" font-size="15">
+    <text x="185" y="87" font-weight="600">l</text><text x="239" y="87">e</text><text x="293" y="87">t</text><text x="347" y="87">e</text><text x="401" y="87" fill="#4169E1" font-weight="600">l</text><text x="455" y="87" font-weight="600">t</text>
+  </g>
+  <text x="150" y="86" text-anchor="end" fill="#5c6b76" font-size="12.5">start</text>
+  <path d="M 347 104 Q 401 136 451 104" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="401" y="140" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">1 swap</text>
+  <!-- row 1: outer l,l matched; inner e/t outstanding; bubble e at k=3 -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="162" y="148" width="46" height="36"/><rect x="432" y="148" width="46" height="36"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="216" y="148" width="46" height="36" stroke="#1a2026" stroke-width="2"/><rect x="270" y="148" width="46" height="36"/><rect x="324" y="148" width="46" height="36"/><rect x="378" y="148" width="46" height="36" stroke="#1a2026" stroke-width="2"/>
+  </g>
+  <g text-anchor="middle" font-size="15">
+    <text x="185" y="171" font-weight="600">l</text><text x="239" y="171" font-weight="600">e</text><text x="293" y="171">t</text><text x="347" y="171" fill="#4169E1" font-weight="600">e</text><text x="401" y="171" font-weight="600">t</text><text x="455" y="171" font-weight="600">l</text>
+  </g>
+  <text x="150" y="170" text-anchor="end" fill="#5c6b76" font-size="12.5">after 1 swap</text>
+  <path d="M 347 188 Q 374 220 397 188" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="374" y="224" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">1 swap</text>
+  <!-- row 2: lettel, palindrome -->
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="162" y="232" width="46" height="36"/><rect x="216" y="232" width="46" height="36"/><rect x="270" y="232" width="46" height="36"/><rect x="324" y="232" width="46" height="36"/><rect x="378" y="232" width="46" height="36"/><rect x="432" y="232" width="46" height="36"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600">
+    <text x="185" y="255">l</text><text x="239" y="255">e</text><text x="293" y="255">t</text><text x="347" y="255">t</text><text x="401" y="255">e</text><text x="455" y="255">l</text>
+  </g>
+  <text x="150" y="254" text-anchor="end" fill="#5c6b76" font-size="12.5">after 2 swaps</text>
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.2">
+    <path d="M 185 274 Q 320 292 455 274"/>
+    <path d="M 239 280 Q 320 296 401 280"/>
+    <path d="M 293 286 Q 320 300 347 286"/>
+  </g>
+  <text x="320" y="322" text-anchor="middle" fill="#1a2026" font-size="13">Matching outside in, each partner bubbles one step right: 1 swap for the l, 1 for the e — <tspan fill="#4169E1" font-weight="600">2</tspan> total.</text>
+  <text x="320" y="342" text-anchor="middle" fill="#1a2026" font-size="13">letelt becomes the palindrome <tspan fill="#4169E1" font-weight="600">lettel</tspan>.</text>
+</svg>

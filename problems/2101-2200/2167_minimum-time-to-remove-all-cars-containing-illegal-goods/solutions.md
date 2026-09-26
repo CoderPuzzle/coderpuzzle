@@ -6,6 +6,8 @@ Every '1' car must go, while '0' cars may be removed or kept. Removals from eith
 
 The problem is therefore to minimize the sum of that ±value array over any contiguous segment, allowing the empty segment (corresponding to deleting everything from the ends, cost exactly `n`). That is Kadane's algorithm run for minima: `min_end` tracks the best segment ending at the current character (`min(value, min_end + value)`, restarting whenever that is better) and `best` tracks the overall minimum, initialized to 0 so the empty segment is always a candidate.
 
+![On s = 1100101 each car is worth +1 for a '1' and −1 for a '0', and Kadane's minimum window is the 00 stretch summing to −2, so the answer is n + best = 7 − 2 = 5.](figures/solution-kadane-min-window.svg)
+
 The answer is `n + best`, and since the empty-segment floor is built in, the result can never exceed `n`. One pass over the string with two scalars does all the work.
 
 **Complexity:** `O(n)` time, `O(1)` space.
