@@ -6,6 +6,8 @@ A subset of nodes is good exactly when the digit sets of their values are pairwi
 
 Merging a child into u's table is a max-plus subset convolution: the combined mask c receives the best of a[x] + b[c xor x] over all submasks x of c. This is where the n × 2^10 table stays cheap — enumerating submasks of every c totals 3^10 operations per merge, and there are only n − 1 merges (one per child edge). Selecting u itself overlays vals[u] on every mask that contains u's digit mask, taken from the children's best selection of the complementary digits.
 
+![On the chain 3 -> 22 -> 5 of Example 4, the per-node digit-mask DP tables merge upward: node 1 forwards only {5} -> 5 because selecting 22 dies on the repeated digit 2, and node 0 overlays 3 to reach {3,5} = 8, giving maxScore [8,5,5] and the sum 18.](figures/solution-mask-dp-merge.svg)
+
 maxScore[u] is simply the maximum over all masks of dp[u] (the empty subset pins it at ≥ 0 via mask 0), and these maxima are summed modulo 10^9 + 7. The traversal is an explicit-stack preorder processed in reverse as a post-order, so 500 nodes deep poses no issue.
 
 **Complexity:** `O(n · 3^10)` time, `O(n · 2^10)` space.

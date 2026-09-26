@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 336" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="336" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- classroom = ["LS","RL"], energy = 4; cells 84x84 at (64,72); path S(0,1) -> A(0,0) -> R(1,0) -> B(1,1) -->
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="64" y="72" width="84" height="84" fill="#dbe4fb"/>
+    <rect x="148" y="72" width="84" height="84" fill="#ffffff"/>
+    <rect x="64" y="156" width="84" height="84" fill="#f0f3f7"/>
+    <rect x="148" y="156" width="84" height="84" fill="#dbe4fb"/>
+  </g>
+  <rect x="148" y="72" width="84" height="84" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+  <g text-anchor="middle" font-size="20" font-weight="600">
+    <text x="106" y="121" fill="#4169E1">L</text><text x="190" y="121" fill="#1a2026">S</text>
+    <text x="106" y="205" fill="#1a2026">R</text><text x="190" y="205" fill="#4169E1">L</text>
+  </g>
+  <g fill="#4169E1" font-size="11" font-weight="600" text-anchor="middle">
+    <text x="142" y="88">A</text>
+    <text x="226" y="172">B</text>
+  </g>
+  <!-- move badges on the collecting/resetting cells -->
+  <g fill="#4169E1">
+    <circle cx="78" cy="86" r="9.5"/><circle cx="78" cy="170" r="9.5"/><circle cx="162" cy="170" r="9.5"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">
+    <text x="78" y="90">1</text><text x="78" y="174">2</text><text x="162" y="174">3</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 138 114 L 122 114" marker-end="url(#arrow)"/>
+    <path d="M 106 146 L 106 176" marker-end="url(#arrow)"/>
+    <path d="M 138 198 L 162 198" marker-end="url(#arrow)"/>
+  </g>
+  <text x="148" y="264" text-anchor="middle" fill="#5c6b76" font-size="12">A and B name the two 'L' cells</text>
+  <!-- state ledger: (cell, litter mask, energy) -->
+  <g fill="#5c6b76" font-size="11.5" text-anchor="middle">
+    <text x="290" y="96">move</text><text x="360" y="96">cell</text>
+    <text x="445" y="96">litter mask</text><text x="528" y="96">energy</text>
+  </g>
+  <line x1="270" y1="104" x2="660" y2="104" stroke="#9aa7b2" stroke-width="0.75"/>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="290" y="126" fill="#5c6b76">start</text><text x="360" y="126" fill="#1a2026">(0,1) S</text><text x="445" y="126" fill="#1a2026">{ }</text>
+    <text x="290" y="158" fill="#1a2026" font-weight="600">1</text><text x="360" y="158" fill="#1a2026">(0,0) L·A</text><text x="445" y="158" fill="#1a2026">{A}</text>
+    <text x="290" y="190" fill="#1a2026" font-weight="600">2</text><text x="360" y="190" fill="#1a2026">(1,0) R</text><text x="445" y="190" fill="#1a2026">{A}</text>
+    <text x="290" y="222" fill="#1a2026" font-weight="600">3</text><text x="360" y="222" fill="#1a2026">(1,1) L·B</text><text x="445" y="222" fill="#4169E1" font-weight="600">{A,B}</text>
+  </g>
+  <!-- energy pips: filled = energy left -->
+  <g fill="#4169E1">
+    <rect x="505" y="117" width="9" height="9"/><rect x="517" y="117" width="9" height="9"/><rect x="529" y="117" width="9" height="9"/><rect x="541" y="117" width="9" height="9"/>
+    <rect x="505" y="149" width="9" height="9"/><rect x="517" y="149" width="9" height="9"/><rect x="529" y="149" width="9" height="9"/>
+    <rect x="505" y="181" width="9" height="9"/><rect x="517" y="181" width="9" height="9"/><rect x="529" y="181" width="9" height="9"/><rect x="541" y="181" width="9" height="9"/>
+    <rect x="505" y="213" width="9" height="9"/><rect x="517" y="213" width="9" height="9"/><rect x="529" y="213" width="9" height="9"/>
+  </g>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="0.75">
+    <rect x="541" y="149" width="9" height="9"/>
+    <rect x="541" y="213" width="9" height="9"/>
+  </g>
+  <g text-anchor="start" font-size="12.5">
+    <text x="562" y="126" fill="#1a2026">4</text>
+    <text x="562" y="158" fill="#1a2026">3</text>
+    <text x="562" y="190" fill="#4169E1" font-weight="600">4</text>
+    <text x="596" y="190" fill="#4169E1" font-weight="600" font-size="11.5">reset</text>
+    <text x="562" y="222" fill="#1a2026">3</text>
+    <text x="596" y="222" fill="#4169E1" font-weight="600" font-size="11.5">full mask</text>
+  </g>
+  <text x="340" y="300" text-anchor="middle" fill="#1a2026" font-size="13">Each move drains 1 energy; landing on R refills the tank back to <tspan fill="#4169E1" font-weight="600">4</tspan>,</text>
+  <text x="340" y="320" text-anchor="middle" fill="#1a2026" font-size="13">and the third move completes the mask, so BFS returns <tspan fill="#4169E1" font-weight="600">3</tspan> moves.</text>
+</svg>

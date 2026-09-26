@@ -13,6 +13,8 @@ event array over the `n - 1` split positions — `+1` at `first + 1`, `-1` at
 maximum zero-anchored prefix sum turns a point update of either event into
 `O(log n)` work while the root always holds the deepest overlap.
 
+![On nums=[2,2,3,3,2] after the second query of Example 1, the span of 2 ([1,4]) blankets all four split gaps while the span of 3 ([3,3]) covers only gap 3, so the deepest coverage 2 plus the 2 present primes gives the answer 4 at k=3.](figures/solution-prime-span-gaps.svg)
+
 Each update `nums[idx] = val` touches only the sorted occurrence lists of
 the old and new values. When `idx` was an outer occurrence of the old value
 (or removes it entirely), the value's span is popped with two point updates

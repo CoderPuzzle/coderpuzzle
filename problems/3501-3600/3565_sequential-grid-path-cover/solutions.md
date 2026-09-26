@@ -23,6 +23,8 @@ that would strand cells behind the visited wall. With `m, n ≤ 5` the board
 has at most 25 cells and the recursion depth is bounded by the same number,
 well inside any stack limit.
 
+![On the Example 1 grid [[0,0,0],[0,1,2]], the walk (0,0)→(1,0)→(1,1)→(1,2)→(0,2)→(0,1) alternates checkerboard colors and every remaining-count split check passes, meeting waypoint 1 at step 3 before waypoint 2 at step 4.](figures/solution-parity-ledger-path.svg)
+
 The first completing walk is returned in visit order as `[row, col]` pairs;
 if every start is exhausted the answer is the empty array. Because the
 statement accepts any valid path, the deterministic neighbor order (up,

@@ -21,5 +21,7 @@ moment a move completes the full mask the search returns that layer's move
 count, and if the layers run dry the litter cannot all be collected and the
 answer is `-1`. A grid with no litter answers `0` before searching.
 
+![On the Example 2 classroom ["LS","RL"] with energy 4, the BFS path S→A→R→B drains the energy from 4 to 3, refills it to 4 on the R cell at move 2, and completes the litter mask on move 3 for the answer 3.](figures/solution-bfs-mask-energy-path.svg)
+
 **Complexity:** `O(m * n * 2^L * energy)` time and space for at most `L`
 litter cells (`m * n * 2^L` states, each expanded once per distinct energy).

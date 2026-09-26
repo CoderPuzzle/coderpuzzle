@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- grid = [[0,0,0],[0,1,2]]; cells 72x72 at (56,64); path = (0,0)(1,0)(1,1)(1,2)(0,2)(0,1); parity = (r+c) mod 2 -->
+  <!-- legend -->
+  <g stroke="#42525e" stroke-width="1">
+    <rect x="306" y="30" width="12" height="12" fill="#dbe4fb"/>
+    <rect x="404" y="30" width="12" height="12" fill="#ffffff"/>
+    <rect x="492" y="30" width="12" height="12" fill="#ffffff" stroke="#4169E1" stroke-width="2.5"/>
+  </g>
+  <g fill="#5c6b76" font-size="12">
+    <text x="324" y="40">(r+c) even</text>
+    <text x="422" y="40">(r+c) odd</text>
+    <text x="510" y="40">waypoint cells</text>
+  </g>
+  <!-- grid -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="92" y="56">0</text><text x="164" y="56">1</text><text x="236" y="56">2</text>
+    <text x="50" y="104">0</text><text x="50" y="176">1</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="56" y="64" width="72" height="72" fill="#dbe4fb"/>
+    <rect x="128" y="64" width="72" height="72" fill="#ffffff"/>
+    <rect x="200" y="64" width="72" height="72" fill="#dbe4fb"/>
+    <rect x="56" y="136" width="72" height="72" fill="#ffffff"/>
+    <rect x="128" y="136" width="72" height="72" fill="#dbe4fb"/>
+    <rect x="200" y="136" width="72" height="72" fill="#ffffff"/>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="2.75">
+    <rect x="128" y="136" width="72" height="72"/>
+    <rect x="200" y="136" width="72" height="72"/>
+  </g>
+  <g text-anchor="middle" font-size="17">
+    <text x="92" y="106" fill="#9aa7b2">0</text><text x="164" y="106" fill="#9aa7b2">0</text>
+    <text x="236" y="106" fill="#9aa7b2">0</text><text x="92" y="178" fill="#9aa7b2">0</text>
+    <text x="164" y="178" fill="#4169E1" font-weight="700" font-size="19">1</text>
+    <text x="236" y="178" fill="#4169E1" font-weight="700" font-size="19">2</text>
+  </g>
+  <!-- step badges in visit order -->
+  <g fill="#4169E1">
+    <circle cx="69" cy="77" r="9.5"/><circle cx="69" cy="149" r="9.5"/><circle cx="141" cy="149" r="9.5"/>
+    <circle cx="213" cy="149" r="9.5"/><circle cx="213" cy="77" r="9.5"/><circle cx="141" cy="77" r="9.5"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-size="11" font-weight="600">
+    <text x="69" y="81">1</text><text x="69" y="153">2</text><text x="141" y="153">3</text>
+    <text x="213" y="153">4</text><text x="213" y="81">5</text><text x="141" y="81">6</text>
+  </g>
+  <!-- path arrows -->
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 92 122 L 92 150" marker-end="url(#arrow)"/>
+    <path d="M 116 172 L 144 172" marker-end="url(#arrow)"/>
+    <path d="M 188 172 L 214 172" marker-end="url(#arrow)"/>
+    <path d="M 236 158 L 236 128" marker-end="url(#arrow)"/>
+    <path d="M 212 100 L 186 100" marker-end="url(#arrow)"/>
+  </g>
+  <!-- parity ledger; columns: step (visit order, matches grid badges) / cell / color / left (need order) / path? (checkmark) -->
+  <g fill="#5c6b76" font-size="11.5" text-anchor="middle">
+    <text x="346" y="94">step</text><text x="394" y="94">cell</text><text x="448" y="94">color</text>
+    <text x="552" y="94">left (need order)</text><text x="616" y="94">path?</text>
+  </g>
+  <line x1="330" y1="102" x2="662" y2="102" stroke="#9aa7b2" stroke-width="0.75"/>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="346" y="126" fill="#5c6b76">1</text><text x="394" y="126" fill="#1a2026">(0,0)</text><text x="448" y="126" fill="#5c6b76">even</text><text x="552" y="126" fill="#1a2026">odd 3 · even 2</text>
+    <text x="346" y="152" fill="#5c6b76">2</text><text x="394" y="152" fill="#1a2026">(1,0)</text><text x="448" y="152" fill="#5c6b76">odd</text><text x="552" y="152" fill="#1a2026">even 2 · odd 2</text>
+    <text x="346" y="178" fill="#5c6b76">3</text><text x="394" y="178" fill="#1a2026">(1,1)</text><text x="448" y="178" fill="#5c6b76">even</text><text x="552" y="178" fill="#1a2026">odd 2 · even 1</text>
+    <text x="346" y="204" fill="#5c6b76">4</text><text x="394" y="204" fill="#1a2026">(1,2)</text><text x="448" y="204" fill="#5c6b76">odd</text><text x="552" y="204" fill="#1a2026">even 1 · odd 1</text>
+    <text x="346" y="230" fill="#5c6b76">5</text><text x="394" y="230" fill="#1a2026">(0,2)</text><text x="448" y="230" fill="#5c6b76">even</text><text x="552" y="230" fill="#1a2026">odd 1 · even 0</text>
+    <text x="346" y="256" fill="#5c6b76">6</text><text x="394" y="256" fill="#1a2026">(0,1)</text><text x="448" y="256" fill="#5c6b76">odd</text><text x="552" y="256" fill="#1a2026">none left</text>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="none">
+    <path d="M 612 121 l 3 4 l 6 -9"/>
+    <path d="M 612 147 l 3 4 l 6 -9"/>
+    <path d="M 612 173 l 3 4 l 6 -9"/>
+    <path d="M 612 199 l 3 4 l 6 -9"/>
+    <path d="M 612 225 l 3 4 l 6 -9"/>
+    <path d="M 612 251 l 3 4 l 6 -9"/>
+  </g>
+  <g fill="#4169E1" font-size="12" font-weight="600" text-anchor="middle">
+    <text x="646" y="182">wp 1</text>
+    <text x="646" y="208">wp 2</text>
+  </g>
+  <text x="340" y="296" text-anchor="middle" fill="#1a2026" font-size="13">Each step flips color; the unvisited cells must split <tspan fill="#4169E1" font-weight="600">ceil/floor</tspan> for the colors to come.</text>
+  <text x="340" y="316" text-anchor="middle" fill="#1a2026" font-size="13"><tspan fill="#4169E1" font-weight="600">All six checks pass</tspan> — waypoint 1 at step 3, waypoint 2 at step 4, one visit per cell.</text>
+</svg>

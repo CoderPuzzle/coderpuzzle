@@ -24,5 +24,7 @@ answer is the best flat total over `t <= k` at the last day. Total profit
 is bounded by `k * max(price) <= 500 * 10^9 = 5*10^11`, so 64-bit
 accumulation is required and sufficient.
 
+![On prices=[1,7,9,8,2] with k=2 of Example 1, the done/openLong/openShort rows advance day by day as the winning moves thread the two transactions: buy at 1, sell at 9 (done[1]=8), short at 8, cover at 2 (done[2]=14).](figures/solution-state-machine-thread.svg)
+
 **Complexity:** `O(n * k)` time (each day updates `O(k)` states three
 times), `O(k)` space.

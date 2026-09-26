@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 392" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="392" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- prices = [1,7,9,8,2], k = 2; day columns x = 230+80d; rows openLong[0] / done[1] / openShort[1] / done[2]; thread: buy d0, sell d2, short d3, cover d4 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="230" y="54">day 0</text><text x="310" y="54">day 1</text><text x="390" y="54">day 2</text>
+    <text x="470" y="54">day 3</text><text x="550" y="54">day 4</text>
+  </g>
+  <text x="186" y="78" text-anchor="end" fill="#5c6b76" font-size="12">price</text>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="230" y="78">1</text><text x="310" y="78">7</text><text x="390" y="78">9</text>
+    <text x="470" y="78">8</text><text x="550" y="78">2</text>
+  </g>
+  <line x1="90" y1="90" x2="600" y2="90" stroke="#9aa7b2" stroke-width="0.75"/>
+  <!-- dp rows -->
+  <g text-anchor="end" fill="#5c6b76" font-size="12.5">
+    <text x="186" y="122">openLong[0]</text>
+    <text x="186" y="160">done[1]</text>
+    <text x="186" y="198">openShort[1]</text>
+    <text x="186" y="236">done[2]</text>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="230" y="122" fill="#4169E1">-1</text><text x="310" y="122" fill="#1a2026">-1</text><text x="390" y="122" fill="#1a2026">-1</text><text x="470" y="122" fill="#1a2026">-1</text><text x="550" y="122" fill="#1a2026">-1</text>
+    <text x="230" y="160" fill="#9aa7b2">–</text><text x="310" y="160" fill="#1a2026">6</text><text x="390" y="160" fill="#4169E1">8</text><text x="470" y="160" fill="#1a2026">8</text><text x="550" y="160" fill="#1a2026">8</text>
+    <text x="230" y="198" fill="#9aa7b2">–</text><text x="310" y="198" fill="#9aa7b2">–</text><text x="390" y="198" fill="#1a2026">15</text><text x="470" y="198" fill="#4169E1">16</text><text x="550" y="198" fill="#1a2026">16</text>
+    <text x="230" y="236" fill="#9aa7b2">–</text><text x="310" y="236" fill="#9aa7b2">–</text><text x="390" y="236" fill="#9aa7b2">–</text><text x="470" y="236" fill="#1a2026">7</text><text x="550" y="236" fill="#4169E1">14</text>
+  </g>
+  <!-- move badges on the four winning cells -->
+  <g fill="#4169E1">
+    <circle cx="252" cy="106" r="8"/><circle cx="412" cy="150" r="8"/>
+    <circle cx="492" cy="188" r="8"/><circle cx="572" cy="226" r="8"/>
+  </g>
+  <g text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="600">
+    <text x="252" y="110">1</text><text x="412" y="154">2</text><text x="492" y="192">3</text><text x="572" y="230">4</text>
+  </g>
+  <!-- price strip: the two transactions -->
+  <text x="186" y="296" text-anchor="end" fill="#5c6b76" font-size="11.5">price</text>
+  <path d="M 234 338 Q 310 252 386 270" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 474 279 Q 520 288 546 327" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g fill="#4169E1">
+    <circle cx="230" cy="340" r="3.5"/><circle cx="310" cy="286" r="3.5"/><circle cx="390" cy="268" r="3.5"/>
+    <circle cx="470" cy="277" r="3.5"/><circle cx="550" cy="331" r="3.5"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="216" y="344">1</text><text x="310" y="306">7</text><text x="390" y="258">9</text>
+    <text x="450" y="272">8</text><text x="564" y="335">2</text>
+  </g>
+  <g fill="#4169E1" font-size="12" font-weight="600" text-anchor="middle">
+    <text x="298" y="272">+8</text>
+    <text x="540" y="286">+6</text>
+  </g>
+  <text x="320" y="364" text-anchor="middle" fill="#1a2026" font-size="13">The winning moves: buy at 1 → openLong[0] = <tspan fill="#4169E1" font-weight="600">-1</tspan>, sell at 9 → done[1] = <tspan fill="#4169E1" font-weight="600">8</tspan>;</text>
+  <text x="320" y="382" text-anchor="middle" fill="#1a2026" font-size="13">short at 8 → openShort[1] = <tspan fill="#4169E1" font-weight="600">16</tspan>, cover at 2 → done[2] = <tspan fill="#4169E1" font-weight="600">14</tspan> — the answer.</text>
+</svg>
