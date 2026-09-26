@@ -22,4 +22,8 @@ reversing when `L` is odd), compare against `n`, and count it only when it
 does not exceed `n`. Every `k` in `[0, n]` has now been counted exactly once,
 and no other value qualifies.
 
+![For n = 9 = "1001" each binary palindrome is drawn with its accented root
+and shaded mirrored half, grouped by bit length: zero, then 1 + 1 + 2 across
+lengths 1-3, and at length 4 only the root 10 mirrors to 9 ≤ 9 — six in all.](figures/solution-prefix-counting-bit-lengths.svg)
+
 **Complexity:** `O(log n)` time, `O(1)` space.

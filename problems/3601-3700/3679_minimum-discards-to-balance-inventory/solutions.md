@@ -20,6 +20,11 @@ exit would silently steal capacity from a still-present kept twin of the same
 type. A parallel boolean array records each day's keep/discard decision and
 gates the decrement.
 
+![For arrivals = [1, 2, 3, 3, 3, 4] with w = 3, m = 2 the sweep keeps days 1-4,
+discards the day-5 type 3 because its window already holds two kept 3s, and
+admits day 6 once day 3 slides out and the count drops to one — a single
+discard.](figures/solution-one-pass-window-counts.svg)
+
 Each day then costs a constant number of map operations, so the sweep runs in
 linear time over the `10⁵`-scale input with space for at most one entry per
 distinct type plus the decision array. No window is ever materialized, no

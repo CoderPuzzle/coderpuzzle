@@ -15,6 +15,11 @@ out of the search in lexicographic order, and replacing the best split only
 on a strictly smaller spread leaves the lexicographically smallest optimal
 split standing.
 
+![For n = 44, k = 3 the divisor backtracking tree tries factors smallest
+first, prunes every branch whose forced last factor would break the
+nondecreasing rule or whose product stops dividing 44, and completes only
+[1,1,44], [1,2,22], [1,4,11] and the winning [2,2,11] at spread 9.](figures/solution-divisor-backtracking-tree.svg)
+
 The spread of a completed split needs no scan. A path built nondecreasingly
 has its minimum in the first slot and its maximum in the forced last one, so
 comparing `last - first` against the best so far is enough. Pruning falls out

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 364" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="364" fill="#ffffff"/>
+  <!-- nums = [2,5,3,1,4]; bars 64 wide at x = 68,158,248,338,428 (centers 100,190,280,370,460), baseline y=240, 36 px per unit.
+       Nearest strictly greater: left row (none,none,5,3,5), right row (5,none,4,4,none). Arcs = the two bowls [3,1,4] and [5,3,1,4]; dots mark interior maxima 1 and 3. -->
+  <path d="M 190 52 Q 330 10 460 82" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <path d="M 280 126 Q 368 64 460 90" fill="none" stroke="#4169E1" stroke-width="2"/>
+  <text x="327" y="30" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">bowl [5, 3, 1, 4]</text>
+  <text x="372" y="116" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">bowl [3, 1, 4]</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="68" y="168" width="64" height="72"/>
+    <rect x="158" y="60" width="64" height="180"/>
+    <rect x="248" y="132" width="64" height="108"/>
+    <rect x="338" y="204" width="64" height="36"/>
+    <rect x="428" y="96" width="64" height="144"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="100" y="188">2</text>
+    <text x="190" y="80">5</text>
+    <text x="280" y="152">3</text>
+    <text x="370" y="224">1</text>
+    <text x="460" y="116">4</text>
+  </g>
+  <circle cx="280" cy="230" r="3.5" fill="#4169E1"/>
+  <circle cx="370" cy="230" r="3.5" fill="#4169E1"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="100" y="258">0</text><text x="190" y="258">1</text><text x="280" y="258">2</text>
+    <text x="370" y="258">3</text><text x="460" y="258">4</text>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="8" y="284">greater left</text>
+    <text x="8" y="308">greater right</text>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <g fill="#9aa7b2">
+      <text x="100" y="284">–</text><text x="190" y="284">–</text><text x="460" y="308">–</text>
+      <text x="190" y="308">–</text>
+    </g>
+    <g fill="#4169E1" font-weight="600">
+      <text x="280" y="284">5</text><text x="370" y="284">3</text>
+      <text x="280" y="308">4</text><text x="370" y="308">4</text>
+    </g>
+    <g fill="#1a2026">
+      <text x="460" y="284">5</text>
+      <text x="100" y="308">5</text>
+    </g>
+  </g>
+  <text x="280" y="336" text-anchor="middle" fill="#1a2026" font-size="13">Popping at value 4: 1 then 3 leave the stack, each with a greater value below —</text>
+  <text x="280" y="354" text-anchor="middle" fill="#1a2026" font-size="13">those are bowls [3, 1, 4] and [5, 3, 1, 4], so the count is <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

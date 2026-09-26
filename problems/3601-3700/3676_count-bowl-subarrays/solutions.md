@@ -14,6 +14,11 @@ of the two values is smaller has the other as its nearest greater neighbour,
 not a distant rim — so counting the positions that have a strictly greater
 element on both sides counts every bowl exactly once.
 
+![For nums = [2, 5, 3, 1, 4] the monotonic sweep gives every element its
+nearest strictly greater neighbour on each side; only 3 and 1 have both, and
+as the interior maxima they pin exactly the bowls [3, 1, 4] and
+[5, 3, 1, 4].](figures/solution-nearest-greater-bowls.svg)
+
 A single monotonic sweep does the counting. Walk `nums` left to right keeping
 a stack of values seen so far in strictly decreasing order. When the current
 value pops entries off the stack, each popped entry has just met its nearest
