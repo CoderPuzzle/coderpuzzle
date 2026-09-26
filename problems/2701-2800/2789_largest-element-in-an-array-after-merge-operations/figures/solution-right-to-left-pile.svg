@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [2,3,7,9,3]; cells 80x40 at y 64, x = 110 + 95i, centers 150/245/340/435/530;
+       pile states under each center after processing that index right to left -->
+  <text x="340" y="36" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">sweep right to left</text>
+  <path d="M 522 48 L 158 48" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="110" y="64" width="80" height="40"/><rect x="205" y="64" width="80" height="40"/>
+    <rect x="300" y="64" width="80" height="40"/><rect x="395" y="64" width="80" height="40"/>
+    <rect x="490" y="64" width="80" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="150" y="90">2</text><text x="245" y="90">3</text><text x="340" y="90">7</text>
+    <text x="435" y="90">9</text><text x="530" y="90">3</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="150" y="124">i = 0</text><text x="245" y="124">i = 1</text><text x="340" y="124">i = 2</text>
+    <text x="435" y="124">i = 3</text><text x="530" y="124">i = 4</text>
+  </g>
+  <rect x="104" y="142" width="92" height="44" rx="6" fill="#dbe4fb"/>
+  <g text-anchor="middle" font-size="13">
+    <text x="150" y="161" fill="#1a2026" font-weight="600">19 + 2 = <tspan fill="#4169E1">21</tspan></text>
+    <text x="245" y="161" fill="#1a2026">16 + 3 = 19</text>
+    <text x="340" y="161" fill="#1a2026">9 + 7 = 16</text>
+    <text x="435" y="161" fill="#1a2026">pile = 9</text>
+    <text x="530" y="161" fill="#1a2026">pile = 3</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="150" y="180">2 &#8804; 19, absorb</text>
+    <text x="245" y="180">3 &#8804; 16, absorb</text>
+    <text x="340" y="180">7 &#8804; 9, absorb</text>
+    <text x="435" y="180">9 &gt; 3, restart</text>
+    <text x="530" y="180">start at last</text>
+  </g>
+  <text x="40" y="262" fill="#1a2026" font-size="13">The pile absorbs each next element only while that element is at most the pile:</text>
+  <text x="40" y="282" fill="#1a2026" font-size="13">9 &gt; 3 restarts fresh, then 9+7+3+2 = <tspan fill="#4169E1" font-weight="600">21</tspan> is the largest pile seen.</text>
+</svg>

@@ -11,6 +11,8 @@ no node ever inspects more than its `k` smallest candidates. A parent
 obtains its own list by pooling the two child lists with its own value —
 at most `2k + 1` entries — sorting them, and keeping the first `k`.
 
+![On root = [7,6,5,4,3,2,1] with k = 2 the post-order lists are [4], [3], [3,4], [2], [1], [1,2] and, pooling [3,4] + [1,2] + 7 and truncating, [1,2] at the root — nodes 7, 6, 5 each exceed their list's last entry (7 > 2, 6 > 4, 5 > 2) while 4, 3, 2, 1 carry lists shorter than k, so the answer is 3.](figures/solution-bottomup-k-smallest.svg)
+
 The pooled-and-truncated list answers the test exactly. The list reaches
 length `k` precisely when the subtree holds at least `k` nodes, which
 settles the size condition. When it does, its last element is the

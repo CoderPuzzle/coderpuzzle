@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="340" fill="#ffffff"/>
+  <!-- nums = [1,3,1,2,2], k = 3; cells 56x36 at y 54, x = 190 + 62i (centers 218/280/342/404/466).
+       Brackets under the cells: the four complete subarrays [0..3], [0..4], [1..3], [1..4].
+       atMost(2) sweep rows: +1 +2 +3 +2 +3 = 11; atMost(3) = 15; 15 - 11 = 4. -->
+  <text x="40" y="32" fill="#5c6b76" font-size="12.5">k = 3 distinct values in the whole array; a complete subarray holds all 3</text>
+  <text x="172" y="77" text-anchor="end" fill="#5c6b76" font-size="12">nums</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="190" y="54" width="56" height="36"/><rect x="252" y="54" width="56" height="36"/>
+    <rect x="314" y="54" width="56" height="36"/><rect x="376" y="54" width="56" height="36"/>
+    <rect x="438" y="54" width="56" height="36"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="218" y="77">1</text><text x="280" y="77">3</text><text x="342" y="77">1</text>
+    <text x="404" y="77">2</text><text x="466" y="77">2</text>
+  </g>
+  <!-- brackets: the four complete subarrays -->
+  <g stroke="#4169E1" stroke-width="1.3" fill="none">
+    <path d="M 190 99 v 6 M 190 102 H 432 M 432 99 v 6"/>
+    <path d="M 190 109 v 6 M 190 112 H 494 M 494 109 v 6"/>
+    <path d="M 252 119 v 6 M 252 122 H 432 M 432 119 v 6"/>
+    <path d="M 252 129 v 6 M 252 132 H 494 M 494 129 v 6"/>
+  </g>
+  <text x="510" y="121" fill="#4169E1" font-size="12.5" font-weight="600">4 complete</text>
+  <!-- atMost(2) sweep -->
+  <text x="70" y="172" fill="#1a2026" font-size="13" font-weight="600">atMost(2): window after the shrink, subarrays added</text>
+  <g font-size="13">
+    <text x="110" y="196" text-anchor="end" fill="#5c6b76">right 0</text>
+    <text x="140" y="196" fill="#1a2026">1</text>
+    <text x="600" y="196" text-anchor="end" fill="#4169E1" font-weight="600">+1</text>
+    <text x="110" y="216" text-anchor="end" fill="#5c6b76">right 1</text>
+    <text x="140" y="216" fill="#1a2026">1,3</text>
+    <text x="600" y="216" text-anchor="end" fill="#4169E1" font-weight="600">+2</text>
+    <text x="110" y="236" text-anchor="end" fill="#5c6b76">right 2</text>
+    <text x="140" y="236" fill="#1a2026">1,3,1</text>
+    <text x="600" y="236" text-anchor="end" fill="#4169E1" font-weight="600">+3</text>
+    <text x="110" y="256" text-anchor="end" fill="#5c6b76">right 3</text>
+    <text x="140" y="256" fill="#1a2026">1,3,1,2 &#8594; shrink &#8594; 1,2 (left 0&#8594;2)</text>
+    <text x="600" y="256" text-anchor="end" fill="#4169E1" font-weight="600">+2</text>
+    <text x="110" y="276" text-anchor="end" fill="#5c6b76">right 4</text>
+    <text x="140" y="276" fill="#1a2026">1,2,2</text>
+    <text x="600" y="276" text-anchor="end" fill="#4169E1" font-weight="600">+3</text>
+  </g>
+  <text x="40" y="300" fill="#1a2026" font-size="13">atMost(3) = 15, atMost(2) = 1+2+3+2+3 = 11, and the difference 15 &#8722; 11 = <tspan fill="#4169E1" font-weight="600">4</tspan> is the answer.</text>
+  <text x="40" y="322" fill="#1a2026" font-size="13">It leaves exactly [1,3,1,2], [1,3,1,2,2], [3,1,2], [3,1,2,2] &#8212; the four accent brackets.</text>
+</svg>

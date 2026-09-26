@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- example 3: fn 0 fulfills 30 at t=200 ms, fn 1 rejects "Error" at t=100 ms.
+       results slots: index 0 box (150,54,180x48) = {fulfilled, 30}; index 1 box (390,54,180x48) = {rejected, "Error"}.
+       timeline axis y=210 from x=90 to x=600; ticks x=120 (0 ms), x=330 (100 ms), x=540 (200 ms);
+       fn 0 lane y=170 (120 to 540), fn 1 lane y=190 (120 to 330); pending counter 2 -> 1 -> 0 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="240" y="46">index 0</text>
+    <text x="480" y="46">index 1</text>
+    <text x="240" y="120">written at 200 ms</text>
+    <text x="480" y="120">written at 100 ms</text>
+  </g>
+  <text x="140" y="82" text-anchor="end" fill="#5c6b76" font-size="12">results</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="150" y="54" width="180" height="48"/>
+    <rect x="390" y="54" width="180" height="48"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="240" y="74" fill="#1a2026" font-weight="600">fulfilled</text>
+    <text x="240" y="92" fill="#5c6b76" font-size="12.5">value 30</text>
+    <text x="480" y="74" fill="#1a2026" font-weight="600">rejected</text>
+    <text x="480" y="92" fill="#5c6b76" font-size="12.5">reason &#8220;Error&#8221;</text>
+  </g>
+  <!-- promise lanes over the virtual clock -->
+  <text x="108" y="174" text-anchor="end" fill="#5c6b76" font-size="12">fn 0</text>
+  <text x="108" y="194" text-anchor="end" fill="#5c6b76" font-size="12">fn 1</text>
+  <path d="M 120 170 L 540 170" fill="none" stroke="#42525e" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 120 190 L 330 190" fill="none" stroke="#42525e" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="530" y="162" text-anchor="end" fill="#4169E1" font-size="12.5" font-weight="600">resolve(30)</text>
+  <text x="336" y="203" fill="#5c6b76" font-size="12.5">reject(&#8220;Error&#8221;)</text>
+  <g stroke="#9aa7b2" stroke-width="1" stroke-dasharray="2 3">
+    <line x1="540" y1="176" x2="540" y2="205"/>
+  </g>
+  <!-- clock axis -->
+  <path d="M 90 210 L 600 210" fill="none" stroke="#42525e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="120" y1="206" x2="120" y2="214"/>
+    <line x1="330" y1="206" x2="330" y2="214"/>
+    <line x1="540" y1="206" x2="540" y2="214"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="120" y="232">0 ms</text>
+    <text x="330" y="232">100 ms</text>
+    <text x="540" y="232">200 ms</text>
+  </g>
+  <!-- pending counter readings -->
+  <g text-anchor="middle" font-size="13">
+    <text x="120" y="262" fill="#5c6b76">counter = 2</text>
+    <text x="330" y="262" fill="#5c6b76">counter = 1</text>
+    <text x="540" y="262" fill="#4169E1" font-weight="600">counter = 0 &#8594; resolve</text>
+  </g>
+  <text x="40" y="296" fill="#1a2026" font-size="13">Writes are keyed by index, not arrival order: the rejection lands at index 1 at 100 ms,</text>
+  <text x="40" y="314" fill="#1a2026" font-size="13">the fulfillment fills index 0 at 200 ms, and the counter reaching 0 resolves the aggregate.</text>
+</svg>

@@ -22,4 +22,6 @@ at `n(n+1)/2`. With `n ≤ 1000` the largest possible answer is
 `1000 · 1001 / 2 = 500500`, comfortably inside 32-bit range, so the
 fixed-width languages return plain `int`.
 
+![On nums = [1,3,1,2,2] with k = 3 the four complete subarrays [0..3], [0..4], [1..3], [1..4] show as accent brackets, while the atMost(2) sweep adds +1, +2, +3, +2 (after shrinking left 0→2), +3 = 11 against atMost(3) = 15, and the difference 15 − 11 = 4 is the answer.](figures/solution-atmost-window-subtraction.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.

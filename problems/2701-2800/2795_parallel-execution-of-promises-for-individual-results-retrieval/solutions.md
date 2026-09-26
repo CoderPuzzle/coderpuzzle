@@ -12,6 +12,8 @@ the counter, and whichever settlement brings it to zero resolves the
 aggregate with the results array; an empty input short-circuits to `[]`
 before any waiting happens.
 
+![On example 3's two functions the virtual clock runs fn 0 to resolve(30) at 200 ms and fn 1 to reject("Error") at 100 ms: the rejection writes {rejected, "Error"} at index 1 and drops the pending counter to 1, the fulfillment writes {fulfilled, 30} at index 0 and the counter reaching 0 resolves the aggregate at 200 ms with both slots filled.](figures/solution-pending-counter-timeline.svg)
+
 Because every promise receives its rejection handler up front, each
 rejection is caught individually the moment it happens and can never escape
 as an unhandled failure, while the aggregate itself only ever resolves —

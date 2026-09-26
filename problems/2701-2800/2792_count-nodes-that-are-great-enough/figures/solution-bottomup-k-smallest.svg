@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="340" fill="#ffffff"/>
+  <!-- root = [7,6,5,4,3,2,1] (values shown), k = 2, complete tree;
+       circles at 7(340,58) 6(230,148) 5(450,148) 4(170,238) 3(290,238) 2(390,238) 1(510,238), r=19;
+       label under each node = its post-order min(size,2)-smallest list:
+       4:[4] 3:[3] 6:[3,4] 2:[2] 1:[1] 5:[1,2] 7:[1,2]; great nodes 7, 6, 5 accented -->
+  <text x="40" y="32" fill="#5c6b76" font-size="12.5">post-order: each node returns the min(size, k) = 2 smallest values in its subtree</text>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="340" y1="58" x2="230" y2="148"/>
+    <line x1="340" y1="58" x2="450" y2="148"/>
+    <line x1="230" y1="148" x2="170" y2="238"/>
+    <line x1="230" y1="148" x2="290" y2="238"/>
+    <line x1="450" y1="148" x2="390" y2="238"/>
+    <line x1="450" y1="148" x2="510" y2="238"/>
+  </g>
+  <circle cx="340" cy="58" r="19" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="340" y="63" text-anchor="middle" fill="#1a2026" font-weight="600">7</text>
+  <circle cx="230" cy="148" r="19" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="230" y="153" text-anchor="middle" fill="#1a2026" font-weight="600">6</text>
+  <circle cx="450" cy="148" r="19" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+  <text x="450" y="153" text-anchor="middle" fill="#1a2026" font-weight="600">5</text>
+  <circle cx="170" cy="238" r="19" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="170" y="243" text-anchor="middle" fill="#1a2026">4</text>
+  <circle cx="290" cy="238" r="19" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="290" y="243" text-anchor="middle" fill="#1a2026">3</text>
+  <circle cx="390" cy="238" r="19" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="390" y="243" text-anchor="middle" fill="#1a2026">2</text>
+  <circle cx="510" cy="238" r="19" fill="#ffffff" stroke="#1a2026" stroke-width="1.5"/>
+  <text x="510" y="243" text-anchor="middle" fill="#1a2026">1</text>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="340" y="98" fill="#4169E1" font-weight="600">[1,2]</text>
+    <text x="230" y="188" fill="#4169E1" font-weight="600">[3,4]</text>
+    <text x="450" y="188" fill="#4169E1" font-weight="600">[1,2]</text>
+    <text x="170" y="278" fill="#5c6b76">[4]</text>
+    <text x="290" y="278" fill="#5c6b76">[3]</text>
+    <text x="390" y="278" fill="#5c6b76">[2]</text>
+    <text x="510" y="278" fill="#5c6b76">[1]</text>
+  </g>
+  <text x="40" y="308" fill="#1a2026" font-size="13">Root pools [3,4] + [1,2] + 7, sorts, keeps the 2 smallest [1,2] &#8212; and 7 &gt; 2</text>
+  <text x="40" y="326" fill="#1a2026" font-size="13">clears the test; 6 &gt; 4 and 5 &gt; 2 also hold, while 4, 3, 2, 1 carry short lists: answer <tspan fill="#4169E1" font-weight="600">3</tspan>.</text>
+</svg>
