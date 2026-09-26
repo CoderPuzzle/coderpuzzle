@@ -11,6 +11,8 @@ reached, so the order is not a preorder. The first entry must carry
 `parentId == -1`; it is the only node that may start with nothing on the
 stack.
 
+![Walking nodes [[0,-1],[1,0],[2,0],[3,2],[4,2]] left to right, the ancestor stack grows 0, then 0-1, 0-2, 0-2-3, 0-2-4: each arriving node pops finished subtrees (1, then 3) until its parent surfaces on top, and the stack never empties, so the order is a preorder.](figures/solution-ancestor-stack-one-pass.svg)
+
 The invariant also makes acceptance sufficient. While the walk sits anywhere
 inside a subtree, exactly its unfinished ancestors are stacked, so a parent
 that survives the popping is one that could still receive a child. Because

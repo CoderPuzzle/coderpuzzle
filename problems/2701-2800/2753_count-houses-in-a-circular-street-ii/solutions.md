@@ -16,6 +16,8 @@ If the sweep finds nothing, every door is closed, which is possible only
 when the door just closed was the beacon itself; that round's sighting
 was therefore the full lap, and its step count `t` equals `n`.
 
+![On street [1,0,1,1,0] with k = 5, rounds 1 and 2 close h3 and h1 while each sweep still finds h4 open, and round 3 walks the full lap h5 to h1 to h2 to h3 to h4 to re-sight its own beacon at t = 5, so the closing empty sweep certifies n = 5.](figures/solution-beacon-laps-progressive-closing.svg)
+
 The bookkeeping stays exact because each round closes precisely one open
 door and no door ever reopens: the rounds consume the initially open
 doors one at a time, so there are at most `m <= n <= k` of them, and a

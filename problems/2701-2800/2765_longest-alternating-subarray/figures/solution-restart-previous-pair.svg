@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 356" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="356" fill="#ffffff"/>
+  <!-- nums = [2,3,4,3,4]; cells 64x40 at (120,60); step rows y=190/222/254/286 -->
+  <text x="312" y="48" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">answer: [3, 4, 3, 4], length 4</text>
+  <g stroke-width="1.4">
+    <rect x="120" y="60" width="64" height="40" fill="#ffffff" stroke="#42525e"/>
+    <rect x="184" y="60" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="248" y="60" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="312" y="60" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="376" y="60" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600" fill="#1a2026">
+    <text x="152" y="85">2</text><text x="216" y="85">3</text><text x="280" y="85">4</text>
+    <text x="344" y="85">3</text><text x="408" y="85">4</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="184" y="116">+1</text><text x="248" y="116">+1</text><text x="312" y="116">-1</text><text x="376" y="116">+1</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="152" y="133">0</text><text x="216" y="133">1</text><text x="280" y="133">2</text>
+    <text x="344" y="133">3</text><text x="408" y="133">4</text>
+  </g>
+  <!-- step table -->
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="64" y="162" text-anchor="middle">i</text>
+    <text x="124" y="162" text-anchor="middle">delta</text>
+    <text x="206" y="162" text-anchor="middle">expects</text>
+    <text x="262" y="162">what happens</text>
+    <text x="644" y="162" text-anchor="middle">cur</text>
+  </g>
+  <line x1="48" y1="205" x2="656" y2="205" stroke="#dbe4fb" stroke-width="1"/>
+  <line x1="48" y1="237" x2="656" y2="237" stroke="#dbe4fb" stroke-width="1"/>
+  <line x1="48" y1="269" x2="656" y2="269" stroke="#dbe4fb" stroke-width="1"/>
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="64" y="194">1</text><text x="124" y="194">+1</text>
+    <text x="64" y="226">2</text><text x="124" y="226">+1</text>
+    <text x="64" y="258">3</text><text x="124" y="258">-1</text>
+    <text x="64" y="290">4</text><text x="124" y="290">+1</text>
+  </g>
+  <g text-anchor="middle" font-size="12" fill="#5c6b76">
+    <text x="206" y="194">+1 (odd)</text>
+    <text x="206" y="226">-1 (even)</text>
+    <text x="206" y="258">-1 (even)</text>
+    <text x="206" y="290">+1 (odd)</text>
+  </g>
+  <g font-size="12" fill="#1a2026">
+    <text x="262" y="194">match: run grows to [2, 3]</text>
+    <text x="262" y="226">break: the pair <tspan fill="#4169E1" font-weight="600">(3, 4) restarts</tspan> as a new run, cur = 2</text>
+    <text x="262" y="258">match: run grows to [3, 4, 3]</text>
+    <text x="262" y="290">match: run grows to [3, 4, 3, 4]</text>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="644" y="194" font-size="12.5" fill="#1a2026">2</text>
+    <text x="644" y="226" font-size="12.5" fill="#1a2026">2</text>
+    <text x="644" y="258" font-size="12.5" fill="#1a2026">3</text>
+    <text x="644" y="290" font-size="13.5" fill="#4169E1">4</text>
+  </g>
+  <text x="340" y="322" text-anchor="middle" fill="#1a2026" font-size="13">Restarting at the previous pair - not at the broken element - is what lets (3, 4)</text>
+  <text x="340" y="339" text-anchor="middle" fill="#1a2026" font-size="13">grow into the winning <tspan fill="#4169E1" font-weight="600">[3, 4, 3, 4]</tspan>: the answer is <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

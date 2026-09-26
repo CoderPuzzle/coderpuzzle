@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 416" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="416" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- street = [1,0,1,1,0], k = 5; cells 64x40 at x=150, rows y=78/184/306; houses h1..h5 left to right -->
+  <text x="40" y="20" fill="#5c6b76" font-size="13">k = 5, doors initially [1, 0, 1, 1, 0]&#160;&#160;(1 = open)</text>
+  <rect x="420" y="8" width="14" height="14" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="440" y="20" fill="#5c6b76" font-size="12">closed</text>
+  <rect x="505" y="8" width="14" height="14" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+  <text x="525" y="20" fill="#5c6b76" font-size="12">closed by a round</text>
+  <!-- round 1: start h1 (open), sight h3 after 2 steps -->
+  <text x="40" y="104" fill="#5c6b76" font-size="13" font-weight="600">round 1</text>
+  <g stroke-width="1.4">
+    <rect x="150" y="78" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="214" y="78" width="64" height="40" fill="#ffffff" stroke="#42525e"/>
+    <rect x="278" y="78" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="342" y="78" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="406" y="78" width="64" height="40" fill="#ffffff" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="182" y="103" fill="#1a2026">1</text><text x="246" y="103" fill="#9aa7b2">0</text>
+    <text x="310" y="103" fill="#1a2026">1</text><text x="374" y="103" fill="#1a2026">1</text>
+    <text x="438" y="103" fill="#9aa7b2">0</text>
+  </g>
+  <path d="M 182 72 Q 244 36 306 72" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="244" y="44" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">sight after t = 2 steps</text>
+  <text x="496" y="98" fill="#5c6b76" font-size="12">close h3, sweep finds</text>
+  <text x="496" y="116" fill="#5c6b76" font-size="12">h4 open &#8594; hand off</text>
+  <!-- round 2: start h4, wrap to sight h1 after 2 steps -->
+  <text x="40" y="210" fill="#5c6b76" font-size="13" font-weight="600">round 2</text>
+  <g stroke-width="1.4">
+    <rect x="150" y="184" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="214" y="184" width="64" height="40" fill="#ffffff" stroke="#42525e"/>
+    <rect x="278" y="184" width="64" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+    <rect x="342" y="184" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="406" y="184" width="64" height="40" fill="#ffffff" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="182" y="209" fill="#1a2026">1</text><text x="246" y="209" fill="#9aa7b2">0</text>
+    <text x="310" y="209" fill="#9aa7b2">0</text><text x="374" y="209" fill="#1a2026">1</text>
+    <text x="438" y="209" fill="#9aa7b2">0</text>
+  </g>
+  <path d="M 374 178 Q 278 136 188 176" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="278" y="144" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">t = 2</text>
+  <text x="496" y="204" fill="#5c6b76" font-size="12">close h1, sweep finds</text>
+  <text x="496" y="222" fill="#5c6b76" font-size="12">h4 open &#8594; hand off</text>
+  <!-- round 3: start h4, only open door left; walk the full lap and re-sight itself -->
+  <text x="40" y="332" fill="#5c6b76" font-size="13" font-weight="600">round 3</text>
+  <g stroke-width="1.4">
+    <rect x="150" y="306" width="64" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+    <rect x="214" y="306" width="64" height="40" fill="#ffffff" stroke="#42525e"/>
+    <rect x="278" y="306" width="64" height="40" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2"/>
+    <rect x="342" y="306" width="64" height="40" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6"/>
+    <rect x="406" y="306" width="64" height="40" fill="#ffffff" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="14">
+    <text x="182" y="331" fill="#9aa7b2">0</text><text x="246" y="331" fill="#9aa7b2">0</text>
+    <text x="310" y="331" fill="#9aa7b2">0</text><text x="374" y="331" fill="#1a2026">1</text>
+    <text x="438" y="331" fill="#9aa7b2">0</text>
+  </g>
+  <path d="M 358 298 C 344 266 404 266 396 294" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="374" y="264" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">full lap</text>
+  <text x="496" y="312" fill="#5c6b76" font-size="12">h5&#8594;h1&#8594;h2&#8594;h3&#8594;h4:</text>
+  <text x="496" y="330" fill="#5c6b76" font-size="12">re-sights itself: t = 5 =</text>
+  <text x="496" y="348" fill="#5c6b76" font-size="12">full lap; close h4, sweep</text>
+  <text x="496" y="366" fill="#4169E1" font-size="12" font-weight="600">k = 5: all closed &#8594; n = 5</text>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="182" y="134">h1</text><text x="246" y="134">h2</text><text x="310" y="134">h3</text><text x="374" y="134">h4</text><text x="438" y="134">h5</text>
+    <text x="182" y="240">h1</text><text x="246" y="240">h2</text><text x="310" y="240">h3</text><text x="374" y="240">h4</text><text x="438" y="240">h5</text>
+    <text x="182" y="362">h1</text><text x="246" y="362">h2</text><text x="310" y="362">h3</text><text x="374" y="362">h4</text><text x="438" y="362">h5</text>
+  </g>
+  <text x="340" y="388" text-anchor="middle" fill="#1a2026" font-size="13">Rounds 1 and 2 each close one open door and their sweeps still find h4; round 3</text>
+  <text x="340" y="405" text-anchor="middle" fill="#1a2026" font-size="13">re-sights the beacon itself: the empty sweep certifies <tspan fill="#4169E1" font-weight="600">t = n = 5</tspan> houses.</text>
+</svg>

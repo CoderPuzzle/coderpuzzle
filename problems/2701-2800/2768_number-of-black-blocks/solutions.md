@@ -13,6 +13,8 @@ block holds: every coordinate bumps the up-to-four corners around it, and
 because the coordinates are pairwise distinct every bump is a different
 black cell, which is precisely the per-block count wanted.
 
+![With m = n = 3 and black cells (0,0), (1,1), (0,2), each black cell bumps only the up-to-four 2x2 block corners it belongs to — a and c are edge cells with one valid corner each, b gets four — leaving tallies 2, 2, 1, 1 on the four touched blocks and arr = [0,2,2,0,0].](figures/solution-black-cell-block-bumps.svg)
+
 The answer array falls out of the map. `arr[i]` for `i = 1..4` counts the
 entries holding `i` (no entry can exceed 4, a block has only four cells),
 and every block containing at least one black cell is present exactly once,

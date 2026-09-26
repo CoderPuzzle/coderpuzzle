@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="320" fill="#ffffff"/>
+  <!-- nodes = [[0,-1],[1,0],[2,0],[3,2],[4,2]]; stack cells 56x30, bottoms y=250, column centers x=100/228/356/484/612 -->
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a2026">
+    <text x="100" y="64">[0, -1]</text>
+    <text x="228" y="64">[1, 0]</text>
+    <text x="356" y="64">[2, 0]</text>
+    <text x="484" y="64">[3, 2]</text>
+    <text x="612" y="64">[4, 2]</text>
+  </g>
+  <g text-anchor="middle" font-size="11.5" fill="#1a2026">
+    <text x="100" y="84">root: push 0</text>
+    <text x="228" y="84">push 1</text>
+    <text x="356" y="84"><tspan fill="#9aa7b2">pop 1</tspan> &#8594; push 2</text>
+    <text x="484" y="84">push 3</text>
+    <text x="612" y="84"><tspan fill="#9aa7b2">pop 3</tspan> &#8594; push 4</text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#5c6b76">
+    <text x="100" y="100">parentId = -1</text>
+    <text x="228" y="100">top 0 = parent</text>
+    <text x="356" y="100">top 0 = parent</text>
+    <text x="484" y="100">top 2 = parent</text>
+    <text x="612" y="100">top 2 = parent</text>
+  </g>
+  <text x="356" y="142" text-anchor="middle" fill="#9aa7b2" font-size="12">stack after each step</text>
+  <line x1="44" y1="250" x2="648" y2="250" stroke="#9aa7b2" stroke-width="1"/>
+  <!-- step 1: stack [0] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="72" y="220" width="56" height="30"/>
+  </g>
+  <text x="100" y="240" text-anchor="middle" font-size="13.5" font-weight="600" fill="#4169E1">0</text>
+  <!-- step 2: stack [0,1] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="200" y="220" width="56" height="30"/><rect x="200" y="190" width="56" height="30"/>
+  </g>
+  <text x="228" y="240" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">0</text>
+  <text x="228" y="210" text-anchor="middle" font-size="13.5" font-weight="600" fill="#4169E1">1</text>
+  <!-- step 3: stack [0,2] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="328" y="220" width="56" height="30"/><rect x="328" y="190" width="56" height="30"/>
+  </g>
+  <text x="356" y="240" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">0</text>
+  <text x="356" y="210" text-anchor="middle" font-size="13.5" font-weight="600" fill="#4169E1">2</text>
+  <!-- step 4: stack [0,2,3] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="456" y="220" width="56" height="30"/><rect x="456" y="190" width="56" height="30"/><rect x="456" y="160" width="56" height="30"/>
+  </g>
+  <text x="484" y="240" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">0</text>
+  <text x="484" y="210" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">2</text>
+  <text x="484" y="180" text-anchor="middle" font-size="13.5" font-weight="600" fill="#4169E1">3</text>
+  <!-- step 5: stack [0,2,4] -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="584" y="220" width="56" height="30"/><rect x="584" y="190" width="56" height="30"/><rect x="584" y="160" width="56" height="30"/>
+  </g>
+  <text x="612" y="240" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">0</text>
+  <text x="612" y="210" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1a2026">2</text>
+  <text x="612" y="180" text-anchor="middle" font-size="13.5" font-weight="600" fill="#4169E1">4</text>
+  <text x="100" y="270" text-anchor="middle" fill="#9aa7b2" font-size="10.5">stack bottom</text>
+  <text x="330" y="294" text-anchor="middle" fill="#1a2026" font-size="13">The stack <tspan fill="#4169E1" font-weight="600">never empties</tspan>: each pop (1, then 3) closes a finished subtree,</text>
+  <text x="330" y="311" text-anchor="middle" fill="#1a2026" font-size="13">and every push finds its parent waiting on top — the order is a preorder.</text>
+</svg>

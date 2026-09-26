@@ -28,4 +28,6 @@ pushed out from the back by a stronger element or dropped from the front by
 reaches `n(n+1)/2` (a constant array gives about `5·10^9` at `n = 10^5`), so
 the fixed-width languages must accumulate in 64 bits.
 
+![On nums = [5,4,2,4], the window strips and the two monotonic deques advance right by right — each right contributes right - left + 1, giving 1 + 2 + 2 + 3, and when the fronts report a spread of 3 at right = 2, left jumps from 0 to 1 — for a total of 8 continuous subarrays.](figures/solution-sliding-window-two-deques.svg)
+
 **Complexity:** `O(n)` time, `O(n)` space.
