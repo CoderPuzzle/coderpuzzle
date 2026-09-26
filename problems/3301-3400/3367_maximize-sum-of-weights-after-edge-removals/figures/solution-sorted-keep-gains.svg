@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 348" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="348" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- edges = [[0,1,4],[0,2,2],[2,3,12],[2,4,6]], k = 2; node cards 64x44; kept edges accent, dropped edge gray dashed -->
+  <!-- kept/dropped edges (center to card edge) -->
+  <g stroke="#4169E1" stroke-width="2.25" fill="none">
+    <path d="M 125 92 L 80 143" marker-end="url(#arrowA)"/>
+    <path d="M 232 187 L 185 243" marker-end="url(#arrowA)"/>
+    <path d="M 268 187 L 315 243" marker-end="url(#arrowA)"/>
+  </g>
+  <path d="M 175 92 L 228 143" stroke="#9aa7b2" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
+  <!-- edge weights -->
+  <g text-anchor="middle" font-weight="600" font-size="12.5">
+    <text x="86" y="112" fill="#4169E1">4</text>
+    <text x="180" y="112" fill="#9aa7b2">2</text>
+    <text x="162" y="212" fill="#4169E1">12</text>
+    <text x="340" y="212" fill="#4169E1">6</text>
+  </g>
+  <text x="252" y="112" fill="#9aa7b2" font-size="12">dropped</text>
+  <text x="150" y="42" text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">answer</text>
+  <!-- node cards -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <rect x="28" y="143" width="64" height="44" rx="9"/>
+    <rect x="138" y="243" width="64" height="44" rx="9"/>
+    <rect x="298" y="243" width="64" height="44" rx="9"/>
+  </g>
+  <rect x="218" y="143" width="64" height="44" rx="9" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+  <rect x="118" y="48" width="64" height="44" rx="9" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.75"/>
+  <g text-anchor="middle">
+    <text x="150" y="68" font-size="15" font-weight="600" fill="#1a2026">0</text>
+    <text x="150" y="85" font-size="11.5" font-weight="600" fill="#4169E1">g=22</text>
+    <text x="60" y="163" font-size="15" font-weight="600" fill="#1a2026">1</text>
+    <text x="60" y="180" font-size="11" fill="#5c6b76">g=0 f=0</text>
+    <text x="250" y="163" font-size="15" font-weight="600" fill="#1a2026">2</text>
+    <text x="250" y="180" font-size="11" font-weight="600" fill="#4169E1">g=18 f=12</text>
+    <text x="170" y="263" font-size="15" font-weight="600" fill="#1a2026">3</text>
+    <text x="170" y="280" font-size="11" fill="#5c6b76">g=0 f=0</text>
+    <text x="330" y="263" font-size="15" font-weight="600" fill="#1a2026">4</text>
+    <text x="330" y="280" font-size="11" fill="#5c6b76">g=0 f=0</text>
+  </g>
+  <!-- right panel: the two DP evaluations -->
+  <text x="400" y="62" font-weight="600" fill="#1a2026" font-size="13.5">node 2 — sort the keep-gains</text>
+  <text x="400" y="84" fill="#5c6b76" font-size="12.5">gain = w + f[v] − g[v] per child edge:</text>
+  <text x="400" y="104" fill="#5c6b76" font-size="12.5">child 3 gives +12, child 4 gives +6</text>
+  <text x="400" y="130" fill="#1a2026" font-size="13">g[2] = 0 + 12 + 6 = <tspan fill="#4169E1" font-weight="600">18</tspan> <tspan fill="#5c6b76">(keep ≤ k = 2)</tspan></text>
+  <text x="400" y="152" fill="#1a2026" font-size="13">f[2] = 0 + 12 = <tspan fill="#4169E1" font-weight="600">12</tspan> <tspan fill="#5c6b76">(keep ≤ k − 1 = 1)</tspan></text>
+  <text x="400" y="192" font-weight="600" fill="#1a2026" font-size="13.5">node 0 — same rule at the root</text>
+  <text x="400" y="214" fill="#1a2026" font-size="13">child 1: +4; child 2: 2 + 12 − 18 = −4</text>
+  <text x="400" y="236" fill="#1a2026" font-size="13">g[0] = 0 + 18 + 4 = <tspan fill="#4169E1" font-weight="600">22</tspan> <tspan fill="#5c6b76">(−4 rejected)</tspan></text>
+  <text x="340" y="318" text-anchor="middle" fill="#1a2026" font-size="13">Node 2 keeps both child edges (gains 12 and 6); at the root the weight-2</text>
+  <text x="340" y="336" text-anchor="middle" fill="#1a2026" font-size="13">edge to node 2 has gain 2 + 12 − 18 = −4 and is dropped: 4 + 12 + 6 = <tspan fill="#4169E1" font-weight="600">22</tspan>.</text>
+</svg>

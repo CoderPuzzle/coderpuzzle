@@ -14,6 +14,8 @@ descending, value ascending; because a value's count only ever moves
 through consecutive levels, an entry exists for the current count of
 every live value, and stale entries are skipped when they surface.
 
+![After adds 4, 4, 2, 3 the lower max-heap {2, 3} balances the upper min-heap {4, 4}, so getMedian() reads 4 off the upper top, and the (count, value) mode heap tops out at (2, 4) for getMode() = 4.](figures/solution-median-mode-heap-tops.svg)
+
 Removals are FIFO, so the departing value is arbitrary from a heap's
 point of view. Rather than searching, an erased value is marked in a
 delayed counter and discarded when it surfaces at a heap top — pruning

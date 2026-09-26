@@ -19,6 +19,8 @@ wanted, and the maximum opposite-class count over `v` equals tree 2's
 larger class size either way — one constant added to every `answer[i]`,
 exactly as hint 3 records.
 
+![Bipartitioning the two example trees by depth parity gives class sizes 3/2 and 3/5, so every answer[i] adds tree 2's larger class 5 — 3 + 5 = 8 for i = 0, and answer = [8, 7, 7, 8, 8].](figures/solution-parity-class-sizes.svg)
+
 The passes are pointer walks over preallocated queues rather than
 recursion, because a path of 10⁵ nodes would blow past every judged
 recursion limit (CPython's 1000 frames, Java's `-Xss512k`, the trimmed

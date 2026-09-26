@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="310" fill="#ffffff"/>
+  <!-- after addNumber 4, 4, 2, 3: lower max-heap {2,3}, upper min-heap {4,4}, mode heap entries (count,value); value boxes 34x26, pair boxes 58x26 -->
+  <g text-anchor="middle">
+    <text x="110" y="40" font-weight="600" font-size="13" fill="#1a2026">lower half — max-heap</text>
+    <text x="330" y="40" font-weight="600" font-size="13" fill="#1a2026">upper half — min-heap</text>
+    <text x="550" y="40" font-weight="600" font-size="13" fill="#1a2026">mode heap — (count, value)</text>
+    <text x="110" y="58" font-size="11.5" fill="#5c6b76">ceil(n/2) = 2 smallest: {2, 3}</text>
+    <text x="330" y="58" font-size="11.5" fill="#5c6b76">2 largest: {4, 4}</text>
+    <text x="550" y="58" font-size="11.5" fill="#5c6b76">count desc, then value asc</text>
+  </g>
+  <!-- heap edges -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 105 118 L 68 152"/>
+    <path d="M 325 118 L 288 152"/>
+    <path d="M 538 118 L 502 152"/>
+    <path d="M 562 118 L 598 152"/>
+  </g>
+  <!-- lower max-heap: top 3 over 2 -->
+  <rect x="93" y="92" width="34" height="26" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <rect x="45" y="152" width="34" height="26" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <!-- upper min-heap: top 4 over 4 -->
+  <rect x="313" y="92" width="34" height="26" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <rect x="265" y="152" width="34" height="26" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <!-- mode heap: (2,4) over (1,2), (1,3) -->
+  <rect x="521" y="92" width="58" height="26" rx="5" fill="#dbe4fb" stroke="#4169E1" stroke-width="2"/>
+  <rect x="469" y="152" width="58" height="26" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="573" y="152" width="58" height="26" rx="5" fill="#ffffff" stroke="#42525e" stroke-width="1.4"/>
+  <g text-anchor="middle" font-weight="600">
+    <text x="110" y="110" fill="#4169E1">3</text>
+    <text x="62" y="170" fill="#1a2026">2</text>
+    <text x="330" y="110" fill="#4169E1">4</text>
+    <text x="282" y="170" fill="#1a2026">4</text>
+    <text x="550" y="110" fill="#4169E1" font-size="13">(2, 4)</text>
+    <text x="498" y="170" fill="#1a2026" font-size="13">(1, 2)</text>
+    <text x="602" y="170" fill="#1a2026" font-size="13">(1, 3)</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="110" y="210" fill="#5c6b76">top 3 (median only when n is odd)</text>
+    <text x="330" y="210" fill="#4169E1" font-weight="600">top = 4 → getMedian() = 4</text>
+    <text x="550" y="210" fill="#4169E1" font-weight="600">top (2, 4) → getMode() = 4</text>
+  </g>
+  <text x="40" y="246" fill="#1a2026" font-size="12.5">getMean() = floor(13 / 4) = 3 from the running sum</text>
+  <text x="340" y="276" text-anchor="middle" fill="#1a2026" font-size="13">Both reads are heap tops, no scan: the median is the upper min-heap's <tspan fill="#4169E1" font-weight="600">4</tspan></text>
+  <text x="340" y="294" text-anchor="middle" fill="#1a2026" font-size="13">(n = 4 is even), and the mode heap's best entry (2, 4) returns <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

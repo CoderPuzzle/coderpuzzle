@@ -11,6 +11,8 @@ a different `u`), and tree 2 contributes its best radius-`k-1` neighborhood
 over every choice of `v` — the same maximum for every `i`, computed once.
 That is exactly hints 1 and 2, and the two parts add to `answer[i]`.
 
+![On example 1 with k = 2, node 0's tree-1 ball is all 5 nodes and tree 2's best radius-1 ball is node 4's {1, 4, 5, 6} (node 0 ties), so answer[0] = 5 + 4 = 9.](figures/solution-k-ball-plus-best-radius.svg)
+
 Each count comes from a breadth-first layer walk that stops after `k` (or
 `k - 1`) layers, visiting at most all `n` (respectively `m`) nodes per
 start. At the constraint ceiling `n, m <= 1000` that is a couple of million

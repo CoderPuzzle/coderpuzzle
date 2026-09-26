@@ -26,4 +26,6 @@ the same routine serves both with transposed reads. The grid sums fit in
 64 bits (`≤ 5 · 10⁶` in the worst case, declared wide per the grid-sum
 convention), and the DP touches each triangle cell once.
 
+![On the example grid, child 1 collects the diagonal 1 + 6 + 11 + 16 = 34 while the two boundary DPs gather 4 + 8 + 12 = 24 above it and 13 + 14 + 15 = 42 below it, meeting at (3, 3) for the total 100.](figures/solution-diagonal-plus-two-boundary-dps.svg)
+
 **Complexity:** `O(n²)` time, `O(n)` space.

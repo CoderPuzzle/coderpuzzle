@@ -6,6 +6,8 @@ Root the tree at node 0 and think about each node's budget of `k` incident edges
 
 For each child `v` reached via edge weight `w`, dropping the child edge contributes `g[v]`; keeping it contributes `w + f[v]`. The surplus of keeping is the gain `w + f[v] - g[v]`, so `u`'s optimum starts from the sum of all `g[v]` and then takes the largest positive gains, sorted descending — up to `k` of them for `g[u]`, up to `k - 1` for `f[u]`. Negative gains are never taken, which also correctly handles cases where dropping every child edge is best.
 
+![On the example tree with k = 2, node 2 sorts keep-gains +12 and +6 to set g = 18, f = 12, and the root rejects the weight-2 edge's gain 2 + 12 − 18 = −4, keeping 4 + 12 + 6 = 22.](figures/solution-sorted-keep-gains.svg)
+
 Greedy selection of the top gains is optimal because the budget constraint couples the children only through their count: each child contributes independently, so taking the largest gains first dominates any other choice. The answer is `g[0]`, since the root has no parent edge and enjoys the full `k` budget.
 
 Implementation detail worth noting: the traversal is iterative — an explicit stack builds a preorder list, and the DP is evaluated in reverse order, so children are finalized before their parent and no recursion depth limits are hit on trees with `10⁵` nodes. Sorting each node's gains costs `O(d log d)` for degree `d`, summing to `O(n log n)` over the tree.

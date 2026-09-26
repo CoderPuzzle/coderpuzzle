@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="372" fill="#ffffff"/>
+  <!-- edges1 = [[0,1],[0,2],[2,3],[2,4]] (left), edges2 = [[0,1],[0,2],[0,3],[2,7],[1,4],[4,5],[4,6]] (right); nodes r=15; accent-light = even depth parity, gray = odd -->
+  <text x="172" y="36" text-anchor="middle" font-weight="600" font-size="13.5" fill="#1a2026">tree 1 — depth-parity classes</text>
+  <text x="495" y="36" text-anchor="middle" font-weight="600" font-size="13.5" fill="#1a2026">tree 2 — depth-parity classes</text>
+  <!-- tree edges -->
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 160 80 L 75 160"/><path d="M 160 80 L 245 160"/><path d="M 245 160 L 175 240"/><path d="M 245 160 L 280 240"/>
+    <path d="M 450 75 L 440 165"/><path d="M 450 75 L 525 165"/><path d="M 450 75 L 600 165"/>
+    <path d="M 440 165 L 440 250"/><path d="M 440 250 L 390 250"/><path d="M 440 250 L 490 250"/><path d="M 600 165 L 600 250"/>
+  </g>
+  <!-- tree 1: even {0,3,4}, odd {1,2} -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.25">
+    <circle cx="75" cy="160" r="15"/><circle cx="245" cy="160" r="15"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.75">
+    <circle cx="160" cy="80" r="15"/><circle cx="175" cy="240" r="15"/><circle cx="280" cy="240" r="15"/>
+  </g>
+  <!-- tree 2: even {0,4,7}, odd {1,2,3,5,6} -->
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.25">
+    <circle cx="440" cy="165" r="15"/><circle cx="525" cy="165" r="15"/><circle cx="600" cy="165" r="15"/><circle cx="390" cy="250" r="15"/><circle cx="490" cy="250" r="15"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.75">
+    <circle cx="450" cy="75" r="15"/><circle cx="440" cy="250" r="15"/><circle cx="600" cy="250" r="15"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600">
+    <text x="160" y="85" fill="#1a2026">0</text>
+    <text x="75" y="165" fill="#5c6b76">1</text><text x="245" y="165" fill="#5c6b76">2</text>
+    <text x="175" y="245" fill="#1a2026">3</text><text x="280" y="245" fill="#1a2026">4</text>
+    <text x="450" y="80" fill="#1a2026">0</text>
+    <text x="440" y="170" fill="#5c6b76">1</text><text x="525" y="170" fill="#5c6b76">3</text><text x="600" y="170" fill="#5c6b76">2</text>
+    <text x="440" y="255" fill="#1a2026">4</text>
+    <text x="390" y="255" fill="#5c6b76">5</text><text x="490" y="255" fill="#5c6b76">6</text><text x="600" y="255" fill="#1a2026">7</text>
+  </g>
+  <!-- class legends with sizes -->
+  <circle cx="66" cy="296" r="6" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="80" y="300" fill="#1a2026" font-size="12.5">even {0, 3, 4} — 3 nodes</text>
+  <circle cx="66" cy="314" r="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="80" y="318" fill="#1a2026" font-size="12.5">odd {1, 2} — 2 nodes</text>
+  <circle cx="406" cy="296" r="6" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.5"/>
+  <text x="420" y="300" fill="#1a2026" font-size="12.5">even {0, 4, 7} — 3 nodes</text>
+  <circle cx="406" cy="314" r="6" fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.5"/>
+  <text x="420" y="318" fill="#4169E1" font-size="12.5" font-weight="600">odd {1, 2, 3, 5, 6} — 5 (larger)</text>
+  <text x="340" y="342" text-anchor="middle" fill="#1a2026" font-size="13">Through the added edge i can reach either tree-2 class, so the best is the</text>
+  <text x="340" y="358" text-anchor="middle" fill="#1a2026" font-size="13">larger one, 5 — answer[i] = class(i) + 5: <tspan fill="#4169E1" font-weight="600">3 + 5 = 8</tspan> for i = 0; answer = [8, 7, 7, 8, 8].</text>
+</svg>
