@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="580" height="344" fill="#ffffff"/>
+  <!-- Example 1: grid [[0,1,0,0],[0,1,0,0],[1,0,1,0]]; cells 120x64 at x = 56+120j, y = 64+64i; set = end balances (ones - zeros) of all paths reaching the cell, unioned from top/left and shifted by the cell digit -->
+  <text x="56" y="40" fill="#5c6b76" font-size="12.5">each cell lists the end balances (ones - zeros) of all paths reaching it</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.2">
+    <rect x="56" y="64" width="120" height="64"/><rect x="176" y="64" width="120" height="64"/>
+    <rect x="296" y="64" width="120" height="64"/><rect x="416" y="64" width="120" height="64"/>
+    <rect x="56" y="128" width="120" height="64"/><rect x="176" y="128" width="120" height="64"/>
+    <rect x="296" y="128" width="120" height="64"/><rect x="416" y="128" width="120" height="64"/>
+    <rect x="56" y="192" width="120" height="64"/><rect x="176" y="192" width="120" height="64"/>
+    <rect x="296" y="192" width="120" height="64"/><rect x="416" y="192" width="120" height="64" fill="#dbe4fb"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="116" y="91" font-weight="600" font-size="15">0</text><text x="236" y="91" font-weight="600" font-size="15">1</text>
+    <text x="356" y="91" font-weight="600" font-size="15">0</text><text x="476" y="91" font-weight="600" font-size="15">0</text>
+    <text x="116" y="155" font-weight="600" font-size="15">0</text><text x="236" y="155" font-weight="600" font-size="15">1</text>
+    <text x="356" y="155" font-weight="600" font-size="15">0</text><text x="476" y="155" font-weight="600" font-size="15">0</text>
+    <text x="116" y="219" font-weight="600" font-size="15">1</text><text x="236" y="219" font-weight="600" font-size="15">0</text>
+    <text x="356" y="219" font-weight="600" font-size="15">1</text><text x="476" y="219" font-weight="600" font-size="15">0</text>
+  </g>
+  <g text-anchor="middle" fill="#42525e" font-size="12.5">
+    <text x="116" y="115">{-1}</text><text x="236" y="115">{0}</text>
+    <text x="356" y="115">{-1}</text><text x="476" y="115">{-2}</text>
+    <text x="116" y="179">{-2}</text><text x="236" y="179">{-1, 1}</text>
+    <text x="356" y="179">{-2, 0}</text><text x="476" y="179">{-3, -1}</text>
+    <text x="116" y="243">{-1}</text><text x="236" y="243">{-2, 0}</text>
+    <text x="356" y="243">{-1, 1}</text><text x="476" y="243">{-4, -2, <tspan fill="#4169E1" font-weight="600">0</tspan>}</text>
+  </g>
+  <text x="56" y="282" fill="#5c6b76" font-size="12.5">a cell unions its top and left sets, then shifts every balance by its own digit</text>
+  <text x="290" y="312" text-anchor="middle" fill="#1a2026" font-size="13">Balance <tspan fill="#4169E1" font-weight="600">0</tspan> survives to the bottom-right: the path 0, 1, 1, 0, 1, 0 has</text>
+  <text x="290" y="330" text-anchor="middle" fill="#1a2026" font-size="13">three 1s and three 0s, so the answer is true.</text>
+</svg>

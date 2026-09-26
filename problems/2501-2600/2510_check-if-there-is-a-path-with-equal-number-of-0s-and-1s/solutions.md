@@ -18,6 +18,8 @@ its own digit — a single arithmetic shift over the packed set. The start
 cell seeds bit `half ± 1`, and the answer reads whether balance zero's
 bit is still set when the bottom-right corner is processed.
 
+![In Example 1's grid, each cell unions its top and left balance sets shifted by its own digit; the bottom-right ends with the set {-4, -2, 0}, which contains balance 0, so the answer is true.](figures/solution-balance-mask-grid.svg)
+
 Because a path can never stray beyond the window bound proved above, the
 mask needs no re-centering or masking during the sweep: shifted-in bits
 outside the used range stay structurally zero. Grids whose total path

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 372" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="372" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+  </defs>
+  <!-- Example 1: values [2,8,3,6,2,5], edges 0-1,0-2,1-3,1-4,2-5; circle = node id, Sigma = subtree sum (26,16,8,6,2,5); at entry to node 2 the trie of finished sums is {16,6,2}; query 8 picks 16 -> XOR 24 -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="150" y1="64" x2="90" y2="170"/>
+    <line x1="150" y1="64" x2="230" y2="170"/>
+    <line x1="90" y1="170" x2="44" y2="276"/>
+    <line x1="90" y1="170" x2="140" y2="276"/>
+    <line x1="230" y1="170" x2="256" y2="276"/>
+  </g>
+  <circle cx="150" cy="64" r="24" fill="#f0f3f7" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="90" cy="170" r="24" fill="#dbe4fb" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="230" cy="170" r="24" fill="#4169E1" stroke="#4169E1" stroke-width="1.6"/>
+  <circle cx="44" cy="276" r="24" fill="#dbe4fb" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="140" cy="276" r="24" fill="#dbe4fb" stroke="#42525e" stroke-width="1.6"/>
+  <circle cx="256" cy="276" r="24" fill="#f0f3f7" stroke="#42525e" stroke-width="1.6"/>
+  <g text-anchor="middle">
+    <text x="150" y="62" font-weight="600" font-size="13">0</text><text x="150" y="76" font-size="10.5" fill="#5c6b76">Σ26</text>
+    <text x="90" y="168" font-weight="600" font-size="13">1</text><text x="90" y="182" font-size="10.5" fill="#4169E1" font-weight="600">Σ16</text>
+    <text x="230" y="168" font-weight="600" font-size="13" fill="#ffffff">2</text><text x="230" y="182" font-size="10.5" fill="#ffffff">Σ8</text>
+    <text x="44" y="274" font-weight="600" font-size="13">3</text><text x="44" y="288" font-size="10.5" fill="#4169E1" font-weight="600">Σ6</text>
+    <text x="140" y="274" font-weight="600" font-size="13">4</text><text x="140" y="288" font-size="10.5" fill="#4169E1" font-weight="600">Σ2</text>
+    <text x="256" y="274" font-weight="600" font-size="13">5</text><text x="256" y="288" font-size="10.5" fill="#5c6b76">Σ5</text>
+  </g>
+  <rect x="40" y="308" width="12" height="12" fill="#4169E1"/>
+  <text x="58" y="318" fill="#5c6b76" font-size="11.5">entering</text>
+  <rect x="128" y="308" width="12" height="12" fill="#dbe4fb"/>
+  <text x="146" y="318" fill="#5c6b76" font-size="11.5">finished (in the trie)</text>
+  <path d="M 254 166 Q 300 140 352 122" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowM)"/>
+  <text x="360" y="58" fill="#1a2026" font-size="13.5" font-weight="600">DFS enters node 2 — subtree sum 8</text>
+  <text x="360" y="82" fill="#5c6b76" font-size="12.5">trie holds finished subtree sums:</text>
+  <g fill="#1a2026" font-size="13">
+    <text x="372" y="108" fill="#4169E1" font-weight="600">16</text><text x="420" y="108">10000</text><text x="500" y="108" fill="#5c6b76">node 1</text>
+    <text x="376" y="130">6</text><text x="420" y="130">00110</text><text x="500" y="130" fill="#5c6b76">node 3</text>
+    <text x="376" y="152">2</text><text x="420" y="152">00010</text><text x="500" y="152" fill="#5c6b76">node 4</text>
+  </g>
+  <text x="360" y="184" fill="#1a2026" font-size="13">query 8 = 01000</text>
+  <text x="360" y="208" fill="#1a2026" font-size="13">greedy picks 16 = 10000</text>
+  <text x="360" y="234" fill="#1a2026" font-size="14">8 XOR 16 = <tspan fill="#4169E1" font-weight="600" font-size="15">24</tspan></text>
+  <text x="340" y="344" text-anchor="middle" fill="#1a2026" font-size="13">Everything finished is disjoint from node 2; its best partner is node 1's 16,</text>
+  <text x="340" y="362" text-anchor="middle" fill="#1a2026" font-size="13">and 8 XOR 16 = 24 is the maximum over all entry-time queries.</text>
+</svg>

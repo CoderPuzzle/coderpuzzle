@@ -18,6 +18,8 @@ steps (plus the forced opening pair `stones[1] - stones[0]`, which sits on
 the same route as index 0's immediate successor). One linear scan taking
 the maximum over those differences therefore returns the exact optimum.
 
+![On Example 1's stones [0, 2, 5, 6, 7], the outbound leg 0 → 5 → 7 and the return leg 0 → 2 → 6 → 7 hop only second neighbors, and the largest gap — 5, the 0 → 5 jump — is the cost.](figures/solution-interleaved-routes.svg)
+
 Positions reach `10⁹`, so each difference fits a native 32-bit integer,
 and with `n <= 10⁵` the scan stays comfortably within the limits.
 

@@ -6,6 +6,8 @@ Swaps are only allowed between nodes of the same level, so each level is an inde
 
 The minimum number of swaps to sort a permutation is a cycle-counting fact: build the permutation that maps each current position to the position its value must occupy (via `sorted(level)` as the target and a value-to-position dictionary), decompose it into cycles, and each cycle of length `c` costs `c - 1` swaps — a swap can fix at most one element into its final slot, a cycle needs its length minus one to dissolve, and that bound is achieved by repeatedly swapping any misplaced element directly to where it belongs. Fixed points (values already in sorted position) are singletons costing nothing, which is why already-sorted levels like `[1,2,3,4,5,6]` contribute 0.
 
+![On Example 1, the permutation of level [7, 6, 8, 5] splits into fixed point 6 and the 3-cycle 7 → 8 → 5 costing 2 swaps, while level [4, 3] is one 2-cycle costing 1 — 3 operations in total.](figures/solution-level-cycle-decomposition.svg)
+
 The implementation walks each level marking visited indices: when it lands on an unvisited, misplaced index it follows `pos[target[j]]` around the cycle until it closes, tallying the length, then adds `cycle - 1`. The visited array guarantees each index enters exactly one cycle walk.
 
 Values are unique, which makes the position dictionary and the target permutation well defined. Total work is one BFS plus sorting each level once; the levels sum to `n` nodes, so the sorting phases add up to `O(n log n)`, and the cycle walks are linear in `n` overall since every index is visited a constant number of times.
