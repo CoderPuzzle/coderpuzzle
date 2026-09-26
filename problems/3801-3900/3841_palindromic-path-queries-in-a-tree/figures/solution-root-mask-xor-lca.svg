@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- tree 0-1-2 (path), s = "aac"; letter masks: a=1 (bit 0), b=2 (bit 1), c=4 (bit 2); nodes r=15 at (84,84/160/236) -->
+  <text x="84" y="58" text-anchor="middle" fill="#5c6b76" font-size="11">root</text>
+  <g stroke="#42525e" stroke-width="1.5">
+    <line x1="84" y1="99" x2="84" y2="145"/><line x1="84" y1="175" x2="84" y2="221"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.5">
+    <circle cx="84" cy="84" r="15"/><circle cx="84" cy="160" r="15"/><circle cx="84" cy="236" r="15"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="84" y="89">0</text><text x="84" y="165">1</text><text x="84" y="241">2</text>
+  </g>
+  <g font-size="13" fill="#1a2026">
+    <text x="112" y="80">s[0] = a (mask 1)</text>
+    <text x="112" y="156">s[1] = a (mask 1)</text>
+    <text x="112" y="232">s[2] = c (mask 4)</text>
+  </g>
+  <g font-size="12" fill="#5c6b76">
+    <text x="112" y="98">rootMask(0) = 1</text>
+    <text x="112" y="174">rootMask(1) = 1 ⊕ 1 = 0</text>
+    <text x="112" y="250">rootMask(2) = 1 ⊕ 1 ⊕ 4 = 4</text>
+  </g>
+  <path d="M 146 190 L 92 172" fill="none" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <text x="140" y="210" fill="#4169E1" font-size="12" font-weight="600">update 1 → b: mask 1 → 2</text>
+  <text x="40" y="286" fill="#5c6b76" font-size="11.5">bit 0 = a, bit 1 = b, bit 2 = c</text>
+  <!-- query boxes -->
+  <rect x="300" y="52" width="320" height="92" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <text x="312" y="72" fill="#5c6b76" font-size="12.5">query 0 2 with s = aac</text>
+  <g font-size="13" fill="#1a2026">
+    <text x="312" y="94">rm(0) ⊕ rm(2) ⊕ letter(lca = 0) = 1 ⊕ 4 ⊕ 1</text>
+    <text x="312" y="116">= <tspan fill="#4169E1" font-weight="700">4</tspan>: only c is odd → palindromic, true</text>
+  </g>
+  <rect x="300" y="160" width="320" height="104" fill="#ffffff" stroke="#42525e" stroke-width="1.3"/>
+  <text x="312" y="180" fill="#5c6b76" font-size="12.5">update 1 → b (mask 2), query 0 2 again</text>
+  <g font-size="13" fill="#1a2026">
+    <text x="312" y="202">rm(2) = 1 ⊕ 2 ⊕ 4 = 7</text>
+    <text x="312" y="222">path mask = 1 ⊕ 7 ⊕ 1 = <tspan fill="#4169E1" font-weight="700">7</tspan></text>
+    <text x="312" y="242">7 = bits a, b, c — three odd counts → false</text>
+  </g>
+  <g font-size="11.5" fill="#5c6b76">
+    <text x="312" y="284">node 0's bit rides both root masks and cancels;</text>
+    <text x="312" y="300">letter(lca) XORs it back in.</text>
+  </g>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">aac keeps one odd letter (mask 4, true); abc leaves three (mask 7, false) → <tspan fill="#4169E1" font-weight="600">[true, false]</tspan>.</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 380" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="560" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- s = "abca"; rows = interval length 1..4, cols = start l (x = 48 + 96l), rows y = 70/122/174/226; cells 92x44 -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="94" y="62">l=0</text><text x="190" y="62">l=1</text><text x="286" y="62">l=2</text><text x="382" y="62">l=3</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="26" y="96">len 1</text><text x="26" y="148">len 2</text><text x="26" y="200">len 3</text><text x="26" y="252">len 4</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.3" fill="#ffffff">
+    <rect x="48" y="70" width="92" height="44"/><rect x="144" y="70" width="92" height="44"/><rect x="240" y="70" width="92" height="44"/><rect x="336" y="70" width="92" height="44"/>
+    <rect x="48" y="122" width="92" height="44"/><rect x="240" y="122" width="92" height="44"/>
+    <rect x="48" y="174" width="92" height="44"/><rect x="144" y="174" width="92" height="44"/>
+  </g>
+  <g stroke="#4169E1" stroke-width="2" fill="#dbe4fb">
+    <rect x="144" y="122" width="92" height="44"/><rect x="48" y="226" width="92" height="44"/>
+  </g>
+  <g text-anchor="start" fill="#9aa7b2" font-size="9.5">
+    <text x="53" y="82">[0,0]</text><text x="149" y="82">[1,1]</text><text x="245" y="82">[2,2]</text><text x="341" y="82">[3,3]</text>
+    <text x="53" y="134">[0,1]</text><text x="149" y="134">[1,2]</text><text x="245" y="134">[2,3]</text>
+    <text x="53" y="186">[0,2]</text><text x="149" y="186">[1,3]</text>
+    <text x="53" y="238">[0,3]</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026" font-size="13">
+    <text x="94" y="90">a</text><text x="190" y="90">b</text><text x="286" y="90">c</text><text x="382" y="90">a</text>
+    <text x="94" y="142">ab</text><text x="190" y="142">bc</text><text x="286" y="142">ca</text>
+    <text x="94" y="194">abc</text><text x="190" y="194">bca</text>
+    <text x="94" y="246">abca</text>
+  </g>
+  <g text-anchor="middle" font-size="11">
+    <text x="94" y="106"><tspan fill="#5c6b76">pal </tspan><tspan fill="#1a2026">y</tspan><tspan fill="#5c6b76"> · alm </tspan><tspan fill="#4169E1" font-weight="600">y</tspan></text>
+    <text x="190" y="106"><tspan fill="#5c6b76">pal </tspan><tspan fill="#1a2026">y</tspan><tspan fill="#5c6b76"> · alm </tspan><tspan fill="#4169E1" font-weight="600">y</tspan></text>
+    <text x="286" y="106"><tspan fill="#5c6b76">pal </tspan><tspan fill="#1a2026">y</tspan><tspan fill="#5c6b76"> · alm </tspan><tspan fill="#4169E1" font-weight="600">y</tspan></text>
+    <text x="382" y="106"><tspan fill="#5c6b76">pal </tspan><tspan fill="#1a2026">y</tspan><tspan fill="#5c6b76"> · alm </tspan><tspan fill="#4169E1" font-weight="600">y</tspan></text>
+    <text x="94" y="158"><tspan fill="#5c6b76">pal </tspan><tspan fill="#9aa7b2">n</tspan><tspan fill="#5c6b76"> · alm </tspan><tspan fill="#4169E1" font-weight="600">y</tspan></text>
+    <text x="190" y="158"><tspan fill="#5c6b76">pal </tspan><tspan fill="#9aa7b2">n</tspan><tspan fill="#5c6b76"> · alm </tspan><tspan fill="#4169E1" font-weight="600">y</tspan></text>
+    <text x="286" y="158"><tspan fill="#5c6b76">pal </tspan><tspan fill="#9aa7b2">n</tspan><tspan fill="#5c6b76"> · alm </tspan><tspan fill="#4169E1" font-weight="600">y</tspan></text>
+    <text x="94" y="210"><tspan fill="#5c6b76">pal </tspan><tspan fill="#9aa7b2">n</tspan><tspan fill="#5c6b76"> · alm </tspan><tspan fill="#9aa7b2">n</tspan></text>
+    <text x="190" y="210"><tspan fill="#5c6b76">pal </tspan><tspan fill="#9aa7b2">n</tspan><tspan fill="#5c6b76"> · alm </tspan><tspan fill="#9aa7b2">n</tspan></text>
+    <text x="94" y="262"><tspan fill="#5c6b76">pal </tspan><tspan fill="#9aa7b2">n</tspan><tspan fill="#5c6b76"> · alm </tspan><tspan fill="#4169E1" font-weight="600">y</tspan></text>
+  </g>
+  <!-- alm[0,3] wins through its almost-palindromic interior [1,2] -->
+  <path d="M 166 218 L 112 225" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="280" y="302" text-anchor="middle" fill="#1a2026" font-size="13">alm[0,3] = pal[1,3] ∨ pal[0,2] ∨ (s[0] = s[3] ∧ alm[1,2])</text>
+  <text x="280" y="322" text-anchor="middle" fill="#1a2026" font-size="12.5">= no ∨ no ∨ (a = a ∧ <tspan fill="#4169E1" font-weight="600">yes</tspan>) = <tspan fill="#4169E1" font-weight="600">yes</tspan> — delete c: abca → <tspan fill="#4169E1" font-weight="600">aba</tspan></text>
+  <text x="280" y="344" text-anchor="middle" fill="#5c6b76" font-size="12">length-1 cells start alm = yes: deleting the character leaves the empty palindrome</text>
+  <text x="280" y="368" text-anchor="middle" fill="#1a2026" font-size="13">Filled by length, the full interval is almost-palindromic: answer <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

@@ -13,6 +13,8 @@ letter bits from the root down to `x`: every node above the lowest common
 ancestor appears in both root paths and cancels, so the common ancestor's
 current letter is XORed back in.
 
+![On the path tree 0-1-2 with s = aac, each node's letter mask feeds the root-mask XOR that cancels the shared ancestor, leaving path mask 4 (palindromic, true) before the update to abc leaves 7 (false).](figures/solution-root-mask-xor-lca.svg)
+
 Updates rewrite single letters, so the root masks must be maintained
 incrementally. `rootMask(x)` is the XOR of every update delta whose node is
 an ancestor-or-equal of `x`, and on the entry/exit tick timeline of a depth-

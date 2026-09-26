@@ -30,6 +30,8 @@ result — and otherwise falling back to the same-bit child, guaranteed alive
 because the current node's count is positive. The best result over all `r`
 is the answer.
 
+![On nums = [5, 4, 5, 6] with k = 2, the window's max and min deques keep l in [0, 3] legal while the counting trie over pref[0..3] = {0, 5, 1, 4} walks pref[4] = 2 down three alive opposite-bit children to read 2 ⊕ 5 = 7.](figures/solution-window-deques-xor-trie.svg)
+
 Width is bounded everywhere: every `nums[i] < 2¹⁵`, and the bits of
 `a ^ b` are a subset of the bits of `a` and `b` together, so every prefix
 xor, every subarray value, and the answer itself stay below `2¹⁵ = 32768`.

@@ -18,6 +18,8 @@ k <= min(n, m). With negative values (Example 3) the "exactly" matters:
 skipping may only happen between pairs, never as a way to settle for fewer
 than k of them, and the exactly-t layering enforces that by construction.
 
+![On nums1 = [1, 3, 2] and nums2 = [4, 5, 1] with k = 2, the product grid accents the increasing pair chain (1, 0) then (2, 1), whose products 12 and 10 give the layer-2 optimum dp[2][3][3] = 22.](figures/solution-pair-chain-layer-dp.svg)
+
 Layer t has feasible cells only at a >= t and b >= t — fewer than t elements
 cannot host t pairs — and at every such cell the dp[t-1][a-1][b-1] read lies
 inside layer t-1's own feasible rectangle, so the pairing candidate is always

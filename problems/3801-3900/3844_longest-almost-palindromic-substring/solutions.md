@@ -17,6 +17,8 @@ almost-palindromic because deleting its character leaves the empty palindrome;
 this makes already-palindromic odd-length intervals work with the same
 recurrence. Every true interval length updates the answer.
 
+![On s = abca the interval table fills by increasing length with pal and alm flags per cell, and the full interval [0, 3] turns almost-palindromic because a = a surrounds the almost-palindromic interior bc — deleting c leaves aba, so the answer is 4.](figures/solution-interval-length-rolling.svg)
+
 The recurrence examines every substring once and does constant work for it,
 while at most a constant number of length diagonals are retained.
 

@@ -13,6 +13,8 @@ and leaving the finger on that key for the next move. Typing the same
 letter twice in a row is a zero-distance move, which the running sum
 handles with no special case.
 
+![On s = hello the finger hops a → h → e → l → l → o across the three keyboard rows, each leg costing its Manhattan distance 5 + 4 + 7 + 0 + 1 = 17.](figures/solution-keyboard-manhattan-walk.svg)
+
 Every value stays small. The largest move this grid allows is 11 (the
 |0 - 2| + |9 - 0| hop between 'p' and 'z'), and s holds at most 10⁴
 characters, so the total is bounded by 110,000 — far inside a 32-bit
