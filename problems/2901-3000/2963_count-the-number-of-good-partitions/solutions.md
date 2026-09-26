@@ -15,6 +15,8 @@ blocks and a good partition is exactly a choice of which of the m - 1 gaps
 between consecutive blocks become cuts — every gap independently cut or
 not cut, and no other partition is good.
 
+![On nums = [1,2,3,4] every value's first-to-last span is a single cell, so the array is 4 maximal blocks whose 3 gaps each independently cut or not, doubling to 2 × 2 × 2 = 8 good partitions.](figures/solution-free-gap-doubling.svg)
+
 Count the gaps in one pass: record the last index of every value, sweep
 the array keeping the furthest last occurrence seen so far, and each index
 where that furthest reach equals the current position closes one block.

@@ -14,6 +14,8 @@ cheapest target for a window is its median: the distance sum decreases up
 to the median and increases after it, staying flat between the two middle
 elements for even-sized windows.
 
+![On sorted nums = [1,2,4,6] with k = 3, the window [1,2,4] flattens onto its median 2 at cost (2−1) + 0 + (4−2) = 3, exactly the budget, while adding 6 would cost 7 and overshoot — so the widest affordable window scores 3.](figures/solution-median-window-cost.svg)
+
 The scan slides a window [l, r] over the sorted array, keeping the cost
 of flattening it at O(1) with prefix sums: raising the left part to the
 median costs `median × left_count − left_sum`, lowering the right part

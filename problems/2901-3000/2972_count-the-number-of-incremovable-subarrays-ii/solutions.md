@@ -16,7 +16,11 @@ starting at s or later qualifies once nums[s] does, contributing
 n − s + 1 removals. Because the kept prefix's last value nums[p − 1]
 strictly grows with p inside the maximal prefix, the smallest valid s
 never moves left — one shared pointer walks the suffix at most n steps
-across all p. The strictly increasing array maximizes the count at
+across all p.
+
+![On nums = [6,5,7,8] the increasing prefix is [6] and the suffix [5,7,8]: with nothing kept the seam sits at s = 1 and counts 4 − 1 + 1 = 4 removals, and once [6] is kept it advances to s = 2 and counts 4 − 2 + 1 = 3, so 4 + 3 = 7 incremovable subarrays.](figures/solution-seam-pointer-sweep.svg)
+
+The strictly increasing array maximizes the count at
 n(n + 1)/2 = 5,000,050,000, which overflows 32 bits: 64-bit accumulators
 are required, while the value stays far below 2⁵³ so JavaScript numbers
 remain exact.

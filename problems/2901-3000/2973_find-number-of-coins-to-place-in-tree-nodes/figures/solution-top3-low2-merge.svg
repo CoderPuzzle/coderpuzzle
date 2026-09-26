@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 364" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="720" height="364" fill="#ffffff"/>
+  <!-- example 2: edges [[0,1],[0,2],[1,3],[1,4],[1,5],[2,6],[2,7],[2,8]], cost = [1,4,2,3,5,7,8,-4,2];
+       circles show cost, small labels give the node id; each subtree keeps three largest + two smallest:
+       node 1 {4,3,5,7}: max(7*5*4, 3*4*7) = 140; node 2 {2,8,-4,2}: max(8*2*2, -4*2*8) = 32;
+       node 0 (all nine): max(8*7*5, -4*1*8) = 280; leaves (< 3 nodes) place 1 coin -->
+  <text x="357" y="26" text-anchor="middle" fill="#5c6b76" font-size="12">root subtree holds all nine costs — three largest 8, 7, 5, two smallest −4, 1</text>
+  <text x="357" y="44" text-anchor="middle" fill="#1a2026" font-size="13">max(8×7×5, −4×1×8) = <tspan fill="#4169E1" font-weight="600">280 coins</tspan></text>
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="339" y1="96" x2="212" y2="157"/>
+    <line x1="371" y1="96" x2="473" y2="157"/>
+    <line x1="181" y1="185" x2="119" y2="245"/>
+    <line x1="195" y1="190" x2="195" y2="242"/>
+    <line x1="209" y1="185" x2="271" y2="245"/>
+    <line x1="476" y1="185" x2="414" y2="245"/>
+    <line x1="490" y1="190" x2="490" y2="242"/>
+    <line x1="504" y1="185" x2="566" y2="245"/>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="355" cy="84" r="20"/>
+    <circle cx="195" cy="170" r="20"/>
+    <circle cx="490" cy="170" r="20"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="105" cy="262" r="20"/><circle cx="195" cy="262" r="20"/><circle cx="285" cy="262" r="20"/>
+    <circle cx="400" cy="262" r="20"/><circle cx="490" cy="262" r="20"/><circle cx="580" cy="262" r="20"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="355" y="89" fill="#ffffff">1</text>
+    <text x="195" y="175" fill="#ffffff">4</text>
+    <text x="490" y="175" fill="#ffffff">2</text>
+    <text x="105" y="267" fill="#1a2026">3</text>
+    <text x="195" y="267" fill="#1a2026">5</text>
+    <text x="285" y="267" fill="#1a2026">7</text>
+    <text x="400" y="267" fill="#1a2026">8</text>
+    <text x="490" y="267" fill="#1a2026">−4</text>
+    <text x="580" y="267" fill="#1a2026">2</text>
+  </g>
+  <g font-size="11" fill="#5c6b76">
+    <text x="325" y="70">0</text><text x="165" y="156">1</text><text x="460" y="156">2</text>
+    <text x="75" y="248">3</text><text x="165" y="248">4</text><text x="255" y="248">5</text>
+    <text x="370" y="248">6</text><text x="460" y="248">7</text><text x="550" y="248">8</text>
+  </g>
+  <g font-size="11.5" fill="#1a2026">
+    <text x="16" y="146">node 1 pools {4, 3, 5, 7}:</text>
+    <text x="16" y="162" fill="#5c6b76">top 7, 5, 4 — low 3, 4</text>
+    <text x="16" y="178">max(7×5×4, 3×4×7) = <tspan fill="#4169E1" font-weight="600">140</tspan></text>
+    <text x="535" y="146">node 2 pools {2, 8, −4, 2}:</text>
+    <text x="535" y="162" fill="#5c6b76">top 8, 2, 2 — low −4, 2</text>
+    <text x="535" y="178">max(8×2×2, −4×2×8) = <tspan fill="#4169E1" font-weight="600">32</tspan></text>
+  </g>
+  <g text-anchor="middle" font-size="11" fill="#5c6b76">
+    <text x="105" y="302">1 coin</text><text x="195" y="302">1 coin</text><text x="285" y="302">1 coin</text>
+    <text x="400" y="302">1 coin</text><text x="490" y="302">1 coin</text><text x="580" y="302">1 coin</text>
+  </g>
+  <text x="360" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Merging a child is a constant-size selection: pool, keep three largest</text>
+  <text x="360" y="348" text-anchor="middle" fill="#1a2026" font-size="13">and two smallest; nodes 0, 1, 2 place <tspan fill="#4169E1" font-weight="600">280, 140, 32</tspan> coins, leaves place 1.</text>
+</svg>
