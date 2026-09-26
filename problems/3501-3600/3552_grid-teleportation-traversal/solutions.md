@@ -19,6 +19,8 @@ teleport has to beat any same-layer move. The first layer to touch the
 bottom-right corner determines the answer; if the corner never settles — it
 may be an obstacle, or walled off — the answer is `-1`.
 
+![Example 1's BFS from (0,0) spends the A-portal at zero cost so (1,1) joins layer 0, the four neighbors of the two layer-0 cells fill layer 1, and the goal (2,2) settles in layer 2 — the answer 2.](figures/solution-zero-one-bfs-portal-layers.svg)
+
 The sweep is otherwise an ordinary grid BFS over the four directions with a
 `dist` array that doubles as the visited mark. Portals are collected up front
 into 26 per-letter cell lists, so a letter's expansion costs work proportional

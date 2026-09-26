@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 304" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="304" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- Example 1 matrix ["A..",".A.","..."]; BFS layers: L0 {(0,0),(1,1)} via A-portal, L1 {(0,1),(1,0),(1,2),(2,1)}, L2 {(0,2),(2,0),(2,2)}; cells 80x54 at (170+80j, 56+54i) -->
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="170" y="56" width="80" height="54"/><rect x="250" y="56" width="80" height="54"/><rect x="330" y="56" width="80" height="54"/>
+    <rect x="170" y="110" width="80" height="54"/><rect x="330" y="110" width="80" height="54"/>
+    <rect x="170" y="164" width="80" height="54"/><rect x="250" y="164" width="80" height="54"/>
+  </g>
+  <rect x="170" y="56" width="80" height="54" fill="#dbe4fb" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="250" y="110" width="80" height="54" fill="#dbe4fb" stroke="#42525e" stroke-width="1.4"/>
+  <rect x="330" y="164" width="80" height="54" fill="#ffffff" stroke="#4169E1" stroke-width="2.4"/>
+  <g fill="#9aa7b2" font-size="11.5">
+    <text x="179" y="72">.</text><text x="259" y="72">.</text><text x="339" y="72">.</text>
+    <text x="179" y="126">.</text><text x="339" y="126">.</text>
+    <text x="179" y="180">.</text><text x="259" y="180">.</text>
+  </g>
+  <g fill="#4169E1" font-size="11.5" font-weight="600">
+    <text x="179" y="72">A</text><text x="259" y="126">A</text>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16" fill="#1a2026">
+    <text x="210" y="89">0</text><text x="290" y="89">1</text><text x="370" y="89">2</text>
+    <text x="210" y="143">1</text><text x="290" y="143">0</text><text x="370" y="143">1</text>
+    <text x="210" y="197">2</text><text x="290" y="197">1</text>
+  </g>
+  <text x="370" y="197" text-anchor="middle" font-weight="600" font-size="16" fill="#4169E1">2</text>
+  <!-- zero-cost A-portal jump (0,0) -> (1,1), merged into layer 0 -->
+  <path d="M 232 98 Q 250 100 263 111" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="436" y="88">start (0,0) — letter A</text>
+    <text x="436" y="142">A-teleport costs 0:</text>
+    <text x="436" y="159">(1,1) joins layer 0</text>
+    <text x="436" y="196">goal (2,2) settles in</text>
+    <text x="436" y="213">layer 2: <tspan fill="#4169E1" font-weight="600">2 moves</tspan></text>
+  </g>
+  <text x="330" y="262" text-anchor="middle" font-size="13" fill="#1a2026">BFS layers from (0,0): the zero-cost A-teleport pulls (1,1) into layer 0, so the</text>
+  <text x="330" y="280" text-anchor="middle" font-size="13" fill="#1a2026">goal (2,2) settles in layer <tspan fill="#4169E1" font-weight="600">2</tspan> — answer 2 (four moves without the portal).</text>
+</svg>

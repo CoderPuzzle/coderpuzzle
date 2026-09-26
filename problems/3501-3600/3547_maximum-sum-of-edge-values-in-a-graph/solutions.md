@@ -18,6 +18,8 @@ that sequence — plus `seq[0] * seq[-1]` when the edge count says cycle —
 yields the maximum score; the edge list itself only decides path vs cycle
 via m = n - 1 vs m = n.
 
+![Pendulum placement 1, 3, 4, 2 on Example 1's path 0-1-2-3 gives the edge products 1·3 = 3, 3·4 = 12, and 4·2 = 8, which sum to the answer 23.](figures/solution-pendulum-path-placement.svg)
+
 The score is a sum of at most n products, each at most n² ≈ 2.5×10⁹, so
 the total is bounded by n³ ≈ 1.25×10¹⁴ — far past 32 bits, hence 64-bit
 accumulators (still comfortably below 2⁵³, so JavaScript numbers stay

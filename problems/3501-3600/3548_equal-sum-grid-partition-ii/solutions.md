@@ -24,6 +24,8 @@ cut is examined in both discount directions. Row sums and column sums are
 accumulated incrementally, keeping the whole scan linear in the number of
 cells.
 
+![Example 3's horizontal cut leaves 7 over 10, and although discounting 3 equalizes both at 7, middle cell 3 is not an end cell of the strip [2, 3, 5], so the strip splits into [2] and [5].](figures/solution-strip-end-cell-exception.svg)
+
 Cell values reach `10⁵` and the grid holds up to `10⁵` cells, so section
 sums reach `10^10` — past 32-bit range — and are carried in 64-bit
 integers; a JS `Number` stays exact because `10^10` is far below `2⁵³`.

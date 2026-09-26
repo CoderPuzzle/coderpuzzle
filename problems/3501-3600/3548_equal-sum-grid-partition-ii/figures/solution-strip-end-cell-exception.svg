@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 326" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="326" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- Example 3 grid [[1,2,4],[2,3,5]]; cells 76x48 at x 70+76j, rows y 70/118; cut after row 0: top 7 vs bottom 10, deficit 3 -->
+  <text x="48" y="122" text-anchor="end" fill="#5c6b76" font-size="12">cut</text>
+  <line x1="58" y1="118" x2="316" y2="118" stroke="#4169E1" stroke-width="2" stroke-dasharray="6 5"/>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="70" y="70" width="76" height="48"/><rect x="146" y="70" width="76" height="48"/><rect x="222" y="70" width="76" height="48"/>
+    <rect x="70" y="118" width="76" height="48"/><rect x="222" y="118" width="76" height="48"/>
+  </g>
+  <rect x="146" y="118" width="76" height="48" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <g text-anchor="middle" font-weight="600" fill="#1a2026">
+    <text x="108" y="100">1</text><text x="184" y="100">2</text><text x="260" y="100">4</text>
+    <text x="108" y="148">2</text><text x="260" y="148">5</text>
+  </g>
+  <text x="184" y="148" text-anchor="middle" font-weight="600" fill="#1a2026">3</text>
+  <line x1="172" y1="143" x2="196" y2="143" stroke="#4169E1" stroke-width="2"/>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="108" y="186">end</text><text x="184" y="186">middle</text><text x="260" y="186">end</text>
+  </g>
+  <g text-anchor="start" fill="#5c6b76" font-size="13">
+    <text x="336" y="98">top = 1 + 2 + 4 = 7</text>
+    <text x="336" y="146">bottom = 2 + 3 + 5 = 10</text>
+    <text x="336" y="194">deficit = 10 - 7 = <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+  </g>
+  <path d="M 184 198 L 184 228" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="196" y="218" fill="#4169E1" font-size="12.5" font-weight="600">remove 3</text>
+  <!-- the strip torn at its middle: remnants [2] and [5] -->
+  <g stroke="#9aa7b2" stroke-width="1.3" fill="#f0f3f7">
+    <rect x="86" y="234" width="44" height="34"/><rect x="238" y="234" width="44" height="34"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#5c6b76">
+    <text x="108" y="256">2</text><text x="260" y="256">5</text>
+  </g>
+  <text x="330" y="288" text-anchor="middle" font-size="13" fill="#1a2026">Discounting middle 3 from the strip [2, 3, 5] splits it into [2] and [5], so the cut</text>
+  <text x="330" y="306" text-anchor="middle" font-size="13" fill="#1a2026">fails despite 10 - 3 = 7 = top; only an end cell may go — answer <tspan fill="#4169E1" font-weight="600">false</tspan>.</text>
+</svg>

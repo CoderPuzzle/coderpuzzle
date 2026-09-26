@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 348" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="348" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa7b2"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- Example 1: poly1 [3,2,5] -> padded [3,2,5,0], poly2 [1,4] -> [1,4,0,0], n=4, forward twiddle e^(-2*pi*i/n); rows A y=101, B y=143; columns x 62/152/240/334 -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="92" y="64">padded</text>
+    <text x="182" y="64">bit-reverse</text>
+    <text x="271" y="64">merge size 2</text>
+    <text x="388" y="64">merge size 4</text>
+  </g>
+  <text x="40" y="101" fill="#4169E1" font-weight="600">A</text>
+  <text x="40" y="143" fill="#4169E1" font-weight="600">B</text>
+  <g fill="#1a2026" font-size="13">
+    <text x="62" y="101">3, 2, 5, 0</text>
+    <text x="152" y="101">3, 5, 2, 0</text>
+    <text x="240" y="101">8, -2, 2, 2</text>
+    <text x="334" y="101">10, -2-2i, 6, -2+2i</text>
+    <text x="62" y="143">1, 4, 0, 0</text>
+    <text x="152" y="143">1, 0, 4, 0</text>
+    <text x="240" y="143">1, 1, 4, 4</text>
+    <text x="334" y="143">5, 1-4i, -3, 1+4i</text>
+  </g>
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.4">
+    <path d="M 128 96 L 144 96" marker-end="url(#arrow)"/>
+    <path d="M 216 96 L 232 96" marker-end="url(#arrow)"/>
+    <path d="M 306 96 L 322 96" marker-end="url(#arrow)"/>
+    <path d="M 128 138 L 144 138" marker-end="url(#arrow)"/>
+    <path d="M 216 138 L 232 138" marker-end="url(#arrow)"/>
+    <path d="M 306 138 L 322 138" marker-end="url(#arrow)"/>
+  </g>
+  <path d="M 388 152 L 388 192" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <text x="398" y="174" fill="#5c6b76" font-size="12.5">pointwise product</text>
+  <text x="40" y="217" fill="#4169E1" font-weight="600" font-size="13">A·B</text>
+  <text x="388" y="217" text-anchor="middle" fill="#1a2026" font-size="13">50, -10+6i, -18, -10-6i</text>
+  <path d="M 388 227 L 388 252" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrowA)"/>
+  <text x="398" y="243" fill="#5c6b76" font-size="12.5">inverse FFT, then ÷ 4</text>
+  <text x="40" y="277" fill="#5c6b76" font-size="12.5">result</text>
+  <text x="388" y="277" text-anchor="middle" fill="#4169E1" font-size="15" font-weight="600">3, 14, 13, 20</text>
+  <text x="340" y="312" text-anchor="middle" font-size="13" fill="#1a2026">Bit-reversal plus two doubling merges take both padded vectors to their spectra;</text>
+  <text x="340" y="330" text-anchor="middle" font-size="13" fill="#1a2026">the pointwise product [50, -10+6i, -18, -10-6i] rounds back to <tspan fill="#4169E1" font-weight="600">[3, 14, 13, 20]</tspan>.</text>
+</svg>

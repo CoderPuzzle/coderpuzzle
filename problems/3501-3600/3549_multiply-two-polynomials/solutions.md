@@ -22,6 +22,8 @@ integer, and rounding recovers it exactly: with coefficients bounded by
 `9 * 10¹⁴`; here it is at most `10¹¹`) keeps the computed values
 thousands of times closer than the `0.5` rounding threshold.
 
+![Example 1's padded [3, 2, 5, 0] and [1, 4, 0, 0] pass through bit-reversal, merge size 2, and merge size 4 to the spectra [10, -2-2i, 6, -2+2i] and [5, 1-4i, -3, 1+4i], whose pointwise product [50, -10+6i, -18, -10-6i] inverse-transforms back to [3, 14, 13, 20].](figures/solution-fft-butterfly-stages.svg)
+
 The results themselves exceed the 32-bit range — the center coefficient
 of two all-`10³` polynomials reaches `5 * 10¹⁰` — so product
 coefficients are carried and returned as 64-bit integers. They stay far

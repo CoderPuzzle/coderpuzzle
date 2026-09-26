@@ -12,6 +12,8 @@ resolved by exactly `L - 1` swaps — each swap can place at most one
 element into its final position, and the cycle's last element falls into
 place for free — so the minimum total is `n - (number of cycles)`.
 
+![Example 3's nums [18, 43, 34, 16] targets the order [16, 34, 43, 18], and its position permutation splits into the cycles (0 3) and (1 2), each costing one swap, for a total of 2.](figures/solution-permutation-cycles-swaps.svg)
+
 Computing it takes one sort of index array by the key plus one linear
 pass: walk each unvisited cycle to its full length, marking positions as
 they are visited, and accumulate `length - 1`. The walk is iterative —
