@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 292" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="292" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- grid = ["..","#."], d = 1; cells 64x44 at (90,80); up/same per row listed at right; up move needs |dc| <= 0, slide needs |dc| <= 1 -->
+  <text x="154" y="40" text-anchor="middle" fill="#5c6b76" font-size="12.5">grid = ["..", "#."], d = 1</text>
+  <text x="154" y="62" text-anchor="middle" fill="#5c6b76" font-size="11.5">last slide</text>
+  <path d="M 182 74 H 128" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="90" y="80" width="64" height="44" fill="#ffffff"/>
+    <rect x="154" y="80" width="64" height="44" fill="#ffffff"/>
+    <rect x="90" y="124" width="64" height="44" fill="#f0f3f7"/>
+    <rect x="154" y="124" width="64" height="44" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="14">
+    <text x="122" y="107">.</text><text x="186" y="107">.</text>
+    <text x="122" y="151">#</text><text x="186" y="151">.</text>
+  </g>
+  <path d="M 204 160 V 92" fill="none" stroke="#4169E1" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="224" y="128" fill="#5c6b76" font-size="12">up</text>
+  <g fill="#5c6b76" font-size="12.5">
+    <text x="300" y="96">bottom row: up = <tspan fill="#1a2026" font-weight="600">[0, 1]</tspan>, same = <tspan fill="#1a2026" font-weight="600">[0, 0]</tspan></text>
+    <text x="300" y="124">top row: up = <tspan fill="#1a2026" font-weight="600">[0, 1]</tspan> — d = 1 bars the diagonal,</text>
+    <text x="300" y="142">so only (1,1) climbs straight up</text>
+    <text x="300" y="170">top row: same = <tspan fill="#1a2026" font-weight="600">[1, 0]</tspan> — one slide to (0,0),</text>
+    <text x="300" y="188">allowed as the final move</text>
+  </g>
+  <path d="M 310 224 L 284 206" fill="none" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <text x="320" y="218" fill="#5c6b76" font-size="12.5">no diagonal: sqrt(1² + 1²) = sqrt(2) &gt; 1</text>
+  <text x="340" y="254" text-anchor="middle" fill="#1a2026" font-size="13">The start counts as up: one route stands on (0,1), and its slide to (0,0)</text>
+  <text x="340" y="272" text-anchor="middle" fill="#1a2026" font-size="13">is the second — exactly <tspan fill="#4169E1" font-weight="600">2</tspan> routes reach the top row.</text>
+</svg>

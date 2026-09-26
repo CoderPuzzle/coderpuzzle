@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="320" fill="#ffffff"/>
+  <!-- nums = [2,2,3,1], k = 4; cells 64x44 at x=90+64i, y=52; each bracket row is one window state, labeled with its distinct sum -->
+  <text x="218" y="36" text-anchor="middle" fill="#5c6b76" font-size="12.5">nums = [2, 2, 3, 1], k = 4</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="90" y="52" width="64" height="44"/><rect x="154" y="52" width="64" height="44"/>
+    <rect x="218" y="52" width="64" height="44"/><rect x="282" y="52" width="64" height="44"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15" fill="#1a2026">
+    <text x="122" y="79">2</text><text x="186" y="79">2</text>
+    <text x="250" y="79">3</text><text x="314" y="79">1</text>
+  </g>
+  <g fill="none" stroke="#9aa7b2" stroke-width="1.5">
+    <path d="M 90 104 V 114 H 218 V 104"/>
+  </g>
+  <text x="90" y="132" fill="#5c6b76" font-size="12.5">window [2,2]: the duplicate 2 leaves the distinct sum at 2 &lt; 4</text>
+  <g fill="none" stroke="#5c6b76" stroke-width="1.5">
+    <path d="M 90 144 V 154 H 282 V 144"/>
+  </g>
+  <text x="90" y="172" fill="#5c6b76" font-size="12.5">window [2,2,3]: the 3 lifts it to 5 ≥ 4 — length 3 recorded</text>
+  <g fill="none" stroke="#4169E1" stroke-width="2.5">
+    <path d="M 154 184 V 194 H 282 V 184"/>
+  </g>
+  <text x="90" y="212" fill="#5c6b76" font-size="12.5">shrink past the first 2: [2,3] still sums to <tspan fill="#4169E1" font-weight="600">5</tspan> — best length <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <g fill="none" stroke="#5c6b76" stroke-width="1.5">
+    <path d="M 218 224 V 234 H 346 V 224"/>
+  </g>
+  <text x="90" y="252" fill="#5c6b76" font-size="12.5">right = 3: window [3,1] distinct 4 ≥ 4, length 2 — best stays</text>
+  <text x="320" y="286" text-anchor="middle" fill="#1a2026" font-size="13">Duplicates never raise the distinct sum (2, 2, then 3 lifts it to <tspan fill="#4169E1" font-weight="600">5</tspan> ≥ k = 4):</text>
+  <text x="320" y="304" text-anchor="middle" fill="#1a2026" font-size="13">the greedy shrink trims [2,2,3] to [2,3], the shortest window, at length <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>

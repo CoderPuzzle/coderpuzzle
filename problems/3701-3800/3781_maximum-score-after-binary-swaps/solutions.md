@@ -22,4 +22,6 @@ The score is at most `10⁵ · 10⁹ = 10¹⁴`, so it accumulates in a 64-bit
 integer (in JavaScript, `10¹⁴` sits far below `2⁵³`, so `Number`
 arithmetic stays exact).
 
+![On nums = [2,1,5,2,3] with s = 01010, the max-heap of offered values pops 2 for the first '1' and 5 for the second, landing the claims on slots 0 and 2 for a score of 2 + 5 = 7.](figures/solution-max-heap-offer-claim.svg)
+
 **Complexity:** `O(n log n)` time, `O(n)` space.

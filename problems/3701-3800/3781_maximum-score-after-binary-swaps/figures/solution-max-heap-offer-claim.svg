@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [2,1,5,2,3], s = "01010"; cells 92x60 at x=70+106i, y=56; arcs show each '1' claiming its slot; heap contents after each index below -->
+  <g text-anchor="middle" fill="none" stroke="#4169E1" stroke-width="1.8">
+    <path d="M 222 51 Q 169 15 117 52" marker-end="url(#arrow)"/>
+    <path d="M 434 51 Q 381 15 329 52" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="14" y="86">nums</text>
+    <text x="14" y="108">s[i]</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="70" y="56" width="92" height="60" fill="#dbe4fb"/>
+    <rect x="176" y="56" width="92" height="60" fill="#ffffff"/>
+    <rect x="282" y="56" width="92" height="60" fill="#dbe4fb"/>
+    <rect x="388" y="56" width="92" height="60" fill="#ffffff"/>
+    <rect x="494" y="56" width="92" height="60" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="16">
+    <text x="116" y="82" fill="#4169E1">2</text>
+    <text x="222" y="82" fill="#1a2026">1</text>
+    <text x="328" y="82" fill="#4169E1">5</text>
+    <text x="434" y="82" fill="#1a2026">2</text>
+    <text x="540" y="82" fill="#1a2026">3</text>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="116" y="104" fill="#9aa7b2">0</text>
+    <text x="222" y="104" fill="#4169E1" font-weight="600">1</text>
+    <text x="328" y="104" fill="#9aa7b2">0</text>
+    <text x="434" y="104" fill="#4169E1" font-weight="600">1</text>
+    <text x="540" y="104" fill="#9aa7b2">0</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="116" y="138">i = 0</text>
+    <text x="222" y="138">i = 1</text>
+    <text x="328" y="138">i = 2</text>
+    <text x="434" y="138">i = 3</text>
+    <text x="540" y="138">i = 4</text>
+  </g>
+  <g text-anchor="middle" font-size="12.5">
+    <text x="116" y="160" fill="#5c6b76">offer 2</text>
+    <text x="222" y="160" fill="#4169E1" font-weight="600">claim 2</text>
+    <text x="222" y="178" fill="#4169E1" font-size="12">→ slot 0</text>
+    <text x="328" y="160" fill="#5c6b76">offer 5</text>
+    <text x="434" y="160" fill="#4169E1" font-weight="600">claim 5</text>
+    <text x="434" y="178" fill="#4169E1" font-size="12">→ slot 2</text>
+    <text x="540" y="160" fill="#5c6b76">offer 3</text>
+  </g>
+  <text x="14" y="219" fill="#5c6b76" font-size="11.5">heap</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="86" y="196" width="60" height="36"/><rect x="192" y="196" width="60" height="36"/>
+    <rect x="298" y="196" width="60" height="36"/><rect x="404" y="196" width="60" height="36"/>
+    <rect x="510" y="196" width="60" height="36"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="116" y="219" fill="#1a2026" font-weight="600" font-size="14">{2}</text>
+    <text x="222" y="219" fill="#9aa7b2" font-size="11.5">empty</text>
+    <text x="328" y="219" fill="#1a2026" font-weight="600" font-size="14">{5}</text>
+    <text x="434" y="219" fill="#9aa7b2" font-size="11.5">empty</text>
+    <text x="540" y="219" fill="#1a2026" font-weight="600" font-size="14">{3}</text>
+  </g>
+  <text x="14" y="264" fill="#5c6b76" font-size="11.5">score</text>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="116" y="264" fill="#1a2026">0</text>
+    <text x="222" y="264" fill="#4169E1">2</text>
+    <text x="328" y="264" fill="#1a2026">2</text>
+    <text x="434" y="264" fill="#4169E1">7</text>
+    <text x="540" y="264" fill="#4169E1">7</text>
+  </g>
+  <text x="320" y="298" text-anchor="middle" fill="#1a2026" font-size="13">Each '1' pops the best offer so far: the claims land on slots 0 and 2,</text>
+  <text x="320" y="316" text-anchor="middle" fill="#1a2026" font-size="13">worth nums[0] + nums[2] = 2 + 5 = <tspan fill="#4169E1" font-weight="600">7</tspan>; the leftover offer 3 is never claimed.</text>
+</svg>

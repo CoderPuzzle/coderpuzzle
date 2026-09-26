@@ -20,6 +20,8 @@ recording happens inside the shrink loop before every removal, no
 qualifying window is ever skipped: any shortest window is presented to
 the answer check while its right end is in place.
 
+![On nums = [2,2,3,1] with k = 4, the window's distinct sum stalls at 2 on the duplicate 2, jumps to 5 at the 3, and the greedy shrink trims [2,2,3] to [2,3] for the best length 2.](figures/solution-window-distinct-shrink.svg)
+
 The greedy shrink is safe because a shorter window ending at the same
 right end is always at least as good as a longer one, so once a window
 qualifies, only its minimal suffix matters. The loop therefore advances

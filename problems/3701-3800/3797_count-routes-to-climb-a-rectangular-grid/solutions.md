@@ -15,6 +15,8 @@ slide has `dr = 0` so it spans `|dc| <= d`, while an up move has
 `1 + dc^2 <= d^2`, i.e. `|dc| <= floor(sqrt(d^2 - 1))` — which is why
 `d = 1` forbids diagonal climbs entirely.
 
+![On grid = ["..","#."] with d = 1, the bottom row starts with up = [0,1] and the top row fills up = [0,1], same = [1,0], so exactly 2 routes reach row 0.](figures/solution-row-dp-up-same.svg)
+
 Both windows are aggregated with prefix sums over columns (blocked cells
 contribute nothing), so each row costs a constant number of linear passes
 and the whole grid is processed in `O(n * m)` time. The one subtlety is the

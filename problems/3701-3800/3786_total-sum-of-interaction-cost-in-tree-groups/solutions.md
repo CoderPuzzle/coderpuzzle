@@ -11,6 +11,8 @@ exactly `a * (total[g] - a)` same-group pairs cross the split, each paying
 one unit on this edge. Summing that product over the twenty labels and all
 `n - 1` edges yields the answer without ever enumerating a pair.
 
+![In Example 3's star with group = [1,1,4,4], each child edge holds a = 1 node of its label against a total of 2, so every edge contributes 1×(2−1) = 1 and the three edges sum to 3.](figures/solution-edge-subtree-split.svg)
+
 Getting every subtree's label counts is one bottom-up sweep. A breadth-first
 pass from node 0 records a discovery order and each node's parent; walking
 that order in reverse guarantees a node is folded into its parent only after

@@ -15,6 +15,8 @@ bind from the right. The final answer is the largest cap: setting each
 its neighbor by at most `diff[i]` after both sweeps), so no larger maximum
 is achievable anywhere.
 
+![For n = 10 with restrictions [3,1] and [8,1], the left sweep seeds caps [0,2,4,1,2,6,11,12,1,3] and the mirrored right sweep tightens them to [0,2,4,1,2,6,3,2,1,3], whose maximum is 6.](figures/solution-two-pass-caps.svg)
+
 Sorting the restrictions by index first lets each one land on its position
 in a linear merge with the sweep, giving `O(n + r log r)` time overall for
 `r` restrictions — the propagation passes themselves are linear.
