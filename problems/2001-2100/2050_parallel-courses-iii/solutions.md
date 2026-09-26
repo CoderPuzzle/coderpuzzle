@@ -6,6 +6,8 @@ Because unlimited courses can run in parallel, the earliest month a course can f
 
 Kahn's algorithm provides that order. Courses with no prerequisites start at month 0 and finish at their own duration. Each time a course leaves the queue, its outgoing edges relax the tentative finish time of each successor (`finish[course] + time[nxt]` if larger), and the successor's indegree is decremented; when a successor's indegree hits zero it enters the queue with its finish time fully determined. The relaxation must take a maximum rather than an assignment because a course waits for _all_ of its prerequisites, not just the first to complete.
 
+![With time = [3,2,5], the topological relaxation writes finish months 3 and 2 for the source courses, then max(3, 2) + 5 = 8 for course 3, so the critical chain 1-3 gives the answer 8.](figures/solution-finish-relaxation.svg)
+
 The answer is the maximum finish time over all courses, since finishing everything means finishing the latest-ending chain. An empty `relations` list works unchanged (every course starts immediately), and the problem guarantees the graph is acyclic so the queue always drains.
 
 **Complexity:** `O(V + E)` time, `O(V + E)` space.

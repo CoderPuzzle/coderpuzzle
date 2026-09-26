@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+  </defs>
+  <!-- head = [0,2,-5,5,10,-10]. Three snapshots: start, after prepending -5, after prepending -10.
+       Node boxes 64x36 at x = 50 + 92i; rows at y = 56, 146, 236; negative nodes in light accent -->
+  <!-- row 1: start -->
+  <text x="50" y="44" fill="#5c6b76" font-size="12">start</text>
+  <g fill="none" stroke="#42525e" stroke-width="1.5">
+    <line x1="116" y1="74" x2="138" y2="74" marker-end="url(#arrow)"/>
+    <line x1="208" y1="74" x2="230" y2="74" marker-end="url(#arrow)"/>
+    <line x1="300" y1="74" x2="322" y2="74" marker-end="url(#arrow)"/>
+    <line x1="392" y1="74" x2="414" y2="74" marker-end="url(#arrow)"/>
+    <line x1="484" y1="74" x2="506" y2="74" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke-width="1.5">
+    <rect x="50" y="56" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="142" y="56" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="234" y="56" width="64" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="326" y="56" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="418" y="56" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="510" y="56" width="64" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="82" y="79" fill="#1a2026">0</text>
+    <text x="174" y="79" fill="#1a2026">2</text>
+    <text x="266" y="79" fill="#4169E1">-5</text>
+    <text x="358" y="79" fill="#1a2026">5</text>
+    <text x="450" y="79" fill="#1a2026">10</text>
+    <text x="542" y="79" fill="#4169E1">-10</text>
+  </g>
+  <!-- row 2: -5 prepended -->
+  <text x="50" y="134" fill="#5c6b76" font-size="12">prepend -5: 2 → 5, -5 → 0, head = -5</text>
+  <g fill="none" stroke="#42525e" stroke-width="1.5">
+    <line x1="116" y1="164" x2="138" y2="164" marker-end="url(#arrow)"/>
+    <line x1="208" y1="164" x2="230" y2="164" marker-end="url(#arrow)"/>
+    <line x1="300" y1="164" x2="322" y2="164" marker-end="url(#arrow)"/>
+    <line x1="392" y1="164" x2="414" y2="164" marker-end="url(#arrow)"/>
+    <line x1="484" y1="164" x2="506" y2="164" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke-width="1.5">
+    <rect x="50" y="146" width="64" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="142" y="146" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="234" y="146" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="326" y="146" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="418" y="146" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="510" y="146" width="64" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="82" y="169" fill="#4169E1">-5</text>
+    <text x="174" y="169" fill="#1a2026">0</text>
+    <text x="266" y="169" fill="#1a2026">2</text>
+    <text x="358" y="169" fill="#1a2026">5</text>
+    <text x="450" y="169" fill="#1a2026">10</text>
+    <text x="542" y="169" fill="#4169E1">-10</text>
+  </g>
+  <!-- row 3: -10 prepended -->
+  <text x="50" y="224" fill="#5c6b76" font-size="12">prepend -10: 5 → null, -10 → -5, head = -10</text>
+  <g fill="none" stroke="#42525e" stroke-width="1.5">
+    <line x1="116" y1="254" x2="138" y2="254" marker-end="url(#arrow)"/>
+    <line x1="208" y1="254" x2="230" y2="254" marker-end="url(#arrow)"/>
+    <line x1="300" y1="254" x2="322" y2="254" marker-end="url(#arrow)"/>
+    <line x1="392" y1="254" x2="414" y2="254" marker-end="url(#arrow)"/>
+    <line x1="484" y1="254" x2="506" y2="254" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke-width="1.5">
+    <rect x="50" y="236" width="64" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="142" y="236" width="64" height="36" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="234" y="236" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="326" y="236" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="418" y="236" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+    <rect x="510" y="236" width="64" height="36" fill="#ffffff" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="82" y="259" fill="#4169E1">-10</text>
+    <text x="174" y="259" fill="#4169E1">-5</text>
+    <text x="266" y="259" fill="#1a2026">0</text>
+    <text x="358" y="259" fill="#1a2026">2</text>
+    <text x="450" y="259" fill="#1a2026">5</text>
+    <text x="542" y="259" fill="#1a2026">10</text>
+  </g>
+  <text x="320" y="296" text-anchor="middle" fill="#1a2026" font-size="13">Prepending each negative as it is met — -5, then -10 — stacks them</text>
+  <text x="320" y="314" text-anchor="middle" fill="#1a2026" font-size="13">in reverse encounter order: the result is <tspan fill="#4169E1" font-weight="600">-10, -5, 0, 2, 5, 10</tspan>.</text>
+</svg>

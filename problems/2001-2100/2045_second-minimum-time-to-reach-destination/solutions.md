@@ -42,6 +42,8 @@ counts that reach it. A queue propagates a count only when it improves one of
 those two slots, so equal-length routes do not masquerade as a second value and
 each vertex contributes at most two states.
 
+![With time = 3 and change = 5, the search records edge-count arrivals (0, 2), (1, 3), (1, 2), (1, 2), (2, 3); the second walk 1-3-4-5 clocks 0, 3, 6, waits 4 minutes at vertex 4 until 10, and reaches vertex 5 at 13.](figures/solution-edge-count-arrivals.svg)
+
 Once the second edge count for vertex `n` is known, simulate exactly that many
 traversals. Before each edge, an odd value of `elapsed / change` means the
 signal is red, so advance to the next multiple of `change`; otherwise leave

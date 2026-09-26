@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="352" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- n = 5, edges = [[1,2],[1,3],[1,4],[3,4],[4,5]], time = 3, change = 5.
+       BFS slots (1st, 2nd distinct edge counts): 1:(0,2) 2:(1,3) 3:(1,2) 4:(1,2) 5:(2,3).
+       Second walk 1-3-4-5 = 3 edges: clock 0, 3, 6; at 6 the signal at 4 is red (6/5 odd), wait 4 to 10, cross to 5 at 13.
+       Vertex circles r=20; timeline dots at x = 90,190,290,430,530, y = 285 -->
+  <text x="320" y="24" text-anchor="middle" fill="#5c6b76" font-size="12.5">n = 5, edges = [[1,2],[1,3],[1,4],[3,4],[4,5]], time = 3, change = 5</text>
+  <text x="40" y="46" fill="#5c6b76" font-size="12">under each vertex: its two recorded edge counts</text>
+  <!-- plain edges -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="105" y1="177" x2="200" y2="93"/>
+    <line x1="110" y1="186" x2="410" y2="124"/>
+  </g>
+  <!-- second-minimum walk edges 1-3-4-5 -->
+  <g fill="none" stroke="#4169E1" stroke-width="2.4">
+    <line x1="110" y1="190" x2="231" y2="190" marker-end="url(#arrow)"/>
+    <line x1="274" y1="183" x2="404" y2="130" marker-end="url(#arrow)"/>
+    <line x1="450" y1="120" x2="531" y2="120" marker-end="url(#arrow)"/>
+  </g>
+  <!-- vertices -->
+  <g stroke-width="1.6">
+    <circle cx="90" cy="190" r="20" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="215" cy="80" r="20" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="255" cy="190" r="20" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="430" cy="120" r="20" fill="#ffffff" stroke="#42525e"/>
+    <circle cx="555" cy="120" r="20" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="90" y="195" fill="#1a2026">1</text>
+    <text x="215" y="85" fill="#1a2026">2</text>
+    <text x="255" y="195" fill="#1a2026">3</text>
+    <text x="430" y="125" fill="#1a2026">4</text>
+    <text x="555" y="125" fill="#4169E1">5</text>
+  </g>
+  <!-- recorded edge-count slots -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12.5">
+    <text x="90" y="230">(0, 2)</text>
+    <text x="215" y="120">(1, 3)</text>
+    <text x="255" y="230">(1, 2)</text>
+    <text x="430" y="160">(1, 2)</text>
+    <text x="555" y="160">(2, <tspan fill="#4169E1" font-weight="600">3</tspan>)</text>
+  </g>
+  <text x="430" y="180" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">wait 4 (red light)</text>
+  <!-- clock timeline of the second walk -->
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <line x1="90" y1="285" x2="190" y2="285"/>
+    <line x1="190" y1="285" x2="290" y2="285"/>
+    <line x1="290" y1="285" x2="424" y2="285" stroke-dasharray="6 5"/>
+    <line x1="430" y1="285" x2="523" y2="285" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#4169E1">
+    <circle cx="90" cy="285" r="4"/><circle cx="190" cy="285" r="4"/><circle cx="290" cy="285" r="4"/>
+    <circle cx="430" cy="285" r="4"/><circle cx="530" cy="285" r="4"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="13" font-weight="600">
+    <text x="90" y="268">0</text><text x="190" y="268">3</text><text x="290" y="268">6</text>
+    <text x="430" y="268">10</text><text x="530" y="268" fill="#4169E1">13</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="11.5">
+    <text x="90" y="306">at 1</text><text x="190" y="306">at 3</text><text x="290" y="306">at 4</text>
+    <text x="430" y="306">leave 4</text><text x="530" y="306">at 5</text>
+  </g>
+  <text x="360" y="264" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">wait 4</text>
+  <text x="320" y="330" text-anchor="middle" fill="#1a2026" font-size="13">Vertex 5 records edge counts 2 and 3; the second walk 1-3-4-5 runs</text>
+  <text x="320" y="348" text-anchor="middle" fill="#1a2026" font-size="13">0, 3, 6, waits 4 for green at 10, then reaches 5 at <tspan fill="#4169E1" font-weight="600">13</tspan> — the answer.</text>
+</svg>
