@@ -17,4 +17,6 @@ right endpoint contributes `max(0, min(lastK, minM) - lastNext)` subarrays.
 Moving a value's leaf from its old latest position to the current position
 takes logarithmic time.
 
+![At right endpoint r = 4 of nums = [1, 2, 1, 2, 2] with k = 2 and m = 2, the values ordered by latest occurrence are 2 (latest 4) then 1 (latest 2), so lastK = 2, there is no (k + 1)-st value, and minM = min(3, 0) = 0 pins the left endpoint to 0 — this endpoint contributes 1 of the answer's 2 subarrays.](figures/solution-latest-occurrence-count.svg)
+
 **Complexity:** `O(n log n)` time, `O(n)` space.

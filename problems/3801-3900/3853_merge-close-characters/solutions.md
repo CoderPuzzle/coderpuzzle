@@ -21,6 +21,8 @@ survives the step, so the stack after the final character is the answer —
 the tie-break never changes the outcome, only which of the equal survivors
 the vanishing character is said to merge into.
 
+![For s = abca with k = 3, the stack takes a, b, c in steps 1-3, then the incoming a of step 4 is close to the survivor a at distance 3 − 0 = 3 ≤ k and merges away, so the stack — and the answer — stays abc.](figures/solution-stack-vanish-merge.svg)
+
 The sweep is a single flat loop — no recursion, no cascade stack — with an
 inner scan of at most `k` window positions per character. Removals never
 disturb the settled prefix: deleting a character at position `p` leaves

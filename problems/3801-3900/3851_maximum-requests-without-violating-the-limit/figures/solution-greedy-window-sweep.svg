@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="300" fill="#ffffff"/>
+  <!-- user 1 sorted times [2,2,5,6]; k=2, window=5; axis x = 90 + 70*(t-1), markers r 13 -->
+  <text x="40" y="24" fill="#5c6b76" font-size="12.5">user 1's sorted times [2, 2, 5, 6]</text>
+  <text x="600" y="24" text-anchor="end" fill="#5c6b76" font-size="12.5">k = 2, window = 5</text>
+  <!-- axis -->
+  <line x1="60" y1="110" x2="545" y2="110" stroke="#42525e" stroke-width="1.5"/>
+  <g stroke="#42525e" stroke-width="1.2">
+    <line x1="90" y1="106" x2="90" y2="114"/><line x1="160" y1="106" x2="160" y2="114"/>
+    <line x1="230" y1="106" x2="230" y2="114"/><line x1="300" y1="106" x2="300" y2="114"/>
+    <line x1="370" y1="106" x2="370" y2="114"/><line x1="440" y1="106" x2="440" y2="114"/>
+    <line x1="510" y1="106" x2="510" y2="114"/>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="90" y="130">1</text><text x="160" y="130">2</text><text x="230" y="130">3</text>
+    <text x="300" y="130">4</text><text x="370" y="130">5</text><text x="440" y="130">6</text>
+    <text x="510" y="130">7</text>
+  </g>
+  <text x="556" y="114" fill="#5c6b76" font-size="12">time</text>
+  <!-- lollipop stems (drawn first so circles cover them) -->
+  <line x1="160" y1="110" x2="160" y2="48" stroke="#4169E1" stroke-width="1.5"/>
+  <line x1="370" y1="110" x2="370" y2="78" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="440" y1="110" x2="440" y2="78" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- kept: both requests at t = 2 -->
+  <circle cx="160" cy="80" r="13" fill="#4169E1"/>
+  <text x="160" y="85" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
+  <circle cx="160" cy="48" r="13" fill="#4169E1"/>
+  <text x="160" y="53" text-anchor="middle" fill="#ffffff" font-weight="600">2</text>
+  <!-- dropped: t = 5 and t = 6 -->
+  <circle cx="370" cy="78" r="13" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="370" y="83" text-anchor="middle" fill="#9aa7b2" font-weight="600">5</text>
+  <circle cx="440" cy="78" r="13" fill="#ffffff" stroke="#9aa7b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="440" y="83" text-anchor="middle" fill="#9aa7b2" font-weight="600">6</text>
+  <!-- forbidden-span brackets from kept[-2] = 2 to each candidate -->
+  <path d="M 160 152 L 160 160 L 370 160 L 370 152" fill="none" stroke="#5c6b76" stroke-width="1.5"/>
+  <text x="265" y="182" text-anchor="middle" fill="#5c6b76" font-size="12.5">t = 5: span of last k + 1 = 3 kept = 5 &#8722; 2 = 3 &#8804; window 5 &#8594; drop</text>
+  <path d="M 160 192 L 160 200 L 440 200 L 440 192" fill="none" stroke="#5c6b76" stroke-width="1.5"/>
+  <text x="300" y="222" text-anchor="middle" fill="#5c6b76" font-size="12.5">t = 6: span of last 3 kept = 6 &#8722; 2 = 4 &#8804; window 5 &#8594; drop</text>
+  <text x="320" y="262" text-anchor="middle" fill="#1a2026" font-size="13">Greedy keeps the two requests at t = 2; t = 5 and t = 6 would complete a</text>
+  <text x="320" y="282" text-anchor="middle" fill="#1a2026" font-size="13">forbidden group of k + 1 = 3 within window 5, so <tspan fill="#4169E1" font-weight="600">2</tspan> requests remain.</text>
+</svg>

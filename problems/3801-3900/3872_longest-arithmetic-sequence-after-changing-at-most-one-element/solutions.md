@@ -21,6 +21,8 @@ ending at `p-1` (collapsing to the single element `nums[p-1]` when its last
 difference is not `d`), the right side the run of difference `d` starting at
 `p+1`, and the candidate is their sum plus one for `nums[p]` itself.
 
+![For nums = [9, 7, 5, 10, 1], the tables are left = [1, 2, 3, 2, 2] and right = [3, 2, 2, 2, 1]; replacing nums[3] = 10 forces d = (1 − 5) / 2 = −2, which joins the run 9, 7, 5 (left[2] = 3) to the lone 1 (right[4] = 1) for 3 + 1 + 1 = 5.](figures/solution-run-tables-bridge.svg)
+
 Every table value, candidate, and the answer are bounded by `n <= 10⁵`, so
 32-bit arithmetic carries everything (JavaScript's doubles are exact far
 inside `2⁵³`), and all passes are plain iterative loops over the input.

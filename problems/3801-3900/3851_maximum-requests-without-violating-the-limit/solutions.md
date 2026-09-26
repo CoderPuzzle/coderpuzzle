@@ -26,6 +26,8 @@ the `k` kept times it holds are all at or before the `k` times preceding
 times to span at most `window` — a contradiction. Hence no legal set keeps
 more times than greedy does.
 
+![For user 1's sorted times [2, 2, 5, 6] with k = 2 and window = 5, the sweep keeps both requests at t = 2 and drops t = 5 (last-3 span 5 − 2 = 3) and t = 6 (span 6 − 2 = 4) because either would make the last k + 1 = 3 kept times span at most the window, leaving 2 requests.](figures/solution-greedy-window-sweep.svg)
+
 Every value stays small: users, times, `k`, and `window` are at most 10⁵
 and the answer is bounded by the request count n ≤ 10⁵, so 32-bit integers
 are exact in every language, and JavaScript's doubles represent all of them

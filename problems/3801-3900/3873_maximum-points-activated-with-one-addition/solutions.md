@@ -20,6 +20,8 @@ pick an x from one component and a y from the other; the cell `(x, y)` is
 empty, otherwise that point would have glued the two components together
 already.
 
+![For points = [[1, 1], [1, 2], [2, 2]], the unions on column x = 1 and row y = 2 close all three points into one component of size 3, so the added point (1, 3) on that column activates 3 + 1 = 4 points.](figures/solution-one-component-plus-add.svg)
+
 So the optimum either joins the two largest components, or adds `n + 1`
 when all points already form a single component. After one pass of
 union-find the component sizes are tallied and the two largest are kept;

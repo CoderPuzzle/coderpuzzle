@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,1,2,2], k=2, m=2, right endpoint r=4; cells 64x40 at x=70+64i, y=56; table columns x=110/210/330 -->
+  <text x="358" y="46" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">r = 4 (right endpoint)</text>
+  <g stroke="#42525e" stroke-width="1.5" fill="#ffffff">
+    <rect x="70" y="56" width="64" height="40"/><rect x="134" y="56" width="64" height="40"/>
+    <rect x="198" y="56" width="64" height="40"/><rect x="262" y="56" width="64" height="40"/>
+    <rect x="326" y="56" width="64" height="40"/>
+  </g>
+  <g text-anchor="middle" font-weight="600" font-size="15">
+    <text x="102" y="81" fill="#1a2026">1</text>
+    <text x="166" y="81" fill="#4169E1">2</text>
+    <text x="230" y="81" fill="#1a2026">1</text>
+    <text x="294" y="81" fill="#4169E1">2</text>
+    <text x="358" y="81" fill="#4169E1">2</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="102" y="114">0</text><text x="166" y="114">1</text><text x="230" y="114">2</text>
+    <text x="294" y="114">3</text><text x="358" y="114">4</text>
+  </g>
+  <!-- counted left endpoint -->
+  <line x1="102" y1="140" x2="102" y2="124" stroke="#4169E1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="102" y="158" text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">left = 0</text>
+  <!-- table: distinct values ordered by latest occurrence -->
+  <g fill="#5c6b76" font-size="12">
+    <text x="110" y="196" text-anchor="middle">value</text>
+    <text x="210" y="196" text-anchor="middle">latest</text>
+    <text x="330" y="196" text-anchor="middle">m-th latest</text>
+  </g>
+  <line x1="80" y1="204" x2="380" y2="204" stroke="#dbe4fb" stroke-width="1.5"/>
+  <g text-anchor="middle" font-size="13.5">
+    <text x="110" y="226" fill="#4169E1" font-weight="600">2</text>
+    <text x="210" y="226" fill="#1a2026">4</text>
+    <text x="330" y="226" fill="#1a2026">3</text>
+    <text x="110" y="250" fill="#1a2026" font-weight="600">1</text>
+    <text x="210" y="250" fill="#1a2026">2</text>
+    <text x="330" y="250" fill="#1a2026">0</text>
+  </g>
+  <text x="80" y="274" fill="#9aa7b2" font-size="11.5">rows ordered newest &#8594; oldest by latest occurrence</text>
+  <!-- derived quantities -->
+  <text x="420" y="196" fill="#4169E1" font-size="12.5" font-weight="600">at r = 4:</text>
+  <g fill="#1a2026" font-size="12.5">
+    <text x="420" y="226">lastK = 2 (value 1's latest)</text>
+    <text x="420" y="250">lastNext = &#8722;1 (no 3rd value)</text>
+    <text x="420" y="274">minM = min(3, 0) = 0</text>
+    <text x="420" y="298">count = min(2, 0) &#8722; (&#8722;1) = <tspan fill="#4169E1" font-weight="600">1</tspan></text>
+  </g>
+  <text x="330" y="326" text-anchor="middle" fill="#1a2026" font-size="13">At r = 4 the exactly-k rule allows any left up to lastK = 2, but minM = 0</text>
+  <text x="330" y="344" text-anchor="middle" fill="#1a2026" font-size="13">keeps only left = 0; r = 3 gives the other subarray, so the answer is <tspan fill="#4169E1" font-weight="600">2</tspan>.</text>
+</svg>
