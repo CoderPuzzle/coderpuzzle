@@ -17,6 +17,8 @@ the final edge — and since `i < j`, `dp[i]` is already final when `j` is
 processed. The answer is `dp[n - 1]`, or -1 when the last index was never
 reached.
 
+![On `nums = [1,3,6,4,1,2]` with `target = 2`, the nine forward jump arcs and the `dp` row filling `0, 1, –, 2, 2` left to right; the accented path `0 → 1 → 3 → 5` is the longest chain, so `dp[5] = 3`.](figures/solution-jump-arcs-dp-fill.svg)
+
 The sentinel matters: -1 means the last index is genuinely unreachable
 (for instance `target = 0` only permits jumping between equal values, so
 `[1,3,6,4,1,2]` collapses immediately), not merely reachable in few

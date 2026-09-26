@@ -10,6 +10,8 @@ the target discards the whole left side (`lo = mid + 1`), anything greater
 shrinks the right edge to it (`hi = mid`). The probed side is always safe
 to drop because the array is sorted, so each comparison halves the range.
 
+![On `nums = [3,4,6,6,6,6,7]` with `target = 6`, three mid probes discard indices `0-3`, then `4-5`, then `6`, and the pointers meet at `lo = hi = 6`, so the last occurrence is `lo - 1 = 5`.](figures/solution-rightmost-binary-search.svg)
+
 When the pointers meet, `lo` is the first index past the target's run — the
 position bisecting "right of every occurrence" — so the last occurrence is
 `lo - 1`, reported only if `nums[lo - 1]` really equals the target and the

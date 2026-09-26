@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 346" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="346" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- root = [1,2,3,null,null,4,5]; nodes r=22: 1 (330,64), 2 (240,150), 3 (430,150), 4 (350,240), 5 (500,240); solid lines = ordinary tree edges; dashed accent arcs = leaf-ring right-child pointers 2.right->4, 4.right->5, 5.right->2 -->
+  <text x="36" y="24" fill="#5c6b76" font-size="12.5">root = [1,2,3,null,null,4,5] &#8212; the leaves 2, 4, 5 are wired into a ring</text>
+  <!-- ordinary tree edges -->
+  <g stroke="#42525e" stroke-width="1.6">
+    <line x1="330" y1="64" x2="240" y2="150"/>
+    <line x1="330" y1="64" x2="430" y2="150"/>
+    <line x1="430" y1="150" x2="350" y2="240"/>
+    <line x1="430" y1="150" x2="500" y2="240"/>
+  </g>
+  <!-- leaf-ring right-child pointers (dashed) -->
+  <g fill="none" stroke="#4169E1" stroke-width="1.8" stroke-dasharray="6 4">
+    <path d="M 242 173 Q 282 204 332 226" marker-end="url(#arrow)"/>
+    <path d="M 372 254 Q 425 272 478 254" marker-end="url(#arrow)"/>
+    <path d="M 476 252 Q 352 178 258 162" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#4169E1" font-size="12" text-anchor="middle">
+    <text x="300" y="196">5.right</text>
+    <text x="425" y="290">4.right</text>
+  </g>
+  <text x="193" y="200" fill="#4169E1" font-size="12">2.right</text>
+  <!-- nodes -->
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.6">
+    <circle cx="330" cy="64" r="22"/>
+    <circle cx="240" cy="150" r="22"/>
+    <circle cx="430" cy="150" r="22"/>
+    <circle cx="350" cy="240" r="22"/>
+    <circle cx="500" cy="240" r="22"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="330" y="69">1</text><text x="240" y="155">2</text><text x="430" y="155">3</text>
+    <text x="350" y="245">4</text><text x="500" y="245">5</text>
+  </g>
+  <!-- folded-up heights -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="205" y="148" text-anchor="end">h = 0</text>
+    <text x="350" y="276">h = 0</text>
+    <text x="500" y="276">h = 0</text>
+    <text x="430" y="186">h = 1</text>
+  </g>
+  <text x="390" y="68" fill="#4169E1" font-size="12.5" font-weight="600">h = 2</text>
+  <!-- left notes -->
+  <g font-size="12.5" fill="#5c6b76">
+    <text x="36" y="62">leaf test before any</text>
+    <text x="36" y="78">step: v is a leaf when</text>
+    <text x="36" y="100" fill="#1a2026" font-weight="600">v.left.right = v</text>
+    <text x="36" y="170">a leaf answers 0;</text>
+    <text x="36" y="186">others: 1 + taller</text>
+    <text x="36" y="202">child</text>
+  </g>
+  <text x="340" y="312" text-anchor="middle" fill="#1a2026" font-size="13">The descent stops at every ring-wired leaf: each leaf's left child's</text>
+  <text x="340" y="330" text-anchor="middle" fill="#1a2026" font-size="13">right pointer points back; folding up gives h(3) = 1 and <tspan fill="#4169E1" font-weight="600">h(1) = 2</tspan>.</text>
+</svg>

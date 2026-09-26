@@ -21,6 +21,8 @@ such run: grow `right`, and while the extreme difference exceeds `2 * k`
 advance `left`. The best length seen is the answer — a longer window is
 never found by shrinking, so no dropped member needs revisiting.
 
+![On `nums = [4,6,1,2]` with `k = 2`, sorted to `[1,2,4,6]`, each value draws its `±2` range and the window `[1, 2, 4]` is the widest whose ranges share a value, so the best beauty is `3`.](figures/solution-range-window-slide.svg)
+
 Edge behaviors fall out for free: the answer is at least 1 because a single
 element is always a valid group; `k = 0` degenerates to counting the most
 frequent value, since nothing can move; and when `2 * k` spans the whole

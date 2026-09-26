@@ -41,6 +41,8 @@ zero for a node the leaf test clears, and otherwise is `1 +` the taller of
 the calls on its children, with an absent child reading as zero so a node
 with one child still measures the arm that exists.
 
+![On `root = [1,2,3,null,null,4,5]`, the descent stops at each ring-wired leaf — each leaf's left child's right pointer points back at it — and the heights fold upward `0, 0, 0, 1` to `h(1) = 2`.](figures/solution-leaf-test-recursion.svg)
+
 The descent needs no visited set, because the recursion never walks a
 sideways edge. It starts on the root, an internal node whose children are
 genuine tree children; the leaf test runs before any step, so the first

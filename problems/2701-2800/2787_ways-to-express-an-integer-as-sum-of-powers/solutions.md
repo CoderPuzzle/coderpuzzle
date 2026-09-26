@@ -21,6 +21,8 @@ coin-change semantics this problem deliberately excludes. Every addition is
 taken modulo `10⁹ + 7`; intermediate totals stay far below the modulus times
 itself, so fixed-width ports reduce into 64-bit registers on the way.
 
+![On `n = 10`, `x = 2`, the `dp[0..10]` row after each power `1, 4, 9`, updates walking `t` downward so each power is used once; the accent cells are the updates and `dp[10] = 1` counts the single way `10 = 9 + 1`.](figures/solution-powers-knapsack-dp.svg)
+
 Two edge regimes fall out of the same table. `n = 1` has the single
 representation `n = 1^x` for every `x`. And whenever `2^x > n` the candidate
 list degenerates to just the power `1`, which can be used once — so the

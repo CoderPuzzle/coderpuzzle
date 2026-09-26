@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 310" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="660" height="310" fill="#ffffff"/>
+  <!-- n = 10, x = 2, powers 1, 4, 9; dp row over t = 0..10, cells 42x34 at x = 120+46t, rows y = 66/138/210; accent border = cells updated by that power (t walks 10 -> p, descending); dp[0] = 1 seeds the empty set -->
+  <text x="36" y="24" fill="#5c6b76" font-size="12.5">n = 10, x = 2 &#8594; powers 1, 4, 9</text>
+  <text x="36" y="58" fill="#9aa7b2" font-size="11">t</text>
+  <text x="141" y="58" text-anchor="middle" fill="#9aa7b2" font-size="10.5">0</text>
+  <text x="187" y="58" text-anchor="middle" fill="#9aa7b2" font-size="10.5">1</text>
+  <text x="233" y="58" text-anchor="middle" fill="#9aa7b2" font-size="10.5">2</text>
+  <text x="279" y="58" text-anchor="middle" fill="#9aa7b2" font-size="10.5">3</text>
+  <text x="325" y="58" text-anchor="middle" fill="#9aa7b2" font-size="10.5">4</text>
+  <text x="371" y="58" text-anchor="middle" fill="#9aa7b2" font-size="10.5">5</text>
+  <text x="417" y="58" text-anchor="middle" fill="#9aa7b2" font-size="10.5">6</text>
+  <text x="463" y="58" text-anchor="middle" fill="#9aa7b2" font-size="10.5">7</text>
+  <text x="509" y="58" text-anchor="middle" fill="#9aa7b2" font-size="10.5">8</text>
+  <text x="555" y="58" text-anchor="middle" fill="#9aa7b2" font-size="10.5">9</text>
+  <text x="601" y="58" text-anchor="middle" fill="#9aa7b2" font-size="10.5">10</text>
+  <text x="36" y="87" fill="#5c6b76" font-size="12.5">after p = 1</text>
+  <rect x="120" y="66" width="42" height="34" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <text x="141" y="87" text-anchor="middle" fill="#1a2026" font-weight="400">1</text>
+  <rect x="166" y="66" width="42" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="187" y="87" text-anchor="middle" fill="#4169E1" font-weight="600">1</text>
+  <rect x="212" y="66" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="233" y="87" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="258" y="66" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="279" y="87" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="304" y="66" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="325" y="87" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="350" y="66" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="371" y="87" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="396" y="66" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="417" y="87" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="442" y="66" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="463" y="87" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="488" y="66" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="509" y="87" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="534" y="66" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="555" y="87" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="580" y="66" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="601" y="87" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <text x="36" y="159" fill="#5c6b76" font-size="12.5">after p = 4</text>
+  <rect x="120" y="138" width="42" height="34" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <text x="141" y="159" text-anchor="middle" fill="#1a2026" font-weight="400">1</text>
+  <rect x="166" y="138" width="42" height="34" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <text x="187" y="159" text-anchor="middle" fill="#1a2026" font-weight="400">1</text>
+  <rect x="212" y="138" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="233" y="159" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="258" y="138" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="279" y="159" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="304" y="138" width="42" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="325" y="159" text-anchor="middle" fill="#4169E1" font-weight="600">1</text>
+  <rect x="350" y="138" width="42" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="371" y="159" text-anchor="middle" fill="#4169E1" font-weight="600">1</text>
+  <rect x="396" y="138" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="417" y="159" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="442" y="138" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="463" y="159" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="488" y="138" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="509" y="159" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="534" y="138" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="555" y="159" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="580" y="138" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="601" y="159" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <text x="36" y="231" fill="#5c6b76" font-size="12.5">after p = 9</text>
+  <rect x="120" y="210" width="42" height="34" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <text x="141" y="231" text-anchor="middle" fill="#1a2026" font-weight="400">1</text>
+  <rect x="166" y="210" width="42" height="34" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <text x="187" y="231" text-anchor="middle" fill="#1a2026" font-weight="400">1</text>
+  <rect x="212" y="210" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="233" y="231" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="258" y="210" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="279" y="231" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="304" y="210" width="42" height="34" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <text x="325" y="231" text-anchor="middle" fill="#1a2026" font-weight="400">1</text>
+  <rect x="350" y="210" width="42" height="34" fill="#dbe4fb" stroke="#42525e" stroke-width="1.2"/>
+  <text x="371" y="231" text-anchor="middle" fill="#1a2026" font-weight="400">1</text>
+  <rect x="396" y="210" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="417" y="231" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="442" y="210" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="463" y="231" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="488" y="210" width="42" height="34" fill="#ffffff" stroke="#42525e" stroke-width="1.2"/>
+  <text x="509" y="231" text-anchor="middle" fill="#9aa7b2" font-weight="400">0</text>
+  <rect x="534" y="210" width="42" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="555" y="231" text-anchor="middle" fill="#4169E1" font-weight="600">1</text>
+  <rect x="580" y="210" width="42" height="34" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+  <text x="601" y="231" text-anchor="middle" fill="#4169E1" font-weight="600">1</text>
+  <text x="330" y="280" text-anchor="middle" fill="#1a2026" font-size="13">Each pass walks t from 10 down to p, reading pre-p values, so no power</text>
+  <text x="330" y="298" text-anchor="middle" fill="#1a2026" font-size="13">is taken twice; <tspan fill="#4169E1" font-weight="600">dp[10] = 1</tspan> counts the single way 10 = 9 + 1.</text>
+</svg>
