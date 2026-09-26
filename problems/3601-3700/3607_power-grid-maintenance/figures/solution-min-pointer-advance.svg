@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- chain 1-2-3-4-5 = one component; sorted list [1,2,3,4,5]; cells 56x36 at x=150+64i; rows y=70,154,238; accent triangles mark the current minimum-online pointer -->
+  <text x="306" y="46" text-anchor="middle" fill="#5c6b76" font-size="12.5">sorted component list [1, 2, 3, 4, 5]</text>
+  <!-- row 1: start, all online -->
+  <text x="24" y="93" fill="#5c6b76" font-size="12.5">start — all online</text>
+  <g stroke="#42525e" stroke-width="1.4" fill="#ffffff">
+    <rect x="150" y="70" width="56" height="36"/><rect x="214" y="70" width="56" height="36"/><rect x="278" y="70" width="56" height="36"/><rect x="342" y="70" width="56" height="36"/><rect x="406" y="70" width="56" height="36"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-weight="600">
+    <text x="178" y="93">1</text><text x="242" y="93">2</text><text x="306" y="93">3</text><text x="370" y="93">4</text><text x="434" y="93">5</text>
+  </g>
+  <path d="M 172 116 L 178 106 L 184 116 z" fill="#4169E1"/>
+  <text x="178" y="132" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">min pointer</text>
+  <text x="486" y="88" fill="#1a2026" font-size="13">check [1,3] → <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+  <text x="486" y="106" fill="#5c6b76" font-size="11.5">3 is online — own check</text>
+  <!-- row 2: after [2,1], station 1 offline -->
+  <text x="24" y="177" fill="#5c6b76" font-size="12.5">after [2,1]</text>
+  <g stroke-width="1.4">
+    <rect x="150" y="154" width="56" height="36" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="214" y="154" width="56" height="36" fill="#ffffff" stroke="#42525e"/><rect x="278" y="154" width="56" height="36" fill="#ffffff" stroke="#42525e"/><rect x="342" y="154" width="56" height="36" fill="#ffffff" stroke="#42525e"/><rect x="406" y="154" width="56" height="36" fill="#ffffff" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="178" y="177" fill="#9aa7b2">1</text><text x="242" y="177" fill="#1a2026">2</text><text x="306" y="177" fill="#1a2026">3</text><text x="370" y="177" fill="#1a2026">4</text><text x="434" y="177" fill="#1a2026">5</text>
+  </g>
+  <text x="178" y="202" text-anchor="middle" fill="#9aa7b2" font-size="10.5">offline</text>
+  <path d="M 236 200 L 242 190 L 248 200 z" fill="#4169E1"/>
+  <text x="242" y="216" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">min</text>
+  <text x="486" y="172" fill="#1a2026" font-size="13">check [1,1] → <tspan fill="#4169E1" font-weight="600">2</tspan></text>
+  <text x="486" y="190" fill="#5c6b76" font-size="11.5">the pointer's station</text>
+  <!-- row 3: after [2,2], stations 1 and 2 offline -->
+  <text x="24" y="261" fill="#5c6b76" font-size="12.5">after [2,2]</text>
+  <g stroke-width="1.4">
+    <rect x="150" y="238" width="56" height="36" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="214" y="238" width="56" height="36" fill="#f0f3f7" stroke="#9aa7b2"/>
+    <rect x="278" y="238" width="56" height="36" fill="#ffffff" stroke="#42525e"/><rect x="342" y="238" width="56" height="36" fill="#ffffff" stroke="#42525e"/><rect x="406" y="238" width="56" height="36" fill="#ffffff" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="178" y="261" fill="#9aa7b2">1</text><text x="242" y="261" fill="#9aa7b2">2</text><text x="306" y="261" fill="#1a2026">3</text><text x="370" y="261" fill="#1a2026">4</text><text x="434" y="261" fill="#1a2026">5</text>
+  </g>
+  <text x="178" y="286" text-anchor="middle" fill="#9aa7b2" font-size="10.5">offline</text>
+  <text x="242" y="286" text-anchor="middle" fill="#9aa7b2" font-size="10.5">offline</text>
+  <path d="M 300 284 L 306 274 L 312 284 z" fill="#4169E1"/>
+  <text x="306" y="300" text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">min</text>
+  <text x="486" y="256" fill="#1a2026" font-size="13">check [1,2] → <tspan fill="#4169E1" font-weight="600">3</tspan></text>
+  <text x="486" y="274" fill="#5c6b76" font-size="11.5">advanced again</text>
+  <text x="320" y="326" text-anchor="middle" fill="#1a2026" font-size="13">The online set only shrinks, so the minimum pointer never moves left:</text>
+  <text x="320" y="346" text-anchor="middle" fill="#1a2026" font-size="13">1 and 2 go offline, so the checks on them read <tspan fill="#4169E1" font-weight="600">2</tspan> then <tspan fill="#4169E1" font-weight="600">3</tspan> — output [<tspan fill="#4169E1" font-weight="600">3, 2, 3</tspan>].</text>
+</svg>

@@ -16,6 +16,8 @@ out of prefixes still tied to `k`, and a walk that survives all 30 bits
 lands on prefixes whose XOR equals `k` exactly — still qualifying, so its
 count joins too.
 
+![On Example 1's prefixes 0, 3, 2, 0, 3, the final binary trie carries per-node counts, and the last query (P = 3 against k = 2) charges the whole flipped subtree 000 for +2, the five queries summing to 6.](figures/solution-prefix-trie-query.svg)
+
 The trie stores subtree occurrence counts, so each query step either
 terminates a branch or charges an entire subtree in O(1); every prefix is
 inserted once along a single root-to-leaf path. Because the query runs

@@ -20,6 +20,8 @@ the multiples `p, 2p, 3p, …` of `p` through the value table, so the
 total teleport work is `Σ max(nums)/p` over the distinct prime values
 that actually occur — well under `3×10⁶` for `nums[i] ≤ 10⁶`.
 
+![On Example 1's nums = [1, 2, 4, 6], the BFS layers run d = 0, 1, then 2 as the prime-2 teleport arc from index 1 to index 3 fires once and bucket[2] is cleared, so every index settles by distance 2.](figures/solution-prime-bucket-bfs.svg)
+
 Values of 1 (never prime) and arrays with no prime at all degrade to the
 plain adjacent-step walk, giving `n - 1` steps, and a single-element
 array answers 0 without touching the sieve.

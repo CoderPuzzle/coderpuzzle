@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 284" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="640" height="284" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#42525e"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- nums = [1,2,4,6]; index cells 80x48 at x=150+106i, y=96; BFS layers d=0,1,2; teleport arc M296,94 Q401,24 506,94 from index 1 to index 3; bucket[2] = {1,2,3} cleared after firing -->
+  <text x="30" y="60" fill="#5c6b76" font-size="12.5">nums = [1, 2, 4, 6]</text>
+  <text x="190" y="80" text-anchor="middle" fill="#4169E1" font-size="10.5">start</text>
+  <text x="533" y="80" text-anchor="middle" fill="#4169E1" font-size="10.5">goal</text>
+  <g stroke-width="1.4">
+    <rect x="150" y="96" width="80" height="48" fill="#ffffff" stroke="#42525e"/>
+    <rect x="256" y="96" width="80" height="48" fill="#ffffff" stroke="#4169E1" stroke-width="2"/>
+    <rect x="362" y="96" width="80" height="48" fill="#ffffff" stroke="#42525e"/>
+    <rect x="468" y="96" width="80" height="48" fill="#ffffff" stroke="#42525e"/>
+  </g>
+  <g text-anchor="middle" fill="#1a2026" font-size="16" font-weight="600">
+    <text x="190" y="126">1</text><text x="296" y="126">2</text><text x="402" y="126">4</text><text x="508" y="126">6</text>
+  </g>
+  <!-- adjacent step arrows -->
+  <g stroke="#42525e" stroke-width="1.6" fill="none">
+    <line x1="233" y1="120" x2="252" y2="120" marker-end="url(#arrowA)"/>
+    <line x1="339" y1="120" x2="358" y2="120" marker-end="url(#arrowA)"/>
+  </g>
+  <!-- prime-2 teleport arc, used once -->
+  <path d="M 296 94 Q 401 24 506 94" fill="none" stroke="#4169E1" stroke-width="2" marker-end="url(#arrowB)"/>
+  <circle cx="296" cy="94" r="3" fill="#4169E1"/>
+  <g text-anchor="middle" fill="#4169E1">
+    <text x="401" y="30" font-size="12" font-weight="600">prime teleport along 2</text>
+    <text x="401" y="47" font-size="11.5">bucket[2] = {1, 2, 3} → cleared after one use</text>
+  </g>
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="190" y="162">i = 0</text><text x="296" y="162">i = 1 (prime)</text><text x="402" y="162">i = 2</text><text x="508" y="162">i = 3</text>
+  </g>
+  <g fill="#dbe4fb">
+    <rect x="150" y="172" width="80" height="24"/><rect x="256" y="172" width="80" height="24"/><rect x="362" y="172" width="80" height="24"/><rect x="468" y="172" width="80" height="24"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="12.5" font-weight="600">
+    <text x="190" y="188">d = 0</text><text x="296" y="188">d = 1</text><text x="402" y="188">d = 2</text><text x="508" y="188">d = 2</text>
+  </g>
+  <text x="320" y="236" text-anchor="middle" fill="#1a2026" font-size="13">Bucket[2] fires once from index 1, landing indices 2 and 3 in the same layer;</text>
+  <text x="320" y="256" text-anchor="middle" fill="#1a2026" font-size="13">it is cleared, nothing re-expands, and index 3 answers <tspan fill="#4169E1" font-weight="600">2</tspan> jumps.</text>
+</svg>

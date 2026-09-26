@@ -21,6 +21,8 @@ minimum, a walk forward over the newly offline prefix. Across the whole
 query stream each station is walked past at most once, which is what makes
 the total query handling linear.
 
+![On Example 1's chain 1-2-3-4-5, the sorted component list carries one minimum-online pointer that advances past stations 1 and 2 as they go offline, so the checks on 1 and 2 resolve to 2 then 3.](figures/solution-min-pointer-advance.svg)
+
 Two statement rules fall out of the same structure. An online station
 resolves its own check even when a smaller station shares the grid — that
 is just the `online[x]` fast path, checked before the pointer is consulted.
