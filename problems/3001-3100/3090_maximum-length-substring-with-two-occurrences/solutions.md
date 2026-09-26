@@ -11,6 +11,8 @@ occurrences inside it; after each extension the rightmost letter is the
 only one that could sit above two, so the left edge advances just until
 that count returns to two.
 
+![Scanning s = "bcbbbcba", each third b pushes the left edge forward until the count returns to two, and the last step ends the length-4 window "bcba" — the answer 4.](figures/solution-window-count-jumps.svg)
+
 Every position `right` therefore ends paired with the smallest legal
 `left`, which makes `right - left + 1` the longest valid substring ending
 exactly there — the maximum over all endpoints is the global optimum no

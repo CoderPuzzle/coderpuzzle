@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 318" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="318" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- pair trie for words ["a","aba","ababa","aa"]; node = (first char · last char) pair,
+       rects 68x36 on chain centers x=130..570 at y=80, branch node center (130,190);
+       shaded nodes end an earlier word; cnt = earlier words counted there -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="11">
+    <text x="130" y="54">d=1</text><text x="240" y="54">d=2</text><text x="350" y="54">d=3</text>
+    <text x="460" y="54">d=4</text><text x="570" y="54">d=5</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5" fill="none">
+    <path d="M 42 80 H 96" marker-end="url(#arrow)"/>
+    <path d="M 164 80 H 206" marker-end="url(#arrow)"/>
+    <path d="M 274 80 H 316" marker-end="url(#arrow)"/>
+    <path d="M 384 80 H 426" marker-end="url(#arrow)"/>
+    <path d="M 494 80 H 536" marker-end="url(#arrow)"/>
+    <path d="M 130 98 V 171" marker-end="url(#arrow)"/>
+  </g>
+  <circle cx="36" cy="80" r="5" fill="#42525e"/>
+  <text x="36" y="104" text-anchor="middle" fill="#5c6b76" font-size="11">root</text>
+  <!-- chain nodes; shaded = an earlier word ends at this node -->
+  <g stroke-width="1.5">
+    <rect x="96" y="62" width="68" height="36" rx="6" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="206" y="62" width="68" height="36" rx="6" fill="#ffffff" stroke="#42525e"/>
+    <rect x="316" y="62" width="68" height="36" rx="6" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="426" y="62" width="68" height="36" rx="6" fill="#ffffff" stroke="#42525e"/>
+    <rect x="536" y="62" width="68" height="36" rx="6" fill="#dbe4fb" stroke="#4169E1"/>
+    <rect x="96" y="172" width="68" height="36" rx="6" fill="#dbe4fb" stroke="#4169E1"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="130" y="78" font-weight="600">a·a</text><text x="130" y="93" font-size="11" fill="#4169E1">cnt 1</text>
+    <text x="240" y="78" font-weight="600">b·b</text><text x="240" y="93" font-size="11" fill="#9aa7b2">cnt 0</text>
+    <text x="350" y="78" font-weight="600">a·a</text><text x="350" y="93" font-size="11" fill="#4169E1">cnt 1</text>
+    <text x="460" y="78" font-weight="600">b·b</text><text x="460" y="93" font-size="11" fill="#9aa7b2">cnt 0</text>
+    <text x="570" y="78" font-weight="600">a·a</text><text x="570" y="93" font-size="11" fill="#4169E1">cnt 1</text>
+    <text x="130" y="188" font-weight="600">a·a</text><text x="130" y="203" font-size="11" fill="#4169E1">cnt 1</text>
+  </g>
+  <text x="24" y="30" fill="#5c6b76" font-size="12">each node stores the pair (first char · last char); depth d = first d and last d chars agree</text>
+  <text x="180" y="140" fill="#5c6b76" font-size="12">shaded: an earlier word ends there — its cnt scores one pair</text>
+  <!-- per-insertion accrual of the answer -->
+  <g fill="#5c6b76" font-size="11.5">
+    <text x="230" y="180">insert</text>
+    <text x="330" y="180">counter hits on descent</text>
+    <text x="545" y="180">ans</text>
+  </g>
+  <g font-size="12.5">
+    <text x="230" y="202" font-weight="600" fill="#1a2026">a</text>
+    <text x="330" y="202" fill="#5c6b76">0</text>
+    <text x="545" y="202" fill="#4169E1" font-weight="600">0</text>
+    <text x="230" y="224" font-weight="600" fill="#1a2026">aba</text>
+    <text x="330" y="224" fill="#5c6b76">1 (d=1)</text>
+    <text x="545" y="224" fill="#4169E1" font-weight="600">1</text>
+    <text x="230" y="246" font-weight="600" fill="#1a2026">ababa</text>
+    <text x="330" y="246" fill="#5c6b76">1 + 1 (d=1, d=3)</text>
+    <text x="545" y="246" fill="#4169E1" font-weight="600">3</text>
+    <text x="230" y="268" font-weight="600" fill="#1a2026">aa</text>
+    <text x="330" y="268" fill="#5c6b76">1 (d=1)</text>
+    <text x="545" y="268" fill="#4169E1" font-weight="600">4</text>
+  </g>
+  <text x="340" y="292" text-anchor="middle" fill="#1a2026" font-size="13">Inserting left to right, a word adds every shaded counter on its pair path:</text>
+  <text x="340" y="310" text-anchor="middle" fill="#1a2026" font-size="13">aba, ababa and aa add 1, 2, 1 — the pairs (0,1), (0,2), (0,3), (1,2); answer <tspan fill="#4169E1" font-weight="600">4</tspan>.</text>
+</svg>

@@ -19,6 +19,8 @@ servers and S is their sum, the cross-branch pair count is the sum of
 cnt_i * cnt_j over i < j, which `(S * S - sum of cnt_i²) / 2` delivers
 without enumerating any pairs.
 
+![Cut at server 0 in example 2 with signalSpeed 3, the branch via 6 holds 2 servers at distance divisible by 3 and the branch via 3 holds 1, and their product 2 × 1 gives the pairs (4, 5) and (4, 6), so count[0] = 2.](figures/solution-branch-counts-server-0.svg)
+
 Doing this once per server costs one full tree walk per server. Every walk
 is stack-driven rather than recursive, so a chain of 1000 servers — the
 deepest shape the constraints allow — never approaches a call-stack or

@@ -15,6 +15,8 @@ sitting in a corner of the intersection. So each overlapping pair
 contributes the square of `min(w, h)`, and the answer is the largest such
 contribution over all pairs, or 0 when no pair overlaps.
 
+![Clamping rects 0 [1,1]–[3,3] and 1 [2,2]–[4,4] from example 1 onto each axis leaves the 1 × 1 overlap [2,2]–[3,3], so the square takes side min(w, h) = 1 and the pair contributes area 1.](figures/solution-pair-clamp-square.svg)
+
 Checking every pair is quadratic work over at most 1000 rectangles — about
 half a million cheap integer clamps. Areas reach `(10^7 - 1)^2`, well past
 32-bit range, so fixed-width languages accumulate in 64-bit integers;

@@ -17,6 +17,8 @@ counter to the answer on the way down, finally incrementing the counter at the
 full-depth node. The walk is a single combined query-then-insert pass, because
 the counters are only updated after the descent.
 
+![Descending the pair trie for words = ["a", "aba", "ababa", "aa"], each word adds the shaded counters on its path — aba, ababa and aa add 1, 2, 1 — so the pairs (0,1), (0,2), (0,3), (1,2) give the answer 4.](figures/solution-paired-trie-counters.svg)
+
 The answer is a count of index pairs, up to `C(10⁵, 2) ≈ 5 × 10⁹`, so it needs
 a 64-bit accumulator (JavaScript numbers stay exact below 2⁵³). Node counters
 themselves never exceed the word count.
