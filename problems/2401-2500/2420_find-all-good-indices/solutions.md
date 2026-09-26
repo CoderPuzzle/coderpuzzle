@@ -22,6 +22,11 @@ window and center never contaminates either check. Scanning the candidate
 range `k <= i < n - k` in increasing order collects the answer already
 sorted.
 
+![With nums = [2,1,1,1,3,4,1] and k = 2, the non-increasing run lengths
+above and non-decreasing run lengths below each cell clear both >= 2 tests
+at i = 2,3 but fail at i = 4 (nondec[5] = 1), so the good indices are
+[2,3].](figures/solution-run-length-threshold-tests.svg)
+
 All values are counts bounded by `n <= 10⁵` and elements fit in 32 bits,
 so every language runs this in plain machine integers with three linear
 passes total.

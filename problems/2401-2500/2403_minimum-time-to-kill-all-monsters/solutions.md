@@ -6,6 +6,8 @@ With at most 17 monsters, the reachable states are the `2^n` subsets of already-
 
 Transitions go forward over masks: from a reachable `mask`, defeating monster `j` not in the mask takes `ceil(power[j] / gain)` days, where gaining `gain` mana per day means that many days to accumulate at least `power[j]`. Relaxed into `dp[mask | (1 << j)]`, this fills every superset. Iterating masks in increasing numeric order is a valid evaluation order because setting an extra bit always produces a strictly larger mask, so each state is final before anything extends it; states still at the infinity sentinel (unreachable, though in fact all are reachable) are skipped.
 
+![On power = [3, 1, 4], the 2^3 lattice fills with dp values 0 through 5, each edge costing ceil(power/gain) days at the current gain; the accent path 000 → 010 → 110 → 111 spends 1 + 2 + 1 = 4 days, so dp[111] = 4.](figures/solution-mask-dp-lattice.svg)
+
 The base case is `dp[0] = 0` — nothing defeated, no days spent — and the answer is `dp[(1 << n) - 1]`. The ceiling division `(power[j] + gain - 1) // gain` handles powers that are not multiples of the gain exactly, and powers up to `10^9` never overflow Python integers.
 
 **Complexity:** `O(2^n * n)` time, `O(2^n)` space.

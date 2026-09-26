@@ -13,6 +13,10 @@ distance the answer must cover is `nearest_b(i) - i + 1`, and
 OR. Bits of `nums[i]` itself sit at distance 1, which is why the answer is
 never shorter than 1.
 
+![With nums = [1,0,2,1,3], each index's arcs reach right to the nearest
+position carrying each missing bit, and the longest arc fixes answer[i] — at
+i = 1 the bit-0 arc to index 3 gives 3, for the answers [3,3,2,2,1].](figures/solution-nearest-bit-arcs.svg)
+
 Those nearest positions fall out of one right-to-left sweep per bit:
 walking `i` from `n-1` down to 0 with a single `last` variable (the most
 recent index carrying the bit) keeps `nearest_b` current without any

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 296" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="680" height="296" fill="#ffffff"/>
+  <!-- nums = [2,1,1,1,3,4,1], k = 2; noninc = [1,2,3,4,1,1,2]; nondec = [1,5,4,3,2,1,1];
+       good = [2,3]; cells 70x48 at x = 118 + 78i, y = 56; centers 153+78i -->
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="106" y="50" text-anchor="end" font-size="12.5">noninc[i]</text>
+    <text x="153" y="50">1</text><text x="231" y="50">2</text><text x="309" y="50">3</text>
+    <text x="387" y="50">4</text><text x="465" y="50">1</text><text x="543" y="50">1</text><text x="621" y="50">2</text>
+  </g>
+  <g stroke="#42525e" stroke-width="1.5">
+    <rect x="118" y="56" width="70" height="48" fill="#ffffff"/>
+    <rect x="196" y="56" width="70" height="48" fill="#ffffff"/>
+    <rect x="274" y="56" width="70" height="48" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="352" y="56" width="70" height="48" fill="#dbe4fb" stroke="#4169E1" stroke-width="1.8"/>
+    <rect x="430" y="56" width="70" height="48" fill="#ffffff"/>
+    <rect x="508" y="56" width="70" height="48" fill="#ffffff"/>
+    <rect x="586" y="56" width="70" height="48" fill="#ffffff"/>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="153" y="86">2</text><text x="231" y="86">1</text>
+    <text x="309" y="86" fill="#4169E1" font-weight="700">1</text>
+    <text x="387" y="86" fill="#4169E1" font-weight="700">1</text>
+    <text x="465" y="86">3</text><text x="543" y="86">4</text><text x="621" y="86">1</text>
+  </g>
+  <g text-anchor="middle" fill="#5c6b76" font-size="12">
+    <text x="106" y="126" text-anchor="end" font-size="12.5">index i</text>
+    <text x="153" y="126">0</text><text x="231" y="126">1</text><text x="309" y="126">2</text>
+    <text x="387" y="126">3</text><text x="465" y="126">4</text><text x="543" y="126">5</text><text x="621" y="126">6</text>
+  </g>
+  <g text-anchor="middle" font-weight="600">
+    <text x="106" y="154" text-anchor="end" fill="#5c6b76" font-weight="400" font-size="12.5">nondec[i]</text>
+    <text x="153" y="154">1</text><text x="231" y="154">5</text><text x="309" y="154">4</text>
+    <text x="387" y="154">3</text><text x="465" y="154">2</text><text x="543" y="154">1</text><text x="621" y="154">1</text>
+  </g>
+  <g font-size="13">
+    <text x="40" y="192" fill="#1a2026">i = 2: noninc[1] = 2 &#8805; 2 &#10003; and nondec[3] = 3 &#8805; 2 &#10003; — <tspan fill="#4169E1" font-weight="600">good</tspan></text>
+    <text x="40" y="216" fill="#1a2026">i = 3: noninc[2] = 3 &#8805; 2 &#10003; and nondec[4] = 2 &#8805; 2 &#10003; — <tspan fill="#4169E1" font-weight="600">good</tspan></text>
+    <text x="40" y="240" fill="#1a2026">i = 4: noninc[3] = 4 &#8805; 2 &#10003; but nondec[5] = 1 &lt; 2 — not good ([4,1] falls)</text>
+  </g>
+  <text x="40" y="268" fill="#1a2026" font-size="13">A candidate passes iff both windows clear the threshold; with <tspan fill="#4169E1" font-weight="600">k = 2</tspan> the</text>
+  <text x="40" y="286" fill="#1a2026" font-size="13">good indices are <tspan fill="#4169E1" font-weight="600">[2,3]</tspan>, and index 4 fails only on its right window.</text>
+</svg>
