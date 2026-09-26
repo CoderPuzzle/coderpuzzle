@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 344" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+  <rect width="480" height="344" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4169E1"/>
+    </marker>
+  </defs>
+  <!-- source = hello, target = world; rules he->wo (cost 3), llo->rld (cost 4).
+       dp = [0, inf, 3, inf, inf, 7] at boundaries x = 110 + 56i (cells w56: source y84, target y142, h34;
+       dp boxes w40 y206). Top arcs span boundaries 0->2 and 2->5; rail arcs are the dp transitions. -->
+  <g text-anchor="middle" fill="#4169E1" font-size="12" font-weight="600">
+    <text x="166" y="34">he → wo · +3</text>
+    <text x="306" y="34">llo → rld · +4</text>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="2">
+    <path d="M 110 78 Q 166 44 222 78" marker-end="url(#arrow)"/>
+    <path d="M 222 78 Q 306 44 390 78" marker-end="url(#arrow)"/>
+  </g>
+  <text x="100" y="106" text-anchor="end" fill="#5c6b76" font-size="12.5">source</text>
+  <text x="100" y="164" text-anchor="end" fill="#5c6b76" font-size="12.5">target</text>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="110" y="84" width="56" height="34"/><rect x="166" y="84" width="56" height="34"/><rect x="222" y="84" width="56" height="34"/><rect x="278" y="84" width="56" height="34"/><rect x="334" y="84" width="56" height="34"/>
+    <rect x="110" y="142" width="56" height="34"/><rect x="166" y="142" width="56" height="34"/><rect x="222" y="142" width="56" height="34"/><rect x="278" y="142" width="56" height="34"/><rect x="334" y="142" width="56" height="34"/>
+  </g>
+  <g text-anchor="middle" font-size="15" font-weight="600" fill="#1a2026">
+    <text x="138" y="106">h</text><text x="194" y="106">e</text><text x="250" y="106">l</text><text x="306" y="106">l</text><text x="362" y="106">o</text>
+    <text x="138" y="164">w</text><text x="194" y="164">o</text><text x="250" y="164">r</text><text x="306" y="164">l</text><text x="362" y="164">d</text>
+  </g>
+  <text x="306" y="139" text-anchor="middle" fill="#9aa7b2" font-size="10.5">l = l — free skip possible here</text>
+  <!-- dp rail -->
+  <g text-anchor="middle" fill="#9aa7b2" font-size="10.5">
+    <text x="110" y="200">0</text><text x="166" y="200">1</text><text x="222" y="200">2</text>
+    <text x="278" y="200">3</text><text x="334" y="200">4</text><text x="390" y="200">5</text>
+  </g>
+  <text x="78" y="226" text-anchor="end" fill="#5c6b76" font-size="12.5">dp</text>
+  <g fill="#f0f3f7" stroke="#9aa7b2" stroke-width="1.2">
+    <rect x="146" y="206" width="40" height="30"/>
+    <rect x="258" y="206" width="40" height="30"/>
+    <rect x="314" y="206" width="40" height="30"/>
+  </g>
+  <g fill="#ffffff" stroke="#42525e" stroke-width="1.4">
+    <rect x="90" y="206" width="40" height="30"/>
+  </g>
+  <g fill="#dbe4fb" stroke="#4169E1" stroke-width="1.6">
+    <rect x="202" y="206" width="40" height="30"/>
+    <rect x="370" y="206" width="40" height="30"/>
+  </g>
+  <g text-anchor="middle" font-size="14" font-weight="600">
+    <text x="110" y="227">0</text>
+    <text x="166" y="227" fill="#9aa7b2">∞</text>
+    <text x="222" y="227" fill="#1a2026">3</text>
+    <text x="278" y="227" fill="#9aa7b2">∞</text>
+    <text x="334" y="227" fill="#9aa7b2">∞</text>
+    <text x="390" y="227" fill="#4169E1">7</text>
+  </g>
+  <g fill="none" stroke="#4169E1" stroke-width="1.8">
+    <path d="M 110 242 Q 166 264 218 242" marker-end="url(#arrow)"/>
+    <path d="M 226 242 Q 306 268 386 242" marker-end="url(#arrow)"/>
+  </g>
+  <g text-anchor="middle" fill="#4169E1" font-size="11.5" font-weight="600">
+    <text x="160" y="284">dp[0] + 3</text>
+    <text x="306" y="284">dp[2] + 4</text>
+  </g>
+  <text x="240" y="312" text-anchor="middle" fill="#1a2026" font-size="13">he→wo covers positions 0–1 for cost 3, llo→rld covers 2–4 for cost 4;</text>
+  <text x="240" y="330" text-anchor="middle" fill="#1a2026" font-size="13">the free l = l at position 3 is never used (dp[3] = ∞) — dp[5] = <tspan fill="#4169E1" font-weight="600">7</tspan>.</text>
+</svg>

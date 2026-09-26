@@ -13,6 +13,8 @@ transition, so the state graph has no cycles and plain Dijkstra order by
 time settles each state once. Lazy deletion (skip popped entries whose
 distance has improved) keeps the queue small without a decrease-key.
 
+![Dijkstra over (node, power) states on the 5-node example: the move into node 1 dies with 2 power below cost[1]=3, and 0→2→3→4 settles the target at time 3 with 0 power left.](figures/solution-dijkstra-node-power-states.svg)
+
 Positive traversal times make the ordering valid. After all reachable
 states are settled, scan the target's power states for the smallest time
 and choose the greatest power among ties. Distances use 64-bit arithmetic
