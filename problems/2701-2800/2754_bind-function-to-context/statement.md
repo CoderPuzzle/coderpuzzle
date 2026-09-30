@@ -22,7 +22,7 @@ function:
 function f() {
     console.log("My context is " + this.ctx);
 }
-const boundFunc = f.boundPolyfill({ ctx: "My Object" });
+const boundFunc = f.bindPolyfill({ ctx: "My Object" });
 boundFunc();
 ```
 

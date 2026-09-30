@@ -53,6 +53,6 @@ Explanation: There are no elements to be chunked so an empty array is returned.
 
 ### Constraints
 
-- `arr` is a string representing the array.
+- `arr` represents the array: each `arr[i]` is the value at index `i`.
 - `2 <= arr.length <= 10⁵`
 - `1 <= size <= arr.length + 1`
