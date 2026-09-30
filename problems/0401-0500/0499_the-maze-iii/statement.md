@@ -63,8 +63,8 @@ Output: "dldr"
 - `maze[i][j]` is `0` or `1`.
 - `ball.length == 2`
 - `hole.length == 2`
-- `0 <= ballrow, holerow <= m`
-- `0 <= ballcol, holecol <= n`
+- `0 <= ballrow, holerow < m`
+- `0 <= ballcol, holecol < n`
 - Both the ball and the hole exist in an empty space, and they will not be in
   the same position initially.
 - The maze contains at least 2 empty spaces.

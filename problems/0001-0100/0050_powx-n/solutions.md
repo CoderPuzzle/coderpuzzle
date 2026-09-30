@@ -2,7 +2,15 @@
 
 Two shapes of exponentiation by squaring; both exploit `x^n = (x^(n/2))^2`
 to spend only `O(log n)` multiplications, differing in whether the exponent
-is consumed bit by bit or halved by recursion.
+is halved by recursion or consumed bit by bit.
+
+## fast_pow_recursive
+
+The same identity, written top-down instead: `power(x, exp)` recurses once on `exp / 2`, squares the returned half, and multiplies in one extra factor of `x` when `exp` is odd. Each level asks for exactly one subproblem (never two — the half is computed once and squared), so the recursion is a chain of depth `log2(exp) + 1` ≈ 31 for a 32-bit exponent, with one multiplication (even) or two (odd) per level.
+
+The base case `exp == 0` returns `1.0`, covering `x = 1` and `n = 0` without any loop at all. Negative exponents are handled exactly as in the iterative variant — reciprocate `power(x, -n)` — and the fixed-width ports widen `n` to 64 bits first so negating `n = -2^31` cannot overflow. The one structural cost of the recursive shape is the call-stack footprint: `O(log n)` frames against the iterative loop's `O(1)`, both negligible at this exponent bound.
+
+**Complexity:** `O(log n)` time, `O(log n)` stack space.
 
 ## fast_pow_iterative
 
@@ -15,11 +23,3 @@ A negative exponent is handled by symmetry: the code computes `power(x, -n)` and
 Only a constant number of float variables (`result`, `base`, the loop counter) are used regardless of exponent size, and the loop runs once per bit of `|n|`.
 
 **Complexity:** `O(log n)` time, `O(1)` space.
-
-## fast_pow_recursive
-
-The same identity, written top-down instead: `power(x, exp)` recurses once on `exp / 2`, squares the returned half, and multiplies in one extra factor of `x` when `exp` is odd. Each level asks for exactly one subproblem (never two — the half is computed once and squared), so the recursion is a chain of depth `log2(exp) + 1` ≈ 31 for a 32-bit exponent, with one multiplication (even) or two (odd) per level.
-
-The base case `exp == 0` returns `1.0`, covering `x = 1` and `n = 0` without any loop at all. Negative exponents are handled exactly as in the iterative variant — reciprocate `power(x, -n)` — and the fixed-width ports widen `n` to 64 bits first so negating `n = -2^31` cannot overflow. The one structural cost of the recursive shape is the call-stack footprint: `O(log n)` frames against the iterative loop's `O(1)`, both negligible at this exponent bound.
-
-**Complexity:** `O(log n)` time, `O(log n)` stack space.
