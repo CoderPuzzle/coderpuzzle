@@ -39,7 +39,7 @@ one of the diagonals. 17 is the largest prime, so we return 17.
 ### Constraints
 
 - `1 <= nums.length <= 300`
-- `nums.length == numsi.length`
+- `nums.length == nums[i].length`
 - `1 <= nums[i][j] <= 4*10⁶`
 
 ## Hints
