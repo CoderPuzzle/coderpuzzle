@@ -9,30 +9,6 @@ Everything reduces to answering, against a set that loses and gains one
 element per step, "how many members are smaller/greater than x?" The two
 approaches differ only in the data structure that answers it.
 
-## Sorted Window
-
-Keep the current window itself as a sorted list. Then each rank question is
-a binary search whose answer falls out of the position: the index an
-element occupies counts how many members are smaller than it, and the gap
-it drops into counts how many are greater. Removing the outgoing element
-subtracts its search position; inserting the incoming one at its gap adds
-`window size after removal - gap`. No compression, no tree — the window
-stays materialized in sorted order, which makes both terms readable
-straight off two bisections per slide.
-
-Equal values are the precision point. Removal searches for the leftmost
-copy so exactly one instance departs; insertion lands the newcomer after
-its equals (rightmost gap) so it pairs only with strictly greater
-survivors. Get either end wrong by one copy and every later count drifts.
-The cost model is honest about the trade: each slide shifts O(k) elements,
-so the worst case with k near n is quadratic element moves — but the moves
-are contiguous, cache-friendly, and mid-size windows run fast in practice.
-The running total reaches `k * (k - 1) / 2`, past 32-bit range once the
-window grows beyond ~65535 elements, so fixed-width languages accumulate
-in 64 bits; JavaScript numbers stay exact far past that bound.
-
-**Complexity:** `O(n log k)` time, `O(k)` space.
-
 ## Fenwick Tree over Compressed Values
 
 Compress all values to their ranks `1..m` (`m <= n`) and maintain a Fenwick
@@ -57,3 +33,27 @@ for windows past ~65535 elements.
 ![Sliding nums = [3, 1, 2, 5, 4] with k = 3 from window [3, 1, 2] to [1, 2, 5]: the outgoing 3 has its two inversion arcs removed for −2 and the incoming 5 adds none for +0, dropping the count 2 − 2 + 0 = 0.](figures/solution-slide-inversion-delta.svg)
 
 **Complexity:** `O(n log n)` time, `O(n)` space.
+
+## Sorted Window
+
+Keep the current window itself as a sorted list. Then each rank question is
+a binary search whose answer falls out of the position: the index an
+element occupies counts how many members are smaller than it, and the gap
+it drops into counts how many are greater. Removing the outgoing element
+subtracts its search position; inserting the incoming one at its gap adds
+`window size after removal - gap`. No compression, no tree — the window
+stays materialized in sorted order, which makes both terms readable
+straight off two bisections per slide.
+
+Equal values are the precision point. Removal searches for the leftmost
+copy so exactly one instance departs; insertion lands the newcomer after
+its equals (rightmost gap) so it pairs only with strictly greater
+survivors. Get either end wrong by one copy and every later count drifts.
+The cost model is honest about the trade: each slide shifts O(k) elements,
+so the worst case with k near n is quadratic element moves — but the moves
+are contiguous, cache-friendly, and mid-size windows run fast in practice.
+The running total reaches `k * (k - 1) / 2`, past 32-bit range once the
+window grows beyond ~65535 elements, so fixed-width languages accumulate
+in 64 bits; JavaScript numbers stay exact far past that bound.
+
+**Complexity:** `O(n log k)` time, `O(k)` space.

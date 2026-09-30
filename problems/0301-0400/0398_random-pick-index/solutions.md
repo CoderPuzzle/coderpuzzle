@@ -7,9 +7,3 @@
 The judge needs a target's bucket large enough to accumulate mass per index, so the statistical cases stick to targets occupying up to ~120 positions; a target spanning an entire `10⁴`-element array is covered by the validity requirement (each draw must land on one of its indices) with its per-index frequencies merged into the distribution's tail.
 
 **Complexity:** `O(n)` construction, expected `O(1)` per `pick`, `O(n)` space.
-
-## Reservoir Sampling (Follow-up)
-
-When the array cannot be indexed repeatedly — streamed once, or too large to keep — the buckets are the part to drop. Scan on each call counting occurrences of `target` and holding a single candidate: at the `k`-th occurrence, replace the candidate with probability `1/k`. The same induction as classic reservoir sampling shows the survivor is uniform over the `m` occurrences, using two counters and no index storage — at the cost of one full pass per call.
-
-**Complexity:** `O(1)` extra space, `O(n)` time per `pick`.
