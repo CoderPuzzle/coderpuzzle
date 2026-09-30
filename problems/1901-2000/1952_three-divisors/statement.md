@@ -13,7 +13,7 @@ An integer `m` is a divisor of `n` if there exists an integer `k` such that
 ```text
 Input: n = 2
 Output: false
-Explantion: 2 has only two divisors: 1 and 2.
+Explanation: 2 has only two divisors: 1 and 2.
 ```
 
 ### Example 2
@@ -21,7 +21,7 @@ Explantion: 2 has only two divisors: 1 and 2.
 ```text
 Input: n = 4
 Output: true
-Explantion: 4 has three divisors: 1, 2, and 4.
+Explanation: 4 has three divisors: 1, 2, and 4.
 ```
 
 ### Constraints
