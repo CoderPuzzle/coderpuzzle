@@ -74,7 +74,7 @@ Make the final corridor have exactly one path to the bottom-right cell, so the t
 
 ### Hint 6
 
-Since k <= 1000, at most 10 powers of two are needed. The construction therefore uses at most 20 rows and 13 columns, which fits inside the 25 x 25 limit.
+Since k <= 1000, at most 10 powers of two are needed. The construction therefore uses at most 19 rows and 22 columns, which fits inside the 25 x 25 limit.
 
 ### Hint 7
 
