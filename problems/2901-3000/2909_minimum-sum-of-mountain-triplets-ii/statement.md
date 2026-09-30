@@ -60,4 +60,4 @@ the largest integer to the right of j.
 
 To find i and k, preprocess the prefix minimum array prefix_min[i] =
 min(nums[0], nums[1], ..., nums[i]), and the suffix minimum array
-suffix_min[i] = min(nums[i], nums[i + 1], ..., nums[i - 1]).
+suffix_min[i] = min(nums[i], nums[i + 1], ..., nums[n - 1]).

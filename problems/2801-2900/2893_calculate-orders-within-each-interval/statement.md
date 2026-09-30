@@ -55,7 +55,7 @@ Output:
 Explanation:
 - Interval number 1 comprises minutes from 1 to 6. The total orders in these six minutes are (0 + 2 + 4 + 6 + 1 + 4) = 17.
 - Interval number 2 comprises minutes from 7 to 12. The total orders in these six minutes are (1 + 2 + 4 + 1 + 4 + 6) = 18.
-Returning table orderd by interval_no in ascending order.
+Returning table ordered by interval_no in ascending order.
 ```
 
 Write your solution as a single `SELECT` query returning columns

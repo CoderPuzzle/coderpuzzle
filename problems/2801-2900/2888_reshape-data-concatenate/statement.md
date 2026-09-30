@@ -64,7 +64,7 @@ Output:
 | 6          | Alex    | 7   |
 +------------+---------+-----+
 Explanation:
-The two DataFramess are stacked vertically, and their rows are combined.
+The two DataFrames are stacked vertically, and their rows are combined.
 ```
 
 Write your solution as a single `SELECT` query returning exactly three

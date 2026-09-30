@@ -34,7 +34,7 @@ Input:
 | 1           | Ella    | emily@example.com   |
 | 2           | David   | michael@example.com |
 | 3           | Zachary | sarah@example.com   |
-| 4           | Alice   | john@example.com    |
+| 4           | Alicee   | john@example.com    |
 | 5           | Finn    | john@example.com    |
 | 6           | Violet  | alice@example.com   |
 +-------------+---------+---------------------+
@@ -45,11 +45,11 @@ Output:
 | 1           | Ella    | emily@example.com   |
 | 2           | David   | michael@example.com |
 | 3           | Zachary | sarah@example.com   |
-| 4           | Alice   | john@example.com    |
+| 4           | Alicee   | john@example.com    |
 | 6           | Violet  | alice@example.com   |
 +-------------+---------+---------------------+
 Explanation:
-Alic (customer_id = 4) and Finn (customer_id = 5) both use john@example.com, so only the first occurrence of this email is retained.
+Alice (customer_id = 4) and Finn (customer_id = 5) both use john@example.com, so only the first occurrence of this email is retained.
 ```
 
 Write your solution as a single `SELECT` query returning all three columns,
