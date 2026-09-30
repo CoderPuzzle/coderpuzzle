@@ -44,17 +44,22 @@ Table: `Trips`
 Each row includes a trip's ID, the vehicle used, the distance covered (in
 miles), the trip duration (in minutes), and the passenger's rating (1-5).
 
-Uber is analyzing drivers based on their trips. Write a solution to find
-the top-performing driver for each fuel type based on the following
-criteria:
+Uber is analyzing drivers based on their trips. Write a solution to rank
+every driver within each fuel type based on the following criteria:
 
 - A driver's performance is calculated as the average rating across all
-  their trips. Average rating should be rounded to 2 decimal places.
+  their trips on vehicles of that fuel type. Average rating should be
+  rounded to 2 decimal places.
 - If two drivers have the same average rating, the driver with the longer
-  total distance traveled should be ranked higher.
-- If there is still a tie, choose the driver with the fewest accidents.
+  total distance traveled is ranked higher.
+- If there is still a tie, the driver with the fewest accidents is ranked
+  higher.
 
-Return the result table ordered by `fuel_type` in ascending order.
+Every driver with at least one trip on a fuel type's vehicles appears in
+that fuel type's standings; a driver who drove vehicles of several fuel
+types is ranked within each of them separately. Return the result table
+ordered by `fuel_type` in ascending order, and within each fuel type
+from the highest-ranked driver to the lowest.
 
 Each testcase supplies its own `dataset`: the script seeds the `Drivers`,
 `Vehicles`, and `Trips` tables before your query runs. Only fuel types
@@ -98,16 +103,20 @@ Output:
 +-----------+-----------+--------+----------+
 | Electric  | 2         | 4.50   | 180      |
 | Gasoline  | 3         | 5.00   | 100      |
+| Gasoline  | 1         | 4.50   | 80       |
 +-----------+-----------+--------+----------+
 Explanation: For fuel type Gasoline, both Alice (Driver 1) and Charlie
-(Driver 3) have trips. Charlie has an average rating of 5.0, while Alice
-has 4.5. Therefore, Charlie is selected.
-For fuel type Electric, Bob (Driver 2) is the only driver with an average
-rating of 4.5, so he is selected.
-The output table is ordered by fuel_type in ascending order.
+(Driver 3) have trips. Charlie has an average rating of 5.00 over 100
+miles, while Alice has 4.50 over 80 miles, so Charlie is ranked first
+and Alice second.
+For fuel type Electric, Bob (Driver 2) is the only driver, with an
+average rating of 4.50 over 180 miles.
+The output table is ordered by fuel_type in ascending order, and within
+each fuel type by the ranking criteria above.
 ```
 
 Write your solution as a single `SELECT` query returning four columns —
-`fuel_type`, `driver_id`, `rating`, and `distance` — one row for each fuel
-type, reporting its top-performing driver under the criteria above,
-ordered by `fuel_type` in ascending order.
+`fuel_type`, `driver_id`, `rating`, and `distance` — one row for every
+driver in each fuel type's standings under the criteria above, ordered
+by `fuel_type` in ascending order and, within a fuel type, from the
+highest-ranked driver to the lowest.
