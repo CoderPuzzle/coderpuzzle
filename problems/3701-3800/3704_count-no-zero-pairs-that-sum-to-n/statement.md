@@ -10,7 +10,8 @@ Given an integer `n`, count the number of pairs `(a, b)` where:
 - `a` and `b` are no-zero integers.
 - `a + b = n`
 
-Return an integer denoting the number of such pairs.
+Return an integer denoting the number of such pairs, taken modulo
+`10^9 + 7` since it grows quickly with `n`.
 
 ### Example 1
 
