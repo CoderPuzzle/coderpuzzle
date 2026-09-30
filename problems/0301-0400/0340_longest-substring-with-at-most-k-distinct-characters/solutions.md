@@ -11,8 +11,6 @@ length costs one sweep of the string. The other uses the fact directly,
 growing and shrinking a single window as its right edge walks the string,
 so the answer is complete after one pass.
 
-![Window snapshots for s = "opoqr" with k = 2: the window grows through o, op, and opo (best 3), then shrinks twice as q and r each bring in a third symbol.](figures/solution-sliding-window.svg)
-
 ## Binary Search on the Window Length
 
 Turn the question inside out: instead of asking, for every right edge, how
@@ -31,8 +29,8 @@ every shorter length — the predicate is true on a prefix of the length
 range and false beyond it, with the answer sitting on the boundary. The
 search keeps `lo` feasible and shrinks `hi`, taking the upper midpoint so
 the loop drives toward the last true; a string of length `n` needs about
-`log n` probes. On `s = "opoqr"` with `k = 2`: length 3 is feasible
-(`"opo"` carries `{o, p}`), length 4 is not (`"opoq"` adds the third
+`log n` probes. On `s = "eceba"` with `k = 2`: length 3 is feasible
+(`"ece"` carries `{e, c}`), length 4 is not (`"eceb"` adds the third
 symbol, and so does every other placement), so the boundary lands on 3.
 
 Both edges fall out of the search itself: `lo` starts at 0, which is

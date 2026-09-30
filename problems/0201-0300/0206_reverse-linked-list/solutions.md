@@ -2,8 +2,16 @@
 
 Two equivalent reversals: both walk the list once and relink the original
 nodes in place, producing the same chain read backwards. They differ in
-whether the work is driven by a loop with three pointers or consumed by the
-call stack — and the stack is exactly where their costs diverge.
+whether the work is consumed by the call stack or driven by a loop with
+three pointers — and the stack is exactly where their costs diverge.
+
+## Recursive
+
+Reverse the tail first, then hang the head behind it. The base case is a missing head or a last node — already reversed, it is its own new head. Otherwise the recursive call on `head.next` returns the head of the reversed remainder, and two pointer writes finish the job for this node: `head.next.next = head` points the remainder's first node back at head, then `head.next = None` severs head's old forward link so it becomes the tail. The new head travels back up the chain unchanged from the deepest call.
+
+Every node is touched once and nothing is allocated, but the call stack grows one frame per node — the price the iterative version refuses to pay. The ports tune that depth to their runtimes: Python raises the recursion limit first (the list may hold 5000 nodes, past CPython's default), Rust threads the already-reversed prefix as an accumulator parameter (the classic link-back step needs two live references into one node, which safe Rust cannot hold), and the JavaScript/TypeScript judge caps the call stack below the 5000-node limit, so those two ports halve the list instead — recursively reverse each half and join them in swapped order, which keeps the depth logarithmic at the cost of `O(n log n)` walking.
+
+**Complexity:** `O(n)` time, `O(n)` space for the call stack — the JS/TS ports halve for `O(log n)` depth at `O(n log n)` time.
 
 ## Iterative
 
@@ -16,11 +24,3 @@ The loop's four steps are ordered to protect the only fragile operation: `nxt = 
 When `current` becomes `None` the whole list has been consumed and `prev` points at the original tail, which is the new head and the return value. An empty list never enters the loop and returns `None` unchanged; a single node gets its `next` set to `None` (already the case) and is returned as is.
 
 **Complexity:** `O(n)` time, `O(1)` space.
-
-## Recursive
-
-Reverse the tail first, then hang the head behind it. The base case is a missing head or a last node — already reversed, it is its own new head. Otherwise the recursive call on `head.next` returns the head of the reversed remainder, and two pointer writes finish the job for this node: `head.next.next = head` points the remainder's first node back at head, then `head.next = None` severs head's old forward link so it becomes the tail. The new head travels back up the chain unchanged from the deepest call.
-
-Every node is touched once and nothing is allocated, but the call stack grows one frame per node — the price the iterative version refuses to pay. The ports tune that depth to their runtimes: Python raises the recursion limit first (the list may hold 5000 nodes, past CPython's default), Rust threads the already-reversed prefix as an accumulator parameter (the classic link-back step needs two live references into one node, which safe Rust cannot hold), and the JavaScript/TypeScript judge caps the call stack below the 5000-node limit, so those two ports halve the list instead — recursively reverse each half and join them in swapped order, which keeps the depth logarithmic at the cost of `O(n log n)` walking.
-
-**Complexity:** `O(n)` time, `O(n)` space for the call stack — the JS/TS ports halve for `O(log n)` depth at `O(n log n)` time.

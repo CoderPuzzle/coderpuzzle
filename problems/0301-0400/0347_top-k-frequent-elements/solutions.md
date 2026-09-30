@@ -7,29 +7,6 @@ different ways. Both break frequency ties by taking the smaller value,
 which makes the chosen set deterministic and matches the judge's expected
 answers exactly.
 
-## Frequency Buckets
-
-Since a count can only range from 1 to `n`, the ranking can be produced
-without any comparison sort over frequencies: drop each unique value into
-`buckets[count]` — a list of lists indexed by frequency — then walk the
-index from `n` down to `1`, collecting values from the highest-frequency
-buckets first until `k` are gathered. The walk is a scan over indices, and
-a frequency's bucket directly answers "which values occur exactly this
-often".
-
-The one comparison-sort left is inside a bucket: values sharing the same
-frequency are sorted ascending before collection, so a tie at the `k`
-boundary resolves to the smaller value rather than to hash-map iteration
-order. That is the whole difference from a naive bucket walk, which would
-pick arbitrarily among equal counts and fail the deterministic expected
-set. The result is near-linear work — no sort touches all unique items
-unless they genuinely share one frequency.
-
-**Complexity:** `O(n)` time for the counting pass plus bucket building and
-the index walk; the in-bucket sorts sum to at most `O(u log u)` over `u`
-unique values (typically far less, since few values share a frequency).
-`O(n)` space for the map and buckets.
-
 ## Size-k Min-Heap by Count
 
 Instead of ranking every unique value, keep a min-heap of only `k` items
@@ -56,3 +33,26 @@ for the values it never keeps. The price is the log factor and keeping
 **Complexity:** `O(n + u log k)` time — `O(n)` to count plus `O(u)` heap
 operations at `O(log k)` each, with `u` the number of unique values.
 `O(u + k)` space for the map and the heap.
+
+## Frequency Buckets
+
+Since a count can only range from 1 to `n`, the ranking can be produced
+without any comparison sort over frequencies: drop each unique value into
+`buckets[count]` — a list of lists indexed by frequency — then walk the
+index from `n` down to `1`, collecting values from the highest-frequency
+buckets first until `k` are gathered. The walk is a scan over indices, and
+a frequency's bucket directly answers "which values occur exactly this
+often".
+
+The one comparison-sort left is inside a bucket: values sharing the same
+frequency are sorted ascending before collection, so a tie at the `k`
+boundary resolves to the smaller value rather than to hash-map iteration
+order. That is the whole difference from a naive bucket walk, which would
+pick arbitrarily among equal counts and fail the deterministic expected
+set. The result is near-linear work — no sort touches all unique items
+unless they genuinely share one frequency.
+
+**Complexity:** `O(n)` time for the counting pass plus bucket building and
+the index walk; the in-bucket sorts sum to at most `O(u log u)` over `u`
+unique values (typically far less, since few values share a frequency).
+`O(n)` space for the map and buckets.

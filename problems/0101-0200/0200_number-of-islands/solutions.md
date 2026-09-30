@@ -4,20 +4,6 @@ Two equivalent flood-fill approaches; both visit every land cell once, so
 they differ only in the order the cells are explored and the constants of
 the container used.
 
-## BFS
-
-Explore each island level by level with a queue. When an unvisited land
-cell is found, it seeds a new island: enqueue it, mark it visited, and
-repeatedly dequeue a cell and enqueue its unvisited land neighbors
-(marking each on enqueue so nothing enters the queue twice). The flood
-stops when the queue drains — the whole connected landmass is accounted
-for, and the scan continues looking for the next unvisited land cell.
-
-**Complexity:** `O(m·n)` time — each cell is enqueued at most once and
-each edge is examined a constant number of times. `O(min(m, n))` extra
-space for the queue in the worst case (a diagonal island keeps the queue
-short; a full grid keeps it at the smaller dimension's front).
-
 ## DFS
 
 Same flood fill, different frontier discipline: a stack. Seeding works
@@ -33,3 +19,17 @@ cells, island 2 over 1, island 3 over 2 — so the count is 3.](figures/solution
 
 **Complexity:** `O(m·n)` time, `O(m·n)` extra space in the worst case —
 the stack can hold an entire landmass before it starts draining.
+
+## BFS
+
+Explore each island level by level with a queue. When an unvisited land
+cell is found, it seeds a new island: enqueue it, mark it visited, and
+repeatedly dequeue a cell and enqueue its unvisited land neighbors
+(marking each on enqueue so nothing enters the queue twice). The flood
+stops when the queue drains — the whole connected landmass is accounted
+for, and the scan continues looking for the next unvisited land cell.
+
+**Complexity:** `O(m·n)` time — each cell is enqueued at most once and
+each edge is examined a constant number of times. `O(min(m, n))` extra
+space for the queue in the worst case (a diagonal island keeps the queue
+short; a full grid keeps it at the smaller dimension's front).

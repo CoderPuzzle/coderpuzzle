@@ -1,8 +1,32 @@
 # Solutions — Kth Largest Element in an Array
 
-Two ways to answer without fully sorting: either narrow in on the answer's
-sorted position, or stream the array through a heap that keeps only the
-top `k` values.
+Two ways to answer without fully sorting: either stream the array through
+a heap that keeps only the top `k` values, or narrow in on the answer's
+sorted position.
+
+## Min-Heap of Size k
+
+A min-heap of exactly `k` elements always contains the `k` largest values
+seen so far, with the smallest of them — the current kth largest — at the
+root. The first `k` elements are heaped directly; every later element is
+checked against the root before touching the heap: only a value strictly
+greater than the minimum can belong to the top `k`, and it then enters by
+popping the root and pushing itself. Skipping everything else is what
+keeps the pass `O(n log k)` — most elements cost one comparison.
+
+![Streaming [3,2,1,5,6,4] with k = 2 through the heap: 1 and 4 are skipped at the root, 5 and 6 each replace the minimum, and the final root 5 is the 2nd largest.](figures/solution-minheap-size-k.svg)
+
+Each heap operation is logarithmic in `k`, not in `n`, so this beats fully
+sorting at `O(n log n)` whenever `k` is small relative to `n`; when `k` is
+small the heap rarely turns over and the pass is nearly linear. The scan
+ends with the root holding the smallest of the top `k`, which is the kth
+largest by rank, duplicates counted — exactly as the problem defines it.
+The degenerate case `k = n` simply holds every element, and the root is
+the array minimum, still the correct answer.
+
+**Complexity:** `O(n log k)` time — `O(k)` to heapify the first `k`
+elements plus at most `n - k` replacements at `O(log k)` each. `O(k)` extra
+space for the heap.
 
 ## Randomized Quickselect
 
@@ -31,27 +55,3 @@ the window size and the window shrinks geometrically in expectation; the
 worst case is `O(n^2)` but only with probability tending to zero. `O(1)`
 extra space: partitioning happens in place and the window is a pair of
 indices.
-
-## Min-Heap of Size k
-
-A min-heap of exactly `k` elements always contains the `k` largest values
-seen so far, with the smallest of them — the current kth largest — at the
-root. The first `k` elements are heaped directly; every later element is
-checked against the root before touching the heap: only a value strictly
-greater than the minimum can belong to the top `k`, and it then enters by
-popping the root and pushing itself. Skipping everything else is what
-keeps the pass `O(n log k)` — most elements cost one comparison.
-
-![Streaming [3,2,1,5,6,4] with k = 2 through the heap: 1 and 4 are skipped at the root, 5 and 6 each replace the minimum, and the final root 5 is the 2nd largest.](figures/solution-minheap-size-k.svg)
-
-Each heap operation is logarithmic in `k`, not in `n`, so this beats fully
-sorting at `O(n log n)` whenever `k` is small relative to `n`; when `k` is
-small the heap rarely turns over and the pass is nearly linear. The scan
-ends with the root holding the smallest of the top `k`, which is the kth
-largest by rank, duplicates counted — exactly as the problem defines it.
-The degenerate case `k = n` simply holds every element, and the root is
-the array minimum, still the correct answer.
-
-**Complexity:** `O(n log k)` time — `O(k)` to heapify the first `k`
-elements plus at most `n - k` replacements at `O(log k)` each. `O(k)` extra
-space for the heap.

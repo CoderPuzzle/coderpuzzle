@@ -2,6 +2,14 @@
 
 As in the detection variant, the wire-form input is materialized first in both ports: build the nodes from `values`, link them, and connect the tail back to index pos when pos is not -1; an empty input answers -1. Because the judge wants an index rather than a node reference, both detectors end by identifying the cycle's entry node and counting steps from the head to it.
 
+## Hash set
+
+Walk the list from the head dropping every node into a set keyed by identity (its address). Running off the end means no cycle and the answer is -1. The first node that is already in the set is the one the walk has visited before — and that first repeat is precisely the cycle's entry: the walk passes the entry once on its way into the loop and meets it again first on the way around, while every node before the entry can never be reached a second time.
+
+With the entry node in hand, a short walk from the head counts the steps up to it — the index the judge expects. The set makes the argument transparent — no phase arithmetic, just "first node seen twice" — but costs O(n) memory, where the two-pointer version stays O(1).
+
+**Complexity:** `O(n)` time, `O(n)` space.
+
 ## Floyd
 
 Phase one is the standard tortoise-and-hare scan from the head; if fast falls off the end there is no cycle and the answer is -1.
@@ -13,11 +21,3 @@ When the pointers meet, write a for the distance from head to cycle entry, b for
 The code then walks from the head counting steps until it reaches that node; the count is the 0-based index of the cycle's first node within `values`. All three phases are linear, and the only sizable storage is the O(n) node array built from the wire input — the detection itself uses two pointers, satisfying the follow-up's constant-memory bound.
 
 **Complexity:** `O(n)` time, `O(n)` space — the reconstruction; the detection itself is `O(1)`.
-
-## Hash set
-
-Walk the list from the head dropping every node into a set keyed by identity (its address). Running off the end means no cycle and the answer is -1. The first node that is already in the set is the one the walk has visited before — and that first repeat is precisely the cycle's entry: the walk passes the entry once on its way into the loop and meets it again first on the way around, while every node before the entry can never be reached a second time.
-
-With the entry node in hand, a short walk from the head counts the steps up to it — the index the judge expects. The set makes the argument transparent — no phase arithmetic, just "first node seen twice" — but costs O(n) memory, where the two-pointer version stays O(1).
-
-**Complexity:** `O(n)` time, `O(n)` space.
