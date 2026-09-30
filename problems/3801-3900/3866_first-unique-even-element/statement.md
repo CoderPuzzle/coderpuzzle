@@ -30,3 +30,14 @@ Explanation: No even integer appears exactly once, so return -1.
 
 - `1 <= nums.length <= 100`
 - `1 <= nums[i] <= 100`
+
+## Hints
+
+### Hint 1
+
+Tally how many times each value occurs before scanning for the answer.
+
+### Hint 2
+
+During the scan, a value is a candidate only when the parity check passes
+and its tally equals one; return the first candidate you meet.
