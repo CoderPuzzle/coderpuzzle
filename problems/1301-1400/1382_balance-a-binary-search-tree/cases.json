@@ -174,15 +174,29 @@
           20
         ]
       ],
-      "expected": [
-        10,
-        5,
-        15,
-        null,
-        7,
-        null,
-        20
-      ]
+      "expected": {
+        "mode": "any_of",
+        "values": [
+          [
+            10,
+            5,
+            15,
+            null,
+            7,
+            null,
+            20
+          ],
+          [
+            7,
+            5,
+            15,
+            null,
+            null,
+            10,
+            20
+          ]
+        ]
+      }
     },
     {
       "input": [
@@ -317,23 +331,45 @@
           6
         ]
       ],
-      "expected": [
-        6,
-        3,
-        8,
-        1,
-        4,
-        7,
-        9,
-        null,
-        null,
-        null,
-        5,
-        null,
-        null,
-        null,
-        10
-      ]
+      "expected": {
+        "mode": "any_of",
+        "values": [
+          [
+            6,
+            3,
+            8,
+            1,
+            4,
+            7,
+            9,
+            null,
+            null,
+            null,
+            5,
+            null,
+            null,
+            null,
+            10
+          ],
+          [
+            5,
+            3,
+            7,
+            1,
+            4,
+            6,
+            9,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            8,
+            10
+          ]
+        ]
+      }
     }
   ]
 }
