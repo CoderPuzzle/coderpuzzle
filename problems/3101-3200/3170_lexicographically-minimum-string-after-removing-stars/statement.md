@@ -36,3 +36,16 @@ Explanation: There is no '*' in the string.
 - `s` consists only of lowercase English letters and `'*'`.
 - The input is generated such that it is possible to delete all `'*'`
   characters.
+
+## Hints
+
+### Hint 1
+
+Scan the string left to right and, at each `'*'`, delete the most recent
+surviving copy of the smallest letter seen so far.
+
+### Hint 2
+
+One position stack per letter makes "the newest copy of the smallest
+letter" a constant-time lookup, and erasing the newest copy — never an
+older one — never hurts the final word.
