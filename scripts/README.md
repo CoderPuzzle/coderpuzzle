@@ -8,9 +8,11 @@ on-disk problem set selected with `CODERPUZZLE_PROBLEMS`.
 - `verify_solution.py <shard-qualified-bundle-key> [<ext> ...]` — THE
   gate: judges every `solution*.<ext>` in a bundle through the real
   executors, locally, without sandboxing. Compiles the Java harness
-  (`runner/java/CoderPuzzleJavaHarness.java`) into `.localonly/java-classes/`
-  on demand; local cpp compiles get the `-I scripts/verify_shim` shim.
-  Needs `frontend/node_modules` installed (tsc) and the local
+  (`runner/java/CoderPuzzleJavaHarness.java`) into a fresh temp dir once
+  per run; local cpp compiles get the `-I scripts/verify_shim` shim.
+  TypeScript compiles with the image-pinned tsc from `scripts/ts-pin`
+  (tracked spec; `npm ci --prefix scripts/ts-pin` bootstraps it), falling
+  back to `frontend/node_modules` when the pin is absent. Needs the local
   toolchain on PATH.
 - `verify_corpus.py` — whole-corpus consistency check (crawl index ↔
   bettercode ↔ this repo's originals ↔ the private adapted tree keyed by

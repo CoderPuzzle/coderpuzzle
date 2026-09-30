@@ -44,13 +44,13 @@ PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 # The local TS tier must compile with the runner image's pinned tsc
 # (5.7.3). The frontend's node_modules floats with its own dependency
 # drift (tsc 7 rejects the harness's lambda parameters under defaults
-# 5.7.3 accepts), so prefer the pinned install under the gitignored
-# .localonly/ — `npm install --prefix .localonly/ts-pin typescript@5.7.3` —
-# and fall back to the frontend copy only when it is absent.
-_TSC_PINNED = ROOT / ".localonly" / "ts-pin" / "node_modules" / ".bin" / "tsc"
+# 5.7.3 accepts), so prefer the pinned install under scripts/ts-pin —
+# its package.json and lockfile are tracked; bootstrap with
+# `npm ci --prefix scripts/ts-pin` — and fall back to the frontend copy
+# only when the pin is not installed.
+_TSC_PINNED = ROOT / "scripts" / "ts-pin" / "node_modules" / ".bin" / "tsc"
 _TSC_FRONTEND = ROOT / "frontend" / "node_modules" / ".bin" / "tsc"
 TSC = str(_TSC_PINNED if _TSC_PINNED.exists() else _TSC_FRONTEND)
-JAVA_CLASSES = ROOT / ".localonly" / "java-classes"
 JAVA_HARNESS = ROOT / "runner" / "java" / "CoderPuzzleJavaHarness.java"
 CPP_SHIM = ROOT / "scripts" / "verify_shim"
 RUNNER_DIR = ROOT / "runner"
@@ -69,20 +69,27 @@ def _which(name: str) -> str:
     return found
 
 
-def _ensure_java_cache() -> None:
-    """Compile the tracked harness into the local class cache when stale."""
-    cached = JAVA_CLASSES / "CoderPuzzleJavaHarness.class"
-    if cached.exists() and cached.stat().st_mtime >= JAVA_HARNESS.stat().st_mtime:
-        return
-    JAVA_CLASSES.mkdir(parents=True, exist_ok=True)
-    completed = subprocess.run(
-        [_which("javac"), "-proc:none", "-encoding", "UTF-8",
-         "-d", str(JAVA_CLASSES), str(JAVA_HARNESS)],
-        capture_output=True, text=True, timeout=300,
-    )
-    if completed.returncode != 0:
-        raise RuntimeError(
-            f"harness compile failed:\n{completed.stderr[-4000:]}")
+_JAVA_CLASSES: str | None = None
+
+
+def _java_class_dir() -> str:
+    """Compile the tracked harness once per run into a fresh temp dir.
+    No persistent build cache: a stale classes dir silently shadowing a
+    harness change is worth more than the ~1s javac save."""
+    global _JAVA_CLASSES
+    if _JAVA_CLASSES is None:
+        import tempfile
+
+        _JAVA_CLASSES = tempfile.mkdtemp(prefix="coderpuzzle-java-")
+        completed = subprocess.run(
+            [_which("javac"), "-proc:none", "-encoding", "UTF-8",
+             "-d", _JAVA_CLASSES, str(JAVA_HARNESS)],
+            capture_output=True, text=True, timeout=300,
+        )
+        if completed.returncode != 0:
+            raise RuntimeError(
+                f"harness compile failed:\n{completed.stderr[-4000:]}")
+    return _JAVA_CLASSES
 
 
 def _local_compile(executor, job_root, command, output_path, environment):
@@ -105,7 +112,7 @@ def _local_java_prepare(self, job_root, scratch, code, invocation, limits, assem
     """Plain local javac+java — the container prepare drops privileges."""
     from runner.executors.base import ExecutorError as _Error, PreparedProgram
 
-    _ensure_java_cache()
+    java_classes = _java_class_dir()
     class_name = invocation.get("class_name", "Solution")
     source = job_root / f"{class_name}.java"
     source.write_text(code, encoding="utf-8")
@@ -121,7 +128,7 @@ def _local_java_prepare(self, job_root, scratch, code, invocation, limits, assem
     completed = subprocess.run(
         [
             _which("javac"), "-proc:none", "-encoding", "UTF-8",
-            "-cp", str(JAVA_CLASSES), "-d", str(job_root), str(source), *assembly_sources,
+            "-cp", str(java_classes), "-d", str(job_root), str(source), *assembly_sources,
         ],
         capture_output=True, text=True, timeout=120,
     )
@@ -130,7 +137,7 @@ def _local_java_prepare(self, job_root, scratch, code, invocation, limits, assem
     return PreparedProgram(
         command=(
             _which("java"),
-            "-cp", str(job_root) + os.pathsep + str(JAVA_CLASSES),
+            "-cp", str(job_root) + os.pathsep + str(java_classes),
             "CoderPuzzleJavaHarness",
         ),
         environment={"PATH": "/usr/bin:/bin", "HOME": str(scratch), "TMPDIR": str(scratch), "LANG": "C.UTF-8"},
