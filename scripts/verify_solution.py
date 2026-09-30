@@ -41,7 +41,15 @@ from runner.executors import shell as shell_exec  # noqa: E402
 from runner.executors.base import ExecutorError  # noqa: E402
 
 PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
-TSC = str(ROOT / "frontend/node_modules/.bin/tsc")
+# The local TS tier must compile with the runner image's pinned tsc
+# (5.7.3). The frontend's node_modules floats with its own dependency
+# drift (tsc 7 rejects the harness's lambda parameters under defaults
+# 5.7.3 accepts), so prefer the pinned install under the gitignored
+# .localonly/ — `npm install --prefix .localonly/ts-pin typescript@5.7.3` —
+# and fall back to the frontend copy only when it is absent.
+_TSC_PINNED = ROOT / ".localonly" / "ts-pin" / "node_modules" / ".bin" / "tsc"
+_TSC_FRONTEND = ROOT / "frontend" / "node_modules" / ".bin" / "tsc"
+TSC = str(_TSC_PINNED if _TSC_PINNED.exists() else _TSC_FRONTEND)
 JAVA_CLASSES = ROOT / ".localonly" / "java-classes"
 JAVA_HARNESS = ROOT / "runner" / "java" / "CoderPuzzleJavaHarness.java"
 CPP_SHIM = ROOT / "scripts" / "verify_shim"
