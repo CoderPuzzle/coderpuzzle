@@ -138,6 +138,23 @@ function matchesHardness(entry: ProblemSummary, hardness: string) {
   return hardness === "" || entry.difficulty === hardness;
 }
 
+// The type/hardness filter rows repeat the same four literals in the landing
+// filters and the problem drawer, so the lists live here once. The keys
+// mirror the backend's validated problem type set (api/app/problems.py) and
+// the bank's source difficulty ladder.
+const PROBLEM_TYPE_OPTIONS: Array<{ key: string; label: string }> = [
+  { key: "", label: "All types" },
+  { key: "Algorithms", label: "Algorithms" },
+  { key: "Database", label: "Database" },
+  { key: "Shell", label: "Shell" },
+];
+const HARDNESS_OPTIONS: Array<{ key: string; label: string }> = [
+  { key: "", label: "All Levels" },
+  { key: "Easy", label: "Easy" },
+  { key: "Medium", label: "Medium" },
+  { key: "Hard", label: "Hard" },
+];
+
 // Shell inputs and sql datasets are the raw text itself — shown and sent
 // verbatim, never JSON-encoded.
 function isRawTextParameter(problem: Problem, name: string) {
@@ -247,6 +264,29 @@ function formatTolerance(tolerance: number | undefined) {
   return value >= 0.001 ? String(value) : value.toExponential(0);
 }
 
+// Statement and guide figures live beside the bundle (figures/*.svg) and are
+// served by the API; rewrite the relative refs. The markdown wrapper div
+// stays at the call site — the two views class it differently.
+function FigureMarkdown({ body, slug }: { body: string; slug: string }) {
+  return (
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      components={{
+        img: ({ src, alt }) => (
+          <img
+            className="statement-figure"
+            src={typeof src === "string" && src.startsWith("figures/")
+              ? `/api/problems/${slug}/${src}`
+              : src}
+            alt={alt ?? ""}
+            loading="lazy"
+          />
+        ),
+      }}
+    >{body}</ReactMarkdown>
+  );
+}
+
 function App() {
   const [themeOverride, setThemeOverride] = useState<Theme | null>(storedTheme);
   const [systemTheme, setSystemTheme] = useState<Theme>(preferredTheme);
@@ -261,7 +301,6 @@ function App() {
   const [gateEntryMode, setGateEntryMode] = useState<"welcome" | "signup" | "login">("welcome");
   // The server's idle window, for the inactivity watcher.
   const idleSecondsRef = useRef(3600);
-  const [sessionExpired, setSessionExpired] = useState(false);
   const [gateError, setGateError] = useState("");
   const [needsSetup, setNeedsSetup] = useState(false);
   const [authProviders, setAuthProviders] = useState<AuthProviderInfo[]>([]);
@@ -329,6 +368,10 @@ function App() {
   const draftCache = useRef(new Map<string, string>());
   const pendingDrafts = useRef(new Map<string, { slug: string; language: string; code: string }>());
   const draftTimer = useRef<number | null>(null);
+  // Failures are tracked per draft key: a success on one slug:language must
+  // never clear another's failure, so the banner can only clear once every
+  // failed draft itself has been persisted.
+  const failedDraftKeys = useRef(new Set<string>());
   const [draftSaveFailed, setDraftSaveFailed] = useState(false);
   const flushDrafts = useCallback(() => {
     if (draftTimer.current !== null) {
@@ -337,12 +380,26 @@ function App() {
     }
     const pending = [...pendingDrafts.current.values()];
     pendingDrafts.current.clear();
+    // An empty flush launches no PUTs and so touches no state: the no-op
+    // calls (visibilitychange, unmount, logout) must not clear a live
+    // failure.
     for (const draft of pending) {
       api.putDraft(draft.slug, draft.language, draft.code)
-        .then(() => setDraftSaveFailed(false))
+        .then(() => {
+          // A PUT launched by the logout-time flush can settle after the
+          // session already ended; results from a dead session must not
+          // touch state meant for the next sign-in.
+          if (sessionPhaseRef.current !== "active") return;
+          failedDraftKeys.current.delete(`${draft.slug}:${draft.language}`);
+          setDraftSaveFailed(failedDraftKeys.current.size > 0);
+        })
         // a failed flush must not read "Saved": the local cache dies with
         // the session, so the status line has to admit the loss
-        .catch(() => setDraftSaveFailed(true));
+        .catch(() => {
+          if (sessionPhaseRef.current !== "active") return;
+          failedDraftKeys.current.add(`${draft.slug}:${draft.language}`);
+          setDraftSaveFailed(true);
+        });
     }
   }, []);
   const saveDraft = useCallback((slug: string, language: string, code: string) => {
@@ -411,6 +468,7 @@ function App() {
       flushDrafts();
       draftCache.current.clear();
       pendingDrafts.current.clear();
+      failedDraftKeys.current.clear();
       setExpiredAsUser(sessionUser !== null);
       setSessionUser(null);
       setProgress({});
@@ -419,7 +477,6 @@ function App() {
       // leave the problem URL behind too, so refresh/back lands on the
       // logged-out page, not the dead view
       window.history.replaceState({}, "", "/");
-      setSessionExpired(false);
       setSessionPhase((phase) => (phase === "active" ? "logged-out" : phase));
     });
   }, [flushDrafts, sessionUser]);
@@ -467,7 +524,6 @@ function App() {
     api.startSession()
       .then((status) => {
         idleSecondsRef.current = status.idle_seconds || idleSecondsRef.current;
-        setSessionExpired(false);
         setGateError("");
         setSessionUser(null);
         setNeedsSetup(false);
@@ -491,7 +547,6 @@ function App() {
       }))
       .then(() => {
         setGateError("");
-        setSessionExpired(false);
         setSessionPhase("active");
       })
       .catch((error: Error) => setGateError(error.message || "Could not create the account."));
@@ -503,7 +558,6 @@ function App() {
       .then((result) => {
         setSessionUser({ username: result.username, is_admin: result.is_admin });
         setGateError("");
-        setSessionExpired(false);
         setSessionPhase("active");
       })
       .catch((error: Error) => setGateError(error.message || "Could not sign in."));
@@ -526,9 +580,15 @@ function App() {
 
   const logoutAccount = useCallback(() => {
     flushDrafts();
+    // Both branches drop the same local state: drafts (and their failure
+    // marks) die with the session, so a stranded failed-draft key must not
+    // leak into the next sign-in and hold the banner open there.
     const finish = () => {
+      draftCache.current.clear();
+      pendingDrafts.current.clear();
+      failedDraftKeys.current.clear();
+      setDraftSaveFailed(false);
       setSessionUser(null);
-      setSessionExpired(false);
       setSessionPhase("gate");
     };
     if (sessionUser) {
@@ -537,8 +597,6 @@ function App() {
       // Guest: the session cookie stays server-side until it idles out, but
       // exiting drops all local state and returns to the entrance; Continue
       // as guest or Log in starts fresh.
-      draftCache.current.clear();
-      pendingDrafts.current.clear();
       finish();
     }
   }, [flushDrafts, sessionUser]);
@@ -848,7 +906,7 @@ function App() {
         />
       );
     }
-    return <GuestGate expired={sessionExpired} error={gateError} needsSetup={needsSetup} providers={authProviders} entryMode={gateEntryMode} onEnter={enterAsGuest} onRegister={registerAccount} onComplete={completeAccount} onStart={startAccount} theme={theme} onToggleTheme={toggleTheme} />;
+    return <GuestGate error={gateError} needsSetup={needsSetup} providers={authProviders} entryMode={gateEntryMode} onEnter={enterAsGuest} onRegister={registerAccount} onComplete={completeAccount} onStart={startAccount} theme={theme} onToggleTheme={toggleTheme} />;
   }
   if (loadError) return <FullPageMessage icon={<CircleAlert />} title="CoderPuzzle could not load" detail={loadError} action={{ label: "Back to problems", onClick: goHome }} />;
   if (activeSlug === null) return <Landing theme={theme} onToggleTheme={toggleTheme} onOpen={openProblem} onLogout={logoutAccount} progress={progress} seed={allProblems} />;
@@ -954,23 +1012,7 @@ function App() {
                 </div>
               </div>
               <div className="markdown-body">
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  components={{
-                    // Statement figures live beside the bundle (figures/*.svg)
-                    // and are served by the API; rewrite the relative refs.
-                    img: ({ src, alt }) => (
-                      <img
-                        className="statement-figure"
-                        src={typeof src === "string" && src.startsWith("figures/")
-                          ? `/api/problems/${problem.slug}/${src}`
-                          : src}
-                        alt={alt ?? ""}
-                        loading="lazy"
-                      />
-                    ),
-                  }}
-                >{problem.description}</ReactMarkdown>
+                <FigureMarkdown body={problem.description} slug={problem.slug} />
               </div>
               <section className="hints">
                 <h2>Hints</h2>
@@ -1542,12 +1584,7 @@ function Landing({ theme, onToggleTheme, onOpen, onLogout, progress, seed }: {
                 ariaLabel="Filter by type"
                 idPrefix="type"
                 onChange={setProblemType}
-                options={[
-                  { key: "", label: "All types" },
-                  { key: "Algorithms", label: "Algorithms" },
-                  { key: "Database", label: "Database" },
-                  { key: "Shell", label: "Shell" },
-                ]}
+                options={PROBLEM_TYPE_OPTIONS}
               />
               <SelectMenu
                 className="filter-select hardness-select-menu"
@@ -1555,16 +1592,17 @@ function Landing({ theme, onToggleTheme, onOpen, onLogout, progress, seed }: {
                 ariaLabel="Filter by level"
                 idPrefix="hardness"
                 onChange={setHardness}
-                options={[
-                  { key: "", label: "All Levels" },
-                  { key: "Easy", label: "Easy" },
-                  { key: "Medium", label: "Medium" },
-                  { key: "Hard", label: "Hard" },
-                ]}
+                options={HARDNESS_OPTIONS}
               />
             </div>
             {error ? (
-              <p className="landing-error">{error}</p>
+              // A failed page load otherwise strands the landing: the list
+              // and the pagination that drive loadPage are not rendered, so
+              // offer the retry here.
+              <div className="landing-error-state">
+                <p className="landing-error">{error}</p>
+                <button className="message-action" onClick={() => loadPage(page || 1)}>Try again</button>
+              </div>
             ) : filtered !== null ? (
               <div className="landing-list">
                 {filtered.length ? filtered.map(renderRow) : (
@@ -1711,6 +1749,25 @@ function Testcases({ problem, drafts, setDrafts, activeCase, setActiveCase }: {
   );
 }
 
+// Advisory tamper flags, shown identically for runs and submissions and
+// rendered as nothing when the judge reported none.
+function TamperWarnings({ warnings }: { warnings: string[] | undefined }) {
+  if (!warnings || warnings.length === 0) return null;
+  return (
+    <div className="tamper-warning" title="Advisory only — warnings never affect the verdict">
+      <CircleAlert size={13} />
+      <div>
+        <strong>Provided-code tampering patterns flagged</strong>
+        <ul>
+          {warnings.map((warning, index) => (
+            <li key={index}>{warning}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 // A submitted verdict is scored against the whole hidden corpus and stored;
 // a run is exploratory and only ever sees the visible cases. The two need
 // different amounts of detail — a submission's per-case breakdown and
@@ -1745,19 +1802,7 @@ function SubmitResult({ result }: { result: JudgeResult }) {
           </div>
         )}
       </div>
-      {result.warnings && result.warnings.length > 0 && (
-        <div className="tamper-warning" title="Advisory only — warnings never affect the verdict">
-          <CircleAlert size={13} />
-          <div>
-            <strong>Provided-code tampering patterns flagged</strong>
-            <ul>
-              {result.warnings.map((warning, index) => (
-                <li key={index}>{warning}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
+      <TamperWarnings warnings={result.warnings} />
       {firstError && <div className="error-box">{firstError}</div>}
     </div>
   );
@@ -1792,19 +1837,7 @@ function Results({ result, busy, error, comparison, invocationType }: {
           <strong className="verdict-fail">{statusLabel(result.status)}</strong>
         </div>
       )}
-      {result.warnings && result.warnings.length > 0 && (
-        <div className="tamper-warning" title="Advisory only — warnings never affect the verdict">
-          <CircleAlert size={13} />
-          <div>
-            <strong>Provided-code tampering patterns flagged</strong>
-            <ul>
-              {result.warnings.map((warning, index) => (
-                <li key={index}>{warning}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
+      <TamperWarnings warnings={result.warnings} />
       <div className="result-layout">
         <div className="result-case-list">
           {result.results.map((test, index) => (
@@ -2013,19 +2046,7 @@ function SolutionBlock({ title, body, code, isReference = false, languages, slug
       </div>
       {body && (
         <div className="markdown-body solutions-guide">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-              img: ({ src, alt }) => (
-                <img
-                  className="statement-figure"
-                  src={typeof src === "string" && src.startsWith("figures/") ? `/api/problems/${slug}/${src}` : src}
-                  alt={alt ?? ""}
-                  loading="lazy"
-                />
-              ),
-            }}
-          >{body}</ReactMarkdown>
+          <FigureMarkdown body={body} slug={slug} />
         </div>
       )}
     </section>
@@ -2127,12 +2148,7 @@ function ProblemDrawer({ problems, activeSlug, progress, onSelect, onClose }: {
             ariaLabel="Filter by type"
             idPrefix="drawer-type"
             onChange={setProblemType}
-            options={[
-              { key: "", label: "All types" },
-              { key: "Algorithms", label: "Algorithms" },
-              { key: "Database", label: "Database" },
-              { key: "Shell", label: "Shell" },
-            ]}
+            options={PROBLEM_TYPE_OPTIONS}
           />
           <SelectMenu
             className="filter-select hardness-select-menu"
@@ -2140,12 +2156,7 @@ function ProblemDrawer({ problems, activeSlug, progress, onSelect, onClose }: {
             ariaLabel="Filter by level"
             idPrefix="drawer-hardness"
             onChange={setHardness}
-            options={[
-              { key: "", label: "All Levels" },
-              { key: "Easy", label: "Easy" },
-              { key: "Medium", label: "Medium" },
-              { key: "Hard", label: "Hard" },
-            ]}
+            options={HARDNESS_OPTIONS}
           />
           <span className="drawer-count">{filtered.length} of {problems.length} problems</span>
         </div>
@@ -2323,8 +2334,7 @@ function ProviderFields({
 // ephemeral session that idles out after about an hour. A fresh install
 // (no accounts yet) offers the one-time admin setup. The form is driven by
 // GET /auth/status providers — password is one method, not the only shape.
-function GuestGate({ expired, error, needsSetup, providers, entryMode = "welcome", onEnter, onRegister, onComplete, onStart, theme, onToggleTheme }: {
-  expired: boolean;
+function GuestGate({ error, needsSetup, providers, entryMode = "welcome", onEnter, onRegister, onComplete, onStart, theme, onToggleTheme }: {
   error: string;
   needsSetup: boolean;
   providers: AuthProviderInfo[];
@@ -2451,7 +2461,6 @@ function GuestGate({ expired, error, needsSetup, providers, entryMode = "welcome
       <div className="guest-card">
         <span className="brand-mark gate-mark"><Code2 size={22} strokeWidth={2.4} /></span>
         <h1>CoderPuzzle</h1>
-        {expired && <p className="gate-notice">Your session idled out — guest drafts and submissions from it are gone.</p>}
         {error && <p className="gate-notice">{error}</p>}
 
         {mode === "welcome" && (

@@ -51,7 +51,7 @@ export type Problem = {
         // whenever the manifest list is missing or empty.
         parameters?: Array<{ name: string; codec: string }>;
         return_codec: string;
-        // "exact" (default), "sorted", "multiset", "close", or
+        // "exact" (default), "sorted", "multiset", "set", "close", or
         // { mode: "close", tolerance } for float-tolerant comparison.
         comparison?: string | { mode: string; tolerance?: number };
     };
