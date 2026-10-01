@@ -30,10 +30,9 @@ from leetcode_codecs import (
     serialize_random_list,
     serialize_random_tree,
 )
-from protocol import emit_protocol
+from protocol import PROTOCOL_PREFIX, emit_protocol
 
 
-PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 MAX_CAPTURED_OUTPUT = 16_384
 SCHEDULE_STACK_BYTES = 512 * 1024
 

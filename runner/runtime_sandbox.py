@@ -1,8 +1,10 @@
+import json
 import os
 import resource
 import sys
 
 from privileges import drop_privileges
+from protocol import PROTOCOL_FD, PROTOCOL_PREFIX
 
 
 SUBMISSION_UID = 65534
@@ -10,9 +12,26 @@ SUBMISSION_GID = 65534
 
 
 def main() -> int:
-    if len(sys.argv) < 6:
-        print("Invalid runtime sandbox command", file=sys.stderr)
+    # The worker's per-case nonce marks this launcher's failure lines: the
+    # launcher writes the marker on the protocol fd for every 126 path, and
+    # the env var is popped before execvpe, so the submission never sees the
+    # nonce and cannot forge a marker of its own. worker.py attributes a
+    # system_error only to a 126 exit that carries the matching marker.
+    nonce = os.environ.pop("CODERPUZZLE_RUN_NONCE", "")
+
+    def _fail(message: str) -> int:
+        print(message, file=sys.stderr)
+        if nonce:
+            try:
+                os.write(PROTOCOL_FD, (PROTOCOL_PREFIX + json.dumps(
+                    {"status": "launcher_failure", "nonce": nonce},
+                    separators=(",", ":")) + "\n").encode())
+            except OSError:
+                pass
         return 126
+
+    if len(sys.argv) < 6:
+        return _fail("Invalid runtime sandbox command")
 
     try:
         memory_mb = int(sys.argv[1])
@@ -20,21 +39,16 @@ def main() -> int:
         output_bytes = int(sys.argv[3])
         max_processes = int(sys.argv[4])
     except ValueError:
-        print("Invalid runtime sandbox limits", file=sys.stderr)
-        return 126
+        return _fail("Invalid runtime sandbox limits")
 
     if not 16 <= memory_mb <= 8192:
-        print("Runtime memory limit is out of range", file=sys.stderr)
-        return 126
+        return _fail("Runtime memory limit is out of range")
     if not 1 <= cpu_seconds <= 3600:
-        print("Runtime CPU limit is out of range", file=sys.stderr)
-        return 126
+        return _fail("Runtime CPU limit is out of range")
     if not 1024 <= output_bytes <= 16 * 1024 * 1024:
-        print("Runtime output limit is out of range", file=sys.stderr)
-        return 126
+        return _fail("Runtime output limit is out of range")
     if not 1 <= max_processes <= 1024:
-        print("Runtime process limit is out of range", file=sys.stderr)
-        return 126
+        return _fail("Runtime process limit is out of range")
 
     # Only the trusted launcher sees this setting. Joining before the UID
     # drop makes every exec/fork descendant subject to the same resource group.
@@ -44,8 +58,7 @@ def main() -> int:
             with open(os.path.join(cgroup, "cgroup.procs"), "w") as control:
                 control.write(str(os.getpid()))
         except OSError:
-            print("Cannot attach runtime to its resource group", file=sys.stderr)
-            return 126
+            return _fail("Cannot attach runtime to its resource group")
     command = sys.argv[5:]
     memory_bytes = memory_mb * 1024 * 1024
     resource.setrlimit(resource.RLIMIT_AS, (memory_bytes, memory_bytes))
@@ -65,6 +78,9 @@ def main() -> int:
     try:
         os.execvpe(command[0], command, os.environ)
     except BaseException:
+        # _exit skips any cleanup a forked child must not run; the marker
+        # tells the worker this was a launcher failure, not the submission's.
+        _fail("Runtime sandbox exec failed")
         os._exit(126)
     os._exit(126)
 

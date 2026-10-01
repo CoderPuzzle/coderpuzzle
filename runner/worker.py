@@ -3,8 +3,10 @@ import hashlib
 import json
 import math
 import os
+import secrets
 import shutil
 import signal
+import stat
 import subprocess
 import sys
 import tempfile
@@ -24,7 +26,7 @@ from executors import get_executor, supported_languages
 from executors.base import ExecutorError, LanguageExecutor, PreparedProgram
 from executors.go import WRAPPER_IMPORTS
 from formatters import FormatError, format_source
-from protocol import parse_protocol as _parse_protocol
+from protocol import PROTOCOL_FD, PROTOCOL_PREFIX, parse_protocol as _parse_protocol
 from resources import ResourceManager, execution_budget
 
 
@@ -75,6 +77,36 @@ def _sandboxed_runtime_command(
     )
 
 
+def _launcher_failure(protocol: str, nonce: str) -> bool:
+    """Recognize the sandbox launcher's own failure marker on the raw
+    protocol-fd capture.
+
+    runtime_sandbox.py writes a launcher_failure line carrying the per-case
+    nonce on every exit-126 path before execvpe; the launcher pops the nonce
+    from the environment first, so the submission cannot forge the marker.
+    parse_protocol deliberately rejects the status — it is an infrastructure
+    verdict, not something a harness may report, and other consumers (CLI
+    judge, verify_solution) must never see it as a parseable result — so the
+    worker scans the capture itself, last line wins, exactly like
+    parse_protocol. Lines without the matching nonce are ignored: a
+    submission's own exit 126 stays the submission's own verdict.
+    """
+    for line in reversed(protocol.splitlines()):
+        if not line.startswith(PROTOCOL_PREFIX):
+            continue
+        try:
+            data = json.loads(line[len(PROTOCOL_PREFIX) :])
+        except json.JSONDecodeError:
+            continue
+        if (
+            isinstance(data, dict)
+            and data.get("status") == "launcher_failure"
+            and data.get("nonce") == nonce
+        ):
+            return True
+    return False
+
+
 # The judge protocol travels on a dedicated inherited fd so ordinary stdout
 # noise never masquerades as protocol output; harnesses fall back to stdout
 # only when the fd is absent (local authoring tooling). This is hygiene, not
@@ -82,7 +114,6 @@ def _sandboxed_runtime_command(
 # protocol line directly. The real guarantee is validation — the judge takes
 # the last parseable protocol line, and an accepted result must still carry
 # output matching the expected value.
-PROTOCOL_FD = 63
 
 
 # Prewarming and judging must never overlap. Besides distorting measured
@@ -170,6 +201,20 @@ def _run_case(
             else executor.max_processes
         ),
     }
+    # The runtime sandbox rejects out-of-ceiling limits with exit 126, which
+    # without this check would silently turn EVERY case of such a bundle into
+    # "Runtime launcher failed". Fail the job loudly here instead, where the
+    # overhead-inflated effective values are known.
+    if not 16 <= effective_limits["memory_mb"] <= 8192:
+        raise ExecutorError(
+            f"effective memory allowance {effective_limits['memory_mb']} MiB is outside "
+            "the runtime sandbox's 16-8192 MiB range — lower the bundle's memory_mb/threads"
+        )
+    if not 1024 <= output_limit <= 16 * 1024 * 1024:
+        raise ExecutorError(
+            f"output budget {output_limit} bytes is outside the runtime sandbox's "
+            "1 KiB-16 MiB range — lower the bundle's output_kb"
+        )
     manager = RESOURCES or ResourceManager()
     if manager.isolated:
         budget = execution_budget(nominal_time_ms, bool(limits.get("threads")), manager.cpu_count)
@@ -198,6 +243,11 @@ def _run_case(
             environment.pop("CODERPUZZLE_RUN_CGROUP", None)
             if group:
                 environment["CODERPUZZLE_RUN_CGROUP"] = str(group.path)
+            # Nonce for the sandbox launcher's failure marker (see
+            # runtime_sandbox.py): the launcher pops it before execvpe, so
+            # the submission never sees it and cannot forge the marker.
+            launch_nonce = secrets.token_hex(16)
+            environment["CODERPUZZLE_RUN_NONCE"] = launch_nonce
             # Repeat the timed call this many times and sum, for a pair
             # calibrated below the scoring floor (api/app/main.py's
             # CODERPUZZLE_ALGORITHM_FLOOR_US) whose problem-stated bound is
@@ -270,7 +320,11 @@ def _run_case(
             parsed = {"status": "memory_limit_exceeded", "error": "Solution exceeded its physical memory budget"}
         elif timeout_reason:
             parsed = {"status": "time_limit_exceeded", "timeout_reason": timeout_reason}
-        elif process.returncode == 126 and group:
+        elif process.returncode == 126 and _launcher_failure(protocol, launch_nonce):
+            # The sandbox launcher marks its own failure paths on the
+            # protocol fd with the per-case nonce; a bare 126 without the
+            # matching marker is the submission's own exit code and is
+            # judged as such by the runtime_error rule below.
             parsed = {"status": "system_error", "error": "Runtime launcher failed"}
         elif process.returncode != 0 and parsed["status"] == "completed":
             parsed = {
@@ -672,9 +726,30 @@ def _prewarm_toolchains_once() -> None:
         # The Go job runs as the compiler uid so it can share its build cache;
         # make the directory writable by that uid.
         warm_dir.chmod(0o1777)
+        # The 0o1777 dir sits on a shared tmpfs, so a submission can plant
+        # symlinks at the fixed build targets: the worker (with
+        # DAC_OVERRIDE) would follow them and clobber files on the writable
+        # mounts. Sweep symlinks before each cycle and refuse to write
+        # through a target that is not a regular file this worker owns. A
+        # mid-cycle replant is still a race window; full elimination needs a
+        # per-cycle worker-owned directory, which the Go job's compiler-uid
+        # sharing forbids.
+        for entry in warm_dir.iterdir():
+            if entry.is_symlink():
+                entry.unlink()
+
+        def _safe_target(path: Path) -> Path:
+            try:
+                st = path.lstat()
+            except FileNotFoundError:
+                return path
+            if not stat.S_ISREG(st.st_mode) or st.st_uid != os.getuid():
+                path.unlink()
+            return path
+
         environment = {"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": "/nonexistent", "TMPDIR": str(warm_dir)}
         jobs = []
-        rust_source = warm_dir / "warm.rs"
+        rust_source = _safe_target(warm_dir / "warm.rs")
         rust_source.write_text("fn main() {}\n", encoding="utf-8")
         jobs.append(
             (
@@ -688,25 +763,28 @@ def _prewarm_toolchains_once() -> None:
                     "-C",
                     "strip=symbols",
                     "-o",
-                    str(warm_dir / "warm-rust"),
+                    str(_safe_target(warm_dir / "warm-rust")),
                     str(rust_source),
                 ),
                 environment,
                 None,
             )
         )
-        cpp_source = warm_dir / "warm.cpp"
+        cpp_source = _safe_target(warm_dir / "warm.cpp")
         cpp_source.write_text("int main() { return 0; }\n", encoding="utf-8")
         jobs.append(
             (
-                ("/usr/bin/g++", "-std=c++20", "-O2", "-pipe", "-o", str(warm_dir / "warm-cpp"), str(cpp_source)),
+                ("/usr/bin/g++", "-std=c++20", "-O2", "-pipe", "-o", str(_safe_target(warm_dir / "warm-cpp")), str(cpp_source)),
                 environment,
                 None,
             )
         )
         go_dir = warm_dir / "go"
         go_dir.mkdir(exist_ok=True)
-        (go_dir / "go.mod").write_text("module warm\n\ngo 1.24\n", encoding="utf-8")
+        for entry in go_dir.iterdir():
+            if entry.is_symlink():
+                entry.unlink()
+        (_safe_target(go_dir / "go.mod")).write_text("module warm\n\ngo 1.24\n", encoding="utf-8")
         # Every submission imports the wrapper stdlib packages (see
         # GoExecutor) and most solutions add a handful more (sort, heap,
         # strconv, ...), so the warm build imports the whole observed set —
@@ -728,7 +806,7 @@ def _prewarm_toolchains_once() -> None:
             "time",
             "cmp",
         )
-        (go_dir / "main.go").write_text(
+        (_safe_target(go_dir / "main.go")).write_text(
             "package main\n\n"
             + "".join(f'import _ "{package}"\n' for package in sorted(set(go_warm_imports)))
             + "\nfunc main() {}\n",
@@ -772,7 +850,7 @@ def _prewarm_toolchains_once() -> None:
                     None,
                 )
             )
-        java_source = warm_dir / "Warm.java"
+        java_source = _safe_target(warm_dir / "Warm.java")
         java_source.write_text("class Warm {}\n", encoding="utf-8")
         jobs.append(
             (
@@ -781,7 +859,7 @@ def _prewarm_toolchains_once() -> None:
                 None,
             )
         )
-        ts_source = warm_dir / "warm.ts"
+        ts_source = _safe_target(warm_dir / "warm.ts")
         ts_source.write_text("const value: number = 1;\nconsole.log(value);\n", encoding="utf-8")
         jobs.append(
             (

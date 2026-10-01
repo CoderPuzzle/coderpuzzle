@@ -1,14 +1,14 @@
 import json
+import math
 import sqlite3
 import sys
 from pathlib import Path
 
 sys.path.insert(0, "/runner")
 
-from protocol import emit_protocol
+from protocol import PROTOCOL_PREFIX, emit_protocol
 import timing
 
-PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 MAX_CAPTURED_OUTPUT = 16_384
 # A bare word: the pinned SQL formatter (sqlparse) rewrites `%`-wrapped
 # markers (`%COLUMNS%` becomes `% COLUMNS %`), but leaves name tokens
@@ -23,8 +23,12 @@ def _json_safe_rows(rows) -> list:
         for value in row:
             if isinstance(value, bytes):
                 raise ValueError("BLOB columns are not supported")
-            if isinstance(value, float) and value != value:
-                raise ValueError("NaN is not a valid SQL result value")
+            if isinstance(value, float) and not math.isfinite(value):
+                # NaN and ±Infinity both crash the protocol emit's
+                # json.dumps(allow_nan=False) AFTER the catch-all below,
+                # which would leave the worker with no protocol line at
+                # all — report them as a SQL runtime error instead.
+                raise ValueError("NaN/Infinity is not a valid SQL result value")
             values.append(value)
         safe.append(values)
     return safe

@@ -6,10 +6,9 @@ import tempfile
 
 sys.path.insert(0, "/runner")
 
-from protocol import emit_protocol
+from protocol import PROTOCOL_PREFIX, emit_protocol
 import timing
 
-PROTOCOL_PREFIX = "__CODERPUZZLE_RESULT__"
 MAX_CAPTURED_STDERR = 16_384
 OUTPUT_KB_ENV = "CODERPUZZLE_OUTPUT_KB"
 DEFAULT_OUTPUT_KB = 64
@@ -73,7 +72,27 @@ def _run(script: str) -> dict:
                 "stdout": "",
             }
         text = collected.decode("utf-8", "replace")
-        return {"status": "completed", "actual": text.rstrip("\n"), "stdout": ""}
+        return {"status": "completed", "actual": _fit(text.rstrip("\n"), cap), "stdout": ""}
+
+
+def _fit(actual: str, cap: int) -> str:
+    """Trim actual so its JSON-escaped form fits the protocol budget.
+
+    The protocol line shares the runtime sandbox's RLIMIT_FSIZE cap with
+    everything else in the response; a write crossing the cap truncates
+    mid-JSON and surfaces as a misleading "unparseable protocol output".
+    (python_harness budgets the same way — see its _json_safe.)"""
+    budget = max(1024, cap - 512)
+    if len(json.dumps(actual)) <= budget:
+        return actual
+    low, high = 0, len(actual)
+    while low < high:
+        mid = (low + high + 1) // 2
+        if len(json.dumps(actual[:mid])) <= budget:
+            low = mid
+        else:
+            high = mid - 1
+    return actual[:low]
 
 
 def main() -> None:
