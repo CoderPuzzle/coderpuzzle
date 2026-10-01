@@ -137,14 +137,17 @@ jobs:
     container:
       image: ghcr.io/coderpuzzle/coderpuzzle:latest
       options: --user 0:0
-    env:
-      STATIC_FULL: ${{ needs.select.outputs.static_full }}
-      STATIC_BUNDLES: ${{ needs.select.outputs.static_bundles }}
     steps:
       - uses: actions/checkout@v5
       - name: Use the checkout's formatter
         run: cp runner/formatters.py /runner/
       - name: Static checks
+        # Step-level env, deliberately not job-level: job env becomes
+        # docker run argv for container jobs, and a corpus-sized bundle
+        # list overflows the argument list before the container starts.
+        env:
+          STATIC_FULL: ${{ needs.select.outputs.static_full }}
+          STATIC_BUNDLES: ${{ needs.select.outputs.static_bundles }}
         run: |
           set -u
           rc=0

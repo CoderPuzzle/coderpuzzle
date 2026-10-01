@@ -220,11 +220,17 @@ def select_command(arguments: argparse.Namespace) -> int:
     # The full key sets (not just the targets) ride along in the plan so
     # `record` can prune entries whose bundle or solution file is gone —
     # the plan travels as an artifact, so its size is not a concern.
+    # static_bundles stays empty on full runs: it is redundant there, and
+    # the workflow passes it to the static job as an environment variable,
+    # which for a container job becomes docker argv — a corpus-sized list
+    # would blow the argument limit and kill the container at startup.
     plan = {
         "version": STATE_VERSION,
         "noop": noop,
         "static_full": static_full,
-        "static_bundles": [key.rsplit("/", 1)[-1] for key in static_targets],
+        "static_bundles": [] if static_full else [
+            key.rsplit("/", 1)[-1] for key in static_targets
+        ],
         "static_targets": static_targets,
         "static_keys": static_keys,
         "judge_targets": judge_targets,
