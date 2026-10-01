@@ -115,11 +115,13 @@ LeetCode-style, with a neutral `value_type` tree shared by every language:
   `nary_tree_nodes` (LC 1506 node-list handover), `nary_tree_ref` (LC
   1516, value + `alias` naming the `nary_tree` parameter it resolves
   into), `json` (generic any-shaped value; JavaScript/TypeScript only),
-  or `struct` (a provided record class with declared `fields`). The node
+  `instance` (design-replay only: a parameter receiving another live
+  instance of the design class — LC 1570's `dotProduct(vec)` — carried on
+  the wire as `{"$ref": handle}`; never appears in a positional argument
+  list), or `struct` (a provided record class with declared `fields`). The node
   kinds take integer `items` (32-bit by convention across these node
   types) and may omit the implied spec. The wire formats and per-kind
-  serialization invariants are documented in the coderpuzzle repo's
-  `docs/CODECS.md`.
+  serialization invariants are documented in docs/CODECS.md.
 - `entrypoints` override the entry name per language (Go/Rust/TypeScript
   follow their casing conventions; Python/Java/C++/JavaScript use `method`).
   Keying differs by invocation type: function invocations use plain
@@ -153,8 +155,8 @@ seeds the tables with `INSERT` statements.
 The submission is a bash script; each case's input is the raw file text
 fed on stdin, and the script's stdout (trailing newlines stripped) is the
 expected value — stored without its trailing newline. Starters are
-`starter.sh` only, solutions `solution*.sh`; wire details live in the
-coderpuzzle repo's `docs/CODECS.md`.
+`starter.sh` only, solutions `solution*.sh`; wire details live in
+docs/CODECS.md.
 
 ### Design and interactive invocations
 
@@ -165,18 +167,18 @@ sequence. Interactive problems declare `parameters`, `provided.oracle`
 parameter carries `out_buffer.capacity_from`. Both run in every language
 the bundle offers. Full wire contracts, the per-language oracle
 construction table, and the statistical/validator judging modes live in
-the coderpuzzle repo's `docs/CODECS.md`.
+docs/CODECS.md.
 
 Every class a problem's wire needs — `ListNode`, `TreeNode`, and the
-rest of the coderpuzzle repo's `docs/CODECS.md` wire→class table, a named
+rest of the docs/CODECS.md wire→class table, a named
 graph/list node, a struct record, a design class's helper types, an
 interactive oracle — ships as source under the bundle's own
 `provided/<language>/`. There is no shared library: the judge holds no
 predefined data structures of its own, so every bundle is
 self-contained. Copy a well-known type's shape from a sibling bundle
 using the same kind — never hand-invent one, never share a definition
-across bundles. These sources are problem-set content (see the coderpuzzle
-repo's `docs/TRUST-BOUNDARIES.md`), assembled into every submission by
+across bundles. These sources are problem-set content (see
+docs/TRUST-BOUNDARIES.md), assembled into every submission by
 the judge, and they follow each language's assembly rules (Rust sources
 use fully-qualified paths and no `use` lines; positional construction
 matches declared field/parameter order in every language).
@@ -223,7 +225,7 @@ them and required for every function problem.
 
 `scripts/gen_starters.py` writes `starter.*` from `problem.json`; the file
 extension selects the language (`py`, `js`, `ts`, `java`, `cpp`, `go`,
-`rust`, `sql`, `sh`). The set of `starter.*` files defines the
+`rust` (`rs`), `sql`, `sh`). The set of `starter.*` files defines the
 languages the problem offers. Never edit a starter by hand — change
 `problem.json` and regenerate.
 
@@ -236,18 +238,25 @@ corpus, while a served submission judges a bounded subset of it
 ## Formatting
 
 Every file in the repository is formatted by **one toolchain, owned by the
-coderpuzzle runner image**: `coderpuzzle/runner/formatters.py` (in the coderpuzzle repo)
-holds the implementation and every version pin, and this repo's
-`scripts/format.py` is only a loader that imports it — from inside the
-image in CI, or from a sibling coderpuzzle checkout locally (`CODERPUZZLE_RUNNER_DIR`
-to point elsewhere). Generation (`gen_starters.py`), checking
+coderpuzzle runner image**: the implementation and every formatting pin
+(widths, dialects, line length) live in this repo's `runner/formatters.py` —
+the same source the `ghcr.io/coderpuzzle/coderpuzzle` image is built from —
+and this repo's `scripts/format.py` is only a loader that imports that
+implementation, in this order: (1) `$CODERPUZZLE_RUNNER_DIR` (explicit
+override), (2) the loader's own directory (a fallback for a flattened
+layout — `format.py` never sits beside `formatters.py` in the image),
+(3) the image's `/runner/formatters.py` (CI and local docker runs with a
+mounted checkout), (4) this checkout's own `runner/formatters.py`, which is
+what plain local runs use. A sibling coderpuzzle checkout is only the
+legacy pre-merge layout this loader once served — FORMAT.md and the runner
+now live in this one repo. Generation (`gen_starters.py`), checking
 (`check.py`), CI, the editor's Format button, and the `coderpuzzle format` CLI
 all format through that single module, so output is byte-identical
-everywhere. This repo deliberately tracks no formatter pins or
-`node_modules` of its own (a gitignored `node_modules/.bin` may exist
-for sibling-checkout formatting runs; the tracked `package.json` pins
-its three packages to the image's exact versions so a local
-`npm install` cannot drift the gate).
+everywhere. The npm package versions are pinned in `runner/Dockerfile` and
+mirrored in the tracked `scripts/problems-tooling/package.json`, whose
+gitignored `node_modules/.bin` is what `format.py` adds to `PATH` for
+local runs — so a local `npm install` cannot drift the gate, and local
+output stays byte-identical to the image.
 
 | Files    | Formatter                                 | Language key in formatters.py |
 | -------- | ----------------------------------------- | ----------------------------- |

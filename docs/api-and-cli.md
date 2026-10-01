@@ -19,11 +19,15 @@ BASE=http://localhost:8081/api
 ```
 
 Sessions are cookie-based. Everything except `GET /health`, `GET
-/auth/status`, and `POST /auth/register` requires a `coderpuzzle_session`
-cookie from `POST /session`; authenticated callers additionally carry the
-session of a signed-in user. Auth is a provider catalog (password is one
-method, not the protocol) — see [AUTH.md](AUTH.md). Treat any deployment's
-API as public and rate-limit at the edge if you expose it.
+/auth/status`, `GET /auth/callback/{provider}`, and `POST /auth/register`
+requires a `coderpuzzle_session` cookie from `POST /session`; authenticated
+callers additionally carry the session of a signed-in user. One auth route
+touches the anonymous surface: `GET /auth/callback/{provider}` is fully
+public — a callback hit with no cookie still mints an (orphaned) session
+row before failing — so count it when sizing edge rate limits for
+unauthenticated traffic. Auth is a provider catalog (password is one
+method, not the protocol) — see [AUTH.md](AUTH.md). Treat any
+deployment's API as public and rate-limit at the edge if you expose it.
 
 ### Sessions
 
@@ -57,7 +61,8 @@ without a valid cookie gets `401 {"detail":"No active session"}`.
   can_bootstrap). Password is always present; OAuth/OIDC/email OTP
   appear when configured.
 - `POST /auth/start` `{provider, …}` — begin a redirect or challenge
-  flow. → `{next: "redirect"|"challenge"|"complete", redirect_url?,
+  flow; requires an active session. →
+  `{next: "redirect"|"challenge"|"complete", redirect_url?,
 challenge_id?}`.
 - `POST /auth/complete` `{provider, …}` — requires an active session;
   binds that session to the user. Password: `{provider:"password",
@@ -67,6 +72,8 @@ username, password}`.
   password provider still requires username `admin`. Afterwards
   registration is closed unless `CODERPUZZLE_AUTH_REGISTRATION=open`.
 - `GET /auth/callback/{provider}` — OAuth/OIDC return; 303 to `/`.
+  Public; completes only in the session that began the flow — a
+  no-cookie hit fails with `?auth_error=failed`.
 - `POST /auth/logout` — unbinds the user from the session.
 - Compatibility: `POST /auth/login {username, password}` and register
   without `provider` still mean the password provider.
@@ -102,7 +109,7 @@ curl -b jar.txt $BASE/problems/pair-sum
   the bundle publishes none.
 
 `invocation` describes the judge contract: parameter names/types (the full
-kind vocabulary — 25 kinds including `nary_tree`, `quad_tree`, `nested`,
+kind vocabulary — 26 kinds including `nary_tree`, `quad_tree`, `nested`,
 `graph`, `doubly_list`, and `json` — is the table in
 [CODECS.md](CODECS.md)), the return type, and `comparison` — `exact`,
 `sorted`, `multiset`, `set`, or `close` (floats compared per-scalar within
@@ -442,10 +449,17 @@ The image installs the CLI as `coderpuzzle`; locally test an edited
 - `coderpuzzle gen-starters <problem.json> [--style modern|legacy]` — emit
   `starter.<ext>` for the languages the bundle already offers (the
   existing starter set is never widened), formatted by the pinned
-  toolchain. `--style` defaults to `modern`; the provenance-aware
-  choice (MAPPING.json-driven) lives in this repo's
-  `scripts/gen_starters.py`. Requires this repo bind-mounted at `/tools`
-  (the loader shim is the schema contract).
+  toolchain. Without `--style` the Python starter style follows the
+  bundle's provenance — the same `scripts/gen_starters.py` rule
+  (`adapt-mapping.json`-driven: modern for bettercode-derived slugs,
+  legacy for extend-derived and `-crawl` bundles), keyed on
+  `problem.json`'s slug; `--style` forces one. Caveat: the published
+  `:latest` image can lag this repo's `runner/cli.py` until publish-runner
+  lands — older images forced `--style modern` and ignored provenance,
+  silently writing modern Python starters (`list[int]` instead of
+  `typing.List`) for legacy bundles; pass `--style` explicitly or run
+  `scripts/gen_starters.py` when driving such an image. Requires this
+  repo bind-mounted at `/tools` (the loader shim is the schema contract).
 - `coderpuzzle judge <bundle-dir>` — judge **every** `solution*.<ext>` in
   the bundle through the real executors against **all** cases; all
   must pass every case. Assembles the bundle's own `provided/` sources

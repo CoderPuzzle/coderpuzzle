@@ -15,12 +15,12 @@ well-known directory.
 
 ## The layers
 
-| code | origin | runs | trust class |
-| --- | --- | --- | --- |
-| runner harness, executors, codecs | the coderpuzzle repo (`runner/`) | inside the sandbox, beside the submission | **framework** — trusted absolutely, versioned with the repo |
+| code                                            | origin                                           | runs                                      | trust class                                                    |
+| ----------------------------------------------- | ------------------------------------------------ | ----------------------------------------- | -------------------------------------------------------------- |
+| runner harness, executors, codecs               | the coderpuzzle repo (`runner/`)                 | inside the sandbox, beside the submission | **framework** — trusted absolutely, versioned with the repo    |
 | `provided/<language>/` types, oracles & helpers | each problem bundle (`problems/<key>/provided/`) | inside the sandbox, beside the submission | **problem-set content** — same trust as the bundle's own cases |
-| the submission | a solver | inside the sandbox, unprivileged | **untrusted** |
-| output validators | the coderpuzzle repo (`api/app/validators.py`) | in the API process, after the run | **framework** — same tier as the judge itself |
+| the submission                                  | a solver                                         | inside the sandbox, unprivileged          | **untrusted**                                                  |
+| output validators                               | the coderpuzzle repo (`api/app/validators.py`)   | in the API process, after the run         | **framework** — same tier as the judge itself                  |
 
 The validator row deserves its own sentence: a bundle can point at a
 validator by name, but it cannot SHIP one — the registry is judge code
@@ -101,7 +101,9 @@ Concretely, the existing protections all still apply:
   submission's own output, so the exposure is sabotage of other users'
   compile times/outputs, judged against frozen cases. Accepted as the
   cost of warm Go compiles; the worker sweeps untrusted leftovers from
-  `/tmp` between jobs, and a full cache reset is a container restart.
+  `/tmp` between jobs and trims the Go cache back under its size cap
+  (`CODERPUZZLE_GOCACHE_MAX_BYTES`), which also serves as a full cache
+  reset without a container restart.
 - `runner/leetcode_codecs.py` (Python) and `CoderPuzzleJavaHarness`'s
   reflective codecs (Java) — the two harnesses that are not per-job
   generated source resolve every well-known class from the submission's

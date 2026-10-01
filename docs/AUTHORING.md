@@ -31,25 +31,30 @@ The heart is `invocation`:
 
 ```json
 {
-  "schema_version": 2,
-  "reference_solution": "",
-  "id": 9999, "slug": "probe-sum", "title": "Probe Sum",
-  "difficulty": "Easy", "tags": ["Array"],
-  "topics": ["Prefix Sum"], "type": "Algorithms",
-  "invocation": {
-    "type": "function",            // function | design | interactive | concurrent
-    "class_name": "Solution", "method": "probeSum",
-    "parameters": [
-      {"name": "nums",   "codec": "json", "value_type": {"kind": "array", "items": {"kind": "integer"}}},
-      {"name": "target", "codec": "json", "value_type": {"kind": "integer"}}
-    ],
-    "return_type": {"kind": "integer"}
-  },
-  "limits": {"time_ms": 1000, "memory_mb": 256, "output_kb": 64}
+    "schema_version": 2,
+    "reference_solution": "",
+    "id": 9999,
+    "slug": "probe-sum",
+    "title": "Probe Sum",
+    "difficulty": "Easy",
+    "tags": ["Array"],
+    "topics": ["Prefix Sum"],
+    "type": "Algorithms",
+    "invocation": {
+        "type": "function", // function | design | interactive | concurrent
+        "class_name": "Solution",
+        "method": "probeSum",
+        "parameters": [
+            { "name": "nums", "codec": "json", "value_type": { "kind": "array", "items": { "kind": "integer" } } },
+            { "name": "target", "codec": "json", "value_type": { "kind": "integer" } }
+        ],
+        "return_type": { "kind": "integer" }
+    },
+    "limits": { "time_ms": 1000, "memory_mb": 256, "output_kb": 64 }
 }
 ```
 
-The `value_type` kinds are the vocabulary — the full kind list (25 kinds,
+The `value_type` kinds are the vocabulary — the full kind list (26 kinds,
 including `nary_tree`, `quad_tree`, `nested`, `graph`, `doubly_list`, and
 `json` beyond the scalar/array basics) is the table in `CODECS.md`. One
 declaration, seven languages — names follow it into
@@ -63,13 +68,13 @@ differ.
 and expected values are language-agnostic JSON in the same wire
 representation the judge uses:
 
-| structure | representation |
-| --- | --- |
-| linked list | array of node values, `[]` = empty |
-| binary tree | level-order array with `null` for absent children, trailing nulls trimmed |
-| graph | adjacency rows by node index, 0-based (`[[2,4],[1,3]]`); row i lists node i's neighbors |
-| design problem | `actions` (method names, `params[0]` constructs) + `params` rows |
-| interactive | the oracle's construction keys (`grid`, `arr`, …) per its manifest |
+| structure      | representation                                                                          |
+| -------------- | --------------------------------------------------------------------------------------- |
+| linked list    | array of node values, `[]` = empty                                                      |
+| binary tree    | level-order array with `null` for absent children, trailing nulls trimmed               |
+| graph          | adjacency rows by node index, 0-based (`[[2,4],[1,3]]`); row i lists node i's neighbors |
+| design problem | `actions` (method names, `params[0]` constructs) + `params` rows                        |
+| interactive    | the oracle's construction keys (`grid`, `arr`, …) per its manifest                      |
 
 Expected values come from a reference implementation you trust — never
 by hand. A tiny local script against your own algorithm is the norm.
@@ -80,7 +85,15 @@ by hand. A tiny local script against your own algorithm is the norm.
 coderpuzzle gen-starters /bundle/problem.json
 ```
 
-writes `starter.<ext>` for every offered language from the schema —
+Without `--style`, the Python starter style follows the bundle's
+provenance (`scripts/gen_starters.py`'s rule, keyed on the slug: modern
+for bettercode-derived bundles, legacy for extend-derived ones and the
+`-crawl` twins); `--style modern|legacy` forces one. When driving an
+older published image that predates this provenance-aware default, pass
+`--style` explicitly — those images forced `modern`, and starters
+regenerated with the wrong style fail `check.py`'s generator round-trip.
+
+The command writes `starter.<ext>` for every offered language from the schema —
 signatures, class shells, `raise NotImplementedError` bodies. Copy each
 starter to `solution.<ext>`; at this moment solutions equal starters,
 awaiting your implementation. (For an interactive problem you also author

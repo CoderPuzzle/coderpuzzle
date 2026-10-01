@@ -2,7 +2,9 @@ name: Check problems
 
 # The complete checked-in problem set. Every push/PR gets the pinned formatter
 # and static schema/generator gates; the much heavier all-solution judge sweep
-# is sharded by id range and runs only on demand or weekly.
+# is sharded by the shard directories actually present under problems/ (the
+# matrix is derived per run, so a new shard is picked up instead of silently
+# falling outside a hardcoded list) and runs only on demand or weekly.
 
 on:
   push:
@@ -13,6 +15,12 @@ on:
       - "scripts/check.py"
       - "scripts/format.py"
       - "scripts/gen_starters.py"
+      - "scripts/problems-tooling/**"
+      - "scripts/ts-pin/**"
+      - "api/**"
+      - "runner/**"
+      - "tests/**"
+      - "frontend/src/**"
       - ".github/workflows/check-problems.yml"
   pull_request:
     paths:
@@ -21,6 +29,12 @@ on:
       - "scripts/check.py"
       - "scripts/format.py"
       - "scripts/gen_starters.py"
+      - "scripts/problems-tooling/**"
+      - "scripts/ts-pin/**"
+      - "api/**"
+      - "runner/**"
+      - "tests/**"
+      - "frontend/src/**"
       - ".github/workflows/check-problems.yml"
   workflow_dispatch:
   schedule:
@@ -35,6 +49,26 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # The repo's own test suite — the only automated execution the judge,
+  # api and tooling changes get before landing. Runs on every push/PR that
+  # touches code, inside the same pinned image the judge uses.
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      image: ghcr.io/coderpuzzle/coderpuzzle:latest
+      options: --user 0:0
+    steps:
+      - uses: actions/checkout@v5
+      # The image is the judge toolchain; the api test tier needs the app's
+      # pinned deps, and the suite needs pytest plus httpx (starlette's
+      # TestClient). Installed at job time so the image stays
+      # publish-independent.
+      - name: Install test deps
+        run: pip install -q -r api/requirements.txt pytest httpx
+      - name: Run the test suite
+        run: python3 -m pytest tests/ -q
+
   static:
     runs-on: ubuntu-latest
     timeout-minutes: 150
@@ -43,13 +77,46 @@ jobs:
       options: --user 0:0
     steps:
       - uses: actions/checkout@v5
+      # The image carries its own baked-in /runner/cli.py + formatters.py;
+      # without this copy the gate would judge the push against the
+      # pre-publish :latest formatting rules (the same trade-off
+      # scripts/format.sh already accepts locally). The job runs as root
+      # (--user 0:0), so the image's read-only copies are overwritable.
+      # Residual: npm version-pin bumps stay engine-stale until
+      # publish-runner lands :latest; the runner/ paths trigger above make
+      # this gate run again after that push, enforcing the new pins then.
+      - name: Use the checkout's formatter
+        run: cp runner/cli.py runner/formatters.py /runner/
       - name: Format check
         run: coderpuzzle format --check problems docs/FORMAT.md
       - name: Bundle static checks
         run: python3 scripts/check.py --tree problems --skip-runtime
 
+  # Derive the judge sweep's shard matrix from the shard directories
+  # actually present under problems/. An empty derivation fails the job
+  # instead of silently running zero shards.
+  shards:
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - name: Derive the shard matrix from the tree
+        id: shards
+        run: |
+          set -euo pipefail
+          shards=$(find problems -mindepth 1 -maxdepth 1 -type d \
+            -name '[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]' -printf '%f\n' \
+            | sort | jq -R . | jq -sc .)
+          if [ "$(jq length <<<"$shards")" -eq 0 ]; then
+            echo "::error::no shard directories found under problems/ — refusing to derive an empty judge matrix"
+            exit 1
+          fi
+          echo "shards=$shards" >> "$GITHUB_OUTPUT"
+
   judge:
     if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    needs: [shards]
     runs-on: ubuntu-latest
     timeout-minutes: 360
     container:
@@ -58,50 +125,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard:
-          [
-            "0001-0100",
-            "0101-0200",
-            "0201-0300",
-            "0301-0400",
-            "0401-0500",
-            "0501-0600",
-            "0601-0700",
-            "0701-0800",
-            "0801-0900",
-            "0901-1000",
-            "1001-1100",
-            "1101-1200",
-            "1201-1300",
-            "1301-1400",
-            "1401-1500",
-            "1501-1600",
-            "1601-1700",
-            "1701-1800",
-            "1801-1900",
-            "1901-2000",
-            "2001-2100",
-            "2101-2200",
-            "2201-2300",
-            "2301-2400",
-            "2401-2500",
-            "2501-2600",
-            "2601-2700",
-            "2701-2800",
-            "2801-2900",
-            "2901-3000",
-            "3001-3100",
-            "3101-3200",
-            "3201-3300",
-            "3301-3400",
-            "3401-3500",
-            "3501-3600",
-            "3601-3700",
-            "3701-3800",
-            "3801-3900",
-            "3901-4000",
-            "4001-4100",
-          ]
+        shard: ${{ fromJSON(needs.shards.outputs.shards) }}
     steps:
       - uses: actions/checkout@v5
       - name: Judge ${{ matrix.shard }}

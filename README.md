@@ -145,7 +145,7 @@ onto a host is an explicit operator step, not something the service does at
 startup.
 
 Static-language function wrappers use the same neutral `value_type` shapes on
-parameters and return values. The full kind vocabulary — 25 kinds including
+parameters and return values. The full kind vocabulary — 26 kinds including
 `nary_tree`, `quad_tree`, `nested`, `graph`, `doubly_list`, and `json` — is
 documented in [docs/CODECS.md](docs/CODECS.md). The API never sends expected
 values to the runner; executor plugins encode testcase inputs into a typed
@@ -295,9 +295,13 @@ The assertion system is deliberately outside the execution container:
 - The API and web containers do not receive the Docker socket.
 
 The trusted runner supervisor starts as container UID 10000, not root. A
-dedicated supervisor-only Python executable carries exactly `CHOWN`, `KILL`,
-`SETUID`, `SETGID`, and `DAC_OVERRIDE`; the last capability exists only so it
-can remove per-job trees created with hostile permissions. General Python does
+dedicated supervisor-only Python executable carries exactly `CHOWN`,
+`DAC_OVERRIDE`, `FOWNER`, `KILL`, `SETUID`, and `SETGID`. `DAC_OVERRIDE`,
+`KILL`, `SETUID`, and `SETGID` let it remove per-job trees created with
+hostile permissions, terminate stragglers, and drop children to UID/GID
+65534; `FOWNER` exists so it can also reclaim scratch files the submission
+UID leaves in the sticky, world-writable `/tmp` — an ownership check
+`DAC_OVERRIDE` does not cover. General Python does
 not carry them. The supervisor has no network, writable root filesystem,
 Docker socket, problem mount, or persistence mount.
 Submission source is never imported into it. Before any hostile compiler or

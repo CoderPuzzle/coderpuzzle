@@ -7,13 +7,13 @@ providers without new HTTP routes.
 
 ## Layers
 
-| layer | owns |
-| --- | --- |
-| HTTP (`api/app/auth/http.py`) | `/auth/status`, `/auth/start`, `/auth/complete`, `/auth/register`, `/auth/callback/{provider}`, `/auth/logout` |
-| service (`api/app/auth/service.py`) | catalog, bootstrap, registration policy, session bind, throttle |
-| registry (`api/app/auth/registry.py`) | `register(provider)` / `get(id)` |
-| providers (`api/app/auth/providers/`) | verify a payload and return an `Identity` |
-| store (`api/app/database.py`) | `users` (display identity) + `auth_identities` (one row per provider subject) |
+| layer                                 | owns                                                                                                           |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| HTTP (`api/app/auth/http.py`)         | `/auth/status`, `/auth/start`, `/auth/complete`, `/auth/register`, `/auth/callback/{provider}`, `/auth/logout` |
+| service (`api/app/auth/service.py`)   | catalog, bootstrap, registration policy, session bind, throttle                                                |
+| registry (`api/app/auth/registry.py`) | `register(provider)` / `get(id)`                                                                               |
+| providers (`api/app/auth/providers/`) | verify a payload and return an `Identity`                                                                      |
+| store (`api/app/database.py`)         | `users` (display identity) + `auth_identities` (one row per provider subject)                                  |
 
 The HTTP layer never names `password`, `google`, or `email_otp`. Adding a
 method is: implement `AuthProvider`, call `register()`, optionally set env
@@ -28,7 +28,7 @@ it does not special-case password.
   `/auth/register`). Fields come from the catalog (`fields` /
   `register_fields`).
 - **`redirect`** — `POST /auth/start` returns `{next: "redirect",
-  redirect_url}`. The browser leaves the site; the provider sends it back
+redirect_url}`. The browser leaves the site; the provider sends it back
   to `GET /auth/callback/{id}?code&state`, which completes and 303s to
   `/`. OAuth 2 / OIDC / Sign in with Google, GitHub, X.
 - **`challenge`** — `POST /auth/start` sends a one-time secret and
@@ -49,7 +49,10 @@ password column on `users`.
 
 ## HTTP contract
 
-Public, no session: `GET /auth/status`, `POST /auth/register`.
+Public, no session: `GET /auth/status`, `POST /auth/register`;
+`GET /auth/callback/{provider}` is reachable without a session but only
+completes in the session that started the flow. `POST /auth/start`
+requires an active session.
 
 ```json
 GET /auth/status
@@ -85,7 +88,11 @@ POST /auth/logout
 
 `POST /auth/complete` and `/auth/login` require an active session
 (login binds the caller's cookie; it does not mint one). Register may
-create the session — bootstrap has no cookie yet.
+create the session — bootstrap has no cookie yet. The callback route
+does not mint a usable session: the state must complete in the session
+that started the flow, so a callback hit carrying no valid cookie fails
+with 303 `/?auth_error=failed` and delivers no cookie (the freshly
+minted row stays unbound until it expires).
 
 Compatibility aliases, so existing scripts keep working:
 
@@ -96,14 +103,14 @@ Prefer the `provider` field on new callers.
 
 ## Built-in providers
 
-| id | flow | enabled when |
-| --- | --- | --- |
-| `password` | credentials | always |
-| `google` | redirect | `CODERPUZZLE_AUTH_GOOGLE_CLIENT_ID` + `_SECRET` |
-| `github` | redirect | `CODERPUZZLE_AUTH_GITHUB_CLIENT_ID` + `_SECRET` |
-| `x` | redirect | `CODERPUZZLE_AUTH_X_CLIENT_ID` + `_SECRET` |
-| `oidc` | redirect | `CODERPUZZLE_AUTH_OIDC_ISSUER` + `_CLIENT_ID` + `_SECRET` |
-| `email_otp` | challenge | `CODERPUZZLE_AUTH_EMAIL_OTP=1` and SMTP (`CODERPUZZLE_AUTH_SMTP_HOST`, …) |
+| id          | flow        | enabled when                                                              |
+| ----------- | ----------- | ------------------------------------------------------------------------- |
+| `password`  | credentials | always                                                                    |
+| `google`    | redirect    | `CODERPUZZLE_AUTH_GOOGLE_CLIENT_ID` + `_SECRET`                           |
+| `github`    | redirect    | `CODERPUZZLE_AUTH_GITHUB_CLIENT_ID` + `_SECRET`                           |
+| `x`         | redirect    | `CODERPUZZLE_AUTH_X_CLIENT_ID` + `_SECRET`                                |
+| `oidc`      | redirect    | `CODERPUZZLE_AUTH_OIDC_ISSUER` + `_CLIENT_ID` + `_SECRET`                 |
+| `email_otp` | challenge   | `CODERPUZZLE_AUTH_EMAIL_OTP=1` and SMTP (`CODERPUZZLE_AUTH_SMTP_HOST`, …) |
 
 OAuth uses authorization code + PKCE. Callback URL:
 

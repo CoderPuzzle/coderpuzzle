@@ -187,7 +187,7 @@ docker compose --env-file /etc/coderpuzzle-test-slot.env \
   -f compose.yaml -f compose.isolated.yaml run --rm --no-deps \
   -e CODERPUZZLE_RESOURCE_TESTS=1 \
   -v "$PWD/tests/test_resource_linux.py:/resource-tests.py:ro" \
-  -v "$PWD/problems/0001-0100/0001_pair-sum:/test-bundle:ro" \
+  -v "$PWD/problems/0001-0100/0001_two-sum:/test-bundle:ro" \
   --entrypoint coderpuzzle-supervisor-python runner -I -S /resource-tests.py
 ```
 
@@ -250,16 +250,16 @@ a checkpoint.
 
 Each record measures one (problem, language) pair:
 
-| field | meaning | what reads it |
-| --- | --- | --- |
-| `reference_walltime_ms` | the judged cases' reported times, summed | the ratio denominator |
-| `timeout_ms` | ten times that | reported to the client |
-| `case_count` | cases judged (bounded by the cap below) | both derivations |
-| `slowest_case_ms` | the slowest single case | the per-testcase deadline: ten times it |
-| `observed_job_ms` | the whole job, timed end to end | the runner wait: three times it |
+| field                   | meaning                                  | what reads it                                                                                                                                             |
+| ----------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `reference_walltime_ms` | the judged cases' reported times, summed | the ratio denominator                                                                                                                                     |
+| `timeout_ms`            | ten times that                           | reported to the client                                                                                                                                    |
+| `case_count`            | cases judged (bounded by the cap below)  | both derivations                                                                                                                                          |
+| `slowest_case_ms`       | the slowest single case                  | feeds the per-case deadline's wall basis (`max` of it and the average wall); see the split formula in docs/api-and-cli.md (Per-case deadline, 2026-09-21) |
+| `observed_job_ms`       | the whole job, timed end to end          | the runner wait: three times it                                                                                                                           |
 
 The last two exist because neither is predictable from an average. A capped
-job judges a generated corpus's *heaviest* cases, so the mean case understates
+job judges a generated corpus's _heaviest_ cases, so the mean case understates
 the worst one; and most of a job is the fixed cost of starting each case,
 which is a property of the language, not of the problem. Records written
 before a field existed fall back to the average-derived value.
@@ -278,20 +278,25 @@ bounded, deterministic subset instead — the public examples, the largest
 inputs, then an even sample of the rest — and the waits are sized from the
 measurements above rather than from one figure for every language.
 
-| variable | default | what it sets |
-| --- | --- | --- |
-| `CODERPUZZLE_MAX_JUDGED_CASES` | `200` | cases one job may judge |
-| `CODERPUZZLE_PER_CASE_REFERENCE_MULTIPLE` | `10` | per-testcase deadline, over the reference's slowest case |
-| `CODERPUZZLE_JOB_HEADROOM` | `3` | runner wait, over the pair's measured job |
-| `CODERPUZZLE_PER_CASE_RUNNER_SECONDS` | `0.25` | per-case wait for a pair with no measurement yet |
-| `CODERPUZZLE_RUNNER_TIMEOUT_SECONDS` | `20` | floor under every runner wait |
-| `CODERPUZZLE_CALIBRATION_FAILURE_LIMIT` | `40` | consecutive sweep failures before the breaker trips |
-| `CODERPUZZLE_CALIBRATION_HEADROOM` | `10` | multiple of `time_ms` the sweep allows itself to *measure* a reference |
-| `CODERPUZZLE_PROBLEM_CACHE_BYTES` | `192 MiB` | budget for parsed bundles held in memory |
-| `CODERPUZZLE_MAX_PER_CASE_TIMEOUT_MS` | `19000` | ceiling on a derived per-testcase deadline |
-| `CODERPUZZLE_CALIBRATION_CEILING_MS` | that ceiling | ceiling on the sweep's measurement budget |
-| `CODERPUZZLE_GOCACHE_MAX_BYTES` | `128 MiB` | Go build cache, trimmed between jobs |
-| `CODERPUZZLE_GOCACHE_CHECK_INTERVAL` | — | how often that cache is checked |
+| variable                                  | default      | what it sets                                                                                                                             |
+| ----------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `CODERPUZZLE_MAX_JUDGED_CASES`            | `200`        | cases one job may judge                                                                                                                  |
+| `CODERPUZZLE_PER_CASE_REFERENCE_MULTIPLE` | `10`         | algorithm term of the per-case deadline (and the `timeout_ms` multiple); wall-only fallback for records without `reference_algorithm_us` |
+| `CODERPUZZLE_OVERHEAD_HEADROOM_MULTIPLE`  | `3`          | overhead allowance in the per-case deadline (interpreter/JVM boot, arg decode, result encode)                                            |
+| `CODERPUZZLE_JOB_HEADROOM`                | `3`          | runner wait, over the pair's measured job                                                                                                |
+| `CODERPUZZLE_PER_CASE_RUNNER_SECONDS`     | `0.25`       | per-case wait for a pair with no measurement yet                                                                                         |
+| `CODERPUZZLE_RUNNER_TIMEOUT_SECONDS`      | `20`         | floor under every runner wait                                                                                                            |
+| `CODERPUZZLE_CALIBRATION_FAILURE_LIMIT`   | `40`         | consecutive sweep failures before the breaker trips                                                                                      |
+| `CODERPUZZLE_CALIBRATION_HEADROOM`        | `10`         | multiple of `time_ms` the sweep allows itself to _measure_ a reference                                                                   |
+| `CODERPUZZLE_PROBLEM_CACHE_BYTES`         | `192 MiB`    | budget for parsed bundles held in memory                                                                                                 |
+| `CODERPUZZLE_MAX_PER_CASE_TIMEOUT_MS`     | `19000`      | ceiling on a derived per-testcase deadline                                                                                               |
+| `CODERPUZZLE_CALIBRATION_CEILING_MS`      | that ceiling | ceiling on the sweep's measurement budget                                                                                                |
+| `CODERPUZZLE_GOCACHE_MAX_BYTES`           | `128 MiB`    | Go build cache, trimmed between jobs                                                                                                     |
+| `CODERPUZZLE_GOCACHE_CHECK_INTERVAL`      | —            | how often that cache is checked                                                                                                          |
+
+The per-case deadline these variables feed is no longer one wall multiple: it
+is split into an overhead allowance plus an algorithm term — see
+docs/api-and-cli.md, section "Per-case deadline (2026-09-21)".
 
 The two ceilings exist because the runner refuses an execution budget outside
 1–60000 ms and multiplies the language's deadline factor (up to 3.0x) on top,
