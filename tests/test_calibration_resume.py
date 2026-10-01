@@ -12,10 +12,13 @@ Two defects found after the 2026-09-14 production run:
 """
 
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from api.app import calibrate, calibration, problems
 
@@ -267,10 +270,6 @@ class ResumeTests(unittest.TestCase):
         self.assertIn("demo-1", judged, "--restart must measure everything again")
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class SweepWaitTests(unittest.TestCase):
     """The sweep's own wait must not be one figure for every language either:
     a judged case costs 215 ms to start in python3 and 44 ms in cpp on the
@@ -478,3 +477,7 @@ class RepeatCountDiscoveryTests(unittest.TestCase):
         code, published = self._run_with_fake(judge)
         self.assertEqual([1], calls, "design kind must stay single-shot even when below floor")
         self.assertNotIn("algorithm_repeat_count", published["demo-1"])
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -270,9 +270,12 @@ impl Solution {
 
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from api.app.problems import ProblemError, parse_problem_markdown
 
@@ -415,10 +418,6 @@ class TwoSumPackageTests(unittest.TestCase):
         self.assertGreaterEqual(len(self.cases), 15)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class ProblemCacheBudgetTests(unittest.TestCase):
     """The parsed-bundle cache is bounded by bytes, not by entry count.
 
@@ -476,3 +475,7 @@ class ProblemCacheBudgetTests(unittest.TestCase):
             self._evict()
         self.assertLessEqual(self.problems._problem_cache_bytes,
                              self.problems.PROBLEM_CACHE_BYTES + 250_000)
+
+
+if __name__ == "__main__":
+    unittest.main()

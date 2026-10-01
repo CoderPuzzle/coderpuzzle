@@ -148,6 +148,8 @@ class ApiSurfaceTests(unittest.TestCase):
                 ("POST", "/run"),
                 ("GET", "/progress"),
                 ("GET", "/submissions"),
+                ("GET", "/drafts/pair-sum"),
+                ("PUT", "/drafts/pair-sum/python3"),
             ):
                 response = getattr(bare, method.lower())(url)
                 self.assertEqual(401, response.status_code, url)
@@ -317,6 +319,50 @@ class ApiSurfaceTests(unittest.TestCase):
         self.assertEqual(2, stored["total"])
         other = theirs.get(f"/submissions/{saved.json()['submission_id']}")
         self.assertEqual(404, other.status_code)
+
+    def test_drafts_are_session_scoped_and_validated(self):
+        saved = self.client.put("/drafts/pair-sum/python3", json={"code": "x = 1\n"})
+        self.assertEqual(200, saved.status_code)
+        draft = self.client.get("/drafts/pair-sum").json()
+        self.assertEqual(1, len(draft))
+        self.assertEqual("python3", draft[0]["language"])
+        self.assertEqual("x = 1\n", draft[0]["code"])
+        # drafts never leak across sessions
+        other = TestClient(api_main.app)
+        self.addCleanup(other.close)
+        other.post("/session")
+        self.assertEqual([], other.get("/drafts/pair-sum").json())
+        # language must be a registered one; slug must match the slug shape
+        self.assertEqual(400, self.client.put("/drafts/pair-sum/fortran", json={"code": "x"}).status_code)
+        self.assertEqual(400, self.client.put("/drafts/BAD_SLUG/python3", json={"code": "x"}).status_code)
+        self.assertEqual(400, self.client.get("/drafts/BAD_SLUG").status_code)
+        # the 256 KB draft cap
+        self.assertEqual(
+            400,
+            self.client.put("/drafts/pair-sum/python3", json={"code": "x" * 256_001}).status_code,
+        )
+
+    def test_problem_figures_and_solutions_routes(self):
+        bundle = Path(self.temporary.name) / "0001-0100" / SLUG
+        (bundle / "figures" / "flow.svg").write_text("<svg></svg>", encoding="utf-8")
+        figure = self.client.get("/problems/pair-sum/figures/flow.svg")
+        self.assertEqual(200, figure.status_code)
+        self.assertEqual("image/svg+xml", figure.headers["content-type"])
+        # the figure-name regex guard, then the plain missing-file 404
+        self.assertEqual(404, self.client.get("/problems/pair-sum/figures/..%2Fx").status_code)
+        self.assertEqual(404, self.client.get("/problems/pair-sum/figures/absent.svg").status_code)
+        # solution.py in the shared fixture publishes a payload
+        published = self.client.get("/problems/pair-sum/solutions")
+        self.assertEqual(200, published.status_code)
+        # with no solution files and no solutions.md the route 404s
+        solution = bundle / "solution.py"
+        solution.unlink()
+        try:
+            self.assertEqual(404, self.client.get("/problems/pair-sum/solutions").status_code)
+        finally:
+            solution.write_text(STARTER, encoding="utf-8")
+        # an unknown slug maps ProblemError to 404
+        self.assertEqual(404, self.client.get("/problems/nope-not-here/solutions").status_code)
 
 
 class JudgeInternalsTests(unittest.TestCase):

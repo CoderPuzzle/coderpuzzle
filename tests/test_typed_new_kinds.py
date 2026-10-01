@@ -351,5 +351,30 @@ class SecondWaveEncodingTests(unittest.TestCase):
             }, "rust")
 
 
+class TopLevelAliasKindTests(unittest.TestCase):
+    """alias_list/nary_tree_ref name an earlier parameter, so only the
+    top-level parameter position can decode them; nested under an array or
+    struct field the readers fall into the plain-integer path and fail late
+    on the wire (see type_spec's _nested guard)."""
+
+    def test_nested_alias_kinds_are_rejected_at_prepare_time(self) -> None:
+        for kind in ("alias_list", "nary_tree_ref"):
+            with self.subTest(kind=kind):
+                nested = {"kind": kind, "items": I32, "alias": 0}
+                with self.assertRaisesRegex(ExecutorError, "top-level parameter kinds"):
+                    type_spec({"kind": "array", "items": nested}, "Parameter 1")
+                struct_field = {
+                    "kind": "struct",
+                    "class": "Holder",
+                    "fields": [{"name": "tail", "value_type": nested}],
+                }
+                with self.assertRaisesRegex(ExecutorError, "top-level parameter kinds"):
+                    type_spec(struct_field, "Parameter 1")
+
+    def test_top_level_alias_list_return_still_validates(self) -> None:
+        spec = type_spec({"kind": "alias_list", "items": I32, "alias": 0}, "Return value")
+        self.assertEqual("alias_list", spec["kind"])
+
+
 if __name__ == "__main__":
     unittest.main()

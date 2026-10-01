@@ -8,10 +8,13 @@ every record lookup. Both are single-walk/cached now, and both must stay
 correct across a republish.
 """
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from api.app import calibration, problems
 
@@ -91,10 +94,6 @@ class CalibrationCacheTests(unittest.TestCase):
         self.calibration_file.unlink()
         self.assertIsNone(calibration.load())
         self.assertEqual({}, calibration.records())
-
-
-if __name__ == "__main__":
-    unittest.main()
 
 
 class PerPairGateTests(unittest.TestCase):
@@ -220,4 +219,8 @@ class RatioComparabilityTests(unittest.TestCase):
         payload.pop("scored_quantity", None)
         self.calibration_file.write_text(json.dumps(payload), encoding="utf-8")
         self.assertFalse(calibration.comparable("wall", "shared-wall-v1"))
+
+
+if __name__ == "__main__":
+    unittest.main()
 

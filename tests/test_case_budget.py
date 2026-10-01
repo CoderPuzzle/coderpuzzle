@@ -63,10 +63,6 @@ class CaseSelectionTests(unittest.TestCase):
         )
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class JobTimeoutTests(unittest.TestCase):
     """RUNNER_TIMEOUT is a module global that the calibration driver rewrites
     per pair as it sweeps, so pin it rather than inherit a sibling test's
@@ -382,3 +378,7 @@ class AlgorithmRepeatPlumbingTests(unittest.TestCase):
         # sets it always fires once a record exists at all.
         record = {"reference_walltime_ms": 426, "timeout_ms": 4260, "case_count": 203, "slowest_case_ms": 264}
         self.assertEqual(1, self._run_judge_limits(record)["algorithm_repeat_count"])
+
+
+if __name__ == "__main__":
+    unittest.main()

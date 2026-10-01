@@ -1,13 +1,7 @@
-import sys
 import unittest
-from pathlib import Path
 
-
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "api"))
-
-from app.main import _summarize  # noqa: E402
-from app.problems import load_problem  # noqa: E402
+from api.app.main import _summarize
+from api.app.problems import load_problem
 
 
 class ResultSanitizationTests(unittest.TestCase):
@@ -37,9 +31,9 @@ class ResultSanitizationTests(unittest.TestCase):
         self.assertEqual(20, summary["queue_ms"])
         self.assertEqual(30, summary["compile_ms"])
         self.assertEqual("cpu", summary["timing_mode"])
-        self.assertFalse(any(key.startswith("_") for item in results for key in item))
-        self.assertNotIn("cpu_time_ms", results[1])
-        self.assertNotIn("wall_time_ms", results[1])
+        self.assertFalse(any(key.startswith("_") for item in summary["results"] for key in item))
+        self.assertNotIn("cpu_time_ms", summary["results"][1])
+        self.assertNotIn("wall_time_ms", summary["results"][1])
 
     def test_canonical_markdown_metadata_is_not_duplicated_in_the_ui_body(self) -> None:
         problem = load_problem("two-sum")
