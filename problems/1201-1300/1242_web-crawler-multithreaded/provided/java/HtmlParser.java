@@ -9,11 +9,15 @@ import java.util.TreeSet;
  * Ships with the problem, compiled with every submission by the judge,
  * never editable in the editor: getUrls(url) returns the outgoing links
  * of that page in the hidden web graph. Solvers see only the public API
- * documented in the starter. */
+ * documented in the starter. Solutions may crawl with real threads, so
+ * every method is safe to call concurrently. */
 public class HtmlParser {
 
     private final Map<String, List<String>> links = new HashMap<>();
-    private final java.util.Set<String> fetched = new TreeSet<>();
+    // getUrls runs on whatever worker thread the crawler spawned; the
+    // fetch record must take concurrent adds without losing pages.
+    private final java.util.Set<String> fetched =
+            java.util.Collections.synchronizedSet(new TreeSet<>());
     private long budget;
 
     @SuppressWarnings("unchecked")
@@ -42,6 +46,10 @@ public class HtmlParser {
 
     /** The crawl's observable effect: every page the crawler fetched. */
     public java.util.List<String> verdict() {
-        return new ArrayList<>(fetched);
+        // The contract requires holding the set's monitor while iterating;
+        // by the time verdict() runs, every worker has joined.
+        synchronized (fetched) {
+            return new ArrayList<>(fetched);
+        }
     }
 }

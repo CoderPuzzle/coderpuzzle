@@ -362,12 +362,17 @@ def record_command(arguments: argparse.Namespace) -> int:
         for key, current in current_keys.items():
             if key not in selected:
                 continue
+            # check.py's static report keys are bare bundle names while
+            # plan keys are shard-qualified ("<shard>/<bundle>"); bare
+            # names are unique across the corpus, so join through the
+            # last segment.
+            verdict_key = key if kind != "static" else key.rsplit("/", 1)[-1]
             # A selected key with no reported verdict means its gate crashed
             # or was killed before finishing — record a fail so the next run
             # re-runs it instead of silently keeping a stale pass. The
             # sharded sweep reports per bundle (kind judge-bundle); its
             # result covers every solution file of that bundle.
-            result = verdicts[kind].get(key)
+            result = verdicts[kind].get(verdict_key)
             if result is None and kind == "judge":
                 bundle_key = key.rsplit("/", 1)[0]
                 result = verdicts["judge-bundle"].get(bundle_key)

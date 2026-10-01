@@ -258,7 +258,7 @@ class RecordTests(unittest.TestCase):
                 plan,
                 fresh_state(),
                 [
-                    {"kind": "static", "results": {static_key: "pass"}},
+                    {"kind": "static", "results": {static_key.rsplit("/", 1)[-1]: "pass"}},
                 ],
             )
             self.assertEqual(state["static"][static_key]["result"], "pass")
@@ -323,6 +323,23 @@ class RecordTests(unittest.TestCase):
                 {entry["result"] for entry in state["judge"].values()}, {"pass"}
             )
 
+    def test_static_verdicts_join_by_bare_bundle_name(self):
+        """check.py reports bare bundle names while plan keys are
+        shard-qualified — the real corpus is sharded, and a naive key
+        join recorded every static key as failed despite a green gate."""
+        with tempfile.TemporaryDirectory() as directory:
+            tree = StateTree(Path(directory))
+            tree.add_bundle("0001_alpha", [])
+            plan = self.current_plan(tree)
+            static_key = plan["static_targets"][0]
+            self.assertIn("/", static_key, "fixture must use sharded keys")
+            state = tree.record(
+                plan,
+                fresh_state(),
+                [{"kind": "static", "results": {static_key.rsplit("/", 1)[-1]: "pass"}}],
+            )
+            self.assertEqual(state["static"][static_key]["result"], "pass")
+
     def test_files_without_a_kind_field_are_ignored(self):
         with tempfile.TemporaryDirectory() as directory:
             tree = StateTree(Path(directory))
@@ -334,7 +351,10 @@ class RecordTests(unittest.TestCase):
                 fresh_state(),
                 [
                     {"static": {"note": "this file is the plan shape, no kind"}},
-                    {"kind": "static", "results": {static_key: "pass"}},
+                    {
+                        "kind": "static",
+                        "results": {static_key.rsplit("/", 1)[-1]: "pass"},
+                    },
                 ],
             )
             self.assertEqual(state["static"][static_key]["result"], "pass")
