@@ -31,6 +31,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         g++ \
         g++-14 \
+        git \
         golang-go \
         golang-1.24-go \
         golang-1.24-src \

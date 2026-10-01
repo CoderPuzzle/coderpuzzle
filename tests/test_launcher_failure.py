@@ -124,13 +124,27 @@ class RunCaseAttributionTests(unittest.TestCase):
             self.worker.RUNTIME_SANDBOX,
             self.worker.NOBODY_UID,
             self.worker.NOBODY_GID,
+            self.worker._kill_lingering_children,
         )
         self.worker.RESOURCES = SharedManager()
         self.worker.CALIBRATION_FACTORS["python3"] = 1
         self.worker.SUPERVISOR_PYTHON = sys.executable
         self.worker.RUNTIME_SANDBOX = str(stub)
-        self.worker.NOBODY_UID = os.getuid()
-        self.worker.NOBODY_GID = os.getgid()
+        # chown: root may target the production nobody uid; a non-root run
+        # can only chown to itself. The shared-mode sweep is stubbed out
+        # for the same reason: it kills every process owned by NOBODY_UID
+        # in the PID namespace, and when non-root the only chown-safe
+        # target is this very test process's uid — on a real /proc (Linux
+        # CI in the runner image) the sweep would then SIGKILL this pytest
+        # and everything beside it. Host macOS has no /proc, which is why
+        # this only ever surfaced in-image.
+        if os.geteuid() == 0:
+            self.worker.NOBODY_UID = 65534
+            self.worker.NOBODY_GID = 65534
+        else:
+            self.worker.NOBODY_UID = os.getuid()
+            self.worker.NOBODY_GID = os.getgid()
+        self.worker._kill_lingering_children = lambda: None
         root = Path(tempfile.mkdtemp(prefix="launcher-failure-"))
         root.chmod(0o755)
         try:
@@ -156,6 +170,7 @@ class RunCaseAttributionTests(unittest.TestCase):
                 self.worker.RUNTIME_SANDBOX,
                 self.worker.NOBODY_UID,
                 self.worker.NOBODY_GID,
+                self.worker._kill_lingering_children,
             ) = saved
             if factor is None:
                 self.worker.CALIBRATION_FACTORS.pop("python3", None)
