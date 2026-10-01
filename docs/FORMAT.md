@@ -282,8 +282,8 @@ docker run --rm --user 0:0 -v "$PWD":/repo:rw \
   ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle format --check /repo/problems /repo/docs/FORMAT.md
 ```
 
-When you add or edit a solution, run the formatter before pushing — CI
-rejects unformatted files.
+When you add or edit a solution, run the formatter before pushing — the
+format check is local (`scripts/format.sh --check`), not a CI gate.
 
 ## Checking
 
@@ -294,9 +294,13 @@ python3 scripts/check.py --problems=0001_two-sum,0002_add-two-numbers
 
 The static tier (bundle completeness, schema conformance, statement grammar,
 duplicate ids/slugs, `solution.* ⊇ starter.*`, starter generator round-trip)
-always runs over the whole set regardless of the filter. The runtime tier
-(executing each selected problem's solutions against its cases through
-CoderPuzzle) runs only on the selected problems. CI runs the static tier
-over the whole `problems/` tree on every relevant push (with the format
-check), and a sharded judge sweep of every bundle on demand and weekly.
+runs over the whole set by default; `--bundles=` restricts the per-bundle
+checks to named keys, while the corpus-wide rules (misnamed directories,
+duplicate ids/slugs) always scan everything — a new bundle can collide with
+an untouched one. The runtime tier (executing each selected problem's
+solutions against its cases through CoderPuzzle) runs only on the selected
+problems. CI is incremental: each push verifies only the bundles and
+solution files whose content hash has no recorded pass (changed, new, or
+previously failed — see `scripts/ci_state.py`), and a sharded judge sweep
+of every bundle runs on demand and weekly.
 `scripts/verify_solution.py` remains the focused local gate for one bundle.

@@ -440,7 +440,8 @@ The image installs the CLI as `coderpuzzle`; locally test an edited
   standard; directories walk for formattable files, skipping
   `node_modules` and hidden trees.
     - `--check` — report unformatted files, change nothing, exit 1 if
-      any. This is what CI runs over `problems/`.
+      any. `scripts/format.sh --check problems` runs this locally; CI
+      does not gate on it.
     - `--report json` — non-mutating **tri-state JSON** per file (the
       same contract as `POST /format`, with `file` added):
       `formatted | unformatted (+ "code" text) | error

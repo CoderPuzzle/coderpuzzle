@@ -31,7 +31,17 @@ on-disk problem set selected with `CODERPUZZLE_PROBLEMS`.
 --tree problems --skip-runtime`): bundle completeness, schema
   conformance, statement grammar, duplicate ids/slugs,
   `solution.* ⊇ starter.*`, and the starter generator round-trip.
-  `--problems=` additionally selects bundles for the runtime tier.
+  `--problems=` additionally selects bundles for the runtime tier;
+  `--bundles=` restricts the per-bundle static checks (corpus-wide rules —
+  misnamed directories, duplicate ids/slugs — always scan the whole set);
+  `--report-json` writes the per-bundle pass/fail verdicts CI records.
+- `ci_state.py` — the incremental CI selector: keys every static result by
+  bundle contents plus the static toolchain and every judge result by the
+  individual solution file plus its bundle inputs plus `runner/`, then
+  compares against `state.json` on the `ci-state` branch. `select` emits
+  the run plan (unchanged keys and recorded passes skip; recorded failures
+  re-run every push until they pass); `record` merges the run's verdict
+  artifacts back into the state and prunes keys whose files are gone.
 - `gen_starters.py` — regenerates every `starter.*` from `problem.json`
   (`--check` diffs, writes nothing); the Python style follows each
   bundle's provenance via `problems-tooling/adapt-mapping.json` unless

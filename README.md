@@ -369,6 +369,8 @@ executors and expects the local toolchain on `PATH`; `check.py`'s static tier
 compares starters byte-for-byte against the generator, so it belongs in the
 image, where clang-format lives. [scripts/README.md](scripts/README.md) is
 the tooling map — the authoring gates, the corpus consistency check, and the
-headless-UI drivers. `.github/workflows/check-problems.yml` runs the static
-tier on pushes that touch the corpus or the judge, and a sharded all-bundle
-judge sweep on dispatch and weekly.
+headless-UI drivers. `.github/workflows/check-problems.yml` is incremental:
+it verifies only bundles and solution files whose content hash has no
+recorded pass (changed ones, new ones, and every key that failed a previous
+run), and a sharded all-bundle judge sweep of the published image on
+dispatch and weekly.

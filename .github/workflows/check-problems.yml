@@ -1,41 +1,31 @@
 name: Check problems
 
-# The complete checked-in problem set. Every push/PR gets the pinned formatter
-# and static schema/generator gates; the much heavier all-solution judge sweep
-# is sharded by the shard directories actually present under problems/ (the
-# matrix is derived per run, so a new shard is picked up instead of silently
-# falling outside a hardcoded list) and runs only on demand or weekly.
+# Incremental corpus gates over the complete checked-in problem set.
+#
+# Selection is content-hash based, not git-history based. scripts/ci_state.py
+# keys every static-tier result by its bundle's contents plus the static
+# toolchain (check.py, gen_starters.py, format.py, problems-tooling, ts-pin,
+# runner/), and every judge result by the individual solution file plus its
+# bundle inputs (problem.json, cases.json, provided/) and the runner
+# toolchain. A push only runs keys without a recorded pass: changed bundles,
+# added/renamed/split solution files, and every key that failed a previous
+# run — so one broken bundle re-runs on every push until it passes, and a
+# toolchain change invalidates every key at once. No diffing, no baselines,
+# no dependence on run history.
+#
+# The key→result mapping lives in state.json on the ci-state branch. Push
+# runs write it back (the record job); PR runs read it without writing, so a
+# PR file byte-identical to verified main state skips. A missing branch just
+# means nothing is verified yet and everything runs.
+#
+# The weekly sweep (schedule) and workflow_dispatch keep judging every
+# bundle with the published image — validating the deployed artifact, not
+# the checkout — and never write state.
 
 on:
   push:
     branches: [main]
-    paths:
-      - "problems/**"
-      - "docs/FORMAT.md"
-      - "scripts/check.py"
-      - "scripts/format.py"
-      - "scripts/gen_starters.py"
-      - "scripts/problems-tooling/**"
-      - "scripts/ts-pin/**"
-      - "api/**"
-      - "runner/**"
-      - "tests/**"
-      - "frontend/src/**"
-      - ".github/workflows/check-problems.yml"
   pull_request:
-    paths:
-      - "problems/**"
-      - "docs/FORMAT.md"
-      - "scripts/check.py"
-      - "scripts/format.py"
-      - "scripts/gen_starters.py"
-      - "scripts/problems-tooling/**"
-      - "scripts/ts-pin/**"
-      - "api/**"
-      - "runner/**"
-      - "tests/**"
-      - "frontend/src/**"
-      - ".github/workflows/check-problems.yml"
   workflow_dispatch:
   schedule:
     - cron: "17 5 * * 1"
@@ -45,14 +35,18 @@ permissions:
   packages: read
 
 concurrency:
-  group: check-problems-${{ github.event_name == 'schedule' && 'schedule' || github.ref }}
-  cancel-in-progress: false
+  group: ${{
+    github.event_name == 'pull_request' &&
+    format('check-problems-pr-{0}', github.event.pull_request.number) ||
+    (github.event_name == 'schedule' && 'check-problems-schedule' || 'check-problems-main') }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   # The repo's own test suite — the only automated execution the judge,
-  # api and tooling changes get before landing. Runs on every push/PR that
-  # touches code, inside the same pinned image the judge uses.
+  # api and tooling changes get before landing. Runs on every push/PR,
+  # inside the same pinned image the judge uses.
   tests:
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     container:
@@ -69,54 +63,173 @@ jobs:
       - name: Run the test suite
         run: python3 -m pytest tests/ -q
 
+  # Compute the run plan. Hashes every bundle and both gate toolchains,
+  # compares against the recorded state, and emits the targets. Runs
+  # outside the image: it needs git and python3 only. Treating a failed
+  # state fetch as "nothing verified" is deliberately conservative — a
+  # transient fetch error costs a full run, never a skipped one.
+  select:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      noop: ${{ steps.plan.outputs.noop }}
+      static_full: ${{ steps.plan.outputs.static_full }}
+      static_bundles: ${{ steps.plan.outputs.static_bundles }}
+      judge_targets: ${{ steps.plan.outputs.judge_targets }}
+      judge_sharded: ${{ steps.plan.outputs.judge_sharded }}
+      shards: ${{ steps.plan.outputs.shards }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Load the recorded state
+        run: |
+          set -euo pipefail
+          if git fetch --depth 1 origin ci-state:refs/remotes/origin/ci-state; then
+            git show refs/remotes/origin/ci-state:state.json > /tmp/state.json
+          else
+            echo "no ci-state branch yet — nothing verified, everything runs" >&2
+            echo '{}' > /tmp/state.json
+          fi
+      - name: Select the keys to verify
+        id: plan
+        run: |
+          set -euo pipefail
+          python3 scripts/ci_state.py select --tree problems \
+            --state /tmp/state.json --plan-out /tmp/plan.json
+          echo "noop=$(jq -r .noop /tmp/plan.json)" >> "$GITHUB_OUTPUT"
+          echo "static_full=$(jq -r .static_full /tmp/plan.json)" >> "$GITHUB_OUTPUT"
+          echo "static_bundles=$(jq -c .static_bundles /tmp/plan.json)" >> "$GITHUB_OUTPUT"
+          echo "judge_targets=$(jq -c .judge_targets /tmp/plan.json)" >> "$GITHUB_OUTPUT"
+          echo "judge_sharded=$(jq -r .judge_sharded /tmp/plan.json)" >> "$GITHUB_OUTPUT"
+          echo "shards=$(jq -c .shards /tmp/plan.json)" >> "$GITHUB_OUTPUT"
+          {
+            echo "### Corpus gate plan"
+            echo ""
+            echo "| gate | targeted | total |"
+            echo "| --- | --- | --- |"
+            echo "| static | $(jq '.static_targets | length' /tmp/plan.json) | $(jq '.static_keys | length' /tmp/plan.json) |"
+            echo "| judge (per file) | $(jq '.judge_target_keys | length' /tmp/plan.json) | $(jq '.judge_keys | length' /tmp/plan.json) |"
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload the run plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: plan
+          path: /tmp/plan.json
+
+  # The static tier: per-bundle checks restricted to the plan's targets
+  # (whole-tree when the plan says full), plus the corpus-wide rules —
+  # misnamed directories, duplicate ids/slugs, repo-root rules — which
+  # always scan every bundle, since a new bundle can collide with an
+  # untouched one. The checkout's formatters.py is copied over the image's
+  # /runner copy so the starter generator round-trip formats with the
+  # push's own pins, not the pre-publish :latest rules (the same
+  # trade-off scripts/format.sh accepts locally); the job runs as root
+  # (--user 0:0), so the read-only copy is overwritable. Residual: npm
+  # version-pin bumps stay engine-stale until publish-runner lands
+  # :latest; runner/ changes re-hash every static key, so the next push
+  # re-verifies the whole tree with the new pins regardless.
   static:
+    needs: [select]
+    if: >-
+      needs.select.result == 'success' && needs.select.outputs.noop != 'true' &&
+      (github.event_name == 'push' || github.event_name == 'pull_request')
     runs-on: ubuntu-latest
     timeout-minutes: 150
     container:
       image: ghcr.io/coderpuzzle/coderpuzzle:latest
       options: --user 0:0
+    env:
+      STATIC_FULL: ${{ needs.select.outputs.static_full }}
+      STATIC_BUNDLES: ${{ needs.select.outputs.static_bundles }}
     steps:
       - uses: actions/checkout@v5
-      # The image carries its own baked-in /runner/cli.py + formatters.py;
-      # without this copy the gate would judge the push against the
-      # pre-publish :latest formatting rules (the same trade-off
-      # scripts/format.sh already accepts locally). The job runs as root
-      # (--user 0:0), so the image's read-only copies are overwritable.
-      # Residual: npm version-pin bumps stay engine-stale until
-      # publish-runner lands :latest; the runner/ paths trigger above make
-      # this gate run again after that push, enforcing the new pins then.
       - name: Use the checkout's formatter
-        run: cp runner/cli.py runner/formatters.py /runner/
-      - name: Format check
-        run: coderpuzzle format --check problems docs/FORMAT.md
-      - name: Bundle static checks
-        run: python3 scripts/check.py --tree problems --skip-runtime
+        run: cp runner/formatters.py /runner/
+      - name: Static checks
+        run: |
+          set -u
+          rc=0
+          if [ "$STATIC_FULL" = "true" ]; then
+            python3 scripts/check.py --tree problems --skip-runtime \
+              --report-json /tmp/report-static.json || rc=$?
+          else
+            python3 scripts/check.py --tree problems --skip-runtime \
+              --report-json /tmp/report-static.json \
+              --bundles "$(printf '%s' "$STATIC_BUNDLES" | jq -r 'join(",")')" || rc=$?
+          fi
+          # The recorder's verdict shape: {kind, results: {key: pass|fail}}.
+          # Written even when the tier failed, so per-key failures land in
+          # the state; a missing file (a crashed gate) records as fail too.
+          if [ -f /tmp/report-static.json ]; then
+            jq '{kind: "static", results: (.bundles // {})}' \
+              /tmp/report-static.json > /tmp/verdict-static.json
+          fi
+          exit $rc
+      - name: Upload static verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verdict-static
+          path: /tmp/verdict-static.json
+          if-no-files-found: warn
 
-  # Derive the judge sweep's shard matrix from the shard directories
-  # actually present under problems/. An empty derivation fails the job
-  # instead of silently running zero shards.
-  shards:
-    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+  # Per-solution-file judge: each target names one file, so only the
+  # languages whose solutions changed (or previously failed) run.
+  # coderpuzzle run judges that file against the bundle's full case set
+  # with the same provided/ assembly as a whole-bundle judge. The
+  # checkout's CLI is copied over the image's so the push's executors
+  # judge the push's solutions — the verdicts describe this tree, which
+  # is what the state recorder keys them by.
+  judge:
+    needs: [select]
+    if: >-
+      needs.select.result == 'success' &&
+      needs.select.outputs.judge_sharded != 'true' &&
+      needs.select.outputs.judge_targets != '[]' &&
+      (github.event_name == 'push' || github.event_name == 'pull_request')
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 120
+    container:
+      image: ghcr.io/coderpuzzle/coderpuzzle:latest
+      options: --user 0:0
+    strategy:
+      fail-fast: false
+      matrix:
+        target: ${{ fromJSON(needs.select.outputs.judge_targets) }}
     steps:
       - uses: actions/checkout@v5
-      - name: Derive the shard matrix from the tree
-        id: shards
+      - name: Use the checkout's CLI
+        run: cp runner/cli.py runner/formatters.py /runner/
+      - name: Judge ${{ matrix.target.path }}
         run: |
-          set -euo pipefail
-          shards=$(find problems -mindepth 1 -maxdepth 1 -type d \
-            -name '[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]' -printf '%f\n' \
-            | sort | jq -R . | jq -sc .)
-          if [ "$(jq length <<<"$shards")" -eq 0 ]; then
-            echo "::error::no shard directories found under problems/ — refusing to derive an empty judge matrix"
-            exit 1
+          if coderpuzzle run "${{ matrix.target.path }}"; then
+            result=pass
+          else
+            result=fail
           fi
-          echo "shards=$shards" >> "$GITHUB_OUTPUT"
+          jq -n --arg key '${{ matrix.target.key }}' --arg result "$result" \
+            '{kind: "judge", results: {($key): $result}}' \
+            > /tmp/verdict-judge-${{ matrix.target.n }}.json
+          [ "$result" = pass ]
+      - name: Upload the verdict
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verdict-judge-${{ matrix.target.n }}
+          path: /tmp/verdict-judge-${{ matrix.target.n }}.json
+          if-no-files-found: warn
 
-  judge:
-    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
-    needs: [shards]
+  # Full sharded sweep. schedule/dispatch judge the published image as-is
+  # (the deployed artifact) and never write state; a push whose targets
+  # outgrew the judge matrix cap (>200 solution files) sweeps with the
+  # checkout's CLI and records like every push gate. Verdicts here are
+  # per bundle (kind judge-bundle) — the recorder expands them onto every
+  # solution file of the bundle.
+  judge-sweep:
+    needs: [select]
+    if: >-
+      always() &&
+      ((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') ||
+       (needs.select.result == 'success' && needs.select.outputs.judge_sharded == 'true'))
     runs-on: ubuntu-latest
     timeout-minutes: 360
     container:
@@ -125,19 +238,98 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: ${{ fromJSON(needs.shards.outputs.shards) }}
+        shard: ${{ fromJSON(needs.select.outputs.shards) }}
     steps:
       - uses: actions/checkout@v5
+      - name: Use the checkout's CLI
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
+        run: cp runner/cli.py runner/formatters.py /runner/
       - name: Judge ${{ matrix.shard }}
         run: |
-          set -e
+          set -euo pipefail
           failures=0
           count=0
+          : > /tmp/verdicts.jsonl
           for bundle in problems/${{ matrix.shard }}/*/; do
             count=$((count + 1))
-            if ! coderpuzzle judge "$bundle"; then
+            key="${bundle#problems/}"
+            key="${key%/}"
+            if coderpuzzle judge "$bundle"; then
+              result=pass
+            else
+              result=fail
               failures=$((failures + 1))
             fi
+            jq -n --arg key "$key" --arg result "$result" \
+              '{($key): $result}' >> /tmp/verdicts.jsonl
           done
           echo "judged $count bundles; failures: $failures"
-          exit $((failures > 0))
+          jq -s '{kind: "judge-bundle", results: (add // {})}' \
+            /tmp/verdicts.jsonl > /tmp/verdict-sweep-${{ matrix.shard }}.json
+          [ "$failures" -eq 0 ]
+      - name: Upload shard verdicts
+        if: always() && (github.event_name == 'push' || github.event_name == 'pull_request')
+        uses: actions/upload-artifact@v4
+        with:
+          name: verdict-sweep-${{ matrix.shard }}
+          path: /tmp/verdict-sweep-${{ matrix.shard }}.json
+          if-no-files-found: warn
+
+  # Merge the run's verdicts into the recorded state and push it to the
+  # ci-state branch. Runs even when a gate failed — the failures are the
+  # state update (they make the keys re-run next time); skipped when
+  # every gate was skipped. Serialized against other main pushes by the
+  # workflow's concurrency group, so the branch push cannot race.
+  record:
+    needs: [select, static, judge, judge-sweep]
+    if: >-
+      !cancelled() && github.event_name == 'push' &&
+      (needs.static.result != 'skipped' || needs.judge.result != 'skipped' ||
+       needs['judge-sweep'].result != 'skipped')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - name: Check out the ci-state branch
+        id: state
+        continue-on-error: true
+        uses: actions/checkout@v5
+        with:
+          ref: ci-state
+          path: state
+      - name: Fall back to a fresh state branch
+        if: steps.state.outcome != 'success'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git clone --depth 1 \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" state
+          cd state
+          git checkout --orphan ci-state
+          git rm -rf .
+      - name: Download the run plan and verdicts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: "{plan,verdict-*}"
+          path: artifacts
+          merge-multiple: true
+      - name: Merge verdicts into the state
+        run: |
+          python3 scripts/ci_state.py record \
+            --plan artifacts/plan.json --state state/state.json --verdicts artifacts
+      - name: Push the state
+        run: |
+          set -euo pipefail
+          cd state
+          git config user.name "coderpuzzle-ci"
+          git config user.email "actions@users.noreply.github.com"
+          git add state.json
+          if git diff --cached --quiet; then
+            echo "state unchanged — nothing to record"
+          else
+            git commit -m "ci-state: corpus gate results for run ${GITHUB_RUN_ID}"
+            git push origin ci-state
+          fi

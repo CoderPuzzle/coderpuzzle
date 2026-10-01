@@ -3,9 +3,8 @@
 
 Two tiers:
 
-Static (always runs over the whole set, regardless of --problems):
+Static (per-bundle checks; corpus-wide rules always see the whole set):
   - bundle structure: required files, directory-name/id/slug consistency
-  - no duplicate ids or slugs
   - statement grammar: '# Title' matching problem.json, '## Description'
     with consecutively numbered ### Example N and ### Constraints (optional
     for SQL), optional '## Hints' with ### Hint N
@@ -13,6 +12,13 @@ Static (always runs over the whole set, regardless of --problems):
     correspond one-to-one with statement examples
   - solution.* exists for every starter.* (and no stray files)
   - starters regenerate exactly from problem.json (gen_starters --check)
+  --bundles restricts these per-bundle checks to the named keys, but the
+    corpus-wide rules (misnamed directories, duplicate ids/slugs, repo-root
+    rules) still run over the whole set — a new bundle can collide with an
+    untouched one.
+  --report-json writes {bundles: {key: pass|fail}} for the bundles the
+    static tier actually checked (CI's state recorder joins it against the
+    run plan); exit code and printed output are unchanged.
 
 Runtime (--problems selection; needs a running CoderPuzzle serving this repo,
 passed as --api, default http://localhost:8081):
@@ -23,6 +29,8 @@ Usage:
   check.py --problems=all [--skip-runtime] [--api http://localhost:8081]
   check.py --problems=0001_two-sum,0002_add-two-numbers   # bare bundle keys
   check.py --tree problems --skip-runtime             # static tier over a tree
+  check.py --tree problems --skip-runtime \
+           --bundles=0001_two-sum,0002_add-two-numbers
   check.py --runtime-only --problems=…            # judge sweep, static tier
                                                   # already run separately
 
@@ -583,17 +591,38 @@ def repo_root_failures() -> list[Failure]:
     return failures
 
 
-def static_tier() -> tuple[list[Failure], dict[str, dict], dict[str, Path]]:
+def static_tier(
+    selected: list[str] | None = None,
+) -> tuple[list[Failure], dict[str, dict], dict[str, Path], dict[str, str]]:
+    """Run the static tier, optionally restricting the per-bundle checks to
+    the named bundle keys. Corpus-wide rules (repo-root, misnamed
+    directories, duplicate ids/slugs) always scan the whole set: a new
+    bundle can collide with an untouched one. Returns the failures, the
+    catalog, the bundle paths, and per-key pass/fail for every bundle the
+    per-bundle checks actually ran on.
+    """
     failures: list[Failure] = list(repo_root_failures())
     failures.extend(misnamed_dir_failures(PROBLEMS))
     catalog: dict[str, dict] = {}
     paths: dict[str, Path] = {}
+    results: dict[str, str] = {}
     bundles = bundle_dirs(PROBLEMS)
+    by_key = {bundle.name: bundle for bundle in bundles}
+    if selected is not None:
+        unknown = [key for key in selected if key not in by_key]
+        if unknown:
+            print(f"unknown bundle keys: {', '.join(sorted(unknown))}")
+            raise SystemExit(2)
+        targets = {key: by_key[key] for key in selected}
+    else:
+        targets = by_key
     seen_ids: dict[int, tuple[str, dict]] = {}
     seen_slugs: dict[str, str] = {}
     for bundle in bundles:
-        for failure in check_bundle(bundle):
-            failures.append(failure)
+        if bundle.name in targets:
+            bundle_failures = check_bundle(bundle)
+            results[bundle.name] = "fail" if bundle_failures else "pass"
+            failures.extend(bundle_failures)
         try:
             problem = json.loads((bundle / "problem.json").read_text(encoding="utf-8"))
             if problem.get("id") in seen_ids:
@@ -633,7 +662,7 @@ def static_tier() -> tuple[list[Failure], dict[str, dict], dict[str, Path]]:
             paths[bundle.name] = bundle
         except (json.JSONDecodeError, OSError, KeyError):
             pass
-    return failures, catalog, paths
+    return failures, catalog, paths, results
 
 
 def _open_session(api: str) -> str:
@@ -771,6 +800,19 @@ def main() -> None:
         help="skip the static tier (CI runs it separately in the formatter container)",
     )
     parser.add_argument(
+        "--bundles",
+        default=None,
+        help="comma-separated bundle keys restricting the static tier's "
+        "per-bundle checks; corpus-wide rules (misnamed directories, "
+        "duplicate ids/slugs, repo-root rules) always run over the whole set",
+    )
+    parser.add_argument(
+        "--report-json",
+        default=None,
+        help="write {bundles: {key: pass|fail}} for the checked bundles to "
+        "this path (the static tier's machine-readable verdicts)",
+    )
+    parser.add_argument(
         "--api",
         default="http://localhost:8081",
         help="CoderPuzzle base URL for the runtime tier (compose publishes 8081)",
@@ -782,9 +824,22 @@ def main() -> None:
     if not PROBLEMS.is_dir():
         raise SystemExit(f"no bundle tree at {PROBLEMS}")
 
+    selected_bundles: list[str] | None = None
+    if arguments.bundles is not None:
+        selected_bundles = [
+            entry.strip() for entry in arguments.bundles.split(",") if entry.strip()
+        ]
+        if not selected_bundles:
+            print("--bundles given but names no bundle key")
+            raise SystemExit(2)
+
     failures: list[Failure] = []
     if arguments.runtime_only and arguments.skip_runtime:
         raise SystemExit("--runtime-only and --skip-runtime together check nothing")
+    if arguments.runtime_only and selected_bundles is not None:
+        raise SystemExit("--runtime-only runs no static tier, so --bundles selects nothing")
+    if arguments.runtime_only and arguments.report_json is not None:
+        raise SystemExit("--runtime-only produces no static verdicts, so --report-json has nothing to write")
     if arguments.runtime_only:
         catalog = {}
         paths = {}
@@ -800,10 +855,23 @@ def main() -> None:
                 )
                 failures.append(Failure(bundle.name, "unreadable problem.json"))
     else:
-        print(f"static tier: checking {len(bundle_dirs(PROBLEMS))} bundles")
-        failures, catalog, paths = static_tier()
+        total = len(bundle_dirs(PROBLEMS))
+        if selected_bundles is None:
+            print(f"static tier: checking {total} bundles")
+        else:
+            print(
+                f"static tier: checking {len(selected_bundles)} of {total} bundles "
+                "(per-bundle checks restricted; corpus-wide rules whole-tree)"
+            )
+        failures, catalog, paths, bundle_results = static_tier(selected_bundles)
         for failure in failures:
             print(f"  FAIL {failure}")
+        if arguments.report_json is not None:
+            report_path = Path(arguments.report_json)
+            report_path.write_text(
+                json.dumps({"bundles": bundle_results}, indent=2, sort_keys=True) + "\n",
+                encoding="utf-8",
+            )
         print(f"static tier: {len(failures)} failures")
 
     if not arguments.skip_runtime:
