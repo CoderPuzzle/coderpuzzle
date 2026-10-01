@@ -215,6 +215,18 @@ class SelectTests(unittest.TestCase):
             plan = tree.select(state)
             self.assertEqual(plan["static_targets"], ["0001-0100/0001_alpha"])
 
+    def test_sharded_run_keeps_per_file_targets_out_of_the_outputs(self):
+        """The judge matrix consumes `judge_targets` as a job output, and
+        GitHub rejects large output objects — a full-corpus sharded run
+        once wrote 27,589 entries there and killed the select job."""
+        with tempfile.TemporaryDirectory() as directory:
+            tree = StateTree(Path(directory))
+            for index in range(201):
+                tree.add_bundle(f"{1 + index:04d}_bundle-{index}", [])
+            plan = tree.select({})
+            self.assertTrue(plan["judge_sharded"])
+            self.assertEqual(plan["judge_targets"], [])
+
     def test_all_pass_is_noop(self):
         with tempfile.TemporaryDirectory() as directory:
             tree = StateTree(Path(directory))

@@ -286,6 +286,12 @@ def select_command(arguments: argparse.Namespace) -> int:
         {"n": index, "path": f"{arguments.tree}/{key}", "key": key}
         for index, key in enumerate(judge_target_keys)
     ]
+    if judge_sharded:
+        # The per-file matrix stands down and the sweep takes over. The
+        # full list MUST NOT ride into the job outputs — GitHub evaluates
+        # outputs under a tight template-memory budget, and tens of
+        # thousands of entries kill the select job there.
+        judge_targets = []
     sweep = sweep_targets(tree, judge_keys) if judge_sharded else []
     if len(sweep) > JUDGE_MATRIX_CAP:
         raise SystemExit(
