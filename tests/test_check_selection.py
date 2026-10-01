@@ -87,7 +87,10 @@ class BundlesFlagTests(unittest.TestCase):
         report = json.loads((self.tree / "report.json").read_text())
         self.assertEqual(
             report,
-            {"bundles": {"0001_alpha": "fail", "0002_beta": "fail"}},
+            {
+                "kind": "static",
+                "results": {"0001_alpha": "fail", "0002_beta": "fail"},
+            },
         )
 
     def test_bundles_restricts_per_bundle_checks_and_the_report(self):
@@ -99,7 +102,10 @@ class BundlesFlagTests(unittest.TestCase):
         self.assertIn("0001_alpha", result.stdout)
         self.assertNotIn("0002_beta", result.stdout)
         report = json.loads(report_path.read_text())
-        self.assertEqual(report, {"bundles": {"0001_alpha": "fail"}})
+        self.assertEqual(
+            report,
+            {"kind": "static", "results": {"0001_alpha": "fail"}},
+        )
 
     def test_corpus_wide_rules_still_scan_the_whole_tree(self):
         (self.tree / "not-a-bundle").mkdir()
@@ -112,7 +118,7 @@ class BundlesFlagTests(unittest.TestCase):
         report = json.loads(report_path.read_text())
         self.assertEqual(
             report,
-            {"bundles": {"0001_alpha": "fail"}},
+            {"kind": "static", "results": {"0001_alpha": "fail"}},
             "the misnamed directory is a corpus-wide failure, not a per-bundle one",
         )
 

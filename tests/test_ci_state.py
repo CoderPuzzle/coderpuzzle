@@ -320,5 +320,31 @@ class RecordTests(unittest.TestCase):
             self.assertEqual(state["static"][static_key]["result"], "pass")
 
 
+class VerdictsCommandTests(unittest.TestCase):
+    def test_tsv_becomes_a_kind_verdict(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            tsv = root / "v.tsv"
+            tsv.write_text(
+                "0001-0100/0001_alpha\tpass\n"
+                "0001-0100/0002_beta\tfail\n"
+                "\n"
+            )
+            out = root / "v.json"
+            ci_state.verdicts_command(
+                argparse_namespace(kind="judge-bundle", tsv=str(tsv), out=str(out))
+            )
+            self.assertEqual(
+                json.loads(out.read_text()),
+                {
+                    "kind": "judge-bundle",
+                    "results": {
+                        "0001-0100/0001_alpha": "pass",
+                        "0001-0100/0002_beta": "fail",
+                    },
+                },
+            )
+
+
 if __name__ == "__main__":
     unittest.main()

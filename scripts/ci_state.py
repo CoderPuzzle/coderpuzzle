@@ -22,8 +22,9 @@ silently keeping a stale pass, and pruning keys whose bundle or solution
 file no longer exists.
 
 Subcommands:
-  select  --tree problems --state state.json --plan-out plan.json
-  record  --plan plan.json --state state.json --verdicts dir/
+  select   --tree problems --state state.json --plan-out plan.json
+  record   --plan plan.json --state state.json --verdicts dir/
+  verdicts --kind judge-bundle --tsv results.tsv --out verdict.json
 """
 
 from __future__ import annotations
@@ -301,6 +302,30 @@ def record_command(arguments: argparse.Namespace) -> int:
     return 0
 
 
+def verdicts_command(arguments: argparse.Namespace) -> int:
+    """Build a verdict artifact from a TSV of "<key>\\t<result>" lines.
+
+    Lives here rather than in the workflow's inline shell because the gate
+    jobs run in the runner image, which carries python3 but not jq — and
+    a multi-line python -c cannot survive YAML block-scalar indentation.
+    """
+    results: dict[str, str] = {}
+    with open(arguments.tsv, encoding="utf-8") as handle:
+        for line in handle:
+            line = line.rstrip("\n")
+            if not line:
+                continue
+            key, result = line.split("\t", 1)
+            results[key] = result
+    Path(arguments.out).write_text(
+        json.dumps({"kind": arguments.kind, "results": results}, indent=2, sort_keys=True)
+        + "\n",
+        encoding="utf-8",
+    )
+    print(f"{arguments.kind}: {len(results)} verdicts -> {arguments.out}")
+    return 0
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -317,6 +342,12 @@ def main() -> None:
     record.add_argument("--state", required=True, help="recorded state.json to update")
     record.add_argument("--verdicts", required=True, help="directory of verdict *.json artifacts")
     record.set_defaults(fn=record_command)
+
+    verdicts = sub.add_parser("verdicts", help="build a verdict artifact from a TSV")
+    verdicts.add_argument("--kind", required=True, help="verdict kind (e.g. judge-bundle)")
+    verdicts.add_argument("--tsv", required=True, help='input file of "<key>\\t<result>" lines')
+    verdicts.add_argument("--out", required=True, help="where to write the verdict JSON")
+    verdicts.set_defaults(fn=verdicts_command)
 
     arguments = parser.parse_args()
     sys.exit(arguments.fn(arguments))

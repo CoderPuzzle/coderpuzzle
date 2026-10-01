@@ -16,9 +16,10 @@ Static (per-bundle checks; corpus-wide rules always see the whole set):
     corpus-wide rules (misnamed directories, duplicate ids/slugs, repo-root
     rules) still run over the whole set — a new bundle can collide with an
     untouched one.
-  --report-json writes {bundles: {key: pass|fail}} for the bundles the
-    static tier actually checked (CI's state recorder joins it against the
-    run plan); exit code and printed output are unchanged.
+  --report-json writes the static tier's machine-readable verdicts,
+    {"kind": "static", "results": {key: pass|fail}}, for the bundles it
+    actually checked — CI's state recorder consumes it directly; exit
+    code and printed output are unchanged.
 
 Runtime (--problems selection; needs a running CoderPuzzle serving this repo,
 passed as --api, default http://localhost:8081):
@@ -809,7 +810,8 @@ def main() -> None:
     parser.add_argument(
         "--report-json",
         default=None,
-        help="write {bundles: {key: pass|fail}} for the checked bundles to "
+        help="write the CI verdict shape {kind: static, results: "
+        "{key: pass|fail}} for the checked bundles to "
         "this path (the static tier's machine-readable verdicts)",
     )
     parser.add_argument(
@@ -869,7 +871,12 @@ def main() -> None:
         if arguments.report_json is not None:
             report_path = Path(arguments.report_json)
             report_path.write_text(
-                json.dumps({"bundles": bundle_results}, indent=2, sort_keys=True) + "\n",
+                json.dumps(
+                    {"kind": "static", "results": bundle_results},
+                    indent=2,
+                    sort_keys=True,
+                )
+                + "\n",
                 encoding="utf-8",
             )
         print(f"static tier: {len(failures)} failures")

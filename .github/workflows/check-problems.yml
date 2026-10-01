@@ -153,18 +153,11 @@ jobs:
           rc=0
           if [ "$STATIC_FULL" = "true" ]; then
             python3 scripts/check.py --tree problems --skip-runtime \
-              --report-json /tmp/report-static.json || rc=$?
+              --report-json /tmp/verdict-static.json || rc=$?
           else
             python3 scripts/check.py --tree problems --skip-runtime \
-              --report-json /tmp/report-static.json \
-              --bundles "$(printf '%s' "$STATIC_BUNDLES" | jq -r 'join(",")')" || rc=$?
-          fi
-          # The recorder's verdict shape: {kind, results: {key: pass|fail}}.
-          # Written even when the tier failed, so per-key failures land in
-          # the state; a missing file (a crashed gate) records as fail too.
-          if [ -f /tmp/report-static.json ]; then
-            jq '{kind: "static", results: (.bundles // {})}' \
-              /tmp/report-static.json > /tmp/verdict-static.json
+              --report-json /tmp/verdict-static.json \
+              --bundles "$(printf '%s' "$STATIC_BUNDLES" | python3 -c 'import json, sys; print(",".join(json.load(sys.stdin)))')" || rc=$?
           fi
           exit $rc
       - name: Upload static verdicts
@@ -209,9 +202,10 @@ jobs:
           else
             result=fail
           fi
-          jq -n --arg key '${{ matrix.target.key }}' --arg result "$result" \
-            '{kind: "judge", results: {($key): $result}}' \
-            > /tmp/verdict-judge-${{ matrix.target.n }}.json
+          # python3, not jq — the runner image does not carry jq.
+          TARGET_KEY='${{ matrix.target.key }}' RESULT="$result" \
+            VERDICT="/tmp/verdict-judge-${{ matrix.target.n }}.json" \
+            python3 -c 'import json, os; json.dump({"kind": "judge", "results": {os.environ["TARGET_KEY"]: os.environ["RESULT"]}}, open(os.environ["VERDICT"], "w"))'
           [ "$result" = pass ]
       - name: Upload the verdict
         if: always()
@@ -252,7 +246,7 @@ jobs:
           set -euo pipefail
           failures=0
           count=0
-          : > /tmp/verdicts.jsonl
+          : > /tmp/verdicts.tsv
           for bundle in problems/${{ matrix.shard }}/*/; do
             count=$((count + 1))
             key="${bundle#problems/}"
@@ -263,12 +257,14 @@ jobs:
               result=fail
               failures=$((failures + 1))
             fi
-            jq -n --arg key "$key" --arg result "$result" \
-              '{($key): $result}' >> /tmp/verdicts.jsonl
+            printf '%s\t%s\n' "$key" "$result" >> /tmp/verdicts.tsv
           done
           echo "judged $count bundles; failures: $failures"
-          jq -s '{kind: "judge-bundle", results: (add // {})}' \
-            /tmp/verdicts.jsonl > /tmp/verdict-sweep-${{ matrix.shard }}.json
+          # The image carries python3 but not jq, so the verdict JSON is
+          # built by the checked-in selector rather than inline shell.
+          python3 scripts/ci_state.py verdicts --kind judge-bundle \
+            --tsv /tmp/verdicts.tsv \
+            --out "/tmp/verdict-sweep-${{ matrix.shard }}.json"
           [ "$failures" -eq 0 ]
       - name: Upload shard verdicts
         if: always() && (github.event_name == 'push' || github.event_name == 'pull_request')
@@ -308,6 +304,9 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
+          # A failed checkout can leave a partial state/ behind; the clone
+          # refuses a non-empty destination, so clear it first.
+          rm -rf state
           git clone --depth 1 \
             "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" state
           cd state
