@@ -41,6 +41,13 @@ STATE_VERSION = 1
 # GitHub's matrix allows 256 jobs; past this the per-file judge switches to
 # the sharded sweep shape (one job per shard, bundles judged sequentially).
 JUDGE_MATRIX_CAP = 200
+# Sweep jobs pack bundles by judged cost — case executions plus a compile
+# equivalent per solution — so wall-clock balances across jobs instead of
+# one id-range shard (e.g. 2301-2400's exhaustive-domain bundles, ~650k
+# executions) bounding the whole sweep and hitting the 6-hour job cap. A
+# bundle whose cost alone exceeds the budget splits into per-file jobs.
+JUDGE_JOB_BUDGET = 50_000
+COMPILE_EQUIVALENT_CASES = 60
 BUNDLE_NAME = re.compile(r"^\d{4,}_[a-z0-9]+(?:-[a-z0-9]+)*$")
 SHARD_NAME = re.compile(r"^\d{4,}-\d{4,}$")
 
@@ -177,6 +184,49 @@ def compute_keys(
     return static_keys, judge_keys, shard_names(tree)
 
 
+def sweep_targets(
+    tree: Path, judge_keys: dict[str, str]
+) -> list[dict[str, object]]:
+    """Pack the sweep's bundles into cost-balanced job targets.
+
+    Every judge key must be covered exactly once: bundles under the job
+    budget are greedily packed into "bundles" targets (the job judges each
+    whole bundle and reports kind judge-bundle); a bundle whose own cost
+    exceeds the budget splits into one "files" target per solution file
+    (kind judge, one key each — the recorder accepts both kinds). Costs
+    are case executions plus a compile equivalent per solution.
+    """
+    by_bundle: dict[str, list[str]] = {}
+    for key in judge_keys:
+        by_bundle.setdefault(key.rsplit("/", 1)[0], []).append(key)
+    costs: dict[str, int] = {}
+    for bundle in sorted(by_bundle):
+        cases = json.loads((tree / bundle / "cases.json").read_text(encoding="utf-8"))
+        executions = len(cases.get("public", [])) + len(cases.get("hidden", []))
+        costs[bundle] = executions * len(by_bundle[bundle]) + (
+            COMPILE_EQUIVALENT_CASES * len(by_bundle[bundle])
+        )
+    mega = [bundle for bundle in sorted(costs) if costs[bundle] > JUDGE_JOB_BUDGET]
+    packable = [bundle for bundle in sorted(costs) if costs[bundle] <= JUDGE_JOB_BUDGET]
+    targets: list[dict[str, object]] = []
+    for bundle in mega:
+        for key in by_bundle[bundle]:
+            targets.append({"kind": "files", "files": key})
+    chunk: list[str] = []
+    chunk_cost = 0
+    for bundle in packable:
+        if chunk and chunk_cost + costs[bundle] > JUDGE_JOB_BUDGET:
+            targets.append({"kind": "bundles", "bundles": " ".join(chunk)})
+            chunk, chunk_cost = [], 0
+        chunk.append(bundle)
+        chunk_cost += costs[bundle]
+    if chunk:
+        targets.append({"kind": "bundles", "bundles": " ".join(chunk)})
+    for index, target in enumerate(targets):
+        target["n"] = index
+    return targets
+
+
 def load_state(path: Path) -> dict:
     if not path.is_file():
         return {"version": STATE_VERSION, "static": {}, "judge": {}}
@@ -192,7 +242,7 @@ def select_command(arguments: argparse.Namespace) -> int:
     if not tree.is_dir():
         raise SystemExit(f"no bundle tree at {tree}")
     state = load_state(Path(arguments.state))
-    static_keys, judge_keys, shards = compute_keys(root, tree)
+    static_keys, judge_keys, _ = compute_keys(root, tree)
 
     def targets(kind: str, keys: dict[str, str]) -> list[str]:
         recorded = state[kind]
@@ -206,15 +256,20 @@ def select_command(arguments: argparse.Namespace) -> int:
     static_targets = targets("static", static_keys)
     judge_target_keys = targets("judge", judge_keys)
 
-    # The per-file judge matrix is capped; past the cap the sharded sweep
-    # shape takes over (one job per shard, bundles judged sequentially).
+    # The per-file judge matrix is capped; past the cap the sweep shape
+    # takes over — cost-balanced job targets rather than id-range shards,
+    # whose wall-clock is bounded by the heaviest shard.
     judge_sharded = len(judge_target_keys) > JUDGE_MATRIX_CAP
     judge_targets = [
         {"n": index, "path": f"{arguments.tree}/{key}", "key": key}
         for index, key in enumerate(judge_target_keys)
     ]
-    if judge_sharded:
-        judge_targets = []
+    sweep = sweep_targets(tree, judge_keys) if judge_sharded else []
+    if len(sweep) > JUDGE_MATRIX_CAP:
+        raise SystemExit(
+            f"sweep needs {len(sweep)} jobs, over the {JUDGE_MATRIX_CAP} matrix cap — "
+            "raise JUDGE_JOB_BUDGET"
+        )
 
     static_full = len(static_targets) == len(static_keys)
     noop = not static_targets and not judge_target_keys
@@ -238,7 +293,7 @@ def select_command(arguments: argparse.Namespace) -> int:
         "judge_target_keys": judge_target_keys,
         "judge_sharded": judge_sharded,
         "judge_keys": judge_keys,
-        "shards": shards,
+        "sweep_targets": sweep,
     }
     Path(arguments.plan_out).write_text(
         json.dumps(plan, indent=2, sort_keys=True) + "\n", encoding="utf-8"
@@ -246,7 +301,10 @@ def select_command(arguments: argparse.Namespace) -> int:
 
     print(f"static: {len(static_targets)}/{len(static_keys)} bundles targeted")
     if judge_sharded:
-        print(f"judge: {len(judge_target_keys)} files targeted (sharded sweep)")
+        print(
+            f"judge: {len(judge_target_keys)} files targeted "
+            f"({len(sweep)} balanced sweep jobs)"
+        )
     else:
         print(f"judge: {len(judge_target_keys)} solution files targeted")
     if noop:

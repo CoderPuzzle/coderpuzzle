@@ -77,7 +77,7 @@ jobs:
       static_bundles: ${{ steps.plan.outputs.static_bundles }}
       judge_targets: ${{ steps.plan.outputs.judge_targets }}
       judge_sharded: ${{ steps.plan.outputs.judge_sharded }}
-      shards: ${{ steps.plan.outputs.shards }}
+      sweep_targets: ${{ steps.plan.outputs.sweep_targets }}
     steps:
       - uses: actions/checkout@v5
       - name: Load the recorded state
@@ -100,7 +100,7 @@ jobs:
           echo "static_bundles=$(jq -c .static_bundles /tmp/plan.json)" >> "$GITHUB_OUTPUT"
           echo "judge_targets=$(jq -c .judge_targets /tmp/plan.json)" >> "$GITHUB_OUTPUT"
           echo "judge_sharded=$(jq -r .judge_sharded /tmp/plan.json)" >> "$GITHUB_OUTPUT"
-          echo "shards=$(jq -c .shards /tmp/plan.json)" >> "$GITHUB_OUTPUT"
+          echo "sweep_targets=$(jq -c .sweep_targets /tmp/plan.json)" >> "$GITHUB_OUTPUT"
           {
             echo "### Corpus gate plan"
             echo ""
@@ -215,12 +215,16 @@ jobs:
           path: /tmp/verdict-judge-${{ matrix.target.n }}.json
           if-no-files-found: warn
 
-  # Full sharded sweep. schedule/dispatch judge the published image as-is
-  # (the deployed artifact) and never write state; a push whose targets
-  # outgrew the judge matrix cap (>200 solution files) sweeps with the
-  # checkout's CLI and records like every push gate. Verdicts here are
-  # per bundle (kind judge-bundle) — the recorder expands them onto every
-  # solution file of the bundle.
+  # Full sweep in cost-balanced jobs. schedule/dispatch judge the published
+  # image as-is (the deployed artifact) and never write state; a push whose
+  # targets outgrew the judge matrix cap (>200 solution files) sweeps with
+  # the checkout's CLI and records like every push gate. Targets pack
+  # bundles by judged cost (case executions plus a compile equivalent per
+  # solution) so no job can hit the 6-hour wall the way an id-range shard
+  # full of exhaustive-domain bundles would; a bundle too costly for a
+  # whole job arrives as per-file targets (kind files, one key each) while
+  # ordinary bundles ride in bundle chunks (kind bundles, expanded by the
+  # recorder onto every solution file of the bundle).
   judge-sweep:
     needs: [select]
     if: >-
@@ -235,43 +239,59 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: ${{ fromJSON(needs.select.outputs.shards) }}
+        target: ${{ fromJSON(needs.select.outputs.sweep_targets) }}
     steps:
       - uses: actions/checkout@v5
       - name: Use the checkout's CLI
         if: github.event_name == 'push' || github.event_name == 'pull_request'
         run: cp runner/cli.py runner/formatters.py /runner/
-      - name: Judge ${{ matrix.shard }}
+      - name: Judge ${{ matrix.target.kind }} #${{ matrix.target.n }}
         run: |
           set -euo pipefail
           failures=0
           count=0
           : > /tmp/verdicts.tsv
-          for bundle in problems/${{ matrix.shard }}/*/; do
-            count=$((count + 1))
-            key="${bundle#problems/}"
-            key="${key%/}"
-            if coderpuzzle judge "$bundle"; then
-              result=pass
-            else
-              result=fail
-              failures=$((failures + 1))
-            fi
-            printf '%s\t%s\n' "$key" "$result" >> /tmp/verdicts.tsv
-          done
-          echo "judged $count bundles; failures: $failures"
+          # Bundle keys and solution paths never contain whitespace, so
+          # the space-joined target lists word-split safely here.
+          if [ "${{ matrix.target.kind }}" = "bundles" ]; then
+            for bundle in ${{ matrix.target.bundles }}; do
+              count=$((count + 1))
+              if coderpuzzle judge "problems/$bundle"; then
+                result=pass
+              else
+                result=fail
+                failures=$((failures + 1))
+              fi
+              printf '%s\t%s\n' "$bundle" "$result" >> /tmp/verdicts.tsv
+            done
+            kind=judge-bundle
+          else
+            for file in ${{ matrix.target.files }}; do
+              count=$((count + 1))
+              key="${file#problems/}"
+              if coderpuzzle run "$file"; then
+                result=pass
+              else
+                result=fail
+                failures=$((failures + 1))
+              fi
+              printf '%s\t%s\n' "$key" "$result" >> /tmp/verdicts.tsv
+            done
+            kind=judge
+          fi
+          echo "judged $count targets; failures: $failures"
           # The image carries python3 but not jq, so the verdict JSON is
           # built by the checked-in selector rather than inline shell.
-          python3 scripts/ci_state.py verdicts --kind judge-bundle \
+          python3 scripts/ci_state.py verdicts --kind "$kind" \
             --tsv /tmp/verdicts.tsv \
-            --out "/tmp/verdict-sweep-${{ matrix.shard }}.json"
+            --out "/tmp/verdict-sweep-${{ matrix.target.n }}.json"
           [ "$failures" -eq 0 ]
-      - name: Upload shard verdicts
+      - name: Upload sweep verdicts
         if: always() && (github.event_name == 'push' || github.event_name == 'pull_request')
         uses: actions/upload-artifact@v4
         with:
-          name: verdict-sweep-${{ matrix.shard }}
-          path: /tmp/verdict-sweep-${{ matrix.shard }}.json
+          name: verdict-sweep-${{ matrix.target.n }}
+          path: /tmp/verdict-sweep-${{ matrix.target.n }}.json
           if-no-files-found: warn
 
   # Merge the run's verdicts into the recorded state and push it to the

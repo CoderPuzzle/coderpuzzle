@@ -238,7 +238,12 @@ the provided struct's field order must match the manifest exactly.
 
 Provided Rust sources share one compilation unit with the generated
 wrapper, so they use fully-qualified paths (`std::rc::Rc<...>`) and
-carry no `use` lines; the submission's own `solution.rs` MAY import. The assembled Go
+carry no `use` lines; the submission's own `solution.rs` MAY import.
+Every plain (non-`Rc`) record must derive `Clone` — the driver keeps a
+pristine clone of every argument for timed repeats, and a record
+without the derive fails the case at prepare/compile with unsatisfied
+trait bounds (`Rc`-based shapes clone through their `Rc` fields and
+need nothing). The assembled Go
 `NestedInteger` is pointer-based (`GetList() []*NestedInteger`, `Add`/
 `SetInteger` on pointer receivers) — Go solutions walk `*NestedInteger`
 items, mirroring LeetCode's own Go template.

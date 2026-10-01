@@ -51,13 +51,20 @@ class StateTree:
             check=True,
         )
 
-    def add_bundle(self, slug: str, solutions: list[str]) -> Path:
+    def add_bundle(self, slug: str, solutions: list[str] | None = None, cases: int = 0) -> Path:
         bundle = self.tree / "0001-0100" / slug
         bundle.mkdir(parents=True, exist_ok=True)
         (bundle / "problem.json").write_text(problem_json(slug))
-        (bundle / "cases.json").write_text("{}")
+        (bundle / "cases.json").write_text(
+            json.dumps(
+                {
+                    "public": [{"input": [n], "expected": n} for n in range(cases)],
+                    "hidden": [],
+                }
+            )
+        )
         (bundle / "solution.py").write_text("pass\n")
-        for extra in solutions:
+        for extra in solutions or []:
             (bundle / extra).write_text("pass\n")
         return bundle
 
@@ -344,6 +351,69 @@ class VerdictsCommandTests(unittest.TestCase):
                     },
                 },
             )
+
+
+class SweepTargetsTests(unittest.TestCase):
+    def setUp(self):
+        self._budget = ci_state.JUDGE_JOB_BUDGET
+
+    def tearDown(self):
+        ci_state.JUDGE_JOB_BUDGET = self._budget
+
+    def test_chunks_cover_every_judge_key_exactly_once(self):
+        with tempfile.TemporaryDirectory() as directory:
+            tree = StateTree(Path(directory))
+            tree.add_bundle("0001_alpha", cases=10)
+            tree.add_bundle("0002_beta", cases=10)
+            tree.add_bundle("0003_gamma", [])
+            _, judge_keys, _ = ci_state.compute_keys(tree.root, tree.tree)
+            ci_state.JUDGE_JOB_BUDGET = 150
+            targets = ci_state.sweep_targets(tree.tree, judge_keys)
+            kinds = [target["kind"] for target in targets]
+            self.assertEqual(set(kinds), {"bundles"})
+            covered = []
+            for target in targets:
+                self.assertLessEqual(len(target["bundles"].split()), 2, target)
+                covered.extend(target["bundles"].split())
+            self.assertEqual(sorted(covered), sorted(by_bundle(judge_keys)))
+
+    def test_mega_bundle_splits_into_per_file_targets(self):
+        with tempfile.TemporaryDirectory() as directory:
+            tree = StateTree(Path(directory))
+            tree.add_bundle("0001_alpha", ["solution_bfs.py"], cases=400)
+            tree.add_bundle("0002_beta", [], cases=10)
+            _, judge_keys, _ = ci_state.compute_keys(tree.root, tree.tree)
+            ci_state.JUDGE_JOB_BUDGET = 500
+            targets = ci_state.sweep_targets(tree.tree, judge_keys)
+            file_targets = [t for t in targets if t["kind"] == "files"]
+            bundle_targets = [t for t in targets if t["kind"] == "bundles"]
+            self.assertEqual(
+                sorted(t["files"] for t in file_targets),
+                [
+                    "0001-0100/0001_alpha/solution.py",
+                    "0001-0100/0001_alpha/solution_bfs.py",
+                ],
+                "each file of an over-budget bundle judges in its own job",
+            )
+            self.assertEqual(len(bundle_targets), 1)
+            self.assertEqual(
+                bundle_targets[0]["bundles"].split(), ["0001-0100/0002_beta"]
+            )
+
+    def test_chunk_respects_the_budget(self):
+        with tempfile.TemporaryDirectory() as directory:
+            tree = StateTree(Path(directory))
+            tree.add_bundle("0001_alpha", cases=100)
+            tree.add_bundle("0002_beta", cases=100)
+            tree.add_bundle("0003_gamma", cases=100)
+            _, judge_keys, _ = ci_state.compute_keys(tree.root, tree.tree)
+            ci_state.JUDGE_JOB_BUDGET = 300
+            targets = ci_state.sweep_targets(tree.tree, judge_keys)
+            self.assertEqual(len(targets), 3, "160-cost bundles never share a 300 chunk")
+
+
+def by_bundle(judge_keys: dict[str, str]) -> list[str]:
+    return sorted({key.rsplit("/", 1)[0] for key in judge_keys})
 
 
 if __name__ == "__main__":
