@@ -189,39 +189,61 @@ def sweep_targets(
 ) -> list[dict[str, object]]:
     """Pack the sweep's bundles into cost-balanced job targets.
 
-    Every judge key must be covered exactly once: bundles under the job
-    budget are greedily packed into "bundles" targets (the job judges each
-    whole bundle and reports kind judge-bundle); a bundle whose own cost
-    exceeds the budget splits into one "files" target per solution file
-    (kind judge, one key each — the recorder accepts both kinds). Costs
-    are case executions plus a compile equivalent per solution.
+    Every judge key must be covered exactly once. Targets are positional
+    descriptors — shard, offset and count into that shard's LC_ALL=C-sorted
+    bundle list — because the plan travels to the workflow as a job output
+    and GitHub rejects large output objects: full bundle-key lists blew the
+    cap at ~200KB. A "bundles" target judges each of its bundles whole
+    (kind judge-bundle); a "files" target is a single over-budget bundle
+    whose solutions judge one file per key (kind judge) — exhaustive-domain
+    bundles like 2373 carry ~20k cases, more than a whole job's budget.
+    Costs are case executions plus a compile equivalent per solution.
     """
-    by_bundle: dict[str, list[str]] = {}
+    per_shard: dict[str, dict[str, list[str]]] = {}
     for key in judge_keys:
-        by_bundle.setdefault(key.rsplit("/", 1)[0], []).append(key)
-    costs: dict[str, int] = {}
-    for bundle in sorted(by_bundle):
-        cases = json.loads((tree / bundle / "cases.json").read_text(encoding="utf-8"))
-        executions = len(cases.get("public", [])) + len(cases.get("hidden", []))
-        costs[bundle] = executions * len(by_bundle[bundle]) + (
-            COMPILE_EQUIVALENT_CASES * len(by_bundle[bundle])
-        )
-    mega = [bundle for bundle in sorted(costs) if costs[bundle] > JUDGE_JOB_BUDGET]
-    packable = [bundle for bundle in sorted(costs) if costs[bundle] <= JUDGE_JOB_BUDGET]
+        shard, bundle, _ = key.split("/", 2)
+        per_shard.setdefault(shard, {}).setdefault(bundle, []).append(key)
     targets: list[dict[str, object]] = []
-    for bundle in mega:
-        for key in by_bundle[bundle]:
-            targets.append({"kind": "files", "files": key})
-    chunk: list[str] = []
-    chunk_cost = 0
-    for bundle in packable:
-        if chunk and chunk_cost + costs[bundle] > JUDGE_JOB_BUDGET:
-            targets.append({"kind": "bundles", "bundles": " ".join(chunk)})
-            chunk, chunk_cost = [], 0
-        chunk.append(bundle)
-        chunk_cost += costs[bundle]
-    if chunk:
-        targets.append({"kind": "bundles", "bundles": " ".join(chunk)})
+    for shard in sorted(per_shard):
+        names = sorted(per_shard[shard])
+        costs = {}
+        for name in names:
+            cases = json.loads(
+                (tree / shard / name / "cases.json").read_text(encoding="utf-8")
+            )
+            executions = len(cases.get("public", [])) + len(cases.get("hidden", []))
+            files = len(per_shard[shard][name])
+            costs[name] = executions * files + COMPILE_EQUIVALENT_CASES * files
+        chunk_start: int | None = None
+        chunk_cost = 0
+
+        def flush(start: int, end: int) -> None:
+            if end > start:
+                targets.append(
+                    {
+                        "kind": "bundles",
+                        "shard": shard,
+                        "skip": start,
+                        "take": end - start,
+                    }
+                )
+
+        for index, name in enumerate(names):
+            if costs[name] > JUDGE_JOB_BUDGET:
+                if chunk_start is not None:
+                    flush(chunk_start, index)
+                chunk_start, chunk_cost = None, 0
+                targets.append(
+                    {"kind": "files", "shard": shard, "skip": index, "take": 1}
+                )
+            elif chunk_start is None:
+                chunk_start, chunk_cost = index, costs[name]
+            elif chunk_cost + costs[name] > JUDGE_JOB_BUDGET:
+                flush(chunk_start, index)
+                chunk_start, chunk_cost = index, costs[name]
+            else:
+                chunk_cost += costs[name]
+        flush(chunk_start, len(names))
     for index, target in enumerate(targets):
         target["n"] = index
     return targets

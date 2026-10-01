@@ -218,13 +218,13 @@ jobs:
   # Full sweep in cost-balanced jobs. schedule/dispatch judge the published
   # image as-is (the deployed artifact) and never write state; a push whose
   # targets outgrew the judge matrix cap (>200 solution files) sweeps with
-  # the checkout's CLI and records like every push gate. Targets pack
-  # bundles by judged cost (case executions plus a compile equivalent per
-  # solution) so no job can hit the 6-hour wall the way an id-range shard
-  # full of exhaustive-domain bundles would; a bundle too costly for a
-  # whole job arrives as per-file targets (kind files, one key each) while
-  # ordinary bundles ride in bundle chunks (kind bundles, expanded by the
-  # recorder onto every solution file of the bundle).
+  # the checkout's CLI and records like every push gate. Targets are
+  # positional descriptors (shard + offset/count into its sorted bundle
+  # list) so the matrix output stays tiny; packing is by judged cost — case
+  # executions plus a compile equivalent per solution — so no job can hit
+  # the 6-hour wall the way an id-range shard full of exhaustive-domain
+  # bundles would. An over-budget bundle arrives alone as a "files" target
+  # whose solutions judge one file at a time.
   judge-sweep:
     needs: [select]
     if: >-
@@ -245,31 +245,38 @@ jobs:
       - name: Use the checkout's CLI
         if: github.event_name == 'push' || github.event_name == 'pull_request'
         run: cp runner/cli.py runner/formatters.py /runner/
-      - name: Judge ${{ matrix.target.kind }} #${{ matrix.target.n }}
+      - name: Judge ${{ matrix.target.shard }} ${{ matrix.target.skip }}+${{ matrix.target.take }}
         run: |
           set -euo pipefail
           failures=0
           count=0
           : > /tmp/verdicts.tsv
-          # Bundle keys and solution paths never contain whitespace, so
-          # the space-joined target lists word-split safely here.
+          # LC_ALL=C matches select's Python sort order on these
+          # digits-plus-lowercase names exactly.
+          mapfile -t bundles < <(find "problems/${{ matrix.target.shard }}" \
+            -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | LC_ALL=C sort)
+          selected=("${bundles[@]:${{ matrix.target.skip }}:${{ matrix.target.take }}}")
           if [ "${{ matrix.target.kind }}" = "bundles" ]; then
-            for bundle in ${{ matrix.target.bundles }}; do
+            for bundle in "${selected[@]}"; do
               count=$((count + 1))
-              if coderpuzzle judge "problems/$bundle"; then
+              key="${{ matrix.target.shard }}/$bundle"
+              if coderpuzzle judge "problems/$key"; then
                 result=pass
               else
                 result=fail
                 failures=$((failures + 1))
               fi
-              printf '%s\t%s\n' "$bundle" "$result" >> /tmp/verdicts.tsv
+              printf '%s\t%s\n' "$key" "$result" >> /tmp/verdicts.tsv
             done
             kind=judge-bundle
           else
-            for file in ${{ matrix.target.files }}; do
+            bundle_dir="problems/${{ matrix.target.shard }}/${selected[0]}"
+            for file in $(find "$bundle_dir" -maxdepth 1 -name 'solution*' \
+                ! -name '*.md' -printf '%f\n' | LC_ALL=C sort); do
               count=$((count + 1))
-              key="${file#problems/}"
-              if coderpuzzle run "$file"; then
+              path="$bundle_dir/$file"
+              key="${path#problems/}"
+              if coderpuzzle run "$path"; then
                 result=pass
               else
                 result=fail
