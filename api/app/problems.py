@@ -9,9 +9,6 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Optional
 
-class ProblemSetError(ValueError):
-    pass
-
 
 def _problems_dir() -> Path:
     """The problem set is always a directory on disk.
@@ -23,7 +20,7 @@ def _problems_dir() -> Path:
     path = os.environ.get("CODERPUZZLE_PROBLEMS", "").strip() or "problems"
     resolved = Path(path).expanduser().resolve()
     if not resolved.is_dir():
-        raise ProblemSetError(
+        raise ValueError(
             f"CODERPUZZLE_PROBLEMS={path!r} is not a directory. It must be a path "
             "to a problem-set directory on disk; remote problem sets are not supported."
         )
@@ -629,7 +626,7 @@ def _cached_summary(path_string: str, modified_ns: int, size: int) -> Optional[d
 
     The full bundle (cases.json, statement.md, starter.*) is ~450 KB/problem
     on average, but the problem list needs just id/slug/title/difficulty/tags
-    — reading all 735 bundles to serve that made /problems take ~10s. This
+    — reading every bundle to serve that made /problems take ~10s. This
     reads the single small problem.json instead, keyed by its mtime/size so a
     refreshed problem set invalidates automatically."""
     del modified_ns, size

@@ -43,6 +43,15 @@ def set_session_cookie(response: Response, session_id: str, request: Request) ->
     )
 
 
+def client_source(request: Request) -> str:
+    """Rate-limit source key: the caller IP. uvicorn runs with
+    --proxy-headers --forwarded-allow-ips "*", so request.client.host is
+    X-Forwarded-For entry 0 — the real client IP only because the edge
+    terminates TLS and discards client-supplied XFF (see the trust-model
+    note by the judge throttle in app.main)."""
+    return request.client.host if request.client else "unknown"
+
+
 def public_origin(request: Request) -> str:
     """The browser-facing origin. OAuth redirect_uris must be this, not the
     compose-internal API URL. CODERPUZZLE_PUBLIC_URL wins when set (the web

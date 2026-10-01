@@ -164,6 +164,13 @@ class OAuth2Provider(AuthProvider):
         challenge = database.consume_auth_challenge(state)
         if challenge is None or challenge["provider"] != self.id:
             raise AuthError(401, "That sign-in attempt expired")
+        # Anti-CSRF binding: the state must complete in the same session
+        # that started the flow. Server-side storage alone proves nothing —
+        # the attacker knows their own state — so without this check a
+        # replayed callback URL would bind a visitor's session to the
+        # attacker's account (login CSRF).
+        if challenge["session_id"] != ctx.session_id:
+            raise AuthError(401, "That sign-in attempt expired")
         verifier = str(challenge.get("payload", {}).get("verifier") or "")
         token = http_json(
             "POST",

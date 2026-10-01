@@ -26,7 +26,7 @@ from .database import (
     session_user,
     validate_session,
 )
-from .web_session import SESSION_COOKIE, current_session, set_session_cookie
+from .web_session import SESSION_COOKIE, client_source, current_session, set_session_cookie
 from .judge import (
     RunnerUnavailable,
     execute,
@@ -85,6 +85,8 @@ def health() -> dict[str, str]:
 
 @app.post("/session")
 def start_session(response: Response, request: Request) -> dict[str, Any]:
+    if _session_create_throttled(client_source(request)):
+        raise HTTPException(status_code=429, detail="Too many sessions; wait a moment")
     session_id = create_session()
     purge_expired_sessions()
     set_session_cookie(response, session_id, request)
@@ -135,6 +137,50 @@ def _judge_throttled(session_id: str) -> bool:
     ]:
         del _judge_requests[stale]
     return False
+
+
+# The per-session budget above is keyed by a session id any client can mint
+# (POST /session is public), so on its own it only shapes clients that
+# follow the rules. Two per-source-IP budgets close the rotation bypass:
+# judge calls get one well above the per-session share (CGNAT/shared-egress
+# viewers must not see 429s a solo viewer never would), and session
+# creation gets a tight one, which also bounds sessions-table row growth.
+#
+# Trust model shared with the login throttle (auth/service.py): uvicorn's
+# --proxy-headers --forwarded-allow-ips "*" takes X-Forwarded-For entry 0
+# as request.client.host, which is the real client IP only because the
+# edge terminates TLS and discards client-supplied XFF. If the edge
+# topology ever passes client XFF through, these budgets and the login
+# throttle weaken equally.
+_JUDGE_SOURCE_MAX_REQUESTS = 3 * _JUDGE_MAX_REQUESTS
+_judge_source_requests: dict[str, list[float]] = {}
+_SESSION_CREATE_WINDOW_SECONDS = 60.0
+_SESSION_CREATE_MAX = 30
+_session_creates: dict[str, list[float]] = {}
+
+
+def _window_throttled(key: str, limit: int, window: float, seen: dict[str, list[float]]) -> bool:
+    """True once `key` holds `limit` stamps inside the window; every
+    passing attempt leaves one stamp, counted before it runs. The same
+    windowed-dict shape as the login throttle in auth/service.py."""
+    now = time.monotonic()
+    recent = [stamp for stamp in seen.get(key, []) if now - stamp < window]
+    if len(recent) >= limit:
+        seen[key] = recent
+        return True
+    recent.append(now)
+    seen[key] = recent
+    for stale in [k for k, stamps in seen.items() if not stamps or now - stamps[-1] >= window]:
+        del seen[stale]
+    return False
+
+
+def _judge_source_throttled(source: str) -> bool:
+    return _window_throttled(source, _JUDGE_SOURCE_MAX_REQUESTS, _JUDGE_WINDOW_SECONDS, _judge_source_requests)
+
+
+def _session_create_throttled(source: str) -> bool:
+    return _window_throttled(source, _SESSION_CREATE_MAX, _SESSION_CREATE_WINDOW_SECONDS, _session_creates)
 
 
 SLUG_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -378,7 +424,11 @@ def _run_judge(
 
 
 @app.post("/format")
-def format_source(request: FormatRequest, session_id: Annotated[str, Depends(current_session)]) -> dict[str, Any]:
+def format_source(
+    request: FormatRequest,
+    raw_request: Request,
+    session_id: Annotated[str, Depends(current_session)],
+) -> dict[str, Any]:
     """Tri-state format of an editor draft, judged by the bundles' toolchain.
 
     Always 200 when the runner is reachable — the payload carries the state:
@@ -388,7 +438,7 @@ def format_source(request: FormatRequest, session_id: Annotated[str, Depends(cur
     (the author's to fix, so a payload state rather than a judge verdict).
     503 remains reserved for the runner being unreachable.
     """
-    if _judge_throttled(session_id):
+    if _judge_throttled(session_id) or _judge_source_throttled(client_source(raw_request)):
         raise HTTPException(status_code=429, detail="Too many judge requests; wait a moment")
     try:
         with judge_slot():
@@ -410,8 +460,12 @@ def _attach_tamper_warnings(summary: dict[str, Any], bundle: Path, language: str
 
 
 @app.post("/run")
-def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)]) -> dict[str, Any]:
-    if _judge_throttled(session_id):
+def run(
+    request: RunRequest,
+    raw_request: Request,
+    session_id: Annotated[str, Depends(current_session)],
+) -> dict[str, Any]:
+    if _judge_throttled(session_id) or _judge_source_throttled(client_source(raw_request)):
         raise HTTPException(status_code=429, detail="Too many judge requests; wait a moment")
     try:
         bundle = safe_problem_path(request.slug)
@@ -472,8 +526,12 @@ def run(request: RunRequest, session_id: Annotated[str, Depends(current_session)
 
 
 @app.post("/submit")
-def submit(request: SubmitRequest, session_id: Annotated[str, Depends(current_session)]) -> dict[str, Any]:
-    if _judge_throttled(session_id):
+def submit(
+    request: SubmitRequest,
+    raw_request: Request,
+    session_id: Annotated[str, Depends(current_session)],
+) -> dict[str, Any]:
+    if _judge_throttled(session_id) or _judge_source_throttled(client_source(raw_request)):
         raise HTTPException(status_code=429, detail="Too many judge requests; wait a moment")
     # Resolve the bundle once; every loader below takes the resolved path so
     # one submission doesn't re-glob and re-statwalk the tree three times.

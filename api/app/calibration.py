@@ -61,6 +61,16 @@ def records() -> dict[tuple[str, str], dict[str, Any]]:
     return result
 
 
+# usable()'s verdict is a pure function of the calibration file's identity
+# (every branch's detail string is too), and with REQUIRE_CALIBRATION it
+# runs in front of every judged, registered or logged-in request — so the
+# whole (ok, detail) pair is memoized like load()/records(). This accepts
+# the same staleness class they already do: an in-place rewrite preserving
+# both mtime_ns and size would keep the verdict pinned until the next real
+# write (any ordinary rewrite bumps mtime_ns).
+_usable: tuple[tuple[str, int, int], tuple[bool, str]] | None = None
+
+
 def usable() -> tuple[bool, str]:
     """Whether this deployment has a calibration fit to judge against.
 
@@ -70,18 +80,29 @@ def usable() -> tuple[bool, str]:
     registration, login, and all 25,502 measured pairs because a couple of
     bundles are unmeasurable. Coverage is still reported by prerequisite().
     """
+    global _usable
+    identity = _identity()
+    if identity is not None and _usable is not None and _usable[0] == identity:
+        return _usable[1]
     value = load()
     if value is None:
-        return False, f"Calibration is required; missing {CALIBRATION_FILE}"
-    if value.get("schema_version") != 1:
-        return False, "Calibration record has an unsupported schema"
-    rows = records()
-    if not rows:
-        return False, "Calibration record is empty"
-    if any(not isinstance(row.get("reference_walltime_ms"), (int, float)) or row["reference_walltime_ms"] <= 0
-           or not isinstance(row.get("timeout_ms"), int) or row["timeout_ms"] <= 0 for row in rows.values()):
-        return False, "Calibration record contains an invalid timing"
-    return True, "ok"
+        result = False, f"Calibration is required; missing {CALIBRATION_FILE}"
+    elif value.get("schema_version") != 1:
+        result = False, "Calibration record has an unsupported schema"
+    else:
+        rows = records()
+        if not rows:
+            result = False, "Calibration record is empty"
+        elif any(not isinstance(row.get("reference_walltime_ms"), (int, float)) or row["reference_walltime_ms"] <= 0
+                 or not isinstance(row.get("timeout_ms"), int) or row["timeout_ms"] <= 0 for row in rows.values()):
+            result = False, "Calibration record contains an invalid timing"
+        else:
+            result = True, "ok"
+    # A missing file stays uncached so a first-appearing calibration is
+    # never pinned to a stale rejection.
+    if identity is not None:
+        _usable = (identity, result)
+    return result
 
 
 def missing() -> set[tuple[str, str]]:

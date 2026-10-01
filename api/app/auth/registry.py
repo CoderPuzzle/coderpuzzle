@@ -28,13 +28,6 @@ def all_providers() -> list[AuthProvider]:
     return list(_providers.values())
 
 
-def reset() -> None:
-    """Tests: drop every provider (including builtins)."""
-    global _defaults_loaded
-    _providers.clear()
-    _defaults_loaded = False
-
-
 def load_defaults() -> None:
     """Idempotent. Builtins are always registered; disabled ones stay in
     the registry but are omitted from the public catalog."""

@@ -11,8 +11,8 @@ Detection is intentionally limited to high-confidence patterns:
 - python (AST): rebinding or attribute-writes to provided classes and
   modules, `setattr` on them, user redefinition of provided class and
   function names, `open()` reads of provided file paths, imports of
-  provided modules, `inspect.getsource` / `dis` introspection, and
-  name-mangled private access (`_Cls__attr`).
+  introspection tooling (`dis`, `gc`), `inspect.getsource`
+  introspection, and name-mangled private access (`_Cls__attr`).
 - javascript / typescript (regex): prototype writes and `Object.assign`
   on provided prototypes, rebinding of provided class names,
   `__proto__` reach-through.

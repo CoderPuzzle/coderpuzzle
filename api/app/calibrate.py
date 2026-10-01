@@ -425,7 +425,6 @@ def main() -> int:
     base_timeout = judge.RUNNER_TIMEOUT
     allowances = _seeded_allowances()
     hardware = hardware_snapshot()
-    progress = calibration.load() if PROGRESS_FILE == calibration.CALIBRATION_FILE else None
     try:
         progress = json.loads(PROGRESS_FILE.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):

@@ -21,10 +21,16 @@ from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response
 from fastapi.responses import RedirectResponse
 
 from ..database import bind_session_user, create_session, validate_session
-from ..web_session import SESSION_COOKIE, current_session, optional_session, set_session_cookie
+from ..web_session import (
+    SESSION_COOKIE,
+    client_source,
+    current_session,
+    optional_session,
+    set_session_cookie,
+)
 from ..calibration import enforce
 from .errors import AuthError
-from .service import catalog, complete_auth, register_auth, start_auth
+from .service import catalog, complete_auth, login_throttled, register_auth, register_login_failure, start_auth
 
 router = APIRouter()
 
@@ -43,10 +49,6 @@ def _provider_and_payload(body: dict[str, Any] | None, *, default_provider: str 
     return provider, payload
 
 
-def _source(request: Request) -> str:
-    return request.client.host if request.client else "unknown"
-
-
 @router.get("/auth/status")
 def auth_status() -> dict[str, Any]:
     """Public: bootstrap flag plus the catalog of enabled providers.
@@ -59,9 +61,17 @@ def auth_status() -> dict[str, Any]:
 def auth_start(
     body: dict[str, Any],
     request: Request,
-    session_id: Annotated[str | None, Depends(optional_session)] = None,
+    session_id: Annotated[str, Depends(current_session)],
 ) -> dict[str, Any]:
+    """Requires an active session (the frontend always starts one first)
+    and shares the per-source login budget: start is the one endpoint with
+    an outbound side effect (an emailed code), so every attempt burns a
+    stamp whether it succeeds or fails."""
     provider, payload = _provider_and_payload(body)
+    source = client_source(request)
+    if login_throttled(source):
+        raise HTTPException(status_code=429, detail="Too many sign-in attempts; wait a minute")
+    register_login_failure(source)
     try:
         return start_auth(provider, payload, session_id, request)
     except AuthError as error:
@@ -77,7 +87,7 @@ def auth_complete(
 ) -> dict[str, Any]:
     provider, payload = _provider_and_payload(body)
     try:
-        return complete_auth(provider, payload, session_id, request, _source(request))
+        return complete_auth(provider, payload, session_id, request, client_source(request))
     except AuthError as error:
         _raise(error)
         raise
@@ -111,7 +121,7 @@ def auth_login_compat(
     enforce()
     provider, payload = _provider_and_payload(body, default_provider="password")
     try:
-        return complete_auth(provider, payload, session_id, request, _source(request))
+        return complete_auth(provider, payload, session_id, request, client_source(request))
     except AuthError as error:
         _raise(error)
         raise
@@ -127,7 +137,6 @@ def auth_logout(session_id: Annotated[str, Depends(current_session)]) -> dict[st
 def auth_callback(
     provider: str,
     request: Request,
-    response: Response,
     code: str | None = None,
     state: str | None = None,
     error: str | None = None,
@@ -139,19 +148,22 @@ def auth_callback(
     session_id = session_cookie if session_cookie and validate_session(session_cookie) else None
     if session_id is None:
         session_id = create_session()
-        set_session_cookie(response, session_id, request)
     try:
         complete_auth(
             provider,
             {"code": code or "", "state": state or ""},
             session_id,
             request,
-            _source(request),
+            client_source(request),
         )
     except AuthError:
         return RedirectResponse("/?auth_error=failed", status_code=303)
     redirect = RedirectResponse("/", status_code=303)
-    # set_session_cookie on response may not copy onto RedirectResponse
+    # FastAPI discards headers set on an injected Response parameter when
+    # the handler returns its own Response, so the session cookie must be
+    # set on the RedirectResponse itself. The auth_error=failed early
+    # return above deliberately carries no cookie: a fresh session minted
+    # before a failed complete_auth is never delivered.
     if session_cookie is None or session_cookie != session_id:
         set_session_cookie(redirect, session_id, request)
     return redirect

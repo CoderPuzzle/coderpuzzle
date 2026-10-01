@@ -5,7 +5,7 @@ register / callback). Password login is one provider, not the protocol.
 See docs/AUTH.md.
 """
 
-from .registry import all_providers, get, load_defaults, register, reset, unregister
+from .registry import all_providers, get, load_defaults, register, unregister
 from .service import catalog, complete_auth, register_auth, start_auth
 
 __all__ = [
@@ -16,7 +16,6 @@ __all__ = [
     "load_defaults",
     "register",
     "register_auth",
-    "reset",
     "start_auth",
     "unregister",
 ]
