@@ -5,9 +5,10 @@ import subprocess
 import tempfile
 import time
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
 from .base import ExecutorError
+from .typed import encode_case
 
 
 COMPILER_SANDBOX = "/runner/compiler_sandbox.py"
@@ -30,6 +31,32 @@ def sandboxed_compiler_command(
     )
 
 
+def run_benchmark(
+    language_label: str,
+    command: tuple[str, ...],
+    environment: dict[str, str],
+    reference_ms: float,
+) -> tuple[float, float]:
+    """Time one benchmark subprocess and return (elapsed_ms, factor), the
+    factor clamped into [0.75, 3.0] against the reference duration. The
+    calibration loop shared by every executor's ``calibrate``."""
+    started = time.perf_counter()
+    try:
+        subprocess.run(
+            command,
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            timeout=10,
+            env=environment,
+        )
+    except (OSError, subprocess.SubprocessError) as error:
+        raise ExecutorError(f"{language_label} calibration failed: {error}") from error
+    elapsed_ms = (time.perf_counter() - started) * 1000
+    factor = min(3.0, max(0.75, elapsed_ms / reference_ms))
+    return elapsed_ms, factor
+
+
 class CompiledExecutor:
     """Shared calibration and hostile-compiler sandbox for native plugins."""
 
@@ -46,21 +73,12 @@ class CompiledExecutor:
     reference_benchmark_ms: float
 
     def calibrate(self) -> tuple[float, float]:
-        started = time.perf_counter()
-        try:
-            subprocess.run(
-                self.benchmark_command,
-                check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                timeout=10,
-                env={"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": "/nonexistent"},
-            )
-        except (OSError, subprocess.SubprocessError) as error:
-            raise ExecutorError(f"{self.language} calibration failed: {error}") from error
-        elapsed_ms = (time.perf_counter() - started) * 1000
-        factor = min(3.0, max(0.75, elapsed_ms / self.reference_benchmark_ms))
-        return elapsed_ms, factor
+        return run_benchmark(
+            self.language,
+            self.benchmark_command,
+            {"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": "/nonexistent"},
+            self.reference_benchmark_ms,
+        )
 
     def compile(
         self,
@@ -124,3 +142,14 @@ class CompiledExecutor:
             raise ExecutorError("Compiler output is not a regular file")
         os.chown(output_path, supervisor_uid, supervisor_gid)
         output_path.chmod(0o555)
+
+    def encode_case(self, invocation: dict[str, Any], case_input: Any) -> bytes:
+        if invocation.get("type") == "interactive":
+            from .typed import encode_interactive_case
+
+            return encode_interactive_case(invocation, case_input)
+        if invocation.get("type") == "design":
+            from .design_interactive import encode_design_case
+
+            return encode_design_case(invocation, case_input)
+        return encode_case(invocation, case_input, self.language)

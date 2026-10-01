@@ -136,11 +136,12 @@ def is_modern_python_slug(slug: str) -> bool:
     """True for bettercode-derived bundles (modern starters). The adapter
     set comes from the adapted tree's MAPPING.json.
 
-    That ledger lives with the adapted corpus (the private lc-adapt
-    repository), not with this repo's served tree, so point
-    CODERPUZZLE_ADAPT_MAPPING at it. Guessing is not an option: a missing
-    ledger would silently answer False for every slug and regenerate every
-    Python starter in the legacy style."""
+    That ledger is checked in at scripts/problems-tooling/adapt-mapping.json
+    and is used by default; set CODERPUZZLE_ADAPT_MAPPING only to override it
+    with the adapted tree's copy (problems/MAPPING.json). Guessing is not an
+    option: a missing ledger file raises SystemExit here, and an
+    existing-but-empty ledger would silently answer False for every slug and
+    regenerate every Python starter in the legacy style."""
     global _modern_slugs
     if _modern_slugs is None:
         configured = os.environ.get("CODERPUZZLE_ADAPT_MAPPING", "").strip()

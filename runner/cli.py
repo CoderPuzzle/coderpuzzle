@@ -20,11 +20,16 @@ toolchain beyond Docker:
                                       only crash-checked — the full
                                       comparison gate is
                                       scripts/verify_solution.py)
+  cli.py run <file>                   judge one solution file against its
+                                      bundle's cases — the authoring fast
+                                      loop; the bundle is discovered by
+                                      walking up from the file to
+                                      problem.json
 
 In the image these run as `coderpuzzle format ...` / `coderpuzzle gen-starters
-...` / `coderpuzzle judge ...` (see the coderpuzzle entrypoint installed by the
-Dockerfile). They operate on a bundle directory bind-mounted at any
-path; nothing here writes outside the paths it is given.
+...` / `coderpuzzle judge ...` / `coderpuzzle run ...` (see the coderpuzzle
+entrypoint installed by the Dockerfile). They operate on a bundle directory
+bind-mounted at any path; nothing here writes outside the paths it is given.
 """
 
 from __future__ import annotations
@@ -264,9 +269,10 @@ def cmd_gen_starters(arguments: argparse.Namespace) -> int:
     The language set follows the starters already present (regenerating a
     bundle that deliberately offers a subset never widens it), and the
     output goes through the pinned formatter so it passes the format gate.
-    Note the Python starter style: pass --style explicitly to override the
-    modern default — the provenance-aware choice lives in the problems
-    repo's scripts/gen_starters.py, which reads MAPPING.json."""
+    The Python starter style follows the bundle's provenance (modern for
+    bettercode-derived slugs, legacy otherwise) per this repo's
+    scripts/gen_starters.py, keyed off scripts/problems-tooling/adapt-mapping.json
+    (CODERPUZZLE_ADAPT_MAPPING overrides); pass --style to force one."""
     import importlib.util
 
     tools = _tools()
@@ -275,13 +281,17 @@ def cmd_gen_starters(arguments: argparse.Namespace) -> int:
     spec.loader.exec_module(gen)
 
     problem_path = Path(arguments.problem)
-    invocation = json.loads(problem_path.read_text(encoding="utf-8"))["invocation"]
+    problem = json.loads(problem_path.read_text(encoding="utf-8"))
+    invocation = problem["invocation"]
     bundle = problem_path.parent
     present = {
         starter.suffix.lstrip(".")
         for starter in bundle.glob("starter.*")
     }
-    gen.set_python_style(arguments.style)
+    gen.set_python_style(
+        arguments.style
+        or ("modern" if gen.is_modern_python_slug(problem["slug"]) else "legacy")
+    )
     expected = gen.starter_files(invocation)
     for language, content in expected.items():
         extension = gen.EXTENSIONS[language]
@@ -584,7 +594,7 @@ def main() -> int:
 
     gen = sub.add_parser("gen-starters", help="emit starter.* from problem.json")
     gen.add_argument("problem")
-    gen.add_argument("--style", default="modern", choices=["modern", "legacy"])
+    gen.add_argument("--style", default=None, choices=["modern", "legacy"])
     gen.set_defaults(fn=cmd_gen_starters)
 
     judge = sub.add_parser("judge", help="judge every solution in a bundle")

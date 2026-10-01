@@ -11,8 +11,9 @@ byte-identically. There is deliberately no local toolchain here anymore.
 
 Loader order:
   1. `$CODERPUZZLE_RUNNER_DIR/formatters.py` (an explicit coderpuzzle checkout);
-  2. this script's own directory (when it runs from the image's
-     own /runner checkout);
+  2. the directory holding this script (scripts/ of a checkout; no
+     formatters.py lives there today — kept so the loader still works if
+     ever placed beside formatters.py, e.g. a flattened runner/ layout);
   3. the image's `/runner/formatters.py` (a problem checkout mounted
      into the coderpuzzle image — CI and local docker runs);
   4. this checkout's `runner/formatters.py`.

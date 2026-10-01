@@ -6,7 +6,6 @@ from typing import Any
 from .base import ExecutorError, PreparedProgram
 from .compiled import CompiledExecutor
 from .typed import (
-    encode_case,
     function_signature,
     go_type,
     provided_node_class,
@@ -1213,11 +1212,6 @@ class GoExecutor(CompiledExecutor):
                         for index := range values {{ values[index] = read(reader) }}
                         return values
                     }}
-                    func coderpuzzleArrayOf[T any](values []T, convert func(T) any) []any {{
-                        result := make([]any, len(values))
-                        for index, value := range values {{ result[index] = convert(value) }}
-                        return result
-                    }}
                     // The per-kind JSON codecs return []any, so array-of-node
                     // results map through this two-parameter variant — Go
                     // inference cannot assign func(T) R to func(T) any.
@@ -1353,14 +1347,3 @@ class GoExecutor(CompiledExecutor):
                 "GOTRACEBACK": "none",
             },
         )
-
-    def encode_case(self, invocation: dict[str, Any], case_input: Any) -> bytes:
-        if invocation.get("type") == "interactive":
-            from .typed import encode_interactive_case
-
-            return encode_interactive_case(invocation, case_input)
-        if invocation.get("type") == "design":
-            from .design_interactive import encode_design_case
-
-            return encode_design_case(invocation, case_input)
-        return encode_case(invocation, case_input, self.language)

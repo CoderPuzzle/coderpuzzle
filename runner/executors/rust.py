@@ -6,7 +6,6 @@ from typing import Any
 from .base import PreparedProgram
 from .compiled import CompiledExecutor
 from .typed import (
-    encode_case,
     function_signature,
     provided_node_class,
     rust_parameter_type,
@@ -1555,14 +1554,3 @@ class RustExecutor(CompiledExecutor):
                 "RUST_BACKTRACE": "0",
             },
         )
-
-    def encode_case(self, invocation: dict[str, Any], case_input: Any) -> bytes:
-        if invocation.get("type") == "interactive":
-            from .typed import encode_interactive_case
-
-            return encode_interactive_case(invocation, case_input)
-        if invocation.get("type") == "design":
-            from .design_interactive import encode_design_case
-
-            return encode_design_case(invocation, case_input)
-        return encode_case(invocation, case_input, self.language)

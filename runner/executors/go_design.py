@@ -17,14 +17,11 @@ from typing import Any
 from .base import ExecutorError, PreparedProgram
 from .typed import go_type, type_spec
 
-WRAPPER_HEAD = """\
-package main
-
-import (
-	"fmt"
-	"os"
-)
-
+# The wrapper body: declarations from coderpuzzleEmit onward. There is no
+# static header constant — prepare_design assembles the package clause and
+# import block from the `packages` set, so every import this body needs is
+# declared (and only declared) in one place.
+WRAPPER_HEAD_BODY = """\
 func coderpuzzleEmit(line string) {
 	if channel := os.NewFile(63, "protocol"); channel != nil {
 		if _, errorValue := channel.WriteString(line + "\\n"); errorValue == nil {
@@ -119,10 +116,6 @@ func (r *ojReader) value() any {
 	}
 }
 """
-
-
-
-WRAPPER_HEAD_HEADLESS = WRAPPER_HEAD.replace('package main\n\nimport (\n\t"fmt"\n\t"os"\n)\n\n', '')
 
 
 
@@ -466,7 +459,7 @@ def prepare_design(executor, job_root: Path, scratch: Path, code: str,
 
     source = (
         "package main\n\n" + import_block + "\n\n"
-        + WRAPPER_HEAD_HEADLESS
+        + WRAPPER_HEAD_BODY
         + "\n" + JSON_HELPER
         + "\n" + provided_source + "\n" + (TREE_HELPERS + "\n" if needs_tree else "")
         + user_code.strip("\n") + "\n"

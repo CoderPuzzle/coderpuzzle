@@ -30,7 +30,9 @@ class LanguageExecutor(Protocol):
     # runtimes reserve in bulk once a schedule spawns threads rather than in
     # proportion to the thread count, so this is a flat term applied only when
     # a problem declares `threads`. 0 for runtimes that show no such step.
-    schedule_address_space_mb: int = 0
+    # Read by worker._effective_memory_mb via getattr(..., 0); declare it only
+    # on runtimes with a flat schedule reservation (see JavaExecutor).
+    schedule_address_space_mb: int
     max_processes: int
 
     def calibrate(self) -> tuple[float, float]:

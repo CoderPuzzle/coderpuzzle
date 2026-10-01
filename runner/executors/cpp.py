@@ -6,7 +6,6 @@ from .base import ExecutorError, PreparedProgram
 from .compiled import CompiledExecutor
 from .typed import (
     cpp_type,
-    encode_case,
     function_signature,
     provided_node_class,
     struct_item_spec,
@@ -1312,13 +1311,3 @@ class CppExecutor(CompiledExecutor):
             },
         )
 
-    def encode_case(self, invocation: dict[str, Any], case_input: Any) -> bytes:
-        if invocation.get("type") == "interactive":
-            from .typed import encode_interactive_case
-
-            return encode_interactive_case(invocation, case_input)
-        if invocation.get("type") == "design":
-            from .design_interactive import encode_design_case
-
-            return encode_design_case(invocation, case_input)
-        return encode_case(invocation, case_input, self.language)

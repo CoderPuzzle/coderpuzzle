@@ -2,12 +2,11 @@ import json
 import os
 import signal
 import subprocess
-import time
 from pathlib import Path
 from typing import Any, Optional
 
 from .base import ExecutorError, PreparedProgram
-from .compiled import sandboxed_compiler_command
+from .compiled import run_benchmark, sandboxed_compiler_command
 
 
 class JavaExecutor:
@@ -51,28 +50,20 @@ class JavaExecutor:
     )
 
     def calibrate(self) -> tuple[float, float]:
-        started = time.perf_counter()
-        try:
-            subprocess.run(
-                (
-                    self.java_path,
-                    *self._vm_options,
-                    "-cp",
-                    str(self.harness_classes),
-                    "CoderPuzzleJavaHarness",
-                    "--benchmark",
-                ),
-                check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                timeout=10,
-                env={"PATH": "/usr/bin:/bin", "HOME": "/nonexistent"},
-            )
-        except (OSError, subprocess.SubprocessError) as error:
-            raise ExecutorError(f"Java calibration failed: {error}") from error
-        elapsed_ms = (time.perf_counter() - started) * 1000
-        factor = min(3.0, max(0.75, elapsed_ms / self.reference_benchmark_ms))
-        return elapsed_ms, factor
+        return run_benchmark(
+            "Java",
+            (
+                self.java_path,
+                *self._vm_options,
+                "-cp",
+                str(self.harness_classes),
+                "CoderPuzzleJavaHarness",
+                "--benchmark",
+            ),
+            # Deliberately without /usr/local/bin: the JVM gets the tight PATH.
+            {"PATH": "/usr/bin:/bin", "HOME": "/nonexistent"},
+            self.reference_benchmark_ms,
+        )
 
     def compiler_command(self, command: tuple[str, ...], job_root: Path) -> list[str]:
         """The command that forks javac: the sandboxed compiler wrapper by

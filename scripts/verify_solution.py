@@ -6,7 +6,13 @@ Mirrors the runner's execution loop (same executors, same wrappers, same
 protocol) but without sandboxing — trusted authoring-time verification.
 
 Usage: verify_solution.py <shard-qualified-bundle-key> [<ext> ...]
-       (default exts: every solution.* present in the bundle)
+       verify_solution.py <key> --solution <file> [--solution <file> ...]
+       (default exts: every solution.* present in the bundle; --solution may
+       be repeated and may appear anywhere after the key)
+
+With --solution, judge the named external file(s) against the bundle's cases
+instead of the bundle's own solution* files; ext filters cannot be combined
+with it.
 
 The key is resolved against this repo's ``problems/`` tree (or the directory
 named by ``CODERPUZZLE_PROBLEMS``); local toolchain binaries are expected on
@@ -289,7 +295,7 @@ def main() -> None:
     key = bundle.name
     arguments = sys.argv[2:]
     # --solution judges a file that lives outside the bundle against this
-    # bundle's cases; the adaptation program's compatibility gate uses it
+    # bundle's cases; the adaptation program's compatibility gate used it
     # to run the *source* problem's reference solution here.
     external: list[Path] = []
     while "--solution" in arguments:

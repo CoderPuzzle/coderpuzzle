@@ -5,81 +5,20 @@ from typing import Any
 from .base import PreparedProgram
 from .compiled import CompiledExecutor
 from .typed import (
-    encode_case,
     function_signature,
     provided_node_class,
     struct_item_spec,
     uses_struct_kinds,
 )
-
-
-def _read_expression(spec: dict[str, Any]) -> str:
-    kind = spec["kind"]
-    if kind == "integer":
-        return "coderpuzzleReader.int32()" if spec.get("bits", 32) == 32 else "coderpuzzleReader.int64()"
-    if kind == "number":
-        return "coderpuzzleReader.number()"
-    if kind == "boolean":
-        return "coderpuzzleReader.boolean()"
-    if kind == "string":
-        return "coderpuzzleReader.string()"
-    if kind == "linked_list":
-        return "coderpuzzleReader.linkedList()"
-    if kind == "binary_tree":
-        return "coderpuzzleReader.tree()"
-    if kind == "nary_tree":
-        return "coderpuzzleReader.naryTree()"
-    if kind == "quad_tree":
-        return "coderpuzzleReader.quadTree()"
-    if kind == "nested":
-        return "coderpuzzleReader.nested()"
-    if kind == "next_tree":
-        return "coderpuzzleReader.nextTree()"
-    if kind == "circular_list":
-        return "coderpuzzleReader.circularList()"
-    if kind == "doubly_circular":
-        return "coderpuzzleReader.doublyCircular()"
-    if kind == "multi_list":
-        return "coderpuzzleReader.multiList()"
-    if kind == "graph":
-        return "coderpuzzleReader.graph()"
-    if kind == "random_list":
-        return "coderpuzzleReader.randomList()"
-    if kind == "doubly_list":
-        return "coderpuzzleReader.doublyList()"
-    if kind == "doubly_list_node":
-        return "coderpuzzleReader.doublyListNode()"
-    if kind == "random_tree":
-        return "coderpuzzleReader.randomTree()"
-    if kind == "special_tree":
-        return "coderpuzzleReader.specialTree()"
-    if kind == "nary_tree_nodes":
-        return "coderpuzzleReader.naryTreeNodes()"
-    if kind == "json":
-        return "coderpuzzleReader.json()"
-    if kind == "struct":
-        return f"coderpuzzleReader.read{spec['class']}()"
-    return f"coderpuzzleReader.array(() => {_read_expression(spec['items'])})"
-
-
-def _uses_json(spec: Any) -> bool:
-    """Whether a type spec (or any nested array item) is the generic JSON
-    kind — the one kind uses_struct_kinds does not collect, since it names
-    no class and needs no prelude."""
-    if not isinstance(spec, dict):
-        return False
-    if spec.get("kind") == "json":
-        return True
-    return _uses_json(spec.get("items"))
-
-
-def _collect_structs(spec: Any, found: dict[str, dict[str, Any]]) -> None:
-    if not isinstance(spec, dict):
-        return
-    if spec.get("kind") == "struct":
-        found.setdefault(spec["class"], spec)
-    elif spec.get("kind") == "array":
-        _collect_structs(spec.get("items"), found)
+# The JavaScript and TypeScript wire codecs must stay in lockstep: one
+# kind table, one JSON/struct scan, one reader-expression renderer (the
+# receiver defaults to the shared reader; the struct-field call site
+# rewrites it to `this`).
+from .typescript import (
+    _collect_structs,
+    _read_expression,
+    _uses_json,
+)
 
 
 def _struct_codecs(invocation: dict[str, Any]) -> tuple[str, str]:
@@ -1060,14 +999,3 @@ class JavaScriptExecutor(CompiledExecutor):
                 "TMPDIR": str(scratch),
             },
         )
-
-    def encode_case(self, invocation: dict[str, Any], case_input: Any) -> bytes:
-        if invocation.get("type") == "interactive":
-            from .typed import encode_interactive_case
-
-            return encode_interactive_case(invocation, case_input)
-        if invocation.get("type") == "design":
-            from .design_interactive import encode_design_case
-
-            return encode_design_case(invocation, case_input)
-        return encode_case(invocation, case_input, self.language)

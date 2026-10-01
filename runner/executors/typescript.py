@@ -5,7 +5,6 @@ from typing import Any
 from .base import PreparedProgram
 from .compiled import CompiledExecutor
 from .typed import (
-    encode_case,
     function_signature,
     provided_node_class,
     struct_item_spec,
@@ -13,6 +12,8 @@ from .typed import (
 )
 
 
+# The three wire-codec helpers below are the shared JavaScript/TypeScript
+# versions — javascript.py imports them so the kind table stays in lockstep.
 def _read_expression(spec: dict[str, Any], receiver: str = "coderpuzzleReader") -> str:
     kind = spec["kind"]
     if kind == "integer":
@@ -1111,14 +1112,3 @@ class TypeScriptExecutor(CompiledExecutor):
                 "TMPDIR": str(scratch),
             },
         )
-
-    def encode_case(self, invocation: dict[str, Any], case_input: Any) -> bytes:
-        if invocation.get("type") == "interactive":
-            from .typed import encode_interactive_case
-
-            return encode_interactive_case(invocation, case_input)
-        if invocation.get("type") == "design":
-            from .design_interactive import encode_design_case
-
-            return encode_design_case(invocation, case_input)
-        return encode_case(invocation, case_input, self.language)

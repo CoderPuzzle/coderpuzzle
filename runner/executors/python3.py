@@ -1,10 +1,9 @@
 import json
-import subprocess
-import time
 from pathlib import Path
 from typing import Any
 
 from .base import ExecutorError, PreparedProgram
+from .compiled import run_benchmark
 
 
 class Python3Executor:
@@ -32,21 +31,12 @@ class Python3Executor:
     )
 
     def calibrate(self) -> tuple[float, float]:
-        started = time.perf_counter()
-        try:
-            subprocess.run(
-                (self.python_path, "-I", "-S", "-c", self.benchmark_source),
-                check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                timeout=10,
-                env={"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": "/nonexistent"},
-            )
-        except (OSError, subprocess.SubprocessError) as error:
-            raise ExecutorError(f"{self.language} calibration failed: {error}") from error
-        elapsed_ms = (time.perf_counter() - started) * 1000
-        factor = min(3.0, max(0.75, elapsed_ms / self.reference_benchmark_ms))
-        return elapsed_ms, factor
+        return run_benchmark(
+            self.language,
+            (self.python_path, "-I", "-S", "-c", self.benchmark_source),
+            {"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": "/nonexistent"},
+            self.reference_benchmark_ms,
+        )
 
     def prepare(
         self,

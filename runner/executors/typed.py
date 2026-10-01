@@ -40,14 +40,20 @@ _ITEM_KINDS = {
 _CLASS_KINDS = {"graph", "random_list", "doubly_list", "doubly_list_node", "random_tree"}
 
 
-def type_spec(value: Any, location: str) -> dict[str, Any]:
+def type_spec(value: Any, location: str, *, _nested: bool = False) -> dict[str, Any]:
     if not isinstance(value, dict) or value.get("kind") not in SUPPORTED_KINDS:
         raise ExecutorError(f"{location} needs a supported value_type")
     kind = value["kind"]
+    # alias_list/nary_tree_ref name an earlier top-level parameter, so they
+    # are only meaningful (and only decodable) as top-level parameters —
+    # nested under an array or a struct field no reader decodes the splice
+    # wire. Top-level returns stay legal (LC 160's return_type).
+    if _nested and kind in {"alias_list", "nary_tree_ref"}:
+        raise ExecutorError(f"{location} alias_list/nary_tree_ref are top-level parameter kinds")
     if kind == "integer" and value.get("bits", 32) not in {32, 64}:
         raise ExecutorError(f"{location} integer bits must be 32 or 64")
     if kind == "array":
-        type_spec(value.get("items"), f"{location} array items")
+        type_spec(value.get("items"), f"{location} array items", _nested=True)
     if kind in _ITEM_KINDS:
         items = value.get("items")
         if items is None:
@@ -58,7 +64,9 @@ def type_spec(value: Any, location: str) -> dict[str, Any]:
             value = {**value, "items": items}
         if not isinstance(items, dict) or items.get("kind") != "integer":
             raise ExecutorError(f"{location} {kind} items must be integers")
-        type_spec(items, f"{location} {kind} items")
+        # Unreachable for alias_list/nary_tree_ref (the integer check above
+        # rejects them first); marked for consistency.
+        type_spec(items, f"{location} {kind} items", _nested=True)
     if kind in {"alias_list", "nary_tree_ref"}:
         alias = value.get("alias")
         if not isinstance(alias, int) or isinstance(alias, bool) or alias < 0:
@@ -77,7 +85,7 @@ def type_spec(value: Any, location: str) -> dict[str, Any]:
         for index, field in enumerate(fields):
             if not isinstance(field, dict) or not isinstance(field.get("name"), str) or not field["name"].isidentifier():
                 raise ExecutorError(f"{location} struct field {index + 1} needs an identifier name")
-            type_spec(field.get("value_type"), f"{location} field {field['name']}")
+            type_spec(field.get("value_type"), f"{location} field {field['name']}", _nested=True)
     return value
 
 
