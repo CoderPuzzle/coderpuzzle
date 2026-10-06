@@ -47,9 +47,9 @@ compose at it.
 CODERPUZZLE_PROBLEMS_PATH=../my-problem-set docker compose up -d
 ```
 
-A bank also carries its own `calibration/` directory beside `problems/` —
-the app picks it up automatically (see [CALIBRATION.md](CALIBRATION.md)),
-so a plugged-in set brings its reference timings with it.
+A bank also carries its own `calibration/` directory beside `problems/`;
+point `CODERPUZZLE_CALIBRATION_DIR` at it when serving that set (see
+[CALIBRATION.md](CALIBRATION.md)).
 
 Bundle validation is deliberately not a CI step for these trees — the bank
 and the system live in different repositories. Validation is an on-demand

@@ -7,24 +7,11 @@ from pathlib import Path
 from typing import Any
 
 
-def _calibration_dir() -> Path:
-    """Where the published calibration.json lives.
-
-    ``CODERPUZZLE_CALIBRATION_DIR`` wins when set (compose points it at the
-    ``calibration_data`` volume). Unset, the calibration rides with the
-    problem bank: a ``calibration/`` directory beside the selected problems
-    directory — every problem-bank repository is laid out that way, so
-    plugging in a bank via ``CODERPUZZLE_PROBLEMS`` brings its calibration
-    along automatically."""
-    configured = os.environ.get("CODERPUZZLE_CALIBRATION_DIR", "").strip()
-    if configured:
-        return Path(configured)
-    from .problems import PROBLEMS_DIR
-
-    return PROBLEMS_DIR.parent / "calibration"
-
-
-CALIBRATION_DIR = _calibration_dir()
+# Where the published calibration.json lives: compose points
+# CODERPUZZLE_CALIBRATION_DIR at the calibration_data volume. One explicit
+# variable per input — the problems selector never changes where the
+# calibration is read from.
+CALIBRATION_DIR = Path(os.environ.get("CODERPUZZLE_CALIBRATION_DIR", ".calibration"))
 CALIBRATION_FILE = CALIBRATION_DIR / "calibration.json"
 REQUIRED = os.environ.get("CODERPUZZLE_REQUIRE_CALIBRATION", "0") == "1"
 
