@@ -113,6 +113,12 @@ def initialize_database() -> None:
             connection.execute("ALTER TABLE submissions ADD COLUMN reference_runtime_ms INTEGER")
         if "timing_mode" not in columns:
             connection.execute("ALTER TABLE submissions ADD COLUMN timing_mode TEXT NOT NULL DEFAULT 'wall'")
+        # Speed scoring: the submission's own algorithm time and the ratio
+        # against its language's reference (None when unmeasured/uncomparable).
+        if "algorithm_us" not in columns:
+            connection.execute("ALTER TABLE submissions ADD COLUMN algorithm_us INTEGER")
+        if "performance_ratio_percent" not in columns:
+            connection.execute("ALTER TABLE submissions ADD COLUMN performance_ratio_percent REAL")
         if "resource_profile" not in columns:
             connection.execute("ALTER TABLE submissions ADD COLUMN resource_profile TEXT NOT NULL DEFAULT 'shared-wall-v1'")
         # Every scoped read (per-viewer submissions, progress, purge) filters
@@ -153,13 +159,15 @@ def save_submission(
     reference_runtime_ms: int | None = None,
     timing_mode: str = "wall",
     resource_profile: str = "shared-wall-v1",
+    algorithm_us: int | None = None,
+    performance_ratio_percent: float | None = None,
 ) -> int:
     with connect() as connection:
         cursor = connection.execute(
             """
             INSERT INTO submissions
-                (session_id, problem_slug, language, code, status, passed, total, runtime_ms, results_json, reference_runtime_ms, timing_mode, resource_profile)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                (session_id, problem_slug, language, code, status, passed, total, runtime_ms, results_json, reference_runtime_ms, timing_mode, resource_profile, algorithm_us, performance_ratio_percent)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 session_id,
@@ -174,6 +182,8 @@ def save_submission(
                 reference_runtime_ms,
                 timing_mode,
                 resource_profile,
+                algorithm_us,
+                performance_ratio_percent,
             ),
         )
         return int(cursor.lastrowid)
@@ -185,7 +195,7 @@ def list_submissions(
     with connect() as connection:
         rows = connection.execute(
             """
-            SELECT id, problem_slug, language, status, passed, total, runtime_ms, reference_runtime_ms, timing_mode, resource_profile, created_at
+            SELECT id, problem_slug, language, status, passed, total, runtime_ms, reference_runtime_ms, timing_mode, resource_profile, created_at, algorithm_us, performance_ratio_percent
             FROM submissions
             WHERE problem_slug = ? AND session_id = ?
             ORDER BY id DESC LIMIT ?

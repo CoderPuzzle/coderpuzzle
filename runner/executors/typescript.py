@@ -1086,6 +1086,7 @@ class TypeScriptExecutor(CompiledExecutor):
                 "--skipLibCheck",
                 "--pretty",
                 "false",
+                "--sourceMap",
                 "--outDir",
                 str(job_root),
                 str(source_path),
@@ -1100,6 +1101,9 @@ class TypeScriptExecutor(CompiledExecutor):
         return PreparedProgram(
             command=(
                 self.node_path,
+                # Map runtime stack frames back to the .ts source lines so
+                # error_line points at the submission, not the compiled js.
+                "--enable-source-maps",
                 "--disable-proto=throw",
                 "--no-addons",
                 "--max-old-space-size=192",

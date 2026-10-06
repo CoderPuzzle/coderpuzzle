@@ -3,6 +3,7 @@ import Editor from "@monaco-editor/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {
+  Info,
   Braces,
   Check,
   ChevronDown,
@@ -2174,7 +2175,19 @@ function Submissions({ submissions, problem }: { submissions: Submission[]; prob
   if (!submissions.length) return <ConsoleEmpty icon={<History />} title="No submissions yet" detail="Submit a solution and its verdict will be saved here." />;
   return (
     <div className="submission-list">
-      <div className="submission-header"><span>Verdict</span><span>Language</span><span>Runtime</span><span>Submitted</span></div>
+      <div className="submission-header">
+        <span>Verdict</span><span>Language</span>
+        <span className="speed-header">
+          Speed
+          <span
+            className="speed-info"
+            title="Algorithm run time as a percentage of this language's reference-solution baseline (100% = same speed; lower is faster). Shown when the pair's calibration covers the submission."
+          >
+            <Info size={12} />
+          </span>
+        </span>
+        <span>Submitted</span>
+      </div>
       {submissions.map((submission) => (
         <div className="submission-row" key={submission.id}>
           <span className="submission-status">
@@ -2182,7 +2195,11 @@ function Submissions({ submissions, problem }: { submissions: Submission[]; prob
             <span className={`status-text ${statusTone(submission.status)}`}>{statusLabel(submission.status)}</span>
           </span>
           <span>{problem.languages[submission.language]?.display_name ?? submission.language}</span>
-          <span>{submission.runtime_ms} ms{submission.timing_mode === "cpu" ? " CPU" : ""}</span>
+          <span className="speed-cell">
+            {submission.performance_ratio_percent != null
+              ? `${submission.performance_ratio_percent}%`
+              : <span className="speed-unknown" title="No comparable reference timing for this submission">—</span>}
+          </span>
           <time>{new Date(submission.created_at).toLocaleString()}</time>
         </div>
       ))}

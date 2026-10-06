@@ -112,6 +112,8 @@ export type Submission = {
     timing_mode?: "cpu" | "wall" | "mixed";
     resource_profile?: string;
     created_at: string;
+    algorithm_us?: number | null;
+    performance_ratio_percent?: number | null;
 };
 
 // GET /problems/{slug}/solutions — the Solutions tab payload.

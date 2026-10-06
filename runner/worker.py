@@ -3,6 +3,7 @@ import hashlib
 import json
 import math
 import os
+import re
 import secrets
 import shutil
 import signal
@@ -367,7 +368,42 @@ def _run_case(
                 parsed.pop(optional, None)
         if process.returncode != 0 and parsed["status"] == "runtime_error" and not parsed.get("error"):
             parsed["error"] = f"{executor.language} exited with status {process.returncode}"
+        if parsed["status"] == "runtime_error":
+            # Point non-python errors at the submission source too: the
+            # merged process output carries the JVM stack, the go/rust
+            # panic location, or the node stack — each names the
+            # submission's own file and line.
+            _decorate_runtime_error(parsed, executor.language, output)
         return parsed
+
+
+
+# Per-language patterns for the submission's own source file in merged
+# process output: JVM/node stacks name Solution.java / main.js, go and
+# rust panics name main.go / main.rs, gcc diagnostics name main.cpp.
+_RUNTIME_LINE_PATTERNS = {
+    "java": re.compile(r"Solution\.java:(\d+)"),
+    "go": re.compile(r"main\.go:(\d+)"),
+    "rust": re.compile(r"main\.rs:(\d+)"),
+    "javascript": re.compile(r"main\.js:(\d+)"),
+    "typescript": re.compile(r"main\.ts:(\d+)"),
+    "cpp": re.compile(r"main\.cpp:(\d+)"),
+    "python": re.compile(r"solution\.py:(\d+)"),
+}
+
+
+def _decorate_runtime_error(parsed: dict[str, Any], language: str, merged_output: str) -> None:
+    """Add error_line for the languages whose crashed-process output names
+    the submission source. The python harness extracts its own line into
+    the protocol before this ever runs."""
+    if parsed.get("error_line"):
+        return
+    pattern = _RUNTIME_LINE_PATTERNS.get(language)
+    if pattern is None:
+        return
+    match = pattern.search(merged_output)
+    if match:
+        parsed["error_line"] = int(match.group(1))
 
 
 def _write_response(job_dir: Path, response: dict[str, Any]) -> None:

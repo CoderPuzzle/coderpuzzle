@@ -603,6 +603,8 @@ def submit(
         summary["reference_runtime_ms"],
         summary["timing_mode"],
         summary["resource_profile"],
+        summary.get("algorithm_us"),
+        ratio,
     )
     summary["submission_id"] = submission_id
     return summary
