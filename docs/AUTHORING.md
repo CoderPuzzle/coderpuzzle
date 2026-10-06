@@ -137,8 +137,8 @@ A failing case is a real verdict: read the status (`wrong_answer`,
 `runtime_error`, `time_limit_exceeded`), fix the artifact — solution,
 case, or schema — and judge again.
 
-A new problem's calibration record joins the bank repository's
-`calibration/` directory (repo root, sibling of `problems/` — see
+A new problem's calibration record joins the bank's
+`problems/.calibration/` directory (see
 [docs/CALIBRATION.md](CALIBRATION.md)). Bundle validation is an on-demand
 command, not a CI gate (the problem
 bank lives in its own repository; only this repo's five exemplar bundles

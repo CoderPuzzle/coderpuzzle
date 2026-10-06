@@ -6,12 +6,20 @@ import os
 from pathlib import Path
 from typing import Any
 
+from .problems import PROBLEMS_DIR
 
-# Where the published calibration.json lives: compose points
-# CODERPUZZLE_CALIBRATION_DIR at the calibration_data volume. One explicit
-# variable per input — the problems selector never changes where the
-# calibration is read from.
-CALIBRATION_DIR = Path(os.environ.get("CODERPUZZLE_CALIBRATION_DIR", ".calibration"))
+
+# Where the published calibration.json lives. Unset, it rides inside the
+# selected problem set as the hidden .calibration/ directory — a bank
+# carries its problems and its calibration in one tree, and a set without
+# .calibration simply serves without calibration. compose points
+# CODERPUZZLE_CALIBRATION_DIR at the calibration_data volume; that explicit
+# override always wins.
+CALIBRATION_DIR = Path(
+    os.environ.get("CODERPUZZLE_CALIBRATION_DIR", "")
+    .strip()
+    or str(PROBLEMS_DIR / ".calibration")
+)
 CALIBRATION_FILE = CALIBRATION_DIR / "calibration.json"
 REQUIRED = os.environ.get("CODERPUZZLE_REQUIRE_CALIBRATION", "0") == "1"
 

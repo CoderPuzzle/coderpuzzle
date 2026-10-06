@@ -559,7 +559,8 @@ def misnamed_dir_failures(root: Path) -> list[Failure]:
     an authoring typo would ship as a problem nobody can serve."""
     failures: list[Failure] = []
     for child in sorted(root.iterdir()):
-        if not child.is_dir() or BUNDLE_NAME.fullmatch(child.name):
+        # dot entries carry tree-level state (.calibration), not problems
+        if not child.is_dir() or child.name.startswith(".") or BUNDLE_NAME.fullmatch(child.name):
             continue
         if not any(
             sub.is_dir() and BUNDLE_NAME.fullmatch(sub.name) for sub in child.iterdir()
@@ -582,7 +583,7 @@ def bundle_dirs(root: Path) -> list[Path]:
     """
     bundles = []
     for child in sorted(root.iterdir()):
-        if not child.is_dir():
+        if not child.is_dir() or child.name.startswith("."):
             continue
         if BUNDLE_NAME.fullmatch(child.name):
             bundles.append(child)

@@ -1702,7 +1702,7 @@ def main() -> None:
             child if (child / "problem.json").is_file() else sub
             for tree in ("problems",)
             for child in root.glob(f"{tree}/*")
-            if child.is_dir()
+            if child.is_dir() and not child.name.startswith(".")
             for sub in (
                 [child]
                 if (child / "problem.json").is_file()

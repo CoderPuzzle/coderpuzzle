@@ -104,9 +104,13 @@ LANGUAGE_EXTENSION = {extension: language for language, extension in EXTENSION_L
 
 def _iter_problem_paths(root: Path) -> list[Path]:
     """Every candidate bundle path under root: flat children first, then
-    children of shard subdirectories (one level down, nothing deeper)."""
+    children of shard subdirectories (one level down, nothing deeper).
+    Dot entries are skipped — the tree may carry a hidden ``.calibration``
+    directory beside the bundles."""
     candidates: list[Path] = []
     for child in sorted(root.iterdir()):
+        if child.name.startswith("."):
+            continue
         if SHARD_DIR.fullmatch(child.name) is not None and child.is_dir():
             candidates.extend(sorted(child.iterdir()))
         else:

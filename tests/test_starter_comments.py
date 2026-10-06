@@ -113,3 +113,30 @@ class StyleResolutionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class CalibrationDefaultTests(unittest.TestCase):
+    def test_default_rides_inside_the_problem_set(self):
+        import tempfile
+        import unittest.mock
+
+        from api.app import calibration, problems as problems_module
+
+        with tempfile.TemporaryDirectory() as scratch:
+            problems = Path(scratch) / "problems"
+            problems.mkdir()
+            (problems / ".calibration").mkdir()
+            saved = os.environ.pop("CODERPUZZLE_CALIBRATION_DIR", None)
+            # patch the SOURCE: the reload re-runs `from .problems import`
+            with unittest.mock.patch.object(
+                problems_module, "PROBLEMS_DIR", problems
+            ):
+                importlib.reload(calibration)
+                self.assertEqual(
+                    problems / ".calibration", calibration.CALIBRATION_DIR
+                )
+            if saved is not None:
+                os.environ["CODERPUZZLE_CALIBRATION_DIR"] = saved
+            else:
+                os.environ.pop("CODERPUZZLE_CALIBRATION_DIR", None)
+            importlib.reload(calibration)
