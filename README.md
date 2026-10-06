@@ -29,19 +29,13 @@ fields are in [docs/JUDGE-RESOURCES.md](docs/JUDGE-RESOURCES.md).
 
 The app serves whatever directory `CODERPUZZLE_PROBLEMS` points at — one
 variable selects the tree, nothing is fetched or cached. This repository
-ships a five-bundle exemplar set under `problems/` (served by default, and
-the templates for writing new problems); the full original corpus lives in
-the sibling repository
-[CoderPuzzle/lc-original](https://github.com/CoderPuzzle/lc-original):
-
-```bash
-git clone git@github.com:CoderPuzzle/lc-original.git ../lc-original
-CODERPUZZLE_PROBLEMS_PATH=../lc-original/problems docker compose up -d
-```
-
-The bundle formats, the problem-set model, and the exemplar set are
-described in [docs/PROBLEM-SETS.md](docs/PROBLEM-SETS.md); the authoritative
-bundle reference is [docs/FORMAT.md](docs/FORMAT.md).
+ships a five-bundle exemplar set under `problems/` (served by default):
+one bundle per typical shape — a plain function problem, a linked-list
+parameter, a binary tree, a design class, an interactive oracle — ready
+to be read as templates for composing and plugging in new problems. The
+selection variable, the layout rules, and how to validate a set are
+described in [docs/PROBLEM-SETS.md](docs/PROBLEM-SETS.md); the
+authoritative bundle reference is [docs/FORMAT.md](docs/FORMAT.md).
 
 ## Authoring a problem
 

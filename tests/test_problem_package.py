@@ -331,7 +331,7 @@ class TwoSumPackageTests(unittest.TestCase):
     def test_problem_uses_one_language_agnostic_markdown_asset(self) -> None:
         # The shipped exemplar bundles keep one language-agnostic statement
         # per bundle rather than separate problem assets for each runtime.
-        bundle = PROBLEMS_ROOT / "0001-0100" / "0001_pair-sum"
+        bundle = PROBLEMS_ROOT / "0001_pair-sum"
         self.assertTrue(bundle.is_dir())
         self.assertEqual([bundle / "statement.md"], list(bundle.glob("statement*.md")))
         self.assertEqual(3, self.public_count)
