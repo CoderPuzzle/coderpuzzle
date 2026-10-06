@@ -33,6 +33,15 @@ the denominator of the score ratio (see
 resource profiles, and the tuning knobs). The deadline formula and its
 long-tail caveats are in [api-and-cli.md](api-and-cli.md).
 
+## Placement rule
+
+Every problem-bank repository carries its own `calibration/` directory at
+the repo root, sibling of `problems/` — one artifact per tree, keeping the
+served directory pure bundles. The bank repos
+([PROBLEM-SETS.md](PROBLEM-SETS.md)) commit the artifact for review;
+deployments serve it from the `coderpuzzle_calibration_data` volume seeded
+from that file.
+
 ## Production notes
 
 The serving tree and the calibration must agree: a calibration built for

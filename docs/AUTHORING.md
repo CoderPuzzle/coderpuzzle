@@ -137,7 +137,10 @@ A failing case is a real verdict: read the status (`wrong_answer`,
 `runtime_error`, `time_limit_exceeded`), fix the artifact — solution,
 case, or schema — and judge again.
 
-Bundle validation is an on-demand command, not a CI gate (the problem
+A new problem's calibration record joins the bank repository's
+`calibration/` directory (repo root, sibling of `problems/` — see
+[docs/CALIBRATION.md](CALIBRATION.md)). Bundle validation is an on-demand
+command, not a CI gate (the problem
 bank lives in its own repository; only this repo's five exemplar bundles
 are tracked here as templates). The static gate runs the same way, from
 the mounted checkout:
