@@ -976,7 +976,13 @@ class JavaScriptExecutor(CompiledExecutor):
                     coderpuzzleEmit(`__CODERPUZZLE_RESULT__{{"status":"completed","actual":${{coderpuzzleEncoded}},"algorithm_us":${{coderpuzzleAlgorithmUs()}}}}`);
                 }} catch (error) {{
                     const message = error instanceof Error ? `${{error.name}}: ${{error.message}}` : String(error);
-                    coderpuzzleEmit(`__CODERPUZZLE_RESULT__{{"status":"runtime_error","error":${{JSON.stringify(message.slice(0, 4096))}}}}`);
+                    const throwSite = /main[.]js:([0-9]+)/.exec(error && error.stack || "");
+                    // Point the verdict at the throw site in the submitted
+                    // source (source maps map the compiled frames back).
+                    const stackMatch = /main[.]js:([0-9]+)/.exec(error && error.stack || "");
+                    const linePayload = stackMatch ? `"error_line":${{stackMatch[1]}},` : "";
+                    const messageWithSite = stackMatch ? `${{message}} (main.js:${{stackMatch[1]}})` : message;
+                    coderpuzzleEmit(`__CODERPUZZLE_RESULT__{{"status":"runtime_error",${{linePayload}}"error":${{JSON.stringify(messageWithSite.slice(0, 4096))}}}}`);
                 }}
             }})();
             """

@@ -17,7 +17,7 @@ from .typed import (
 # in the file's import preamble, so user imports are lifted out of the code
 # and merged with the wrapper's own.
 GO_IMPORT_BLOCK = re.compile(r'^import \((?:\s*"[^"]+"\s*)+\)\s*\n|^import\s+"[^"]+"\s*\n', re.M)
-WRAPPER_IMPORTS = ("encoding/binary", "encoding/json", "fmt", "io", "math", "os", "strconv", "time")
+WRAPPER_IMPORTS = ("encoding/binary", "encoding/json", "fmt", "io", "math", "os", "regexp", "runtime/debug", "strconv", "strings", "time")
 
 # Reader method per value_type kind; struct kinds read through a method
 # named after the class. The assembled program is kept gofmt-canonical, so
@@ -89,6 +89,10 @@ def _read_expression(spec: dict[str, Any], reader: str = "coderpuzzleReader") ->
     nested = _read_expression(spec["items"], "reader")
     return f"coderpuzzleArray({reader}, func(reader *coderpuzzleReaderType) {item_type} {{ return {nested} }})"
 
+
+# Appended verbatim to the generated main.go: names the panic site the
+# recover-time stack crossed in the submitted program.
+GO_PANIC_LOCATION_HELPER = 'func coderpuzzlePanicLocation(message string) (string, string) {\n\tfor _, frame := range strings.Split(string(debug.Stack()), "\\n") {\n\t\tif match := regexp.MustCompile(`main[.]go:([0-9]+)`).FindStringSubmatch(frame); match != nil {\n\t\t\treturn message, match[1]\n\t\t}\n\t}\n\treturn message, ""\n}'
 
 class GoExecutor(CompiledExecutor):
     language = "go"
@@ -1246,7 +1250,11 @@ class GoExecutor(CompiledExecutor):
                     func coderpuzzleExecute() (response map[string]any) {{
                         defer func() {{
                             if recovered := recover(); recovered != nil {{
-                                response = map[string]any{{"status": "runtime_error", "error": fmt.Sprint(recovered)}}
+                                message, line := coderpuzzlePanicLocation(fmt.Sprint(recovered))
+                                if line != "" {{
+                                    message = fmt.Sprintf("%s (main.go:%s)", message, line)
+                                }}
+                                response = map[string]any{{"status": "runtime_error", "error": message, "error_line": line}}
                             }}
                         }}()
                         bytes, errorValue := io.ReadAll(os.Stdin)
@@ -1304,7 +1312,7 @@ class GoExecutor(CompiledExecutor):
                         coderpuzzleEmit("__CODERPUZZLE_RESULT__" + string(encoded))
                     }}
                     """
-            )
+            ) + GO_PANIC_LOCATION_HELPER
         )
         source_path = job_root / "main.go"
         executable = job_root / "solution"

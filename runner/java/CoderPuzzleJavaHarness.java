@@ -87,6 +87,15 @@ public final class CoderPuzzleJavaHarness {
             Throwable root = unwrap(error);
             response.put("status", "runtime_error");
             response.put("error", boundedError(root));
+            // Point the verdict at the submitted source: the deepest frame
+            // in the file the judge compiled from the user's code.
+            for (StackTraceElement frame : root.getStackTrace()) {
+                if ("solution.java".equalsIgnoreCase(frame.getFileName()) && frame.getLineNumber() > 0) {
+                    response.put("error_line", frame.getLineNumber());
+                    response.put("error", boundedError(root) + " (solution.java:" + frame.getLineNumber() + ")");
+                    break;
+                }
+            }
         } finally {
             System.setOut(protocolOutput);
             capturedOutput.flush();

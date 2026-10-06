@@ -36,6 +36,10 @@ class JavaExecutor:
 
     _vm_options = (
         "-XX:+UseSerialGC",
+        # Keep full stack traces on repeated throws: the JIT's fast-throw
+        # elides them after a handful of cases, which would strip the
+        # error_line the verdict reports.
+        "-XX:-OmitStackTraceInFastThrow",
         "-XX:ActiveProcessorCount=1",
         "-XX:CICompilerCount=2",
         "-Xms16m",
@@ -128,6 +132,10 @@ class JavaExecutor:
             "-J-XX:CompressedClassSpaceSize=32m",
             "-J-XX:ReservedCodeCacheSize=32m",
             "-proc:none",
+            # Keep the SourceFile and LineNumberTable attributes: the
+            # harness's error_line walks the stack for the submission's
+            # file, and -g:none strips both.
+            "-g:source,lines",
             "-encoding",
             "UTF-8",
             "-g:none",
