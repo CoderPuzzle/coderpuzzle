@@ -10,7 +10,7 @@
       `algorithm_repeat_count` for the eligible below-floor pairs — every
       existing calibration record still reads today's single-call
       behavior until this runs. `problems/` first; once clean, the same
-      sweep against `lc-adapt`.
+      sweep against the adapted tree.
     - Fold LC 10's targeted invalidation (below) into that same sweep
       rather than a separate one-off run.
   Merges the two formerly-separate TODO items below, since both

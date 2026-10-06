@@ -41,12 +41,12 @@ class ProblemSetPathTests(unittest.TestCase):
     def test_a_github_shorthand_is_not_a_problem_set(self):
         """The old `owner/name` spec must fail loudly, not silently fetch."""
         with self.assertRaises(ValueError) as caught:
-            _reload_with("CoderPuzzle/lc-adapt")
+            _reload_with("some-owner/some-repo")
         self.assertIn("not a directory", str(caught.exception))
 
     def test_a_git_url_is_not_a_problem_set(self):
-        for spec in ("https://github.com/CoderPuzzle/lc-adapt.git",
-                     "git@github.com:CoderPuzzle/lc-adapt.git"):
+        for spec in ("https://github.com/some-owner/some-repo.git",
+                     "git@github.com:some-owner/some-repo.git"):
             with self.subTest(spec=spec):
                 with self.assertRaises(ValueError):
                     _reload_with(spec)

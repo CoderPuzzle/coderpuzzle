@@ -1,10 +1,11 @@
 """Whole-corpus coverage + consistency verification (merged layout).
 
-Chain: ~/code/lc-crawl (raw crawl) -> ~/code/bettercode (curated good
-tier, 838) -> this repo's problems/ original tree (canonical names for
+Chain: the crawl checkout (raw crawl) -> the bettercode checkout (curated
+good tier) -> this repo's problems/ original tree (canonical names for
 bettercode originals, `-crawl` slug suffix on the 13 extend twins) plus the
-private lc-adapt checkout's problems/ tree (838 bettercode-derived bundles
-keyed by MAPPING.json plus every other crawl id adapted 1:1).
+private adapted checkout's problems/ tree (every crawl id adapted 1:1).
+All three upstream locations come from environment variables and are
+required.
 
 Checks:
   A. crawl index is complete and well-formed
@@ -30,17 +31,22 @@ from pathlib import Path
 # Originals live in this repo; the private adapted checkout and two upstream
 # scrape sources stay env-overridable for whole-chain audits.
 ROOT = Path(__file__).resolve().parents[1]
-CRAWL = Path(os.environ.get(
-    "CODERPUZZLE_CRAWL", str(Path.home() / "code/lc-crawl/problems")))
-BETTERCODE = Path(os.environ.get(
-    "CODERPUZZLE_BETTERCODE", str(Path.home() / "code/bettercode/data/problems.jsonl")))
+
+
+def _env_path(name: str) -> Path | None:
+    value = os.environ.get(name, "").strip()
+    return Path(value).expanduser().resolve() if value else None
+
+
+CRAWL = _env_path("CODERPUZZLE_CRAWL")
+BETTERCODE = _env_path("CODERPUZZLE_BETTERCODE")
 ORIGINALS = ROOT / "problems"
-ADAPTED = Path(
-    os.environ.get(
-        "CODERPUZZLE_ADAPTED_PROBLEMS",
-        str(ROOT.parent / "lc-adapt" / "problems"),
-    )
-).expanduser().resolve()
+ADAPTED = _env_path("CODERPUZZLE_ADAPTED_PROBLEMS")
+
+for label, path in (("CODERPUZZLE_CRAWL", CRAWL), ("CODERPUZZLE_BETTERCODE", BETTERCODE), ("CODERPUZZLE_ADAPTED_PROBLEMS", ADAPTED)):
+    if path is None or not path.is_dir():
+        print(f"FAIL {label} is required and must be a directory on disk")
+        raise SystemExit(1)
 
 failures = []
 

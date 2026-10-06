@@ -23,13 +23,9 @@ CODERPUZZLE_PROBLEMS=/srv/problem-sets/lc uvicorn app.main:app           # outsi
 
 ## The trees
 
-| repository | contents | role |
-| --- | --- | --- |
-| this repo's `problems/` | five exemplar bundles | served when nothing is configured; the templates for writing new problems |
-| [`CoderPuzzle/lc-original`](https://github.com/CoderPuzzle/lc-original) | the complete 4,031-bundle original-source corpus | the tree production serves |
-| [`CoderPuzzle/lc-adapt`](https://github.com/CoderPuzzle/lc-adapt) | the copyright-free adaptation (modern Python) | the working adaptation tree |
-
-The exemplar set covers the typical bundle shapes, one each: a plain
+This repository ships five exemplar bundles under `problems/` — served when
+nothing is configured, and the templates for writing new problems. They
+cover the typical bundle shapes, one each: a plain
 function problem with no hidden types (`0001_pair-sum`), a linked-list
 parameter (`0025_reverse-in-groups-of-k`), a binary tree
 (`0104_binary-tree-height`), a design class over the `NestedInteger` API
@@ -42,13 +38,13 @@ per-language solutions, and the `provided/` assembly its shape needs.
 ## Getting a set onto a host
 
 Getting a problem set onto a host is an explicit operator step, not
-something the service does at startup: clone the set's repository into the
-parent directory of the `coderpuzzle` checkout and point compose at it.
+something the service does at startup: place the set's directory (cloned
+or copied — its internal layout is exactly the bundle tree described
+above) next to the `coderpuzzle` checkout or anywhere on disk, and point
+compose at it.
 
 ```bash
-# katze-style layout: both checkouts side by side
-git clone git@github.com:CoderPuzzle/lc-original.git ../lc-original
-CODERPUZZLE_PROBLEMS_PATH=../lc-original/problems docker compose up -d
+CODERPUZZLE_PROBLEMS_PATH=../my-problem-set docker compose up -d
 ```
 
 Bundle validation is deliberately not a CI step for these trees — the bank

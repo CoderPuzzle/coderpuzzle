@@ -5,9 +5,8 @@ name: Tests
 # judge uses.
 #
 # Bundle gates are deliberately NOT part of CI any more: the problem bank
-# is pluggable (the full corpus lives in the standalone lc-original /
-# lc-adapt repositories), so bundle validation is an on-demand authoring
-# tool instead. From a checkout of the problem repo, run the image with
+# is pluggable (full corpora live in their own standalone repositories), so
+# bundle validation is an on-demand authoring tool instead. From a checkout of the problem repo, run the image with
 # the repo mounted at /tools:
 #
 #   docker run --rm --user 0:0 -v "$PWD":/tools \

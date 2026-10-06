@@ -17,15 +17,12 @@ The REST API and the image's authoring CLI are documented in
 docker compose up --build
 ```
 
-Open <http://localhost:8081>. `CODERPUZZLE_PORT` publishes another port;
-`CODERPUZZLE_REQUIRE_CALIBRATION=0` drops the calibration requirement for a
-quick local spin. The compose default requires a deployment-local
-calibration file — until one is published, registration, login, and judging
-return `503` while browsing problems still works. Build it with
-`python -m app.calibrate` inside the API image; the knobs and the measured
-fields are in [docs/JUDGE-RESOURCES.md](docs/JUDGE-RESOURCES.md).
+Open <http://localhost:8081>. Ports, environment variables, and the
+calibration requirement are covered in
+[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) and
+[docs/CALIBRATION.md](docs/CALIBRATION.md).
 
-## Problem sets are pluggable
+## Adding your problems and solutions
 
 The app serves whatever directory `CODERPUZZLE_PROBLEMS` points at — one
 variable selects the tree, nothing is fetched or cached. This repository

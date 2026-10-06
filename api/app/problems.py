@@ -16,9 +16,8 @@ def _problems_dir() -> Path:
     ``CODERPUZZLE_PROBLEMS`` is the one selector and it is a filesystem path,
     never a repository: the app fetches nothing and has no problem-set cache.
     Unset, the app serves the exemplar set that ships in this repo at
-    ``./problems``; when the full corpus is checked out beside this repo the
-    way production does (``../lc-original/problems``), point the variable at
-    it — the problem bank is pluggable, one variable selects the tree."""
+    ``./problems`` — the problem bank is pluggable: point the variable at
+    any tree laid out as FORMAT.md describes."""
     configured = os.environ.get("CODERPUZZLE_PROBLEMS", "").strip()
     if configured:
         # An explicitly selected tree must exist: a broken selector is a
@@ -34,14 +33,8 @@ def _problems_dir() -> Path:
         resolved = Path(candidate).expanduser().resolve()
         if resolved.is_dir():
             return resolved
-    # Sibling default: a full-corpus checkout laid out next to this repo
-    # (coderpuzzle and lc-original cloned into the same parent directory).
-    sibling = Path(__file__).resolve().parents[3] / "lc-original" / "problems"
-    if sibling.is_dir():
-        return sibling
     raise ValueError(
-        "No problem set found: looked for ./problems (this repo's exemplar "
-        "set) and a sibling lc-original/problems checkout. Set "
+        "No problem set found at ./problems (this repo's exemplar set). Set "
         "CODERPUZZLE_PROBLEMS to a problem-set directory on disk; remote "
         "problem sets are not supported."
     )
