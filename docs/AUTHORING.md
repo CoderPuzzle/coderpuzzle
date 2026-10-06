@@ -150,4 +150,6 @@ coderpuzzle check --tree /tools/problems --bundles <your-bundle-key>
 grammar, solution pairing, the starter generator round-trip, and the
 solutions' hidden-type definition-comment parity. When both `judge` and
 `check` are green, the bundle is ready to land in its problem repository
-and for review.
+and for review. While iterating you can also exercise a bundle through the
+live API — `POST /run` with custom cases returns per-case verdicts without
+a submission (docs/api-and-cli.md).

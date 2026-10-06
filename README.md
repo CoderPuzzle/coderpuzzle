@@ -58,29 +58,9 @@ languages) — designed and maintained per
 
 ## How it is built
 
-- `api/` — the FastAPI app: sessions, problems, drafts, run, submit,
-  submissions, progress, auth providers ([docs/AUTH.md](docs/AUTH.md),
-  [docs/api-and-cli.md](docs/api-and-cli.md)).
-- `runner/` — the executor plugins and harnesses, the privilege-split
-  sandboxes, and the authoring CLI; the pinned toolchain image
-  ([docs/TRUST-BOUNDARIES.md](docs/TRUST-BOUNDARIES.md) states who is
-  trusted with what).
-- `frontend/` — the React SPA (editor, verdicts, solutions, drafts).
-- `scripts/` — the tooling map lives in
-  [scripts/README.md](scripts/README.md): formatters, the starter
-  generator, the authoring gates, the corpus consistency check.
-- `docs/` — [FORMAT.md](docs/FORMAT.md) (the authoritative bundle
-  reference), [CODECS.md](docs/CODECS.md) (wire formats and the
-  kind-to-class table), [PROBLEM-SETS.md](docs/PROBLEM-SETS.md),
-  [JUDGE-RESOURCES.md](docs/JUDGE-RESOURCES.md) (calibration and the
-  resource knobs), [AUTH.md](docs/AUTH.md) (the provider catalog),
-  [TRUST-BOUNDARIES.md](docs/TRUST-BOUNDARIES.md), and
-  [EDITOR-AUTOCOMPLETE.md](docs/EDITOR-AUTOCOMPLETE.md).
-- `problems/` — the shipped exemplar set (see above).
-
-## Persistence
-
-SQLite data lives at `/data/coderpuzzle.sqlite3` in the `coderpuzzle_data`
-named volume. Normal `docker compose down` and image rebuilds preserve it.
-The judge queue is a separate transient volume and contains no expected
-answers.
+Three cooperating pieces — the FastAPI app, the sandboxed multi-language
+runner, and the React editor — plus the tooling in `scripts/` and the
+pluggable problem bank. The component tour, the trust model, persistence,
+and the judging/timing design are in
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md); the doc index lives there
+too.
