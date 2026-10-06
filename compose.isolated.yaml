@@ -1,0 +1,32 @@
+# Use only after scripts/prepare_judge_host.py on a dedicated Linux node.
+# A different host-provisioned slot is required for every additional worker.
+services:
+  runner:
+    cgroup: host
+    cgroup_parent: ${CODERPUZZLE_CGROUP_PARENT:?Prepare a judge slot first}
+    cpuset: ${CODERPUZZLE_CONTROL_CPUS:?Set the slot control CPUs}
+    environment:
+      CODERPUZZLE_RESOURCE_MODE: isolated
+      CODERPUZZLE_SHARED_CONTROL: ${CODERPUZZLE_SHARED_CONTROL:-0}
+      CODERPUZZLE_RESOURCE_PROFILE: ${CODERPUZZLE_RESOURCE_PROFILE:?Name the hardware/image profile}
+      CODERPUZZLE_EXECUTION_CPUS: ${CODERPUZZLE_EXECUTION_CPUS:?Set execution CPUs}
+      CODERPUZZLE_CGROUP_ROOT: /judge-cgroup
+      CODERPUZZLE_SLOT_LOCK: /judge-slot.lock
+    volumes:
+      - type: bind
+        source: ${CODERPUZZLE_CGROUP_HOST_PATH:?Prepare a judge slot first}
+        target: /judge-cgroup
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${CODERPUZZLE_SLOT_LOCK_HOST_PATH:?Prepare a judge slot first}
+        target: /judge-slot.lock
+        read_only: true
+        bind:
+          create_host_path: false
+    mem_limit: ${CODERPUZZLE_CONTROL_MEMORY_MB:-768}m
+    memswap_limit: ${CODERPUZZLE_CONTROL_MEMORY_MB:-768}m
+  api:
+    environment:
+      CODERPUZZLE_RUNNER_TIMEOUT_SECONDS: ${CODERPUZZLE_RUNNER_TIMEOUT_SECONDS:-120}
+      CODERPUZZLE_JUDGE_CONCURRENCY: ${CODERPUZZLE_JUDGE_CONCURRENCY:-2}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "reference_solution": "",
+  "id": 341,
+  "slug": "nested-sequence-iterator",
+  "title": "Nested Sequence Iterator",
+  "difficulty": "Medium",
+  "tags": [
+    "Stack",
+    "Depth-First Search",
+    "Design",
+    "Iterator"
+  ],
+  "topics": [
+    "Stack",
+    "Tree",
+    "Depth-First Search",
+    "Design",
+    "Queue",
+    "Iterator"
+  ],
+  "type": "Algorithms",
+  "invocation": {
+    "type": "design",
+    "class_name": "NestedSequenceIterator",
+    "constructor": {
+      "parameters": [
+        {
+          "name": "nestedList",
+          "codec": "nested",
+          "value_type": {
+            "kind": "nested",
+            "items": {
+              "kind": "integer",
+              "bits": 32
+            }
+          }
+        }
+      ]
+    },
+    "methods": [
+      {
+        "name": "nextValue",
+        "parameters": [],
+        "return_type": {
+          "kind": "integer",
+          "bits": 32
+        }
+      },
+      {
+        "name": "hasMore",
+        "parameters": [],
+        "return_type": {
+          "kind": "boolean"
+        }
+      }
+    ],
+    "comparison": "exact"
+  },
+  "limits": {
+    "time_ms": 1500,
+    "memory_mb": 256,
+    "output_kb": 64
+  }
+}

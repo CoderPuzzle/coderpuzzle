@@ -1,0 +1,642 @@
+"""Authoring-side CLI services on the runner image.
+
+Run the image as root when compiling (the executors' privilege dance
+chowns work directories to the compiler uid): `docker run --user 0:0 ...`.
+
+The image carries the pinned toolchain for every offered language, the
+executors, and the judge's own harness code — these entry points expose
+that machinery to problem creators, so authoring needs no local
+toolchain beyond Docker:
+
+  cli.py format <files...>            format to the CoderPuzzle standard
+  cli.py gen-starters <problem.json>  emit every starter.<ext> for a
+                                      bundle's language-agnostic schema
+  cli.py judge <bundle-dir>           run every solution.* in the
+                                      bundle through the real judging
+                                      path and compare each output
+                                      against its expected value; all
+                                      must pass every case (mode-carrying
+                                      design/concurrent expecteds are
+                                      only crash-checked — the full
+                                      comparison gate is
+                                      scripts/verify_solution.py)
+  cli.py run <file>                   judge one solution file against its
+                                      bundle's cases — the authoring fast
+                                      loop; the bundle is discovered by
+                                      walking up from the file to
+                                      problem.json
+
+In the image these run as `coderpuzzle format ...` / `coderpuzzle gen-starters
+...` / `coderpuzzle judge ...` / `coderpuzzle run ...` (see the coderpuzzle
+entrypoint installed by the Dockerfile). They operate on a bundle directory
+bind-mounted at any path; nothing here writes outside the paths it is given.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import math
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+from collections import Counter
+from pathlib import Path
+from typing import Any
+
+RUNNER = Path(__file__).resolve().parent
+
+# The executors and harness live beside this file; the gen_starters and
+# format implementations are imported from a mounted CoderPuzzle checkout
+# (the schema is the contract, the tools are the standard) or from this
+# checkout when running outside the image.
+TOOLS_CANDIDATES = [
+    Path("/tools"),  # image convention
+    RUNNER.parent,
+]
+
+
+def _tools() -> Path:
+    for candidate in TOOLS_CANDIDATES:
+        if (candidate / "scripts" / "gen_starters.py").exists():
+            return candidate
+    raise SystemExit(
+        "gen_starters.py not found; bind-mount the CoderPuzzle repo at /tools"
+    )
+
+
+def _executors_ready() -> None:
+    sys.path.insert(0, str(RUNNER))
+    from executors import get_executor  # noqa: F401  (probe)
+
+
+# Solution extension -> language: everything `judge`/`run` can execute.
+EXTENSION_LANGUAGE = {
+    "py": "python3",
+    "js": "javascript",
+    "ts": "typescript",
+    "java": "java",
+    "cpp": "cpp",
+    "go": "go",
+    "rs": "rust",
+    "sql": "sql",
+    "sh": "shell",
+}
+
+# Its formatting superset: json/markdown have formatters but no executor.
+LANGUAGE_BY_EXTENSION = {
+    **EXTENSION_LANGUAGE,
+    "json": "json",
+    "md": "markdown",
+}
+
+
+# Kept byte-identical to api/app/judge.py (annotations included) — the test
+# suite pins the two definitions to identical ASTs; edit them together.
+def _close_enough(actual: Any, expected: Any, tolerance: float) -> bool:
+    """Per-scalar tolerant comparison: numbers may differ by the given
+    relative (and absolute) tolerance; structure must match exactly."""
+    if isinstance(actual, bool) or isinstance(expected, bool):
+        return actual is expected
+    if isinstance(actual, (int, float)) and isinstance(expected, (int, float)):
+        return math.isclose(actual, expected, rel_tol=tolerance, abs_tol=tolerance)
+    if isinstance(actual, list) and isinstance(expected, list):
+        return len(actual) == len(expected) and all(
+            _close_enough(a, e, tolerance) for a, e in zip(actual, expected)
+        )
+    if isinstance(actual, dict) and isinstance(expected, dict):
+        return actual.keys() == expected.keys() and all(
+            _close_enough(actual[key], expected[key], tolerance) for key in actual
+        )
+    return actual == expected
+
+
+# The expected-value modes (see api/app/judge.py) this gate deliberately
+# does not judge: their full semantics live beside the API's comparison and
+# the validators library, which do not ship in the runner image.
+# verify_solution.py — which imports the real comparison — is the
+# full-correctness gate for those bundles; here such a case is reported as
+# NOTE and only its crash-freedom is checked.
+UNJUDGED_EXPECTED_MODES = {"distribution", "any_of", "opaque", "grouped", "validator"}
+
+
+def _compare_expected(actual, expected, comparison):
+    """The CLI gate's comparison verdict: ("pass" | "fail" | "note", detail).
+
+    Mirrors api/app/judge.py's exact/close/sorted/multiset/set semantics;
+    mode-carrying expecteds (design/concurrent bundles) come back as
+    "note" rather than a silent pass."""
+    if isinstance(expected, dict) and expected.get("mode") in UNJUDGED_EXPECTED_MODES:
+        return "note", str(expected.get("mode"))
+    if isinstance(expected, list) and any(
+        isinstance(element, dict) and element.get("mode") in UNJUDGED_EXPECTED_MODES
+        for element in expected
+    ):
+        return "note", "per-element modes"
+    if comparison == "exact":
+        return ("pass", None) if actual == expected else ("fail", None)
+    if comparison == "close" or (
+        isinstance(comparison, dict) and comparison.get("mode") == "close"
+    ):
+        tolerance = (
+            float(comparison.get("tolerance", 1e-9))
+            if isinstance(comparison, dict)
+            else 1e-9
+        )
+        return ("pass", None) if _close_enough(actual, expected, tolerance) else ("fail", None)
+    if comparison in {"sorted", "multiset", "set"}:
+        if not isinstance(actual, list) or not isinstance(expected, list):
+            return "fail", None
+        normalize = lambda value: json.dumps(value, sort_keys=True, separators=(",", ":"))
+        normalized_actual = [normalize(value) for value in actual]
+        normalized_expected = [normalize(value) for value in expected]
+        if comparison == "sorted":
+            matched = sorted(normalized_actual) == sorted(normalized_expected)
+        elif comparison == "multiset":
+            matched = Counter(normalized_actual) == Counter(normalized_expected)
+        else:
+            matched = set(normalized_actual) == set(normalized_expected)
+        return ("pass", None) if matched else ("fail", None)
+    return "fail", f"unsupported comparison {comparison!r}"
+
+
+def _expand_formattable(names: list[str]) -> tuple[list[Path], list[Path]]:
+    """Expand files/directories into (formattable files, skipped paths).
+
+    Directory walks skip dependency checkouts (node_modules) and hidden
+    trees (.git, .localonly, ...), so pointing the formatter at a repo
+    root formats the repo's own sources only."""
+    files: list[Path] = []
+    skipped: list[Path] = []
+    for name in names:
+        path = Path(name)
+        if path.is_dir():
+            files += sorted(
+                child
+                for child in path.rglob("*")
+                if child.is_file()
+                and child.suffix.lstrip(".") in LANGUAGE_BY_EXTENSION
+                and not any(part.startswith(".") or part == "node_modules" for part in child.relative_to(path).parts[:-1])
+            )
+        elif path.is_file():
+            files.append(path)
+        else:
+            skipped.append(path)
+    return files, skipped
+
+
+def cmd_format(arguments: argparse.Namespace) -> int:
+    """Format files (in place), --check, or --report json."""
+    from formatters import format_source, format_source_report
+
+    files, skipped = _expand_formattable(arguments.files)
+    for path in skipped:
+        print(f"not a file: {path}", file=sys.stderr)
+
+    if arguments.report:
+        # every path gets its row, so a scripted consumer piped through
+        # `xargs -n 200` never silently loses the rest of its batch
+        results = [
+            {"file": str(path), "status": "error", "diagnostics": "not a file"}
+            for path in skipped
+        ]
+        errored = bool(skipped)
+        for path in files:
+            language = LANGUAGE_BY_EXTENSION.get(path.suffix.lstrip("."))
+            if language is None:
+                # an unknown extension is a report row like any other, so a
+                # scripted consumer never silently misses a file
+                results.append(
+                    {
+                        "file": str(path),
+                        "status": "error",
+                        "diagnostics": f"no formatter for .{path.suffix.lstrip('.')}",
+                    }
+                )
+                errored = True
+                continue
+            try:
+                source = path.read_text(encoding="utf-8")
+            except (OSError, UnicodeDecodeError) as error:
+                results.append({"file": str(path), "status": "error", "diagnostics": str(error)})
+                errored = True
+                continue
+            report = format_source_report(language, source)
+            results.append({"file": str(path), **report})
+            if report["status"] == "error":
+                errored = True
+        print(json.dumps(results, indent=2, ensure_ascii=False))
+        return 1 if errored else 0
+
+    if skipped:
+        return 2
+
+    changed = unformatted = 0
+    for path in files:
+        extension = path.suffix.lstrip(".")
+        language = LANGUAGE_BY_EXTENSION.get(extension)
+        if language is None:
+            if not arguments.check:
+                print(f"no formatter for .{extension}", file=sys.stderr)
+                return 2
+            continue
+        try:
+            original = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError) as error:
+            print(f"cannot read {path}: {error}", file=sys.stderr)
+            return 2
+        formatted = format_source(language, original)
+        if formatted != original:
+            if arguments.check:
+                unformatted += 1
+                print(f"UNFORMATTED {path}")
+            else:
+                path.write_text(formatted, encoding="utf-8")
+                changed += 1
+                print(f"formatted {path}")
+    if arguments.check:
+        print(f"format check: {unformatted} unformatted files")
+        return 1 if unformatted else 0
+    print(f"{changed} file(s) changed")
+    return 0
+
+
+def cmd_check(arguments: argparse.Namespace) -> int:
+    """Run the mounted CoderPuzzle repo's static bundle gate in this image.
+
+    Validates bundles without any repo CI: completeness, schema, statement
+    grammar, solution pairing, the starter generator round-trip, and the
+    solutions' definition-comment parity — the authoring loop's check step
+    (docs/AUTHORING.md). --tree selects the problem-set root (default: the
+    checkout mounted at /tools); --bundles narrows it to named keys."""
+    tools = _tools()
+    script = tools / "scripts" / "check.py"
+    tree = Path(arguments.tree)
+    if not tree.is_dir() and str(arguments.tree) == "problems":
+        # No tree given and none beside the caller: default to the mounted
+        # checkout's exemplar set.
+        tree = tools / "problems"
+    command = [sys.executable, str(script), "--tree", str(tree), "--skip-runtime"]
+    if arguments.bundles:
+        command.append(f"--bundles={arguments.bundles}")
+    completed = subprocess.run(command, cwd=str(tools))
+    return completed.returncode
+
+
+def cmd_gen_starters(arguments: argparse.Namespace) -> int:
+    """Emit starter.<ext> for a bundle's offered languages beside problem.json.
+
+    The language set follows the starters already present (regenerating a
+    bundle that deliberately offers a subset never widens it), and the
+    output goes through the pinned formatter so it passes the format gate.
+    The Python starter style follows the bundle's provenance (modern for
+    bettercode-derived slugs, legacy otherwise) per this repo's
+    scripts/gen_starters.py, keyed off scripts/problems-tooling/adapt-mapping.json
+    (CODERPUZZLE_ADAPT_MAPPING overrides); pass --style to force one."""
+    import importlib.util
+
+    tools = _tools()
+    spec = importlib.util.spec_from_file_location("gen_starters", tools / "scripts" / "gen_starters.py")
+    gen = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gen)
+
+    problem_path = Path(arguments.problem)
+    problem = json.loads(problem_path.read_text(encoding="utf-8"))
+    invocation = problem["invocation"]
+    bundle = problem_path.parent
+    present = {
+        starter.suffix.lstrip(".")
+        for starter in bundle.glob("starter.*")
+    }
+    gen.set_python_style(gen.resolve_python_style(arguments.style, problem["slug"]))
+    expected = gen.starter_files(invocation)
+    for language, content in expected.items():
+        extension = gen.EXTENSIONS[language]
+        if present and extension not in present:
+            continue
+        content = gen.format_content(extension, content, tolerant=True)
+        target = bundle / f"starter.{extension}"
+        target.write_text(content, encoding="utf-8")
+        print(f"wrote {target}")
+    return 0
+
+
+def _authoring_env() -> None:
+    """Environment for authoring-side compiles: a plain writable HOME so
+    toolchains that insist on caching there (go, tsc) behave."""
+    os.environ.setdefault("HOME", "/tmp")
+    for variable, value in (
+        ("GOCACHE", "/tmp/coderpuzzle-gocache"),
+        ("GOPATH", "/tmp/coderpuzzle-gopath"),
+        ("GOMODCACHE", "/tmp/coderpuzzle-gomodcache"),
+        ("GO111MODULE", "off"),
+        ("PATH", "/usr/local/bin:" + os.environ.get("PATH", "/usr/bin:/bin")),
+    ):
+        os.environ[variable] = value
+
+
+def _authoring_compile_patches() -> None:
+    """Neutralize the untrusted-submission sandbox for authoring runs.
+
+    The compiler sandbox exists for untrusted solver submissions; an
+    author judging their own reference solutions on their own machine
+    doesn't need it, and its per-uid process cap breaks `docker run`
+    (where root's pids are shared with the dropped compiler uid).
+    Compile plainly instead — same command, same pinned tools.
+    """
+    _executors_ready()
+    from executors.base import ExecutorError
+    from executors.compiled import CompiledExecutor
+
+    def _plain_compile(self, job_root, command, output_path, environment):
+        import subprocess as sp
+
+        merged = {**environment, "PATH": "/usr/local/bin:" + environment.get("PATH", "/usr/bin:/bin")}
+        completed = sp.run(
+            list(command),
+            cwd=job_root,
+            env=merged,
+            stdout=sp.PIPE,
+            stderr=sp.STDOUT,
+            timeout=300,
+        )
+        if completed.returncode != 0:
+            raw = completed.stdout or b""  # stderr is merged via STDOUT
+            raise ExecutorError("Compilation failed:\n" + raw.decode("utf-8", "replace")[-4000:])
+
+    CompiledExecutor.compile = _plain_compile
+
+    # JavaExecutor never calls compile(): javac runs under its own sandboxed
+    # Popen inside prepare(). Neutralize its command wrapper the same way —
+    # the same javac invocation, without the rlimits and uid drop.
+    from executors.java import JavaExecutor
+
+    JavaExecutor.compiler_command = lambda self, command, job_root: list(command)
+
+
+def _bundle_assembly(bundle: Path) -> dict[str, dict[str, str]]:
+    """Judge-assembly: the bundle's own provided/ sources compile/run with
+    the submission, exactly as a live judge job would assemble them.
+    Every well-known data structure a bundle's wire needs is the
+    bundle's OWN provided/ source — the judge holds no predefined
+    definitions of its own (docs/CODECS.md)."""
+    LANGUAGE_DIRECTORIES = {
+        "python3": "python",
+        "java": "java",
+        "cpp": "cpp",
+        "go": "go",
+        "rust": "rust",
+        "typescript": "typescript",
+        "javascript": "javascript",
+    }
+    assembly: dict[str, dict[str, str]] = {"provided": {}}
+    for language, directory in LANGUAGE_DIRECTORIES.items():
+        provided_dir = bundle / "provided" / directory
+        if provided_dir.is_dir():
+            for path in sorted(provided_dir.iterdir()):
+                if path.is_file():
+                    assembly["provided"][path.name] = path.read_text(encoding="utf-8")
+    return assembly
+
+
+def _judge_one(
+    solution: Path,
+    invocation: dict,
+    limits: dict,
+    assembly: dict[str, dict[str, str]],
+    all_cases: list,
+) -> int:
+    """Prepare and judge one solution file against all_cases; returns the
+    number of case-level failures (compile failures count as one)."""
+    _authoring_env()
+    from executors import get_executor
+    from executors.base import ExecutorError
+    from protocol import parse_protocol
+
+    LANGUAGE_EXTENSIONS = {
+        "python3": {"py"},
+        "java": {"java"},
+        "cpp": {"hpp", "cpp", "h", "cc"},
+        "go": {"go"},
+        "rust": {"rs"},
+        "typescript": {"ts"},
+        "javascript": {"js"},
+        "sql": {"sql"},
+        "shell": {"sh"},
+    }
+    comparison = invocation.get("comparison", "exact")
+    language = EXTENSION_LANGUAGE.get(solution.suffix.lstrip("."))
+    if language is None:
+        # A solution file this gate cannot name is a bundle bug (a stray
+        # editor backup, a misnamed variant), not something to skip quietly.
+        print(f"FAIL  {solution.name}: no executor for {solution.suffix}")
+        return 1
+    executor = get_executor(language)
+    code = solution.read_text(encoding="utf-8")
+    work = Path(tempfile.mkdtemp(prefix="coderpuzzle-cli-"))
+    try:
+        work.chmod(0o777)
+    except OSError:
+        pass
+    scratch = work / "scratch"
+    scratch.mkdir()
+    failures = 0
+    passed = 0
+    try:
+        try:
+            extensions = LANGUAGE_EXTENSIONS.get(language, set())
+            per_language = {
+                part: {name: content for name, content in files.items() if name.rsplit(".", 1)[-1] in extensions}
+                for part, files in assembly.items()
+            }
+            program = executor.prepare(work, scratch, code, invocation, limits, per_language)
+        except ExecutorError as error:
+            print(f"FAIL  {solution.name}: prepare/compile: {str(error)[-400:]}")
+            return 1
+        except Exception as error:  # noqa: BLE001 — report, don't crash the sweep
+            print(f"FAIL  {solution.name}: prepare error: {error!r} ({type(error).__name__})")
+            return 1
+        for index, case in enumerate(all_cases):
+            process = None
+            try:
+                if getattr(executor, "encode_case_with_limits", False):
+                    payload = executor.encode_case(invocation, case["input"], limits)
+                else:
+                    payload = executor.encode_case(invocation, case["input"])
+                process = subprocess.Popen(
+                    list(program.command),
+                    stdin=subprocess.PIPE,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.DEVNULL,
+                    env=program.environment,
+                )
+                output, _ = process.communicate(payload, timeout=limits.get("time_ms", 1500) / 1000 * 3 + 5)
+            except Exception as error:  # noqa: BLE001
+                # communicate(timeout=...) raises without killing the
+                # child; reap it or it keeps running while the finally
+                # below deletes the working directory it sits in.
+                if process is not None:
+                    try:
+                        process.kill()
+                        process.wait()
+                    except ProcessLookupError:
+                        pass
+                print(f"FAIL  {solution.name}: case {index + 1}: {error}")
+                failures += 1
+                continue
+            text = output.decode("utf-8", "replace")
+            # The shared parser (runner/protocol.py) reads the judge's own
+            # semantics: last marker line wins, malformed lines are skipped
+            # rather than aborting the sweep.
+            verdict = parse_protocol(text)
+            if verdict.get("status") == "completed":
+                outcome, mode = _compare_expected(verdict.get("actual"), case.get("expected"), comparison)
+                if outcome == "pass":
+                    passed += 1
+                elif outcome == "note":
+                    passed += 1
+                    print(
+                        f"NOTE  {solution.name}: case {index + 1}: '{mode}' expected "
+                        "is not compared by this gate (verify_solution.py judges it)"
+                    )
+                else:
+                    print(
+                        f"FAIL  {solution.name}: case {index + 1}: expected "
+                        f"{json.dumps(case['expected'])[:200]} got {json.dumps(verdict.get('actual'))[:200]}"
+                    )
+                    failures += 1
+            else:
+                print(
+                    f"FAIL  {solution.name}: case {index + 1}: "
+                    f"{verdict.get('status')}: {verdict.get('error', '')[:120]}"
+                )
+                failures += 1
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+    print(f"{'OK  ' if failures == 0 else 'FAIL'} {solution.name}: {passed}/{len(all_cases)} cases")
+    return failures
+
+
+def cmd_judge(arguments: argparse.Namespace) -> int:
+    """Judge every solution.* in the bundle through the real executors."""
+    _authoring_compile_patches()
+
+    bundle = Path(arguments.bundle)
+    problem = json.loads((bundle / "problem.json").read_text(encoding="utf-8"))
+    invocation = problem["invocation"]
+    limits = problem.get("limits", {})
+    cases = json.loads((bundle / "cases.json").read_text(encoding="utf-8"))
+    all_cases = cases.get("public", []) + cases.get("hidden", [])
+    if not all_cases:
+        # a zero-case bundle would otherwise "judge" every solution against
+        # nothing and exit 0 — gate, not rubber stamp
+        print("no cases to judge", file=sys.stderr)
+        return 2
+    assembly = _bundle_assembly(bundle)
+
+    solutions = sorted(path for path in bundle.iterdir() if path.name.startswith("solution") and path.suffix != ".md")
+    if not solutions:
+        print("no solution files found", file=sys.stderr)
+        return 2
+
+    failures = 0
+    for solution in solutions:
+        failures += _judge_one(solution, invocation, limits, assembly, all_cases)
+    print(f"judged {len(all_cases)} cases; {failures} case-level failure(s)")
+    return 1 if failures else 0
+
+
+def _find_bundle(path: Path) -> Path:
+    """Walk up from `path` to the directory holding problem.json."""
+    for candidate in [path, *path.parents]:
+        if (candidate / "problem.json").is_file():
+            return candidate
+    raise SystemExit(f"no problem.json found above {path}; is this file inside a bundle?")
+
+
+def cmd_run(arguments: argparse.Namespace) -> int:
+    """Run one solution file against its bundle's real cases.
+
+    Discovers the bundle by walking up from the file to problem.json,
+    picks the language from the extension (or --lang), assembles the
+    bundle's provided/ sources exactly as a live judge job would, and
+    judges the file through the real executors. The compile sandbox is
+    neutralized as in `judge` — this is an authoring tool for the
+    author's own machine.
+    """
+    _authoring_compile_patches()
+
+    solution = Path(arguments.file)
+    if not solution.is_file():
+        print(f"not a file: {solution}", file=sys.stderr)
+        return 2
+    bundle = _find_bundle(solution.resolve().parent)
+    problem = json.loads((bundle / "problem.json").read_text(encoding="utf-8"))
+    invocation = problem["invocation"]
+    limits = problem.get("limits", {})
+    cases = json.loads((bundle / "cases.json").read_text(encoding="utf-8"))
+    all_cases = cases.get("public", []) + cases.get("hidden", [])
+    if arguments.public:
+        all_cases = cases.get("public", [])
+    if not all_cases:
+        print("no cases to judge", file=sys.stderr)
+        return 2
+    assembly = _bundle_assembly(bundle)
+
+    language = arguments.lang
+    if language is None:
+        language = EXTENSION_LANGUAGE.get(solution.suffix.lstrip("."))
+        if language is None:
+            print(f"cannot infer language from {solution.suffix}; pass --lang", file=sys.stderr)
+            return 2
+    _executors_ready()
+
+    failures = _judge_one(solution, invocation, limits, assembly, all_cases)
+    return 1 if failures else 0
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(prog="coderpuzzle", description=__doc__)
+    sub = parser.add_subparsers(dest="command", required=True)
+
+    fmt = sub.add_parser("format", help="format files (or --check / --report json) with the pinned toolchain")
+    fmt.add_argument("files", nargs="+", help="files or directories (dirs walk for formattable files)")
+    fmt.add_argument("--check", action="store_true", help="report unformatted files, change nothing, exit 1")
+    fmt.add_argument(
+        "--report",
+        choices=["json"],
+        help="non-mutating tri-state JSON report per file, the POST /format contract plus a `file` field: formatted | unformatted (+code) | error (+diagnostics); exits 1 only on errors",
+    )
+    fmt.set_defaults(fn=cmd_format)
+
+    gen = sub.add_parser("gen-starters", help="emit starter.* from problem.json")
+    gen.add_argument("problem")
+    gen.add_argument("--style", default=None, choices=["modern", "legacy"])
+    gen.set_defaults(fn=cmd_gen_starters)
+
+    checker = sub.add_parser(
+        "check",
+        help="statically validate bundles (schema, starters, solution parity) — the authoring loop's check step",
+    )
+    checker.add_argument("--tree", default="problems", help="problem-set root to validate (default: problems under the mounted checkout)")
+    checker.add_argument("--bundles", default=None, help="comma-separated bundle keys to restrict the per-bundle checks to")
+    checker.set_defaults(fn=cmd_check)
+
+    judge = sub.add_parser("judge", help="judge every solution in a bundle")
+    judge.add_argument("bundle")
+    judge.set_defaults(fn=cmd_judge)
+
+    run = sub.add_parser("run", help="run one solution file against its bundle's cases")
+    run.add_argument("file", help="solution file (the bundle is discovered by walking up to problem.json)")
+    run.add_argument("--public", action="store_true", help="judge only the public cases")
+    run.add_argument("--lang", help="override the language inferred from the file extension")
+    run.set_defaults(fn=cmd_run)
+
+    arguments = parser.parse_args()
+    return arguments.fn(arguments)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

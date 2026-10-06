@@ -1,0 +1,136 @@
+export type ProblemSummary = {
+    id: number;
+    slug: string;
+    title: string;
+    difficulty: string;
+    tags: string[];
+    topics: string[];
+    type: string;
+};
+
+export type TopicIndex = {
+    topics: TopicSummary[];
+};
+
+export type TopicSummary = {
+    name: string;
+    count: number;
+};
+
+export type ProblemPage = {
+    items: ProblemSummary[];
+    total: number;
+    page: number;
+    page_size: number;
+    pages: number;
+};
+
+export type Language = {
+    display_name: string;
+    monaco_language: string;
+    starter: string;
+    enabled: boolean;
+};
+
+export type Problem = {
+    id: number;
+    slug: string;
+    title: string;
+    difficulty: string;
+    tags: string[];
+    description: string;
+    hints: string[];
+    invocation: {
+        type: "function" | "design" | "interactive" | "concurrent" | "sql" | "shell";
+        class_name: string;
+        method: string;
+        // Function and sql manifests carry a parameters list (sql's names
+        // its dataset with the sql_setup codec); design, interactive, and
+        // concurrent manifests omit it, and interactive ones may carry an
+        // empty list — the testcase editor derives fields from the case
+        // whenever the manifest list is missing or empty.
+        parameters?: Array<{ name: string; codec: string }>;
+        return_codec: string;
+        // "exact" (default), "sorted", "multiset", "set", "close", or
+        // { mode: "close", tolerance } for float-tolerant comparison.
+        comparison?: string | { mode: string; tolerance?: number };
+    };
+    limits: {
+        time_ms: number;
+        memory_mb: number;
+    };
+    languages: Record<string, Language>;
+    public_cases: Array<{ name: string; input: Record<string, unknown> }>;
+};
+
+export type CaseResult = {
+    index: number;
+    name: string;
+    status: string;
+    runtime_ms?: number;
+    timing_mode?: "cpu" | "wall";
+    limit_mode?: "cpu" | "wall";
+    cpu_time_ms?: number;
+    wall_time_ms?: number;
+    timeout_ms?: number | null;
+    input?: Record<string, unknown>;
+    expected?: unknown;
+    actual?: unknown;
+    stdout?: string;
+    error?: string;
+    // The submission source line a runtime or syntax error points at
+    // (python harnesses extract it from the traceback; compiled languages
+    // surface it through the error text's file:line references).
+    error_line?: number | null;
+};
+
+export type JudgeResult = {
+    status: string;
+    passed: number;
+    total: number;
+    runtime_ms: number;
+    timing_mode?: "cpu" | "wall" | "mixed";
+    resource_profile?: string;
+    reference_runtime_ms?: number | null;
+    reference_algorithm_us?: number | null;
+    algorithm_us?: number | null;
+    performance_ratio_percent?: number | null;
+    performance_state?: "scored" | "below_floor" | "incomparable" | "unmeasured" | null;
+    results: CaseResult[];
+    submission_id?: number;
+    warnings?: string[];
+};
+
+export type Submission = {
+    id: number;
+    problem_slug: string;
+    language: string;
+    status: string;
+    passed: number;
+    total: number;
+    runtime_ms: number;
+    timing_mode?: "cpu" | "wall" | "mixed";
+    resource_profile?: string;
+    created_at: string;
+};
+
+// GET /problems/{slug}/solutions — the Solutions tab payload.
+export type SolutionsContent = {
+    guide: Record<string, string>;
+    // The guide's own heading per variant ("Randomized quickselect"),
+    // which reads better than the bare variant token.
+    titles: Record<string, string>;
+    implementations: Record<string, Record<string, string>>;
+    canonical: Record<string, string>;
+    // Variant keys in the guide's authored order (worst-to-best; "" for the
+    // canonical solution's section), so the page reads as written.
+    order: string[];
+    // The designated time-cost reference — the variant ("" = canonical) whose
+    // runtime the time-cost percentage is measured against.
+    reference: string;
+};
+
+export type FormatReport =
+  | { status: "formatted" }
+  | { status: "unformatted"; code: string }
+  | { status: "error"; diagnostics: string };

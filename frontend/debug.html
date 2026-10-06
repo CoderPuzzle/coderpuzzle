@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor debug harness</title>
+    <style>
+      body { margin: 0; display: flex; flex-direction: column; height: 100vh; font-family: sans-serif; }
+      #bar { padding: 6px; background: #222; color: #eee; display: flex; gap: 8px; align-items: center; }
+      button { padding: 4px 10px; }
+      #editor { flex: 1; }
+      #log { height: 140px; overflow: auto; background: #111; color: #9f9; font: 12px monospace; padding: 6px; white-space: pre-wrap; }
+    </style>
+  </head>
+  <body>
+    <div id="bar">
+      <button data-lang="python">python</button>
+      <button data-lang="typescript">typescript</button>
+      <button data-lang="javascript">javascript</button>
+      <button data-lang="java">java</button>
+      <button data-lang="cpp">cpp</button>
+      <button data-lang="go">go</button>
+      <button data-lang="rust">rust</button>
+      <span id="status"></span>
+    </div>
+    <div id="editor"></div>
+    <div id="log"></div>
+    <script type="module">
+      import * as monaco from "monaco-editor";
+
+      const log = (line) => {
+        const el = document.getElementById("log");
+        el.textContent += line + "\n";
+        el.scrollTop = el.scrollHeight;
+      };
+      window.__log = log;
+      window.__monaco = monaco;
+      const dump = (tag) => log(tag + " ts-options=" + JSON.stringify(monaco.languages.typescript.typescriptDefaults.getCompilerOptions()));
+      dump("A: after monaco-editor import");
+
+      import("./src/monaco.ts").then(() => {
+        dump("B: after monaco.ts import");
+        setTimeout(() => dump("C: 1s later"), 1000);
+        setTimeout(() => dump("D: 4s later"), 4000);
+        setup();
+      });
+
+      function setup() {
+      const STARTERS = {
+        python: `from typing import List, Optional\n\n\nclass Solution:\n    def maxDepth(self, root: Optional[TreeNode]) -> int:\n        raise NotImplementedError("TODO")\n`,
+        typescript: `function maxDepth(root: TreeNode | null): number {\n    throw new Error("TODO");\n}\n`,
+        javascript: `/**\n * @param {TreeNode} root\n * @return {number}\n */\nvar maxDepth = function (root) {\n    throw new Error("TODO");\n};\n`,
+        java: `class Solution {\n    public int maxDepth(TreeNode root) {\n        throw new UnsupportedOperationException("TODO");\n    }\n}\n`,
+        cpp: `class Solution {\n  public:\n    int maxDepth(TreeNode *root) { throw logic_error("TODO"); }\n};\n`,
+        go: `func maxDepth(root *TreeNode) int {\n\tpanic("TODO")\n}\n`,
+        rust: `impl Solution {\n    pub fn max_depth(root: Option<Box<TreeNode>>) -> i32 {\n        panic!("TODO")\n    }\n}\n`,
+      };
+
+      const model = monaco.editor.createModel(STARTERS.typescript, "typescript");
+      const editor = monaco.editor.create(document.getElementById("editor"), {
+        model,
+        theme: "coderpuzzle-dark",
+        automaticLayout: true,
+        fontSize: 13,
+        lineHeight: 22,
+        minimap: { enabled: false },
+        quickSuggestions: { other: true, comments: false, strings: false },
+        suggestOnTriggerCharacters: true,
+        suggestSelection: "first",
+        snippetSuggestions: "top",
+        wordBasedSuggestions: "currentDocument",
+        wordBasedSuggestionsOnlySameLanguage: true,
+        suggest: { filterGraceful: true, localityBonus: true },
+        parameterHints: { enabled: true },
+        hover: { enabled: true },
+      });
+
+      for (const button of document.querySelectorAll("#bar button[data-lang]")) {
+        button.addEventListener("click", () => {
+          const lang = button.dataset.lang;
+          monaco.editor.setModelLanguage(model, lang);
+          model.setValue(STARTERS[lang]);
+          document.getElementById("status").textContent = lang;
+        });
+      }
+      document.getElementById("status").textContent = "typescript";
+      }
+
+      monaco.editor.onDidCreateEditor((ed) => ed.focus());
+      log("harness ready");
+    </script>
+  </body>
+</html>

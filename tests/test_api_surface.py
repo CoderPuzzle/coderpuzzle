@@ -1,0 +1,422 @@
+"""HTTP-surface tests: session gate, auth contract, judge shaping, the
+format tri-state, and viewer-scoped submissions — the layers the executor
+tests never touch. The runner is stubbed at judge._submit, so these cover
+the API's own logic only."""
+
+import json
+import tempfile
+import unittest
+from pathlib import Path
+from unittest import mock
+
+from fastapi.testclient import TestClient
+
+from api.app import database, judge, main as api_main
+from api.app import problems as problems_module
+
+
+SLUG = "0001_pair-sum"
+
+STATEMENT = """# Pair Sum
+
+## Description
+
+Given an array of integers and a target, return the indices of the two
+numbers that add up to the target.
+
+### Example 1
+
+```
+nums = [2,7,11,15], target = 9
+9
+```
+
+### Constraints
+
+```
+2 <= n <= 1000
+```
+
+## Hints
+
+### Hint 1
+
+Try a hash map.
+"""
+
+PROBLEM_JSON = {
+    "schema_version": 2,
+    "reference_solution": "",
+    "id": 1,
+    "slug": "pair-sum",
+    "title": "Pair Sum",
+    "difficulty": "Easy",
+    "tags": ["Array"],
+    "topics": ["Hash Table"],
+    "type": "Algorithms",
+    "invocation": {
+        "type": "function",
+        "class_name": "Solution",
+        "method": "twoSum",
+        "parameters": [
+            {"name": "nums", "codec": "vector_int"},
+            {"name": "target", "codec": "int"},
+        ],
+        "return_codec": "vector_int",
+        "comparison": "exact",
+    },
+    "limits": {"time_ms": 1000, "memory_mb": 256, "output_kb": 64},
+}
+
+CASES_JSON = {
+    "public": [{"input": [[2, 7, 11, 15], 9], "expected": [0, 1]}],
+    "hidden": [{"input": [[3, 2, 4], 6], "expected": [1, 2]}],
+}
+
+STARTER = "class Solution:\n    def twoSum(self, nums, target):\n        pass\n"
+
+
+def _expected_aware_submit(body: dict) -> dict:
+    """A fake _submit for judge jobs: echoes each input's expected value as
+    `actual` (the API holds the expected side and compares there), so
+    accepted flows can be exercised end to end. Format jobs come back
+    unchanged."""
+    if body.get("kind") == "format":
+        return {"code": body["code"]}
+    expected_by_input = {
+        json.dumps(case["input"]): case["expected"] for case in CASES_JSON["public"] + CASES_JSON["hidden"]
+    }
+    return {
+        "results": [
+            {
+                "status": "completed",
+                "actual": expected_by_input.get(json.dumps(case["input"])),
+                "stdout": "",
+                "runtime_ms": 5,
+                "timeout_ms": 1000,
+            }
+            for case in body["cases"]
+        ]
+    }
+
+
+class ApiSurfaceTests(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        root = Path(self.temporary.name)
+
+        bundle = root / "0001-0100" / SLUG
+        (bundle / "figures").mkdir(parents=True)
+        (bundle / "problem.json").write_text(json.dumps(PROBLEM_JSON, indent=2), encoding="utf-8")
+        (bundle / "cases.json").write_text(json.dumps(CASES_JSON, indent=2), encoding="utf-8")
+        (bundle / "statement.md").write_text(STATEMENT, encoding="utf-8")
+        (bundle / "starter.py").write_text(STARTER, encoding="utf-8")
+        (bundle / "solution.py").write_text(STARTER, encoding="utf-8")
+
+        def fake_submit(body, calibrated=None):
+            return _expected_aware_submit(body)
+
+        database_patch = mock.patch.object(database, "DATABASE_PATH", (root / "test.sqlite3"))
+        # resolved: safe_problem_path compares against resolved parents
+        # (macOS tempdirs sit behind /var → /private/var)
+        problems_patch = mock.patch.object(problems_module, "PROBLEMS_DIR", root.resolve())
+        submit_patch = mock.patch.object(judge, "_submit", side_effect=fake_submit)
+        database_patch.start()
+        problems_patch.start()
+        submit_patch.start()
+        self.addCleanup(database_patch.stop)
+        self.addCleanup(problems_patch.stop)
+        self.addCleanup(submit_patch.stop)
+        database.initialize_database()
+
+        self.client = TestClient(api_main.app)
+        self.addCleanup(self.client.close)
+        # a fresh guest session on the client's cookie jar
+        self.client.post("/session")
+
+    def test_health_and_unknown_problem(self):
+        self.assertEqual(200, self.client.get("/health").status_code)
+        response = self.client.get("/problems/nope-not-here")
+        self.assertEqual(404, response.status_code)
+
+    def test_endpoints_require_a_session(self):
+        bare = TestClient(api_main.app)  # no cookie jar
+        try:
+            for method, url in (
+                ("GET", "/problems"),
+                ("POST", "/run"),
+                ("GET", "/progress"),
+                ("GET", "/submissions"),
+                ("GET", "/drafts/pair-sum"),
+                ("PUT", "/drafts/pair-sum/python3"),
+            ):
+                response = getattr(bare, method.lower())(url)
+                self.assertEqual(401, response.status_code, url)
+        finally:
+            bare.close()
+
+    def test_problem_listing_and_detail(self):
+        listing = self.client.get("/problems").json()
+        self.assertEqual(1, listing["total"])
+        self.assertEqual("pair-sum", listing["items"][0]["slug"])
+        detail = self.client.get("/problems/pair-sum").json()
+        # function-style inputs are displayed as named arguments
+        self.assertEqual({"nums": [2, 7, 11, 15], "target": 9}, detail["public_cases"][0]["input"])
+
+    def test_register_bootstrap_and_login_contract(self):
+        bare = TestClient(api_main.app)
+        self.addCleanup(bare.close)
+        # status is public; register needs no session (fresh bootstrap)
+        status = bare.get("/auth/status").json()
+        self.assertTrue(status["needs_setup"])
+        self.assertTrue(any(item["id"] == "password" for item in status["providers"]))
+        created = bare.post("/auth/register", json={"username": "admin", "password": "password123"})
+        self.assertEqual(200, created.status_code)
+        self.assertTrue(created.json()["is_admin"])
+        # register sets its own session cookie, so a cookie-less client is
+        # required to see that login without one is refused (login binds the
+        # caller's existing session; it never creates one)
+        session = TestClient(api_main.app)
+        self.addCleanup(session.close)
+        denied = session.post("/auth/login", json={"username": "admin", "password": "password123"})
+        self.assertEqual(401, denied.status_code)
+        session.post("/session")
+        ok = session.post("/auth/login", json={"username": "admin", "password": "password123"})
+        self.assertEqual(200, ok.status_code)
+        self.assertEqual("admin", session.get("/session").json()["user"]["username"])
+
+    def test_run_sends_inputs_only_and_reports_case_results(self):
+        requests = []
+
+        def record(body, calibrated=None):
+            requests.append(body)
+            return _expected_aware_submit(body)
+
+        with mock.patch.object(judge, "_submit", side_effect=record):
+            response = self.client.post("/run", json={"slug": "pair-sum", "language": "python3", "code": "x"})
+        self.assertEqual(200, response.status_code)
+        sent = requests[0]
+        self.assertEqual([{"input": [[2, 7, 11, 15], 9]}], sent["cases"])
+        self.assertNotIn("expected", json.dumps(sent))
+        summary = response.json()
+        self.assertEqual("accepted", summary["status"])
+        self.assertEqual([0, 1], summary["results"][0]["actual"])
+        # /run anchors to public cases only; hidden-case masking is covered
+        # by JudgeInternalsTests below
+        self.assertEqual(1, len(summary["results"]))
+
+    def test_explicit_cases_are_named_by_position_not_the_matched_example(self):
+        # A case copied from another tab (the editor's own "+" button does
+        # exactly this) carries the same value as an existing example, so it
+        # matches one in `canonical` by input equality — but it must keep the
+        # position it actually has among the cases sent, not the matched
+        # example's own name, or two different tabs both read as e.g.
+        # "Example 1".
+        with mock.patch.object(
+            judge, "_submit", side_effect=lambda body, calibrated=None: _expected_aware_submit(body)
+        ):
+            response = self.client.post(
+                "/run",
+                json={
+                    "slug": "pair-sum",
+                    "language": "python3",
+                    "code": "x",
+                    "cases": [
+                        {"nums": [2, 7, 11, 15], "target": 9},
+                        {"nums": [2, 7, 11, 15], "target": 9},
+                    ],
+                },
+            )
+        self.assertEqual(200, response.status_code)
+        names = [case["name"] for case in response.json()["results"]]
+        self.assertEqual(["Case 1", "Case 2"], names)
+        # The value match still buys a real assertion, not a bare echo.
+        self.assertEqual(["accepted", "accepted"], [case["status"] for case in response.json()["results"]])
+
+    def test_run_flags_tampering_with_provided_code(self):
+        # The scan derives its symbol set from the bundle's own provided/
+        # sources; rebinding one must surface as advisory warnings next to
+        # the (unchanged) verdict. Regression: the call sites used to pass
+        # the slug where _assembly_sources expects the bundle path, so the
+        # scan silently never ran.
+        bundle = Path(self.temporary.name) / "0001-0100" / SLUG
+        provided = bundle / "provided" / "python"
+        provided.mkdir(parents=True)
+        (provided / "ListNode.py").write_text(
+            "class ListNode:\n    def __init__(self, val=0):\n        self.val = val\n",
+            encoding="utf-8",
+        )
+        response = self.client.post(
+            "/run",
+            json={"slug": "pair-sum", "language": "python3", "code": "ListNode = None"},
+        )
+        self.assertEqual(200, response.status_code)
+        summary = response.json()
+        self.assertEqual("accepted", summary["status"])  # advisory, never gating
+        self.assertTrue(summary.get("warnings"), "expected a tamper warning")
+
+    def test_runner_unavailable_maps_to_503(self):
+        with mock.patch.object(judge, "_submit", side_effect=judge.RunnerUnavailable("down")):
+            response = self.client.post("/run", json={"slug": "pair-sum", "language": "python3", "code": "x"})
+        self.assertEqual(503, response.status_code)
+
+    def test_per_session_judge_rate_limit(self):
+        with mock.patch.object(api_main, "_JUDGE_MAX_REQUESTS", 2):
+            first = self.client.post("/format", json={"language": "python3", "code": "x=1\n"})
+            second = self.client.post("/format", json={"language": "python3", "code": "x=1\n"})
+            third = self.client.post("/format", json={"language": "python3", "code": "x=1\n"})
+        self.assertEqual(200, first.status_code)
+        self.assertEqual(200, second.status_code)
+        self.assertEqual(429, third.status_code)
+
+    def test_format_tri_state(self):
+        def formatted_already(body):
+            return {"code": body["code"]}
+
+        def reformats(body):
+            return {"code": body["code"].strip() + "\n"}
+
+        def refuses(body):
+            return {"error": "bad indent"}
+
+        with mock.patch.object(judge, "_submit", side_effect=formatted_already):
+            self.assertEqual(
+                {"status": "formatted"},
+                self.client.post("/format", json={"language": "python3", "code": "x=1\n"}).json(),
+            )
+        with mock.patch.object(judge, "_submit", side_effect=reformats):
+            self.assertEqual(
+                {"status": "unformatted", "code": "x=1\n"},
+                self.client.post("/format", json={"language": "python3", "code": "x=1"}).json(),
+            )
+        with mock.patch.object(judge, "_submit", side_effect=refuses):
+            self.assertEqual(
+                {"status": "error", "diagnostics": "bad indent"},
+                self.client.post("/format", json={"language": "python3", "code": "x=1\n"}).json(),
+            )
+
+    def test_submissions_are_scoped_per_viewer(self):
+        mine = TestClient(api_main.app)
+        theirs = TestClient(api_main.app)
+        self.addCleanup(mine.close)
+        self.addCleanup(theirs.close)
+        mine.post("/session")
+        theirs.post("/session")
+        saved = mine.post(
+            "/submit",
+            json={
+                "slug": "pair-sum",
+                "language": "python3",
+                "code": "class Solution:\n    pass\n",
+            },
+        )
+        self.assertEqual("accepted", saved.json()["status"])
+        self.assertIsNotNone(saved.json()["submission_id"])
+        self.assertEqual(1, len(mine.get("/submissions", params={"slug": "pair-sum"}).json()))
+        self.assertEqual([], theirs.get("/submissions", params={"slug": "pair-sum"}).json())
+        stored = mine.get(f"/submissions/{saved.json()['submission_id']}").json()
+        self.assertEqual(2, stored["total"])
+        other = theirs.get(f"/submissions/{saved.json()['submission_id']}")
+        self.assertEqual(404, other.status_code)
+
+    def test_drafts_are_session_scoped_and_validated(self):
+        saved = self.client.put("/drafts/pair-sum/python3", json={"code": "x = 1\n"})
+        self.assertEqual(200, saved.status_code)
+        draft = self.client.get("/drafts/pair-sum").json()
+        self.assertEqual(1, len(draft))
+        self.assertEqual("python3", draft[0]["language"])
+        self.assertEqual("x = 1\n", draft[0]["code"])
+        # drafts never leak across sessions
+        other = TestClient(api_main.app)
+        self.addCleanup(other.close)
+        other.post("/session")
+        self.assertEqual([], other.get("/drafts/pair-sum").json())
+        # language must be a registered one; slug must match the slug shape
+        self.assertEqual(400, self.client.put("/drafts/pair-sum/fortran", json={"code": "x"}).status_code)
+        self.assertEqual(400, self.client.put("/drafts/BAD_SLUG/python3", json={"code": "x"}).status_code)
+        self.assertEqual(400, self.client.get("/drafts/BAD_SLUG").status_code)
+        # the 256 KB draft cap
+        self.assertEqual(
+            400,
+            self.client.put("/drafts/pair-sum/python3", json={"code": "x" * 256_001}).status_code,
+        )
+
+    def test_problem_figures_and_solutions_routes(self):
+        bundle = Path(self.temporary.name) / "0001-0100" / SLUG
+        (bundle / "figures" / "flow.svg").write_text("<svg></svg>", encoding="utf-8")
+        figure = self.client.get("/problems/pair-sum/figures/flow.svg")
+        self.assertEqual(200, figure.status_code)
+        self.assertEqual("image/svg+xml", figure.headers["content-type"])
+        # the figure-name regex guard, then the plain missing-file 404
+        self.assertEqual(404, self.client.get("/problems/pair-sum/figures/..%2Fx").status_code)
+        self.assertEqual(404, self.client.get("/problems/pair-sum/figures/absent.svg").status_code)
+        # solution.py in the shared fixture publishes a payload
+        published = self.client.get("/problems/pair-sum/solutions")
+        self.assertEqual(200, published.status_code)
+        # with no solution files and no solutions.md the route 404s
+        solution = bundle / "solution.py"
+        solution.unlink()
+        try:
+            self.assertEqual(404, self.client.get("/problems/pair-sum/solutions").status_code)
+        finally:
+            solution.write_text(STARTER, encoding="utf-8")
+        # an unknown slug maps ProblemError to 404
+        self.assertEqual(404, self.client.get("/problems/nope-not-here/solutions").status_code)
+
+
+class JudgeInternalsTests(unittest.TestCase):
+    def test_hidden_case_fields_are_masked_and_runtime_aggregated(self):
+        raw = [
+            {
+                "status": "completed",
+                "actual": [0, 1],
+                "stdout": "noise",
+                "runtime_ms": 7,
+                "timeout_ms": 1000,
+            },
+            {
+                "status": "completed",
+                "actual": [1, 2],
+                "stdout": "noise",
+                "runtime_ms": 11,
+                "timeout_ms": 1000,
+            },
+        ]
+        cases = [
+            {"name": "Example 1", "input": [[2, 7, 11, 15], 9], "expected": [0, 1]},
+            {"input": [[3, 2, 4], 6], "expected": [1, 2]},
+        ]
+        with mock.patch.object(judge, "_submit", return_value={"results": raw}):
+            results = judge.execute(
+                "code",
+                "python3",
+                PROBLEM_JSON["invocation"],
+                PROBLEM_JSON["limits"],
+                cases,
+                1,
+            )
+        public, hidden = results
+        self.assertIn("expected", public)
+        self.assertNotIn("expected", hidden)
+        self.assertEqual(7, public["runtime_ms"])
+        self.assertEqual(11, hidden["_runtime_ms"])  # private until _summarize
+
+    def test_grouped_comparison_tolerates_unhashable_elements(self):
+        spec = {"mode": "grouped", "size": 2, "counts": {"a": 1, "b": 1}}
+        self.assertTrue(judge._grouped_ok(["a", "b"], spec))
+        # a wrong-typed element is a wrong answer, not a judge crash
+        self.assertFalse(judge._grouped_ok([["a"], "b"], spec))
+
+    def test_judge_slot_saturates_instead_of_queueing(self):
+        with mock.patch.object(judge, "JUDGE_CONCURRENCY", 1):
+            slots = judge.threading.BoundedSemaphore(1)
+            with mock.patch.object(judge, "_judge_slots", slots):
+                with judge.judge_slot():
+                    with self.assertRaises(judge.RunnerUnavailable):
+                        with judge.judge_slot():
+                            pass  # pragma: no cover — never reached
+
+
+if __name__ == "__main__":
+    unittest.main()

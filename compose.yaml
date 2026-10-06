@@ -1,0 +1,142 @@
+name: coderpuzzle
+
+services:
+  web:
+    build:
+      context: ./frontend
+    ports:
+      # Served directly, plain HTTP; TLS is terminated by an external edge.
+      - "${CODERPUZZLE_PORT:-8081}:8080"
+    depends_on:
+      api:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx:size=16m,uid=101,gid=101,mode=0750
+      - /var/run:size=1m,uid=101,gid=101,mode=0750
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    networks:
+      # web needs a non-internal network: Docker 29.x does not publish ports
+      # for containers that sit only on an `internal: true` network, which
+      # silently dropped the 8081 host binding below. `app` keeps it able to
+      # reach api:8000; `edge` makes the published port actually bind.
+      - app
+      - edge
+
+  api:
+    build:
+      context: ./api
+    environment:
+      # The problem set is always a directory. /problems is where the host
+      # tree selected by CODERPUZZLE_PROBLEMS_PATH is bind mounted; the app
+      # fetches nothing and keeps no problem-set cache.
+      CODERPUZZLE_PROBLEMS: /problems
+      CODERPUZZLE_DATA_DIR: /data
+      CODERPUZZLE_QUEUE_DIR: /queue
+      CODERPUZZLE_RUNNER_TIMEOUT_SECONDS: "20"
+      CODERPUZZLE_REQUIRE_CALIBRATION: ${CODERPUZZLE_REQUIRE_CALIBRATION:-1}
+      CODERPUZZLE_CALIBRATION_DIR: /calibration
+      # Browser-facing origin for OAuth redirect_uris (web origin, not the
+      # compose-internal API URL). Empty = derive from X-Forwarded-*.
+      CODERPUZZLE_PUBLIC_URL: ${CODERPUZZLE_PUBLIC_URL:-}
+      CODERPUZZLE_AUTH_REGISTRATION: ${CODERPUZZLE_AUTH_REGISTRATION:-closed}
+      CODERPUZZLE_AUTH_GOOGLE_CLIENT_ID: ${CODERPUZZLE_AUTH_GOOGLE_CLIENT_ID:-}
+      CODERPUZZLE_AUTH_GOOGLE_CLIENT_SECRET: ${CODERPUZZLE_AUTH_GOOGLE_CLIENT_SECRET:-}
+      CODERPUZZLE_AUTH_GITHUB_CLIENT_ID: ${CODERPUZZLE_AUTH_GITHUB_CLIENT_ID:-}
+      CODERPUZZLE_AUTH_GITHUB_CLIENT_SECRET: ${CODERPUZZLE_AUTH_GITHUB_CLIENT_SECRET:-}
+      CODERPUZZLE_AUTH_X_CLIENT_ID: ${CODERPUZZLE_AUTH_X_CLIENT_ID:-}
+      CODERPUZZLE_AUTH_X_CLIENT_SECRET: ${CODERPUZZLE_AUTH_X_CLIENT_SECRET:-}
+      CODERPUZZLE_AUTH_OIDC_ISSUER: ${CODERPUZZLE_AUTH_OIDC_ISSUER:-}
+      CODERPUZZLE_AUTH_OIDC_CLIENT_ID: ${CODERPUZZLE_AUTH_OIDC_CLIENT_ID:-}
+      CODERPUZZLE_AUTH_OIDC_CLIENT_SECRET: ${CODERPUZZLE_AUTH_OIDC_CLIENT_SECRET:-}
+      CODERPUZZLE_AUTH_OIDC_LABEL: ${CODERPUZZLE_AUTH_OIDC_LABEL:-}
+      CODERPUZZLE_AUTH_OIDC_SCOPES: ${CODERPUZZLE_AUTH_OIDC_SCOPES:-}
+      CODERPUZZLE_AUTH_EMAIL_OTP: ${CODERPUZZLE_AUTH_EMAIL_OTP:-}
+      CODERPUZZLE_AUTH_SMTP_HOST: ${CODERPUZZLE_AUTH_SMTP_HOST:-}
+      CODERPUZZLE_AUTH_SMTP_PORT: ${CODERPUZZLE_AUTH_SMTP_PORT:-}
+      CODERPUZZLE_AUTH_SMTP_USER: ${CODERPUZZLE_AUTH_SMTP_USER:-}
+      CODERPUZZLE_AUTH_SMTP_PASSWORD: ${CODERPUZZLE_AUTH_SMTP_PASSWORD:-}
+      CODERPUZZLE_AUTH_SMTP_FROM: ${CODERPUZZLE_AUTH_SMTP_FROM:-}
+      # Writable home on the read-only rootfs; libraries expect HOME to exist.
+      HOME: /tmp
+    volumes:
+      # The one problem-set selector: a path on disk, defaulting to this
+      # repo's own ./problems tree.
+      - "${CODERPUZZLE_PROBLEMS_PATH:-./problems}:/problems:ro"
+      - coderpuzzle_data:/data
+      - calibration_data:/calibration
+      - judge_queue:/queue
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')" ]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    networks:
+      - app
+      # OAuth/OIDC token exchange and email OTP need outbound HTTPS. The
+      # API still has no published ports; the runner stays network_mode none.
+      - edge
+
+  runner:
+    build:
+      context: ./runner
+    environment:
+      CODERPUZZLE_QUEUE_DIR: /queue
+      CODERPUZZLE_POLL_INTERVAL: "0.05"
+    volumes:
+      - judge_queue:/queue
+    network_mode: none
+    read_only: true
+    tmpfs:
+      - /tmp:size=384m,mode=1777
+      - /work:size=384m,mode=1777,exec
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      # The runtime sandbox runs submissions as `nobody` in a sticky,
+      # world-writable /tmp, so the files they leave behind belong to a
+      # different uid than the worker. Unlinking those from a sticky
+      # directory needs CAP_FOWNER: without it _sweep_tmp silently reclaims
+      # nothing and /tmp fills until every language fails. Same for dropping
+      # the compiler-owned Go build cache once it outgrows its budget.
+      - FOWNER
+      - KILL
+      - SETUID
+      - SETGID
+    group_add:
+      - "10001"
+    mem_limit: 768m
+    cpus: 1.5
+    # Concurrency problems run a schedule of real threads, and the cgroup
+    # counts every thread as a pid; the ceiling has to clear the largest
+    # schedule plus the runner's own processes. Each submission is still
+    # bounded individually by RLIMIT_NPROC, sized from the problem.
+    pids_limit: 512
+    restart: unless-stopped
+
+volumes:
+  calibration_data:
+  coderpuzzle_data:
+  judge_queue:
+
+networks:
+  app:
+    internal: true
+  # Non-internal network: `web` needs it for its published port to bind, and
+  # `api` for OAuth/OIDC token exchange and email OTP. Nothing fetches
+  # problems any more — the problem set is a bind-mounted directory.
+  edge:
