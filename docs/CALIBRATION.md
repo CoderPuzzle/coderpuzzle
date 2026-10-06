@@ -37,10 +37,13 @@ long-tail caveats are in [api-and-cli.md](api-and-cli.md).
 
 Every problem-bank repository carries its own `calibration/` directory at
 the repo root, sibling of `problems/` — one artifact per tree, keeping the
-served directory pure bundles. The bank repos
-([PROBLEM-SETS.md](PROBLEM-SETS.md)) commit the artifact for review;
-deployments serve it from the `coderpuzzle_calibration_data` volume seeded
-from that file.
+served directory pure bundles. The pairing is picked up automatically:
+when `CODERPUZZLE_CALIBRATION_DIR` is unset, the app derives the
+calibration directory as `calibration/` beside the selected problems
+directory, so plugging in a bank via `CODERPUZZLE_PROBLEMS` brings its
+calibration along. Set the variable explicitly (compose points it at the
+`coderpuzzle_calibration_data` volume) to serve a published artifact
+independent of the checkout.
 
 ## Production notes
 
