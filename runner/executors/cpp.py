@@ -1214,7 +1214,7 @@ class CppExecutor(CompiledExecutor):
                 void* coderpuzzle_frames[64];
                 int coderpuzzle_count = backtrace(coderpuzzle_frames, 64);
                 for (int coderpuzzle_i = 0; coderpuzzle_i < coderpuzzle_count; ++coderpuzzle_i) {{
-                    std::fprintf(stderr, "CPPBT %p\n", coderpuzzle_frames[coderpuzzle_i]);
+                    std::fprintf(stderr, "CPPBT %p\\n", coderpuzzle_frames[coderpuzzle_i]);
                 }}
                 std::abort();
             }}
@@ -1267,6 +1267,7 @@ class CppExecutor(CompiledExecutor):
         source_path.write_text(
             "#include <bits/stdc++.h>\n"
             "#include <unistd.h>\n"
+            "#include <execinfo.h>\n"
             "using namespace std;\n"
             "\n"
             "// The last valid protocol line wins and is JSON-validated; the fd\n"
