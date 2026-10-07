@@ -92,7 +92,7 @@ def _read_expression(spec: dict[str, Any], reader: str = "coderpuzzleReader") ->
 
 # Appended verbatim to the generated main.go: names the panic site the
 # recover-time stack crossed in the submitted program.
-GO_PANIC_LOCATION_HELPER = 'func coderpuzzlePanicLocation(message string, offset int) (string, string) {\n\tfor _, frame := range strings.Split(string(debug.Stack()), "\\n") {\n\t\tif match := regexp.MustCompile(`main[.]go:([0-9]+)`).FindStringSubmatch(frame); match != nil {\n\t\t\tline := 1\n\t\t\tif parsed, parseErr := strconv.Atoi(match[1]); parseErr == nil && parsed-offset > line {\n\t\t\t\tline = parsed - offset\n\t\t\t}\n\t\t\treturn message, fmt.Sprintf("%d", line)\n\t\t}\n\t}\n\treturn message, ""\n}'
+GO_PANIC_LOCATION_HELPER = 'func coderpuzzlePanicLocation(message string, offset int) (string, string) {\n\tframes := strings.Split(string(debug.Stack()), "\\n")\n\t// main.go frames in the dump, innermost first: [this helper, the deferred\n\t// recover, the panicking user frame, ...]. The user\'s panic site is the\n\t// main.go frame with the smallest line past the wrapper preamble\n\t// (lines 1..offset are the wrapper\'s).\n\tbest := 0\n\tfor _, frame := range frames {\n\t\tif match := regexp.MustCompile(`main[.]go:([0-9]+)`).FindStringSubmatch(frame); match != nil {\n\t\t\tif parsed, parseErr := strconv.Atoi(match[1]); parseErr == nil && parsed-offset > 0 {\n\t\t\t\tif best == 0 || parsed < best {\n\t\t\t\t\tbest = parsed\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\tif best > 0 {\n\t\treturn message, fmt.Sprintf("%d", best-offset)\n\t}\n\treturn message, ""\n}'
 
 class GoExecutor(CompiledExecutor):
     language = "go"
