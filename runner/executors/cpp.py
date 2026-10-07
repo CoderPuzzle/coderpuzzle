@@ -1221,7 +1221,7 @@ class CppExecutor(CompiledExecutor):
 
             int main() {{
                 std::set_terminate(coderpuzzle_terminate_handler);
-                try {{
+                {{
                     std::vector<unsigned char> bytes{{
                         std::istreambuf_iterator<char>(std::cin), std::istreambuf_iterator<char>()
                     }};
@@ -1253,10 +1253,6 @@ class CppExecutor(CompiledExecutor):
                         }}
                     }}
                                         coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"completed\\\",\\\"actual\\\":\" + coderpuzzle_result(coderpuzzle_actual) + \",\\\"algorithm_us\\\":\" + std::to_string(coderpuzzle_algorithm_ns / 1000) + \"}}\");
-                }} catch (const std::exception& error) {{
-                    coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\" + coderpuzzle_json(std::string(error.what())) + \"}}\");
-                }} catch (...) {{
-                    coderpuzzleEmit("__CODERPUZZLE_RESULT__{{\\\"status\\\":\\\"runtime_error\\\",\\\"error\\\":\\\"Unknown C++ exception\\\"}}\");
                 }}
                 return 0;
             }}
