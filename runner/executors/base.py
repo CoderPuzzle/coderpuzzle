@@ -23,15 +23,16 @@ class PreparedProgram:
 
 def user_code_line_offset(generated: str, code: str) -> int:
     """0-based line index of the submitted code's first line inside the
-    generated program file. Locates the code's first line, which the
-    wrapper preambles never repeat."""
+    generated program file. Matches on stripped content: the wrapper
+    inlines the submission with its own indentation, so the generated line
+    carries leading tabs the submitted line does not."""
     first = code.split("\n", 1)[0].strip()
     if not first:
         return 0
-    position = generated.find(first)
-    if position < 0:
-        return 0
-    return generated.count("\n", 0, position)
+    for index, line in enumerate(generated.split("\n")):
+        if line.strip() == first:
+            return index
+    return 0
 
 
 class LanguageExecutor(Protocol):
