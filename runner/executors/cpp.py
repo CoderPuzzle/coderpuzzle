@@ -1216,7 +1216,7 @@ class CppExecutor(CompiledExecutor):
                 for (int coderpuzzle_i = 0; coderpuzzle_i < coderpuzzle_count; ++coderpuzzle_i) {{
                     std::fprintf(stderr, "CPPBT %p\\n", coderpuzzle_frames[coderpuzzle_i]);
                 }}
-                std::abort();
+                std::_Exit(134);
             }}
 
             int main() {{

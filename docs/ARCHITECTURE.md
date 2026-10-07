@@ -54,3 +54,35 @@ SQLite data lives at `/data/coderpuzzle.sqlite3` in the `coderpuzzle_data`
 named volume. Normal `docker compose down` and image rebuilds preserve it.
 The judge queue is a separate transient volume and contains no expected
 answers.
+
+## Error line numbers
+
+Runtime errors carry a structured `error_line` field pointing at the
+submission source line where the error occurred. The mechanism is
+language-specific:
+
+- **Python**: the harness catches the exception and walks the traceback for
+  the innermost `solution.py` frame, emitting `error_line` in the protocol.
+- **Java**: compiled with `-g:source,lines` (keeping source-file and
+  line-number tables) and `-XX:-OmitStackTraceInFastThrow` (preventing the
+  JIT from eliding stacks on repeated throws). The harness walks the stack
+  for the deepest `solution.java` frame.
+- **Go**: the wrapper's deferred recover calls a helper that scans
+  `debug.Stack()` for the first `main.go:NNN` frame past the wrapper
+  preamble. The preamble line count is computed at prepare time and baked
+  into the generated source as a constant.
+- **Rust**: the panic hook prints the source location to stderr before the
+  catch_unwind boundary; the worker's decoration extracts it from the
+  merged process output.
+- **JavaScript/TypeScript**: the wrapper's catch block extracts the line
+  from `error.stack` (TypeScript uses `--sourceMap` + node
+  `--enable-source-maps` to map compiled frames back to the .ts source).
+  The preamble line offset is baked into the wrapper as a constant.
+- **C++**: compile errors carry line numbers from the compiler diagnostics.
+  Runtime throws use a terminate handler (`execinfo.h` backtrace) plus `-g`
+  for addr2line resolution in the worker. C++ is the most limited: the
+  exception's stack has unwound by the time the wrapper catches it, so
+  runtime throw sites require the terminate-handler path.
+- The worker's `_decorate_runtime_error` applies per-language patterns and
+  subtracts `PreparedProgram.source_line_offset` (the preamble line count)
+  to map generated-file coordinates back to the submitted source.
