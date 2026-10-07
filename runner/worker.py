@@ -427,6 +427,8 @@ def _decorate_runtime_error(
     if match:
         line = int(match.group(1))
         parsed["error_line"] = line - source_line_offset if line > source_line_offset else line
+        print(f"DEBUG decorate lang={language} raw={line} offset={source_line_offset} "
+              f"result={parsed['error_line']}", file=sys.stderr, flush=True)
 
 
 def _write_response(job_dir: Path, response: dict[str, Any]) -> None:
