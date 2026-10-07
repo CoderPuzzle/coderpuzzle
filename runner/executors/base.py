@@ -13,6 +13,25 @@ class PreparedProgram:
 
     command: tuple[str, ...]
     environment: dict[str, str]
+    # Line offset of the submitted code inside the generated program file:
+    # languages that inline the submission into a wrapper (go, rust, js, ts,
+    # cpp) report runtime locations in generated-file coordinates; the worker
+    # subtracts this to name the user's own line. 0 when the submission is
+    # compiled as its own file (python, java).
+    source_line_offset: int = 0
+
+
+def user_code_line_offset(generated: str, code: str) -> int:
+    """0-based line index of the submitted code's first line inside the
+    generated program file. Locates the code's first line, which the
+    wrapper preambles never repeat."""
+    first = code.split("\n", 1)[0].strip()
+    if not first:
+        return 0
+    position = generated.find(first)
+    if position < 0:
+        return 0
+    return generated.count("\n", 0, position)
 
 
 class LanguageExecutor(Protocol):

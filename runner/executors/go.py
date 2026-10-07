@@ -3,7 +3,7 @@ import textwrap
 from pathlib import Path
 from typing import Any
 
-from .base import ExecutorError, PreparedProgram
+from .base import ExecutorError, PreparedProgram, user_code_line_offset
 from .compiled import CompiledExecutor
 from .typed import (
     function_signature,
@@ -92,7 +92,7 @@ def _read_expression(spec: dict[str, Any], reader: str = "coderpuzzleReader") ->
 
 # Appended verbatim to the generated main.go: names the panic site the
 # recover-time stack crossed in the submitted program.
-GO_PANIC_LOCATION_HELPER = 'func coderpuzzlePanicLocation(message string) (string, string) {\n\tfor _, frame := range strings.Split(string(debug.Stack()), "\\n") {\n\t\tif match := regexp.MustCompile(`main[.]go:([0-9]+)`).FindStringSubmatch(frame); match != nil {\n\t\t\treturn message, match[1]\n\t\t}\n\t}\n\treturn message, ""\n}'
+GO_PANIC_LOCATION_HELPER = 'func coderpuzzlePanicLocation(message string, offset int) (string, string) {\n\tfor _, frame := range strings.Split(string(debug.Stack()), "\\n") {\n\t\tif match := regexp.MustCompile(`main[.]go:([0-9]+)`).FindStringSubmatch(frame); match != nil {\n\t\t\tline := 1\n\t\t\tif parsed, parseErr := strconv.Atoi(match[1]); parseErr == nil && parsed-offset > line {\n\t\t\t\tline = parsed - offset\n\t\t\t}\n\t\t\treturn message, fmt.Sprintf("%d", line)\n\t\t}\n\t}\n\treturn message, ""\n}'
 
 class GoExecutor(CompiledExecutor):
     language = "go"
@@ -1250,7 +1250,7 @@ class GoExecutor(CompiledExecutor):
                     func coderpuzzleExecute() (response map[string]any) {{
                         defer func() {{
                             if recovered := recover(); recovered != nil {{
-                                message, line := coderpuzzlePanicLocation(fmt.Sprint(recovered))
+                                message, line := coderpuzzlePanicLocation(fmt.Sprint(recovered), __PANIC_OFFSET__)
                                 if line != "" {{
                                     message = fmt.Sprintf("%s (main.go:%s)", message, line)
                                 }}
@@ -1314,6 +1314,8 @@ class GoExecutor(CompiledExecutor):
                     """
             ) + GO_PANIC_LOCATION_HELPER
         )
+        panic_offset = user_code_line_offset(source, code)
+        source = source.replace("__PANIC_OFFSET__", str(panic_offset))
         source_path = job_root / "main.go"
         executable = job_root / "solution"
         source_path.write_text(source, encoding="utf-8")

@@ -1210,7 +1210,17 @@ class CppExecutor(CompiledExecutor):
                 return coderpuzzle_json(value);
             }}
 
+            static void coderpuzzle_terminate_handler() {{
+                void* coderpuzzle_frames[64];
+                int coderpuzzle_count = backtrace(coderpuzzle_frames, 64);
+                for (int coderpuzzle_i = 0; coderpuzzle_i < coderpuzzle_count; ++coderpuzzle_i) {{
+                    std::fprintf(stderr, "CPPBT %p\n", coderpuzzle_frames[coderpuzzle_i]);
+                }}
+                std::abort();
+            }}
+
             int main() {{
+                std::set_terminate(coderpuzzle_terminate_handler);
                 try {{
                     std::vector<unsigned char> bytes{{
                         std::istreambuf_iterator<char>(std::cin), std::istreambuf_iterator<char>()
@@ -1293,6 +1303,7 @@ class CppExecutor(CompiledExecutor):
                 self.compiler_path,
                 "-std=c++20",
                 "-O2",
+                "-g",
                 "-pipe",
                 "-fno-diagnostics-color",
                 "-o",

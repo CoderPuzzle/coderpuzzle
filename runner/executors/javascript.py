@@ -2,7 +2,7 @@ import textwrap
 from pathlib import Path
 from typing import Any
 
-from .base import PreparedProgram
+from .base import PreparedProgram, user_code_line_offset
 from .compiled import CompiledExecutor
 from .typed import (
     function_signature,
@@ -1004,4 +1004,7 @@ class JavaScriptExecutor(CompiledExecutor):
                 "HOME": "/nonexistent",
                 "TMPDIR": str(scratch),
             },
+            source_line_offset=user_code_line_offset(
+                assembly_prelude + struct_helpers, code
+            ),
         )

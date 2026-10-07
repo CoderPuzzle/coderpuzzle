@@ -372,8 +372,9 @@ def _run_case(
             # Point non-python errors at the submission source too: the
             # merged process output carries the JVM stack, the go/rust
             # panic location, or the node stack — each names the
-            # submission's own file and line.
-            _decorate_runtime_error(parsed, executor.language, output)
+            # submission's own file and line, in generated-file
+            # coordinates that the offset maps back to the submission.
+            _decorate_runtime_error(parsed, executor.language, output, program.source_line_offset, program.command[0])
         return parsed
 
 
@@ -392,18 +393,40 @@ _RUNTIME_LINE_PATTERNS = {
 }
 
 
-def _decorate_runtime_error(parsed: dict[str, Any], language: str, merged_output: str) -> None:
+def _decorate_runtime_error(
+    parsed: dict[str, Any],
+    language: str,
+    merged_output: str,
+    source_line_offset: int,
+    executable: str | None = None,
+) -> None:
     """Add error_line for the languages whose crashed-process output names
     the submission source. The python harness extracts its own line into
-    the protocol before this ever runs."""
+    the protocol before this ever runs. Extracted lines are in
+    generated-file coordinates; source_line_offset maps them back to the
+    submitted source's own line numbers."""
     if parsed.get("error_line"):
         return
     pattern = _RUNTIME_LINE_PATTERNS.get(language)
     if pattern is None:
         return
+    if language == "cpp":
+        # The terminate handler dumps raw addresses (CPPBT lines); addr2line
+        # resolves them against the compiled binary's debug info.
+        addresses = re.findall(r"CPPBT (0x[0-9a-fA-F]+)", merged_output)
+        if addresses and executable and os.path.exists(executable):
+            probe = subprocess.run(
+                ["addr2line", "-e", executable, "-f", "-C", "-i", *addresses],
+                capture_output=True, text=True,
+            )
+            sites = re.findall(r"main\.cpp:(\d+)", probe.stdout)
+            if sites:
+                parsed["error_line"] = int(sites[-1])
+        return
     match = pattern.search(merged_output)
     if match:
-        parsed["error_line"] = int(match.group(1))
+        line = int(match.group(1))
+        parsed["error_line"] = line - source_line_offset if line > source_line_offset else line
 
 
 def _write_response(job_dir: Path, response: dict[str, Any]) -> None:
