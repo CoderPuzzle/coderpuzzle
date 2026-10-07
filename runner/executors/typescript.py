@@ -1060,8 +1060,9 @@ class TypeScriptExecutor(CompiledExecutor):
                     // Point the verdict at the throw site in the submitted
                     // source (source maps map the compiled frames back).
                     const stackMatch = /main[.]ts:([0-9]+)/.exec(error && error.stack || "");
-                    const linePayload = stackMatch ? `"error_line":${{stackMatch[1]}},` : "";
-                    const messageWithSite = stackMatch ? `${{message}} (main.ts:${{stackMatch[1]}})` : message;
+                    const userLine = stackMatch ? parseInt(stackMatch[1]) - __CODERPUZZLE_LINE_OFFSET__ : 0;
+                    const linePayload = stackMatch ? `"error_line":${{userLine}},` : "";
+                    const messageWithSite = stackMatch ? `${{message}} (main.ts:${{userLine}})` : message;
                     coderpuzzleEmit(`__CODERPUZZLE_RESULT__{{"status":"runtime_error",${{linePayload}}"error":${{JSON.stringify(messageWithSite.slice(0, 4096))}}}}`);
                 }}
             }})();
@@ -1074,10 +1075,9 @@ class TypeScriptExecutor(CompiledExecutor):
         # the submission — no imports — while shadowing same-name DOM globals
         # (lib.dom's `Node`) that would otherwise collide with a bare
         # `class Node` in script scope.
-        source_path.write_text(
-            "export {};\n" + assembly_prelude + struct_helpers + code + "\n" + wrapper,
-            encoding="utf-8",
-        )
+        line_offset = user_code_line_offset(assembly_prelude + struct_helpers, code)
+        source_text = (assembly_prelude + struct_helpers + code + "\n" + wrapper).replace("__CODERPUZZLE_LINE_OFFSET__", str(line_offset))
+        source_path.write_text(source_text, encoding="utf-8")
         source_path.chmod(0o444)
         self.compile(
             job_root,

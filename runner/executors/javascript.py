@@ -980,15 +980,20 @@ class JavaScriptExecutor(CompiledExecutor):
                     // Point the verdict at the throw site in the submitted
                     // source (source maps map the compiled frames back).
                     const stackMatch = /main[.]js:([0-9]+)/.exec(error && error.stack || "");
-                    const linePayload = stackMatch ? `"error_line":${{stackMatch[1]}},` : "";
-                    const messageWithSite = stackMatch ? `${{message}} (main.js:${{stackMatch[1]}})` : message;
+                    const userLine = stackMatch ? parseInt(stackMatch[1]) - __CODERPUZZLE_LINE_OFFSET__ : 0;
+                    const linePayload = stackMatch ? `"error_line":${{userLine}},` : "";
+                    const messageWithSite = stackMatch ? `${{message}} (main.js:${{userLine}})` : message;
                     coderpuzzleEmit(`__CODERPUZZLE_RESULT__{{"status":"runtime_error",${{linePayload}}"error":${{JSON.stringify(messageWithSite.slice(0, 4096))}}}}`);
                 }}
             }})();
             """
         )
         source_path = job_root / "main.js"
-        source_path.write_text(assembly_prelude + struct_helpers + code + "\n" + wrapper, encoding="utf-8")
+        source_text = assembly_prelude + struct_helpers + code + "\n" + wrapper
+        line_offset = user_code_line_offset(source_text, code)
+        source_text = source_text.replace("__CODERPUZZLE_LINE_OFFSET__", str(line_offset))
+        source_path.write_text(source_text, encoding="utf-8")
+
         source_path.chmod(0o444)
         return PreparedProgram(
             command=(
