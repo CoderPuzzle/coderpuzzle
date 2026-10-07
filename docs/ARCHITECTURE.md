@@ -79,10 +79,13 @@ language-specific:
   `--enable-source-maps` to map compiled frames back to the .ts source).
   The preamble line offset is baked into the wrapper as a constant.
 - **C++**: compile errors carry line numbers from the compiler diagnostics.
-  Runtime throws use a terminate handler (`execinfo.h` backtrace) plus `-g`
-  for addr2line resolution in the worker. C++ is the most limited: the
-  exception's stack has unwound by the time the wrapper catches it, so
-  runtime throw sites require the terminate-handler path.
+  Runtime throws are a **known language limitation**: C++ stack unwinding
+  destroys the throw-site frames before the wrapper's catch block runs, so
+  the catch handler cannot recover the source line. A terminate handler
+  (`execinfo.h` backtrace) plus `-g` for addr2line resolution captures the
+  stack for uncaught exceptions (which terminate before unwinding), but the
+  common case — a `throw` caught by the wrapper — has no line number. This
+  is a fundamental C++ exception-model constraint, not a bug.
 - The worker's `_decorate_runtime_error` applies per-language patterns and
   subtracts `PreparedProgram.source_line_offset` (the preamble line count)
   to map generated-file coordinates back to the submitted source.
