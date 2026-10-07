@@ -317,19 +317,6 @@ def _run_case(
         protocol_file.seek(0)
         protocol = protocol_file.read(output_limit + 4096).decode("utf-8", errors="replace")
         parsed = _parse_protocol(protocol) if protocol.strip() else _parse_protocol(output)
-        if parsed.get("status") == "runtime_error" and executor.language in ("go", "rust", "javascript", "typescript", "cpp"):
-            try:
-                ext = {"go": "main.go", "rust": "main.rs", "javascript": "main.js",
-                       "typescript": "main.ts", "cpp": "main.cpp"}[executor.language]
-                main_src = (job_root / ext).read_text(encoding="utf-8")
-                panic_line = next((i + 1 for i, l in enumerate(main_src.split("\n"))
-                                   if "panic" in l and "TODO" in l), None)
-                print(f"DEBUG job: generated-{ext} panic-line={panic_line} "
-                      f"offset={getattr(program, 'source_line_offset', 'NA')} "
-                      f"error_line={parsed.get('error_line')}",
-                      file=sys.stderr, flush=True)
-            except Exception as debug_error:
-                print(f"DEBUG job logging failed: {debug_error}", file=sys.stderr, flush=True)
         if measurements.pop("oom_kill", 0):
             parsed = {"status": "memory_limit_exceeded", "error": "Solution exceeded its physical memory budget"}
         elif timeout_reason:
