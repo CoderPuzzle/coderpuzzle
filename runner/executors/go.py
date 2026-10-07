@@ -1356,4 +1356,5 @@ class GoExecutor(CompiledExecutor):
                 "GOMEMLIMIT": "192MiB",
                 "GOTRACEBACK": "none",
             },
+            source_line_offset=user_code_line_offset(source, code),
         )
