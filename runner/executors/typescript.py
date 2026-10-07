@@ -1075,7 +1075,8 @@ class TypeScriptExecutor(CompiledExecutor):
         # the submission — no imports — while shadowing same-name DOM globals
         # (lib.dom's `Node`) that would otherwise collide with a bare
         # `class Node` in script scope.
-        line_offset = user_code_line_offset(assembly_prelude + struct_helpers, code)
+        line_offset = user_code_line_offset(
+                assembly_prelude + struct_helpers + code + "\n" + wrapper, code)
         source_text = (assembly_prelude + struct_helpers + code + "\n" + wrapper).replace("__CODERPUZZLE_LINE_OFFSET__", str(line_offset))
         source_path.write_text(source_text, encoding="utf-8")
         source_path.chmod(0o444)
@@ -1121,5 +1122,5 @@ class TypeScriptExecutor(CompiledExecutor):
                 "HOME": "/nonexistent",
                 "TMPDIR": str(scratch),
             },
-            source_line_offset=user_code_line_offset(assembly_prelude, code),
+            source_line_offset=line_offset,
         )

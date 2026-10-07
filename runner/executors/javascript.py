@@ -1009,7 +1009,5 @@ class JavaScriptExecutor(CompiledExecutor):
                 "HOME": "/nonexistent",
                 "TMPDIR": str(scratch),
             },
-            source_line_offset=user_code_line_offset(
-                assembly_prelude + struct_helpers, code
-            ),
+            source_line_offset=line_offset,
         )
