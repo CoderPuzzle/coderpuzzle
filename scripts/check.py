@@ -20,7 +20,7 @@ Static (per-bundle checks; corpus-wide rules always see the whole set):
     untouched one.
   --report-json writes the static tier's machine-readable verdicts,
     {"kind": "static", "results": {key: pass|fail}}, for the bundles it
-    actually checked — CI's state recorder consumes it directly; exit
+    actually checked — scripts/ci_state.py consumes it directly; exit
     code and printed output are unchanged.
 
 Runtime (--problems selection; needs a running CoderPuzzle serving this repo,
@@ -34,8 +34,8 @@ Usage:
   check.py --tree problems --skip-runtime             # static tier over a tree
   check.py --tree problems --skip-runtime \
            --bundles=0001_two-sum,0002_add-two-numbers
-  check.py --runtime-only --problems=…            # judge sweep, static tier
-                                                  # already run separately
+  check.py --runtime-only --problems=…            # judge sweep only; the
+                                                  # static tier already ran
 
 The static tier checks bundle structure and metadata; the runtime tier
 additionally submits the canonical solution through the judge against
@@ -820,7 +820,7 @@ def main() -> None:
     parser.add_argument(
         "--runtime-only",
         action="store_true",
-        help="skip the static tier (CI runs it separately in the formatter container)",
+        help="skip the static tier; use when that tier already ran separately",
     )
     parser.add_argument(
         "--bundles",

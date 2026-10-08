@@ -187,7 +187,7 @@ docker compose --env-file /etc/coderpuzzle-test-slot.env \
   -f compose.yaml -f compose.isolated.yaml run --rm --no-deps \
   -e CODERPUZZLE_RESOURCE_TESTS=1 \
   -v "$PWD/tests/test_resource_linux.py:/resource-tests.py:ro" \
-  -v "$PWD/problems/0001-0100/0001_two-sum:/test-bundle:ro" \
+  -v "$PWD/problems/0001_pair-sum:/test-bundle:ro" \
   --entrypoint coderpuzzle-supervisor-python runner -I -S /resource-tests.py
 ```
 

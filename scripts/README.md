@@ -26,11 +26,12 @@ on-disk problem set selected with `CODERPUZZLE_PROBLEMS`.
   default to `~/code/lc-crawl` and `~/code/bettercode`; override with
   `CODERPUZZLE_CRAWL` / `CODERPUZZLE_BETTERCODE`; set
   `CODERPUZZLE_ADAPTED_PROBLEMS` to the adapted `problems/` directory.
-- `check.py` — the repo's main static gate, the one CI runs
-  (`.github/workflows/check-problems.yml`: `python3 scripts/check.py
---tree problems --skip-runtime`): bundle completeness, schema
-  conformance, statement grammar, duplicate ids/slugs,
-  `solution.* ⊇ starter.*`, and the starter generator round-trip.
+- `check.py` — the static bundle gate, run on demand (this repo's GitHub
+  Actions do not run it; `coderpuzzle check` inside the judge image does):
+  bundle completeness, schema conformance, statement grammar, duplicate
+  ids/slugs, `solution.* ⊇ starter.*`, and the starter generator
+  round-trip. `python3 scripts/check.py --tree problems --skip-runtime`
+  is the static tier.
   `--problems=` additionally selects bundles for the runtime tier;
   `--bundles=` restricts the per-bundle static checks (corpus-wide rules —
   misnamed directories, duplicate ids/slugs — always scan the whole set);

@@ -1,10 +1,11 @@
 # Problem bundle format
 
-Each CoderPuzzle problem is one directory under a problem-set root such as
-this repository's `problems/`, named `<zero-padded id>_<slug>`,
-inside an inclusive id-range shard directory of 100 problems
-(`<lo>-<hi>`, e.g. `0001-0100` for ids 1-100) — the directory name is
-the single source of the problem key:
+Each CoderPuzzle problem is one directory named `<zero-padded id>_<slug>`.
+A problem-set root holds those directories either directly or one level
+down, inside an inclusive id-range shard of 100 (`<lo>-<hi>`, e.g.
+`0001-0100`). This repository's five exemplars sit directly under
+`problems/`. A full bank uses the shard layout below. The bundle directory
+name, not the shard, is the problem key:
 
 ```text
 problems/

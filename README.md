@@ -45,7 +45,7 @@ judge image, not in CI:
 docker run --rm --user 0:0 -v "$PWD":/tools \
   ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle check   # static bundle gate
 docker run --rm --user 0:0 -v "$PWD":/tools \
-  ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle judge problems/0001-0100/0001_pair-sum
+  ghcr.io/coderpuzzle/coderpuzzle:latest coderpuzzle judge /tools/problems/0001_pair-sum
 ```
 
 The editor carries real IntelliSense (the TypeScript language worker for

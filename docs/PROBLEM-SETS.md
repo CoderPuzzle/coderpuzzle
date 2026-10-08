@@ -11,9 +11,10 @@ checkout serves a different corpus.
   (default `./problems`).
 
 The path must name an existing directory and it is the package root — the
-directory whose children are the id-range shards. Anything else (a GitHub
-`owner/name`, a git URL, a missing path) is a startup error rather than
-something the app goes and fetches.
+directory whose children are bundles, or id-range shards that contain
+bundles. This repository's `problems/` is the flat form. Anything else (a
+GitHub `owner/name`, a git URL, a missing path) is a startup error rather
+than something the app goes and fetches.
 
 ```bash
 docker compose up --build                                                # default: ./problems
@@ -63,5 +64,5 @@ docker run --rm --user 0:0 -v "$PWD":/tools \
   coderpuzzle check --tree /tools/problems            # static bundle gate
 docker run --rm --user 0:0 -v "$PWD":/tools \
   ghcr.io/coderpuzzle/coderpuzzle:latest \
-  coderpuzzle judge /tools/problems/0001-0100/0001_pair-sum
+  coderpuzzle judge /tools/problems/0001_pair-sum
 ```

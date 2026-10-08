@@ -21,7 +21,7 @@ standard); `/bundle` is the problem directory you are authoring.
 `### Example N` fenced blocks, `### Constraints` (same numeric domain as
 the source of the task, freshly presented), optional `### Follow-up` and
 `## Hints`. See `docs/FORMAT.md` for the grammar and
-`problems/0001-0100/0001_two-sum/statement.md` for the structure: plain,
+`problems/0001_pair-sum/statement.md` for the structure: plain,
 direct, no invented scenarios.
 
 ## 2. Declare the language-agnostic signature

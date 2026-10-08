@@ -160,5 +160,11 @@ a 20-line class plus `register()` is enough.
 
 Failed `complete` attempts are counted per client IP, 10 per minute,
 **before** provider work (so a throttled caller does no scrypt or token
-exchange). The API trusts `X-Forwarded-For` because uvicorn runs with
-`--proxy-headers` and the only path in is frontend nginx.
+exchange). uvicorn runs with `--proxy-headers --forwarded-allow-ips "*"`
+and takes `X-Forwarded-For` entry 0 as that IP. The value is the real
+client only when every proxy in front replaces a client-supplied
+`X-Forwarded-For` instead of leaving it first. frontend nginx forwards
+`$proxy_add_x_forwarded_for`, which keeps a client-supplied value in
+front, so this budget — and the judge and session-creation throttles in
+`app/main.py`, which read the same address — is only as strong as the
+proxy that actually faces the internet.
