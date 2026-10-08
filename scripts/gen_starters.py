@@ -1040,7 +1040,6 @@ def generate(invocation: dict, language: str) -> str:
         return _generate_concurrent(invocation, language)
     parameters = _parameters(invocation)
     return_type = invocation.get("return_type") or {"kind": "boolean"}
-    structs = _uses_structs(invocation)
     name = _entry(invocation, language)
 
     if language == "python3":
